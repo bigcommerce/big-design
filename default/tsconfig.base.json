@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "isolatedModules": false,
+    "pretty": true,
+    "lib": ["dom", "es2015", "es2016"]
+  },
+  "includes": ["src"],
+  "exclude": ["node_modules", "dist", "stories", "tests", "src/**/__tests__"],
+  "plugins": [
+    {
+      "name": "typescript-styled-plugin"
+    }
+  ]
+}
