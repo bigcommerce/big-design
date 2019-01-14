@@ -9,6 +9,7 @@
     "dist"
   ],
   "scripts": {
+    "build:icons": "svgr --ext=tsx src/Icons/svg -d src/Icons",
     "dev": "npm run storybook",
     "lint": "tslint -p tsconfig.json",
     "storybook": "start-storybook -p 6006",
@@ -36,6 +37,7 @@
     "@storybook/addon-viewport": "^4.0.4",
     "@storybook/addons": "^4.0.4",
     "@storybook/react": "4.0.4",
+    "@svgr/cli": "^4.1.0",
     "@types/jest": "^23.3.12",
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",

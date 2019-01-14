@@ -1,7 +1,8 @@
+import { components, Components } from './components';
 import { breakpoints, Breakpoints } from './system/breakpoints';
+import { colors, Colors } from './system/colors';
 import { elevation, Elevation } from './system/elevation';
 import { createLineHeight, LineHeight } from './system/line-height';
-import { colors, Colors } from './system/palette';
 import { createSpacing, Spacing } from './system/spacing';
 import { createTypography, Typography } from './system/typography';
 import { zIndex, ZIndex } from './system/z-index';
@@ -14,7 +15,7 @@ const defaultOptions: ThemeOptions = {
   htmlFontSize: 16,
 };
 
-export interface Theme {
+export interface ThemeInterface extends Components {
   breakpoints: Breakpoints;
   colors: Colors;
   elevation: Elevation;
@@ -24,13 +25,14 @@ export interface Theme {
   zIndex: ZIndex;
 }
 
-export const createTheme = (themeOptions?: Partial<ThemeOptions>): Theme => {
+export const createTheme = (themeOptions?: Partial<ThemeOptions>): ThemeInterface => {
   const options: ThemeOptions = {
     ...defaultOptions,
     ...themeOptions,
   };
 
   return {
+    ...components,
     breakpoints,
     colors,
     elevation,
@@ -41,4 +43,4 @@ export const createTheme = (themeOptions?: Partial<ThemeOptions>): Theme => {
   };
 };
 
-export const theme: Theme = createTheme();
+export const theme: ThemeInterface = createTheme();
