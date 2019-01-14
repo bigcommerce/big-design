@@ -66,6 +66,7 @@
     "webpack": "^4.25.1"
   },
   "dependencies": {
+    "polished": "^2.3.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "styled-components": "^4.1.3"

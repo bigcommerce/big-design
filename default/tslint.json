@@ -2,5 +2,8 @@
   "extends": [
     "@bigcommerce/tslint-config",
     "tslint-config-prettier"
-  ]
+  ],
+  "rules": {
+    "object-literal-sort-keys": false
+  }
 }
