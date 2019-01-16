@@ -2,6 +2,7 @@ import { components, Components } from './components';
 import { breakpoints, Breakpoints } from './system/breakpoints';
 import { colors, Colors } from './system/colors';
 import { elevation, Elevation } from './system/elevation';
+import * as keyframes from './system/keyframes';
 import { createLineHeight, LineHeight } from './system/line-height';
 import { createSpacing, Spacing } from './system/spacing';
 import { createTypography, Typography } from './system/typography';
@@ -19,6 +20,7 @@ export interface ThemeInterface extends Components {
   breakpoints: Breakpoints;
   colors: Colors;
   elevation: Elevation;
+  keyframes: typeof keyframes;
   lineHeight: LineHeight;
   spacing: Spacing;
   typography: Typography;
@@ -36,6 +38,7 @@ export const createTheme = (themeOptions?: Partial<ThemeOptions>): ThemeInterfac
     breakpoints,
     colors,
     elevation,
+    keyframes,
     lineHeight: createLineHeight(options),
     spacing: createSpacing(options),
     typography: createTypography(options),

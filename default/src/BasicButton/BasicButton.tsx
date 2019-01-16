@@ -2,8 +2,11 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { createTheme, ThemeInterface } from '../themes/basic';
-import { Spinner as DefaultSpinner } from '../Spinner/Spinner';
+import { Spinner } from '../Spinner/Spinner';
 
+// We won't need this when we use ThemeProvider
+// However since a couple of us will be playing with this repo
+// We can avoid having colliding themes this way
 const defaultTheme = createTheme();
 
 interface Props {
@@ -28,7 +31,7 @@ export class Button extends React.PureComponent<ButtonProps> {
   static defaultProps: Partial<ButtonProps> = {
     actionType: 'normal',
     isLoading: false,
-    spinner: <DefaultSpinner />,
+    spinner: <Spinner overlay={false} />,
     theme: defaultTheme,
     variant: 'primary',
   };

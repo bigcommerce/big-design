@@ -5,6 +5,7 @@ import * as React from 'react';
 
 import DropdownIcon from '../Icons/DropdownIcon';
 import PlusIcon from '../Icons/PlusIcon';
+import { Spinner } from '../Spinner/Spinner';
 
 import { Button } from './BasicButton';
 
@@ -113,8 +114,6 @@ storiesOf('BasicButton', module)
       actionType={select('actionType', actionType, 'normal')}
       isLoading={boolean('isLoading', false)}
     >
-      <PlusIcon />
       Label
-      <DropdownIcon />
     </Button>
   ));
