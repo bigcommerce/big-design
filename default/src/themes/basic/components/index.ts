@@ -1,13 +1,13 @@
 export interface Components {
-  Button: any;
-  IconWrapper: any;
-  Spinner: any;
-  SpinnerWrapper: any;
+  Button?: any;
+  H0?: any;
+  H1?: any;
+  H2?: any;
+  H3?: any;
+  H4?: any;
+  IconWrapper?: any;
+  P?: any;
+  Small?: any;
+  Spinner?: any;
+  SpinnerWrapper?: any;
 }
-
-export const components: Components = {
-  Button: null,
-  IconWrapper: null,
-  Spinner: null,
-  SpinnerWrapper: null,
-};

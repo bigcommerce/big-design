@@ -5,9 +5,10 @@ import { ThemeOptions } from '../index';
 export type FontFamily = string;
 
 export interface FontWeight {
-  bold: number;
-  normal: number;
-  thin: number;
+  extraLight: number;
+  light: number;
+  regular: number;
+  semiBold: number;
 }
 
 export interface FontSize {
@@ -36,8 +37,9 @@ export const createTypography = (options: ThemeOptions): Typography => ({
     xxxLarge: rem(48, options.htmlFontSize),
   },
   fontWeight: {
-    bold: 600,
-    normal: 400,
-    thin: 300,
+    extraLight: 200,
+    light: 300,
+    regular: 400,
+    semiBold: 600,
   },
 });

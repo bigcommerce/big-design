@@ -1,4 +1,4 @@
-import { components, Components } from './components';
+import { Components } from './components';
 import { breakpoints, Breakpoints } from './system/breakpoints';
 import { colors, Colors } from './system/colors';
 import { elevation, Elevation } from './system/elevation';
@@ -34,7 +34,6 @@ export const createTheme = (themeOptions?: Partial<ThemeOptions>): ThemeInterfac
   };
 
   return {
-    ...components,
     breakpoints,
     colors,
     elevation,

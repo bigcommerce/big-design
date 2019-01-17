@@ -15,7 +15,7 @@ export const ButtonStyles = css<ButtonProps>`
   cursor: pointer;
   display: inline-flex;
   flex: none;
-  font-weight: ${({ theme }) => theme.typography.fontWeight.normal};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   justify-content: center;
   height: ${({ theme }) => addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
   line-height: ${({ theme }) => theme.lineHeight.xLarge};
@@ -68,7 +68,7 @@ export const ButtonStyles = css<ButtonProps>`
 const ButtonPrimary = css<ButtonProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   border-color: ${({ theme }) => theme.colors.primary};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
 
   &:active {
     background-color: ${({ theme }) => theme.colors.primary60};
@@ -90,7 +90,7 @@ const ButtonPrimary = css<ButtonProps>`
 const ButtonPrimaryDestructive = css<ButtonProps>`
   background-color: ${({ theme }) => theme.colors.danger};
   border-color: ${({ theme }) => theme.colors.danger};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
 
   &:active {
     background-color: ${({ theme }) => theme.colors.danger60};
