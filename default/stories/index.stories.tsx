@@ -1,6 +1,5 @@
 import { checkA11y } from '@storybook/addon-a11y';
 import { withBackgrounds } from '@storybook/addon-backgrounds';
-import { withConsole } from '@storybook/addon-console';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withViewport } from '@storybook/addon-viewport';
 import { addDecorator } from '@storybook/react';
@@ -11,7 +10,6 @@ import { GlobalStyle } from '../src/GlobalStyle';
 addDecorator(withKnobs);
 addDecorator(checkA11y);
 addDecorator(withViewport());
-addDecorator((storyFn, context) => withConsole()(storyFn)(context));
 addDecorator(
   withBackgrounds([
     {
