@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 
-import { SpinnerWrapperProps } from '../../../Spinner/Spinner';
+import { SpinnerWrapperProps } from './Spinner';
 
-export const SpinnerWrapper = css<SpinnerWrapperProps>`
+export const SpinnerWrapperStyles = css<SpinnerWrapperProps>`
   align-items: center;
   display: flex;
   height: 100%;
@@ -19,7 +19,7 @@ export const SpinnerWrapper = css<SpinnerWrapperProps>`
     `};
 `;
 
-export const Spinner = css`
+export const SpinnerStyles = css`
   animation: ${({ theme }) =>
     css`
       ${theme.keyframes.rotate} 1s linear infinite

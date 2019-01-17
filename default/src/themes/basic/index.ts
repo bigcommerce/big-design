@@ -46,4 +46,4 @@ export const createTheme = (themeOptions?: Partial<ThemeOptions>): ThemeInterfac
   };
 };
 
-export const theme: ThemeInterface = createTheme();
+export const defaultTheme: ThemeInterface = createTheme();

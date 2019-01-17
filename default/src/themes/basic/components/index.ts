@@ -1,15 +1,13 @@
-import Base from './Base';
-import Button from './Button';
-import * as Spinner from './Spinner';
-
 export interface Components {
-  Base: typeof Base;
-  Button: typeof Button;
-  Spinner: typeof Spinner;
+  Button: any;
+  IconWrapper: any;
+  Spinner: any;
+  SpinnerWrapper: any;
 }
 
 export const components: Components = {
-  Base,
-  Button,
-  Spinner,
+  Button: null,
+  IconWrapper: null,
+  Spinner: null,
+  SpinnerWrapper: null,
 };

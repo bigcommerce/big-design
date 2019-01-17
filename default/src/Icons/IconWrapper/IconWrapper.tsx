@@ -1,6 +1,7 @@
-import { size } from 'polished';
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
+
+import { IconWrapperStyles } from './styles';
 
 export interface IconWrapperProps {
   height: number | string;
@@ -19,8 +20,5 @@ export class IconWrapper extends React.PureComponent<IconWrapperProps> {
 }
 
 export const StyledIconWrapper = styled.span<IconWrapperProps>`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  ${({ height, width }) => size(height, width)};
+  ${({ theme }) => theme.IconWrapper || IconWrapperStyles}
 `;

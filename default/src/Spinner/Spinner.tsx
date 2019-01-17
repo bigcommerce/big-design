@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { createTheme, ThemeInterface } from '../themes/basic';
+import { defaultTheme, ThemeInterface } from '../themes/basic';
 import { addValues } from '../themes/basic/helpers/addition';
 import LoadingIcon from '../Icons/LoadingIcon';
 
-// We won't need this when we use ThemeProvider
-// However since a couple of us will be playing with this repo
-// We can avoid having colliding themes this way
-const defaultTheme = createTheme();
+import { SpinnerStyles, SpinnerWrapperStyles } from './styles';
 
 export interface SpinnerProps {
   overlay: boolean;
@@ -51,9 +48,9 @@ export interface SpinnerWrapperProps {
 }
 
 const SpinnerWrapper = styled.div<SpinnerWrapperProps>`
-  ${({ theme }) => theme.Spinner.SpinnerWrapper}
+  ${({ theme }) => theme.Spinner || SpinnerWrapperStyles}
 `;
 
 const StyledSpinner = styled(LoadingIcon)`
-  ${({ theme }) => theme.Spinner.Spinner}
+  ${({ theme }) => theme.SpinnerWrapper || SpinnerStyles}
 `;

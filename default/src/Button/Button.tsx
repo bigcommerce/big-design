@@ -1,13 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import { createTheme, ThemeInterface } from '../themes/basic';
+import { defaultTheme, ThemeInterface } from '../themes/basic';
 import { Spinner } from '../Spinner/Spinner';
 
-// We won't need this when we use ThemeProvider
-// However since a couple of us will be playing with this repo
-// We can avoid having colliding themes this way
-const defaultTheme = createTheme();
+import { ButtonStyles } from './styles';
 
 interface Props {
   actionType: 'normal' | 'destructive';
@@ -23,8 +20,7 @@ interface Props {
 export type ButtonProps = Props & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const StyledButton = styled('button')<ButtonProps>`
-  ${({ theme }) => theme.Base};
-  ${({ theme }) => theme.Button};
+  ${({ theme }) => theme.Button || ButtonStyles};
 `;
 
 export class Button extends React.PureComponent<ButtonProps> {

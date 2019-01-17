@@ -1,12 +1,13 @@
 import { checkA11y } from '@storybook/addon-a11y';
 import { withBackgrounds } from '@storybook/addon-backgrounds';
-// import centered from '@storybook/addon-centered';
 import { withConsole } from '@storybook/addon-console';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withViewport } from '@storybook/addon-viewport';
 import { addDecorator } from '@storybook/react';
+import React from 'react';
 
-// addDecorator(centered);
+import { GlobalStyle } from '../src/GlobalStyle';
+
 addDecorator(withKnobs);
 addDecorator(checkA11y);
 addDecorator(withViewport());
@@ -24,6 +25,13 @@ addDecorator(
     },
   ]),
 );
+
+addDecorator(storyFn => (
+  <React.Fragment>
+    <GlobalStyle />
+    {storyFn()}
+  </React.Fragment>
+));
 
 const req = require.context('../src', true, /.story.tsx$/);
 

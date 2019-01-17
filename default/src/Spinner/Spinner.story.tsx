@@ -1,10 +1,10 @@
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
-import * as React from 'react';
+import React from 'react';
 
-import { Button } from '../BasicButton/BasicButton';
+import { Button } from '../Button/Button';
 
-import { Spinner } from './Spinner';
+import { Spinner } from './index';
 
 const size = ['small' as 'small', 'medium' as 'medium', 'large' as 'large'];
 

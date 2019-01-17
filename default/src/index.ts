@@ -1,1 +1,3 @@
-export * from './DummyButton/DummyButton';
+export * from './Button';
+export * from './GlobalStyle';
+export * from './Spinner';

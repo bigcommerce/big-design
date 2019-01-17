@@ -1,10 +1,11 @@
 import { rgba } from 'polished';
 import { css } from 'styled-components';
 
-import { ButtonProps } from '../../../BasicButton/BasicButton';
-import { addValues } from '../helpers/addition';
+import { addValues } from '../themes/basic/helpers/addition';
 
-export default css<ButtonProps>`
+import { ButtonProps } from './index';
+
+export const ButtonStyles = css<ButtonProps>`
   align-items: center;
   appearance: none;
   border-radius: ${({ theme }) => theme.spacing.xxSmall};
