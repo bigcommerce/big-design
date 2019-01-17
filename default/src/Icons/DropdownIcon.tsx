@@ -1,10 +1,15 @@
 // Auto-generated file, don't modify
-import * as React from 'react';
+import React from 'react';
 
 import { IconWrapper } from './IconWrapper';
 
-export const SvgDropdownIcon = (props: React.SVGProps<SVGSVGElement>) => (
+interface Props extends React.SVGProps<SVGSVGElement> {
+  title?: string;
+}
+
+export const SvgDropdownIcon = ({ title, ...props }: Props) => (
   <svg width={8} height={5} viewBox="0 0 8 5" fill="currentColor" {...props}>
+    <title>{title}</title>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -13,8 +18,8 @@ export const SvgDropdownIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const DropdownIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <IconWrapper>
+const DropdownIcon = (props: Props) => (
+  <IconWrapper width={props.width} height={props.height}>
     <SvgDropdownIcon {...props} />
   </IconWrapper>
 );

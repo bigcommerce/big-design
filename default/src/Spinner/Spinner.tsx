@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { createTheme, ThemeInterface } from '../themes/basic';
 import { addValues } from '../themes/basic/helpers/addition';
-import { SvgLoadingIcon } from '../Icons/LoadingIcon';
+import LoadingIcon from '../Icons/LoadingIcon';
 
 // We won't need this when we use ThemeProvider
 // However since a couple of us will be playing with this repo
@@ -30,7 +30,7 @@ export class Spinner extends React.PureComponent<SpinnerProps> {
 
     return (
       <SpinnerWrapper theme={theme} overlay={overlay}>
-        <StyledSpinner theme={theme} width={mappedSize} height="auto" />
+        <StyledSpinner theme={theme} width={mappedSize} height={mappedSize} />
       </SpinnerWrapper>
     );
   }
@@ -54,6 +54,6 @@ const SpinnerWrapper = styled.div<SpinnerWrapperProps>`
   ${({ theme }) => theme.Spinner.SpinnerWrapper}
 `;
 
-const StyledSpinner = styled(SvgLoadingIcon)`
+const StyledSpinner = styled(LoadingIcon)`
   ${({ theme }) => theme.Spinner.Spinner}
 `;
