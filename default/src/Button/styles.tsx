@@ -5,6 +5,15 @@ import { addValues } from '../themes/basic/helpers/addition';
 
 import { ButtonProps } from './index';
 
+export const ButtonContentWrapperStyles = css<{ isLoading?: boolean }>`
+  align-content: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: ${({ theme }) => theme.spacing.xSmall};
+  visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
+`;
+
 export const ButtonStyles = css<ButtonProps>`
   align-items: center;
   appearance: none;

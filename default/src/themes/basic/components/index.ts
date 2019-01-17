@@ -1,5 +1,6 @@
 export interface Components {
   Button?: any;
+  ButtonContentWrapperStyles?: any;
   H0?: any;
   H1?: any;
   H2?: any;

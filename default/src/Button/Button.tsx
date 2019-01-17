@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { defaultTheme, ThemeInterface } from '../themes/basic';
 import { Spinner } from '../Spinner/Spinner';
 
-import { ButtonStyles } from './styles';
+import { ButtonContentWrapperStyles, ButtonStyles } from './styles';
 
 interface Props {
   actionType: 'normal' | 'destructive';
@@ -13,22 +13,17 @@ interface Props {
   iconRight?: React.ReactChild;
   isLoading: boolean;
   spinner: React.ReactChild;
-  theme: ThemeInterface;
+  theme?: ThemeInterface;
   variant: 'primary' | 'secondary' | 'subtle';
 }
 
 export type ButtonProps = Props & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
-export const StyledButton = styled('button')<ButtonProps>`
-  ${({ theme }) => theme.Button || ButtonStyles};
-`;
 
 export class Button extends React.PureComponent<ButtonProps> {
   static defaultProps: Partial<ButtonProps> = {
     actionType: 'normal',
     isLoading: false,
     spinner: <Spinner overlay={false} />,
-    theme: defaultTheme,
     variant: 'primary',
   };
 
@@ -57,11 +52,13 @@ export class Button extends React.PureComponent<ButtonProps> {
   };
 }
 
-const ContentWrapper = styled.span.attrs<{}, { isLoading?: boolean }>({})`
-  align-content: center;
-  align-items: center;
-  display: inline-grid;
-  grid-auto-flow: column;
-  grid-gap: ${({ theme }) => theme.spacing.xSmall};
-  visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
+export const StyledButton = styled('button')<ButtonProps>`
+  ${({ theme }) => theme.Button || ButtonStyles};
 `;
+
+const ContentWrapper = styled.span.attrs<{}, { isLoading?: boolean }>({})`
+  ${({ theme }) => theme.ButtonContentWrapperStyles || ButtonContentWrapperStyles};
+`;
+
+StyledButton.defaultProps = { theme: defaultTheme };
+ContentWrapper.defaultProps = { theme: defaultTheme };

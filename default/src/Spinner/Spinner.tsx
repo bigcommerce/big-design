@@ -10,14 +10,13 @@ import { SpinnerStyles, SpinnerWrapperStyles } from './styles';
 export interface SpinnerProps {
   overlay: boolean;
   size: 'small' | 'medium' | 'large';
-  theme: ThemeInterface;
+  theme?: ThemeInterface;
 }
 
 export class Spinner extends React.PureComponent<SpinnerProps> {
   static defaultProps: Partial<SpinnerProps> = {
     overlay: true,
     size: 'small',
-    theme: defaultTheme,
   };
 
   render() {
@@ -26,14 +25,15 @@ export class Spinner extends React.PureComponent<SpinnerProps> {
     const mappedSize = sizeMap[size];
 
     return (
-      <SpinnerWrapper theme={theme} overlay={overlay}>
+      <StyledSpinnerWrapper theme={theme} overlay={overlay}>
         <StyledSpinner theme={theme} width={mappedSize} height={mappedSize} />
-      </SpinnerWrapper>
+      </StyledSpinnerWrapper>
     );
   }
 
   private getSizeMap() {
-    const { spacing } = this.props.theme;
+    const theme = this.props.theme || defaultTheme;
+    const { spacing } = theme;
 
     return {
       small: spacing.medium,
@@ -47,10 +47,13 @@ export interface SpinnerWrapperProps {
   overlay: boolean;
 }
 
-const SpinnerWrapper = styled.div<SpinnerWrapperProps>`
+const StyledSpinnerWrapper = styled.div<SpinnerWrapperProps>`
   ${({ theme }) => theme.Spinner || SpinnerWrapperStyles}
 `;
 
 const StyledSpinner = styled(LoadingIcon)`
   ${({ theme }) => theme.SpinnerWrapper || SpinnerStyles}
 `;
+
+StyledSpinnerWrapper.defaultProps = { theme: defaultTheme };
+StyledSpinner.defaultProps = { theme: defaultTheme };

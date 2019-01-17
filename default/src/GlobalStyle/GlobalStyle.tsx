@@ -1,10 +1,9 @@
 import { normalize } from 'polished';
-import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 
-import { defaultTheme, ThemeInterface } from '../themes/basic';
+import { defaultTheme } from '../themes/basic';
 
-const StyledGlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   ${normalize()}
 
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600');
@@ -14,16 +13,4 @@ const StyledGlobalStyle = createGlobalStyle`
   }
 `;
 
-interface GlobalStyleProps {
-  theme: ThemeInterface;
-}
-
-export class GlobalStyle extends React.PureComponent<GlobalStyleProps> {
-  static defaultProps: Partial<GlobalStyleProps> = {
-    theme: defaultTheme,
-  };
-
-  render() {
-    return <StyledGlobalStyle {...this.props} />;
-  }
-}
+GlobalStyle.defaultProps = { theme: defaultTheme };

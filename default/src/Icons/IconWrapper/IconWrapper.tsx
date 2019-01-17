@@ -19,6 +19,6 @@ export class IconWrapper extends React.PureComponent<IconWrapperProps> {
   }
 }
 
-export const StyledIconWrapper = styled.span<IconWrapperProps>`
+const StyledIconWrapper = styled.span<IconWrapperProps>`
   ${({ theme }) => theme.IconWrapper || IconWrapperStyles}
 `;
