@@ -53,7 +53,7 @@ export const ButtonStyles = css<ButtonProps>`
     width: auto;
   }
 
-  ${({ icon, theme }) =>
+  ${({ iconOnly: icon, theme }) =>
     icon &&
     css`
       padding: 0 ${theme.spacing.xSmall};

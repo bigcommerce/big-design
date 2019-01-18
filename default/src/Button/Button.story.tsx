@@ -86,7 +86,7 @@ storiesOf('Button', module)
         }}
       >
         <span>
-          <Button onClick={action('click')} icon={<PlusIcon />} />
+          <Button onClick={action('click')} iconOnly={<PlusIcon />} />
         </span>
         <span>
           <Button onClick={action('click')} iconLeft={<PlusIcon />}>

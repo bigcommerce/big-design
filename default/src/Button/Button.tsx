@@ -8,7 +8,7 @@ import { ButtonContentWrapperStyles, ButtonStyles } from './styles';
 
 interface Props {
   actionType: 'normal' | 'destructive';
-  icon?: React.ReactChild;
+  iconOnly?: React.ReactChild;
   iconLeft?: React.ReactChild;
   iconRight?: React.ReactChild;
   isLoading: boolean;
@@ -35,8 +35,8 @@ export class Button extends React.PureComponent<ButtonProps> {
         {isLoading ? this.props.spinner : null}
         <ContentWrapper isLoading={isLoading} theme={this.props.theme}>
           {this.props.iconLeft}
-          {this.props.icon}
-          {!this.props.icon && this.props.children}
+          {this.props.iconOnly}
+          {!this.props.iconOnly && this.props.children}
           {this.props.iconRight}
         </ContentWrapper>
       </StyledButton>
