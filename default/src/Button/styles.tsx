@@ -74,6 +74,10 @@ export const ButtonStyles = css<ButtonProps>`
   ${props => getButtonStyles(props)}
 `;
 
+/**
+ * These can be generated dynamically but I'm leaning towards being extra
+ * explicit and being able to handle corner cases and changes from design easily
+ */
 const ButtonPrimary = css<ButtonProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   border-color: ${({ theme }) => theme.colors.primary};
