@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import { Button } from '../Button';
+import { Flex } from '../Flex';
 import { H2, Text } from '../Text';
 
 import { Panel } from './Panel';
@@ -9,15 +10,10 @@ import { Panel } from './Panel';
 storiesOf('Panel', module).add('Overview', () => (
   <div style={{ padding: 50 }}>
     <Panel>
-      <header
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
+      <Flex justifyContent="space-between">
         <H2>Panel header - h2</H2>
         <Button variant="secondary">Button</Button>
-      </header>
+      </Flex>
       <Text>Text -p</Text>
     </Panel>
 
@@ -27,15 +23,10 @@ storiesOf('Panel', module).add('Overview', () => (
     </Panel>
 
     <Panel>
-      <header
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
+      <Flex justifyContent="space-between">
         <H2>Panel header - h2</H2>
         <Button variant="secondary">Button</Button>
-      </header>
+      </Flex>
       <Text>
         Occaecat eiusmod elit laboris pariatur aute esse dolore nostrud ipsum laboris qui. Reprehenderit exercitation
         nisi consectetur deserunt tempor fugiat sunt eiusmod consectetur nisi magna. Consequat aute magna aliquip
