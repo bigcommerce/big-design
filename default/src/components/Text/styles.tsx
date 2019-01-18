@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const CommonTextStyles = css`
   color: ${({ theme }) => theme.colors.secondary70};
-  margin: ${({ theme }) => theme.spacing.xSmall};
+  margin: 0 0 ${({ theme }) => theme.spacing.medium};
 `;
 
 export const H0Styles = css`
@@ -45,6 +45,10 @@ export const TextStyles = css`
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.medium};
+
+  &:last-child {
+    margin: 0;
+  }
 `;
 
 export const SmallStyles = css`

@@ -9,6 +9,7 @@ export interface Components {
   H3?: AllStyleInterpolations;
   H4?: AllStyleInterpolations;
   IconWrapper?: AllStyleInterpolations;
+  Panel?: AllStyleInterpolations;
   Small?: AllStyleInterpolations;
   Spinner?: AllStyleInterpolations;
   SpinnerWrapper?: AllStyleInterpolations;
