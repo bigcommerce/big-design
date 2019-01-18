@@ -1,14 +1,16 @@
+import { SimpleInterpolation } from 'styled-components';
+
 export interface Components {
-  Button?: any;
-  ButtonContentWrapperStyles?: any;
-  H0?: any;
-  H1?: any;
-  H2?: any;
-  H3?: any;
-  H4?: any;
-  IconWrapper?: any;
-  P?: any;
-  Small?: any;
-  Spinner?: any;
-  SpinnerWrapper?: any;
+  Button?: SimpleInterpolation;
+  ButtonContentWrapperStyles?: SimpleInterpolation;
+  H0?: SimpleInterpolation;
+  H1?: SimpleInterpolation;
+  H2?: SimpleInterpolation;
+  H3?: SimpleInterpolation;
+  H4?: SimpleInterpolation;
+  IconWrapper?: SimpleInterpolation;
+  P?: SimpleInterpolation;
+  Small?: SimpleInterpolation;
+  Spinner?: SimpleInterpolation;
+  SpinnerWrapper?: SimpleInterpolation;
 }
