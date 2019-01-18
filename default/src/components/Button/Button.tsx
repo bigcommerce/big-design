@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { defaultTheme, ThemeInterface } from '../themes/basic';
-import { Spinner } from '../Spinner/Spinner';
+import { defaultTheme, ThemeInterface } from '../../theme';
+import { Spinner } from '../Spinner';
 
 import { ButtonContentWrapperStyles, ButtonStyles } from './styles';
 

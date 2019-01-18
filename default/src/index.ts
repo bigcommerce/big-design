@@ -1,3 +1,2 @@
-export * from './Button';
-export * from './GlobalStyle';
-export * from './Spinner';
+export * from './components';
+export * from './theme';

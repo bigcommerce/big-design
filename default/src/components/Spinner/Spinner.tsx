@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { defaultTheme, ThemeInterface } from '../themes/basic';
-import { addValues } from '../themes/basic/helpers/addition';
+import { defaultTheme, ThemeInterface } from '../../theme';
+import { addValues } from '../../theme/helpers/addition';
 import LoadingIcon from '../Icons/LoadingIcon';
 
 import { SpinnerStyles, SpinnerWrapperStyles } from './styles';

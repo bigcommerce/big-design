@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { defaultTheme } from '../themes/basic';
+import { defaultTheme } from '../../theme';
 
-import { H0Styles, H1Styles, H2Styles, H3Styles, H4Styles, PStyles, SmallStyles } from './styles';
+import { H0Styles, H1Styles, H2Styles, H3Styles, H4Styles, SmallStyles, TextStyles } from './styles';
 
 export const H0 = styled.h1`
   ${({ theme }) => theme.H0 || H0Styles}
@@ -24,8 +24,8 @@ export const H4 = styled.h4`
   ${({ theme }) => theme.H4 || H4Styles}
 `;
 
-export const P = styled.p`
-  ${({ theme }) => theme.P || PStyles}
+export const Text = styled.p`
+  ${({ theme }) => theme.Text || TextStyles}
 `;
 
 export const Small = styled.small`
@@ -37,5 +37,5 @@ H1.defaultProps = { theme: defaultTheme };
 H2.defaultProps = { theme: defaultTheme };
 H3.defaultProps = { theme: defaultTheme };
 H4.defaultProps = { theme: defaultTheme };
-P.defaultProps = { theme: defaultTheme };
+Text.defaultProps = { theme: defaultTheme };
 Small.defaultProps = { theme: defaultTheme };

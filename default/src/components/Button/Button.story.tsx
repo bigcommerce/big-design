@@ -6,7 +6,7 @@ import React from 'react';
 import DropdownIcon from '../Icons/DropdownIcon';
 import PlusIcon from '../Icons/PlusIcon';
 
-import { Button } from './index';
+import { Button } from './Button';
 
 const variant = ['primary' as 'primary', 'secondary' as 'secondary', 'subtle' as 'subtle'];
 const actionType = ['normal' as 'normal', 'destructive' as 'destructive'];

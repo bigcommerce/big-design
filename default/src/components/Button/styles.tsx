@@ -1,7 +1,7 @@
 import { rgba } from 'polished';
 import { css } from 'styled-components';
 
-import { addValues } from '../themes/basic/helpers/addition';
+import { addValues } from '../../theme/helpers/addition';
 
 import { ButtonProps } from './index';
 
@@ -17,7 +17,7 @@ export const ButtonContentWrapperStyles = css<{ isLoading?: boolean }>`
 export const ButtonStyles = css<ButtonProps>`
   align-items: center;
   appearance: none;
-  border-radius: ${({ theme }) => theme.spacing.xxSmall};
+  border-radius: ${({ theme }) => theme.border.radius};
   border-style: solid;
   border-width: 1px;
   color: ${({ theme }) => theme.colors.white};

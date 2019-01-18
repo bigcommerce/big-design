@@ -1,4 +1,5 @@
 import { Components } from './components';
+import { createBorder, Border } from './system/border';
 import { breakpoints, Breakpoints } from './system/breakpoints';
 import { colors, Colors } from './system/colors';
 import { elevation, Elevation } from './system/elevation';
@@ -17,6 +18,7 @@ const defaultOptions: ThemeOptions = {
 };
 
 export interface ThemeInterface extends Components {
+  border: Border;
   breakpoints: Breakpoints;
   colors: Colors;
   elevation: Elevation;
@@ -34,6 +36,7 @@ export const createTheme = (themeOptions?: Partial<ThemeOptions>): ThemeInterfac
   };
 
   return {
+    border: createBorder(options),
     breakpoints,
     colors,
     elevation,

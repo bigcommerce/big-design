@@ -5,7 +5,7 @@ import { withViewport } from '@storybook/addon-viewport';
 import { addDecorator } from '@storybook/react';
 import React from 'react';
 
-import { GlobalStyle } from '../src/GlobalStyle';
+import { GlobalStyle } from '../src/components';
 
 addDecorator(withKnobs);
 addDecorator(checkA11y);
