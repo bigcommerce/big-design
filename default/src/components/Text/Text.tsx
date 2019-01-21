@@ -28,7 +28,7 @@ export const Text = styled.p`
   ${({ theme }) => theme.Text || TextStyles}
 `;
 
-export const Small = styled.small`
+export const Small = styled.p`
   ${({ theme }) => theme.Small || SmallStyles}
 `;
 

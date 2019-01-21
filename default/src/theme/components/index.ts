@@ -3,6 +3,11 @@ import { AllStyleInterpolations } from '../styled/types';
 export interface Components {
   Button?: AllStyleInterpolations;
   ButtonContentWrapperStyles?: AllStyleInterpolations;
+  FormField?: AllStyleInterpolations;
+  FormFieldError?: AllStyleInterpolations;
+  FormFieldInput?: AllStyleInterpolations;
+  FormFieldLabel?: AllStyleInterpolations;
+  FormFieldDescription?: AllStyleInterpolations;
   H0?: AllStyleInterpolations;
   H1?: AllStyleInterpolations;
   H2?: AllStyleInterpolations;

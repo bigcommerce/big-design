@@ -1,4 +1,3 @@
-import { rgba } from 'polished';
 import { css } from 'styled-components';
 
 import { addValues } from '../../theme/helpers/addition';
@@ -38,9 +37,7 @@ export const ButtonStyles = css<ButtonProps>`
   white-space: nowrap;
   width: 100%;
 
-  &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     outline: none;
   }
 
@@ -88,7 +85,7 @@ const ButtonPrimary = css<ButtonProps>`
   }
 
   &:focus {
-    box-shadow: 0 0 0 4px ${({ theme }) => rgba(theme.colors.primary20, 1)};
+    box-shadow: 0 0 0 4px ${({ theme }) => theme.colors.primary20};
   }
 
   &:hover:not(:active) {
@@ -110,7 +107,7 @@ const ButtonPrimaryDestructive = css<ButtonProps>`
   }
 
   &:focus {
-    box-shadow: 0 0 0 4px ${({ theme }) => rgba(theme.colors.danger20, 1)};
+    box-shadow: 0 0 0 4px ${({ theme }) => theme.colors.danger20};
   }
 
   &:hover:not(:active) {
@@ -132,7 +129,7 @@ const ButtonSecondary = css<ButtonProps>`
   }
 
   &:focus {
-    box-shadow: 0 0 0 4px ${({ theme }) => rgba(theme.colors.primary20, 1)};
+    box-shadow: 0 0 0 4px ${({ theme }) => theme.colors.primary20};
   }
 
   &:hover:not(:active) {
@@ -154,7 +151,7 @@ const ButtonSecondaryDestructive = css<ButtonProps>`
   }
 
   &:focus {
-    box-shadow: 0 0 0 4px ${({ theme }) => rgba(theme.colors.danger20, 1)};
+    box-shadow: 0 0 0 4px ${({ theme }) => theme.colors.danger20};
   }
 
   &:hover:not(:active) {
@@ -176,7 +173,7 @@ const ButtonSubtle = css<ButtonProps>`
   }
 
   &:focus {
-    box-shadow: 0 0 0 4px ${({ theme }) => rgba(theme.colors.primary20, 1)};
+    box-shadow: 0 0 0 4px ${({ theme }) => theme.colors.primary20};
   }
 
   &:hover:not(:active) {
@@ -199,7 +196,7 @@ const ButtonSubtleDestructive = css<ButtonProps>`
   }
 
   &:focus {
-    box-shadow: 0 0 0 4px ${({ theme }) => rgba(theme.colors.danger20, 1)};
+    box-shadow: 0 0 0 4px ${({ theme }) => theme.colors.danger20};
   }
 
   &:hover:not(:active) {

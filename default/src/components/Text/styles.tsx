@@ -10,6 +10,7 @@ export const H0Styles = css`
   font-size: ${({ theme }) => theme.typography.fontSize.xxxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.extraLight};
   line-height: ${({ theme }) => theme.lineHeight.xxxLarge};
+  margin: 0 0 ${({ theme }) => theme.spacing.xLarge};
 `;
 
 export const H1Styles = css`
@@ -17,6 +18,7 @@ export const H1Styles = css`
   font-size: ${({ theme }) => theme.typography.fontSize.xxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.light};
   line-height: ${({ theme }) => theme.lineHeight.xxLarge};
+  margin: 0 0 ${({ theme }) => theme.spacing.xLarge};
 `;
 
 export const H2Styles = css`
@@ -38,6 +40,7 @@ export const H4Styles = css`
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   line-height: ${({ theme }) => theme.lineHeight.medium};
+  margin: 0 0 ${({ theme }) => theme.spacing.xSmall};
 `;
 
 export const TextStyles = css`
