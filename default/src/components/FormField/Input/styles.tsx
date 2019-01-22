@@ -25,10 +25,6 @@ export const InputStyles = css<InputProps>`
     box-shadow: 0 0 0 4px ${props => (props.error ? props.theme.colors.danger20 : props.theme.colors.primary20)};
   }
 
-  &:active {
-    background-color: ${({ theme }) => theme.colors.secondary10};
-  }
-
   &[disabled] {
     background-color: ${({ theme }) => theme.colors.secondary20};
   }
