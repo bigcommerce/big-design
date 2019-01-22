@@ -7,7 +7,7 @@ import { Text } from '../Text';
 
 import { Spinner } from './Spinner';
 
-const size = ['small' as 'small', 'medium' as 'medium', 'large' as 'large'];
+const size = ['small' as 'small', 'medium' as 'medium', 'large' as 'large', 'xLarge' as 'xLarge'];
 
 storiesOf('Spinner', module).add('Overview', () => (
   <div>

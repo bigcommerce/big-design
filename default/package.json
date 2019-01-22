@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "build:icons": "svgr --ext=tsx src/Icons/svg -d src/Icons",
+    "build:icons": "svgr --ext=tsx src/components/Icons/svg -d src/components/Icons",
     "dev": "npm run storybook",
     "lint": "tslint -p tsconfig.json",
     "storybook": "start-storybook -p 6006",

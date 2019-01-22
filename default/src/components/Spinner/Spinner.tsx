@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { defaultTheme, ThemeInterface } from '../../theme';
-import { addValues } from '../../theme/helpers/addition';
+import { IconProps } from '../Icons/Icon';
 import LoadingIcon from '../Icons/LoadingIcon';
 
 import { SpinnerStyles, SpinnerWrapperStyles } from './styles';
 
 export interface SpinnerProps {
   overlay: boolean;
-  size: 'small' | 'medium' | 'large';
+  size: IconProps['size'];
   theme?: ThemeInterface;
 }
 
@@ -21,25 +21,12 @@ export class Spinner extends React.PureComponent<SpinnerProps> {
 
   render() {
     const { overlay, size, theme } = this.props;
-    const sizeMap = this.getSizeMap();
-    const mappedSize = sizeMap[size];
 
     return (
       <StyledSpinnerWrapper theme={theme} overlay={overlay}>
-        <StyledSpinner theme={theme} width={mappedSize} height={mappedSize} />
+        <StyledSpinner theme={theme} size={size} />
       </StyledSpinnerWrapper>
     );
-  }
-
-  private getSizeMap() {
-    const theme = this.props.theme || defaultTheme;
-    const { spacing } = theme;
-
-    return {
-      small: spacing.medium,
-      medium: spacing.xxLarge,
-      large: addValues(spacing.xxLarge, spacing.xxLarge),
-    };
   }
 }
 

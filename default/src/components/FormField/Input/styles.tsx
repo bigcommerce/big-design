@@ -1,8 +1,9 @@
+import { rem } from 'polished';
 import { css } from 'styled-components';
 
 import { addValues } from '../../../theme/helpers/addition';
 
-import { InputProps } from './Input';
+import { InputProps, StyledIconWrapperProps } from './Input';
 
 export const InputStyles = css<InputProps>`
   background-color: ${({ theme }) => theme.colors.white};
@@ -51,4 +52,28 @@ export const InputStyles = css<InputProps>`
           padding-left: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xxSmall)};
         `
       : null};
+`;
+
+export const InputWrapperStyles = css<InputProps>`
+  align-items: center;
+  display: flex;
+  position: relative;
+`;
+
+export const IconWrapperStyles = css<StyledIconWrapperProps>`
+  position: absolute;
+  color: ${({ theme }) => theme.colors.secondary60};
+
+  ${props =>
+    props.position === 'left'
+      ? css`
+          left: ${({ theme }) => theme.spacing.small};
+        `
+      : css`
+          right: ${({ theme }) => theme.spacing.small};
+        `};
+`;
+
+export const ErrorIconWrapperStyles = css`
+  color: ${({ theme }) => theme.colors.danger40};
 `;

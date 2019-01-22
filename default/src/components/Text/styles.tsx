@@ -50,7 +50,7 @@ export const TextStyles = css`
   line-height: ${({ theme }) => theme.lineHeight.medium};
 
   &:last-child {
-    margin: 0;
+    margin-bottom: 0;
   }
 `;
 
@@ -59,4 +59,8 @@ export const SmallStyles = css`
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.small};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;

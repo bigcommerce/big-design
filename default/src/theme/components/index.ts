@@ -4,10 +4,14 @@ export interface Components {
   Button?: AllStyleInterpolations;
   ButtonContentWrapperStyles?: AllStyleInterpolations;
   FormField?: AllStyleInterpolations;
-  FormFieldError?: AllStyleInterpolations;
-  FormFieldInput?: AllStyleInterpolations;
-  FormFieldLabel?: AllStyleInterpolations;
   FormFieldDescription?: AllStyleInterpolations;
+  FormFieldError?: AllStyleInterpolations;
+  FormFieldErrorIconWrapper?: AllStyleInterpolations;
+  FormFieldIconWrapper?: AllStyleInterpolations;
+  FormFieldInput?: AllStyleInterpolations;
+  FormFieldInputWrapper?: AllStyleInterpolations;
+  FormFieldLabel?: AllStyleInterpolations;
+  FormRow?: AllStyleInterpolations;
   H0?: AllStyleInterpolations;
   H1?: AllStyleInterpolations;
   H2?: AllStyleInterpolations;

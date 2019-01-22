@@ -4,13 +4,17 @@ import styled, { css } from 'styled-components';
 import { defaultTheme, ThemeInterface } from '../../../theme';
 import ErrorIcon from '../../Icons/ErrorIcon';
 
-import { InputStyles } from './styles';
+import { ErrorIconWrapperStyles, IconWrapperStyles, InputStyles, InputWrapperStyles } from './styles';
 
 interface Props {
   error?: boolean;
   theme?: ThemeInterface;
   iconLeft?: React.ReactChild;
   iconRight?: React.ReactChild;
+}
+
+export interface StyledIconWrapperProps {
+  position?: 'left' | 'right';
 }
 
 export type InputProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
@@ -56,36 +60,20 @@ export class Input extends React.PureComponent<InputProps> {
   }
 }
 
+export const StyledInputWrapper = styled.span<InputProps>`
+  ${({ theme }) => theme.FormFieldInputWrapper || InputWrapperStyles};
+`;
+
 const StyledInput = styled.input<InputProps>`
   ${({ theme }) => theme.FormFieldInput || InputStyles};
 `;
 
-const StyledInputWrapper = styled.span<InputProps>`
-  align-items: center;
-  display: flex;
-  position: relative;
-`;
-
-interface StyledIconWrapperProps {
-  position?: 'left' | 'right';
-}
-
 const StyledIconWrapper = styled.span<StyledIconWrapperProps>`
-  position: absolute;
-  color: ${({ theme }) => theme.colors.secondary60};
-
-  ${props =>
-    props.position === 'left'
-      ? css`
-          left: ${({ theme }) => theme.spacing.small};
-        `
-      : css`
-          right: ${({ theme }) => theme.spacing.small};
-        `};
+  ${({ theme }) => theme.FormFieldIconWrapper || IconWrapperStyles};
 `;
 
 const StyledErrorIconWrapper = styled(StyledIconWrapper)`
-  color: ${({ theme }) => theme.colors.danger40};
+  ${({ theme }) => theme.FormFieldErrorIconWrapper || ErrorIconWrapperStyles};
 `;
 
 StyledInput.defaultProps = { theme: defaultTheme };
