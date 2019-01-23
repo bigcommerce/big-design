@@ -2,9 +2,9 @@ import { rem } from 'polished';
 import React from 'react';
 import { css } from 'styled-components';
 
-import { StyledInputWrapper } from '../FormField/Input';
+import { StyledInputWrapper } from '../../Input';
 
-import { FormRowProps } from './FormRow';
+import { FormRowProps } from './Row';
 
 export const FormRowStyles = css<FormRowProps>`
   margin-bottom: ${({ theme }) => theme.spacing.medium};

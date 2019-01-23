@@ -35,11 +35,11 @@ export interface SpinnerWrapperProps {
 }
 
 const StyledSpinnerWrapper = styled.div<SpinnerWrapperProps>`
-  ${({ theme }) => theme.Spinner || SpinnerWrapperStyles}
+  ${SpinnerWrapperStyles}
 `;
 
 const StyledSpinner = styled(LoadingIcon)`
-  ${({ theme }) => theme.SpinnerWrapper || SpinnerStyles}
+  ${SpinnerStyles}
 `;
 
 StyledSpinnerWrapper.defaultProps = { theme: defaultTheme };

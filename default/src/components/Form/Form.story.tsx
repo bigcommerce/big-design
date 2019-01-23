@@ -1,0 +1,179 @@
+import { storiesOf } from '@storybook/react';
+import React from 'react';
+
+import { Button } from '../Button';
+import { Checkbox } from '../Checkbox';
+import { Form } from '../Form';
+import PlusIcon from '../Icons/PlusIcon';
+import { Input } from '../Input';
+import { Panel } from '../Panel';
+import { H2, Text } from '../Text';
+
+storiesOf('Form Fields', module)
+  .add('Overview', () => (
+    <div style={{ padding: 50 }}>
+      <Panel>
+        <H2>Form Field</H2>
+
+        <Text>
+          Form fields examples. Implementation detail: id will be auto-generated for input and label(for). Unless
+          manually specifying one
+        </Text>
+
+        <Form>
+          <Form.Fieldset
+            legend="Primary contact"
+            description="Minim velit quis aute adipisicing adipisicing do do exercitation cupidatat enim ex voluptate consequat labore."
+          >
+            <Form.Row>
+              <Input
+                label="First Name"
+                description="This is an example description for First Name"
+                placeholder="Placeholder text"
+              />
+            </Form.Row>
+
+            <Form.Row>
+              <Input
+                label="Middle Name"
+                description="This is an example description for Last Name. Featuring a Left Icon."
+                iconLeft={<PlusIcon />}
+                placeholder="Placeholder text"
+              />
+            </Form.Row>
+
+            <Form.Row>
+              <Input
+                label="Last Name"
+                description="This is an example description for Last Name. Featuring a Right Icon."
+                placeholder="Placeholder text"
+                iconRight={<PlusIcon />}
+              />
+            </Form.Row>
+
+            <Form.Row>
+              <Input
+                label="Password"
+                description="The password must contain at least 8 characters. (Also features manually setting id, inspect it!)"
+                id="manualId"
+                placeholder="Placeholder text"
+                type="password"
+                error="Your password is not strong enough."
+              />
+            </Form.Row>
+
+            <Form.Row>
+              <Input
+                label="Company"
+                description="This is an example description for Company. Featuring a Disabled field."
+                placeholder="Placeholder text disabled"
+                disabled
+              />
+            </Form.Row>
+
+            <Form.Row>
+              <Input label="State" placeholder="Placeholder" />
+              <Input label="City" placeholder="Placeholder" />
+            </Form.Row>
+
+            <Form.Row>
+              <Input label="State" placeholder="Placeholder" />
+              <Input label="City" placeholder="Placeholder" />
+              <Input label="Country" placeholder="Placeholder" />
+            </Form.Row>
+          </Form.Fieldset>
+
+          <Form.Fieldset legend="Checkboxes" description="This is a description for checkboxes">
+            <Form.Row>
+              <Checkbox label="Unchecked" checked={false} />
+            </Form.Row>
+            <Form.Row>
+              <Checkbox label="Checked" checked={true} />
+            </Form.Row>
+          </Form.Fieldset>
+        </Form>
+      </Panel>
+    </div>
+  ))
+  .add('Avalara Demo', () => (
+    <div style={{ padding: 50 }}>
+      <Panel>
+        <H2>Create your Avalara AvaTax account</H2>
+
+        <Text>
+          Avalara AvaTax calculates sales tax automatically – and it’s complimentary with your BigCommerce account. If
+          you already have an Avalara AvaTax account, please <a href="#">log in</a>.
+        </Text>
+
+        <Form>
+          <Form.Fieldset legend="Primary contact">
+            <Form.Row>
+              <Input label="First name" value="Johnny" />
+              <Input label="Last name" value="Commerce" />
+            </Form.Row>
+
+            <Form.Row>
+              <Input label="Phone number" value="+01 926186286" />
+            </Form.Row>
+
+            <Form.Row>
+              <Input
+                label="Email"
+                type="email"
+                value="myemail@domain.com"
+                error="This email address is already registered with Avalara."
+              />
+            </Form.Row>
+
+            <Form.Row>
+              <Input
+                label="Password"
+                description="The password must contain at least 8 characters, including at least one uppercase letter, lowercase letter, special character and number."
+                type="password"
+                value="thisisapassword"
+              />
+            </Form.Row>
+          </Form.Fieldset>
+
+          <Form.Fieldset
+            legend="Primary business address"
+            description="Avalara AvaTax uses your business address as a starting point for figuring out where you need to collect and remit taxes."
+          >
+            <Form.Row>
+              <Input label="Address" value="1 Smail Street, Level 6, Suite 2" />
+            </Form.Row>
+            <Form.Row>
+              <Input label="City" value="Ultimo" />
+            </Form.Row>
+            <Form.Row>
+              <Input label="State" placeholder="Select a state" error="Please select a state to continue." />
+              <Input label="Postal code" value="207" error="Invalid postcode." />
+            </Form.Row>
+          </Form.Fieldset>
+
+          <Form.Fieldset
+            legend="Shipping origin address"
+            description="Enter below the primary address where your products are shipped from. Including it helps Avalara AvaTax calculate your taxes with more accuracy."
+          >
+            <Form.Row>
+              <Checkbox label="Same as primary business address" checked />
+            </Form.Row>
+          </Form.Fieldset>
+
+          <Form.Fieldset legend="Terms and Conditions">
+            <Form.Row>
+              <Checkbox
+                label="By connecting to an Avalara account, I accept the Avalara terms and conditions."
+                checked
+              />
+            </Form.Row>
+          </Form.Fieldset>
+
+          <Form.Actions>
+            <Button>Connect</Button>
+            <Button variant="subtle">Cancel</Button>
+          </Form.Actions>
+        </Form>
+      </Panel>
+    </div>
+  ));

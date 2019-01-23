@@ -10,7 +10,7 @@ export interface ErrorProps {
 }
 
 export const Error = styled(Small)<ErrorProps>`
-  ${({ theme }) => theme.FormFieldError || ErrorStyles};
+  ${ErrorStyles};
 `;
 
 Error.defaultProps = { theme: defaultTheme };

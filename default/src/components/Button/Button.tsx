@@ -53,11 +53,11 @@ export class Button extends React.PureComponent<ButtonProps> {
 }
 
 export const StyledButton = styled('button')<ButtonProps>`
-  ${({ theme }) => theme.Button || ButtonStyles};
+  ${ButtonStyles};
 `;
 
 const ContentWrapper = styled.span.attrs<{}, { isLoading?: boolean }>({})`
-  ${({ theme }) => theme.ButtonContentWrapperStyles || ButtonContentWrapperStyles};
+  ${ButtonContentWrapperStyles};
 `;
 
 StyledButton.defaultProps = { theme: defaultTheme };

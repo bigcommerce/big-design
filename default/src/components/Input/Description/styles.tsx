@@ -1,3 +1,3 @@
 import { css } from 'styled-components';
 
-export const FormFieldStyles = css``;
+export const DescriptionStyles = css``;

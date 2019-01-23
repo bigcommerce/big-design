@@ -33,6 +33,7 @@ export const H3Styles = css`
   font-size: ${({ theme }) => theme.typography.fontSize.large};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   line-height: ${({ theme }) => theme.lineHeight.large};
+  margin: 0 0 ${({ theme }) => theme.spacing.small};
 `;
 
 export const H4Styles = css`
@@ -56,9 +57,11 @@ export const TextStyles = css`
 
 export const SmallStyles = css`
   ${CommonTextStyles};
+  color: ${({ theme }) => theme.colors.secondary60};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.small};
+  margin: 0 0 ${({ theme }) => theme.spacing.small};
 
   &:last-child {
     margin-bottom: 0;

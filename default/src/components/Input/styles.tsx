@@ -1,7 +1,6 @@
-import { rem } from 'polished';
 import { css } from 'styled-components';
 
-import { addValues } from '../../../theme/helpers/addition';
+import { addValues } from '../../theme/helpers/addition';
 
 import { InputProps, StyledIconWrapperProps } from './Input';
 

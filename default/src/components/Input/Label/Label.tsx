@@ -5,7 +5,7 @@ import { defaultTheme } from '../../../theme';
 import { LabelStyles } from './styles';
 
 export const Label = styled.label`
-  ${({ theme }) => theme.FormFieldLabel || LabelStyles};
+  ${LabelStyles};
 `;
 
 Label.defaultProps = { theme: defaultTheme };

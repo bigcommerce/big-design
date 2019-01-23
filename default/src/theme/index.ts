@@ -1,4 +1,3 @@
-import { Components } from './components';
 import { createBorder, Border } from './system/border';
 import { breakpoints, Breakpoints } from './system/breakpoints';
 import { colors, Colors } from './system/colors';
@@ -17,7 +16,7 @@ const defaultOptions: ThemeOptions = {
   htmlFontSize: 16,
 };
 
-export interface ThemeInterface extends Components {
+export interface ThemeInterface {
   border: Border;
   breakpoints: Breakpoints;
   colors: Colors;
