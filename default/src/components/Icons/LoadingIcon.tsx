@@ -1,6 +1,10 @@
+// **********************************
+// Auto-generated file, do NOT modify
+// **********************************
 import React from 'react';
 
 import { Icon } from './Icon';
+
 export default class SvgLoadingIcon extends Icon {
   render() {
     const props = this.props;

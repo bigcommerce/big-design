@@ -6,24 +6,37 @@ module.exports = {
     width: '{size}',
   },
   template({ template }, opts, { imports, componentName, props, jsx, exports }) {
-    const typeScriptTpl = template.smart({ plugins: ['typescript'] });
-
-    return typeScriptTpl.ast`
-    // Auto-generated file, don't modify
+    const code = `
+    // **********************************
+    // Auto-generated file, do NOT modify
+    // **********************************
     import React from 'react';
+    BREAK
 
     import { Icon } from './Icon';
+    BREAK
 
-    export default class ${componentName} extends Icon {
+    export default class COMPONENT_NAME extends Icon {
       render() {
         const props = this.props;
         const { title } = props;
         const size = this.getSize();
 
-        return (${jsx});
+        BREAK
+        return JSX;
       }
-    }
-  `;
+    }`;
+
+    const typeScriptTpl = template.smart(code, {
+      plugins: ['typescript'],
+      preserveComments: true,
+    });
+
+    return typeScriptTpl({
+      COMPONENT_NAME: componentName,
+      BREAK: '\n',
+      JSX: jsx,
+    });
   },
   svgoConfig: {
     plugins: {

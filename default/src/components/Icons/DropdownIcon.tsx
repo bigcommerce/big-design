@@ -1,6 +1,10 @@
+// **********************************
+// Auto-generated file, do NOT modify
+// **********************************
 import React from 'react';
 
 import { Icon } from './Icon';
+
 export default class SvgDropdownIcon extends Icon {
   render() {
     const props = this.props;
