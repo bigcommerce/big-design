@@ -3,24 +3,23 @@ import styled from 'styled-components';
 
 import { defaultTheme } from '../../theme';
 import { uniqueId } from '../../utils';
-import PlusIcon from '../Icons/PlusIcon';
 
-import { CheckboxContainerStyles, CheckboxStyles, HiddenCheckboxStyles, LabelStyles } from './styles';
+import { HiddenRadioStyles, LabelStyles, RadioContainerStyles, RadioStyles } from './styles';
 
-export interface StyledCheckboxProps {
+export interface StyledRadioProps {
   checked?: boolean;
 }
 
-export const HiddenCheckbox = styled.input`
-  ${HiddenCheckboxStyles}
+export const HiddenRadio = styled.input`
+  ${HiddenRadioStyles}
 `;
 
-const StyledCheckbox = styled.div<StyledCheckboxProps>`
-  ${CheckboxStyles()};
+const StyledRadio = styled.div<StyledRadioProps>`
+  ${RadioStyles()};
 `;
 
-const CheckboxContainer = styled.label`
-  ${CheckboxContainerStyles}
+const RadioContainer = styled.label`
+  ${RadioContainerStyles}
 `;
 
 const StyledLabel = styled.label`
@@ -31,24 +30,22 @@ interface Props {
   label: React.ReactChild;
 }
 
-export type CheckboxProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
+export type RadioProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
-export class Checkbox extends React.PureComponent<CheckboxProps> {
+export class Radio extends React.PureComponent<RadioProps> {
   static Label = StyledLabel;
-  private readonly uniqueId = uniqueId('checkBox_');
+  private readonly uniqueId = uniqueId('radio_');
 
   render() {
     const { checked, className, label, ...props } = this.props;
     const id = this.getId();
 
     return (
-      <CheckboxContainer className={className} htmlFor={id}>
-        <HiddenCheckbox type="checkbox" checked={checked} id={id} {...props} />
-        <StyledCheckbox checked={checked}>
-          <PlusIcon />
-        </StyledCheckbox>
+      <RadioContainer className={className} htmlFor={id}>
+        <HiddenRadio type="radio" checked={checked} id={id} {...props} />
+        <StyledRadio checked={checked} />
         {this.renderLabel()}
-      </CheckboxContainer>
+      </RadioContainer>
     );
   }
 
@@ -66,7 +63,7 @@ export class Checkbox extends React.PureComponent<CheckboxProps> {
       return <StyledLabel htmlFor={id}>{label}</StyledLabel>;
     }
 
-    if (React.isValidElement(label) && label.type === Checkbox.Label) {
+    if (React.isValidElement(label) && label.type === Radio.Label) {
       return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
         htmlFor: id,
       });
@@ -76,5 +73,5 @@ export class Checkbox extends React.PureComponent<CheckboxProps> {
   }
 }
 
-StyledCheckbox.defaultProps = { theme: defaultTheme };
+StyledRadio.defaultProps = { theme: defaultTheme };
 StyledLabel.defaultProps = { theme: defaultTheme };

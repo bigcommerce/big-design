@@ -14,18 +14,16 @@ export const FormRowStyles = css<FormRowProps>`
     grid-gap: ${({ theme }) => theme.spacing.medium};
 
     ${props =>
-      React.Children.count(props.children) === 2
-        ? css`
-            grid-template-columns: repeat(2, ${rem(200)});
-          `
-        : null}
+      React.Children.count(props.children) === 2 &&
+      css`
+        grid-template-columns: repeat(2, ${rem(200)});
+      `}
 
     ${props =>
-      React.Children.count(props.children) === 3
-        ? css`
-            grid-template-columns: repeat(3, ${rem(128)});
-          `
-        : null}
+      React.Children.count(props.children) === 3 &&
+      css`
+        grid-template-columns: repeat(3, ${rem(128)});
+      `}
 
     ${StyledInputWrapper} {
       max-width: ${rem(416)};

@@ -18,11 +18,10 @@ export const FieldsetLegendStyles = css<LegendProps>`
   ${H3Styles};
 
   ${props =>
-    props.hasDescription
-      ? css`
-          margin: 0;
-        `
-      : null};
+    props.hasDescription &&
+    css`
+      margin: 0;
+    `};
 `;
 
 export const FieldsetDescriptionStyles = css``;

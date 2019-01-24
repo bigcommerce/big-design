@@ -1,3 +1,4 @@
+import { boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
@@ -7,6 +8,7 @@ import { Form } from '../Form';
 import PlusIcon from '../Icons/PlusIcon';
 import { Input } from '../Input';
 import { Panel } from '../Panel';
+import { Radio } from '../Radio';
 import { H2, Text } from '../Text';
 
 storiesOf('Form Fields', module)
@@ -85,10 +87,19 @@ storiesOf('Form Fields', module)
 
           <Form.Fieldset legend="Checkboxes" description="This is a description for checkboxes">
             <Form.Row>
-              <Checkbox label="Unchecked" checked={false} />
+              <Checkbox label="Unchecked" checked={false} onChange={() => null} />
             </Form.Row>
             <Form.Row>
-              <Checkbox label="Checked" checked={true} />
+              <Checkbox label="Checked" checked={true} onChange={() => null} />
+            </Form.Row>
+          </Form.Fieldset>
+
+          <Form.Fieldset legend="Radio buttons" description="This is a description for radio buttons">
+            <Form.Row>
+              <Radio label="Unchecked" name="test-group" checked={false} onChange={() => null} />
+            </Form.Row>
+            <Form.Row>
+              <Radio label="Checked" name="test-group" checked={true} onChange={() => null} />
             </Form.Row>
           </Form.Fieldset>
         </Form>

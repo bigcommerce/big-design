@@ -35,18 +35,16 @@ export const InputStyles = css<InputProps>`
   }
 
   ${props =>
-    props.error
-      ? css`
-          padding-right: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xxSmall)};
-        `
-      : null};
+    props.error &&
+    css`
+      padding-right: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xxSmall)};
+    `};
 
   ${props =>
-    props.iconLeft
-      ? css`
-          padding-left: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xxSmall)};
-        `
-      : null};
+    props.iconLeft &&
+    css`
+      padding-left: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xxSmall)};
+    `};
 `;
 
 export const InputWrapperStyles = css<InputProps>`
