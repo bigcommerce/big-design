@@ -1,37 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
-
-import { defaultTheme } from '../../../theme';
-import { Small } from '../../Text';
-
-import { FieldsetDescriptionStyles, FieldsetLegendStyles, FieldsetStyles } from './styles';
 
 interface Props {
   legend?: React.ReactChild;
   description?: React.ReactChild;
 }
 
+import { StyledFieldset, StyledFieldsetDescription, StyledFieldsetLegend } from './styled';
+
 export type FieldsetProps = Props & React.FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
-export interface LegendProps {
-  hasDescription: boolean;
-}
-
-const StyledFieldset = styled.fieldset`
-  ${FieldsetStyles};
-`;
-
-const FieldsetLegend = styled.legend<LegendProps>`
-  ${FieldsetLegendStyles};
-`;
-
-const FieldsetDescription = styled(Small)`
-  ${FieldsetDescriptionStyles};
-`;
-
 export class Fieldset extends React.PureComponent<FieldsetProps> {
-  static Legend = FieldsetLegend;
-  static Description = FieldsetDescription;
+  static Legend = StyledFieldsetLegend;
+  static Description = StyledFieldsetDescription;
 
   render() {
     const { legend, description, children, ...props } = this.props;
@@ -76,6 +56,3 @@ export class Fieldset extends React.PureComponent<FieldsetProps> {
     return null;
   }
 }
-
-StyledFieldset.defaultProps = { theme: defaultTheme };
-FieldsetLegend.defaultProps = { theme: defaultTheme };

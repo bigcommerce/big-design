@@ -1,30 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { defaultTheme } from '../../theme';
 import { uniqueId } from '../../utils';
 
-import { HiddenRadioStyles, LabelStyles, RadioContainerStyles, RadioStyles } from './styles';
-
-export interface StyledRadioProps {
-  checked?: boolean;
-}
-
-export const HiddenRadio = styled.input`
-  ${HiddenRadioStyles}
-`;
-
-const StyledRadio = styled.div<StyledRadioProps>`
-  ${RadioStyles()};
-`;
-
-const RadioContainer = styled.label`
-  ${RadioContainerStyles}
-`;
-
-const StyledLabel = styled.label`
-  ${LabelStyles};
-`;
+import { HiddenRadio, RadioContainer, StyledLabel, StyledRadio } from './styled';
 
 interface Props {
   label: React.ReactChild;
@@ -41,9 +19,9 @@ export class Radio extends React.PureComponent<RadioProps> {
     const id = this.getId();
 
     return (
-      <RadioContainer className={className} htmlFor={id}>
+      <RadioContainer className={className}>
         <HiddenRadio type="radio" checked={checked} id={id} {...props} />
-        <StyledRadio checked={checked} />
+        <StyledRadio checked={checked} htmlFor={id} aria-hidden={true} />
         {this.renderLabel()}
       </RadioContainer>
     );
@@ -72,6 +50,3 @@ export class Radio extends React.PureComponent<RadioProps> {
     return null;
   }
 }
-
-StyledRadio.defaultProps = { theme: defaultTheme };
-StyledLabel.defaultProps = { theme: defaultTheme };

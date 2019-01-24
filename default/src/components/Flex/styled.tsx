@@ -1,8 +1,8 @@
-import { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { FlexProps } from './Flex';
 
-export const FlexStyles = css<FlexProps>`
+export const StyledFlex = styled.div<FlexProps>`
   display: flex;
   flex-direction: column;
   align-items: ${({ alignItems }) => alignItems};

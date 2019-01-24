@@ -1,16 +1,7 @@
-import styled from 'styled-components';
-
-import { defaultTheme } from '../../../theme';
-import { Small } from '../../Text';
-
-import { ErrorStyles } from './styles';
+import { StyledError } from './styled';
 
 export interface ErrorProps {
   error?: string;
 }
 
-export const Error = styled(Small)<ErrorProps>`
-  ${ErrorStyles};
-`;
-
-Error.defaultProps = { theme: defaultTheme };
+export const Error = StyledError;

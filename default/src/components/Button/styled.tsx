@@ -1,19 +1,11 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
+import { defaultTheme } from '../../theme';
 import { addValues } from '../../theme/helpers/addition';
 
 import { ButtonProps } from './index';
 
-export const ButtonContentWrapperStyles = css<{ isLoading?: boolean }>`
-  align-content: center;
-  align-items: center;
-  display: inline-grid;
-  grid-auto-flow: column;
-  grid-gap: ${({ theme }) => theme.spacing.xSmall};
-  visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
-`;
-
-export const ButtonStyles = css<ButtonProps>`
+export const StyledButton = styled('button')<ButtonProps>`
   align-items: center;
   appearance: none;
   border-radius: ${({ theme }) => theme.border.radius};
@@ -69,6 +61,15 @@ export const ButtonStyles = css<ButtonProps>`
     `};
 
   ${props => getButtonStyles(props)}
+`;
+
+export const ContentWrapper = styled.span.attrs<{}, { isLoading?: boolean }>({})`
+  align-content: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: ${({ theme }) => theme.spacing.xSmall};
+  visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
 `;
 
 /**
@@ -221,3 +222,6 @@ function getButtonStyles(props: ButtonProps) {
       return actionType === 'destructive' ? ButtonSubtleDestructive : ButtonSubtle;
   }
 }
+
+StyledButton.defaultProps = { theme: defaultTheme };
+ContentWrapper.defaultProps = { theme: defaultTheme };

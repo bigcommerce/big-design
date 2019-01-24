@@ -1,26 +1,28 @@
 import { rem } from 'polished';
-import React from 'react';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { StyledInputWrapper } from '../../Input';
+import { defaultTheme } from '../../../theme';
+import { StyledInputWrapper } from '../../Input/styled';
 
-import { FormRowProps } from './Row';
+interface StyledRowProps {
+  childrenCount: number;
+}
 
-export const FormRowStyles = css<FormRowProps>`
+export const StyledRow = styled.div<StyledRowProps>`
   margin-bottom: ${({ theme }) => theme.spacing.medium};
 
   ${({ theme }) => theme.breakpoints.medium} {
     display: grid;
     grid-gap: ${({ theme }) => theme.spacing.medium};
 
-    ${props =>
-      React.Children.count(props.children) === 2 &&
+    ${({ childrenCount }) =>
+      childrenCount === 2 &&
       css`
         grid-template-columns: repeat(2, ${rem(200)});
       `}
 
-    ${props =>
-      React.Children.count(props.children) === 3 &&
+    ${({ childrenCount }) =>
+      childrenCount === 3 &&
       css`
         grid-template-columns: repeat(3, ${rem(128)});
       `}
@@ -34,3 +36,5 @@ export const FormRowStyles = css<FormRowProps>`
     margin: 0;
   }
 `;
+
+StyledRow.defaultProps = { theme: defaultTheme };

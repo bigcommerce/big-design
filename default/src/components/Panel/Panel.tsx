@@ -1,11 +1,3 @@
-import styled from 'styled-components';
+import { StyledPanel } from './styled';
 
-import { defaultTheme } from '../../theme';
-
-import { PanelStyles } from './styles';
-
-export const Panel = styled.section`
-  ${PanelStyles};
-`;
-
-Panel.defaultProps = { theme: defaultTheme };
+export const Panel = StyledPanel;

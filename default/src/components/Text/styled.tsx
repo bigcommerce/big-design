@@ -1,4 +1,6 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { defaultTheme } from '../../theme';
 
 const CommonTextStyles = css`
   color: ${({ theme }) => theme.colors.secondary70};
@@ -67,3 +69,39 @@ export const SmallStyles = css`
     margin-bottom: 0;
   }
 `;
+
+export const StyledH0 = styled.h1`
+  ${H0Styles};
+`;
+
+export const StyledH1 = styled.h1`
+  ${H1Styles};
+`;
+
+export const StyledH2 = styled.h2`
+  ${H2Styles};
+`;
+
+export const StyledH3 = styled.h3`
+  ${H3Styles};
+`;
+
+export const StyledH4 = styled.h4`
+  ${H4Styles};
+`;
+
+export const StyledText = styled.p`
+  ${TextStyles}
+`;
+
+export const StyledSmall = styled.p`
+  ${SmallStyles};
+`;
+
+StyledH0.defaultProps = { theme: defaultTheme };
+StyledH1.defaultProps = { theme: defaultTheme };
+StyledH2.defaultProps = { theme: defaultTheme };
+StyledH3.defaultProps = { theme: defaultTheme };
+StyledH4.defaultProps = { theme: defaultTheme };
+StyledText.defaultProps = { theme: defaultTheme };
+StyledSmall.defaultProps = { theme: defaultTheme };

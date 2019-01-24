@@ -1,10 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { defaultTheme, ThemeInterface } from '../../theme';
+import { ThemeInterface } from '../../theme';
 import { Spinner } from '../Spinner';
 
-import { ButtonContentWrapperStyles, ButtonStyles } from './styles';
+import { ContentWrapper, StyledButton } from './styled';
 
 interface Props {
   actionType: 'normal' | 'destructive';
@@ -51,14 +50,3 @@ export class Button extends React.PureComponent<ButtonProps> {
     }
   };
 }
-
-export const StyledButton = styled('button')<ButtonProps>`
-  ${ButtonStyles};
-`;
-
-const ContentWrapper = styled.span.attrs<{}, { isLoading?: boolean }>({})`
-  ${ButtonContentWrapperStyles};
-`;
-
-StyledButton.defaultProps = { theme: defaultTheme };
-ContentWrapper.defaultProps = { theme: defaultTheme };

@@ -1,11 +1,3 @@
-import styled from 'styled-components';
+import { StyledFormActions } from './styled';
 
-import { defaultTheme } from '../../../theme';
-
-import { FormActionsStyles } from './styles';
-
-export const Actions = styled.div`
-  ${FormActionsStyles};
-`;
-
-Actions.defaultProps = { theme: defaultTheme };
+export const Actions = StyledFormActions;

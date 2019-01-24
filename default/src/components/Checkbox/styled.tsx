@@ -1,18 +1,23 @@
 import { hideVisually } from 'polished';
-import { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { TextStyles } from '../Text/styles';
+import { defaultTheme } from '../../theme';
+import { TextStyles } from '../Text/styled';
 
-import { HiddenCheckbox, StyledCheckboxProps } from './Checkbox';
+interface StyledCheckboxProps {
+  checked?: boolean;
+}
 
-export const CheckboxContainerStyles = css`
+export const CheckboxContainer = styled.div`
   align-items: center;
   display: flex;
 `;
 
-// This is a function since we are using a Component Selector
-// Which won't be defined initially
-export const CheckboxStyles = () => css<StyledCheckboxProps>`
+export const HiddenCheckbox = styled.input`
+  ${hideVisually()}
+`;
+
+export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   background: ${props => (props.checked ? props.theme.colors.primary40 : props.theme.colors.white)};
   border-radius: ${({ theme }) => theme.border.radius};
   border: ${({ theme }) => theme.border.box};
@@ -33,11 +38,10 @@ export const CheckboxStyles = () => css<StyledCheckboxProps>`
   }
 `;
 
-export const HiddenCheckboxStyles = css`
-  ${hideVisually()}
-`;
-
-export const LabelStyles = css`
+export const StyledLabel = styled.label`
   ${TextStyles};
   margin-left: ${({ theme }) => theme.spacing.medium};
 `;
+
+StyledCheckbox.defaultProps = { theme: defaultTheme };
+StyledLabel.defaultProps = { theme: defaultTheme };

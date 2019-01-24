@@ -1,10 +1,21 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
+import { defaultTheme } from '../../theme';
 import { addValues } from '../../theme/helpers/addition';
 
-import { InputProps, StyledIconWrapperProps } from './Input';
+import { InputProps } from './Input';
 
-export const InputStyles = css<InputProps>`
+interface StyledIconWrapperProps {
+  position?: 'left' | 'right';
+}
+
+export const StyledInputWrapper = styled.span<InputProps>`
+  align-items: center;
+  display: flex;
+  position: relative;
+`;
+
+export const StyledInput = styled.input<InputProps>`
   background-color: ${({ theme }) => theme.colors.white};
   border: ${props => (props.error ? props.theme.border.boxError : props.theme.border.box)};
   border-radius: ${({ theme }) => theme.border.radius};
@@ -47,13 +58,7 @@ export const InputStyles = css<InputProps>`
     `};
 `;
 
-export const InputWrapperStyles = css<InputProps>`
-  align-items: center;
-  display: flex;
-  position: relative;
-`;
-
-export const IconWrapperStyles = css<StyledIconWrapperProps>`
+export const StyledIconWrapper = styled.span<StyledIconWrapperProps>`
   position: absolute;
   color: ${({ theme }) => theme.colors.secondary60};
 
@@ -67,6 +72,11 @@ export const IconWrapperStyles = css<StyledIconWrapperProps>`
         `};
 `;
 
-export const ErrorIconWrapperStyles = css`
+export const StyledErrorIconWrapper = styled(StyledIconWrapper)`
   color: ${({ theme }) => theme.colors.danger40};
 `;
+
+StyledInput.defaultProps = { theme: defaultTheme };
+StyledInputWrapper.defaultProps = { theme: defaultTheme };
+StyledIconWrapper.defaultProps = { theme: defaultTheme, position: 'left' };
+StyledErrorIconWrapper.defaultProps = { theme: defaultTheme, position: 'right' };

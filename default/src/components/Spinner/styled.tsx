@@ -1,8 +1,11 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { defaultTheme } from '../../theme';
+import LoadingIcon from '../Icons/LoadingIcon';
 
 import { SpinnerWrapperProps } from './Spinner';
 
-export const SpinnerWrapperStyles = css<SpinnerWrapperProps>`
+export const StyledSpinnerWrapper = styled.div<SpinnerWrapperProps>`
   align-items: center;
   display: flex;
   height: 100%;
@@ -19,10 +22,13 @@ export const SpinnerWrapperStyles = css<SpinnerWrapperProps>`
     `};
 `;
 
-export const SpinnerStyles = css`
+export const StyledSpinner = styled(LoadingIcon)`
   animation: ${({ theme }) =>
     css`
       ${theme.keyframes.rotate} 1s linear infinite
     `};
   position: absolute;
 `;
+
+StyledSpinnerWrapper.defaultProps = { theme: defaultTheme };
+StyledSpinner.defaultProps = { theme: defaultTheme };

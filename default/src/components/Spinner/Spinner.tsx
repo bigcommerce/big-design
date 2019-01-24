@@ -1,11 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { defaultTheme, ThemeInterface } from '../../theme';
+import { ThemeInterface } from '../../theme';
 import { IconProps } from '../Icons/Icon';
-import LoadingIcon from '../Icons/LoadingIcon';
 
-import { SpinnerStyles, SpinnerWrapperStyles } from './styles';
+import { StyledSpinner, StyledSpinnerWrapper } from './styled';
 
 export interface SpinnerProps {
   overlay: boolean;
@@ -33,14 +31,3 @@ export class Spinner extends React.PureComponent<SpinnerProps> {
 export interface SpinnerWrapperProps {
   overlay: boolean;
 }
-
-const StyledSpinnerWrapper = styled.div<SpinnerWrapperProps>`
-  ${SpinnerWrapperStyles}
-`;
-
-const StyledSpinner = styled(LoadingIcon)`
-  ${SpinnerStyles}
-`;
-
-StyledSpinnerWrapper.defaultProps = { theme: defaultTheme };
-StyledSpinner.defaultProps = { theme: defaultTheme };

@@ -1,31 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { defaultTheme } from '../../theme';
 import { uniqueId } from '../../utils';
 import PlusIcon from '../Icons/PlusIcon';
 
-import { CheckboxContainerStyles, CheckboxStyles, HiddenCheckboxStyles, LabelStyles } from './styles';
-
-export interface StyledCheckboxProps {
-  checked?: boolean;
-}
-
-export const HiddenCheckbox = styled.input`
-  ${HiddenCheckboxStyles}
-`;
-
-const StyledCheckbox = styled.div<StyledCheckboxProps>`
-  ${CheckboxStyles()};
-`;
-
-const CheckboxContainer = styled.label`
-  ${CheckboxContainerStyles}
-`;
-
-const StyledLabel = styled.label`
-  ${LabelStyles};
-`;
+import { CheckboxContainer, HiddenCheckbox, StyledCheckbox, StyledLabel } from './styled';
 
 interface Props {
   label: React.ReactChild;
@@ -42,9 +20,9 @@ export class Checkbox extends React.PureComponent<CheckboxProps> {
     const id = this.getId();
 
     return (
-      <CheckboxContainer className={className} htmlFor={id}>
+      <CheckboxContainer className={className}>
         <HiddenCheckbox type="checkbox" checked={checked} id={id} {...props} />
-        <StyledCheckbox checked={checked}>
+        <StyledCheckbox checked={checked} htmlFor={id} aria-hidden={true}>
           <PlusIcon />
         </StyledCheckbox>
         {this.renderLabel()}
@@ -75,6 +53,3 @@ export class Checkbox extends React.PureComponent<CheckboxProps> {
     return null;
   }
 }
-
-StyledCheckbox.defaultProps = { theme: defaultTheme };
-StyledLabel.defaultProps = { theme: defaultTheme };

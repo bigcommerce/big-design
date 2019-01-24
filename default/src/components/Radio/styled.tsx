@@ -1,18 +1,28 @@
 import { hideVisually } from 'polished';
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { TextStyles } from '../Text/styles';
+import { defaultTheme } from '../../theme';
+import { TextStyles } from '../Text/styled';
 
-import { HiddenRadio, StyledRadioProps } from './Radio';
+interface StyledRadioProps {
+  checked?: boolean;
+}
 
-export const RadioContainerStyles = css`
+export const RadioContainer = styled.div`
   align-items: center;
   display: flex;
 `;
 
-// This is a function since we are using a Component Selector
-// Which won't be defined initially
-export const RadioStyles = () => css<StyledRadioProps>`
+export const HiddenRadio = styled.input`
+  ${hideVisually()}
+`;
+
+export const StyledLabel = styled.label`
+  ${TextStyles};
+  margin-left: ${({ theme }) => theme.spacing.medium};
+`;
+
+export const StyledRadio = styled.label<StyledRadioProps>`
   border-radius: 50%;
   border: ${({ theme }) => theme.border.box};
   border-color: ${props => (props.checked ? props.theme.colors.primary40 : props.theme.colors.secondary30)};
@@ -45,11 +55,5 @@ export const RadioStyles = () => css<StyledRadioProps>`
     `}
 `;
 
-export const HiddenRadioStyles = css`
-  ${hideVisually()}
-`;
-
-export const LabelStyles = css`
-  ${TextStyles};
-  margin-left: ${({ theme }) => theme.spacing.medium};
-`;
+StyledRadio.defaultProps = { theme: defaultTheme };
+StyledLabel.defaultProps = { theme: defaultTheme };

@@ -1,6 +1,8 @@
-import { css } from 'styled-components';
+import styled from 'styled-components';
 
-export const PanelStyles = css`
+import { defaultTheme } from '../../theme';
+
+export const StyledPanel = styled.section`
   ${({ theme }) => theme.elevation.floating}
 
   background-color: ${({ theme }) => theme.colors.white};
@@ -11,3 +13,5 @@ export const PanelStyles = css`
     margin: 0;
   }
 `;
+
+StyledPanel.defaultProps = { theme: defaultTheme };

@@ -1,8 +1,6 @@
-import styled from 'styled-components';
-
 import { defaultTheme } from '../../theme';
 
-import { FlexStyles } from './styles';
+import { StyledFlex } from './styled';
 
 export interface FlexProps {
   alignItems?: 'normal' | 'stretch' | 'center' | 'flex-start' | 'flex-end' | 'baseline';
@@ -20,9 +18,7 @@ export interface FlexProps {
     | 'stretch';
 }
 
-export const Flex = styled.div<FlexProps>`
-  ${FlexStyles};
-`;
+export const Flex = StyledFlex;
 
 Flex.defaultProps = {
   alignItems: 'stretch',

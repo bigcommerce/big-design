@@ -1,16 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { defaultTheme } from '../../../theme';
+import { StyledRow } from './styled';
 
-import { FormRowStyles } from './styles';
+export class Row extends React.PureComponent<{}> {
+  render() {
+    const childrenCount = React.Children.count(this.props.children);
 
-export interface FormRowProps {
-  children?: React.ReactNode;
+    return <StyledRow childrenCount={childrenCount} {...this.props} />;
+  }
 }
-
-export const Row = styled.div<FormRowProps>`
-  ${FormRowStyles};
-`;
-
-Row.defaultProps = { theme: defaultTheme };

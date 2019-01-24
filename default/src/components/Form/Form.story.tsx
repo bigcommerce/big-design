@@ -119,12 +119,12 @@ storiesOf('Form Fields', module)
         <Form>
           <Form.Fieldset legend="Primary contact">
             <Form.Row>
-              <Input label="First name" value="Johnny" />
-              <Input label="Last name" value="Commerce" />
+              <Input label="First name" value="Johnny" onChange={() => null} />
+              <Input label="Last name" value="Commerce" onChange={() => null} />
             </Form.Row>
 
             <Form.Row>
-              <Input label="Phone number" value="+01 926186286" />
+              <Input label="Phone number" value="+01 926186286" onChange={() => null} />
             </Form.Row>
 
             <Form.Row>
@@ -133,6 +133,7 @@ storiesOf('Form Fields', module)
                 type="email"
                 value="myemail@domain.com"
                 error="This email address is already registered with Avalara."
+                onChange={() => null}
               />
             </Form.Row>
 
@@ -142,6 +143,7 @@ storiesOf('Form Fields', module)
                 description="The password must contain at least 8 characters, including at least one uppercase letter, lowercase letter, special character and number."
                 type="password"
                 value="thisisapassword"
+                onChange={() => null}
               />
             </Form.Row>
           </Form.Fieldset>
@@ -151,14 +153,14 @@ storiesOf('Form Fields', module)
             description="Avalara AvaTax uses your business address as a starting point for figuring out where you need to collect and remit taxes."
           >
             <Form.Row>
-              <Input label="Address" value="1 Smail Street, Level 6, Suite 2" />
+              <Input label="Address" value="1 Smail Street, Level 6, Suite 2" onChange={() => null} />
             </Form.Row>
             <Form.Row>
-              <Input label="City" value="Ultimo" />
+              <Input label="City" value="Ultimo" onChange={() => null} />
             </Form.Row>
             <Form.Row>
               <Input label="State" placeholder="Select a state" error="Please select a state to continue." />
-              <Input label="Postal code" value="207" error="Invalid postcode." />
+              <Input label="Postal code" value="207" error="Invalid postcode." onChange={() => null} />
             </Form.Row>
           </Form.Fieldset>
 
@@ -167,7 +169,7 @@ storiesOf('Form Fields', module)
             description="Enter below the primary address where your products are shipped from. Including it helps Avalara AvaTax calculate your taxes with more accuracy."
           >
             <Form.Row>
-              <Checkbox label="Same as primary business address" checked />
+              <Checkbox label="Same as primary business address" checked onChange={() => null} />
             </Form.Row>
           </Form.Fieldset>
 
@@ -176,6 +178,7 @@ storiesOf('Form Fields', module)
               <Checkbox
                 label="By connecting to an Avalara account, I accept the Avalara terms and conditions."
                 checked
+                onChange={() => null}
               />
             </Form.Row>
           </Form.Fieldset>

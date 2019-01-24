@@ -1,11 +1,3 @@
-import styled from 'styled-components';
+import { StyledLabel } from './styled';
 
-import { defaultTheme } from '../../../theme';
-
-import { LabelStyles } from './styles';
-
-export const Label = styled.label`
-  ${LabelStyles};
-`;
-
-Label.defaultProps = { theme: defaultTheme };
+export const Label = StyledLabel;

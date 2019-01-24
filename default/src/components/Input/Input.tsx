@@ -1,11 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { defaultTheme, ThemeInterface } from '../../theme';
+import { ThemeInterface } from '../../theme';
 import { uniqueId } from '../../utils';
 import ErrorIcon from '../Icons/ErrorIcon';
 
-import { ErrorIconWrapperStyles, IconWrapperStyles, InputStyles, InputWrapperStyles } from './styles';
+import { StyledErrorIconWrapper, StyledIconWrapper, StyledInput, StyledInputWrapper } from './styled';
 import { Description } from './Description';
 import { Error } from './Error';
 import { Label } from './Label';
@@ -17,10 +16,6 @@ interface Props {
   iconRight?: React.ReactChild;
   label?: React.ReactChild;
   theme?: ThemeInterface;
-}
-
-export interface StyledIconWrapperProps {
-  position?: 'left' | 'right';
 }
 
 export type InputProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
@@ -126,24 +121,3 @@ export class Input extends React.PureComponent<InputProps> {
     return <StyledIconWrapper position="right">{this.props.iconRight}</StyledIconWrapper>;
   }
 }
-
-export const StyledInputWrapper = styled.span<InputProps>`
-  ${InputWrapperStyles};
-`;
-
-const StyledInput = styled.input<InputProps>`
-  ${InputStyles};
-`;
-
-const StyledIconWrapper = styled.span<StyledIconWrapperProps>`
-  ${IconWrapperStyles};
-`;
-
-const StyledErrorIconWrapper = styled(StyledIconWrapper)`
-  ${ErrorIconWrapperStyles};
-`;
-
-StyledInput.defaultProps = { theme: defaultTheme };
-StyledInputWrapper.defaultProps = { theme: defaultTheme };
-StyledIconWrapper.defaultProps = { theme: defaultTheme, position: 'left' };
-StyledErrorIconWrapper.defaultProps = { theme: defaultTheme, position: 'right' };
