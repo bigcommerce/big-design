@@ -5,7 +5,7 @@ interface Props {
   description?: React.ReactChild;
 }
 
-import { StyledFieldset, StyledFieldsetDescription, StyledFieldsetLegend } from './styled';
+import { StyledFieldset, StyledFieldsetDescription, StyledFieldsetLegend, StyledInfoContainer } from './styled';
 
 export type FieldsetProps = Props & React.FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
@@ -18,25 +18,24 @@ export class Fieldset extends React.PureComponent<FieldsetProps> {
 
     return (
       <StyledFieldset {...props}>
-        {this.renderLegend()}
-        {this.renderDescription()}
+        <StyledInfoContainer>
+          {this.renderLegend()}
+          {this.renderDescription()}
+        </StyledInfoContainer>
         {children}
       </StyledFieldset>
     );
   }
 
   private renderLegend() {
-    const { description, legend } = this.props;
-    const hasDescription = Boolean(description);
+    const { legend } = this.props;
 
     if (typeof legend === 'string') {
-      return <Fieldset.Legend hasDescription={hasDescription}>{legend}</Fieldset.Legend>;
+      return <Fieldset.Legend>{legend}</Fieldset.Legend>;
     }
 
     if (React.isValidElement(legend) && legend.type === Fieldset.Legend) {
-      return React.cloneElement(legend as React.ReactElement<any>, {
-        hasDescription,
-      });
+      return legend;
     }
 
     return null;

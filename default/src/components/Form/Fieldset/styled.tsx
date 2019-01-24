@@ -1,12 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { defaultTheme } from '../../../theme';
 import { Small } from '../../Text';
 import { H3Styles } from '../../Text/styled';
-
-interface LegendProps {
-  hasDescription: boolean;
-}
 
 export const StyledFieldset = styled.fieldset`
   border: none;
@@ -18,19 +14,21 @@ export const StyledFieldset = styled.fieldset`
   }
 `;
 
-// TODO: Fix this using component selector and remove props and style
-export const StyledFieldsetLegend = styled.legend<LegendProps>`
-  ${H3Styles};
-
-  ${props =>
-    props.hasDescription &&
-    css`
-      margin: 0;
-    `};
+export const StyledInfoContainer = styled.div`
+  margin-bottom: ${({ theme }) => theme.spacing.medium};
 `;
 
 export const StyledFieldsetDescription = styled(Small)``;
 
+export const StyledFieldsetLegend = styled.legend`
+  ${H3Styles};
+
+  &:not(:last-child) {
+    margin: 0;
+  }
+`;
+
 StyledFieldset.defaultProps = { theme: defaultTheme };
 StyledFieldsetLegend.defaultProps = { theme: defaultTheme };
 StyledFieldsetDescription.defaultProps = { theme: defaultTheme };
+StyledInfoContainer.defaultProps = { theme: defaultTheme };
