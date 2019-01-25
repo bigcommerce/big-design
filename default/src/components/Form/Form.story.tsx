@@ -10,7 +10,7 @@ import { Panel } from '../Panel';
 import { Radio } from '../Radio';
 import { H2, Text } from '../Text';
 
-storiesOf('Form Fields', module)
+storiesOf('Forms', module)
   .add('Overview', () => (
     <div style={{ padding: 50 }}>
       <Panel>
