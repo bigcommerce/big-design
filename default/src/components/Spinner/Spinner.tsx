@@ -14,7 +14,7 @@ export interface SpinnerProps {
 export class Spinner extends React.PureComponent<SpinnerProps> {
   static defaultProps: Partial<SpinnerProps> = {
     overlay: true,
-    size: 'small',
+    size: 'large',
   };
 
   render() {
