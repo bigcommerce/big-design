@@ -18,13 +18,15 @@ export const HiddenCheckbox = styled.input`
 `;
 
 export const StyledCheckbox = styled.label<StyledCheckboxProps>`
+  align-items: center;
   background: ${props => (props.checked ? props.theme.colors.primary40 : props.theme.colors.white)};
+  border-color: ${props => (props.checked ? props.theme.colors.primary40 : props.theme.colors.secondary30)};
   border-radius: ${({ theme }) => theme.border.radius};
   border: ${({ theme }) => theme.border.box};
-  border-color: ${props => (props.checked ? props.theme.colors.primary40 : props.theme.colors.secondary30)};
   color: ${({ theme }) => theme.colors.white};
-  display: inline-block;
+  display: inline-flex;
   height: ${({ theme }) => theme.spacing.large};
+  justify-content: center;
   transition: all 150ms;
   user-select: none;
   width: ${({ theme }) => theme.spacing.large};

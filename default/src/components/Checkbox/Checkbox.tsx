@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { uniqueId } from '../../utils';
-import PlusIcon from '../Icons/PlusIcon';
+import CheckIcon from '../Icons/CheckIcon';
 
 import { CheckboxContainer, HiddenCheckbox, StyledCheckbox, StyledLabel } from './styled';
 
@@ -23,7 +23,7 @@ export class Checkbox extends React.PureComponent<CheckboxProps> {
       <CheckboxContainer className={className}>
         <HiddenCheckbox type="checkbox" checked={checked} id={id} {...props} />
         <StyledCheckbox checked={checked} htmlFor={id} aria-hidden={true}>
-          <PlusIcon />
+          <CheckIcon size="small" />
         </StyledCheckbox>
         {this.renderLabel()}
       </CheckboxContainer>
