@@ -14,8 +14,13 @@ export const StyledTab = styled(Button).attrs({ role: 'tab' })<TabProps>`
   border-bottom: 4px solid transparent;
   border-bottom-color: ${props => (props.id === props.activeTab ? props.theme.colors.primary40 : 'transparent')};
   border-radius: 0;
-  color: ${props => (props.id === props.activeTab ? props.theme.colors.secondary70 : props.theme.colors.primary40)};
+  color: ${({ theme }) => theme.colors.secondary70};
   pointer-events: ${props => (props.id === props.activeTab ? 'none' : 'auto')};
+
+  &:active,
+  &:hover:not(:active) {
+    background-color: transparent;
+  }
 `;
 
 StyledTab.defaultProps = {
