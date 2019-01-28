@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { defaultTheme } from '../../theme';
 import { Button } from '../Button';
@@ -9,7 +9,10 @@ export const StyledTabs = styled.div.attrs({ role: 'tablist' })`
   border-bottom: ${({ theme }) => theme.border.box};
 `;
 
-export const StyledTab = styled(Button).attrs({ role: 'tab' })<TabProps>`
+export const StyledTab = styled(Button).attrs<TabProps>(props => ({
+  role: 'tab',
+  tabIndex: props.id === props.activeTab ? -1 : 0,
+}))<TabProps>`
   border: none;
   border-bottom: 4px solid transparent;
   border-bottom-color: ${props => (props.id === props.activeTab ? props.theme.colors.primary40 : 'transparent')};
@@ -21,6 +24,18 @@ export const StyledTab = styled(Button).attrs({ role: 'tab' })<TabProps>`
   &:hover:not(:active) {
     background-color: transparent;
   }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  ${props =>
+    props.id === props.activeTab &&
+    css`
+      &:focus {
+        box-shadow: none;
+      }
+    `}
 `;
 
 StyledTab.defaultProps = {
