@@ -28,10 +28,12 @@ class TabsStory extends React.PureComponent<{}, State> {
             Example 4
           </Tabs.Tab>
         </Tabs>
-        {activeTab === 'tab1' && <Text>Content 1</Text>}
-        {activeTab === 'tab2' && <Text>Content 2</Text>}
-        {activeTab === 'tab3' && <Text>Content 3</Text>}
-        {activeTab === 'tab4' && <Text>Content 4</Text>}
+        <div style={{ marginTop: 20 }}>
+          {activeTab === 'tab1' && <Text>Content 1</Text>}
+          {activeTab === 'tab2' && <Text>Content 2</Text>}
+          {activeTab === 'tab3' && <Text>Content 3</Text>}
+          {activeTab === 'tab4' && <Text>Content 4</Text>}
+        </div>
       </>
     );
   }
