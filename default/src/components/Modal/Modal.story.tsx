@@ -1,3 +1,4 @@
+import { boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
@@ -23,7 +24,12 @@ class Story extends React.PureComponent<{}, State> {
           <Button onClick={this.openModal}>Open Modal</Button>
         </Flex>
 
-        <Modal isOpen={this.state.isOpen} onRequestClose={this.closeModal}>
+        <Modal
+          isOpen={this.state.isOpen}
+          onRequestClose={this.closeModal}
+          requestCloseOnClickOutside={boolean('closeOnClickOutside', true)}
+          requestCloseOnEscKey={boolean('closeOnEscKey', true)}
+        >
           <H2>Modal Title</H2>
           <Text>
             Ea tempor sunt amet labore proident dolor proident commodo in exercitation ea nulla sunt pariatur. Nulla

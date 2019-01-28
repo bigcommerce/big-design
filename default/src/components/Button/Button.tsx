@@ -7,8 +7,8 @@ import { ContentWrapper, StyledButton } from './styled';
 
 interface Props {
   actionType: 'normal' | 'destructive';
-  iconOnly?: React.ReactChild;
   iconLeft?: React.ReactChild;
+  iconOnly?: React.ReactChild;
   iconRight?: React.ReactChild;
   isLoading: boolean;
   spinner: React.ReactChild;
