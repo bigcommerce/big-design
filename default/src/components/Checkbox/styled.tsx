@@ -2,7 +2,7 @@ import { hideVisually } from 'polished';
 import styled from 'styled-components';
 
 import { defaultTheme } from '../../theme';
-import { TextStyles } from '../Text/styled';
+import { Text } from '../Text';
 
 interface StyledCheckboxProps {
   checked?: boolean;
@@ -40,8 +40,9 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   }
 `;
 
-export const StyledLabel = styled.label`
-  ${TextStyles};
+export const StyledLabel = styled(Text).attrs({
+  as: 'label',
+})<React.LabelHTMLAttributes<HTMLLabelElement>>`
   margin-left: ${({ theme }) => theme.spacing.medium};
 `;
 

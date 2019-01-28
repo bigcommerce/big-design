@@ -7,7 +7,7 @@ const CommonTextStyles = css`
   margin: 0 0 ${({ theme }) => theme.spacing.medium};
 `;
 
-export const H0Styles = css`
+export const StyledH0 = styled.h1`
   ${CommonTextStyles};
   font-size: ${({ theme }) => theme.typography.fontSize.xxxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.extraLight};
@@ -15,7 +15,7 @@ export const H0Styles = css`
   margin: 0 0 ${({ theme }) => theme.spacing.xLarge};
 `;
 
-export const H1Styles = css`
+export const StyledH1 = styled.h1`
   ${CommonTextStyles};
   font-size: ${({ theme }) => theme.typography.fontSize.xxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.light};
@@ -23,14 +23,14 @@ export const H1Styles = css`
   margin: 0 0 ${({ theme }) => theme.spacing.xLarge};
 `;
 
-export const H2Styles = css`
+export const StyledH2 = styled.h2`
   ${CommonTextStyles};
   font-size: ${({ theme }) => theme.typography.fontSize.xLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.xLarge};
 `;
 
-export const H3Styles = css`
+export const StyledH3 = styled.h3`
   ${CommonTextStyles};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
@@ -38,7 +38,7 @@ export const H3Styles = css`
   margin: 0 0 ${({ theme }) => theme.spacing.small};
 `;
 
-export const H4Styles = css`
+export const StyledH4 = styled.h4`
   ${CommonTextStyles};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
@@ -46,7 +46,7 @@ export const H4Styles = css`
   margin: 0 0 ${({ theme }) => theme.spacing.xSmall};
 `;
 
-export const TextStyles = css`
+export const StyledText = styled.p`
   ${CommonTextStyles};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
@@ -57,7 +57,7 @@ export const TextStyles = css`
   }
 `;
 
-export const SmallStyles = css`
+export const StyledSmall = styled.p`
   ${CommonTextStyles};
   color: ${({ theme }) => theme.colors.secondary60};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
@@ -68,34 +68,6 @@ export const SmallStyles = css`
   &:last-child {
     margin-bottom: 0;
   }
-`;
-
-export const StyledH0 = styled.h1`
-  ${H0Styles};
-`;
-
-export const StyledH1 = styled.h1`
-  ${H1Styles};
-`;
-
-export const StyledH2 = styled.h2`
-  ${H2Styles};
-`;
-
-export const StyledH3 = styled.h3`
-  ${H3Styles};
-`;
-
-export const StyledH4 = styled.h4`
-  ${H4Styles};
-`;
-
-export const StyledText = styled.p`
-  ${TextStyles}
-`;
-
-export const StyledSmall = styled.p`
-  ${SmallStyles};
 `;
 
 StyledH0.defaultProps = { theme: defaultTheme };

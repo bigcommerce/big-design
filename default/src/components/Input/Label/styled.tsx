@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 import { defaultTheme } from '../../../theme';
-import { H4Styles } from '../../Text/styled';
+import { H4 } from '../../Text';
 
-export const StyledLabel = styled.label`
-  ${H4Styles};
-
+export const StyledLabel = styled(H4).attrs({
+  as: 'label',
+})<React.LabelHTMLAttributes<HTMLLabelElement>>`
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
 `;

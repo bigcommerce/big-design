@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 import { defaultTheme } from '../../../theme';
-import { Small } from '../../Text';
-import { H3Styles } from '../../Text/styled';
+import { H3, Small } from '../../Text';
 
 export const StyledFieldset = styled.fieldset`
   border: none;
@@ -20,9 +19,9 @@ export const StyledInfoContainer = styled.div`
 
 export const StyledFieldsetDescription = styled(Small)``;
 
-export const StyledFieldsetLegend = styled.legend`
-  ${H3Styles};
-
+export const StyledFieldsetLegend = styled(H3).attrs({
+  as: 'legend',
+})`
   &:not(:last-child) {
     margin: 0;
   }
