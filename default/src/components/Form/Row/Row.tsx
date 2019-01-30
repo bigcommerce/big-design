@@ -2,7 +2,7 @@ import React from 'react';
 
 import { StyledRow } from './styled';
 
-export class Row extends React.PureComponent<{}> {
+export class Row extends React.PureComponent {
   render() {
     const childrenCount = React.Children.count(this.props.children);
 

@@ -1,7 +1,5 @@
+import React from 'react';
+
 import { StyledError } from './styled';
 
-export interface ErrorProps {
-  error?: string;
-}
-
-export const Error = StyledError;
+export const Error: React.SFC<{}> = props => <StyledError {...props} />;

@@ -1,3 +1,7 @@
+import React from 'react';
+
 import { StyledLabel } from './styled';
 
-export const Label = StyledLabel;
+export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement>;
+
+export const Label: React.SFC<LabelProps> = props => <StyledLabel {...props} />;

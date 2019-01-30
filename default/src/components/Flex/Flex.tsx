@@ -1,4 +1,4 @@
-import { defaultTheme } from '../../theme';
+import React, { CSSProperties } from 'react';
 
 import { StyledFlex } from './styled';
 
@@ -16,13 +16,7 @@ export interface FlexProps {
     | 'space-around'
     | 'space-evenly'
     | 'stretch';
+  styles?: CSSProperties;
 }
 
-export const Flex = StyledFlex;
-
-Flex.defaultProps = {
-  alignItems: 'stretch',
-  flexDirection: 'row',
-  justifyContent: 'flex-start',
-  theme: defaultTheme,
-};
+export const Flex: React.SFC<FlexProps> = props => <StyledFlex {...props} />;

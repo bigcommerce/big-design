@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { defaultTheme } from '../../theme';
+
 import { FlexProps } from './Flex';
 
 export const StyledFlex = styled.div<FlexProps>`
@@ -12,3 +14,10 @@ export const StyledFlex = styled.div<FlexProps>`
     flex-direction: ${({ flexDirection }) => flexDirection};
   }
 `;
+
+StyledFlex.defaultProps = {
+  alignItems: 'stretch',
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
+  theme: defaultTheme,
+};

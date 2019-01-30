@@ -13,8 +13,4 @@ export interface GridItemProps {
   style?: CSSProperties;
 }
 
-export class GridItem extends React.PureComponent<GridItemProps> {
-  render() {
-    return <StyledGridItem {...this.props} />;
-  }
-}
+export const GridItem: React.SFC<GridItemProps> = props => <StyledGridItem {...props} />;
