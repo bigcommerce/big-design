@@ -20,8 +20,8 @@ storiesOf('Button', module)
           display: 'grid',
           justifyItems: 'center',
           gridTemplateColumns: 'repeat(6, 80px)',
-          gridAutoFlow: 'row',
-          gridGap: 10,
+          gridRowGap: 10,
+          marginBottom: 10,
         }}
       >
         <Button onClick={action('click')}>Label</Button>
@@ -40,6 +40,17 @@ storiesOf('Button', module)
         <Button onClick={action('click')} actionType="destructive" disabled>
           Label
         </Button>
+      </div>
+      <div
+        style={{
+          alignItems: 'center',
+          display: 'grid',
+          justifyItems: 'center',
+          gridTemplateColumns: 'repeat(6, 80px)',
+          gridRowGap: 10,
+          marginBottom: 10,
+        }}
+      >
         <Button onClick={action('click')} variant="secondary">
           Label
         </Button>
@@ -58,6 +69,17 @@ storiesOf('Button', module)
         <Button onClick={action('click')} variant="secondary" actionType="destructive" disabled>
           Label
         </Button>
+      </div>
+      <div
+        style={{
+          alignItems: 'center',
+          display: 'grid',
+          justifyItems: 'center',
+          gridTemplateColumns: 'repeat(6, 80px)',
+          gridRowGap: 10,
+          marginBottom: 10,
+        }}
+      >
         <Button onClick={action('click')} variant="subtle">
           Label
         </Button>

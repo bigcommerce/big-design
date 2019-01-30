@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { defaultTheme } from '../../theme';
 import { addValues } from '../../theme/helpers/addition';
 
-import { ButtonProps } from './index';
+import { Button, ButtonProps } from './index';
 
 export const StyledButton = styled('button')<ButtonProps>`
   align-items: center;
@@ -36,6 +36,10 @@ export const StyledButton = styled('button')<ButtonProps>`
   &[disabled] {
     border-color: ${({ theme }) => theme.colors.secondary30};
     pointer-events: none;
+  }
+
+  & + & {
+    margin-left: ${({ theme }) => theme.spacing.medium};
   }
 
   ${({ theme }) => theme.breakpoints.medium} {

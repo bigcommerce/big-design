@@ -37,11 +37,7 @@ export const StyledModalContent = styled.div<Partial<ModalProps>>`
 export const StyledModalActions = styled(Flex).attrs({
   flexDirection: 'row',
   justifyContent: 'flex-end',
-})`
-  & > * {
-    margin-left: ${({ theme }) => theme.spacing.medium};
-  }
-`;
+})``;
 
 StyledModal.defaultProps = { theme: defaultTheme };
 StyledModalContent.defaultProps = { theme: defaultTheme };
