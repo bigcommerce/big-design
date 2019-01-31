@@ -4,7 +4,7 @@ import React from 'react';
 
 import { Button } from '../Button';
 import { Flex } from '../Flex';
-import { H2, Text } from '../Text';
+import { H2, Text } from '../Typography';
 
 import { Modal } from './Modal';
 

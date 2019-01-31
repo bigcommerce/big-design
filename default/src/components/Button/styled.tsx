@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { defaultTheme } from '../../theme';
 import { addValues } from '../../theme/helpers/addition';
 
-import { Button, ButtonProps } from './index';
+import { ButtonProps } from './index';
 
 export const StyledButton = styled('button')<ButtonProps>`
   align-items: center;

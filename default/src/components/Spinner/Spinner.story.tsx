@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import { Button } from '../Button';
-import { Text } from '../Text';
+import { Text } from '../Typography';
 
 import { Spinner } from './Spinner';
 

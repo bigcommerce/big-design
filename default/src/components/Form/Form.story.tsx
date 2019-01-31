@@ -8,7 +8,7 @@ import PlusIcon from '../Icons/PlusIcon';
 import { Input } from '../Input';
 import { Panel } from '../Panel';
 import { Radio } from '../Radio';
-import { H2, Text } from '../Text';
+import { H2, Text } from '../Typography';
 
 storiesOf('Forms', module)
   .add('Overview', () => (

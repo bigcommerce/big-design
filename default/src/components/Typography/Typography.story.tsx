@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { H0, H1, H2, H3, H4, Small, Text } from './Text';
+import { H0, H1, H2, H3, H4, Small, Text } from './Typography';
 
-storiesOf('Text', module).add('Overview', () => (
+storiesOf('Typography', module).add('Overview', () => (
   <div>
     <H0>Hero header - h0</H0>
     <H1>Page header - h1</H1>

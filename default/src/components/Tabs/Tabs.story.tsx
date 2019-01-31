@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 import { Panel } from '../Panel';
-import { Text } from '../Text';
+import { Text } from '../Typography';
 
 import { Tabs } from './Tabs';
 

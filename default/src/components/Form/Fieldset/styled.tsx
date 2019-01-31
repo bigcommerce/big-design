@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { defaultTheme } from '../../../theme';
-import { H3, Small } from '../../Text';
+import { H3, Small } from '../../Typography';
 
 export const StyledFieldset = styled.fieldset`
   border: none;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { defaultTheme } from '../../../theme';
-import { H4 } from '../../Text';
+import { H4 } from '../../Typography';
 
 import { LabelProps } from './Label';
 

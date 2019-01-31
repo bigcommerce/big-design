@@ -2,7 +2,7 @@ import { hideVisually } from 'polished';
 import styled from 'styled-components';
 
 import { defaultTheme } from '../../theme';
-import { Text } from '../Text';
+import { Text } from '../Typography';
 
 interface StyledCheckboxProps {
   checked?: boolean;
