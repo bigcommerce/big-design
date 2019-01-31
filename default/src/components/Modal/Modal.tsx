@@ -22,7 +22,7 @@ export class Modal extends React.PureComponent<ModalProps> {
 
   static Actions = StyledModalActions;
 
-  private backdropRef = React.createRef<HTMLDivElement>();
+  private modalRef = React.createRef<HTMLDivElement>();
   private modalContainer = document.createElement('div');
 
   componentDidMount() {
@@ -33,11 +33,15 @@ export class Modal extends React.PureComponent<ModalProps> {
     document.body.removeChild(this.modalContainer);
   }
 
+  componentDidUpdate() {
+    this.autoFocus();
+  }
+
   render() {
     const { children, isOpen, onRequestClose, ...props } = this.props;
 
     const modalContent = (
-      <StyledModal onKeyDown={this.onKeyDown} onClick={this.onClickAway} ref={this.backdropRef} {...props}>
+      <StyledModal onKeyDown={this.onKeyDown} onClick={this.onClickAway} ref={this.modalRef} {...props}>
         <StyledModalContent>{children}</StyledModalContent>
       </StyledModal>
     );
@@ -45,8 +49,14 @@ export class Modal extends React.PureComponent<ModalProps> {
     return isOpen && createPortal(modalContent, this.modalContainer);
   }
 
+  private autoFocus = () => {
+    if (this.props.isOpen && this.modalRef.current) {
+      this.modalRef.current.focus();
+    }
+  };
+
   private onClickAway = (event: React.MouseEvent) => {
-    if (this.props.requestCloseOnClickOutside && this.backdropRef.current === event.target) {
+    if (this.props.requestCloseOnClickOutside && this.modalRef.current === event.target) {
       this.props.onRequestClose();
     }
   };
