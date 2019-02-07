@@ -1,42 +1,39 @@
-import React from 'react';
+import React, { Ref, RefObject } from 'react';
 
 import { ThemeInterface } from '../../theme';
 import { Spinner } from '../Spinner';
 
 import { ContentWrapper, StyledButton } from './styled';
 
+interface PrivateProps {
+  forwardedRef: RefObject<HTMLButtonElement> | Ref<HTMLButtonElement>;
+}
+
 interface Props {
-  actionType: 'normal' | 'destructive';
+  actionType?: 'normal' | 'destructive';
   iconLeft?: React.ReactChild;
   iconOnly?: React.ReactChild;
   iconRight?: React.ReactChild;
-  isLoading: boolean;
-  spinner: React.ReactChild;
+  isLoading?: boolean;
+  spinner?: React.ReactChild;
   theme?: ThemeInterface;
-  variant: 'primary' | 'secondary' | 'subtle';
+  variant?: 'primary' | 'secondary' | 'subtle';
 }
 
 export type ButtonProps = Props & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export class Button extends React.PureComponent<ButtonProps> {
-  static defaultProps: Partial<ButtonProps> = {
-    actionType: 'normal',
-    isLoading: false,
-    spinner: <Spinner overlay={false} />,
-    variant: 'primary',
-  };
-
+class RawButton extends React.PureComponent<ButtonProps & PrivateProps> {
   render() {
-    const isLoading = this.props.isLoading;
+    const { forwardedRef, ...props } = this.props;
 
     return (
-      <StyledButton role="button" tabIndex={0} {...this.props} onClick={this.handleClick}>
-        {isLoading ? this.props.spinner : null}
-        <ContentWrapper isLoading={isLoading} theme={this.props.theme}>
-          {this.props.iconLeft}
-          {this.props.iconOnly}
-          {!this.props.iconOnly && this.props.children}
-          {this.props.iconRight}
+      <StyledButton role="button" tabIndex={0} {...props} onClick={this.handleClick} ref={forwardedRef}>
+        {props.isLoading ? props.spinner : null}
+        <ContentWrapper isLoading={props.isLoading} theme={props.theme}>
+          {props.iconLeft}
+          {props.iconOnly}
+          {!props.iconOnly && props.children}
+          {props.iconRight}
         </ContentWrapper>
       </StyledButton>
     );
@@ -50,3 +47,15 @@ export class Button extends React.PureComponent<ButtonProps> {
     }
   };
 }
+
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
+  <RawButton {...props} forwardedRef={ref} />
+));
+
+Button.displayName = 'Button';
+Button.defaultProps = {
+  actionType: 'normal',
+  isLoading: false,
+  spinner: <Spinner overlay={false} />,
+  variant: 'primary',
+};
