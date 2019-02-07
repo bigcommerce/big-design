@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sample test 1`] = `
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  border-style: solid;
+  border-width: 1px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-weight: 400;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 2.25rem;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c1[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c1 + .c0 {
+  margin-left: 1rem;
+}
+
+.c1:active {
+  background-color: #0B38D9;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+.c1:hover:not(:active) {
+  background-color: #2852EB;
+}
+
+.c1[disabled] {
+  background-color: #D9DCE9;
+}
+
+.c2 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+@media (min-width:720px) {
+  .c1 {
+    width: auto;
+  }
+}
+
+<button
+  className="c0 c1"
+  onClick={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <span
+    className="c2"
+  />
+</button>
+`;
