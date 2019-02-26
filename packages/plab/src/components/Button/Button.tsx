@@ -9,7 +9,7 @@ interface PrivateProps {
   forwardedRef: RefObject<HTMLButtonElement> | Ref<HTMLButtonElement>;
 }
 
-interface Props {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   actionType?: 'normal' | 'destructive';
   iconLeft?: React.ReactChild;
   iconOnly?: React.ReactChild;
@@ -19,8 +19,6 @@ interface Props {
   theme?: ThemeInterface;
   variant?: 'primary' | 'secondary' | 'subtle';
 }
-
-export type ButtonProps = Props & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 class RawButton extends React.PureComponent<ButtonProps & PrivateProps> {
   render() {
