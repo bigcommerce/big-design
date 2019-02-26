@@ -1,7 +1,8 @@
 {
-  "name": "plab-playground-default",
+  "name": "@bigcommerce/plab",
   "version": "1.0.0",
   "sideEffects": false,
+  "private": true,
   "main": "dist/index.js",
   "author": "BigCommerce Inc",
   "repository": "git@github.com:bigcommerce-labs/plab-playground.git",

@@ -1,0 +1,10 @@
+{
+  "name": "plab",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.13.0"
+  }
+}
