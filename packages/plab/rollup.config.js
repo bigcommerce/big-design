@@ -1,4 +1,6 @@
 import { tmpdir } from 'os';
+import { DEFAULT_EXTENSIONS } from '@babel/core';
+import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import filesize from 'rollup-plugin-filesize';
 import resolve from 'rollup-plugin-node-resolve';
@@ -13,10 +15,7 @@ const externals = [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.pe
 
 export default {
   input: `src/index.ts`,
-  output: [
-    { file: pkg.main, format: 'cjs', sourcemap: true },
-    { file: pkg.module, format: 'es', sourcemap: true }
-  ],
+  output: [{ file: pkg.main, format: 'cjs', sourcemap: true }, { file: pkg.module, format: 'es', sourcemap: true }],
   external: makeExternalPredicate(externals),
   watch: {
     include: 'src/**',
@@ -30,6 +29,10 @@ export default {
       check: nodeEnv === 'production',
       typescript: require('typescript'),
       useTsconfigDeclarationDir: true,
+    }),
+    babel({
+      extensions: [...DEFAULT_EXTENSIONS, 'ts', 'tsx'],
+      exclude: 'node_modules/**',
     }),
     commonjs(),
     resolve(),
