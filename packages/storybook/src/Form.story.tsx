@@ -1,17 +1,6 @@
+import { Button, Checkbox, Form, H2, Input, Panel, PlusIcon, Radio, Text } from '@bigcommerce/plab';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-
-import {
-  Button,
-  Checkbox,
-  Form,
-  PlusIcon,
-  Input,
-  Panel,
-  Radio,
-  H2,
-  Text
-} from '@bigcommerce/plab';
 
 storiesOf('Forms', module)
   .add('Overview', () => (
@@ -20,8 +9,8 @@ storiesOf('Forms', module)
         <H2>Form Field</H2>
 
         <Text>
-          Form fields examples. Implementation detail: id will be auto-generated
-          for input and label(for). Unless manually specifying one
+          Form fields examples. Implementation detail: id will be auto-generated for input and label(for). Unless
+          manually specifying one
         </Text>
 
         <Form>
@@ -87,41 +76,21 @@ storiesOf('Forms', module)
             </Form.Row>
           </Form.Fieldset>
 
-          <Form.Fieldset
-            legend="Checkboxes"
-            description="This is a description for checkboxes"
-          >
+          <Form.Fieldset legend="Checkboxes" description="This is a description for checkboxes">
             <Form.Row>
-              <Checkbox
-                label="Unchecked"
-                checked={false}
-                onChange={() => null}
-              />
+              <Checkbox label="Unchecked" checked={false} onChange={() => null} />
             </Form.Row>
             <Form.Row>
               <Checkbox label="Checked" checked={true} onChange={() => null} />
             </Form.Row>
           </Form.Fieldset>
 
-          <Form.Fieldset
-            legend="Radio buttons"
-            description="This is a description for radio buttons"
-          >
+          <Form.Fieldset legend="Radio buttons" description="This is a description for radio buttons">
             <Form.Row>
-              <Radio
-                label="Unchecked"
-                name="test-group"
-                checked={false}
-                onChange={() => null}
-              />
+              <Radio label="Unchecked" name="test-group" checked={false} onChange={() => null} />
             </Form.Row>
             <Form.Row>
-              <Radio
-                label="Checked"
-                name="test-group"
-                checked={true}
-                onChange={() => null}
-              />
+              <Radio label="Checked" name="test-group" checked={true} onChange={() => null} />
             </Form.Row>
           </Form.Fieldset>
         </Form>
@@ -134,9 +103,8 @@ storiesOf('Forms', module)
         <H2>Create your Avalara AvaTax account</H2>
 
         <Text>
-          Avalara AvaTax calculates sales tax automatically – and it’s
-          complimentary with your BigCommerce account. If you already have an
-          Avalara AvaTax account, please <a href="#">log in</a>.
+          Avalara AvaTax calculates sales tax automatically – and it’s complimentary with your BigCommerce account. If
+          you already have an Avalara AvaTax account, please <a href="#">log in</a>.
         </Text>
 
         <Form>
@@ -147,11 +115,7 @@ storiesOf('Forms', module)
             </Form.Row>
 
             <Form.Row>
-              <Input
-                label="Phone number"
-                value="+01 926186286"
-                onChange={() => null}
-              />
+              <Input label="Phone number" value="+01 926186286" onChange={() => null} />
             </Form.Row>
 
             <Form.Row>
@@ -180,27 +144,14 @@ storiesOf('Forms', module)
             description="Avalara AvaTax uses your business address as a starting point for figuring out where you need to collect and remit taxes."
           >
             <Form.Row>
-              <Input
-                label="Address"
-                value="1 Smail Street, Level 6, Suite 2"
-                onChange={() => null}
-              />
+              <Input label="Address" value="1 Smail Street, Level 6, Suite 2" onChange={() => null} />
             </Form.Row>
             <Form.Row>
               <Input label="City" value="Ultimo" onChange={() => null} />
             </Form.Row>
             <Form.Row>
-              <Input
-                label="State"
-                placeholder="Select a state"
-                error="Please select a state to continue."
-              />
-              <Input
-                label="Postal code"
-                value="207"
-                error="Invalid postcode."
-                onChange={() => null}
-              />
+              <Input label="State" placeholder="Select a state" error="Please select a state to continue." />
+              <Input label="Postal code" value="207" error="Invalid postcode." onChange={() => null} />
             </Form.Row>
           </Form.Fieldset>
 
@@ -209,11 +160,7 @@ storiesOf('Forms', module)
             description="Enter below the primary address where your products are shipped from. Including it helps Avalara AvaTax calculate your taxes with more accuracy."
           >
             <Form.Row>
-              <Checkbox
-                label="Same as primary business address"
-                checked
-                onChange={() => null}
-              />
+              <Checkbox label="Same as primary business address" checked onChange={() => null} />
             </Form.Row>
           </Form.Fieldset>
 

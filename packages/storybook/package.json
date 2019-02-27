@@ -1,12 +1,25 @@
 {
-  "name": "@bigcommerce/storybook",
+  "name": "@plab/storybook",
   "private": true,
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "start": "yarn run storybook",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build": "build-storybook",
+    "ci": "yarn run lint",
+    "lint": "yarn run lint:tslint && yarn run lint:tsc && yarn run lint:prettier",
+    "lint:prettier": "prettier --check 'src/**/*.{ts,tsx}'",
+    "lint:tsc": "tsc --noEmit",
+    "lint:tslint": "tslint -c tslint.json -p tsconfig.json",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "tslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "@bigcommerce/plab": "1.0.0",
@@ -16,6 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
+    "@plab/configs": "1.0.0",
     "@storybook/addon-a11y": "^4.1.13",
     "@storybook/addon-actions": "^4.1.13",
     "@storybook/addon-backgrounds": "^4.1.13",
@@ -37,7 +51,6 @@
     "@types/storybook__react": "^4.0.1",
     "@types/styled-components": "^4.1.10",
     "babel-loader": "^8.0.5",
-    "ts-loader": "^5.3.3",
-    "typescript": "^3.3.3333"
+    "ts-loader": "^5.3.3"
   }
 }

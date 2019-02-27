@@ -1,9 +1,8 @@
+import { Button, DropdownIcon, PlusIcon } from '@bigcommerce/plab';
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-
-import { Button, DropdownIcon, PlusIcon } from '@bigcommerce/plab';
 
 const variant = ['primary' as 'primary', 'secondary' as 'secondary', 'subtle' as 'subtle'];
 const actionType = ['normal' as 'normal', 'destructive' as 'destructive'];

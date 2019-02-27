@@ -1,7 +1,6 @@
+import { Grid, Lozenge } from '@bigcommerce/plab';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-
-import { Grid, Lozenge } from '@bigcommerce/plab';
 
 storiesOf('Lozenge', module).add('Overview', () => (
   <Grid style={{ margin: 16 }}>

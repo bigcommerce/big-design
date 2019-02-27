@@ -1,0 +1,5 @@
+{
+  "name": "@plab/configs/prettier",
+  "main": "prettier.config.js",
+  "private": true
+}

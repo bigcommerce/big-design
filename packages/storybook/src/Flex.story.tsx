@@ -1,8 +1,7 @@
+import { Flex } from '@bigcommerce/plab';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import styled from 'styled-components';
-
-import { Flex } from '@bigcommerce/plab';
 
 const OrangeBox = styled.div`
   background-color: orange;

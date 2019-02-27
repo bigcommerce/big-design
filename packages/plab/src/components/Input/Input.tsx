@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ThemeInterface } from '../../theme';
 import { uniqueId } from '../../utils';
-import ErrorIcon from '../Icons/ErrorIcon';
+import { ErrorIcon } from '../Icons';
 
 import { StyledErrorIconWrapper, StyledIconWrapper, StyledInput, StyledInputWrapper } from './styled';
 import { Description } from './Description';

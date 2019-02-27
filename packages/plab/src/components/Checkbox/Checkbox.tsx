@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { uniqueId } from '../../utils';
-import CheckIcon from '../Icons/CheckIcon';
+import { CheckIcon } from '../Icons';
 
 import { CheckboxContainer, HiddenCheckbox, StyledCheckbox, StyledLabel } from './styled';
 

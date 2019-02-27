@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { defaultTheme } from '../../theme';
-import LoadingIcon from '../Icons/LoadingIcon';
+import { LoadingIcon } from '../Icons';
 
 import { SpinnerWrapperProps } from './Spinner';
 

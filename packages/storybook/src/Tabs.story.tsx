@@ -1,7 +1,6 @@
+import { Panel, Tabs, Text } from '@bigcommerce/plab';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-
-import { Panel, Text, Tabs } from '@bigcommerce/plab';
 
 interface State {
   activeTab: string;
@@ -9,7 +8,7 @@ interface State {
 
 class TabsStory extends React.PureComponent<{}, State> {
   state = {
-    activeTab: 'tab1'
+    activeTab: 'tab1',
   };
 
   render() {
@@ -17,10 +16,7 @@ class TabsStory extends React.PureComponent<{}, State> {
 
     return (
       <>
-        <Tabs
-          activeTab={activeTab}
-          onTabClick={clickedTab => this.setState({ activeTab: clickedTab })}
-        >
+        <Tabs activeTab={activeTab} onTabClick={clickedTab => this.setState({ activeTab: clickedTab })}>
           <Tabs.Tab id="tab1">Example 1</Tabs.Tab>
           <Tabs.Tab id="tab2">Example 2</Tabs.Tab>
           <Tabs.Tab id="tab3">Example 3</Tabs.Tab>

@@ -1,6 +1,6 @@
+import { Grid } from '@bigcommerce/plab';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { Grid } from '@bigcommerce/plab';
 
 const template = `
   "head head" 80px

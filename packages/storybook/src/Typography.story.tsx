@@ -1,7 +1,6 @@
+import { H0, H1, H2, H3, H4, Small, Text } from '@bigcommerce/plab';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-
-import { H0, H1, H2, H3, H4, Small, Text } from '@bigcommerce/plab';
 
 storiesOf('Typography', module).add('Overview', () => (
   <div>
