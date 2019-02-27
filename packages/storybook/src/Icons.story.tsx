@@ -1,9 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import DropdownIcon from './DropdownIcon';
-import LoadingIcon from './LoadingIcon';
-import PlusIcon from './PlusIcon';
+import { DropdownIcon, LoadingIcon, PlusIcon } from '@bigcommerce/plab';
 
 storiesOf('Icons', module).add('Overview', () => (
   <div>

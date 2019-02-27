@@ -3,10 +3,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import DropdownIcon from '../Icons/DropdownIcon';
-import PlusIcon from '../Icons/PlusIcon';
-
-import { Button } from './Button';
+import { Button, DropdownIcon, PlusIcon } from '@bigcommerce/plab';
 
 const variant = ['primary' as 'primary', 'secondary' as 'secondary', 'subtle' as 'subtle'];
 const actionType = ['normal' as 'normal', 'destructive' as 'destructive'];

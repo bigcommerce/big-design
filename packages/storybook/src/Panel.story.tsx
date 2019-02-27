@@ -1,11 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Button } from '../Button';
-import { Flex } from '../Flex';
-import { H2, Text } from '../Typography';
-
-import { Panel } from './Panel';
+import { Button, Flex, H2, Text, Panel } from '@bigcommerce/plab';
 
 storiesOf('Panel', module).add('Overview', () => (
   <div style={{ padding: 50 }}>

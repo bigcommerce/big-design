@@ -2,10 +2,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Button } from '../Button';
-import { Text } from '../Typography';
-
-import { Spinner } from './Spinner';
+import { Button, Text, Spinner, } from '@bigcommerce/plab';
 
 const size = ['small' as 'small', 'medium' as 'medium', 'large' as 'large', 'xLarge' as 'xLarge'];
 

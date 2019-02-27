@@ -3,7 +3,7 @@ module.exports = (baseConfig, env, config) => {
     test: /\.(ts|tsx)$/,
     use: [
       {
-        loader: require.resolve('babel-loader'),
+        loader: require.resolve('ts-loader'),
       },
       {
         loader: require.resolve('@storybook/addon-storysource/loader'),
