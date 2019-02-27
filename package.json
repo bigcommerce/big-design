@@ -9,7 +9,7 @@
     "ci": "lerna run ci --stream",
     "diff": "lerna diff",
     "lint": "lerna run lint --stream",
-    "start": "lerna run start --stream",
+    "start": "lerna run start --stream --parallel",
     "test": "lerna run test --stream"
   },
   "husky": {
