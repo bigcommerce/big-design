@@ -6,7 +6,7 @@
   "scripts": {
     "start": "yarn run storybook",
     "storybook": "start-storybook -p 6006",
-    "build": "build-storybook",
+    "build-storybook": "build-storybook",
     "ci": "yarn run lint",
     "lint": "yarn run lint:tslint && yarn run lint:tsc && yarn run lint:prettier",
     "lint:prettier": "prettier --check 'src/**/*.{ts,tsx}'",
