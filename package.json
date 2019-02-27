@@ -6,7 +6,7 @@
   ],
   "scripts": {
     "build": "lerna run build --stream",
-    "ci": "yarn run build && lerna run ci --stream",
+    "ci": "lerna run ci --stream",
     "diff": "lerna diff",
     "lint": "lerna run lint --stream",
     "start": "lerna run start --stream",
