@@ -1,3 +1,4 @@
+import { DownshiftProps } from 'downshift';
 import { Placement } from 'popper.js';
 import React from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
@@ -11,6 +12,7 @@ import { DropdownItem } from './Item/Item';
 export interface DropdownProps {
   maxHeight?: number;
   placement?: Placement;
+  onChange?: DownshiftProps<DropdownItem>['onChange'];
 }
 
 export interface DropdownToggleProps {
@@ -55,11 +57,14 @@ export class Dropdown extends React.PureComponent<DropdownProps> {
   static Item = DropdownItem;
 
   render() {
-    const { children, maxHeight, placement } = this.props;
+    const { children, maxHeight, onChange, placement } = this.props;
 
     return (
       <Manager>
-        <Downshift itemToString={item => (item && item.props.value ? item.props.value.toString() : '')}>
+        <Downshift
+          itemToString={item => (item && item.props.value ? item.props.value.toString() : '')}
+          onChange={onChange}
+        >
           <Toggle component={Button} />
           <Menu maxHeight={maxHeight} placement={placement}>
             {children}

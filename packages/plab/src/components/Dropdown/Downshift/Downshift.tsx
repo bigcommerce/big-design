@@ -32,7 +32,7 @@ interface ItemProps<Item> extends DropdownItemProps, GetItemPropsOptions<Item> {
   children: ReactNode;
 }
 
-interface MenuProps extends DropdownProps, GetMenuPropsOptions, GetPropsCommonOptions {
+interface MenuProps extends Omit<DropdownProps, 'onChange'>, GetMenuPropsOptions, GetPropsCommonOptions {
   children: ReactNode;
 }
 
