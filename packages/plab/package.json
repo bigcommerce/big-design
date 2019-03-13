@@ -12,7 +12,6 @@
     "dist"
   ],
   "scripts": {
-    "prebuild": "rimraf dist",
     "build": "rollup -c rollup.config.js",
     "build:icons": "svgr --ext=tsx src/components/Icons/svg -d src/components/Icons",
     "ci": "yarn run lint && yarn run test && yarn run build",
