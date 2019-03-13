@@ -23,7 +23,7 @@ interface Downshift<Item> {
   downshift: DownshiftProps<Item> & PropGetters<Item>;
 }
 
-interface DownshiftCompProps<Item> extends Omit<DownshiftProps<Item>, 'children'> {
+interface DownshiftComponentsProps<Item> extends Omit<DownshiftProps<Item>, 'children'> {
   children: React.ReactNode[];
 }
 
@@ -37,7 +37,7 @@ interface MenuProps extends Omit<DropdownProps<DropdownItem>, 'onChange'>, GetMe
 
 type ToggleProps = DropdownToggleProps & GetToggleButtonPropsOptions;
 
-function DownshiftComponents({ children, ...rest }: DownshiftCompProps<DropdownItem>) {
+function DownshiftComponents({ children, ...rest }: DownshiftComponentsProps<DropdownItem>) {
   return (
     <Downshift {...rest}>
       {downshift => (

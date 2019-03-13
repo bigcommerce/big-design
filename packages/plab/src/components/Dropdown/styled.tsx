@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { defaultTheme } from '../../theme';
 
 import { DropdownProps } from './Dropdown';
+import { DropdownItem } from './Item/Item';
 
-export const StyledDropdown = styled.ul<DropdownProps>`
-  ${({ theme }) => theme.elevation.raised}
+export const StyledDropdown = styled.ul<DropdownProps<DropdownItem>>`
+  ${({ theme }) => theme.elevation.raised};
 
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.secondary70};
