@@ -13,12 +13,11 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { ComponentType, ReactNode } from 'react';
 import { FunctionComponent } from 'react';
 
+import { Omit } from '../../../types/shared';
 import { DropdownProps, DropdownToggleProps } from '../Dropdown';
 import { DropdownItem, DropdownItemProps } from '../Item/Item';
 
 const DownshiftContext = React.createContext({});
-
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 interface Downshift<Item> {
   downshift: DownshiftProps<Item> & PropGetters<Item>;
@@ -32,13 +31,13 @@ interface ItemProps<Item> extends DropdownItemProps, GetItemPropsOptions<Item> {
   children: ReactNode;
 }
 
-interface MenuProps extends Omit<DropdownProps, 'onChange'>, GetMenuPropsOptions, GetPropsCommonOptions {
+interface MenuProps extends Omit<DropdownProps<DropdownItem>, 'onChange'>, GetMenuPropsOptions, GetPropsCommonOptions {
   children: ReactNode;
 }
 
 type ToggleProps = DropdownToggleProps & GetToggleButtonPropsOptions;
 
-function DownshiftComps({ children, ...rest }: DownshiftCompProps<DropdownItem>) {
+function DownshiftComponents({ children, ...rest }: DownshiftCompProps<DropdownItem>) {
   return (
     <Downshift {...rest}>
       {downshift => (
@@ -70,9 +69,10 @@ function withDownshift(type: string, Component: any): ComponentType<any> {
       </DownshiftContext.Consumer>
     );
   }
+
   Wrapper.displayName = `withDownshift-${type}(${Component.displayName || Component.name})`;
 
   return hoistNonReactStatics(React.forwardRef(Wrapper), Component);
 }
 
-export { withDownshift, DownshiftComps as Downshift };
+export { withDownshift, DownshiftComponents as Downshift };

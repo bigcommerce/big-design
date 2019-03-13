@@ -1,11 +1,12 @@
 import React from 'react';
+import { AllHTMLAttributes } from 'react';
 
 import { withDownshift } from '../Downshift/Downshift';
 
 import { StyledDropdownItem } from './styled';
 
 export interface DropdownItemProps {
-  value?: string | string[] | number;
+  value?: AllHTMLAttributes<HTMLElement>['value'];
 }
 
 const Item = withDownshift('item', ({ downshift: { getItemProps }, children, value, ...rest }) => (
@@ -16,10 +17,10 @@ const Item = withDownshift('item', ({ downshift: { getItemProps }, children, val
 
 export class DropdownItem extends React.PureComponent<DropdownItemProps> {
   render() {
-    const { children, value } = this.props;
+    const { children, value, ...props } = this.props;
 
     return (
-      <Item value={value} item={this}>
+      <Item value={value} item={this} {...props}>
         {children}
       </Item>
     );

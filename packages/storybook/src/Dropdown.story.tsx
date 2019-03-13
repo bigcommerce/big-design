@@ -1,4 +1,5 @@
 import { Dropdown, Flex } from '@bigcommerce/plab';
+import { action } from '@storybook/addon-actions';
 import { number, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { Placement } from 'popper.js';
@@ -24,7 +25,11 @@ const placement: Placement[] = [
 
 storiesOf('Dropdown', module).add('Overview', () => (
   <Flex justifyContent="space-around">
-    <Dropdown maxHeight={number('maxHeight', 300)} placement={select('placement', placement, 'bottom')}>
+    <Dropdown
+      maxHeight={number('maxHeight', 300)}
+      onChange={action('onChange')}
+      placement={select('placement', placement, 'bottom')}
+    >
       <Dropdown.Item value={1}>Option</Dropdown.Item>
       <Dropdown.Item value={2}>Option</Dropdown.Item>
       <Dropdown.Item value={3}>Option</Dropdown.Item>
