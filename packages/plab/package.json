@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "downshift": "^3.2.6",
+    "hoist-non-react-statics": "^3.3.0",
     "polished": "^3.0.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
