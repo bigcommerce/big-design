@@ -5,5 +5,6 @@ This repo uses [Lerna](https://lernajs.io) + [Yarn Workspaces](https://yarnpkg.c
 To develop:
 ```
 yarn install
+yarn run build
 yarn run start
 ```
