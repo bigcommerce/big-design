@@ -14,8 +14,9 @@ import React, { ComponentType, ReactNode } from 'react';
 import { FunctionComponent } from 'react';
 
 import { Omit } from '../../../types/shared';
-import { DropdownProps, DropdownToggleProps } from '../Dropdown';
 import { DropdownItem, DropdownItemProps } from '../Item/Item';
+import { DropdownMenuProps } from '../Menu/Menu';
+import { DropdownTriggerProps } from '../Trigger/Trigger';
 
 const DownshiftContext = React.createContext({});
 
@@ -24,18 +25,18 @@ interface Downshift<Item> {
 }
 
 interface DownshiftComponentsProps<Item> extends Omit<DownshiftProps<Item>, 'children'> {
-  children: React.ReactNode[];
+  children: React.ReactNode;
 }
 
 interface ItemProps<Item> extends DropdownItemProps, GetItemPropsOptions<Item> {
   children: ReactNode;
 }
 
-interface MenuProps extends Omit<DropdownProps<DropdownItem>, 'onChange'>, GetMenuPropsOptions, GetPropsCommonOptions {
+interface MenuProps extends DropdownMenuProps, GetMenuPropsOptions, GetPropsCommonOptions {
   children: ReactNode;
 }
 
-type ToggleProps = DropdownToggleProps & GetToggleButtonPropsOptions;
+type TriggerProps = DropdownTriggerProps & GetToggleButtonPropsOptions;
 
 function DownshiftComponents({ children, ...rest }: DownshiftComponentsProps<DropdownItem>) {
   return (
@@ -50,9 +51,9 @@ function DownshiftComponents({ children, ...rest }: DownshiftComponentsProps<Dro
 }
 
 function withDownshift(
-  type: 'toggle',
-  Component: FunctionComponent<ToggleProps & Downshift<DropdownItem>>,
-): ComponentType<ToggleProps>;
+  type: 'trigger',
+  Component: FunctionComponent<TriggerProps & Downshift<DropdownItem>>,
+): ComponentType<TriggerProps>;
 function withDownshift(
   type: 'item',
   Component: FunctionComponent<ItemProps<DropdownItem> & Downshift<DropdownItem>>,

@@ -1,12 +1,11 @@
 import { rem } from 'polished';
 import styled from 'styled-components';
 
-import { defaultTheme } from '../../theme';
+import { defaultTheme } from '../../../theme';
 
-import { DropdownProps } from './Dropdown';
-import { DropdownItem } from './Item/Item';
+import { DropdownMenuProps } from './Menu';
 
-export const StyledDropdown = styled.ul<DropdownProps<DropdownItem>>`
+export const StyledDropdownMenu = styled.ul<DropdownMenuProps>`
   ${({ theme }) => theme.elevation.raised};
 
   background-color: ${({ theme }) => theme.colors.white};
@@ -18,4 +17,4 @@ export const StyledDropdown = styled.ul<DropdownProps<DropdownItem>>`
   padding: ${({ theme }) => theme.spacing.xSmall} 0;
 `;
 
-StyledDropdown.defaultProps = { theme: defaultTheme };
+StyledDropdownMenu.defaultProps = { theme: defaultTheme };
