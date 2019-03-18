@@ -32,7 +32,7 @@
     ]
   },
   "dependencies": {
-    "downshift": "^3.2.6",
+    "downshift": "^3.2.7",
     "hoist-non-react-statics": "^3.3.0",
     "polished": "^3.0.3",
     "react": "^16.8.4",
@@ -50,16 +50,16 @@
     "@svgr/cli": "^4.1.0",
     "@types/hoist-non-react-statics": "^3.3.0",
     "@types/jest": "^24.0.11",
-    "@types/react": "^16.8.7",
+    "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.0",
     "@types/react-test-renderer": "^16.0.2",
     "@types/styled-components": "^4.1.12",
     "babel-core": "^7.0.0-0",
-    "babel-jest": "^24.3.1",
+    "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-styled-components": "^1.10.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "jest": "^24.3.1",
+    "jest": "^24.5.0",
     "jest-styled-components": "^6.3.1",
     "react-test-renderer": "^16.8.4",
     "rimraf": "^2.6.3",
@@ -70,6 +70,6 @@
     "rollup-plugin-node-resolve": "^4.0.1",
     "rollup-plugin-replace": "^2.1.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-typescript2": "^0.19.3"
+    "rollup-plugin-typescript2": "^0.20.1"
   }
 }
