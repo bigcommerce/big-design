@@ -14,14 +14,15 @@ export type CheckboxProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 export class Checkbox extends React.PureComponent<CheckboxProps> {
   static Label = StyledLabel;
   private readonly uniqueId = uniqueId('checkBox_');
+  private readonly labelUniqueId = uniqueId('checkBox_label_');
 
   render() {
     const { checked, className, label, ...props } = this.props;
-    const id = this.getId();
+    const id = this.getInputId();
 
     return (
       <CheckboxContainer className={className}>
-        <HiddenCheckbox type="checkbox" checked={checked} id={id} {...props} />
+        <HiddenCheckbox type="checkbox" checked={checked} id={id} {...props} aria-labelledby={this.labelUniqueId} />
         <StyledCheckbox checked={checked} htmlFor={id} aria-hidden={true}>
           <CheckIcon size="small" />
         </StyledCheckbox>
@@ -30,23 +31,28 @@ export class Checkbox extends React.PureComponent<CheckboxProps> {
     );
   }
 
-  private getId() {
+  private getInputId() {
     const { id } = this.props;
 
     return id ? id : this.uniqueId;
   }
 
   private renderLabel() {
-    const id = this.getId();
+    const htmlFor = this.getInputId();
     const { label } = this.props;
 
     if (typeof label === 'string') {
-      return <StyledLabel htmlFor={id}>{label}</StyledLabel>;
+      return (
+        <StyledLabel htmlFor={htmlFor} id={this.labelUniqueId}>
+          {label}
+        </StyledLabel>
+      );
     }
 
     if (React.isValidElement(label) && label.type === Checkbox.Label) {
       return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
-        htmlFor: id,
+        htmlFor,
+        id: this.labelUniqueId,
       });
     }
 

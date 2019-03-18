@@ -5,7 +5,7 @@ interface Props {
   description?: React.ReactChild;
 }
 
-import { StyledFieldset, StyledFieldsetDescription, StyledFieldsetLegend, StyledInfoContainer } from './styled';
+import { StyledFieldset, StyledFieldsetDescription, StyledFieldsetLegend } from './styled';
 
 export type FieldsetProps = Props & React.FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
@@ -18,10 +18,8 @@ export class Fieldset extends React.PureComponent<FieldsetProps> {
 
     return (
       <StyledFieldset {...props}>
-        <StyledInfoContainer>
-          {this.renderLegend()}
-          {this.renderDescription()}
-        </StyledInfoContainer>
+        {this.renderLegend()}
+        {this.renderDescription()}
         {children}
       </StyledFieldset>
     );
