@@ -1,13 +1,11 @@
 import { GlobalStyle } from '@bigcommerce/plab';
-import { checkA11y } from '@storybook/addon-a11y';
+import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
-import { withViewport } from '@storybook/addon-viewport';
 import { addDecorator } from '@storybook/react';
 import React from 'react';
 
 addDecorator(withKnobs);
-addDecorator(checkA11y);
-addDecorator(withViewport());
+addDecorator(withA11y);
 
 addDecorator(storyFn => (
   <React.Fragment>
