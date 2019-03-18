@@ -7,6 +7,7 @@ function loadStories() {
 }
 
 addParameters({
+  viewport: {},
   backgrounds: [
     {
       default: true,
@@ -19,4 +20,5 @@ addParameters({
     },
   ],
 });
+
 configure(loadStories, module);
