@@ -7,8 +7,7 @@ import { Icon } from './Icon';
 
 export default class SvgLoadingIcon extends Icon {
   render() {
-    const props = this.props;
-    const { title } = props;
+    const { title, theme, ...props } = this.props;
     const size = this.getSize();
 
     return (
