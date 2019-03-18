@@ -24,16 +24,19 @@ export class Input extends React.PureComponent<InputProps> {
   static Description = Description;
   static Error = Error;
   static Label = Label;
-  private readonly uniqueId = uniqueId('checkBox_');
+  private readonly uniqueId = uniqueId('input_');
 
   render() {
+    const { description, label, ...rest } = this.props;
+    const id = this.getId();
+
     return (
       <div>
         {this.renderLabel()}
         {this.renderDescription()}
         <StyledInputWrapper>
           {this.renderIconLeft()}
-          <StyledInput {...this.props} />
+          <StyledInput {...rest} id={id} />
           {this.renderIconRight()}
           {this.renderErrorIcon()}
         </StyledInputWrapper>

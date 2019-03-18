@@ -13,21 +13,16 @@ export const StyledFieldset = styled.fieldset`
   }
 `;
 
-export const StyledInfoContainer = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.medium};
-`;
-
 export const StyledFieldsetDescription = styled(Small)``;
 
 export const StyledFieldsetLegend = styled(H3).attrs({
   as: 'legend',
 })`
   &:not(:last-child) {
-    margin: 0;
+    margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
   }
 `;
 
 StyledFieldset.defaultProps = { theme: defaultTheme };
 StyledFieldsetLegend.defaultProps = { theme: defaultTheme };
 StyledFieldsetDescription.defaultProps = { theme: defaultTheme };
-StyledInfoContainer.defaultProps = { theme: defaultTheme };

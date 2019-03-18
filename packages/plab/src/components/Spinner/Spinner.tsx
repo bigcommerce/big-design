@@ -9,20 +9,22 @@ export interface SpinnerProps {
   overlay: boolean;
   size: IconProps['size'];
   theme?: ThemeInterface;
+  title?: string;
 }
 
 export class Spinner extends React.PureComponent<SpinnerProps> {
   static defaultProps: Partial<SpinnerProps> = {
     overlay: true,
     size: 'large',
+    title: 'loading',
   };
 
   render() {
-    const { overlay, size, theme } = this.props;
+    const { overlay, size, theme, title } = this.props;
 
     return (
       <StyledSpinnerWrapper theme={theme} overlay={overlay}>
-        <StyledSpinner theme={theme} size={size} />
+        <StyledSpinner theme={theme} size={size} title={title} />
       </StyledSpinnerWrapper>
     );
   }
