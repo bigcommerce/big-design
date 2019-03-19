@@ -1,4 +1,5 @@
-import React from 'react';
+import hoistNonReactStatics from 'hoist-non-react-statics';
+import React, { Ref } from 'react';
 
 import { uniqueId } from '../../utils';
 
@@ -8,20 +9,31 @@ interface Props {
   label: React.ReactChild;
 }
 
+interface PrivateProps {
+  forwardedRef: Ref<HTMLInputElement>;
+}
+
 export type RadioProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
-export class Radio extends React.PureComponent<RadioProps> {
+class RawRadio extends React.PureComponent<RadioProps & PrivateProps> {
   static Label = StyledLabel;
   private readonly uniqueId = uniqueId('radio_');
   private readonly labelUniqueId = uniqueId('checkBox_label_');
 
   render() {
-    const { checked, className, label, ...props } = this.props;
+    const { checked, className, label, forwardedRef, ...props } = this.props;
     const id = this.getInputId();
 
     return (
       <RadioContainer className={className}>
-        <HiddenRadio type="radio" checked={checked} id={id} {...props} aria-labelledby={this.labelUniqueId} />
+        <HiddenRadio
+          type="radio"
+          checked={checked}
+          id={id}
+          {...props}
+          aria-labelledby={this.labelUniqueId}
+          ref={forwardedRef}
+        />
         <StyledRadio checked={checked} htmlFor={id} aria-hidden={true} />
         {this.renderLabel()}
       </RadioContainer>
@@ -56,3 +68,9 @@ export class Radio extends React.PureComponent<RadioProps> {
     return null;
   }
 }
+
+const RadioWithForwardedRef = React.forwardRef<HTMLInputElement, RadioProps>((props, ref) => (
+  <RawRadio {...props} forwardedRef={ref} />
+));
+
+export const Radio = hoistNonReactStatics(RadioWithForwardedRef, RawRadio);
