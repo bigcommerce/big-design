@@ -1,5 +1,5 @@
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import React, { Ref, RefObject } from 'react';
+import React, { Ref } from 'react';
 
 import { StyledForm } from './styled';
 import { Actions } from './Actions';
@@ -7,7 +7,7 @@ import { Fieldset } from './Fieldset';
 import { Row } from './Row';
 
 interface PrivateProps {
-  forwardedRef: RefObject<HTMLFormElement> | Ref<HTMLFormElement>;
+  forwardedRef: Ref<HTMLFormElement>;
 }
 
 type FormProps = React.FormHTMLAttributes<HTMLFormElement>;
