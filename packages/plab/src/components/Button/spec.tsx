@@ -1,10 +1,8 @@
 import 'jest-styled-components';
 import React from 'react';
-import { cleanup, render } from 'react-testing-library';
+import { render } from 'react-testing-library';
 
 import { Button } from './Button';
-
-afterEach(cleanup);
 
 test('render default button', () => {
   const { container } = render(<Button>Button</Button>);
