@@ -1,4 +1,4 @@
-import React, { Ref, RefObject } from 'react';
+import React, { Ref } from 'react';
 
 import { ThemeInterface } from '../../theme';
 import { Spinner } from '../Spinner';
@@ -6,7 +6,7 @@ import { Spinner } from '../Spinner';
 import { ContentWrapper, StyledButton } from './styled';
 
 interface PrivateProps {
-  forwardedRef: RefObject<HTMLButtonElement> | Ref<HTMLButtonElement>;
+  forwardedRef: Ref<HTMLButtonElement>;
 }
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

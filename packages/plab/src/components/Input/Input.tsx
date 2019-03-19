@@ -1,4 +1,5 @@
-import React from 'react';
+import hoistNonReactStatics from 'hoist-non-react-statics';
+import React, { Ref } from 'react';
 
 import { ThemeInterface } from '../../theme';
 import { uniqueId } from '../../utils';
@@ -20,14 +21,18 @@ interface Props {
 
 export type InputProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
-export class Input extends React.PureComponent<InputProps> {
+interface PrivateProps {
+  forwardedRef: Ref<HTMLInputElement>;
+}
+
+class RawInput extends React.PureComponent<InputProps & PrivateProps> {
   static Description = Description;
   static Error = Error;
   static Label = Label;
   private readonly uniqueId = uniqueId('input_');
 
   render() {
-    const { description, label, ...rest } = this.props;
+    const { description, label, forwardedRef, ...rest } = this.props;
     const id = this.getId();
 
     return (
@@ -36,7 +41,7 @@ export class Input extends React.PureComponent<InputProps> {
         {this.renderDescription()}
         <StyledInputWrapper>
           {this.renderIconLeft()}
-          <StyledInput {...rest} id={id} />
+          <StyledInput {...rest} id={id} ref={forwardedRef} />
           {this.renderIconRight()}
           {this.renderErrorIcon()}
         </StyledInputWrapper>
@@ -124,3 +129,9 @@ export class Input extends React.PureComponent<InputProps> {
     return <StyledIconWrapper position="right">{this.props.iconRight}</StyledIconWrapper>;
   }
 }
+
+const InputWithForwardedRef = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => (
+  <RawInput {...props} forwardedRef={ref} />
+));
+
+export const Input = hoistNonReactStatics(InputWithForwardedRef, RawInput);
