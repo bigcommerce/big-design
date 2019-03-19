@@ -1,16 +1,31 @@
-import React from 'react';
+import hoistNonReactStatics from 'hoist-non-react-statics';
+import React, { Ref, RefObject } from 'react';
 
 import { StyledForm } from './styled';
 import { Actions } from './Actions';
 import { Fieldset } from './Fieldset';
 import { Row } from './Row';
 
-export class Form extends React.PureComponent<{}> {
+interface PrivateProps {
+  forwardedRef: RefObject<HTMLFormElement> | Ref<HTMLFormElement>;
+}
+
+type FormProps = React.FormHTMLAttributes<HTMLFormElement>;
+
+class RawForm extends React.PureComponent<PrivateProps & FormProps> {
   static Actions = Actions;
   static Fieldset = Fieldset;
   static Row = Row;
 
   render() {
-    return <StyledForm {...this.props} />;
+    const { forwardedRef, ...props } = this.props;
+
+    return <StyledForm {...props} ref={forwardedRef} />;
   }
 }
+
+const FormWithForwardedRef = React.forwardRef<HTMLFormElement, FormProps>((props, ref) => (
+  <RawForm {...props} forwardedRef={ref} />
+));
+
+export const Form = hoistNonReactStatics(FormWithForwardedRef, RawForm);
