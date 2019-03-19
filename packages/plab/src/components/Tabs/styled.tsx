@@ -5,9 +5,7 @@ import { Button } from '../Button';
 
 import { TabProps } from './Tabs';
 
-export const StyledTabs = styled.div.attrs({ role: 'tablist' })`
-  border-bottom: ${({ theme }) => theme.border.box};
-`;
+export const StyledTabs = styled.div.attrs({ role: 'tablist' })``;
 
 export const StyledTab = styled(Button).attrs<TabProps>(props => ({
   role: 'tab',
