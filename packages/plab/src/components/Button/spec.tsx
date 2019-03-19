@@ -1,119 +1,107 @@
 import 'jest-styled-components';
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { cleanup, render } from 'react-testing-library';
 
 import { Button } from './Button';
 
-test('render default button', () => {
-  const tree = renderer.create(<Button>Button</Button>).toJSON();
+afterEach(cleanup);
 
-  expect(tree).toMatchSnapshot();
+test('render default button', () => {
+  const { container } = render(<Button>Button</Button>);
+
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render disabled button', () => {
-  const tree = renderer.create(<Button disabled>Button</Button>).toJSON();
+  const { container } = render(<Button disabled>Button</Button>);
 
-  expect(tree).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render destructive button', () => {
-  const tree = renderer.create(<Button actionType="destructive">Button</Button>).toJSON();
+  const { container } = render(<Button actionType="destructive">Button</Button>);
 
-  expect(tree).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render destructive disabled button', () => {
-  const tree = renderer
-    .create(
-      <Button actionType="destructive" disabled>
-        Button
-      </Button>,
-    )
-    .toJSON();
+  const { container } = render(
+    <Button actionType="destructive" disabled>
+      Button
+    </Button>,
+  );
 
-  expect(tree).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render secondary button', () => {
-  const tree = renderer.create(<Button variant="secondary">Button</Button>).toJSON();
+  const { container } = render(<Button variant="secondary">Button</Button>);
 
-  expect(tree).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render secondary disabled button', () => {
-  const tree = renderer
-    .create(
-      <Button variant="secondary" disabled>
-        Button
-      </Button>,
-    )
-    .toJSON();
+  const { container } = render(
+    <Button variant="secondary" disabled>
+      Button
+    </Button>,
+  );
 
-  expect(tree).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render secondary destructive button', () => {
-  const tree = renderer
-    .create(
-      <Button variant="secondary" actionType="destructive">
-        Button
-      </Button>,
-    )
-    .toJSON();
+  const { container } = render(
+    <Button variant="secondary" actionType="destructive">
+      Button
+    </Button>,
+  );
 
-  expect(tree).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render secondary destructive disabled button', () => {
-  const tree = renderer
-    .create(
-      <Button variant="secondary" actionType="destructive" disabled>
-        Button
-      </Button>,
-    )
-    .toJSON();
+  const { container } = render(
+    <Button variant="secondary" actionType="destructive" disabled>
+      Button
+    </Button>,
+  );
 
-  expect(tree).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render subtle button', () => {
-  const tree = renderer.create(<Button variant="subtle">Button</Button>).toJSON();
+  const { container } = render(<Button variant="subtle">Button</Button>);
 
-  expect(tree).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render subtle disabled button', () => {
-  const tree = renderer
-    .create(
-      <Button variant="subtle" disabled>
-        Button
-      </Button>,
-    )
-    .toJSON();
+  const { container } = render(
+    <Button variant="subtle" disabled>
+      Button
+    </Button>,
+  );
 
-  expect(tree).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render subtle destructive button', () => {
-  const tree = renderer
-    .create(
-      <Button variant="subtle" actionType="destructive">
-        Button
-      </Button>,
-    )
-    .toJSON();
+  const { container } = render(
+    <Button variant="subtle" actionType="destructive">
+      Button
+    </Button>,
+  );
 
-  expect(tree).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render subtle destructive disabled button', () => {
-  const tree = renderer
-    .create(
-      <Button variant="subtle" actionType="destructive" disabled>
-        Button
-      </Button>,
-    )
-    .toJSON();
+  const { container } = render(
+    <Button variant="subtle" actionType="destructive" disabled>
+      Button
+    </Button>,
+  );
 
-  expect(tree).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });

@@ -6,9 +6,11 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        targets: {
-          browsers: ['last 2 versions', 'not ie < 11', 'not Baidu > 0', 'not QQAndroid > 0', 'not Android < 62'],
-        },
+        targets: isTestEnv
+          ? { node: 'current' }
+          : {
+              browsers: ['last 2 versions', 'not ie < 11', 'not Baidu > 0', 'not QQAndroid > 0', 'not Android < 62'],
+            },
         modules: isTestEnv ? 'auto' : false,
       },
     ],

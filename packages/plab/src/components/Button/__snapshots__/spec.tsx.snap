@@ -96,13 +96,12 @@ exports[`render default button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  onClick={[Function]}
+  class="c0 c1"
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
@@ -209,13 +208,12 @@ exports[`render destructive button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  onClick={[Function]}
+  class="c0 c1"
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
@@ -322,14 +320,13 @@ exports[`render destructive disabled button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  disabled={true}
-  onClick={[Function]}
+  class="c0 c1"
+  disabled=""
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
@@ -432,14 +429,13 @@ exports[`render disabled button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  disabled={true}
-  onClick={[Function]}
+  class="c0 c1"
+  disabled=""
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
@@ -550,13 +546,12 @@ exports[`render secondary button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  onClick={[Function]}
+  class="c0 c1"
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
@@ -671,13 +666,12 @@ exports[`render secondary destructive button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  onClick={[Function]}
+  class="c0 c1"
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
@@ -792,14 +786,13 @@ exports[`render secondary destructive disabled button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  disabled={true}
-  onClick={[Function]}
+  class="c0 c1"
+  disabled=""
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
@@ -910,14 +903,13 @@ exports[`render secondary disabled button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  disabled={true}
-  onClick={[Function]}
+  class="c0 c1"
+  disabled=""
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
@@ -1037,13 +1029,12 @@ exports[`render subtle button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  onClick={[Function]}
+  class="c0 c1"
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
@@ -1167,13 +1158,12 @@ exports[`render subtle destructive button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  onClick={[Function]}
+  class="c0 c1"
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
@@ -1297,14 +1287,13 @@ exports[`render subtle destructive disabled button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  disabled={true}
-  onClick={[Function]}
+  class="c0 c1"
+  disabled=""
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
@@ -1424,14 +1413,13 @@ exports[`render subtle disabled button 1`] = `
 }
 
 <button
-  className="c0 c1"
-  disabled={true}
-  onClick={[Function]}
+  class="c0 c1"
+  disabled=""
   role="button"
-  tabIndex={0}
+  tabindex="0"
 >
   <span
-    className="c2"
+    class="c2"
   >
     Button
   </span>
