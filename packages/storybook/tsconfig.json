@@ -3,9 +3,9 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
-    "rootDirs": ["src", "stories"],
+    "rootDirs": ["stories"],
     "baseUrl": "src"
   },
-  "include": ["src/**/*"],
+  "include": ["stories/**/*"],
   "exclude": ["node_modules", "build", "scripts"]
 }
