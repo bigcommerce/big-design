@@ -19,11 +19,11 @@ interface Props {
   theme?: ThemeInterface;
 }
 
-export type InputProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
-
 interface PrivateProps {
   forwardedRef: Ref<HTMLInputElement>;
 }
+
+export type InputProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
 class RawInput extends React.PureComponent<InputProps & PrivateProps> {
   static Description = Description;

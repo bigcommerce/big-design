@@ -1,4 +1,5 @@
-import React from 'react';
+import hoistNonReactStatics from 'hoist-non-react-statics';
+import React, { Ref } from 'react';
 
 import { uniqueId } from '../../utils';
 import { CheckIcon } from '../Icons';
@@ -9,20 +10,31 @@ interface Props {
   label: React.ReactChild;
 }
 
+interface PrivateProps {
+  forwardedRef: Ref<HTMLInputElement>;
+}
+
 export type CheckboxProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
-export class Checkbox extends React.PureComponent<CheckboxProps> {
+class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
   static Label = StyledLabel;
   private readonly uniqueId = uniqueId('checkBox_');
   private readonly labelUniqueId = uniqueId('checkBox_label_');
 
   render() {
-    const { checked, className, label, ...props } = this.props;
+    const { checked, className, label, forwardedRef, ...props } = this.props;
     const id = this.getInputId();
 
     return (
       <CheckboxContainer className={className}>
-        <HiddenCheckbox type="checkbox" checked={checked} id={id} {...props} aria-labelledby={this.labelUniqueId} />
+        <HiddenCheckbox
+          type="checkbox"
+          checked={checked}
+          id={id}
+          {...props}
+          aria-labelledby={this.labelUniqueId}
+          ref={forwardedRef}
+        />
         <StyledCheckbox checked={checked} htmlFor={id} aria-hidden={true}>
           <CheckIcon size="small" />
         </StyledCheckbox>
@@ -59,3 +71,9 @@ export class Checkbox extends React.PureComponent<CheckboxProps> {
     return null;
   }
 }
+
+const CheckboxWithForwardedRef = React.forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => (
+  <RawCheckbox {...props} forwardedRef={ref} />
+));
+
+export const Checkbox = hoistNonReactStatics(CheckboxWithForwardedRef, RawCheckbox);
