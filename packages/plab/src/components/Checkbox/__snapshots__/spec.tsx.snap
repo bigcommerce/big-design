@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Checkbox (checked) 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #3C64F4;
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
+  border-color: #3C64F4;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 1.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1.25rem;
+}
+
+.c1:focus + .c3 {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+.c3 svg {
+  visibility: visible;
+}
+
+.c4 {
+  margin-left: 1rem;
+}
+
+<div
+  class="c0"
+>
+  <input
+    aria-labelledby="checkBox_label_2"
+    checked=""
+    class="c1 c2"
+    id="checkBox_1"
+    type="checkbox"
+  />
+  <label
+    aria-hidden="true"
+    class="c3"
+    for="checkBox_1"
+  >
+    <svg
+      fill="none"
+      height="0.75rem"
+      viewBox="0 0 10 10"
+      width="0.75rem"
+    >
+      <title />
+      <path
+        d="M1 6.105L3.667 8 9 2"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
+    </svg>
+  </label>
+  <label
+    class="c4"
+    for="checkBox_1"
+    id="checkBox_label_2"
+  >
+    Checked
+  </label>
+</div>
+`;
+
+exports[`render Checkbox (unchecked) 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c1:focus + .c5 {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
+  border-color: #D9DCE9;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 1.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1.25rem;
+}
+
+.c1:focus + .c3 {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+.c3 svg {
+  visibility: hidden;
+}
+
+.c4 {
+  margin-left: 1rem;
+}
+
+<div
+  class="c0"
+>
+  <input
+    aria-labelledby="checkBox_label_4"
+    class="c1 c2"
+    id="checkBox_3"
+    type="checkbox"
+  />
+  <label
+    aria-hidden="true"
+    class="c3"
+    for="checkBox_3"
+  >
+    <svg
+      fill="none"
+      height="0.75rem"
+      viewBox="0 0 10 10"
+      width="0.75rem"
+    >
+      <title />
+      <path
+        d="M1 6.105L3.667 8 9 2"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      />
+    </svg>
+  </label>
+  <label
+    class="c4"
+    for="checkBox_3"
+    id="checkBox_label_4"
+  >
+    Unchecked
+  </label>
+</div>
+`;
