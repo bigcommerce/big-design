@@ -42,7 +42,7 @@ export const StyledButton = styled.button<ButtonProps>`
     margin-left: ${({ theme }) => theme.spacing.medium};
   }
 
-  ${({ theme }) => theme.breakpoints.medium} {
+  ${({ theme }) => theme.breakpoints.tablet} {
     width: auto;
   }
 

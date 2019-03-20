@@ -3,6 +3,7 @@ import { rem } from 'polished';
 import { ThemeOptions } from '../index';
 
 export interface Spacing {
+  none: 0;
   xxSmall: string;
   xSmall: string;
   small: string;
@@ -14,6 +15,7 @@ export interface Spacing {
 }
 
 export const createSpacing = (options: ThemeOptions): Spacing => ({
+  none: 0,
   xxSmall: rem(4, options.htmlFontSize),
   xSmall: rem(8, options.htmlFontSize),
   small: rem(12, options.htmlFontSize),

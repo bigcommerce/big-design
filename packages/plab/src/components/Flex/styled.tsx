@@ -10,7 +10,7 @@ export const StyledFlex = styled.div<FlexProps>`
   align-items: ${({ alignItems }) => alignItems};
   justify-content: ${({ justifyContent }) => justifyContent};
 
-  ${({ theme }) => theme.breakpoints.medium} {
+  ${({ theme }) => theme.breakpoints.tablet} {
     flex-direction: ${({ flexDirection }) => flexDirection};
   }
 `;
