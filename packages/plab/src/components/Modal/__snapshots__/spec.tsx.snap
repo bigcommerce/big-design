@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render closed modal 1`] = `
+<body>
+  <div />
+  <div />
+</body>
+`;
+
+exports[`render open modal 1`] = `
+.c0 {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(94,99,122,0.8);
+}
+
+.c1 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
+  background: #FFFFFF;
+  padding: 1.5rem;
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+<body>
+  <div />
+  <div>
+    <div
+      aria-modal="true"
+      class="c0"
+      role="dialog"
+      tabindex="-1"
+    >
+      <div
+        class="c1"
+      >
+        This is a modal
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`render open modal without backdrop 1`] = `
+<body>
+  <div />
+  .c0 {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.c1 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
+  background: #FFFFFF;
+  padding: 1.5rem;
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+<div>
+    <div
+      aria-modal="true"
+      class="c0"
+      role="dialog"
+      tabindex="-1"
+    >
+      <div
+        class="c1"
+      >
+        This is a modal
+      </div>
+    </div>
+  </div>
+</body>
+`;

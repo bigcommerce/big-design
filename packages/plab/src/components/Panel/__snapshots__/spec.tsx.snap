@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render panel 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
+  background-color: #FFFFFF;
+  margin: 0 0 2rem;
+  padding: 2rem;
+}
+
+.c0:last-child {
+  margin: 0;
+}
+
+<section
+  class="c0"
+>
+  Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris Lorem irure sit esse nulla mollit aliquip consectetur velit
+</section>
+`;
