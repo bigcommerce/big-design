@@ -4,7 +4,7 @@
   "sideEffects": false,
   "main": "dist/plab.cjs.js",
   "module": "dist/plab.es.js",
-  "typings": "dist/index.d.ts",
+  "typings": "dist/src/index.d.ts",
   "author": "BigCommerce Inc",
   "repository": "git@github.com:bigcommerce-labs/plab-playground.git",
   "license": "UNLICENSED",
