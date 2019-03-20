@@ -442,6 +442,816 @@ exports[`render disabled button 1`] = `
 </button>
 `;
 
+exports[`render icon left and right button 1`] = `
+.c3 + .c0 {
+  margin-left: 1rem;
+}
+
+.c4 + .c0 {
+  margin-left: 1rem;
+}
+
+.c5 + .c0 {
+  margin-left: 1rem;
+}
+
+.c6 + .c0 {
+  margin-left: 1rem;
+}
+
+.c7 + .c0 {
+  margin-left: 1rem;
+}
+
+.c8 + .c0 {
+  margin-left: 1rem;
+}
+
+.c9 + .c0 {
+  margin-left: 1rem;
+}
+
+.c10 + .c0 {
+  margin-left: 1rem;
+}
+
+.c11 + .c0 {
+  margin-left: 1rem;
+}
+
+.c12 + .c0 {
+  margin-left: 1rem;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  border-style: solid;
+  border-width: 1px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-weight: 400;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 2.25rem;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c1[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c1 + .c0 {
+  margin-left: 1rem;
+}
+
+.c1:active {
+  background-color: #0B38D9;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+.c1:hover:not(:active) {
+  background-color: #2852EB;
+}
+
+.c1[disabled] {
+  background-color: #D9DCE9;
+}
+
+.c2 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+@media (min-width:720px) {
+  .c1 {
+    width: auto;
+  }
+}
+
+<button
+  class="c0 c1"
+  role="button"
+  tabindex="0"
+>
+  <span
+    class="c2"
+  >
+    <svg
+      fill="none"
+      height="1.25rem"
+      viewBox="0 0 20 20"
+      width="1.25rem"
+    >
+      <title />
+      <path
+        d="M16 11h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H4c-.55 0-1-.45-1-1s.45-1 1-1h5V4c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1z"
+        fill="currentColor"
+      />
+    </svg>
+    Button
+    <svg
+      fill="none"
+      height="1.25rem"
+      viewBox="0 0 20 20"
+      width="1.25rem"
+    >
+      <title />
+      <path
+        d="M16 11h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H4c-.55 0-1-.45-1-1s.45-1 1-1h5V4c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1z"
+        fill="currentColor"
+      />
+    </svg>
+  </span>
+</button>
+`;
+
+exports[`render icon left button 1`] = `
+.c3 + .c0 {
+  margin-left: 1rem;
+}
+
+.c4 + .c0 {
+  margin-left: 1rem;
+}
+
+.c5 + .c0 {
+  margin-left: 1rem;
+}
+
+.c6 + .c0 {
+  margin-left: 1rem;
+}
+
+.c7 + .c0 {
+  margin-left: 1rem;
+}
+
+.c8 + .c0 {
+  margin-left: 1rem;
+}
+
+.c9 + .c0 {
+  margin-left: 1rem;
+}
+
+.c10 + .c0 {
+  margin-left: 1rem;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  border-style: solid;
+  border-width: 1px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-weight: 400;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 2.25rem;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  padding-left: 0.5rem;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c1[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c1 + .c0 {
+  margin-left: 1rem;
+}
+
+.c1:active {
+  background-color: #0B38D9;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+.c1:hover:not(:active) {
+  background-color: #2852EB;
+}
+
+.c1[disabled] {
+  background-color: #D9DCE9;
+}
+
+.c2 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+@media (min-width:720px) {
+  .c1 {
+    width: auto;
+  }
+}
+
+<button
+  class="c0 c1"
+  role="button"
+  tabindex="0"
+>
+  <span
+    class="c2"
+  >
+    <svg
+      fill="none"
+      height="1.25rem"
+      viewBox="0 0 20 20"
+      width="1.25rem"
+    >
+      <title />
+      <path
+        d="M16 11h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H4c-.55 0-1-.45-1-1s.45-1 1-1h5V4c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1z"
+        fill="currentColor"
+      />
+    </svg>
+    Button
+  </span>
+</button>
+`;
+
+exports[`render icon only button 1`] = `
+.c3 + .c0 {
+  margin-left: 1rem;
+}
+
+.c4 + .c0 {
+  margin-left: 1rem;
+}
+
+.c5 + .c0 {
+  margin-left: 1rem;
+}
+
+.c6 + .c0 {
+  margin-left: 1rem;
+}
+
+.c7 + .c0 {
+  margin-left: 1rem;
+}
+
+.c8 + .c0 {
+  margin-left: 1rem;
+}
+
+.c9 + .c0 {
+  margin-left: 1rem;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  border-style: solid;
+  border-width: 1px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-weight: 400;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 2.25rem;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  padding: 0 0.5rem;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c1[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c1 + .c0 {
+  margin-left: 1rem;
+}
+
+.c1:active {
+  background-color: #0B38D9;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+.c1:hover:not(:active) {
+  background-color: #2852EB;
+}
+
+.c1[disabled] {
+  background-color: #D9DCE9;
+}
+
+.c2 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+@media (min-width:720px) {
+  .c1 {
+    width: auto;
+  }
+}
+
+<button
+  class="c0 c1"
+  role="button"
+  tabindex="0"
+>
+  <span
+    class="c2"
+  >
+    <svg
+      fill="none"
+      height="1.25rem"
+      viewBox="0 0 20 20"
+      width="1.25rem"
+    >
+      <title />
+      <path
+        d="M16 11h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H4c-.55 0-1-.45-1-1s.45-1 1-1h5V4c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1z"
+        fill="currentColor"
+      />
+    </svg>
+  </span>
+</button>
+`;
+
+exports[`render icon right button 1`] = `
+.c3 + .c0 {
+  margin-left: 1rem;
+}
+
+.c4 + .c0 {
+  margin-left: 1rem;
+}
+
+.c5 + .c0 {
+  margin-left: 1rem;
+}
+
+.c6 + .c0 {
+  margin-left: 1rem;
+}
+
+.c7 + .c0 {
+  margin-left: 1rem;
+}
+
+.c8 + .c0 {
+  margin-left: 1rem;
+}
+
+.c9 + .c0 {
+  margin-left: 1rem;
+}
+
+.c10 + .c0 {
+  margin-left: 1rem;
+}
+
+.c11 + .c0 {
+  margin-left: 1rem;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  border-style: solid;
+  border-width: 1px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-weight: 400;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 2.25rem;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  padding-right: 0.5rem;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c1[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c1 + .c0 {
+  margin-left: 1rem;
+}
+
+.c1:active {
+  background-color: #0B38D9;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+.c1:hover:not(:active) {
+  background-color: #2852EB;
+}
+
+.c1[disabled] {
+  background-color: #D9DCE9;
+}
+
+.c2 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+@media (min-width:720px) {
+  .c1 {
+    width: auto;
+  }
+}
+
+<button
+  class="c0 c1"
+  role="button"
+  tabindex="0"
+>
+  <span
+    class="c2"
+  >
+    Button
+    <svg
+      fill="none"
+      height="1.25rem"
+      viewBox="0 0 20 20"
+      width="1.25rem"
+    >
+      <title />
+      <path
+        d="M16 11h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H4c-.55 0-1-.45-1-1s.45-1 1-1h5V4c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1z"
+        fill="currentColor"
+      />
+    </svg>
+  </span>
+</button>
+`;
+
+exports[`render loading button 1`] = `
+.c2 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+  width: 100%;
+}
+
+.c3 {
+  -webkit-animation: iVXCSc 1s linear infinite;
+  animation: iVXCSc 1s linear infinite;
+  position: absolute;
+}
+
+.c5 + .c0 {
+  margin-left: 1rem;
+}
+
+.c6 + .c0 {
+  margin-left: 1rem;
+}
+
+.c7 + .c0 {
+  margin-left: 1rem;
+}
+
+.c8 + .c0 {
+  margin-left: 1rem;
+}
+
+.c9 + .c0 {
+  margin-left: 1rem;
+}
+
+.c10 + .c0 {
+  margin-left: 1rem;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  border-style: solid;
+  border-width: 1px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-weight: 400;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 2.25rem;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: none;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c1[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c1 + .c0 {
+  margin-left: 1rem;
+}
+
+.c1:active {
+  background-color: #0B38D9;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+.c1:hover:not(:active) {
+  background-color: #2852EB;
+}
+
+.c1[disabled] {
+  background-color: #D9DCE9;
+}
+
+.c4 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: hidden;
+}
+
+@media (min-width:720px) {
+  .c1 {
+    width: auto;
+  }
+}
+
+<button
+  class="c0 c1"
+  role="button"
+  tabindex="0"
+>
+  <div
+    class="c2"
+  >
+    <svg
+      class="c3"
+      fill="none"
+      height="1.25rem"
+      viewBox="0 0 20 20"
+      width="1.25rem"
+    >
+      <title>
+        loading
+      </title>
+      <path
+        d="M18 10a8 8 0 1 0-8 8v-2.29A5.709 5.709 0 1 1 15.71 10H18z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <span
+    class="c4"
+  >
+    Button
+  </span>
+</button>
+`;
+
 exports[`render secondary button 1`] = `
 .c3 + .c0 {
   margin-left: 1rem;
