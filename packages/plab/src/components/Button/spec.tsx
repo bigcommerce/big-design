@@ -162,13 +162,15 @@ test('triggers onClick', () => {
 });
 
 test('does not forward styles', () => {
-  const { container } = render(<Button className="test" />);
+  const { container } = render(<Button className="test" style={{ background: 'red' }} />);
 
   expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
 test('private StyleableButton forwards styles', () => {
-  const { container } = render(<StyleableButton className="test" />);
+  const { container } = render(<StyleableButton className="test" style={{ background: 'red' }} />);
 
   expect(container.getElementsByClassName('test').length).toBe(1);
+  expect(container.firstChild).toHaveStyle('background: red');
 });

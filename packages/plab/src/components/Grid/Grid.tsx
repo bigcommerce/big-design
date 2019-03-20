@@ -18,8 +18,6 @@ export class Grid extends React.PureComponent<GridProps> {
   static Item = GridItem;
 
   render() {
-    const { className, ...props } = this.props;
-
-    return <StyledGrid {...props} />;
+    return <StyledGrid {...this.props} />;
   }
 }

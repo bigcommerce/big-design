@@ -8,9 +8,8 @@ export interface TabProps {
   activeTab?: string;
 }
 
-export interface TabsProps {
+export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   activeTab?: string;
-  className?: string;
   onTabClick(tabId: string): void;
 }
 
@@ -18,7 +17,7 @@ export class Tabs extends React.PureComponent<TabsProps> {
   static Tab = Tab;
 
   render() {
-    const { children, className, onTabClick, ...props } = this.props;
+    const { children, className, onTabClick, style, role, ...props } = this.props;
 
     return <StyledTabs {...props}>{this.renderChildren()}</StyledTabs>;
   }

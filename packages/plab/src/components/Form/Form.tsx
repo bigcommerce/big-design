@@ -24,7 +24,7 @@ class StyleableForm extends React.PureComponent<PrivateProps & FormProps> {
   }
 }
 
-const FormWithForwardedRef = React.forwardRef<HTMLFormElement, FormProps>(({ className, ...props }, ref) => (
+const FormWithForwardedRef = React.forwardRef<HTMLFormElement, FormProps>(({ className, style, ...props }, ref) => (
   <StyleableForm {...props} forwardedRef={ref} />
 ));
 

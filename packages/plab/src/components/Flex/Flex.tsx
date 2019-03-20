@@ -2,7 +2,7 @@ import React from 'react';
 
 import { StyledFlex } from './styled';
 
-export interface FlexProps {
+export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
   alignItems?: 'normal' | 'stretch' | 'center' | 'flex-start' | 'flex-end' | 'baseline';
   flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   justifyContent?:

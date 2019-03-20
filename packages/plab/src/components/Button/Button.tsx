@@ -50,7 +50,7 @@ export const StyleableButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   <RawButton {...props} forwardedRef={ref} />
 ));
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, ...props }, ref) => (
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, style, ...props }, ref) => (
   <RawButton {...props} forwardedRef={ref} />
 ));
 

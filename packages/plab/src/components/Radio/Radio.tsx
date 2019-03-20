@@ -21,11 +21,11 @@ class RawRadio extends React.PureComponent<RadioProps & PrivateProps> {
   private readonly labelUniqueId = uniqueId('checkBox_label_');
 
   render() {
-    const { checked, className, label, forwardedRef, ...props } = this.props;
+    const { checked, className, label, forwardedRef, style, ...props } = this.props;
     const id = this.getInputId();
 
     return (
-      <RadioContainer className={className}>
+      <RadioContainer className={className} style={style}>
         <HiddenRadio
           type="radio"
           checked={checked}
@@ -69,7 +69,7 @@ class RawRadio extends React.PureComponent<RadioProps & PrivateProps> {
   }
 }
 
-const RadioWithForwardedRef = React.forwardRef<HTMLInputElement, RadioProps>(({ className, ...props }, ref) => (
+const RadioWithForwardedRef = React.forwardRef<HTMLInputElement, RadioProps>(({ className, style, ...props }, ref) => (
   <RawRadio {...props} forwardedRef={ref} />
 ));
 
