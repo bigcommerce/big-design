@@ -11,7 +11,7 @@ interface StyledRowProps {
 export const StyledRow = styled.div<StyledRowProps>`
   margin-bottom: ${({ theme }) => theme.spacing.medium};
 
-  ${({ theme }) => theme.breakpoints.medium} {
+  ${({ theme }) => theme.breakpoints.tablet} {
     display: grid;
     grid-gap: ${({ theme }) => theme.spacing.medium};
 
