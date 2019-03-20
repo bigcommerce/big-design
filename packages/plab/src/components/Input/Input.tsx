@@ -25,7 +25,7 @@ interface PrivateProps {
 
 export type InputProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
-class RawInput extends React.PureComponent<InputProps & PrivateProps> {
+class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
   static Description = Description;
   static Error = Error;
   static Label = Label;
@@ -130,8 +130,8 @@ class RawInput extends React.PureComponent<InputProps & PrivateProps> {
   }
 }
 
-const InputWithForwardedRef = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => (
-  <RawInput {...props} forwardedRef={ref} />
+const InputWithForwardedRef = React.forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => (
+  <StyleableInput {...props} forwardedRef={ref} />
 ));
 
-export const Input = hoistNonReactStatics(InputWithForwardedRef, RawInput);
+export const Input = hoistNonReactStatics(InputWithForwardedRef, StyleableInput);

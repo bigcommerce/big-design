@@ -1,1 +1,1 @@
-export * from './Fieldset';
+export { Fieldset, FieldsetProps } from './Fieldset';

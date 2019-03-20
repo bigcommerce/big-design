@@ -1,8 +1,8 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 
 import { StyledGridItem } from './styled';
 
-export interface GridItemProps {
+export interface GridItemProps extends React.HTMLAttributes<HTMLDivElement> {
   area?: string | number;
   column?: string | number;
   columnEnd?: string | number;
@@ -10,7 +10,6 @@ export interface GridItemProps {
   row?: string | number;
   rowEnd?: string | number;
   rowStart?: string | number;
-  style?: CSSProperties;
 }
 
-export const GridItem: React.SFC<GridItemProps> = props => <StyledGridItem {...props} />;
+export const GridItem: React.FC<GridItemProps> = ({ className, ...props }) => <StyledGridItem {...props} />;

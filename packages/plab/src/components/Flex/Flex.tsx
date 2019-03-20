@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 
 import { StyledFlex } from './styled';
 
@@ -16,7 +16,6 @@ export interface FlexProps {
     | 'space-around'
     | 'space-evenly'
     | 'stretch';
-  styles?: CSSProperties;
 }
 
-export const Flex: React.SFC<FlexProps> = props => <StyledFlex {...props} />;
+export const Flex: React.FC<FlexProps> = props => <StyledFlex {...props} />;

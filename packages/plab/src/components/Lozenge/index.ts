@@ -1,1 +1,1 @@
-export * from './Lozenge';
+export { Lozenge, LozengeProps } from './Lozenge';

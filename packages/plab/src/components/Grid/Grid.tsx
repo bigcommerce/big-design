@@ -1,9 +1,9 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 
 import { StyledGrid } from './styled';
 import { GridItem } from './Item/Item';
 
-export interface GridProps {
+export interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
   areas?: string;
   autoColumns?: string | number;
   autoFlow?: 'row' | 'column' | 'dense' | 'row dense' | 'column dense' | 'inherit' | 'initial' | 'unset';
@@ -11,7 +11,6 @@ export interface GridProps {
   columns?: string | number;
   gap?: string | number;
   rows?: string | number;
-  style?: CSSProperties;
   template?: string;
 }
 
@@ -19,6 +18,8 @@ export class Grid extends React.PureComponent<GridProps> {
   static Item = GridItem;
 
   render() {
-    return <StyledGrid {...this.props} />;
+    const { className, ...props } = this.props;
+
+    return <StyledGrid {...props} />;
   }
 }

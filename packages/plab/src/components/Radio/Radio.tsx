@@ -69,8 +69,15 @@ class RawRadio extends React.PureComponent<RadioProps & PrivateProps> {
   }
 }
 
-const RadioWithForwardedRef = React.forwardRef<HTMLInputElement, RadioProps>((props, ref) => (
+const RadioWithForwardedRef = React.forwardRef<HTMLInputElement, RadioProps>(({ className, ...props }, ref) => (
   <RawRadio {...props} forwardedRef={ref} />
 ));
 
 export const Radio = hoistNonReactStatics(RadioWithForwardedRef, RawRadio);
+
+export const StyleableRadio = React.forwardRef<HTMLInputElement, RadioProps>((props, ref) => (
+  <RawRadio {...props} forwardedRef={ref} />
+));
+
+Radio.displayName = 'Radio';
+StyleableRadio.displayName = 'StyleableRadio';

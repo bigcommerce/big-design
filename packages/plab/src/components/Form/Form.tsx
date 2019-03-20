@@ -12,7 +12,7 @@ interface PrivateProps {
 
 type FormProps = React.FormHTMLAttributes<HTMLFormElement>;
 
-class RawForm extends React.PureComponent<PrivateProps & FormProps> {
+class StyleableForm extends React.PureComponent<PrivateProps & FormProps> {
   static Actions = Actions;
   static Fieldset = Fieldset;
   static Row = Row;
@@ -24,8 +24,8 @@ class RawForm extends React.PureComponent<PrivateProps & FormProps> {
   }
 }
 
-const FormWithForwardedRef = React.forwardRef<HTMLFormElement, FormProps>((props, ref) => (
-  <RawForm {...props} forwardedRef={ref} />
+const FormWithForwardedRef = React.forwardRef<HTMLFormElement, FormProps>(({ className, ...props }, ref) => (
+  <StyleableForm {...props} forwardedRef={ref} />
 ));
 
-export const Form = hoistNonReactStatics(FormWithForwardedRef, RawForm);
+export const Form = hoistNonReactStatics(FormWithForwardedRef, StyleableForm);

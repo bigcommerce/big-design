@@ -1,1 +1,1 @@
-export * from './Tabs';
+export { Tabs, TabProps, TabsProps } from './Tabs';

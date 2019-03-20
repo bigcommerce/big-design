@@ -5,7 +5,7 @@ import { addValues } from '../../theme/helpers/addition';
 
 import { ButtonProps } from './index';
 
-export const StyledButton = styled('button')<ButtonProps>`
+export const StyledButton = styled.button<ButtonProps>`
   align-items: center;
   appearance: none;
   border-radius: ${({ theme }) => theme.border.radius};

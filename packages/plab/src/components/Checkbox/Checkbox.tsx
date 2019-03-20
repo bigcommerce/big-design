@@ -72,8 +72,15 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
   }
 }
 
-const CheckboxWithForwardedRef = React.forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => (
+const CheckboxWithForwardedRef = React.forwardRef<HTMLInputElement, CheckboxProps>(({ className, ...props }, ref) => (
   <RawCheckbox {...props} forwardedRef={ref} />
 ));
 
 export const Checkbox = hoistNonReactStatics(CheckboxWithForwardedRef, RawCheckbox);
+
+export const StyleableCheckbox = React.forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => (
+  <RawCheckbox {...props} forwardedRef={ref} />
+));
+
+Checkbox.displayName = 'Checkbox';
+StyleableCheckbox.displayName = 'StyleableCheckbox';

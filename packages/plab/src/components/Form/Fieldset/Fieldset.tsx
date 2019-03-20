@@ -14,7 +14,7 @@ export class Fieldset extends React.PureComponent<FieldsetProps> {
   static Description = StyledFieldsetDescription;
 
   render() {
-    const { legend, description, children, ...props } = this.props;
+    const { className, legend, description, children, ...props } = this.props;
 
     return (
       <StyledFieldset {...props}>

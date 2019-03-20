@@ -4,7 +4,8 @@ import { fireEvent, render } from 'react-testing-library';
 
 import { PlusIcon } from '../Icons';
 
-import { Button } from './Button';
+import { Button } from './index';
+import { StyleableButton } from './private';
 
 test('render default button', () => {
   const { container } = render(<Button>Button</Button>);
@@ -158,4 +159,16 @@ test('triggers onClick', () => {
   fireEvent.click(button);
 
   expect(onClick).toHaveBeenCalled();
+});
+
+test('does not forward styles', () => {
+  const { container } = render(<Button className="test" />);
+
+  expect(container.getElementsByClassName('test').length).toBe(0);
+});
+
+test('private StyleableButton forwards styles', () => {
+  const { container } = render(<StyleableButton className="test" />);
+
+  expect(container.getElementsByClassName('test').length).toBe(1);
 });
