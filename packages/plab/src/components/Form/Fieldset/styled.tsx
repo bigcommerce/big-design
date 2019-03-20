@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { DefaultTheme, StyledComponent } from 'styled-components';
 
 import { defaultTheme } from '../../../theme';
-import { H3, Small } from '../../Typography';
+import { StyleableH3, StyleableSmall } from '../../Typography/private';
 
 export const StyledFieldset = styled.fieldset`
   border: none;
@@ -13,15 +13,15 @@ export const StyledFieldset = styled.fieldset`
   }
 `;
 
-export const StyledFieldsetDescription = styled(Small)``;
+export const StyledFieldsetDescription = styled(StyleableSmall)``;
 
-export const StyledFieldsetLegend = styled(H3).attrs({
+export const StyledFieldsetLegend = styled(StyleableH3).attrs({
   as: 'legend',
 })`
   &:not(:last-child) {
     margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
   }
-`;
+` as StyledComponent<'legend', DefaultTheme>;
 
 StyledFieldset.defaultProps = { theme: defaultTheme };
 StyledFieldsetLegend.defaultProps = { theme: defaultTheme };

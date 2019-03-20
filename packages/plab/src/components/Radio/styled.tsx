@@ -1,8 +1,8 @@
 import { hideVisually } from 'polished';
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 
 import { defaultTheme } from '../../theme';
-import { Text } from '../Typography';
+import { StyleableText } from '../Typography/private';
 
 interface StyledRadioProps {
   checked?: boolean;
@@ -17,11 +17,11 @@ export const HiddenRadio = styled.input`
   ${hideVisually()}
 `;
 
-export const StyledLabel = styled(Text).attrs({
+export const StyledLabel = styled(StyleableText).attrs({
   as: 'label',
 })<React.LabelHTMLAttributes<HTMLLabelElement>>`
   margin-left: ${({ theme }) => theme.spacing.medium};
-`;
+` as StyledComponent<'label', DefaultTheme>;
 
 export const StyledRadio = styled.label<StyledRadioProps>`
   border-radius: 50%;

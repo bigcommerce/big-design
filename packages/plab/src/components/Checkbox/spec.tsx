@@ -2,7 +2,8 @@ import 'jest-styled-components';
 import React from 'react';
 import { fireEvent, render } from 'react-testing-library';
 
-import { Checkbox } from './Checkbox';
+import { Checkbox } from './index';
+import { StyleableCheckbox } from './private';
 
 test('render Checkbox (checked)', () => {
   const { container } = render(<Checkbox label="Checked" checked={true} onChange={() => null} />);
@@ -64,4 +65,16 @@ test('forwards ref', () => {
   const input = container.querySelector('input');
 
   expect(input).toBe(ref.current);
+});
+
+test('does not forward styles', () => {
+  const { container } = render(<Checkbox label="Checked" className="test" />);
+
+  expect(container.getElementsByClassName('test').length).toBe(0);
+});
+
+test('private StyleableCheckbox forwards styles', () => {
+  const { container } = render(<StyleableCheckbox label="Checked" className="test" />);
+
+  expect(container.getElementsByClassName('test').length).toBe(1);
 });

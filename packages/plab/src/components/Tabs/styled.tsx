@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
 
 import { defaultTheme } from '../../theme';
-import { Button } from '../Button';
+import { StyleableButton } from '../Button/private';
 
 import { TabProps } from './Tabs';
 
 export const StyledTabs = styled.div.attrs({ role: 'tablist' })``;
 
-export const StyledTab = styled(Button).attrs<TabProps>(props => ({
+export const StyledTab = styled(StyleableButton).attrs<TabProps>(props => ({
   role: 'tab',
   tabIndex: props.id === props.activeTab ? -1 : 0,
 }))<TabProps>`

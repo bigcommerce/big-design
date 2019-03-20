@@ -2,7 +2,8 @@ import 'jest-styled-components';
 import React from 'react';
 import { fireEvent, render } from 'react-testing-library';
 
-import { Radio } from './Radio';
+import { Radio } from './index';
+import { StyleableRadio } from './private';
 
 test('render Radio (checked)', () => {
   const { container } = render(<Radio label="Checked" name="test-group" checked={true} onChange={() => null} />);
@@ -58,4 +59,16 @@ test('forwards ref', () => {
   const input = container.querySelector('input');
 
   expect(input).toBe(ref.current);
+});
+
+test('does not forward styles', () => {
+  const { container } = render(<Radio label="Checked" className="test" />);
+
+  expect(container.getElementsByClassName('test').length).toBe(0);
+});
+
+test('private version forwards styles', () => {
+  const { container } = render(<StyleableRadio label="Checked" className="test" />);
+
+  expect(container.getElementsByClassName('test').length).toBe(1);
 });

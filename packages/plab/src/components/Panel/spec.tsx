@@ -15,3 +15,15 @@ test('render panel', () => {
 
   expect(container.firstChild).toMatchSnapshot();
 });
+
+test('does not forward styles', () => {
+  const { container } = render(
+    <Panel className="test">
+      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur officia ex. Ipsum eiusmod
+      fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse deserunt nostrud ipsum id adipisicing enim velit
+      labore. Nulla exercitation laborum laboris Lorem irure sit esse nulla mollit aliquip consectetur velit
+    </Panel>,
+  );
+
+  expect(container.getElementsByClassName('test').length).toBe(0);
+});

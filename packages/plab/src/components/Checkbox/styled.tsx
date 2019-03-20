@@ -1,8 +1,8 @@
 import { hideVisually } from 'polished';
-import styled from 'styled-components';
+import styled, { DefaultTheme, StyledComponent } from 'styled-components';
 
 import { defaultTheme } from '../../theme';
-import { Text } from '../Typography';
+import { StyleableText } from '../Typography/private';
 
 interface StyledCheckboxProps {
   checked?: boolean;
@@ -40,11 +40,11 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   }
 `;
 
-export const StyledLabel = styled(Text).attrs({
+export const StyledLabel = styled(StyleableText).attrs({
   as: 'label',
 })<React.LabelHTMLAttributes<HTMLLabelElement>>`
   margin-left: ${({ theme }) => theme.spacing.medium};
-`;
+` as StyledComponent<'label', DefaultTheme>;
 
 StyledCheckbox.defaultProps = { theme: defaultTheme };
 StyledLabel.defaultProps = { theme: defaultTheme };

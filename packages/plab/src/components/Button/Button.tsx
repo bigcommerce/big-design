@@ -46,14 +46,23 @@ class RawButton extends React.PureComponent<ButtonProps & PrivateProps> {
   };
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
+export const StyleableButton = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
   <RawButton {...props} forwardedRef={ref} />
 ));
 
-Button.displayName = 'Button';
-Button.defaultProps = {
-  actionType: 'normal',
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, ...props }, ref) => (
+  <RawButton {...props} forwardedRef={ref} />
+));
+
+const defaultProps = {
+  actionType: 'normal' as 'normal',
   isLoading: false,
   spinner: <Spinner overlay={false} />,
-  variant: 'primary',
+  variant: 'primary' as 'primary',
 };
+
+Button.displayName = 'Button';
+Button.defaultProps = { ...defaultProps };
+
+StyleableButton.displayName = 'StyleableButton';
+StyleableButton.defaultProps = { ...defaultProps };

@@ -38,10 +38,10 @@ export class Modal extends React.PureComponent<ModalProps> {
   }
 
   render() {
-    const { children, isOpen, onRequestClose, ...props } = this.props;
+    const { backdrop, children, isOpen } = this.props;
 
     const modalContent = (
-      <StyledModal onKeyDown={this.onKeyDown} onClick={this.onClickAway} ref={this.modalRef} {...props}>
+      <StyledModal onKeyDown={this.onKeyDown} onClick={this.onClickAway} ref={this.modalRef} backdrop={backdrop}>
         <StyledModalContent>{children}</StyledModalContent>
       </StyledModal>
     );

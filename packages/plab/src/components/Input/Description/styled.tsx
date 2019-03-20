@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 import { defaultTheme } from '../../../theme';
-import { Small } from '../../Typography';
+import { StyleableSmall } from '../../Typography/private';
 
-export const StyledDescription = styled(Small)``;
+export const StyledDescription = styled(StyleableSmall)``;
 
 StyledDescription.defaultProps = { theme: defaultTheme };

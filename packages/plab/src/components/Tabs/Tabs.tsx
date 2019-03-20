@@ -18,7 +18,7 @@ export class Tabs extends React.PureComponent<TabsProps> {
   static Tab = Tab;
 
   render() {
-    const { children, onTabClick, ...props } = this.props;
+    const { children, className, onTabClick, ...props } = this.props;
 
     return <StyledTabs {...props}>{this.renderChildren()}</StyledTabs>;
   }

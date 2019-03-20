@@ -2,10 +2,13 @@ import React from 'react';
 
 import { StyledRow } from './styled';
 
-export class Row extends React.PureComponent {
-  render() {
-    const childrenCount = React.Children.count(this.props.children);
+type Props = React.HTMLAttributes<HTMLDivElement>;
 
-    return <StyledRow childrenCount={childrenCount} {...this.props} />;
+export class Row extends React.PureComponent<Props> {
+  render() {
+    const { className, ...props } = this.props;
+    const childrenCount = React.Children.count(props.children);
+
+    return <StyledRow childrenCount={childrenCount} {...props} />;
   }
 }
