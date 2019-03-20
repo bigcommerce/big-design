@@ -1,6 +1,8 @@
 import 'jest-styled-components';
 import React from 'react';
-import { render } from 'react-testing-library';
+import { fireEvent, render } from 'react-testing-library';
+
+import { PlusIcon } from '../Icons';
 
 import { Button } from './Button';
 
@@ -102,4 +104,58 @@ test('render subtle destructive disabled button', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
+});
+
+test('render loading button', () => {
+  const { container } = render(<Button isLoading={true}>Button</Button>);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+test('render icon only button', () => {
+  const { container } = render(<Button iconOnly={<PlusIcon />}>Button</Button>);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+test('render icon left button', () => {
+  const { container } = render(<Button iconLeft={<PlusIcon />}>Button</Button>);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+test('render icon right button', () => {
+  const { container } = render(<Button iconRight={<PlusIcon />}>Button</Button>);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+test('render icon left and right button', () => {
+  const { container } = render(
+    <Button iconLeft={<PlusIcon />} iconRight={<PlusIcon />}>
+      Button
+    </Button>,
+  );
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+test('forwards ref', () => {
+  const ref = React.createRef<HTMLButtonElement>();
+
+  const { container } = render(<Button ref={ref} />);
+  const button = container.querySelector('button');
+
+  expect(button).toBe(ref.current);
+});
+
+test('triggers onClick', () => {
+  const onClick = jest.fn();
+
+  const { container } = render(<Button onClick={onClick} />);
+  const button = container.firstChild as HTMLElement;
+
+  fireEvent.click(button);
+
+  expect(onClick).toHaveBeenCalled();
 });

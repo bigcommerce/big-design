@@ -54,5 +54,14 @@ test('triggers onChange when clicking styled and text label', () => {
 
   labels.forEach(label => fireEvent.click(label));
 
-  expect(onChange.mock.calls.length).toBe(2);
+  expect(onChange).toHaveBeenCalledTimes(2);
+});
+
+test('forwards ref', () => {
+  const ref = React.createRef<HTMLInputElement>();
+
+  const { container } = render(<Checkbox ref={ref} label="Checked" data-testid="checkbox" />);
+  const input = container.querySelector('input');
+
+  expect(input).toBe(ref.current);
 });
