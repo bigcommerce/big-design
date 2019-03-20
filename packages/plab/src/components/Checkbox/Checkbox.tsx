@@ -22,11 +22,11 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
   private readonly labelUniqueId = uniqueId('checkBox_label_');
 
   render() {
-    const { checked, className, label, forwardedRef, ...props } = this.props;
+    const { checked, className, label, forwardedRef, style, ...props } = this.props;
     const id = this.getInputId();
 
     return (
-      <CheckboxContainer className={className}>
+      <CheckboxContainer className={className} style={style}>
         <HiddenCheckbox
           type="checkbox"
           checked={checked}
@@ -72,9 +72,9 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
   }
 }
 
-const CheckboxWithForwardedRef = React.forwardRef<HTMLInputElement, CheckboxProps>(({ className, ...props }, ref) => (
-  <RawCheckbox {...props} forwardedRef={ref} />
-));
+const CheckboxWithForwardedRef = React.forwardRef<HTMLInputElement, CheckboxProps>(
+  ({ className, style, ...props }, ref) => <RawCheckbox {...props} forwardedRef={ref} />,
+);
 
 export const Checkbox = hoistNonReactStatics(CheckboxWithForwardedRef, RawCheckbox);
 

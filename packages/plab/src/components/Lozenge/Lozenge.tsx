@@ -6,4 +6,4 @@ export interface LozengeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: 'danger' | 'primary' | 'secondary' | 'success' | 'warning';
 }
 
-export const Lozenge: React.FC<LozengeProps> = ({ className, ...props }) => <StyledLozenge {...props} />;
+export const Lozenge: React.FC<LozengeProps> = ({ className, style, ...props }) => <StyledLozenge {...props} />;

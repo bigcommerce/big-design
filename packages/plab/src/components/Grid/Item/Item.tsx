@@ -12,4 +12,4 @@ export interface GridItemProps extends React.HTMLAttributes<HTMLDivElement> {
   rowStart?: string | number;
 }
 
-export const GridItem: React.FC<GridItemProps> = ({ className, ...props }) => <StyledGridItem {...props} />;
+export const GridItem: React.FC<GridItemProps> = props => <StyledGridItem {...props} />;

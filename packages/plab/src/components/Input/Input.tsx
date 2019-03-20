@@ -130,7 +130,7 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
   }
 }
 
-const InputWithForwardedRef = React.forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => (
+const InputWithForwardedRef = React.forwardRef<HTMLInputElement, InputProps>(({ className, style, ...props }, ref) => (
   <StyleableInput {...props} forwardedRef={ref} />
 ));
 

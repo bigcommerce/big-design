@@ -68,13 +68,15 @@ test('forwards ref', () => {
 });
 
 test('does not forward styles', () => {
-  const { container } = render(<Checkbox label="Checked" className="test" />);
+  const { container } = render(<Checkbox label="Checked" className="test" style={{ background: 'red' }} />);
 
   expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
 test('private StyleableCheckbox forwards styles', () => {
-  const { container } = render(<StyleableCheckbox label="Checked" className="test" />);
+  const { container } = render(<StyleableCheckbox label="Checked" className="test" style={{ background: 'red' }} />);
 
   expect(container.getElementsByClassName('test').length).toBe(1);
+  expect(container.firstChild).toHaveStyle('background: red');
 });
