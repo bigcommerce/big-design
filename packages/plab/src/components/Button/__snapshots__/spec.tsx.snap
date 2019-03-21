@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render default button 1`] = `
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -9,9 +11,6 @@ exports[`render default button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -46,36 +45,32 @@ exports[`render default button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -90,18 +85,18 @@ exports[`render default button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -109,11 +104,9 @@ exports[`render default button 1`] = `
 `;
 
 exports[`render destructive button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -121,9 +114,6 @@ exports[`render destructive button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -158,36 +148,32 @@ exports[`render destructive button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #AD0000;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #CC1F1F;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -202,18 +188,18 @@ exports[`render destructive button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -221,11 +207,9 @@ exports[`render destructive button 1`] = `
 `;
 
 exports[`render destructive disabled button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -233,9 +217,6 @@ exports[`render destructive disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -270,36 +251,32 @@ exports[`render destructive disabled button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #AD0000;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #CC1F1F;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -314,19 +291,19 @@ exports[`render destructive disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -334,7 +311,9 @@ exports[`render destructive disabled button 1`] = `
 `;
 
 exports[`render disabled button 1`] = `
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -342,9 +321,6 @@ exports[`render disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -379,36 +355,32 @@ exports[`render disabled button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -423,19 +395,19 @@ exports[`render disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -443,47 +415,9 @@ exports[`render disabled button 1`] = `
 `;
 
 exports[`render icon left and right button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c5 + .c0 {
-  margin-left: 1rem;
-}
-
-.c6 + .c0 {
-  margin-left: 1rem;
-}
-
-.c7 + .c0 {
-  margin-left: 1rem;
-}
-
-.c8 + .c0 {
-  margin-left: 1rem;
-}
-
-.c9 + .c0 {
-  margin-left: 1rem;
-}
-
-.c10 + .c0 {
-  margin-left: 1rem;
-}
-
-.c11 + .c0 {
-  margin-left: 1rem;
-}
-
-.c12 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -491,9 +425,6 @@ exports[`render icon left and right button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -530,36 +461,32 @@ exports[`render icon left and right button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -574,18 +501,18 @@ exports[`render icon left and right button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     <svg
       fill="none"
@@ -617,39 +544,9 @@ exports[`render icon left and right button 1`] = `
 `;
 
 exports[`render icon left button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c5 + .c0 {
-  margin-left: 1rem;
-}
-
-.c6 + .c0 {
-  margin-left: 1rem;
-}
-
-.c7 + .c0 {
-  margin-left: 1rem;
-}
-
-.c8 + .c0 {
-  margin-left: 1rem;
-}
-
-.c9 + .c0 {
-  margin-left: 1rem;
-}
-
-.c10 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -657,9 +554,6 @@ exports[`render icon left button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -695,36 +589,32 @@ exports[`render icon left button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -739,18 +629,18 @@ exports[`render icon left button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     <svg
       fill="none"
@@ -770,35 +660,9 @@ exports[`render icon left button 1`] = `
 `;
 
 exports[`render icon only button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c5 + .c0 {
-  margin-left: 1rem;
-}
-
-.c6 + .c0 {
-  margin-left: 1rem;
-}
-
-.c7 + .c0 {
-  margin-left: 1rem;
-}
-
-.c8 + .c0 {
-  margin-left: 1rem;
-}
-
-.c9 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -806,9 +670,6 @@ exports[`render icon only button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -844,36 +705,32 @@ exports[`render icon only button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -888,18 +745,18 @@ exports[`render icon only button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     <svg
       fill="none"
@@ -918,43 +775,9 @@ exports[`render icon only button 1`] = `
 `;
 
 exports[`render icon right button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c5 + .c0 {
-  margin-left: 1rem;
-}
-
-.c6 + .c0 {
-  margin-left: 1rem;
-}
-
-.c7 + .c0 {
-  margin-left: 1rem;
-}
-
-.c8 + .c0 {
-  margin-left: 1rem;
-}
-
-.c9 + .c0 {
-  margin-left: 1rem;
-}
-
-.c10 + .c0 {
-  margin-left: 1rem;
-}
-
-.c11 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -962,9 +785,6 @@ exports[`render icon right button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1000,36 +820,32 @@ exports[`render icon right button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1044,18 +860,18 @@ exports[`render icon right button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
     <svg
@@ -1075,7 +891,7 @@ exports[`render icon right button 1`] = `
 `;
 
 exports[`render loading button 1`] = `
-.c2 {
+.c1 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1096,37 +912,15 @@ exports[`render loading button 1`] = `
   width: 100%;
 }
 
-.c3 {
+.c2 {
   -webkit-animation: iVXCSc 1s linear infinite;
   animation: iVXCSc 1s linear infinite;
   position: absolute;
 }
 
-.c5 + .c0 {
-  margin-left: 1rem;
-}
-
-.c6 + .c0 {
-  margin-left: 1rem;
-}
-
-.c7 + .c0 {
-  margin-left: 1rem;
-}
-
-.c8 + .c0 {
-  margin-left: 1rem;
-}
-
-.c9 + .c0 {
-  margin-left: 1rem;
-}
-
-.c10 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1134,9 +928,6 @@ exports[`render loading button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1171,36 +962,32 @@ exports[`render loading button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c4 {
+.c3 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1215,21 +1002,21 @@ exports[`render loading button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   role="button"
   tabindex="0"
 >
   <div
-    class="c2"
+    class="c1"
   >
     <svg
-      class="c3"
+      class="c2"
       fill="none"
       height="1.25rem"
       viewBox="0 0 20 20"
@@ -1245,7 +1032,7 @@ exports[`render loading button 1`] = `
     </svg>
   </div>
   <span
-    class="c4"
+    class="c3"
   >
     Button
   </span>
@@ -1253,15 +1040,9 @@ exports[`render loading button 1`] = `
 `;
 
 exports[`render secondary button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1269,9 +1050,6 @@ exports[`render secondary button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1306,36 +1084,32 @@ exports[`render secondary button 1`] = `
   color: #3C64F4;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #DBE3FE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1350,18 +1124,18 @@ exports[`render secondary button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -1369,19 +1143,9 @@ exports[`render secondary button 1`] = `
 `;
 
 exports[`render secondary destructive button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c5 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1389,9 +1153,6 @@ exports[`render secondary destructive button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1426,36 +1187,32 @@ exports[`render secondary destructive button 1`] = `
   color: #DB3643;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #FEDBDE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #FFF0F1;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1470,18 +1227,18 @@ exports[`render secondary destructive button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -1489,19 +1246,9 @@ exports[`render secondary destructive button 1`] = `
 `;
 
 exports[`render secondary destructive disabled button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c5 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1509,9 +1256,6 @@ exports[`render secondary destructive disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1546,36 +1290,32 @@ exports[`render secondary destructive disabled button 1`] = `
   color: #DB3643;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #FEDBDE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #FFF0F1;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1590,19 +1330,19 @@ exports[`render secondary destructive disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -1610,15 +1350,9 @@ exports[`render secondary destructive disabled button 1`] = `
 `;
 
 exports[`render secondary disabled button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1626,9 +1360,6 @@ exports[`render secondary disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1663,36 +1394,32 @@ exports[`render secondary disabled button 1`] = `
   color: #3C64F4;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #DBE3FE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1707,19 +1434,19 @@ exports[`render secondary disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -1727,23 +1454,9 @@ exports[`render secondary disabled button 1`] = `
 `;
 
 exports[`render subtle button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c5 + .c0 {
-  margin-left: 1rem;
-}
-
-.c6 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1751,9 +1464,6 @@ exports[`render subtle button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1788,37 +1498,33 @@ exports[`render subtle button 1`] = `
   color: #3C64F4;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #DBE3FE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1833,18 +1539,18 @@ exports[`render subtle button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -1852,27 +1558,9 @@ exports[`render subtle button 1`] = `
 `;
 
 exports[`render subtle destructive button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c5 + .c0 {
-  margin-left: 1rem;
-}
-
-.c6 + .c0 {
-  margin-left: 1rem;
-}
-
-.c7 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1880,9 +1568,6 @@ exports[`render subtle destructive button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1917,37 +1602,33 @@ exports[`render subtle destructive button 1`] = `
   color: #DB3643;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #FEDBDE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #FFF0F1;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1962,18 +1643,18 @@ exports[`render subtle destructive button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -1981,27 +1662,9 @@ exports[`render subtle destructive button 1`] = `
 `;
 
 exports[`render subtle destructive disabled button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c5 + .c0 {
-  margin-left: 1rem;
-}
-
-.c6 + .c0 {
-  margin-left: 1rem;
-}
-
-.c7 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2009,9 +1672,6 @@ exports[`render subtle destructive disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -2046,37 +1706,33 @@ exports[`render subtle destructive disabled button 1`] = `
   color: #DB3643;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #FEDBDE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #FFF0F1;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -2091,19 +1747,19 @@ exports[`render subtle destructive disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -2111,23 +1767,9 @@ exports[`render subtle destructive disabled button 1`] = `
 `;
 
 exports[`render subtle disabled button 1`] = `
-.c3 + .c0 {
-  margin-left: 1rem;
-}
-
-.c4 + .c0 {
-  margin-left: 1rem;
-}
-
-.c5 + .c0 {
-  margin-left: 1rem;
-}
-
-.c6 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1 {
+.c0 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2135,9 +1777,6 @@ exports[`render subtle disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 1px;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -2172,37 +1811,33 @@ exports[`render subtle disabled button 1`] = `
   color: #3C64F4;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
-  margin-left: 1rem;
-}
-
-.c1:active {
+.c0:active {
   background-color: #DBE3FE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -2217,19 +1852,19 @@ exports[`render subtle disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>

@@ -1,16 +1,18 @@
 import styled, { css } from 'styled-components';
 
+import { withMargins, MarginProps } from '../../mixins';
 import { defaultTheme } from '../../theme';
 import { addValues } from '../../theme/helpers/addition';
 
 import { ButtonProps } from './index';
 
-export const StyledButton = styled.button<ButtonProps>`
+export const StyledButton = styled.button<ButtonProps & MarginProps>`
+  ${withMargins()};
+  ${({ theme }) => theme.borderRadius.normal};
+  ${({ theme }) => theme.border.box};
+
   align-items: center;
   appearance: none;
-  border-radius: ${({ theme }) => theme.border.radius};
-  border-style: solid;
-  border-width: 1px;
   color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
   display: inline-flex;
@@ -36,10 +38,6 @@ export const StyledButton = styled.button<ButtonProps>`
   &[disabled] {
     border-color: ${({ theme }) => theme.colors.secondary30};
     pointer-events: none;
-  }
-
-  & + & {
-    margin-left: ${({ theme }) => theme.spacing.medium};
   }
 
   ${({ theme }) => theme.breakpoints.tablet} {

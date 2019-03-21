@@ -1,0 +1,1 @@
+export { getSpacingStyles } from './spacings';

@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`responsive and non responsive combination 1`] = `
+.c0 {
+  padding-top: 0;
+  padding-bottom: 1rem;
+}
+
+@media (max-width:719px) {
+  .c0 {
+    padding-left: 0;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding-left: 0.75rem;
+  }
+}
+
+@media (min-width:1025px) {
+  .c0 {
+    padding-left: 1rem;
+  }
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`responsive padding 1`] = `
+@media (max-width:719px) {
+  .c0 {
+    padding: 0;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding: 0.75rem;
+  }
+}
+
+@media (min-width:1025px) {
+  .c0 {
+    padding: 1rem;
+  }
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`responsive paddingBottom 1`] = `
+@media (max-width:719px) {
+  .c0 {
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding-bottom: 0.75rem;
+  }
+}
+
+@media (min-width:1025px) {
+  .c0 {
+    padding-bottom: 1rem;
+  }
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`responsive paddingHorizontal 1`] = `
+@media (max-width:719px) {
+  .c0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+@media (min-width:1025px) {
+  .c0 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`responsive paddingLeft 1`] = `
+@media (max-width:719px) {
+  .c0 {
+    padding-left: 0;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding-left: 0.75rem;
+  }
+}
+
+@media (min-width:1025px) {
+  .c0 {
+    padding-left: 1rem;
+  }
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`responsive paddingRight 1`] = `
+@media (max-width:719px) {
+  .c0 {
+    padding-right: 0;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding-right: 0.75rem;
+  }
+}
+
+@media (min-width:1025px) {
+  .c0 {
+    padding-right: 1rem;
+  }
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`responsive paddingTop 1`] = `
+@media (max-width:719px) {
+  .c0 {
+    padding-top: 0;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding-top: 0.75rem;
+  }
+}
+
+@media (min-width:1025px) {
+  .c0 {
+    padding-top: 1rem;
+  }
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`responsive paddingVertical 1`] = `
+@media (max-width:719px) {
+  .c0 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+
+@media (min-width:1025px) {
+  .c0 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+<div
+  class="c0"
+/>
+`;

@@ -1,11 +1,14 @@
 import styled, { css } from 'styled-components';
 
+import { withMargins } from '../../mixins';
 import { defaultTheme } from '../../theme';
 
 import { LozengeProps } from './Lozenge';
 
 export const StyledLozenge = styled.span<LozengeProps>`
-  border-radius: ${({ theme }) => theme.border.radius};
+  ${withMargins()};
+  ${({ theme }) => theme.borderRadius.normal};
+
   color: ${({ theme }) => theme.colors.white};
   display: inline-block;
   font-size: ${({ theme }) => theme.typography.fontSize.small};

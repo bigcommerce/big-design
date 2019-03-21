@@ -36,7 +36,7 @@ storiesOf('Panel', module).add('Overview', () => (
       </Text>
     </Panel>
 
-    <Panel>
+    <Panel marginBottom="none">
       <H2>Panel header - h2</H2>
       <Text>
         Occaecat eiusmod elit laboris pariatur aute esse dolore nostrud ipsum laboris qui. Reprehenderit exercitation

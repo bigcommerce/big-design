@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { BoxProps } from '../Box';
+
 import { StyledGrid } from './styled';
 import { GridItem } from './Item/Item';
 
-export interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface GridProps extends BoxProps {
   areas?: string;
   autoColumns?: string | number;
   autoFlow?: 'row' | 'column' | 'dense' | 'row dense' | 'column dense' | 'inherit' | 'initial' | 'unset';

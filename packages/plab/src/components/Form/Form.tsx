@@ -2,7 +2,6 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { Ref } from 'react';
 
 import { StyledForm } from './styled';
-import { Actions } from './Actions';
 import { Fieldset } from './Fieldset';
 import { Row } from './Row';
 
@@ -13,7 +12,6 @@ interface PrivateProps {
 type FormProps = React.FormHTMLAttributes<HTMLFormElement>;
 
 class StyleableForm extends React.PureComponent<PrivateProps & FormProps> {
-  static Actions = Actions;
   static Fieldset = Fieldset;
   static Row = Row;
 

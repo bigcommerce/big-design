@@ -1,5 +1,6 @@
 import React, { Ref } from 'react';
 
+import { MarginProps } from '../../mixins';
 import { ThemeInterface } from '../../theme';
 import { Spinner } from '../Spinner';
 
@@ -9,7 +10,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLButtonElement>;
 }
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, MarginProps {
   actionType?: 'normal' | 'destructive';
   iconLeft?: React.ReactChild;
   iconOnly?: React.ReactChild;

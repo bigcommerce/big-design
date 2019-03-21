@@ -28,13 +28,13 @@ exports[`render Checkbox (checked) 1`] = `
 }
 
 .c3 {
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   background: #3C64F4;
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   border-color: #3C64F4;
   color: #FFFFFF;
   display: -webkit-inline-box;
@@ -64,7 +64,16 @@ exports[`render Checkbox (checked) 1`] = `
 }
 
 .c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
   margin-left: 1rem;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
 }
 
 <div
@@ -140,13 +149,13 @@ exports[`render Checkbox (unchecked) 1`] = `
 }
 
 .c3 {
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   border-color: #D9DCE9;
   color: #FFFFFF;
   display: -webkit-inline-box;
@@ -176,7 +185,16 @@ exports[`render Checkbox (unchecked) 1`] = `
 }
 
 .c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
   margin-left: 1rem;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
 }
 
 <div

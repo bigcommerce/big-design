@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 import { defaultTheme } from '../../theme';
+import { Box } from '../Box';
 
 import { GridProps } from './Grid';
 
-export const StyledGrid = styled.div<GridProps>`
+export const StyledGrid = styled(Box)<GridProps>`
   display: grid;
 
   grid-auto-flow: ${props => props.autoFlow};

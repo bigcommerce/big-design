@@ -15,9 +15,7 @@ export const StyledFieldset = styled.fieldset`
 
 export const StyledFieldsetDescription = styled(StyleableSmall)``;
 
-export const StyledFieldsetLegend = styled(StyleableH3).attrs({
-  as: 'legend',
-})`
+export const StyledFieldsetLegend = styled(StyleableH3).attrs({ as: 'legend' })`
   &:not(:last-child) {
     margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
   }

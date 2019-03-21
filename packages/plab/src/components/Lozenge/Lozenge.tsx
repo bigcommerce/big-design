@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { MarginProps } from '../../mixins';
+
 import { StyledLozenge } from './styled';
 
-export interface LozengeProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface LozengeProps extends React.HTMLAttributes<HTMLSpanElement>, MarginProps {
   variant?: 'danger' | 'primary' | 'secondary' | 'success' | 'warning';
 }
 

@@ -28,12 +28,21 @@ exports[`render Radio (checked) 1`] = `
 }
 
 .c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
   margin-left: 1rem;
 }
 
+.c4:last-child {
+  margin-bottom: 0;
+}
+
 .c3 {
-  border-radius: 50%;
   border: 1px solid #D9DCE9;
+  border-radius: 50%;
   border-color: #3C64F4;
   color: #FFFFFF;
   display: inline-block;
@@ -120,7 +129,16 @@ exports[`render Radio (unchecked) 1`] = `
 }
 
 .c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
   margin-left: 1rem;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
 }
 
 .c1:focus + .c5 {
@@ -128,8 +146,8 @@ exports[`render Radio (unchecked) 1`] = `
 }
 
 .c3 {
-  border-radius: 50%;
   border: 1px solid #D9DCE9;
+  border-radius: 50%;
   border-color: #D9DCE9;
   color: #FFFFFF;
   display: inline-block;
