@@ -1,13 +1,11 @@
 import React from 'react';
 
-interface Props {
+import { StyledFieldset, StyledFieldsetDescription, StyledFieldsetLegend } from './styled';
+
+export interface FieldsetProps extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
   legend?: React.ReactChild;
   description?: React.ReactChild;
 }
-
-import { StyledFieldset, StyledFieldsetDescription, StyledFieldsetLegend } from './styled';
-
-export type FieldsetProps = Props & React.FieldsetHTMLAttributes<HTMLFieldSetElement>;
 
 export class Fieldset extends React.PureComponent<FieldsetProps> {
   static Legend = StyledFieldsetLegend;
