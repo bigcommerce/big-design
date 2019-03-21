@@ -1,7 +1,10 @@
 import React from 'react';
 
-import { StyledPanel } from './styled';
+import { MarginProps } from '../../mixins';
+import { Box } from '../Box';
 
-export const Panel: React.FC<React.HTMLAttributes<HTMLElement>> = ({ className, style, ...props }) => (
-  <StyledPanel {...props} />
+export type PanelProps = React.HTMLAttributes<HTMLElement> & MarginProps;
+
+export const Panel: React.FC<PanelProps> = ({ className, style, ...props }) => (
+  <Box marginBottom="xxLarge" {...props} backgroundColor="white" elevation="floating" padding="xxLarge" />
 );

@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
+import { withMargins } from '../../mixins';
 import { defaultTheme } from '../../theme';
 
-export const StyledLink = styled.a`
+import { LinkProps } from './Link';
+
+export const StyledLink = styled.a<LinkProps>`
+  ${withMargins()};
+
   color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
 `;

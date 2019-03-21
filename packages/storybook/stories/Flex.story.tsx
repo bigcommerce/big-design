@@ -1,29 +1,20 @@
-import { Flex } from '@bigcommerce/plab';
+import { Box, Flex } from '@bigcommerce/plab';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import styled from 'styled-components';
-
-const OrangeBox = styled.div`
-  background-color: orange;
-  height: 50px;
-  margin-top: 10px;
-  width: 50px;
-`;
 
 storiesOf('Flex', module).add('Overview', () => (
-  <div>
-    <Flex justifyContent="space-around">
-      <OrangeBox />
-      <OrangeBox />
-      <OrangeBox />
-      <OrangeBox />
+  <>
+    <Flex justifyContent="space-around" backgroundColor="warning30">
+      <Box backgroundColor="primary" margin="small" style={{ height: 50, width: 50 }} />
+      <Box backgroundColor="primary" margin="small" style={{ height: 50, width: 50 }} />
+      <Box backgroundColor="primary" margin="small" style={{ height: 50, width: 50 }} />
+      <Box backgroundColor="primary" margin="small" style={{ height: 50, width: 50 }} />
     </Flex>
-    <hr />
-    <Flex flexDirection="column">
-      <OrangeBox />
-      <OrangeBox />
-      <OrangeBox />
-      <OrangeBox />
+    <Flex flexDirection="column" backgroundColor="success30">
+      <Box backgroundColor="primary" margin="small" style={{ height: 50, width: 50 }} />
+      <Box backgroundColor="primary" margin="small" style={{ height: 50, width: 50 }} />
+      <Box backgroundColor="primary" margin="small" style={{ height: 50, width: 50 }} />
+      <Box backgroundColor="primary" margin="small" style={{ height: 50, width: 50 }} />
     </Flex>
-  </div>
+  </>
 ));

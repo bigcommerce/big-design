@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { BoxProps } from '../../Box';
+
 import { StyledGridItem } from './styled';
 
-export interface GridItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface GridItemProps extends BoxProps {
   area?: string | number;
   column?: string | number;
   columnEnd?: string | number;

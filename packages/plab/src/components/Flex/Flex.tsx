@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { BoxProps } from '../Box';
+
 import { StyledFlex } from './styled';
 
-export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface FlexProps extends BoxProps {
   alignItems?: 'normal' | 'stretch' | 'center' | 'flex-start' | 'flex-end' | 'baseline';
   flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   justifyContent?:

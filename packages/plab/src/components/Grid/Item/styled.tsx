@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
+import { Box } from '../../Box';
+
 import { GridItemProps } from './Item';
 
-export const StyledGridItem = styled.div<GridItemProps>`
+export const StyledGridItem = styled(Box)<GridItemProps>`
   grid-area: ${props => props.area};
   grid-column-end: ${props => props.columnEnd};
   grid-column-start: ${props => props.columnStart};

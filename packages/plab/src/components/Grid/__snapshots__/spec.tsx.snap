@@ -24,25 +24,25 @@ exports[`render Grid 1`] = `
 }
 
 <div
-  class="c0"
+  class="c0 "
 >
   <div
-    class="c1"
+    class="c1 "
   >
     Header
   </div>
   <div
-    class="c2"
+    class="c2 "
   >
     Sidebar
   </div>
   <div
-    class="c3"
+    class="c3 "
   >
     Content
   </div>
   <div
-    class="c4"
+    class="c4 "
   >
     Footer
   </div>

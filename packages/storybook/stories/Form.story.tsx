@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, H2, Input, Panel, PlusIcon, Radio, Text } from '@bigcommerce/plab';
+import { Box, Button, Checkbox, Form, H2, Input, Panel, PlusIcon, Radio, Text } from '@bigcommerce/plab';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
@@ -174,10 +174,12 @@ storiesOf('Forms', module)
             </Form.Row>
           </Form.Fieldset>
 
-          <Form.Actions>
+          <Box marginTop="xxLarge">
             <Button>Connect</Button>
-            <Button variant="subtle">Cancel</Button>
-          </Form.Actions>
+            <Button variant="subtle" marginLeft="medium">
+              Cancel
+            </Button>
+          </Box>
         </Form>
       </Panel>
     </div>
