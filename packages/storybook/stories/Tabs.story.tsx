@@ -1,4 +1,4 @@
-import { Panel, Tabs, Text } from '@bigcommerce/plab';
+import { Panel, Tabs, Text } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 

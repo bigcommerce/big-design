@@ -1,4 +1,4 @@
-import { Button, Flex, H2, Panel, Text } from '@bigcommerce/plab';
+import { Button, Flex, H2, Panel, Text } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 

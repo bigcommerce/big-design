@@ -1,4 +1,4 @@
-import { Button, DropdownIcon, PlusIcon } from '@bigcommerce/plab';
+import { Button, DropdownIcon, PlusIcon } from '@bigcommerce/big-design';
 import { withA11y } from '@storybook/addon-a11y';
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';

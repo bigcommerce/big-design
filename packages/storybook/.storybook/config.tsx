@@ -1,4 +1,4 @@
-import { GlobalStyle } from '@bigcommerce/plab';
+import { GlobalStyle } from '@bigcommerce/big-design';
 import { withKnobs } from '@storybook/addon-knobs';
 import { addDecorator, addParameters, configure } from '@storybook/react';
 import React from 'react';

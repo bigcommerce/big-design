@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Form, H2, Input, Panel, PlusIcon, Radio, Text } from '@bigcommerce/plab';
+import { Box, Button, Checkbox, Form, H2, Input, Panel, PlusIcon, Radio, Text } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 

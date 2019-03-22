@@ -1,4 +1,4 @@
-import { Button, Spinner, Text } from '@bigcommerce/plab';
+import { Button, Spinner, Text } from '@bigcommerce/big-design';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';

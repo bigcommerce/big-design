@@ -1,5 +1,5 @@
 {
-  "name": "@plab/configs/tslint",
+  "name": "@bigcommerce/configs/tslint",
   "main": "tslint.json",
   "private": true
 }

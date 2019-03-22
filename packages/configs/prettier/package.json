@@ -1,5 +1,5 @@
 {
-  "name": "@plab/configs/prettier",
+  "name": "@bigcommerce/configs/prettier",
   "main": "prettier.config.js",
   "private": true
 }

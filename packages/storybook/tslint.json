@@ -1,3 +1,3 @@
 {
-  "extends": ["@plab/configs/tslint"]
+  "extends": ["@bigcommerce/configs/tslint"]
 }

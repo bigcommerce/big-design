@@ -1,4 +1,4 @@
-import { Button, Flex, PlusIcon, Tooltip } from '@bigcommerce/plab';
+import { Button, Flex, PlusIcon, Tooltip } from '@bigcommerce/big-design';
 import { select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';

@@ -1,1 +1,1 @@
-module.exports = require('@plab/configs/prettier');
+module.exports = require('@bigcommerce/configs/prettier');

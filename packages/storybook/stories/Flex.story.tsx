@@ -1,4 +1,4 @@
-import { Box, Flex } from '@bigcommerce/plab';
+import { Box, Flex } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 

@@ -1,5 +1,5 @@
 {
-  "name": "plab",
+  "name": "big-design",
   "private": true,
   "workspaces": [
     "packages/*"
