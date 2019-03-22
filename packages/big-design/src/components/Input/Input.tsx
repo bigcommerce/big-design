@@ -3,12 +3,11 @@ import React, { Ref } from 'react';
 
 import { ThemeInterface } from '../../theme';
 import { uniqueId } from '../../utils';
+import { Form } from '../Form';
 import { ErrorIcon } from '../Icons';
+import { Small } from '../Typography';
 
 import { StyledErrorIconWrapper, StyledIconWrapper, StyledInput, StyledInputWrapper } from './styled';
-import { Description } from './Description';
-import { Error } from './Error';
-import { Label } from './Label';
 
 interface Props {
   description?: React.ReactChild;
@@ -26,9 +25,9 @@ interface PrivateProps {
 export type InputProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
 class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
-  static Description = Description;
-  static Error = Error;
-  static Label = Label;
+  static Description = Small;
+  static Error = Form.Error;
+  static Label = Form.Label;
   private readonly uniqueId = uniqueId('input_');
 
   render() {
