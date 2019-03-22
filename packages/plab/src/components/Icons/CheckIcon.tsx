@@ -7,8 +7,13 @@ import { Icon } from './Icon';
 
 export default class SvgCheckIcon extends Icon {
   render() {
-    const { title, theme, ...props } = this.props;
+    const { title, theme, ...rest } = this.props;
     const size = this.getSize();
+    const style = {
+      width: size,
+      height: size,
+    };
+    const props = { ...rest, style };
 
     return (
       <svg width={size} height={size} viewBox="0 0 10 10" fill="none" {...props}>

@@ -94,6 +94,7 @@ exports[`render Checkbox (checked) 1`] = `
     <svg
       fill="none"
       height="0.75rem"
+      style="width: 0.75rem; height: 0.75rem;"
       viewBox="0 0 10 10"
       width="0.75rem"
     >
@@ -214,6 +215,7 @@ exports[`render Checkbox (unchecked) 1`] = `
     <svg
       fill="none"
       height="0.75rem"
+      style="width: 0.75rem; height: 0.75rem;"
       viewBox="0 0 10 10"
       width="0.75rem"
     >

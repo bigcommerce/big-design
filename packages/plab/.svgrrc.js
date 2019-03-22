@@ -18,8 +18,14 @@ module.exports = {
 
     export default class COMPONENT_NAME extends Icon {
       render() {
-        const { title, theme, ...props } = this.props;
+        const { title, theme, ...rest } = this.props;
         const size = this.getSize();
+        const style = {
+          ...rest.style,
+          width: size,
+          height: size
+        };
+        const props = { ...rest, style };
 
         BREAK
         return JSX;
