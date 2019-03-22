@@ -1,4 +1,4 @@
-import { DropdownIcon, LoadingIcon, PlusIcon } from '@bigcommerce/plab';
+import { DropdownIcon, LoadingIcon, PlusIcon } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 

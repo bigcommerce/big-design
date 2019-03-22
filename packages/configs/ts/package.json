@@ -1,5 +1,5 @@
 {
-  "name": "@plab/configs/ts",
+  "name": "@bigcommerce/configs/ts",
   "main": "tsconfig.json",
   "private": true
 }

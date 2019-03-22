@@ -1,4 +1,4 @@
-import { Button, Dropdown, Flex } from '@bigcommerce/plab';
+import { Button, Dropdown, Flex } from '@bigcommerce/big-design';
 import { action } from '@storybook/addon-actions';
 import { number, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';

@@ -1,12 +1,12 @@
 {
-  "name": "@bigcommerce/plab",
-  "version": "1.0.0",
+  "name": "@bigcommerce/big-design",
+  "version": "0.1.0",
   "sideEffects": false,
-  "main": "dist/plab.cjs.js",
-  "module": "dist/plab.es.js",
+  "main": "dist/big-design.cjs.js",
+  "module": "dist/big-design.es.js",
   "typings": "dist/src/index.d.ts",
   "author": "BigCommerce Inc",
-  "repository": "git@github.com:bigcommerce-labs/plab-playground.git",
+  "repository": "git@github.com:bigcommerce/big-design.git",
   "license": "UNLICENSED",
   "files": [
     "dist"
@@ -48,7 +48,7 @@
     "@babel/preset-env": "^7.1.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
-    "@plab/configs": "1.0.0",
+    "@bigcommerce/configs": "1.0.0",
     "@svgr/cli": "^4.1.0",
     "@types/hoist-non-react-statics": "^3.3.0",
     "@types/jest": "^24.0.11",

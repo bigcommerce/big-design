@@ -1,4 +1,4 @@
-import { Grid } from '@bigcommerce/plab';
+import { Grid } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 

@@ -1,4 +1,4 @@
-import { Grid, Lozenge } from '@bigcommerce/plab';
+import { Grid, Lozenge } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 

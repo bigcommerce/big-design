@@ -1,4 +1,4 @@
-import { H3, Link, Panel } from '@bigcommerce/plab';
+import { H3, Link, Panel } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 

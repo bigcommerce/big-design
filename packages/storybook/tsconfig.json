@@ -1,5 +1,5 @@
 {
-  "extends": "@plab/configs/ts",
+  "extends": "@bigcommerce/configs/ts",
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
