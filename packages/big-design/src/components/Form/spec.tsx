@@ -25,6 +25,13 @@ test('calls onSubmit', () => {
   expect(onSubmit).toHaveBeenCalled();
 });
 
+test('exposes expected statics', () => {
+  expect(Form.Error).toBeDefined();
+  expect(Form.Fieldset).toBeDefined();
+  expect(Form.Label).toBeDefined();
+  expect(Form.Row).toBeDefined();
+});
+
 test('simple form render', () => {
   const { container } = render(
     <Form>

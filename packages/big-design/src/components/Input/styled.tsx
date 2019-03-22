@@ -20,8 +20,8 @@ export const StyledInput = styled.input<InputProps>`
   ${({ error, theme }) => (error ? theme.border.boxError : theme.border.box)};
 
   background-color: ${({ theme }) => theme.colors.white};
-  color: ${({ theme }) => theme.colors.secondary70};
   box-sizing: border-box;
+  color: ${({ theme }) => theme.colors.secondary70};
   height: ${({ theme }) => addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
   line-height: ${({ theme }) => theme.lineHeight.medium};
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.small}`};

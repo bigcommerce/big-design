@@ -1,6 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders all together 1`] = `
+.c1 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c1:last-child {
+  margin-bottom: 0;
+}
+
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
 .c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -17,8 +42,8 @@ exports[`renders all together 1`] = `
   border-radius: 0.25rem;
   border: 1px solid #D9DCE9;
   background-color: #FFFFFF;
-  color: #313440;
   box-sizing: border-box;
+  color: #313440;
   height: 2.25rem;
   line-height: 1.5rem;
   padding: 0.25rem 0.75rem;
@@ -73,31 +98,6 @@ exports[`renders all together 1`] = `
   position: absolute;
   color: #5E637A;
   right: 0.75rem;
-}
-
-.c1 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
-}
-
-.c1:last-child {
-  margin-bottom: 0;
-}
-
-.c0 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  margin: 0 0 0.5rem;
-  display: inline-block;
-  margin-bottom: 0.25rem;
 }
 
 <div>
