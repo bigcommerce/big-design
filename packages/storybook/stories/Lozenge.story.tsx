@@ -1,11 +1,11 @@
-import { Grid, Lozenge } from '@bigcommerce/big-design';
+import { Grid, Lozenge, Text } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 storiesOf('Lozenge', module).add('Overview', () => (
-  <Grid style={{ margin: 16 }}>
+  <Grid margin="medium">
     <Grid.Item>
-      <p>Design not finalized, need extra feedback on font-spacing and font-size to adhere to the theme.</p>
+      <Text>Design not finalized, need extra feedback on font-spacing and font-size to adhere to the theme.</Text>
     </Grid.Item>
     <Grid.Item>
       <Lozenge>secondary</Lozenge>

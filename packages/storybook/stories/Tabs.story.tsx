@@ -1,4 +1,4 @@
-import { Panel, Tabs, Text } from '@bigcommerce/big-design';
+import { Box, Panel, Tabs, Text } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
@@ -24,21 +24,19 @@ class TabsStory extends React.PureComponent<{}, State> {
             Example 4
           </Tabs.Tab>
         </Tabs>
-        <div style={{ marginTop: 20 }}>
+        <Box marginTop="large">
           {activeTab === 'tab1' && <Text>Content 1</Text>}
           {activeTab === 'tab2' && <Text>Content 2</Text>}
           {activeTab === 'tab3' && <Text>Content 3</Text>}
           {activeTab === 'tab4' && <Text>Content 4</Text>}
-        </div>
+        </Box>
       </>
     );
   }
 }
 
 storiesOf('Tabs', module).add('Overview', () => (
-  <div style={{ padding: 50 }}>
-    <Panel>
-      <TabsStory />
-    </Panel>
-  </div>
+  <Panel margin="xxxLarge">
+    <TabsStory />
+  </Panel>
 ));

@@ -1,4 +1,4 @@
-import { Button, Spinner, Text } from '@bigcommerce/big-design';
+import { Box, Button, Spinner, Text } from '@bigcommerce/big-design';
 import { boolean, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
@@ -6,8 +6,13 @@ import React from 'react';
 const size = ['small' as 'small', 'medium' as 'medium', 'large' as 'large', 'xLarge' as 'xLarge'];
 
 storiesOf('Spinner', module).add('Overview', () => (
-  <div>
-    <p>Use knobs to 👀</p>
+  <Box margin="medium">
+    <Text>In a button:</Text>
+    <Button isLoading={true}>Label</Button>
+
+    <hr />
+
+    <Text>Use knobs to 👀 wip, designs not finalized</Text>
     <div
       style={{
         width: 400,
@@ -28,10 +33,5 @@ storiesOf('Spinner', module).add('Overview', () => (
       </Text>
       <Spinner overlay={boolean('overlay', true)} size={select('size', size, 'medium')} />
     </div>
-
-    <hr />
-
-    <p>In a button:</p>
-    <Button isLoading={true}>Label</Button>
-  </div>
+  </Box>
 ));
