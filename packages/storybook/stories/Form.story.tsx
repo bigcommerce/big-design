@@ -4,7 +4,7 @@ import React from 'react';
 
 storiesOf('Forms', module)
   .add('Overview', () => (
-    <div style={{ padding: 50 }}>
+    <Box padding="xxxLarge">
       <Panel>
         <H2>Form Field</H2>
 
@@ -95,10 +95,10 @@ storiesOf('Forms', module)
           </Form.Fieldset>
         </Form>
       </Panel>
-    </div>
+    </Box>
   ))
   .add('Avalara Demo', () => (
-    <div style={{ padding: 50 }}>
+    <Box padding="xxxLarge">
       <Panel>
         <H2>Create your Avalara AvaTax account</H2>
 
@@ -182,5 +182,5 @@ storiesOf('Forms', module)
           </Box>
         </Form>
       </Panel>
-    </div>
+    </Box>
   ));
