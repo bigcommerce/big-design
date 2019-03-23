@@ -78,10 +78,10 @@ storiesOf('Forms', module)
 
           <Form.Fieldset legend="Checkboxes" description="This is a description for checkboxes">
             <Form.Row>
-              <Checkbox label="Unchecked" checked={false} onChange={() => null} />
+              <Checkbox label="Unchecked" />
             </Form.Row>
             <Form.Row>
-              <Checkbox label="Checked" checked={true} onChange={() => null} />
+              <Checkbox label="Checked" defaultChecked />
             </Form.Row>
           </Form.Fieldset>
 
@@ -160,7 +160,7 @@ storiesOf('Forms', module)
             description="Enter below the primary address where your products are shipped from. Including it helps Avalara AvaTax calculate your taxes with more accuracy."
           >
             <Form.Row>
-              <Checkbox label="Same as primary business address" checked onChange={() => null} />
+              <Checkbox label="Same as primary business address" defaultChecked />
             </Form.Row>
           </Form.Fieldset>
 
@@ -168,8 +168,7 @@ storiesOf('Forms', module)
             <Form.Row>
               <Checkbox
                 label="By connecting to an Avalara account, I accept the Avalara terms and conditions."
-                checked
-                onChange={() => null}
+                defaultChecked
               />
             </Form.Row>
           </Form.Fieldset>
