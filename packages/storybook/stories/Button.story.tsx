@@ -1,4 +1,4 @@
-import { Button, DropdownIcon, PlusIcon } from '@bigcommerce/big-design';
+import { Button, DropdownIcon, Flex, Grid, PlusIcon } from '@bigcommerce/big-design';
 import { withA11y } from '@storybook/addon-a11y';
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
@@ -13,120 +13,74 @@ addDecorator(withA11y);
 
 storiesOf('Button', module)
   .add('Overview', () => (
-    <div>
-      <div
-        style={{
-          alignItems: 'center',
-          display: 'grid',
-          justifyItems: 'center',
-          gridTemplateColumns: 'repeat(6, 80px)',
-          gridRowGap: 10,
-          marginBottom: 10,
-        }}
-      >
-        <Button onClick={action('click')}>Label</Button>
-        <Button onClick={action('click')} isLoading={true}>
-          Label
-        </Button>
-        <Button onClick={action('click')} disabled>
-          Label
-        </Button>
-        <Button onClick={action('click')} actionType="destructive">
-          Label
-        </Button>
-        <Button onClick={action('click')} actionType="destructive" isLoading={true}>
-          Label
-        </Button>
-        <Button onClick={action('click')} actionType="destructive" disabled>
-          Label
-        </Button>
-      </div>
-      <div
-        style={{
-          alignItems: 'center',
-          display: 'grid',
-          justifyItems: 'center',
-          gridTemplateColumns: 'repeat(6, 80px)',
-          gridRowGap: 10,
-          marginBottom: 10,
-        }}
-      >
-        <Button onClick={action('click')} variant="secondary">
-          Label
-        </Button>
-        <Button onClick={action('click')} variant="secondary" isLoading={true}>
-          Label
-        </Button>
-        <Button onClick={action('click')} variant="secondary" disabled>
-          Label
-        </Button>
-        <Button onClick={action('click')} variant="secondary" actionType="destructive">
-          Label
-        </Button>
-        <Button onClick={action('click')} variant="secondary" actionType="destructive" isLoading={true}>
-          Label
-        </Button>
-        <Button onClick={action('click')} variant="secondary" actionType="destructive" disabled>
-          Label
-        </Button>
-      </div>
-      <div
-        style={{
-          alignItems: 'center',
-          display: 'grid',
-          justifyItems: 'center',
-          gridTemplateColumns: 'repeat(6, 80px)',
-          gridRowGap: 10,
-          marginBottom: 10,
-        }}
-      >
-        <Button onClick={action('click')} variant="subtle">
-          Label
-        </Button>
-        <Button onClick={action('click')} variant="subtle" isLoading={true}>
-          Label
-        </Button>
-        <Button onClick={action('click')} variant="subtle" disabled>
-          Label
-        </Button>
-        <Button onClick={action('click')} variant="subtle" actionType="destructive">
-          Label
-        </Button>
-        <Button onClick={action('click')} variant="subtle" actionType="destructive" isLoading={true}>
-          Label
-        </Button>
-        <Button onClick={action('click')} variant="subtle" actionType="destructive" disabled>
-          Label
-        </Button>
-      </div>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(1, auto)',
-          gridGap: 10,
-          marginTop: 10,
-        }}
-      >
-        <span>
-          <Button onClick={action('click')} iconOnly={<PlusIcon title="add" />} />
-        </span>
-        <span>
-          <Button onClick={action('click')} iconLeft={<PlusIcon />}>
-            Label
-          </Button>
-        </span>
-        <span>
-          <Button onClick={action('click')} iconLeft={<PlusIcon />} iconRight={<DropdownIcon />}>
-            Label
-          </Button>
-        </span>
-        <span>
-          <Button onClick={action('click')} iconRight={<DropdownIcon />}>
-            Label
-          </Button>
-        </span>
-      </div>
-    </div>
+    <Grid columns="repeat(6, min-content)" margin="medium">
+      <Button onClick={action('click')}>Label</Button>
+      <Button onClick={action('click')} isLoading={true}>
+        Label
+      </Button>
+      <Button onClick={action('click')} disabled>
+        Label
+      </Button>
+      <Button onClick={action('click')} actionType="destructive">
+        Label
+      </Button>
+      <Button onClick={action('click')} actionType="destructive" isLoading={true}>
+        Label
+      </Button>
+      <Button onClick={action('click')} actionType="destructive" disabled>
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="secondary">
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="secondary" isLoading={true}>
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="secondary" disabled>
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="secondary" actionType="destructive">
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="secondary" actionType="destructive" isLoading={true}>
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="secondary" actionType="destructive" disabled>
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="subtle">
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="subtle" isLoading={true}>
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="subtle" disabled>
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="subtle" actionType="destructive">
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="subtle" actionType="destructive" isLoading={true}>
+        Label
+      </Button>
+      <Button onClick={action('click')} variant="subtle" actionType="destructive" disabled>
+        Label
+      </Button>
+    </Grid>
+  ))
+  .add('With icons', () => (
+    <Flex margin="medium" flexDirection="column" alignItems="flex-start">
+      <Button onClick={action('click')} iconOnly={<PlusIcon title="add" />} marginBottom="medium" />
+      <Button onClick={action('click')} iconLeft={<PlusIcon />} marginBottom="medium">
+        Label
+      </Button>
+      <Button onClick={action('click')} iconLeft={<PlusIcon />} iconRight={<DropdownIcon />} marginBottom="medium">
+        Label
+      </Button>
+      <Button onClick={action('click')} iconRight={<DropdownIcon />} marginBottom="medium">
+        Label
+      </Button>
+    </Flex>
   ))
   .add('With Knobs', () => (
     <Button
@@ -134,6 +88,7 @@ storiesOf('Button', module)
       variant={select('variant', variant, 'primary')}
       actionType={select('actionType', actionType, 'normal')}
       isLoading={boolean('isLoading', false)}
+      margin="medium"
     >
       Label
     </Button>
