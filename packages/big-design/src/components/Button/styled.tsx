@@ -17,9 +17,10 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   cursor: pointer;
   display: inline-flex;
   flex: none;
+  font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
-  justify-content: center;
   height: ${({ theme }) => addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
+  justify-content: center;
   line-height: ${({ theme }) => theme.lineHeight.xLarge};
   outline: none;
   padding: ${({ theme }) => `0 ${theme.spacing.medium}`};
