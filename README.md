@@ -28,8 +28,6 @@ Workspaces are inside the `packages` directory.
 - **storybook**: Component stories live here
 
 ### Component Requirements
-- [ ] Form inputs components have to support both `controlled` and `uncontrolled` inputs. [More info](https://reactjs.org/docs/uncontrolled-components.html).
-
 - [x] Wrappers around actionable HTML Elements (`input`, `button`, etc) must forward `ref` to the native DOM element.
 
 - [x] Components should be [accessible](https://a11yproject.com/). Test them with [VoiceOver](https://help.apple.com/voiceover/mac) and make sure they pass all accessibility tests on the `Accessibility` tab on Storybook. We will introduce [jest-axe](https://github.com/nickcolley/jest-axe) when a couple of issues get resolved.
