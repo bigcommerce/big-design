@@ -1,0 +1,13 @@
+{
+  "extends": "@bigcommerce/configs/ts",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "dist",
+    "declarationMap": true,
+    "jsx": "preserve",
+    "module": "esnext",
+    "target": "esnext",
+  },
+  "includes": ["src"],
+  "exclude": ["src/**/__tests__"]
+}

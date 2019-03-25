@@ -1,0 +1,82 @@
+{
+  "name": "@bigcommerce/big-design",
+  "version": "0.1.0",
+  "private": true,
+  "sideEffects": false,
+  "main": "dist/big-design.cjs.js",
+  "module": "dist/big-design.es.js",
+  "typings": "dist/src/index.d.ts",
+  "author": "BigCommerce Inc",
+  "repository": "git@github.com:bigcommerce/big-design.git",
+  "license": "UNLICENSED",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "build:icons": "svgr --ext=tsx src/components/Icons/svg -d src/components/Icons",
+    "ci": "yarn run lint && yarn run test && yarn run build",
+    "start": "NODE_ENV=dev yarn run build --watch",
+    "lint": "yarn run lint:tslint && yarn run lint:tsc && yarn run lint:prettier",
+    "lint:prettier": "prettier --check 'src/**/*.{ts,tsx}'",
+    "lint:tsc": "tsc --noEmit",
+    "lint:tslint": "tslint -c tslint.json -p tsconfig.json",
+    "test": "jest",
+    "test:watch": "npm test -- --watchAll",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "tslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "downshift": "^3.2.7",
+    "hoist-non-react-statics": "^3.3.0",
+    "polished": "^3.0.3",
+    "react-popper": "^1.3.3"
+  },
+  "peerDependencies": {
+    "react": ">= 16.3.0 < 17",
+    "react-dom": ">= 16.3.0 < 17",
+    "styled-components": "4.x"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@bigcommerce/configs": "1.0.0",
+    "@svgr/cli": "^4.1.0",
+    "@types/hoist-non-react-statics": "^3.3.0",
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.0",
+    "@types/react-test-renderer": "^16.0.2",
+    "@types/styled-components": "^4.1.12",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^24.5.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-styled-components": "^1.10.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "jest": "^24.5.0",
+    "jest-dom": "^3.1.3",
+    "jest-styled-components": "^6.3.1",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-testing-library": "^6.0.1",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.6.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.1",
+    "rollup-plugin-filesize": "^6.0.1",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-replace": "^2.1.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.20.1",
+    "styled-components": "^4.1.3"
+  }
+}
