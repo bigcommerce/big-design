@@ -1,0 +1,5 @@
+{
+  "name": "@bigcommerce/configs/tslint",
+  "main": "tslint.json",
+  "private": true
+}
