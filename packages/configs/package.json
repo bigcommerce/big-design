@@ -1,0 +1,15 @@
+{
+  "name": "@bigcommerce/configs",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@bigcommerce/tslint-config": "^3.0.2",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.3.3333",
+    "typescript-styled-plugin": "^0.14.0"
+  }
+}
