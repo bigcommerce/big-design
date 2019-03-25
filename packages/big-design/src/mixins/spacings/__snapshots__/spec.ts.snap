@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`multiple responsive spacing 1`] = `
+Array [
+  Array [
+    "@media (max-width: 719px)",
+    "{",
+    "border: 0; padding-right: 0;",
+    "}",
+  ],
+  Array [
+    "@media (min-width: 720px)",
+    "{",
+    "border: 0.75rem; padding-right: 0.75rem;",
+    "}",
+  ],
+  Array [
+    "@media (min-width: 1025px)",
+    "{",
+    "border: 1rem; padding-right: 1rem;",
+    "}",
+  ],
+]
+`;
+
+exports[`responsive spacing 1`] = `
+Array [
+  Array [
+    "@media (max-width: 719px)",
+    "{",
+    "border: 0;",
+    "}",
+  ],
+  Array [
+    "@media (min-width: 720px)",
+    "{",
+    "border: 0.75rem;",
+    "}",
+  ],
+  Array [
+    "@media (min-width: 1025px)",
+    "{",
+    "border: 1rem;",
+    "}",
+  ],
+]
+`;
