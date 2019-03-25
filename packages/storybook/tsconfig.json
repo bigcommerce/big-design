@@ -1,0 +1,11 @@
+{
+  "extends": "@bigcommerce/configs/ts",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "rootDirs": ["stories"],
+    "baseUrl": "src"
+  },
+  "include": ["stories/**/*"],
+  "exclude": ["node_modules", "build", "scripts"]
+}
