@@ -5,89 +5,57 @@ import { fireEvent, render } from 'react-testing-library';
 import { Checkbox } from './index';
 import { StyleableCheckbox } from './private';
 
-describe('Controlled Checkbox', () => {
-  test('render checked', () => {
-    const { container } = render(<Checkbox label="Checked" checked={true} onChange={() => null} />);
+test('render Checkbox (checked)', () => {
+  const { container } = render(<Checkbox label="Checked" checked={true} onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  test('render unchecked', () => {
-    const { container } = render(<Checkbox label="Unchecked" checked={false} onChange={() => null} />);
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  test('input element is checked', () => {
-    const { getByTestId } = render(
-      <Checkbox label="Checked" checked={true} onChange={() => null} data-testid="checkbox" />,
-    );
-    const input = getByTestId('checkbox') as HTMLInputElement;
-
-    expect(input.checked).toBe(true);
-  });
-
-  test('input element is unchecked', () => {
-    const { getByTestId } = render(
-      <Checkbox label="Checked" checked={false} onChange={() => null} data-testid="checkbox" />,
-    );
-    const input = getByTestId('checkbox') as HTMLInputElement;
-
-    expect(input.checked).toBe(false);
-  });
-
-  test('triggers onChange when clicking the checkbox', () => {
-    const onChange = jest.fn();
-    const { getByTestId } = render(
-      <Checkbox label="Checked" checked={true} onChange={onChange} data-testid="checkbox" />,
-    );
-    const checkbox = getByTestId('checkbox') as HTMLInputElement;
-
-    fireEvent.click(checkbox);
-
-    expect(onChange).toHaveBeenCalled();
-  });
-
-  test('triggers onChange when clicking styled and text label', () => {
-    const onChange = jest.fn();
-    const { container } = render(
-      <Checkbox label="Checked" checked={true} onChange={onChange} data-testid="checkbox" />,
-    );
-
-    const labels = container.querySelectorAll('label');
-
-    labels.forEach(label => fireEvent.click(label));
-
-    expect(onChange).toHaveBeenCalledTimes(2);
-  });
+  expect(container.firstChild).toMatchSnapshot();
 });
 
-describe('Uncontrolled Checkbox', () => {
-  test('render checked', () => {
-    const { container } = render(<Checkbox label="Checked" defaultChecked />);
+test('render Checkbox (unchecked)', () => {
+  const { container } = render(<Checkbox label="Unchecked" checked={false} onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
-  });
+  expect(container.firstChild).toMatchSnapshot();
+});
 
-  test('render unchecked', () => {
-    const { container } = render(<Checkbox label="Unchecked" />);
+test('has correct value for checked', () => {
+  const { getByTestId } = render(
+    <Checkbox label="Checked" checked={true} onChange={() => null} data-testid="checkbox" />,
+  );
+  const input = getByTestId('checkbox') as HTMLInputElement;
 
-    expect(container.firstChild).toMatchSnapshot();
-  });
+  expect(input.checked).toBe(true);
+});
 
-  test('input element is checked', () => {
-    const { getByTestId } = render(<Checkbox label="Checked" data-testid="checkbox" defaultChecked />);
-    const input = getByTestId('checkbox') as HTMLInputElement;
+test('has correct value for unchecked', () => {
+  const { getByTestId } = render(
+    <Checkbox label="Checked" checked={false} onChange={() => null} data-testid="checkbox" />,
+  );
+  const input = getByTestId('checkbox') as HTMLInputElement;
 
-    expect(input.checked).toBe(true);
-  });
+  expect(input.checked).toBe(false);
+});
 
-  test('input element is unchecked', () => {
-    const { getByTestId } = render(<Checkbox label="Checked" data-testid="checkbox" />);
-    const input = getByTestId('checkbox') as HTMLInputElement;
+test('triggers onChange when clicking the checkbox', () => {
+  const onChange = jest.fn();
+  const { getByTestId } = render(
+    <Checkbox label="Checked" checked={true} onChange={onChange} data-testid="checkbox" />,
+  );
+  const checkbox = getByTestId('checkbox') as HTMLInputElement;
 
-    expect(input.checked).toBe(false);
-  });
+  fireEvent.click(checkbox);
+
+  expect(onChange).toHaveBeenCalled();
+});
+
+test('triggers onChange when clicking styled and text label', () => {
+  const onChange = jest.fn();
+  const { container } = render(<Checkbox label="Checked" checked={true} onChange={onChange} data-testid="checkbox" />);
+
+  const labels = container.querySelectorAll('label');
+
+  labels.forEach(label => fireEvent.click(label));
+
+  expect(onChange).toHaveBeenCalledTimes(2);
 });
 
 test('forwards ref', () => {
