@@ -1,0 +1,5 @@
+{
+  "name": "@bigcommerce/configs/prettier",
+  "main": "prettier.config.js",
+  "private": true
+}
