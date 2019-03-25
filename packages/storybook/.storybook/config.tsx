@@ -3,14 +3,13 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { addDecorator, addParameters, configure } from '@storybook/react';
 import React from 'react';
 
-const req = require.context('../stories', true, /\.story\.tsx$/);
+// Looks like there is a bug and the order of imports matters for a11y :(
+// https://github.com/storybooks/storybook/issues/6185
+// tslint:disable-next-line:ordered-imports
+import { withA11y } from '@storybook/addon-a11y';
 
-function loadStories() {
-  req.keys().forEach(filename => req(filename));
-}
-
+addDecorator(withA11y);
 addParameters({
-  viewport: {},
   backgrounds: [
     {
       default: true,
@@ -44,5 +43,11 @@ addDecorator(storyFn => (
     {storyFn()}
   </React.Fragment>
 ));
+
+function loadStories() {
+  const req = require.context('../stories', true, /\.story\.tsx$/);
+
+  req.keys().forEach(filename => req(filename));
+}
 
 configure(loadStories, module);
