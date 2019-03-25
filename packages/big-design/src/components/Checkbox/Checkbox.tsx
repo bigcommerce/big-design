@@ -14,33 +14,15 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLInputElement>;
 }
 
-interface State {
-  checked: boolean;
-}
+export type CheckboxProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
-export type CheckboxProps = Readonly<Props & React.InputHTMLAttributes<HTMLInputElement>>;
-
-class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps, State> {
+class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
   static Label = StyledLabel;
-
-  static getDerivedStateFromProps(props: CheckboxProps, state: State) {
-    if (props.checked === undefined) {
-      return null;
-    }
-
-    return props.checked === state.checked ? null : { checked: props.checked };
-  }
-
-  state = {
-    checked: this.props.defaultChecked || false,
-  };
-
   private readonly uniqueId = uniqueId('checkBox_');
   private readonly labelUniqueId = uniqueId('checkBox_label_');
 
   render() {
-    const { className, defaultChecked, label, forwardedRef, style, ...props } = this.props;
-    const { checked } = this.state;
+    const { checked, className, label, forwardedRef, style, ...props } = this.props;
     const id = this.getInputId();
 
     return (
@@ -50,7 +32,6 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps, Stat
           checked={checked}
           id={id}
           {...props}
-          onChange={this.toggle}
           aria-labelledby={this.labelUniqueId}
           ref={forwardedRef}
         />
@@ -61,14 +42,6 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps, Stat
       </CheckboxContainer>
     );
   }
-
-  private toggle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState(state => ({ checked: !state.checked }));
-
-    if (typeof this.props.onChange === 'function') {
-      this.props.onChange(e);
-    }
-  };
 
   private getInputId() {
     const { id } = this.props;
