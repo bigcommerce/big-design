@@ -1,4 +1,4 @@
-import { stripUnit } from 'polished';
+import { stripUnit, transparentize } from 'polished';
 
 export const addValues = (first: string, second: string) => {
   const [firstValue, firstUnit] = stripUnit(first, true);
@@ -9,4 +9,15 @@ export const addValues = (first: string, second: string) => {
   }
 
   return `${Number(firstValue) + Number(secondValue)}${firstUnit}`;
+};
+
+/**
+ * Creates and rgba color giving a hex and an amount
+ * @param color hex color
+ * @param alpha number between 0 and 1
+ */
+export const createRGBA = (color: string, alpha: number) => {
+  const calculatedAmount = 1 - alpha;
+
+  return transparentize(calculatedAmount, color);
 };
