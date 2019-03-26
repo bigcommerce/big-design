@@ -8,6 +8,8 @@ import { createSpacing, Spacing } from './system/spacing';
 import { createTypography, Typography } from './system/typography';
 import { zIndex, ZIndex } from './system/z-index';
 
+export * from './helpers';
+
 export interface ThemeOptions {
   htmlFontSize: number;
 }
