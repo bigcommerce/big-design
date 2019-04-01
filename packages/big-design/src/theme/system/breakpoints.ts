@@ -5,7 +5,9 @@ export interface Breakpoints {
 }
 
 export const breakpoints: Breakpoints = {
-  mobile: `@media (max-width: 719px)`,
+  mobile: `@media (min-width: 0px)`,
   tablet: `@media (min-width: 720px)`,
   desktop: `@media (min-width: 1025px)`,
 };
+
+export const breakpointsOrder: Array<keyof Breakpoints> = ['mobile', 'tablet', 'desktop'];

@@ -13,11 +13,11 @@ export const StyledBox = styled.div<BoxProps>`
     backgroundColor &&
     css`
       background-color: ${theme.colors[backgroundColor]};
-    `}
+    `};
 
-  ${({ elevation, theme }) => elevation && theme.elevation[elevation]}
-  ${({ border, theme }) => border && theme.border[border]}
-  ${({ borderRadius, theme }) => borderRadius && theme.borderRadius[borderRadius]}
+  ${({ elevation, theme }) => elevation && theme.elevation[elevation]};
+  ${({ border, theme }) => border && theme.border[border]};
+  ${({ borderRadius, theme }) => borderRadius && theme.borderRadius[borderRadius]};
 `;
 
 StyledBox.defaultProps = { theme: defaultTheme };

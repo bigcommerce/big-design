@@ -8,15 +8,15 @@ type SingleMarginProp = keyof Spacing;
 type ResponsiveMarginProp = { [key in keyof Breakpoints]?: keyof Spacing };
 type MarginProp = SingleMarginProp | ResponsiveMarginProp;
 
-export interface MarginProps {
-  margin?: MarginProp;
-  marginTop?: MarginProp;
-  marginRight?: MarginProp;
-  marginBottom?: MarginProp;
-  marginLeft?: MarginProp;
-  marginVertical?: MarginProp;
-  marginHorizontal?: MarginProp;
-}
+export type MarginProps = Partial<{
+  margin: MarginProp;
+  marginTop: MarginProp;
+  marginRight: MarginProp;
+  marginBottom: MarginProp;
+  marginLeft: MarginProp;
+  marginVertical: MarginProp;
+  marginHorizontal: MarginProp;
+}>;
 
 export const withMargins = () => css<MarginProps>`
   ${({ margin, theme }) => margin && getSpacingStyles(margin, theme, 'margin')};

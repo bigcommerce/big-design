@@ -8,15 +8,15 @@ type SinglePaddingProp = keyof Spacing;
 type ResponsivePaddingProp = { [key in keyof Breakpoints]?: keyof Spacing };
 type PaddingProp = SinglePaddingProp | ResponsivePaddingProp;
 
-export interface PaddingProps {
-  padding?: PaddingProp;
-  paddingTop?: PaddingProp;
-  paddingRight?: PaddingProp;
-  paddingBottom?: PaddingProp;
-  paddingLeft?: PaddingProp;
-  paddingVertical?: PaddingProp;
-  paddingHorizontal?: PaddingProp;
-}
+export type PaddingProps = Partial<{
+  padding: PaddingProp;
+  paddingTop: PaddingProp;
+  paddingRight: PaddingProp;
+  paddingBottom: PaddingProp;
+  paddingLeft: PaddingProp;
+  paddingVertical: PaddingProp;
+  paddingHorizontal: PaddingProp;
+}>;
 
 export const withPaddings = () => css<PaddingProps>`
   ${({ padding, theme }) => padding && getSpacingStyles(padding, theme, 'padding')};
