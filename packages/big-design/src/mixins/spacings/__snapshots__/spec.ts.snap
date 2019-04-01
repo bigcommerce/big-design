@@ -3,7 +3,7 @@
 exports[`multiple responsive spacing 1`] = `
 Array [
   Array [
-    "@media (max-width: 719px)",
+    "@media (min-width: 0px)",
     "{",
     "border: 0; padding-right: 0;",
     "}",
@@ -26,7 +26,7 @@ Array [
 exports[`responsive spacing 1`] = `
 Array [
   Array [
-    "@media (max-width: 719px)",
+    "@media (min-width: 0px)",
     "{",
     "border: 0;",
     "}",

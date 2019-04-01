@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 import { ThemeInterface } from '../../theme';
-import { Breakpoints } from '../../theme/system/breakpoints';
+import { breakpointsOrder, Breakpoints } from '../../theme/system/breakpoints';
 import { Spacing } from '../../theme/system/spacing';
 
 type SingleSpacingProp = keyof Spacing;
@@ -33,7 +33,11 @@ function getSimpleSpacings(spacing: SingleSpacingProp, theme: ThemeInterface, sp
 }
 
 function getResponsiveSpacings(responsiveSpacing: ResponsiveSpacingProp, theme: ThemeInterface, spacingKeys: string[]) {
-  return (Object.keys(responsiveSpacing) as Array<keyof Breakpoints>).map(
+  const breakpointKeys = Object.keys(responsiveSpacing).sort(
+    (a, b) => breakpointsOrder.indexOf(a as keyof Breakpoints) - breakpointsOrder.indexOf(b as keyof Breakpoints),
+  );
+
+  return (breakpointKeys as Array<keyof Breakpoints>).map(
     breakpointKey =>
       css`
         ${theme.breakpoints[breakpointKey]} {
