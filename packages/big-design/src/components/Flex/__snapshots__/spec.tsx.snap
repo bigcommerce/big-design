@@ -9,6 +9,12 @@ exports[`render flex 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
   -webkit-align-items: stretch;
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
@@ -29,6 +35,8 @@ exports[`render flex 1`] = `
 
 <div
   class="c0 "
+  direction="row"
+  wrap="nowrap"
 >
   Flex
 </div>
