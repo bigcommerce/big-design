@@ -26,3 +26,14 @@ test('forwards styles', () => {
   expect(container.getElementsByClassName('test').length).toBe(1);
   expect(container.firstChild).toHaveStyle('background: red');
 });
+
+test('Flex Item forwards styles', () => {
+  const { container } = render(
+    <Flex.Item className="test" style={{ background: 'red' }}>
+      Flex
+    </Flex.Item>,
+  );
+
+  expect(container.getElementsByClassName('test').length).toBe(1);
+  expect(container.firstChild).toHaveStyle('background: red');
+});
