@@ -13,4 +13,5 @@ export * from './Modal';
 export * from './Panel';
 export * from './Radio';
 export * from './Spinner';
+export * from './Tabs';
 export * from './Typography';
