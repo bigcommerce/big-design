@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`simple form render 1`] = `
+.c5 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c5:last-child {
+  margin-bottom: 0;
+}
+
+.c0 {
+  border: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.c0:last-child {
+  margin: 0;
+}
+
+.c2 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c2:last-child {
+  margin-bottom: 0;
+}
+
+.c1 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  margin: 0 0 0.75rem;
+}
+
+.c1:not(:last-child) {
+  margin-bottom: 0.25rem;
+}
+
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.c8 {
+  border-radius: 0.25rem;
+  border: 1px solid #D9DCE9;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  color: #313440;
+  height: 2.25rem;
+  line-height: 1.5rem;
+  padding: 0.25rem 0.75rem;
+  width: 100%;
+}
+
+.c8:hover:not([disabled]) {
+  border: 1px solid #B4BAD1;
+}
+
+.c8:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+.c8[disabled] {
+  background-color: #ECEEF5;
+}
+
+.c8::-webkit-input-placeholder {
+  color: #B4BAD1;
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
+
+.c8::-moz-placeholder {
+  color: #B4BAD1;
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
+
+.c8:-ms-input-placeholder {
+  color: #B4BAD1;
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
+
+.c8::placeholder {
+  color: #B4BAD1;
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
+
+.c3 {
+  margin-bottom: 1rem;
+}
+
+.c3:last-child {
+  margin: 0;
+}
+
+@media (min-width:720px) {
+  .c3 {
+    display: grid;
+    grid-gap: 1rem;
+  }
+
+  .c3 .c6 {
+    max-width: 26rem;
+  }
+}
+
+<form
+  class=""
+>
+  <fieldset
+    class="c0"
+  >
+    <legend
+      class="c1"
+    >
+      Primary contact
+    </legend>
+    <p
+      class="c2"
+    >
+      Minim velit quis aute adipisicing adipisicing do do exercitation cupidatat enim ex voluptate consequat labore.
+    </p>
+    <div
+      class="c3"
+    >
+      <div>
+        <label
+          class="c4"
+          for="input_1"
+        >
+          First Name
+        </label>
+        <p
+          class="c5"
+        >
+          This is an example description for First Name
+        </p>
+        <span
+          class="c6 c7"
+        >
+          <input
+            class="c8"
+            id="input_1"
+            placeholder="Placeholder text"
+          />
+        </span>
+      </div>
+    </div>
+    <div
+      class="c3"
+    >
+      <div>
+        <label
+          class="c4"
+          for="input_2"
+        >
+          Middle Name
+        </label>
+        <p
+          class="c5"
+        >
+          This is an example description for Last Name. Featuring a Left Icon.
+        </p>
+        <span
+          class="c6 c7"
+        >
+          <input
+            class="c8"
+            id="input_2"
+            placeholder="Placeholder text"
+          />
+        </span>
+      </div>
+    </div>
+  </fieldset>
+</form>
+`;
