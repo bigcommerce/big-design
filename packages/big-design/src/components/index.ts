@@ -6,6 +6,7 @@ export * from './Form';
 export * from './GlobalStyle';
 export * from './Grid';
 export * from './Icons';
+export * from './Input';
 export * from './Panel';
 export * from './Spinner';
 export * from './Typography';
