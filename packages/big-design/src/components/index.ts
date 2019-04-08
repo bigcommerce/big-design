@@ -9,6 +9,7 @@ export * from './Icons';
 export * from './Input';
 export * from './Link';
 export * from './Lozenge';
+export * from './Modal';
 export * from './Panel';
 export * from './Radio';
 export * from './Spinner';
