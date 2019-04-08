@@ -7,6 +7,7 @@ export * from './GlobalStyle';
 export * from './Grid';
 export * from './Icons';
 export * from './Input';
+export * from './Link';
 export * from './Panel';
 export * from './Radio';
 export * from './Spinner';
