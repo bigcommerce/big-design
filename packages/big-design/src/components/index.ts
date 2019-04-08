@@ -14,4 +14,5 @@ export * from './Panel';
 export * from './Radio';
 export * from './Spinner';
 export * from './Tabs';
+export * from './Tooltip';
 export * from './Typography';
