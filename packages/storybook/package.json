@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
-    "@bigcommerce/configs": "1.0.0",
+    "@bigcommerce/configs": "0.1.0",
     "@storybook/addon-a11y": "^5.0.3",
     "@storybook/addon-actions": "^5.0.3",
     "@storybook/addon-backgrounds": "^5.0.3",
@@ -51,7 +51,6 @@
     "@types/storybook__react": "^4.0.1",
     "@types/styled-components": "^4.1.12",
     "babel-loader": "^8.0.5",
-    "lerna": "^3.13.1",
     "ts-loader": "^5.3.3"
   }
 }
