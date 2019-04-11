@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.1.0...@bigcommerce/big-design@0.1.1) (2019-04-11)
+
+
+### Bug Fixes
+
+* **component:** include dependency types ([79d072d](https://github.com/bigcommerce/big-design/commit/79d072d))
+
+
+
+
+
 # 0.1.0 (2019-04-11)
 
 
