@@ -32,7 +32,7 @@ export const StyledLozenge = styled.span<LozengeProps>`
   ${({ theme, variant }) =>
     variant === 'success' &&
     css`
-      background-color: ${theme.colors.success60};
+      background-color: ${theme.colors.success50};
     `}
 
   ${({ theme, variant }) =>
