@@ -1,6 +1,6 @@
 export interface Colors {
   white: string;
-  brandBlue: string;
+  brand: string;
 
   secondary: string;
   secondary10: string;
@@ -50,7 +50,7 @@ export interface Colors {
 
 export const colors: Colors = {
   white: '#FFFFFF',
-  brandBlue: '#273A8A',
+  brand: '#273A8A',
 
   secondary: '#B4BAD1',
   secondary10: '#F6F7FC',

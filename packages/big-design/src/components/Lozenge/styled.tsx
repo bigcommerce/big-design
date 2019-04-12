@@ -26,7 +26,7 @@ export const StyledLozenge = styled.span<LozengeProps>`
   ${({ theme, variant }) =>
     variant === 'primary' &&
     css`
-      background-color: ${theme.colors.brandBlue};
+      background-color: ${theme.colors.brand};
     `}
 
   ${({ theme, variant }) =>
