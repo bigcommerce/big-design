@@ -1,5 +1,6 @@
 export interface Colors {
   white: string;
+  brand: string;
 
   secondary: string;
   secondary10: string;
@@ -49,6 +50,7 @@ export interface Colors {
 
 export const colors: Colors = {
   white: '#FFFFFF',
+  brand: '#273A8A',
 
   secondary: '#B4BAD1',
   secondary10: '#F6F7FC',
@@ -91,7 +93,7 @@ export const colors: Colors = {
   success20: '#D3F5D9',
   success30: '#88D895',
   success40: '#2AAB3F',
-  success50: '#1D8F30',
+  success50: '#208831',
   success60: '#146622',
   success70: '#004D0D',
 };
