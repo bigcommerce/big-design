@@ -26,11 +26,14 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "tslint --fix",
-      "prettier --write",
-      "git add"
-    ]
+    "linters": {
+      "*.{js,ts,tsx}": [
+        "tslint --fix",
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": ["dist/**"]
   },
   "dependencies": {
     "@types/hoist-non-react-statics": "^3.3.0",
