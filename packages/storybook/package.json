@@ -12,7 +12,8 @@
     "lint:prettier": "prettier --check 'stories/**/*.{ts,tsx}'",
     "lint:tsc": "tsc --noEmit",
     "lint:tslint": "tslint -c tslint.json -p tsconfig.json",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepublishOnly": "rimraf storybook-static && yarn run ci"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
@@ -51,6 +52,7 @@
     "@types/storybook__react": "^4.0.1",
     "@types/styled-components": "^4.1.12",
     "babel-loader": "^8.0.5",
+    "rimraf": "^2.6.3",
     "ts-loader": "^5.3.3"
   }
 }

@@ -9,7 +9,6 @@
     "ci": "lerna run ci --stream",
     "diff": "lerna diff",
     "lint": "lerna run lint --stream",
-    "prerelease": "yarn run ci",
     "start": "lerna run start --stream --parallel",
     "test": "lerna run test --stream"
   },

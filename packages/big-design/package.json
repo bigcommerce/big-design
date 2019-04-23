@@ -23,7 +23,8 @@
     "lint:tslint": "tslint -c tslint.json -p tsconfig.json",
     "test": "jest",
     "test:watch": "npm test -- --watchAll",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepublishOnly": "rimraf dist && yarn run ci"
   },
   "lint-staged": {
     "linters": {
