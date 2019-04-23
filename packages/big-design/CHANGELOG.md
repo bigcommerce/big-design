@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.1.1...@bigcommerce/big-design@0.1.2) (2019-04-23)
+
+
+### Bug Fixes
+
+* **component:** CHI-399 update lozenge colors ([#28](https://github.com/bigcommerce/big-design/issues/28)) ([e7132d3](https://github.com/bigcommerce/big-design/commit/e7132d3))
+* **component:** ignore dist files on lint-staged ([c277db6](https://github.com/bigcommerce/big-design/commit/c277db6))
+
+
+
+
+
 ## [0.1.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.1.0...@bigcommerce/big-design@0.1.1) (2019-04-11)
 
 

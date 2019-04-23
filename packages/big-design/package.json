@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "sideEffects": false,
   "main": "dist/big-design.cjs.js",
@@ -34,7 +34,9 @@
         "git add"
       ]
     },
-    "ignore": ["dist/**"]
+    "ignore": [
+      "dist/**"
+    ]
   },
   "dependencies": {
     "@types/hoist-non-react-statics": "^3.3.0",
