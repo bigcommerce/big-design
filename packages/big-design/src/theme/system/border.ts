@@ -7,6 +7,7 @@ import { AllStyleInterpolations } from '../styled/types';
 export interface Border {
   box: AllStyleInterpolations;
   boxError: AllStyleInterpolations;
+  none: AllStyleInterpolations;
 }
 
 export interface BorderRadius {
@@ -17,21 +18,18 @@ export interface BorderRadius {
 
 export const createBorder = (_options: ThemeOptions): Border => ({
   box: css`
-    border: ${({ theme }) => `1px solid ${theme.colors.secondary30}`};
+    ${({ theme }) => `1px solid ${theme.colors.secondary30}`};
   `,
+
   boxError: css`
-    border: ${({ theme }) => `1px solid ${theme.colors.danger40}`};
+    ${({ theme }) => `1px solid ${theme.colors.danger40}`};
   `,
+
+  none: 'none',
 });
 
 export const createBorderRadius = (options: ThemeOptions): BorderRadius => ({
-  circle: css`
-    border-radius: 50%;
-  `,
-  none: css`
-    border-radius: 0;
-  `,
-  normal: css`
-    border-radius: ${rem(4, options.htmlFontSize)};
-  `,
+  circle: '50%',
+  none: 0,
+  normal: rem(4, options.htmlFontSize),
 });
