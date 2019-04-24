@@ -11,6 +11,10 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, MarginPr
   backgroundColor?: keyof Colors;
   elevation?: keyof Elevation;
   border?: keyof Border;
+  borderBottom?: keyof Border;
+  borderLeft?: keyof Border;
+  borderRight?: keyof Border;
+  borderTop?: keyof Border;
   borderRadius?: keyof BorderRadius;
 }
 
