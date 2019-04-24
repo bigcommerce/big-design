@@ -8,11 +8,11 @@ import { ButtonProps } from './index';
 
 export const StyledButton = styled.button<ButtonProps & MarginProps>`
   ${withMargins()};
-  ${({ theme }) => theme.borderRadius.normal};
-  ${({ theme }) => theme.border.box};
 
   align-items: center;
   appearance: none;
+  border: ${({ theme }) => theme.border.box};
+  border-radius: ${({ theme }) => theme.borderRadius.normal};
   color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
   display: inline-flex;

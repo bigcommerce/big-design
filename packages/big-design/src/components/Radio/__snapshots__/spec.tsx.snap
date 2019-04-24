@@ -42,8 +42,8 @@ exports[`render Radio (checked) 1`] = `
 
 .c3 {
   border: 1px solid #D9DCE9;
-  border-radius: 50%;
   border-color: #3C64F4;
+  border-radius: 50%;
   color: #FFFFFF;
   display: inline-block;
   height: 1.25rem;
@@ -147,8 +147,8 @@ exports[`render Radio (unchecked) 1`] = `
 
 .c3 {
   border: 1px solid #D9DCE9;
-  border-radius: 50%;
   border-color: #D9DCE9;
+  border-radius: 50%;
   color: #FFFFFF;
   display: inline-block;
   height: 1.25rem;

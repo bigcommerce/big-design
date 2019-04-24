@@ -7,9 +7,9 @@ import { LozengeProps } from './Lozenge';
 
 export const StyledLozenge = styled.span<LozengeProps>`
   ${withMargins()};
-  ${({ theme }) => theme.borderRadius.normal};
 
   color: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.borderRadius.normal};
   display: inline-block;
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
