@@ -24,10 +24,9 @@ export const StyledLabel = styled(StyleableText).attrs({
 ` as StyledComponent<'label', DefaultTheme>;
 
 export const StyledRadio = styled.label<StyledRadioProps>`
-  ${({ theme }) => theme.border.box};
-  ${({ theme }) => theme.borderRadius.circle};
-
+  border: ${({ theme }) => theme.border.box};
   border-color: ${props => (props.checked ? props.theme.colors.primary40 : props.theme.colors.secondary30)};
+  border-radius: ${({ theme }) => theme.borderRadius.circle};
   color: ${({ theme }) => theme.colors.white};
   display: inline-block;
   height: ${({ theme }) => theme.spacing.large};

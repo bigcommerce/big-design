@@ -76,15 +76,15 @@ exports[`simple form render 1`] = `
 }
 
 .c8 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   background-color: #FFFFFF;
+  border-radius: 0.25rem;
   box-sizing: border-box;
   color: #313440;
   height: 2.25rem;
   line-height: 1.5rem;
   padding: 0.25rem 0.75rem;
   width: 100%;
+  border: 1px solid #D9DCE9;
 }
 
 .c8:hover:not([disabled]) {

@@ -39,15 +39,15 @@ exports[`renders all together 1`] = `
 }
 
 .c4 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   background-color: #FFFFFF;
+  border-radius: 0.25rem;
   box-sizing: border-box;
   color: #313440;
   height: 2.25rem;
   line-height: 1.5rem;
   padding: 0.25rem 0.75rem;
   width: 100%;
+  border: 1px solid #D9DCE9;
   padding-left: 2.25rem;
 }
 

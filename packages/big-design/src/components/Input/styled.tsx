@@ -16,10 +16,8 @@ export const StyledInputWrapper = styled.span<InputProps>`
 `;
 
 export const StyledInput = styled.input<InputProps>`
-  ${({ theme }) => theme.borderRadius.normal};
-  ${({ error, theme }) => (error ? theme.border.boxError : theme.border.box)};
-
   background-color: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.borderRadius.normal};
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   height: ${({ theme }) => addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
@@ -27,10 +25,17 @@ export const StyledInput = styled.input<InputProps>`
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.small}`};
   width: 100%;
 
+  ${({ error, theme }) =>
+    css`
+      border: ${error ? theme.border.boxError : theme.border.box};
+    `};
+
   &:hover:not([disabled]) {
     ${({ error, theme }) =>
       error
-        ? theme.border.boxError
+        ? css`
+            border: ${theme.border.boxError};
+          `
         : css`
             border: 1px solid ${theme.colors.secondary40};
           `}

@@ -2,8 +2,6 @@
 
 exports[`render default button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -11,6 +9,8 @@ exports[`render default button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -106,8 +106,6 @@ exports[`render default button 1`] = `
 
 exports[`render destructive button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -115,6 +113,8 @@ exports[`render destructive button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -210,8 +210,6 @@ exports[`render destructive button 1`] = `
 
 exports[`render destructive disabled button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -219,6 +217,8 @@ exports[`render destructive disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -315,8 +315,6 @@ exports[`render destructive disabled button 1`] = `
 
 exports[`render disabled button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -324,6 +322,8 @@ exports[`render disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -420,8 +420,6 @@ exports[`render disabled button 1`] = `
 
 exports[`render icon left and right button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -429,6 +427,8 @@ exports[`render icon left and right button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -552,8 +552,6 @@ exports[`render icon left and right button 1`] = `
 
 exports[`render icon left button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -561,6 +559,8 @@ exports[`render icon left button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -670,8 +670,6 @@ exports[`render icon left button 1`] = `
 
 exports[`render icon only button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -679,6 +677,8 @@ exports[`render icon only button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -787,8 +787,6 @@ exports[`render icon only button 1`] = `
 
 exports[`render icon right button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -796,6 +794,8 @@ exports[`render icon right button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -932,8 +932,6 @@ exports[`render loading button 1`] = `
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -941,6 +939,8 @@ exports[`render loading button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1056,8 +1056,6 @@ exports[`render loading button 1`] = `
 
 exports[`render secondary button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1065,6 +1063,8 @@ exports[`render secondary button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1160,8 +1160,6 @@ exports[`render secondary button 1`] = `
 
 exports[`render secondary destructive button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1169,6 +1167,8 @@ exports[`render secondary destructive button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1264,8 +1264,6 @@ exports[`render secondary destructive button 1`] = `
 
 exports[`render secondary destructive disabled button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1273,6 +1271,8 @@ exports[`render secondary destructive disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1369,8 +1369,6 @@ exports[`render secondary destructive disabled button 1`] = `
 
 exports[`render secondary disabled button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1378,6 +1376,8 @@ exports[`render secondary disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1474,8 +1474,6 @@ exports[`render secondary disabled button 1`] = `
 
 exports[`render subtle button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1483,6 +1481,8 @@ exports[`render subtle button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1579,8 +1579,6 @@ exports[`render subtle button 1`] = `
 
 exports[`render subtle destructive button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1588,6 +1586,8 @@ exports[`render subtle destructive button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1684,8 +1684,6 @@ exports[`render subtle destructive button 1`] = `
 
 exports[`render subtle destructive disabled button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1693,6 +1691,8 @@ exports[`render subtle destructive disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -1790,8 +1790,6 @@ exports[`render subtle destructive disabled button 1`] = `
 
 exports[`render subtle disabled button 1`] = `
 .c0 {
-  border-radius: 0.25rem;
-  border: 1px solid #D9DCE9;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1799,6 +1797,8 @@ exports[`render subtle disabled button 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
   display: -webkit-inline-box;
