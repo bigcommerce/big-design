@@ -16,8 +16,42 @@ export const StyledBox = styled.div<BoxProps>`
     `};
 
   ${({ elevation, theme }) => elevation && theme.elevation[elevation]};
-  ${({ border, theme }) => border && theme.border[border]};
-  ${({ borderRadius, theme }) => borderRadius && theme.borderRadius[borderRadius]};
+
+  ${({ border, theme }) =>
+    border &&
+    css`
+      border: ${theme.border[border]};
+    `};
+
+  ${({ borderTop, theme }) =>
+    borderTop &&
+    css`
+      border-top: ${theme.border[borderTop]};
+    `};
+
+  ${({ borderRight, theme }) =>
+    borderRight &&
+    css`
+      border-right: ${theme.border[borderRight]};
+    `};
+
+  ${({ borderBottom, theme }) =>
+    borderBottom &&
+    css`
+      border-bottom: ${theme.border[borderBottom]};
+    `};
+
+  ${({ borderLeft, theme }) =>
+    borderLeft &&
+    css`
+      border-left: ${theme.border[borderLeft]};
+    `};
+
+  ${({ borderRadius, theme }) =>
+    borderRadius &&
+    css`
+      border-radius: ${theme.borderRadius[borderRadius]};
+    `};
 `;
 
 StyledBox.defaultProps = { theme: defaultTheme };

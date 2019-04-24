@@ -50,6 +50,12 @@ test('has border props', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('has individual border props', () => {
+  const { container } = render(<Box borderBottom="box" borderRight="box" />);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
 test('has elevation props', () => {
   const { container } = render(<Box elevation="floating" />);
 
