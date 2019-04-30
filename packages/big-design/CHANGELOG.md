@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.1.2...@bigcommerce/big-design@0.2.0) (2019-04-30)
+
+
+### Features
+
+* **component:** add individual border props to Box ([2559e28](https://github.com/bigcommerce/big-design/commit/2559e28))
+* **component:** return property value on theme border ([be11e6a](https://github.com/bigcommerce/big-design/commit/be11e6a))
+
+
+### BREAKING CHANGES
+
+* **component:** `theme.border` and `theme.borderRadius` now only
+return the property value.
+
+If you are using something like `${({ theme }) => theme.border.box}` you
+need to update it to `border: ${({ theme }) => theme.border.box}`. The
+same applies to border-radius
+
+
+
+
+
 ## [0.1.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.1.1...@bigcommerce/big-design@0.1.2) (2019-04-23)
 
 
