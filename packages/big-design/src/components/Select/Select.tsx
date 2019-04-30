@@ -208,10 +208,6 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     this.setState({ highlightedId: null, isOpen: false }, () => {
       document.removeEventListener('mousedown', this.handleOnClickOutside, false);
 
-      // if (this.inputRef && focusInput) {
-      //   this.inputRef.focus();
-      // }
-
       if (this.props.value) {
         const selectListItem = this.getItemTextByValue(this.props.value);
         const text =

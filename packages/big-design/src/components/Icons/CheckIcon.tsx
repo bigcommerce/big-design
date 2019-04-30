@@ -9,10 +9,7 @@ export default class SvgCheckIcon extends Icon {
   render() {
     const { title, theme, ...rest } = this.props;
     const size = this.getSize();
-    const style = {
-      width: size,
-      height: size,
-    };
+    const style = { ...rest.style, width: size, height: size };
     const props = { ...rest, style };
 
     return (
