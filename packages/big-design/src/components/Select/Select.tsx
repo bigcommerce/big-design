@@ -12,6 +12,7 @@ import { List } from '../List/List';
 import { StyledStatusMessage } from './styled';
 
 interface SelectState {
+  filterChildren: boolean;
   highlightedId: string | null;
   inputText: string;
   isOpen: boolean;
@@ -35,6 +36,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   };
 
   state = {
+    filterChildren: false,
     highlightedId: null,
     inputText: '',
     isOpen: false,
@@ -171,9 +173,9 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     const { children } = this.props;
 
     return React.Children.map(children as ListItem[], (child, index) => {
-      if (React.isValidElement(child) && child.type === ListItem) {
+      if (React.isValidElement(child) && child.type === ListItem && typeof child.props.children === 'string') {
         if (
-          typeof child.props.children === 'string' &&
+          !this.state.filterChildren ||
           child.props.children.toLowerCase().startsWith(this.state.inputText.toLocaleLowerCase())
         ) {
           const id = `${this.getSelectId()}-item-${index}`;
@@ -188,6 +190,8 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
             role: 'option',
           });
         }
+
+        return null;
       }
     });
   }
@@ -197,19 +201,27 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   };
 
   private openList() {
+    const { value } = this.props;
+
     this.setState({ isOpen: true }, () => {
       document.addEventListener('mousedown', this.handleOnClickOutside, false);
+
+      const item = value && this.findItemByValue(value);
+
+      if (item) {
+        this.updateHighlightedId(item.id);
+      }
 
       return this.inputRef && this.inputRef.focus();
     });
   }
 
   private closeList() {
-    this.setState({ highlightedId: null, isOpen: false }, () => {
+    this.setState({ filterChildren: false, highlightedId: null, isOpen: false }, () => {
       document.removeEventListener('mousedown', this.handleOnClickOutside, false);
 
       if (this.props.value) {
-        const selectListItem = this.getItemTextByValue(this.props.value);
+        const selectListItem = this.findChildrenByValue(this.props.value);
         const text =
           selectListItem && typeof selectListItem.props.children === 'string' && selectListItem.props.children;
 
@@ -242,6 +254,25 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     return children && children[children.indexOf(item)].id;
   }
 
+  private findItemByValue(value: AllHTMLAttributes<HTMLElement>['value']) {
+    const children = this.listRef && Array.from(this.listRef.children);
+
+    return (
+      children &&
+      children.find(child => {
+        return child.getAttribute('value') === value;
+      })
+    );
+  }
+
+  private findChildrenByValue(value: AllHTMLAttributes<HTMLElement>['value']) {
+    const children = React.Children.toArray(this.props.children) as ListItem[];
+
+    return children.find(child => {
+      return child.props.value === value;
+    });
+  }
+
   private getItemById(id: string | null) {
     if (!this.listRef || !id) {
       return null;
@@ -251,14 +282,6 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
 
     return children.find(child => {
       return child.id === id;
-    });
-  }
-
-  private getItemTextByValue(value: AllHTMLAttributes<HTMLElement>['value']) {
-    const children = React.Children.toArray(this.props.children) as ListItem[];
-
-    return children.find(child => {
-      return child.props.value === value;
     });
   }
 
@@ -331,7 +354,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       this.toggleList();
     }
 
-    this.setState({ inputText: event.target.value }, () => {
+    this.setState({ filterChildren: true, inputText: event.target.value }, () => {
       if (!this.listRef) {
         return;
       }

@@ -91,11 +91,10 @@ test('select input has aria-labelledby', () => {
 test('select input has aria-controls', () => {
   const { getByRole, getByLabelText } = render(SelectMock);
   const input = getByLabelText('Countries');
-  const menu = getByRole('listbox');
 
   fireEvent.focus(input);
 
-  expect(input.getAttribute('aria-controls')).toBe(menu.id);
+  expect(input.getAttribute('aria-controls')).toBe(getByRole('listbox').id);
 });
 
 test('renders input button', () => {
@@ -117,42 +116,42 @@ test('input button has aria-label', () => {
 });
 
 test('select menu opens when focused on input', () => {
-  const { getByLabelText, getByRole } = render(SelectMock);
+  const { getByLabelText, queryByRole } = render(SelectMock);
   const input = getByLabelText('Countries');
-  const menu = getByRole('listbox');
+
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 
   fireEvent.focus(input);
 
-  expect(menu).toHaveStyle('display: inline-block');
+  expect(queryByRole('listbox')).toBeInTheDocument();
 });
 
 test('select menu opens/closes when input button is clicked', () => {
-  const { getByRole } = render(SelectMock);
+  const { getByRole, queryByRole } = render(SelectMock);
   const button = getByRole('button');
-  const menu = getByRole('listbox');
 
   fireEvent.click(button);
-  expect(menu).toHaveStyle('display: inline-block');
+  expect(queryByRole('listbox')).toBeInTheDocument();
 
   fireEvent.click(button);
-  expect(menu).not.toHaveStyle('display: inline-block');
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('select has items', () => {
   const { getAllByRole, getByLabelText } = render(SelectMock);
   const input = getByLabelText('Countries');
-  const options = getAllByRole('option');
 
   fireEvent.focus(input);
-  expect(options.length).toBe(4);
+
+  expect(getAllByRole('option').length).toBe(4);
 });
 
 test('select items should have values', () => {
   const { getAllByRole, getByLabelText } = render(SelectMock);
   const input = getByLabelText('Countries');
-  const options = getAllByRole('option');
-
   fireEvent.focus(input);
+
+  const options = getAllByRole('option');
 
   expect(options[0].getAttribute('value')).toBe('us');
   expect(options[1].getAttribute('value')).toBe('mx');
@@ -160,8 +159,8 @@ test('select items should have values', () => {
   expect(options[3].getAttribute('value')).toBe('en');
 });
 
-test('select items should be filtered by value', () => {
-  const { getAllByRole, getByLabelText } = render(
+test('select items should be unfiltered when opened', () => {
+  const { getAllByRole, getByRole } = render(
     <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -169,13 +168,45 @@ test('select items should be filtered by value', () => {
       <Select.Option value="en">England</Select.Option>
     </Select>,
   );
-  const input = getByLabelText('Countries');
+  const button = getByRole('button');
+
+  fireEvent.click(button);
+
   const options = getAllByRole('option');
 
-  fireEvent.focus(input);
+  expect(options.length).toBe(4);
+});
+
+test('select item should be highlighted when opened', () => {
+  const { getAllByRole, getByLabelText, getByRole } = render(
+    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+    </Select>,
+  );
+  const button = getByRole('button');
+  const input = getByLabelText('Countries');
+
+  fireEvent.click(button);
+
+  const options = getAllByRole('option');
+
+  expect(options[1].dataset.highlighted).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
+});
+
+test('select items should be filterable', async () => {
+  const { getAllByRole, getByLabelText, getByRole } = render(SelectMock);
+  const button = getByRole('button');
+
+  fireEvent.click(button);
+  fireEvent.change(getByLabelText('Countries'), { target: { value: 'm' } });
+
+  const options = getAllByRole('option');
 
   expect(options.length).toBe(1);
-  expect(options[0].getAttribute('value')).toBe('mx');
 });
 
 test('up/down arrows should change select item selection', () => {
@@ -200,35 +231,34 @@ test('up/down arrows should change select item selection', () => {
 });
 
 test('esc should close menu', () => {
-  const { getByLabelText, getByRole } = render(SelectMock);
+  const { getByLabelText, queryByRole } = render(SelectMock);
   const input = getByLabelText('Countries');
-  const menu = getByRole('listbox');
 
   fireEvent.focus(input);
-  expect(menu).toHaveStyle('display: inline-block;');
+  expect(queryByRole('listbox')).toBeInTheDocument();
 
   fireEvent.keyDown(input, { key: 'Escape' });
-  expect(menu).not.toHaveStyle('display: inline-block;');
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('tab should close menu', () => {
-  const { getByLabelText, getByRole } = render(SelectMock);
+  const { getByLabelText, queryByRole } = render(SelectMock);
   const input = getByLabelText('Countries');
-  const menu = getByRole('listbox');
 
   fireEvent.focus(input);
-  expect(menu).toHaveStyle('display: inline-block;');
+  expect(queryByRole('listbox')).toBeInTheDocument();
 
   fireEvent.keyDown(input, { key: 'Tab' });
-  expect(menu).not.toHaveStyle('display: inline-block;');
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('home should select first select item', () => {
   const { getAllByRole, getByLabelText } = render(SelectMock);
   const input = getByLabelText('Countries');
-  const options = getAllByRole('option');
 
   fireEvent.focus(input);
+
+  const options = getAllByRole('option');
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'ArrowDown' });
@@ -243,9 +273,10 @@ test('home should select first select item', () => {
 test('end should select last select item', () => {
   const { getAllByRole, getByLabelText } = render(SelectMock);
   const input = getByLabelText('Countries');
-  const options = getAllByRole('option');
 
   fireEvent.focus(input);
+
+  const options = getAllByRole('option');
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   expect(options[0].dataset.highlighted).toBe('true');
@@ -279,9 +310,11 @@ test('space should trigger onItemChange', () => {
 test('clicking on select options should trigger onItemClick', () => {
   const { getAllByRole, getByLabelText } = render(SelectMock);
   const input = getByLabelText('Countries');
-  const options = getAllByRole('option');
 
   fireEvent.focus(input);
+
+  const options = getAllByRole('option');
+
   fireEvent.mouseOver(options[1]);
   fireEvent.click(options[1]);
   expect(onItemChange).toHaveBeenCalledWith('mx');
@@ -290,9 +323,11 @@ test('clicking on select options should trigger onItemClick', () => {
 test('select options should be highlighted when moused over', () => {
   const { getByLabelText, getByRole } = render(SelectMock);
   const input = getByLabelText('Countries');
-  const option = getByRole('option');
 
   fireEvent.focus(input);
+
+  const option = getByRole('option');
+
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.mouseOver(option);
   expect(option.dataset.highlighted).toBe('true');

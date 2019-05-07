@@ -35,8 +35,8 @@ export class List extends React.PureComponent<ListProps> {
 
     return createPortal(
       <Popper innerRef={handleListRef} placement={selectedPlacement} modifiers={{ offset: { offset: '0, 10' } }}>
-        {({ ref, placement, style, scheduleUpdate }) => (
-          <PopperElement isOpen={isOpen} scheduledUpdate={scheduleUpdate}>
+        {({ ref, placement, style }) =>
+          isOpen && (
             <StyledList
               data-placement={placement}
               isOpen={isOpen}
@@ -48,8 +48,8 @@ export class List extends React.PureComponent<ListProps> {
             >
               {children}
             </StyledList>
-          </PopperElement>
-        )}
+          )
+        }
       </Popper>,
       this.listContainer,
     );
