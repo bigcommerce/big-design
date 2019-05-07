@@ -29,7 +29,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
   };
 
   state = {
-    highlightedIndex: 0,
+    highlightedIndex: -1,
     isOpen: false,
   };
 
@@ -109,10 +109,13 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
   };
 
   private openList() {
-    this.setState({ highlightedIndex: 0, isOpen: true }, () => {
+    this.setState({ isOpen: true }, () => {
       document.addEventListener('mousedown', this.handleOnClickOutside, false);
 
-      return this.listRef && this.listRef.focus();
+      // We need to wait until the menu is open to change the index
+      this.setState({ highlightedIndex: 0 }, () => {
+        return this.listRef && this.listRef.focus();
+      });
     });
   }
 
