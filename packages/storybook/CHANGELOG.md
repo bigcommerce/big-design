@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/deini/big-design/compare/@bigcommerce/storybook@0.2.0...@bigcommerce/storybook@0.3.0) (2019-05-14)
+
+
+### Features
+
+* **story:** dropdown stories ([7550bae](https://github.com/deini/big-design/commit/7550bae))
+* **story:** select stories ([9fd7525](https://github.com/deini/big-design/commit/9fd7525))
+
+
+
+
+
 # [0.2.0](https://github.com/deini/big-design/compare/@bigcommerce/storybook@0.1.2...@bigcommerce/storybook@0.2.0) (2019-04-30)
 
 **Note:** Version bump only for package @bigcommerce/storybook

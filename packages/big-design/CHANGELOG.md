@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.2.0...@bigcommerce/big-design@0.3.0) (2019-05-14)
+
+
+### Bug Fixes
+
+* **component:** select will show unfiltered items when opened ([a7d9a75](https://github.com/bigcommerce/big-design/commit/a7d9a75))
+
+
+### Features
+
+* **component:** dropdown component ([69bb8a1](https://github.com/bigcommerce/big-design/commit/69bb8a1))
+* **component:** list component ([dec5899](https://github.com/bigcommerce/big-design/commit/dec5899))
+* **component:** select component ([4e0f6de](https://github.com/bigcommerce/big-design/commit/4e0f6de))
+
+
+
+
+
 # [0.2.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.1.2...@bigcommerce/big-design@0.2.0) (2019-04-30)
 
 
