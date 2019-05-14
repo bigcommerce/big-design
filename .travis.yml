@@ -6,4 +6,7 @@ before_install:
 
 cache: yarn
 
+install:
+  - yarn install --frozen-lockfile
+
 script: yarn run ci
