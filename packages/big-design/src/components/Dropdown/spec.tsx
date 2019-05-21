@@ -3,6 +3,7 @@ import React from 'react';
 import { fireEvent, render } from 'react-testing-library';
 
 import { Button } from '../Button';
+import { PlusIcon } from '../Icons';
 
 import { Dropdown } from './Dropdown';
 
@@ -280,4 +281,77 @@ test('dropdown items should be highlighted when moused over', () => {
 
   fireEvent.mouseOver(option);
   expect(option.dataset.highlighted).toBe('true');
+});
+
+test('dropdown should render dropdown action', () => {
+  const { getByRole, getByText } = render(
+    <Dropdown trigger={<Button>Button</Button>}>
+      <Dropdown.Item value={0}>Option</Dropdown.Item>
+      <Dropdown.Item value={1}>Option</Dropdown.Item>
+      <Dropdown.Action>Action</Dropdown.Action>
+    </Dropdown>,
+  );
+
+  const trigger = getByRole('button');
+
+  fireEvent.click(trigger);
+
+  expect(getByText('Action')).toBeInTheDocument();
+});
+
+test('dropdown action should execute onActionClick function', () => {
+  const onActionClick = jest.fn();
+  const { getByRole, getByText } = render(
+    <Dropdown trigger={<Button>Button</Button>} onActionClick={onActionClick}>
+      <Dropdown.Item value={0}>Option</Dropdown.Item>
+      <Dropdown.Item value={1}>Option</Dropdown.Item>
+      <Dropdown.Action>Action</Dropdown.Action>
+    </Dropdown>,
+  );
+
+  const trigger = getByRole('button');
+
+  fireEvent.click(trigger);
+
+  const action = getByText('Action');
+
+  fireEvent.click(action);
+
+  expect(onActionClick).toHaveBeenCalled();
+});
+
+test('dropdown action supports icons', () => {
+  const { getByRole, getByText } = render(
+    <Dropdown trigger={<Button>Button</Button>}>
+      <Dropdown.Item value={0}>Option</Dropdown.Item>
+      <Dropdown.Item value={1}>Option</Dropdown.Item>
+      <Dropdown.Action iconLeft={<PlusIcon />}>Action</Dropdown.Action>
+    </Dropdown>,
+  );
+
+  const trigger = getByRole('button');
+
+  fireEvent.click(trigger);
+
+  const action = getByText('Action');
+
+  expect(action).toMatchSnapshot();
+});
+
+test('dropdown action supports actionTypes', () => {
+  const { getByRole } = render(
+    <Dropdown trigger={<Button>Button</Button>}>
+      <Dropdown.Item value={0}>Option</Dropdown.Item>
+      <Dropdown.Item value={1}>Option</Dropdown.Item>
+      <Dropdown.Action actionType="destructive">Action</Dropdown.Action>
+    </Dropdown>,
+  );
+
+  const trigger = getByRole('button');
+
+  fireEvent.click(trigger);
+
+  const dropdown = getByRole('menu');
+
+  expect(dropdown.lastChild).toMatchSnapshot();
 });

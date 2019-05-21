@@ -1,4 +1,4 @@
-import { Box, Button, Dropdown, Flex, Link } from '@bigcommerce/big-design';
+import { Box, Button, Dropdown, Flex, Link, PlusIcon } from '@bigcommerce/big-design';
 import { number, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { Placement } from 'popper.js';
@@ -27,6 +27,7 @@ storiesOf('Dropdown', module).add('Overview', () => (
     <Flex justifyContent="space-around">
       <Dropdown
         maxHeight={number('maxHeight', 300)}
+        onActionClick={() => null}
         onItemClick={value => value}
         placement={select('placement', placement, 'bottom')}
         trigger={<Button>Open Menu</Button>}
@@ -47,6 +48,9 @@ storiesOf('Dropdown', module).add('Overview', () => (
         <Dropdown.Item value={14}>Option</Dropdown.Item>
         <Dropdown.Item value={15}>Option</Dropdown.Item>
         <Dropdown.Item value={16}>Option</Dropdown.Item>
+        <Dropdown.Action iconLeft={<PlusIcon />} actionType="normal">
+          Action
+        </Dropdown.Action>
       </Dropdown>
 
       <Dropdown trigger={<Button variant="secondary">Open Menu</Button>}>
@@ -62,6 +66,9 @@ storiesOf('Dropdown', module).add('Overview', () => (
         <Dropdown.Item>
           <Link>Link</Link>
         </Dropdown.Item>
+        <Dropdown.Action iconRight={<PlusIcon />} actionType="destructive">
+          Action
+        </Dropdown.Action>
       </Dropdown>
     </Flex>
   </Box>

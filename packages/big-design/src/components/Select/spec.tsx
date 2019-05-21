@@ -2,6 +2,8 @@ import 'jest-styled-components';
 import React from 'react';
 import { fireEvent, render } from 'react-testing-library';
 
+import { PlusIcon } from '../Icons';
+
 import { Select } from './Select';
 
 jest.mock('popper.js', () => {
@@ -331,4 +333,87 @@ test('select options should be highlighted when moused over', () => {
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.mouseOver(option);
   expect(option.dataset.highlighted).toBe('true');
+});
+
+test('select should render select action', () => {
+  const { getByRole, getByText } = render(
+    <Select label="Countries" placeholder="Choose country">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+      <Select.Action>Action</Select.Action>
+    </Select>,
+  );
+
+  const trigger = getByRole('button');
+
+  fireEvent.click(trigger);
+
+  expect(getByText('Action')).toBeInTheDocument();
+});
+
+test('select action should execute onActionClick function', () => {
+  const onActionClick = jest.fn();
+  const { getByLabelText, getByText } = render(
+    <Select onActionClick={onActionClick} label="Countries" placeholder="Choose country">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+      <Select.Action>Action</Select.Action>
+    </Select>,
+  );
+
+  const input = getByLabelText('Countries');
+
+  fireEvent.focus(input);
+
+  fireEvent.change(input, { target: { value: 'm' } });
+
+  const action = getByText('Action');
+
+  fireEvent.click(action);
+
+  expect(onActionClick).toHaveBeenCalledWith('m');
+});
+
+test('select action supports icons', () => {
+  const { getByLabelText, getByRole } = render(
+    <Select label="Countries" placeholder="Choose country">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+      <Select.Action iconLeft={<PlusIcon />}>Action</Select.Action>
+    </Select>,
+  );
+
+  const input = getByLabelText('Countries');
+
+  fireEvent.focus(input);
+
+  const select = getByRole('listbox');
+
+  expect(select.lastChild).toMatchSnapshot();
+});
+
+test('select action supports actionTypes', () => {
+  const { getByLabelText, getByRole } = render(
+    <Select label="Countries" placeholder="Choose country">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+      <Select.Action actionType="destructive">Action</Select.Action>
+    </Select>,
+  );
+
+  const input = getByLabelText('Countries');
+
+  fireEvent.focus(input);
+
+  const select = getByRole('listbox');
+
+  expect(select.lastChild).toMatchSnapshot();
 });

@@ -37,6 +37,7 @@ class Story extends React.Component<{}, State> {
         <Select
           label="Countries"
           maxHeight={number('maxHeight', 300)}
+          onActionClick={inputText => inputText}
           onItemChange={(selectedValue: string) => this.setState({ value: selectedValue })}
           placeholder={'Choose country'}
           placement={select('placement', placement, 'bottom-start')}
@@ -56,6 +57,7 @@ class Story extends React.Component<{}, State> {
           <Select.Option value="sk">South Korea</Select.Option>
           <Select.Option value="au">Australia</Select.Option>
           <Select.Option value="ug">Uganda</Select.Option>
+          <Select.Action>Action</Select.Action>
         </Select>
       </Flex>
     );

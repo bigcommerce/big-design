@@ -6,6 +6,7 @@ import scrollIntoView from 'scroll-into-view-if-needed';
 import { uniqueId } from '../../utils';
 import { DropdownIcon } from '../Icons';
 import { Input } from '../Input';
+import { ListAction } from '../List/Action/Action';
 import { ListItem } from '../List/Item/Item';
 import { List } from '../List/List';
 
@@ -23,12 +24,14 @@ interface Props {
   maxHeight?: number;
   placement?: Placement;
   value: AllHTMLAttributes<HTMLElement>['value'];
+  onActionClick?(inputText: string): any;
   onItemChange(value: AllHTMLAttributes<HTMLElement>['value']): any;
 }
 
 type SelectProps = Props & React.HTMLAttributes<HTMLUListElement>;
 
 export class Select extends React.PureComponent<SelectProps, SelectState> {
+  static Action = ListAction;
   static Option = ListItem;
 
   static defaultProps: Partial<Props> = {
@@ -70,7 +73,17 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   }
 
   render() {
-    const { children, label, maxHeight, onItemChange, placeholder, placement, value, ...rest } = this.props;
+    const {
+      children,
+      label,
+      maxHeight,
+      onActionClick,
+      onItemChange,
+      placeholder,
+      placement,
+      value,
+      ...rest
+    } = this.props;
 
     const labelId = this.getLabelId();
     const selectId = this.getSelectId();
@@ -173,10 +186,15 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     const { children } = this.props;
 
     return React.Children.map(children as ListItem[], (child, index) => {
-      if (React.isValidElement(child) && child.type === ListItem && typeof child.props.children === 'string') {
+      if (
+        React.isValidElement(child) &&
+        (child.type === ListItem || child.type === ListAction) &&
+        typeof child.props.children === 'string'
+      ) {
         if (
           !this.state.filterChildren ||
-          child.props.children.toLowerCase().startsWith(this.state.inputText.toLocaleLowerCase())
+          child.props.children.toLowerCase().startsWith(this.state.inputText.toLocaleLowerCase()) ||
+          child.type === ListAction
         ) {
           const id = `${this.getSelectId()}-item-${index}`;
 
@@ -185,7 +203,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
             // @ts-ignore
             'data-highlighted': id === this.state.highlightedId,
             id,
-            onClick: this.handleOnItemClick,
+            onClick: child.type === ListItem ? this.handleOnItemClick : this.handleOnActionClick,
             onMouseOver: this.handleOnItemMouseOver,
             role: 'option',
           });
@@ -291,6 +309,16 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
 
   private handleListRef = (node: HTMLElement | null) => {
     this.listRef = node as HTMLUListElement;
+  };
+
+  private handleOnActionClick = () => {
+    const { onActionClick } = this.props;
+
+    if (onActionClick) {
+      onActionClick(this.state.inputText);
+    }
+
+    this.toggleList();
   };
 
   private handleOnClickOutside = (event: MouseEvent) => {
