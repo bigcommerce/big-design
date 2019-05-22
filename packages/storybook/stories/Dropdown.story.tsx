@@ -66,7 +66,7 @@ storiesOf('Dropdown', module).add('Overview', () => (
         <Dropdown.Item>
           <Link>Link</Link>
         </Dropdown.Item>
-        <Dropdown.Action iconRight={<PlusIcon />} actionType="destructive">
+        <Dropdown.Action iconLeft={<PlusIcon />} actionType="destructive">
           Action
         </Dropdown.Action>
       </Dropdown>

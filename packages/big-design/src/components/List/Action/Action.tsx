@@ -5,7 +5,6 @@ import { ContentWrapper, StyledListAction, Wrapper } from './styled';
 export interface ListActionProps extends React.LiHTMLAttributes<HTMLLIElement> {
   actionType?: 'normal' | 'destructive';
   iconLeft?: React.ReactChild;
-  iconRight?: React.ReactChild;
 }
 
 export class ListAction extends React.PureComponent<ListActionProps> {
@@ -14,7 +13,7 @@ export class ListAction extends React.PureComponent<ListActionProps> {
   };
 
   render() {
-    const { children, iconLeft, iconRight, ...rest } = this.props;
+    const { children, iconLeft, ...rest } = this.props;
 
     return (
       <StyledListAction {...rest}>
@@ -22,7 +21,6 @@ export class ListAction extends React.PureComponent<ListActionProps> {
           <ContentWrapper>
             {iconLeft}
             {children}
-            {iconRight}
           </ContentWrapper>
         </Wrapper>
       </StyledListAction>
