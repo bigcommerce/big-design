@@ -24,8 +24,8 @@ interface Props {
   maxHeight?: number;
   placement?: Placement;
   value: AllHTMLAttributes<HTMLElement>['value'];
-  onActionClick?(inputText: string): any;
-  onItemChange(value: AllHTMLAttributes<HTMLElement>['value']): any;
+  onActionClick?(inputText: string): void;
+  onItemChange(value: AllHTMLAttributes<HTMLElement>['value']): void;
 }
 
 type SelectProps = Props & React.HTMLAttributes<HTMLUListElement>;

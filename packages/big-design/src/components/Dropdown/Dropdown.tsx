@@ -17,8 +17,8 @@ interface Props {
   maxHeight?: number;
   placement?: Placement;
   trigger: React.ReactElement;
-  onActionClick?(): any;
-  onItemClick?(value: AllHTMLAttributes<HTMLElement>['value']): any;
+  onActionClick?(): void;
+  onItemClick?(value: AllHTMLAttributes<HTMLElement>['value']): void;
 }
 
 type DropdownProps = Props & React.HTMLAttributes<HTMLUListElement>;
