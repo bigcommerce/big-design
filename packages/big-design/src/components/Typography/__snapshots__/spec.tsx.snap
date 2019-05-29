@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render H0 1`] = `
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 3rem;
+  font-weight: 200;
+  line-height: 3rem;
+  margin: 0 0 1.5rem;
+}
+
+<h1
+  class="c0"
+>
+  Test
+</h1>
+`;
+
+exports[`render H1 1`] = `
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 2.5rem;
+  margin: 0 0 1.5rem;
+}
+
+<h1
+  class="c0"
+>
+  Test
+</h1>
+`;
+
+exports[`render H2 1`] = `
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2rem;
+}
+
+<h2
+  class="c0"
+>
+  Test
+</h2>
+`;
+
+exports[`render H3 1`] = `
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  margin: 0 0 0.75rem;
+}
+
+<h3
+  class="c0"
+>
+  Test
+</h3>
+`;
+
+exports[`render H4 1`] = `
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
+}
+
+<h4
+  class="c0"
+>
+  Test
+</h4>
+`;
+
+exports[`render Small 1`] = `
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c0:last-child {
+  margin-bottom: 0;
+}
+
+<p
+  class="c0"
+>
+  Test
+</p>
+`;
+
+exports[`render Text 1`] = `
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c0:last-child {
+  margin-bottom: 0;
+}
+
+<p
+  class="c0"
+>
+  Test
+</p>
+`;
+
+exports[`render Text with ellipsis 1`] = `
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c0:last-child {
+  margin-bottom: 0;
+}
+
+<p
+  class="c0"
+>
+  Test with ellipsis
+</p>
+`;

@@ -1,17 +1,20 @@
+import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../mixins';
 import { defaultTheme } from '../../theme';
 
-import { HeadingProps, SmallProps, TextProps } from './Typography';
+import { HeadingProps, SmallProps, TextProps, TypographyProps } from './Typography';
 
-const CommonTextStyles = css`
+const commonTextStyles = (props: TypographyProps) => css`
   color: ${({ theme }) => theme.colors.secondary70};
   margin: 0 0 ${({ theme }) => theme.spacing.medium};
+
+  ${props.ellipsis && ellipsis()};
 `;
 
 export const StyledH0 = styled.h1<HeadingProps>`
-  ${CommonTextStyles};
+  ${props => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xxxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.extraLight};
   line-height: ${({ theme }) => theme.lineHeight.xxxLarge};
@@ -20,7 +23,7 @@ export const StyledH0 = styled.h1<HeadingProps>`
 `;
 
 export const StyledH1 = styled.h1<HeadingProps>`
-  ${CommonTextStyles};
+  ${props => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.light};
   line-height: ${({ theme }) => theme.lineHeight.xxLarge};
@@ -29,7 +32,7 @@ export const StyledH1 = styled.h1<HeadingProps>`
 `;
 
 export const StyledH2 = styled.h2<HeadingProps>`
-  ${CommonTextStyles};
+  ${props => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.xLarge};
@@ -37,7 +40,7 @@ export const StyledH2 = styled.h2<HeadingProps>`
 `;
 
 export const StyledH3 = styled.h3<HeadingProps>`
-  ${CommonTextStyles};
+  ${props => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   line-height: ${({ theme }) => theme.lineHeight.large};
@@ -46,7 +49,7 @@ export const StyledH3 = styled.h3<HeadingProps>`
 `;
 
 export const StyledH4 = styled.h4<HeadingProps>`
-  ${CommonTextStyles};
+  ${props => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   line-height: ${({ theme }) => theme.lineHeight.medium};
@@ -55,7 +58,7 @@ export const StyledH4 = styled.h4<HeadingProps>`
 `;
 
 export const StyledText = styled.p<TextProps>`
-  ${CommonTextStyles};
+  ${props => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.medium};
@@ -68,7 +71,7 @@ export const StyledText = styled.p<TextProps>`
 `;
 
 export const StyledSmall = styled.p<SmallProps>`
-  ${CommonTextStyles};
+  ${props => commonTextStyles(props)};
   color: ${({ theme }) => theme.colors.secondary60};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
