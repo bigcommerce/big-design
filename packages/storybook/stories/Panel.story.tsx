@@ -1,9 +1,9 @@
-import { Button, Flex, H2, Panel, Text } from '@bigcommerce/big-design';
+import { Box, Button, Flex, H2, Panel, Text } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 storiesOf('Panel', module).add('Overview', () => (
-  <div style={{ padding: 50 }}>
+  <Box marginVertical="xxxLarge" marginHorizontal={{ tablet: 'xxxLarge' }}>
     <Panel>
       <Flex justifyContent="space-between">
         <H2>Panel header - h2</H2>
@@ -51,5 +51,5 @@ storiesOf('Panel', module).add('Overview', () => (
         Lorem irure.
       </Text>
     </Panel>
-  </div>
+  </Box>
 ));
