@@ -4,9 +4,13 @@ import { MarginProps } from '../../mixins';
 
 import { StyledH0, StyledH1, StyledH2, StyledH3, StyledH4, StyledSmall, StyledText } from './styled';
 
-export type TextProps = React.HTMLAttributes<HTMLParagraphElement> & MarginProps;
-export type SmallProps = React.HTMLAttributes<HTMLParagraphElement> & MarginProps;
-export type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> & MarginProps;
+export interface TypographyProps {
+  ellipsis?: boolean;
+}
+
+export type TextProps = React.HTMLAttributes<HTMLParagraphElement> & MarginProps & TypographyProps;
+export type SmallProps = React.HTMLAttributes<HTMLParagraphElement> & MarginProps & TypographyProps;
+export type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> & MarginProps & TypographyProps;
 
 // Private
 export const StyleableText = StyledText;
