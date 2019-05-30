@@ -9,9 +9,9 @@ export type PanelProps = React.HTMLAttributes<HTMLElement> & MarginProps;
 export const RawPanel: React.FC<PanelProps> = props => (
   <StyledPanel
     marginBottom="xxLarge"
+    {...props}
     backgroundColor="white"
     padding={{ mobile: 'medium', tablet: 'xxLarge' }}
-    {...props}
   />
 );
 
