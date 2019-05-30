@@ -14,6 +14,5 @@ export const StyledPanel = styled(Box)<PanelProps>`
 `;
 
 StyledPanel.defaultProps = {
-  elevation: 'raised',
   theme: defaultTheme,
 };
