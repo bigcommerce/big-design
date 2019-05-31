@@ -1,5 +1,5 @@
 import { createBorder, createBorderRadius, Border, BorderRadius } from './system/border';
-import { breakpoints, Breakpoints } from './system/breakpoints';
+import { breakpoints, breakpointValues, Breakpoints, BreakpointValues } from './system/breakpoints';
 import { colors, Colors } from './system/colors';
 import { elevation, Elevation } from './system/elevation';
 import * as keyframes from './system/keyframes';
@@ -21,6 +21,7 @@ const defaultOptions: ThemeOptions = {
 export interface ThemeInterface {
   border: Border;
   borderRadius: BorderRadius;
+  breakpointValues: BreakpointValues;
   breakpoints: Breakpoints;
   colors: Colors;
   elevation: Elevation;
@@ -40,6 +41,7 @@ export const createTheme = (themeOptions?: Partial<ThemeOptions>): ThemeInterfac
   return {
     border: createBorder(options),
     borderRadius: createBorderRadius(options),
+    breakpointValues,
     breakpoints,
     colors,
     elevation,

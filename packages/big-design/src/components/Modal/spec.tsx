@@ -80,7 +80,7 @@ test('trigger onClose when clicking outside the modal', () => {
   const onClose = jest.fn();
 
   const { queryByRole } = render(
-    <Modal isOpen={true} onClose={onClose}>
+    <Modal isOpen={true} onClose={onClose} closeOnClickOutside={true}>
       {text}
     </Modal>,
   );
@@ -97,7 +97,7 @@ test('do not trigger onClose when clicking outside the modal and closeOnClickOut
   const onClose = jest.fn();
 
   const { queryByRole } = render(
-    <Modal isOpen={true} onClose={onClose} closeOnClickOutside={false}>
+    <Modal isOpen={true} onClose={onClose}>
       {text}
     </Modal>,
   );
@@ -123,4 +123,30 @@ test('do not trigger onClose when clicking inside the modal', () => {
   fireEvent.click(element);
 
   expect(onClose).not.toHaveBeenCalled();
+});
+
+test('render close button on modal variation', () => {
+  const text = 'This is a modal';
+  const onClose = jest.fn();
+
+  const { queryByTitle } = render(
+    <Modal isOpen={true} onClose={onClose} variant="modal">
+      {text}
+    </Modal>,
+  );
+
+  expect(queryByTitle('Close')).toBeInTheDocument();
+});
+
+test('do not render close button on dialog variation', () => {
+  const text = 'This is a modal';
+  const onClose = jest.fn();
+
+  const { queryByTitle } = render(
+    <Modal isOpen={true} onClose={onClose} variant="dialog">
+      {text}
+    </Modal>,
+  );
+
+  expect(queryByTitle('Close')).not.toBeInTheDocument();
 });

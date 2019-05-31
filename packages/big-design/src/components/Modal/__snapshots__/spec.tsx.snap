@@ -8,26 +8,184 @@ exports[`render closed modal 1`] = `
 `;
 
 exports[`render open modal 1`] = `
+.c5 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  border-color: transparent;
+  color: #3C64F4;
+}
+
+.c5:focus {
+  outline: none;
+}
+
+.c5[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c5:active {
+  background-color: #DBE3FE;
+}
+
+.c5:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c5:hover:not(:active) {
+  background-color: #F0F3FF;
+}
+
+.c5[disabled] {
+  border-color: transparent;
+  color: #D9DCE9;
+}
+
+.c6 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
 .c0 {
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(94,99,122,0.8);
+  background: rgba(49,52,64,0.7);
 }
 
 .c1 {
-  border-radius: 0.25rem;
-  box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
   background: #FFFFFF;
-  padding: 1.5rem;
-  left: 50%;
+  box-sizing: border-box;
   position: fixed;
-  top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
+  height: 100%;
+  width: 100%;
+}
+
+.c4 {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+}
+
+@media (min-width:720px) {
+  .c5 {
+    width: auto;
+  }
+}
+
+@media (min-width:0px) {
+  .c3 {
+    padding: 1rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c3 {
+    padding: 2rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c2 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:720px) {
+  .c1 {
+    border-radius: 0.25rem;
+    box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
+    height: auto;
+    left: 50%;
+    max-height: 664px;
+    max-width: 720px;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+}
+
+@media (min-width:720px) {
+  .c4 {
+    display: none;
+  }
 }
 
 <body>
@@ -40,8 +198,40 @@ exports[`render open modal 1`] = `
       tabindex="-1"
     >
       <div
-        class="c1"
+        aria-labelledby="modal_header_1"
+        class="c1 c2 c3"
+        direction="column"
+        wrap="nowrap"
       >
+        <div
+          class="c4"
+        >
+          <button
+            class="c5"
+            role="button"
+            tabindex="0"
+          >
+            <span
+              class="c6"
+            >
+              <svg
+                fill="none"
+                height="1.25rem"
+                style="width: 1.25rem; height: 1.25rem;"
+                viewBox="0 0 24 24"
+                width="1.25rem"
+              >
+                <title>
+                  Close
+                </title>
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
         This is a modal
       </div>
     </div>
@@ -52,7 +242,117 @@ exports[`render open modal 1`] = `
 exports[`render open modal without backdrop 1`] = `
 <body>
   <div />
-  .c0 {
+  .c5 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  border-color: transparent;
+  color: #3C64F4;
+}
+
+.c5:focus {
+  outline: none;
+}
+
+.c5[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c5:active {
+  background-color: #DBE3FE;
+}
+
+.c5:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c5:hover:not(:active) {
+  background-color: #F0F3FF;
+}
+
+.c5[disabled] {
+  border-color: transparent;
+  color: #D9DCE9;
+}
+
+.c6 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c0 {
   height: 100%;
   left: 0;
   position: fixed;
@@ -61,16 +361,64 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 .c1 {
-  border-radius: 0.25rem;
-  box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
   background: #FFFFFF;
-  padding: 1.5rem;
-  left: 50%;
+  box-sizing: border-box;
   position: fixed;
-  top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
+  height: 100%;
+  width: 100%;
+}
+
+.c4 {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+}
+
+@media (min-width:720px) {
+  .c5 {
+    width: auto;
+  }
+}
+
+@media (min-width:0px) {
+  .c3 {
+    padding: 1rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c3 {
+    padding: 2rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c2 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:720px) {
+  .c1 {
+    border-radius: 0.25rem;
+    box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
+    height: auto;
+    left: 50%;
+    max-height: 664px;
+    max-width: 720px;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+}
+
+@media (min-width:720px) {
+  .c4 {
+    display: none;
+  }
 }
 
 <div>
@@ -81,8 +429,40 @@ exports[`render open modal without backdrop 1`] = `
       tabindex="-1"
     >
       <div
-        class="c1"
+        aria-labelledby="modal_header_2"
+        class="c1 c2 c3"
+        direction="column"
+        wrap="nowrap"
       >
+        <div
+          class="c4"
+        >
+          <button
+            class="c5"
+            role="button"
+            tabindex="0"
+          >
+            <span
+              class="c6"
+            >
+              <svg
+                fill="none"
+                height="1.25rem"
+                style="width: 1.25rem; height: 1.25rem;"
+                viewBox="0 0 24 24"
+                width="1.25rem"
+              >
+                <title>
+                  Close
+                </title>
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
         This is a modal
       </div>
     </div>
