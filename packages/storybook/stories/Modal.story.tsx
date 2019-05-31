@@ -31,15 +31,9 @@ class Story extends React.PureComponent<{}, State> {
           closeOnEscKey={boolean('closeOnEscKey', true)}
           closeOnClickOutside={boolean('closeOnClickOutside', false)}
         >
-          <Text>
-            Esse ipsum est consectetur nulla aute deserunt. Anim sint nisi consequat officia adipisicing irure. Nulla ea
-            reprehenderit elit eu nostrud sunt veniam dolore ex occaecat qui. Commodo ullamco ut sint dolor quis cillum
-            in et enim culpa esse exercitation ad. Eiusmod adipisicing nisi culpa esse laborum cupidatat ad pariatur
-            proident. Consectetur ex sint ullamco non ex.
-          </Text>
-          {/* <Modal.Header>Modal Title</Modal.Header> */}
+          <Modal.Header>Modal Title</Modal.Header>
 
-          {/* <Modal.Body>
+          <Modal.Body>
             <Text>
               Ea tempor sunt amet labore proident dolor proident commodo in exercitation ea nulla sunt pariatur. Nulla
               sunt ipsum do eu consectetur exercitation occaecat labore aliqua. Aute elit occaecat esse ea fugiat esse.
@@ -58,7 +52,7 @@ class Story extends React.PureComponent<{}, State> {
               Cancel
             </Button>
             <Button onClick={this.closeModal}>Apply</Button>
-          </Modal.Actions> */}
+          </Modal.Actions>
         </Modal>
 
         <Modal
