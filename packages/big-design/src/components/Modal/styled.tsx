@@ -1,4 +1,4 @@
-import { rgba } from 'polished';
+import { rem, rgba } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { defaultTheme } from '../../theme';
@@ -21,8 +21,7 @@ export const StyledModal = styled.div.attrs({
     props.backdrop &&
     props.variant &&
     css`
-      background: ${({ theme }, { variant } = props) =>
-        rgba(theme.colors.secondary70, variant === 'dialog' ? 0.5 : 0.7)};
+      background: ${() => rgba(props.theme.colors.secondary70, props.variant === 'dialog' ? 0.5 : 0.7)};
     `}
 `;
 
@@ -54,7 +53,7 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
 
         height: auto;
         left: 50%;
-        max-height: 664px;
+        max-height: ${rem(664)};
         max-width: ${({ theme }) => theme.breakpointValues.tablet};
         top: 50%;
         transform: translate(-50%, -50%);

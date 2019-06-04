@@ -18,11 +18,15 @@ export interface ModalProps {
   onClose(): void;
 }
 
-const ModalActions = ({ children }: { children: any }) => (
+const ModalActions = ({ children }: { children: React.ReactNode }) => (
   <StyledModalActions direction="row" justifyContent="flex-end" marginTop={{ mobile: 'medium', tablet: 'xxLarge' }}>
     {children}
   </StyledModalActions>
 );
+
+const ModalHeader = ({ children, ...props }: { children: string }) => {
+  return typeof children === 'string' ? <H2 {...props}>{children}</H2> : null;
+};
 
 export class Modal extends React.PureComponent<ModalProps> {
   static defaultProps: Partial<ModalProps> = {
@@ -36,13 +40,7 @@ export class Modal extends React.PureComponent<ModalProps> {
 
   static Actions = ModalActions;
   static Body = StyledModalBody;
-  static Header = ({ children, ...props }: { children: string }) => {
-    if (typeof children === 'string') {
-      return <H2 {...props}>{children}</H2>;
-    }
-
-    return null;
-  };
+  static Header = ModalHeader;
 
   private modalRef = React.createRef<HTMLDivElement>();
   private modalContainer = document.createElement('div');
@@ -89,13 +87,13 @@ export class Modal extends React.PureComponent<ModalProps> {
   private renderClose() {
     const { onClose, variant } = this.props;
 
-    if (variant === 'modal') {
-      return (
+    return (
+      variant === 'modal' && (
         <StyledModalClose>
           <Button onClick={onClose} iconOnly={<CloseIcon title="Close" />} variant="subtle" />
         </StyledModalClose>
-      );
-    }
+      )
+    );
   }
 
   private renderChildren() {
