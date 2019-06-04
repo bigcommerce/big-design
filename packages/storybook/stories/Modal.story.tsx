@@ -53,10 +53,6 @@ class Story extends React.PureComponent<{}, State> {
             </Button>
             <Button onClick={this.closeModal}>Apply</Button>
           </Modal.Actions>
-          <Modal.Actions>
-            Test
-            <div>test</div>
-          </Modal.Actions>
         </Modal>
 
         <Modal
