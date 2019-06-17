@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/deini/big-design/compare/@bigcommerce/storybook@0.3.0...@bigcommerce/storybook@0.4.0) (2019-06-17)
+
+
+### Features
+
+* **component:** select and dropdown now support an action button ([#36](https://github.com/deini/big-design/issues/36)) ([233f1fc](https://github.com/deini/big-design/commit/233f1fc))
+* **component:** update modals with variants and responsive designs ([d83f39c](https://github.com/deini/big-design/commit/d83f39c))
+* **component:** update panels with responsive specs ([#40](https://github.com/deini/big-design/issues/40)) ([494d38f](https://github.com/deini/big-design/commit/494d38f))
+
+
+
+
+
 # [0.3.0](https://github.com/deini/big-design/compare/@bigcommerce/storybook@0.2.0...@bigcommerce/storybook@0.3.0) (2019-05-14)
 
 

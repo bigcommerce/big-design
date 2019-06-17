@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.3.0...@bigcommerce/big-design@0.4.0) (2019-06-17)
+
+
+### Features
+
+* **component:** add ellipsis prop to Typography components ([2af474a](https://github.com/bigcommerce/big-design/commit/2af474a))
+* **component:** select and dropdown now support an action button ([#36](https://github.com/bigcommerce/big-design/issues/36)) ([233f1fc](https://github.com/bigcommerce/big-design/commit/233f1fc))
+* **component:** update modals with variants and responsive designs ([d83f39c](https://github.com/bigcommerce/big-design/commit/d83f39c))
+* **component:** update panels with responsive specs ([#40](https://github.com/bigcommerce/big-design/issues/40)) ([494d38f](https://github.com/bigcommerce/big-design/commit/494d38f))
+
+
+
+
+
 # [0.3.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.2.0...@bigcommerce/big-design@0.3.0) (2019-05-14)
 
 

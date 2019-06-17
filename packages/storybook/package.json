@@ -1,7 +1,7 @@
 {
   "name": "@bigcommerce/storybook",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "MIT",
   "scripts": {
     "start": "yarn run storybook",
@@ -23,7 +23,7 @@
     ]
   },
   "dependencies": {
-    "@bigcommerce/big-design": "^0.3.0",
+    "@bigcommerce/big-design": "^0.4.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "styled-components": "^4.1.3"
