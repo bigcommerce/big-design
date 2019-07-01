@@ -76,7 +76,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
 
     return (
       React.isValidElement(trigger) &&
-      React.cloneElement<React.HTMLAttributes<any> & React.RefAttributes<any>>(trigger, {
+      React.cloneElement<React.HTMLAttributes<any> & React.RefAttributes<any>>(trigger as any, {
         'aria-haspopup': true,
         id: this.getTriggerId(),
         onClick: this.toggleList,

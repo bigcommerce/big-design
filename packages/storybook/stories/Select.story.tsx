@@ -1,4 +1,4 @@
-import { Box, Flex, Select } from '@bigcommerce/big-design';
+import { Flex, Select } from '@bigcommerce/big-design';
 import { number, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { Placement } from 'popper.js';
@@ -68,8 +68,4 @@ class Story extends React.Component<{}, State> {
   }
 }
 
-storiesOf('Select', module).add('Overview', () => (
-  <Box paddingTop="large">
-    <Story />
-  </Box>
-));
+storiesOf('Select', module).add('Overview', () => <Story />);

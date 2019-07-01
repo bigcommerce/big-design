@@ -1,9 +1,9 @@
-import { Box, CheckIcon, DropdownIcon, ErrorIcon, Grid, LoadingIcon, PlusIcon, Text } from '@bigcommerce/big-design';
+import { CheckIcon, DropdownIcon, ErrorIcon, Grid, LoadingIcon, PlusIcon, Text } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 storiesOf('Icons', module).add('Overview', () => (
-  <Box margin="medium">
+  <>
     <Text>Icons, pass a title prop for accessibility</Text>
 
     <Grid columns="repeat(2, min-content)">
@@ -22,5 +22,5 @@ storiesOf('Icons', module).add('Overview', () => (
       <PlusIcon />
       <Text margin="none">Plus</Text>
     </Grid>
-  </Box>
+  </>
 ));
