@@ -12,6 +12,7 @@ export * from './Link';
 export * from './Lozenge';
 export * from './Modal';
 export * from './Panel';
+export * from './ProgressBar';
 export * from './Radio';
 export * from './Select';
 export * from './Spinner';
