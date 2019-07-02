@@ -28,7 +28,7 @@ interface Props {
   onItemChange(value: AllHTMLAttributes<HTMLElement>['value']): void;
 }
 
-type SelectProps = Props & React.HTMLAttributes<HTMLUListElement>;
+export type SelectProps = Props & React.HTMLAttributes<HTMLUListElement>;
 
 export class Select extends React.PureComponent<SelectProps, SelectState> {
   static Action = ListAction;

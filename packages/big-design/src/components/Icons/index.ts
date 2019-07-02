@@ -1,4 +1,4 @@
-export * from './Icon';
+export { Icon, IconProps } from './Icon';
 
 export { default as CheckIcon } from './CheckIcon';
 export { default as CloseIcon } from './CloseIcon';
