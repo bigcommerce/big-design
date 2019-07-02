@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { defaultTheme } from '../../../theme';
 import { StyledInputWrapper } from '../../Input/styled';
+import { StyledTextareaWrapper } from '../../Textarea/styled';
 
 interface StyledRowProps {
   childrenCount: number;
@@ -27,7 +28,8 @@ export const StyledRow = styled.div<StyledRowProps>`
         grid-template-columns: repeat(3, ${rem(128)});
       `}
 
-    ${StyledInputWrapper} {
+    ${StyledInputWrapper},
+    ${StyledTextareaWrapper} {
       max-width: ${rem(416)};
     }
   }

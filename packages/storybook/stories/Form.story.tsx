@@ -1,4 +1,15 @@
-import { Box, Button, Checkbox, Form, H2, Input, PlusIcon, Radio, Text } from '@bigcommerce/big-design';
+import {
+  Box,
+  Button,
+  Checkbox,
+  Form,
+  H2,
+  Input,
+  PlusIcon,
+  Radio,
+  Text,
+  Textarea,
+} from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
@@ -8,8 +19,8 @@ storiesOf('Forms', module)
       <H2>Form Field</H2>
 
       <Text>
-        Form fields examples. Implementation detail: id will be auto-generated for input and label(for). Unless manually
-        specifying one
+        Form fields examples. Implementation detail: id will be auto-generated for input and label(for). Unless
+        manually specifying one
       </Text>
 
       <Form>
@@ -60,6 +71,15 @@ storiesOf('Forms', module)
               description="This is an example description for Company. Featuring a Disabled field."
               placeholder="Placeholder text disabled"
               disabled
+            />
+          </Form.Row>
+
+          <Form.Row>
+            <Textarea
+              label="Description"
+              description="This is an example description. Featuring a Textarea."
+              placeholder="Placeholder text"
+              rows={3}
             />
           </Form.Row>
 

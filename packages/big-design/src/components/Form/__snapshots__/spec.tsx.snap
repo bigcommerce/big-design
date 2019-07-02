@@ -138,7 +138,8 @@ exports[`simple form render 1`] = `
     grid-gap: 1rem;
   }
 
-  .c3 .c6 {
+  .c3 .c6,
+  .c3 .styled__StyledTextareaWrapper-c1uos0-0 {
     max-width: 26rem;
   }
 }
