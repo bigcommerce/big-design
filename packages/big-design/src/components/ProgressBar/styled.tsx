@@ -31,62 +31,104 @@ export const StyledFillerLinear = styled.div<ProgressBarProps>`
         `};
 `;
 
-const loading = keyframes`
-  0% {
-    left: -10%;;
-  }
-  100% {
-    left: 100%;
-  }
-`;
-
 StyledFillerLinear.defaultProps = { theme: defaultTheme };
 
 /* Circular */
 
-export const StyledProgressBarCircular = styled.svg`
-  height: 80px;
-  width: 80px;
+export const StyledProgressBarCircular = styled.svg<ProgressBarProps>`
+  ${({ size }) => css`
+    height: ${size ? `${sizeMap[size].height}px` : 0};
+    width: ${size ? `${sizeMap[size].height}px` : 0};
+  `}
 `;
 
-export const StyledCircle = styled.circle.attrs({ cx: 40, cy: 40, r: 32 })<ProgressBarProps>`
+export const StyledCircle = styled.circle.attrs(({ size }: ProgressBarProps) => ({
+  cx: size ? sizeMap[size].cx : 0,
+  cy: size ? sizeMap[size].cy : 0,
+  r: size ? sizeMap[size].r : 0,
+}))<ProgressBarProps>`
   fill: transparent;
-  stroke-width: 8;
+  stroke-width: ${({ size }) => (size ? sizeMap[size].strokeWidth : 0)};
   stroke: ${({ theme }) => theme.colors.secondary20};
 `;
 
 StyledCircle.defaultProps = { theme: defaultTheme };
 
-const circumference = 32 * 2 * Math.PI;
-
-function setProgress(percent: number) {
-  return circumference - (percent / 100) * circumference;
+function setProgress(percent: number, size: 'large' | 'medium' | 'small' | 'xSmall' | undefined) {
+  return size ? sizeMap[size].circumference - (percent / 100) * sizeMap[size].circumference : 0;
 }
 
 export const StyledFillerCircle = styled(StyledCircle)<ProgressBarProps>`
-  stroke-dasharray: ${() => `${circumference} ${circumference}`};
-  stroke-dashoffset: ${({ percent }) => (percent ? `${setProgress(percent)}` : 0)};
+  stroke-dasharray: ${({ size }) =>
+    `${size ? sizeMap[size].circumference : 0} ${size ? sizeMap[size].circumference : 0}`};
   stroke: ${({ theme }) => theme.colors.primary};
   transform-origin: 50% 50%;
-  transform: rotate(-90deg);
-  transition: stroke-dashoffset 0.35s;
 
-  ${({ behavior, percent }) =>
+  ${({ behavior, percent, size }) =>
     behavior === 'determinant'
       ? css`
-          /* transition: width 0.2s ease-in; */
-          /* width: ${() => `${percent}%`}; */
+          stroke-dashoffset: ${() => (percent ? `${setProgress(percent, size)}` : 0)};
+          transform: rotate(-90deg);
+          transition: stroke-dashoffset 0.35s;
         `
       : css`
           animation: ${spin} 1s linear infinite;
-          /* position: relative; */
-          /* width: 10%; */
-          stroke-dashoffset: ${setProgress(75)};
+          stroke-dashoffset: ${setProgress(75, size)};
         `};
+`;
+
+/* Keyframes */
+
+const loading = keyframes`
+  from {
+    left: -10%;;
+  }
+  to {
+    left: 100%;
+  }
 `;
 
 const spin = keyframes`
   to {
-    transform: rotate(270deg)
+    transform: rotate(360deg)
   }
 `;
+
+const sizeMap = {
+  large: {
+    height: 80,
+    width: 80,
+    strokeWidth: 8,
+    cx: 40,
+    cy: 40,
+    r: 32,
+    circumference: 32 * 2 * Math.PI,
+  },
+  medium: {
+    height: 48,
+    width: 48,
+    strokeWidth: 4,
+    cx: 24,
+    cy: 24,
+    r: 20,
+    circumference: 20 * 2 * Math.PI,
+  },
+  small: {
+    height: 32,
+    width: 32,
+    strokeWidth: 4,
+    cx: 16,
+    cy: 16,
+    r: 12,
+    circumference: 12 * 2 * Math.PI,
+  },
+  xSmall: {
+    height: 16,
+    width: 16,
+    strokeWidth: 2,
+    cx: 8,
+    cy: 8,
+    r: 6,
+    circumference: 6 * 2 * Math.PI,
+  },
+};
