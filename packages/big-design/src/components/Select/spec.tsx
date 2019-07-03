@@ -417,3 +417,17 @@ test('select action supports actionTypes', () => {
 
   expect(select.lastChild).toMatchSnapshot();
 });
+
+test('select should render an error if one is provided', () => {
+  const { getByText } = render(
+    <Select label="Countries" placeholder="Choose country" error="You must choose">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+      <Select.Action actionType="destructive">Action</Select.Action>
+    </Select>,
+  );
+
+  expect(getByText('You must choose')).toBeInTheDocument();
+});
