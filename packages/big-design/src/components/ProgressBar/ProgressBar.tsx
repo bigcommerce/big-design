@@ -31,13 +31,13 @@ export class ProgressBar extends React.PureComponent<ProgressBarProps> {
     const { behavior, percent, variant } = this.props;
 
     return variant === 'linear' ? (
-      <StyledProgressBarLinear variant={variant}>
+      <StyledProgressBarLinear>
         <StyledFillerLinear behavior={behavior} percent={percent} variant={variant} />
       </StyledProgressBarLinear>
     ) : (
       <StyledProgressBarCircular>
         <StyledCircle />
-        <StyledFillerCircle percent={percent} />
+        <StyledFillerCircle behavior={behavior} percent={percent} />
       </StyledProgressBarCircular>
     );
   }

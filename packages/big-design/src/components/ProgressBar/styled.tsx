@@ -6,7 +6,7 @@ import { ProgressBarProps } from './ProgressBar';
 
 /* Linear */
 
-export const StyledProgressBarLinear = styled.div<ProgressBarProps>`
+export const StyledProgressBarLinear = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary20};
   height: 4px;
   width: 100%;
@@ -18,21 +18,20 @@ export const StyledFillerLinear = styled.div<ProgressBarProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   height: 100%;
 
-  ${({ behavior }) =>
+  ${({ behavior, percent }) =>
     behavior === 'determinant'
-      ? css<ProgressBarProps>`
+      ? css`
           transition: width 0.2s ease-in;
-          // fix this
-          width: ${innerProps => `${innerProps.percent}%`};
+          width: ${() => `${percent}%`};
         `
       : css`
-          animation: ${slide} 3s ease-in-out infinite;
+          animation: ${loading} 3s ease-in-out infinite;
           position: relative;
           width: 10%;
         `};
 `;
 
-const slide = keyframes`
+const loading = keyframes`
   0% {
     left: -10%;;
   }
@@ -50,15 +49,10 @@ export const StyledProgressBarCircular = styled.svg`
   width: 80px;
 `;
 
-StyledProgressBarCircular.defaultProps = { theme: defaultTheme };
-
-export const StyledCircle = styled.circle<ProgressBarProps>`
+export const StyledCircle = styled.circle.attrs({ cx: 40, cy: 40, r: 32 })<ProgressBarProps>`
+  fill: transparent;
   stroke-width: 8;
   stroke: ${({ theme }) => theme.colors.secondary20};
-  fill: transparent;
-  r: 32;
-  cx: 40;
-  cy: 40;
 `;
 
 StyledCircle.defaultProps = { theme: defaultTheme };
@@ -69,11 +63,30 @@ function setProgress(percent: number) {
   return circumference - (percent / 100) * circumference;
 }
 
-export const StyledFillerCircle = styled(StyledCircle).attrs(props => ({ circumference, setProgress }))`
-  stroke-dasharray: ${props => `${props.circumference} ${props.circumference}`};
-  stroke-dashoffset: ${props => (props.percent ? `${props.setProgress(props.percent)}` : 0)};
+export const StyledFillerCircle = styled(StyledCircle)<ProgressBarProps>`
+  stroke-dasharray: ${() => `${circumference} ${circumference}`};
+  stroke-dashoffset: ${({ percent }) => (percent ? `${setProgress(percent)}` : 0)};
   stroke: ${({ theme }) => theme.colors.primary};
   transform-origin: 50% 50%;
   transform: rotate(-90deg);
   transition: stroke-dashoffset 0.35s;
+
+  ${({ behavior, percent }) =>
+    behavior === 'determinant'
+      ? css`
+          /* transition: width 0.2s ease-in; */
+          /* width: ${() => `${percent}%`}; */
+        `
+      : css`
+          animation: ${spin} 1s linear infinite;
+          /* position: relative; */
+          /* width: 10%; */
+          stroke-dashoffset: ${setProgress(75)};
+        `};
+`;
+
+const spin = keyframes`
+  to {
+    transform: rotate(270deg)
+  }
 `;
