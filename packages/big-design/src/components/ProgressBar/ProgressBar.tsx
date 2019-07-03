@@ -1,6 +1,12 @@
 import React from 'react';
 
-import { StyledFillerCircular, StyledFillerLinear, StyledProgressBarCircular, StyledProgressBarLinear } from './styled';
+import {
+  StyledCircle,
+  StyledFillerCircle,
+  StyledFillerLinear,
+  StyledProgressBarCircular,
+  StyledProgressBarLinear,
+} from './styled';
 
 export interface ProgressBarProps {
   behavior?: 'determinant' | 'indeterminant';
@@ -30,7 +36,8 @@ export class ProgressBar extends React.PureComponent<ProgressBarProps> {
       </StyledProgressBarLinear>
     ) : (
       <StyledProgressBarCircular>
-        <StyledFillerCircular />
+        <StyledCircle />
+        <StyledFillerCircle percent={percent} />
       </StyledProgressBarCircular>
     );
   }

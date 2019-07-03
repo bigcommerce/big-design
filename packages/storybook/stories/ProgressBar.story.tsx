@@ -25,7 +25,13 @@ storiesOf('ProgressBar', module).add('Linear', () => (
 ));
 
 storiesOf('ProgressBar', module).add('Circular', () => (
-  <Box paddingTop="large">
-    <ProgressBar />
-  </Box>
+  <>
+    <Box paddingTop="large">
+      <ProgressBar variant={'circular'} percent={number(label, defaultValue, options)} />
+    </Box>
+
+    <Box paddingTop="large">
+      <ProgressBar variant={'circular'} behavior={'indeterminant'} />
+    </Box>
+  </>
 ));
