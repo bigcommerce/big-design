@@ -21,7 +21,7 @@ interface Props {
   onItemClick?(value: AllHTMLAttributes<HTMLElement>['value']): void;
 }
 
-type DropdownProps = Props & React.HTMLAttributes<HTMLUListElement>;
+export type DropdownProps = Props & React.HTMLAttributes<HTMLUListElement>;
 
 export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> {
   static Action = ListAction;

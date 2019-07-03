@@ -11,7 +11,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLFormElement>;
 }
 
-type FormProps = React.FormHTMLAttributes<HTMLFormElement>;
+export type FormProps = React.FormHTMLAttributes<HTMLFormElement>;
 
 class StyleableForm extends React.PureComponent<PrivateProps & FormProps> {
   static Label = Label;
