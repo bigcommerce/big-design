@@ -12,7 +12,7 @@ const options = {
   step: 10,
 };
 
-storiesOf('ProgressBar', module).add('Linear', () => (
+storiesOf('ProgressBar', module).add('Overview', () => (
   <>
     <Box paddingTop="large">
       <ProgressBar percent={number(label, defaultValue, options)} />
@@ -22,16 +22,4 @@ storiesOf('ProgressBar', module).add('Linear', () => (
       <ProgressBar behavior={'indeterminant'} />
     </Box>
   </>
-));
-
-storiesOf('ProgressBar', module).add('Circular', () => (
-  <Box paddingTop={'large'}>
-    Large
-    <Box paddingTop="large">
-      <ProgressBar variant={'circular'} percent={number(label, defaultValue, options)} size={'large'} />
-    </Box>
-    <Box paddingTop="large">
-      <ProgressBar variant={'circular'} behavior={'indeterminant'} size={'large'} />
-    </Box>
-  </Box>
 ));

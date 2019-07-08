@@ -1,10 +1,11 @@
+import { rem } from 'polished';
 import React from 'react';
 
 import { defaultTheme, ThemeInterface } from '../../theme';
 import { Spacing } from '../../theme/system/spacing';
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
-  size: keyof Spacing;
+  size: keyof Spacing | number;
   theme?: ThemeInterface;
   title?: string;
 }
@@ -17,7 +18,8 @@ export class Icon extends React.PureComponent<IconProps> {
   protected getSize() {
     const theme = this.props.theme || defaultTheme;
     const { spacing } = theme;
+    const { size } = this.props;
 
-    return spacing[this.props.size];
+    return typeof size === 'string' ? spacing[size] : rem(size);
   }
 }

@@ -13,6 +13,7 @@ export * from './Lozenge';
 export * from './Modal';
 export * from './Panel';
 export * from './ProgressBar';
+export * from './ProgressCircle';
 export * from './Radio';
 export * from './Select';
 export * from './Spinner';
