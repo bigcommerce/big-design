@@ -31,6 +31,9 @@ const SelectMock = (
     <Select.Option value="mx">Mexico</Select.Option>
     <Select.Option value="ca">Canada</Select.Option>
     <Select.Option value="en">England</Select.Option>
+    <Select.Option value="ru" disabled>
+      Russia
+    </Select.Option>
   </Select>
 );
 
@@ -320,6 +323,20 @@ test('clicking on select options should trigger onItemClick', () => {
   fireEvent.mouseOver(options[1]);
   fireEvent.click(options[1]);
   expect(onItemChange).toHaveBeenCalledWith('mx');
+});
+
+test('clicking on disabled select options should not trigger onItemClick', () => {
+  const { getAllByRole, getByLabelText } = render(SelectMock);
+  const input = getByLabelText('Countries');
+
+  fireEvent.focus(input);
+
+  const options = getAllByRole('option');
+  const lastItem = options[options.length - 1];
+
+  fireEvent.mouseOver(lastItem);
+  fireEvent.click(lastItem);
+  expect(onItemChange).not.toHaveBeenCalled();
 });
 
 test('select options should be highlighted when moused over', () => {

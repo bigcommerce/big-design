@@ -1,9 +1,11 @@
 import { rem } from 'polished';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { defaultTheme } from '../../../theme';
 
-export const StyledListItem = styled.li`
+import { ListItemProps } from './Item';
+
+export const StyledListItem = styled.li<ListItemProps>`
   align-items: center;
   box-sizing: border-box;
   cursor: default;
@@ -33,6 +35,17 @@ export const StyledListItem = styled.li`
     text-decoration: none;
     width: 100%;
   }
+
+  ${props =>
+    props.disabled &&
+    css`
+      background-color: inherit;
+      color: ${({ theme }) => theme.colors.secondary40};
+
+      :hover {
+        background-color: inherit;
+      }
+    `}
 `;
 
 StyledListItem.defaultProps = { theme: defaultTheme };
