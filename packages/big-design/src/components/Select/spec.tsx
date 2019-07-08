@@ -323,8 +323,9 @@ test('clicking on select options should trigger onItemClick', () => {
 });
 
 test('clicking on disabled select options should not trigger onItemClick', () => {
+  const spy = jest.fn();
   const { getAllByRole, getByLabelText } = render(
-    <Select label="Countries" placeholder="Choose country">
+    <Select onItemChange={spy} label="Countries" placeholder="Choose country">
       <Select.Option value="us" disabled>
         United States
       </Select.Option>
@@ -340,7 +341,7 @@ test('clicking on disabled select options should not trigger onItemClick', () =>
 
   fireEvent.mouseOver(item);
   fireEvent.click(item);
-  expect(onItemChange).not.toHaveBeenCalled();
+  expect(spy).not.toHaveBeenCalled();
 });
 
 test('select options should be highlighted when moused over', () => {
