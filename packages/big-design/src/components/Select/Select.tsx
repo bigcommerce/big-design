@@ -10,6 +10,7 @@ import { ListAction } from '../List/Action/Action';
 import { ListItem } from '../List/Item/Item';
 import { List } from '../List/List';
 
+import { Form } from './../Form';
 import { StyledStatusMessage } from './styled';
 
 interface SelectState {
@@ -20,6 +21,7 @@ interface SelectState {
 }
 
 interface Props {
+  error?: React.ReactChild;
   label?: React.ReactChild;
   maxHeight?: number;
   placement?: Placement;
@@ -33,6 +35,7 @@ export type SelectProps = Props & React.HTMLAttributes<HTMLUListElement>;
 export class Select extends React.PureComponent<SelectProps, SelectState> {
   static Action = ListAction;
   static Option = ListItem;
+  static readonly Error = Form.Error;
 
   static defaultProps: Partial<Props> = {
     placement: 'bottom-start',
@@ -144,7 +147,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   }
 
   private renderInput() {
-    const { label, placeholder } = this.props;
+    const { label, placeholder, error } = this.props;
 
     const highlightedItem = this.getItemById(this.state.highlightedId);
     const ariaActiveDescendant = highlightedItem ? { 'aria-activedescendant': highlightedItem.id } : {};
@@ -155,6 +158,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       <Reference innerRef={node => (this.inputRef = node as HTMLInputElement)}>
         {({ ref }) => (
           <Input
+            error={error}
             iconRight={
               <DropdownIcon
                 aria-haspopup={true}

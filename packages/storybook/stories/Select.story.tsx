@@ -42,6 +42,7 @@ class Story extends React.Component<{}, State> {
           placeholder={'Choose country'}
           placement={select('placement', placement, 'bottom-start')}
           value={this.state.value}
+          error={this.state.value ? undefined : 'You must choose a country'}
         >
           <Select.Option value="us">United States</Select.Option>
           <Select.Option value="mx">Mexico</Select.Option>
