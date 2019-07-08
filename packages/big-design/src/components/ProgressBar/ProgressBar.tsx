@@ -6,6 +6,7 @@ import {
   StyledFillerLinear,
   StyledProgressBarCircular,
   StyledProgressBarLinear,
+  StyledText,
 } from './styled';
 
 export interface ProgressBarProps {
@@ -38,6 +39,14 @@ export class ProgressBar extends React.PureComponent<ProgressBarProps> {
       <StyledProgressBarCircular size={size}>
         <StyledCircle size={size} />
         <StyledFillerCircle behavior={behavior} percent={percent} size={size} />
+
+        {behavior === 'determinant' && (size === 'large' || 'medium') ? (
+          <StyledText x="50%" y="50%" dominant-baseline="central" text-anchor="middle" size={size}>
+            {percent ? Math.floor(percent) : 0}%
+          </StyledText>
+        ) : (
+          <>SR only</>
+        )}
       </StyledProgressBarCircular>
     );
   }

@@ -77,6 +77,16 @@ export const StyledFillerCircle = styled(StyledCircle)<ProgressBarProps>`
         `};
 `;
 
+export const StyledText = styled.text.attrs(() => ({
+  dominantBaseline: 'central',
+  textAnchor: 'middle',
+  x: '50%',
+  y: '50%',
+}))<ProgressBarProps>`
+  font-size: ${({ size }) => (size === 'large' ? '20px' : '14px')};
+  font-weight: ${({ size }) => (size === 'large' ? '600' : 'normal')};
+`;
+
 /* Keyframes */
 
 const loading = keyframes`
