@@ -5,7 +5,7 @@ import { defaultTheme } from '../../theme';
 import { ErrorIcon, SuccessIcon } from '../Icons';
 
 import { circumferences, sizes, strokeWidths } from './constants';
-import { ProgressCircleProps } from './ProgressCircle';
+import { ProgressCircleProps, ProgressCircleSizes } from './ProgressCircle';
 
 /* Circular */
 
@@ -17,18 +17,18 @@ export const StyledProgressBarCircular = styled.svg<ProgressCircleProps>`
 `;
 
 export const StyledCircle = styled.circle.attrs(({ size }: ProgressCircleProps) => ({
-  cx: sizes[size] / 2,
-  cy: sizes[size] / 2,
-  r: sizes[size] / 2 - strokeWidths[size],
+  cx: rem(sizes[size] / 2),
+  cy: rem(sizes[size] / 2),
+  r: rem(sizes[size] / 2 - strokeWidths[size] / 2),
 }))<ProgressCircleProps>`
   fill: transparent;
-  stroke-width: ${({ size }) => strokeWidths[size]};
+  stroke-width: ${({ size }) => rem(strokeWidths[size])};
   stroke: ${({ theme }) => theme.colors.secondary20};
 `;
 
 StyledCircle.defaultProps = { theme: defaultTheme };
 
-function setProgress(percent: number, size: 'large' | 'medium' | 'small' | 'xSmall') {
+function setProgress(percent: number, size: ProgressCircleSizes) {
   return circumferences[size] - (percent / 100) * circumferences[size];
 }
 

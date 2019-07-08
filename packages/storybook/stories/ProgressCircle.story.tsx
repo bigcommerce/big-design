@@ -1,4 +1,4 @@
-import { Box, ProgressCircle } from '@bigcommerce/big-design';
+import { Box, Flex, ProgressCircle } from '@bigcommerce/big-design';
 import { ProgressCircleSizes } from '@bigcommerce/big-design/dist/src/components/ProgressCircle/ProgressCircle';
 import { number, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
@@ -16,8 +16,7 @@ const options = {
 const sizes: ProgressCircleSizes[] = ['large', 'medium', 'small', 'xSmall'];
 
 storiesOf('ProgressCircle', module).add('Overview', () => (
-  <Box paddingTop={'large'}>
-    Large
+  <Flex paddingTop={'large'} alignItems="center" justifyContent="center" direction="column">
     <Box paddingTop="large">
       <ProgressCircle percent={number(label, defaultValue, options)} size={select('placement', sizes, 'large')} />
     </Box>
@@ -30,5 +29,5 @@ storiesOf('ProgressCircle', module).add('Overview', () => (
     <Box paddingTop="large">
       <ProgressCircle isComplete={true} size={select('placement', sizes, 'large')} />
     </Box>
-  </Box>
+  </Flex>
 ));

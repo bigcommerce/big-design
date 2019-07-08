@@ -13,8 +13,8 @@ export const strokeWidths = {
 };
 
 export const circumferences = {
-  large: (sizes.large / 2 - strokeWidths.large) * 2 * Math.PI,
-  medium: (sizes.medium / 2 - strokeWidths.medium) * 2 * Math.PI,
-  small: (sizes.small / 2 - strokeWidths.small) * 2 * Math.PI,
-  xSmall: (sizes.xSmall / 2 - strokeWidths.xSmall) * 2 * Math.PI,
+  large: (sizes.large / 2 - strokeWidths.large / 2) * 2 * Math.PI,
+  medium: (sizes.medium / 2 - strokeWidths.medium / 2) * 2 * Math.PI,
+  small: (sizes.small / 2 - strokeWidths.small / 2) * 2 * Math.PI,
+  xSmall: (sizes.xSmall / 2 - strokeWidths.xSmall / 2) * 2 * Math.PI,
 };
