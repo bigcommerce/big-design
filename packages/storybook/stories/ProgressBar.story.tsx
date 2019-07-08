@@ -19,7 +19,7 @@ storiesOf('ProgressBar', module).add('Overview', () => (
     </Box>
 
     <Box paddingTop={'large'}>
-      <ProgressBar behavior={'indeterminant'} />
+      <ProgressBar type={'indeterminant'} />
     </Box>
   </>
 ));

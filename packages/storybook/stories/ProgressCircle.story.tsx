@@ -21,7 +21,7 @@ storiesOf('ProgressCircle', module).add('Overview', () => (
       <ProgressCircle percent={number(label, defaultValue, options)} size={select('placement', sizes, 'large')} />
     </Box>
     <Box paddingTop="large">
-      <ProgressCircle behavior={'indeterminant'} size={select('placement', sizes, 'large')} />
+      <ProgressCircle size={select('placement', sizes, 'large')} type={'indeterminant'} />
     </Box>
     <Box paddingTop="large">
       <ProgressCircle error={true} size={select('placement', sizes, 'large')} />

@@ -3,22 +3,22 @@ import React from 'react';
 import { StyledFillerLinear, StyledProgressBarLinear } from './styled';
 
 export interface ProgressBarProps {
-  behavior?: 'determinant' | 'indeterminant';
   percent?: number;
+  type?: 'determinant' | 'indeterminant';
 }
 
 export class ProgressBar extends React.PureComponent<ProgressBarProps> {
   static defaultProps: ProgressBarProps = {
-    behavior: 'determinant',
     percent: 0,
+    type: 'determinant',
   };
 
   render() {
-    const { behavior, percent } = this.props;
+    const { percent, type } = this.props;
 
     return (
       <StyledProgressBarLinear>
-        <StyledFillerLinear behavior={behavior} percent={percent} />
+        <StyledFillerLinear type={type} percent={percent} />
       </StyledProgressBarLinear>
     );
   }
