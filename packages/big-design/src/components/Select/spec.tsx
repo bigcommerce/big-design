@@ -31,9 +31,6 @@ const SelectMock = (
     <Select.Option value="mx">Mexico</Select.Option>
     <Select.Option value="ca">Canada</Select.Option>
     <Select.Option value="en">England</Select.Option>
-    <Select.Option value="ru" disabled>
-      Russia
-    </Select.Option>
   </Select>
 );
 
@@ -326,16 +323,23 @@ test('clicking on select options should trigger onItemClick', () => {
 });
 
 test('clicking on disabled select options should not trigger onItemClick', () => {
-  const { getAllByRole, getByLabelText } = render(SelectMock);
+  const { getAllByRole, getByLabelText } = render(
+    <Select label="Countries" placeholder="Choose country">
+      <Select.Option value="us" disabled>
+        United States
+      </Select.Option>
+      <Select.Action>Action</Select.Action>
+    </Select>,
+  );
   const input = getByLabelText('Countries');
 
   fireEvent.focus(input);
 
   const options = getAllByRole('option');
-  const lastItem = options[options.length - 1];
+  const item = options[0];
 
-  fireEvent.mouseOver(lastItem);
-  fireEvent.click(lastItem);
+  fireEvent.mouseOver(item);
+  fireEvent.click(item);
   expect(onItemChange).not.toHaveBeenCalled();
 });
 
