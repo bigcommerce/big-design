@@ -25,6 +25,7 @@ export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
     error: false,
     isComplete: false,
     percent: 0,
+    size: 'medium',
     variant: 'determinant',
   };
 

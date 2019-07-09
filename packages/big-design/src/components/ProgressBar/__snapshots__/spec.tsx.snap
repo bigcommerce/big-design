@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render determinant progress bar 1`] = `
+.c0 {
+  background-color: #ECEEF5;
+  height: 0.25rem;
+  width: 100%;
+}
+
+.c1 {
+  background-color: #3C64F4;
+  height: 100%;
+  -webkit-transition: width 0.2s ease-in;
+  transition: width 0.2s ease-in;
+  width: 50%;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    />
+  </div>
+</div>
+`;
+
+exports[`render indeterminant progress bar 1`] = `
+.c0 {
+  background-color: #ECEEF5;
+  height: 0.25rem;
+  width: 100%;
+}
+
+.c1 {
+  background-color: #3C64F4;
+  height: 100%;
+  -webkit-animation: iWofnF 3s ease-in-out infinite;
+  animation: iWofnF 3s ease-in-out infinite;
+  position: relative;
+  width: 10%;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    />
+  </div>
+</div>
+`;
