@@ -3,7 +3,7 @@ import { number } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-const label = 'Percentage';
+const label = 'percentage';
 const defaultValue = 10;
 const options = {
   range: true,
@@ -19,7 +19,7 @@ storiesOf('ProgressBar', module).add('Overview', () => (
     </Box>
 
     <Box paddingTop={'large'}>
-      <ProgressBar type={'indeterminant'} />
+      <ProgressBar variant={'indeterminant'} />
     </Box>
   </>
 ));

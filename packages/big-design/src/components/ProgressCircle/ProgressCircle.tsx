@@ -17,7 +17,7 @@ export interface ProgressCircleProps {
   isComplete?: boolean;
   percent?: number;
   size: ProgressCircleSizes;
-  type?: 'determinant' | 'indeterminant';
+  variant?: 'determinant' | 'indeterminant';
 }
 
 export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
@@ -25,11 +25,11 @@ export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
     error: false,
     isComplete: false,
     percent: 0,
-    type: 'determinant',
+    variant: 'determinant',
   };
 
   render() {
-    const { error, isComplete, percent, size, type } = this.props;
+    const { error, isComplete, percent, size, variant } = this.props;
 
     return (
       <>
@@ -40,9 +40,9 @@ export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
         ) : (
           <StyledProgressBarCircular size={size}>
             <StyledCircle size={size} />
-            <StyledFillerCircle percent={percent} size={size} type={type} />
+            <StyledFillerCircle percent={percent} size={size} variant={variant} />
 
-            {type === 'determinant' && (size === 'large' || size === 'medium') ? (
+            {variant === 'determinant' && (size === 'large' || size === 'medium') ? (
               <StyledText size={size}>{percent ? Math.floor(percent) : 0}%</StyledText>
             ) : (
               <>SR only</>

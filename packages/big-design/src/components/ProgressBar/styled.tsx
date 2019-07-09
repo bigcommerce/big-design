@@ -17,8 +17,8 @@ export const StyledFillerLinear = styled.div<ProgressBarProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   height: 100%;
 
-  ${({ percent, type }) =>
-    type === 'determinant'
+  ${({ percent, variant }) =>
+    variant === 'determinant'
       ? css`
           transition: width 0.2s ease-in;
           width: ${() => `${percent}%`};
