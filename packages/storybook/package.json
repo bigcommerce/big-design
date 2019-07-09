@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn run storybook",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 6006 -s .storybook/assets",
+    "build-storybook": "build-storybook -s .storybook/assets",
     "ci": "yarn run lint && build-storybook",
     "lint": "yarn run lint:tslint && yarn run lint:tsc && yarn run lint:prettier",
     "lint:prettier": "prettier --check 'stories/**/*.{ts,tsx}'",
@@ -36,12 +36,10 @@
     "@storybook/addon-backgrounds": "^5.0.3",
     "@storybook/addon-info": "^5.0.3",
     "@storybook/addon-knobs": "^5.0.3",
-    "@storybook/addon-links": "^5.0.3",
-    "@storybook/addon-options": "^5.0.3",
-    "@storybook/addon-storysource": "^5.0.3",
     "@storybook/addon-viewport": "^5.0.3",
     "@storybook/addons": "^5.0.3",
     "@storybook/react": "^5.0.3",
+    "@storybook/theming": "^5.1.9",
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
     "@types/storybook__addon-a11y": "^5.0.0",
@@ -53,6 +51,7 @@
     "@types/styled-components": "^4.1.12",
     "babel-loader": "^8.0.5",
     "rimraf": "^2.6.3",
+    "storybook-readme-source": "^5.0.6",
     "ts-loader": "^5.3.3"
   }
 }

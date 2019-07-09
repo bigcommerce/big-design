@@ -1,28 +1,42 @@
-import { GlobalStyle } from '@bigcommerce/big-design';
+import { Box, GlobalStyle, Panel } from '@bigcommerce/big-design';
+import { defaultTheme } from '@bigcommerce/big-design';
+import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { addDecorator, addParameters, configure } from '@storybook/react';
 import React from 'react';
+import { addReadme } from 'storybook-readme-source';
 
-// Looks like there is a bug and the order of imports matters for a11y :(
-// https://github.com/storybooks/storybook/issues/6185
-// tslint:disable-next-line:ordered-imports
-import { withA11y } from '@storybook/addon-a11y';
+import bcTheme from './bc-theme';
 
 addDecorator(withA11y);
 addParameters({
+  options: {
+    panelPosition: 'right',
+    brandTitle: 'Big Design',
+    // enableShortcuts currently not working
+    // https://github.com/storybookjs/storybook/issues/6569
+    enableShortcuts: false,
+    showSearchBox: false,
+    theme: bcTheme,
+  },
   backgrounds: [
     {
       default: true,
-      name: 'Grey',
-      value: '#f6f7f9',
+      name: 'Default',
+      value: defaultTheme.colors.secondary20,
     },
     {
       name: 'White',
       value: '#ffffff',
     },
   ],
+  readme: {
+    codeTheme: 'a11y-dark',
+    StoryPreview: (props: any) => <Panel>{props.children}</Panel>,
+  },
 });
 
+addDecorator(addReadme);
 addDecorator(withKnobs);
 
 addParameters({
@@ -40,7 +54,7 @@ addParameters({
 addDecorator(storyFn => (
   <React.Fragment>
     <GlobalStyle />
-    {storyFn()}
+    <Box margin="xxLarge">{storyFn()}</Box>
   </React.Fragment>
 ));
 

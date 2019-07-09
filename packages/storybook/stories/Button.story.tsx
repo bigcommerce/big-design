@@ -9,7 +9,7 @@ const actionType = ['normal' as 'normal', 'destructive' as 'destructive'];
 
 storiesOf('Button', module)
   .add('Overview', () => (
-    <Grid columns="repeat(6, min-content)" margin="medium">
+    <Grid columns="repeat(6, min-content)">
       <Button onClick={action('click')}>Label</Button>
       <Button onClick={action('click')} isLoading={true}>
         Label
@@ -65,7 +65,7 @@ storiesOf('Button', module)
     </Grid>
   ))
   .add('With icons', () => (
-    <Flex margin="medium" direction="column" alignItems="flex-start">
+    <Flex direction="column" alignItems="flex-start">
       <Button onClick={action('click')} iconOnly={<PlusIcon title="add" />} marginBottom="medium" />
       <Button onClick={action('click')} iconLeft={<PlusIcon />} marginBottom="medium">
         Label
@@ -73,7 +73,7 @@ storiesOf('Button', module)
       <Button onClick={action('click')} iconLeft={<PlusIcon />} iconRight={<DropdownIcon />} marginBottom="medium">
         Label
       </Button>
-      <Button onClick={action('click')} iconRight={<DropdownIcon />} marginBottom="medium">
+      <Button onClick={action('click')} iconRight={<DropdownIcon />}>
         Label
       </Button>
     </Flex>
@@ -84,7 +84,6 @@ storiesOf('Button', module)
       variant={select('variant', variant, 'primary')}
       actionType={select('actionType', actionType, 'normal')}
       isLoading={boolean('isLoading', false)}
-      margin="medium"
     >
       Label
     </Button>

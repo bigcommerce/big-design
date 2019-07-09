@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 storiesOf('Lozenge', module).add('Overview', () => (
-  <Grid margin="medium">
+  <Grid>
     <Grid.Item>
       <Text>Design not finalized, need extra feedback on font-spacing and font-size to adhere to the theme.</Text>
     </Grid.Item>

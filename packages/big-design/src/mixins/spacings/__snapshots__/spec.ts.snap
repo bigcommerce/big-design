@@ -5,19 +5,22 @@ Array [
   Array [
     "@media (min-width: 0px)",
     "{",
-    "border: 0; padding-right: 0;",
+    "border: 0;",
+    "padding-right: 0;",
     "}",
   ],
   Array [
     "@media (min-width: 720px)",
     "{",
-    "border: 0.75rem; padding-right: 0.75rem;",
+    "border: 0.75rem;",
+    "padding-right: 0.75rem;",
     "}",
   ],
   Array [
     "@media (min-width: 1025px)",
     "{",
-    "border: 1rem; padding-right: 1rem;",
+    "border: 1rem;",
+    "padding-right: 1rem;",
     "}",
   ],
 ]

@@ -4,8 +4,8 @@ import React from 'react';
 
 const template = `
   "head head" 80px
-  "nav  main" 1fr
-  "nav  foot" 10%
+  "nav  main" 200px
+  "foot  foot" 50px
   / 120px 1fr;
 `;
 

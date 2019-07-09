@@ -48,7 +48,7 @@ class Story extends React.PureComponent<{}, State> {
           </Modal.Body>
 
           <Modal.Actions>
-            <Button variant="subtle" onClick={this.closeModal} marginBottom="xSmall">
+            <Button variant="subtle" onClick={this.closeModal} marginRight="xSmall">
               Cancel
             </Button>
             <Button onClick={this.closeModal}>Apply</Button>
@@ -71,7 +71,7 @@ class Story extends React.PureComponent<{}, State> {
           </Modal.Body>
 
           <Modal.Actions>
-            <Button variant="subtle" onClick={this.closeDialog} marginBottom="xSmall">
+            <Button variant="subtle" onClick={this.closeDialog} marginRight="xSmall">
               Cancel
             </Button>
             <Button onClick={this.closeDialog}>Apply</Button>
@@ -98,8 +98,4 @@ class Story extends React.PureComponent<{}, State> {
   };
 }
 
-storiesOf('Modal', module).add('Overview', () => (
-  <div style={{ padding: 50 }}>
-    <Story />
-  </div>
-));
+storiesOf('Modal', module).add('Overview', () => <Story />);

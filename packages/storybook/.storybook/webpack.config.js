@@ -5,12 +5,6 @@ module.exports = ({ config }) => {
       {
         loader: require.resolve('ts-loader'),
       },
-      {
-        loader: require.resolve('@storybook/addon-storysource/loader'),
-        options: {
-          parser: 'typescript',
-        },
-      },
     ],
   });
 

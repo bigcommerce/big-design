@@ -1,4 +1,4 @@
-import { Button, Flex, PlusIcon, Tooltip } from '@bigcommerce/big-design';
+import { Box, Button, Flex, PlusIcon, Tooltip } from '@bigcommerce/big-design';
 import { select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
@@ -24,20 +24,18 @@ const placement: Array<Exclude<PopperProps['placement'], undefined>> = [
 
 storiesOf('Tooltip', module).add('Overview', () => (
   <Flex alignItems="center" direction="column">
-    <div style={{ marginTop: 100 }}>
-      <Tooltip content="Tooltip Content" placement={select('placement', placement, 'top')}>
-        <Button>Hover</Button>
-      </Tooltip>
-    </div>
-    <div style={{ marginTop: 100 }}>
+    <Tooltip content="Tooltip Content" placement={select('placement', placement, 'top')}>
+      <Button>Hover</Button>
+    </Tooltip>
+    <Box marginTop="xxLarge">
       <Tooltip content="Tooltip Content" placement="right">
         <span>Hover</span>
       </Tooltip>
-    </div>
-    <div style={{ marginTop: 100 }}>
+    </Box>
+    <Box marginTop="xxLarge">
       <Tooltip content="Tooltip Content" placement="bottom">
         <PlusIcon />
       </Tooltip>
-    </div>
+    </Box>
   </Flex>
 ));

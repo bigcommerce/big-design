@@ -6,6 +6,6 @@
     "rootDirs": ["stories"],
     "baseUrl": "src"
   },
-  "include": ["stories/**/*"],
+  "include": ["stories/**/*", "typings.d.ts", ".storybook/*"],
   "exclude": ["node_modules", "build", "scripts"]
 }
