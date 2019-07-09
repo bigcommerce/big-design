@@ -35,19 +35,41 @@ export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
     return (
       <>
         {error ? (
-          <StyledErrorIcon size={sizes[size]} />
+          <StyledErrorIcon
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={percent}
+            role="progressbar"
+            size={sizes[size]}
+          />
         ) : isComplete ? (
-          <StyledSuccessIcon size={sizes[size]} />
-        ) : (
-          <StyledProgressBarCircular size={size}>
+          <StyledSuccessIcon
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={100}
+            role="progressbar"
+            size={sizes[size]}
+          />
+        ) : variant === 'determinant' ? (
+          <StyledProgressBarCircular
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={percent}
+            role="progressbar"
+            size={size}
+          >
             <StyledCircle size={size} />
             <StyledFillerCircle percent={percent} size={size} variant={variant} />
-
-            {variant === 'determinant' && (size === 'large' || size === 'medium') ? (
+            {size === 'large' || size === 'medium' ? (
               <StyledText size={size}>{percent ? Math.floor(percent) : 0}%</StyledText>
             ) : (
-              <>SR only</>
+              <></>
             )}
+          </StyledProgressBarCircular>
+        ) : (
+          <StyledProgressBarCircular role="progressbar" size={size}>
+            <StyledCircle size={size} />
+            <StyledFillerCircle percent={percent} size={size} variant={variant} />
           </StyledProgressBarCircular>
         )}
       </>

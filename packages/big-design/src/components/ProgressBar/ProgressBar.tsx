@@ -17,9 +17,17 @@ export class ProgressBar extends React.PureComponent<ProgressBarProps> {
     const { percent, variant } = this.props;
 
     return (
-      <StyledProgressBarLinear>
-        <StyledFillerLinear variant={variant} percent={percent} />
-      </StyledProgressBarLinear>
+      <>
+        {variant === 'determinant' ? (
+          <StyledProgressBarLinear role="progressbar" aria-valuenow={percent} aria-valuemin={0} aria-valuemax={100}>
+            <StyledFillerLinear variant={variant} percent={percent} />
+          </StyledProgressBarLinear>
+        ) : (
+          <StyledProgressBarLinear role="progressbar">
+            <StyledFillerLinear variant={variant} />
+          </StyledProgressBarLinear>
+        )}
+      </>
     );
   }
 }

@@ -7,9 +7,13 @@ exports[`render completed determinant progress circle 1`] = `
 
 <div>
   <svg
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="100"
     class="c0"
     fill="none"
     height="3rem"
+    role="progressbar"
     size="48"
     style="width: 3rem; height: 3rem;"
     viewBox="0 0 24 24"
@@ -68,7 +72,11 @@ exports[`render determinant progress circle 1`] = `
 
 <div>
   <svg
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="50"
     class="c0"
+    role="progressbar"
   >
     <circle
       class="c1"
@@ -103,9 +111,13 @@ exports[`render error determinant progress circle 1`] = `
 
 <div>
   <svg
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="0"
     class="c0"
     fill="none"
     height="3rem"
+    role="progressbar"
     size="48"
     style="width: 3rem; height: 3rem;"
     viewBox="0 0 20 20"
@@ -155,6 +167,7 @@ exports[`render indeterminant progress bar 1`] = `
 <div>
   <svg
     class="c0"
+    role="progressbar"
   >
     <circle
       class="c1"
@@ -168,7 +181,6 @@ exports[`render indeterminant progress bar 1`] = `
       cy="1.5rem"
       r="1.375rem"
     />
-    SR only
   </svg>
 </div>
 `;
@@ -209,7 +221,11 @@ exports[`render large progress circle 1`] = `
 
 <div>
   <svg
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="0"
     class="c0"
+    role="progressbar"
   >
     <circle
       class="c1"
@@ -273,7 +289,11 @@ exports[`render medium progress circle 1`] = `
 
 <div>
   <svg
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="0"
     class="c0"
+    role="progressbar"
   >
     <circle
       class="c1"
@@ -332,7 +352,11 @@ exports[`render small progress circle 1`] = `
 
 <div>
   <svg
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="0"
     class="c0"
+    role="progressbar"
   >
     <circle
       class="c1"
@@ -346,7 +370,6 @@ exports[`render small progress circle 1`] = `
       cy="1rem"
       r="0.875rem"
     />
-    SR only
   </svg>
 </div>
 `;
@@ -382,7 +405,11 @@ exports[`render xSmall progress circle 1`] = `
 
 <div>
   <svg
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="0"
     class="c0"
+    role="progressbar"
   >
     <circle
       class="c1"
@@ -396,7 +423,6 @@ exports[`render xSmall progress circle 1`] = `
       cy="0.5rem"
       r="0.4375rem"
     />
-    SR only
   </svg>
 </div>
 `;
