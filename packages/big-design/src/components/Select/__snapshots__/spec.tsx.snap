@@ -49,7 +49,7 @@ exports[`select action supports actionTypes 1`] = `
   aria-selected="true"
   class="c0"
   data-highlighted="false"
-  id="select_131-item-4"
+  id="select_2-item-4"
   role="option"
 >
   <div
@@ -113,7 +113,7 @@ exports[`select action supports icons 1`] = `
   aria-selected="true"
   class="c0"
   data-highlighted="false"
-  id="select_127-item-4"
+  id="select_2-item-4"
   role="option"
 >
   <div

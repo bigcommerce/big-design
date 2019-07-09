@@ -80,16 +80,16 @@ exports[`render Checkbox (checked) 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="checkBox_label_2"
+    aria-labelledby="checkBox_label_1"
     checked=""
     class="c1 c2"
-    id="checkBox_1"
+    id="checkBox_0"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3"
-    for="checkBox_1"
+    for="checkBox_0"
   >
     <svg
       fill="none"
@@ -110,8 +110,8 @@ exports[`render Checkbox (checked) 1`] = `
   </label>
   <label
     class="c4"
-    for="checkBox_1"
-    id="checkBox_label_2"
+    for="checkBox_0"
+    id="checkBox_label_1"
   >
     Checked
   </label>
@@ -202,15 +202,15 @@ exports[`render Checkbox (unchecked) 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="checkBox_label_4"
+    aria-labelledby="checkBox_label_1"
     class="c1 c2"
-    id="checkBox_3"
+    id="checkBox_0"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3"
-    for="checkBox_3"
+    for="checkBox_0"
   >
     <svg
       fill="none"
@@ -231,8 +231,8 @@ exports[`render Checkbox (unchecked) 1`] = `
   </label>
   <label
     class="c4"
-    for="checkBox_3"
-    id="checkBox_label_4"
+    for="checkBox_0"
+    id="checkBox_label_1"
   >
     Unchecked
   </label>

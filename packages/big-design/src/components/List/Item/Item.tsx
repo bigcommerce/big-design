@@ -5,7 +5,11 @@ import { CheckIcon } from '../../Icons';
 
 import { StyledListItem } from './styled';
 
-export class ListItem extends React.PureComponent<React.LiHTMLAttributes<HTMLLIElement>> {
+export interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+  disabled?: boolean;
+}
+
+export class ListItem extends React.PureComponent<ListItemProps> {
   render() {
     const { children, value, ...rest } = this.props;
 

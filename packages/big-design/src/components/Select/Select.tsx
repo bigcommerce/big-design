@@ -4,14 +4,13 @@ import { Manager, Reference } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
-import { DropdownIcon } from '../Icons';
 import { Input } from '../Input';
 import { ListAction } from '../List/Action/Action';
 import { ListItem } from '../List/Item/Item';
 import { List } from '../List/List';
 
 import { Form } from './../Form';
-import { StyledStatusMessage } from './styled';
+import { StyledDropdownIcon, StyledStatusMessage } from './styled';
 
 interface SelectState {
   filterChildren: boolean;
@@ -160,7 +159,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
           <Input
             error={error}
             iconRight={
-              <DropdownIcon
+              <StyledDropdownIcon
                 aria-haspopup={true}
                 aria-label="toggle menu" // Will need to translate this label in the future
                 onClick={this.toggleList}
@@ -344,12 +343,17 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
 
   private handleOnItemClick = () => {
     const { onItemChange } = this.props;
-
     const highlightedItem = this.getItemById(this.state.highlightedId);
-    if (highlightedItem && highlightedItem.textContent) {
-      this.updateInputText(highlightedItem.textContent);
 
+    if (highlightedItem && highlightedItem.textContent) {
       const value = highlightedItem.getAttribute('value');
+      const listItem = this.findChildrenByValue(value || '');
+
+      if (listItem && listItem.props.disabled) {
+        return;
+      }
+
+      this.updateInputText(highlightedItem.textContent);
 
       if (onItemChange && value) {
         onItemChange(value);

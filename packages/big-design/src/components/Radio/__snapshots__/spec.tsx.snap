@@ -79,22 +79,22 @@ exports[`render Radio (checked) 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="checkBox_label_2"
+    aria-labelledby="checkBox_label_1"
     checked=""
     class="c1 c2"
-    id="radio_1"
+    id="radio_0"
     name="test-group"
     type="radio"
   />
   <label
     aria-hidden="true"
     class="c3"
-    for="radio_1"
+    for="radio_0"
   />
   <label
     class="c4"
-    for="radio_1"
-    id="checkBox_label_2"
+    for="radio_0"
+    id="checkBox_label_1"
   >
     Checked
   </label>
@@ -170,21 +170,21 @@ exports[`render Radio (unchecked) 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="checkBox_label_4"
+    aria-labelledby="checkBox_label_1"
     class="c1 c2"
-    id="radio_3"
+    id="radio_0"
     name="test-group"
     type="radio"
   />
   <label
     aria-hidden="true"
     class="c3"
-    for="radio_3"
+    for="radio_0"
   />
   <label
     class="c4"
-    for="radio_3"
-    id="checkBox_label_4"
+    for="radio_0"
+    id="checkBox_label_1"
   >
     Unchecked
   </label>

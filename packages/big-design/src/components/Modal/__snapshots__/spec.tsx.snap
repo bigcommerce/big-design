@@ -198,7 +198,7 @@ exports[`render open modal 1`] = `
       tabindex="-1"
     >
       <div
-        aria-labelledby="modal_header_1"
+        aria-labelledby="modal_header_0"
         class="c1 c2 c3"
         direction="column"
         wrap="nowrap"
@@ -429,7 +429,7 @@ exports[`render open modal without backdrop 1`] = `
       tabindex="-1"
     >
       <div
-        aria-labelledby="modal_header_2"
+        aria-labelledby="modal_header_0"
         class="c1 c2 c3"
         direction="column"
         wrap="nowrap"

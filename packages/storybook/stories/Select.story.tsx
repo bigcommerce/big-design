@@ -58,6 +58,9 @@ class Story extends React.Component<{}, State> {
           <Select.Option value="sk">South Korea</Select.Option>
           <Select.Option value="au">Australia</Select.Option>
           <Select.Option value="ug">Uganda</Select.Option>
+          <Select.Option value="ru" disabled>
+            Russia
+          </Select.Option>
           <Select.Action>Action</Select.Action>
         </Select>
       </Flex>
