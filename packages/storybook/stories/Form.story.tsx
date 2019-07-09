@@ -9,7 +9,9 @@ import {
   Radio,
   Text,
   Textarea,
+  TextareaProps,
 } from '@bigcommerce/big-design';
+import { boolean, number, NumberOptions } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
@@ -77,9 +79,18 @@ storiesOf('Forms', module)
           <Form.Row>
             <Textarea
               label="Description"
-              description="This is an example description. Featuring a Textarea."
+              description="This is an example description. Use Knobs to preview props."
               placeholder="Placeholder text"
-              rows={3}
+              rows={
+                number('Textarea rows', 3, {
+                  range: true,
+                  min: 1,
+                  max: 7,
+                  step: 1,
+                } as NumberOptions) as TextareaProps['rows']
+              }
+              resize={boolean('Resizeable textarea', true)}
+              disabled={boolean('Disable textarea', false)}
             />
           </Form.Row>
 

@@ -1,13 +1,10 @@
+import { rem } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { defaultTheme } from '../../theme';
 import { addValues } from '../../theme/helpers/helpers';
 
 import { TextareaProps } from './Textarea';
-
-interface StyledIconWrapperProps {
-  position?: 'left' | 'right';
-}
 
 export const StyledTextareaWrapper = styled.span<TextareaProps>`
   align-items: center;
@@ -21,8 +18,18 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   line-height: ${({ theme }) => theme.lineHeight.medium};
+  max-height: ${rem(224)};
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.small}`};
   width: 100%;
+
+  ${({ resize }) =>
+    resize
+      ? css`
+          resize: vertical;
+        `
+      : css`
+          resize: none;
+        `};
 
   ${({ error, theme }) =>
     css`
@@ -60,33 +67,7 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
     css`
       padding-right: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xxSmall)};
     `};
-
-  ${props =>
-    props.iconLeft &&
-    css`
-      padding-left: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xxSmall)};
-    `};
-`;
-
-export const StyledIconWrapper = styled.span<StyledIconWrapperProps>`
-  position: absolute;
-  color: ${({ theme }) => theme.colors.secondary60};
-
-  ${props =>
-    props.position === 'left'
-      ? css`
-          left: ${({ theme }) => theme.spacing.small};
-        `
-      : css`
-          right: ${({ theme }) => theme.spacing.small};
-        `};
-`;
-
-export const StyledErrorIconWrapper = styled(StyledIconWrapper)`
-  color: ${({ theme }) => theme.colors.danger40};
 `;
 
 StyledTextarea.defaultProps = { theme: defaultTheme };
 StyledTextareaWrapper.defaultProps = { theme: defaultTheme };
-StyledIconWrapper.defaultProps = { theme: defaultTheme, position: 'left' };
-StyledErrorIconWrapper.defaultProps = { theme: defaultTheme, position: 'right' };

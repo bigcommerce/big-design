@@ -2,9 +2,7 @@ import 'jest-styled-components';
 import React from 'react';
 import { render } from 'react-testing-library';
 
-import { PlusIcon } from '../Icons';
-
-import { Textarea } from './index';
+import { Textarea, TextareaProps } from './index';
 
 test('forwards ref', () => {
   const ref = React.createRef<HTMLTextAreaElement>();
@@ -161,35 +159,38 @@ test('does not accept non-Error Components', () => {
   expect(queryByTestId('test')).not.toBeInTheDocument();
 });
 
-test('renders iconLeft', () => {
-  const { queryByTestId } = render(<Textarea iconLeft={<PlusIcon data-testid="icon" />} />);
+test('accepts valid row property', () => {
+  const rows = 3;
+  const { baseElement } = render(<Textarea rows={rows} data-testid="test-rows" />);
 
-  expect(queryByTestId('icon')).toBeInTheDocument();
+  const textarea = baseElement.querySelector('textarea') as HTMLTextAreaElement;
+
+  expect(textarea.getAttribute('rows')).toEqual(`${rows}`);
 });
 
-test('renders iconRight', () => {
-  const { queryByTestId } = render(<Textarea iconRight={<PlusIcon data-testid="icon" />} />);
+test('does not accept invalid row property', () => {
+  const rows = 9;
+  const { baseElement } = render(<Textarea rows={rows as TextareaProps['rows']} data-testid="test-rows" />);
 
-  expect(queryByTestId('icon')).toBeInTheDocument();
+  const textarea = baseElement.querySelector('textarea') as HTMLTextAreaElement;
+
+  expect(textarea.getAttribute('rows')).not.toEqual(`${rows}`);
 });
 
-test('renders both icons', () => {
-  const { queryByTestId } = render(
-    <Textarea iconRight={<PlusIcon data-testid="icon-right" />} iconLeft={<PlusIcon data-testid="icon-left" />} />,
-  );
+test('renders and accepts resize property', () => {
+  const { container, rerender } = render(<Textarea resize={true} />);
+  const textarea = container.querySelector('textarea');
 
-  expect(queryByTestId('icon-left')).toBeInTheDocument();
-  expect(queryByTestId('icon-right')).toBeInTheDocument();
+  expect(textarea).toHaveStyle('resize: vertical');
+
+  rerender(<Textarea resize={false} />);
+
+  expect(textarea).toHaveStyle('resize: none');
 });
 
 test('renders all together', () => {
   const { container } = render(
-    <Textarea
-      label="This is a label"
-      description="This is a description"
-      iconRight={<PlusIcon data-testid="icon-right" />}
-      iconLeft={<PlusIcon data-testid="icon-left" />}
-    />,
+    <Textarea label="This is a label" description="This is a description" rows={3} resize={true} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
