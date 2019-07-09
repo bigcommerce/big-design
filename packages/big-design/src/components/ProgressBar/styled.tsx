@@ -8,6 +8,7 @@ import { ProgressBarProps } from './ProgressBar';
 export const StyledProgressBarLinear = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary20};
   height: ${rem(4)};
+  overflow: hidden;
   width: 100%;
 `;
 

@@ -14,7 +14,7 @@ const options = {
 
 storiesOf('ProgressBar', module).add('Overview', () => (
   <>
-    <Box paddingTop="large">
+    <Box>
       <ProgressBar percent={number(label, defaultValue, options)} />
     </Box>
 
