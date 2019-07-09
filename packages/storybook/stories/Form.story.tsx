@@ -21,8 +21,8 @@ storiesOf('Forms', module)
       <H2>Form Field</H2>
 
       <Text>
-        Form fields examples. Implementation detail: id will be auto-generated for input and label(for). Unless
-        manually specifying one
+        Form fields examples. Implementation detail: id will be auto-generated for input and label(for). Unless manually
+        specifying one
       </Text>
 
       <Form>
