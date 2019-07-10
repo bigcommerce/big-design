@@ -7,6 +7,7 @@ export * from './Form';
 export * from './GlobalStyle';
 export * from './Grid';
 export * from './Icons';
+export * from './InlineFlex';
 export * from './Input';
 export * from './Link';
 export * from './Lozenge';
