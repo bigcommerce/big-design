@@ -4,6 +4,7 @@ import { Manager, Reference } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
+import { Flex } from '../Flex/Flex';
 import { Input } from '../Input';
 import { ListAction } from '../List/Action/Action';
 import { ListItem } from '../List/Item/Item';
@@ -121,6 +122,21 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     );
   }
 
+  private renderDropdownIcon() {
+    return (
+      <Flex>
+        <StyledDropdownIcon
+          aria-haspopup={true}
+          aria-label="toggle menu" // Will need to translate this label in the future
+          onClick={this.toggleList}
+          role="button"
+          tabIndex={-1}
+          style={{ outline: 'none' }}
+        />
+      </Flex>
+    );
+  }
+
   private renderLabel() {
     const { label } = this.props;
 
@@ -158,16 +174,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         {({ ref }) => (
           <Input
             error={error}
-            iconRight={
-              <StyledDropdownIcon
-                aria-haspopup={true}
-                aria-label="toggle menu" // Will need to translate this label in the future
-                onClick={this.toggleList}
-                role="button"
-                tabIndex={-1}
-                style={{ outline: 'none' }}
-              />
-            }
+            iconRight={this.renderDropdownIcon()}
             aria-autocomplete="list"
             id={this.getInputId()}
             onChange={this.handleOnInputChange}
