@@ -50,3 +50,10 @@ Workspaces are inside the `packages` directory.
 - Commit lint
 - Prettier
 - Tslint
+
+### Changelogs
+As this is a monorepo, each package has it's own Changelog. Links for each can be found below
+
+- [big-design](https://github.com/bigcommerce/big-design/blob/master/packages/big-design/CHANGELOG.md)
+- [configs](https://github.com/bigcommerce/big-design/tree/master/packages/configs)
+- [storybook](https://github.com/bigcommerce/big-design/blob/master/packages/storybook/CHANGELOG.md)
