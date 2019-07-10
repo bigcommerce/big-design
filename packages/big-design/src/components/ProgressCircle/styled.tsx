@@ -26,7 +26,7 @@ export const StyledCircle = styled.circle.attrs(({ size }: ProgressCircleProps) 
 
 StyledCircle.defaultProps = { theme: defaultTheme };
 
-function setProgress(percent: number, size: ProgressCircleSizes) {
+function setFill(percent: number, size: ProgressCircleSizes) {
   return circumferences[size] - (percent / 100) * circumferences[size];
 }
 
@@ -38,13 +38,15 @@ export const StyledCircleFiller = styled(StyledCircle)<ProgressCircleProps>`
   ${({ percent, size, status }) =>
     status === 'incomplete'
       ? css`
-          stroke-dashoffset: ${() => (typeof percent === 'number' ? `${setProgress(percent, size)}` : 0)};
+          stroke-dashoffset: ${typeof percent === 'number' ? `${setFill(percent, size)}` : 0};
           transform: rotate(-90deg);
           transition: stroke-dashoffset 0.35s;
         `
       : css`
-          animation: ${spin} 1s linear infinite;
-          stroke-dashoffset: ${setProgress(75, size)};
+          animation: ${spin(size)} 1s ease infinite;
+          stroke-dashoffset: ${setFill(0, size)};
+          transform: rotate(-90deg);
+          transition: stroke-dashoffset 0.35s;
         `};
 `;
 
@@ -70,8 +72,16 @@ export const StyledSuccessIcon = styled(SuccessIcon)`
 
 StyledSuccessIcon.defaultProps = { theme: defaultTheme };
 
-const spin = keyframes`
-  to {
-    transform: rotate(360deg)
+const spin = (size: ProgressCircleSizes) => keyframes`
+  0% {
+    stroke-dashoffset: ${setFill(0, size) * -1};
+    transform: rotate(-90deg);
+  }
+  50% {
+    stroke-dashoffset: ${setFill(37.5, size) * -1};
+  }
+  100% {
+    stroke-dashoffset: ${setFill(0, size) * -1};
+    transform: rotate(270deg);
   }
 `;
