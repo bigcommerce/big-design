@@ -1,8 +1,10 @@
-import { Flex, ProgressCircle } from '@bigcommerce/big-design';
+import { ProgressCircle } from '@bigcommerce/big-design';
 import { ProgressCircleSizes } from '@bigcommerce/big-design/dist/src/components/ProgressCircle/ProgressCircle';
-import { number, select } from '@storybook/addon-knobs';
+import { boolean, number, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+
+import ProgressCircleReadme from '../../big-design/src/components/ProgressCircle/README.md';
 
 const label = 'percentage';
 const defaultValue = 10;
@@ -15,11 +17,25 @@ const options = {
 
 const sizes: ProgressCircleSizes[] = ['large', 'medium', 'small', 'xSmall'];
 
-storiesOf('ProgressCircle', module).add('Overview', () => (
-  <Flex alignItems="center" justifyContent="space-around">
-    <ProgressCircle percent={number(label, defaultValue, options)} size={select('size', sizes, 'large')} />
-    <ProgressCircle size={select('size', sizes, 'large')} variant={'indeterminant'} />
-    <ProgressCircle error={true} size={select('size', sizes, 'large')} />
-    <ProgressCircle isComplete={true} size={select('size', sizes, 'large')} />
-  </Flex>
-));
+storiesOf('ProgressCircle', module)
+  .addParameters({
+    readme: {
+      content: ProgressCircleReadme,
+    },
+  })
+  .add('Determinant', () => (
+    <ProgressCircle
+      isComplete={boolean('isComplete', false)}
+      percent={number(label, defaultValue, options)}
+      showError={boolean('showError', false)}
+      size={select('size', sizes, 'large')}
+    />
+  ))
+  .add('Indeterminant', () => (
+    <ProgressCircle
+      isComplete={boolean('isComplete', false)}
+      showError={boolean('showError', false)}
+      size={select('size', sizes, 'large')}
+      variant={'indeterminant'}
+    />
+  ));

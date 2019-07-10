@@ -9,7 +9,6 @@ export interface ProgressBarProps {
 
 export class ProgressBar extends React.PureComponent<ProgressBarProps> {
   static defaultProps: ProgressBarProps = {
-    percent: 0,
     variant: 'determinant',
   };
 
@@ -19,7 +18,12 @@ export class ProgressBar extends React.PureComponent<ProgressBarProps> {
     return (
       <>
         {variant === 'determinant' ? (
-          <StyledProgressBarLinear role="progressbar" aria-valuenow={percent} aria-valuemin={0} aria-valuemax={100}>
+          <StyledProgressBarLinear
+            role="progressbar"
+            aria-valuenow={percent ? percent : 0}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          >
             <StyledFillerLinear variant={variant} percent={percent} />
           </StyledProgressBarLinear>
         ) : (
