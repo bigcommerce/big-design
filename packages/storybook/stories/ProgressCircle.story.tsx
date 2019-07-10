@@ -1,6 +1,9 @@
 import { ProgressCircle } from '@bigcommerce/big-design';
-import { ProgressCircleSizes } from '@bigcommerce/big-design/dist/src/components/ProgressCircle/ProgressCircle';
-import { boolean, number, select } from '@storybook/addon-knobs';
+import {
+  ProgressCircleSizes,
+  ProgressCircleStatuses,
+} from '@bigcommerce/big-design/dist/src/components/ProgressCircle/ProgressCircle';
+import { number, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
@@ -16,6 +19,7 @@ const options = {
 };
 
 const sizes: ProgressCircleSizes[] = ['large', 'medium', 'small', 'xSmall'];
+const statuses: ProgressCircleStatuses[] = ['complete', 'error', 'incomplete', 'indeterminant'];
 
 storiesOf('ProgressCircle', module)
   .addParameters({
@@ -25,17 +29,11 @@ storiesOf('ProgressCircle', module)
   })
   .add('Determinant', () => (
     <ProgressCircle
-      isComplete={boolean('isComplete', false)}
       percent={number(label, defaultValue, options)}
-      showError={boolean('showError', false)}
       size={select('size', sizes, 'large')}
+      status={select('status', statuses, 'incomplete')}
     />
   ))
   .add('Indeterminant', () => (
-    <ProgressCircle
-      isComplete={boolean('isComplete', false)}
-      showError={boolean('showError', false)}
-      size={select('size', sizes, 'large')}
-      variant={'indeterminant'}
-    />
+    <ProgressCircle size={select('size', sizes, 'large')} status={select('status', statuses, 'indeterminant')} />
   ));

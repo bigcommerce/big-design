@@ -5,21 +5,21 @@ import { defaultTheme } from '../../theme';
 
 import { ProgressBarProps } from './ProgressBar';
 
-export const StyledProgressBarLinear = styled.div`
+export const StyledProgressBar = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary20};
   height: ${rem(4)};
   overflow: hidden;
   width: 100%;
 `;
 
-StyledProgressBarLinear.defaultProps = { theme: defaultTheme };
+StyledProgressBar.defaultProps = { theme: defaultTheme };
 
-export const StyledFillerLinear = styled.div<ProgressBarProps>`
+export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   height: 100%;
 
-  ${({ percent, variant }) =>
-    variant === 'determinant'
+  ${({ percent, status }) =>
+    status === 'incomplete'
       ? css`
           transition: width 0.2s ease-in;
           width: ${() => `${percent}%`};
@@ -31,7 +31,7 @@ export const StyledFillerLinear = styled.div<ProgressBarProps>`
         `};
 `;
 
-StyledFillerLinear.defaultProps = { theme: defaultTheme };
+StyledProgressBarFiller.defaultProps = { theme: defaultTheme };
 
 const loading = keyframes`
   from {

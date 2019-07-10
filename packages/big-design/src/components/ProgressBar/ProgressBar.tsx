@@ -1,35 +1,35 @@
 import React from 'react';
 
-import { StyledFillerLinear, StyledProgressBarLinear } from './styled';
+import { StyledProgressBar, StyledProgressBarFiller } from './styled';
 
 export interface ProgressBarProps {
   percent?: number;
-  variant?: 'determinant' | 'indeterminant';
+  status?: 'incomplete' | 'indeterminant';
 }
 
 export class ProgressBar extends React.PureComponent<ProgressBarProps> {
   static defaultProps: ProgressBarProps = {
-    variant: 'determinant',
+    status: 'indeterminant',
   };
 
   render() {
-    const { percent, variant } = this.props;
+    const { percent, status } = this.props;
 
     return (
       <>
-        {variant === 'determinant' ? (
-          <StyledProgressBarLinear
-            role="progressbar"
-            aria-valuenow={percent ? percent : 0}
-            aria-valuemin={0}
+        {status === 'incomplete' ? (
+          <StyledProgressBar
             aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={percent ? percent : 0}
+            role="progressbar"
           >
-            <StyledFillerLinear variant={variant} percent={percent} />
-          </StyledProgressBarLinear>
+            <StyledProgressBarFiller status={status} percent={percent} />
+          </StyledProgressBar>
         ) : (
-          <StyledProgressBarLinear role="progressbar">
-            <StyledFillerLinear variant={variant} />
-          </StyledProgressBarLinear>
+          <StyledProgressBar role="progressbar">
+            <StyledProgressBarFiller status={status} />
+          </StyledProgressBar>
         )}
       </>
     );

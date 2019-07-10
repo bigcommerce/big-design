@@ -7,9 +7,7 @@ import { ErrorIcon, SuccessIcon } from '../Icons';
 import { circumferences, sizes, strokeWidths } from './constants';
 import { ProgressCircleProps, ProgressCircleSizes } from './ProgressCircle';
 
-/* Circular */
-
-export const StyledProgressBarCircular = styled.svg<ProgressCircleProps>`
+export const StyledProgressCircle = styled.svg<ProgressCircleProps>`
   ${({ size }) => css`
     height: ${rem(sizes[size])};
     width: ${rem(sizes[size])};
@@ -32,13 +30,13 @@ function setProgress(percent: number, size: ProgressCircleSizes) {
   return circumferences[size] - (percent / 100) * circumferences[size];
 }
 
-export const StyledFillerCircle = styled(StyledCircle)<ProgressCircleProps>`
+export const StyledCircleFiller = styled(StyledCircle)<ProgressCircleProps>`
   stroke-dasharray: ${({ size }) => `${circumferences[size]} ${circumferences[size]}`};
   stroke: ${({ theme }) => theme.colors.primary};
   transform-origin: 50% 50%;
 
-  ${({ percent, size, variant }) =>
-    variant === 'determinant'
+  ${({ percent, size, status }) =>
+    status === 'incomplete'
       ? css`
           stroke-dashoffset: ${() => (typeof percent === 'number' ? `${setProgress(percent, size)}` : 0)};
           transform: rotate(-90deg);
