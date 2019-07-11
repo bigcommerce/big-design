@@ -44,7 +44,7 @@ class StyleableTextarea extends React.PureComponent<TextareaProps & PrivateProps
         {this.renderLabel()}
         {this.renderDescription()}
         <StyledTextareaWrapper>
-          <StyledTextarea {...props} id={id} rows={this.validateRows(rows)} resize={resize} ref={forwardedRef} />
+          <StyledTextarea {...props} id={id} rows={this.getRows(rows)} resize={resize} ref={forwardedRef} />
         </StyledTextareaWrapper>
         {this.renderError()}
       </div>
@@ -102,7 +102,7 @@ class StyleableTextarea extends React.PureComponent<TextareaProps & PrivateProps
     return null;
   }
 
-  private validateRows(rows: Props['rows']) {
+  private getRows(rows: Props['rows']) {
     if (rows && rows > this.MAX_ROWS) {
       return this.MAX_ROWS;
     }
