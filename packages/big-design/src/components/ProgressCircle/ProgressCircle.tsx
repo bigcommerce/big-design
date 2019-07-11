@@ -13,9 +13,11 @@ import {
 export type ProgressCircleSizes = 'xSmall' | 'small' | 'medium' | 'large';
 export type ProgressCircleStates = 'complete' | 'error' | 'incomplete' | 'indeterminant';
 
+export const defaultSize = 'medium';
+
 export interface ProgressCircleProps {
   percent?: number;
-  size: ProgressCircleSizes;
+  size?: ProgressCircleSizes;
   state?: ProgressCircleStates;
 }
 
@@ -26,7 +28,7 @@ export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
   };
 
   render() {
-    const { percent, size, state } = this.props;
+    const { percent, size = defaultSize, state } = this.props;
 
     switch (state) {
       case 'error':

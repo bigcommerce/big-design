@@ -20,8 +20,8 @@ Indeterminant Progress is an unknown amount of time for a task to complete. For 
 
 ## Props
 
-| Prop    | Type                                             | Description          | Default       |      Required      |
-| :------ | :----------------------------------------------- | :------------------- | :------------ | :----------------: |
-| percent | number                                           | Sets the fill length | 0             |     :no_good:      |
-| size    | xSmall \| small \| medium \| large               | Size of circle       | medium        | :white_check_mark: |
-| state   | complete \| error \| incomplete \| indeterminant | Determines behavior  | indeterminant |     :no_good:      |
+| Prop    | Type                                             | Description          | Default       | Required  |
+| :------ | :----------------------------------------------- | :------------------- | :------------ | :-------: |
+| percent | number                                           | Sets the fill length | 0             | :no_good: |
+| size    | xSmall \| small \| medium \| large               | Size of circle       | medium        | :no_good: |
+| state   | complete \| error \| incomplete \| indeterminant | Determines behavior  | indeterminant | :no_good: |
