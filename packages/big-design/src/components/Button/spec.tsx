@@ -174,3 +174,14 @@ test('private StyleableButton forwards styles', () => {
   expect(container.getElementsByClassName('test').length).toBe(1);
   expect(container.firstChild).toHaveStyle('background: red');
 });
+
+test('render only icon only with left and right icons button', () => {
+  const plusIcon = <PlusIcon data-testid="icon-only" />;
+  const { getAllByTestId } = render(
+    <Button iconLeft={plusIcon} iconOnly={plusIcon} iconRight={plusIcon}>
+      Button
+    </Button>,
+  );
+
+  expect(getAllByTestId('icon-only').length).toBe(1);
+});
