@@ -1,7 +1,7 @@
 import { ProgressCircle } from '@bigcommerce/big-design';
 import {
   ProgressCircleSizes,
-  ProgressCircleStatuses,
+  ProgressCircleStates,
 } from '@bigcommerce/big-design/dist/src/components/ProgressCircle/ProgressCircle';
 import { number, select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
@@ -19,7 +19,7 @@ const options = {
 };
 
 const sizes: ProgressCircleSizes[] = ['large', 'medium', 'small', 'xSmall'];
-const statuses: ProgressCircleStatuses[] = ['complete', 'error', 'incomplete', 'indeterminant'];
+const states: ProgressCircleStates[] = ['complete', 'error', 'incomplete', 'indeterminant'];
 
 storiesOf('ProgressCircle', module)
   .addParameters({
@@ -31,9 +31,9 @@ storiesOf('ProgressCircle', module)
     <ProgressCircle
       percent={number(label, defaultValue, options)}
       size={select('size', sizes, 'large')}
-      status={select('status', statuses, 'incomplete')}
+      state={select('state', states, 'incomplete')}
     />
   ))
   .add('Indeterminant', () => (
-    <ProgressCircle size={select('size', sizes, 'large')} status={select('status', statuses, 'indeterminant')} />
+    <ProgressCircle size={select('size', sizes, 'large')} state={select('state', states, 'indeterminant')} />
   ));

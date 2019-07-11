@@ -35,8 +35,8 @@ export const StyledCircleFiller = styled(StyledCircle)<ProgressCircleProps>`
   stroke: ${({ theme }) => theme.colors.primary};
   transform-origin: 50% 50%;
 
-  ${({ percent, size, status }) =>
-    status === 'incomplete'
+  ${({ percent, size, state }) =>
+    state === 'incomplete'
       ? css`
           stroke-dashoffset: ${typeof percent === 'number' ? `${setFill(percent, size)}` : 0};
           transform: rotate(-90deg);

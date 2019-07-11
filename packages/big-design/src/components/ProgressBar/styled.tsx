@@ -18,8 +18,8 @@ export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   height: 100%;
 
-  ${({ percent, status }) =>
-    status === 'incomplete'
+  ${({ percent, state }) =>
+    state === 'incomplete'
       ? css`
           transition: width 0.2s ease-in;
           width: ${() => `${percent}%`};

@@ -4,22 +4,21 @@ exports[`render determinant progress bar 1`] = `
 .c0 {
   background-color: #ECEEF5;
   height: 0.25rem;
+  overflow: hidden;
   width: 100%;
 }
 
 .c1 {
   background-color: #3C64F4;
   height: 100%;
-  -webkit-transition: width 0.2s ease-in;
-  transition: width 0.2s ease-in;
-  width: 50%;
+  -webkit-animation: iWofnF 3s ease-in-out infinite;
+  animation: iWofnF 3s ease-in-out infinite;
+  position: relative;
+  width: 10%;
 }
 
 <div>
   <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="50"
     class="c0"
     role="progressbar"
   >
@@ -34,6 +33,7 @@ exports[`render indeterminant progress bar 1`] = `
 .c0 {
   background-color: #ECEEF5;
   height: 0.25rem;
+  overflow: hidden;
   width: 100%;
 }
 

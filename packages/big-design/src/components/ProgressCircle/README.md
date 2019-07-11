@@ -15,5 +15,5 @@ Progress indicators visually provide user feedback on the time elapsed or the co
 | Prop    | Type                                             | Description                 | Default       |      Required      |
 | :------ | :----------------------------------------------- | :-------------------------- | :------------ | :----------------: |
 | percent | number                                           | Sets the progress status    | 0             |     :no_good:      |
-| size    | large \| medium \| small \| xSmall               | Size of circle              | medium        | :white_check_mark: |
-| status  | complete \| error \| incomplete \| indeterminant | Determines rendered variant | indeterminant |     :no_good:      |
+| size    | xSmall \| small \| medium \| large               | Size of circle              | medium        | :white_check_mark: |
+| state   | complete \| error \| incomplete \| indeterminant | Determines rendered variant | indeterminant |     :no_good:      |

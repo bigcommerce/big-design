@@ -2,35 +2,51 @@
 
 exports[`render completed determinant progress circle 1`] = `
 .c0 {
-  color: #2AAB3F;
+  height: 3rem;
+  width: 3rem;
+}
+
+.c1 {
+  fill: transparent;
+  stroke-width: 0.25rem;
+  stroke: #ECEEF5;
+}
+
+.c2 {
+  fill: transparent;
+  stroke-width: 0.25rem;
+  stroke: #ECEEF5;
+  stroke-dasharray: 138.23007675795088 138.23007675795088;
+  stroke: #3C64F4;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation: dpAsNn 1s ease infinite;
+  animation: dpAsNn 1s ease infinite;
+  stroke-dashoffset: 138.23007675795088;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transition: stroke-dashoffset 0.35s;
+  transition: stroke-dashoffset 0.35s;
 }
 
 <div>
   <svg
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="100"
     class="c0"
-    fill="none"
-    height="3rem"
     role="progressbar"
-    size="48"
-    style="width: 3rem; height: 3rem;"
-    viewBox="0 0 24 24"
-    width="3rem"
   >
-    <title />
-    <path
-      clip-rule="evenodd"
-      d="M12.1 22.101c5.524 0 10.001-4.477 10.001-10 0-5.524-4.477-10.001-10-10.001-5.524 0-10 4.477-10 10 0 5.524 4.476 10.001 10 10.001z"
-      fill="currentColor"
-      fill-rule="evenodd"
+    <circle
+      class="c1"
+      cx="1.5rem"
+      cy="1.5rem"
+      r="1.375rem"
     />
-    <path
-      clip-rule="evenodd"
-      d="M10.997 13.434L8.92 11.339l-1.32 1.333 3.396 3.429L17.6 9.434 16.28 8.1l-5.283 5.334z"
-      fill="#fff"
-      fill-rule="evenodd"
+    <circle
+      class="c2"
+      cx="1.5rem"
+      cy="1.5rem"
+      r="1.375rem"
     />
   </svg>
 </div>
@@ -57,7 +73,9 @@ exports[`render determinant progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  stroke-dashoffset: 69.11503837897544;
+  -webkit-animation: dpAsNn 1s ease infinite;
+  animation: dpAsNn 1s ease infinite;
+  stroke-dashoffset: 138.23007675795088;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
@@ -65,16 +83,8 @@ exports[`render determinant progress circle 1`] = `
   transition: stroke-dashoffset 0.35s;
 }
 
-.c3 {
-  font-size: 0.875rem;
-  font-weight: normal;
-}
-
 <div>
   <svg
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="50"
     class="c0"
     role="progressbar"
   >
@@ -90,49 +100,57 @@ exports[`render determinant progress circle 1`] = `
       cy="1.5rem"
       r="1.375rem"
     />
-    <text
-      class="c3"
-      dominant-baseline="central"
-      text-anchor="middle"
-      x="50%"
-      y="50%"
-    >
-      50
-      %
-    </text>
   </svg>
 </div>
 `;
 
 exports[`render error determinant progress circle 1`] = `
 .c0 {
-  color: #DB3643;
+  height: 3rem;
+  width: 3rem;
+}
+
+.c1 {
+  fill: transparent;
+  stroke-width: 0.25rem;
+  stroke: #ECEEF5;
+}
+
+.c2 {
+  fill: transparent;
+  stroke-width: 0.25rem;
+  stroke: #ECEEF5;
+  stroke-dasharray: 138.23007675795088 138.23007675795088;
+  stroke: #3C64F4;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation: dpAsNn 1s ease infinite;
+  animation: dpAsNn 1s ease infinite;
+  stroke-dashoffset: 138.23007675795088;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transition: stroke-dashoffset 0.35s;
+  transition: stroke-dashoffset 0.35s;
 }
 
 <div>
   <svg
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
     class="c0"
-    fill="none"
-    height="3rem"
     role="progressbar"
-    size="48"
-    style="width: 3rem; height: 3rem;"
-    viewBox="0 0 20 20"
-    width="3rem"
   >
-    <title />
     <circle
-      cx="10"
-      cy="10"
-      fill="currentColor"
-      r="8"
+      class="c1"
+      cx="1.5rem"
+      cy="1.5rem"
+      r="1.375rem"
     />
-    <path
-      d="M11 14.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1zM11 10.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v5z"
-      fill="#fff"
+    <circle
+      class="c2"
+      cx="1.5rem"
+      cy="1.5rem"
+      r="1.375rem"
     />
   </svg>
 </div>
@@ -159,9 +177,14 @@ exports[`render indeterminant progress bar 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: hkJwlI 1s linear infinite;
-  animation: hkJwlI 1s linear infinite;
-  stroke-dashoffset: 34.55751918948772;
+  -webkit-animation: dpAsNn 1s ease infinite;
+  animation: dpAsNn 1s ease infinite;
+  stroke-dashoffset: 138.23007675795088;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transition: stroke-dashoffset 0.35s;
+  transition: stroke-dashoffset 0.35s;
 }
 
 <div>
@@ -206,6 +229,8 @@ exports[`render large progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
+  -webkit-animation: ibtQPx 1s ease infinite;
+  animation: ibtQPx 1s ease infinite;
   stroke-dashoffset: 226.1946710584651;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -214,16 +239,8 @@ exports[`render large progress circle 1`] = `
   transition: stroke-dashoffset 0.35s;
 }
 
-.c3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
 <div>
   <svg
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
     class="c0"
     role="progressbar"
   >
@@ -239,16 +256,6 @@ exports[`render large progress circle 1`] = `
       cy="2.5rem"
       r="2.25rem"
     />
-    <text
-      class="c3"
-      dominant-baseline="central"
-      text-anchor="middle"
-      x="50%"
-      y="50%"
-    >
-      0
-      %
-    </text>
   </svg>
 </div>
 `;
@@ -274,6 +281,8 @@ exports[`render medium progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
+  -webkit-animation: dpAsNn 1s ease infinite;
+  animation: dpAsNn 1s ease infinite;
   stroke-dashoffset: 138.23007675795088;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -282,16 +291,8 @@ exports[`render medium progress circle 1`] = `
   transition: stroke-dashoffset 0.35s;
 }
 
-.c3 {
-  font-size: 0.875rem;
-  font-weight: normal;
-}
-
 <div>
   <svg
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
     class="c0"
     role="progressbar"
   >
@@ -307,16 +308,6 @@ exports[`render medium progress circle 1`] = `
       cy="1.5rem"
       r="1.375rem"
     />
-    <text
-      class="c3"
-      dominant-baseline="central"
-      text-anchor="middle"
-      x="50%"
-      y="50%"
-    >
-      0
-      %
-    </text>
   </svg>
 </div>
 `;
@@ -342,6 +333,8 @@ exports[`render small progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
+  -webkit-animation: cYXnLG 1s ease infinite;
+  animation: cYXnLG 1s ease infinite;
   stroke-dashoffset: 87.96459430051421;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -352,9 +345,6 @@ exports[`render small progress circle 1`] = `
 
 <div>
   <svg
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
     class="c0"
     role="progressbar"
   >
@@ -395,6 +385,8 @@ exports[`render xSmall progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
+  -webkit-animation: cWvsXs 1s ease infinite;
+  animation: cWvsXs 1s ease infinite;
   stroke-dashoffset: 43.982297150257104;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -405,9 +397,6 @@ exports[`render xSmall progress circle 1`] = `
 
 <div>
   <svg
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
     class="c0"
     role="progressbar"
   >

@@ -4,34 +4,35 @@ import { StyledProgressBar, StyledProgressBarFiller } from './styled';
 
 export interface ProgressBarProps {
   percent?: number;
-  status?: 'incomplete' | 'indeterminant';
+  state?: 'incomplete' | 'indeterminant';
 }
 
 export class ProgressBar extends React.PureComponent<ProgressBarProps> {
   static defaultProps: ProgressBarProps = {
-    status: 'indeterminant',
+    state: 'indeterminant',
   };
 
   render() {
-    const { percent, status } = this.props;
+    const { percent, state } = this.props;
 
-    return (
-      <>
-        {status === 'incomplete' ? (
+    switch (state) {
+      case 'incomplete':
+        return (
           <StyledProgressBar
             aria-valuemax={100}
             aria-valuemin={0}
             aria-valuenow={percent ? percent : 0}
             role="progressbar"
           >
-            <StyledProgressBarFiller status={status} percent={percent} />
+            <StyledProgressBarFiller state={state} percent={percent} />
           </StyledProgressBar>
-        ) : (
+        );
+      case 'indeterminant':
+        return (
           <StyledProgressBar role="progressbar">
-            <StyledProgressBarFiller status={status} />
+            <StyledProgressBarFiller state={state} />
           </StyledProgressBar>
-        )}
-      </>
-    );
+        );
+    }
   }
 }

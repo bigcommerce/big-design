@@ -20,5 +20,5 @@ storiesOf('ProgressBar', module)
       content: ProgressBarReadme,
     },
   })
-  .add('Determinant', () => <ProgressBar percent={number(label, defaultValue, options)} status={'incomplete'} />)
+  .add('Determinant', () => <ProgressBar percent={number(label, defaultValue, options)} state={'incomplete'} />)
   .add('Indeterminant', () => <ProgressBar />);
