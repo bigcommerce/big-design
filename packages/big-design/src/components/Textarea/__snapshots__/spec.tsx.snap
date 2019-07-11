@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders all together 1`] = `
+.c1 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c1:last-child {
+  margin-bottom: 0;
+}
+
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.c2 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.c3 {
+  background-color: #FFFFFF;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  color: #313440;
+  line-height: 1.5rem;
+  max-height: 14rem;
+  padding: 0.25rem 0.75rem;
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #D9DCE9;
+}
+
+.c3:hover:not([disabled]) {
+  border: 1px solid #B4BAD1;
+}
+
+.c3:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+.c3[disabled] {
+  background-color: #ECEEF5;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #B4BAD1;
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
+
+.c3::-moz-placeholder {
+  color: #B4BAD1;
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
+
+.c3:-ms-input-placeholder {
+  color: #B4BAD1;
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
+
+.c3::placeholder {
+  color: #B4BAD1;
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
+
+<div>
+  <label
+    class="c0"
+    for="textarea_0"
+  >
+    This is a label
+  </label>
+  <p
+    class="c1"
+  >
+    This is a description
+  </p>
+  <span
+    class="c2"
+  >
+    <textarea
+      class="c3"
+      id="textarea_0"
+      rows="3"
+    />
+  </span>
+</div>
+`;

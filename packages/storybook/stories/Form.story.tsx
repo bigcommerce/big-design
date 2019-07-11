@@ -1,4 +1,17 @@
-import { Box, Button, Checkbox, Form, H2, Input, PlusIcon, Radio, Text } from '@bigcommerce/big-design';
+import {
+  Box,
+  Button,
+  Checkbox,
+  Form,
+  H2,
+  Input,
+  PlusIcon,
+  Radio,
+  Text,
+  Textarea,
+  TextareaProps,
+} from '@bigcommerce/big-design';
+import { boolean, number, NumberOptions } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
@@ -60,6 +73,24 @@ storiesOf('Forms', module)
               description="This is an example description for Company. Featuring a Disabled field."
               placeholder="Placeholder text disabled"
               disabled
+            />
+          </Form.Row>
+
+          <Form.Row>
+            <Textarea
+              label="Description"
+              description="This is an example description. Use Knobs to preview props."
+              placeholder="Placeholder text"
+              rows={
+                number('Textarea rows', 3, {
+                  range: true,
+                  min: 1,
+                  max: 7,
+                  step: 1,
+                } as NumberOptions) as TextareaProps['rows']
+              }
+              resize={boolean('Resizeable textarea', true)}
+              disabled={boolean('Disable textarea', false)}
             />
           </Form.Row>
 
