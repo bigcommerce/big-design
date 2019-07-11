@@ -5,25 +5,25 @@ import { render } from 'react-testing-library';
 import { ProgressCircle } from './ProgressCircle';
 
 test('render determinant progress circle', () => {
-  const { container } = render(<ProgressCircle variant="determinant" percent={50} />);
+  const { container } = render(<ProgressCircle state="incomplete" percent={50} />);
 
   expect(container).toMatchSnapshot();
 });
 
 test('render completed determinant progress circle', () => {
-  const { container } = render(<ProgressCircle isComplete={true} variant="indeterminant" />);
+  const { container } = render(<ProgressCircle state="complete" />);
 
   expect(container).toMatchSnapshot();
 });
 
 test('render error determinant progress circle', () => {
-  const { container } = render(<ProgressCircle error={true} variant="indeterminant" />);
+  const { container } = render(<ProgressCircle state="error" />);
 
   expect(container).toMatchSnapshot();
 });
 
 test('render indeterminant progress bar', () => {
-  const { container } = render(<ProgressCircle variant="indeterminant" />);
+  const { container } = render(<ProgressCircle state="indeterminant" />);
 
   expect(container).toMatchSnapshot();
 });
