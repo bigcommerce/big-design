@@ -24,8 +24,6 @@ export const StyledCircle = styled.circle.attrs(({ size = defaultSize }: Progres
   stroke: ${({ theme }) => theme.colors.secondary20};
 `;
 
-StyledCircle.defaultProps = { theme: defaultTheme };
-
 function setFill(percent: number, size: ProgressCircleSizes) {
   return circumferences[size] - (percent / 100) * circumferences[size];
 }
@@ -64,13 +62,9 @@ export const StyledErrorIcon = styled(ErrorIcon)`
   color: ${({ theme }) => theme.colors.danger};
 `;
 
-StyledErrorIcon.defaultProps = { theme: defaultTheme };
-
 export const StyledSuccessIcon = styled(SuccessIcon)`
   color: ${({ theme }) => theme.colors.success};
 `;
-
-StyledSuccessIcon.defaultProps = { theme: defaultTheme };
 
 const spin = (size: ProgressCircleSizes) => keyframes`
   0% {
@@ -85,3 +79,8 @@ const spin = (size: ProgressCircleSizes) => keyframes`
     transform: rotate(270deg);
   }
 `;
+
+StyledCircle.defaultProps = { theme: defaultTheme };
+StyledCircleFiller.defaultProps = { theme: defaultTheme };
+StyledErrorIcon.defaultProps = { theme: defaultTheme };
+StyledSuccessIcon.defaultProps = { theme: defaultTheme };

@@ -12,8 +12,6 @@ export const StyledProgressBar = styled.div`
   width: 100%;
 `;
 
-StyledProgressBar.defaultProps = { theme: defaultTheme };
-
 export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   height: 100%;
@@ -31,8 +29,6 @@ export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
         `};
 `;
 
-StyledProgressBarFiller.defaultProps = { theme: defaultTheme };
-
 const loading = keyframes`
   from {
     left: -10%;;
@@ -42,3 +38,6 @@ const loading = keyframes`
   }
 
 `;
+
+StyledProgressBar.defaultProps = { theme: defaultTheme };
+StyledProgressBarFiller.defaultProps = { theme: defaultTheme };
