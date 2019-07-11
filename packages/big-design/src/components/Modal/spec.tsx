@@ -150,3 +150,48 @@ test('do not render close button on dialog variation', () => {
 
   expect(queryByTitle('Close')).not.toBeInTheDocument();
 });
+
+test('do not pull focus to open modal that is rerendered', () => {
+  const text = 'This is a modal';
+  const { queryByText, queryByRole, rerender } = render(
+    <Modal isOpen={false}>
+      {text}
+      <input id="focusTest" />
+    </Modal>,
+  );
+
+  // Modal not opened
+  expect(queryByText(text)).not.toBeInTheDocument();
+
+  // Modal Opened
+  rerender(
+    <Modal isOpen={true}>
+      {text}
+      <input id="focusTest" />
+    </Modal>,
+  );
+
+  // Expect Modal to have focus
+  expect(queryByText(text)).toBeInTheDocument();
+  expect(document.activeElement).toBe(queryByRole('dialog'));
+
+  const input = document.getElementById('focusTest');
+
+  // Focus on input
+  if (input !== null) {
+    input.focus();
+    expect(input).toHaveFocus();
+
+    // Rerender as open
+    rerender(
+      <Modal isOpen={true}>
+        {text}
+        <input id="focusTest" />
+      </Modal>,
+    );
+
+    // Expect input to still have focus and not modal
+    expect(input).toHaveFocus();
+    expect(document.activeElement).not.toBe(queryByRole('dialog'));
+  }
+});

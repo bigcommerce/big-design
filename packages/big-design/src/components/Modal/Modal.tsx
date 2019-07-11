@@ -54,8 +54,11 @@ export class Modal extends React.PureComponent<ModalProps> {
     document.body.removeChild(this.modalContainer);
   }
 
-  componentDidUpdate() {
-    this.autoFocus();
+  componentDidUpdate(prevProps: ModalProps) {
+    // Check that the previous state was not open and is now open before auto focusing on modal
+    if (!prevProps.isOpen && this.props.isOpen) {
+      this.autoFocus();
+    }
   }
 
   render() {
