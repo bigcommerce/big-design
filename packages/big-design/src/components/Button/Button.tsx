@@ -29,10 +29,10 @@ class RawButton extends React.PureComponent<ButtonProps & PrivateProps> {
       <StyledButton role="button" tabIndex={0} {...props} onClick={this.handleClick} ref={forwardedRef}>
         {props.isLoading ? props.spinner : null}
         <ContentWrapper isLoading={props.isLoading} theme={props.theme}>
-          {props.iconLeft}
+          {!props.iconOnly && props.iconLeft}
           {props.iconOnly}
           {!props.iconOnly && props.children}
-          {props.iconRight}
+          {!props.iconOnly && props.iconRight}
         </ContentWrapper>
       </StyledButton>
     );
