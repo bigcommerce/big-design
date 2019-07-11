@@ -7,9 +7,13 @@ exports[`render completed determinant progress circle 1`] = `
 
 <div>
   <svg
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="100"
     class="c0"
     fill="none"
     height="3rem"
+    role="progressbar"
     size="48"
     style="width: 3rem; height: 3rem;"
     viewBox="0 0 24 24"
@@ -107,9 +111,14 @@ exports[`render error determinant progress circle 1`] = `
 
 <div>
   <svg
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="0"
+    aria-valuetext="Error"
     class="c0"
     fill="none"
     height="3rem"
+    role="progressbar"
     size="48"
     style="width: 3rem; height: 3rem;"
     viewBox="0 0 20 20"

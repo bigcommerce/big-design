@@ -32,9 +32,26 @@ export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
 
     switch (state) {
       case 'error':
-        return <StyledErrorIcon size={sizes[size]} />;
+        return (
+          <StyledErrorIcon
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={percent ? percent : 0}
+            aria-valuetext="Error"
+            role="progressbar"
+            size={sizes[size]}
+          />
+        );
       case 'complete':
-        return <StyledSuccessIcon size={sizes[size]} />;
+        return (
+          <StyledSuccessIcon
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={100}
+            role="progressbar"
+            size={sizes[size]}
+          />
+        );
       case 'incomplete':
         return (
           <StyledProgressCircle
