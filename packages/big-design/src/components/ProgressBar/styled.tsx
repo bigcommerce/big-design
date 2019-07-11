@@ -22,7 +22,7 @@ export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
     state === 'incomplete'
       ? css`
           transition: width 0.2s ease-in;
-          width: ${() => `${percent}%`};
+          width: ${percent}%;
         `
       : css`
           animation: ${loading} 3s ease-in-out infinite;
