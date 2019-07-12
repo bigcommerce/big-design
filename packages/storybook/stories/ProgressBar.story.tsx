@@ -5,13 +5,15 @@ import React from 'react';
 
 import ProgressBarReadme from '../../big-design/src/components/ProgressBar/README.md';
 
-const label = 'percentage';
-const defaultValue = 10;
-const options = {
-  range: true,
-  min: 0,
-  max: 100,
-  step: 10,
+const percentKnob = {
+  name: 'percentage',
+  value: 50,
+  options: {
+    range: true,
+    min: 0,
+    max: 100,
+    step: 1,
+  },
 };
 
 storiesOf('ProgressBar', module)
@@ -20,5 +22,5 @@ storiesOf('ProgressBar', module)
       content: ProgressBarReadme,
     },
   })
-  .add('Determinant', () => <ProgressBar percent={number(label, defaultValue, options)} state={'incomplete'} />)
+  .add('Determinant', () => <ProgressBar percent={number(percentKnob.name, percentKnob.value, percentKnob.options)} />)
   .add('Indeterminant', () => <ProgressBar />);

@@ -8,19 +8,16 @@
 
 ---
 
-## Description and Usage
-
 ### Determinant Progress
 
-Determinant Progress is a known amount of time or completeness for a task to complete. For determinate progress indicators, the fill extends along the path of the indicator until the task complete.
+Determinant Progress is a known amount of time or completeness for a task to complete. To render a determinant progress bar, a `percent` property needs to be passed.
 
 ### Indeterminant Progress
 
-Indeterminant Progress is an unknown amount of time for a task to complete. For indeterminate progress indicators, the fill expands and contracts as it travels the length of the path until the tasks is complete.
+Indeterminant Progress is an unknown amount of time for a task to complete. Will render an indeterminate progress bar if no `percent` property is passed.
 
-## Props
+## Properties & Methods
 
-| Prop    | Type                        | Description          | Default       | Required  |
-| :------ | :-------------------------- | :------------------- | :------------ | :-------: |
-| percent | number                      | Sets the fill length | 0             | :no_good: |
-| state   | incomplete \| indeterminant | Determines behavior  | indeterminant | :no_good: |
+| Prop Name | Type     | Default | Description          |
+| :-------- | :------- | :------ | :------------------- |
+| `percent` | `number` |         | Sets the fill length |
