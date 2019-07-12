@@ -1,6 +1,6 @@
 # Contributing to BigDesign
 
-Currently, BigDesign is a not open for external pull requests and contributions. 
+Currently, BigDesign is not open for external pull requests and contributions.
 
 ## Issues / Bugs
 
