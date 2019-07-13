@@ -79,6 +79,7 @@ export const StyledModalBody = styled.div`
 `;
 
 StyledModal.defaultProps = { theme: defaultTheme };
+StyledModalBody.defaultProps = { theme: defaultTheme };
 StyledModalContent.defaultProps = { theme: defaultTheme };
 StyledModalActions.defaultProps = { theme: defaultTheme };
 StyledModalClose.defaultProps = { theme: defaultTheme };
