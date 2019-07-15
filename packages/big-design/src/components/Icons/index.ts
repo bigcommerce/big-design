@@ -6,3 +6,4 @@ export { default as DropdownIcon } from './DropdownIcon';
 export { default as ErrorIcon } from './ErrorIcon';
 export { default as LoadingIcon } from './LoadingIcon';
 export { default as PlusIcon } from './PlusIcon';
+export { default as SuccessIcon } from './SuccessIcon';
