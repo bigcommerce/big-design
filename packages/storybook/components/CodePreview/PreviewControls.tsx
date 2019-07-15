@@ -34,7 +34,7 @@ function getCopyToClipboardIcon(isCopying: boolean) {
   );
 }
 
-function onCopy(setIsCopying: any, copyToClipboard: any) {
+function onCopy(setIsCopying: (copying: boolean) => void, copyToClipboard: () => void) {
   setIsCopying(true);
   copyToClipboard();
 
