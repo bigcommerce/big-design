@@ -14,6 +14,7 @@ export const StyledProgressBar = styled.div`
 export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   height: 100%;
+  overflow: hidden;
 
   ${({ percent }) =>
     typeof percent === 'number'
@@ -22,15 +23,18 @@ export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
           width: ${percent}%;
         `
       : css`
-          animation: ${loading} 3s ease-in-out infinite;
+          animation: ${loading} 2s ease-in-out infinite;
           position: relative;
-          width: 10%;
+          width: 6.25%;
         `};
 `;
 
 const loading = keyframes`
   from {
     left: -10%;;
+  }
+  25% {
+    width: 50%;
   }
   to {
     left: 100%;
