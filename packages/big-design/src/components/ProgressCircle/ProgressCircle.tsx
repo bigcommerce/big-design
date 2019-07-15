@@ -22,62 +22,74 @@ export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
   };
 
   render() {
-    const { error, percent, size } = this.props;
+    const { error } = this.props;
 
-    if (error) {
-      return (
-        <StyledErrorIcon
-          aria-valuemax={100}
-          aria-valuemin={0}
-          aria-valuenow={percent ? percent : 0}
-          aria-valuetext="Error"
-          role="progressbar"
-          size={this.getDimensions()}
-        />
-      );
-    }
-
-    if (typeof percent === 'number') {
-      if (percent === 100) {
-        return (
-          <StyledSuccessIcon
-            aria-valuemax={100}
-            aria-valuemin={0}
-            aria-valuenow={100}
-            role="progressbar"
-            size={this.getDimensions()}
-          />
-        );
-      } else {
-        return (
-          <StyledProgressCircle
-            aria-valuemax={100}
-            aria-valuemin={0}
-            aria-valuenow={percent}
-            role="progressbar"
-            size={size}
-          >
-            <StyledCircle size={size} />
-            <StyledCircleFiller percent={percent} size={size} />
-            {(size === 'large' || size === 'medium') && (
-              <StyledText size={size}>{percent ? Math.floor(percent) : 0}%</StyledText>
-            )}
-          </StyledProgressCircle>
-        );
-      }
-    }
-
-    return (
-      <StyledProgressCircle role="progressbar" size={size}>
-        <StyledCircle size={size} />
-        <StyledCircleFiller size={size} />
-      </StyledProgressCircle>
-    );
+    return error ? this.renderError() : this.renderCircle();
   }
 
   getDimensions() {
     const { size } = this.props;
 
     return size ? CIRCLE_DIMENSIONS[size] : CIRCLE_DIMENSIONS.medium;
+  }
+
+  renderCircle() {
+    const { percent, size } = this.props;
+
+    if (typeof percent !== 'number') {
+      return (
+        <StyledProgressCircle role="progressbar" size={size}>
+          <StyledCircle size={size} />
+          <StyledCircleFiller size={size} />
+        </StyledProgressCircle>
+      );
+    }
+
+    if (percent === 100) {
+      return this.renderSuccess();
+    }
+
+    return (
+      <StyledProgressCircle
+        aria-valuemax={100}
+        aria-valuemin={0}
+        aria-valuenow={percent}
+        role="progressbar"
+        size={size}
+      >
+        <StyledCircle size={size} />
+        <StyledCircleFiller percent={percent} size={size} />
+        {(size === 'large' || size === 'medium') && (
+          <StyledText size={size}>{percent ? Math.floor(percent) : 0}%</StyledText>
+        )}
+      </StyledProgressCircle>
+    );
+  }
+
+  renderError() {
+    const { percent } = this.props;
+
+    return (
+      <StyledErrorIcon
+        aria-valuemax={100}
+        aria-valuemin={0}
+        aria-valuenow={percent ? percent : 0}
+        aria-valuetext="Error"
+        role="progressbar"
+        size={this.getDimensions()}
+      />
+    );
+  }
+
+  renderSuccess() {
+    return (
+      <StyledSuccessIcon
+        aria-valuemax={100}
+        aria-valuemin={0}
+        aria-valuenow={100}
+        role="progressbar"
+        size={this.getDimensions()}
+      />
+    );
   }
 }
