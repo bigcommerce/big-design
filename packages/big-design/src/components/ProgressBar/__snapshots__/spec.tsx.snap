@@ -11,6 +11,7 @@ exports[`render determinant progress bar 1`] = `
 .c1 {
   background-color: #3C64F4;
   height: 100%;
+  overflow: hidden;
   -webkit-transition: width 0.2s ease-in;
   transition: width 0.2s ease-in;
   width: 50%;
@@ -42,10 +43,11 @@ exports[`render indeterminant progress bar 1`] = `
 .c1 {
   background-color: #3C64F4;
   height: 100%;
-  -webkit-animation: iWofnF 3s ease-in-out infinite;
-  animation: iWofnF 3s ease-in-out infinite;
+  overflow: hidden;
+  -webkit-animation: jIOEOd 2s ease-in-out infinite;
+  animation: jIOEOd 2s ease-in-out infinite;
   position: relative;
-  width: 10%;
+  width: 6.25%;
 }
 
 <div>
