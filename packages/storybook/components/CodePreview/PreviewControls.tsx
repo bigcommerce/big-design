@@ -10,17 +10,14 @@ import {
   Small,
 } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
-import styled from 'styled-components';
+
+import { StyledFlex } from './styled';
 
 interface PreviewControlsProps {
   copyToClipboard(): void;
   resetCode(): void;
   toggleTheme(): void;
 }
-
-const StyledFlex = styled(Flex)`
-  flex-direction: row;
-`;
 
 const { colors } = defaultTheme;
 

@@ -1,25 +1,16 @@
 import * as BigDesign from '@bigcommerce/big-design';
-import { defaultTheme, Box } from '@bigcommerce/big-design';
+import { Box } from '@bigcommerce/big-design';
 import clipboardCopy from 'clipboard-copy';
 import { default as lightTheme } from 'prism-react-renderer/themes/github';
 import { default as darkTheme } from 'prism-react-renderer/themes/oceanicNext';
 import React, { useContext, useState } from 'react';
 import reactElementToJSXString, { JsxToStringOptions } from 'react-element-to-jsx-string';
-import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
-import styled from 'styled-components';
+import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
 
 import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
 
+import { StyledLiveError } from './styled';
 import { PreviewControls } from './PreviewControls';
-
-const { colors } = defaultTheme;
-
-const StyledLiveError = styled(LiveError)`
-  background-color: ${colors.secondary70};
-  color: ${colors.danger};
-  font-size: ${defaultTheme.typography.fontSize.small};
-  padding: ${defaultTheme.spacing.small};
-`;
 
 function getInitialCode(children: React.ReactNode, options: Partial<JsxToStringOptions> = {}): string {
   return typeof children === 'string'
