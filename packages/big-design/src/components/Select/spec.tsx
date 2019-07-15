@@ -453,3 +453,33 @@ test('select should render an error if one is provided', () => {
 
   expect(getByText('You must choose')).toBeInTheDocument();
 });
+
+test('select should have a required attr if set as required', () => {
+  const { getByLabelText } = render(
+    <Select label="Countries" placeholder="Choose country" error="Required" required>
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+    </Select>,
+  );
+
+  const input = getByLabelText('Countries');
+
+  expect(input.getAttribute('required')).toEqual('');
+});
+
+test('select should not have a required attr if not set as required', () => {
+  const { getByLabelText } = render(
+    <Select label="Countries" placeholder="Choose country">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+    </Select>,
+  );
+
+  const input = getByLabelText('Countries');
+
+  expect(input.getAttribute('required')).toEqual(null);
+});

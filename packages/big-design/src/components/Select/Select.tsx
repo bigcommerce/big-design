@@ -25,6 +25,7 @@ interface Props {
   label?: React.ReactChild;
   maxHeight?: number;
   placement?: Placement;
+  required?: boolean;
   value: AllHTMLAttributes<HTMLElement>['value'];
   onActionClick?(inputText: string): void;
   onItemChange(value: AllHTMLAttributes<HTMLElement>['value']): void;
@@ -162,7 +163,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   }
 
   private renderInput() {
-    const { label, placeholder, error } = this.props;
+    const { label, placeholder, error, required } = this.props;
 
     const highlightedItem = this.getItemById(this.state.highlightedId);
     const ariaActiveDescendant = highlightedItem ? { 'aria-activedescendant': highlightedItem.id } : {};
@@ -182,6 +183,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
             onFocus={this.handleOnInputFocus}
             placeholder={placeholder}
             ref={ref}
+            required={required}
             value={this.state.inputText}
             {...ariaActiveDescendant}
             {...ariaControls}
