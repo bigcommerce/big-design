@@ -1,10 +1,12 @@
-import { Box, GlobalStyle, Panel } from '@bigcommerce/big-design';
+import { Panel } from '@bigcommerce/big-design';
 import { defaultTheme } from '@bigcommerce/big-design';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { addDecorator, addParameters, configure } from '@storybook/react';
 import React from 'react';
 import { addReadme } from 'storybook-readme-source';
+
+import { StoryWrapper } from '../components/StoryWrapper/StoryWrapper';
 
 import bcTheme from './bc-theme';
 
@@ -17,13 +19,14 @@ addParameters({
     // https://github.com/storybookjs/storybook/issues/6569
     enableShortcuts: false,
     showSearchBox: false,
+    showPanel: false,
     theme: bcTheme,
   },
   backgrounds: [
     {
       default: true,
       name: 'Default',
-      value: defaultTheme.colors.secondary20,
+      value: defaultTheme.colors.secondary10,
     },
     {
       name: 'White',
@@ -51,12 +54,7 @@ addParameters({
   },
 });
 
-addDecorator(storyFn => (
-  <React.Fragment>
-    <GlobalStyle />
-    <Box margin="xxLarge">{storyFn()}</Box>
-  </React.Fragment>
-));
+addDecorator(storyFn => <StoryWrapper storyFn={storyFn} />);
 
 function loadStories() {
   const req = require.context('../stories', true, /\.story\.tsx$/);

@@ -7,6 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('@storybook/addon-actions/register');
 }
 
+// TODO: Remove knobs addon when we port al stories to CodePreviewer
 require('@storybook/addon-knobs/register');
 require('@storybook/addon-backgrounds/register');
 require('@storybook/addon-viewport/register');

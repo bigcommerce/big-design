@@ -6,7 +6,7 @@ import logo from './assets/logo.svg';
 const { colors } = defaultTheme;
 
 export default create({
-  appBg: colors.secondary20,
+  appBg: colors.secondary10,
   base: 'light',
   brandImage: logo,
   brandTitle: 'Big Design',
