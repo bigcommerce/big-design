@@ -1,7 +1,6 @@
-import { rem } from 'polished';
 import styled from 'styled-components';
 
-import { defaultTheme } from '../../../theme';
+import { defaultTheme, remCalc } from '../../../theme';
 
 import { ListActionProps } from './Action';
 
@@ -9,7 +8,7 @@ export const StyledListAction = styled.li<ListActionProps>`
   border-top: 1px solid ${({ theme }) => theme.colors.secondary30};
   color: ${({ actionType, theme }) => (actionType === 'normal' ? theme.colors.primary : theme.colors.danger)};
   margin-top: ${({ theme }) => theme.spacing.xSmall};
-  min-width: ${rem(256)};
+  min-width: ${remCalc(256)};
   outline: none;
   overflow: hidden;
   padding: ${({ theme }) => theme.spacing.xSmall} 0 0;
@@ -26,7 +25,7 @@ export const StyledListAction = styled.li<ListActionProps>`
 export const Wrapper = styled.div`
   cursor: pointer;
   display: flex;
-  height: ${rem(36)};
+  height: ${remCalc(36)};
   padding: 0 ${({ theme }) => theme.spacing.medium};
   width: 100%;
 `;

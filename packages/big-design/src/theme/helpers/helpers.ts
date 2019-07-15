@@ -1,4 +1,6 @@
-import { stripUnit, transparentize } from 'polished';
+import { rem, stripUnit, transparentize } from 'polished';
+
+import { themeOptions } from '../options';
 
 export const addValues = (first: string, second: string) => {
   const [firstValue, firstUnit] = stripUnit(first, true);
@@ -20,4 +22,10 @@ export const createRGBA = (color: string, alpha: number) => {
   const calculatedAmount = 1 - alpha;
 
   return transparentize(calculatedAmount, color);
+};
+
+export const remCalc = (value: string | number) => {
+  const { htmlFontSize } = themeOptions.getOptions();
+
+  return rem(value, htmlFontSize);
 };

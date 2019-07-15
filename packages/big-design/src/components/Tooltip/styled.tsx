@@ -1,7 +1,6 @@
-import { rem } from 'polished';
 import styled from 'styled-components';
 
-import { defaultTheme } from '../../theme';
+import { defaultTheme, remCalc } from '../../theme';
 
 export const StyledTooltipTrigger = styled.div`
   display: inline-block;
@@ -13,7 +12,7 @@ export const StyledTooltip = styled.div`
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
-  max-width: ${rem(300)};
+  max-width: ${remCalc(300)};
   padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.medium}`};
 `;
 

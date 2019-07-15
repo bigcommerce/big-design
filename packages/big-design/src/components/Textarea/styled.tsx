@@ -1,8 +1,7 @@
-import { rem } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { defaultTheme } from '../../theme';
-import { addValues } from '../../theme/helpers/helpers';
+import { addValues, remCalc } from '../../theme/helpers/helpers';
 
 import { TextareaProps } from './Textarea';
 
@@ -18,7 +17,7 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   line-height: ${({ theme }) => theme.lineHeight.medium};
-  max-height: ${rem(224)};
+  max-height: ${remCalc(224)};
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.small}`};
   width: 100%;
 

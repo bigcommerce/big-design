@@ -1,7 +1,6 @@
-import { rem } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { defaultTheme } from '../../../theme';
+import { defaultTheme, remCalc } from '../../../theme';
 
 import { ListItemProps } from './Item';
 
@@ -10,9 +9,9 @@ export const StyledListItem = styled.li<ListItemProps>`
   box-sizing: border-box;
   cursor: default;
   display: flex;
-  height: ${rem(36)};
+  height: ${remCalc(36)};
   justify-content: space-between;
-  min-width: ${rem(256)};
+  min-width: ${remCalc(256)};
   outline: none;
   padding: 0 ${({ theme }) => theme.spacing.medium};
 

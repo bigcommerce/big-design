@@ -1,6 +1,4 @@
-import { rem } from 'polished';
-
-import { ThemeOptions } from '../index';
+import { remCalc } from '../helpers';
 
 export interface LineHeight {
   small: string;
@@ -11,11 +9,11 @@ export interface LineHeight {
   xxxLarge: string;
 }
 
-export const createLineHeight = (options: ThemeOptions): LineHeight => ({
-  small: rem(20, options.htmlFontSize),
-  medium: rem(24, options.htmlFontSize),
-  large: rem(28, options.htmlFontSize),
-  xLarge: rem(32, options.htmlFontSize),
-  xxLarge: rem(40, options.htmlFontSize),
-  xxxLarge: rem(48, options.htmlFontSize),
+export const createLineHeight = (): LineHeight => ({
+  small: remCalc(20),
+  medium: remCalc(24),
+  large: remCalc(28),
+  xLarge: remCalc(32),
+  xxLarge: remCalc(40),
+  xxxLarge: remCalc(48),
 });

@@ -1,6 +1,4 @@
-import { rem } from 'polished';
-
-import { ThemeOptions } from '../index';
+import { remCalc } from '../helpers';
 
 export type FontFamily = string;
 
@@ -26,15 +24,15 @@ export interface Typography {
   fontWeight: FontWeight;
 }
 
-export const createTypography = (options: ThemeOptions): Typography => ({
+export const createTypography = (): Typography => ({
   fontFamily: '"Source Sans Pro", "Helvetica Neue", Arial, sans-serif',
   fontSize: {
-    small: rem(14, options.htmlFontSize),
-    medium: rem(16, options.htmlFontSize),
-    large: rem(20, options.htmlFontSize),
-    xLarge: rem(24, options.htmlFontSize),
-    xxLarge: rem(32, options.htmlFontSize),
-    xxxLarge: rem(48, options.htmlFontSize),
+    small: remCalc(14),
+    medium: remCalc(16),
+    large: remCalc(20),
+    xLarge: remCalc(24),
+    xxLarge: remCalc(32),
+    xxxLarge: remCalc(48),
   },
   fontWeight: {
     extraLight: 200,
