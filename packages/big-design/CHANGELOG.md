@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.4.0...@bigcommerce/big-design@0.5.0) (2019-07-15)
+
+
+### Bug Fixes
+
+* iconOnly would show iconLeft & iconRight ([#55](https://github.com/bigcommerce/big-design/issues/55)) ([80bcd94](https://github.com/bigcommerce/big-design/commit/80bcd94))
+* updated Modal didUpdate to look at previous props ([#42](https://github.com/bigcommerce/big-design/issues/42)) ([8332e3b](https://github.com/bigcommerce/big-design/commit/8332e3b))
+* use flex to center icon ([#47](https://github.com/bigcommerce/big-design/issues/47)) ([2a06e4e](https://github.com/bigcommerce/big-design/commit/2a06e4e))
+
+
+### Features
+
+* add disabled options to select ([#45](https://github.com/bigcommerce/big-design/issues/45)) ([8713a7b](https://github.com/bigcommerce/big-design/commit/8713a7b))
+* add required attr to Select component ([#58](https://github.com/bigcommerce/big-design/issues/58)) ([ed933f0](https://github.com/bigcommerce/big-design/commit/ed933f0))
+* add textarea component ([#48](https://github.com/bigcommerce/big-design/issues/48)) ([2c48269](https://github.com/bigcommerce/big-design/commit/2c48269))
+* export additional props to package ([#43](https://github.com/bigcommerce/big-design/issues/43)) ([e935774](https://github.com/bigcommerce/big-design/commit/e935774))
+* **component:** add remCalc helper ([#60](https://github.com/bigcommerce/big-design/issues/60)) ([87ab876](https://github.com/bigcommerce/big-design/commit/87ab876))
+* **component:** progressbar & progresscircle components ([1c3e006](https://github.com/bigcommerce/big-design/commit/1c3e006))
+
+
+
+
+
 # [0.4.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.3.0...@bigcommerce/big-design@0.4.0) (2019-06-17)
 
 

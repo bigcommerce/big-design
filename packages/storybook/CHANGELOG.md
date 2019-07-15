@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/deini/big-design/compare/@bigcommerce/storybook@0.4.0...@bigcommerce/storybook@0.5.0) (2019-07-15)
+
+
+### Features
+
+* add disabled options to select ([#45](https://github.com/deini/big-design/issues/45)) ([8713a7b](https://github.com/deini/big-design/commit/8713a7b))
+* add required attr to Select component ([#58](https://github.com/deini/big-design/issues/58)) ([ed933f0](https://github.com/deini/big-design/commit/ed933f0))
+* add textarea component ([#48](https://github.com/deini/big-design/issues/48)) ([2c48269](https://github.com/deini/big-design/commit/2c48269))
+* **component:** progressbar & progresscircle components ([1c3e006](https://github.com/deini/big-design/commit/1c3e006))
+
+
+
+
+
 # [0.4.0](https://github.com/deini/big-design/compare/@bigcommerce/storybook@0.3.0...@bigcommerce/storybook@0.4.0) (2019-06-17)
 
 
