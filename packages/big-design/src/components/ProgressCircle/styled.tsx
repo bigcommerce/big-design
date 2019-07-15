@@ -1,7 +1,6 @@
-import { rem } from 'polished';
 import styled, { css, keyframes } from 'styled-components';
 
-import { defaultTheme } from '../../theme';
+import { defaultTheme, remCalc } from '../../theme';
 import { ErrorIcon, SuccessIcon } from '../Icons';
 
 import { CIRCLE_CIRCUMFERENCES, CIRCLE_DIMENSIONS, CIRCLE_STROKE_WIDTHS } from './constants';
@@ -9,18 +8,18 @@ import { ProgressCircleProps } from './ProgressCircle';
 
 export const StyledProgressCircle = styled.svg<ProgressCircleProps>`
   ${({ size }) => css`
-    height: ${rem(getDimensions(size))};
-    width: ${rem(getDimensions(size))};
+    height: ${remCalc(getDimensions(size))};
+    width: ${remCalc(getDimensions(size))};
   `}
 `;
 
 export const StyledCircle = styled.circle.attrs(({ size }: ProgressCircleProps) => ({
-  cx: rem(getDimensions(size) / 2),
-  cy: rem(getDimensions(size) / 2),
-  r: rem(getDimensions(size) / 2 - getStrokeWidth(size) / 2),
+  cx: remCalc(getDimensions(size) / 2),
+  cy: remCalc(getDimensions(size) / 2),
+  r: remCalc(getDimensions(size) / 2 - getStrokeWidth(size) / 2),
 }))<ProgressCircleProps>`
   fill: transparent;
-  stroke-width: ${({ size }) => rem(getStrokeWidth(size))};
+  stroke-width: ${({ size }) => remCalc(getStrokeWidth(size))};
   stroke: ${({ theme }) => theme.colors.secondary20};
 `;
 
@@ -50,7 +49,7 @@ export const StyledText = styled.text.attrs(() => ({
   x: '50%',
   y: '50%',
 }))<ProgressCircleProps>`
-  font-size: ${({ size }) => (size === 'large' ? rem(20) : rem(14))};
+  font-size: ${({ size }) => (size === 'large' ? remCalc(20) : remCalc(14))};
   font-weight: ${({ size }) => (size === 'large' ? '600' : 'normal')};
 `;
 
