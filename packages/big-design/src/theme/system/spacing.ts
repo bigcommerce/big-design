@@ -1,6 +1,4 @@
-import { rem } from 'polished';
-
-import { ThemeOptions } from '../index';
+import { remCalc } from '../helpers';
 
 export interface Spacing {
   none: 0;
@@ -14,14 +12,14 @@ export interface Spacing {
   xxxLarge: string;
 }
 
-export const createSpacing = (options: ThemeOptions): Spacing => ({
+export const createSpacing = (): Spacing => ({
   none: 0,
-  xxSmall: rem(4, options.htmlFontSize),
-  xSmall: rem(8, options.htmlFontSize),
-  small: rem(12, options.htmlFontSize),
-  medium: rem(16, options.htmlFontSize),
-  large: rem(20, options.htmlFontSize),
-  xLarge: rem(24, options.htmlFontSize),
-  xxLarge: rem(32, options.htmlFontSize),
-  xxxLarge: rem(48, options.htmlFontSize),
+  xxSmall: remCalc(4),
+  xSmall: remCalc(8),
+  small: remCalc(12),
+  medium: remCalc(16),
+  large: remCalc(20),
+  xLarge: remCalc(24),
+  xxLarge: remCalc(32),
+  xxxLarge: remCalc(48),
 });

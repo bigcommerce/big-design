@@ -1,3 +1,4 @@
+import { themeOptions, ThemeOptions } from './options';
 import { createBorder, createBorderRadius, Border, BorderRadius } from './system/border';
 import { breakpoints, breakpointValues, Breakpoints, BreakpointValues } from './system/breakpoints';
 import { colors, Colors } from './system/colors';
@@ -9,14 +10,6 @@ import { createTypography, Typography } from './system/typography';
 import { zIndex, ZIndex } from './system/z-index';
 
 export * from './helpers';
-
-export interface ThemeOptions {
-  htmlFontSize: number;
-}
-
-const defaultOptions: ThemeOptions = {
-  htmlFontSize: 16,
-};
 
 export interface ThemeInterface {
   border: Border;
@@ -32,23 +25,20 @@ export interface ThemeInterface {
   zIndex: ZIndex;
 }
 
-export const createTheme = (themeOptions?: Partial<ThemeOptions>): ThemeInterface => {
-  const options: ThemeOptions = {
-    ...defaultOptions,
-    ...themeOptions,
-  };
+export const createTheme = (customOptions: Partial<ThemeOptions> = {}): ThemeInterface => {
+  themeOptions.setOptions(customOptions);
 
   return {
-    border: createBorder(options),
-    borderRadius: createBorderRadius(options),
+    border: createBorder(),
+    borderRadius: createBorderRadius(),
     breakpointValues,
     breakpoints,
     colors,
     elevation,
     keyframes,
-    lineHeight: createLineHeight(options),
-    spacing: createSpacing(options),
-    typography: createTypography(options),
+    lineHeight: createLineHeight(),
+    spacing: createSpacing(),
+    typography: createTypography(),
     zIndex,
   };
 };

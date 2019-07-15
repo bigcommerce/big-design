@@ -1,7 +1,7 @@
-import { rem, rgba } from 'polished';
+import { rgba } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { defaultTheme } from '../../theme';
+import { defaultTheme, remCalc } from '../../theme';
 import { Flex } from '../Flex';
 
 import { ModalProps } from './Modal';
@@ -53,7 +53,7 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
 
         height: auto;
         left: 50%;
-        max-height: ${rem(664)};
+        max-height: ${remCalc(664)};
         max-width: ${({ theme }) => theme.breakpointValues.tablet};
         top: 50%;
         transform: translate(-50%, -50%);

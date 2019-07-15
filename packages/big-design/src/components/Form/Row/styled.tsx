@@ -1,7 +1,6 @@
-import { rem } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { defaultTheme } from '../../../theme';
+import { defaultTheme, remCalc } from '../../../theme';
 import { StyledInputWrapper } from '../../Input/styled';
 import { StyledTextareaWrapper } from '../../Textarea/styled';
 
@@ -19,18 +18,18 @@ export const StyledRow = styled.div<StyledRowProps>`
     ${({ childrenCount }) =>
       childrenCount === 2 &&
       css`
-        grid-template-columns: repeat(2, ${rem(200)});
+        grid-template-columns: repeat(2, ${remCalc(200)});
       `}
 
     ${({ childrenCount }) =>
       childrenCount === 3 &&
       css`
-        grid-template-columns: repeat(3, ${rem(128)});
+        grid-template-columns: repeat(3, ${remCalc(128)});
       `}
 
     ${StyledInputWrapper},
     ${StyledTextareaWrapper} {
-      max-width: ${rem(416)};
+      max-width: ${remCalc(416)};
     }
   }
 

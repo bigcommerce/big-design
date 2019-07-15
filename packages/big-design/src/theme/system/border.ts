@@ -1,7 +1,6 @@
-import { rem } from 'polished';
 import { css } from 'styled-components';
 
-import { ThemeOptions } from '../index';
+import { remCalc } from '../helpers';
 import { AllStyleInterpolations } from '../styled/types';
 
 export interface Border {
@@ -16,7 +15,7 @@ export interface BorderRadius {
   normal: AllStyleInterpolations;
 }
 
-export const createBorder = (_options: ThemeOptions): Border => ({
+export const createBorder = (): Border => ({
   box: css`
     ${({ theme }) => `1px solid ${theme.colors.secondary30}`};
   `,
@@ -28,8 +27,8 @@ export const createBorder = (_options: ThemeOptions): Border => ({
   none: 'none',
 });
 
-export const createBorderRadius = (options: ThemeOptions): BorderRadius => ({
+export const createBorderRadius = (): BorderRadius => ({
   circle: '50%',
   none: 0,
-  normal: rem(4, options.htmlFontSize),
+  normal: remCalc(4),
 });
