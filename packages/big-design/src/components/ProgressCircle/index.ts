@@ -1,1 +1,1 @@
-export { ProgressCircle } from './ProgressCircle';
+export { ProgressCircle, ProgressCircleProps } from './ProgressCircle';

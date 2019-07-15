@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { defaultTheme } from '../../theme';
 
@@ -23,23 +23,10 @@ export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
           width: ${percent}%;
         `
       : css`
-          animation: ${loading} 2s ease-in-out infinite;
+          animation: ${({ theme }) => theme.keyframes.loading} 2s ease-in-out infinite;
           position: relative;
           width: 6.25%;
         `};
-`;
-
-const loading = keyframes`
-  from {
-    left: -10%;;
-  }
-  25% {
-    width: 50%;
-  }
-  to {
-    left: 100%;
-  }
-
 `;
 
 StyledProgressBar.defaultProps = { theme: defaultTheme };
