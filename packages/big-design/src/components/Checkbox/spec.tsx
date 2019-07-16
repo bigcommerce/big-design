@@ -1,6 +1,6 @@
+import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
-import { fireEvent, render } from 'react-testing-library';
 
 import { Checkbox } from './index';
 import { StyleableCheckbox } from './private';

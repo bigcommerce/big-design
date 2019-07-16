@@ -1,6 +1,6 @@
+import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
-import { fireEvent, render } from 'react-testing-library';
 
 import { PlusIcon } from '../Icons';
 
@@ -199,12 +199,12 @@ test('select item should be highlighted when opened', () => {
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
 });
 
-test('select items should be filterable', async () => {
-  const { getAllByRole, getByLabelText, getByRole } = render(SelectMock);
+test('select items should be filterable', () => {
+  const { getAllByRole, getAllByLabelText, getByRole } = render(SelectMock);
   const button = getByRole('button');
 
   fireEvent.click(button);
-  fireEvent.change(getByLabelText('Countries'), { target: { value: 'm' } });
+  fireEvent.change(getAllByLabelText('Countries')[0], { target: { value: 'm' } });
 
   const options = getAllByRole('option');
 
@@ -345,12 +345,12 @@ test('clicking on disabled select options should not trigger onItemClick', () =>
 });
 
 test('select options should be highlighted when moused over', () => {
-  const { getByLabelText, getByRole } = render(SelectMock);
+  const { getByLabelText, getAllByRole } = render(SelectMock);
   const input = getByLabelText('Countries');
 
   fireEvent.focus(input);
 
-  const option = getByRole('option');
+  const option = getAllByRole('option')[0];
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.mouseOver(option);

@@ -1,5 +1,4 @@
 import * as BigDesign from '@bigcommerce/big-design';
-import { Box } from '@bigcommerce/big-design';
 import clipboardCopy from 'clipboard-copy';
 import { default as lightTheme } from 'prism-react-renderer/themes/github';
 import { default as darkTheme } from 'prism-react-renderer/themes/oceanicNext';
@@ -37,17 +36,17 @@ export const CodePreview: React.FC<{ options?: Partial<JsxToStringOptions> }> = 
   return (
     <>
       <LiveProvider code={code} scope={BigDesign} theme={getTheme(darkEditorTheme)}>
-        <Box padding="medium" backgroundColor="white" border="box" borderBottom="none">
+        <BigDesign.Box padding="medium" backgroundColor="white" border="box" borderBottom="none">
           <LivePreview />
-        </Box>
+        </BigDesign.Box>
         <PreviewControls
           copyToClipboard={() => clipboardCopy(code)}
           resetCode={() => setCode(initialCode)}
           toggleTheme={toggleCodeEditorTheme}
         />
-        <Box border="box" borderTop="none">
+        <BigDesign.Box border="box" borderTop="none">
           <LiveEditor onChange={setCode} />
-        </Box>
+        </BigDesign.Box>
         <StyledLiveError />
       </LiveProvider>
     </>

@@ -1,6 +1,6 @@
+import { render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
-import { render } from 'react-testing-library';
 
 import { H0, H1, H2, H3, H4, Small, Text } from './Typography';
 
