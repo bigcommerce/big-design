@@ -49,8 +49,10 @@ export const StyledText = styled.text.attrs(() => ({
   x: '50%',
   y: '50%',
 }))<ProgressCircleProps>`
-  font-size: ${({ size }) => (size === 'large' ? remCalc(20) : remCalc(14))};
-  font-weight: ${({ size }) => (size === 'large' ? '600' : 'normal')};
+  font-size: ${({ size, theme }) =>
+    size === 'large' ? theme.typography.fontSize.large : theme.typography.fontSize.small};
+  font-weight: ${({ size, theme }) =>
+    size === 'large' ? theme.typography.fontWeight.semiBold : theme.typography.fontWeight.regular};
 `;
 
 export const StyledErrorIcon = styled(ErrorIcon)`
@@ -95,3 +97,4 @@ StyledCircle.defaultProps = { theme: defaultTheme };
 StyledCircleFiller.defaultProps = { theme: defaultTheme };
 StyledErrorIcon.defaultProps = { theme: defaultTheme };
 StyledSuccessIcon.defaultProps = { theme: defaultTheme };
+StyledText.defaultProps = { theme: defaultTheme };
