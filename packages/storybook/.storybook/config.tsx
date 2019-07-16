@@ -1,5 +1,4 @@
-import { Panel } from '@bigcommerce/big-design';
-import { defaultTheme } from '@bigcommerce/big-design';
+import { defaultTheme, Panel } from '@bigcommerce/big-design';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { addDecorator, addParameters, configure } from '@storybook/react';

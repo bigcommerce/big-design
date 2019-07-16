@@ -1,6 +1,6 @@
+import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
-import { fireEvent, render } from 'react-testing-library';
 
 import { Button } from '../Button';
 import { PlusIcon } from '../Icons';
@@ -70,7 +70,7 @@ test('renders the dropdown menu closed', () => {
   expect(queryByRole('menu')).not.toBeInTheDocument();
 });
 
-test('opens/closes dropdown menu when trigger is clicked', async () => {
+test('opens/closes dropdown menu when trigger is clicked', () => {
   const { getByRole, queryByRole } = render(DropdownMock);
   const trigger = getByRole('button');
 
@@ -122,12 +122,12 @@ test('dropdown items should have values', () => {
 });
 
 test('first dropdown item should be selected when dropdown is opened', () => {
-  const { getByRole } = render(DropdownMock);
+  const { getByRole, getAllByRole } = render(DropdownMock);
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
 
-  const option = getByRole('menuitem');
+  const option = getAllByRole('menuitem')[0];
 
   expect(option.dataset.highlighted).toBe('true');
 });
@@ -272,12 +272,12 @@ test('clicking on dropdown items should trigger onItemClick', () => {
 });
 
 test('dropdown items should be highlighted when moused over', () => {
-  const { getByRole } = render(DropdownMock);
+  const { getByRole, getAllByRole } = render(DropdownMock);
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
 
-  const option = getByRole('menuitem');
+  const option = getAllByRole('menuitem')[0];
 
   fireEvent.mouseOver(option);
   expect(option.dataset.highlighted).toBe('true');

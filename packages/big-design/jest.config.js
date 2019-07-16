@@ -5,5 +5,5 @@ module.exports = {
     '@src/(.*)': '<rootDir>/src/$1',
   },
   coverageDirectory: '<rootDir>/coverage',
-  setupFilesAfterEnv: ['<rootDir>/setupTests.ts', 'react-testing-library/cleanup-after-each'],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.ts', '@testing-library/react/cleanup-after-each'],
 };
