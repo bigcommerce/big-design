@@ -10,6 +10,7 @@ export const StyledLink = styled.a<LinkProps>`
 
   color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
+  cursor: pointer;
 `;
 
 StyledLink.defaultProps = { theme: defaultTheme };

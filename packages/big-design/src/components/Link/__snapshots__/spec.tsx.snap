@@ -5,6 +5,7 @@ exports[`render link 1`] = `
   color: #3C64F4;
   -webkit-text-decoration: none;
   text-decoration: none;
+  cursor: pointer;
 }
 
 <a
