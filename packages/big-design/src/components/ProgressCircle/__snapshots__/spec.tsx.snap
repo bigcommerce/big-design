@@ -67,7 +67,7 @@ exports[`render determinant progress circle 1`] = `
 
 .c3 {
   font-size: 0.875rem;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 <div>
