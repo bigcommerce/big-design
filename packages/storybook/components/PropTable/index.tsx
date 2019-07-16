@@ -1,29 +1,26 @@
 import React from 'react';
 
-import { StyledTable, StyledTableBody, StyledTableHead } from './styled';
+import { StyledTable, StyledTableBody, StyledTableFooter, StyledTableHead } from './styled';
+import { Footer } from './Footer';
 import { Header } from './Header';
 import { Prop } from './Prop';
-
-export const RequiredContext = React.createContext(false);
 
 export class PropTable extends React.PureComponent {
   static Prop = Prop;
   private static Header = Header;
-
-  private hasRequired = false;
+  private static Footer = Footer;
 
   render() {
-    this.setRequiredContext();
-
     return (
-      <RequiredContext.Provider value={this.hasRequired}>
-        <StyledTable>
-          <StyledTableHead>
-            <PropTable.Header />
-          </StyledTableHead>
-          <StyledTableBody>{this.renderChildren()}</StyledTableBody>
-        </StyledTable>
-      </RequiredContext.Provider>
+      <StyledTable>
+        <StyledTableHead>
+          <PropTable.Header />
+        </StyledTableHead>
+        <StyledTableBody>{this.renderChildren()}</StyledTableBody>
+        <StyledTableFooter>
+          <PropTable.Footer />
+        </StyledTableFooter>
+      </StyledTable>
     );
   }
 
@@ -33,16 +30,6 @@ export class PropTable extends React.PureComponent {
     return React.Children.map(children, child => {
       if (React.isValidElement(child) && child.type === PropTable.Prop) {
         return child;
-      }
-    });
-  }
-
-  private setRequiredContext() {
-    const { children } = this.props;
-
-    React.Children.map(children, child => {
-      if (React.isValidElement(child) && child.type === PropTable.Prop && child.props.required) {
-        return (this.hasRequired = true);
       }
     });
   }

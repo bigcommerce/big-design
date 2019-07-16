@@ -1,5 +1,5 @@
 import { defaultTheme } from '@bigcommerce/big-design';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // TODO: Convert to BigDesign table when built
 export const StyledTable = styled.table`
@@ -14,33 +14,37 @@ export const StyledTableHead = styled.thead`
 
 export const StyledTableBody = styled.tbody``;
 
+export const StyledTableFooter = styled.tfoot``;
+
 export const StyledTableRow = styled.tr`
   border-top: ${({ theme }) => theme.border.box};
 `;
 
-export const StyledTableHeader = styled.th`
+const SharedCellStyles = css`
   padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.small}`};
+`;
+
+export const StyledTableHeader = styled.th`
+  ${SharedCellStyles}
 `;
 
 export const StyledTableData = styled.td`
-  padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.small}`};
+  ${SharedCellStyles}
 `;
 
 interface StyledCodeProps {
-  alt?: boolean;
+  altColor?: boolean;
 }
 
 export const StyledCode = styled.code<StyledCodeProps>`
-  color: ${({ alt, theme }) => `${alt ? theme.colors.primary50 : theme.colors.danger50}`};
+  color: ${({ altColor, theme }) => (altColor ? theme.colors.primary50 : theme.colors.danger50)}};
 `;
 
 StyledTable.defaultProps = { theme: defaultTheme };
 StyledTableHead.defaultProps = { theme: defaultTheme };
 StyledTableBody.defaultProps = { theme: defaultTheme };
+StyledTableFooter.defaultProps = { theme: defaultTheme };
 StyledTableRow.defaultProps = { theme: defaultTheme };
 StyledTableHeader.defaultProps = { theme: defaultTheme };
 StyledTableData.defaultProps = { theme: defaultTheme };
-StyledCode.defaultProps = {
-  alt: false,
-  theme: defaultTheme,
-};
+StyledCode.defaultProps = { theme: defaultTheme };
