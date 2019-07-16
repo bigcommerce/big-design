@@ -16,14 +16,14 @@ export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
   height: 100%;
   overflow: hidden;
 
-  ${({ percent }) =>
+  ${({ percent, theme }) =>
     typeof percent === 'number'
       ? css`
           transition: width 0.2s ease-in;
           width: ${percent}%;
         `
       : css`
-          animation: ${({ theme }) => theme.keyframes.loading} 2s ease-in-out infinite;
+          animation: ${theme.keyframes.loading} 2s ease-in-out infinite;
           position: relative;
           width: 6.25%;
         `};
