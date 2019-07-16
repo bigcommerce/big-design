@@ -1,9 +1,8 @@
-import { defaultTheme, Panel } from '@bigcommerce/big-design';
+import { defaultTheme } from '@bigcommerce/big-design';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { addDecorator, addParameters, configure } from '@storybook/react';
 import React from 'react';
-import { addReadme } from 'storybook-readme-source';
 
 import { StoryWrapper } from '../components/StoryWrapper/StoryWrapper';
 
@@ -32,13 +31,8 @@ addParameters({
       value: '#ffffff',
     },
   ],
-  readme: {
-    codeTheme: 'a11y-dark',
-    StoryPreview: (props: any) => <Panel>{props.children}</Panel>,
-  },
 });
 
-addDecorator(addReadme);
 addDecorator(withKnobs);
 
 addParameters({

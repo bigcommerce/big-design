@@ -1,4 +1,4 @@
-import { Button, DropdownIcon, Flex, Grid, Link, PlusIcon } from '@bigcommerce/big-design';
+import { Button, DropdownIcon, Flex, Grid, Link, Panel, PlusIcon } from '@bigcommerce/big-design';
 import { action } from '@storybook/addon-actions';
 import { boolean, select } from '@storybook/addon-knobs';
 import { linkTo } from '@storybook/addon-links';
@@ -12,7 +12,7 @@ const actionType = ['normal' as 'normal', 'destructive' as 'destructive'];
 
 storiesOf('Button', module)
   .add('Overview', () => (
-    <>
+    <Panel>
       <Grid columns="repeat(6, min-content)" marginBottom="xxLarge">
         <Button onClick={action('click')}>Label</Button>
         <Button onClick={action('click')} isLoading={true}>
@@ -94,7 +94,7 @@ storiesOf('Button', module)
           One of: <code>primary</code>, <code>secondary</code>, <code>subtle</code>
         </PropTable.Prop>
       </PropTable>
-    </>
+    </Panel>
   ))
   .add('With icons', () => (
     <Flex direction="column" alignItems="flex-start">
