@@ -3,3 +3,4 @@ dist
 .cache
 coverage
 storybook-static
+.vscode
