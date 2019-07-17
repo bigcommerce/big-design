@@ -10,7 +10,7 @@ storiesOf('ProgressCircle', module).add('Overview', () => (
     <H2>Examples</H2>
     <H3 marginTop="xLarge">Determinant</H3>
     <CodePreview>
-      <ProgressCircle error={false} percent={50} size={'large'} />
+      <ProgressCircle error={false} percent={50} size="large" />
     </CodePreview>
     <p>
       Determinant Progress represents a known amount of time or completeness for a task. A <code>percent</code> prop
@@ -28,10 +28,10 @@ storiesOf('ProgressCircle', module).add('Overview', () => (
 
     <H2 marginTop="xxxLarge">Properties & Methods</H2>
     <PropTable>
-      <PropTable.Prop name="error" types={['boolean']} defaults="">
+      <PropTable.Prop name="error" types="boolean">
         Sets state to error.
       </PropTable.Prop>
-      <PropTable.Prop name="percent" types={['number']} defaults="">
+      <PropTable.Prop name="percent" types="number">
         Sets the fill length from 0 to 100.
       </PropTable.Prop>
       <PropTable.Prop name="size" types={['xSmall', 'small', 'medium', 'large']} defaults="medium">

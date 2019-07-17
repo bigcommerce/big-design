@@ -32,7 +32,7 @@ storiesOf('ProgressBar', module).add('Overview', () => (
 
     <H2 marginTop="xxxLarge">Properties & Methods</H2>
     <PropTable>
-      <PropTable.Prop name="percent" types={['number']} defaults="">
+      <PropTable.Prop name="percent" types="number">
         Sets the fill length from 0 to 100.
       </PropTable.Prop>
     </PropTable>
