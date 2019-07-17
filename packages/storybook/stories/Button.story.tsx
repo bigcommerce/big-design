@@ -1,4 +1,4 @@
-import { Box, Button, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { Button, DropdownIcon, H0, H1, H2, Link, PlusIcon, Text } from '@bigcommerce/big-design';
 import { linkTo } from '@storybook/addon-links';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
@@ -27,11 +27,14 @@ storiesOf('Button', module).add('Overview', () => (
       There should only be one primary button one per page. It is used to describe the most important action on the
       page.
     </Text>
+
     <Text>
       <b>Use Case:</b> A primary button is used to "Create a New Product".
     </Text>
 
-    <CodeSnippet>{`<Button variant="primary">Add Product</Button>`}</CodeSnippet>
+    <CodePreview>
+      <Button variant="primary">Primary</Button>
+    </CodePreview>
 
     <H2>Secondary</H2>
 
@@ -39,75 +42,98 @@ storiesOf('Button', module).add('Overview', () => (
       There can be several secondary actions per page. Can be used in conjunction with a primary action, or
       independently.
     </Text>
+
     <Text>
       <b>Use Case:</b> A secondary button used in conjunction with a conjunction with a primary button. In Store Design:
       “Publish” = secondary button. “Save” = primary button.
     </Text>
 
-    <CodeSnippet>{`
-        <Button variant="secondary">Publish</Button>
-        <Button variant="primary">Save</Button>
-      `}</CodeSnippet>
+    <CodePreview>
+      <Button variant="secondary">Secondary</Button>
+    </CodePreview>
 
     <H2>Subtle</H2>
 
     <Text>Subtle actions are either used as a "Cancel" function in conjunction with other actions.</Text>
 
-    <CodeSnippet>{`
-        <Modal>
-          // ...
-          <Modal.Actions>
-              <Button variant="subtle">Cancel</Button>
-              <Button variant="secondary">Confirm</Button>
-          </Modal.Actions>
-        </Modal>
-      `}</CodeSnippet>
+    <Text>
+      <b>Use Case:</b> Modal Actions
+    </Text>
+
+    <CodePreview>
+      <Button variant="subtle">Subtle</Button>
+    </CodePreview>
+
+    <H1>Action Types</H1>
+
+    <Text>
+      There are two action types: <code>normal</code> &amp; <code>destructive</code>. They are used to indicate the
+      nature of the action when clicking on the button.
+    </Text>
+
+    <CodePreview options={{ showDefaultProps: true, filterProps: ['variant', 'isLoading', 'spinner'] }}>
+      <>
+        <Button actionType="normal" marginRight="xSmall">
+          Normal
+        </Button>
+        <Button actionType="destructive">Destructive</Button>
+      </>
+    </CodePreview>
 
     <H1>States</H1>
 
     <H2>Loading</H2>
 
+    <Text>The loading state is used when clicking a button will preform a asyncronous action.</Text>
+
+    <CodePreview>
+      <Button isLoading={true}>Loading</Button>
+    </CodePreview>
+
     <Text>
-      The loading state is used when clicking a button will preform a asyncronous action. A custom loading indicator can
-      be passed using the <code>spinner</code> prop, if needed.
+      A custom loading indicator can be passed using the <code>spinner</code> prop, if needed.
     </Text>
 
-    <CodeSnippet>{`
+    <CodeSnippet>
+      {`
         import { TripleDotsLoader } from '<Custom Spinner/Loader>';
         // ...
-        <Button isLoading={true}>Loading</Button>
         <Button isLoading spinner={<TripleDotsLoader />}>Loading</Button>
-      `}</CodeSnippet>
+      `}
+    </CodeSnippet>
 
     <H2>Disabled</H2>
 
-    <Text>A disabled state is used to indicate no action can be done using the button.</Text>
+    <Text>
+      A disabled state is used to indicate no action can be done using the button by passing a <code>disabled</code>{' '}
+      prop.
+    </Text>
 
-    <CodeSnippet>{`
-        <Button disabled>Disabled</Button>
-        <Button disabled={true}>Disabled</Button>
-      `}</CodeSnippet>
+    <CodePreview>
+      <Button disabled>Disabled</Button>
+    </CodePreview>
 
     <H1>Icons</H1>
 
-    <Text>A button can also include icons on either side of the text (or both).</Text>
+    <Text>
+      A button can also include icons on either side of the text (or both). When using <code>iconOnly</code>, the{' '}
+      <code>iconLeft</code> &amp; <code>iconRight</code> components will be removed.
+    </Text>
 
-    <Box padding="medium" backgroundColor="white" border="box" marginBottom="large">
-      Note: <code>iconOnly</code> will remove <code>iconLeft</code> &amp; <code>iconRight</code> components.
-    </Box>
-
-    <CodeSnippet>{`
-        <Button iconOnly={<PlusIcon title="add" />} />
-        <Button iconLeft={<PlusIcon />}>
+    <CodePreview>
+      <>
+        <Button iconOnly={<PlusIcon title="add" />} marginRight="xSmall" />
+        <Button iconLeft={<PlusIcon />} marginRight="xSmall">
           Label
         </Button>
-        <Button iconLeft={<PlusIcon />} iconRight={<DropdownIcon />}>
+        <Button iconLeft={<PlusIcon />} iconRight={<DropdownIcon />} marginRight="xSmall">
           Label
         </Button>
-        <Button iconRight={<DropdownIcon />}>
+        <Button iconRight={<DropdownIcon />} marginRight="xSmall">
           Label
         </Button>
-      `}</CodeSnippet>
+      </>
+    </CodePreview>
 
     <H1>API</H1>
 
