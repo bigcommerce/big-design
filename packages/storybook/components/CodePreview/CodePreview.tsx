@@ -1,15 +1,13 @@
 import * as BigDesign from '@bigcommerce/big-design';
 import clipboardCopy from 'clipboard-copy';
-import { default as lightTheme } from 'prism-react-renderer/themes/github';
-import { default as darkTheme } from 'prism-react-renderer/themes/oceanicNext';
 import React, { useContext, useState } from 'react';
 import reactElementToJSXString, { JsxToStringOptions } from 'react-element-to-jsx-string';
 import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
 
+import { SnippetControls } from '../SnippetControls';
 import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
 
 import { StyledLiveError } from './styled';
-import { PreviewControls } from './PreviewControls';
 
 function getInitialCode(children: React.ReactNode, options: Partial<JsxToStringOptions> = {}): string {
   return typeof children === 'string'
@@ -24,26 +22,18 @@ function getInitialCode(children: React.ReactNode, options: Partial<JsxToStringO
       });
 }
 
-function getTheme(darkEditorTheme: boolean) {
-  return darkEditorTheme ? darkTheme : lightTheme;
-}
-
 export const CodePreview: React.FC<{ options?: Partial<JsxToStringOptions> }> = props => {
   const initialCode = getInitialCode(props.children, props.options);
   const [code, setCode] = useState(initialCode);
-  const { darkEditorTheme, toggleCodeEditorTheme } = useContext(CodeEditorThemeContext);
+  const { editorTheme } = useContext(CodeEditorThemeContext);
 
   return (
     <>
-      <LiveProvider code={code} scope={BigDesign} theme={getTheme(darkEditorTheme)}>
+      <LiveProvider code={code} scope={BigDesign} theme={editorTheme}>
         <BigDesign.Box padding="medium" backgroundColor="white" border="box" borderBottom="none">
           <LivePreview />
         </BigDesign.Box>
-        <PreviewControls
-          copyToClipboard={() => clipboardCopy(code)}
-          resetCode={() => setCode(initialCode)}
-          toggleTheme={toggleCodeEditorTheme}
-        />
+        <SnippetControls copyToClipboard={() => clipboardCopy(code)} resetCode={() => setCode(initialCode)} />
         <BigDesign.Box border="box" borderTop="none">
           <LiveEditor onChange={setCode} />
         </BigDesign.Box>

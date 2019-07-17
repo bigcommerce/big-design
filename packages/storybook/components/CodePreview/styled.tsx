@@ -1,4 +1,4 @@
-import { defaultTheme, Flex } from '@bigcommerce/big-design';
+import { defaultTheme } from '@bigcommerce/big-design';
 import { LiveError } from 'react-live';
 import styled from 'styled-components';
 
@@ -9,9 +9,4 @@ export const StyledLiveError = styled(LiveError)`
   padding: ${({ theme }) => theme.spacing.small};
 `;
 
-export const StyledFlex = styled(Flex)`
-  flex-direction: row;
-`;
-
 StyledLiveError.defaultProps = { theme: defaultTheme };
-StyledFlex.defaultProps = { theme: defaultTheme };
