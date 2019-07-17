@@ -2,14 +2,7 @@ import { Box } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import BoxReadme from '../../big-design/src/components/Box/README.md';
-
 storiesOf('Box', module)
-  .addParameters({
-    readme: {
-      content: BoxReadme,
-    },
-  })
   .add('Basic', () => <Box>I'm a Box</Box>)
   .add('With Border', () => (
     <>

@@ -56,7 +56,6 @@
     "@types/styled-components": "^4.1.12",
     "babel-loader": "^8.0.5",
     "rimraf": "^2.6.3",
-    "storybook-readme-source": "^5.0.6",
     "ts-loader": "^6.0.4"
   }
 }
