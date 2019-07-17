@@ -1041,7 +1041,7 @@ exports[`render loading button 1`] = `
         loading
       </title>
       <path
-        d="M18 10a8 8 0 1 0-8 8v-2.29A5.709 5.709 0 1 1 15.71 10H18z"
+        d="M18 10a8 8 0 10-8 8v-2.29A5.709 5.709 0 1115.71 10H18z"
         fill="currentColor"
       />
     </svg>

@@ -6,6 +6,8 @@ module.exports = {
     width: '{size}',
   },
   template({ template }, opts, { imports, componentName, props, jsx, exports }) {
+    componentName.name = componentName.name.replace('Svg', '');
+
     const code = `
     // **********************************
     // Auto-generated file, do NOT modify
@@ -16,7 +18,7 @@ module.exports = {
     import { Icon } from './Icon';
     BREAK
 
-    export default class COMPONENT_NAME extends Icon {
+    export class COMPONENT_NAME extends Icon {
       render() {
         const { title, theme, ...rest } = this.props;
         const size = this.getSize();
