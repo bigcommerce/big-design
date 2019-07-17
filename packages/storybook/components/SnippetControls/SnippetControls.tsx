@@ -9,14 +9,16 @@ import {
   RestoreIcon,
   Small,
 } from '@bigcommerce/big-design';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+
+import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
 
 import { StyledFlex } from './styled';
 
-interface PreviewControlsProps {
+interface SnippetControls {
+  helperText?: string;
   copyToClipboard(): void;
-  resetCode(): void;
-  toggleTheme(): void;
+  resetCode?(): void;
 }
 
 const { colors } = defaultTheme;
@@ -40,14 +42,21 @@ function onCopy(setIsCopying: (copying: boolean) => void, copyToClipboard: () =>
   }, 1000);
 }
 
-export const PreviewControls: React.FC<PreviewControlsProps> = props => {
-  const { copyToClipboard, resetCode, toggleTheme } = props;
+export const SnippetControls: React.FC<SnippetControls> = props => {
+  const { copyToClipboard, helperText, resetCode } = props;
   const [isCopying, setIsCopying] = useState(false);
+  const { toggleEditorTheme } = useContext(CodeEditorThemeContext);
 
   return (
-    <StyledFlex border="box" backgroundColor="secondary20" justifyContent="flex-end" alignItems="center">
+    <StyledFlex
+      borderBottom="box"
+      backgroundColor="secondary20"
+      justifyContent="flex-end"
+      alignItems="center"
+      style={{ zIndex: 999 }}
+    >
       <Flex.Item grow={1}>
-        <Small marginHorizontal="small">Play with the code!</Small>
+        <Small marginHorizontal="small">{helperText}</Small>
       </Flex.Item>
       <Flex.Item borderLeft="box">
         <Button
@@ -57,20 +66,26 @@ export const PreviewControls: React.FC<PreviewControlsProps> = props => {
           disabled={isCopying}
         />
       </Flex.Item>
-      <Flex.Item borderLeft="box">
-        <Button
-          iconOnly={<RestoreIcon title="Reset" color={colors.secondary60} />}
-          variant="subtle"
-          onClick={resetCode}
-        />
-      </Flex.Item>
+      {resetCode && (
+        <Flex.Item borderLeft="box">
+          <Button
+            iconOnly={<RestoreIcon title="Reset" color={colors.secondary60} />}
+            variant="subtle"
+            onClick={resetCode}
+          />
+        </Flex.Item>
+      )}
       <Flex.Item borderLeft="box">
         <Button
           iconOnly={<InvertColorsIcon title="Toggle Theme" color={colors.secondary60} />}
           variant="subtle"
-          onClick={toggleTheme}
+          onClick={toggleEditorTheme}
         />
       </Flex.Item>
     </StyledFlex>
   );
+};
+
+SnippetControls.defaultProps = {
+  helperText: 'Play with the code!',
 };

@@ -1,4 +1,7 @@
 import { Box, GlobalStyle } from '@bigcommerce/big-design';
+import { PrismTheme } from 'prism-react-renderer';
+import { default as lightTheme } from 'prism-react-renderer/themes/github';
+import { default as darkTheme } from 'prism-react-renderer/themes/oceanicNext';
 import React, { createContext, useState } from 'react';
 
 interface Props {
@@ -6,22 +9,22 @@ interface Props {
 }
 
 interface Context {
-  darkEditorTheme: boolean;
-  toggleCodeEditorTheme(): void;
+  editorTheme: PrismTheme;
+  toggleEditorTheme(): void;
 }
 
 export const CodeEditorThemeContext = createContext<Context>({
-  darkEditorTheme: true,
+  editorTheme: darkTheme,
   // tslint:disable-next-line: no-empty
-  toggleCodeEditorTheme: () => {},
+  toggleEditorTheme: () => {},
 });
 
 export const StoryWrapper: React.FC<Props> = props => {
-  const [darkEditorTheme, setDarkEditorTheme] = useState(true);
-  const toggleCodeEditorTheme = () => setDarkEditorTheme(!darkEditorTheme);
+  const [editorTheme, setEditorTheme] = useState(darkTheme);
+  const toggleEditorTheme = () => setEditorTheme(editorTheme === darkTheme ? lightTheme : darkTheme);
 
   return (
-    <CodeEditorThemeContext.Provider value={{ darkEditorTheme, toggleCodeEditorTheme }}>
+    <CodeEditorThemeContext.Provider value={{ editorTheme, toggleEditorTheme }}>
       <>
         <GlobalStyle />
         <Box margin="xxLarge">{props.storyFn()}</Box>
