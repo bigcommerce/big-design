@@ -5,7 +5,7 @@ import React from 'react';
 
 import { Icon } from './Icon';
 
-export default class SvgSuccessIcon extends Icon {
+export class SuccessIcon extends Icon {
   render() {
     const { title, theme, ...rest } = this.props;
     const size = this.getSize();
