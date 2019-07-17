@@ -3,8 +3,10 @@ import styled, { css } from 'styled-components';
 
 // TODO: Convert to BigDesign table when built
 export const StyledTable = styled.table`
-  text-align: left;
   border-collapse: collapse;
+  margin-bottom: ${({ theme }) => theme.spacing.xLarge}
+  margin-top: ${({ theme }) => theme.spacing.xLarge}
+  text-align: left;
   width: 100%;
 `;
 

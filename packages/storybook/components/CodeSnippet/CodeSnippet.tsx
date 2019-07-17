@@ -43,7 +43,7 @@ export const CodeSnippet: React.FC<EditorProps> = props => {
   const code = getCode(children);
 
   return (
-    <Box border="box">
+    <Box border="box" marginBottom="xxLarge">
       <SnippetControls copyToClipboard={() => clipboardCopy(code)} helperText="Code example" />
 
       {/* react-live Editor types are wrong, PR submitted */}
