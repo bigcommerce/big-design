@@ -127,7 +127,6 @@ storiesOf('Button', module).add('Overview', () => (
       <PropTable.Prop name="isLoading" types="boolean" defaults="false">
         Used to determine if component is in a loading state.
       </PropTable.Prop>
-      <PropTable.Prop name="margin*"></PropTable.Prop>
       <PropTable.Prop
         name="spinner"
         types={<Link onClick={linkTo('Spinner') as any}>Spinner</Link>}
