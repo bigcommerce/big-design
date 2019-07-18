@@ -5,6 +5,7 @@ module.exports = ({ config }) => {
       {
         loader: require.resolve('ts-loader'),
       },
+      require.resolve('jsx-to-string-loader'),
     ],
   });
 

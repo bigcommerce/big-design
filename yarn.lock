@@ -8623,6 +8623,11 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+jsx-to-string-loader@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/jsx-to-string-loader/-/jsx-to-string-loader-1.1.1.tgz#9b610356c31d4b7a6a674f85dab0944fb6771080"
+  integrity sha512-8p8etmB9daCHoWhfIm+X/QlrAenFEzIN9ZvPUzHrbGT8EF/89N0KIxVazQWYAuKa3vEpnor91TcPcP//uUxyOA==
+
 kind-of@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-2.0.1.tgz#018ec7a4ce7e3a86cb9141be519d24c8faa981b5"
@@ -8941,12 +8946,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@4.17.14, lodash@^4.0.1, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1:
-  version "4.17.14"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
-  integrity sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==
-
-lodash@^4.17.11:
+lodash@4.17.14, lodash@^4.0.1, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1:
   version "4.17.14"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
   integrity sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==

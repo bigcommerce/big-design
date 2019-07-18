@@ -1,7 +1,7 @@
 import * as BigDesign from '@bigcommerce/big-design';
 import clipboardCopy from 'clipboard-copy';
+import { Language } from 'prism-react-renderer';
 import React, { useContext, useState } from 'react';
-import reactElementToJSXString, { JsxToStringOptions } from 'react-element-to-jsx-string';
 import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
 
 import { SnippetControls } from '../SnippetControls';
@@ -9,27 +9,33 @@ import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
 
 import { StyledLiveError } from './styled';
 
-function getInitialCode(children: React.ReactNode, options: Partial<JsxToStringOptions> = {}): string {
-  return typeof children === 'string'
-    ? children
-    : reactElementToJSXString(children, {
-        maxInlineAttributesLineLength: 100,
-        showDefaultProps: false,
-        showFunctions: false,
-        sortProps: true,
-        tabStop: 2,
-        ...options,
-      });
+const defaultScope = {
+  ...BigDesign,
+  React,
+};
+
+function getInitialCode(children: React.ReactNode): string {
+  if (typeof children !== 'string') {
+    throw new Error('<CodePreview> children must be of type string');
+  }
+
+  return children;
 }
 
-export const CodePreview: React.FC<{ options?: Partial<JsxToStringOptions> }> = props => {
-  const initialCode = getInitialCode(props.children, props.options);
+export interface CodePreviewProps {
+  scope?: { [key: string]: any };
+  language?: Language;
+}
+
+export const CodePreview: React.FC<CodePreviewProps> = props => {
+  const { children, language, scope } = props;
+  const initialCode = getInitialCode(children);
   const [code, setCode] = useState(initialCode);
   const { editorTheme } = useContext(CodeEditorThemeContext);
 
   return (
     <>
-      <LiveProvider code={code} scope={BigDesign} theme={editorTheme}>
+      <LiveProvider code={code} scope={scope} theme={editorTheme} language={language}>
         <BigDesign.Box padding="medium" backgroundColor="white" border="box" borderBottom="none">
           <LivePreview />
         </BigDesign.Box>
@@ -41,4 +47,9 @@ export const CodePreview: React.FC<{ options?: Partial<JsxToStringOptions> }> = 
       </LiveProvider>
     </>
   );
+};
+
+CodePreview.defaultProps = {
+  language: 'jsx',
+  scope: defaultScope,
 };
