@@ -3,7 +3,6 @@
 /* tslint:disable:no-var-requires */
 
 if (process.env.NODE_ENV !== 'production') {
-  require('@storybook/addon-a11y/register');
   require('@storybook/addon-actions/register');
 }
 
