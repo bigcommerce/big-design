@@ -39,13 +39,13 @@ storiesOf('Button', module).add('Overview', () => (
     <H2>Secondary</H2>
 
     <Text>
-      There can be several secondary actions per page. Can be used in conjunction with a primary action, or
+      There can be several secondary actions per page. Can be used in conjunction with a primary action or
       independently.
     </Text>
 
     <Text>
-      <b>Use Case:</b> A secondary button used in conjunction with a conjunction with a primary button. In Store Design:
-      “Publish” = secondary button. “Save” = primary button.
+      <b>Use Case:</b> A secondary button used in conjunction with a primary button. In Store Design: “Publish” =
+      secondary button. “Save” = primary button.
     </Text>
 
     <CodePreview>
@@ -54,10 +54,10 @@ storiesOf('Button', module).add('Overview', () => (
 
     <H2>Subtle</H2>
 
-    <Text>Subtle actions are either used as a "Cancel" function in conjunction with other actions.</Text>
+    <Text>Subtle actions are used in together with other actions rather than independently.</Text>
 
     <Text>
-      <b>Use Case:</b> Modal Actions
+      <b>Use Case:</b> Used as a "Cancel" action inside <Link onClick={linkTo('Modal') as any}>Modals</Link>.
     </Text>
 
     <CodePreview>
@@ -84,7 +84,7 @@ storiesOf('Button', module).add('Overview', () => (
 
     <H2>Loading</H2>
 
-    <Text>The loading state is used when clicking a button will preform a asyncronous action.</Text>
+    <Text>The loading state is used when clicking a button will perform a asyncronous action.</Text>
 
     <CodePreview>
       <Button isLoading={true}>Loading</Button>
@@ -139,7 +139,7 @@ storiesOf('Button', module).add('Overview', () => (
 
     <PropTable>
       <PropTable.Prop name="actionType" types={['normal', 'destructive']} defaults="normal">
-        Indicates whether your buttons action is of normal or destructive nature.
+        Indicates whether your button's action is of normal or destructive nature.
       </PropTable.Prop>
       <PropTable.Prop name="iconLeft" types={<Link onClick={linkTo('Icons') as any}>Icon</Link>} defaults="">
         Pass in an <Link onClick={linkTo('Icons') as any}>Icon</Link> component to display to the left of the text.
