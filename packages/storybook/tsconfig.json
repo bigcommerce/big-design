@@ -4,7 +4,8 @@
     "module": "commonjs",
     "target": "es5",
     "rootDirs": ["stories"],
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "noUnusedLocals": false
   },
   "include": ["stories/**/*", "typings.d.ts", "styled.d.ts", ".storybook/*", "components/**/*"],
   "exclude": ["node_modules", "build", "scripts"]
