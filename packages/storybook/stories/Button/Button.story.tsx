@@ -86,7 +86,7 @@ storiesOf('Button', module).add('Overview', () => (
         const handleClick = () => setLoading(true);
 
         return (
-          <Button variant="primary" isLoading={isLoading} onClick={!isLoading ? handleClick : null}>
+          <Button variant="primary" isLoading={isLoading} onClick={!isLoading ? handleClick : () => null}>
             Click to load
           </Button>
         );
