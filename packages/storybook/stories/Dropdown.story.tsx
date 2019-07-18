@@ -28,7 +28,7 @@ storiesOf('Dropdown', module).add('Overview', () => (
       maxHeight={number('maxHeight', 300)}
       onActionClick={() => null}
       onItemClick={value => value}
-      placement={select('placement', placement, 'bottom')}
+      placement={select('placement', placement, 'bottom-start')}
       trigger={<Button>Open Menu</Button>}
     >
       <Dropdown.Item value={1}>Option</Dropdown.Item>
