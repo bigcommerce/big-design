@@ -1,5 +1,4 @@
 import { defaultTheme } from '@bigcommerce/big-design';
-import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { addDecorator, addParameters, configure } from '@storybook/react';
 import React from 'react';
@@ -8,7 +7,6 @@ import { StoryWrapper } from '../components/StoryWrapper/StoryWrapper';
 
 import bcTheme from './bc-theme';
 
-addDecorator(withA11y);
 addParameters({
   options: {
     panelPosition: 'right',
@@ -34,19 +32,6 @@ addParameters({
 });
 
 addDecorator(withKnobs);
-
-addParameters({
-  a11y: {
-    options: {
-      rules: {
-        'form-field-multiple-labels': {
-          enabled: false,
-        },
-      },
-    },
-  },
-});
-
 addDecorator(storyFn => <StoryWrapper storyFn={storyFn} />);
 
 function loadStories() {
