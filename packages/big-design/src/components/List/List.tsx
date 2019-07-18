@@ -18,6 +18,7 @@ type ListProps = Props & React.HTMLAttributes<HTMLUListElement>;
 export class List extends React.PureComponent<ListProps> {
   static defaultProps: Partial<Props> = {
     maxHeight: 250,
+    placement: 'bottom-start',
   };
 
   private listContainer = document.createElement('div');

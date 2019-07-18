@@ -27,10 +27,6 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
   static Action = ListAction;
   static Item = ListItem;
 
-  static readonly defaultProps: Partial<Props> = {
-    placement: 'bottom',
-  };
-
   state = {
     highlightedIndex: -1,
     isOpen: false,

@@ -38,10 +38,6 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   static Option = ListItem;
   static readonly Error = Form.Error;
 
-  static defaultProps: Partial<Props> = {
-    placement: 'bottom-start',
-  };
-
   state = {
     filterChildren: false,
     highlightedId: null,
