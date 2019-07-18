@@ -359,7 +359,7 @@ test('select options should be highlighted when moused over', () => {
 
 test('select should render select action', () => {
   const { getByRole, getByText } = render(
-    <Select label="Countries" placeholder="Choose country">
+    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
@@ -378,7 +378,7 @@ test('select should render select action', () => {
 test('select action should execute onActionClick function', () => {
   const onActionClick = jest.fn();
   const { getByLabelText, getByText } = render(
-    <Select onActionClick={onActionClick} label="Countries" placeholder="Choose country">
+    <Select onActionClick={onActionClick} onItemChange={onItemChange} label="Countries" placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
@@ -402,7 +402,7 @@ test('select action should execute onActionClick function', () => {
 
 test('select action supports icons', () => {
   const { getByLabelText, getByRole } = render(
-    <Select label="Countries" placeholder="Choose country">
+    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
@@ -422,7 +422,7 @@ test('select action supports icons', () => {
 
 test('select action supports actionTypes', () => {
   const { getByLabelText, getByRole } = render(
-    <Select label="Countries" placeholder="Choose country">
+    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
@@ -442,7 +442,7 @@ test('select action supports actionTypes', () => {
 
 test('select should render an error if one is provided', () => {
   const { getByText } = render(
-    <Select label="Countries" placeholder="Choose country" error="You must choose">
+    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country" error="You must choose">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
@@ -456,7 +456,7 @@ test('select should render an error if one is provided', () => {
 
 test('select should have a required attr if set as required', () => {
   const { getByLabelText } = render(
-    <Select label="Countries" placeholder="Choose country" error="Required" required>
+    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country" error="Required" required>
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
@@ -471,7 +471,7 @@ test('select should have a required attr if set as required', () => {
 
 test('select should not have a required attr if not set as required', () => {
   const { getByLabelText } = render(
-    <Select label="Countries" placeholder="Choose country">
+    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>

@@ -26,7 +26,7 @@ interface Props {
   maxHeight?: number;
   placement?: Placement;
   required?: boolean;
-  value: AllHTMLAttributes<HTMLElement>['value'];
+  value?: AllHTMLAttributes<HTMLElement>['value'];
   onActionClick?(inputText: string): void;
   onItemChange(value: AllHTMLAttributes<HTMLElement>['value']): void;
 }
