@@ -8,8 +8,12 @@ import { CodePreview, CodeSnippet, List, PropTable } from '../components';
 storiesOf('Button', module).add('Overview', () => (
   <>
     <H0>Buttons</H0>
-    <CodePreview options={{ showDefaultProps: true, filterProps: ['spinner'] }}>
-      <Button>Label</Button>
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Button actionType="normal" isLoading={false} variant="primary">
+        Label
+      </Button>
+      {/* jsx-to-string:end */}
     </CodePreview>
     <Text>Buttons are calls to action used throughout the product experience.</Text>
     <List>
@@ -33,7 +37,9 @@ storiesOf('Button', module).add('Overview', () => (
     </Text>
 
     <CodePreview>
+      {/* jsx-to-string:start */}
       <Button variant="primary">Primary</Button>
+      {/* jsx-to-string:end */}
     </CodePreview>
 
     <H2>Secondary</H2>
@@ -49,7 +55,9 @@ storiesOf('Button', module).add('Overview', () => (
     </Text>
 
     <CodePreview>
+      {/* jsx-to-string:start */}
       <Button variant="secondary">Secondary</Button>
+      {/* jsx-to-string:end */}
     </CodePreview>
 
     <H2>Subtle</H2>
@@ -61,7 +69,9 @@ storiesOf('Button', module).add('Overview', () => (
     </Text>
 
     <CodePreview>
+      {/* jsx-to-string:start */}
       <Button variant="subtle">Subtle</Button>
+      {/* jsx-to-string:end */}
     </CodePreview>
 
     <H1>Action Types</H1>
@@ -71,13 +81,15 @@ storiesOf('Button', module).add('Overview', () => (
       nature of the action when clicking on the button.
     </Text>
 
-    <CodePreview options={{ showDefaultProps: true, filterProps: ['variant', 'isLoading', 'spinner'] }}>
+    <CodePreview>
+      {/* jsx-to-string:start */}
       <>
         <Button actionType="normal" marginRight="xSmall">
           Normal
         </Button>
         <Button actionType="destructive">Destructive</Button>
       </>
+      {/* jsx-to-string:end */}
     </CodePreview>
 
     <H1>States</H1>
@@ -87,7 +99,31 @@ storiesOf('Button', module).add('Overview', () => (
     <Text>The loading state is used when clicking a button will perform a asyncronous action.</Text>
 
     <CodePreview>
-      <Button isLoading={true}>Loading</Button>
+      {/* jsx-to-string:start */}
+      {function LoadingButton() {
+        const [isLoading, setLoading] = React.useState(false);
+
+        function simulateNetworkRequest() {
+          return new Promise(resolve => setTimeout(resolve, 2000));
+        }
+
+        React.useEffect(() => {
+          if (isLoading) {
+            simulateNetworkRequest().then(() => {
+              setLoading(false);
+            });
+          }
+        }, [isLoading]);
+
+        const handleClick = () => setLoading(true);
+
+        return (
+          <Button variant="primary" isLoading={isLoading} onClick={!isLoading ? handleClick : null}>
+            Click to load
+          </Button>
+        );
+      }}
+      {/* jsx-to-string:end */}
     </CodePreview>
 
     <Text>
@@ -110,7 +146,9 @@ storiesOf('Button', module).add('Overview', () => (
     </Text>
 
     <CodePreview>
+      {/* jsx-to-string:start */}
       <Button disabled>Disabled</Button>
+      {/* jsx-to-string:end */}
     </CodePreview>
 
     <H1>Icons</H1>
@@ -121,6 +159,7 @@ storiesOf('Button', module).add('Overview', () => (
     </Text>
 
     <CodePreview>
+      {/* jsx-to-string:start */}
       <>
         <Button iconOnly={<PlusIcon title="add" />} marginRight="xSmall" />
         <Button iconLeft={<PlusIcon />} marginRight="xSmall">
@@ -133,6 +172,7 @@ storiesOf('Button', module).add('Overview', () => (
           Label
         </Button>
       </>
+      {/* jsx-to-string:end */}
     </CodePreview>
 
     <H1>API</H1>
