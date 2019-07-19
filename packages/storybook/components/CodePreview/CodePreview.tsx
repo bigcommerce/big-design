@@ -40,7 +40,7 @@ export const CodePreview: React.FC<CodePreviewProps> = props => {
           <LivePreview />
         </BigDesign.Box>
         <SnippetControls copyToClipboard={() => clipboardCopy(code)} resetCode={() => setCode(initialCode)} />
-        <BigDesign.Box border="box" borderTop="none">
+        <BigDesign.Box border="box" borderTop="none" marginBottom="xxLarge">
           <LiveEditor onChange={setCode} />
         </BigDesign.Box>
         <StyledLiveError />

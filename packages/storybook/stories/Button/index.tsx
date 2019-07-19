@@ -1,0 +1,1 @@
+export { ButtonPropTable } from './ButtonPropTable';
