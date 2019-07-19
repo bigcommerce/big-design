@@ -7,7 +7,7 @@ export const StyledLiveError = styled(LiveError)`
   color: ${({ theme }) => theme.colors.danger};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   margin-bottom: ${({ theme }) => theme.spacing.xxLarge};
-  margin-top: ${({ theme }) => theme.spacing.large};
+  margin-top: ${({ theme }) => theme.spacing.xxLarge};
   padding: ${({ theme }) => theme.spacing.small};
 `;
 

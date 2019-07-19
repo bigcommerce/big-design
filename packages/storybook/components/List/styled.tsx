@@ -4,11 +4,11 @@ import styled, { css } from 'styled-components';
 import { ListProps } from './List';
 
 const SharedListStyles = css`
-  color: ${defaultTheme.colors.secondary70}
-  padding-left: ${defaultTheme.spacing.xLarge}
-  font-size: ${defaultTheme.typography.fontSize.medium};
-  font-weight: ${defaultTheme.typography.fontWeight.regular};
-  line-height: ${defaultTheme.lineHeight.medium};
+  color: ${({ theme }) => theme.colors.secondary70}
+  font-size: ${({ theme }) => theme.typography.fontSize.medium};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
+  line-height: ${({ theme }) => theme.lineHeight.medium};
+  padding-left: ${({ theme }) => theme.spacing.xLarge}
 `;
 
 export const StyledOrderedList = styled.ol<ListProps>`

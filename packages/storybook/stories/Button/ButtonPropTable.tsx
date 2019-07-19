@@ -22,13 +22,6 @@ export const ButtonPropTable: React.FC = () => {
       <PropTable.Prop name="isLoading" types="boolean" defaults="false">
         Used to determine if component is in a loading state.
       </PropTable.Prop>
-      <PropTable.Prop
-        name="spinner"
-        types={<Link onClick={linkTo('Spinner') as any}>Spinner</Link>}
-        defaults="<Spinner overlay={false} />"
-      >
-        Add a custom spinner to view when <code>isLoading</code> is <code>true</code>
-      </PropTable.Prop>
       <PropTable.Prop name="variant" types={['primary', 'secondary', 'subtle']} defaults="primary">
         Determines which style of button to display.
       </PropTable.Prop>

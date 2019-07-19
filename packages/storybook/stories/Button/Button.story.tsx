@@ -94,18 +94,6 @@ storiesOf('Button', module).add('Overview', () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <Text>
-      A custom loading indicator can be passed using the <code>spinner</code> prop, if needed.
-    </Text>
-
-    <CodeSnippet>
-      {`
-        import { TripleDotsLoader } from '<Custom Spinner/Loader>';
-        // ...
-        <Button isLoading spinner={<TripleDotsLoader />}>Loading</Button>
-      `}
-    </CodeSnippet>
-
     <H2>Disabled</H2>
 
     <Text>
