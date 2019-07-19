@@ -10,6 +10,6 @@ export default create({
   base: 'light',
   brandImage: logo,
   brandTitle: 'Big Design',
-  brandUrl: 'https://design.bigcommerce',
+  brandUrl: 'https://bigcommerce.design',
   colorSecondary: colors.primary,
 });
