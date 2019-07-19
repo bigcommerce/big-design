@@ -3,6 +3,7 @@ import clipboardCopy from 'clipboard-copy';
 import { Language } from 'prism-react-renderer';
 import React, { useContext, useState } from 'react';
 import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
+import styled, { ThemeProvider } from 'styled-components';
 
 import { SnippetControls } from '../SnippetControls';
 import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
@@ -12,6 +13,7 @@ import { StyledLiveError } from './styled';
 const defaultScope = {
   ...BigDesign,
   React,
+  styled,
 };
 
 function getInitialCode(children: React.ReactNode): string {
@@ -37,7 +39,9 @@ export const CodePreview: React.FC<CodePreviewProps> = props => {
     <BigDesign.Box border="box" marginBottom="xxLarge">
       <LiveProvider code={code} scope={scope} theme={editorTheme} language={language}>
         <BigDesign.Box padding="medium" backgroundColor="white" borderBottom="box">
-          <LivePreview />
+          <ThemeProvider theme={BigDesign.defaultTheme}>
+            <LivePreview />
+          </ThemeProvider>
         </BigDesign.Box>
         <SnippetControls copyToClipboard={() => clipboardCopy(code)} resetCode={() => setCode(initialCode)} />
         <LiveEditor onChange={setCode} />
