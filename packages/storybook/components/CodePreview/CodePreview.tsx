@@ -34,18 +34,16 @@ export const CodePreview: React.FC<CodePreviewProps> = props => {
   const { editorTheme } = useContext(CodeEditorThemeContext);
 
   return (
-    <>
+    <BigDesign.Box border="box" marginBottom="xxLarge">
       <LiveProvider code={code} scope={scope} theme={editorTheme} language={language}>
-        <BigDesign.Box padding="medium" backgroundColor="white" border="box" borderBottom="none">
+        <BigDesign.Box padding="medium" backgroundColor="white" borderBottom="box">
           <LivePreview />
         </BigDesign.Box>
         <SnippetControls copyToClipboard={() => clipboardCopy(code)} resetCode={() => setCode(initialCode)} />
-        <BigDesign.Box border="box" borderTop="none" marginBottom="xxLarge">
-          <LiveEditor onChange={setCode} />
-        </BigDesign.Box>
+        <LiveEditor onChange={setCode} />
         <StyledLiveError />
       </LiveProvider>
-    </>
+    </BigDesign.Box>
   );
 };
 
