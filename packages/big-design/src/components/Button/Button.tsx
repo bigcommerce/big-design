@@ -16,7 +16,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconOnly?: React.ReactChild;
   iconRight?: React.ReactChild;
   isLoading?: boolean;
-  spinner?: React.ReactChild;
   theme?: ThemeInterface;
   variant?: 'primary' | 'secondary' | 'subtle';
 }
@@ -27,7 +26,7 @@ class RawButton extends React.PureComponent<ButtonProps & PrivateProps> {
 
     return (
       <StyledButton role="button" tabIndex={0} {...props} onClick={this.handleClick} ref={forwardedRef}>
-        {props.isLoading ? props.spinner : null}
+        {props.isLoading ? <Spinner overlay={false} /> : null}
         <ContentWrapper isLoading={props.isLoading} theme={props.theme}>
           {!props.iconOnly && props.iconLeft}
           {props.iconOnly}
@@ -58,7 +57,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ classN
 const defaultProps = {
   actionType: 'normal' as 'normal',
   isLoading: false,
-  spinner: <Spinner overlay={false} />,
   variant: 'primary' as 'primary',
 };
 
