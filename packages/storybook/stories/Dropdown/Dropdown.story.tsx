@@ -2,7 +2,9 @@ import { Button, Dropdown, Grid, H0, H1, H2, Link, Panel, Text } from '@bigcomme
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { CodePreview, PropTable } from '../components';
+import { CodePreview } from '../../components';
+
+import { DropdownItemPropTable, DropdownPropTable } from './DropdownPropTable';
 
 storiesOf('Dropdown', module).add('Overview', () => (
   <>
@@ -34,50 +36,10 @@ storiesOf('Dropdown', module).add('Overview', () => (
 
     <H1>API</H1>
     <H2>Dropdown</H2>
-    <PropTable>
-      <PropTable.Prop name="maxHeight" types="number" defaults="250">
-        Sets the max-height of the dropdown.
-      </PropTable.Prop>
-      <PropTable.Prop name="onActionClick" types="() => void">
-        Callback called when an action is clicked.
-      </PropTable.Prop>
-      <PropTable.Prop name="onItemClick" types="(value) => void">
-        Callback called with value of clicked item.
-      </PropTable.Prop>
-      <PropTable.Prop
-        name="position"
-        types={[
-          'auto',
-          'auto-end',
-          'auto-start',
-          'bottom',
-          'bottom-end',
-          'bottom-start',
-          'left',
-          'left-end',
-          'left-start',
-          'right',
-          'right-end',
-          'right-start',
-          'top',
-          'top-end',
-          'top-start',
-        ]}
-        defaults="bottom-start"
-      >
-        Sets the position of the Dropdown relative to the anchor.
-      </PropTable.Prop>
-      <PropTable.Prop name="trigger" types="ReactElement" required>
-        Element used as anchor.
-      </PropTable.Prop>
-    </PropTable>
+    <DropdownPropTable />
 
     <H2>Dropdown.Item</H2>
-    <PropTable>
-      <PropTable.Prop name="value" types="string | string[] | number">
-        Value of the item
-      </PropTable.Prop>
-    </PropTable>
+    <DropdownItemPropTable />
 
     <H1>Examples</H1>
 
@@ -111,7 +73,7 @@ storiesOf('Dropdown', module).add('Overview', () => (
     <H2>Position</H2>
     <Text>
       Dropdown can be anchored in different directions with the <code>position</code> property. It will automatically
-      find a position if there's not enough space on the chosen direction.
+      find a position if there's not enough space in the chosen direction.
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
