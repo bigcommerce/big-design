@@ -10,7 +10,8 @@ const ExampleBox: React.FC<{ vertical?: boolean }> = ({ children, vertical }) =>
   <Box
     backgroundColor="secondary10"
     border="box"
-    {...(vertical ? { marginVertical: 'xSmall' } : { marginHorizontal: 'xSmall' })}
+    marginVertical={vertical ? 'xSmall' : 'none'}
+    marginHorizontal={vertical ? 'none' : 'xSmall'}
     padding="small"
   >
     {children}
