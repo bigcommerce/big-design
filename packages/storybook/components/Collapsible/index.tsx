@@ -9,15 +9,12 @@ interface CollapsibleProps {
 
 export const Collapsible: React.FC<CollapsibleProps> = ({ children, title }) => {
   const [isCollapsed, setCollapsed] = useState(true);
-
-  function handleOnClick() {
-    setCollapsed(!isCollapsed);
-  }
+  const toggleIsCollapsed = () => setCollapsed(!isCollapsed);
 
   return (
     <>
-      <StyledFlex alignItems="center" onClick={handleOnClick}>
-        {isCollapsed ? <ChevronRight /> : <ExpandMore />}
+      <StyledFlex alignItems="center" onClick={toggleIsCollapsed}>
+        {isCollapsed ? <ChevronRight title="Expand" /> : <ExpandMore title="Collapse" />}
         <Text>{title}</Text>
       </StyledFlex>
 
