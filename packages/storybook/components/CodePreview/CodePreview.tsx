@@ -30,10 +30,11 @@ export interface CodePreviewProps {
 }
 
 export const CodePreview: React.FC<CodePreviewProps> = props => {
-  const { children, language, scope } = props;
+  const { children, language } = props;
   const initialCode = getInitialCode(children);
   const [code, setCode] = useState(initialCode);
   const { editorTheme } = useContext(CodeEditorThemeContext);
+  const scope = { ...defaultScope, ...props.scope };
 
   return (
     <BigDesign.Box border="box" marginBottom="xxLarge">
