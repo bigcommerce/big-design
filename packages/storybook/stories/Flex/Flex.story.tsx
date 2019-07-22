@@ -6,14 +6,14 @@ import { CodePreview } from '../../components';
 
 import { FlexItemPropTable, FlexPropTable } from './';
 
-const ExampleBox: React.FC<{ num: number; vertical?: boolean }> = ({ num, vertical }) => (
+const ExampleBox: React.FC<{ vertical?: boolean }> = ({ children, vertical }) => (
   <Box
     backgroundColor="secondary10"
     border="box"
     {...(vertical ? { marginVertical: 'xSmall' } : { marginHorizontal: 'xSmall' })}
     padding="small"
   >
-    Item {num}
+    {children}
   </Box>
 );
 
@@ -27,16 +27,16 @@ storiesOf('Flex', module).add('Overview', () => (
       {/* jsx-to-string:start */}
       <Flex alignContent="stretch" alignItems="stretch" direction="row" justifyContent="flex-start" wrap="nowrap">
         <Flex.Item alignSelf="auto" basis="auto" grow={0} order={0} shrink={1}>
-          <ExampleBox num={1} />
+          <ExampleBox>Item 1</ExampleBox>
         </Flex.Item>
         <Flex.Item alignSelf="auto" basis="auto" grow={0} order={0} shrink={1}>
-          <ExampleBox num={2} />
+          <ExampleBox>Item 2</ExampleBox>
         </Flex.Item>
         <Flex.Item alignSelf="auto" basis="auto" grow={0} order={0} shrink={1}>
-          <ExampleBox num={3} />
+          <ExampleBox>Item 3</ExampleBox>
         </Flex.Item>
         <Flex.Item alignSelf="auto" basis="auto" grow={0} order={0} shrink={1}>
-          <ExampleBox num={4} />
+          <ExampleBox>Item 4</ExampleBox>
         </Flex.Item>
       </Flex>
       {/* jsx-to-string:end */}
@@ -63,16 +63,16 @@ storiesOf('Flex', module).add('Overview', () => (
       {/* jsx-to-string:start */}
       <Flex justifyContent="space-between">
         <Flex.Item>
-          <ExampleBox num={1} />
+          <ExampleBox>Item 1</ExampleBox>
         </Flex.Item>
         <Flex.Item>
-          <ExampleBox num={2} />
+          <ExampleBox>Item 2</ExampleBox>
         </Flex.Item>
         <Flex.Item>
-          <ExampleBox num={3} />
+          <ExampleBox>Item 3</ExampleBox>
         </Flex.Item>
         <Flex.Item>
-          <ExampleBox num={4} />
+          <ExampleBox>Item 4</ExampleBox>
         </Flex.Item>
       </Flex>
       {/* jsx-to-string:end */}
@@ -87,16 +87,16 @@ storiesOf('Flex', module).add('Overview', () => (
       {/* jsx-to-string:start */}
       <Flex wrap="wrap">
         <Flex.Item basis="100%">
-          <ExampleBox num={1} vertical />
+          <ExampleBox vertical>Item 1</ExampleBox>
         </Flex.Item>
         <Flex.Item basis="100%">
-          <ExampleBox num={2} vertical />
+          <ExampleBox vertical>Item 2</ExampleBox>
         </Flex.Item>
         <Flex.Item basis="100%">
-          <ExampleBox num={3} vertical />
+          <ExampleBox vertical>Item 3</ExampleBox>
         </Flex.Item>
         <Flex.Item basis="100%">
-          <ExampleBox num={4} vertical />
+          <ExampleBox vertical>Item 4</ExampleBox>
         </Flex.Item>
       </Flex>
       {/* jsx-to-string:end */}
@@ -111,16 +111,16 @@ storiesOf('Flex', module).add('Overview', () => (
       {/* jsx-to-string:start */}
       <Flex>
         <Flex.Item grow={2} order={2}>
-          <ExampleBox num={1} />
+          <ExampleBox>Item 1</ExampleBox>
         </Flex.Item>
         <Flex.Item order={4}>
-          <ExampleBox num={2} />
+          <ExampleBox>Item 2</ExampleBox>
         </Flex.Item>
         <Flex.Item grow={4} order={1}>
-          <ExampleBox num={3} />
+          <ExampleBox>Item 3</ExampleBox>
         </Flex.Item>
         <Flex.Item grow={1} order={3}>
-          <ExampleBox num={4} />
+          <ExampleBox>Item 4</ExampleBox>
         </Flex.Item>
       </Flex>
       {/* jsx-to-string:end */}
