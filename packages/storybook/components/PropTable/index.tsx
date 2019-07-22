@@ -16,11 +16,21 @@ export class PropTable extends React.PureComponent {
         <StyledTableHead>
           <PropTable.Header />
         </StyledTableHead>
-        <StyledTableBody>{this.props.children}</StyledTableBody>
+        <StyledTableBody>{this.renderChildren()}</StyledTableBody>
         <StyledTableFooter>
           <PropTable.Footer />
         </StyledTableFooter>
       </StyledTable>
     );
+  }
+
+  private renderChildren() {
+    const { children } = this.props;
+
+    return React.Children.map(children, child => {
+      if (React.isValidElement(child) && child.type === PropTable.Prop) {
+        return child;
+      }
+    });
   }
 }
