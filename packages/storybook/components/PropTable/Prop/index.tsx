@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { StyledCode, StyledTableData, StyledTableRow } from '../styled';
+import { Code } from '../../';
+import { StyledTableData, StyledTableRow } from '../styled';
 
 interface Props {
   name: string;
@@ -15,14 +16,14 @@ export const Prop: React.FC<Props> = props => {
   return (
     <StyledTableRow>
       <StyledTableData>
-        <StyledCode>{name}</StyledCode>
+        <Code variant="primary">{name}</Code>
         {required ? <b> *</b> : null}
       </StyledTableData>
       <StyledTableData>
         <TypesData types={types} />
       </StyledTableData>
       <StyledTableData>
-        <code>{defaults}</code>
+        <Code>{defaults}</Code>
       </StyledTableData>
       <StyledTableData>{children}</StyledTableData>
     </StyledTableRow>
@@ -40,12 +41,12 @@ const TypesData: React.FC<TypesDataProps> = (props): any => {
     return types.map((type, index) => {
       return (
         <React.Fragment key={type}>
-          <StyledCode altColor>{type}</StyledCode>
+          <Code variant="secondary">{type}</Code>
           {index < types.length - 1 ? ' | ' : null}
         </React.Fragment>
       );
     });
   }
 
-  return <StyledCode altColor>{types}</StyledCode>;
+  return <Code variant="secondary">{types}</Code>;
 };

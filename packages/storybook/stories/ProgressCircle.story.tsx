@@ -2,7 +2,7 @@ import { H1, H2, H3, Panel, ProgressCircle } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { CodePreview, PropTable } from '../components';
+import { Code, CodePreview, PropTable } from '../components';
 
 storiesOf('ProgressCircle', module).add('Overview', () => (
   <Panel>
@@ -10,20 +10,24 @@ storiesOf('ProgressCircle', module).add('Overview', () => (
     <H2>Examples</H2>
     <H3 marginTop="xLarge">Determinant</H3>
     <CodePreview>
+      {/* jsx-to-string:start */}
       <ProgressCircle error={false} percent={50} size="large" />
+      {/* jsx-to-string:end */}
     </CodePreview>
     <p>
-      Determinant Progress represents a known amount of time or completeness for a task. A <code>percent</code> prop
-      needs to be passed to render a determinate progress.
+      Determinant Progress represents a known amount of time or completeness for a task. A{' '}
+      <Code highlight>percent</Code> prop needs to be passed to render a determinate progress.
     </p>
 
     <H3 marginTop="xLarge">Indeterminant</H3>
     <CodePreview>
+      {/* jsx-to-string:start */}
       <ProgressCircle size={'large'} />
+      {/* jsx-to-string:end */}
     </CodePreview>
     <p>
       Indeterminant Progress represents an unknown amount of time for a task to complete. Component will render an
-      indeterminant progress when missing a <code>percent</code> prop.
+      indeterminant progress when missing a <Code highlight>percent</Code> prop.
     </p>
 
     <H2 marginTop="xxxLarge">Properties & Methods</H2>
