@@ -2,7 +2,7 @@ import { Button, DropdownIcon, Grid, H0, H1, H2, Link, PlusIcon, Text } from '@b
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { CodePreview, CodeSnippet } from '../../components';
+import { CodePreview } from '../../components';
 
 import { ButtonPropTable } from './';
 
