@@ -45,7 +45,7 @@ storiesOf('Box', module).add('Overview', () => (
     <Box marginTop="xxLarge">
       <Text>
         Box is extendable, here is an example on how to create an Avatar component extending from Box with a couple of
-        extra styles
+        extra styles:
       </Text>
       <CodePreview>
         {/* jsx-to-string:start */}
