@@ -8576,10 +8576,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-jsx-to-string-loader@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/jsx-to-string-loader/-/jsx-to-string-loader-1.1.1.tgz#9b610356c31d4b7a6a674f85dab0944fb6771080"
-  integrity sha512-8p8etmB9daCHoWhfIm+X/QlrAenFEzIN9ZvPUzHrbGT8EF/89N0KIxVazQWYAuKa3vEpnor91TcPcP//uUxyOA==
+jsx-to-string-loader@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/jsx-to-string-loader/-/jsx-to-string-loader-1.1.2.tgz#b8a7e55f3aa585dc9844b3c231be661e66a5ae57"
+  integrity sha512-5Y9Yi5VwDMtCmzYiTrtyhgQVd9yADxNqPP7HJUEkzIyrwWZ778LvF2kx8LRHKO75+U/0qs5m7jg0uaZDPPbWaw==
 
 kind-of@^2.0.1:
   version "2.0.1"

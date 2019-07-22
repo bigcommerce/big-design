@@ -52,7 +52,7 @@
     "@types/storybook__react": "^4.0.1",
     "@types/styled-components": "^4.1.12",
     "babel-loader": "^8.0.5",
-    "jsx-to-string-loader": "^1.1.1",
+    "jsx-to-string-loader": "^1.1.2",
     "rimraf": "^2.6.3",
     "ts-loader": "^6.0.4"
   }
