@@ -27,7 +27,7 @@ export const StoryWrapper: React.FC<Props> = props => {
     <CodeEditorThemeContext.Provider value={{ editorTheme, toggleEditorTheme }}>
       <>
         <GlobalStyle />
-        <Box margin="xxLarge">{props.storyFn()}</Box>
+        <Box margin={{ mobile: 'medium', tablet: 'xxLarge' }}>{props.storyFn()}</Box>
       </>
     </CodeEditorThemeContext.Provider>
   );
