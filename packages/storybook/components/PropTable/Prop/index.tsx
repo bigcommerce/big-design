@@ -17,9 +17,7 @@ export const Prop: React.FC<Props> = props => {
   return (
     <StyledTableRow>
       <StyledTableData>
-        <Code primary highlight={false}>
-          {name}
-        </Code>
+        <Code primary>{name}</Code>
         {required ? <b> *</b> : null}
       </StyledTableData>
       <StyledTableData>

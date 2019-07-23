@@ -99,8 +99,8 @@ storiesOf('Button', module).add('Overview', () => (
     <H2>Disabled</H2>
 
     <Text>
-      A disabled state is used to indicate no action can be done using the button by passing a <Code>disabled</Code>{' '}
-      prop.
+      A disabled state is used to indicate no action can be done using the button by passing a{' '}
+      <Code primary>disabled</Code> prop.
     </Text>
 
     <CodePreview>
@@ -120,8 +120,8 @@ storiesOf('Button', module).add('Overview', () => (
     <H1>Icons</H1>
 
     <Text>
-      A button can also include icons on either side of the text (or both). When using <Code>iconOnly</Code>, the{' '}
-      <Code>iconLeft</Code> &amp; <Code>iconRight</Code> components will be removed.
+      A button can also include icons on either side of the text (or both). When using <Code primary>iconOnly</Code>,
+      the <Code primary>iconLeft</Code> &amp; <Code primary>iconRight</Code> components will be removed.
     </Text>
 
     <CodePreview>
