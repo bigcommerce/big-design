@@ -2,7 +2,7 @@ import { Button, Dropdown, Grid, H0, H1, H2, Link, Panel, Text } from '@bigcomme
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { CodePreview } from '../../components';
+import { Code, CodePreview } from '../../components';
 
 import { DropdownItemPropTable, DropdownPropTable } from './DropdownPropTable';
 
@@ -47,7 +47,7 @@ storiesOf('Dropdown', module).add('Overview', () => (
 
     <H2>Trigger</H2>
     <Text>
-      Dropdown can be anchored to any <code>ReactElement</code>, including all types of buttons.
+      Dropdown can be anchored to any <Code>ReactElement</Code>, including all types of buttons.
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
@@ -74,8 +74,8 @@ storiesOf('Dropdown', module).add('Overview', () => (
 
     <H2>Position</H2>
     <Text>
-      Dropdown can be anchored in different directions with the <code>position</code> property. It will automatically
-      find a position if there's not enough space in the chosen direction.
+      Dropdown can be anchored in different directions with the <Code primary>position</Code> property. It will
+      automatically find a position if there's not enough space in the chosen direction.
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
@@ -103,7 +103,7 @@ storiesOf('Dropdown', module).add('Overview', () => (
     <H2>Max Height</H2>
     <Text>
       Once the content is longer than the max-height, the Dropdown will be scrollable. It is possible to modify the
-      dimension by passing a <code>max-height</code> property.
+      dimension by passing a <Code primary>maxHeight</Code> property.
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
@@ -144,7 +144,7 @@ storiesOf('Dropdown', module).add('Overview', () => (
 
     <H2>Dropdown.Item</H2>
     <Text>
-      Dropdown expects <code>Dropdown.Item</code> as children. An item can have optional values.
+      Dropdown expects <Code>Dropdown.Item</Code> as children. An item can have optional values.
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
