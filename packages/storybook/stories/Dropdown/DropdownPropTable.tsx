@@ -44,7 +44,7 @@ export const DropdownPropTable: React.FC = () => (
 
 export const DropdownItemPropTable: React.FC = () => (
   <PropTable>
-    <PropTable.Prop name="value" types="string | string[] | number">
+    <PropTable.Prop name="value" types={['string', 'string[]', 'number']}>
       Value of the item
     </PropTable.Prop>
   </PropTable>
