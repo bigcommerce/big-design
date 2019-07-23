@@ -23,7 +23,7 @@ storiesOf('Colors', module).add('Overview', () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <Text>You can also use the colors directly from the theme to style other components, for eg:</Text>
+    <Text>You can also use the colors directly from the theme to style other components, for example:</Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
