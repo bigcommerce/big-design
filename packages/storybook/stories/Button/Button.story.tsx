@@ -32,9 +32,8 @@ storiesOf('Button', module).add('Overview', () => (
     <H1>Variants</H1>
 
     <Text>
-      There are three types of variants to choose from: <Code highlight>primary</Code>, <Code highlight>secondary</Code>
-      , and <Code highlight>subtle</Code>. You can determine what type of variant by using the{' '}
-      <Code highlight>variant</Code> prop.
+      There are three types of variants to choose from: <Code>primary</Code>, <Code>secondary</Code>, and{' '}
+      <Code>subtle</Code>. You can determine what type of variant by using the <Code primary>variant</Code> prop.
     </Text>
 
     <CodePreview>
@@ -50,8 +49,8 @@ storiesOf('Button', module).add('Overview', () => (
     <H1>Action Types</H1>
 
     <Text>
-      There are two action types: <Code highlight>normal</Code> &amp; <Code highlight>destructive</Code>. They are used
-      to indicate the nature of the action when clicking on the button.
+      There are two action types: <Code>normal</Code> &amp; <Code>destructive</Code>. They are used to indicate the
+      nature of the action when clicking on the button.
     </Text>
 
     <CodePreview>
@@ -100,8 +99,8 @@ storiesOf('Button', module).add('Overview', () => (
     <H2>Disabled</H2>
 
     <Text>
-      A disabled state is used to indicate no action can be done using the button by passing a{' '}
-      <Code highlight>disabled</Code> prop.
+      A disabled state is used to indicate no action can be done using the button by passing a <Code>disabled</Code>{' '}
+      prop.
     </Text>
 
     <CodePreview>
@@ -121,8 +120,8 @@ storiesOf('Button', module).add('Overview', () => (
     <H1>Icons</H1>
 
     <Text>
-      A button can also include icons on either side of the text (or both). When using <Code highlight>iconOnly</Code>,
-      the <Code highlight>iconLeft</Code> &amp; <Code highlight>iconRight</Code> components will be removed.
+      A button can also include icons on either side of the text (or both). When using <Code>iconOnly</Code>, the{' '}
+      <Code>iconLeft</Code> &amp; <Code>iconRight</Code> components will be removed.
     </Text>
 
     <CodePreview>
