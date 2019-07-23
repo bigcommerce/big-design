@@ -2,6 +2,17 @@ import { defaultTheme } from '@bigcommerce/big-design';
 import styled, { css } from 'styled-components';
 
 // TODO: Convert to BigDesign table when built
+export const StyledTableFigure = styled.figure`
+  margin: ${({ theme }) => theme.spacing.none};
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  ${({ theme }) => theme.breakpoints.tablet} {
+    white-space: normal;
+  }
+`;
+
 export const StyledTable = styled.table`
   border-collapse: collapse;
   margin-bottom: ${({ theme }) => theme.spacing.xLarge}
@@ -42,6 +53,7 @@ export const StyledCode = styled.code<StyledCodeProps>`
   color: ${({ altColor, theme }) => (altColor ? theme.colors.primary50 : theme.colors.danger50)}};
 `;
 
+StyledTableFigure.defaultProps = { theme: defaultTheme };
 StyledTable.defaultProps = { theme: defaultTheme };
 StyledTableHead.defaultProps = { theme: defaultTheme };
 StyledTableBody.defaultProps = { theme: defaultTheme };
