@@ -87,5 +87,5 @@ export const SnippetControls: React.FC<SnippetControls> = props => {
 };
 
 SnippetControls.defaultProps = {
-  helperText: 'Play with the code!',
+  helperText: 'Edit the code below to see your changes live!',
 };

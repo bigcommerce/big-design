@@ -12,7 +12,9 @@ storiesOf('Button', module).add('Overview', () => (
 
     <Text>
       Buttons are calls to action used throughout the product experience.{' '}
-      <Link href="http://bigcommerce.design/buttons">Buttons Design Guidelines</Link>
+      <Link href="https://bigcommerce.design/buttons" target="_blank">
+        Buttons Design Guidelines
+      </Link>
     </Text>
 
     <CodePreview>

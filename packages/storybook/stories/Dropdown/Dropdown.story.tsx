@@ -11,7 +11,9 @@ storiesOf('Dropdown', module).add('Overview', () => (
     <H0>Dropdown</H0>
     <Text>
       Dropdowns are toggleable, contextual overlays for displaying lists.{' '}
-      <Link href="http://bigcommerce.design/dropdown">Dropdown Design Guidelines</Link>
+      <Link href="https://bigcommerce.design/dropdown" target="_blank">
+        Dropdown Design Guidelines
+      </Link>
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}

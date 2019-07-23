@@ -16,9 +16,7 @@ storiesOf('Link', module).add('Overview', () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Link href="https://www.bigcommerce.com" target="_blank">
-        Learn more
-      </Link>
+      <Link href="#">Link Example</Link>
       {/* jsx-to-string:end */}
     </CodePreview>
 
