@@ -15,6 +15,7 @@ export const StyledTableFigure = styled.figure`
 
 export const StyledTable = styled.table`
   border-collapse: collapse;
+  color: ${({ theme }) => theme.colors.secondary70}
   margin-bottom: ${({ theme }) => theme.spacing.xLarge}
   margin-top: ${({ theme }) => theme.spacing.xLarge}
   text-align: left;
@@ -45,14 +46,6 @@ export const StyledTableData = styled.td`
   ${SharedCellStyles}
 `;
 
-interface StyledCodeProps {
-  altColor?: boolean;
-}
-
-export const StyledCode = styled.code<StyledCodeProps>`
-  color: ${({ altColor, theme }) => (altColor ? theme.colors.primary50 : theme.colors.danger50)}};
-`;
-
 StyledTableFigure.defaultProps = { theme: defaultTheme };
 StyledTable.defaultProps = { theme: defaultTheme };
 StyledTableHead.defaultProps = { theme: defaultTheme };
@@ -61,4 +54,3 @@ StyledTableFooter.defaultProps = { theme: defaultTheme };
 StyledTableRow.defaultProps = { theme: defaultTheme };
 StyledTableHeader.defaultProps = { theme: defaultTheme };
 StyledTableData.defaultProps = { theme: defaultTheme };
-StyledCode.defaultProps = { theme: defaultTheme };

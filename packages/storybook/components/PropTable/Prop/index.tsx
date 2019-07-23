@@ -1,6 +1,8 @@
+import { Link } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { StyledCode, StyledTableData, StyledTableRow } from '../styled';
+import { Code } from '../../';
+import { StyledTableData, StyledTableRow } from '../styled';
 
 interface Props {
   name: string;
@@ -15,14 +17,14 @@ export const Prop: React.FC<Props> = props => {
   return (
     <StyledTableRow>
       <StyledTableData>
-        <StyledCode>{name}</StyledCode>
+        <Code primary>{name}</Code>
         {required ? <b> *</b> : null}
       </StyledTableData>
       <StyledTableData>
         <TypesData types={types} />
       </StyledTableData>
       <StyledTableData>
-        <code>{defaults}</code>
+        <Code highlight={false}>{defaults}</Code>
       </StyledTableData>
       <StyledTableData>{children}</StyledTableData>
     </StyledTableRow>
@@ -40,12 +42,12 @@ const TypesData: React.FC<TypesDataProps> = (props): any => {
     return types.map((type, index) => {
       return (
         <React.Fragment key={type}>
-          <StyledCode altColor>{type}</StyledCode>
+          {type.type === Link ? <Code highlight={false}>{type}</Code> : <Code>{type}</Code>}
           {index < types.length - 1 ? ' | ' : null}
         </React.Fragment>
       );
     });
   }
 
-  return <StyledCode altColor>{types}</StyledCode>;
+  return types.type === Link ? <Code highlight={false}>{types}</Code> : <Code>{types}</Code>;
 };

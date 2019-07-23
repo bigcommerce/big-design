@@ -2,7 +2,7 @@ import { Button, DropdownIcon, Grid, H0, H1, H2, Link, PlusIcon, Text } from '@b
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { CodePreview } from '../../components';
+import { Code, CodePreview } from '../../components';
 
 import { ButtonPropTable } from './';
 
@@ -32,8 +32,8 @@ storiesOf('Button', module).add('Overview', () => (
     <H1>Variants</H1>
 
     <Text>
-      There are three types of variants to choose from: <code>primary</code>, <code>secondary</code>, and{' '}
-      <code>subtle</code>. You can determine what type of variant by using the <code>variant</code> prop.
+      There are three types of variants to choose from: <Code>primary</Code>, <Code>secondary</Code>, and{' '}
+      <Code>subtle</Code>. You can determine what type of variant by using the <Code primary>variant</Code> prop.
     </Text>
 
     <CodePreview>
@@ -49,7 +49,7 @@ storiesOf('Button', module).add('Overview', () => (
     <H1>Action Types</H1>
 
     <Text>
-      There are two action types: <code>normal</code> &amp; <code>destructive</code>. They are used to indicate the
+      There are two action types: <Code>normal</Code> &amp; <Code>destructive</Code>. They are used to indicate the
       nature of the action when clicking on the button.
     </Text>
 
@@ -99,8 +99,8 @@ storiesOf('Button', module).add('Overview', () => (
     <H2>Disabled</H2>
 
     <Text>
-      A disabled state is used to indicate no action can be done using the button by passing a <code>disabled</code>{' '}
-      prop.
+      A disabled state is used to indicate no action can be done using the button by passing a{' '}
+      <Code primary>disabled</Code> prop.
     </Text>
 
     <CodePreview>
@@ -120,8 +120,8 @@ storiesOf('Button', module).add('Overview', () => (
     <H1>Icons</H1>
 
     <Text>
-      A button can also include icons on either side of the text (or both). When using <code>iconOnly</code>, the{' '}
-      <code>iconLeft</code> &amp; <code>iconRight</code> components will be removed.
+      A button can also include icons on either side of the text (or both). When using <Code primary>iconOnly</Code>,
+      the <Code primary>iconLeft</Code> &amp; <Code primary>iconRight</Code> components will be removed.
     </Text>
 
     <CodePreview>
