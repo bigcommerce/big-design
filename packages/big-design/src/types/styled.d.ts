@@ -1,6 +1,6 @@
 import 'styled-components';
 
-import { ThemeInterface } from '..';
+import { ThemeInterface } from '@bigcommerce/big-design-theme';
 
 declare module 'styled-components' {
   // tslint:disable-next-line

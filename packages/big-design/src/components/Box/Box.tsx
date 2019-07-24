@@ -1,9 +1,7 @@
+import { Border, BorderRadius, Colors, Elevation } from '@bigcommerce/big-design-theme';
 import React from 'react';
 
 import { MarginProps, PaddingProps } from '../../mixins';
-import { Border, BorderRadius } from '../../theme/system/border';
-import { Colors } from '../../theme/system/colors';
-import { Elevation } from '../../theme/system/elevation';
 
 import { StyledBox } from './styled';
 

@@ -1,7 +1,5 @@
+import { remCalc, theme as defaultTheme, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
 import React from 'react';
-
-import { defaultTheme, remCalc, ThemeInterface } from '../../theme';
-import { Spacing } from '../../theme/system/spacing';
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   size: keyof Spacing | number;

@@ -1,6 +1,6 @@
+import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, keyframes } from 'styled-components';
 
-import { defaultTheme, remCalc } from '../../theme';
 import { ErrorIcon, SuccessIcon } from '../Icons';
 
 import { CIRCLE_CIRCUMFERENCES, CIRCLE_DIMENSIONS, CIRCLE_STROKE_WIDTHS } from './constants';

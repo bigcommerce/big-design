@@ -1,7 +1,5 @@
+import { addValues, remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
-
-import { defaultTheme } from '../../theme';
-import { addValues, remCalc } from '../../theme/helpers/helpers';
 
 import { TextareaProps } from './Textarea';
 

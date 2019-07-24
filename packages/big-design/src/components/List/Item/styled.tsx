@@ -1,6 +1,5 @@
+import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
-
-import { defaultTheme, remCalc } from '../../../theme';
 
 import { ListItemProps } from './Item';
 

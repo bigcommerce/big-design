@@ -1,8 +1,7 @@
+import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withMargins, MarginProps } from '../../mixins';
-import { defaultTheme } from '../../theme';
-import { addValues } from '../../theme/helpers/helpers';
 
 import { ButtonProps } from './index';
 

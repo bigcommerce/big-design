@@ -1,8 +1,5 @@
+import { breakpointsOrder, Breakpoints, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
-
-import { ThemeInterface } from '../../theme';
-import { breakpointsOrder, Breakpoints } from '../../theme/system/breakpoints';
-import { Spacing } from '../../theme/system/spacing';
 
 type SingleSpacingProp = keyof Spacing;
 type ResponsiveSpacingProp = { [key in keyof Breakpoints]?: keyof Spacing };

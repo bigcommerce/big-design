@@ -1,4 +1,4 @@
-import { defaultTheme } from '../../theme';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 
 import { getSpacingStyles } from './index';
 

@@ -1,6 +1,6 @@
+import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React from 'react';
 
-import { ThemeInterface } from '../../theme';
 import { IconProps } from '../Icons/Icon';
 
 import { StyledSpinner, StyledSpinnerWrapper } from './styled';

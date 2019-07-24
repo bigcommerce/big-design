@@ -1,6 +1,6 @@
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import React from 'react';
 
-import { defaultTheme } from '../../../theme';
 import { CheckIcon } from '../../Icons';
 
 import { StyledListItem } from './styled';
