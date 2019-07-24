@@ -1,0 +1,3 @@
+{
+  "extends": ["@bigcommerce/configs/tslint"]
+}
