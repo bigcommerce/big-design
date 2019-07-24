@@ -1,5 +1,4 @@
 import {
-  defaultTheme,
   AssignmentIcon,
   Box,
   Button,
@@ -9,6 +8,7 @@ import {
   RestoreIcon,
   Small,
 } from '@bigcommerce/big-design';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import React, { useContext, useState } from 'react';
 
 import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
