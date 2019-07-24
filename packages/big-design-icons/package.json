@@ -25,6 +25,10 @@
       "git add"
     ]
   },
+  "files": [
+    "dist",
+    "svgs"
+  ],
   "peerDependencies": {
     "react": ">= 16.3.0 < 17",
     "react-dom": ">= 16.3.0 < 17"
