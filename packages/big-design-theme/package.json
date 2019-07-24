@@ -18,6 +18,9 @@
     "test": "jest",
     "test:watch": "npm test -- --watchAll"
   },
+  "files": [
+    "dist"
+  ],
   "lint-staged": {
     "*.{js,ts,tsx}": [
       "tslint --fix",
