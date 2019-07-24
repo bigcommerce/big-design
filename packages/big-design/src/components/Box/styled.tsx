@@ -1,7 +1,7 @@
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withMargins, withPaddings } from '../../mixins';
-import { defaultTheme } from '../../theme';
 
 import { BoxProps } from './Box';
 

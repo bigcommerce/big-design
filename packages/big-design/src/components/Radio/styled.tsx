@@ -1,7 +1,7 @@
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 
-import { defaultTheme } from '../../theme';
 import { StyleableText } from '../Typography/private';
 
 interface StyledRadioProps {

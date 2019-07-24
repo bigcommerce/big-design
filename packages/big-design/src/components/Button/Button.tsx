@@ -1,7 +1,7 @@
+import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
-import { ThemeInterface } from '../../theme';
 import { Spinner } from '../Spinner';
 
 import { ContentWrapper, StyledButton } from './styled';

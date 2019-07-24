@@ -1,6 +1,6 @@
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { DefaultTheme, StyledComponent } from 'styled-components';
 
-import { defaultTheme } from '../../../theme';
 import { StyleableH3, StyleableSmall } from '../../Typography/private';
 
 export const StyledFieldset = styled.fieldset`

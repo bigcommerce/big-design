@@ -1,7 +1,7 @@
+import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { Ref } from 'react';
 
-import { ThemeInterface } from '../../theme';
 import { uniqueId } from '../../utils';
 import { Form } from '../Form';
 import { ErrorIcon } from '../Icons';

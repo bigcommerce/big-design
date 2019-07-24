@@ -1,8 +1,8 @@
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../mixins';
-import { defaultTheme } from '../../theme';
 
 import { HeadingProps, SmallProps, TextProps, TypographyProps } from './Typography';
 
