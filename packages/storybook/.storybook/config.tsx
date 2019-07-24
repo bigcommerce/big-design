@@ -1,4 +1,4 @@
-import { defaultTheme } from '@bigcommerce/big-design';
+import { theme } from '@bigcommerce/big-design-theme';
 import { withKnobs } from '@storybook/addon-knobs';
 import { addDecorator, addParameters, configure } from '@storybook/react';
 import React from 'react';
@@ -6,6 +6,8 @@ import React from 'react';
 import { StoryWrapper } from '../components/StoryWrapper/StoryWrapper';
 
 import bcTheme from './bc-theme';
+
+const { colors } = theme;
 
 addParameters({
   options: {
@@ -22,7 +24,7 @@ addParameters({
     {
       default: true,
       name: 'Default',
-      value: defaultTheme.colors.secondary10,
+      value: colors.secondary10,
     },
     {
       name: 'White',
