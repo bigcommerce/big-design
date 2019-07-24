@@ -1,0 +1,5 @@
+{
+  "name": "@bigcommerce/configs/babel",
+  "main": "babel.config.js",
+  "private": true
+}

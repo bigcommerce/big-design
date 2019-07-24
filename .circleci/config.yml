@@ -13,7 +13,7 @@ jobs:
       - ci/pre-setup
 
       - node/yarn-install:
-          yarn_version: 1.16.0
+          yarn_version: 1.17.3
 
       - run: yarn run ci
 
