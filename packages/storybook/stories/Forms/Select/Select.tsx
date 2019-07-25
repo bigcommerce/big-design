@@ -12,7 +12,7 @@ export const SelectStory: React.FC = () => (
     <Text>
       Select are typeable inputs with selectable dropdown items.{' '}
       <Link href="https://bigcommerce.design/fields" target="_blank">
-        Dropdown Design Guidelines
+        Form Fields Design Guidelines
       </Link>
     </Text>
 
@@ -20,7 +20,7 @@ export const SelectStory: React.FC = () => (
       {/* jsx-to-string:start */}
       {function Example() {
         const [value, setValue] = React.useState('');
-        const handleChange = e => setValue(e.target.value);
+        const handleChange = val => setValue(val);
 
         return (
           <Form.Row>
@@ -79,7 +79,7 @@ export const SelectStory: React.FC = () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(4, 1fr)" style={{ maxWidth: '50%' }}>
+      <Grid columns="repeat(4, 1fr)">
         <Select label="Select" placeholder="Choose from above" onItemChange={() => null} placement="top">
           <Select.Option value={1}>Option</Select.Option>
           <Select.Option value={2}>Option</Select.Option>
@@ -117,7 +117,7 @@ export const SelectStory: React.FC = () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(3, 1fr)" style={{ maxWidth: '50%' }}>
+      <Grid columns="repeat(3, 1fr)">
         <Select label="Select" placeholder="Default" onItemChange={() => null}>
           <Select.Option value={1}>Option</Select.Option>
           <Select.Option value={2}>Option</Select.Option>
@@ -149,6 +149,19 @@ export const SelectStory: React.FC = () => (
           <Select.Option value={8}>Option</Select.Option>
         </Select>
       </Grid>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H1>Select.Action</H1>
+
+    <Text>Select.Action allows you to add custom actions to the dropdown.</Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Select value={1} onItemChange={() => null} onActionClick={innerText => alert(innerText)}>
+        <Select.Option value={1}>Action Example</Select.Option>
+        <Select.Action>Action</Select.Action>
+      </Select>
       {/* jsx-to-string:end */}
     </CodePreview>
   </>

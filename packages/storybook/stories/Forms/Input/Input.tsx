@@ -1,4 +1,4 @@
-import { Form, H0, H1, H2, Input, Text } from '@bigcommerce/big-design';
+import { Form, H0, H1, H2, Input, Link, SuccessIcon, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../../components';
@@ -9,14 +9,19 @@ export const InputStory: React.FC = () => (
   <>
     <H0>Input</H0>
 
-    <Text />
+    <Text>
+      Inputs are stylized form controls with the ability of controling validation.{' '}
+      <Link href="https://bigcommerce.design/fields" target="_blank">
+        Form Fields Design Guidelines
+      </Link>
+    </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
         const [value, setValue] = React.useState('');
 
-        const handleChange = e => setValue(e.target.value);
+        const handleChange = event => setValue(event.target.value);
 
         return (
           <Form.Row>
@@ -55,5 +60,44 @@ export const InputStory: React.FC = () => (
     <H2>Input.Label</H2>
 
     <InputLabelPropTable />
+
+    <H1>Error State</H1>
+
+    <Text>
+      Inputs allow you to pass in an <Code primary>error</Code> message that will control the styles of an input. The
+      logic on the input can be controlled with the <Code primary>onChange</Code> prop.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Form>
+        <Form.Row>
+          <Input
+            label="Email Address"
+            description="Provide a valid email address."
+            value="example@"
+            error="Email address must contain a domain name."
+          />
+        </Form.Row>
+      </Form>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H1>Icons</H1>
+
+    <Text>
+      Inputs can also contain icons via the <Code>iconLeft</Code> &amp; <Code>iconRight</Code> props.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Form>
+        <Form.Row>
+          <Input label="Example" placeholder="Example" iconLeft={<SuccessIcon />} />
+          <Input label="Example" placeholder="Example" iconRight={<SuccessIcon />} />
+        </Form.Row>
+      </Form>
+      {/* jsx-to-string:end */}
+    </CodePreview>
   </>
 );

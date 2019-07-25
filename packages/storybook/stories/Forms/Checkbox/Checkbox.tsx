@@ -1,4 +1,4 @@
-import { Checkbox, Form, H0, H1, H2, Text } from '@bigcommerce/big-design';
+import { Checkbox, Form, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../../components';
@@ -9,7 +9,12 @@ export const CheckboxStory: React.FC = () => (
   <>
     <H0>Checkbox</H0>
 
-    <Text>{/* TODO: Description */}</Text>
+    <Text>
+      Checkboxes are a stylized <Code>input[type="checkbox"]</Code> with controllable checked/unchecked states.{' '}
+      <Link href="https://bigcommerce.design/checkbox" target="_blank">
+        Checkbox Design Guidelines
+      </Link>
+    </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}

@@ -1,4 +1,4 @@
-import { Form, H0, H1, H2, Text, Textarea } from '@bigcommerce/big-design';
+import { Form, H0, H1, H2, Link, Text, Textarea } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../../components';
@@ -12,16 +12,24 @@ import {
 
 export const TextareaStory: React.FC = () => (
   <>
+    {/*
+      - Fluff Text
+    */}
     <H0>Textarea</H0>
 
-    <Text />
+    <Text>
+      Textareas are stylized form controls with the ability of controling validation.{' '}
+      <Link href="https://bigcommerce.design/fields" target="_blank">
+        Form Fields Design Guidelines
+      </Link>
+    </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
         const [value, setValue] = React.useState('');
 
-        const handleChange = e => setValue(e.target.value);
+        const handleChange = event => setValue(event.target.value);
 
         return (
           <Form.Row>
@@ -61,5 +69,58 @@ export const TextareaStory: React.FC = () => (
     <H2>Textarea.Label</H2>
 
     <TextareaLabelPropTable />
+
+    <H1>Error State</H1>
+
+    <Text>
+      Textareas allow you to pass in an <Code primary>error</Code> message that will control the styles of an input. The
+      logic on the input can be controlled with the <Code primary>onChange</Code> prop.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Form>
+        <Form.Row>
+          <Textarea
+            label="Description"
+            description="Description needs to be at least 64 characters long."
+            value="Start of some text..."
+            minLength={64}
+            error="Field needs to contain at least 64 characters."
+          />
+        </Form.Row>
+      </Form>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H1>Controlling Rows</H1>
+
+    <Text>
+      By default, a <Code>Textarea</Code> displays with <Code>3</Code> rows. In order to set the intial amount of rows,
+      pass in the <Code>rows</Code> prop. There can only be a maximum of <Code>7</Code> rows.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Form.Row>
+        <Textarea label="Label" description="Textarea with 5 rows." placeholder="Placeholder" rows={5} />
+      </Form.Row>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H1>Resizable</H1>
+
+    <Text>
+      You can also control whether <Code>Textarea</Code> components are resizeable. Resizing is only available on the
+      vertical axis.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Form.Row>
+        <Textarea label="Label" placeholder="Textarea cannot be resized." resize={false} />
+      </Form.Row>
+      {/* jsx-to-string:end */}
+    </CodePreview>
   </>
 );
