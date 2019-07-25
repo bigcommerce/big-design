@@ -6,6 +6,12 @@
   "module": "dist/big-design-icons.es.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
+  "author": "BigCommerce Inc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bigcommerce/big-design.git",
+    "directory": "packages/big-design-icons"
+  },
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "download": "node scripts/downloader.js",
