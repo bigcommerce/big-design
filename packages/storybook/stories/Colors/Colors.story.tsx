@@ -1,4 +1,5 @@
-import { defaultTheme, Box, Flex, H0, H2, Text, ThemeInterface } from '@bigcommerce/big-design';
+import { Box, Flex, H0, H2, Text } from '@bigcommerce/big-design';
+import { theme as defaultTheme, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import styled from 'styled-components';
