@@ -45,7 +45,7 @@ async function fetchIconList() {
       type: 'autocomplete',
       name: 'icon',
       message: 'Select an icon to download',
-      source: (_answersSoFar, input = '') => Promise.resolve(iconList.filter(icon => icon.includes(input))),
+      source: (_answersSoFar, input = '') => Promise.resolve(iconList.filter(icon => icon.startsWith(input)).sort()),
     },
   ]);
 
