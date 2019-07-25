@@ -5,12 +5,13 @@ import {
   Form,
   H2,
   Input,
-  PlusIcon,
+  Panel,
   Radio,
   Text,
   Textarea,
   TextareaProps,
 } from '@bigcommerce/big-design';
+import { AddIcon } from '@bigcommerce/big-design-icons';
 import { boolean, number, NumberOptions } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
@@ -25,105 +26,107 @@ storiesOf('Forms', module)
         specifying one
       </Text>
 
-      <Form>
-        <Form.Fieldset
-          legend="Primary contact"
-          description="Minim velit quis aute adipisicing adipisicing do do exercitation cupidatat enim ex voluptate consequat labore."
-        >
-          <Form.Row>
-            <Input
-              label="First Name"
-              description="This is an example description for First Name"
-              placeholder="Placeholder text"
-            />
-          </Form.Row>
+      <Panel>
+        <Form>
+          <Form.Fieldset
+            legend="Primary contact"
+            description="Minim velit quis aute adipisicing adipisicing do do exercitation cupidatat enim ex voluptate consequat labore."
+          >
+            <Form.Row>
+              <Input
+                label="First Name"
+                description="This is an example description for First Name"
+                placeholder="Placeholder text"
+              />
+            </Form.Row>
 
-          <Form.Row>
-            <Input
-              label="Middle Name"
-              description="This is an example description for Last Name. Featuring a Left Icon."
-              iconLeft={<PlusIcon />}
-              placeholder="Placeholder text"
-            />
-          </Form.Row>
+            <Form.Row>
+              <Input
+                label="Middle Name"
+                description="This is an example description for Last Name. Featuring a Left Icon."
+                iconLeft={<AddIcon />}
+                placeholder="Placeholder text"
+              />
+            </Form.Row>
 
-          <Form.Row>
-            <Input
-              label="Last Name"
-              description="This is an example description for Last Name. Featuring a Right Icon."
-              placeholder="Placeholder text"
-              iconRight={<PlusIcon />}
-            />
-          </Form.Row>
+            <Form.Row>
+              <Input
+                label="Last Name"
+                description="This is an example description for Last Name. Featuring a Right Icon."
+                placeholder="Placeholder text"
+                iconRight={<AddIcon />}
+              />
+            </Form.Row>
 
-          <Form.Row>
-            <Input
-              label="Password"
-              description="The password must contain at least 8 characters. (Also features manually setting id, inspect it!)"
-              id="manualId"
-              placeholder="Placeholder text"
-              type="password"
-              error="Your password is not strong enough."
-            />
-          </Form.Row>
+            <Form.Row>
+              <Input
+                label="Password"
+                description="The password must contain at least 8 characters. (Also features manually setting id, inspect it!)"
+                id="manualId"
+                placeholder="Placeholder text"
+                type="password"
+                error="Your password is not strong enough."
+              />
+            </Form.Row>
 
-          <Form.Row>
-            <Input
-              label="Company"
-              description="This is an example description for Company. Featuring a Disabled field."
-              placeholder="Placeholder text disabled"
-              disabled
-            />
-          </Form.Row>
+            <Form.Row>
+              <Input
+                label="Company"
+                description="This is an example description for Company. Featuring a Disabled field."
+                placeholder="Placeholder text disabled"
+                disabled
+              />
+            </Form.Row>
 
-          <Form.Row>
-            <Textarea
-              label="Description"
-              description="This is an example description. Use Knobs to preview props."
-              placeholder="Placeholder text"
-              rows={
-                number('Textarea rows', 3, {
-                  range: true,
-                  min: 1,
-                  max: 7,
-                  step: 1,
-                } as NumberOptions) as TextareaProps['rows']
-              }
-              resize={boolean('Resizeable textarea', true)}
-              disabled={boolean('Disable textarea', false)}
-            />
-          </Form.Row>
+            <Form.Row>
+              <Textarea
+                label="Description"
+                description="This is an example description. Use Knobs to preview props."
+                placeholder="Placeholder text"
+                rows={
+                  number('Textarea rows', 3, {
+                    range: true,
+                    min: 1,
+                    max: 7,
+                    step: 1,
+                  } as NumberOptions) as TextareaProps['rows']
+                }
+                resize={boolean('Resizeable textarea', true)}
+                disabled={boolean('Disable textarea', false)}
+              />
+            </Form.Row>
 
-          <Form.Row>
-            <Input label="State" placeholder="Placeholder" />
-            <Input label="City" placeholder="Placeholder" />
-          </Form.Row>
+            <Form.Row>
+              <Input label="State" placeholder="Placeholder" />
+              <Input label="City" placeholder="Placeholder" />
+            </Form.Row>
 
-          <Form.Row>
-            <Input label="State" placeholder="Placeholder" />
-            <Input label="City" placeholder="Placeholder" />
-            <Input label="Country" placeholder="Placeholder" />
-          </Form.Row>
-        </Form.Fieldset>
+            <Form.Row>
+              <Input label="State" placeholder="Placeholder" />
+              <Input label="City" placeholder="Placeholder" />
+              <Input label="Country" placeholder="Placeholder" />
+            </Form.Row>
+          </Form.Fieldset>
 
-        <Form.Fieldset legend="Checkboxes" description="This is a description for checkboxes">
-          <Form.Row>
-            <Checkbox label="Unchecked" checked={false} onChange={() => null} />
-          </Form.Row>
-          <Form.Row>
-            <Checkbox label="Checked" checked={true} onChange={() => null} />
-          </Form.Row>
-        </Form.Fieldset>
+          <Form.Fieldset legend="Checkboxes" description="This is a description for checkboxes">
+            <Form.Row>
+              <Checkbox label="Unchecked" checked={false} onChange={() => null} />
+            </Form.Row>
+            <Form.Row>
+              <Checkbox label="Checked" checked={true} onChange={() => null} />
+            </Form.Row>
+          </Form.Fieldset>
 
-        <Form.Fieldset legend="Radio buttons" description="This is a description for radio buttons">
-          <Form.Row>
-            <Radio label="Unchecked" name="test-group" checked={false} onChange={() => null} />
-          </Form.Row>
-          <Form.Row>
-            <Radio label="Checked" name="test-group" checked={true} onChange={() => null} />
-          </Form.Row>
-        </Form.Fieldset>
-      </Form>
+          <Form.Fieldset legend="Radio buttons" description="This is a description for radio buttons">
+            <Form.Row>
+              <Radio label="Unchecked" name="test-group" checked={false} onChange={() => null} />
+            </Form.Row>
+            <Form.Row>
+              <Radio label="Checked" name="test-group" checked={true} onChange={() => null} />
+            </Form.Row>
+          </Form.Fieldset>
+        </Form>
+      </Panel>
     </>
   ))
   .add('Avalara Demo', () => (

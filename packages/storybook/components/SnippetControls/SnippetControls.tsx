@@ -1,14 +1,5 @@
-import {
-  AssignmentIcon,
-  Box,
-  Button,
-  CheckIcon,
-  Flex,
-  InvertColorsIcon,
-  RestoreIcon,
-  Small,
-} from '@bigcommerce/big-design';
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { Button, Flex, Small } from '@bigcommerce/big-design';
+import { AssignmentIcon, CheckIcon, InvertColorsIcon, RestoreIcon } from '@bigcommerce/big-design-icons';
 import React, { useContext, useState } from 'react';
 
 import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
@@ -21,15 +12,11 @@ interface SnippetControls {
   resetCode?(): void;
 }
 
-const { colors } = defaultTheme;
-
 function getCopyToClipboardIcon(isCopying: boolean) {
   return isCopying ? (
-    <Box paddingHorizontal="xxSmall">
-      <CheckIcon title="Copying" color={colors.success} size="small" />
-    </Box>
+    <CheckIcon title="Copying" color="success" />
   ) : (
-    <AssignmentIcon title="Copy" color={colors.secondary60} />
+    <AssignmentIcon title="Copy" color="secondary60" />
   );
 }
 
@@ -68,16 +55,12 @@ export const SnippetControls: React.FC<SnippetControls> = props => {
       </Flex.Item>
       {resetCode && (
         <Flex.Item borderLeft="box">
-          <Button
-            iconOnly={<RestoreIcon title="Reset" color={colors.secondary60} />}
-            variant="subtle"
-            onClick={resetCode}
-          />
+          <Button iconOnly={<RestoreIcon title="Reset" color="secondary60" />} variant="subtle" onClick={resetCode} />
         </Flex.Item>
       )}
       <Flex.Item borderLeft="box">
         <Button
-          iconOnly={<InvertColorsIcon title="Toggle Theme" color={colors.secondary60} />}
+          iconOnly={<InvertColorsIcon title="Toggle Theme" color="secondary60" />}
           variant="subtle"
           onClick={toggleEditorTheme}
         />

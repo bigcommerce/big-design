@@ -1,4 +1,5 @@
 import * as BigDesign from '@bigcommerce/big-design';
+import * as BigDesignIcons from '@bigcommerce/big-design-icons';
 import { theme } from '@bigcommerce/big-design-theme';
 import clipboardCopy from 'clipboard-copy';
 import { Language } from 'prism-react-renderer';
@@ -13,6 +14,7 @@ import { StyledLiveError } from './styled';
 
 const defaultScope = {
   ...BigDesign,
+  ...BigDesignIcons,
   React,
   styled,
 };

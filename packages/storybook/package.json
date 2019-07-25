@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@bigcommerce/big-design": "^0.5.0",
+    "@bigcommerce/big-design-icons": "^0.0.1",
     "@bigcommerce/big-design-theme": "^0.0.1",
     "clipboard-copy": "^3.0.0",
     "prism-react-renderer": "^0.1.7",
