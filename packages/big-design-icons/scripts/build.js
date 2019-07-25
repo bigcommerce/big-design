@@ -27,7 +27,7 @@ async function generateIcons() {
   return Promise.all(
     iconFiles.map(iconFilePath => {
       const filename = basename(iconFilePath, '.svg');
-      const name = `Icon${camelcase(filename, { pascalCase: true })}`;
+      const name = `${camelcase(filename, { pascalCase: true })}Icon`;
 
       componentNames.add(name);
 
