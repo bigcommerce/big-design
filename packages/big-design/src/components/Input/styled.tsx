@@ -81,11 +81,6 @@ export const StyledIconWrapper = styled.span<StyledIconWrapperProps>`
         `};
 `;
 
-export const StyledErrorIconWrapper = styled(StyledIconWrapper)`
-  color: ${({ theme }) => theme.colors.danger40};
-`;
-
 StyledInput.defaultProps = { theme: defaultTheme };
 StyledInputWrapper.defaultProps = { theme: defaultTheme };
 StyledIconWrapper.defaultProps = { theme: defaultTheme, position: 'left' };
-StyledErrorIconWrapper.defaultProps = { theme: defaultTheme, position: 'right' };

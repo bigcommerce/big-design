@@ -1,8 +1,8 @@
+import { CheckIcon } from '@bigcommerce/big-design-icons';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { Ref } from 'react';
 
 import { uniqueId } from '../../utils';
-import { CheckIcon } from '../Icons';
 
 import { CheckboxContainer, HiddenCheckbox, StyledCheckbox, StyledLabel } from './styled';
 
@@ -36,7 +36,7 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
           ref={forwardedRef}
         />
         <StyledCheckbox checked={checked} htmlFor={id} aria-hidden={true}>
-          <CheckIcon size="small" />
+          <CheckIcon />
         </StyledCheckbox>
         {this.renderLabel()}
       </CheckboxContainer>
