@@ -1,4 +1,5 @@
-import { ChevronRight, ExpandMore, Text } from '@bigcommerce/big-design';
+import { Text } from '@bigcommerce/big-design';
+import { ChevronRightIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React, { useState } from 'react';
 
 import { StyledFlex } from './styled';
@@ -14,7 +15,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({ children, title }) => 
   return (
     <>
       <StyledFlex alignItems="center" onClick={toggleIsCollapsed}>
-        {isCollapsed ? <ChevronRight title="Expand" /> : <ExpandMore title="Collapse" />}
+        {isCollapsed ? <ChevronRightIcon title="Expand" /> : <ExpandMoreIcon title="Collapse" />}
         <Text>{title}</Text>
       </StyledFlex>
 
