@@ -2,6 +2,7 @@ import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme'
 import styled, { css } from 'styled-components';
 
 import { withMargins, MarginProps } from '../../mixins';
+import { Flex } from '../Flex';
 
 import { ButtonProps } from './index';
 
@@ -72,6 +73,10 @@ export const ContentWrapper = styled.span.attrs<{}, { isLoading?: boolean }>({})
   grid-auto-flow: column;
   grid-gap: ${({ theme }) => theme.spacing.xSmall};
   visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
+`;
+
+export const LoadingSpinnerWrapper = styled(Flex)`
+  position: absolute;
 `;
 
 /**
@@ -227,3 +232,4 @@ function getButtonStyles(props: ButtonProps) {
 
 StyledButton.defaultProps = { theme: defaultTheme };
 ContentWrapper.defaultProps = { theme: defaultTheme };
+LoadingSpinnerWrapper.defaultProps = { theme: defaultTheme };

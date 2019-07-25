@@ -1,8 +1,7 @@
+import { AddIcon } from '@bigcommerce/big-design-icons';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
-
-import { PlusIcon } from '../Icons';
 
 import { Input } from './index';
 
@@ -162,20 +161,20 @@ test('does not accept non-Error Components', () => {
 });
 
 test('renders iconLeft', () => {
-  const { queryByTestId } = render(<Input iconLeft={<PlusIcon data-testid="icon" />} />);
+  const { queryByTestId } = render(<Input iconLeft={<AddIcon data-testid="icon" />} />);
 
   expect(queryByTestId('icon')).toBeInTheDocument();
 });
 
 test('renders iconRight', () => {
-  const { queryByTestId } = render(<Input iconRight={<PlusIcon data-testid="icon" />} />);
+  const { queryByTestId } = render(<Input iconRight={<AddIcon data-testid="icon" />} />);
 
   expect(queryByTestId('icon')).toBeInTheDocument();
 });
 
 test('renders both icons', () => {
   const { queryByTestId } = render(
-    <Input iconRight={<PlusIcon data-testid="icon-right" />} iconLeft={<PlusIcon data-testid="icon-left" />} />,
+    <Input iconRight={<AddIcon data-testid="icon-right" />} iconLeft={<AddIcon data-testid="icon-left" />} />,
   );
 
   expect(queryByTestId('icon-left')).toBeInTheDocument();
@@ -187,8 +186,8 @@ test('renders all together', () => {
     <Input
       label="This is a label"
       description="This is a description"
-      iconRight={<PlusIcon data-testid="icon-right" />}
-      iconLeft={<PlusIcon data-testid="icon-left" />}
+      iconRight={<AddIcon data-testid="icon-right" />}
+      iconLeft={<AddIcon data-testid="icon-left" />}
     />,
   );
 

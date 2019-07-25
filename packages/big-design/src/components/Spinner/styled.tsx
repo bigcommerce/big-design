@@ -1,7 +1,6 @@
+import { AddIcon } from '@bigcommerce/big-design-icons';
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
-
-import { LoadingIcon } from '../Icons';
 
 import { SpinnerWrapperProps } from './Spinner';
 
@@ -22,7 +21,7 @@ export const StyledSpinnerWrapper = styled.div<SpinnerWrapperProps>`
     `};
 `;
 
-export const StyledSpinner = styled(LoadingIcon)`
+export const StyledSpinner = styled(AddIcon)`
   animation: ${({ theme }) =>
     css`
       ${theme.keyframes.rotate} 1s linear infinite

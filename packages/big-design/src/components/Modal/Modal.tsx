@@ -1,9 +1,9 @@
+import { CloseIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 import { createPortal } from 'react-dom';
 
 import { uniqueId } from '../../utils';
 import { Button } from '../Button';
-import { CloseIcon } from '../Icons';
 import { H2 } from '../Typography';
 import { HeadingProps } from '../Typography/Typography';
 

@@ -2,9 +2,9 @@ import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
-import { Spinner } from '../Spinner';
+import { ProgressCircle } from '../ProgressCircle';
 
-import { ContentWrapper, StyledButton } from './styled';
+import { ContentWrapper, LoadingSpinnerWrapper, StyledButton } from './styled';
 
 interface PrivateProps {
   forwardedRef: Ref<HTMLButtonElement>;
@@ -26,7 +26,7 @@ class RawButton extends React.PureComponent<ButtonProps & PrivateProps> {
 
     return (
       <StyledButton role="button" tabIndex={0} {...props} onClick={this.handleClick} ref={forwardedRef}>
-        {props.isLoading ? <Spinner overlay={false} /> : null}
+        {props.isLoading ? this.renderLoadingSpinner() : null}
         <ContentWrapper isLoading={props.isLoading} theme={props.theme}>
           {!props.iconOnly && props.iconLeft}
           {props.iconOnly}
@@ -44,6 +44,14 @@ class RawButton extends React.PureComponent<ButtonProps & PrivateProps> {
       this.props.onClick(event);
     }
   };
+
+  private renderLoadingSpinner() {
+    return (
+      <LoadingSpinnerWrapper alignItems="center">
+        <ProgressCircle size="xSmall" />
+      </LoadingSpinnerWrapper>
+    );
+  }
 }
 
 export const StyleableButton = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (

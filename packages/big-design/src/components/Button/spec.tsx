@@ -1,8 +1,7 @@
+import { AddIcon } from '@bigcommerce/big-design-icons';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
-
-import { PlusIcon } from '../Icons';
 
 import { Button } from './index';
 import { StyleableButton } from './private';
@@ -114,26 +113,26 @@ test('render loading button', () => {
 });
 
 test('render icon only button', () => {
-  const { container } = render(<Button iconOnly={<PlusIcon />}>Button</Button>);
+  const { container } = render(<Button iconOnly={<AddIcon />}>Button</Button>);
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render icon left button', () => {
-  const { container } = render(<Button iconLeft={<PlusIcon />}>Button</Button>);
+  const { container } = render(<Button iconLeft={<AddIcon />}>Button</Button>);
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render icon right button', () => {
-  const { container } = render(<Button iconRight={<PlusIcon />}>Button</Button>);
+  const { container } = render(<Button iconRight={<AddIcon />}>Button</Button>);
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render icon left and right button', () => {
   const { container } = render(
-    <Button iconLeft={<PlusIcon />} iconRight={<PlusIcon />}>
+    <Button iconLeft={<AddIcon />} iconRight={<AddIcon />}>
       Button
     </Button>,
   );
@@ -176,7 +175,7 @@ test('private StyleableButton forwards styles', () => {
 });
 
 test('render only icon only with left and right icons button', () => {
-  const plusIcon = <PlusIcon data-testid="icon-only" />;
+  const plusIcon = <AddIcon data-testid="icon-only" />;
   const { getAllByTestId } = render(
     <Button iconLeft={plusIcon} iconOnly={plusIcon} iconRight={plusIcon}>
       Button

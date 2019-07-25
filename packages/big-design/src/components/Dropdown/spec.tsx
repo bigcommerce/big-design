@@ -1,9 +1,9 @@
+import { AddIcon } from '@bigcommerce/big-design-icons';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 
 import { Button } from '../Button';
-import { PlusIcon } from '../Icons';
 
 import { Dropdown } from './Dropdown';
 
@@ -325,7 +325,7 @@ test('dropdown action supports icons', () => {
     <Dropdown trigger={<Button>Button</Button>}>
       <Dropdown.Item value={0}>Option</Dropdown.Item>
       <Dropdown.Item value={1}>Option</Dropdown.Item>
-      <Dropdown.Action iconLeft={<PlusIcon />}>Action</Dropdown.Action>
+      <Dropdown.Action iconLeft={<AddIcon />}>Action</Dropdown.Action>
     </Dropdown>,
   );
 

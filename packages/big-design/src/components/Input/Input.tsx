@@ -1,13 +1,13 @@
+import { ErrorIcon } from '@bigcommerce/big-design-icons';
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { Ref } from 'react';
 
 import { uniqueId } from '../../utils';
 import { Form } from '../Form';
-import { ErrorIcon } from '../Icons';
 import { Small } from '../Typography';
 
-import { StyledErrorIconWrapper, StyledIconWrapper, StyledInput, StyledInputWrapper } from './styled';
+import { StyledIconWrapper, StyledInput, StyledInputWrapper } from './styled';
 
 interface Props {
   description?: React.ReactChild;
@@ -106,9 +106,9 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
     }
 
     return (
-      <StyledErrorIconWrapper>
-        <ErrorIcon />
-      </StyledErrorIconWrapper>
+      <StyledIconWrapper position="right">
+        <ErrorIcon color="danger" />
+      </StyledIconWrapper>
     );
   }
 
@@ -121,7 +121,7 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
   }
 
   private renderIconRight() {
-    if (!this.props.iconRight) {
+    if (!this.props.iconRight || this.props.error) {
       return null;
     }
 

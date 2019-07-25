@@ -1,8 +1,7 @@
+import { AddIcon } from '@bigcommerce/big-design-icons';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
-
-import { PlusIcon } from '../Icons';
 
 import { Select } from './Select';
 
@@ -407,7 +406,7 @@ test('select action supports icons', () => {
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
       <Select.Option value="en">England</Select.Option>
-      <Select.Action iconLeft={<PlusIcon />}>Action</Select.Action>
+      <Select.Action iconLeft={<AddIcon />}>Action</Select.Action>
     </Select>,
   );
 
