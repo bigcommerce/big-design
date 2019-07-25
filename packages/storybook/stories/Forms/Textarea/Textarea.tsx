@@ -12,9 +12,6 @@ import {
 
 export const TextareaStory: React.FC = () => (
   <>
-    {/*
-      - Fluff Text
-    */}
     <H0>Textarea</H0>
 
     <Text>
