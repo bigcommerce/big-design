@@ -65,6 +65,7 @@ storiesOf('Forms', module)
                 id="manualId"
                 placeholder="Placeholder text"
                 type="password"
+                iconRight={<AddIcon />}
                 error="Your password is not strong enough."
               />
             </Form.Row>
