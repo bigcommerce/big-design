@@ -77,6 +77,7 @@ export const InputStory: React.FC = () => (
             description="Provide a valid email address."
             value="example@"
             error="Email address must contain a domain name."
+            onChange={() => null}
           />
         </Form.Row>
       </Form>

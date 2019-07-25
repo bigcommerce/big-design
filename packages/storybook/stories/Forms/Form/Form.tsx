@@ -86,10 +86,10 @@ export const FormStory: React.FC = () => (
           <Input label="Example Input" placeholder="Example" />
         </Form.Row>
         <Form.Row>
-          <Checkbox checked={true} label="Example Checkbox" />
+          <Checkbox checked={true} onChange={() => null} label="Example Checkbox" />
         </Form.Row>
         <Form.Row>
-          <Radio checked={true} label="Example Radio" />
+          <Radio checked={true} onChange={() => null} label="Example Radio" />
         </Form.Row>
         <Form.Row>
           <Select label="Example Select" placeholder="Example" onItemChange={() => null}>

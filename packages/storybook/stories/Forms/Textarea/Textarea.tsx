@@ -84,6 +84,7 @@ export const TextareaStory: React.FC = () => (
             value="Start of some text..."
             minLength={64}
             error="Field needs to contain at least 64 characters."
+            onChange={() => null}
           />
         </Form.Row>
       </Form>
