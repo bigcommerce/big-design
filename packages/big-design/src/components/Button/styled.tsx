@@ -6,7 +6,9 @@ import { Flex } from '../Flex';
 
 import { ButtonProps } from './index';
 
-export const StyledButton = styled.button<ButtonProps & MarginProps>`
+export const StyledButton = styled.button.attrs({
+  className: 'bd-button',
+})<ButtonProps & MarginProps>`
   ${withMargins()};
 
   align-items: center;
@@ -42,7 +44,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
     pointer-events: none;
   }
 
-  + button {
+  + .bd-button {
     margin-left: ${({ theme }) => theme.spacing.xSmall};
   }
 
