@@ -94,7 +94,7 @@ storiesOf('Grid', module).add('Overview', () => (
 
     <CodePreview scope={{ ExampleBox }}>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(3, 1fr)" style={{ height: '100%' }}>
+      <Grid columns="repeat(3, 1fr)">
         <Grid.Item>
           <ExampleBox>
             Reprehenderit ullamco et elit eu duis non reprehenderit eiusmod pariatur ea deserunt irure. Reprehenderit et
