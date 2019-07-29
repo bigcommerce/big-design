@@ -55,15 +55,15 @@ export const StyledInput = styled.input<InputProps>`
   }
 
   ${props =>
-    props.error &&
+    (props.error || props.iconRight) &&
     css`
-      padding-right: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xxSmall)};
+      padding-right: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xSmall)};
     `};
 
   ${props =>
     props.iconLeft &&
     css`
-      padding-left: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xxSmall)};
+      padding-left: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xSmall)};
     `};
 `;
 

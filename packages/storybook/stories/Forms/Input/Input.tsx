@@ -95,8 +95,8 @@ export const InputStory: React.FC = () => (
       {/* jsx-to-string:start */}
       <Form>
         <Form.Row>
-          <Input label="Example" placeholder="Example" iconLeft={<CheckCircleIcon color="success" size="large" />} />
-          <Input label="Example" placeholder="Example" iconRight={<CheckCircleIcon color="success" size="large" />} />
+          <Input label="Example" placeholder="Example" iconLeft={<CheckCircleIcon color="success" />} />
+          <Input label="Example" placeholder="Example" iconRight={<CheckCircleIcon color="success" />} />
         </Form.Row>
       </Form>
       {/* jsx-to-string:end */}
