@@ -3,9 +3,7 @@ import styled, { css } from 'styled-components';
 
 // TODO: Convert to BigDesign table when built
 export const StyledTableFigure = styled.figure`
-  margin: ${({ theme }) => theme.spacing.none};
-  margin-bottom: ${({ theme }) => theme.spacing.xLarge};
-  margin-top: ${({ theme }) => theme.spacing.xLarge};
+  margin: ${({ theme }) => `${theme.spacing.xLarge} ${theme.spacing.none}`};
   max-width: 100%;
   overflow-x: auto;
   white-space: nowrap;
