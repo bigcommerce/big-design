@@ -1,4 +1,3 @@
-import { AddIcon } from '@bigcommerce/big-design-icons';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
@@ -283,75 +282,15 @@ test('dropdown items should be highlighted when moused over', () => {
   expect(option.dataset.highlighted).toBe('true');
 });
 
-test('dropdown should render dropdown action', () => {
-  const { getByRole, getByText } = render(
-    <Dropdown trigger={<Button>Button</Button>}>
-      <Dropdown.Item value={0}>Option</Dropdown.Item>
-      <Dropdown.Item value={1}>Option</Dropdown.Item>
-      <Dropdown.Action>Action</Dropdown.Action>
-    </Dropdown>,
-  );
+test('renders the dropdown menu open', () => {
+  const { getByRole, queryByRole } = render(DropdownMock);
 
-  const trigger = getByRole('button');
+  expect(queryByRole('menu')).not.toBeInTheDocument();
 
-  fireEvent.click(trigger);
-
-  expect(getByText('Action')).toBeInTheDocument();
-});
-
-test('dropdown action should execute onActionClick function', () => {
-  const onActionClick = jest.fn();
-  const { getByRole, getByText } = render(
-    <Dropdown trigger={<Button>Button</Button>} onActionClick={onActionClick}>
-      <Dropdown.Item value={0}>Option</Dropdown.Item>
-      <Dropdown.Item value={1}>Option</Dropdown.Item>
-      <Dropdown.Action>Action</Dropdown.Action>
-    </Dropdown>,
-  );
-
-  const trigger = getByRole('button');
-
-  fireEvent.click(trigger);
-
-  const action = getByText('Action');
-
-  fireEvent.click(action);
-
-  expect(onActionClick).toHaveBeenCalled();
-});
-
-test('dropdown action supports icons', () => {
-  const { getByRole, getByText } = render(
-    <Dropdown trigger={<Button>Button</Button>}>
-      <Dropdown.Item value={0}>Option</Dropdown.Item>
-      <Dropdown.Item value={1}>Option</Dropdown.Item>
-      <Dropdown.Action iconLeft={<AddIcon />}>Action</Dropdown.Action>
-    </Dropdown>,
-  );
-
-  const trigger = getByRole('button');
-
-  fireEvent.click(trigger);
-
-  const action = getByText('Action');
-
-  expect(action).toMatchSnapshot();
-});
-
-test('dropdown action supports actionTypes', () => {
-  const { getByRole } = render(
-    <Dropdown trigger={<Button>Button</Button>}>
-      <Dropdown.Item value={0}>Option</Dropdown.Item>
-      <Dropdown.Item value={1}>Option</Dropdown.Item>
-      <Dropdown.Action actionType="destructive">Action</Dropdown.Action>
-    </Dropdown>,
-  );
-
-  const trigger = getByRole('button');
-
-  fireEvent.click(trigger);
+  fireEvent.click(getByRole('button'));
 
   const dropdown = getByRole('menu');
 
+  expect(dropdown).toBeInTheDocument();
   expect(dropdown.lastChild).toMatchSnapshot();
 });

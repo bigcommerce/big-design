@@ -4,7 +4,6 @@ import { Manager, Reference, RefHandler } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
-import { ListAction } from '../List/Action/Action';
 import { ListItem } from '../List/Item/Item';
 import { List } from '../List/List';
 
@@ -17,14 +16,12 @@ interface Props {
   maxHeight?: number;
   placement?: Placement;
   trigger: React.ReactElement;
-  onActionClick?(): void;
   onItemClick?(value: AllHTMLAttributes<HTMLElement>['value']): void;
 }
 
 export type DropdownProps = Props & React.HTMLAttributes<HTMLUListElement>;
 
 export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> {
-  static Action = ListAction;
   static Item = ListItem;
 
   state = {
@@ -39,7 +36,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
   private readonly uniqueTriggerId = uniqueId('trigger_');
 
   render() {
-    const { children, maxHeight, onActionClick, onItemClick, placement, trigger, ...rest } = this.props;
+    const { children, maxHeight, onItemClick, placement, trigger, ...rest } = this.props;
 
     const highlightedItem = this.getHighlightedItem();
     const aria = highlightedItem ? { 'aria-activedescendant': highlightedItem.id } : {};
@@ -90,12 +87,12 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
       children,
       (child, index) =>
         React.isValidElement(child) &&
-        (child.type === ListItem || child.type === ListAction) &&
+        child.type === ListItem &&
         React.cloneElement<React.LiHTMLAttributes<HTMLLIElement>>(child, {
           // @ts-ignore
           'data-highlighted': index === this.state.highlightedIndex,
           id: this.getItemId(child, index),
-          onClick: child.type === ListItem ? this.handleOnItemClick : this.handleOnActionClick,
+          onClick: this.handleOnItemClick,
           onFocus: this.handleOnItemFocus,
           onMouseOver: this.handleOnItemMouseOver,
           role: 'menuitem',
@@ -174,16 +171,6 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     if (ref) {
       this.listRef = ref as HTMLUListElement;
     }
-  };
-
-  private handleOnActionClick = () => {
-    const { onActionClick } = this.props;
-
-    if (onActionClick) {
-      onActionClick();
-    }
-
-    this.toggleList();
   };
 
   private handleOnClickOutside = (event: MouseEvent) => {
