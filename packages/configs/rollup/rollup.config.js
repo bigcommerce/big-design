@@ -30,6 +30,8 @@ function generateConfig(pkg) {
       replace({
         'process.env.NODE_ENV': JSON.stringify(nodeEnv)
       }),
+      resolve(),
+      commonjs(),
       typescript({
         cacheRoot: tmpdir(),
         check: nodeEnv === 'production',
@@ -40,8 +42,6 @@ function generateConfig(pkg) {
         extensions: [...DEFAULT_EXTENSIONS, 'ts', 'tsx'],
         exclude: 'node_modules/**'
       }),
-      commonjs(),
-      resolve(),
       sourceMaps(),
       filesize()
     ]
