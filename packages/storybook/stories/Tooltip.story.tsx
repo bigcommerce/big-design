@@ -1,4 +1,5 @@
-import { Box, Button, Flex, PlusIcon, Tooltip } from '@bigcommerce/big-design';
+import { Box, Button, Flex, Tooltip } from '@bigcommerce/big-design';
+import { AddIcon } from '@bigcommerce/big-design-icons';
 import { select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
@@ -34,7 +35,7 @@ storiesOf('Tooltip', module).add('Overview', () => (
     </Box>
     <Box marginTop="xxLarge">
       <Tooltip content="Tooltip Content" placement="bottom">
-        <PlusIcon />
+        <AddIcon />
       </Tooltip>
     </Box>
   </Flex>
