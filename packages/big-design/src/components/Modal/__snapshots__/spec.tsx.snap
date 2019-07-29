@@ -76,6 +76,7 @@ exports[`render open modal 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   padding: 0 0.5rem;
@@ -91,6 +92,10 @@ exports[`render open modal 1`] = `
 .c5[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c5 + .bd-button {
+  margin-left: 0.5rem;
 }
 
 .c5:active {
@@ -213,7 +218,7 @@ exports[`render open modal 1`] = `
           class="c4"
         >
           <button
-            class="c5"
+            class="bd-button c5"
             role="button"
             tabindex="0"
           >
@@ -321,6 +326,7 @@ exports[`render open modal without backdrop 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   padding: 0 0.5rem;
@@ -336,6 +342,10 @@ exports[`render open modal without backdrop 1`] = `
 .c5[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c5 + .bd-button {
+  margin-left: 0.5rem;
 }
 
 .c5:active {
@@ -455,7 +465,7 @@ exports[`render open modal without backdrop 1`] = `
           class="c4"
         >
           <button
-            class="c5"
+            class="bd-button c5"
             role="button"
             tabindex="0"
           >
