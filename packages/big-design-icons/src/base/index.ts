@@ -1,6 +1,6 @@
 import { remCalc, theme as defaultTheme, Colors, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   className: string;
@@ -12,18 +12,15 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
 
 export function createStyledIcon(Icon: React.FC<Partial<IconProps>>) {
   const StyledIcon = styled(Icon)`
-    ${({ color, theme }) =>
-      color &&
-      css`
-        color: ${theme.colors[color]};
-      `};
+    vertical-align: middle;
+
+    ${({ color, theme }) => color && { color: theme.colors[color] }};
 
     ${({ size, theme }) =>
-      size &&
-      css`
-        height: ${typeof size === 'number' ? remCalc(size) : theme.spacing[size]};
-        width: ${typeof size === 'number' ? remCalc(size) : theme.spacing[size]};
-      `};
+      size && {
+        height: typeof size === 'number' ? remCalc(size) : theme.spacing[size],
+        width: typeof size === 'number' ? remCalc(size) : theme.spacing[size],
+      }};
   `;
 
   StyledIcon.defaultProps = {

@@ -5,7 +5,7 @@ import React from 'react';
 
 import { createStyledIcon, IconProps } from '../base';
 
-const Icon = React.memo<Partial<IconProps>>(({ title, ...props }) => (
+const Icon = React.memo<Partial<IconProps>>(({ title, theme, ...props }) => (
   <svg width={24} height={24} viewBox="0 0 24 24" stroke="currentColor" fill="currentColor" strokeWidth="0" {...props}>
     <title>{title}</title>
     <path opacity={0.87} fill="none" d="M24 24H0V0h24v24z" />
