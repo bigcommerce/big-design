@@ -4,7 +4,8 @@ import styled, { css } from 'styled-components';
 // TODO: Convert to BigDesign table when built
 export const StyledTableFigure = styled.figure`
   margin: ${({ theme }) => theme.spacing.none};
-  margin-top: -${({ theme }) => theme.spacing.xLarge}
+  margin-bottom: ${({ theme }) => theme.spacing.xLarge};
+  margin-top: ${({ theme }) => theme.spacing.xLarge};
   max-width: 100%;
   overflow-x: auto;
   white-space: nowrap;
@@ -17,8 +18,6 @@ export const StyledTableFigure = styled.figure`
 export const StyledTable = styled.table`
   border-collapse: collapse;
   color: ${({ theme }) => theme.colors.secondary70};
-  margin-bottom: ${({ theme }) => theme.spacing.xLarge};
-  margin-top: ${({ theme }) => theme.spacing.xLarge};
   text-align: left;
   width: 100%;
 `;

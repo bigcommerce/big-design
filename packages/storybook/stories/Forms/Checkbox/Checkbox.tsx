@@ -20,16 +20,11 @@ export const CheckboxStory: React.FC = () => (
       {/* jsx-to-string:start */}
       {function Example() {
         const [checked, setChecked] = React.useState(false);
-        const [label, setLabel] = React.useState('Unchecked');
-
-        const handleChange = () => {
-          setChecked(!checked);
-          setLabel(!checked ? 'Checked' : 'Unchecked');
-        };
+        const handleChange = () => setChecked(!checked);
 
         return (
           <Form.Row>
-            <Checkbox label={label} checked={checked} onChange={handleChange} />
+            <Checkbox label={checked ? 'Checked' : 'Unchecked'} checked={checked} onChange={handleChange} />
           </Form.Row>
         );
       }}
