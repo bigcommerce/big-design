@@ -15,7 +15,6 @@ export * from './ProgressBar';
 export * from './ProgressCircle';
 export * from './Radio';
 export * from './Select';
-export * from './Spinner';
 export * from './Tabs';
 export * from './Textarea';
 export * from './Tooltip';
