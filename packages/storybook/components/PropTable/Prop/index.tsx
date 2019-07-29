@@ -8,7 +8,7 @@ interface Props {
   name: string;
   defaults?: string;
   required?: boolean;
-  types?: string | string[] | React.ReactElement;
+  types?: string | React.ReactElement | Array<React.ReactElement | string>;
 }
 
 export const Prop: React.FC<Props> = props => {
