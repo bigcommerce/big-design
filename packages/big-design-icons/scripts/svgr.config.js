@@ -19,7 +19,7 @@ module.exports = {
     import { createStyledIcon, IconProps } from '../base';
     BREAK
 
-    const Icon = React.memo<Partial<IconProps>>(({ title, ...props }) => (
+    const Icon = React.memo<Partial<IconProps>>(({ title, theme, ...props }) => (
       JSX
     ));
 
