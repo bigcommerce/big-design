@@ -6,9 +6,7 @@ import { Flex } from '../Flex';
 
 import { ButtonProps } from './index';
 
-export const StyledButton = styled.button.attrs({
-  className: 'bd-button',
-})<ButtonProps & MarginProps>`
+export const StyledButton = styled.button<ButtonProps & MarginProps>`
   ${withMargins()};
 
   align-items: center;
