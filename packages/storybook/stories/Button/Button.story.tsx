@@ -3,7 +3,8 @@ import { AddIcon, ArrowDropDownIcon } from '@bigcommerce/big-design-icons';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Code, CodePreview } from '../../components';
+import { Code, CodePreview, Collapsible } from '../../components';
+import { MarginPropTable } from '../Utilities/index';
 
 import { ButtonPropTable } from './';
 
@@ -28,7 +29,15 @@ storiesOf('Button', module).add('Overview', () => (
 
     <H1>API</H1>
 
+    <H2>Button</H2>
+
     <ButtonPropTable />
+
+    <H2>Inherited Props</H2>
+
+    <Collapsible title="Margin Props">
+      <MarginPropTable />
+    </Collapsible>
 
     <H1>Variants</H1>
 
