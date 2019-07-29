@@ -54,7 +54,8 @@ exports[`renders all together 1`] = `
   padding: 0.25rem 0.75rem;
   width: 100%;
   border: 1px solid #D9DCE9;
-  padding-left: 2.25rem;
+  padding-right: 2.5rem;
+  padding-left: 2.5rem;
 }
 
 .c5:hover:not([disabled]) {

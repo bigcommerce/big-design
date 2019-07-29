@@ -5,7 +5,8 @@
     "target": "es5",
     "rootDirs": ["stories"],
     "baseUrl": "src",
-    "noUnusedLocals": false
+    "noUnusedLocals": false,
+    "noImplicitAny": false,
   },
   "include": ["stories/**/*", "typings.d.ts", "styled.d.ts", ".storybook/*", "components/**/*"],
   "exclude": ["node_modules", "build", "scripts"]
