@@ -95,16 +95,16 @@ exports[`renders all together 1`] = `
   font-size: 1rem;
 }
 
-.c3 {
-  position: absolute;
-  color: #5E637A;
-  left: 0.75rem;
-}
-
 .c6 {
   position: absolute;
   color: #5E637A;
   right: 0.75rem;
+}
+
+.c3 {
+  position: absolute;
+  color: #5E637A;
+  left: 0.75rem;
 }
 
 <div>
