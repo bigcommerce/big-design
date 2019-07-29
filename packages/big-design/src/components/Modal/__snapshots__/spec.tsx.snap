@@ -94,7 +94,7 @@ exports[`render open modal 1`] = `
   pointer-events: none;
 }
 
-.c5 + button {
+.c5 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -218,7 +218,7 @@ exports[`render open modal 1`] = `
           class="c4"
         >
           <button
-            class="c5"
+            class="bd-button c5"
             role="button"
             tabindex="0"
           >
@@ -344,7 +344,7 @@ exports[`render open modal without backdrop 1`] = `
   pointer-events: none;
 }
 
-.c5 + button {
+.c5 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -465,7 +465,7 @@ exports[`render open modal without backdrop 1`] = `
           class="c4"
         >
           <button
-            class="c5"
+            class="bd-button c5"
             role="button"
             tabindex="0"
           >

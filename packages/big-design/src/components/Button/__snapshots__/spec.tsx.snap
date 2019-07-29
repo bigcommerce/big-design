@@ -56,7 +56,7 @@ exports[`render default button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -97,7 +97,7 @@ exports[`render default button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -165,7 +165,7 @@ exports[`render destructive button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -206,7 +206,7 @@ exports[`render destructive button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -274,7 +274,7 @@ exports[`render destructive disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -315,7 +315,7 @@ exports[`render destructive disabled button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
@@ -384,7 +384,7 @@ exports[`render disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -425,7 +425,7 @@ exports[`render disabled button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
@@ -502,7 +502,7 @@ exports[`render icon left and right button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -543,7 +543,7 @@ exports[`render icon left and right button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -654,7 +654,7 @@ exports[`render icon left button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -695,7 +695,7 @@ exports[`render icon left button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -788,7 +788,7 @@ exports[`render icon only button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -829,7 +829,7 @@ exports[`render icon only button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -921,7 +921,7 @@ exports[`render icon right button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -962,7 +962,7 @@ exports[`render icon right button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1102,7 +1102,7 @@ exports[`render loading button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -1155,7 +1155,7 @@ exports[`render loading button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1246,7 +1246,7 @@ exports[`render secondary button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -1287,7 +1287,7 @@ exports[`render secondary button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1355,7 +1355,7 @@ exports[`render secondary destructive button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -1396,7 +1396,7 @@ exports[`render secondary destructive button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1464,7 +1464,7 @@ exports[`render secondary destructive disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -1505,7 +1505,7 @@ exports[`render secondary destructive disabled button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
@@ -1574,7 +1574,7 @@ exports[`render secondary disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -1615,7 +1615,7 @@ exports[`render secondary disabled button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
@@ -1684,7 +1684,7 @@ exports[`render subtle button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -1726,7 +1726,7 @@ exports[`render subtle button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1794,7 +1794,7 @@ exports[`render subtle destructive button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -1836,7 +1836,7 @@ exports[`render subtle destructive button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1904,7 +1904,7 @@ exports[`render subtle destructive disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -1946,7 +1946,7 @@ exports[`render subtle destructive disabled button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
@@ -2015,7 +2015,7 @@ exports[`render subtle disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + button {
+.c0 + .bd-button {
   margin-left: 0.5rem;
 }
 
@@ -2057,7 +2057,7 @@ exports[`render subtle disabled button 1`] = `
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
