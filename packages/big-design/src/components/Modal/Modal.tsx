@@ -19,7 +19,7 @@ export interface ModalProps {
 }
 
 const ModalActions = ({ children }: { children: React.ReactNode }) => (
-  <StyledModalActions direction="row" justifyContent="flex-end" marginTop={{ mobile: 'medium', tablet: 'xxLarge' }}>
+  <StyledModalActions justifyContent="flex-end" marginTop={{ mobile: 'medium', tablet: 'xxLarge' }}>
     {children}
   </StyledModalActions>
 );

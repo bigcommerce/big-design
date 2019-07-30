@@ -1084,16 +1084,6 @@ exports[`render loading button 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -1101,10 +1091,17 @@ exports[`render loading button 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -1200,6 +1197,14 @@ exports[`render loading button 1`] = `
   position: absolute;
 }
 
+@media (min-width:0px) {
+  .c2 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
 @media (min-width:720px) {
   .c2 {
     -webkit-flex-direction: row;
@@ -1228,7 +1233,7 @@ exports[`render loading button 1`] = `
 >
   <div
     class="c1 c2 c3"
-    direction="row"
+    direction="[object Object]"
     wrap="nowrap"
   >
     <svg
