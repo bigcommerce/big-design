@@ -48,7 +48,7 @@ class Story extends React.PureComponent<{}, State> {
           </Modal.Body>
 
           <Modal.Actions>
-            <Button variant="subtle" onClick={this.closeModal}>
+            <Button variant="subtle" onClick={this.closeModal} marginRight="xSmall">
               Cancel
             </Button>
             <Button onClick={this.closeModal}>Apply</Button>
@@ -71,7 +71,7 @@ class Story extends React.PureComponent<{}, State> {
           </Modal.Body>
 
           <Modal.Actions>
-            <Button variant="subtle" onClick={this.closeDialog}>
+            <Button variant="subtle" onClick={this.closeDialog} marginRight="xSmall">
               Cancel
             </Button>
             <Button onClick={this.closeDialog}>Apply</Button>

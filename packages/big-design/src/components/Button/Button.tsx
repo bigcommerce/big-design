@@ -25,14 +25,7 @@ class RawButton extends React.PureComponent<ButtonProps & PrivateProps> {
     const { forwardedRef, ...props } = this.props;
 
     return (
-      <StyledButton
-        role="button"
-        tabIndex={0}
-        className="bd-button"
-        {...props}
-        onClick={this.handleClick}
-        ref={forwardedRef}
-      >
+      <StyledButton role="button" tabIndex={0} {...props} onClick={this.handleClick} ref={forwardedRef}>
         {props.isLoading ? this.renderLoadingSpinner() : null}
         <ContentWrapper isLoading={props.isLoading} theme={props.theme}>
           {!props.iconOnly && props.iconLeft}
