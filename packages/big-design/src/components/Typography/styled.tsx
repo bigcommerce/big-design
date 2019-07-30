@@ -7,7 +7,7 @@ import { withMargins } from '../../mixins';
 import { HeadingProps, SmallProps, TextProps, TypographyProps } from './Typography';
 
 const commonTextStyles = (props: TypographyProps) => css`
-  color: ${({ theme }) => theme.colors.secondary70};
+  color: ${({ theme }) => (props.color ? theme.colors[props.color] : theme.colors.secondary70)};
   margin: 0 0 ${({ theme }) => theme.spacing.medium};
 
   ${props.ellipsis && ellipsis()};
@@ -72,7 +72,7 @@ export const StyledText = styled.p<TextProps>`
 
 export const StyledSmall = styled.p<SmallProps>`
   ${props => commonTextStyles(props)};
-  color: ${({ theme }) => theme.colors.secondary60};
+  color: ${({ color, theme }) => (color ? theme.colors[color] : theme.colors.secondary60)};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.small};

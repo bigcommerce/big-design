@@ -1,3 +1,4 @@
+import { Colors } from '@bigcommerce/big-design-theme';
 import React from 'react';
 
 import { MarginProps } from '../../mixins';
@@ -5,6 +6,7 @@ import { MarginProps } from '../../mixins';
 import { StyledH0, StyledH1, StyledH2, StyledH3, StyledH4, StyledSmall, StyledText } from './styled';
 
 export interface TypographyProps {
+  color?: keyof Colors;
   ellipsis?: boolean;
 }
 

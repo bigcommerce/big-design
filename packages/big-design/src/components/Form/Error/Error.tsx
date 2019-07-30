@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { StyledError } from './styled';
+import { Small, SmallProps } from '../../Typography';
 
-export const Error: React.FC<React.HTMLAttributes<HTMLParagraphElement>> = ({ className, style, ...props }) => (
-  <StyledError {...props} />
+export const Error: React.FC<SmallProps> = ({ className, style, ...props }) => (
+  <Small color="danger" marginTop="xxSmall" {...props} />
 );
