@@ -8,6 +8,7 @@ import { BoxProps } from './Box';
 export const StyledBox = styled.div<BoxProps>`
   ${withMargins()};
   ${withPaddings()};
+  box-sizing: border-box;
 
   ${({ backgroundColor, theme }) =>
     backgroundColor &&

@@ -1,48 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render Grid 1`] = `
+.c1 {
+  box-sizing: border-box;
+}
+
 .c0 {
   display: grid;
   grid-gap: 1rem;
   grid-template: "head head" 80px "nav  main" 1fr "nav  foot" 10% / 120px 1fr;
 }
 
-.c1 {
+.c2 {
   grid-area: head;
 }
 
-.c2 {
+.c3 {
   grid-area: nav;
 }
 
-.c3 {
+.c4 {
   grid-area: main;
 }
 
-.c4 {
+.c5 {
   grid-area: foot;
 }
 
 <div
-  class="c0 "
+  class="c0 c1"
 >
   <div
-    class="c1 "
+    class="c2 c1"
   >
     Header
   </div>
   <div
-    class="c2 "
+    class="c3 c1"
   >
     Sidebar
   </div>
   <div
-    class="c3 "
+    class="c4 c1"
   >
     Content
   </div>
   <div
-    class="c4 "
+    class="c5 c1"
   >
     Footer
   </div>

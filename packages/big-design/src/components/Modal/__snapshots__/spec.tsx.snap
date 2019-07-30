@@ -14,6 +14,10 @@ exports[`render open modal 1`] = `
   width: 1.5rem;
 }
 
+.c3 {
+  box-sizing: border-box;
+}
+
 .c2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -257,6 +261,10 @@ exports[`render open modal without backdrop 1`] = `
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.c3 {
+  box-sizing: border-box;
 }
 
 .c2 {

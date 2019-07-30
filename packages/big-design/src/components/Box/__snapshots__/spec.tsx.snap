@@ -2,6 +2,7 @@
 
 exports[`has border props 1`] = `
 .c0 {
+  box-sizing: border-box;
   border: 1px solid #D9DCE9;
 }
 
@@ -12,6 +13,7 @@ exports[`has border props 1`] = `
 
 exports[`has elevation props 1`] = `
 .c0 {
+  box-sizing: border-box;
   border-radius: 0.25rem;
   box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
 }
@@ -24,6 +26,7 @@ exports[`has elevation props 1`] = `
 
 exports[`has individual border props 1`] = `
 .c0 {
+  box-sizing: border-box;
   border-right: 1px solid #D9DCE9;
   border-bottom: 1px solid #D9DCE9;
 }

@@ -953,18 +953,18 @@ exports[`render icon right button 1`] = `
 `;
 
 exports[`render loading button 1`] = `
-.c3 {
+.c4 {
   height: 1rem;
   width: 1rem;
 }
 
-.c4 {
+.c5 {
   fill: transparent;
   stroke-width: 0.125rem;
   stroke: #ECEEF5;
 }
 
-.c5 {
+.c6 {
   fill: transparent;
   stroke-width: 0.125rem;
   stroke: #ECEEF5;
@@ -981,6 +981,10 @@ exports[`render loading button 1`] = `
   transform: rotate(-90deg);
   -webkit-transition: stroke-dashoffset 0.35s;
   transition: stroke-dashoffset 0.35s;
+}
+
+.c3 {
+  box-sizing: border-box;
 }
 
 .c2 {
@@ -1077,7 +1081,7 @@ exports[`render loading button 1`] = `
   background-color: #D9DCE9;
 }
 
-.c6 {
+.c7 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1115,22 +1119,22 @@ exports[`render loading button 1`] = `
   tabindex="0"
 >
   <div
-    class="c1 c2 "
+    class="c1 c2 c3"
     direction="row"
     wrap="nowrap"
   >
     <svg
-      class="c3"
+      class="c4"
       role="progressbar"
     >
       <circle
-        class="c4"
+        class="c5"
         cx="0.5rem"
         cy="0.5rem"
         r="0.4375rem"
       />
       <circle
-        class="c5"
+        class="c6"
         cx="0.5rem"
         cy="0.5rem"
         r="0.4375rem"
@@ -1138,7 +1142,7 @@ exports[`render loading button 1`] = `
     </svg>
   </div>
   <span
-    class="c6"
+    class="c7"
   >
     Button
   </span>

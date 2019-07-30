@@ -7,7 +7,7 @@ import { Code, CodePreview } from '../../components';
 import { GridItemPropTable, GridPropTable } from './';
 
 const ExampleBox: React.FC = ({ children }) => (
-  <Box backgroundColor="secondary10" border="box" padding="small" style={{ boxSizing: 'border-box', height: '100%' }}>
+  <Box backgroundColor="secondary10" border="box" padding="small" style={{ height: '100%' }}>
     {children}
   </Box>
 );
