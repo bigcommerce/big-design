@@ -2,7 +2,7 @@
 
 exports[`render panel 1`] = `
 .c1 {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   box-sizing: border-box;
   background-color: #FFFFFF;
   border-radius: 0.25rem;
