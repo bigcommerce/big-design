@@ -57,7 +57,12 @@
     "@types/styled-components": "^4.1.12",
     "babel-loader": "^8.0.5",
     "jsx-to-string-loader": "^1.1.2",
+    "lint-staged": "^9.2.0",
+    "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
-    "ts-loader": "^6.0.4"
+    "ts-loader": "^6.0.4",
+    "tslint": "^5.14.0",
+    "typescript": "^3.5.3",
+    "typescript-styled-plugin": "^0.14.0"
   }
 }
