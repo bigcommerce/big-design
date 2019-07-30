@@ -8,7 +8,7 @@ export type PanelProps = React.HTMLAttributes<HTMLElement> & MarginProps;
 
 export const RawPanel: React.FC<PanelProps> = props => (
   <StyledPanel
-    marginBottom="xxLarge"
+    marginBottom="medium"
     {...props}
     backgroundColor="white"
     elevation="raised"
