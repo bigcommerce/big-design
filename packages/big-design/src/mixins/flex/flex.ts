@@ -89,7 +89,9 @@ const getResponsiveFlex: FlexedOverload = (
   cssKey: string,
 ): FlattenSimpleInterpolation[] => {
   const breakpointKeys = Object.keys(flexedProp).sort(
-    (a, b) => breakpointsOrder.indexOf(a as keyof Breakpoints) - breakpointsOrder.indexOf(b as keyof Breakpoints),
+    (firstBreakpoint, secondBreakpoint) =>
+      breakpointsOrder.indexOf(firstBreakpoint as keyof Breakpoints) -
+      breakpointsOrder.indexOf(secondBreakpoint as keyof Breakpoints),
   );
 
   return (breakpointKeys as Array<keyof Breakpoints>).map(
