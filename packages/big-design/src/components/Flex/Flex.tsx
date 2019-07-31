@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { FlexMixin } from '../../mixins';
 import { BoxProps } from '../Box';
 
 import { StyledFlex } from './styled';
+import { FlexMixin } from './types';
 import { FlexItem } from './Item/Item';
 
 export type FlexProps = BoxProps & FlexMixin;

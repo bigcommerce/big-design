@@ -1,9 +1,9 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { withFlexedContainer } from '../../mixins';
 import { Box } from '../Box';
 
+import { withFlexedContainer } from './types';
 import { FlexProps } from './Flex';
 
 export const StyledFlex = styled(Box)<FlexProps>`
