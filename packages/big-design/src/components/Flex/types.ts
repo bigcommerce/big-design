@@ -86,7 +86,7 @@ type SingleFlexShrink = number;
 type ResponsiveFlexShrink = Responsive<SingleFlexShrink>;
 type FlexShrink = SingleFlexShrink | ResponsiveFlexShrink;
 
-export type FlexMixin = Partial<{
+export type FlexedProps = Partial<{
   alignContent: AlignContent;
   alignItems: AlignItems;
   flexDirection: FlexDirection;
@@ -94,7 +94,7 @@ export type FlexMixin = Partial<{
   justifyContent: JustifyContent;
 }>;
 
-export type FlexItemMixin = Partial<{
+export type FlexedItemProps = Partial<{
   alignSelf: AlignSelf;
   flexBasis: FlexBasis;
   flexGrow: FlexGrow;
@@ -102,7 +102,7 @@ export type FlexItemMixin = Partial<{
   flexShrink: FlexShrink;
 }>;
 
-export const withFlexedContainer = () => css<FlexMixin>`
+export const withFlexedContainer = () => css<FlexedProps>`
   ${({ alignContent, theme }) => alignContent && getFlexedStyles(alignContent, theme, 'align-content')};
   ${({ alignItems, theme }) => alignItems && getFlexedStyles(alignItems, theme, 'align-items')};
   ${({ flexDirection, theme }) => flexDirection && getFlexedStyles(flexDirection, theme, 'flex-direction')};
@@ -110,7 +110,7 @@ export const withFlexedContainer = () => css<FlexMixin>`
   ${({ justifyContent, theme }) => justifyContent && getFlexedStyles(justifyContent, theme, 'justify-content')};
 `;
 
-export const withFlexedItems = () => css<FlexItemMixin>`
+export const withFlexedItems = () => css<FlexedItemProps>`
   ${({ alignSelf, theme }) => alignSelf && getFlexedStyles(alignSelf, theme, 'align-self')};
   ${({ flexBasis, theme }) => flexBasis && getFlexedStyles(flexBasis, theme, 'flex-basis')};
   ${({ flexGrow, theme }) => flexGrow && getFlexedStyles(flexGrow, theme, 'flex-grow')};
