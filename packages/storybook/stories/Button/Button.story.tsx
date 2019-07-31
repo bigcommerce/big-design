@@ -48,11 +48,13 @@ storiesOf('Button', module).add('Overview', () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(3, min-content)">
+      <>
         <Button variant="primary">Primary</Button>
         <Button variant="secondary">Secondary</Button>
-        <Button variant="subtle">Subtle</Button>
-      </Grid>
+        <Button variant="subtle" marginLeft={{ tablet: 'xLarge' }} marginTop={{ mobile: 'none' }}>
+          Subtle
+        </Button>
+      </>
       {/* jsx-to-string:end */}
     </CodePreview>
 

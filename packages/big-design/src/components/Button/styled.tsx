@@ -7,7 +7,9 @@ import { Flex } from '../Flex';
 import { ButtonProps } from './index';
 
 export const StyledButton = styled.button<ButtonProps & MarginProps>`
-  ${withMargins()};
+  && {
+    ${withMargins()};
+  }
 
   align-items: center;
   appearance: none;
@@ -39,6 +41,15 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   &[disabled] {
     border-color: ${({ theme }) => theme.colors.secondary30};
     pointer-events: none;
+  }
+
+  + .bd-button {
+    margin-top: ${({ theme }) => theme.spacing.xSmall};
+
+    ${({ theme }) => theme.breakpoints.tablet} {
+      margin-top: ${({ theme }) => theme.spacing.none};
+      margin-left: ${({ theme }) => theme.spacing.xSmall};
+    }
   }
 
   ${({ theme }) => theme.breakpoints.tablet} {
