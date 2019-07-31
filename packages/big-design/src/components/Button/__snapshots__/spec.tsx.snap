@@ -1233,8 +1233,6 @@ exports[`render loading button 1`] = `
 >
   <div
     class="c1 c2 c3"
-    direction="[object Object]"
-    wrap="nowrap"
   >
     <svg
       class="c4"

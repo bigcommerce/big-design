@@ -75,7 +75,7 @@ export class Modal extends React.PureComponent<ModalProps> {
         <StyledModalContent
           variant={variant}
           aria-labelledby={this.headerUniqueId}
-          direction="column"
+          flexDirection="column"
           padding={{ mobile: 'medium', tablet: 'xxLarge' }}
         >
           {this.renderClose()}

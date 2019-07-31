@@ -44,8 +44,6 @@ exports[`render flex 1`] = `
 
 <div
   class="c0 c1"
-  direction="[object Object]"
-  wrap="nowrap"
 >
   Flex
 </div>

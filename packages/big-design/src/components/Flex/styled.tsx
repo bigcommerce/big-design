@@ -15,8 +15,8 @@ export const StyledFlex = styled(Box)<FlexProps>`
 StyledFlex.defaultProps = {
   alignContent: 'stretch',
   alignItems: 'stretch',
-  direction: { mobile: 'column', tablet: 'row' },
-  wrap: 'nowrap',
+  flexDirection: { mobile: 'column', tablet: 'row' },
+  flexWrap: 'nowrap',
   justifyContent: 'flex-start',
   theme: defaultTheme,
 };

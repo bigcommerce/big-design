@@ -222,8 +222,6 @@ exports[`render open modal 1`] = `
       <div
         aria-labelledby="modal_header_0"
         class="c1 c2 c3"
-        direction="column"
-        wrap="nowrap"
       >
         <div
           class="c4"
@@ -480,8 +478,6 @@ exports[`render open modal without backdrop 1`] = `
       <div
         aria-labelledby="modal_header_0"
         class="c1 c2 c3"
-        direction="column"
-        wrap="nowrap"
       >
         <div
           class="c4"

@@ -50,7 +50,7 @@ const IconStory: React.FC = () => {
 
       <H1>Available Icons</H1>
 
-      <Flex wrap="wrap" justifyContent="center">
+      <Flex flexWrap="wrap" justifyContent="center">
         {Object.keys(icons).map(iconName => {
           const Icon = icons[iconName];
 
@@ -58,7 +58,7 @@ const IconStory: React.FC = () => {
             <Flex
               key={iconName}
               style={{ width: '300px' }}
-              direction="column"
+              flexDirection="column"
               borderRadius="normal"
               justifyContent="center"
               alignItems="center"

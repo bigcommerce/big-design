@@ -75,9 +75,9 @@ type SingleFlexGrow = number;
 type ResponsiveFlexGrow = Responsive<SingleFlexGrow>;
 export type FlexGrow = SingleFlexGrow | ResponsiveFlexGrow;
 
-type SingleOrder = number;
-type ResponsiveOrder = Responsive<SingleOrder>;
-export type Order = SingleOrder | ResponsiveOrder;
+type SingleFlexOrder = number;
+type ResponsiveFlexOrder = Responsive<SingleFlexOrder>;
+export type FlexOrder = SingleFlexOrder | ResponsiveFlexOrder;
 
 type SingleFlexShrink = number;
 type ResponsiveFlexShrink = Responsive<SingleFlexShrink>;

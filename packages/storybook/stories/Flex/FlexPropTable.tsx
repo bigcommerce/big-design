@@ -21,7 +21,7 @@ export const FlexPropTable: React.FC = () => {
         Specifies the default alignment for items in a flex container. Same as the{' '}
         <Code highlight={false}>align-items</Code> CSS property.
       </PropTable.Prop>
-      <PropTable.Prop name="direction" types={['row', 'column', 'row-reverse', 'column-reverse']} defaults="row">
+      <PropTable.Prop name="flexDirection" types={['row', 'column', 'row-reverse', 'column-reverse']} defaults="row">
         Determines the direction of flex items. Same as the <Code highlight={false}>flex-direction</Code> CSS property.
       </PropTable.Prop>
       <PropTable.Prop
@@ -43,7 +43,7 @@ export const FlexPropTable: React.FC = () => {
         Modifies the behavior of the <Code highlight={false}>flex-wrap</Code> property on the horizontal axis. Same as
         the <Code highlight={false}>justify-content</Code> CSS property.
       </PropTable.Prop>
-      <PropTable.Prop name="wrap" types={['nowrap', 'wrap', 'wrap-reversed']} defaults="nowrap">
+      <PropTable.Prop name="flexWrap" types={['nowrap', 'wrap', 'wrap-reversed']} defaults="nowrap">
         Controls whether flex items should wrap or not. Same as the <Code highlight={false}>flex-wrap</Code> CSS
         property.
       </PropTable.Prop>
@@ -63,21 +63,21 @@ export const FlexItemPropTable: React.FC = () => {
         <Code highlight={false}>align-self</Code> CSS property.
       </PropTable.Prop>
       <PropTable.Prop
-        name="basis"
+        name="flexBasis"
         types={['auto', 'fill', 'min-content', 'max-content', 'fit-content', 'content', 'string']}
         defaults="auto"
       >
         Specifies the inital length of a flex item. Same as the <Code highlight={false}>flex-basis</Code> CSS property.
       </PropTable.Prop>
-      <PropTable.Prop name="grow" types="number" defaults="0">
+      <PropTable.Prop name="flexGrow" types="number" defaults="0">
         Determines how much a flex item can grow relitive to the rest of the flex items. Same as the{' '}
         <Code highlight={false}>flex-grow</Code> CSS property.
       </PropTable.Prop>
-      <PropTable.Prop name="order" types="number" defaults="0">
+      <PropTable.Prop name="flexOrder" types="number" defaults="0">
         Modifies which order a flex item will appear relative to the other flex items in the container. Same as the{' '}
         <Code highlight={false}>order</Code> CSS property.
       </PropTable.Prop>
-      <PropTable.Prop name="shrink" types="number" defaults="1">
+      <PropTable.Prop name="flexShrink" types="number" defaults="1">
         Determines how much a flex item can shrink relitive to the rest of the flex items. Same as the{' '}
         <Code highlight={false}>flex-shrink</Code> CSS property.
       </PropTable.Prop>

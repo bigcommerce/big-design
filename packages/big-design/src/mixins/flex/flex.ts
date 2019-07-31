@@ -8,42 +8,42 @@ import {
   FlexBasis,
   FlexDirection,
   FlexGrow,
+  FlexOrder,
   FlexShrink,
   FlexWrap,
   JustifyContent,
-  Order,
 } from './props';
 
 export type FlexMixin = Partial<{
   alignContent: AlignContent;
   alignItems: AlignItems;
-  direction: FlexDirection;
-  wrap: FlexWrap;
+  flexDirection: FlexDirection;
+  flexWrap: FlexWrap;
   justifyContent: JustifyContent;
 }>;
 
 export type FlexItemMixin = Partial<{
   alignSelf: AlignSelf;
-  basis: FlexBasis;
-  grow: FlexGrow;
-  order: Order;
-  shrink: FlexShrink;
+  flexBasis: FlexBasis;
+  flexGrow: FlexGrow;
+  flexOrder: FlexOrder;
+  flexShrink: FlexShrink;
 }>;
 
 export const withFlexedContainer = () => css<FlexMixin>`
   ${({ alignContent, theme }) => alignContent && getFlexedStyles(alignContent, theme, 'align-content')};
   ${({ alignItems, theme }) => alignItems && getFlexedStyles(alignItems, theme, 'align-items')};
-  ${({ direction, theme }) => direction && getFlexedStyles(direction, theme, 'flex-direction')};
-  ${({ wrap, theme }) => wrap && getFlexedStyles(wrap, theme, 'flex-wrap')};
+  ${({ flexDirection, theme }) => flexDirection && getFlexedStyles(flexDirection, theme, 'flex-direction')};
+  ${({ flexWrap, theme }) => flexWrap && getFlexedStyles(flexWrap, theme, 'flex-wrap')};
   ${({ justifyContent, theme }) => justifyContent && getFlexedStyles(justifyContent, theme, 'justify-content')};
 `;
 
 export const withFlexedItems = () => css<FlexItemMixin>`
   ${({ alignSelf, theme }) => alignSelf && getFlexedStyles(alignSelf, theme, 'align-self')};
-  ${({ basis, theme }) => basis && getFlexedStyles(basis, theme, 'flex-basis')};
-  ${({ grow, theme }) => grow && getFlexedStyles(grow, theme, 'flex-grow')};
-  ${({ order, theme }) => order && getFlexedStyles(order, theme, 'order')};
-  ${({ shrink, theme }) => shrink && getFlexedStyles(shrink, theme, 'flex-shrink')};
+  ${({ flexBasis, theme }) => flexBasis && getFlexedStyles(flexBasis, theme, 'flex-basis')};
+  ${({ flexGrow, theme }) => flexGrow && getFlexedStyles(flexGrow, theme, 'flex-grow')};
+  ${({ flexOrder, theme }) => flexOrder && getFlexedStyles(flexOrder, theme, 'order')};
+  ${({ flexShrink, theme }) => flexShrink && getFlexedStyles(flexShrink, theme, 'flex-shrink')};
 `;
 
 interface FlexedOverload {
@@ -55,7 +55,7 @@ interface FlexedOverload {
   (flexedProp: AlignSelf, theme: ThemeInterface, cssKey: 'align-self'): FlattenSimpleInterpolation;
   (flexedProp: FlexBasis, theme: ThemeInterface, cssKey: 'flex-basis'): FlattenSimpleInterpolation;
   (flexedProp: FlexGrow, theme: ThemeInterface, cssKey: 'flex-grow'): FlattenSimpleInterpolation;
-  (flexedProp: Order, theme: ThemeInterface, cssKey: 'order'): FlattenSimpleInterpolation;
+  (flexedProp: FlexOrder, theme: ThemeInterface, cssKey: 'order'): FlattenSimpleInterpolation;
   (flexedProp: FlexShrink, theme: ThemeInterface, cssKey: 'flex-shrink'): FlattenSimpleInterpolation;
 }
 

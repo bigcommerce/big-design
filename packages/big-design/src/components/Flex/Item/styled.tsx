@@ -12,9 +12,9 @@ export const StyledFlexItem = styled(Box)<FlexItemProps>`
 
 StyledFlexItem.defaultProps = {
   alignSelf: 'auto',
-  basis: 'auto',
-  grow: 0,
-  order: 0,
-  shrink: 1,
+  flexBasis: 'auto',
+  flexGrow: 0,
+  flexOrder: 0,
+  flexShrink: 1,
   theme: defaultTheme,
 };

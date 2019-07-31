@@ -24,7 +24,7 @@ const placement: Array<Exclude<PopperProps['placement'], undefined>> = [
 ];
 
 storiesOf('Tooltip', module).add('Overview', () => (
-  <Flex alignItems="center" direction="column">
+  <Flex alignItems="center" flexDirection="column">
     <Tooltip content="Tooltip Content" placement={select('placement', placement, 'top')}>
       <Button>Hover</Button>
     </Tooltip>
