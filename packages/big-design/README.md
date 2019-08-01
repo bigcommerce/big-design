@@ -1,6 +1,6 @@
 # BigDesign
 
-BigDesign as React components.
+BigDesign React components.
 
 ### Documentation
 

@@ -17,7 +17,7 @@ This package is only meant to be used directly when more advanced features are n
 
 ### Quick start guide
 
-Add BigDesign Theme and styled-components to your project using `npm`:
+Add the BigDesign theme and styled-components to your project using `npm`:
 
 ```
 npm install @bigcommerce/big-design-theme styled-components

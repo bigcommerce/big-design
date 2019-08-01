@@ -4,7 +4,7 @@ BigDesign Icons as React components.
 
 ### Documentation
 
-You can find documentation, list of icons, and examples on our [docs page](https://bigcommerce.github.io/big-design).
+You can find documentation, list of icons, and examples on our [docs page](https://bigcommerce.github.io/big-design/?path=/story/icons--overview).
 
 ### Quick start guide
 
@@ -23,7 +23,7 @@ yarn add @bigcommerce/big-design-icons styled-components
 Import any icon component and use it anywhere in your app.
 
 ```jsx
-import { StoreIcon } from '@bigcommerce/big-design';
+import { StoreIcon } from '@bigcommerce/big-design-icons';
 
 ...
 
