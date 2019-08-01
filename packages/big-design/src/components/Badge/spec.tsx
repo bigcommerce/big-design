@@ -1,5 +1,4 @@
-import { AddIcon } from '@bigcommerce/big-design-icons';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 
