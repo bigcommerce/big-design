@@ -14,7 +14,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({ children, title }) => 
 
   return (
     <>
-      <StyledFlex alignItems="center" onClick={toggleIsCollapsed}>
+      <StyledFlex marginBottom="xLarge" alignItems="center" onClick={toggleIsCollapsed}>
         {isCollapsed ? <ChevronRightIcon title="Expand" /> : <ExpandMoreIcon title="Collapse" />}
         <Text>{title}</Text>
       </StyledFlex>
