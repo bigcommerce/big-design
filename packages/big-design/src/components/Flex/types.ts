@@ -1,5 +1,5 @@
-import { breakpointsOrder, Breakpoints, ThemeInterface } from '@bigcommerce/big-design-theme';
-import { css, FlattenSimpleInterpolation } from 'styled-components';
+import { ThemeInterface } from '@bigcommerce/big-design-theme';
+import { FlattenSimpleInterpolation } from 'styled-components';
 
 import { Responsive } from '../../types';
 
