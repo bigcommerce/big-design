@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../mixins';
 
-import { LozengeProps } from './Lozenge';
+import { BadgeProps } from './Badge';
 
-export const StyledLozenge = styled.span<LozengeProps>`
+export const StyledBadge = styled.span<BadgeProps>`
   ${withMargins()};
 
   color: ${({ theme }) => theme.colors.white};
@@ -21,12 +21,6 @@ export const StyledLozenge = styled.span<LozengeProps>`
     variant === 'secondary' &&
     css`
       background-color: ${theme.colors.secondary60};
-    `}
-
-  ${({ theme, variant }) =>
-    variant === 'primary' &&
-    css`
-      background-color: ${theme.colors.brand};
     `}
 
   ${({ theme, variant }) =>
@@ -49,7 +43,7 @@ export const StyledLozenge = styled.span<LozengeProps>`
     `}
 `;
 
-StyledLozenge.defaultProps = {
+StyledBadge.defaultProps = {
   theme: defaultTheme,
   variant: 'secondary',
 };

@@ -1,3 +1,4 @@
+export * from './Badge';
 export * from './Box';
 export * from './Button';
 export * from './Checkbox';
@@ -8,7 +9,6 @@ export * from './GlobalStyle';
 export * from './Grid';
 export * from './Input';
 export * from './Link';
-export * from './Lozenge';
 export * from './Modal';
 export * from './Panel';
 export * from './ProgressBar';

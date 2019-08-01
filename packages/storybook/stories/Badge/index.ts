@@ -1,0 +1,1 @@
+export { BadgePropTable } from './BadgePropTable';
