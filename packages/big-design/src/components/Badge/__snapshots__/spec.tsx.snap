@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render danger Badge 1`] = `
+.c0 {
+  color: #FFFFFF;
+  border-radius: 0.25rem;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.25rem;
+  background-color: #DB3643;
+}
+
+<span
+  class="c0"
+>
+  Badge
+</span>
+`;
+
+exports[`render default Badge 1`] = `
+.c0 {
+  color: #FFFFFF;
+  border-radius: 0.25rem;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.25rem;
+  background-color: #5E637A;
+}
+
+<span
+  class="c0"
+>
+  Badge
+</span>
+`;
+
+exports[`render secondary Badge 1`] = `
+.c0 {
+  color: #FFFFFF;
+  border-radius: 0.25rem;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.25rem;
+  background-color: #5E637A;
+}
+
+<span
+  class="c0"
+>
+  Badge
+</span>
+`;
+
+exports[`render success Badge 1`] = `
+.c0 {
+  color: #FFFFFF;
+  border-radius: 0.25rem;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.25rem;
+  background-color: #208831;
+}
+
+<span
+  class="c0"
+>
+  Badge
+</span>
+`;
+
+exports[`render warning Badge 1`] = `
+.c0 {
+  color: #FFFFFF;
+  border-radius: 0.25rem;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.25rem;
+  color: #313440;
+  background-color: #FFBF00;
+}
+
+<span
+  class="c0"
+>
+  Badge
+</span>
+`;
