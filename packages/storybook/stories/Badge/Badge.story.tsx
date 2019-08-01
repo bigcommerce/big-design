@@ -10,6 +10,7 @@ import { BadgePropTable } from './BadgePropTable';
 storiesOf('Badge', module).add('Overview', () => (
   <>
     <H0>Badges</H0>
+
     <Text>
       Badges are used to quickly indicate status or information to a user visually. Each variant correlates to a
       specific status or value.{' '}
@@ -17,23 +18,31 @@ storiesOf('Badge', module).add('Overview', () => (
         Badges Design Guidelines
       </Link>
     </Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Badge variant="success">ACTIVE</Badge>
+      <Badge variant="success">active</Badge>
       {/* jsx-to-string:end */}
     </CodePreview>
+
     <H1>API</H1>
+
     <BadgePropTable />
+
     <H2>Inherited Props</H2>
+
     <Collapsible title="Margin Props">
       <MarginPropTable />
     </Collapsible>
+
     <H1>Variants</H1>
+
     <Text>
       There are four types of variants to choose from: <Code>success</Code>, <Code>secondary</Code>,{' '}
       <Code>warning</Code>, and <Code>danger</Code>. You can determine what type by using the{' '}
       <Code primary>variant</Code> prop.
     </Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid columns="repeat(4, min-content)">
