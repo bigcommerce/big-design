@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Box } from '../Box';
 
-import { withFlexedContainer } from './types';
+import { withFlexedContainer } from './withFlex';
 import { FlexProps } from './Flex';
 
 export const StyledFlex = styled(Box)<FlexProps>`

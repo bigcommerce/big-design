@@ -2,7 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { Box } from '../../Box';
-import { withFlexedItems } from '../types';
+import { withFlexedItems } from '../withFlex';
 
 import { FlexItemProps } from './Item';
 
