@@ -1,4 +1,4 @@
-import { Button, Grid, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { Button, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
 import { AddIcon, ArrowDropDownIcon } from '@bigcommerce/big-design-icons';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
@@ -51,9 +51,7 @@ storiesOf('Button', module).add('Overview', () => (
       <>
         <Button variant="primary">Primary</Button>
         <Button variant="secondary">Secondary</Button>
-        <Button variant="subtle" marginLeft={{ tablet: 'xLarge' }} marginTop={{ mobile: 'none' }}>
-          Subtle
-        </Button>
+        <Button variant="subtle">Subtle</Button>
       </>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -67,10 +65,10 @@ storiesOf('Button', module).add('Overview', () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(2, min-content)">
+      <>
         <Button actionType="normal">Normal</Button>
         <Button actionType="destructive">Destructive</Button>
-      </Grid>
+      </>
       {/* jsx-to-string:end */}
     </CodePreview>
 
@@ -117,7 +115,7 @@ storiesOf('Button', module).add('Overview', () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(3, min-content)">
+      <>
         <Button disabled>Disabled</Button>
         <Button disabled variant="secondary">
           Disabled
@@ -125,7 +123,7 @@ storiesOf('Button', module).add('Overview', () => (
         <Button disabled variant="subtle">
           Disabled
         </Button>
-      </Grid>
+      </>
       {/* jsx-to-string:end */}
     </CodePreview>
 
@@ -138,14 +136,14 @@ storiesOf('Button', module).add('Overview', () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(4, min-content)">
+      <>
         <Button iconOnly={<AddIcon title="add" />} />
         <Button iconLeft={<AddIcon />}>Label</Button>
         <Button iconLeft={<AddIcon />} iconRight={<ArrowDropDownIcon />}>
           Label
         </Button>
         <Button iconRight={<ArrowDropDownIcon />}>Label</Button>
-      </Grid>
+      </>
       {/* jsx-to-string:end */}
     </CodePreview>
   </>

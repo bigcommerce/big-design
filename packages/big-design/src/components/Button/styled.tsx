@@ -31,6 +31,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   text-align: center;
   text-decoration: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
 
@@ -43,7 +44,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
     pointer-events: none;
   }
 
-  + .bd-button {
+  & + & {
     margin-top: ${({ theme }) => theme.spacing.xSmall};
 
     ${({ theme }) => theme.breakpoints.tablet} {

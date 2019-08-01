@@ -8,7 +8,7 @@ exports[`render closed modal 1`] = `
 `;
 
 exports[`render open modal 1`] = `
-.c7 {
+.c8 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -42,7 +42,7 @@ exports[`render open modal 1`] = `
   justify-content: flex-start;
 }
 
-.c5 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -80,6 +80,7 @@ exports[`render open modal 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   padding: 0 0.5rem;
@@ -88,33 +89,37 @@ exports[`render open modal 1`] = `
   color: #3C64F4;
 }
 
-.c5:focus {
+.c6:focus {
   outline: none;
 }
 
-.c5[disabled] {
+.c6[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c5:active {
+.c6 + .c5 {
+  margin-top: 0.5rem;
+}
+
+.c6:active {
   background-color: #DBE3FE;
 }
 
-.c5:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c5:hover:not(:active) {
+.c6:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c5[disabled] {
+.c6[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c6 {
+.c7 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -172,7 +177,14 @@ exports[`render open modal 1`] = `
 }
 
 @media (min-width:720px) {
-  .c5 {
+  .c6 + .c5 {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c6 {
     width: auto;
   }
 }
@@ -217,15 +229,15 @@ exports[`render open modal 1`] = `
           class="c4"
         >
           <button
-            class="c5"
+            class="c5 c6"
             role="button"
             tabindex="0"
           >
             <span
-              class="c6"
+              class="c7"
             >
               <svg
-                class="c7"
+                class="c8"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -257,7 +269,7 @@ exports[`render open modal 1`] = `
 exports[`render open modal without backdrop 1`] = `
 <body>
   <div />
-  .c7 {
+  .c8 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -291,7 +303,7 @@ exports[`render open modal without backdrop 1`] = `
   justify-content: flex-start;
 }
 
-.c5 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -329,6 +341,7 @@ exports[`render open modal without backdrop 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   padding: 0 0.5rem;
@@ -337,33 +350,37 @@ exports[`render open modal without backdrop 1`] = `
   color: #3C64F4;
 }
 
-.c5:focus {
+.c6:focus {
   outline: none;
 }
 
-.c5[disabled] {
+.c6[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c5:active {
+.c6 + .c5 {
+  margin-top: 0.5rem;
+}
+
+.c6:active {
   background-color: #DBE3FE;
 }
 
-.c5:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c5:hover:not(:active) {
+.c6:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c5[disabled] {
+.c6[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c6 {
+.c7 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -420,7 +437,14 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 @media (min-width:720px) {
-  .c5 {
+  .c6 + .c5 {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c6 {
     width: auto;
   }
 }
@@ -463,15 +487,15 @@ exports[`render open modal without backdrop 1`] = `
           class="c4"
         >
           <button
-            class="c5"
+            class="c5 c6"
             role="button"
             tabindex="0"
           >
             <span
-              class="c6"
+              class="c7"
             >
               <svg
-                class="c7"
+                class="c8"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
