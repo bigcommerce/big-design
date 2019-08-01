@@ -46,10 +46,10 @@ storiesOf('Badge', module).add('Overview', () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid columns="repeat(4, min-content)">
-        <Badge variant="secondary">SECONDARY</Badge>
-        <Badge variant="success">SUCCESS</Badge>
-        <Badge variant="warning">WARNING</Badge>
-        <Badge variant="danger">DANGER</Badge>
+        <Badge variant="secondary">secondary</Badge>
+        <Badge variant="success">success</Badge>
+        <Badge variant="warning">warning</Badge>
+        <Badge variant="danger">danger</Badge>
       </Grid>
       {/* jsx-to-string:end */}
     </CodePreview>
