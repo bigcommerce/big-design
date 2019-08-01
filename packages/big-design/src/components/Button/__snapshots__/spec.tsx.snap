@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render default button 1`] = `
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -47,36 +47,36 @@ exports[`render default button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -91,25 +91,25 @@ exports[`render default button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -117,11 +117,7 @@ exports[`render default button 1`] = `
 `;
 
 exports[`render destructive button 1`] = `
-.c3 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -167,36 +163,36 @@ exports[`render destructive button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #AD0000;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #CC1F1F;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -211,32 +207,25 @@ exports[`render destructive button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c3 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -244,11 +233,7 @@ exports[`render destructive button 1`] = `
 `;
 
 exports[`render destructive disabled button 1`] = `
-.c3 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -294,36 +279,36 @@ exports[`render destructive disabled button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #AD0000;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #CC1F1F;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -338,33 +323,26 @@ exports[`render destructive disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c3 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -372,7 +350,7 @@ exports[`render destructive disabled button 1`] = `
 `;
 
 exports[`render disabled button 1`] = `
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -418,36 +396,36 @@ exports[`render disabled button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -462,26 +440,26 @@ exports[`render disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -489,53 +467,13 @@ exports[`render disabled button 1`] = `
 `;
 
 exports[`render icon left and right button 1`] = `
-.c3 {
+.c2 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c5 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c6 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c7 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c8 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c9 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c10 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c11 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c12 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c13 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -583,36 +521,36 @@ exports[`render icon left and right button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -627,98 +565,28 @@ exports[`render icon left and right button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c5 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c6 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c7 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c8 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c9 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c10 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c11 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c12 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c13 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     <svg
-      class="c3"
+      class="c2"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -737,7 +605,7 @@ exports[`render icon left and right button 1`] = `
     </svg>
     Button
     <svg
-      class="c3"
+      class="c2"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -759,45 +627,13 @@ exports[`render icon left and right button 1`] = `
 `;
 
 exports[`render icon left button 1`] = `
-.c3 {
+.c2 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c5 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c6 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c7 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c8 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c9 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c10 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c11 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -844,36 +680,36 @@ exports[`render icon left button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -888,84 +724,28 @@ exports[`render icon left button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c5 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c6 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c7 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c8 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c9 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c10 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c11 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     <svg
-      class="c3"
+      class="c2"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -988,41 +768,13 @@ exports[`render icon left button 1`] = `
 `;
 
 exports[`render icon only button 1`] = `
-.c3 {
+.c2 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c5 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c6 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c7 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c8 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c9 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c10 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1069,36 +821,36 @@ exports[`render icon only button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1113,77 +865,28 @@ exports[`render icon only button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c5 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c6 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c7 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c8 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c9 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c10 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     <svg
-      class="c3"
+      class="c2"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -1205,49 +908,13 @@ exports[`render icon only button 1`] = `
 `;
 
 exports[`render icon right button 1`] = `
-.c3 {
+.c2 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c5 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c6 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c7 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c8 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c9 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c10 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c11 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c12 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1294,36 +961,36 @@ exports[`render icon right button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1338,92 +1005,29 @@ exports[`render icon right button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c5 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c6 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c7 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c8 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c9 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c10 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c11 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c12 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
     <svg
-      class="c3"
+      class="c2"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -1445,18 +1049,18 @@ exports[`render icon right button 1`] = `
 `;
 
 exports[`render loading button 1`] = `
-.c5 {
+.c4 {
   height: 1rem;
   width: 1rem;
 }
 
-.c6 {
+.c5 {
   fill: transparent;
   stroke-width: 0.125rem;
   stroke: #ECEEF5;
 }
 
-.c7 {
+.c6 {
   fill: transparent;
   stroke-width: 0.125rem;
   stroke: #ECEEF5;
@@ -1475,11 +1079,11 @@ exports[`render loading button 1`] = `
   transition: stroke-dashoffset 0.35s;
 }
 
-.c4 {
+.c3 {
   box-sizing: border-box;
 }
 
-.c3 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1503,31 +1107,7 @@ exports[`render loading button 1`] = `
   justify-content: flex-start;
 }
 
-.c9 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c10 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c11 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c12 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c13 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c14 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1573,36 +1153,36 @@ exports[`render loading button 1`] = `
   font-weight: 600;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #0B38D9;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   background-color: #D9DCE9;
 }
 
-.c8 {
+.c7 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1616,12 +1196,12 @@ exports[`render loading button 1`] = `
   visibility: hidden;
 }
 
-.c2 {
+.c1 {
   position: absolute;
 }
 
 @media (min-width:720px) {
-  .c3 {
+  .c2 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -1629,82 +1209,40 @@ exports[`render loading button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c10 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c11 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c12 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c13 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c14 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
   <div
-    class="c2 c3 c4"
+    class="c1 c2 c3"
     direction="row"
     wrap="nowrap"
   >
     <svg
-      class="c5"
+      class="c4"
       role="progressbar"
     >
       <circle
-        class="c6"
+        class="c5"
         cx="0.5rem"
         cy="0.5rem"
         r="0.4375rem"
       />
       <circle
-        class="c7"
+        class="c6"
         cx="0.5rem"
         cy="0.5rem"
         r="0.4375rem"
@@ -1712,7 +1250,7 @@ exports[`render loading button 1`] = `
     </svg>
   </div>
   <span
-    class="c8"
+    class="c7"
   >
     Button
   </span>
@@ -1720,15 +1258,7 @@ exports[`render loading button 1`] = `
 `;
 
 exports[`render secondary button 1`] = `
-.c3 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1774,36 +1304,36 @@ exports[`render secondary button 1`] = `
   color: #3C64F4;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #DBE3FE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1818,39 +1348,25 @@ exports[`render secondary button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c3 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -1858,19 +1374,7 @@ exports[`render secondary button 1`] = `
 `;
 
 exports[`render secondary destructive button 1`] = `
-.c3 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c5 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1916,36 +1420,36 @@ exports[`render secondary destructive button 1`] = `
   color: #DB3643;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #FEDBDE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #FFF0F1;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1960,46 +1464,25 @@ exports[`render secondary destructive button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c3 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c5 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -2007,19 +1490,7 @@ exports[`render secondary destructive button 1`] = `
 `;
 
 exports[`render secondary destructive disabled button 1`] = `
-.c3 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c5 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2065,36 +1536,36 @@ exports[`render secondary destructive disabled button 1`] = `
   color: #DB3643;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #FEDBDE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #FFF0F1;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -2109,47 +1580,26 @@ exports[`render secondary destructive disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c3 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c5 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -2157,15 +1607,7 @@ exports[`render secondary destructive disabled button 1`] = `
 `;
 
 exports[`render secondary disabled button 1`] = `
-.c3 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2211,36 +1653,36 @@ exports[`render secondary disabled button 1`] = `
   color: #3C64F4;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #DBE3FE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -2255,40 +1697,26 @@ exports[`render secondary disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c3 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -2296,23 +1724,7 @@ exports[`render secondary disabled button 1`] = `
 `;
 
 exports[`render subtle button 1`] = `
-.c3 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c5 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c6 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2358,37 +1770,37 @@ exports[`render subtle button 1`] = `
   color: #3C64F4;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #DBE3FE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -2403,53 +1815,25 @@ exports[`render subtle button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c3 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c5 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c6 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -2457,27 +1841,7 @@ exports[`render subtle button 1`] = `
 `;
 
 exports[`render subtle destructive button 1`] = `
-.c3 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c5 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c6 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c7 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2523,37 +1887,37 @@ exports[`render subtle destructive button 1`] = `
   color: #DB3643;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #FEDBDE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #FFF0F1;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -2568,60 +1932,25 @@ exports[`render subtle destructive button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c3 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c5 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c6 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c7 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -2629,27 +1958,7 @@ exports[`render subtle destructive button 1`] = `
 `;
 
 exports[`render subtle destructive disabled button 1`] = `
-.c3 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c5 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c6 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c7 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2695,37 +2004,37 @@ exports[`render subtle destructive disabled button 1`] = `
   color: #DB3643;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #FEDBDE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #FEDBDE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #FFF0F1;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -2740,61 +2049,26 @@ exports[`render subtle destructive disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c3 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c5 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c6 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c7 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>
@@ -2802,23 +2076,7 @@ exports[`render subtle destructive disabled button 1`] = `
 `;
 
 exports[`render subtle disabled button 1`] = `
-.c3 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c4 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c5 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c6 + .c0 {
-  margin-top: 0.5rem;
-}
-
-.c1 {
+.c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2864,37 +2122,37 @@ exports[`render subtle disabled button 1`] = `
   color: #3C64F4;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c1 + .c0 {
+.c0 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c1:active {
+.c0:active {
   background-color: #DBE3FE;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c1:hover:not(:active) {
+.c0:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c1[disabled] {
+.c0[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -2909,54 +2167,26 @@ exports[`render subtle disabled button 1`] = `
 }
 
 @media (min-width:720px) {
-  .c3 + .c0 {
+  .c0 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c5 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c6 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 + .c0 {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c1 {
+  .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0 c1"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
 >
   <span
-    class="c2"
+    class="c1"
   >
     Button
   </span>

@@ -8,7 +8,7 @@ exports[`render closed modal 1`] = `
 `;
 
 exports[`render open modal 1`] = `
-.c8 {
+.c7 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -42,7 +42,7 @@ exports[`render open modal 1`] = `
   justify-content: flex-start;
 }
 
-.c6 {
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -89,37 +89,37 @@ exports[`render open modal 1`] = `
   color: #3C64F4;
 }
 
-.c6:focus {
+.c5:focus {
   outline: none;
 }
 
-.c6[disabled] {
+.c5[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c6 + .c5 {
+.c5 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c6:active {
+.c5:active {
   background-color: #DBE3FE;
 }
 
-.c6:focus {
+.c5:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c6:hover:not(:active) {
+.c5:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c6[disabled] {
+.c5[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c7 {
+.c6 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -177,14 +177,14 @@ exports[`render open modal 1`] = `
 }
 
 @media (min-width:720px) {
-  .c6 + .c5 {
+  .c5 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c6 {
+  .c5 {
     width: auto;
   }
 }
@@ -229,15 +229,15 @@ exports[`render open modal 1`] = `
           class="c4"
         >
           <button
-            class="c5 c6"
+            class="bd-button c5"
             role="button"
             tabindex="0"
           >
             <span
-              class="c7"
+              class="c6"
             >
               <svg
-                class="c8"
+                class="c7"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -269,7 +269,7 @@ exports[`render open modal 1`] = `
 exports[`render open modal without backdrop 1`] = `
 <body>
   <div />
-  .c8 {
+  .c7 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -303,7 +303,7 @@ exports[`render open modal without backdrop 1`] = `
   justify-content: flex-start;
 }
 
-.c6 {
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -350,37 +350,37 @@ exports[`render open modal without backdrop 1`] = `
   color: #3C64F4;
 }
 
-.c6:focus {
+.c5:focus {
   outline: none;
 }
 
-.c6[disabled] {
+.c5[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c6 + .c5 {
+.c5 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c6:active {
+.c5:active {
   background-color: #DBE3FE;
 }
 
-.c6:focus {
+.c5:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c6:hover:not(:active) {
+.c5:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c6[disabled] {
+.c5[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c7 {
+.c6 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -437,14 +437,14 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 @media (min-width:720px) {
-  .c6 + .c5 {
+  .c5 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c6 {
+  .c5 {
     width: auto;
   }
 }
@@ -487,15 +487,15 @@ exports[`render open modal without backdrop 1`] = `
           class="c4"
         >
           <button
-            class="c5 c6"
+            class="bd-button c5"
             role="button"
             tabindex="0"
           >
             <span
-              class="c7"
+              class="c6"
             >
               <svg
-                class="c8"
+                class="c7"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
