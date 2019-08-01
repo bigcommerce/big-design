@@ -1,4 +1,4 @@
-import { Grid, H0, H1, H2, Link, Badge, Text } from '@bigcommerce/big-design';
+import { Badge, Grid, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
@@ -19,7 +19,7 @@ storiesOf('Badge', module).add('Overview', () => (
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Badge variant="primary">ACTIVE</Badge>
+      <Badge variant="success">ACTIVE</Badge>
       {/* jsx-to-string:end */}
     </CodePreview>
     <H1>API</H1>
@@ -30,14 +30,13 @@ storiesOf('Badge', module).add('Overview', () => (
     </Collapsible>
     <H1>Variants</H1>
     <Text>
-      There are five types of variants to choose from: <Code>primary</Code>, <Code>secondary</Code>,{' '}
-      <Code>success</Code>, <Code>warning</Code>, and <Code>danger</Code>. You can determine what type by using the{' '}
+      There are four types of variants to choose from: <Code>success</Code>, <Code>secondary</Code>,{' '}
+      <Code>warning</Code>, and <Code>danger</Code>. You can determine what type by using the{' '}
       <Code primary>variant</Code> prop.
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(5, min-content)">
-        <Badge variant="primary">PRIMARY</Badge>
+      <Grid columns="repeat(4, min-content)">
         <Badge variant="secondary">SECONDARY</Badge>
         <Badge variant="success">SUCCESS</Badge>
         <Badge variant="warning">WARNING</Badge>

@@ -24,12 +24,6 @@ export const StyledBadge = styled.span<BadgeProps>`
     `}
 
   ${({ theme, variant }) =>
-    variant === 'primary' &&
-    css`
-      background-color: ${theme.colors.brand};
-    `}
-
-  ${({ theme, variant }) =>
     variant === 'success' &&
     css`
       background-color: ${theme.colors.success50};
