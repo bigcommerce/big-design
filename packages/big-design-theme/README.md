@@ -1,0 +1,50 @@
+# BigDesign Theme
+
+BigDesign design system.
+
+### Documentation
+
+You can find documentation and examples on our [docs page](https://bigcommerce.github.io/big-design).
+
+## Note
+
+[BigDesign](https://github.com/bigcommerce/big-design/blob/master/packages/big-design) components use this theme by default.
+This package is only meant to be used directly when more advanced features are needed such as:
+
+- When you app uses an html font size different than `16px`.
+- Creating a brand new theme.
+- Typescript typings.
+
+### Quick start guide
+
+Add BigDesign Theme and styled-components to your project using `npm`:
+
+```
+npm install @bigcommerce/big-design-theme styled-components
+```
+
+or with `yarn`:
+
+```
+yarn add @bigcommerce/big-design-theme styled-components
+```
+
+#### Using a different html font size
+
+When your app uses an html font size different than `16px` you will need to create a new theme that uses
+your app's html font size internally to calculate spacings and sizes.
+
+The following example show how to create a theme using a `14px` html font size and provide the theme to your app.
+
+```jsx
+import { createTheme } from '@bigcommerce/big-design-theme';
+import { ThemeProvider } from 'styled-components';
+
+const theme = createTheme({ htmlFontSize: 14 });
+
+// ...
+
+<ThemeProvider theme={theme}>
+  <App />
+</ThemeProvider>;
+```
