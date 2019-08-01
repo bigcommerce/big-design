@@ -8,7 +8,7 @@
 
 ### Documentation
 
-You can find the documentation and examples on our [docs page](https://bigcommerce.github.io/big-design).
+You can find documentation and examples on our [docs page](https://bigcommerce.github.io/big-design).
 
 ### Quick start guide
 
@@ -24,10 +24,10 @@ or with `yarn`:
 yarn add @bigcommerce/big-design styled-components
 ```
 
+Import the `GlobalStyles` component and use it once in your app. This will set a few styles globally,
+including a base font family, [Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro) and [normalize.css](https://github.com/necolas/normalize.css/). We recommend placing it close to your root component.
+Then import any component, such as `Button`, to use it anywhere in your app.
 
-Import the `GlobalStyles` component and use it once in your app. This will set a couple of styles globally,
-such as a base font family and a normalizer. We recommend it placing it close to your root component.
-Then import any other component such as `Button` and use it anywhere in your app.
 ```jsx
 import { Button, GlobalStyles } from '@bigcommerce/big-design';
 
@@ -45,11 +45,11 @@ This is a monorepo that uses [Lerna](https://lernajs.io) and [Yarn Workspaces](h
 
 Workspaces are inside the [packages](https://github.com/bigcommerce/big-design/blob/master/packages) directory.
 
-- [**big-design**](https://github.com/bigcommerce/big-design/blob/master/packages/big-design): React component library.
-- [**big-design-theme**](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-theme): Default Theme.
-- [**big-design-icons**](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-icons): Icons library.
-- [**storybook**](https://github.com/bigcommerce/big-design/blob/master/packages/storybook): Component stories and docs live here.
-- [**configs**](https://github.com/bigcommerce/big-design/blob/master/packages/configs): (internal) Shared configs between packages.
+- [big-design](https://github.com/bigcommerce/big-design/blob/master/packages/big-design): React component library.
+- [big-design-theme](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-theme): Default Theme.
+- [big-design-icons](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-icons): Icons library.
+- [storybook](https://github.com/bigcommerce/big-design/blob/master/packages/storybook): Component stories and docs live here.
+- [configs](https://github.com/bigcommerce/big-design/blob/master/packages/configs): (internal) Shared configs between packages.
 
 ### Changelogs
 
@@ -61,11 +61,14 @@ As this is a monorepo, each package has it's own Changelog. Links for each can b
 - [configs](https://github.com/bigcommerce/big-design/tree/master/packages/configs)
 - [storybook](https://github.com/bigcommerce/big-design/blob/master/packages/storybook/CHANGELOG.md)
 
-### Development:
+### Contributing
+
+To contribute, please read our [Contributing](https://github.com/bigcommerce/big-design/blob/master/CONTRIBUTING.md) guidelines
+and [Code of Conduct](https://github.com/bigcommerce/big-design/blob/master/CODE_OF_CONDUCT.md) first.
+
+### Development
 
 Running the following commands will run `big-design` and `storybook` in watch mode.
-Please read our [Contributing](https://github.com/bigcommerce/big-design/blob/master/CONTRIBUTING.md)
-and [Code of Conduct](https://github.com/bigcommerce/big-design/blob/master/CODE_OF_CONDUCT.md) first.
 
 ```
 yarn
