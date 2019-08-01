@@ -19,16 +19,6 @@ exports[`render open modal 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -36,10 +26,20 @@ exports[`render open modal 1`] = `
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c5 {
@@ -169,14 +169,6 @@ exports[`render open modal 1`] = `
 }
 
 @media (min-width:720px) {
-  .c2 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media (min-width:720px) {
   .c5 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
@@ -222,8 +214,6 @@ exports[`render open modal 1`] = `
       <div
         aria-labelledby="modal_header_0"
         class="c1 c2 c3"
-        direction="column"
-        wrap="nowrap"
       >
         <div
           class="c4"
@@ -280,16 +270,6 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -297,10 +277,20 @@ exports[`render open modal without backdrop 1`] = `
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c5 {
@@ -429,14 +419,6 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 @media (min-width:720px) {
-  .c2 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media (min-width:720px) {
   .c5 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
@@ -480,8 +462,6 @@ exports[`render open modal without backdrop 1`] = `
       <div
         aria-labelledby="modal_header_0"
         class="c1 c2 c3"
-        direction="column"
-        wrap="nowrap"
       >
         <div
           class="c4"

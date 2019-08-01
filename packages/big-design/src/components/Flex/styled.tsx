@@ -3,26 +3,20 @@ import styled from 'styled-components';
 
 import { Box } from '../Box';
 
+import { withFlexedContainer } from './withFlex';
 import { FlexProps } from './Flex';
 
 export const StyledFlex = styled(Box)<FlexProps>`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: ${({ wrap }) => wrap};
-  align-content: ${({ alignContent }) => alignContent};
-  align-items: ${({ alignItems }) => alignItems};
-  justify-content: ${({ justifyContent }) => justifyContent};
+  ${withFlexedContainer()}
 
-  ${({ theme }) => theme.breakpoints.tablet} {
-    flex-direction: ${({ direction }) => direction};
-  }
+  display: flex;
 `;
 
 StyledFlex.defaultProps = {
   alignContent: 'stretch',
   alignItems: 'stretch',
-  direction: 'row',
-  wrap: 'nowrap',
+  flexDirection: { mobile: 'column', tablet: 'row' },
+  flexWrap: 'nowrap',
   justifyContent: 'flex-start',
   theme: defaultTheme,
 };

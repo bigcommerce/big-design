@@ -1,10 +1,11 @@
-import { Breakpoints, Spacing } from '@bigcommerce/big-design-theme';
+import { Spacing } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
+import { Responsive } from '../../types';
 import { getSpacingStyles } from '../spacings';
 
 type SingleMarginProp = keyof Spacing;
-type ResponsiveMarginProp = { [key in keyof Breakpoints]?: keyof Spacing };
+type ResponsiveMarginProp = Responsive<keyof Spacing>;
 type MarginProp = SingleMarginProp | ResponsiveMarginProp;
 
 export type MarginProps = Partial<{

@@ -42,7 +42,7 @@ export const SnippetControls: React.FC<SnippetControls> = props => {
       alignItems="center"
       style={{ zIndex: 999 }}
     >
-      <Flex.Item grow={1}>
+      <Flex.Item flexGrow={1}>
         <Small marginHorizontal="small">{helperText}</Small>
       </Flex.Item>
       <Flex.Item borderLeft="box">

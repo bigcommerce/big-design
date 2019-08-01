@@ -40,7 +40,7 @@ storiesOf('Colors', module).add('Overview', () => (
 
     <H2>Available Colors</H2>
 
-    <Flex direction="column">
+    <Flex flexDirection="column">
       {getColors().map(color => (
         <Flex alignItems="center">
           <StyledColor backgroundColor={color as Color} />
