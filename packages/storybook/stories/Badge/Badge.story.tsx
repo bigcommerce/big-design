@@ -1,16 +1,17 @@
-import { Grid, H0, H1, Link, Lozenge, Text } from '@bigcommerce/big-design';
+import { Grid, H0, H1, H2, Link, Badge, Text } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Code, CodePreview } from '../../components';
+import { Code, CodePreview, Collapsible } from '../../components';
+import { MarginPropTable } from '../Utilities/index';
 
-import { LozengePropTable } from './LozengePropTable';
+import { BadgePropTable } from './BadgePropTable';
 
-storiesOf('Lozenge', module).add('Overview', () => (
+storiesOf('Badge', module).add('Overview', () => (
   <>
-    <H0>Lozenges</H0>
+    <H0>Badges</H0>
     <Text>
-      Lozenges are used to quickly indicate status or information to a user visually. Each variant correlates to a
+      Badges are used to quickly indicate status or information to a user visually. Each variant correlates to a
       specific status or value.{' '}
       <Link href="https://bigcommerce.design/badges" target="_blank">
         Badges Design Guidelines
@@ -18,11 +19,15 @@ storiesOf('Lozenge', module).add('Overview', () => (
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Lozenge variant="primary">ACTIVE</Lozenge>
+      <Badge variant="primary">ACTIVE</Badge>
       {/* jsx-to-string:end */}
     </CodePreview>
     <H1>API</H1>
-    <LozengePropTable />
+    <BadgePropTable />
+    <H2>Inherited Props</H2>
+    <Collapsible title="Margin Props">
+      <MarginPropTable />
+    </Collapsible>
     <H1>Variants</H1>
     <Text>
       There are five types of variants to choose from: <Code>primary</Code>, <Code>secondary</Code>,{' '}
@@ -32,11 +37,11 @@ storiesOf('Lozenge', module).add('Overview', () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid columns="repeat(5, min-content)">
-        <Lozenge variant="primary">PRIMARY</Lozenge>
-        <Lozenge variant="secondary">SECONDARY</Lozenge>
-        <Lozenge variant="success">SUCCESS</Lozenge>
-        <Lozenge variant="warning">WARNING</Lozenge>
-        <Lozenge variant="danger">DANGER</Lozenge>
+        <Badge variant="primary">PRIMARY</Badge>
+        <Badge variant="secondary">SECONDARY</Badge>
+        <Badge variant="success">SUCCESS</Badge>
+        <Badge variant="warning">WARNING</Badge>
+        <Badge variant="danger">DANGER</Badge>
       </Grid>
       {/* jsx-to-string:end */}
     </CodePreview>

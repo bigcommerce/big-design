@@ -2,10 +2,10 @@ import React from 'react';
 
 import { PropTable } from '../../components';
 
-export const LozengePropTable: React.FC = () => (
+export const BadgePropTable: React.FC = () => (
   <PropTable>
     <PropTable.Prop name="variant" types={['danger', 'primary', 'secondary', 'success', 'warning']}>
-      Determines which lozenge to display.
+      Determines which badge to display.
     </PropTable.Prop>
   </PropTable>
 );

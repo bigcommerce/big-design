@@ -8,7 +8,7 @@ export * from './GlobalStyle';
 export * from './Grid';
 export * from './Input';
 export * from './Link';
-export * from './Lozenge';
+export * from './Badge';
 export * from './Modal';
 export * from './Panel';
 export * from './ProgressBar';

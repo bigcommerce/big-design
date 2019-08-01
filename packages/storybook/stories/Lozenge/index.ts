@@ -1,1 +1,0 @@
-export { LozengePropTable } from './LozengePropTable';
