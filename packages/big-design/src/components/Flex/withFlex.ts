@@ -29,17 +29,13 @@ const getFlexedStyles: FlexedOverload = (
   }
 
   if (typeof flexedProp === 'string' || typeof flexedProp === 'number') {
-    return getSimpleFlex(flexedProp, theme, cssKey);
+    return getSimpleFlex(flexedProp, cssKey);
   }
 
   return [];
 };
 
-const getSimpleFlex = (
-  flexedProp: string | number,
-  _theme: ThemeInterface,
-  cssKey: string,
-): FlattenSimpleInterpolation => css`
+const getSimpleFlex = (flexedProp: string | number, cssKey: string): FlattenSimpleInterpolation => css`
   ${cssKey}: ${flexedProp}
 `;
 
@@ -58,7 +54,7 @@ const getResponsiveFlex: FlexedOverload = (
     breakpointKey =>
       css`
         ${theme.breakpoints[breakpointKey]} {
-          ${getSimpleFlex(flexedProp[breakpointKey], theme, cssKey)}
+          ${getSimpleFlex(flexedProp[breakpointKey], cssKey)}
         }
       `,
   );

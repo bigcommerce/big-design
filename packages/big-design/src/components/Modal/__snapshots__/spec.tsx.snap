@@ -169,14 +169,6 @@ exports[`render open modal 1`] = `
 }
 
 @media (min-width:720px) {
-  .c2 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media (min-width:720px) {
   .c5 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
@@ -423,14 +415,6 @@ exports[`render open modal without backdrop 1`] = `
 @media (min-width:720px) {
   .c3 {
     padding: 2rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c2 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
   }
 }
 
