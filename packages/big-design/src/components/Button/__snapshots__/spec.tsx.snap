@@ -39,6 +39,7 @@ exports[`render default button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: #3C64F4;
@@ -53,6 +54,10 @@ exports[`render default button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -86,13 +91,20 @@ exports[`render default button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -143,6 +155,7 @@ exports[`render destructive button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: #DB3643;
@@ -157,6 +170,10 @@ exports[`render destructive button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -190,13 +207,20 @@ exports[`render destructive button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -247,6 +271,7 @@ exports[`render destructive disabled button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: #DB3643;
@@ -261,6 +286,10 @@ exports[`render destructive disabled button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -294,13 +323,20 @@ exports[`render destructive disabled button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
@@ -352,6 +388,7 @@ exports[`render disabled button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: #3C64F4;
@@ -366,6 +403,10 @@ exports[`render disabled button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -399,13 +440,20 @@ exports[`render disabled button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
@@ -463,6 +511,7 @@ exports[`render icon left and right button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   padding-left: 0.5rem;
@@ -479,6 +528,10 @@ exports[`render icon left and right button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -512,13 +565,20 @@ exports[`render icon left and right button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -611,6 +671,7 @@ exports[`render icon left button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   padding-left: 0.5rem;
@@ -626,6 +687,10 @@ exports[`render icon left button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -659,13 +724,20 @@ exports[`render icon left button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -740,6 +812,7 @@ exports[`render icon only button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   padding: 0 0.5rem;
@@ -755,6 +828,10 @@ exports[`render icon only button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -788,13 +865,20 @@ exports[`render icon only button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -868,6 +952,7 @@ exports[`render icon right button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   padding-right: 0.5rem;
@@ -883,6 +968,10 @@ exports[`render icon right button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -916,13 +1005,20 @@ exports[`render icon right button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1049,6 +1145,7 @@ exports[`render loading button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: #3C64F4;
@@ -1063,6 +1160,10 @@ exports[`render loading button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -1108,13 +1209,20 @@ exports[`render loading button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1188,6 +1296,7 @@ exports[`render secondary button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: transparent;
@@ -1202,6 +1311,10 @@ exports[`render secondary button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -1235,13 +1348,20 @@ exports[`render secondary button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1292,6 +1412,7 @@ exports[`render secondary destructive button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: transparent;
@@ -1306,6 +1427,10 @@ exports[`render secondary destructive button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -1339,13 +1464,20 @@ exports[`render secondary destructive button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1396,6 +1528,7 @@ exports[`render secondary destructive disabled button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: transparent;
@@ -1410,6 +1543,10 @@ exports[`render secondary destructive disabled button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -1443,13 +1580,20 @@ exports[`render secondary destructive disabled button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
@@ -1501,6 +1645,7 @@ exports[`render secondary disabled button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: transparent;
@@ -1515,6 +1660,10 @@ exports[`render secondary disabled button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -1548,13 +1697,20 @@ exports[`render secondary disabled button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
@@ -1606,6 +1762,7 @@ exports[`render subtle button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: transparent;
@@ -1620,6 +1777,10 @@ exports[`render subtle button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -1654,13 +1815,20 @@ exports[`render subtle button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1711,6 +1879,7 @@ exports[`render subtle destructive button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: transparent;
@@ -1725,6 +1894,10 @@ exports[`render subtle destructive button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -1759,13 +1932,20 @@ exports[`render subtle destructive button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   role="button"
   tabindex="0"
 >
@@ -1816,6 +1996,7 @@ exports[`render subtle destructive disabled button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: transparent;
@@ -1830,6 +2011,10 @@ exports[`render subtle destructive disabled button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -1864,13 +2049,20 @@ exports[`render subtle destructive disabled button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
@@ -1922,6 +2114,7 @@ exports[`render subtle disabled button 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
   width: 100%;
   background-color: transparent;
@@ -1936,6 +2129,10 @@ exports[`render subtle disabled button 1`] = `
 .c0[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
 }
 
 .c0:active {
@@ -1970,13 +2167,20 @@ exports[`render subtle disabled button 1`] = `
 }
 
 @media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
   .c0 {
     width: auto;
   }
 }
 
 <button
-  class="c0"
+  class="bd-button c0"
   disabled=""
   role="button"
   tabindex="0"
