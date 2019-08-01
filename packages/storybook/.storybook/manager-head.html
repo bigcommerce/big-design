@@ -3,7 +3,6 @@
 <script>
   setTitle();
   hideShortcutsMenu();
-  swapLogo();
 
   // Setting a custom title is currently broken in Storybook
   // https://github.com/storybookjs/storybook/issues/6339
@@ -32,28 +31,6 @@
 
       if (shortcutsMenu) {
         shortcutsMenu.style.display = 'none';
-        observer.disconnect();
-      }
-    });
-
-    observer.observe(document.documentElement, {
-      childList: true,
-      subtree: true,
-    });
-  }
-
-  // Storybook loads the logo svg in an <img> so the font can't load
-  // in this function we swap it with an <object>
-  function swapLogo() {
-    const observer = new MutationObserver(() => {
-      const logo = document.querySelector('a[href="https://bigcommerce.design"] > img');
-
-      if (logo) {
-        const newLogo = document.createElement('object');
-
-        newLogo.data = logo.src;
-
-        logo.parentNode.replaceChild(newLogo, logo);
         observer.disconnect();
       }
     });
