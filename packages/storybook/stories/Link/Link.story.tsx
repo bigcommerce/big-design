@@ -2,8 +2,7 @@ import { H0, H2, Link, Text } from '@bigcommerce/big-design';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { CodePreview } from '../../components';
-import { Collapsible } from '../../components/Collapsible';
+import { CodePreview, Collapsible } from '../../components';
 import { MarginPropTable } from '../Utilities/Margin';
 
 storiesOf('Link', module).add('Overview', () => (

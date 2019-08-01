@@ -1,4 +1,4 @@
-import { defaultTheme } from '@bigcommerce/big-design';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { LiveError } from 'react-live';
 import styled from 'styled-components';
 

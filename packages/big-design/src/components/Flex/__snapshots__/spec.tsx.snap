@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render flex 1`] = `
+.c1 {
+  box-sizing: border-box;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -34,7 +38,7 @@ exports[`render flex 1`] = `
 }
 
 <div
-  class="c0 "
+  class="c0 c1"
   direction="row"
   wrap="nowrap"
 >

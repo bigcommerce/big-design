@@ -19,7 +19,6 @@ storiesOf('Dropdown', module).add('Overview', () => (
       {/* jsx-to-string:start */}
       <Dropdown
         maxHeight={250}
-        onActionClick={() => null}
         onItemClick={value => value}
         placement="bottom-start"
         trigger={<Button>Open Menu</Button>}

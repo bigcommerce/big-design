@@ -1,8 +1,10 @@
-import { Button, DropdownIcon, Grid, H0, H1, H2, Link, PlusIcon, Text } from '@bigcommerce/big-design';
+import { Button, Grid, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { AddIcon, ArrowDropDownIcon } from '@bigcommerce/big-design-icons';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Code, CodePreview } from '../../components';
+import { Code, CodePreview, Collapsible } from '../../components';
+import { MarginPropTable } from '../Utilities/index';
 
 import { ButtonPropTable } from './';
 
@@ -27,7 +29,15 @@ storiesOf('Button', module).add('Overview', () => (
 
     <H1>API</H1>
 
+    <H2>Button</H2>
+
     <ButtonPropTable />
+
+    <H2>Inherited Props</H2>
+
+    <Collapsible title="Margin Props">
+      <MarginPropTable />
+    </Collapsible>
 
     <H1>Variants</H1>
 
@@ -127,12 +137,12 @@ storiesOf('Button', module).add('Overview', () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid columns="repeat(4, min-content)">
-        <Button iconOnly={<PlusIcon title="add" />} />
-        <Button iconLeft={<PlusIcon />}>Label</Button>
-        <Button iconLeft={<PlusIcon />} iconRight={<DropdownIcon />}>
+        <Button iconOnly={<AddIcon title="add" />} />
+        <Button iconLeft={<AddIcon />}>Label</Button>
+        <Button iconLeft={<AddIcon />} iconRight={<ArrowDropDownIcon />}>
           Label
         </Button>
-        <Button iconRight={<DropdownIcon />}>Label</Button>
+        <Button iconRight={<ArrowDropDownIcon />}>Label</Button>
       </Grid>
       {/* jsx-to-string:end */}
     </CodePreview>

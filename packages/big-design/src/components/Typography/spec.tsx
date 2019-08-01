@@ -1,3 +1,4 @@
+import { theme } from '@bigcommerce/big-design-theme';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
@@ -127,4 +128,21 @@ test('Text - does not forward styles', () => {
 
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
+});
+
+test('All typography components allow changing their color given a color prop', () => {
+  const { container } = render(
+    <>
+      <H1 color="primary">Test</H1>
+      <H2 color="primary">Test</H2>
+      <H3 color="primary">Test</H3>
+      <H4 color="primary">Test</H4>
+      <Small color="primary">Test</Small>
+      <Text color="primary">Test</Text>
+    </>,
+  );
+
+  Array.from(container.children).forEach(child => {
+    expect(child).toHaveStyle(`color: ${theme.colors.primary}`);
+  });
 });

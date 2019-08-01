@@ -1,4 +1,6 @@
 import * as BigDesign from '@bigcommerce/big-design';
+import * as BigDesignIcons from '@bigcommerce/big-design-icons';
+import { theme } from '@bigcommerce/big-design-theme';
 import clipboardCopy from 'clipboard-copy';
 import { Language } from 'prism-react-renderer';
 import React, { useContext, useState } from 'react';
@@ -12,6 +14,7 @@ import { StyledLiveError } from './styled';
 
 const defaultScope = {
   ...BigDesign,
+  ...BigDesignIcons,
   React,
   styled,
 };
@@ -40,7 +43,7 @@ export const CodePreview: React.FC<CodePreviewProps> = props => {
     <BigDesign.Box border="box" marginBottom="xxLarge">
       <LiveProvider code={code} scope={scope} theme={editorTheme} language={language}>
         <BigDesign.Box padding="medium" backgroundColor="white" borderBottom="box">
-          <ThemeProvider theme={BigDesign.defaultTheme}>
+          <ThemeProvider theme={theme}>
             <LivePreview />
           </ThemeProvider>
         </BigDesign.Box>

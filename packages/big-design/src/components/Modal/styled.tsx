@@ -1,7 +1,7 @@
+import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { rgba } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { defaultTheme, remCalc } from '../../theme';
 import { Flex } from '../Flex';
 
 import { ModalProps } from './Modal';

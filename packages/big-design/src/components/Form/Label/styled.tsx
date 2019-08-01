@@ -1,6 +1,6 @@
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { DefaultTheme, StyledComponent } from 'styled-components';
 
-import { defaultTheme } from '../../../theme';
 import { StyleableH4 } from '../../Typography/private';
 
 import { LabelProps } from './Label';

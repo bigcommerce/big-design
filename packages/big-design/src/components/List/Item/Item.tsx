@@ -1,7 +1,5 @@
+import { CheckIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
-
-import { defaultTheme } from '../../../theme';
-import { CheckIcon } from '../../Icons';
 
 import { StyledListItem } from './styled';
 
@@ -17,7 +15,7 @@ export class ListItem extends React.PureComponent<ListItemProps> {
       <StyledListItem value={value} tabIndex={-1} {...rest}>
         {children}
 
-        {this.props['aria-selected'] && <CheckIcon color={defaultTheme.colors.primary} size={'small'} />}
+        {this.props['aria-selected'] && <CheckIcon color="primary" size={'small'} />}
       </StyledListItem>
     );
   }

@@ -1,14 +1,8 @@
+import { CheckCircleIcon, ErrorIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
 import { CIRCLE_DIMENSIONS } from './constants';
-import {
-  StyledCircle,
-  StyledCircleFiller,
-  StyledErrorIcon,
-  StyledProgressCircle,
-  StyledSuccessIcon,
-  StyledText,
-} from './styled';
+import { StyledCircle, StyledCircleFiller, StyledProgressCircle, StyledText } from './styled';
 
 export interface ProgressCircleProps {
   error?: boolean;
@@ -70,11 +64,12 @@ export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
     const { percent } = this.props;
 
     return (
-      <StyledErrorIcon
+      <ErrorIcon
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={percent ? percent : 0}
         aria-valuetext="Error"
+        color="danger"
         role="progressbar"
         size={this.getDimensions()}
       />
@@ -83,10 +78,11 @@ export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
 
   renderSuccess() {
     return (
-      <StyledSuccessIcon
+      <CheckCircleIcon
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={100}
+        color="success"
         role="progressbar"
         size={this.getDimensions()}
       />

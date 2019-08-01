@@ -1,7 +1,6 @@
+import { Breakpoints, Spacing } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { Breakpoints } from '../../theme/system/breakpoints';
-import { Spacing } from '../../theme/system/spacing';
 import { getSpacingStyles } from '../spacings';
 
 type SinglePaddingProp = keyof Spacing;

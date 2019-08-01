@@ -7,9 +7,6 @@ export const DropdownPropTable: React.FC = () => (
     <PropTable.Prop name="maxHeight" types="number" defaults="250">
       Sets the max-height of the dropdown.
     </PropTable.Prop>
-    <PropTable.Prop name="onActionClick" types="() => void">
-      Callback called when an action is clicked.
-    </PropTable.Prop>
     <PropTable.Prop name="onItemClick" types="(value) => void">
       Callback called with value of clicked item.
     </PropTable.Prop>

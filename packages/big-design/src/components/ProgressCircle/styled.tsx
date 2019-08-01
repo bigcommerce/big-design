@@ -1,7 +1,5 @@
+import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, keyframes } from 'styled-components';
-
-import { defaultTheme, remCalc } from '../../theme';
-import { ErrorIcon, SuccessIcon } from '../Icons';
 
 import { CIRCLE_CIRCUMFERENCES, CIRCLE_DIMENSIONS, CIRCLE_STROKE_WIDTHS } from './constants';
 import { ProgressCircleProps } from './ProgressCircle';
@@ -55,14 +53,6 @@ export const StyledText = styled.text.attrs(() => ({
     size === 'large' ? theme.typography.fontWeight.semiBold : theme.typography.fontWeight.regular};
 `;
 
-export const StyledErrorIcon = styled(ErrorIcon)`
-  color: ${({ theme }) => theme.colors.danger};
-`;
-
-export const StyledSuccessIcon = styled(SuccessIcon)`
-  color: ${({ theme }) => theme.colors.success};
-`;
-
 const spin = (size: ProgressCircleProps['size']) => keyframes`
   0% {
     stroke-dashoffset: ${fillLength(0, size) * -1};
@@ -95,6 +85,4 @@ function fillLength(percent: number, size: ProgressCircleProps['size'] = 'medium
 
 StyledCircle.defaultProps = { theme: defaultTheme };
 StyledCircleFiller.defaultProps = { theme: defaultTheme };
-StyledErrorIcon.defaultProps = { theme: defaultTheme };
-StyledSuccessIcon.defaultProps = { theme: defaultTheme };
 StyledText.defaultProps = { theme: defaultTheme };

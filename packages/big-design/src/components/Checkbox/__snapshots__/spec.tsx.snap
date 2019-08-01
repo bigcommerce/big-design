@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render Checkbox (checked) 1`] = `
+.c4 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -63,7 +69,7 @@ exports[`render Checkbox (checked) 1`] = `
   visibility: visible;
 }
 
-.c4 {
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -72,7 +78,7 @@ exports[`render Checkbox (checked) 1`] = `
   margin-left: 1rem;
 }
 
-.c4:last-child {
+.c5:last-child {
   margin-bottom: 0;
 }
 
@@ -92,24 +98,26 @@ exports[`render Checkbox (checked) 1`] = `
     for="checkBox_0"
   >
     <svg
-      fill="none"
-      height="0.75rem"
-      style="width: 0.75rem; height: 0.75rem;"
-      viewBox="0 0 10 10"
-      width="0.75rem"
+      class="c4"
+      fill="currentColor"
+      height="24"
+      stroke="currentColor"
+      stroke-width="0"
+      viewBox="0 0 24 24"
+      width="24"
     >
       <title />
       <path
-        d="M1 6.105L3.667 8 9 2"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        d="M0 0h24v24H0V0z"
+        fill="none"
+      />
+      <path
+        d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
       />
     </svg>
   </label>
   <label
-    class="c4"
+    class="c5"
     for="checkBox_0"
     id="checkBox_label_1"
   >
@@ -119,6 +127,12 @@ exports[`render Checkbox (checked) 1`] = `
 `;
 
 exports[`render Checkbox (unchecked) 1`] = `
+.c4 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -145,7 +159,7 @@ exports[`render Checkbox (unchecked) 1`] = `
   width: 1px;
 }
 
-.c1:focus + .c5 {
+.c1:focus + .c6 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
@@ -185,7 +199,7 @@ exports[`render Checkbox (unchecked) 1`] = `
   visibility: hidden;
 }
 
-.c4 {
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -194,7 +208,7 @@ exports[`render Checkbox (unchecked) 1`] = `
   margin-left: 1rem;
 }
 
-.c4:last-child {
+.c5:last-child {
   margin-bottom: 0;
 }
 
@@ -213,24 +227,26 @@ exports[`render Checkbox (unchecked) 1`] = `
     for="checkBox_0"
   >
     <svg
-      fill="none"
-      height="0.75rem"
-      style="width: 0.75rem; height: 0.75rem;"
-      viewBox="0 0 10 10"
-      width="0.75rem"
+      class="c4"
+      fill="currentColor"
+      height="24"
+      stroke="currentColor"
+      stroke-width="0"
+      viewBox="0 0 24 24"
+      width="24"
     >
       <title />
       <path
-        d="M1 6.105L3.667 8 9 2"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        d="M0 0h24v24H0V0z"
+        fill="none"
+      />
+      <path
+        d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
       />
     </svg>
   </label>
   <label
-    class="c4"
+    class="c5"
     for="checkBox_0"
     id="checkBox_label_1"
   >

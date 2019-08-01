@@ -1,7 +1,7 @@
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../mixins';
-import { defaultTheme } from '../../theme';
 
 import { LozengeProps } from './Lozenge';
 
