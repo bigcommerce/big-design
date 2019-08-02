@@ -110,7 +110,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
 
       // We need to wait until the menu is open to change the index
       this.setState({ highlightedIndex: 0 }, () => {
-        return this.listRef && this.listRef.focus();
+        return this.listRef && this.listRef.focus({ preventScroll: true });
       });
     });
   }
@@ -119,7 +119,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     this.setState({ isOpen: false }, () => {
       document.removeEventListener('mousedown', this.handleOnClickOutside, false);
 
-      return this.triggerRef && this.triggerRef.focus();
+      return this.triggerRef && this.triggerRef.focus({ preventScroll: true });
     });
   }
 

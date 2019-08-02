@@ -44,7 +44,6 @@ export class List extends React.PureComponent<ListProps> {
               isOpen && (
                 <StyledList
                   data-placement={placement}
-                  isOpen={isOpen}
                   maxHeight={maxHeight}
                   ref={ref}
                   style={style}

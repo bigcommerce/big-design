@@ -238,7 +238,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         this.updateHighlightedId(item.id);
       }
 
-      return this.inputRef && this.inputRef.focus();
+      return this.inputRef && this.inputRef.focus({ preventScroll: true });
     });
   }
 
@@ -366,7 +366,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     }
 
     if (this.inputRef) {
-      this.inputRef.focus();
+      this.inputRef.focus({ preventScroll: true });
     }
 
     if (this.state.isOpen) {

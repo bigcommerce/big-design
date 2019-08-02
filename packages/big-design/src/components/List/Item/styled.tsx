@@ -34,11 +34,11 @@ export const StyledListItem = styled.li<ListItemProps>`
     width: 100%;
   }
 
-  ${props =>
-    props.disabled &&
+  ${({ disabled, theme }) =>
+    disabled &&
     css`
       background-color: inherit;
-      color: ${({ theme }) => theme.colors.secondary40};
+      color: ${theme.colors.secondary40};
 
       :hover {
         background-color: inherit;
