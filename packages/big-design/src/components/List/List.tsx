@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 import { Popper, RefHandler } from 'react-popper';
 
 import { StyledList } from './styled';
+import { ListPopperElement } from './ListPopperElement';
 
 interface Props {
   id?: string;
@@ -40,7 +41,7 @@ export class List extends React.PureComponent<ListProps> {
     return this.listContainer
       ? createPortal(
           <Popper innerRef={handleListRef} placement={selectedPlacement} modifiers={{ offset: { offset: '0, 10' } }}>
-            {({ ref, placement, style }) =>
+            {({ placement, ref, scheduleUpdate, style }) =>
               isOpen && (
                 <StyledList
                   data-placement={placement}
@@ -50,7 +51,7 @@ export class List extends React.PureComponent<ListProps> {
                   tabIndex={-1}
                   {...rest}
                 >
-                  {children}
+                  <ListPopperElement scheduleUpdate={scheduleUpdate}>{children}</ListPopperElement>
                 </StyledList>
               )
             }
