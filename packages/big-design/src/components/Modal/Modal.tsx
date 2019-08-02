@@ -42,16 +42,19 @@ export class Modal extends React.PureComponent<ModalProps> {
   static Body = StyledModalBody;
   static Header = ModalHeader;
 
+  private modalContainer?: HTMLDivElement;
   private modalRef = React.createRef<HTMLDivElement>();
-  private modalContainer = document.createElement('div');
   private readonly headerUniqueId = uniqueId('modal_header_');
 
   componentDidMount() {
+    this.modalContainer = document.createElement('div');
     document.body.appendChild(this.modalContainer);
   }
 
   componentWillUnmount() {
-    document.body.removeChild(this.modalContainer);
+    if (this.modalContainer) {
+      document.body.removeChild(this.modalContainer);
+    }
   }
 
   componentDidUpdate(prevProps: ModalProps) {
@@ -84,7 +87,7 @@ export class Modal extends React.PureComponent<ModalProps> {
       </StyledModal>
     );
 
-    return isOpen && createPortal(modalContent, this.modalContainer);
+    return isOpen && this.modalContainer ? createPortal(modalContent, this.modalContainer) : null;
   }
 
   private renderClose() {

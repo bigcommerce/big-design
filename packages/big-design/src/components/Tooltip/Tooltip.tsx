@@ -22,14 +22,17 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
     visible: false,
   };
 
-  private tooltipContainer = document.createElement('div');
+  private tooltipContainer?: HTMLDivElement;
 
   componentDidMount() {
+    this.tooltipContainer = document.createElement('div');
     document.body.appendChild(this.tooltipContainer);
   }
 
   componentWillUnmount() {
-    document.body.removeChild(this.tooltipContainer);
+    if (this.tooltipContainer) {
+      document.body.removeChild(this.tooltipContainer);
+    }
   }
 
   render() {
@@ -51,18 +54,20 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
             </StyledTooltipTrigger>
           )}
         </Reference>
-        {createPortal(
-          <Popper placement={this.props.placement} modifiers={{ offset: { offset: '0, 8' } }}>
-            {({ placement, ref, style }) =>
-              this.state.visible && (
-                <StyledTooltip ref={ref} style={style} data-placement={placement}>
-                  {content}
-                </StyledTooltip>
-              )
-            }
-          </Popper>,
-          this.tooltipContainer,
-        )}
+        {this.tooltipContainer
+          ? createPortal(
+              <Popper placement={this.props.placement} modifiers={{ offset: { offset: '0, 8' } }}>
+                {({ placement, ref, style }) =>
+                  this.state.visible && (
+                    <StyledTooltip ref={ref} style={style} data-placement={placement}>
+                      {content}
+                    </StyledTooltip>
+                  )
+                }
+              </Popper>,
+              this.tooltipContainer,
+            )
+          : null}
       </Manager>
     );
   }

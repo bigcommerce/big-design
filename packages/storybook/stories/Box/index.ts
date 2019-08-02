@@ -1,1 +1,0 @@
-export { BoxPropTable } from './BoxPropTable';
