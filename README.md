@@ -48,7 +48,7 @@ Workspaces are inside the [packages](https://github.com/bigcommerce/big-design/b
 - [big-design](https://github.com/bigcommerce/big-design/blob/master/packages/big-design): React component library.
 - [big-design-theme](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-theme): Default Theme.
 - [big-design-icons](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-icons): Icons library.
-- [storybook](https://github.com/bigcommerce/big-design/blob/master/packages/storybook): Component stories and docs live here.
+- [docs](https://github.com/bigcommerce/big-design/blob/master/packages/docs): Documentation live here.
 - [configs](https://github.com/bigcommerce/big-design/blob/master/packages/configs): (internal) Shared configs between packages.
 
 ### Changelogs
@@ -59,7 +59,7 @@ As this is a monorepo, each package has it's own Changelog. Links for each can b
 - [big-design-theme](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-theme/CHANGELOG.md)
 - [big-design-icons](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-icons/CHANGELOG.md)
 - [configs](https://github.com/bigcommerce/big-design/tree/master/packages/configs)
-- [storybook](https://github.com/bigcommerce/big-design/blob/master/packages/storybook/CHANGELOG.md)
+- [docs](https://github.com/bigcommerce/big-design/blob/master/packages/docs/CHANGELOG.md)
 
 ### Contributing
 
@@ -68,7 +68,7 @@ and [Code of Conduct](https://github.com/bigcommerce/big-design/blob/master/CODE
 
 ### Development
 
-Running the following commands will run `big-design` and `storybook` in watch mode.
+Running the following commands will run `big-design` and `docs` in watch mode.
 
 ```
 yarn
