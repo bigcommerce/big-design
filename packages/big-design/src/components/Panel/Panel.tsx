@@ -11,7 +11,7 @@ export const RawPanel: React.FC<PanelProps> = props => (
     marginBottom="medium"
     {...props}
     backgroundColor="white"
-    elevation="raised"
+    shadow="raised"
     padding={{ mobile: 'medium', tablet: 'xxLarge' }}
   />
 );

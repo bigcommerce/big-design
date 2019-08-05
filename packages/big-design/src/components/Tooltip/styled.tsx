@@ -6,7 +6,7 @@ export const StyledTooltipTrigger = styled.div`
 `;
 
 export const StyledTooltip = styled.div`
-  ${({ theme }) => theme.elevation.floating};
+  ${({ theme }) => theme.shadow.floating};
 
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.secondary70};

@@ -16,7 +16,7 @@ export const StyledBox = styled.div<BoxProps>`
       background-color: ${theme.colors[backgroundColor]};
     `};
 
-  ${({ elevation, theme }) => elevation && theme.elevation[elevation]};
+  ${({ shadow, theme }) => shadow && theme.shadow[shadow]};
 
   ${({ border, theme }) =>
     border &&
