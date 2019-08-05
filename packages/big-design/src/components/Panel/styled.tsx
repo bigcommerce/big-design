@@ -9,7 +9,7 @@ export const StyledPanel = styled(Box)<PanelProps>`
   border-radius: ${({ theme }) => theme.borderRadius.none};
 
   ${({ theme }) => theme.breakpoints.tablet} {
-    ${({ theme }) => theme.elevation.floating}
+    ${({ theme }) => theme.shadow.floating}
   }
 `;
 

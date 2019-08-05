@@ -6,7 +6,7 @@ interface StyledList {
 }
 
 export const StyledList = styled.ul<StyledList>`
-  ${({ theme }) => theme.elevation.raised};
+  ${({ theme }) => theme.shadow.raised};
 
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.secondary70};

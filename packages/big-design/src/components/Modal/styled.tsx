@@ -33,7 +33,7 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
   ${({ variant }) =>
     variant === 'dialog' &&
     css`
-      ${({ theme }) => theme.elevation.floating};
+      ${({ theme }) => theme.shadow.floating};
 
       max-width: ${({ theme }) => theme.breakpointValues.tablet};
       left: 50%;
@@ -49,7 +49,7 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
       width: 100%;
 
       ${({ theme }) => theme.breakpoints.tablet} {
-        ${({ theme }) => theme.elevation.floating};
+        ${({ theme }) => theme.shadow.floating};
 
         height: auto;
         left: 50%;

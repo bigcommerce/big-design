@@ -1,4 +1,4 @@
-import { Border, BorderRadius, Colors, Elevation } from '@bigcommerce/big-design-theme';
+import { Border, BorderRadius, Colors, Shadow } from '@bigcommerce/big-design-theme';
 import React from 'react';
 
 import { MarginProps, PaddingProps } from '../../mixins';
@@ -7,7 +7,7 @@ import { StyledBox } from './styled';
 
 export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, MarginProps, PaddingProps {
   backgroundColor?: keyof Colors;
-  elevation?: keyof Elevation;
+  shadow?: keyof Shadow;
   border?: keyof Border;
   borderBottom?: keyof Border;
   borderLeft?: keyof Border;

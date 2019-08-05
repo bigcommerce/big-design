@@ -11,24 +11,23 @@ exports[`has border props 1`] = `
 />
 `;
 
-exports[`has elevation props 1`] = `
-.c0 {
-  box-sizing: border-box;
-  border-radius: 0.25rem;
-  box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
-}
-
-<div
-  class="c0"
-  elevation="floating"
-/>
-`;
-
 exports[`has individual border props 1`] = `
 .c0 {
   box-sizing: border-box;
   border-right: 1px solid #D9DCE9;
   border-bottom: 1px solid #D9DCE9;
+}
+
+<div
+  class="c0"
+/>
+`;
+
+exports[`has shadow props 1`] = `
+.c0 {
+  box-sizing: border-box;
+  border-radius: 0.25rem;
+  box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
 }
 
 <div
