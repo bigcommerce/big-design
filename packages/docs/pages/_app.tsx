@@ -1,4 +1,4 @@
-import { GlobalStyle, Grid } from '@bigcommerce/big-design';
+import { GlobalStyles, Grid } from '@bigcommerce/big-design';
 import { createTheme } from '@bigcommerce/big-design-theme';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
@@ -38,7 +38,7 @@ export default class MyApp extends App {
         </style>
         <ThemeProvider theme={theme}>
           <>
-            <GlobalStyle />
+            <GlobalStyles />
             <Grid template={gridTemplate} backgroundColor="secondary10" gap="0" style={{ minHeight: '100%' }}>
               <Grid.Item area="nav" elevation="raised">
                 <SideNav />

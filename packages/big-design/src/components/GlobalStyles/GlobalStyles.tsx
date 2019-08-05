@@ -2,7 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { normalize } from 'polished';
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   ${normalize()}
 
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600');
@@ -12,4 +12,4 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-GlobalStyle.defaultProps = { theme: defaultTheme };
+GlobalStyles.defaultProps = { theme: defaultTheme };
