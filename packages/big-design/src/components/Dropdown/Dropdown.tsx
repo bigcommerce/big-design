@@ -290,6 +290,8 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
 
     return scrollIntoView(element, {
       behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
       scrollMode: 'if-needed',
     });
   };
