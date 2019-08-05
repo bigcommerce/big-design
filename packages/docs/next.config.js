@@ -8,7 +8,7 @@ module.exports = {
     return config;
   },
   exportPathMap: () => ({
-    '/': { page: '/' },
+    '/': { page: '/GettingStarted/GettingStartedPage' },
     '/badge': { page: '/Badge/BadgePage' },
     '/box': { page: '/Box/BoxPage' },
     '/button': { page: '/Button/ButtonPage' },
