@@ -235,7 +235,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       const item = value && this.findItemByValue(value);
 
       if (item) {
-        this.updateHighlightedId(item.id);
+        this.updateHighlightedId(item.id, true);
       }
 
       return this.inputRef && this.inputRef.focus({ preventScroll: true });
@@ -546,7 +546,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     return null;
   }
 
-  private updateHighlightedId(id: string | null) {
+  private updateHighlightedId(id: string | null, instantScroll = false) {
     if (!id) {
       return;
     }
@@ -556,12 +556,12 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         highlightedId: id,
       },
       () => {
-        this.scrollIntoView();
+        this.scrollIntoView(instantScroll);
       },
     );
   }
 
-  private scrollIntoView() {
+  private scrollIntoView(instantScroll: boolean) {
     const element = this.getItemById(this.state.highlightedId);
 
     if (!element) {
@@ -569,7 +569,9 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     }
 
     return scrollIntoView(element, {
-      behavior: 'smooth',
+      behavior: instantScroll ? 'instant' : 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
       scrollMode: 'if-needed',
     });
   }
