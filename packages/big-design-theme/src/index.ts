@@ -2,9 +2,9 @@ import { themeOptions, ThemeOptions } from './options';
 import { createBorder, createBorderRadius, Border, BorderRadius } from './system/border';
 import { breakpoints, breakpointValues, Breakpoints, BreakpointValues } from './system/breakpoints';
 import { colors, Colors } from './system/colors';
-import { elevation, Elevation } from './system/elevation';
 import * as keyframes from './system/keyframes';
 import { createLineHeight, LineHeight } from './system/line-height';
+import { shadow, Shadow } from './system/shadow';
 import { createSpacing, Spacing } from './system/spacing';
 import { createTypography, Typography } from './system/typography';
 import { zIndex, ZIndex } from './system/z-index';
@@ -18,9 +18,9 @@ export interface ThemeInterface {
   breakpointValues: BreakpointValues;
   breakpoints: Breakpoints;
   colors: Colors;
-  elevation: Elevation;
   keyframes: typeof keyframes;
   lineHeight: LineHeight;
+  shadow: Shadow;
   spacing: Spacing;
   typography: Typography;
   zIndex: ZIndex;
@@ -35,9 +35,9 @@ export const createTheme = (customOptions: Partial<ThemeOptions> = {}): ThemeInt
     breakpointValues,
     breakpoints,
     colors,
-    elevation,
     keyframes,
     lineHeight: createLineHeight(),
+    shadow,
     spacing: createSpacing(),
     typography: createTypography(),
     zIndex,
