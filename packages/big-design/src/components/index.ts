@@ -5,7 +5,7 @@ export * from './Checkbox';
 export * from './Dropdown';
 export * from './Flex';
 export * from './Form';
-export * from './GlobalStyle';
+export * from './GlobalStyles';
 export * from './Grid';
 export * from './Input';
 export * from './Link';
