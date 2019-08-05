@@ -8,6 +8,7 @@ import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
 
 interface EditorProps {
   language?: string;
+  showControls?: boolean;
 }
 
 function formatCode(code: string) {
@@ -38,13 +39,13 @@ function getCode(children: React.ReactNode) {
 }
 
 export const CodeSnippet: React.FC<EditorProps> = props => {
-  const { children, language } = props;
+  const { children, language, showControls } = props;
   const { editorTheme } = useContext(CodeEditorThemeContext);
   const code = getCode(children);
 
   return (
     <Box border="box" marginBottom="xxLarge">
-      <SnippetControls copyToClipboard={() => clipboardCopy(code)} helperText="Code example" />
+      {showControls && <SnippetControls copyToClipboard={() => clipboardCopy(code)} helperText="Code example" />}
 
       {/* react-live Editor types are wrong, PR submitted */}
       {/* 
@@ -56,4 +57,5 @@ export const CodeSnippet: React.FC<EditorProps> = props => {
 
 CodeSnippet.defaultProps = {
   language: 'jsx',
+  showControls: true,
 };
