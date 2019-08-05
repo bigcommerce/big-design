@@ -9,7 +9,7 @@ const { colors } = defaultTheme;
 const COLORS_TO_OMIT = ['primary', 'secondary', 'danger', 'warning', 'success'];
 type Color = keyof ThemeInterface['colors'];
 
-export const StyledColor = styled(Box)`
+const StyledColor = styled(Box)`
   height: ${remCalc(30)};
   width: ${remCalc(300)};
 `;

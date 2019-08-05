@@ -39,11 +39,16 @@ export default class MyApp extends App {
         <ThemeProvider theme={theme}>
           <>
             <GlobalStyle />
-            <Grid template={gridTemplate} backgroundColor="secondary10" gap="0">
-              <Grid.Item area="nav">
+            <Grid template={gridTemplate} backgroundColor="secondary10" gap="0" style={{ minHeight: '100%' }}>
+              <Grid.Item area="nav" elevation="raised">
                 <SideNav />
               </Grid.Item>
-              <Grid.Item area="main" marginVertical="medium" marginHorizontal="xxLarge">
+              <Grid.Item
+                area="main"
+                marginVertical="medium"
+                marginHorizontal="xxLarge"
+                style={{ maxWidth: '100%', overflow: 'hidden' }}
+              >
                 <StoryWrapper>
                   <Component {...pageProps} />
                 </StoryWrapper>

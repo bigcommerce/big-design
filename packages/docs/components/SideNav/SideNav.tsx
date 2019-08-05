@@ -1,112 +1,99 @@
-import { Box, Flex } from '@bigcommerce/big-design';
-import Link from 'next/link';
+import { StyledFlex } from './styled';
+import { SideNavGroup } from './SideNavGroup';
+import { SideNavLink } from './SideNavLink';
 
 export const SideNav: React.FC = () => {
   return (
-    <Flex flexDirection="column" elevation="raised" style={{ minHeight: '100vh', height: '100%' }}>
-      <Box margin="large">
-        <img src="/static/logo.svg" alt="BigDesign Logo" />
-      </Box>
+    <StyledFlex flexDirection="column" padding="medium" paddingBottom="xxxLarge" backgroundColor="white">
+      <img src="/static/logo.svg" alt="BigDesign Logo" />
 
-      <Link href="/">
-        <a>Getting Started</a>
-      </Link>
+      <SideNavGroup title="Foundation">
+        <SideNavLink href="/">Getting Started</SideNavLink>
+        <SideNavLink href="/Colors/ColorsPage" as="/colors">
+          Colors
+        </SideNavLink>
+        <SideNavLink href="/Typography/TypographyPage" as="/typography">
+          Typography
+        </SideNavLink>
+        <SideNavLink href="/Button/ButtonPage" as="/button">
+          Button
+        </SideNavLink>
+        <SideNavLink href="/Icons/IconsPage" as="/icons">
+          Icons
+        </SideNavLink>
+      </SideNavGroup>
 
-      <Link href="/Badge/BadgePage" as="/badge">
-        <a>Badge</a>
-      </Link>
+      <SideNavGroup title="Forms">
+        <SideNavLink href="/Form/FormPage" as="/form">
+          Overview
+        </SideNavLink>
+        <SideNavLink href="/Form/InputPage" as="/form/input">
+          Input
+        </SideNavLink>
+        <SideNavLink href="/Form/CheckboxPage" as="/form/checkbox">
+          Checkbox
+        </SideNavLink>
+        <SideNavLink href="/Form/RadioPage" as="/form/radio">
+          Radio
+        </SideNavLink>
+        <SideNavLink href="/Form/SelectPage" as="/form/select">
+          Select
+        </SideNavLink>
+        <SideNavLink href="/Form/TextareaPage" as="/form/textarea">
+          Textarea
+        </SideNavLink>
+      </SideNavGroup>
 
-      <Link href="/Box/BoxPage" as="/box">
-        <a>Box</a>
-      </Link>
+      <SideNavGroup title="Status &amp; Feedback">
+        <SideNavLink href="/Badge/BadgePage" as="/badge">
+          Badge
+        </SideNavLink>
+        <SideNavLink href="/Progress/ProgressBarPage" as="/progress/bar">
+          Progress Bar
+        </SideNavLink>
+        <SideNavLink href="/Progress/ProgressCirclePage" as="/progress/circle">
+          Progress Circle
+        </SideNavLink>
+        <SideNavLink href="/Tooltip/TooltipPage" as="/tooltip">
+          Tooltip
+        </SideNavLink>
+      </SideNavGroup>
 
-      <Link href="/Button/ButtonPage" as="/button">
-        <a>Button</a>
-      </Link>
+      <SideNavGroup title="Layout">
+        <SideNavLink href="/Modal/ModalPage" as="/modal">
+          Modal
+        </SideNavLink>
+        <SideNavLink href="/Panel/PanelPage" as="/panel">
+          Panel
+        </SideNavLink>
+        <SideNavLink href="/Tabs/TabsPage" as="/tabs">
+          Tabs
+        </SideNavLink>
+        <SideNavLink href="/Dropdown/DropdownPage" as="/dropdown">
+          Dropdown
+        </SideNavLink>
+      </SideNavGroup>
 
-      <Link href="/Colors/ColorsPage" as="/colors">
-        <a>Colors</a>
-      </Link>
-
-      <Link href="/Dropdown/DropdownPage" as="/dropdown">
-        <a>Dropdown</a>
-      </Link>
-
-      <Link href="/Flex/FlexPage" as="/flex">
-        <a>Flex</a>
-      </Link>
-
-      <Link href="/Form/FormPage" as="/form">
-        <a>Form</a>
-      </Link>
-
-      <Link href="/Form/InputPage" as="/form/input">
-        <a>Form - Input</a>
-      </Link>
-
-      <Link href="/Form/CheckboxPage" as="/form/checkbox">
-        <a>Form - Checkbox</a>
-      </Link>
-
-      <Link href="/Form/RadioPage" as="/form/radio">
-        <a>Form - Radio</a>
-      </Link>
-
-      <Link href="/Form/SelectPage" as="/form/select">
-        <a>Form - Select</a>
-      </Link>
-
-      <Link href="/Form/TextareaPage" as="/form/textarea">
-        <a>Form - Textarea</a>
-      </Link>
-
-      <Link href="/Grid/GridPage" as="/grid">
-        <a>Grid</a>
-      </Link>
-
-      <Link href="/Icons/IconsPage" as="/icons">
-        <a>Icons</a>
-      </Link>
-
-      <Link href="/Link/LinkPage" as="/link">
-        <a>Link</a>
-      </Link>
-
-      <Link href="/Utilities/MarginPage" as="/utilities/margin">
-        <a>Utilities - Margin</a>
-      </Link>
-
-      <Link href="/Utilities/PaddingPage" as="/utilities/padding">
-        <a>Utilities - Padding</a>
-      </Link>
-
-      <Link href="/Modal/ModalPage" as="/modal">
-        <a>Modal</a>
-      </Link>
-
-      <Link href="/Panel/PanelPage" as="/panel">
-        <a>Panel</a>
-      </Link>
-
-      <Link href="/Progress/ProgressBarPage" as="/progress/bar">
-        <a>Progress - Bar</a>
-      </Link>
-
-      <Link href="/Progress/ProgressCirclePage" as="/progress/circle">
-        <a>Progress - Circle</a>
-      </Link>
-
-      <Link href="/Tabs/TabsPage" as="/tabs">
-        <a>Tabs</a>
-      </Link>
-
-      <Link href="/Tooltip/TooltipPage" as="/tooltip">
-        <a>Tooltip</a>
-      </Link>
-
-      <Link href="/Typography/TypographyPage" as="/typography">
-        <a>Typography</a>
-      </Link>
-    </Flex>
+      <SideNavGroup title="Utilities">
+        <SideNavLink href="/Box/BoxPage" as="/box">
+          Box
+        </SideNavLink>
+        <SideNavLink href="/Flex/FlexPage" as="/flex">
+          Flex
+        </SideNavLink>
+        <SideNavLink href="/Grid/GridPage" as="/grid">
+          Grid
+        </SideNavLink>
+        <SideNavLink href="/Utilities/MarginPage" as="/utilities/margin">
+          Margin
+        </SideNavLink>
+        <SideNavLink href="/Utilities/PaddingPage" as="/utilities/padding">
+          Padding
+        </SideNavLink>
+        <SideNavLink href="/Link/LinkPage" as="/link">
+          Link
+        </SideNavLink>
+      </SideNavGroup>
+    </StyledFlex>
   );
 };
