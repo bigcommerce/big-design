@@ -44,7 +44,7 @@ export const SideNav: React.FC = () => {
         </SideNavLink>
       </SideNavGroup>
 
-      <SideNavGroup title="Status & Feedback">
+      <SideNavGroup title="Status &amp; Feedback">
         <SideNavLink href="/Badge/BadgePage" as="/badge">
           Badge
         </SideNavLink>
