@@ -40,7 +40,7 @@ export default class MyApp extends App {
           <>
             <GlobalStyles />
             <Grid template={gridTemplate} backgroundColor="secondary10" gap="0" style={{ minHeight: '100%' }}>
-              <Grid.Item area="nav" elevation="raised">
+              <Grid.Item area="nav" shadow="raised">
                 <SideNav />
               </Grid.Item>
               <Grid.Item
