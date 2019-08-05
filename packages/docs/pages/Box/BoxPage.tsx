@@ -37,14 +37,14 @@ export default () => (
 
     <H1>Examples</H1>
     <Box>
-      <Text>Box also supports multiple elevations, here is an example of how they look like:</Text>
+      <Text>Box also supports multiple shadows, here is an example of how they look like:</Text>
       <CodePreview>
         {/* jsx-to-string:start */}
         <Flex justifyContent="space-around">
-          <Box backgroundColor="primary20" padding="xxLarge" elevation="floating">
+          <Box backgroundColor="primary20" padding="xxLarge" shadow="floating">
             Floating
           </Box>
-          <Box backgroundColor="primary20" padding="xxLarge" elevation="raised">
+          <Box backgroundColor="primary20" padding="xxLarge" shadow="raised">
             Raised
           </Box>
         </Flex>
