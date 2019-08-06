@@ -163,12 +163,6 @@ export default () => (
       <Select label="Select" placeholder="Default" onItemChange={() => null} disabled>
         <Select.Option value={1}>Option</Select.Option>
         <Select.Option value={2}>Option</Select.Option>
-        <Select.Option value={3}>Option</Select.Option>
-        <Select.Option value={4}>Option</Select.Option>
-        <Select.Option value={5}>Option</Select.Option>
-        <Select.Option value={6}>Option</Select.Option>
-        <Select.Option value={7}>Option</Select.Option>
-        <Select.Option value={8}>Option</Select.Option>
       </Select>
       {/* jsx-to-string:end */}
     </CodePreview>
