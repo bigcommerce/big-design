@@ -73,6 +73,15 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     });
   }
 
+  componentDidUpdate(prevProps: Props) {
+    const { value } = this.props;
+
+    // Reset input if value was reset to empty string
+    if (prevProps.value && !value) {
+      this.setState({ inputText: '' });
+    }
+  }
+
   render() {
     const {
       children,
