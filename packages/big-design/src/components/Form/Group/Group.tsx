@@ -1,6 +1,7 @@
 import { ErrorIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
+import { uniqueId } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
 import { Radio } from '../../Radio';
 import { Error as FormError } from '../Error';
@@ -17,36 +18,6 @@ export const Group: React.FC<GroupProps> = props => {
   const inline = !React.Children.toArray(children).every(child => {
     return React.isValidElement(child) && (child.type === Checkbox || child.type === Radio);
   });
-
-  let errorKey = 0;
-
-  const generateErrors: any = (errors: GroupProps['errors']) => {
-    let errorList = null;
-
-    if (typeof errors === 'string') {
-      errorList = (
-        <StyledError alignItems="center" key={errorKey++}>
-          <ErrorIcon color="danger" title="" />
-          <FormError>{errors}</FormError>
-        </StyledError>
-      );
-    }
-
-    if (React.isValidElement(errors) && errors.type === FormError) {
-      errorList = (
-        <StyledError alignItems="center" key={errorKey++}>
-          <ErrorIcon color="danger" title="" />
-          {errors}
-        </StyledError>
-      );
-    }
-
-    if (Array.isArray(errors)) {
-      errorList = errors.map(error => error && generateErrors(error));
-    }
-
-    return errorList;
-  };
 
   const renderErrors = () => {
     // If Form.Group has errors prop, don't generate errors from children
@@ -79,3 +50,31 @@ export const Group: React.FC<GroupProps> = props => {
     </StyledGroup>
   );
 };
+
+function generateErrors(errors: GroupProps['errors']): React.ReactNode {
+  const errorKey = uniqueId('formGroup_error_');
+
+  if (typeof errors === 'string') {
+    return (
+      <StyledError alignItems="center" key={errorKey}>
+        <ErrorIcon color="danger" />
+        <FormError>{errors}</FormError>
+      </StyledError>
+    );
+  }
+
+  if (React.isValidElement(errors) && errors.type === FormError) {
+    return (
+      <StyledError alignItems="center" key={errorKey}>
+        <ErrorIcon color="danger" />
+        {errors}
+      </StyledError>
+    );
+  }
+
+  if (Array.isArray(errors)) {
+    return errors.map(error => error && generateErrors(error));
+  }
+
+  return null;
+}
