@@ -92,7 +92,7 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
   }
 
   private renderIconRight() {
-    if (!this.props.iconRight || this.props.error) {
+    if (!this.props.iconRight) {
       return null;
     }
 

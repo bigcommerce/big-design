@@ -9,7 +9,8 @@ export const InputPropTable: React.FC = () => (
       Append a description to the input field.
     </PropTable.Prop>
     <PropTable.Prop name="error" types="ReactChild">
-      Displays an error message for the field.
+      Displays an error message for the field. Error message will be passed to the <Code>Form.Group</Code> for display
+      purposes.
     </PropTable.Prop>
     <PropTable.Prop name="iconLeft" types={<Link href="/icons">Icon</Link>}>
       Pass in an <Link href="/icons">Icon</Link> component to display to the left of the text.

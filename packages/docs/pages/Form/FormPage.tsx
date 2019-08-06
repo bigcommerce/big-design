@@ -19,9 +19,9 @@ import { Code, CodePreview } from '../../components';
 import {
   FormErrorPropTable,
   FormFieldsetPropTable,
+  FormGroupPropTable,
   FormLabelPropTable,
   FormPropTable,
-  FormRowPropTable,
 } from '../../PropTables';
 
 export default () => (
@@ -75,7 +75,7 @@ export default () => (
 
     <H2>Form.Group</H2>
 
-    <FormRowPropTable />
+    <FormGroupPropTable />
 
     <H1>Input Types</H1>
 
@@ -114,7 +114,9 @@ export default () => (
     <H1>Layout</H1>
 
     <Text>
-      You can up to 3 <Code>Input</Code> components in row to add more dimension to a <Code>Form.Group</Code>.
+      You can up to 3 <Code>Input</Code> components in row to add more dimension to a <Code>Form.Group</Code>.{' '}
+      <Code>Radio</Code> and <Code>Checkbox</Code> components will never display inline inside a <Code>Form.Group</Code>
+      .
     </Text>
 
     <CodePreview>
@@ -132,6 +134,13 @@ export default () => (
           <Input label="State" placeholder="Texas" />
           <Input label="Postal Code" placeholder="78726" />
         </Form.Group>
+        <Form.Fieldset legend="Shipping Method">
+          <Form.Group>
+            <Radio label="Free – Three Day Shipping" checked onChange={() => null} />
+            <Radio label="$4.99 – Two Day Shipping" />
+            <Radio label="$9.99 – One Day Shipping" />
+          </Form.Group>
+        </Form.Fieldset>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -140,7 +149,8 @@ export default () => (
 
     <Text>
       All form controls are tied to <Code primary>onChange</Code> or equivalent event handlers. Validation messages can
-      be passed through the <Code>error</Code> prop.
+      be passed through the <Code>error</Code> prop. All input errors in an <Code>Form.Group</Code> will appear at the
+      bottom of the group component component.
     </Text>
 
     <CodePreview>
@@ -180,6 +190,11 @@ export default () => (
                 onChange={handleChange}
                 pattern="^.{1,3}$"
               />
+            </Form.Group>
+            <Form.Group>
+              <Input label="City" error="You must enter a valid City." placeholder="Austin" />
+              <Input label="State" placeholder="Texas" />
+              <Input label="Postal Code" error="You must enter a valid Postal Code." placeholder="78726" />
             </Form.Group>
           </Form>
         );

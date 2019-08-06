@@ -32,8 +32,10 @@ export const FormLabelPropTable: React.FC = () => (
   </Text>
 );
 
-export const FormRowPropTable: React.FC = () => (
-  <Text>
-    Supports all native <Code>&lt;div /&gt;</Code> element attributes.
-  </Text>
+export const FormGroupPropTable: React.FC = () => (
+  <PropTable>
+    <PropTable.Prop name="errors" types={['string', 'React.ReactChild', 'Array<string | React.ReactChild>']}>
+      Pass error(s) into the form group to override child input errors.
+    </PropTable.Prop>
+  </PropTable>
 );
