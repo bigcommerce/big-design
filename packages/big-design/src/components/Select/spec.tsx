@@ -482,3 +482,33 @@ test('select should not have a required attr if not set as required', () => {
 
   expect(input.getAttribute('required')).toEqual(null);
 });
+
+test('select should have a disabled attr if set as disabled', () => {
+  const { getByLabelText } = render(
+    <Select label="Countries" value="us" disabled>
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+    </Select>,
+  );
+
+  const input = getByLabelText('Countries');
+
+  expect(input.getAttribute('disabled')).toEqual('');
+});
+
+test('select should not have a disabled attr if not set as disabled', () => {
+  const { getByLabelText } = render(
+    <Select label="Countries" placeholder="Choose country">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+    </Select>,
+  );
+
+  const input = getByLabelText('Countries');
+
+  expect(input.getAttribute('disabled')).toEqual(null);
+});
