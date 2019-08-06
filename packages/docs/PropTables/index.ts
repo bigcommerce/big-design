@@ -9,6 +9,7 @@ export * from './GridPropTable';
 export * from './IconPropTable';
 export * from './InputPropTable';
 export * from './MarginPropTable';
+export * from './ModalPropTable';
 export * from './PaddingPropTable';
 export * from './RadioPropTable';
 export * from './SelectPropTable';

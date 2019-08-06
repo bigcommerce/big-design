@@ -1,97 +1,109 @@
-import { Button, Flex, Modal, Text } from '@bigcommerce/big-design';
+import { Button, H0, H1, H2, Modal, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-interface State {
-  isModalOpen: boolean;
-  isDialogOpen: boolean;
-}
+import { Code, CodePreview } from '../../components';
+import { ModalActionsPropTable, ModalHeaderPropTable, ModalPropTable } from '../../PropTables';
 
-export default class Story extends React.PureComponent<{}, State> {
-  state = {
-    isModalOpen: false,
-    isDialogOpen: false,
-  };
+export default () => (
+  <>
+    <H0>Modal</H0>
 
-  render() {
-    return (
-      <>
-        <Flex justifyContent="center" alignItems="center" marginBottom="medium">
-          <Button onClick={this.openModal}>Open Modal</Button>
-        </Flex>
+    <Text>
+      A modal appears as a layer on top of the primary interface. Modals disrupt users from interacting with the page
+      until they complete a specific task.
+    </Text>
 
-        <Flex justifyContent="center" alignItems="center">
-          <Button onClick={this.openDialog}>Open Dialog</Button>
-        </Flex>
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      {function Example() {
+        const [isOpen, setIsOpen] = React.useState(false);
 
-        <Modal
-          isOpen={this.state.isModalOpen}
-          onClose={this.closeModal}
-          closeOnEscKey={true}
-          closeOnClickOutside={false}
-        >
-          <Modal.Header>Modal Title</Modal.Header>
+        return (
+          <>
+            <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
 
-          <Modal.Body>
-            <Text>
-              Ea tempor sunt amet labore proident dolor proident commodo in exercitation ea nulla sunt pariatur. Nulla
-              sunt ipsum do eu consectetur exercitation occaecat labore aliqua. Aute elit occaecat esse ea fugiat esse.
-              Reprehenderit sunt ea ea mollit commodo tempor amet fugiat.
-            </Text>
-            <Text>
-              Esse ipsum est consectetur nulla aute deserunt. Anim sint nisi consequat officia adipisicing irure. Nulla
-              ea reprehenderit elit eu nostrud sunt veniam dolore ex occaecat qui. Commodo ullamco ut sint dolor quis
-              cillum in et enim culpa esse exercitation ad. Eiusmod adipisicing nisi culpa esse laborum cupidatat ad
-              pariatur proident. Consectetur ex sint ullamco non ex.
-            </Text>
-          </Modal.Body>
+            <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} closeOnEscKey={true} closeOnClickOutside={false}>
+              <Modal.Header>Modal Title</Modal.Header>
 
-          <Modal.Actions>
-            <Button variant="subtle" onClick={this.closeModal}>
-              Cancel
-            </Button>
-            <Button onClick={this.closeModal}>Apply</Button>
-          </Modal.Actions>
-        </Modal>
+              <Modal.Body>
+                <Text>
+                  Ea tempor sunt amet labore proident dolor proident commodo in exercitation ea nulla sunt pariatur.
+                  Nulla sunt ipsum do eu consectetur exercitation occaecat labore aliqua. Aute elit occaecat esse ea
+                  fugiat esse. Reprehenderit sunt ea ea mollit commodo tempor amet fugiat.
+                </Text>
+                <Text>
+                  Esse ipsum est consectetur nulla aute deserunt. Anim sint nisi consequat officia adipisicing irure.
+                  Nulla ea reprehenderit elit eu nostrud sunt veniam dolore ex occaecat qui. Commodo ullamco ut sint
+                  dolor quis cillum in et enim culpa esse exercitation ad. Eiusmod adipisicing nisi culpa esse laborum
+                  cupidatat ad pariatur proident. Consectetur ex sint ullamco non ex.
+                </Text>
+              </Modal.Body>
 
-        <Modal
-          isOpen={this.state.isDialogOpen}
-          onClose={this.closeDialog}
-          closeOnEscKey={true}
-          closeOnClickOutside={false}
-          variant="dialog"
-        >
-          <Modal.Header>Dialog Title</Modal.Header>
+              <Modal.Actions>
+                <Button variant="subtle" onClick={() => setIsOpen(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={() => setIsOpen(false)}>Apply</Button>
+              </Modal.Actions>
+            </Modal>
+          </>
+        );
+      }}
+      {/* jsx-to-string:end */}
+    </CodePreview>
 
-          <Modal.Body>
-            <Text>
-              Ea tempor sunt amet labore proident dolor proident commodo in exercitation ea nulla sunt pariatur.
-            </Text>
-          </Modal.Body>
+    <H1>Dialog</H1>
 
-          <Modal.Actions>
-            <Button variant="subtle" onClick={this.closeDialog}>
-              Cancel
-            </Button>
-            <Button onClick={this.closeDialog}>Apply</Button>
-          </Modal.Actions>
-        </Modal>
-      </>
-    );
-  }
+    <Text>
+      Setting the variant prop to <Code primary>dialog</Code> results in a simplified version of a Modal. The purpose of
+      a dialog is to act as a safety net for a user attempting a destructive action.
+    </Text>
 
-  private closeModal = () => {
-    this.setState({ isModalOpen: false });
-  };
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      {function Example() {
+        const [isOpen, setIsOpen] = React.useState(false);
 
-  private openModal = () => {
-    this.setState({ isModalOpen: true });
-  };
+        return (
+          <>
+            <Button onClick={() => setIsOpen(true)}>Open Dialog</Button>
 
-  private closeDialog = () => {
-    this.setState({ isDialogOpen: false });
-  };
+            <Modal
+              isOpen={isOpen}
+              onClose={() => setIsOpen(false)}
+              closeOnEscKey={true}
+              closeOnClickOutside={false}
+              variant="dialog"
+            >
+              <Modal.Header>Dialog Title</Modal.Header>
 
-  private openDialog = () => {
-    this.setState({ isDialogOpen: true });
-  };
-}
+              <Modal.Body>
+                <Text>
+                  Ea tempor sunt amet labore proident dolor proident commodo in exercitation ea nulla sunt pariatur.
+                </Text>
+              </Modal.Body>
+
+              <Modal.Actions>
+                <Button variant="subtle" onClick={() => setIsOpen(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={() => setIsOpen(false)}>Apply</Button>
+              </Modal.Actions>
+            </Modal>
+          </>
+        );
+      }}
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H1>API</H1>
+
+    <ModalPropTable />
+
+    <H2>Modal.Header</H2>
+    <ModalHeaderPropTable />
+
+    <H2>Modal.Actions</H2>
+    <ModalActionsPropTable />
+  </>
+);
