@@ -22,9 +22,9 @@ export default () => (
         const handleChange = () => setChecked(!checked);
 
         return (
-          <Form.Row>
+          <Form.Group>
             <Checkbox label={checked ? 'Checked' : 'Unchecked'} checked={checked} onChange={handleChange} />
-          </Form.Row>
+          </Form.Group>
         );
       }}
       {/* jsx-to-string:end */}

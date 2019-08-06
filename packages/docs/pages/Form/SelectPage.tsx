@@ -22,7 +22,7 @@ export default () => (
         const handleChange = val => setValue(val);
 
         return (
-          <Form.Row>
+          <Form.Group>
             <Select
               label="Countries"
               maxHeight={300}
@@ -53,7 +53,7 @@ export default () => (
               </Select.Option>
               <Select.Action>Action</Select.Action>
             </Select>
-          </Form.Row>
+          </Form.Group>
         );
       }}
       {/* jsx-to-string:end */}

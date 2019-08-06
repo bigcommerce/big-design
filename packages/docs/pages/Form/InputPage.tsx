@@ -24,7 +24,7 @@ export default () => (
         const handleChange = event => setValue(event.target.value);
 
         return (
-          <Form.Row>
+          <Form.Group>
             <Input
               label="Label"
               description="Description for the input."
@@ -33,7 +33,7 @@ export default () => (
               value={value}
               onChange={handleChange}
             />
-          </Form.Row>
+          </Form.Group>
         );
       }}
       {/* jsx-to-string:end */}
@@ -71,7 +71,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Row>
+        <Form.Group>
           <Input
             label="Email Address"
             description="Provide a valid email address."
@@ -79,7 +79,7 @@ export default () => (
             error="Email address must contain a domain name."
             onChange={() => null}
           />
-        </Form.Row>
+        </Form.Group>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -93,10 +93,10 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Row>
+        <Form.Group>
           <Input label="Example" placeholder="Example" iconLeft={<CheckCircleIcon color="success" />} />
           <Input label="Example" placeholder="Example" iconRight={<CheckCircleIcon color="success" />} />
-        </Form.Row>
+        </Form.Group>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>

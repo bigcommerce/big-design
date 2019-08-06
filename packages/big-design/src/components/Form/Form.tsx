@@ -4,6 +4,7 @@ import React, { Ref } from 'react';
 import { StyledForm } from './styled';
 import { Error as FormError } from './Error';
 import { Fieldset } from './Fieldset';
+import { Group } from './Group';
 import { Label } from './Label';
 import { Row } from './Row';
 
@@ -17,7 +18,8 @@ class StyleableForm extends React.PureComponent<PrivateProps & FormProps> {
   static Label = Label;
   static Error = FormError;
   static Fieldset = Fieldset;
-  static Row = Row;
+  static Row = Row; // @DEPRECATE
+  static Group = Group;
 
   render() {
     const { forwardedRef, ...props } = this.props;

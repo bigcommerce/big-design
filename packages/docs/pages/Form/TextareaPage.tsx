@@ -28,7 +28,7 @@ export default () => (
         const handleChange = event => setValue(event.target.value);
 
         return (
-          <Form.Row>
+          <Form.Group>
             <Textarea
               label="Label"
               description="Description for the textarea."
@@ -38,7 +38,7 @@ export default () => (
               value={value}
               onChange={handleChange}
             />
-          </Form.Row>
+          </Form.Group>
         );
       }}
       {/* jsx-to-string:end */}
@@ -76,7 +76,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Row>
+        <Form.Group>
           <Textarea
             label="Description"
             description="Description needs to be at least 64 characters long."
@@ -85,7 +85,7 @@ export default () => (
             error="Field needs to contain at least 64 characters."
             onChange={() => null}
           />
-        </Form.Row>
+        </Form.Group>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -99,9 +99,9 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Form.Row>
+      <Form.Group>
         <Textarea label="Label" description="Textarea with 5 rows." placeholder="Placeholder" rows={5} />
-      </Form.Row>
+      </Form.Group>
       {/* jsx-to-string:end */}
     </CodePreview>
 
@@ -114,9 +114,9 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Form.Row>
+      <Form.Group>
         <Textarea label="Label" placeholder="Textarea cannot be resized." resize={false} />
-      </Form.Row>
+      </Form.Group>
       {/* jsx-to-string:end */}
     </CodePreview>
   </>

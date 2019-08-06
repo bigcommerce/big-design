@@ -37,17 +37,17 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Row>
+        <Form.Group>
           <Input
             label="Email"
             type="email"
             description="Please provide a valid email address."
             placeholder="Email address"
           />
-        </Form.Row>
-        <Form.Row>
+        </Form.Group>
+        <Form.Group>
           <Input label="Password" type="password" placeholder="Password" />
-        </Form.Row>
+        </Form.Group>
         <Box marginTop="xxLarge">
           <Button>Sign In</Button>
         </Box>
@@ -73,7 +73,7 @@ export default () => (
 
     <FormLabelPropTable />
 
-    <H2>Form.Row</H2>
+    <H2>Form.Group</H2>
 
     <FormRowPropTable />
 
@@ -87,26 +87,26 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Row>
+        <Form.Group>
           <Input label="Example Input" placeholder="Example" />
-        </Form.Row>
-        <Form.Row>
+        </Form.Group>
+        <Form.Group>
           <Checkbox checked={true} onChange={() => null} label="Example Checkbox" />
-        </Form.Row>
-        <Form.Row>
+        </Form.Group>
+        <Form.Group>
           <Radio checked={true} onChange={() => null} label="Example Radio" />
-        </Form.Row>
-        <Form.Row>
+        </Form.Group>
+        <Form.Group>
           <Select label="Example Select" placeholder="Example" onItemChange={() => null}>
             <Select.Option value={1}>Option</Select.Option>
             <Select.Option value={2}>Option</Select.Option>
             <Select.Option value={3}>Option</Select.Option>
             <Select.Option value={4}>Option</Select.Option>
           </Select>
-        </Form.Row>
-        <Form.Row>
+        </Form.Group>
+        <Form.Group>
           <Textarea label="Example Textarea" placeholder="Example" />
-        </Form.Row>
+        </Form.Group>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -114,24 +114,24 @@ export default () => (
     <H1>Layout</H1>
 
     <Text>
-      You can up to 3 <Code>Input</Code> components in row to add more dimension to a <Code>Form.Row</Code>.
+      You can up to 3 <Code>Input</Code> components in row to add more dimension to a <Code>Form.Group</Code>.
     </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Row>
+        <Form.Group>
           <Input label="Company" placeholder="BigCommerce" />
-        </Form.Row>
-        <Form.Row>
+        </Form.Group>
+        <Form.Group>
           <Input label="First Name" placeholder="John" />
           <Input label="Last Name" placeholder="Doe" />
-        </Form.Row>
-        <Form.Row>
+        </Form.Group>
+        <Form.Group>
           <Input label="City" placeholder="Austin" />
           <Input label="State" placeholder="Texas" />
           <Input label="Postal Code" placeholder="78726" />
-        </Form.Row>
+        </Form.Group>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -171,7 +171,7 @@ export default () => (
 
         return (
           <Form onSubmit={handleSubmit}>
-            <Form.Row>
+            <Form.Group>
               <Input
                 label="Example"
                 description="Remove characters to preview validation."
@@ -180,7 +180,7 @@ export default () => (
                 onChange={handleChange}
                 pattern="^.{1,3}$"
               />
-            </Form.Row>
+            </Form.Group>
           </Form>
         );
       }}

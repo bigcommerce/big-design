@@ -3,6 +3,8 @@ import { render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 
+import { Form } from '../Form';
+
 import { Input } from './index';
 
 test('forwards ref', () => {
@@ -65,7 +67,11 @@ test('renders a description', () => {
 
 test('renders an error', () => {
   const errorText = 'This is an error';
-  const { queryByText } = render(<Input error={errorText} />);
+  const { queryByText } = render(
+    <Form.Row>
+      <Input error={errorText} />
+    </Form.Row>,
+  );
 
   expect(queryByText(errorText)).toBeInTheDocument();
 });
@@ -140,7 +146,11 @@ test('accepts an Error Component', () => {
     </Input.Error>
   );
 
-  const { queryByTestId } = render(<Input error={CustomError} />);
+  const { queryByTestId } = render(
+    <Form.Row>
+      <Input error={CustomError} />
+    </Form.Row>,
+  );
 
   expect(queryByTestId('test')).toBeInTheDocument();
 });
@@ -155,7 +165,11 @@ test('does not accept non-Error Components', () => {
     </div>
   );
 
-  const { queryByTestId } = render(<Input error={NotAnError} />);
+  const { queryByTestId } = render(
+    <Form.Row>
+      <Input error={NotAnError} />
+    </Form.Row>,
+  );
 
   expect(queryByTestId('test')).not.toBeInTheDocument();
 });
