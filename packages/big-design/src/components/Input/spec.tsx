@@ -68,9 +68,9 @@ test('renders a description', () => {
 test('renders an error', () => {
   const errorText = 'This is an error';
   const { queryByText } = render(
-    <Form.Row>
+    <Form.Group>
       <Input error={errorText} />
-    </Form.Row>,
+    </Form.Group>,
   );
 
   expect(queryByText(errorText)).toBeInTheDocument();
@@ -147,9 +147,9 @@ test('accepts an Error Component', () => {
   );
 
   const { queryByTestId } = render(
-    <Form.Row>
+    <Form.Group>
       <Input error={CustomError} />
-    </Form.Row>,
+    </Form.Group>,
   );
 
   expect(queryByTestId('test')).toBeInTheDocument();
@@ -166,9 +166,9 @@ test('does not accept non-Error Components', () => {
   );
 
   const { queryByTestId } = render(
-    <Form.Row>
+    <Form.Group>
       <Input error={NotAnError} />
-    </Form.Row>,
+    </Form.Group>,
   );
 
   expect(queryByTestId('test')).not.toBeInTheDocument();

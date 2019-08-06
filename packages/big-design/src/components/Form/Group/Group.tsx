@@ -14,13 +14,12 @@ export interface GroupProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Group: React.FC<GroupProps> = props => {
   const { children, errors: groupErrors } = props;
   const childrenCount = React.Children.count(children);
-  const inline = React.Children.toArray(children).every(child => {
+  const inline = !React.Children.toArray(children).every(child => {
     return React.isValidElement(child) && (child.type === Checkbox || child.type === Radio);
   });
 
   let errorKey = 0;
 
-  // TODO: Correctly type return
   const generateErrors: any = (errors: GroupProps['errors']) => {
     let errorList = null;
 
@@ -63,7 +62,7 @@ export const Group: React.FC<GroupProps> = props => {
     });
   };
 
-  if (!inline) {
+  if (inline) {
     return (
       <StyledInlineGroup childrenCount={childrenCount}>
         {children}

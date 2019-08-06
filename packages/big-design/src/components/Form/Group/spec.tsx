@@ -4,30 +4,30 @@ import React from 'react';
 
 import { Input } from '../../Input';
 
-import { Row } from './';
+import { Group } from './';
 
-test('renders a form row', () => {
-  const { container } = render(<Row />);
+test('renders a form group', () => {
+  const { container } = render(<Group />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('renders row with input', () => {
+test('renders group with input', () => {
   const { container } = render(
-    <Row>
+    <Group>
       <Input />
-    </Row>,
+    </Group>,
   );
 
   expect(container.querySelector('input')).toBeInTheDocument();
 });
 
-test('renders row and input with error', () => {
+test('renders group and input with error', () => {
   const error = 'Error';
   const { getByText } = render(
-    <Row>
+    <Group>
       <Input error={error} />
-    </Row>,
+    </Group>,
   );
 
   expect(getByText(error)).toBeInTheDocument();

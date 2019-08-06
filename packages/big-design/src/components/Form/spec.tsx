@@ -29,7 +29,7 @@ test('exposes expected statics', () => {
   expect(Form.Error).toBeDefined();
   expect(Form.Fieldset).toBeDefined();
   expect(Form.Label).toBeDefined();
-  expect(Form.Row).toBeDefined();
+  expect(Form.Group).toBeDefined();
 });
 
 test('simple form render', () => {
@@ -39,21 +39,21 @@ test('simple form render', () => {
         legend="Primary contact"
         description="Minim velit quis aute adipisicing adipisicing do do exercitation cupidatat enim ex voluptate consequat labore."
       >
-        <Form.Row>
+        <Form.Group>
           <Input
             label="First Name"
             description="This is an example description for First Name"
             placeholder="Placeholder text"
           />
-        </Form.Row>
+        </Form.Group>
 
-        <Form.Row>
+        <Form.Group>
           <Input
             label="Middle Name"
             description="This is an example description for Last Name. Featuring a Left Icon."
             placeholder="Placeholder text"
           />
-        </Form.Row>
+        </Form.Group>
       </Form.Fieldset>
     </Form>,
   );
