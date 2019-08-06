@@ -151,6 +151,22 @@ export default () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
+    <H1>Disabled</H1>
+
+    <Text>
+      It is possible to disable the entire select component, similar to how you would disable a native HTML select
+      element, by using the <Code primary>disabled</Code> property.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Select label="Select" placeholder="Default" onItemChange={() => null} disabled>
+        <Select.Option value={1}>Option</Select.Option>
+        <Select.Option value={2}>Option</Select.Option>
+      </Select>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
     <H1>Select.Action</H1>
 
     <Text>Select.Action allows you to add custom actions to the dropdown.</Text>

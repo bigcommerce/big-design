@@ -39,6 +39,9 @@ export const SelectPropTable: React.FC = () => (
     <PropTable.Prop name="required" types="boolean">
       Sets the field as required.
     </PropTable.Prop>
+    <PropTable.Prop name="disabled" types="boolean">
+      Disables the select component.
+    </PropTable.Prop>
     <PropTable.Prop name="value" types="string | string[] | number">
       Modifies the current selected value of the field.
     </PropTable.Prop>
