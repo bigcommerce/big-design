@@ -49,6 +49,7 @@ export const Group: React.FC<GroupProps> = props => {
   };
 
   const renderErrors = () => {
+    // If Form.Group has errors prop, don't generate errors from children
     if (groupErrors) {
       return generateErrors(groupErrors);
     }
