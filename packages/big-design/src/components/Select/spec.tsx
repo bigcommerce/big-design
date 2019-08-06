@@ -485,7 +485,7 @@ test('select should not have a required attr if not set as required', () => {
 
 test('select should have a disabled attr if set as disabled', () => {
   const { getByLabelText } = render(
-    <Select label="Countries" value="us" disabled>
+    <Select onItemChange={() => null} label="Countries" value="us" disabled>
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
@@ -500,7 +500,7 @@ test('select should have a disabled attr if set as disabled', () => {
 
 test('select should not have a disabled attr if not set as disabled', () => {
   const { getByLabelText } = render(
-    <Select label="Countries" placeholder="Choose country">
+    <Select onItemChange={() => null} label="Countries" placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
