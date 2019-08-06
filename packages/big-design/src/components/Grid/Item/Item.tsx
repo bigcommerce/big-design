@@ -6,13 +6,13 @@ import { StyledGridItem } from './styled';
 
 export type GridItemProps = BoxProps &
   Partial<{
-    area: string;
-    column: string;
-    columnEnd: string;
-    columnStart: string;
-    row: string;
-    rowEnd: string;
-    rowStart: string;
+    gridArea: string;
+    gridColumn: string;
+    gridColumnEnd: string;
+    gridColumnStart: string;
+    gridRow: string;
+    gridRowEnd: string;
+    gridRowStart: string;
   }>;
 
 export const GridItem: React.FC<GridItemProps> = props => <StyledGridItem {...props} />;

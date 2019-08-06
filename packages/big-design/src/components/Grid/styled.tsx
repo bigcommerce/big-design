@@ -3,19 +3,13 @@ import styled from 'styled-components';
 
 import { Box } from '../Box';
 
+import { withGridedContainer } from './withGrid';
 import { GridProps } from './Grid';
 
 export const StyledGrid = styled(Box)<GridProps>`
-  display: grid;
+  ${withGridedContainer()}
 
-  grid-auto-flow: ${props => props.autoFlow};
-  grid-gap: ${props => (props.gap === undefined ? props.theme.spacing.medium : props.gap)};
-  grid-template: ${props => props.template};
-  grid-template-areas: ${props => props.areas};
-  grid-template-columns: ${props => props.columns};
-  grid-template-rows: ${props => props.rows};
-  grid-auto-columns: ${props => props.autoColumns};
-  grid-auto-rows: ${props => props.autoRows};
+  display: grid;
 `;
 
-StyledGrid.defaultProps = { theme: defaultTheme };
+StyledGrid.defaultProps = { theme: defaultTheme, gridGap: defaultTheme.spacing.medium };

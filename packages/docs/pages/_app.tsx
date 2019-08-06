@@ -39,12 +39,12 @@ export default class MyApp extends App {
         <ThemeProvider theme={theme}>
           <>
             <GlobalStyles />
-            <Grid template={gridTemplate} backgroundColor="secondary10" gap="0" style={{ minHeight: '100%' }}>
-              <Grid.Item area="nav" shadow="raised">
+            <Grid gridTemplate={gridTemplate} backgroundColor="secondary10" gridGap="0" style={{ minHeight: '100%' }}>
+              <Grid.Item gridArea="nav" shadow="raised">
                 <SideNav />
               </Grid.Item>
               <Grid.Item
-                area="main"
+                gridArea="main"
                 marginVertical="medium"
                 marginHorizontal="xxLarge"
                 style={{ maxWidth: '100%', overflow: 'hidden' }}

@@ -42,7 +42,7 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(4, min-content)">
+      <Grid gridColumns="repeat(4, min-content)">
         <Badge variant="secondary">secondary</Badge>
         <Badge variant="success">success</Badge>
         <Badge variant="warning">warning</Badge>

@@ -78,7 +78,7 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(4, 1fr)">
+      <Grid gridColumns="repeat(4, 1fr)">
         <Select label="Select" placeholder="Choose from above" onItemChange={() => null} placement="top">
           <Select.Option value={1}>Option</Select.Option>
           <Select.Option value={2}>Option</Select.Option>
@@ -116,7 +116,7 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(3, 1fr)">
+      <Grid gridColumns="repeat(3, 1fr)">
         <Select label="Select" placeholder="Default" onItemChange={() => null}>
           <Select.Option value={1}>Option</Select.Option>
           <Select.Option value={2}>Option</Select.Option>

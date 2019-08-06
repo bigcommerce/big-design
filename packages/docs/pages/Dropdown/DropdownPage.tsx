@@ -48,7 +48,7 @@ export default () => (
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(4, min-content)">
+      <Grid gridColumns="repeat(4, min-content)">
         <Dropdown trigger={<Button>Button</Button>}>
           <Dropdown.Item value={1}>Option</Dropdown.Item>
           <Dropdown.Item value={2}>Option</Dropdown.Item>
@@ -76,7 +76,7 @@ export default () => (
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(4, min-content)">
+      <Grid gridColumns="repeat(4, min-content)">
         <Dropdown placement="right" trigger={<Button>Right</Button>}>
           <Dropdown.Item value={1}>Option</Dropdown.Item>
           <Dropdown.Item value={2}>Option</Dropdown.Item>
@@ -104,7 +104,7 @@ export default () => (
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(3, min-content)">
+      <Grid gridColumns="repeat(3, min-content)">
         <Dropdown trigger={<Button>Default</Button>}>
           <Dropdown.Item value={1}>Option</Dropdown.Item>
           <Dropdown.Item value={2}>Option</Dropdown.Item>
@@ -145,7 +145,7 @@ export default () => (
     </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(2, min-content)">
+      <Grid gridColumns="repeat(2, min-content)">
         <Dropdown trigger={<Button>With Values</Button>}>
           <Dropdown.Item value={1}>Option</Dropdown.Item>
           <Dropdown.Item value={2}>Option</Dropdown.Item>
