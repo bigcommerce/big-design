@@ -1,10 +1,10 @@
-import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { rgba } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { Flex } from '../Flex';
 
-import { ModalProps } from './Modal';
+import { ModalActionsProps, ModalHeaderProps, ModalProps } from './Modal';
 
 export const StyledModal = styled.div.attrs({
   'aria-modal': true,
@@ -53,15 +53,47 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
 
         height: auto;
         left: 50%;
-        max-height: ${remCalc(664)};
+        max-height: 90vh;
         max-width: ${({ theme }) => theme.breakpointValues.tablet};
         top: 50%;
         transform: translate(-50%, -50%);
       }
+
+      ${({ theme }) => theme.breakpoints.desktop} {
+        max-height: 80vh;
+      }
     `}
 `;
 
-export const StyledModalActions = styled(Flex)``;
+export const StyledModalActions = styled(Flex)<ModalActionsProps>`
+  padding: ${({ theme }) => theme.spacing.medium};
+
+  ${({ theme }) => theme.breakpoints.tablet} {
+    padding: ${({ theme }) => theme.spacing.xLarge};
+  }
+
+  ${({ theme, withBorder }) =>
+    withBorder &&
+    css`
+      border-top: ${theme.border.box};
+      margin-top: ${theme.spacing.medium};
+    `};
+`;
+
+export const StyledModalHeader = styled.div<ModalHeaderProps>`
+  padding: ${({ theme }) => theme.spacing.medium};
+
+  ${({ theme }) => theme.breakpoints.tablet} {
+    padding: ${({ theme }) => theme.spacing.xLarge};
+  }
+
+  ${({ theme, withBorder }) =>
+    withBorder &&
+    css`
+      border-bottom: ${theme.border.box};
+      margin-bottom: ${theme.spacing.medium};
+    `};
+`;
 
 export const StyledModalClose = styled.div`
   position: absolute;
@@ -75,11 +107,17 @@ export const StyledModalClose = styled.div`
 
 export const StyledModalBody = styled.div`
   flex-grow: 1;
+  padding: 0 ${({ theme }) => theme.spacing.medium};
   overflow-y: auto;
+
+  ${({ theme }) => theme.breakpoints.tablet} {
+    padding: 0 ${({ theme }) => theme.spacing.xLarge};
+  }
 `;
 
 StyledModal.defaultProps = { theme: defaultTheme };
-StyledModalBody.defaultProps = { theme: defaultTheme };
-StyledModalContent.defaultProps = { theme: defaultTheme };
 StyledModalActions.defaultProps = { theme: defaultTheme };
+StyledModalBody.defaultProps = { theme: defaultTheme };
 StyledModalClose.defaultProps = { theme: defaultTheme };
+StyledModalContent.defaultProps = { theme: defaultTheme };
+StyledModalHeader.defaultProps = { theme: defaultTheme };

@@ -7,7 +7,14 @@ import { Button } from '../Button';
 import { H2 } from '../Typography';
 import { HeadingProps } from '../Typography/Typography';
 
-import { StyledModal, StyledModalActions, StyledModalBody, StyledModalClose, StyledModalContent } from './styled';
+import {
+  StyledModal,
+  StyledModalActions,
+  StyledModalBody,
+  StyledModalClose,
+  StyledModalContent,
+  StyledModalHeader,
+} from './styled';
 
 export interface ModalProps {
   backdrop: boolean;
@@ -18,14 +25,26 @@ export interface ModalProps {
   onClose(): void;
 }
 
-const ModalActions = ({ children }: { children: React.ReactNode }) => (
-  <StyledModalActions justifyContent="flex-end" marginTop={{ mobile: 'medium', tablet: 'xxLarge' }}>
+export interface ModalActionsProps {
+  withBorder?: boolean;
+}
+
+export interface ModalHeaderProps {
+  withBorder?: boolean;
+}
+
+const ModalActions: React.FC<ModalActionsProps> = ({ children, withBorder }) => (
+  <StyledModalActions justifyContent="flex-end" withBorder={withBorder}>
     {children}
   </StyledModalActions>
 );
 
-const ModalHeader = ({ children, ...props }: { children: string }) => {
-  return typeof children === 'string' ? <H2 {...props}>{children}</H2> : null;
+const ModalHeader: React.FC<ModalHeaderProps> = ({ children, withBorder }) => {
+  return (
+    <StyledModalHeader withBorder={withBorder}>
+      {typeof children === 'string' ? <H2 margin="none">{children}</H2> : children}
+    </StyledModalHeader>
+  );
 };
 
 export class Modal extends React.PureComponent<ModalProps> {
@@ -75,12 +94,7 @@ export class Modal extends React.PureComponent<ModalProps> {
         backdrop={backdrop}
         variant={variant}
       >
-        <StyledModalContent
-          variant={variant}
-          aria-labelledby={this.headerUniqueId}
-          flexDirection="column"
-          padding={{ mobile: 'medium', tablet: 'xxLarge' }}
-        >
+        <StyledModalContent variant={variant} aria-labelledby={this.headerUniqueId} flexDirection="column">
           {this.renderClose()}
           {this.renderChildren()}
         </StyledModalContent>
