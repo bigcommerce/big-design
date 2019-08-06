@@ -7,14 +7,14 @@ import { GridItem } from './Item/Item';
 
 export type GridProps = BoxProps &
   Partial<{
-    areas: string;
-    autoColumns: string;
-    autoFlow: 'row' | 'column' | 'dense' | 'row dense' | 'column dense' | 'inherit' | 'initial' | 'unset';
-    autoRows: string;
-    columns: string;
-    gap: string;
-    rows: string;
-    template: string;
+    gridAreas: string;
+    gridAutoColumns: string;
+    gridAutoFlow: 'row' | 'column' | 'dense' | 'row dense' | 'column dense' | 'inherit' | 'initial' | 'unset';
+    gridAutoRows: string;
+    gridColumns: string;
+    gridGap: string;
+    gridRows: string;
+    gridTemplate: string;
   }>;
 
 export class Grid extends React.PureComponent<GridProps> {

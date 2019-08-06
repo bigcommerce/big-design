@@ -6,9 +6,9 @@ exports[`render Grid 1`] = `
 }
 
 .c0 {
-  display: grid;
   grid-gap: 1rem;
   grid-template: "head head" 80px "nav  main" 1fr "nav  foot" 10% / 120px 1fr;
+  display: grid;
 }
 
 .c2 {

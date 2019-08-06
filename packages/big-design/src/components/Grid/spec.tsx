@@ -13,11 +13,11 @@ test('render Grid', () => {
 `;
 
   const { container } = render(
-    <Grid template={template}>
-      <Grid.Item area="head">Header</Grid.Item>
-      <Grid.Item area="nav">Sidebar</Grid.Item>
-      <Grid.Item area="main">Content</Grid.Item>
-      <Grid.Item area="foot">Footer</Grid.Item>
+    <Grid gridTemplate={template}>
+      <Grid.Item gridArea="head">Header</Grid.Item>
+      <Grid.Item gridArea="nav">Sidebar</Grid.Item>
+      <Grid.Item gridArea="main">Content</Grid.Item>
+      <Grid.Item gridArea="foot">Footer</Grid.Item>
     </Grid>,
   );
 

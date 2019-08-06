@@ -53,7 +53,8 @@ export default () => (
     <H1>Examples</H1>
 
     <Text>
-      Grid allows you to create custom layouts using combinations of <Code>template</Code> and <Code>area</Code> props.
+      Grid allows you to create custom layouts using combinations of <Code>gridTemplate</Code> and <Code>gridArea</Code>{' '}
+      props.
     </Text>
 
     <CodePreview scope={{ ExampleBox }}>
@@ -67,17 +68,17 @@ export default () => (
         `;
 
         return (
-          <Grid template={template}>
-            <Grid.Item area="head">
+          <Grid gridTemplate={template}>
+            <Grid.Item gridArea="head">
               <ExampleBox>Header</ExampleBox>
             </Grid.Item>
-            <Grid.Item area="nav">
+            <Grid.Item gridArea="nav">
               <ExampleBox>Sidebar</ExampleBox>
             </Grid.Item>
-            <Grid.Item area="main">
+            <Grid.Item gridArea="main">
               <ExampleBox>Content</ExampleBox>
             </Grid.Item>
-            <Grid.Item area="foot">
+            <Grid.Item gridArea="foot">
               <ExampleBox>Footer</ExampleBox>
             </Grid.Item>
           </Grid>
@@ -87,12 +88,12 @@ export default () => (
     </CodePreview>
 
     <Text>
-      You can use the <Code>columns</Code> prop to create columned layouts.
+      You can use the <Code>gridColumns</Code> prop to create columned layouts.
     </Text>
 
     <CodePreview scope={{ ExampleBox }}>
       {/* jsx-to-string:start */}
-      <Grid columns="repeat(3, 1fr)">
+      <Grid gridColumns="repeat(3, 1fr)">
         <Grid.Item>
           <ExampleBox>
             Reprehenderit ullamco et elit eu duis non reprehenderit eiusmod pariatur ea deserunt irure. Reprehenderit et
