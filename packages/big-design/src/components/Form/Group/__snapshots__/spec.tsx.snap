@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a form group 1`] = `
+.c0 {
+  display: grid;
+  grid-gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.c0:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width:720px) {
+  .c0 .styled__StyledInputWrapper-g32raa-0,
+  .c0 .styled__StyledTextareaWrapper-c1uos0-0 {
+    max-width: 26rem;
+  }
+}
+
+<div
+  class="c0"
+/>
+`;

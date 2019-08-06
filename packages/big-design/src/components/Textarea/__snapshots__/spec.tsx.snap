@@ -15,17 +15,6 @@ exports[`renders all together 1`] = `
   margin-bottom: 0;
 }
 
-.c0 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  margin: 0 0 0.5rem;
-  display: inline-block;
-  margin-bottom: 0.25rem;
-}
-
 .c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -86,6 +75,17 @@ exports[`renders all together 1`] = `
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
+}
+
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
 }
 
 <div>
