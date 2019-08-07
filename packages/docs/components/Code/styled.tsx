@@ -1,4 +1,3 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { CodeProps } from './';
@@ -20,5 +19,3 @@ export const StyledCode = styled.code<CodeProps>`
       color: ${theme.colors.primary70};
     `};
 `;
-
-StyledCode.defaultProps = { theme: defaultTheme };

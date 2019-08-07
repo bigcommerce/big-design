@@ -1,4 +1,3 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 // TODO: Convert to BigDesign table when built
@@ -43,12 +42,3 @@ export const StyledTableHeader = styled.th`
 export const StyledTableData = styled.td`
   ${SharedCellStyles}
 `;
-
-StyledTableFigure.defaultProps = { theme: defaultTheme };
-StyledTable.defaultProps = { theme: defaultTheme };
-StyledTableHead.defaultProps = { theme: defaultTheme };
-StyledTableBody.defaultProps = { theme: defaultTheme };
-StyledTableFooter.defaultProps = { theme: defaultTheme };
-StyledTableRow.defaultProps = { theme: defaultTheme };
-StyledTableHeader.defaultProps = { theme: defaultTheme };
-StyledTableData.defaultProps = { theme: defaultTheme };

@@ -1,11 +1,10 @@
 import * as BigDesign from '@bigcommerce/big-design';
 import * as BigDesignIcons from '@bigcommerce/big-design-icons';
-import { theme } from '@bigcommerce/big-design-theme';
 import clipboardCopy from 'clipboard-copy';
 import { Language } from 'prism-react-renderer';
 import React, { useContext, useState } from 'react';
 import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 
 import { SnippetControls } from '../SnippetControls';
 import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
@@ -43,9 +42,7 @@ export const CodePreview: React.FC<CodePreviewProps> = props => {
     <BigDesign.Box border="box" marginBottom="xxLarge">
       <LiveProvider code={code} scope={scope} theme={editorTheme} language={language}>
         <BigDesign.Box padding="medium" backgroundColor="white" borderBottom="box">
-          <ThemeProvider theme={theme}>
-            <LivePreview />
-          </ThemeProvider>
+          <LivePreview />
         </BigDesign.Box>
         <SnippetControls copyToClipboard={() => clipboardCopy(code)} resetCode={() => setCode(initialCode)} />
         <LiveEditor onChange={setCode} />
