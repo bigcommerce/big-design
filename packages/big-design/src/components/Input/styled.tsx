@@ -55,7 +55,7 @@ export const StyledInput = styled.input<InputProps>`
   }
 
   ${props =>
-    (props.error || props.iconRight) &&
+    props.iconRight &&
     css`
       padding-right: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xSmall)};
     `};

@@ -24,12 +24,10 @@ export default () => (
 
         return (
           <Form>
-            <Form.Row>
+            <Form.Group>
               <Radio label="On" checked={selected === 'on'} value="on" onChange={handleChange} />
-            </Form.Row>
-            <Form.Row>
               <Radio label="Off" checked={selected === 'off'} value="off" onChange={handleChange} />
-            </Form.Row>
+            </Form.Group>
           </Form>
         );
       }}
@@ -64,20 +62,16 @@ export default () => (
         return (
           <Form>
             <Form.Fieldset legend="First Group">
-              <Form.Row>
+              <Form.Group>
                 <Radio label="On" checked={firstRadio === 'on'} value="on" onChange={handleFirstChange} />
-              </Form.Row>
-              <Form.Row>
                 <Radio label="Off" checked={firstRadio === 'off'} value="off" onChange={handleFirstChange} />
-              </Form.Row>
+              </Form.Group>
             </Form.Fieldset>
             <Form.Fieldset legend="Second Group">
-              <Form.Row>
+              <Form.Group>
                 <Radio label="On" checked={secondRadio === 'on'} value="on" onChange={handleSecondChange} />
-              </Form.Row>
-              <Form.Row>
                 <Radio label="Off" checked={secondRadio === 'off'} value="off" onChange={handleSecondChange} />
-              </Form.Row>
+              </Form.Group>
             </Form.Fieldset>
           </Form>
         );

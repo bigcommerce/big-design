@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders all together 1`] = `
-.c4 {
+.c5 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -21,18 +21,7 @@ exports[`renders all together 1`] = `
   margin-bottom: 0;
 }
 
-.c0 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  margin: 0 0 0.5rem;
-  display: inline-block;
-  margin-bottom: 0.25rem;
-}
-
-.c2 {
+.c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -44,7 +33,7 @@ exports[`renders all together 1`] = `
   position: relative;
 }
 
-.c5 {
+.c6 {
   background-color: #FFFFFF;
   border-radius: 0.25rem;
   box-sizing: border-box;
@@ -58,53 +47,71 @@ exports[`renders all together 1`] = `
   padding-left: 2.5rem;
 }
 
-.c5:hover:not([disabled]) {
+.c6:hover:not([disabled]) {
   border: 1px solid #B4BAD1;
 }
 
-.c5:focus {
+.c6:focus {
   outline: none;
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c5[disabled] {
+.c6[disabled] {
   background-color: #ECEEF5;
 }
 
-.c5::-webkit-input-placeholder {
+.c6::-webkit-input-placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c5::-moz-placeholder {
+.c6::-moz-placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c5:-ms-input-placeholder {
+.c6:-ms-input-placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c5::placeholder {
+.c6::placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c6 {
+.c4 {
+  position: absolute;
+  color: #5E637A;
+  left: 0.75rem;
+}
+
+.c7 {
   position: absolute;
   color: #5E637A;
   right: 0.75rem;
 }
 
-.c3 {
-  position: absolute;
-  color: #5E637A;
-  left: 0.75rem;
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width:720px) {
+  .eLjSIS .c2,
+  .eLjSIS .styled__StyledTextareaWrapper-c1uos0-0 {
+    max-width: 26rem;
+  }
 }
 
 <div>
@@ -120,13 +127,13 @@ exports[`renders all together 1`] = `
     This is a description
   </p>
   <span
-    class="c2"
+    class="c2 c3"
   >
     <span
-      class="c3"
+      class="c4"
     >
       <svg
-        class="c4"
+        class="c5"
         data-testid="icon-left"
         fill="currentColor"
         height="24"
@@ -146,14 +153,14 @@ exports[`renders all together 1`] = `
       </svg>
     </span>
     <input
-      class="c5"
+      class="c6"
       id="input_0"
     />
     <span
-      class="c6"
+      class="c7"
     >
       <svg
-        class="c4"
+        class="c5"
         data-testid="icon-right"
         fill="currentColor"
         height="24"

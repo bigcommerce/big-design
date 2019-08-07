@@ -1,4 +1,3 @@
-import { ErrorIcon } from '@bigcommerce/big-design-icons';
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { Ref } from 'react';
@@ -42,9 +41,7 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
           {this.renderIconLeft()}
           <StyledInput {...props} id={id} ref={forwardedRef} />
           {this.renderIconRight()}
-          {this.renderErrorIcon()}
         </StyledInputWrapper>
-        {this.renderError()}
       </div>
     );
   }
@@ -86,32 +83,6 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
     return null;
   }
 
-  private renderError() {
-    const { error } = this.props;
-
-    if (typeof error === 'string') {
-      return <Input.Error>{error}</Input.Error>;
-    }
-
-    if (React.isValidElement(error) && error.type === Input.Error) {
-      return error;
-    }
-
-    return null;
-  }
-
-  private renderErrorIcon() {
-    if (!this.props.error) {
-      return null;
-    }
-
-    return (
-      <StyledIconWrapper position="right">
-        <ErrorIcon color="danger" />
-      </StyledIconWrapper>
-    );
-  }
-
   private renderIconLeft() {
     if (!this.props.iconLeft) {
       return null;
@@ -121,7 +92,7 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
   }
 
   private renderIconRight() {
-    if (!this.props.iconRight || this.props.error) {
+    if (!this.props.iconRight) {
       return null;
     }
 

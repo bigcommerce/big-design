@@ -3,6 +3,8 @@ import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 
+import { Form } from '../Form';
+
 import { Select } from './Select';
 
 jest.mock('popper.js', () => {
@@ -441,13 +443,15 @@ test('select action supports actionTypes', () => {
 
 test('select should render an error if one is provided', () => {
   const { getByText } = render(
-    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country" error="You must choose">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-      <Select.Action actionType="destructive">Action</Select.Action>
-    </Select>,
+    <Form.Group>
+      <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country" error="You must choose">
+        <Select.Option value="us">United States</Select.Option>
+        <Select.Option value="mx">Mexico</Select.Option>
+        <Select.Option value="ca">Canada</Select.Option>
+        <Select.Option value="en">England</Select.Option>
+        <Select.Action actionType="destructive">Action</Select.Action>
+      </Select>
+    </Form.Group>,
   );
 
   expect(getByText('You must choose')).toBeInTheDocument();

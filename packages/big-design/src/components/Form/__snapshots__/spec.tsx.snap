@@ -52,17 +52,6 @@ exports[`simple form render 1`] = `
   margin-bottom: 0.25rem;
 }
 
-.c4 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  margin: 0 0 0.5rem;
-  display: inline-block;
-  margin-bottom: 0.25rem;
-}
-
 .c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -125,19 +114,27 @@ exports[`simple form render 1`] = `
 }
 
 .c3 {
+  display: grid;
+  grid-gap: 0.5rem 1rem;
   margin-bottom: 1rem;
 }
 
 .c3:last-child {
-  margin: 0;
+  margin-bottom: 0;
+}
+
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
 }
 
 @media (min-width:720px) {
-  .c3 {
-    display: grid;
-    grid-gap: 1rem;
-  }
-
   .c3 .c6,
   .c3 .styled__StyledTextareaWrapper-c1uos0-0 {
     max-width: 26rem;
@@ -166,7 +163,7 @@ exports[`simple form render 1`] = `
       <div>
         <label
           class="c4"
-          for="input_0"
+          for="input_1"
         >
           First Name
         </label>
@@ -180,7 +177,7 @@ exports[`simple form render 1`] = `
         >
           <input
             class="c8"
-            id="input_0"
+            id="input_1"
             placeholder="Placeholder text"
           />
         </span>
@@ -192,7 +189,7 @@ exports[`simple form render 1`] = `
       <div>
         <label
           class="c4"
-          for="input_1"
+          for="input_3"
         >
           Middle Name
         </label>
@@ -206,7 +203,7 @@ exports[`simple form render 1`] = `
         >
           <input
             class="c8"
-            id="input_1"
+            id="input_3"
             placeholder="Placeholder text"
           />
         </span>
