@@ -36,6 +36,7 @@ export default () => (
     </Collapsible>
 
     <H1>Examples</H1>
+
     <Box>
       <Text>Box also supports multiple shadows, here is an example of how they look like:</Text>
       <CodePreview>

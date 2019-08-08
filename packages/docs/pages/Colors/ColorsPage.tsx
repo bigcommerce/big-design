@@ -1,4 +1,4 @@
-import { Box, Flex, H0, H2, Text } from '@bigcommerce/big-design';
+import { Box, Flex, H0, H1, Link, Text } from '@bigcommerce/big-design';
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
@@ -21,7 +21,13 @@ export default () => {
     <>
       <H0>Colors</H0>
 
-      <Text>Colors can be used directly on some of our components that expect a color as a prop:</Text>
+      <Text>
+        Colors can be used directly on some of our components that expect a color as a prop.{' '}
+        <Link href="https://design.bigcommerce.com/components/colors" target="_blank">
+          Colors Design Guidelines
+        </Link>
+        .
+      </Text>
 
       <CodePreview>
         {/* jsx-to-string:start */}
@@ -43,7 +49,7 @@ export default () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H2>Available Colors</H2>
+      <H1>Available Colors</H1>
 
       <Flex flexDirection="column">
         {getFilteredColors(colors).map(color => (

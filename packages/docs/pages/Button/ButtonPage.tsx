@@ -14,6 +14,7 @@ export default () => (
       <Link href="https://bigcommerce.design/buttons" target="_blank">
         Buttons Design Guidelines
       </Link>
+      .
     </Text>
 
     <CodePreview>

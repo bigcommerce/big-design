@@ -13,6 +13,7 @@ export default () => (
       <Link href="https://bigcommerce.design/checkbox" target="_blank">
         Checkbox Design Guidelines
       </Link>
+      .
     </Text>
 
     <CodePreview>

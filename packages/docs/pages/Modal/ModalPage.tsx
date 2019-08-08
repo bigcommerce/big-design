@@ -1,4 +1,4 @@
-import { Button, H0, H1, H2, Modal, Text } from '@bigcommerce/big-design';
+import { Button, H0, H1, H2, Link, Modal, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -10,7 +10,11 @@ export default () => (
 
     <Text>
       A modal appears as a layer on top of the primary interface. Modals disrupt users from interacting with the page
-      until they complete a specific task.
+      until they complete a specific task.{' '}
+      <Link href="https://design.bigcommerce.com/components/modals" target="_blank">
+        Modals Design Guidelines
+      </Link>
+      .
     </Text>
 
     <CodePreview>
@@ -56,7 +60,11 @@ export default () => (
 
     <Text>
       Setting the variant prop to <Code primary>dialog</Code> results in a simplified version of a Modal. The purpose of
-      a dialog is to act as a safety net for a user attempting a destructive action.
+      a dialog is to act as a safety net for a user attempting a destructive action.{' '}
+      <Link href="https://design.bigcommerce.com/components/modals" target="_blank">
+        Modals–Confirmation Design Guidelines
+      </Link>
+      .
     </Text>
 
     <CodePreview>
@@ -98,12 +106,16 @@ export default () => (
 
     <H1>API</H1>
 
+    <H2>Modal</H2>
+
     <ModalPropTable />
 
     <H2>Modal.Header</H2>
+
     <ModalHeaderPropTable />
 
     <H2>Modal.Actions</H2>
+
     <ModalActionsPropTable />
   </>
 );

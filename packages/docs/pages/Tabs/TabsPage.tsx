@@ -1,4 +1,4 @@
-import { Box, H0, H1, H2, Tabs, Text } from '@bigcommerce/big-design';
+import { Box, H0, H1, H2, Link, Tabs, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -10,7 +10,8 @@ export default () => (
 
     <Text>
       The <Code primary>Tabs</Code> and <Code primary>Tabs.Tab</Code> components are used to organize and navigate
-      between content types that are related and at the same level of information architecture heirarchy.
+      between content types that are related and at the same level of information architecture heirarchy.{' '}
+      <Link href="https://design.bigcommerce.com/components/tabs">Tabs Design Guidelines</Link>.
     </Text>
 
     <CodePreview>
@@ -41,6 +42,8 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
+
+    <H2>Tabs</H2>
 
     <TabsPropTable />
 

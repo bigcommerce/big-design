@@ -10,7 +10,10 @@ export default () => (
 
     <Text>
       The panel component is used to contain content in a structured format.{' '}
-      <Link href="https://design.bigcommerce.com/components/panels">Panel Design Guidlines</Link>
+      <Link href="https://design.bigcommerce.com/components/panels" target="_blank">
+        Panel Design Guidlines
+      </Link>
+      .
     </Text>
 
     <CodePreview>

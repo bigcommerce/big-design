@@ -19,6 +19,7 @@ export default () => (
       <Link href="https://bigcommerce.design/responsive" target="_blank">
         Responsive Design Guidelines
       </Link>
+      .
     </Text>
 
     <CodePreview scope={{ ExampleBox }}>

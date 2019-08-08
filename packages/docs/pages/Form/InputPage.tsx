@@ -14,6 +14,7 @@ export default () => (
       <Link href="https://bigcommerce.design/fields" target="_blank">
         Form Fields Design Guidelines
       </Link>
+      .
     </Text>
 
     <CodePreview>

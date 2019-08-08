@@ -7,12 +7,15 @@ import { DropdownItemPropTable, DropdownPropTable } from '../../PropTables';
 export default () => (
   <>
     <H0>Dropdown</H0>
+
     <Text>
       Dropdowns are toggleable, contextual overlays for displaying lists.{' '}
       <Link href="https://bigcommerce.design/dropdown" target="_blank">
         Dropdown Design Guidelines
       </Link>
+      .
     </Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       <Dropdown
@@ -34,18 +37,23 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
+
     <H2>Dropdown</H2>
+
     <DropdownPropTable />
 
     <H2>Dropdown.Item</H2>
+
     <DropdownItemPropTable />
 
     <H1>Examples</H1>
 
     <H2>Trigger</H2>
+
     <Text>
       Dropdown can be anchored to any <Code>ReactElement</Code>, including all types of buttons.
     </Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(4, min-content)">
@@ -70,10 +78,12 @@ export default () => (
     </CodePreview>
 
     <H2>Position</H2>
+
     <Text>
       Dropdown can be anchored in different directions with the <Code primary>position</Code> property. It will
       automatically find a position if there's not enough space in the chosen direction.
     </Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(4, min-content)">
@@ -98,10 +108,12 @@ export default () => (
     </CodePreview>
 
     <H2>Max Height</H2>
+
     <Text>
       Once the content is longer than the max-height, the Dropdown will be scrollable. It is possible to modify the
       dimension by passing a <Code primary>maxHeight</Code> property.
     </Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(3, min-content)">
@@ -140,9 +152,11 @@ export default () => (
     </CodePreview>
 
     <H2>Dropdown.Item</H2>
+
     <Text>
       Dropdown expects <Code>Dropdown.Item</Code> as children. An item can have optional values.
     </Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(2, min-content)">
