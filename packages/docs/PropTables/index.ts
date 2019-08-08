@@ -13,4 +13,5 @@ export * from './ModalPropTable';
 export * from './PaddingPropTable';
 export * from './RadioPropTable';
 export * from './SelectPropTable';
+export * from './TabsPropTable';
 export * from './TextareaPropTable';
