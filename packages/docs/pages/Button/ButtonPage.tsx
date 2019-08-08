@@ -12,7 +12,7 @@ export default () => (
     <Text>
       Buttons are calls to action used throughout the product experience.{' '}
       <Link href="https://bigcommerce.design/buttons" target="_blank">
-        Buttons Design Guidelines
+        Buttons Design Guidelines.
       </Link>
     </Text>
 

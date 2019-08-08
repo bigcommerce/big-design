@@ -12,7 +12,7 @@ export default () => (
     <Text>
       Inputs are stylized form controls with the ability of controling validation.{' '}
       <Link href="https://bigcommerce.design/fields" target="_blank">
-        Form Fields Design Guidelines
+        Form Fields Design Guidelines.
       </Link>
     </Text>
 

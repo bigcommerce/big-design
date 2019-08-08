@@ -12,7 +12,7 @@ export default () => (
       Badges are used to quickly indicate status or information to a user visually. Each variant correlates to a
       specific status or value.{' '}
       <Link href="https://bigcommerce.design/badges" target="_blank">
-        Badges Design Guidelines
+        Badges Design Guidelines.
       </Link>
     </Text>
 

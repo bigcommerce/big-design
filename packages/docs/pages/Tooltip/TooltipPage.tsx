@@ -13,7 +13,7 @@ export default () => (
       Tooltips contain information to help users understand actions or page elements. They are short, and triggered by a
       user hovering with their keyboard or mouse over a UI element.{' '}
       <Link href="https://bigcommerce.design/tooltips" target="_blank">
-        Tooltips Design Guidelines
+        Tooltips Design Guidelines.
       </Link>
     </Text>
 

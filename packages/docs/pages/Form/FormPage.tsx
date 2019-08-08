@@ -31,7 +31,7 @@ export default () => (
     <Text>
       Form fields are essential to any website or web application. <Code>id</Code>'s' will be auto-generated for
       input/textarea and labels <Code>for</Code> attribute, unless manually specifying one.{' '}
-      <Link href="https://bigcommerce.design/fields">Form Fields Design Guidelines</Link>
+      <Link href="https://bigcommerce.design/fields">Form Fields Design Guidelines.</Link>
     </Text>
 
     <CodePreview>
