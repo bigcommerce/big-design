@@ -1,8 +1,8 @@
-import { Box, Button, Flex, H0, H1, Link, Text, Tooltip } from '@bigcommerce/big-design';
-import { AddIcon, WarningIcon } from '@bigcommerce/big-design-icons';
+import { Box, Button, Flex, Grid, H0, H1, Link, Text, Tooltip } from '@bigcommerce/big-design';
+import { WarningIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
-import { CodePreview } from '../../components';
+import { Code, CodePreview } from '../../components';
 import { TooltipPropTable } from '../../PropTables/TooltipPropTable';
 
 export default () => (
@@ -25,34 +25,56 @@ export default () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
+    <H1>API</H1>
     <TooltipPropTable />
 
-    <H1>Placement</H1>
+    <H1>Usage</H1>
+    <Text>Tooltips can wrap any Element.</Text>
     <CodePreview>
       {/* jsx-to-string:start */}
-      <>
-        <Tooltip content="Tooltip Content" placement="right">
-          <Button marginRight="xSmall">Right</Button>
-        </Tooltip>
-        <Tooltip content="Tooltip Content" placement="top">
-          <Button marginRight="xSmall">Top</Button>
-        </Tooltip>
-        <Tooltip content="Tooltip Content" placement="left">
-          <Button marginRight="xSmall">Left</Button>
-        </Tooltip>
-        <Tooltip content="Tooltip Content" placement="bottom">
-          <Button marginRight="xSmall">Bottom</Button>
-        </Tooltip>
-      </>
+      <Flex alignItems="center">
+        <Box marginRight="medium">
+          <Tooltip content="Tooltip Content" placement="right">
+            <Button>Button</Button>
+          </Tooltip>
+        </Box>
+
+        <Box marginRight="medium">
+          <Tooltip content="Tooltip Content" placement="right">
+            <WarningIcon />
+          </Tooltip>
+        </Box>
+        <Box marginRight="medium">
+          <Tooltip content="Tooltip Content" placement="right">
+            <span>Span</span>
+          </Tooltip>
+        </Box>
+      </Flex>
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>Icons</H1>
+    <H1>Placement</H1>
+    <Text>
+      Dropdown can be anchored in different directions with the <Code primary>placement</Code> property. It will
+      automatically find a position if there's not enough space in the chosen direction.
+    </Text>
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Tooltip content="Warning message" placement="right">
-        <WarningIcon />
-      </Tooltip>
+      <Grid gridColumns="repeat(4, min-content)">
+        <Tooltip content="Tooltip Content" placement="right">
+          <Button>Right</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip Content" placement="top">
+          <Button>Top</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip Content" placement="left">
+          <Button>Left</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip Content" placement="bottom">
+          <Button>Bottom</Button>
+        </Tooltip>
+      </Grid>
+
       {/* jsx-to-string:end */}
     </CodePreview>
   </>
