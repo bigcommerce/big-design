@@ -1,4 +1,3 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { LiveError } from 'react-live';
 import styled from 'styled-components';
 
@@ -10,5 +9,3 @@ export const StyledLiveError = styled(LiveError)`
   margin-top: ${({ theme }) => theme.spacing.xxLarge};
   padding: ${({ theme }) => theme.spacing.small};
 `;
-
-StyledLiveError.defaultProps = { theme: defaultTheme };
