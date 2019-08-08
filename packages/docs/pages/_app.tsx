@@ -47,7 +47,7 @@ export default class MyApp extends App {
                 gridArea="main"
                 marginVertical="medium"
                 marginHorizontal="xxLarge"
-                style={{ maxWidth: '100%', overflow: 'hidden' }}
+                style={{ maxWidth: '100%' }}
               >
                 <StoryWrapper>
                   <Component {...pageProps} />

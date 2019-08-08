@@ -12,14 +12,26 @@ export const Collapsible: React.FC<CollapsibleProps> = ({ children, title }) => 
   const [isCollapsed, setCollapsed] = useState(true);
   const toggleIsCollapsed = () => setCollapsed(!isCollapsed);
 
+  const handleKeyPressed = e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      toggleIsCollapsed();
+    }
+  };
+
   return (
-    <>
-      <StyledFlex marginBottom="xLarge" alignItems="center" onClick={toggleIsCollapsed}>
+    <div>
+      <StyledFlex
+        marginBottom="xLarge"
+        alignItems="center"
+        onClick={toggleIsCollapsed}
+        onKeyPress={handleKeyPressed}
+        tabIndex={0}
+      >
         {isCollapsed ? <ChevronRightIcon title="Expand" /> : <ExpandMoreIcon title="Collapse" />}
         <Text>{title}</Text>
       </StyledFlex>
 
       {!isCollapsed && children}
-    </>
+    </div>
   );
 };
