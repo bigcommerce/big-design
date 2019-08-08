@@ -1,4 +1,4 @@
-import { remCalc, theme as defaultTheme, Colors, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme, Colors, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -18,8 +18,8 @@ export function createStyledIcon(Icon: React.FC<Partial<IconProps>>) {
 
     ${({ size, theme }) =>
       size && {
-        height: typeof size === 'number' ? remCalc(size) : theme.spacing[size],
-        width: typeof size === 'number' ? remCalc(size) : theme.spacing[size],
+        height: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
+        width: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
       }};
   `;
 

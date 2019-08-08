@@ -1,4 +1,4 @@
-import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 interface StyledList {
@@ -12,7 +12,7 @@ export const StyledList = styled.ul<StyledList>`
   color: ${({ theme }) => theme.colors.secondary70};
   display: inline-block;
   margin: 0;
-  max-height: ${({ maxHeight }) => (maxHeight ? remCalc(maxHeight) : '')};
+  max-height: ${({ theme, maxHeight }) => (maxHeight ? theme.helpers.remCalc(maxHeight) : '')};
   outline: none;
   overflow-y: scroll;
   padding: ${({ theme }) => theme.spacing.xSmall} 0;

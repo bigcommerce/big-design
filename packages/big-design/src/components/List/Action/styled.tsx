@@ -1,4 +1,4 @@
-import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { ListActionProps } from './Action';
@@ -7,7 +7,7 @@ export const StyledListAction = styled.li<ListActionProps>`
   border-top: 1px solid ${({ theme }) => theme.colors.secondary30};
   color: ${({ actionType, theme }) => (actionType === 'normal' ? theme.colors.primary : theme.colors.danger)};
   margin-top: ${({ theme }) => theme.spacing.xSmall};
-  min-width: ${remCalc(256)};
+  min-width: ${({ theme }) => theme.helpers.remCalc(256)};
   outline: none;
   overflow: hidden;
   padding: ${({ theme }) => theme.spacing.xSmall} 0 0;
@@ -24,7 +24,7 @@ export const StyledListAction = styled.li<ListActionProps>`
 export const Wrapper = styled.div`
   cursor: pointer;
   display: flex;
-  height: ${remCalc(36)};
+  height: ${({ theme }) => theme.helpers.remCalc(36)};
   padding: 0 ${({ theme }) => theme.spacing.medium};
   width: 100%;
 `;

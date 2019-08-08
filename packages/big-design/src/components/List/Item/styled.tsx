@@ -1,4 +1,4 @@
-import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { ListItemProps } from './Item';
@@ -8,9 +8,9 @@ export const StyledListItem = styled.li<ListItemProps>`
   box-sizing: border-box;
   cursor: default;
   display: flex;
-  height: ${remCalc(36)};
+  height: ${({ theme }) => theme.helpers.remCalc(36)};
   justify-content: space-between;
-  min-width: ${remCalc(256)};
+  min-width: ${({ theme }) => theme.helpers.remCalc(256)};
   outline: none;
   padding: 0 ${({ theme }) => theme.spacing.medium};
 
