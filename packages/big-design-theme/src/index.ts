@@ -19,13 +19,13 @@ export interface ThemeInterface {
   breakpointValues: BreakpointValues;
   breakpoints: Breakpoints;
   colors: Colors;
+  helpers: Helpers;
   keyframes: typeof keyframes;
   lineHeight: LineHeight;
   shadow: Shadow;
   spacing: Spacing;
   typography: Typography;
   zIndex: ZIndex;
-  helpers: Helpers;
 }
 
 export const createTheme = (customOptions: Partial<ThemeOptions> = {}): ThemeInterface => {
@@ -37,13 +37,13 @@ export const createTheme = (customOptions: Partial<ThemeOptions> = {}): ThemeInt
     breakpointValues,
     breakpoints,
     colors,
+    helpers: createHelpers(),
     keyframes,
     lineHeight: createLineHeight(),
     shadow,
     spacing: createSpacing(),
     typography: createTypography(),
     zIndex,
-    helpers: createHelpers(),
   };
 };
 

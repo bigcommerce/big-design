@@ -38,20 +38,20 @@ export const StyledInlineGroup = styled.div<StyledProps>`
   ${SharedGroupStyles};
 
   ${({ theme }) => theme.breakpoints.tablet} {
-    ${({ childrenCount }) =>
+    ${({ childrenCount, theme }) =>
       childrenCount === 2 &&
       css`
-        grid-template-columns: repeat(2, ${({ theme }) => theme.helpers.remCalc(200)});
+        grid-template-columns: repeat(2, ${theme.helpers.remCalc(200)});
 
         ${StyledError} {
           grid-column: 1 / 3;
         }
       `}
 
-    ${({ childrenCount }) =>
+    ${({ childrenCount, theme }) =>
       childrenCount === 3 &&
       css`
-        grid-template-columns: repeat(3, ${({ theme }) => theme.helpers.remCalc(128)});
+        grid-template-columns: repeat(3, ${theme.helpers.remCalc(128)});
 
         ${StyledError} {
           grid-column: 1 / 4;
