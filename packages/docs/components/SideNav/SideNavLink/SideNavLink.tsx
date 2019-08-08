@@ -12,8 +12,14 @@ const StyledLink = styled.a`
   }
 `;
 
+function getLinkAs(as: string = '') {
+  const prefix = process.env.URL_PREFIX || '';
+
+  return prefix + as;
+}
+
 export const SideNavLink: React.FC<{ href: string; as?: string }> = props => (
-  <Link href={props.href} as={props.as}>
+  <Link href={props.href} as={getLinkAs(props.as)}>
     <StyledLink>{props.children}</StyledLink>
   </Link>
 );

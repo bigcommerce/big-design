@@ -6,7 +6,7 @@ import { Code, CodeSnippet, List } from '../../components';
 export default () => (
   <Flex flexDirection="column">
     <figure style={{ textAlign: 'center' }}>
-      <img src="/static/logo.svg" alt="BigDesign Logo" style={{ width: 200 }} />
+      <img src={`${process.env.URL_PREFIX}/static/logo.svg`} alt="BigDesign Logo" style={{ width: 200 }} />
     </figure>
 
     <Flex.Item alignSelf="center">

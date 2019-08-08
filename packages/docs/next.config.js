@@ -1,4 +1,11 @@
+const isProduction = process.env.NODE_ENV === 'production';
+const URL_PREFIX = '/big-design';
+
 module.exports = {
+  assetPrefix: isProduction ? URL_PREFIX : '',
+  env: {
+    URL_PREFIX: isProduction ? URL_PREFIX : '',
+  },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
