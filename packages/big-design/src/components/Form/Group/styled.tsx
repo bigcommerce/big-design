@@ -1,4 +1,4 @@
-import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { Flex } from '../../Flex';
@@ -17,7 +17,7 @@ const SharedGroupStyles = css`
   ${({ theme }) => theme.breakpoints.tablet} {
     ${StyledInputWrapper},
     ${StyledTextareaWrapper} {
-      max-width: ${remCalc(416)};
+      max-width: ${({ theme }) => theme.helpers.remCalc(416)};
     }
   }
 
@@ -41,7 +41,7 @@ export const StyledInlineGroup = styled.div<StyledProps>`
     ${({ childrenCount }) =>
       childrenCount === 2 &&
       css`
-        grid-template-columns: repeat(2, ${remCalc(200)});
+        grid-template-columns: repeat(2, ${({ theme }) => theme.helpers.remCalc(200)});
 
         ${StyledError} {
           grid-column: 1 / 3;
@@ -51,7 +51,7 @@ export const StyledInlineGroup = styled.div<StyledProps>`
     ${({ childrenCount }) =>
       childrenCount === 3 &&
       css`
-        grid-template-columns: repeat(3, ${remCalc(128)});
+        grid-template-columns: repeat(3, ${({ theme }) => theme.helpers.remCalc(128)});
 
         ${StyledError} {
           grid-column: 1 / 4;

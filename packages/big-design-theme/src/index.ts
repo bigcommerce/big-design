@@ -1,3 +1,4 @@
+import { createHelpers, Helpers } from './helpers';
 import { themeOptions, ThemeOptions } from './options';
 import { createBorder, createBorderRadius, Border, BorderRadius } from './system/border';
 import { breakpoints, breakpointValues, Breakpoints, BreakpointValues } from './system/breakpoints';
@@ -24,6 +25,7 @@ export interface ThemeInterface {
   spacing: Spacing;
   typography: Typography;
   zIndex: ZIndex;
+  helpers: Helpers;
 }
 
 export const createTheme = (customOptions: Partial<ThemeOptions> = {}): ThemeInterface => {
@@ -41,6 +43,7 @@ export const createTheme = (customOptions: Partial<ThemeOptions> = {}): ThemeInt
     spacing: createSpacing(),
     typography: createTypography(),
     zIndex,
+    helpers: createHelpers(),
   };
 };
 

@@ -2,6 +2,12 @@ import { rem, stripUnit, transparentize } from 'polished';
 
 import { themeOptions } from '../options';
 
+export interface Helpers {
+  addValues(first: string, second: string): string;
+  createRGBA(color: string, alpha: number): string;
+  remCalc(value: string | number): string;
+}
+
 export const addValues = (first: string, second: string) => {
   const [firstValue, firstUnit] = stripUnit(first, true);
   const [secondValue, secondUnit] = stripUnit(second, true);

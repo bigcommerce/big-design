@@ -1,5 +1,5 @@
 import { Box, Flex, H0, H2, Text } from '@bigcommerce/big-design';
-import { remCalc, ThemeInterface } from '@bigcommerce/big-design-theme';
+import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
@@ -10,8 +10,8 @@ type Colors = ThemeInterface['colors'];
 type Color = keyof Colors;
 
 const StyledColor = styled(Box)`
-  height: ${remCalc(30)};
-  width: ${remCalc(300)};
+  height: ${({ theme }) => theme.helpers.remCalc(30)};
+  width: ${({ theme }) => theme.helpers.remCalc(300)};
 `;
 
 export default () => {

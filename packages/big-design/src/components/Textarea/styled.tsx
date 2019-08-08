@@ -1,4 +1,4 @@
-import { addValues, remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { TextareaProps } from './Textarea';
@@ -15,7 +15,7 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   line-height: ${({ theme }) => theme.lineHeight.medium};
-  max-height: ${remCalc(224)};
+  max-height: ${({ theme }) => theme.helpers.remCalc(224)};
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.small}`};
   width: 100%;
 

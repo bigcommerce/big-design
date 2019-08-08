@@ -1,23 +1,23 @@
-import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, keyframes } from 'styled-components';
 
 import { CIRCLE_CIRCUMFERENCES, CIRCLE_DIMENSIONS, CIRCLE_STROKE_WIDTHS } from './constants';
 import { ProgressCircleProps } from './ProgressCircle';
 
 export const StyledProgressCircle = styled.svg<ProgressCircleProps>`
-  ${({ size }) => css`
-    height: ${remCalc(getDimensions(size))};
-    width: ${remCalc(getDimensions(size))};
+  ${({ size, theme }) => css`
+    height: ${theme.helpers.remCalc(getDimensions(size))};
+    width: ${theme.helpers.remCalc(getDimensions(size))};
   `}
 `;
 
-export const StyledCircle = styled.circle.attrs(({ size }: ProgressCircleProps) => ({
-  cx: remCalc(getDimensions(size) / 2),
-  cy: remCalc(getDimensions(size) / 2),
-  r: remCalc(getDimensions(size) / 2 - getStrokeWidth(size) / 2),
+export const StyledCircle = styled.circle.attrs(({ size, theme }: any) => ({
+  cx: theme.helpers.remCalc(getDimensions(size) / 2),
+  cy: theme.helpers.remCalc(getDimensions(size) / 2),
+  r: theme.helpers.remCalc(getDimensions(size) / 2 - getStrokeWidth(size) / 2),
 }))<ProgressCircleProps>`
   fill: transparent;
-  stroke-width: ${({ size }) => remCalc(getStrokeWidth(size))};
+  stroke-width: ${({ size, theme }) => theme.helpers.remCalc(getStrokeWidth(size))};
   stroke: ${({ theme }) => theme.colors.secondary20};
 `;
 
@@ -83,6 +83,7 @@ function fillLength(percent: number, size: ProgressCircleProps['size'] = 'medium
   return CIRCLE_CIRCUMFERENCES[size] - (percent / 100) * CIRCLE_CIRCUMFERENCES[size];
 }
 
+StyledProgressCircle.defaultProps = { theme: defaultTheme };
 StyledCircle.defaultProps = { theme: defaultTheme };
 StyledCircleFiller.defaultProps = { theme: defaultTheme };
 StyledText.defaultProps = { theme: defaultTheme };
