@@ -26,7 +26,7 @@ export default () => (
         </Flex>
         <Text>
           Lorem ipsum dolor amet officia humblebrag selvage, subway tile vexillologist id pickled adaptogen fashion axe.
-          Ennui meh pitchfork banh mi. Keffiyeh PBR&B echo park gastropub. Pop-up neutra brunch ullamco affogato shaman
+          Ennui meh pitchfork banh mi. Keffiyeh PBRB echo park gastropub. Pop-up neutra brunch ullamco affogato shaman
           vexillologist quinoa post-ironic locavore. Retro selfies proident synth ethical quinoa marfa chartreuse dolor
           vexillologist gochujang. Tempor poke unicorn, readymade crucifix fugiat culpa. Kinfolk hella asymmetrical,
           meggings et consectetur lomo farm-to-table exercitation DIY.
