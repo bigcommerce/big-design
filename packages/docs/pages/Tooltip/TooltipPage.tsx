@@ -1,21 +1,59 @@
-import { Box, Button, Flex, Tooltip } from '@bigcommerce/big-design';
-import { AddIcon } from '@bigcommerce/big-design-icons';
+import { Box, Button, Flex, H0, H1, Link, Text, Tooltip } from '@bigcommerce/big-design';
+import { AddIcon, WarningIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
+import { CodePreview } from '../../components';
+import { TooltipPropTable } from '../../PropTables/TooltipPropTable';
+
 export default () => (
-  <Flex alignItems="center" flexDirection="column">
-    <Tooltip content="Tooltip Content" placement="top">
-      <Button>Hover</Button>
-    </Tooltip>
-    <Box marginTop="xxLarge">
+  <>
+    <H0>Tooltips</H0>
+
+    <Text>
+      Tooltips contain information to help users understand actions or page elements. They are short, and triggered by a
+      user hovering with their keyboard or mouse over a UI element.{' '}
+      <Link href="https://bigcommerce.design/tooltips" target="_blank">
+        Tooltips Design Guidelines
+      </Link>
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
       <Tooltip content="Tooltip Content" placement="right">
-        <span>Hover</span>
+        <Button>Hover</Button>
       </Tooltip>
-    </Box>
-    <Box marginTop="xxLarge">
-      <Tooltip content="Tooltip Content" placement="bottom">
-        <AddIcon />
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <TooltipPropTable />
+
+    <H1>Placement</H1>
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <>
+        <Tooltip content="Tooltip Content" placement="right">
+          <Button marginRight="xSmall">Right</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip Content" placement="top">
+          <Button marginRight="xSmall">Top</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip Content" placement="left">
+          <Button marginRight="xSmall">Left</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip Content" placement="bottom">
+          <Button marginRight="xSmall">Bottom</Button>
+        </Tooltip>
+      </>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H1>Icons</H1>
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Tooltip content="Warning message" placement="right">
+        <WarningIcon />
       </Tooltip>
-    </Box>
-  </Flex>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+  </>
 );
