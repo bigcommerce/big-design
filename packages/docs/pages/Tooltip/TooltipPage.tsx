@@ -15,6 +15,7 @@ export default () => (
       <Link href="https://bigcommerce.design/tooltips" target="_blank">
         Tooltips Design Guidelines
       </Link>
+      .
     </Text>
 
     <CodePreview>
