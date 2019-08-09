@@ -9,7 +9,7 @@ To start the documentaion site run the following in the root directory:
 ```bash
 yarn install
 yarn run build
-yarn start
+yarn run start
 ```
 
 The navigate to `localhost:3000` in your browser.
