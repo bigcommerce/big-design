@@ -32,7 +32,9 @@ export default () => (
 
     <H1>Usage</H1>
 
-    <Text>Tooltips can wrap any Element.</Text>
+    <Text>
+      Tooltips can wrap any <Code primary>Element</Code>.
+    </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
