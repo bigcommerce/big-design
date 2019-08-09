@@ -1,21 +1,93 @@
-import { Box, Button, Flex, Tooltip } from '@bigcommerce/big-design';
-import { AddIcon } from '@bigcommerce/big-design-icons';
+import { Box, Button, Flex, Grid, H0, H1, H2, Link, Text, Tooltip } from '@bigcommerce/big-design';
+import { WarningIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
+import { Code, CodePreview } from '../../components';
+import { TooltipPropTable } from '../../PropTables/TooltipPropTable';
+
 export default () => (
-  <Flex alignItems="center" flexDirection="column">
-    <Tooltip content="Tooltip Content" placement="top">
-      <Button>Hover</Button>
-    </Tooltip>
-    <Box marginTop="xxLarge">
+  <>
+    <H0>Tooltips</H0>
+
+    <Text>
+      Tooltips contain information to help users understand actions or page elements. They are short, and triggered by a
+      user hovering with their keyboard or mouse over a UI element.{' '}
+      <Link href="https://bigcommerce.design/tooltips" target="_blank">
+        Tooltips Design Guidelines
+      </Link>
+      .
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
       <Tooltip content="Tooltip Content" placement="right">
-        <span>Hover</span>
+        <Button>Hover</Button>
       </Tooltip>
-    </Box>
-    <Box marginTop="xxLarge">
-      <Tooltip content="Tooltip Content" placement="bottom">
-        <AddIcon />
-      </Tooltip>
-    </Box>
-  </Flex>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H1>API</H1>
+
+    <H2>Tooltip</H2>
+
+    <TooltipPropTable />
+
+    <H1>Examples</H1>
+
+    <H2>Anchor</H2>
+
+    <Text>
+      Tooltips can wrap any <Code>Element</Code>. Tooltip will show on hover.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Flex alignItems="center">
+        <Box marginRight="medium">
+          <Tooltip content="Tooltip Content" placement="right">
+            <Button>Button</Button>
+          </Tooltip>
+        </Box>
+
+        <Box marginRight="medium">
+          <Tooltip content="Tooltip Content" placement="right">
+            <WarningIcon />
+          </Tooltip>
+        </Box>
+        <Box marginRight="medium">
+          <Tooltip content="Tooltip Content" placement="right">
+            <span>Span</span>
+          </Tooltip>
+        </Box>
+      </Flex>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H2>Placement</H2>
+
+    <Text>
+      Tooltip can be anchored in different directions with the <Code primary>placement</Code> property. It will
+      automatically find a position if there's not enough space in the chosen direction.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Grid gridColumns="repeat(4, min-content)">
+        <Tooltip content="Tooltip Content" placement="right">
+          <Button>Right</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip Content" placement="top">
+          <Button>Top</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip Content" placement="left">
+          <Button>Left</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip Content" placement="bottom">
+          <Button>Bottom</Button>
+        </Tooltip>
+      </Grid>
+
+      {/* jsx-to-string:end */}
+    </CodePreview>
+  </>
 );

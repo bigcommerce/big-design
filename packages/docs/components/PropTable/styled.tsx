@@ -33,6 +33,10 @@ export const StyledTableRow = styled.tr`
 
 const SharedCellStyles = css`
   padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.small}`};
+
+  &:last-of-type {
+    width: 50%;
+  }
 `;
 
 export const StyledTableHeader = styled.th`
