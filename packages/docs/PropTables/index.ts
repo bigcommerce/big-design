@@ -16,3 +16,4 @@ export * from './RadioPropTable';
 export * from './SelectPropTable';
 export * from './TabsPropTable';
 export * from './TextareaPropTable';
+export * from './TypographyPropTable';
