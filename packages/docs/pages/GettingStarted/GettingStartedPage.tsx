@@ -56,7 +56,7 @@ export default () => (
     <List>
       <List.Item>
         <Link href="https://bigcommerce.design/components" target="_blank">
-          Design Guidelines.
+          Design Guidelines
         </Link>
       </List.Item>
       <List.Item>

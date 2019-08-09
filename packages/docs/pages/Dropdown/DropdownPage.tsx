@@ -10,7 +10,7 @@ export default () => (
     <Text>
       Dropdowns are toggleable, contextual overlays for displaying lists.{' '}
       <Link href="https://bigcommerce.design/dropdown" target="_blank">
-        Dropdown Design Guidelines.
+        Dropdown Design Guidelines
       </Link>
     </Text>
     <CodePreview>

@@ -13,7 +13,7 @@ export default () => (
       Tooltips contain information to help users understand actions or page elements. They are short, and triggered by a
       user hovering with their keyboard or mouse over a UI element.{' '}
       <Link href="https://bigcommerce.design/tooltips" target="_blank">
-        Tooltips Design Guidelines.
+        Tooltips Design Guidelines
       </Link>
     </Text>
 
@@ -26,10 +26,13 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
+
     <TooltipPropTable />
 
     <H1>Usage</H1>
+
     <Text>Tooltips can wrap any Element.</Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       <Flex alignItems="center">
@@ -59,6 +62,7 @@ export default () => (
       Dropdown can be anchored in different directions with the <Code primary>placement</Code> property. It will
       automatically find a position if there's not enough space in the chosen direction.
     </Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(4, min-content)">

@@ -11,7 +11,7 @@ export default () => (
     <Text>
       Checkboxes are a stylized <Code>input[type="checkbox"]</Code> with controllable checked/unchecked states.{' '}
       <Link href="https://bigcommerce.design/checkbox" target="_blank">
-        Checkbox Design Guidelines.
+        Checkbox Design Guidelines
       </Link>
     </Text>
 

@@ -11,7 +11,7 @@ export default () => (
     <Text>
       Select are typeable inputs with selectable dropdown items.{' '}
       <Link href="https://bigcommerce.design/fields" target="_blank">
-        Form Fields Design Guidelines.
+        Form Fields Design Guidelines
       </Link>
     </Text>
 
