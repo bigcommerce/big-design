@@ -6,7 +6,7 @@
   "main": "dist/big-design-icons.cjs.js",
   "module": "dist/big-design-icons.es.js",
   "typings": "dist/index.d.ts",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE.md",
   "author": "BigCommerce Inc",
   "repository": {
     "type": "git",

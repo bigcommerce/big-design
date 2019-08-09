@@ -12,7 +12,7 @@
     "url": "https://github.com/bigcommerce/big-design.git",
     "directory": "packages/big-design"
   },
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE.md",
   "files": [
     "dist"
   ],
