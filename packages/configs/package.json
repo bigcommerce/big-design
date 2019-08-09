@@ -2,7 +2,7 @@
   "name": "@bigcommerce/configs",
   "version": "0.5.0",
   "private": true,
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
     "@bigcommerce/tslint-config": "^4.0.0",
     "tslint-config-prettier": "^1.18.0"
