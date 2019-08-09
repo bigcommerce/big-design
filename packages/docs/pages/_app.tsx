@@ -22,7 +22,7 @@ export default class MyApp extends App {
     return (
       <Container>
         <Head>
-          <link rel="icon" type="image/png" href="/static/favicon.png"></link>
+          <link rel="icon" type="image/png" href={`${process.env.URL_PREFIX}/static/favicon.png`}></link>
           <title>BigDesign</title>
         </Head>
         <style jsx global>

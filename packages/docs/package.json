@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build-static": "next build && next export",
+    "deploy": "yarn run build-static && touch out/.nojekyll && push-dir --dir=out --branch=gh-pages --verbose",
     "start": "next",
     "ci": "yarn run lint && yarn run build-static",
     "lint": "yarn run lint:tslint && yarn run lint:tsc && yarn run lint:prettier",
@@ -45,6 +46,7 @@
     "babel-plugin-styled-components": "^1.10.6",
     "jsx-to-string-loader": "^1.1.2",
     "prettier": "^1.16.4",
+    "push-dir": "^0.4.1",
     "tslint": "^5.14.0",
     "typescript": "^3.5.3",
     "typescript-styled-plugin": "^0.14.0"
