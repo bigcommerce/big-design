@@ -54,6 +54,7 @@ export default () => (
     </CodePreview>
 
     <H1>Placement</H1>
+
     <Text>
       Dropdown can be anchored in different directions with the <Code primary>placement</Code> property. It will
       automatically find a position if there's not enough space in the chosen direction.
