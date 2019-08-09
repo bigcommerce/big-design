@@ -14,6 +14,7 @@ export default () => (
       <Link href="https://bigcommerce.design/badges" target="_blank">
         Badges Design Guidelines
       </Link>
+      .
     </Text>
 
     <CodePreview>
@@ -23,6 +24,8 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
+
+    <H2>Badge</H2>
 
     <BadgePropTable />
 

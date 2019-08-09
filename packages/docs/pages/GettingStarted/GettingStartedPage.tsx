@@ -21,6 +21,7 @@ export default () => (
     <H2>Getting Started</H2>
 
     <Text>Add BigDesign and styled-components to your project:</Text>
+
     <CodeSnippet showControls={false} language="bash">
       npm install @bigcommerce/big-design styled-components
     </CodeSnippet>
@@ -53,6 +54,7 @@ export default () => (
     </CodeSnippet>
 
     <H2 marginBottom="none">Helpful Resources</H2>
+
     <List>
       <List.Item>
         <Link href="https://bigcommerce.design/components" target="_blank">

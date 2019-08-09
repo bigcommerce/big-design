@@ -1,45 +1,50 @@
-import { H1, H2, H3, Panel, ProgressCircle } from '@bigcommerce/big-design';
+import { H0, H1, H2, Link, ProgressCircle, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, PropTable } from '../../components';
+import { Code, CodePreview } from '../../components';
+import { ProgressCirclePropTable } from '../../PropTables';
 
 export default () => (
-  <Panel>
-    <H1>ProgressCircle</H1>
-    <H2>Examples</H2>
-    <H3 marginTop="xLarge">Determinant</H3>
+  <>
+    <H0>Progress Circle</H0>
+
+    <Text>
+      <Link href="https://design.bigcommerce.com/components/progress-indicators" target="_blank">
+        Progress Indicator Design Guidelines
+      </Link>
+      .
+    </Text>
+
+    <H1>Determinant</H1>
+
+    <Text>
+      Determinant Progress represents a known amount of time or completeness for a task. A <Code primary>percent</Code>{' '}
+      prop needs to be passed to render a determinate progress.
+    </Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       <ProgressCircle error={false} percent={50} size="large" />
       {/* jsx-to-string:end */}
     </CodePreview>
-    <p>
-      Determinant Progress represents a known amount of time or completeness for a task. A <Code primary>percent</Code>{' '}
-      prop needs to be passed to render a determinate progress.
-    </p>
 
-    <H3 marginTop="xLarge">Indeterminant</H3>
+    <H1>Indeterminant</H1>
+
+    <Text>
+      Indeterminant Progress represents an unknown amount of time for a task to complete. Component will render an
+      indeterminant progress when missing a <Code primary>percent</Code> prop.
+    </Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       <ProgressCircle size={'large'} />
       {/* jsx-to-string:end */}
     </CodePreview>
-    <p>
-      Indeterminant Progress represents an unknown amount of time for a task to complete. Component will render an
-      indeterminant progress when missing a <Code primary>percent</Code> prop.
-    </p>
 
-    <H2 marginTop="xxxLarge">Properties & Methods</H2>
-    <PropTable>
-      <PropTable.Prop name="error" types="boolean">
-        Sets state to error.
-      </PropTable.Prop>
-      <PropTable.Prop name="percent" types="number">
-        Sets the fill length from 0 to 100.
-      </PropTable.Prop>
-      <PropTable.Prop name="size" types={['xSmall', 'small', 'medium', 'large']} defaults="medium">
-        Size of the component.
-      </PropTable.Prop>
-    </PropTable>
-  </Panel>
+    <H1>API</H1>
+
+    <H2>ProgressCircle</H2>
+
+    <ProgressCirclePropTable />
+  </>
 );
