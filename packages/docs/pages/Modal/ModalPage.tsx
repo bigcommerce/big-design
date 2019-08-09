@@ -61,7 +61,7 @@ export default () => (
     <Text>
       Setting the variant prop to <Code primary>dialog</Code> results in a simplified version of a Modal. The purpose of
       a dialog is to act as a safety net for a user attempting a destructive action.{' '}
-      <Link href="https://design.bigcommerce.com/components/modals" target="_blank">
+      <Link href="https://design.bigcommerce.com/components/modals-confirmation" target="_blank">
         Modals–Confirmation Design Guidelines
       </Link>
       .

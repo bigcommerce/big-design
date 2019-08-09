@@ -12,6 +12,7 @@ export default () => (
       <Link href="https://design.bigcommerce.com/components/progress-indicators" target="_blank">
         Progress Indicator Design Guidelines
       </Link>
+      .
     </Text>
 
     <H1>Determinant</H1>

@@ -32,12 +32,12 @@ export const InputDescriptionPropTable: React.FC = () => (
 
 export const InputErrorPropTable: React.FC = () => (
   <Text>
-    See <Link href="/forms">Forms.Error</Link>.
+    See <Link href="/form#error">Forms.Error</Link>.
   </Text>
 );
 
 export const InputLabelPropTable: React.FC = () => (
   <Text>
-    See <Link href="/forms">Forms.Label</Link>.
+    See <Link href="/form#label">Forms.Label</Link>.
   </Text>
 );

@@ -72,7 +72,7 @@ export default () => (
 
     <FormFieldsetPropTable />
 
-    <H2>Form.Label</H2>
+    <H2 id="label">Form.Label</H2>
 
     <FormLabelPropTable />
 
