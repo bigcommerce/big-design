@@ -23,6 +23,9 @@ export const SideNav: React.FC = () => {
         <SideNavLink href="/Icons/IconsPage" as="/icons">
           Icons
         </SideNavLink>
+        <SideNavLink href="/Spacing/SpacingPage" as="/spacing">
+          Spacing
+        </SideNavLink>
       </SideNavGroup>
 
       <SideNavGroup title="Forms">
