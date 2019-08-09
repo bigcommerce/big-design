@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, H0, H1, Link, Text, Tooltip } from '@bigcommerce/big-design';
+import { Box, Button, Flex, Grid, H0, H1, H2, Link, Text, Tooltip } from '@bigcommerce/big-design';
 import { WarningIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
@@ -28,12 +28,16 @@ export default () => (
 
     <H1>API</H1>
 
+    <H2>Tooltip</H2>
+
     <TooltipPropTable />
 
-    <H1>Usage</H1>
+    <H1>Examples</H1>
+
+    <H2>Anchor</H2>
 
     <Text>
-      Tooltips can wrap any <Code primary>Element</Code>.
+      Tooltips can wrap any <Code>Element</Code>. Tooltip will show on hover.
     </Text>
 
     <CodePreview>
@@ -59,10 +63,10 @@ export default () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>Placement</H1>
+    <H2>Placement</H2>
 
     <Text>
-      Dropdown can be anchored in different directions with the <Code primary>placement</Code> property. It will
+      Tooltip can be anchored in different directions with the <Code primary>placement</Code> property. It will
       automatically find a position if there's not enough space in the chosen direction.
     </Text>
 
