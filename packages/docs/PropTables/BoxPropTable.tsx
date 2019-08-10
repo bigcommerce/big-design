@@ -5,8 +5,8 @@ import { PropTable } from '../components';
 
 export const BoxPropTable: React.FC = () => (
   <PropTable>
-    <PropTable.Prop name="backgroundColor" types={<Link href="/colors">Color</Link>}>
-      Sets the background color given a color name from our <Link href="/colors">palette</Link>.
+    <PropTable.Prop name="backgroundColor" types={<Link href="/big-design/colors">Color</Link>}>
+      Sets the background color given a color name from our <Link href="/big-design/colors">palette</Link>.
     </PropTable.Prop>
     <PropTable.Prop name="shadow" types={['floating', 'raised']}>
       Determines the type of shadow to be applied.
