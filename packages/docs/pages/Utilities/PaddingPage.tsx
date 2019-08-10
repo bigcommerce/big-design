@@ -10,7 +10,7 @@ export default () => (
 
     <Text>
       Some of our components expose a simple way to modify their padding. The following example showcases the simples
-      way to use the padding prop by giving it a <Link href="/utilities/spacing">Spacing</Link> value.
+      way to use the padding prop by giving it a <Link href="/big-design/utilities/spacing">Spacing</Link> value.
     </Text>
 
     <CodePreview>
@@ -23,8 +23,8 @@ export default () => (
 
     <Text>
       You can also specify paddings with an object to handle different paddings with different
-      <Link href="/utilities/breakpoints"> breakpoints</Link>. All values must be of
-      <Link href="/utilities/spacing"> Spacing</Link> type.
+      <Link href="/big-design/utilities/breakpoints"> breakpoints</Link>. All values must be of
+      <Link href="/big-design/utilities/spacing"> Spacing</Link> type.
     </Text>
 
     <CodePreview>
