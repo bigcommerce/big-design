@@ -31,12 +31,12 @@ export const TextareaDescriptionPropTable: React.FC = () => (
 
 export const TextareaErrorPropTable: React.FC = () => (
   <Text>
-    See <Link href="/form#error">Forms.Error</Link>.
+    See <Link href="/big-design/form#error">Forms.Error</Link>.
   </Text>
 );
 
 export const TextareaLabelPropTable: React.FC = () => (
   <Text>
-    See <Link href="/form#label">Forms.Label</Link>.
+    See <Link href="/big-design/form#label">Forms.Label</Link>.
   </Text>
 );
