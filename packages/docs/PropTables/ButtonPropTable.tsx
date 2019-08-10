@@ -9,14 +9,14 @@ export const ButtonPropTable: React.FC = () => {
       <PropTable.Prop name="actionType" types={['normal', 'destructive']} defaults="normal">
         Indicates whether your button's action is of normal or destructive nature.
       </PropTable.Prop>
-      <PropTable.Prop name="iconLeft" types={<Link href="/icons">Icon</Link>} defaults="">
-        Pass in an <Link href="/icons">Icon</Link> component to display to the left of the text.
+      <PropTable.Prop name="iconLeft" types={<Link href="/big-design/icons">Icon</Link>} defaults="">
+        Pass in an <Link href="/big-design/icons">Icon</Link> component to display to the left of the text.
       </PropTable.Prop>
-      <PropTable.Prop name="iconOnly" types={<Link href="/icons">Icon</Link>} defaults="">
-        Pass in an <Link href="/icons">Icon</Link> component to replace content with an icon.
+      <PropTable.Prop name="iconOnly" types={<Link href="/big-design/icons">Icon</Link>} defaults="">
+        Pass in an <Link href="/big-design/icons">Icon</Link> component to replace content with an icon.
       </PropTable.Prop>
-      <PropTable.Prop name="iconRight" types={<Link href="/icons">Icon</Link>} defaults="">
-        Pass in an <Link href="/icons">Icon</Link> component to display to the right of the text.
+      <PropTable.Prop name="iconRight" types={<Link href="/big-design/icons">Icon</Link>} defaults="">
+        Pass in an <Link href="/big-design/icons">Icon</Link> component to display to the right of the text.
       </PropTable.Prop>
       <PropTable.Prop name="isLoading" types="boolean" defaults="false">
         Used to determine if component is in a loading state.
