@@ -52,7 +52,7 @@ export default () => {
             width: theme.spacing.large,
           }));
 
-          return <StyledBox></StyledBox>;
+          return <StyledBox />;
         }}
         {/* jsx-to-string:end */}
       </CodePreview>
