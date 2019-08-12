@@ -5,12 +5,19 @@ import { SideNavLink } from './SideNavLink';
 export const SideNav: React.FC = () => {
   return (
     <StyledFlex flexDirection="column" padding="medium" paddingBottom="xxxLarge">
-      <img src={`${process.env.URL_PREFIX}/static/logo-with-text.svg`} alt="BigDesign Logo" />
+      <img
+        src={`${process.env.URL_PREFIX}/static/logo-with-text.svg`}
+        alt="BigDesign Logo"
+        style={{ maxWidth: '100%', margin: '0 auto' }}
+      />
 
-      <SideNavGroup title="Foundation">
+      <SideNavGroup title="Introduction">
         <SideNavLink href="/GettingStarted/GettingStartedPage" as="/">
           Getting Started
         </SideNavLink>
+      </SideNavGroup>
+
+      <SideNavGroup title="Foundations">
         <SideNavLink href="/Colors/ColorsPage" as="/colors">
           Colors
         </SideNavLink>

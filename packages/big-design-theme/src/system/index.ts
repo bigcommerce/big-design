@@ -1,6 +1,7 @@
 export * from './border';
 export * from './breakpoints';
 export * from './colors';
+export * from './display';
 export * from './keyframes';
 export * from './line-height';
 export * from './shadow';
