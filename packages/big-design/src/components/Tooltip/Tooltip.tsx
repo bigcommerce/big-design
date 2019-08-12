@@ -8,7 +8,7 @@ import { StyledTooltip, StyledTooltipTrigger } from './styled';
 
 export interface TooltipProps {
   placement: PopperProps['placement'];
-  content: React.ReactChild;
+  trigger: React.ReactChild;
 }
 
 interface State {
@@ -38,7 +38,7 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
   }
 
   render() {
-    const { children, content } = this.props;
+    const { children, trigger } = this.props;
 
     return (
       <Manager>
@@ -52,7 +52,7 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
               onMouseLeave={this.hideTooltip}
               ref={ref}
             >
-              {children}
+              {trigger}
             </StyledTooltipTrigger>
           )}
         </Reference>
@@ -62,7 +62,7 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
                 {({ placement, ref, style }) =>
                   this.state.visible && (
                     <StyledTooltip ref={ref} style={style} data-placement={placement}>
-                      {this.renderContent(content)}
+                      {this.renderContent(children)}
                     </StyledTooltip>
                   )
                 }
@@ -74,8 +74,8 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
     );
   }
 
-  private renderContent = (content: React.ReactChild) => {
-    return typeof content === 'string' ? <Small color="white">{content}</Small> : { content };
+  private renderContent = (content: React.ReactNode) => {
+    return typeof content === 'string' ? <Small color="white">{content}</Small> : content;
   };
 
   private hideTooltip = () => {
