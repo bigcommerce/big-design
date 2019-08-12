@@ -12,11 +12,11 @@ export const InputPropTable: React.FC = () => (
       Displays an error message for the field. Error message will be passed to the <Code>Form.Group</Code> for display
       purposes.
     </PropTable.Prop>
-    <PropTable.Prop name="iconLeft" types={<Link href="/big-design/icons">Icon</Link>}>
-      Pass in an <Link href="/big-design/icons">Icon</Link> component to display to the left of the text.
+    <PropTable.Prop name="iconLeft" types={<Link href="/icons">Icon</Link>}>
+      Pass in an <Link href="/icons">Icon</Link> component to display to the left of the text.
     </PropTable.Prop>
-    <PropTable.Prop name="iconRight" types={<Link href="/big-design/icons">Icon</Link>}>
-      Pass in an <Link href="/big-design/icons">Icon</Link> component to display to the right of the text.
+    <PropTable.Prop name="iconRight" types={<Link href="/icons">Icon</Link>}>
+      Pass in an <Link href="/icons">Icon</Link> component to display to the right of the text.
     </PropTable.Prop>
     <PropTable.Prop name="label" types="ReactChild">
       Label element for inputs. Component with auto generate <Code>id</Code>'s for the accessibility API.
@@ -32,12 +32,12 @@ export const InputDescriptionPropTable: React.FC = () => (
 
 export const InputErrorPropTable: React.FC = () => (
   <Text>
-    See <Link href="/big-design/form#error">Forms.Error</Link>.
+    See <Link href="/form#error">Forms.Error</Link>.
   </Text>
 );
 
 export const InputLabelPropTable: React.FC = () => (
   <Text>
-    See <Link href="/big-design/form#label">Forms.Label</Link>.
+    See <Link href="/form#label">Forms.Label</Link>.
   </Text>
 );
