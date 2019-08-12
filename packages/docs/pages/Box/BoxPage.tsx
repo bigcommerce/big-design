@@ -62,6 +62,7 @@ export default () => (
         {/* jsx-to-string:start */}
         {function Avatar() {
           const StyledBox = styled(Box)(({ theme }) => ({
+            boxSizing: 'content-box',
             height: theme.spacing.large,
             width: theme.spacing.large,
           }));
