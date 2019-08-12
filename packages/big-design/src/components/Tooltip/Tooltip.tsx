@@ -2,6 +2,8 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { Manager, Popper, PopperProps, Reference } from 'react-popper';
 
+import { Small } from '../Typography';
+
 import { StyledTooltip, StyledTooltipTrigger } from './styled';
 
 export interface TooltipProps {
@@ -60,7 +62,7 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
                 {({ placement, ref, style }) =>
                   this.state.visible && (
                     <StyledTooltip ref={ref} style={style} data-placement={placement}>
-                      {content}
+                      {this.renderContent(content)}
                     </StyledTooltip>
                   )
                 }
@@ -71,6 +73,10 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
       </Manager>
     );
   }
+
+  private renderContent = (content: React.ReactChild) => {
+    return typeof content === 'string' ? <Small color="white">{content}</Small> : { content };
+  };
 
   private hideTooltip = () => {
     this.setState({ visible: false });

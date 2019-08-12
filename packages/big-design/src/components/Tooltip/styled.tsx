@@ -8,11 +8,9 @@ export const StyledTooltipTrigger = styled.div`
 export const StyledTooltip = styled.div`
   ${({ theme }) => theme.shadow.floating};
 
-  color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.secondary70};
-  font-size: ${({ theme }) => theme.typography.fontSize.medium};
-  max-width: ${({ theme }) => theme.helpers.remCalc(300)};
-  padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.medium}`};
+  max-width: ${({ theme }) => theme.helpers.remCalc(336)};
+  padding: ${({ theme }) => theme.spacing.xSmall};
 `;
 
 StyledTooltip.defaultProps = { theme: defaultTheme };
