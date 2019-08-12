@@ -14,7 +14,7 @@ export default () => {
       </figure>
 
       <Flex.Item alignSelf="center">
-        <H1>BigDesign Playground</H1>
+        <H1>BigDesign Developer Playground</H1>
       </Flex.Item>
 
       <Text>
@@ -32,12 +32,12 @@ export default () => {
         <List columnCount={2} columnGap={spacing.xxxLarge}>
           <List.Item>
             <Link href="https://bigcommerce.design/components" target="_blank">
-              BigDesign Guidelines
+              BigDesign Component Guidelines
             </Link>
           </List.Item>
           <List.Item>
             <Link href="https://github.com/bigcommerce/big-design" target="_blank">
-              Components GitHub Repo
+              BigDesign GitHub Repo
             </Link>
           </List.Item>
           <List.Item>
@@ -45,7 +45,7 @@ export default () => {
           </List.Item>
           <List.Item>
             <Link href="https://support.bigcommerce.com/s/group/0F91B000000bnqoSAA/bigdesign-beta" target="_blank">
-              Community Beta Group
+              BigDesign Beta Community Group
             </Link>
           </List.Item>
           <List.Item>
