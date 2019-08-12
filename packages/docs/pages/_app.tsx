@@ -12,7 +12,7 @@ const theme = createTheme();
 
 const gridTemplate = `
   ". nav main ." 1fr
-  / 1fr 210px minmax(min-content, 1000px) 1fr;
+  / 1fr 210px minmax(min-content, 1050px) 1fr;
 `;
 
 export default class MyApp extends App {
