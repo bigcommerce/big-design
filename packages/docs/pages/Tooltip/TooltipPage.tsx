@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, H0, H1, H2, Link, Text, Tooltip } from '@bigcommerce/big-design';
+import { Box, Button, Flex, Grid, H0, H1, H2, H4, Link, Text, Tooltip } from '@bigcommerce/big-design';
 import { WarningIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
@@ -20,8 +20,8 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Tooltip content="Tooltip Content" placement="right">
-        <Button>Hover</Button>
+      <Tooltip trigger={<Button>Hover</Button>} placement="right">
+        Tooltip Content
       </Tooltip>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -44,19 +44,19 @@ export default () => (
       {/* jsx-to-string:start */}
       <Flex alignItems="center">
         <Box marginRight="medium">
-          <Tooltip content="Tooltip Content" placement="right">
-            <Button>Button</Button>
+          <Tooltip trigger={<Button>Button</Button>} placement="right">
+            Tooltip Content
           </Tooltip>
         </Box>
 
         <Box marginRight="medium">
-          <Tooltip content="Tooltip Content" placement="right">
-            <WarningIcon />
+          <Tooltip trigger={<WarningIcon />} placement="right">
+            Tooltip Content
           </Tooltip>
         </Box>
         <Box marginRight="medium">
-          <Tooltip content="Tooltip Content" placement="right">
-            <span>Span</span>
+          <Tooltip trigger={<span>Span</span>} placement="right">
+            Tooltip Content
           </Tooltip>
         </Box>
       </Flex>
@@ -73,17 +73,17 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(4, min-content)">
-        <Tooltip content="Tooltip Content" placement="right">
-          <Button>Right</Button>
+        <Tooltip trigger={<Button>Right</Button>} placement="right">
+          Tooltip Content
         </Tooltip>
-        <Tooltip content="Tooltip Content" placement="top">
-          <Button>Top</Button>
+        <Tooltip trigger={<Button>Top</Button>} placement="top">
+          Tooltip Content
         </Tooltip>
-        <Tooltip content="Tooltip Content" placement="left">
-          <Button>Left</Button>
+        <Tooltip trigger={<Button>Left</Button>} placement="left">
+          Tooltip Content
         </Tooltip>
-        <Tooltip content="Tooltip Content" placement="bottom">
-          <Button>Bottom</Button>
+        <Tooltip trigger={<Button>Bottom</Button>} placement="bottom">
+          Tooltip Content
         </Tooltip>
       </Grid>
 

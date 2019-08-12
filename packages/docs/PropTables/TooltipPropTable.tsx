@@ -4,6 +4,9 @@ import { PropTable } from '../components';
 
 export const TooltipPropTable: React.FC = () => (
   <PropTable>
+    <PropTable.Prop name="trigger" types="ReactNode" required>
+      React Node that triggers the tooltip on hover.
+    </PropTable.Prop>
     <PropTable.Prop
       name="placement"
       defaults="top"
@@ -26,9 +29,6 @@ export const TooltipPropTable: React.FC = () => (
       ]}
     >
       Sets the position of the Tooltip.
-    </PropTable.Prop>
-    <PropTable.Prop name="content" types="string">
-      Content to display on hover.
     </PropTable.Prop>
   </PropTable>
 );
