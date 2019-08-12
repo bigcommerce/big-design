@@ -11,11 +11,11 @@ export const StyledBadge = styled.span<BadgeProps>`
   color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   display: inline-block;
-  font-size: ${({ theme }) => theme.typography.fontSize.small};
+  font-size: ${({ theme }) => theme.helpers.remCalc(12)};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   text-align: center;
   text-transform: uppercase;
-  padding: ${({ theme }) => theme.spacing.xxSmall};
+  padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.xSmall}`};
 
   ${({ theme, variant }) =>
     variant === 'secondary' &&
