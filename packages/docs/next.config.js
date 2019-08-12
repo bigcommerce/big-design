@@ -35,6 +35,7 @@ module.exports = {
     '/panel': { page: '/Panel/PanelPage' },
     '/progress/bar': { page: '/Progress/ProgressBarPage' },
     '/progress/circle': { page: '/Progress/ProgressCirclePage' },
+    '/spacing': { page: '/Spacing/SpacingPage' },
     '/tabs': { page: '/Tabs/TabsPage' },
     '/tooltip': { page: '/Tooltip/TooltipPage' },
     '/typography': { page: '/Typography/TypographyPage' },
