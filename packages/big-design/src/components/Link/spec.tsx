@@ -17,6 +17,5 @@ test('does not forward styles', () => {
     </Link>,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
