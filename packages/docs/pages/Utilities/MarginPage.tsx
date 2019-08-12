@@ -1,7 +1,7 @@
-import { Button, H0, H1, Link, Text } from '@bigcommerce/big-design';
+import { Button, H0, H1, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { CodePreview } from '../../components';
+import { CodePreview, NextLink } from '../../components';
 import { MarginPropTable } from '../../PropTables';
 
 export default () => (
@@ -10,7 +10,11 @@ export default () => (
 
     <Text>
       Some of our components expose a simple way to modify their margin. The following example showcases the simples way
-      to use the margin prop by giving it a <Link href="/spacing">Spacing</Link> value.
+      to use the margin prop by giving it a{' '}
+      <NextLink href="/Spacing/SpacingPage" as="/spacing">
+        Spacing
+      </NextLink>{' '}
+      value.
     </Text>
 
     <CodePreview>
@@ -20,9 +24,15 @@ export default () => (
     </CodePreview>
 
     <Text>
-      You can also specify margins with an object to handle different margins with different
-      <Link href="/utilities/breakpoints"> breakpoints</Link>. All values must be of
-      <Link href="/spacing"> Spacing</Link> type.
+      You can also specify margins with an object to handle different margins with different{' '}
+      <NextLink href="/Breakpoint/BreakpointPage" as="/utilities/breakpoints">
+        breakpoints
+      </NextLink>
+      . All values must be of{' '}
+      <NextLink href="/Spacing/SpacingPage" as="/spacing">
+        Spacing
+      </NextLink>{' '}
+      type.
     </Text>
 
     <CodePreview>

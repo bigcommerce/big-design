@@ -10,7 +10,7 @@ const StyledLink = styled(Link)`
 
 export const SideNavLink: React.FC<{ href: string; as?: string }> = props => (
   <List.Item>
-    <NextLink href={props.href}>
+    <NextLink href={props.href} as={props.as}>
       <StyledLink>{props.children}</StyledLink>
     </NextLink>
   </List.Item>

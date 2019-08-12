@@ -1,15 +1,25 @@
-import { StyledFlex } from './styled';
+import { Badge } from '@bigcommerce/big-design';
+import Link from 'next/link';
+
+import { StyledBadgeWrapper, StyledFlex, StyledLogo } from './styled';
 import { SideNavGroup } from './SideNavGroup';
 import { SideNavLink } from './SideNavLink';
 
 export const SideNav: React.FC = () => {
   return (
     <StyledFlex flexDirection="column" padding="medium" paddingBottom="xxxLarge">
-      <img
-        src={`${process.env.URL_PREFIX}/static/logo-with-text.svg`}
-        alt="BigDesign Logo"
-        style={{ maxWidth: '100%', margin: '0 auto' }}
-      />
+      <Link href="/GettingStarted/GettingStartedPage" as="/">
+        <StyledLogo>
+          <img
+            src={`${process.env.URL_PREFIX}/static/logo-with-text.svg`}
+            alt="BigDesign Logo"
+            style={{ maxWidth: '100%', margin: '0 auto' }}
+          />
+          <StyledBadgeWrapper>
+            <Badge variant="success">Beta</Badge>
+          </StyledBadgeWrapper>
+        </StyledLogo>
+      </Link>
 
       <SideNavGroup title="Introduction">
         <SideNavLink href="/GettingStarted/GettingStartedPage" as="/">
@@ -21,29 +31,47 @@ export const SideNav: React.FC = () => {
         <SideNavLink href="/Colors/ColorsPage" as="/colors">
           Colors
         </SideNavLink>
-        <SideNavLink href="/Typography/TypographyPage" as="/typography">
-          Typography
-        </SideNavLink>
-        <SideNavLink href="/Button/ButtonPage" as="/button">
-          Button
-        </SideNavLink>
         <SideNavLink href="/Icons/IconsPage" as="/icons">
           Icons
         </SideNavLink>
         <SideNavLink href="/Spacing/SpacingPage" as="/spacing">
           Spacing
         </SideNavLink>
+        <SideNavLink href="/Typography/TypographyPage" as="/typography">
+          Typography
+        </SideNavLink>
       </SideNavGroup>
 
-      <SideNavGroup title="Forms">
+      <SideNavGroup title="Layout">
+        <SideNavLink href="/Modal/ModalPage" as="/modal">
+          Modal
+        </SideNavLink>
+        <SideNavLink href="/Panel/PanelPage" as="/panel">
+          Panel
+        </SideNavLink>
+        <SideNavLink href="/Tabs/TabsPage" as="/tabs">
+          Tabs
+        </SideNavLink>
+      </SideNavGroup>
+
+      <SideNavGroup title="Actions &amp; Inputs">
+        <SideNavLink href="/Button/ButtonPage" as="/button">
+          Button
+        </SideNavLink>
+        <SideNavLink href="/Form/CheckboxPage" as="/form/checkbox">
+          Checkbox
+        </SideNavLink>
+        <SideNavLink href="/Dropdown/DropdownPage" as="/dropdown">
+          Dropdown
+        </SideNavLink>
         <SideNavLink href="/Form/FormPage" as="/form">
-          Overview
+          Form
         </SideNavLink>
         <SideNavLink href="/Form/InputPage" as="/form/input">
           Input
         </SideNavLink>
-        <SideNavLink href="/Form/CheckboxPage" as="/form/checkbox">
-          Checkbox
+        <SideNavLink href="/Link/LinkPage" as="/link">
+          Link
         </SideNavLink>
         <SideNavLink href="/Form/RadioPage" as="/form/radio">
           Radio
@@ -71,21 +99,6 @@ export const SideNav: React.FC = () => {
         </SideNavLink>
       </SideNavGroup>
 
-      <SideNavGroup title="Layout">
-        <SideNavLink href="/Modal/ModalPage" as="/modal">
-          Modal
-        </SideNavLink>
-        <SideNavLink href="/Panel/PanelPage" as="/panel">
-          Panel
-        </SideNavLink>
-        <SideNavLink href="/Tabs/TabsPage" as="/tabs">
-          Tabs
-        </SideNavLink>
-        <SideNavLink href="/Dropdown/DropdownPage" as="/dropdown">
-          Dropdown
-        </SideNavLink>
-      </SideNavGroup>
-
       <SideNavGroup title="Utilities">
         <SideNavLink href="/Box/BoxPage" as="/box">
           Box
@@ -101,9 +114,6 @@ export const SideNav: React.FC = () => {
         </SideNavLink>
         <SideNavLink href="/Utilities/PaddingPage" as="/utilities/padding">
           Padding
-        </SideNavLink>
-        <SideNavLink href="/Link/LinkPage" as="/link">
-          Link
         </SideNavLink>
       </SideNavGroup>
     </StyledFlex>

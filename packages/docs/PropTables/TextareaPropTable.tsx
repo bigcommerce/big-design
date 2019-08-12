@@ -1,7 +1,7 @@
-import { Link, Text } from '@bigcommerce/big-design';
+import { Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, PropTable } from '../components';
+import { Code, NextLink, PropTable } from '../components';
 
 export const TextareaPropTable: React.FC = () => (
   <PropTable>
@@ -31,12 +31,20 @@ export const TextareaDescriptionPropTable: React.FC = () => (
 
 export const TextareaErrorPropTable: React.FC = () => (
   <Text>
-    See <Link href="/form#error">Forms.Error</Link>.
+    See{' '}
+    <NextLink href="/Form/FormPage" as="/form#error">
+      Forms.Error
+    </NextLink>
+    .
   </Text>
 );
 
 export const TextareaLabelPropTable: React.FC = () => (
   <Text>
-    See <Link href="/form#label">Forms.Label</Link>.
+    See{' '}
+    <NextLink href="/Form/FormPage" as="/form#label">
+      Forms.Label
+    </NextLink>
+    .
   </Text>
 );

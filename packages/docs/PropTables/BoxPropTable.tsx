@@ -1,12 +1,22 @@
-import { Link } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { PropTable } from '../components';
+import { NextLink, PropTable } from '../components';
 
 export const BoxPropTable: React.FC = () => (
   <PropTable>
-    <PropTable.Prop name="backgroundColor" types={<Link href="/colors">Color</Link>}>
-      Sets the background color given a color name from our <Link href="/colors">palette</Link>.
+    <PropTable.Prop
+      name="backgroundColor"
+      types={
+        <NextLink href="/Colors/ColorsPage" as="/colors">
+          Color
+        </NextLink>
+      }
+    >
+      Sets the background color given a color name from our{' '}
+      <NextLink href="/Colors/ColorsPage" as="/colors">
+        palette
+      </NextLink>
+      .
     </PropTable.Prop>
     <PropTable.Prop name="shadow" types={['floating', 'raised']}>
       Determines the type of shadow to be applied.

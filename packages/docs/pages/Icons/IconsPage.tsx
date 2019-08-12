@@ -62,7 +62,6 @@ export default () => {
               borderRadius="normal"
               justifyContent="center"
               alignItems="center"
-              backgroundColor="white"
               padding="large"
             >
               <Icon size="xxxLarge" />

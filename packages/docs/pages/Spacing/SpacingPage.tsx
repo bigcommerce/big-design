@@ -1,12 +1,8 @@
-import { Box, Button, Flex, H0, H2, Link, Text } from '@bigcommerce/big-design';
-import { ThemeInterface } from '@bigcommerce/big-design-theme';
+import { Box, Button, Flex, H0, H2, Text } from '@bigcommerce/big-design';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
-import { Code, CodePreview } from '../../components';
-
-type Spacings = ThemeInterface['spacing'];
-type Spacing = keyof Spacings;
+import { CodePreview, NextLink } from '../../components';
 
 const BlueBox = styled(Box)(({ theme }) => ({
   backgroundColor: theme.colors.primary,
@@ -29,7 +25,14 @@ export default () => {
 
       <Text>
         Spacing can be used directly on certain properties that expect a size value, like{' '}
-        <Link href="/utilities/margin">Margin</Link> and <Link href="/utilities/padding">Padding</Link>.
+        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+          Margin
+        </NextLink>{' '}
+        and{' '}
+        <NextLink href="/Utilities/PaddingPage" as="/utilities/padding">
+          Padding
+        </NextLink>
+        .
       </Text>
 
       <CodePreview>

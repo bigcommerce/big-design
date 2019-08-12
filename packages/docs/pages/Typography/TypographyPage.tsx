@@ -1,7 +1,7 @@
 import { Box, Flex, H0, H1, H2, H3, H4, Link, Small, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, Collapsible } from '../../components';
+import { Code, CodePreview, Collapsible, NextLink } from '../../components';
 import { MarginPropTable, TypographyPropTable } from '../../PropTables';
 
 export default () => (
@@ -46,7 +46,11 @@ export default () => (
     <H2>Color</H2>
 
     <Text>
-      Choose any color from our <Link href="/colors">color pallete</Link> to style your text color.
+      Choose any color from our{' '}
+      <NextLink href="/Colors/ColorsPage" as="/colors">
+        color pallete
+      </NextLink>{' '}
+      to style your text color.
     </Text>
 
     <CodePreview>

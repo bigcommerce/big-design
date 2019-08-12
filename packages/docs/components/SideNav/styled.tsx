@@ -8,3 +8,14 @@ export const StyledFlex = styled(Flex)`
   position: sticky;
   top: 0;
 `;
+
+export const StyledLogo = styled.div`
+  cursor: pointer;
+  position: relative;
+`;
+
+export const StyledBadgeWrapper = styled.div`
+  bottom: -1rem;
+  position: absolute;
+  right: 0;
+`;
