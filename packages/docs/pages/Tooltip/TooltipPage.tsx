@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, H0, H1, H2, H4, Link, Text, Tooltip } from '@bigcommerce/big-design';
+import { Box, Button, Flex, Grid, H0, H1, H2, Link, Text, Tooltip } from '@bigcommerce/big-design';
 import { WarningIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
