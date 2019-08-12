@@ -11,8 +11,8 @@ import { SideNav } from '../components/SideNav';
 const theme = createTheme();
 
 const gridTemplate = `
-  "nav main" 1fr
-  / 210px 1fr;
+  ". nav main ." 1fr
+  / 1fr 210px minmax(min-content, 1000px) 1fr;
 `;
 
 export default class MyApp extends App {
@@ -40,7 +40,7 @@ export default class MyApp extends App {
           <>
             <GlobalStyles />
             <Grid gridTemplate={gridTemplate} backgroundColor="secondary10" gridGap="0" style={{ minHeight: '100%' }}>
-              <Grid.Item gridArea="nav" shadow="raised">
+              <Grid.Item gridArea="nav">
                 <SideNav />
               </Grid.Item>
               <Grid.Item

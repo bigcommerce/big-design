@@ -4,7 +4,7 @@ import { SideNavLink } from './SideNavLink';
 
 export const SideNav: React.FC = () => {
   return (
-    <StyledFlex flexDirection="column" padding="medium" paddingBottom="xxxLarge" backgroundColor="white">
+    <StyledFlex flexDirection="column" padding="medium" paddingBottom="xxxLarge">
       <img src={`${process.env.URL_PREFIX}/static/logo-with-text.svg`} alt="BigDesign Logo" />
 
       <SideNavGroup title="Foundation">
