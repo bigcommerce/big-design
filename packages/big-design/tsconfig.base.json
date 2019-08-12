@@ -4,9 +4,7 @@
     "declaration": true,
     "declarationDir": "dist",
     "declarationMap": true,
-    "jsx": "preserve",
-    "module": "esnext",
-    "target": "esnext",
+    "jsx": "preserve"
   },
   "includes": ["src"],
   "exclude": ["src/**/__tests__"]
