@@ -7,7 +7,7 @@ export const PaddingPropTable: React.FC = () => (
     <PropTable.Prop
       name="padding"
       types={
-        <NextLink href="/Utilities/PaddingPage" as="/utilities/padding">
+        <NextLink href="/Padding/PaddingPage" as="/padding">
           Padding
         </NextLink>
       }
@@ -17,7 +17,7 @@ export const PaddingPropTable: React.FC = () => (
     <PropTable.Prop
       name="paddingTop"
       types={
-        <NextLink href="/Utilities/PaddingPage" as="/utilities/padding">
+        <NextLink href="/Padding/PaddingPage" as="/padding">
           Padding
         </NextLink>
       }
@@ -27,7 +27,7 @@ export const PaddingPropTable: React.FC = () => (
     <PropTable.Prop
       name="paddingRight"
       types={
-        <NextLink href="/Utilities/PaddingPage" as="/utilities/padding">
+        <NextLink href="/Padding/PaddingPage" as="/padding">
           Padding
         </NextLink>
       }
@@ -37,7 +37,7 @@ export const PaddingPropTable: React.FC = () => (
     <PropTable.Prop
       name="paddingBottom"
       types={
-        <NextLink href="/Utilities/PaddingPage" as="/utilities/padding">
+        <NextLink href="/Padding/PaddingPage" as="/padding">
           Padding
         </NextLink>
       }
@@ -47,7 +47,7 @@ export const PaddingPropTable: React.FC = () => (
     <PropTable.Prop
       name="paddingLeft"
       types={
-        <NextLink href="/Utilities/PaddingPage" as="/utilities/padding">
+        <NextLink href="/Padding/PaddingPage" as="/padding">
           Padding
         </NextLink>
       }
@@ -57,7 +57,7 @@ export const PaddingPropTable: React.FC = () => (
     <PropTable.Prop
       name="paddingVertical"
       types={
-        <NextLink href="/Utilities/PaddingPage" as="/utilities/padding">
+        <NextLink href="/Padding/PaddingPage" as="/padding">
           Padding
         </NextLink>
       }
@@ -67,7 +67,7 @@ export const PaddingPropTable: React.FC = () => (
     <PropTable.Prop
       name="paddingHorizontal"
       types={
-        <NextLink href="/Utilities/PaddingPage" as="/utilities/padding">
+        <NextLink href="/Padding/PaddingPage" as="/padding">
           Padding
         </NextLink>
       }

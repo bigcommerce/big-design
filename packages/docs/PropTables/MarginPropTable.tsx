@@ -7,7 +7,7 @@ export const MarginPropTable: React.FC = () => (
     <PropTable.Prop
       name="margin"
       types={
-        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+        <NextLink href="/Margin/MarginPage" as="/margin">
           Margin
         </NextLink>
       }
@@ -17,7 +17,7 @@ export const MarginPropTable: React.FC = () => (
     <PropTable.Prop
       name="marginTop"
       types={
-        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+        <NextLink href="/Margin/MarginPage" as="/margin">
           Margin
         </NextLink>
       }
@@ -27,7 +27,7 @@ export const MarginPropTable: React.FC = () => (
     <PropTable.Prop
       name="marginRight"
       types={
-        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+        <NextLink href="/Margin/MarginPage" as="/margin">
           Margin
         </NextLink>
       }
@@ -37,7 +37,7 @@ export const MarginPropTable: React.FC = () => (
     <PropTable.Prop
       name="marginBottom"
       types={
-        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+        <NextLink href="/Margin/MarginPage" as="/margin">
           Margin
         </NextLink>
       }
@@ -47,7 +47,7 @@ export const MarginPropTable: React.FC = () => (
     <PropTable.Prop
       name="marginLeft"
       types={
-        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+        <NextLink href="/Margin/MarginPage" as="/margin">
           Margin
         </NextLink>
       }
@@ -57,7 +57,7 @@ export const MarginPropTable: React.FC = () => (
     <PropTable.Prop
       name="marginVertical"
       types={
-        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+        <NextLink href="/Margin/MarginPage" as="/margin">
           Margin
         </NextLink>
       }
@@ -67,7 +67,7 @@ export const MarginPropTable: React.FC = () => (
     <PropTable.Prop
       name="marginHorizontal"
       types={
-        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+        <NextLink href="/Margin/MarginPage" as="/margin">
           Margin
         </NextLink>
       }

@@ -27,7 +27,7 @@ export default () => (
 
     <Text>
       You can also specify paddings with an object to handle different paddings with different{' '}
-      <NextLink href="/Breakpoint/BreakpointPage" as="/utilities/breakpoints">
+      <NextLink href="/Breakpoint/BreakpointPage" as="/breakpoints">
         breakpoints
       </NextLink>
       . All values must be of{' '}
