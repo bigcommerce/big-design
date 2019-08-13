@@ -27,7 +27,20 @@ function getInitialCode(children: React.ReactNode): string {
 }
 
 function transformCode(code: string, noInline = false) {
-  return noInline ? '(' + code.replace('return', 'render') + ')()' : code;
+  if (!noInline) {
+    return code;
+  }
+
+  // Split code and make it an IIFE
+  const codeLines = ['(', ...code.split('\n'), ')()'];
+
+  return codeLines
+    .map(line =>
+      line.includes('return <')
+        ? line.replace('return', 'render(').replace('>;', '>);')
+        : line.replace('return', 'render'),
+    )
+    .join('\n');
 }
 
 export interface CodePreviewProps {
