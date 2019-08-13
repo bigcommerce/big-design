@@ -36,6 +36,9 @@
     "dist",
     "svgs"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@bigcommerce/big-design-theme": "^0.0.1"
   },
