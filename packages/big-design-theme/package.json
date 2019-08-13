@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design-theme",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": false,
   "sideEffects": false,
   "main": "dist/big-design-theme.cjs.js",
@@ -51,7 +51,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
-    "@bigcommerce/configs": "^0.5.0",
+    "@bigcommerce/configs": "^0.6.0",
     "@types/jest": "^24.0.16",
     "@types/styled-components": "^4.1.12",
     "babel-jest": "^24.5.0",

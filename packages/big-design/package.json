@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": false,
   "sideEffects": false,
   "main": "dist/big-design.cjs.js",
@@ -40,8 +40,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@bigcommerce/big-design-icons": "^0.0.1",
-    "@bigcommerce/big-design-theme": "^0.0.1",
+    "@bigcommerce/big-design-icons": "^0.1.0",
+    "@bigcommerce/big-design-theme": "^0.1.0",
     "@types/hoist-non-react-statics": "^3.3.0",
     "downshift": "^3.2.7",
     "hoist-non-react-statics": "^3.3.0",
@@ -60,7 +60,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
-    "@bigcommerce/configs": "^0.5.0",
+    "@bigcommerce/configs": "^0.6.0",
     "@testing-library/jest-dom": "^4.0.0",
     "@testing-library/react": "^8.0.7",
     "@types/jest": "^24.0.16",

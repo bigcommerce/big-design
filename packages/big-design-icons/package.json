@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design-icons",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": false,
   "sideEffects": false,
   "main": "dist/big-design-icons.cjs.js",
@@ -40,7 +40,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@bigcommerce/big-design-theme": "^0.0.1"
+    "@bigcommerce/big-design-theme": "^0.1.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -53,7 +53,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
-    "@bigcommerce/configs": "^0.5.0",
+    "@bigcommerce/configs": "^0.6.0",
     "@svgr/core": "^4.3.2",
     "@svgr/plugin-jsx": "^4.3.2",
     "@svgr/plugin-prettier": "^4.3.2",

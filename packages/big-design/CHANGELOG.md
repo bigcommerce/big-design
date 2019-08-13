@@ -3,6 +3,159 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.5.0...@bigcommerce/big-design@0.6.0) (2019-08-13)
+
+
+### Bug Fixes
+
+* use theme font props ([#62](https://github.com/bigcommerce/big-design/issues/62)) ([135bf65](https://github.com/bigcommerce/big-design/commit/135bf65))
+* **component:** dropdown will default to position bottom-start ([#71](https://github.com/bigcommerce/big-design/issues/71)) ([c0beb96](https://github.com/bigcommerce/big-design/commit/c0beb96))
+* **component:** prevent document scrolling when using arrow keys ([#124](https://github.com/bigcommerce/big-design/issues/124)) ([0892c7c](https://github.com/bigcommerce/big-design/commit/0892c7c))
+* **component:** prevent scroll bug in dropdown components ([15fb2dc](https://github.com/bigcommerce/big-design/commit/15fb2dc))
+* **component:** recenter List when Select is filtered ([fa4ac45](https://github.com/bigcommerce/big-design/commit/fa4ac45))
+* **component:** responsive grid wasn't working properly ([#155](https://github.com/bigcommerce/big-design/issues/155)) ([7b65856](https://github.com/bigcommerce/big-design/commit/7b65856))
+* **component:** select will reset text if value returns empty string ([#130](https://github.com/bigcommerce/big-design/issues/130)) ([f643436](https://github.com/bigcommerce/big-design/commit/f643436))
+* **docs:** restyle and rearrange sidenav ([#151](https://github.com/bigcommerce/big-design/issues/151)) ([1be86d1](https://github.com/bigcommerce/big-design/commit/1be86d1))
+* **theme:** issue with font sizes in createTheme ([#135](https://github.com/bigcommerce/big-design/issues/135)) ([313ff46](https://github.com/bigcommerce/big-design/commit/313ff46))
+
+
+### Features
+
+* **component:**  modal withBorder prop ([069cb09](https://github.com/bigcommerce/big-design/commit/069cb09))
+* **component:** add border-box to Box components and update tests ([#110](https://github.com/bigcommerce/big-design/issues/110)) ([597f71d](https://github.com/bigcommerce/big-design/commit/597f71d))
+* **component:** add button spacing in groups ([#117](https://github.com/bigcommerce/big-design/issues/117)) ([a93b1b0](https://github.com/bigcommerce/big-design/commit/a93b1b0))
+* **component:** add responsive breakpoints for Flex props ([#113](https://github.com/bigcommerce/big-design/issues/113)) ([335c640](https://github.com/bigcommerce/big-design/commit/335c640))
+* **component:** add spacing between buttons when used in groups ([#105](https://github.com/bigcommerce/big-design/issues/105)) ([cb89c10](https://github.com/bigcommerce/big-design/commit/cb89c10))
+* **component:** color prop for typography components ([#107](https://github.com/bigcommerce/big-design/issues/107)) ([918f260](https://github.com/bigcommerce/big-design/commit/918f260))
+* **component:** decrease bottom margin on Panels ([#111](https://github.com/bigcommerce/big-design/issues/111)) ([2fd54e6](https://github.com/bigcommerce/big-design/commit/2fd54e6))
+* **component:** remove custom spinner prop on buttons ([#80](https://github.com/bigcommerce/big-design/issues/80)) ([f4efc55](https://github.com/bigcommerce/big-design/commit/f4efc55))
+* **component:** remove dropdown actions ([#104](https://github.com/bigcommerce/big-design/issues/104)) ([9e00e61](https://github.com/bigcommerce/big-design/commit/9e00e61))
+* **component:** remove Spinner component ([1527559](https://github.com/bigcommerce/big-design/commit/1527559))
+* **component:** rename elevation to shadow ([ee215f0](https://github.com/bigcommerce/big-design/commit/ee215f0))
+* **component:** rename GlobalStyle to GlobalStyles ([#126](https://github.com/bigcommerce/big-design/issues/126)) ([e7a231e](https://github.com/bigcommerce/big-design/commit/e7a231e))
+* **component:** rename Lozenge to Badge ([#118](https://github.com/bigcommerce/big-design/issues/118)) ([246a898](https://github.com/bigcommerce/big-design/commit/246a898))
+* **component:** tooltip api change ([6c941bf](https://github.com/bigcommerce/big-design/commit/6c941bf))
+* **component:** tooltip update styles ([733c419](https://github.com/bigcommerce/big-design/commit/733c419))
+* **component:** update badge padding and custom font size ([8da571d](https://github.com/bigcommerce/big-design/commit/8da571d))
+* **component:** update error state handling on form component ([#129](https://github.com/bigcommerce/big-design/issues/129)) ([e665479](https://github.com/bigcommerce/big-design/commit/e665479))
+* **component:** update grid component with responsive props ([#131](https://github.com/bigcommerce/big-design/issues/131)) ([1206e60](https://github.com/bigcommerce/big-design/commit/1206e60))
+* **component:** update tab styles to match latest designs ([e7a21b4](https://github.com/bigcommerce/big-design/commit/e7a21b4))
+* **component:** use new icons package ([e522f97](https://github.com/bigcommerce/big-design/commit/e522f97))
+* **component:** use new theme package ([4da89f0](https://github.com/bigcommerce/big-design/commit/4da89f0))
+* **docs:** use next instead of storybook ([#122](https://github.com/bigcommerce/big-design/issues/122)) ([986ebd6](https://github.com/bigcommerce/big-design/commit/986ebd6))
+* **icons:** initial package setup ([#89](https://github.com/bigcommerce/big-design/issues/89)) ([acfe8fe](https://github.com/bigcommerce/big-design/commit/acfe8fe))
+* **story:** code preview component ([#59](https://github.com/bigcommerce/big-design/issues/59)) ([12108bf](https://github.com/bigcommerce/big-design/commit/12108bf))
+* add disabled prop to select ([#92](https://github.com/bigcommerce/big-design/issues/92)) ([f889722](https://github.com/bigcommerce/big-design/commit/f889722))
+* add prop table component to storybook ([#61](https://github.com/bigcommerce/big-design/issues/61)) ([2c9087c](https://github.com/bigcommerce/big-design/commit/2c9087c))
+* align customValidity with existence of error prop ([#158](https://github.com/bigcommerce/big-design/issues/158)) ([6af2b03](https://github.com/bigcommerce/big-design/commit/6af2b03))
+* remove readme from stories ([#65](https://github.com/bigcommerce/big-design/issues/65)) ([f266ebd](https://github.com/bigcommerce/big-design/commit/f266ebd))
+* transform icon names and update exports ([#66](https://github.com/bigcommerce/big-design/issues/66)) ([e1d7d73](https://github.com/bigcommerce/big-design/commit/e1d7d73))
+
+
+### BREAKING CHANGES
+
+* **component:** Tooltip now uses a `trigger` prop and uses `children`
+as the content.
+
+Old:
+```jsx
+<Tooltip content="Tooltip Content" placement="right">
+  <Button>Button</Button>
+</Tooltip>
+```
+
+New:
+```jsx
+<Tooltip trigger={<Button>Hover</Button>} placement="right">
+  Tooltip Content
+</Tooltip>
+```
+* **component:** theme now lives in its own package
+`@bigcommerce/big-design-theme` if you are using `createTheme`,
+`addValues`, `defaultTheme`, `remCalc`, `ThemeInterface` you will now
+need to import it from the new package.
+* **component:** Changed Grid and Grid.Item props to be more verbose (e.g. areas -> gridAreas)
+* **component:** rename `elevation` props to `shadow`
+* **component:** `GlobalStyle` is now `GlobalStyles`
+* **component:** Form.Row components are renamed to Form.Group
+
+* feat: wip input error states
+
+* feat: improved error handling
+
+* feat: add inline documentation to Group
+
+* feat: rebase and fix small issues
+
+* test: update tests for feature
+
+* fix: update PR comments
+* **component:** Flex component flexDirection prop now defaults to responsive object. Flex component props renamed to be more contextual.
+
+If you had direction="row" this will now set your all breakpoints to flex-direction: row instead of column for mobile/row for desktop.
+
+Flex:
+direction -> flexDirection
+wrap -> flexWrap
+
+Flex.Item:
+basis -> flexBasis
+grow -> flexGrow
+order -> flexOrder
+shrink -> flexShrink
+
+* feat(component): add responsive breakpoints for Flex props
+
+* refactor(component): change flex prop names
+
+* refactor: change variable name to be more descriptive
+
+* refactor: move flexed item props into same file
+
+* refactor: moved locations of new flex changes
+
+* refactor: rename variables
+
+* feat: resolve PR comments
+
+* fix: remove unused imports
+
+* fix: remove unused argument
+* **component:** Buttons now have spacing between each other when used in groups.
+
+If you added margin to add spacing between buttons, you will have to audit those spots in your codebase.
+
+* feat(component): add back in button spacing
+
+* feat: refine button spacing, update tests, update stories
+
+* fix: update component to generate less css
+* **component:** Spinner component no longer exists, ProgressCircle can
+be used in some usecases.
+* **component:** all icons got moved to `@bigcommerce/big-design-icons`
+package and some of them were renamed.
+* **component:** Lozenge has been renamed to Badge. If you were using the Lozenge component, you will need to change all references to 'badge'
+
+* docs: add base doc files
+
+* docs(story): finish lozenge documentation
+
+* feat(component): update lozenge to badge
+
+* feat(component): remove primary variant
+
+* test(component): add badge tests
+
+* fix(component): fix import in Badge spec
+
+* feat(component): resolve PR comments
+
+* feat(component): add tests for background color and resolve PR comments
+
+
+
+
+
 # [0.5.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.4.0...@bigcommerce/big-design@0.5.0) (2019-07-15)
 
 

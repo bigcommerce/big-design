@@ -1,0 +1,23 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 0.1.0 (2019-08-13)
+
+
+### Bug Fixes
+
+* **theme:** export missing properties ([f439df0](https://github.com/bigcommerce/big-design/commit/f439df0))
+* **theme:** issue with font sizes in createTheme ([#135](https://github.com/bigcommerce/big-design/issues/135)) ([313ff46](https://github.com/bigcommerce/big-design/commit/313ff46))
+
+
+### Features
+
+* **theme:** initial package setup ([f734dfb](https://github.com/bigcommerce/big-design/commit/f734dfb))
+* **theme:** rename elevation to shadow ([659c6ad](https://github.com/bigcommerce/big-design/commit/659c6ad))
+
+
+### BREAKING CHANGES
+
+* **theme:** `elevation` is now called `shadow`
