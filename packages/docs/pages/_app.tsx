@@ -5,8 +5,7 @@ import Head from 'next/head';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { StoryWrapper } from '../components';
-import { SideNav } from '../components/SideNav';
+import { BetaRibbon, SideNav, StoryWrapper } from '../components';
 
 const theme = createTheme();
 
@@ -34,6 +33,10 @@ export default class MyApp extends App {
             #__next {
               height: 100%;
             }
+
+            #__next {
+              position: relative;
+            }
           `}
         </style>
         <ThemeProvider theme={theme}>
@@ -54,6 +57,7 @@ export default class MyApp extends App {
                 </StoryWrapper>
               </Grid.Item>
             </Grid>
+            <BetaRibbon />
           </>
         </ThemeProvider>
       </Container>

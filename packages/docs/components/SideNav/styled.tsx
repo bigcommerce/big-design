@@ -11,11 +11,9 @@ export const StyledFlex = styled(Flex)`
 
 export const StyledLogo = styled.div`
   cursor: pointer;
-  position: relative;
-`;
 
-export const StyledBadgeWrapper = styled.div`
-  bottom: -1rem;
-  position: absolute;
-  right: 0;
+  img {
+    margin: 0 auto;
+    max-width: 100%;
+  }
 `;

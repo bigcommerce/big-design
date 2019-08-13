@@ -1,7 +1,7 @@
 import { Badge } from '@bigcommerce/big-design';
 import Link from 'next/link';
 
-import { StyledBadgeWrapper, StyledFlex, StyledLogo } from './styled';
+import { StyledFlex, StyledLogo } from './styled';
 import { SideNavGroup } from './SideNavGroup';
 import { SideNavLink } from './SideNavLink';
 
@@ -10,14 +10,7 @@ export const SideNav: React.FC = () => {
     <StyledFlex flexDirection="column" padding="medium" paddingBottom="xxxLarge">
       <Link href="/GettingStarted/GettingStartedPage" as="/">
         <StyledLogo>
-          <img
-            src={`${process.env.URL_PREFIX}/static/logo-with-text.svg`}
-            alt="BigDesign Logo"
-            style={{ maxWidth: '100%', margin: '0 auto' }}
-          />
-          <StyledBadgeWrapper>
-            <Badge variant="success">Beta</Badge>
-          </StyledBadgeWrapper>
+          <img src={`${process.env.URL_PREFIX}/static/logo-with-text.svg`} alt="BigDesign Logo" />
         </StyledLogo>
       </Link>
 
