@@ -51,7 +51,7 @@ export const SideNav: React.FC = () => {
         <SideNavLink href="/Button/ButtonPage" as="/button">
           Button
         </SideNavLink>
-        <SideNavLink href="/Form/CheckboxPage" as="/form/checkbox">
+        <SideNavLink href="/Checkbox/CheckboxPage" as="/checkbox">
           Checkbox
         </SideNavLink>
         <SideNavLink href="/Dropdown/DropdownPage" as="/dropdown">
@@ -60,19 +60,19 @@ export const SideNav: React.FC = () => {
         <SideNavLink href="/Form/FormPage" as="/form">
           Form
         </SideNavLink>
-        <SideNavLink href="/Form/InputPage" as="/form/input">
+        <SideNavLink href="/Input/InputPage" as="/input">
           Input
         </SideNavLink>
         <SideNavLink href="/Link/LinkPage" as="/link">
           Link
         </SideNavLink>
-        <SideNavLink href="/Form/RadioPage" as="/form/radio">
+        <SideNavLink href="/Radio/RadioPage" as="/radio">
           Radio
         </SideNavLink>
-        <SideNavLink href="/Form/SelectPage" as="/form/select">
+        <SideNavLink href="/Select/SelectPage" as="/select">
           Select
         </SideNavLink>
-        <SideNavLink href="/Form/TextareaPage" as="/form/textarea">
+        <SideNavLink href="/Textarea/TextareaPage" as="/textarea">
           Textarea
         </SideNavLink>
       </SideNavGroup>
@@ -81,10 +81,10 @@ export const SideNav: React.FC = () => {
         <SideNavLink href="/Badge/BadgePage" as="/badge">
           Badge
         </SideNavLink>
-        <SideNavLink href="/Progress/ProgressBarPage" as="/progress/bar">
+        <SideNavLink href="/Progress/ProgressBarPage" as="/progress-bar">
           Progress Bar
         </SideNavLink>
-        <SideNavLink href="/Progress/ProgressCirclePage" as="/progress/circle">
+        <SideNavLink href="/Progress/ProgressCirclePage" as="/progress-circle">
           Progress Circle
         </SideNavLink>
         <SideNavLink href="/Tooltip/TooltipPage" as="/tooltip">
@@ -105,10 +105,10 @@ export const SideNav: React.FC = () => {
         <SideNavLink href="/Grid/GridPage" as="/grid">
           Grid
         </SideNavLink>
-        <SideNavLink href="/Utilities/MarginPage" as="/utilities/margin">
+        <SideNavLink href="/Margin/MarginPage" as="/margin">
           Margin
         </SideNavLink>
-        <SideNavLink href="/Utilities/PaddingPage" as="/utilities/padding">
+        <SideNavLink href="/Padding/PaddingPage" as="/padding">
           Padding
         </SideNavLink>
       </SideNavGroup>

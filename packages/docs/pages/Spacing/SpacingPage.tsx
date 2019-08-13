@@ -25,11 +25,11 @@ export default () => {
 
       <Text>
         Spacing can be used directly on certain properties that expect a size value, like{' '}
-        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+        <NextLink href="/Margin/MarginPage" as="/margin">
           Margin
         </NextLink>{' '}
         and{' '}
-        <NextLink href="/Utilities/PaddingPage" as="/utilities/padding">
+        <NextLink href="/Padding/PaddingPage" as="/padding">
           Padding
         </NextLink>
         .
