@@ -9,8 +9,8 @@ export const StyledLink = styled.a<LinkProps>`
   ${withMargins()};
 
   color: ${({ theme }) => theme.colors.primary};
-  text-decoration: none;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 StyledLink.defaultProps = { theme: defaultTheme };

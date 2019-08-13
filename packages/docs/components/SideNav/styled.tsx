@@ -8,3 +8,12 @@ export const StyledFlex = styled(Flex)`
   position: sticky;
   top: 0;
 `;
+
+export const StyledLogo = styled.div`
+  cursor: pointer;
+
+  img {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+`;

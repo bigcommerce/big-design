@@ -3,9 +3,9 @@
 exports[`render link 1`] = `
 .c0 {
   color: #3C64F4;
+  cursor: pointer;
   -webkit-text-decoration: none;
   text-decoration: none;
-  cursor: pointer;
 }
 
 <a

@@ -20,17 +20,9 @@ export class List extends React.PureComponent<ListProps> {
   static Item = ListItem;
 
   render() {
-    const { ordered } = this.props;
+    const { children, ordered } = this.props;
     const ElementType = ordered ? StyledOrderedList : StyledUnorderedList;
 
-    return <ElementType {...this.props}>{this.renderChildren()}</ElementType>;
-  }
-
-  private renderChildren() {
-    const { children } = this.props;
-
-    return React.Children.map(children, child => {
-      return React.isValidElement(child) && (child.type === List.Item || child.type === List) ? child : null;
-    });
+    return <ElementType {...this.props}>{children}</ElementType>;
   }
 }

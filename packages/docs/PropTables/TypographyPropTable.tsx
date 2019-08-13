@@ -1,12 +1,23 @@
-import { Link } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { PropTable } from '../components';
+import { NextLink, PropTable } from '../components';
 
 export const TypographyPropTable: React.FC = () => (
   <PropTable>
-    <PropTable.Prop name="color" types={<Link href="/colors">Color</Link>} defaults="secondary70">
-      Sets the text color given a color name from our <Link href="/colors">palette</Link>.
+    <PropTable.Prop
+      name="color"
+      types={
+        <NextLink href="/Colors/ColorsPage" as="/colors">
+          Color
+        </NextLink>
+      }
+      defaults="secondary70"
+    >
+      Sets the text color given a color name from our{' '}
+      <NextLink href="/Colors/ColorsPage" as="/colors">
+        palette
+      </NextLink>
+      .
     </PropTable.Prop>
     <PropTable.Prop name="ellipse" types="boolean">
       Controls whether the text will concat and display ellipse... on overflow.

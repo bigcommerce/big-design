@@ -1,25 +1,17 @@
-import Link from 'next/link';
+import { Link } from '@bigcommerce/big-design';
 import styled from 'styled-components';
 
-const StyledLink = styled.a`
-  display: block;
-  color: ${({ theme }) => theme.colors.primary};
-  cursor: pointer;
-  margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
+import { List, NextLink } from '../../';
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.secondary60};
-  }
+const StyledLink = styled(Link)`
+  display: 'inline-block';
+  line-height: ${({ theme }) => theme.lineHeight.medium};
 `;
 
-function getLinkAs(as: string = '') {
-  const prefix = process.env.URL_PREFIX || '';
-
-  return prefix + as;
-}
-
 export const SideNavLink: React.FC<{ href: string; as?: string }> = props => (
-  <Link href={props.href} as={getLinkAs(props.as)}>
-    <StyledLink>{props.children}</StyledLink>
-  </Link>
+  <List.Item>
+    <NextLink href={props.href} as={props.as}>
+      <StyledLink>{props.children}</StyledLink>
+    </NextLink>
+  </List.Item>
 );

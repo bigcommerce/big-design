@@ -1,29 +1,77 @@
-import { Link } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { PropTable } from '../components';
+import { NextLink, PropTable } from '../components';
 
 export const MarginPropTable: React.FC = () => (
   <PropTable>
-    <PropTable.Prop name="margin" types={<Link href="/utilities/margin">Margin</Link>}>
+    <PropTable.Prop
+      name="margin"
+      types={
+        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+          Margin
+        </NextLink>
+      }
+    >
       Determines the margin to be applied.
     </PropTable.Prop>
-    <PropTable.Prop name="marginTop" types={<Link href="/utilities/margin">Margin</Link>}>
+    <PropTable.Prop
+      name="marginTop"
+      types={
+        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+          Margin
+        </NextLink>
+      }
+    >
       Determines the top margin to be applied.
     </PropTable.Prop>
-    <PropTable.Prop name="marginRight" types={<Link href="/utilities/margin">Margin</Link>}>
+    <PropTable.Prop
+      name="marginRight"
+      types={
+        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+          Margin
+        </NextLink>
+      }
+    >
       Determines the right margin to be applied.
     </PropTable.Prop>
-    <PropTable.Prop name="marginBottom" types={<Link href="/utilities/margin">Margin</Link>}>
+    <PropTable.Prop
+      name="marginBottom"
+      types={
+        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+          Margin
+        </NextLink>
+      }
+    >
       Determines the bottom margin to be applied.
     </PropTable.Prop>
-    <PropTable.Prop name="marginLeft" types={<Link href="/utilities/margin">Margin</Link>}>
+    <PropTable.Prop
+      name="marginLeft"
+      types={
+        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+          Margin
+        </NextLink>
+      }
+    >
       Determines the left margin to be applied.
     </PropTable.Prop>
-    <PropTable.Prop name="marginVertical" types={<Link href="/utilities/margin">Margin</Link>}>
+    <PropTable.Prop
+      name="marginVertical"
+      types={
+        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+          Margin
+        </NextLink>
+      }
+    >
       Determines the top and bottom margin to be applied.
     </PropTable.Prop>
-    <PropTable.Prop name="marginHorizontal" types={<Link href="/utilities/margin">Margin</Link>}>
+    <PropTable.Prop
+      name="marginHorizontal"
+      types={
+        <NextLink href="/Utilities/MarginPage" as="/utilities/margin">
+          Margin
+        </NextLink>
+      }
+    >
       Determines the left and right margin to be applied.
     </PropTable.Prop>
   </PropTable>
