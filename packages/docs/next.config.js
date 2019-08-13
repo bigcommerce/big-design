@@ -18,6 +18,7 @@ module.exports = {
     '/': { page: '/GettingStarted/GettingStartedPage' },
     '/badge': { page: '/Badge/BadgePage' },
     '/box': { page: '/Box/BoxPage' },
+    '/breakpoints': { page: '/Breakpoints/BreakpointsPage' },
     '/button': { page: '/Button/ButtonPage' },
     '/colors': { page: '/Colors/ColorsPage' },
     '/dropdown': { page: '/Dropdown/DropdownPage' },

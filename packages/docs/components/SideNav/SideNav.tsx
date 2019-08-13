@@ -96,6 +96,9 @@ export const SideNav: React.FC = () => {
         <SideNavLink href="/Box/BoxPage" as="/box">
           Box
         </SideNavLink>
+        <SideNavLink href="/Breakpoints/BreakpointsPage" as="/breakpoints">
+          Breakpoints
+        </SideNavLink>
         <SideNavLink href="/Flex/FlexPage" as="/flex">
           Flex
         </SideNavLink>
