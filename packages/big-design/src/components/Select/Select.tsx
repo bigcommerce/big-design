@@ -177,9 +177,10 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     const ariaLabelledBy = label ? { 'aria-labelledby': this.getLabelId() } : {};
 
     if (this.inputRef) {
+      const hasError = Boolean(error);
       const errorMessage = typeof error === 'string' ? error : 'Invalid input';
 
-      this.inputRef.setCustomValidity(!!error ? errorMessage : '');
+      this.inputRef.setCustomValidity(hasError ? errorMessage : '');
     }
 
     return (
