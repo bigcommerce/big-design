@@ -35,7 +35,7 @@ export default () => {
             }
           `;
 
-          return <StyledBox backgroundColor="primary20" />;
+          return <StyledBox backgroundColor="secondary20" />;
         }}
         {/* jsx-to-string:end */}
       </CodePreview>
@@ -56,7 +56,7 @@ export default () => {
             }
           `;
 
-          return <StyledBox backgroundColor="primary20" />;
+          return <StyledBox backgroundColor="secondary20" />;
         }}
         {/* jsx-to-string:end */}
       </CodePreview>

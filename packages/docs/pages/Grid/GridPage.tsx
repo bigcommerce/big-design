@@ -5,7 +5,7 @@ import { Code, CodePreview } from '../../components';
 import { GridItemPropTable, GridPropTable } from '../../PropTables';
 
 const ExampleBox: React.FC = ({ children }) => (
-  <Box backgroundColor="secondary10" border="box" padding="small" style={{ height: '100%' }}>
+  <Box backgroundColor="secondary20" border="box" padding="small" style={{ height: '100%' }}>
     {children}
   </Box>
 );

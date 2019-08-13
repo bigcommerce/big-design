@@ -6,7 +6,7 @@ import { FlexItemPropTable, FlexPropTable, MarginPropTable, PaddingPropTable } f
 
 const ExampleBox: React.FC<{ vertical?: boolean }> = ({ children, vertical }) => (
   <Box
-    backgroundColor="secondary10"
+    backgroundColor="secondary20"
     border="box"
     marginVertical={vertical ? 'xSmall' : 'none'}
     marginHorizontal={vertical ? 'none' : 'xSmall'}

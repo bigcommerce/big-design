@@ -31,7 +31,9 @@ export default () => {
 
       <CodePreview>
         {/* jsx-to-string:start */}
-        <Box backgroundColor="primary20">Box example</Box>
+        <Box backgroundColor="secondary20" padding="medium">
+          Box example
+        </Box>
         {/* jsx-to-string:end */}
       </CodePreview>
 
@@ -41,7 +43,8 @@ export default () => {
         {/* jsx-to-string:start */}
         {function Example() {
           const StyledBox = styled(Box)(({ theme }) => ({
-            backgroundColor: theme.colors.primary20,
+            backgroundColor: theme.colors.secondary20,
+            padding: theme.spacing.medium,
           }));
 
           return <StyledBox>StyledBox Example</StyledBox>;

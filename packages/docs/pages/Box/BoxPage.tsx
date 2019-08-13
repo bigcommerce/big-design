@@ -13,7 +13,7 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Box backgroundColor="primary20" border="box" borderRadius="normal" padding="medium">
+      <Box backgroundColor="secondary20" border="box" borderRadius="normal" padding="medium">
         Boxed content
       </Box>
       {/* jsx-to-string:end */}
@@ -42,10 +42,10 @@ export default () => (
       <CodePreview>
         {/* jsx-to-string:start */}
         <Flex justifyContent="space-around">
-          <Box backgroundColor="primary20" padding="xxLarge" shadow="floating">
+          <Box backgroundColor="secondary10" padding="xxLarge" shadow="floating">
             Floating
           </Box>
-          <Box backgroundColor="primary20" padding="xxLarge" shadow="raised">
+          <Box backgroundColor="secondary10" padding="xxLarge" shadow="raised">
             Raised
           </Box>
         </Flex>
@@ -68,7 +68,7 @@ export default () => (
           `;
 
           return (
-            <StyledBox backgroundColor="primary20" border="box" borderRadius="circle" padding="medium">
+            <StyledBox backgroundColor="secondary20" border="box" borderRadius="circle" padding="medium">
               BC
             </StyledBox>
           );
