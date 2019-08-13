@@ -44,7 +44,7 @@
     "@bigcommerce/configs": "^0.5.0",
     "@types/styled-components": "^4.1.12",
     "babel-plugin-styled-components": "^1.10.6",
-    "jsx-to-string-loader": "^1.1.2",
+    "jsx-to-string-loader": "^1.2.0",
     "prettier": "^1.16.4",
     "push-dir": "^0.4.1",
     "tslint": "^5.14.0",
