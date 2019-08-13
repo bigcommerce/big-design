@@ -19,7 +19,7 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Box padding="medium" backgroundColor="primary20">
+      <Box padding="medium" backgroundColor="secondary20">
         Example
       </Box>
       {/* jsx-to-string:end */}
@@ -39,7 +39,7 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Box padding={{ mobile: 'none', tablet: 'medium', desktop: 'xLarge' }} backgroundColor="primary20">
+      <Box padding={{ mobile: 'none', tablet: 'medium', desktop: 'xLarge' }} backgroundColor="secondary20">
         Example
       </Box>
       {/* jsx-to-string:end */}
