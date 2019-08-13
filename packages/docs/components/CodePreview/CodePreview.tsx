@@ -26,13 +26,18 @@ function getInitialCode(children: React.ReactNode): string {
   return children;
 }
 
+function transformCode(code: string, noInline = false) {
+  return noInline ? '(' + code.replace('return', 'render') + ')()' : code;
+}
+
 export interface CodePreviewProps {
   scope?: { [key: string]: any };
   language?: Language;
+  noInline?: boolean;
 }
 
 export const CodePreview: React.FC<CodePreviewProps> = props => {
-  const { children, language } = props;
+  const { children, language, noInline } = props;
   const initialCode = getInitialCode(children);
   const [code, setCode] = useState(initialCode);
   const { editorTheme } = useContext(CodeEditorThemeContext);
@@ -40,7 +45,14 @@ export const CodePreview: React.FC<CodePreviewProps> = props => {
 
   return (
     <BigDesign.Box border="box" marginBottom="xxLarge">
-      <LiveProvider code={code} scope={scope} theme={editorTheme} language={language}>
+      <LiveProvider
+        code={code}
+        scope={scope}
+        theme={editorTheme}
+        language={language}
+        transformCode={codeToTransform => transformCode(codeToTransform, noInline)}
+        noInline={noInline}
+      >
         <BigDesign.Box padding="medium" backgroundColor="white" borderBottom="box">
           <LivePreview />
         </BigDesign.Box>
