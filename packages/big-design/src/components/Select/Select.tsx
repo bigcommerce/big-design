@@ -176,6 +176,13 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     const ariaControls = this.state.isOpen ? { 'aria-controls': this.getSelectId() } : {};
     const ariaLabelledBy = label ? { 'aria-labelledby': this.getLabelId() } : {};
 
+    if (this.inputRef) {
+      const hasError = Boolean(error);
+      const errorMessage = typeof error === 'string' ? error : 'Invalid input';
+
+      this.inputRef.setCustomValidity(hasError ? errorMessage : '');
+    }
+
     return (
       <Reference innerRef={node => (this.inputRef = node as HTMLInputElement)}>
         {({ ref }) => (

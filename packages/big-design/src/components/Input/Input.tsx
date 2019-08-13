@@ -39,7 +39,7 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
         {this.renderDescription()}
         <StyledInputWrapper>
           {this.renderIconLeft()}
-          <StyledInput {...props} id={id} ref={forwardedRef} />
+          <StyledInput {...props} onChange={this.onInputChange} id={id} ref={forwardedRef} />
           {this.renderIconRight()}
         </StyledInputWrapper>
       </div>
@@ -51,6 +51,17 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
 
     return id ? id : this.uniqueId;
   }
+
+  private onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const hasError = Boolean(this.props.error);
+    const errorMessage = typeof this.props.error === 'string' ? this.props.error : 'Invalid input';
+
+    event.target.setCustomValidity(hasError ? errorMessage : '');
+
+    if (typeof this.props.onChange === 'function') {
+      this.props.onChange(event);
+    }
+  };
 
   private renderDescription() {
     const { description } = this.props;

@@ -1,5 +1,5 @@
 import { AddIcon } from '@bigcommerce/big-design-icons';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 
@@ -206,4 +206,35 @@ test('renders all together', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
+});
+
+test('is invalid when required and has no value', () => {
+  const { getByLabelText } = render(<Input label="Label" description="This is a description" required />);
+
+  const input = getByLabelText('Label') as HTMLInputElement;
+
+  expect(input.checkValidity()).toEqual(false);
+});
+
+test('is valid when required and has a value', () => {
+  const { getByLabelText } = render(
+    <Input label="Label" value="Hello world" description="This is a description" required />,
+  );
+
+  const input = getByLabelText('Label') as HTMLInputElement;
+
+  expect(input.checkValidity()).toEqual(true);
+});
+
+test('it is invalid when it was an error', () => {
+  const { getByLabelText } = render(
+    <Input label="Label" error="Some error" description="This is a description" required />,
+  );
+  const input = getByLabelText('Label') as HTMLInputElement;
+
+  expect(input.checkValidity()).toEqual(false);
+
+  fireEvent.change(input, { target: { value: 'Some new value ' } });
+
+  expect(input.checkValidity()).toEqual(false);
 });
