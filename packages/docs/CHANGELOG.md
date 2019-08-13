@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.6.0...@bigcommerce/docs@0.6.1) (2019-08-13)
+
+
+### Features
+
+* **docs:** flatten file structure and all links ([#159](https://github.com/bigcommerce/big-design/issues/159)) ([7f7c481](https://github.com/bigcommerce/big-design/commit/7f7c481))
+
+
+
+
+
 # 0.6.0 (2019-08-13)
 
 

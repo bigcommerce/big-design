@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.6.0...@bigcommerce/big-design@0.6.1) (2019-08-13)
+
+
+### Bug Fixes
+
+* **component:** bug with inputs rendering error icon ([#161](https://github.com/bigcommerce/big-design/issues/161)) ([1dc182b](https://github.com/bigcommerce/big-design/commit/1dc182b))
+
+
+
+
+
 # [0.6.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.5.0...@bigcommerce/big-design@0.6.0) (2019-08-13)
 
 
