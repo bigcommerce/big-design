@@ -41,7 +41,7 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
           {this.renderIconLeft()}
           <StyledInput
             {...props}
-            onChange={e => this.onInputChange(e, !!props.error, props.onChange)}
+            onChange={e => this.onInputChange(e, props.error, props.onChange)}
             id={id}
             ref={forwardedRef}
           />
@@ -57,8 +57,15 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps> {
     return id ? id : this.uniqueId;
   }
 
-  private onInputChange(e: React.ChangeEvent<HTMLInputElement>, hasError: boolean, callback: InputProps['onChange']) {
-    e.target.setCustomValidity(hasError ? 'Invalid' : '');
+  private onInputChange(
+    e: React.ChangeEvent<HTMLInputElement>,
+    error: InputProps['error'],
+    callback: InputProps['onChange'],
+  ) {
+    const hasError = !!error;
+    const errorMessage = typeof error === 'string' ? error : 'Invalid input';
+
+    e.target.setCustomValidity(hasError ? errorMessage : '');
 
     if (callback) {
       callback(e);
