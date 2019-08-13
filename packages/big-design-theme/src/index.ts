@@ -3,7 +3,6 @@ import { themeOptions, ThemeOptions } from './options';
 import { createBorder, createBorderRadius, Border, BorderRadius } from './system/border';
 import { breakpoints, breakpointValues, Breakpoints, BreakpointValues } from './system/breakpoints';
 import { colors, Colors } from './system/colors';
-import { display, Display } from './system/display';
 import * as keyframes from './system/keyframes';
 import { createLineHeight, LineHeight } from './system/line-height';
 import { shadow, Shadow } from './system/shadow';
@@ -20,7 +19,6 @@ export interface ThemeInterface {
   breakpointValues: BreakpointValues;
   breakpoints: Breakpoints;
   colors: Colors;
-  display: Display;
   helpers: Helpers;
   keyframes: typeof keyframes;
   lineHeight: LineHeight;
@@ -39,7 +37,6 @@ export const createTheme = (customOptions: Partial<ThemeOptions> = {}): ThemeInt
     breakpointValues,
     breakpoints,
     colors,
-    display,
     helpers: createHelpers(),
     keyframes,
     lineHeight: createLineHeight(),

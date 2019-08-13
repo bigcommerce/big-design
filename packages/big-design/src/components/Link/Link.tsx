@@ -12,6 +12,6 @@ interface PrivateProps {
 
 const StyleableLink: React.FunctionComponent<LinkProps & PrivateProps> = props => <StyledLink {...props} />;
 
-export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(({ style, ...props }, ref) => (
+export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (
   <StyleableLink {...props} forwardedRef={ref} />
 ));

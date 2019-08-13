@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { List, NextLink } from '../../';
 
 const StyledLink = styled(Link)`
-  display: ${({ theme }) => theme.display.inlineBlock};
+  display: 'inline-block';
   line-height: ${({ theme }) => theme.lineHeight.medium};
 `;
 

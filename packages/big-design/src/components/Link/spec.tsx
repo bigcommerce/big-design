@@ -10,12 +10,13 @@ test('render link', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('does not forward styles', () => {
+test('forwards styles', () => {
   const { container } = render(
     <Link href="#" className="test" style={{ background: 'red' }}>
       Link
     </Link>,
   );
 
-  expect(container.firstChild).not.toHaveStyle('background: red');
+  expect(container.firstChild).toHaveClass('test');
+  expect(container.firstChild).toHaveStyle('background: red');
 });
