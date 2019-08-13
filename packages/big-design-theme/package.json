@@ -35,6 +35,9 @@
       "git add"
     ]
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "polished": "^3.0.3"
   },

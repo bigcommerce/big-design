@@ -36,6 +36,9 @@
       "git add"
     ]
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@bigcommerce/big-design-icons": "^0.0.1",
     "@bigcommerce/big-design-theme": "^0.0.1",
