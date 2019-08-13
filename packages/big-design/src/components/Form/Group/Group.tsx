@@ -29,7 +29,7 @@ export const Group: React.FC<GroupProps> = props => {
       if (React.isValidElement(child)) {
         const { error } = child.props;
 
-        return generateErrors(error);
+        return error && generateErrors(error);
       }
     });
   };
