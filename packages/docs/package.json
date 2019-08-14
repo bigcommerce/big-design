@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@bigcommerce/configs": "^0.6.0",
+    "@types/gtag.js": "^0.0.2",
     "@types/styled-components": "^4.1.12",
     "babel-plugin-styled-components": "^1.10.6",
     "jsx-to-string-loader": "^1.2.0",
