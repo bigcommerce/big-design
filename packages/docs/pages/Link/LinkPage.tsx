@@ -9,7 +9,11 @@ export default () => (
     <H0>Link</H0>
 
     <Text>
-      A simple wrapper for anchor elements. Use instead of {'<a>'}. Supports all native anchor element attributes.
+      A simple wrapper for anchor elements. Use instead of {'<a>'}. Supports all native anchor element attributes.{' '}
+      <Link href="https://design.bigcommerce.com/components/links" target="_blank">
+        Links Design Guidelines
+      </Link>
+      .
     </Text>
 
     <CodePreview>

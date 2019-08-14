@@ -11,7 +11,7 @@ import { CodePreview, CodeSnippet, Collapsible } from '../../components';
 
 <Text>
   Intro text.
-  <Link href="https://design.bigcommerce.com/components">Design Guidelines</Link>
+  <Link href="https://design.bigcommerce.com/components" target="_blank">Design Guidelines</Link>.
 </Text>
 
 <CodePreview>

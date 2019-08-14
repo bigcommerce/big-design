@@ -1,4 +1,4 @@
-import { Flex, H0, H1, H2, Text } from '@bigcommerce/big-design';
+import { Flex, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import React, { useEffect, useState } from 'react';
 
@@ -25,7 +25,11 @@ export default () => {
       <Text>
         Icons live in a separate package <Code>@bigcommerce/big-design-icons</Code>. To use the icons you will first
         need to add the package to your app using <Code>npm install @bigcommerce/big-design-icons</Code> or{' '}
-        <Code>yarn add @bigcommerce/big-design-icons</Code>.
+        <Code>yarn add @bigcommerce/big-design-icons</Code>.{' '}
+        <Link href="https://design.bigcommerce.com/components/iconography" target="_blank">
+          Iconography Design Guidelines
+        </Link>
+        .
       </Text>
 
       <H1>Usage</H1>
