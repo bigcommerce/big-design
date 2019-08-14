@@ -13,10 +13,17 @@ Router.events.on('routeChangeComplete', url => pageView(url));
 
 const theme = createTheme();
 
-const gridTemplate = `
-  ". nav main ." 1fr
-  / 1fr 210px minmax(min-content, 1050px) 1fr;
-`;
+const gridTemplate = {
+  mobile: `
+    "nav" 80px
+    "main" min-content
+    / 100%;
+  `,
+  tablet: `
+    ". nav main ." 1fr
+    / 1fr 210px minmax(min-content, 1050px) 1fr;
+  `,
+};
 
 export default class MyApp extends App {
   render() {
@@ -37,23 +44,24 @@ export default class MyApp extends App {
             #__next {
               height: 100%;
             }
-
-            #__next {
-              position: relative;
-            }
           `}
         </style>
         <ThemeProvider theme={theme}>
           <>
             <GlobalStyles />
-            <Grid gridTemplate={gridTemplate} backgroundColor="secondary10" gridGap="0" style={{ minHeight: '100%' }}>
+            <Grid
+              gridTemplate={{ mobile: gridTemplate.mobile, tablet: gridTemplate.tablet }}
+              backgroundColor="secondary10"
+              gridGap="0"
+              style={{ minHeight: '100%' }}
+            >
               <Grid.Item gridArea="nav">
                 <SideNav />
               </Grid.Item>
               <Grid.Item
                 gridArea="main"
                 marginVertical="medium"
-                marginHorizontal="xxLarge"
+                marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
                 style={{ maxWidth: '100%' }}
               >
                 <StoryWrapper>

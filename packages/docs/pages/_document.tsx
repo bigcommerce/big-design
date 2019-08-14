@@ -60,6 +60,8 @@ export default class AppDocument extends Document {
           }}
         />
       </Head>
-    ) : null;
+    ) : (
+      <Head />
+    );
   }
 }
