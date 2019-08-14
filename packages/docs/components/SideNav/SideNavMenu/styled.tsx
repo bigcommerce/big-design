@@ -8,7 +8,7 @@ export const StyledMenu = styled(Flex.Item)`
 `;
 
 interface Navigation {
-  shown: boolean;
+  isExpanded: boolean;
 }
 
 export const StyledNavigation = styled(Flex.Item)<Navigation>`
@@ -18,7 +18,7 @@ export const StyledNavigation = styled(Flex.Item)<Navigation>`
   border-bottom: ${({ theme }) => theme.border.box};
   border-radius: 0;
   border-top: ${({ theme }) => theme.border.box};
-  display: ${({ shown }) => (shown ? 'block' : 'none')};
+  display: ${({ isExpanded }) => (isExpanded ? 'block' : 'none')};
   height: 16rem;
   left: 0;
   overflow: auto;
