@@ -19,6 +19,7 @@ export * from './FileCopyIcon';
 export * from './FilterListIcon';
 export * from './InvertColorsIcon';
 export * from './LanguageIcon';
+export * from './MenuIcon';
 export * from './MoreHorizIcon';
 export * from './NotificationsIcon';
 export * from './OpenInNewIcon';

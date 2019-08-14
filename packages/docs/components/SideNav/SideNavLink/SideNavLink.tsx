@@ -4,8 +4,13 @@ import styled from 'styled-components';
 import { List, NextLink } from '../../';
 
 const StyledLink = styled(Link)`
-  display: 'inline-block';
-  line-height: ${({ theme }) => theme.lineHeight.medium};
+  display: block;
+  line-height: ${({ theme }) => theme.lineHeight.large};
+
+  ${({ theme }) => theme.breakpoints.tablet} {
+    display: inline-block;
+    line-height: ${({ theme }) => theme.lineHeight.medium};
+  }
 `;
 
 export const SideNavLink: React.FC<{ href: string; as?: string }> = props => (

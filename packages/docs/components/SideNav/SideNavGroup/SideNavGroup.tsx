@@ -11,7 +11,7 @@ const StyledList = styled(List)`
 
 export const SideNavGroup: React.FC<{ title: string }> = props => {
   return (
-    <Box marginTop="xLarge">
+    <Box marginTop={{ mobile: 'xxSmall', tablet: 'xLarge' }} marginHorizontal={{ mobile: 'medium', tablet: 'none' }}>
       <H4>{props.title}</H4>
       <StyledList bulleted={false}>{props.children}</StyledList>
     </Box>
