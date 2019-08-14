@@ -1,19 +1,24 @@
 version: 2.1
 orbs:
-  ci: bigcommerce/internal@volatile
-  node: bigcommerce/internal-node@volatile
+  node: circleci/node@1.1.4
 
 jobs:
   build:
     executor:
-      name: node/node
-      node-version: '10'
+      name: node/default
+      tag: '10.15'
 
     steps:
-      - ci/pre-setup
+      - checkout
 
-      - node/yarn-install:
-          yarn_version: 1.17.3
+      - node/install-yarn:
+          version: 1.17.3
+
+      - node/with-cache:
+          cache-key: yarn.lock
+          include-branch-in-cache-key: false
+          steps:
+            - run: yarn install --frozen-lockfile
 
       - run: yarn run ci
 
