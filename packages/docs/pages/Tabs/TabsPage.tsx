@@ -11,7 +11,10 @@ export default () => (
     <Text>
       The <Code primary>Tabs</Code> and <Code primary>Tabs.Tab</Code> components are used to organize and navigate
       between content types that are related and at the same level of information architecture heirarchy.{' '}
-      <Link href="https://design.bigcommerce.com/components/tabs">Tabs Design Guidelines</Link>.
+      <Link href="https://design.bigcommerce.com/components/tabs" target="_blank">
+        Tabs Design Guidelines
+      </Link>
+      .
     </Text>
 
     <CodePreview>
