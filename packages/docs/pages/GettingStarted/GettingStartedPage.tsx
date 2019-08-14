@@ -31,21 +31,21 @@ export default () => {
       <Flex.Item alignSelf="center">
         <List columnCount={2} columnGap={spacing.xxxLarge}>
           <List.Item>
-            <Link href="https://bigcommerce.design/components" target="_blank">
-              BigDesign Component Guidelines
+            <Link href="https://design.bigcommerce.com/components" target="_blank">
+              Design Guidelines
             </Link>
           </List.Item>
           <List.Item>
             <Link href="https://github.com/bigcommerce/big-design" target="_blank">
-              BigDesign GitHub Repo
+              GitHub Repo
             </Link>
           </List.Item>
           <List.Item>
-            <Link href="#">BigDesign Dev Blog Demo</Link>
+            <Link href="#">Dev Blog Demo</Link>
           </List.Item>
           <List.Item>
             <Link href="https://support.bigcommerce.com/s/group/0F91B000000bnqoSAA/bigdesign-beta" target="_blank">
-              BigDesign Beta Community Group
+              Beta Community Group
             </Link>
           </List.Item>
           <List.Item>

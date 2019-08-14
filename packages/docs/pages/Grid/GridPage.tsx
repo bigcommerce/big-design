@@ -16,8 +16,8 @@ export default () => (
 
     <Text>
       The Grid component is useful for creating intrinsicly responsive layouts.{' '}
-      <Link href="https://bigcommerce.design/responsive" target="_blank">
-        Responsive Design Guidelines
+      <Link href="https://design.bigcommerce.com/components/grid" target="_blank">
+        Grid Design Guidelines
       </Link>
       .
     </Text>

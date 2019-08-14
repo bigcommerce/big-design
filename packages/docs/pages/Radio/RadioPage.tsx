@@ -10,8 +10,8 @@ export default () => (
 
     <Text>
       Radios are single-selectable form control groups.{' '}
-      <Link href="https://bigcommerce.design/components/fields" target="_blank">
-        Form Fields Design Guidelines
+      <Link href="https://design.bigcommerce.com/components/radio-buttons" target="_blank">
+        Radio Design Guidelines
       </Link>
       .
     </Text>

@@ -10,8 +10,8 @@ export default () => (
 
     <Text>
       Select are typeable inputs with selectable dropdown items.{' '}
-      <Link href="https://bigcommerce.design/components/fields" target="_blank">
-        Form Fields Design Guidelines
+      <Link href="https://design.bigcommerce.com/components/selects" target="_blank">
+        Selects Design Guidelines
       </Link>
       .
     </Text>
