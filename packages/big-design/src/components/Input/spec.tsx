@@ -238,3 +238,22 @@ test('it is invalid when it was an error', () => {
 
   expect(input.checkValidity()).toEqual(false);
 });
+
+test('error shows with valid string', () => {
+  const error = 'Error';
+  const { container, rerender } = render(
+    <Form.Group>
+      <Input error="" />
+    </Form.Group>,
+  );
+
+  expect(container.querySelector('[class*="StyledError"]')).not.toBeInTheDocument();
+
+  rerender(
+    <Form.Group>
+      <Input error={error} />
+    </Form.Group>,
+  );
+
+  expect(container.querySelector('[class*="StyledError"]')).toBeInTheDocument();
+});
