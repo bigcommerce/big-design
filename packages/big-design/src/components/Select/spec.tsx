@@ -201,7 +201,7 @@ test('select item should be highlighted when opened', () => {
 });
 
 test('select input text should match the value selected', () => {
-  const { getByLabelText } = render(
+  const { getByLabelText, rerender } = render(
     <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -213,6 +213,17 @@ test('select input text should match the value selected', () => {
   const input = getByLabelText('Countries');
 
   expect(input.getAttribute('value')).toEqual('Mexico');
+
+  rerender(
+    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="ca">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+    </Select>,
+  );
+
+  expect(input.getAttribute('value')).toEqual('Canada');
 });
 
 test('select items should be filterable', () => {
