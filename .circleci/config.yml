@@ -9,8 +9,6 @@ jobs:
       tag: '10.15'
 
     steps:
-      - checkout
-
       - node/install-yarn:
           version: 1.17.3
 
