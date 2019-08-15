@@ -35,8 +35,8 @@ interface Props {
 export type SelectProps = Props & React.HTMLAttributes<HTMLUListElement>;
 
 export class Select extends React.PureComponent<SelectProps, SelectState> {
-  static Action = ListAction;
-  static Option = ListItem;
+  static readonly Action = ListAction;
+  static readonly Option = ListItem;
   static readonly Error = Form.Error;
 
   state = {
@@ -54,23 +54,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   private readonly uniqueSelectId = uniqueId('select_');
 
   componentDidMount() {
-    const { children, value } = this.props;
-
-    if (!value) {
-      return;
-    }
-
-    React.Children.forEach(children as ListItem[], child => {
-      if (React.isValidElement(child) && child.type === ListItem) {
-        if (child.props.value === this.props.value) {
-          return (
-            child.props.children &&
-            typeof child.props.children === 'string' &&
-            this.updateInputText(child.props.children)
-          );
-        }
-      }
-    });
+    this.updateInputText();
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -78,7 +62,12 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
 
     // Reset input if value was reset to empty string
     if (prevProps.value && !value) {
-      this.setState({ inputText: '' });
+      this.updateInputText('');
+    }
+
+    // Match input text to select value
+    if (prevProps.value !== value) {
+      this.updateInputText();
     }
   }
 
@@ -329,8 +318,28 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     });
   }
 
-  private updateInputText(inputText: string) {
-    this.setState({ inputText });
+  private updateInputText(text?: string) {
+    const { value, children } = this.props;
+
+    if (typeof text !== 'undefined') {
+      return this.setState({ inputText: text });
+    }
+
+    if (!value) {
+      return;
+    }
+
+    React.Children.forEach(children as ListItem[], child => {
+      if (React.isValidElement(child) && child.type === ListItem) {
+        if (child.props.value === this.props.value) {
+          return (
+            child.props.children &&
+            typeof child.props.children === 'string' &&
+            this.setState({ inputText: child.props.children })
+          );
+        }
+      }
+    });
   }
 
   private handleListRef = (node: HTMLElement | null) => {
@@ -417,6 +426,8 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       if (!this.listRef) {
         return;
       }
+
+      this.scrollIntoView(true);
 
       const length = this.listRef.children.length;
       const status = document.getElementById(`a11y-status-message-${this.getSelectId()}`);
