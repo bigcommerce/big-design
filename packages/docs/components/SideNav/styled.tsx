@@ -7,9 +7,9 @@ export const StyledFlex = styled(Flex)`
   background-color: ${({ theme }) => theme.colors.secondary10};
   border-radius: 0;
   position: fixed;
-  width: 100%;
-  z-index: 2;
   top: 0;
+  width: 100%;
+  z-index: ${({ theme }) => theme.zIndex.sticky};
 
   ${({ theme }) => theme.breakpoints.tablet} {
     bottom: 0;

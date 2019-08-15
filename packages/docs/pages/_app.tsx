@@ -49,12 +49,7 @@ export default class MyApp extends App {
         <ThemeProvider theme={theme}>
           <>
             <GlobalStyles />
-            <Grid
-              gridTemplate={{ mobile: gridTemplate.mobile, tablet: gridTemplate.tablet }}
-              backgroundColor="secondary10"
-              gridGap="0"
-              style={{ minHeight: '100%' }}
-            >
+            <Grid gridTemplate={gridTemplate} backgroundColor="secondary10" gridGap="0" style={{ minHeight: '100%' }}>
               <Grid.Item gridArea="nav">
                 <SideNav />
               </Grid.Item>
