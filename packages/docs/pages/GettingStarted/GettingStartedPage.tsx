@@ -41,7 +41,12 @@ export default () => {
             </Link>
           </List.Item>
           <List.Item>
-            <Link href="#">Dev Blog Demo</Link>
+            <Link
+              href="https://medium.com/bigcommerce-developer-blog/bigdesign-build-native-looking-uis-with-the-bigcommerce-design-system-fb06a01a24f2"
+              target="_blank"
+            >
+              Dev Blog Demo
+            </Link>
           </List.Item>
           <List.Item>
             <Link href="https://support.bigcommerce.com/s/group/0F91B000000bnqoSAA/bigdesign-beta" target="_blank">
