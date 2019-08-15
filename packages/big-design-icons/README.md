@@ -4,7 +4,7 @@ BigDesign Icons as React components.
 
 ### Documentation
 
-You can find documentation, list of icons, and examples on our [docs page](https://bigcommerce.github.io/big-design/?path=/story/icons--overview).
+You can find documentation, list of icons, and examples on our [docs page](https://developer.bigcommerce.com/big-design/icons).
 
 ### Quick start guide
 
