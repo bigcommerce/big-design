@@ -53,10 +53,6 @@ export default () => (
 
     <H2>Inherited Props</H2>
 
-    <Collapsible title="Box Props">
-      <BoxPropTable />
-    </Collapsible>
-
     <Collapsible title="Margin Props">
       <MarginPropTable />
     </Collapsible>
