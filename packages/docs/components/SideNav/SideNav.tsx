@@ -1,3 +1,4 @@
+import { Flex } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { StyledFlex } from './styled';
@@ -15,7 +16,9 @@ export const SideNav: React.FC = () => {
       padding="medium"
       paddingBottom={{ mobile: 'medium', tablet: 'xxxLarge' }}
     >
-      <SideNavLogo />
+      <Flex.Item>
+        <SideNavLogo />
+      </Flex.Item>
 
       <SideNavMenu>
         <SideNavGroup title="Introduction">
