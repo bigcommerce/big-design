@@ -1,4 +1,4 @@
-# BigDesign Theme
+# BigDesign Theme [![npm version](https://img.shields.io/npm/v/@bigcommerce/big-design-theme.svg?style=flat)](https://www.npmjs.com/package/@bigcommerce/big-design) [![CircleCI](https://circleci.com/gh/bigcommerce/big-design.svg?style=shield)](https://circleci.com/gh/bigcommerce/big-design)
 
 BigDesign design system.
 
