@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "private": false,
   "sideEffects": false,
   "main": "dist/big-design.cjs.js",
@@ -40,8 +40,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@bigcommerce/big-design-icons": "^0.1.0",
-    "@bigcommerce/big-design-theme": "^0.1.0",
+    "@bigcommerce/big-design-icons": "^0.1.1",
+    "@bigcommerce/big-design-theme": "^0.1.1",
     "@types/hoist-non-react-statics": "^3.3.0",
     "downshift": "^3.2.7",
     "hoist-non-react-statics": "^3.3.0",

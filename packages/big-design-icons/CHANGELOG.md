@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.1.0...@bigcommerce/big-design-icons@0.1.1) (2019-08-15)
+
+
+### Features
+
+* **docs:** add responsive mobile header ([#165](https://github.com/bigcommerce/big-design/issues/165)) ([dca031a](https://github.com/bigcommerce/big-design/commit/dca031a))
+
+
+
+
+
 # 0.1.0 (2019-08-13)
 
 

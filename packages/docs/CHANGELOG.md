@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.6.1...@bigcommerce/docs@0.6.2) (2019-08-15)
+
+
+### Bug Fixes
+
+* **docs:** add missing docs for Flex/Grid ([#168](https://github.com/bigcommerce/big-design/issues/168)) ([968b0ef](https://github.com/bigcommerce/big-design/commit/968b0ef))
+
+
+### Features
+
+* **docs:** add responsive mobile header ([#165](https://github.com/bigcommerce/big-design/issues/165)) ([dca031a](https://github.com/bigcommerce/big-design/commit/dca031a))
+
+
+
+
+
 ## [0.6.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.6.0...@bigcommerce/docs@0.6.1) (2019-08-13)
 
 

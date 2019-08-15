@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.6.1...@bigcommerce/big-design@0.6.2) (2019-08-15)
+
+
+### Bug Fixes
+
+* **component:** select will now change input text if value changes ([#171](https://github.com/bigcommerce/big-design/issues/171)) ([25facc6](https://github.com/bigcommerce/big-design/commit/25facc6))
+
+
+
+
+
 ## [0.6.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.6.0...@bigcommerce/big-design@0.6.1) (2019-08-13)
 
 
