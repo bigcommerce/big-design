@@ -4,7 +4,7 @@ BigDesign design system.
 
 ### Documentation
 
-You can find documentation and examples on our [docs page](https://bigcommerce.github.io/big-design).
+You can find documentation and examples on our [docs page](https://developer.bigcommerce.com/big-design).
 
 ## Note
 
