@@ -9,5 +9,6 @@
       "conventionalCommits": true,
       "message": "chore(release): publish"
     }
-  }
+  },
+  "ignoreChanges": ["**/*spec.ts", "**/*spec.tsx", "**/*.snap", "**/*.md"]
 }
