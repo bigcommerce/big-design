@@ -16,6 +16,7 @@ export const StyledList = styled.ul<StyledList>`
   outline: none;
   overflow-y: scroll;
   padding: ${({ theme }) => theme.spacing.xSmall} 0;
+  z-index: ${({ theme }) => theme.zIndex.popover};
 `;
 
 StyledList.defaultProps = { theme: defaultTheme };
