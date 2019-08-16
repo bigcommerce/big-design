@@ -25,7 +25,7 @@ export const StyledNavigation = styled(Flex.Item)<Navigation>`
   position: absolute;
   top: 100%;
   width: 100%;
-  z-index: ${({ theme }) => theme.zIndex.dropdown};
+  z-index: ${({ theme }) => theme.zIndex.sticky};
 
   ${({ theme }) => theme.breakpoints.tablet} {
     border: 0;

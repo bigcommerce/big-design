@@ -139,6 +139,7 @@ exports[`render open modal 1`] = `
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1040;
   background: rgba(49,52,64,0.7);
 }
 
@@ -146,6 +147,7 @@ exports[`render open modal 1`] = `
   background: #FFFFFF;
   box-sizing: border-box;
   position: fixed;
+  z-index: 1050;
   height: 100%;
   width: 100%;
 }
@@ -384,12 +386,14 @@ exports[`render open modal without backdrop 1`] = `
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1040;
 }
 
 .c1 {
   background: #FFFFFF;
   box-sizing: border-box;
   position: fixed;
+  z-index: 1050;
   height: 100%;
   width: 100%;
 }

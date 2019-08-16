@@ -16,6 +16,7 @@ export const StyledModal = styled.div.attrs({
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: ${({ theme }) => theme.zIndex.modalBackdrop};
 
   ${props =>
     props.backdrop &&
@@ -29,6 +30,7 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
   background: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
   position: fixed;
+  z-index: ${({ theme }) => theme.zIndex.modal};
 
   ${({ variant }) =>
     variant === 'dialog' &&

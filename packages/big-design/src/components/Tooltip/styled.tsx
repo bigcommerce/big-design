@@ -11,6 +11,7 @@ export const StyledTooltip = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary70};
   max-width: ${({ theme }) => theme.helpers.remCalc(336)};
   padding: ${({ theme }) => theme.spacing.xSmall};
+  z-index: ${({ theme }) => theme.zIndex.tooltip};
 `;
 
 StyledTooltip.defaultProps = { theme: defaultTheme };
