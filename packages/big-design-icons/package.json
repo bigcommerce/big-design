@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design-icons",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "sideEffects": false,
   "main": "dist/big-design-icons.cjs.js",
@@ -40,7 +40,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@bigcommerce/big-design-theme": "^0.1.1"
+    "@bigcommerce/big-design-theme": "^0.1.2"
   },
   "peerDependencies": {
     "react": "^16.8.0",

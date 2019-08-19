@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.6.2...@bigcommerce/docs@0.6.3) (2019-08-19)
+
+
+### Bug Fixes
+
+* **component:** add missing z-index to components ([#176](https://github.com/bigcommerce/big-design/issues/176)) ([800d2fc](https://github.com/bigcommerce/big-design/commit/800d2fc))
+* **docs:** update Dev Blog post link ([#175](https://github.com/bigcommerce/big-design/issues/175)) ([4c93e05](https://github.com/bigcommerce/big-design/commit/4c93e05))
+
+
+### BREAKING CHANGES
+
+* **component:** `theme.zIndex` no longer has `theme.zIndex.dropdown`
+
+
+
+
+
 ## [0.6.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.6.1...@bigcommerce/docs@0.6.2) (2019-08-15)
 
 

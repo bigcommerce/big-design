@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.6.2...@bigcommerce/big-design@0.6.3) (2019-08-19)
+
+
+### Bug Fixes
+
+* **component:** add missing z-index to components ([#176](https://github.com/bigcommerce/big-design/issues/176)) ([800d2fc](https://github.com/bigcommerce/big-design/commit/800d2fc))
+* export margin and padding mixins/functions ([#179](https://github.com/bigcommerce/big-design/issues/179)) ([85ab8d6](https://github.com/bigcommerce/big-design/commit/85ab8d6))
+* **component:** added scroll prevention on open modals ([#177](https://github.com/bigcommerce/big-design/issues/177)) ([56ed4ed](https://github.com/bigcommerce/big-design/commit/56ed4ed))
+
+
+### BREAKING CHANGES
+
+* **component:** `theme.zIndex` no longer has `theme.zIndex.dropdown`
+
+
+
+
+
 ## [0.6.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.6.1...@bigcommerce/big-design@0.6.2) (2019-08-15)
 
 

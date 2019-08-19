@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.1.1...@bigcommerce/big-design-icons@0.1.2) (2019-08-19)
+
+
+### Bug Fixes
+
+* **icons:** now treeshakeable ([#178](https://github.com/bigcommerce/big-design/issues/178)) ([fb3773d](https://github.com/bigcommerce/big-design/commit/fb3773d))
+
+
+
+
+
 ## [0.1.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.1.0...@bigcommerce/big-design-icons@0.1.1) (2019-08-15)
 
 
