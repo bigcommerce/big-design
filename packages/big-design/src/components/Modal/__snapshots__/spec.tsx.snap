@@ -2,7 +2,7 @@
 
 exports[`render closed modal 1`] = `
 <body
-  style="overflow-y: initial;"
+  style=""
 >
   <div />
   <div />
