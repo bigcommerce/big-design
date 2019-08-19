@@ -60,6 +60,7 @@ export class Modal extends React.PureComponent<ModalProps> {
   static Actions = ModalActions;
   static Body = StyledModalBody;
   static Header = ModalHeader;
+  readonly state = { initialBodyOverflowY: '' };
 
   private modalContainer?: HTMLDivElement;
   private modalRef = React.createRef<HTMLDivElement>();
@@ -74,13 +75,20 @@ export class Modal extends React.PureComponent<ModalProps> {
     if (this.modalContainer) {
       document.body.removeChild(this.modalContainer);
     }
+
+    document.body.style.overflowY = this.state.initialBodyOverflowY;
   }
 
   componentDidUpdate(prevProps: ModalProps) {
     // Check that the previous state was not open and is now open before auto focusing on modal
     if (!prevProps.isOpen && this.props.isOpen) {
       this.autoFocus();
+      this.setState({ initialBodyOverflowY: document.body.style.overflowY });
     }
+
+    this.props.isOpen
+      ? (document.body.style.overflowY = 'hidden')
+      : (document.body.style.overflowY = this.state.initialBodyOverflowY);
   }
 
   render() {

@@ -34,6 +34,7 @@ test('render open modal without backdrop', () => {
 
 test('render closed modal', () => {
   const text = 'This is a modal';
+
   const { queryByText } = render(<Modal isOpen={false}>{text}</Modal>);
 
   expect(document.body).toMatchSnapshot();
@@ -186,12 +187,19 @@ test('do not render close button on dialog variation', () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByTitle } = render(
+  const { queryByTitle, queryByText, rerender } = render(
+    <Modal isOpen={false} onClose={onClose} variant="dialog">
+      {text}
+    </Modal>,
+  );
+
+  rerender(
     <Modal isOpen={true} onClose={onClose} variant="dialog">
       {text}
     </Modal>,
   );
 
+  expect(queryByText(text)).toBeInTheDocument();
   expect(queryByTitle('Close')).not.toBeInTheDocument();
 });
 
@@ -238,4 +246,18 @@ test('do not pull focus to open modal that is rerendered', () => {
     expect(input).toHaveFocus();
     expect(document.activeElement).not.toBe(queryByRole('dialog'));
   }
+});
+
+test('body has scroll locked on modal open', () => {
+  const { rerender } = render(<Modal isOpen={false} />);
+
+  expect(document.body.style.overflowY).toEqual('');
+
+  rerender(<Modal isOpen={true} />);
+
+  expect(document.body.style.overflowY).toEqual('hidden');
+
+  rerender(<Modal isOpen={false} />);
+
+  expect(document.body.style.overflowY).toEqual('');
 });

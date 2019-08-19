@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render closed modal 1`] = `
-<body>
+<body
+  style=""
+>
   <div />
   <div />
 </body>
@@ -198,7 +200,9 @@ exports[`render open modal 1`] = `
   }
 }
 
-<body>
+<body
+  style="overflow-y: hidden;"
+>
   <div />
   <div>
     <div
@@ -253,7 +257,9 @@ exports[`render open modal 1`] = `
 `;
 
 exports[`render open modal without backdrop 1`] = `
-<body>
+<body
+  style="overflow-y: hidden;"
+>
   <div />
   .c7 {
   vertical-align: middle;
