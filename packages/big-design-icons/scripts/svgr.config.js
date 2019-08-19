@@ -19,12 +19,12 @@ module.exports = {
     import { createStyledIcon, IconProps } from '../base';
     BREAK
 
-    const Icon = React.memo<Partial<IconProps>>(({ title, theme, ...props }) => (
+    const Icon = /*#__PURE__*/ React.memo<Partial<IconProps>>(({ title, theme, ...props }) => (
       JSX
     ));
 
     BREAK
-    export const COMPONENT_NAME = createStyledIcon(Icon);
+    export const COMPONENT_NAME = /*#__PURE__*/ createStyledIcon(Icon);
     `;
 
     const typeScriptTpl = template.smart(code, {
