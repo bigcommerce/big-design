@@ -4,6 +4,7 @@ export * from './ArrowBackIcon';
 export * from './ArrowDropDownIcon';
 export * from './ArrowForwardIcon';
 export * from './AssignmentIcon';
+export * from './BaselineHelpIcon';
 export * from './CheckCircleIcon';
 export * from './CheckIcon';
 export * from './ChevronLeftIcon';
