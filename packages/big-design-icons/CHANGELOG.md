@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.1.2...@bigcommerce/big-design-icons@0.2.0) (2019-08-20)
+
+
+### Features
+
+* **icons:** add BaselineHelpIcon ([#180](https://github.com/bigcommerce/big-design/issues/180)) ([e2387cf](https://github.com/bigcommerce/big-design/commit/e2387cf))
+
+
+
+
+
 ## [0.1.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.1.1...@bigcommerce/big-design-icons@0.1.2) (2019-08-19)
 
 

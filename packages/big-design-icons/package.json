@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design-icons",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "private": false,
   "sideEffects": false,
   "main": "dist/big-design-icons.cjs.js",
