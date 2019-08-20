@@ -26,31 +26,13 @@ function getInitialCode(children: React.ReactNode): string {
   return children;
 }
 
-function transformCode(code: string, noInline = false) {
-  if (!noInline) {
-    return code;
-  }
-
-  // Split code and make it an IIFE
-  const codeLines = ['(', ...code.split('\n'), ')()'];
-
-  return codeLines
-    .map(line =>
-      line.includes('return <')
-        ? line.replace('return', 'render(').replace('>;', '>);')
-        : line.replace('return', 'render'),
-    )
-    .join('\n');
-}
-
 export interface CodePreviewProps {
   scope?: { [key: string]: any };
   language?: Language;
-  noInline?: boolean;
 }
 
 export const CodePreview: React.FC<CodePreviewProps> = props => {
-  const { children, language, noInline } = props;
+  const { children, language } = props;
   const initialCode = getInitialCode(children);
   const [code, setCode] = useState(initialCode);
   const { editorTheme } = useContext(CodeEditorThemeContext);
@@ -58,14 +40,7 @@ export const CodePreview: React.FC<CodePreviewProps> = props => {
 
   return (
     <BigDesign.Box border="box" marginBottom="xxLarge">
-      <LiveProvider
-        code={code}
-        scope={scope}
-        theme={editorTheme}
-        language={language}
-        transformCode={codeToTransform => transformCode(codeToTransform, noInline)}
-        noInline={noInline}
-      >
+      <LiveProvider code={code} scope={scope} theme={editorTheme} language={language}>
         <BigDesign.Box padding="medium" backgroundColor="white" borderBottom="box">
           <LivePreview />
         </BigDesign.Box>
