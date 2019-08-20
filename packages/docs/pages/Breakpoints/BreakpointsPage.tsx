@@ -16,7 +16,7 @@ export default () => (
       <Code>{breakpointValues.desktop}</Code> respectively.
     </Text>
 
-    <CodePreview noInline>
+    <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
         const StyledBox = styled(Box)`
@@ -41,7 +41,7 @@ export default () => (
       We also expose the <Code primary>breakpointValues</Code> for each breakpoint.
     </Text>
 
-    <CodePreview noInline>
+    <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
         const StyledBox = styled(Box)`

@@ -58,7 +58,7 @@ export default () => (
         Box is extendable, here is an example on how to create an Avatar component extending from Box with a couple of
         extra styles:
       </Text>
-      <CodePreview noInline>
+      <CodePreview>
         {/* jsx-to-string:start */}
         {function Avatar() {
           const StyledBox = styled(Box)`

@@ -1,5 +1,6 @@
 import { Box } from '@bigcommerce/big-design';
 import clipboardCopy from 'clipboard-copy';
+import { Language } from 'prism-react-renderer';
 import React, { useContext } from 'react';
 import { Editor } from 'react-live';
 
@@ -7,7 +8,7 @@ import { SnippetControls } from '../SnippetControls';
 import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
 
 interface EditorProps {
-  language?: string;
+  language?: Language;
   showControls?: boolean;
 }
 
@@ -47,9 +48,6 @@ export const CodeSnippet: React.FC<EditorProps> = props => {
     <Box border="box" marginBottom="xxLarge">
       {showControls && <SnippetControls copyToClipboard={() => clipboardCopy(code)} helperText="Code example" />}
 
-      {/* react-live Editor types are wrong, PR submitted */}
-      {/* 
-  // @ts-ignore */}
       <Editor code={code} theme={editorTheme} language={language} disabled />
     </Box>
   );
