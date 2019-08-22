@@ -34,7 +34,7 @@ export const FormLabelPropTable: React.FC = () => (
 
 export const FormGroupPropTable: React.FC = () => (
   <PropTable>
-    <PropTable.Prop name="errors" types={['string', 'React.ReactChild', 'Array<string | React.ReactChild>']}>
+    <PropTable.Prop name="errors" types={['React.ReactChild', 'React.ReactChild[]']}>
       Pass error(s) into the form group to override child input errors.
     </PropTable.Prop>
   </PropTable>

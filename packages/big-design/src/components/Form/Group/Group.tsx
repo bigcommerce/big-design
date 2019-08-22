@@ -9,7 +9,7 @@ import { Error as FormError } from '../Error';
 import { StyledError, StyledGroup, StyledInlineGroup } from './styled';
 
 export interface GroupProps extends React.HTMLAttributes<HTMLDivElement> {
-  errors?: string | React.ReactChild | Array<string | React.ReactChild>;
+  errors?: React.ReactChild | React.ReactChild[];
 }
 
 export const Group: React.FC<GroupProps> = props => {
