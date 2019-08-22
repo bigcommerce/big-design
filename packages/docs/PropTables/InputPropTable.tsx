@@ -8,7 +8,7 @@ export const InputPropTable: React.FC = () => (
     <PropTable.Prop name="description" types="ReactChild">
       Append a description to the input field.
     </PropTable.Prop>
-    <PropTable.Prop name="error" types="ReactChild">
+    <PropTable.Prop name="error" types={['ReactChild', 'ReactChild[]']}>
       Displays an error message for the field. Error message will be passed to the <Code>Form.Group</Code> for display
       purposes.
     </PropTable.Prop>

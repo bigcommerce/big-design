@@ -257,3 +257,26 @@ test('error shows with valid string', () => {
 
   expect(container.querySelector('[class*="StyledError"]')).toBeInTheDocument();
 });
+
+test('error shows when an array of strings', () => {
+  const errors = ['Error 0', 'Error 1'];
+  const { getByText } = render(
+    <Form.Group>
+      <Input error={errors} />
+    </Form.Group>,
+  );
+
+  errors.forEach(error => expect(getByText(error)).toBeInTheDocument());
+});
+
+test('error shows when an array of Errors', () => {
+  const testIds = ['error_0', 'error_1'];
+  const errors = testIds.map(id => <Input.Error data-testid={id}>Error</Input.Error>);
+  const { getByTestId } = render(
+    <Form.Group>
+      <Input error={errors} />
+    </Form.Group>,
+  );
+
+  testIds.forEach(id => expect(getByTestId(id)).toBeInTheDocument());
+});

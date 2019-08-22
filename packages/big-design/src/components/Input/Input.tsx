@@ -10,7 +10,7 @@ import { StyledIconWrapper, StyledInput, StyledInputWrapper } from './styled';
 
 interface Props {
   description?: React.ReactChild;
-  error?: React.ReactChild;
+  error?: React.ReactChild | React.ReactChild[];
   iconLeft?: React.ReactChild;
   iconRight?: React.ReactChild;
   label?: React.ReactChild;
