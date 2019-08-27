@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Ref } from 'react';
 
 import { ContentWrapper, StyledListAction, Wrapper } from './styled';
 
@@ -7,16 +7,20 @@ export interface ListActionProps extends React.LiHTMLAttributes<HTMLLIElement> {
   iconLeft?: React.ReactChild;
 }
 
-export class ListAction extends React.PureComponent<ListActionProps> {
+interface PrivateProps {
+  forwardedRef: Ref<HTMLLIElement>;
+}
+
+class StyleableListAction extends React.PureComponent<ListActionProps & PrivateProps> {
   static readonly defaultProps: Partial<ListActionProps> = {
     actionType: 'normal' as 'normal',
   };
 
   render() {
-    const { children, iconLeft, ...rest } = this.props;
+    const { children, forwardedRef, iconLeft, ...rest } = this.props;
 
     return (
-      <StyledListAction {...rest}>
+      <StyledListAction ref={forwardedRef} {...rest}>
         <Wrapper>
           <ContentWrapper>
             {iconLeft}
@@ -27,3 +31,7 @@ export class ListAction extends React.PureComponent<ListActionProps> {
     );
   }
 }
+
+export const ListAction = React.forwardRef<HTMLLIElement, ListActionProps>((props, ref) => (
+  <StyleableListAction {...props} forwardedRef={ref} />
+));

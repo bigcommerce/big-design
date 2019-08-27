@@ -11,7 +11,7 @@ export const DropdownPropTable: React.FC = () => (
       Callback called with value of clicked item.
     </PropTable.Prop>
     <PropTable.Prop
-      name="position"
+      name="placement"
       types={[
         'auto',
         'auto-end',

@@ -31,7 +31,9 @@ export default () => (
         <Dropdown.Item value={5}>Option</Dropdown.Item>
         <Dropdown.Item value={6}>Option</Dropdown.Item>
         <Dropdown.Item value={7}>Option</Dropdown.Item>
-        <Dropdown.Item value={8}>Option</Dropdown.Item>
+        <Dropdown.Item value={8} disabled>
+          Option
+        </Dropdown.Item>
       </Dropdown>
       {/* jsx-to-string:end */}
     </CodePreview>

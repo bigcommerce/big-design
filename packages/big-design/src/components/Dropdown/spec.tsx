@@ -66,7 +66,7 @@ test('dropdown trigger has aria-expanded and aria-owns when dropdown menu is ope
 test('renders the dropdown menu closed', () => {
   const { queryByRole } = render(DropdownMock);
 
-  expect(queryByRole('menu')).not.toBeInTheDocument();
+  expect(queryByRole('menu')).not.toBeVisible();
 });
 
 test('opens/closes dropdown menu when trigger is clicked', () => {
@@ -74,10 +74,10 @@ test('opens/closes dropdown menu when trigger is clicked', () => {
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
-  expect(queryByRole('menu')).toBeInTheDocument();
+  expect(queryByRole('menu')).not.toHaveStyle('height: 1px');
 
   fireEvent.click(trigger);
-  expect(queryByRole('menu')).not.toBeInTheDocument();
+  expect(queryByRole('menu')).toHaveStyle('height: 1px');
 });
 
 test('dropdown menu has aria-labelledby', () => {
@@ -101,23 +101,17 @@ test('dropdown menu has aria-activedescendant', () => {
 });
 
 test('dropdown menu should have 4 dropdown items', () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
-  const trigger = getByRole('button');
-
-  fireEvent.click(trigger);
+  const { getAllByRole } = render(DropdownMock);
 
   const options = getAllByRole('menuitem');
   expect(options.length).toBe(4);
 });
 
 test('dropdown items should have values', () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
-  const trigger = getByRole('button');
-
-  fireEvent.click(trigger);
+  const { getAllByRole } = render(DropdownMock);
 
   const options = getAllByRole('menuitem');
-  options.forEach((option, index) => expect(option.getAttribute('value')).toBe(`${index}`));
+  options.forEach((option, index) => expect(option.getAttribute('data-value')).toBe(`${index}`));
 });
 
 test('first dropdown item should be selected when dropdown is opened', () => {
@@ -155,10 +149,10 @@ test('esc should close menu', () => {
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
-  expect(queryByRole('menu')).toBeInTheDocument();
+  expect(queryByRole('menu')).not.toHaveStyle('height: 1px');
 
   fireEvent.keyDown(getByRole('menu'), { key: 'Escape' });
-  expect(queryByRole('menu')).not.toBeInTheDocument();
+  expect(queryByRole('menu')).toHaveStyle('height: 1px');
 });
 
 test('tab should close menu', () => {
@@ -166,10 +160,10 @@ test('tab should close menu', () => {
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
-  expect(queryByRole('menu')).toBeInTheDocument();
+  expect(queryByRole('menu')).not.toHaveStyle('height: 1px');
 
   fireEvent.keyDown(getByRole('menu'), { key: 'Tab' });
-  expect(queryByRole('menu')).not.toBeInTheDocument();
+  expect(queryByRole('menu')).toHaveStyle('height: 1px');
 });
 
 test('home should select first dropdown item', () => {
@@ -280,17 +274,4 @@ test('dropdown items should be highlighted when moused over', () => {
 
   fireEvent.mouseOver(option);
   expect(option.dataset.highlighted).toBe('true');
-});
-
-test('renders the dropdown menu open', () => {
-  const { getByRole, queryByRole } = render(DropdownMock);
-
-  expect(queryByRole('menu')).not.toBeInTheDocument();
-
-  fireEvent.click(getByRole('button'));
-
-  const dropdown = getByRole('menu');
-
-  expect(dropdown).toBeInTheDocument();
-  expect(dropdown.lastChild).toMatchSnapshot();
 });
