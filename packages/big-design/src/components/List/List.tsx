@@ -35,7 +35,9 @@ export class List extends React.PureComponent<ListProps> {
             tabIndex={-1}
             {...rest}
           >
-            <ListPopperValidation scheduleUpdate={scheduleUpdate}>{children}</ListPopperValidation>
+            <ListPopperValidation isOpen={isOpen} scheduleUpdate={scheduleUpdate}>
+              {children}
+            </ListPopperValidation>
           </StyledList>
         )}
       </Popper>
