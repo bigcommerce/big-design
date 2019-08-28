@@ -3,7 +3,7 @@ import React from 'react';
 import { Popper, RefHandler } from 'react-popper';
 
 import { StyledList } from './styled';
-import { ListPopperValidation } from './ListPopperValidation';
+import { ListPopperElement } from './ListPopperElement';
 
 interface Props {
   handleListRef: RefHandler;
@@ -35,9 +35,9 @@ export class List extends React.PureComponent<ListProps> {
             tabIndex={-1}
             {...rest}
           >
-            <ListPopperValidation isOpen={isOpen} scheduleUpdate={scheduleUpdate}>
+            <ListPopperElement isOpen={isOpen} scheduleUpdate={scheduleUpdate}>
               {children}
-            </ListPopperValidation>
+            </ListPopperElement>
           </StyledList>
         )}
       </Popper>

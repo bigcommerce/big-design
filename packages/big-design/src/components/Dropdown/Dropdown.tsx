@@ -68,6 +68,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
 
   private renderChildren() {
     const { children } = this.props;
+    const { highlightedItem } = this.state;
 
     return React.Children.map(children, (child, index) => {
       if (!React.isValidElement(child)) {
@@ -81,16 +82,15 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
           const id = this.getItemId(child, index);
           this.listItemsRefs.push(ref);
 
-          return React.cloneElement<React.LiHTMLAttributes<HTMLLIElement>>(child, {
-            // @ts-ignore
-            'data-highlighted': this.state.highlightedItem && id === this.state.highlightedItem.id,
+          return React.cloneElement(child, {
+            'data-highlighted': highlightedItem && id === highlightedItem.id,
             id,
             onClick: this.handleOnItemClick,
             onFocus: this.handleOnItemFocus,
             onMouseOver: this.handleOnItemMouseOver,
             ref,
             role: 'menuitem',
-          });
+          }) as React.LiHTMLAttributes<HTMLLIElement>;
         default:
           return;
       }
@@ -120,10 +120,10 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
   };
 
   private openList() {
-    this.setState({ isOpen: true }, () => {
-      document.addEventListener('mousedown', this.handleOnClickOutside, false);
+    const firstItem = this.listItemsRefs[0].current;
 
-      this.setState({ highlightedItem: this.listItemsRefs[0].current });
+    this.setState({ highlightedItem: firstItem, isOpen: true }, () => {
+      document.addEventListener('mousedown', this.handleOnClickOutside, false);
 
       return this.listRef && this.listRef.focus({ preventScroll: true });
     });
@@ -217,16 +217,16 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
    */
 
   private handleOnDropdownKeyDown = (event: React.KeyboardEvent<HTMLUListElement>) => {
-    if (!this.listItemsRefs || !this.listRef) {
+    if (!this.listItemsRefs.length || !this.listRef) {
       return;
     }
 
-    const currentItemIndex = this.listItemsRefs.findIndex(ref => ref.current === this.state.highlightedItem);
-    const nextItemId = this.listItemsRefs[currentItemIndex + 1]
-      ? this.listItemsRefs[currentItemIndex + 1].current
+    const highlightedItemIndex = this.listItemsRefs.findIndex(ref => ref.current === this.state.highlightedItem);
+    const nextItem = this.listItemsRefs[highlightedItemIndex + 1]
+      ? this.listItemsRefs[highlightedItemIndex + 1].current
       : this.listItemsRefs[0].current;
-    const prevItemId = this.listItemsRefs[currentItemIndex - 1]
-      ? this.listItemsRefs[currentItemIndex - 1].current
+    const prevItem = this.listItemsRefs[highlightedItemIndex - 1]
+      ? this.listItemsRefs[highlightedItemIndex - 1].current
       : this.listItemsRefs[this.listItemsRefs.length - 1].current;
 
     switch (event.key) {
@@ -243,13 +243,13 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
       case 'ArrowUp':
       case 'ArrowLeft': {
         event.preventDefault();
-        this.updateHighlightedItem(prevItemId, true);
+        this.updateHighlightedItem(prevItem, true);
         break;
       }
       case 'ArrowDown':
       case 'ArrowRight': {
         event.preventDefault();
-        this.updateHighlightedItem(nextItemId, true);
+        this.updateHighlightedItem(nextItem, true);
         break;
       }
       case 'Home': {

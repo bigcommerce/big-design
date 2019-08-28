@@ -145,16 +145,15 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
             const id = this.getItemId(child, index);
             this.listItemsRefs.push(ref);
 
-            return React.cloneElement<React.LiHTMLAttributes<HTMLLIElement>>(child, {
+            return React.cloneElement(child, {
               'aria-selected': child.props.value === this.props.value,
-              // @ts-ignore
               'data-highlighted': this.state.highlightedItem && id === this.state.highlightedItem.id,
               id,
               onClick: child.props.disabled ? null : this.handleOnItemClick,
               onMouseOver: this.handleOnItemMouseOver,
               ref,
               role: 'option',
-            });
+            }) as React.LiHTMLAttributes<HTMLLIElement>;
           }
 
           return;
@@ -162,15 +161,14 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
           const actionId = this.getActionId(child, index);
           this.listItemsRefs.push(ref);
 
-          return React.cloneElement<React.LiHTMLAttributes<HTMLLIElement>>(child, {
-            // @ts-ignore
+          return React.cloneElement(child, {
             'data-highlighted': this.state.highlightedItem && actionId === this.state.highlightedItem.id,
             id: actionId,
             onClick: this.handleOnActionClick,
             onMouseOver: this.handleOnItemMouseOver,
             ref,
             role: 'option',
-          });
+          }) as React.LiHTMLAttributes<HTMLLIElement>;
         default:
           return;
       }
@@ -461,16 +459,16 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
    */
 
   private handleOnInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!this.listItemsRefs || !this.listRef) {
+    if (!this.listItemsRefs.length || !this.listRef) {
       return;
     }
 
-    const currentItemIndex = this.listItemsRefs.findIndex(ref => ref.current === this.state.highlightedItem);
-    const nextItemId = this.listItemsRefs[currentItemIndex + 1]
-      ? this.listItemsRefs[currentItemIndex + 1].current
+    const highlightedItemIndex = this.listItemsRefs.findIndex(ref => ref.current === this.state.highlightedItem);
+    const nextItem = this.listItemsRefs[highlightedItemIndex + 1]
+      ? this.listItemsRefs[highlightedItemIndex + 1].current
       : this.listItemsRefs[0].current;
-    const prevItemId = this.listItemsRefs[currentItemIndex - 1]
-      ? this.listItemsRefs[currentItemIndex - 1].current
+    const prevItem = this.listItemsRefs[highlightedItemIndex - 1]
+      ? this.listItemsRefs[highlightedItemIndex - 1].current
       : this.listItemsRefs[this.listItemsRefs.length - 1].current;
 
     if (!this.listRef) {
@@ -491,13 +489,13 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       case 'ArrowUp':
       case 'ArrowLeft': {
         event.preventDefault();
-        this.updateHighlightedItem(prevItemId, true);
+        this.updateHighlightedItem(prevItem, true);
         break;
       }
       case 'ArrowDown':
       case 'ArrowRight': {
         event.preventDefault();
-        this.updateHighlightedItem(nextItemId, true);
+        this.updateHighlightedItem(nextItem, true);
         break;
       }
       case 'Home': {
