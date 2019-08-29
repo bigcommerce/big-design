@@ -46,7 +46,6 @@ class StyleableTextarea extends React.PureComponent<TextareaProps & PrivateProps
         <StyledTextareaWrapper>
           <StyledTextarea {...props} id={id} rows={this.getRows(rows)} resize={resize} ref={forwardedRef} />
         </StyledTextareaWrapper>
-        {this.renderError()}
       </div>
     );
   }
@@ -83,20 +82,6 @@ class StyleableTextarea extends React.PureComponent<TextareaProps & PrivateProps
       return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
         htmlFor: id,
       });
-    }
-
-    return null;
-  }
-
-  private renderError() {
-    const { error } = this.props;
-
-    if (typeof error === 'string') {
-      return <Textarea.Error>{error}</Textarea.Error>;
-    }
-
-    if (React.isValidElement(error) && error.type === Textarea.Error) {
-      return error;
     }
 
     return null;
