@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.6.4...@bigcommerce/big-design@0.7.0) (2019-08-29)
+
+
+### Bug Fixes
+
+* **component:** allow modal to be open on initial render ([#184](https://github.com/bigcommerce/big-design/issues/184)) ([57236e7](https://github.com/bigcommerce/big-design/commit/57236e7))
+
+
+### Features
+
+* **component:** add ability to pass arrays into input error ([#182](https://github.com/bigcommerce/big-design/issues/182)) ([eb4d4a5](https://github.com/bigcommerce/big-design/commit/eb4d4a5))
+
+
+
+
+
 ## [0.6.4](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.6.3...@bigcommerce/big-design@0.6.4) (2019-08-20)
 
 **Note:** Version bump only for package @bigcommerce/big-design
