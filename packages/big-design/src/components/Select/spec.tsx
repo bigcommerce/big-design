@@ -60,15 +60,15 @@ test('select label has for attribute', () => {
 });
 
 test('renders select input', () => {
-  const { getByLabelText } = render(SelectMock);
+  const { getAllByLabelText } = render(SelectMock);
 
-  expect(getByLabelText('Countries')).toBeInTheDocument();
+  expect(getAllByLabelText('Countries')[0]).toBeInTheDocument();
 });
 
 test('select input has id', () => {
-  const { getByLabelText } = render(SelectMock);
+  const { getAllByLabelText } = render(SelectMock);
 
-  expect(getByLabelText('Countries').id).toBeDefined();
+  expect(getAllByLabelText('Countries')[0].id).toBeDefined();
 });
 
 test('select input has placeholder text', () => {
@@ -77,23 +77,17 @@ test('select input has placeholder text', () => {
   expect(getByPlaceholderText('Choose country')).toBeDefined();
 });
 
-test('select input has aria-autocomplete', () => {
-  const { getByLabelText } = render(SelectMock);
-
-  expect(getByLabelText('Countries').getAttribute('aria-autocomplete')).toBe('list');
-});
-
 test('select input has aria-labelledby', () => {
-  const { getByLabelText, getByText } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getAllByLabelText, getByText } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
   const label = getByText('Countries');
 
   expect(input.getAttribute('aria-labelledby')).toBe(label.id);
 });
 
 test('select input has aria-controls', () => {
-  const { getByRole, getByLabelText } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getByRole, getAllByLabelText } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
 
@@ -119,14 +113,14 @@ test('input button has aria-label', () => {
 });
 
 test('select menu opens when focused on input', () => {
-  const { getByLabelText, queryByRole } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getAllByLabelText, queryByRole } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
 
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+  expect(queryByRole('listbox')).toHaveStyle('height: 1px');
 
   fireEvent.focus(input);
 
-  expect(queryByRole('listbox')).toBeInTheDocument();
+  expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
 });
 
 test('select menu opens/closes when input button is clicked', () => {
@@ -134,32 +128,26 @@ test('select menu opens/closes when input button is clicked', () => {
   const button = getByRole('button');
 
   fireEvent.click(button);
-  expect(queryByRole('listbox')).toBeInTheDocument();
+  expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
 
   fireEvent.click(button);
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+  expect(queryByRole('listbox')).toHaveStyle('height: 1px');
 });
 
 test('select has items', () => {
-  const { getAllByRole, getByLabelText } = render(SelectMock);
-  const input = getByLabelText('Countries');
-
-  fireEvent.focus(input);
+  const { getAllByRole } = render(SelectMock);
 
   expect(getAllByRole('option').length).toBe(4);
 });
 
 test('select items should have values', () => {
-  const { getAllByRole, getByLabelText } = render(SelectMock);
-  const input = getByLabelText('Countries');
-  fireEvent.focus(input);
-
+  const { getAllByRole } = render(SelectMock);
   const options = getAllByRole('option');
 
-  expect(options[0].getAttribute('value')).toBe('us');
-  expect(options[1].getAttribute('value')).toBe('mx');
-  expect(options[2].getAttribute('value')).toBe('ca');
-  expect(options[3].getAttribute('value')).toBe('en');
+  expect(options[0].getAttribute('data-value')).toBe('us');
+  expect(options[1].getAttribute('data-value')).toBe('mx');
+  expect(options[2].getAttribute('data-value')).toBe('ca');
+  expect(options[3].getAttribute('data-value')).toBe('en');
 });
 
 test('select items should be unfiltered when opened', () => {
@@ -181,7 +169,7 @@ test('select items should be unfiltered when opened', () => {
 });
 
 test('select item should be highlighted when opened', () => {
-  const { getAllByRole, getByLabelText, getByRole } = render(
+  const { getAllByRole, getAllByLabelText, getByRole } = render(
     <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -190,7 +178,7 @@ test('select item should be highlighted when opened', () => {
     </Select>,
   );
   const button = getByRole('button');
-  const input = getByLabelText('Countries');
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.click(button);
 
@@ -201,7 +189,7 @@ test('select item should be highlighted when opened', () => {
 });
 
 test('select input text should match the value selected', () => {
-  const { getByLabelText, rerender } = render(
+  const { getAllByLabelText, rerender } = render(
     <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -210,7 +198,7 @@ test('select input text should match the value selected', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries');
+  const input = getAllByLabelText('Countries')[0];
 
   expect(input.getAttribute('value')).toEqual('Mexico');
 
@@ -239,8 +227,8 @@ test('select items should be filterable', () => {
 });
 
 test('up/down arrows should change select item selection', () => {
-  const { getAllByRole, getByLabelText } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getAllByRole, getAllByLabelText } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
 
@@ -260,30 +248,30 @@ test('up/down arrows should change select item selection', () => {
 });
 
 test('esc should close menu', () => {
-  const { getByLabelText, queryByRole } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getAllByLabelText, queryByRole } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
-  expect(queryByRole('listbox')).toBeInTheDocument();
+  expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
 
   fireEvent.keyDown(input, { key: 'Escape' });
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+  expect(queryByRole('listbox')).toHaveStyle('height: 1px');
 });
 
 test('tab should close menu', () => {
-  const { getByLabelText, queryByRole } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getAllByLabelText, queryByRole } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
-  expect(queryByRole('listbox')).toBeInTheDocument();
+  expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
 
   fireEvent.keyDown(input, { key: 'Tab' });
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+  expect(queryByRole('listbox')).toHaveStyle('height: 1px');
 });
 
 test('home should select first select item', () => {
-  const { getAllByRole, getByLabelText } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getAllByRole, getAllByLabelText } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
 
@@ -300,8 +288,8 @@ test('home should select first select item', () => {
 });
 
 test('end should select last select item', () => {
-  const { getAllByRole, getByLabelText } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getAllByRole, getAllByLabelText } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
 
@@ -316,8 +304,8 @@ test('end should select last select item', () => {
 });
 
 test('enter should trigger onItemChange', () => {
-  const { getByLabelText } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getAllByLabelText } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
@@ -326,8 +314,8 @@ test('enter should trigger onItemChange', () => {
 });
 
 test('space should trigger onItemChange', () => {
-  const { getByLabelText } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getAllByLabelText } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
@@ -337,8 +325,8 @@ test('space should trigger onItemChange', () => {
 });
 
 test('clicking on select options should trigger onItemClick', () => {
-  const { getAllByRole, getByLabelText } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getAllByRole, getAllByLabelText } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
 
@@ -351,7 +339,7 @@ test('clicking on select options should trigger onItemClick', () => {
 
 test('clicking on disabled select options should not trigger onItemClick', () => {
   const spy = jest.fn();
-  const { getAllByRole, getByLabelText } = render(
+  const { getAllByRole, getAllByLabelText } = render(
     <Select onItemChange={spy} label="Countries" placeholder="Choose country">
       <Select.Option value="us" disabled>
         United States
@@ -359,7 +347,7 @@ test('clicking on disabled select options should not trigger onItemClick', () =>
       <Select.Action>Action</Select.Action>
     </Select>,
   );
-  const input = getByLabelText('Countries');
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
 
@@ -372,8 +360,8 @@ test('clicking on disabled select options should not trigger onItemClick', () =>
 });
 
 test('select options should be highlighted when moused over', () => {
-  const { getByLabelText, getAllByRole } = render(SelectMock);
-  const input = getByLabelText('Countries');
+  const { getAllByLabelText, getAllByRole } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
 
@@ -404,7 +392,7 @@ test('select should render select action', () => {
 
 test('select action should execute onActionClick function', () => {
   const onActionClick = jest.fn();
-  const { getByLabelText, getByText } = render(
+  const { getAllByLabelText, getByText } = render(
     <Select onActionClick={onActionClick} onItemChange={onItemChange} label="Countries" placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -414,7 +402,7 @@ test('select action should execute onActionClick function', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries');
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
 
@@ -428,7 +416,7 @@ test('select action should execute onActionClick function', () => {
 });
 
 test('select action supports icons', () => {
-  const { getByLabelText, getByRole } = render(
+  const { getAllByLabelText, getByRole } = render(
     <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -438,7 +426,7 @@ test('select action supports icons', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries');
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
 
@@ -448,7 +436,7 @@ test('select action supports icons', () => {
 });
 
 test('select action supports actionTypes', () => {
-  const { getByLabelText, getByRole } = render(
+  const { getAllByLabelText, getByRole } = render(
     <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -458,7 +446,7 @@ test('select action supports actionTypes', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries');
+  const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
 
@@ -484,7 +472,7 @@ test('select should render an error if one is provided', () => {
 });
 
 test('select should have a required attr if set as required', () => {
-  const { getByLabelText } = render(
+  const { getAllByLabelText } = render(
     <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country" error="Required" required>
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -493,13 +481,13 @@ test('select should have a required attr if set as required', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries');
+  const input = getAllByLabelText('Countries')[0];
 
   expect(input.getAttribute('required')).toEqual('');
 });
 
 test('select should not have a required attr if not set as required', () => {
-  const { getByLabelText } = render(
+  const { getAllByLabelText } = render(
     <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -508,13 +496,13 @@ test('select should not have a required attr if not set as required', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries');
+  const input = getAllByLabelText('Countries')[0];
 
   expect(input.getAttribute('required')).toEqual(null);
 });
 
 test('select should have a disabled attr if set as disabled', () => {
-  const { getByLabelText } = render(
+  const { getAllByLabelText } = render(
     <Select onItemChange={() => null} label="Countries" value="us" disabled>
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -523,13 +511,13 @@ test('select should have a disabled attr if set as disabled', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries');
+  const input = getAllByLabelText('Countries')[0];
 
   expect(input.getAttribute('disabled')).toEqual('');
 });
 
 test('select should not have a disabled attr if not set as disabled', () => {
-  const { getByLabelText } = render(
+  const { getAllByLabelText } = render(
     <Select onItemChange={() => null} label="Countries" placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -538,13 +526,13 @@ test('select should not have a disabled attr if not set as disabled', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries');
+  const input = getAllByLabelText('Countries')[0];
 
   expect(input.getAttribute('disabled')).toEqual(null);
 });
 
 test('should be valid if not required', () => {
-  const { getByLabelText } = render(
+  const { getAllByLabelText } = render(
     <Select onItemChange={() => null} label="Countries" placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -552,13 +540,13 @@ test('should be valid if not required', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries') as HTMLSelectElement;
+  const input = getAllByLabelText('Countries')[0] as HTMLSelectElement;
 
   expect(input.checkValidity()).toEqual(true);
 });
 
 test('should be invalid if required and has no value', () => {
-  const { getByLabelText } = render(
+  const { getAllByLabelText } = render(
     <Select onItemChange={() => null} label="Countries" placeholder="Choose country" required>
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -566,13 +554,13 @@ test('should be invalid if required and has no value', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries') as HTMLSelectElement;
+  const input = getAllByLabelText('Countries')[0] as HTMLSelectElement;
 
   expect(input.checkValidity()).toEqual(false);
 });
 
 test('should be valid if required and has a value', () => {
-  const { getByLabelText } = render(
+  const { getAllByLabelText } = render(
     <Select value="us" onItemChange={() => null} label="Countries" placeholder="Choose country" required>
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -580,13 +568,13 @@ test('should be valid if required and has a value', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries') as HTMLSelectElement;
+  const input = getAllByLabelText('Countries')[0] as HTMLSelectElement;
 
   expect(input.checkValidity()).toEqual(true);
 });
 
 test('should be invalid when it has an error', () => {
-  const { getByLabelText } = render(
+  const { getAllByLabelText } = render(
     <Select error="Unrelated failure" onItemChange={() => null} label="Countries" placeholder="Choose country" required>
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
@@ -594,7 +582,7 @@ test('should be invalid when it has an error', () => {
     </Select>,
   );
 
-  const input = getByLabelText('Countries') as HTMLSelectElement;
+  const input = getAllByLabelText('Countries')[0] as HTMLSelectElement;
 
   expect(input.checkValidity()).toEqual(false);
 
