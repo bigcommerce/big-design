@@ -25,6 +25,11 @@ export interface ModalProps {
   onClose(): void;
 }
 
+interface ModalState {
+  initialBodyOverflowY: string;
+  modalContainer: HTMLDivElement | null;
+}
+
 export interface ModalActionsProps {
   withBorder?: boolean;
 }
@@ -47,7 +52,7 @@ const ModalHeader: React.FC<ModalHeaderProps> = ({ children, withBorder }) => {
   );
 };
 
-export class Modal extends React.PureComponent<ModalProps> {
+export class Modal extends React.PureComponent<ModalProps, ModalState> {
   static defaultProps: Partial<ModalProps> = {
     backdrop: true,
     isOpen: false,
@@ -60,30 +65,37 @@ export class Modal extends React.PureComponent<ModalProps> {
   static Actions = ModalActions;
   static Body = StyledModalBody;
   static Header = ModalHeader;
-  readonly state = { initialBodyOverflowY: '' };
 
-  private modalContainer?: HTMLDivElement;
+  readonly state: ModalState = {
+    initialBodyOverflowY: '',
+    modalContainer: null,
+  };
+
   private modalRef = React.createRef<HTMLDivElement>();
   private readonly headerUniqueId = uniqueId('modal_header_');
 
   componentDidMount() {
-    this.modalContainer = document.createElement('div');
-    document.body.appendChild(this.modalContainer);
+    const modalContainer = document.createElement('div');
+
+    document.body.appendChild(modalContainer);
+    this.setState({ modalContainer });
   }
 
   componentWillUnmount() {
-    if (this.modalContainer) {
-      document.body.removeChild(this.modalContainer);
+    const { initialBodyOverflowY, modalContainer } = this.state;
+
+    if (modalContainer) {
+      document.body.removeChild(modalContainer);
     }
 
-    document.body.style.overflowY = this.state.initialBodyOverflowY;
+    document.body.style.overflowY = initialBodyOverflowY;
   }
 
   componentDidUpdate(prevProps: ModalProps) {
     // Check that the previous state was not open and is now open before auto focusing on modal
     if (!prevProps.isOpen && this.props.isOpen) {
       this.autoFocus();
-      this.setState({ initialBodyOverflowY: document.body.style.overflowY });
+      this.setState({ initialBodyOverflowY: document.body.style.overflowY || '' });
     }
 
     this.props.isOpen
@@ -93,6 +105,7 @@ export class Modal extends React.PureComponent<ModalProps> {
 
   render() {
     const { backdrop, isOpen, variant } = this.props;
+    const { modalContainer } = this.state;
 
     const modalContent = (
       <StyledModal
@@ -109,7 +122,7 @@ export class Modal extends React.PureComponent<ModalProps> {
       </StyledModal>
     );
 
-    return isOpen && this.modalContainer ? createPortal(modalContent, this.modalContainer) : null;
+    return isOpen && modalContainer ? createPortal(modalContent, modalContainer) : null;
   }
 
   private renderClose() {
