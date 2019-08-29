@@ -6,9 +6,7 @@ import { Modal } from './Modal';
 
 test('render open modal', () => {
   const text = 'This is a modal';
-  const { queryByText, rerender } = render(<Modal isOpen={false}>{text}</Modal>);
-
-  rerender(<Modal isOpen={true}>{text}</Modal>);
+  const { queryByText } = render(<Modal isOpen={true}>{text}</Modal>);
 
   expect(document.body).toMatchSnapshot();
   expect(queryByText(text)).toBeInTheDocument();
@@ -16,13 +14,7 @@ test('render open modal', () => {
 
 test('render open modal without backdrop', () => {
   const text = 'This is a modal';
-  const { queryByText, rerender } = render(
-    <Modal isOpen={false} backdrop={false}>
-      {text}
-    </Modal>,
-  );
-
-  rerender(
+  const { queryByText } = render(
     <Modal isOpen={true} backdrop={false}>
       {text}
     </Modal>,
@@ -54,13 +46,7 @@ test('triggers onClose when pressing esc', () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByText, rerender } = render(
-    <Modal isOpen={false} onClose={onClose}>
-      {text}
-    </Modal>,
-  );
-
-  rerender(
+  const { queryByText } = render(
     <Modal isOpen={true} onClose={onClose}>
       {text}
     </Modal>,
@@ -77,13 +63,7 @@ test('does not trigger onClose when pressing esc and closeOnEscKey is false', ()
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByText, rerender } = render(
-    <Modal isOpen={false} onClose={onClose} closeOnEscKey={false}>
-      {text}
-    </Modal>,
-  );
-
-  rerender(
+  const { queryByText } = render(
     <Modal isOpen={true} onClose={onClose} closeOnEscKey={false}>
       {text}
     </Modal>,
@@ -100,13 +80,7 @@ test('trigger onClose when clicking outside the modal', () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByRole, rerender } = render(
-    <Modal isOpen={false} onClose={onClose} closeOnClickOutside={true}>
-      {text}
-    </Modal>,
-  );
-
-  rerender(
+  const { queryByRole } = render(
     <Modal isOpen={true} onClose={onClose} closeOnClickOutside={true}>
       {text}
     </Modal>,
@@ -123,13 +97,7 @@ test('do not trigger onClose when clicking outside the modal and closeOnClickOut
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByRole, rerender } = render(
-    <Modal isOpen={false} onClose={onClose}>
-      {text}
-    </Modal>,
-  );
-
-  rerender(
+  const { queryByRole } = render(
     <Modal isOpen={true} onClose={onClose}>
       {text}
     </Modal>,
@@ -145,13 +113,7 @@ test('do not trigger onClose when clicking outside the modal and closeOnClickOut
 test('do not trigger onClose when clicking inside the modal', () => {
   const onClose = jest.fn();
 
-  const { queryByTestId, rerender } = render(
-    <Modal isOpen={false} onClose={onClose}>
-      <p data-testid="inside-modal">Content</p>
-    </Modal>,
-  );
-
-  rerender(
+  const { queryByTestId } = render(
     <Modal isOpen={true} onClose={onClose}>
       <p data-testid="inside-modal">Content</p>
     </Modal>,
@@ -168,13 +130,7 @@ test('render close button on modal variation', () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByTitle, rerender } = render(
-    <Modal isOpen={false} onClose={onClose} variant="modal">
-      {text}
-    </Modal>,
-  );
-
-  rerender(
+  const { queryByTitle } = render(
     <Modal isOpen={true} onClose={onClose} variant="modal">
       {text}
     </Modal>,
@@ -187,13 +143,7 @@ test('do not render close button on dialog variation', () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByTitle, queryByText, rerender } = render(
-    <Modal isOpen={false} onClose={onClose} variant="dialog">
-      {text}
-    </Modal>,
-  );
-
-  rerender(
+  const { queryByTitle, queryByText } = render(
     <Modal isOpen={true} onClose={onClose} variant="dialog">
       {text}
     </Modal>,
