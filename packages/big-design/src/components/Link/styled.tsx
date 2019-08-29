@@ -10,6 +10,8 @@ export const StyledLink = styled.a<LinkProps>`
 
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
+  font-size: ${({ theme }) => theme.typography.fontSize.medium};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   text-decoration: none;
 `;
 
