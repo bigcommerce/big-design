@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.7.0...@bigcommerce/big-design@0.7.1) (2019-08-30)
+
+
+### Bug Fixes
+
+* **component:** textarea rendering two errors ([#186](https://github.com/bigcommerce/big-design/issues/186)) ([a649928](https://github.com/bigcommerce/big-design/commit/a649928))
+* **component:** use font configs for link component ([#185](https://github.com/bigcommerce/big-design/issues/185)) ([0a144a6](https://github.com/bigcommerce/big-design/commit/0a144a6))
+
+
+
+
+
 # [0.7.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.6.4...@bigcommerce/big-design@0.7.0) (2019-08-29)
 
 
