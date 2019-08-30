@@ -2,6 +2,8 @@ import { render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 
+import { Form } from '../Form';
+
 import { Textarea, TextareaProps } from './index';
 
 test('forwards ref', () => {
@@ -28,8 +30,12 @@ test('renders an textarea with matched label', () => {
 test('create unique ids if not provided', () => {
   const { queryByTestId } = render(
     <>
-      <Textarea label="Test Label" data-testid="item1" />
-      <Textarea label="Test Label" data-testid="item2" />
+      <Form.Group>
+        <Textarea label="Test Label" data-testid="item1" />
+      </Form.Group>
+      <Form.Group>
+        <Textarea label="Test Label" data-testid="item2" />
+      </Form.Group>
     </>,
   );
 
@@ -64,7 +70,11 @@ test('renders a description', () => {
 
 test('renders an error', () => {
   const errorText = 'This is an error';
-  const { queryByText } = render(<Textarea error={errorText} />);
+  const { queryByText } = render(
+    <Form.Group>
+      <Textarea error={errorText} />
+    </Form.Group>,
+  );
 
   expect(queryByText(errorText)).toBeInTheDocument();
 });
@@ -139,7 +149,11 @@ test('accepts an Error Component', () => {
     </Textarea.Error>
   );
 
-  const { queryByTestId } = render(<Textarea error={CustomError} />);
+  const { queryByTestId } = render(
+    <Form.Group>
+      <Textarea error={CustomError} />
+    </Form.Group>,
+  );
 
   expect(queryByTestId('test')).toBeInTheDocument();
 });
@@ -154,7 +168,11 @@ test('does not accept non-Error Components', () => {
     </div>
   );
 
-  const { queryByTestId } = render(<Textarea error={NotAnError} />);
+  const { queryByTestId } = render(
+    <Form.Group>
+      <Textarea error={NotAnError} />
+    </Form.Group>,
+  );
 
   expect(queryByTestId('test')).not.toBeInTheDocument();
 });

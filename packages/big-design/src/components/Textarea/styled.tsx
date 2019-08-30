@@ -1,4 +1,4 @@
-import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { TextareaProps } from './Textarea';
@@ -58,12 +58,6 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
     line-height: ${({ theme }) => theme.lineHeight.medium};
     font-size: ${({ theme }) => theme.typography.fontSize.medium};
   }
-
-  ${props =>
-    props.error &&
-    css`
-      padding-right: ${addValues(props.theme.spacing.xxLarge, props.theme.spacing.xxSmall)};
-    `};
 `;
 
 StyledTextarea.defaultProps = { theme: defaultTheme };

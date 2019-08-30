@@ -15,7 +15,7 @@ exports[`renders all together 1`] = `
   margin-bottom: 0;
 }
 
-.c2 {
+.c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -27,7 +27,7 @@ exports[`renders all together 1`] = `
   position: relative;
 }
 
-.c3 {
+.c4 {
   background-color: #FFFFFF;
   border-radius: 0.25rem;
   box-sizing: border-box;
@@ -40,38 +40,38 @@ exports[`renders all together 1`] = `
   border: 1px solid #D9DCE9;
 }
 
-.c3:hover:not([disabled]) {
+.c4:hover:not([disabled]) {
   border: 1px solid #B4BAD1;
 }
 
-.c3:focus {
+.c4:focus {
   outline: none;
   box-shadow: 0 0 0 4px #DBE3FE;
 }
 
-.c3[disabled] {
+.c4[disabled] {
   background-color: #ECEEF5;
 }
 
-.c3::-webkit-input-placeholder {
+.c4::-webkit-input-placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c3::-moz-placeholder {
+.c4::-moz-placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c3:-ms-input-placeholder {
+.c4:-ms-input-placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c3::placeholder {
+.c4::placeholder {
   color: #B4BAD1;
   line-height: 1.5rem;
   font-size: 1rem;
@@ -88,6 +88,13 @@ exports[`renders all together 1`] = `
   margin-bottom: 0.25rem;
 }
 
+@media (min-width:720px) {
+  .eLjSIS .styled__StyledInputWrapper-g32raa-0,
+  .eLjSIS .c2 {
+    max-width: 26rem;
+  }
+}
+
 <div>
   <label
     class="c0"
@@ -101,10 +108,10 @@ exports[`renders all together 1`] = `
     This is a description
   </p>
   <span
-    class="c2"
+    class="c2 c3"
   >
     <textarea
-      class="c3"
+      class="c4"
       id="textarea_0"
       rows="3"
     />
