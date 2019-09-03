@@ -27,6 +27,7 @@ interface Props {
   label?: React.ReactChild;
   maxHeight?: number;
   placement?: Placement;
+  positionFixed?: boolean;
   required?: boolean;
   value?: AllHTMLAttributes<HTMLElement>['value'];
   onActionClick?(inputText: string): void;
