@@ -10,6 +10,7 @@ interface Props {
   isOpen: boolean;
   maxHeight?: number;
   placement?: Placement;
+  positionFixed?: boolean;
 }
 
 type ListProps = Props & React.HTMLAttributes<HTMLUListElement>;
@@ -21,10 +22,23 @@ export class List extends React.PureComponent<ListProps> {
   };
 
   render() {
-    const { children, handleListRef, isOpen, maxHeight, placement: selectedPlacement, ...rest } = this.props;
+    const {
+      children,
+      handleListRef,
+      isOpen,
+      maxHeight,
+      placement: selectedPlacement,
+      positionFixed,
+      ...rest
+    } = this.props;
 
     return (
-      <Popper innerRef={handleListRef} placement={selectedPlacement} modifiers={{ offset: { offset: '0, 10' } }}>
+      <Popper
+        innerRef={handleListRef}
+        placement={selectedPlacement}
+        positionFixed={positionFixed}
+        modifiers={{ offset: { offset: '0, 10' } }}
+      >
         {({ placement, ref, scheduleUpdate, style }) => (
           <StyledList
             data-placement={placement}
