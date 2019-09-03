@@ -36,6 +36,9 @@ export const SelectPropTable: React.FC = () => (
     >
       Determines the location in which the dropdown will be placed.
     </PropTable.Prop>
+    <PropTable.Prop name="positionFixed" defaults="false" types="boolean">
+      If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to position the items.
+    </PropTable.Prop>
     <PropTable.Prop name="required" types="boolean">
       Sets the field as required.
     </PropTable.Prop>
