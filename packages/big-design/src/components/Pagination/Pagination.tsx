@@ -1,4 +1,4 @@
-import { Button, Dropdown, Flex, Text } from '@bigcommerce/big-design';
+import { Button, Dropdown, Flex } from '@bigcommerce/big-design';
 import { ArrowDropDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@bigcommerce/big-design-icons';
 import React, { useEffect, useState } from 'react';
 
@@ -50,27 +50,34 @@ export const Pagination: React.FunctionComponent<PaginationProps> = props => {
     onRangeUpdate(range);
   };
 
+  const showRanges = () => {
+    if (itemRange[0] !== itemRange[1]) {
+      return itemRange[0] + ' - ' + itemRange[1] + ' of ' + numOfItems;
+    } else {
+      return itemRange[0] + ' of ' + numOfItems;
+    }
+  };
+
   return (
     <Flex flexDirection="row" justifyContent="space-between">
-      {itemRange[0] !== itemRange[1] ? (
-        <Text marginRight="xxSmall">
-          {itemRange[0]} - {itemRange[1]} of {numOfItems}
-        </Text>
-      ) : (
-        <Text marginRight="xxSmall">
-          {itemRange[0]} of {numOfItems}
-        </Text>
-      )}
       <Dropdown
         onItemClick={handleRangeChange}
-        trigger={<Button variant="subtle" iconOnly={<ArrowDropDownIcon color="secondary70" />} />}
+        trigger={
+          <Button variant="subtle" iconRight={<ArrowDropDownIcon color="secondary70" />}>
+            {showRanges()}
+          </Button>
+        }
       >
         {perPageRanges.map(range => {
           return <Dropdown.Item value={range}>{range} per page</Dropdown.Item>;
         })}
       </Dropdown>
-      <ChevronLeftIcon onClick={handlePageDecrease} />
-      <ChevronRightIcon onClick={handlePageIncrease} />
+      {currentPage > 1 ? <ChevronLeftIcon onClick={handlePageDecrease} /> : <ChevronLeftIcon color="secondary" />}
+      {currentPage < maxPages ? (
+        <ChevronRightIcon onClick={handlePageIncrease} />
+      ) : (
+        <ChevronRightIcon color="secondary" />
+      )}
     </Flex>
   );
 };
