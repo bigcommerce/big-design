@@ -1,8 +1,9 @@
-import { Dropdown, Flex } from '@bigcommerce/big-design';
 import { ArrowDropDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@bigcommerce/big-design-icons';
 import React, { useEffect, useState } from 'react';
 
 import { MarginProps } from '../../mixins';
+import { Dropdown } from '../Dropdown';
+import { Flex } from '../Flex';
 
 import { StyledButton } from './styled';
 
