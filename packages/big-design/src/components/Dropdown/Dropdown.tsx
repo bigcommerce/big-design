@@ -1,5 +1,5 @@
 import { Placement } from 'popper.js';
-import React, { AllHTMLAttributes, RefObject } from 'react';
+import React, { RefObject } from 'react';
 import { Manager, Reference, RefHandler } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
@@ -16,7 +16,7 @@ interface Props {
   maxHeight?: number;
   placement?: Placement;
   trigger: React.ReactElement;
-  onItemClick?(value: AllHTMLAttributes<HTMLElement>['value']): void;
+  onItemClick?(value: string | number | Array<string | number>): void;
 }
 
 export type DropdownProps = Props & React.HTMLAttributes<HTMLUListElement>;
@@ -56,7 +56,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
           maxHeight={maxHeight}
           onKeyDown={this.handleOnDropdownKeyDown}
           placement={placement}
-          role="menu"
+          role="listbox"
           {...aria}
           {...rest}
         >
@@ -80,7 +80,10 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
       switch (child.type) {
         case ListItem:
           const id = this.getItemId(child, index);
-          this.listItemsRefs.push(ref);
+
+          if (!child.props.disabled) {
+            this.listItemsRefs.push(ref);
+          }
 
           return React.cloneElement(child, {
             'data-highlighted': highlightedItem && id === highlightedItem.id,
@@ -89,7 +92,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
             onFocus: this.handleOnItemFocus,
             onMouseOver: this.handleOnItemMouseOver,
             ref,
-            role: 'menuitem',
+            role: 'option',
           }) as React.LiHTMLAttributes<HTMLLIElement>;
         default:
           return;
@@ -100,7 +103,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
   private renderTrigger(ref: RefHandler) {
     const { trigger } = this.props;
 
-    const aria = this.state.isOpen ? { 'aria-expanded': true, 'aria-owns': this.getDropdownId() } : {};
+    const aria = this.state.isOpen ? { 'aria-expanded': true } : {};
 
     return (
       React.isValidElement(trigger) &&

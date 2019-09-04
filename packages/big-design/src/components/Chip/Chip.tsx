@@ -2,17 +2,19 @@ import { CloseIcon } from '@bigcommerce/big-design-icons';
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { memo } from 'react';
 
+import { MarginProps } from '../../mixins';
 import { Text } from '../Typography';
 
 import { StyledChip, StyledCloseButton } from './styled';
 
-export interface ChipProps {
+export interface ChipProps extends MarginProps {
   theme?: ThemeInterface;
   onDelete?(): void;
 }
 
-export const Chip: React.FC<ChipProps> = memo(({ children, onDelete, theme }) => {
+export const Chip: React.FC<ChipProps> = memo(({ children, onDelete, theme, ...rest }) => {
   const label = typeof children === 'string' ? children : null;
+  const ariaLabel = label ? { 'aria-label': `Remove ${label}` } : {};
 
   const handleOnDelete = (event: React.SyntheticEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
@@ -25,6 +27,7 @@ export const Chip: React.FC<ChipProps> = memo(({ children, onDelete, theme }) =>
   const renderDeleteButton = () =>
     onDelete && (
       <StyledCloseButton
+        {...ariaLabel}
         variant="subtle"
         onClick={handleOnDelete}
         iconOnly={<CloseIcon size="medium" title="Delete" theme={theme} />}
@@ -40,6 +43,7 @@ export const Chip: React.FC<ChipProps> = memo(({ children, onDelete, theme }) =>
       margin="xxSmall"
       borderRadius="normal"
       theme={theme}
+      {...rest}
     >
       <Text margin="none" marginRight="xxSmall" theme={theme}>
         {label}

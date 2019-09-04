@@ -48,6 +48,9 @@ export const SelectPropTable: React.FC = () => (
     <PropTable.Prop name="value" types="string | string[] | number">
       Modifies the current selected value of the field.
     </PropTable.Prop>
+    <PropTable.Prop name="multi" types="boolean">
+      Renders a multiselect component.
+    </PropTable.Prop>
     <PropTable.Prop name="onActionClick" types="(string) => void">
       Callback called with the typed text of the field.
     </PropTable.Prop>

@@ -13,13 +13,17 @@ interface PrivateProps {
 
 const StyleableListItem: React.FC<ListItemProps & PrivateProps> = memo(({ children, forwardedRef, value, ...rest }) => {
   return (
-    <StyledListItem ref={forwardedRef} tabIndex={-1} data-value={value} {...rest}>
+    <StyledListItem ref={forwardedRef} tabIndex={-1} data-value={value} onMouseDown={preventFocus} {...rest}>
       {children}
 
-      {rest['aria-selected'] && <CheckIcon color="primary" size={'small'} />}
+      {rest['aria-selected'] && <CheckIcon color="primary" size={'large'} />}
     </StyledListItem>
   );
 });
+
+function preventFocus(event: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+  event.preventDefault();
+}
 
 export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => (
   <StyleableListItem {...props} forwardedRef={ref} />

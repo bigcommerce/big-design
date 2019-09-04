@@ -70,6 +70,49 @@ export default () => (
 
     <SelectOptionPropTable />
 
+    <H1>Multiselect</H1>
+
+    <Text>
+      Select has the ability to render a list of items as multiselectable. Select will return an <Code>array</Code> of
+      the select options.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      {function Example() {
+        // const [value, setValue] = React.useState(['tx', 'ca']);
+        const [value, setValue] = React.useState('ca');
+        const handleChange = val => setValue(val);
+
+        return (
+          <Form.Group>
+            <Select
+              error={value.length > 0 ? undefined : 'You must choose at least a state'}
+              label="States"
+              maxHeight={300}
+              multi={true}
+              onActionClick={inputText => inputText}
+              onItemChange={handleChange}
+              placeholder={'Choose states'}
+              placement={'bottom-start'}
+              required
+              value={value}
+            >
+              <Select.Option value="tx">Texas</Select.Option>
+              <Select.Option value="ca">California</Select.Option>
+              <Select.Option value="or">Oregon</Select.Option>
+              <Select.Option value="ar">Arkansas</Select.Option>
+              <Select.Option value="nv" disabled>
+                Nevada
+              </Select.Option>
+              <Select.Action>Action</Select.Action>
+            </Select>
+          </Form.Group>
+        );
+      }}
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
     <H1>Position</H1>
 
     <Text>

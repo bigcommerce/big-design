@@ -19,7 +19,11 @@ export const StyledListItem = styled.li<ListItemProps>`
   }
 
   &[data-highlighted='true'] {
-    background-color: ${({ theme }) => theme.colors.secondary10};
+    ${({ disabled }) =>
+      !disabled &&
+      css`
+        background-color: ${({ theme }) => theme.colors.secondary10};
+      `}
   }
 
   a {

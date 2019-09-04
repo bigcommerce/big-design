@@ -36,20 +36,19 @@ test('dropdown trigger has aria-haspopup', () => {
   expect(trigger.getAttribute('aria-haspopup')).toBe('true');
 });
 
-test('dropdown trigger has aria-expanded and aria-owns when dropdown menu is open', () => {
+test('dropdown trigger has aria-expanded when dropdown menu is open', () => {
   const { getByRole } = render(DropdownMock);
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
 
   expect(trigger.getAttribute('aria-expanded')).toBe('true');
-  expect(trigger.getAttribute('aria-owns')).toBe(getByRole('menu').id);
 });
 
 test('renders the dropdown menu closed', () => {
   const { queryByRole } = render(DropdownMock);
 
-  expect(queryByRole('menu')).not.toBeVisible();
+  expect(queryByRole('listbox')).not.toBeVisible();
 });
 
 test('opens/closes dropdown menu when trigger is clicked', () => {
@@ -57,10 +56,10 @@ test('opens/closes dropdown menu when trigger is clicked', () => {
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
-  expect(queryByRole('menu')).not.toHaveStyle('height: 1px');
+  expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
 
   fireEvent.click(trigger);
-  expect(queryByRole('menu')).toHaveStyle('height: 1px');
+  expect(queryByRole('listbox')).toHaveStyle('height: 1px');
 });
 
 test('dropdown menu has aria-labelledby', () => {
@@ -69,7 +68,7 @@ test('dropdown menu has aria-labelledby', () => {
 
   fireEvent.click(trigger);
 
-  expect(getByRole('menu').getAttribute('aria-labelledby')).toBe(trigger.id);
+  expect(getByRole('listbox').getAttribute('aria-labelledby')).toBe(trigger.id);
 });
 
 test('dropdown menu has aria-activedescendant', () => {
@@ -78,22 +77,22 @@ test('dropdown menu has aria-activedescendant', () => {
 
   fireEvent.click(trigger);
 
-  const options = getAllByRole('menuitem');
+  const options = getAllByRole('option');
 
-  expect(getByRole('menu').getAttribute('aria-activedescendant')).toBe(options[0].id);
+  expect(getByRole('listbox').getAttribute('aria-activedescendant')).toBe(options[0].id);
 });
 
 test('dropdown menu should have 4 dropdown items', () => {
   const { getAllByRole } = render(DropdownMock);
 
-  const options = getAllByRole('menuitem');
+  const options = getAllByRole('option');
   expect(options.length).toBe(4);
 });
 
 test('dropdown items should have values', () => {
   const { getAllByRole } = render(DropdownMock);
 
-  const options = getAllByRole('menuitem');
+  const options = getAllByRole('option');
   options.forEach((option, index) => expect(option.getAttribute('data-value')).toBe(`${index}`));
 });
 
@@ -103,7 +102,7 @@ test('first dropdown item should be selected when dropdown is opened', () => {
 
   fireEvent.click(trigger);
 
-  const option = getAllByRole('menuitem')[0];
+  const option = getAllByRole('option')[0];
 
   expect(option.dataset.highlighted).toBe('true');
 });
@@ -114,8 +113,8 @@ test('up/down arrows should change dropdown item selection', () => {
 
   fireEvent.click(trigger);
 
-  const menu = getByRole('menu');
-  const options = getAllByRole('menuitem');
+  const menu = getByRole('listbox');
+  const options = getAllByRole('option');
 
   fireEvent.keyDown(menu, { key: 'ArrowDown' });
   expect(options[1].dataset.highlighted).toBe('true');
@@ -132,10 +131,10 @@ test('esc should close menu', () => {
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
-  expect(queryByRole('menu')).not.toHaveStyle('height: 1px');
+  expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
 
-  fireEvent.keyDown(getByRole('menu'), { key: 'Escape' });
-  expect(queryByRole('menu')).toHaveStyle('height: 1px');
+  fireEvent.keyDown(getByRole('listbox'), { key: 'Escape' });
+  expect(queryByRole('listbox')).toHaveStyle('height: 1px');
 });
 
 test('tab should close menu', () => {
@@ -143,10 +142,10 @@ test('tab should close menu', () => {
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
-  expect(queryByRole('menu')).not.toHaveStyle('height: 1px');
+  expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
 
-  fireEvent.keyDown(getByRole('menu'), { key: 'Tab' });
-  expect(queryByRole('menu')).toHaveStyle('height: 1px');
+  fireEvent.keyDown(getByRole('listbox'), { key: 'Tab' });
+  expect(queryByRole('listbox')).toHaveStyle('height: 1px');
 });
 
 test('home should select first dropdown item', () => {
@@ -155,8 +154,8 @@ test('home should select first dropdown item', () => {
 
   fireEvent.click(trigger);
 
-  const menu = getByRole('menu');
-  const options = getAllByRole('menuitem');
+  const menu = getByRole('listbox');
+  const options = getAllByRole('option');
 
   fireEvent.keyDown(menu, { key: 'ArrowDown' });
   fireEvent.keyDown(menu, { key: 'ArrowDown' });
@@ -174,8 +173,8 @@ test('end should select last dropdown item', () => {
 
   fireEvent.click(trigger);
 
-  const menu = getByRole('menu');
-  const options = getAllByRole('menuitem');
+  const menu = getByRole('listbox');
+  const options = getAllByRole('option');
 
   expect(options[0].dataset.highlighted).toBe('true');
 
@@ -196,8 +195,8 @@ test('enter should trigger onItemClick', () => {
 
   fireEvent.click(trigger);
 
-  const menu = getByRole('menu');
-  const options = getAllByRole('menuitem');
+  const menu = getByRole('listbox');
+  const options = getAllByRole('option');
 
   fireEvent.keyDown(menu, { key: 'ArrowDown' });
   expect(options[1].dataset.highlighted).toBe('true');
@@ -218,8 +217,8 @@ test('space should trigger onItemClick', () => {
 
   fireEvent.click(trigger);
 
-  const menu = getByRole('menu');
-  const options = getAllByRole('menuitem');
+  const menu = getByRole('listbox');
+  const options = getAllByRole('option');
 
   fireEvent.keyDown(menu, { key: 'ArrowDown' });
   expect(options[1].dataset.highlighted).toBe('true');
@@ -240,7 +239,7 @@ test('clicking on dropdown items should trigger onItemClick', () => {
 
   fireEvent.click(trigger);
 
-  const options = getAllByRole('menuitem');
+  const options = getAllByRole('option');
 
   fireEvent.mouseOver(options[1]);
   fireEvent.click(options[1]);
@@ -253,7 +252,7 @@ test('dropdown items should be highlighted when moused over', () => {
 
   fireEvent.click(trigger);
 
-  const option = getAllByRole('menuitem')[0];
+  const option = getAllByRole('option')[0];
 
   fireEvent.mouseOver(option);
   expect(option.dataset.highlighted).toBe('true');
