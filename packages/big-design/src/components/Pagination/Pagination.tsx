@@ -2,42 +2,43 @@ import { ArrowDropDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@bigcommer
 import React, { useEffect, useState } from 'react';
 
 import { MarginProps } from '../../mixins';
+import { Box } from '../Box';
 import { Dropdown } from '../Dropdown';
 import { Flex } from '../Flex';
 
-import { StyledButton } from './styled';
+import { StyledButton, StyledIconButton } from './styled';
 
 export interface PaginationProps extends MarginProps {
-  currentPerPage: number;
+  currentRange: number;
   currentPage: number;
-  numOfItems: number;
-  perPageOptions: number[];
-  onPageUpdate(page: number): void;
-  onRangeUpdate(range: number): void;
+  totalItems: number;
+  rangeOptions: number[];
+  onPageChange(page: number): void;
+  onRangeChange(range: number): void;
 }
 
-export const Pagination: React.FunctionComponent<PaginationProps> = props => {
-  const { currentPerPage, currentPage, numOfItems, perPageOptions, onPageUpdate, onRangeUpdate } = props;
+export const Pagination: React.FC<PaginationProps> = props => {
+  const { currentRange, currentPage, totalItems, rangeOptions, onPageChange, onRangeChange } = props;
 
-  const [maxPages, setMaxPages] = useState(Math.ceil(numOfItems / currentPerPage));
+  const [maxPages, setMaxPages] = useState(Math.ceil(totalItems / currentRange));
   const [itemRange, setItemRange] = useState([0, 0]);
 
   useEffect(() => {
-    const first = currentPerPage * (currentPage - 1) + 1;
-    let second = currentPerPage * currentPage;
-    if (second > numOfItems) {
-      second = numOfItems;
+    const firstItemInRange = currentRange * (currentPage - 1) + 1;
+    let lastItemInRange = currentRange * currentPage;
+    if (lastItemInRange > totalItems) {
+      lastItemInRange = totalItems;
     }
-    const range = [first, second];
-    setItemRange(range);
-  }, [currentPage, currentPerPage, numOfItems]);
+
+    setItemRange([firstItemInRange, lastItemInRange]);
+  }, [currentPage, currentRange, totalItems]);
 
   const handlePageIncrease = () => {
     let nextPage = currentPage + 1;
     if (nextPage > maxPages) {
       nextPage = 1;
     }
-    onPageUpdate(nextPage);
+    onPageChange(nextPage);
   };
 
   const handlePageDecrease = () => {
@@ -45,59 +46,55 @@ export const Pagination: React.FunctionComponent<PaginationProps> = props => {
     if (nextPage < 1) {
       nextPage = maxPages;
     }
-    onPageUpdate(nextPage);
+    onPageChange(nextPage);
   };
 
   const handleRangeChange = (range: number) => {
-    setMaxPages(Math.ceil(numOfItems / range));
-    onRangeUpdate(range);
+    setMaxPages(Math.ceil(totalItems / range));
+    onRangeChange(range);
   };
 
   const showRanges = () => {
     if (itemRange[0] !== itemRange[1]) {
-      return itemRange[0] + ' - ' + itemRange[1] + ' of ' + numOfItems;
+      return `${itemRange[0]} - ${itemRange[1]} of ${totalItems}`;
     } else {
-      return itemRange[0] + ' of ' + numOfItems;
+      return `${itemRange[0]} of ${totalItems}`;
     }
   };
 
   return (
-    <Flex flexDirection="row" justifyContent="space-between" role="navigation" aria-label="pagination">
+    <Flex flexDirection="row" justifyContent="flex-start" role="navigation" aria-label="pagination">
       <Dropdown
         onItemClick={handleRangeChange}
         trigger={
-          <StyledButton>
+          <StyledButton variant="subtle" iconRight={<ArrowDropDownIcon size="xxLarge" color="secondary70" />}>
             {showRanges()}
-            <ArrowDropDownIcon color="secondary70" size="xxLarge" />
           </StyledButton>
         }
       >
-        {perPageOptions.map(range => {
+        {rangeOptions.map(range => {
           return <Dropdown.Item value={range}>{range} per page</Dropdown.Item>;
         })}
       </Dropdown>
-      {currentPage > 1 ? (
-        <ChevronLeftIcon
+      <Box>
+        <StyledIconButton
+          variant="subtle"
+          disabled={currentPage <= 1}
           aria-label="previous page"
           onClick={handlePageDecrease}
-          onKeyDown={handlePageDecrease}
-          role="button"
-          tabIndex={0}
-        />
-      ) : (
-        <ChevronLeftIcon aria-disabled={true} aria-label="previous page" color="secondary" />
-      )}
-      {currentPage < maxPages ? (
-        <ChevronRightIcon
+        >
+          <ChevronLeftIcon />
+        </StyledIconButton>
+
+        <StyledIconButton
+          variant="subtle"
+          disabled={currentPage === maxPages}
           aria-label="next page"
           onClick={handlePageIncrease}
-          onKeyDown={handlePageIncrease}
-          role="button"
-          tabIndex={0}
-        />
-      ) : (
-        <ChevronRightIcon aria-disabled={true} aria-label="next page" color="secondary" />
-      )}
+        >
+          <ChevronRightIcon />
+        </StyledIconButton>
+      </Box>
     </Flex>
   );
 };

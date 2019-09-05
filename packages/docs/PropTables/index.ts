@@ -11,6 +11,7 @@ export * from './InputPropTable';
 export * from './MarginPropTable';
 export * from './ModalPropTable';
 export * from './PaddingPropTable';
+export * from './PaginationPropTable';
 export * from './PanelPropTable';
 export * from './ProgressBarPropTable';
 export * from './ProgressCirclePropTable';
