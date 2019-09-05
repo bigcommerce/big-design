@@ -1,5 +1,5 @@
 import { Colors } from '@bigcommerce/big-design-theme';
-import React from 'react';
+import React, { memo } from 'react';
 
 import { MarginProps } from '../../mixins';
 
@@ -24,10 +24,10 @@ export const StyleableH3 = StyledH3;
 export const StyleableH4 = StyledH4;
 
 // Public
-export const Text: React.FC<TextProps> = ({ className, style, ...props }) => <StyleableText {...props} />;
-export const Small: React.FC<SmallProps> = ({ className, style, ...props }) => <StyleableSmall {...props} />;
-export const H0: React.FC<HeadingProps> = ({ className, style, ...props }) => <StyleableH0 {...props} />;
-export const H1: React.FC<HeadingProps> = ({ className, style, ...props }) => <StyleableH1 {...props} />;
-export const H2: React.FC<HeadingProps> = ({ className, style, ...props }) => <StyleableH2 {...props} />;
-export const H3: React.FC<HeadingProps> = ({ className, style, ...props }) => <StyleableH3 {...props} />;
-export const H4: React.FC<HeadingProps> = ({ className, style, ...props }) => <StyleableH4 {...props} />;
+export const Text: React.FC<TextProps> = memo(({ className, style, ...props }) => <StyleableText {...props} />);
+export const Small: React.FC<SmallProps> = memo(({ className, style, ...props }) => <StyleableSmall {...props} />);
+export const H0: React.FC<HeadingProps> = memo(({ className, style, ...props }) => <StyleableH0 {...props} />);
+export const H1: React.FC<HeadingProps> = memo(({ className, style, ...props }) => <StyleableH1 {...props} />);
+export const H2: React.FC<HeadingProps> = memo(({ className, style, ...props }) => <StyleableH2 {...props} />);
+export const H3: React.FC<HeadingProps> = memo(({ className, style, ...props }) => <StyleableH3 {...props} />);
+export const H4: React.FC<HeadingProps> = memo(({ className, style, ...props }) => <StyleableH4 {...props} />);

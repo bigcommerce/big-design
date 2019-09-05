@@ -1,4 +1,4 @@
-import React, { Ref } from 'react';
+import React, { memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 
@@ -10,7 +10,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLAnchorElement>;
 }
 
-const StyleableLink: React.FunctionComponent<LinkProps & PrivateProps> = props => <StyledLink {...props} />;
+const StyleableLink: React.FunctionComponent<LinkProps & PrivateProps> = memo(props => <StyledLink {...props} />);
 
 export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (
   <StyleableLink {...props} forwardedRef={ref} />

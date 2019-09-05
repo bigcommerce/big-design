@@ -1,6 +1,6 @@
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import React, { Ref } from 'react';
+import React, { memo, Ref } from 'react';
 
 import { uniqueId } from '../../utils';
 
@@ -17,7 +17,7 @@ interface PrivateProps {
 export type CheckboxProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
 class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
-  static Label = StyledLabel;
+  static Label = memo(StyledLabel);
   private readonly uniqueId = uniqueId('checkBox_');
   private readonly labelUniqueId = uniqueId('checkBox_label_');
 
