@@ -1,24 +1,26 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const StyledChip = styled.div`
-  background-color: ${({ theme }) => theme.colors.secondary30};
-  border-radius: 2px;
-  color: ${({ theme }) => theme.colors.secondary};
-  display: inline-flex;
-  line-height: ${({ theme }) => theme.spacing.xLarge};
-  margin: ${({ theme }) => theme.spacing.xxSmall};
-  padding: ${({ theme }) => `0 ${theme.spacing.xSmall}`};
-  z-index: 1;
+import { Box } from '../Box';
+import { StyleableButton } from '../Button/Button';
 
-  & svg {
-    cursor: pointer;
-    left: ${({ theme }) => theme.spacing.xxSmall};
-    position: relative;
-    top: ${({ theme }) => theme.spacing.xxSmall};
-  }
+export const StyledChip = styled(Box)`
+  align-items: center;
+  display: inline-flex;
+  user-select: none;
+`;
+
+export const StyledCloseButton = styled(StyleableButton)`
+  color: ${({ theme }) => theme.colors.secondary60};
+  height: auto;
+  padding: 0;
+  width: auto;
 `;
 
 StyledChip.defaultProps = {
+  theme: defaultTheme,
+};
+
+StyledCloseButton.defaultProps = {
   theme: defaultTheme,
 };

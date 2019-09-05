@@ -1,24 +1,47 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import React, { memo } from 'react';
 
-import { StyledChip } from './styled';
+import { Text } from '../Typography';
+
+import { StyledChip, StyledCloseButton } from './styled';
 
 export interface ChipProps {
-  id: number;
-  label: string;
-  displayCloseIcon: boolean;
-  onRemove?(id: number, event: React.SyntheticEvent<SVGSVGElement, MouseEvent>): void;
+  onDelete?(): void;
 }
 
-export const Chip: React.FC<ChipProps> = memo(({ id, label, displayCloseIcon, onRemove }) => {
-  const callRemove: (event: React.SyntheticEvent<SVGSVGElement, MouseEvent>) => void = event => {
-    return onRemove && onRemove(id, event);
+export const Chip: React.FC<ChipProps> = memo(({ children, onDelete }) => {
+  const label = typeof children === 'string' ? children : null;
+
+  const handleOnDelete = (event: React.SyntheticEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault();
+
+    if (typeof onDelete === 'function') {
+      onDelete();
+    }
   };
 
+  const renderDeleteButton = () =>
+    onDelete && (
+      <StyledCloseButton
+        variant="subtle"
+        onClick={handleOnDelete}
+        iconOnly={<CloseIcon size="medium" title="Delete" />}
+      ></StyledCloseButton>
+    );
+
   return (
-    <StyledChip>
-      {label}
-      {displayCloseIcon && <CloseIcon size="medium" onClick={callRemove} />}
+    <StyledChip
+      backgroundColor="secondary30"
+      paddingLeft="xSmall"
+      paddingRight="xxSmall"
+      margin="xxSmall"
+      borderRadius="normal"
+    >
+      <Text margin="none" marginRight="xxSmall">
+        {label}
+      </Text>
+
+      {renderDeleteButton()}
     </StyledChip>
   );
 });

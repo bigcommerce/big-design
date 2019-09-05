@@ -4,24 +4,31 @@ import React from 'react';
 
 import { Chip } from './index';
 
-test('renders correctly without the display icon', () => {
-  const { container } = render(<Chip displayCloseIcon={false} id={1} label="Test Label" />);
+test('renders the label', () => {
+  const label = 'Test';
+  const { queryByText } = render(<Chip>{label}</Chip>);
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(queryByText(label)).toBeInTheDocument();
 });
 
-test('renders correctly with the display icon', () => {
-  const { container } = render(<Chip displayCloseIcon={true} onRemove={jest.fn()} id={1} label="Test Label" />);
+test('renders without close button', () => {
+  const { queryByRole } = render(<Chip>Test</Chip>);
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(queryByRole('button')).not.toBeInTheDocument();
 });
 
-test('calls the remove method if clicked', () => {
-  const onRemove = jest.fn();
-  const { container } = render(<Chip displayCloseIcon={true} onRemove={onRemove} id={1} label="Test Label" />);
+test('renders with close button if onRemove is present', () => {
+  const { queryByRole } = render(<Chip onDelete={jest.fn()}>Test</Chip>);
 
-  const icon = container.getElementsByTagName('svg');
+  expect(queryByRole('button')).toBeInTheDocument();
+});
 
-  fireEvent.click(icon[0]);
-  expect(onRemove).toHaveBeenCalled();
+test('onDelete is called when close button is clicked', () => {
+  const onDelete = jest.fn();
+
+  const { getByRole } = render(<Chip onDelete={onDelete}>Test</Chip>);
+
+  fireEvent.click(getByRole('button'));
+
+  expect(onDelete).toHaveBeenCalled();
 });
