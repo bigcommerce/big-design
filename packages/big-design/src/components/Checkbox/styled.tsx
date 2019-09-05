@@ -19,9 +19,9 @@ export const HiddenCheckbox = styled.input`
 
 export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   align-items: center;
-  background: ${props => (props.checked ? props.theme.colors.primary40 : props.theme.colors.white)};
+  background: ${props => (props.checked ? props.theme.colors.primary : props.theme.colors.white)};
   border: ${({ theme }) => theme.border.box};
-  border-color: ${props => (props.checked ? props.theme.colors.primary40 : props.theme.colors.secondary30)};
+  border-color: ${props => (props.checked ? props.theme.colors.primary : props.theme.colors.secondary30)};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   color: ${({ theme }) => theme.colors.white};
   display: inline-flex;

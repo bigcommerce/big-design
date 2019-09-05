@@ -1,4 +1,5 @@
 import { CheckIcon } from '@bigcommerce/big-design-icons';
+import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { memo, Ref } from 'react';
 
@@ -8,6 +9,7 @@ import { CheckboxContainer, HiddenCheckbox, StyledCheckbox, StyledLabel } from '
 
 interface Props {
   label: React.ReactChild;
+  theme?: ThemeInterface;
 }
 
 interface PrivateProps {
@@ -26,7 +28,7 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
     const id = this.getInputId();
 
     return (
-      <CheckboxContainer className={className} style={style}>
+      <CheckboxContainer className={className} style={style} theme={props.theme}>
         <HiddenCheckbox
           type="checkbox"
           checked={checked}
@@ -35,8 +37,8 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
           aria-labelledby={this.labelUniqueId}
           ref={forwardedRef}
         />
-        <StyledCheckbox checked={checked} htmlFor={id} aria-hidden={true}>
-          <CheckIcon />
+        <StyledCheckbox checked={checked} htmlFor={id} aria-hidden={true} theme={props.theme}>
+          <CheckIcon theme={props.theme} />
         </StyledCheckbox>
         {this.renderLabel()}
       </CheckboxContainer>
@@ -51,11 +53,11 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
 
   private renderLabel() {
     const htmlFor = this.getInputId();
-    const { label } = this.props;
+    const { label, theme } = this.props;
 
     if (typeof label === 'string') {
       return (
-        <StyledLabel htmlFor={htmlFor} id={this.labelUniqueId}>
+        <StyledLabel htmlFor={htmlFor} id={this.labelUniqueId} theme={theme}>
           {label}
         </StyledLabel>
       );

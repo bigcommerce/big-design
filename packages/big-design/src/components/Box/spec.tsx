@@ -1,3 +1,4 @@
+import { theme } from '@bigcommerce/big-design-theme';
 import { render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
@@ -60,4 +61,18 @@ test('has shadow props', () => {
   const { container } = render(<Box shadow="floating" />);
 
   expect(container.firstChild).toMatchSnapshot();
+});
+
+test('theme prop overrides default theme', () => {
+  const customTheme = {
+    ...theme,
+    colors: {
+      ...theme.colors,
+      primary: 'red',
+    },
+  };
+
+  const { container } = render(<Box backgroundColor="primary" theme={customTheme} />);
+
+  expect(container.firstChild).toHaveStyle(`background-color: red`);
 });

@@ -1,3 +1,4 @@
+import { theme } from '@bigcommerce/big-design-theme';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
@@ -33,4 +34,18 @@ test('onDelete is called when close button is clicked', () => {
   fireEvent.click(getByRole('button'));
 
   expect(onDelete).toHaveBeenCalled();
+});
+
+test('theme prop overrides default theme', () => {
+  const customTheme = {
+    ...theme,
+    colors: {
+      ...theme.colors,
+      secondary60: 'red',
+    },
+  };
+
+  const { queryByRole } = render(<Chip onDelete={jest.fn} theme={customTheme} />);
+
+  expect(queryByRole('button')).toHaveStyle(`color: red`);
 });

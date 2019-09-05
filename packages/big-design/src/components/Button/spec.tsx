@@ -1,4 +1,5 @@
 import { AddIcon } from '@bigcommerce/big-design-icons';
+import { theme } from '@bigcommerce/big-design-theme';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
@@ -183,4 +184,18 @@ test('render only icon only with left and right icons button', () => {
   );
 
   expect(getAllByTestId('icon-only').length).toBe(1);
+});
+
+test('theme prop overrides default theme', () => {
+  const customTheme = {
+    ...theme,
+    colors: {
+      ...theme.colors,
+      primary: 'red',
+    },
+  };
+
+  const { container } = render(<Button variant="primary" theme={customTheme} />);
+
+  expect(container.firstChild).toHaveStyle(`background-color: red`);
 });

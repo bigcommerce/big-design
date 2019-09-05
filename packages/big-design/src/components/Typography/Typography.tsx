@@ -1,4 +1,4 @@
-import { Colors } from '@bigcommerce/big-design-theme';
+import { Colors, ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { memo } from 'react';
 
 import { MarginProps } from '../../mixins';
@@ -8,6 +8,7 @@ import { StyledH0, StyledH1, StyledH2, StyledH3, StyledH4, StyledSmall, StyledTe
 export interface TypographyProps {
   color?: keyof Colors;
   ellipsis?: boolean;
+  theme?: ThemeInterface;
 }
 
 export type TextProps = React.HTMLAttributes<HTMLParagraphElement> & MarginProps & TypographyProps;

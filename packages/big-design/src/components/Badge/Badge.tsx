@@ -1,3 +1,4 @@
+import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { memo } from 'react';
 
 import { MarginProps } from '../../mixins';
@@ -5,6 +6,7 @@ import { MarginProps } from '../../mixins';
 import { StyledBadge } from './styled';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement>, MarginProps {
+  theme?: ThemeInterface;
   variant?: 'danger' | 'secondary' | 'success' | 'warning';
 }
 
