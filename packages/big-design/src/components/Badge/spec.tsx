@@ -49,3 +49,20 @@ test('render secondary Badge', () => {
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary60}`);
 });
+
+test('theme prop overrides default theme', () => {
+  const customTheme = {
+    ...theme,
+    colors: {
+      ...theme.colors,
+      secondary60: 'red',
+    },
+  };
+  const { container } = render(
+    <Badge variant="secondary" theme={customTheme}>
+      Badge
+    </Badge>,
+  );
+
+  expect(container.firstChild).toHaveStyle(`background-color: red`);
+});

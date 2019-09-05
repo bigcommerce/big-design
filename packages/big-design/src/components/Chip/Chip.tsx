@@ -1,4 +1,5 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
+import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { memo } from 'react';
 
 import { Text } from '../Typography';
@@ -6,10 +7,11 @@ import { Text } from '../Typography';
 import { StyledChip, StyledCloseButton } from './styled';
 
 export interface ChipProps {
+  theme?: ThemeInterface;
   onDelete?(): void;
 }
 
-export const Chip: React.FC<ChipProps> = memo(({ children, onDelete }) => {
+export const Chip: React.FC<ChipProps> = memo(({ children, onDelete, theme }) => {
   const label = typeof children === 'string' ? children : null;
 
   const handleOnDelete = (event: React.SyntheticEvent<HTMLButtonElement, MouseEvent>) => {
@@ -25,7 +27,8 @@ export const Chip: React.FC<ChipProps> = memo(({ children, onDelete }) => {
       <StyledCloseButton
         variant="subtle"
         onClick={handleOnDelete}
-        iconOnly={<CloseIcon size="medium" title="Delete" />}
+        iconOnly={<CloseIcon size="medium" title="Delete" theme={theme} />}
+        theme={theme}
       ></StyledCloseButton>
     );
 
@@ -36,8 +39,9 @@ export const Chip: React.FC<ChipProps> = memo(({ children, onDelete }) => {
       paddingRight="xxSmall"
       margin="xxSmall"
       borderRadius="normal"
+      theme={theme}
     >
-      <Text margin="none" marginRight="xxSmall">
+      <Text margin="none" marginRight="xxSmall" theme={theme}>
         {label}
       </Text>
 
