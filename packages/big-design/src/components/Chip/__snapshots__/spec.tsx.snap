@@ -1,0 +1,248 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with close button if onRemove is present 1`] = `
+.c6 {
+  vertical-align: middle;
+  height: 1rem;
+  width: 1rem;
+}
+
+.c2 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+  margin-right: 0.25rem;
+}
+
+.c2:last-child {
+  margin-bottom: 0;
+}
+
+.c1 {
+  margin: 0.25rem;
+  padding-right: 0.25rem;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+  background-color: #D9DCE9;
+  border-radius: 0.25rem;
+}
+
+.c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  border-color: transparent;
+  color: #3C64F4;
+}
+
+.c4:focus {
+  outline: none;
+}
+
+.c4[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c4 + .bd-button {
+  margin-top: 0.5rem;
+}
+
+.c4:active {
+  background-color: #DBE3FE;
+}
+
+.c4:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c4:hover:not(:active) {
+  background-color: #F0F3FF;
+}
+
+.c4[disabled] {
+  border-color: transparent;
+  color: #D9DCE9;
+}
+
+.c5 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c3 {
+  color: #5E637A;
+  height: auto;
+  padding: 0;
+  width: auto;
+}
+
+@media (min-width:720px) {
+  .c4 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c4 {
+    width: auto;
+  }
+}
+
+<div
+  class="c0 c1"
+>
+  <p
+    class="c2"
+  >
+    Test
+  </p>
+  <button
+    class="c3 c4"
+    role="button"
+    tabindex="0"
+  >
+    <span
+      class="c5"
+    >
+      <svg
+        class="c6"
+        fill="currentColor"
+        height="24"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <title>
+          Delete
+        </title>
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+        <path
+          d="M18.3 5.71a.996.996 0 00-1.41 0L12 10.59 7.11 5.7A.996.996 0 105.7 7.11L10.59 12 5.7 16.89a.996.996 0 101.41 1.41L12 13.41l4.89 4.89a.996.996 0 101.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"
+        />
+      </svg>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`renders without close button 1`] = `
+.c2 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+  margin-right: 0.25rem;
+}
+
+.c2:last-child {
+  margin-bottom: 0;
+}
+
+.c1 {
+  margin: 0.25rem;
+  padding-right: 0.25rem;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+  background-color: #D9DCE9;
+  border-radius: 0.25rem;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+<div
+  class="c0 c1"
+>
+  <p
+    class="c2"
+  >
+    Test
+  </p>
+</div>
+`;

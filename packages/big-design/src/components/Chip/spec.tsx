@@ -12,15 +12,17 @@ test('renders the label', () => {
 });
 
 test('renders without close button', () => {
-  const { queryByRole } = render(<Chip>Test</Chip>);
+  const { container, queryByRole } = render(<Chip>Test</Chip>);
 
   expect(queryByRole('button')).not.toBeInTheDocument();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('renders with close button if onRemove is present', () => {
-  const { queryByRole } = render(<Chip onDelete={jest.fn()}>Test</Chip>);
+  const { container, queryByRole } = render(<Chip onDelete={jest.fn()}>Test</Chip>);
 
   expect(queryByRole('button')).toBeInTheDocument();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 test('onDelete is called when close button is clicked', () => {
