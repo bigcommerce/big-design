@@ -1,5 +1,5 @@
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import React, { Ref } from 'react';
+import React, { memo, Ref } from 'react';
 
 import { uniqueId } from '../../utils';
 
@@ -16,7 +16,7 @@ interface PrivateProps {
 export type RadioProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
 class RawRadio extends React.PureComponent<RadioProps & PrivateProps> {
-  static Label = StyledLabel;
+  static Label = memo(StyledLabel);
   private readonly uniqueId = uniqueId('radio_');
   private readonly labelUniqueId = uniqueId('checkBox_label_');
 

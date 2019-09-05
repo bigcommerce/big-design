@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { MarginProps } from '../../mixins';
 
@@ -8,4 +8,4 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement>, Margi
   variant?: 'danger' | 'secondary' | 'success' | 'warning';
 }
 
-export const Badge: React.FC<BadgeProps> = ({ className, style, ...props }) => <StyledBadge {...props} />;
+export const Badge: React.FC<BadgeProps> = memo(({ className, style, ...props }) => <StyledBadge {...props} />);
