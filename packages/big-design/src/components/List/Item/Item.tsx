@@ -11,17 +11,15 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLLIElement>;
 }
 
-const StyleableListItem: React.FunctionComponent<ListItemProps & PrivateProps> = memo(
-  ({ children, forwardedRef, value, ...rest }) => {
-    return (
-      <StyledListItem ref={forwardedRef} tabIndex={-1} data-value={value} {...rest}>
-        {children}
+const StyleableListItem: React.FC<ListItemProps & PrivateProps> = memo(({ children, forwardedRef, value, ...rest }) => {
+  return (
+    <StyledListItem ref={forwardedRef} tabIndex={-1} data-value={value} {...rest}>
+      {children}
 
-        {rest['aria-selected'] && <CheckIcon color="primary" size={'small'} />}
-      </StyledListItem>
-    );
-  },
-);
+      {rest['aria-selected'] && <CheckIcon color="primary" size={'small'} />}
+    </StyledListItem>
+  );
+});
 
 export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => (
   <StyleableListItem {...props} forwardedRef={ref} />
