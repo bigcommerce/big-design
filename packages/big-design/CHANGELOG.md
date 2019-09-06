@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.7.1...@bigcommerce/big-design@0.8.0) (2019-09-06)
+
+
+### Bug Fixes
+
+* **component:** forward theme prop ([#192](https://github.com/bigcommerce/big-design/issues/192)) ([5bc298b](https://github.com/bigcommerce/big-design/commit/5bc298b))
+
+
+### Features
+
+* **component:** add chip component ([#189](https://github.com/bigcommerce/big-design/issues/189)) ([8258f5e](https://github.com/bigcommerce/big-design/commit/8258f5e))
+* **component:** add memoization to certain components ([#191](https://github.com/bigcommerce/big-design/issues/191)) ([0f84a23](https://github.com/bigcommerce/big-design/commit/0f84a23))
+* **component:** add positionFixed prop to Select ([b941b64](https://github.com/bigcommerce/big-design/commit/b941b64))
+
+
+
+
+
 ## [0.7.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.7.0...@bigcommerce/big-design@0.7.1) (2019-08-30)
 
 

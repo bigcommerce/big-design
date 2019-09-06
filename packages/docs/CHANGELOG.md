@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.7.1...@bigcommerce/docs@0.8.0) (2019-09-06)
+
+
+### Features
+
+* **docs:** add positionFixed prop to Select docs ([c133d59](https://github.com/bigcommerce/big-design/commit/c133d59))
+
+
+
+
+
 ## [0.7.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.7.0...@bigcommerce/docs@0.7.1) (2019-08-30)
 
 **Note:** Version bump only for package @bigcommerce/docs

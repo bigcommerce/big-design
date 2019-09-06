@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/docs",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "private": true,
   "sideEffects": false,
   "license": "SEE LICENSE IN LICENSE.md",
@@ -29,7 +29,7 @@
     ]
   },
   "dependencies": {
-    "@bigcommerce/big-design": "^0.7.1",
+    "@bigcommerce/big-design": "^0.8.0",
     "@bigcommerce/big-design-icons": "^0.2.0",
     "@bigcommerce/big-design-theme": "^0.1.2",
     "clipboard-copy": "^3.1.0",
