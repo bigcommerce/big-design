@@ -2,11 +2,10 @@ import { ArrowDropDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@bigcommer
 import React, { useEffect, useState } from 'react';
 
 import { MarginProps } from '../../mixins';
-import { Box } from '../Box';
 import { Dropdown } from '../Dropdown';
 import { Flex } from '../Flex';
 
-import { StyledButton, StyledIconButton } from './styled';
+import { StyledButton } from './styled';
 
 export interface PaginationProps extends MarginProps {
   currentRange: number;
@@ -24,10 +23,20 @@ export const Pagination: React.FC<PaginationProps> = props => {
   const [itemRange, setItemRange] = useState([0, 0]);
 
   useEffect(() => {
-    const firstItemInRange = currentRange * (currentPage - 1) + 1;
+    if (currentPage > maxPages) {
+      onPageChange(maxPages);
+    }
+    let firstItemInRange = currentRange * (currentPage - 1) + 1;
     let lastItemInRange = currentRange * currentPage;
     if (lastItemInRange > totalItems) {
       lastItemInRange = totalItems;
+    }
+    if (firstItemInRange > totalItems) {
+      firstItemInRange = totalItems;
+    }
+    if (lastItemInRange === 0 || isNaN(lastItemInRange) || isNaN(firstItemInRange)) {
+      firstItemInRange = 0;
+      lastItemInRange = 0;
     }
 
     setItemRange([firstItemInRange, lastItemInRange]);
@@ -36,7 +45,7 @@ export const Pagination: React.FC<PaginationProps> = props => {
   const handlePageIncrease = () => {
     let nextPage = currentPage + 1;
     if (nextPage > maxPages) {
-      nextPage = 1;
+      nextPage = maxPages;
     }
     onPageChange(nextPage);
   };
@@ -44,7 +53,7 @@ export const Pagination: React.FC<PaginationProps> = props => {
   const handlePageDecrease = () => {
     let nextPage = currentPage - 1;
     if (nextPage < 1) {
-      nextPage = maxPages;
+      nextPage = 1;
     }
     onPageChange(nextPage);
   };
@@ -63,7 +72,7 @@ export const Pagination: React.FC<PaginationProps> = props => {
   };
 
   return (
-    <Flex flexDirection="row" justifyContent="flex-start" role="navigation" aria-label="pagination">
+    <Flex flexDirection="row" justifyContent="center" role="navigation" aria-label="pagination">
       <Dropdown
         onItemClick={handleRangeChange}
         trigger={
@@ -76,25 +85,25 @@ export const Pagination: React.FC<PaginationProps> = props => {
           return <Dropdown.Item value={range}>{range} per page</Dropdown.Item>;
         })}
       </Dropdown>
-      <Box>
-        <StyledIconButton
+      <Flex.Item>
+        <StyledButton
           variant="subtle"
           disabled={currentPage <= 1}
           aria-label="previous page"
           onClick={handlePageDecrease}
         >
           <ChevronLeftIcon />
-        </StyledIconButton>
+        </StyledButton>
 
-        <StyledIconButton
+        <StyledButton
           variant="subtle"
-          disabled={currentPage === maxPages}
+          disabled={currentPage >= maxPages}
           aria-label="next page"
           onClick={handlePageIncrease}
         >
           <ChevronRightIcon />
-        </StyledIconButton>
-      </Box>
+        </StyledButton>
+      </Flex.Item>
     </Flex>
   );
 };

@@ -46,7 +46,7 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Modal/ModalPage" as="/modal">
             Modal
           </SideNavLink>
-          <SideNavLink href="/Pagination/PaginationPage" as="/Pagination">
+          <SideNavLink href="/Pagination/PaginationPage" as="/pagination">
             Pagination
           </SideNavLink>
           <SideNavLink href="/Panel/PanelPage" as="/panel">

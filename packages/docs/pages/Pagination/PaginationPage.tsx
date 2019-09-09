@@ -18,7 +18,7 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      {function Example() {
+      {function ExampleList() {
         const items = ['Item1', 'Item2', 'Item3', 'Item4', 'Item5'];
         const ranges = [2, 3, 4];
 
@@ -26,9 +26,6 @@ export default () => (
         const [page, setPage] = React.useState(1);
         const [currentItems, setCurrentItems] = React.useState(['']);
 
-        {
-          /* This is similar to componentDidMount and componentDidUpdate */
-        }
         React.useEffect(() => {
           let lastItem = page * range;
           const firstItem = lastItem - range;
