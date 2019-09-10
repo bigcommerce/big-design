@@ -23,11 +23,19 @@ export const Pagination: React.FC<PaginationProps> = props => {
   const [itemRange, setItemRange] = useState([0, 0]);
 
   useEffect(() => {
-    if (currentPage > maxPages) {
+    if (currentPage < 1 || isNaN(currentPage) || currentPage === undefined) {
+      onPageChange(1);
+    } else if (currentPage > maxPages) {
       onPageChange(maxPages);
     }
+
+    if (currentRange < 1 || isNaN(currentRange) || currentRange === undefined) {
+      onRangeChange(rangeOptions[0]);
+    }
+
     let firstItemInRange = currentRange * (currentPage - 1) + 1;
     let lastItemInRange = currentRange * currentPage;
+
     if (lastItemInRange > totalItems) {
       lastItemInRange = totalItems;
     }
@@ -81,15 +89,19 @@ export const Pagination: React.FC<PaginationProps> = props => {
           </StyledButton>
         }
       >
-        {rangeOptions.map(range => {
-          return <Dropdown.Item value={range}>{range} per page</Dropdown.Item>;
+        {rangeOptions.map((range, key) => {
+          return (
+            <Dropdown.Item key={key} value={range}>
+              {range} per page
+            </Dropdown.Item>
+          );
         })}
       </Dropdown>
       <Flex.Item>
         <StyledButton
           variant="subtle"
           disabled={currentPage <= 1}
-          aria-label="previous page"
+          aria-label="previous-page"
           onClick={handlePageDecrease}
         >
           <ChevronLeftIcon />
@@ -98,7 +110,7 @@ export const Pagination: React.FC<PaginationProps> = props => {
         <StyledButton
           variant="subtle"
           disabled={currentPage >= maxPages}
-          aria-label="next page"
+          aria-label="next-page"
           onClick={handlePageIncrease}
         >
           <ChevronRightIcon />
