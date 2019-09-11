@@ -3,7 +3,6 @@
 exports[`render pagination component 1`] = `
 .c5 {
   vertical-align: middle;
-  color: #313440;
   height: 2rem;
   width: 2rem;
 }
@@ -296,27 +295,8 @@ exports[`render pagination component 1`] = `
 }
 
 .c2 {
-  background-color: transparent;
-  border-color: transparent;
   color: #313440;
   width: auto;
-}
-
-.c2:active {
-  background-color: #ECEEF5;
-}
-
-.c2:focus {
-  box-shadow: 0 0 0 0.25rem #ECEEF5;
-}
-
-.c2:hover:not(:active) {
-  background-color: #F6F7FC;
-}
-
-.c2[disabled] {
-  border-color: transparent;
-  color: #D9DCE9;
 }
 
 @media (min-width:720px) {
@@ -363,7 +343,6 @@ exports[`render pagination component 1`] = `
       1 - 3 of 10
       <svg
         class="c5"
-        color="secondary70"
         fill="currentColor"
         height="24"
         stroke="currentColor"
@@ -490,7 +469,6 @@ exports[`render pagination component 1`] = `
 exports[`render pagination component with invalid page info 1`] = `
 .c5 {
   vertical-align: middle;
-  color: #313440;
   height: 2rem;
   width: 2rem;
 }
@@ -783,27 +761,8 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 .c2 {
-  background-color: transparent;
-  border-color: transparent;
   color: #313440;
   width: auto;
-}
-
-.c2:active {
-  background-color: #ECEEF5;
-}
-
-.c2:focus {
-  box-shadow: 0 0 0 0.25rem #ECEEF5;
-}
-
-.c2:hover:not(:active) {
-  background-color: #F6F7FC;
-}
-
-.c2[disabled] {
-  border-color: transparent;
-  color: #D9DCE9;
 }
 
 @media (min-width:720px) {
@@ -850,7 +809,6 @@ exports[`render pagination component with invalid page info 1`] = `
       -8 - -6 of 10
       <svg
         class="c5"
-        color="secondary70"
         fill="currentColor"
         height="24"
         stroke="currentColor"
@@ -977,7 +935,6 @@ exports[`render pagination component with invalid page info 1`] = `
 exports[`render pagination component with invalid range info 1`] = `
 .c5 {
   vertical-align: middle;
-  color: #313440;
   height: 2rem;
   width: 2rem;
 }
@@ -1270,27 +1227,8 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 .c2 {
-  background-color: transparent;
-  border-color: transparent;
   color: #313440;
   width: auto;
-}
-
-.c2:active {
-  background-color: #ECEEF5;
-}
-
-.c2:focus {
-  box-shadow: 0 0 0 0.25rem #ECEEF5;
-}
-
-.c2:hover:not(:active) {
-  background-color: #F6F7FC;
-}
-
-.c2[disabled] {
-  border-color: transparent;
-  color: #D9DCE9;
 }
 
 @media (min-width:720px) {
@@ -1337,7 +1275,6 @@ exports[`render pagination component with invalid range info 1`] = `
       1 - -5 of 10
       <svg
         class="c5"
-        color="secondary70"
         fill="currentColor"
         height="24"
         stroke="currentColor"
@@ -1465,7 +1402,6 @@ exports[`render pagination component with invalid range info 1`] = `
 exports[`render pagination component with no items 1`] = `
 .c5 {
   vertical-align: middle;
-  color: #313440;
   height: 2rem;
   width: 2rem;
 }
@@ -1758,27 +1694,8 @@ exports[`render pagination component with no items 1`] = `
 }
 
 .c2 {
-  background-color: transparent;
-  border-color: transparent;
   color: #313440;
   width: auto;
-}
-
-.c2:active {
-  background-color: #ECEEF5;
-}
-
-.c2:focus {
-  box-shadow: 0 0 0 0.25rem #ECEEF5;
-}
-
-.c2:hover:not(:active) {
-  background-color: #F6F7FC;
-}
-
-.c2[disabled] {
-  border-color: transparent;
-  color: #D9DCE9;
 }
 
 @media (min-width:720px) {
@@ -1825,7 +1742,6 @@ exports[`render pagination component with no items 1`] = `
       0 of 0
       <svg
         class="c5"
-        color="secondary70"
         fill="currentColor"
         height="24"
         stroke="currentColor"

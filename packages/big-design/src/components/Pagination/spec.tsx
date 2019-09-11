@@ -9,10 +9,10 @@ test('render pagination component', () => {
   const changeRange = jest.fn();
   const { container } = render(
     <Pagination
-      currentRange={3}
+      itemsPerPage={3}
       currentPage={1}
       totalItems={10}
-      rangeOptions={[2, 3, 5]}
+      itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
       onRangeChange={changeRange}
     />,
@@ -26,10 +26,10 @@ test('render pagination component with invalid page info', () => {
   const changeRange = jest.fn();
   const { container } = render(
     <Pagination
-      currentRange={3}
+      itemsPerPage={3}
       currentPage={-2}
       totalItems={10}
-      rangeOptions={[2, 3, 5]}
+      itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
       onRangeChange={changeRange}
     />,
@@ -43,10 +43,10 @@ test('render pagination component with invalid range info', () => {
   const changeRange = jest.fn();
   const { container } = render(
     <Pagination
-      currentRange={-5}
+      itemsPerPage={-5}
       currentPage={1}
       totalItems={10}
-      rangeOptions={[2, 3, 5]}
+      itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
       onRangeChange={changeRange}
     />,
@@ -60,10 +60,10 @@ test('render pagination component with no items', () => {
   const changeRange = jest.fn();
   const { container } = render(
     <Pagination
-      currentRange={3}
+      itemsPerPage={3}
       currentPage={1}
       totalItems={0}
-      rangeOptions={[2, 3, 5]}
+      itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
       onRangeChange={changeRange}
     />,
@@ -76,10 +76,10 @@ test('trigger range change', () => {
   const changeRange = jest.fn();
   const { getByText } = render(
     <Pagination
-      currentRange={3}
+      itemsPerPage={3}
       currentPage={1}
       totalItems={10}
-      rangeOptions={[2, 3, 5]}
+      itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
       onRangeChange={changeRange}
     />,
@@ -96,10 +96,10 @@ test('trigger page decrease', () => {
   const changeRange = jest.fn();
   const { getByLabelText } = render(
     <Pagination
-      currentRange={3}
+      itemsPerPage={3}
       currentPage={2}
       totalItems={10}
-      rangeOptions={[2, 3, 5]}
+      itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
       onRangeChange={changeRange}
     />,
@@ -114,10 +114,10 @@ test('trigger page increase', () => {
   const changeRange = jest.fn();
   const { getByLabelText } = render(
     <Pagination
-      currentRange={3}
+      itemsPerPage={3}
       currentPage={1}
       totalItems={10}
-      rangeOptions={[2, 3, 5]}
+      itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
       onRangeChange={changeRange}
     />,

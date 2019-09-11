@@ -8,75 +8,75 @@ import { Flex } from '../Flex';
 import { StyledButton } from './styled';
 
 export interface PaginationProps extends MarginProps {
-  currentRange: number;
   currentPage: number;
+  itemsPerPage: number;
+  itemsPerPageOptions: number[];
   totalItems: number;
-  rangeOptions: number[];
   onPageChange(page: number): void;
   onRangeChange(range: number): void;
 }
 
 export const Pagination: React.FC<PaginationProps> = props => {
-  const { currentRange, currentPage, totalItems, rangeOptions, onPageChange, onRangeChange } = props;
+  const { itemsPerPage, currentPage, totalItems, itemsPerPageOptions, onPageChange, onRangeChange } = props;
 
-  const [maxPages, setMaxPages] = useState(Math.ceil(totalItems / currentRange));
-  const [itemRange, setItemRange] = useState([0, 0]);
+  const [maxPages, setMaxPages] = useState(Math.ceil(totalItems / itemsPerPage));
+  const [itemRange, setItemRange] = useState({ start: 0, end: 0 });
 
-  useEffect(() => {
+  const handlePageOutOfBounds = () => {
     if (currentPage < 1 || isNaN(currentPage) || currentPage === undefined) {
       onPageChange(1);
     } else if (currentPage > maxPages) {
       onPageChange(maxPages);
     }
+  };
 
-    if (currentRange < 1 || isNaN(currentRange) || currentRange === undefined) {
-      onRangeChange(rangeOptions[0]);
+  const handlePerPageOutOfBounds = () => {
+    if (itemsPerPage < 1 || isNaN(itemsPerPage) || itemsPerPage === undefined) {
+      onRangeChange(itemsPerPageOptions[0]);
     }
+  };
 
-    let firstItemInRange = currentRange * (currentPage - 1) + 1;
-    let lastItemInRange = currentRange * currentPage;
+  const calculateRange = () => {
+    let firstItemInRange = itemsPerPage * (currentPage - 1) + 1;
+    let lastItemInRange = itemsPerPage * currentPage;
 
-    if (lastItemInRange > totalItems) {
-      lastItemInRange = totalItems;
-    }
-    if (firstItemInRange > totalItems) {
-      firstItemInRange = totalItems;
-    }
+    firstItemInRange = Math.min(firstItemInRange, totalItems);
+    lastItemInRange = Math.min(lastItemInRange, totalItems);
+
     if (lastItemInRange === 0 || isNaN(lastItemInRange) || isNaN(firstItemInRange)) {
       firstItemInRange = 0;
       lastItemInRange = 0;
     }
 
-    setItemRange([firstItemInRange, lastItemInRange]);
-  }, [currentPage, currentRange, totalItems]);
+    setItemRange({ start: firstItemInRange, end: lastItemInRange });
+  };
+
+  useEffect(() => {
+    handlePageOutOfBounds();
+
+    handlePerPageOutOfBounds();
+
+    calculateRange();
+
+    setMaxPages(Math.ceil(totalItems / itemsPerPage));
+  }, [currentPage, itemsPerPage, totalItems]);
 
   const handlePageIncrease = () => {
-    let nextPage = currentPage + 1;
-    if (nextPage > maxPages) {
-      nextPage = maxPages;
-    }
-    onPageChange(nextPage);
+    onPageChange(currentPage + 1);
   };
 
   const handlePageDecrease = () => {
-    let nextPage = currentPage - 1;
-    if (nextPage < 1) {
-      nextPage = 1;
-    }
-    onPageChange(nextPage);
+    onPageChange(currentPage - 1);
   };
 
   const handleRangeChange = (range: number) => {
-    setMaxPages(Math.ceil(totalItems / range));
     onRangeChange(range);
   };
 
   const showRanges = () => {
-    if (itemRange[0] !== itemRange[1]) {
-      return `${itemRange[0]} - ${itemRange[1]} of ${totalItems}`;
-    } else {
-      return `${itemRange[0]} of ${totalItems}`;
-    }
+    return itemRange.start === itemRange.end
+      ? `${itemRange.start} of ${totalItems}`
+      : `${itemRange.start} - ${itemRange.end} of ${totalItems}`;
   };
 
   return (
@@ -84,18 +84,16 @@ export const Pagination: React.FC<PaginationProps> = props => {
       <Dropdown
         onItemClick={handleRangeChange}
         trigger={
-          <StyledButton variant="subtle" iconRight={<ArrowDropDownIcon size="xxLarge" color="secondary70" />}>
+          <StyledButton variant="subtle" iconRight={<ArrowDropDownIcon size="xxLarge" />}>
             {showRanges()}
           </StyledButton>
         }
       >
-        {rangeOptions.map((range, key) => {
-          return (
-            <Dropdown.Item key={key} value={range}>
-              {range} per page
-            </Dropdown.Item>
-          );
-        })}
+        {itemsPerPageOptions.map((range, key) => (
+          <Dropdown.Item key={key} value={range}>
+            {range} per page
+          </Dropdown.Item>
+        ))}
       </Dropdown>
       <Flex.Item>
         <StyledButton

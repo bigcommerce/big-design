@@ -5,7 +5,7 @@ import { PropTable } from '../components';
 export const PaginationPropTable: React.FC = () => {
   return (
     <PropTable>
-      <PropTable.Prop name="currentRange" types="number" defaults="" required>
+      <PropTable.Prop name="itemsPerPage" types="number" defaults="" required>
         Indicates how many items are displayed per page
       </PropTable.Prop>
       <PropTable.Prop name="currentPage" types="number" defaults="" required>
@@ -14,7 +14,7 @@ export const PaginationPropTable: React.FC = () => {
       <PropTable.Prop name="totalItems" types="number" defaults="" required>
         Indicates how many items in total will be displayed
       </PropTable.Prop>
-      <PropTable.Prop name="rangeOptions" types="number[]" defaults="" required>
+      <PropTable.Prop name="itemsPerPageOptions" types="number[]" defaults="" required>
         Indicates options for per-page ranges
       </PropTable.Prop>
       <PropTable.Prop name="onPageChange" types="(page: number) => void" required>

@@ -40,8 +40,8 @@ export default () => (
           <>
             <Pagination
               currentPage={page}
-              currentRange={range}
-              rangeOptions={ranges}
+              itemsPerPage={range}
+              itemsPerPageOptions={ranges}
               totalItems={items.length}
               onPageChange={newPage => setPage(newPage)}
               onRangeChange={newRange => setRange(newRange)}
