@@ -94,7 +94,7 @@ test('trigger range change', () => {
 test('trigger page decrease', () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
-  const { getByLabelText } = render(
+  const { container } = render(
     <Pagination
       itemsPerPage={3}
       currentPage={2}
@@ -104,7 +104,7 @@ test('trigger page decrease', () => {
       onItemsPerPageChange={changeRange}
     />,
   );
-  fireEvent.click(getByLabelText('previous-page'));
+  fireEvent.click(container.querySelector('.bd-pagination-prev') as HTMLButtonElement);
 
   expect(changePage).toHaveBeenCalled();
 });
@@ -112,7 +112,7 @@ test('trigger page decrease', () => {
 test('trigger page increase', () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
-  const { getByLabelText } = render(
+  const { container } = render(
     <Pagination
       itemsPerPage={3}
       currentPage={1}
@@ -122,7 +122,7 @@ test('trigger page increase', () => {
       onItemsPerPageChange={changeRange}
     />,
   );
-  fireEvent.click(getByLabelText('next-page'));
+  fireEvent.click(container.querySelector('.bd-pagination-next') as HTMLButtonElement);
 
   expect(changePage).toHaveBeenCalled();
 });

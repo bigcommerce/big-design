@@ -404,8 +404,7 @@ exports[`render pagination component 1`] = `
     class="c8 c1"
   >
     <button
-      aria-label="previous-page"
-      class="c2 c9"
+      class="bd-pagination-prev c2 c9"
       disabled=""
       role="button"
       tabindex="0"
@@ -422,7 +421,9 @@ exports[`render pagination component 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
+          <title>
+            Previous page
+          </title>
           <path
             d="M0 0h24v24H0V0z"
             fill="none"
@@ -434,8 +435,7 @@ exports[`render pagination component 1`] = `
       </span>
     </button>
     <button
-      aria-label="next-page"
-      class="c2 c9"
+      class="bd-pagination-next c2 c9"
       role="button"
       tabindex="0"
     >
@@ -451,7 +451,9 @@ exports[`render pagination component 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
+          <title>
+            Next page
+          </title>
           <path
             d="M0 0h24v24H0V0z"
             fill="none"
@@ -870,8 +872,7 @@ exports[`render pagination component with invalid page info 1`] = `
     class="c8 c1"
   >
     <button
-      aria-label="previous-page"
-      class="c2 c9"
+      class="bd-pagination-prev c2 c9"
       disabled=""
       role="button"
       tabindex="0"
@@ -888,7 +889,9 @@ exports[`render pagination component with invalid page info 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
+          <title>
+            Previous page
+          </title>
           <path
             d="M0 0h24v24H0V0z"
             fill="none"
@@ -900,8 +903,7 @@ exports[`render pagination component with invalid page info 1`] = `
       </span>
     </button>
     <button
-      aria-label="next-page"
-      class="c2 c9"
+      class="bd-pagination-next c2 c9"
       role="button"
       tabindex="0"
     >
@@ -917,7 +919,9 @@ exports[`render pagination component with invalid page info 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
+          <title>
+            Next page
+          </title>
           <path
             d="M0 0h24v24H0V0z"
             fill="none"
@@ -1336,8 +1340,7 @@ exports[`render pagination component with invalid range info 1`] = `
     class="c8 c1"
   >
     <button
-      aria-label="previous-page"
-      class="c2 c9"
+      class="bd-pagination-prev c2 c9"
       disabled=""
       role="button"
       tabindex="0"
@@ -1354,7 +1357,9 @@ exports[`render pagination component with invalid range info 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
+          <title>
+            Previous page
+          </title>
           <path
             d="M0 0h24v24H0V0z"
             fill="none"
@@ -1366,8 +1371,7 @@ exports[`render pagination component with invalid range info 1`] = `
       </span>
     </button>
     <button
-      aria-label="next-page"
-      class="c2 c9"
+      class="bd-pagination-next c2 c9"
       disabled=""
       role="button"
       tabindex="0"
@@ -1384,7 +1388,9 @@ exports[`render pagination component with invalid range info 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
+          <title>
+            Next page
+          </title>
           <path
             d="M0 0h24v24H0V0z"
             fill="none"
@@ -1803,8 +1809,7 @@ exports[`render pagination component with no items 1`] = `
     class="c8 c1"
   >
     <button
-      aria-label="previous-page"
-      class="c2 c9"
+      class="bd-pagination-prev c2 c9"
       disabled=""
       role="button"
       tabindex="0"
@@ -1821,7 +1826,9 @@ exports[`render pagination component with no items 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
+          <title>
+            Previous page
+          </title>
           <path
             d="M0 0h24v24H0V0z"
             fill="none"
@@ -1833,8 +1840,7 @@ exports[`render pagination component with no items 1`] = `
       </span>
     </button>
     <button
-      aria-label="next-page"
-      class="c2 c9"
+      class="bd-pagination-next c2 c9"
       disabled=""
       role="button"
       tabindex="0"
@@ -1851,7 +1857,9 @@ exports[`render pagination component with no items 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
+          <title>
+            Next page
+          </title>
           <path
             d="M0 0h24v24H0V0z"
             fill="none"

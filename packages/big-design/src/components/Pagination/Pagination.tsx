@@ -96,11 +96,21 @@ export const Pagination: React.FC<PaginationProps> = props => {
         ))}
       </Dropdown>
       <Flex.Item>
-        <StyledButton variant="subtle" disabled={currentPage <= 1} onClick={handlePageDecrease}>
+        <StyledButton
+          className="bd-pagination-prev"
+          variant="subtle"
+          disabled={currentPage <= 1}
+          onClick={handlePageDecrease}
+        >
           <ChevronLeftIcon title="Previous page" />
         </StyledButton>
 
-        <StyledButton variant="subtle" disabled={currentPage >= maxPages} onClick={handlePageIncrease}>
+        <StyledButton
+          className="bd-pagination-next"
+          variant="subtle"
+          disabled={currentPage >= maxPages}
+          onClick={handlePageIncrease}
+        >
           <ChevronRightIcon title="Next page" />
         </StyledButton>
       </Flex.Item>
