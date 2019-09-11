@@ -13,11 +13,11 @@ export interface PaginationProps extends MarginProps {
   itemsPerPageOptions: number[];
   totalItems: number;
   onPageChange(page: number): void;
-  onRangeChange(range: number): void;
+  onItemsPerPageChange(range: number): void;
 }
 
 export const Pagination: React.FC<PaginationProps> = props => {
-  const { itemsPerPage, currentPage, totalItems, itemsPerPageOptions, onPageChange, onRangeChange } = props;
+  const { itemsPerPage, currentPage, totalItems, itemsPerPageOptions, onPageChange, onItemsPerPageChange } = props;
 
   const [maxPages, setMaxPages] = useState(Math.ceil(totalItems / itemsPerPage));
   const [itemRange, setItemRange] = useState({ start: 0, end: 0 });
@@ -32,7 +32,7 @@ export const Pagination: React.FC<PaginationProps> = props => {
 
   const handlePerPageOutOfBounds = () => {
     if (itemsPerPage < 1 || isNaN(itemsPerPage) || itemsPerPage === undefined) {
-      onRangeChange(itemsPerPageOptions[0]);
+      onItemsPerPageChange(itemsPerPageOptions[0]);
     }
   };
 
@@ -70,7 +70,7 @@ export const Pagination: React.FC<PaginationProps> = props => {
   };
 
   const handleRangeChange = (range: number) => {
-    onRangeChange(range);
+    onItemsPerPageChange(range);
   };
 
   const showRanges = () => {
@@ -96,22 +96,12 @@ export const Pagination: React.FC<PaginationProps> = props => {
         ))}
       </Dropdown>
       <Flex.Item>
-        <StyledButton
-          variant="subtle"
-          disabled={currentPage <= 1}
-          aria-label="previous-page"
-          onClick={handlePageDecrease}
-        >
-          <ChevronLeftIcon />
+        <StyledButton variant="subtle" disabled={currentPage <= 1} onClick={handlePageDecrease}>
+          <ChevronLeftIcon title="Previous page" />
         </StyledButton>
 
-        <StyledButton
-          variant="subtle"
-          disabled={currentPage >= maxPages}
-          aria-label="next-page"
-          onClick={handlePageIncrease}
-        >
-          <ChevronRightIcon />
+        <StyledButton variant="subtle" disabled={currentPage >= maxPages} onClick={handlePageIncrease}>
+          <ChevronRightIcon title="Next page" />
         </StyledButton>
       </Flex.Item>
     </Flex>

@@ -44,7 +44,7 @@ export default () => (
               itemsPerPageOptions={ranges}
               totalItems={items.length}
               onPageChange={newPage => setPage(newPage)}
-              onRangeChange={newRange => setRange(newRange)}
+              onItemsPerPageChange={newRange => setRange(newRange)}
             />
             <ul>
               {currentItems.map(item => (

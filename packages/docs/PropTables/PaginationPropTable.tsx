@@ -20,7 +20,7 @@ export const PaginationPropTable: React.FC = () => {
       <PropTable.Prop name="onPageChange" types="(page: number) => void" required>
         Function that will be called when a navigation arrow is clicked
       </PropTable.Prop>
-      <PropTable.Prop name="onRangeChange" types="(range: number) => void" required>
+      <PropTable.Prop name="onItemsPerPageChange" types="(range: number) => void" required>
         Function that will be called when a new per-page range is selected
       </PropTable.Prop>
     </PropTable>

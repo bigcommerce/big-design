@@ -14,7 +14,7 @@ test('render pagination component', () => {
       totalItems={10}
       itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
-      onRangeChange={changeRange}
+      onItemsPerPageChange={changeRange}
     />,
   );
 
@@ -31,7 +31,7 @@ test('render pagination component with invalid page info', () => {
       totalItems={10}
       itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
-      onRangeChange={changeRange}
+      onItemsPerPageChange={changeRange}
     />,
   );
   expect(changePage).toHaveBeenCalled();
@@ -48,7 +48,7 @@ test('render pagination component with invalid range info', () => {
       totalItems={10}
       itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
-      onRangeChange={changeRange}
+      onItemsPerPageChange={changeRange}
     />,
   );
   expect(changeRange).toHaveBeenCalled();
@@ -65,7 +65,7 @@ test('render pagination component with no items', () => {
       totalItems={0}
       itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
-      onRangeChange={changeRange}
+      onItemsPerPageChange={changeRange}
     />,
   );
   expect(container.firstChild).toMatchSnapshot();
@@ -81,7 +81,7 @@ test('trigger range change', () => {
       totalItems={10}
       itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
-      onRangeChange={changeRange}
+      onItemsPerPageChange={changeRange}
     />,
   );
   fireEvent.click(getByText('1 - 3 of 10'));
@@ -101,7 +101,7 @@ test('trigger page decrease', () => {
       totalItems={10}
       itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
-      onRangeChange={changeRange}
+      onItemsPerPageChange={changeRange}
     />,
   );
   fireEvent.click(getByLabelText('previous-page'));
@@ -119,7 +119,7 @@ test('trigger page increase', () => {
       totalItems={10}
       itemsPerPageOptions={[2, 3, 5]}
       onPageChange={changePage}
-      onRangeChange={changeRange}
+      onItemsPerPageChange={changeRange}
     />,
   );
   fireEvent.click(getByLabelText('next-page'));
