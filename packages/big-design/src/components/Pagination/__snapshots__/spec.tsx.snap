@@ -404,7 +404,7 @@ exports[`render pagination component 1`] = `
     class="c8 c1"
   >
     <button
-      class="bd-pagination-prev c2 c9"
+      class="c2 c9"
       disabled=""
       role="button"
       tabindex="0"
@@ -435,7 +435,7 @@ exports[`render pagination component 1`] = `
       </span>
     </button>
     <button
-      class="bd-pagination-next c2 c9"
+      class="c2 c9"
       role="button"
       tabindex="0"
     >
@@ -872,7 +872,7 @@ exports[`render pagination component with invalid page info 1`] = `
     class="c8 c1"
   >
     <button
-      class="bd-pagination-prev c2 c9"
+      class="c2 c9"
       disabled=""
       role="button"
       tabindex="0"
@@ -903,7 +903,7 @@ exports[`render pagination component with invalid page info 1`] = `
       </span>
     </button>
     <button
-      class="bd-pagination-next c2 c9"
+      class="c2 c9"
       role="button"
       tabindex="0"
     >
@@ -1340,7 +1340,7 @@ exports[`render pagination component with invalid range info 1`] = `
     class="c8 c1"
   >
     <button
-      class="bd-pagination-prev c2 c9"
+      class="c2 c9"
       disabled=""
       role="button"
       tabindex="0"
@@ -1371,7 +1371,7 @@ exports[`render pagination component with invalid range info 1`] = `
       </span>
     </button>
     <button
-      class="bd-pagination-next c2 c9"
+      class="c2 c9"
       disabled=""
       role="button"
       tabindex="0"
@@ -1809,7 +1809,7 @@ exports[`render pagination component with no items 1`] = `
     class="c8 c1"
   >
     <button
-      class="bd-pagination-prev c2 c9"
+      class="c2 c9"
       disabled=""
       role="button"
       tabindex="0"
@@ -1840,7 +1840,7 @@ exports[`render pagination component with no items 1`] = `
       </span>
     </button>
     <button
-      class="bd-pagination-next c2 c9"
+      class="c2 c9"
       disabled=""
       role="button"
       tabindex="0"
