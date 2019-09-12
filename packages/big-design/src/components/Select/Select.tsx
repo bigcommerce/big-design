@@ -81,7 +81,17 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   }
 
   render() {
-    const { label, maxHeight, onActionClick, onItemChange, placeholder, placement, value, ...rest } = this.props;
+    const {
+      children,
+      label,
+      maxHeight,
+      onActionClick,
+      onItemChange,
+      placeholder,
+      placement,
+      value,
+      ...rest
+    } = this.props;
 
     const { isOpen } = this.state;
 
