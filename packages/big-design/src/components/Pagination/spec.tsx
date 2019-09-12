@@ -76,7 +76,7 @@ test('trigger range change', () => {
   const changeRange = jest.fn();
   const { getByText } = render(
     <Pagination
-      itemsPerPage={3}
+      itemsPerPage={2}
       currentPage={1}
       totalItems={10}
       itemsPerPageOptions={[2, 3, 5]}
@@ -84,7 +84,7 @@ test('trigger range change', () => {
       onItemsPerPageChange={changeRange}
     />,
   );
-  fireEvent.click(getByText('1 - 3 of 10'));
+  fireEvent.click(getByText('1 - 2 of 10'));
   fireEvent.keyDown(getByText('2 per page'), { key: 'ArrowDown', code: 40 });
   fireEvent.keyDown(getByText('3 per page'), { key: 'Enter', code: 13 });
 
