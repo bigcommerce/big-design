@@ -62,8 +62,8 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     this.updatedSelectedItem();
   }
 
-  componentDidUpdate(prevProps: Props) {
-    const { value } = this.props;
+  componentDidUpdate(prevProps: SelectProps) {
+    const { children, value } = this.props;
 
     // Reset input if value was reset to empty string
     if (prevProps.value && !value) {
@@ -74,20 +74,14 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     if (prevProps.value !== value) {
       this.updatedSelectedItem();
     }
+
+    if (prevProps.children !== children) {
+      this.updatedSelectedItem();
+    }
   }
 
   render() {
-    const {
-      children,
-      label,
-      maxHeight,
-      onActionClick,
-      onItemChange,
-      placeholder,
-      placement,
-      value,
-      ...rest
-    } = this.props;
+    const { label, maxHeight, onActionClick, onItemChange, placeholder, placement, value, ...rest } = this.props;
 
     const { isOpen } = this.state;
 
