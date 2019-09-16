@@ -14,7 +14,7 @@ export interface EventOptions {
 export const GTM_ID = GTM_CONFIG.ID;
 
 export const GTM_URL = [
-  `https://www.googletagmanager.com/gtag/js?id=${GTM_CONFIG.ID}`,
+  `https://www.googletagmanager.com/gtm.js?id=${GTM_CONFIG.ID}`,
   GTM_CONFIG.AUTH && `gtm_auth=${GTM_CONFIG.AUTH}`,
   GTM_CONFIG.PREVIEW && `gtm_preview=${GTM_CONFIG.PREVIEW}`,
   GTM_CONFIG.COOKIES_WIN && `gtm_cookies_win=${GTM_CONFIG.COOKIES_WIN}`,
