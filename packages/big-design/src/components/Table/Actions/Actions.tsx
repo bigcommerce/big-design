@@ -50,7 +50,7 @@ export const TableActions: React.FC<TableActionsProps> = ({
             <Checkbox label={false} checked={selectAll} onClick={handleSelectAllClick} onChange={noop} />
           </StyledActionItem>
         ) : null}
-        <StyledActionItem>{children}</StyledActionItem>
+        {children}
         {/* <StyledActionItem>Bulk Actions</StyledActionItem> */}
         {/* <StyledActionItem>Pagination</StyledActionItem> */}
       </StyledActions>
