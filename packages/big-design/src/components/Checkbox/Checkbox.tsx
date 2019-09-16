@@ -9,7 +9,7 @@ import { CheckboxContainer, HiddenCheckbox, StyledCheckbox, StyledLabel } from '
 
 interface Props {
   isIndeterminate?: boolean;
-  label: React.ReactChild;
+  label: React.ReactChild | boolean;
   theme?: ThemeInterface;
 }
 

@@ -1,0 +1,62 @@
+import React, { useState } from 'react';
+
+import { uniqueId } from '../../utils';
+
+import { TableContext } from './context';
+import { StyledTable, StyledTableFigure } from './styled';
+import { TableActions, TableActionsProps } from './Actions/Actions';
+import { TableBody, TableBodyProps } from './Body/Body';
+import { TableCell, TableCellProps } from './Cell/Cell';
+import { TableFooter, TableFooterProps } from './Footer/Footer';
+import { TableHead, TableHeadProps } from './Head/Head';
+import { TableRow, TableRowProps } from './Row/Row';
+
+export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement & { children: React.ReactNode }> {
+  selectable?: boolean;
+}
+
+interface Table extends React.FC<TableProps> {
+  Actions: TableActionsProps;
+  Body: TableBodyProps;
+  Cell: TableCellProps;
+  Footer: TableFooterProps;
+  Head: TableHeadProps;
+  Row: TableRowProps;
+}
+
+export function Table(this: Table, props: TableProps) {
+  const { children, className, selectable, style, ...rest } = props;
+  const [selectAll, setSelectAll] = useState(false);
+  const tableId = uniqueId('table_');
+  const tableActions: React.ReactChild[] = [];
+
+  function renderChildren() {
+    return React.Children.map(children, (child, index) => {
+      if (React.isValidElement(child) && child.type === Table.Actions) {
+        tableActions.push(
+          React.cloneElement<TableActionsProps>(child, { selectable, tableId, key: index, onSelectAll: setSelectAll }),
+        );
+      } else {
+        return child;
+      }
+    });
+  }
+
+  return (
+    <TableContext.Provider value={{ selectable, selectAll, tableId }}>
+      {tableActions ? tableActions : null}
+      <StyledTable id={tableId} {...rest}>
+        {renderChildren()}
+      </StyledTable>
+    </TableContext.Provider>
+  );
+}
+
+Table.Actions = TableActions;
+Table.Body = TableBody;
+Table.Cell = TableCell;
+Table.Footer = TableFooter;
+Table.Head = TableHead;
+Table.Row = TableRow;
+
+export const TableFigure: React.FC<any> = ({ className, style, ...props }) => <StyledTableFigure {...props} />;

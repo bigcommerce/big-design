@@ -1,6 +1,6 @@
+import { Table, TableFigure } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { StyledTable, StyledTableBody, StyledTableFigure, StyledTableFooter, StyledTableHead } from './styled';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { Prop } from './Prop';
@@ -12,17 +12,18 @@ export class PropTable extends React.PureComponent {
 
   render() {
     return (
-      <StyledTableFigure>
-        <StyledTable>
-          <StyledTableHead>
+      <TableFigure>
+        <Table>
+          <Table.Actions>Test</Table.Actions>
+          <Table.Head>
             <PropTable.Header />
-          </StyledTableHead>
-          <StyledTableBody>{this.renderChildren()}</StyledTableBody>
-          <StyledTableFooter>
+          </Table.Head>
+          <Table.Body>{this.renderChildren()}</Table.Body>
+          <Table.Footer>
             <PropTable.Footer />
-          </StyledTableFooter>
-        </StyledTable>
-      </StyledTableFigure>
+          </Table.Footer>
+        </Table>
+      </TableFigure>
     );
   }
 
