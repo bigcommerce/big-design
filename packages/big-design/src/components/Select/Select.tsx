@@ -62,17 +62,27 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     this.updatedSelectedItem();
   }
 
-  componentDidUpdate(prevProps: Props) {
-    const { value } = this.props;
+  componentDidUpdate(prevProps: SelectProps) {
+    const { children, value } = this.props;
 
     // Reset input if value was reset to empty string
     if (prevProps.value && !value) {
       this.updatedSelectedItem();
+
+      return;
     }
 
     // Match input text to select value
     if (prevProps.value !== value) {
       this.updatedSelectedItem();
+
+      return;
+    }
+
+    if (prevProps.children !== children) {
+      this.updatedSelectedItem();
+
+      return;
     }
   }
 

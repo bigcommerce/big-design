@@ -590,3 +590,28 @@ test('should be invalid when it has an error', () => {
 
   expect(input.checkValidity()).toEqual(false);
 });
+
+test('select input text should update if a matching child appears', () => {
+  const { getAllByLabelText, rerender } = render(
+    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+    </Select>,
+  );
+
+  const input = getAllByLabelText('Countries')[0];
+
+  expect(input.getAttribute('value')).toEqual('');
+
+  rerender(
+    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+      <Select.Option value="ca">Canada</Select.Option>
+      <Select.Option value="en">England</Select.Option>
+    </Select>,
+  );
+
+  expect(input.getAttribute('value')).toEqual('Mexico');
+});
