@@ -11,6 +11,7 @@ export * from './Grid';
 export * from './Input';
 export * from './Link';
 export * from './Modal';
+export * from './Pagination';
 export * from './Panel';
 export * from './ProgressBar';
 export * from './ProgressCircle';

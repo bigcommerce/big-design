@@ -32,6 +32,7 @@ module.exports = {
     '/margin': { page: '/Margin/MarginPage' },
     '/modal': { page: '/Modal/ModalPage' },
     '/padding': { page: '/Padding/PaddingPage' },
+    '/pagination': { page: '/Pagination/PaginationPage' },
     '/panel': { page: '/Panel/PanelPage' },
     '/progress-bar': { page: '/Progress/ProgressBarPage' },
     '/progress-circle': { page: '/Progress/ProgressCirclePage' },
