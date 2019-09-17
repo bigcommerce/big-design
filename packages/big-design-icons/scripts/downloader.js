@@ -6,14 +6,14 @@ const inquirerAutocomplete = require('inquirer-autocomplete-prompt');
 
 inquirer.registerPrompt('autocomplete', inquirerAutocomplete);
 
-const BASE_URL = 'https://material.io/tools/icons/static';
 const DEST_PATH = join(__dirname, '..', 'svgs', 'material');
 
-async function downloadIcon(iconName) {
-  console.log(`Downloading icon: ${iconName}`);
+async function downloadIcon(icon) {
+  console.log(`Downloading icon: ${icon.name}`);
 
-  const fileName = `round-${iconName}-24px.svg`;
-  const response = await fetch(`${BASE_URL}/icons/${fileName}`);
+  const response = await fetch(
+    `https://fonts.gstatic.com/s/i/materialiconsround/${icon.name}/v${icon.version}/24px.svg`,
+  );
 
   if (response.status !== 200) {
     throw new Error(`Error status: ${response.status}`);
@@ -21,21 +21,21 @@ async function downloadIcon(iconName) {
 
   const fileContent = await response.text();
 
-  await outputFile(join(DEST_PATH, `${iconName}.svg`), fileContent);
+  await outputFile(join(DEST_PATH, `${icon.name}.svg`), fileContent);
 }
 
-function iconExists(iconName) {
-  const iconFilePath = join(DEST_PATH, `${iconName}.svg`);
+function iconExists(icon) {
+  const iconFilePath = join(DEST_PATH, `${icon.name}.svg`);
 
   return pathExists(iconFilePath);
 }
 
 async function fetchIconList() {
-  const response = await fetch(`${BASE_URL}/data.json`);
-  const data = await response.json();
-  const icons = data.categories.reduce((acc, item) => acc.concat(item.icons), []);
+  const response = await fetch('https://fonts.google.com/metadata/icons');
+  const text = await response.text();
+  const { icons } = JSON.parse(text.replace(")]}'", ''));
 
-  return icons.map(({ id }) => id);
+  return icons;
 }
 
 (async () => {
@@ -45,14 +45,20 @@ async function fetchIconList() {
       type: 'autocomplete',
       name: 'icon',
       message: 'Select an icon to download',
-      source: (_answersSoFar, input = '') => Promise.resolve(iconList.filter(icon => icon.startsWith(input)).sort()),
+      source: (_answersSoFar, input = '') =>
+        Promise.resolve(
+          iconList
+            .filter(icon => icon.name.startsWith(input))
+            .sort()
+            .map(icon => ({ name: icon.name, value: icon })),
+        ),
     },
   ]);
 
   const iconAlreadyExists = await iconExists(icon);
 
   if (iconAlreadyExists) {
-    console.log(`Icon "${icon}" already exists.`);
+    console.log(`Icon "${icon.name}" already exists.`);
   } else {
     await downloadIcon(icon);
   }
