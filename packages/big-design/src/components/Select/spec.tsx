@@ -7,23 +7,6 @@ import { Form } from '../Form';
 
 import { Select } from './Select';
 
-jest.mock('popper.js', () => {
-  const PopperJS = jest.requireActual('popper.js');
-
-  return class {
-    static placements = PopperJS.placements;
-
-    constructor() {
-      return {
-        // tslint:disable-next-line: no-empty
-        destroy: () => {},
-        // tslint:disable-next-line: no-empty
-        scheduleUpdate: () => {},
-      };
-    }
-  };
-});
-
 const onItemChange = jest.fn();
 
 const SelectMock = (
