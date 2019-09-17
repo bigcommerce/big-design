@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.2.0...@bigcommerce/big-design-icons@0.2.1) (2019-09-17)
+
+
+### Bug Fixes
+
+* **icons:** use new api on icon downloader ([#195](https://github.com/bigcommerce/big-design/issues/195)) ([6bae4ae](https://github.com/bigcommerce/big-design/commit/6bae4ae))
+
+
+
+
+
 # [0.2.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.1.2...@bigcommerce/big-design-icons@0.2.0) (2019-08-20)
 
 

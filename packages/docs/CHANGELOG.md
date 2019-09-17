@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.8.0...@bigcommerce/docs@0.9.0) (2019-09-17)
+
+
+### Bug Fixes
+
+* update GTM tag to new version ([#194](https://github.com/bigcommerce/big-design/issues/194)) ([92fa199](https://github.com/bigcommerce/big-design/commit/92fa199))
+
+
+### Features
+
+* **component:** create basic pagination component ([#188](https://github.com/bigcommerce/big-design/issues/188)) ([d79ede5](https://github.com/bigcommerce/big-design/commit/d79ede5))
+
+
+
+
+
 # [0.8.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.7.1...@bigcommerce/docs@0.8.0) (2019-09-06)
 
 

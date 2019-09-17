@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.8.0...@bigcommerce/big-design@0.9.0) (2019-09-17)
+
+
+### Bug Fixes
+
+* updates the input label if a matching children appears ([#193](https://github.com/bigcommerce/big-design/issues/193)) ([08b951c](https://github.com/bigcommerce/big-design/commit/08b951c))
+
+
+### Features
+
+* **component:** create basic pagination component ([#188](https://github.com/bigcommerce/big-design/issues/188)) ([d79ede5](https://github.com/bigcommerce/big-design/commit/d79ede5))
+
+
+
+
+
 # [0.8.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.7.1...@bigcommerce/big-design@0.8.0) (2019-09-06)
 
 
