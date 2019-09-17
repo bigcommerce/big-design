@@ -6,16 +6,24 @@ import React from 'react';
 import { Checkbox } from './index';
 import { StyleableCheckbox } from './private';
 
-test('render Checkbox (checked)', () => {
-  const { container } = render(<Checkbox label="Checked" checked={true} onChange={() => null} />);
+describe('render Checkbox', () => {
+  test('checked', () => {
+    const { container } = render(<Checkbox label="Checked" checked={true} onChange={() => null} />);
 
-  expect(container.firstChild).toMatchSnapshot();
-});
+    expect(container.firstChild).toMatchSnapshot();
+  });
 
-test('render Checkbox (unchecked)', () => {
-  const { container } = render(<Checkbox label="Unchecked" checked={false} onChange={() => null} />);
+  test('unchecked', () => {
+    const { container } = render(<Checkbox label="Unchecked" checked={false} onChange={() => null} />);
 
-  expect(container.firstChild).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('indeterminate', () => {
+    const { container } = render(<Checkbox label="Unchecked" isIndeterminate={true} onChange={() => null} />);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
 
 test('has correct value for checked', () => {
@@ -30,6 +38,15 @@ test('has correct value for checked', () => {
 test('has correct value for unchecked', () => {
   const { getByTestId } = render(
     <Checkbox label="Checked" checked={false} onChange={() => null} data-testid="checkbox" />,
+  );
+  const input = getByTestId('checkbox') as HTMLInputElement;
+
+  expect(input.checked).toBe(false);
+});
+
+test('has correct value for indeterminate', () => {
+  const { getByTestId } = render(
+    <Checkbox label="Checked" isIndeterminate checked={false} onChange={() => null} data-testid="checkbox" />,
   );
   const input = getByTestId('checkbox') as HTMLInputElement;
 

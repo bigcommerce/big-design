@@ -40,5 +40,20 @@ export default () => (
     </Text>
 
     <CheckboxPropTable />
+
+    <H1>Indeterminate</H1>
+
+    <Text>
+      Checkboxs support <Code primary>isIndeterminate</Code> passed as a prop to show a combined state of partially
+      selected checkboxes.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Form.Group>
+        <Checkbox label="Indeterminate" isIndeterminate />
+      </Form.Group>
+      {/* jsx-to-string:end */}
+    </CodePreview>
   </>
 );
