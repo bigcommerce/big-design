@@ -19,19 +19,21 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function ExampleList() {
-        const items = ['Item1', 'Item2', 'Item3', 'Item4', 'Item5'];
-        const ranges = [2, 3, 4];
-
+        const [items] = React.useState(['Item1', 'Item2', 'Item3', 'Item 4', 'Item 5']);
+        const [ranges] = React.useState([2, 3, 4]);
         const [range, setRange] = React.useState(ranges[0]);
         const [page, setPage] = React.useState(1);
         const [currentItems, setCurrentItems] = React.useState(['']);
 
+        const onItemsPerPageChange = newRange => {
+          setPage(1);
+          setRange(newRange);
+        };
+
         React.useEffect(() => {
-          let lastItem = page * range;
-          const firstItem = lastItem - range;
-          if (lastItem > items.length) {
-            lastItem = items.length;
-          }
+          const maxItems = page * range;
+          const lastItem = Math.min(maxItems, items.length);
+          const firstItem = Math.max(0, maxItems - range);
 
           setCurrentItems(items.slice(firstItem, lastItem));
         }, [page, items, range]);
@@ -44,11 +46,11 @@ export default () => (
               itemsPerPageOptions={ranges}
               totalItems={items.length}
               onPageChange={newPage => setPage(newPage)}
-              onItemsPerPageChange={newRange => setRange(newRange)}
+              onItemsPerPageChange={onItemsPerPageChange}
             />
             <ul>
               {currentItems.map(item => (
-                <li>{item}</li>
+                <li key={item}>{item}</li>
               ))}
             </ul>
           </>
