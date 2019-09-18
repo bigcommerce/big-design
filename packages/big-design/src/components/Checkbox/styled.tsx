@@ -6,6 +6,7 @@ import { StyleableText } from '../Typography/private';
 
 interface StyledCheckboxProps {
   checked?: boolean;
+  isIndeterminate?: boolean;
 }
 
 export const CheckboxContainer = styled.div`
@@ -19,9 +20,11 @@ export const HiddenCheckbox = styled.input`
 
 export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   align-items: center;
-  background: ${props => (props.checked ? props.theme.colors.primary : props.theme.colors.white)};
+  background: ${({ checked, isIndeterminate, theme }) =>
+    checked || isIndeterminate ? theme.colors.primary : theme.colors.white};
   border: ${({ theme }) => theme.border.box};
-  border-color: ${props => (props.checked ? props.theme.colors.primary : props.theme.colors.secondary30)};
+  border-color: ${({ checked, isIndeterminate, theme }) =>
+    checked || isIndeterminate ? theme.colors.primary : theme.colors.secondary30};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   color: ${({ theme }) => theme.colors.white};
   display: inline-flex;
@@ -36,7 +39,7 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   }
 
   svg {
-    visibility: ${props => (props.checked ? 'visible' : 'hidden')};
+    visibility: ${({ checked, isIndeterminate }) => (checked || isIndeterminate ? 'visible' : 'hidden')};
   }
 `;
 

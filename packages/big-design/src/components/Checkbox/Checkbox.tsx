@@ -1,4 +1,4 @@
-import { CheckIcon } from '@bigcommerce/big-design-icons';
+import { CheckIcon, RemoveIcon } from '@bigcommerce/big-design-icons';
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { memo, Ref } from 'react';
@@ -8,6 +8,7 @@ import { uniqueId } from '../../utils';
 import { CheckboxContainer, HiddenCheckbox, StyledCheckbox, StyledLabel } from './styled';
 
 interface Props {
+  isIndeterminate?: boolean;
   label: React.ReactChild;
   theme?: ThemeInterface;
 }
@@ -24,7 +25,7 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
   private readonly labelUniqueId = uniqueId('checkBox_label_');
 
   render() {
-    const { checked, className, label, forwardedRef, style, ...props } = this.props;
+    const { checked, className, isIndeterminate, label, forwardedRef, style, ...props } = this.props;
     const id = this.getInputId();
 
     return (
@@ -35,10 +36,33 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
           id={id}
           {...props}
           aria-labelledby={this.labelUniqueId}
-          ref={forwardedRef}
+          ref={checkbox => {
+            if (checkbox && typeof isIndeterminate === 'boolean') {
+              checkbox.indeterminate = !checked && isIndeterminate;
+            }
+
+            if (forwardedRef) {
+              if (typeof forwardedRef === 'function') {
+                forwardedRef(checkbox);
+              } else {
+                // RefObject.current is readonly in DefinitelyTyped but in practice you
+                // can still write to it.
+                // See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/31065
+                // @ts-ignore
+                forwardedRef.current = checkbox;
+              }
+            }
+          }}
         />
-        <StyledCheckbox checked={checked} htmlFor={id} aria-hidden={true} theme={props.theme}>
-          <CheckIcon theme={props.theme} />
+
+        <StyledCheckbox
+          isIndeterminate={isIndeterminate}
+          checked={checked}
+          htmlFor={id}
+          aria-hidden={true}
+          theme={props.theme}
+        >
+          {!checked && isIndeterminate ? <RemoveIcon theme={props.theme} /> : <CheckIcon theme={props.theme} />}
         </StyledCheckbox>
         {this.renderLabel()}
       </CheckboxContainer>

@@ -27,6 +27,7 @@ export * from './OpenInNewIcon';
 export * from './PublicIcon';
 export * from './ReceiptIcon';
 export * from './RemoveCircleOutlineIcon';
+export * from './RemoveIcon';
 export * from './RestoreIcon';
 export * from './SearchIcon';
 export * from './SettingsIcon';
