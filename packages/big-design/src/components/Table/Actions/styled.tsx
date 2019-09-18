@@ -5,7 +5,4 @@ import { Flex } from '../../Flex';
 
 export const StyledActions = styled(Flex)``;
 
-export const StyledActionItem = styled(Flex.Item)``;
-
 StyledActions.defaultProps = { theme: defaultTheme };
-StyledActionItem.defaultProps = { theme: defaultTheme };

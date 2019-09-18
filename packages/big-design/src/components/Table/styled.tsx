@@ -5,6 +5,7 @@ export const StyledTableFigure = styled.figure`
   margin: ${({ theme }) => `${theme.spacing.xLarge} ${theme.spacing.none}`};
   max-width: 100%;
   overflow-x: auto;
+  position: relative;
   white-space: nowrap;
 
   ${({ theme }) => theme.breakpoints.tablet} {
@@ -14,6 +15,7 @@ export const StyledTableFigure = styled.figure`
 
 export const StyledTable = styled.table`
   border-collapse: collapse;
+  border-color: transparent;
   color: ${({ theme }) => theme.colors.secondary70};
   text-align: left;
   width: 100%;

@@ -1,20 +1,22 @@
 import React, { useContext } from 'react';
 
-import { TableSectionContext } from '../context';
+import { TableContext, TableSectionContext } from '../context';
 
 import { StyledTableCell, StyledTableHeader } from './styled';
 
 export interface TableCellProps extends React.TableHTMLAttributes<HTMLTableCellElement> {
   colSpan?: number;
   isCheckbox?: boolean;
+  stickyHeader?: boolean;
   format?(): any;
 }
 
 export const TableCell: React.FC<TableCellProps> = ({ className, style, ...props }) => {
-  const context = useContext(TableSectionContext);
+  const tableContext = useContext(TableContext);
+  const tableSectionContext = useContext(TableSectionContext);
 
-  if (context === 'thead') {
-    return <StyledTableHeader {...props} />;
+  if (tableSectionContext === 'thead') {
+    return <StyledTableHeader stickyHeader={tableContext.stickyHeader} {...props} />;
   }
 
   return <StyledTableCell {...props} />;

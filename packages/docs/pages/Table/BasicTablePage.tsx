@@ -3,26 +3,25 @@ import React from 'react';
 
 import { CodePreview } from '../../components';
 
-const items = [
-  {
-    name: 'itemsPerPage',
-    type: 'number',
-    defaults: null,
-    description: 'Indicates how many items are displayed per page',
-  },
-  {
-    name: 'currentPage',
-    type: 'number',
-    defaults: null,
-    description: 'Indicates the page currently/initially displayed',
-  },
-  {
-    name: 'totalItems',
-    type: 'number',
-    defaults: null,
-    description: 'Indicates how many items in total will be displayed',
-  },
-];
+interface Data {
+  name: string;
+  type: string;
+  defaults: string;
+  description: string;
+}
+
+function createData(
+  name,
+  type,
+  defaults,
+  description,
+): Data {
+  return { name, type, defaults, description };
+}
+
+const data: Data[] = new Array(100);
+
+data.fill(createData('itemsPerPage', 'number', '', 'Indicates how many items are displayed per page'), 0, 100);
 
 export default () => {
   return (
@@ -35,32 +34,39 @@ export default () => {
         </Link>
         .
       </Text> */}
-      <CodePreview scope={{ items }}>
+      <CodePreview scope={{ data }}>
         {/* jsx-to-string:start */}
         {function Example() {
-          const ranges = [2, 3, 4];
+          const [items] = React.useState(data);
+          const [ranges] = React.useState([10, 25, 100]);
 
-          const [range, setRange] = React.useState(ranges[0]);
+          const [range, setRange] = React.useState(ranges[2]);
           const [page, setPage] = React.useState(1);
-          const [currentItems, setCurrentItems] = React.useState([
-            { name: '', type: '', defaults: null, description: '' },
-          ]);
+          const [currentItems, setCurrentItems] = React.useState([]);
+
+          const onItemsPerPageChange = newRange => {
+            setPage(1);
+            setRange(newRange);
+          };
 
           React.useEffect(() => {
-            let lastItem = page * range;
-            const firstItem = lastItem - range;
-            if (lastItem > items.length) {
-              lastItem = items.length;
-            }
+            const maxItems = page * range;
+            const lastItem = Math.min(maxItems, items.length);
+            const firstItem = Math.max(0, maxItems - range);
 
+            // @ts-ignore
             setCurrentItems(items.slice(firstItem, lastItem));
           }, [page, items, range]);
 
+          const handleRowSelect = (isSelected) => {
+            console.log(isSelected);
+          }
+
           return (
-            <>
-              <Table selectable>
+            <div style={{ overflow: 'auto', maxHeight: '1000px'}}>
+              <Table selectable stickyHeader>
                 <Table.Actions alignItems="center" justifyContent="stretch">
-                  <Flex.Item paddingHorizontal="xxLarge" flexGrow={2}>
+                  <Flex.Item flexGrow={2}>
                     Test
                   </Flex.Item>
                   <Flex.Item>
@@ -70,7 +76,7 @@ export default () => {
                       itemsPerPageOptions={ranges}
                       totalItems={items.length}
                       onPageChange={newPage => setPage(newPage)}
-                      onItemsPerPageChange={newRange => setRange(newRange)}
+                      onItemsPerPageChange={onItemsPerPageChange}
                     />
                   </Flex.Item>
                 </Table.Actions>
@@ -83,8 +89,8 @@ export default () => {
                   </Table.Row>
                 </Table.Head>
                 <Table.Body>
-                  {currentItems.map(({ name, type, defaults, description }) => (
-                    <Table.Row key={name}>
+                  {currentItems.map(({ name, type, defaults, description }, index) => (
+                    <Table.Row key={index} onRowSelect={handleRowSelect}>
                       <Table.Cell>{name}</Table.Cell>
                       <Table.Cell>{type}</Table.Cell>
                       <Table.Cell>{defaults}</Table.Cell>
@@ -93,7 +99,7 @@ export default () => {
                   ))}
                 </Table.Body>
               </Table>
-            </>
+            </div>
           );
         }}
         {/* jsx-to-string:end */}

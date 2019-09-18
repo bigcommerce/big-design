@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 
 import { uniqueId } from '../../utils';
 
@@ -13,6 +13,7 @@ import { TableRow, TableRowProps } from './Row/Row';
 
 export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement & { children: React.ReactNode }> {
   selectable?: boolean;
+  stickyHeader?: boolean;
 }
 
 interface Table extends React.FC<TableProps> {
@@ -25,17 +26,15 @@ interface Table extends React.FC<TableProps> {
 }
 
 export function Table(this: Table, props: TableProps) {
-  const { children, className, selectable, style, ...rest } = props;
-  const [selectAll, setSelectAll] = useState(false);
+  const { children, className, selectable, stickyHeader, style, ...rest } = props;
+
   const tableId = uniqueId('table_');
   const tableActions: React.ReactChild[] = [];
 
   function renderChildren() {
     return React.Children.map(children, (child, index) => {
       if (React.isValidElement(child) && child.type === Table.Actions) {
-        tableActions.push(
-          React.cloneElement<TableActionsProps>(child, { selectable, tableId, key: index, onSelectAll: setSelectAll }),
-        );
+        tableActions.push(React.cloneElement<TableActionsProps>(child, { selectable, tableId, key: index }));
       } else {
         return child;
       }
@@ -43,7 +42,7 @@ export function Table(this: Table, props: TableProps) {
   }
 
   return (
-    <TableContext.Provider value={{ selectable, selectAll, tableId }}>
+    <TableContext.Provider value={{ selectable, stickyHeader, tableId }}>
       {tableActions ? tableActions : null}
       <StyledTable id={tableId} {...rest}>
         {renderChildren()}

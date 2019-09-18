@@ -6,7 +6,7 @@ export const TableSectionContext = React.createContext<SectionContext>('tbody');
 
 interface Context {
   selectable?: boolean;
-  selectAll?: boolean;
+  stickyHeader?: boolean;
   tableId?: string;
 }
 
