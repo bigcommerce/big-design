@@ -53,7 +53,7 @@ export const SideNav: React.FC = () => {
             Panel
           </SideNavLink>
           <SideNavLink href="/Table/BasicTablePage" as="/table-basic">
-            Table - Basic
+            Table
           </SideNavLink>
           <SideNavLink href="/Tabs/TabsPage" as="/tabs">
             Tabs

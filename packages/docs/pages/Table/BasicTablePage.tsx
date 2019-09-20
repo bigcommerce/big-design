@@ -3,30 +3,18 @@ import React from 'react';
 
 import { CodePreview } from '../../components';
 
-interface Data {
-  name: string;
-  type: string;
-  defaults: string;
-  description: string;
-}
+import { data } from './data';
 
-function createData(
-  name,
-  type,
-  defaults,
-  description,
-): Data {
-  return { name, type, defaults, description };
-}
-
-const data: Data[] = new Array(100);
-
-data.fill(createData('itemsPerPage', 'number', '', 'Indicates how many items are displayed per page'), 0, 100);
+const columns: Array<{ id: string; label: string, minWidth?: number; align?: 'left' | 'center' | 'right'; format?(value): string }> = [
+  { id: 'sku', label: 'Product SKU', minWidth: 124 },
+  { id: 'name', label: 'Product Name', minWidth: 120 },
+  { id: 'price', label: 'Price', align: 'right', format: value => `$${value.toFixed(2)}` },
+];
 
 export default () => {
   return (
     <>
-      <H0>Basic Table</H0>
+      <H0>Table</H0>
       {/* <Text>
         Intro text.
         <Link href="https://design.bigcommerce.com/components" target="_blank">
@@ -34,13 +22,13 @@ export default () => {
         </Link>
         .
       </Text> */}
-      <CodePreview scope={{ data }}>
+      <CodePreview scope={{ data, columns }}>
         {/* jsx-to-string:start */}
         {function Example() {
           const [items] = React.useState(data);
-          const [ranges] = React.useState([10, 25, 100]);
+          const [ranges] = React.useState([10, 20, 30, 50, 100]);
 
-          const [range, setRange] = React.useState(ranges[2]);
+          const [range, setRange] = React.useState(ranges[1]);
           const [page, setPage] = React.useState(1);
           const [currentItems, setCurrentItems] = React.useState([]);
 
@@ -58,17 +46,13 @@ export default () => {
             setCurrentItems(items.slice(firstItem, lastItem));
           }, [page, items, range]);
 
-          const handleRowSelect = (isSelected) => {
-            console.log(isSelected);
-          }
+          const handleRowSelect = isSelected => console.log(isSelected);
 
           return (
-            <div style={{ overflow: 'auto', maxHeight: '1000px'}}>
+            <>
               <Table selectable stickyHeader>
                 <Table.Actions alignItems="center" justifyContent="stretch">
-                  <Flex.Item flexGrow={2}>
-                    Test
-                  </Flex.Item>
+                  <Flex.Item flexGrow={2}>Test</Flex.Item>
                   <Flex.Item>
                     <Pagination
                       currentPage={page}
@@ -82,24 +66,30 @@ export default () => {
                 </Table.Actions>
                 <Table.Head>
                   <Table.Row>
-                    <Table.Cell>Prop Name</Table.Cell>
-                    <Table.Cell>Type</Table.Cell>
-                    <Table.Cell>Default</Table.Cell>
-                    <Table.Cell>Description</Table.Cell>
+                    {columns.map(column => (
+                      <Table.Cell key={column.id} minWidth={column.minWidth} align={column.align}>{column.label}</Table.Cell>
+                    ))}
                   </Table.Row>
                 </Table.Head>
                 <Table.Body>
-                  {currentItems.map(({ name, type, defaults, description }, index) => (
-                    <Table.Row key={index} onRowSelect={handleRowSelect}>
-                      <Table.Cell>{name}</Table.Cell>
-                      <Table.Cell>{type}</Table.Cell>
-                      <Table.Cell>{defaults}</Table.Cell>
-                      <Table.Cell>{description}</Table.Cell>
-                    </Table.Row>
-                  ))}
+                  {currentItems.map((row, index) => {
+                    return (
+                      <Table.Row key={index} onRowSelect={handleRowSelect}>
+                        {columns.map(column => {
+                          const value = row[column.id];
+
+                          return (
+                            <Table.Cell key={column.id} align={column.align}>
+                              {column.format && typeof value === 'number' ? column.format(value) : value}
+                            </Table.Cell>
+                          );
+                        })}
+                      </Table.Row>
+                    );
+                  })}
                 </Table.Body>
               </Table>
-            </div>
+            </>
           );
         }}
         {/* jsx-to-string:end */}

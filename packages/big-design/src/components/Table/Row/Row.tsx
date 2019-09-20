@@ -8,6 +8,7 @@ import { StyledTableRow } from './styled';
 
 export interface TableRowProps extends React.TableHTMLAttributes<HTMLTableRowElement> {
   selected?: boolean;
+  verticalAlign?: 'top' | 'bottom' | 'middle';
   onRowSelect?(selected: boolean): void;
 }
 

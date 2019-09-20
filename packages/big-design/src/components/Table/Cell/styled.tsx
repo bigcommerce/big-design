@@ -10,10 +10,23 @@ const SharedCellStyles = css<TableCellProps>`
   min-height: ${({ theme }) => theme.spacing.xxxLarge};
   padding: ${({ theme }) => theme.spacing.small};
 
+  ${({ minWidth, theme }) =>
+    minWidth &&
+    css`
+      min-width: ${theme.helpers.remCalc(minWidth)};
+    `}
+
+  ${(props) =>
+    props.align &&
+    css`
+      text-align: ${props.align};
+    `
+  }
+
   ${props =>
     props.isCheckbox &&
     css`
-      width: 1px;
+      width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
       white-space: nowrap;
     `}
 

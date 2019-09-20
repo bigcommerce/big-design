@@ -5,8 +5,10 @@ import { TableContext, TableSectionContext } from '../context';
 import { StyledTableCell, StyledTableHeader } from './styled';
 
 export interface TableCellProps extends React.TableHTMLAttributes<HTMLTableCellElement> {
+  align?: 'left' | 'center' | 'right';
   colSpan?: number;
   isCheckbox?: boolean;
+  minWidth?: number;
   stickyHeader?: boolean;
   format?(): any;
 }
