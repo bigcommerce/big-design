@@ -1,4 +1,4 @@
-import { H0, H1, H2, Link, Pagination, Text } from '@bigcommerce/big-design';
+import { H0, H1, H2, Pagination, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { CodePreview, Collapsible } from '../../components';
@@ -10,10 +10,10 @@ export default () => (
 
     <Text>
       Pagination allows for navigation through pages of content.{' '}
-      <Link href="https://design.bigcommerce.com/components/pagination" target="_blank">
+      {/* <Link href="https://design.bigcommerce.com/components/pagination" target="_blank">
         Pagination Design Guidelines
       </Link>
-      .
+      . */}
     </Text>
 
     <CodePreview>
