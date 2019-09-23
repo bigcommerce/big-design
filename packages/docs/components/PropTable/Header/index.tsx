@@ -1,14 +1,13 @@
+import { Table } from '@bigcommerce/big-design';
 import React from 'react';
-
-import { StyledTableHeader, StyledTableRow } from '../styled';
 
 export const Header: React.FC = () => {
   return (
-    <StyledTableRow>
-      <StyledTableHeader>Prop Name</StyledTableHeader>
-      <StyledTableHeader>Type</StyledTableHeader>
-      <StyledTableHeader>Default</StyledTableHeader>
-      <StyledTableHeader>Description</StyledTableHeader>
-    </StyledTableRow>
+    <Table.Row>
+      <Table.Cell>Prop Name</Table.Cell>
+      <Table.Cell>Type</Table.Cell>
+      <Table.Cell>Default</Table.Cell>
+      <Table.Cell>Description</Table.Cell>
+    </Table.Row>
   );
 };

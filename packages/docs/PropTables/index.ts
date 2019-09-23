@@ -17,6 +17,7 @@ export * from './ProgressBarPropTable';
 export * from './ProgressCirclePropTable';
 export * from './RadioPropTable';
 export * from './SelectPropTable';
+export * from './TablePropTable';
 export * from './TabsPropTable';
 export * from './TextareaPropTable';
 export * from './TypographyPropTable';

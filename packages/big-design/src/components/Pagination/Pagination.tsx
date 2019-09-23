@@ -79,21 +79,23 @@ export const Pagination: React.FC<PaginationProps> = memo(
     };
 
     return (
-      <Flex flexDirection="row" role="navigation" aria-label="pagination">
-        <Dropdown
-          onItemClick={handleRangeChange}
-          trigger={
-            <StyledButton variant="subtle" iconRight={<ArrowDropDownIcon size="xxLarge" />}>
-              {showRanges()}
-            </StyledButton>
-          }
-        >
-          {itemsPerPageOptions.map((range, key) => (
-            <Dropdown.Item key={key} value={range}>
-              {range} per page
-            </Dropdown.Item>
-          ))}
-        </Dropdown>
+      <Flex role="navigation" aria-label="pagination">
+        <Flex.Item>
+          <Dropdown
+            onItemClick={handleRangeChange}
+            trigger={
+              <StyledButton variant="subtle" iconRight={<ArrowDropDownIcon size="xxLarge" />}>
+                {showRanges()}
+              </StyledButton>
+            }
+          >
+            {itemsPerPageOptions.map((range, key) => (
+              <Dropdown.Item key={key} value={range}>
+                {range} per page
+              </Dropdown.Item>
+            ))}
+          </Dropdown>
+        </Flex.Item>
         <Flex.Item>
           <StyledButton variant="subtle" disabled={currentPage <= 1} onClick={handlePageDecrease}>
             <ChevronLeftIcon title="Previous page" />

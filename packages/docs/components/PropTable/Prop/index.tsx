@@ -1,8 +1,9 @@
-import { Link } from '@bigcommerce/big-design';
+import { Link, Table } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code } from '../../';
-import { StyledTableData, StyledTableRow } from '../styled';
+
+import { StyledTableCell } from './styled';
 
 interface Props {
   name: string;
@@ -15,19 +16,19 @@ export const Prop: React.FC<Props> = props => {
   const { children, defaults, name, required, types } = props;
 
   return (
-    <StyledTableRow>
-      <StyledTableData>
+    <Table.Row>
+      <StyledTableCell>
         <Code primary>{name}</Code>
         {required ? <b> *</b> : null}
-      </StyledTableData>
-      <StyledTableData>
+      </StyledTableCell>
+      <StyledTableCell>
         <TypesData types={types} />
-      </StyledTableData>
-      <StyledTableData>
+      </StyledTableCell>
+      <StyledTableCell>
         <Code highlight={false}>{defaults}</Code>
-      </StyledTableData>
-      <StyledTableData>{children}</StyledTableData>
-    </StyledTableRow>
+      </StyledTableCell>
+      <StyledTableCell>{children}</StyledTableCell>
+    </Table.Row>
   );
 };
 
