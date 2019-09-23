@@ -29,29 +29,14 @@ export function Table(this: Table, props: TableProps) {
   const { children, className, selectable, stickyHeader, style, ...rest } = props;
 
   const tableId = uniqueId('table_');
-  const tableActions: React.ReactChild[] = [];
-
-  function renderChildren() {
-    return React.Children.map(children, (child, index) => {
-      if (React.isValidElement(child) && child.type === Table.Actions) {
-        tableActions.push(
-          React.cloneElement<TableActionsProps>(child, {
-            selectable,
-            tableId: child.props.tableId ? child.props.tableId : tableId,
-            key: index,
-          }),
-        );
-      } else {
-        return child;
-      }
-    });
-  }
+  const actions = (children as React.ReactElement[]).filter(child => child.type === Table.Actions);
+  const content = (children as React.ReactElement[]).filter(child => child.type !== Table.Actions);
 
   return (
     <TableContext.Provider value={{ selectable, stickyHeader, tableId }}>
-      {tableActions ? tableActions : null}
+      {actions}
       <StyledTable id={tableId} {...rest}>
-        {renderChildren()}
+        {content}
       </StyledTable>
     </TableContext.Provider>
   );

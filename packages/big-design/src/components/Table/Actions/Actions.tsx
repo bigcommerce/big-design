@@ -1,23 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { FlexProps } from '../../Flex';
+import { TableContext } from '../context';
 
 import { StyledActions } from './styled';
 
-export interface TableActionsProps extends FlexProps {
-  selectable?: boolean;
-  tableId?: string;
-}
+export type TableActionsProps = FlexProps;
 
-export const TableActions: React.FC<TableActionsProps> = ({
-  children,
-  className,
-  selectable,
-  style,
-  tableId,
-  ...props
-}) => (
-  <StyledActions padding="small" aria-controls={tableId} {...props}>
-    {children}
-  </StyledActions>
-);
+export const TableActions: React.FC<TableActionsProps> = ({ children, className, style, ...props }) => {
+  const tableContext = useContext(TableContext);
+
+  return (
+    <StyledActions padding="small" aria-controls={tableContext.tableId} {...props}>
+      {children}
+    </StyledActions>
+  );
+};
