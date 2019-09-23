@@ -34,7 +34,13 @@ export function Table(this: Table, props: TableProps) {
   function renderChildren() {
     return React.Children.map(children, (child, index) => {
       if (React.isValidElement(child) && child.type === Table.Actions) {
-        tableActions.push(React.cloneElement<TableActionsProps>(child, { selectable, tableId, key: index }));
+        tableActions.push(
+          React.cloneElement<TableActionsProps>(child, {
+            selectable,
+            tableId: child.props.tableId ? child.props.tableId : tableId,
+            key: index,
+          }),
+        );
       } else {
         return child;
       }

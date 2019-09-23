@@ -1,11 +1,18 @@
-import { Flex, H0, Pagination, Table } from '@bigcommerce/big-design';
+import { Flex, H0, H1, H2, Pagination, Table } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { CodePreview } from '../../components';
+import { TableActionsPropTable, TableBodyPropTable, TableCellPropTable, TablePropTable } from '../../PropTables';
 
 import { data } from './data';
 
-const columns: Array<{ id: string; label: string, minWidth?: number; align?: 'left' | 'center' | 'right'; format?(value): string }> = [
+const columns: Array<{
+  id: string;
+  label: string;
+  minWidth?: number;
+  align?: 'left' | 'center' | 'right';
+  format?(value): string;
+}> = [
   { id: 'sku', label: 'Product SKU', minWidth: 124 },
   { id: 'name', label: 'Product Name', minWidth: 120 },
   { id: 'price', label: 'Price', align: 'right', format: value => `$${value.toFixed(2)}` },
@@ -15,6 +22,7 @@ export default () => {
   return (
     <>
       <H0>Table</H0>
+
       {/* <Text>
         Intro text.
         <Link href="https://design.bigcommerce.com/components" target="_blank">
@@ -22,6 +30,7 @@ export default () => {
         </Link>
         .
       </Text> */}
+
       <CodePreview scope={{ data, columns }}>
         {/* jsx-to-string:start */}
         {function Example() {
@@ -46,7 +55,7 @@ export default () => {
             setCurrentItems(items.slice(firstItem, lastItem));
           }, [page, items, range]);
 
-          const handleRowSelect = isSelected => console.log(isSelected);
+          const handleRowSelect = isSelected => console.log(isSelected); // tslint:disable-line
 
           return (
             <>
@@ -67,7 +76,9 @@ export default () => {
                 <Table.Head>
                   <Table.Row>
                     {columns.map(column => (
-                      <Table.Cell key={column.id} minWidth={column.minWidth} align={column.align}>{column.label}</Table.Cell>
+                      <Table.Cell key={column.id} minWidth={column.minWidth} align={column.align}>
+                        {column.label}
+                      </Table.Cell>
                     ))}
                   </Table.Row>
                 </Table.Head>
@@ -94,9 +105,32 @@ export default () => {
         }}
         {/* jsx-to-string:end */}
       </CodePreview>
-      {/* <H1>API</H1>
-      <H2>Component Name</H2>
-      <H2>Static Member</H2>
+
+      <H1>API</H1>
+
+      <H2>Table</H2>
+
+      <TablePropTable />
+
+      <H2>Table.Actions</H2>
+
+      <TableActionsPropTable />
+
+      <H2>Table.Body</H2>
+
+      <TableBodyPropTable />
+
+      <H2>Table.Cell</H2>
+
+      <TableCellPropTable />
+
+      <H2>Table.Footer</H2>
+
+      <H2>Table.Head</H2>
+
+      <H2>Table.Row</H2>
+
+      {/* <H2>Static Member</H2>
       <H2>Inherited Props</H2>
       <Collapsible title="Inherited Props">
         <InheritedPropTable />

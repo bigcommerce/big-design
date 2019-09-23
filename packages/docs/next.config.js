@@ -39,7 +39,7 @@ module.exports = {
     '/radio': { page: '/Radio/RadioPage' },
     '/select': { page: '/Select/SelectPage' },
     '/spacing': { page: '/Spacing/SpacingPage' },
-    '/table-basic': { page: '/Table/BasicTablePage' },
+    // '/table-basic': { page: '/Table/BasicTablePage' },
     '/tabs': { page: '/Tabs/TabsPage' },
     '/textarea': { page: '/Textarea/TextareaPage' },
     '/tooltip': { page: '/Tooltip/TooltipPage' },

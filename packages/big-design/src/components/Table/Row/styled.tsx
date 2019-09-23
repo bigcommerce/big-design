@@ -10,8 +10,7 @@ export const StyledTableRow = styled.tr<TableRowProps>`
     props.verticalAlign &&
     css`
       vertical-align: ${props.verticalAlign};
-    `
-  }
+    `}
 `;
 
 StyledTableRow.defaultProps = { theme: defaultTheme };

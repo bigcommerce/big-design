@@ -16,12 +16,11 @@ const SharedCellStyles = css<TableCellProps>`
       min-width: ${theme.helpers.remCalc(minWidth)};
     `}
 
-  ${(props) =>
+  ${props =>
     props.align &&
     css`
       text-align: ${props.align};
-    `
-  }
+    `}
 
   ${props =>
     props.isCheckbox &&
