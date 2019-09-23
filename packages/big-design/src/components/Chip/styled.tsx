@@ -2,7 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { Box } from '../Box';
-import { StyleableButton } from '../Button/Button';
+import { StyleableButton } from '../Button/private';
 
 export const StyledChip = styled(Box)`
   align-items: center;

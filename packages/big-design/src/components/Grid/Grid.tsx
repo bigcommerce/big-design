@@ -4,7 +4,7 @@ import { BoxProps } from '../Box';
 
 import { StyledGrid } from './styled';
 import { GridedProps } from './types';
-import { GridItem } from './Item/Item';
+import { GridItem } from './Item';
 
 export type GridProps = BoxProps & GridedProps;
 

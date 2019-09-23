@@ -4,7 +4,7 @@ import { BoxProps } from '../Box';
 
 import { StyledFlex } from './styled';
 import { FlexedProps } from './types';
-import { FlexItem } from './Item/Item';
+import { FlexItem } from './Item';
 
 export type FlexProps = BoxProps & FlexedProps;
 

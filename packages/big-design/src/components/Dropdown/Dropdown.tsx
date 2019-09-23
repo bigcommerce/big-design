@@ -4,8 +4,8 @@ import { Manager, Reference, RefHandler } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
-import { ListItem } from '../List/Item/Item';
-import { List } from '../List/List';
+import { List } from '../List';
+import { ListItem } from '../List/Item';
 
 interface DropdownState {
   highlightedItem: HTMLLIElement | null;

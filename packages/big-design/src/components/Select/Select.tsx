@@ -4,11 +4,11 @@ import { Manager, Reference } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
-import { Flex } from '../Flex/Flex';
+import { Flex } from '../Flex';
 import { Input } from '../Input';
-import { ListAction } from '../List/Action/Action';
-import { ListItem } from '../List/Item/Item';
-import { List } from '../List/List';
+import { List } from '../List';
+import { ListAction } from '../List/Action';
+import { ListItem } from '../List/Item';
 
 import { Form } from './../Form';
 import { StyledDropdownIcon, StyledStatusMessage } from './styled';
