@@ -9,8 +9,6 @@ export interface TableCellProps extends React.TableHTMLAttributes<HTMLTableCellE
   colSpan?: number;
   isCheckbox?: boolean;
   minWidth?: number;
-  stickyHeader?: boolean;
-  format?(): any;
 }
 
 export const TableCell: React.FC<TableCellProps> = ({ className, style, ...props }) => {

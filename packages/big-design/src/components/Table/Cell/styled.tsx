@@ -3,7 +3,11 @@ import styled, { css } from 'styled-components';
 
 import { TableCellProps } from './Cell';
 
-const SharedCellStyles = css<TableCellProps>`
+interface SharedCellProps extends TableCellProps {
+  stickyHeader?: boolean;
+}
+
+const SharedCellStyles = css<SharedCellProps>`
   box-sizing: border-box;
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   line-height: ${({ theme }) => theme.lineHeight.small};
@@ -34,7 +38,7 @@ const SharedCellStyles = css<TableCellProps>`
   }
 `;
 
-export const StyledTableHeader = styled.th<TableCellProps>`
+export const StyledTableHeader = styled.th<SharedCellProps>`
   ${SharedCellStyles}
 
   background-color: ${({ theme }) => theme.colors.secondary10};
@@ -50,7 +54,7 @@ export const StyledTableHeader = styled.th<TableCellProps>`
     `}
 `;
 
-export const StyledTableCell = styled.td<TableCellProps>`
+export const StyledTableCell = styled.td<SharedCellProps>`
   ${SharedCellStyles}
 
   color: ${({ theme }) => theme.colors.secondary70};
