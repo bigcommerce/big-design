@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "private": false,
   "sideEffects": false,
   "main": "dist/big-design.cjs.js",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.10.0...@bigcommerce/big-design@0.11.0) (2019-09-23)
+
+
+### Features
+
+* **component:** add Table component ([#201](https://github.com/bigcommerce/big-design/issues/201)) ([64b7dcd](https://github.com/bigcommerce/big-design/commit/64b7dcd))
+
+
+
+
+
 # [0.10.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.9.0...@bigcommerce/big-design@0.10.0) (2019-09-23)
 
 
