@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.9.0...@bigcommerce/big-design@0.10.0) (2019-09-23)
+
+
+### Bug Fixes
+
+* **component:** mock popper.js globally ([8a31391](https://github.com/bigcommerce/big-design/commit/8a31391))
+
+
+### Features
+
+* **component:** add indeterminate state to checkboxes ([#197](https://github.com/bigcommerce/big-design/issues/197)) ([5146fdb](https://github.com/bigcommerce/big-design/commit/5146fdb))
+
+
+
+
+
 # [0.9.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.8.0...@bigcommerce/big-design@0.9.0) (2019-09-17)
 
 

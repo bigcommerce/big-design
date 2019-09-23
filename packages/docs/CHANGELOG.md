@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.9.0...@bigcommerce/docs@0.10.0) (2019-09-23)
+
+
+### Bug Fixes
+
+* **docs:** fix pagination docs example ([#198](https://github.com/bigcommerce/big-design/issues/198)) ([d362242](https://github.com/bigcommerce/big-design/commit/d362242))
+* **docs:** temporarily remove design guideline navigation link ([#199](https://github.com/bigcommerce/big-design/issues/199)) ([836abec](https://github.com/bigcommerce/big-design/commit/836abec))
+
+
+### Features
+
+* **component:** add indeterminate state to checkboxes ([#197](https://github.com/bigcommerce/big-design/issues/197)) ([5146fdb](https://github.com/bigcommerce/big-design/commit/5146fdb))
+* **docs:** end sentences with dots on pagination props ([b9effd4](https://github.com/bigcommerce/big-design/commit/b9effd4))
+
+
+
+
+
 # [0.9.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.8.0...@bigcommerce/docs@0.9.0) (2019-09-17)
 
 

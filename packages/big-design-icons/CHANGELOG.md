@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.2.1...@bigcommerce/big-design-icons@0.3.0) (2019-09-23)
+
+
+### Features
+
+* **component:** add indeterminate state to checkboxes ([#197](https://github.com/bigcommerce/big-design/issues/197)) ([5146fdb](https://github.com/bigcommerce/big-design/commit/5146fdb))
+
+
+
+
+
 ## [0.2.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.2.0...@bigcommerce/big-design-icons@0.2.1) (2019-09-17)
 
 
