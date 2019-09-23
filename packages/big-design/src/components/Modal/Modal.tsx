@@ -4,8 +4,7 @@ import { createPortal } from 'react-dom';
 
 import { uniqueId } from '../../utils';
 import { Button } from '../Button';
-import { H2 } from '../Typography';
-import { HeadingProps } from '../Typography/Typography';
+import { H2, HeadingProps } from '../Typography';
 
 import {
   StyledModal,
