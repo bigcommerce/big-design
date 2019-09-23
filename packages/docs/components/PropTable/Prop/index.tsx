@@ -3,6 +3,8 @@ import React from 'react';
 
 import { Code } from '../../';
 
+import { StyledTableCell } from './styled';
+
 interface Props {
   name: string;
   defaults?: string;
@@ -15,17 +17,17 @@ export const Prop: React.FC<Props> = props => {
 
   return (
     <Table.Row>
-      <Table.Cell>
+      <StyledTableCell>
         <Code primary>{name}</Code>
         {required ? <b> *</b> : null}
-      </Table.Cell>
-      <Table.Cell>
+      </StyledTableCell>
+      <StyledTableCell>
         <TypesData types={types} />
-      </Table.Cell>
-      <Table.Cell>
+      </StyledTableCell>
+      <StyledTableCell>
         <Code highlight={false}>{defaults}</Code>
-      </Table.Cell>
-      <Table.Cell>{children}</Table.Cell>
+      </StyledTableCell>
+      <StyledTableCell>{children}</StyledTableCell>
     </Table.Row>
   );
 };

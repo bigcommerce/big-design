@@ -4,12 +4,12 @@ import { uniqueId } from '../../utils';
 
 import { TableContext } from './context';
 import { StyledTable, StyledTableFigure } from './styled';
-import { TableActions, TableActionsProps } from './Actions/Actions';
-import { TableBody, TableBodyProps } from './Body/Body';
-import { TableCell, TableCellProps } from './Cell/Cell';
-import { TableFooter, TableFooterProps } from './Footer/Footer';
-import { TableHead, TableHeadProps } from './Head/Head';
-import { TableRow, TableRowProps } from './Row/Row';
+import { TableActions, TableActionsProps } from './Actions';
+import { TableBody, TableBodyProps } from './Body';
+import { TableCell, TableCellProps } from './Cell';
+import { TableFooter, TableFooterProps } from './Footer';
+import { TableHead, TableHeadProps } from './Head';
+import { TableRow, TableRowProps } from './Row';
 
 export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement & { children: React.ReactNode }> {
   selectable?: boolean;

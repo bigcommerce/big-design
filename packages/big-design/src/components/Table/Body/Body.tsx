@@ -6,8 +6,8 @@ import { StyledTableBody } from './styled';
 
 export interface TableBodyProps extends React.TableHTMLAttributes<HTMLTableSectionElement> {}
 
-export const TableBody: React.FC<TableBodyProps> = ({ className, children, style, ...props }) => (
-  <TableSectionContext.Provider value={'tbody'}>
-    <StyledTableBody {...props}>{children}</StyledTableBody>
+export const TableBody: React.FC<TableBodyProps> = ({ className, style, ...props }) => (
+  <TableSectionContext.Provider value="tbody">
+    <StyledTableBody {...props} />
   </TableSectionContext.Provider>
 );

@@ -79,7 +79,7 @@ export default () => {
             setCurrentItems(items.slice(firstItem, lastItem));
           }, [page, items, range]);
 
-          const handleRowSelect = isSelected => console.log(isSelected); // tslint:disable-line
+          const handleRowSelect = e => console.log(e); // tslint:disable-line
 
           return (
             <>

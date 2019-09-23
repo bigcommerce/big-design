@@ -32,10 +32,6 @@ const SharedCellStyles = css<SharedCellProps>`
       width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
       white-space: nowrap;
     `}
-
-  &:last-of-type {
-    width: 50%;
-  }
 `;
 
 export const StyledTableHeader = styled.th<SharedCellProps>`

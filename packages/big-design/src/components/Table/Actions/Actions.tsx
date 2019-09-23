@@ -16,10 +16,8 @@ export const TableActions: React.FC<TableActionsProps> = ({
   style,
   tableId,
   ...props
-}) => {
-  return (
-    <StyledActions padding="small" aria-controls={tableId} {...props}>
-      {children}
-    </StyledActions>
-  );
-};
+}) => (
+  <StyledActions padding="small" aria-controls={tableId} {...props}>
+    {children}
+  </StyledActions>
+);

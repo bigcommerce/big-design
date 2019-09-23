@@ -1,4 +1,4 @@
-import React, { memo, useContext, useState } from 'react';
+import React, { memo, useContext } from 'react';
 
 import { Checkbox } from '../../Checkbox';
 import { TableContext, TableSectionContext } from '../context';
@@ -9,36 +9,27 @@ import { StyledTableRow } from './styled';
 export interface TableRowProps extends React.TableHTMLAttributes<HTMLTableRowElement> {
   selected?: boolean;
   verticalAlign?: 'top' | 'bottom' | 'middle';
-  onRowSelect?(selected: boolean): void;
+  onRowSelect?(e: React.ChangeEvent<HTMLInputElement>, nextValue?: boolean): void;
 }
 
-export const TableRow: React.FC<TableRowProps> = memo(({ children, selected, onRowSelect, ...props }) => {
+export const TableRow: React.FC<TableRowProps> = memo(({ children, selected = false, onRowSelect, ...props }) => {
   const tableContext = useContext(TableContext);
   const tableSectionContext = useContext(TableSectionContext);
-  const [isSelected, setIsSelected] = useState(selected);
 
-  const handleSelect = () => {
-    const nextValue = !isSelected;
-
-    setIsSelected(nextValue);
-
+  const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof onRowSelect === 'function') {
-      onRowSelect(nextValue);
+      onRowSelect(e, !selected);
     }
   };
 
   return (
-    <StyledTableRow selected={isSelected} {...props}>
+    <StyledTableRow selected={selected} {...props}>
       {tableContext.selectable ? (
         <TableCell isCheckbox>
-          {tableSectionContext === 'tbody' ? (
-            <Checkbox label={false} checked={isSelected} onChange={handleSelect} />
-          ) : null}
+          {tableSectionContext === 'tbody' ? <Checkbox checked={selected} onChange={handleSelect} /> : null}
         </TableCell>
       ) : null}
       {children}
     </StyledTableRow>
   );
 });
-
-TableRow.defaultProps = { selected: false };
