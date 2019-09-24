@@ -12,7 +12,6 @@ import { TableHead, TableHeadProps } from './Head';
 import { TableRow, TableRowProps } from './Row';
 
 export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement & { children: React.ReactNode }> {
-  hoverable?: boolean;
   selectable?: boolean;
   stickyHeader?: boolean;
 }
