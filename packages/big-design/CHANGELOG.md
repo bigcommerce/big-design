@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.11.0...@bigcommerce/big-design@0.11.1) (2019-09-24)
+
+
+### Bug Fixes
+
+* **component:** fix children not rendering via filter ([#204](https://github.com/bigcommerce/big-design/issues/204)) ([26dbb78](https://github.com/bigcommerce/big-design/commit/26dbb78))
+
+
+
+
+
 # [0.11.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.10.0...@bigcommerce/big-design@0.11.0) (2019-09-23)
 
 
