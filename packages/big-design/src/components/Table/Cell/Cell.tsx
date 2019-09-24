@@ -7,7 +7,6 @@ import { StyledTableCell, StyledTableHeader } from './styled';
 export interface TableCellProps extends React.TableHTMLAttributes<HTMLTableCellElement> {
   align?: 'left' | 'center' | 'right';
   colSpan?: number;
-  isCheckbox?: boolean;
   minWidth?: number;
 }
 

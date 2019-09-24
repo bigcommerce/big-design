@@ -5,6 +5,7 @@ import { TableCellProps } from './Cell';
 
 interface SharedCellProps extends TableCellProps {
   stickyHeader?: boolean;
+  isCheckbox?: boolean;
 }
 
 const SharedCellStyles = css<SharedCellProps>`
