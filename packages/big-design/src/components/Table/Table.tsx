@@ -26,11 +26,13 @@ interface Table extends React.FC<TableProps> {
 }
 
 export function Table(this: Table, props: TableProps) {
-  const { children, className, selectable, stickyHeader, style, ...rest } = props;
+  const { className, selectable, stickyHeader, style, ...rest } = props;
+  const children = React.Children.toArray(props.children) as React.ReactElement[];
 
   const tableId = uniqueId('table_');
-  const actions = (children as React.ReactElement[]).filter(child => child.type === Table.Actions);
-  const content = (children as React.ReactElement[]).filter(child => child.type !== Table.Actions);
+
+  const actions = children.filter(child => child.type === Table.Actions);
+  const content = children.filter(child => child.type !== Table.Actions);
 
   return (
     <TableContext.Provider value={{ selectable, stickyHeader, tableId }}>
