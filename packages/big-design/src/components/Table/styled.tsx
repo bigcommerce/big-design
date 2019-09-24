@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { TableProps } from './Table';
 
@@ -21,6 +21,14 @@ export const StyledTable = styled.table<TableProps>`
   color: ${({ theme }) => theme.colors.secondary70};
   text-align: left;
   width: 100%;
+
+  ${({ hoverable, theme }) =>
+    hoverable &&
+    css`
+      & tr:hover {
+        background-color: ${theme.colors.secondary10};
+      }
+    `}
 `;
 
 StyledTableFigure.defaultProps = { theme: defaultTheme };
