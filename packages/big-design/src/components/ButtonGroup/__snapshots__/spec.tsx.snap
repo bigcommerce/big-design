@@ -1,0 +1,261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ButtonGroup 1`] = `
+.c2 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bd-button + .c0 {
+  margin-left: 0.5rem;
+}
+
+.c0 + .bd-button {
+  margin-left: 0.5rem;
+}
+
+.c0 .bd-button {
+  border-radius: 0;
+  margin: 0;
+  width: auto;
+}
+
+.c0 .bd-button:not(:first-of-type) {
+  border-left: none;
+}
+
+.c0 .bd-button:first-of-type {
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+.c0 .bd-button:last-of-type {
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+<div
+  class="c0 c1 c2"
+/>
+`;
+
+exports[`renders ButtonGroup with Buttons 1`] = `
+.c2 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
+}
+
+.c3:focus {
+  outline: none;
+}
+
+.c3[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c3 + .bd-button {
+  margin-top: 0.5rem;
+}
+
+.c3:active {
+  background-color: #0B38D9;
+}
+
+.c3:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c3:hover:not(:active) {
+  background-color: #2852EB;
+}
+
+.c3[disabled] {
+  background-color: #D9DCE9;
+}
+
+.c4 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+.bd-button + .c0 {
+  margin-left: 0.5rem;
+}
+
+.c0 + .bd-button {
+  margin-left: 0.5rem;
+}
+
+.c0 .bd-button {
+  border-radius: 0;
+  margin: 0;
+  width: auto;
+}
+
+.c0 .bd-button:not(:first-of-type) {
+  border-left: none;
+}
+
+.c0 .bd-button:first-of-type {
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+.c0 .bd-button:last-of-type {
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+@media (min-width:720px) {
+  .c3 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c3 {
+    width: auto;
+  }
+}
+
+<div
+  class="c0 c1 c2"
+>
+  <button
+    class="bd-button c3"
+    role="button"
+    tabindex="0"
+  >
+    <span
+      class="c4"
+    >
+      Test
+    </span>
+  </button>
+  <button
+    class="bd-button c3"
+    role="button"
+    tabindex="0"
+  >
+    <span
+      class="c4"
+    >
+      Test
+    </span>
+  </button>
+  <button
+    class="bd-button c3"
+    role="button"
+    tabindex="0"
+  >
+    <span
+      class="c4"
+    >
+      Test
+    </span>
+  </button>
+</div>
+`;

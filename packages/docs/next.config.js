@@ -20,6 +20,7 @@ module.exports = {
     '/box': { page: '/Box/BoxPage' },
     '/breakpoints': { page: '/Breakpoints/BreakpointsPage' },
     '/button': { page: '/Button/ButtonPage' },
+    '/button-group': { page: '/ButtonGroup/ButtonGroupPage' },
     '/checkbox': { page: '/Checkbox/CheckboxPage' },
     '/colors': { page: '/Colors/ColorsPage' },
     '/dropdown': { page: '/Dropdown/DropdownPage' },
