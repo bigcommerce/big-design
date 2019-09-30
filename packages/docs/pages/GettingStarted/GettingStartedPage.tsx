@@ -54,6 +54,19 @@ export default () => {
             </Link>
           </List.Item>
           <List.Item>
+            <Link
+              href="https://www.figma.com/file/jTVuUkiZ1j3rux8WHG4IKK/BigDesign-UI-Kit?node-id=0%3A1/duplicate"
+              target="_blank"
+            >
+              Figma UI Kit
+            </Link>
+          </List.Item>
+          <List.Item>
+            <Link href="https://github.com/bigcommerce/channels-app" target="_blank">
+              Sample App
+            </Link>
+          </List.Item>
+          <List.Item>
             <Link href="https://developer.bigcommerce.com" target="_blank">
               Dev Center
             </Link>
