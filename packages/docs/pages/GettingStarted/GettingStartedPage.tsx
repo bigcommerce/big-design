@@ -54,10 +54,7 @@ export default () => {
             </Link>
           </List.Item>
           <List.Item>
-            <Link
-              href="https://www.figma.com/file/jTVuUkiZ1j3rux8WHG4IKK/BigDesign-UI-Kit?node-id=0%3A1/duplicate"
-              target="_blank"
-            >
+            <Link href="https://www.figma.com/file/jTVuUkiZ1j3rux8WHG4IKK/BigDesign-UI-Kit" target="_blank">
               Figma UI Kit
             </Link>
           </List.Item>
