@@ -22,7 +22,7 @@ test('renders an input tag', () => {
 });
 
 test('renders an input with matched label', () => {
-  const { queryByLabelText } = render(<Input label="Test Label" />);
+  const { queryByLabelText } = render(<Input label="Test Label" required />);
 
   // This one checks for matching id and htmlFor
   expect(queryByLabelText('Test Label')).toBeInTheDocument();

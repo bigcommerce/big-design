@@ -7,7 +7,7 @@ import { Chip } from '../Chip';
 import { Form } from '../Form';
 import { Small } from '../Typography';
 
-import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
+import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper, StyledOptionalText } from './styled';
 
 interface Props {
   chips?: string[];
@@ -120,11 +120,15 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
   }
 
   private renderLabel() {
-    const { label } = this.props;
+    const { label, required } = this.props;
     const id = this.getId();
 
     if (typeof label === 'string') {
-      return <Input.Label htmlFor={id}>{label}</Input.Label>;
+      return (
+        <Input.Label htmlFor={id} renderOptional={!required}>
+          {label}
+        </Input.Label>
+      );
     }
 
     if (React.isValidElement(label) && label.type === Input.Label) {

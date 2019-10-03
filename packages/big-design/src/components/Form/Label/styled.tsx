@@ -12,4 +12,10 @@ export const StyledLabel = styled(StyleableH4).attrs({
   margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
 ` as StyledComponent<'label', DefaultTheme>;
 
+export const StyledOptionalSpan = styled.span`
+  color: ${({ theme }) => theme.colors.secondary60};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
+`;
+
 StyledLabel.defaultProps = { theme: defaultTheme };
+StyledOptionalSpan.defaultProps = { theme: defaultTheme };

@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders all together 1`] = `
-.c5 {
+.c6 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c1 {
+.c2 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -17,11 +17,11 @@ exports[`renders all together 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c1:last-child {
+.c2:last-child {
   margin-bottom: 0;
 }
 
-.c3 {
+.c4 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -39,15 +39,15 @@ exports[`renders all together 1`] = `
   border: 1px solid #D9DCE9;
 }
 
-.c3:hover:not([disabled]) {
+.c4:hover:not([disabled]) {
   border: 1px solid #B4BAD1;
 }
 
-.c3[disabled] {
+.c4[disabled] {
   background-color: #ECEEF5;
 }
 
-.c7 {
+.c8 {
   border: 0;
   box-sizing: border-box;
   color: #313440;
@@ -62,35 +62,35 @@ exports[`renders all together 1`] = `
   padding-left: 0.25rem;
 }
 
-.c7:focus {
+.c8:focus {
   outline: none;
 }
 
-.c7::-webkit-input-placeholder {
+.c8::-webkit-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7::-moz-placeholder {
+.c8::-moz-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7:-ms-input-placeholder {
+.c8:-ms-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7::placeholder {
+.c8::placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7[disabled] {
+.c8[disabled] {
   background-color: #ECEEF5;
 }
 
-.c4 {
+.c5 {
   color: #5E637A;
   -webkit-flex: 0 0 1.5rem;
   -ms-flex: 0 0 1.5rem;
@@ -98,7 +98,7 @@ exports[`renders all together 1`] = `
   height: 1.5rem;
 }
 
-.c6 {
+.c7 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -125,8 +125,13 @@ exports[`renders all together 1`] = `
   margin-bottom: 0.25rem;
 }
 
+.c1 {
+  color: #5E637A;
+  font-weight: 400;
+}
+
 @media (min-width:720px) {
-  .eLjSIS .c2,
+  .eLjSIS .c3,
   .eLjSIS .styled__StyledTextareaWrapper-c1uos0-0 {
     max-width: 26rem;
   }
@@ -138,20 +143,25 @@ exports[`renders all together 1`] = `
     for="input_0"
   >
     This is a label
+    <span
+      class="c1"
+    >
+       (optional)
+    </span>
   </label>
   <p
-    class="c1"
+    class="c2"
   >
     This is a description
   </p>
   <span
-    class="c2 c3"
+    class="c3 c4"
   >
     <div
-      class="c4"
+      class="c5"
     >
       <svg
-        class="c5"
+        class="c6"
         data-testid="icon-left"
         fill="currentColor"
         height="24"
@@ -171,18 +181,18 @@ exports[`renders all together 1`] = `
       </svg>
     </div>
     <div
-      class="c6"
+      class="c7"
     >
       <input
-        class="c7"
+        class="c8"
         id="input_0"
       />
     </div>
     <div
-      class="c4"
+      class="c5"
     >
       <svg
-        class="c5"
+        class="c6"
         data-testid="icon-right"
         fill="currentColor"
         height="24"

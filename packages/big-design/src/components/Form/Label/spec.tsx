@@ -16,3 +16,10 @@ test('does not forward styles', () => {
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
+
+test('renders optional text', () => {
+  const { container } = render(<Label renderOptional>This is a label</Label>);
+  const label = container.querySelector('label');
+
+  expect(label).toHaveTextContent('This is a label (optional)');
+});

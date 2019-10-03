@@ -1,7 +1,14 @@
 import React from 'react';
 
-import { StyledLabel } from './styled';
+import { StyledLabel, StyledOptionalSpan } from './styled';
 
-export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement>;
+export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+  renderOptional?: boolean;
+}
 
-export const Label: React.FC<LabelProps> = ({ className, style, ...props }) => <StyledLabel {...props} />;
+export const Label: React.FC<LabelProps> = ({ children, className, renderOptional, style, ...props }) => (
+  <StyledLabel {...props}>
+    {children}
+    {renderOptional && <StyledOptionalSpan> (optional)</StyledOptionalSpan>}
+  </StyledLabel>
+);
