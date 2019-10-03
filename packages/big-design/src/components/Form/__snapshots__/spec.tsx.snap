@@ -85,7 +85,7 @@ exports[`simple form render 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: 1.625rem;
+  height: 1.5rem;
   margin-top: 0.25rem;
   padding: 0;
   width: 100%;

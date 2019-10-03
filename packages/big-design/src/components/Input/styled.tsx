@@ -50,7 +50,7 @@ export const StyledInput = styled.input<InputProps>`
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   flex: 1;
-  height: ${remCalc(26)};
+  height: ${({ theme }) => theme.spacing.xLarge};
   margin-top: ${({ theme }) => theme.spacing.xxSmall};
   padding: 0;
   width: 100%;
