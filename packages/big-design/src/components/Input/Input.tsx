@@ -7,7 +7,7 @@ import { Chip } from '../Chip';
 import { Form } from '../Form';
 import { Small } from '../Typography';
 
-import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper, StyledOptionalText } from './styled';
+import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
 
 interface Props {
   chips?: string[];
