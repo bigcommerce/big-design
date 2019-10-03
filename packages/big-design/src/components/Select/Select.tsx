@@ -363,7 +363,13 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   }
 
   private toggleList = () => {
-    this.state.isOpen ? this.closeList() : this.openList();
+    const { disabled } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
+    return this.state.isOpen ? this.closeList() : this.openList();
   };
 
   private openList() {
