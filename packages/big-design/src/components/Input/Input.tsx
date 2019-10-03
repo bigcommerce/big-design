@@ -42,19 +42,20 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
   private readonly uniqueId = uniqueId('input_');
 
   render() {
-    const { chips, description, error, label, forwardedRef, onChipDelete, ...props } = this.props;
+    const { chips, description, disabled, error, label, forwardedRef, onChipDelete, ...props } = this.props;
     const id = this.getId();
 
     return (
       <div>
         {this.renderLabel()}
         {this.renderDescription()}
-        <StyledInputWrapper error={error} focus={this.state.focus}>
+        <StyledInputWrapper disabled={disabled} error={error} focus={this.state.focus}>
           {this.renderIconLeft()}
           <StyledInputContent chips={chips}>
             {this.renderChips()}
             <StyledInput
               {...props}
+              disabled={disabled}
               chips={chips}
               error={error}
               id={id}

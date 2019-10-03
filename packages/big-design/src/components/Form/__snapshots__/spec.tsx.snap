@@ -115,6 +115,10 @@ exports[`simple form render 1`] = `
   font-size: 1rem;
 }
 
+.c9[disabled] {
+  background-color: #ECEEF5;
+}
+
 .c8 {
   box-sizing: border-box;
   display: -webkit-box;

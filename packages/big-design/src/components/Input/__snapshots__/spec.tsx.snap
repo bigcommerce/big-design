@@ -86,6 +86,10 @@ exports[`renders all together 1`] = `
   font-size: 1rem;
 }
 
+.c7[disabled] {
+  background-color: #ECEEF5;
+}
+
 .c4 {
   color: #5E637A;
   -webkit-flex: 0 0 1.5rem;

@@ -81,6 +81,10 @@ export const StyledInput = styled.input<InputProps>`
     css`
       padding-left: ${props.theme.spacing.xxSmall};
     `};
+
+  &[disabled] {
+    background-color: ${({ theme }) => theme.colors.secondary20};
+  }
 `;
 
 export const StyledIconWrapper = styled.div`
