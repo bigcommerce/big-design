@@ -655,3 +655,15 @@ test('chips should be rendered', () => {
   expect(getAllByText('Mexico').length).toEqual(2);
   expect(getAllByText('Canada').length).not.toEqual(2);
 });
+
+test('renders a non required select with optional text', () => {
+  const { queryByLabelText } = render(
+    <Select onItemChange={onItemChange} label="Countries">
+      <Select.Option value="us">United States</Select.Option>
+      <Select.Option value="mx">Mexico</Select.Option>
+    </Select>,
+  );
+
+  // This one checks for matching id and htmlFor
+  expect(queryByLabelText('Countries (optional)')).toBeInTheDocument();
+});

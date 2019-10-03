@@ -280,3 +280,10 @@ test('error shows when an array of Errors', () => {
 
   testIds.forEach(id => expect(getByTestId(id)).toBeInTheDocument());
 });
+
+test('renders a non required input with optional text', () => {
+  const { queryByLabelText } = render(<Input label="Test Label" />);
+
+  // This one checks for matching id and htmlFor
+  expect(queryByLabelText('Test Label (optional)')).toBeInTheDocument();
+});

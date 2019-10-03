@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyledLabel, StyledOptionalSpan } from './styled';
+import { StyledLabel, StyledSpan } from './styled';
 
 export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   renderOptional?: boolean;
@@ -9,6 +9,6 @@ export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> 
 export const Label: React.FC<LabelProps> = ({ children, className, renderOptional, style, ...props }) => (
   <StyledLabel {...props}>
     {children}
-    {renderOptional && <StyledOptionalSpan> (optional)</StyledOptionalSpan>}
+    {renderOptional && <StyledSpan> (optional)</StyledSpan>}
   </StyledLabel>
 );
