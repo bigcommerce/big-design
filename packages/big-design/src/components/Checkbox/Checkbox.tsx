@@ -77,11 +77,11 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
 
   private renderLabel() {
     const htmlFor = this.getInputId();
-    const { label, theme } = this.props;
+    const { disabled, label, theme } = this.props;
 
     if (typeof label === 'string') {
       return (
-        <StyledLabel htmlFor={htmlFor} id={this.labelUniqueId} theme={theme}>
+        <StyledLabel disabled={disabled} htmlFor={htmlFor} aria-hidden={disabled} id={this.labelUniqueId} theme={theme}>
           {label}
         </StyledLabel>
       );

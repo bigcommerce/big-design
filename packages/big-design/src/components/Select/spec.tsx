@@ -18,6 +18,15 @@ const SelectMock = (
   </Select>
 );
 
+const MultiselectMock = (
+  <Select multi={true} onItemChange={onItemChange} label="Countries" placeholder="Choose country" value={['us', 'mx']}>
+    <Select.Option value="us">United States</Select.Option>
+    <Select.Option value="mx">Mexico</Select.Option>
+    <Select.Option value="ca">Canada</Select.Option>
+    <Select.Option value="en">England</Select.Option>
+  </Select>
+);
+
 test('renders select combobox', () => {
   const { getByRole } = render(SelectMock);
 
@@ -58,14 +67,6 @@ test('select input has placeholder text', () => {
   const { getByPlaceholderText } = render(SelectMock);
 
   expect(getByPlaceholderText('Choose country')).toBeDefined();
-});
-
-test('select input has aria-labelledby', () => {
-  const { getAllByLabelText, getByText } = render(SelectMock);
-  const input = getAllByLabelText('Countries')[0];
-  const label = getByText('Countries');
-
-  expect(input.getAttribute('aria-labelledby')).toBe(label.id);
 });
 
 test('select input has aria-controls', () => {
@@ -114,6 +115,28 @@ test('select menu opens/closes when input button is clicked', () => {
   expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
 
   fireEvent.click(button);
+  expect(queryByRole('listbox')).toHaveStyle('height: 1px');
+});
+
+test('esc should close menu', () => {
+  const { getAllByLabelText, queryByRole } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
+
+  fireEvent.focus(input);
+  expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
+
+  fireEvent.keyDown(input, { key: 'Escape' });
+  expect(queryByRole('listbox')).toHaveStyle('height: 1px');
+});
+
+test('tab should close menu', () => {
+  const { getAllByLabelText, queryByRole } = render(SelectMock);
+  const input = getAllByLabelText('Countries')[0];
+
+  fireEvent.focus(input);
+  expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
+
+  fireEvent.keyDown(input, { key: 'Tab' });
   expect(queryByRole('listbox')).toHaveStyle('height: 1px');
 });
 
@@ -230,28 +253,6 @@ test('up/down arrows should change select item selection', () => {
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
 });
 
-test('esc should close menu', () => {
-  const { getAllByLabelText, queryByRole } = render(SelectMock);
-  const input = getAllByLabelText('Countries')[0];
-
-  fireEvent.focus(input);
-  expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
-
-  fireEvent.keyDown(input, { key: 'Escape' });
-  expect(queryByRole('listbox')).toHaveStyle('height: 1px');
-});
-
-test('tab should close menu', () => {
-  const { getAllByLabelText, queryByRole } = render(SelectMock);
-  const input = getAllByLabelText('Countries')[0];
-
-  fireEvent.focus(input);
-  expect(queryByRole('listbox')).not.toHaveStyle('height: 1px');
-
-  fireEvent.keyDown(input, { key: 'Tab' });
-  expect(queryByRole('listbox')).toHaveStyle('height: 1px');
-});
-
 test('home should select first select item', () => {
   const { getAllByRole, getAllByLabelText } = render(SelectMock);
   const input = getAllByLabelText('Countries')[0];
@@ -294,17 +295,6 @@ test('enter should trigger onItemChange', () => {
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
   expect(onItemChange).toHaveBeenCalledWith('us');
-});
-
-test('space should trigger onItemChange', () => {
-  const { getAllByLabelText } = render(SelectMock);
-  const input = getAllByLabelText('Countries')[0];
-
-  fireEvent.focus(input);
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  fireEvent.keyDown(input, { key: ' ' });
-  expect(onItemChange).toHaveBeenCalledWith('mx');
 });
 
 test('clicking on select options should trigger onItemClick', () => {
@@ -597,4 +587,58 @@ test('select input text should update if a matching child appears', () => {
   );
 
   expect(input.getAttribute('value')).toEqual('Mexico');
+});
+
+test('multiselect should render four items with checkboxes', () => {
+  const { getByRole } = render(MultiselectMock);
+
+  const menu = getByRole('listbox');
+
+  const options = menu.querySelectorAll('input[type="checkbox"]');
+
+  expect(options.length).toEqual(4);
+});
+
+test('multiselect should have two selected options', () => {
+  const { getByRole } = render(MultiselectMock);
+
+  const menu = getByRole('listbox');
+
+  const options = menu.querySelectorAll(':checked');
+
+  expect(options.length).toEqual(2);
+});
+
+test('multiselect should be able to select multiple options', () => {
+  const { getAllByLabelText } = render(MultiselectMock);
+
+  const input = getAllByLabelText('Countries')[0];
+
+  fireEvent.focus(input);
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  fireEvent.keyDown(input, { key: 'Enter' });
+
+  expect(onItemChange).toHaveBeenCalledWith(['us', 'mx', 'ca']);
+});
+
+test('multiselect should be able to deselect options', () => {
+  const { getAllByLabelText } = render(MultiselectMock);
+
+  const input = getAllByLabelText('Countries')[0];
+
+  fireEvent.focus(input);
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  fireEvent.keyDown(input, { key: 'Enter' });
+
+  expect(onItemChange).toHaveBeenCalledWith(['mx']);
+});
+
+test('chips should be rendered', () => {
+  const { getAllByText } = render(MultiselectMock);
+
+  expect(getAllByText('United States').length).toEqual(2);
+  expect(getAllByText('Mexico').length).toEqual(2);
+  expect(getAllByText('Canada').length).not.toEqual(2);
 });

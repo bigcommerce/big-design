@@ -113,3 +113,11 @@ test('theme prop overrides default theme', () => {
 
   expect(container.querySelector('label')).toHaveStyle(`background-color: red`);
 });
+
+test('displays text greyed out when disabled', () => {
+  const { container } = render(<Checkbox disabled label="Checked" className="test" />);
+
+  const labels = container.querySelectorAll('label');
+
+  expect(labels[1]).toHaveStyle('color: #B4BAD1');
+});

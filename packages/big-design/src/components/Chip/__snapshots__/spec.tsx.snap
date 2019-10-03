@@ -165,6 +165,7 @@ exports[`renders with close button if onRemove is present 1`] = `
     Test
   </p>
   <button
+    aria-label="Remove Test"
     class="c3 c4"
     role="button"
     tabindex="0"

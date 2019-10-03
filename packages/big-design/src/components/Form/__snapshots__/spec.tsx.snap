@@ -57,60 +57,82 @@ exports[`simple form render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
-}
-
-.c8 {
-  background-color: #FFFFFF;
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  color: #313440;
-  height: 2.25rem;
-  line-height: 1.5rem;
+  min-height: 2.25rem;
   padding: 0.25rem 0.75rem;
   width: 100%;
   border: 1px solid #D9DCE9;
 }
 
-.c8:hover:not([disabled]) {
+.c7:hover:not([disabled]) {
   border: 1px solid #B4BAD1;
 }
 
-.c8:focus {
-  outline: none;
-  box-shadow: 0 0 0 4px #DBE3FE;
-}
-
-.c8[disabled] {
+.c7[disabled] {
   background-color: #ECEEF5;
 }
 
-.c8::-webkit-input-placeholder {
+.c9 {
+  border: 0;
+  box-sizing: border-box;
+  color: #313440;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 1.5rem;
+  margin-top: 0.25rem;
+  padding: 0;
+  width: 100%;
+}
+
+.c9:focus {
+  outline: none;
+}
+
+.c9::-webkit-input-placeholder {
   color: #B4BAD1;
-  line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c8::-moz-placeholder {
+.c9::-moz-placeholder {
   color: #B4BAD1;
-  line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c8:-ms-input-placeholder {
+.c9:-ms-input-placeholder {
   color: #B4BAD1;
-  line-height: 1.5rem;
   font-size: 1rem;
 }
 
-.c8::placeholder {
+.c9::placeholder {
   color: #B4BAD1;
-  line-height: 1.5rem;
   font-size: 1rem;
+}
+
+.c9[disabled] {
+  background-color: #ECEEF5;
+}
+
+.c8 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 100%;
+  margin-top: -0.25rem;
 }
 
 .c3 {
@@ -175,11 +197,15 @@ exports[`simple form render 1`] = `
         <span
           class="c6 c7"
         >
-          <input
+          <div
             class="c8"
-            id="input_0"
-            placeholder="Placeholder text"
-          />
+          >
+            <input
+              class="c9"
+              id="input_0"
+              placeholder="Placeholder text"
+            />
+          </div>
         </span>
       </div>
     </div>
@@ -201,11 +227,15 @@ exports[`simple form render 1`] = `
         <span
           class="c6 c7"
         >
-          <input
+          <div
             class="c8"
-            id="input_1"
-            placeholder="Placeholder text"
-          />
+          >
+            <input
+              class="c9"
+              id="input_1"
+              placeholder="Placeholder text"
+            />
+          </div>
         </span>
       </div>
     </div>

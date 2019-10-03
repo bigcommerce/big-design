@@ -381,7 +381,7 @@ exports[`render pagination component 1`] = `
       aria-labelledby="trigger_1"
       class="c7"
       id="dropdown_0"
-      role="menu"
+      role="listbox"
       style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;"
       tabindex="-1"
     >
@@ -389,7 +389,7 @@ exports[`render pagination component 1`] = `
         class="c8"
         data-value="2"
         id="dropdown_0-item-0"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         2
@@ -399,7 +399,7 @@ exports[`render pagination component 1`] = `
         class="c8"
         data-value="3"
         id="dropdown_0-item-1"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         3
@@ -409,7 +409,7 @@ exports[`render pagination component 1`] = `
         class="c8"
         data-value="5"
         id="dropdown_0-item-2"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         5
@@ -866,7 +866,7 @@ exports[`render pagination component with invalid page info 1`] = `
       aria-labelledby="trigger_1"
       class="c7"
       id="dropdown_0"
-      role="menu"
+      role="listbox"
       style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;"
       tabindex="-1"
     >
@@ -874,7 +874,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c8"
         data-value="2"
         id="dropdown_0-item-0"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         2
@@ -884,7 +884,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c8"
         data-value="3"
         id="dropdown_0-item-1"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         3
@@ -894,7 +894,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c8"
         data-value="5"
         id="dropdown_0-item-2"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         5
@@ -1351,7 +1351,7 @@ exports[`render pagination component with invalid range info 1`] = `
       aria-labelledby="trigger_1"
       class="c7"
       id="dropdown_0"
-      role="menu"
+      role="listbox"
       style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;"
       tabindex="-1"
     >
@@ -1359,7 +1359,7 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c8"
         data-value="2"
         id="dropdown_0-item-0"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         2
@@ -1369,7 +1369,7 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c8"
         data-value="3"
         id="dropdown_0-item-1"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         3
@@ -1379,7 +1379,7 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c8"
         data-value="5"
         id="dropdown_0-item-2"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         5
@@ -1837,7 +1837,7 @@ exports[`render pagination component with no items 1`] = `
       aria-labelledby="trigger_1"
       class="c7"
       id="dropdown_0"
-      role="menu"
+      role="listbox"
       style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;"
       tabindex="-1"
     >
@@ -1845,7 +1845,7 @@ exports[`render pagination component with no items 1`] = `
         class="c8"
         data-value="2"
         id="dropdown_0-item-0"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         2
@@ -1855,7 +1855,7 @@ exports[`render pagination component with no items 1`] = `
         class="c8"
         data-value="3"
         id="dropdown_0-item-1"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         3
@@ -1865,7 +1865,7 @@ exports[`render pagination component with no items 1`] = `
         class="c8"
         data-value="5"
         id="dropdown_0-item-2"
-        role="menuitem"
+        role="option"
         tabindex="-1"
       >
         5

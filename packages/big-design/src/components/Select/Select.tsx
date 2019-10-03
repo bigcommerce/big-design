@@ -1,14 +1,16 @@
 import { Placement } from 'popper.js';
-import React, { AllHTMLAttributes, RefObject } from 'react';
+import React, { RefObject } from 'react';
 import { Manager, Reference } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
-import { Flex } from '../Flex';
+import { Flex } from '../Flex/Flex';
+import { Label } from '../Form/Label';
 import { Input } from '../Input';
-import { List } from '../List';
-import { ListAction } from '../List/Action';
-import { ListItem } from '../List/Item';
+import { ListAction } from '../List/Action/Action';
+import { ListCheckboxItem } from '../List/Item/CheckboxItem';
+import { ListItem } from '../List/Item/Item';
+import { List } from '../List/List';
 
 import { Form } from './../Form';
 import { StyledDropdownIcon, StyledStatusMessage } from './styled';
@@ -26,12 +28,13 @@ interface Props {
   error?: React.ReactChild;
   label?: React.ReactChild;
   maxHeight?: number;
+  multi?: boolean;
   placement?: Placement;
   positionFixed?: boolean;
   required?: boolean;
-  value?: AllHTMLAttributes<HTMLElement>['value'];
+  value?: string | number | Array<string | number>;
   onActionClick?(inputText: string): void;
-  onItemChange(value: AllHTMLAttributes<HTMLElement>['value']): void;
+  onItemChange(value: string | number | Array<string | number>): void;
 }
 
 export type SelectProps = Props & React.HTMLAttributes<HTMLUListElement>;
@@ -49,7 +52,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     selectedItem: null,
   };
 
-  private inputRef: HTMLInputElement | null = null;
+  private inputRef: RefObject<HTMLInputElement> = React.createRef();
   private listRef: HTMLUListElement | null = null;
 
   private readonly uniqueInputId = uniqueId('input_');
@@ -91,6 +94,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       children,
       label,
       maxHeight,
+      multi,
       onActionClick,
       onItemChange,
       placeholder,
@@ -106,8 +110,11 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
 
     this.listItemsRefs = [];
 
-    const ariaOwns = isOpen ? { 'aria-owns': selectId } : {};
     const ariaLabelledBy = label ? { 'aria-labelledby': labelId } : {};
+    const ariaMultiSelect = multi ? { 'aria-multiselectable': true } : {};
+    const ariaOwns = isOpen ? { 'aria-owns': selectId } : {};
+
+    const listItems = this.renderChildren();
 
     return (
       <Manager>
@@ -120,11 +127,12 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
             isOpen={isOpen}
             maxHeight={maxHeight}
             placement={placement}
-            role={'listbox'}
+            role="listbox"
             {...ariaLabelledBy}
+            {...ariaMultiSelect}
             {...rest}
           >
-            {this.renderChildren()}
+            {listItems}
           </List>
         </div>
         <StyledStatusMessage
@@ -137,53 +145,124 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     );
   }
 
-  private renderChildren() {
-    const { children } = this.props;
+  private renderLabel() {
+    const { label } = this.props;
 
-    return React.Children.map(children, (child, index) => {
+    const inputId = this.getInputId();
+    const labelId = this.getLabelId();
+
+    if (typeof label === 'string') {
+      return (
+        <Label htmlFor={inputId} id={labelId}>
+          {label}
+        </Label>
+      );
+    }
+
+    if (React.isValidElement(label) && label.type === Input.Label) {
+      return React.cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, {
+        htmlFor: inputId,
+        id: labelId,
+      });
+    }
+
+    return null;
+  }
+
+  private renderInput() {
+    const { placeholder, children, error, required, disabled, onItemChange, value } = this.props;
+    const { highlightedItem, inputText, isOpen } = this.state;
+
+    const ariaActiveDescendant = highlightedItem ? { 'aria-activedescendant': highlightedItem.id } : {};
+    const ariaControls = isOpen ? { 'aria-controls': this.getSelectId() } : {};
+
+    if (this.inputRef && this.inputRef.current) {
+      const hasError = Boolean(error);
+      const errorMessage = typeof error === 'string' ? error : 'Invalid input';
+
+      this.inputRef.current.setCustomValidity(hasError ? errorMessage : '');
+    }
+
+    const chips = this.renderChips();
+
+    const listItems = React.Children.map(children, child => {
       if (!React.isValidElement(child)) {
         return;
       }
 
-      const ref = React.createRef<HTMLLIElement>();
-
-      switch (child.type) {
-        case ListItem:
-          if (
-            !this.state.filterChildren ||
-            child.props.children.toLowerCase().startsWith(this.state.inputText.toLocaleLowerCase())
-          ) {
-            const id = this.getItemId(child, index);
-            this.listItemsRefs.push(ref);
-
-            return React.cloneElement(child, {
-              'aria-selected': child.props.value === this.props.value,
-              'data-highlighted': this.state.highlightedItem && id === this.state.highlightedItem.id,
-              id,
-              onClick: child.props.disabled ? null : this.handleOnItemClick,
-              onMouseOver: this.handleOnItemMouseOver,
-              ref,
-              role: 'option',
-            }) as React.LiHTMLAttributes<HTMLLIElement>;
-          }
-
-          return;
-        case ListAction:
-          const actionId = this.getActionId(child, index);
-          this.listItemsRefs.push(ref);
-
-          return React.cloneElement(child, {
-            'data-highlighted': this.state.highlightedItem && actionId === this.state.highlightedItem.id,
-            id: actionId,
-            onClick: this.handleOnActionClick,
-            onMouseOver: this.handleOnItemMouseOver,
-            ref,
-            role: 'option',
-          }) as React.LiHTMLAttributes<HTMLLIElement>;
-        default:
-          return;
-      }
+      return { value: child.props.value, text: child.props.children };
     });
+
+    const onChipDelete = (chip: string) => () => {
+      const filteredValues = Array.isArray(value)
+        ? value.filter(val => {
+            const listItem = listItems.find(item => item && String(item.value) === String(val));
+
+            return listItem && listItem.text !== chip;
+          })
+        : '';
+
+      onItemChange(filteredValues);
+
+      return this.inputRef && this.inputRef.current && this.inputRef.current.focus();
+    };
+
+    return (
+      <Reference>
+        {({ ref }) => (
+          <span ref={ref}>
+            <Input
+              autoComplete="off"
+              chips={chips}
+              disabled={disabled}
+              error={error}
+              iconRight={this.renderDropdownIcon()}
+              id={this.getInputId()}
+              onChange={this.handleOnInputChange}
+              onChipDelete={chips && onChipDelete}
+              onFocus={this.handleOnInputFocus}
+              onKeyDown={this.handleOnInputKeyDown}
+              placeholder={placeholder}
+              ref={this.inputRef}
+              required={required}
+              type={'text'}
+              value={inputText}
+              aria-autocomplete="list"
+              {...ariaActiveDescendant}
+              {...ariaControls}
+            ></Input>
+          </span>
+        )}
+      </Reference>
+    );
+  }
+
+  private renderChips() {
+    const { children, multi, value } = this.props;
+
+    if (!multi || !value) {
+      return;
+    }
+
+    const listItems = React.Children.map(children, child => {
+      if (!React.isValidElement(child)) {
+        return;
+      }
+
+      return { value: child.props.value, text: child.props.children };
+    });
+
+    if (Array.isArray(value)) {
+      return value.map(val => {
+        const selectedItem = listItems.find(item => item && String(item.value) === String(val));
+
+        return selectedItem && selectedItem.text;
+      });
+    } else {
+      const listItem = listItems.find(item => item && String(item.value) === String(value));
+
+      return listItem && [listItem.text];
+    }
   }
 
   private renderDropdownIcon() {
@@ -201,72 +280,96 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     );
   }
 
-  private renderLabel() {
-    const { label } = this.props;
+  private renderChildren() {
+    const { children, multi, value } = this.props;
 
-    const inputId = this.getInputId();
-    const labelId = this.getLabelId();
+    return React.Children.map(children, (child, index) => {
+      if (!React.isValidElement(child)) {
+        return;
+      }
 
-    if (typeof label === 'string') {
-      return (
-        <Input.Label htmlFor={inputId} id={labelId}>
-          {label}
-        </Input.Label>
-      );
-    }
+      const ref = React.createRef<HTMLLIElement>();
 
-    if (React.isValidElement(label) && label.type === Input.Label) {
-      return React.cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, {
-        htmlFor: inputId,
-        id: labelId,
-      });
-    }
+      switch (child.type) {
+        case ListItem:
+          // For now, we only support ListItems that only have text as children
+          if (typeof child.props.children !== 'string') {
+            return;
+          }
 
-    return null;
-  }
+          if (
+            !this.state.filterChildren ||
+            child.props.children.toLowerCase().startsWith(this.state.inputText.toLocaleLowerCase())
+          ) {
+            const id = this.getItemId(child, index);
 
-  private renderInput() {
-    const { label, placeholder, error, required, disabled } = this.props;
-    const { highlightedItem, inputText } = this.state;
+            if (!child.props.disabled) {
+              this.listItemsRefs.push(ref);
+            }
 
-    const ariaActiveDescendant = highlightedItem ? { 'aria-activedescendant': highlightedItem.id } : {};
-    const ariaControls = this.state.isOpen ? { 'aria-controls': this.getSelectId() } : {};
-    const ariaLabelledBy = label ? { 'aria-labelledby': this.getLabelId() } : {};
+            const ariaSelected = child.props.value === value ? { 'aria-selected': true } : {};
 
-    if (this.inputRef) {
-      const hasError = Boolean(error);
-      const errorMessage = typeof error === 'string' ? error : 'Invalid input';
+            return multi
+              ? (React.cloneElement(
+                  { ...child, type: ListCheckboxItem },
+                  {
+                    'aria-selected': Array.isArray(value)
+                      ? value.includes(String(child.props.value))
+                      : value && String(value) === String(child.props.value),
+                    checked: Array.isArray(value)
+                      ? value.includes(String(child.props.value))
+                      : value && String(value) === String(child.props.value),
+                    'data-highlighted': this.state.highlightedItem && id === this.state.highlightedItem.id,
+                    id,
+                    onCheckboxChange: child.props.disabled ? null : this.handleOnCheckboxItemChange,
+                    onMouseOver: this.handleOnItemMouseOver,
+                    ref,
+                    role: 'option',
+                  },
+                ) as React.LiHTMLAttributes<HTMLLIElement>)
+              : (React.cloneElement(child, {
+                  ...ariaSelected,
+                  'data-highlighted': this.state.highlightedItem && id === this.state.highlightedItem.id,
+                  id,
+                  onClick: child.props.disabled ? null : this.handleOnItemClick,
+                  onMouseOver: this.handleOnItemMouseOver,
+                  ref,
+                  role: 'option',
+                }) as React.LiHTMLAttributes<HTMLLIElement>);
+          }
 
-      this.inputRef.setCustomValidity(hasError ? errorMessage : '');
-    }
+          return;
+        case ListAction:
+          // For now, we only support ListActions that only have text as children
+          if (typeof child.props.children !== 'string') {
+            return;
+          }
 
-    return (
-      <Reference innerRef={node => (this.inputRef = node as HTMLInputElement)}>
-        {({ ref }) => (
-          <Input
-            autoComplete="off"
-            error={error}
-            iconRight={this.renderDropdownIcon()}
-            id={this.getInputId()}
-            onChange={this.handleOnInputChange}
-            onKeyDown={this.handleOnInputKeyDown}
-            onFocus={this.handleOnInputFocus}
-            placeholder={placeholder}
-            ref={ref}
-            required={required}
-            disabled={disabled}
-            value={inputText}
-            {...ariaActiveDescendant}
-            {...ariaControls}
-            {...ariaLabelledBy}
-          />
-        )}
-      </Reference>
-    );
+          const actionId = this.getActionId(child, index);
+          this.listItemsRefs.push(ref);
+
+          return React.cloneElement(child, {
+            'data-highlighted': this.state.highlightedItem && actionId === this.state.highlightedItem.id,
+            id: actionId,
+            onClick: this.handleOnActionClick,
+            onMouseOver: this.handleOnItemMouseOver,
+            ref,
+            role: 'option',
+          }) as React.LiHTMLAttributes<HTMLLIElement>;
+        default:
+          return;
+      }
+    });
   }
 
   private toggleList = () => {
-    this.state.isOpen ? this.closeList() : this.openList();
+    const { disabled } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
+    return this.state.isOpen ? this.closeList() : this.openList();
   };
 
   private openList() {
@@ -279,7 +382,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         this.updateHighlightedItem(selectedItem, true, true);
       }
 
-      return this.inputRef && this.inputRef.focus({ preventScroll: true });
+      return this.inputRef && this.inputRef.current && this.inputRef.current.focus({ preventScroll: true });
     });
   }
 
@@ -288,8 +391,11 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
 
     const text = selectedItem && selectedItem.textContent;
 
-    this.setState({ filterChildren: false, highlightedItem: null, inputText: text ? text : '', isOpen: false }, () => {
+    this.setState({ filterChildren: false, highlightedItem: null, inputText: text ? text : '' }, () => {
       document.removeEventListener('mousedown', this.handleOnClickOutside, false);
+
+      // Need to wait for the state to be updated before we close for VO
+      this.setState({ isOpen: false });
     });
   }
 
@@ -337,12 +443,14 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     }
 
     const selectedItemRef = this.listItemsRefs.find(
-      item => item.current && item.current.getAttribute('data-value') === String(value),
+      ref => ref.current && ref.current.getAttribute('data-value') === String(value),
     );
-    const selectedItem = selectedItemRef && selectedItemRef.current;
+    const selectedItemElement = selectedItemRef && selectedItemRef.current;
 
     return (
-      selectedItem && selectedItem.textContent && this.setState({ inputText: selectedItem.textContent, selectedItem })
+      selectedItemElement &&
+      selectedItemElement.textContent &&
+      this.setState({ inputText: selectedItemElement.textContent, selectedItem: selectedItemElement })
     );
   }
 
@@ -367,13 +475,44 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
 
     if (
       (this.listRef && this.listRef.contains(event.target as Node)) ||
-      (this.inputRef && this.inputRef.parentElement && this.inputRef.parentElement.contains(event.target as Node))
+      (this.inputRef &&
+        this.inputRef.current &&
+        this.inputRef.current.parentElement &&
+        this.inputRef.current.parentElement.parentElement &&
+        this.inputRef.current.parentElement.parentElement.contains(event.target as Node))
     ) {
       return;
     }
 
     if (this.state.isOpen) {
       this.toggleList();
+    }
+  };
+
+  private handleOnCheckboxItemChange = () => {
+    const { onItemChange, value } = this.props;
+    const { highlightedItem } = this.state;
+
+    if (!highlightedItem) {
+      return;
+    }
+
+    const checkbox = highlightedItem.querySelector('input[type="checkbox"]') as HTMLInputElement;
+
+    const selectedValue = checkbox.getAttribute('data-value');
+
+    if (!selectedValue) {
+      return;
+    }
+
+    if (checkbox.checked) {
+      onItemChange(Array.isArray(value) ? value.concat(selectedValue) : [value as string, selectedValue]);
+    } else {
+      onItemChange(Array.isArray(value) ? value.filter(val => String(val) !== String(selectedValue)) : []);
+    }
+
+    if (this.inputRef && this.inputRef.current) {
+      this.inputRef.current.focus({ preventScroll: true });
     }
   };
 
@@ -393,10 +532,6 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       }
     }
 
-    if (this.inputRef) {
-      this.inputRef.focus({ preventScroll: true });
-    }
-
     if (this.state.isOpen) {
       this.toggleList();
     }
@@ -407,7 +542,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   };
 
   private handleOnInputFocus = () => {
-    if (!this.props.value && !this.state.isOpen) {
+    if (!this.state.isOpen) {
       this.toggleList();
     }
   };
@@ -487,12 +622,26 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     }
 
     switch (event.key) {
-      case 'Enter':
-      case ' ': {
+      case 'Enter': {
         if (this.state.isOpen) {
           event.preventDefault();
-          this.handleOnItemClick();
+          this.clickHighlightedItem();
         } else {
+          this.toggleList();
+        }
+        break;
+      }
+      case 'Backspace': {
+        if (this.state.inputText === '' && this.props.multi) {
+          return Array.isArray(this.props.value)
+            ? this.props.onItemChange(this.props.value.slice(0, this.props.value.length - 1))
+            : this.props.onItemChange([]);
+        }
+        break;
+      }
+      case ' ': {
+        if (!this.state.isOpen) {
+          event.preventDefault();
           this.toggleList();
         }
         break;
@@ -542,4 +691,16 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       scrollMode: 'if-needed',
     });
   };
+
+  private clickHighlightedItem() {
+    const { highlightedItem } = this.state;
+
+    if (!highlightedItem) {
+      return;
+    }
+
+    const checkbox = highlightedItem && (highlightedItem.querySelector('input[type="checkbox"]') as HTMLInputElement);
+
+    return checkbox ? checkbox.click() : highlightedItem.click();
+  }
 }
