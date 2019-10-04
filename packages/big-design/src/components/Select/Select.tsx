@@ -146,14 +146,14 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   }
 
   private renderLabel() {
-    const { label } = this.props;
+    const { label, required } = this.props;
 
     const inputId = this.getInputId();
     const labelId = this.getLabelId();
 
     if (typeof label === 'string') {
       return (
-        <Label htmlFor={inputId} id={labelId}>
+        <Label htmlFor={inputId} id={labelId} renderOptional={!required}>
           {label}
         </Label>
       );

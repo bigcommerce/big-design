@@ -125,6 +125,12 @@ exports[`renders all together 1`] = `
   margin-bottom: 0.25rem;
 }
 
+.c0::after {
+  color: #5E637A;
+  content: ' (optional)';
+  font-weight: 400;
+}
+
 @media (min-width:720px) {
   .eLjSIS .c2,
   .eLjSIS .styled__StyledTextareaWrapper-c1uos0-0 {

@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import 'jest-styled-components';
 import React from 'react';
 
 import { Label } from './index';
@@ -15,4 +16,11 @@ test('does not forward styles', () => {
 
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
+});
+
+test('appends (optional) text when renderOptional', () => {
+  const { container } = render(<Label renderOptional>This is a label</Label>);
+  const label = container.querySelector('label');
+
+  expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
 });

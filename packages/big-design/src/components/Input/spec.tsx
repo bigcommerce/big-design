@@ -280,3 +280,10 @@ test('error shows when an array of Errors', () => {
 
   testIds.forEach(id => expect(getByTestId(id)).toBeInTheDocument());
 });
+
+test('appends (optional) text to label if input is not required', () => {
+  const { container } = render(<Input label="Test Label" />);
+  const label = container.querySelector('label');
+
+  expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
+});

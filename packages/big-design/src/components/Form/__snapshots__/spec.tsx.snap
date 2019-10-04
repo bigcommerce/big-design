@@ -156,6 +156,12 @@ exports[`simple form render 1`] = `
   margin-bottom: 0.25rem;
 }
 
+.c4::after {
+  color: #5E637A;
+  content: ' (optional)';
+  font-weight: 400;
+}
+
 @media (min-width:720px) {
   .c3 .c6,
   .c3 .styled__StyledTextareaWrapper-c1uos0-0 {

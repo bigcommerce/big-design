@@ -642,3 +642,10 @@ test('chips should be rendered', () => {
   expect(getAllByText('Mexico').length).toEqual(2);
   expect(getAllByText('Canada').length).not.toEqual(2);
 });
+
+test('appends (optional) text to label if select is not required', () => {
+  const { container } = render(SelectMock);
+  const label = container.querySelector('label');
+
+  expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
+});
