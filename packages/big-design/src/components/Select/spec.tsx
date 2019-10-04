@@ -10,7 +10,7 @@ import { Select } from './Select';
 const onItemChange = jest.fn();
 
 const SelectMock = (
-  <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" required>
+  <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country">
     <Select.Option value="us">United States</Select.Option>
     <Select.Option value="mx">Mexico</Select.Option>
     <Select.Option value="ca">Canada</Select.Option>
@@ -19,14 +19,7 @@ const SelectMock = (
 );
 
 const MultiselectMock = (
-  <Select
-    multi={true}
-    onItemChange={onItemChange}
-    label="Countries"
-    placeholder="Choose country"
-    value={['us', 'mx']}
-    required
-  >
+  <Select multi={true} onItemChange={onItemChange} label="Countries" placeholder="Choose country" value={['us', 'mx']}>
     <Select.Option value="us">United States</Select.Option>
     <Select.Option value="mx">Mexico</Select.Option>
     <Select.Option value="ca">Canada</Select.Option>
@@ -183,7 +176,7 @@ test('select items should be unfiltered when opened', () => {
 
 test('select item should be highlighted when opened', () => {
   const { getAllByRole, getAllByLabelText, getByRole } = render(
-    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx" required>
+    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
@@ -203,7 +196,7 @@ test('select item should be highlighted when opened', () => {
 
 test('select input text should match the value selected', () => {
   const { getAllByLabelText, rerender } = render(
-    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx" required>
+    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
@@ -373,13 +366,7 @@ test('select should render select action', () => {
 test('select action should execute onActionClick function', () => {
   const onActionClick = jest.fn();
   const { getAllByLabelText, getByText } = render(
-    <Select
-      onActionClick={onActionClick}
-      onItemChange={onItemChange}
-      label="Countries"
-      placeholder="Choose country"
-      required
-    >
+    <Select onActionClick={onActionClick} onItemChange={onItemChange} label="Countries" placeholder="Choose country">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="mx">Mexico</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
@@ -526,7 +513,7 @@ test('should be valid if not required', () => {
     </Select>,
   );
 
-  const input = getAllByLabelText('Countries (optional)')[0] as HTMLSelectElement;
+  const input = getAllByLabelText('Countries')[0] as HTMLSelectElement;
 
   expect(input.checkValidity()).toEqual(true);
 });
@@ -579,7 +566,7 @@ test('should be invalid when it has an error', () => {
 
 test('select input text should update if a matching child appears', () => {
   const { getAllByLabelText, rerender } = render(
-    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" required value="mx">
+    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
       <Select.Option value="us">United States</Select.Option>
       <Select.Option value="ca">Canada</Select.Option>
       <Select.Option value="en">England</Select.Option>
@@ -656,14 +643,9 @@ test('chips should be rendered', () => {
   expect(getAllByText('Canada').length).not.toEqual(2);
 });
 
-test('renders a non required select with optional text', () => {
-  const { queryByLabelText } = render(
-    <Select onItemChange={onItemChange} label="Countries">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-    </Select>,
-  );
+test('appends (optional) text to label if select is not required', () => {
+  const { container } = render(SelectMock);
+  const label = container.querySelector('label');
 
-  // This one checks for matching id and htmlFor
-  expect(queryByLabelText('Countries (optional)')).toBeInTheDocument();
+  expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
 });

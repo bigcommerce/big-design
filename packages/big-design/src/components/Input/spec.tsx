@@ -22,7 +22,7 @@ test('renders an input tag', () => {
 });
 
 test('renders an input with matched label', () => {
-  const { queryByLabelText } = render(<Input label="Test Label" required />);
+  const { queryByLabelText } = render(<Input label="Test Label" />);
 
   // This one checks for matching id and htmlFor
   expect(queryByLabelText('Test Label')).toBeInTheDocument();
@@ -281,9 +281,9 @@ test('error shows when an array of Errors', () => {
   testIds.forEach(id => expect(getByTestId(id)).toBeInTheDocument());
 });
 
-test('renders a non required input with optional text', () => {
-  const { queryByLabelText } = render(<Input label="Test Label" />);
+test('appends (optional) text to label if input is not required', () => {
+  const { container } = render(<Input label="Test Label" />);
+  const label = container.querySelector('label');
 
-  // This one checks for matching id and htmlFor
-  expect(queryByLabelText('Test Label (optional)')).toBeInTheDocument();
+  expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
 });

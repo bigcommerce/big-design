@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders all together 1`] = `
-.c6 {
+.c5 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c2 {
+.c1 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -17,11 +17,11 @@ exports[`renders all together 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c2:last-child {
+.c1:last-child {
   margin-bottom: 0;
 }
 
-.c4 {
+.c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -39,15 +39,15 @@ exports[`renders all together 1`] = `
   border: 1px solid #D9DCE9;
 }
 
-.c4:hover:not([disabled]) {
+.c3:hover:not([disabled]) {
   border: 1px solid #B4BAD1;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   background-color: #ECEEF5;
 }
 
-.c8 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   color: #313440;
@@ -62,35 +62,35 @@ exports[`renders all together 1`] = `
   padding-left: 0.25rem;
 }
 
-.c8:focus {
+.c7:focus {
   outline: none;
 }
 
-.c8::-webkit-input-placeholder {
+.c7::-webkit-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c8::-moz-placeholder {
+.c7::-moz-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c8:-ms-input-placeholder {
+.c7:-ms-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c8::placeholder {
+.c7::placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   background-color: #ECEEF5;
 }
 
-.c5 {
+.c4 {
   color: #5E637A;
   -webkit-flex: 0 0 1.5rem;
   -ms-flex: 0 0 1.5rem;
@@ -98,7 +98,7 @@ exports[`renders all together 1`] = `
   height: 1.5rem;
 }
 
-.c7 {
+.c6 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -125,13 +125,14 @@ exports[`renders all together 1`] = `
   margin-bottom: 0.25rem;
 }
 
-.c1 {
+.c0::after {
   color: #5E637A;
+  content: ' (optional)';
   font-weight: 400;
 }
 
 @media (min-width:720px) {
-  .eLjSIS .c3,
+  .eLjSIS .c2,
   .eLjSIS .styled__StyledTextareaWrapper-c1uos0-0 {
     max-width: 26rem;
   }
@@ -143,25 +144,20 @@ exports[`renders all together 1`] = `
     for="input_0"
   >
     This is a label
-    <span
-      class="c1"
-    >
-       (optional)
-    </span>
   </label>
   <p
-    class="c2"
+    class="c1"
   >
     This is a description
   </p>
   <span
-    class="c3 c4"
+    class="c2 c3"
   >
     <div
-      class="c5"
+      class="c4"
     >
       <svg
-        class="c6"
+        class="c5"
         data-testid="icon-left"
         fill="currentColor"
         height="24"
@@ -181,18 +177,18 @@ exports[`renders all together 1`] = `
       </svg>
     </div>
     <div
-      class="c7"
+      class="c6"
     >
       <input
-        class="c8"
+        class="c7"
         id="input_0"
       />
     </div>
     <div
-      class="c5"
+      class="c4"
     >
       <svg
-        class="c6"
+        class="c5"
         data-testid="icon-right"
         fill="currentColor"
         height="24"
