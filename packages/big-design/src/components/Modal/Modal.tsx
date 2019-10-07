@@ -138,8 +138,10 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
       actions &&
       Array.isArray(actions) && (
         <StyledModalActions justifyContent="flex-end">
-          {actions.map(({ text, ...props }) => (
-            <Button {...props}>{text}</Button>
+          {actions.map(({ text, ...props }, index) => (
+            <Button key={index} {...props}>
+              {text}
+            </Button>
           ))}
         </StyledModalActions>
       )

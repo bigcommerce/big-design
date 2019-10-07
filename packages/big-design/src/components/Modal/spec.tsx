@@ -2,8 +2,6 @@ import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 
-import { Button } from '../Button';
-
 import { Modal } from './Modal';
 
 test('render open modal', () => {
@@ -221,9 +219,7 @@ test('renders header', () => {
 });
 
 test('renders actions', () => {
-  const { getAllByRole } = render(
-    <Modal isOpen={true} actions={[{ text: 'Cancel', key: 1 }, { text: 'Apply', key: 2 }]} />,
-  );
+  const { getAllByRole } = render(<Modal isOpen={true} actions={[{ text: 'Cancel' }, { text: 'Apply' }]} />);
 
   expect(getAllByRole('button').length).toBe(3);
 });
