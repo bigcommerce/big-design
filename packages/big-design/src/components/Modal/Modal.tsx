@@ -16,7 +16,7 @@ import {
 } from './styled';
 
 export interface ModalProps {
-  actions?: Action[];
+  actions?: ModalAction[];
   backdrop: boolean;
   closeOnClickOutside: boolean;
   closeOnEscKey: boolean;
@@ -31,7 +31,7 @@ interface ModalState {
   modalContainer: HTMLDivElement | null;
 }
 
-interface Action extends Omit<ButtonProps, 'children'> {
+export interface ModalAction extends Omit<ButtonProps, 'children'> {
   text?: string;
 }
 
@@ -135,7 +135,6 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
     const { actions } = this.props;
 
     return (
-      actions &&
       Array.isArray(actions) && (
         <StyledModalActions justifyContent="flex-end">
           {actions.map(({ text, ...props }, index) => (
