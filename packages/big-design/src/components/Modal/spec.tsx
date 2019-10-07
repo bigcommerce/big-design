@@ -2,6 +2,8 @@ import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 
+import { Button } from '../Button';
+
 import { Modal } from './Modal';
 
 test('render open modal', () => {
@@ -210,4 +212,41 @@ test('body has scroll locked on modal open', () => {
   rerender(<Modal isOpen={false} />);
 
   expect(document.body.style.overflowY).toEqual('');
+});
+
+test('renders header', () => {
+  const { getByText } = render(<Modal isOpen={true} header="Header Title" />);
+
+  expect(getByText('Header Title')).toBeInTheDocument();
+});
+
+test('renders header border', () => {
+  render(<Modal isOpen={true} header="Header Title" withHeaderBorder={true} />);
+
+  expect(document.body).toMatchSnapshot();
+});
+
+test('renders actions', () => {
+  const actions = (
+    <>
+      <Button variant="subtle">Cancel</Button>
+      <Button>Apply</Button>
+    </>
+  );
+
+  const { getAllByRole } = render(<Modal isOpen={true} actions={actions} />);
+  expect(getAllByRole('button').length).toBe(3);
+});
+
+test('renders actions border', () => {
+  const actions = (
+    <>
+      <Button variant="subtle">Cancel</Button>
+      <Button>Apply</Button>
+    </>
+  );
+
+  render(<Modal isOpen={true} actions={actions} withActionsBorder={true} />);
+
+  expect(document.body).toMatchSnapshot();
 });

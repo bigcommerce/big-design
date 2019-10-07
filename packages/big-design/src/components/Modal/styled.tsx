@@ -4,7 +4,11 @@ import styled, { css } from 'styled-components';
 
 import { Flex } from '../Flex';
 
-import { ModalActionsProps, ModalHeaderProps, ModalProps } from './Modal';
+import { ModalProps } from './Modal';
+
+interface BorderProps {
+  withBorder: boolean;
+}
 
 export const StyledModal = styled.div.attrs({
   'aria-modal': true,
@@ -67,7 +71,7 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
     `}
 `;
 
-export const StyledModalActions = styled(Flex)<ModalActionsProps>`
+export const StyledModalActions = styled(Flex)<BorderProps>`
   padding: ${({ theme }) => theme.spacing.medium};
 
   ${({ theme }) => theme.breakpoints.tablet} {
@@ -82,7 +86,7 @@ export const StyledModalActions = styled(Flex)<ModalActionsProps>`
     `};
 `;
 
-export const StyledModalHeader = styled.div<ModalHeaderProps>`
+export const StyledModalHeader = styled.div<BorderProps>`
   padding: ${({ theme }) => theme.spacing.medium};
 
   ${({ theme }) => theme.breakpoints.tablet} {

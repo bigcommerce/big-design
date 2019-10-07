@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 
 import { uniqueId } from '../../utils';
 import { Button } from '../Button';
-import { H2, HeadingProps } from '../Typography';
+import { H2 } from '../Typography';
 
 import {
   StyledModal,
@@ -16,11 +16,15 @@ import {
 } from './styled';
 
 export interface ModalProps {
+  actions?: React.ReactNode;
   backdrop: boolean;
-  isOpen: boolean;
   closeOnClickOutside: boolean;
   closeOnEscKey: boolean;
+  header?: string;
+  isOpen: boolean;
   variant: 'modal' | 'dialog';
+  withActionsBorder?: boolean;
+  withHeaderBorder?: boolean;
   onClose(): void;
 }
 
@@ -29,41 +33,15 @@ interface ModalState {
   modalContainer: HTMLDivElement | null;
 }
 
-export interface ModalActionsProps {
-  withBorder?: boolean;
-}
-
-export interface ModalHeaderProps {
-  withBorder?: boolean;
-}
-
-const ModalActions: React.FC<ModalActionsProps> = ({ children, withBorder }) => (
-  <StyledModalActions justifyContent="flex-end" withBorder={withBorder}>
-    {children}
-  </StyledModalActions>
-);
-
-const ModalHeader: React.FC<ModalHeaderProps> = ({ children, withBorder }) => {
-  return (
-    <StyledModalHeader withBorder={withBorder}>
-      {typeof children === 'string' ? <H2 margin="none">{children}</H2> : children}
-    </StyledModalHeader>
-  );
-};
-
 export class Modal extends React.PureComponent<ModalProps, ModalState> {
   static defaultProps: Partial<ModalProps> = {
     backdrop: true,
-    isOpen: false,
     closeOnClickOutside: false,
     closeOnEscKey: true,
+    isOpen: false,
     onClose: () => null,
     variant: 'modal',
   };
-
-  static Actions = ModalActions;
-  static Body = StyledModalBody;
-  static Header = ModalHeader;
 
   readonly state: ModalState = {
     initialBodyOverflowY: '',
@@ -103,20 +81,22 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
   }
 
   render() {
-    const { backdrop, isOpen, variant } = this.props;
+    const { backdrop, children, isOpen, variant } = this.props;
     const { modalContainer } = this.state;
 
     const modalContent = (
       <StyledModal
-        onKeyDown={this.onKeyDown}
-        onClick={this.onClickAway}
-        ref={this.modalRef}
         backdrop={backdrop}
+        onClick={this.onClickAway}
+        onKeyDown={this.onKeyDown}
+        ref={this.modalRef}
         variant={variant}
       >
         <StyledModalContent variant={variant} aria-labelledby={this.headerUniqueId} flexDirection="column">
           {this.renderClose()}
-          {this.renderChildren()}
+          {this.renderHeader()}
+          <StyledModalBody>{children}</StyledModalBody>
+          {this.renderActions()}
         </StyledModalContent>
       </StyledModal>
     );
@@ -136,18 +116,28 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
     );
   }
 
-  private renderChildren() {
-    const { children } = this.props;
+  private renderHeader() {
+    const { header, withHeaderBorder = false } = this.props;
 
-    return React.Children.map(children, child => {
-      if (React.isValidElement(child) && child.type === Modal.Header) {
-        return React.cloneElement(child as React.ReactElement<HeadingProps>, {
-          id: this.headerUniqueId,
-        });
-      }
+    return (
+      header && (
+        <StyledModalHeader id={this.headerUniqueId} withBorder={withHeaderBorder}>
+          <H2 margin="none">{header}</H2>
+        </StyledModalHeader>
+      )
+    );
+  }
 
-      return child;
-    });
+  private renderActions() {
+    const { actions, withActionsBorder = false } = this.props;
+
+    return (
+      actions && (
+        <StyledModalActions justifyContent="flex-end" withBorder={withActionsBorder}>
+          {actions}
+        </StyledModalActions>
+      )
+    );
   }
 
   private autoFocus = () => {
