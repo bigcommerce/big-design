@@ -28,11 +28,5 @@ export const ModalPropTable: React.FC = () => (
     <PropTable.Prop name="variant" types={['modal', 'dialog']} defaults="modal">
       Determines the modal variant.
     </PropTable.Prop>
-    <PropTable.Prop name="withHeaderBorder" types="boolean" defaults="false">
-      Determines if the header bottom border is shown.
-    </PropTable.Prop>
-    <PropTable.Prop name="withActionsBorder" types="boolean" defaults="false">
-      Determines if the actions top border is shown.
-    </PropTable.Prop>
   </PropTable>
 );

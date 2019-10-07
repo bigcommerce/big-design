@@ -6,10 +6,6 @@ import { Flex } from '../Flex';
 
 import { ModalProps } from './Modal';
 
-interface BorderProps {
-  withBorder: boolean;
-}
-
 export const StyledModal = styled.div.attrs({
   'aria-modal': true,
   role: 'dialog',
@@ -71,34 +67,20 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
     `}
 `;
 
-export const StyledModalActions = styled(Flex)<BorderProps>`
+export const StyledModalActions = styled(Flex)`
   padding: ${({ theme }) => theme.spacing.medium};
 
   ${({ theme }) => theme.breakpoints.tablet} {
     padding: ${({ theme }) => theme.spacing.xLarge};
   }
-
-  ${({ theme, withBorder }) =>
-    withBorder &&
-    css`
-      border-top: ${theme.border.box};
-      margin-top: ${theme.spacing.medium};
-    `};
 `;
 
-export const StyledModalHeader = styled.div<BorderProps>`
+export const StyledModalHeader = styled.div`
   padding: ${({ theme }) => theme.spacing.medium};
 
   ${({ theme }) => theme.breakpoints.tablet} {
     padding: ${({ theme }) => theme.spacing.xLarge};
   }
-
-  ${({ theme, withBorder }) =>
-    withBorder &&
-    css`
-      border-bottom: ${theme.border.box};
-      margin-bottom: ${theme.spacing.medium};
-    `};
 `;
 
 export const StyledModalClose = styled.div`

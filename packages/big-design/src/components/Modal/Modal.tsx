@@ -23,8 +23,6 @@ export interface ModalProps {
   header?: string;
   isOpen: boolean;
   variant: 'modal' | 'dialog';
-  withActionsBorder?: boolean;
-  withHeaderBorder?: boolean;
   onClose(): void;
 }
 
@@ -117,12 +115,12 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
   }
 
   private renderHeader() {
-    const { header, withHeaderBorder = false } = this.props;
+    const { header } = this.props;
 
     return (
       header &&
       typeof header === 'string' && (
-        <StyledModalHeader id={this.headerUniqueId} withBorder={withHeaderBorder}>
+        <StyledModalHeader id={this.headerUniqueId}>
           <H2 margin="none">{header}</H2>
         </StyledModalHeader>
       )
@@ -130,15 +128,9 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
   }
 
   private renderActions() {
-    const { actions, withActionsBorder = false } = this.props;
+    const { actions } = this.props;
 
-    return (
-      actions && (
-        <StyledModalActions justifyContent="flex-end" withBorder={withActionsBorder}>
-          {actions}
-        </StyledModalActions>
-      )
-    );
+    return actions && <StyledModalActions justifyContent="flex-end">{actions}</StyledModalActions>;
   }
 
   private autoFocus = () => {

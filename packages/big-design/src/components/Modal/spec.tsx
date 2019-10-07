@@ -220,12 +220,6 @@ test('renders header', () => {
   expect(getByText('Header Title')).toBeInTheDocument();
 });
 
-test('renders header border', () => {
-  render(<Modal isOpen={true} header="Header Title" withHeaderBorder={true} />);
-
-  expect(document.body).toMatchSnapshot();
-});
-
 test('renders actions', () => {
   const actions = (
     <>
@@ -236,17 +230,4 @@ test('renders actions', () => {
 
   const { getAllByRole } = render(<Modal isOpen={true} actions={actions} />);
   expect(getAllByRole('button').length).toBe(3);
-});
-
-test('renders actions border', () => {
-  const actions = (
-    <>
-      <Button variant="subtle">Cancel</Button>
-      <Button>Apply</Button>
-    </>
-  );
-
-  render(<Modal isOpen={true} actions={actions} withActionsBorder={true} />);
-
-  expect(document.body).toMatchSnapshot();
 });
