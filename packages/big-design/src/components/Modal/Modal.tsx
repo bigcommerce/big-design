@@ -120,7 +120,8 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
     const { header, withHeaderBorder = false } = this.props;
 
     return (
-      header && (
+      header &&
+      typeof header === 'string' && (
         <StyledModalHeader id={this.headerUniqueId} withBorder={withHeaderBorder}>
           <H2 margin="none">{header}</H2>
         </StyledModalHeader>
