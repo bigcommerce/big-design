@@ -3,7 +3,7 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 
 import { uniqueId } from '../../utils';
-import { Button } from '../Button';
+import { Button, ButtonProps } from '../Button';
 import { H2 } from '../Typography';
 
 import {
@@ -16,7 +16,7 @@ import {
 } from './styled';
 
 export interface ModalProps {
-  actions?: React.ReactNode;
+  actions?: Action[];
   backdrop: boolean;
   closeOnClickOutside: boolean;
   closeOnEscKey: boolean;
@@ -29,6 +29,10 @@ export interface ModalProps {
 interface ModalState {
   initialBodyOverflowY: string;
   modalContainer: HTMLDivElement | null;
+}
+
+interface Action extends Omit<ButtonProps, 'children'> {
+  text?: string;
 }
 
 export class Modal extends React.PureComponent<ModalProps, ModalState> {
@@ -130,7 +134,16 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
   private renderActions() {
     const { actions } = this.props;
 
-    return actions && <StyledModalActions justifyContent="flex-end">{actions}</StyledModalActions>;
+    return (
+      actions &&
+      Array.isArray(actions) && (
+        <StyledModalActions justifyContent="flex-end">
+          {actions.map(({ text, ...props }) => (
+            <Button {...props}>{text}</Button>
+          ))}
+        </StyledModalActions>
+      )
+    );
   }
 
   private autoFocus = () => {

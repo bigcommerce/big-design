@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Code, PropTable } from '../components';
+import { Code, NextLink, PropTable } from '../components';
 
 export const ModalPropTable: React.FC = () => (
   <PropTable>
-    <PropTable.Prop name="actions" types="React.ReactNode">
-      Sets the actions of the modal.
+    <PropTable.Prop name="actions" types="object[]">
+      Accepts an array of objects with <NextLink href="/button">Button</NextLink> props and a <Code>text</Code> label.
     </PropTable.Prop>
     <PropTable.Prop name="backdrop" types="boolean" defaults="true">
       Determines if the backdrop is shown.

@@ -221,13 +221,9 @@ test('renders header', () => {
 });
 
 test('renders actions', () => {
-  const actions = (
-    <>
-      <Button variant="subtle">Cancel</Button>
-      <Button>Apply</Button>
-    </>
+  const { getAllByRole } = render(
+    <Modal isOpen={true} actions={[{ text: 'Cancel', key: 1 }, { text: 'Apply', key: 2 }]} />,
   );
 
-  const { getAllByRole } = render(<Modal isOpen={true} actions={actions} />);
   expect(getAllByRole('button').length).toBe(3);
 });

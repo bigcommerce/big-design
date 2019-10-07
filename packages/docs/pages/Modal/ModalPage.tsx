@@ -22,21 +22,15 @@ export default () => (
       {function Example() {
         const [isOpen, setIsOpen] = React.useState(false);
 
-        const actions = (
-          <>
-            <Button variant="subtle" onClick={() => setIsOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={() => setIsOpen(false)}>Apply</Button>
-          </>
-        );
-
         return (
           <>
             <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
 
             <Modal
-              actions={actions}
+              actions={[
+                { text: 'Cancel', onClick: () => setIsOpen(false) },
+                { text: 'Apply', onClick: () => setIsOpen(false) },
+              ]}
               header="Modal Title"
               isOpen={isOpen}
               onClose={() => setIsOpen(false)}
@@ -77,21 +71,15 @@ export default () => (
       {function Example() {
         const [isOpen, setIsOpen] = React.useState(false);
 
-        const actions = (
-          <>
-            <Button variant="subtle" onClick={() => setIsOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={() => setIsOpen(false)}>Apply</Button>
-          </>
-        );
-
         return (
           <>
             <Button onClick={() => setIsOpen(true)}>Open Dialog</Button>
 
             <Modal
-              actions={actions}
+              actions={[
+                { text: 'Cancel', onClick: () => setIsOpen(false) },
+                { text: 'Apply', onClick: () => setIsOpen(false) },
+              ]}
               header="Dialog Title"
               isOpen={isOpen}
               onClose={() => setIsOpen(false)}
