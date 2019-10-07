@@ -17,7 +17,7 @@ export const ModalPropTable: React.FC = () => (
       Controls whether <Code>onClose</Code> is called when pressing the ESC key.
     </PropTable.Prop>
     <PropTable.Prop name="header" types="string">
-      Header title of the modal.
+      Sets visible text that describes the content of the modal.
     </PropTable.Prop>
     <PropTable.Prop name="isOpen" types="boolean" required>
       Determines if the modal/dialog is open.
