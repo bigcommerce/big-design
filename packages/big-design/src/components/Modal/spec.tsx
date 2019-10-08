@@ -248,3 +248,10 @@ test('renders secondary action button', () => {
 
   expect(button).toMatchSnapshot();
 });
+
+test('renders destructive action button', () => {
+  const { getAllByRole } = render(<Modal isOpen={true} actions={[{ text: 'Apply', actionType: 'destructive' }]} />);
+  const button = getAllByRole('button')[1];
+
+  expect(button).toMatchSnapshot();
+});
