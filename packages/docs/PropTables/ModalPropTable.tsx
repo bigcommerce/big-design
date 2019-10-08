@@ -5,7 +5,8 @@ import { Code, NextLink, PropTable } from '../components';
 export const ModalPropTable: React.FC = () => (
   <PropTable>
     <PropTable.Prop name="actions" types="object[]">
-      Accepts an array of objects with <NextLink href="/button">Button</NextLink> props and a <Code>text</Code> label.
+      Accepts an array of objects with <NextLink href="/button">Button</NextLink> props and an additional{' '}
+      <Code>text</Code> prop. See example for usage.
     </PropTable.Prop>
     <PropTable.Prop name="backdrop" types="boolean" defaults="true">
       Determines if the backdrop is shown.
