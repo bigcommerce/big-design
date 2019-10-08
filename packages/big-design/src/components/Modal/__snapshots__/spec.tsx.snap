@@ -160,6 +160,15 @@ exports[`render open modal 1`] = `
   right: 0.25rem;
 }
 
+.c8 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  padding: 0 1rem;
+  overflow-y: auto;
+}
+
 @media (min-width:720px) {
   .c5 + .bd-button {
     margin-top: 0;
@@ -197,6 +206,12 @@ exports[`render open modal 1`] = `
 @media (min-width:720px) {
   .c4 {
     display: none;
+  }
+}
+
+@media (min-width:720px) {
+  .c8 {
+    padding: 0 1.5rem;
   }
 }
 
@@ -249,7 +264,11 @@ exports[`render open modal 1`] = `
             </span>
           </button>
         </div>
-        This is a modal
+        <div
+          class="c8"
+        >
+          This is a modal
+        </div>
       </div>
     </div>
   </div>
@@ -410,6 +429,15 @@ exports[`render open modal without backdrop 1`] = `
   right: 0.25rem;
 }
 
+.c8 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  padding: 0 1rem;
+  overflow-y: auto;
+}
+
 @media (min-width:720px) {
   .c5 + .bd-button {
     margin-top: 0;
@@ -447,6 +475,12 @@ exports[`render open modal without backdrop 1`] = `
 @media (min-width:720px) {
   .c4 {
     display: none;
+  }
+}
+
+@media (min-width:720px) {
+  .c8 {
+    padding: 0 1.5rem;
   }
 }
 
@@ -495,9 +529,245 @@ exports[`render open modal without backdrop 1`] = `
             </span>
           </button>
         </div>
-        This is a modal
+        <div
+          class="c8"
+        >
+          This is a modal
+        </div>
       </div>
     </div>
   </div>
 </body>
+`;
+
+exports[`renders destructive action button 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  background-color: #DB3643;
+  border-color: #DB3643;
+  font-weight: 600;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
+}
+
+.c0:active {
+  background-color: #AD0000;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.25rem #FEDBDE;
+}
+
+.c0:hover:not(:active) {
+  background-color: #CC1F1F;
+}
+
+.c0[disabled] {
+  background-color: #D9DCE9;
+}
+
+.c1 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+@media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    width: auto;
+  }
+}
+
+<button
+  class="bd-button c0"
+  role="button"
+  tabindex="0"
+>
+  <span
+    class="c1"
+  >
+    Apply
+  </span>
+</button>
+`;
+
+exports[`renders secondary action button 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  background-color: transparent;
+  border-color: #3C64F4;
+  color: #3C64F4;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
+}
+
+.c0:active {
+  background-color: #DBE3FE;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c0:hover:not(:active) {
+  background-color: #F0F3FF;
+}
+
+.c0[disabled] {
+  color: #D9DCE9;
+}
+
+.c1 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+@media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    width: auto;
+  }
+}
+
+<button
+  class="bd-button c0"
+  role="button"
+  tabindex="0"
+>
+  <span
+    class="c1"
+  >
+    Apply
+  </span>
+</button>
 `;

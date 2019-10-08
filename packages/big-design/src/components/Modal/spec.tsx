@@ -211,3 +211,47 @@ test('body has scroll locked on modal open', () => {
 
   expect(document.body.style.overflowY).toEqual('');
 });
+
+test('renders header', () => {
+  const { getByText } = render(<Modal isOpen={true} header="Header Title" />);
+
+  expect(getByText('Header Title')).toBeInTheDocument();
+});
+
+test('header ignores components', () => {
+  // @ts-ignore bypassing type to test wrong use case
+  const { container } = render(<Modal isOpen={true} header={<Text>Header Title</Text>} />);
+
+  expect(container.querySelector('h2')).toBe(null);
+});
+
+test('renders actions', () => {
+  const { getAllByRole } = render(<Modal isOpen={true} actions={[{ text: 'Cancel' }, { text: 'Apply' }]} />);
+
+  expect(getAllByRole('button').length).toBe(3);
+});
+
+test('action button triggers onClick', () => {
+  const onClick = jest.fn();
+
+  const { getAllByRole } = render(<Modal isOpen={true} actions={[{ text: 'Apply', onClick }]} />);
+  const button = getAllByRole('button')[1];
+
+  fireEvent.click(button);
+
+  expect(onClick).toHaveBeenCalled();
+});
+
+test('renders secondary action button', () => {
+  const { getAllByRole } = render(<Modal isOpen={true} actions={[{ text: 'Apply', variant: 'secondary' }]} />);
+  const button = getAllByRole('button')[1];
+
+  expect(button).toMatchSnapshot();
+});
+
+test('renders destructive action button', () => {
+  const { getAllByRole } = render(<Modal isOpen={true} actions={[{ text: 'Apply', actionType: 'destructive' }]} />);
+  const button = getAllByRole('button')[1];
+
+  expect(button).toMatchSnapshot();
+});
