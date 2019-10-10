@@ -239,6 +239,63 @@ test('it is invalid when it was an error', () => {
   expect(input.checkValidity()).toEqual(false);
 });
 
+test('it syncs setCustomValidity with the error prop', () => {
+  const { getByLabelText, rerender } = render(
+    <Input label="Label" value="90" error="90 is too high" description="This is a description" required />,
+  );
+  const input = getByLabelText('Label') as HTMLInputElement;
+
+  expect(input.checkValidity()).toEqual(false);
+
+  rerender(<Input label="Label" value="9" error="" description="This is a description" required />);
+
+  expect(input.checkValidity()).toEqual(true);
+});
+
+test('it syncs setCustomValidity with the error prop on components with RefObject API', () => {
+  const ref = React.createRef<HTMLInputElement>();
+  const { getByLabelText, rerender } = render(
+    <Input ref={ref} label="Label" value="90" error="90 is too high" description="This is a description" required />,
+  );
+  const input = getByLabelText('Label') as HTMLInputElement;
+
+  expect(input.checkValidity()).toEqual(false);
+  expect(ref.current.checkValidity()).toEqual(false);
+  expect(ref.current === input).toEqual(true);
+
+  rerender(<Input ref={ref} label="Label" value="9" error="" description="This is a description" required />);
+
+  expect(input.checkValidity()).toEqual(true);
+  expect(ref.current.checkValidity()).toEqual(true);
+  expect(ref.current === input).toEqual(true);
+});
+
+test('it syncs setCustomValidity with the error prop on components with Ref callback API', () => {
+  let inputRef: HTMLInputElement | null = null;
+  const refSetter = ref => (inputRef = ref);
+  const { getByLabelText, rerender } = render(
+    <Input
+      ref={refSetter}
+      label="Label"
+      value="90"
+      error="90 is too high"
+      description="This is a description"
+      required
+    />,
+  );
+  const input = getByLabelText('Label') as HTMLInputElement;
+
+  expect(input.checkValidity()).toEqual(false);
+  expect(inputRef.checkValidity()).toEqual(false);
+  expect(inputRef === input).toEqual(true);
+
+  rerender(<Input ref={refSetter} label="Label" value="9" error="" description="This is a description" required />);
+
+  expect(input.checkValidity()).toEqual(true);
+  expect(inputRef.checkValidity()).toEqual(true);
+  expect(inputRef === input).toEqual(true);
+});
+
 test('error shows with valid string', () => {
   const error = 'Error';
   const { container, rerender } = render(

@@ -40,10 +40,29 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
   };
 
   private readonly uniqueId = uniqueId('input_');
+  private readonly defaultRef = React.createRef<HTMLInputElement>();
+  private callbackRef?: HTMLInputElement;
+
+  componentDidMount() {
+    this.setInputValidity();
+  }
+
+  componentDidUpdate() {
+    this.setInputValidity();
+  }
 
   render() {
     const { chips, description, disabled, error, label, forwardedRef, onChipDelete, ...props } = this.props;
     const id = this.getId();
+    let downstreamRef: React.RefObject<HTMLInputElement> | Ref<HTMLInputElement>;
+
+    if (forwardedRef && typeof forwardedRef === 'object') {
+      downstreamRef = forwardedRef;
+    } else if (typeof forwardedRef === 'function') {
+      downstreamRef = this.setCallbackRef;
+    } else {
+      downstreamRef = this.defaultRef;
+    }
 
     return (
       <div>
@@ -62,7 +81,7 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
               onBlur={this.onInputBlur}
               onChange={this.onInputChange}
               onFocus={this.onInputFocus}
-              ref={forwardedRef}
+              ref={downstreamRef}
             />
           </StyledInputContent>
 
@@ -72,6 +91,14 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
     );
   }
 
+  private setCallbackRef = (ref: HTMLInputElement) => {
+    this.callbackRef = ref;
+
+    if (typeof this.props.forwardedRef === 'function') {
+      this.props.forwardedRef(ref);
+    }
+  };
+
   private getId() {
     const { id } = this.props;
 
@@ -79,11 +106,6 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
   }
 
   private onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const hasError = Boolean(this.props.error);
-    const errorMessage = typeof this.props.error === 'string' ? this.props.error : 'Invalid input';
-
-    event.target.setCustomValidity(hasError ? errorMessage : '');
-
     if (typeof this.props.onChange === 'function') {
       this.props.onChange(event);
     }
@@ -158,6 +180,25 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
 
   private setFocus(toggle: boolean) {
     this.setState({ focus: toggle });
+  }
+
+  private setInputValidity() {
+    const { error, forwardedRef } = this.props;
+    const validity = Boolean(error) ? String(error) : '';
+
+    if (typeof forwardedRef === 'function' && this.callbackRef) {
+      this.callbackRef.setCustomValidity(validity);
+
+      return;
+    }
+
+    // At this point it's safe to cast to RefObject since the callback ref
+    // case is covered above
+    const ref = (forwardedRef || this.defaultRef) as React.RefObject<HTMLInputElement>;
+
+    if (ref && ref.current) {
+      ref.current.setCustomValidity(validity);
+    }
   }
 
   private renderChips() {
