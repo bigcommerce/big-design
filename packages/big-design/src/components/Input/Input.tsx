@@ -54,15 +54,6 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
   render() {
     const { chips, description, disabled, error, label, forwardedRef, onChipDelete, ...props } = this.props;
     const id = this.getId();
-    let downstreamRef: React.RefObject<HTMLInputElement> | Ref<HTMLInputElement>;
-
-    if (forwardedRef && typeof forwardedRef === 'object') {
-      downstreamRef = forwardedRef;
-    } else if (typeof forwardedRef === 'function') {
-      downstreamRef = this.setCallbackRef;
-    } else {
-      downstreamRef = this.defaultRef;
-    }
 
     return (
       <div>
@@ -81,7 +72,7 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
               onBlur={this.onInputBlur}
               onChange={this.onInputChange}
               onFocus={this.onInputFocus}
-              ref={downstreamRef}
+              ref={this.getDownstreamRef(forwardedRef)}
             />
           </StyledInputContent>
 
@@ -91,13 +82,15 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
     );
   }
 
-  private setCallbackRef = (ref: HTMLInputElement) => {
-    this.callbackRef = ref;
-
-    if (typeof this.props.forwardedRef === 'function') {
-      this.props.forwardedRef(ref);
+  private getDownstreamRef(forwardedRef: PrivateProps['forwardedRef']) {
+    if (forwardedRef && typeof forwardedRef === 'object') {
+      return forwardedRef;
+    } else if (typeof forwardedRef === 'function') {
+      return this.setCallbackRef;
     }
-  };
+
+    return this.defaultRef;
+  }
 
   private getId() {
     const { id } = this.props;
@@ -177,6 +170,14 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
 
     return <StyledIconWrapper>{this.props.iconRight}</StyledIconWrapper>;
   }
+
+  private setCallbackRef = (ref: HTMLInputElement) => {
+    this.callbackRef = ref;
+
+    if (typeof this.props.forwardedRef === 'function') {
+      this.props.forwardedRef(ref);
+    }
+  };
 
   private setFocus(toggle: boolean) {
     this.setState({ focus: toggle });
