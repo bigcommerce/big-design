@@ -14,7 +14,6 @@ export class PropTable extends React.PureComponent {
     return (
       <TableFigure>
         <Table>
-          <Table.Actions>Test</Table.Actions>
           <Table.Head>
             <PropTable.Header />
           </Table.Head>
