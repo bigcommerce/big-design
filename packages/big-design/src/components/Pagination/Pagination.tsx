@@ -2,7 +2,7 @@ import { ArrowDropDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@bigcommer
 import React, { memo, useEffect, useState } from 'react';
 
 import { MarginProps } from '../../mixins';
-import { Dropdown } from '../Dropdown';
+import { Dropdown, DropdownItem } from '../Dropdown';
 import { Flex } from '../Flex';
 
 import { StyledButton } from './styled';
@@ -68,8 +68,8 @@ export const Pagination: React.FC<PaginationProps> = memo(
       onPageChange(currentPage - 1);
     };
 
-    const handleRangeChange = (range: number) => {
-      onItemsPerPageChange(range);
+    const handleRangeChange = (item: DropdownItem) => {
+      return item.value && onItemsPerPageChange(item.value as number);
     };
 
     const showRanges = () => {
@@ -82,19 +82,21 @@ export const Pagination: React.FC<PaginationProps> = memo(
       <Flex role="navigation" aria-label="pagination">
         <Flex.Item>
           <Dropdown
-            onItemClick={handleRangeChange}
+            options={itemsPerPageOptions.map(
+              range =>
+                ({
+                  content: `${range} per page`,
+                  onClick: handleRangeChange,
+                  type: 'string',
+                  value: range,
+                } as DropdownItem),
+            )}
             trigger={
               <StyledButton variant="subtle" iconRight={<ArrowDropDownIcon size="xxLarge" />}>
                 {showRanges()}
               </StyledButton>
             }
-          >
-            {itemsPerPageOptions.map((range, key) => (
-              <Dropdown.Item key={key} value={range}>
-                {range} per page
-              </Dropdown.Item>
-            ))}
-          </Dropdown>
+          />
         </Flex.Item>
         <Flex.Item>
           <StyledButton variant="subtle" disabled={currentPage <= 1} onClick={handlePageDecrease}>

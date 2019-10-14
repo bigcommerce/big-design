@@ -6,13 +6,19 @@ import { Button } from '../Button';
 
 import { Dropdown } from './Dropdown';
 
+const onClick = jest.fn();
+
 const DropdownMock = (
-  <Dropdown trigger={<Button>Button</Button>}>
-    <Dropdown.Item value={0}>Option</Dropdown.Item>
-    <Dropdown.Item value={1}>Option</Dropdown.Item>
-    <Dropdown.Item value={2}>Option</Dropdown.Item>
-    <Dropdown.Item value={3}>Option</Dropdown.Item>
-  </Dropdown>
+  <Dropdown
+    onClick={onClick}
+    options={[
+      { content: 'Option', onClick, type: 'string', value: '0' },
+      { content: 'Option', onClick, type: 'string', value: '1' },
+      { content: 'Option', onClick, type: 'string', value: '2' },
+      { content: 'Option', onClick, type: 'string', value: '3' },
+    ]}
+    trigger={<Button>Button</Button>}
+  ></Dropdown>
 );
 
 test('renders dropdown trigger', () => {
@@ -87,13 +93,6 @@ test('dropdown menu should have 4 dropdown items', () => {
 
   const options = getAllByRole('option');
   expect(options.length).toBe(4);
-});
-
-test('dropdown items should have values', () => {
-  const { getAllByRole } = render(DropdownMock);
-
-  const options = getAllByRole('option');
-  options.forEach((option, index) => expect(option.getAttribute('data-value')).toBe(`${index}`));
 });
 
 test('first dropdown item should be selected when dropdown is opened', () => {
@@ -183,14 +182,8 @@ test('end should select last dropdown item', () => {
   expect(menu.getAttribute('aria-activedescendant')).toEqual(options[3].id);
 });
 
-test('enter should trigger onItemClick', () => {
-  const onItemClick = jest.fn();
-  const { getAllByRole, getByRole } = render(
-    <Dropdown onItemClick={onItemClick} trigger={<Button>Button</Button>}>
-      <Dropdown.Item value={0}>Option</Dropdown.Item>
-      <Dropdown.Item value={1}>Option</Dropdown.Item>
-    </Dropdown>,
-  );
+test('enter should trigger onClick', () => {
+  const { getAllByRole, getByRole } = render(DropdownMock);
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -202,17 +195,11 @@ test('enter should trigger onItemClick', () => {
   expect(options[1].dataset.highlighted).toBe('true');
 
   fireEvent.keyDown(menu, { key: 'Enter' });
-  expect(onItemClick).toHaveBeenCalledWith('1');
+  expect(onClick).toHaveBeenCalledWith({ content: 'Option', onClick, type: 'string', value: '1' });
 });
 
-test('space should trigger onItemClick', () => {
-  const onItemClick = jest.fn();
-  const { getAllByRole, getByRole } = render(
-    <Dropdown onItemClick={onItemClick} trigger={<Button>Button</Button>}>
-      <Dropdown.Item value={0}>Option</Dropdown.Item>
-      <Dropdown.Item value={1}>Option</Dropdown.Item>
-    </Dropdown>,
-  );
+test('space should trigger onClick', () => {
+  const { getAllByRole, getByRole } = render(DropdownMock);
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -224,17 +211,11 @@ test('space should trigger onItemClick', () => {
   expect(options[1].dataset.highlighted).toBe('true');
 
   fireEvent.keyDown(menu, { key: ' ' });
-  expect(onItemClick).toHaveBeenCalledWith('1');
+  expect(onClick).toHaveBeenCalledWith({ content: 'Option', onClick, type: 'string', value: '1' });
 });
 
-test('clicking on dropdown items should trigger onItemClick', () => {
-  const onItemClick = jest.fn();
-  const { getAllByRole, getByRole } = render(
-    <Dropdown onItemClick={onItemClick} trigger={<Button>Button</Button>}>
-      <Dropdown.Item value={0}>Option</Dropdown.Item>
-      <Dropdown.Item value={1}>Option</Dropdown.Item>
-    </Dropdown>,
-  );
+test('clicking on dropdown items should trigger onClick', () => {
+  const { getAllByRole, getByRole } = render(DropdownMock);
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -243,7 +224,7 @@ test('clicking on dropdown items should trigger onItemClick', () => {
 
   fireEvent.mouseOver(options[1]);
   fireEvent.click(options[1]);
-  expect(onItemClick).toHaveBeenCalledWith('1');
+  expect(onClick).toHaveBeenCalledWith({ content: 'Option', onClick, type: 'string', value: '1' });
 });
 
 test('dropdown items should be highlighted when moused over', () => {
@@ -256,4 +237,26 @@ test('dropdown items should be highlighted when moused over', () => {
 
   fireEvent.mouseOver(option);
   expect(option.dataset.highlighted).toBe('true');
+});
+
+test('dropdown menu renders 4 link when passed options of type link', () => {
+  const { container } = render(
+    <Dropdown
+      onClick={onClick}
+      options={[
+        { content: 'Option', url: '#', type: 'link' },
+        { content: 'Option', url: '#', type: 'link' },
+        { content: 'Option', url: '#', type: 'link' },
+        { content: 'Option', url: '#', type: 'link' },
+      ]}
+      trigger={<Button>Button</Button>}
+    ></Dropdown>,
+  );
+
+  const options = container.querySelectorAll('a');
+  expect(options.length).toBe(4);
+
+  options.forEach(option => {
+    expect(option.getAttribute('href')).toBe('#');
+  });
 });

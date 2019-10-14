@@ -28,7 +28,6 @@ export const StyledListItem = styled.li<ListItemProps>`
 
   a {
     align-items: center;
-    color: ${({ theme }) => theme.colors.secondary70};
     cursor: pointer;
     display: flex;
     height: 100%;

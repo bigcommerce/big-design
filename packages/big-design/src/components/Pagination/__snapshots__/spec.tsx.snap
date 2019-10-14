@@ -73,7 +73,6 @@ exports[`render pagination component 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #313440;
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -387,33 +386,30 @@ exports[`render pagination component 1`] = `
     >
       <li
         class="c8"
-        data-value="2"
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        2
-         per page
+        2 per page
       </li>
       <li
         class="c8"
-        data-value="3"
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        3
-         per page
+        3 per page
       </li>
       <li
         class="c8"
-        data-value="5"
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        5
-         per page
+        5 per page
       </li>
     </ul>
   </div>
@@ -558,7 +554,6 @@ exports[`render pagination component with invalid page info 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #313440;
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -872,33 +867,30 @@ exports[`render pagination component with invalid page info 1`] = `
     >
       <li
         class="c8"
-        data-value="2"
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        2
-         per page
+        2 per page
       </li>
       <li
         class="c8"
-        data-value="3"
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        3
-         per page
+        3 per page
       </li>
       <li
         class="c8"
-        data-value="5"
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        5
-         per page
+        5 per page
       </li>
     </ul>
   </div>
@@ -1043,7 +1035,6 @@ exports[`render pagination component with invalid range info 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #313440;
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1357,33 +1348,30 @@ exports[`render pagination component with invalid range info 1`] = `
     >
       <li
         class="c8"
-        data-value="2"
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        2
-         per page
+        2 per page
       </li>
       <li
         class="c8"
-        data-value="3"
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        3
-         per page
+        3 per page
       </li>
       <li
         class="c8"
-        data-value="5"
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        5
-         per page
+        5 per page
       </li>
     </ul>
   </div>
@@ -1529,7 +1517,6 @@ exports[`render pagination component with no items 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #313440;
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1843,33 +1830,30 @@ exports[`render pagination component with no items 1`] = `
     >
       <li
         class="c8"
-        data-value="2"
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        2
-         per page
+        2 per page
       </li>
       <li
         class="c8"
-        data-value="3"
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        3
-         per page
+        3 per page
       </li>
       <li
         class="c8"
-        data-value="5"
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
+        type="string"
       >
-        5
-         per page
+        5 per page
       </li>
     </ul>
   </div>
