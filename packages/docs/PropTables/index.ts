@@ -20,4 +20,5 @@ export * from './SelectPropTable';
 export * from './TablePropTable';
 export * from './TabsPropTable';
 export * from './TextareaPropTable';
+export * from './TooltipPropTable';
 export * from './TypographyPropTable';

@@ -3,8 +3,6 @@ import React from 'react';
 
 import { Code } from '../../';
 
-import { StyledTableCell } from './styled';
-
 interface Props {
   name: string;
   defaults?: string;
@@ -15,28 +13,27 @@ interface Props {
 export const Prop: React.FC<Props> = props => {
   const { children, defaults, name, required, types } = props;
 
-  return (
-    <Table.Row>
-      <StyledTableCell>
-        <Code primary>{name}</Code>
-        {required ? <b> *</b> : null}
-      </StyledTableCell>
-      <StyledTableCell>
-        <TypesData types={types} />
-      </StyledTableCell>
-      <StyledTableCell>
-        <Code highlight={false}>{defaults}</Code>
-      </StyledTableCell>
-      <StyledTableCell>{children}</StyledTableCell>
-    </Table.Row>
-  );
+  return null;
+  // <Table.Row>
+  //   <StyledTableCell>
+  //     <Code primary>{name}</Code>
+  //     {required ? <b> *</b> : null}
+  //   </StyledTableCell>
+  //   <StyledTableCell>
+  //     <TypesData types={types} />
+  //   </StyledTableCell>
+  //   <StyledTableCell>
+  //     <Code highlight={false}>{defaults}</Code>
+  //   </StyledTableCell>
+  //   <StyledTableCell>{children}</StyledTableCell>
+  // </Table.Row>
 };
 
 interface TypesDataProps {
   types: any;
 }
 
-const TypesData: React.FC<TypesDataProps> = (props): any => {
+export const TypesData: React.FC<TypesDataProps> = (props): any => {
   const { types } = props;
 
   if (Array.isArray(types)) {

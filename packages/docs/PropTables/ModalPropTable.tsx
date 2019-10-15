@@ -1,33 +1,67 @@
 import React from 'react';
 
-import { Code, NextLink, PropTable } from '../components';
+import { Code, NextLink, Prop, PropTable } from '../components';
 
-export const ModalPropTable: React.FC = () => (
-  <PropTable>
-    <PropTable.Prop name="actions" types="object[]">
-      Accepts an array of objects with <NextLink href="/button">Button</NextLink> props and an additional{' '}
-      <Code>text</Code> prop. See example for usage.
-    </PropTable.Prop>
-    <PropTable.Prop name="backdrop" types="boolean" defaults="true">
-      Determines if the backdrop is shown.
-    </PropTable.Prop>
-    <PropTable.Prop name="closeOnClickOutside" types="boolean" defaults="false">
-      Controls whether <Code>onClose</Code> is called when clicking outside of the modal.
-    </PropTable.Prop>
-    <PropTable.Prop name="closeOnEscKey" types="boolean" defaults="true">
-      Controls whether <Code>onClose</Code> is called when pressing the ESC key.
-    </PropTable.Prop>
-    <PropTable.Prop name="header" types="string">
-      Sets visible text that describes the content of the modal.
-    </PropTable.Prop>
-    <PropTable.Prop name="isOpen" types="boolean" required>
-      Determines if the modal/dialog is open.
-    </PropTable.Prop>
-    <PropTable.Prop name="onClose" types="() => void" required>
-      Function that will be called on close events.
-    </PropTable.Prop>
-    <PropTable.Prop name="variant" types={['modal', 'dialog']} defaults="modal">
-      Determines the modal variant.
-    </PropTable.Prop>
-  </PropTable>
-);
+const modalProps: Prop[] = [
+  {
+    name: 'actions',
+    types: 'object[]',
+    description: (
+      <>
+        Accepts an array of objects with <NextLink href="/button">Button</NextLink> props and an additional{' '}
+        <Code>text</Code> prop. See example for usage.
+      </>
+    ),
+  },
+  {
+    name: 'backdrop',
+    types: 'boolean',
+    defaultValue: 'true',
+    description: 'Determines if the backdrop is shown.',
+  },
+  {
+    name: 'closeOnClickOutside',
+    types: 'boolean',
+    defaultValue: 'false',
+    description: (
+      <>
+        Controls whether <Code>onClose</Code> is called when clicking outside of the modal.
+      </>
+    ),
+  },
+  {
+    name: 'closeOnEscKey',
+    types: 'boolean',
+    defaultValue: 'true',
+    description: (
+      <>
+        Controls whether <Code>onClose</Code> is called when pressing the ESC key.
+      </>
+    ),
+  },
+  {
+    name: 'header',
+    types: 'string',
+    description: 'Sets visible text that describes the content of the modal.',
+  },
+  {
+    name: 'isOpen',
+    types: 'boolean',
+    required: true,
+    description: 'Determines if the modal/dialog is open.',
+  },
+  {
+    name: 'onClose',
+    types: '() => void',
+    required: true,
+    description: 'Function that will be called on close events.',
+  },
+  {
+    name: 'variant',
+    types: ['modal', 'dialog'],
+    defaultValue: 'modal',
+    description: 'Determines the modal variant.',
+  },
+];
+
+export const ModalPropTable: React.FC = () => <PropTable propList={modalProps} />;

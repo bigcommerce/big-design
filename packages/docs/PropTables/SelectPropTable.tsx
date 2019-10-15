@@ -1,69 +1,101 @@
 import React from 'react';
 
-import { Code, PropTable } from '../components';
+import { Code, Prop, PropTable } from '../components';
 
-export const SelectPropTable: React.FC = () => (
-  <PropTable>
-    <PropTable.Prop name="error" types="ReactChild">
-      Displays a form error around the field.
-    </PropTable.Prop>
-    <PropTable.Prop name="label" types="ReactChild">
-      Adds a label to the field.
-    </PropTable.Prop>
-    <PropTable.Prop name="maxHeight" types="number" defaults="250">
-      Sets a <Code>max-height</Code> to the dropdown.
-    </PropTable.Prop>
-    <PropTable.Prop
-      name="placement"
-      types={[
-        'auto-start',
-        'auto',
-        'auto-end',
-        'top-start',
-        'top',
-        'top-end',
-        'right-start',
-        'right',
-        'right-end',
-        'bottom-end',
-        'bottom',
-        'bottom-start',
-        'left-end',
-        'left',
-        'left-start',
-      ]}
-      defaults="bottom-start"
-    >
-      Determines the location in which the dropdown will be placed.
-    </PropTable.Prop>
-    <PropTable.Prop name="positionFixed" defaults="false" types="boolean">
-      If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to position the items.
-    </PropTable.Prop>
-    <PropTable.Prop name="required" types="boolean">
-      Sets the field as required.
-    </PropTable.Prop>
-    <PropTable.Prop name="disabled" types="boolean">
-      Disables the select component.
-    </PropTable.Prop>
-    <PropTable.Prop name="value" types="string | string[] | number">
-      Modifies the current selected value of the field.
-    </PropTable.Prop>
-    <PropTable.Prop name="multi" types="boolean">
-      Renders a multiselect component.
-    </PropTable.Prop>
-    <PropTable.Prop name="onActionClick" types="(string) => void">
-      Callback called with the typed text of the field.
-    </PropTable.Prop>
-    <PropTable.Prop name="onItemChange" types="(value) => void" required>
-      Callback called with value of clicked item.
-    </PropTable.Prop>
-  </PropTable>
-);
+const selectProps: Prop[] = [
+  {
+    name: 'error',
+    types: 'ReactChild',
+    description: 'Displays a form error around the field.',
+  },
+  {
+    name: 'label',
+    types: 'ReactChild',
+    description: 'Adds a label to the field.',
+  },
+  {
+    name: 'maxHeight',
+    types: 'number',
+    defaultValue: '250',
+    description: (
+      <>
+        Sets a <Code>max-height</Code> to the dropdown.
+      </>
+    ),
+  },
+  {
+    name: 'placement',
+    types: [
+      'auto-start',
+      'auto',
+      'auto-end',
+      'top-start',
+      'top',
+      'top-end',
+      'right-start',
+      'right',
+      'right-end',
+      'bottom-end',
+      'bottom',
+      'bottom-start',
+      'left-end',
+      'left',
+      'left-start',
+    ],
+    defaultValue: 'bottom-start',
+    description: 'Determines the location in which the dropdown will be placed.',
+  },
+  {
+    name: 'positionFixed',
+    defaultValue: 'false',
+    types: 'boolean',
+    description: (
+      <>
+        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to position the items.
+      </>
+    ),
+  },
+  {
+    name: 'required',
+    types: 'boolean',
+    description: 'Sets the field as required.',
+  },
+  {
+    name: 'disabled',
+    types: 'boolean',
+    description: 'Disables the select component.',
+  },
+  {
+    name: 'value',
+    types: 'string | string[] | number',
+    description: 'Modifies the current selected value of the field.',
+  },
+  {
+    name: 'multi',
+    types: 'boolean',
+    description: 'Renders a multiselect component.',
+  },
+  {
+    name: 'onActionClick',
+    types: '(string) => void',
+    description: 'Callback called with the typed text of the field.',
+  },
+  {
+    name: 'onItemChange',
+    types: '(value) => void',
+    required: true,
+    description: 'Callback called with value of clicked item.',
+  },
+];
 
-export const SelectOptionPropTable: React.FC = () => (
-  <PropTable>
-    <PropTable.Prop name="value" types="string | string[] | number">
-      Value of the option
-    </PropTable.Prop>
-  </PropTable>
-);
+export const SelectPropTable: React.FC = () => <PropTable propList={selectProps} />;
+
+const selectOptionProps: Prop[] = [
+  {
+    name: 'value',
+    types: 'string | string[] | number',
+    description: 'Value of the option',
+  },
+];
+
+export const SelectOptionPropTable: React.FC = () => <PropTable propList={selectOptionProps} />;
