@@ -31,7 +31,6 @@ export interface DropdownLinkItem extends BaseItem {
 }
 
 interface BaseItem extends Omit<ListItemProps, 'content' | 'onClick' | 'value'> {
-  actionType?: 'normal' | 'destructive';
   content: string;
   value?: any;
   onClick?(item: DropdownItem | DropdownLinkItem): void;
@@ -101,7 +100,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
         switch (option.type) {
           case 'string':
           default: {
-            const { content, onClick, value, ...rest } = option;
+            const { content, onClick, type, value, ...rest } = option;
 
             return (
               <ListItem
@@ -120,12 +119,14 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
             );
           }
           case 'link': {
-            const { content, onClick, url, target, value, ...rest } = option;
+            const { content, disabled, onClick, url, target, type, value, ...rest } = option;
+            const href = disabled ? {} : { href: url };
 
             return (
               <ListItem
                 {...rest}
                 data-highlighted={highlightedItem && id === highlightedItem.id}
+                disabled={disabled}
                 id={id}
                 key={index}
                 onClick={() => this.handleOnItemClick(option)}
@@ -134,7 +135,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
                 ref={ref}
                 role="option"
               >
-                <Link href={url} target={target}>
+                <Link {...href} target={target}>
                   {content}
                 </Link>
               </ListItem>

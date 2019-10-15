@@ -18,23 +18,19 @@ export const StyledListItem = styled.li<ListItemProps>`
     font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   }
 
-  &[data-highlighted='true'] {
-    ${({ disabled }) =>
+  &[data-highlighted='true'],
+  &[data-highlighted='true'] a {
+    ${({ actionType, disabled }) =>
       !disabled &&
-      css`
-        background-color: ${({ theme }) => theme.colors.secondary10};
-      `}
-  }
-
-  a {
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    height: 100%;
-    margin: 0 -${({ theme }) => theme.spacing.medium};
-    padding: 0 ${({ theme }) => theme.spacing.medium};
-    text-decoration: none;
-    width: 100%;
+      (actionType === 'normal'
+        ? css`
+            background-color: ${({ theme }) => theme.colors.secondary10};
+            color: ${({ theme }) => theme.colors.primary};
+          `
+        : css`
+            background-color: ${({ theme }) => theme.colors.danger10};
+            color: ${({ theme }) => theme.colors.danger50};
+          `)}
   }
 
   ${({ disabled, theme }) =>
@@ -47,6 +43,30 @@ export const StyledListItem = styled.li<ListItemProps>`
         background-color: inherit;
       }
     `}
+
+  a {
+    align-items: center;
+    color: ${({ theme }) => theme.colors.secondary70};
+    cursor: pointer;
+    display: flex;
+    height: 100%;
+    margin: 0 -${({ theme }) => theme.spacing.medium};
+    padding: 0 ${({ theme }) => theme.spacing.medium};
+    text-decoration: none;
+    width: 100%;
+
+    ${({ disabled, theme }) =>
+      disabled &&
+      css`
+        background-color: inherit;
+        color: ${theme.colors.secondary40};
+
+        :hover {
+          background-color: inherit;
+          cursor: default;
+        }
+      `}
+  }
 `;
 
 StyledListItem.defaultProps = { theme: defaultTheme };

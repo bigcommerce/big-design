@@ -21,14 +21,11 @@ export default () => (
       <Dropdown
         maxHeight={250}
         options={[
-          { content: 'Option', onClick: item => item, value: '1' },
-          { content: 'Option', onClick: item => item, value: '2' },
-          { content: 'Option', onClick: item => item, value: '3' },
-          { content: 'Option', onClick: item => item, value: '4' },
+          { content: 'Edit', onClick: item => item, value: 'edit' },
+          { content: 'Duplicate', onClick: item => item, value: 'duplicate' },
+          { content: 'Copy', onClick: item => item, value: '8', disabled: true },
+          { content: 'Delete', onClick: item => item, value: 'delete', actionType: 'destructive' },
           { content: 'Link', type: 'link', url: '#' },
-          { content: 'Link', type: 'link', url: '#' },
-          { content: 'Link', type: 'link', url: '#' },
-          { content: 'Option', onClick: item => item, value: '8', disabled: true },
         ]}
         placement="bottom-start"
         trigger={<Button>Open Menu</Button>}

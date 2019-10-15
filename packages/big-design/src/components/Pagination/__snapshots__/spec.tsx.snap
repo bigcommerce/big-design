@@ -64,8 +64,10 @@ exports[`render pagination component 1`] = `
   font-weight: 600;
 }
 
-.c8[data-highlighted='true'] {
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
   background-color: #F6F7FC;
+  color: #3C64F4;
 }
 
 .c8 a {
@@ -73,6 +75,7 @@ exports[`render pagination component 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #313440;
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -542,8 +545,10 @@ exports[`render pagination component with invalid page info 1`] = `
   font-weight: 600;
 }
 
-.c8[data-highlighted='true'] {
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
   background-color: #F6F7FC;
+  color: #3C64F4;
 }
 
 .c8 a {
@@ -551,6 +556,7 @@ exports[`render pagination component with invalid page info 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #313440;
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1020,8 +1026,10 @@ exports[`render pagination component with invalid range info 1`] = `
   font-weight: 600;
 }
 
-.c8[data-highlighted='true'] {
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
   background-color: #F6F7FC;
+  color: #3C64F4;
 }
 
 .c8 a {
@@ -1029,6 +1037,7 @@ exports[`render pagination component with invalid range info 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #313440;
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1499,8 +1508,10 @@ exports[`render pagination component with no items 1`] = `
   font-weight: 600;
 }
 
-.c8[data-highlighted='true'] {
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
   background-color: #F6F7FC;
+  color: #3C64F4;
 }
 
 .c8 a {
@@ -1508,6 +1519,7 @@ exports[`render pagination component with no items 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: #313440;
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
