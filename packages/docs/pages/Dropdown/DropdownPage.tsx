@@ -21,14 +21,14 @@ export default () => (
       <Dropdown
         maxHeight={250}
         options={[
-          { content: 'Option', value: '1' },
-          { content: 'Option', value: '2' },
-          { content: 'Option', value: '3' },
-          { content: 'Option', value: '4' },
-          { content: 'Option', value: '5' },
-          { content: 'Option', value: '6' },
-          { content: 'Option', value: '7' },
-          { content: 'Option', value: '8', disabled: true },
+          { content: 'Option', onClick: item => item, value: '1' },
+          { content: 'Option', onClick: item => item, value: '2' },
+          { content: 'Option', onClick: item => item, value: '3' },
+          { content: 'Option', onClick: item => item, value: '4' },
+          { content: 'Option', onClick: item => item, value: '5' },
+          { content: 'Option', onClick: item => item, value: '6' },
+          { content: 'Option', onClick: item => item, value: '7' },
+          { content: 'Option', disabled: true, onClick: item => item, value: '8' },
         ]}
         placement="bottom-start"
         trigger={<Button>Open Menu</Button>}
@@ -55,8 +55,8 @@ export default () => (
     <H2>Links</H2>
 
     <Text>
-      A Dropdown can render a list of <NextLink href="/link">Links</NextLink> if it receives <Code>type: 'link'</Code>{' '}
-      and a <Code>url</Code>.
+      A Dropdown can render a list of <NextLink href="/link">Links</NextLink> if it receives an object of type{' '}
+      <Code>DropdownLinkItem</Code>.
     </Text>
 
     <CodePreview>
@@ -121,11 +121,11 @@ export default () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H2>Position</H2>
+    <H2>Placement</H2>
 
     <Text>
-      Dropdown can be anchored in different directions with the <Code primary>position</Code> property. It will
-      automatically find a position if there's not enough space in the chosen direction.
+      Dropdown can be anchored in different directions with the <Code primary>placement</Code> property. It will
+      automatically find a placement if there's not enough space in the chosen direction.
     </Text>
 
     <CodePreview>

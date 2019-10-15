@@ -28,11 +28,10 @@ export const DropdownPropTable: React.FC = () => (
       ]}
       defaults="bottom-start"
     >
-      Sets the position of the Dropdown relative to the anchor.
+      Sets the placement of the Dropdown relative to the anchor.
     </PropTable.Prop>
     <PropTable.Prop name="options" types="Array<DropdownItem | DropdownLinkItem>">
-      Accepts an array of objects with <Code>LI</Code> props and an additional
-      <Code>content</Code> prop. See example for usage.
+      Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See example for usage.
     </PropTable.Prop>
     <PropTable.Prop name="trigger" types="ReactElement" required>
       Element used as anchor.

@@ -10,12 +10,11 @@ const onClick = jest.fn();
 
 const DropdownMock = (
   <Dropdown
-    onClick={onClick}
     options={[
-      { content: 'Option', onClick, type: 'string', value: '0' },
+      { content: 'Option', type: 'string', value: '0' },
       { content: 'Option', onClick, type: 'string', value: '1' },
-      { content: 'Option', onClick, type: 'string', value: '2' },
-      { content: 'Option', onClick, type: 'string', value: '3' },
+      { content: 'Option', type: 'string', value: '2' },
+      { content: 'Option', type: 'string', value: '3' },
     ]}
     trigger={<Button>Button</Button>}
   ></Dropdown>

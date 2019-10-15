@@ -22,19 +22,18 @@ export interface DropdownProps extends React.HTMLAttributes<HTMLUListElement> {
 
 export interface DropdownItem extends BaseItem {
   type?: 'string';
-  onClick?(item: DropdownItem): void;
 }
 
 export interface DropdownLinkItem extends BaseItem {
   url: string;
   target?: HTMLAnchorElement['target'];
   type: 'link';
-  onClick?(item: DropdownLinkItem): void;
 }
 
 interface BaseItem extends Omit<ListItemProps, 'content' | 'onClick' | 'value'> {
   content: string;
   value?: any;
+  onClick?(item: DropdownItem | DropdownLinkItem): void;
 }
 
 export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> {
