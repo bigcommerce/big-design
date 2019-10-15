@@ -1,1 +1,1 @@
-export { TableBody, TableBodyProps } from './Body';
+export { Body, BodyProps } from './Body';

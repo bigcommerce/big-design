@@ -1,1 +1,1 @@
-export { TableCell, TableCellProps } from './Cell';
+export { Cell, CellProps } from './Cell';

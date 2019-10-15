@@ -1,0 +1,923 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a pagination component 1`] = `
+.c8 {
+  vertical-align: middle;
+  height: 2rem;
+  width: 2rem;
+}
+
+.c13 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c1 {
+  padding: 0.75rem;
+  box-sizing: border-box;
+}
+
+.c3 {
+  box-sizing: border-box;
+}
+
+.c0 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: stretch;
+  -webkit-justify-content: stretch;
+  -ms-flex-pack: stretch;
+  justify-content: stretch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c11 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+.c9 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  background-color: #FFFFFF;
+  color: #313440;
+  display: inline-block;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: scroll;
+  padding: 0.5rem 0;
+  z-index: 1070;
+}
+
+.c10 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 2.25rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  min-width: 16rem;
+  outline: none;
+  padding: 0 1rem;
+}
+
+.c10[aria-selected='true'] {
+  font-weight: 600;
+}
+
+.c10[data-highlighted='true'],
+.c10[data-highlighted='true'] a {
+  background-color: #F0F3FF;
+  color: #3C64F4;
+}
+
+.c10 a {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #313440;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  margin: 0 -1rem;
+  padding: 0 1rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  width: 100%;
+}
+
+.c6 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  padding-right: 0.5rem;
+  background-color: transparent;
+  border-color: transparent;
+  color: #3C64F4;
+}
+
+.c6:focus {
+  outline: none;
+}
+
+.c6[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c6 + .bd-button {
+  margin-top: 0.5rem;
+}
+
+.c6:active {
+  background-color: #DBE3FE;
+}
+
+.c6:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c6:hover:not(:active) {
+  background-color: #F0F3FF;
+}
+
+.c6[disabled] {
+  border-color: transparent;
+  color: #D9DCE9;
+}
+
+.c12 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  background-color: transparent;
+  border-color: transparent;
+  color: #3C64F4;
+}
+
+.c12:focus {
+  outline: none;
+}
+
+.c12[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c12 + .bd-button {
+  margin-top: 0.5rem;
+}
+
+.c12:active {
+  background-color: #DBE3FE;
+}
+
+.c12:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c12:hover:not(:active) {
+  background-color: #F0F3FF;
+}
+
+.c12[disabled] {
+  border-color: transparent;
+  color: #D9DCE9;
+}
+
+.c7 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+.c5 {
+  color: #313440;
+  width: auto;
+}
+
+@media (min-width:720px) {
+  .c6 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c6 {
+    width: auto;
+  }
+}
+
+@media (min-width:720px) {
+  .c12 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c12 {
+    width: auto;
+  }
+}
+
+<div
+  aria-controls="table_0"
+  class="c0 c1"
+>
+  <div
+    class="c2 c3"
+    style="margin-left: auto;"
+  >
+    <div
+      aria-label="pagination"
+      class="c4 c3"
+      role="navigation"
+    >
+      <div
+        class="c2 c3"
+      >
+        <button
+          aria-haspopup="true"
+          class="c5 c6"
+          id="trigger_2"
+          role="button"
+          tabindex="0"
+        >
+          <span
+            class="c7"
+          >
+            1 - 3 of 5
+            <svg
+              class="c8"
+              fill="currentColor"
+              height="24"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <title />
+              <path
+                d="M0 0h24v24H0V0z"
+                fill="none"
+              />
+              <path
+                d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+              />
+            </svg>
+          </span>
+        </button>
+        <ul
+          aria-labelledby="trigger_2"
+          class="c9"
+          id="dropdown_1"
+          role="listbox"
+          style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;"
+          tabindex="-1"
+        >
+          <li
+            class="c10"
+            data-highlighted="false"
+            id="dropdown_1-item-0"
+            role="option"
+            tabindex="-1"
+          >
+            <div
+              class="c11 c3"
+            >
+              3 per page
+            </div>
+          </li>
+          <li
+            class="c10"
+            data-highlighted="false"
+            id="dropdown_1-item-1"
+            role="option"
+            tabindex="-1"
+          >
+            <div
+              class="c11 c3"
+            >
+              5 per page
+            </div>
+          </li>
+          <li
+            class="c10"
+            data-highlighted="false"
+            id="dropdown_1-item-2"
+            role="option"
+            tabindex="-1"
+          >
+            <div
+              class="c11 c3"
+            >
+              10 per page
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="c2 c3"
+      >
+        <button
+          class="c5 c12"
+          disabled=""
+          role="button"
+          tabindex="0"
+        >
+          <span
+            class="c7"
+          >
+            <svg
+              class="c13"
+              fill="currentColor"
+              height="24"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <title>
+                Previous page
+              </title>
+              <path
+                d="M0 0h24v24H0V0z"
+                fill="none"
+              />
+              <path
+                d="M14.71 6.71a.996.996 0 00-1.41 0L8.71 11.3a.996.996 0 000 1.41l4.59 4.59a.996.996 0 101.41-1.41L10.83 12l3.88-3.88c.39-.39.38-1.03 0-1.41z"
+              />
+            </svg>
+          </span>
+        </button>
+        <button
+          class="c5 c12"
+          role="button"
+          tabindex="0"
+        >
+          <span
+            class="c7"
+          >
+            <svg
+              class="c13"
+              fill="currentColor"
+              height="24"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <title>
+                Next page
+              </title>
+              <path
+                d="M0 0h24v24H0V0z"
+                fill="none"
+              />
+              <path
+                d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a simple table 1`] = `
+.c0 {
+  border-collapse: collapse;
+  border-color: transparent;
+  color: #313440;
+  text-align: left;
+  width: 100%;
+}
+
+.c3 > tr {
+  border-bottom: 1px solid #D9DCE9;
+}
+
+.c2 {
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: 0.75rem;
+  background-color: #F6F7FC;
+  box-shadow: inset 0px -1px 0px #D9DCE9,inset 0px 1px 0px #D9DCE9;
+  color: #5E637A;
+  white-space: nowrap;
+}
+
+.c4 {
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: 0.75rem;
+  color: #313440;
+  padding: 0.75rem;
+}
+
+.c1 {
+  background-color: transparent;
+}
+
+.c1:hover {
+  background-color: #F6F7FC;
+}
+
+<table
+  class="c0"
+  id="table_0"
+>
+  <thead
+    class=""
+  >
+    <tr
+      class="c1"
+    >
+      <th
+        class="c2"
+      >
+        Sku
+      </th>
+      <th
+        class="c2"
+      >
+        Name
+      </th>
+      <th
+        class="c2"
+      >
+        Stock
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    class="c3"
+  >
+    <tr
+      class="c1"
+    >
+      <td
+        class="c4"
+      >
+        SM13
+      </td>
+      <td
+        class="c4"
+      >
+        [Sample] Smith Journal 13
+      </td>
+      <td
+        class="c4"
+      >
+        25
+      </td>
+    </tr>
+    <tr
+      class="c1"
+    >
+      <td
+        class="c4"
+      >
+        DPB
+      </td>
+      <td
+        class="c4"
+      >
+        [Sample] Dustpan & Brush
+      </td>
+      <td
+        class="c4"
+      >
+        34
+      </td>
+    </tr>
+    <tr
+      class="c1"
+    >
+      <td
+        class="c4"
+      >
+        OFSUC
+      </td>
+      <td
+        class="c4"
+      >
+        [Sample] Utility Caddy
+      </td>
+      <td
+        class="c4"
+      >
+        45
+      </td>
+    </tr>
+    <tr
+      class="c1"
+    >
+      <td
+        class="c4"
+      >
+        CLC
+      </td>
+      <td
+        class="c4"
+      >
+        [Sample] Canvas Laundry Cart
+      </td>
+      <td
+        class="c4"
+      >
+        2
+      </td>
+    </tr>
+    <tr
+      class="c1"
+    >
+      <td
+        class="c4"
+      >
+        CGLD
+      </td>
+      <td
+        class="c4"
+      >
+        [Sample] Laundry Detergent
+      </td>
+      <td
+        class="c4"
+      >
+        29
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`selectable renders selectable actions and checkboxes 1`] = `
+.c9 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c10 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin-left: 0.75rem;
+}
+
+.c10:last-child {
+  margin-bottom: 0;
+}
+
+.c5 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c7 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #FFFFFF;
+  border: 1px solid #D9DCE9;
+  border-color: #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 1.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1.25rem;
+}
+
+.c6:focus + .c8 {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c8 svg {
+  visibility: hidden;
+}
+
+.c1 {
+  padding: 0.75rem;
+  box-sizing: border-box;
+}
+
+.c3 {
+  box-sizing: border-box;
+}
+
+.c0 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: stretch;
+  -webkit-justify-content: stretch;
+  -ms-flex-pack: stretch;
+  justify-content: stretch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-box-flex: 2;
+  -webkit-flex-grow: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+<div
+  aria-controls="table_0"
+  class="c0 c1"
+>
+  <div
+    class="c2 c3"
+  >
+    <div
+      class="c4 c3"
+    >
+      <div
+        class="c5"
+      >
+        <input
+          aria-labelledby="checkBox_label_2"
+          class="c6 c7"
+          id="checkBox_1"
+          type="checkbox"
+        />
+        <label
+          aria-hidden="true"
+          class="c8"
+          for="checkBox_1"
+        >
+          <svg
+            class="c9"
+            fill="currentColor"
+            height="24"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <title />
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <path
+              d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+            />
+          </svg>
+        </label>
+      </div>
+      <p
+        class="c10"
+      >
+        5 Product
+      </p>
+    </div>
+  </div>
+</div>
+`;

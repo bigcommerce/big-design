@@ -1,54 +1,119 @@
-import React from 'react';
+import React, { memo, useRef } from 'react';
 
 import { uniqueId } from '../../utils';
 
 import { TableContext } from './context';
 import { StyledTable, StyledTableFigure } from './styled';
-import { TableActions, TableActionsProps } from './Actions';
-import { TableBody, TableBodyProps } from './Body';
-import { TableCell, TableCellProps } from './Cell';
-import { TableFooter, TableFooterProps } from './Footer';
-import { TableHead, TableHeadProps } from './Head';
-import { TableRow, TableRowProps } from './Row';
+import { TableItem, TableProps } from './types';
+import { Actions } from './Actions';
+import { Body } from './Body';
+import { Cell } from './Cell';
+import { Head } from './Head';
+import { Item } from './Item';
 
-export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement & { children: React.ReactNode }> {
-  selectable?: boolean;
-  stickyHeader?: boolean;
-}
+const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactElement<TableProps<T>> => {
+  const {
+    className,
+    stickyHeader,
+    style,
+    items,
+    columns,
+    pagination,
+    selectable,
+    id,
+    keyField = 'id',
+    ...rest
+  } = props;
+  const tableIdRef = useRef(id || uniqueId('table_'));
+  const isSelectable = Boolean(selectable);
 
-interface Table extends React.FC<TableProps> {
-  Actions: TableActionsProps;
-  Body: TableBodyProps;
-  Cell: TableCellProps;
-  Footer: TableFooterProps;
-  Head: TableHeadProps;
-  Row: TableRowProps;
-}
+  const getItemKey = (item: T, index: number): string | number => {
+    if (item[keyField] !== undefined) {
+      return item[keyField];
+    }
 
-export function Table(this: Table, props: TableProps) {
-  const { className, selectable, stickyHeader, style, ...rest } = props;
-  const children = React.Children.toArray(props.children) as React.ReactElement[];
+    return index;
+  };
 
-  const tableId = uniqueId('table_');
+  const isItemSelected = (item: T) => {
+    return selectable && selectable.selectedItems.includes(item);
+  };
 
-  const actions = children.filter(child => child.type === Table.Actions);
-  const content = children.filter(child => child.type !== Table.Actions);
+  const onItemSelect = (item: T, isSelected: boolean) => {
+    if (!selectable) {
+      return;
+    }
+
+    const { selectedItems, onSelectionChange } = selectable;
+
+    if (isSelected) {
+      onSelectionChange([...selectedItems, item]);
+    } else {
+      onSelectionChange(selectedItems.filter(selectedItem => selectedItem !== item));
+    }
+  };
+
+  const shouldRenderActions = () => {
+    return Boolean(pagination) || Boolean(selectable);
+  };
+
+  const renderHeaders = () => (
+    <Head>
+      <Item isSelectable={isSelectable}>
+        {columns.map(({ header, align, width }, index) => (
+          <Cell key={index} align={align} width={width}>
+            {header}
+          </Cell>
+        ))}
+      </Item>
+    </Head>
+  );
+
+  const renderItems = () => (
+    <Body>
+      {items.map((item: T, index) => (
+        <Item
+          isSelectable={isSelectable}
+          key={getItemKey(item, index)}
+          onItemSelect={nextValue => onItemSelect(item, nextValue)}
+          selected={isItemSelected(item)}
+        >
+          {props.columns.map(
+            ({ render: CellContent, align, verticalAlign, width, withPadding = true }, columnIndex) => (
+              <Cell
+                key={columnIndex}
+                align={align}
+                verticalAlign={verticalAlign}
+                width={width}
+                withPadding={withPadding}
+              >
+                {/* https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
+                {/* 
+                // @ts-ignore */}
+                <CellContent {...item} />
+              </Cell>
+            ),
+          )}
+        </Item>
+      ))}
+    </Body>
+  );
 
   return (
-    <TableContext.Provider value={{ selectable, stickyHeader, tableId }}>
-      {actions}
-      <StyledTable id={tableId} {...rest}>
-        {content}
+    <TableContext.Provider value={{ stickyHeader }}>
+      {shouldRenderActions() && (
+        <Actions pagination={pagination} selectable={selectable} items={items} tableId={tableIdRef.current} />
+      )}
+      <StyledTable {...rest} id={tableIdRef.current}>
+        {renderHeaders()}
+        {renderItems()}
       </StyledTable>
     </TableContext.Provider>
   );
-}
+};
 
-Table.Actions = TableActions;
-Table.Body = TableBody;
-Table.Cell = TableCell;
-Table.Footer = TableFooter;
-Table.Head = TableHead;
-Table.Row = TableRow;
+// https://github.com/DefinitelyTyped/DefinitelyTyped/issues/37087
+const typedMemo: <T>(c: T) => T = React.memo;
 
-export const TableFigure: React.FC<any> = ({ className, style, ...props }) => <StyledTableFigure {...props} />;
+export const Table = typedMemo(InternalTable);
+export const TableFigure: React.FC = memo(props => <StyledTableFigure {...props} />);

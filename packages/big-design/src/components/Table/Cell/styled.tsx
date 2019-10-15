@@ -1,37 +1,41 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { TableCellProps } from './Cell';
+import { CellProps } from './Cell';
 
-interface SharedCellProps extends TableCellProps {
+interface SharedCellProps extends CellProps {
   stickyHeader?: boolean;
 }
 
 const SharedCellStyles = css<SharedCellProps>`
   box-sizing: border-box;
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
-  line-height: ${({ theme }) => theme.lineHeight.small};
-  min-height: ${({ theme }) => theme.spacing.xxxLarge};
   padding: ${({ theme }) => theme.spacing.small};
 
-  ${({ minWidth, theme }) =>
-    minWidth &&
+  ${({ align }) =>
+    align &&
     css`
-      min-width: ${theme.helpers.remCalc(minWidth)};
-    `}
+      text-align: ${align};
+    `};
 
-  ${props =>
-    props.align &&
+  ${({ verticalAlign }) =>
+    verticalAlign &&
     css`
-      text-align: ${props.align};
-    `}
+      vertical-align: ${verticalAlign};
+    `};
+
+  ${({ width }) =>
+    width !== undefined &&
+    css`
+      width: ${typeof width === 'string' ? width : width + 'px'};
+    `};
 
   ${props =>
     props.isCheckbox &&
     css`
       width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
       white-space: nowrap;
-    `}
+    `};
 `;
 
 export const StyledTableHeader = styled.th<SharedCellProps>`
@@ -41,20 +45,22 @@ export const StyledTableHeader = styled.th<SharedCellProps>`
   box-shadow: ${({ theme }) =>
     `inset 0px -1px 0px ${theme.colors.secondary30}, inset 0px 1px 0px ${theme.colors.secondary30}`};
   color: ${({ theme }) => theme.colors.secondary60};
+  white-space: nowrap;
 
-  ${props =>
-    props.stickyHeader &&
+  ${({ stickyHeader }) =>
+    stickyHeader &&
     css`
       position: sticky;
       top: 0;
     `}
 `;
 
-export const StyledTableCell = styled.td<SharedCellProps>`
+export const StyledTableData = styled.td<SharedCellProps>`
   ${SharedCellStyles}
 
   color: ${({ theme }) => theme.colors.secondary70};
+  padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing.small : 0)};
 `;
 
 StyledTableHeader.defaultProps = { theme: defaultTheme };
-StyledTableCell.defaultProps = { theme: defaultTheme };
+StyledTableData.defaultProps = { theme: defaultTheme };

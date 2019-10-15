@@ -1,1 +1,1 @@
-export { TableHead, TableHeadProps } from './Head';
+export { Head, HeadProps } from './Head';
