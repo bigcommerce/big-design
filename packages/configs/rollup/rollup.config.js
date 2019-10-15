@@ -9,7 +9,6 @@ const sourceMaps = require('rollup-plugin-sourcemaps');
 const typescript = require('rollup-plugin-typescript2');
 
 const nodeEnv = process.env.NODE_ENV || 'production';
-const isDev = nodeEnv === 'dev';
 
 function generateConfig(pkg) {
   const externals = [
@@ -20,7 +19,7 @@ function generateConfig(pkg) {
   return {
     input: 'src/index.ts',
     output: [
-      !isDev && { file: pkg.main, format: 'cjs', sourcemap: true },
+      { file: pkg.main, format: 'cjs', sourcemap: true },
       { file: pkg.module, format: 'es', sourcemap: true }
     ].filter(Boolean),
     external: makeExternalPredicate(externals),
