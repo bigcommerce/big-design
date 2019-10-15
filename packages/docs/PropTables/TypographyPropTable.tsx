@@ -1,26 +1,31 @@
 import React from 'react';
 
-import { NextLink, PropTable } from '../components';
+import { NextLink, Prop, PropTable } from '../components';
 
-export const TypographyPropTable: React.FC = () => (
-  <PropTable>
-    <PropTable.Prop
-      name="color"
-      types={
-        <NextLink href="/Colors/ColorsPage" as="/colors">
-          Color
-        </NextLink>
-      }
-      defaults="secondary70"
-    >
-      Sets the text color given a color name from our{' '}
+const typographyProps: Prop[] = [
+  {
+    name: 'color',
+    types: (
       <NextLink href="/Colors/ColorsPage" as="/colors">
-        palette
+        Color
       </NextLink>
-      .
-    </PropTable.Prop>
-    <PropTable.Prop name="ellipse" types="boolean">
-      Controls whether the text will concat and display ellipse... on overflow.
-    </PropTable.Prop>
-  </PropTable>
-);
+    ),
+    defaultValue: 'secondary70',
+    description: (
+      <>
+        Sets the text color given a color name from our{' '}
+        <NextLink href="/Colors/ColorsPage" as="/colors">
+          palette
+        </NextLink>
+        .
+      </>
+    ),
+  },
+  {
+    name: 'ellipse',
+    types: 'boolean',
+    description: 'Controls whether the text will concat and display ellipse... on overflow.',
+  },
+];
+
+export const TypographyPropTable: React.FC = () => <PropTable propList={typographyProps} />;

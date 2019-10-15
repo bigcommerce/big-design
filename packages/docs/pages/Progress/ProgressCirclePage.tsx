@@ -37,7 +37,7 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <ProgressCircle size={'large'} />
+      <ProgressCircle size="large" />
       {/* jsx-to-string:end */}
     </CodePreview>
 

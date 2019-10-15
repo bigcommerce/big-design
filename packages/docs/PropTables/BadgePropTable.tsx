@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { PropTable } from '../components';
+import { Prop, PropTable } from '../components';
 
-export const BadgePropTable: React.FC = () => (
-  <PropTable>
-    <PropTable.Prop name="variant" defaults="secondary" types={['danger', 'secondary', 'success', 'warning']}>
-      Determines which badge to display.
-    </PropTable.Prop>
-  </PropTable>
-);
+const props: Prop[] = [
+  {
+    name: 'variant',
+    types: ['danger', 'secondary', 'success', 'warning'],
+    description: 'Determines which badge to display.',
+    defaultValue: 'secondary',
+  },
+];
+
+export const BadgePropTable: React.FC = () => <PropTable propList={props} />;

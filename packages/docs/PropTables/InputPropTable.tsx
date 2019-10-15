@@ -1,50 +1,70 @@
 import { Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, NextLink, PropTable } from '../components';
+import { Code, NextLink, Prop, PropTable } from '../components';
 
-export const InputPropTable: React.FC = () => (
-  <PropTable>
-    <PropTable.Prop name="description" types="ReactChild">
-      Append a description to the input field.
-    </PropTable.Prop>
-    <PropTable.Prop name="error" types={['ReactChild', 'ReactChild[]']}>
-      Displays an error message for the field. Error message will be passed to the <Code>Form.Group</Code> for display
-      purposes.
-    </PropTable.Prop>
-    <PropTable.Prop
-      name="iconLeft"
-      types={
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>
-      }
-    >
-      Pass in an{' '}
+const props: Prop[] = [
+  {
+    name: 'description',
+    types: 'ReactChild',
+    description: 'Append a description to the input field.',
+  },
+  {
+    name: 'error',
+    types: ['ReactChild', 'ReactChild[]'],
+    description: (
+      <>
+        Displays an error message for the field. Error message will be passed to the <Code>Form.Group</Code> for display
+        purposes.
+      </>
+    ),
+  },
+  {
+    name: 'iconLeft',
+    types: (
       <NextLink href="/Icons/IconsPage" as="/icons">
         Icon
-      </NextLink>{' '}
-      component to display to the left of the text.
-    </PropTable.Prop>
-    <PropTable.Prop
-      name="iconRight"
-      types={
+      </NextLink>
+    ),
+    description: (
+      <>
+        Pass in an{' '}
         <NextLink href="/Icons/IconsPage" as="/icons">
           Icon
-        </NextLink>
-      }
-    >
-      Pass in an{' '}
+        </NextLink>{' '}
+        component to display to the left of the text.
+      </>
+    ),
+  },
+  {
+    name: 'iconRight',
+    types: (
       <NextLink href="/Icons/IconsPage" as="/icons">
         Icon
-      </NextLink>{' '}
-      component to display to the right of the text.
-    </PropTable.Prop>
-    <PropTable.Prop name="label" types="ReactChild">
-      Label element for inputs. Component with auto generate <Code>id</Code>'s for the accessibility API.
-    </PropTable.Prop>
-  </PropTable>
-);
+      </NextLink>
+    ),
+    description: (
+      <>
+        Pass in an{' '}
+        <NextLink href="/Icons/IconsPage" as="/icons">
+          Icon
+        </NextLink>{' '}
+        component to display to the right of the text.
+      </>
+    ),
+  },
+  {
+    name: 'label',
+    types: 'ReactChild',
+    description: (
+      <>
+        Label element for inputs. Component with auto generate <Code>id</Code>'s for the accessibility API.
+      </>
+    ),
+  },
+];
+
+export const InputPropTable: React.FC = () => <PropTable propList={props} />;
 
 export const InputDescriptionPropTable: React.FC = () => (
   <Text>

@@ -1,17 +1,24 @@
 import React from 'react';
 
-import { PropTable } from '../components';
+import { Prop, PropTable } from '../components';
 
-export const ProgressCirclePropTable: React.FC = () => (
-  <PropTable>
-    <PropTable.Prop name="error" types="boolean">
-      Sets state to error.
-    </PropTable.Prop>
-    <PropTable.Prop name="percent" types="number">
-      Sets the fill length from 0 to 100.
-    </PropTable.Prop>
-    <PropTable.Prop name="size" types={['xSmall', 'small', 'medium', 'large']} defaults="medium">
-      Size of the component.
-    </PropTable.Prop>
-  </PropTable>
-);
+const props: Prop[] = [
+  {
+    name: 'error',
+    types: 'boolean',
+    description: 'Sets state to error.',
+  },
+  {
+    name: 'percent',
+    types: 'number',
+    description: 'Sets the fill length from 0 to 100.',
+  },
+  {
+    name: 'size',
+    types: ['xSmall', 'small', 'medium', 'large'],
+    defaultValue: 'medium',
+    description: 'Size of the component.',
+  },
+];
+
+export const ProgressCirclePropTable: React.FC = () => <PropTable propList={props} />;

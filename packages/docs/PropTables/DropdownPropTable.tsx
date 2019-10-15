@@ -1,117 +1,169 @@
 import React from 'react';
 
-import { Code, NextLink, PropTable } from '../components';
+import { Code, NextLink, Prop, PropTable } from '../components';
 
-export const DropdownPropTable: React.FC = () => (
-  <PropTable>
-    <PropTable.Prop name="maxHeight" types="number" defaults="250">
-      Sets the max-height of the dropdown.
-    </PropTable.Prop>
-    <PropTable.Prop
-      name="placement"
-      types={[
-        'auto',
-        'auto-end',
-        'auto-start',
-        'bottom',
-        'bottom-end',
-        'bottom-start',
-        'left',
-        'left-end',
-        'left-start',
-        'right',
-        'right-end',
-        'right-start',
-        'top',
-        'top-end',
-        'top-start',
-      ]}
-      defaults="bottom-start"
-    >
-      Sets the placement of the Dropdown relative to the anchor.
-    </PropTable.Prop>
-    <PropTable.Prop name="options" types="Array<DropdownItem | DropdownLinkItem>">
-      Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See example for usage.
-    </PropTable.Prop>
-    <PropTable.Prop name="trigger" types="ReactElement" required>
-      Element used as anchor.
-    </PropTable.Prop>
-  </PropTable>
-);
+const dropdownProps: Prop[] = [
+  {
+    name: 'maxHeight',
+    types: 'number',
+    defaultValue: '250',
+    description: 'Sets the max-height of the dropdown.',
+  },
+  {
+    name: 'placement',
+    types: [
+      'auto',
+      'auto-end',
+      'auto-start',
+      'bottom',
+      'bottom-end',
+      'bottom-start',
+      'left',
+      'left-end',
+      'left-start',
+      'right',
+      'right-end',
+      'right-start',
+      'top',
+      'top-end',
+      'top-start',
+    ],
+    defaultValue: 'bottom-start',
+    description: 'Sets the placement of the Dropdown relative to the anchor.',
+  },
+  {
+    name: 'options',
+    types: 'Array<DropdownItem | DropdownLinkItem>',
+    description: (
+      <>
+        Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See example for usage.
+      </>
+    ),
+  },
+  {
+    name: 'trigger',
+    types: 'ReactElement',
+    required: true,
+    description: 'Element used as anchor.',
+  },
+];
 
-export const DropdownItemPropTable: React.FC = () => (
-  <PropTable>
-    <PropTable.Prop name="actionType" types={['normal', 'destructive']} defaults="normal">
-      Indicates whether your item's action is of normal or destructive nature.
-    </PropTable.Prop>
-    <PropTable.Prop name="content" types="string" required>
-      Sets the text content of the Dropdown Item.
-    </PropTable.Prop>
-    <PropTable.Prop name="disabled" types="boolean">
-      Sets the item to disabled.
-    </PropTable.Prop>
-    <PropTable.Prop
-      name="icon"
-      types={
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>
-      }
-    >
-      Pass in an{' '}
+const dropdownItemProps: Prop[] = [
+  {
+    name: 'actionType',
+    types: ['normal', 'destructive'],
+    defaultValue: 'normal',
+    description: "Indicates whether your item's action is of normal or destructive nature.",
+  },
+  {
+    name: 'content',
+    types: 'string',
+    required: true,
+    description: 'Sets the text content of the Dropdown Item.',
+  },
+  {
+    name: 'disabled',
+    types: 'boolean',
+    description: 'Sets the item to disabled.',
+  },
+  {
+    name: 'icon',
+    types: (
       <NextLink href="/Icons/IconsPage" as="/icons">
         Icon
-      </NextLink>{' '}
-      component to display to the left of the text.
-    </PropTable.Prop>
-    <PropTable.Prop name="onClick" types="(item: DropdownItem): void">
-      Returns the item object.
-    </PropTable.Prop>
-    <PropTable.Prop name="type" types="'string'" defaults="'string'">
-      Type of the item.
-    </PropTable.Prop>
-    <PropTable.Prop name="value" types="any">
-      Stored value of the item.
-    </PropTable.Prop>
-  </PropTable>
-);
-
-export const DropdownLinkItemPropTable: React.FC = () => (
-  <PropTable>
-    <PropTable.Prop name="actionType" types={['normal', 'destructive']} defaults="normal">
-      Indicates whether your item's action is of normal or destructive nature.
-    </PropTable.Prop>
-    <PropTable.Prop name="content" types="string" required>
-      Sets the text content of the Dropdown Item.
-    </PropTable.Prop>
-    <PropTable.Prop name="disabled" types="boolean">
-      Sets the item to disabled.
-    </PropTable.Prop>
-    <PropTable.Prop
-      name="icon"
-      types={
+      </NextLink>
+    ),
+    description: (
+      <>
+        Pass in an{' '}
         <NextLink href="/Icons/IconsPage" as="/icons">
           Icon
-        </NextLink>
-      }
-    >
-      Pass in an{' '}
+        </NextLink>{' '}
+        component to display to the left of the text.
+      </>
+    ),
+  },
+  {
+    name: 'onClick',
+    types: '(item: DropdownItem): void',
+    description: 'Returns the item object.',
+  },
+  {
+    name: 'type',
+    types: "'string'",
+    defaultValue: "'string'",
+    description: 'Type of the item.',
+  },
+  {
+    name: 'value',
+    types: 'any',
+    description: 'Stored value of the item.',
+  },
+];
+
+const dropdownLinkProps: Prop[] = [
+  {
+    name: 'actionType',
+    types: ['normal', 'destructive'],
+    defaultValue: 'normal',
+    description: "Indicates whether your item's action is of normal or destructive nature.",
+  },
+  {
+    name: 'content',
+    types: 'string',
+    required: true,
+    description: 'Sets the text content of the Dropdown Item.',
+  },
+  {
+    name: 'disabled',
+    types: 'boolean',
+    description: 'Sets the item to disabled.',
+  },
+  {
+    name: 'icon',
+    types: (
       <NextLink href="/Icons/IconsPage" as="/icons">
         Icon
-      </NextLink>{' '}
-      component to display to the left of the text.
-    </PropTable.Prop>
-    <PropTable.Prop name="onClick" types="(item: DropdownLinkItem): void">
-      Returns the item object.
-    </PropTable.Prop>
-    <PropTable.Prop name="type" types="'link'" required>
-      Wraps the <Code>content</Code> in a <NextLink href="/link">Link</NextLink> component.
-    </PropTable.Prop>
-    <PropTable.Prop name="url" types="string" required>
-      Valid URL of a linked resource.
-    </PropTable.Prop>
-    <PropTable.Prop name="target" types="'_blank'">
-      Indicates where to display the linked resource.
-    </PropTable.Prop>
-  </PropTable>
-);
+      </NextLink>
+    ),
+    description: (
+      <>
+        Pass in an{' '}
+        <NextLink href="/Icons/IconsPage" as="/icons">
+          Icon
+        </NextLink>{' '}
+        component to display to the left of the text.
+      </>
+    ),
+  },
+  {
+    name: 'onClick',
+    types: '(item: DropdownLinkItem): void',
+    description: 'Returns the item object.',
+  },
+  {
+    name: 'type',
+    types: "'link'",
+    required: true,
+    description: (
+      <>
+        Wraps the <Code>content</Code> in a <NextLink href="/link">Link</NextLink> component.
+      </>
+    ),
+  },
+  {
+    name: 'url',
+    types: 'string',
+    required: true,
+    description: 'Valid URL of a linked resource.',
+  },
+  {
+    name: 'target',
+    types: "'_blank'",
+    description: 'Indicates where to display the linked resource.',
+  },
+];
+
+export const DropdownPropTable: React.FC = () => <PropTable propList={dropdownProps} />;
+export const DropdownItemPropTable: React.FC = () => <PropTable propList={dropdownItemProps} />;
+export const DropdownLinkItemPropTable: React.FC = () => <PropTable propList={dropdownLinkProps} />;
