@@ -18,8 +18,7 @@ export const StyledListItem = styled.li<ListItemProps>`
     font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   }
 
-  &[data-highlighted='true'],
-  &[data-highlighted='true'] a {
+  &[data-highlighted='true'] {
     ${({ actionType, disabled }) =>
       !disabled &&
       (actionType === 'normal'
@@ -36,12 +35,7 @@ export const StyledListItem = styled.li<ListItemProps>`
   ${({ disabled, theme }) =>
     disabled &&
     css`
-      background-color: inherit;
       color: ${theme.colors.secondary40};
-
-      :hover {
-        background-color: inherit;
-      }
     `}
 
   a {

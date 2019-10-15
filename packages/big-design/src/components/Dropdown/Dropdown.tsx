@@ -1,3 +1,4 @@
+import { theme } from '@bigcommerce/big-design-theme';
 import { Placement } from 'popper.js';
 import React, { RefObject } from 'react';
 import { Manager, Reference, RefHandler } from 'react-popper';
@@ -25,13 +26,14 @@ export interface DropdownItem extends BaseItem {
 }
 
 export interface DropdownLinkItem extends BaseItem {
-  url: string;
   target?: HTMLAnchorElement['target'];
   type: 'link';
+  url: string;
 }
 
 interface BaseItem extends Omit<ListItemProps, 'content' | 'onClick' | 'value'> {
   content: string;
+  icon?: React.ReactNode;
   value?: any;
   onClick?(item: DropdownItem | DropdownLinkItem): void;
 }
@@ -91,6 +93,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
         }
 
         const id = this.getItemId(option, index);
+        const isHighlighted = !!(highlightedItem && id === highlightedItem.id);
         const ref = React.createRef<HTMLLIElement>();
 
         if (!option.disabled) {
@@ -100,12 +103,13 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
         switch (option.type) {
           case 'string':
           default: {
-            const { content, onClick, type, value, ...rest } = option;
+            const { actionType = 'normal' as 'normal', content, icon, onClick, type, value, ...rest } = option;
 
             return (
               <ListItem
                 {...rest}
-                data-highlighted={highlightedItem && id === highlightedItem.id}
+                actionType={actionType}
+                data-highlighted={isHighlighted}
                 id={id}
                 key={index}
                 onClick={() => this.handleOnItemClick(option)}
@@ -114,18 +118,33 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
                 ref={ref}
                 role="option"
               >
-                {content}
+                <span>
+                  {this.renderIcon(icon, isHighlighted, actionType)}
+                  {content}
+                </span>
               </ListItem>
             );
           }
           case 'link': {
-            const { content, disabled, onClick, url, target, type, value, ...rest } = option;
+            const {
+              actionType = 'normal' as 'normal',
+              content,
+              disabled,
+              icon,
+              onClick,
+              url,
+              target,
+              type,
+              value,
+              ...rest
+            } = option;
             const href = disabled ? {} : { href: url };
 
             return (
               <ListItem
                 {...rest}
-                data-highlighted={highlightedItem && id === highlightedItem.id}
+                actionType={actionType}
+                data-highlighted={isHighlighted}
                 disabled={disabled}
                 id={id}
                 key={index}
@@ -136,12 +155,26 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
                 role="option"
               >
                 <Link {...href} target={target}>
+                  {this.renderIcon(icon, isHighlighted, actionType)}
                   {content}
                 </Link>
               </ListItem>
             );
           }
         }
+      })
+    );
+  }
+
+  private renderIcon(icon: React.ReactNode, isHighlighted: boolean, actionType: ListItemProps['actionType']) {
+    return (
+      React.isValidElement(icon) &&
+      React.cloneElement(icon, {
+        color: isHighlighted
+          ? actionType === 'normal'
+            ? theme.colors.primary
+            : theme.colors.danger50
+          : theme.colors.secondary60,
       })
     );
   }
@@ -234,6 +267,10 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
   };
 
   private handleOnItemClick = (option: DropdownItem | DropdownLinkItem) => {
+    if (option.disabled) {
+      return;
+    }
+
     if (typeof option.onClick === 'function') {
       option.onClick(option);
     }

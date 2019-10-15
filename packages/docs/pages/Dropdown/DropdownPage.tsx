@@ -1,4 +1,5 @@
 import { Button, Dropdown, Grid, H0, H1, H2, H3, Link, Panel, Text } from '@bigcommerce/big-design';
+import { AssignmentIcon, DeleteIcon, EditIcon, FileCopyIcon, OpenInNewIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
 import { Code, CodePreview, NextLink } from '../../components';
@@ -21,11 +22,17 @@ export default () => (
       <Dropdown
         maxHeight={250}
         options={[
-          { content: 'Edit', onClick: item => item, value: 'edit' },
-          { content: 'Duplicate', onClick: item => item, value: 'duplicate' },
-          { content: 'Copy', onClick: item => item, value: '8', disabled: true },
-          { content: 'Delete', onClick: item => item, value: 'delete', actionType: 'destructive' },
-          { content: 'Link', type: 'link', url: '#' },
+          { content: 'Edit', icon: <EditIcon />, onClick: item => item, value: 'edit' },
+          { content: 'Duplicate', icon: <FileCopyIcon />, onClick: item => item, value: 'duplicate' },
+          { content: 'Copy', icon: <AssignmentIcon />, onClick: item => item, value: '8', disabled: true },
+          {
+            content: 'Delete',
+            icon: <DeleteIcon />,
+            onClick: item => item,
+            value: 'delete',
+            actionType: 'destructive',
+          },
+          { content: 'Link', icon: <OpenInNewIcon />, type: 'link', url: '#' },
         ]}
         placement="bottom-start"
         trigger={<Button>Open Menu</Button>}
