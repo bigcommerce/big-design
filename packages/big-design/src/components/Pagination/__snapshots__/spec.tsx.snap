@@ -389,7 +389,6 @@ exports[`render pagination component 1`] = `
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
-        type="string"
       >
         2 per page
       </li>
@@ -398,7 +397,6 @@ exports[`render pagination component 1`] = `
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
-        type="string"
       >
         3 per page
       </li>
@@ -407,7 +405,6 @@ exports[`render pagination component 1`] = `
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
-        type="string"
       >
         5 per page
       </li>
@@ -870,7 +867,6 @@ exports[`render pagination component with invalid page info 1`] = `
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
-        type="string"
       >
         2 per page
       </li>
@@ -879,7 +875,6 @@ exports[`render pagination component with invalid page info 1`] = `
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
-        type="string"
       >
         3 per page
       </li>
@@ -888,7 +883,6 @@ exports[`render pagination component with invalid page info 1`] = `
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
-        type="string"
       >
         5 per page
       </li>
@@ -1351,7 +1345,6 @@ exports[`render pagination component with invalid range info 1`] = `
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
-        type="string"
       >
         2 per page
       </li>
@@ -1360,7 +1353,6 @@ exports[`render pagination component with invalid range info 1`] = `
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
-        type="string"
       >
         3 per page
       </li>
@@ -1369,7 +1361,6 @@ exports[`render pagination component with invalid range info 1`] = `
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
-        type="string"
       >
         5 per page
       </li>
@@ -1833,7 +1824,6 @@ exports[`render pagination component with no items 1`] = `
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
-        type="string"
       >
         2 per page
       </li>
@@ -1842,7 +1832,6 @@ exports[`render pagination component with no items 1`] = `
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
-        type="string"
       >
         3 per page
       </li>
@@ -1851,7 +1840,6 @@ exports[`render pagination component with no items 1`] = `
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
-        type="string"
       >
         5 per page
       </li>
