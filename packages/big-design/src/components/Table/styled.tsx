@@ -1,10 +1,11 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { TableProps } from './Table';
+import { withMargins, MarginProps } from '../../mixins';
 
 export const StyledTableFigure = styled.figure`
-  margin: ${({ theme }) => `${theme.spacing.xLarge} ${theme.spacing.none}`};
+  margin: 0;
+  margin-bottom: ${({ theme }) => `${theme.spacing.xLarge}`};
   max-width: 100%;
   overflow-x: auto;
   position: relative;
@@ -15,7 +16,9 @@ export const StyledTableFigure = styled.figure`
   }
 `;
 
-export const StyledTable = styled.table<TableProps>`
+export const StyledTable = styled.table<MarginProps>`
+  ${withMargins()};
+
   border-collapse: collapse;
   border-color: transparent;
   color: ${({ theme }) => theme.colors.secondary70};

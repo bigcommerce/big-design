@@ -1,1 +1,2 @@
-export { Table, TableFigure, TableProps } from './Table';
+export { Table, TableFigure } from './Table';
+export { TableProps } from './types';

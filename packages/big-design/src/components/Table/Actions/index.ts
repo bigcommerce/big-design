@@ -1,1 +1,1 @@
-export { TableActions, TableActionsProps } from './Actions';
+export { Actions, ActionsProps } from './Actions';

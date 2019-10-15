@@ -1,8 +1,8 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { TableHeadProps } from './Head';
+import { HeadProps } from './Head';
 
-export const StyledTableHead = styled.thead<TableHeadProps>``;
+export const StyledTableHead = styled.thead<HeadProps>``;
 
 StyledTableHead.defaultProps = { theme: defaultTheme };
