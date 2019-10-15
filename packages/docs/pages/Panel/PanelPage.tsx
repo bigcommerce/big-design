@@ -1,8 +1,8 @@
-import { Button, Flex, H0, H1, H2, Link, Panel, Text } from '@bigcommerce/big-design';
+import { H0, H1, H2, Link, Panel, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { CodePreview, Collapsible } from '../../components';
-import { BoxPropTable, MarginPropTable, PanelPropTable } from '../../PropTables';
+import { MarginPropTable, PanelPropTable } from '../../PropTables';
 
 export default () => (
   <>
@@ -11,22 +11,23 @@ export default () => (
     <Text>
       The panel component is used to contain content in a structured format.{' '}
       <Link href="https://design.bigcommerce.com/components/panels" target="_blank">
-        Panel Design Guidlines
+        Panel Design Guidelines
       </Link>
       .
     </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Panel>
-        <Flex justifyContent="space-between" flexDirection="row">
-          <Flex.Item>
-            <H2>Panel header</H2>
-          </Flex.Item>
-          <Flex.Item>
-            <Button variant="secondary">Button</Button>
-          </Flex.Item>
-        </Flex>
+      <Panel
+        header="Panel header"
+        action={{
+          variant: 'secondary',
+          text: 'Button',
+          onClick: () => {
+            // Do some action
+          },
+        }}
+      >
         <Text>
           Lorem ipsum dolor amet officia humblebrag selvage, subway tile vexillologist id pickled adaptogen fashion axe.
           Ennui meh pitchfork banh mi. Keffiyeh PBRB echo park gastropub. Pop-up neutra brunch ullamco affogato shaman
