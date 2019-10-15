@@ -25,10 +25,10 @@ export default () => (
           { content: 'Option', onClick: item => item, value: '2' },
           { content: 'Option', onClick: item => item, value: '3' },
           { content: 'Option', onClick: item => item, value: '4' },
-          { content: 'Option', onClick: item => item, value: '5' },
-          { content: 'Option', onClick: item => item, value: '6' },
-          { content: 'Option', onClick: item => item, value: '7' },
-          { content: 'Option', disabled: true, onClick: item => item, value: '8' },
+          { content: 'Link', type: 'link', url: '#' },
+          { content: 'Link', type: 'link', url: '#' },
+          { content: 'Link', type: 'link', url: '#' },
+          { content: 'Option', onClick: item => item, value: '8', disabled: true },
         ]}
         placement="bottom-start"
         trigger={<Button>Open Menu</Button>}

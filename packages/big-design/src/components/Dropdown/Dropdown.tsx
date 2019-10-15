@@ -31,6 +31,7 @@ export interface DropdownLinkItem extends BaseItem {
 }
 
 interface BaseItem extends Omit<ListItemProps, 'content' | 'onClick' | 'value'> {
+  actionType?: 'normal' | 'destructive';
   content: string;
   value?: any;
   onClick?(item: DropdownItem | DropdownLinkItem): void;
