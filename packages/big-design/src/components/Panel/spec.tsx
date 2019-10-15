@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 
@@ -27,4 +27,38 @@ test('does not forward styles', () => {
 
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
+});
+
+test('renders a header and action', () => {
+  const { getByRole } = render(
+    <Panel header="Test Header" action={{ text: 'Test Action' }}>
+      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur officia ex. Ipsum eiusmod
+      fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse deserunt nostrud ipsum id adipisicing enim velit
+      labore. Nulla exercitation laborum laboris Lorem irure sit esse nulla mollit aliquip consectetur velit
+    </Panel>,
+  );
+
+  const header = getByRole('heading');
+
+  expect(header).toBeInTheDocument();
+  expect(header.textContent).toBe('Test Header');
+
+  const actionButton = getByRole('button');
+
+  expect(actionButton).toBeInTheDocument();
+  expect(actionButton.textContent).toBe('Test Action');
+});
+
+test('action options get forwarded to button', () => {
+  const onClick = jest.fn();
+
+  const { getByRole } = render(
+    <Panel header="Test Header" action={{ text: 'Test Action', onClick }}>
+      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur officia ex. Ipsum eiusmod
+    </Panel>,
+  );
+
+  fireEvent.click(getByRole('button'));
+
+  expect(onClick).toHaveBeenCalled();
 });

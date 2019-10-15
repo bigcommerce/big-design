@@ -3,11 +3,7 @@ import styled from 'styled-components';
 
 import { Box } from '../Box';
 
-import { PanelProps } from './Panel';
-
-export const StyledPanel = styled(Box)<PanelProps>`
-  border-radius: ${({ theme }) => theme.borderRadius.none};
-
+export const StyledPanel = styled(Box)`
   ${({ theme }) => theme.breakpoints.tablet} {
     ${({ theme }) => theme.shadow.floating}
   }
