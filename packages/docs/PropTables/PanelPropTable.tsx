@@ -1,12 +1,14 @@
-import { Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code } from '../components';
+import { PropTable } from '../components';
 
 export const PanelPropTable: React.FC = () => (
-  <Text>
-    A <Code>Panel</Code> can use all <Code>Box</Code> props, besides <Code primary>backgroundColor</Code>,{' '}
-    <Code primary>shadow</Code>, and any <Code primary>padding</Code> props. Otherwise, supports all native{' '}
-    <Code>&lt;div /&gt;</Code> element attributes.
-  </Text>
+  <PropTable>
+    <PropTable.Prop name="header" types="string">
+      Defines the panel header text.
+    </PropTable.Prop>
+    <PropTable.Prop name="action" types="ButtonProps &amp; { text: string }">
+      Defines the panel action button.
+    </PropTable.Prop>
+  </PropTable>
 );
