@@ -7,18 +7,13 @@ exports[`render pagination component 1`] = `
   width: 2rem;
 }
 
-.c12 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
 .c1 {
-  box-sizing: border-box;
-}
-
-.c10 {
-  padding-right: 0.75rem;
   box-sizing: border-box;
 }
 
@@ -129,7 +124,7 @@ exports[`render pagination component 1`] = `
 
 .c8[data-highlighted='true'],
 .c8[data-highlighted='true'] a {
-  background-color: #F6F7FC;
+  background-color: #F0F3FF;
   color: #3C64F4;
 }
 
@@ -229,7 +224,7 @@ exports[`render pagination component 1`] = `
   color: #D9DCE9;
 }
 
-.c11 {
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -275,32 +270,32 @@ exports[`render pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c11:focus {
+.c10:focus {
   outline: none;
 }
 
-.c11[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c11 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c11:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c11:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c11:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c11[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -370,14 +365,14 @@ exports[`render pagination component 1`] = `
 }
 
 @media (min-width:720px) {
-  .c11 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c11 {
+  .c10 {
     width: auto;
   }
 }
@@ -439,9 +434,6 @@ exports[`render pagination component 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           2 per page
         </div>
       </li>
@@ -455,9 +447,6 @@ exports[`render pagination component 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           3 per page
         </div>
       </li>
@@ -471,9 +460,6 @@ exports[`render pagination component 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           5 per page
         </div>
       </li>
@@ -483,7 +469,7 @@ exports[`render pagination component 1`] = `
     class="c2 c1"
   >
     <button
-      class="c3 c11"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -492,7 +478,7 @@ exports[`render pagination component 1`] = `
         class="c5"
       >
         <svg
-          class="c12"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -514,7 +500,7 @@ exports[`render pagination component 1`] = `
       </span>
     </button>
     <button
-      class="c3 c11"
+      class="c3 c10"
       role="button"
       tabindex="0"
     >
@@ -522,7 +508,7 @@ exports[`render pagination component 1`] = `
         class="c5"
       >
         <svg
-          class="c12"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -554,18 +540,13 @@ exports[`render pagination component with invalid page info 1`] = `
   width: 2rem;
 }
 
-.c12 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
 .c1 {
-  box-sizing: border-box;
-}
-
-.c10 {
-  padding-right: 0.75rem;
   box-sizing: border-box;
 }
 
@@ -676,7 +657,7 @@ exports[`render pagination component with invalid page info 1`] = `
 
 .c8[data-highlighted='true'],
 .c8[data-highlighted='true'] a {
-  background-color: #F6F7FC;
+  background-color: #F0F3FF;
   color: #3C64F4;
 }
 
@@ -776,7 +757,7 @@ exports[`render pagination component with invalid page info 1`] = `
   color: #D9DCE9;
 }
 
-.c11 {
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -822,32 +803,32 @@ exports[`render pagination component with invalid page info 1`] = `
   color: #3C64F4;
 }
 
-.c11:focus {
+.c10:focus {
   outline: none;
 }
 
-.c11[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c11 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c11:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c11:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c11:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c11[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -917,14 +898,14 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 @media (min-width:720px) {
-  .c11 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c11 {
+  .c10 {
     width: auto;
   }
 }
@@ -986,9 +967,6 @@ exports[`render pagination component with invalid page info 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           2 per page
         </div>
       </li>
@@ -1002,9 +980,6 @@ exports[`render pagination component with invalid page info 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           3 per page
         </div>
       </li>
@@ -1018,9 +993,6 @@ exports[`render pagination component with invalid page info 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           5 per page
         </div>
       </li>
@@ -1030,7 +1002,7 @@ exports[`render pagination component with invalid page info 1`] = `
     class="c2 c1"
   >
     <button
-      class="c3 c11"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -1039,7 +1011,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c5"
       >
         <svg
-          class="c12"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1061,7 +1033,7 @@ exports[`render pagination component with invalid page info 1`] = `
       </span>
     </button>
     <button
-      class="c3 c11"
+      class="c3 c10"
       role="button"
       tabindex="0"
     >
@@ -1069,7 +1041,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c5"
       >
         <svg
-          class="c12"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1101,18 +1073,13 @@ exports[`render pagination component with invalid range info 1`] = `
   width: 2rem;
 }
 
-.c12 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
 .c1 {
-  box-sizing: border-box;
-}
-
-.c10 {
-  padding-right: 0.75rem;
   box-sizing: border-box;
 }
 
@@ -1223,7 +1190,7 @@ exports[`render pagination component with invalid range info 1`] = `
 
 .c8[data-highlighted='true'],
 .c8[data-highlighted='true'] a {
-  background-color: #F6F7FC;
+  background-color: #F0F3FF;
   color: #3C64F4;
 }
 
@@ -1323,7 +1290,7 @@ exports[`render pagination component with invalid range info 1`] = `
   color: #D9DCE9;
 }
 
-.c11 {
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1369,32 +1336,32 @@ exports[`render pagination component with invalid range info 1`] = `
   color: #3C64F4;
 }
 
-.c11:focus {
+.c10:focus {
   outline: none;
 }
 
-.c11[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c11 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c11:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c11:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c11:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c11[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -1464,14 +1431,14 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 @media (min-width:720px) {
-  .c11 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c11 {
+  .c10 {
     width: auto;
   }
 }
@@ -1533,9 +1500,6 @@ exports[`render pagination component with invalid range info 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           2 per page
         </div>
       </li>
@@ -1549,9 +1513,6 @@ exports[`render pagination component with invalid range info 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           3 per page
         </div>
       </li>
@@ -1565,9 +1526,6 @@ exports[`render pagination component with invalid range info 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           5 per page
         </div>
       </li>
@@ -1577,7 +1535,7 @@ exports[`render pagination component with invalid range info 1`] = `
     class="c2 c1"
   >
     <button
-      class="c3 c11"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -1586,7 +1544,7 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c5"
       >
         <svg
-          class="c12"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1608,7 +1566,7 @@ exports[`render pagination component with invalid range info 1`] = `
       </span>
     </button>
     <button
-      class="c3 c11"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -1617,7 +1575,7 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c5"
       >
         <svg
-          class="c12"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1649,18 +1607,13 @@ exports[`render pagination component with no items 1`] = `
   width: 2rem;
 }
 
-.c12 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
 .c1 {
-  box-sizing: border-box;
-}
-
-.c10 {
-  padding-right: 0.75rem;
   box-sizing: border-box;
 }
 
@@ -1771,7 +1724,7 @@ exports[`render pagination component with no items 1`] = `
 
 .c8[data-highlighted='true'],
 .c8[data-highlighted='true'] a {
-  background-color: #F6F7FC;
+  background-color: #F0F3FF;
   color: #3C64F4;
 }
 
@@ -1871,7 +1824,7 @@ exports[`render pagination component with no items 1`] = `
   color: #D9DCE9;
 }
 
-.c11 {
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1917,32 +1870,32 @@ exports[`render pagination component with no items 1`] = `
   color: #3C64F4;
 }
 
-.c11:focus {
+.c10:focus {
   outline: none;
 }
 
-.c11[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c11 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c11:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c11:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c11:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c11[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -2012,14 +1965,14 @@ exports[`render pagination component with no items 1`] = `
 }
 
 @media (min-width:720px) {
-  .c11 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c11 {
+  .c10 {
     width: auto;
   }
 }
@@ -2081,9 +2034,6 @@ exports[`render pagination component with no items 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           2 per page
         </div>
       </li>
@@ -2097,9 +2047,6 @@ exports[`render pagination component with no items 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           3 per page
         </div>
       </li>
@@ -2113,9 +2060,6 @@ exports[`render pagination component with no items 1`] = `
         <div
           class="c9 c1"
         >
-          <div
-            class="c2 c10"
-          />
           5 per page
         </div>
       </li>
@@ -2125,7 +2069,7 @@ exports[`render pagination component with no items 1`] = `
     class="c2 c1"
   >
     <button
-      class="c3 c11"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -2134,7 +2078,7 @@ exports[`render pagination component with no items 1`] = `
         class="c5"
       >
         <svg
-          class="c12"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -2156,7 +2100,7 @@ exports[`render pagination component with no items 1`] = `
       </span>
     </button>
     <button
-      class="c3 c11"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -2165,7 +2109,7 @@ exports[`render pagination component with no items 1`] = `
         class="c5"
       >
         <svg
-          class="c12"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
