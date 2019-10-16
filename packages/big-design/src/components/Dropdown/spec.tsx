@@ -13,8 +13,8 @@ const DropdownMock = (
   <Dropdown
     options={[
       { content: 'Option', type: 'string', value: '0' },
-      { content: 'Option', onClick, type: 'string', value: '1' },
-      { content: 'Option', type: 'string', value: '2' },
+      { content: 'Option', type: 'string', value: '1', onClick },
+      { content: 'Option', type: 'string', value: '2', actionType: 'destructive' },
       { content: 'Option', type: 'string', value: '3', icon: <CheckCircleIcon /> },
     ]}
     trigger={<Button>Button</Button>}

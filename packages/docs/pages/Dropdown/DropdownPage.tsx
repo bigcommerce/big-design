@@ -1,5 +1,12 @@
 import { Button, Dropdown, Grid, H0, H1, H2, H3, Link, Panel, Text } from '@bigcommerce/big-design';
-import { AssignmentIcon, DeleteIcon, EditIcon, FileCopyIcon, OpenInNewIcon } from '@bigcommerce/big-design-icons';
+import {
+  AddIcon,
+  AssignmentIcon,
+  DeleteIcon,
+  EditIcon,
+  FileCopyIcon,
+  OpenInNewIcon,
+} from '@bigcommerce/big-design-icons';
 import React from 'react';
 
 import { Code, CodePreview, NextLink } from '../../components';
@@ -22,14 +29,25 @@ export default () => (
       <Dropdown
         maxHeight={250}
         options={[
-          { content: 'Edit', icon: <EditIcon />, onClick: item => item, value: 'edit' },
-          { content: 'Duplicate', icon: <FileCopyIcon />, onClick: item => item, value: 'duplicate' },
-          { content: 'Copy', icon: <AssignmentIcon />, onClick: item => item, value: '8', disabled: true },
+          { content: 'Edit', onClick: item => item, icon: <EditIcon />, value: 'edit' },
+          {
+            content: 'Duplicate',
+            onClick: item => item,
+            value: 'duplicate',
+            icon: <FileCopyIcon />,
+          },
+          {
+            content: 'Copy',
+            onClick: item => item,
+            value: 'copy',
+            icon: <AssignmentIcon />,
+            disabled: true,
+          },
           {
             content: 'Delete',
-            icon: <DeleteIcon />,
             onClick: item => item,
             value: 'delete',
+            icon: <DeleteIcon />,
             actionType: 'destructive',
           },
           { content: 'Link', icon: <OpenInNewIcon />, type: 'link', url: '#' },
@@ -74,6 +92,42 @@ export default () => (
         trigger={<Button>Button</Button>}
       />
 
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H2>Icons</H2>
+
+    <Text>
+      A DropdownItem accepts an <NextLink href="/icons">Icon</NextLink> component to render.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+
+      <Dropdown
+        options={[
+          { content: 'Option', icon: <EditIcon /> },
+          { content: 'Link', icon: <OpenInNewIcon />, type: 'link', url: '#' },
+        ]}
+        trigger={<Button>Button</Button>}
+      />
+
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H2>Action Types</H2>
+
+    <Text>
+      There are two action types: <Code>normal</Code> &amp; <Code>destructive</Code>. They are used to indicate the
+      nature of the action when hovering on the item.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Dropdown
+        options={[{ content: 'Save', actionType: 'normal' }, { content: 'Delete', actionType: 'destructive' }]}
+        trigger={<Button>Button</Button>}
+      />
       {/* jsx-to-string:end */}
     </CodePreview>
 
