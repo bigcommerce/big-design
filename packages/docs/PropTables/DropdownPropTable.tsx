@@ -41,11 +41,28 @@ export const DropdownPropTable: React.FC = () => (
 
 export const DropdownItemPropTable: React.FC = () => (
   <PropTable>
+    <PropTable.Prop name="actionType" types={['normal', 'destructive']} defaults="normal">
+      Indicates whether your item's action is of normal or destructive nature.
+    </PropTable.Prop>
     <PropTable.Prop name="content" types="string" required>
       Sets the text content of the Dropdown Item.
     </PropTable.Prop>
     <PropTable.Prop name="disabled" types="boolean">
       Sets the item to disabled.
+    </PropTable.Prop>
+    <PropTable.Prop
+      name="icon"
+      types={
+        <NextLink href="/Icons/IconsPage" as="/icons">
+          Icon
+        </NextLink>
+      }
+    >
+      Pass in an{' '}
+      <NextLink href="/Icons/IconsPage" as="/icons">
+        Icon
+      </NextLink>{' '}
+      component to display to the left of the text.
     </PropTable.Prop>
     <PropTable.Prop name="onClick" types="(item: DropdownItem): void">
       Returns the item object.
@@ -61,8 +78,28 @@ export const DropdownItemPropTable: React.FC = () => (
 
 export const DropdownLinkItemPropTable: React.FC = () => (
   <PropTable>
+    <PropTable.Prop name="actionType" types={['normal', 'destructive']} defaults="normal">
+      Indicates whether your item's action is of normal or destructive nature.
+    </PropTable.Prop>
     <PropTable.Prop name="content" types="string" required>
       Sets the text content of the Dropdown Item.
+    </PropTable.Prop>
+    <PropTable.Prop name="disabled" types="boolean">
+      Sets the item to disabled.
+    </PropTable.Prop>
+    <PropTable.Prop
+      name="icon"
+      types={
+        <NextLink href="/Icons/IconsPage" as="/icons">
+          Icon
+        </NextLink>
+      }
+    >
+      Pass in an{' '}
+      <NextLink href="/Icons/IconsPage" as="/icons">
+        Icon
+      </NextLink>{' '}
+      component to display to the left of the text.
     </PropTable.Prop>
     <PropTable.Prop name="onClick" types="(item: DropdownLinkItem): void">
       Returns the item object.
