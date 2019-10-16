@@ -1,4 +1,3 @@
-import { Placement } from 'popper.js';
 import React, { RefObject } from 'react';
 import { Manager, Reference, RefHandler } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
@@ -8,35 +7,13 @@ import { Flex } from '../Flex';
 import { FlexItem } from '../Flex/Item';
 import { Link } from '../Link';
 import { List } from '../List';
-import { ListItem, ListItemProps } from '../List/Item';
+import { ListItem } from '../List/Item';
+
+import { DropdownItem, DropdownLinkItem, DropdownProps } from './types';
 
 interface DropdownState {
   highlightedItem: HTMLLIElement | null;
   isOpen: boolean;
-}
-
-export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
-  maxHeight?: number;
-  options: Array<DropdownItem | DropdownLinkItem>;
-  placement?: Placement;
-  trigger: React.ReactElement;
-}
-
-export interface DropdownItem extends BaseItem {
-  type?: 'string';
-}
-
-export interface DropdownLinkItem extends BaseItem {
-  target?: HTMLAnchorElement['target'];
-  type: 'link';
-  url: string;
-}
-
-interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'onClick' | 'value'> {
-  content: string;
-  icon?: React.ReactElement;
-  value?: any;
-  onClick?(item: DropdownItem | DropdownLinkItem): void;
 }
 
 export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> {
@@ -54,7 +31,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
   private listItemsRefs: Array<RefObject<HTMLLIElement>> = [];
 
   render() {
-    const { children, maxHeight, options, placement, trigger, ...rest } = this.props;
+    const { children, className, maxHeight, options, placement, style, trigger, ...rest } = this.props;
     const { highlightedItem, isOpen } = this.state;
 
     this.listItemsRefs = [];
@@ -94,7 +71,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
         }
 
         const id = this.getItemId(option, index);
-        const isHighlighted = !!(highlightedItem && id === highlightedItem.id);
+        const isHighlighted = Boolean(highlightedItem && id === highlightedItem.id);
         const ref = React.createRef<HTMLLIElement>();
 
         if (!option.disabled) {
