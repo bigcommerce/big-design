@@ -24,7 +24,7 @@ export const StyledListItem = styled.li<ListItemProps>`
       !disabled &&
       (actionType === 'normal'
         ? css`
-            background-color: ${({ theme }) => theme.colors.secondary10};
+            background-color: ${({ theme }) => theme.colors.primary10};
             color: ${({ theme }) => theme.colors.primary};
           `
         : css`
