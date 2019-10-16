@@ -46,7 +46,6 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
     <PaddingPropTable />
   </>
 );

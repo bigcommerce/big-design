@@ -1,7 +1,7 @@
 import { Box, Flex, H0, H1, H2, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, Collapsible } from '../../components';
+import { Code, CodePreview } from '../../components';
 import { BoxPropTable, FlexItemPropTable, FlexPropTable, MarginPropTable, PaddingPropTable } from '../../PropTables';
 
 const ExampleBox: React.FC<{ vertical?: boolean }> = ({ children, vertical }) => (
@@ -48,28 +48,13 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
-    <H2>Flex</H2>
-
     <FlexPropTable />
-
-    <H2>Flex.Item</H2>
-
     <FlexItemPropTable />
 
     <H2>Inherited Props</H2>
-
-    <Collapsible title="Box Props">
-      <BoxPropTable />
-    </Collapsible>
-
-    <Collapsible title="Margin Props">
-      <MarginPropTable />
-    </Collapsible>
-
-    <Collapsible title="Padding Props">
-      <PaddingPropTable />
-    </Collapsible>
+    <BoxPropTable collapsible />
+    <MarginPropTable collapsible />
+    <PaddingPropTable collapsible />
 
     <H1>Examples</H1>
 

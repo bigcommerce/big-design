@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, Prop, PropTable } from '../components';
+import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
 const selectProps: Prop[] = [
   {
@@ -88,7 +88,9 @@ const selectProps: Prop[] = [
   },
 ];
 
-export const SelectPropTable: React.FC = () => <PropTable propList={selectProps} />;
+export const SelectPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Select" propList={selectProps} {...props} />
+);
 
 const selectOptionProps: Prop[] = [
   {
@@ -98,4 +100,6 @@ const selectOptionProps: Prop[] = [
   },
 ];
 
-export const SelectOptionPropTable: React.FC = () => <PropTable propList={selectOptionProps} />;
+export const SelectOptionPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Select.Option" propList={selectOptionProps} {...props} />
+);

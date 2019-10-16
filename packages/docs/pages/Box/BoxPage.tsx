@@ -2,7 +2,7 @@ import { Box, Flex, H0, H1, H2, Text } from '@bigcommerce/big-design';
 import React from 'react';
 import styled from 'styled-components';
 
-import { CodePreview, Collapsible } from '../../components';
+import { CodePreview } from '../../components';
 import { BoxPropTable, MarginPropTable, PaddingPropTable } from '../../PropTables';
 
 export default () => (
@@ -20,20 +20,11 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
-    <H2>Box</H2>
-
     <BoxPropTable />
 
     <H2>Inherited Props</H2>
-
-    <Collapsible title="Margin Props">
-      <MarginPropTable />
-    </Collapsible>
-
-    <Collapsible title="Padding Props">
-      <PaddingPropTable />
-    </Collapsible>
+    <MarginPropTable collapsible />
+    <PaddingPropTable collapsible />
 
     <H1>Examples</H1>
 

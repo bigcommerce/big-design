@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Prop, PropTable } from '../components';
+import { Prop, PropTable, PropTableWrapper } from '../components';
 
 const tabsProps: Prop[] = [
   {
@@ -15,7 +15,9 @@ const tabsProps: Prop[] = [
   },
 ];
 
-export const TabsPropTable: React.FC = () => <PropTable propList={tabsProps} />;
+export const TabsPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Tabs" propList={tabsProps} {...props} />
+);
 
 const tabProps: Prop[] = [
   {
@@ -30,4 +32,6 @@ const tabProps: Prop[] = [
   },
 ];
 
-export const TabPropTable: React.FC = () => <PropTable propList={tabProps} />;
+export const TabPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Tabs.Tab" propList={tabProps} {...props} />
+);

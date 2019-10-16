@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NextLink, Prop, PropTable } from '../components';
+import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const typographyProps: Prop[] = [
   {
@@ -28,4 +28,6 @@ const typographyProps: Prop[] = [
   },
 ];
 
-export const TypographyPropTable: React.FC = () => <PropTable propList={typographyProps} />;
+export const TypographyPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Typography" propList={typographyProps} {...props} />
+);

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Code, Prop, PropTable } from '../components';
+import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
-const props: Prop[] = [
+const checkboxProps: Prop[] = [
   {
     name: 'label',
     types: 'ReactChild',
@@ -21,4 +21,6 @@ const props: Prop[] = [
   },
 ];
 
-export const CheckboxPropTable: React.FC = () => <PropTable propList={props} />;
+export const CheckboxPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Checkbox" propList={checkboxProps} {...props} />
+);

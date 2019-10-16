@@ -5,7 +5,6 @@ import {
   Form,
   H0,
   H1,
-  H2,
   Input,
   Link,
   Radio,
@@ -59,25 +58,10 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
-    <H2>Form</H2>
-
     <FormPropTable />
-
-    <H2 id="error">Form.Error</H2>
-
-    <FormErrorPropTable />
-
-    <H2>Form.Fieldset</H2>
-
+    <FormErrorPropTable id="error" />
     <FormFieldsetPropTable />
-
-    <H2 id="label">Form.Label</H2>
-
-    <FormLabelPropTable />
-
-    <H2>Form.Group</H2>
-
+    <FormLabelPropTable id="label" />
     <FormGroupPropTable />
 
     <H1>Input Types</H1>

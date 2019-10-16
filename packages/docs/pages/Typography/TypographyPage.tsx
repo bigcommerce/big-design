@@ -1,7 +1,7 @@
 import { Box, Flex, H0, H1, H2, H3, H4, Link, Small, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, Collapsible, NextLink } from '../../components';
+import { Code, CodePreview, NextLink } from '../../components';
 import { MarginPropTable, TypographyPropTable } from '../../PropTables';
 
 export default () => (
@@ -30,16 +30,10 @@ export default () => (
     <Text></Text>
 
     <H1>API</H1>
-
-    <H2>Typography</H2>
-
     <TypographyPropTable />
 
     <H2>Inherited Props</H2>
-
-    <Collapsible title="Margin Props">
-      <MarginPropTable />
-    </Collapsible>
+    <MarginPropTable collapsible />
 
     <H1>Examples</H1>
 

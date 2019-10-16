@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Prop, PropTable } from '../components';
+import { Prop, PropTable, PropTableWrapper } from '../components';
 
-const props: Prop[] = [
+const badgeProps: Prop[] = [
   {
     name: 'variant',
     types: ['danger', 'secondary', 'success', 'warning'],
@@ -11,4 +11,6 @@ const props: Prop[] = [
   },
 ];
 
-export const BadgePropTable: React.FC = () => <PropTable propList={props} />;
+export const BadgePropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Badge" propList={badgeProps} {...props} />
+);

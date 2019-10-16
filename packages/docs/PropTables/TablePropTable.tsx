@@ -1,4 +1,4 @@
-import { NextLink, Prop, PropTable } from '../components';
+import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const tableProps: Prop[] = [
   {
@@ -104,6 +104,14 @@ const tableSelectableProps: Prop[] = [
   },
 ];
 
-export const TablePropTable: React.FC = () => <PropTable propList={tableProps} />;
-export const TableColumnsPropTable: React.FC = () => <PropTable propList={tableColumnsProps} />;
-export const TableSelectablePropTable: React.FC = () => <PropTable propList={tableSelectableProps} />;
+export const TablePropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Table" propList={tableProps} {...props} />
+);
+
+export const TableColumnsPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Table[Columns]" propList={tableColumnsProps} {...props} />
+);
+
+export const TableSelectablePropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Table[Selectable]" propList={tableSelectableProps} {...props} />
+);

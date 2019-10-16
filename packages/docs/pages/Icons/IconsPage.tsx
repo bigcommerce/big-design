@@ -1,4 +1,4 @@
-import { Flex, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { Flex, H0, H1, Link, Text } from '@bigcommerce/big-design';
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import React, { useEffect, useState } from 'react';
 
@@ -47,9 +47,6 @@ export default () => {
       </CodePreview>
 
       <H1>API</H1>
-
-      <H2>Icon</H2>
-
       <IconPropTable />
 
       <H1>Available Icons</H1>

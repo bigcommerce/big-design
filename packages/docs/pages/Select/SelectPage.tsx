@@ -1,4 +1,4 @@
-import { Form, Grid, H0, H1, H2, Link, Select, Text } from '@bigcommerce/big-design';
+import { Form, Grid, H0, H1, Link, Select, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -61,13 +61,7 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
-    <H2>Select</H2>
-
     <SelectPropTable />
-
-    <H2>Select.Option</H2>
-
     <SelectOptionPropTable />
 
     <H1>Multiselect</H1>

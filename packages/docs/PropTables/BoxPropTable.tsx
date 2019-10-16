@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { NextLink, Prop, PropTable } from '../components';
+import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
-const props: Prop[] = [
+const boxProps: Prop[] = [
   {
     name: 'backgroundColor',
     types: (
@@ -57,4 +57,6 @@ const props: Prop[] = [
   },
 ];
 
-export const BoxPropTable: React.FC = () => <PropTable propList={props} />;
+export const BoxPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Box" propList={boxProps} {...props} />
+);

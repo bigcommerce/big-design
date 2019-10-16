@@ -1,4 +1,4 @@
-import { H0, H1, H2, Link, ProgressCircle, Text } from '@bigcommerce/big-design';
+import { H0, H1, Link, ProgressCircle, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -42,9 +42,6 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
-    <H2>ProgressCircle</H2>
-
     <ProgressCirclePropTable />
   </>
 );

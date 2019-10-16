@@ -1,4 +1,4 @@
-import { Form, H0, H1, H2, Link, Text, Textarea } from '@bigcommerce/big-design';
+import { Form, H0, H1, Link, Text, Textarea } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -47,24 +47,13 @@ export default () => (
 
     <H1>API</H1>
 
-    <H2>Textarea</H2>
-
     <Text>
       Supports all native <Code>&lt;textarea /&gt;</Code> element attributes.
     </Text>
 
     <TextareaPropTable />
-
-    <H2>Textarea.Description</H2>
-
     <TextareaDescriptionPropTable />
-
-    <H2>Textarea.Error</H2>
-
     <TextareaErrorPropTable />
-
-    <H2>Textarea.Label</H2>
-
     <TextareaLabelPropTable />
 
     <H1>Error State</H1>

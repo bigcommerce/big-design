@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { NextLink, Prop, PropTable } from '../components';
+import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
-const props: Prop[] = [
+const marginProps: Prop[] = [
   {
     name: 'margin',
     types: (
@@ -68,4 +68,6 @@ const props: Prop[] = [
   },
 ];
 
-export const MarginPropTable: React.FC = () => <PropTable propList={props} />;
+export const MarginPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Margin" propList={marginProps} {...props} />
+);

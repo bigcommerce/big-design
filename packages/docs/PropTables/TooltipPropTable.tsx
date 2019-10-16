@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Prop, PropTable } from '../components';
+import { Prop, PropTable, PropTableWrapper } from '../components';
 
 const tooltipProps: Prop[] = [
   {
@@ -33,4 +33,6 @@ const tooltipProps: Prop[] = [
   },
 ];
 
-export const TooltipPropTable: React.FC = () => <PropTable propList={tooltipProps} />;
+export const TooltipPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Tooltip" propList={tooltipProps} {...props} />
+);
