@@ -101,12 +101,11 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
           this.listItemsRefs.push(ref);
         }
 
-        const { actionType = 'normal' as 'normal', content, icon, onClick, type, value, ...rest } = option;
+        const { content, icon, onClick, type, value, ...rest } = option;
 
         return (
           <ListItem
             {...rest}
-            actionType={actionType}
             data-highlighted={isHighlighted}
             id={id}
             key={index}
@@ -119,13 +118,13 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
             {option.type === 'link' && !option.disabled ? (
               <Link href={option.url} target={option.target}>
                 <Flex alignItems="center">
-                  {icon && <FlexItem paddingRight="small">{this.renderIcon(icon, isHighlighted, option)}</FlexItem>}
+                  {icon && <FlexItem paddingRight="small">{this.renderIcon(option, isHighlighted)}</FlexItem>}
                   {content}
                 </Flex>
               </Link>
             ) : (
               <Flex alignItems="center">
-                {icon && <FlexItem paddingRight="small">{this.renderIcon(icon, isHighlighted, option)}</FlexItem>}
+                {icon && <FlexItem paddingRight="small">{this.renderIcon(option, isHighlighted)}</FlexItem>}
                 {content}
               </Flex>
             )}
@@ -135,10 +134,10 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     );
   }
 
-  private renderIcon(icon: React.ReactNode, isHighlighted: boolean, option: DropdownItem | DropdownLinkItem) {
+  private renderIcon(option: DropdownItem | DropdownLinkItem, isHighlighted: boolean) {
     return (
-      React.isValidElement(icon) &&
-      React.cloneElement(icon, {
+      React.isValidElement(option.icon) &&
+      React.cloneElement(option.icon, {
         color: option.disabled
           ? 'secondary40'
           : isHighlighted
@@ -238,13 +237,13 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     this.toggleList();
   };
 
-  private handleOnItemClick = (option: DropdownItem | DropdownLinkItem) => {
-    if (option.disabled) {
+  private handleOnItemClick = (item: DropdownItem | DropdownLinkItem) => {
+    if (item.disabled) {
       return;
     }
 
-    if (typeof option.onClick === 'function') {
-      option.onClick(option);
+    if (typeof item.onClick === 'function') {
+      item.onClick(item);
     }
 
     this.toggleList();
