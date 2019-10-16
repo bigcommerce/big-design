@@ -18,7 +18,8 @@ export const StyledListItem = styled.li<ListItemProps>`
     font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   }
 
-  &[data-highlighted='true'] {
+  &[data-highlighted='true'],
+  &[data-highlighted='true'] a {
     ${({ actionType, disabled }) =>
       !disabled &&
       (actionType === 'normal'

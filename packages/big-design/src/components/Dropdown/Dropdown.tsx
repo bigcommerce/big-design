@@ -1,10 +1,11 @@
-import { theme } from '@bigcommerce/big-design-theme';
 import { Placement } from 'popper.js';
 import React, { RefObject } from 'react';
 import { Manager, Reference, RefHandler } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
+import { Flex } from '../Flex';
+import { FlexItem } from '../Flex/Item';
 import { Link } from '../Link';
 import { List } from '../List';
 import { ListItem, ListItemProps } from '../List/Item';
@@ -14,7 +15,7 @@ interface DropdownState {
   isOpen: boolean;
 }
 
-export interface DropdownProps extends React.HTMLAttributes<HTMLUListElement> {
+export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
   maxHeight?: number;
   options: Array<DropdownItem | DropdownLinkItem>;
   placement?: Placement;
@@ -31,9 +32,9 @@ export interface DropdownLinkItem extends BaseItem {
   url: string;
 }
 
-interface BaseItem extends Omit<ListItemProps, 'content' | 'onClick' | 'value'> {
+interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'onClick' | 'value'> {
   content: string;
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
   value?: any;
   onClick?(item: DropdownItem | DropdownLinkItem): void;
 }
@@ -64,6 +65,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
       <Manager>
         <Reference innerRef={node => (this.triggerRef = node)}>{({ ref }) => this.renderTrigger(ref)}</Reference>
         <List
+          {...rest}
           aria-labelledby={this.getTriggerId()}
           handleListRef={this.handleListRef}
           id={this.getDropdownId()}
@@ -73,15 +75,14 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
           placement={placement}
           role="listbox"
           {...aria}
-          {...rest}
         >
-          {this.renderChildren()}
+          {this.renderOptions()}
         </List>
       </Manager>
     );
   }
 
-  private renderChildren() {
+  private renderOptions() {
     const { options } = this.props;
     const { highlightedItem } = this.state;
 
@@ -100,81 +101,52 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
           this.listItemsRefs.push(ref);
         }
 
-        switch (option.type) {
-          case 'string':
-          default: {
-            const { actionType = 'normal' as 'normal', content, icon, onClick, type, value, ...rest } = option;
+        const { actionType = 'normal' as 'normal', content, icon, onClick, type, value, ...rest } = option;
 
-            return (
-              <ListItem
-                {...rest}
-                actionType={actionType}
-                data-highlighted={isHighlighted}
-                id={id}
-                key={index}
-                onClick={() => this.handleOnItemClick(option)}
-                onFocus={this.handleOnItemFocus}
-                onMouseOver={this.handleOnItemMouseOver}
-                ref={ref}
-                role="option"
-              >
-                <span>
-                  {this.renderIcon(icon, isHighlighted, actionType)}
+        return (
+          <ListItem
+            {...rest}
+            actionType={actionType}
+            data-highlighted={isHighlighted}
+            id={id}
+            key={index}
+            onClick={() => this.handleOnItemClick(option)}
+            onFocus={this.handleOnItemFocus}
+            onMouseOver={this.handleOnItemMouseOver}
+            ref={ref}
+            role="option"
+          >
+            {option.type === 'link' && !option.disabled ? (
+              <Link href={option.url} target={option.target}>
+                <Flex alignItems="center">
+                  <FlexItem paddingRight="small">{this.renderIcon(icon, isHighlighted, option)}</FlexItem>
                   {content}
-                </span>
-              </ListItem>
-            );
-          }
-          case 'link': {
-            const {
-              actionType = 'normal' as 'normal',
-              content,
-              disabled,
-              icon,
-              onClick,
-              url,
-              target,
-              type,
-              value,
-              ...rest
-            } = option;
-            const href = disabled ? {} : { href: url };
-
-            return (
-              <ListItem
-                {...rest}
-                actionType={actionType}
-                data-highlighted={isHighlighted}
-                disabled={disabled}
-                id={id}
-                key={index}
-                onClick={() => this.handleOnItemClick(option)}
-                onFocus={this.handleOnItemFocus}
-                onMouseOver={this.handleOnItemMouseOver}
-                ref={ref}
-                role="option"
-              >
-                <Link {...href} target={target}>
-                  {this.renderIcon(icon, isHighlighted, actionType)}
-                  {content}
-                </Link>
-              </ListItem>
-            );
-          }
-        }
+                </Flex>
+              </Link>
+            ) : (
+              <Flex alignItems="center">
+                <FlexItem paddingRight="small">{this.renderIcon(icon, isHighlighted, option)}</FlexItem>
+                {content}
+              </Flex>
+            )}
+          </ListItem>
+        );
       })
     );
   }
 
-  private renderIcon(icon: React.ReactNode, isHighlighted: boolean, actionType: ListItemProps['actionType']) {
+  private renderIcon(icon: React.ReactNode, isHighlighted: boolean, option: DropdownItem | DropdownLinkItem) {
     return (
       React.isValidElement(icon) &&
       React.cloneElement(icon, {
-        color: isHighlighted
-          ? actionType === 'normal'
-            ? theme.colors.primary
-            : theme.colors.danger50
-          : theme.colors.secondary60,
+        color: option.disabled
+          ? 'secondary40'
+          : isHighlighted
+          ? option.actionType === 'destructive'
+            ? 'danger50'
+            : 'primary'
+          : 'secondary60',
+        size: 'large',
       })
     );
   }

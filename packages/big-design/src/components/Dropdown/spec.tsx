@@ -1,3 +1,4 @@
+import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
@@ -14,7 +15,7 @@ const DropdownMock = (
       { content: 'Option', type: 'string', value: '0' },
       { content: 'Option', onClick, type: 'string', value: '1' },
       { content: 'Option', type: 'string', value: '2' },
-      { content: 'Option', type: 'string', value: '3' },
+      { content: 'Option', type: 'string', value: '3', icon: <CheckCircleIcon /> },
     ]}
     trigger={<Button>Button</Button>}
   ></Dropdown>
@@ -258,4 +259,11 @@ test('dropdown menu renders 4 link when passed options of type link', () => {
   options.forEach(option => {
     expect(option.getAttribute('href')).toBe('#');
   });
+});
+
+test('items renders icons', () => {
+  const { container } = render(DropdownMock);
+
+  const svg = container.querySelectorAll('svg');
+  expect(svg.length).toBe(1);
 });
