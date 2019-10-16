@@ -6,7 +6,7 @@ import { ListItemProps } from './Item';
 export const StyledListItem = styled.li<ListItemProps>`
   align-items: center;
   box-sizing: border-box;
-  cursor: default;
+  cursor: pointer;
   display: flex;
   height: ${({ theme }) => theme.helpers.remCalc(36)};
   justify-content: space-between;
@@ -37,30 +37,18 @@ export const StyledListItem = styled.li<ListItemProps>`
     disabled &&
     css`
       color: ${theme.colors.secondary40};
+      cursor: not-allowed;
     `}
 
   a {
     align-items: center;
     color: ${({ theme }) => theme.colors.secondary70};
-    cursor: pointer;
     display: flex;
     height: 100%;
     margin: 0 -${({ theme }) => theme.spacing.medium};
     padding: 0 ${({ theme }) => theme.spacing.medium};
     text-decoration: none;
     width: 100%;
-
-    ${({ disabled, theme }) =>
-      disabled &&
-      css`
-        background-color: inherit;
-        color: ${theme.colors.secondary40};
-
-        :hover {
-          background-color: inherit;
-          cursor: default;
-        }
-      `}
   }
 `;
 

@@ -103,7 +103,7 @@ exports[`render pagination component 1`] = `
   -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  cursor: default;
+  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -134,7 +134,6 @@ exports[`render pagination component 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #313440;
-  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -636,7 +635,7 @@ exports[`render pagination component with invalid page info 1`] = `
   -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  cursor: default;
+  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -667,7 +666,6 @@ exports[`render pagination component with invalid page info 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #313440;
-  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1169,7 +1167,7 @@ exports[`render pagination component with invalid range info 1`] = `
   -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  cursor: default;
+  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1200,7 +1198,6 @@ exports[`render pagination component with invalid range info 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #313440;
-  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1703,7 +1700,7 @@ exports[`render pagination component with no items 1`] = `
   -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  cursor: default;
+  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1734,7 +1731,6 @@ exports[`render pagination component with no items 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #313440;
-  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
