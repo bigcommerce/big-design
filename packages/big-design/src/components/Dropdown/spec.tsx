@@ -18,7 +18,7 @@ const DropdownMock = (
       { content: 'Option', type: 'string', value: '3', icon: <CheckCircleIcon /> },
     ]}
     trigger={<Button>Button</Button>}
-  ></Dropdown>
+  />
 );
 
 test('renders dropdown trigger', () => {
@@ -250,7 +250,7 @@ test('dropdown menu renders 4 link when passed options of type link', () => {
         { content: 'Option', url: '#', type: 'link' },
       ]}
       trigger={<Button>Button</Button>}
-    ></Dropdown>,
+    />,
   );
 
   const options = container.querySelectorAll('a');

@@ -87,8 +87,8 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
             id={id}
             key={index}
             onClick={() => this.handleOnItemClick(option)}
-            onFocus={this.handleOnItemFocus}
-            onMouseOver={this.handleOnItemMouseOver}
+            onFocus={this.handleOnItemHighlighted}
+            onMouseOver={this.handleOnItemHighlighted}
             ref={ref}
             role="option"
           >
@@ -226,11 +226,10 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     this.toggleList();
   };
 
-  private handleOnItemFocus = (event: React.FocusEvent<HTMLLIElement>) => {
-    return this.updateHighlightedItem(event.currentTarget);
-  };
-
-  private handleOnItemMouseOver = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  // Need to handle focus event for cases when VO manipulate the list via the keyboard hotkeys
+  private handleOnItemHighlighted = (
+    event: React.FocusEvent<HTMLLIElement> | React.MouseEvent<HTMLLIElement, MouseEvent>,
+  ) => {
     return this.updateHighlightedItem(event.currentTarget);
   };
 

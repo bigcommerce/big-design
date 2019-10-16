@@ -9,6 +9,13 @@ export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElemen
   trigger: React.ReactElement;
 }
 
+interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'onClick' | 'value'> {
+  content: string;
+  icon?: React.ReactElement;
+  value?: any;
+  onClick?(item: DropdownItem | DropdownLinkItem): void;
+}
+
 export interface DropdownItem extends BaseItem {
   type?: 'string';
 }
@@ -17,11 +24,4 @@ export interface DropdownLinkItem extends BaseItem {
   target?: HTMLAnchorElement['target'];
   type: 'link';
   url: string;
-}
-
-interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'onClick' | 'value'> {
-  content: string;
-  icon?: React.ReactElement;
-  value?: any;
-  onClick?(item: DropdownItem | DropdownLinkItem): void;
 }
