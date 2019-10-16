@@ -267,3 +267,12 @@ test('items renders icons', () => {
   const svg = container.querySelectorAll('svg');
   expect(svg.length).toBe(1);
 });
+
+test('does not forward styles', () => {
+  const { container, getByRole } = render(
+    <Dropdown className="test" style={{ background: 'red' }} options={[]} trigger={<Button>Button</Button>} />,
+  );
+
+  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(getByRole('listbox')).not.toHaveStyle('background: red');
+});
