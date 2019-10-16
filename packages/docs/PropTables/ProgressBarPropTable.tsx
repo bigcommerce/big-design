@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Prop, PropTable } from '../components';
+import { Prop, PropTable, PropTableWrapper } from '../components';
 
-const props: Prop[] = [
+const progressBarProps: Prop[] = [
   {
     name: 'percent',
     types: 'number',
@@ -10,4 +10,6 @@ const props: Prop[] = [
   },
 ];
 
-export const ProgressBarPropTable: React.FC = () => <PropTable propList={props} />;
+export const ProgressBarPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="ProgressBar" propList={progressBarProps} {...props} />
+);

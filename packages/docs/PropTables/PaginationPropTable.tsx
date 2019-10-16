@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Prop, PropTable } from '../components';
+import { Prop, PropTable, PropTableWrapper } from '../components';
 
-const props: Prop[] = [
+const paginationProps: Prop[] = [
   {
     name: 'itemsPerPage',
     types: 'number',
@@ -41,6 +41,6 @@ const props: Prop[] = [
   },
 ];
 
-export const PaginationPropTable: React.FC = () => {
-  return <PropTable propList={props} />;
+export const PaginationPropTable: React.FC<PropTableWrapper> = props => {
+  return <PropTable title="Pagination" propList={paginationProps} {...props} />;
 };

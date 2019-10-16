@@ -44,26 +44,13 @@ export default () => (
     <H1>API</H1>
 
     <H2>Grid</H2>
-
     <GridPropTable />
-
-    <H2>Grid.Item</H2>
-
     <GridItemPropTable />
 
     <H2>Inherited Props</H2>
-
-    <Collapsible title="Box Props">
-      <BoxPropTable />
-    </Collapsible>
-
-    <Collapsible title="Margin Props">
-      <MarginPropTable />
-    </Collapsible>
-
-    <Collapsible title="Padding Props">
-      <PaddingPropTable />
-    </Collapsible>
+    <BoxPropTable collapsible />
+    <MarginPropTable collapsible />
+    <PaddingPropTable collapsible />
 
     <H1>Examples</H1>
 

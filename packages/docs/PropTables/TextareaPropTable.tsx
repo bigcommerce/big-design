@@ -1,7 +1,7 @@
-import { Text } from '@bigcommerce/big-design';
+import { H2, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, NextLink, Prop, PropTable } from '../components';
+import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const textareaProps: Prop[] = [
   {
@@ -41,30 +41,41 @@ const textareaProps: Prop[] = [
   },
 ];
 
-export const TextareaPropTable: React.FC = () => <PropTable propList={textareaProps} />;
+export const TextareaPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Textarea" propList={textareaProps} {...props} />
+);
 
 export const TextareaDescriptionPropTable: React.FC = () => (
-  <Text>
-    Supports all native <Code>&lt;p /&gt;</Code> element attributes.
-  </Text>
+  <>
+    <H2>Textarea.Description</H2>
+    <Text>
+      Supports all native <Code>&lt;p /&gt;</Code> element attributes.
+    </Text>
+  </>
 );
 
 export const TextareaErrorPropTable: React.FC = () => (
-  <Text>
-    See{' '}
-    <NextLink href="/Form/FormPage" as="/form#error">
-      Forms.Error
-    </NextLink>
-    .
-  </Text>
+  <>
+    <H2>Textarea.Error</H2>
+    <Text>
+      See{' '}
+      <NextLink href="/Form/FormPage" as="/form#error">
+        Forms.Error
+      </NextLink>
+      .
+    </Text>
+  </>
 );
 
 export const TextareaLabelPropTable: React.FC = () => (
-  <Text>
-    See{' '}
-    <NextLink href="/Form/FormPage" as="/form#label">
-      Forms.Label
-    </NextLink>
-    .
-  </Text>
+  <>
+    <H2>Textarea.Label</H2>
+    <Text>
+      See{' '}
+      <NextLink href="/Form/FormPage" as="/form#label">
+        Forms.Label
+      </NextLink>
+      .
+    </Text>
+  </>
 );

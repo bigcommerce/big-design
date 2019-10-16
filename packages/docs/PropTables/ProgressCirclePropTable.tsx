@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Prop, PropTable } from '../components';
+import { Prop, PropTable, PropTableWrapper } from '../components';
 
-const props: Prop[] = [
+const progressCircleProps: Prop[] = [
   {
     name: 'error',
     types: 'boolean',
@@ -21,4 +21,6 @@ const props: Prop[] = [
   },
 ];
 
-export const ProgressCirclePropTable: React.FC = () => <PropTable propList={props} />;
+export const ProgressCirclePropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="ProgressCircle" propList={progressCircleProps} {...props} />
+);

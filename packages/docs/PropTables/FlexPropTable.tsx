@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, Prop, PropTable } from '../components';
+import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
 const flexProps: Prop[] = [
   {
@@ -70,8 +70,8 @@ const flexProps: Prop[] = [
   },
 ];
 
-export const FlexPropTable: React.FC = () => {
-  return <PropTable propList={flexProps} />;
+export const FlexPropTable: React.FC<PropTableWrapper> = props => {
+  return <PropTable title="Flex" propList={flexProps} {...props} />;
 };
 
 const flexItemProps: Prop[] = [
@@ -131,6 +131,6 @@ const flexItemProps: Prop[] = [
   },
 ];
 
-export const FlexItemPropTable: React.FC = () => {
-  return <PropTable propList={flexItemProps} />;
+export const FlexItemPropTable: React.FC<PropTableWrapper> = props => {
+  return <PropTable title="Flex.Item" propList={flexItemProps} {...props} />;
 };

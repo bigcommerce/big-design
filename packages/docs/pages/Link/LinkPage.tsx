@@ -1,7 +1,7 @@
 import { H0, H2, Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { CodePreview, Collapsible } from '../../components';
+import { CodePreview } from '../../components';
 import { MarginPropTable } from '../../PropTables';
 
 export default () => (
@@ -23,9 +23,6 @@ export default () => (
     </CodePreview>
 
     <H2>Inherited Props</H2>
-
-    <Collapsible title="Margin Props">
-      <MarginPropTable />
-    </Collapsible>
+    <MarginPropTable collapsible />
   </>
 );

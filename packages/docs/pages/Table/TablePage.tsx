@@ -2,7 +2,7 @@ import { H0, H1, H2, Table, Text } from '@bigcommerce/big-design';
 import { TableItem } from '@bigcommerce/big-design/dist/src/components/Table/types';
 import React from 'react';
 
-import { CodePreview, Collapsible } from '../../components';
+import { CodePreview } from '../../components';
 import { MarginPropTable, TableColumnsPropTable, TablePropTable, TableSelectablePropTable } from '../../PropTables';
 
 interface Item extends TableItem {
@@ -58,24 +58,12 @@ export default () => {
       </CodePreview>
 
       <H1>API</H1>
-
-      <H2>Table</H2>
-
       <TablePropTable />
-
-      <H2 id="table-columns-prop-table">Table[Columns]</H2>
-
-      <TableColumnsPropTable />
-
-      <H2 id="table-selectable-prop-table">Table[Selectable]</H2>
-
-      <TableSelectablePropTable />
+      <TableColumnsPropTable id="table-columns-prop-table" />
+      <TableSelectablePropTable id="table-selectable-prop-table" />
 
       <H2>Inherited Props</H2>
-
-      <Collapsible title="Margin Props">
-        <MarginPropTable />
-      </Collapsible>
+      <MarginPropTable collapsible />
 
       <H1>Using pagination and selectable</H1>
 

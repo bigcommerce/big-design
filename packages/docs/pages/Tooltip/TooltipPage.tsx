@@ -27,9 +27,6 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
-    <H2>Tooltip</H2>
-
     <TooltipPropTable />
 
     <H1>Examples</H1>

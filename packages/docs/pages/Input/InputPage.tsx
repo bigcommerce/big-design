@@ -1,4 +1,4 @@
-import { Form, H0, H1, H2, Input, Link, Text } from '@bigcommerce/big-design';
+import { Form, H0, H1, Input, Link, Text } from '@bigcommerce/big-design';
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
@@ -42,24 +42,13 @@ export default () => (
 
     <H1>API</H1>
 
-    <H2>Input</H2>
-
     <Text>
       Supports all native <Code>&lt;input /&gt;</Code> element attributes.
     </Text>
 
     <InputPropTable />
-
-    <H2>Input.Description</H2>
-
     <InputDescriptionPropTable />
-
-    <H2>Input.Error</H2>
-
     <InputErrorPropTable />
-
-    <H2>Input.Label</H2>
-
     <InputLabelPropTable />
 
     <H1>Error State</H1>

@@ -26,16 +26,10 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
-    <H2>Button</H2>
-
     <ButtonPropTable />
 
     <H2>Inherited Props</H2>
-
-    <Collapsible title="Margin Props">
-      <MarginPropTable />
-    </Collapsible>
+    <MarginPropTable collapsible />
 
     <H1>Variants</H1>
 

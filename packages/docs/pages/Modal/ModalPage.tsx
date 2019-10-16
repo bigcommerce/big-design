@@ -1,4 +1,4 @@
-import { Button, H0, H1, H2, Link, Modal, Text } from '@bigcommerce/big-design';
+import { Button, H0, H1, Link, Modal, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -98,9 +98,6 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
-    <H2>Modal</H2>
-
     <ModalPropTable />
   </>
 );

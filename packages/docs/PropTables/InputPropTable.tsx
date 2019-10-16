@@ -1,9 +1,9 @@
-import { Text } from '@bigcommerce/big-design';
+import { H2, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, NextLink, Prop, PropTable } from '../components';
+import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
-const props: Prop[] = [
+const inputProps: Prop[] = [
   {
     name: 'description',
     types: 'ReactChild',
@@ -64,30 +64,41 @@ const props: Prop[] = [
   },
 ];
 
-export const InputPropTable: React.FC = () => <PropTable propList={props} />;
+export const InputPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Input" propList={inputProps} {...props} />
+);
 
 export const InputDescriptionPropTable: React.FC = () => (
-  <Text>
-    Supports all native <Code>&lt;p /&gt;</Code> element attributes.
-  </Text>
+  <>
+    <H2>Input.Description</H2>
+    <Text>
+      Supports all native <Code>&lt;p /&gt;</Code> element attributes.
+    </Text>
+  </>
 );
 
 export const InputErrorPropTable: React.FC = () => (
-  <Text>
-    See{' '}
-    <NextLink href="/Form/FormPage" as="/form#error">
-      Forms.Error
-    </NextLink>
-    .
-  </Text>
+  <>
+    <H2>Input.Error</H2>
+    <Text>
+      See{' '}
+      <NextLink href="/Form/FormPage" as="/form#error">
+        Forms.Error
+      </NextLink>
+      .
+    </Text>
+  </>
 );
 
 export const InputLabelPropTable: React.FC = () => (
-  <Text>
-    See{' '}
-    <NextLink href="/Form/FormPage" as="/form#label">
-      Forms.Label
-    </NextLink>
-    .
-  </Text>
+  <>
+    <H2>Input.Label</H2>
+    <Text>
+      See{' '}
+      <NextLink href="/Form/FormPage" as="/form#label">
+        Forms.Label
+      </NextLink>
+      .
+    </Text>
+  </>
 );

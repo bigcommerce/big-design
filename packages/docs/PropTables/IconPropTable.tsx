@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { NextLink, PropTable } from '../components';
+import { NextLink, PropTable, PropTableWrapper } from '../components';
 
-const props = [
+const iconProps = [
   {
     name: 'color',
     types: (
@@ -40,4 +40,6 @@ const props = [
   },
 ];
 
-export const IconPropTable: React.FC = () => <PropTable propList={props} />;
+export const IconPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Icon" propList={iconProps} {...props} />
+);

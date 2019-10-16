@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, Prop, PropTable } from '../components';
+import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
 const gridProps: Prop[] = [
   {
@@ -85,7 +85,9 @@ const gridProps: Prop[] = [
   },
 ];
 
-export const GridPropTable: React.FC = () => <PropTable propList={gridProps} />;
+export const GridPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Grid" propList={gridProps} {...props} />
+);
 
 const gridItemProps: Prop[] = [
   {
@@ -161,4 +163,6 @@ const gridItemProps: Prop[] = [
   },
 ];
 
-export const GridItemPropTable: React.FC = () => <PropTable propList={gridItemProps} />;
+export const GridItemPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Grid.Item" propList={gridItemProps} {...props} />
+);

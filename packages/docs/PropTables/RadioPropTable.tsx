@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Code, Prop, PropTable } from '../components';
+import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
-const props: Prop[] = [
+const radioProps: Prop[] = [
   {
     name: 'label',
     types: 'ReactChild',
@@ -15,4 +15,6 @@ const props: Prop[] = [
   },
 ];
 
-export const RadioPropTable: React.FC = () => <PropTable propList={props} />;
+export const RadioPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Radio" propList={radioProps} {...props} />
+);

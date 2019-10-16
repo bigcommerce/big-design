@@ -1,12 +1,5 @@
-import { Button, Dropdown, Grid, H0, H1, H2, H3, Link, Panel, Text } from '@bigcommerce/big-design';
-import {
-  AddIcon,
-  AssignmentIcon,
-  DeleteIcon,
-  EditIcon,
-  FileCopyIcon,
-  OpenInNewIcon,
-} from '@bigcommerce/big-design-icons';
+import { Button, Dropdown, Grid, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { AssignmentIcon, DeleteIcon, EditIcon, FileCopyIcon, OpenInNewIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
 import { Code, CodePreview, NextLink } from '../../components';
@@ -59,17 +52,8 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
-    <H2>Dropdown</H2>
-
     <DropdownPropTable />
-
-    <H3>DropdownItem</H3>
-
     <DropdownItemPropTable />
-
-    <H3>DropdownLinkItem</H3>
-
     <DropdownLinkItemPropTable />
 
     <H1>Examples</H1>

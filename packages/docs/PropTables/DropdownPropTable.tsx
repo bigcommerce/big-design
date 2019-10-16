@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, NextLink, Prop, PropTable } from '../components';
+import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const dropdownProps: Prop[] = [
   {
@@ -164,6 +164,14 @@ const dropdownLinkProps: Prop[] = [
   },
 ];
 
-export const DropdownPropTable: React.FC = () => <PropTable propList={dropdownProps} />;
-export const DropdownItemPropTable: React.FC = () => <PropTable propList={dropdownItemProps} />;
-export const DropdownLinkItemPropTable: React.FC = () => <PropTable propList={dropdownLinkProps} />;
+export const DropdownPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Dropdown" propList={dropdownProps} {...props} />
+);
+
+export const DropdownItemPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="DropdownItem" propList={dropdownItemProps} {...props} />
+);
+
+export const DropdownLinkItemPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="DropdownLinkItem" propList={dropdownLinkProps} {...props} />
+);

@@ -1,7 +1,7 @@
 import { Badge, Grid, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, Collapsible } from '../../components';
+import { Code, CodePreview } from '../../components';
 import { BadgePropTable, MarginPropTable } from '../../PropTables';
 
 export default () => (
@@ -24,16 +24,10 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
-    <H2>Badge</H2>
-
     <BadgePropTable />
 
     <H2>Inherited Props</H2>
-
-    <Collapsible title="Margin Props">
-      <MarginPropTable />
-    </Collapsible>
+    <MarginPropTable collapsible />
 
     <H1>Variants</H1>
 

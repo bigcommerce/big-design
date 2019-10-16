@@ -1,7 +1,8 @@
-import { Link, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
-import React, { ReactNode } from 'react';
+import { H2, Link, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
+import React, { FC, ReactNode } from 'react';
 
 import { Code } from '../Code';
+import { Collapsible } from '../Collapsible';
 
 interface TypesDataProps {
   types: any;
@@ -16,48 +17,60 @@ export interface Prop {
 }
 
 export interface PropTableProps {
+  collapsible?: boolean;
+  id?: string;
+  title: string;
   propList: Prop[];
 }
 
-export class PropTable extends React.PureComponent<PropTableProps> {
-  render() {
-    const items = this.props.propList;
+export type PropTableWrapper = Partial<PropTableProps>;
 
-    return (
-      <TableFigure>
-        <Table
-          columns={[
-            {
-              header: 'Prop Name',
-              render: ({ name, required }) => (
-                <>
-                  <Code primary>{name}</Code>
-                  {required ? <b> *</b> : null}
-                </>
-              ),
-            },
-            {
-              header: 'Type',
-              render: ({ types }) => <TypesData types={types} />,
-            },
-            {
-              header: 'Default',
-              render: ({ defaultValue }) => <Code highlight={false}>{defaultValue}</Code>,
-            },
-            {
-              header: 'Description',
-              width: '50%',
-              render: ({ description }) => <Text>{description}</Text>,
-            },
-          ]}
-          items={items}
-        />
+export const PropTable: FC<PropTableProps> = props => {
+  const { collapsible, id, propList: items, title } = props;
 
-        <Small marginTop="xSmall">Props ending with * are required</Small>
-      </TableFigure>
-    );
-  }
-}
+  const renderTable = () => (
+    <TableFigure>
+      <Table
+        columns={[
+          {
+            header: 'Prop Name',
+            render: ({ name, required }) => (
+              <>
+                <Code primary>{name}</Code>
+                {required ? <b> *</b> : null}
+              </>
+            ),
+          },
+          {
+            header: 'Type',
+            render: ({ types }) => <TypesData types={types} />,
+          },
+          {
+            header: 'Default',
+            render: ({ defaultValue }) => <Code highlight={false}>{defaultValue}</Code>,
+          },
+          {
+            header: 'Description',
+            width: '50%',
+            render: ({ description }) => <Text>{description}</Text>,
+          },
+        ]}
+        items={items}
+      />
+
+      <Small marginTop="xSmall">Props ending with * are required</Small>
+    </TableFigure>
+  );
+
+  return collapsible ? (
+    <Collapsible title={`${title} Props`}>{renderTable()}</Collapsible>
+  ) : (
+    <>
+      <H2 id={id}>{title}</H2>
+      {renderTable()}
+    </>
+  );
+};
 
 const TypesData: React.FC<TypesDataProps> = (props): any => {
   const { types } = props;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NextLink, Prop, PropTable } from '../components';
+import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const paddingProps: Prop[] = [
   {
@@ -71,4 +71,6 @@ const paddingProps: Prop[] = [
   },
 ];
 
-export const PaddingPropTable: React.FC = () => <PropTable propList={paddingProps} />;
+export const PaddingPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Padding" propList={paddingProps} {...props} />
+);

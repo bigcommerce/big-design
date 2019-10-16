@@ -1,7 +1,7 @@
 import { H0, H1, H2, Pagination, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { CodePreview, Collapsible } from '../../components';
+import { CodePreview } from '../../components';
 import { MarginPropTable, PaginationPropTable } from '../../PropTables';
 
 export default () => (
@@ -60,15 +60,9 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-
-    <H2>Pagination</H2>
-
     <PaginationPropTable />
 
     <H2>Inherited Props</H2>
-
-    <Collapsible title="Inherited Props">
-      <MarginPropTable />
-    </Collapsible>
+    <MarginPropTable collapsible />
   </>
 );

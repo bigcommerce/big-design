@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, NextLink, Prop, PropTable } from '../components';
+import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const modalProps: Prop[] = [
   {
@@ -64,4 +64,6 @@ const modalProps: Prop[] = [
   },
 ];
 
-export const ModalPropTable: React.FC = () => <PropTable propList={modalProps} />;
+export const ModalPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Modal" propList={modalProps} {...props} />
+);
