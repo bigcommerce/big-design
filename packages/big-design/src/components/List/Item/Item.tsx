@@ -4,6 +4,7 @@ import React, { memo, Ref } from 'react';
 import { StyledListItem } from './styled';
 
 export interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+  actionType?: 'normal' | 'destructive';
   disabled?: boolean;
 }
 
@@ -11,15 +12,22 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLLIElement>;
 }
 
-const StyleableListItem: React.FC<ListItemProps & PrivateProps> = memo(({ children, forwardedRef, value, ...rest }) => {
-  return (
-    <StyledListItem ref={forwardedRef} tabIndex={-1} data-value={value} onMouseDown={preventFocus} {...rest}>
+const StyleableListItem: React.FC<ListItemProps & PrivateProps> = memo(
+  ({ actionType = 'normal' as 'normal', children, forwardedRef, value, ...rest }) => (
+    <StyledListItem
+      actionType={actionType}
+      ref={forwardedRef}
+      tabIndex={-1}
+      data-value={value}
+      onMouseDown={preventFocus}
+      {...rest}
+    >
       {children}
 
-      {rest['aria-selected'] && <CheckIcon color="primary" size={'large'} />}
+      {rest['aria-selected'] && <CheckIcon color="primary" size="large" />}
     </StyledListItem>
-  );
-});
+  ),
+);
 
 function preventFocus(event: React.MouseEvent<HTMLLIElement, MouseEvent>) {
   event.preventDefault();

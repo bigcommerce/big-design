@@ -1,29 +1,22 @@
-import { Placement } from 'popper.js';
 import React, { RefObject } from 'react';
 import { Manager, Reference, RefHandler } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
+import { Flex } from '../Flex';
+import { FlexItem } from '../Flex/Item';
+import { Link } from '../Link';
 import { List } from '../List';
 import { ListItem } from '../List/Item';
+
+import { DropdownItem, DropdownLinkItem, DropdownProps } from './types';
 
 interface DropdownState {
   highlightedItem: HTMLLIElement | null;
   isOpen: boolean;
 }
 
-interface Props {
-  maxHeight?: number;
-  placement?: Placement;
-  trigger: React.ReactElement;
-  onItemClick?(value: string | number | Array<string | number>): void;
-}
-
-export type DropdownProps = Props & React.HTMLAttributes<HTMLUListElement>;
-
 export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> {
-  static Item = ListItem;
-
   readonly state: DropdownState = {
     highlightedItem: null,
     isOpen: false,
@@ -38,7 +31,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
   private listItemsRefs: Array<RefObject<HTMLLIElement>> = [];
 
   render() {
-    const { children, maxHeight, onItemClick, placement, trigger, ...rest } = this.props;
+    const { children, className, maxHeight, options, placement, style, trigger, ...rest } = this.props;
     const { highlightedItem, isOpen } = this.state;
 
     this.listItemsRefs = [];
@@ -49,6 +42,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
       <Manager>
         <Reference innerRef={node => (this.triggerRef = node)}>{({ ref }) => this.renderTrigger(ref)}</Reference>
         <List
+          {...rest}
           aria-labelledby={this.getTriggerId()}
           handleListRef={this.handleListRef}
           id={this.getDropdownId()}
@@ -58,46 +52,79 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
           placement={placement}
           role="listbox"
           {...aria}
-          {...rest}
         >
-          {this.renderChildren()}
+          {this.renderOptions()}
         </List>
       </Manager>
     );
   }
 
-  private renderChildren() {
-    const { children } = this.props;
+  private renderOptions() {
+    const { options } = this.props;
     const { highlightedItem } = this.state;
 
-    return React.Children.map(children, (child, index) => {
-      if (!React.isValidElement(child)) {
-        return;
-      }
+    return (
+      Array.isArray(options) &&
+      options.map((option, index) => {
+        if (!option.content) {
+          return null;
+        }
 
-      const ref = React.createRef<HTMLLIElement>();
+        const id = this.getItemId(option, index);
+        const isHighlighted = Boolean(highlightedItem && id === highlightedItem.id);
+        const ref = React.createRef<HTMLLIElement>();
 
-      switch (child.type) {
-        case ListItem:
-          const id = this.getItemId(child, index);
+        if (!option.disabled) {
+          this.listItemsRefs.push(ref);
+        }
 
-          if (!child.props.disabled) {
-            this.listItemsRefs.push(ref);
-          }
+        const { content, icon, onClick, type, value, ...rest } = option;
 
-          return React.cloneElement(child, {
-            'data-highlighted': highlightedItem && id === highlightedItem.id,
-            id,
-            onClick: this.handleOnItemClick,
-            onFocus: this.handleOnItemFocus,
-            onMouseOver: this.handleOnItemMouseOver,
-            ref,
-            role: 'option',
-          }) as React.LiHTMLAttributes<HTMLLIElement>;
-        default:
-          return;
-      }
-    });
+        return (
+          <ListItem
+            {...rest}
+            data-highlighted={isHighlighted}
+            id={id}
+            key={index}
+            onClick={() => this.handleOnItemClick(option)}
+            onFocus={this.handleOnItemHighlighted}
+            onMouseOver={this.handleOnItemHighlighted}
+            ref={ref}
+            role="option"
+          >
+            {option.type === 'link' && !option.disabled ? (
+              <Link href={option.url} target={option.target}>
+                <Flex alignItems="center" flexDirection="row">
+                  {icon && <FlexItem paddingRight="small">{this.renderIcon(option, isHighlighted)}</FlexItem>}
+                  {content}
+                </Flex>
+              </Link>
+            ) : (
+              <Flex alignItems="center" flexDirection="row">
+                {icon && <FlexItem paddingRight="small">{this.renderIcon(option, isHighlighted)}</FlexItem>}
+                {content}
+              </Flex>
+            )}
+          </ListItem>
+        );
+      })
+    );
+  }
+
+  private renderIcon(option: DropdownItem | DropdownLinkItem, isHighlighted: boolean) {
+    return (
+      React.isValidElement(option.icon) &&
+      React.cloneElement(option.icon, {
+        color: option.disabled
+          ? 'secondary40'
+          : isHighlighted
+          ? option.actionType === 'destructive'
+            ? 'danger50'
+            : 'primary'
+          : 'secondary60',
+        size: 'large',
+      })
+    );
   }
 
   private renderTrigger(ref: RefHandler) {
@@ -146,8 +173,8 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     return id || this.uniqueDropdownId;
   }
 
-  private getItemId(item: React.ReactElement<React.LiHTMLAttributes<HTMLLIElement>>, index: number) {
-    const { id } = item.props;
+  private getItemId(item: DropdownItem | DropdownLinkItem, index: number) {
+    const { id } = item;
 
     return id || `${this.getDropdownId()}-item-${index}`;
   }
@@ -187,30 +214,22 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     this.toggleList();
   };
 
-  private handleOnItemClick = () => {
-    const { onItemClick } = this.props;
-    const { highlightedItem } = this.state;
-
-    if (!highlightedItem || highlightedItem.hasAttribute('disabled')) {
+  private handleOnItemClick = (item: DropdownItem | DropdownLinkItem) => {
+    if (item.disabled) {
       return;
     }
 
-    if (highlightedItem && onItemClick) {
-      const value = highlightedItem.getAttribute('data-value');
-
-      if (value) {
-        onItemClick(value);
-      }
+    if (typeof item.onClick === 'function') {
+      item.onClick(item);
     }
 
     this.toggleList();
   };
 
-  private handleOnItemFocus = (event: React.FocusEvent<HTMLLIElement>) => {
-    return this.updateHighlightedItem(event.currentTarget);
-  };
-
-  private handleOnItemMouseOver = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  // Need to handle focus event for cases when VO manipulate the list via the keyboard hotkeys
+  private handleOnItemHighlighted = (
+    event: React.FocusEvent<HTMLLIElement> | React.MouseEvent<HTMLLIElement, MouseEvent>,
+  ) => {
     return this.updateHighlightedItem(event.currentTarget);
   };
 
@@ -237,9 +256,10 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
       case ' ': {
         if (this.state.isOpen) {
           event.preventDefault();
-          this.handleOnItemClick();
-        } else {
-          this.toggleList();
+
+          if (this.state.highlightedItem) {
+            this.state.highlightedItem.click();
+          }
         }
         break;
       }
@@ -268,7 +288,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
       case 'Tab':
       case 'Esc':
       case 'Escape': {
-        this.closeList();
+        this.toggleList();
         break;
       }
     }

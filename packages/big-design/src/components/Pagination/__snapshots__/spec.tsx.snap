@@ -7,10 +7,71 @@ exports[`render pagination component 1`] = `
   width: 2rem;
 }
 
-.c10 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.c1 {
+  box-sizing: border-box;
+}
+
+.c0 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c9 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
 }
 
 .c7 {
@@ -45,7 +106,7 @@ exports[`render pagination component 1`] = `
   -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  cursor: default;
+  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -64,8 +125,10 @@ exports[`render pagination component 1`] = `
   font-weight: 600;
 }
 
-.c8[data-highlighted='true'] {
-  background-color: #F6F7FC;
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
+  background-color: #F0F3FF;
+  color: #3C64F4;
 }
 
 .c8 a {
@@ -74,7 +137,6 @@ exports[`render pagination component 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #313440;
-  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,43 +147,6 @@ exports[`render pagination component 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   width: 100%;
-}
-
-.c1 {
-  box-sizing: border-box;
-}
-
-.c0 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
-  align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
-  flex-basis: auto;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
 }
 
 .c4 {
@@ -201,7 +226,7 @@ exports[`render pagination component 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -247,32 +272,32 @@ exports[`render pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -326,14 +351,14 @@ exports[`render pagination component 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
   }
 }
@@ -387,33 +412,42 @@ exports[`render pagination component 1`] = `
     >
       <li
         class="c8"
-        data-value="2"
+        data-highlighted="false"
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
       >
-        2
-         per page
+        <div
+          class="c9 c1"
+        >
+          2 per page
+        </div>
       </li>
       <li
         class="c8"
-        data-value="3"
+        data-highlighted="false"
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
       >
-        3
-         per page
+        <div
+          class="c9 c1"
+        >
+          3 per page
+        </div>
       </li>
       <li
         class="c8"
-        data-value="5"
+        data-highlighted="false"
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
       >
-        5
-         per page
+        <div
+          class="c9 c1"
+        >
+          5 per page
+        </div>
       </li>
     </ul>
   </div>
@@ -421,7 +455,7 @@ exports[`render pagination component 1`] = `
     class="c2 c1"
   >
     <button
-      class="c3 c9"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -430,7 +464,7 @@ exports[`render pagination component 1`] = `
         class="c5"
       >
         <svg
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -452,7 +486,7 @@ exports[`render pagination component 1`] = `
       </span>
     </button>
     <button
-      class="c3 c9"
+      class="c3 c10"
       role="button"
       tabindex="0"
     >
@@ -460,7 +494,7 @@ exports[`render pagination component 1`] = `
         class="c5"
       >
         <svg
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -492,10 +526,71 @@ exports[`render pagination component with invalid page info 1`] = `
   width: 2rem;
 }
 
-.c10 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.c1 {
+  box-sizing: border-box;
+}
+
+.c0 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c9 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
 }
 
 .c7 {
@@ -530,7 +625,7 @@ exports[`render pagination component with invalid page info 1`] = `
   -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  cursor: default;
+  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -549,8 +644,10 @@ exports[`render pagination component with invalid page info 1`] = `
   font-weight: 600;
 }
 
-.c8[data-highlighted='true'] {
-  background-color: #F6F7FC;
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
+  background-color: #F0F3FF;
+  color: #3C64F4;
 }
 
 .c8 a {
@@ -559,7 +656,6 @@ exports[`render pagination component with invalid page info 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #313440;
-  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -570,43 +666,6 @@ exports[`render pagination component with invalid page info 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   width: 100%;
-}
-
-.c1 {
-  box-sizing: border-box;
-}
-
-.c0 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
-  align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
-  flex-basis: auto;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
 }
 
 .c4 {
@@ -686,7 +745,7 @@ exports[`render pagination component with invalid page info 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -732,32 +791,32 @@ exports[`render pagination component with invalid page info 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -811,14 +870,14 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
   }
 }
@@ -872,33 +931,42 @@ exports[`render pagination component with invalid page info 1`] = `
     >
       <li
         class="c8"
-        data-value="2"
+        data-highlighted="false"
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
       >
-        2
-         per page
+        <div
+          class="c9 c1"
+        >
+          2 per page
+        </div>
       </li>
       <li
         class="c8"
-        data-value="3"
+        data-highlighted="false"
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
       >
-        3
-         per page
+        <div
+          class="c9 c1"
+        >
+          3 per page
+        </div>
       </li>
       <li
         class="c8"
-        data-value="5"
+        data-highlighted="false"
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
       >
-        5
-         per page
+        <div
+          class="c9 c1"
+        >
+          5 per page
+        </div>
       </li>
     </ul>
   </div>
@@ -906,7 +974,7 @@ exports[`render pagination component with invalid page info 1`] = `
     class="c2 c1"
   >
     <button
-      class="c3 c9"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -915,7 +983,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c5"
       >
         <svg
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -937,7 +1005,7 @@ exports[`render pagination component with invalid page info 1`] = `
       </span>
     </button>
     <button
-      class="c3 c9"
+      class="c3 c10"
       role="button"
       tabindex="0"
     >
@@ -945,7 +1013,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c5"
       >
         <svg
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -977,10 +1045,71 @@ exports[`render pagination component with invalid range info 1`] = `
   width: 2rem;
 }
 
-.c10 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.c1 {
+  box-sizing: border-box;
+}
+
+.c0 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c9 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
 }
 
 .c7 {
@@ -1015,7 +1144,7 @@ exports[`render pagination component with invalid range info 1`] = `
   -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  cursor: default;
+  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1034,8 +1163,10 @@ exports[`render pagination component with invalid range info 1`] = `
   font-weight: 600;
 }
 
-.c8[data-highlighted='true'] {
-  background-color: #F6F7FC;
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
+  background-color: #F0F3FF;
+  color: #3C64F4;
 }
 
 .c8 a {
@@ -1044,7 +1175,6 @@ exports[`render pagination component with invalid range info 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #313440;
-  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1055,43 +1185,6 @@ exports[`render pagination component with invalid range info 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   width: 100%;
-}
-
-.c1 {
-  box-sizing: border-box;
-}
-
-.c0 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
-  align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
-  flex-basis: auto;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
 }
 
 .c4 {
@@ -1171,7 +1264,7 @@ exports[`render pagination component with invalid range info 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1217,32 +1310,32 @@ exports[`render pagination component with invalid range info 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -1296,14 +1389,14 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
   }
 }
@@ -1357,33 +1450,42 @@ exports[`render pagination component with invalid range info 1`] = `
     >
       <li
         class="c8"
-        data-value="2"
+        data-highlighted="false"
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
       >
-        2
-         per page
+        <div
+          class="c9 c1"
+        >
+          2 per page
+        </div>
       </li>
       <li
         class="c8"
-        data-value="3"
+        data-highlighted="false"
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
       >
-        3
-         per page
+        <div
+          class="c9 c1"
+        >
+          3 per page
+        </div>
       </li>
       <li
         class="c8"
-        data-value="5"
+        data-highlighted="false"
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
       >
-        5
-         per page
+        <div
+          class="c9 c1"
+        >
+          5 per page
+        </div>
       </li>
     </ul>
   </div>
@@ -1391,7 +1493,7 @@ exports[`render pagination component with invalid range info 1`] = `
     class="c2 c1"
   >
     <button
-      class="c3 c9"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -1400,7 +1502,7 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c5"
       >
         <svg
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1422,7 +1524,7 @@ exports[`render pagination component with invalid range info 1`] = `
       </span>
     </button>
     <button
-      class="c3 c9"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -1431,7 +1533,7 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c5"
       >
         <svg
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1463,10 +1565,71 @@ exports[`render pagination component with no items 1`] = `
   width: 2rem;
 }
 
-.c10 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.c1 {
+  box-sizing: border-box;
+}
+
+.c0 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c9 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
 }
 
 .c7 {
@@ -1501,7 +1664,7 @@ exports[`render pagination component with no items 1`] = `
   -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
-  cursor: default;
+  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1520,8 +1683,10 @@ exports[`render pagination component with no items 1`] = `
   font-weight: 600;
 }
 
-.c8[data-highlighted='true'] {
-  background-color: #F6F7FC;
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
+  background-color: #F0F3FF;
+  color: #3C64F4;
 }
 
 .c8 a {
@@ -1530,7 +1695,6 @@ exports[`render pagination component with no items 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #313440;
-  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1541,43 +1705,6 @@ exports[`render pagination component with no items 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   width: 100%;
-}
-
-.c1 {
-  box-sizing: border-box;
-}
-
-.c0 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
-  align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
-  flex-basis: auto;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
 }
 
 .c4 {
@@ -1657,7 +1784,7 @@ exports[`render pagination component with no items 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1703,32 +1830,32 @@ exports[`render pagination component with no items 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -1782,14 +1909,14 @@ exports[`render pagination component with no items 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
   }
 }
@@ -1843,33 +1970,42 @@ exports[`render pagination component with no items 1`] = `
     >
       <li
         class="c8"
-        data-value="2"
+        data-highlighted="false"
         id="dropdown_0-item-0"
         role="option"
         tabindex="-1"
       >
-        2
-         per page
+        <div
+          class="c9 c1"
+        >
+          2 per page
+        </div>
       </li>
       <li
         class="c8"
-        data-value="3"
+        data-highlighted="false"
         id="dropdown_0-item-1"
         role="option"
         tabindex="-1"
       >
-        3
-         per page
+        <div
+          class="c9 c1"
+        >
+          3 per page
+        </div>
       </li>
       <li
         class="c8"
-        data-value="5"
+        data-highlighted="false"
         id="dropdown_0-item-2"
         role="option"
         tabindex="-1"
       >
-        5
-         per page
+        <div
+          class="c9 c1"
+        >
+          5 per page
+        </div>
       </li>
     </ul>
   </div>
@@ -1877,7 +2013,7 @@ exports[`render pagination component with no items 1`] = `
     class="c2 c1"
   >
     <button
-      class="c3 c9"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -1886,7 +2022,7 @@ exports[`render pagination component with no items 1`] = `
         class="c5"
       >
         <svg
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1908,7 +2044,7 @@ exports[`render pagination component with no items 1`] = `
       </span>
     </button>
     <button
-      class="c3 c9"
+      class="c3 c10"
       disabled=""
       role="button"
       tabindex="0"
@@ -1917,7 +2053,7 @@ exports[`render pagination component with no items 1`] = `
         class="c5"
       >
         <svg
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
