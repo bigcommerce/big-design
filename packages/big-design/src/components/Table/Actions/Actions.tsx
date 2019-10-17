@@ -55,9 +55,9 @@ export const Actions = memo(
       <StyledActions
         alignItems="center"
         aria-controls={tableId}
+        flexDirection="row"
         justifyContent="stretch"
         padding="small"
-        flexDirection="row"
         {...props}
       >
         {selectable && renderSelectAllAction(selectable)}

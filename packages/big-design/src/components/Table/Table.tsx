@@ -9,7 +9,7 @@ import { Actions } from './Actions';
 import { Body } from './Body';
 import { Cell } from './Cell';
 import { Head } from './Head';
-import { Item } from './Item';
+import { Row } from './Row';
 
 const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactElement<TableProps<T>> => {
   const {
@@ -59,20 +59,20 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
 
   const renderHeaders = () => (
     <Head>
-      <Item isSelectable={isSelectable}>
+      <Row isSelectable={isSelectable}>
         {columns.map(({ header, align, width }, index) => (
           <Cell key={index} align={align} width={width}>
             {header}
           </Cell>
         ))}
-      </Item>
+      </Row>
     </Head>
   );
 
   const renderItems = () => (
     <Body>
       {items.map((item: T, index) => (
-        <Item
+        <Row
           isSelectable={isSelectable}
           key={getItemKey(item, index)}
           onItemSelect={nextValue => onItemSelect(item, nextValue)}
@@ -94,7 +94,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
               </Cell>
             ),
           )}
-        </Item>
+        </Row>
       ))}
     </Body>
   );
