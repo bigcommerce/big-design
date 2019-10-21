@@ -9,15 +9,25 @@ export interface TableSelectable<T> {
   onSelectionChange(selectedItems: T[]): void;
 }
 
+export type TableSortDirection = 'ASC' | 'DESC';
+
+export interface TableSortable<T> {
+  direction: TableSortDirection;
+  columnHash?: string;
+  onSort(columnHash: string, direction: TableSortDirection, column: TableColumn<T>): void;
+}
+
 export interface TableItem {
   id?: string | number;
   [key: string]: any;
 }
 
 export interface TableColumn<T> {
-  render: React.ComponentType<T> | ((props: T & { children?: ReactNode }, context?: any) => string | number);
-  header: string;
   align?: 'left' | 'center' | 'right';
+  hash: string;
+  header: string;
+  isSortable?: boolean;
+  render: React.ComponentType<T> | ((props: T & { children?: ReactNode }, context?: any) => string | number);
   verticalAlign?: 'top' | 'center';
   width?: number | string;
   withPadding?: boolean;
@@ -31,5 +41,6 @@ export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElemen
   keyField?: string;
   pagination?: TablePagination;
   selectable?: TableSelectable<T>;
+  sortable?: TableSortable<T>;
   stickyHeader?: boolean;
 }

@@ -34,6 +34,7 @@ export const PropTable: FC<PropTableProps> = props => {
         columns={[
           {
             header: 'Prop Name',
+            hash: 'propName',
             render: ({ name, required }) => (
               <>
                 <Code primary>{name}</Code>
@@ -43,14 +44,17 @@ export const PropTable: FC<PropTableProps> = props => {
           },
           {
             header: 'Type',
+            hash: 'type',
             render: ({ types }) => <TypesData types={types} />,
           },
           {
             header: 'Default',
+            hash: 'default',
             render: ({ defaultValue }) => <Code highlight={false}>{defaultValue}</Code>,
           },
           {
             header: 'Description',
+            hash: 'description',
             width: '50%',
             render: ({ description }) => <Text>{description}</Text>,
           },

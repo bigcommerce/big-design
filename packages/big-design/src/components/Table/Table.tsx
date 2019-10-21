@@ -1,27 +1,29 @@
 import React, { memo, useRef } from 'react';
 
 import { uniqueId } from '../../utils';
+import { Checkbox } from '../Checkbox';
 
-import { TableContext } from './context';
 import { StyledTable, StyledTableFigure } from './styled';
-import { TableItem, TableProps } from './types';
+import { TableColumn, TableItem, TableProps } from './types';
 import { Actions } from './Actions';
 import { Body } from './Body';
-import { Cell } from './Cell';
+import { DataCell } from './DataCell';
 import { Head } from './Head';
+import { HeaderCell } from './HeaderCell';
 import { Row } from './Row';
 
 const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactElement<TableProps<T>> => {
   const {
     className,
-    stickyHeader,
-    style,
-    items,
     columns,
+    id,
+    items,
+    keyField = 'id',
     pagination,
     selectable,
-    id,
-    keyField = 'id',
+    sortable,
+    stickyHeader,
+    style,
     ...rest
   } = props;
   const tableIdRef = useRef(id || uniqueId('table_'));
@@ -39,14 +41,16 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     return selectable && selectable.selectedItems.includes(item);
   };
 
-  const onItemSelect = (item: T, isSelected: boolean) => {
+  const onItemSelect = (item: T) => {
+    const nextIsSelected = !isItemSelected(item);
+
     if (!selectable) {
       return;
     }
 
     const { selectedItems, onSelectionChange } = selectable;
 
-    if (isSelected) {
+    if (nextIsSelected) {
       onSelectionChange([...selectedItems, item]);
     } else {
       onSelectionChange(selectedItems.filter(selectedItem => selectedItem !== item));
@@ -57,50 +61,86 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     return Boolean(pagination) || Boolean(selectable);
   };
 
+  const onSortClick = (column: TableColumn<T>) => {
+    if (!sortable || !column.isSortable) {
+      return;
+    }
+
+    const { hash } = column;
+    const sortDirection = sortable.direction === 'ASC' ? 'DESC' : 'ASC';
+
+    if (typeof sortable.onSort === 'function') {
+      sortable.onSort(hash, sortDirection, column);
+    }
+  };
+
   const renderHeaders = () => (
     <Head>
-      <Row isSelectable={isSelectable}>
-        {columns.map(({ header, align, width }, index) => (
-          <Cell key={index} align={align} width={width}>
-            {header}
-          </Cell>
-        ))}
+      <Row>
+        {isSelectable && <HeaderCell key="header-checkbox" stickyHeader={stickyHeader} isCheckbox={true} />}
+
+        {columns.map((column, index) => {
+          const { align, hash, header, isSortable, width } = column;
+          const isSorted = isSortable && sortable && hash === sortable.columnHash;
+          const sortDirection = sortable && sortable.direction;
+
+          return (
+            <HeaderCell
+              align={align}
+              isSortable={isSortable}
+              isSorted={isSorted}
+              key={index}
+              onSortClick={() => onSortClick(column)}
+              sortDirection={sortDirection}
+              stickyHeader={stickyHeader}
+              width={width}
+            >
+              {header}
+            </HeaderCell>
+          );
+        })}
       </Row>
     </Head>
   );
 
   const renderItems = () => (
     <Body>
-      {items.map((item: T, index) => (
-        <Row
-          isSelectable={isSelectable}
-          key={getItemKey(item, index)}
-          onItemSelect={nextValue => onItemSelect(item, nextValue)}
-          selected={isItemSelected(item)}
-        >
-          {props.columns.map(
-            ({ render: CellContent, align, verticalAlign, width, withPadding = true }, columnIndex) => (
-              <Cell
-                key={columnIndex}
-                align={align}
-                verticalAlign={verticalAlign}
-                width={width}
-                withPadding={withPadding}
-              >
-                {/* https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
-                {/* 
+      {items.map((item: T, index) => {
+        const key = getItemKey(item, index);
+        const isSelected = isItemSelected(item);
+
+        return (
+          <Row key={key} selected={isSelected}>
+            {isSelectable && (
+              <DataCell key="data-checkbox" isCheckbox={true}>
+                <Checkbox checked={isSelected} onChange={() => onItemSelect(item)} />
+              </DataCell>
+            )}
+
+            {props.columns.map(
+              ({ render: CellContent, align, verticalAlign, width, withPadding = true }, columnIndex) => (
+                <DataCell
+                  key={columnIndex}
+                  align={align}
+                  verticalAlign={verticalAlign}
+                  width={width}
+                  withPadding={withPadding}
+                >
+                  {/* https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
+                  {/* 
                 // @ts-ignore */}
-                <CellContent {...item} />
-              </Cell>
-            ),
-          )}
-        </Row>
-      ))}
+                  <CellContent {...item} />
+                </DataCell>
+              ),
+            )}
+          </Row>
+        );
+      })}
     </Body>
   );
 
   return (
-    <TableContext.Provider value={{ stickyHeader }}>
+    <>
       {shouldRenderActions() && (
         <Actions pagination={pagination} selectable={selectable} items={items} tableId={tableIdRef.current} />
       )}
@@ -108,7 +148,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
         {renderHeaders()}
         {renderItems()}
       </StyledTable>
-    </TableContext.Provider>
+    </>
   );
 };
 
