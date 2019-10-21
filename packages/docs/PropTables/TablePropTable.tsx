@@ -42,6 +42,15 @@ const tableProps: Prop[] = [
     ),
   },
   {
+    name: 'sortable',
+    types: <NextLink href="#table-sortable-prop-table">Sortable</NextLink>,
+    description: (
+      <>
+        See <NextLink href="#table-sortable-prop-table">below</NextLink> for usage.
+      </>
+    ),
+  },
+  {
     name: 'stickyHeader',
     types: 'boolean',
     description: 'Makes the table header fixed.',
@@ -66,6 +75,18 @@ const tableColumnsProps: Prop[] = [
     types: ['left', 'center', 'right'],
     defaultValue: 'left',
     description: 'Sets alignment for column.',
+  },
+  {
+    name: 'hash',
+    types: 'string',
+    required: true,
+    description: 'Unique identifier for column.',
+  },
+  {
+    name: 'isSortable',
+    types: 'boolean',
+    defaultValue: 'false',
+    description: 'Defines if the column is sortable.',
   },
   {
     name: 'verticalAlign',
@@ -104,6 +125,25 @@ const tableSelectableProps: Prop[] = [
   },
 ];
 
+const tableSortableProps: Prop[] = [
+  {
+    name: 'direction',
+    types: ['ASC', 'DESC'],
+    required: true,
+    description: 'Defines sort direction.',
+  },
+  {
+    name: 'columnHash',
+    types: 'string',
+    description: 'Defines which column is currently sorted.',
+  },
+  {
+    name: 'onSort',
+    types: '(columnHash: string, direction: TableSortDirection, column: TableColumn<T>): void;',
+    description: 'Function to be called when a sortable header is clicked.',
+  },
+];
+
 export const TablePropTable: React.FC<PropTableWrapper> = props => (
   <PropTable title="Table" propList={tableProps} {...props} />
 );
@@ -114,4 +154,8 @@ export const TableColumnsPropTable: React.FC<PropTableWrapper> = props => (
 
 export const TableSelectablePropTable: React.FC<PropTableWrapper> = props => (
   <PropTable title="Table[Selectable]" propList={tableSelectableProps} {...props} />
+);
+
+export const TableSortablePropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Table[Sortable]" propList={tableSortableProps} {...props} />
 );

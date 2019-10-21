@@ -13,13 +13,37 @@ exports[`renders a pagination component 1`] = `
   width: 1.5rem;
 }
 
+.c3 {
+  box-sizing: border-box;
+}
+
 .c1 {
   padding: 0.75rem;
   box-sizing: border-box;
 }
 
-.c3 {
-  box-sizing: border-box;
+.c11 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -54,30 +78,6 @@ exports[`renders a pagination component 1`] = `
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c11 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -554,26 +554,53 @@ exports[`renders a simple table 1`] = `
   width: 100%;
 }
 
-.c3 > tr {
+.c4 {
+  box-sizing: border-box;
+}
+
+.c3 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c5 > tr {
   border-bottom: 1px solid #D9DCE9;
 }
 
-.c2 {
+.c6 {
   box-sizing: border-box;
+  color: #313440;
   font-size: 1rem;
   padding: 0.75rem;
-  background-color: #F6F7FC;
-  box-shadow: inset 0px -1px 0px #D9DCE9,inset 0px 1px 0px #D9DCE9;
-  color: #5E637A;
-  white-space: nowrap;
 }
 
-.c4 {
+.c2 {
+  background-color: #F6F7FC;
+  box-shadow: inset 0px -1px 0px #D9DCE9,inset 0px 1px 0px #D9DCE9;
   box-sizing: border-box;
+  color: #5E637A;
   font-size: 1rem;
   padding: 0.75rem;
-  color: #313440;
-  padding: 0.75rem;
+  white-space: nowrap;
 }
 
 .c1 {
@@ -597,38 +624,50 @@ exports[`renders a simple table 1`] = `
       <th
         class="c2"
       >
-        Sku
+        <div
+          class="c3 c4"
+        >
+          Sku
+        </div>
       </th>
       <th
         class="c2"
       >
-        Name
+        <div
+          class="c3 c4"
+        >
+          Name
+        </div>
       </th>
       <th
         class="c2"
       >
-        Stock
+        <div
+          class="c3 c4"
+        >
+          Stock
+        </div>
       </th>
     </tr>
   </thead>
   <tbody
-    class="c3"
+    class="c5"
   >
     <tr
       class="c1"
     >
       <td
-        class="c4"
+        class="c6"
       >
         SM13
       </td>
       <td
-        class="c4"
+        class="c6"
       >
         [Sample] Smith Journal 13
       </td>
       <td
-        class="c4"
+        class="c6"
       >
         25
       </td>
@@ -637,17 +676,17 @@ exports[`renders a simple table 1`] = `
       class="c1"
     >
       <td
-        class="c4"
+        class="c6"
       >
         DPB
       </td>
       <td
-        class="c4"
+        class="c6"
       >
         [Sample] Dustpan & Brush
       </td>
       <td
-        class="c4"
+        class="c6"
       >
         34
       </td>
@@ -656,17 +695,17 @@ exports[`renders a simple table 1`] = `
       class="c1"
     >
       <td
-        class="c4"
+        class="c6"
       >
         OFSUC
       </td>
       <td
-        class="c4"
+        class="c6"
       >
         [Sample] Utility Caddy
       </td>
       <td
-        class="c4"
+        class="c6"
       >
         45
       </td>
@@ -675,17 +714,17 @@ exports[`renders a simple table 1`] = `
       class="c1"
     >
       <td
-        class="c4"
+        class="c6"
       >
         CLC
       </td>
       <td
-        class="c4"
+        class="c6"
       >
         [Sample] Canvas Laundry Cart
       </td>
       <td
-        class="c4"
+        class="c6"
       >
         2
       </td>
@@ -694,17 +733,17 @@ exports[`renders a simple table 1`] = `
       class="c1"
     >
       <td
-        class="c4"
+        class="c6"
       >
         CGLD
       </td>
       <td
-        class="c4"
+        class="c6"
       >
         [Sample] Laundry Detergent
       </td>
       <td
-        class="c4"
+        class="c6"
       >
         29
       </td>
@@ -795,12 +834,12 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   visibility: hidden;
 }
 
-.c1 {
-  padding: 0.75rem;
+.c3 {
   box-sizing: border-box;
 }
 
-.c3 {
+.c1 {
+  padding: 0.75rem;
   box-sizing: border-box;
 }
 

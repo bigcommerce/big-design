@@ -133,9 +133,9 @@ test('renders a pagination component', () => {
   const { container, getByTitle } = render(
     <Table
       columns={[
-        { header: 'Sku', render: ({ sku }) => sku },
-        { header: 'Name', render: ({ name }) => name },
-        { header: 'Stock', render: ({ stock }) => stock },
+        { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+        { header: 'Name', hash: 'name', render: ({ name }) => name },
+        { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
       ]}
       items={[
         { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
@@ -177,9 +177,9 @@ describe('selectable', () => {
       { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
     ];
     columns = [
-      { header: 'Sku', render: ({ sku }: any) => sku },
-      { header: 'Name', render: ({ name }: any) => name },
-      { header: 'Stock', render: ({ stock }: any) => stock },
+      { header: 'Sku', hash: 'sku', render: ({ sku }: any) => sku },
+      { header: 'Name', hash: 'name', render: ({ name }: any) => name },
+      { header: 'Stock', hash: 'stock', render: ({ stock }: any) => stock },
     ];
   });
 
@@ -234,11 +234,110 @@ describe('selectable', () => {
         }}
       />,
     );
+
     const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
 
     // Deselect all
     expect(selectAllCheckbox.checked).toBe(true);
     fireEvent.click(selectAllCheckbox);
     expect(onSelectionChange).toHaveBeenCalledWith([]);
+  });
+});
+
+describe('sortable', () => {
+  let columns: any;
+  let items: any;
+  let onSort: jest.Mock;
+
+  beforeEach(() => {
+    onSort = jest.fn();
+    items = [
+      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+    ];
+    columns = [
+      { header: 'Sku', hash: 'sku', render: ({ sku }: any) => sku, isSortable: true },
+      { header: 'Name', hash: 'name', render: ({ name }: any) => name },
+      { header: 'Stock', hash: 'stock', render: ({ stock }: any) => stock },
+    ];
+  });
+
+  test('renders ASC header icon', () => {
+    const { getByTestId } = render(
+      <Table
+        columns={columns}
+        items={items}
+        sortable={{
+          columnHash: 'sku',
+          direction: 'ASC',
+          onSort,
+        }}
+      />,
+    );
+
+    expect(getByTestId('asc-icon')).toBeInTheDocument();
+  });
+
+  test('calls onSort when pressing a sortable header', () => {
+    const { container } = render(
+      <Table
+        columns={columns}
+        items={items}
+        sortable={{
+          columnHash: 'sku',
+          direction: 'ASC',
+          onSort,
+        }}
+      />,
+    );
+
+    const skuHeader = container.querySelector('th') as HTMLTableCellElement;
+
+    fireEvent.click(skuHeader);
+
+    expect(onSort).toBeCalledWith('sku', 'DESC', columns[0]);
+  });
+
+  test('does not call onSort when pressing a non-sortable header', () => {
+    const { container } = render(
+      <Table
+        columns={columns}
+        items={items}
+        sortable={{
+          columnHash: 'sku',
+          direction: 'ASC',
+          onSort,
+        }}
+      />,
+    );
+
+    const nameHeader = container.querySelectorAll('th');
+
+    fireEvent.click(nameHeader[1]);
+
+    expect(onSort).not.toBeCalled();
+  });
+
+  test('calls onSort when pressing the direction icon', () => {
+    const { getByTestId } = render(
+      <Table
+        columns={columns}
+        items={items}
+        sortable={{
+          columnHash: 'sku',
+          direction: 'ASC',
+          onSort,
+        }}
+      />,
+    );
+
+    const sortIcon = getByTestId('asc-icon');
+
+    fireEvent.click(sortIcon);
+
+    expect(onSort).toBeCalledWith('sku', 'DESC', columns[0]);
   });
 });
