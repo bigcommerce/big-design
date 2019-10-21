@@ -1,4 +1,5 @@
 import { Form, Grid, H0, H1, Link, Select, Text } from '@bigcommerce/big-design';
+import { AddIcon, RemoveIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -25,35 +26,38 @@ export default () => (
         return (
           <Form.Group>
             <Select
+              action={{
+                actionType: 'destructive',
+                content: 'Remove Country',
+                icon: <RemoveIcon />,
+                onClick: () => null,
+              }}
+              error={value ? undefined : 'You must choose a country'}
               label="Countries"
               maxHeight={300}
-              onActionClick={inputText => inputText}
-              onItemChange={handleChange}
+              onChange={handleChange}
+              options={[
+                { value: 'us', content: 'United States' },
+                { value: 'mx', content: 'Mexico' },
+                { value: 'ca', content: 'Canada' },
+                { value: 'en', content: 'England' },
+                { value: 'fr', content: 'France' },
+                { value: 'gr', content: 'Germany' },
+                { value: 'ar', content: 'Argentina' },
+                { value: 'ru', content: 'Russia', disabled: true },
+                { value: 'ch', content: 'Chile' },
+                { value: 'bo', content: 'Bolivia' },
+                { value: 'jp', content: 'Japan' },
+                { value: 'cn', content: 'China' },
+                { value: 'sk', content: 'South Korea' },
+                { value: 'au', content: 'Australia' },
+                { value: 'ug', content: 'Uganda' },
+              ]}
               placeholder={'Choose country'}
               placement={'bottom-start'}
-              value={value}
-              error={value ? undefined : 'You must choose a country'}
               required
-            >
-              <Select.Option value="us">United States</Select.Option>
-              <Select.Option value="mx">Mexico</Select.Option>
-              <Select.Option value="ca">Canada</Select.Option>
-              <Select.Option value="en">England</Select.Option>
-              <Select.Option value="fr">France</Select.Option>
-              <Select.Option value="gr">Germany</Select.Option>
-              <Select.Option value="ar">Argentina</Select.Option>
-              <Select.Option value="ch">Chile</Select.Option>
-              <Select.Option value="bo">Bolivia</Select.Option>
-              <Select.Option value="jp">Japan</Select.Option>
-              <Select.Option value="cn">China</Select.Option>
-              <Select.Option value="sk">South Korea</Select.Option>
-              <Select.Option value="au">Australia</Select.Option>
-              <Select.Option value="ug">Uganda</Select.Option>
-              <Select.Option value="ru" disabled>
-                Russia
-              </Select.Option>
-              <Select.Action>Action</Select.Action>
-            </Select>
+              value={value}
+            />
           </Form.Group>
         );
       }}
@@ -74,8 +78,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        // const [value, setValue] = React.useState(['tx', 'ca']);
-        const [value, setValue] = React.useState('ca');
+        const [value, setValue] = React.useState(['ca']);
         const handleChange = val => setValue(val);
 
         return (
@@ -85,22 +88,19 @@ export default () => (
               label="States"
               maxHeight={300}
               multi={true}
-              onActionClick={inputText => inputText}
-              onItemChange={handleChange}
+              onChange={handleChange}
+              options={[
+                { value: 'tx', content: 'Texas' },
+                { value: 'ca', content: 'California' },
+                { value: 'or', content: 'Oregon' },
+                { value: 'ar', content: 'Arkansas' },
+                { value: 'nv', content: 'Nevada', disabled: true },
+              ]}
               placeholder={'Choose states'}
               placement={'bottom-start'}
               required
               value={value}
-            >
-              <Select.Option value="tx">Texas</Select.Option>
-              <Select.Option value="ca">California</Select.Option>
-              <Select.Option value="or">Oregon</Select.Option>
-              <Select.Option value="ar">Arkansas</Select.Option>
-              <Select.Option value="nv" disabled>
-                Nevada
-              </Select.Option>
-              <Select.Action>Action</Select.Action>
-            </Select>
+            />
           </Form.Group>
         );
       }}
@@ -116,7 +116,7 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid gridColumns="repeat(4, 1fr)">
+      {/* <Grid gridColumns="repeat(4, 1fr)">
         <Select label="Select" placeholder="Choose from above" onItemChange={() => null} placement="top">
           <Select.Option value={1}>Option</Select.Option>
           <Select.Option value={2}>Option</Select.Option>
@@ -141,7 +141,7 @@ export default () => (
           <Select.Option value={3}>Option</Select.Option>
           <Select.Option value={4}>Option</Select.Option>
         </Select>
-      </Grid>
+      </Grid> */}
       {/* jsx-to-string:end */}
     </CodePreview>
 
@@ -154,7 +154,7 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid gridColumns="repeat(3, 1fr)">
+      {/* <Grid gridColumns="repeat(3, 1fr)">
         <Select label="Select" placeholder="Default" onItemChange={() => null}>
           <Select.Option value={1}>Option</Select.Option>
           <Select.Option value={2}>Option</Select.Option>
@@ -185,7 +185,7 @@ export default () => (
           <Select.Option value={7}>Option</Select.Option>
           <Select.Option value={8}>Option</Select.Option>
         </Select>
-      </Grid>
+      </Grid> */}
       {/* jsx-to-string:end */}
     </CodePreview>
 
@@ -198,10 +198,10 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Select label="Select" placeholder="Default" onItemChange={() => null} disabled>
+      {/* <Select label="Select" placeholder="Default" onItemChange={() => null} disabled>
         <Select.Option value={1}>Option</Select.Option>
         <Select.Option value={2}>Option</Select.Option>
-      </Select>
+      </Select> */}
       {/* jsx-to-string:end */}
     </CodePreview>
 
@@ -211,10 +211,10 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Select value={1} onItemChange={() => null} onActionClick={innerText => alert(innerText)}>
+      {/* <Select value={1} onItemChange={() => null} onActionClick={innerText => alert(innerText)}>
         <Select.Option value={1}>Action Example</Select.Option>
         <Select.Action>Action</Select.Action>
-      </Select>
+      </Select> */}
       {/* jsx-to-string:end */}
     </CodePreview>
   </>

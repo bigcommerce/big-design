@@ -4,10 +4,11 @@ import { Checkbox } from '../../Checkbox';
 
 import { StyledListItem } from './styled';
 
-export interface ListCheckboxItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+export interface ListCheckboxItemProps extends Omit<React.LiHTMLAttributes<HTMLLIElement>, 'onChange'> {
+  actionType?: 'normal' | 'destructive';
   checked?: boolean;
   disabled?: boolean;
-  onCheckboxChange?(event: React.ChangeEvent<HTMLInputElement>): void;
+  onChange?(event: React.ChangeEvent<HTMLInputElement>): void;
 }
 
 interface PrivateProps {
@@ -15,14 +16,21 @@ interface PrivateProps {
 }
 
 const StyleableListCheckboxItem: React.FunctionComponent<ListCheckboxItemProps & PrivateProps> = memo(
-  ({ children, checked, disabled, forwardedRef, value, onCheckboxChange, ...rest }) => (
-    <StyledListItem disabled={disabled} onMouseDown={preventFocus} ref={forwardedRef} tabIndex={-1} {...rest}>
+  ({ children, checked, className, disabled, forwardedRef, onChange, style, value, ...rest }) => (
+    <StyledListItem
+      {...rest}
+      actionType="normal"
+      disabled={disabled}
+      onMouseDown={preventFocus}
+      ref={forwardedRef}
+      tabIndex={-1}
+    >
       <Checkbox
         checked={checked}
         data-value={value}
         disabled={disabled}
         label={typeof children === 'string' ? children : ''}
-        onChange={onCheckboxChange}
+        onChange={onChange}
       />
     </StyledListItem>
   ),

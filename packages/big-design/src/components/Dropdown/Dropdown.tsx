@@ -78,7 +78,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
           this.listItemsRefs.push(ref);
         }
 
-        const { content, icon, onClick, type, value, ...rest } = option;
+        const { className, content, icon, onClick, style, type, value, ...rest } = option;
 
         return (
           <ListItem

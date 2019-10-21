@@ -1,19 +1,19 @@
-import { Placement } from 'popper.js';
 import React, { RefObject } from 'react';
 import { Manager, Reference } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
 import { Flex } from '../Flex/Flex';
+import { FlexItem } from '../Flex/Item';
 import { Label } from '../Form/Label';
 import { Input } from '../Input';
-import { ListAction } from '../List/Action/Action';
+import { StyledListAction } from '../List/Item/styled';
 import { ListCheckboxItem } from '../List/Item/CheckboxItem';
 import { ListItem } from '../List/Item/Item';
 import { List } from '../List/List';
 
-import { Form } from './../Form';
 import { StyledDropdownIcon, StyledStatusMessage } from './styled';
+import { Action, Option, SelectProps } from './types';
 
 interface SelectState {
   filterChildren: boolean;
@@ -23,27 +23,7 @@ interface SelectState {
   selectedItem: HTMLLIElement | null;
 }
 
-interface Props {
-  disabled?: boolean;
-  error?: React.ReactChild;
-  label?: React.ReactChild;
-  maxHeight?: number;
-  multi?: boolean;
-  placement?: Placement;
-  positionFixed?: boolean;
-  required?: boolean;
-  value?: string | number | Array<string | number>;
-  onActionClick?(inputText: string): void;
-  onItemChange(value: string | number | Array<string | number>): void;
-}
-
-export type SelectProps = Props & React.HTMLAttributes<HTMLUListElement>;
-
 export class Select extends React.PureComponent<SelectProps, SelectState> {
-  static readonly Action = ListAction;
-  static readonly Option = ListItem;
-  static readonly Error = Form.Error;
-
   readonly state: SelectState = {
     filterChildren: false,
     highlightedItem: null,
@@ -59,14 +39,14 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   private readonly uniqueLabelId = uniqueId('label_');
   private readonly uniqueSelectId = uniqueId('select_');
 
-  private listItemsRefs: Array<RefObject<HTMLLIElement>> = [];
+  private listItemsRefs: Array<{ ref: RefObject<HTMLLIElement>; option?: Option }> = [];
 
   componentDidMount() {
     this.updatedSelectedItem();
   }
 
   componentDidUpdate(prevProps: SelectProps) {
-    const { children, value } = this.props;
+    const { options, value } = this.props;
 
     // Reset input if value was reset to empty string
     if (prevProps.value && !value) {
@@ -82,7 +62,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       return;
     }
 
-    if (prevProps.children !== children) {
+    if (prevProps.options !== options) {
       this.updatedSelectedItem();
 
       return;
@@ -92,13 +72,14 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   render() {
     const {
       children,
+      className,
       label,
       maxHeight,
       multi,
-      onActionClick,
-      onItemChange,
+      onChange,
       placeholder,
       placement,
+      style,
       value,
       ...rest
     } = this.props;
@@ -113,8 +94,6 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     const ariaLabelledBy = label ? { 'aria-labelledby': labelId } : {};
     const ariaMultiSelect = multi ? { 'aria-multiselectable': true } : {};
     const ariaOwns = isOpen ? { 'aria-owns': selectId } : {};
-
-    const listItems = this.renderChildren();
 
     return (
       <Manager>
@@ -132,7 +111,8 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
             {...ariaMultiSelect}
             {...rest}
           >
-            {listItems}
+            {this.renderOptions()}
+            {this.renderActions()}
           </List>
         </div>
         <StyledStatusMessage
@@ -151,50 +131,36 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     const inputId = this.getInputId();
     const labelId = this.getLabelId();
 
-    if (typeof label === 'string') {
-      return (
-        <Label htmlFor={inputId} id={labelId} renderOptional={!required}>
-          {label}
-        </Label>
-      );
-    }
-
-    if (React.isValidElement(label) && label.type === Input.Label) {
-      return React.cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, {
-        htmlFor: inputId,
-        id: labelId,
-      });
-    }
-
-    return null;
+    return typeof label === 'string' ? (
+      <Label htmlFor={inputId} id={labelId} renderOptional={!required}>
+        {label}
+      </Label>
+    ) : null;
   }
 
   private renderInput() {
-    const { placeholder, children, error, required, disabled, onItemChange, value } = this.props;
+    const { placeholder, error, required, disabled, onChange, options, value } = this.props;
     const { highlightedItem, inputText, isOpen } = this.state;
     const ariaActiveDescendant = highlightedItem ? { 'aria-activedescendant': highlightedItem.id } : {};
     const ariaControls = isOpen ? { 'aria-controls': this.getSelectId() } : {};
+
     const chips = this.renderChips();
-    const listItems = React.Children.map(children, child => {
-      if (!React.isValidElement(child)) {
-        return;
-      }
 
-      return { value: child.props.value, text: child.props.children };
-    });
-
-    const onChipDelete = (chip: string) => () => {
+    const onChipDelete = (chip: Option) => () => {
       const filteredValues = Array.isArray(value)
         ? value.filter(val => {
-            const listItem = listItems.find(item => item && String(item.value) === String(val));
+            const foundOption = options.find(option => option.value === val);
 
-            return listItem && listItem.text !== chip;
+            return foundOption && foundOption.value !== chip.value;
           })
-        : '';
+        : [];
 
-      onItemChange(filteredValues);
+      onChange(filteredValues);
 
-      return this.inputRef && this.inputRef.current && this.inputRef.current.focus();
+      // return focus to input
+      if (this.inputRef && this.inputRef.current) {
+        this.inputRef.current.focus();
+      }
     };
 
     return (
@@ -228,31 +194,13 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   }
 
   private renderChips() {
-    const { children, multi, value } = this.props;
+    const { options, multi, value: values } = this.props;
 
-    if (!multi || !value) {
+    if (!multi || !values) {
       return;
     }
 
-    const listItems = React.Children.map(children, child => {
-      if (!React.isValidElement(child)) {
-        return;
-      }
-
-      return { value: child.props.value, text: child.props.children };
-    });
-
-    if (Array.isArray(value)) {
-      return value.map(val => {
-        const selectedItem = listItems.find(item => item && String(item.value) === String(val));
-
-        return selectedItem && selectedItem.text;
-      });
-    } else {
-      const listItem = listItems.find(item => item && String(item.value) === String(value));
-
-      return listItem && [listItem.text];
-    }
+    return Array.isArray(values) ? values.map(value => options.find(option => option.value === value)) : [];
   }
 
   private renderDropdownIcon() {
@@ -270,86 +218,119 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     );
   }
 
-  private renderChildren() {
-    const { children, multi, value } = this.props;
+  private renderOptions() {
+    const { options, multi, value: selectValue } = this.props;
+    const { filterChildren, highlightedItem, inputText } = this.state;
 
-    return React.Children.map(children, (child, index) => {
-      if (!React.isValidElement(child)) {
-        return;
-      }
+    return (
+      Array.isArray(options) &&
+      options.map((option, index) => {
+        if (!option.content || !option.value) {
+          return null;
+        }
 
-      const ref = React.createRef<HTMLLIElement>();
+        if (!filterChildren || option.content.toLowerCase().startsWith(inputText.toLocaleLowerCase())) {
+          const id = this.getOptionId(option, index);
+          const isHighlighted = Boolean(highlightedItem && id === highlightedItem.id);
+          const ref = React.createRef<HTMLLIElement>();
 
-      switch (child.type) {
-        case ListItem:
-          // For now, we only support ListItems that only have text as children
-          if (typeof child.props.children !== 'string') {
-            return;
+          if (!option.disabled) {
+            this.listItemsRefs.push({ ref, option });
           }
 
-          if (
-            !this.state.filterChildren ||
-            child.props.children.toLowerCase().startsWith(this.state.inputText.toLocaleLowerCase())
-          ) {
-            const id = this.getItemId(child, index);
+          const { content, icon, value, ...rest } = option;
+          const ariaSelected = value === selectValue ? { 'aria-selected': true } : {};
 
-            if (!child.props.disabled) {
-              this.listItemsRefs.push(ref);
-            }
+          return multi ? (
+            <ListCheckboxItem
+              {...rest}
+              aria-selected={this.isChecked(option)}
+              checked={this.isChecked(option)}
+              data-highlighted={isHighlighted}
+              id={id}
+              key={index}
+              onChange={() => this.handleOnCheckboxOptionChange(option)}
+              onFocus={this.handleOnOptionHighlighted}
+              onMouseOver={this.handleOnOptionHighlighted}
+              ref={ref}
+              role="option"
+            >
+              {content}
+            </ListCheckboxItem>
+          ) : (
+            <ListItem
+              {...rest}
+              {...ariaSelected}
+              data-highlighted={isHighlighted}
+              id={id}
+              key={index}
+              onClick={() => this.handleOnOptionClick(option)}
+              onFocus={this.handleOnOptionHighlighted}
+              onMouseOver={this.handleOnOptionHighlighted}
+              ref={ref}
+              role="option"
+            >
+              {content}
+            </ListItem>
+          );
+        }
+      })
+    );
+  }
 
-            const ariaSelected = child.props.value === value ? { 'aria-selected': true } : {};
+  private renderActions() {
+    const { action } = this.props;
+    const { highlightedItem } = this.state;
 
-            return multi
-              ? (React.cloneElement(
-                  { ...child, type: ListCheckboxItem },
-                  {
-                    'aria-selected': Array.isArray(value)
-                      ? value.includes(String(child.props.value))
-                      : value && String(value) === String(child.props.value),
-                    checked: Array.isArray(value)
-                      ? value.includes(String(child.props.value))
-                      : value && String(value) === String(child.props.value),
-                    'data-highlighted': this.state.highlightedItem && id === this.state.highlightedItem.id,
-                    id,
-                    onCheckboxChange: child.props.disabled ? null : this.handleOnCheckboxItemChange,
-                    onMouseOver: this.handleOnItemMouseOver,
-                    ref,
-                    role: 'option',
-                  },
-                ) as React.LiHTMLAttributes<HTMLLIElement>)
-              : (React.cloneElement(child, {
-                  ...ariaSelected,
-                  'data-highlighted': this.state.highlightedItem && id === this.state.highlightedItem.id,
-                  id,
-                  onClick: child.props.disabled ? null : this.handleOnItemClick,
-                  onMouseOver: this.handleOnItemMouseOver,
-                  ref,
-                  role: 'option',
-                }) as React.LiHTMLAttributes<HTMLLIElement>);
-          }
+    if (!action || !action.content) {
+      return null;
+    }
 
-          return;
-        case ListAction:
-          // For now, we only support ListActions that only have text as children
-          if (typeof child.props.children !== 'string') {
-            return;
-          }
+    const id = this.getActionId(action);
+    const isHighlighted = Boolean(highlightedItem && id === highlightedItem.id);
+    const ref = React.createRef<HTMLLIElement>();
 
-          const actionId = this.getActionId(child, index);
-          this.listItemsRefs.push(ref);
+    if (!action.disabled) {
+      this.listItemsRefs.push({ ref });
+    }
 
-          return React.cloneElement(child, {
-            'data-highlighted': this.state.highlightedItem && actionId === this.state.highlightedItem.id,
-            id: actionId,
-            onClick: this.handleOnActionClick,
-            onMouseOver: this.handleOnItemMouseOver,
-            ref,
-            role: 'option',
-          }) as React.LiHTMLAttributes<HTMLLIElement>;
-        default:
-          return;
-      }
-    });
+    const { content, icon, ...rest } = action;
+
+    return (
+      <StyledListAction>
+        <ListItem
+          {...rest}
+          data-highlighted={isHighlighted}
+          id={id}
+          onClick={() => this.handleOnActionClick(action)}
+          onFocus={this.handleOnOptionHighlighted}
+          onMouseOver={this.handleOnOptionHighlighted}
+          ref={ref}
+          role="option"
+        >
+          <Flex alignItems="center" flexDirection="row">
+            {icon && <FlexItem paddingRight="small">{this.renderIcon(action, isHighlighted)}</FlexItem>}
+            {content}
+          </Flex>
+        </ListItem>
+      </StyledListAction>
+    );
+  }
+
+  private renderIcon(action: Action, isHighlighted: boolean) {
+    return (
+      React.isValidElement(action.icon) &&
+      React.cloneElement(action.icon, {
+        color: action.disabled
+          ? 'secondary40'
+          : isHighlighted
+          ? action.actionType === 'destructive'
+            ? 'danger50'
+            : 'primary'
+          : 'secondary60',
+        size: 'large',
+      })
+    );
   }
 
   private toggleList = () => {
@@ -403,16 +384,22 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     return id || this.uniqueSelectId;
   }
 
-  private getItemId(item: React.ReactElement<React.LiHTMLAttributes<HTMLLIElement>>, index: number) {
-    const { id } = item.props;
+  private getOptionId(option: Option, index: number) {
+    const { id } = option;
 
-    return id || `${this.getSelectId()}-item-${index}`;
+    return id || `${this.getSelectId()}-option-${index}`;
   }
 
-  private getActionId(item: React.ReactElement<React.LiHTMLAttributes<HTMLLIElement>>, index: number) {
-    const { id } = item.props;
+  private getActionId(action: Action) {
+    const { id } = action;
 
-    return id || `${this.getSelectId()}-action-${index}`;
+    return id || `${this.getSelectId()}-action`;
+  }
+
+  private isChecked(option: Option) {
+    const { value: values } = this.props;
+
+    return Array.isArray(values) && Boolean(values.find(value => value === option.value));
   }
 
   private updateHighlightedItem(element: HTMLLIElement | null, scroll?: boolean, instantScroll?: boolean) {
@@ -426,33 +413,26 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   }
 
   private updatedSelectedItem() {
-    const { value } = this.props;
+    const { value, multi } = this.props;
 
-    if (!value) {
+    if (!value || multi) {
       return this.setState({ inputText: '', selectedItem: null });
     }
 
-    const selectedItemRef = this.listItemsRefs.find(
-      ref => ref.current && ref.current.getAttribute('data-value') === String(value),
-    );
-    const selectedItemElement = selectedItemRef && selectedItemRef.current;
+    const selectedOption = this.listItemsRefs.find(item => item.option && item.option.value === value);
 
-    return (
-      selectedItemElement &&
-      selectedItemElement.textContent &&
-      this.setState({ inputText: selectedItemElement.textContent, selectedItem: selectedItemElement })
-    );
+    if (selectedOption && selectedOption.option) {
+      this.setState({ inputText: selectedOption.option.content, selectedItem: selectedOption.ref.current });
+    }
   }
 
   private handleListRef = (node: HTMLElement | null) => {
     this.listRef = node as HTMLUListElement;
   };
 
-  private handleOnActionClick = () => {
-    const { onActionClick } = this.props;
-
-    if (onActionClick) {
-      onActionClick(this.state.inputText);
+  private handleOnActionClick = (action: Action) => {
+    if (action.onClick) {
+      action.onClick(this.state.inputText);
     }
 
     this.toggleList();
@@ -479,26 +459,20 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     }
   };
 
-  private handleOnCheckboxItemChange = () => {
-    const { onItemChange, value } = this.props;
+  private handleOnCheckboxOptionChange = (option: Option) => {
+    const { onChange, value: values } = this.props;
     const { highlightedItem } = this.state;
 
-    if (!highlightedItem) {
+    if (!option || !option || !highlightedItem) {
       return;
     }
 
     const checkbox = highlightedItem.querySelector('input[type="checkbox"]') as HTMLInputElement;
 
-    const selectedValue = checkbox.getAttribute('data-value');
-
-    if (!selectedValue) {
-      return;
-    }
-
     if (checkbox.checked) {
-      onItemChange(Array.isArray(value) ? value.concat(selectedValue) : [value as string, selectedValue]);
+      onChange(values.concat(option.value));
     } else {
-      onItemChange(Array.isArray(value) ? value.filter(val => String(val) !== String(selectedValue)) : []);
+      onChange(values.filter((value: any) => value !== option.value));
     }
 
     if (this.inputRef && this.inputRef.current) {
@@ -506,20 +480,15 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     }
   };
 
-  private handleOnItemClick = () => {
-    const { onItemChange } = this.props;
-    const { highlightedItem } = this.state;
+  private handleOnOptionClick = (option: Option) => {
+    const { onChange } = this.props;
 
-    if (!highlightedItem || highlightedItem.hasAttribute('disabled')) {
+    if (!option || option.disabled) {
       return;
     }
 
-    if (highlightedItem.textContent) {
-      const value = highlightedItem.getAttribute('data-value');
-
-      if (onItemChange && value) {
-        onItemChange(value);
-      }
+    if (onChange) {
+      onChange(option.value);
     }
 
     if (this.state.isOpen) {
@@ -527,7 +496,9 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     }
   };
 
-  private handleOnItemMouseOver = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  private handleOnOptionHighlighted = (
+    event: React.MouseEvent<HTMLLIElement, MouseEvent> | React.FocusEvent<HTMLLIElement>,
+  ) => {
     return this.updateHighlightedItem(event.currentTarget);
   };
 
@@ -599,13 +570,13 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       return;
     }
 
-    const highlightedItemIndex = this.listItemsRefs.findIndex(ref => ref.current === this.state.highlightedItem);
+    const highlightedItemIndex = this.listItemsRefs.findIndex(item => item.ref.current === this.state.highlightedItem);
     const nextItem = this.listItemsRefs[highlightedItemIndex + 1]
-      ? this.listItemsRefs[highlightedItemIndex + 1].current
-      : this.listItemsRefs[0].current;
+      ? this.listItemsRefs[highlightedItemIndex + 1].ref.current
+      : this.listItemsRefs[0].ref.current;
     const prevItem = this.listItemsRefs[highlightedItemIndex - 1]
-      ? this.listItemsRefs[highlightedItemIndex - 1].current
-      : this.listItemsRefs[this.listItemsRefs.length - 1].current;
+      ? this.listItemsRefs[highlightedItemIndex - 1].ref.current
+      : this.listItemsRefs[this.listItemsRefs.length - 1].ref.current;
 
     if (!this.listRef) {
       return;
@@ -624,8 +595,8 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       case 'Backspace': {
         if (this.state.inputText === '' && this.props.multi) {
           return Array.isArray(this.props.value)
-            ? this.props.onItemChange(this.props.value.slice(0, this.props.value.length - 1))
-            : this.props.onItemChange([]);
+            ? this.props.onChange(this.props.value.slice(0, this.props.value.length - 1))
+            : this.props.onChange([]);
         }
         break;
       }
@@ -650,12 +621,12 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       }
       case 'Home': {
         event.preventDefault();
-        this.updateHighlightedItem(this.listItemsRefs[0].current, true);
+        this.updateHighlightedItem(this.listItemsRefs[0].ref.current, true);
         break;
       }
       case 'End': {
         event.preventDefault();
-        this.updateHighlightedItem(this.listItemsRefs[this.listItemsRefs.length - 1].current, true);
+        this.updateHighlightedItem(this.listItemsRefs[this.listItemsRefs.length - 1].ref.current, true);
         break;
       }
       case 'Tab':
