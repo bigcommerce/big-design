@@ -1,4 +1,4 @@
-import { AddIcon } from '@bigcommerce/big-design-icons';
+import { DeleteIcon } from '@bigcommerce/big-design-icons';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
@@ -7,24 +7,47 @@ import { Form } from '../Form';
 
 import { Select } from './Select';
 
-const onItemChange = jest.fn();
+const onChange = jest.fn();
+const onActionClick = jest.fn();
 
 const SelectMock = (
-  <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country">
-    <Select.Option value="us">United States</Select.Option>
-    <Select.Option value="mx">Mexico</Select.Option>
-    <Select.Option value="ca">Canada</Select.Option>
-    <Select.Option value="en">England</Select.Option>
-  </Select>
+  <Select
+    action={{
+      actionType: 'destructive',
+      content: 'Remove Country',
+      icon: <DeleteIcon />,
+      onClick: onActionClick,
+    }}
+    error="Required"
+    onChange={onChange}
+    label="Countries"
+    placeholder="Choose country"
+    options={[
+      { value: 'us', content: 'United States' },
+      { value: 'mx', content: 'Mexico' },
+      { value: 'ca', content: 'Canada' },
+      { value: 'en', content: 'England' },
+      { value: 'fr', content: 'France', disabled: true },
+    ]}
+    required
+    value="mx"
+  />
 );
 
 const MultiselectMock = (
-  <Select multi={true} onItemChange={onItemChange} label="Countries" placeholder="Choose country" value={['us', 'mx']}>
-    <Select.Option value="us">United States</Select.Option>
-    <Select.Option value="mx">Mexico</Select.Option>
-    <Select.Option value="ca">Canada</Select.Option>
-    <Select.Option value="en">England</Select.Option>
-  </Select>
+  <Select
+    onChange={onChange}
+    label="Countries"
+    multi
+    placeholder="Choose country"
+    options={[
+      { value: 'us', content: 'United States' },
+      { value: 'mx', content: 'Mexico' },
+      { value: 'ca', content: 'Canada' },
+      { value: 'en', content: 'England' },
+    ]}
+    value={['us', 'mx']}
+  />
 );
 
 test('renders select combobox', () => {
@@ -143,46 +166,22 @@ test('tab should close menu', () => {
 test('select has items', () => {
   const { getAllByRole } = render(SelectMock);
 
-  expect(getAllByRole('option').length).toBe(4);
-});
-
-test('select items should have values', () => {
-  const { getAllByRole } = render(SelectMock);
-  const options = getAllByRole('option');
-
-  expect(options[0].getAttribute('data-value')).toBe('us');
-  expect(options[1].getAttribute('data-value')).toBe('mx');
-  expect(options[2].getAttribute('data-value')).toBe('ca');
-  expect(options[3].getAttribute('data-value')).toBe('en');
+  expect(getAllByRole('option').length).toBe(6);
 });
 
 test('select items should be unfiltered when opened', () => {
-  const { getAllByRole, getByRole } = render(
-    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
+  const { getAllByRole, getByRole } = render(SelectMock);
   const button = getByRole('button');
 
   fireEvent.click(button);
 
   const options = getAllByRole('option');
 
-  expect(options.length).toBe(4);
+  expect(options.length).toBe(6);
 });
 
 test('select item should be highlighted when opened', () => {
-  const { getAllByRole, getAllByLabelText, getByRole } = render(
-    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
+  const { getAllByRole, getAllByLabelText, getByRole } = render(SelectMock);
   const button = getByRole('button');
   const input = getAllByLabelText('Countries')[0];
 
@@ -195,29 +194,11 @@ test('select item should be highlighted when opened', () => {
 });
 
 test('select input text should match the value selected', () => {
-  const { getAllByLabelText, rerender } = render(
-    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
+  const { getAllByLabelText } = render(SelectMock);
 
   const input = getAllByLabelText('Countries')[0];
 
   expect(input.getAttribute('value')).toEqual('Mexico');
-
-  rerender(
-    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="ca">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
-
-  expect(input.getAttribute('value')).toEqual('Canada');
 });
 
 test('select items should be filterable', () => {
@@ -229,7 +210,7 @@ test('select items should be filterable', () => {
 
   const options = getAllByRole('option');
 
-  expect(options.length).toBe(1);
+  expect(options.length).toBe(2);
 });
 
 test('up/down arrows should change select item selection', () => {
@@ -240,14 +221,14 @@ test('up/down arrows should change select item selection', () => {
 
   const options = getAllByRole('option');
 
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  expect(options[0].dataset.highlighted).toBe('true');
-  expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
-
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
   expect(options[1].dataset.highlighted).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
 
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  expect(options[2].dataset.highlighted).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[2].id);
+
+  fireEvent.keyDown(input, { key: 'ArrowUp' });
   fireEvent.keyDown(input, { key: 'ArrowUp' });
   expect(options[0].dataset.highlighted).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
@@ -261,10 +242,7 @@ test('home should select first select item', () => {
 
   const options = getAllByRole('option');
 
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  expect(options[2].dataset.highlighted).toBe('true');
+  expect(options[1].dataset.highlighted).toBe('true');
 
   fireEvent.keyDown(input, { key: 'Home' });
   expect(options[0].dataset.highlighted).toBe('true');
@@ -279,25 +257,24 @@ test('end should select last select item', () => {
 
   const options = getAllByRole('option');
 
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  expect(options[0].dataset.highlighted).toBe('true');
+  expect(options[1].dataset.highlighted).toBe('true');
 
   fireEvent.keyDown(input, { key: 'End' });
-  expect(options[3].dataset.highlighted).toBe('true');
-  expect(input.getAttribute('aria-activedescendant')).toEqual(options[3].id);
+  expect(options[5].dataset.highlighted).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[5].id);
 });
 
-test('enter should trigger onItemChange', () => {
+test('enter should trigger onChange', () => {
   const { getAllByLabelText } = render(SelectMock);
   const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
-  expect(onItemChange).toHaveBeenCalledWith('us');
+  expect(onChange).toHaveBeenCalledWith({ value: 'ca', content: 'Canada' });
 });
 
-test('clicking on select options should trigger onItemClick', () => {
+test('clicking on select options should trigger onChange', () => {
   const { getAllByRole, getAllByLabelText } = render(SelectMock);
   const input = getAllByLabelText('Countries')[0];
 
@@ -307,25 +284,18 @@ test('clicking on select options should trigger onItemClick', () => {
 
   fireEvent.mouseOver(options[1]);
   fireEvent.click(options[1]);
-  expect(onItemChange).toHaveBeenCalledWith('mx');
+  expect(onChange).toHaveBeenCalledWith({ value: 'mx', content: 'Mexico' });
 });
 
 test('clicking on disabled select options should not trigger onItemClick', () => {
   const spy = jest.fn();
-  const { getAllByRole, getAllByLabelText } = render(
-    <Select onItemChange={spy} label="Countries" placeholder="Choose country">
-      <Select.Option value="us" disabled>
-        United States
-      </Select.Option>
-      <Select.Action>Action</Select.Action>
-    </Select>,
-  );
+  const { getAllByRole, getAllByLabelText } = render(SelectMock);
   const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
 
   const options = getAllByRole('option');
-  const item = options[0];
+  const item = options[4];
 
   fireEvent.mouseOver(item);
   fireEvent.click(item);
@@ -346,34 +316,13 @@ test('select options should be highlighted when moused over', () => {
 });
 
 test('select should render select action', () => {
-  const { getByRole, getByText } = render(
-    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-      <Select.Action>Action</Select.Action>
-    </Select>,
-  );
+  const { getByText } = render(SelectMock);
 
-  const trigger = getByRole('button');
-
-  fireEvent.click(trigger);
-
-  expect(getByText('Action')).toBeInTheDocument();
+  expect(getByText('Remove Country')).toBeInTheDocument();
 });
 
-test('select action should execute onActionClick function', () => {
-  const onActionClick = jest.fn();
-  const { getAllByLabelText, getByText } = render(
-    <Select onActionClick={onActionClick} onItemChange={onItemChange} label="Countries" placeholder="Choose country">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-      <Select.Action>Action</Select.Action>
-    </Select>,
-  );
+test('select action should call onClick', () => {
+  const { getAllByLabelText, getByText } = render(SelectMock);
 
   const input = getAllByLabelText('Countries')[0];
 
@@ -381,7 +330,7 @@ test('select action should execute onActionClick function', () => {
 
   fireEvent.change(input, { target: { value: 'm' } });
 
-  const action = getByText('Action');
+  const action = getByText('Remove Country');
 
   fireEvent.click(action);
 
@@ -389,15 +338,7 @@ test('select action should execute onActionClick function', () => {
 });
 
 test('select action supports icons', () => {
-  const { getAllByLabelText, getByRole } = render(
-    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-      <Select.Action iconLeft={<AddIcon />}>Action</Select.Action>
-    </Select>,
-  );
+  const { getAllByLabelText, getByRole } = render(SelectMock);
 
   const input = getAllByLabelText('Countries')[0];
 
@@ -409,50 +350,42 @@ test('select action supports icons', () => {
 });
 
 test('select action supports actionTypes', () => {
-  const { getAllByLabelText, getByRole } = render(
-    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-      <Select.Action actionType="destructive">Action</Select.Action>
-    </Select>,
-  );
+  const { getAllByLabelText, getByText } = render(SelectMock);
 
   const input = getAllByLabelText('Countries')[0];
-
   fireEvent.focus(input);
 
-  const select = getByRole('listbox');
+  const action = getByText('Remove Country');
+  fireEvent.mouseOver(action);
 
-  expect(select.lastChild).toMatchSnapshot();
+  expect(action).toMatchSnapshot();
 });
 
 test('select should render an error if one is provided', () => {
   const { getByText } = render(
     <Form.Group>
-      <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country" error="You must choose">
-        <Select.Option value="us">United States</Select.Option>
-        <Select.Option value="mx">Mexico</Select.Option>
-        <Select.Option value="ca">Canada</Select.Option>
-        <Select.Option value="en">England</Select.Option>
-        <Select.Action actionType="destructive">Action</Select.Action>
-      </Select>
+      <Select
+        onChange={onChange}
+        label="Countries"
+        error="Required"
+        placeholder="Choose country"
+        options={[
+          { value: 'us', content: 'United States' },
+          { value: 'mx', content: 'Mexico' },
+          { value: 'ca', content: 'Canada' },
+          { value: 'en', content: 'England' },
+          { value: 'fr', content: 'France', disabled: true },
+        ]}
+        required
+      />
     </Form.Group>,
   );
 
-  expect(getByText('You must choose')).toBeInTheDocument();
+  expect(getByText('Required')).toBeInTheDocument();
 });
 
 test('select should have a required attr if set as required', () => {
-  const { getAllByLabelText } = render(
-    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country" error="Required" required>
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
+  const { getAllByLabelText } = render(SelectMock);
 
   const input = getAllByLabelText('Countries')[0];
 
@@ -461,12 +394,18 @@ test('select should have a required attr if set as required', () => {
 
 test('select should not have a required attr if not set as required', () => {
   const { getAllByLabelText } = render(
-    <Select label="Countries" onItemChange={onItemChange} placeholder="Choose country">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
+    <Select
+      onChange={onChange}
+      label="Countries"
+      placeholder="Choose country"
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+    />,
   );
 
   const input = getAllByLabelText('Countries')[0];
@@ -476,12 +415,19 @@ test('select should not have a required attr if not set as required', () => {
 
 test('select should have a disabled attr if set as disabled', () => {
   const { getAllByLabelText } = render(
-    <Select onItemChange={() => null} label="Countries" value="us" disabled>
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
+    <Select
+      disabled
+      onChange={onChange}
+      label="Countries"
+      placeholder="Choose country"
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+    />,
   );
 
   const input = getAllByLabelText('Countries')[0];
@@ -490,43 +436,11 @@ test('select should have a disabled attr if set as disabled', () => {
 });
 
 test('select should not have a disabled attr if not set as disabled', () => {
-  const { getAllByLabelText } = render(
-    <Select onItemChange={() => null} label="Countries" placeholder="Choose country">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
+  const { getAllByLabelText } = render(SelectMock);
 
   const input = getAllByLabelText('Countries')[0];
 
   expect(input.getAttribute('disabled')).toEqual(null);
-});
-
-test('select input text should update if a matching child appears', () => {
-  const { getAllByLabelText, rerender } = render(
-    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
-
-  const input = getAllByLabelText('Countries')[0];
-
-  expect(input.getAttribute('value')).toEqual('');
-
-  rerender(
-    <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="ca">Canada</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
-
-  expect(input.getAttribute('value')).toEqual('Mexico');
 });
 
 test('multiselect should render four items with checkboxes', () => {
@@ -560,7 +474,7 @@ test('multiselect should be able to select multiple options', () => {
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
 
-  expect(onItemChange).toHaveBeenCalledWith(['us', 'mx', 'ca']);
+  expect(onChange).toHaveBeenCalledWith(['us', 'mx', 'ca']);
 });
 
 test('multiselect should be able to deselect options', () => {
@@ -572,7 +486,7 @@ test('multiselect should be able to deselect options', () => {
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
 
-  expect(onItemChange).toHaveBeenCalledWith(['mx']);
+  expect(onChange).toHaveBeenCalledWith(['mx']);
 });
 
 test('chips should be rendered', () => {
@@ -584,8 +498,43 @@ test('chips should be rendered', () => {
 });
 
 test('appends (optional) text to label if select is not required', () => {
-  const { container } = render(SelectMock);
+  const { container } = render(
+    <Select
+      onChange={onChange}
+      label="Countries"
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
   const label = container.querySelector('label');
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
+});
+
+test('does not forward styles', () => {
+  const { container, getByRole } = render(
+    <Select
+      className="test"
+      onChange={onChange}
+      label="Countries"
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+      style={{ background: 'red' }}
+    />,
+  );
+
+  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(getByRole('listbox')).not.toHaveStyle('background: red');
 });

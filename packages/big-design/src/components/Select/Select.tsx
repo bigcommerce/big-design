@@ -485,7 +485,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       return;
     }
 
-    onChange(option.value);
+    onChange(option);
     this.toggleList();
   };
 
