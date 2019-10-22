@@ -56,11 +56,4 @@ export const StyledListItem = styled.li<ListItemProps>`
   }
 `;
 
-export const StyledListAction = styled.li<ListItemProps>`
-  border-top: 1px solid ${({ theme }) => theme.colors.secondary30};
-  color: ${({ actionType, theme }) => (actionType === 'normal' ? theme.colors.primary : theme.colors.danger)};
-  margin-top: ${({ theme }) => theme.spacing.xSmall};
-  padding: ${({ theme }) => theme.spacing.xSmall} 0 0;
-`;
-
 StyledListItem.defaultProps = { theme: defaultTheme };

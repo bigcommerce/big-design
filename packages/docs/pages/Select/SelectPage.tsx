@@ -1,5 +1,5 @@
 import { Form, Grid, H0, H1, Link, Select, Text } from '@bigcommerce/big-design';
-import { AddIcon, RemoveIcon } from '@bigcommerce/big-design-icons';
+import { DeleteIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -29,10 +29,9 @@ export default () => (
               action={{
                 actionType: 'destructive',
                 content: 'Remove Country',
-                icon: <RemoveIcon />,
+                icon: <DeleteIcon />,
                 onClick: () => null,
               }}
-              error={value ? undefined : 'You must choose a country'}
               label="Countries"
               maxHeight={300}
               onChange={handleChange}
@@ -84,7 +83,6 @@ export default () => (
         return (
           <Form.Group>
             <Select
-              error={value.length > 0 ? undefined : 'You must choose at least a state'}
               label="States"
               maxHeight={300}
               multi={true}

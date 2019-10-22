@@ -14,14 +14,7 @@ interface PrivateProps {
 
 const StyleableListItem: React.FC<ListItemProps & PrivateProps> = memo(
   ({ actionType = 'normal' as 'normal', children, className, forwardedRef, style, value, ...rest }) => (
-    <StyledListItem
-      {...rest}
-      actionType={actionType}
-      ref={forwardedRef}
-      tabIndex={-1}
-      data-value={value}
-      onMouseDown={preventFocus}
-    >
+    <StyledListItem {...rest} actionType={actionType} ref={forwardedRef} tabIndex={-1} onMouseDown={preventFocus}>
       {children}
 
       {rest['aria-selected'] && <CheckIcon color="primary" size="large" />}

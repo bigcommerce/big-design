@@ -3,11 +3,11 @@ import { Manager, Reference } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
+import { Box } from '../Box';
 import { Flex } from '../Flex/Flex';
 import { FlexItem } from '../Flex/Item';
 import { Label } from '../Form/Label';
 import { Input } from '../Input';
-import { StyledListAction } from '../List/Item/styled';
 import { ListCheckboxItem } from '../List/Item/CheckboxItem';
 import { ListItem } from '../List/Item/Item';
 import { List } from '../List/List';
@@ -101,6 +101,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
           {this.renderLabel()}
           {this.renderInput()}
           <List
+            {...rest}
             handleListRef={this.handleListRef}
             id={selectId}
             isOpen={isOpen}
@@ -109,7 +110,6 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
             role="listbox"
             {...ariaLabelledBy}
             {...ariaMultiSelect}
-            {...rest}
           >
             {this.renderOptions()}
             {this.renderActions()}
@@ -156,11 +156,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         : [];
 
       onChange(filteredValues);
-
-      // return focus to input
-      if (this.inputRef && this.inputRef.current) {
-        this.inputRef.current.focus();
-      }
+      this.focusInput();
     };
 
     return (
@@ -168,6 +164,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         {({ ref }) => (
           <span ref={ref}>
             <Input
+              aria-autocomplete="list"
               autoComplete="off"
               chips={chips}
               disabled={disabled}
@@ -183,7 +180,6 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
               required={required}
               type={'text'}
               value={inputText}
-              aria-autocomplete="list"
               {...ariaActiveDescendant}
               {...ariaControls}
             ></Input>
@@ -211,8 +207,8 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
           aria-label="toggle menu" // Will need to translate this label in the future
           onClick={this.toggleList}
           role="button"
-          tabIndex={-1}
           style={{ outline: 'none' }}
+          tabIndex={-1}
         />
       </Flex>
     );
@@ -249,7 +245,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
               data-highlighted={isHighlighted}
               id={id}
               key={index}
-              onChange={() => this.handleOnCheckboxOptionChange(option)}
+              onClick={() => this.handleOnCheckboxOptionChange(option)}
               onFocus={this.handleOnOptionHighlighted}
               onMouseOver={this.handleOnOptionHighlighted}
               ref={ref}
@@ -297,7 +293,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     const { content, icon, ...rest } = action;
 
     return (
-      <StyledListAction>
+      <Box borderTop="box" marginTop="xSmall" paddingTop="xSmall">
         <ListItem
           {...rest}
           data-highlighted={isHighlighted}
@@ -309,11 +305,11 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
           role="option"
         >
           <Flex alignItems="center" flexDirection="row">
-            {icon && <FlexItem paddingRight="small">{this.renderIcon(action, isHighlighted)}</FlexItem>}
+            {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(action, isHighlighted)}</FlexItem>}
             {content}
           </Flex>
         </ListItem>
-      </StyledListAction>
+      </Box>
     );
   }
 
@@ -353,7 +349,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
         this.updateHighlightedItem(selectedItem, true, true);
       }
 
-      return this.inputRef && this.inputRef.current && this.inputRef.current.focus({ preventScroll: true });
+      this.focusInput();
     });
   }
 
@@ -368,6 +364,12 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       // Need to wait for the state to be updated before we close for VO
       this.setState({ isOpen: false });
     });
+  }
+
+  private focusInput() {
+    if (this.inputRef && this.inputRef.current) {
+      this.inputRef.current.focus({ preventScroll: true });
+    }
   }
 
   private getInputId() {
@@ -454,30 +456,26 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       return;
     }
 
-    if (this.state.isOpen) {
-      this.toggleList();
-    }
+    this.toggleList();
   };
 
   private handleOnCheckboxOptionChange = (option: Option) => {
     const { onChange, value: values } = this.props;
     const { highlightedItem } = this.state;
 
-    if (!option || !option || !highlightedItem) {
+    if (!option || option.disabled || !highlightedItem) {
       return;
     }
 
     const checkbox = highlightedItem.querySelector('input[type="checkbox"]') as HTMLInputElement;
 
     if (checkbox.checked) {
-      onChange(values.concat(option.value));
-    } else {
       onChange(values.filter((value: any) => value !== option.value));
+    } else {
+      onChange(values.concat(option.value));
     }
 
-    if (this.inputRef && this.inputRef.current) {
-      this.inputRef.current.focus({ preventScroll: true });
-    }
+    this.focusInput();
   };
 
   private handleOnOptionClick = (option: Option) => {
@@ -487,13 +485,8 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       return;
     }
 
-    if (onChange) {
-      onChange(option.value);
-    }
-
-    if (this.state.isOpen) {
-      this.toggleList();
-    }
+    onChange(option.value);
+    this.toggleList();
   };
 
   private handleOnOptionHighlighted = (
@@ -566,6 +559,8 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
    */
 
   private handleOnInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const { highlightedItem } = this.state;
+
     if (!this.listItemsRefs.length || !this.listRef) {
       return;
     }
@@ -586,7 +581,12 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       case 'Enter': {
         if (this.state.isOpen) {
           event.preventDefault();
-          this.clickHighlightedItem();
+
+          if (!highlightedItem) {
+            return;
+          }
+
+          highlightedItem.click();
         } else {
           this.toggleList();
         }
@@ -645,23 +645,11 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       return;
     }
 
-    return scrollIntoView(element, {
+    scrollIntoView(element, {
       behavior: instantScroll ? 'instant' : 'smooth',
       block: 'nearest',
       inline: 'nearest',
       scrollMode: 'if-needed',
     });
   };
-
-  private clickHighlightedItem() {
-    const { highlightedItem } = this.state;
-
-    if (!highlightedItem) {
-      return;
-    }
-
-    const checkbox = highlightedItem && (highlightedItem.querySelector('input[type="checkbox"]') as HTMLInputElement);
-
-    return checkbox ? checkbox.click() : highlightedItem.click();
-  }
 }

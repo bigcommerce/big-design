@@ -95,13 +95,13 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
             {option.type === 'link' && !option.disabled ? (
               <Link href={option.url} target={option.target}>
                 <Flex alignItems="center" flexDirection="row">
-                  {icon && <FlexItem paddingRight="small">{this.renderIcon(option, isHighlighted)}</FlexItem>}
+                  {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
                   {content}
                 </Flex>
               </Link>
             ) : (
               <Flex alignItems="center" flexDirection="row">
-                {icon && <FlexItem paddingRight="small">{this.renderIcon(option, isHighlighted)}</FlexItem>}
+                {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
                 {content}
               </Flex>
             )}
