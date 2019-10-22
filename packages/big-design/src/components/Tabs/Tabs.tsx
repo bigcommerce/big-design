@@ -1,46 +1,51 @@
-import React from 'react';
+import { ThemeInterface } from '@bigcommerce/big-design-theme';
+import React, { memo } from 'react';
 
 import { StyledTab, StyledTabs } from './styled';
 
-const Tab = StyledTab;
-
-export interface TabProps {
-  activeTab?: string;
+export interface TabItem {
+  id: string;
+  title: string;
+  disabled?: boolean;
 }
 
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
-  activeTab?: string;
-  onTabClick(tabId: string): void;
+  activeTab?: TabItem['id'];
+  items?: TabItem[];
+  theme?: ThemeInterface;
+  onTabClick?(tabId: TabItem['id']): void;
 }
 
-export class Tabs extends React.PureComponent<TabsProps> {
-  static Tab = Tab;
+export const Tabs: React.FC<TabsProps> = memo(
+  ({ activeTab, children, className, items = [], onTabClick, style, role, ...props }) => {
+    const handleOnTabClick = (event: React.MouseEvent<HTMLElement>) => {
+      event.preventDefault();
 
-  render() {
-    const { children, className, onTabClick, style, role, ...props } = this.props;
+      const tabId = event.currentTarget.id;
 
-    return <StyledTabs {...props}>{this.renderChildren()}</StyledTabs>;
-  }
+      if (tabId !== activeTab && typeof onTabClick === 'function') {
+        onTabClick(tabId);
+      }
+    };
 
-  private renderChildren() {
-    const { activeTab, children } = this.props;
-
-    return React.Children.map(children, child =>
-      React.cloneElement(child as React.ReactElement<any>, {
-        activeTab,
-        onClick: this.handleOnTabClick,
-      }),
+    return (
+      <>
+        <StyledTabs {...props} flexDirection="row" role="tablist">
+          {items.map(({ id, title, disabled }) => (
+            <StyledTab
+              activeTab={activeTab}
+              id={id}
+              key={id}
+              onClick={handleOnTabClick}
+              role="tab"
+              tabIndex={id === activeTab ? -1 : 0}
+              disabled={disabled}
+            >
+              {title}
+            </StyledTab>
+          ))}
+        </StyledTabs>
+      </>
     );
-  }
-
-  private handleOnTabClick = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault();
-
-    const tabId = event.currentTarget.id;
-    const activeTab = this.props.activeTab;
-
-    if (tabId !== activeTab && typeof this.props.onTabClick === 'function') {
-      this.props.onTabClick(tabId);
-    }
-  };
-}
+  },
+);

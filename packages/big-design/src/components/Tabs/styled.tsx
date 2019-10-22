@@ -2,21 +2,26 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { StyleableButton } from '../Button/private';
+import { Flex } from '../Flex';
 
-import { TabProps } from './Tabs';
+import { TabItem } from './Tabs';
 
-export const StyledTabs = styled.div.attrs({ role: 'tablist' })``;
+interface TabProps extends Omit<TabItem, 'title'> {
+  activeTab?: string;
+}
 
-export const StyledTab = styled(StyleableButton).attrs<TabProps>(props => ({
-  role: 'tab',
-  tabIndex: props.id === props.activeTab ? -1 : 0,
-}))<TabProps>`
+export const StyledTabs = styled(Flex)`
+  overflow: auto;
+`;
+
+export const StyledTab = styled(StyleableButton)<TabProps>`
   border: none;
   border-bottom: ${({ theme }) => theme.spacing.xxSmall} solid transparent;
   border-bottom-color: ${props => (props.id === props.activeTab ? props.theme.colors.primary40 : 'transparent')};
   border-radius: 0;
   color: ${({ theme }) => theme.colors.primary};
   pointer-events: ${props => (props.id === props.activeTab ? 'none' : 'auto')};
+  width: auto;
 
   ${props =>
     props.id === props.activeTab &&
