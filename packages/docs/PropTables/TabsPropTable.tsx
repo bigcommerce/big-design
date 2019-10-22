@@ -1,12 +1,21 @@
 import React from 'react';
 
-import { Prop, PropTable, PropTableWrapper } from '../components';
+import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const tabsProps: Prop[] = [
   {
     name: 'activeTab',
     types: 'string',
-    description: 'Determines the active tab by id.',
+    description: 'Determines the active tab by tab id.',
+  },
+  {
+    name: 'items',
+    types: <NextLink href="#tabs-items-prop-table">TabItem[]</NextLink>,
+    description: (
+      <>
+        See <NextLink href="#tabs-items-prop-table">below</NextLink> for usage.
+      </>
+    ),
   },
   {
     name: 'onTabClick',
@@ -19,11 +28,18 @@ export const TabsPropTable: React.FC<PropTableWrapper> = props => (
   <PropTable title="Tabs" propList={tabsProps} {...props} />
 );
 
-const tabProps: Prop[] = [
+const tabItemProps: Prop[] = [
   {
     name: 'id',
     types: 'string',
     description: 'Tab identifier, must be unique.',
+    required: true,
+  },
+  {
+    name: 'title',
+    types: 'string',
+    description: 'Title for the tab.',
+    required: true,
   },
   {
     name: 'disabled',
@@ -32,6 +48,6 @@ const tabProps: Prop[] = [
   },
 ];
 
-export const TabPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="Tabs.Tab" propList={tabProps} {...props} />
+export const TabItemPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Tabs[TabItem]" propList={tabItemProps} {...props} />
 );
