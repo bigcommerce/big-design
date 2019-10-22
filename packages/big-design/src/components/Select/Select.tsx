@@ -172,19 +172,9 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   private renderInput() {
     const { placeholder, children, error, required, disabled, onItemChange, value } = this.props;
     const { highlightedItem, inputText, isOpen } = this.state;
-
     const ariaActiveDescendant = highlightedItem ? { 'aria-activedescendant': highlightedItem.id } : {};
     const ariaControls = isOpen ? { 'aria-controls': this.getSelectId() } : {};
-
-    if (this.inputRef && this.inputRef.current) {
-      const hasError = Boolean(error);
-      const errorMessage = typeof error === 'string' ? error : 'Invalid input';
-
-      this.inputRef.current.setCustomValidity(hasError ? errorMessage : '');
-    }
-
     const chips = this.renderChips();
-
     const listItems = React.Children.map(children, child => {
       if (!React.isValidElement(child)) {
         return;

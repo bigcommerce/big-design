@@ -504,66 +504,6 @@ test('select should not have a disabled attr if not set as disabled', () => {
   expect(input.getAttribute('disabled')).toEqual(null);
 });
 
-test('should be valid if not required', () => {
-  const { getAllByLabelText } = render(
-    <Select onItemChange={() => null} label="Countries" placeholder="Choose country">
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
-
-  const input = getAllByLabelText('Countries')[0] as HTMLSelectElement;
-
-  expect(input.checkValidity()).toEqual(true);
-});
-
-test('should be invalid if required and has no value', () => {
-  const { getAllByLabelText } = render(
-    <Select onItemChange={() => null} label="Countries" placeholder="Choose country" required>
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
-
-  const input = getAllByLabelText('Countries')[0] as HTMLSelectElement;
-
-  expect(input.checkValidity()).toEqual(false);
-});
-
-test('should be valid if required and has a value', () => {
-  const { getAllByLabelText } = render(
-    <Select value="us" onItemChange={() => null} label="Countries" placeholder="Choose country" required>
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
-
-  const input = getAllByLabelText('Countries')[0] as HTMLSelectElement;
-
-  expect(input.checkValidity()).toEqual(true);
-});
-
-test('should be invalid when it has an error', () => {
-  const { getAllByLabelText } = render(
-    <Select error="Unrelated failure" onItemChange={() => null} label="Countries" placeholder="Choose country" required>
-      <Select.Option value="us">United States</Select.Option>
-      <Select.Option value="mx">Mexico</Select.Option>
-      <Select.Option value="en">England</Select.Option>
-    </Select>,
-  );
-
-  const input = getAllByLabelText('Countries')[0] as HTMLSelectElement;
-
-  expect(input.checkValidity()).toEqual(false);
-
-  fireEvent.change(input, { target: { value: 'us' } });
-
-  expect(input.checkValidity()).toEqual(false);
-});
-
 test('select input text should update if a matching child appears', () => {
   const { getAllByLabelText, rerender } = render(
     <Select onItemChange={onItemChange} label="Countries" placeholder="Choose country" value="mx">

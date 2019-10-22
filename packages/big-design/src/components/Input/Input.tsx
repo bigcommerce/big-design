@@ -60,7 +60,6 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
               error={error}
               id={id}
               onBlur={this.onInputBlur}
-              onChange={this.onInputChange}
               onFocus={this.onInputFocus}
               ref={forwardedRef}
             />
@@ -77,17 +76,6 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
 
     return id ? id : this.uniqueId;
   }
-
-  private onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const hasError = Boolean(this.props.error);
-    const errorMessage = typeof this.props.error === 'string' ? this.props.error : 'Invalid input';
-
-    event.target.setCustomValidity(hasError ? errorMessage : '');
-
-    if (typeof this.props.onChange === 'function') {
-      this.props.onChange(event);
-    }
-  };
 
   private onInputFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     const { onFocus } = this.props;
