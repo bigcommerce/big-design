@@ -33,10 +33,10 @@ const dropdownProps: Prop[] = [
   },
   {
     name: 'options',
-    types: 'Array<DropdownItem | DropdownLinkItem>',
+    types: 'Array<Item | LinkItem>',
     description: (
       <>
-        Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See example for usage.
+        Accepts an array of <Code>Items</Code> and <Code>LinkItems</Code>. See example for usage.
       </>
     ),
   },
@@ -59,7 +59,7 @@ const dropdownItemProps: Prop[] = [
     name: 'content',
     types: 'string',
     required: true,
-    description: 'Sets the text content of the Option.',
+    description: 'Sets the text content of the Item.',
   },
   {
     name: 'disabled',
@@ -85,7 +85,7 @@ const dropdownItemProps: Prop[] = [
   },
   {
     name: 'onClick',
-    types: '(item: DropdownItem): void',
+    types: '(item: Item): void',
     description: 'Returns the item object.',
   },
   {
@@ -112,7 +112,7 @@ const dropdownLinkProps: Prop[] = [
     name: 'content',
     types: 'string',
     required: true,
-    description: 'Sets the text content of the Action.',
+    description: 'Sets the text content of the LinkItem.',
   },
   {
     name: 'disabled',
@@ -137,11 +137,6 @@ const dropdownLinkProps: Prop[] = [
     ),
   },
   {
-    name: 'onClick',
-    types: '(item: DropdownLinkItem): void',
-    description: 'Returns the item object.',
-  },
-  {
     name: 'type',
     types: "'link'",
     required: true,
@@ -162,6 +157,11 @@ const dropdownLinkProps: Prop[] = [
     types: "'_blank'",
     description: 'Indicates where to display the linked resource.',
   },
+  {
+    name: 'onClick',
+    types: '(item: LinkItem): void',
+    description: 'Returns the item object.',
+  },
 ];
 
 export const DropdownPropTable: React.FC<PropTableWrapper> = props => (
@@ -169,9 +169,9 @@ export const DropdownPropTable: React.FC<PropTableWrapper> = props => (
 );
 
 export const DropdownItemPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="DropdownItem" propList={dropdownItemProps} {...props} />
+  <PropTable title="Dropdown[Item]" propList={dropdownItemProps} {...props} />
 );
 
 export const DropdownLinkItemPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="DropdownLinkItem" propList={dropdownLinkProps} {...props} />
+  <PropTable title="Dropdown[LinkItem]" propList={dropdownLinkProps} {...props} />
 );

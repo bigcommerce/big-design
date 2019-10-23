@@ -127,6 +127,7 @@ export default () => (
           ]}
           placeholder="Choose from above"
           placement="top"
+          required
         />
         <Select
           label="Select"
@@ -139,6 +140,7 @@ export default () => (
           ]}
           placeholder="Choose from below"
           placement="bottom-start"
+          required
         />
         <Select
           label="Select"
@@ -151,6 +153,7 @@ export default () => (
           ]}
           placeholder="Choose from the right"
           placement="right-start"
+          required
         />
         <Select
           label="Select"
@@ -163,6 +166,7 @@ export default () => (
           ]}
           placeholder="Choose from the left"
           placement="left-end"
+          required
         />
       </Grid>
       {/* jsx-to-string:end */}
@@ -188,6 +192,7 @@ export default () => (
             { value: 1, content: 'Option' },
           ]}
           placeholder="Default"
+          required
         />
         <Select
           label="Select"
@@ -199,6 +204,7 @@ export default () => (
             { value: 1, content: 'Option' },
           ]}
           placeholder="Default"
+          required
         />
         <Select
           label="Select"
@@ -211,6 +217,7 @@ export default () => (
             { value: 1, content: 'Option' },
           ]}
           placeholder="Smaller"
+          required
         />
         <Select
           label="Select"
@@ -223,6 +230,7 @@ export default () => (
             { value: 1, content: 'Option' },
           ]}
           placeholder="Larger"
+          required
         />
       </Grid>
       {/* jsx-to-string:end */}
@@ -249,6 +257,7 @@ export default () => (
           { value: 1, content: 'Option' },
         ]}
         placeholder="Larger"
+        required
       />
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -278,6 +287,7 @@ export default () => (
         ]}
         placeholder={'Choose country'}
         placement={'bottom-start'}
+        required
       />
       {/* jsx-to-string:end */}
     </CodePreview>

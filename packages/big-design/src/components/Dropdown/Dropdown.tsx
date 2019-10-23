@@ -9,7 +9,7 @@ import { Link } from '../Link';
 import { List } from '../List';
 import { ListItem } from '../List/Item';
 
-import { DropdownItem, DropdownLinkItem, DropdownProps } from './types';
+import { DropdownProps, Item, LinkItem } from './types';
 
 interface DropdownState {
   highlightedItem: HTMLLIElement | null;
@@ -111,7 +111,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     );
   }
 
-  private renderIcon(option: DropdownItem | DropdownLinkItem, isHighlighted: boolean) {
+  private renderIcon(option: Item | LinkItem, isHighlighted: boolean) {
     return (
       React.isValidElement(option.icon) &&
       React.cloneElement(option.icon, {
@@ -173,7 +173,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     return id || this.uniqueDropdownId;
   }
 
-  private getItemId(item: DropdownItem | DropdownLinkItem, index: number) {
+  private getItemId(item: Item | LinkItem, index: number) {
     const { id } = item;
 
     return id || `${this.getDropdownId()}-item-${index}`;
@@ -214,7 +214,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     this.toggleList();
   };
 
-  private handleOnItemClick = (item: DropdownItem | DropdownLinkItem) => {
+  private handleOnItemClick = (item: Item | LinkItem) => {
     if (item.disabled) {
       return;
     }

@@ -17,7 +17,7 @@ export interface SelectProps extends Omit<React.HTMLAttributes<HTMLUListElement>
   onChange(value: string | number | Array<string | number>): void;
 }
 
-interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'onClick' | 'value'> {
+interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'value'> {
   content: string;
   icon?: React.ReactElement;
 }
@@ -26,6 +26,6 @@ export interface Option extends Omit<BaseItem, 'actionType'> {
   value: string | number;
 }
 
-export interface Action extends BaseItem {
+export interface Action extends Omit<BaseItem, 'onClick'> {
   onClick(inputText: string): void;
 }

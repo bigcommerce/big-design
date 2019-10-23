@@ -2,7 +2,7 @@ import { ArrowDropDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@bigcommer
 import React, { memo, useEffect, useState } from 'react';
 
 import { MarginProps } from '../../mixins';
-import { Dropdown, DropdownItem } from '../Dropdown';
+import { Dropdown, Item } from '../Dropdown';
 import { Flex } from '../Flex';
 
 import { StyledButton } from './styled';
@@ -68,7 +68,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
       onPageChange(currentPage - 1);
     };
 
-    const handleRangeChange = (item: DropdownItem) => {
+    const handleRangeChange = (item: Item) => {
       return item.value && onItemsPerPageChange(item.value);
     };
 

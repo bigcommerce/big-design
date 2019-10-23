@@ -4,7 +4,7 @@ import { ListItemProps } from '../List/Item';
 
 export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
   maxHeight?: number;
-  options: Array<DropdownItem | DropdownLinkItem>;
+  options: Array<Item | LinkItem>;
   placement?: Placement;
   trigger: React.ReactElement;
 }
@@ -13,14 +13,14 @@ interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'onClick
   content: string;
   icon?: React.ReactElement;
   value?: any;
-  onClick?(item: DropdownItem | DropdownLinkItem): void;
+  onClick?(item: Item | LinkItem): void;
 }
 
-export interface DropdownItem extends BaseItem {
+export interface Item extends BaseItem {
   type?: 'string';
 }
 
-export interface DropdownLinkItem extends BaseItem {
+export interface LinkItem extends BaseItem {
   target?: HTMLAnchorElement['target'];
   type: 'link';
   url: string;
