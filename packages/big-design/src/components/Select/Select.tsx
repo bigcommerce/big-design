@@ -240,6 +240,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
           return multi ? (
             <ListCheckboxItem
               {...rest}
+              actionType="normal"
               aria-selected={this.isChecked(option)}
               checked={this.isChecked(option)}
               data-highlighted={isHighlighted}
@@ -257,6 +258,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
             <ListItem
               {...rest}
               {...ariaSelected}
+              actionType="normal"
               data-highlighted={isHighlighted}
               id={id}
               key={index}
