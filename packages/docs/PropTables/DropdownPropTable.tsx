@@ -59,7 +59,7 @@ const dropdownItemProps: Prop[] = [
     name: 'content',
     types: 'string',
     required: true,
-    description: 'Sets the text content of the Dropdown Item.',
+    description: 'Sets the text content of the Option.',
   },
   {
     name: 'disabled',
@@ -112,7 +112,7 @@ const dropdownLinkProps: Prop[] = [
     name: 'content',
     types: 'string',
     required: true,
-    description: 'Sets the text content of the Dropdown Item.',
+    description: 'Sets the text content of the Action.',
   },
   {
     name: 'disabled',

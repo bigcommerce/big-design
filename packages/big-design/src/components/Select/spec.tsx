@@ -271,7 +271,7 @@ test('enter should trigger onChange', () => {
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
-  expect(onChange).toHaveBeenCalledWith({ value: 'ca', content: 'Canada' });
+  expect(onChange).toHaveBeenCalledWith('ca');
 });
 
 test('clicking on select options should trigger onChange', () => {
@@ -284,10 +284,10 @@ test('clicking on select options should trigger onChange', () => {
 
   fireEvent.mouseOver(options[1]);
   fireEvent.click(options[1]);
-  expect(onChange).toHaveBeenCalledWith({ value: 'mx', content: 'Mexico' });
+  expect(onChange).toHaveBeenCalledWith('mx');
 });
 
-test('clicking on disabled select options should not trigger onItemClick', () => {
+test('clicking on disabled select options should not trigger onClick', () => {
   const spy = jest.fn();
   const { getAllByRole, getAllByLabelText } = render(SelectMock);
   const input = getAllByLabelText('Countries')[0];

@@ -245,7 +245,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
               data-highlighted={isHighlighted}
               id={id}
               key={index}
-              onClick={() => this.handleOnCheckboxOptionChange(option)}
+              onChange={() => this.handleOnCheckboxOptionChange(option)}
               onFocus={this.handleOnOptionHighlighted}
               onMouseOver={this.handleOnOptionHighlighted}
               ref={ref}
@@ -463,16 +463,16 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
     const { onChange, value: values } = this.props;
     const { highlightedItem } = this.state;
 
-    if (!option || option.disabled || !highlightedItem) {
+    if (option.disabled || !highlightedItem || !Array.isArray(values)) {
       return;
     }
 
     const checkbox = highlightedItem.querySelector('input[type="checkbox"]') as HTMLInputElement;
 
     if (checkbox.checked) {
-      onChange(values.filter((value: any) => value !== option.value));
-    } else {
       onChange(values.concat(option.value));
+    } else {
+      onChange(values.filter(value => value !== option.value));
     }
 
     this.focusInput();
@@ -481,11 +481,11 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
   private handleOnOptionClick = (option: Option) => {
     const { onChange } = this.props;
 
-    if (!option || option.disabled) {
+    if (option.disabled) {
       return;
     }
 
-    onChange(option);
+    onChange(option.value);
     this.toggleList();
   };
 
@@ -559,8 +559,6 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
    */
 
   private handleOnInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const { highlightedItem } = this.state;
-
     if (!this.listItemsRefs.length || !this.listRef) {
       return;
     }
@@ -581,12 +579,7 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       case 'Enter': {
         if (this.state.isOpen) {
           event.preventDefault();
-
-          if (!highlightedItem) {
-            return;
-          }
-
-          highlightedItem.click();
+          this.clickHighlightedItem();
         } else {
           this.toggleList();
         }
@@ -652,4 +645,16 @@ export class Select extends React.PureComponent<SelectProps, SelectState> {
       scrollMode: 'if-needed',
     });
   };
+
+  private clickHighlightedItem() {
+    const { highlightedItem } = this.state;
+
+    if (!highlightedItem) {
+      return;
+    }
+
+    const checkbox = highlightedItem && (highlightedItem.querySelector('input[type="checkbox"]') as HTMLInputElement);
+
+    return checkbox ? checkbox.click() : highlightedItem.click();
+  }
 }

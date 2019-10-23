@@ -13,8 +13,8 @@ export interface SelectProps extends Omit<React.HTMLAttributes<HTMLUListElement>
   placement?: Placement;
   positionFixed?: boolean;
   required?: boolean;
-  value?: any;
-  onChange(option: Option | Option[]): void;
+  value?: string | number | Array<string | number>;
+  onChange(value: string | number | Array<string | number>): void;
 }
 
 interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'onClick' | 'value'> {
@@ -23,7 +23,7 @@ interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'onClick
 }
 
 export interface Option extends Omit<BaseItem, 'actionType'> {
-  value: any;
+  value: string | number;
 }
 
 export interface Action extends BaseItem {

@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Code, Prop, PropTable, PropTableWrapper } from '../components';
+import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const selectProps: Prop[] = [
+  { name: 'action', types: 'Action', description: 'Action item displayed at the end of the list.' },
   {
     name: 'error',
     types: 'ReactChild',
@@ -20,6 +21,15 @@ const selectProps: Prop[] = [
     description: (
       <>
         Sets a <Code>max-height</Code> to the dropdown.
+      </>
+    ),
+  },
+  {
+    name: 'options',
+    types: 'Array<DropdownItem | DropdownLinkItem>',
+    description: (
+      <>
+        Accepts an array of <Code>Options</Code>. See example for usage.
       </>
     ),
   },
@@ -76,12 +86,7 @@ const selectProps: Prop[] = [
     description: 'Renders a multiselect component.',
   },
   {
-    name: 'onActionClick',
-    types: '(string) => void',
-    description: 'Callback called with the typed text of the field.',
-  },
-  {
-    name: 'onItemChange',
+    name: 'onChange',
     types: '(value) => void',
     required: true,
     description: 'Callback called with value of clicked item.',
@@ -94,12 +99,92 @@ export const SelectPropTable: React.FC<PropTableWrapper> = props => (
 
 const selectOptionProps: Prop[] = [
   {
+    name: 'actionType',
+    types: ['normal', 'destructive'],
+    defaultValue: 'normal',
+    description: "Indicates whether your item's action is of normal or destructive nature.",
+  },
+  {
+    name: 'content',
+    types: 'string',
+    required: true,
+    description: 'Sets the text content of the Dropdown Item.',
+  },
+  {
+    name: 'disabled',
+    types: 'boolean',
+    description: 'Sets the item to disabled.',
+  },
+  {
+    name: 'icon',
+    types: (
+      <NextLink href="/Icons/IconsPage" as="/icons">
+        Icon
+      </NextLink>
+    ),
+    description: (
+      <>
+        Pass in an{' '}
+        <NextLink href="/Icons/IconsPage" as="/icons">
+          Icon
+        </NextLink>{' '}
+        component to display to the left of the text.
+      </>
+    ),
+  },
+  {
     name: 'value',
-    types: 'string | string[] | number',
-    description: 'Value of the option',
+    types: 'string | number | Array<string | number>',
+    description: 'Stored value of the item.',
   },
 ];
 
 export const SelectOptionPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="Select.Option" propList={selectOptionProps} {...props} />
+  <PropTable title="Option" propList={selectOptionProps} {...props} />
+);
+
+const selectActionProps: Prop[] = [
+  {
+    name: 'actionType',
+    types: ['normal', 'destructive'],
+    defaultValue: 'normal',
+    description: "Indicates whether your item's action is of normal or destructive nature.",
+  },
+  {
+    name: 'content',
+    types: 'string',
+    required: true,
+    description: 'Sets the text content of the Dropdown Item.',
+  },
+  {
+    name: 'disabled',
+    types: 'boolean',
+    description: 'Sets the item to disabled.',
+  },
+  {
+    name: 'icon',
+    types: (
+      <NextLink href="/Icons/IconsPage" as="/icons">
+        Icon
+      </NextLink>
+    ),
+    description: (
+      <>
+        Pass in an{' '}
+        <NextLink href="/Icons/IconsPage" as="/icons">
+          Icon
+        </NextLink>{' '}
+        component to display to the left of the text.
+      </>
+    ),
+  },
+  {
+    name: 'onClick',
+    types: '(inputText: string): void',
+    description: 'Returns the current inputText',
+  },
+];
+
+export const SelectActionPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Action" propList={selectActionProps} {...props} />
 );
