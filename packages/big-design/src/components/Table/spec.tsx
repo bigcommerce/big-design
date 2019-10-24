@@ -6,17 +6,19 @@ import { Table } from './Table';
 
 interface SimpleTableOptions {
   className?: string;
+  columns?: any[];
   dataTestId?: string;
   id?: string;
+  itemName?: string;
   style?: CSSProperties;
-  columns?: any[];
 }
 
-const getSimpleTable = ({ className, columns, dataTestId, id, style }: SimpleTableOptions = {}) => (
+const getSimpleTable = ({ className, columns, dataTestId, id, itemName, style }: SimpleTableOptions = {}) => (
   <Table
-    id={id}
-    data-testid={dataTestId}
     className={className}
+    data-testid={dataTestId}
+    id={id}
+    itemName={itemName}
     style={style}
     columns={
       columns || [
@@ -126,6 +128,14 @@ test('tweaks column styles with props', () => {
   `);
 });
 
+test('renders the total number of items + item name', () => {
+  const { getByText } = render(getSimpleTable({ itemName: 'Test Items' }));
+
+  const itemNameNode = getByText(`5 Test Items`);
+
+  expect(itemNameNode).toBeInTheDocument();
+});
+
 test('renders a pagination component', () => {
   const onItemsPerPageChange = jest.fn();
   const onPageChange = jest.fn();
@@ -165,7 +175,7 @@ describe('selectable', () => {
   let columns: any;
   let items: any;
   let onSelectionChange: jest.Mock;
-  const itemType = 'Product';
+  const itemName = 'Product';
 
   beforeEach(() => {
     onSelectionChange = jest.fn();
@@ -187,9 +197,9 @@ describe('selectable', () => {
     const { container, getAllByRole } = render(
       <Table
         columns={columns}
+        itemName={itemName}
         items={items}
         selectable={{
-          itemType,
           onSelectionChange,
           selectedItems: [],
         }}
@@ -205,9 +215,9 @@ describe('selectable', () => {
     const { getAllByRole } = render(
       <Table
         columns={columns}
+        itemName={itemName}
         items={items}
         selectable={{
-          itemType,
           onSelectionChange,
           selectedItems: [],
         }}
@@ -226,9 +236,9 @@ describe('selectable', () => {
     const { getAllByRole } = render(
       <Table
         columns={columns}
+        itemName={itemName}
         items={items}
         selectable={{
-          itemType,
           onSelectionChange,
           selectedItems: items,
         }}
@@ -241,6 +251,25 @@ describe('selectable', () => {
     expect(selectAllCheckbox.checked).toBe(true);
     fireEvent.click(selectAllCheckbox);
     expect(onSelectionChange).toHaveBeenCalledWith([]);
+  });
+
+  test('passing a selectAllState overrides the checkbox state', () => {
+    const { getAllByRole } = render(
+      <Table
+        columns={columns}
+        itemName={itemName}
+        items={items}
+        selectable={{
+          selectAllState: 'ALL',
+          onSelectionChange,
+          selectedItems: [],
+        }}
+      />,
+    );
+
+    const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
+
+    expect(selectAllCheckbox.checked).toBe(true);
   });
 });
 

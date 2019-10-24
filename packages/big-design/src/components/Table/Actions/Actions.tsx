@@ -6,9 +6,10 @@ import { Pagination } from '../../Pagination';
 import { Text } from '../../Typography';
 import { TableItem, TablePagination, TableSelectable } from '../types';
 
-import { StyledActions } from './styled';
+import { StyledActions, StyledPaginationContainer } from './styled';
 
 export interface ActionsProps<T> {
+  itemName?: string;
   items: T[];
   pagination?: TablePagination;
   selectable?: TableSelectable<T>;
@@ -16,7 +17,9 @@ export interface ActionsProps<T> {
 }
 
 export const Actions = memo(
-  <T extends TableItem>({ selectable, pagination, tableId, items = [], ...props }: ActionsProps<T>) => {
+  <T extends TableItem>({ selectable, pagination, tableId, itemName, items = [], ...props }: ActionsProps<T>) => {
+    const totalItems = pagination ? pagination.totalItems : items.length;
+
     const handleSelectAll = () => {
       if (!selectable) {
         return;
@@ -31,20 +34,48 @@ export const Actions = memo(
       }
     };
 
-    const renderSelectAllAction = ({ itemType, selectedItems }: TableSelectable<T>) => {
+    const getSelectAllChecked = () => {
+      if (!selectable) {
+        return false;
+      }
+
+      const { selectAllState, selectedItems } = selectable;
+
+      switch (selectAllState) {
+        case 'ALL':
+          return true;
+
+        case 'PARTIAL':
+        case 'NONE':
+          return false;
+
+        default:
+          const totalSelectedItems = selectedItems.length;
+          const totalItemsInPage = items.length;
+
+          return totalSelectedItems === totalItemsInPage && totalItemsInPage > 0;
+      }
+    };
+
+    const renderSelectAllAction = () => {
+      if (!selectable) {
+        return null;
+      }
+
+      const { selectAllState, selectedItems } = selectable;
       const totalSelectedItems = selectedItems.length;
       const totalItemsInPage = items.length;
-      const isChecked = totalSelectedItems === totalItemsInPage && totalItemsInPage > 0;
-      const isIndeterminate = totalSelectedItems > 0 && totalSelectedItems !== totalItemsInPage;
+
+      const isChecked = getSelectAllChecked();
+      const isIndeterminate =
+        selectAllState === 'PARTIAL' || (totalSelectedItems > 0 && totalSelectedItems !== totalItemsInPage);
 
       return (
-        <Flex.Item flexGrow={2}>
+        <Flex.Item marginRight="xxSmall">
           <Flex flexDirection="row">
             <Checkbox isIndeterminate={isIndeterminate} checked={isChecked} onChange={handleSelectAll} />
             <Text marginLeft="small">
-              {totalSelectedItems === 0
-                ? `${totalItemsInPage} ${itemType}`
-                : `${totalSelectedItems}/${totalItemsInPage} ${itemType}`}
+              {totalSelectedItems === 0 ? `${totalItems}` : `${totalSelectedItems}/${totalItems}`}
             </Text>
           </Flex>
         </Flex.Item>
@@ -54,12 +85,26 @@ export const Actions = memo(
     const renderPagination = useMemo(
       () =>
         pagination && (
-          <Flex.Item style={{ marginLeft: 'auto' }}>
+          <StyledPaginationContainer>
             <Pagination {...pagination} />
-          </Flex.Item>
+          </StyledPaginationContainer>
         ),
       [pagination],
     );
+
+    const renderItemName = () => {
+      if (typeof itemName !== 'string') {
+        return null;
+      }
+
+      const text = Boolean(selectable) ? itemName : `${totalItems} ${itemName}`;
+
+      return (
+        <Flex.Item>
+          <Text margin="none">{text}</Text>
+        </Flex.Item>
+      );
+    };
 
     return (
       <StyledActions
@@ -70,7 +115,8 @@ export const Actions = memo(
         padding="small"
         {...props}
       >
-        {selectable && renderSelectAllAction(selectable)}
+        {renderSelectAllAction()}
+        {renderItemName()}
         {renderPagination}
       </StyledActions>
     );

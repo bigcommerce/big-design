@@ -18,6 +18,11 @@ const tableProps: Prop[] = [
     required: true,
   },
   {
+    name: 'itemName',
+    types: 'string',
+    description: 'Item name displayed on the table actions section.',
+  },
+  {
     name: 'keyField',
     types: 'string',
     defaultValue: 'id',
@@ -112,16 +117,18 @@ const tableSelectableProps: Prop[] = [
     name: 'selectedItems',
     types: 'Item[]',
     description: 'Defines which items are selected.',
+    required: true,
   },
   {
     name: 'onSelectionChange',
     types: '(selectedItems: Item[]) => void',
     description: 'Function to be called when item selection changes.',
+    required: true,
   },
   {
-    name: 'itemType',
-    types: 'string',
-    description: 'Item type name displayed on the selected action section. (Eg: 2/10 Products)',
+    name: 'selectAllState',
+    types: ['ALL', 'PARTIAL', 'NONE'],
+    description: 'Used to manually override the select all checkbox state. Useful for multi-page selects.',
   },
 ];
 
@@ -141,6 +148,7 @@ const tableSortableProps: Prop[] = [
     name: 'onSort',
     types: '(columnHash: string, direction: TableSortDirection, column: TableColumn<T>): void;',
     description: 'Function to be called when a sortable header is clicked.',
+    required: true,
   },
 ];
 
