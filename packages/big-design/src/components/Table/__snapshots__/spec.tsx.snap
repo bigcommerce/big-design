@@ -554,11 +554,11 @@ exports[`renders a simple table 1`] = `
   width: 100%;
 }
 
-.c4 {
+.c3 {
   box-sizing: border-box;
 }
 
-.c3 {
+.c2 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -582,18 +582,11 @@ exports[`renders a simple table 1`] = `
   display: flex;
 }
 
-.c5 > tr {
+.c4 > tr {
   border-bottom: 1px solid #D9DCE9;
 }
 
-.c6 {
-  box-sizing: border-box;
-  color: #313440;
-  font-size: 1rem;
-  padding: 0.75rem;
-}
-
-.c2 {
+.c1 {
   background-color: #F6F7FC;
   box-shadow: inset 0px -1px 0px #D9DCE9,inset 0px 1px 0px #D9DCE9;
   box-sizing: border-box;
@@ -603,11 +596,18 @@ exports[`renders a simple table 1`] = `
   white-space: nowrap;
 }
 
-.c1 {
+.c6 {
+  box-sizing: border-box;
+  color: #313440;
+  font-size: 1rem;
+  padding: 0.75rem;
+}
+
+.c5 {
   background-color: transparent;
 }
 
-.c1:hover {
+.c5:hover {
   background-color: #F6F7FC;
 }
 
@@ -618,32 +618,30 @@ exports[`renders a simple table 1`] = `
   <thead
     class=""
   >
-    <tr
-      class="c1"
-    >
+    <tr>
       <th
-        class="c2"
+        class="c1"
       >
         <div
-          class="c3 c4"
+          class="c2 c3"
         >
           Sku
         </div>
       </th>
       <th
-        class="c2"
+        class="c1"
       >
         <div
-          class="c3 c4"
+          class="c2 c3"
         >
           Name
         </div>
       </th>
       <th
-        class="c2"
+        class="c1"
       >
         <div
-          class="c3 c4"
+          class="c2 c3"
         >
           Stock
         </div>
@@ -651,10 +649,10 @@ exports[`renders a simple table 1`] = `
     </tr>
   </thead>
   <tbody
-    class="c5"
+    class="c4"
   >
     <tr
-      class="c1"
+      class="c5"
     >
       <td
         class="c6"
@@ -673,7 +671,7 @@ exports[`renders a simple table 1`] = `
       </td>
     </tr>
     <tr
-      class="c1"
+      class="c5"
     >
       <td
         class="c6"
@@ -692,7 +690,7 @@ exports[`renders a simple table 1`] = `
       </td>
     </tr>
     <tr
-      class="c1"
+      class="c5"
     >
       <td
         class="c6"
@@ -711,7 +709,7 @@ exports[`renders a simple table 1`] = `
       </td>
     </tr>
     <tr
-      class="c1"
+      class="c5"
     >
       <td
         class="c6"
@@ -730,7 +728,7 @@ exports[`renders a simple table 1`] = `
       </td>
     </tr>
     <tr
-      class="c1"
+      class="c5"
     >
       <td
         class="c6"
