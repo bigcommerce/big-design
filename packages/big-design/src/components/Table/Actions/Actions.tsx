@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 
 import { Checkbox } from '../../Checkbox';
 import { Flex } from '../../Flex';
@@ -51,6 +51,16 @@ export const Actions = memo(
       );
     };
 
+    const renderPagination = useMemo(
+      () =>
+        pagination && (
+          <Flex.Item style={{ marginLeft: 'auto' }}>
+            <Pagination {...pagination} />
+          </Flex.Item>
+        ),
+      [pagination],
+    );
+
     return (
       <StyledActions
         alignItems="center"
@@ -61,11 +71,7 @@ export const Actions = memo(
         {...props}
       >
         {selectable && renderSelectAllAction(selectable)}
-        {pagination && (
-          <Flex.Item style={{ marginLeft: 'auto' }}>
-            <Pagination {...pagination} />
-          </Flex.Item>
-        )}
+        {renderPagination}
       </StyledActions>
     );
   },

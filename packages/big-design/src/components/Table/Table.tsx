@@ -1,13 +1,12 @@
 import React, { memo, useRef } from 'react';
 
-import { uniqueId } from '../../utils';
-import { Checkbox } from '../Checkbox';
+import { typedMemo, uniqueId } from '../../utils';
+import { useEventCallback } from '../../utils/useEventCallback';
 
 import { StyledTable, StyledTableFigure } from './styled';
 import { TableColumn, TableItem, TableProps } from './types';
 import { Actions } from './Actions';
 import { Body } from './Body';
-import { DataCell } from './DataCell';
 import { Head } from './Head';
 import { HeaderCell } from './HeaderCell';
 import { Row } from './Row';
@@ -29,37 +28,25 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   const tableIdRef = useRef(id || uniqueId('table_'));
   const isSelectable = Boolean(selectable);
 
-  const getItemKey = (item: T, index: number): string | number => {
-    if (item[keyField] !== undefined) {
-      return item[keyField];
-    }
+  const onItemSelect = selectable
+    ? useEventCallback(
+        (item: T) => {
+          if (!selectable || !item) {
+            return;
+          }
 
-    return index;
-  };
+          const { selectedItems, onSelectionChange } = selectable;
+          const nextIsSelected = !isItemSelected(item);
 
-  const isItemSelected = (item: T) => {
-    return selectable && selectable.selectedItems.includes(item);
-  };
-
-  const onItemSelect = (item: T) => {
-    const nextIsSelected = !isItemSelected(item);
-
-    if (!selectable) {
-      return;
-    }
-
-    const { selectedItems, onSelectionChange } = selectable;
-
-    if (nextIsSelected) {
-      onSelectionChange([...selectedItems, item]);
-    } else {
-      onSelectionChange(selectedItems.filter(selectedItem => selectedItem !== item));
-    }
-  };
-
-  const shouldRenderActions = () => {
-    return Boolean(pagination) || Boolean(selectable);
-  };
+          if (nextIsSelected) {
+            onSelectionChange([...selectedItems, item]);
+          } else {
+            onSelectionChange(selectedItems.filter(selectedItem => selectedItem !== item));
+          }
+        },
+        [selectable.selectedItems],
+      )
+    : undefined;
 
   const onSortClick = (column: TableColumn<T>) => {
     if (!sortable || !column.isSortable) {
@@ -74,9 +61,25 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     }
   };
 
+  const shouldRenderActions = () => {
+    return Boolean(pagination) || Boolean(selectable);
+  };
+
+  const getItemKey = (item: T, index: number): string | number => {
+    if (item[keyField] !== undefined) {
+      return item[keyField];
+    }
+
+    return index;
+  };
+
+  const isItemSelected = (item: T) => {
+    return (selectable && selectable.selectedItems.includes(item)) || false;
+  };
+
   const renderHeaders = () => (
     <Head>
-      <Row>
+      <tr>
         {isSelectable && <HeaderCell key="header-checkbox" stickyHeader={stickyHeader} isCheckbox={true} />}
 
         {columns.map((column, index) => {
@@ -99,7 +102,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
             </HeaderCell>
           );
         })}
-      </Row>
+      </tr>
     </Head>
   );
 
@@ -110,30 +113,14 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
         const isSelected = isItemSelected(item);
 
         return (
-          <Row key={key} selected={isSelected}>
-            {isSelectable && (
-              <DataCell key="data-checkbox" isCheckbox={true}>
-                <Checkbox checked={isSelected} onChange={() => onItemSelect(item)} />
-              </DataCell>
-            )}
-
-            {props.columns.map(
-              ({ render: CellContent, align, verticalAlign, width, withPadding = true }, columnIndex) => (
-                <DataCell
-                  key={columnIndex}
-                  align={align}
-                  verticalAlign={verticalAlign}
-                  width={width}
-                  withPadding={withPadding}
-                >
-                  {/* https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
-                  {/* 
-                // @ts-ignore */}
-                  <CellContent {...item} />
-                </DataCell>
-              ),
-            )}
-          </Row>
+          <Row
+            columns={columns}
+            isSelectable={isSelectable}
+            isSelected={isSelected}
+            item={item}
+            key={key}
+            onItemSelect={onItemSelect}
+          />
         );
       })}
     </Body>
@@ -151,9 +138,6 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     </>
   );
 };
-
-// https://github.com/DefinitelyTyped/DefinitelyTyped/issues/37087
-const typedMemo: <T>(c: T) => T = React.memo;
 
 export const Table = typedMemo(InternalTable);
 export const TableFigure: React.FC = memo(props => <StyledTableFigure {...props} />);
