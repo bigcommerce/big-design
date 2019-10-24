@@ -1,5 +1,5 @@
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
-import React, { Ref } from 'react';
+import React, { memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { ProgressCircle } from '../ProgressCircle';
@@ -20,46 +20,35 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   variant?: 'primary' | 'secondary' | 'subtle';
 }
 
-class RawButton extends React.PureComponent<ButtonProps & PrivateProps> {
-  render() {
-    const { forwardedRef, ...props } = this.props;
+const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const { disabled, isLoading, onClick } = props;
 
-    return (
-      <StyledButton
-        className="bd-button"
-        role="button"
-        tabIndex={0}
-        {...props}
-        onClick={this.handleClick}
-        ref={forwardedRef}
-      >
-        {props.isLoading ? this.renderLoadingSpinner() : null}
-        <ContentWrapper isLoading={props.isLoading} theme={props.theme}>
-          {!props.iconOnly && props.iconLeft}
-          {props.iconOnly}
-          {!props.iconOnly && props.children}
-          {!props.iconOnly && props.iconRight}
-        </ContentWrapper>
-      </StyledButton>
-    );
-  }
-
-  private handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const { disabled, isLoading } = this.props;
-
-    if (this.props.onClick && !disabled && !isLoading) {
-      this.props.onClick(event);
+    if (onClick && !disabled && !isLoading) {
+      onClick(event);
     }
   };
 
-  private renderLoadingSpinner() {
+  const renderLoadingSpinner = () => {
     return (
       <LoadingSpinnerWrapper alignItems="center">
         <ProgressCircle size="xSmall" />
       </LoadingSpinnerWrapper>
     );
-  }
-}
+  };
+
+  return (
+    <StyledButton className="bd-button" role="button" tabIndex={0} {...props} onClick={handleClick} ref={forwardedRef}>
+      {props.isLoading ? renderLoadingSpinner() : null}
+      <ContentWrapper isLoading={props.isLoading} theme={props.theme}>
+        {!props.iconOnly && props.iconLeft}
+        {props.iconOnly}
+        {!props.iconOnly && props.children}
+        {!props.iconOnly && props.iconRight}
+      </ContentWrapper>
+    </StyledButton>
+  );
+});
 
 export const StyleableButton = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
   <RawButton {...props} forwardedRef={ref} />
