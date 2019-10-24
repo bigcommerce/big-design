@@ -129,8 +129,8 @@ export default () => {
               keyField="sku"
               columns={columns}
               items={currentItems}
+              itemName="Products"
               selectable={{
-                itemType: 'Products',
                 onSelectionChange: setSelectedItems,
                 selectedItems,
               }}
