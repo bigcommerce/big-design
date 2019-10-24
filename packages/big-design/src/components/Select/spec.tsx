@@ -10,6 +10,14 @@ import { Select } from './Select';
 const onChange = jest.fn();
 const onActionClick = jest.fn();
 
+const mockOptions = [
+  { value: 'us', content: 'United States' },
+  { value: 'mx', content: 'Mexico' },
+  { value: 'ca', content: 'Canada' },
+  { value: 'en', content: 'England' },
+  { value: 'fr', content: 'France', disabled: true },
+];
+
 const SelectMock = (
   <Select
     action={{
@@ -22,13 +30,7 @@ const SelectMock = (
     onChange={onChange}
     label="Countries"
     placeholder="Choose country"
-    options={[
-      { value: 'us', content: 'United States' },
-      { value: 'mx', content: 'Mexico' },
-      { value: 'ca', content: 'Canada' },
-      { value: 'en', content: 'England' },
-      { value: 'fr', content: 'France', disabled: true },
-    ]}
+    options={mockOptions}
     required
     value="mx"
   />
@@ -40,12 +42,7 @@ const MultiselectMock = (
     label="Countries"
     multi
     placeholder="Choose country"
-    options={[
-      { value: 'us', content: 'United States' },
-      { value: 'mx', content: 'Mexico' },
-      { value: 'ca', content: 'Canada' },
-      { value: 'en', content: 'England' },
-    ]}
+    options={mockOptions}
     value={['us', 'mx']}
   />
 );
@@ -271,7 +268,7 @@ test('enter should trigger onChange', () => {
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
-  expect(onChange).toHaveBeenCalledWith('ca');
+  expect(onChange).toHaveBeenCalledWith(mockOptions[2].value, mockOptions[2]);
 });
 
 test('clicking on select options should trigger onChange', () => {
@@ -284,7 +281,7 @@ test('clicking on select options should trigger onChange', () => {
 
   fireEvent.mouseOver(options[1]);
   fireEvent.click(options[1]);
-  expect(onChange).toHaveBeenCalledWith('mx');
+  expect(onChange).toHaveBeenCalledWith(mockOptions[1].value, mockOptions[1]);
 });
 
 test('clicking on disabled select options should not trigger onClick', () => {
@@ -450,7 +447,7 @@ test('multiselect should render four items with checkboxes', () => {
 
   const options = menu.querySelectorAll('input[type="checkbox"]');
 
-  expect(options.length).toEqual(4);
+  expect(options.length).toEqual(5);
 });
 
 test('multiselect should have two selected options', () => {
@@ -474,7 +471,10 @@ test('multiselect should be able to select multiple options', () => {
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
 
-  expect(onChange).toHaveBeenCalledWith(['us', 'mx', 'ca']);
+  expect(onChange).toHaveBeenCalledWith(
+    [mockOptions[0].value, mockOptions[1].value, mockOptions[2].value],
+    [mockOptions[0], mockOptions[1], mockOptions[2]],
+  );
 });
 
 test('multiselect should be able to deselect options', () => {
@@ -486,7 +486,7 @@ test('multiselect should be able to deselect options', () => {
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
 
-  expect(onChange).toHaveBeenCalledWith(['mx']);
+  expect(onChange).toHaveBeenCalledWith([mockOptions[1].value], [mockOptions[1]]);
 });
 
 test('chips should be rendered', () => {

@@ -2,19 +2,19 @@ import { Placement } from 'popper.js';
 
 import { ListItemProps } from '../List/Item';
 
-export interface SelectProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children' | 'onChange'> {
+export interface SelectProps<T> extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children' | 'onChange'> {
   action?: Action;
   disabled?: boolean;
   error?: string;
   label?: string;
   maxHeight?: number;
   multi?: boolean;
-  options: Option[];
+  options: Array<Option<T>>;
   placement?: Placement;
   positionFixed?: boolean;
   required?: boolean;
-  value?: string | number | Array<string | number>;
-  onChange(value: string | number | Array<string | number>): void;
+  value?: T | T[];
+  onChange(value: T | T[], option: Option<T> | Array<Option<T>>): void;
 }
 
 interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'value'> {
@@ -22,8 +22,8 @@ interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'value'>
   icon?: React.ReactElement;
 }
 
-export interface Option extends Omit<BaseItem, 'actionType'> {
-  value: string | number;
+export interface Option<T> extends Omit<BaseItem, 'actionType'> {
+  value: T;
 }
 
 export interface Action extends Omit<BaseItem, 'onClick'> {

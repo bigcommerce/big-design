@@ -20,7 +20,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [value, setValue] = React.useState('');
+        const [value, setValue] = React.useState(undefined);
         const handleChange = val => setValue(val);
 
         return (
@@ -121,9 +121,9 @@ export default () => (
           onChange={() => null}
           options={[
             { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
+            { value: 2, content: 'Option' },
+            { value: 3, content: 'Option' },
+            { value: 4, content: 'Option' },
           ]}
           placeholder="Choose from above"
           placement="top"
@@ -134,9 +134,9 @@ export default () => (
           onChange={() => null}
           options={[
             { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
+            { value: 2, content: 'Option' },
+            { value: 3, content: 'Option' },
+            { value: 4, content: 'Option' },
           ]}
           placeholder="Choose from below"
           placement="bottom-start"
@@ -147,9 +147,9 @@ export default () => (
           onChange={() => null}
           options={[
             { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
+            { value: 2, content: 'Option' },
+            { value: 3, content: 'Option' },
+            { value: 4, content: 'Option' },
           ]}
           placeholder="Choose from the right"
           placement="right-start"
@@ -160,9 +160,9 @@ export default () => (
           onChange={() => null}
           options={[
             { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
+            { value: 2, content: 'Option' },
+            { value: 3, content: 'Option' },
+            { value: 4, content: 'Option' },
           ]}
           placeholder="Choose from the left"
           placement="left-end"
@@ -187,9 +187,9 @@ export default () => (
           onChange={() => null}
           options={[
             { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
+            { value: 2, content: 'Option' },
+            { value: 3, content: 'Option' },
+            { value: 4, content: 'Option' },
           ]}
           placeholder="Default"
           required
@@ -199,9 +199,9 @@ export default () => (
           onChange={() => null}
           options={[
             { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
+            { value: 2, content: 'Option' },
+            { value: 3, content: 'Option' },
+            { value: 4, content: 'Option' },
           ]}
           placeholder="Default"
           required
@@ -212,9 +212,9 @@ export default () => (
           onChange={() => null}
           options={[
             { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
+            { value: 2, content: 'Option' },
+            { value: 3, content: 'Option' },
+            { value: 4, content: 'Option' },
           ]}
           placeholder="Smaller"
           required
@@ -225,9 +225,9 @@ export default () => (
           onChange={() => null}
           options={[
             { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
-            { value: 1, content: 'Option' },
+            { value: 2, content: 'Option' },
+            { value: 3, content: 'Option' },
+            { value: 4, content: 'Option' },
           ]}
           placeholder="Larger"
           required
@@ -252,9 +252,9 @@ export default () => (
         onChange={() => null}
         options={[
           { value: 1, content: 'Option' },
-          { value: 1, content: 'Option' },
-          { value: 1, content: 'Option' },
-          { value: 1, content: 'Option' },
+          { value: 2, content: 'Option' },
+          { value: 3, content: 'Option' },
+          { value: 4, content: 'Option' },
         ]}
         placeholder="Larger"
         required
