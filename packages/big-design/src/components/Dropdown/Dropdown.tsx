@@ -31,7 +31,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
   private listItemsRefs: Array<RefObject<HTMLLIElement>> = [];
 
   render() {
-    const { children, className, maxHeight, options, placement, style, trigger, ...rest } = this.props;
+    const { children, maxHeight, options, placement, trigger, ...rest } = this.props;
     const { highlightedItem, isOpen } = this.state;
 
     this.listItemsRefs = [];
