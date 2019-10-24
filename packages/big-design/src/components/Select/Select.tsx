@@ -219,7 +219,6 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
         return multi ? (
           <ListCheckboxItem
             {...rest}
-            actionType="normal"
             aria-selected={this.isChecked(option)}
             checked={this.isChecked(option)}
             data-highlighted={isHighlighted}
