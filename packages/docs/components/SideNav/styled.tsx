@@ -14,6 +14,7 @@ export const StyledFlex = styled(Flex)`
   ${({ theme }) => theme.breakpoints.tablet} {
     bottom: 0;
     box-shadow: none;
+    display: block;
     height: 100vh;
     overflow: auto;
     position: sticky;
