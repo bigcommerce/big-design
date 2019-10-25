@@ -68,7 +68,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
       onPageChange(currentPage - 1);
     };
 
-    const handleRangeChange = (item: Item) => {
+    const handleRangeChange = (item: Item<number>) => {
       return item.value && onItemsPerPageChange(item.value);
     };
 
