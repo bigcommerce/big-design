@@ -16,7 +16,7 @@ interface DropdownState {
   isOpen: boolean;
 }
 
-export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> {
+export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T>, DropdownState> {
   readonly state: DropdownState = {
     highlightedItem: null,
     isOpen: false,
@@ -111,7 +111,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     );
   }
 
-  private renderIcon(option: Item | LinkItem, isHighlighted: boolean) {
+  private renderIcon(option: Item<T> | LinkItem<T>, isHighlighted: boolean) {
     return (
       React.isValidElement(option.icon) &&
       React.cloneElement(option.icon, {
@@ -173,7 +173,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     return id || this.uniqueDropdownId;
   }
 
-  private getItemId(item: Item | LinkItem, index: number) {
+  private getItemId(item: Item<T> | LinkItem<T>, index: number) {
     const { id } = item;
 
     return id || `${this.getDropdownId()}-item-${index}`;
@@ -214,7 +214,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     this.toggleList();
   };
 
-  private handleOnItemClick = (item: Item | LinkItem) => {
+  private handleOnItemClick = (item: Item<T> | LinkItem<T>) => {
     if (item.disabled) {
       return;
     }
