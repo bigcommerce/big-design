@@ -9,11 +9,11 @@ import { StyledChip, StyledCloseButton } from './styled';
 
 export interface ChipProps extends MarginProps {
   theme?: ThemeInterface;
+  label: string;
   onDelete?(): void;
 }
 
-export const Chip: React.FC<ChipProps> = memo(({ children, onDelete, theme, ...rest }) => {
-  const label = typeof children === 'string' ? children : null;
+export const Chip: React.FC<ChipProps> = memo(({ children, label, onDelete, theme, ...rest }) => {
   const ariaLabel = label ? { 'aria-label': `Remove ${label}` } : {};
 
   const handleOnDelete = (event: React.SyntheticEvent<HTMLButtonElement, MouseEvent>) => {

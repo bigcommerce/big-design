@@ -129,12 +129,12 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
 
     const chips = this.renderChips();
 
-    const onChipDelete = (chip: Option<T>) => () => {
+    const onChipDelete = (chip: string) => () => {
       const filteredValues = Array.isArray(value)
         ? value.filter(val => {
             const foundOption = options.find(option => option.value === val);
 
-            return foundOption && foundOption.value !== chip.value;
+            return foundOption && foundOption.content !== chip;
           })
         : [];
 
@@ -175,11 +175,13 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   private renderChips() {
     const { options, multi, value: values } = this.props;
 
-    if (!multi || !values) {
+    if (!multi || !values || !Array.isArray(values)) {
       return [];
     }
 
-    return Array.isArray(values) ? values.map(value => options.find(option => option.value === value)) : [];
+    const selectedOptions = values.map(value => options.find(option => option.value === value));
+
+    return selectedOptions.map(option => (option ? option.content : ''));
   }
 
   private renderDropdownIcon() {

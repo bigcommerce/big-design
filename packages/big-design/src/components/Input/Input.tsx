@@ -10,14 +10,14 @@ import { Small } from '../Typography';
 import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
 
 interface Props {
-  chips?: any[];
+  chips?: string[];
   description?: React.ReactChild;
   error?: React.ReactChild | React.ReactChild[];
   iconLeft?: React.ReactChild;
   iconRight?: React.ReactChild;
   label?: React.ReactChild;
   theme?: ThemeInterface;
-  onChipDelete?(chip: any): () => void;
+  onChipDelete?(chip: string): () => void;
 }
 
 interface PrivateProps {
@@ -157,13 +157,9 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
 
     return chips.map((chip, key) =>
       onChipDelete ? (
-        <Chip key={key} marginBottom="none" onDelete={onChipDelete(chip)}>
-          {chip.content}
-        </Chip>
+        <Chip key={key} label={chip} marginBottom="none" onDelete={onChipDelete(chip)} />
       ) : (
-        <Chip key={key} marginBottom="none" marginTop="none">
-          {chip.content}
-        </Chip>
+        <Chip key={key} label={chip} marginBottom="none" marginTop="none" />
       ),
     );
   }
