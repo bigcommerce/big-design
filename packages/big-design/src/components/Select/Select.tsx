@@ -30,6 +30,8 @@ interface Item<T> {
 }
 
 export class Select<T extends any> extends React.PureComponent<SelectProps<T>, SelectState> {
+  static readonly displayName = 'Select';
+
   readonly state: SelectState = {
     filterChildren: false,
     highlightedItem: null,
