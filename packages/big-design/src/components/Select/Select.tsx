@@ -95,7 +95,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
             {...ariaMultiSelect}
           >
             {this.renderOptions()}
-            {this.renderActions()}
+            {this.renderAction()}
           </List>
         </div>
         <StyledStatusMessage
@@ -255,7 +255,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     });
   }
 
-  private renderActions() {
+  private renderAction() {
     const { action } = this.props;
     const { highlightedItem } = this.state;
 
