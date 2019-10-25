@@ -4,9 +4,10 @@ import { Checkbox } from '../../Checkbox';
 
 import { StyledListItem } from './styled';
 
-export interface ListCheckboxItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+export interface ListCheckboxItemProps extends Omit<React.LiHTMLAttributes<HTMLLIElement>, 'onChange'> {
   checked?: boolean;
   disabled?: boolean;
+  onChange?(): void;
 }
 
 interface PrivateProps {
