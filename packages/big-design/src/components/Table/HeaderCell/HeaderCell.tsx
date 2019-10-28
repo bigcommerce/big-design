@@ -1,68 +1,72 @@
 import { ArrowDownwardIcon, ArrowUpwardIcon } from '@bigcommerce/big-design-icons';
 import React, { memo } from 'react';
 
+import { typedMemo } from '../../../utils';
 import { Flex } from '../../Flex';
+import { TableColumn, TableItem } from '../types';
 
 import { StyledTableHeaderCell, StyledTableHeaderCheckbox } from './styled';
 
-export interface HeaderCellProps extends React.TableHTMLAttributes<HTMLTableCellElement> {
-  align?: 'left' | 'center' | 'right';
-  isCheckbox?: boolean;
-  isSortable?: boolean;
+export interface HeaderCellProps<T> extends React.TableHTMLAttributes<HTMLTableCellElement> {
+  column: TableColumn<T>;
   isSorted?: boolean;
   sortDirection?: 'ASC' | 'DESC';
   stickyHeader?: boolean;
-  width?: number | string;
-  onSortClick?(): void;
+  onSortClick?(column: TableColumn<T>): void;
 }
 
-export const HeaderCell: React.FC<HeaderCellProps> = memo(
-  ({
-    align,
-    children,
-    isCheckbox,
-    isSortable,
-    isSorted,
-    onSortClick,
-    sortDirection,
-    stickyHeader,
-    width,
-  }: HeaderCellProps) => {
-    const renderSortIcon = () => {
-      if (!isSorted) {
-        return null;
-      }
+export interface HeaderCheckboxCellProps {
+  stickyHeader?: boolean;
+}
 
-      return sortDirection === 'ASC' ? (
-        <ArrowUpwardIcon size="medium" data-testid="asc-icon" title="Ascending order" />
-      ) : (
-        <ArrowDownwardIcon size="medium" data-testid="desc-icon" title="Descending order" />
-      );
-    };
+const InternalHeaderCell = <T extends TableItem>({
+  children,
+  column,
+  isSorted,
+  onSortClick,
+  sortDirection,
+  stickyHeader,
+}: HeaderCellProps<T>) => {
+  const { align, isSortable, width } = column;
 
-    const handleClick = (e: React.MouseEvent) => {
-      e.preventDefault();
+  const renderSortIcon = () => {
+    if (!isSorted) {
+      return null;
+    }
 
-      if (isSortable && typeof onSortClick === 'function') {
-        onSortClick();
-      }
-    };
-
-    return isCheckbox ? (
-      <StyledTableHeaderCheckbox stickyHeader={stickyHeader} align={align} width={width} />
+    return sortDirection === 'ASC' ? (
+      <ArrowUpwardIcon size="medium" data-testid="asc-icon" title="Ascending order" />
     ) : (
-      <StyledTableHeaderCell
-        align={align}
-        isSortable={isSortable}
-        stickyHeader={stickyHeader}
-        onClick={handleClick}
-        width={width}
-      >
-        <Flex alignItems="center" flexDirection="row">
-          {children}
-          {renderSortIcon()}
-        </Flex>
-      </StyledTableHeaderCell>
+      <ArrowDownwardIcon size="medium" data-testid="desc-icon" title="Descending order" />
     );
-  },
-);
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (isSortable && typeof onSortClick === 'function') {
+      onSortClick(column);
+    }
+  };
+
+  return (
+    <StyledTableHeaderCell
+      align={align}
+      isSortable={isSortable}
+      stickyHeader={stickyHeader}
+      onClick={handleClick}
+      width={width}
+    >
+      <Flex alignItems="center" flexDirection="row">
+        {children}
+        {renderSortIcon()}
+      </Flex>
+    </StyledTableHeaderCell>
+  );
+};
+
+export const HeaderCheckboxCell: React.FC<HeaderCheckboxCellProps> = memo(({ stickyHeader }) => (
+  <StyledTableHeaderCheckbox stickyHeader={stickyHeader} />
+));
+
+export const HeaderCell = typedMemo(InternalHeaderCell);

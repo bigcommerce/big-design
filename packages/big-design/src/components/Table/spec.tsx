@@ -232,6 +232,34 @@ describe('selectable', () => {
     expect(onSelectionChange).toHaveBeenCalledWith(items);
   });
 
+  test('click on select all should call selectedItems with all items respecting multi-page', () => {
+    const previouslySelectedItem = {
+      sku: 'Test',
+      name: 'Test Previously Select Item (multi-page)',
+      stock: 25,
+    };
+
+    const { getAllByRole } = render(
+      <Table
+        columns={columns}
+        itemName={itemName}
+        items={items}
+        selectable={{
+          onSelectionChange,
+          selectedItems: [previouslySelectedItem],
+        }}
+      />,
+    );
+
+    const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
+
+    // Select All
+    expect(selectAllCheckbox.checked).toBe(false);
+    fireEvent.click(selectAllCheckbox);
+
+    expect(onSelectionChange).toHaveBeenCalledWith([previouslySelectedItem, ...items]);
+  });
+
   test('select all when already all selected should deselect all items', () => {
     const { getAllByRole } = render(
       <Table
@@ -253,23 +281,31 @@ describe('selectable', () => {
     expect(onSelectionChange).toHaveBeenCalledWith([]);
   });
 
-  test('passing a selectAllState overrides the checkbox state', () => {
+  test('select all when already all selected should deselect all items and respect multi-page', () => {
+    const previouslySelectedItem = {
+      sku: 'Test',
+      name: 'Test Previously Select Item (multi-page)',
+      stock: 25,
+    };
+
     const { getAllByRole } = render(
       <Table
         columns={columns}
         itemName={itemName}
         items={items}
         selectable={{
-          selectAllState: 'ALL',
           onSelectionChange,
-          selectedItems: [],
+          selectedItems: [previouslySelectedItem, ...items],
         }}
       />,
     );
 
     const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
 
+    // Deselect all
     expect(selectAllCheckbox.checked).toBe(true);
+    fireEvent.click(selectAllCheckbox);
+    expect(onSelectionChange).toHaveBeenCalledWith([previouslySelectedItem]);
   });
 });
 

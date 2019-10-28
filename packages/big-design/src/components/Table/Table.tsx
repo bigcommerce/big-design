@@ -1,4 +1,4 @@
-import React, { memo, useRef } from 'react';
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 
 import { typedMemo, uniqueId } from '../../utils';
 import { useEventCallback } from '../../utils/useEventCallback';
@@ -9,6 +9,7 @@ import { Actions } from './Actions';
 import { Body } from './Body';
 import { Head } from './Head';
 import { HeaderCell } from './HeaderCell';
+import { HeaderCheckboxCell } from './HeaderCell/HeaderCell';
 import { Row } from './Row';
 
 const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactElement<TableProps<T>> => {
@@ -28,6 +29,13 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   } = props;
   const tableIdRef = useRef(id || uniqueId('table_'));
   const isSelectable = Boolean(selectable);
+  const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
+
+  useEffect(() => {
+    if (selectable) {
+      setSelectedItems(new Set(selectable.selectedItems));
+    }
+  }, [selectable ? selectable.selectedItems : null]);
 
   const onItemSelect = selectable
     ? useEventCallback(
@@ -36,31 +44,34 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
             return;
           }
 
-          const { selectedItems, onSelectionChange } = selectable;
-          const nextIsSelected = !isItemSelected(item);
+          const { onSelectionChange } = selectable;
+          const nextIsSelected = !selectedItems.has(item);
 
           if (nextIsSelected) {
             onSelectionChange([...selectedItems, item]);
           } else {
-            onSelectionChange(selectedItems.filter(selectedItem => selectedItem !== item));
+            onSelectionChange([...selectedItems].filter(selectedItem => selectedItem !== item));
           }
         },
-        [selectable.selectedItems],
+        [selectedItems],
       )
     : undefined;
 
-  const onSortClick = (column: TableColumn<T>) => {
-    if (!sortable || !column.isSortable) {
-      return;
-    }
+  const onSortClick = useCallback(
+    (column: TableColumn<T>) => {
+      if (!sortable || !column.isSortable) {
+        return;
+      }
 
-    const { hash } = column;
-    const sortDirection = sortable.direction === 'ASC' ? 'DESC' : 'ASC';
+      const { hash } = column;
+      const sortDirection = sortable.direction === 'ASC' ? 'DESC' : 'ASC';
 
-    if (typeof sortable.onSort === 'function') {
-      sortable.onSort(hash, sortDirection, column);
-    }
-  };
+      if (typeof sortable.onSort === 'function') {
+        sortable.onSort(hash, sortDirection, column);
+      }
+    },
+    [sortable],
+  );
 
   const shouldRenderActions = () => {
     return Boolean(pagination) || Boolean(selectable) || Boolean(itemName);
@@ -74,30 +85,24 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     return index;
   };
 
-  const isItemSelected = (item: T) => {
-    return (selectable && selectable.selectedItems.includes(item)) || false;
-  };
-
   const renderHeaders = () => (
     <Head>
       <tr>
-        {isSelectable && <HeaderCell key="header-checkbox" stickyHeader={stickyHeader} isCheckbox={true} />}
+        {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} />}
 
         {columns.map((column, index) => {
-          const { align, hash, header, isSortable, width } = column;
+          const { hash, header, isSortable } = column;
           const isSorted = isSortable && sortable && hash === sortable.columnHash;
           const sortDirection = sortable && sortable.direction;
 
           return (
             <HeaderCell
-              align={align}
-              isSortable={isSortable}
+              column={column}
               isSorted={isSorted}
               key={index}
-              onSortClick={() => onSortClick(column)}
+              onSortClick={onSortClick}
               sortDirection={sortDirection}
               stickyHeader={stickyHeader}
-              width={width}
             >
               {header}
             </HeaderCell>
@@ -111,7 +116,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     <Body>
       {items.map((item: T, index) => {
         const key = getItemKey(item, index);
-        const isSelected = isItemSelected(item);
+        const isSelected = selectedItems.has(item);
 
         return (
           <Row
@@ -132,7 +137,8 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
       {shouldRenderActions() && (
         <Actions
           pagination={pagination}
-          selectable={selectable}
+          onSelectionChange={selectable && selectable.onSelectionChange}
+          selectedItems={selectedItems}
           items={items}
           itemName={itemName}
           tableId={tableIdRef.current}

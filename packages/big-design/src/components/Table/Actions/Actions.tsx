@@ -1,124 +1,61 @@
-import React, { memo, useMemo } from 'react';
+import React from 'react';
 
-import { Checkbox } from '../../Checkbox';
+import { typedMemo } from '../../../utils';
 import { Flex } from '../../Flex';
-import { Pagination } from '../../Pagination';
 import { Text } from '../../Typography';
-import { TableItem, TablePagination, TableSelectable } from '../types';
-
-import { StyledActions, StyledPaginationContainer } from './styled';
+import { TableItem, TablePaginationProps, TableSelectable } from '../types';
+import { SelectAll } from '../SelectAll';
+import { TablePagination } from '../TablePagination';
 
 export interface ActionsProps<T> {
   itemName?: string;
   items: T[];
-  pagination?: TablePagination;
-  selectable?: TableSelectable<T>;
+  pagination?: TablePaginationProps;
+  onSelectionChange?: TableSelectable<T>['onSelectionChange'];
+  selectedItems: Set<T>;
   tableId: string;
 }
 
-export const Actions = memo(
-  <T extends TableItem>({ selectable, pagination, tableId, itemName, items = [], ...props }: ActionsProps<T>) => {
-    const totalItems = pagination ? pagination.totalItems : items.length;
+const InternalActions = <T extends TableItem>({
+  pagination,
+  tableId,
+  itemName,
+  items = [],
+  onSelectionChange,
+  selectedItems,
+  ...props
+}: ActionsProps<T>) => {
+  const isSelectable = typeof onSelectionChange === 'function';
+  const totalItems = pagination ? pagination.totalItems : items.length;
 
-    const handleSelectAll = () => {
-      if (!selectable) {
-        return;
-      }
+  const renderItemName = () => {
+    if (typeof itemName !== 'string') {
+      return null;
+    }
 
-      const { selectedItems, onSelectionChange } = selectable;
-
-      if (selectedItems.length > 0) {
-        onSelectionChange([]);
-      } else {
-        onSelectionChange([...items]);
-      }
-    };
-
-    const getSelectAllChecked = () => {
-      if (!selectable) {
-        return false;
-      }
-
-      const { selectAllState, selectedItems } = selectable;
-
-      switch (selectAllState) {
-        case 'ALL':
-          return true;
-
-        case 'PARTIAL':
-        case 'NONE':
-          return false;
-
-        default:
-          const totalSelectedItems = selectedItems.length;
-          const totalItemsInPage = items.length;
-
-          return totalSelectedItems === totalItemsInPage && totalItemsInPage > 0;
-      }
-    };
-
-    const renderSelectAllAction = () => {
-      if (!selectable) {
-        return null;
-      }
-
-      const { selectAllState, selectedItems } = selectable;
-      const totalSelectedItems = selectedItems.length;
-      const totalItemsInPage = items.length;
-
-      const isChecked = getSelectAllChecked();
-      const isIndeterminate =
-        selectAllState === 'PARTIAL' || (totalSelectedItems > 0 && totalSelectedItems !== totalItemsInPage);
-
-      return (
-        <Flex.Item marginRight="xxSmall">
-          <Flex flexDirection="row">
-            <Checkbox isIndeterminate={isIndeterminate} checked={isChecked} onChange={handleSelectAll} />
-            <Text marginLeft="small">
-              {totalSelectedItems === 0 ? `${totalItems}` : `${totalSelectedItems}/${totalItems}`}
-            </Text>
-          </Flex>
-        </Flex.Item>
-      );
-    };
-
-    const renderPagination = useMemo(
-      () =>
-        pagination && (
-          <StyledPaginationContainer>
-            <Pagination {...pagination} />
-          </StyledPaginationContainer>
-        ),
-      [pagination],
-    );
-
-    const renderItemName = () => {
-      if (typeof itemName !== 'string') {
-        return null;
-      }
-
-      const text = Boolean(selectable) ? itemName : `${totalItems} ${itemName}`;
-
-      return (
-        <Flex.Item>
-          <Text margin="none">{text}</Text>
-        </Flex.Item>
-      );
-    };
+    const text = Boolean(isSelectable) ? itemName : `${totalItems} ${itemName}`;
 
     return (
-      <StyledActions
-        alignItems="center"
-        aria-controls={tableId}
-        flexDirection="row"
-        justifyContent="stretch"
-        padding="small"
-        {...props}
-      >
-        {renderSelectAllAction()}
-        {renderItemName()}
-        {renderPagination}
-      </StyledActions>
+      <Flex.Item>
+        <Text margin="none">{text}</Text>
+      </Flex.Item>
     );
-  },
-);
+  };
+
+  return (
+    <Flex
+      alignItems="center"
+      aria-controls={tableId}
+      flexDirection="row"
+      justifyContent="stretch"
+      padding="small"
+      {...props}
+    >
+      <SelectAll onChange={onSelectionChange} selectedItems={selectedItems} items={items} totalItems={totalItems} />
+      {renderItemName()}
+      {pagination && <TablePagination {...pagination} />}
+    </Flex>
+  );
+};
+
+export const Actions = typedMemo(InternalActions);
