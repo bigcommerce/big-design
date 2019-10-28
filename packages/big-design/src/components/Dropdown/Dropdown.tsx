@@ -17,8 +17,6 @@ interface DropdownState {
 }
 
 export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T>, DropdownState> {
-  static readonly displayName = 'Dropdown';
-
   readonly state: DropdownState = {
     highlightedItem: null,
     isOpen: false,
