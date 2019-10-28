@@ -228,7 +228,9 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
             data-highlighted={isHighlighted}
             id={id}
             key={index}
-            onChange={() => this.handleOnCheckboxOptionChange(option)}
+            onClick={() => {
+              this.handleOnCheckboxOptionClick(option);
+            }}
             onFocus={this.handleOnOptionHighlighted}
             onMouseOver={this.handleOnOptionHighlighted}
             ref={ref}
@@ -450,7 +452,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     this.toggleList();
   };
 
-  private handleOnCheckboxOptionChange = (option: Option<T>) => {
+  private handleOnCheckboxOptionClick = (option: Option<T>) => {
     const { onChange, value: values } = this.props;
     const { highlightedItem } = this.state;
     let updatedValues = [];
@@ -462,9 +464,9 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     const checkbox = highlightedItem.querySelector('input[type="checkbox"]') as HTMLInputElement;
 
     if (checkbox.checked) {
-      updatedValues = values.concat(option.value);
-    } else {
       updatedValues = values.filter(value => value !== option.value);
+    } else {
+      updatedValues = values.concat(option.value);
     }
 
     onChange(updatedValues, this.getSelectedOptions(updatedValues));
@@ -571,8 +573,9 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     switch (event.key) {
       case 'Enter': {
         if (this.state.isOpen) {
-          event.preventDefault();
-          this.clickHighlightedItem();
+          if (this.state.highlightedItem) {
+            this.state.highlightedItem.click();
+          }
         } else {
           this.toggleList();
         }
@@ -640,16 +643,4 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
       scrollMode: 'if-needed',
     });
   };
-
-  private clickHighlightedItem() {
-    const { highlightedItem } = this.state;
-
-    if (!highlightedItem) {
-      return;
-    }
-
-    const checkbox = highlightedItem && (highlightedItem.querySelector('input[type="checkbox"]') as HTMLInputElement);
-
-    return checkbox ? checkbox.click() : highlightedItem.click();
-  }
 }
