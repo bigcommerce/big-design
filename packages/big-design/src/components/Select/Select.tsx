@@ -173,13 +173,13 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   }
 
   private renderChips() {
-    const { options, multi, value: values } = this.props;
+    const { options, multi, value } = this.props;
 
-    if (!multi || !values || !Array.isArray(values)) {
+    if (!multi || !value || !Array.isArray(value)) {
       return [];
     }
 
-    const selectedOptions = values.map(value => options.find(option => option.value === value));
+    const selectedOptions = value.map(val => options.find(option => option.value === val));
 
     return selectedOptions.map(option => (option ? option.content : ''));
   }
@@ -228,7 +228,9 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
             data-highlighted={isHighlighted}
             id={id}
             key={index}
-            onClick={() => {
+            onClick={event => {
+              event.stopPropagation();
+              event.preventDefault();
               this.handleOnCheckboxOptionClick(option);
             }}
             onFocus={this.handleOnOptionHighlighted}
@@ -381,16 +383,16 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     return id || `${this.getSelectId()}-action`;
   }
 
-  private getSelectedOptions(values: any[]) {
+  private getSelectedOptions(values: T[]) {
     const { options } = this.props;
 
     return options.filter(option => values.find(value => value === option.value));
   }
 
   private isChecked(option: Option<T>) {
-    const { value: values } = this.props;
+    const { value } = this.props;
 
-    return Array.isArray(values) && Boolean(values.find(value => value === option.value));
+    return Array.isArray(value) && Boolean(value.find(val => val === option.value));
   }
 
   private updateHighlightedItem(element: HTMLLIElement | null, scroll?: boolean, instantScroll?: boolean) {
@@ -453,20 +455,20 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   };
 
   private handleOnCheckboxOptionClick = (option: Option<T>) => {
-    const { onChange, value: values } = this.props;
+    const { onChange, value } = this.props;
     const { highlightedItem } = this.state;
     let updatedValues = [];
 
-    if (option.disabled || !highlightedItem || !Array.isArray(values)) {
+    if (option.disabled || !highlightedItem || !Array.isArray(value)) {
       return;
     }
 
     const checkbox = highlightedItem.querySelector('input[type="checkbox"]') as HTMLInputElement;
 
     if (checkbox.checked) {
-      updatedValues = values.filter(value => value !== option.value);
+      updatedValues = value.filter(val => val !== option.value);
     } else {
-      updatedValues = values.concat(option.value);
+      updatedValues = value.concat(option.value);
     }
 
     onChange(updatedValues, this.getSelectedOptions(updatedValues));
