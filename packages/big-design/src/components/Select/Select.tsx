@@ -299,16 +299,18 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   }
 
   private renderIcon(action: Action, isHighlighted: boolean) {
+    const getColor = () => {
+      if (action.disabled) {
+        return 'secondary40';
+      } else {
+        return isHighlighted ? (action.actionType === 'destructive' ? 'danger50' : 'primary') : 'secondary60';
+      }
+    };
+
     return (
       React.isValidElement(action.icon) &&
       React.cloneElement(action.icon, {
-        color: action.disabled
-          ? 'secondary40'
-          : isHighlighted
-          ? action.actionType === 'destructive'
-            ? 'danger50'
-            : 'primary'
-          : 'secondary60',
+        color: getColor(),
         size: 'large',
       })
     );

@@ -112,16 +112,18 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
   }
 
   private renderIcon(item: Item<T> | LinkItem<T>, isHighlighted: boolean) {
+    const getColor = () => {
+      if (item.disabled) {
+        return 'secondary40';
+      } else {
+        return isHighlighted ? (item.actionType === 'destructive' ? 'danger50' : 'primary') : 'secondary60';
+      }
+    };
+
     return (
       React.isValidElement(item.icon) &&
       React.cloneElement(item.icon, {
-        color: item.disabled
-          ? 'secondary40'
-          : isHighlighted
-          ? item.actionType === 'destructive'
-            ? 'danger50'
-            : 'primary'
-          : 'secondary60',
+        color: getColor(),
         size: 'large',
       })
     );
