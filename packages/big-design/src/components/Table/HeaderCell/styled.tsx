@@ -1,9 +1,14 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { HeaderCellProps } from './HeaderCell';
+interface StyledTableHeaderCellProps {
+  align?: 'left' | 'center' | 'right';
+  isSortable?: boolean;
+  width?: number | string;
+  stickyHeader?: boolean;
+}
 
-export const StyledTableHeaderCell = styled.th<HeaderCellProps>`
+export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
   background-color: ${({ theme }) => theme.colors.secondary10};
   box-shadow: ${({ theme }) =>
     `inset 0px -1px 0px ${theme.colors.secondary30}, inset 0px 1px 0px ${theme.colors.secondary30}`};
@@ -40,12 +45,8 @@ export const StyledTableHeaderCell = styled.th<HeaderCellProps>`
 `;
 
 export const StyledTableHeaderCheckbox = styled(StyledTableHeaderCell)`
-  ${props =>
-    props.isCheckbox &&
-    css`
-      width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
-      white-space: nowrap;
-    `};
+  width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
+  white-space: nowrap;
 `;
 
 StyledTableHeaderCell.defaultProps = { theme: defaultTheme };
