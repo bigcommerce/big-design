@@ -6,6 +6,7 @@ export interface SelectProps<T> extends Omit<React.HTMLAttributes<HTMLUListEleme
   action?: Action;
   disabled?: boolean;
   error?: string;
+  filterable?: boolean;
   label?: string;
   maxHeight?: number;
   multi?: boolean;

@@ -167,6 +167,10 @@ exports[`renders a pagination component 1`] = `
   color: #313440;
 }
 
+.c11 label {
+  cursor: pointer;
+}
+
 .c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;

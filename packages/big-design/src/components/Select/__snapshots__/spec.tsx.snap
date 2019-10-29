@@ -178,6 +178,10 @@ exports[`select action supports icons 1`] = `
   color: #313440;
 }
 
+.c1 label {
+  cursor: pointer;
+}
+
 <div
   class="c0"
 >

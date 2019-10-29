@@ -538,3 +538,24 @@ test('does not forward styles', () => {
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(getByRole('listbox')).not.toHaveStyle('background: red');
 });
+
+test('should render a non filterable select', () => {
+  const { getAllByLabelText } = render(
+    <Select
+      filterable={false}
+      label="Countries"
+      onChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
+
+  const input = getAllByLabelText('Countries')[0];
+  expect(input.getAttribute('readonly')).toBe('');
+});

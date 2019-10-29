@@ -32,6 +32,7 @@ export default () => (
                 icon: <DeleteIcon />,
                 onClick: () => null,
               }}
+              filterable={true}
               label="Countries"
               maxHeight={300}
               onChange={handleChange}
