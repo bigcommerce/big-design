@@ -16,7 +16,7 @@ interface DropdownState {
   isOpen: boolean;
 }
 
-export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> {
+export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T>, DropdownState> {
   readonly state: DropdownState = {
     highlightedItem: null,
     isOpen: false,
@@ -31,7 +31,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
   private listItemsRefs: Array<RefObject<HTMLLIElement>> = [];
 
   render() {
-    const { children, className, maxHeight, options, placement, style, trigger, ...rest } = this.props;
+    const { children, maxHeight, options, placement, trigger, ...rest } = this.props;
     const { highlightedItem, isOpen } = this.state;
 
     this.listItemsRefs = [];
@@ -95,34 +95,18 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
             {option.type === 'link' && !option.disabled ? (
               <Link href={option.url} target={option.target}>
                 <Flex alignItems="center" flexDirection="row">
-                  {icon && <FlexItem paddingRight="small">{this.renderIcon(option, isHighlighted)}</FlexItem>}
+                  {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
                   {content}
                 </Flex>
               </Link>
             ) : (
               <Flex alignItems="center" flexDirection="row">
-                {icon && <FlexItem paddingRight="small">{this.renderIcon(option, isHighlighted)}</FlexItem>}
+                {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
                 {content}
               </Flex>
             )}
           </ListItem>
         );
-      })
-    );
-  }
-
-  private renderIcon(option: DropdownItem | DropdownLinkItem, isHighlighted: boolean) {
-    return (
-      React.isValidElement(option.icon) &&
-      React.cloneElement(option.icon, {
-        color: option.disabled
-          ? 'secondary40'
-          : isHighlighted
-          ? option.actionType === 'destructive'
-            ? 'danger50'
-            : 'primary'
-          : 'secondary60',
-        size: 'large',
       })
     );
   }
@@ -143,6 +127,28 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
         ...aria,
       })
     );
+  }
+
+  private renderIcon(item: DropdownItem<T> | DropdownLinkItem<T>, isHighlighted: boolean) {
+    return (
+      React.isValidElement(item.icon) &&
+      React.cloneElement(item.icon, {
+        color: this.iconColor(item, isHighlighted),
+        size: 'large',
+      })
+    );
+  }
+
+  private iconColor(item: DropdownItem<T> | DropdownLinkItem<T>, isHighlighted: boolean) {
+    if (item.disabled) {
+      return 'secondary40';
+    }
+
+    if (!isHighlighted) {
+      return 'secondary60';
+    }
+
+    return item.actionType === 'destructive' ? 'danger50' : 'primary';
   }
 
   private toggleList = () => {
@@ -173,7 +179,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     return id || this.uniqueDropdownId;
   }
 
-  private getItemId(item: DropdownItem | DropdownLinkItem, index: number) {
+  private getItemId(item: DropdownItem<T> | DropdownLinkItem<T>, index: number) {
     const { id } = item;
 
     return id || `${this.getDropdownId()}-item-${index}`;
@@ -214,7 +220,7 @@ export class Dropdown extends React.PureComponent<DropdownProps, DropdownState> 
     this.toggleList();
   };
 
-  private handleOnItemClick = (item: DropdownItem | DropdownLinkItem) => {
+  private handleOnItemClick = (item: DropdownItem<T> | DropdownLinkItem<T>) => {
     if (item.disabled) {
       return;
     }

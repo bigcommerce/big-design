@@ -135,21 +135,7 @@ exports[`render pagination component 1`] = `
 }
 
 .c8 a {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   color: #313440;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  margin: 0 -1rem;
-  padding: 0 1rem;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  width: 100%;
 }
 
 .c4 {
@@ -641,21 +627,7 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 .c8 a {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   color: #313440;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  margin: 0 -1rem;
-  padding: 0 1rem;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  width: 100%;
 }
 
 .c4 {
@@ -1147,21 +1119,7 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 .c8 a {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   color: #313440;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  margin: 0 -1rem;
-  padding: 0 1rem;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  width: 100%;
 }
 
 .c4 {
@@ -1654,21 +1612,7 @@ exports[`render pagination component with no items 1`] = `
 }
 
 .c8 a {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   color: #313440;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  margin: 0 -1rem;
-  padding: 0 1rem;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  width: 100%;
 }
 
 .c4 {

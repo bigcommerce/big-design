@@ -2,25 +2,25 @@ import { Placement } from 'popper.js';
 
 import { ListItemProps } from '../List/Item';
 
-export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
+export interface DropdownProps<T> extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
   maxHeight?: number;
-  options: Array<DropdownItem | DropdownLinkItem>;
+  options: Array<DropdownItem<T> | DropdownLinkItem<T>>;
   placement?: Placement;
   trigger: React.ReactElement;
 }
 
-interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'onClick' | 'value'> {
+interface BaseItem<T> extends Omit<ListItemProps, 'children' | 'content' | 'onClick' | 'value'> {
   content: string;
   icon?: React.ReactElement;
-  value?: any;
-  onClick?(item: DropdownItem | DropdownLinkItem): void;
+  value?: T;
+  onClick?(item: DropdownItem<T> | DropdownLinkItem<T>): void;
 }
 
-export interface DropdownItem extends BaseItem {
+export interface DropdownItem<T> extends BaseItem<T> {
   type?: 'string';
 }
 
-export interface DropdownLinkItem extends BaseItem {
+export interface DropdownLinkItem<T> extends BaseItem<T> {
   target?: HTMLAnchorElement['target'];
   type: 'link';
   url: string;

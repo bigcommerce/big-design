@@ -84,12 +84,17 @@ export default () => (
           <Radio checked={true} onChange={() => null} label="Example Radio" />
         </Form.Group>
         <Form.Group>
-          <Select label="Example Select" placeholder="Example" onItemChange={() => null}>
-            <Select.Option value={1}>Option</Select.Option>
-            <Select.Option value={2}>Option</Select.Option>
-            <Select.Option value={3}>Option</Select.Option>
-            <Select.Option value={4}>Option</Select.Option>
-          </Select>
+          <Select
+            label="Example Select"
+            onChange={() => null}
+            options={[
+              { value: 1, content: 'Option' },
+              { value: 2, content: 'Option' },
+              { value: 3, content: 'Option' },
+              { value: 4, content: 'Option' },
+            ]}
+            placeholder="Example"
+          />
         </Form.Group>
         <Form.Group>
           <Textarea label="Example Textarea" placeholder="Example" />

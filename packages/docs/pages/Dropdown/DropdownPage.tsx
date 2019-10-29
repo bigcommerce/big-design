@@ -62,7 +62,7 @@ export default () => (
 
     <Text>
       A Dropdown can render a list of <NextLink href="/link">Links</NextLink> if it receives an object of type{' '}
-      <Code>DropdownLinkItem</Code>.
+      <Code>LinkItem</Code>.
     </Text>
 
     <CodePreview>
@@ -82,7 +82,7 @@ export default () => (
     <H2>Icons</H2>
 
     <Text>
-      A DropdownItem accepts an <NextLink href="/icons">Icon</NextLink> component to render.
+      An Item accepts an <NextLink href="/icons">Icon</NextLink> component to render.
     </Text>
 
     <CodePreview>

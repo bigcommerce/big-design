@@ -157,13 +157,9 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
 
     return chips.map((chip, key) =>
       onChipDelete ? (
-        <Chip key={key} marginBottom="none" onDelete={onChipDelete(chip)}>
-          {chip}
-        </Chip>
+        <Chip key={key} label={chip} marginBottom="none" onDelete={onChipDelete(chip)} />
       ) : (
-        <Chip key={key} marginBottom="none" marginTop="none">
-          {chip}
-        </Chip>
+        <Chip key={key} label={chip} marginBottom="none" marginTop="none" />
       ),
     );
   }

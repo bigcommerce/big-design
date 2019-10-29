@@ -41,14 +41,7 @@ export const StyledListItem = styled.li<ListItemProps>`
     `}
 
   a {
-    align-items: center;
     color: ${({ theme }) => theme.colors.secondary70};
-    display: flex;
-    height: 100%;
-    margin: 0 -${({ theme }) => theme.spacing.medium};
-    padding: 0 ${({ theme }) => theme.spacing.medium};
-    text-decoration: none;
-    width: 100%;
   }
 `;
 
