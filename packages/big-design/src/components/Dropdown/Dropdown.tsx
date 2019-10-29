@@ -1,5 +1,5 @@
-import React, { RefObject } from 'react';
-import { Manager, Reference, RefHandler } from 'react-popper';
+import React, { ReactElement, RefObject } from 'react';
+import { Manager, PopperProps, Reference, RefHandler } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
@@ -8,6 +8,7 @@ import { FlexItem } from '../Flex/Item';
 import { Link } from '../Link';
 import { List } from '../List';
 import { ListItem } from '../List/Item';
+import { Tooltip } from '../Tooltip';
 
 import { DropdownItem, DropdownLinkItem, DropdownProps } from './types';
 
@@ -78,7 +79,18 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
           this.listItemsRefs.push(ref);
         }
 
-        const { content, icon, onClick, type, value, ...rest } = option;
+        const { content, icon, onClick, type, value, tooltip, ...rest } = option;
+
+        let listItemContent = (
+          <Flex alignItems="center" flexDirection="row">
+            {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
+            {content}
+          </Flex>
+        );
+
+        if (tooltip) {
+          listItemContent = this.wrapInTooltip(listItemContent, tooltip.message, tooltip.placement);
+        }
 
         return (
           <ListItem
@@ -94,20 +106,22 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
           >
             {option.type === 'link' && !option.disabled ? (
               <Link href={option.url} target={option.target}>
-                <Flex alignItems="center" flexDirection="row">
-                  {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
-                  {content}
-                </Flex>
+                {listItemContent}
               </Link>
             ) : (
-              <Flex alignItems="center" flexDirection="row">
-                {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
-                {content}
-              </Flex>
+              listItemContent
             )}
           </ListItem>
         );
       })
+    );
+  }
+
+  private wrapInTooltip(element: ReactElement, message: string, placement: PopperProps['placement'] = 'bottom') {
+    return (
+      <Tooltip placement={placement} trigger={element}>
+        {message}
+      </Tooltip>
     );
   }
 

@@ -276,3 +276,27 @@ test('does not forward styles', () => {
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(getByRole('listbox')).not.toHaveStyle('background: red');
 });
+
+test('dropdown menu renders items with tooltip', () => {
+  const { getByRole, getByText } = render(
+    <Dropdown
+      onClick={onClick}
+      options={[
+        { content: 'Option 1', type: 'string', value: '0' },
+        {
+          content: 'Option with tooltip',
+          tooltip: { message: 'This is tooltip message' },
+          type: 'string',
+        },
+        { content: 'Option 3', type: 'string', value: '2', actionType: 'destructive' },
+      ]}
+      trigger={<Button>Button</Button>}
+    />,
+  );
+  const trigger = getByRole('button');
+
+  fireEvent.click(trigger);
+  fireEvent.mouseEnter(getByText('Option with tooltip'));
+
+  expect(getByText('This is tooltip message')).toBeTruthy();
+});

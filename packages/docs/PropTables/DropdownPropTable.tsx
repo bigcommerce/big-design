@@ -89,6 +89,15 @@ const dropdownItemProps: Prop[] = [
     description: 'Returns the item object.',
   },
   {
+    name: 'tooltip',
+    types: `{ 
+      message: string, 
+      placement?: 'auto | auto-end | auto-start | bottom | bottom-end | bottom-start
+       | left | left-end | left-start | right | right-end | right-start | top | top-end | top-start
+    '}`,
+    description: "Adds tooltip for item. Placement is optional, if not passed - 'bottom' is set.",
+  },
+  {
     name: 'type',
     types: "'string'",
     defaultValue: "'string'",
@@ -135,6 +144,15 @@ const dropdownLinkProps: Prop[] = [
         component to display to the left of the text.
       </>
     ),
+  },
+  {
+    name: 'tooltip',
+    types: `{ 
+      message: string, 
+      placement?: 'auto | auto-end | auto-start | bottom | bottom-end | bottom-start
+       | left | left-end | left-start | right | right-end | right-start | top | top-end | top-start
+    '}`,
+    description: "Adds tooltip for item. Placement is optional, if not passed - 'bottom' is set.",
   },
   {
     name: 'type',

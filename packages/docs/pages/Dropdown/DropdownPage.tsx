@@ -43,6 +43,13 @@ export default () => (
             icon: <DeleteIcon />,
             actionType: 'destructive',
           },
+          {
+            content: 'Link with tooltip',
+            tooltip: { message: ' Tooltip message' },
+            icon: <OpenInNewIcon />,
+            type: 'link',
+            url: '#',
+          },
           { content: 'Link', icon: <OpenInNewIcon />, type: 'link', url: '#' },
         ]}
         placement="bottom-start"
