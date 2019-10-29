@@ -111,28 +111,6 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     );
   }
 
-  private renderIcon(item: DropdownItem<T> | DropdownLinkItem<T>, isHighlighted: boolean) {
-    const getColor = () => {
-      if (item.disabled) {
-        return 'secondary40';
-      }
-
-      if (!isHighlighted) {
-        return 'secondary60';
-      }
-
-      return item.actionType === 'destructive' ? 'danger50' : 'primary';
-    };
-
-    return (
-      React.isValidElement(item.icon) &&
-      React.cloneElement(item.icon, {
-        color: getColor(),
-        size: 'large',
-      })
-    );
-  }
-
   private renderTrigger(ref: RefHandler) {
     const { trigger } = this.props;
 
@@ -149,6 +127,28 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
         ...aria,
       })
     );
+  }
+
+  private renderIcon(item: DropdownItem<T> | DropdownLinkItem<T>, isHighlighted: boolean) {
+    return (
+      React.isValidElement(item.icon) &&
+      React.cloneElement(item.icon, {
+        color: this.iconColor(item, isHighlighted),
+        size: 'large',
+      })
+    );
+  }
+
+  private iconColor(item: DropdownItem<T> | DropdownLinkItem<T>, isHighlighted: boolean) {
+    if (item.disabled) {
+      return 'secondary40';
+    }
+
+    if (!isHighlighted) {
+      return 'secondary60';
+    }
+
+    return item.actionType === 'destructive' ? 'danger50' : 'primary';
   }
 
   private toggleList = () => {
