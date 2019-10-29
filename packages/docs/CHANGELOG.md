@@ -3,6 +3,150 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.11.1...@bigcommerce/docs@0.12.0) (2019-10-29)
+
+
+* Restrict Dropdown (#212) ([8608609](https://github.com/bigcommerce/big-design/commit/8608609)), closes [#212](https://github.com/bigcommerce/big-design/issues/212)
+
+
+### Bug Fixes
+
+* **docs:** logo overflowing into side nav ([9237d31](https://github.com/bigcommerce/big-design/commit/9237d31))
+* **docs:** remove 'test' label from prop tables ([#211](https://github.com/bigcommerce/big-design/issues/211)) ([312a5b1](https://github.com/bigcommerce/big-design/commit/312a5b1))
+
+
+### Features
+
+* **component:** add filterable prop to Select ([#227](https://github.com/bigcommerce/big-design/issues/227)) ([f05d343](https://github.com/bigcommerce/big-design/commit/f05d343))
+* **component:** add multiselect ([#200](https://github.com/bigcommerce/big-design/issues/200)) ([02acf73](https://github.com/bigcommerce/big-design/commit/02acf73))
+* **component:** add sort functionality to Table component ([2d30461](https://github.com/bigcommerce/big-design/commit/2d30461))
+* **component:** allow state override of table select all checkbox ([#224](https://github.com/bigcommerce/big-design/issues/224)) ([b64eda1](https://github.com/bigcommerce/big-design/commit/b64eda1))
+* **component:** restrict actions and header from modals ([#209](https://github.com/bigcommerce/big-design/issues/209)) ([bc85d25](https://github.com/bigcommerce/big-design/commit/bc85d25))
+* **component:** restrict Select ([#218](https://github.com/bigcommerce/big-design/issues/218)) ([66378ed](https://github.com/bigcommerce/big-design/commit/66378ed))
+* **component:** update Tabs component to be more restrictive ([683d768](https://github.com/bigcommerce/big-design/commit/683d768))
+* **docs:** add figma UI kit and sample app to resources section ([#206](https://github.com/bigcommerce/big-design/issues/206)) ([bb07411](https://github.com/bigcommerce/big-design/commit/bb07411))
+* **docs:** add helpful links section ([217b040](https://github.com/bigcommerce/big-design/commit/217b040))
+* **docs:** add Table docs + refactor PropsTable ([dce179a](https://github.com/bigcommerce/big-design/commit/dce179a))
+* **docs:** add title and collapsible props to PropTable ([81fe57a](https://github.com/bigcommerce/big-design/commit/81fe57a))
+* **docs:** update logo with text ([#215](https://github.com/bigcommerce/big-design/issues/215)) ([9062d49](https://github.com/bigcommerce/big-design/commit/9062d49))
+* **docs:** update Panel docs ([b744b0b](https://github.com/bigcommerce/big-design/commit/b744b0b))
+
+
+### BREAKING CHANGES
+
+* **component:** Select now accepts an array of `Options` and an `Action` object. Will call `onChange` when option is selected with the chosen `value` and `option` as arguments. For more details see the usage examples in our docs.
+
+Old:
+```jsx
+<Select
+    label="Countries"
+    maxHeight={300}
+    onActionClick={() => null}
+    onItemChange={handleChange}
+    placeholder={'Choose country'}
+    placement={'bottom-start'}
+    required
+    value={value}
+>
+    <Select.Option value="us">United States</Select.Option>
+    <Select.Option value="mx">Mexico</Select.Option>
+    <Select.Option value="ca">Canada</Select.Option>
+    <Select.Option value="ru" disabled>Russia</Select.Option>
+    <Select.Action>Action</Select.Action>
+</Select>
+```
+
+New:
+```jsx
+<Select
+    action={{
+        actionType: 'destructive',
+        content: 'Remove Country',
+        icon: <DeleteIcon />,
+        onClick: () => null,
+    }}
+    label="Countries"
+    maxHeight={300}
+    onChange={handleChange}
+    options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'ru', content: 'Russia', disabled: true },
+    ]}
+    placeholder={'Choose country'}
+    placement={'bottom-start'}
+    required
+    value={value}
+/>
+```
+* **component:** Tabs now accepts an `items` prop to render tab items and omits children from being rendered.
+
+Old:
+```jsx
+<Tabs>
+  <Tabs.Tab id="tab1">Tab 1</Tabs.Tab>
+  {/* ... */}
+</Tabs>
+```
+
+New:
+```jsx
+<Tabs activeTab="tab1" items={[{ id: 'tab1', title: 'Tab 1' }]} onTabClick={() => {}} />
+```
+* Dropdown now accepts an array of `DropdownItems` & `DropdownItemLinks` as `options`.
+
+Old:
+```jsx
+<Dropdown onItemClick={onClick} trigger={<Button>Button</Button>}>
+  <Dropdown.Item value={0}>Option</Dropdown.Item>
+  <Dropdown.Item value={1}>Option</Dropdown.Item>
+  <Dropdown.Item value={2}>Option</Dropdown.Item>
+</Dropdown>
+```
+
+New:
+```jsx
+<Dropdown
+  options={[
+    { content: 'Option', value: 0, onClick },
+    { content: 'Option', value: 1, onClick },
+    { content: 'Option', value: 2, onClick, actionType: 'destructive' },
+    { content: 'Option', value: 3, onClick, icon: <CheckCircleIcon /> },
+  ]}
+  trigger={<Button>Button</Button>}/>
+```
+* **component:** Modal is now restricted and uses a `header` and `actions` props instead.
+
+Old:
+```jsx
+<Modal isOpen={isOpen}>
+  <Modal.Header>Modal Title</Modal.Header>
+  <Modal.Body>
+    <Text>Body content.</Text>
+  </Modal.Body>
+  <Modal.Actions>
+    <Button variant="subtle" onClick={() => setIsOpen(false)}>
+       Cancel
+     </Button>
+  </Modal.Actions>
+</Modal>
+```
+
+New:
+```jsx
+<Modal 
+  actions={[{text: 'Cancel', variant: 'subtle', onClick: () => setIsOpen(false)}]}
+  isOpen={isOpen} 
+  header="Modal Title">
+  <Text>Body content.</Text>
+</Modal>
+```
+
+
+
+
+
 ## [0.11.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.11.0...@bigcommerce/docs@0.11.1) (2019-09-24)
 
 **Note:** Version bump only for package @bigcommerce/docs

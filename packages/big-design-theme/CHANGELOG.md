@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.1.2...@bigcommerce/big-design-theme@0.2.0) (2019-10-29)
+
+**Note:** Version bump only for package @bigcommerce/big-design-theme
+
+
+
+
+
 ## [0.1.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.1.1...@bigcommerce/big-design-theme@0.1.2) (2019-08-19)
 
 

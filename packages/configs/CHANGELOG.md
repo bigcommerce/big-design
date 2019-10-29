@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/chanceaclark/big-design/compare/@bigcommerce/configs@0.6.0...@bigcommerce/configs@0.7.0) (2019-10-29)
+
+
+### Bug Fixes
+
+* **configs:** build cjs and es on dev mode ([498606f](https://github.com/chanceaclark/big-design/commit/498606f))
+
+
+
+
+
 # [0.6.0](https://github.com/deini/big-design/compare/@bigcommerce/configs@0.5.0...@bigcommerce/configs@0.6.0) (2019-08-13)
 
 
