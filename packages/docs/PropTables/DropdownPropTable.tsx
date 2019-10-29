@@ -33,10 +33,10 @@ const dropdownProps: Prop[] = [
   },
   {
     name: 'options',
-    types: 'Array<Item | LinkItem>',
+    types: 'Array<DropdownItem | DropdownLinkItem>',
     description: (
       <>
-        Accepts an array of <Code>Items</Code> and <Code>LinkItems</Code>. See example for usage.
+        Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See example for usage.
       </>
     ),
   },
@@ -59,7 +59,7 @@ const dropdownItemProps: Prop[] = [
     name: 'content',
     types: 'string',
     required: true,
-    description: 'Sets the text content of the Item.',
+    description: 'Sets the text content of the DropdownItem.',
   },
   {
     name: 'disabled',
@@ -85,7 +85,7 @@ const dropdownItemProps: Prop[] = [
   },
   {
     name: 'onClick',
-    types: '(item: Item): void',
+    types: '(item: DropdownItem): void',
     description: 'Returns the item object.',
   },
   {
@@ -112,7 +112,7 @@ const dropdownLinkProps: Prop[] = [
     name: 'content',
     types: 'string',
     required: true,
-    description: 'Sets the text content of the LinkItem.',
+    description: 'Sets the text content of the DropdownLinkItem.',
   },
   {
     name: 'disabled',
@@ -159,7 +159,7 @@ const dropdownLinkProps: Prop[] = [
   },
   {
     name: 'onClick',
-    types: '(item: LinkItem): void',
+    types: '(item: DropdownLinkItem): void',
     description: 'Returns the item object.',
   },
 ];

@@ -1,2 +1,2 @@
 export { Dropdown } from './Dropdown';
-export { Item, LinkItem, DropdownProps } from './types';
+export { DropdownItem, DropdownLinkItem, DropdownProps } from './types';

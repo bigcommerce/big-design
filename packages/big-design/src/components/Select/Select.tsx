@@ -302,9 +302,13 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     const getColor = () => {
       if (action.disabled) {
         return 'secondary40';
-      } else {
-        return isHighlighted ? (action.actionType === 'destructive' ? 'danger50' : 'primary') : 'secondary60';
       }
+
+      if (!isHighlighted) {
+        return 'secondary60';
+      }
+
+      return action.actionType === 'destructive' ? 'danger50' : 'primary';
     };
 
     return (

@@ -9,7 +9,7 @@ import { Link } from '../Link';
 import { List } from '../List';
 import { ListItem } from '../List/Item';
 
-import { DropdownProps, Item, LinkItem } from './types';
+import { DropdownItem, DropdownLinkItem, DropdownProps } from './types';
 
 interface DropdownState {
   highlightedItem: HTMLLIElement | null;
@@ -111,13 +111,17 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     );
   }
 
-  private renderIcon(item: Item<T> | LinkItem<T>, isHighlighted: boolean) {
+  private renderIcon(item: DropdownItem<T> | DropdownLinkItem<T>, isHighlighted: boolean) {
     const getColor = () => {
       if (item.disabled) {
         return 'secondary40';
-      } else {
-        return isHighlighted ? (item.actionType === 'destructive' ? 'danger50' : 'primary') : 'secondary60';
       }
+
+      if (!isHighlighted) {
+        return 'secondary60';
+      }
+
+      return item.actionType === 'destructive' ? 'danger50' : 'primary';
     };
 
     return (
@@ -175,7 +179,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     return id || this.uniqueDropdownId;
   }
 
-  private getItemId(item: Item<T> | LinkItem<T>, index: number) {
+  private getItemId(item: DropdownItem<T> | DropdownLinkItem<T>, index: number) {
     const { id } = item;
 
     return id || `${this.getDropdownId()}-item-${index}`;
@@ -216,7 +220,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     this.toggleList();
   };
 
-  private handleOnItemClick = (item: Item<T> | LinkItem<T>) => {
+  private handleOnItemClick = (item: DropdownItem<T> | DropdownLinkItem<T>) => {
     if (item.disabled) {
       return;
     }
