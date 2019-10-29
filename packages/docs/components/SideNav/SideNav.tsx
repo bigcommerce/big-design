@@ -1,9 +1,13 @@
 import { Flex } from '@bigcommerce/big-design';
 import React from 'react';
+import { StyledComponent } from 'styled-components';
+
+import { BigDesignLogoIcon, GithubLogoIcon } from '../Icons';
+import { List } from '../List';
 
 import { StyledFlex } from './styled';
 import { SideNavGroup } from './SideNavGroup';
-import { SideNavLink } from './SideNavLink';
+import { SideNavLink, StyledLink } from './SideNavLink';
 import { SideNavLogo } from './SideNavLogo';
 import { SideNavMenu } from './SideNavMenu';
 
@@ -125,7 +129,30 @@ export const SideNav: React.FC = () => {
             Padding
           </SideNavLink>
         </SideNavGroup>
+
+        <SideNavGroup title="Helpful Links">
+          <IconLink
+            url="https://github.com/bigcommerce/big-design"
+            component={<GithubLogoIcon title="Github Logo" />}
+            title="Github"
+          />
+          <IconLink
+            url="https://design.bigcommerce.com/components"
+            component={<BigDesignLogoIcon title="BigDesign Logo" />}
+            title="Design Guidelines"
+          />
+        </SideNavGroup>
       </SideNavMenu>
     </StyledFlex>
   );
 };
+
+const IconLink: React.FC<{ url: string; component: React.ReactNode; title: string }> = ({ url, component, title }) => (
+  <List.Item>
+    <StyledLink href={url} target="_blank">
+      <Flex alignItems="center">
+        {component} <Flex.Item marginLeft="xSmall">{title}</Flex.Item>
+      </Flex>
+    </StyledLink>
+  </List.Item>
+);
