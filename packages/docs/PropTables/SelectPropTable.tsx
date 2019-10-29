@@ -15,6 +15,16 @@ const selectProps: Prop[] = [
     description: 'Displays a form error around the field.',
   },
   {
+    name: 'filterable',
+    types: 'boolean',
+    defaultValue: 'true',
+    description: (
+      <>
+        Allows you to filter the <Code>Options</Code> in the <Code>Select</Code>.
+      </>
+    ),
+  },
+  {
     name: 'label',
     types: 'string',
     description: 'Adds a label to the field.',

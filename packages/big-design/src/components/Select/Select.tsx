@@ -12,7 +12,7 @@ import { ListCheckboxItem } from '../List/Item/CheckboxItem';
 import { ListItem } from '../List/Item/Item';
 import { List } from '../List/List';
 
-import { StyledDropdownIcon, StyledStatusMessage } from './styled';
+import { StyledDropdownIcon, StyledInputContainer, StyledStatusMessage } from './styled';
 import { Action, Option, SelectProps } from './types';
 
 interface SelectState {
@@ -63,7 +63,18 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   }
 
   render() {
-    const { children, label, maxHeight, multi, onChange, placeholder, placement, value, ...rest } = this.props;
+    const {
+      children,
+      filterable,
+      label,
+      maxHeight,
+      multi,
+      onChange,
+      placeholder,
+      placement,
+      value,
+      ...rest
+    } = this.props;
 
     const { isOpen } = this.state;
 
@@ -120,7 +131,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   }
 
   private renderInput() {
-    const { placeholder, error, required, disabled, onChange, options, value } = this.props;
+    const { placeholder, error, filterable = true, required, disabled, onChange, options, value } = this.props;
     const { highlightedItem, inputText, isOpen } = this.state;
     const ariaActiveDescendant = highlightedItem ? { 'aria-activedescendant': highlightedItem.id } : {};
     const ariaControls = isOpen ? { 'aria-controls': this.getSelectId() } : {};
@@ -143,7 +154,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     return (
       <Reference>
         {({ ref }) => (
-          <span ref={ref}>
+          <StyledInputContainer ref={ref}>
             <Input
               aria-autocomplete="list"
               autoComplete="off"
@@ -154,17 +165,19 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
               id={this.getInputId()}
               onChange={this.handleOnInputChange}
               onChipDelete={chips && onChipDelete}
-              onFocus={this.handleOnInputFocus}
+              onClick={this.handleOnInputSelected}
+              onFocus={this.handleOnInputSelected}
               onKeyDown={this.handleOnInputKeyDown}
               placeholder={placeholder}
+              readOnly={!filterable}
               ref={this.inputRef}
               required={required}
               type={'text'}
               value={inputText}
               {...ariaActiveDescendant}
               {...ariaControls}
-            ></Input>
-          </span>
+            />
+          </StyledInputContainer>
         )}
       </Reference>
     );
@@ -496,7 +509,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     return this.updateHighlightedItem(event.currentTarget);
   };
 
-  private handleOnInputFocus = () => {
+  private handleOnInputSelected = () => {
     if (!this.state.isOpen) {
       this.toggleList();
     }

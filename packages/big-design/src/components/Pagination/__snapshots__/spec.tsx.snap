@@ -138,6 +138,10 @@ exports[`render pagination component 1`] = `
   color: #313440;
 }
 
+.c8 label {
+  cursor: pointer;
+}
+
 .c4 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -628,6 +632,10 @@ exports[`render pagination component with invalid page info 1`] = `
 
 .c8 a {
   color: #313440;
+}
+
+.c8 label {
+  cursor: pointer;
 }
 
 .c4 {
@@ -1122,6 +1130,10 @@ exports[`render pagination component with invalid range info 1`] = `
   color: #313440;
 }
 
+.c8 label {
+  cursor: pointer;
+}
+
 .c4 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -1613,6 +1625,10 @@ exports[`render pagination component with no items 1`] = `
 
 .c8 a {
   color: #313440;
+}
+
+.c8 label {
+  cursor: pointer;
 }
 
 .c4 {

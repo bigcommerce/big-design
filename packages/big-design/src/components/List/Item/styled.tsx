@@ -43,6 +43,10 @@ export const StyledListItem = styled.li<ListItemProps>`
   a {
     color: ${({ theme }) => theme.colors.secondary70};
   }
+
+  label {
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  }
 `;
 
 StyledListItem.defaultProps = { theme: defaultTheme };
