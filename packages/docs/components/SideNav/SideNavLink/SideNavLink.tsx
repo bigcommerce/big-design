@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { List, NextLink } from '../../';
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
   display: block;
   line-height: ${({ theme }) => theme.lineHeight.large};
 
