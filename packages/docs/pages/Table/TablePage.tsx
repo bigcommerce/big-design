@@ -1,9 +1,8 @@
-import { H0, H1, H2, Table, TableItem, Text } from '@bigcommerce/big-design';
+import { H0, H1, Table, TableItem, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { CodePreview } from '../../components';
 import {
-  MarginPropTable,
   TableColumnsPropTable,
   TablePropTable,
   TableSelectablePropTable,
@@ -75,9 +74,6 @@ export default () => {
       <TableColumnsPropTable id="table-columns-prop-table" />
       <TableSelectablePropTable id="table-selectable-prop-table" />
       <TableSortablePropTable id="table-sortable-prop-table" />
-
-      <H2>Inherited Props</H2>
-      <MarginPropTable collapsible />
 
       <H1>Using pagination and selectable</H1>
 
