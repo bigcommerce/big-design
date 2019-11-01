@@ -10,6 +10,7 @@ export interface SelectProps<T> extends Omit<React.HTMLAttributes<HTMLUListEleme
   label?: string;
   maxHeight?: number;
   multi?: boolean;
+  name?: string;
   options: Array<Option<T>>;
   placement?: Placement;
   positionFixed?: boolean;

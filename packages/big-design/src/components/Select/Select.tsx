@@ -131,10 +131,11 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   }
 
   private renderInput() {
-    const { placeholder, error, filterable = true, required, disabled, onChange, options, value } = this.props;
+    const { name, placeholder, error, filterable = true, required, disabled, onChange, options, value } = this.props;
     const { highlightedItem, inputText, isOpen } = this.state;
     const ariaActiveDescendant = highlightedItem ? { 'aria-activedescendant': highlightedItem.id } : {};
     const ariaControls = isOpen ? { 'aria-controls': this.getSelectId() } : {};
+    const id = this.getInputId();
 
     const chips = this.renderChips();
 
@@ -162,7 +163,8 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
               disabled={disabled}
               error={error}
               iconRight={this.renderDropdownIcon()}
-              id={this.getInputId()}
+              id={id}
+              name={name || id}
               onChange={this.handleOnInputChange}
               onChipDelete={chips && onChipDelete}
               onClick={this.handleOnInputSelected}
