@@ -23,16 +23,10 @@ const data: Item[] = [
   { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
   { sku: 'OCG', name: '[Sample] Oak Cheese Grater', stock: 34 },
   { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
-  { sku: 'OTL', name: '[Sample] Orbit Terrarium - Large', stock: 109 },
-  { sku: 'OTS', name: '[Sample] Orbit Terrarium - Small', stock: 89 },
-  { sku: 'SLCTBS', name: '[Sample] Fog Linen Chambray Towel - Beige Stripe with some fondu of some sort', stock: 49 },
-  { sku: 'SLLPJ', name: '[Sample] 1 L Le Parfait Jar', stock: 7 },
-  { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-  { sku: 'TWB', name: '[Sample] Tiered Wire Basket', stock: 119 },
 ];
 
 const columns = [
-  { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
+  { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
   { header: 'Name', hash: 'name', render: ({ name }) => name },
   { header: 'Stock', hash: 'stocck', render: ({ stock }) => stock },
 ];
@@ -75,73 +69,102 @@ export default () => {
       <TableSelectablePropTable id="table-selectable-prop-table" />
       <TableSortablePropTable id="table-sortable-prop-table" />
 
-      <H1>Using pagination and selectable</H1>
+      <H1>Usage with selectable</H1>
+
+      <CodePreview scope={{ data, columns }}>
+        {/* jsx-to-string:start */}
+        {function Example() {
+          const [selectedItems, setSelectedItems] = React.useState([]);
+
+          return (
+            <Table
+              keyField="sku"
+              columns={columns}
+              items={data}
+              itemName="Products"
+              // @ts-ignore
+              selectable={{
+                selectedItems,
+                onSelectionChange: setSelectedItems,
+              }}
+            />
+          );
+        }}
+        {/* jsx-to-string:end */}
+      </CodePreview>
+
+      <H1>Usage with pagination</H1>
+
+      <CodePreview scope={{ data, columns }}>
+        {/* jsx-to-string:start */}
+        {function Example() {
+          const [currentPage, setCurrentPage] = React.useState(1);
+          const [itemsPerPageOptions] = React.useState([5, 10, 20, 30]);
+          const [itemsPerPage, setItemsPerPage] = React.useState(5);
+          const [currentItems, setCurrentItems] = React.useState([]);
+
+          const onItemsPerPageChange = newRange => {
+            setCurrentPage(1);
+            setItemsPerPage(newRange);
+          };
+
+          React.useEffect(() => {
+            const maxItems = currentPage * itemsPerPage;
+            const lastItem = Math.min(maxItems, data.length);
+            const firstItem = Math.max(0, maxItems - itemsPerPage);
+
+            // @ts-ignore
+            setCurrentItems(data.slice(firstItem, lastItem));
+          }, [currentPage, data, itemsPerPage]);
+
+          return (
+            <Table
+              keyField="sku"
+              columns={columns}
+              items={currentItems}
+              itemName="Products"
+              pagination={{
+                currentPage,
+                totalItems: data.length,
+                onPageChange: setCurrentPage,
+                itemsPerPageOptions,
+                onItemsPerPageChange,
+                itemsPerPage,
+              }}
+            />
+          );
+        }}
+        {/* jsx-to-string:end */}
+      </CodePreview>
+      <H1>Usage with sortable</H1>
 
       <CodePreview scope={{ data, columns, sort }}>
         {/* jsx-to-string:start */}
         {function Example() {
           const [items, setItems] = React.useState(data);
+          const [columnHash, setColumnHash] = React.useState('');
+          const [direction, setDirection] = React.useState('ASC');
 
-          // Pagination
-          const [ranges] = React.useState([10, 20, 30]);
-          const [range, setRange] = React.useState(ranges[0]);
-          const [page, setPage] = React.useState(1);
-          const [currentItems, setCurrentItems] = React.useState([]);
-
-          // Selectable
-          const [selectedItems, setSelectedItems] = React.useState([]);
-
-          // Sortable
-          const [sortDirection, setSortDirection] = React.useState('ASC');
-
-          const onItemsPerPageChange = newRange => {
-            setPage(1);
-            setRange(newRange);
-          };
-
-          const onPageChange = newPage => {
-            setSelectedItems([]);
-            setPage(newPage);
-          };
-
-          React.useEffect(() => {
-            const maxItems = page * range;
-            const lastItem = Math.min(maxItems, items.length);
-            const firstItem = Math.max(0, maxItems - range);
-
-            // @ts-ignore
-            setCurrentItems(items.slice(firstItem, lastItem));
-          }, [page, items, range]);
-
-          const onSort = (columnHash, direction) => {
-            const sortedItems = sort(items, columnHash, direction);
-            setSortDirection(direction);
-            setItems(sortedItems);
+          const onSort = (newColumnHash, newDirection) => {
+            setColumnHash(newColumnHash);
+            setDirection(newDirection);
+            setItems(currentItems => sort(currentItems, newColumnHash, newDirection));
           };
 
           return (
             <Table
-              stickyHeader
               keyField="sku"
-              columns={columns}
-              items={currentItems}
+              columns={[
+                { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
+                { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
+                { header: 'Stock', hash: 'stocck', render: ({ stock }) => stock, isSortable: true },
+              ]}
+              items={items}
               itemName="Products"
-              selectable={{
-                onSelectionChange: setSelectedItems,
-                selectedItems,
-              }}
-              pagination={{
-                currentPage: page,
-                totalItems: items.length,
-                onPageChange,
-                itemsPerPageOptions: ranges,
-                onItemsPerPageChange,
-                itemsPerPage: range,
-              }}
               // @ts-ignore
               sortable={{
-                columnHash: 'sku',
-                direction: sortDirection,
+                columnHash,
+                direction,
                 onSort,
               }}
             />
