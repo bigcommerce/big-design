@@ -119,7 +119,11 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
 
   private wrapInTooltip(element: ReactElement, message: string, placement: PopperProps['placement'] = 'bottom') {
     return (
-      <Tooltip placement={placement} trigger={element}>
+      <Tooltip
+        placement={placement}
+        trigger={element}
+        modifiers={{ preventOverflow: { enabled: true, escapeWithReference: true } }}
+      >
         {message}
       </Tooltip>
     );

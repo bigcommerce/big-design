@@ -9,6 +9,7 @@ import { StyledTooltip, StyledTooltipTrigger } from './styled';
 export interface TooltipProps {
   placement: PopperProps['placement'];
   trigger: React.ReactChild;
+  modifiers?: PopperProps['modifiers'];
 }
 
 interface State {
@@ -58,7 +59,10 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
         </Reference>
         {this.tooltipContainer
           ? createPortal(
-              <Popper placement={this.props.placement} modifiers={{ offset: { offset: '0, 8' } }}>
+              <Popper
+                placement={this.props.placement}
+                modifiers={{ ...this.props.modifiers, offset: { offset: '0, 8' } }}
+              >
                 {({ placement, ref, style }) =>
                   this.state.visible && (
                     <StyledTooltip ref={ref} style={style} data-placement={placement}>

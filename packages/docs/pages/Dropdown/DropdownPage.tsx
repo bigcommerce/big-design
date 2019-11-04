@@ -45,12 +45,17 @@ export default () => (
           },
           {
             content: 'Link with tooltip',
-            tooltip: { message: ' Tooltip message' },
             icon: <OpenInNewIcon />,
             type: 'link',
             url: '#',
           },
-          { content: 'Link', icon: <OpenInNewIcon />, type: 'link', url: '#' },
+          {
+            content: 'Link',
+            icon: <OpenInNewIcon />,
+            type: 'link',
+            url: '#',
+            tooltip: { message: ' Tooltip message', placement: 'right' },
+          },
         ]}
         placement="bottom-start"
         trigger={<Button>Open Menu</Button>}
