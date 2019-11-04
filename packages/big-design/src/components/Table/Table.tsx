@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 
+import { MarginProps } from '../../mixins';
 import { typedMemo, uniqueId } from '../../utils';
 import { useEventCallback } from '../../utils/useEventCallback';
 
@@ -153,4 +154,4 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
 };
 
 export const Table = typedMemo(InternalTable);
-export const TableFigure: React.FC = memo(props => <StyledTableFigure {...props} />);
+export const TableFigure: React.FC<MarginProps> = memo(props => <StyledTableFigure {...props} />);

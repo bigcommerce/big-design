@@ -19,8 +19,8 @@ export const SelectAll = <T extends TableItem>({
   selectedItems,
   totalItems,
 }: SelectAllProps<T>) => {
-  const allInPageSelected = items.every(item => selectedItems.has(item));
-  const someInPageSelected = items.some(item => selectedItems.has(item));
+  const allInPageSelected = items.length > 0 && items.every(item => selectedItems.has(item));
+  const someInPageSelected = items.length > 0 && items.some(item => selectedItems.has(item));
 
   const handleSelectAll = () => {
     if (typeof onChange !== 'function') {

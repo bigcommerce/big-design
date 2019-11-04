@@ -125,11 +125,6 @@ const tableSelectableProps: Prop[] = [
     description: 'Function to be called when item selection changes.',
     required: true,
   },
-  {
-    name: 'selectAllState',
-    types: ['ALL', 'PARTIAL', 'NONE'],
-    description: 'Used to manually override the select all checkbox state. Useful for multi-page selects.',
-  },
 ];
 
 const tableSortableProps: Prop[] = [

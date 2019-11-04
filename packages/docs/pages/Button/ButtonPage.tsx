@@ -2,7 +2,7 @@ import { Button, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
 import { AddIcon, ArrowDropDownIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
-import { Code, CodePreview, Collapsible } from '../../components';
+import { Code, CodePreview } from '../../components';
 import { ButtonPropTable, MarginPropTable } from '../../PropTables';
 
 export default () => (

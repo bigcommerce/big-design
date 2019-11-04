@@ -39,6 +39,7 @@ module.exports = {
     '/radio': { page: '/Radio/RadioPage' },
     '/select': { page: '/Select/SelectPage' },
     '/spacing': { page: '/Spacing/SpacingPage' },
+    '/statefulTable': { page: '/StatefulTable/StatefulTablePage' },
     '/table': { page: '/Table/TablePage' },
     '/tabs': { page: '/Tabs/TabsPage' },
     '/textarea': { page: '/Textarea/TextareaPage' },

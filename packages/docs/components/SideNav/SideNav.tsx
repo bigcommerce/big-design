@@ -1,6 +1,5 @@
 import { Flex } from '@bigcommerce/big-design';
 import React from 'react';
-import { StyledComponent } from 'styled-components';
 
 import { BigDesignLogoIcon, GithubLogoIcon } from '../Icons';
 import { List } from '../List';
@@ -58,6 +57,9 @@ export const SideNav: React.FC = () => {
           </SideNavLink>
           <SideNavLink href="/Table/TablePage" as="/table">
             Table
+          </SideNavLink>
+          <SideNavLink href="/StatefulTable/StatefulTablePage" as="/statefulTable">
+            StatefulTable
           </SideNavLink>
           <SideNavLink href="/Tabs/TabsPage" as="/tabs">
             Tabs
