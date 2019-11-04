@@ -1,8 +1,9 @@
 import { Placement } from 'popper.js';
+import React from 'react';
 
 import { ListItemProps } from '../List/Item';
 
-export interface SelectProps<T> extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children' | 'onChange'> {
+export interface SelectProps<T> extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children' | 'onChange' | 'ref'> {
   action?: Action;
   disabled?: boolean;
   error?: string;
@@ -14,6 +15,7 @@ export interface SelectProps<T> extends Omit<React.HTMLAttributes<HTMLUListEleme
   options: Array<Option<T>>;
   placement?: Placement;
   positionFixed?: boolean;
+  inputRef?: React.RefObject<HTMLInputElement> | React.Ref<HTMLInputElement>;
   required?: boolean;
   value?: T | T[];
   onChange(value: T | T[], option: Option<T> | Array<Option<T>>): void;

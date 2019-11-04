@@ -559,3 +559,50 @@ test('should render a non filterable select', () => {
   const input = getAllByLabelText('Countries')[0];
   expect(input.getAttribute('readonly')).toBe('');
 });
+
+test('should use the passed in ref object if provided', () => {
+  const ref = React.createRef<HTMLInputElement>();
+  const { getAllByLabelText } = render(
+    <Select
+      inputRef={ref}
+      label="Countries"
+      onChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
+
+  const input = getAllByLabelText('Countries')[0];
+
+  expect(ref.current).toEqual(input);
+});
+
+test('should call the provided refSetter if any', () => {
+  let inputRef: HTMLInputElement | null = null;
+  const refSetter = (ref: HTMLInputElement) => (inputRef = ref);
+  const { getAllByLabelText } = render(
+    <Select
+      inputRef={refSetter}
+      label="Countries"
+      onChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
+
+  const input = getAllByLabelText('Countries')[0];
+
+  expect(inputRef).toEqual(input);
+});

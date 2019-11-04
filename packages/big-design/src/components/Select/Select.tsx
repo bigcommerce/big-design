@@ -39,7 +39,9 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     selectedOptionContent: '',
   };
 
-  private inputRef: RefObject<HTMLInputElement> = React.createRef();
+  private callbackRef?: HTMLInputElement;
+  // private inputRef?: RefObject<HTMLInputElement>;
+  private defaultRef: RefObject<HTMLInputElement> = React.createRef();
   private listRef: HTMLUListElement | null = null;
 
   private readonly uniqueInputId = uniqueId('input_');
@@ -172,7 +174,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
               onKeyDown={this.handleOnInputKeyDown}
               placeholder={placeholder}
               readOnly={!filterable}
-              ref={this.inputRef}
+              ref={this.getInputRef()}
               required={required}
               type={'text'}
               value={inputText}
@@ -371,8 +373,10 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   }
 
   private focusInput() {
-    if (this.inputRef && this.inputRef.current) {
-      this.inputRef.current.focus({ preventScroll: true });
+    const input = this.getInput();
+
+    if (input) {
+      input.focus({ preventScroll: true });
     }
   }
 
@@ -400,6 +404,32 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     const { id } = action;
 
     return id || `${this.getSelectId()}-action`;
+  }
+
+  private getInput() {
+    if (this.callbackRef) {
+      return this.callbackRef;
+    }
+
+    const { inputRef } = this.props;
+
+    if (inputRef && typeof inputRef === 'object') {
+      return inputRef.current;
+    }
+
+    return this.defaultRef.current;
+  }
+
+  private getInputRef() {
+    const { inputRef } = this.props;
+
+    if (inputRef && typeof inputRef === 'object') {
+      return inputRef;
+    } else if (typeof inputRef === 'function') {
+      return this.setCallbackRef;
+    }
+
+    return this.defaultRef;
   }
 
   private getSelectedOptions(values: T[]) {
@@ -459,13 +489,14 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
       return;
     }
 
+    const input = this.getInput();
+
     if (
       (this.listRef && this.listRef.contains(event.target as Node)) ||
-      (this.inputRef &&
-        this.inputRef.current &&
-        this.inputRef.current.parentElement &&
-        this.inputRef.current.parentElement.parentElement &&
-        this.inputRef.current.parentElement.parentElement.contains(event.target as Node))
+      (input &&
+        input.parentElement &&
+        input.parentElement.parentElement &&
+        input.parentElement.parentElement.contains(event.target as Node))
     ) {
       return;
     }
@@ -647,6 +678,14 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
         this.closeList();
         break;
       }
+    }
+  };
+
+  private setCallbackRef = (ref: HTMLInputElement) => {
+    this.callbackRef = ref;
+
+    if (typeof this.props.inputRef === 'function') {
+      this.props.inputRef(ref);
     }
   };
 
