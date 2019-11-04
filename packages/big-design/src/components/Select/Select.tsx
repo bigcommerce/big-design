@@ -40,7 +40,6 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   };
 
   private callbackRef?: HTMLInputElement;
-  // private inputRef?: RefObject<HTMLInputElement>;
   private defaultRef: RefObject<HTMLInputElement> = React.createRef();
   private listRef: HTMLUListElement | null = null;
 
