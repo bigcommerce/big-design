@@ -50,14 +50,8 @@ const InternalHeaderCell = <T extends TableItem>({
   };
 
   return (
-    <StyledTableHeaderCell
-      align={align}
-      isSortable={isSortable}
-      stickyHeader={stickyHeader}
-      onClick={handleClick}
-      width={width}
-    >
-      <Flex alignItems="center" flexDirection="row">
+    <StyledTableHeaderCell isSortable={isSortable} stickyHeader={stickyHeader} onClick={handleClick} width={width}>
+      <Flex alignItems="center" flexDirection="row" justifyContent={align}>
         {children}
         {renderSortIcon()}
       </Flex>
