@@ -107,7 +107,7 @@ test('tweaks column styles with props', () => {
   const skuHeader = headers[0];
   const nameHeader = headers[1];
 
-  expect(skuHeader).toHaveStyle('text-align: right');
+  expect(skuHeader.childNodes[0]).toHaveStyle('justify-content: right');
   expect(skuHeader).not.toHaveStyle('vertical-align: center');
 
   expect(nameHeader).toHaveStyle('width: 100px');

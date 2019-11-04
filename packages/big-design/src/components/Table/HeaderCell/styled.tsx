@@ -2,7 +2,6 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 interface StyledTableHeaderCellProps {
-  align?: 'left' | 'center' | 'right';
   isSortable?: boolean;
   width?: number | string;
   stickyHeader?: boolean;
@@ -17,12 +16,6 @@ export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   padding: ${({ theme }) => theme.spacing.small};
   white-space: nowrap;
-
-  ${({ align }) =>
-    align &&
-    css`
-      text-align: ${align};
-    `};
 
   ${({ isSortable }) =>
     isSortable &&
