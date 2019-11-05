@@ -90,12 +90,8 @@ const dropdownItemProps: Prop[] = [
   },
   {
     name: 'tooltip',
-    types: `{ 
-      message: string, 
-      placement?: 'auto | auto-end | auto-start | bottom | bottom-end | bottom-start
-       | left | left-end | left-start | right | right-end | right-start | top | top-end | top-start
-    '}`,
-    description: "Adds tooltip for item. Placement is optional, if not passed - 'bottom' is set.",
+    types: "{ message: string, placement?: 'left' | 'right' }",
+    description: "Adds tooltip for disabled item. Placement is optional, if not passed - 'left' is set.",
   },
   {
     name: 'type',
@@ -147,12 +143,8 @@ const dropdownLinkProps: Prop[] = [
   },
   {
     name: 'tooltip',
-    types: `{ 
-      message: string, 
-      placement?: 'auto | auto-end | auto-start | bottom | bottom-end | bottom-start
-       | left | left-end | left-start | right | right-end | right-start | top | top-end | top-start
-    '}`,
-    description: "Adds tooltip for item. Placement is optional, if not passed - 'bottom' is set.",
+    types: "{ message: string, placement?: 'left' | 'right' }",
+    description: "Adds tooltip for disabled item. Placement is optional, if not passed - 'left' is set.",
   },
   {
     name: 'type',

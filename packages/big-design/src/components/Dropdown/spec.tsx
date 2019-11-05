@@ -277,7 +277,7 @@ test('does not forward styles', () => {
   expect(getByRole('listbox')).not.toHaveStyle('background: red');
 });
 
-test('dropdown menu renders items with tooltip', () => {
+test('dropdown component renders items with tooltip (when item disabled)', () => {
   const { getByRole, getByText } = render(
     <Dropdown
       onClick={onClick}
@@ -286,6 +286,7 @@ test('dropdown menu renders items with tooltip', () => {
         {
           content: 'Option with tooltip',
           tooltip: { message: 'This is tooltip message' },
+          disabled: true,
           type: 'string',
         },
         { content: 'Option 3', type: 'string', value: '2', actionType: 'destructive' },
@@ -298,5 +299,5 @@ test('dropdown menu renders items with tooltip', () => {
   fireEvent.click(trigger);
   fireEvent.mouseEnter(getByText('Option with tooltip'));
 
-  expect(getByText('This is tooltip message')).toBeTruthy();
+  expect(getByText('This is tooltip message')).toBeInTheDocument();
 });

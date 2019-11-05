@@ -12,6 +12,6 @@ export const zIndex: ZIndex = {
   fixed: 1030,
   modalBackdrop: 1040,
   modal: 1050,
-  tooltip: 1070,
   popover: 1060,
+  tooltip: 1070,
 };

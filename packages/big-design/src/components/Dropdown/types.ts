@@ -1,5 +1,4 @@
 import { Placement } from 'popper.js';
-import { PopperProps } from 'react-popper';
 
 import { ListItemProps } from '../List/Item';
 
@@ -15,7 +14,7 @@ interface BaseItem<T> extends Omit<ListItemProps, 'children' | 'content' | 'onCl
   icon?: React.ReactElement;
   tooltip?: {
     message: string;
-    placement?: PopperProps['placement'];
+    placement?: 'left' | 'right';
   };
   value?: T;
   onClick?(item: DropdownItem<T> | DropdownLinkItem<T>): void;

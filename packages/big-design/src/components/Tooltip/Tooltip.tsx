@@ -10,13 +10,14 @@ export interface TooltipProps {
   placement: PopperProps['placement'];
   trigger: React.ReactChild;
   modifiers?: PopperProps['modifiers'];
+  fullWidth?: boolean;
 }
 
 interface State {
   visible: boolean;
 }
 
-export class Tooltip extends React.PureComponent<TooltipProps, State> {
+class RawTooltip extends React.PureComponent<TooltipProps, State> {
   static defaultProps: Partial<TooltipProps> = {
     placement: 'top',
   };
@@ -39,7 +40,7 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
   }
 
   render() {
-    const { children, trigger } = this.props;
+    const { children, trigger, fullWidth } = this.props;
 
     return (
       <Manager>
@@ -52,6 +53,7 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
               onMouseEnter={this.showTooltip}
               onMouseLeave={this.hideTooltip}
               ref={ref}
+              fullWidth={fullWidth}
             >
               {trigger}
             </StyledTooltipTrigger>
@@ -61,7 +63,7 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
           ? createPortal(
               <Popper
                 placement={this.props.placement}
-                modifiers={{ ...this.props.modifiers, offset: { offset: '0, 8' } }}
+                modifiers={{ offset: { offset: '0, 20' }, ...this.props.modifiers }}
               >
                 {({ placement, ref, style }) =>
                   this.state.visible && (
@@ -96,3 +98,7 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
     }
   };
 }
+
+export const InternalTooltip: React.FC<TooltipProps> = props => <RawTooltip {...props} />;
+
+export const Tooltip: React.FC<TooltipProps> = ({ fullWidth, ...restProps }) => <RawTooltip {...restProps} />;

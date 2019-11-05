@@ -35,6 +35,7 @@ export default () => (
             value: 'copy',
             icon: <AssignmentIcon />,
             disabled: true,
+            tooltip: { message: 'You cannot copy this item...' },
           },
           {
             content: 'Delete',
@@ -54,7 +55,6 @@ export default () => (
             icon: <OpenInNewIcon />,
             type: 'link',
             url: '#',
-            tooltip: { message: ' Tooltip message', placement: 'right' },
           },
         ]}
         placement="bottom-start"

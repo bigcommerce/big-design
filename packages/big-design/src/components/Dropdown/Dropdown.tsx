@@ -1,3 +1,4 @@
+import * as PopperJS from 'popper.js';
 import React, { ReactElement, RefObject } from 'react';
 import { Manager, PopperProps, Reference, RefHandler } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
@@ -8,7 +9,7 @@ import { FlexItem } from '../Flex/Item';
 import { Link } from '../Link';
 import { List } from '../List';
 import { ListItem } from '../List/Item';
-import { Tooltip } from '../Tooltip';
+import { InternalTooltip } from '../Tooltip';
 
 import { DropdownItem, DropdownLinkItem, DropdownProps } from './types';
 
@@ -24,6 +25,10 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
   };
 
   private listRef: HTMLUListElement | null = null;
+  private tooltipModifiers: PopperJS.Modifiers = {
+    preventOverflow: { enabled: true, escapeWithReference: true },
+    offset: { offset: '0, 20' },
+  };
   private triggerRef: HTMLElement | null = null;
 
   private readonly uniqueDropdownId = uniqueId('dropdown_');
@@ -88,7 +93,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
           </Flex>
         );
 
-        if (tooltip) {
+        if (tooltip && option.disabled) {
           listItemContent = this.wrapInTooltip(listItemContent, tooltip.message, tooltip.placement);
         }
 
@@ -117,15 +122,11 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     );
   }
 
-  private wrapInTooltip(element: ReactElement, message: string, placement: PopperProps['placement'] = 'bottom') {
+  private wrapInTooltip(element: ReactElement, message: string, placement: PopperProps['placement'] = 'left') {
     return (
-      <Tooltip
-        placement={placement}
-        trigger={element}
-        modifiers={{ preventOverflow: { enabled: true, escapeWithReference: true } }}
-      >
+      <InternalTooltip placement={placement} trigger={element} modifiers={this.tooltipModifiers} fullWidth>
         {message}
-      </Tooltip>
+      </InternalTooltip>
     );
   }
 
