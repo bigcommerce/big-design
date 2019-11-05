@@ -1,6 +1,5 @@
-import * as PopperJS from 'popper.js';
-import React, { ReactElement, RefObject } from 'react';
-import { Manager, PopperProps, Reference, RefHandler } from 'react-popper';
+import React, { RefObject } from 'react';
+import { Manager, Reference, RefHandler } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
@@ -9,7 +8,7 @@ import { FlexItem } from '../Flex/Item';
 import { Link } from '../Link';
 import { List } from '../List';
 import { ListItem } from '../List/Item';
-import { InternalTooltip } from '../Tooltip';
+import { Tooltip, TooltipProps } from '../Tooltip';
 
 import { DropdownItem, DropdownLinkItem, DropdownProps } from './types';
 
@@ -25,12 +24,12 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
   };
 
   private listRef: HTMLUListElement | null = null;
-  private tooltipModifiers: PopperJS.Modifiers = {
+  private triggerRef: HTMLElement | null = null;
+
+  private readonly tooltipModifiers: TooltipProps['modifiers'] = {
     preventOverflow: { enabled: true, escapeWithReference: true },
     offset: { offset: '0, 20' },
   };
-  private triggerRef: HTMLElement | null = null;
-
   private readonly uniqueDropdownId = uniqueId('dropdown_');
   private readonly uniqueTriggerId = uniqueId('trigger_');
 
@@ -84,18 +83,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
           this.listItemsRefs.push(ref);
         }
 
-        const { content, icon, onClick, type, value, tooltip, ...rest } = option;
-
-        let listItemContent = (
-          <Flex alignItems="center" flexDirection="row">
-            {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
-            {content}
-          </Flex>
-        );
-
-        if (tooltip && option.disabled) {
-          listItemContent = this.wrapInTooltip(listItemContent, tooltip.message, tooltip.placement);
-        }
+        const { content, icon, onClick, type, value, ...rest } = option;
 
         return (
           <ListItem
@@ -109,25 +97,48 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
             ref={ref}
             role="option"
           >
-            {option.type === 'link' && !option.disabled ? (
-              <Link href={option.url} target={option.target}>
-                {listItemContent}
-              </Link>
-            ) : (
-              listItemContent
-            )}
+            {this.getContent(option, isHighlighted)}
           </ListItem>
         );
       })
     );
   }
 
-  private wrapInTooltip(element: ReactElement, message: string, placement: PopperProps['placement'] = 'left') {
-    return (
-      <InternalTooltip placement={placement} trigger={element} modifiers={this.tooltipModifiers} fullWidth>
-        {message}
-      </InternalTooltip>
+  private getContent(option: DropdownItem<T> | DropdownLinkItem<T>, isHighlighted: boolean) {
+    const { content, disabled, icon } = option;
+    const child = (
+      <Flex alignItems="center" flexDirection="row">
+        {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
+        {content}
+      </Flex>
     );
+
+    return this.getTooltip(
+      option,
+      option.type === 'link' && !disabled ? (
+        <Link href={option.url} target={option.target}>
+          {child}
+        </Link>
+      ) : (
+        child
+      ),
+    );
+  }
+
+  private getTooltip(option: DropdownItem<T> | DropdownLinkItem<T>, trigger: React.ReactChild) {
+    const { disabled, tooltip } = option;
+
+    if (disabled && tooltip) {
+      const { message, placement = 'right' } = tooltip;
+
+      return (
+        <Tooltip placement={placement} trigger={trigger} modifiers={this.tooltipModifiers} inline={false}>
+          {message}
+        </Tooltip>
+      );
+    }
+
+    return trigger;
   }
 
   private renderTrigger(ref: RefHandler) {

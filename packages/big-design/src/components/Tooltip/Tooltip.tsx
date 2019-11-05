@@ -6,20 +6,21 @@ import { Small } from '../Typography';
 
 import { StyledTooltip, StyledTooltipTrigger } from './styled';
 
-export interface TooltipProps {
+export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   placement: PopperProps['placement'];
   trigger: React.ReactChild;
   modifiers?: PopperProps['modifiers'];
-  fullWidth?: boolean;
+  inline?: boolean;
 }
 
 interface State {
   visible: boolean;
 }
 
-class RawTooltip extends React.PureComponent<TooltipProps, State> {
+export class Tooltip extends React.PureComponent<TooltipProps, State> {
   static defaultProps: Partial<TooltipProps> = {
     placement: 'top',
+    inline: true,
   };
 
   state = {
@@ -40,20 +41,20 @@ class RawTooltip extends React.PureComponent<TooltipProps, State> {
   }
 
   render() {
-    const { children, trigger, fullWidth } = this.props;
+    const { children, trigger, inline } = this.props;
 
     return (
       <Manager>
         <Reference>
           {({ ref }) => (
             <StyledTooltipTrigger
+              inline={inline}
               onBlur={this.hideTooltip}
               onFocus={this.showTooltip}
               onKeyDown={this.onKeyDown}
               onMouseEnter={this.showTooltip}
               onMouseLeave={this.hideTooltip}
               ref={ref}
-              fullWidth={fullWidth}
             >
               {trigger}
             </StyledTooltipTrigger>
@@ -63,7 +64,7 @@ class RawTooltip extends React.PureComponent<TooltipProps, State> {
           ? createPortal(
               <Popper
                 placement={this.props.placement}
-                modifiers={{ offset: { offset: '0, 20' }, ...this.props.modifiers }}
+                modifiers={{ offset: { offset: '0, 8' }, ...this.props.modifiers }}
               >
                 {({ placement, ref, style }) =>
                   this.state.visible && (
@@ -98,7 +99,3 @@ class RawTooltip extends React.PureComponent<TooltipProps, State> {
     }
   };
 }
-
-export const InternalTooltip: React.FC<TooltipProps> = props => <RawTooltip {...props} />;
-
-export const Tooltip: React.FC<TooltipProps> = ({ fullWidth, ...restProps }) => <RawTooltip {...restProps} />;

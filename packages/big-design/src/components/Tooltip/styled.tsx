@@ -1,8 +1,15 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledTooltipTrigger = styled.div<{ fullWidth?: boolean }>`
-  ${({ fullWidth }) => (fullWidth ? 'display: block; width: 100%;' : 'display: inline-block')};
+export const StyledTooltipTrigger = styled.div<{ inline?: boolean }>`
+  display: inline-block;
+
+  ${({ inline }) =>
+    !inline &&
+    css`
+      display: block;
+      flex-grow: 1;
+    `}
 `;
 
 export const StyledTooltip = styled.div`
