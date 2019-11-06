@@ -5,6 +5,7 @@ interface StyledTableHeaderCellProps {
   isSortable?: boolean;
   width?: number | string;
   stickyHeader?: boolean;
+  stickyHeight: number;
 }
 
 export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
@@ -29,11 +30,15 @@ export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
       width: ${typeof width === 'string' ? width : width + 'px'};
     `};
 
-  ${({ stickyHeader }) =>
+  ${({ theme, stickyHeader, stickyHeight }) =>
     stickyHeader &&
+    stickyHeight >= 0 &&
     css`
-      position: sticky;
-      top: 0;
+      ${theme.breakpoints.tablet} {
+        position: sticky;
+        top: ${theme.helpers.remCalc(stickyHeight)};
+        z-index: ${theme.zIndex.sticky};
+      }
     `}
 `;
 

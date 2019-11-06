@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Flex } from '../../Flex';
@@ -7,22 +7,28 @@ import { TableItem, TablePaginationProps, TableSelectable } from '../types';
 import { SelectAll } from '../SelectAll';
 import { TablePagination } from '../TablePagination';
 
+import { StyledFlex } from './styled';
+
 export interface ActionsProps<T> {
+  forwardedRef: RefObject<HTMLDivElement>;
   itemName?: string;
   items: T[];
   pagination?: TablePaginationProps;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
   selectedItems: Set<T>;
+  stickyHeader?: boolean;
   tableId: string;
 }
 
 const InternalActions = <T extends TableItem>({
   pagination,
   tableId,
+  forwardedRef,
   itemName,
   items = [],
   onSelectionChange,
   selectedItems,
+  stickyHeader,
   ...props
 }: ActionsProps<T>) => {
   const isSelectable = typeof onSelectionChange === 'function';
@@ -43,18 +49,19 @@ const InternalActions = <T extends TableItem>({
   };
 
   return (
-    <Flex
+    <StyledFlex
       alignItems="center"
       aria-controls={tableId}
       flexDirection="row"
       justifyContent="stretch"
-      padding="small"
+      stickyHeader={stickyHeader}
+      ref={forwardedRef}
       {...props}
     >
       <SelectAll onChange={onSelectionChange} selectedItems={selectedItems} items={items} totalItems={totalItems} />
       {renderItemName()}
       {pagination && <TablePagination {...pagination} />}
-    </Flex>
+    </StyledFlex>
   );
 };
 

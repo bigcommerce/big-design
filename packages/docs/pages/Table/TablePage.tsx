@@ -59,6 +59,7 @@ export default () => {
             { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
             { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
           ]}
+          stickyHeader
         />
         {/* jsx-to-string:end */}
       </CodePreview>
@@ -131,6 +132,7 @@ export default () => {
                 onItemsPerPageChange,
                 itemsPerPage,
               }}
+              stickyHeader
             />
           );
         }}

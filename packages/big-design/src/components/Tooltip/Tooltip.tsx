@@ -65,6 +65,7 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
               <Popper
                 placement={this.props.placement}
                 modifiers={{ offset: { offset: '0, 8' }, ...this.props.modifiers }}
+                eventsEnabled={this.state.visible}
               >
                 {({ placement, ref, style }) =>
                   this.state.visible && (

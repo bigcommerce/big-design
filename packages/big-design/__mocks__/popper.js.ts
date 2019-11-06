@@ -9,6 +9,10 @@ export default class Popper {
       destroy: () => {},
       // tslint:disable-next-line: no-empty
       scheduleUpdate: () => {},
+      // tslint:disable-next-line: no-empty
+      enableEventListeners: () => {},
+      // tslint:disable-next-line: no-empty
+      disableEventListeners: () => {},
     };
   }
 }
