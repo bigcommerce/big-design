@@ -18,5 +18,6 @@ export const StyledRibbon = styled.div`
     top: ${({ theme }) => theme.helpers.remCalc(RIBBON_POSITION / 2)};
     transform: rotate(45deg);
     width: ${({ theme }) => theme.helpers.remCalc(192)};
+    z-index: ${({ theme }) => theme.zIndex.tooltip + 1};
   }
 `;

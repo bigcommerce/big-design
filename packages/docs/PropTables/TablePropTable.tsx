@@ -58,7 +58,7 @@ const tableProps: Prop[] = [
   {
     name: 'stickyHeader',
     types: 'boolean',
-    description: 'Makes the table header fixed.',
+    description: 'Makes the table header and actions fixed.',
   },
 ];
 

@@ -28,6 +28,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     style,
     ...rest
   } = props;
+  const actionsRef = useRef<HTMLDivElement>(null);
   const tableIdRef = useRef(id || uniqueId('table_'));
   const isSelectable = Boolean(selectable);
   const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
@@ -89,7 +90,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   const renderHeaders = () => (
     <Head>
       <tr>
-        {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} />}
+        {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} actionsRef={actionsRef} />}
 
         {columns.map((column, index) => {
           const { hash, header, isSortable } = column;
@@ -104,6 +105,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
               onSortClick={onSortClick}
               sortDirection={sortDirection}
               stickyHeader={stickyHeader}
+              actionsRef={actionsRef}
             >
               {header}
             </HeaderCell>
@@ -143,6 +145,8 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
           items={items}
           itemName={itemName}
           tableId={tableIdRef.current}
+          stickyHeader={stickyHeader}
+          forwardedRef={actionsRef}
         />
       )}
       <StyledTable {...rest} id={tableIdRef.current}>

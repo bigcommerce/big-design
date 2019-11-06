@@ -155,6 +155,7 @@ export default () => {
           items={items}
           pagination
           selectable
+          stickyHeader
         />
         {/* jsx-to-string:end */}
       </CodePreview>

@@ -32,6 +32,7 @@ export const List: React.FC<ListProps> = memo(
       placement={selectedPlacement}
       positionFixed={positionFixed}
       modifiers={{ offset: { offset: '0, 10' } }}
+      eventsEnabled={isOpen}
     >
       {({ placement, ref, scheduleUpdate, style: popperStyle }) => (
         <StyledList
