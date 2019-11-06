@@ -128,17 +128,13 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
   private getTooltip(option: DropdownItem<T> | DropdownLinkItem<T>, trigger: React.ReactChild) {
     const { disabled, tooltip } = option;
 
-    if (disabled && tooltip) {
-      const { message, placement = 'right' } = tooltip;
-
-      return (
-        <Tooltip placement={placement} trigger={trigger} modifiers={this.tooltipModifiers} inline={false}>
-          {message}
-        </Tooltip>
-      );
-    }
-
-    return trigger;
+    return disabled && tooltip ? (
+      <Tooltip placement="right" trigger={trigger} modifiers={this.tooltipModifiers} inline={false}>
+        {tooltip}
+      </Tooltip>
+    ) : (
+      trigger
+    );
   }
 
   private renderTrigger(ref: RefHandler) {

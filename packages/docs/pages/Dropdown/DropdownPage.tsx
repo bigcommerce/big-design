@@ -35,7 +35,7 @@ export default () => (
             value: 'copy',
             icon: <AssignmentIcon />,
             disabled: true,
-            tooltip: { message: 'You cannot copy this item...' },
+            tooltip: 'You cannot copy this item...',
           },
           {
             content: 'Delete',
@@ -43,12 +43,6 @@ export default () => (
             value: 'delete',
             icon: <DeleteIcon />,
             actionType: 'destructive',
-          },
-          {
-            content: 'Link with tooltip',
-            icon: <OpenInNewIcon />,
-            type: 'link',
-            url: '#',
           },
           {
             content: 'Link',

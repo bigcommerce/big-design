@@ -90,8 +90,12 @@ const dropdownItemProps: Prop[] = [
   },
   {
     name: 'tooltip',
-    types: "{ message: string, placement?: 'left' | 'right' }",
-    description: "Adds tooltip for disabled item. Placement is optional, if not passed - 'left' is set.",
+    types: 'string',
+    description: (
+      <>
+        Adds tooltip for disabled item. Default placement is set to <Code highlight={false}>right</Code>.
+      </>
+    ),
   },
   {
     name: 'type',
