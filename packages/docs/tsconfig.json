@@ -7,7 +7,6 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "jsx": "preserve",
     "noUnusedLocals": false,
     "noImplicitAny": false

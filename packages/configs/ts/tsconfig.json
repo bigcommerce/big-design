@@ -4,6 +4,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "isolatedModules": true,
     "jsx": "react",
     "lib": ["dom", "es2015", "es2016"],
     "module": "esnext",
