@@ -8,8 +8,9 @@ import { FlexItem } from '../Flex/Item';
 import { Link } from '../Link';
 import { List } from '../List';
 import { ListItem } from '../List/Item';
+import { Tooltip, TooltipProps } from '../Tooltip';
 
-import { DropdownItem, DropdownLinkItem, DropdownProps } from './types';
+import { DropdownLinkItem, DropdownOption, DropdownProps } from './types';
 
 interface DropdownState {
   highlightedItem: HTMLLIElement | null;
@@ -25,6 +26,10 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
   private listRef: HTMLUListElement | null = null;
   private triggerRef: HTMLElement | null = null;
 
+  private readonly tooltipModifiers: TooltipProps['modifiers'] = {
+    preventOverflow: { enabled: true, escapeWithReference: true },
+    offset: { offset: '0, 20' },
+  };
   private readonly uniqueDropdownId = uniqueId('dropdown_');
   private readonly uniqueTriggerId = uniqueId('trigger_');
 
@@ -92,22 +97,41 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
             ref={ref}
             role="option"
           >
-            {option.type === 'link' && !option.disabled ? (
-              <Link href={option.url} target={option.target}>
-                <Flex alignItems="center" flexDirection="row">
-                  {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
-                  {content}
-                </Flex>
-              </Link>
-            ) : (
-              <Flex alignItems="center" flexDirection="row">
-                {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
-                {content}
-              </Flex>
-            )}
+            {this.getContent(option, isHighlighted)}
           </ListItem>
         );
       })
+    );
+  }
+
+  private wrapInLink(option: DropdownLinkItem<T>, content: React.ReactChild) {
+    return (
+      <Link href={option.url} target={option.target}>
+        {content}
+      </Link>
+    );
+  }
+
+  private getContent(option: DropdownOption<T>, isHighlighted: boolean) {
+    const { disabled, icon, tooltip } = option;
+
+    const baseContent = (
+      <Flex alignItems="center" flexDirection="row">
+        {icon && <FlexItem paddingRight="xSmall">{this.renderIcon(option, isHighlighted)}</FlexItem>}
+        {option.content}
+      </Flex>
+    );
+
+    const content = option.type === 'link' && !disabled ? this.wrapInLink(option, baseContent) : baseContent;
+
+    return disabled && tooltip ? this.wrapInTooltip(tooltip, content) : content;
+  }
+
+  private wrapInTooltip(tooltip: DropdownOption<T>['tooltip'], trigger: React.ReactChild) {
+    return (
+      <Tooltip placement="left" trigger={trigger} modifiers={this.tooltipModifiers} inline={false}>
+        {tooltip}
+      </Tooltip>
     );
   }
 
@@ -129,7 +153,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     );
   }
 
-  private renderIcon(item: DropdownItem<T> | DropdownLinkItem<T>, isHighlighted: boolean) {
+  private renderIcon(item: DropdownOption<T>, isHighlighted: boolean) {
     return (
       React.isValidElement(item.icon) &&
       React.cloneElement(item.icon, {
@@ -139,7 +163,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     );
   }
 
-  private iconColor(item: DropdownItem<T> | DropdownLinkItem<T>, isHighlighted: boolean) {
+  private iconColor(item: DropdownOption<T>, isHighlighted: boolean) {
     if (item.disabled) {
       return 'secondary40';
     }
@@ -179,7 +203,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     return id || this.uniqueDropdownId;
   }
 
-  private getItemId(item: DropdownItem<T> | DropdownLinkItem<T>, index: number) {
+  private getItemId(item: DropdownOption<T>, index: number) {
     const { id } = item;
 
     return id || `${this.getDropdownId()}-item-${index}`;
@@ -220,7 +244,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     this.toggleList();
   };
 
-  private handleOnItemClick = (item: DropdownItem<T> | DropdownLinkItem<T>) => {
+  private handleOnItemClick = (item: DropdownOption<T>) => {
     if (item.disabled) {
       return;
     }

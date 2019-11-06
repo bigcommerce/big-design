@@ -35,6 +35,7 @@ export default () => (
             value: 'copy',
             icon: <AssignmentIcon />,
             disabled: true,
+            tooltip: 'You cannot copy this item...',
           },
           {
             content: 'Delete',
@@ -43,7 +44,12 @@ export default () => (
             icon: <DeleteIcon />,
             actionType: 'destructive',
           },
-          { content: 'Link', icon: <OpenInNewIcon />, type: 'link', url: '#' },
+          {
+            content: 'Link',
+            icon: <OpenInNewIcon />,
+            type: 'link',
+            url: '#',
+          },
         ]}
         placement="bottom-start"
         trigger={<Button>Open Menu</Button>}

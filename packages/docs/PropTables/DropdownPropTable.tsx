@@ -89,6 +89,15 @@ const dropdownItemProps: Prop[] = [
     description: 'Returns the item object.',
   },
   {
+    name: 'tooltip',
+    types: 'string',
+    description: (
+      <>
+        Adds tooltip for disabled item. Default placement is set to <Code highlight={false}>right</Code>.
+      </>
+    ),
+  },
+  {
     name: 'type',
     types: "'string'",
     defaultValue: "'string'",
@@ -135,6 +144,11 @@ const dropdownLinkProps: Prop[] = [
         component to display to the left of the text.
       </>
     ),
+  },
+  {
+    name: 'tooltip',
+    types: "{ message: string, placement?: 'left' | 'right' }",
+    description: "Adds tooltip for disabled item. Placement is optional, if not passed - 'left' is set.",
   },
   {
     name: 'type',

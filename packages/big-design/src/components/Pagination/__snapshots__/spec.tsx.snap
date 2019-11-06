@@ -100,7 +100,7 @@ exports[`render pagination component 1`] = `
   outline: none;
   overflow-y: scroll;
   padding: 0.5rem 0;
-  z-index: 1070;
+  z-index: 1060;
 }
 
 .c8 {
@@ -596,7 +596,7 @@ exports[`render pagination component with invalid page info 1`] = `
   outline: none;
   overflow-y: scroll;
   padding: 0.5rem 0;
-  z-index: 1070;
+  z-index: 1060;
 }
 
 .c8 {
@@ -1092,7 +1092,7 @@ exports[`render pagination component with invalid range info 1`] = `
   outline: none;
   overflow-y: scroll;
   padding: 0.5rem 0;
-  z-index: 1070;
+  z-index: 1060;
 }
 
 .c8 {
@@ -1589,7 +1589,7 @@ exports[`render pagination component with no items 1`] = `
   outline: none;
   overflow-y: scroll;
   padding: 0.5rem 0;
-  z-index: 1070;
+  z-index: 1060;
 }
 
 .c8 {

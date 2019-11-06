@@ -129,7 +129,7 @@ exports[`renders a pagination component 1`] = `
   outline: none;
   overflow-y: scroll;
   padding: 0.5rem 0;
-  z-index: 1070;
+  z-index: 1060;
 }
 
 .c11 {
