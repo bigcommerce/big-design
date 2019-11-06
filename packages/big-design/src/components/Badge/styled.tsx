@@ -5,49 +5,45 @@ import { withMargins } from '../../mixins';
 
 import { BadgeProps } from './Badge';
 
-export const StyledBadge = /*#__PURE__*/ (() => {
-  const InternalStyledBadge = styled.span<BadgeProps>`
-    ${withMargins()};
+export const StyledBadge = styled.span<BadgeProps>`
+  ${withMargins()};
 
-    color: ${({ theme }) => theme.colors.white};
-    border-radius: ${({ theme }) => theme.borderRadius.normal};
-    display: inline-block;
-    font-size: ${({ theme }) => theme.helpers.remCalc(12)};
-    font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-    text-align: center;
-    text-transform: uppercase;
-    padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.xSmall}`};
+  color: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.borderRadius.normal};
+  display: inline-block;
+  font-size: ${({ theme }) => theme.helpers.remCalc(12)};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  text-align: center;
+  text-transform: uppercase;
+  padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.xSmall}`};
 
-    ${({ theme, variant }) =>
-      variant === 'secondary' &&
-      css`
-        background-color: ${theme.colors.secondary60};
-      `}
+  ${({ theme, variant }) =>
+    variant === 'secondary' &&
+    css`
+      background-color: ${theme.colors.secondary60};
+    `}
 
-    ${({ theme, variant }) =>
-      variant === 'success' &&
-      css`
-        background-color: ${theme.colors.success50};
-      `}
+  ${({ theme, variant }) =>
+    variant === 'success' &&
+    css`
+      background-color: ${theme.colors.success50};
+    `}
 
-    ${({ theme, variant }) =>
-      variant === 'warning' &&
-      css`
-        color: ${theme.colors.secondary70};
-        background-color: ${theme.colors.warning40};
-      `}
+  ${({ theme, variant }) =>
+    variant === 'warning' &&
+    css`
+      color: ${theme.colors.secondary70};
+      background-color: ${theme.colors.warning40};
+    `}
 
-    ${({ theme, variant }) =>
-      variant === 'danger' &&
-      css`
-        background-color: ${theme.colors.danger40};
-      `}
-  `;
+  ${({ theme, variant }) =>
+    variant === 'danger' &&
+    css`
+      background-color: ${theme.colors.danger40};
+    `}
+`;
 
-  InternalStyledBadge.defaultProps = {
-    theme: defaultTheme,
-    variant: 'secondary',
-  };
-
-  return InternalStyledBadge;
-})();
+StyledBadge.defaultProps = {
+  theme: defaultTheme,
+  variant: 'secondary',
+};
