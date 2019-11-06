@@ -22,7 +22,7 @@ export const StyledModal = styled.div.attrs({
     props.backdrop &&
     props.variant &&
     css`
-      background: ${() => rgba(props.theme.colors.secondary70, props.variant === 'dialog' ? 0.5 : 0.7)};
+      background: ${rgba(props.theme.colors.secondary70, props.variant === 'dialog' ? 0.5 : 0.7)};
     `}
 `;
 
@@ -32,39 +32,41 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
   position: fixed;
   z-index: ${({ theme }) => theme.zIndex.modal};
 
-  ${({ variant }) =>
-    variant === 'dialog' &&
-    css`
-      ${({ theme }) => theme.shadow.floating};
+  ${({ theme, variant }) =>
+    variant === 'dialog'
+      ? css`
+          ${theme.shadow.floating};
 
-      max-width: ${({ theme }) => theme.breakpointValues.tablet};
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-    `}
+          max-width: ${theme.breakpointValues.tablet};
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 90%;
+        `
+      : {}}
 
-  ${({ variant }) =>
-    variant === 'modal' &&
-    css`
-      height: 100%;
-      width: 100%;
+  ${({ theme, variant }) =>
+    variant === 'modal'
+      ? css`
+          height: 100%;
+          width: 100%;
 
-      ${({ theme }) => theme.breakpoints.tablet} {
-        ${({ theme }) => theme.shadow.floating};
+          ${theme.breakpoints.tablet} {
+            ${theme.shadow.floating};
 
-        height: auto;
-        left: 50%;
-        max-height: 90vh;
-        max-width: ${({ theme }) => theme.breakpointValues.tablet};
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
+            height: auto;
+            left: 50%;
+            max-height: 90vh;
+            max-width: ${theme.breakpointValues.tablet};
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
 
-      ${({ theme }) => theme.breakpoints.desktop} {
-        max-height: 80vh;
-      }
-    `}
+          ${theme.breakpoints.desktop} {
+            max-height: 80vh;
+          }
+        `
+      : {}}
 `;
 
 export const StyledModalActions = styled(Flex)`

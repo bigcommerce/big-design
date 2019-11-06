@@ -16,7 +16,7 @@ exports[`render open modal 1`] = `
   width: 1.5rem;
 }
 
-.c3 {
+.c1 {
   box-sizing: border-box;
 }
 
@@ -145,7 +145,7 @@ exports[`render open modal 1`] = `
   background: rgba(49,52,64,0.7);
 }
 
-.c1 {
+.c3 {
   background: #FFFFFF;
   box-sizing: border-box;
   position: fixed;
@@ -183,7 +183,7 @@ exports[`render open modal 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c3 {
     border-radius: 0.25rem;
     box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
     height: auto;
@@ -198,7 +198,7 @@ exports[`render open modal 1`] = `
 }
 
 @media (min-width:1025px) {
-  .c1 {
+  .c3 {
     max-height: 80vh;
   }
 }
@@ -234,7 +234,7 @@ exports[`render open modal 1`] = `
           class="c4"
         >
           <button
-            class="bd-button c5"
+            class="c5 bd-button"
             role="button"
             tabindex="0"
           >
@@ -286,7 +286,7 @@ exports[`render open modal without backdrop 1`] = `
   width: 1.5rem;
 }
 
-.c3 {
+.c1 {
   box-sizing: border-box;
 }
 
@@ -414,7 +414,7 @@ exports[`render open modal without backdrop 1`] = `
   z-index: 1040;
 }
 
-.c1 {
+.c3 {
   background: #FFFFFF;
   box-sizing: border-box;
   position: fixed;
@@ -452,7 +452,7 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 @media (min-width:720px) {
-  .c1 {
+  .c3 {
     border-radius: 0.25rem;
     box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
     height: auto;
@@ -467,7 +467,7 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 @media (min-width:1025px) {
-  .c1 {
+  .c3 {
     max-height: 80vh;
   }
 }
@@ -499,7 +499,7 @@ exports[`render open modal without backdrop 1`] = `
           class="c4"
         >
           <button
-            class="bd-button c5"
+            class="c5 bd-button"
             role="button"
             tabindex="0"
           >
@@ -644,7 +644,7 @@ exports[`renders destructive action button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -760,7 +760,7 @@ exports[`renders secondary action button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >

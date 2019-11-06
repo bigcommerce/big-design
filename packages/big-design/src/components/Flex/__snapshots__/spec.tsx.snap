@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render flex 1`] = `
-.c1 {
+.c0 {
   box-sizing: border-box;
 }
 
-.c0 {
+.c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -27,7 +27,7 @@ exports[`render flex 1`] = `
 }
 
 @media (min-width:0px) {
-  .c0 {
+  .c1 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -35,7 +35,7 @@ exports[`render flex 1`] = `
 }
 
 @media (min-width:720px) {
-  .c0 {
+  .c1 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;

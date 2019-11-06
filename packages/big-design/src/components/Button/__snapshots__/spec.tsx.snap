@@ -104,7 +104,7 @@ exports[`render default button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -220,7 +220,7 @@ exports[`render destructive button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -336,7 +336,7 @@ exports[`render destructive disabled button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   disabled=""
   role="button"
   tabindex="0"
@@ -453,7 +453,7 @@ exports[`render disabled button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   disabled=""
   role="button"
   tabindex="0"
@@ -578,7 +578,7 @@ exports[`render icon left and right button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -737,7 +737,7 @@ exports[`render icon left button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -878,7 +878,7 @@ exports[`render icon only button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -1018,7 +1018,7 @@ exports[`render icon right button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -1079,7 +1079,7 @@ exports[`render loading button 1`] = `
   transition: stroke-dashoffset 0.35s;
 }
 
-.c3 {
+.c1 {
   box-sizing: border-box;
 }
 
@@ -1193,7 +1193,7 @@ exports[`render loading button 1`] = `
   visibility: hidden;
 }
 
-.c1 {
+.c3 {
   position: absolute;
 }
 
@@ -1227,7 +1227,7 @@ exports[`render loading button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -1364,7 +1364,7 @@ exports[`render secondary button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -1480,7 +1480,7 @@ exports[`render secondary destructive button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -1596,7 +1596,7 @@ exports[`render secondary destructive disabled button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   disabled=""
   role="button"
   tabindex="0"
@@ -1713,7 +1713,7 @@ exports[`render secondary disabled button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   disabled=""
   role="button"
   tabindex="0"
@@ -1831,7 +1831,7 @@ exports[`render subtle button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -1948,7 +1948,7 @@ exports[`render subtle destructive button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   role="button"
   tabindex="0"
 >
@@ -2065,7 +2065,7 @@ exports[`render subtle destructive disabled button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   disabled=""
   role="button"
   tabindex="0"
@@ -2183,7 +2183,7 @@ exports[`render subtle disabled button 1`] = `
 }
 
 <button
-  class="bd-button c0"
+  class="c0 bd-button"
   disabled=""
   role="button"
   tabindex="0"

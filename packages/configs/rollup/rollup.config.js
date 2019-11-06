@@ -1,13 +1,9 @@
-const { tmpdir } = require('os');
-const { DEFAULT_EXTENSIONS } = require('@babel/core');
 const babel = require('rollup-plugin-babel');
-const commonjs = require('rollup-plugin-commonjs');
 const filesize = require('rollup-plugin-filesize');
-const resolve = require('rollup-plugin-node-resolve');
 const replace = require('rollup-plugin-replace');
-const sourceMaps = require('rollup-plugin-sourcemaps');
-const typescript = require('rollup-plugin-typescript2');
+const resolve = require('rollup-plugin-node-resolve');
 
+const extensions = ['.ts', '.tsx', '.js', '.jsx'];
 const nodeEnv = process.env.NODE_ENV || 'production';
 
 function generateConfig(pkg) {
@@ -21,7 +17,7 @@ function generateConfig(pkg) {
     output: [
       { file: pkg.main, format: 'cjs', sourcemap: true },
       { file: pkg.module, format: 'es', sourcemap: true }
-    ].filter(Boolean),
+    ],
     external: makeExternalPredicate(externals),
     watch: {
       include: 'src/**'
@@ -30,19 +26,14 @@ function generateConfig(pkg) {
       replace({
         'process.env.NODE_ENV': JSON.stringify(nodeEnv)
       }),
-      resolve(),
-      commonjs(),
-      typescript({
-        cacheRoot: tmpdir(),
-        check: nodeEnv === 'production',
-        typescript: require('typescript'),
-        useTsconfigDeclarationDir: true
+      resolve({
+        extensions,
+        preferBuiltins: false
       }),
       babel({
-        extensions: [...DEFAULT_EXTENSIONS, 'ts', 'tsx'],
+        extensions,
         exclude: 'node_modules/**'
       }),
-      sourceMaps(),
       filesize()
     ]
   };

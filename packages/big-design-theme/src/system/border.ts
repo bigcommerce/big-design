@@ -1,21 +1,11 @@
 import { css } from 'styled-components';
 
 import { remCalc } from '../helpers';
-import { AllStyleInterpolations } from '../styled/types';
 
-export interface Border {
-  box: AllStyleInterpolations;
-  boxError: AllStyleInterpolations;
-  none: AllStyleInterpolations;
-}
+export type Border = ReturnType<typeof createBorder>;
+export type BorderRadius = ReturnType<typeof createBorderRadius>;
 
-export interface BorderRadius {
-  circle: AllStyleInterpolations;
-  none: AllStyleInterpolations;
-  normal: AllStyleInterpolations;
-}
-
-export const createBorder = (): Border => ({
+export const createBorder = () => ({
   box: css`
     ${({ theme }) => `1px solid ${theme.colors.secondary30}`};
   `,
@@ -27,7 +17,7 @@ export const createBorder = (): Border => ({
   none: 'none',
 });
 
-export const createBorderRadius = (): BorderRadius => ({
+export const createBorderRadius = () => ({
   circle: '50%',
   none: 0,
   normal: remCalc(4),

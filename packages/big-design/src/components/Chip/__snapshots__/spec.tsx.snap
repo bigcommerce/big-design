@@ -21,7 +21,7 @@ exports[`renders with close button if onRemove is present 1`] = `
   margin-bottom: 0;
 }
 
-.c1 {
+.c0 {
   margin: 0.25rem;
   padding-right: 0.25rem;
   padding-left: 0.5rem;
@@ -30,7 +30,7 @@ exports[`renders with close button if onRemove is present 1`] = `
   border-radius: 0.25rem;
 }
 
-.c4 {
+.c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -77,32 +77,32 @@ exports[`renders with close button if onRemove is present 1`] = `
   color: #3C64F4;
 }
 
-.c4:focus {
+.c3:focus {
   outline: none;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c4 + .bd-button {
+.c3 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c4:active {
+.c3:active {
   background-color: #DBE3FE;
 }
 
-.c4:focus {
+.c3:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4:hover:not(:active) {
+.c3:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -121,7 +121,7 @@ exports[`renders with close button if onRemove is present 1`] = `
   visibility: visible;
 }
 
-.c0 {
+.c1 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -136,7 +136,7 @@ exports[`renders with close button if onRemove is present 1`] = `
   user-select: none;
 }
 
-.c3 {
+.c4 {
   color: #5E637A;
   height: auto;
   padding: 0;
@@ -144,14 +144,14 @@ exports[`renders with close button if onRemove is present 1`] = `
 }
 
 @media (min-width:720px) {
-  .c4 + .bd-button {
+  .c3 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 {
+  .c3 {
     width: auto;
   }
 }
@@ -213,7 +213,7 @@ exports[`renders without close button 1`] = `
   margin-bottom: 0;
 }
 
-.c1 {
+.c0 {
   margin: 0.25rem;
   padding-right: 0.25rem;
   padding-left: 0.5rem;
@@ -222,7 +222,7 @@ exports[`renders without close button 1`] = `
   border-radius: 0.25rem;
 }
 
-.c0 {
+.c1 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render Tabs 1`] = `
-.c2 {
+.c0 {
   box-sizing: border-box;
 }
 
@@ -29,7 +29,7 @@ exports[`render Tabs 1`] = `
   display: flex;
 }
 
-.c4 {
+.c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -75,32 +75,32 @@ exports[`render Tabs 1`] = `
   color: #3C64F4;
 }
 
-.c4:focus {
+.c3:focus {
   outline: none;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c4 + .bd-button {
+.c3 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c4:active {
+.c3:active {
   background-color: #DBE3FE;
 }
 
-.c4:focus {
+.c3:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4:hover:not(:active) {
+.c3:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -119,11 +119,11 @@ exports[`render Tabs 1`] = `
   visibility: visible;
 }
 
-.c0 {
+.c2 {
   overflow: auto;
 }
 
-.c3 {
+.c4 {
   border: none;
   border-bottom: 0.25rem solid transparent;
   border-bottom-color: transparent;
@@ -134,14 +134,14 @@ exports[`render Tabs 1`] = `
 }
 
 @media (min-width:720px) {
-  .c4 + .bd-button {
+  .c3 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 {
+  .c3 {
     width: auto;
   }
 }
@@ -178,7 +178,7 @@ exports[`render Tabs 1`] = `
 `;
 
 exports[`render Tabs with disabled item 1`] = `
-.c2 {
+.c0 {
   box-sizing: border-box;
 }
 
@@ -206,7 +206,7 @@ exports[`render Tabs with disabled item 1`] = `
   display: flex;
 }
 
-.c4 {
+.c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -252,32 +252,32 @@ exports[`render Tabs with disabled item 1`] = `
   color: #3C64F4;
 }
 
-.c4:focus {
+.c3:focus {
   outline: none;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c4 + .bd-button {
+.c3 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c4:active {
+.c3:active {
   background-color: #DBE3FE;
 }
 
-.c4:focus {
+.c3:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4:hover:not(:active) {
+.c3:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -296,11 +296,11 @@ exports[`render Tabs with disabled item 1`] = `
   visibility: visible;
 }
 
-.c0 {
+.c2 {
   overflow: auto;
 }
 
-.c3 {
+.c4 {
   border: none;
   border-bottom: 0.25rem solid transparent;
   border-bottom-color: transparent;
@@ -311,14 +311,14 @@ exports[`render Tabs with disabled item 1`] = `
 }
 
 @media (min-width:720px) {
-  .c4 + .bd-button {
+  .c3 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 {
+  .c3 {
     width: auto;
   }
 }
