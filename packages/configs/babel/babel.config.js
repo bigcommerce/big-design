@@ -6,25 +6,16 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        targets: isTestEnv
-          ? { node: 'current' }
-          : {
-              browsers: [
-                'last 2 versions',
-                'not ie < 11',
-                'not Baidu > 0',
-                'not QQAndroid > 0',
-                'not Android < 62'
-              ]
-            },
+        targets: isTestEnv ? { node: 'current' } : { browsers: 'defaults' },
         modules: isTestEnv ? 'auto' : false
       }
     ],
-    '@babel/preset-react',
-    isTestEnv && '@babel/preset-typescript'
-  ].filter(Boolean),
+    '@babel/preset-typescript',
+    '@babel/preset-react'
+  ],
   plugins: [
     ['babel-plugin-styled-components', { pure: true }],
-    isTestEnv && ['@babel/plugin-proposal-class-properties', { loose: false }]
-  ].filter(Boolean)
+    '@babel/plugin-proposal-class-properties',
+    '@babel/plugin-proposal-object-rest-spread'
+  ]
 };

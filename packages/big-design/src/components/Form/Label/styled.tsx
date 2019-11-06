@@ -11,13 +11,13 @@ export const StyledLabel = styled(StyleableH4).attrs({
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
 
-  ${({ renderOptional }) =>
+  ${({ theme, renderOptional }) =>
     renderOptional &&
     css`
       &::after {
-        color: ${({ theme }) => theme.colors.secondary60};
+        color: ${theme.colors.secondary60};
         content: ' (optional)';
-        font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
+        font-weight: ${theme.typography.fontWeight.regular};
       }
     `}
 ` as StyledComponent<'label', DefaultTheme>;

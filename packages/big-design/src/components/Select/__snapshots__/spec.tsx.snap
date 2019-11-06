@@ -8,16 +8,16 @@ exports[`select action supports actionTypes 1`] = `
   width: 1.25rem;
 }
 
-.c1 {
+.c0 {
   box-sizing: border-box;
 }
 
-.c3 {
+.c2 {
   padding-right: 0.5rem;
   box-sizing: border-box;
 }
 
-.c0 {
+.c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -41,7 +41,7 @@ exports[`select action supports actionTypes 1`] = `
   display: flex;
 }
 
-.c2 {
+.c3 {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
@@ -91,7 +91,7 @@ exports[`select action supports icons 1`] = `
   width: 1.25rem;
 }
 
-.c3 {
+.c2 {
   box-sizing: border-box;
 }
 
@@ -102,12 +102,12 @@ exports[`select action supports icons 1`] = `
   border-top: 1px solid #D9DCE9;
 }
 
-.c5 {
+.c4 {
   padding-right: 0.5rem;
   box-sizing: border-box;
 }
 
-.c2 {
+.c3 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -131,7 +131,7 @@ exports[`select action supports icons 1`] = `
   display: flex;
 }
 
-.c4 {
+.c5 {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;

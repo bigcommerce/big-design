@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render Grid 1`] = `
-.c1 {
+.c0 {
   box-sizing: border-box;
 }
 
-.c0 {
+.c1 {
   grid-gap: 1rem;
   grid-template: "head head" 80px "nav  main" 1fr "nav  foot" 10% / 120px 1fr;
   display: grid;
@@ -31,22 +31,22 @@ exports[`render Grid 1`] = `
   class="c0 c1"
 >
   <div
-    class="c2 c1"
+    class="c0 c2"
   >
     Header
   </div>
   <div
-    class="c3 c1"
+    class="c0 c3"
   >
     Sidebar
   </div>
   <div
-    class="c4 c1"
+    class="c0 c4"
   >
     Content
   </div>
   <div
-    class="c5 c1"
+    class="c0 c5"
   >
     Footer
   </div>

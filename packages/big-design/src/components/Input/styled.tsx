@@ -7,6 +7,8 @@ interface StyledInputWrapperProps extends InputProps {
   focus: boolean;
 }
 
+// TS 3.7 regression, doing unknown -> string until fixed
+// https://github.com/DefinitelyTyped/DefinitelyTyped/pull/40064
 export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.white};
@@ -17,16 +19,15 @@ export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.small}`};
   width: 100%;
 
-  ${({ error, theme }) =>
-    css`
-      border: ${error ? theme.border.boxError : theme.border.box};
-    `};
+  ${({ error, theme }) => css`
+    border: ${((error ? theme.border.boxError : theme.border.box) as unknown) as string};
+  `};
 
   &:hover:not([disabled]) {
     ${({ error, theme }) =>
       error
         ? css`
-            border: ${theme.border.boxError};
+            border: ${(theme.border.boxError as unknown) as string};
           `
         : css`
             border: 1px solid ${theme.colors.secondary40};

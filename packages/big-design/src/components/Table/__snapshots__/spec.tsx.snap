@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a pagination component 1`] = `
-.c4 {
+.c2 {
   box-sizing: border-box;
 }
 
-.c1 {
+.c0 {
   padding: 0.75rem;
   box-sizing: border-box;
 }
@@ -34,7 +34,7 @@ exports[`renders a pagination component 1`] = `
   display: flex;
 }
 
-.c0 {
+.c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -171,7 +171,7 @@ exports[`renders a pagination component 1`] = `
   cursor: pointer;
 }
 
-.c7 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -218,32 +218,32 @@ exports[`renders a pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c7:focus {
+.c6:focus {
   outline: none;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c7 + .bd-button {
+.c6 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c7:active {
+.c6:active {
   background-color: #DBE3FE;
 }
 
-.c7:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c7:hover:not(:active) {
+.c6:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -338,24 +338,24 @@ exports[`renders a pagination component 1`] = `
   visibility: visible;
 }
 
-.c6 {
+.c7 {
   color: #313440;
   width: auto;
 }
 
-.c2 {
+.c4 {
   margin-left: auto;
 }
 
 @media (min-width:720px) {
-  .c7 + .bd-button {
+  .c6 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c7 {
+  .c6 {
     width: auto;
   }
 }
@@ -382,11 +382,11 @@ exports[`renders a pagination component 1`] = `
   >
     <div
       aria-label="pagination"
-      class="c5 c4"
+      class="c2 c5"
       role="navigation"
     >
       <div
-        class="c3 c4"
+        class="c2 c3"
       >
         <button
           aria-haspopup="true"
@@ -435,7 +435,7 @@ exports[`renders a pagination component 1`] = `
             tabindex="-1"
           >
             <div
-              class="c12 c4"
+              class="c2 c12"
             >
               3 per page
             </div>
@@ -448,7 +448,7 @@ exports[`renders a pagination component 1`] = `
             tabindex="-1"
           >
             <div
-              class="c12 c4"
+              class="c2 c12"
             >
               5 per page
             </div>
@@ -461,7 +461,7 @@ exports[`renders a pagination component 1`] = `
             tabindex="-1"
           >
             <div
-              class="c12 c4"
+              class="c2 c12"
             >
               10 per page
             </div>
@@ -469,10 +469,10 @@ exports[`renders a pagination component 1`] = `
         </ul>
       </div>
       <div
-        class="c3 c4"
+        class="c2 c3"
       >
         <button
-          class="c6 c13"
+          class="c13 c7"
           disabled=""
           role="button"
           tabindex="0"
@@ -503,7 +503,7 @@ exports[`renders a pagination component 1`] = `
           </span>
         </button>
         <button
-          class="c6 c13"
+          class="c13 c7"
           role="button"
           tabindex="0"
         >
@@ -547,11 +547,11 @@ exports[`renders a simple table 1`] = `
   width: 100%;
 }
 
-.c3 {
+.c2 {
   box-sizing: border-box;
 }
 
-.c2 {
+.c3 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -744,21 +744,21 @@ exports[`renders a simple table 1`] = `
 `;
 
 exports[`selectable renders selectable actions and checkboxes 1`] = `
-.c5 {
-  box-sizing: border-box;
-}
-
-.c1 {
-  padding: 0.75rem;
-  box-sizing: border-box;
-}
-
-.c3 {
-  margin-right: 0.25rem;
+.c4 {
   box-sizing: border-box;
 }
 
 .c0 {
+  padding: 0.75rem;
+  box-sizing: border-box;
+}
+
+.c2 {
+  margin-right: 0.25rem;
+  box-sizing: border-box;
+}
+
+.c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -782,7 +782,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   display: flex;
 }
 
-.c4 {
+.c5 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -806,7 +806,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   display: flex;
 }
 
-.c2 {
+.c3 {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
@@ -964,7 +964,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
     </div>
   </div>
   <div
-    class="c2 c5"
+    class="c4 c3"
   >
     <p
       class="c12"

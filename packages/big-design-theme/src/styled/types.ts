@@ -1,3 +1,14 @@
-import { DefaultTheme, FlattenInterpolation, SimpleInterpolation, ThemeProps } from 'styled-components';
+import {
+  DefaultTheme,
+  FlattenInterpolation,
+  FlattenSimpleInterpolation,
+  Interpolation,
+  SimpleInterpolation,
+  ThemeProps,
+} from 'styled-components';
 
-export type AllStyleInterpolations = SimpleInterpolation | FlattenInterpolation<ThemeProps<DefaultTheme>>;
+export type AllStyleInterpolations =
+  | FlattenInterpolation<ThemeProps<DefaultTheme>>
+  | FlattenSimpleInterpolation
+  | Interpolation<ThemeProps<DefaultTheme>>
+  | SimpleInterpolation;

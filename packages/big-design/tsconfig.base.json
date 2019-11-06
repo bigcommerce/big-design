@@ -4,7 +4,7 @@
     "declaration": true,
     "declarationDir": "dist",
     "declarationMap": true,
-    "jsx": "preserve"
+    "isolatedModules": true
   },
   "includes": ["src"],
   "exclude": ["src/**/__tests__"]
