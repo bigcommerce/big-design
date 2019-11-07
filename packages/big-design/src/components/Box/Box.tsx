@@ -6,6 +6,7 @@ import { MarginProps, PaddingProps } from '../../mixins';
 import { StyledBox } from './styled';
 
 export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, MarginProps, PaddingProps {
+  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
   backgroundColor?: keyof Colors;
   shadow?: keyof Shadow;
   border?: keyof Border;
