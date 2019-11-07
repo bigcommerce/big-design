@@ -2,7 +2,7 @@ import { Box, Flex, H0, H1, H2, H3, H4, Link, Small, Text } from '@bigcommerce/b
 import React from 'react';
 
 import { Code, CodePreview, NextLink } from '../../components';
-import { MarginPropTable, TypographyPropTable } from '../../PropTables';
+import { HeadingPropTable, MarginPropTable, TextPropTable, TypographyPropTable } from '../../PropTables';
 
 export default () => (
   <>
@@ -13,6 +13,8 @@ export default () => (
       <Link href="https://design.bigcommerce.com/components/typography">Typography Design Guidelines</Link>.
     </Text>
 
+    <H1>Headings</H1>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       <>
@@ -21,18 +23,29 @@ export default () => (
         <H2>Panel header - h2</H2>
         <H3>Section header - h3</H3>
         <H4>Group header - h4</H4>
+      </>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <HeadingPropTable />
+    <H2>Inherited Props</H2>
+    <TypographyPropTable collapsible />
+    <MarginPropTable collapsible />
+
+    <H1>Texts</H1>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <>
         <Text>Text - p</Text>
         <Small>Small text - small</Small>
       </>
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <Text></Text>
-
-    <H1>API</H1>
-    <TypographyPropTable />
-
+    <TextPropTable />
     <H2>Inherited Props</H2>
+    <TypographyPropTable collapsible />
     <MarginPropTable collapsible />
 
     <H1>Examples</H1>
@@ -49,11 +62,24 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Flex flexDirection="column">
+      <>
         <Text color="primary40">This color is primary40</Text>
         <Text color="danger70">This color is danger70</Text>
         <Text color="success50">This color is success50</Text>
-      </Flex>
+      </>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H2>Text Modifiers</H2>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <>
+        <Text bold>This text is bold.</Text>
+        <Text italic>This text is italic.</Text>
+        <Text strikethrough>This text is strikethrough.</Text>
+        <Text underline>This color is underline.</Text>
+      </>
       {/* jsx-to-string:end */}
     </CodePreview>
 
@@ -68,6 +94,14 @@ export default () => (
       <Box style={{ maxWidth: '400px' }}>
         <H0 ellipsis>Indexes start at 0 and so do our headers.</H0>
       </Box>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H2>As a different tag</H2>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Text as="span">This is a span.</Text>
       {/* jsx-to-string:end */}
     </CodePreview>
   </>

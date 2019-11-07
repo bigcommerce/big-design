@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Small, SmallProps } from '../../Typography';
+import { Small, TextProps } from '../../Typography';
 
-export const Error: React.FC<SmallProps> = ({ className, style, ...props }) => (
+export const Error: React.FC<TextProps> = ({ className, style, ...props }) => (
   <Small color="danger" margin="none" marginLeft="xxSmall" {...props} />
 );

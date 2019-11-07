@@ -146,3 +146,52 @@ test('All typography components allow changing their color given a color prop', 
     expect(child).toHaveStyle(`color: ${theme.colors.primary}`);
   });
 });
+
+test('Headings can change their tag', () => {
+  const { container } = render(<H2 as="h1">Test</H2>);
+
+  expect(container.querySelector('h1')).toBeInTheDocument();
+});
+
+test('Headings can not change their tag to non-heading tags', () => {
+  // @ts-ignore
+  const { container } = render(<H2 as="p">Test</H2>);
+
+  expect(container.querySelector('p')).not.toBeInTheDocument();
+  expect(container.querySelector('h2')).toBeInTheDocument();
+});
+
+test('Text and Small can change their tag', () => {
+  const { container } = render(
+    <>
+      <Text as="span">Some Text</Text>
+      <Small as="span">Some Text</Small>
+    </>,
+  );
+
+  expect(container.querySelectorAll('span').length).toBe(2);
+});
+
+test('Text and Small accept text modifiers', () => {
+  const { getByTestId } = render(
+    <>
+      <Text bold italic underline data-testid="text">
+        Some Text
+      </Text>
+      <Small strikethrough data-testid="small">
+        Some Text
+      </Small>
+    </>,
+  );
+
+  const text = getByTestId('text');
+  const small = getByTestId('small');
+
+  expect(text).toHaveStyle(`
+    font-weight: 600;
+    font-style: italic;
+    text-decoration: underline;
+  `);
+
+  expect(small).toHaveStyle('text-decoration: line-through');
+});
