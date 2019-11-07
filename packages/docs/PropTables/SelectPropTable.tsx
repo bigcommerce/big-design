@@ -25,6 +25,15 @@ const selectProps: Prop[] = [
     ),
   },
   {
+    name: 'inputRef',
+    types: 'React.Ref<HTMLInputElement> | React.RefObject<HTMLInputElement>',
+    description: (
+      <>
+        The provided ref will be used for the underlying input element used in the <Code>Select</Code>.
+      </>
+    ),
+  },
+  {
     name: 'label',
     types: 'string',
     description: 'Adds a label to the field.',
