@@ -1,4 +1,5 @@
 import { Placement } from 'popper.js';
+import { RefObject } from 'react';
 
 import { ListItemProps } from '../List/Item';
 
@@ -7,6 +8,7 @@ export interface SelectProps<T> extends Omit<React.HTMLAttributes<HTMLUListEleme
   disabled?: boolean;
   error?: string;
   filterable?: boolean;
+  inputRef?: RefObject<HTMLInputElement> | React.Ref<HTMLInputElement>;
   label?: string;
   maxHeight?: number;
   multi?: boolean;
