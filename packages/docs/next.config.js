@@ -1,4 +1,5 @@
 const isProduction = process.env.NODE_ENV === 'production';
+const isDev = !isProduction;
 const URL_PREFIX = '/big-design';
 
 module.exports = {
@@ -45,5 +46,8 @@ module.exports = {
     '/textarea': { page: '/Textarea/TextareaPage' },
     '/tooltip': { page: '/Tooltip/TooltipPage' },
     '/typography': { page: '/Typography/TypographyPage' },
+
+    // Dev route for development purposes
+    ...(isDev && { '/dev': { page: '/Dev/DevPage', query: { noNav: '' } } }),
   }),
 };

@@ -27,7 +27,7 @@ const gridTemplate = {
 
 export default class MyApp extends App {
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, router } = this.props;
 
     return (
       <Container>
@@ -49,22 +49,33 @@ export default class MyApp extends App {
         <ThemeProvider theme={theme}>
           <>
             <GlobalStyles />
-            <Grid gridTemplate={gridTemplate} backgroundColor="secondary10" gridGap="0" style={{ minHeight: '100%' }}>
-              <Grid.Item gridArea="nav">
-                <SideNav />
-              </Grid.Item>
-              <Grid.Item
-                gridArea="main"
-                marginVertical="medium"
-                marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
-                style={{ maxWidth: '100%' }}
-              >
-                <StoryWrapper>
-                  <Component {...pageProps} />
-                </StoryWrapper>
-              </Grid.Item>
-            </Grid>
-            <BetaRibbon />
+            {router.query.noNav ? (
+              <Component {...pageProps} />
+            ) : (
+              <>
+                <Grid
+                  gridTemplate={gridTemplate}
+                  backgroundColor="secondary10"
+                  gridGap="0"
+                  style={{ minHeight: '100%' }}
+                >
+                  <Grid.Item gridArea="nav">
+                    <SideNav />
+                  </Grid.Item>
+                  <Grid.Item
+                    gridArea="main"
+                    marginVertical="medium"
+                    marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
+                    style={{ maxWidth: '100%' }}
+                  >
+                    <StoryWrapper>
+                      <Component {...pageProps} />
+                    </StoryWrapper>
+                  </Grid.Item>
+                </Grid>
+                <BetaRibbon />
+              </>
+            )}
           </>
         </ThemeProvider>
       </Container>
