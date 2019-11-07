@@ -1,8 +1,15 @@
 import { Box, Grid, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, Collapsible } from '../../components';
-import { BoxPropTable, GridItemPropTable, GridPropTable, MarginPropTable, PaddingPropTable } from '../../PropTables';
+import { Code, CodePreview } from '../../components';
+import {
+  BoxPropTable,
+  DisplayPropTable,
+  GridItemPropTable,
+  GridPropTable,
+  MarginPropTable,
+  PaddingPropTable,
+} from '../../PropTables';
 
 const ExampleBox: React.FC = ({ children }) => (
   <Box backgroundColor="secondary20" border="box" padding="small" style={{ height: '100%' }}>
@@ -49,6 +56,7 @@ export default () => (
 
     <H2>Inherited Props</H2>
     <BoxPropTable collapsible />
+    <DisplayPropTable collapsible />
     <MarginPropTable collapsible />
     <PaddingPropTable collapsible />
 

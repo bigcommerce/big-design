@@ -1,13 +1,14 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { withMargins, withPaddings } from '../../mixins';
+import { withDisplay, withMargins, withPaddings } from '../../mixins';
 
 import { BoxProps } from './Box';
 
 export const StyledBox = styled.div<BoxProps>`
-  ${withMargins()};
-  ${withPaddings()};
+  ${withDisplay()}
+  ${withMargins()}
+  ${withPaddings()}
   box-sizing: border-box;
 
   ${({ backgroundColor, theme }) =>

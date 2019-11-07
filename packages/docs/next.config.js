@@ -23,6 +23,7 @@ module.exports = {
     '/button': { page: '/Button/ButtonPage' },
     '/checkbox': { page: '/Checkbox/CheckboxPage' },
     '/colors': { page: '/Colors/ColorsPage' },
+    '/display': { page: '/Display/DisplayPage' },
     '/dropdown': { page: '/Dropdown/DropdownPage' },
     '/flex': { page: '/Flex/FlexPage' },
     '/form': { page: '/Form/FormPage' },

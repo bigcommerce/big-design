@@ -1,11 +1,11 @@
 import { Border, BorderRadius, Colors, Shadow, ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { memo } from 'react';
 
-import { MarginProps, PaddingProps } from '../../mixins';
+import { DisplayProps, MarginProps, PaddingProps } from '../../mixins';
 
 import { StyledBox } from './styled';
 
-export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, MarginProps, PaddingProps {
+export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, DisplayProps, MarginProps, PaddingProps {
   as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
   backgroundColor?: keyof Colors;
   shadow?: keyof Shadow;

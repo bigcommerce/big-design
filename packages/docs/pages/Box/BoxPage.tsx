@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { CodePreview } from '../../components';
-import { BoxPropTable, MarginPropTable, PaddingPropTable } from '../../PropTables';
+import { BoxPropTable, DisplayPropTable, MarginPropTable, PaddingPropTable } from '../../PropTables';
 
 export default () => (
   <>
@@ -23,6 +23,7 @@ export default () => (
     <BoxPropTable />
 
     <H2>Inherited Props</H2>
+    <DisplayPropTable collapsible />
     <MarginPropTable collapsible />
     <PaddingPropTable collapsible />
 
