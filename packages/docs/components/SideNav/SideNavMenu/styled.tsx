@@ -11,15 +11,13 @@ interface Navigation {
   isExpanded: boolean;
 }
 
-// TS 3.7 regression, doing unknown -> string until fixed
-// https://github.com/DefinitelyTyped/DefinitelyTyped/pull/40064
 export const StyledNavigation = styled(Flex.Item)<Navigation>`
-  ${({ theme }) => (theme.shadow.floating as unknown) as string};
+  ${({ theme }) => theme.shadow.floating};
 
   background-color: ${({ theme }) => theme.colors.white};
-  border-bottom: ${({ theme }) => (theme.border.box as unknown) as string};
+  border-bottom: ${({ theme }) => theme.border.box};
   border-radius: 0;
-  border-top: ${({ theme }) => (theme.border.box as unknown) as string};
+  border-top: ${({ theme }) => theme.border.box};
   display: ${({ isExpanded }) => (isExpanded ? 'block' : 'none')};
   height: 16rem;
   left: 0;
