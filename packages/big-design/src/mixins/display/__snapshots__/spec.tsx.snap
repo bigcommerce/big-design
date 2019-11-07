@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`responsive display 1`] = `
+@media (min-width:0px) {
+  .c0 {
+    display: none;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+<div
+  class="c0"
+  display="[object Object]"
+/>
+`;

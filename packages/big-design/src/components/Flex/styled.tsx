@@ -1,6 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
+import { withDisplay } from '../../mixins';
 import { Box } from '../Box';
 
 import { withFlexedContainer } from './withFlex';
@@ -10,6 +11,8 @@ export const StyledFlex = styled(Box)<FlexProps>`
   ${withFlexedContainer()}
 
   display: flex;
+
+  ${withDisplay()}
 `;
 
 StyledFlex.defaultProps = {
