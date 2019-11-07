@@ -5,4 +5,5 @@ coverage
 .vscode
 packages/docs/.next
 packages/docs/out
+packages/docs/pages/Dev
 .idea
