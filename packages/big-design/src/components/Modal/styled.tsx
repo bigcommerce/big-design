@@ -33,40 +33,38 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
   z-index: ${({ theme }) => theme.zIndex.modal};
 
   ${({ theme, variant }) =>
-    variant === 'dialog'
-      ? css`
-          ${theme.shadow.floating};
+    variant === 'dialog' &&
+    css`
+      ${theme.shadow.floating};
 
-          max-width: ${theme.breakpointValues.tablet};
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          width: 90%;
-        `
-      : {}}
+      max-width: ${theme.breakpointValues.tablet};
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+    `}
 
   ${({ theme, variant }) =>
-    variant === 'modal'
-      ? css`
-          height: 100%;
-          width: 100%;
+    variant === 'modal' &&
+    css`
+      height: 100%;
+      width: 100%;
 
-          ${theme.breakpoints.tablet} {
-            ${theme.shadow.floating};
+      ${theme.breakpoints.tablet} {
+        ${theme.shadow.floating};
 
-            height: auto;
-            left: 50%;
-            max-height: 90vh;
-            max-width: ${theme.breakpointValues.tablet};
-            top: 50%;
-            transform: translate(-50%, -50%);
-          }
+        height: auto;
+        left: 50%;
+        max-height: 90vh;
+        max-width: ${theme.breakpointValues.tablet};
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
 
-          ${theme.breakpoints.desktop} {
-            max-height: 80vh;
-          }
-        `
-      : {}}
+      ${theme.breakpoints.desktop} {
+        max-height: 80vh;
+      }
+    `}
 `;
 
 export const StyledModalActions = styled(Flex)`
