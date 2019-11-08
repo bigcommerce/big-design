@@ -13,7 +13,7 @@ export const NextLink: React.FC<{ href: string; as?: string }> = props => {
 
   return (
     <NLink href={href} as={getLinkAs(as)}>
-      {typeof children === 'string' ? <Link>{children}</Link> : children}
+      {typeof children === 'string' ? <Link href="">{children}</Link> : children}
     </NLink>
   );
 };
