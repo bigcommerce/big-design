@@ -76,3 +76,10 @@ test('theme prop overrides default theme', () => {
 
   expect(container.firstChild).toHaveStyle(`background-color: red`);
 });
+
+test('renders as a different tag', () => {
+  const { getByTestId } = render(<Box data-testid="box" as="section" />);
+  const tag = getByTestId('box').tagName;
+
+  expect(tag).toBe('SECTION');
+});

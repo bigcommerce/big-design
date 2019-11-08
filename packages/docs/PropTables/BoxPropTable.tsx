@@ -4,6 +4,11 @@ import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const boxProps: Prop[] = [
   {
+    name: 'as',
+    types: ['string', 'React.ComponentType<any>'],
+    description: 'Use a different HTML tag or a different custom component',
+  },
+  {
     name: 'backgroundColor',
     types: (
       <NextLink href="/Colors/ColorsPage" as="/colors">
