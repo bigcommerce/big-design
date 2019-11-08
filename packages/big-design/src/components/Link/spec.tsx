@@ -10,6 +10,16 @@ test('render link', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('renders with external icon', () => {
+  const { container } = render(
+    <Link href="#" external target="_blank">
+      Link
+    </Link>,
+  );
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
 test('forwards styles', () => {
   const { container } = render(
     <Link href="#" className="test" style={{ background: 'red' }}>
