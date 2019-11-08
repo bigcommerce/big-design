@@ -1,19 +1,9 @@
-import { Colors, ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { memo } from 'react';
 
-import { MarginProps } from '../../mixins';
-
 import { StyledH0, StyledH1, StyledH2, StyledH3, StyledH4, StyledSmall, StyledText } from './styled';
+import { HeadingProps, HeadingTag, TextProps } from './types';
 
-export interface TypographyProps {
-  color?: keyof Colors;
-  ellipsis?: boolean;
-  theme?: ThemeInterface;
-}
-
-export type TextProps = React.HTMLAttributes<HTMLParagraphElement> & MarginProps & TypographyProps;
-export type SmallProps = React.HTMLAttributes<HTMLParagraphElement> & MarginProps & TypographyProps;
-export type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> & MarginProps & TypographyProps;
+const validHeadingTags = new Set<HeadingTag>(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
 
 // Private
 export const StyleableText = StyledText;
@@ -26,9 +16,28 @@ export const StyleableH4 = StyledH4;
 
 // Public
 export const Text: React.FC<TextProps> = memo(({ className, style, ...props }) => <StyleableText {...props} />);
-export const Small: React.FC<SmallProps> = memo(({ className, style, ...props }) => <StyleableSmall {...props} />);
-export const H0: React.FC<HeadingProps> = memo(({ className, style, ...props }) => <StyleableH0 {...props} />);
-export const H1: React.FC<HeadingProps> = memo(({ className, style, ...props }) => <StyleableH1 {...props} />);
-export const H2: React.FC<HeadingProps> = memo(({ className, style, ...props }) => <StyleableH2 {...props} />);
-export const H3: React.FC<HeadingProps> = memo(({ className, style, ...props }) => <StyleableH3 {...props} />);
-export const H4: React.FC<HeadingProps> = memo(({ className, style, ...props }) => <StyleableH4 {...props} />);
+export const Small: React.FC<TextProps> = memo(({ className, style, ...props }) => <StyleableSmall {...props} />);
+
+export const H0: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
+  <StyleableH0 as={getHeadingTag('h1', as)} {...props} />
+));
+
+export const H1: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
+  <StyleableH1 as={getHeadingTag('h1', as)} {...props} />
+));
+
+export const H2: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
+  <StyleableH2 as={getHeadingTag('h2', as)} {...props} />
+));
+
+export const H3: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
+  <StyleableH3 as={getHeadingTag('h3', as)} {...props} />
+));
+
+export const H4: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
+  <StyleableH4 as={getHeadingTag('h4', as)} {...props} />
+));
+
+const getHeadingTag = (defaultTag: HeadingTag, tag?: HeadingTag): HeadingTag => {
+  return tag && validHeadingTags.has(tag) ? tag : defaultTag;
+};

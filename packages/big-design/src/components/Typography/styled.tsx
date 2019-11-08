@@ -4,13 +4,39 @@ import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../mixins';
 
-import { HeadingProps, SmallProps, TextProps, TypographyProps } from './Typography';
+import { HeadingProps, TextProps, TypographyProps } from './types';
 
 const commonTextStyles = (props: TypographyProps) => css`
   color: ${({ theme }) => (props.color ? theme.colors[props.color] : theme.colors.secondary70)};
   margin: 0 0 ${({ theme }) => theme.spacing.medium};
 
   ${props.ellipsis && ellipsis()};
+`;
+
+const textModifiers = (props: TextProps) => css`
+  ${({ theme }) =>
+    props.bold &&
+    css`
+      font-weight: ${theme.typography.fontWeight.semiBold};
+    `}
+
+  ${() =>
+    props.italic &&
+    css`
+      font-style: italic;
+    `}
+
+  ${() =>
+    props.underline &&
+    css`
+      text-decoration: underline;
+    `}
+
+  ${() =>
+    props.strikethrough &&
+    css`
+      text-decoration: line-through;
+    `}
 `;
 
 export const StyledH0 = styled.h1<HeadingProps>`
@@ -58,10 +84,11 @@ export const StyledH4 = styled.h4<HeadingProps>`
 `;
 
 export const StyledText = styled.p<TextProps>`
-  ${props => commonTextStyles(props)};
+  ${props => commonTextStyles(props)}
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.medium};
+  ${props => textModifiers(props)}
 
   &:last-child {
     margin-bottom: 0;
@@ -70,13 +97,14 @@ export const StyledText = styled.p<TextProps>`
   ${withMargins()};
 `;
 
-export const StyledSmall = styled.p<SmallProps>`
+export const StyledSmall = styled.p<TextProps>`
   ${props => commonTextStyles(props)};
   color: ${({ color, theme }) => (color ? theme.colors[color] : theme.colors.secondary60)};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.small};
   margin: 0 0 ${({ theme }) => theme.spacing.small};
+  ${props => textModifiers(props)}
 
   &:last-child {
     margin-bottom: 0;
