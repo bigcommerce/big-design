@@ -1,8 +1,9 @@
-import { H0, H2, Link, Text } from '@bigcommerce/big-design';
+import { H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { OpenInNewIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
-import { CodePreview } from '../../components';
-import { MarginPropTable } from '../../PropTables';
+import { Code, CodePreview } from '../../components';
+import { LinkPropTable, MarginPropTable } from '../../PropTables';
 
 export default () => (
   <>
@@ -21,6 +22,20 @@ export default () => (
       <Link href="#">Link Example</Link>
       {/* jsx-to-string:end */}
     </CodePreview>
+
+    <Text>You can also include and external icon.</Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Link href="#" target="_blank" external>
+        Learn More
+      </Link>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H1>API</H1>
+
+    <LinkPropTable />
 
     <H2>Inherited Props</H2>
     <MarginPropTable collapsible />
