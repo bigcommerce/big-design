@@ -7,4 +7,4 @@ import { StyledGridItem } from './styled';
 
 export type GridItemProps = BoxProps & GridedItemProps;
 
-export const GridItem: React.FC<GridItemProps> = props => <StyledGridItem {...props} />;
+export const GridItem: React.FC<GridItemProps> = ({ as, ...rest }) => <StyledGridItem forwardedAs={as} {...rest} />;

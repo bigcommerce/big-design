@@ -12,6 +12,8 @@ export class Flex extends React.PureComponent<FlexProps> {
   static Item = FlexItem;
 
   render() {
-    return <StyledFlex {...this.props} />;
+    const { as, ...rest } = this.props;
+
+    return <StyledFlex forwardedAs={as} {...rest} />;
   }
 }
