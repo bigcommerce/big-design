@@ -5,6 +5,7 @@ import { withGridedItems } from '../withGrid';
 
 import { GridItemProps } from './Item';
 
-export const StyledGridItem = styled(Box)<GridItemProps>`
+// TODO: Remove the `forwardedAs` manual prop definition when @types get updated
+export const StyledGridItem = styled(Box)<GridItemProps & { forwardedAs?: GridItemProps['as'] }>`
   ${withGridedItems()}
 `;

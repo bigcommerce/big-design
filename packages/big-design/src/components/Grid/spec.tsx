@@ -43,3 +43,12 @@ test('Grid item forwards styles', () => {
   expect(container.getElementsByClassName('test').length).toBe(1);
   expect(container.firstChild).toHaveStyle('background: red');
 });
+
+test('rendering as another element retains inherited props and styles', () => {
+  const { getByTestId } = render(<Grid as="section" margin="medium" data-testid="grid" />);
+
+  const grid = getByTestId('grid');
+
+  expect(grid.tagName).toBe('SECTION');
+  expect(grid).toHaveStyle(`margin: 1rem`);
+});

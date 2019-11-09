@@ -6,7 +6,8 @@ import { withFlexedItems } from '../withFlex';
 
 import { FlexItemProps } from './Item';
 
-export const StyledFlexItem = styled(Box)<FlexItemProps>`
+// TODO: Remove the `forwardedAs` manual prop definition when @types get updated
+export const StyledFlexItem = styled(Box)<FlexItemProps & { forwardedAs?: FlexItemProps['as'] }>`
   ${withFlexedItems()}
 `;
 

@@ -37,3 +37,12 @@ test('Flex Item forwards styles', () => {
   expect(container.getElementsByClassName('test').length).toBe(1);
   expect(container.firstChild).toHaveStyle('background: red');
 });
+
+test('rendering as another element retains inherited props and styles', () => {
+  const { getByTestId } = render(<Flex as="section" margin="medium" data-testid="flex" />);
+
+  const grid = getByTestId('flex');
+
+  expect(grid.tagName).toBe('SECTION');
+  expect(grid).toHaveStyle(`margin: 1rem`);
+});

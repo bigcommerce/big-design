@@ -7,4 +7,4 @@ import { StyledFlexItem } from './styled';
 
 export type FlexItemProps = BoxProps & FlexedItemProps;
 
-export const FlexItem: React.FC<FlexItemProps> = props => <StyledFlexItem {...props} />;
+export const FlexItem: React.FC<FlexItemProps> = ({ as, ...props }) => <StyledFlexItem forwardedAs={as} {...props} />;
