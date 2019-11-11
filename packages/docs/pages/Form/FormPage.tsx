@@ -115,16 +115,16 @@ export default () => (
       {/* jsx-to-string:start */}
       <Form>
         <Form.Group>
-          <Input label="Company" placeholder="BigCommerce" />
+          <Input label="Company" placeholder="BigCommerce" required />
         </Form.Group>
         <Form.Group>
-          <Input label="First Name" placeholder="John" />
-          <Input label="Last Name" placeholder="Doe" />
+          <Input label="First Name" placeholder="John" required />
+          <Input label="Last Name" placeholder="Doe" required />
         </Form.Group>
         <Form.Group>
-          <Input label="City" placeholder="Austin" />
-          <Input label="State" placeholder="Texas" />
-          <Input label="Postal Code" placeholder="78726" />
+          <Input label="City" placeholder="Austin" required />
+          <Input label="State" placeholder="Texas" required />
+          <Input label="Postal Code" placeholder="78726" required />
         </Form.Group>
         <Form.Fieldset legend="Shipping Method">
           <Form.Group>
@@ -181,12 +181,13 @@ export default () => (
                 error={error}
                 onChange={handleChange}
                 pattern="^.{1,3}$"
+                required
               />
             </Form.Group>
             <Form.Group>
-              <Input label="City" error="You must enter a valid City." placeholder="Austin" />
-              <Input label="State" placeholder="Texas" />
-              <Input label="Postal Code" error="You must enter a valid Postal Code." placeholder="78726" />
+              <Input label="City" error="You must enter a valid City." placeholder="Austin" required />
+              <Input label="State" placeholder="Texas" required />
+              <Input label="Postal Code" error="You must enter a valid Postal Code." placeholder="78726" required />
             </Form.Group>
           </Form>
         );
