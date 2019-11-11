@@ -3,12 +3,6 @@ import React from 'react';
 
 import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
-export const FormPropTable: React.FC = () => (
-  <Text>
-    Supports all native <Code>&lt;form /&gt;</Code> element attributes.
-  </Text>
-);
-
 export const FormErrorPropTable: React.FC<{ id?: string }> = ({ id }) => (
   <>
     <H2 id={id}>Form.Error</H2>
@@ -17,6 +11,15 @@ export const FormErrorPropTable: React.FC<{ id?: string }> = ({ id }) => (
     </Text>
   </>
 );
+
+const formProps: Prop[] = [
+  {
+    name: 'fullWidth',
+    types: 'boolean',
+    defaultValue: 'false',
+    description: 'Sets the form width to 100%',
+  },
+];
 
 const formFieldsetProps: Prop[] = [
   {
@@ -51,6 +54,15 @@ const formGroupProps: Prop[] = [
     description: 'Pass error(s) into the form group to override child input errors.',
   },
 ];
+
+export const FormPropTable: React.FC<PropTableWrapper> = props => (
+  <>
+    <Text>
+      Supports all native <Code>&lt;form /&gt;</Code> element attributes.
+    </Text>
+    <PropTable title="Form" propList={formProps} {...props} />
+  </>
+);
 
 export const FormGroupPropTable: React.FC<PropTableWrapper> = props => (
   <PropTable title="Form.Group" propList={formGroupProps} {...props} />

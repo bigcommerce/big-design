@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`simple form render 1`] = `
-.c5 {
+.c6 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -11,48 +11,11 @@ exports[`simple form render 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c5:last-child {
+.c6:last-child {
   margin-bottom: 0;
 }
 
-.c0 {
-  border: none;
-  margin: 0 0 1.5rem;
-  padding: 0;
-}
-
-.c0:last-child {
-  margin: 0;
-}
-
-.c2 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
-}
-
-.c2:last-child {
-  margin-bottom: 0;
-}
-
-.c1 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.75rem;
-  margin: 0 0 0.75rem;
-}
-
-.c1:not(:last-child) {
-  margin-bottom: 0.25rem;
-}
-
-.c7 {
+.c8 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -70,15 +33,15 @@ exports[`simple form render 1`] = `
   border: 1px solid #D9DCE9;
 }
 
-.c7:hover:not([disabled]) {
+.c8:hover:not([disabled]) {
   border: 1px solid #B4BAD1;
 }
 
-.c7[disabled] {
+.c8[disabled] {
   background-color: #ECEEF5;
 }
 
-.c9 {
+.c10 {
   border: 0;
   box-sizing: border-box;
   color: #313440;
@@ -91,35 +54,35 @@ exports[`simple form render 1`] = `
   width: 100%;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9::-webkit-input-placeholder {
+.c10::-webkit-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c9::-moz-placeholder {
+.c10::-moz-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c9:-ms-input-placeholder {
+.c10:-ms-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c9::placeholder {
+.c10::placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   background-color: #ECEEF5;
 }
 
-.c8 {
+.c9 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -135,17 +98,54 @@ exports[`simple form render 1`] = `
   margin-top: -0.25rem;
 }
 
+.c1 {
+  border: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.c1:last-child {
+  margin: 0;
+}
+
 .c3 {
-  display: grid;
-  grid-gap: 0.5rem 1rem;
-  margin-bottom: 1rem;
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
 }
 
 .c3:last-child {
   margin-bottom: 0;
 }
 
+.c2 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  margin: 0 0 0.75rem;
+}
+
+.c2:not(:last-child) {
+  margin-bottom: 0.25rem;
+}
+
 .c4 {
+  display: grid;
+  grid-gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -156,58 +156,58 @@ exports[`simple form render 1`] = `
   margin-bottom: 0.25rem;
 }
 
-.c4::after {
+.c5::after {
   color: #5E637A;
   content: ' (optional)';
   font-weight: 400;
 }
 
 @media (min-width:720px) {
-  .c3 .c6,
-  .c3 .styled__StyledTextareaWrapper-c1uos0-0 {
+  .c0 .c7,
+  .c0 .styled__StyledTextareaWrapper-c1uos0-0 {
     max-width: 26rem;
   }
 }
 
 <form
-  class=""
+  class="c0"
 >
   <fieldset
-    class="c0"
+    class="c1"
   >
     <legend
-      class="c1"
+      class="c2"
     >
       Primary contact
     </legend>
     <p
-      class="c2"
+      class="c3"
     >
       Minim velit quis aute adipisicing adipisicing do do exercitation cupidatat enim ex voluptate consequat labore.
     </p>
     <div
-      class="c3"
+      class="c4"
     >
       <div>
         <label
-          class="c4"
+          class="c5"
           for="input_0"
         >
           First Name
         </label>
         <p
-          class="c5"
+          class="c6"
         >
           This is an example description for First Name
         </p>
         <span
-          class="c6 c7"
+          class="c7 c8"
         >
           <div
-            class="c8"
+            class="c9"
           >
             <input
-              class="c9"
+              class="c10"
               id="input_0"
               placeholder="Placeholder text"
             />
@@ -216,28 +216,28 @@ exports[`simple form render 1`] = `
       </div>
     </div>
     <div
-      class="c3"
+      class="c4"
     >
       <div>
         <label
-          class="c4"
+          class="c5"
           for="input_1"
         >
           Middle Name
         </label>
         <p
-          class="c5"
+          class="c6"
         >
           This is an example description for Last Name. Featuring a Left Icon.
         </p>
         <span
-          class="c6 c7"
+          class="c7 c8"
         >
           <div
-            class="c8"
+            class="c9"
           >
             <input
-              class="c9"
+              class="c10"
               id="input_1"
               placeholder="Placeholder text"
             />

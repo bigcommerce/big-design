@@ -1,27 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders all together 1`] = `
-.c5 {
+.c4 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c1 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
-}
-
-.c1:last-child {
-  margin-bottom: 0;
-}
-
-.c3 {
+.c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -39,15 +25,15 @@ exports[`renders all together 1`] = `
   border: 1px solid #D9DCE9;
 }
 
-.c3:hover:not([disabled]) {
+.c2:hover:not([disabled]) {
   border: 1px solid #B4BAD1;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   background-color: #ECEEF5;
 }
 
-.c7 {
+.c6 {
   border: 0;
   box-sizing: border-box;
   color: #313440;
@@ -62,35 +48,35 @@ exports[`renders all together 1`] = `
   padding-left: 0.25rem;
 }
 
-.c7:focus {
+.c6:focus {
   outline: none;
 }
 
-.c7::-webkit-input-placeholder {
+.c6::-webkit-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7::-moz-placeholder {
+.c6::-moz-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7:-ms-input-placeholder {
+.c6:-ms-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7::placeholder {
+.c6::placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   background-color: #ECEEF5;
 }
 
-.c4 {
+.c3 {
   color: #5E637A;
   -webkit-flex: 0 0 1.5rem;
   -ms-flex: 0 0 1.5rem;
@@ -98,7 +84,7 @@ exports[`renders all together 1`] = `
   height: 1.5rem;
 }
 
-.c6 {
+.c5 {
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -112,6 +98,20 @@ exports[`renders all together 1`] = `
   flex: 1;
   height: 100%;
   margin-top: -0.25rem;
+}
+
+.c1 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c1:last-child {
+  margin-bottom: 0;
 }
 
 .c0 {
@@ -131,13 +131,6 @@ exports[`renders all together 1`] = `
   font-weight: 400;
 }
 
-@media (min-width:720px) {
-  .eLjSIS .c2,
-  .eLjSIS .styled__StyledTextareaWrapper-c1uos0-0 {
-    max-width: 26rem;
-  }
-}
-
 <div>
   <label
     class="c0"
@@ -151,13 +144,13 @@ exports[`renders all together 1`] = `
     This is a description
   </p>
   <span
-    class="c2 c3"
+    class="c2"
   >
     <div
-      class="c4"
+      class="c3"
     >
       <svg
-        class="c5"
+        class="c4"
         data-testid="icon-left"
         fill="currentColor"
         height="24"
@@ -177,18 +170,18 @@ exports[`renders all together 1`] = `
       </svg>
     </div>
     <div
-      class="c6"
+      class="c5"
     >
       <input
-        class="c7"
+        class="c6"
         id="input_0"
       />
     </div>
     <div
-      class="c4"
+      class="c3"
     >
       <svg
-        class="c5"
+        class="c4"
         data-testid="icon-right"
         fill="currentColor"
         height="24"

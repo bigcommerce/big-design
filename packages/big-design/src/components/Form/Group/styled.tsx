@@ -2,8 +2,6 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { Flex } from '../../Flex';
-import { StyledInputWrapper } from '../../Input/styled';
-import { StyledTextareaWrapper } from '../../Textarea/styled';
 
 interface StyledProps {
   childrenCount?: number;
@@ -13,13 +11,6 @@ const SharedGroupStyles = css`
   display: grid;
   grid-gap: ${({ theme }) => `${theme.spacing.xSmall} ${theme.spacing.medium}`};
   margin-bottom: ${({ theme }) => theme.spacing.medium};
-
-  ${({ theme }) => theme.breakpoints.tablet} {
-    ${StyledInputWrapper},
-    ${StyledTextareaWrapper} {
-      max-width: ${({ theme }) => theme.helpers.remCalc(416)};
-    }
-  }
 
   &:last-child {
     margin-bottom: ${({ theme }) => theme.spacing.none};

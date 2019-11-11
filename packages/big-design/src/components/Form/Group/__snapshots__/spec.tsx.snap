@@ -11,13 +11,6 @@ exports[`renders a form group 1`] = `
   margin-bottom: 0;
 }
 
-@media (min-width:720px) {
-  .c0 .styled__StyledInputWrapper-g32raa-0,
-  .c0 .styled__StyledTextareaWrapper-c1uos0-0 {
-    max-width: 26rem;
-  }
-}
-
 <div
   class="c0"
 />
