@@ -50,7 +50,7 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
 export const StyledLabel = styled(StyleableText).attrs({
   as: 'label',
 })<React.LabelHTMLAttributes<HTMLLabelElement> & StyledLabelProps>`
-  margin-left: ${({ theme }) => theme.spacing.medium};
+  margin-left: ${({ theme }) => theme.spacing.xSmall};
 
   ${({ disabled, theme }) =>
     disabled &&

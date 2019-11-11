@@ -20,7 +20,7 @@ export const HiddenRadio = styled.input`
 export const StyledLabel = styled(StyleableText).attrs({
   as: 'label',
 })<React.LabelHTMLAttributes<HTMLLabelElement>>`
-  margin-left: ${({ theme }) => theme.spacing.medium};
+  margin-left: ${({ theme }) => theme.spacing.xSmall};
 ` as StyledComponent<'label', DefaultTheme>;
 
 export const StyledRadio = styled.label<StyledRadioProps>`
