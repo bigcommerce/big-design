@@ -33,12 +33,6 @@ export default () => (
 
     <H1>API</H1>
 
-    <H2>Checkbox</H2>
-
-    <Text>
-      Supports all native <Code>&lt;input /&gt;</Code> element attributes.
-    </Text>
-
     <CheckboxPropTable />
 
     <H1>Indeterminate</H1>

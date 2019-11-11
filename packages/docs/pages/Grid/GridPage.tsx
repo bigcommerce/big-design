@@ -50,7 +50,6 @@ export default () => (
 
     <H1>API</H1>
 
-    <H2>Grid</H2>
     <GridPropTable />
     <GridItemPropTable />
 

@@ -1,3 +1,4 @@
+import { Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, Prop, PropTable, PropTableWrapper } from '../components';
@@ -22,5 +23,10 @@ const checkboxProps: Prop[] = [
 ];
 
 export const CheckboxPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="Checkbox" propList={checkboxProps} {...props} />
+  <>
+    <Text>
+      Supports all native <Code>&lt;input /&gt;</Code> element attributes.
+    </Text>
+    <PropTable title="Checkbox" propList={checkboxProps} {...props} />
+  </>
 );
