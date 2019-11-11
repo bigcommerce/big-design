@@ -1,13 +1,15 @@
+import { transform } from '@babel/standalone';
 import * as BigDesign from '@bigcommerce/big-design';
 import * as BigDesignIcons from '@bigcommerce/big-design-icons';
 import clipboardCopy from 'clipboard-copy';
-import { Language } from 'prism-react-renderer';
-import React, { useContext, useState } from 'react';
+import parser from 'prettier/parser-babylon';
+import prettier from 'prettier/standalone';
+import React, { useContext, useEffect, useState } from 'react';
 import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
 import styled from 'styled-components';
 
 import { SnippetControls } from '../SnippetControls';
-import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
+import { CodeEditorContext, Language } from '../StoryWrapper/StoryWrapper';
 
 import { StyledLiveError } from './styled';
 
@@ -18,29 +20,59 @@ const defaultScope = {
   styled,
 };
 
-function getInitialCode(children: React.ReactNode): string {
+function getInitialCode(children: React.ReactNode, language: Language): string {
   if (typeof children !== 'string') {
     throw new Error('<CodePreview> children must be of type string');
   }
 
-  return children;
+  if (language === 'tsx') {
+    return children;
+  }
+
+  const code = transform(children, {
+    compact: false,
+    retainLines: true,
+    presets: [['typescript', { allExtensions: true, isTSX: true, jsxPragma: 'preserve' }]],
+  }).code;
+
+  return prettier.format(code, {
+    parser: 'babel',
+    plugins: [parser],
+    printWidth: 100,
+    singleQuote: true,
+    trailingComma: 'all',
+  });
+}
+
+function transformCode(input: string): string {
+  try {
+    return transform(input, {
+      presets: [['typescript', { allExtensions: true, isTSX: true }], 'react'],
+    }).code;
+  } catch (e) {
+    return input;
+  }
 }
 
 export interface CodePreviewProps {
   scope?: { [key: string]: any };
-  language?: Language;
 }
 
 export const CodePreview: React.FC<CodePreviewProps> = props => {
-  const { children, language } = props;
-  const initialCode = getInitialCode(children);
+  const { children } = props;
+  const { theme: editorTheme, language } = useContext(CodeEditorContext);
+
+  const initialCode = getInitialCode(children, language);
   const [code, setCode] = useState(initialCode);
-  const { editorTheme } = useContext(CodeEditorThemeContext);
   const scope = { ...defaultScope, ...props.scope };
+
+  useEffect(() => {
+    setCode(getInitialCode(children, language));
+  }, [children, language, setCode, getInitialCode]);
 
   return (
     <BigDesign.Box border="box" marginBottom="xxLarge">
-      <LiveProvider code={code} scope={scope} theme={editorTheme} language={language}>
+      <LiveProvider code={code} scope={scope} theme={editorTheme} language={language} transformCode={transformCode}>
         <BigDesign.Box padding="medium" backgroundColor="white" borderBottom="box">
           <LivePreview />
         </BigDesign.Box>
@@ -53,6 +85,5 @@ export const CodePreview: React.FC<CodePreviewProps> = props => {
 };
 
 CodePreview.defaultProps = {
-  language: 'jsx',
   scope: defaultScope,
 };

@@ -2,7 +2,9 @@ import { Button, Flex, Small } from '@bigcommerce/big-design';
 import { AssignmentIcon, CheckIcon, InvertColorsIcon, RestoreIcon } from '@bigcommerce/big-design-icons';
 import React, { useContext, useState } from 'react';
 
-import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
+import { JavascriptIcon } from '../Icons/JavascriptIcon';
+import { TypescriptIcon } from '../Icons/TypescriptIcon';
+import { CodeEditorContext } from '../StoryWrapper/StoryWrapper';
 
 import { StyledFlex } from './styled';
 
@@ -32,7 +34,7 @@ function onCopy(setIsCopying: (copying: boolean) => void, copyToClipboard: () =>
 export const SnippetControls: React.FC<SnippetControls> = props => {
   const { copyToClipboard, helperText, resetCode } = props;
   const [isCopying, setIsCopying] = useState(false);
-  const { toggleEditorTheme } = useContext(CodeEditorThemeContext);
+  const { toggleTheme: toggleEditorTheme, setLanguage } = useContext(CodeEditorContext);
 
   return (
     <StyledFlex
@@ -45,6 +47,15 @@ export const SnippetControls: React.FC<SnippetControls> = props => {
       <Flex.Item flexGrow={1}>
         <Small marginHorizontal="small">{helperText}</Small>
       </Flex.Item>
+
+      <Flex.Item borderLeft="box">
+        <Button iconOnly={<TypescriptIcon />} variant="subtle" onClick={() => setLanguage('tsx')} />
+      </Flex.Item>
+
+      <Flex.Item borderLeft="box">
+        <Button iconOnly={<JavascriptIcon />} variant="subtle" onClick={() => setLanguage('jsx')} />
+      </Flex.Item>
+
       <Flex.Item borderLeft="box">
         <Button
           iconOnly={getCopyToClipboardIcon(isCopying)}

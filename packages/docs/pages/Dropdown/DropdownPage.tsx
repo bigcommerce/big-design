@@ -115,7 +115,10 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Dropdown
-        options={[{ content: 'Save', actionType: 'normal' }, { content: 'Delete', actionType: 'destructive' }]}
+        options={[
+          { content: 'Save', actionType: 'normal' },
+          { content: 'Delete', actionType: 'destructive' },
+        ]}
         trigger={<Button>Button</Button>}
       />
       {/* jsx-to-string:end */}
