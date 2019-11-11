@@ -18,7 +18,7 @@ export interface SelectProps<T> extends Omit<React.HTMLAttributes<HTMLUListEleme
   positionFixed?: boolean;
   required?: boolean;
   value?: T | T[];
-  onChange(value: T | T[], option: Option<T> | Array<Option<T>>): void;
+  onItemChange(value: T | T[], option: Option<T> | Array<Option<T>>): void;
 }
 
 interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'value'> {

@@ -35,7 +35,7 @@ export default () => (
               filterable={true}
               label="Countries"
               maxHeight={300}
-              onChange={handleChange}
+              onItemChange={handleChange}
               options={[
                 { value: 'us', content: 'United States' },
                 { value: 'mx', content: 'Mexico' },
@@ -88,7 +88,7 @@ export default () => (
               label="States"
               maxHeight={300}
               multi={true}
-              onChange={handleChange}
+              onItemChange={handleChange}
               options={[
                 { value: 'tx', content: 'Texas' },
                 { value: 'ca', content: 'California' },
@@ -119,7 +119,7 @@ export default () => (
       <Grid gridColumns="repeat(4, 1fr)">
         <Select
           label="Select"
-          onChange={() => null}
+          onItemChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -132,7 +132,7 @@ export default () => (
         />
         <Select
           label="Select"
-          onChange={() => null}
+          onItemChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -145,7 +145,7 @@ export default () => (
         />
         <Select
           label="Select"
-          onChange={() => null}
+          onItemChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -158,7 +158,7 @@ export default () => (
         />
         <Select
           label="Select"
-          onChange={() => null}
+          onItemChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -185,7 +185,7 @@ export default () => (
       <Grid gridColumns="repeat(3, 1fr)">
         <Select
           label="Select"
-          onChange={() => null}
+          onItemChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -197,7 +197,7 @@ export default () => (
         />
         <Select
           label="Select"
-          onChange={() => null}
+          onItemChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -210,7 +210,7 @@ export default () => (
         <Select
           label="Select"
           maxHeight={150}
-          onChange={() => null}
+          onItemChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -223,7 +223,7 @@ export default () => (
         <Select
           label="Select"
           maxHeight={350}
-          onChange={() => null}
+          onItemChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -250,7 +250,7 @@ export default () => (
         disabled
         label="Select"
         maxHeight={350}
-        onChange={() => null}
+        onItemChange={() => null}
         options={[
           { value: 1, content: 'Option' },
           { value: 2, content: 'Option' },
@@ -279,7 +279,7 @@ export default () => (
           onClick: () => null,
         }}
         label="Countries"
-        onChange={() => null}
+        onItemChange={() => null}
         options={[
           { value: 'us', content: 'United States' },
           { value: 'mx', content: 'Mexico' },
@@ -305,7 +305,7 @@ export default () => (
         <Select
           label="Countries"
           error="Need to choose a country before proceeding"
-          onChange={() => null}
+          onItemChange={() => null}
           options={[
             { value: 'us', content: 'United States' },
             { value: 'mx', content: 'Mexico' },

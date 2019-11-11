@@ -70,7 +70,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
       label,
       maxHeight,
       multi,
-      onChange,
+      onItemChange,
       placeholder,
       placement,
       value,
@@ -132,7 +132,17 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   }
 
   private renderInput() {
-    const { name, placeholder, error, filterable = true, required, disabled, onChange, options, value } = this.props;
+    const {
+      name,
+      placeholder,
+      error,
+      filterable = true,
+      required,
+      disabled,
+      onItemChange,
+      options,
+      value,
+    } = this.props;
     const { highlightedItem, inputText, isOpen } = this.state;
     const ariaActiveDescendant = highlightedItem ? { 'aria-activedescendant': highlightedItem.id } : {};
     const ariaControls = isOpen ? { 'aria-controls': this.getSelectId() } : {};
@@ -149,7 +159,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
           })
         : [];
 
-      onChange(filteredValues, this.getSelectedOptions(filteredValues));
+      onItemChange(filteredValues, this.getSelectedOptions(filteredValues));
       this.focusInput();
     };
 
@@ -504,7 +514,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   };
 
   private handleOnCheckboxOptionClick = (option: Option<T>) => {
-    const { onChange, value } = this.props;
+    const { onItemChange, value } = this.props;
     const { highlightedItem } = this.state;
     let updatedValues = [];
 
@@ -520,18 +530,18 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
       updatedValues = value.concat(option.value);
     }
 
-    onChange(updatedValues, this.getSelectedOptions(updatedValues));
+    onItemChange(updatedValues, this.getSelectedOptions(updatedValues));
     this.focusInput();
   };
 
   private handleOnOptionClick = (option: Option<T>) => {
-    const { onChange } = this.props;
+    const { onItemChange } = this.props;
 
     if (option.disabled) {
       return;
     }
 
-    onChange(option.value, option);
+    onItemChange(option.value, option);
     this.toggleList();
   };
 
@@ -637,7 +647,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
           if (Array.isArray(this.props.value)) {
             const updatedValues = this.props.value.slice(0, this.props.value.length - 1);
 
-            this.props.onChange(updatedValues, this.getSelectedOptions(updatedValues));
+            this.props.onItemChange(updatedValues, this.getSelectedOptions(updatedValues));
           }
         }
         break;

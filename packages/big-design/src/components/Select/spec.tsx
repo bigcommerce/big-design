@@ -7,7 +7,7 @@ import { Form } from '../Form';
 
 import { Select } from './Select';
 
-const onChange = jest.fn();
+const onItemChange = jest.fn();
 const onActionClick = jest.fn();
 
 const mockOptions = [
@@ -27,7 +27,7 @@ const SelectMock = (
       onClick: onActionClick,
     }}
     error="Required"
-    onChange={onChange}
+    onItemChange={onItemChange}
     label="Countries"
     placeholder="Choose country"
     options={mockOptions}
@@ -38,7 +38,7 @@ const SelectMock = (
 
 const MultiselectMock = (
   <Select
-    onChange={onChange}
+    onItemChange={onItemChange}
     label="Countries"
     multi
     placeholder="Choose country"
@@ -261,17 +261,17 @@ test('end should select last select item', () => {
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[5].id);
 });
 
-test('enter should trigger onChange', () => {
+test('enter should trigger onItemChange', () => {
   const { getAllByLabelText } = render(SelectMock);
   const input = getAllByLabelText('Countries')[0];
 
   fireEvent.focus(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
-  expect(onChange).toHaveBeenCalledWith(mockOptions[2].value, mockOptions[2]);
+  expect(onItemChange).toHaveBeenCalledWith(mockOptions[2].value, mockOptions[2]);
 });
 
-test('clicking on select options should trigger onChange', () => {
+test('clicking on select options should trigger onItemChange', () => {
   const { getAllByRole, getAllByLabelText } = render(SelectMock);
   const input = getAllByLabelText('Countries')[0];
 
@@ -281,7 +281,7 @@ test('clicking on select options should trigger onChange', () => {
 
   fireEvent.mouseOver(options[1]);
   fireEvent.click(options[1]);
-  expect(onChange).toHaveBeenCalledWith(mockOptions[1].value, mockOptions[1]);
+  expect(onItemChange).toHaveBeenCalledWith(mockOptions[1].value, mockOptions[1]);
 });
 
 test('clicking on disabled select options should not trigger onClick', () => {
@@ -362,7 +362,7 @@ test('select should render an error if one is provided', () => {
   const { getByText } = render(
     <Form.Group>
       <Select
-        onChange={onChange}
+        onItemChange={onItemChange}
         label="Countries"
         error="Required"
         placeholder="Choose country"
@@ -392,7 +392,7 @@ test('select should have a required attr if set as required', () => {
 test('select should not have a required attr if not set as required', () => {
   const { getAllByLabelText } = render(
     <Select
-      onChange={onChange}
+      onItemChange={onItemChange}
       label="Countries"
       placeholder="Choose country"
       options={[
@@ -414,7 +414,7 @@ test('select should have a disabled attr if set as disabled', () => {
   const { getAllByLabelText } = render(
     <Select
       disabled
-      onChange={onChange}
+      onItemChange={onItemChange}
       label="Countries"
       placeholder="Choose country"
       options={[
@@ -471,7 +471,7 @@ test('multiselect should be able to select multiple options', () => {
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
 
-  expect(onChange).toHaveBeenCalledWith(
+  expect(onItemChange).toHaveBeenCalledWith(
     [mockOptions[0].value, mockOptions[1].value, mockOptions[2].value],
     [mockOptions[0], mockOptions[1], mockOptions[2]],
   );
@@ -486,7 +486,7 @@ test('multiselect should be able to deselect options', () => {
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
 
-  expect(onChange).toHaveBeenCalledWith([mockOptions[1].value], [mockOptions[1]]);
+  expect(onItemChange).toHaveBeenCalledWith([mockOptions[1].value], [mockOptions[1]]);
 });
 
 test('chips should be rendered', () => {
@@ -500,7 +500,7 @@ test('chips should be rendered', () => {
 test('appends (optional) text to label if select is not required', () => {
   const { container } = render(
     <Select
-      onChange={onChange}
+      onItemChange={onItemChange}
       label="Countries"
       options={[
         { value: 'us', content: 'United States' },
@@ -521,7 +521,7 @@ test('does not forward styles', () => {
   const { container, getByRole } = render(
     <Select
       className="test"
-      onChange={onChange}
+      onItemChange={onItemChange}
       label="Countries"
       options={[
         { value: 'us', content: 'United States' },
@@ -544,7 +544,7 @@ test('should render a non filterable select', () => {
     <Select
       filterable={false}
       label="Countries"
-      onChange={onChange}
+      onItemChange={onItemChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -566,7 +566,7 @@ test('should use the passed in ref object if provided', () => {
     <Select
       inputRef={ref}
       label="Countries"
-      onChange={onChange}
+      onItemChange={onItemChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -590,7 +590,7 @@ test('should call the provided refSetter if any', () => {
     <Select
       inputRef={refSetter}
       label="Countries"
-      onChange={onChange}
+      onItemChange={onItemChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },

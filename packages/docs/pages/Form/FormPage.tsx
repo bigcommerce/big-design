@@ -86,7 +86,7 @@ export default () => (
         <Form.Group>
           <Select
             label="Example Select"
-            onChange={() => null}
+            onItemChange={() => null}
             options={[
               { value: 1, content: 'Option' },
               { value: 2, content: 'Option' },
