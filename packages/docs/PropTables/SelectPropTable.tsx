@@ -113,7 +113,7 @@ const selectProps: Prop[] = [
   },
 
   {
-    name: 'onChange',
+    name: 'onItemChange',
     types: '(value: string | number | Array<string | number>) => void',
     required: true,
     description: 'Callback called with value of selected option.',
