@@ -75,7 +75,7 @@ export default () => {
       <CodePreview scope={{ data, columns }}>
         {/* jsx-to-string:start */}
         {function Example() {
-          const [selectedItems, setSelectedItems] = React.useState([]);
+          const [selectedItems, setSelectedItems] = React.useState<Item[]>([]);
 
           return (
             <Table
@@ -83,7 +83,6 @@ export default () => {
               columns={columns}
               items={data}
               itemName="Products"
-              // @ts-ignore
               selectable={{
                 selectedItems,
                 onSelectionChange: setSelectedItems,
@@ -102,7 +101,7 @@ export default () => {
           const [currentPage, setCurrentPage] = React.useState(1);
           const [itemsPerPageOptions] = React.useState([5, 10, 20, 30]);
           const [itemsPerPage, setItemsPerPage] = React.useState(5);
-          const [currentItems, setCurrentItems] = React.useState([]);
+          const [currentItems, setCurrentItems] = React.useState<Item[]>([]);
 
           const onItemsPerPageChange = newRange => {
             setCurrentPage(1);
@@ -114,7 +113,6 @@ export default () => {
             const lastItem = Math.min(maxItems, data.length);
             const firstItem = Math.max(0, maxItems - itemsPerPage);
 
-            // @ts-ignore
             setCurrentItems(data.slice(firstItem, lastItem));
           }, [currentPage, data, itemsPerPage]);
 
@@ -145,7 +143,7 @@ export default () => {
         {function Example() {
           const [items, setItems] = React.useState(data);
           const [columnHash, setColumnHash] = React.useState('');
-          const [direction, setDirection] = React.useState('ASC');
+          const [direction, setDirection] = React.useState<'ASC' | 'DESC'>('ASC');
 
           const onSort = (newColumnHash, newDirection) => {
             setColumnHash(newColumnHash);
@@ -163,7 +161,6 @@ export default () => {
               ]}
               items={items}
               itemName="Products"
-              // @ts-ignore
               sortable={{
                 columnHash,
                 direction,

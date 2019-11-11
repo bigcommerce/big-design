@@ -5,7 +5,7 @@ import React, { useContext } from 'react';
 import { Editor } from 'react-live';
 
 import { SnippetControls } from '../SnippetControls';
-import { CodeEditorThemeContext } from '../StoryWrapper/StoryWrapper';
+import { CodeEditorContext } from '../StoryWrapper/StoryWrapper';
 
 interface EditorProps {
   language?: Language;
@@ -41,7 +41,7 @@ function getCode(children: React.ReactNode) {
 
 export const CodeSnippet: React.FC<EditorProps> = props => {
   const { children, language, showControls } = props;
-  const { editorTheme } = useContext(CodeEditorThemeContext);
+  const { theme: editorTheme } = useContext(CodeEditorContext);
   const code = getCode(children);
 
   return (
