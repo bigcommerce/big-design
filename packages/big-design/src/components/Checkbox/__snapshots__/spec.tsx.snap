@@ -75,7 +75,7 @@ exports[`render Checkbox checked 1`] = `
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 .c5:last-child {
@@ -205,7 +205,7 @@ exports[`render Checkbox indeterminate 1`] = `
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 .c5:last-child {
@@ -334,7 +334,7 @@ exports[`render Checkbox unchecked 1`] = `
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 .c5:last-child {
