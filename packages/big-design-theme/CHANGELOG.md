@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.2.0...@bigcommerce/big-design-theme@0.3.0) (2019-11-11)
+
+
+### Features
+
+* **all:** bump styled-components peerDependency version ([fd89fa3](https://github.com/bigcommerce/big-design/commit/fd89fa3))
+* **component:** tooltip for dropdown item ([#228](https://github.com/bigcommerce/big-design/issues/228)) ([4e5fc50](https://github.com/bigcommerce/big-design/commit/4e5fc50))
+
+
+### BREAKING CHANGES
+
+* **all:** bumped peer dependency of styled-components to `^4.3.0`
+
+
+
+
+
 # [0.2.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.1.2...@bigcommerce/big-design-theme@0.2.0) (2019-10-29)
 
 **Note:** Version bump only for package @bigcommerce/big-design-theme

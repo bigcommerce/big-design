@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.12.0...@bigcommerce/docs@0.13.0) (2019-11-11)
+
+
+### Bug Fixes
+
+* **docs:** checkbox page typo ([#250](https://github.com/bigcommerce/big-design/issues/250)) ([f073be5](https://github.com/bigcommerce/big-design/commit/f073be5))
+* **docs:** opening links in new tab ([e6fce3e](https://github.com/bigcommerce/big-design/commit/e6fce3e))
+* **docs:** remove duplicate headings ([#249](https://github.com/bigcommerce/big-design/issues/249)) ([a1d41df](https://github.com/bigcommerce/big-design/commit/a1d41df))
+
+
+### Features
+
+* **all:** bump styled-components peerDependency version ([fd89fa3](https://github.com/bigcommerce/big-design/commit/fd89fa3))
+* **component:** add display prop to utility components ([c5192b9](https://github.com/bigcommerce/big-design/commit/c5192b9))
+* **component:** add external prop to link component ([2acee91](https://github.com/bigcommerce/big-design/commit/2acee91))
+* **component:** add fullWidth prop to Form ([#246](https://github.com/bigcommerce/big-design/issues/246)) ([b87fc4b](https://github.com/bigcommerce/big-design/commit/b87fc4b))
+* **component:** add stickiness to table header and actions ([17e3c57](https://github.com/bigcommerce/big-design/commit/17e3c57))
+* **component:** add text modifiers to typography ([#240](https://github.com/bigcommerce/big-design/issues/240)) ([f64c4b4](https://github.com/bigcommerce/big-design/commit/f64c4b4))
+* **component:** allow Box to render with a different tag ([#242](https://github.com/bigcommerce/big-design/issues/242)) ([a933b45](https://github.com/bigcommerce/big-design/commit/a933b45))
+* **component:** rename onChange to onItemChange ([#251](https://github.com/bigcommerce/big-design/issues/251)) ([7e609d8](https://github.com/bigcommerce/big-design/commit/7e609d8))
+* **component:** stateful table ([#230](https://github.com/bigcommerce/big-design/issues/230)) ([1318bfd](https://github.com/bigcommerce/big-design/commit/1318bfd))
+* **component:** tooltip for dropdown item ([#228](https://github.com/bigcommerce/big-design/issues/228)) ([4e5fc50](https://github.com/bigcommerce/big-design/commit/4e5fc50))
+* CHI-696 select component accepts an inputRef prop ([#233](https://github.com/bigcommerce/big-design/issues/233)) ([847e8ef](https://github.com/bigcommerce/big-design/commit/847e8ef))
+* **docs:** make more fields required on Form page ([#248](https://github.com/bigcommerce/big-design/issues/248)) ([3a3b037](https://github.com/bigcommerce/big-design/commit/3a3b037))
+* **docs:** split table docs ([#232](https://github.com/bigcommerce/big-design/issues/232)) ([823022a](https://github.com/bigcommerce/big-design/commit/823022a))
+
+
+### BREAKING CHANGES
+
+* **component:** `onChange` is renamed to `onItemChange`
+* **all:** bumped peer dependency of styled-components to `^4.3.0`
+* **component:** `<Table />` no longer accepts Margin props.
+
+
+
+
+
 # [0.12.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.11.1...@bigcommerce/docs@0.12.0) (2019-10-29)
 
 

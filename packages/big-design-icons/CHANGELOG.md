@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.4.0...@bigcommerce/big-design-icons@0.5.0) (2019-11-11)
+
+
+### Features
+
+* **all:** bump styled-components peerDependency version ([fd89fa3](https://github.com/bigcommerce/big-design/commit/fd89fa3))
+
+
+### BREAKING CHANGES
+
+* **all:** bumped peer dependency of styled-components to `^4.3.0`
+
+
+
+
+
 # [0.4.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.3.0...@bigcommerce/big-design-icons@0.4.0) (2019-10-29)
 
 
