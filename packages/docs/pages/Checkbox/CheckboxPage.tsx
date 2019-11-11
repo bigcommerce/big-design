@@ -44,7 +44,7 @@ export default () => (
     <H1>Indeterminate</H1>
 
     <Text>
-      Checkboxs support <Code primary>isIndeterminate</Code> passed as a prop to show a combined state of partially
+      Checkboxes support <Code primary>isIndeterminate</Code> passed as a prop to show a combined state of partially
       selected checkboxes.
     </Text>
 
