@@ -4,7 +4,10 @@ import React from 'react';
 
 import { Tabs, TabItem } from './Tabs';
 
-const items: TabItem[] = [{ id: 'tab1', title: 'Tab 1' }, { id: 'tab2', title: 'Tab 2' }];
+const items: TabItem[] = [
+  { id: 'tab1', title: 'Tab 1' },
+  { id: 'tab2', title: 'Tab 2' },
+];
 
 test('render Tabs', () => {
   const { container } = render(<Tabs items={items} />);
