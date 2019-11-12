@@ -23,9 +23,11 @@ export default () => (
         const handleChange = () => setChecked(!checked);
 
         return (
-          <Form.Group>
-            <Checkbox label={checked ? 'Checked' : 'Unchecked'} checked={checked} onChange={handleChange} />
-          </Form.Group>
+          <Form>
+            <Form.Group>
+              <Checkbox label={checked ? 'Checked' : 'Unchecked'} checked={checked} onChange={handleChange} />
+            </Form.Group>
+          </Form>
         );
       }}
       {/* jsx-to-string:end */}
@@ -44,9 +46,11 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Form.Group>
-        <Checkbox label="Indeterminate" isIndeterminate />
-      </Form.Group>
+      <Form>
+        <Form.Group>
+          <Checkbox label="Indeterminate" isIndeterminate />
+        </Form.Group>
+      </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
   </>
