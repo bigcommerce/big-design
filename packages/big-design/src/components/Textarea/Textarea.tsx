@@ -71,11 +71,15 @@ class StyleableTextarea extends React.PureComponent<TextareaProps & PrivateProps
   }
 
   private renderLabel() {
-    const { label } = this.props;
+    const { label, required } = this.props;
     const id = this.getId();
 
     if (typeof label === 'string') {
-      return <Textarea.Label htmlFor={id}>{label}</Textarea.Label>;
+      return (
+        <Textarea.Label htmlFor={id} renderOptional={!required}>
+          {label}
+        </Textarea.Label>
+      );
     }
 
     if (React.isValidElement(label) && label.type === Textarea.Label) {
