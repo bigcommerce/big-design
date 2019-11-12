@@ -566,7 +566,7 @@ exports[`renders a simple table 1`] = `
   display: flex;
 }
 
-.c4 > tr {
+.c5 > tr {
   border-bottom: 1px solid #D9DCE9;
 }
 
@@ -580,18 +580,25 @@ exports[`renders a simple table 1`] = `
   white-space: nowrap;
 }
 
-.c6 {
+.c4 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c7 {
   box-sizing: border-box;
   color: #313440;
   font-size: 1rem;
   padding: 0.75rem;
 }
 
-.c5 {
+.c6 {
   background-color: transparent;
 }
 
-.c5:hover {
+.c6:hover {
   background-color: #F6F7FC;
 }
 
@@ -607,7 +614,7 @@ exports[`renders a simple table 1`] = `
         class="c1"
       >
         <div
-          class="c2 c3"
+          class="c2 c3 c4"
         >
           Sku
         </div>
@@ -616,7 +623,7 @@ exports[`renders a simple table 1`] = `
         class="c1"
       >
         <div
-          class="c2 c3"
+          class="c2 c3 c4"
         >
           Name
         </div>
@@ -625,7 +632,7 @@ exports[`renders a simple table 1`] = `
         class="c1"
       >
         <div
-          class="c2 c3"
+          class="c2 c3 c4"
         >
           Stock
         </div>
@@ -633,99 +640,99 @@ exports[`renders a simple table 1`] = `
     </tr>
   </thead>
   <tbody
-    class="c4"
+    class="c5"
   >
     <tr
-      class="c5"
+      class="c6"
     >
       <td
-        class="c6"
+        class="c7"
       >
         SM13
       </td>
       <td
-        class="c6"
+        class="c7"
       >
         [Sample] Smith Journal 13
       </td>
       <td
-        class="c6"
+        class="c7"
       >
         25
       </td>
     </tr>
     <tr
-      class="c5"
+      class="c6"
     >
       <td
-        class="c6"
+        class="c7"
       >
         DPB
       </td>
       <td
-        class="c6"
+        class="c7"
       >
         [Sample] Dustpan & Brush
       </td>
       <td
-        class="c6"
+        class="c7"
       >
         34
       </td>
     </tr>
     <tr
-      class="c5"
+      class="c6"
     >
       <td
-        class="c6"
+        class="c7"
       >
         OFSUC
       </td>
       <td
-        class="c6"
+        class="c7"
       >
         [Sample] Utility Caddy
       </td>
       <td
-        class="c6"
+        class="c7"
       >
         45
       </td>
     </tr>
     <tr
-      class="c5"
+      class="c6"
     >
       <td
-        class="c6"
+        class="c7"
       >
         CLC
       </td>
       <td
-        class="c6"
+        class="c7"
       >
         [Sample] Canvas Laundry Cart
       </td>
       <td
-        class="c6"
+        class="c7"
       >
         2
       </td>
     </tr>
     <tr
-      class="c5"
+      class="c6"
     >
       <td
-        class="c6"
+        class="c7"
       >
         CGLD
       </td>
       <td
-        class="c6"
+        class="c7"
       >
         [Sample] Laundry Detergent
       </td>
       <td
-        class="c6"
+        class="c7"
       >
         29
       </td>
