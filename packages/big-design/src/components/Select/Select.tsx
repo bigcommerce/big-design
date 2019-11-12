@@ -228,7 +228,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     const { filterChildren, highlightedItem, inputText } = this.state;
 
     return options.map((option, index) => {
-      if (!option.content || !option.value) {
+      if (!option.content || typeof option.value === 'undefined') {
         return null;
       }
 
@@ -466,7 +466,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
   private updatedSelectedItem() {
     const { multi, value } = this.props;
 
-    if (!value || multi) {
+    if (typeof value === 'undefined' || multi) {
       return this.setState({ inputText: '', selectedElement: null, selectedOptionContent: '' });
     }
 
