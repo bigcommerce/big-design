@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.13.0...@bigcommerce/big-design@0.13.1) (2019-11-12)
+
+
+### Bug Fixes
+
+* **component:** allow 0 as values in selects ([#257](https://github.com/bigcommerce/big-design/issues/257)) ([92c6238](https://github.com/bigcommerce/big-design/commit/92c6238))
+* **component:** table header right alignment ([#256](https://github.com/bigcommerce/big-design/issues/256)) ([1d91e4f](https://github.com/bigcommerce/big-design/commit/1d91e4f))
+* **component:** textarea was missing optional text when not required ([721891c](https://github.com/bigcommerce/big-design/commit/721891c))
+
+
+### Features
+
+* **all:** better tree shaking ([c0998a7](https://github.com/bigcommerce/big-design/commit/c0998a7))
+
+
+
+
+
 # [0.13.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.12.0...@bigcommerce/big-design@0.13.0) (2019-11-11)
 
 

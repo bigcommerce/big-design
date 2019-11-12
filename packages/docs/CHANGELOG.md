@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.13.0...@bigcommerce/docs@0.13.1) (2019-11-12)
+
+
+### Bug Fixes
+
+* **component:** allow 0 as values in selects ([#257](https://github.com/bigcommerce/big-design/issues/257)) ([92c6238](https://github.com/bigcommerce/big-design/commit/92c6238))
+* **docs:** add Form component around form controls ([a8ed9ff](https://github.com/bigcommerce/big-design/commit/a8ed9ff))
+
+
+### Features
+
+* **docs:** add js/ts toggle in code previewer ([3ac60e3](https://github.com/bigcommerce/big-design/commit/3ac60e3))
+
+
+
+
+
 # [0.13.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.12.0...@bigcommerce/docs@0.13.0) (2019-11-11)
 
 
