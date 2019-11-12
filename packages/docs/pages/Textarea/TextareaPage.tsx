@@ -29,17 +29,19 @@ export default () => (
         const handleChange = event => setValue(event.target.value);
 
         return (
-          <Form.Group>
-            <Textarea
-              label="Label"
-              description="Description for the textarea."
-              placeholder="Placeholder"
-              rows={3}
-              resize={true}
-              value={value}
-              onChange={handleChange}
-            />
-          </Form.Group>
+          <Form>
+            <Form.Group>
+              <Textarea
+                label="Label"
+                description="Description for the textarea."
+                placeholder="Placeholder"
+                rows={3}
+                resize={true}
+                value={value}
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Form>
         );
       }}
       {/* jsx-to-string:end */}
@@ -89,9 +91,11 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Form.Group>
-        <Textarea label="Label" description="Textarea with 5 rows." placeholder="Placeholder" rows={5} />
-      </Form.Group>
+      <Form>
+        <Form.Group>
+          <Textarea label="Label" description="Textarea with 5 rows." placeholder="Placeholder" rows={5} />
+        </Form.Group>
+      </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
 
@@ -104,9 +108,11 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Form.Group>
-        <Textarea label="Label" placeholder="Textarea cannot be resized." resize={false} />
-      </Form.Group>
+      <Form>
+        <Form.Group>
+          <Textarea label="Label" placeholder="Textarea cannot be resized." resize={false} />
+        </Form.Group>
+      </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
   </>

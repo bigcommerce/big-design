@@ -25,16 +25,18 @@ export default () => (
         const handleChange = event => setValue(event.target.value);
 
         return (
-          <Form.Group>
-            <Input
-              label="Label"
-              description="Description for the input."
-              placeholder="Placeholder"
-              type="text"
-              value={value}
-              onChange={handleChange}
-            />
-          </Form.Group>
+          <Form>
+            <Form.Group>
+              <Input
+                label="Label"
+                description="Description for the input."
+                placeholder="Placeholder"
+                type="text"
+                value={value}
+                onChange={handleChange}
+              />
+            </Form.Group>
+          </Form>
         );
       }}
       {/* jsx-to-string:end */}
