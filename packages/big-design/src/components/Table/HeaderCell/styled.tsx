@@ -1,11 +1,17 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
+import { Flex } from '../../Flex';
+
 interface StyledTableHeaderCellProps {
   isSortable?: boolean;
   width?: number | string;
   stickyHeader?: boolean;
   stickyHeight: number;
+}
+
+interface StyledFlexProps {
+  align?: 'left' | 'center' | 'right';
 }
 
 export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
@@ -47,5 +53,25 @@ export const StyledTableHeaderCheckbox = styled(StyledTableHeaderCell)`
   white-space: nowrap;
 `;
 
+export const StyledFlex = styled(Flex)<StyledFlexProps>`
+  ${({ align }) => {
+    switch (align) {
+      case 'center':
+        return css`
+          justify-content: center;
+        `;
+      case 'right':
+        return css`
+          justify-content: flex-end;
+        `;
+      default:
+        return css`
+          justify-content: flex-start;
+        `;
+    }
+  }}
+`;
+
+StyledFlex.defaultProps = { theme: defaultTheme };
 StyledTableHeaderCell.defaultProps = { theme: defaultTheme };
 StyledTableHeaderCheckbox.defaultProps = { theme: defaultTheme };

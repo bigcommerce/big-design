@@ -3,10 +3,9 @@ import React, { memo, RefObject } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { useComponentSize } from '../../../utils/useComponentSize';
-import { Flex } from '../../Flex';
 import { TableColumn, TableItem } from '../types';
 
-import { StyledTableHeaderCell, StyledTableHeaderCheckbox } from './styled';
+import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderCheckbox } from './styled';
 
 export interface HeaderCellProps<T> extends React.TableHTMLAttributes<HTMLTableCellElement> {
   actionsRef: RefObject<HTMLDivElement>;
@@ -31,7 +30,7 @@ const InternalHeaderCell = <T extends TableItem>({
   stickyHeader,
   actionsRef,
 }: HeaderCellProps<T>) => {
-  const { align, isSortable, width } = column;
+  const { align = 'left', isSortable, width } = column;
   const actionsSize = useComponentSize(actionsRef);
 
   const renderSortIcon = () => {
@@ -62,10 +61,10 @@ const InternalHeaderCell = <T extends TableItem>({
       width={width}
       stickyHeight={actionsSize.height}
     >
-      <Flex alignItems="center" flexDirection="row" justifyContent={align}>
+      <StyledFlex alignItems="center" flexDirection="row" align={align}>
         {children}
         {renderSortIcon()}
-      </Flex>
+      </StyledFlex>
     </StyledTableHeaderCell>
   );
 };
