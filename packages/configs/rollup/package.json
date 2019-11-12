@@ -1,5 +1,0 @@
-{
-  "name": "@bigcommerce/configs/rollup",
-  "main": "rollup.config.js",
-  "private": true
-}
