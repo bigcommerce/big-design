@@ -24,41 +24,43 @@ export default () => (
         const handleChange = val => setValue(val);
 
         return (
-          <Form.Group>
-            <Select
-              action={{
-                actionType: 'destructive',
-                content: 'Remove Country',
-                icon: <DeleteIcon />,
-                onClick: () => null,
-              }}
-              filterable={true}
-              label="Countries"
-              maxHeight={300}
-              onItemChange={handleChange}
-              options={[
-                { value: 'us', content: 'United States' },
-                { value: 'mx', content: 'Mexico' },
-                { value: 'ca', content: 'Canada' },
-                { value: 'en', content: 'England' },
-                { value: 'fr', content: 'France' },
-                { value: 'gr', content: 'Germany' },
-                { value: 'ar', content: 'Argentina' },
-                { value: 'ru', content: 'Russia', disabled: true },
-                { value: 'ch', content: 'Chile' },
-                { value: 'bo', content: 'Bolivia' },
-                { value: 'jp', content: 'Japan' },
-                { value: 'cn', content: 'China' },
-                { value: 'sk', content: 'South Korea' },
-                { value: 'au', content: 'Australia' },
-                { value: 'ug', content: 'Uganda' },
-              ]}
-              placeholder={'Choose country'}
-              placement={'bottom-start'}
-              required
-              value={value}
-            />
-          </Form.Group>
+          <Form>
+            <Form.Group>
+              <Select
+                action={{
+                  actionType: 'destructive',
+                  content: 'Remove Country',
+                  icon: <DeleteIcon />,
+                  onClick: () => null,
+                }}
+                filterable={true}
+                label="Countries"
+                maxHeight={300}
+                onItemChange={handleChange}
+                options={[
+                  { value: 'us', content: 'United States' },
+                  { value: 'mx', content: 'Mexico' },
+                  { value: 'ca', content: 'Canada' },
+                  { value: 'en', content: 'England' },
+                  { value: 'fr', content: 'France' },
+                  { value: 'gr', content: 'Germany' },
+                  { value: 'ar', content: 'Argentina' },
+                  { value: 'ru', content: 'Russia', disabled: true },
+                  { value: 'ch', content: 'Chile' },
+                  { value: 'bo', content: 'Bolivia' },
+                  { value: 'jp', content: 'Japan' },
+                  { value: 'cn', content: 'China' },
+                  { value: 'sk', content: 'South Korea' },
+                  { value: 'au', content: 'Australia' },
+                  { value: 'ug', content: 'Uganda' },
+                ]}
+                placeholder={'Choose country'}
+                placement={'bottom-start'}
+                required
+                value={value}
+              />
+            </Form.Group>
+          </Form>
         );
       }}
       {/* jsx-to-string:end */}
@@ -83,25 +85,27 @@ export default () => (
         const handleChange = val => setValue(val);
 
         return (
-          <Form.Group>
-            <Select
-              label="States"
-              maxHeight={300}
-              multi={true}
-              onItemChange={handleChange}
-              options={[
-                { value: 'tx', content: 'Texas' },
-                { value: 'ca', content: 'California' },
-                { value: 'or', content: 'Oregon' },
-                { value: 'ar', content: 'Arkansas' },
-                { value: 'nv', content: 'Nevada', disabled: true },
-              ]}
-              placeholder={'Choose states'}
-              placement={'bottom-start'}
-              required
-              value={value}
-            />
-          </Form.Group>
+          <Form>
+            <Form.Group>
+              <Select
+                label="States"
+                maxHeight={300}
+                multi={true}
+                onItemChange={handleChange}
+                options={[
+                  { value: 'tx', content: 'Texas' },
+                  { value: 'ca', content: 'California' },
+                  { value: 'or', content: 'Oregon' },
+                  { value: 'ar', content: 'Arkansas' },
+                  { value: 'nv', content: 'Nevada', disabled: true },
+                ]}
+                placeholder={'Choose states'}
+                placement={'bottom-start'}
+                required
+                value={value}
+              />
+            </Form.Group>
+          </Form>
         );
       }}
       {/* jsx-to-string:end */}
@@ -197,18 +201,6 @@ export default () => (
         />
         <Select
           label="Select"
-          onItemChange={() => null}
-          options={[
-            { value: 1, content: 'Option' },
-            { value: 2, content: 'Option' },
-            { value: 3, content: 'Option' },
-            { value: 4, content: 'Option' },
-          ]}
-          placeholder="Default"
-          required
-        />
-        <Select
-          label="Select"
           maxHeight={150}
           onItemChange={() => null}
           options={[
@@ -246,20 +238,25 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Select
-        disabled
-        label="Select"
-        maxHeight={350}
-        onItemChange={() => null}
-        options={[
-          { value: 1, content: 'Option' },
-          { value: 2, content: 'Option' },
-          { value: 3, content: 'Option' },
-          { value: 4, content: 'Option' },
-        ]}
-        placeholder="Larger"
-        required
-      />
+      <Form>
+        <Form.Group>
+          <Select
+            disabled
+            label="Select"
+            maxHeight={350}
+            onItemChange={() => null}
+            options={[
+              { value: 1, content: 'Option' },
+              { value: 2, content: 'Option' },
+              { value: 3, content: 'Option' },
+              { value: 4, content: 'Option' },
+            ]}
+            placeholder="Larger"
+            required
+          />
+        </Form.Group>
+      </Form>
+
       {/* jsx-to-string:end */}
     </CodePreview>
 
@@ -271,25 +268,29 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Select
-        action={{
-          actionType: 'destructive',
-          content: 'Remove Country',
-          icon: <DeleteIcon />,
-          onClick: () => null,
-        }}
-        label="Countries"
-        onItemChange={() => null}
-        options={[
-          { value: 'us', content: 'United States' },
-          { value: 'mx', content: 'Mexico' },
-          { value: 'ca', content: 'Canada' },
-          { value: 'en', content: 'England' },
-        ]}
-        placeholder={'Choose country'}
-        placement={'bottom-start'}
-        required
-      />
+      <Form>
+        <Form.Group>
+          <Select
+            action={{
+              actionType: 'destructive',
+              content: 'Remove Country',
+              icon: <DeleteIcon />,
+              onClick: () => null,
+            }}
+            label="Countries"
+            onItemChange={() => null}
+            options={[
+              { value: 'us', content: 'United States' },
+              { value: 'mx', content: 'Mexico' },
+              { value: 'ca', content: 'Canada' },
+              { value: 'en', content: 'England' },
+            ]}
+            placeholder={'Choose country'}
+            placement={'bottom-start'}
+            required
+          />
+        </Form.Group>
+      </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
 
@@ -301,22 +302,24 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Form.Group>
-        <Select
-          label="Countries"
-          error="Need to choose a country before proceeding"
-          onItemChange={() => null}
-          options={[
-            { value: 'us', content: 'United States' },
-            { value: 'mx', content: 'Mexico' },
-            { value: 'ca', content: 'Canada' },
-            { value: 'en', content: 'England' },
-          ]}
-          placeholder={'Choose country'}
-          placement={'bottom-start'}
-          required
-        />
-      </Form.Group>
+      <Form>
+        <Form.Group>
+          <Select
+            label="Countries"
+            error="Need to choose a country before proceeding"
+            onItemChange={() => null}
+            options={[
+              { value: 'us', content: 'United States' },
+              { value: 'mx', content: 'Mexico' },
+              { value: 'ca', content: 'Canada' },
+              { value: 'en', content: 'England' },
+            ]}
+            placeholder={'Choose country'}
+            placement={'bottom-start'}
+            required
+          />
+        </Form.Group>
+      </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
   </>
