@@ -18,4 +18,4 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, DisplayP
   theme?: ThemeInterface;
 }
 
-export const Box: React.FC<BoxProps> = /*#__PURE__*/ memo(props => <StyledBox {...props} />);
+export const Box: React.FC<BoxProps> = memo(props => <StyledBox {...props} />);
