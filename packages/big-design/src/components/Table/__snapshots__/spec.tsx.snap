@@ -801,7 +801,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   flex-shrink: 1;
 }
 
-.c11 {
+.c12 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -810,11 +810,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin: 0;
 }
 
-.c11:last-child {
+.c12:last-child {
   margin-bottom: 0;
 }
 
-.c10 {
+.c11 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -823,7 +823,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin-left: 0.75rem;
 }
 
-.c10:last-child {
+.c11:last-child {
   margin-bottom: 0;
 }
 
@@ -895,6 +895,31 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   visibility: hidden;
 }
 
+.c10 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin-left: 0.5rem;
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c10:last-child {
+  margin-bottom: 0;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -958,9 +983,17 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
             />
           </svg>
         </label>
+        <label
+          class="c10"
+          for="checkBox_1"
+          hidden=""
+          id="checkBox_label_2"
+        >
+          Select All
+        </label>
       </div>
       <p
-        class="c10"
+        class="c11"
       >
         5
       </p>
@@ -970,7 +1003,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
     class="c3 c2"
   >
     <p
-      class="c11"
+      class="c12"
     >
       Product
     </p>
