@@ -49,7 +49,7 @@ export const SelectAll = <T extends TableItem>({
   const totalSelectedItems = selectedItems.size;
 
   return (
-    <Flex.Item marginRight="xxSmall">
+    <Flex.Item marginRight="xxSmall" flexShrink={0}>
       <Flex flexDirection="row">
         <Checkbox isIndeterminate={someInPageSelected} checked={allInPageSelected} onChange={handleSelectAll} />
         <Text marginLeft="small">

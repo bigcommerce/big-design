@@ -224,3 +224,12 @@ test('sorts numerically', () => {
   expect(firstItemContent).toBe('1');
   expect(lastItemContent).toBe('104');
 });
+
+test('renders custom actions', () => {
+  const { getByTestId } = render(getSimpleTable({ actions: () => <div data-testid="customAction">Test Action</div> }));
+
+  const customAction = getByTestId('customAction');
+
+  expect(customAction).toBeInTheDocument();
+  expect(customAction).toBeVisible();
+});

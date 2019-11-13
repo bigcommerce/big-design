@@ -10,6 +10,7 @@ import { TablePagination } from '../TablePagination';
 import { StyledFlex } from './styled';
 
 export interface ActionsProps<T> {
+  customActions?: React.ComponentType<any>;
   forwardedRef: RefObject<HTMLDivElement>;
   itemName?: string;
   items: T[];
@@ -21,14 +22,15 @@ export interface ActionsProps<T> {
 }
 
 const InternalActions = <T extends TableItem>({
-  pagination,
-  tableId,
+  customActions,
   forwardedRef,
   itemName,
   items = [],
   onSelectionChange,
+  pagination,
   selectedItems,
   stickyHeader,
+  tableId,
   ...props
 }: ActionsProps<T>) => {
   const isSelectable = typeof onSelectionChange === 'function';
@@ -42,10 +44,16 @@ const InternalActions = <T extends TableItem>({
     const text = Boolean(isSelectable) ? itemName : `${totalItems} ${itemName}`;
 
     return (
-      <Flex.Item>
+      <Flex.Item flexShrink={0} marginRight="medium">
         <Text margin="none">{text}</Text>
       </Flex.Item>
     );
+  };
+
+  const renderActions = () => {
+    const CustomActions = customActions;
+
+    return CustomActions ? <CustomActions /> : null;
   };
 
   return (
@@ -60,6 +68,8 @@ const InternalActions = <T extends TableItem>({
     >
       <SelectAll onChange={onSelectionChange} selectedItems={selectedItems} items={items} totalItems={totalItems} />
       {renderItemName()}
+      {renderActions()}
+
       {pagination && <TablePagination {...pagination} />}
     </StyledFlex>
   );

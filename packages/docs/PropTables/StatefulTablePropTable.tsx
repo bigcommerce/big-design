@@ -55,6 +55,11 @@ const statefulTableProps: Prop[] = [
     types: '(selectedItems: Item[]) => void',
     description: 'Function to be called when item selection changes.',
   },
+  {
+    name: 'customActions',
+    types: 'React.ComponentType<any>',
+    description: 'Component to render custom actions.',
+  },
 ];
 
 const tableColumnsProps: Prop[] = [

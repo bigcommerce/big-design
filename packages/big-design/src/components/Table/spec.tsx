@@ -405,4 +405,15 @@ describe('sortable', () => {
 
     expect(onSort).toBeCalledWith('sku', 'DESC', columns[0]);
   });
+
+  test('renders custom actions', () => {
+    const { getByTestId } = render(
+      <Table columns={columns} items={items} actions={() => <div data-testid="customAction">Test Action</div>} />,
+    );
+
+    const customAction = getByTestId('customAction');
+
+    expect(customAction).toBeInTheDocument();
+    expect(customAction).toBeVisible();
+  });
 });
