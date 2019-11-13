@@ -11,6 +11,7 @@ export interface RowProps<T> extends React.TableHTMLAttributes<HTMLTableRowEleme
   isSelected?: boolean;
   isSelectable?: boolean;
   item: T;
+  itemIndex: number;
   columns: Array<TableColumn<T>>;
   onItemSelect?(item: T): void;
 }
@@ -20,6 +21,7 @@ const InternalRow = <T extends TableItem>({
   isSelectable = false,
   isSelected = false,
   item,
+  itemIndex,
   onItemSelect,
 }: RowProps<T>) => {
   const onChange = () => {
@@ -28,18 +30,20 @@ const InternalRow = <T extends TableItem>({
     }
   };
 
+  const label = isSelected ? `Deslect item number ${itemIndex + 1}` : `Select item number ${itemIndex + 1}`;
+
   return (
     <StyledTableRow isSelected={isSelected}>
       {isSelectable && (
         <DataCell key="data-checkbox" isCheckbox={true}>
-          <Checkbox checked={isSelected} onChange={onChange} />
+          <Checkbox checked={isSelected} hiddenLabel label={label} onChange={onChange} />
         </DataCell>
       )}
 
       {columns.map(({ render: CellContent, align, verticalAlign, width, withPadding = true }, columnIndex) => (
         <DataCell key={columnIndex} align={align} verticalAlign={verticalAlign} width={width} withPadding={withPadding}>
           {/* https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
-          {/* 
+          {/*
         // @ts-ignore */}
           <CellContent {...item} />
         </DataCell>

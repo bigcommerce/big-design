@@ -51,7 +51,13 @@ export const SelectAll = <T extends TableItem>({
   return (
     <Flex.Item marginRight="xxSmall">
       <Flex flexDirection="row">
-        <Checkbox isIndeterminate={someInPageSelected} checked={allInPageSelected} onChange={handleSelectAll} />
+        <Checkbox
+          isIndeterminate={someInPageSelected}
+          hiddenLabel
+          label="Select All"
+          checked={allInPageSelected}
+          onChange={handleSelectAll}
+        />
         <Text marginLeft="small">
           {totalSelectedItems === 0 ? `${totalItems}` : `${totalSelectedItems}/${totalItems}`}
         </Text>
