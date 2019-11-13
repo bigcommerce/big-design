@@ -8,7 +8,6 @@ export const StyledTableFigure = styled.figure<MarginProps>`
   margin-bottom: ${({ theme }) => `${theme.spacing.xLarge}`};
   max-width: 100%;
   overflow-x: auto;
-  position: relative;
   white-space: nowrap;
 
   ${({ theme }) => theme.breakpoints.tablet} {
