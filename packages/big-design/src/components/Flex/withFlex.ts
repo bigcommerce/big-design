@@ -14,9 +14,9 @@ export const withFlexedContainer = () => css<FlexedProps>`
 export const withFlexedItems = () => css<FlexedItemProps>`
   ${({ alignSelf, theme }) => alignSelf && getFlexedStyles(alignSelf, theme, 'align-self')};
   ${({ flexBasis, theme }) => flexBasis && getFlexedStyles(flexBasis, theme, 'flex-basis')};
-  ${({ flexGrow, theme }) => flexGrow && getFlexedStyles(flexGrow, theme, 'flex-grow')};
-  ${({ flexOrder, theme }) => flexOrder && getFlexedStyles(flexOrder, theme, 'order')};
-  ${({ flexShrink, theme }) => flexShrink && getFlexedStyles(flexShrink, theme, 'flex-shrink')};
+  ${({ flexGrow, theme }) => typeof flexGrow !== 'undefined' && getFlexedStyles(flexGrow, theme, 'flex-grow')};
+  ${({ flexOrder, theme }) => typeof flexOrder !== 'undefined' && getFlexedStyles(flexOrder, theme, 'order')};
+  ${({ flexShrink, theme }) => typeof flexShrink !== 'undefined' && getFlexedStyles(flexShrink, theme, 'flex-shrink')};
 `;
 
 const getFlexedStyles: FlexedOverload = (

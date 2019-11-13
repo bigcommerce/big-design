@@ -41,8 +41,16 @@ test('Flex Item forwards styles', () => {
 test('rendering as another element retains inherited props and styles', () => {
   const { getByTestId } = render(<Flex as="section" margin="medium" data-testid="flex" />);
 
-  const grid = getByTestId('flex');
+  const flex = getByTestId('flex');
 
-  expect(grid.tagName).toBe('SECTION');
-  expect(grid).toHaveStyle(`margin: 1rem`);
+  expect(flex.tagName).toBe('SECTION');
+  expect(flex).toHaveStyle(`margin: 1rem`);
+});
+
+test('Flex Item should handle falsy values (0)', () => {
+  const { getByTestId } = render(<Flex.Item data-testid="flex" flexShrink={0} />);
+
+  const flex = getByTestId('flex');
+
+  expect(flex).toHaveStyle('flex-shring: 0');
 });
