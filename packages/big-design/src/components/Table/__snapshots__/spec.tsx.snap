@@ -772,7 +772,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   box-sizing: border-box;
 }
 
-.c11 {
+.c12 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
@@ -825,7 +825,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   flex-shrink: 0;
 }
 
-.c12 {
+.c13 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -834,7 +834,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin: 0;
 }
 
-.c12:last-child {
+.c13:last-child {
   margin-bottom: 0;
 }
 
@@ -1024,10 +1024,10 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
     </div>
   </div>
   <div
-    class="c11 c2"
+    class="c12 c2"
   >
     <p
-      class="c12"
+      class="c13"
     >
       Product
     </p>
