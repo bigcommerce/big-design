@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.13.1...@bigcommerce/docs@0.13.2) (2019-11-14)
+
+
+### Features
+
+* **component:**  add customActions prop to Table and StatefulTable ([#263](https://github.com/bigcommerce/big-design/issues/263)) ([ad102d4](https://github.com/bigcommerce/big-design/commit/ad102d4))
+* add hiddenLabel prop to Checkbox component ([#264](https://github.com/bigcommerce/big-design/issues/264)) ([54f63b9](https://github.com/bigcommerce/big-design/commit/54f63b9))
+
+
+
+
+
 ## [0.13.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.13.0...@bigcommerce/docs@0.13.1) (2019-11-12)
 
 

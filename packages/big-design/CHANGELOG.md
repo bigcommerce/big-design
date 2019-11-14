@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.13.1...@bigcommerce/big-design@0.13.2) (2019-11-14)
+
+
+### Bug Fixes
+
+* **component:** dropdowns inside TableFigure ([#262](https://github.com/bigcommerce/big-design/issues/262)) ([2b271ca](https://github.com/bigcommerce/big-design/commit/2b271ca))
+* **component:** flex props handle falsy values ([#261](https://github.com/bigcommerce/big-design/issues/261)) ([335fdd4](https://github.com/bigcommerce/big-design/commit/335fdd4))
+* **component:** panel now forwards data attrs ([70f30f5](https://github.com/bigcommerce/big-design/commit/70f30f5))
+* **component:** prevent action prop from being passed to List component ([#269](https://github.com/bigcommerce/big-design/issues/269)) ([84c3a01](https://github.com/bigcommerce/big-design/commit/84c3a01))
+* **component:** set correct display names ([#270](https://github.com/bigcommerce/big-design/issues/270)) ([52edba4](https://github.com/bigcommerce/big-design/commit/52edba4))
+* extra spacing in Select components ([#271](https://github.com/bigcommerce/big-design/issues/271)) ([ffdd0bc](https://github.com/bigcommerce/big-design/commit/ffdd0bc))
+* prevent enter on selects from submitting the form ([#272](https://github.com/bigcommerce/big-design/issues/272)) ([49a96a4](https://github.com/bigcommerce/big-design/commit/49a96a4))
+* pull from master and updated testing snapshot that failed in previous pr ([#267](https://github.com/bigcommerce/big-design/issues/267)) ([56cbb15](https://github.com/bigcommerce/big-design/commit/56cbb15))
+
+
+### Features
+
+* **component:**  add customActions prop to Table and StatefulTable ([#263](https://github.com/bigcommerce/big-design/issues/263)) ([ad102d4](https://github.com/bigcommerce/big-design/commit/ad102d4))
+* **component:** add exclude padding/margin props helper ([0b0e9a4](https://github.com/bigcommerce/big-design/commit/0b0e9a4))
+* add hiddenLabel prop to Checkbox component ([#264](https://github.com/bigcommerce/big-design/issues/264)) ([54f63b9](https://github.com/bigcommerce/big-design/commit/54f63b9))
+
+
+
+
+
 ## [0.13.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.13.0...@bigcommerce/big-design@0.13.1) (2019-11-12)
 
 

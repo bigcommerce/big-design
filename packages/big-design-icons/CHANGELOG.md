@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.5.1...@bigcommerce/big-design-icons@0.5.2) (2019-11-14)
+
+
+### Bug Fixes
+
+* **icons:** show proper displayName for icons ([#268](https://github.com/bigcommerce/big-design/issues/268)) ([539a02a](https://github.com/bigcommerce/big-design/commit/539a02a))
+
+
+
+
+
 ## [0.5.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.5.0...@bigcommerce/big-design-icons@0.5.1) (2019-11-12)
 
 
