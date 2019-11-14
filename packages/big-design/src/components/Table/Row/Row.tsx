@@ -11,7 +11,6 @@ export interface RowProps<T> extends React.TableHTMLAttributes<HTMLTableRowEleme
   isSelected?: boolean;
   isSelectable?: boolean;
   item: T;
-  itemIndex: number;
   columns: Array<TableColumn<T>>;
   onItemSelect?(item: T): void;
 }
@@ -21,7 +20,6 @@ const InternalRow = <T extends TableItem>({
   isSelectable = false,
   isSelected = false,
   item,
-  itemIndex,
   onItemSelect,
 }: RowProps<T>) => {
   const onChange = () => {
@@ -30,7 +28,7 @@ const InternalRow = <T extends TableItem>({
     }
   };
 
-  const label = isSelected ? `Deselect row ${itemIndex + 1}` : `Select row ${itemIndex + 1}`;
+  const label = isSelected ? `Selected` : `Unselected`;
 
   return (
     <StyledTableRow isSelected={isSelected}>
