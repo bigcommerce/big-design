@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 
 import { MarginProps } from '../../mixins';
+import { excludePaddingProps } from '../../mixins/paddings/paddings';
 import { Button, ButtonProps } from '../Button';
 import { Flex } from '../Flex';
 import { H2 } from '../Typography';
@@ -17,18 +18,8 @@ export interface PanelProps extends React.HTMLAttributes<HTMLElement>, MarginPro
 }
 
 export const RawPanel: React.FC<PanelProps> = memo(props => {
-  const {
-    action,
-    children,
-    header,
-    margin,
-    marginBottom,
-    marginHorizontal,
-    marginLeft,
-    marginRight,
-    marginTop,
-    marginVertical,
-  } = props;
+  const filteredProps = excludePaddingProps(props);
+  const { action, children, header, ...rest } = filteredProps;
 
   const renderHeader = () => {
     if (!header && !action) {
@@ -41,33 +32,19 @@ export const RawPanel: React.FC<PanelProps> = memo(props => {
 
     return (
       <Flex justifyContent="space-between" flexDirection="row">
-        {header && (
-          <Flex.Item>
-            <H2>{header}</H2>
-          </Flex.Item>
-        )}
-        {action && (
-          <Flex.Item>
-            <Button {...action}>{action.text}</Button>
-          </Flex.Item>
-        )}
+        {header && <H2>{header}</H2>}
+        {action && <Button {...action}>{action.text}</Button>}
       </Flex>
     );
   };
 
   return (
     <StyledPanel
+      {...rest}
       backgroundColor="white"
       shadow="raised"
       padding={{ mobile: 'medium', tablet: 'xxLarge' }}
       borderRadius="none"
-      margin={margin}
-      marginBottom={marginBottom || 'medium'}
-      marginHorizontal={marginHorizontal}
-      marginLeft={marginLeft}
-      marginRight={marginRight}
-      marginTop={marginTop}
-      marginVertical={marginVertical}
     >
       {renderHeader()}
       {children}

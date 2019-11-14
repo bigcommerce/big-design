@@ -11,4 +11,5 @@ export const StyledPanel = styled(Box)`
 
 StyledPanel.defaultProps = {
   theme: defaultTheme,
+  marginBottom: 'medium',
 };

@@ -1,3 +1,4 @@
+import { theme } from '@bigcommerce/big-design-theme';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
@@ -61,4 +62,29 @@ test('action options get forwarded to button', () => {
   fireEvent.click(getByRole('button'));
 
   expect(onClick).toHaveBeenCalled();
+});
+
+test('forwards data attributes', () => {
+  const { getByTestId } = render(
+    <Panel header="Test Header" data-testid="panel">
+      Dolore proident eiusmod sint est enim laboris
+    </Panel>,
+  );
+
+  const panel = getByTestId('panel');
+
+  expect(panel).toBeInTheDocument();
+});
+
+test('ignores padding props', () => {
+  const { getByTestId } = render(
+    // @ts-ignore - ignoring since paddingRight is not a valid prop
+    <Panel header="Test Header" data-testid="panel" paddingRight="xxxLarge">
+      Dolore proident eiusmod sint est enim laboris
+    </Panel>,
+  );
+
+  const panel = getByTestId('panel');
+
+  expect(panel).not.toHaveStyle(`padding-right: ${theme.spacing.xxxLarge}`);
 });
