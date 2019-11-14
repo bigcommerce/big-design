@@ -124,7 +124,6 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
 
         return (
           <Row
-            itemIndex={index}
             columns={columns}
             isSelectable={isSelectable}
             isSelected={isSelected}
