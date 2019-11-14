@@ -29,3 +29,18 @@ export const withPaddings = () => css<PaddingProps>`
   ${({ paddingHorizontal, theme }) =>
     paddingHorizontal && getSpacingStyles(paddingHorizontal, theme, 'padding-left', 'padding-right')};
 `;
+
+export function excludePaddingProps<T extends any>(props: T): Pick<T, Exclude<keyof T, keyof PaddingProps>> {
+  const {
+    padding,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
+    paddingVertical,
+    paddingHorizontal,
+    ...rest
+  } = props;
+
+  return rest;
+}

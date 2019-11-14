@@ -4,7 +4,7 @@ import 'jest-styled-components';
 import React from 'react';
 import styled from 'styled-components';
 
-import { withMargins, MarginProps } from './margins';
+import { excludeMarginProps, withMargins, MarginProps } from './margins';
 
 const TestComponent = styled.div<MarginProps>`
   ${withMargins()};
@@ -148,4 +148,19 @@ test('responsive and non responsive combination', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
+});
+
+test('excludeMarginProps removes all margin props from an object', () => {
+  const props: MarginProps & { testKey: 'test-value' } = {
+    testKey: 'test-value',
+    margin: 'medium',
+    marginTop: 'medium',
+    marginRight: 'medium',
+    marginBottom: 'medium',
+    marginLeft: 'medium',
+    marginVertical: 'medium',
+    marginHorizontal: 'medium',
+  };
+
+  expect(excludeMarginProps(props)).toEqual({ testKey: 'test-value' });
 });
