@@ -30,7 +30,7 @@ const InternalRow = <T extends TableItem>({
     }
   };
 
-  const label = isSelected ? `Deslect item number ${itemIndex + 1}` : `Select item number ${itemIndex + 1}`;
+  const label = isSelected ? `Deselect row ${itemIndex + 1}` : `Select row ${itemIndex + 1}`;
 
   return (
     <StyledTableRow isSelected={isSelected}>

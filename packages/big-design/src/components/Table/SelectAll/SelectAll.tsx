@@ -48,13 +48,15 @@ export const SelectAll = <T extends TableItem>({
 
   const totalSelectedItems = selectedItems.size;
 
+  const label = allInPageSelected ? 'Deselect All' : 'Select All';
+
   return (
     <Flex.Item marginRight="xxSmall">
       <Flex flexDirection="row">
         <Checkbox
           isIndeterminate={someInPageSelected}
           hiddenLabel
-          label="Select All"
+          label={label}
           checked={allInPageSelected}
           onChange={handleSelectAll}
         />
