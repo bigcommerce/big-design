@@ -10,6 +10,7 @@ interface StyledCheckboxProps {
 }
 
 export interface StyledLabelProps {
+  hidden?: boolean;
   disabled?: boolean;
 }
 
@@ -57,6 +58,8 @@ export const StyledLabel = styled(StyleableText).attrs({
     css`
       color: ${theme.colors.secondary40};
     `}
+
+  ${({ hidden }) => hidden && hideVisually()}
 ` as StyledComponent<'label', DefaultTheme, StyledLabelProps>;
 
 StyledCheckbox.defaultProps = { theme: defaultTheme };

@@ -8,8 +8,9 @@ import { uniqueId } from '../../utils';
 import { CheckboxContainer, HiddenCheckbox, StyledCheckbox, StyledLabel } from './styled';
 
 interface Props {
+  hiddenLabel?: boolean;
   isIndeterminate?: boolean;
-  label?: React.ReactChild;
+  label: React.ReactChild;
   theme?: ThemeInterface;
 }
 
@@ -77,11 +78,18 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
 
   private renderLabel() {
     const htmlFor = this.getInputId();
-    const { disabled, label, theme } = this.props;
+    const { disabled, hiddenLabel, label, theme } = this.props;
 
     if (typeof label === 'string') {
       return (
-        <StyledLabel disabled={disabled} htmlFor={htmlFor} aria-hidden={disabled} id={this.labelUniqueId} theme={theme}>
+        <StyledLabel
+          disabled={disabled}
+          hidden={hiddenLabel}
+          htmlFor={htmlFor}
+          aria-hidden={disabled}
+          id={this.labelUniqueId}
+          theme={theme}
+        >
           {label}
         </StyledLabel>
       );
@@ -89,6 +97,7 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
 
     if (React.isValidElement(label) && label.type === Checkbox.Label) {
       return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+        hidden: hiddenLabel,
         htmlFor,
         id: this.labelUniqueId,
       });

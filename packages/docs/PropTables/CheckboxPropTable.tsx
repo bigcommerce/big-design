@@ -11,6 +11,15 @@ const checkboxProps: Prop[] = [
     description: 'Label to display next to a <Code>Checkbox</Code> component.',
   },
   {
+    name: 'hiddenLabel',
+    types: 'boolean',
+    description: (
+      <>
+        Renders <Code primary>Checkbox</Code> with a visually hidden label, retains accessibility for screen readers.
+      </>
+    ),
+  },
+  {
     name: 'isIndeterminate',
     types: 'boolean',
     description: (
