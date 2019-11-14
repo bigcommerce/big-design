@@ -631,6 +631,8 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
 
     switch (event.key) {
       case 'Enter': {
+        event.preventDefault();
+
         if (this.state.isOpen) {
           if (this.state.highlightedItem) {
             this.state.highlightedItem.click();
