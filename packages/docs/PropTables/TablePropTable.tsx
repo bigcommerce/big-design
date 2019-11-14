@@ -60,6 +60,11 @@ const tableProps: Prop[] = [
     types: 'boolean',
     description: 'Makes the table header and actions fixed.',
   },
+  {
+    name: 'customActions',
+    types: 'React.ComponentType<any>',
+    description: 'Component to render custom actions.',
+  },
 ];
 
 const tableColumnsProps: Prop[] = [

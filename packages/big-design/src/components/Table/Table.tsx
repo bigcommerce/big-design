@@ -17,6 +17,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   const {
     className,
     columns,
+    actions,
     id,
     itemName,
     items,
@@ -76,7 +77,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   );
 
   const shouldRenderActions = () => {
-    return Boolean(pagination) || Boolean(selectable) || Boolean(itemName);
+    return Boolean(actions) || Boolean(pagination) || Boolean(selectable) || Boolean(itemName);
   };
 
   const getItemKey = (item: T, index: number): string | number => {
@@ -139,6 +140,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     <>
       {shouldRenderActions() && (
         <Actions
+          customActions={actions}
           pagination={pagination}
           onSelectionChange={selectable && selectable.onSelectionChange}
           selectedItems={selectedItems}
