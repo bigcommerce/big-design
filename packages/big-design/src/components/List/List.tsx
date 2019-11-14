@@ -52,3 +52,5 @@ export const List: React.FC<ListProps> = memo(
     </Popper>
   ),
 );
+
+List.displayName = 'List';

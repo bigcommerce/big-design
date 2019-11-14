@@ -53,3 +53,5 @@ export const Chip: React.FC<ChipProps> = memo(({ children, label, onDelete, them
     </StyledChip>
   );
 });
+
+Chip.displayName = 'Chip';

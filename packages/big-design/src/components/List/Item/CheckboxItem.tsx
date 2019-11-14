@@ -42,3 +42,5 @@ function preventFocus(
 export const ListCheckboxItem = React.forwardRef<HTMLLIElement, ListCheckboxItemProps>((props, ref) => (
   <StyleableListCheckboxItem {...props} forwardedRef={ref} />
 ));
+
+ListCheckboxItem.displayName = 'ListCheckboxItem';

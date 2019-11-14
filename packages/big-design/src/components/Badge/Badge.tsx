@@ -11,3 +11,5 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement>, Margi
 }
 
 export const Badge: React.FC<BadgeProps> = memo(({ className, style, ...props }) => <StyledBadge {...props} />);
+
+Badge.displayName = 'Badge';

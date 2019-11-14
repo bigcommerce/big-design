@@ -26,3 +26,5 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(({ children, 
     </StyleableLink>
   );
 });
+
+Link.displayName = 'Link';

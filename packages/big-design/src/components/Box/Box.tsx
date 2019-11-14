@@ -19,3 +19,5 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, DisplayP
 }
 
 export const Box: React.FC<BoxProps> = memo(props => <StyledBox {...props} />);
+
+Box.displayName = 'Box';
