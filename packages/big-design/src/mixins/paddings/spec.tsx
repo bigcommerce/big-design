@@ -4,7 +4,7 @@ import 'jest-styled-components';
 import React from 'react';
 import styled from 'styled-components';
 
-import { withPaddings, PaddingProps } from './paddings';
+import { excludePaddingProps, withPaddings, PaddingProps } from './paddings';
 
 const TestComponent = styled.div<PaddingProps>`
   ${withPaddings()};
@@ -150,4 +150,19 @@ test('responsive and non responsive combination', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
+});
+
+test('excludePaddingProps removes all margin props from an object', () => {
+  const props: PaddingProps & { testKey: 'test-value' } = {
+    testKey: 'test-value',
+    padding: 'medium',
+    paddingTop: 'medium',
+    paddingRight: 'medium',
+    paddingBottom: 'medium',
+    paddingLeft: 'medium',
+    paddingVertical: 'medium',
+    paddingHorizontal: 'medium',
+  };
+
+  expect(excludePaddingProps(props)).toEqual({ testKey: 'test-value' });
 });
