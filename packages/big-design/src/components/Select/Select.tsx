@@ -65,6 +65,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
 
   render() {
     const {
+      action,
       children,
       filterable,
       label,
