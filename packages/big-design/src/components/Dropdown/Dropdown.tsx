@@ -1,5 +1,5 @@
 import React, { RefObject } from 'react';
-import { Manager, Reference, RefHandler } from 'react-popper';
+import { Manager, Reference } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { uniqueId } from '../../utils';
@@ -23,8 +23,8 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     isOpen: false,
   };
 
-  private listRef: HTMLUListElement | null = null;
-  private triggerRef: HTMLElement | null = null;
+  private listRef: RefObject<HTMLUListElement> = React.createRef();
+  private triggerRef: RefObject<HTMLElement> = React.createRef();
 
   private readonly tooltipModifiers: TooltipProps['modifiers'] = {
     preventOverflow: { enabled: true, escapeWithReference: true },
@@ -45,11 +45,11 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
 
     return (
       <Manager>
-        <Reference innerRef={node => (this.triggerRef = node)}>{({ ref }) => this.renderTrigger(ref)}</Reference>
+        <Reference innerRef={this.triggerRef}>{({ ref }) => this.renderTrigger(ref)}</Reference>
         <List
           {...rest}
           aria-labelledby={this.getTriggerId()}
-          handleListRef={this.handleListRef}
+          handleListRef={this.listRef}
           id={this.getDropdownId()}
           isOpen={isOpen}
           maxHeight={maxHeight}
@@ -135,7 +135,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     );
   }
 
-  private renderTrigger(ref: RefHandler) {
+  private renderTrigger(ref: React.Ref<any>) {
     const { trigger } = this.props;
 
     const aria = this.state.isOpen ? { 'aria-expanded': true } : {};
@@ -185,7 +185,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     this.setState({ highlightedItem: firstItem, isOpen: true }, () => {
       document.addEventListener('mousedown', this.handleOnClickOutside, false);
 
-      return this.listRef && this.listRef.focus({ preventScroll: true });
+      return this.listRef.current && this.listRef.current.focus({ preventScroll: true });
     });
   }
 
@@ -193,7 +193,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     this.setState({ isOpen: false }, () => {
       document.removeEventListener('mousedown', this.handleOnClickOutside, false);
 
-      return this.triggerRef && this.triggerRef.focus({ preventScroll: true });
+      return this.triggerRef.current && this.triggerRef.current.focus({ preventScroll: true });
     });
   }
 
@@ -226,18 +226,15 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     });
   }
 
-  private handleListRef = (ref: HTMLElement | null) => {
-    if (ref) {
-      this.listRef = ref as HTMLUListElement;
-    }
-  };
-
   private handleOnClickOutside = (event: MouseEvent) => {
     if (!this.listRef || !this.triggerRef) {
       return;
     }
 
-    if (this.listRef.contains(event.target as Node) || this.triggerRef.contains(event.target as Node)) {
+    if (
+      (this.listRef.current && this.listRef.current.contains(event.target as Node)) ||
+      (this.triggerRef.current && this.triggerRef.current.contains(event.target as Node))
+    ) {
       return;
     }
 
