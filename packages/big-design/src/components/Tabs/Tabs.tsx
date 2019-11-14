@@ -49,3 +49,5 @@ export const Tabs: React.FC<TabsProps> = memo(
     );
   },
 );
+
+Tabs.displayName = 'Tabs';

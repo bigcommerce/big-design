@@ -53,3 +53,5 @@ export const RawPanel: React.FC<PanelProps> = memo(props => {
 });
 
 export const Panel: React.FC<PanelProps> = ({ className, style, ...props }) => <RawPanel {...props} />;
+
+Panel.displayName = 'Panel';

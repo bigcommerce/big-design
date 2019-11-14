@@ -105,3 +105,5 @@ const TextareaWithForwardedRef = React.forwardRef<HTMLTextAreaElement, TextareaP
 );
 
 export const Textarea = hoistNonReactStatics(TextareaWithForwardedRef, StyleableTextarea);
+
+Textarea.displayName = 'Textarea';

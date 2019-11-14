@@ -41,3 +41,12 @@ export const H4: React.FC<HeadingProps> = memo(({ className, style, as, ...props
 const getHeadingTag = (defaultTag: HeadingTag, tag?: HeadingTag): HeadingTag => {
   return tag && validHeadingTags.has(tag) ? tag : defaultTag;
 };
+
+Text.displayName = 'Text';
+Small.displayName = 'Small';
+
+H0.displayName = 'H0';
+H1.displayName = 'H1';
+H2.displayName = 'H2';
+H3.displayName = 'H3';
+H4.displayName = 'H4';

@@ -33,3 +33,5 @@ const FormWithForwardedRef = React.forwardRef<HTMLFormElement, FormProps>(({ cla
 ));
 
 export const Form = hoistNonReactStatics(FormWithForwardedRef, StyleableForm);
+
+Form.displayName = 'Form';

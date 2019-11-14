@@ -170,3 +170,5 @@ const InputWithForwardedRef = React.forwardRef<HTMLInputElement, InputProps>(({ 
 ));
 
 export const Input = hoistNonReactStatics(InputWithForwardedRef, StyleableInput);
+
+Input.displayName = 'Input';

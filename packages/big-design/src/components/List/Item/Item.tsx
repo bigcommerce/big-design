@@ -29,3 +29,5 @@ function preventFocus(event: React.MouseEvent<HTMLLIElement, MouseEvent>) {
 export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => (
   <StyleableListItem {...props} forwardedRef={ref} />
 ));
+
+ListItem.displayName = 'ListItem';
