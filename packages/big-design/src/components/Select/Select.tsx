@@ -41,7 +41,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
 
   private callbackRef?: HTMLInputElement;
   private defaultRef: RefObject<HTMLInputElement> = React.createRef();
-  private listRef: HTMLUListElement | null = null;
+  private listRef: RefObject<HTMLUListElement> = React.createRef();
 
   private readonly uniqueInputId = uniqueId('input_');
   private readonly uniqueLabelId = uniqueId('label_');
@@ -96,7 +96,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
           {this.renderInput()}
           <List
             {...rest}
-            handleListRef={this.handleListRef}
+            handleListRef={this.listRef}
             id={selectId}
             isOpen={isOpen}
             maxHeight={maxHeight}
@@ -215,6 +215,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
         <StyledDropdownIcon
           aria-haspopup={true}
           aria-label="toggle menu" // Will need to translate this label in the future
+          disabled={this.props.disabled}
           onClick={this.toggleList}
           role="button"
           style={{ outline: 'none' }}
@@ -482,10 +483,6 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     }
   }
 
-  private handleListRef = (node: HTMLElement | null) => {
-    this.listRef = node as HTMLUListElement;
-  };
-
   private handleOnActionClick = (action: Action) => {
     if (action.onClick) {
       action.onClick(this.state.inputText);
@@ -502,7 +499,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     const input = this.getInput();
 
     if (
-      (this.listRef && this.listRef.contains(event.target as Node)) ||
+      (this.listRef.current && this.listRef.current.contains(event.target as Node)) ||
       (input &&
         input.parentElement &&
         input.parentElement.parentElement &&
@@ -576,7 +573,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
         return;
       }
 
-      const length = this.listRef.children.length;
+      const length = this.listRef.current ? this.listRef.current.children.length : 0;
       const status = document.getElementById(`a11y-status-message-${this.getSelectId()}`);
 
       if (!status) {

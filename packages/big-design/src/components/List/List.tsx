@@ -1,12 +1,12 @@
 import { Placement } from 'popper.js';
 import React, { memo } from 'react';
-import { Popper, RefHandler } from 'react-popper';
+import { Popper } from 'react-popper';
 
 import { StyledList } from './styled';
 import { ListPopperElement } from './ListPopperElement';
 
 interface Props {
-  handleListRef: RefHandler;
+  handleListRef: React.RefObject<HTMLUListElement>;
   isOpen: boolean;
   maxHeight?: number;
   placement?: Placement;
