@@ -5,5 +5,6 @@ export * from './keyframes';
 export * from './line-height';
 export * from './shadow';
 export * from './spacing';
+export * from './transition';
 export * from './typography';
 export * from './z-index';

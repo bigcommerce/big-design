@@ -7,6 +7,7 @@ import * as keyframes from './system/keyframes';
 import { createLineHeight, LineHeight } from './system/line-height';
 import { shadow, Shadow } from './system/shadow';
 import { createSpacing, Spacing } from './system/spacing';
+import { transition, Transition } from './system/transition';
 import { createTypography, Typography } from './system/typography';
 import { zIndex, ZIndex } from './system/z-index';
 
@@ -24,6 +25,7 @@ export interface ThemeInterface {
   lineHeight: LineHeight;
   shadow: Shadow;
   spacing: Spacing;
+  transition: Transition;
   typography: Typography;
   zIndex: ZIndex;
 }
@@ -42,6 +44,7 @@ export const createTheme = (customOptions: Partial<ThemeOptions> = {}): ThemeInt
     lineHeight: createLineHeight(),
     shadow,
     spacing: createSpacing(),
+    transition,
     typography: createTypography(),
     zIndex,
   };
