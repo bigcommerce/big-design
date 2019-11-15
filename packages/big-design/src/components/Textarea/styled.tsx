@@ -1,6 +1,8 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
+import { withTransition } from '../../mixins/transitions';
+
 import { TextareaProps } from './Textarea';
 
 export const StyledTextareaWrapper = styled.span<TextareaProps>`
@@ -10,6 +12,8 @@ export const StyledTextareaWrapper = styled.span<TextareaProps>`
 `;
 
 export const StyledTextarea = styled.textarea<TextareaProps>`
+  ${withTransition(['border', 'box-shadow'])}
+
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   box-sizing: border-box;

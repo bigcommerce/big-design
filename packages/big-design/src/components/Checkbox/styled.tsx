@@ -2,11 +2,13 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 
+import { withTransition } from '../../mixins/transitions';
 import { StyleableText } from '../Typography/private';
 
 interface StyledCheckboxProps {
   checked?: boolean;
   isIndeterminate?: boolean;
+  disabled?: boolean;
 }
 
 export interface StyledLabelProps {
@@ -24,6 +26,8 @@ export const HiddenCheckbox = styled.input`
 `;
 
 export const StyledCheckbox = styled.label<StyledCheckboxProps>`
+  ${withTransition(['border-color', 'background', 'box-shadow', 'color', 'opacity'])}
+
   align-items: center;
   background: ${({ checked, isIndeterminate, theme }) =>
     checked || isIndeterminate ? theme.colors.primary : theme.colors.white};
@@ -32,25 +36,32 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
     checked || isIndeterminate ? theme.colors.primary : theme.colors.secondary30};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   color: ${({ theme }) => theme.colors.white};
+  cursor: pointer;
   display: inline-flex;
   height: ${({ theme }) => theme.spacing.large};
   justify-content: center;
-  transition: all 150ms;
   user-select: none;
   width: ${({ theme }) => theme.spacing.large};
+
+  ${({ checked, isIndeterminate, disabled, theme }) =>
+    !disabled &&
+    `&:hover {
+      border-color: ${checked || isIndeterminate ? theme.colors.primary : theme.colors.secondary40};
+    }`}
 
   ${HiddenCheckbox}:focus + & {
     box-shadow: ${({ theme }) => `0 0 0 ${theme.spacing.xxSmall} ${theme.colors.primary20}`};
   }
 
   svg {
-    visibility: ${({ checked, isIndeterminate }) => (checked || isIndeterminate ? 'visible' : 'hidden')};
+    opacity: ${({ checked, isIndeterminate }) => (checked || isIndeterminate ? 1 : 0)};
   }
 `;
 
 export const StyledLabel = styled(StyleableText).attrs({
   as: 'label',
 })<React.LabelHTMLAttributes<HTMLLabelElement> & StyledLabelProps>`
+  cursor: pointer;
   margin-left: ${({ theme }) => theme.spacing.xSmall};
 
   ${({ disabled, theme }) =>

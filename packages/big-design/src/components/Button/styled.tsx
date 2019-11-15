@@ -2,11 +2,14 @@ import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme'
 import styled, { css } from 'styled-components';
 
 import { withMargins, MarginProps } from '../../mixins';
+import { withTransition } from '../../mixins/transitions';
 import { Flex } from '../Flex';
 
 import { ButtonProps } from './index';
 
 export const StyledButton = styled.button<ButtonProps & MarginProps>`
+  ${withTransition(['background-color', 'border-color', 'box-shadow', 'color'])}
+
   && {
     ${withMargins()};
   }

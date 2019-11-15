@@ -8,6 +8,7 @@ import { LabelProps } from './Label';
 export const StyledLabel = styled(StyleableH4).attrs({
   as: 'label',
 })<LabelProps>`
+  cursor: pointer;
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
 

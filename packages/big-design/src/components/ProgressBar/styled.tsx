@@ -1,6 +1,8 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
+import { withTransition } from '../../mixins/transitions';
+
 import { ProgressBarProps } from './ProgressBar';
 
 export const StyledProgressBar = styled.div`
@@ -18,7 +20,7 @@ export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
   ${({ percent, theme }) =>
     typeof percent === 'number'
       ? css`
-          transition: width 0.2s ease-in;
+          ${withTransition(['width', 'background-color', 'height'])}
           width: ${percent}%;
         `
       : css`

@@ -111,6 +111,10 @@ exports[`render pagination component 1`] = `
 }
 
 .c8 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -150,6 +154,10 @@ exports[`render pagination component 1`] = `
 }
 
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -227,6 +235,10 @@ exports[`render pagination component 1`] = `
 }
 
 .c10 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -614,6 +626,10 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 .c8 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -653,6 +669,10 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -730,6 +750,10 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 .c10 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1117,6 +1141,10 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 .c8 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1156,6 +1184,10 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1233,6 +1265,10 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 .c10 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1621,6 +1657,10 @@ exports[`render pagination component with no items 1`] = `
 }
 
 .c8 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1660,6 +1700,10 @@ exports[`render pagination component with no items 1`] = `
 }
 
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1737,6 +1781,10 @@ exports[`render pagination component with no items 1`] = `
 }
 
 .c10 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

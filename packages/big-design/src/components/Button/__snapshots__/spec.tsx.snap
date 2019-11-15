@@ -2,6 +2,10 @@
 
 exports[`render default button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -118,6 +122,10 @@ exports[`render default button 1`] = `
 
 exports[`render destructive button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -234,6 +242,10 @@ exports[`render destructive button 1`] = `
 
 exports[`render destructive disabled button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -351,6 +363,10 @@ exports[`render destructive disabled button 1`] = `
 
 exports[`render disabled button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -474,6 +490,10 @@ exports[`render icon left and right button 1`] = `
 }
 
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -632,6 +652,10 @@ exports[`render icon left button 1`] = `
 }
 
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -772,6 +796,10 @@ exports[`render icon only button 1`] = `
 }
 
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -911,6 +939,10 @@ exports[`render icon right button 1`] = `
 }
 
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1064,8 +1096,8 @@ exports[`render loading button 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: cWvsXs 1s ease infinite;
-  animation: cWvsXs 1s ease infinite;
+  -webkit-animation: cWvsXs 1s ease-out infinite;
+  animation: cWvsXs 1s ease-out infinite;
   stroke-dashoffset: 43.982297150257104;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -1100,6 +1132,10 @@ exports[`render loading button 1`] = `
 }
 
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1257,6 +1293,10 @@ exports[`render loading button 1`] = `
 
 exports[`render secondary button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1373,6 +1413,10 @@ exports[`render secondary button 1`] = `
 
 exports[`render secondary destructive button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1489,6 +1533,10 @@ exports[`render secondary destructive button 1`] = `
 
 exports[`render secondary destructive disabled button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1606,6 +1654,10 @@ exports[`render secondary destructive disabled button 1`] = `
 
 exports[`render secondary disabled button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1723,6 +1775,10 @@ exports[`render secondary disabled button 1`] = `
 
 exports[`render subtle button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1840,6 +1896,10 @@ exports[`render subtle button 1`] = `
 
 exports[`render subtle destructive button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1957,6 +2017,10 @@ exports[`render subtle destructive button 1`] = `
 
 exports[`render subtle destructive disabled button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -2075,6 +2139,10 @@ exports[`render subtle destructive disabled button 1`] = `
 
 exports[`render subtle disabled button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

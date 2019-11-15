@@ -34,7 +34,7 @@ export const StyledCircleFiller = styled(StyledCircle)<ProgressCircleProps>`
           transition: stroke-dashoffset 0.35s;
         `
       : css`
-          animation: ${spin(size)} 1s ease infinite;
+          animation: ${spin(size)} 1s ease-out infinite;
           stroke-dashoffset: ${fillLength(0, size)};
           transform: rotate(-90deg);
           transition: stroke-dashoffset 0.35s;

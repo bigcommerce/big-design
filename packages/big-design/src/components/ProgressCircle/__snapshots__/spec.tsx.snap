@@ -156,8 +156,8 @@ exports[`render indeterminant progress bar 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: dpAsNn 1s ease infinite;
-  animation: dpAsNn 1s ease infinite;
+  -webkit-animation: dpAsNn 1s ease-out infinite;
+  animation: dpAsNn 1s ease-out infinite;
   stroke-dashoffset: 138.23007675795088;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -208,8 +208,8 @@ exports[`render large progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: ibtQPx 1s ease infinite;
-  animation: ibtQPx 1s ease infinite;
+  -webkit-animation: ibtQPx 1s ease-out infinite;
+  animation: ibtQPx 1s ease-out infinite;
   stroke-dashoffset: 226.1946710584651;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -260,8 +260,8 @@ exports[`render medium progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: dpAsNn 1s ease infinite;
-  animation: dpAsNn 1s ease infinite;
+  -webkit-animation: dpAsNn 1s ease-out infinite;
+  animation: dpAsNn 1s ease-out infinite;
   stroke-dashoffset: 138.23007675795088;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -312,8 +312,8 @@ exports[`render small progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: cYXnLG 1s ease infinite;
-  animation: cYXnLG 1s ease infinite;
+  -webkit-animation: cYXnLG 1s ease-out infinite;
+  animation: cYXnLG 1s ease-out infinite;
   stroke-dashoffset: 87.96459430051421;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -364,8 +364,8 @@ exports[`render xSmall progress circle 1`] = `
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: cWvsXs 1s ease infinite;
-  animation: cWvsXs 1s ease infinite;
+  -webkit-animation: cWvsXs 1s ease-out infinite;
+  animation: cWvsXs 1s ease-out infinite;
   stroke-dashoffset: 43.982297150257104;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);

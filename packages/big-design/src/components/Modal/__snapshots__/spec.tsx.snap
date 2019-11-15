@@ -45,6 +45,10 @@ exports[`render open modal 1`] = `
 }
 
 .c5 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -315,6 +319,10 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 .c5 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -542,6 +550,10 @@ exports[`render open modal without backdrop 1`] = `
 
 exports[`renders destructive action button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -658,6 +670,10 @@ exports[`renders destructive action button 1`] = `
 
 exports[`renders secondary action button 1`] = `
 .c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

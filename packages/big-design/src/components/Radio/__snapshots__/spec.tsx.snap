@@ -33,6 +33,7 @@ exports[`render Radio (checked) 1`] = `
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
+  cursor: pointer;
   margin-left: 0.5rem;
 }
 
@@ -41,15 +42,18 @@ exports[`render Radio (checked) 1`] = `
 }
 
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: border-color,box-shadow;
+  transition-property: border-color,box-shadow;
   border: 1px solid #D9DCE9;
   border-color: #3C64F4;
   border-radius: 50%;
   color: #FFFFFF;
+  cursor: pointer;
   display: inline-block;
   height: 1.25rem;
   position: relative;
-  -webkit-transition: all 150ms;
-  transition: all 150ms;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -57,22 +61,35 @@ exports[`render Radio (checked) 1`] = `
   width: 1.25rem;
 }
 
+.c3:hover {
+  border-color: #2852EB;
+}
+
 .c1:focus + .c3 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
 .c3:after {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
   background-color: #3C64F4;
   border-radius: 50%;
   content: '';
   height: 0.75rem;
   left: 50%;
+  opacity: 0;
   position: absolute;
   top: 50%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   width: 0.75rem;
+}
+
+.c3:after {
+  opacity: 1;
 }
 
 <div
@@ -134,6 +151,7 @@ exports[`render Radio (unchecked) 1`] = `
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
+  cursor: pointer;
   margin-left: 0.5rem;
 }
 
@@ -146,15 +164,18 @@ exports[`render Radio (unchecked) 1`] = `
 }
 
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: border-color,box-shadow;
+  transition-property: border-color,box-shadow;
   border: 1px solid #D9DCE9;
   border-color: #D9DCE9;
   border-radius: 50%;
   color: #FFFFFF;
+  cursor: pointer;
   display: inline-block;
   height: 1.25rem;
   position: relative;
-  -webkit-transition: all 150ms;
-  transition: all 150ms;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -162,8 +183,31 @@ exports[`render Radio (unchecked) 1`] = `
   width: 1.25rem;
 }
 
+.c3:hover {
+  border-color: #B4BAD1;
+}
+
 .c1:focus + .c3 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c3:after {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  background-color: #3C64F4;
+  border-radius: 50%;
+  content: '';
+  height: 0.75rem;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width: 0.75rem;
 }
 
 <div
