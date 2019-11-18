@@ -27,7 +27,8 @@
     "lint:tsc": "tsc --noEmit",
     "lint:tslint": "tslint -c tslint.json -p tsconfig.json",
     "start": "concurrently \"yarn:build:* --watch\"",
-    "test": "BABEL_ENV=test jest",
+    "test": "BABEL_ENV=test jest -c ./jest.config.js",
+    "test:functional": "BABEL_ENV=test jest --config=./tests/jest.functional.config.js",
     "test:watch": "yarn run test --watch",
     "precommit": "lint-staged",
     "prepublishOnly": "rimraf dist && yarn run ci"
@@ -78,6 +79,8 @@
     "babel-plugin-styled-components": "^1.10.6",
     "concurrently": "^5.0.0",
     "jest": "^24.5.0",
+    "jest-environment-webdriverio": "^1.0.13",
+    "@wdio/selenium-standalone-service": "^5.0.0",
     "jest-styled-components": "^6.3.1",
     "lint-staged": "^9.2.0",
     "prettier": "^1.16.4",
