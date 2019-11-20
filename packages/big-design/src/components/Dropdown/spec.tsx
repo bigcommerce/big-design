@@ -343,5 +343,7 @@ test('no errors expected if all options are disabled', () => {
   );
 
   const trigger = getByRole('button');
-  fireEvent.click(trigger);
+  expect(() => {
+    fireEvent.click(trigger);
+  }).not.toThrow();
 });
