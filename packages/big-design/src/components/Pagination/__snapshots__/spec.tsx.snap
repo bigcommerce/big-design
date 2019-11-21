@@ -9,14 +9,6 @@ exports[`render pagination component 1`] = `
 
 .c11 {
   vertical-align: middle;
-  color: #D9DCE9;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.c12 {
-  vertical-align: middle;
-  color: #313440;
   height: 1.5rem;
   width: 1.5rem;
 }
@@ -90,6 +82,71 @@ exports[`render pagination component 1`] = `
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+}
+
+.c7 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  background-color: #FFFFFF;
+  color: #313440;
+  display: inline-block;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: scroll;
+  padding: 0.5rem 0;
+  z-index: 1060;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 2.25rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  min-width: 16rem;
+  outline: none;
+  padding: 0 1rem;
+}
+
+.c8[aria-selected='true'] {
+  font-weight: 600;
+}
+
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
+  background-color: #F0F3FF;
+  color: #3C64F4;
+}
+
+.c8 a {
+  color: #313440;
+}
+
+.c8 label {
+  cursor: pointer;
 }
 
 .c3 {
@@ -258,71 +315,6 @@ exports[`render pagination component 1`] = `
   grid-auto-flow: column;
   grid-gap: 0.5rem;
   visibility: visible;
-}
-
-.c7 {
-  border-radius: 0.25rem;
-  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  background-color: #FFFFFF;
-  color: #313440;
-  display: inline-block;
-  margin: 0;
-  max-height: 15.625rem;
-  outline: none;
-  overflow-y: scroll;
-  padding: 0.5rem 0;
-  z-index: 1060;
-}
-
-.c8 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 2.25rem;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  min-width: 16rem;
-  outline: none;
-  padding: 0 1rem;
-}
-
-.c8[aria-selected='true'] {
-  font-weight: 600;
-}
-
-.c8[data-highlighted='true'],
-.c8[data-highlighted='true'] a {
-  background-color: #F0F3FF;
-  color: #3C64F4;
-}
-
-.c8 a {
-  color: #313440;
-}
-
-.c8 label {
-  cursor: pointer;
 }
 
 .c4 {
@@ -448,7 +440,7 @@ exports[`render pagination component 1`] = `
     class="c0 c2"
   >
     <button
-      class="c10 bd-button"
+      class="c10 c4"
       disabled=""
       role="button"
       tabindex="0"
@@ -458,7 +450,6 @@ exports[`render pagination component 1`] = `
       >
         <svg
           class="c11"
-          color="secondary30"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -480,7 +471,7 @@ exports[`render pagination component 1`] = `
       </span>
     </button>
     <button
-      class="c10 bd-button"
+      class="c10 c4"
       role="button"
       tabindex="0"
     >
@@ -488,8 +479,7 @@ exports[`render pagination component 1`] = `
         class="c5"
       >
         <svg
-          class="c12"
-          color="secondary70"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -523,14 +513,6 @@ exports[`render pagination component with invalid page info 1`] = `
 
 .c11 {
   vertical-align: middle;
-  color: #D9DCE9;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.c12 {
-  vertical-align: middle;
-  color: #313440;
   height: 1.5rem;
   width: 1.5rem;
 }
@@ -604,6 +586,71 @@ exports[`render pagination component with invalid page info 1`] = `
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+}
+
+.c7 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  background-color: #FFFFFF;
+  color: #313440;
+  display: inline-block;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: scroll;
+  padding: 0.5rem 0;
+  z-index: 1060;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 2.25rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  min-width: 16rem;
+  outline: none;
+  padding: 0 1rem;
+}
+
+.c8[aria-selected='true'] {
+  font-weight: 600;
+}
+
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
+  background-color: #F0F3FF;
+  color: #3C64F4;
+}
+
+.c8 a {
+  color: #313440;
+}
+
+.c8 label {
+  cursor: pointer;
 }
 
 .c3 {
@@ -772,71 +819,6 @@ exports[`render pagination component with invalid page info 1`] = `
   grid-auto-flow: column;
   grid-gap: 0.5rem;
   visibility: visible;
-}
-
-.c7 {
-  border-radius: 0.25rem;
-  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  background-color: #FFFFFF;
-  color: #313440;
-  display: inline-block;
-  margin: 0;
-  max-height: 15.625rem;
-  outline: none;
-  overflow-y: scroll;
-  padding: 0.5rem 0;
-  z-index: 1060;
-}
-
-.c8 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 2.25rem;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  min-width: 16rem;
-  outline: none;
-  padding: 0 1rem;
-}
-
-.c8[aria-selected='true'] {
-  font-weight: 600;
-}
-
-.c8[data-highlighted='true'],
-.c8[data-highlighted='true'] a {
-  background-color: #F0F3FF;
-  color: #3C64F4;
-}
-
-.c8 a {
-  color: #313440;
-}
-
-.c8 label {
-  cursor: pointer;
 }
 
 .c4 {
@@ -962,7 +944,7 @@ exports[`render pagination component with invalid page info 1`] = `
     class="c0 c2"
   >
     <button
-      class="c10 bd-button"
+      class="c10 c4"
       disabled=""
       role="button"
       tabindex="0"
@@ -972,7 +954,6 @@ exports[`render pagination component with invalid page info 1`] = `
       >
         <svg
           class="c11"
-          color="secondary30"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -994,7 +975,7 @@ exports[`render pagination component with invalid page info 1`] = `
       </span>
     </button>
     <button
-      class="c10 bd-button"
+      class="c10 c4"
       role="button"
       tabindex="0"
     >
@@ -1002,8 +983,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c5"
       >
         <svg
-          class="c12"
-          color="secondary70"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1037,7 +1017,6 @@ exports[`render pagination component with invalid range info 1`] = `
 
 .c11 {
   vertical-align: middle;
-  color: #D9DCE9;
   height: 1.5rem;
   width: 1.5rem;
 }
@@ -1111,6 +1090,71 @@ exports[`render pagination component with invalid range info 1`] = `
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+}
+
+.c7 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  background-color: #FFFFFF;
+  color: #313440;
+  display: inline-block;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: scroll;
+  padding: 0.5rem 0;
+  z-index: 1060;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 2.25rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  min-width: 16rem;
+  outline: none;
+  padding: 0 1rem;
+}
+
+.c8[aria-selected='true'] {
+  font-weight: 600;
+}
+
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
+  background-color: #F0F3FF;
+  color: #3C64F4;
+}
+
+.c8 a {
+  color: #313440;
+}
+
+.c8 label {
+  cursor: pointer;
 }
 
 .c3 {
@@ -1279,71 +1323,6 @@ exports[`render pagination component with invalid range info 1`] = `
   grid-auto-flow: column;
   grid-gap: 0.5rem;
   visibility: visible;
-}
-
-.c7 {
-  border-radius: 0.25rem;
-  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  background-color: #FFFFFF;
-  color: #313440;
-  display: inline-block;
-  margin: 0;
-  max-height: 15.625rem;
-  outline: none;
-  overflow-y: scroll;
-  padding: 0.5rem 0;
-  z-index: 1060;
-}
-
-.c8 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 2.25rem;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  min-width: 16rem;
-  outline: none;
-  padding: 0 1rem;
-}
-
-.c8[aria-selected='true'] {
-  font-weight: 600;
-}
-
-.c8[data-highlighted='true'],
-.c8[data-highlighted='true'] a {
-  background-color: #F0F3FF;
-  color: #3C64F4;
-}
-
-.c8 a {
-  color: #313440;
-}
-
-.c8 label {
-  cursor: pointer;
 }
 
 .c4 {
@@ -1469,7 +1448,7 @@ exports[`render pagination component with invalid range info 1`] = `
     class="c0 c2"
   >
     <button
-      class="c10 bd-button"
+      class="c10 c4"
       disabled=""
       role="button"
       tabindex="0"
@@ -1479,7 +1458,6 @@ exports[`render pagination component with invalid range info 1`] = `
       >
         <svg
           class="c11"
-          color="secondary30"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1501,7 +1479,7 @@ exports[`render pagination component with invalid range info 1`] = `
       </span>
     </button>
     <button
-      class="c10 bd-button"
+      class="c10 c4"
       disabled=""
       role="button"
       tabindex="0"
@@ -1511,7 +1489,6 @@ exports[`render pagination component with invalid range info 1`] = `
       >
         <svg
           class="c11"
-          color="secondary30"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1545,7 +1522,6 @@ exports[`render pagination component with no items 1`] = `
 
 .c11 {
   vertical-align: middle;
-  color: #D9DCE9;
   height: 1.5rem;
   width: 1.5rem;
 }
@@ -1619,6 +1595,71 @@ exports[`render pagination component with no items 1`] = `
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+}
+
+.c7 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  background-color: #FFFFFF;
+  color: #313440;
+  display: inline-block;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: scroll;
+  padding: 0.5rem 0;
+  z-index: 1060;
+}
+
+.c8 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 2.25rem;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  min-width: 16rem;
+  outline: none;
+  padding: 0 1rem;
+}
+
+.c8[aria-selected='true'] {
+  font-weight: 600;
+}
+
+.c8[data-highlighted='true'],
+.c8[data-highlighted='true'] a {
+  background-color: #F0F3FF;
+  color: #3C64F4;
+}
+
+.c8 a {
+  color: #313440;
+}
+
+.c8 label {
+  cursor: pointer;
 }
 
 .c3 {
@@ -1789,71 +1830,6 @@ exports[`render pagination component with no items 1`] = `
   visibility: visible;
 }
 
-.c7 {
-  border-radius: 0.25rem;
-  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  background-color: #FFFFFF;
-  color: #313440;
-  display: inline-block;
-  margin: 0;
-  max-height: 15.625rem;
-  outline: none;
-  overflow-y: scroll;
-  padding: 0.5rem 0;
-  z-index: 1060;
-}
-
-.c8 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 2.25rem;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  min-width: 16rem;
-  outline: none;
-  padding: 0 1rem;
-}
-
-.c8[aria-selected='true'] {
-  font-weight: 600;
-}
-
-.c8[data-highlighted='true'],
-.c8[data-highlighted='true'] a {
-  background-color: #F0F3FF;
-  color: #3C64F4;
-}
-
-.c8 a {
-  color: #313440;
-}
-
-.c8 label {
-  cursor: pointer;
-}
-
 .c4 {
   color: #313440;
   width: auto;
@@ -1977,7 +1953,7 @@ exports[`render pagination component with no items 1`] = `
     class="c0 c2"
   >
     <button
-      class="c10 bd-button"
+      class="c10 c4"
       disabled=""
       role="button"
       tabindex="0"
@@ -1987,7 +1963,6 @@ exports[`render pagination component with no items 1`] = `
       >
         <svg
           class="c11"
-          color="secondary30"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -2009,7 +1984,7 @@ exports[`render pagination component with no items 1`] = `
       </span>
     </button>
     <button
-      class="c10 bd-button"
+      class="c10 c4"
       disabled=""
       role="button"
       tabindex="0"
@@ -2019,7 +1994,6 @@ exports[`render pagination component with no items 1`] = `
       >
         <svg
           class="c11"
-          color="secondary30"
           fill="currentColor"
           height="24"
           stroke="currentColor"
