@@ -2,6 +2,7 @@ import { ArrowDropDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@bigcommer
 import React, { memo, useEffect, useState } from 'react';
 
 import { MarginProps } from '../../mixins';
+import { Button } from '../Button';
 import { Dropdown, DropdownItem } from '../Dropdown';
 import { Flex } from '../Flex';
 
@@ -83,7 +84,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
         <Flex.Item>
           <Dropdown
             options={itemsPerPageOptions.map(range => ({
-              content: `${range} per page`,
+              content: `${range}`,
               onClick: handleRangeChange,
               value: range,
             }))}
@@ -95,13 +96,23 @@ export const Pagination: React.FC<PaginationProps> = memo(
           />
         </Flex.Item>
         <Flex.Item>
-          <StyledButton variant="subtle" disabled={currentPage <= 1} onClick={handlePageDecrease}>
-            <ChevronLeftIcon title="Previous page" />
-          </StyledButton>
+          <Button
+            iconOnly={
+              <ChevronLeftIcon title="Previous page" color={currentPage <= 1 ? 'secondary30' : 'secondary70'} />
+            }
+            variant="subtle"
+            disabled={currentPage <= 1}
+            onClick={handlePageDecrease}
+          />
 
-          <StyledButton variant="subtle" disabled={currentPage >= maxPages} onClick={handlePageIncrease}>
-            <ChevronRightIcon title="Next page" />
-          </StyledButton>
+          <Button
+            iconOnly={
+              <ChevronRightIcon title="Next page" color={currentPage >= maxPages ? 'secondary30' : 'secondary70'} />
+            }
+            variant="subtle"
+            disabled={currentPage >= maxPages}
+            onClick={handlePageIncrease}
+          ></Button>
         </Flex.Item>
       </Flex>
     );
