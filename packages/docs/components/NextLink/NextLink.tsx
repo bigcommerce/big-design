@@ -13,7 +13,11 @@ export const NextLink: React.FC<{ href: string; as?: string }> = props => {
 
   return (
     <NLink href={href} as={getLinkAs(as)}>
-      {typeof children === 'string' ? <Link href="">{children}</Link> : children}
+      {typeof children === 'string' ? <Link href={isHash(href) ? href : ''}>{children}</Link> : children}
     </NLink>
   );
 };
+
+function isHash(href: string) {
+  return href && href.charAt(0) === '#';
+}
