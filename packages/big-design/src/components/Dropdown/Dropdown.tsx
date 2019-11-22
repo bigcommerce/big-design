@@ -10,7 +10,7 @@ import { List } from '../List';
 import { ListItem } from '../List/Item';
 import { Tooltip, TooltipProps } from '../Tooltip';
 
-import { DropdownLinkItem, DropdownOption, DropdownProps } from './types';
+import { DropdownLinkItem, DropdownOption, DropdownOptionGroup, DropdownProps } from './types';
 
 interface DropdownState {
   highlightedItem: HTMLLIElement | null;
@@ -66,6 +66,13 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
 
   private renderOptions() {
     const { options } = this.props;
+
+    return options.map(option => {
+      return 'options' in option ? this.renderGroup(option) : this.renderOption(option);
+    });
+  }
+
+  private renderOption(options: DropdownOption<T>) {
     const { highlightedItem } = this.state;
 
     return (
@@ -101,6 +108,15 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
           </ListItem>
         );
       })
+    );
+  }
+
+  private renderGroup(group: DropdownOptionGroup<T>) {
+    return (
+      <>
+        <li>Testing Group</li>
+        {this.renderOption(group.options)}
+      </>
     );
   }
 
