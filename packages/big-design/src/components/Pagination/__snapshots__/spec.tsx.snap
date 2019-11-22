@@ -267,6 +267,7 @@ exports[`render pagination component 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
+  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -404,7 +405,7 @@ exports[`render pagination component 1`] = `
         <div
           class="c0 c9"
         >
-          2 per page
+          2
         </div>
       </li>
       <li
@@ -417,7 +418,7 @@ exports[`render pagination component 1`] = `
         <div
           class="c0 c9"
         >
-          3 per page
+          3
         </div>
       </li>
       <li
@@ -430,7 +431,7 @@ exports[`render pagination component 1`] = `
         <div
           class="c0 c9"
         >
-          5 per page
+          5
         </div>
       </li>
     </ul>
@@ -770,6 +771,7 @@ exports[`render pagination component with invalid page info 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
+  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -907,7 +909,7 @@ exports[`render pagination component with invalid page info 1`] = `
         <div
           class="c0 c9"
         >
-          2 per page
+          2
         </div>
       </li>
       <li
@@ -920,7 +922,7 @@ exports[`render pagination component with invalid page info 1`] = `
         <div
           class="c0 c9"
         >
-          3 per page
+          3
         </div>
       </li>
       <li
@@ -933,7 +935,7 @@ exports[`render pagination component with invalid page info 1`] = `
         <div
           class="c0 c9"
         >
-          5 per page
+          5
         </div>
       </li>
     </ul>
@@ -1273,6 +1275,7 @@ exports[`render pagination component with invalid range info 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
+  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -1410,7 +1413,7 @@ exports[`render pagination component with invalid range info 1`] = `
         <div
           class="c0 c9"
         >
-          2 per page
+          2
         </div>
       </li>
       <li
@@ -1423,7 +1426,7 @@ exports[`render pagination component with invalid range info 1`] = `
         <div
           class="c0 c9"
         >
-          3 per page
+          3
         </div>
       </li>
       <li
@@ -1436,7 +1439,7 @@ exports[`render pagination component with invalid range info 1`] = `
         <div
           class="c0 c9"
         >
-          5 per page
+          5
         </div>
       </li>
     </ul>
@@ -1777,6 +1780,7 @@ exports[`render pagination component with no items 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
+  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -1914,7 +1918,7 @@ exports[`render pagination component with no items 1`] = `
         <div
           class="c0 c9"
         >
-          2 per page
+          2
         </div>
       </li>
       <li
@@ -1927,7 +1931,7 @@ exports[`render pagination component with no items 1`] = `
         <div
           class="c0 c9"
         >
-          3 per page
+          3
         </div>
       </li>
       <li
@@ -1940,7 +1944,7 @@ exports[`render pagination component with no items 1`] = `
         <div
           class="c0 c9"
         >
-          5 per page
+          5
         </div>
       </li>
     </ul>

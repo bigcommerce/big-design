@@ -85,8 +85,8 @@ test('trigger range change', () => {
     />,
   );
   fireEvent.click(getByText('1 - 2 of 10'));
-  fireEvent.keyDown(getByText('2 per page'), { key: 'ArrowDown', code: 40 });
-  fireEvent.keyDown(getByText('3 per page'), { key: 'Enter', code: 13 });
+  fireEvent.keyDown(getByText('2'), { key: 'ArrowDown', code: 40 });
+  fireEvent.keyDown(getByText('3'), { key: 'Enter', code: 13 });
 
   expect(changeRange).toHaveBeenCalled();
 });

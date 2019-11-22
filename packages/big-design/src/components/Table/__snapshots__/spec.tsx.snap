@@ -286,6 +286,7 @@ exports[`renders a pagination component 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
+  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -454,7 +455,7 @@ exports[`renders a pagination component 1`] = `
             <div
               class="c1 c12"
             >
-              3 per page
+              3
             </div>
           </li>
           <li
@@ -467,7 +468,7 @@ exports[`renders a pagination component 1`] = `
             <div
               class="c1 c12"
             >
-              5 per page
+              5
             </div>
           </li>
           <li
@@ -480,7 +481,7 @@ exports[`renders a pagination component 1`] = `
             <div
               class="c1 c12"
             >
-              10 per page
+              10
             </div>
           </li>
         </ul>

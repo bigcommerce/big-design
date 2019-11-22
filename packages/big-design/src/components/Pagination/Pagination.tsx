@@ -83,7 +83,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
         <Flex.Item>
           <Dropdown
             options={itemsPerPageOptions.map(range => ({
-              content: `${range} per page`,
+              content: `${range}`,
               onClick: handleRangeChange,
               value: range,
             }))}
@@ -95,13 +95,19 @@ export const Pagination: React.FC<PaginationProps> = memo(
           />
         </Flex.Item>
         <Flex.Item>
-          <StyledButton variant="subtle" disabled={currentPage <= 1} onClick={handlePageDecrease}>
-            <ChevronLeftIcon title="Previous page" />
-          </StyledButton>
+          <StyledButton
+            iconOnly={<ChevronLeftIcon title="Previous page" />}
+            variant="subtle"
+            disabled={currentPage <= 1}
+            onClick={handlePageDecrease}
+          />
 
-          <StyledButton variant="subtle" disabled={currentPage >= maxPages} onClick={handlePageIncrease}>
-            <ChevronRightIcon title="Next page" />
-          </StyledButton>
+          <StyledButton
+            iconOnly={<ChevronRightIcon title="Next page" />}
+            variant="subtle"
+            disabled={currentPage >= maxPages}
+            onClick={handlePageIncrease}
+          />
         </Flex.Item>
       </Flex>
     );
