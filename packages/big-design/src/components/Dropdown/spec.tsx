@@ -329,3 +329,21 @@ test("doesn't render tooltip on enabled item", () => {
 
   expect(queryByText(tooltipText)).not.toBeInTheDocument();
 });
+
+test('no errors expected if all options are disabled', () => {
+  const { getByRole } = render(
+    <Dropdown
+      onClick={onClick}
+      options={[
+        { content: 'Option 1', value: '0', disabled: true },
+        { content: 'Option 2', value: '1', disabled: true },
+      ]}
+      trigger={<Button>Button</Button>}
+    />,
+  );
+
+  const trigger = getByRole('button');
+  expect(() => {
+    fireEvent.click(trigger);
+  }).not.toThrow();
+});

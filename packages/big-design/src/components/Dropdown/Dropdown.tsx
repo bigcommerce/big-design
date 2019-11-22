@@ -180,7 +180,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
   };
 
   private openList() {
-    const firstItem = this.listItemsRefs[0].current;
+    const firstItem = this.listItemsRefs.length > 0 ? this.listItemsRefs[0].current : null;
 
     this.setState({ highlightedItem: firstItem, isOpen: true }, () => {
       document.addEventListener('mousedown', this.handleOnClickOutside, false);
