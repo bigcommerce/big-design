@@ -64,15 +64,31 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     );
   }
 
+  private isGroup(item: DropdownOption<T> | DropdownOptionGroup<T>) {
+    return 'options' in item && !('content' in item);
+  }
+
+  private isOption(item: DropdownOption<T> | DropdownOptionGroup<T>) {
+    return 'content' in item && !('options' in item);
+  }
+
   private renderOptions() {
     const { options } = this.props;
 
-    return options.map(option => {
-      return 'options' in option ? this.renderGroup(option) : this.renderOption(option);
-    });
+    if (Array.isArray(options) && options.every(this.isGroup)) {
+      return (options as Array<DropdownOptionGroup<T>>).map((option, groupIndex) =>
+        this.renderGroup(option, groupIndex),
+      );
+    }
+
+    if (Array.isArray(options) && options.every(this.isOption)) {
+      return this.renderOption(options as Array<DropdownOption<T>>);
+    }
+
+    return;
   }
 
-  private renderOption(options: DropdownOption<T>) {
+  private renderOption(options: Array<DropdownOption<T>>, groupIndex: number | null = null) {
     const { highlightedItem } = this.state;
 
     return (
@@ -82,7 +98,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
           return null;
         }
 
-        const id = this.getItemId(option, index);
+        const id = this.getItemId(option, index, groupIndex);
         const isHighlighted = Boolean(highlightedItem && id === highlightedItem.id);
         const ref = React.createRef<HTMLLIElement>();
 
@@ -111,11 +127,11 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     );
   }
 
-  private renderGroup(group: DropdownOptionGroup<T>) {
+  private renderGroup(group: DropdownOptionGroup<T>, groupIndex: number) {
     return (
       <>
-        <li>Testing Group</li>
-        {this.renderOption(group.options)}
+        <ListItem disabled>{group.label}</ListItem>
+        {this.renderOption(group.options, groupIndex)}
       </>
     );
   }
@@ -219,8 +235,12 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     return id || this.uniqueDropdownId;
   }
 
-  private getItemId(item: DropdownOption<T>, index: number) {
+  private getItemId(item: DropdownOption<T>, index: number, groupIndex: number | null = null) {
     const { id } = item;
+
+    if (groupIndex !== null) {
+      return id || `${this.getDropdownId()}-group-${groupIndex}-item-${index}`;
+    }
 
     return id || `${this.getDropdownId()}-item-${index}`;
   }
