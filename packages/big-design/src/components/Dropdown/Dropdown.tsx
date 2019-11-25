@@ -58,7 +58,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
           role="listbox"
           {...aria}
         >
-          {this.renderOptions()}
+          {this.renderItems()}
         </List>
       </Manager>
     );
@@ -72,7 +72,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     return 'content' in item && !('options' in item);
   }
 
-  private renderOptions() {
+  private renderItems() {
     const { options } = this.props;
 
     if (Array.isArray(options) && options.every(this.isGroup)) {
@@ -82,13 +82,13 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     }
 
     if (Array.isArray(options) && options.every(this.isOption)) {
-      return this.renderOption(options as Array<DropdownOption<T>>);
+      return this.renderOptions(options as Array<DropdownOption<T>>);
     }
 
     return;
   }
 
-  private renderOption(options: Array<DropdownOption<T>>, groupIndex: number | null = null) {
+  private renderOptions(options: Array<DropdownOption<T>>, groupIndex: number | null = null) {
     const { highlightedItem } = this.state;
 
     return (
@@ -131,7 +131,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     return (
       <>
         <ListItem disabled>{group.label}</ListItem>
-        {this.renderOption(group.options, groupIndex)}
+        {this.renderOptions(group.options, groupIndex)}
       </>
     );
   }
