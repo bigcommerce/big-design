@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const StyledGroupHeader = styled.li`
+export const StyledGroupHeader = styled.li<HTMLLIElement>`
   align-items: center;
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary40};

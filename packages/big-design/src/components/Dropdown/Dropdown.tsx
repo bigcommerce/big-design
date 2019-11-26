@@ -76,9 +76,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     const { options } = this.props;
 
     if (Array.isArray(options) && options.every(this.isGroup)) {
-      return (options as Array<DropdownOptionGroup<T>>).map((option, groupIndex) =>
-        this.renderGroup(option, groupIndex),
-      );
+      return (options as Array<DropdownOptionGroup<T>>).map((group, groupIndex) => this.renderGroup(group, groupIndex));
     }
 
     if (Array.isArray(options) && options.every(this.isOption)) {
@@ -130,7 +128,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
   private renderGroup(group: DropdownOptionGroup<T>, groupIndex: number) {
     return (
       <>
-        <ListItem disabled>{group.label}</ListItem>
+        <ListItem>{group.label}</ListItem>
         {this.renderOptions(group.options, groupIndex)}
       </>
     );
