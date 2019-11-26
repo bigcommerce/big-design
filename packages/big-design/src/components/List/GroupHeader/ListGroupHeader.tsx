@@ -1,8 +1,8 @@
-import React, { memo, Ref } from 'react';
+import React, { memo } from 'react';
 
 import { StyledGroupHeader } from './styled';
 
-const StyleableGroupHeader: React.FC<React.LiHTMLAttributes<
+export const ListGroupHeader: React.FC<React.LiHTMLAttributes<
   HTMLLIElement
 >> = memo(({ className, style, value, ...rest }) => (
   <StyledGroupHeader {...rest} tabIndex={-1} onMouseDown={preventFocus} />
@@ -11,3 +11,5 @@ const StyleableGroupHeader: React.FC<React.LiHTMLAttributes<
 function preventFocus(event: React.MouseEvent<HTMLLIElement, MouseEvent>) {
   event.preventDefault();
 }
+
+ListGroupHeader.displayName = 'ListGroupHeader';

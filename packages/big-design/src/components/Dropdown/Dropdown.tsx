@@ -7,6 +7,7 @@ import { Flex } from '../Flex';
 import { FlexItem } from '../Flex/Item';
 import { Link } from '../Link';
 import { List } from '../List';
+import { ListGroupHeader } from '../List/GroupHeader';
 import { ListItem } from '../List/Item';
 import { Tooltip, TooltipProps } from '../Tooltip';
 
@@ -128,7 +129,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
   private renderGroup(group: DropdownOptionGroup<T>, groupIndex: number) {
     return (
       <>
-        <ListItem>{group.label}</ListItem>
+        <ListGroupHeader>{group.label}</ListGroupHeader>
         {this.renderOptions(group.options, groupIndex)}
       </>
     );
