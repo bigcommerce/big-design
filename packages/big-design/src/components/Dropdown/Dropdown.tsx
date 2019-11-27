@@ -129,7 +129,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
   private renderGroup(group: DropdownOptionGroup<T>, groupIndex: number) {
     return (
       <>
-        <ListGroupHeader>{group.label}</ListGroupHeader>
+        <ListGroupHeader role="group">{group.label}</ListGroupHeader>
         {this.renderOptions(group.options, groupIndex)}
       </>
     );

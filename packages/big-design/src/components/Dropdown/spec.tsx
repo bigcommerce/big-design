@@ -21,6 +21,22 @@ const DropdownMock = (
   />
 );
 
+const GroupedDropdownMock = (
+  <Dropdown
+    options={[
+      {
+        label: 'Label 1',
+        options: [{ content: 'Option 1' }, { content: 'Option 2' }, { content: 'Option 3' }],
+      },
+      {
+        label: 'Label 2',
+        options: [{ content: 'Option 4' }, { content: 'Option 5' }, { content: 'Option 6' }],
+      },
+    ]}
+    trigger={<Button>Button</Button>}
+  />
+);
+
 test('renders dropdown trigger', () => {
   const { getByRole } = render(DropdownMock);
   const trigger = getByRole('button');
@@ -346,4 +362,20 @@ test('no errors expected if all options are disabled', () => {
   expect(() => {
     fireEvent.click(trigger);
   }).not.toThrow();
+});
+
+test('dropdown should have 2 group labels', () => {
+  const { getAllByRole } = render(GroupedDropdownMock);
+
+  const labels = getAllByRole('group');
+
+  expect(labels.length).toBe(2);
+});
+
+test('group labels are not selectable', () => {
+  const { getAllByRole } = render(GroupedDropdownMock);
+
+  const labels = getAllByRole('group');
+
+  expect(labels[0]).toHaveStyle('color: #B4BAD1');
 });
