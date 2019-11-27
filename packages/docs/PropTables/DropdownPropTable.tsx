@@ -33,10 +33,11 @@ const dropdownProps: Prop[] = [
   },
   {
     name: 'options',
-    types: 'Array<DropdownItem | DropdownLinkItem>',
+    types: 'Array<DropdownItem | DropdownLinkItem | DropdownOptionGroup>',
     description: (
       <>
-        Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See example for usage.
+        Accepts an array of <Code>DropdownItems</Code>, <Code>DropdownLinkItems</Code>, and{' '}
+        <Code>DropdownOptionGroups</Code>. See example for usage.
       </>
     ),
   },
@@ -178,6 +179,23 @@ const dropdownLinkProps: Prop[] = [
   },
 ];
 
+const dropdownOptionGroupProps: Prop[] = [
+  {
+    name: 'label',
+    types: 'string',
+    description: 'Sets the label for the group.',
+  },
+  {
+    name: 'options',
+    types: 'Array<DropdownItem | DropdownLinkItem>',
+    description: (
+      <>
+        Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See example for usage.
+      </>
+    ),
+  },
+];
+
 export const DropdownPropTable: React.FC<PropTableWrapper> = props => (
   <PropTable title="Dropdown" propList={dropdownProps} {...props} />
 );
@@ -188,4 +206,8 @@ export const DropdownItemPropTable: React.FC<PropTableWrapper> = props => (
 
 export const DropdownLinkItemPropTable: React.FC<PropTableWrapper> = props => (
   <PropTable title="Dropdown[LinkItem]" propList={dropdownLinkProps} {...props} />
+);
+
+export const DropdownOptionGruopPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Dropdown[OptionGroup]" propList={dropdownOptionGroupProps} {...props} />
 );

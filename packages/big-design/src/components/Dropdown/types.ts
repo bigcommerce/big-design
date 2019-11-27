@@ -30,6 +30,6 @@ export interface DropdownLinkItem<T> extends BaseItem<T> {
 }
 
 export interface DropdownOptionGroup<T> {
-  label: 'string';
+  label: string;
   options: Array<DropdownOption<T>>;
 }

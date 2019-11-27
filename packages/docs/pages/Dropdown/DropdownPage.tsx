@@ -3,7 +3,12 @@ import { AssignmentIcon, DeleteIcon, EditIcon, FileCopyIcon, OpenInNewIcon } fro
 import React from 'react';
 
 import { Code, CodePreview, NextLink } from '../../components';
-import { DropdownItemPropTable, DropdownLinkItemPropTable, DropdownPropTable } from '../../PropTables';
+import {
+  DropdownItemPropTable,
+  DropdownLinkItemPropTable,
+  DropdownOptionGruopPropTable,
+  DropdownPropTable,
+} from '../../PropTables';
 
 export default () => (
   <>
@@ -61,6 +66,7 @@ export default () => (
     <DropdownPropTable />
     <DropdownItemPropTable />
     <DropdownLinkItemPropTable />
+    <DropdownOptionGruopPropTable />
 
     <H1>Examples</H1>
 
@@ -274,6 +280,31 @@ export default () => (
           trigger={<Button>Longer</Button>}
         />
       </Grid>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H2>Option Groups</H2>
+
+    <Text>
+      Create Dropdowns with labeled groupings by passing <Code primary>DropdownOptionGroup</Code>'s to the Dropdown's{' '}
+      <Code primary>options</Code> property.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Dropdown
+        options={[
+          {
+            label: 'Label 1',
+            options: [{ content: 'Option 1' }, { content: 'Option 2' }, { content: 'Option 3' }],
+          },
+          {
+            label: 'Label 2',
+            options: [{ content: 'Option 4' }, { content: 'Option 5' }, { content: 'Option 6' }],
+          },
+        ]}
+        trigger={<Button>Button</Button>}
+      />
       {/* jsx-to-string:end */}
     </CodePreview>
   </>
