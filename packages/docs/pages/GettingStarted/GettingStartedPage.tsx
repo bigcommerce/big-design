@@ -4,6 +4,8 @@ import { ThemeContext } from 'styled-components';
 
 import { Code, CodeSnippet, List } from '../../components';
 
+const CodeSandboxUrl = process.env.CODE_SANDBOX_URL as string;
+
 export default () => {
   const { spacing } = useContext(ThemeContext);
 
@@ -61,6 +63,11 @@ export default () => {
           <List.Item>
             <Link href="https://github.com/bigcommerce/channels-app" target="_blank">
               Sample App
+            </Link>
+          </List.Item>
+          <List.Item>
+            <Link href={CodeSandboxUrl} target="_blank">
+              CodeSandbox Example
             </Link>
           </List.Item>
           <List.Item>

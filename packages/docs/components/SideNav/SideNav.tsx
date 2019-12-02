@@ -10,6 +10,8 @@ import { SideNavLink, StyledLink } from './SideNavLink';
 import { SideNavLogo } from './SideNavLogo';
 import { SideNavMenu } from './SideNavMenu';
 
+const CodeSandboxUrl = process.env.CODE_SANDBOX_URL as string;
+
 export const SideNav: React.FC = () => {
   return (
     <StyledFlex
@@ -28,6 +30,8 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/GettingStarted/GettingStartedPage" as="/">
             Getting Started
           </SideNavLink>
+
+          <Link url={CodeSandboxUrl} title="CodeSandbox Example" />
         </SideNavGroup>
 
         <SideNavGroup title="Foundations">
@@ -136,14 +140,14 @@ export const SideNav: React.FC = () => {
         </SideNavGroup>
 
         <SideNavGroup title="Helpful Links">
-          <IconLink
+          <Link
             url="https://github.com/bigcommerce/big-design"
-            component={<GithubLogoIcon title="Github Logo" />}
+            icon={<GithubLogoIcon title="Github Logo" />}
             title="Github"
           />
-          <IconLink
+          <Link
             url="https://design.bigcommerce.com/components"
-            component={<BigDesignLogoIcon title="BigDesign Logo" />}
+            icon={<BigDesignLogoIcon title="BigDesign Logo" />}
             title="Design Guidelines"
           />
         </SideNavGroup>
@@ -152,12 +156,18 @@ export const SideNav: React.FC = () => {
   );
 };
 
-const IconLink: React.FC<{ url: string; component: React.ReactNode; title: string }> = ({ url, component, title }) => (
-  <List.Item>
-    <StyledLink href={url} target="_blank">
-      <Flex alignItems="center">
-        {component} <Flex.Item marginLeft="xSmall">{title}</Flex.Item>
-      </Flex>
-    </StyledLink>
-  </List.Item>
-);
+const Link: React.FC<{ url: string; icon?: React.ReactNode; title: string }> = ({ url, icon, title }) => {
+  const getChildrenWithIcon = () => (
+    <Flex alignItems="center">
+      {icon} <Flex.Item marginLeft="xSmall">{title}</Flex.Item>
+    </Flex>
+  );
+
+  return (
+    <List.Item>
+      <StyledLink href={url} target="_blank">
+        {icon ? getChildrenWithIcon() : title}
+      </StyledLink>
+    </List.Item>
+  );
+};
