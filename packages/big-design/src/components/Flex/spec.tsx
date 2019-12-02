@@ -52,5 +52,5 @@ test('Flex Item should handle falsy values (0)', () => {
 
   const flex = getByTestId('flex');
 
-  expect(flex).toHaveStyle('flex-shring: 0');
+  expect(flex).toHaveStyle('flex-shrink: 0');
 });
