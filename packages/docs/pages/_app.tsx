@@ -1,6 +1,6 @@
 import { GlobalStyles, Grid } from '@bigcommerce/big-design';
 import { createTheme } from '@bigcommerce/big-design-theme';
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import Head from 'next/head';
 import { default as Router } from 'next/router';
 import React from 'react';
@@ -30,7 +30,7 @@ export default class MyApp extends App {
     const { Component, pageProps, router } = this.props;
 
     return (
-      <Container>
+      <>
         <Head>
           <link rel="icon" type="image/png" href={`${process.env.URL_PREFIX}/static/favicon.png`}></link>
           <title>BigDesign</title>
@@ -78,7 +78,7 @@ export default class MyApp extends App {
             )}
           </>
         </ThemeProvider>
-      </Container>
+      </>
     );
   }
 }
