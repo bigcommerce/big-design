@@ -1,4 +1,3 @@
-import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { Ref } from 'react';
 
@@ -12,7 +11,6 @@ interface Props {
   description?: React.ReactChild;
   error?: React.ReactChild;
   label?: React.ReactChild;
-  theme?: ThemeInterface;
   rows?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
   resize?: boolean;
 }

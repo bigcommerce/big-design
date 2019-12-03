@@ -1,5 +1,4 @@
 import { CheckIcon, RemoveIcon } from '@bigcommerce/big-design-icons';
-import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { memo, Ref } from 'react';
 
@@ -11,7 +10,6 @@ interface Props {
   hiddenLabel?: boolean;
   isIndeterminate?: boolean;
   label: React.ReactChild;
-  theme?: ThemeInterface;
 }
 
 interface PrivateProps {
@@ -30,7 +28,7 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
     const id = this.getInputId();
 
     return (
-      <CheckboxContainer className={className} style={style} theme={props.theme}>
+      <CheckboxContainer className={className} style={style}>
         <HiddenCheckbox
           type="checkbox"
           checked={checked}
@@ -56,14 +54,8 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
           }}
         />
 
-        <StyledCheckbox
-          isIndeterminate={isIndeterminate}
-          checked={checked}
-          htmlFor={id}
-          aria-hidden={true}
-          theme={props.theme}
-        >
-          {!checked && isIndeterminate ? <RemoveIcon theme={props.theme} /> : <CheckIcon theme={props.theme} />}
+        <StyledCheckbox isIndeterminate={isIndeterminate} checked={checked} htmlFor={id} aria-hidden={true}>
+          {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
         </StyledCheckbox>
         {this.renderLabel()}
       </CheckboxContainer>
@@ -78,7 +70,7 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
 
   private renderLabel() {
     const htmlFor = this.getInputId();
-    const { disabled, hiddenLabel, label, theme } = this.props;
+    const { disabled, hiddenLabel, label } = this.props;
 
     if (typeof label === 'string') {
       return (
@@ -88,7 +80,6 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
           htmlFor={htmlFor}
           aria-hidden={disabled}
           id={this.labelUniqueId}
-          theme={theme}
         >
           {label}
         </StyledLabel>

@@ -1,4 +1,4 @@
-import { Border, BorderRadius, Colors, Shadow, ThemeInterface } from '@bigcommerce/big-design-theme';
+import { Border, BorderRadius, Colors, Shadow } from '@bigcommerce/big-design-theme';
 import React, { memo } from 'react';
 
 import { DisplayProps, MarginProps, PaddingProps } from '../../mixins';
@@ -15,7 +15,6 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, DisplayP
   borderRight?: keyof Border;
   borderTop?: keyof Border;
   borderRadius?: keyof BorderRadius;
-  theme?: ThemeInterface;
 }
 
 export const Box: React.FC<BoxProps> = memo(props => <StyledBox {...props} />);

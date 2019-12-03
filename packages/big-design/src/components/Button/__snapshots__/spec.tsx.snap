@@ -594,7 +594,6 @@ exports[`render icon left and right button 1`] = `
       viewBox="0 0 24 24"
       width="24"
     >
-      <title />
       <path
         d="M0 0h24v24H0V0z"
         fill="none"
@@ -613,7 +612,6 @@ exports[`render icon left and right button 1`] = `
       viewBox="0 0 24 24"
       width="24"
     >
-      <title />
       <path
         d="M0 0h24v24H0V0z"
         fill="none"
@@ -753,7 +751,6 @@ exports[`render icon left button 1`] = `
       viewBox="0 0 24 24"
       width="24"
     >
-      <title />
       <path
         d="M0 0h24v24H0V0z"
         fill="none"
@@ -894,7 +891,6 @@ exports[`render icon only button 1`] = `
       viewBox="0 0 24 24"
       width="24"
     >
-      <title />
       <path
         d="M0 0h24v24H0V0z"
         fill="none"
@@ -1035,7 +1031,6 @@ exports[`render icon right button 1`] = `
       viewBox="0 0 24 24"
       width="24"
     >
-      <title />
       <path
         d="M0 0h24v24H0V0z"
         fill="none"

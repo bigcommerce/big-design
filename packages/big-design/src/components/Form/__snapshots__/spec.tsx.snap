@@ -42,6 +42,7 @@ exports[`simple form render 1`] = `
 }
 
 .c10 {
+  background-color: inherit;
   border: 0;
   box-sizing: border-box;
   color: #313440;

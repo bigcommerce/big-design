@@ -1,4 +1,3 @@
-import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
@@ -16,7 +15,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconOnly?: React.ReactChild;
   iconRight?: React.ReactChild;
   isLoading?: boolean;
-  theme?: ThemeInterface;
   variant?: 'primary' | 'secondary' | 'subtle';
 }
 
@@ -40,7 +38,7 @@ const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, ..
   return (
     <StyledButton className="bd-button" role="button" tabIndex={0} {...props} onClick={handleClick} ref={forwardedRef}>
       {props.isLoading ? renderLoadingSpinner() : null}
-      <ContentWrapper isLoading={props.isLoading} theme={props.theme}>
+      <ContentWrapper isLoading={props.isLoading}>
         {!props.iconOnly && props.iconLeft}
         {props.iconOnly}
         {!props.iconOnly && props.children}

@@ -45,6 +45,7 @@ export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
 `;
 
 export const StyledInput = styled.input<InputProps>`
+  background-color: inherit;
   border: 0;
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
