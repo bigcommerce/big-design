@@ -1,3 +1,13 @@
+const Logger = require('./logger.js');
+
+const testPath = `.`;
+const artifactsPath = `${testPath}/artifacts`;
+const screenshotsPath = `${artifactsPath}/screenshots`;
+const logsPath = `${artifactsPath}/logs`;
+const testResultsPath = `${artifactsPath}/test-results`;
+
+let originalConsole = null;
+
 exports.config = {
     //
     // ====================
@@ -17,7 +27,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './functional/**/*.ts'
+        `${testPath}/functional/**/*.ts`
     ],
     // Patterns to exclude.
     exclude: [
@@ -66,7 +76,7 @@ exports.config = {
     // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'info',
 
-    outputDir: './artifacts/logs',
+    outputDir: logsPath,
     //
     // Set specific log levels per logger
     // loggers:
@@ -86,7 +96,7 @@ exports.config = {
     // bail (default is 0 - don't bail, run all tests).
     bail: 0,
 
-    screenshotPath: './artifacts/screenshots/',
+    screenshotPath: screenshotsPath,
 
     screenshotOnReject: false,
     //
@@ -144,7 +154,7 @@ exports.config = {
         [
             'junit',
             {
-                outputDir: './artifacts/test-results/',
+                outputDir: testResultsPath,
                 outputFileFormat: function(options) {
                     return 'test-result.xml'
                 },
@@ -156,7 +166,7 @@ exports.config = {
             }
         ]
     ],
- 
+
     //
     // Options to be passed to Jasmine.
     jasmineNodeOpts: {
@@ -171,7 +181,7 @@ exports.config = {
             // do something
         }
     },
-    
+
     //
     // =====
     // Hooks
@@ -221,8 +231,39 @@ exports.config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+    beforeTest: function (test, context) {
+        // Override console to allow for STDOUT and file logging with one command
+        originalConsole = console
+
+        let filename = test['fullName'].replace(/\s/gi, '_');
+        let file = `${logsPath}/${test['start']}-${filename}.log`;
+
+        const logger = Logger.new(file);
+
+        console = (function(originalConsole){
+            return {
+                log: function(text){
+                    originalConsole.log(text);
+                    logger.info(text)
+                },
+                info: function (text) {
+                    originalConsole.info(text);
+                    logger.info(text)
+                },
+                warn: function (text) {
+                    originalConsole.warn(text);
+                    logger.warn(text)
+                },
+                error: function (text) {
+                    originalConsole.error(text);
+                    logger.error(text)
+                }
+            };
+        }(originalConsole));
+
+        console.log(`--- Starting test ${test['fullName']} ---`);
+
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
@@ -238,9 +279,11 @@ exports.config = {
     /**
      * Function to be executed after a test (in Mocha/Jasmine).
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
-
+    afterTest: function(test, context, { error, result, duration, passed, retries }) {
+        console.log(`--- Ending test ${test['fullName']} ---`);
+        // Return console to its original state
+        console = originalConsole;
+    },
 
     /**
      * Hook that gets executed after the suite has ended
