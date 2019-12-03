@@ -376,7 +376,6 @@ exports[`render pagination component 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
           <path
             d="M0 0h24v24H0V0z"
             fill="none"
@@ -880,7 +879,6 @@ exports[`render pagination component with invalid page info 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
           <path
             d="M0 0h24v24H0V0z"
             fill="none"
@@ -1384,7 +1382,6 @@ exports[`render pagination component with invalid range info 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
           <path
             d="M0 0h24v24H0V0z"
             fill="none"
@@ -1889,7 +1886,6 @@ exports[`render pagination component with no items 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
           <path
             d="M0 0h24v24H0V0z"
             fill="none"

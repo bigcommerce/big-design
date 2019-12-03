@@ -106,7 +106,6 @@ exports[`render Checkbox checked 1`] = `
       viewBox="0 0 24 24"
       width="24"
     >
-      <title />
       <path
         d="M0 0h24v24H0V0z"
         fill="none"
@@ -235,7 +234,6 @@ exports[`render Checkbox indeterminate 1`] = `
       viewBox="0 0 24 24"
       width="24"
     >
-      <title />
       <path
         d="M0 0h24v24H0V0z"
         fill="none"
@@ -364,7 +362,6 @@ exports[`render Checkbox unchecked 1`] = `
       viewBox="0 0 24 24"
       width="24"
     >
-      <title />
       <path
         d="M0 0h24v24H0V0z"
         fill="none"

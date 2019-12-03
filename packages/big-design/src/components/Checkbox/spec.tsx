@@ -1,4 +1,3 @@
-import { theme } from '@bigcommerce/big-design-theme';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
@@ -97,21 +96,6 @@ test('private StyleableCheckbox forwards styles', () => {
 
   expect(container.getElementsByClassName('test').length).toBe(1);
   expect(container.firstChild).toHaveStyle('background: red');
-});
-
-test('theme prop overrides default theme', () => {
-  const onChange = jest.fn();
-  const customTheme = {
-    ...theme,
-    colors: {
-      ...theme.colors,
-      primary: 'red',
-    },
-  };
-
-  const { container } = render(<Checkbox label="Checked" theme={customTheme} onChange={onChange} checked={true} />);
-
-  expect(container.querySelector('label')).toHaveStyle(`background-color: red`);
 });
 
 test('displays text greyed out when disabled', () => {

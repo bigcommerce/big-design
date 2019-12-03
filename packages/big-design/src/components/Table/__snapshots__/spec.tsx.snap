@@ -426,7 +426,6 @@ exports[`renders a pagination component 1`] = `
               viewBox="0 0 24 24"
               width="24"
             >
-              <title />
               <path
                 d="M0 0h24v24H0V0z"
                 fill="none"
@@ -615,6 +614,7 @@ exports[`renders a simple table 1`] = `
 }
 
 .c7 {
+  background-color: #FFFFFF;
   box-sizing: border-box;
   color: #313440;
   font-size: 1rem;
@@ -998,7 +998,6 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
             viewBox="0 0 24 24"
             width="24"
           >
-            <title />
             <path
               d="M0 0h24v24H0V0z"
               fill="none"

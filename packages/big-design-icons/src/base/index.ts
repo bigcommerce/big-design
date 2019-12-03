@@ -14,16 +14,17 @@ export function createStyledIcon(Icon: React.FC<Partial<IconProps>>) {
   const StyledIcon = styled(Icon)`
     vertical-align: middle;
 
-    ${({ color, theme }) => color && { color: theme.colors[color] }};
+    ${({ color, theme }) => color && { color: theme.colors[color] }}
 
     ${({ size, theme }) =>
       size && {
         height: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
         width: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
-      }};
+      }}
   `;
 
   StyledIcon.defaultProps = {
+    color: 'secondary60',
     theme: defaultTheme,
     size: 'xLarge',
   };

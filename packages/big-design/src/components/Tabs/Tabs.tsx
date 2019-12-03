@@ -1,4 +1,3 @@
-import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { memo } from 'react';
 
 import { StyledTab, StyledTabs } from './styled';
@@ -12,7 +11,6 @@ export interface TabItem {
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   activeTab?: TabItem['id'];
   items?: TabItem[];
-  theme?: ThemeInterface;
   onTabClick?(tabId: TabItem['id']): void;
 }
 

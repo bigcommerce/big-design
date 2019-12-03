@@ -1,4 +1,3 @@
-import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { Ref } from 'react';
 
@@ -16,7 +15,6 @@ interface Props {
   iconLeft?: React.ReactChild;
   iconRight?: React.ReactChild;
   label?: React.ReactChild;
-  theme?: ThemeInterface;
   onChipDelete?(chip: string): () => void;
 }
 

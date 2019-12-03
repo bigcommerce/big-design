@@ -34,6 +34,7 @@ exports[`renders all together 1`] = `
 }
 
 .c6 {
+  background-color: inherit;
   border: 0;
   box-sizing: border-box;
   color: #313440;
@@ -159,7 +160,6 @@ exports[`renders all together 1`] = `
         viewBox="0 0 24 24"
         width="24"
       >
-        <title />
         <path
           d="M0 0h24v24H0V0z"
           fill="none"
@@ -190,7 +190,6 @@ exports[`renders all together 1`] = `
         viewBox="0 0 24 24"
         width="24"
       >
-        <title />
         <path
           d="M0 0h24v24H0V0z"
           fill="none"

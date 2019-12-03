@@ -76,7 +76,6 @@ exports[`select action supports actionTypes 1`] = `
       viewBox="0 0 24 24"
       width="24"
     >
-      <title />
       <path
         d="M0 0h24v24H0V0z"
         fill="none"
@@ -222,7 +221,6 @@ exports[`select action supports icons 1`] = `
           viewBox="0 0 24 24"
           width="24"
         >
-          <title />
           <path
             d="M0 0h24v24H0V0z"
             fill="none"
