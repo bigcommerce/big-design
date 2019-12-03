@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React, { Fragment, RefObject } from 'react';
 import { Manager, Reference } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
@@ -128,10 +128,10 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
 
   private renderGroup(group: DropdownOptionGroup<T>, groupIndex: number) {
     return (
-      <>
+      <Fragment key={groupIndex}>
         <ListGroupHeader role="group">{group.label}</ListGroupHeader>
         {this.renderOptions(group.options, groupIndex)}
-      </>
+      </Fragment>
     );
   }
 

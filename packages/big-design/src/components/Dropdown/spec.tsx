@@ -7,13 +7,13 @@ import { Button } from '../Button';
 
 import { Dropdown } from './Dropdown';
 
-const onClick = jest.fn();
+let onClick = jest.fn();
 
-const DropdownMock = (
+const DropdownMock = (click: jest.Mock) => (
   <Dropdown
     options={[
       { content: 'Option', type: 'string', value: '0' },
-      { content: 'Option', type: 'string', value: '1', onClick },
+      { content: 'Option', type: 'string', value: '1', onClick: click },
       { content: 'Option', type: 'string', value: '2', actionType: 'destructive' },
       { content: 'Option', type: 'string', value: '3', icon: <CheckCircleIcon /> },
     ]}
@@ -21,45 +21,57 @@ const DropdownMock = (
   />
 );
 
-const GroupedDropdownMock = (
+const GroupedDropdownMock = (click: jest.Mock) => (
   <Dropdown
     options={[
       {
         label: 'Label 1',
-        options: [{ content: 'Option 1' }, { content: 'Option 2' }, { content: 'Option 3' }],
+        options: [
+          { content: 'Option 1', onClick: click },
+          { content: 'Option 2', onClick: click },
+          { content: 'Option 3', onClick: click },
+        ],
       },
       {
         label: 'Label 2',
-        options: [{ content: 'Option 4' }, { content: 'Option 5' }, { content: 'Option 6' }],
+        options: [
+          { content: 'Option 4', onClick: click },
+          { content: 'Option 5', onClick: click },
+          { content: 'Option 6', onClick: click },
+        ],
       },
     ]}
     trigger={<Button>Button</Button>}
   />
 );
 
+beforeEach(() => {
+  onClick = jest.fn();
+});
+
 test('renders dropdown trigger', () => {
-  const { getByRole } = render(DropdownMock);
+  const { getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   expect(trigger).toBeInTheDocument();
 });
 
 test('dropdown trigger has an id', () => {
-  const { getByRole } = render(DropdownMock);
+  const { getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   expect(trigger.id).toBeDefined();
 });
 
 test('dropdown trigger has aria-haspopup', () => {
-  const { getByRole } = render(DropdownMock);
+  const { getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   expect(trigger.getAttribute('aria-haspopup')).toBe('true');
 });
 
 test('dropdown trigger has aria-expanded when dropdown menu is open', () => {
-  const { getByRole } = render(DropdownMock);
+  const { getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -68,13 +80,13 @@ test('dropdown trigger has aria-expanded when dropdown menu is open', () => {
 });
 
 test('renders the dropdown menu closed', () => {
-  const { queryByRole } = render(DropdownMock);
+  const { queryByRole } = render(DropdownMock(onClick));
 
   expect(queryByRole('listbox')).not.toBeVisible();
 });
 
 test('opens/closes dropdown menu when trigger is clicked', () => {
-  const { getByRole, queryByRole } = render(DropdownMock);
+  const { getByRole, queryByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -85,7 +97,7 @@ test('opens/closes dropdown menu when trigger is clicked', () => {
 });
 
 test('dropdown menu has aria-labelledby', () => {
-  const { getByRole } = render(DropdownMock);
+  const { getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -94,7 +106,7 @@ test('dropdown menu has aria-labelledby', () => {
 });
 
 test('dropdown menu has aria-activedescendant', () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
+  const { getAllByRole, getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -105,14 +117,14 @@ test('dropdown menu has aria-activedescendant', () => {
 });
 
 test('dropdown menu should have 4 dropdown items', () => {
-  const { getAllByRole } = render(DropdownMock);
+  const { getAllByRole } = render(DropdownMock(onClick));
 
   const options = getAllByRole('option');
   expect(options.length).toBe(4);
 });
 
 test('first dropdown item should be selected when dropdown is opened', () => {
-  const { getByRole, getAllByRole } = render(DropdownMock);
+  const { getByRole, getAllByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -123,7 +135,7 @@ test('first dropdown item should be selected when dropdown is opened', () => {
 });
 
 test('up/down arrows should change dropdown item selection', () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
+  const { getAllByRole, getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -142,7 +154,7 @@ test('up/down arrows should change dropdown item selection', () => {
 });
 
 test('esc should close menu', () => {
-  const { getByRole, queryByRole } = render(DropdownMock);
+  const { getByRole, queryByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -153,7 +165,7 @@ test('esc should close menu', () => {
 });
 
 test('tab should close menu', () => {
-  const { getByRole, queryByRole } = render(DropdownMock);
+  const { getByRole, queryByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -164,7 +176,7 @@ test('tab should close menu', () => {
 });
 
 test('home should select first dropdown item', () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
+  const { getAllByRole, getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -183,7 +195,7 @@ test('home should select first dropdown item', () => {
 });
 
 test('end should select last dropdown item', () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
+  const { getAllByRole, getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -199,7 +211,7 @@ test('end should select last dropdown item', () => {
 });
 
 test('enter should trigger onClick', () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
+  const { getAllByRole, getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -215,7 +227,7 @@ test('enter should trigger onClick', () => {
 });
 
 test('space should trigger onClick', () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
+  const { getAllByRole, getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -231,7 +243,7 @@ test('space should trigger onClick', () => {
 });
 
 test('clicking on dropdown items should trigger onClick', () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
+  const { getAllByRole, getByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -244,7 +256,7 @@ test('clicking on dropdown items should trigger onClick', () => {
 });
 
 test('dropdown items should be highlighted when moused over', () => {
-  const { getByRole, getAllByRole } = render(DropdownMock);
+  const { getByRole, getAllByRole } = render(DropdownMock(onClick));
   const trigger = getByRole('button');
 
   fireEvent.click(trigger);
@@ -278,7 +290,7 @@ test('dropdown menu renders 4 link when passed options of type link', () => {
 });
 
 test('items renders icons', () => {
-  const { container } = render(DropdownMock);
+  const { container } = render(DropdownMock(onClick));
 
   const svg = container.querySelectorAll('svg');
   expect(svg.length).toBe(1);
@@ -365,17 +377,46 @@ test('no errors expected if all options are disabled', () => {
 });
 
 test('dropdown should have 2 group labels', () => {
-  const { getAllByRole } = render(GroupedDropdownMock);
+  const { getAllByRole } = render(GroupedDropdownMock(onClick));
 
   const labels = getAllByRole('group');
 
   expect(labels.length).toBe(2);
 });
 
-test('group labels are not selectable', () => {
-  const { getAllByRole } = render(GroupedDropdownMock);
+test('group labels are grayed out', () => {
+  const { getAllByRole } = render(GroupedDropdownMock(onClick));
 
   const labels = getAllByRole('group');
 
   expect(labels[0]).toHaveStyle('color: #B4BAD1');
+  expect(labels[1]).toHaveStyle('color: #B4BAD1');
+});
+
+test('group labels are skipped over when using keyboard to navigate options', () => {
+  const { getAllByRole, getByRole } = render(GroupedDropdownMock(onClick));
+  const trigger = getByRole('button');
+
+  fireEvent.click(trigger);
+
+  const menu = getByRole('listbox');
+  const options = getAllByRole('option');
+
+  fireEvent.keyDown(menu, { key: 'ArrowDown' });
+  fireEvent.keyDown(menu, { key: 'ArrowDown' });
+  fireEvent.keyDown(menu, { key: 'ArrowDown' });
+
+  expect(options[3].dataset.highlighted).toBe('true');
+});
+
+test('clicking label does not call onClick', () => {
+  const { getAllByRole, getByRole } = render(GroupedDropdownMock(onClick));
+  const trigger = getByRole('button');
+  const labels = getAllByRole('group');
+
+  fireEvent.click(trigger);
+  fireEvent.mouseOver(labels[0]);
+  fireEvent.click(labels[0]);
+
+  expect(onClick).not.toHaveBeenCalled();
 });
