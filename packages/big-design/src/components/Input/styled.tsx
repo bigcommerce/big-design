@@ -54,7 +54,7 @@ export const StyledInput = styled.input<InputProps>`
   border: 0;
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
-  flex: 1;
+  flex: 1 1 40%;
   height: 100%;
   padding: 0;
   padding-left: ${({ theme }) => theme.spacing.xSmall};

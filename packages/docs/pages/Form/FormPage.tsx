@@ -90,7 +90,7 @@ export default () => (
         <FormGroup>
           <Select
             label="Example Select"
-            onItemChange={() => null}
+            onOptionChange={() => null}
             options={[
               { value: 1, content: 'Option' },
               { value: 2, content: 'Option' },

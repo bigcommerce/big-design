@@ -2,19 +2,15 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled from 'styled-components';
 
-interface StyledList {
-  isOpen?: boolean;
-  maxHeight?: number;
-}
+import { ListProps } from './List';
 
-export const StyledList = styled.ul<StyledList>`
+export const StyledList = styled.ul<Partial<ListProps>>`
   ${({ theme }) => theme.shadow.raised};
 
   ${props => !props.isOpen && hideVisually()}
 
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.secondary70};
-  display: inline-block;
   margin: 0;
   max-height: ${({ theme, maxHeight }) => (maxHeight ? theme.helpers.remCalc(maxHeight) : '')};
   outline: none;

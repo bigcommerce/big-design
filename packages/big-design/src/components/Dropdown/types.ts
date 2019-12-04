@@ -2,34 +2,33 @@ import { Placement } from 'popper.js';
 
 import { ListItemProps } from '../List/Item';
 
-export type DropdownOption<T> = DropdownItem<T> | DropdownLinkItem<T>;
-
-export interface DropdownProps<T> extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
+export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
+  disabled?: boolean;
+  items: Array<DropdownItem | DropdownLinkItem> | DropdownItemGroup[];
   maxHeight?: number;
-  options: Array<DropdownOption<T>> | Array<DropdownOptionGroup<T>>;
   placement?: Placement;
-  trigger: React.ReactElement;
+  toggle: React.ReactElement;
 }
 
-interface BaseItem<T> extends Omit<ListItemProps, 'children' | 'content' | 'onClick' | 'value'> {
+interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'isHighlighted' | 'isSelected'> {
   content: string;
   icon?: React.ReactElement;
   tooltip?: string;
-  value?: T;
-  onClick?(item: DropdownOption<T>): void;
 }
 
-export interface DropdownItem<T> extends BaseItem<T> {
-  type?: 'string';
+export interface DropdownItem extends BaseItem {
+  hash?: string;
+  type?: 'text';
+  onItemClick(item: DropdownItem): void;
 }
 
-export interface DropdownLinkItem<T> extends BaseItem<T> {
+export interface DropdownLinkItem extends BaseItem {
   target?: HTMLAnchorElement['target'];
   type: 'link';
   url: string;
 }
 
-export interface DropdownOptionGroup<T> {
+export interface DropdownItemGroup {
   label: string;
-  options: Array<DropdownOption<T>>;
+  items: Array<DropdownItem | DropdownLinkItem>;
 }

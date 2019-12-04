@@ -2,20 +2,18 @@ import React, { forwardRef, useMemo, useState, Ref } from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
-import { Chip } from '../Chip';
+import { Chip, ChipProps } from '../Chip';
 import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
 import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
-
 interface Props {
-  chips?: string[];
+  chips?: ChipProps[];
   description?: React.ReactChild;
   error?: React.ReactNode | React.ReactNode[];
   iconLeft?: React.ReactChild;
   iconRight?: React.ReactChild;
   label?: React.ReactChild;
   labelId?: string;
-  onChipDelete?(chip: string): () => void;
 }
 
 interface PrivateProps {
@@ -32,7 +30,6 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   forwardedRef,
   label,
   labelId,
-  onChipDelete,
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
@@ -123,14 +120,8 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
       return null;
     }
 
-    return chips.map((chip, key) =>
-      onChipDelete ? (
-        <Chip key={key} label={chip} marginBottom="none" onDelete={onChipDelete(chip)} />
-      ) : (
-        <Chip key={key} label={chip} marginBottom="none" marginTop="none" />
-      ),
-    );
-  }, [chips, onChipDelete]);
+    return chips.map(chip => <Chip {...chip} key={chip.label} marginBottom="none" />);
+  }, [chips]);
 
   const errors = useMemo(() => {
     const validateError = (err: Props['error']) => {
@@ -168,6 +159,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
           {renderedChips}
           <StyledInput
             {...props}
+            autoComplete="no"
             disabled={disabled}
             chips={chips}
             error={errors}

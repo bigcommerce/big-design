@@ -12,6 +12,7 @@ export * from './Grid';
 export * from './Input';
 export * from './Link';
 export * from './Modal';
+export * from './MultiSelect';
 export * from './Pagination';
 export * from './Panel';
 export * from './ProgressBar';

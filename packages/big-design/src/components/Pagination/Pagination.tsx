@@ -68,8 +68,8 @@ export const Pagination: React.FC<PaginationProps> = memo(
       onPageChange(currentPage - 1);
     };
 
-    const handleRangeChange = (item: DropdownItem<number>) => {
-      return item.value && onItemsPerPageChange(item.value);
+    const handleRangeChange = (item: DropdownItem) => {
+      return onItemsPerPageChange(Number(item.hash));
     };
 
     const showRanges = () => {
@@ -82,12 +82,12 @@ export const Pagination: React.FC<PaginationProps> = memo(
       <Flex role="navigation" aria-label="pagination" flexDirection="row">
         <FlexItem>
           <Dropdown
-            options={itemsPerPageOptions.map(range => ({
+            items={itemsPerPageOptions.map(range => ({
               content: `${range}`,
-              onClick: handleRangeChange,
-              value: range,
+              hash: `${range}`,
+              onItemClick: handleRangeChange,
             }))}
-            trigger={
+            toggle={
               <StyledButton variant="subtle" iconRight={<ArrowDropDownIcon size="xxLarge" />}>
                 {showRanges()}
               </StyledButton>

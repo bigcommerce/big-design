@@ -10,7 +10,7 @@ const selectProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Disables the <Code>Select</Code> component.
+        Disables the <Code>MultiSelect</Code> component.
       </>
     ),
   },
@@ -59,8 +59,8 @@ const selectProps: Prop[] = [
     ),
   },
   {
-    name: 'onOptionChange',
-    types: '(value: any, option: SelectOption) => void',
+    name: 'onOptionsChange',
+    types: '(value: [any], option: [SelectOption]) => void',
     required: true,
     description: 'Callback called with value of selected option.',
   },
@@ -102,7 +102,7 @@ const selectProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to position the list.
+        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to position the items.
       </>
     ),
   },
@@ -113,7 +113,7 @@ const selectProps: Prop[] = [
   },
   {
     name: 'value',
-    types: 'any ',
+    types: '[any]',
     description: <>Modifies the current selected value of the field.</>,
   },
 ];
@@ -125,7 +125,7 @@ const selectOptionProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Sets the <Code>SelectOption</Code> to disabled.'
+        'Sets the <Code>SelectOption</Code> to disabled.'
       </>
     ),
   },
@@ -195,7 +195,7 @@ const selectActionProps: Prop[] = [
     required: true,
     description: (
       <>
-        'Sets the text content of the <Code>SelectAction</Code> .'
+        'Sets the text content of the <Code>SelectAction</Code>.'
       </>
     ),
   },
@@ -223,14 +223,6 @@ const selectActionProps: Prop[] = [
   },
 ];
 
-export const SelectPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="Select" propList={selectProps} {...props} />
-);
-
-export const SelectOptionPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="SelectOption" propList={selectOptionProps} {...props} />
-);
-
-export const SelectActionPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="SelectAction" propList={selectActionProps} {...props} />
+export const MultiSelectPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="MultiSelect" propList={selectProps} {...props} />
 );

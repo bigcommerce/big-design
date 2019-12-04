@@ -4,6 +4,12 @@ import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components
 
 const dropdownProps: Prop[] = [
   {
+    name: 'disabled',
+    types: 'boolean',
+    defaultValue: 'false',
+    description: 'Disables the toggle.',
+  },
+  {
     name: 'maxHeight',
     types: 'number',
     defaultValue: '250',
@@ -32,21 +38,21 @@ const dropdownProps: Prop[] = [
     description: 'Sets the placement of the Dropdown relative to the anchor.',
   },
   {
-    name: 'options',
-    types: 'Array<DropdownItem | DropdownLinkItem | DropdownOptionGroup>',
+    name: 'items',
+    types: 'Array<DropdownItem | DropdownLinkItem> | Array<DropdownItemGroup>',
     required: true,
     description: (
       <>
-        Accepts an array of <Code>DropdownItems</Code>, <Code>DropdownLinkItems</Code>, and{' '}
-        <Code>DropdownOptionGroups</Code>. See example for usage.
+        Accepts an array of <Code>DropdownItems and DropdownLinkItems</Code>. It also accept a{' '}
+        <Code>DropdownItemGroup</Code> when you want to group items. See example for usage.
       </>
     ),
   },
   {
-    name: 'trigger',
+    name: 'toggle',
     types: 'ReactElement',
     required: true,
-    description: 'Element used as anchor.',
+    description: 'Element used as anchor. Toggles the dropdown.',
   },
 ];
 
@@ -69,6 +75,11 @@ const dropdownItemProps: Prop[] = [
     description: 'Sets the item to disabled.',
   },
   {
+    name: 'hash',
+    types: 'string',
+    description: 'Stored hash of the item.',
+  },
+  {
     name: 'icon',
     types: (
       <NextLink href="/Icons/IconsPage" as="/icons">
@@ -86,8 +97,9 @@ const dropdownItemProps: Prop[] = [
     ),
   },
   {
-    name: 'onClick',
+    name: 'onItemClick',
     types: '(item: DropdownItem): void',
+    required: true,
     description: 'Returns the item object.',
   },
   {
@@ -101,14 +113,9 @@ const dropdownItemProps: Prop[] = [
   },
   {
     name: 'type',
-    types: "'string'",
-    defaultValue: "'string'",
+    types: "'text'",
+    defaultValue: "'text'",
     description: 'Type of the item.',
-  },
-  {
-    name: 'value',
-    types: 'any',
-    description: 'Stored value of the item.',
   },
 ];
 
@@ -173,14 +180,9 @@ const dropdownLinkProps: Prop[] = [
     types: "'_blank'",
     description: 'Indicates where to display the linked resource.',
   },
-  {
-    name: 'onClick',
-    types: '(item: DropdownLinkItem): void',
-    description: 'Returns the item object.',
-  },
 ];
 
-const dropdownOptionGroupProps: Prop[] = [
+const dropdownItemGroupProps: Prop[] = [
   {
     name: 'label',
     types: 'string',
@@ -204,13 +206,13 @@ export const DropdownPropTable: React.FC<PropTableWrapper> = props => (
 );
 
 export const DropdownItemPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="Dropdown[Item]" propList={dropdownItemProps} {...props} />
+  <PropTable title="DropdownItem" propList={dropdownItemProps} {...props} />
 );
 
 export const DropdownLinkItemPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="Dropdown[LinkItem]" propList={dropdownLinkProps} {...props} />
+  <PropTable title="DropdownLinkItem" propList={dropdownLinkProps} {...props} />
 );
 
-export const DropdownOptionGruopPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="Dropdown[OptionGroup]" propList={dropdownOptionGroupProps} {...props} />
+export const DropdownItemGroupPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="DropdownItemGroup" propList={dropdownItemGroupProps} {...props} />
 );

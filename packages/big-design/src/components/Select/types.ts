@@ -3,33 +3,36 @@ import { RefObject } from 'react';
 
 import { ListItemProps } from '../List/Item';
 
-export interface SelectProps<T> extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children' | 'onChange'> {
-  action?: Action;
+interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children'> {
+  action?: SelectAction;
   disabled?: boolean;
   error?: string;
   filterable?: boolean;
   inputRef?: RefObject<HTMLInputElement> | React.Ref<HTMLInputElement>;
   label?: string;
+  labelId?: string;
   maxHeight?: number;
-  multi?: boolean;
   name?: string;
-  options: Array<Option<T>>;
   placement?: Placement;
   positionFixed?: boolean;
   required?: boolean;
-  value?: T | T[];
-  onItemChange(value: T | T[], option: Option<T> | Array<Option<T>>): void;
 }
 
-interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'value'> {
+export interface SelectProps<T> extends BaseSelect {
+  options: Array<SelectOption<T>>;
+  value?: T;
+  onOptionChange(value?: T, option?: SelectOption<T>): void;
+}
+
+interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'isHighlighted' | 'isSelected' | 'value'> {
   content: string;
   icon?: React.ReactElement;
 }
 
-export interface Option<T> extends Omit<BaseItem, 'actionType'> {
+export interface SelectOption<T> extends Omit<BaseItem, 'actionType'> {
   value: T;
 }
 
-export interface Action extends Omit<BaseItem, 'onClick'> {
-  onClick(inputText: string): void;
+export interface SelectAction extends BaseItem {
+  onActionClick(inputText: string | null): void;
 }

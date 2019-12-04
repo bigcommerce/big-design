@@ -95,6 +95,9 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Select/SelectPage" as="/select">
             Select
           </SideNavLink>
+          <SideNavLink href="/MultiSelect/MultiSelectPage" as="/multi-select">
+            MultiSelect
+          </SideNavLink>
           <SideNavLink href="/Textarea/TextareaPage" as="/textarea">
             Textarea
           </SideNavLink>

@@ -12,6 +12,7 @@ export * from './InputPropTable';
 export * from './LinkPropTable';
 export * from './MarginPropTable';
 export * from './ModalPropTable';
+export * from './MultiSelectPropTable';
 export * from './PaddingPropTable';
 export * from './PaginationPropTable';
 export * from './PanelPropTable';

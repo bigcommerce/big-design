@@ -73,9 +73,9 @@ exports[`simple form render 1`] = `
   border: 0;
   box-sizing: border-box;
   color: #313440;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  -webkit-flex: 1 1 40%;
+  -ms-flex: 1 1 40%;
+  flex: 1 1 40%;
   height: 100%;
   padding: 0;
   padding-left: 0.5rem;
@@ -208,6 +208,7 @@ exports[`simple form render 1`] = `
             class="c8"
           >
             <input
+              autocomplete="no"
               class="c9"
               id="bd-input-1"
               placeholder="Placeholder text"
@@ -238,6 +239,7 @@ exports[`simple form render 1`] = `
             class="c8"
           >
             <input
+              autocomplete="no"
               class="c9"
               id="bd-input-2"
               placeholder="Placeholder text"

@@ -34,3 +34,10 @@ test('onDelete is called when close button is clicked', () => {
 
   expect(onDelete).toHaveBeenCalled();
 });
+
+test('accepts custom margin props', () => {
+  const { container } = render(<Chip label="Test" margin="large" onDelete={jest.fn()} />);
+  const chip = container.firstChild;
+
+  expect(chip).toHaveStyle('margin: 1.25rem');
+});

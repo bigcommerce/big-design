@@ -1,4 +1,3 @@
-import { CheckIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, Ref } from 'react';
 
 import { StyledListItem } from './styled';
@@ -6,28 +5,22 @@ import { StyledListItem } from './styled';
 export interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
   actionType?: 'normal' | 'destructive';
   disabled?: boolean;
+  isHighlighted: boolean;
+  isSelected: boolean;
 }
 
 interface PrivateProps {
   forwardedRef: Ref<HTMLLIElement>;
 }
 
-const StyleableListItem: React.FC<ListItemProps & PrivateProps> = memo(
-  ({ actionType = 'normal' as 'normal', children, className, forwardedRef, style, value, ...rest }) => (
-    <StyledListItem {...rest} actionType={actionType} ref={forwardedRef} tabIndex={-1} onMouseDown={preventFocus}>
-      {children}
+const StyleableListItem: React.FC<ListItemProps & PrivateProps> = ({
+  actionType = 'normal' as 'normal',
+  forwardedRef,
+  ...props
+}) => {
+  return <StyledListItem {...props} actionType={actionType} ref={forwardedRef} />;
+};
 
-      {rest['aria-selected'] && <CheckIcon color="primary" size="large" />}
-    </StyledListItem>
-  ),
+export const ListItem = memo(
+  React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => <StyleableListItem {...props} forwardedRef={ref} />),
 );
-
-function preventFocus(event: React.MouseEvent<HTMLLIElement, MouseEvent>) {
-  event.preventDefault();
-}
-
-export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => (
-  <StyleableListItem {...props} forwardedRef={ref} />
-));
-
-ListItem.displayName = 'ListItem';
