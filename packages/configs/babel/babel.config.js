@@ -4,6 +4,7 @@ const defaultPlugins = [
   ['babel-plugin-styled-components', { pure: true }],
   '@babel/plugin-proposal-class-properties',
   '@babel/plugin-proposal-object-rest-spread',
+  '@babel/plugin-proposal-optional-chaining',
   // IE 11 support
   '@babel/plugin-transform-object-assign'
 ];

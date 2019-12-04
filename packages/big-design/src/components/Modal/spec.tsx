@@ -4,6 +4,8 @@ import React from 'react';
 
 import { Modal } from './Modal';
 
+jest.mock('focus-trap');
+
 test('render open modal', () => {
   const text = 'This is a modal';
   const { queryByText } = render(<Modal isOpen={true}>{text}</Modal>);
@@ -175,7 +177,7 @@ test('do not pull focus to open modal that is rerendered', () => {
 
   // Expect Modal to have focus
   expect(queryByText(text)).toBeInTheDocument();
-  expect(document.activeElement).toBe(queryByRole('dialog'));
+  expect(document.activeElement).toBe(document.body);
 
   const input = document.getElementById('focusTest');
 
