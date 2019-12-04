@@ -6,7 +6,7 @@ export type DropdownOption<T> = DropdownItem<T> | DropdownLinkItem<T>;
 
 export interface DropdownProps<T> extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
   maxHeight?: number;
-  options: Array<DropdownOption<T> | DropdownOptionGroup<T>>;
+  options: Array<DropdownOption<T>> | Array<DropdownOptionGroup<T>>;
   placement?: Placement;
   trigger: React.ReactElement;
 }
