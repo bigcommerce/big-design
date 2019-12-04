@@ -28,7 +28,7 @@ export default () => (
 
             <Modal
               actions={[
-                { text: 'Cancel', onClick: () => setIsOpen(false) },
+                { text: 'Cancel', variant: 'subtle', onClick: () => setIsOpen(false) },
                 { text: 'Apply', onClick: () => setIsOpen(false) },
               ]}
               header="Modal Title"
@@ -77,7 +77,7 @@ export default () => (
 
             <Modal
               actions={[
-                { text: 'Cancel', onClick: () => setIsOpen(false) },
+                { text: 'Cancel', variant: 'subtle', onClick: () => setIsOpen(false) },
                 { text: 'Apply', onClick: () => setIsOpen(false) },
               ]}
               header="Dialog Title"
