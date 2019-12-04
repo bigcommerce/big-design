@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React, { Fragment, RefObject } from 'react';
 import { Manager, Reference } from 'react-popper';
 import scrollIntoView from 'scroll-into-view-if-needed';
 
@@ -7,10 +7,11 @@ import { Flex } from '../Flex';
 import { FlexItem } from '../Flex/Item';
 import { Link } from '../Link';
 import { List } from '../List';
+import { ListGroupHeader } from '../List/GroupHeader';
 import { ListItem } from '../List/Item';
 import { Tooltip, TooltipProps } from '../Tooltip';
 
-import { DropdownLinkItem, DropdownOption, DropdownProps } from './types';
+import { DropdownLinkItem, DropdownOption, DropdownOptionGroup, DropdownProps } from './types';
 
 interface DropdownState {
   highlightedItem: HTMLLIElement | null;
@@ -58,14 +59,35 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
           role="listbox"
           {...aria}
         >
-          {this.renderOptions()}
+          {this.renderItems()}
         </List>
       </Manager>
     );
   }
 
-  private renderOptions() {
+  private isGroup(item: DropdownOption<T> | DropdownOptionGroup<T>) {
+    return 'options' in item && !('content' in item);
+  }
+
+  private isOption(item: DropdownOption<T> | DropdownOptionGroup<T>) {
+    return 'content' in item && !('options' in item);
+  }
+
+  private renderItems() {
     const { options } = this.props;
+
+    if (Array.isArray(options) && options.every(this.isGroup)) {
+      return (options as Array<DropdownOptionGroup<T>>).map((group, groupIndex) => this.renderGroup(group, groupIndex));
+    }
+
+    if (Array.isArray(options) && options.every(this.isOption)) {
+      return this.renderOptions(options as Array<DropdownOption<T>>);
+    }
+
+    return;
+  }
+
+  private renderOptions(options: Array<DropdownOption<T>>, groupIndex: number | null = null) {
     const { highlightedItem } = this.state;
 
     return (
@@ -75,7 +97,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
           return null;
         }
 
-        const id = this.getItemId(option, index);
+        const id = this.getItemId(option, index, groupIndex);
         const isHighlighted = Boolean(highlightedItem && id === highlightedItem.id);
         const ref = React.createRef<HTMLLIElement>();
 
@@ -101,6 +123,15 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
           </ListItem>
         );
       })
+    );
+  }
+
+  private renderGroup(group: DropdownOptionGroup<T>, groupIndex: number) {
+    return (
+      <Fragment key={groupIndex}>
+        <ListGroupHeader>{group.label}</ListGroupHeader>
+        {this.renderOptions(group.options, groupIndex)}
+      </Fragment>
     );
   }
 
@@ -203,8 +234,12 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     return id || this.uniqueDropdownId;
   }
 
-  private getItemId(item: DropdownOption<T>, index: number) {
+  private getItemId(item: DropdownOption<T>, index: number, groupIndex: number | null = null) {
     const { id } = item;
+
+    if (groupIndex !== null) {
+      return id || `${this.getDropdownId()}-group-${groupIndex}-item-${index}`;
+    }
 
     return id || `${this.getDropdownId()}-item-${index}`;
   }
