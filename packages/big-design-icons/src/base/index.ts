@@ -24,7 +24,6 @@ export function createStyledIcon(Icon: React.FC<Partial<IconProps>>) {
   `;
 
   StyledIcon.defaultProps = {
-    color: 'secondary60',
     theme: defaultTheme,
     size: 'xLarge',
   };
