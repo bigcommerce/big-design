@@ -1,4 +1,5 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
+import focusTrap, { FocusTrap } from 'focus-trap';
 import React from 'react';
 import { createPortal } from 'react-dom';
 
@@ -50,7 +51,9 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
     modalContainer: null,
   };
 
+  private focusTrap: FocusTrap | null = null;
   private modalRef = React.createRef<HTMLDivElement>();
+  private previousFocus = typeof document !== 'undefined' ? document.activeElement : null;
   private readonly headerUniqueId = uniqueId('modal_header_');
 
   componentDidMount() {
@@ -68,23 +71,37 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
     }
 
     document.body.style.overflowY = initialBodyOverflowY;
+
+    this.returnFocus();
   }
 
   componentDidUpdate(prevProps: ModalProps) {
+    if (this.modalRef.current && !this.focusTrap) {
+      this.focusTrap = focusTrap(this.modalRef.current as HTMLElement);
+    }
+
     // Check that the previous state was not open and is now open before auto focusing on modal
     if (!prevProps.isOpen && this.props.isOpen) {
-      this.autoFocus();
       this.setState({ initialBodyOverflowY: document.body.style.overflowY || '' });
     }
 
-    this.props.isOpen
-      ? (document.body.style.overflowY = 'hidden')
-      : (document.body.style.overflowY = this.state.initialBodyOverflowY);
+    if (this.props.isOpen) {
+      document.body.style.overflowY = 'hidden';
+      this.focusTrap?.activate();
+    } else {
+      document.body.style.overflowY = this.state.initialBodyOverflowY;
+      this.focusTrap?.deactivate();
+      this.focusTrap = null;
+    }
   }
 
   render() {
     const { backdrop, children, isOpen, variant } = this.props;
     const { modalContainer } = this.state;
+
+    if (!(isOpen && modalContainer)) {
+      return null;
+    }
 
     const modalContent = (
       <StyledModal
@@ -103,7 +120,7 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
       </StyledModal>
     );
 
-    return isOpen && modalContainer ? createPortal(modalContent, modalContainer) : null;
+    return createPortal(modalContent, modalContainer);
   }
 
   private renderClose() {
@@ -147,9 +164,11 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
     );
   }
 
-  private autoFocus = () => {
-    if (this.props.isOpen && this.modalRef.current) {
-      this.modalRef.current.focus();
+  private returnFocus = () => {
+    const previousFocus = this.previousFocus as HTMLElement;
+
+    if (previousFocus && typeof previousFocus.focus === 'function') {
+      previousFocus.focus();
     }
   };
 
