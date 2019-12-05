@@ -11,7 +11,8 @@
     "diff": "lerna diff",
     "lint": "lerna run lint --stream",
     "start": "lerna run start --stream --parallel --ignore @bigcommerce/examples",
-    "test": "lerna run test --stream"
+    "test": "lerna run test --stream",
+    "test:functional": "lerna run --scope tests test:functional"
   },
   "husky": {
     "hooks": {

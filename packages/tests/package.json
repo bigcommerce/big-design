@@ -1,0 +1,29 @@
+{
+  "name": "tests",
+  "version": "0.0.1",
+  "author": "Bigcommerce",
+  "private": true,
+  "description": "BigDesign Functional Tests",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigcommerce/big-design.git"
+  },
+  "scripts": {
+    "test:functional": "yarn wdio wdio.conf.js"
+  },
+  "dependencies": {
+    "@wdio/cli": "^5.16.10"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/register": "^7.7.4",
+    "@wdio/browserstack-service": "^5.16.10",
+    "@wdio/jasmine-framework": "^5.16.10",
+    "@wdio/junit-reporter": "^5.15.5",
+    "@wdio/local-runner": "^5.16.10",
+    "@wdio/selenium-standalone-service": "^5.16.10",
+    "@wdio/spec-reporter": "^5.16.5"
+  }
+}
