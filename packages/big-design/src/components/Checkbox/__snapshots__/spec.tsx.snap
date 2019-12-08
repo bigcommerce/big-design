@@ -34,6 +34,10 @@ exports[`render Checkbox checked 1`] = `
 }
 
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
+  transition-property: border-color,background,box-shadow,color,opacity;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -43,6 +47,7 @@ exports[`render Checkbox checked 1`] = `
   border-color: #3C64F4;
   border-radius: 0.25rem;
   color: #FFFFFF;
+  cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -52,8 +57,6 @@ exports[`render Checkbox checked 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-transition: all 150ms;
-  transition: all 150ms;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -61,12 +64,16 @@ exports[`render Checkbox checked 1`] = `
   width: 1.25rem;
 }
 
+.c3:hover {
+  border-color: #3C64F4;
+}
+
 .c1:focus + .c3 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
 .c3 svg {
-  visibility: visible;
+  opacity: 1;
 }
 
 .c5 {
@@ -75,6 +82,7 @@ exports[`render Checkbox checked 1`] = `
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
+  cursor: pointer;
   margin-left: 0.5rem;
 }
 
@@ -159,6 +167,10 @@ exports[`render Checkbox indeterminate 1`] = `
 }
 
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
+  transition-property: border-color,background,box-shadow,color,opacity;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -168,6 +180,7 @@ exports[`render Checkbox indeterminate 1`] = `
   border-color: #3C64F4;
   border-radius: 0.25rem;
   color: #FFFFFF;
+  cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -177,8 +190,6 @@ exports[`render Checkbox indeterminate 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-transition: all 150ms;
-  transition: all 150ms;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -186,12 +197,16 @@ exports[`render Checkbox indeterminate 1`] = `
   width: 1.25rem;
 }
 
+.c3:hover {
+  border-color: #3C64F4;
+}
+
 .c1:focus + .c3 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
 .c3 svg {
-  visibility: visible;
+  opacity: 1;
 }
 
 .c1:focus + .c6 {
@@ -204,6 +219,7 @@ exports[`render Checkbox indeterminate 1`] = `
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
+  cursor: pointer;
   margin-left: 0.5rem;
 }
 
@@ -291,6 +307,10 @@ exports[`render Checkbox unchecked 1`] = `
 }
 
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
+  transition-property: border-color,background,box-shadow,color,opacity;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -300,6 +320,7 @@ exports[`render Checkbox unchecked 1`] = `
   border-color: #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
+  cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -309,8 +330,6 @@ exports[`render Checkbox unchecked 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-transition: all 150ms;
-  transition: all 150ms;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -318,12 +337,16 @@ exports[`render Checkbox unchecked 1`] = `
   width: 1.25rem;
 }
 
+.c3:hover {
+  border-color: #B4BAD1;
+}
+
 .c1:focus + .c3 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
 .c3 svg {
-  visibility: hidden;
+  opacity: 0;
 }
 
 .c5 {
@@ -332,6 +355,7 @@ exports[`render Checkbox unchecked 1`] = `
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
+  cursor: pointer;
   margin-left: 0.5rem;
 }
 

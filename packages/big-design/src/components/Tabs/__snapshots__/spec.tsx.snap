@@ -30,6 +30,10 @@ exports[`render Tabs 1`] = `
 }
 
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -207,6 +211,10 @@ exports[`render Tabs with disabled item 1`] = `
 }
 
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

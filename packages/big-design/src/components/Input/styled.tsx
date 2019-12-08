@@ -1,6 +1,8 @@
 import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
+import { withTransition } from '../../mixins/transitions';
+
 import { InputProps } from './Input';
 
 interface StyledInputWrapperProps extends InputProps {
@@ -8,6 +10,8 @@ interface StyledInputWrapperProps extends InputProps {
 }
 
 export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
+  ${withTransition(['border', 'box-shadow'])}
+
   align-items: center;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius.normal};

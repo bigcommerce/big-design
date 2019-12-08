@@ -16,6 +16,10 @@ exports[`simple form render 1`] = `
 }
 
 .c8 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: border,box-shadow;
+  transition-property: border,box-shadow;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -153,6 +157,7 @@ exports[`simple form render 1`] = `
   font-weight: 600;
   line-height: 1.5rem;
   margin: 0 0 0.5rem;
+  cursor: pointer;
   display: inline-block;
   margin-bottom: 0.25rem;
 }

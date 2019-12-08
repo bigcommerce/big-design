@@ -12,8 +12,10 @@ exports[`render determinant progress bar 1`] = `
   background-color: #3C64F4;
   height: 100%;
   overflow: hidden;
-  -webkit-transition: width 0.2s ease-in;
-  transition: width 0.2s ease-in;
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: width,background-color,height;
+  transition-property: width,background-color,height;
   width: 50%;
 }
 

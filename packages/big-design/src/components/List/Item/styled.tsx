@@ -1,9 +1,13 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
+import { withTransition } from '../../../mixins/transitions';
+
 import { ListItemProps } from './Item';
 
 export const StyledListItem = styled.li<ListItemProps>`
+  ${withTransition(['background-color', 'color'])}
+
   align-items: center;
   box-sizing: border-box;
   cursor: pointer;

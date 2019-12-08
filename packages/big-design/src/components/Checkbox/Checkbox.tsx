@@ -24,7 +24,7 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
   private readonly labelUniqueId = uniqueId('checkBox_label_');
 
   render() {
-    const { checked, className, isIndeterminate, label, forwardedRef, style, ...props } = this.props;
+    const { checked, className, disabled, isIndeterminate, label, forwardedRef, style, ...props } = this.props;
     const id = this.getInputId();
 
     return (
@@ -33,6 +33,7 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
           type="checkbox"
           checked={checked}
           id={id}
+          disabled={disabled}
           {...props}
           aria-labelledby={this.labelUniqueId}
           ref={checkbox => {
@@ -54,7 +55,13 @@ class RawCheckbox extends React.PureComponent<CheckboxProps & PrivateProps> {
           }}
         />
 
-        <StyledCheckbox isIndeterminate={isIndeterminate} checked={checked} htmlFor={id} aria-hidden={true}>
+        <StyledCheckbox
+          disabled={disabled}
+          isIndeterminate={isIndeterminate}
+          checked={checked}
+          htmlFor={id}
+          aria-hidden={true}
+        >
           {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
         </StyledCheckbox>
         {this.renderLabel()}
