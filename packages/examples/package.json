@@ -6,7 +6,7 @@
     "start": "parcel index.html"
   },
   "dependencies": {
-    "@bigcommerce/big-design": "0.13.1",
+    "@bigcommerce/big-design": "0.13.2",
     "@bigcommerce/big-design-icons": "0.5.2",
     "@bigcommerce/big-design-theme": "0.3.1",
     "formik": "^2.0.6",
