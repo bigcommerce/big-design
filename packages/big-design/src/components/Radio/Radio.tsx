@@ -21,7 +21,7 @@ class RawRadio extends React.PureComponent<RadioProps & PrivateProps> {
   private readonly labelUniqueId = uniqueId('checkBox_label_');
 
   render() {
-    const { checked, className, label, forwardedRef, style, ...props } = this.props;
+    const { checked, className, disabled, label, forwardedRef, style, ...props } = this.props;
     const id = this.getInputId();
 
     return (
@@ -30,11 +30,12 @@ class RawRadio extends React.PureComponent<RadioProps & PrivateProps> {
           type="radio"
           checked={checked}
           id={id}
+          disabled={disabled}
           {...props}
           aria-labelledby={this.labelUniqueId}
           ref={forwardedRef}
         />
-        <StyledRadio checked={checked} htmlFor={id} aria-hidden={true} />
+        <StyledRadio checked={checked} disabled={disabled} htmlFor={id} aria-hidden={true} />
         {this.renderLabel()}
       </RadioContainer>
     );
@@ -48,11 +49,11 @@ class RawRadio extends React.PureComponent<RadioProps & PrivateProps> {
 
   private renderLabel() {
     const htmlFor = this.getInputId();
-    const { label } = this.props;
+    const { disabled, label } = this.props;
 
     if (typeof label === 'string') {
       return (
-        <StyledLabel htmlFor={htmlFor} id={this.labelUniqueId}>
+        <StyledLabel htmlFor={htmlFor} id={this.labelUniqueId} disabled={disabled} aria-hidden={disabled}>
           {label}
         </StyledLabel>
       );

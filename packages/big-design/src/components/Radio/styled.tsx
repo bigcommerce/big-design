@@ -7,6 +7,11 @@ import { StyleableText } from '../Typography/private';
 
 interface StyledRadioProps {
   checked?: boolean;
+  disabled?: boolean;
+}
+
+export interface StyledLabelProps {
+  disabled?: boolean;
 }
 
 export const RadioContainer = styled.div`
@@ -20,10 +25,17 @@ export const HiddenRadio = styled.input`
 
 export const StyledLabel = styled(StyleableText).attrs({
   as: 'label',
-})<React.LabelHTMLAttributes<HTMLLabelElement>>`
+})<React.LabelHTMLAttributes<HTMLLabelElement> & StyledLabelProps>`
   cursor: pointer;
   margin-left: ${({ theme }) => theme.spacing.xSmall};
-` as StyledComponent<'label', DefaultTheme>;
+
+  ${({ disabled, theme }) =>
+    disabled &&
+    css`
+      cursor: not-allowed;
+      color: ${theme.colors.secondary40};
+    `}
+` as StyledComponent<'label', DefaultTheme, StyledLabelProps>;
 
 export const StyledRadio = styled.label<StyledRadioProps>`
   ${withTransition(['border-color', 'box-shadow'])}
@@ -39,8 +51,16 @@ export const StyledRadio = styled.label<StyledRadioProps>`
   user-select: none;
   width: ${({ theme }) => theme.spacing.large};
 
+  ${({ disabled, theme }) =>
+    disabled &&
+    css`
+      cursor: not-allowed;
+      border-color: ${theme.colors.secondary30};
+    `};
+
   &:hover {
-    border-color: ${props => (props.checked ? props.theme.colors.primary50 : props.theme.colors.secondary40)};
+    border-color: ${({ checked, disabled, theme }) =>
+      !disabled && (checked ? theme.colors.primary50 : theme.colors.secondary40)};
   }
 
   ${HiddenRadio}:focus + & {
@@ -50,7 +70,7 @@ export const StyledRadio = styled.label<StyledRadioProps>`
   &:after {
     ${withTransition(['opacity'])}
 
-    background-color: ${({ theme }) => theme.colors.primary40};
+    background-color: ${({ disabled, theme }) => (disabled ? theme.colors.secondary40 : theme.colors.primary40)};
     border-radius: 50%;
     content: '';
     height: ${({ theme }) => theme.spacing.small};

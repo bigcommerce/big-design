@@ -43,6 +43,14 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   user-select: none;
   width: ${({ theme }) => theme.spacing.large};
 
+  ${({ checked, disabled, isIndeterminate, theme }) =>
+    disabled &&
+    css`
+      background: ${checked || isIndeterminate ? theme.colors.secondary30 : theme.colors.secondary10};
+      border-color: ${theme.colors.secondary30};
+      cursor: not-allowed;
+    `};
+
   ${({ checked, isIndeterminate, disabled, theme }) =>
     !disabled &&
     `&:hover {
@@ -67,6 +75,7 @@ export const StyledLabel = styled(StyleableText).attrs({
   ${({ disabled, theme }) =>
     disabled &&
     css`
+      cursor: not-allowed;
       color: ${theme.colors.secondary40};
     `}
 

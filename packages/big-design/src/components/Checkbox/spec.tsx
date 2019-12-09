@@ -23,6 +23,24 @@ describe('render Checkbox', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('disabled checked', () => {
+    const { container } = render(<Checkbox label="Checked" checked={true} onChange={() => null} disabled />);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('disabled unchecked', () => {
+    const { container } = render(<Checkbox label="Checked" checked={false} onChange={() => null} disabled />);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('disabled indeterminate', () => {
+    const { container } = render(<Checkbox label="Unchecked" isIndeterminate={true} onChange={() => null} disabled />);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
 
 test('has correct value for checked', () => {
@@ -96,12 +114,4 @@ test('private StyleableCheckbox forwards styles', () => {
 
   expect(container.getElementsByClassName('test').length).toBe(1);
   expect(container.firstChild).toHaveStyle('background: red');
-});
-
-test('displays text greyed out when disabled', () => {
-  const { container } = render(<Checkbox disabled label="Checked" className="test" />);
-
-  const labels = container.querySelectorAll('label');
-
-  expect(labels[1]).toHaveStyle('color: #B4BAD1');
 });
