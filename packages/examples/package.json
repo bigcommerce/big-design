@@ -1,14 +1,14 @@
 {
   "name": "@bigcommerce/examples",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "start": "parcel index.html"
   },
   "dependencies": {
-    "@bigcommerce/big-design": "0.13.2",
-    "@bigcommerce/big-design-icons": "0.5.2",
-    "@bigcommerce/big-design-theme": "0.3.1",
+    "@bigcommerce/big-design": "^0.14.0",
+    "@bigcommerce/big-design-icons": "^0.6.0",
+    "@bigcommerce/big-design-theme": "^0.4.0",
     "formik": "^2.0.6",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/deini/big-design/compare/@bigcommerce/configs@0.8.1...@bigcommerce/configs@0.9.0) (2019-12-09)
+
+
+### Features
+
+* **component:** add tab trap for modals and dialogs ([dcacbf9](https://github.com/deini/big-design/commit/dcacbf96a38bef1134e2a8dcbd986f6362e0e2b7))
+
+
+
+
+
 ## [0.8.1](https://github.com/chanceaclark/big-design/compare/@bigcommerce/configs@0.8.0...@bigcommerce/configs@0.8.1) (2019-11-12)
 
 

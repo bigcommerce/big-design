@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.3.1...@bigcommerce/big-design-theme@0.4.0) (2019-12-09)
+
+
+### Features
+
+* **component:** add tab trap for modals and dialogs ([dcacbf9](https://github.com/bigcommerce/big-design/commit/dcacbf96a38bef1134e2a8dcbd986f6362e0e2b7))
+
+
+
+
+
 ## [0.3.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.3.0...@bigcommerce/big-design-theme@0.3.1) (2019-11-12)
 
 

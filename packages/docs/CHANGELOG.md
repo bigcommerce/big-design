@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.13.2...@bigcommerce/docs@0.14.0) (2019-12-09)
+
+
+### Bug Fixes
+
+* **docs:** fix modal examples ([b41ecab](https://github.com/bigcommerce/big-design/commit/b41ecabe2ad067a1973d882d9964e706f65e52b5))
+* **docs:** prevent hashes on links from being overwritten ([#277](https://github.com/bigcommerce/big-design/issues/277)) ([c0d0a60](https://github.com/bigcommerce/big-design/commit/c0d0a6031677d117b991b2e6cb72c8d7e23e7aeb))
+
+
+### Features
+
+* **component:** adds list groups w/headers to Dropdown component ([#288](https://github.com/bigcommerce/big-design/issues/288)) ([ff031e9](https://github.com/bigcommerce/big-design/commit/ff031e9bf87462d73a3238d6b027334dc61b16db))
+* **example:** setup CodeSandbox example ([#281](https://github.com/bigcommerce/big-design/issues/281)) ([7e36d99](https://github.com/bigcommerce/big-design/commit/7e36d99c63a9544c5a02db933276d9990a8d1e1b))
+
+
+
+
+
 ## [0.13.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.13.1...@bigcommerce/docs@0.13.2) (2019-11-14)
 
 

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.5.2...@bigcommerce/big-design-icons@0.6.0) (2019-12-09)
+
+
+### Bug Fixes
+
+* **icons:** only add title when available ([b2cf7f7](https://github.com/bigcommerce/big-design/commit/b2cf7f7a00a0d158c01485ee6978c2e13404c048))
+
+
+### Features
+
+* **component:** add tab trap for modals and dialogs ([dcacbf9](https://github.com/bigcommerce/big-design/commit/dcacbf96a38bef1134e2a8dcbd986f6362e0e2b7))
+* **component:** ignore theme prop overrides ([24b92f9](https://github.com/bigcommerce/big-design/commit/24b92f9873fe4f51975b7bd00300c8ce73484ea3))
+
+
+### BREAKING CHANGES
+
+* **component:** `theme` prop override is no longer supported.
+
+
+
+
+
 ## [0.5.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.5.1...@bigcommerce/big-design-icons@0.5.2) (2019-11-14)
 
 
