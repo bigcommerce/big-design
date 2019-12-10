@@ -569,8 +569,8 @@ exports[`renders a pagination component 1`] = `
 
 exports[`renders a simple table 1`] = `
 .c0 {
-  border-collapse: collapse;
   border-color: transparent;
+  border-spacing: 0;
   color: #313440;
   text-align: left;
   width: 100%;
@@ -604,13 +604,10 @@ exports[`renders a simple table 1`] = `
   display: flex;
 }
 
-.c5 > tr {
-  border-bottom: 1px solid #D9DCE9;
-}
-
 .c1 {
   background-color: #F6F7FC;
-  box-shadow: inset 0px -1px 0px #D9DCE9,inset 0px 1px 0px #D9DCE9;
+  border-bottom: 1px solid #D9DCE9;
+  border-top: 1px solid #D9DCE9;
   box-sizing: border-box;
   color: #5E637A;
   font-size: 1rem;
@@ -625,15 +622,16 @@ exports[`renders a simple table 1`] = `
   justify-content: flex-start;
 }
 
-.c7 {
+.c6 {
   background-color: #FFFFFF;
   box-sizing: border-box;
   color: #313440;
   font-size: 1rem;
   padding: 0.75rem;
+  border-bottom: 1px solid #D9DCE9;
 }
 
-.c6 {
+.c5 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color;
@@ -641,7 +639,7 @@ exports[`renders a simple table 1`] = `
   background-color: transparent;
 }
 
-.c6:hover {
+.c5:hover {
   background-color: #F6F7FC;
 }
 
@@ -683,99 +681,99 @@ exports[`renders a simple table 1`] = `
     </tr>
   </thead>
   <tbody
-    class="c5"
+    class=""
   >
     <tr
-      class="c6"
+      class="c5"
     >
       <td
-        class="c7"
+        class="c6"
       >
         SM13
       </td>
       <td
-        class="c7"
+        class="c6"
       >
         [Sample] Smith Journal 13
       </td>
       <td
-        class="c7"
+        class="c6"
       >
         25
       </td>
     </tr>
     <tr
-      class="c6"
+      class="c5"
     >
       <td
-        class="c7"
+        class="c6"
       >
         DPB
       </td>
       <td
-        class="c7"
+        class="c6"
       >
         [Sample] Dustpan & Brush
       </td>
       <td
-        class="c7"
+        class="c6"
       >
         34
       </td>
     </tr>
     <tr
-      class="c6"
+      class="c5"
     >
       <td
-        class="c7"
+        class="c6"
       >
         OFSUC
       </td>
       <td
-        class="c7"
+        class="c6"
       >
         [Sample] Utility Caddy
       </td>
       <td
-        class="c7"
+        class="c6"
       >
         45
       </td>
     </tr>
     <tr
-      class="c6"
+      class="c5"
     >
       <td
-        class="c7"
+        class="c6"
       >
         CLC
       </td>
       <td
-        class="c7"
+        class="c6"
       >
         [Sample] Canvas Laundry Cart
       </td>
       <td
-        class="c7"
+        class="c6"
       >
         2
       </td>
     </tr>
     <tr
-      class="c6"
+      class="c5"
     >
       <td
-        class="c7"
+        class="c6"
       >
         CGLD
       </td>
       <td
-        class="c7"
+        class="c6"
       >
         [Sample] Laundry Detergent
       </td>
       <td
-        class="c7"
+        class="c6"
       >
         29
       </td>

@@ -46,6 +46,13 @@ const statefulTableProps: Prop[] = [
     description: 'Makes the table header fixed.',
   },
   {
+    name: 'headerless',
+    types: 'boolean',
+    defaultValue: 'false',
+    description:
+      "Hides the current tables's headers. Headers are only visually hidden to keep with accessibility best practices.",
+  },
+  {
     name: 'defaultSelected',
     types: 'Item[]',
     description: 'Defines which items are selected by default on initial render.',

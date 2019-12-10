@@ -8,16 +8,26 @@ interface SimpleTableOptions {
   className?: string;
   columns?: any[];
   dataTestId?: string;
+  headerless?: boolean;
   id?: string;
   itemName?: string;
   style?: CSSProperties;
 }
 
-const getSimpleTable = ({ className, columns, dataTestId, id, itemName, style }: SimpleTableOptions = {}) => (
+const getSimpleTable = ({
+  className,
+  columns,
+  dataTestId,
+  headerless,
+  id,
+  itemName,
+  style,
+}: SimpleTableOptions = {}) => (
   <Table
     className={className}
     data-testid={dataTestId}
     id={id}
+    headerless={headerless}
     itemName={itemName}
     style={style}
     columns={
@@ -415,5 +425,16 @@ describe('sortable', () => {
 
     expect(customAction).toBeInTheDocument();
     expect(customAction).toBeVisible();
+  });
+
+  test('renders headers by default and hides then via prop', () => {
+    const { getAllByRole, rerender } = render(getSimpleTable());
+
+    expect(getAllByRole('columnheader')[0]).toBeVisible();
+
+    rerender(getSimpleTable({ headerless: true }));
+
+    expect(getAllByRole('columnheader')[0]).toBeInTheDocument();
+    expect(getAllByRole('columnheader')[0]).not.toBeVisible();
   });
 });

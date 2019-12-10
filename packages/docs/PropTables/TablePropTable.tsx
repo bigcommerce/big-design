@@ -61,6 +61,13 @@ const tableProps: Prop[] = [
     description: 'Makes the table header and actions fixed.',
   },
   {
+    name: 'headerless',
+    types: 'boolean',
+    defaultValue: 'false',
+    description:
+      "Hides the current tables's headers. Headers are only visually hidden to keep with accessibility best practices.",
+  },
+  {
     name: 'customActions',
     types: 'React.ComponentType<any>',
     description: 'Component to render custom actions.',

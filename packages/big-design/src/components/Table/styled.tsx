@@ -18,8 +18,8 @@ export const StyledTableFigure = styled.figure<MarginProps>`
 `;
 
 export const StyledTable = styled.table`
-  border-collapse: collapse;
   border-color: transparent;
+  border-spacing: 0;
   color: ${({ theme }) => theme.colors.secondary70};
   text-align: left;
   width: 100%;

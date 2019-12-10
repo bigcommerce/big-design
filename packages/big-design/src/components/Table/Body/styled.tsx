@@ -1,10 +1,16 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledTableBody = styled.tbody`
-  & > tr {
-    border-bottom: ${({ theme }) => theme.border.box};
-  }
+import { BodyProps } from './Body';
+
+export const StyledTableBody = styled.tbody<BodyProps>`
+  ${({ theme, withFirstRowBorder }) =>
+    withFirstRowBorder &&
+    css`
+      tr:first-of-type > td {
+        border-top: ${theme.border.box};
+      }
+    `}
 `;
 
 StyledTableBody.defaultProps = { theme: defaultTheme };

@@ -10,6 +10,12 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing.small : 0)};
 
+  ${({ theme, withBorder }) =>
+    withBorder &&
+    css`
+      border-bottom: ${theme.border.box};
+    `}
+
   ${({ align }) =>
     align &&
     css`
