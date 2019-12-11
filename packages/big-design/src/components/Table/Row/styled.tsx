@@ -3,7 +3,11 @@ import styled from 'styled-components';
 
 import { withTransition } from '../../../mixins/transitions';
 
-export const StyledTableRow = styled.tr<{ isSelected: boolean }>`
+interface StyledTableRowProps {
+  isSelected: boolean;
+}
+
+export const StyledTableRow = styled.tr<StyledTableRowProps>`
   ${withTransition(['background-color'])}
 
   background-color: ${({ isSelected, theme }) => (isSelected ? theme.colors.primary10 : 'transparent')};

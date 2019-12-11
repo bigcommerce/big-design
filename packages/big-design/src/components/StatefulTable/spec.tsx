@@ -233,3 +233,14 @@ test('renders custom actions', () => {
   expect(customAction).toBeInTheDocument();
   expect(customAction).toBeVisible();
 });
+
+test('renders headers by default and hides then via prop', () => {
+  const { getAllByRole, rerender } = render(getSimpleTable());
+
+  expect(getAllByRole('columnheader')[0]).toBeVisible();
+
+  rerender(getSimpleTable({ headerless: true }));
+
+  expect(getAllByRole('columnheader')[0]).toBeInTheDocument();
+  expect(getAllByRole('columnheader')[0]).not.toBeVisible();
+});

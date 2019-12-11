@@ -18,6 +18,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     className,
     columns,
     actions,
+    headerless = false,
     id,
     itemName,
     items,
@@ -89,7 +90,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   };
 
   const renderHeaders = () => (
-    <Head>
+    <Head hidden={headerless}>
       <tr>
         {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} actionsRef={actionsRef} />}
 
@@ -117,7 +118,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   );
 
   const renderItems = () => (
-    <Body>
+    <Body withFirstRowBorder={headerless}>
       {items.map((item: T, index) => {
         const key = getItemKey(item, index);
         const isSelected = selectedItems.has(item);
