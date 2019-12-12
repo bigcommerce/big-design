@@ -7,4 +7,5 @@ packages/docs/.next
 packages/docs/out
 packages/docs/pages/Dev
 .idea
-packages/tests/artifacts
+packages/tests/src/test/artifacts
+packages/tests/src/test/image-comparison

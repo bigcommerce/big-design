@@ -9,7 +9,8 @@
     "url": "git+https://github.com/bigcommerce/big-design.git"
   },
   "scripts": {
-    "test:functional": "yarn wdio wdio.conf.js"
+    "test:functional": "ts-node ./node_modules/.bin/wdio wdio.conf.js",
+    "lint": "tslint --project ."
   },
   "dependencies": {
     "@wdio/cli": "^5.16.10"
@@ -19,12 +20,17 @@
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/register": "^7.7.4",
+    "@types/jasmine": "^3.5.0",
     "@wdio/browserstack-service": "^5.16.10",
     "@wdio/jasmine-framework": "^5.16.10",
     "@wdio/junit-reporter": "^5.15.5",
     "@wdio/local-runner": "^5.16.10",
     "@wdio/selenium-standalone-service": "^5.16.10",
     "@wdio/spec-reporter": "^5.16.5",
-    "log4js": "^6.1.0"
+    "@wdio/sync": "^5.16.14",
+    "log4js": "^6.1.0",
+    "nodeclient-spectre": "^1.0.5",
+    "ts-node": "^8.5.4",
+    "wdio-image-comparison-service": "^1.9.0"
   }
 }

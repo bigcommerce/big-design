@@ -1,9 +1,14 @@
-const Logger = require('./logger.js');
+const DEBUG = true
+const BROWSER = process.env.BROWSER || 'firefox'
 
-const testPath = `.`;
+const Logger = require('./logger.js');
+const path = require('path')
+
+const testPath = './src/test';
 const artifactsPath = `${testPath}/artifacts`;
 const screenshotsPath = `${artifactsPath}/screenshots`;
 const logsPath = `${artifactsPath}/logs`;
+const seleniumPath = `${artifactsPath}/selenium`;
 const testResultsPath = `${artifactsPath}/test-results`;
 
 let originalConsole = null;
@@ -27,7 +32,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        `${testPath}/functional/**/*.ts`
+        `${testPath}/**/*.ts`
     ],
     // Patterns to exclude.
     exclude: [
@@ -61,7 +66,7 @@ exports.config = {
         // 5 instances get started at a time.
         maxInstances: 5,
         //
-        browserName: 'firefox',
+        browserName: BROWSER,
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -120,20 +125,62 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['selenium-standalone','browserstack'],
-    seleniumLogs: './artifacts/logs',
+    services: [
+        'selenium-standalone',
+        'browserstack',
+        [
+            'image-comparison',
+            // The options
+            {
+                // Some options, see the docs for more
+                baselineFolder: path.join(process.cwd(), `${testPath}/image-comparison/baseline`),
+                formatImageName: '{tag}',
+                screenshotPath: path.join(process.cwd(), `${testPath}/image-comparison`),
+                savePerInstance: true,
+                autoSaveBaseline: true,
+                blockOutStatusBar: true,
+                blockOutToolBar: true,
+                // ... more options
+            }
+        ]
+    ],
+
+    seleniumLogs: logsPath,
     seleniumInstallArgs: {
+        baseURL: 'https://selenium-release.storage.googleapis.com',
+        version: '3.141.59',
         drivers: {
-            chrome: { version: '77.0.3865.40' },
-            firefox: { version: '0.25.0' },
-        }
-    },
+            chrome: {
+                version: '78.0.3904.105',
+                arch: process.arch,
+                baseURL: 'https://chromedriver.storage.googleapis.com'
+            },
+            firefox: {
+                version: '0.26.0',
+                arch: process.arch,
+                baseURL: 'https://github.com/mozilla/geckodriver/releases/download'
+            }
+        },
+        basePath: seleniumPath,
+      },
     seleniumArgs: {
+        baseURL: 'https://selenium-release.storage.googleapis.com',
+        version: '3.141.59',
         drivers: {
-            chrome: { version: '77.0.3865.40' },
-            firefox: { version: '0.25.0' },
-        }
+            chrome: {
+                version: '78.0.3904.105',
+                arch: process.arch,
+                baseURL: 'https://chromedriver.storage.googleapis.com'
+            },
+            firefox: {
+                version: '0.26.0',
+                arch: process.arch,
+                baseURL: 'https://github.com/mozilla/geckodriver/releases/download'
+            }
+        },
+        basePath: seleniumPath,
     },
+
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -172,14 +219,14 @@ exports.config = {
     jasmineNodeOpts: {
         //
         // Jasmine default timeout
-        defaultTimeoutInterval: 60000,
+        defaultTimeoutInterval: DEBUG ? (24 * 60 * 60 * 1000) : 60000,
         //
         // The Jasmine framework allows interception of each assertion in order to log the state of the application
         // or website depending on the result. For example, it is pretty handy to take a screenshot every time
         // an assertion fails.
-        expectationResultHandler: function(passed, assertion) {
+        // expectationResultHandler: function(passed, assertion) {
             // do something
-        }
+        // }
     },
 
     //
@@ -195,8 +242,16 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: async (config, capabilities) => {
+        try {
+            const ScreenshotService = require('./src/services/ScreenshotService').default
+
+            screenshotService = new ScreenshotService();
+            process.env.RUN_ID = await screenshotService.instantiateRun();
+        } catch(ex) {
+            console.log('Failed to instantiate screenshot service', ex)
+            throw(ex)
+        }    },
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
      * to manipulate configurations depending on the capability or spec.
@@ -204,7 +259,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // beforeSession: function (config, capabilities, specs) {
+    // beforeSession: (config, capabilities, specs) => {
     // },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
@@ -212,26 +267,28 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    before: function (capabilities, specs) {
-        require('@babel/register')
+    before: async (capabilities, specs) => {
+        require('ts-node').register({ files: true });
+        // TODO: find a way to make the element proper sized without shrinking window
+        browser.setWindowSize(800, 600)
     },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
      * @param {Array} args arguments that command would receive
      */
-    // beforeCommand: function (commandName, args) {
+    // beforeCommand: (commandName, args) => {
     // },
     /**
      * Hook that gets executed before the suite starts
      * @param {Object} suite suite details
      */
-    // beforeSuite: function (suite) {
+    // beforeSuite: (suite) => {
     // },
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    beforeTest: function (test, context) {
+    beforeTest: (test, context) => {
         // Override console to allow for STDOUT and file logging with one command
         originalConsole = console
 
@@ -240,47 +297,70 @@ exports.config = {
 
         const logger = Logger.new(file);
 
+        // TODO - Figure out a better way
+        // TODO - Rocket syntax for top level function
+        //@ts-ignore
         console = (function(originalConsole){
             return {
-                log: function(text){
-                    originalConsole.log(text);
-                    logger.info(text)
+                log: (text, obj) => {
+                    if(obj) {
+                        originalConsole.log(`${text}\n${JSON.stringify(obj,null,2)}`);
+                        logger.info(text, obj)
+                    } else {
+                        originalConsole.log(text);
+                        logger.info(text)
+                    }
                 },
-                info: function (text) {
-                    originalConsole.info(text);
-                    logger.info(text)
+                info: (text, obj) => {
+                    if(obj) {
+                        originalConsole.log(`${text}\n${JSON.stringify(obj,null,2)}`);
+                        logger.info(text, obj)
+                    } else {
+                        originalConsole.log(text);
+                        logger.info(text)
+                    }
                 },
-                warn: function (text) {
-                    originalConsole.warn(text);
-                    logger.warn(text)
+                warn: (text, obj) => {
+                    if(obj) {
+                        originalConsole.warn(`${text}\n${JSON.stringify(obj,null,2)}`);
+                        logger.warn(text, obj)
+                    } else {
+                        originalConsole.warn(text);
+                        logger.warn(text)
+                    }
                 },
-                error: function (text) {
-                    originalConsole.error(text);
-                    logger.error(text)
+                error: (text, obj) => {
+                    if(obj) {
+                        originalConsole.error(`${text}\n${JSON.stringify(obj,null,2)}`);
+                        logger.error(text, obj)
+                    } else {
+                        originalConsole.error(text);
+                        logger.error(text)
+                    }
                 }
             };
         }(originalConsole));
 
         console.log(`--- Starting test ${test['fullName']} ---`);
-
     },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
      */
-    // beforeHook: function (test, context) {
+    // beforeHook: (test, context) => {
     // },
     /**
      * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
      * afterEach in Mocha)
      */
-    // afterHook: function (test, context, { error, result, duration, passed, retries }) {
+    // afterHook: (test, context, { error, result, duration, passed, retries }) => {
     // },
     /**
      * Function to be executed after a test (in Mocha/Jasmine).
      */
-    afterTest: function(test, context, { error, result, duration, passed, retries }) {
+    afterTest: (test, context, { error, result, duration, passed, retries }) => {
         console.log(`--- Ending test ${test['fullName']} ---`);
+
         // Return console to its original state
         console = originalConsole;
     },
@@ -289,7 +369,7 @@ exports.config = {
      * Hook that gets executed after the suite has ended
      * @param {Object} suite suite details
      */
-    // afterSuite: function (suite) {
+    // afterSuite: (suite) => {
     // },
     /**
      * Runs after a WebdriverIO command gets executed
@@ -298,7 +378,7 @@ exports.config = {
      * @param {Number} result 0 - command success, 1 - command error
      * @param {Object} error error object if any
      */
-    // afterCommand: function (commandName, args, result, error) {
+    // afterCommand: (commandName, args, result, error) => {
     // },
     /**
      * Gets executed after all tests are done. You still have access to all global variables from
@@ -307,7 +387,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    // after: function (result, capabilities, specs) {
+    // after: (result, capabilities, specs) => {
     // },
     /**
      * Gets executed right after terminating the webdriver session.
@@ -315,7 +395,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    // afterSession: function (config, capabilities, specs) {
+    // afterSession: (config, capabilities, specs) => {
     // },
     /**
      * Gets executed after all workers got shut down and the process is about to exit. An error
@@ -325,13 +405,13 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
+    // onComplete: (exitCode, config, capabilities, results) => {
     // },
     /**
     * Gets executed when a refresh happens.
     * @param {String} oldSessionId session ID of the old session
     * @param {String} newSessionId session ID of the new session
     */
-    //onReload: function(oldSessionId, newSessionId) {
+    //onReload: (oldSessionId, newSessionId) => {
     //}
 }

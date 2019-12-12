@@ -1,0 +1,23 @@
+{
+  "include": ["./src/**/*.ts", "src/test/basic.js"],
+
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
+    "baseUrl": ".",
+    "paths": {
+      "*": [ "./*" ],
+      "src/*": ["./src/*"],
+    },
+    "types": [
+      "node",
+      "@wdio/sync",
+      "@wdio/jasmine-framework",
+      "@wdio/selenium-standalone-service",
+      "webdriver-image-comparison"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true
+  },
+}
