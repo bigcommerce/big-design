@@ -34,6 +34,7 @@ const dropdownProps: Prop[] = [
   {
     name: 'options',
     types: 'Array<DropdownItem | DropdownLinkItem | DropdownOptionGroup>',
+    required: true,
     description: (
       <>
         Accepts an array of <Code>DropdownItems</Code>, <Code>DropdownLinkItems</Code>, and{' '}
@@ -189,6 +190,7 @@ const dropdownOptionGroupProps: Prop[] = [
   {
     name: 'options',
     types: 'Array<DropdownItem | DropdownLinkItem>',
+    required: true,
     description: (
       <>
         Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See example for usage.
