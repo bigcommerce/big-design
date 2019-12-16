@@ -183,6 +183,7 @@ const dropdownOptionGroupProps: Prop[] = [
   {
     name: 'label',
     types: 'string',
+    required: true,
     description: 'Sets the label for the group.',
   },
   {
