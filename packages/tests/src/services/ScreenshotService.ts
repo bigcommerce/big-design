@@ -10,12 +10,7 @@ const SUITE = 'Components';
 export default class ScreenshotService {
   runId: number
   browser: WebdriverIO.BrowserObject
-  spectreClient: SpectreClient
-
-  // initialize
-  constructor() {
-    this.spectreClient = new SpectreClient(SPECTRE_API_HOST)
-  }
+  spectreClient: SpectreClient  = new SpectreClient(SPECTRE_API_HOST)
 
   compareElement = async (selector:string, name:string, runId:number, browser: WebdriverIO.BrowserObject): Promise<any> => {
     this.browser = browser
