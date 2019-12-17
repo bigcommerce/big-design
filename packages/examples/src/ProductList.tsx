@@ -22,8 +22,9 @@ export const ProductList: React.FC<Props> = ({ onDelete, products }) => {
   const renderOnDelete = (product: Product) => (
     <Button
       variant="subtle"
+      actionType="destructive"
       onClick={() => onDelete(product)}
-      iconOnly={<DeleteIcon title="Delete Product" color="danger40" />}
+      iconOnly={<DeleteIcon title="Delete Product" />}
     />
   );
 
