@@ -1,8 +1,7 @@
-import { assertElementLooks } from '../helpers/assertions'
+import { assertElementLooks } from './helpers/assertions'
 
 describe('Bigcommerce page', () => {
     it('should have the right title', async () => {
-        // tslint:disable-next-line:no-console
         console.log('Navigating to bigcommerce.com')
         browser.url('https://www.bigcommerce.com/')
         const title = browser.getTitle()

@@ -1,3 +1,6 @@
 {
-  "extends": ["@bigcommerce/configs/tslint"]
+  "extends": ["@bigcommerce/configs/tslint"],
+  "rules": {
+    "no-console": false
+  }
 }

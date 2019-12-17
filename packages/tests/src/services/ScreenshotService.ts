@@ -20,14 +20,12 @@ export default class ScreenshotService {
   compareElement = async (selector:string, name:string, runId:number, browser: WebdriverIO.BrowserObject): Promise<any> => {
     this.browser = browser
     const results = this.takeImage(selector, name)
-
     const imageName = `${results.path}/${results.fileName}`
     const screenshot = this.readImage(imageName)
 
     return await this.postImage(screenshot, name, runId)
   }
 
-  // TODO - is runId a string or a number?
   private instantiateRun = async (): Promise<number> => {
       const response = await this.spectreClient.createTestrun(PROJECT, SUITE)
 
@@ -38,7 +36,7 @@ export default class ScreenshotService {
     this.browser.$(selector).waitForDisplayed();
 
     // TODO - Make sure TS definitions are added to browser
-    // @ts-ignore
+    // @ts-ignore - saveElement is not in the ts definitions of browser
     return this.browser.saveElement($(selector), name, { /* some options*/ })
   }
 
@@ -56,7 +54,7 @@ export default class ScreenshotService {
 
     const response = await this.spectreClient.submitScreenshot(
       name, // test name
-      // @ts-ignore
+      // @ts-ignore - capabilities doesn't have browserName in its definition
       this.browser.config.capabilities.browserName, // browser
       `${windowSize.width}x${windowSize.height}`, // screen size
       screenshot, // screenshot
