@@ -31,8 +31,7 @@ export default class ScreenshotService {
     this.browser.$(selector).waitForDisplayed();
 
     // TODO - Make sure TS definitions are added to browser
-    // @ts-ignore - saveElement is not in the ts definitions of browser
-    return this.browser.saveElement($(selector), name, { /* some options*/ })
+    return (this.browser as any).saveElement($(selector), name, { /* some options*/ })
   }
 
   private readImage = (imageName: string): string => {
@@ -49,8 +48,8 @@ export default class ScreenshotService {
 
     const response = await this.spectreClient.submitScreenshot(
       name, // test name
-      // @ts-ignore - capabilities doesn't have browserName in its definition
-      this.browser.config.capabilities.browserName, // browser
+      // TODO - Make sure capabilities has browserName in TS definition
+      (this.browser.config.capabilities as any).browserName, // browser
       `${windowSize.width}x${windowSize.height}`, // screen size
       screenshot, // screenshot
       runId, // run id

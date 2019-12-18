@@ -299,7 +299,6 @@ exports.config = {
 
         // TODO - Figure out a better way
         // TODO - Rocket syntax for top level function
-        //@ts-ignore
         console = (function(originalConsole){
             return {
                 log: (text, obj) => {
