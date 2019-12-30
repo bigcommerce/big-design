@@ -15,6 +15,7 @@ interface Props {
   iconLeft?: React.ReactChild;
   iconRight?: React.ReactChild;
   label?: React.ReactChild;
+  labelId?: string;
   onChipDelete?(chip: string): () => void;
 }
 
@@ -40,7 +41,7 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
   private readonly uniqueId = uniqueId('input_');
 
   render() {
-    const { chips, description, disabled, error, label, forwardedRef, onChipDelete, ...props } = this.props;
+    const { chips, description, disabled, error, label, labelId, forwardedRef, onChipDelete, ...props } = this.props;
     const id = this.getId();
 
     return (
@@ -106,12 +107,12 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
   }
 
   private renderLabel() {
-    const { label, required } = this.props;
+    const { label, labelId, required } = this.props;
     const id = this.getId();
 
     if (typeof label === 'string') {
       return (
-        <Input.Label htmlFor={id} renderOptional={!required}>
+        <Input.Label id={labelId} htmlFor={id} renderOptional={!required}>
           {label}
         </Input.Label>
       );
@@ -119,6 +120,7 @@ class StyleableInput extends React.PureComponent<InputProps & PrivateProps, Inpu
 
     if (React.isValidElement(label) && label.type === Input.Label) {
       return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+        id: labelId,
         htmlFor: id,
       });
     }

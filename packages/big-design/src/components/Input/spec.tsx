@@ -58,6 +58,13 @@ test('matches label htmlFor with id provided', () => {
   expect(label.htmlFor).toBe('test');
 });
 
+test('respects provided labelId', () => {
+  const { container } = render(<Input labelId="test" label="Test Label" />);
+  const label = container.querySelector('#test') as HTMLLabelElement;
+
+  expect(label.id).toBe('test');
+});
+
 test('renders a description', () => {
   const descriptionText = 'This is a description';
   const { queryByText } = render(<Input description={descriptionText} />);

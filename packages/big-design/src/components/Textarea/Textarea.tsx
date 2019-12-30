@@ -11,6 +11,7 @@ interface Props {
   description?: React.ReactChild;
   error?: React.ReactChild;
   label?: React.ReactChild;
+  labelId?: string;
   rows?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
   resize?: boolean;
 }
@@ -34,7 +35,7 @@ class StyleableTextarea extends React.PureComponent<TextareaProps & PrivateProps
   private readonly MAX_ROWS = 7;
 
   render() {
-    const { description, label, resize, rows, forwardedRef, ...props } = this.props;
+    const { description, label, labelId, resize, rows, forwardedRef, ...props } = this.props;
     const id = this.getId();
 
     return (
@@ -69,12 +70,12 @@ class StyleableTextarea extends React.PureComponent<TextareaProps & PrivateProps
   }
 
   private renderLabel() {
-    const { label, required } = this.props;
+    const { label, labelId, required } = this.props;
     const id = this.getId();
 
     if (typeof label === 'string') {
       return (
-        <Textarea.Label htmlFor={id} renderOptional={!required}>
+        <Textarea.Label id={labelId} htmlFor={id} renderOptional={!required}>
           {label}
         </Textarea.Label>
       );
@@ -82,6 +83,7 @@ class StyleableTextarea extends React.PureComponent<TextareaProps & PrivateProps
 
     if (React.isValidElement(label) && label.type === Textarea.Label) {
       return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+        id: labelId,
         htmlFor: id,
       });
     }
