@@ -24,6 +24,15 @@ const textareaProps: Prop[] = [
     ),
   },
   {
+    name: 'labelId',
+    types: 'string',
+    description: (
+      <>
+        Appends an <Code>id</Code> to the generated label element.
+      </>
+    ),
+  },
+  {
     name: 'rows',
     types: ['1', '2', '3', '4', '5', '6', '7'],
     defaultValue: '3',

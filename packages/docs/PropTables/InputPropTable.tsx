@@ -62,6 +62,15 @@ const inputProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'labelId',
+    types: 'string',
+    description: (
+      <>
+        Appends an <Code>id</Code> to the generated label element.
+      </>
+    ),
+  },
 ];
 
 export const InputPropTable: React.FC<PropTableWrapper> = props => (
