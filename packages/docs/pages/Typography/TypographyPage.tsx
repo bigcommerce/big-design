@@ -78,7 +78,13 @@ export default () => (
         <Text bold>This text is bold.</Text>
         <Text italic>This text is italic.</Text>
         <Text strikethrough>This text is strikethrough.</Text>
-        <Text underline>This color is underline.</Text>
+        <Text underline>This text is underlined.</Text>
+        <Text uppercase>This text is uppercase.</Text>
+        <Text lowercase>This text is lowercase.</Text>
+        <Text capitalize>This text is capitalized.</Text>
+        <Text bold uppercase>
+          This text is bold and uppercase.
+        </Text>
       </>
       {/* jsx-to-string:end */}
     </CodePreview>

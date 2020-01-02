@@ -175,10 +175,10 @@ test('Text and Small can change their tag', () => {
 test('Text and Small accept text modifiers', () => {
   const { getByTestId } = render(
     <>
-      <Text bold italic underline data-testid="text">
+      <Text bold italic underline uppercase data-testid="text">
         Some Text
       </Text>
-      <Small strikethrough data-testid="small">
+      <Small strikethrough lowercase data-testid="small">
         Some Text
       </Small>
     </>,
@@ -191,7 +191,11 @@ test('Text and Small accept text modifiers', () => {
     font-weight: 600;
     font-style: italic;
     text-decoration: underline;
+    text-transform: uppercase;
   `);
 
-  expect(small).toHaveStyle('text-decoration: line-through');
+  expect(small).toHaveStyle(`
+    text-decoration: line-through;
+    text-transform: lowercase;
+  `);
 });

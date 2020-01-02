@@ -66,6 +66,24 @@ const textProps: Prop[] = [
     defaultValue: 'false',
     description: 'Changes text style to underline.',
   },
+  {
+    name: 'capitalize',
+    types: 'boolean',
+    defaultValue: 'false',
+    description: 'Changes text transform to capitalize.',
+  },
+  {
+    name: 'lowercase',
+    types: 'boolean',
+    defaultValue: 'false',
+    description: 'Changes text transform to lowercase.',
+  },
+  {
+    name: 'uppercase',
+    types: 'boolean',
+    defaultValue: 'false',
+    description: 'Changes text transform to uppercase.',
+  },
 ];
 
 export const TypographyPropTable: React.FC<PropTableWrapper> = props => (
