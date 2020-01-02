@@ -20,7 +20,10 @@ jobs:
           steps:
             - run: yarn install --frozen-lockfile
 
-      - run: yarn run ci
+      - run:
+          command: yarn run ci
+          environment:
+            NEXT_TELEMETRY_DISABLED: '1'
 
 workflows:
   version: 2
