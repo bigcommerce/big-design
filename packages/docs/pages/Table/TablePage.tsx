@@ -28,7 +28,7 @@ const data: Item[] = [
 const columns = [
   { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
   { header: 'Name', hash: 'name', render: ({ name }) => name },
-  { header: 'Stock', hash: 'stocck', render: ({ stock }) => stock },
+  { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
 ];
 
 const sort = (items, columnHash, direction) => {
@@ -157,7 +157,7 @@ export default () => {
               columns={[
                 { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
                 { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
-                { header: 'Stock', hash: 'stocck', render: ({ stock }) => stock, isSortable: true },
+                { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
               ]}
               items={items}
               itemName="Products"
