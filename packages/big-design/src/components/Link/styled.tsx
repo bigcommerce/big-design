@@ -31,6 +31,7 @@ export const StyledLink = styled.a<LinkProps & { isExternal?: boolean }>`
       align-items: center;
 
       svg {
+        flex-shrink: 0;
         margin-left: ${theme.spacing.xxSmall};
       }
     `}
