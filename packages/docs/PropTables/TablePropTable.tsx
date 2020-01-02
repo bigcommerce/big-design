@@ -68,7 +68,7 @@ const tableProps: Prop[] = [
       "Hides the current tables's headers. Headers are only visually hidden to keep with accessibility best practices.",
   },
   {
-    name: 'customActions',
+    name: 'actions',
     types: 'React.ComponentType<any>',
     description: 'Component to render custom actions.',
   },
