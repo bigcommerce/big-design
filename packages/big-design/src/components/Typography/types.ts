@@ -11,9 +11,12 @@ export interface TypographyProps {
 
 export interface TextModifiers {
   bold?: boolean;
+  capitalize?: boolean;
   italic?: boolean;
+  lowercase?: boolean;
   strikethrough?: boolean;
   underline?: boolean;
+  uppercase?: boolean;
 }
 
 export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';

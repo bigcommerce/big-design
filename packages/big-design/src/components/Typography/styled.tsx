@@ -37,6 +37,25 @@ const textModifiers = (props: TextProps) => css`
     css`
       text-decoration: line-through;
     `}
+
+  ${() =>
+    props.capitalize &&
+    css`
+      text-transform: capitalize;
+    `}
+
+  ${() =>
+    props.lowercase &&
+    css`
+      text-transform: lowercase;
+    `}
+
+  ${() =>
+    props.uppercase &&
+    css`
+      text-transform: uppercase;
+    `}
+
 `;
 
 export const StyledH0 = styled.h1<HeadingProps>`
