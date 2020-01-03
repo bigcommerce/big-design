@@ -22,7 +22,7 @@ const typographyProps: Prop[] = [
     ),
   },
   {
-    name: 'ellipse',
+    name: 'ellipsis',
     types: 'boolean',
     description: 'Controls whether the text will concat and display ellipse... on overflow.',
   },

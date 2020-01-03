@@ -1,4 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../mixins';
@@ -9,6 +10,7 @@ import { LinkProps } from './Link';
 export const StyledLink = styled.a<LinkProps & { isExternal?: boolean }>`
   ${withMargins()};
   ${withTransition(['color'], '70ms')}
+  ${props => props.ellipsis && ellipsis()};
 
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;

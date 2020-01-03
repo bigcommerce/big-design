@@ -30,3 +30,18 @@ test('forwards styles', () => {
   expect(container.firstChild).toHaveClass('test');
   expect(container.firstChild).toHaveStyle('background: red');
 });
+
+test('render Link with ellipsis', () => {
+  const { getByTestId } = render(
+    <Link data-testid="link" ellipsis={true}>
+      Test with ellipsis
+    </Link>,
+  );
+  const link = getByTestId('link');
+
+  expect(link).toHaveStyle(`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  `);
+});
