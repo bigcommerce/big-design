@@ -6,6 +6,7 @@ import { MarginProps } from '../../mixins';
 import { StyledLink } from './styled';
 
 export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>, MarginProps {
+  ellipsis?: boolean;
   external?: boolean;
 }
 

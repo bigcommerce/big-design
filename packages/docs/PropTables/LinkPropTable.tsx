@@ -10,6 +10,11 @@ const linkProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'ellipsis',
+    types: 'boolean',
+    description: 'Controls whether the text will concat and display ellipse... on overflow.',
+  },
 ];
 
 export const LinkPropTable: React.FC<PropTableWrapper> = props => (
