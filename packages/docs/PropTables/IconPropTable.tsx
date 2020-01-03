@@ -1,8 +1,13 @@
 import React from 'react';
 
-import { NextLink, PropTable, PropTableWrapper } from '../components';
+import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
-const iconProps = [
+const iconProps: Prop[] = [
+  {
+    name: 'title',
+    types: 'string',
+    description: 'SVG Title, for accessibility purposes.',
+  },
   {
     name: 'color',
     types: (

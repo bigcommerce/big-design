@@ -41,6 +41,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-live": "^2.2.0",
+    "react-uid": "^2.2.0",
     "styled-components": "^4.3.0"
   },
   "devDependencies": {

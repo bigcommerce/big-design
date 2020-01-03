@@ -3,14 +3,18 @@ import React from 'react';
 import styled from 'styled-components';
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
-  className: string;
-  color: keyof Colors;
-  size: keyof Spacing | number;
-  theme: ThemeInterface;
-  title: string;
+  className?: string;
+  color?: keyof Colors;
+  size?: keyof Spacing | number;
+  theme?: ThemeInterface;
+  title?: string;
 }
 
-export function createStyledIcon(Icon: React.FC<Partial<IconProps>>) {
+export interface PrivateIconProps {
+  svgRef?: React.Ref<SVGSVGElement>;
+}
+
+export function createStyledIcon(Icon: React.FC<IconProps>) {
   const StyledIcon = styled(Icon)`
     vertical-align: middle;
 

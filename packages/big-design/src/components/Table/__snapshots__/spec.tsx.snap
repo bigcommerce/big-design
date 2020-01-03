@@ -430,6 +430,7 @@ exports[`renders a pagination component 1`] = `
           >
             1 - 3 of 5
             <svg
+              aria-labelledby="bd-icon-1"
               class="c9"
               fill="currentColor"
               height="24"
@@ -510,6 +511,7 @@ exports[`renders a pagination component 1`] = `
             class="c8"
           >
             <svg
+              aria-labelledby="bd-icon-2"
               class="c14"
               fill="currentColor"
               height="24"
@@ -518,7 +520,9 @@ exports[`renders a pagination component 1`] = `
               viewBox="0 0 24 24"
               width="24"
             >
-              <title>
+              <title
+                id="bd-icon-2"
+              >
                 Previous page
               </title>
               <path
@@ -540,6 +544,7 @@ exports[`renders a pagination component 1`] = `
             class="c8"
           >
             <svg
+              aria-labelledby="bd-icon-3"
               class="c14"
               fill="currentColor"
               height="24"
@@ -548,7 +553,9 @@ exports[`renders a pagination component 1`] = `
               viewBox="0 0 24 24"
               width="24"
             >
-              <title>
+              <title
+                id="bd-icon-3"
+              >
                 Next page
               </title>
               <path
@@ -1012,6 +1019,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
           for="checkBox_1"
         >
           <svg
+            aria-labelledby="bd-icon-1"
             class="c9"
             fill="currentColor"
             height="24"
