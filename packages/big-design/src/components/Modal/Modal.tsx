@@ -77,7 +77,7 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
 
   componentDidUpdate(prevProps: ModalProps) {
     if (this.modalRef.current && !this.focusTrap) {
-      this.focusTrap = focusTrap(this.modalRef.current as HTMLElement);
+      this.focusTrap = focusTrap(this.modalRef.current as HTMLElement, { initialFocus: this.modalRef.current });
     }
 
     // Check that the previous state was not open and is now open before auto focusing on modal
@@ -110,6 +110,7 @@ export class Modal extends React.PureComponent<ModalProps, ModalState> {
         onKeyDown={this.onKeyDown}
         ref={this.modalRef}
         variant={variant}
+        tabIndex={-1}
       >
         <StyledModalContent variant={variant} aria-labelledby={this.headerUniqueId} flexDirection="column">
           {this.renderClose()}
