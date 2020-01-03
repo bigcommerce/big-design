@@ -1,10 +1,8 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, wait } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 
 import { Modal } from './Modal';
-
-jest.mock('focus-trap');
 
 test('render open modal', () => {
   const text = 'This is a modal';
@@ -155,7 +153,7 @@ test('do not render close button on dialog variation', () => {
   expect(queryByTitle('Close')).not.toBeInTheDocument();
 });
 
-test('do not pull focus to open modal that is rerendered', () => {
+test('do not pull focus to open modal that is rerendered', async () => {
   const text = 'This is a modal';
   const { queryByText, queryByRole, rerender } = render(
     <Modal isOpen={false}>
@@ -177,7 +175,8 @@ test('do not pull focus to open modal that is rerendered', () => {
 
   // Expect Modal to have focus
   expect(queryByText(text)).toBeInTheDocument();
-  expect(document.activeElement).toBe(document.body);
+
+  await wait(() => expect(document.activeElement).toBe(queryByRole('dialog')));
 
   const input = document.getElementById('focusTest');
 
