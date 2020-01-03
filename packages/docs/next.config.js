@@ -20,6 +20,7 @@ module.exports = {
   },
   exportPathMap: () => ({
     '/': { page: '/GettingStarted/GettingStartedPage' },
+    '/alert': { page: '/Alert/AlertPage' },
     '/badge': { page: '/Badge/BadgePage' },
     '/box': { page: '/Box/BoxPage' },
     '/breakpoints': { page: '/Breakpoints/BreakpointsPage' },

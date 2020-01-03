@@ -101,6 +101,9 @@ export const SideNav: React.FC = () => {
         </SideNavGroup>
 
         <SideNavGroup title="Status &amp; Feedback">
+          <SideNavLink href="/Alert/AlertPage" as="/alert">
+            Alert
+          </SideNavLink>
           <SideNavLink href="/Badge/BadgePage" as="/badge">
             Badge
           </SideNavLink>

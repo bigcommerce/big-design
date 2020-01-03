@@ -1,3 +1,4 @@
+export * from './AlertPropTable';
 export * from './BadgePropTable';
 export * from './BoxPropTable';
 export * from './ButtonPropTable';
