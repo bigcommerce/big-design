@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Checkbox } from '../../Checkbox';
-import { Flex } from '../../Flex';
+import { Flex, FlexItem } from '../../Flex';
 import { Text } from '../../Typography';
 import { TableItem, TablePaginationProps, TableSelectable } from '../types';
 
@@ -51,7 +51,7 @@ export const SelectAll = <T extends TableItem>({
   const label = allInPageSelected ? 'Deselect All' : 'Select All';
 
   return (
-    <Flex.Item marginRight="xxSmall" flexShrink={0}>
+    <FlexItem marginRight="xxSmall" flexShrink={0}>
       <Flex flexDirection="row">
         <Checkbox
           isIndeterminate={someInPageSelected}
@@ -64,6 +64,6 @@ export const SelectAll = <T extends TableItem>({
           {totalSelectedItems === 0 ? `${totalItems}` : `${totalSelectedItems}/${totalItems}`}
         </Text>
       </Flex>
-    </Flex.Item>
+    </FlexItem>
   );
 };

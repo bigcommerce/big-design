@@ -1,4 +1,4 @@
-import { Button, Flex } from '@bigcommerce/big-design';
+import { Button, Flex, FlexItem } from '@bigcommerce/big-design';
 import { MenuIcon } from '@bigcommerce/big-design-icons';
 import { default as Router } from 'next/router';
 import React from 'react';
@@ -11,7 +11,7 @@ export const SideNavMenu: React.FC = props => {
   Router.events.on('routeChangeComplete', () => setIsExpanded(false));
 
   return (
-    <Flex.Item style={{ display: 'flex', alignItems: 'center' }}>
+    <FlexItem style={{ display: 'flex', alignItems: 'center' }}>
       <Flex>
         <StyledMenu>
           <Button variant="subtle" onClick={handleClick} iconOnly={<MenuIcon color="secondary70" />} />
@@ -20,6 +20,6 @@ export const SideNavMenu: React.FC = props => {
           {props.children}
         </StyledNavigation>
       </Flex>
-    </Flex.Item>
+    </FlexItem>
   );
 };

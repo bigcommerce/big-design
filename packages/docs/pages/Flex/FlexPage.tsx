@@ -1,4 +1,4 @@
-import { Box, Flex, H0, H1, H2, Text } from '@bigcommerce/big-design';
+import { Box, Flex, FlexItem, H0, H1, H2, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -38,18 +38,18 @@ export default () => (
         justifyContent="flex-start"
         flexWrap="nowrap"
       >
-        <Flex.Item alignSelf="auto" flexBasis="auto" flexGrow={0} flexOrder={0} flexShrink={1}>
+        <FlexItem alignSelf="auto" flexBasis="auto" flexGrow={0} flexOrder={0} flexShrink={1}>
           <ExampleBox>Item 1</ExampleBox>
-        </Flex.Item>
-        <Flex.Item alignSelf="auto" flexBasis="auto" flexGrow={0} flexOrder={0} flexShrink={1}>
+        </FlexItem>
+        <FlexItem alignSelf="auto" flexBasis="auto" flexGrow={0} flexOrder={0} flexShrink={1}>
           <ExampleBox>Item 2</ExampleBox>
-        </Flex.Item>
-        <Flex.Item alignSelf="auto" flexBasis="auto" flexGrow={0} flexOrder={0} flexShrink={1}>
+        </FlexItem>
+        <FlexItem alignSelf="auto" flexBasis="auto" flexGrow={0} flexOrder={0} flexShrink={1}>
           <ExampleBox>Item 3</ExampleBox>
-        </Flex.Item>
-        <Flex.Item alignSelf="auto" flexBasis="auto" flexGrow={0} flexOrder={0} flexShrink={1}>
+        </FlexItem>
+        <FlexItem alignSelf="auto" flexBasis="auto" flexGrow={0} flexOrder={0} flexShrink={1}>
           <ExampleBox>Item 4</ExampleBox>
-        </Flex.Item>
+        </FlexItem>
       </Flex>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -74,18 +74,18 @@ export default () => (
     <CodePreview scope={{ ExampleBox }}>
       {/* jsx-to-string:start */}
       <Flex justifyContent="space-between">
-        <Flex.Item>
+        <FlexItem>
           <ExampleBox>Item 1</ExampleBox>
-        </Flex.Item>
-        <Flex.Item>
+        </FlexItem>
+        <FlexItem>
           <ExampleBox>Item 2</ExampleBox>
-        </Flex.Item>
-        <Flex.Item>
+        </FlexItem>
+        <FlexItem>
           <ExampleBox>Item 3</ExampleBox>
-        </Flex.Item>
-        <Flex.Item>
+        </FlexItem>
+        <FlexItem>
           <ExampleBox>Item 4</ExampleBox>
-        </Flex.Item>
+        </FlexItem>
       </Flex>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -98,18 +98,18 @@ export default () => (
     <CodePreview scope={{ ExampleBox }}>
       {/* jsx-to-string:start */}
       <Flex flexWrap="wrap">
-        <Flex.Item flexBasis="100%">
+        <FlexItem flexBasis="100%">
           <ExampleBox vertical>Item 1</ExampleBox>
-        </Flex.Item>
-        <Flex.Item flexBasis="100%">
+        </FlexItem>
+        <FlexItem flexBasis="100%">
           <ExampleBox vertical>Item 2</ExampleBox>
-        </Flex.Item>
-        <Flex.Item flexBasis="100%">
+        </FlexItem>
+        <FlexItem flexBasis="100%">
           <ExampleBox vertical>Item 3</ExampleBox>
-        </Flex.Item>
-        <Flex.Item flexBasis="100%">
+        </FlexItem>
+        <FlexItem flexBasis="100%">
           <ExampleBox vertical>Item 4</ExampleBox>
-        </Flex.Item>
+        </FlexItem>
       </Flex>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -123,18 +123,18 @@ export default () => (
     <CodePreview scope={{ ExampleBox }}>
       {/* jsx-to-string:start */}
       <Flex>
-        <Flex.Item flexGrow={2} flexOrder={2}>
+        <FlexItem flexGrow={2} flexOrder={2}>
           <ExampleBox>Item 1</ExampleBox>
-        </Flex.Item>
-        <Flex.Item flexOrder={4}>
+        </FlexItem>
+        <FlexItem flexOrder={4}>
           <ExampleBox>Item 2</ExampleBox>
-        </Flex.Item>
-        <Flex.Item flexGrow={4} flexOrder={1}>
+        </FlexItem>
+        <FlexItem flexGrow={4} flexOrder={1}>
           <ExampleBox>Item 3</ExampleBox>
-        </Flex.Item>
-        <Flex.Item flexGrow={1} flexOrder={3}>
+        </FlexItem>
+        <FlexItem flexGrow={1} flexOrder={3}>
           <ExampleBox>Item 4</ExampleBox>
-        </Flex.Item>
+        </FlexItem>
       </Flex>
       {/* jsx-to-string:end */}
     </CodePreview>

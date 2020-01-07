@@ -132,5 +132,5 @@ const flexItemProps: Prop[] = [
 ];
 
 export const FlexItemPropTable: React.FC<PropTableWrapper> = props => {
-  return <PropTable title="Flex.Item" propList={flexItemProps} {...props} />;
+  return <PropTable title="FlexItem" propList={flexItemProps} {...props} />;
 };

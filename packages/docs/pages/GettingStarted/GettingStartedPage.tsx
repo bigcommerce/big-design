@@ -1,4 +1,4 @@
-import { Flex, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { Flex, FlexItem, H1, H2, Link, Text } from '@bigcommerce/big-design';
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
@@ -15,9 +15,9 @@ export default () => {
         <img src={`${process.env.URL_PREFIX}/static/logo.svg`} alt="BigDesign Logo" style={{ width: 200 }} />
       </figure>
 
-      <Flex.Item alignSelf="center">
+      <FlexItem alignSelf="center">
         <H1>BigDesign Developer Playground</H1>
-      </Flex.Item>
+      </FlexItem>
 
       <Text>
         BigCommerce’s library of React components lets developers build stylish apps that have a native BigCommerce feel
@@ -26,11 +26,11 @@ export default () => {
         component. Each component has props that you can pass to the components for further configuration.
       </Text>
 
-      <Flex.Item alignSelf="center">
+      <FlexItem alignSelf="center">
         <H2 marginBottom="none">Helpful Resources</H2>
-      </Flex.Item>
+      </FlexItem>
 
-      <Flex.Item alignSelf="center">
+      <FlexItem alignSelf="center">
         <List columnCount={2} columnGap={spacing.xxxLarge}>
           <List.Item>
             <Link href="https://design.bigcommerce.com/components" target="_blank">
@@ -84,7 +84,7 @@ export default () => {
             </Link>
           </List.Item>
         </List>
-      </Flex.Item>
+      </FlexItem>
 
       <H2>Getting Started</H2>
 

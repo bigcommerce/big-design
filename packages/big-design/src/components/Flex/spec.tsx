@@ -2,7 +2,7 @@ import { render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
-import { Flex } from './index';
+import { Flex, FlexItem } from './index';
 
 test('render flex', () => {
   const { container } = render(<Flex>Flex</Flex>);
@@ -29,9 +29,9 @@ test('forwards styles', () => {
 
 test('Flex Item forwards styles', () => {
   const { container } = render(
-    <Flex.Item className="test" style={{ background: 'red' }}>
+    <FlexItem className="test" style={{ background: 'red' }}>
       Flex
-    </Flex.Item>,
+    </FlexItem>,
   );
 
   expect(container.getElementsByClassName('test').length).toBe(1);
@@ -48,7 +48,7 @@ test('rendering as another element retains inherited props and styles', () => {
 });
 
 test('Flex Item should handle falsy values (0)', () => {
-  const { getByTestId } = render(<Flex.Item data-testid="flex" flexShrink={0} />);
+  const { getByTestId } = render(<FlexItem data-testid="flex" flexShrink={0} />);
 
   const flex = getByTestId('flex');
 

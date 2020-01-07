@@ -1,9 +1,9 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { Flex } from '../../Flex';
+import { FlexItem } from '../../Flex';
 
-export const StyledPaginationContainer = styled(Flex.Item)`
+export const StyledPaginationContainer = styled(FlexItem)`
   margin-left: auto;
 `;
 

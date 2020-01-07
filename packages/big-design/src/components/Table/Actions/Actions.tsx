@@ -1,7 +1,7 @@
 import React, { RefObject } from 'react';
 
 import { typedMemo } from '../../../utils';
-import { Flex } from '../../Flex';
+import { FlexItem } from '../../Flex';
 import { Text } from '../../Typography';
 import { TableItem, TablePaginationProps, TableSelectable } from '../types';
 import { SelectAll } from '../SelectAll';
@@ -44,9 +44,9 @@ const InternalActions = <T extends TableItem>({
     const text = Boolean(isSelectable) ? itemName : `${totalItems} ${itemName}`;
 
     return (
-      <Flex.Item flexShrink={0} marginRight="medium">
+      <FlexItem flexShrink={0} marginRight="medium">
         <Text margin="none">{text}</Text>
-      </Flex.Item>
+      </FlexItem>
     );
   };
 
