@@ -67,6 +67,7 @@ exports[`select action supports actionTypes 1`] = `
     class="c2 c3"
   >
     <svg
+      aria-labelledby="bd-icon-3"
       class="c4"
       color="danger50"
       fill="currentColor"
@@ -216,6 +217,7 @@ exports[`select action supports icons 1`] = `
         class="c4 c5"
       >
         <svg
+          aria-labelledby="bd-icon-3"
           class="c6"
           color="secondary60"
           fill="currentColor"

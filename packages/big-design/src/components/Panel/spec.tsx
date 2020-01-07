@@ -1,5 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 

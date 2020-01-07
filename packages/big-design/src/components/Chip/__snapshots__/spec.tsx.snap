@@ -178,6 +178,7 @@ exports[`renders with close button if onRemove is present 1`] = `
       class="c5"
     >
       <svg
+        aria-labelledby="bd-icon-1"
         class="c6"
         fill="currentColor"
         height="24"
@@ -186,7 +187,9 @@ exports[`renders with close button if onRemove is present 1`] = `
         viewBox="0 0 24 24"
         width="24"
       >
-        <title>
+        <title
+          id="bd-icon-1"
+        >
           Delete
         </title>
         <path

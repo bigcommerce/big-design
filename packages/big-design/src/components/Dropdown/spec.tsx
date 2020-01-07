@@ -1,5 +1,5 @@
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 

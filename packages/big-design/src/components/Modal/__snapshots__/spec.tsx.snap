@@ -246,6 +246,7 @@ exports[`render open modal 1`] = `
               class="c6"
             >
               <svg
+                aria-labelledby="bd-icon-1"
                 class="c7"
                 fill="currentColor"
                 height="24"
@@ -254,7 +255,9 @@ exports[`render open modal 1`] = `
                 viewBox="0 0 24 24"
                 width="24"
               >
-                <title>
+                <title
+                  id="bd-icon-1"
+                >
                   Close
                 </title>
                 <path
@@ -515,6 +518,7 @@ exports[`render open modal without backdrop 1`] = `
               class="c6"
             >
               <svg
+                aria-labelledby="bd-icon-1"
                 class="c7"
                 fill="currentColor"
                 height="24"
@@ -523,7 +527,9 @@ exports[`render open modal without backdrop 1`] = `
                 viewBox="0 0 24 24"
                 width="24"
               >
-                <title>
+                <title
+                  id="bd-icon-1"
+                >
                   Close
                 </title>
                 <path

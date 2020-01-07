@@ -1,4 +1,4 @@
-import { fireEvent, render, wait } from '@testing-library/react';
+import { fireEvent, render, wait } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 

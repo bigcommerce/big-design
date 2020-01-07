@@ -4,6 +4,7 @@ import App from 'next/app';
 import Head from 'next/head';
 import { default as Router } from 'next/router';
 import React from 'react';
+import { UIDFork, UIDReset } from 'react-uid';
 import { ThemeProvider } from 'styled-components';
 
 import { BetaRibbon, SideNav, StoryWrapper } from '../components';
@@ -46,38 +47,42 @@ export default class MyApp extends App {
             }
           `}
         </style>
-        <ThemeProvider theme={theme}>
-          <>
-            <GlobalStyles />
-            {router.query.noNav ? (
-              <Component {...pageProps} />
-            ) : (
+        <UIDReset>
+          <UIDFork>
+            <ThemeProvider theme={theme}>
               <>
-                <Grid
-                  gridTemplate={gridTemplate}
-                  backgroundColor="secondary10"
-                  gridGap="0"
-                  style={{ minHeight: '100%' }}
-                >
-                  <Grid.Item gridArea="nav">
-                    <SideNav />
-                  </Grid.Item>
-                  <Grid.Item
-                    gridArea="main"
-                    marginVertical="medium"
-                    marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
-                    style={{ maxWidth: '100%' }}
-                  >
-                    <StoryWrapper>
-                      <Component {...pageProps} />
-                    </StoryWrapper>
-                  </Grid.Item>
-                </Grid>
-                <BetaRibbon />
+                <GlobalStyles />
+                {router.query.noNav ? (
+                  <Component {...pageProps} />
+                ) : (
+                  <>
+                    <Grid
+                      gridTemplate={gridTemplate}
+                      backgroundColor="secondary10"
+                      gridGap="0"
+                      style={{ minHeight: '100%' }}
+                    >
+                      <Grid.Item gridArea="nav">
+                        <SideNav />
+                      </Grid.Item>
+                      <Grid.Item
+                        gridArea="main"
+                        marginVertical="medium"
+                        marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
+                        style={{ maxWidth: '100%' }}
+                      >
+                        <StoryWrapper>
+                          <Component {...pageProps} />
+                        </StoryWrapper>
+                      </Grid.Item>
+                    </Grid>
+                    <BetaRibbon />
+                  </>
+                )}
               </>
-            )}
-          </>
-        </ThemeProvider>
+            </ThemeProvider>
+          </UIDFork>
+        </UIDReset>
       </>
     );
   }

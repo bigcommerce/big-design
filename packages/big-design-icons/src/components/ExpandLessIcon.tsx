@@ -3,16 +3,35 @@
 // **********************************
 import React from 'react';
 
-import { createStyledIcon, IconProps } from '../base';
+import { createStyledIcon, IconProps, PrivateIconProps } from '../base';
+import { useUniqueId } from '../utils';
 
-const Icon = React.memo<Partial<IconProps>>(({ title, theme, ...props }) => (
-  <svg width={24} height={24} viewBox="0 0 24 24" stroke="currentColor" fill="currentColor" strokeWidth="0" {...props}>
-    {title ? <title>{title}</title> : null}
-    <path fill="none" d="M0 0h24v24H0V0z" />
-    <path d="M11.29 8.71L6.7 13.3a.996.996 0 101.41 1.41L12 10.83l3.88 3.88a.996.996 0 101.41-1.41L12.7 8.71a.996.996 0 00-1.41 0z" />
-  </svg>
+const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ...props }) => {
+  const titleId = useUniqueId('icon');
+
+  return (
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      fill="currentColor"
+      strokeWidth="0"
+      ref={svgRef}
+      aria-labelledby={titleId}
+      {...props}
+    >
+      {title ? <title id={titleId}>{title}</title> : null}
+      <path fill="none" d="M0 0h24v24H0V0z" />
+      <path d="M11.29 8.71L6.7 13.3a.996.996 0 101.41 1.41L12 10.83l3.88 3.88a.996.996 0 101.41-1.41L12.7 8.71a.996.996 0 00-1.41 0z" />
+    </svg>
+  );
+};
+
+const IconWithForwardedRef = React.forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => (
+  <Icon {...iconProps} svgRef={ref} />
 ));
 
-export const ExpandLessIcon = createStyledIcon(Icon);
+export const ExpandLessIcon = React.memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
 
 ExpandLessIcon.displayName = 'ExpandLessIcon';

@@ -106,6 +106,7 @@ exports[`render Checkbox checked 1`] = `
     for="checkBox_0"
   >
     <svg
+      aria-labelledby="bd-icon-1"
       class="c4"
       fill="currentColor"
       height="24"
@@ -250,6 +251,7 @@ exports[`render Checkbox disabled checked 1`] = `
     for="checkBox_0"
   >
     <svg
+      aria-labelledby="bd-icon-1"
       class="c4"
       fill="currentColor"
       height="24"
@@ -399,6 +401,7 @@ exports[`render Checkbox disabled indeterminate 1`] = `
     for="checkBox_0"
   >
     <svg
+      aria-labelledby="bd-icon-1"
       class="c4"
       fill="currentColor"
       height="24"
@@ -548,6 +551,7 @@ exports[`render Checkbox disabled unchecked 1`] = `
     for="checkBox_0"
   >
     <svg
+      aria-labelledby="bd-icon-1"
       class="c4"
       fill="currentColor"
       height="24"
@@ -686,6 +690,7 @@ exports[`render Checkbox indeterminate 1`] = `
     for="checkBox_0"
   >
     <svg
+      aria-labelledby="bd-icon-1"
       class="c4"
       fill="currentColor"
       height="24"
@@ -822,6 +827,7 @@ exports[`render Checkbox unchecked 1`] = `
     for="checkBox_0"
   >
     <svg
+      aria-labelledby="bd-icon-1"
       class="c4"
       fill="currentColor"
       height="24"

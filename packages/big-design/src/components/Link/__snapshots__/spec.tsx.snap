@@ -82,6 +82,7 @@ exports[`renders with external icon 1`] = `
     Link
   </span>
   <svg
+    aria-labelledby="bd-icon-1"
     class="c1"
     fill="currentColor"
     height="24"
