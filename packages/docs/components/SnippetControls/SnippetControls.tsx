@@ -1,4 +1,4 @@
-import { Button, Flex, Small } from '@bigcommerce/big-design';
+import { Button, FlexItem, Small } from '@bigcommerce/big-design';
 import { AssignmentIcon, CheckIcon, InvertColorsIcon, RestoreIcon } from '@bigcommerce/big-design-icons';
 import React, { useContext, useState } from 'react';
 
@@ -44,38 +44,38 @@ export const SnippetControls: React.FC<SnippetControls> = props => {
       alignItems="center"
       style={{ zIndex: 999 }}
     >
-      <Flex.Item flexGrow={1}>
+      <FlexItem flexGrow={1}>
         <Small marginHorizontal="small">{helperText}</Small>
-      </Flex.Item>
+      </FlexItem>
 
-      <Flex.Item borderLeft="box">
+      <FlexItem borderLeft="box">
         <Button iconOnly={<TypescriptIcon />} variant="subtle" onClick={() => setLanguage('tsx')} />
-      </Flex.Item>
+      </FlexItem>
 
-      <Flex.Item borderLeft="box">
+      <FlexItem borderLeft="box">
         <Button iconOnly={<JavascriptIcon />} variant="subtle" onClick={() => setLanguage('jsx')} />
-      </Flex.Item>
+      </FlexItem>
 
-      <Flex.Item borderLeft="box">
+      <FlexItem borderLeft="box">
         <Button
           iconOnly={getCopyToClipboardIcon(isCopying)}
           variant="subtle"
           onClick={() => onCopy(setIsCopying, copyToClipboard)}
           disabled={isCopying}
         />
-      </Flex.Item>
+      </FlexItem>
       {resetCode && (
-        <Flex.Item borderLeft="box">
+        <FlexItem borderLeft="box">
           <Button iconOnly={<RestoreIcon title="Reset" color="secondary60" />} variant="subtle" onClick={resetCode} />
-        </Flex.Item>
+        </FlexItem>
       )}
-      <Flex.Item borderLeft="box">
+      <FlexItem borderLeft="box">
         <Button
           iconOnly={<InvertColorsIcon title="Toggle Theme" color="secondary60" />}
           variant="subtle"
           onClick={toggleEditorTheme}
         />
-      </Flex.Item>
+      </FlexItem>
     </StyledFlex>
   );
 };

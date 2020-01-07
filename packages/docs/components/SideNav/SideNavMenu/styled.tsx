@@ -1,7 +1,7 @@
-import { Flex } from '@bigcommerce/big-design';
+import { FlexItem } from '@bigcommerce/big-design';
 import styled from 'styled-components';
 
-export const StyledMenu = styled(Flex.Item)`
+export const StyledMenu = styled(FlexItem)`
   ${({ theme }) => theme.breakpoints.tablet} {
     display: none;
   }
@@ -11,7 +11,7 @@ interface Navigation {
   isExpanded: boolean;
 }
 
-export const StyledNavigation = styled(Flex.Item)<Navigation>`
+export const StyledNavigation = styled(FlexItem)<Navigation>`
   ${({ theme }) => theme.shadow.floating};
 
   background-color: ${({ theme }) => theme.colors.white};

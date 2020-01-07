@@ -1,4 +1,4 @@
-import { Flex } from '@bigcommerce/big-design';
+import { Flex, FlexItem } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { BigDesignLogoIcon, GithubLogoIcon } from '../Icons';
@@ -21,9 +21,9 @@ export const SideNav: React.FC = () => {
       padding="medium"
       paddingBottom={{ mobile: 'medium', tablet: 'xxxLarge' }}
     >
-      <Flex.Item>
+      <FlexItem>
         <SideNavLogo />
-      </Flex.Item>
+      </FlexItem>
 
       <SideNavMenu>
         <SideNavGroup title="Introduction">
@@ -159,7 +159,7 @@ export const SideNav: React.FC = () => {
 const Link: React.FC<{ url: string; icon?: React.ReactNode; title: string }> = ({ url, icon, title }) => {
   const getChildrenWithIcon = () => (
     <Flex alignItems="center">
-      {icon} <Flex.Item marginLeft="xSmall">{title}</Flex.Item>
+      {icon} <FlexItem marginLeft="xSmall">{title}</FlexItem>
     </Flex>
   );
 

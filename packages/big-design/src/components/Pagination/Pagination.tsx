@@ -3,7 +3,7 @@ import React, { memo, useEffect, useState } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { Dropdown, DropdownItem } from '../Dropdown';
-import { Flex } from '../Flex';
+import { Flex, FlexItem } from '../Flex';
 
 import { StyledButton } from './styled';
 
@@ -80,7 +80,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
 
     return (
       <Flex role="navigation" aria-label="pagination" flexDirection="row">
-        <Flex.Item>
+        <FlexItem>
           <Dropdown
             options={itemsPerPageOptions.map(range => ({
               content: `${range}`,
@@ -93,8 +93,8 @@ export const Pagination: React.FC<PaginationProps> = memo(
               </StyledButton>
             }
           />
-        </Flex.Item>
-        <Flex.Item>
+        </FlexItem>
+        <FlexItem>
           <StyledButton
             iconOnly={<ChevronLeftIcon title="Previous page" />}
             variant="subtle"
@@ -108,7 +108,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
             disabled={currentPage >= maxPages}
             onClick={handlePageIncrease}
           />
-        </Flex.Item>
+        </FlexItem>
       </Flex>
     );
   },
