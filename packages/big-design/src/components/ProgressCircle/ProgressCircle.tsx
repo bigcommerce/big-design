@@ -1,5 +1,7 @@
 import { CheckCircleIcon, ErrorIcon } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { useMemo } from 'react';
+
+import { typedMemo } from '../../utils';
 
 import { CIRCLE_DIMENSIONS } from './constants';
 import { StyledCircle, StyledCircleFiller, StyledProgressCircle, StyledText } from './styled';
@@ -10,26 +12,37 @@ export interface ProgressCircleProps {
   size?: 'xSmall' | 'small' | 'medium' | 'large';
 }
 
-export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
-  static readonly defaultProps: Partial<ProgressCircleProps> = {
-    size: 'medium',
-  };
+export const ProgressCircle: React.FC<ProgressCircleProps> = typedMemo(({ error, percent, size = 'medium' }) => {
+  const dimensions = CIRCLE_DIMENSIONS[size];
 
-  render() {
-    const { error } = this.props;
+  const renderedError = useMemo(() => {
+    return (
+      <ErrorIcon
+        aria-valuemax={100}
+        aria-valuemin={0}
+        aria-valuenow={percent ? percent : 0}
+        aria-valuetext="Error"
+        color="danger"
+        role="progressbar"
+        size={dimensions}
+      />
+    );
+  }, [percent, dimensions]);
 
-    return error ? this.renderError() : this.renderCircle();
-  }
+  const renderedSuccess = useMemo(() => {
+    return (
+      <CheckCircleIcon
+        aria-valuemax={100}
+        aria-valuemin={0}
+        aria-valuenow={100}
+        color="success"
+        role="progressbar"
+        size={dimensions}
+      />
+    );
+  }, [dimensions]);
 
-  getDimensions() {
-    const { size } = this.props;
-
-    return size ? CIRCLE_DIMENSIONS[size] : CIRCLE_DIMENSIONS.medium;
-  }
-
-  renderCircle() {
-    const { percent, size } = this.props;
-
+  const renderedCircle = useMemo(() => {
     if (typeof percent !== 'number') {
       return (
         <StyledProgressCircle role="progressbar" size={size}>
@@ -40,7 +53,7 @@ export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
     }
 
     if (percent === 100) {
-      return this.renderSuccess();
+      return renderedSuccess;
     }
 
     return (
@@ -58,34 +71,7 @@ export class ProgressCircle extends React.PureComponent<ProgressCircleProps> {
         )}
       </StyledProgressCircle>
     );
-  }
+  }, [size, percent]);
 
-  renderError() {
-    const { percent } = this.props;
-
-    return (
-      <ErrorIcon
-        aria-valuemax={100}
-        aria-valuemin={0}
-        aria-valuenow={percent ? percent : 0}
-        aria-valuetext="Error"
-        color="danger"
-        role="progressbar"
-        size={this.getDimensions()}
-      />
-    );
-  }
-
-  renderSuccess() {
-    return (
-      <CheckCircleIcon
-        aria-valuemax={100}
-        aria-valuemin={0}
-        aria-valuenow={100}
-        color="success"
-        role="progressbar"
-        size={this.getDimensions()}
-      />
-    );
-  }
-}
+  return error ? renderedError : renderedCircle;
+});
