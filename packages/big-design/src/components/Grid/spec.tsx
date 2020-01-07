@@ -3,6 +3,7 @@ import 'jest-styled-components';
 import React from 'react';
 
 import { Grid } from './index';
+import { GridItem } from './Item';
 
 test('render Grid', () => {
   const template = `
@@ -14,10 +15,10 @@ test('render Grid', () => {
 
   const { container } = render(
     <Grid gridTemplate={template}>
-      <Grid.Item gridArea="head">Header</Grid.Item>
-      <Grid.Item gridArea="nav">Sidebar</Grid.Item>
-      <Grid.Item gridArea="main">Content</Grid.Item>
-      <Grid.Item gridArea="foot">Footer</Grid.Item>
+      <GridItem gridArea="head">Header</GridItem>
+      <GridItem gridArea="nav">Sidebar</GridItem>
+      <GridItem gridArea="main">Content</GridItem>
+      <GridItem gridArea="foot">Footer</GridItem>
     </Grid>,
   );
 
@@ -38,7 +39,7 @@ test('Grid forwards styles', () => {
 });
 
 test('Grid item forwards styles', () => {
-  const { container } = render(<Grid.Item className="test" style={{ background: 'red' }} />);
+  const { container } = render(<GridItem className="test" style={{ background: 'red' }} />);
 
   expect(container.getElementsByClassName('test').length).toBe(1);
   expect(container.firstChild).toHaveStyle('background: red');

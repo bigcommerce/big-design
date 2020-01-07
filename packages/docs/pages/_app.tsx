@@ -1,4 +1,4 @@
-import { GlobalStyles, Grid } from '@bigcommerce/big-design';
+import { GlobalStyles, Grid, GridItem } from '@bigcommerce/big-design';
 import { createTheme } from '@bigcommerce/big-design-theme';
 import App from 'next/app';
 import Head from 'next/head';
@@ -62,10 +62,10 @@ export default class MyApp extends App {
                       gridGap="0"
                       style={{ minHeight: '100%' }}
                     >
-                      <Grid.Item gridArea="nav">
+                      <GridItem gridArea="nav">
                         <SideNav />
-                      </Grid.Item>
-                      <Grid.Item
+                      </GridItem>
+                      <GridItem
                         gridArea="main"
                         marginVertical="medium"
                         marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
@@ -74,7 +74,7 @@ export default class MyApp extends App {
                         <StoryWrapper>
                           <Component {...pageProps} />
                         </StoryWrapper>
-                      </Grid.Item>
+                      </GridItem>
                     </Grid>
                     <BetaRibbon />
                   </>

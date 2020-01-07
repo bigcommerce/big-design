@@ -1,4 +1,4 @@
-import { Box, Grid, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { Box, Grid, GridItem, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -32,18 +32,18 @@ export default () => (
     <CodePreview scope={{ ExampleBox }}>
       {/* jsx-to-string:start */}
       <Grid>
-        <Grid.Item>
+        <GridItem>
           <ExampleBox>Item 1</ExampleBox>
-        </Grid.Item>
-        <Grid.Item>
+        </GridItem>
+        <GridItem>
           <ExampleBox>Item 2</ExampleBox>
-        </Grid.Item>
-        <Grid.Item>
+        </GridItem>
+        <GridItem>
           <ExampleBox>Item 3</ExampleBox>
-        </Grid.Item>
-        <Grid.Item>
+        </GridItem>
+        <GridItem>
           <ExampleBox>Item 4</ExampleBox>
-        </Grid.Item>
+        </GridItem>
       </Grid>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -78,18 +78,18 @@ export default () => (
 
         return (
           <Grid gridTemplate={template}>
-            <Grid.Item gridArea="head">
+            <GridItem gridArea="head">
               <ExampleBox>Header</ExampleBox>
-            </Grid.Item>
-            <Grid.Item gridArea="nav">
+            </GridItem>
+            <GridItem gridArea="nav">
               <ExampleBox>Sidebar</ExampleBox>
-            </Grid.Item>
-            <Grid.Item gridArea="main">
+            </GridItem>
+            <GridItem gridArea="main">
               <ExampleBox>Content</ExampleBox>
-            </Grid.Item>
-            <Grid.Item gridArea="foot">
+            </GridItem>
+            <GridItem gridArea="foot">
               <ExampleBox>Footer</ExampleBox>
-            </Grid.Item>
+            </GridItem>
           </Grid>
         );
       }}
@@ -103,30 +103,30 @@ export default () => (
     <CodePreview scope={{ ExampleBox }}>
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(3, 1fr)">
-        <Grid.Item>
+        <GridItem>
           <ExampleBox>
             Reprehenderit ullamco et elit eu duis non reprehenderit eiusmod pariatur ea deserunt irure. Reprehenderit et
             incididunt sit aute sint proident eu eiusmod pariatur Lorem nulla labore irure nisi. Adipisicing do duis
             occaecat ipsum dolor ea. Qui consectetur sint eu nulla duis et commodo anim commodo. Ullamco consectetur
             elit ullamco aliquip do id consectetur anim laborum.
           </ExampleBox>
-        </Grid.Item>
+        </GridItem>
 
-        <Grid.Item>
+        <GridItem>
           <ExampleBox>
             In sit dolore culpa reprehenderit tempor laborum. Sit anim voluptate pariatur irure amet mollit. Est mollit
             ad pariatur esse eu reprehenderit ut veniam. Aliquip anim mollit aliquip quis officia minim esse laboris
             proident fugiat cillum. Eiusmod culpa eu ea eiusmod nostrud.
           </ExampleBox>
-        </Grid.Item>
+        </GridItem>
 
-        <Grid.Item>
+        <GridItem>
           <ExampleBox>
             Ipsum adipisicing pariatur magna quis incididunt amet pariatur. Aliqua voluptate consequat ut elit ea dolore
             officia reprehenderit exercitation dolore eiusmod cupidatat quis. Ullamco ipsum do deserunt sunt ad deserunt
             ut. Elit non velit dolore ad est eu.
           </ExampleBox>
-        </Grid.Item>
+        </GridItem>
       </Grid>
       {/* jsx-to-string:end */}
     </CodePreview>
