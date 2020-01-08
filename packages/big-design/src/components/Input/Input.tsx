@@ -3,8 +3,7 @@ import React, { Ref } from 'react';
 
 import { uniqueId } from '../../utils';
 import { Chip } from '../Chip';
-import { Form } from '../Form';
-import { Small } from '../Typography';
+import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
 import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
 
@@ -30,9 +29,9 @@ interface InputState {
 export type InputProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
 class StyleableInput extends React.PureComponent<InputProps & PrivateProps, InputState> {
-  static Description = Small;
-  static Error = Form.Error;
-  static Label = Form.Label;
+  static Description = FormControlDescription;
+  static Error = FormControlError;
+  static Label = FormControlLabel;
 
   readonly state: InputState = {
     focus: false,

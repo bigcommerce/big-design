@@ -2,10 +2,10 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { Ref } from 'react';
 
 import { StyledForm } from './styled';
-import { Error as FormError } from './Error';
+import { FormControlError } from './Error';
 import { Fieldset } from './Fieldset';
-import { Group } from './Group';
-import { Label } from './Label';
+import { FormGroup } from './Group';
+import { FormControlLabel } from './Label';
 
 interface PrivateProps {
   forwardedRef: Ref<HTMLFormElement>;
@@ -16,10 +16,10 @@ export type FormProps = React.FormHTMLAttributes<HTMLFormElement> & {
 };
 
 class StyleableForm extends React.PureComponent<PrivateProps & FormProps> {
-  static Label = Label;
-  static Error = FormError;
+  static Label = FormControlLabel;
+  static Error = FormControlError;
   static Fieldset = Fieldset;
-  static Group = Group;
+  static Group = FormGroup;
 
   render() {
     const { forwardedRef, ...props } = this.props;

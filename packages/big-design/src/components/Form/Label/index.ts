@@ -1,1 +1,1 @@
-export { Label } from './Label';
+export { FormControlLabel } from './Label';
