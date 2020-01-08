@@ -1,6 +1,6 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import focusTrap, { FocusTrap } from 'focus-trap';
-import React, { createRef, useEffect, useMemo, useState } from 'react';
+import React, { createRef, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { typedMemo, uniqueId } from '../../utils';
@@ -48,7 +48,19 @@ export const Modal: React.FC<ModalProps> = typedMemo(
     const [modalContainer, setModalContainer] = useState<HTMLDivElement | null>(null);
     const headerUniqueId = useMemo(() => uniqueId('modal_header_'), []);
     const modalRef = createRef<HTMLDivElement>();
-    const previousFocus = typeof document !== 'undefined' ? document.activeElement : null;
+    const previousFocus = useRef(typeof document !== 'undefined' ? document.activeElement : null);
+
+    const onClickAway = (event: React.MouseEvent) => {
+      if (closeOnClickOutside && modalRef.current === event.target) {
+        onClose();
+      }
+    };
+
+    const onKeyDown = (event: React.KeyboardEvent) => {
+      if (closeOnEscKey && event.key === 'Escape') {
+        onClose();
+      }
+    };
 
     useEffect(() => {
       const container = document.createElement('div');
@@ -59,14 +71,19 @@ export const Modal: React.FC<ModalProps> = typedMemo(
 
     useEffect(() => {
       return () => {
+        const prevFocus = previousFocus.current as HTMLElement;
+
         if (modalContainer) {
           document.body.removeChild(modalContainer);
         }
 
         document.body.style.overflowY = initialBodyOverflowY;
-        returnFocus();
+
+        if (prevFocus && typeof prevFocus.focus === 'function') {
+          prevFocus.focus();
+        }
       };
-    }, [modalContainer]);
+    }, [modalContainer, previousFocus]);
 
     useEffect(() => {
       if (modalRef.current && !internalTrap) {
@@ -83,27 +100,7 @@ export const Modal: React.FC<ModalProps> = typedMemo(
         internalTrap?.deactivate();
         setInternalTrap(null);
       }
-    }, [internalTrap, isOpen, modalRef]);
-
-    const returnFocus = () => {
-      const prevFocus = previousFocus as HTMLElement;
-
-      if (prevFocus && typeof prevFocus.focus === 'function') {
-        prevFocus.focus();
-      }
-    };
-
-    const onClickAway = (event: React.MouseEvent) => {
-      if (closeOnClickOutside && modalRef.current === event.target) {
-        onClose();
-      }
-    };
-
-    const onKeyDown = (event: React.KeyboardEvent) => {
-      if (closeOnEscKey && event.key === 'Escape') {
-        onClose();
-      }
-    };
+    }, [focusTrap, internalTrap, isOpen, modalRef]);
 
     const renderedClose = useMemo(
       () =>
@@ -158,6 +155,6 @@ export const Modal: React.FC<ModalProps> = typedMemo(
       </StyledModal>
     );
 
-    return !(isOpen && modalContainer) ? null : createPortal(renderedContent, modalContainer);
+    return isOpen && modalContainer ? createPortal(renderedContent, modalContainer) : null;
   },
 );
