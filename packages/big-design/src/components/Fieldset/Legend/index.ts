@@ -1,0 +1,1 @@
+export { FieldsetLegend } from './Legend';

@@ -1,6 +1,8 @@
-import React, { memo } from 'react';
+import React from 'react';
 
-import { StyledFieldset, StyledFieldsetDescription, StyledFieldsetLegend } from './styled';
+import { StyledFieldset } from './styled';
+import { FieldsetDescription } from './Description';
+import { FieldsetLegend } from './Legend';
 
 export interface FieldsetProps extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
   legend?: React.ReactChild;
@@ -8,8 +10,8 @@ export interface FieldsetProps extends React.FieldsetHTMLAttributes<HTMLFieldSet
 }
 
 export class Fieldset extends React.PureComponent<FieldsetProps> {
-  static Legend = memo(StyledFieldsetLegend);
-  static Description = memo(StyledFieldsetDescription);
+  static Legend = FieldsetLegend;
+  static Description = FieldsetDescription;
 
   render() {
     const { className, legend, description, children, style, ...props } = this.props;
