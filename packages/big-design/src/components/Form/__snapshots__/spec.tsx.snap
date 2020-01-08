@@ -15,6 +15,43 @@ exports[`simple form render 1`] = `
   margin-bottom: 0;
 }
 
+.c1 {
+  border: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.c1:last-child {
+  margin: 0;
+}
+
+.c3 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c3:last-child {
+  margin-bottom: 0;
+}
+
+.c2 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  margin: 0 0 0.75rem;
+}
+
+.c2:not(:last-child) {
+  margin-bottom: 0.25rem;
+}
+
 .c8 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
@@ -101,43 +138,6 @@ exports[`simple form render 1`] = `
   flex: 1;
   height: 100%;
   margin-top: -0.25rem;
-}
-
-.c1 {
-  border: none;
-  margin: 0 0 1.5rem;
-  padding: 0;
-}
-
-.c1:last-child {
-  margin: 0;
-}
-
-.c3 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
-}
-
-.c3:last-child {
-  margin-bottom: 0;
-}
-
-.c2 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.75rem;
-  margin: 0 0 0.75rem;
-}
-
-.c2:not(:last-child) {
-  margin-bottom: 0.25rem;
 }
 
 .c4 {
