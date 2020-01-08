@@ -47,13 +47,12 @@ const modalProps: Prop[] = [
   {
     name: 'isOpen',
     types: 'boolean',
-    required: true,
+    defaultValue: 'false',
     description: 'Determines if the modal/dialog is open.',
   },
   {
     name: 'onClose',
     types: '() => void',
-    required: true,
     description: 'Function that will be called on close events.',
   },
   {
