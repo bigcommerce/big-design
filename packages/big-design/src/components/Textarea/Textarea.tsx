@@ -2,8 +2,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { Ref } from 'react';
 
 import { uniqueId } from '../../utils';
-import { Form } from '../Form';
-import { Small } from '../Typography';
+import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
 import { StyledTextarea, StyledTextareaWrapper } from './styled';
 
@@ -28,9 +27,9 @@ class StyleableTextarea extends React.PureComponent<TextareaProps & PrivateProps
     resize: true,
   };
 
-  static Description = Small;
-  static Error = Form.Error;
-  static Label = Form.Label;
+  static Description = FormControlDescription;
+  static Error = FormControlError;
+  static Label = FormControlLabel;
   private readonly uniqueId = uniqueId('textarea_');
   private readonly MAX_ROWS = 7;
 

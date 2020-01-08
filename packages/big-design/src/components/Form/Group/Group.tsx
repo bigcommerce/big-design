@@ -4,7 +4,7 @@ import React from 'react';
 import { uniqueId } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
 import { Radio } from '../../Radio';
-import { Error as FormError } from '../Error';
+import { FormControlError } from '../Error';
 
 import { StyledError, StyledGroup, StyledInlineGroup } from './styled';
 
@@ -12,7 +12,7 @@ export interface GroupProps extends React.HTMLAttributes<HTMLDivElement> {
   errors?: React.ReactChild | React.ReactChild[];
 }
 
-export const Group: React.FC<GroupProps> = props => {
+export const FormGroup: React.FC<GroupProps> = props => {
   const { children, errors: groupErrors } = props;
   const childrenCount = React.Children.count(children);
   const inline = !React.Children.toArray(children).every(child => {
@@ -58,12 +58,12 @@ function generateErrors(errors: GroupProps['errors']): React.ReactNode {
     return (
       <StyledError alignItems="center" key={errorKey}>
         <ErrorIcon color="danger" />
-        <FormError>{errors}</FormError>
+        <FormControlError>{errors}</FormControlError>
       </StyledError>
     );
   }
 
-  if (React.isValidElement(errors) && errors.type === FormError) {
+  if (React.isValidElement(errors) && errors.type === FormControlError) {
     return (
       <StyledError alignItems="center" key={errorKey}>
         <ErrorIcon color="danger" />

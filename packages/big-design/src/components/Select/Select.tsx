@@ -6,7 +6,7 @@ import { uniqueId } from '../../utils';
 import { Box } from '../Box';
 import { Flex } from '../Flex/Flex';
 import { FlexItem } from '../Flex/Item';
-import { Label } from '../Form/Label';
+import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { ListCheckboxItem } from '../List/Item/CheckboxItem';
 import { ListItem } from '../List/Item/Item';
@@ -126,9 +126,9 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     const labelId = this.getLabelId();
 
     return typeof label === 'string' ? (
-      <Label htmlFor={inputId} id={labelId} renderOptional={!required}>
+      <FormControlLabel htmlFor={inputId} id={labelId} renderOptional={!required}>
         {label}
-      </Label>
+      </FormControlLabel>
     ) : null;
   }
 
