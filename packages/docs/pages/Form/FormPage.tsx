@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Checkbox,
+  Fieldset,
   Form,
   H0,
   H1,
@@ -60,9 +61,9 @@ export default () => (
     <H1>API</H1>
     <FormPropTable />
     <FormErrorPropTable id="error" />
-    <FormFieldsetPropTable />
     <FormLabelPropTable id="label" />
     <FormGroupPropTable />
+    <FormFieldsetPropTable />
 
     <H1>Input Types</H1>
 
@@ -126,13 +127,13 @@ export default () => (
           <Input label="State" placeholder="Texas" required />
           <Input label="Postal Code" placeholder="78726" required />
         </Form.Group>
-        <Form.Fieldset legend="Shipping Method">
+        <Fieldset legend="Shipping Method" description={<div />}>
           <Form.Group>
             <Radio label="Free – Three Day Shipping" checked onChange={() => null} />
             <Radio label="$4.99 – Two Day Shipping" />
             <Radio label="$9.99 – One Day Shipping" />
           </Form.Group>
-        </Form.Fieldset>
+        </Fieldset>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>

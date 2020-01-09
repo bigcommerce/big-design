@@ -1,6 +1,6 @@
 import { warning } from './warning';
 
-const consoleError = jest.spyOn(console, 'error').mockImplementation(jest.fn);
+const consoleError = jest.spyOn(console, 'warn').mockImplementation(jest.fn);
 
 jest.mock('./warning', () => ({
   ...jest.requireActual('./warning'),

@@ -2,6 +2,7 @@ import { fireEvent, render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
+import { Fieldset } from '../Fieldset';
 import { Input } from '../Input';
 
 import { Form } from './index';
@@ -27,7 +28,6 @@ test('calls onSubmit', () => {
 
 test('exposes expected statics', () => {
   expect(Form.Error).toBeDefined();
-  expect(Form.Fieldset).toBeDefined();
   expect(Form.Label).toBeDefined();
   expect(Form.Group).toBeDefined();
 });
@@ -35,7 +35,7 @@ test('exposes expected statics', () => {
 test('simple form render', () => {
   const { container } = render(
     <Form>
-      <Form.Fieldset
+      <Fieldset
         legend="Primary contact"
         description="Minim velit quis aute adipisicing adipisicing do do exercitation cupidatat enim ex voluptate consequat labore."
       >
@@ -54,7 +54,7 @@ test('simple form render', () => {
             placeholder="Placeholder text"
           />
         </Form.Group>
-      </Form.Fieldset>
+      </Fieldset>
     </Form>,
   );
 

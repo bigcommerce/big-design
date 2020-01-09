@@ -1,4 +1,4 @@
-import { Form, H0, H1, Link, Radio, Text } from '@bigcommerce/big-design';
+import { Fieldset, Form, H0, H1, Link, Radio, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -46,7 +46,7 @@ export default () => (
     <H1>Grouping</H1>
 
     <Text>
-      In order to group radio controls, use the <Code>Form.Fieldset</Code> component to separate the controls.
+      In order to group radio controls, use the <Code>Fieldset</Code> component to separate the controls.
     </Text>
 
     <CodePreview>
@@ -60,18 +60,18 @@ export default () => (
 
         return (
           <Form>
-            <Form.Fieldset legend="First Group">
+            <Fieldset legend="First Group">
               <Form.Group>
                 <Radio label="On" checked={firstRadio === 'on'} value="on" onChange={handleFirstChange} />
                 <Radio label="Off" checked={firstRadio === 'off'} value="off" onChange={handleFirstChange} />
               </Form.Group>
-            </Form.Fieldset>
-            <Form.Fieldset legend="Second Group">
+            </Fieldset>
+            <Fieldset legend="Second Group">
               <Form.Group>
                 <Radio label="On" checked={secondRadio === 'on'} value="on" onChange={handleSecondChange} />
                 <Radio label="Off" checked={secondRadio === 'off'} value="off" onChange={handleSecondChange} />
               </Form.Group>
-            </Form.Fieldset>
+            </Fieldset>
           </Form>
         );
       }}
