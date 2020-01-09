@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+
+import { warning } from '../../utils/warning';
 
 import { StyledFieldset } from './styled';
 import { FieldsetDescription } from './Description';
@@ -9,47 +11,44 @@ export interface FieldsetProps extends React.FieldsetHTMLAttributes<HTMLFieldSet
   description?: React.ReactChild;
 }
 
-export class Fieldset extends React.PureComponent<FieldsetProps> {
-  static Legend = FieldsetLegend;
-  static Description = FieldsetDescription;
-
-  render() {
-    const { className, legend, description, children, style, ...props } = this.props;
-
-    return (
-      <StyledFieldset {...props}>
-        {this.renderLegend()}
-        {this.renderDescription()}
-        {children}
-      </StyledFieldset>
-    );
-  }
-
-  private renderLegend() {
-    const { legend } = this.props;
-
+export const Fieldset: React.FC<FieldsetProps> = ({ className, legend, description, children, style, ...props }) => {
+  const renderedLegend = useMemo(() => {
     if (typeof legend === 'string') {
-      return <Fieldset.Legend>{legend}</Fieldset.Legend>;
+      return <FieldsetLegend>{legend}</FieldsetLegend>;
     }
 
-    if (React.isValidElement(legend) && legend.type === Fieldset.Legend) {
+    if (React.isValidElement(legend) && legend.type === FieldsetLegend) {
       return legend;
     }
 
-    return null;
-  }
-
-  private renderDescription() {
-    const { description } = this.props;
-
-    if (typeof description === 'string') {
-      return <Fieldset.Description>{description}</Fieldset.Description>;
+    if (!legend) {
+      return null;
     }
 
-    if (React.isValidElement(description) && description.type === Fieldset.Description) {
+    warning('legend must be either a string or a FieldsetLegend component.');
+  }, [legend]);
+
+  const renderedDescription = useMemo(() => {
+    if (typeof description === 'string') {
+      return <FieldsetDescription>{description}</FieldsetDescription>;
+    }
+
+    if (React.isValidElement(description) && description.type === FieldsetDescription) {
       return description;
     }
 
-    return null;
-  }
-}
+    if (!description) {
+      return null;
+    }
+
+    warning('description must be either a string or a FieldsetDescription component.');
+  }, [description]);
+
+  return (
+    <StyledFieldset {...props}>
+      {renderedLegend}
+      {renderedDescription}
+      {children}
+    </StyledFieldset>
+  );
+};

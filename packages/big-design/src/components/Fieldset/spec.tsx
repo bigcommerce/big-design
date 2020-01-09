@@ -2,7 +2,11 @@ import { render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
+import { warning } from '../../utils/warning';
+
 import { Fieldset } from './index';
+import { FieldsetDescription } from './Description';
+import { FieldsetLegend } from './Legend';
 
 test('renders a fieldset tag', () => {
   const { container } = render(<Fieldset />);
@@ -27,12 +31,12 @@ test('renders description', () => {
 
 test('accepts a Legend Component', () => {
   const CustomLegend = (
-    <Fieldset.Legend>
+    <FieldsetLegend>
       This is a custom legend
       <a href="#" data-testid="test">
         has a url
       </a>
-    </Fieldset.Legend>
+    </FieldsetLegend>
   );
 
   const { queryByTestId } = render(<Fieldset legend={CustomLegend} />);
@@ -50,19 +54,27 @@ test('does not accept non-Legend Components', () => {
     </div>
   );
 
-  const { queryByTestId } = render(<Fieldset legend={NotALegend} />);
+  render(<Fieldset legend={NotALegend} />);
 
-  expect(queryByTestId('test')).not.toBeInTheDocument();
+  expect(warning).toHaveBeenCalledTimes(1);
+});
+
+test('renders in legend is null or undefined', () => {
+  const { container } = render(<Fieldset />);
+
+  const fieldset = container.querySelector('fieldset');
+
+  expect(fieldset).toBeInTheDocument();
 });
 
 test('accepts a Description Component', () => {
   const CustomDescription = (
-    <Fieldset.Description>
+    <FieldsetDescription>
       This is a custom Description
       <a href="#" data-testid="test">
         has a url
       </a>
-    </Fieldset.Description>
+    </FieldsetDescription>
   );
 
   const { queryByTestId } = render(<Fieldset description={CustomDescription} />);
@@ -80,7 +92,7 @@ test('does not accept non-Description Components', () => {
     </div>
   );
 
-  const { queryByTestId } = render(<Fieldset description={NotADescription} />);
+  render(<Fieldset description={NotADescription} />);
 
-  expect(queryByTestId('test')).not.toBeInTheDocument();
+  expect(warning).toHaveBeenCalledTimes(1);
 });
