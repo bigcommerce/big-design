@@ -24,18 +24,18 @@ const formProps: Prop[] = [
 const formFieldsetProps: Prop[] = [
   {
     name: 'description',
-    types: 'ReactChild',
-    description: 'Pass in a description to display in the fieldset.',
+    types: ['string', 'FieldsetDescription'],
+    description: 'Pass in a description to display in the fieldset. Will render nothing if not the correct type.',
   },
   {
     name: 'legend',
-    types: 'ReactChild',
-    description: 'Pass in a legend to display in the fieldset.',
+    types: ['string', 'FieldsetLegend'],
+    description: 'Pass in a legend to display in the fieldset. Will render nothing if not the correct type.',
   },
 ];
 
 export const FormFieldsetPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="Form.Fieldset" propList={formFieldsetProps} {...props} />
+  <PropTable title="Fieldset" propList={formFieldsetProps} {...props} />
 );
 
 export const FormLabelPropTable: React.FC<{ id?: string }> = ({ id }) => (

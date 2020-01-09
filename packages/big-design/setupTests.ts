@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 
 import * as utils from './src/utils';
+import { warning } from './src/utils/warning';
 
 /**
  * Because this util generates straightforward IDs which are saved in the snapshots,
@@ -25,6 +26,13 @@ jest.mock('./src/utils', () => {
   };
 });
 
-beforeEach(() => {
+jest.mock('./src/utils/warning', () => {
+  return {
+    warning: jest.fn(),
+  };
+});
+
+afterEach(() => {
   (utils as any).resetCounter();
+  (warning as any).mockClear();
 });

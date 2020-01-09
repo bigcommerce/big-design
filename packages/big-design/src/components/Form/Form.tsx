@@ -1,9 +1,10 @@
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import React, { Ref } from 'react';
 
+import { Fieldset } from '../Fieldset';
+
 import { StyledForm } from './styled';
 import { FormControlError } from './Error';
-import { Fieldset } from './Fieldset';
 import { FormGroup } from './Group';
 import { FormControlLabel } from './Label';
 
