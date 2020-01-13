@@ -33,7 +33,7 @@ export default class MyApp extends App {
     return (
       <>
         <Head>
-          <link rel="icon" type="image/png" href={`${process.env.URL_PREFIX}/static/favicon.png`}></link>
+          <link rel="icon" type="image/png" href={`${process.env.URL_PREFIX}/public/favicon.png`}></link>
           <title>BigDesign</title>
         </Head>
         <style jsx global>
