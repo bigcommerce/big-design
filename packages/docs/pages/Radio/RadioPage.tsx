@@ -1,4 +1,4 @@
-import { Fieldset, Form, H0, H1, Link, Radio, Text } from '@bigcommerce/big-design';
+import { Fieldset, Form, FormGroup, H0, H1, Link, Radio, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -25,10 +25,10 @@ export default () => (
 
         return (
           <Form>
-            <Form.Group>
+            <FormGroup>
               <Radio label="On" checked={selected === 'on'} value="on" onChange={handleChange} />
               <Radio label="Off" checked={selected === 'off'} value="off" onChange={handleChange} />
-            </Form.Group>
+            </FormGroup>
           </Form>
         );
       }}
@@ -61,16 +61,16 @@ export default () => (
         return (
           <Form>
             <Fieldset legend="First Group">
-              <Form.Group>
+              <FormGroup>
                 <Radio label="On" checked={firstRadio === 'on'} value="on" onChange={handleFirstChange} />
                 <Radio label="Off" checked={firstRadio === 'off'} value="off" onChange={handleFirstChange} />
-              </Form.Group>
+              </FormGroup>
             </Fieldset>
             <Fieldset legend="Second Group">
-              <Form.Group>
+              <FormGroup>
                 <Radio label="On" checked={secondRadio === 'on'} value="on" onChange={handleSecondChange} />
                 <Radio label="Off" checked={secondRadio === 'off'} value="off" onChange={handleSecondChange} />
-              </Form.Group>
+              </FormGroup>
             </Fieldset>
           </Form>
         );

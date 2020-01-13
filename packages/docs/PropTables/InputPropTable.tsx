@@ -14,7 +14,7 @@ const inputProps: Prop[] = [
     types: ['string', 'string[]', 'FormControlError', 'FormControlError[]'],
     description: (
       <>
-        Displays an error message for the field. Error message will be passed to the <Code>Form.Group</Code> for display
+        Displays an error message for the field. Error message will be passed to the <Code>FormGroup</Code> for display
         purposes.
       </>
     ),

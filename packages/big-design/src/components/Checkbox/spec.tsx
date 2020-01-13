@@ -2,7 +2,7 @@ import { fireEvent, render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
-import { warning } from '../../utils/warning';
+import { warning } from '../../utils';
 
 import { Checkbox } from './index';
 import { CheckboxLabel } from './Label';

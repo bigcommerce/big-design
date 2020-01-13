@@ -1,4 +1,4 @@
-import { Form, H0, H1, Input, Link, Text } from '@bigcommerce/big-design';
+import { Form, FormGroup, H0, H1, Input, Link, Text } from '@bigcommerce/big-design';
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
@@ -26,7 +26,7 @@ export default () => (
 
         return (
           <Form>
-            <Form.Group>
+            <FormGroup>
               <Input
                 label="Label"
                 description="Description for the input."
@@ -35,7 +35,7 @@ export default () => (
                 value={value}
                 onChange={handleChange}
               />
-            </Form.Group>
+            </FormGroup>
           </Form>
         );
       }}
@@ -60,7 +60,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Input
             label="Email Address"
             description="Provide a valid email address."
@@ -68,7 +68,7 @@ export default () => (
             error="Email address must contain a domain name."
             onChange={() => null}
           />
-        </Form.Group>
+        </FormGroup>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -82,10 +82,10 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Input label="Example" placeholder="Example" iconLeft={<CheckCircleIcon color="success" />} />
           <Input label="Example" placeholder="Example" iconRight={<CheckCircleIcon color="success" />} />
-        </Form.Group>
+        </FormGroup>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>

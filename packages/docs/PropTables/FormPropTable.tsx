@@ -5,7 +5,7 @@ import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
 export const FormErrorPropTable: React.FC<{ id?: string }> = ({ id }) => (
   <>
-    <H2 id={id}>Form.Error</H2>
+    <H2 id={id}>FormControlError</H2>
     <Text>
       Supports all native <Code>&lt;p /&gt;</Code> element attributes.
     </Text>
@@ -40,9 +40,18 @@ export const FormFieldsetPropTable: React.FC<PropTableWrapper> = props => (
 
 export const FormLabelPropTable: React.FC<{ id?: string }> = ({ id }) => (
   <>
-    <H2 id={id}>Form.Label</H2>
+    <H2 id={id}>FormControlLabel</H2>
     <Text>
       Supports all native <Code>&lt;label /&gt;</Code> element attributes.
+    </Text>
+  </>
+);
+
+export const FormDescriptionPropTable: React.FC<{ id?: string }> = ({ id }) => (
+  <>
+    <H2 id={id}>FormControlDescription</H2>
+    <Text>
+      Supports all native <Code>&lt;p /&gt;</Code> element attributes.
     </Text>
   </>
 );
@@ -65,5 +74,5 @@ export const FormPropTable: React.FC<PropTableWrapper> = props => (
 );
 
 export const FormGroupPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="Form.Group" propList={formGroupProps} {...props} />
+  <PropTable title="FormGroup" propList={formGroupProps} {...props} />
 );

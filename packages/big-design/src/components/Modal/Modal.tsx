@@ -3,7 +3,8 @@ import focusTrap, { FocusTrap } from 'focus-trap';
 import React, { createRef, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { typedMemo, uniqueId } from '../../utils';
+import { typedMemo } from '../../utils';
+import { useUniqueId } from '../../utils/useUniqueId';
 import { Button, ButtonProps } from '../Button';
 import { H2 } from '../Typography';
 
@@ -46,7 +47,7 @@ export const Modal: React.FC<ModalProps> = typedMemo(
     const [internalTrap, setInternalTrap] = useState<FocusTrap | null>(null);
     const [initialBodyOverflowY, setInitialBodyOverflowY] = useState('');
     const [modalContainer, setModalContainer] = useState<HTMLDivElement | null>(null);
-    const headerUniqueId = useMemo(() => uniqueId('modal_header_'), []);
+    const headerUniqueId = useUniqueId('modal_header');
     const modalRef = createRef<HTMLDivElement>();
     const previousFocus = useRef(typeof document !== 'undefined' ? document.activeElement : null);
 

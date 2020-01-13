@@ -4,6 +4,7 @@ import {
   Checkbox,
   Fieldset,
   Form,
+  FormGroup,
   H0,
   H1,
   Input,
@@ -17,6 +18,7 @@ import React from 'react';
 
 import { Code, CodePreview } from '../../components';
 import {
+  FormDescriptionPropTable,
   FormErrorPropTable,
   FormFieldsetPropTable,
   FormGroupPropTable,
@@ -40,17 +42,17 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Input
             label="Email"
             type="email"
             description="Please provide a valid email address."
             placeholder="Email address"
           />
-        </Form.Group>
-        <Form.Group>
+        </FormGroup>
+        <FormGroup>
           <Input label="Password" type="password" placeholder="Password" />
-        </Form.Group>
+        </FormGroup>
         <Box marginTop="xxLarge">
           <Button>Sign In</Button>
         </Box>
@@ -62,6 +64,7 @@ export default () => (
     <FormPropTable />
     <FormErrorPropTable id="error" />
     <FormLabelPropTable id="label" />
+    <FormDescriptionPropTable id="label" />
     <FormGroupPropTable />
     <FormFieldsetPropTable />
 
@@ -75,16 +78,16 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Input label="Example Input" placeholder="Example" />
-        </Form.Group>
-        <Form.Group>
+        </FormGroup>
+        <FormGroup>
           <Checkbox checked={true} onChange={() => null} label="Example Checkbox" />
-        </Form.Group>
-        <Form.Group>
+        </FormGroup>
+        <FormGroup>
           <Radio checked={true} onChange={() => null} label="Example Radio" />
-        </Form.Group>
-        <Form.Group>
+        </FormGroup>
+        <FormGroup>
           <Select
             label="Example Select"
             onItemChange={() => null}
@@ -96,10 +99,10 @@ export default () => (
             ]}
             placeholder="Example"
           />
-        </Form.Group>
-        <Form.Group>
+        </FormGroup>
+        <FormGroup>
           <Textarea label="Example Textarea" placeholder="Example" />
-        </Form.Group>
+        </FormGroup>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -107,32 +110,31 @@ export default () => (
     <H1>Layout</H1>
 
     <Text>
-      You can up to 3 <Code>Input</Code> components in row to add more dimension to a <Code>Form.Group</Code>.{' '}
-      <Code>Radio</Code> and <Code>Checkbox</Code> components will never display inline inside a <Code>Form.Group</Code>
-      .
+      You can up to 3 <Code>Input</Code> components in row to add more dimension to a <Code>FormGroup</Code>.{' '}
+      <Code>Radio</Code> and <Code>Checkbox</Code> components will never display inline inside a <Code>FormGroup</Code>.
     </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Input label="Company" placeholder="BigCommerce" required />
-        </Form.Group>
-        <Form.Group>
+        </FormGroup>
+        <FormGroup>
           <Input label="First Name" placeholder="John" required />
           <Input label="Last Name" placeholder="Doe" required />
-        </Form.Group>
-        <Form.Group>
+        </FormGroup>
+        <FormGroup>
           <Input label="City" placeholder="Austin" required />
           <Input label="State" placeholder="Texas" required />
           <Input label="Postal Code" placeholder="78726" required />
-        </Form.Group>
-        <Fieldset legend="Shipping Method" description={<div />}>
-          <Form.Group>
+        </FormGroup>
+        <Fieldset legend="Shipping Method">
+          <FormGroup>
             <Radio label="Free – Three Day Shipping" checked onChange={() => null} />
             <Radio label="$4.99 – Two Day Shipping" />
             <Radio label="$9.99 – One Day Shipping" />
-          </Form.Group>
+          </FormGroup>
         </Fieldset>
       </Form>
       {/* jsx-to-string:end */}
@@ -142,7 +144,7 @@ export default () => (
 
     <Text>
       All form controls are tied to <Code primary>onChange</Code> or equivalent event handlers. Validation messages can
-      be passed through the <Code>error</Code> prop. All input errors in an <Code>Form.Group</Code> will appear at the
+      be passed through the <Code>error</Code> prop. All input errors in an <Code>FormGroup</Code> will appear at the
       bottom of the group component component.
     </Text>
 
@@ -174,7 +176,7 @@ export default () => (
 
         return (
           <Form onSubmit={handleSubmit}>
-            <Form.Group>
+            <FormGroup>
               <Input
                 label="Example"
                 description="Remove characters to preview validation."
@@ -184,12 +186,12 @@ export default () => (
                 pattern="^.{1,3}$"
                 required
               />
-            </Form.Group>
-            <Form.Group>
+            </FormGroup>
+            <FormGroup>
               <Input label="City" error="You must enter a valid City." placeholder="Austin" required />
               <Input label="State" placeholder="Texas" required />
               <Input label="Postal Code" error="You must enter a valid Postal Code." placeholder="78726" required />
-            </Form.Group>
+            </FormGroup>
           </Form>
         );
       }}

@@ -404,7 +404,7 @@ exports[`renders a pagination component 1`] = `
 }
 
 <div
-  aria-controls="table_0"
+  aria-controls="bd-table-1"
   class="c0"
 >
   <div
@@ -421,7 +421,7 @@ exports[`renders a pagination component 1`] = `
         <button
           aria-haspopup="true"
           class="c6 c7"
-          id="trigger_2"
+          id="trigger_1"
           role="button"
           tabindex="0"
         >
@@ -430,7 +430,7 @@ exports[`renders a pagination component 1`] = `
           >
             1 - 3 of 5
             <svg
-              aria-labelledby="bd-icon-1"
+              aria-labelledby="bd-icon-2"
               class="c9"
               fill="currentColor"
               height="24"
@@ -450,9 +450,9 @@ exports[`renders a pagination component 1`] = `
           </span>
         </button>
         <ul
-          aria-labelledby="trigger_2"
+          aria-labelledby="trigger_1"
           class="c10"
-          id="dropdown_1"
+          id="dropdown_0"
           role="listbox"
           style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;"
           tabindex="-1"
@@ -460,7 +460,7 @@ exports[`renders a pagination component 1`] = `
           <li
             class="c11"
             data-highlighted="false"
-            id="dropdown_1-item-0"
+            id="dropdown_0-item-0"
             role="option"
             tabindex="-1"
           >
@@ -473,7 +473,7 @@ exports[`renders a pagination component 1`] = `
           <li
             class="c11"
             data-highlighted="false"
-            id="dropdown_1-item-1"
+            id="dropdown_0-item-1"
             role="option"
             tabindex="-1"
           >
@@ -486,7 +486,7 @@ exports[`renders a pagination component 1`] = `
           <li
             class="c11"
             data-highlighted="false"
-            id="dropdown_1-item-2"
+            id="dropdown_0-item-2"
             role="option"
             tabindex="-1"
           >
@@ -511,7 +511,7 @@ exports[`renders a pagination component 1`] = `
             class="c8"
           >
             <svg
-              aria-labelledby="bd-icon-2"
+              aria-labelledby="bd-icon-3"
               class="c14"
               fill="currentColor"
               height="24"
@@ -521,7 +521,7 @@ exports[`renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id="bd-icon-2"
+                id="bd-icon-3"
               >
                 Previous page
               </title>
@@ -544,7 +544,7 @@ exports[`renders a pagination component 1`] = `
             class="c8"
           >
             <svg
-              aria-labelledby="bd-icon-3"
+              aria-labelledby="bd-icon-4"
               class="c14"
               fill="currentColor"
               height="24"
@@ -554,7 +554,7 @@ exports[`renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id="bd-icon-3"
+                id="bd-icon-4"
               >
                 Next page
               </title>
@@ -652,7 +652,7 @@ exports[`renders a simple table 1`] = `
 
 <table
   class="c0"
-  id="table_0"
+  id="bd-table-1"
 >
   <thead
     class=""
@@ -995,7 +995,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 <div
-  aria-controls="table_0"
+  aria-controls="bd-table-1"
   class="c0"
 >
   <div
@@ -1008,18 +1008,18 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         class="c5"
       >
         <input
-          aria-labelledby="bd-checkbox_label-2"
+          aria-labelledby="bd-checkbox_label-3"
           class="c6 c7"
-          id="bd-checkbox-1"
+          id="bd-checkbox-2"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8"
-          for="bd-checkbox-1"
+          for="bd-checkbox-2"
         >
           <svg
-            aria-labelledby="bd-icon-3"
+            aria-labelledby="bd-icon-4"
             class="c9"
             fill="currentColor"
             height="24"
@@ -1039,9 +1039,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         </label>
         <label
           class="c10"
-          for="bd-checkbox-1"
+          for="bd-checkbox-2"
           hidden=""
-          id="bd-checkbox_label-2"
+          id="bd-checkbox_label-3"
         >
           Select All
         </label>

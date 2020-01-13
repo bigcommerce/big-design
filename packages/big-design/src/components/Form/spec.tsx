@@ -5,7 +5,7 @@ import React from 'react';
 import { Fieldset } from '../Fieldset';
 import { Input } from '../Input';
 
-import { Form } from './index';
+import { Form, FormGroup } from './index';
 
 test('forwards ref', () => {
   const ref = React.createRef<HTMLFormElement>();
@@ -26,12 +26,6 @@ test('calls onSubmit', () => {
   expect(onSubmit).toHaveBeenCalled();
 });
 
-test('exposes expected statics', () => {
-  expect(Form.Error).toBeDefined();
-  expect(Form.Label).toBeDefined();
-  expect(Form.Group).toBeDefined();
-});
-
 test('simple form render', () => {
   const { container } = render(
     <Form>
@@ -39,21 +33,21 @@ test('simple form render', () => {
         legend="Primary contact"
         description="Minim velit quis aute adipisicing adipisicing do do exercitation cupidatat enim ex voluptate consequat labore."
       >
-        <Form.Group>
+        <FormGroup>
           <Input
             label="First Name"
             description="This is an example description for First Name"
             placeholder="Placeholder text"
           />
-        </Form.Group>
+        </FormGroup>
 
-        <Form.Group>
+        <FormGroup>
           <Input
             label="Middle Name"
             description="This is an example description for Last Name. Featuring a Left Icon."
             placeholder="Placeholder text"
           />
-        </Form.Group>
+        </FormGroup>
       </Fieldset>
     </Form>,
   );

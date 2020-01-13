@@ -2,6 +2,7 @@ import { render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
+import { warning } from '../../../utils';
 import { Input } from '../../Input';
 import { FormControlError } from '../Error';
 
@@ -78,4 +79,17 @@ test('renders error prop with an array of FormControlError elements', () => {
   );
 
   testIds.forEach(id => expect(getByTestId(id)).toBeInTheDocument());
+});
+
+test('does not render invalid errors', () => {
+  const testId = 'test';
+  const errors = ['Error', <FormControlError>Error</FormControlError>, <div data-testid="testId">Error</div>];
+  const { queryByTestId } = render(
+    <FormGroup errors={errors}>
+      <Input />
+    </FormGroup>,
+  );
+
+  expect(warning).toBeCalledTimes(1);
+  expect(queryByTestId(testId)).not.toBeInTheDocument();
 });

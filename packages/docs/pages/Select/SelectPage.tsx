@@ -1,4 +1,4 @@
-import { Form, Grid, H0, H1, Link, Select, Text } from '@bigcommerce/big-design';
+import { Form, FormGroup, Grid, H0, H1, Link, Select, Text } from '@bigcommerce/big-design';
 import { DeleteIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
@@ -25,7 +25,7 @@ export default () => (
 
         return (
           <Form>
-            <Form.Group>
+            <FormGroup>
               <Select
                 action={{
                   actionType: 'destructive',
@@ -59,7 +59,7 @@ export default () => (
                 required
                 value={value}
               />
-            </Form.Group>
+            </FormGroup>
           </Form>
         );
       }}
@@ -86,7 +86,7 @@ export default () => (
 
         return (
           <Form>
-            <Form.Group>
+            <FormGroup>
               <Select
                 label="States"
                 maxHeight={300}
@@ -104,7 +104,7 @@ export default () => (
                 required
                 value={value}
               />
-            </Form.Group>
+            </FormGroup>
           </Form>
         );
       }}
@@ -239,7 +239,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Select
             disabled
             label="Select"
@@ -254,7 +254,7 @@ export default () => (
             placeholder="Larger"
             required
           />
-        </Form.Group>
+        </FormGroup>
       </Form>
 
       {/* jsx-to-string:end */}
@@ -269,7 +269,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Select
             action={{
               actionType: 'destructive',
@@ -289,7 +289,7 @@ export default () => (
             placement={'bottom-start'}
             required
           />
-        </Form.Group>
+        </FormGroup>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -303,7 +303,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Select
             label="Countries"
             error="Need to choose a country before proceeding"
@@ -318,7 +318,7 @@ export default () => (
             placement={'bottom-start'}
             required
           />
-        </Form.Group>
+        </FormGroup>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
