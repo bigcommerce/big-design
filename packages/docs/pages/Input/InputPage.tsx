@@ -3,7 +3,7 @@ import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
-import { InputDescriptionPropTable, InputErrorPropTable, InputLabelPropTable, InputPropTable } from '../../PropTables';
+import { InputPropTable } from '../../PropTables';
 
 export default () => (
   <>
@@ -49,9 +49,6 @@ export default () => (
     </Text>
 
     <InputPropTable />
-    <InputDescriptionPropTable />
-    <InputErrorPropTable />
-    <InputLabelPropTable />
 
     <H1>Error State</H1>
 
