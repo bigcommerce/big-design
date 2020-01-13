@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Manager, Popper, PopperProps, Reference } from 'react-popper';
 
+import { typedMemo } from '../../utils';
 import { Small } from '../Typography';
 
 import { StyledTooltip, StyledTooltipTrigger } from './styled';
@@ -13,35 +14,38 @@ export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   inline?: boolean;
 }
 
-interface State {
-  visible: boolean;
-}
+export const Tooltip: React.FC<TooltipProps> = typedMemo(
+  ({ placement = 'top', trigger, modifiers, inline = true, children }) => {
+    const [isVisible, setIsVisible] = useState(false);
 
-export class Tooltip extends React.PureComponent<TooltipProps, State> {
-  static defaultProps: Partial<TooltipProps> = {
-    placement: 'top',
-    inline: true,
-  };
+    const [tooltipContainer, setTooltipContainer] = useState<HTMLDivElement | null>(null);
 
-  state = {
-    visible: false,
-  };
+    useEffect(() => {
+      setTooltipContainer(document.createElement('div'));
+      document.body.appendChild(tooltipContainer as HTMLDivElement);
 
-  private tooltipContainer?: HTMLDivElement;
+      return () => {
+        document.body.removeChild(tooltipContainer as HTMLDivElement);
+      };
+    }, [tooltipContainer]);
 
-  componentDidMount() {
-    this.tooltipContainer = document.createElement('div');
-    document.body.appendChild(this.tooltipContainer);
-  }
+    const renderContent = (content: React.ReactNode) => {
+      return typeof content === 'string' ? <Small color="white">{content}</Small> : content;
+    };
 
-  componentWillUnmount() {
-    if (this.tooltipContainer) {
-      document.body.removeChild(this.tooltipContainer);
-    }
-  }
+    const hideTooltip = () => {
+      setIsVisible(false);
+    };
 
-  render() {
-    const { children, trigger, inline } = this.props;
+    const showTooltip = () => {
+      setIsVisible(true);
+    };
+
+    const onKeyDown = (event: React.KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsVisible(false);
+      }
+    };
 
     return (
       <Manager>
@@ -49,54 +53,36 @@ export class Tooltip extends React.PureComponent<TooltipProps, State> {
           {({ ref }) => (
             <StyledTooltipTrigger
               inline={inline}
-              onBlur={this.hideTooltip}
-              onFocus={this.showTooltip}
-              onKeyDown={this.onKeyDown}
-              onMouseEnter={this.showTooltip}
-              onMouseLeave={this.hideTooltip}
+              onBlur={hideTooltip}
+              onFocus={showTooltip}
+              onKeyDown={onKeyDown}
+              onMouseEnter={showTooltip}
+              onMouseLeave={hideTooltip}
               ref={ref}
             >
               {trigger}
             </StyledTooltipTrigger>
           )}
         </Reference>
-        {this.tooltipContainer
+        {tooltipContainer
           ? createPortal(
               <Popper
-                placement={this.props.placement}
-                modifiers={{ offset: { offset: '0, 8' }, ...this.props.modifiers }}
-                eventsEnabled={this.state.visible}
+                placement={placement}
+                modifiers={{ offset: { offset: '0, 8' }, ...modifiers }}
+                eventsEnabled={isVisible}
               >
-                {({ placement, ref, style }) =>
-                  this.state.visible && (
+                {({ ref, style }) =>
+                  isVisible && (
                     <StyledTooltip ref={ref} style={style} data-placement={placement}>
-                      {this.renderContent(children)}
+                      {renderContent(children)}
                     </StyledTooltip>
                   )
                 }
               </Popper>,
-              this.tooltipContainer,
+              tooltipContainer,
             )
           : null}
       </Manager>
     );
-  }
-
-  private renderContent = (content: React.ReactNode) => {
-    return typeof content === 'string' ? <Small color="white">{content}</Small> : content;
-  };
-
-  private hideTooltip = () => {
-    this.setState({ visible: false });
-  };
-
-  private showTooltip = () => {
-    this.setState({ visible: true });
-  };
-
-  private onKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      this.setState({ visible: false });
-    }
-  };
-}
+  },
+);
