@@ -3,7 +3,7 @@ import { render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
-import { warning } from '../../utils/warning';
+import { warning } from '../../utils';
 import { Form, FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
 import { Input } from './index';

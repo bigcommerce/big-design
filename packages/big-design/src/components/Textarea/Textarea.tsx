@@ -1,14 +1,14 @@
-import hoistNonReactStatics from 'hoist-non-react-statics';
-import React, { Ref } from 'react';
+import React, { forwardRef, useMemo, Ref } from 'react';
 
-import { uniqueId } from '../../utils';
+import { typedMemo, warning } from '../../utils';
+import { useUniqueId } from '../../utils/useUniqueId';
 import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
 import { StyledTextarea, StyledTextareaWrapper } from './styled';
 
 interface Props {
   description?: React.ReactChild;
-  error?: React.ReactChild;
+  error?: React.ReactNode | React.ReactNode[];
   label?: React.ReactChild;
   labelId?: string;
   rows?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
@@ -21,88 +21,98 @@ interface PrivateProps {
 
 export type TextareaProps = Props & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
-class StyleableTextarea extends React.PureComponent<TextareaProps & PrivateProps> {
-  static readonly defaultProps: Partial<Props> = {
-    rows: 3,
-    resize: true,
-  };
+const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
+  description,
+  error,
+  forwardedRef,
+  label,
+  labelId,
+  rows = 3,
+  resize = true,
+  ...props
+}) => {
+  const id = props.id ? props.id : useUniqueId('textarea');
+  const MAX_ROWS = 7;
+  const numOfRows = rows && rows > MAX_ROWS ? MAX_ROWS : rows;
 
-  static Description = FormControlDescription;
-  static Error = FormControlError;
-  static Label = FormControlLabel;
-  private readonly uniqueId = uniqueId('textarea_');
-  private readonly MAX_ROWS = 7;
-
-  render() {
-    const { description, label, labelId, resize, rows, forwardedRef, ...props } = this.props;
-    const id = this.getId();
-
-    return (
-      <div>
-        {this.renderLabel()}
-        {this.renderDescription()}
-        <StyledTextareaWrapper>
-          <StyledTextarea {...props} id={id} rows={this.getRows(rows)} resize={resize} ref={forwardedRef} />
-        </StyledTextareaWrapper>
-      </div>
-    );
-  }
-
-  private getId() {
-    const { id } = this.props;
-
-    return id ? id : this.uniqueId;
-  }
-
-  private renderDescription() {
-    const { description } = this.props;
-
-    if (typeof description === 'string') {
-      return <Textarea.Description>{description}</Textarea.Description>;
+  const renderedLabel = useMemo(() => {
+    if (!label) {
+      return null;
     }
-
-    if (React.isValidElement(description) && description.type === Textarea.Description) {
-      return description;
-    }
-
-    return null;
-  }
-
-  private renderLabel() {
-    const { label, labelId, required } = this.props;
-    const id = this.getId();
 
     if (typeof label === 'string') {
       return (
-        <Textarea.Label id={labelId} htmlFor={id} renderOptional={!required}>
+        <FormControlLabel id={labelId} htmlFor={id} renderOptional={!props.required}>
           {label}
-        </Textarea.Label>
+        </FormControlLabel>
       );
     }
 
-    if (React.isValidElement(label) && label.type === Textarea.Label) {
+    if (React.isValidElement(label) && label.type === FormControlLabel) {
       return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
         id: labelId,
         htmlFor: id,
       });
     }
 
-    return null;
-  }
+    warning('label must be either a string or a FormControlLabel component.');
+  }, [label, labelId, props.required]);
 
-  private getRows(rows: Props['rows']) {
-    if (rows && rows > this.MAX_ROWS) {
-      return this.MAX_ROWS;
+  const renderedDescription = useMemo(() => {
+    if (!description) {
+      return null;
     }
 
-    return rows;
-  }
-}
+    if (typeof description === 'string') {
+      return <FormControlDescription>{description}</FormControlDescription>;
+    }
 
-const TextareaWithForwardedRef = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, style, ...props }, ref) => <StyleableTextarea {...props} forwardedRef={ref} />,
+    if (React.isValidElement(description) && description.type === FormControlDescription) {
+      return description;
+    }
+
+    warning('description must be either a string or a FormControlDescription component.');
+  }, [description]);
+
+  const errors = useMemo(() => {
+    const validateError = (err: Props['error']) => {
+      if (!err) {
+        return null;
+      }
+
+      if (typeof err === 'string') {
+        return err;
+      }
+
+      if (React.isValidElement(err) && err.type === FormControlError) {
+        return err;
+      }
+
+      warning('error must be either a string or a FormControlError component.');
+    };
+
+    if (Array.isArray(error)) {
+      error.forEach(validateError);
+
+      return error;
+    }
+
+    return validateError(error);
+  }, [error]);
+
+  return (
+    <div>
+      {renderedLabel}
+      {renderedDescription}
+      <StyledTextareaWrapper>
+        <StyledTextarea {...props} error={errors} id={id} rows={numOfRows} resize={resize} ref={forwardedRef} />
+      </StyledTextareaWrapper>
+    </div>
+  );
+};
+
+export const Textarea = typedMemo(
+  forwardRef<HTMLTextAreaElement, TextareaProps>(({ className, style, ...props }, ref) => (
+    <StyleableTextarea {...props} forwardedRef={ref} />
+  )),
 );
-
-export const Textarea = hoistNonReactStatics(TextareaWithForwardedRef, StyleableTextarea);
-
-Textarea.displayName = 'Textarea';

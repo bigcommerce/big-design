@@ -2,12 +2,7 @@ import { Form, H0, H1, Link, Text, Textarea } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
-import {
-  TextareaDescriptionPropTable,
-  TextareaErrorPropTable,
-  TextareaLabelPropTable,
-  TextareaPropTable,
-} from '../../PropTables';
+import { TextareaPropTable } from '../../PropTables';
 
 export default () => (
   <>
@@ -54,9 +49,6 @@ export default () => (
     </Text>
 
     <TextareaPropTable />
-    <TextareaDescriptionPropTable />
-    <TextareaErrorPropTable />
-    <TextareaLabelPropTable />
 
     <H1>Error State</H1>
 

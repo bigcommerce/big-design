@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo, useState, Ref } from 'react';
 
-import { typedMemo, uniqueId } from '../../utils';
-import { warning } from '../../utils/warning';
+import { typedMemo, warning } from '../../utils';
+import { useUniqueId } from '../../utils/useUniqueId';
 import { Chip } from '../Chip';
 import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
@@ -36,7 +36,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
-  const id = useMemo(() => (props.id ? props.id : uniqueId('input_')), [props.id]);
+  const id = props.id ? props.id : useUniqueId('input');
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     const { onFocus } = props;
@@ -55,6 +55,10 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   };
 
   const renderedLabel = useMemo(() => {
+    if (!label) {
+      return null;
+    }
+
     if (typeof label === 'string') {
       return (
         <FormControlLabel id={labelId} htmlFor={id} renderOptional={!props.required}>
@@ -70,24 +74,20 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
       });
     }
 
-    if (!label) {
-      return null;
-    }
-
     warning('label must be either a string or a FormControlLabel component.');
   }, [label, labelId, props.required]);
 
   const renderedDescription = useMemo(() => {
+    if (!description) {
+      return null;
+    }
+
     if (typeof description === 'string') {
       return <FormControlDescription>{description}</FormControlDescription>;
     }
 
     if (React.isValidElement(description) && description.type === FormControlDescription) {
       return description;
-    }
-
-    if (!description) {
-      return null;
     }
 
     warning('description must be either a string or a FormControlDescription component.');
