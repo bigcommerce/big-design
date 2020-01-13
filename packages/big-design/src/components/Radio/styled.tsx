@@ -1,16 +1,11 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../mixins/transitions';
-import { StyleableText } from '../Typography/private';
 
 interface StyledRadioProps {
   checked?: boolean;
-  disabled?: boolean;
-}
-
-export interface StyledLabelProps {
   disabled?: boolean;
 }
 
@@ -22,20 +17,6 @@ export const RadioContainer = styled.div`
 export const HiddenRadio = styled.input`
   ${hideVisually()}
 `;
-
-export const StyledLabel = styled(StyleableText).attrs({
-  as: 'label',
-})<React.LabelHTMLAttributes<HTMLLabelElement> & StyledLabelProps>`
-  cursor: pointer;
-  margin-left: ${({ theme }) => theme.spacing.xSmall};
-
-  ${({ disabled, theme }) =>
-    disabled &&
-    css`
-      cursor: not-allowed;
-      color: ${theme.colors.secondary40};
-    `}
-` as StyledComponent<'label', DefaultTheme, StyledLabelProps>;
 
 export const StyledRadio = styled.label<StyledRadioProps>`
   ${withTransition(['border-color', 'box-shadow'])}
@@ -92,4 +73,3 @@ export const StyledRadio = styled.label<StyledRadioProps>`
 `;
 
 StyledRadio.defaultProps = { theme: defaultTheme };
-StyledLabel.defaultProps = { theme: defaultTheme };

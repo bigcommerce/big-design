@@ -27,22 +27,6 @@ exports[`render Radio (checked + disabled) 1`] = `
   width: 1px;
 }
 
-.c4 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-  margin-left: 0.5rem;
-  cursor: not-allowed;
-  color: #B4BAD1;
-}
-
-.c4:last-child {
-  margin-bottom: 0;
-}
-
 .c1:focus + .c5 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
@@ -100,15 +84,31 @@ exports[`render Radio (checked + disabled) 1`] = `
   opacity: 1;
 }
 
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  cursor: not-allowed;
+  color: #B4BAD1;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
 <div
   class="c0"
 >
   <input
-    aria-labelledby="checkBox_label_1"
+    aria-labelledby="bd-radio_label-2"
     checked=""
     class="c1 c2"
     disabled=""
-    id="radio_0"
+    id="bd-radio-1"
     name="test-group"
     type="radio"
   />
@@ -116,14 +116,14 @@ exports[`render Radio (checked + disabled) 1`] = `
     aria-hidden="true"
     class="c3"
     disabled=""
-    for="radio_0"
+    for="bd-radio-1"
   />
   <label
     aria-hidden="true"
     class="c4"
     disabled=""
-    for="radio_0"
-    id="checkBox_label_1"
+    for="bd-radio-1"
+    id="bd-radio_label-2"
   >
     Checked
   </label>
@@ -155,20 +155,6 @@ exports[`render Radio (checked) 1`] = `
   position: absolute;
   white-space: nowrap;
   width: 1px;
-}
-
-.c4 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-  margin-left: 0.5rem;
-}
-
-.c4:last-child {
-  margin-bottom: 0;
 }
 
 .c3 {
@@ -222,26 +208,40 @@ exports[`render Radio (checked) 1`] = `
   opacity: 1;
 }
 
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
 <div
   class="c0"
 >
   <input
-    aria-labelledby="checkBox_label_1"
+    aria-labelledby="bd-radio_label-2"
     checked=""
     class="c1 c2"
-    id="radio_0"
+    id="bd-radio-1"
     name="test-group"
     type="radio"
   />
   <label
     aria-hidden="true"
     class="c3"
-    for="radio_0"
+    for="bd-radio-1"
   />
   <label
     class="c4"
-    for="radio_0"
-    id="checkBox_label_1"
+    for="bd-radio-1"
+    id="bd-radio_label-2"
   >
     Checked
   </label>
@@ -273,22 +273,6 @@ exports[`render Radio (unchecked + disabled) 1`] = `
   position: absolute;
   white-space: nowrap;
   width: 1px;
-}
-
-.c4 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-  margin-left: 0.5rem;
-  cursor: not-allowed;
-  color: #B4BAD1;
-}
-
-.c4:last-child {
-  margin-bottom: 0;
 }
 
 .c1:focus + .c5 {
@@ -348,14 +332,30 @@ exports[`render Radio (unchecked + disabled) 1`] = `
   width: 0.75rem;
 }
 
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  cursor: not-allowed;
+  color: #B4BAD1;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
 <div
   class="c0"
 >
   <input
-    aria-labelledby="checkBox_label_1"
+    aria-labelledby="bd-radio_label-2"
     class="c1 c2"
     disabled=""
-    id="radio_0"
+    id="bd-radio-1"
     name="test-group"
     type="radio"
   />
@@ -363,14 +363,14 @@ exports[`render Radio (unchecked + disabled) 1`] = `
     aria-hidden="true"
     class="c3"
     disabled=""
-    for="radio_0"
+    for="bd-radio-1"
   />
   <label
     aria-hidden="true"
     class="c4"
     disabled=""
-    for="radio_0"
-    id="checkBox_label_1"
+    for="bd-radio-1"
+    id="bd-radio_label-2"
   >
     Unchecked
   </label>
@@ -402,20 +402,6 @@ exports[`render Radio (unchecked) 1`] = `
   position: absolute;
   white-space: nowrap;
   width: 1px;
-}
-
-.c4 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-  margin-left: 0.5rem;
-}
-
-.c4:last-child {
-  margin-bottom: 0;
 }
 
 .c1:focus + .c5 {
@@ -469,25 +455,39 @@ exports[`render Radio (unchecked) 1`] = `
   width: 0.75rem;
 }
 
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
 <div
   class="c0"
 >
   <input
-    aria-labelledby="checkBox_label_1"
+    aria-labelledby="bd-radio_label-2"
     class="c1 c2"
-    id="radio_0"
+    id="bd-radio-1"
     name="test-group"
     type="radio"
   />
   <label
     aria-hidden="true"
     class="c3"
-    for="radio_0"
+    for="bd-radio-1"
   />
   <label
     class="c4"
-    for="radio_0"
-    id="checkBox_label_1"
+    for="bd-radio-1"
+    id="bd-radio_label-2"
   >
     Unchecked
   </label>

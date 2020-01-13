@@ -5,7 +5,7 @@ import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 const radioProps: Prop[] = [
   {
     name: 'label',
-    types: 'ReactChild',
+    types: ['string', 'RadioLabel'],
     required: true,
     description: (
       <>
