@@ -15,23 +15,22 @@ export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Tooltip: React.FC<TooltipProps> = typedMemo(
-  ({ placement = 'top', trigger, modifiers, inline = true, children }) => {
+  ({ children, inline = true, modifiers, trigger, ...props }) => {
     const [isVisible, setIsVisible] = useState(false);
-
-    const [tooltipContainer, setTooltipContainer] = useState<HTMLDivElement | null>(null);
+    const [tooltipContainer] = useState(document.createElement('div'));
 
     useEffect(() => {
-      setTooltipContainer(document.createElement('div'));
-      document.body.appendChild(tooltipContainer as HTMLDivElement);
+      document.body.appendChild(tooltipContainer);
 
       return () => {
-        document.body.removeChild(tooltipContainer as HTMLDivElement);
+        document.body.removeChild(tooltipContainer);
       };
     }, [tooltipContainer]);
 
-    const renderContent = (content: React.ReactNode) => {
-      return typeof content === 'string' ? <Small color="white">{content}</Small> : content;
-    };
+    const renderContent = (content: React.ReactNode) =>
+      useMemo(() => {
+        return typeof content === 'string' ? <Small color="white">{content}</Small> : content;
+      }, [content]);
 
     const hideTooltip = () => {
       setIsVisible(false);
@@ -67,11 +66,11 @@ export const Tooltip: React.FC<TooltipProps> = typedMemo(
         {tooltipContainer
           ? createPortal(
               <Popper
-                placement={placement}
+                placement={props.placement || 'top'}
                 modifiers={{ offset: { offset: '0, 8' }, ...modifiers }}
                 eventsEnabled={isVisible}
               >
-                {({ ref, style }) =>
+                {({ placement, ref, style }) =>
                   isVisible && (
                     <StyledTooltip ref={ref} style={style} data-placement={placement}>
                       {renderContent(children)}
