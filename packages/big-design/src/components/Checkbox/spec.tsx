@@ -2,8 +2,10 @@ import { fireEvent, render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
+import { warning } from '../../utils/warning';
+
 import { Checkbox } from './index';
-import { StyleableCheckbox } from './private';
+import { CheckboxLabel } from './Label';
 
 describe('render Checkbox', () => {
   test('checked', () => {
@@ -93,6 +95,25 @@ test('triggers onChange when clicking styled and text label', () => {
   expect(onChange).toHaveBeenCalledTimes(2);
 });
 
+test('accepts valid CheckboxLabel component', () => {
+  const testId = 'test';
+  const label = <CheckboxLabel data-testid={testId}>Label</CheckboxLabel>;
+
+  const { queryByTestId } = render(<Checkbox label={label} />);
+
+  expect(queryByTestId(testId)).toBeInTheDocument();
+});
+
+test('does not accept invalid label component', () => {
+  const testId = 'test';
+  const label = <div data-testid={testId}>Label</div>;
+
+  const { queryByTestId } = render(<Checkbox label={label} />);
+
+  expect(warning).toBeCalledTimes(1);
+  expect(queryByTestId(testId)).not.toBeInTheDocument();
+});
+
 test('forwards ref', () => {
   const ref = React.createRef<HTMLInputElement>();
 
@@ -107,11 +128,4 @@ test('does not forward styles', () => {
 
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
-});
-
-test('private StyleableCheckbox forwards styles', () => {
-  const { container } = render(<StyleableCheckbox label="Checked" className="test" style={{ background: 'red' }} />);
-
-  expect(container.getElementsByClassName('test').length).toBe(1);
-  expect(container.firstChild).toHaveStyle('background: red');
 });

@@ -1008,18 +1008,18 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         class="c5"
       >
         <input
-          aria-labelledby="checkBox_label_2"
+          aria-labelledby="bd-checkbox_label-2"
           class="c6 c7"
-          id="checkBox_1"
+          id="bd-checkbox-1"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8"
-          for="checkBox_1"
+          for="bd-checkbox-1"
         >
           <svg
-            aria-labelledby="bd-icon-1"
+            aria-labelledby="bd-icon-3"
             class="c9"
             fill="currentColor"
             height="24"
@@ -1039,9 +1039,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         </label>
         <label
           class="c10"
-          for="checkBox_1"
+          for="bd-checkbox-1"
           hidden=""
-          id="checkBox_label_2"
+          id="bd-checkbox_label-2"
         >
           Select All
         </label>

@@ -1,1 +1,0 @@
-export { StyleableCheckbox } from './Checkbox';
