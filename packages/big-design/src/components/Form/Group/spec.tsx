@@ -3,6 +3,7 @@ import 'jest-styled-components';
 import React from 'react';
 
 import { Input } from '../../Input';
+import { FormControlError } from '../Error';
 
 import { FormGroup } from './';
 
@@ -55,9 +56,9 @@ test('renders error prop with an array of errors', () => {
   errors.forEach(error => expect(getByText(error)).toBeInTheDocument());
 });
 
-test('renders error with Input.Error element', () => {
+test('renders error with FormControlError element', () => {
   const testId = 'test';
-  const errors = <Input.Error data-testid={testId}>Error</Input.Error>;
+  const errors = <FormControlError data-testid={testId}>Error</FormControlError>;
   const { getByTestId } = render(
     <FormGroup errors={errors}>
       <Input />
@@ -67,9 +68,9 @@ test('renders error with Input.Error element', () => {
   expect(getByTestId(testId)).toBeInTheDocument();
 });
 
-test('renders error prop with an array of Input.Error elements', () => {
+test('renders error prop with an array of FormControlError elements', () => {
   const testIds = ['test_1', 'test_2', 'test_3'];
-  const errors = testIds.map(id => <Input.Error data-testid={id}>Error</Input.Error>);
+  const errors = testIds.map(id => <FormControlError data-testid={id}>Error</FormControlError>);
   const { getByTestId } = render(
     <FormGroup errors={errors}>
       <Input />

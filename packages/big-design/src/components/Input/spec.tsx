@@ -3,7 +3,8 @@ import { render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
-import { Form } from '../Form';
+import { warning } from '../../utils/warning';
+import { Form, FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
 import { Input } from './index';
 
@@ -85,12 +86,12 @@ test('renders an error', () => {
 
 test('accepts a Label Component', () => {
   const CustomLabel = (
-    <Input.Label>
+    <FormControlLabel>
       This is a custom Label
       <a href="#" data-testid="test">
         has a url
       </a>
-    </Input.Label>
+    </FormControlLabel>
   );
 
   const { queryByTestId } = render(<Input label={CustomLabel} />);
@@ -115,12 +116,12 @@ test('does not accept non-Label Components', () => {
 
 test('accepts a Description Component', () => {
   const CustomDescription = (
-    <Input.Description>
+    <FormControlDescription>
       This is a custom Description
       <a href="#" data-testid="test">
         has a url
       </a>
-    </Input.Description>
+    </FormControlDescription>
   );
 
   const { queryByTestId } = render(<Input description={CustomDescription} />);
@@ -145,12 +146,12 @@ test('does not accept non-Description Components', () => {
 
 test('accepts an Error Component', () => {
   const CustomError = (
-    <Input.Error>
+    <FormControlError>
       This is a custom Error Component
       <a href="#" data-testid="test">
         has a url
       </a>
-    </Input.Error>
+    </FormControlError>
   );
 
   const { queryByTestId } = render(
@@ -247,7 +248,7 @@ test('error shows when an array of strings', () => {
 
 test('error shows when an array of Errors', () => {
   const testIds = ['error_0', 'error_1'];
-  const errors = testIds.map(id => <Input.Error data-testid={id}>Error</Input.Error>);
+  const errors = testIds.map(id => <FormControlError data-testid={id}>Error</FormControlError>);
   const { getByTestId } = render(
     <Form.Group>
       <Input error={errors} />
@@ -255,6 +256,33 @@ test('error shows when an array of Errors', () => {
   );
 
   testIds.forEach(id => expect(getByTestId(id)).toBeInTheDocument());
+});
+
+describe('error does not show when invalid type', () => {
+  test('single element', () => {
+    const error = <div data-testid="err">Error</div>;
+    const { queryByTestId } = render(
+      <Form.Group>
+        <Input error={error} />
+      </Form.Group>,
+    );
+
+    expect(warning).toHaveBeenCalledTimes(1);
+    expect(queryByTestId('err')).not.toBeInTheDocument();
+  });
+
+  test('array of elements', () => {
+    const errors = ['Error', <FormControlError>Error</FormControlError>, <div data-testid="err">Error</div>];
+
+    const { queryByTestId } = render(
+      <Form.Group>
+        <Input error={errors} />
+      </Form.Group>,
+    );
+
+    expect(warning).toHaveBeenCalledTimes(1);
+    expect(queryByTestId('err')).not.toBeInTheDocument();
+  });
 });
 
 test('appends (optional) text to label if input is not required', () => {
