@@ -1,9 +1,10 @@
-import hoistNonReactStatics from 'hoist-non-react-statics';
-import React, { memo, Ref } from 'react';
+import React, { forwardRef, useMemo, Ref } from 'react';
 
-import { uniqueId } from '../../utils';
+import { typedMemo, warning } from '../../utils';
+import { useUniqueId } from '../../utils/useUniqueId';
 
-import { HiddenRadio, RadioContainer, StyledLabel, StyledRadio } from './styled';
+import { HiddenRadio, RadioContainer, StyledRadio } from './styled';
+import { RadioLabel } from './Label';
 
 interface Props {
   label: React.ReactChild;
@@ -15,70 +16,60 @@ interface PrivateProps {
 
 export type RadioProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
-class RawRadio extends React.PureComponent<RadioProps & PrivateProps> {
-  static Label = memo(StyledLabel);
-  private readonly uniqueId = uniqueId('radio_');
-  private readonly labelUniqueId = uniqueId('checkBox_label_');
+const RawRadio: React.FC<RadioProps & PrivateProps> = ({
+  checked,
+  className,
+  disabled,
+  label,
+  forwardedRef,
+  style,
+  ...props
+}) => {
+  const id = props.id ? props.id : useUniqueId('radio');
+  const labelId = useUniqueId('radio_label');
 
-  render() {
-    const { checked, className, disabled, label, forwardedRef, style, ...props } = this.props;
-    const id = this.getInputId();
-
-    return (
-      <RadioContainer className={className} style={style}>
-        <HiddenRadio
-          type="radio"
-          checked={checked}
-          id={id}
-          disabled={disabled}
-          {...props}
-          aria-labelledby={this.labelUniqueId}
-          ref={forwardedRef}
-        />
-        <StyledRadio checked={checked} disabled={disabled} htmlFor={id} aria-hidden={true} />
-        {this.renderLabel()}
-      </RadioContainer>
-    );
-  }
-
-  private getInputId() {
-    const { id } = this.props;
-
-    return id ? id : this.uniqueId;
-  }
-
-  private renderLabel() {
-    const htmlFor = this.getInputId();
-    const { disabled, label } = this.props;
+  const renderedLabel = useMemo(() => {
+    if (!label) {
+      return null;
+    }
 
     if (typeof label === 'string') {
       return (
-        <StyledLabel htmlFor={htmlFor} id={this.labelUniqueId} disabled={disabled} aria-hidden={disabled}>
+        <RadioLabel htmlFor={id} id={labelId} disabled={disabled} aria-hidden={disabled}>
           {label}
-        </StyledLabel>
+        </RadioLabel>
       );
     }
 
-    if (React.isValidElement(label) && label.type === Radio.Label) {
+    if (React.isValidElement(label) && label.type === RadioLabel) {
       return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
-        htmlFor,
-        id: this.labelUniqueId,
+        htmlFor: id,
+        id: labelId,
       });
     }
 
-    return null;
-  }
-}
+    warning('label must be either a string or a RadioLabel component.');
+  }, [disabled, id, label, labelId]);
 
-const RadioWithForwardedRef = React.forwardRef<HTMLInputElement, RadioProps>(({ className, style, ...props }, ref) => (
-  <RawRadio {...props} forwardedRef={ref} />
-));
+  return (
+    <RadioContainer className={className} style={style}>
+      <HiddenRadio
+        type="radio"
+        checked={checked}
+        id={id}
+        disabled={disabled}
+        {...props}
+        aria-labelledby={labelId}
+        ref={forwardedRef}
+      />
+      <StyledRadio checked={checked} disabled={disabled} htmlFor={id} aria-hidden={true} />
+      {renderedLabel}
+    </RadioContainer>
+  );
+};
 
-export const Radio = hoistNonReactStatics(RadioWithForwardedRef, RawRadio);
-
-export const StyleableRadio = React.forwardRef<HTMLInputElement, RadioProps>((props, ref) => (
-  <RawRadio {...props} forwardedRef={ref} />
-));
-
-Radio.displayName = 'Radio';
-StyleableRadio.displayName = 'StyleableRadio';
+export const Radio = typedMemo(
+  forwardRef<HTMLInputElement, RadioProps>(({ className, style, ...props }, ref) => (
+    <RawRadio {...props} forwardedRef={ref} />
+  )),
+);

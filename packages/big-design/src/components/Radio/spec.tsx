@@ -2,8 +2,9 @@ import { fireEvent, render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
-import { Radio } from './index';
-import { StyleableRadio } from './private';
+import { warning } from '../../utils/warning';
+
+import { Radio, RadioLabel } from './index';
 
 test('render Radio (checked)', () => {
   const { container } = render(<Radio label="Checked" name="test-group" checked={true} onChange={() => null} />);
@@ -68,6 +69,25 @@ test('triggers onChange when clicking styled and text label', () => {
   expect(onChange).toHaveBeenCalledTimes(2);
 });
 
+test('accepts valid RadioLabel component', () => {
+  const testId = 'test';
+  const label = <RadioLabel data-testid={testId}>Label</RadioLabel>;
+
+  const { queryByTestId } = render(<Radio label={label} />);
+
+  expect(queryByTestId(testId)).toBeInTheDocument();
+});
+
+test('does not accept invalid label component', () => {
+  const testId = 'test';
+  const label = <div data-testid={testId}>Label</div>;
+
+  const { queryByTestId } = render(<Radio label={label} />);
+
+  expect(warning).toBeCalledTimes(1);
+  expect(queryByTestId(testId)).not.toBeInTheDocument();
+});
+
 test('forwards ref', () => {
   const ref = React.createRef<HTMLInputElement>();
 
@@ -81,10 +101,4 @@ test('does not forward styles', () => {
   const { container } = render(<Radio label="Checked" className="test" />);
 
   expect(container.getElementsByClassName('test').length).toBe(0);
-});
-
-test('private version forwards styles', () => {
-  const { container } = render(<StyleableRadio label="Checked" className="test" />);
-
-  expect(container.getElementsByClassName('test').length).toBe(1);
 });
