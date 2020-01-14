@@ -231,7 +231,7 @@ exports[`render open modal 1`] = `
       tabindex="-1"
     >
       <div
-        aria-labelledby="modal_header_0"
+        aria-labelledby="bd-modal_header-1"
         class="c1 c2 c3"
       >
         <div
@@ -246,7 +246,7 @@ exports[`render open modal 1`] = `
               class="c6"
             >
               <svg
-                aria-labelledby="bd-icon-1"
+                aria-labelledby="bd-icon-3"
                 class="c7"
                 fill="currentColor"
                 height="24"
@@ -256,7 +256,7 @@ exports[`render open modal 1`] = `
                 width="24"
               >
                 <title
-                  id="bd-icon-1"
+                  id="bd-icon-3"
                 >
                   Close
                 </title>
@@ -503,7 +503,7 @@ exports[`render open modal without backdrop 1`] = `
       tabindex="-1"
     >
       <div
-        aria-labelledby="modal_header_0"
+        aria-labelledby="bd-modal_header-1"
         class="c1 c2 c3"
       >
         <div
@@ -518,7 +518,7 @@ exports[`render open modal without backdrop 1`] = `
               class="c6"
             >
               <svg
-                aria-labelledby="bd-icon-1"
+                aria-labelledby="bd-icon-3"
                 class="c7"
                 fill="currentColor"
                 height="24"
@@ -528,7 +528,7 @@ exports[`render open modal without backdrop 1`] = `
                 width="24"
               >
                 <title
-                  id="bd-icon-1"
+                  id="bd-icon-3"
                 >
                   Close
                 </title>

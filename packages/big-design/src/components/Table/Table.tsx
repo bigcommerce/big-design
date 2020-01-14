@@ -1,8 +1,9 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 
 import { MarginProps } from '../../mixins';
-import { typedMemo, uniqueId } from '../../utils';
+import { typedMemo } from '../../utils';
 import { useEventCallback } from '../../utils/useEventCallback';
+import { useUniqueId } from '../../utils/useUniqueId';
 
 import { StyledTable, StyledTableFigure } from './styled';
 import { TableColumn, TableItem, TableProps } from './types';
@@ -31,7 +32,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     ...rest
   } = props;
   const actionsRef = useRef<HTMLDivElement>(null);
-  const tableIdRef = useRef(id || uniqueId('table_'));
+  const tableIdRef = useRef(id || useUniqueId('table'));
   const isSelectable = Boolean(selectable);
   const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
 

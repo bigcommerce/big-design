@@ -3,7 +3,7 @@ import 'jest-styled-components';
 import React from 'react';
 
 import { warning } from '../../utils';
-import { Form, FormControlDescription, FormControlError, FormControlLabel } from '../Form';
+import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
 
 import { Textarea, TextareaProps } from './index';
 
@@ -31,12 +31,12 @@ test('renders an textarea with matched label', () => {
 test('create unique ids if not provided', () => {
   const { queryByTestId } = render(
     <>
-      <Form.Group>
+      <FormGroup>
         <Textarea label="Test Label" data-testid="item1" />
-      </Form.Group>
-      <Form.Group>
+      </FormGroup>
+      <FormGroup>
         <Textarea label="Test Label" data-testid="item2" />
-      </Form.Group>
+      </FormGroup>
     </>,
   );
 
@@ -79,9 +79,9 @@ test('renders a description', () => {
 test('renders an error', () => {
   const errorText = 'This is an error';
   const { queryByText } = render(
-    <Form.Group>
+    <FormGroup>
       <Textarea error={errorText} />
-    </Form.Group>,
+    </FormGroup>,
   );
 
   expect(queryByText(errorText)).toBeInTheDocument();
@@ -158,9 +158,9 @@ test('accepts an Error Component', () => {
   );
 
   const { queryByTestId } = render(
-    <Form.Group>
+    <FormGroup>
       <Textarea error={CustomError} />
-    </Form.Group>,
+    </FormGroup>,
   );
 
   expect(queryByTestId('test')).toBeInTheDocument();
@@ -177,9 +177,9 @@ test('does not accept non-Error Components', () => {
   );
 
   const { queryByTestId } = render(
-    <Form.Group>
+    <FormGroup>
       <Textarea error={NotAnError} />
-    </Form.Group>,
+    </FormGroup>,
   );
 
   expect(queryByTestId('test')).not.toBeInTheDocument();
@@ -189,9 +189,9 @@ describe('error does not show when invalid type', () => {
   test('single element', () => {
     const error = <div data-testid="err">Error</div>;
     const { queryByTestId } = render(
-      <Form.Group>
+      <FormGroup>
         <Textarea error={error} />
-      </Form.Group>,
+      </FormGroup>,
     );
 
     expect(warning).toHaveBeenCalledTimes(1);
@@ -202,9 +202,9 @@ describe('error does not show when invalid type', () => {
     const errors = ['Error', <FormControlError>Error</FormControlError>, <div data-testid="err">Error</div>];
 
     const { queryByTestId } = render(
-      <Form.Group>
+      <FormGroup>
         <Textarea error={errors} />
-      </Form.Group>,
+      </FormGroup>,
     );
 
     expect(warning).toHaveBeenCalledTimes(1);

@@ -1,7 +1,8 @@
 import { ErrorIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
-import { uniqueId } from '../../../utils';
+import { warning } from '../../../utils';
+import { useUniqueId } from '../../../utils/useUniqueId';
 import { Checkbox } from '../../Checkbox';
 import { Radio } from '../../Radio';
 import { FormControlError } from '../Error';
@@ -22,7 +23,7 @@ export const FormGroup: React.FC<GroupProps> = props => {
   const renderErrors = () => {
     // If Form.Group has errors prop, don't generate errors from children
     if (groupErrors) {
-      return generateErrors(groupErrors);
+      return generateErrors(groupErrors, true);
     }
 
     return React.Children.map(children, child => {
@@ -51,8 +52,8 @@ export const FormGroup: React.FC<GroupProps> = props => {
   );
 };
 
-function generateErrors(errors: GroupProps['errors']): React.ReactNode {
-  const errorKey = uniqueId('formGroup_error_');
+function generateErrors(errors: GroupProps['errors'], fromGroup = false): React.ReactNode {
+  const errorKey = useUniqueId('formGroup_error');
 
   if (typeof errors === 'string') {
     return (
@@ -73,8 +74,14 @@ function generateErrors(errors: GroupProps['errors']): React.ReactNode {
   }
 
   if (Array.isArray(errors)) {
-    return errors.map(error => error && generateErrors(error));
+    return errors.map(error => error && generateErrors(error, fromGroup));
   }
 
-  return null;
+  if (!errors) {
+    return null;
+  }
+
+  if (fromGroup) {
+    warning('errors must be either a string, FormControlError, or an array of strings or FormControlError components.');
+  }
 }

@@ -7,20 +7,6 @@ exports[`renders all together 1`] = `
   width: 1.5rem;
 }
 
-.c1 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
-}
-
-.c1:last-child {
-  margin-bottom: 0;
-}
-
 .c2 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
@@ -117,6 +103,20 @@ exports[`renders all together 1`] = `
   flex: 1;
   height: 100%;
   margin-top: -0.25rem;
+}
+
+.c1 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c1:last-child {
+  margin-bottom: 0;
 }
 
 .c0 {

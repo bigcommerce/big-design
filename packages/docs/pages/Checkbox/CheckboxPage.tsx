@@ -1,4 +1,4 @@
-import { Checkbox, Form, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { Checkbox, Form, FormGroup, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -24,9 +24,9 @@ export default () => (
 
         return (
           <Form>
-            <Form.Group>
+            <FormGroup>
               <Checkbox label={checked ? 'Checked' : 'Unchecked'} checked={checked} onChange={handleChange} />
-            </Form.Group>
+            </FormGroup>
           </Form>
         );
       }}
@@ -47,9 +47,9 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Checkbox label="Indeterminate" isIndeterminate />
-        </Form.Group>
+        </FormGroup>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>

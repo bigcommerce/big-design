@@ -1,4 +1,4 @@
-import { Form, H0, H1, Link, Text, Textarea } from '@bigcommerce/big-design';
+import { Form, FormGroup, H0, H1, Link, Text, Textarea } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -25,7 +25,7 @@ export default () => (
 
         return (
           <Form>
-            <Form.Group>
+            <FormGroup>
               <Textarea
                 label="Label"
                 description="Description for the textarea."
@@ -35,7 +35,7 @@ export default () => (
                 value={value}
                 onChange={handleChange}
               />
-            </Form.Group>
+            </FormGroup>
           </Form>
         );
       }}
@@ -60,7 +60,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Textarea
             label="Description"
             description="Description needs to be at least 64 characters long."
@@ -69,7 +69,7 @@ export default () => (
             error="Field needs to contain at least 64 characters."
             onChange={() => null}
           />
-        </Form.Group>
+        </FormGroup>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -84,9 +84,9 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Textarea label="Label" description="Textarea with 5 rows." placeholder="Placeholder" rows={5} />
-        </Form.Group>
+        </FormGroup>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -101,9 +101,9 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Form>
-        <Form.Group>
+        <FormGroup>
           <Textarea label="Label" placeholder="Textarea cannot be resized." resize={false} />
-        </Form.Group>
+        </FormGroup>
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>

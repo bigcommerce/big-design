@@ -3,7 +3,7 @@ import { fireEvent, render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
-import { Form } from '../Form';
+import { FormGroup } from '../Form';
 
 import { Select } from './Select';
 
@@ -360,7 +360,7 @@ test('select action supports actionTypes', () => {
 
 test('select should render an error if one is provided', () => {
   const { getByText } = render(
-    <Form.Group>
+    <FormGroup>
       <Select
         onItemChange={onItemChange}
         label="Countries"
@@ -375,7 +375,7 @@ test('select should render an error if one is provided', () => {
         ]}
         required
       />
-    </Form.Group>,
+    </FormGroup>,
   );
 
   expect(getByText('Required')).toBeInTheDocument();

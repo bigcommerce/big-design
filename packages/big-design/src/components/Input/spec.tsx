@@ -4,7 +4,7 @@ import 'jest-styled-components';
 import React from 'react';
 
 import { warning } from '../../utils';
-import { Form, FormControlDescription, FormControlError, FormControlLabel } from '../Form';
+import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
 
 import { Input } from './index';
 
@@ -76,9 +76,9 @@ test('renders a description', () => {
 test('renders an error', () => {
   const errorText = 'This is an error';
   const { queryByText } = render(
-    <Form.Group>
+    <FormGroup>
       <Input error={errorText} />
-    </Form.Group>,
+    </FormGroup>,
   );
 
   expect(queryByText(errorText)).toBeInTheDocument();
@@ -155,9 +155,9 @@ test('accepts an Error Component', () => {
   );
 
   const { queryByTestId } = render(
-    <Form.Group>
+    <FormGroup>
       <Input error={CustomError} />
-    </Form.Group>,
+    </FormGroup>,
   );
 
   expect(queryByTestId('test')).toBeInTheDocument();
@@ -174,9 +174,9 @@ test('does not accept non-Error Components', () => {
   );
 
   const { queryByTestId } = render(
-    <Form.Group>
+    <FormGroup>
       <Input error={NotAnError} />
-    </Form.Group>,
+    </FormGroup>,
   );
 
   expect(queryByTestId('test')).not.toBeInTheDocument();
@@ -219,17 +219,17 @@ test('renders all together', () => {
 test('error shows with valid string', () => {
   const error = 'Error';
   const { container, rerender } = render(
-    <Form.Group>
+    <FormGroup>
       <Input error="" />
-    </Form.Group>,
+    </FormGroup>,
   );
 
   expect(container.querySelector('[class*="StyledError"]')).not.toBeInTheDocument();
 
   rerender(
-    <Form.Group>
+    <FormGroup>
       <Input error={error} />
-    </Form.Group>,
+    </FormGroup>,
   );
 
   expect(container.querySelector('[class*="StyledError"]')).toBeInTheDocument();
@@ -238,9 +238,9 @@ test('error shows with valid string', () => {
 test('error shows when an array of strings', () => {
   const errors = ['Error 0', 'Error 1'];
   const { getByText } = render(
-    <Form.Group>
+    <FormGroup>
       <Input error={errors} />
-    </Form.Group>,
+    </FormGroup>,
   );
 
   errors.forEach(error => expect(getByText(error)).toBeInTheDocument());
@@ -250,9 +250,9 @@ test('error shows when an array of Errors', () => {
   const testIds = ['error_0', 'error_1'];
   const errors = testIds.map(id => <FormControlError data-testid={id}>Error</FormControlError>);
   const { getByTestId } = render(
-    <Form.Group>
+    <FormGroup>
       <Input error={errors} />
-    </Form.Group>,
+    </FormGroup>,
   );
 
   testIds.forEach(id => expect(getByTestId(id)).toBeInTheDocument());
@@ -262,9 +262,9 @@ describe('error does not show when invalid type', () => {
   test('single element', () => {
     const error = <div data-testid="err">Error</div>;
     const { queryByTestId } = render(
-      <Form.Group>
+      <FormGroup>
         <Input error={error} />
-      </Form.Group>,
+      </FormGroup>,
     );
 
     expect(warning).toHaveBeenCalledTimes(1);
@@ -275,9 +275,9 @@ describe('error does not show when invalid type', () => {
     const errors = ['Error', <FormControlError>Error</FormControlError>, <div data-testid="err">Error</div>];
 
     const { queryByTestId } = render(
-      <Form.Group>
+      <FormGroup>
         <Input error={errors} />
-      </Form.Group>,
+      </FormGroup>,
     );
 
     expect(warning).toHaveBeenCalledTimes(1);
