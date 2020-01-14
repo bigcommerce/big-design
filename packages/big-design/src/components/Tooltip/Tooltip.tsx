@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Manager, Popper, PopperProps, Reference } from 'react-popper';
 
@@ -34,9 +34,9 @@ export const Tooltip: React.FC<TooltipProps> = typedMemo(
       };
     }, [tooltipContainer]);
 
-    const renderContent = (content: React.ReactNode) => {
-      return typeof content === 'string' ? <Small color="white">{content}</Small> : content;
-    };
+    const renderContent = useMemo(() => {
+      return typeof children === 'string' ? <Small color="white">{children}</Small> : children;
+    }, [children]);
 
     const hideTooltip = () => {
       setIsVisible(false);
@@ -79,7 +79,7 @@ export const Tooltip: React.FC<TooltipProps> = typedMemo(
                 {({ placement, ref, style }) =>
                   isVisible && (
                     <StyledTooltip ref={ref} style={style} data-placement={placement}>
-                      {renderContent(children)}
+                      {renderContent}
                     </StyledTooltip>
                   )
                 }
