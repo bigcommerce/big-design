@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Manager, Popper, PopperProps, Reference } from 'react-popper';
 
@@ -17,20 +17,26 @@ export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Tooltip: React.FC<TooltipProps> = typedMemo(
   ({ children, inline = true, modifiers, trigger, ...props }) => {
     const [isVisible, setIsVisible] = useState(false);
-    const [tooltipContainer] = useState(document.createElement('div'));
+    const [tooltipContainer, setTooltipContainer] = useState<HTMLDivElement | null>(null);
 
     useEffect(() => {
-      document.body.appendChild(tooltipContainer);
+      const container = document.createElement('div');
 
+      document.body.appendChild(container);
+      setTooltipContainer(container);
+    }, []);
+
+    useEffect(() => {
       return () => {
-        document.body.removeChild(tooltipContainer);
+        if (tooltipContainer) {
+          document.body.removeChild(tooltipContainer);
+        }
       };
     }, [tooltipContainer]);
 
-    const renderContent = (content: React.ReactNode) =>
-      useMemo(() => {
-        return typeof content === 'string' ? <Small color="white">{content}</Small> : content;
-      }, [content]);
+    const renderContent = (content: React.ReactNode) => {
+      return typeof content === 'string' ? <Small color="white">{content}</Small> : content;
+    };
 
     const hideTooltip = () => {
       setIsVisible(false);
