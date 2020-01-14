@@ -1,9 +1,8 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../mixins/transitions';
-import { StyleableText } from '../Typography/private';
 
 interface StyledCheckboxProps {
   checked?: boolean;
@@ -66,21 +65,4 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   }
 `;
 
-export const StyledLabel = styled(StyleableText).attrs({
-  as: 'label',
-})<React.LabelHTMLAttributes<HTMLLabelElement> & StyledLabelProps>`
-  cursor: pointer;
-  margin-left: ${({ theme }) => theme.spacing.xSmall};
-
-  ${({ disabled, theme }) =>
-    disabled &&
-    css`
-      cursor: not-allowed;
-      color: ${theme.colors.secondary40};
-    `}
-
-  ${({ hidden }) => hidden && hideVisually()}
-` as StyledComponent<'label', DefaultTheme, StyledLabelProps>;
-
 StyledCheckbox.defaultProps = { theme: defaultTheme };
-StyledLabel.defaultProps = { theme: defaultTheme };
