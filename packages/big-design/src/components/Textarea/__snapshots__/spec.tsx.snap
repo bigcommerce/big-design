@@ -102,7 +102,7 @@ exports[`renders all together 1`] = `
 <div>
   <label
     class="c0"
-    for="textarea_0"
+    for="bd-textarea-1"
   >
     This is a label
   </label>
@@ -116,7 +116,7 @@ exports[`renders all together 1`] = `
   >
     <textarea
       class="c3"
-      id="textarea_0"
+      id="bd-textarea-1"
       rows="3"
     />
   </span>

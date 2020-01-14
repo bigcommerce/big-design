@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from 'react';
 
-import { warning } from '../../utils/warning';
+import { warning } from '../../utils';
 
 import { StyledFieldset } from './styled';
 import { FieldsetDescription } from './Description';

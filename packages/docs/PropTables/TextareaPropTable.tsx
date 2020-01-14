@@ -6,17 +6,17 @@ import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components
 const textareaProps: Prop[] = [
   {
     name: 'description',
-    types: 'ReactChild',
+    types: ['string', 'FormControlDescription'],
     description: 'Append a description to the textarea field.',
   },
   {
     name: 'error',
-    types: 'ReactChild',
+    types: ['string', 'string[]', 'FormControlError', 'FormControlError[]'],
     description: 'Displays an error message for the field.',
   },
   {
     name: 'label',
-    types: 'ReactChild',
+    types: ['string', 'FormControlLabel'],
     description: (
       <>
         Label element for textareas. Component with auto generate <Code>id</Code>'s for the accessibility API.
@@ -52,39 +52,4 @@ const textareaProps: Prop[] = [
 
 export const TextareaPropTable: React.FC<PropTableWrapper> = props => (
   <PropTable title="Textarea" propList={textareaProps} {...props} />
-);
-
-export const TextareaDescriptionPropTable: React.FC = () => (
-  <>
-    <H2>Textarea.Description</H2>
-    <Text>
-      Supports all native <Code>&lt;p /&gt;</Code> element attributes.
-    </Text>
-  </>
-);
-
-export const TextareaErrorPropTable: React.FC = () => (
-  <>
-    <H2>Textarea.Error</H2>
-    <Text>
-      See{' '}
-      <NextLink href="/Form/FormPage" as="/form#error">
-        Forms.Error
-      </NextLink>
-      .
-    </Text>
-  </>
-);
-
-export const TextareaLabelPropTable: React.FC = () => (
-  <>
-    <H2>Textarea.Label</H2>
-    <Text>
-      See{' '}
-      <NextLink href="/Form/FormPage" as="/form#label">
-        Forms.Label
-      </NextLink>
-      .
-    </Text>
-  </>
 );

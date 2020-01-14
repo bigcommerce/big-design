@@ -140,7 +140,7 @@ exports[`renders all together 1`] = `
 <div>
   <label
     class="c0"
-    for="input_0"
+    for="bd-input-1"
   >
     This is a label
   </label>
@@ -156,7 +156,7 @@ exports[`renders all together 1`] = `
       class="c3"
     >
       <svg
-        aria-labelledby="bd-icon-1"
+        aria-labelledby="bd-icon-2"
         class="c4"
         data-testid="icon-left"
         fill="currentColor"
@@ -180,14 +180,14 @@ exports[`renders all together 1`] = `
     >
       <input
         class="c6"
-        id="input_0"
+        id="bd-input-1"
       />
     </div>
     <div
       class="c3"
     >
       <svg
-        aria-labelledby="bd-icon-2"
+        aria-labelledby="bd-icon-3"
         class="c4"
         data-testid="icon-right"
         fill="currentColor"

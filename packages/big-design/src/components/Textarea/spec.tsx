@@ -2,7 +2,8 @@ import { render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
-import { Form } from '../Form';
+import { warning } from '../../utils';
+import { Form, FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
 import { Textarea, TextareaProps } from './index';
 
@@ -88,12 +89,12 @@ test('renders an error', () => {
 
 test('accepts a Label Component', () => {
   const CustomLabel = (
-    <Textarea.Label>
+    <FormControlLabel>
       This is a custom Label
       <a href="#" data-testid="test">
         has a url
       </a>
-    </Textarea.Label>
+    </FormControlLabel>
   );
 
   const { queryByTestId } = render(<Textarea label={CustomLabel} />);
@@ -118,12 +119,12 @@ test('does not accept non-Label Components', () => {
 
 test('accepts a Description Component', () => {
   const CustomDescription = (
-    <Textarea.Description>
+    <FormControlDescription>
       This is a custom Description
       <a href="#" data-testid="test">
         has a url
       </a>
-    </Textarea.Description>
+    </FormControlDescription>
   );
 
   const { queryByTestId } = render(<Textarea description={CustomDescription} />);
@@ -148,12 +149,12 @@ test('does not accept non-Description Components', () => {
 
 test('accepts an Error Component', () => {
   const CustomError = (
-    <Textarea.Error>
+    <FormControlError>
       This is a custom Error Component
       <a href="#" data-testid="test">
         has a url
       </a>
-    </Textarea.Error>
+    </FormControlError>
   );
 
   const { queryByTestId } = render(
@@ -182,6 +183,33 @@ test('does not accept non-Error Components', () => {
   );
 
   expect(queryByTestId('test')).not.toBeInTheDocument();
+});
+
+describe('error does not show when invalid type', () => {
+  test('single element', () => {
+    const error = <div data-testid="err">Error</div>;
+    const { queryByTestId } = render(
+      <Form.Group>
+        <Textarea error={error} />
+      </Form.Group>,
+    );
+
+    expect(warning).toHaveBeenCalledTimes(1);
+    expect(queryByTestId('err')).not.toBeInTheDocument();
+  });
+
+  test('array of elements', () => {
+    const errors = ['Error', <FormControlError>Error</FormControlError>, <div data-testid="err">Error</div>];
+
+    const { queryByTestId } = render(
+      <Form.Group>
+        <Textarea error={errors} />
+      </Form.Group>,
+    );
+
+    expect(warning).toHaveBeenCalledTimes(1);
+    expect(queryByTestId('err')).not.toBeInTheDocument();
+  });
 });
 
 test('accepts valid row property', () => {
