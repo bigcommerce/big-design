@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Manager, Popper, PopperProps, Reference } from 'react-popper';
 
@@ -13,90 +13,78 @@ export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   inline?: boolean;
 }
 
-interface State {
-  visible: boolean;
-}
+export const Tooltip: React.FC<TooltipProps> = memo(({ children, inline = true, modifiers, trigger, ...props }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [tooltipContainer, setTooltipContainer] = useState<HTMLDivElement | null>(null);
 
-export class Tooltip extends React.PureComponent<TooltipProps, State> {
-  static defaultProps: Partial<TooltipProps> = {
-    placement: 'top',
-    inline: true,
+  useEffect(() => {
+    const container = document.createElement('div');
+
+    document.body.appendChild(container);
+    setTooltipContainer(container);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (tooltipContainer) {
+        document.body.removeChild(tooltipContainer);
+      }
+    };
+  }, [tooltipContainer]);
+
+  const renderContent = () => {
+    return typeof children === 'string' ? <Small color="white">{children}</Small> : children;
   };
 
-  state = {
-    visible: false,
+  const hideTooltip = () => {
+    setIsVisible(false);
   };
 
-  private tooltipContainer?: HTMLDivElement;
-
-  componentDidMount() {
-    this.tooltipContainer = document.createElement('div');
-    document.body.appendChild(this.tooltipContainer);
-  }
-
-  componentWillUnmount() {
-    if (this.tooltipContainer) {
-      document.body.removeChild(this.tooltipContainer);
-    }
-  }
-
-  render() {
-    const { children, trigger, inline } = this.props;
-
-    return (
-      <Manager>
-        <Reference>
-          {({ ref }) => (
-            <StyledTooltipTrigger
-              inline={inline}
-              onBlur={this.hideTooltip}
-              onFocus={this.showTooltip}
-              onKeyDown={this.onKeyDown}
-              onMouseEnter={this.showTooltip}
-              onMouseLeave={this.hideTooltip}
-              ref={ref}
-            >
-              {trigger}
-            </StyledTooltipTrigger>
-          )}
-        </Reference>
-        {this.tooltipContainer
-          ? createPortal(
-              <Popper
-                placement={this.props.placement}
-                modifiers={{ offset: { offset: '0, 8' }, ...this.props.modifiers }}
-                eventsEnabled={this.state.visible}
-              >
-                {({ placement, ref, style }) =>
-                  this.state.visible && (
-                    <StyledTooltip ref={ref} style={style} data-placement={placement}>
-                      {this.renderContent(children)}
-                    </StyledTooltip>
-                  )
-                }
-              </Popper>,
-              this.tooltipContainer,
-            )
-          : null}
-      </Manager>
-    );
-  }
-
-  private renderContent = (content: React.ReactNode) => {
-    return typeof content === 'string' ? <Small color="white">{content}</Small> : content;
+  const showTooltip = () => {
+    setIsVisible(true);
   };
 
-  private hideTooltip = () => {
-    this.setState({ visible: false });
-  };
-
-  private showTooltip = () => {
-    this.setState({ visible: true });
-  };
-
-  private onKeyDown = (event: React.KeyboardEvent) => {
+  const onKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Escape') {
-      this.setState({ visible: false });
+      setIsVisible(false);
     }
   };
-}
+
+  return (
+    <Manager>
+      <Reference>
+        {({ ref }) => (
+          <StyledTooltipTrigger
+            inline={inline}
+            onBlur={hideTooltip}
+            onFocus={showTooltip}
+            onKeyDown={onKeyDown}
+            onMouseEnter={showTooltip}
+            onMouseLeave={hideTooltip}
+            ref={ref}
+          >
+            {trigger}
+          </StyledTooltipTrigger>
+        )}
+      </Reference>
+      {tooltipContainer
+        ? createPortal(
+            <Popper
+              placement={props.placement || 'top'}
+              modifiers={{ offset: { offset: '0, 8' }, ...modifiers }}
+              eventsEnabled={isVisible}
+            >
+              {({ placement, ref, style }) =>
+                isVisible && (
+                  <StyledTooltip ref={ref} style={style} data-placement={placement}>
+                    {renderContent()}
+                  </StyledTooltip>
+                )
+              }
+            </Popper>,
+            tooltipContainer,
+          )
+        : null}
+    </Manager>
+  );
+});
