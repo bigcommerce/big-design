@@ -170,7 +170,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
           <StyledInputContainer ref={ref}>
             <Input
               aria-autocomplete="list"
-              autoComplete="off"
+              autoComplete="no"
               chips={chips}
               disabled={disabled}
               error={error}

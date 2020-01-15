@@ -1,6 +1,7 @@
-import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { addValues, remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
+import { withPaddings, PaddingProps } from '../../mixins';
 import { withTransition } from '../../mixins/transitions';
 
 import { InputProps } from './Input';
@@ -18,7 +19,7 @@ export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
   box-sizing: border-box;
   display: flex;
   min-height: ${({ theme }) => addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
-  padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.small}`};
+  position: relative;
   width: 100%;
 
   ${({ error, theme }) => css`
@@ -54,9 +55,9 @@ export const StyledInput = styled.input<InputProps>`
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   flex: 1;
-  height: ${({ theme }) => theme.spacing.xLarge};
-  margin-top: ${({ theme }) => theme.spacing.xxSmall};
+  height: 100%;
   padding: 0;
+  padding-left: ${({ theme }) => theme.spacing.xSmall};
   width: 100%;
 
   &:focus {
@@ -68,22 +69,44 @@ export const StyledInput = styled.input<InputProps>`
     font-size: ${({ theme }) => theme.typography.fontSize.medium};
   }
 
-  ${props =>
-    props.iconRight &&
+  &:-webkit-autofill {
+    /* !important overrides user agent style sheets that use !important in their :-webkit-autofill implementation */
+    /* See https://developer.mozilla.org/en-US/docs/Web/CSS/:-webkit-autofill */
+    background-color: ${({ theme }) => theme.colors.primary10} !important;
+    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.primary10} inset;
+  }
+
+  ${({ iconRight, theme }) =>
+    iconRight &&
     css`
-      padding-right: ${props.theme.spacing.xxSmall};
+      padding-right: ${addValues(theme.spacing.xxSmall, theme.spacing.xxLarge)};
     `};
 
-  ${props =>
-    props.iconLeft &&
+  ${({ iconLeft, theme }) =>
+    iconLeft &&
     css`
-      padding-left: ${props.theme.spacing.xxSmall};
+      padding-left: ${addValues(theme.spacing.xxSmall, theme.spacing.xxLarge)};
     `};
 
-  ${props =>
-    props.chips &&
+  ${({ chips, theme }) =>
+    chips &&
     css`
-      padding-left: ${props.theme.spacing.xxSmall};
+      min-height: ${theme.spacing.xLarge};
+      padding-left: ${theme.spacing.xxSmall};
+      padding-right: ${theme.spacing.none};
+    `};
+
+  ${({ chips, theme }) =>
+    chips &&
+    chips.length &&
+    css`
+      margin-top: ${theme.spacing.xxSmall};
+    `};
+
+  ${({ chips }) =>
+    !chips &&
+    css`
+      min-height: ${remCalc(34)};
     `};
 
   &[disabled] {
@@ -91,24 +114,49 @@ export const StyledInput = styled.input<InputProps>`
   }
 `;
 
-export const StyledIconWrapper = styled.div`
+export const StyledIconWrapper = styled.div<PaddingProps>`
+  align-items: center;
   color: ${({ theme }) => theme.colors.secondary60};
-  flex: 0 0 ${({ theme }) => theme.spacing.xLarge};
-  height: ${({ theme }) => theme.spacing.xLarge};
+  display: flex;
+  height: 100%;
+  position: absolute;
+  top: 0;
+
+  ${withPaddings()}
+
+  ${({ paddingLeft }) =>
+    paddingLeft === 'xSmall' &&
+    css`
+      left: 0;
+    `}
+
+  ${({ paddingRight }) =>
+    paddingRight === 'xSmall' &&
+    css`
+      right: 0;
+    `}
 `;
 
 export const StyledInputContent = styled.div<InputProps>`
+  align-items: center;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   flex: 1;
   height: 100%;
-  margin-top: -${({ theme }) => theme.spacing.xxSmall};
 
-  ${props =>
-    props.chips &&
+  ${({ chips, theme }) =>
+    chips &&
     css`
-      margin-left: -${props.theme.spacing.xxSmall};
+      margin-left: ${theme.spacing.xxSmall};
+      padding-right: ${addValues(theme.spacing.xxSmall, theme.spacing.xxLarge)};
+    `};
+
+  ${({ chips, theme }) =>
+    chips &&
+    chips.length &&
+    css`
+      margin-bottom: ${theme.spacing.xxSmall};
     `};
 `;
 
