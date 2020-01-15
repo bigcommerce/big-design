@@ -32,8 +32,8 @@ export const Tooltip: React.FC<TooltipProps> = memo(({ children, inline = true, 
     };
   }, [tooltipContainer]);
 
-  const renderContent = (content: React.ReactNode) => {
-    return typeof content === 'string' ? <Small color="white">{content}</Small> : content;
+  const renderContent = () => {
+    return typeof children === 'string' ? <Small color="white">{children}</Small> : children;
   };
 
   const hideTooltip = () => {
@@ -77,7 +77,7 @@ export const Tooltip: React.FC<TooltipProps> = memo(({ children, inline = true, 
               {({ placement, ref, style }) =>
                 isVisible && (
                   <StyledTooltip ref={ref} style={style} data-placement={placement}>
-                    {renderContent(children)}
+                    {renderContent()}
                   </StyledTooltip>
                 )
               }
