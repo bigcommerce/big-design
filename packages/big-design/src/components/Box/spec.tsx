@@ -68,3 +68,12 @@ test('renders as a different tag', () => {
 
   expect(tag).toBe('SECTION');
 });
+
+test('box forwards ref', () => {
+  const ref = React.createRef<HTMLDivElement>();
+
+  const { container } = render(<Box ref={ref}>Hello</Box>);
+  const div = container.querySelector('div');
+
+  expect(div).toBe(ref.current);
+});

@@ -11,8 +11,8 @@ interface PrivateProps {
   forwardedRef: React.Ref<HTMLDivElement>;
 }
 
-const RawGrid: React.FC<GridProps & PrivateProps> = React.forwardRef<HTMLDivElement, GridProps & PrivateProps>(
-  ({ as, ...rest }, ref) => <StyledGrid forwardedAs={as} forwardedRef={ref} {...rest} />,
+const RawGrid: React.FC<GridProps & PrivateProps> = ({ as, forwardedRef, ...rest }) => (
+  <StyledGrid forwardedAs={as} ref={forwardedRef} {...rest} />
 );
 
 export const Grid = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => (

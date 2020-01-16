@@ -5,6 +5,16 @@ import { FlexedItemProps } from '../types';
 
 import { StyledFlexItem } from './styled';
 
+interface PrivateProps {
+  forwardedRef: React.Ref<HTMLDivElement>;
+}
+
 export type FlexItemProps = BoxProps & FlexedItemProps;
 
-export const FlexItem: React.FC<FlexItemProps> = ({ as, ...props }) => <StyledFlexItem forwardedAs={as} {...props} />;
+const RawFlexItem: React.FC<FlexItemProps & PrivateProps> = ({ as, forwardedRef, ...props }) => (
+  <StyledFlexItem ref={forwardedRef} forwardedAs={as} {...props} />
+);
+
+export const FlexItem = React.forwardRef<HTMLDivElement, FlexItemProps>((props, ref) => (
+  <RawFlexItem {...props} forwardedRef={ref} />
+));

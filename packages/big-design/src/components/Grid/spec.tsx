@@ -53,3 +53,11 @@ test('rendering as another element retains inherited props and styles', () => {
   expect(grid.tagName).toBe('SECTION');
   expect(grid).toHaveStyle(`margin: 1rem`);
 });
+
+test('grid forwards ref', () => {
+  const ref = React.createRef<HTMLDivElement>();
+  const { getByTestId } = render(<Grid ref={ref} data-testid="grid" />);
+  const grid = getByTestId('grid');
+
+  expect(grid).toBe(ref.current);
+});

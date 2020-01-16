@@ -11,8 +11,8 @@ interface PrivateProps {
   forwardedRef: React.Ref<HTMLDivElement>;
 }
 
-const RawFlex: React.FC<FlexProps & PrivateProps> = React.forwardRef<HTMLDivElement, FlexProps & PrivateProps>(
-  ({ as, ...rest }, ref) => <StyledFlex forwardedAs={as} forwardedRef={ref} {...rest} />,
+const RawFlex: React.FC<FlexProps & PrivateProps> = ({ as, forwardedRef, ...rest }) => (
+  <StyledFlex forwardedAs={as} ref={forwardedRef} {...rest} />
 );
 
 export const Flex = React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => (
