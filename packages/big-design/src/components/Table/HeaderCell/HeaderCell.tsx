@@ -1,8 +1,8 @@
 import { ArrowDownwardIcon, ArrowUpwardIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, RefObject } from 'react';
 
+import { useComponentSize } from '../../../hooks';
 import { typedMemo } from '../../../utils';
-import { useComponentSize } from '../../../utils/useComponentSize';
 import { TableColumn, TableItem } from '../types';
 
 import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderCheckbox } from './styled';

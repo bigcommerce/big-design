@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo, Ref } from 'react';
 
+import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
-import { useUniqueId } from '../../utils/useUniqueId';
 
 import { HiddenRadio, RadioContainer, StyledRadio } from './styled';
 import { RadioLabel } from './Label';

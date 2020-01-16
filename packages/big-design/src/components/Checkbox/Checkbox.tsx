@@ -1,8 +1,8 @@
 import { CheckIcon, RemoveIcon } from '@bigcommerce/big-design-icons';
 import React, { forwardRef, useMemo, Ref } from 'react';
 
+import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
-import { useUniqueId } from '../../utils/useUniqueId';
 
 import { CheckboxContainer, HiddenCheckbox, StyledCheckbox } from './styled';
 import { CheckboxLabel } from './Label';

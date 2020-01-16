@@ -1,4 +1,6 @@
-import { useCallback, useEffect, useState, RefObject } from 'react';
+import { useCallback, useEffect, RefObject } from 'react';
+
+import { useRafState } from './useRafState';
 
 interface ComponentSize {
   height: HTMLElement['offsetHeight'];
@@ -11,7 +13,7 @@ const getSize = <T extends any>(element: RefObject<T>['current']): ComponentSize
 });
 
 export const useComponentSize = <T extends any>(ref: RefObject<T>): ComponentSize => {
-  const [size, setSize] = useState(getSize(ref.current));
+  const [size, setSize] = useRafState(getSize(ref.current));
 
   const handleResize = useCallback<() => void | MutationCallback>(() => {
     if (ref.current) {

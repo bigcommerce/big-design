@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo, Ref } from 'react';
 
+import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
-import { useUniqueId } from '../../utils/useUniqueId';
 import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
 import { StyledTextarea, StyledTextareaWrapper } from './styled';
