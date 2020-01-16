@@ -98,7 +98,11 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
       return null;
     }
 
-    return <StyledIconWrapper>{props.iconLeft}</StyledIconWrapper>;
+    return (
+      <StyledIconWrapper paddingLeft="xSmall" paddingRight="xxSmall">
+        {props.iconLeft}
+      </StyledIconWrapper>
+    );
   }, [props.iconLeft]);
 
   const renderedIconRight = useMemo(() => {
@@ -106,7 +110,11 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
       return null;
     }
 
-    return <StyledIconWrapper>{props.iconRight}</StyledIconWrapper>;
+    return (
+      <StyledIconWrapper paddingLeft="xxSmall" paddingRight="xSmall">
+        {props.iconRight}
+      </StyledIconWrapper>
+    );
   }, [props.iconRight]);
 
   const renderedChips = useMemo(() => {

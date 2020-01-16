@@ -24,7 +24,7 @@ exports[`renders all together 1`] = `
   display: -ms-flexbox;
   display: flex;
   min-height: 2.25rem;
-  padding: 0.25rem 0.75rem;
+  position: relative;
   width: 100%;
   border: 1px solid #D9DCE9;
 }
@@ -45,12 +45,13 @@ exports[`renders all together 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: 1.5rem;
-  margin-top: 0.25rem;
+  height: 100%;
   padding: 0;
+  padding-left: 0.5rem;
   width: 100%;
-  padding-right: 0.25rem;
-  padding-left: 0.25rem;
+  padding-right: 2.25rem;
+  padding-left: 2.25rem;
+  min-height: 2.125rem;
 }
 
 .c6:focus {
@@ -77,19 +78,56 @@ exports[`renders all together 1`] = `
   font-size: 1rem;
 }
 
+.c6:-webkit-autofill {
+  background-color: #F0F3FF !important;
+  -webkit-box-shadow: 0 0 0px 1000px #F0F3FF inset;
+}
+
 .c6[disabled] {
   background-color: #ECEEF5;
 }
 
 .c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: #5E637A;
-  -webkit-flex: 0 0 1.5rem;
-  -ms-flex: 0 0 1.5rem;
-  flex: 0 0 1.5rem;
-  height: 1.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  padding-right: 0.25rem;
+  padding-left: 0.5rem;
+  left: 0;
+}
+
+.c7 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #5E637A;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  padding-right: 0.5rem;
+  padding-left: 0.25rem;
+  right: 0;
 }
 
 .c5 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -102,7 +140,6 @@ exports[`renders all together 1`] = `
   -ms-flex: 1;
   flex: 1;
   height: 100%;
-  margin-top: -0.25rem;
 }
 
 .c1 {
@@ -184,7 +221,7 @@ exports[`renders all together 1`] = `
       />
     </div>
     <div
-      class="c3"
+      class="c7"
     >
       <svg
         aria-labelledby="bd-icon-3"
