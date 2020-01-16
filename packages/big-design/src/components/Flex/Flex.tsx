@@ -7,4 +7,6 @@ import { FlexedProps } from './types';
 
 export type FlexProps = BoxProps & FlexedProps;
 
-export const Flex: React.FC<FlexProps> = ({ as, ...rest }) => <StyledFlex forwardedAs={as} {...rest} />;
+export const Flex: React.FC<FlexProps> = React.forwardRef<HTMLDivElement, FlexProps>(({ as, ...rest }, ref) => (
+  <StyledFlex forwardedAs={as} forwardedRef={ref} {...rest} />
+));

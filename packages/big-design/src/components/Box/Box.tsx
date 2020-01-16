@@ -17,6 +17,8 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, DisplayP
   borderRadius?: keyof BorderRadius;
 }
 
-export const Box: React.FC<BoxProps> = memo(props => <StyledBox {...props} />);
+export const Box: React.FC<BoxProps> = memo(
+  React.forwardRef<HTMLDivElement, BoxProps>((props, ref) => <StyledBox forwardedRef={ref} {...props} />),
+);
 
 Box.displayName = 'Box';
