@@ -7,6 +7,14 @@ import { GridedProps } from './types';
 
 export type GridProps = BoxProps & GridedProps;
 
-export const Grid: React.FC<GridProps> = React.forwardRef(({ as, ...rest }, ref) => (
-  <StyledGrid forwardedAs={as} forwardedRef={ref} {...rest} />
+interface PrivateProps {
+  forwardedRef: React.Ref<HTMLDivElement>;
+}
+
+const RawGrid: React.FC<GridProps & PrivateProps> = React.forwardRef<HTMLDivElement, GridProps & PrivateProps>(
+  ({ as, ...rest }, ref) => <StyledGrid forwardedAs={as} forwardedRef={ref} {...rest} />,
+);
+
+export const Grid = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => (
+  <RawGrid {...props} forwardedRef={ref} />
 ));

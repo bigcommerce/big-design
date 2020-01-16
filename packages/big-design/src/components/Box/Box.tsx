@@ -17,8 +17,16 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, DisplayP
   borderRadius?: keyof BorderRadius;
 }
 
-export const Box: React.FC<BoxProps> = memo(
-  React.forwardRef<HTMLDivElement, BoxProps>((props, ref) => <StyledBox forwardedRef={ref} {...props} />),
+interface PrivateProps {
+  forwardedRef: React.Ref<HTMLDivElement>;
+}
+
+const RawBox: React.FC<BoxProps & PrivateProps> = memo(
+  React.forwardRef<HTMLDivElement, BoxProps & PrivateProps>((props, ref) => (
+    <StyledBox forwardedRef={ref} {...props} />
+  )),
 );
+
+export const Box = React.forwardRef<HTMLDivElement, BoxProps>((props, ref) => <RawBox {...props} forwardedRef={ref} />);
 
 Box.displayName = 'Box';
