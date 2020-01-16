@@ -1,8 +1,8 @@
 import { ErrorIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
+import { useUniqueId } from '../../../hooks';
 import { warning } from '../../../utils';
-import { useUniqueId } from '../../../utils/useUniqueId';
 import { Checkbox } from '../../Checkbox';
 import { Radio } from '../../Radio';
 import { FormControlError } from '../Error';

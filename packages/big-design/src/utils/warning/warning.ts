@@ -1,10 +1,10 @@
+import { isProduction } from '../env';
+
 // Ported from tiny-warning:
 // https://github.com/alexreardon/tiny-warning/blob/master/src/index.js
 // --------------------------------------------
 // Since we don't care about whether or not there is a condition passed
 // we modified the original to account for that.
-
-const isProduction: boolean = process.env.NODE_ENV === 'production';
 
 export const warning = (message: string): void => {
   // don't do anything in production

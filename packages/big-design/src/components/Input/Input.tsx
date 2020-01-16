@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo, useState, Ref } from 'react';
 
+import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
-import { useUniqueId } from '../../utils/useUniqueId';
 import { Chip } from '../Chip';
 import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 

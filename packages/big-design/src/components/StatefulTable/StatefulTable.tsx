@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useReducer } from 'react';
 
+import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
-import { useDidUpdate } from '../../utils/useDidUpdate';
 import { Table, TableColumn, TableItem, TableProps, TableSelectable, TableSortDirection } from '../Table';
 
 import { createReducer, createReducerInit } from './reducer';

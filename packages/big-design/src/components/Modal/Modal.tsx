@@ -3,8 +3,8 @@ import focusTrap, { FocusTrap } from 'focus-trap';
 import React, { createRef, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
+import { useUniqueId } from '../../hooks';
 import { typedMemo } from '../../utils';
-import { useUniqueId } from '../../utils/useUniqueId';
 import { Button, ButtonProps } from '../Button';
 import { H2 } from '../Typography';
 

@@ -1,9 +1,8 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 
+import { useEventCallback, useUniqueId } from '../../hooks';
 import { MarginProps } from '../../mixins';
 import { typedMemo } from '../../utils';
-import { useEventCallback } from '../../utils/useEventCallback';
-import { useUniqueId } from '../../utils/useUniqueId';
 
 import { StyledTable, StyledTableFigure } from './styled';
 import { TableColumn, TableItem, TableProps } from './types';
