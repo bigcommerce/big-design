@@ -54,3 +54,21 @@ test('Flex Item should handle falsy values (0)', () => {
 
   expect(flex).toHaveStyle('flex-shrink: 0');
 });
+
+test('Flex forwards ref', () => {
+  const ref = React.createRef<HTMLDivElement>();
+
+  const { container } = render(<Flex ref={ref}>Hello</Flex>);
+  const div = container.querySelector('div');
+
+  expect(div).toBe(ref.current);
+});
+
+test('FlexItem forwards ref', () => {
+  const ref = React.createRef<HTMLDivElement>();
+
+  const { container } = render(<FlexItem ref={ref}>Hello</FlexItem>);
+  const div = container.querySelector('div');
+
+  expect(div).toBe(ref.current);
+});
