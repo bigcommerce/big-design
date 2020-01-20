@@ -25,7 +25,8 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
   style,
   ...props
 }) => {
-  const id = props.id ? props.id : useUniqueId('radio');
+  const uniqueRadioId = useUniqueId('radio');
+  const id = props.id ? props.id : uniqueRadioId;
   const labelId = useUniqueId('radio_label');
 
   const renderedLabel = useMemo(() => {

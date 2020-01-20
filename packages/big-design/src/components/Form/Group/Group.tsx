@@ -1,7 +1,6 @@
 import { ErrorIcon } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { Fragment } from 'react';
 
-import { useUniqueId } from '../../../hooks';
 import { warning } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
 import { Radio } from '../../Radio';
@@ -52,29 +51,31 @@ export const FormGroup: React.FC<GroupProps> = props => {
   );
 };
 
-function generateErrors(errors: GroupProps['errors'], fromGroup = false): React.ReactNode {
-  const errorKey = useUniqueId('formGroup_error');
-
+const generateErrors = (errors: GroupProps['errors'], fromGroup = false, key?: number): React.ReactNode => {
   if (typeof errors === 'string') {
     return (
-      <StyledError alignItems="center" key={errorKey}>
-        <ErrorIcon color="danger" />
-        <FormControlError>{errors}</FormControlError>
-      </StyledError>
+      <Fragment key={key}>
+        <StyledError alignItems="center">
+          <ErrorIcon color="danger" />
+          <FormControlError>{errors}</FormControlError>
+        </StyledError>
+      </Fragment>
     );
   }
 
   if (React.isValidElement(errors) && errors.type === FormControlError) {
     return (
-      <StyledError alignItems="center" key={errorKey}>
-        <ErrorIcon color="danger" />
-        {errors}
-      </StyledError>
+      <Fragment key={key}>
+        <StyledError alignItems="center">
+          <ErrorIcon color="danger" />
+          {errors}
+        </StyledError>
+      </Fragment>
     );
   }
 
   if (Array.isArray(errors)) {
-    return errors.map(error => error && generateErrors(error, fromGroup));
+    return errors.map((error, index) => error && generateErrors(error, fromGroup, index));
   }
 
   if (!errors) {
@@ -84,4 +85,4 @@ function generateErrors(errors: GroupProps['errors'], fromGroup = false): React.
   if (fromGroup) {
     warning('errors must be either a string, FormControlError, or an array of strings or FormControlError components.');
   }
-}
+};

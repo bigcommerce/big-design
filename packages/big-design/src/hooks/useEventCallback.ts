@@ -2,21 +2,17 @@ import { useCallback, useEffect, useRef } from 'react';
 
 type Callback<T> = (...args: T[]) => void;
 
-export function useEventCallback<T>(fn: Callback<T>, dependencies: any[]) {
-  const ref = useRef<Callback<T>>(() => {
-    // no-op default
-  });
+export function useEventCallback<T>(fn: Callback<T>) {
+  const ref = useRef<Callback<T>>(fn);
 
+  // TODO: Change to useIsomorphicLayoutEffect
   useEffect(() => {
     ref.current = fn;
-  }, [fn, ...dependencies]);
+  });
 
-  return useCallback(
-    (...args: T[]) => {
-      const fun = ref.current;
+  return useCallback((...args: T[]) => {
+    const fun = ref.current;
 
-      return fun(...args);
-    },
-    [ref],
-  );
+    return fun(...args);
+  }, []);
 }

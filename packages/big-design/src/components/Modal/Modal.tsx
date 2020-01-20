@@ -44,8 +44,8 @@ export const Modal: React.FC<ModalProps> = typedMemo(
     onClose = () => null,
     variant = 'modal',
   }) => {
+    const initialBodyOverflowYRef = useRef('');
     const [internalTrap, setInternalTrap] = useState<FocusTrap | null>(null);
-    const [initialBodyOverflowY, setInitialBodyOverflowY] = useState('');
     const [modalContainer, setModalContainer] = useState<HTMLDivElement | null>(null);
     const headerUniqueId = useUniqueId('modal_header');
     const modalRef = createRef<HTMLDivElement>();
@@ -71,20 +71,20 @@ export const Modal: React.FC<ModalProps> = typedMemo(
     }, []);
 
     useEffect(() => {
-      return () => {
-        const prevFocus = previousFocus.current as HTMLElement;
+      const prevFocus = previousFocus.current as HTMLElement;
 
+      return () => {
         if (modalContainer) {
           document.body.removeChild(modalContainer);
         }
 
-        document.body.style.overflowY = initialBodyOverflowY;
+        document.body.style.overflowY = initialBodyOverflowYRef.current;
 
         if (prevFocus && typeof prevFocus.focus === 'function') {
           prevFocus.focus();
         }
       };
-    }, [modalContainer, previousFocus]);
+    }, [initialBodyOverflowYRef, modalContainer, previousFocus]);
 
     useEffect(() => {
       if (modalRef.current && !internalTrap) {
@@ -92,16 +92,16 @@ export const Modal: React.FC<ModalProps> = typedMemo(
       }
 
       if (isOpen) {
-        setInitialBodyOverflowY(document.body.style.overflowY || '');
+        initialBodyOverflowYRef.current = document.body.style.overflowY || '';
         document.body.style.overflowY = 'hidden';
         internalTrap?.activate();
       } else {
-        setInitialBodyOverflowY('');
-        document.body.style.overflowY = initialBodyOverflowY;
+        initialBodyOverflowYRef.current = '';
+        document.body.style.overflowY = initialBodyOverflowYRef.current;
         internalTrap?.deactivate();
         setInternalTrap(null);
       }
-    }, [focusTrap, internalTrap, isOpen, modalRef]);
+    }, [initialBodyOverflowYRef, internalTrap, isOpen, modalRef]);
 
     const renderedClose = useMemo(
       () =>

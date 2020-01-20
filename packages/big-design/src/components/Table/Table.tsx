@@ -31,35 +31,34 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     ...rest
   } = props;
   const actionsRef = useRef<HTMLDivElement>(null);
-  const tableIdRef = useRef(id || useUniqueId('table'));
+  const uniqueTableId = useUniqueId('table');
+  const tableIdRef = useRef(id || uniqueTableId);
   const isSelectable = Boolean(selectable);
   const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
+  const eventCallback = useEventCallback((item: T) => {
+    if (!selectable || !item) {
+      return;
+    }
+
+    const { onSelectionChange } = selectable;
+    const nextIsSelected = !selectedItems.has(item);
+
+    if (nextIsSelected) {
+      onSelectionChange([...selectedItems, item]);
+    } else {
+      onSelectionChange([...selectedItems].filter(selectedItem => selectedItem !== item));
+    }
+  });
+
+  const selectableConditionalDep = selectable ? selectable.selectedItems : null;
 
   useEffect(() => {
     if (selectable) {
       setSelectedItems(new Set(selectable.selectedItems));
     }
-  }, [selectable ? selectable.selectedItems : null]);
+  }, [selectable, selectableConditionalDep]);
 
-  const onItemSelect = selectable
-    ? useEventCallback(
-        (item: T) => {
-          if (!selectable || !item) {
-            return;
-          }
-
-          const { onSelectionChange } = selectable;
-          const nextIsSelected = !selectedItems.has(item);
-
-          if (nextIsSelected) {
-            onSelectionChange([...selectedItems, item]);
-          } else {
-            onSelectionChange([...selectedItems].filter(selectedItem => selectedItem !== item));
-          }
-        },
-        [selectedItems],
-      )
-    : undefined;
+  const onItemSelect = selectable ? eventCallback : undefined;
 
   const onSortClick = useCallback(
     (column: TableColumn<T>) => {

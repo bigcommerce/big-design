@@ -36,7 +36,8 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
-  const id = props.id ? props.id : useUniqueId('input');
+  const uniqueInputId = useUniqueId('input');
+  const id = props.id ? props.id : uniqueInputId;
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     const { onFocus } = props;
@@ -75,7 +76,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     }
 
     warning('label must be either a string or a FormControlLabel component.');
-  }, [label, labelId, props.required]);
+  }, [id, label, labelId, props.required]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {
