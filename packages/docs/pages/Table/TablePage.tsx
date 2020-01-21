@@ -114,7 +114,7 @@ export default () => {
             const firstItem = Math.max(0, maxItems - itemsPerPage);
 
             setCurrentItems(data.slice(firstItem, lastItem));
-          }, [currentPage, data, itemsPerPage]);
+          }, [currentPage, itemsPerPage]);
 
           return (
             <Table

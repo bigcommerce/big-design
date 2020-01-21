@@ -15,10 +15,6 @@ export const useWindowSize = () => {
     width: isClient ? window.innerWidth : -1,
   });
 
-  if (!isClient) {
-    return state;
-  }
-
   useEffect(() => {
     const resizeHandler = () => {
       setState({
@@ -32,7 +28,11 @@ export const useWindowSize = () => {
     return () => {
       window.removeEventListener('resize', resizeHandler);
     };
-  }, []);
+  }, [setState]);
+
+  if (!isClient) {
+    return state;
+  }
 
   return state;
 };

@@ -31,7 +31,8 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
   resize = true,
   ...props
 }) => {
-  const id = props.id ? props.id : useUniqueId('textarea');
+  const uniqueTextareaId = useUniqueId('textarea');
+  const id = props.id ? props.id : uniqueTextareaId;
   const MAX_ROWS = 7;
   const numOfRows = rows && rows > MAX_ROWS ? MAX_ROWS : rows;
 
@@ -56,7 +57,7 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
     }
 
     warning('label must be either a string or a FormControlLabel component.');
-  }, [label, labelId, props.required]);
+  }, [id, label, labelId, props.required]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {

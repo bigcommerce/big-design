@@ -71,7 +71,7 @@ export const ProgressCircle: React.FC<ProgressCircleProps> = typedMemo(({ error,
         )}
       </StyledProgressCircle>
     );
-  }, [size, percent]);
+  }, [percent, size, renderedSuccess]);
 
   return error ? renderedError : renderedCircle;
 });

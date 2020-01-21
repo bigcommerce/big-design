@@ -37,8 +37,14 @@ const InternalStatefulTable = <T extends TableItem>({
 
   const [state, dispatch] = useReducer(reducer, { columns, defaultSelected, items, pagination }, reducerInit);
 
-  useDidUpdate(() => dispatch({ type: 'COLUMNS_CHANGED', columns }), [columns]);
-  useDidUpdate(() => dispatch({ type: 'ITEMS_CHANGED', items, isPaginationEnabled: pagination }), [items, pagination]);
+  const columnsChangedCallback = useCallback(() => dispatch({ type: 'COLUMNS_CHANGED', columns }), [columns]);
+  const itemsChangedCallback = useCallback(
+    () => dispatch({ type: 'ITEMS_CHANGED', items, isPaginationEnabled: pagination }),
+    [items, pagination],
+  );
+
+  useDidUpdate(columnsChangedCallback);
+  useDidUpdate(itemsChangedCallback);
 
   const onPageChange = useCallback((page: number) => dispatch({ type: 'PAGE_CHANGE', page }), []);
   const onItemsPerPageChange = useCallback(

@@ -22,7 +22,8 @@
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc --emitDeclarationOnly",
     "ci": "yarn run lint && yarn run test --maxWorkers=2 && yarn run build",
-    "lint": "yarn run lint:tslint && yarn run lint:tsc && yarn run lint:prettier",
+    "lint": "yarn run lint:eslint && yarn run lint:tslint && yarn run lint:tsc && yarn run lint:prettier",
+    "lint:eslint": "eslint src/**/* --ext '.ts,.tsx'",
     "lint:prettier": "prettier --check 'src/**/*.{ts,tsx}'",
     "lint:tsc": "tsc --noEmit",
     "lint:tslint": "tslint -c tslint.json -p tsconfig.json",
@@ -34,6 +35,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
+      "eslint --fix",
       "tslint --fix",
       "prettier --write",
       "git add"
@@ -77,9 +79,12 @@
     "@types/react-dom": "^16.8.5",
     "@types/react-test-renderer": "^16.8.3",
     "@types/styled-components": "^4.1.12",
+    "@typescript-eslint/parser": "^2.16.0",
     "babel-jest": "^24.5.0",
     "babel-plugin-styled-components": "^1.10.6",
     "concurrently": "^5.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
     "jest": "^24.5.0",
     "jest-styled-components": "^6.3.1",
     "lint-staged": "^9.2.0",

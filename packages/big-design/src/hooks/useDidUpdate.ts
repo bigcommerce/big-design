@@ -1,6 +1,6 @@
-import { useEffect, useRef, DependencyList, EffectCallback } from 'react';
+import { useEffect, useRef, EffectCallback } from 'react';
 
-export const useDidUpdate = (effect: EffectCallback, deps?: DependencyList) => {
+export const useDidUpdate = (effect: EffectCallback) => {
   const isInitialRender = useRef(true);
 
   useEffect(() => {
@@ -9,5 +9,5 @@ export const useDidUpdate = (effect: EffectCallback, deps?: DependencyList) => {
     } else {
       effect();
     }
-  }, deps);
+  }, [effect]);
 };

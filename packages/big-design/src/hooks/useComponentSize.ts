@@ -19,7 +19,7 @@ export const useComponentSize = <T extends any>(ref: RefObject<T>): ComponentSiz
     if (ref.current) {
       setSize(getSize(ref.current));
     }
-  }, [ref.current]);
+  }, [ref, setSize]);
 
   useEffect(() => {
     if (!ref.current) {
@@ -37,7 +37,7 @@ export const useComponentSize = <T extends any>(ref: RefObject<T>): ComponentSiz
         observer.disconnect();
       };
     }
-  }, [ref.current, handleResize]);
+  }, [ref, handleResize]);
 
   return size;
 };

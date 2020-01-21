@@ -68,7 +68,7 @@ export const CodePreview: React.FC<CodePreviewProps> = props => {
 
   useEffect(() => {
     setCode(getInitialCode(children, language));
-  }, [children, language, setCode, getInitialCode]);
+  }, [children, language, setCode]);
 
   return (
     <BigDesign.Box border="box" marginBottom="xxLarge">

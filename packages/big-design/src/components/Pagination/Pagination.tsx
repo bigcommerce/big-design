@@ -1,5 +1,5 @@
 import { ArrowDropDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@bigcommerce/big-design-icons';
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { Dropdown, DropdownItem } from '../Dropdown';
@@ -21,21 +21,21 @@ export const Pagination: React.FC<PaginationProps> = memo(
     const [maxPages, setMaxPages] = useState(Math.ceil(totalItems / itemsPerPage));
     const [itemRange, setItemRange] = useState({ start: 0, end: 0 });
 
-    const handlePageOutOfBounds = () => {
+    const handlePageOutOfBounds = useCallback(() => {
       if (currentPage < 1 || isNaN(currentPage) || currentPage === undefined) {
         onPageChange(1);
       } else if (currentPage > maxPages) {
         onPageChange(maxPages);
       }
-    };
+    }, [currentPage, maxPages, onPageChange]);
 
-    const handlePerPageOutOfBounds = () => {
+    const handlePerPageOutOfBounds = useCallback(() => {
       if (itemsPerPage < 1 || isNaN(itemsPerPage) || itemsPerPage === undefined) {
         onItemsPerPageChange(itemsPerPageOptions[0]);
       }
-    };
+    }, [itemsPerPage, onItemsPerPageChange, itemsPerPageOptions]);
 
-    const calculateRange = () => {
+    const calculateRange = useCallback(() => {
       let firstItemInRange = itemsPerPage * (currentPage - 1) + 1;
       let lastItemInRange = itemsPerPage * currentPage;
 
@@ -48,7 +48,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
       }
 
       setItemRange({ start: firstItemInRange, end: lastItemInRange });
-    };
+    }, [itemsPerPage, currentPage, totalItems]);
 
     useEffect(() => {
       handlePageOutOfBounds();
@@ -58,7 +58,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
       calculateRange();
 
       setMaxPages(Math.ceil(totalItems / itemsPerPage));
-    }, [currentPage, itemsPerPage, totalItems]);
+    }, [calculateRange, currentPage, handlePageOutOfBounds, handlePerPageOutOfBounds, itemsPerPage, totalItems]);
 
     const handlePageIncrease = () => {
       onPageChange(currentPage + 1);

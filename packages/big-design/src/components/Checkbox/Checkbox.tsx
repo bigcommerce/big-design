@@ -30,7 +30,8 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   style,
   ...props
 }) => {
-  const id = props.id ? props.id : useUniqueId('checkbox');
+  const uniqueCheckboxId = useUniqueId('checkbox');
+  const id = props.id ? props.id : uniqueCheckboxId;
   const labelId = useUniqueId('checkbox_label');
 
   const renderedLabel = useMemo(() => {
