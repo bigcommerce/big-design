@@ -10,6 +10,7 @@
   },
   "scripts": {
     "test:functional": "ts-node ./node_modules/.bin/wdio wdio.conf.js",
+    "test:functional:browserstack": "ts-node ./node_modules/.bin/wdio wdio.browserstack.conf.js",
     "lint": "tslint --project ."
   },
   "dependencies": {

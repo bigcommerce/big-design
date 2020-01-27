@@ -1,4 +1,4 @@
-import BigDesignCheckbox from './../components/bd-checkbox'
+import BigDesignCheckbox from '../components/bd-checkbox'
 import { assertElementLooks } from './helpers/assertions'
 
 const GROSS_CSS = 'body > div > div > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(1) form > div > div'
