@@ -274,6 +274,6 @@ test('unmounts appropriately', () => {
   const button = getByTestId('button');
   button.click();
 
-  // Make sure events still work for other components
+  // Make sure mouse events still work for other components
   expect(onClick).toHaveBeenCalledTimes(1);
 });
