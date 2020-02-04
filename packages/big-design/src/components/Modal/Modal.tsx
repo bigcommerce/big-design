@@ -71,6 +71,10 @@ export const Modal: React.FC<ModalProps> = typedMemo(
     }, []);
 
     useEffect(() => {
+      return internalTrap?.deactivate;
+    }, [internalTrap]);
+
+    useEffect(() => {
       const prevFocus = previousFocus.current as HTMLElement;
 
       return () => {

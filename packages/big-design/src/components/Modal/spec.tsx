@@ -2,6 +2,8 @@ import { fireEvent, render, wait } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 
+import { Button } from '../Button';
+
 import { Modal } from './Modal';
 
 test('render open modal', () => {
@@ -255,4 +257,23 @@ test('renders destructive action button', () => {
   const button = getAllByRole('button')[1];
 
   expect(button).toMatchSnapshot();
+});
+
+test('unmounts appropriately', () => {
+  const onClick = jest.fn();
+  const { getByTestId, rerender, unmount } = render(<Modal isOpen={true} />);
+
+  unmount();
+
+  rerender(
+    <Button onClick={onClick} data-testid="button">
+      Test
+    </Button>,
+  );
+
+  const button = getByTestId('button');
+  button.click();
+
+  // Make sure events still work for other components
+  expect(onClick).toHaveBeenCalledTimes(1);
 });
