@@ -192,10 +192,6 @@ exports[`select action supports icons 1`] = `
   color: #CC1F1F;
 }
 
-.c1 a {
-  color: #313440;
-}
-
 .c1 label {
   cursor: pointer;
 }

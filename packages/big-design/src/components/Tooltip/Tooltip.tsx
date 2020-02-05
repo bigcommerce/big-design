@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Manager, Popper, PopperProps, Reference } from 'react-popper';
 
@@ -16,6 +16,7 @@ export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Tooltip: React.FC<TooltipProps> = memo(({ children, inline = true, modifiers, trigger, ...props }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [tooltipContainer, setTooltipContainer] = useState<HTMLDivElement | null>(null);
+  const tooltipModifiers = useMemo(() => ({ offset: { offset: '0, 8' }, ...modifiers }), [modifiers]);
 
   useEffect(() => {
     const container = document.createElement('div');
@@ -69,11 +70,7 @@ export const Tooltip: React.FC<TooltipProps> = memo(({ children, inline = true, 
       </Reference>
       {tooltipContainer
         ? createPortal(
-            <Popper
-              placement={props.placement || 'top'}
-              modifiers={{ offset: { offset: '0, 8' }, ...modifiers }}
-              eventsEnabled={isVisible}
-            >
+            <Popper placement={props.placement || 'top'} modifiers={tooltipModifiers} eventsEnabled={isVisible}>
               {({ placement, ref, style }) =>
                 isVisible && (
                   <StyledTooltip ref={ref} style={style} data-placement={placement}>

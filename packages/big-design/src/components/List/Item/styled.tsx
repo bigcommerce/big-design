@@ -44,10 +44,6 @@ export const StyledListItem = styled.li<ListItemProps>`
       cursor: not-allowed;
     `}
 
-  a {
-    color: ${({ theme }) => theme.colors.secondary70};
-  }
-
   label {
     cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   }

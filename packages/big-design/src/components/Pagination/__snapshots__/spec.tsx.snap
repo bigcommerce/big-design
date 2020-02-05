@@ -145,10 +145,6 @@ exports[`render pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c8 a {
-  color: #313440;
-}
-
 .c8 label {
   cursor: pointer;
 }
@@ -665,10 +661,6 @@ exports[`render pagination component with invalid page info 1`] = `
 .c8[data-highlighted='true'] a {
   background-color: #F0F3FF;
   color: #3C64F4;
-}
-
-.c8 a {
-  color: #313440;
 }
 
 .c8 label {
@@ -1189,10 +1181,6 @@ exports[`render pagination component with invalid range info 1`] = `
   color: #3C64F4;
 }
 
-.c8 a {
-  color: #313440;
-}
-
 .c8 label {
   cursor: pointer;
 }
@@ -1710,10 +1698,6 @@ exports[`render pagination component with no items 1`] = `
 .c8[data-highlighted='true'] a {
   background-color: #F0F3FF;
   color: #3C64F4;
-}
-
-.c8 a {
-  color: #313440;
 }
 
 .c8 label {

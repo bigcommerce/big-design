@@ -1,5 +1,5 @@
 import { Placement } from 'popper.js';
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { Popper } from 'react-popper';
 
 import { StyledList } from './styled';
@@ -26,31 +26,35 @@ export const List: React.FC<ListProps> = memo(
     positionFixed,
     style,
     ...rest
-  }) => (
-    <Popper
-      innerRef={handleListRef}
-      placement={selectedPlacement}
-      positionFixed={positionFixed}
-      modifiers={{ offset: { offset: '0, 10' } }}
-      eventsEnabled={isOpen}
-    >
-      {({ placement, ref, scheduleUpdate, style: popperStyle }) => (
-        <StyledList
-          data-placement={placement}
-          isOpen={isOpen}
-          maxHeight={maxHeight}
-          ref={ref}
-          style={popperStyle}
-          tabIndex={-1}
-          {...rest}
-        >
-          <ListPopperElement isOpen={isOpen} scheduleUpdate={scheduleUpdate}>
-            {children}
-          </ListPopperElement>
-        </StyledList>
-      )}
-    </Popper>
-  ),
+  }) => {
+    const modifiers = useMemo(() => ({ offset: { offset: '0, 10' } }), []);
+
+    return (
+      <Popper
+        innerRef={handleListRef}
+        placement={selectedPlacement}
+        positionFixed={positionFixed}
+        modifiers={modifiers}
+        eventsEnabled={isOpen}
+      >
+        {({ placement, ref, scheduleUpdate, style: popperStyle }) => (
+          <StyledList
+            data-placement={placement}
+            isOpen={isOpen}
+            maxHeight={maxHeight}
+            ref={ref}
+            style={popperStyle}
+            tabIndex={-1}
+            {...rest}
+          >
+            <ListPopperElement isOpen={isOpen} scheduleUpdate={scheduleUpdate}>
+              {children}
+            </ListPopperElement>
+          </StyledList>
+        )}
+      </Popper>
+    );
+  },
 );
 
 List.displayName = 'List';

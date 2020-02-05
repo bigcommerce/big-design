@@ -164,10 +164,6 @@ exports[`renders a pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c11 a {
-  color: #313440;
-}
-
 .c11 label {
   cursor: pointer;
 }
