@@ -5,6 +5,7 @@ import scrollIntoView from 'scroll-into-view-if-needed';
 import { uniqueId } from '../../utils';
 import { Flex } from '../Flex';
 import { FlexItem } from '../Flex/Item';
+import { Link } from '../Link';
 import { List } from '../List';
 import { ListGroupHeader } from '../List/GroupHeader';
 import { ListItem } from '../List/Item';
@@ -136,9 +137,9 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
 
   private wrapInLink(option: DropdownLinkItem<T>, content: React.ReactChild) {
     return (
-      <a href={option.url} target={option.target}>
+      <Link href={option.url} target={option.target}>
         {content}
-      </a>
+      </Link>
     );
   }
 
