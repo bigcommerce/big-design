@@ -18,6 +18,21 @@ export const StyledListItem = styled.li<ListItemProps>`
   outline: none;
   padding: 0 ${({ theme }) => theme.spacing.medium};
 
+  a {
+    ${withTransition(['background-color', 'color'])}
+
+    align-items: center;
+    color: ${({ theme }) => theme.colors.secondary70};
+    display: flex;
+    height: 100%;
+    text-decoration: none;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
   &[aria-selected='true'] {
     font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   }
@@ -43,10 +58,6 @@ export const StyledListItem = styled.li<ListItemProps>`
       color: ${theme.colors.secondary40};
       cursor: not-allowed;
     `}
-
-  a {
-    color: ${({ theme }) => theme.colors.secondary70};
-  }
 
   label {
     cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};

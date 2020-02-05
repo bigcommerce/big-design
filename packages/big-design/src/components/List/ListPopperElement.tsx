@@ -1,22 +1,16 @@
-import React, { ReactNode } from 'react';
+import React, { memo } from 'react';
+
+import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks/';
 
 interface ListPopperElementProps {
-  children: ReactNode;
   isOpen: boolean;
   scheduleUpdate(): void;
 }
 
-export class ListPopperElement extends React.PureComponent<ListPopperElementProps> {
-  componentDidUpdate(prevProps: ListPopperElementProps) {
-    if (
-      this.props.isOpen !== prevProps.isOpen ||
-      React.Children.count(this.props.children) !== React.Children.count(prevProps.children)
-    ) {
-      this.props.scheduleUpdate();
-    }
-  }
+export const ListPopperElement: React.FC<ListPopperElementProps> = memo(({ children, isOpen, scheduleUpdate }) => {
+  const { height, width } = useWindowSize();
 
-  render() {
-    return this.props.children;
-  }
-}
+  useIsomorphicLayoutEffect(scheduleUpdate, [children, isOpen, height, width]);
+
+  return <>{children}</>;
+});

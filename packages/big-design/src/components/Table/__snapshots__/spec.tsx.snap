@@ -154,6 +154,30 @@ exports[`renders a pagination component 1`] = `
   padding: 0 1rem;
 }
 
+.c11 a {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,color;
+  transition-property: background-color,color;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #313440;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  width: 100%;
+}
+
+.c11 a:focus {
+  outline: none;
+}
+
 .c11[aria-selected='true'] {
   font-weight: 600;
 }
@@ -162,10 +186,6 @@ exports[`renders a pagination component 1`] = `
 .c11[data-highlighted='true'] a {
   background-color: #F0F3FF;
   color: #3C64F4;
-}
-
-.c11 a {
-  color: #313440;
 }
 
 .c11 label {
