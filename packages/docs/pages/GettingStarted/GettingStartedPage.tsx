@@ -12,7 +12,7 @@ export default () => {
   return (
     <Flex flexDirection="column">
       <figure style={{ textAlign: 'center' }}>
-        <img src={`${process.env.URL_PREFIX}/static/logo.svg`} alt="BigDesign Logo" style={{ width: 200 }} />
+        <img src={`${process.env.URL_PREFIX}/public/logo.svg`} alt="BigDesign Logo" style={{ width: 200 }} />
       </figure>
 
       <FlexItem alignSelf="center">

@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://design.bigcommerce.com/components">
-    <img alt="BigDesign" src="https://bigcommerce.github.io/big-design/static/logo-with-text.svg" width="546">
+    <img alt="BigDesign" src="https://bigcommerce.github.io/big-design/public/logo-with-text.svg" width="546">
   </a>
 </div>
 
