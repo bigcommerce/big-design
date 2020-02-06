@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.14.0...@bigcommerce/big-design@0.15.0) (2020-02-06)
+
+
+### Bug Fixes
+
+* **component:** add flex-shrink 0 to external link icon ([#305](https://github.com/bigcommerce/big-design/issues/305)) ([7b90f96](https://github.com/bigcommerce/big-design/commit/7b90f9688f9c1b391a5174b87eff063dc9d77f06))
+* add react-hooks eslint and fix missing deps/issues ([#330](https://github.com/bigcommerce/big-design/issues/330)) ([da3fbd6](https://github.com/bigcommerce/big-design/commit/da3fbd68181e98e43a95de7fce9956be91afc9b8))
+* **component:** fix links in Dropdown items and scroll bug ([#332](https://github.com/bigcommerce/big-design/issues/332)) ([98d8bdd](https://github.com/bigcommerce/big-design/commit/98d8bdde54a1eac827681b77fb0f2e7933a435bb))
+* **component:** icon alignment and autofill input fixes ([#327](https://github.com/bigcommerce/big-design/issues/327)) ([d83d376](https://github.com/bigcommerce/big-design/commit/d83d3768b522683fe06b415b686f9f58ce788c0b))
+* **component:** modal crash with no focusable elements ([#311](https://github.com/bigcommerce/big-design/issues/311)) ([72f4a33](https://github.com/bigcommerce/big-design/commit/72f4a33a9e507078ad6589487436d810728dc328))
+* **component:** unmount Modals appropriately by deactivating focus trap ([#331](https://github.com/bigcommerce/big-design/issues/331)) ([346331c](https://github.com/bigcommerce/big-design/commit/346331c6dd4610ac0dade647b217ce3cdc87f82a))
+
+
+### Features
+
+* **component:** add ellipsis prop to Link ([#310](https://github.com/bigcommerce/big-design/issues/310)) ([c2f9b78](https://github.com/bigcommerce/big-design/commit/c2f9b78ef39a8ce39da8de2418328b77dc7c402b))
+* **component:** add forwardRef to box, flex and grid ([#329](https://github.com/bigcommerce/big-design/issues/329)) ([b680e73](https://github.com/bigcommerce/big-design/commit/b680e735509de41a523d121da811cbaf2e5eb17c))
+* **component:** add hidden headers props to Table and StatefulTable ([#297](https://github.com/bigcommerce/big-design/issues/297)) ([d80641a](https://github.com/bigcommerce/big-design/commit/d80641aa9a53ea55ed52671fa7d3f8b5eab26796))
+* **component:** add label id's to form fields ([#304](https://github.com/bigcommerce/big-design/issues/304)) ([0620612](https://github.com/bigcommerce/big-design/commit/06206120d9e510a89a4298cfafde582710d4f3db))
+* **component:** add text-transform props to Text and Small ([#307](https://github.com/bigcommerce/big-design/issues/307)) ([5d12784](https://github.com/bigcommerce/big-design/commit/5d127844504a71411b01b21c650e573648cff152))
+* **component:** convert Checkbox to FC and remove static members ([#322](https://github.com/bigcommerce/big-design/issues/322)) ([b916d05](https://github.com/bigcommerce/big-design/commit/b916d057b3751f26ca71a531ea450e28faef4ca4))
+* **component:** convert Flex to FC and export FlexItem ([#313](https://github.com/bigcommerce/big-design/issues/313)) ([b2d0f21](https://github.com/bigcommerce/big-design/commit/b2d0f21787ea292cd846fd29018cefd08b89b084))
+* **component:** convert Form to FC and remove static members ([#324](https://github.com/bigcommerce/big-design/issues/324)) ([fbc5eb9](https://github.com/bigcommerce/big-design/commit/fbc5eb9ae8fac599b89df7c45e7d9f0307f9cc12))
+* **component:** convert Grid to FC and export GridItem ([#314](https://github.com/bigcommerce/big-design/issues/314)) ([6e60254](https://github.com/bigcommerce/big-design/commit/6e60254226f084c9d77b97e27bbbff657f409f98))
+* **component:** convert Input to FC and remove static members ([#320](https://github.com/bigcommerce/big-design/issues/320)) ([f8fcd86](https://github.com/bigcommerce/big-design/commit/f8fcd869295b5d6b4df3ebc2d2e240a9f7c7934d))
+* **component:** convert Modal to FC ([#317](https://github.com/bigcommerce/big-design/issues/317)) ([a525e59](https://github.com/bigcommerce/big-design/commit/a525e59d66bf81a94832ba3e124b3df42772caa1))
+* **component:** convert ProgressBar to FC ([#315](https://github.com/bigcommerce/big-design/issues/315)) ([b6f09c3](https://github.com/bigcommerce/big-design/commit/b6f09c39b050350ddd65fdb55db9335ac870cf45))
+* **component:** convert ProgressCircle to FC ([#316](https://github.com/bigcommerce/big-design/issues/316)) ([fbc0e74](https://github.com/bigcommerce/big-design/commit/fbc0e74f5308d0590130c26e25c2f6743e89e87e))
+* **component:** convert Radio to FC and remove static members ([#323](https://github.com/bigcommerce/big-design/issues/323)) ([b14a6c1](https://github.com/bigcommerce/big-design/commit/b14a6c1fd1090996bfbd6157327c9326accf1abb))
+* **component:** convert Textarea to FC and remove static members ([#321](https://github.com/bigcommerce/big-design/issues/321)) ([bd9cc8d](https://github.com/bigcommerce/big-design/commit/bd9cc8d4a5d59b17873e93e8cab6c5f2eb152d77))
+* **component:** convert Tooltip to FC and remove static members ([#326](https://github.com/bigcommerce/big-design/issues/326)) ([9215816](https://github.com/bigcommerce/big-design/commit/9215816247581a3945116f6d67cc75c553af1cb4))
+* **component:** covert Fieldset to FC and remove static members ([#319](https://github.com/bigcommerce/big-design/issues/319)) ([f75bd49](https://github.com/bigcommerce/big-design/commit/f75bd49dd53d5286ea5a1cb03562a47331d38db1))
+* **component:** rename and expose form controls ([#318](https://github.com/bigcommerce/big-design/issues/318)) ([48dea0c](https://github.com/bigcommerce/big-design/commit/48dea0cf141fe88ed14f24ff6b4d63fad7da71b0))
+* **icons:** forwardRef to svg ([#312](https://github.com/bigcommerce/big-design/issues/312)) ([0088444](https://github.com/bigcommerce/big-design/commit/0088444015df4f6538d97e657f800f5718c2706e))
+
+
+### BREAKING CHANGES
+
+* **component:** Use `FormControlError`, `FormControlLabel`, `FormGroup`, and `Fieldset`
+instead of `Form.Error`, `Form.Label`, `Form.Group`, and `Form.Fieldset` respectively.
+* **component:** Use `RadioLabel` instead of `Radio.Label`.
+* **component:** Use `CheckboxLabel` instead of `Checkbox.Label`.
+* **component:** Use `FormControlDescription`, `FormControlError`, and `FormControlLabel`
+instead of `Textarea.Description`, `Textarea.Error`, and `Textarea.Label` respectively.
+* **component:** Use `FormControlDescription`, `FormControlError`, and `FormControlLabel`
+instead of `Input.Description`, `Input.Error`, and `Input.Label` respectively.
+* **component:** `Form.Fieldset` renamed to `Fieldset` and will now have to
+`import { Fieldset } from '@bigcommerce/big-design';`
+* **component:** `Grid.Item` renamed to `GridItem` and will now have to
+import { GridItem } from '@bigcommerce/big-design';
+* **component:** `Flex.Item` renamed to `FlexItem` and will now have to
+import { FlexItem } from '@bigcommerce/big-design';
+
+
+
+
+
 # [0.14.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.13.2...@bigcommerce/big-design@0.14.0) (2019-12-09)
 
 

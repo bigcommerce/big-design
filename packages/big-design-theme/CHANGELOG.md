@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.4.0...@bigcommerce/big-design-theme@0.5.0) (2020-02-06)
+
+
+### Bug Fixes
+
+* add react-hooks eslint and fix missing deps/issues ([#330](https://github.com/bigcommerce/big-design/issues/330)) ([da3fbd6](https://github.com/bigcommerce/big-design/commit/da3fbd68181e98e43a95de7fce9956be91afc9b8))
+
+
+
+
+
 # [0.4.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.3.1...@bigcommerce/big-design-theme@0.4.0) (2019-12-09)
 
 

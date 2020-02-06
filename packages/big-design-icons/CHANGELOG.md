@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.6.0...@bigcommerce/big-design-icons@0.7.0) (2020-02-06)
+
+
+### Bug Fixes
+
+* add react-hooks eslint and fix missing deps/issues ([#330](https://github.com/bigcommerce/big-design/issues/330)) ([da3fbd6](https://github.com/bigcommerce/big-design/commit/da3fbd68181e98e43a95de7fce9956be91afc9b8))
+
+
+### Features
+
+* **icons:** forwardRef to svg ([#312](https://github.com/bigcommerce/big-design/issues/312)) ([0088444](https://github.com/bigcommerce/big-design/commit/0088444015df4f6538d97e657f800f5718c2706e))
+
+
+
+
+
 # [0.6.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.5.2...@bigcommerce/big-design-icons@0.6.0) (2019-12-09)
 
 

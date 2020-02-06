@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/chanceaclark/big-design/compare/@bigcommerce/configs@0.9.0...@bigcommerce/configs@0.10.0) (2020-02-06)
+
+
+### Bug Fixes
+
+* add react-hooks eslint and fix missing deps/issues ([#330](https://github.com/chanceaclark/big-design/issues/330)) ([da3fbd6](https://github.com/chanceaclark/big-design/commit/da3fbd68181e98e43a95de7fce9956be91afc9b8))
+
+
+
+
+
 # [0.9.0](https://github.com/deini/big-design/compare/@bigcommerce/configs@0.8.1...@bigcommerce/configs@0.9.0) (2019-12-09)
 
 
