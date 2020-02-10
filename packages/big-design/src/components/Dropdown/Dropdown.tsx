@@ -251,13 +251,13 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     return triggerId || this.uniqueTriggerId;
   }
 
-  private updateHighlightedItem(element: HTMLLIElement | null, scroll?: boolean, instantScroll?: boolean) {
+  private updateHighlightedItem(element: HTMLLIElement | null, scroll?: boolean) {
     if (!element) {
       return;
     }
 
     this.setState({ highlightedItem: element }, () => {
-      return scroll && this.scrollIntoView(instantScroll);
+      return scroll && this.scrollIntoView();
     });
   }
 
@@ -356,7 +356,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     }
   };
 
-  private scrollIntoView = (instantScroll = false) => {
+  private scrollIntoView = () => {
     const element = this.state.highlightedItem;
 
     if (!element) {
@@ -364,7 +364,7 @@ export class Dropdown<T extends any> extends React.PureComponent<DropdownProps<T
     }
 
     return scrollIntoView(element, {
-      behavior: instantScroll ? 'instant' : 'smooth',
+      behavior: 'auto',
       block: 'nearest',
       inline: 'nearest',
       scrollMode: 'if-needed',
