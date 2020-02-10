@@ -365,7 +365,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
       document.addEventListener('mousedown', this.handleOnClickOutside, false);
 
       if (selectedElement) {
-        this.updateHighlightedItem(selectedElement, true, true);
+        this.updateHighlightedItem(selectedElement, true);
       }
 
       this.focusInput();
@@ -455,13 +455,13 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     return Array.isArray(value) && Boolean(value.find(val => val === option.value));
   }
 
-  private updateHighlightedItem(element: HTMLLIElement | null, scroll?: boolean, instantScroll?: boolean) {
+  private updateHighlightedItem(element: HTMLLIElement | null, scroll?: boolean) {
     if (!element) {
       return;
     }
 
     this.setState({ highlightedItem: element }, () => {
-      return scroll && this.scrollIntoView(instantScroll);
+      return scroll && this.scrollIntoView();
     });
   }
 
@@ -561,7 +561,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     }
 
     this.setState({ filterChildren: true, inputText: event.target.value }, () => {
-      this.scrollIntoView(true);
+      this.scrollIntoView();
 
       /**
        * VO CODE
@@ -698,7 +698,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     }
   };
 
-  private scrollIntoView = (instantScroll = false) => {
+  private scrollIntoView = () => {
     const element = this.state.highlightedItem;
 
     if (!element) {
@@ -706,7 +706,7 @@ export class Select<T extends any> extends React.PureComponent<SelectProps<T>, S
     }
 
     scrollIntoView(element, {
-      behavior: instantScroll ? 'instant' : 'smooth',
+      behavior: 'auto',
       block: 'nearest',
       inline: 'nearest',
       scrollMode: 'if-needed',
