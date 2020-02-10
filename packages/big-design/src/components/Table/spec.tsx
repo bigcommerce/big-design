@@ -428,13 +428,13 @@ describe('sortable', () => {
   });
 
   test('renders headers by default and hides then via prop', () => {
-    const { getAllByRole, rerender } = render(getSimpleTable());
+    const { container, rerender } = render(getSimpleTable());
 
-    expect(getAllByRole('columnheader')[0]).toBeVisible();
+    expect(container.querySelector('th')).toBeVisible();
 
     rerender(getSimpleTable({ headerless: true }));
 
-    expect(getAllByRole('columnheader')[0]).toBeInTheDocument();
-    expect(getAllByRole('columnheader')[0]).not.toBeVisible();
+    expect(container.querySelector('th')).toBeInTheDocument();
+    expect(container.querySelector('th')).not.toBeVisible();
   });
 });

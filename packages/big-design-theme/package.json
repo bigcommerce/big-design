@@ -63,21 +63,21 @@
     "@babel/preset-react": "^7.7.0",
     "@babel/preset-typescript": "^7.7.0",
     "@bigcommerce/configs": "^0.10.0",
-    "@types/jest": "^24.0.16",
+    "@types/jest": "^25.1.2",
     "@types/styled-components": "^4.1.12",
     "@typescript-eslint/parser": "^2.16.0",
-    "babel-jest": "^24.5.0",
+    "babel-jest": "^25.1.0",
     "concurrently": "^5.0.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "jest": "^24.5.0",
+    "jest": "^25.1.0",
     "jest-styled-components": "^6.3.1",
     "lint-staged": "^9.2.0",
     "prettier": "^1.16.4",
-    "rimraf": "^2.6.3",
+    "rimraf": "^3.0.2",
     "styled-components": "^4.3.0",
-    "tslint": "^5.14.0",
+    "tslint": "^6.0.0",
     "typescript": "^3.7.2",
-    "typescript-styled-plugin": "^0.14.0"
+    "typescript-styled-plugin": "^0.15.0"
   }
 }
