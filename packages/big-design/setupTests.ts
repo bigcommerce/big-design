@@ -1,3 +1,4 @@
+import { cleanup } from '@test/utils';
 import '@testing-library/jest-dom/extend-expect';
 
 import * as utils from './src/utils';
@@ -29,4 +30,7 @@ jest.mock('./src/utils', () => {
 afterEach(() => {
   (utils as any).resetCounter();
   jest.clearAllMocks();
+
+  // https://github.com/testing-library/react-testing-library/pull/519
+  cleanup();
 });
