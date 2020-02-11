@@ -1,7 +1,6 @@
 {
   "name": "@bigcommerce/big-design-icons",
   "version": "0.7.0",
-  "private": false,
   "sideEffects": false,
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
@@ -69,6 +68,8 @@
     "@svgr/plugin-jsx": "^5.0.1",
     "@svgr/plugin-prettier": "^5.0.1",
     "@svgr/plugin-svgo": "^5.0.1",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.5",
     "@types/styled-components": "^4.1.12",
     "@typescript-eslint/parser": "^2.16.0",
     "babel-plugin-styled-components": "^1.10.6",
