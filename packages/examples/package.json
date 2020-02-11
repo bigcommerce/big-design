@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.2.0",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "ci": "tsc --noEmit && parcel build index.html"
   },
   "dependencies": {
     "@bigcommerce/big-design": "^0.15.0",
@@ -20,6 +21,7 @@
     "@types/react-dom": "^16.8.5",
     "@types/styled-components": "^4.1.12",
     "@types/yup": "^0.26.24",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.7.2"
   }
 }
