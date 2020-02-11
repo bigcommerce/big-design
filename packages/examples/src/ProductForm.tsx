@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Form,
+  FormGroup,
   H1,
   Input,
   Panel,
@@ -47,7 +48,7 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
       <H1>Product Form</H1>
       <Panel>
         <Form onSubmit={handleSubmit} noValidate>
-          <Form.Group>
+          <FormGroup>
             <Input
               label="Name"
               description="Quis veniam ullamco duis ipsum consequat aliqua irure."
@@ -57,8 +58,8 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
               error={touched.name && errors.name}
               required
             />
-          </Form.Group>
-          <Form.Group>
+          </FormGroup>
+          <FormGroup>
             <Input
               label="Stock"
               description="Officia reprehenderit cillum Lorem eiusmod proident labore quis."
@@ -69,9 +70,9 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
               error={touched.stock && errors.stock}
               required
             />
-          </Form.Group>
+          </FormGroup>
 
-          <Form.Group>
+          <FormGroup>
             <Select
               label="Category"
               name="category"
@@ -84,7 +85,7 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
               error={touched.category && errors.category}
               required
             />
-          </Form.Group>
+          </FormGroup>
 
           <Box marginTop="xxLarge">
             <Button type="submit">Submit</Button>
