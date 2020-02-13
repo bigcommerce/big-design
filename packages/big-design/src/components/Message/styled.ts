@@ -5,23 +5,16 @@ import { getBorderStyle } from '../../utils';
 import { StyleableButton } from '../Button/private';
 import { Grid } from '../Grid';
 import { Link } from '../Link';
-import { TextProps } from '../Typography';
 import { StyleableH4, StyleableSmall } from '../Typography/private';
+import { TextProps } from '../Typography/types';
 
-import { AlertProps } from './Alert';
+import { MessageProps } from './Message';
 
-export const StyledAlert = styled(Grid)<AlertProps>`
-  ${({ theme }) => theme.shadow.floating}
+export const StyledMessage = styled(Grid)<MessageProps>`
+  ${({ theme }) => theme.shadow.raised}
 
-  animation: ${({ theme }) => theme.keyframes.fadeIn} .5s ease-in-out;
-  background-color: ${({ theme }) => theme.colors.white};
   grid-gap: ${({ theme }) => theme.spacing.small};
-  max-width: ${({ theme }) => theme.helpers.remCalc(456)};
   padding: ${({ theme }) => theme.spacing.small};
-  position: fixed;
-  right: ${({ theme }) => theme.helpers.remCalc(16)};
-  top: ${({ theme }) => theme.helpers.remCalc(16)};
-  z-index: ${({ theme }) => theme.zIndex.fixed};
 
   ${({ onClose }) =>
     onClose
@@ -38,8 +31,8 @@ export const StyledAlert = styled(Grid)<AlertProps>`
 `;
 
 export const StyledHeader = styled(StyleableH4)`
-  line-height: ${({ theme }) => theme.helpers.remCalc(16)};
-  margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
+  line-height: ${({ theme }) => theme.spacing.large};
+  margin-bottom: ${({ theme }) => theme.spacing.none};
 `;
 
 export const StyledMessageItem = styled(StyleableSmall).attrs({ as: 'span' })`
@@ -72,7 +65,7 @@ export const StyledCloseButton = styled(StyleableButton)`
   }
 `;
 
-StyledAlert.defaultProps = { theme: defaultTheme };
+StyledMessage.defaultProps = { theme: defaultTheme };
 StyledHeader.defaultProps = { theme: defaultTheme };
 StyledMessageItem.defaultProps = { theme: defaultTheme };
 StyledLink.defaultProps = { theme: defaultTheme };

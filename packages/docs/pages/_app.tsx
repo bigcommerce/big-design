@@ -1,4 +1,4 @@
-import { GlobalStyles, Grid, GridItem } from '@bigcommerce/big-design';
+import { AlertsManager, GlobalStyles, Grid, GridItem } from '@bigcommerce/big-design';
 import { createTheme } from '@bigcommerce/big-design-theme';
 import App from 'next/app';
 import Head from 'next/head';
@@ -50,36 +50,38 @@ export default class MyApp extends App {
         <UIDReset>
           <UIDFork>
             <ThemeProvider theme={theme}>
-              <>
-                <GlobalStyles />
-                {router.query.noNav ? (
-                  <Component {...pageProps} />
-                ) : (
-                  <>
-                    <Grid
-                      gridTemplate={gridTemplate}
-                      backgroundColor="secondary10"
-                      gridGap="0"
-                      style={{ minHeight: '100%' }}
-                    >
-                      <GridItem gridArea="nav">
-                        <SideNav />
-                      </GridItem>
-                      <GridItem
-                        gridArea="main"
-                        marginVertical="medium"
-                        marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
-                        style={{ maxWidth: '100%' }}
+              <AlertsManager>
+                <>
+                  <GlobalStyles />
+                  {router.query.noNav ? (
+                    <Component {...pageProps} />
+                  ) : (
+                    <>
+                      <Grid
+                        gridTemplate={gridTemplate}
+                        backgroundColor="secondary10"
+                        gridGap="0"
+                        style={{ minHeight: '100%' }}
                       >
-                        <StoryWrapper>
-                          <Component {...pageProps} />
-                        </StoryWrapper>
-                      </GridItem>
-                    </Grid>
-                    <BetaRibbon />
-                  </>
-                )}
-              </>
+                        <GridItem gridArea="nav">
+                          <SideNav />
+                        </GridItem>
+                        <GridItem
+                          gridArea="main"
+                          marginVertical="medium"
+                          marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
+                          style={{ maxWidth: '100%' }}
+                        >
+                          <StoryWrapper>
+                            <Component {...pageProps} />
+                          </StoryWrapper>
+                        </GridItem>
+                      </Grid>
+                      <BetaRibbon />
+                    </>
+                  )}
+                </>
+              </AlertsManager>
             </ThemeProvider>
           </UIDFork>
         </UIDReset>
