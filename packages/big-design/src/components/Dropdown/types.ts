@@ -10,7 +10,7 @@ export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElemen
   toggle: React.ReactElement;
 }
 
-interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'isHighlighted' | 'isSelected'> {
+interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'isAction' | 'isHighlighted' | 'isSelected'> {
   content: string;
   icon?: React.ReactElement;
   tooltip?: string;

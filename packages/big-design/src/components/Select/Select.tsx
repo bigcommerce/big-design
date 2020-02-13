@@ -269,6 +269,7 @@ export const Select = typedMemo(
                 index,
                 item: actionItem,
               })}
+              isAction={true}
               isHighlighted={isHighlighted}
             >
               {getContent(actionItem, isHighlighted)}
@@ -370,7 +371,7 @@ const iconColor = <T extends any>(item: SelectOption<T> | SelectAction, isHighli
     return 'secondary40';
   }
 
-  if (!isHighlighted) {
+  if (!isHighlighted || !('onActionClick' in item)) {
     return 'secondary60';
   }
 

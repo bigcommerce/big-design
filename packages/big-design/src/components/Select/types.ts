@@ -24,7 +24,8 @@ export interface SelectProps<T> extends BaseSelect {
   onOptionChange(value?: T, option?: SelectOption<T>): void;
 }
 
-interface BaseItem extends Omit<ListItemProps, 'children' | 'content' | 'isHighlighted' | 'isSelected' | 'value'> {
+interface BaseItem
+  extends Omit<ListItemProps, 'children' | 'content' | 'isAction' | 'isHighlighted' | 'isSelected' | 'value'> {
   content: string;
   icon?: React.ReactElement;
 }

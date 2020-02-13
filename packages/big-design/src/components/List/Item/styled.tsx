@@ -33,24 +33,28 @@ export const StyledListItem = styled.li<ListItemProps>`
     }
   }
 
-  ${({ actionType, isHighlighted, theme }) =>
+  ${({ actionType, isAction, isHighlighted, theme }) =>
     isHighlighted &&
-    (actionType === 'normal'
-      ? css`
-          background-color: ${theme.colors.primary10};
-          color: ${theme.colors.primary};
-
-          a {
+    (isAction
+      ? actionType === 'normal'
+        ? css`
+            background-color: ${theme.colors.primary10};
             color: ${theme.colors.primary};
-          }
-        `
-      : css`
-          background-color: ${theme.colors.danger10};
-          color: ${theme.colors.danger50};
 
-          a {
+            a {
+              color: ${theme.colors.primary};
+            }
+          `
+        : css`
+            background-color: ${theme.colors.danger10};
             color: ${theme.colors.danger50};
-          }
+
+            a {
+              color: ${theme.colors.danger50};
+            }
+          `
+      : css`
+          background-color: ${theme.colors.secondary10};
         `)}
 
   ${({ disabled, theme }) =>

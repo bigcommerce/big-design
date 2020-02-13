@@ -92,6 +92,7 @@ export const Dropdown = memo(
               item,
             })}
             actionType={actionType}
+            isAction={true}
             isHighlighted={isHighlighted}
             key={`${content}-${key}`}
           >
@@ -119,6 +120,7 @@ export const Dropdown = memo(
               item,
             })}
             actionType={actionType}
+            isAction={true}
             isHighlighted={isHighlighted}
             key={`${content}-${key}`}
           >
