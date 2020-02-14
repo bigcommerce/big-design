@@ -126,6 +126,8 @@ export const MultiSelect = typedMemo(
             inputValue: '',
             isOpen: true,
           };
+        case useCombobox.stateChangeTypes.ToggleButtonClick:
+          return { ...actionAndChanges.changes, isOpen: !isOpen };
         default:
           return actionAndChanges.changes;
       }

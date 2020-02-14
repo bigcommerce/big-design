@@ -123,6 +123,8 @@ export const Select = typedMemo(
           ) {
             return { ...actionAndChanges.changes, inputValue: state.inputValue };
           }
+        case useCombobox.stateChangeTypes.ToggleButtonClick:
+          return { ...actionAndChanges.changes, isOpen: !isOpen };
         default:
           return actionAndChanges.changes;
       }
