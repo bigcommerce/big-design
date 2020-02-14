@@ -5,7 +5,7 @@ import { withMargins } from '../../mixins';
 
 import { BadgeProps } from './Badge';
 
-export const StyledBadge = styled.span<BadgeProps>`
+export const StyledBadge = styled.span<Omit<BadgeProps, 'label'>>`
   ${withMargins()};
 
   color: ${({ theme }) => theme.colors.white};
@@ -13,9 +13,10 @@ export const StyledBadge = styled.span<BadgeProps>`
   display: inline-block;
   font-size: ${({ theme }) => theme.helpers.remCalc(12)};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  line-height: ${({ theme }) => theme.lineHeight.small};
   text-align: center;
   text-transform: uppercase;
-  padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.xSmall}`};
+  padding: 0 ${({ theme }) => theme.spacing.xSmall};
 
   ${({ theme, variant }) =>
     variant === 'secondary' &&
