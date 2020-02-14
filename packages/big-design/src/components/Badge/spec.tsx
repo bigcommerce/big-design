@@ -6,45 +6,45 @@ import React from 'react';
 import { Badge } from './index';
 
 test('has margin props', () => {
-  const { container, rerender } = render(<Badge />);
+  const { container, rerender } = render(<Badge label="Badge" />);
 
   expect(container.firstChild).not.toHaveStyle('margin: 1rem');
 
-  rerender(<Badge margin="medium" />);
+  rerender(<Badge label="Badge" margin="medium" />);
 
   expect(container.firstChild).toHaveStyle('margin: 1rem');
 });
 
 test('render default Badge', () => {
-  const { container } = render(<Badge>Badge</Badge>);
+  const { container } = render(<Badge label="Badge" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary60}`);
 });
 
 test('render success Badge', () => {
-  const { container } = render(<Badge variant="success">Badge</Badge>);
+  const { container } = render(<Badge label="Badge" variant="success" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.success50}`);
 });
 
 test('render danger Badge', () => {
-  const { container } = render(<Badge variant="danger">Badge</Badge>);
+  const { container } = render(<Badge label="Badge" variant="danger" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.danger40}`);
 });
 
 test('render warning Badge', () => {
-  const { container } = render(<Badge variant="warning">Badge</Badge>);
+  const { container } = render(<Badge label="Badge" variant="warning" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.warning40}`);
 });
 
 test('render secondary Badge', () => {
-  const { container } = render(<Badge variant="secondary">Badge</Badge>);
+  const { container } = render(<Badge label="Badge" variant="secondary" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary60}`);

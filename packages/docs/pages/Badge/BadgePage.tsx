@@ -19,7 +19,7 @@ export default () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Badge variant="success">active</Badge>
+      <Badge label="active" variant="success" />
       {/* jsx-to-string:end */}
     </CodePreview>
 
@@ -40,10 +40,10 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(4, min-content)">
-        <Badge variant="secondary">secondary</Badge>
-        <Badge variant="success">success</Badge>
-        <Badge variant="warning">warning</Badge>
-        <Badge variant="danger">danger</Badge>
+        <Badge variant="secondary" label="secondary" />
+        <Badge variant="success" label="success" />
+        <Badge variant="warning" label="warning" />
+        <Badge variant="danger" label="danger" />
       </Grid>
       {/* jsx-to-string:end */}
     </CodePreview>
