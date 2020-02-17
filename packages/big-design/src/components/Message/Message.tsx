@@ -4,15 +4,16 @@ import React, { memo, useMemo } from 'react';
 import { excludePaddingProps, MarginProps } from '../../mixins';
 import { getMessagingIcon, SharedMessagingProps } from '../../utils';
 import { Box } from '../Box';
+import { MessagingButton } from '../Button/private';
 import { GridItem } from '../Grid';
 
-import { StyledCloseButton, StyledHeader, StyledLink, StyledMessage, StyledMessageItem } from './styled';
+import { StyledHeader, StyledLink, StyledMessage, StyledMessageItem } from './styled';
 
 export type MessageProps = SharedMessagingProps & MarginProps;
 
 export const Message: React.FC<MessageProps> = memo(({ className, style, header, ...props }) => {
   const filteredProps = excludePaddingProps(props);
-  const icon = props.type && getMessagingIcon(props.type);
+  const icon = useMemo(() => props.type && getMessagingIcon(props.type), [props.type]);
 
   const renderedMessages = useMemo(
     () =>
@@ -35,7 +36,7 @@ export const Message: React.FC<MessageProps> = memo(({ className, style, header,
       </GridItem>
       {props.onClose && (
         <GridItem>
-          <StyledCloseButton onClick={props.onClose} iconOnly={<CloseIcon size="large" title="Close." />} />
+          <MessagingButton onClick={props.onClose} iconOnly={<CloseIcon size="large" title="Close." />} />
         </GridItem>
       )}
     </StyledMessage>

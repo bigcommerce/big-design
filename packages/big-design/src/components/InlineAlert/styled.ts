@@ -2,7 +2,6 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 
 import { getBorderStyle } from '../../utils';
-import { StyleableButton } from '../Button/private';
 import { Grid } from '../Grid';
 import { Link } from '../Link';
 import { StyleableH4, StyleableSmall } from '../Typography/private';
@@ -47,28 +46,7 @@ export const StyledLink = styled(Link)`
   vertical-align: middle;
 `;
 
-export const StyledCloseButton = styled(StyleableButton)`
-  background-color: ${({ theme }) => theme.colors.white};
-  border: ${({ theme }) => theme.border.none};
-  color: ${({ theme }) => theme.colors.secondary70};
-  height: auto;
-  padding: ${({ theme }) => theme.spacing.none};
-
-  &:active {
-    background-color: ${({ theme }) => theme.colors.secondary20};
-  }
-
-  &:focus {
-    box-shadow: ${({ theme }) => `0 0 0 ${theme.spacing.xxSmall} ${theme.colors.secondary20}`};
-  }
-
-  &:hover:not(:active) {
-    background-color: ${({ theme }) => theme.colors.secondary10};
-  }
-`;
-
 StyledInlineAlert.defaultProps = { theme: defaultTheme };
 StyledHeader.defaultProps = { theme: defaultTheme };
 StyledMessageItem.defaultProps = { theme: defaultTheme };
 StyledLink.defaultProps = { theme: defaultTheme };
-StyledCloseButton.defaultProps = { theme: defaultTheme };

@@ -43,21 +43,21 @@ export const getMessagingIcon = (type: MessagingType, condensed?: boolean) => {
 export const getBorderStyle = (type: MessagingType, theme: ThemeInterface) => css`
   ${type === 'success' &&
     css`
-      border-left: 4px solid ${theme.colors.success};
+      border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success};
     `};
 
   ${type === 'error' &&
     css`
-      border-left: 4px solid ${theme.colors.danger};
+      border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger};
     `};
 
   ${type === 'warning' &&
     css`
-      border-left: 4px solid ${theme.colors.warning50};
+      border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50};
     `};
 
   ${type === 'info' &&
     css`
-      border-left: 4px solid ${theme.colors.primary60};
+      border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60};
     `};
 `;

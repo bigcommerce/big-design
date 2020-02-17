@@ -4,15 +4,16 @@ import React, { memo, useMemo } from 'react';
 import { excludePaddingProps, MarginProps } from '../../mixins';
 import { getMessagingIcon, SharedMessagingProps } from '../../utils';
 import { Box } from '../Box';
+import { MessagingButton } from '../Button/private';
 import { GridItem } from '../Grid';
 
-import { StyledCloseButton, StyledHeader, StyledInlineAlert, StyledLink, StyledMessageItem } from './styled';
+import { StyledHeader, StyledInlineAlert, StyledLink, StyledMessageItem } from './styled';
 
 export type InlineAlertProps = SharedMessagingProps & MarginProps;
 
 export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style, header, ...props }) => {
   const filteredProps = excludePaddingProps(props);
-  const icon = props.type && getMessagingIcon(props.type, true);
+  const icon = useMemo(() => props.type && getMessagingIcon(props.type, true), [props.type]);
 
   const renderedMessages = useMemo(
     () =>
@@ -35,7 +36,7 @@ export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style,
       </GridItem>
       {props.onClose && (
         <GridItem>
-          <StyledCloseButton onClick={props.onClose} iconOnly={<CloseIcon size="medium" title="Close." />} />
+          <MessagingButton onClick={props.onClose} iconOnly={<CloseIcon size="medium" title="Close." />} />
         </GridItem>
       )}
     </StyledInlineAlert>

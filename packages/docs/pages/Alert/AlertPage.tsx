@@ -1,90 +1,52 @@
-import { alertsManager, Alert, AlertsManager, AlertProps, Button, H0, H1, H2, Text } from '@bigcommerce/big-design';
+import { alertsManager, AlertsManager, AlertProps, Button, H0, H1, H2, Message, Text } from '@bigcommerce/big-design';
 
 import { Code, CodePreview, CodeSnippet } from '../../components';
 import {
   AlertsManagerAddMethodList,
   AlertsManagerRemoveMethodList,
   AlertsManagerSubscribeMethodList,
-  AlertsManagerUnsubscribeMethodList,
 } from '../../MethodLists';
 import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../../PropTables/shared';
 import { AlertPropTable } from '../../PropTables/AlertPropTable';
-
-const errorAlert = {
-  header: 'Optional Headline',
-  messages: [{ text: 'Required description copy.' }],
-  type: 'error',
-  onClose: () => null,
-} as AlertProps;
-
-const successAlert = {
-  header: 'Optional Headline',
-  messages: [{ text: 'Required description copy.', link: { text: 'Optional Link', href: '#' } }],
-  type: 'success',
-  onClose: () => null,
-} as AlertProps;
-
-const warningAlert = {
-  header: 'Optional Headline',
-  messages: [
-    {
-      text: 'Required description copy.',
-      link: { text: 'External Link', href: '#', external: true, target: '_blank' },
-    },
-  ],
-  type: 'warning',
-  onClose: () => null,
-} as AlertProps;
-
-const infoAlert = {
-  header: 'Optional Headline',
-  messages: [
-    {
-      text: 'Required description copy.',
-      link: {
-        href: '#',
-        text: 'Optional Link',
-      },
-    },
-    {
-      text: 'Required description copy.',
-      link: {
-        text: 'External Link',
-        href: '#',
-        external: true,
-        target: '_blank',
-      },
-    },
-  ],
-  type: 'info',
-  onClose: () => null,
-} as AlertProps;
 
 export default () => (
   <>
     <H0>Alerts</H0>
     <Text>An alert appears at the top right of the interface notifying the user after an action.</Text>
 
-    <CodeSnippet>
+    <CodePreview scope={{ alertsManager }}>
       {/* jsx-to-string:start */}
-      <Alert
-        header="Header"
-        type="error"
-        messages={[
-          {
-            text: 'An Error has occured.',
-            link: {
-              text: 'Learn more',
-              href: '#',
-              target: '_blank',
-              external: true,
+      {function Example() {
+        const alert = {
+          header: 'Optional Headline',
+          messages: [
+            {
+              text: 'Required description copy.',
+              link: {
+                text: 'Optional Link',
+                href: '#',
+              },
             },
-          },
-        ]}
-        onClose={() => null}
-      />
+          ],
+          type: 'success',
+          onClose: () => null,
+        } as AlertProps;
+
+        return <Button onClick={() => alertsManager.add(alert)}>Trigger Alert</Button>;
+      }}
       {/* jsx-to-string:end */}
-    </CodeSnippet>
+    </CodePreview>
+
+    <Message
+      type="warning"
+      messages={[
+        {
+          text:
+            'Note: You should not use the Alert component directly. Instead, inject the AlertsManager component into your app and use the alertsManager utility to control which Alerts are displayed.',
+        },
+      ]}
+      marginBottom="large"
+    />
 
     <H1>API</H1>
 
@@ -109,7 +71,7 @@ export default () => (
     <CodeSnippet>
       {/* jsx-to-string:start */}
       import {AlertsManager} from '@bigcommerce/big-design';
-      <AlertsManager>...</AlertsManager>
+      <AlertsManager />
       {/* jsx-to-string:end */}
     </CodeSnippet>
 
@@ -129,20 +91,5 @@ export default () => (
     <AlertsManagerRemoveMethodList />
 
     <AlertsManagerSubscribeMethodList />
-
-    <AlertsManagerUnsubscribeMethodList />
-
-    <H2>Usage</H2>
-
-    <CodePreview scope={{ alertsManager, errorAlert, warningAlert, successAlert, infoAlert }}>
-      {/* jsx-to-string:start */}
-      <>
-        <Button onClick={() => alertsManager.add(errorAlert)}>Trigger Error</Button>
-        <Button onClick={() => alertsManager.add(warningAlert)}>Trigger Warning</Button>
-        <Button onClick={() => alertsManager.add(successAlert)}>Trigger Success</Button>
-        <Button onClick={() => alertsManager.add(infoAlert)}>Trigger Info</Button>
-      </>
-      {/* jsx-to-string:end */}
-    </CodePreview>
   </>
 );

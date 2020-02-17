@@ -4,13 +4,13 @@ import React, { memo, useMemo } from 'react';
 import { excludePaddingProps } from '../../mixins';
 import { getMessagingIcon, SharedMessagingProps } from '../../utils';
 import { Box } from '../Box';
+import { MessagingButton } from '../Button/private';
 import { GridItem } from '../Grid';
 
-import { StyledAlert, StyledCloseButton, StyledHeader, StyledLink, StyledMessageItem } from './styled';
+import { StyledAlert, StyledHeader, StyledLink, StyledMessageItem } from './styled';
 
 // TODO:
 // - animation
-// - buttons
 
 export interface AlertProps extends SharedMessagingProps {
   key?: string;
@@ -18,7 +18,7 @@ export interface AlertProps extends SharedMessagingProps {
 
 export const Alert: React.FC<AlertProps> = memo(({ className, style, header, ...props }) => {
   const filteredProps = excludePaddingProps(props);
-  const icon = props.type && getMessagingIcon(props.type);
+  const icon = useMemo(() => props.type && getMessagingIcon(props.type), [props.type]);
 
   const renderedMessages = useMemo(
     () =>
@@ -41,7 +41,7 @@ export const Alert: React.FC<AlertProps> = memo(({ className, style, header, ...
       </GridItem>
       {props.onClose && (
         <GridItem>
-          <StyledCloseButton onClick={props.onClose} iconOnly={<CloseIcon size="large" />} />
+          <MessagingButton onClick={props.onClose} iconOnly={<CloseIcon size="large" />} />
         </GridItem>
       )}
     </StyledAlert>

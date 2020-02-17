@@ -36,8 +36,8 @@ export const MethodList: React.FC<MethodListProps> = ({ name, intro, usage, para
           <MethodBadge label="Parameters" />
 
           <List bulleted={false}>
-            {parameterList.map(({ param, description, required }) => (
-              <List.Item>
+            {parameterList.map(({ param, description, required }, index) => (
+              <List.Item key={index}>
                 <Text>
                   <Code>{param}</Code>
                   {!required && (

@@ -22,7 +22,7 @@ class AlertsManager {
       this.remove(alert.key);
     }
 
-    const key = this.getKey(alert.key);
+    const key = alert.key !== undefined ? alert.key : this.getUniqueId();
     const onClose = () => {
       if (typeof dismissCallback === 'function') {
         dismissCallback(); // Should we return something with this?
@@ -39,7 +39,7 @@ class AlertsManager {
 
     this.alerts = this.alerts.concat([newAlert]).sort(this.sortAlerts);
 
-    this.contactSubscribers();
+    this.notifySubscribers();
 
     return key;
   }
@@ -54,28 +54,24 @@ class AlertsManager {
         return acc;
       }
 
-      acc.push(alert);
-
-      return acc;
+      return [...acc, alert];
     }, [] as PrivateAlert[]);
 
-    this.contactSubscribers();
+    this.notifySubscribers();
 
     return removed;
   }
 
   subscribe(subscriber: Subscriber) {
     this.subscribers.push(subscriber);
+
+    return () => {
+      this.subscribers = this.subscribers.filter(sub => sub !== subscriber);
+    };
   }
 
-  unsubscribe() {
-    this.alerts = [];
-    this.counter = 0;
-    this.subscribers = [];
-  }
-
-  private contactSubscribers() {
-    this.subscribers.forEach(subscriber => subscriber(this.alerts[0]));
+  private notifySubscribers() {
+    this.subscribers.forEach(subscriber => subscriber(this.alerts[0] || null));
   }
 
   private getUniqueId() {
@@ -84,20 +80,8 @@ class AlertsManager {
     return `alert-${this.counter}`;
   }
 
-  private getKey(key: AlertProps['key']) {
-    return key ? key : this.getUniqueId();
-  }
-
   private sortAlerts = (a: PrivateAlert, b: PrivateAlert) => {
-    if (this.typeMap[a.type as keyof TypeMap] < this.typeMap[b.type as keyof TypeMap]) {
-      return -1;
-    }
-
-    if (this.typeMap[a.type as keyof TypeMap] > this.typeMap[b.type as keyof TypeMap]) {
-      return 1;
-    }
-
-    return 0;
+    return this.typeMap[a.type as keyof TypeMap] - this.typeMap[b.type as keyof TypeMap];
   };
 
   private containsKey(key: string) {

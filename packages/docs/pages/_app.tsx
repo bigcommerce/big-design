@@ -50,38 +50,37 @@ export default class MyApp extends App {
         <UIDReset>
           <UIDFork>
             <ThemeProvider theme={theme}>
-              <AlertsManager>
-                <>
-                  <GlobalStyles />
-                  {router.query.noNav ? (
-                    <Component {...pageProps} />
-                  ) : (
-                    <>
-                      <Grid
-                        gridTemplate={gridTemplate}
-                        backgroundColor="secondary10"
-                        gridGap="0"
-                        style={{ minHeight: '100%' }}
+              <>
+                <GlobalStyles />
+                <AlertsManager />
+                {router.query.noNav ? (
+                  <Component {...pageProps} />
+                ) : (
+                  <>
+                    <Grid
+                      gridTemplate={gridTemplate}
+                      backgroundColor="secondary10"
+                      gridGap="0"
+                      style={{ minHeight: '100%' }}
+                    >
+                      <GridItem gridArea="nav">
+                        <SideNav />
+                      </GridItem>
+                      <GridItem
+                        gridArea="main"
+                        marginVertical="medium"
+                        marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
+                        style={{ maxWidth: '100%' }}
                       >
-                        <GridItem gridArea="nav">
-                          <SideNav />
-                        </GridItem>
-                        <GridItem
-                          gridArea="main"
-                          marginVertical="medium"
-                          marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
-                          style={{ maxWidth: '100%' }}
-                        >
-                          <StoryWrapper>
-                            <Component {...pageProps} />
-                          </StoryWrapper>
-                        </GridItem>
-                      </Grid>
-                      <BetaRibbon />
-                    </>
-                  )}
-                </>
-              </AlertsManager>
+                        <StoryWrapper>
+                          <Component {...pageProps} />
+                        </StoryWrapper>
+                      </GridItem>
+                    </Grid>
+                    <BetaRibbon />
+                  </>
+                )}
+              </>
             </ThemeProvider>
           </UIDFork>
         </UIDReset>

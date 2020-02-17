@@ -51,21 +51,10 @@ export const AlertsManagerSubscribeMethodList: React.FC = () => (
     parameterList={[
       {
         param: 'callback',
-        description:
-          'Callback function to run when the alerts list changes. Will pass the alert to display, or undefined.',
+        description: 'Callback function to run when the alerts list changes. Will pass the alert to display, or null.',
         required: true,
       },
     ]}
-    returnDescription={<Code>undefined</Code>}
-  />
-);
-
-export const AlertsManagerUnsubscribeMethodList: React.FC = () => (
-  <MethodList
-    name="unsubscribe"
-    intro="Removes all subscribers and resets the alerts manager instance to it's default state."
-    usage="alertsManager.unsubscribe()"
-    parameterList={[]}
-    returnDescription={<Code>undefined</Code>}
+    returnDescription="An unsubscribe method for the subscibed method."
   />
 );

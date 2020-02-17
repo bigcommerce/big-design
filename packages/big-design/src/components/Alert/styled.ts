@@ -2,7 +2,6 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 
 import { getBorderStyle } from '../../utils';
-import { StyleableButton } from '../Button/private';
 import { Grid } from '../Grid';
 import { Link } from '../Link';
 import { TextProps } from '../Typography';
@@ -19,8 +18,8 @@ export const StyledAlert = styled(Grid)<AlertProps>`
   max-width: ${({ theme }) => theme.helpers.remCalc(456)};
   padding: ${({ theme }) => theme.spacing.small};
   position: fixed;
-  right: ${({ theme }) => theme.helpers.remCalc(16)};
-  top: ${({ theme }) => theme.helpers.remCalc(16)};
+  right: ${({ theme }) => theme.spacing.medium};
+  top: ${({ theme }) => theme.spacing.medium};
   z-index: ${({ theme }) => theme.zIndex.fixed};
 
   ${({ onClose }) =>
@@ -38,7 +37,7 @@ export const StyledAlert = styled(Grid)<AlertProps>`
 `;
 
 export const StyledHeader = styled(StyleableH4)`
-  line-height: ${({ theme }) => theme.helpers.remCalc(16)};
+  line-height: ${({ theme }) => theme.spacing.medium};
   margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
 `;
 
@@ -52,28 +51,7 @@ export const StyledLink = styled(Link)`
   vertical-align: middle;
 `;
 
-export const StyledCloseButton = styled(StyleableButton)`
-  background-color: ${({ theme }) => theme.colors.white};
-  border: ${({ theme }) => theme.border.none};
-  color: ${({ theme }) => theme.colors.secondary70};
-  height: auto;
-  padding: ${({ theme }) => theme.spacing.none};
-
-  &:active {
-    background-color: ${({ theme }) => theme.colors.secondary20};
-  }
-
-  &:focus {
-    box-shadow: ${({ theme }) => `0 0 0 ${theme.spacing.xxSmall} ${theme.colors.secondary20}`};
-  }
-
-  &:hover:not(:active) {
-    background-color: ${({ theme }) => theme.colors.secondary10};
-  }
-`;
-
 StyledAlert.defaultProps = { theme: defaultTheme };
 StyledHeader.defaultProps = { theme: defaultTheme };
 StyledMessageItem.defaultProps = { theme: defaultTheme };
 StyledLink.defaultProps = { theme: defaultTheme };
-StyledCloseButton.defaultProps = { theme: defaultTheme };
