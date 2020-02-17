@@ -20,12 +20,12 @@ export const StyledInlineAlert = styled(Grid)<InlineAlertProps>`
   ${({ onClose }) =>
     onClose
       ? css`
-          grid-template-columns: ${({ theme }) => `${theme.spacing.large} 1fr ${theme.spacing.medium}`};
           grid-template-areas: 'icon messages close';
+          grid-template-columns: ${({ theme }) => `${theme.spacing.large} 1fr ${theme.spacing.medium}`};
         `
       : css`
-          grid-template-columns: ${({ theme }) => `${theme.spacing.large} 1fr`};
           grid-template-areas: 'icon messages';
+          grid-template-columns: ${({ theme }) => `${theme.spacing.large} 1fr`};
         `}
 
   ${({ theme, type }) => type && getBorderStyle(type, theme)};

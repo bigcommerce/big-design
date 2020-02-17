@@ -4,9 +4,8 @@ import React from 'react';
 import { css } from 'styled-components';
 
 import { LinkProps } from '../components/Link';
-import { MarginProps } from '../mixins';
 
-export interface SharedMessagingProps extends React.HTMLAttributes<HTMLDivElement>, MarginProps {
+export interface SharedMessagingProps extends React.HTMLAttributes<HTMLDivElement> {
   header?: string;
   messages: MessageItem[];
   type?: MessagingType;
@@ -19,10 +18,10 @@ export type MessagingVariant = 'alert' | 'message' | 'inline';
 
 export interface MessageItem {
   text: string;
-  link: MessageLinkItem;
+  link?: MessageLinkItem;
 }
 
-type MessageLinkItem = Pick<LinkProps, 'external' | 'href' | 'target'> & {
+export type MessageLinkItem = Pick<LinkProps, 'external' | 'href' | 'target'> & {
   text: string;
 };
 

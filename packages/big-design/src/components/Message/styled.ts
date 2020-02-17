@@ -19,12 +19,12 @@ export const StyledMessage = styled(Grid)<MessageProps>`
   ${({ onClose }) =>
     onClose
       ? css`
-          grid-template-columns: ${({ theme }) => `${theme.spacing.xLarge} 1fr ${theme.spacing.large}`};
           grid-template-areas: 'icon messages close';
+          grid-template-columns: ${({ theme }) => `${theme.spacing.xLarge} 1fr ${theme.spacing.large}`};
         `
       : css`
-          grid-template-columns: ${({ theme }) => `${theme.spacing.xLarge} 1fr`};
           grid-template-areas: 'icon messages';
+          grid-template-columns: ${({ theme }) => `${theme.spacing.xLarge} 1fr`};
         `}
 
   ${({ theme, type }) => type && getBorderStyle(type, theme)};

@@ -4,6 +4,8 @@ export * from './CodePreview';
 export * from './CodeSnippet';
 export * from './Collapsible';
 export * from './List';
+export * from './MethodBadge';
+export * from './MethodList';
 export * from './NextLink';
 export * from './PropTable';
 export * from './SideNav';

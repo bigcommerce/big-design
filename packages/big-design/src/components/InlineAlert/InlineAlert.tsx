@@ -1,14 +1,14 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, useMemo } from 'react';
 
-import { excludePaddingProps } from '../../mixins';
+import { excludePaddingProps, MarginProps } from '../../mixins';
 import { getMessagingIcon, SharedMessagingProps } from '../../utils';
 import { Box } from '../Box';
 import { GridItem } from '../Grid';
 
 import { StyledCloseButton, StyledHeader, StyledInlineAlert, StyledLink, StyledMessageItem } from './styled';
 
-export type InlineAlertProps = SharedMessagingProps;
+export type InlineAlertProps = SharedMessagingProps & MarginProps;
 
 export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style, header, ...props }) => {
   const filteredProps = excludePaddingProps(props);
@@ -41,3 +41,8 @@ export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style,
     </StyledInlineAlert>
   );
 });
+
+InlineAlert.defaultProps = {
+  messages: [],
+  type: 'success',
+};

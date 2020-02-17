@@ -1,14 +1,14 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, useMemo } from 'react';
 
-import { excludePaddingProps } from '../../mixins';
+import { excludePaddingProps, MarginProps } from '../../mixins';
 import { getMessagingIcon, SharedMessagingProps } from '../../utils';
 import { Box } from '../Box';
 import { GridItem } from '../Grid';
 
 import { StyledCloseButton, StyledHeader, StyledLink, StyledMessage, StyledMessageItem } from './styled';
 
-export type MessageProps = SharedMessagingProps;
+export type MessageProps = SharedMessagingProps & MarginProps;
 
 export const Message: React.FC<MessageProps> = memo(({ className, style, header, ...props }) => {
   const filteredProps = excludePaddingProps(props);
@@ -41,3 +41,8 @@ export const Message: React.FC<MessageProps> = memo(({ className, style, header,
     </StyledMessage>
   );
 });
+
+Message.defaultProps = {
+  messages: [],
+  type: 'success',
+};
