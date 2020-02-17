@@ -117,11 +117,11 @@ test('tweaks column styles with props', () => {
   const skuHeader = headers[0];
   const nameHeader = headers[1];
 
-  expect(skuHeader.childNodes[0]).toHaveStyle('justify-content: flex-end');
-  expect(skuHeader).not.toHaveStyle('vertical-align: center');
+  expect(skuHeader.childNodes[0]).toHaveStyleRule('justify-content', 'flex-end');
+  expect(skuHeader).not.toHaveStyleRule('vertical-align', 'center');
 
-  expect(nameHeader).toHaveStyle('width: 100px');
-  expect(skuHeader).not.toHaveStyle('padding: 0');
+  expect(nameHeader).toHaveStyleRule('width', '100px');
+  expect(skuHeader).not.toHaveStyleRule('padding', '0');
 
   const columns = container.querySelectorAll('tbody td');
   const skuTd = columns[0];
