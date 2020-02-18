@@ -1,4 +1,4 @@
-import { alertsManager, AlertsManager, AlertProps, Button, H0, H1, H2, Message, Text } from '@bigcommerce/big-design';
+import { AlertsManager, AlertProps, Button, H0, H1, H2, Message, Text } from '@bigcommerce/big-design';
 
 import { Code, CodePreview, CodeSnippet } from '../../components';
 import {
@@ -8,6 +8,7 @@ import {
 } from '../../MethodLists';
 import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../../PropTables/shared';
 import { AlertPropTable } from '../../PropTables/AlertPropTable';
+import { alertsManager } from '../_app';
 
 export default () => (
   <>
@@ -42,7 +43,7 @@ export default () => (
       messages={[
         {
           text:
-            'Note: You should not use the Alert component directly. Instead, inject the AlertsManager component into your app and use the alertsManager utility to control which Alerts are displayed.',
+            'Note: You should not use the Alert component directly. Instead, inject the AlertsManager component into your app and use the instance created by the createAlertsManager utility function to control which Alerts are displayed.',
         },
       ]}
       marginBottom="large"
@@ -70,21 +71,34 @@ export default () => (
 
     <CodeSnippet>
       {/* jsx-to-string:start */}
-      import {AlertsManager} from '@bigcommerce/big-design';
-      <AlertsManager />
+      {function App() {
+        return (
+          <>
+            {/* ... */}
+            <AlertsManager manager={alertsManager} />
+            {/* ... */}
+          </>
+        );
+      }}
+
       {/* jsx-to-string:end */}
     </CodeSnippet>
 
     <Text>
-      This works in conjunction with the <Code>alertsManager</Code> instance exported.
+      This works in conjunction with an instance created by <Code>createAlertsManager</Code> function below.
     </Text>
 
-    <H2>alertsManager</H2>
+    <H2>createAlertsManager</H2>
 
     <Text>
-      The alertsManager helps in the functionality of display which alert and in which priority. Will only return one
-      alert to display at a time.
+      The <Code>createAlertsManager</Code> function returns an instance for managing which alert to display.
     </Text>
+
+    <CodeSnippet showControls={false}>
+      {/* jsx-to-string:start */}
+      const alertsManager = createAlertsManager();
+      {/* jsx-to-string:end */}
+    </CodeSnippet>
 
     <AlertsManagerAddMethodList />
 

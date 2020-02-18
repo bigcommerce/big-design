@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 
 import { Alert, AlertProps } from '../../components';
 
-import { alertsManager } from './manager';
+import { createAlertsManager } from './manager';
 
-export const AlertsManager: React.FC = () => {
+export interface AlertsManagerProps {
+  manager: ReturnType<typeof createAlertsManager>;
+}
+
+export const AlertsManager: React.FC<AlertsManagerProps> = ({ manager }) => {
   const [alert, setAlert] = useState<AlertProps | null>(null);
 
-  useEffect(() => alertsManager.subscribe(setAlert), []);
+  useEffect(() => manager.subscribe(setAlert), [manager]);
 
   return <>{alert && <Alert {...alert} />}</>;
 };

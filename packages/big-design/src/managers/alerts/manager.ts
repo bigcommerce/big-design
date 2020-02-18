@@ -89,4 +89,4 @@ class AlertsManager {
   }
 }
 
-export const alertsManager = new AlertsManager();
+export const createAlertsManager = () => new AlertsManager();
