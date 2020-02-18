@@ -25,13 +25,13 @@ export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style,
     [props.messages],
   );
 
-  const renderedHeadline = useMemo(() => header && <StyledHeader>{header}</StyledHeader>, [header]);
+  const renderedHeader = useMemo(() => header && <StyledHeader>{header}</StyledHeader>, [header]);
 
   return (
     <StyledInlineAlert {...filteredProps} role="alert">
       <GridItem gridArea="icon">{icon}</GridItem>
       <GridItem gridArea="messages">
-        {renderedHeadline}
+        {renderedHeader}
         {renderedMessages}
       </GridItem>
       {props.onClose && (

@@ -25,13 +25,13 @@ export const Message: React.FC<MessageProps> = memo(({ className, style, header,
     [props.messages],
   );
 
-  const renderedHeadline = useMemo(() => header && <StyledHeader>{header}</StyledHeader>, [header]);
+  const renderedHeader = useMemo(() => header && <StyledHeader>{header}</StyledHeader>, [header]);
 
   return (
     <StyledMessage {...filteredProps} role="alert">
       <GridItem gridArea="icon">{icon}</GridItem>
       <GridItem gridArea="messages">
-        {renderedHeadline}
+        {renderedHeader}
         {renderedMessages}
       </GridItem>
       {props.onClose && (

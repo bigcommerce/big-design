@@ -30,7 +30,7 @@ export const AlertsManagerAddMethodList: React.FC = () => (
 export const AlertsManagerRemoveMethodList: React.FC = () => (
   <MethodList
     name="remove"
-    intro="Removes an alert by key and displays the next alert, if possible."
+    intro="Removes an alert by key and displays the next alert, if available."
     usage="alertsManager.remove(key)"
     parameterList={[
       {

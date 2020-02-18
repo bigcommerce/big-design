@@ -8,7 +8,10 @@ import { MessagePropTable } from '../../PropTables/MessagePropTable';
 export default () => (
   <>
     <H0>Messages</H0>
-    <Text>An message, used for displaying page/table, feature discovery/system, or non-critical messaging.</Text>
+    <Text>
+      A message primarily used for displaying page/table messaging, feature/discover/system level mesaages, or even
+      non-critical messaging.
+    </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
