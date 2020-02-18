@@ -1,4 +1,4 @@
-import React, { memo, Ref } from 'react';
+import React, { forwardRef, memo, Ref } from 'react';
 
 import { StyledListItem } from './styled';
 
@@ -24,5 +24,5 @@ const StyleableListItem: React.FC<ListItemProps & PrivateProps> = ({
 };
 
 export const ListItem = memo(
-  React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => <StyleableListItem {...props} forwardedRef={ref} />),
+  forwardRef<HTMLLIElement, ListItemProps>((props, ref) => <StyleableListItem {...props} forwardedRef={ref} />),
 );
