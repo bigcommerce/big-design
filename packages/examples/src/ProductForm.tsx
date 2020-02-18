@@ -76,7 +76,7 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
             <Select
               label="Category"
               name="category"
-              onItemChange={item => setFieldValue('category', item)}
+              onOptionChange={item => setFieldValue('category', item)}
               value={values.category}
               options={[
                 { content: 'Food', value: 'Food' },

@@ -36,6 +36,7 @@ module.exports = {
     '/link': { page: '/Link/LinkPage' },
     '/margin': { page: '/Margin/MarginPage' },
     '/modal': { page: '/Modal/ModalPage' },
+    '/multi-select': { page: '/MultiSelect/MultiSelectPage' },
     '/padding': { page: '/Padding/PaddingPage' },
     '/pagination': { page: '/Pagination/PaginationPage' },
     '/panel': { page: '/Panel/PanelPage' },

@@ -1,4 +1,4 @@
-import { CheckIcon } from '@bigcommerce/big-design-icons';
+import { SelectAction, SelectOption } from 'components/Select';
 import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
 import React, { createRef, useCallback, useEffect, useMemo, useState, RefObject } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
@@ -12,22 +12,23 @@ import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
 import { ListItem } from '../List/Item';
+import { ListItemCheckbox } from '../List/Item/CheckboxItem';
+import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 
-import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from './styled';
-import { SelectAction, SelectOption, SelectProps } from './types';
+import { MultiSelectProps } from './types';
 
-export const Select = typedMemo(
+export const MultiSelect = typedMemo(
   <T extends any>({
     action,
     className,
     disabled,
     filterable = true,
-    inputRef,
     id,
+    inputRef,
     label,
     labelId,
     maxHeight = 250,
-    onOptionChange,
+    onOptionsChange,
     options,
     placeholder,
     placement = 'bottom-start' as 'bottom-start',
@@ -36,38 +37,30 @@ export const Select = typedMemo(
     style,
     value,
     ...rest
-  }: SelectProps<T>): ReturnType<React.FC<SelectProps<T>>> => {
+  }: MultiSelectProps<T>): ReturnType<React.FC<MultiSelectProps<T>>> => {
     // Merge options and action
     const initialOptions = useMemo(() => (action ? [...options, action] : options), [action, options]);
 
-    const findSelectedOption = useMemo(() => {
-      return initialOptions.find(option => 'value' in option && option.value === value) as SelectOption<T> | undefined;
+    const findSelectedOptions = useMemo(() => {
+      return initialOptions.filter(
+        option => value && value.find(val => 'value' in option && val === option.value) !== undefined,
+      ) as Array<SelectOption<T>>;
     }, [initialOptions, value]);
 
     const [items, setItems] = useState(initialOptions);
-    const [inputValue, setInputValue] = useState(findSelectedOption ? findSelectedOption.content : '');
-    const [selectedOption, setSelectedOption] = useState(findSelectedOption);
-    const [highlightedIndex, setHighlightedIndex] = useState(0);
+    const [inputValue, setInputValue] = useState('');
+    const [selectedOptions, setSelectedOptions] = useState(findSelectedOptions);
 
     const defaultRef: RefObject<HTMLInputElement> = createRef();
-    const selectUniqueId = useUniqueId('select');
-
-    // Set the input's value to match the selected item
-    useEffect(() => {
-      setInputValue(selectedOption ? selectedOption.content : '');
-    }, [selectedOption]);
+    const multiSelectUniqueId = useUniqueId('multi-select');
 
     useEffect(() => {
-      setSelectedOption(findSelectedOption);
-    }, [findSelectedOption]);
-
-    const findSelectedOptionIndex = useMemo(() => {
-      return items.findIndex(item => 'value' in item && item.value === value);
-    }, [items, value]);
+      setInputValue('');
+    }, [selectedOptions]);
 
     useEffect(() => {
-      setHighlightedIndex(findSelectedOptionIndex);
-    }, [findSelectedOptionIndex]);
+      setSelectedOptions(findSelectedOptions);
+    }, [findSelectedOptions]);
 
     const handleSetInputValue = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && changes.isOpen === true) {
@@ -79,18 +72,8 @@ export const Select = typedMemo(
 
     const filterOptions = (inputVal: string = '') => {
       return initialOptions.filter(
-        option =>
-          option.content === (action && action.content) ||
-          option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
+        option => option === action || option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
-    };
-
-    const handleOnHighlightedIndexChange = (
-      changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>,
-    ) => {
-      if (typeof changes.highlightedIndex !== 'undefined' && changes.highlightedIndex > -1) {
-        setHighlightedIndex(changes.highlightedIndex);
-      }
     };
 
     const handleOnIsOpenChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
@@ -101,10 +84,8 @@ export const Select = typedMemo(
     };
 
     const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
+      if (action && changes.selectedItem === action) {
         action.onActionClick(inputValue);
-      } else if (changes.selectedItem && 'value' in changes.selectedItem && typeof onOptionChange === 'function') {
-        onOptionChange(changes.selectedItem.value, changes.selectedItem);
       }
     };
 
@@ -114,43 +95,99 @@ export const Select = typedMemo(
     ) => {
       switch (actionAndChanges.type) {
         case useCombobox.stateChangeTypes.InputBlur:
-          return { ...actionAndChanges.changes, inputValue: selectedOption ? selectedOption.content : '' };
+          return { ...actionAndChanges.changes, inputValue: '' };
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
-          if (
-            (actionAndChanges.changes.selectedItem && actionAndChanges.changes.selectedItem.content) ===
-            (action && action.content)
-          ) {
+          if (!actionAndChanges.changes.selectedItem) {
+            return actionAndChanges.changes;
+          }
+
+          // Prevent action from changing the input value
+          if (actionAndChanges.changes.selectedItem === action) {
             return { ...actionAndChanges.changes, inputValue: state.inputValue };
           }
+
+          const isChecked = Boolean(
+            selectedOptions.find(
+              i =>
+                actionAndChanges.changes.selectedItem &&
+                'value' in actionAndChanges.changes.selectedItem &&
+                i.value === actionAndChanges.changes.selectedItem.value,
+            ),
+          );
+
+          isChecked
+            ? removeItem(actionAndChanges.changes.selectedItem as SelectOption<T>)
+            : addSelectedItem(actionAndChanges.changes.selectedItem as SelectOption<T>);
+
+          return {
+            ...actionAndChanges.changes,
+            highlightedIndex: state.highlightedIndex,
+            inputValue: '',
+            isOpen: true,
+          };
         default:
           return actionAndChanges.changes;
       }
     };
 
+    const removeItem = useCallback(
+      (item: SelectOption<T>) => {
+        if (!item) {
+          return;
+        }
+
+        const newOptions = selectedOptions.filter(i => i.value !== item.value);
+
+        onOptionsChange(
+          newOptions.map(option => option.value),
+          newOptions,
+        );
+
+        setItems(initialOptions);
+      },
+      [initialOptions, onOptionsChange, selectedOptions],
+    );
+
+    const addSelectedItem = useCallback(
+      (item: SelectOption<T>) => {
+        if (!item) {
+          return;
+        }
+
+        const newOptions = [...selectedOptions, item];
+
+        onOptionsChange(
+          newOptions.map(option => option.value),
+          newOptions,
+        );
+
+        setItems(initialOptions);
+      },
+      [initialOptions, onOptionsChange, selectedOptions],
+    );
+
     const {
-      closeMenu,
       getComboboxProps,
       getInputProps,
       getItemProps,
       getLabelProps,
       getMenuProps,
       getToggleButtonProps,
+      highlightedIndex,
       isOpen,
       openMenu,
     } = useCombobox<SelectOption<T> | SelectAction | null>({
-      highlightedIndex,
-      id: selectUniqueId,
+      id: multiSelectUniqueId,
       inputId: id,
       inputValue,
       itemToString: option => (option ? option.content : ''),
       items,
       labelId,
-      onHighlightedIndexChange: handleOnHighlightedIndexChange,
       onInputValueChange: handleSetInputValue,
       onIsOpenChange: handleOnIsOpenChange,
       onSelectedItemChange: handleOnSelectedItemChange,
-      selectedItem: selectedOption || null,
+      selectedItem: null,
       stateReducer: handleStateReducer,
     });
 
@@ -209,6 +246,11 @@ export const Select = typedMemo(
                   onFocus: openMenu,
                   onKeyDown: event => {
                     switch (event.key) {
+                      case 'Backspace':
+                        if (!inputValue) {
+                          removeItem(selectedOptions[selectedOptions.length - 1]);
+                        }
+                        break;
                       case 'Enter':
                         event.preventDefault();
                         if (isOpen === false) {
@@ -217,20 +259,21 @@ export const Select = typedMemo(
                         }
                         break;
                       case 'Escape':
+                        // Reset select
                         if (isOpen === false) {
-                          // reset select
-                          onOptionChange();
-                          setHighlightedIndex(-1);
-                        } else {
-                          closeMenu();
+                          onOptionsChange([], []);
                         }
-                        (event.nativeEvent as any).preventDownshiftDefault = true;
                         break;
                     }
                   },
                   placeholder,
                   ref: getInputRef(),
                 })}
+                chips={selectedOptions.map((option: SelectOption<T>) => ({
+                  label: option.content,
+                  onDelete: () => removeItem(option),
+                }))}
+                autoComplete="no"
                 iconRight={renderToggle}
                 readOnly={!filterable}
                 required={required}
@@ -240,25 +283,28 @@ export const Select = typedMemo(
         </Reference>
       );
     }, [
-      closeMenu,
       disabled,
       filterable,
       getInputProps,
       getInputRef,
+      inputValue,
       isOpen,
-      onOptionChange,
+      onOptionsChange,
       openMenu,
       placeholder,
+      removeItem,
       renderToggle,
       required,
       rest,
+      selectedOptions,
     ]);
 
     const renderAction = useCallback(
       (actionItem: SelectAction) => {
         const index = options.length;
         const isHighlighted = highlightedIndex === index;
-        const { disabled: itemDisabled, content, icon, onActionClick, ...itemProps } = actionItem;
+
+        const { content, disabled: itemDisabled, icon, onActionClick, ...itemProps } = actionItem;
 
         return (
           <Box borderTop="box" marginTop="xSmall" paddingTop="xSmall" key={`${content}-${index}`}>
@@ -266,8 +312,8 @@ export const Select = typedMemo(
               {...itemProps}
               {...getItemProps({
                 disabled: itemDisabled,
-                index,
                 item: actionItem,
+                index,
               })}
               isAction={true}
               isHighlighted={isHighlighted}
@@ -289,40 +335,60 @@ export const Select = typedMemo(
           }
 
           const isHighlighted = highlightedIndex === index;
-          const isSelected = selectedOption ? 'value' in item && selectedOption.value === item.value : false;
+          const isChecked = 'value' in item && Boolean(selectedOptions.find(i => i.value === item.value));
 
-          const { disabled: itemDisabled, content, icon, ...itemProps } = item as SelectOption<T>;
+          const { content, disabled: itemDisabled, icon, ...itemProps } = item as SelectOption<T>;
 
           return (
-            <ListItem
+            <ListItemCheckbox
               {...itemProps}
               {...getItemProps({
                 disabled: itemDisabled,
-                index,
                 item,
+                index,
               })}
+              checked={isChecked}
               isHighlighted={isHighlighted}
-              isSelected={isSelected}
               key={`${content}-${index}`}
+              onClick={() => {
+                if (itemDisabled) {
+                  return;
+                }
+
+                isChecked ? removeItem(item as SelectOption<T>) : addSelectedItem(item as SelectOption<T>);
+              }}
             >
-              {getContent(item, isHighlighted)}
-              {isSelected && <CheckIcon color="primary" size="large" />}
-            </ListItem>
+              {content}
+            </ListItemCheckbox>
           );
         })
       );
-    }, [action, getItemProps, highlightedIndex, isOpen, items, renderAction, selectedOption]);
+    }, [
+      action,
+      addSelectedItem,
+      getItemProps,
+      highlightedIndex,
+      isOpen,
+      items,
+      removeItem,
+      renderAction,
+      selectedOptions,
+    ]);
 
     const renderList = useMemo(() => {
       return (
-        <Popper eventsEnabled={isOpen} modifiers={{ offset: { offset: '0, 10' } }} placement={placement}>
+        <Popper
+          placement={placement}
+          modifiers={{ offset: { offset: '0, 10' } }}
+          eventsEnabled={isOpen}
+          positionFixed={positionFixed}
+        >
           {({ placement: popperPlacement, ref, scheduleUpdate, style: popperStyle }) => (
             <List
               {...getMenuProps({ ref })}
               data-placement={popperPlacement}
               isOpen={isOpen}
               maxHeight={maxHeight}
-              positionFixed={positionFixed}
               scheduleUpdate={scheduleUpdate}
               style={popperStyle}
             >

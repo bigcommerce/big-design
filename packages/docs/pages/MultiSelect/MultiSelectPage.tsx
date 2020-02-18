@@ -1,16 +1,16 @@
-import { Form, FormGroup, Grid, H0, H1, H2, Link, Select, Text } from '@bigcommerce/big-design';
+import { Form, FormGroup, Grid, H0, H1, H2, Link, MultiSelect, Text } from '@bigcommerce/big-design';
 import { DeleteIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
-import { SelectActionPropTable, SelectOptionPropTable, SelectPropTable } from '../../PropTables';
+import { MultiSelectPropTable, SelectActionPropTable, SelectOptionPropTable } from '../../PropTables';
 
 export default () => (
   <>
-    <H0>Selects</H0>
+    <H0>MultiSelects</H0>
 
     <Text>
-      Select are typeable inputs with selectable dropdown items.{' '}
+      MultiSelect are typeable inputs with multiple selectable dropdown items.{' '}
       <Link href="https://design.bigcommerce.com/components/selects" target="_blank">
         Selects Design Guidelines
       </Link>
@@ -20,13 +20,13 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [value, setValue] = React.useState('mx');
+        const [value, setValue] = React.useState(['mx']);
         const handleChange = val => setValue(val);
 
         return (
           <Form>
             <FormGroup>
-              <Select
+              <MultiSelect
                 action={{
                   actionType: 'destructive' as 'destructive',
                   content: 'Remove Country',
@@ -36,7 +36,7 @@ export default () => (
                 filterable={true}
                 label="Countries"
                 maxHeight={300}
-                onOptionChange={handleChange}
+                onOptionsChange={handleChange}
                 options={[
                   { value: 'us', content: 'United States' },
                   { value: 'mx', content: 'Mexico' },
@@ -67,7 +67,7 @@ export default () => (
     </CodePreview>
 
     <H1>API</H1>
-    <SelectPropTable />
+    <MultiSelectPropTable />
     <SelectOptionPropTable />
     <SelectActionPropTable />
 
@@ -76,16 +76,16 @@ export default () => (
     <H2>Position</H2>
 
     <Text>
-      Select can be anchored in different directions with the <Code primary>position</Code> property. It will
+      MultiSelect can be anchored in different directions with the <Code primary>position</Code> property. It will
       automatically find a position if there's not enough space in the chosen direction.
     </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(4, 1fr)">
-        <Select
+        <MultiSelect
           label="Select"
-          onOptionChange={() => null}
+          onOptionsChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -96,9 +96,9 @@ export default () => (
           placement="top"
           required
         />
-        <Select
+        <MultiSelect
           label="Select"
-          onOptionChange={() => null}
+          onOptionsChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -109,9 +109,9 @@ export default () => (
           placement="bottom-start"
           required
         />
-        <Select
+        <MultiSelect
           label="Select"
-          onOptionChange={() => null}
+          onOptionsChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -122,9 +122,9 @@ export default () => (
           placement="right-start"
           required
         />
-        <Select
+        <MultiSelect
           label="Select"
-          onOptionChange={() => null}
+          onOptionsChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -149,9 +149,9 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(3, 1fr)">
-        <Select
+        <MultiSelect
           label="Select"
-          onOptionChange={() => null}
+          onOptionsChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -161,10 +161,10 @@ export default () => (
           placeholder="Default"
           required
         />
-        <Select
+        <MultiSelect
           label="Select"
           maxHeight={150}
-          onOptionChange={() => null}
+          onOptionsChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -174,10 +174,10 @@ export default () => (
           placeholder="Smaller"
           required
         />
-        <Select
+        <MultiSelect
           label="Select"
           maxHeight={350}
-          onOptionChange={() => null}
+          onOptionsChange={() => null}
           options={[
             { value: 1, content: 'Option' },
             { value: 2, content: 'Option' },
@@ -202,11 +202,11 @@ export default () => (
       {/* jsx-to-string:start */}
       <Form>
         <FormGroup>
-          <Select
+          <MultiSelect
             disabled
             label="Select"
             maxHeight={350}
-            onOptionChange={() => null}
+            onOptionsChange={() => null}
             options={[
               { value: 1, content: 'Option' },
               { value: 2, content: 'Option' },
@@ -222,7 +222,7 @@ export default () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H2>Action</H2>
+    <H1>Action</H1>
 
     <Text>
       Accepts an <Code>action</Code> object to display at the end of the list.
@@ -232,7 +232,7 @@ export default () => (
       {/* jsx-to-string:start */}
       <Form>
         <FormGroup>
-          <Select
+          <MultiSelect
             action={{
               actionType: 'destructive',
               content: 'Remove Country',
@@ -240,7 +240,7 @@ export default () => (
               onActionClick: () => null,
             }}
             label="Countries"
-            onOptionChange={() => null}
+            onOptionsChange={() => null}
             options={[
               { value: 'us', content: 'United States' },
               { value: 'mx', content: 'Mexico' },
@@ -266,10 +266,10 @@ export default () => (
       {/* jsx-to-string:start */}
       <Form>
         <FormGroup>
-          <Select
+          <MultiSelect
             label="Countries"
             error="Need to choose a country before proceeding"
-            onOptionChange={() => null}
+            onOptionsChange={() => null}
             options={[
               { value: 'us', content: 'United States' },
               { value: 'mx', content: 'Mexico' },

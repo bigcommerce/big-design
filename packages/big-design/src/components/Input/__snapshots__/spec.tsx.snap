@@ -42,9 +42,9 @@ exports[`renders all together 1`] = `
   border: 0;
   box-sizing: border-box;
   color: #313440;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  -webkit-flex: 1 1 40%;
+  -ms-flex: 1 1 40%;
+  flex: 1 1 40%;
   height: 100%;
   padding: 0;
   padding-left: 0.5rem;
@@ -216,6 +216,7 @@ exports[`renders all together 1`] = `
       class="c5"
     >
       <input
+        autocomplete="no"
         class="c6"
         id="bd-input-1"
       />

@@ -12,30 +12,50 @@ export const StyledListItem = styled.li<ListItemProps>`
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
+  font-weight: ${({ theme, isSelected }) =>
+    isSelected ? theme.typography.fontWeight.semiBold : theme.typography.fontWeight.regular};
   height: ${({ theme }) => theme.helpers.remCalc(36)};
   justify-content: space-between;
   min-width: ${({ theme }) => theme.helpers.remCalc(256)};
   outline: none;
   padding: 0 ${({ theme }) => theme.spacing.medium};
 
-  &[aria-selected='true'] {
-    font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  a {
+    align-items: center;
+    color: ${({ theme }) => theme.colors.secondary70};
+    display: flex;
+    height: 100%;
+    text-decoration: none;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
   }
 
-  &[data-highlighted='true'],
-  &[data-highlighted='true'] a {
-    ${({ actionType, disabled }) =>
-      !disabled &&
-      (actionType === 'normal'
+  ${({ actionType, isAction, isHighlighted, theme }) =>
+    isHighlighted &&
+    (isAction
+      ? actionType === 'normal'
         ? css`
-            background-color: ${({ theme }) => theme.colors.primary10};
-            color: ${({ theme }) => theme.colors.primary};
+            background-color: ${theme.colors.primary10};
+            color: ${theme.colors.primary};
+
+            a {
+              color: ${theme.colors.primary};
+            }
           `
         : css`
-            background-color: ${({ theme }) => theme.colors.danger10};
-            color: ${({ theme }) => theme.colors.danger50};
-          `)}
-  }
+            background-color: ${theme.colors.danger10};
+            color: ${theme.colors.danger50};
+
+            a {
+              color: ${theme.colors.danger50};
+            }
+          `
+      : css`
+          background-color: ${theme.colors.secondary10};
+        `)}
 
   ${({ disabled, theme }) =>
     disabled &&

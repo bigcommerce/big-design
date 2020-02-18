@@ -1,4 +1,4 @@
-import React, { memo, Ref } from 'react';
+import React, { forwardRef, memo, Ref } from 'react';
 
 import { Checkbox } from '../../Checkbox';
 
@@ -7,40 +7,45 @@ import { StyledListItem } from './styled';
 export interface ListCheckboxItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
   checked?: boolean;
   disabled?: boolean;
+  isHighlighted: boolean;
 }
 
 interface PrivateProps {
   forwardedRef: Ref<HTMLLIElement>;
 }
 
-const StyleableListCheckboxItem: React.FunctionComponent<ListCheckboxItemProps & PrivateProps> = memo(
-  ({ children, checked, className, disabled, forwardedRef, style, value, ...rest }) => (
-    <StyledListItem
-      {...rest}
-      actionType="normal"
-      disabled={disabled}
-      onMouseDown={preventFocus}
-      ref={forwardedRef}
-      tabIndex={-1}
-    >
+export interface ListItemCheckboxProps extends React.LiHTMLAttributes<HTMLLIElement> {
+  disabled?: boolean;
+  checked?: boolean;
+  isHighlighted: boolean;
+}
+
+const StyleableListCheckboxItem: React.FC<ListItemCheckboxProps & PrivateProps> = ({
+  checked,
+  children,
+  disabled,
+  forwardedRef,
+  ...props
+}) => {
+  return (
+    <StyledListItem {...props} actionType="normal" isSelected={false} disabled={disabled} ref={forwardedRef}>
       <Checkbox
         checked={checked}
         disabled={disabled}
         label={typeof children === 'string' ? children : ''}
         onChange={() => null}
+        onClick={event => {
+          event.preventDefault();
+          event.stopPropagation();
+        }}
+        tabIndex={-1}
       />
     </StyledListItem>
-  ),
+  );
+};
+
+export const ListItemCheckbox = memo(
+  forwardRef<HTMLLIElement, ListCheckboxItemProps>((props, ref) => (
+    <StyleableListCheckboxItem {...props} forwardedRef={ref} />
+  )),
 );
-
-function preventFocus(
-  event: React.MouseEvent<HTMLLIElement, MouseEvent> | React.MouseEvent<HTMLInputElement, MouseEvent>,
-) {
-  event.preventDefault();
-}
-
-export const ListCheckboxItem = React.forwardRef<HTMLLIElement, ListCheckboxItemProps>((props, ref) => (
-  <StyleableListCheckboxItem {...props} forwardedRef={ref} />
-));
-
-ListCheckboxItem.displayName = 'ListCheckboxItem';

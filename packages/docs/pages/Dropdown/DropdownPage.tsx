@@ -4,9 +4,9 @@ import React from 'react';
 
 import { Code, CodePreview, NextLink } from '../../components';
 import {
+  DropdownItemGroupPropTable,
   DropdownItemPropTable,
   DropdownLinkItemPropTable,
-  DropdownOptionGruopPropTable,
   DropdownPropTable,
 } from '../../PropTables';
 
@@ -26,26 +26,26 @@ export default () => (
       {/* jsx-to-string:start */}
       <Dropdown
         maxHeight={250}
-        options={[
-          { content: 'Edit', onClick: item => item, icon: <EditIcon />, value: 'edit' },
+        items={[
+          { content: 'Edit', onItemClick: item => item, hash: 'edit', icon: <EditIcon /> },
           {
             content: 'Duplicate',
-            onClick: item => item,
-            value: 'duplicate',
+            onItemClick: item => item,
+            hash: 'duplicate',
             icon: <FileCopyIcon />,
           },
           {
             content: 'Copy',
-            onClick: item => item,
-            value: 'copy',
+            onItemClick: item => item,
+            hash: 'copy',
             icon: <AssignmentIcon />,
             disabled: true,
             tooltip: 'You cannot copy this item...',
           },
           {
             content: 'Delete',
-            onClick: item => item,
-            value: 'delete',
+            onItemClick: item => item,
+            hash: 'delete',
             icon: <DeleteIcon />,
             actionType: 'destructive',
           },
@@ -57,7 +57,7 @@ export default () => (
           },
         ]}
         placement="bottom-start"
-        trigger={<Button>Open Menu</Button>}
+        toggle={<Button>Open Menu</Button>}
       />
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -66,7 +66,7 @@ export default () => (
     <DropdownPropTable />
     <DropdownItemPropTable />
     <DropdownLinkItemPropTable />
-    <DropdownOptionGruopPropTable />
+    <DropdownItemGroupPropTable />
 
     <H1>Examples</H1>
 
@@ -80,12 +80,12 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Dropdown
-        options={[
-          { content: 'Option', type: 'link', url: '#' },
-          { content: 'Option', type: 'link', url: '#' },
-          { content: 'Option', type: 'link', url: '#' },
+        items={[
+          { content: 'Item', type: 'link', url: '#' },
+          { content: 'Item', type: 'link', url: '#' },
+          { content: 'Item', type: 'link', url: '#', target: '_blank' },
         ]}
-        trigger={<Button>Button</Button>}
+        toggle={<Button>Button</Button>}
       />
 
       {/* jsx-to-string:end */}
@@ -101,11 +101,11 @@ export default () => (
       {/* jsx-to-string:start */}
 
       <Dropdown
-        options={[
-          { content: 'Option', icon: <EditIcon /> },
+        items={[
+          { content: 'Item', icon: <EditIcon />, onItemClick: item => item },
           { content: 'Link', icon: <OpenInNewIcon />, type: 'link', url: '#' },
         ]}
-        trigger={<Button>Button</Button>}
+        toggle={<Button>Button</Button>}
       />
 
       {/* jsx-to-string:end */}
@@ -121,16 +121,16 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <Dropdown
-        options={[
-          { content: 'Save', actionType: 'normal' },
-          { content: 'Delete', actionType: 'destructive' },
+        items={[
+          { content: 'Save', onItemClick: item => item, actionType: 'normal' },
+          { content: 'Delete', onItemClick: item => item, actionType: 'destructive' },
         ]}
-        trigger={<Button>Button</Button>}
+        toggle={<Button>Button</Button>}
       />
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H2>Trigger</H2>
+    <H2>Toggle</H2>
 
     <Text>
       Dropdown can be anchored to any <Code>ReactElement</Code>, including all types of{' '}
@@ -141,38 +141,38 @@ export default () => (
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(4, min-content)">
         <Dropdown
-          options={[
-            { content: 'Option', value: '1' },
-            { content: 'Option', value: '2' },
-            { content: 'Option', value: '3' },
+          items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
           ]}
-          trigger={<Button>Button</Button>}
+          toggle={<Button>Button</Button>}
         />
         <Dropdown
-          options={[
-            { content: 'Option', value: '1' },
-            { content: 'Option', value: '2' },
-            { content: 'Option', value: '3' },
+          items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
           ]}
-          trigger={<Button actionType="destructive">Button</Button>}
-        />
-
-        <Dropdown
-          options={[
-            { content: 'Option', value: '1' },
-            { content: 'Option', value: '2' },
-            { content: 'Option', value: '3' },
-          ]}
-          trigger={<Button variant="secondary">Button</Button>}
+          toggle={<Button actionType="destructive">Button</Button>}
         />
 
         <Dropdown
-          options={[
-            { content: 'Option', value: '1' },
-            { content: 'Option', value: '2' },
-            { content: 'Option', value: '3' },
+          items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
           ]}
-          trigger={<Button variant="subtle">Button</Button>}
+          toggle={<Button variant="secondary">Button</Button>}
+        />
+
+        <Dropdown
+          items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+          ]}
+          toggle={<Button variant="subtle">Button</Button>}
         />
       </Grid>
       {/* jsx-to-string:end */}
@@ -189,40 +189,40 @@ export default () => (
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(4, min-content)">
         <Dropdown
-          options={[
-            { content: 'Option', value: '1' },
-            { content: 'Option', value: '2' },
-            { content: 'Option', value: '3' },
+          items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
           ]}
           placement="right"
-          trigger={<Button>Right</Button>}
+          toggle={<Button>Right</Button>}
         />
         <Dropdown
-          options={[
-            { content: 'Option', value: '1' },
-            { content: 'Option', value: '2' },
-            { content: 'Option', value: '3' },
+          items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
           ]}
           placement="top"
-          trigger={<Button>Top</Button>}
+          toggle={<Button>Top</Button>}
         />
         <Dropdown
-          options={[
-            { content: 'Option', value: '1' },
-            { content: 'Option', value: '2' },
-            { content: 'Option', value: '3' },
+          items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
           ]}
           placement="bottom-start"
-          trigger={<Button>Bottom-Start</Button>}
+          toggle={<Button>Bottom-Start</Button>}
         />
         <Dropdown
-          options={[
-            { content: 'Option', value: '1' },
-            { content: 'Option', value: '2' },
-            { content: 'Option', value: '3' },
+          items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
           ]}
           placement="bottom-end"
-          trigger={<Button>Bottom-End</Button>}
+          toggle={<Button>Bottom-End</Button>}
         />
       </Grid>
       {/* jsx-to-string:end */}
@@ -239,71 +239,82 @@ export default () => (
       {/* jsx-to-string:start */}
       <Grid gridColumns="repeat(3, min-content)">
         <Dropdown
-          options={[
-            { content: 'Option', value: '1' },
-            { content: 'Option', value: '2' },
-            { content: 'Option', value: '3' },
-            { content: 'Option', value: '4' },
-            { content: 'Option', value: '5' },
-            { content: 'Option', value: '6' },
-            { content: 'Option', value: '7' },
-            { content: 'Option', value: '8' },
+          items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
           ]}
-          trigger={<Button>Default</Button>}
+          toggle={<Button>Default</Button>}
         />
         <Dropdown
-          options={[
-            { content: 'Option', value: '1' },
-            { content: 'Option', value: '2' },
-            { content: 'Option', value: '3' },
-            { content: 'Option', value: '4' },
-            { content: 'Option', value: '5' },
-            { content: 'Option', value: '6' },
-            { content: 'Option', value: '7' },
-            { content: 'Option', value: '8' },
+          items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
           ]}
           maxHeight={150}
-          trigger={<Button>Smaller</Button>}
+          toggle={<Button>Smaller</Button>}
         />
         <Dropdown
-          options={[
-            { content: 'Option', value: '1' },
-            { content: 'Option', value: '2' },
-            { content: 'Option', value: '3' },
-            { content: 'Option', value: '4' },
-            { content: 'Option', value: '5' },
-            { content: 'Option', value: '6' },
-            { content: 'Option', value: '7' },
-            { content: 'Option', value: '8' },
+          items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
           ]}
           maxHeight={350}
-          trigger={<Button>Longer</Button>}
+          toggle={<Button>Longer</Button>}
         />
       </Grid>
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H2>Option Groups</H2>
+    <H2>Item Groups</H2>
 
     <Text>
-      Create Dropdowns with labeled groupings by passing <Code primary>DropdownOptionGroup</Code>'s to the Dropdown's{' '}
+      Create Dropdowns with labeled groupings by passing <Code primary>DropdownItemGroup</Code>'s to the Dropdown's{' '}
       <Code primary>options</Code> property.
     </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
       <Dropdown
-        options={[
+        items={[
           {
             label: 'Label 1',
-            options: [{ content: 'Option 1' }, { content: 'Option 2' }, { content: 'Option 3' }],
+            items: [
+              { content: 'Option 1', onItemClick: item => item },
+              { content: 'Option 2', onItemClick: item => item },
+              { content: 'Option 3', onItemClick: item => item },
+            ],
           },
           {
             label: 'Label 2',
-            options: [{ content: 'Option 4' }, { content: 'Option 5' }, { content: 'Option 6' }],
+            items: [
+              { content: 'Option 4', onItemClick: item => item },
+              { content: 'Option 5', onItemClick: item => item },
+              { content: 'Option 6', onItemClick: item => item },
+            ],
           },
         ]}
-        trigger={<Button>Button</Button>}
+        toggle={<Button>Button</Button>}
       />
       {/* jsx-to-string:end */}
     </CodePreview>
