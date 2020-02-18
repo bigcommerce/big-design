@@ -382,7 +382,6 @@ exports[`renders a pagination component 1`] = `
           </span>
         </button>
         <ul
-          aria-activedescendant="bd-dropdown-2-item-0"
           aria-labelledby="bd-dropdown-2-label"
           class="c10"
           id="bd-dropdown-2-menu"

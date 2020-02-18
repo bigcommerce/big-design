@@ -5763,10 +5763,10 @@ dotenv@^5.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
   integrity sha512-4As8uPrjfwb7VXC+WnLCbXK7y+Ueb2B3zgNCePYfhxS1PYeaO1YTeplffTEcbfLhvFNGLAz90VvJs9yomG7bow==
 
-downshift@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-5.0.0.tgz#2fc85e2f1b8854ef8194ab9c025b05487841ab9d"
-  integrity sha512-7rgK+WVi22nP7UA/hO97jsxkFE5ByK0DyVtHn3GB5rVGHXRjKrm2QvgK3wzFn1yWU/UwUDSdDYRpsiPz9oztVg==
+downshift@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-5.0.3.tgz#4912e1deeda89c6f78b2af765f6700722f00918d"
+  integrity sha512-J6cfEcv0qbCUuI4yUhdoj08aJ025MxjLe+GkQ53eY5iC1NrjMj+FgjGkA0dGsyHm5JzVuKTJFd5wQNWOvsLP0g==
   dependencies:
     "@babel/runtime" "^7.4.5"
     compute-scroll-into-view "^1.0.9"

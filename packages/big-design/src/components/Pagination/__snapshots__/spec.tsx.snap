@@ -332,7 +332,6 @@ exports[`render pagination component 1`] = `
       </span>
     </button>
     <ul
-      aria-activedescendant="bd-dropdown-1-item-0"
       aria-labelledby="bd-dropdown-1-label"
       class="c7"
       id="bd-dropdown-1-menu"
@@ -747,7 +746,6 @@ exports[`render pagination component with invalid page info 1`] = `
       </span>
     </button>
     <ul
-      aria-activedescendant="bd-dropdown-1-item-0"
       aria-labelledby="bd-dropdown-1-label"
       class="c7"
       id="bd-dropdown-1-menu"
@@ -1162,7 +1160,6 @@ exports[`render pagination component with invalid range info 1`] = `
       </span>
     </button>
     <ul
-      aria-activedescendant="bd-dropdown-1-item-0"
       aria-labelledby="bd-dropdown-1-label"
       class="c7"
       id="bd-dropdown-1-menu"
@@ -1578,7 +1575,6 @@ exports[`render pagination component with no items 1`] = `
       </span>
     </button>
     <ul
-      aria-activedescendant="bd-dropdown-1-item-0"
       aria-labelledby="bd-dropdown-1-label"
       class="c7"
       id="bd-dropdown-1-menu"
