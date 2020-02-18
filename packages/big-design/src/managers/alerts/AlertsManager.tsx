@@ -13,5 +13,5 @@ export const AlertsManager: React.FC<AlertsManagerProps> = ({ manager }) => {
 
   useEffect(() => manager.subscribe(setAlert), [manager]);
 
-  return <>{alert && <Alert {...alert} />}</>;
+  return alert ? <Alert {...alert} /> : null;
 };

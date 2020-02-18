@@ -7,7 +7,7 @@ exports[`renders a pagination component 1`] = `
   width: 2rem;
 }
 
-.c14 {
+.c12 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -77,18 +77,6 @@ exports[`renders a pagination component 1`] = `
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
-}
-
-.c9 {
-  vertical-align: middle;
-  height: 2rem;
-  width: 2rem;
-}
-
-.c12 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c10 {

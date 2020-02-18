@@ -86,7 +86,7 @@ export default () => (
 
     <H2>onClose</H2>
 
-    <Text>Used the toggle the visibility the close button and provide an onClick callback.</Text>
+    <Text>Toggles the visibility of the close button, and provides an on click callback.</Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}

@@ -9,9 +9,6 @@ import { GridItem } from '../Grid';
 
 import { StyledAlert, StyledHeader, StyledLink, StyledMessageItem } from './styled';
 
-// TODO:
-// - animation
-
 export interface AlertProps extends SharedMessagingProps {
   key?: string;
 }

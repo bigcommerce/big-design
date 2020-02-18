@@ -17,17 +17,14 @@ class AlertsManager {
     info: 3,
   };
 
-  add(alert: AlertProps, dismissCallback?: () => void): string {
+  add(alert: AlertProps): string {
     if (alert.key && this.containsKey(alert.key)) {
       this.remove(alert.key);
     }
 
-    const key = alert.key !== undefined ? alert.key : this.getUniqueId();
-    const onClose = () => {
-      if (typeof dismissCallback === 'function') {
-        dismissCallback(); // Should we return something with this?
-      }
+    const key = alert.key === undefined ? this.getUniqueId() : alert.key;
 
+    const onClose = () => {
       if (typeof alert.onClose === 'function') {
         alert.onClose();
       }
@@ -44,8 +41,8 @@ class AlertsManager {
     return key;
   }
 
-  remove(key: string): AlertProps | undefined {
-    let removed;
+  remove(key: string) {
+    let removed: AlertProps | undefined;
 
     this.alerts = this.alerts.reduce((acc, alert) => {
       if (alert.key === key) {

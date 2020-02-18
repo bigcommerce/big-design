@@ -95,3 +95,12 @@ test('trigger onClose', () => {
 
   expect(fn).toHaveBeenCalled();
 });
+
+test('does not forward styles', () => {
+  const { container } = render(
+    <Message messages={[{ text: 'Success' }]} className="test" style={{ background: 'red' }} />,
+  );
+
+  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.firstChild).not.toHaveStyle('background: red');
+});
