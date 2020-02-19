@@ -9,8 +9,8 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement>, Margi
   variant?: 'danger' | 'secondary' | 'success' | 'warning';
 }
 
-export const Badge: React.FC<BadgeProps> = memo(({ className, style, label, ...props }) => (
-  <StyledBadge {...props}>{label}</StyledBadge>
-));
+export const Badge: React.FC<BadgeProps> = memo(({ className, style, label, ...props }) =>
+  typeof label === 'string' ? <StyledBadge {...props}>{label}</StyledBadge> : null,
+);
 
 Badge.displayName = 'Badge';
