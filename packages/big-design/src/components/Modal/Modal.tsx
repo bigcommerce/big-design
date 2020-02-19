@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom';
 import { useUniqueId } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Button, ButtonProps } from '../Button';
+import { MessagingButton } from '../Button/private';
 import { H2 } from '../Typography';
 
 import {
@@ -111,7 +112,7 @@ export const Modal: React.FC<ModalProps> = typedMemo(
       () =>
         variant === 'modal' && (
           <StyledModalClose>
-            <Button onClick={onClose} iconOnly={<CloseIcon title="Close" />} variant="subtle" />
+            <MessagingButton onClick={onClose} iconOnly={<CloseIcon title="Close" />} />
           </StyledModalClose>
         ),
       [onClose, variant],

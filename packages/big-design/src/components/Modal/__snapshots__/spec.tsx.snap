@@ -10,7 +10,7 @@ exports[`render closed modal 1`] = `
 `;
 
 exports[`render open modal 1`] = `
-.c7 {
+.c8 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -90,9 +90,9 @@ exports[`render open modal 1`] = `
   white-space: nowrap;
   width: 100%;
   padding: 0 0.5rem;
-  background-color: transparent;
-  border-color: transparent;
-  color: #3C64F4;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
 }
 
 .c5:focus {
@@ -109,7 +109,7 @@ exports[`render open modal 1`] = `
 }
 
 .c5:active {
-  background-color: #DBE3FE;
+  background-color: #0B38D9;
 }
 
 .c5:focus {
@@ -117,15 +117,14 @@ exports[`render open modal 1`] = `
 }
 
 .c5:hover:not(:active) {
-  background-color: #F0F3FF;
+  background-color: #2852EB;
 }
 
 .c5[disabled] {
-  border-color: transparent;
-  color: #D9DCE9;
+  background-color: #D9DCE9;
 }
 
-.c6 {
+.c7 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -137,6 +136,30 @@ exports[`render open modal 1`] = `
   grid-auto-flow: column;
   grid-gap: 0.5rem;
   visibility: visible;
+}
+
+.c6 {
+  background-color: transparent;
+  border: none;
+  color: #313440;
+  height: auto;
+  padding: 0;
+}
+
+.c6:active {
+  background-color: #DBE3FE;
+}
+
+.c6:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c6:hover:not(:active) {
+  background-color: #F0F3FF;
+}
+
+.c6[disabled] {
+  color: #D9DCE9;
 }
 
 .c0 {
@@ -164,7 +187,7 @@ exports[`render open modal 1`] = `
   right: 0.25rem;
 }
 
-.c8 {
+.c9 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -214,7 +237,7 @@ exports[`render open modal 1`] = `
 }
 
 @media (min-width:720px) {
-  .c8 {
+  .c9 {
     padding: 0 1.5rem;
   }
 }
@@ -238,16 +261,16 @@ exports[`render open modal 1`] = `
           class="c4"
         >
           <button
-            class="c5 bd-button"
+            class="c5 c6"
             role="button"
             tabindex="0"
           >
             <span
-              class="c6"
+              class="c7"
             >
               <svg
                 aria-labelledby="bd-icon-3"
-                class="c7"
+                class="c8"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -272,7 +295,7 @@ exports[`render open modal 1`] = `
           </button>
         </div>
         <div
-          class="c8"
+          class="c9"
         >
           This is a modal
         </div>
@@ -287,7 +310,7 @@ exports[`render open modal without backdrop 1`] = `
   style="overflow-y: hidden;"
 >
   <div />
-  .c7 {
+  .c8 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -367,9 +390,9 @@ exports[`render open modal without backdrop 1`] = `
   white-space: nowrap;
   width: 100%;
   padding: 0 0.5rem;
-  background-color: transparent;
-  border-color: transparent;
-  color: #3C64F4;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
 }
 
 .c5:focus {
@@ -386,7 +409,7 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 .c5:active {
-  background-color: #DBE3FE;
+  background-color: #0B38D9;
 }
 
 .c5:focus {
@@ -394,15 +417,14 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 .c5:hover:not(:active) {
-  background-color: #F0F3FF;
+  background-color: #2852EB;
 }
 
 .c5[disabled] {
-  border-color: transparent;
-  color: #D9DCE9;
+  background-color: #D9DCE9;
 }
 
-.c6 {
+.c7 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -414,6 +436,30 @@ exports[`render open modal without backdrop 1`] = `
   grid-auto-flow: column;
   grid-gap: 0.5rem;
   visibility: visible;
+}
+
+.c6 {
+  background-color: transparent;
+  border: none;
+  color: #313440;
+  height: auto;
+  padding: 0;
+}
+
+.c6:active {
+  background-color: #DBE3FE;
+}
+
+.c6:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c6:hover:not(:active) {
+  background-color: #F0F3FF;
+}
+
+.c6[disabled] {
+  color: #D9DCE9;
 }
 
 .c0 {
@@ -440,7 +486,7 @@ exports[`render open modal without backdrop 1`] = `
   right: 0.25rem;
 }
 
-.c8 {
+.c9 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -490,7 +536,7 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 @media (min-width:720px) {
-  .c8 {
+  .c9 {
     padding: 0 1.5rem;
   }
 }
@@ -510,16 +556,16 @@ exports[`render open modal without backdrop 1`] = `
           class="c4"
         >
           <button
-            class="c5 bd-button"
+            class="c5 c6"
             role="button"
             tabindex="0"
           >
             <span
-              class="c6"
+              class="c7"
             >
               <svg
                 aria-labelledby="bd-icon-3"
-                class="c7"
+                class="c8"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -544,7 +590,7 @@ exports[`render open modal without backdrop 1`] = `
           </button>
         </div>
         <div
-          class="c8"
+          class="c9"
         >
           This is a modal
         </div>

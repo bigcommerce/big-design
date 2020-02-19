@@ -1,6 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a pagination component 1`] = `
+.c9 {
+  vertical-align: middle;
+  height: 2rem;
+  width: 2rem;
+}
+
+.c12 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c1 {
   box-sizing: border-box;
 }
@@ -65,18 +77,6 @@ exports[`renders a pagination component 1`] = `
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
-}
-
-.c9 {
-  vertical-align: middle;
-  height: 2rem;
-  width: 2rem;
-}
-
-.c12 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c10 {
@@ -682,6 +682,12 @@ exports[`renders a simple table 1`] = `
 `;
 
 exports[`selectable renders selectable actions and checkboxes 1`] = `
+.c9 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c3 {
   box-sizing: border-box;
 }
@@ -763,12 +769,6 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 
 .c11:last-child {
   margin-bottom: 0;
-}
-
-.c9 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .c5 {

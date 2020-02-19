@@ -1,3 +1,4 @@
+export * from './Alert';
 export * from './Badge';
 export * from './Box';
 export * from './Button';
@@ -9,8 +10,10 @@ export * from './Fieldset';
 export * from './Form';
 export * from './GlobalStyles';
 export * from './Grid';
+export * from './InlineAlert';
 export * from './Input';
 export * from './Link';
+export * from './Message';
 export * from './Modal';
 export * from './MultiSelect';
 export * from './Pagination';
