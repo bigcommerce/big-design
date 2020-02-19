@@ -88,3 +88,15 @@ test('ignores padding props', () => {
 
   expect(panel).not.toHaveStyle(`padding-right: ${theme.spacing.xxxLarge}`);
 });
+
+test("panel action doesn't go to full width", () => {
+  const { getByRole } = render(
+    <Panel header="Test Header" action={{ text: 'Test Action' }}>
+      Test
+    </Panel>,
+  );
+
+  const button = getByRole('button');
+
+  expect(button).toHaveStyle('width: auto');
+});

@@ -4,9 +4,8 @@ import { MarginProps } from '../../mixins';
 import { excludePaddingProps } from '../../mixins/paddings/paddings';
 import { Button, ButtonProps } from '../Button';
 import { Flex } from '../Flex';
-import { H2 } from '../Typography';
 
-import { StyledPanel } from './styled';
+import { StyledH2, StyledPanel } from './styled';
 
 export interface PanelAction extends Omit<ButtonProps, 'children'> {
   text?: string;
@@ -31,8 +30,8 @@ export const RawPanel: React.FC<PanelProps> = memo(props => {
     }
 
     return (
-      <Flex justifyContent="space-between" flexDirection="row">
-        {header && <H2>{header}</H2>}
+      <Flex flexDirection="row">
+        {header && <StyledH2>{header}</StyledH2>}
         {action && <Button {...action}>{action.text}</Button>}
       </Flex>
     );
