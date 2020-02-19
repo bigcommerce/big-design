@@ -49,3 +49,10 @@ test('render secondary Badge', () => {
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary60}`);
 });
+
+test("doesn't render if label prop is invalid", () => {
+  // @ts-ignore
+  const { container } = render(<Badge label={<p>Label</p>} />);
+
+  expect(container.firstChild).toBe(null);
+});
