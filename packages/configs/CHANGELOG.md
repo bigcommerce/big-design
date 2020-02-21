@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/chanceaclark/big-design/compare/@bigcommerce/configs@0.10.0...@bigcommerce/configs@0.11.0) (2020-02-21)
+
+**Note:** Version bump only for package @bigcommerce/configs
+
+
+
+
+
 # [0.10.0](https://github.com/chanceaclark/big-design/compare/@bigcommerce/configs@0.9.0...@bigcommerce/configs@0.10.0) (2020-02-06)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.5.0...@bigcommerce/big-design-theme@0.6.0) (2020-02-21)
+
+
+### Features
+
+* **component:** add Alerts, InlineAlerts, and Message components ([#340](https://github.com/bigcommerce/big-design/issues/340)) ([d541276](https://github.com/bigcommerce/big-design/commit/d54127603fba47b46cb35c3db4caf53ab24bafc3))
+
+
+
+
+
 # [0.5.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.4.0...@bigcommerce/big-design-theme@0.5.0) (2020-02-06)
 
 

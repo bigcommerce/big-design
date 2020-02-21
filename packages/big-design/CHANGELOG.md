@@ -3,6 +3,218 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.15.0...@bigcommerce/big-design@0.16.0) (2020-02-21)
+
+
+### Bug Fixes
+
+* **component:** proper panel action button width ([#342](https://github.com/bigcommerce/big-design/issues/342)) ([e53400d](https://github.com/bigcommerce/big-design/commit/e53400d7410e1415ad0d886db72756502e4336ad))
+
+
+### Features
+
+* **component:** add Alerts, InlineAlerts, and Message components ([#340](https://github.com/bigcommerce/big-design/issues/340)) ([d541276](https://github.com/bigcommerce/big-design/commit/d54127603fba47b46cb35c3db4caf53ab24bafc3))
+* **component:** bump scroll-into-view-if-needed and use auto behavior ([#334](https://github.com/bigcommerce/big-design/issues/334)) ([5bb0fdf](https://github.com/bigcommerce/big-design/commit/5bb0fdf5db15bfbadeb540733310158c1aaeb024))
+* **component:** convert Dropdown/Select to FC and add MultiSelect ([#303](https://github.com/bigcommerce/big-design/issues/303)) ([0ab0e50](https://github.com/bigcommerce/big-design/commit/0ab0e50878405e3da18fbf4e6dc934539a0d6446))
+* **component:** ensure Badge label prop is of type string ([#341](https://github.com/bigcommerce/big-design/issues/341)) ([a9b6847](https://github.com/bigcommerce/big-design/commit/a9b6847e4888f15f9e372a62e43b7542ecf65dfb))
+* **component:** restrict badges to use label props and style fixes ([#339](https://github.com/bigcommerce/big-design/issues/339)) ([a8af2f2](https://github.com/bigcommerce/big-design/commit/a8af2f2a122404046fa2d5762cf4dceac34476f9))
+
+
+### BREAKING CHANGES
+
+* **component:** `Selects` and `Multiselects` have been split into its own component. Props changed for `Dropdowns` & `Selects`.
+
+** Dropdown **
+
+Old:
+```jsx
+<Dropdown
+    maxHeight={250}
+    options={[
+        { content: 'Edit', onClick: item => item, icon: <EditIcon />, value: 'edit' },
+        {
+        content: 'Duplicate',
+        onClick: item => item,
+        value: 'duplicate',
+        icon: <FileCopyIcon />,
+        },
+        {
+        content: 'Copy',
+        onClick: item => item,
+        value: 'copy',
+        icon: <AssignmentIcon />,
+        disabled: true,
+        tooltip: 'You cannot copy this item...',
+        },
+        {
+        content: 'Delete',
+        onClick: item => item,
+        value: 'delete',
+        icon: <DeleteIcon />,
+        actionType: 'destructive',
+        },
+        {
+        content: 'Link',
+        icon: <OpenInNewIcon />,
+        type: 'link',
+        url: '#',
+        },
+    ]}
+    placement="bottom-start"
+    trigger={<Button>Open Menu</Button>}
+/>
+```
+
+New:
+```jsx
+<Dropdown
+    maxHeight={250}
+    items={[
+        { content: 'Edit', onItemClick: item => item, hash: 'edit', icon: <EditIcon /> },
+        {
+        content: 'Duplicate',
+        onItemClick: item => item,
+        hash: 'duplicate',
+        icon: <FileCopyIcon />,
+        },
+        {
+        content: 'Copy',
+        onItemClick: item => item,
+        hash: 'copy',
+        icon: <AssignmentIcon />,
+        disabled: true,
+        tooltip: 'You cannot copy this item...',
+        },
+        {
+        content: 'Delete',
+        onItemClick: item => item,
+        hash: 'delete',
+        icon: <DeleteIcon />,
+        actionType: 'destructive',
+        },
+        {
+        content: 'Link',
+        icon: <OpenInNewIcon />,
+        type: 'link',
+        url: '#',
+        },
+    ]}
+    placement="bottom-start"
+    toggle={<Button>Open Menu</Button>}
+/>
+```
+
+** Select **
+
+Old:
+```jsx
+<Select
+    action={{
+        actionType: 'destructive',
+        content: 'Remove Country',
+        icon: <DeleteIcon />,
+        onClick: () => null,
+    }}
+    label="Countries"
+    maxHeight={300}
+    onChange={handleChange}
+    options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'ru', content: 'Russia', disabled: true },
+    ]}
+    placeholder={'Choose country'}
+    placement={'bottom-start'}
+    required
+    value={value}
+/>
+```
+
+New:
+```jsx
+<Select
+    action={{
+        actionType: 'destructive',
+        content: 'Remove Country',
+        icon: <DeleteIcon />,
+        onActionClick: () => null,
+    }}
+    label="Countries"
+    maxHeight={300}
+    onOptionChange={handleChange}
+    options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'ru', content: 'Russia', disabled: true },
+    ]}
+    placeholder={'Choose country'}
+    placement={'bottom-start'}
+    required
+    value={value}
+/>
+```
+
+** MultiSelect ** 
+
+Old:
+```jsx
+<Select
+    action={{
+        actionType: 'destructive',
+        content: 'Remove Country',
+        icon: <DeleteIcon />,
+        onClick: () => null,
+    }}
+    label="Countries"
+    maxHeight={300}
+    multi={true}
+    onChange={handleChange}
+    options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'ru', content: 'Russia', disabled: true },
+    ]}
+    placeholder={'Choose country'}
+    placement={'bottom-start'}
+    required
+    value={value}
+/>
+```
+
+New:
+```jsx
+<MultiSelect
+    action={{
+        actionType: 'destructive' as 'destructive',
+        content: 'Remove Country',
+        icon: <DeleteIcon />,
+        onActionClick: () => null,
+    }}
+    filterable={true}
+    label="Countries"
+    maxHeight={300}
+    onOptionsChange={handleChange}
+    options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'ru', content: 'England' },
+    ]}
+    placeholder={'Choose country'}
+    placement={'bottom-start'}
+    required
+    value={value}
+/>
+```
+* **component:** Convert `<Badge>label</Badge>` to `<Badge label="label" />`.
+
+
+
+
+
 # [0.15.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.14.0...@bigcommerce/big-design@0.15.0) (2020-02-06)
 
 

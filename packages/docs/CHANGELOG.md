@@ -3,6 +3,216 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.15.0...@bigcommerce/docs@0.16.0) (2020-02-21)
+
+
+### Bug Fixes
+
+* **docs:** public path ([#333](https://github.com/bigcommerce/big-design/issues/333)) ([9db4d26](https://github.com/bigcommerce/big-design/commit/9db4d2686e08635b01d853fd8936a06f38695228))
+
+
+### Features
+
+* **component:** add Alerts, InlineAlerts, and Message components ([#340](https://github.com/bigcommerce/big-design/issues/340)) ([d541276](https://github.com/bigcommerce/big-design/commit/d54127603fba47b46cb35c3db4caf53ab24bafc3))
+* **component:** convert Dropdown/Select to FC and add MultiSelect ([#303](https://github.com/bigcommerce/big-design/issues/303)) ([0ab0e50](https://github.com/bigcommerce/big-design/commit/0ab0e50878405e3da18fbf4e6dc934539a0d6446))
+* **component:** restrict badges to use label props and style fixes ([#339](https://github.com/bigcommerce/big-design/issues/339)) ([a8af2f2](https://github.com/bigcommerce/big-design/commit/a8af2f2a122404046fa2d5762cf4dceac34476f9))
+
+
+### BREAKING CHANGES
+
+* **component:** `Selects` and `Multiselects` have been split into its own component. Props changed for `Dropdowns` & `Selects`.
+
+** Dropdown **
+
+Old:
+```jsx
+<Dropdown
+    maxHeight={250}
+    options={[
+        { content: 'Edit', onClick: item => item, icon: <EditIcon />, value: 'edit' },
+        {
+        content: 'Duplicate',
+        onClick: item => item,
+        value: 'duplicate',
+        icon: <FileCopyIcon />,
+        },
+        {
+        content: 'Copy',
+        onClick: item => item,
+        value: 'copy',
+        icon: <AssignmentIcon />,
+        disabled: true,
+        tooltip: 'You cannot copy this item...',
+        },
+        {
+        content: 'Delete',
+        onClick: item => item,
+        value: 'delete',
+        icon: <DeleteIcon />,
+        actionType: 'destructive',
+        },
+        {
+        content: 'Link',
+        icon: <OpenInNewIcon />,
+        type: 'link',
+        url: '#',
+        },
+    ]}
+    placement="bottom-start"
+    trigger={<Button>Open Menu</Button>}
+/>
+```
+
+New:
+```jsx
+<Dropdown
+    maxHeight={250}
+    items={[
+        { content: 'Edit', onItemClick: item => item, hash: 'edit', icon: <EditIcon /> },
+        {
+        content: 'Duplicate',
+        onItemClick: item => item,
+        hash: 'duplicate',
+        icon: <FileCopyIcon />,
+        },
+        {
+        content: 'Copy',
+        onItemClick: item => item,
+        hash: 'copy',
+        icon: <AssignmentIcon />,
+        disabled: true,
+        tooltip: 'You cannot copy this item...',
+        },
+        {
+        content: 'Delete',
+        onItemClick: item => item,
+        hash: 'delete',
+        icon: <DeleteIcon />,
+        actionType: 'destructive',
+        },
+        {
+        content: 'Link',
+        icon: <OpenInNewIcon />,
+        type: 'link',
+        url: '#',
+        },
+    ]}
+    placement="bottom-start"
+    toggle={<Button>Open Menu</Button>}
+/>
+```
+
+** Select **
+
+Old:
+```jsx
+<Select
+    action={{
+        actionType: 'destructive',
+        content: 'Remove Country',
+        icon: <DeleteIcon />,
+        onClick: () => null,
+    }}
+    label="Countries"
+    maxHeight={300}
+    onChange={handleChange}
+    options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'ru', content: 'Russia', disabled: true },
+    ]}
+    placeholder={'Choose country'}
+    placement={'bottom-start'}
+    required
+    value={value}
+/>
+```
+
+New:
+```jsx
+<Select
+    action={{
+        actionType: 'destructive',
+        content: 'Remove Country',
+        icon: <DeleteIcon />,
+        onActionClick: () => null,
+    }}
+    label="Countries"
+    maxHeight={300}
+    onOptionChange={handleChange}
+    options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'ru', content: 'Russia', disabled: true },
+    ]}
+    placeholder={'Choose country'}
+    placement={'bottom-start'}
+    required
+    value={value}
+/>
+```
+
+** MultiSelect ** 
+
+Old:
+```jsx
+<Select
+    action={{
+        actionType: 'destructive',
+        content: 'Remove Country',
+        icon: <DeleteIcon />,
+        onClick: () => null,
+    }}
+    label="Countries"
+    maxHeight={300}
+    multi={true}
+    onChange={handleChange}
+    options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'ru', content: 'Russia', disabled: true },
+    ]}
+    placeholder={'Choose country'}
+    placement={'bottom-start'}
+    required
+    value={value}
+/>
+```
+
+New:
+```jsx
+<MultiSelect
+    action={{
+        actionType: 'destructive' as 'destructive',
+        content: 'Remove Country',
+        icon: <DeleteIcon />,
+        onActionClick: () => null,
+    }}
+    filterable={true}
+    label="Countries"
+    maxHeight={300}
+    onOptionsChange={handleChange}
+    options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'ru', content: 'England' },
+    ]}
+    placeholder={'Choose country'}
+    placement={'bottom-start'}
+    required
+    value={value}
+/>
+```
+* **component:** Convert `<Badge>label</Badge>` to `<Badge label="label" />`.
+
+
+
+
+
 # [0.15.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.14.0...@bigcommerce/docs@0.15.0) (2020-02-06)
 
 
