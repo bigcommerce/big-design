@@ -1,12 +1,10 @@
 import { Spacing } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { Responsive } from '../../types';
+import { ResponsiveProp } from '../../types';
 import { getSpacingStyles } from '../spacings';
 
-type SinglePaddingProp = keyof Spacing;
-type ResponsivePaddingProp = Responsive<keyof Spacing>;
-type PaddingProp = SinglePaddingProp | ResponsivePaddingProp;
+type PaddingProp = ResponsiveProp<keyof Spacing>;
 
 export type PaddingProps = Partial<{
   padding: PaddingProp;

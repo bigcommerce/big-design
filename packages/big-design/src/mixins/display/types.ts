@@ -1,11 +1,11 @@
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import { FlattenSimpleInterpolation } from 'styled-components';
 
-import { Responsive } from '../../types';
+import { ResponsiveProp } from '../../types';
 
-type SingleDisplayProp = 'block' | 'inline-block' | 'inline' | 'inline-flex' | 'flex' | 'grid' | 'inline-grid' | 'none';
-type ResponsiveDisplayProp = Responsive<SingleDisplayProp>;
-type DisplayProp = SingleDisplayProp | ResponsiveDisplayProp;
+type DisplayProp = ResponsiveProp<
+  'block' | 'inline-block' | 'inline' | 'inline-flex' | 'flex' | 'grid' | 'inline-grid' | 'none'
+>;
 
 export type DisplayProps = Partial<{
   display: DisplayProp;

@@ -1,9 +1,9 @@
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import { FlattenSimpleInterpolation } from 'styled-components';
 
-import { Responsive } from '../../types';
+import { ResponsiveProp } from '../../types';
 
-type SingleAlignContent =
+type AlignContent = ResponsiveProp<
   | 'normal'
   | 'start'
   | 'end'
@@ -14,46 +14,22 @@ type SingleAlignContent =
   | 'space-between'
   | 'space-around'
   | 'space-evenly'
-  | 'stretch';
-type ResponsiveAlignContent = Responsive<SingleAlignContent>;
-type AlignContent = SingleAlignContent | ResponsiveAlignContent;
+  | 'stretch'
+>;
 
-type SingleAlignItems =
-  | 'normal'
-  | 'flex-start'
-  | 'flex-end'
-  | 'center'
-  | 'start'
-  | 'end'
-  | 'self-start'
-  | 'self-end'
-  | 'baseline'
-  | 'stretch';
-type ResponsiveAlignItems = Responsive<SingleAlignItems>;
-type AlignItems = SingleAlignItems | ResponsiveAlignItems;
+type AlignItems = ResponsiveProp<
+  'normal' | 'flex-start' | 'flex-end' | 'center' | 'start' | 'end' | 'self-start' | 'self-end' | 'baseline' | 'stretch'
+>;
 
-type SingleAlignSelf =
-  | 'auto'
-  | 'normal'
-  | 'self-start'
-  | 'self-end'
-  | 'flex-start'
-  | 'flex-end'
-  | 'center'
-  | 'baseline'
-  | 'stretch';
-type ResponsiveAlignSelf = Responsive<SingleAlignSelf>;
-type AlignSelf = SingleAlignSelf | ResponsiveAlignSelf;
+type AlignSelf = ResponsiveProp<
+  'auto' | 'normal' | 'self-start' | 'self-end' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
+>;
 
-type SingleFlexDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse';
-type ResponsiveFlexDirection = Responsive<SingleFlexDirection>;
-type FlexDirection = SingleFlexDirection | ResponsiveFlexDirection;
+type FlexDirection = ResponsiveProp<'row' | 'column' | 'row-reverse' | 'column-reverse'>;
 
-type SingleFlexWrap = 'nowrap' | 'wrap' | 'wrap-reversed';
-type ResponsiveFlexWrap = Responsive<SingleFlexWrap>;
-type FlexWrap = SingleFlexWrap | ResponsiveFlexWrap;
+type FlexWrap = ResponsiveProp<'nowrap' | 'wrap' | 'wrap-reversed'>;
 
-type SingleJustifyContent =
+type JustifyContent = ResponsiveProp<
   | 'normal'
   | 'start'
   | 'end'
@@ -66,25 +42,16 @@ type SingleJustifyContent =
   | 'space-between'
   | 'space-around'
   | 'space-evenly'
-  | 'stretch';
-type ResponsiveJustifyContent = Responsive<SingleJustifyContent>;
-type JustifyContent = SingleJustifyContent | ResponsiveJustifyContent;
+  | 'stretch'
+>;
 
-type SingleFlexBasis = 'auto' | 'fill' | 'min-content' | 'max-content' | 'fit-content' | 'content' | string;
-type ResponsiveFlexBasis = Responsive<SingleFlexBasis>;
-type FlexBasis = SingleFlexBasis | ResponsiveFlexBasis;
+type FlexBasis = ResponsiveProp<'auto' | 'fill' | 'min-content' | 'max-content' | 'fit-content' | 'content' | string>;
 
-type SingleFlexGrow = number;
-type ResponsiveFlexGrow = Responsive<SingleFlexGrow>;
-type FlexGrow = SingleFlexGrow | ResponsiveFlexGrow;
+type FlexGrow = ResponsiveProp<number>;
 
-type SingleFlexOrder = number;
-type ResponsiveFlexOrder = Responsive<SingleFlexOrder>;
-type FlexOrder = SingleFlexOrder | ResponsiveFlexOrder;
+type FlexOrder = ResponsiveProp<number>;
 
-type SingleFlexShrink = number;
-type ResponsiveFlexShrink = Responsive<SingleFlexShrink>;
-type FlexShrink = SingleFlexShrink | ResponsiveFlexShrink;
+type FlexShrink = ResponsiveProp<number>;
 
 export type FlexedProps = Partial<{
   alignContent: AlignContent;
