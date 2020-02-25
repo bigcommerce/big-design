@@ -1,67 +1,39 @@
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import { FlattenSimpleInterpolation } from 'styled-components';
 
-import { Responsive } from '../../types';
+import { ResponsiveProp } from '../../types';
 
-type SingleGridAreas = string;
-type ResponsiveGridAreas = Responsive<SingleGridAreas>;
-type GridAreas = SingleGridAreas | ResponsiveGridAreas;
+type GridAreas = ResponsiveProp<string>;
 
-type SingleGridAutoColumns = string;
-type ResponsiveGridAutoColumns = Responsive<SingleGridAutoColumns>;
-type GridAutoColumns = SingleGridAutoColumns | ResponsiveGridAutoColumns;
+type GridAutoColumns = ResponsiveProp<string>;
 
-type SingleGridAutoFlow = 'row' | 'column' | 'dense' | 'row dense' | 'column dense' | 'inherit' | 'initial' | 'unset';
-type ResponsiveGridAutoFlow = Responsive<SingleGridAutoFlow>;
-type GridAutoFlow = SingleGridAutoFlow | ResponsiveGridAutoFlow;
+type GridAutoFlow = ResponsiveProp<
+  'row' | 'column' | 'dense' | 'row dense' | 'column dense' | 'inherit' | 'initial' | 'unset'
+>;
 
-type SingleGridAutoRows = string;
-type ResponsiveGridAutoRows = Responsive<SingleGridAutoRows>;
-type GridAutoRows = SingleGridAutoRows | ResponsiveGridAutoRows;
+type GridAutoRows = ResponsiveProp<string>;
 
-type SingleGridColumns = string;
-type ResponsiveGridColumns = Responsive<SingleGridColumns>;
-type GridColumns = SingleGridColumns | ResponsiveGridColumns;
+type GridColumns = ResponsiveProp<string>;
 
-type SingleGridGap = string;
-type ResponsiveGridGap = Responsive<SingleGridGap>;
-type GridGap = SingleGridGap | ResponsiveGridGap;
+type GridGap = ResponsiveProp<string>;
 
-type SingleGridRows = string;
-type ResponsiveGridRows = Responsive<SingleGridRows>;
-type GridRows = SingleGridRows | ResponsiveGridRows;
+type GridRows = ResponsiveProp<string>;
 
-type SingleGridTemplate = string;
-type ResponsiveGridTemplate = Responsive<SingleGridTemplate>;
-type GridTemplate = SingleGridTemplate | ResponsiveGridTemplate;
+type GridTemplate = ResponsiveProp<string>;
 
-type SingleGridArea = string;
-type ResponsiveGridArea = Responsive<SingleGridArea>;
-type GridArea = SingleGridArea | ResponsiveGridArea;
+type GridArea = ResponsiveProp<string>;
 
-type SingleGridColumn = string;
-type ResponsiveGridColumn = Responsive<SingleGridColumn>;
-type GridColumn = SingleGridColumn | ResponsiveGridColumn;
+type GridColumn = ResponsiveProp<string>;
 
-type SingleGridColumnEnd = string;
-type ResponsiveGridColumnEnd = Responsive<SingleGridColumnEnd>;
-type GridColumnEnd = SingleGridColumnEnd | ResponsiveGridColumnEnd;
+type GridColumnEnd = ResponsiveProp<string>;
 
-type SingleGridColumnStart = string;
-type ResponsiveGridColumnStart = Responsive<SingleGridColumnStart>;
-type GridColumnStart = SingleGridColumnStart | ResponsiveGridColumnStart;
+type GridColumnStart = ResponsiveProp<string>;
 
-type SingleGridRow = string;
-type ResponsiveGridRow = Responsive<SingleGridRow>;
-type GridRow = SingleGridRow | ResponsiveGridRow;
+type GridRow = ResponsiveProp<string>;
 
-type SingleGridRowEnd = string;
-type ResponsiveGridRowEnd = Responsive<SingleGridRowEnd>;
-type GridRowEnd = SingleGridRowEnd | ResponsiveGridRowEnd;
+type GridRowEnd = ResponsiveProp<string>;
 
-type SingleGridRowStart = string;
-type ResponsiveGridRowStart = Responsive<SingleGridRowStart>;
-type GridRowStart = SingleGridRowStart | ResponsiveGridRowStart;
+type GridRowStart = ResponsiveProp<string>;
 
 export type GridedProps = Partial<{
   gridAreas: GridAreas;

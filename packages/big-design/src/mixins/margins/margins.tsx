@@ -1,12 +1,10 @@
 import { Spacing } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { Responsive } from '../../types';
+import { ResponsiveProp } from '../../types';
 import { getSpacingStyles } from '../spacings';
 
-type SingleMarginProp = keyof Spacing;
-type ResponsiveMarginProp = Responsive<keyof Spacing>;
-type MarginProp = SingleMarginProp | ResponsiveMarginProp;
+type MarginProp = ResponsiveProp<keyof Spacing>;
 
 export type MarginProps = Partial<{
   margin: MarginProp;
