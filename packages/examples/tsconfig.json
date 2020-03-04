@@ -4,6 +4,7 @@
     "lib": ["dom", "es2015"],
     "jsx": "react",
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strict": true
   }
 }
