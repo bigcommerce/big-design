@@ -1,12 +1,13 @@
 import { Placement } from 'popper.js';
 import { RefObject } from 'react';
 
+import { InputProps } from '../Input';
 import { ListItemProps } from '../List/Item';
 
 interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children'> {
   action?: SelectAction;
   disabled?: boolean;
-  error?: string;
+  error?: InputProps['error'];
   filterable?: boolean;
   inputRef?: RefObject<HTMLInputElement> | React.Ref<HTMLInputElement>;
   label?: string;
