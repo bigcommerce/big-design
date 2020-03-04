@@ -1,11 +1,13 @@
 {
-  "extends": "./tsconfig.base.json",
-  "include": ["src", "src/**/__tests__", "setupTests.ts", "tests"],
-  "exclude": ["dist"],
+  "extends": "@bigcommerce/configs/ts",
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": ".",
+    "declaration": true,
+    "declarationDir": "dist",
+    "declarationMap": true,
     "paths": {
-      "@test/utils": ["../tests/utils"]
+      "@test/utils": ["./tests/utils"]
     }
-  }
+  },
+  "include": ["src", "setupTests.ts", "tests"]
 }

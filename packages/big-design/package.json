@@ -4,7 +4,7 @@
   "sideEffects": false,
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
-  "typings": "dist/src/index.d.ts",
+  "typings": "dist/index.d.ts",
   "author": "BigCommerce Inc",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "build": "yarn run build:cjs && yarn run build:es && yarn run build:dt",
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/cjs",
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
-    "build:dt": "tsc --emitDeclarationOnly",
+    "build:dt": "tsc -p tsconfig.declarations.json --emitDeclarationOnly",
     "ci": "yarn run lint && yarn run test --maxWorkers=2 && yarn run build",
     "lint": "yarn run lint:eslint && yarn run lint:tslint && yarn run lint:tsc && yarn run lint:prettier",
     "lint:eslint": "eslint src/**/* --ext '.ts,.tsx'",

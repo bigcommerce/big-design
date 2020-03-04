@@ -1,6 +1,7 @@
-import { SelectAction, SelectOption } from 'components/Select';
 import { Placement } from 'popper.js';
 import { RefObject } from 'react';
+
+import { SelectAction, SelectOption } from '../Select';
 
 interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children'> {
   action?: SelectAction;

@@ -1,4 +1,3 @@
-import { SelectAction, SelectOption } from 'components/Select';
 import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
 import React, { createRef, useCallback, useEffect, useMemo, useState, RefObject } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
@@ -13,6 +12,7 @@ import { Input } from '../Input';
 import { List } from '../List';
 import { ListItem } from '../List/Item';
 import { ListItemCheckbox } from '../List/Item/CheckboxItem';
+import { SelectAction, SelectOption } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 
 import { MultiSelectProps } from './types';
