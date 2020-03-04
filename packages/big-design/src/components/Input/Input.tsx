@@ -10,8 +10,8 @@ interface Props {
   chips?: ChipProps[];
   description?: React.ReactChild;
   error?: React.ReactNode | React.ReactNode[];
-  iconLeft?: React.ReactChild;
-  iconRight?: React.ReactChild;
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
   label?: React.ReactChild;
   labelId?: string;
 }
