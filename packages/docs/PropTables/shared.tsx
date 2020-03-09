@@ -47,7 +47,7 @@ const messagingItemProps: Prop[] = [
   },
 ];
 
-const messagingLinkItemProps: Prop[] = [
+export const messagingLinkItemProps: Prop[] = [
   {
     name: 'external',
     types: 'boolean',

@@ -2,12 +2,19 @@ import React, { forwardRef, useMemo, Ref } from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
+import { FormControlDescription as Description, FormControlDescriptionLinkProps } from '../Form';
 
-import { HiddenRadio, RadioContainer, StyledRadio } from './styled';
+import { HiddenRadio, RadioContainer, RadioLabelContainer, StyledRadio } from './styled';
 import { RadioLabel } from './Label';
 
 interface Props {
   label: React.ReactChild;
+  description?: RadioDescription;
+}
+
+interface RadioDescription {
+  text: string;
+  link?: FormControlDescriptionLinkProps;
 }
 
 interface PrivateProps {
@@ -19,6 +26,7 @@ export type RadioProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 const RawRadio: React.FC<RadioProps & PrivateProps> = ({
   checked,
   className,
+  description,
   disabled,
   label,
   forwardedRef,
@@ -52,6 +60,14 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
     warning('label must be either a string or a RadioLabel component.');
   }, [disabled, id, label, labelId]);
 
+  const renderedDescription = useMemo(() => {
+    if (!description) {
+      return null;
+    }
+
+    return <Description link={description.link}>{description.text}</Description>;
+  }, [description]);
+
   return (
     <RadioContainer className={className} style={style}>
       <HiddenRadio
@@ -64,7 +80,10 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
         ref={forwardedRef}
       />
       <StyledRadio checked={checked} disabled={disabled} htmlFor={id} aria-hidden={true} />
-      {renderedLabel}
+      <RadioLabelContainer>
+        {renderedLabel}
+        {renderedDescription}
+      </RadioLabelContainer>
     </RadioContainer>
   );
 };

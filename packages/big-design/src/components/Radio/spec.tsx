@@ -18,6 +18,27 @@ test('render Radio (unchecked)', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('render Radio (unchecked + description)', () => {
+  const { container } = render(
+    <Radio
+      label="Unchecked"
+      description={{
+        text: 'description',
+        link: {
+          text: 'learn more',
+          target: 'foo',
+          href: 'bar',
+        },
+      }}
+      name="test-group"
+      checked={false}
+      onChange={() => null}
+    />,
+  );
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
 test('render Radio (checked + disabled)', () => {
   const { container } = render(
     <Radio label="Checked" name="test-group" checked={true} onChange={() => null} disabled />,
