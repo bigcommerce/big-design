@@ -43,6 +43,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@babel/runtime": "^7.8.7",
     "polished": "^3.0.3"
   },
   "peerDependencies": {

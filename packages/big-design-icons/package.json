@@ -44,6 +44,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@babel/runtime": "^7.8.7",
     "@bigcommerce/big-design-theme": "^0.6.0",
     "react-uid": "^2.2.0"
   },
