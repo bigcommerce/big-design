@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render selected and disabled 1`] = `
+.c0 {
+  background: #DBE3FE;
+  border: 1px solid #9EB3FC;
+  border-radius: 0.25rem;
+  color: #0B38D9;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 2rem;
+  margin: 0;
+  outline: none;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.c0[disabled] {
+  background: #F6F7FC;
+  border: 1px solid #D9DCE9;
+  color: #B4BAD1;
+  cursor: not-allowed;
+}
+
+.c0:not([disabled]):hover,
+.c0:not([disabled]):active {
+  background: #DBE3FE;
+  color: #0B38D9;
+}
+
+.c0:not([disabled]):focus {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+<button
+  aria-pressed="true"
+  class="c0"
+  disabled=""
+/>
+`;
+
+exports[`render selected and enabled 1`] = `
+.c0 {
+  background: #DBE3FE;
+  border: 1px solid #9EB3FC;
+  border-radius: 0.25rem;
+  color: #0B38D9;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 2rem;
+  margin: 0;
+  outline: none;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.c0[disabled] {
+  background: #F6F7FC;
+  border: 1px solid #D9DCE9;
+  color: #B4BAD1;
+  cursor: not-allowed;
+}
+
+.c0:not([disabled]):hover,
+.c0:not([disabled]):active {
+  background: #DBE3FE;
+  color: #0B38D9;
+}
+
+.c0:not([disabled]):focus {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+<button
+  aria-pressed="true"
+  class="c0"
+/>
+`;
+
+exports[`render unselected and disabled 1`] = `
+.c0 {
+  background: #FFFFFF;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #5E637A;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 2rem;
+  margin: 0;
+  outline: none;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.c0[disabled] {
+  background: #FFFFFF;
+  border: 1px solid #D9DCE9;
+  color: #B4BAD1;
+  cursor: not-allowed;
+}
+
+.c0:not([disabled]):hover,
+.c0:not([disabled]):active {
+  background: #F0F3FF;
+  color: #2852EB;
+}
+
+.c0:not([disabled]):focus {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+<button
+  aria-pressed="false"
+  class="c0"
+  disabled=""
+/>
+`;
+
+exports[`render unselected and enabled 1`] = `
+.c0 {
+  background: #FFFFFF;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #5E637A;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 2rem;
+  margin: 0;
+  outline: none;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.c0[disabled] {
+  background: #FFFFFF;
+  border: 1px solid #D9DCE9;
+  color: #B4BAD1;
+  cursor: not-allowed;
+}
+
+.c0:not([disabled]):hover,
+.c0:not([disabled]):active {
+  background: #F0F3FF;
+  color: #2852EB;
+}
+
+.c0:not([disabled]):focus {
+  box-shadow: 0 0 0 4px #DBE3FE;
+}
+
+<button
+  aria-pressed="false"
+  class="c0"
+/>
+`;
