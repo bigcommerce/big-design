@@ -9,8 +9,12 @@ interface StyledRadioProps {
   disabled?: boolean;
 }
 
+export const RadioLabelContainer = styled.div`
+  margin-left: ${({ theme }) => theme.spacing.xSmall};
+`;
+
 export const RadioContainer = styled.div`
-  align-items: center;
+  align-items: flex-start;
   display: flex;
 `;
 
@@ -21,6 +25,7 @@ export const HiddenRadio = styled.input`
 export const StyledRadio = styled.label<StyledRadioProps>`
   ${withTransition(['border-color', 'box-shadow'])}
 
+  background-color: ${({ disabled, theme }) => (disabled ? theme.colors.secondary10 : theme.colors.white)};
   border: ${({ theme }) => theme.border.box};
   border-color: ${props => (props.checked ? props.theme.colors.primary40 : props.theme.colors.secondary30)};
   border-radius: ${({ theme }) => theme.borderRadius.circle};
@@ -73,3 +78,4 @@ export const StyledRadio = styled.label<StyledRadioProps>`
 `;
 
 StyledRadio.defaultProps = { theme: defaultTheme };
+RadioLabelContainer.defaultProps = { theme: defaultTheme };
