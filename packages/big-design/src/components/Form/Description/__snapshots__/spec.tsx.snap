@@ -66,6 +66,7 @@ exports[`renders description with link 1`] = `
   class="c0"
 >
   Foo
+   
   <a
     class="c1 c2"
     href="f"

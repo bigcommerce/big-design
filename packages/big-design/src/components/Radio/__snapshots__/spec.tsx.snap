@@ -421,6 +421,7 @@ exports[`render Radio (unchecked + description) 1`] = `
       class="c6"
     >
       description
+       
       <a
         class="c7 c8"
         href="bar"

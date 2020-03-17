@@ -20,6 +20,27 @@ describe('render Checkbox', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('description', () => {
+    const { container } = render(
+      <Checkbox
+        label="Unchecked"
+        description={{
+          text: 'description',
+          link: {
+            text: 'learn more',
+            target: 'foo',
+            href: 'bar',
+          },
+        }}
+        name="test-group"
+        checked={false}
+        onChange={() => null}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   test('indeterminate', () => {
     const { container } = render(<Checkbox label="Unchecked" isIndeterminate={true} onChange={() => null} />);
 

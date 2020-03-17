@@ -15,8 +15,12 @@ export interface StyledLabelProps {
   disabled?: boolean;
 }
 
+export const CheckboxLabelContainer = styled.div`
+  margin-left: ${({ theme }) => theme.spacing.xSmall};
+`;
+
 export const CheckboxContainer = styled.div`
-  align-items: center;
+  align-items: flex-start;
   display: flex;
 `;
 
@@ -66,3 +70,4 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
 `;
 
 StyledCheckbox.defaultProps = { theme: defaultTheme };
+CheckboxLabelContainer.defaultProps = { theme: defaultTheme };

@@ -52,7 +52,7 @@ export default () => (
                   link: {
                     text: 'Learn more',
                     target: '_blank',
-                    href: 'http://google.com',
+                    href: 'http://www.bigcommerce.com',
                   },
                 }}
                 checked={selected === 'disabled'}

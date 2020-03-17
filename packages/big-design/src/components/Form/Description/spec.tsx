@@ -17,6 +17,7 @@ test('renders description with link', () => {
         text: 'more',
         href: 'f',
         target: 't',
+        external: true,
       }}
     >
       Foo

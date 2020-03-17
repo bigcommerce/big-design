@@ -1,8 +1,8 @@
-import { Checkbox, Form, FormGroup, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { Checkbox, Form, FormGroup, H0, H1, Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
-import { CheckboxPropTable } from '../../PropTables';
+import { CheckboxDescriptionLinkPropTable, CheckboxDescriptionPropTable, CheckboxPropTable } from '../../PropTables';
 
 export default () => (
   <>
@@ -25,7 +25,26 @@ export default () => (
         return (
           <Form>
             <FormGroup>
-              <Checkbox label={checked ? 'Checked' : 'Unchecked'} checked={checked} onChange={handleChange} />
+              <Checkbox
+                label={checked ? 'Checked' : 'Unchecked'}
+                checked={checked}
+                onChange={handleChange}
+                description={{
+                  text: 'Description for off.',
+                }}
+              />
+              <Checkbox
+                label="Disabled"
+                disabled={true}
+                description={{
+                  text: 'Description for off.',
+                  link: {
+                    text: 'Learn more',
+                    target: '_blank',
+                    href: 'http://www.bigcommerce.com',
+                  },
+                }}
+              />
             </FormGroup>
           </Form>
         );
@@ -36,6 +55,8 @@ export default () => (
     <H1>API</H1>
 
     <CheckboxPropTable />
+    <CheckboxDescriptionPropTable />
+    <CheckboxDescriptionLinkPropTable />
 
     <H1>Indeterminate</H1>
 

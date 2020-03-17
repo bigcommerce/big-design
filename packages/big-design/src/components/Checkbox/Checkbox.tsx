@@ -3,14 +3,21 @@ import React, { forwardRef, useMemo, Ref } from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
+import { FormControlDescription as Description, FormControlDescriptionLinkProps } from '../Form';
 
-import { CheckboxContainer, HiddenCheckbox, StyledCheckbox } from './styled';
+import { CheckboxContainer, CheckboxLabelContainer, HiddenCheckbox, StyledCheckbox } from './styled';
 import { CheckboxLabel } from './Label';
 
 interface Props {
   hiddenLabel?: boolean;
   isIndeterminate?: boolean;
   label: React.ReactChild;
+  description?: CheckboxDescription;
+}
+
+interface CheckboxDescription {
+  text: string;
+  link?: FormControlDescriptionLinkProps;
 }
 
 interface PrivateProps {
@@ -22,6 +29,7 @@ export type CheckboxProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   checked,
   className,
+  description,
   disabled,
   hiddenLabel,
   isIndeterminate,
@@ -57,6 +65,14 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
 
     warning('label must be either a string or a CheckboxLabel component.');
   }, [disabled, hiddenLabel, id, label, labelId]);
+
+  const renderedDescription = useMemo(() => {
+    if (!description) {
+      return null;
+    }
+
+    return <Description link={description.link}>{description.text}</Description>;
+  }, [description]);
 
   return (
     <CheckboxContainer className={className} style={style}>
@@ -94,7 +110,10 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       >
         {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
       </StyledCheckbox>
-      {renderedLabel}
+      <CheckboxLabelContainer>
+        {renderedLabel}
+        {renderedDescription}
+      </CheckboxLabelContainer>
     </CheckboxContainer>
   );
 };

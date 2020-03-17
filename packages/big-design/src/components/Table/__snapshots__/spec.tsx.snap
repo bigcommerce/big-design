@@ -692,7 +692,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   box-sizing: border-box;
 }
 
-.c12 {
+.c13 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
@@ -745,7 +745,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   flex-shrink: 0;
 }
 
-.c13 {
+.c14 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -754,11 +754,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin: 0;
 }
 
-.c13:last-child {
+.c14:last-child {
   margin-bottom: 0;
 }
 
-.c11 {
+.c12 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -767,15 +767,19 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin-left: 0.75rem;
 }
 
-.c11:last-child {
+.c12:last-child {
   margin-bottom: 0;
 }
 
+.c10 {
+  margin-left: 0.5rem;
+}
+
 .c5 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -838,14 +842,13 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   opacity: 0;
 }
 
-.c10 {
+.c11 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
   cursor: pointer;
-  margin-left: 0.5rem;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -858,7 +861,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   width: 1px;
 }
 
-.c10:last-child {
+.c11:last-child {
   margin-bottom: 0;
 }
 
@@ -925,27 +928,31 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
             />
           </svg>
         </label>
-        <label
+        <div
           class="c10"
-          for="bd-checkbox-2"
-          hidden=""
-          id="bd-checkbox_label-3"
         >
-          Select All
-        </label>
+          <label
+            class="c11"
+            for="bd-checkbox-2"
+            hidden=""
+            id="bd-checkbox_label-3"
+          >
+            Select All
+          </label>
+        </div>
       </div>
       <p
-        class="c11"
+        class="c12"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c12 c2"
+    class="c13 c2"
   >
     <p
-      class="c13"
+      class="c14"
     >
       Product
     </p>
