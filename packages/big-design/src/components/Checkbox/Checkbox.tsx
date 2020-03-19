@@ -3,7 +3,7 @@ import React, { forwardRef, useMemo, Ref } from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
-import { FormControlDescription as Description, FormControlDescriptionLinkProps } from '../Form';
+import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
 import { CheckboxContainer, CheckboxLabelContainer, HiddenCheckbox, StyledCheckbox } from './styled';
 import { CheckboxLabel } from './Label';
@@ -66,13 +66,13 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
     warning('label must be either a string or a CheckboxLabel component.');
   }, [disabled, hiddenLabel, id, label, labelId]);
 
-  const renderedDescription = useMemo(() => {
-    if (!description) {
-      return null;
-    }
+  const link = description && description.link;
+  const text = description && description.text;
 
-    return <Description link={description.link}>{description.text}</Description>;
-  }, [description]);
+  const renderedDescription = useMemo(() => <FormControlDescription link={link}>{text}</FormControlDescription>, [
+    link,
+    text,
+  ]);
 
   return (
     <CheckboxContainer className={className} style={style}>
@@ -112,7 +112,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       </StyledCheckbox>
       <CheckboxLabelContainer>
         {renderedLabel}
-        {renderedDescription}
+        {description && renderedDescription}
       </CheckboxLabelContainer>
     </CheckboxContainer>
   );

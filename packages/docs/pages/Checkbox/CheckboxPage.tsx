@@ -25,26 +25,8 @@ export default () => (
         return (
           <Form>
             <FormGroup>
-              <Checkbox
-                label={checked ? 'Checked' : 'Unchecked'}
-                checked={checked}
-                onChange={handleChange}
-                description={{
-                  text: 'Description for off.',
-                }}
-              />
-              <Checkbox
-                label="Disabled"
-                disabled={true}
-                description={{
-                  text: 'Description for off.',
-                  link: {
-                    text: 'Learn more',
-                    target: '_blank',
-                    href: 'http://www.bigcommerce.com',
-                  },
-                }}
-              />
+              <Checkbox label={checked ? 'Checked' : 'Unchecked'} checked={checked} onChange={handleChange} />
+              <Checkbox label="Disabled" disabled={true} />
             </FormGroup>
           </Form>
         );
@@ -72,6 +54,40 @@ export default () => (
           <Checkbox label="Indeterminate" isIndeterminate />
         </FormGroup>
       </Form>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H1>Description</H1>
+
+    <Text>
+      Checkboxes support <Code primary>description</Code> passed as a prop, which contains a text and an optional link.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      {function Example() {
+        const [checked, setChecked] = React.useState(false);
+        const handleChange = () => setChecked(!checked);
+
+        return (
+          <Form>
+            <FormGroup>
+              <Checkbox
+                onChange={handleChange}
+                checked={checked}
+                label="Checkbox with description"
+                description={{
+                  text: 'Descriptive text.',
+                  link: {
+                    text: 'Learn more',
+                    href: 'http://www.bigcommerce.com',
+                  },
+                }}
+              />
+            </FormGroup>
+          </Form>
+        );
+      }}
       {/* jsx-to-string:end */}
     </CodePreview>
   </>

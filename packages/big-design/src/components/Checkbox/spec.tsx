@@ -20,7 +20,7 @@ describe('render Checkbox', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('description', () => {
+  test('with description', () => {
     const { container } = render(
       <Checkbox
         label="Unchecked"

@@ -75,7 +75,7 @@ export const CheckboxPropTable: React.FC<PropTableWrapper> = props => (
 
 export const CheckboxDescriptionPropTable: React.FC<PropTableWrapper> = props => (
   <PropTable
-    title="CheckboxDescription"
+    title="Checkbox[CheckboxDescription]"
     propList={checkboxDescriptionProps}
     {...props}
     id="checkbox-description-prop-table"
@@ -84,7 +84,7 @@ export const CheckboxDescriptionPropTable: React.FC<PropTableWrapper> = props =>
 
 export const CheckboxDescriptionLinkPropTable: React.FC<PropTableWrapper> = props => (
   <PropTable
-    title="CheckboxDescriptionLink"
+    title="Checkbox[CheckboxDescriptionLink]"
     propList={messagingLinkItemProps}
     {...props}
     id="checkbox-description-link-prop-table"
