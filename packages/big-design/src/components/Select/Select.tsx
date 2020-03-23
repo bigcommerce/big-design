@@ -1,6 +1,6 @@
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
-import React, { createRef, useCallback, useEffect, useMemo, useState, RefObject } from 'react';
+import React, { createRef, useCallback, useEffect, useMemo, useRef, useState, Fragment, RefObject } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
@@ -11,10 +11,11 @@ import { FlexItem } from '../Flex/Item';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
+import { ListGroupHeader } from '../List/GroupHeader';
 import { ListItem } from '../List/Item';
 
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from './styled';
-import { SelectAction, SelectOption, SelectProps } from './types';
+import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from './types';
 
 export const Select = typedMemo(
   <T extends any>({
@@ -38,13 +39,18 @@ export const Select = typedMemo(
     ...rest
   }: SelectProps<T>): ReturnType<React.FC<SelectProps<T>>> => {
     // Merge options and action
-    const initialOptions = useMemo(() => (action ? [...options, action] : options), [action, options]);
+    const onlyOptions = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
+      action,
+      options,
+    ]);
+
+    const itemKey = useRef(0);
 
     const findSelectedOption = useMemo(() => {
-      return initialOptions.find(option => 'value' in option && option.value === value) as SelectOption<T> | undefined;
-    }, [initialOptions, value]);
+      return onlyOptions.find(option => 'value' in option && option.value === value) as SelectOption<T> | undefined;
+    }, [onlyOptions, value]);
 
-    const [items, setItems] = useState(initialOptions);
+    const [initialOptions, setInitialOptions] = useState(onlyOptions);
     const [inputValue, setInputValue] = useState(findSelectedOption ? findSelectedOption.content : '');
     const [selectedOption, setSelectedOption] = useState(findSelectedOption);
     const [highlightedIndex, setHighlightedIndex] = useState(0);
@@ -62,8 +68,8 @@ export const Select = typedMemo(
     }, [findSelectedOption]);
 
     const findSelectedOptionIndex = useMemo(() => {
-      return items.findIndex(item => 'value' in item && item.value === value);
-    }, [items, value]);
+      return initialOptions.findIndex(item => 'value' in item && item.value === value);
+    }, [initialOptions, value]);
 
     useEffect(() => {
       setHighlightedIndex(findSelectedOptionIndex);
@@ -71,7 +77,7 @@ export const Select = typedMemo(
 
     const handleSetInputValue = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && changes.isOpen === true) {
-        setItems(filterOptions(changes.inputValue));
+        setInitialOptions(filterOptions(changes.inputValue));
       }
 
       setInputValue(changes.inputValue || '');
@@ -96,7 +102,7 @@ export const Select = typedMemo(
     const handleOnIsOpenChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && changes.isOpen === false) {
         // Reset the items if filtered
-        setItems(initialOptions);
+        setInitialOptions(onlyOptions);
       }
     };
 
@@ -144,7 +150,7 @@ export const Select = typedMemo(
       inputId: id,
       inputValue,
       itemToString: option => (option ? option.content : ''),
-      items,
+      items: onlyOptions,
       labelId,
       onHighlightedIndexChange: handleOnHighlightedIndexChange,
       onInputValueChange: handleSetInputValue,
@@ -256,7 +262,7 @@ export const Select = typedMemo(
 
     const renderAction = useCallback(
       (actionItem: SelectAction) => {
-        const index = options.length;
+        const index = onlyOptions.length - 1;
         const isHighlighted = highlightedIndex === index;
         const { disabled: itemDisabled, content, icon, onActionClick, ...itemProps } = actionItem;
 
@@ -277,41 +283,71 @@ export const Select = typedMemo(
           </Box>
         );
       },
-      [getItemProps, highlightedIndex, options.length],
+      [getItemProps, highlightedIndex, onlyOptions.length],
     );
 
-    const renderOptions = useMemo(() => {
-      return (
-        isOpen &&
-        items.map((item, index) => {
-          if (action && item.content === action.content) {
-            return renderAction(item as SelectAction);
-          }
+    const renderOptions = useCallback(
+      (items: Array<SelectOption<any>>) => {
+        return (
+          isOpen &&
+          items.map(item => {
+            const key = itemKey.current;
 
-          const isHighlighted = highlightedIndex === index;
-          const isSelected = selectedOption ? 'value' in item && selectedOption.value === item.value : false;
+            itemKey.current += 1;
 
-          const { disabled: itemDisabled, content, icon, ...itemProps } = item as SelectOption<T>;
+            const isHighlighted = highlightedIndex === key;
+            const isSelected = selectedOption ? 'value' in item && selectedOption.value === item.value : false;
 
-          return (
-            <ListItem
-              {...itemProps}
-              {...getItemProps({
-                disabled: itemDisabled,
-                index,
-                item,
-              })}
-              isHighlighted={isHighlighted}
-              isSelected={isSelected}
-              key={`${content}-${index}`}
-            >
-              {getContent(item, isHighlighted)}
-              {isSelected && <CheckIcon color="primary" size="large" />}
-            </ListItem>
-          );
-        })
-      );
-    }, [action, getItemProps, highlightedIndex, isOpen, items, renderAction, selectedOption]);
+            const { disabled: itemDisabled, content, icon, ...itemProps } = item as SelectOption<T>;
+
+            return (
+              <ListItem
+                {...itemProps}
+                {...getItemProps({
+                  disabled: itemDisabled,
+                  index: key,
+                  item,
+                })}
+                isHighlighted={isHighlighted}
+                isSelected={isSelected}
+                key={`${content}-${key}`}
+              >
+                {getContent(item, isHighlighted)}
+                {isSelected && <CheckIcon color="primary" size="large" />}
+              </ListItem>
+            );
+          })
+        );
+      },
+      [getItemProps, highlightedIndex, isOpen, selectedOption],
+    );
+
+    const renderGroup = useCallback(
+      (group: SelectOptionGroup) => {
+        return (
+          <>
+            <ListGroupHeader>{group.optionsLabel}</ListGroupHeader>
+            {renderOptions(group.options)}
+          </>
+        );
+      },
+      [renderOptions],
+    );
+
+    const renderChildren = useMemo(() => {
+      itemKey.current = 0;
+
+      if (Array.isArray(options) && options.every(isGroup)) {
+        return (
+          isOpen &&
+          (options as SelectOptionGroup[]).map((group, index) => <Fragment key={index}>{renderGroup(group)}</Fragment>)
+        );
+      }
+
+      if (Array.isArray(options) && options.every(isOption)) {
+        return isOpen && renderOptions(options as Array<SelectOption<any>>);
+      }
+    }, [isOpen, options, renderGroup, renderOptions]);
 
     const renderList = useMemo(() => {
       return (
@@ -326,12 +362,13 @@ export const Select = typedMemo(
               scheduleUpdate={scheduleUpdate}
               style={popperStyle}
             >
-              {renderOptions}
+              {renderChildren}
+              {action && renderAction(action)}
             </List>
           )}
         </Popper>
       );
-    }, [getMenuProps, isOpen, maxHeight, placement, positionFixed, renderOptions]);
+    }, [action, getMenuProps, isOpen, maxHeight, placement, positionFixed, renderAction, renderChildren]);
 
     return (
       <div>
@@ -364,6 +401,22 @@ const renderIcon = <T extends any>(item: SelectOption<T> | SelectAction, isHighl
       size: 'large',
     })
   );
+};
+
+const flattenOptions = (items: Array<SelectOption<any> | SelectOptionGroup>): Array<SelectOption<any>> => {
+  return items.every(isGroup)
+    ? (items as SelectOptionGroup[])
+        .map((group: SelectOptionGroup) => group.options)
+        .reduce((acum, curr) => acum.concat(curr), [])
+    : (items as Array<SelectOption<any>>);
+};
+
+const isGroup = (item: SelectOption<any> | SelectOptionGroup) => {
+  return 'options' in item && !('value' in item);
+};
+
+const isOption = (item: SelectOption<any> | SelectOptionGroup) => {
+  return 'value' in item && !('options' in item);
 };
 
 const iconColor = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
