@@ -33,7 +33,7 @@ const checkboxProps: Prop[] = [
   },
   {
     name: 'description',
-    types: ['CheckboxDescription'],
+    types: ['string', 'CheckboxDescription'],
     description: (
       <>
         See <NextLink href="#checkbox-description-prop-table">below</NextLink> for usage.

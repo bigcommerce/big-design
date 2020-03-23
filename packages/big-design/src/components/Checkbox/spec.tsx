@@ -20,7 +20,7 @@ describe('render Checkbox', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('with description', () => {
+  test('with description object', () => {
     const { container } = render(
       <Checkbox
         label="Unchecked"
@@ -32,6 +32,20 @@ describe('render Checkbox', () => {
             href: 'bar',
           },
         }}
+        name="test-group"
+        checked={false}
+        onChange={() => null}
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('with description string', () => {
+    const { container } = render(
+      <Checkbox
+        label="Unchecked"
+        description="description text"
         name="test-group"
         checked={false}
         onChange={() => null}

@@ -12,7 +12,7 @@ interface Props {
   hiddenLabel?: boolean;
   isIndeterminate?: boolean;
   label: React.ReactChild;
-  description?: CheckboxDescription;
+  description?: CheckboxDescription | string;
 }
 
 interface CheckboxDescription {
@@ -66,13 +66,16 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
     warning('label must be either a string or a CheckboxLabel component.');
   }, [disabled, hiddenLabel, id, label, labelId]);
 
-  const link = description && description.link;
-  const text = description && description.text;
+  const renderedDescription = useMemo(() => {
+    if (!description) {
+      return null;
+    }
 
-  const renderedDescription = useMemo(() => <FormControlDescription link={link}>{text}</FormControlDescription>, [
-    link,
-    text,
-  ]);
+    const link = typeof description === 'object' ? description.link : undefined;
+    const text = typeof description === 'object' ? description.text : description;
+
+    return <FormControlDescription link={link}>{text}</FormControlDescription>;
+  }, [description]);
 
   return (
     <CheckboxContainer className={className} style={style}>
@@ -112,7 +115,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       </StyledCheckbox>
       <CheckboxLabelContainer>
         {renderedLabel}
-        {description && renderedDescription}
+        {renderedDescription}
       </CheckboxLabelContainer>
     </CheckboxContainer>
   );

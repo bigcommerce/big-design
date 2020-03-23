@@ -106,17 +106,13 @@ export default () => (
               <Radio
                 label="On"
                 checked={selected === 'on'}
-                description={{
-                  text: 'Description for on.',
-                }}
+                description="Description for on"
                 value="on"
                 onChange={handleChange}
               />
               <Radio
                 label="Off"
-                description={{
-                  text: 'Description for off.',
-                }}
+                description="Description for off"
                 checked={selected === 'off'}
                 value="off"
                 onChange={handleChange}

@@ -66,23 +66,31 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [checked, setChecked] = React.useState(false);
-        const handleChange = () => setChecked(!checked);
+        const [checkedA, setChangeA] = React.useState(false);
+        const [checkedB, setChangeB] = React.useState(false);
+        const handleChangeA = () => setChangeA(!checkedA);
+        const handleChangeB = () => setChangeB(!checkedB);
 
         return (
           <Form>
             <FormGroup>
               <Checkbox
-                onChange={handleChange}
-                checked={checked}
-                label="Checkbox with description"
+                onChange={handleChangeA}
+                checked={checkedA}
+                label="Checkbox with description and link"
                 description={{
-                  text: 'Descriptive text.',
+                  text: 'I am a CheckboxDescription.',
                   link: {
                     text: 'Learn more',
                     href: 'http://www.bigcommerce.com',
                   },
                 }}
+              />
+              <Checkbox
+                onChange={handleChangeB}
+                checked={checkedB}
+                label="Checkbox with description"
+                description="I am a string description."
               />
             </FormGroup>
           </Form>

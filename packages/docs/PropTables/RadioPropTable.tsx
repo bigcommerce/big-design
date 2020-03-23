@@ -17,7 +17,7 @@ const radioProps: Prop[] = [
   },
   {
     name: 'description',
-    types: ['RadioDescription'],
+    types: ['string', 'RadioDescription'],
     description: (
       <>
         See <NextLink href="#radio-description-prop-table">below</NextLink> for usage.
