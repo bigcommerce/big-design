@@ -84,7 +84,7 @@ export const Select = typedMemo(
     };
 
     const filterOptions = (inputVal: string = '') => {
-      return initialOptions.filter(
+      return onlyOptions.filter(
         option =>
           option.content === (action && action.content) ||
           option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
@@ -150,7 +150,7 @@ export const Select = typedMemo(
       inputId: id,
       inputValue,
       itemToString: option => (option ? option.content : ''),
-      items: onlyOptions,
+      items: initialOptions,
       labelId,
       onHighlightedIndexChange: handleOnHighlightedIndexChange,
       onInputValueChange: handleSetInputValue,
