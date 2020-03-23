@@ -50,7 +50,7 @@ export const Select = typedMemo(
       return onlyOptions.find(option => 'value' in option && option.value === value) as SelectOption<T> | undefined;
     }, [onlyOptions, value]);
 
-    const [initialOptions, setInitialOptions] = useState(onlyOptions);
+    const [selectOptions, setSelectOptions] = useState(onlyOptions);
     const [inputValue, setInputValue] = useState(findSelectedOption ? findSelectedOption.content : '');
     const [selectedOption, setSelectedOption] = useState(findSelectedOption);
     const [highlightedIndex, setHighlightedIndex] = useState(0);
@@ -68,8 +68,8 @@ export const Select = typedMemo(
     }, [findSelectedOption]);
 
     const findSelectedOptionIndex = useMemo(() => {
-      return initialOptions.findIndex(item => 'value' in item && item.value === value);
-    }, [initialOptions, value]);
+      return selectOptions.findIndex(item => 'value' in item && item.value === value);
+    }, [selectOptions, value]);
 
     useEffect(() => {
       setHighlightedIndex(findSelectedOptionIndex);
@@ -77,7 +77,7 @@ export const Select = typedMemo(
 
     const handleSetInputValue = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && changes.isOpen === true) {
-        setInitialOptions(filterOptions(changes.inputValue));
+        setSelectOptions(filterOptions(changes.inputValue));
       }
 
       setInputValue(changes.inputValue || '');
@@ -102,7 +102,7 @@ export const Select = typedMemo(
     const handleOnIsOpenChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && changes.isOpen === false) {
         // Reset the items if filtered
-        setInitialOptions(onlyOptions);
+        setSelectOptions(onlyOptions);
       }
     };
 
@@ -150,7 +150,7 @@ export const Select = typedMemo(
       inputId: id,
       inputValue,
       itemToString: option => (option ? option.content : ''),
-      items: initialOptions,
+      items: selectOptions,
       labelId,
       onHighlightedIndexChange: handleOnHighlightedIndexChange,
       onInputValueChange: handleSetInputValue,
