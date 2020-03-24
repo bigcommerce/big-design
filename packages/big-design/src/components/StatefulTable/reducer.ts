@@ -81,11 +81,14 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
         itemsPerPage: state.pagination.itemsPerPage,
       });
 
+      const selectedItems = state.selectedItems.filter(item => items.includes(item));
+
       return {
         ...state,
         currentItems,
         isPaginationEnabled,
         items,
+        selectedItems,
         pagination: {
           ...state.pagination,
           currentPage,
