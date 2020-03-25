@@ -225,6 +225,46 @@ test('sorts numerically', () => {
   expect(lastItemContent).toBe('104');
 });
 
+test('sorts using a custom sorting function', () => {
+  const { getAllByTestId, getByText } = render(
+    getSimpleTable({
+      columns: [
+        { header: 'Name', hash: 'name', render: ({ name }) => <span data-testid="name">{name}</span>, sortKey: 'name' },
+        {
+          header: 'Stock',
+          hash: 'stock',
+          render: ({ stock }) => <span data-testid="stock">{stock}</span>,
+          sortFn: (a, b, dir) => (dir === 'ASC' ? a.stock - b.stock : b.stock - a.stock),
+        },
+      ],
+      pagination: false,
+    }),
+  );
+
+  let items = getAllByTestId('stock');
+  let firstItemContent = items[0].textContent;
+  let lastItemContent = items[items.length - 1].textContent;
+
+  // Descending order
+  fireEvent.click(getByText('Stock'));
+
+  items = getAllByTestId('stock');
+  firstItemContent = items[0].textContent;
+  lastItemContent = items[items.length - 1].textContent;
+
+  expect(firstItemContent).toBe('104');
+  expect(lastItemContent).toBe('1');
+
+  // Ascending order
+  fireEvent.click(getByText('Stock'));
+  items = getAllByTestId('stock');
+  firstItemContent = items[0].textContent;
+  lastItemContent = items[items.length - 1].textContent;
+
+  expect(firstItemContent).toBe('1');
+  expect(lastItemContent).toBe('104');
+});
+
 test('renders custom actions', () => {
   const { getByTestId } = render(getSimpleTable({ actions: () => <div data-testid="customAction">Test Action</div> }));
 

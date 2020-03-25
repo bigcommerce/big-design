@@ -6,8 +6,11 @@ import { Table, TableColumn, TableItem, TableProps, TableSelectable, TableSortDi
 
 import { createReducer, createReducerInit } from './reducer';
 
+export type StatefulTableSortFn<T> = (a: T, b: T, direction: TableSortDirection) => number;
+
 export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable'> {
   sortKey?: keyof T;
+  sortFn?: StatefulTableSortFn<T>;
 }
 
 export interface StatefulTableProps<T>
@@ -33,7 +36,7 @@ const InternalStatefulTable = <T extends TableItem>({
 }: StatefulTableProps<T>): React.ReactElement<StatefulTableProps<T>> => {
   const reducer = useMemo(() => createReducer<T>(), []);
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
-  const sortable = useMemo(() => columns.some(column => column.sortKey), [columns]);
+  const sortable = useMemo(() => columns.some(column => column.sortKey || column.sortFn), [columns]);
 
   const [state, dispatch] = useReducer(reducer, { columns, defaultSelected, items, pagination }, reducerInit);
 
@@ -63,8 +66,8 @@ const InternalStatefulTable = <T extends TableItem>({
     [onSelectionChange],
   );
 
-  const onSort = useCallback((columnHash: string, direction: TableSortDirection, column: StatefulTableColumn<T>) => {
-    dispatch({ type: 'SORT', columnHash, direction, sortKey: column.sortKey });
+  const onSort = useCallback((_columnHash: string, direction: TableSortDirection, column: StatefulTableColumn<T>) => {
+    dispatch({ type: 'SORT', column, direction });
   }, []);
 
   const paginationOptions = useMemo(
