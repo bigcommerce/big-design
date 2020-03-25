@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.17.0...@bigcommerce/big-design@0.17.1) (2020-03-25)
+
+
+### Bug Fixes
+
+* **component:** pagination avoid page 0 ([#354](https://github.com/bigcommerce/big-design/issues/354)) ([ace346b](https://github.com/bigcommerce/big-design/commit/ace346b32c13950912e2b806c6e5497b1af36719))
+
+
+
+
+
 # [0.17.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.16.0...@bigcommerce/big-design@0.17.0) (2020-03-25)
 
 
