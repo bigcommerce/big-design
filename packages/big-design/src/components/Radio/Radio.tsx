@@ -2,14 +2,14 @@ import React, { forwardRef, useMemo, Ref } from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
-import { FormControlDescription as Description, FormControlDescriptionLinkProps } from '../Form';
+import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
 import { HiddenRadio, RadioContainer, RadioLabelContainer, StyledRadio } from './styled';
 import { RadioLabel } from './Label';
 
 interface Props {
   label: React.ReactChild;
-  description?: RadioDescription;
+  description?: RadioDescription | string;
 }
 
 interface RadioDescription {
@@ -65,7 +65,10 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
       return null;
     }
 
-    return <Description link={description.link}>{description.text}</Description>;
+    const link = typeof description === 'object' ? description.link : undefined;
+    const text = typeof description === 'object' ? description.text : description;
+
+    return <FormControlDescription link={link}>{text}</FormControlDescription>;
   }, [description]);
 
   return (

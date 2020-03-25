@@ -26,35 +26,11 @@ export default () => (
         return (
           <Form>
             <FormGroup>
-              <Radio
-                label="On"
-                checked={selected === 'on'}
-                description={{
-                  text: 'Description for on.',
-                }}
-                value="on"
-                onChange={handleChange}
-              />
-              <Radio
-                label="Off"
-                description={{
-                  text: 'Description for off.',
-                }}
-                checked={selected === 'off'}
-                value="off"
-                onChange={handleChange}
-              />
+              <Radio label="On" checked={selected === 'on'} value="on" onChange={handleChange} />
+              <Radio label="Off" checked={selected === 'off'} value="off" onChange={handleChange} />
               <Radio
                 label="Disabled"
                 disabled={true}
-                description={{
-                  text: 'Description for disabled.',
-                  link: {
-                    text: 'Learn more',
-                    target: '_blank',
-                    href: 'http://google.com',
-                  },
-                }}
                 checked={selected === 'disabled'}
                 value="disabled"
                 onChange={handleChange}
@@ -105,6 +81,58 @@ export default () => (
                 <Radio label="Off" checked={secondRadio === 'off'} value="off" onChange={handleSecondChange} />
               </FormGroup>
             </Fieldset>
+          </Form>
+        );
+      }}
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H1>Description</H1>
+
+    <Text>
+      Radio support <Code primary>description</Code> passed as a prop, which contains a text and an optional link.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      {function Example() {
+        const [selected, setSelected] = React.useState('');
+
+        const handleChange = event => setSelected(event.target.value);
+
+        return (
+          <Form>
+            <FormGroup>
+              <Radio
+                label="On"
+                checked={selected === 'on'}
+                description="Description for on"
+                value="on"
+                onChange={handleChange}
+              />
+              <Radio
+                label="Off"
+                description="Description for off"
+                checked={selected === 'off'}
+                value="off"
+                onChange={handleChange}
+              />
+              <Radio
+                label="Disabled"
+                disabled={true}
+                description={{
+                  text: 'Description for disabled.',
+                  link: {
+                    text: 'Learn more',
+                    target: '_blank',
+                    href: 'http://www.bigcommerce.com',
+                  },
+                }}
+                checked={selected === 'disabled'}
+                value="disabled"
+                onChange={handleChange}
+              />
+            </FormGroup>
           </Form>
         );
       }}

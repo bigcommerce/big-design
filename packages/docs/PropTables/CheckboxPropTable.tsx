@@ -1,7 +1,9 @@
 import { Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, Prop, PropTable, PropTableWrapper } from '../components';
+import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
+
+import { messagingLinkItemProps } from './shared';
 
 const checkboxProps: Prop[] = [
   {
@@ -29,6 +31,37 @@ const checkboxProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'description',
+    types: ['string', 'CheckboxDescription'],
+    description: (
+      <>
+        See <NextLink href="#checkbox-description-prop-table">below</NextLink> for usage.
+      </>
+    ),
+  },
+];
+
+const checkboxDescriptionProps: Prop[] = [
+  {
+    name: 'text',
+    types: ['string'],
+    required: true,
+    description: (
+      <>
+        Description to display below <Code>Label</Code>
+      </>
+    ),
+  },
+  {
+    name: 'link',
+    types: ['CheckboxDescriptionLink'],
+    description: (
+      <>
+        See <NextLink href="#checkbox-description-link-prop-table">below</NextLink> for usage.
+      </>
+    ),
+  },
 ];
 
 export const CheckboxPropTable: React.FC<PropTableWrapper> = props => (
@@ -38,4 +71,22 @@ export const CheckboxPropTable: React.FC<PropTableWrapper> = props => (
     </Text>
     <PropTable title="Checkbox" propList={checkboxProps} {...props} />
   </>
+);
+
+export const CheckboxDescriptionPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable
+    title="Checkbox[CheckboxDescription]"
+    propList={checkboxDescriptionProps}
+    {...props}
+    id="checkbox-description-prop-table"
+  />
+);
+
+export const CheckboxDescriptionLinkPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable
+    title="Checkbox[CheckboxDescriptionLink]"
+    propList={messagingLinkItemProps}
+    {...props}
+    id="checkbox-description-link-prop-table"
+  />
 );

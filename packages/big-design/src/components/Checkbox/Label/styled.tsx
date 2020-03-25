@@ -13,13 +13,11 @@ export const StyledLabel = styled(StyleableText).attrs({
   as: 'label',
 })<StyledLabelProps>`
   cursor: pointer;
-  margin-left: ${({ theme }) => theme.spacing.xSmall};
 
-  ${({ disabled, theme }) =>
+  ${({ disabled }) =>
     disabled &&
     css`
       cursor: not-allowed;
-      color: ${theme.colors.secondary40};
     `}
 
   ${({ hidden }) => hidden && hideVisually()}

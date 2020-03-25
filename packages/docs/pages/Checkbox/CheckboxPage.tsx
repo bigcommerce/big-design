@@ -1,8 +1,8 @@
-import { Checkbox, Form, FormGroup, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { Checkbox, Form, FormGroup, H0, H1, Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
-import { CheckboxPropTable } from '../../PropTables';
+import { CheckboxDescriptionLinkPropTable, CheckboxDescriptionPropTable, CheckboxPropTable } from '../../PropTables';
 
 export default () => (
   <>
@@ -26,6 +26,7 @@ export default () => (
           <Form>
             <FormGroup>
               <Checkbox label={checked ? 'Checked' : 'Unchecked'} checked={checked} onChange={handleChange} />
+              <Checkbox label="Disabled" disabled={true} />
             </FormGroup>
           </Form>
         );
@@ -36,6 +37,8 @@ export default () => (
     <H1>API</H1>
 
     <CheckboxPropTable />
+    <CheckboxDescriptionPropTable />
+    <CheckboxDescriptionLinkPropTable />
 
     <H1>Indeterminate</H1>
 
@@ -51,6 +54,48 @@ export default () => (
           <Checkbox label="Indeterminate" isIndeterminate />
         </FormGroup>
       </Form>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H1>Description</H1>
+
+    <Text>
+      Checkboxes support <Code primary>description</Code> passed as a prop, which contains a text and an optional link.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      {function Example() {
+        const [checkedA, setChangeA] = React.useState(false);
+        const [checkedB, setChangeB] = React.useState(false);
+        const handleChangeA = () => setChangeA(!checkedA);
+        const handleChangeB = () => setChangeB(!checkedB);
+
+        return (
+          <Form>
+            <FormGroup>
+              <Checkbox
+                onChange={handleChangeA}
+                checked={checkedA}
+                label="Checkbox with description and link"
+                description={{
+                  text: 'I am a CheckboxDescription.',
+                  link: {
+                    text: 'Learn more',
+                    href: 'http://www.bigcommerce.com',
+                  },
+                }}
+              />
+              <Checkbox
+                onChange={handleChangeB}
+                checked={checkedB}
+                label="Checkbox with description"
+                description="I am a string description."
+              />
+            </FormGroup>
+          </Form>
+        );
+      }}
       {/* jsx-to-string:end */}
     </CodePreview>
   </>

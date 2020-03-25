@@ -17,7 +17,7 @@ const radioProps: Prop[] = [
   },
   {
     name: 'description',
-    types: ['RadioDescription'],
+    types: ['string', 'RadioDescription'],
     description: (
       <>
         See <NextLink href="#radio-description-prop-table">below</NextLink> for usage.
@@ -53,12 +53,17 @@ export const RadioPropTable: React.FC<PropTableWrapper> = props => (
 );
 
 export const RadioDescriptionPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="RadioDescription" propList={radioDescriptionProps} {...props} id="radio-description-prop-table" />
+  <PropTable
+    title="Radio[RadioDescription]"
+    propList={radioDescriptionProps}
+    {...props}
+    id="radio-description-prop-table"
+  />
 );
 
 export const RadioDescriptionLinkPropTable: React.FC<PropTableWrapper> = props => (
   <PropTable
-    title="RadioDescriptionLink"
+    title="Radio[RadioDescriptionLink]"
     propList={messagingLinkItemProps}
     {...props}
     id="radio-description-link-prop-table"
