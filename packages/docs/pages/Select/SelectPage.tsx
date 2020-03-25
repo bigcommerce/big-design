@@ -3,7 +3,7 @@ import { DeleteIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
-import { SelectActionPropTable, SelectOptionPropTable, SelectPropTable } from '../../PropTables';
+import { SelectActionPropTable, SelectGroupPropTable, SelectOptionPropTable, SelectPropTable } from '../../PropTables';
 
 export default () => (
   <>
@@ -38,21 +38,31 @@ export default () => (
                 maxHeight={300}
                 onOptionChange={handleChange}
                 options={[
-                  { value: 'us', content: 'United States' },
-                  { value: 'mx', content: 'Mexico' },
-                  { value: 'ca', content: 'Canada' },
-                  { value: 'en', content: 'England' },
-                  { value: 'fr', content: 'France' },
-                  { value: 'gr', content: 'Germany' },
-                  { value: 'ar', content: 'Argentina' },
-                  { value: 'ru', content: 'Russia', disabled: true },
-                  { value: 'ch', content: 'Chile' },
-                  { value: 'bo', content: 'Bolivia' },
-                  { value: 'jp', content: 'Japan' },
-                  { value: 'cn', content: 'China' },
-                  { value: 'sk', content: 'South Korea' },
-                  { value: 'au', content: 'Australia' },
-                  { value: 'ug', content: 'Uganda' },
+                  {
+                    groupLabel: 'Group 1',
+                    options: [
+                      { value: 'us', content: 'United States' },
+                      { value: 'mx', content: 'Mexico' },
+                      { value: 'ca', content: 'Canada' },
+                      { value: 'en', content: 'England' },
+                      { value: 'fr', content: 'France' },
+                      { value: 'gr', content: 'Germany' },
+                      { value: 'ar', content: 'Argentina' },
+                    ],
+                  },
+                  {
+                    groupLabel: 'group 2',
+                    options: [
+                      { value: 'ru', content: 'Russia', disabled: true },
+                      { value: 'ch', content: 'Chile' },
+                      { value: 'bo', content: 'Bolivia' },
+                      { value: 'jp', content: 'Japan' },
+                      { value: 'cn', content: 'China' },
+                      { value: 'sk', content: 'South Korea' },
+                      { value: 'au', content: 'Australia' },
+                      { value: 'ug', content: 'Uganda' },
+                    ],
+                  },
                 ]}
                 placeholder={'Choose country'}
                 placement={'bottom-start'}
@@ -70,6 +80,7 @@ export default () => (
     <SelectPropTable />
     <SelectOptionPropTable />
     <SelectActionPropTable />
+    <SelectGroupPropTable />
 
     <H1>Examples</H1>
 
@@ -279,6 +290,46 @@ export default () => (
             placeholder={'Choose country'}
             placement={'bottom-start'}
             required
+          />
+        </FormGroup>
+      </Form>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H2>Select Groups</H2>
+
+    <Text>
+      It is possible to create grouped options with labels with a <Code primary>Select Group</Code> by passing{' '}
+      <Code primary>groupLabel</Code> and <Code primary>options</Code> to the top-level <Code primary>options</Code>{' '}
+      property.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Form>
+        <FormGroup>
+          <Select
+            label="My Options"
+            filterable
+            onOptionChange={() => null}
+            options={[
+              {
+                groupLabel: 'Group 1',
+                options: [
+                  { value: 'mx', content: 'Mexico' },
+                  { value: 'ca', content: 'Canada' },
+                  { value: 'en', content: 'England' },
+                ],
+              },
+              {
+                groupLabel: 'Group 2',
+                options: [
+                  { value: 'fr', content: 'France' },
+                  { value: 'gr', content: 'Germany' },
+                  { value: 'ar', content: 'Argentina' },
+                ],
+              },
+            ]}
           />
         </FormGroup>
       </Form>

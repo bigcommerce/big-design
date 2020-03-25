@@ -11,10 +11,9 @@ import { FlexItem } from '../Flex/Item';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
-import { ListGroupHeader } from '../List/GroupHeader';
 import { ListItem } from '../List/Item';
 
-import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from './styled';
+import { DropdownButton, StyledDropdownIcon, StyledInputContainer, StyledListGroupHeader } from './styled';
 import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from './types';
 
 export const Select = typedMemo(
@@ -262,7 +261,7 @@ export const Select = typedMemo(
 
     const renderAction = useCallback(
       (actionItem: SelectAction) => {
-        const index = onlyOptions.length - 1;
+        const index = selectOptions.length - 1;
         const isHighlighted = highlightedIndex === index;
         const { disabled: itemDisabled, content, icon, onActionClick, ...itemProps } = actionItem;
 
@@ -283,7 +282,7 @@ export const Select = typedMemo(
           </Box>
         );
       },
-      [getItemProps, highlightedIndex, onlyOptions.length],
+      [getItemProps, highlightedIndex, selectOptions.length],
     );
 
     const renderOptions = useCallback(
@@ -291,6 +290,13 @@ export const Select = typedMemo(
         return (
           isOpen &&
           items.map(item => {
+            if (
+              !selectOptions.find(
+                (option: SelectOption<T> | SelectAction) => 'value' in option && option.value === item.value,
+              )
+            ) {
+              return null;
+            }
             const key = itemKey.current;
 
             itemKey.current += 1;
@@ -319,14 +325,14 @@ export const Select = typedMemo(
           })
         );
       },
-      [getItemProps, highlightedIndex, isOpen, selectedOption],
+      [getItemProps, highlightedIndex, isOpen, selectedOption, selectOptions],
     );
 
     const renderGroup = useCallback(
       (group: SelectOptionGroup) => {
         return (
           <>
-            <ListGroupHeader>{group.optionsLabel}</ListGroupHeader>
+            <StyledListGroupHeader>{group.groupLabel.toUpperCase()}</StyledListGroupHeader>
             {renderOptions(group.options)}
           </>
         );

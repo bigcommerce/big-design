@@ -40,6 +40,6 @@ export interface SelectAction extends BaseItem {
 }
 
 export interface SelectOptionGroup {
-  optionsLabel: string;
-  options: Array<SelectOption<any>>;
+  groupLabel: string;
+  options: Array<SelectOption<T>>;
 }
