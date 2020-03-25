@@ -2,7 +2,7 @@ import { Reducer } from 'react';
 
 import { TableSortDirection } from '../Table';
 
-import { StatefulTableColumn } from './StatefulTable';
+import { StatefulTableColumn, StatefulTableSortFn } from './StatefulTable';
 
 interface State<T> {
   currentItems: T[];
@@ -58,7 +58,7 @@ export type Action<T> =
   | { type: 'ITEMS_PER_PAGE_CHANGE'; itemsPerPage: number }
   | { type: 'PAGE_CHANGE'; page: number }
   | { type: 'SELECTED_ITEMS'; selectedItems: T[] }
-  | { type: 'SORT'; direction: TableSortDirection; columnHash: string; sortKey?: keyof T };
+  | { type: 'SORT'; column: StatefulTableColumn<T>; direction: TableSortDirection };
 
 export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, action) => {
   switch (action.type) {
@@ -141,15 +141,18 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
     }
 
     case 'SORT': {
-      const sortKey = action.sortKey;
+      const { hash, sortFn, sortKey } = action.column;
       const direction = action.direction;
-      const columnHash = action.columnHash;
 
-      if (!sortKey) {
+      if (!sortKey && !sortFn) {
         return state;
       }
 
-      const items = sort(state.items, direction, sortKey);
+      const items = sortKey
+        ? sort(state.items, direction, sortKey)
+        : sortFn
+        ? sort(state.items, direction, sortFn)
+        : state.items;
 
       const currentItems = getItems(items, state.isPaginationEnabled, {
         currentPage: 1,
@@ -166,7 +169,7 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
         },
         sortable: {
           direction,
-          columnHash,
+          columnHash: hash,
         },
       };
     }
@@ -177,7 +180,7 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
 };
 
 function augmentColumns<T>(columns: Array<StatefulTableColumn<T>>) {
-  return columns.map(column => ({ ...column, isSortable: Boolean(column.sortKey) }));
+  return columns.map(column => ({ ...column, isSortable: Boolean(column.sortKey || column.sortFn) }));
 }
 
 function getItems<T>(
@@ -196,8 +199,16 @@ function getItems<T>(
   return items.slice(firstItem, lastItem);
 }
 
-function sort<T>(items: T[], direction: TableSortDirection, sortKey: keyof T) {
+function sort<T>(items: T[], direction: TableSortDirection, sortKey: keyof T): T[];
+function sort<T>(items: T[], direction: TableSortDirection, sortFn: StatefulTableSortFn<T>): T[];
+function sort<T>(items: T[], direction: TableSortDirection, sortKeyOrFn: keyof T | StatefulTableSortFn<T>) {
   return [...items].sort((firstItem, secondItem) => {
+    if (typeof sortKeyOrFn === 'function') {
+      return sortKeyOrFn(firstItem, secondItem, direction);
+    }
+
+    const sortKey = sortKeyOrFn;
+
     const firstValue = firstItem[sortKey];
     const secondValue = secondItem[sortKey];
 

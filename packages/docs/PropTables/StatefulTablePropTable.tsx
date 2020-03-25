@@ -95,6 +95,11 @@ const tableColumnsProps: Prop[] = [
     description: 'Unique identifier for column.',
   },
   {
+    name: 'sortFn',
+    types: `(a: Item, b: Item, dir: 'ASC' | 'DESC') => number`,
+    description: 'Enables sorting on the column using a custom sort function.',
+  },
+  {
     name: 'sortKey',
     types: 'string',
     description: 'Enables sorting on the column using item[sortKey].',
