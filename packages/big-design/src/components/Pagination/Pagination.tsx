@@ -18,7 +18,7 @@ export interface PaginationProps extends MarginProps {
 
 export const Pagination: React.FC<PaginationProps> = memo(
   ({ itemsPerPage, currentPage, totalItems, itemsPerPageOptions = [], onPageChange, onItemsPerPageChange }) => {
-    const [maxPages, setMaxPages] = useState(Math.ceil(totalItems / itemsPerPage));
+    const [maxPages, setMaxPages] = useState(Math.max(1, Math.ceil(totalItems / itemsPerPage)));
     const [itemRange, setItemRange] = useState({ start: 0, end: 0 });
 
     const handlePageOutOfBounds = useCallback(() => {
@@ -57,7 +57,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
 
       calculateRange();
 
-      setMaxPages(Math.ceil(totalItems / itemsPerPage));
+      setMaxPages(Math.max(1, Math.ceil(totalItems / itemsPerPage)));
     }, [calculateRange, currentPage, handlePageOutOfBounds, handlePerPageOutOfBounds, itemsPerPage, totalItems]);
 
     const handlePageIncrease = () => {
