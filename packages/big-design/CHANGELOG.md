@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.16.0...@bigcommerce/big-design@0.17.0) (2020-03-25)
+
+
+### Bug Fixes
+
+* **component:** compute selectedItems on StatefulTable when items change ([#351](https://github.com/bigcommerce/big-design/issues/351)) ([b5b736b](https://github.com/bigcommerce/big-design/commit/b5b736badd0ad39b2b252a0f6f481203464d1e32))
+
+
+### Features
+
+* **component:** add description attribute for Checkbox ([#349](https://github.com/bigcommerce/big-design/issues/349)) ([9a9eeb4](https://github.com/bigcommerce/big-design/commit/9a9eeb4a8d0a316bc8dec0f1c9971efca5d86983))
+* **component:** add description attribute for Radio ([#345](https://github.com/bigcommerce/big-design/issues/345)) ([42365e9](https://github.com/bigcommerce/big-design/commit/42365e9d1b6ce57dd2ff963bcfd93c2ae9caa54c))
+* **component:** allow null errors on Select and MultiSelect ([7112dd3](https://github.com/bigcommerce/big-design/commit/7112dd3320639e404a13485b59549f48fa681a83))
+* **component:** button and input icon props accept null ([e624879](https://github.com/bigcommerce/big-design/commit/e624879ceba179f1aa30cba3908d224da8d21068))
+* **component:** stateful table sortFn ([#353](https://github.com/bigcommerce/big-design/issues/353)) ([3a715a3](https://github.com/bigcommerce/big-design/commit/3a715a3b4585ca6a620447d27f645dcedb51fc59))
+
+
+
+
+
 # [0.16.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.15.0...@bigcommerce/big-design@0.16.0) (2020-02-21)
 
 

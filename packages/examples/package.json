@@ -1,15 +1,15 @@
 {
   "name": "@bigcommerce/examples",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "scripts": {
     "start": "parcel index.html",
     "ci": "tsc --noEmit && parcel build index.html"
   },
   "dependencies": {
-    "@bigcommerce/big-design": "^0.16.0",
-    "@bigcommerce/big-design-icons": "^0.8.0",
-    "@bigcommerce/big-design-theme": "^0.6.0",
+    "@bigcommerce/big-design": "^0.17.0",
+    "@bigcommerce/big-design-icons": "^0.9.0",
+    "@bigcommerce/big-design-theme": "^0.7.0",
     "formik": "^2.0.6",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",

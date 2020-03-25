@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/deini/big-design/compare/@bigcommerce/configs@0.11.0...@bigcommerce/configs@0.12.0) (2020-03-25)
+
+
+### Features
+
+* **component:** stateful table sortFn ([#353](https://github.com/deini/big-design/issues/353)) ([3a715a3](https://github.com/deini/big-design/commit/3a715a3b4585ca6a620447d27f645dcedb51fc59))
+
+
+
+
+
 # [0.11.0](https://github.com/chanceaclark/big-design/compare/@bigcommerce/configs@0.10.0...@bigcommerce/configs@0.11.0) (2020-02-21)
 
 **Note:** Version bump only for package @bigcommerce/configs

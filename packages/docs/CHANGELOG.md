@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.16.0...@bigcommerce/docs@0.17.0) (2020-03-25)
+
+
+### Features
+
+* **component:** add description attribute for Checkbox ([#349](https://github.com/bigcommerce/big-design/issues/349)) ([9a9eeb4](https://github.com/bigcommerce/big-design/commit/9a9eeb4a8d0a316bc8dec0f1c9971efca5d86983))
+* **component:** add description attribute for Radio ([#345](https://github.com/bigcommerce/big-design/issues/345)) ([42365e9](https://github.com/bigcommerce/big-design/commit/42365e9d1b6ce57dd2ff963bcfd93c2ae9caa54c))
+* **component:** stateful table sortFn ([#353](https://github.com/bigcommerce/big-design/issues/353)) ([3a715a3](https://github.com/bigcommerce/big-design/commit/3a715a3b4585ca6a620447d27f645dcedb51fc59))
+
+
+
+
+
 # [0.16.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.15.0...@bigcommerce/docs@0.16.0) (2020-02-21)
 
 
