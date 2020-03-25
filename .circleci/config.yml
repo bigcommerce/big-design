@@ -18,7 +18,17 @@ jobs:
           cache-key: yarn.lock
           include-branch-in-cache-key: false
           steps:
-            - run: yarn install --frozen-lockfile
+            - run:
+                name: yarn install
+                command: |
+                    CKSUM_BEFORE=$(cksum yarn.lock)
+                    yarn install
+                    CKSUM_AFTER=$(cksum yarn.lock)
+                  
+                    if [[ $CKSUM_BEFORE != $CKSUM_AFTER ]]; then
+                      echo "yarn.lock was modified unexpectedly - terminating"
+                      exit 1
+                    fi
 
       - run:
           command: yarn run ci
