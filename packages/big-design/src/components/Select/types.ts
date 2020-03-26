@@ -20,7 +20,7 @@ interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'child
 }
 
 export interface SelectProps<T> extends BaseSelect {
-  options: Array<SelectOption<T> | SelectOptionGroup>;
+  options: Array<SelectOption<T> | SelectOptionGroup<T>>;
   value?: T;
   onOptionChange(value?: T, option?: SelectOption<T>): void;
 }
@@ -39,7 +39,7 @@ export interface SelectAction extends BaseItem {
   onActionClick(inputText: string | null): void;
 }
 
-export interface SelectOptionGroup {
+export interface SelectOptionGroup<T> {
   groupLabel: string;
   options: Array<SelectOption<T>>;
 }

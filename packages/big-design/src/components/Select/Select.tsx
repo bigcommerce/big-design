@@ -37,9 +37,29 @@ export const Select = typedMemo(
     value,
     ...rest
   }: SelectProps<T>): ReturnType<React.FC<SelectProps<T>>> => {
+    const isGroup = useCallback((item: SelectOption<T> | SelectOptionGroup<T>) => {
+      return 'options' in item && !('value' in item);
+    }, []);
+
+    const isOption = useCallback((item: SelectOption<T> | SelectOptionGroup<T>) => {
+      return 'value' in item && !('options' in item);
+    }, []);
+
+    const flattenOptions = useCallback(
+      (items: Array<SelectOption<T> | SelectOptionGroup<T>>): Array<SelectOption<T>> => {
+        return items.every(isGroup)
+          ? (items as Array<SelectOptionGroup<T>>)
+              .map((group: SelectOptionGroup<T>) => group.options)
+              .reduce((acum, curr) => acum.concat(curr), [])
+          : (items as Array<SelectOption<T>>);
+      },
+      [isGroup],
+    );
+
     // Merge options and action
     const onlyOptions = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
       action,
+      flattenOptions,
       options,
     ]);
 
@@ -286,7 +306,7 @@ export const Select = typedMemo(
     );
 
     const renderOptions = useCallback(
-      (items: Array<SelectOption<any>>) => {
+      (items: Array<SelectOption<T>>) => {
         return (
           isOpen &&
           items.map(item => {
@@ -304,7 +324,7 @@ export const Select = typedMemo(
             const isHighlighted = highlightedIndex === key;
             const isSelected = selectedOption ? 'value' in item && selectedOption.value === item.value : false;
 
-            const { disabled: itemDisabled, content, icon, ...itemProps } = item as SelectOption<T>;
+            const { disabled: itemDisabled, content, icon, ...itemProps } = item;
 
             return (
               <ListItem
@@ -329,7 +349,7 @@ export const Select = typedMemo(
     );
 
     const renderGroup = useCallback(
-      (group: SelectOptionGroup) => {
+      (group: SelectOptionGroup<T>) => {
         return (
           <>
             <StyledListGroupHeader>{group.groupLabel.toUpperCase()}</StyledListGroupHeader>
@@ -346,14 +366,16 @@ export const Select = typedMemo(
       if (Array.isArray(options) && options.every(isGroup)) {
         return (
           isOpen &&
-          (options as SelectOptionGroup[]).map((group, index) => <Fragment key={index}>{renderGroup(group)}</Fragment>)
+          (options as Array<SelectOptionGroup<T>>).map((group, index) => (
+            <Fragment key={index}>{renderGroup(group)}</Fragment>
+          ))
         );
       }
 
       if (Array.isArray(options) && options.every(isOption)) {
-        return isOpen && renderOptions(options as Array<SelectOption<any>>);
+        return isOpen && renderOptions(options as Array<SelectOption<T>>);
       }
-    }, [isOpen, options, renderGroup, renderOptions]);
+    }, [isGroup, isOpen, isOption, options, renderGroup, renderOptions]);
 
     const renderList = useMemo(() => {
       return (
@@ -369,7 +391,7 @@ export const Select = typedMemo(
               style={popperStyle}
             >
               {renderChildren}
-              {action && renderAction(action)}
+              {action && isOpen && renderAction(action)}
             </List>
           )}
         </Popper>
@@ -407,22 +429,6 @@ const renderIcon = <T extends any>(item: SelectOption<T> | SelectAction, isHighl
       size: 'large',
     })
   );
-};
-
-const flattenOptions = (items: Array<SelectOption<any> | SelectOptionGroup>): Array<SelectOption<any>> => {
-  return items.every(isGroup)
-    ? (items as SelectOptionGroup[])
-        .map((group: SelectOptionGroup) => group.options)
-        .reduce((acum, curr) => acum.concat(curr), [])
-    : (items as Array<SelectOption<any>>);
-};
-
-const isGroup = (item: SelectOption<any> | SelectOptionGroup) => {
-  return 'options' in item && !('value' in item);
-};
-
-const isOption = (item: SelectOption<any> | SelectOptionGroup) => {
-  return 'value' in item && !('options' in item);
 };
 
 const iconColor = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {

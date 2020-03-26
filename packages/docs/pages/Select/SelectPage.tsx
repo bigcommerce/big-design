@@ -38,31 +38,21 @@ export default () => (
                 maxHeight={300}
                 onOptionChange={handleChange}
                 options={[
-                  {
-                    groupLabel: 'Group 1',
-                    options: [
-                      { value: 'us', content: 'United States' },
-                      { value: 'mx', content: 'Mexico' },
-                      { value: 'ca', content: 'Canada' },
-                      { value: 'en', content: 'England' },
-                      { value: 'fr', content: 'France' },
-                      { value: 'gr', content: 'Germany' },
-                      { value: 'ar', content: 'Argentina' },
-                    ],
-                  },
-                  {
-                    groupLabel: 'group 2',
-                    options: [
-                      { value: 'ru', content: 'Russia', disabled: true },
-                      { value: 'ch', content: 'Chile' },
-                      { value: 'bo', content: 'Bolivia' },
-                      { value: 'jp', content: 'Japan' },
-                      { value: 'cn', content: 'China' },
-                      { value: 'sk', content: 'South Korea' },
-                      { value: 'au', content: 'Australia' },
-                      { value: 'ug', content: 'Uganda' },
-                    ],
-                  },
+                  { value: 'us', content: 'United States' },
+                  { value: 'mx', content: 'Mexico' },
+                  { value: 'ca', content: 'Canada' },
+                  { value: 'en', content: 'England' },
+                  { value: 'fr', content: 'France' },
+                  { value: 'gr', content: 'Germany' },
+                  { value: 'ar', content: 'Argentina' },
+                  { value: 'ru', content: 'Russia', disabled: true },
+                  { value: 'ch', content: 'Chile' },
+                  { value: 'bo', content: 'Bolivia' },
+                  { value: 'jp', content: 'Japan' },
+                  { value: 'cn', content: 'China' },
+                  { value: 'sk', content: 'South Korea' },
+                  { value: 'au', content: 'Australia' },
+                  { value: 'ug', content: 'Uganda' },
                 ]}
                 placeholder={'Choose country'}
                 placement={'bottom-start'}
@@ -311,6 +301,7 @@ export default () => (
           <Select
             label="My Options"
             filterable
+            value="ca"
             onOptionChange={() => null}
             options={[
               {
