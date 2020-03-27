@@ -41,23 +41,19 @@ export const Select = typedMemo(
       return 'options' in item && !('value' in item);
     }, []);
 
-    const isOption = useCallback((item: SelectOption<T> | SelectOptionGroup<T>) => {
-      return 'value' in item && !('options' in item);
-    }, []);
-
     const flattenOptions = useCallback(
       (items: Array<SelectOption<T> | SelectOptionGroup<T>>): Array<SelectOption<T>> => {
         return items.every(isGroup)
           ? (items as Array<SelectOptionGroup<T>>)
               .map((group: SelectOptionGroup<T>) => group.options)
-              .reduce((acum, curr) => acum.concat(curr), [])
+              .reduce((acc, curr) => acc.concat(curr), [])
           : (items as Array<SelectOption<T>>);
       },
       [isGroup],
     );
 
     // Merge options and action
-    const onlyOptions = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
+    const flattenedOptions = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
       action,
       flattenOptions,
       options,
@@ -66,10 +62,12 @@ export const Select = typedMemo(
     const itemKey = useRef(0);
 
     const findSelectedOption = useMemo(() => {
-      return onlyOptions.find(option => 'value' in option && option.value === value) as SelectOption<T> | undefined;
-    }, [onlyOptions, value]);
+      return flattenedOptions.find(option => 'value' in option && option.value === value) as
+        | SelectOption<T>
+        | undefined;
+    }, [flattenedOptions, value]);
 
-    const [selectOptions, setSelectOptions] = useState(onlyOptions);
+    const [selectOptions, setSelectOptions] = useState(flattenedOptions);
     const [inputValue, setInputValue] = useState(findSelectedOption ? findSelectedOption.content : '');
     const [selectedOption, setSelectedOption] = useState(findSelectedOption);
     const [highlightedIndex, setHighlightedIndex] = useState(0);
@@ -103,7 +101,7 @@ export const Select = typedMemo(
     };
 
     const filterOptions = (inputVal: string = '') => {
-      return onlyOptions.filter(
+      return flattenedOptions.filter(
         option =>
           option.content === (action && action.content) ||
           option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
@@ -121,7 +119,7 @@ export const Select = typedMemo(
     const handleOnIsOpenChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && changes.isOpen === false) {
         // Reset the items if filtered
-        setSelectOptions(onlyOptions);
+        setSelectOptions(flattenedOptions);
       }
     };
 
@@ -352,7 +350,7 @@ export const Select = typedMemo(
       (group: SelectOptionGroup<T>) => {
         return (
           <>
-            <StyledListGroupHeader>{group.groupLabel.toUpperCase()}</StyledListGroupHeader>
+            <StyledListGroupHeader>{group.label.toUpperCase()}</StyledListGroupHeader>
             {renderOptions(group.options)}
           </>
         );
@@ -365,17 +363,33 @@ export const Select = typedMemo(
 
       if (Array.isArray(options) && options.every(isGroup)) {
         return (
-          isOpen &&
-          (options as Array<SelectOptionGroup<T>>).map((group, index) => (
-            <Fragment key={index}>{renderGroup(group)}</Fragment>
-          ))
+          isOpen && (
+            <>
+              {(options as Array<SelectOptionGroup<T>>).map((group, index) => (
+                <Fragment key={index}>{renderGroup(group)}</Fragment>
+              ))}
+              {action && renderAction(action)}
+            </>
+          )
         );
       }
 
-      if (Array.isArray(options) && options.every(isOption)) {
-        return isOpen && renderOptions(options as Array<SelectOption<T>>);
+      if (
+        Array.isArray(options) &&
+        options.every((item: SelectOption<T> | SelectOptionGroup<T>) => {
+          return 'value' in item && !('options' in item);
+        })
+      ) {
+        return (
+          isOpen && (
+            <>
+              {renderOptions(options as Array<SelectOption<T>>)}
+              {action && renderAction(action)}
+            </>
+          )
+        );
       }
-    }, [isGroup, isOpen, isOption, options, renderGroup, renderOptions]);
+    }, [action, isGroup, isOpen, options, renderAction, renderGroup, renderOptions]);
 
     const renderList = useMemo(() => {
       return (
@@ -391,12 +405,11 @@ export const Select = typedMemo(
               style={popperStyle}
             >
               {renderChildren}
-              {action && isOpen && renderAction(action)}
             </List>
           )}
         </Popper>
       );
-    }, [action, getMenuProps, isOpen, maxHeight, placement, positionFixed, renderAction, renderChildren]);
+    }, [getMenuProps, isOpen, maxHeight, placement, positionFixed, renderChildren]);
 
     return (
       <div>

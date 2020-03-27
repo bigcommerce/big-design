@@ -20,14 +20,14 @@ const mockOptions = [
 
 const groupMockOptions = [
   {
-    groupLabel: 'group 1',
+    label: 'group 1',
     options: [
       { value: 'us', content: 'United States' },
       { value: 'mx', content: 'Mexico' },
     ],
   },
   {
-    groupLabel: 'group 2',
+    label: 'group 2',
     options: [
       { value: 'ca', content: 'Canada' },
       { value: 'en', content: 'England' },

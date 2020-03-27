@@ -21,9 +21,9 @@ export const StyledDropdownIcon = styled(ArrowDropDownIcon)<{ disabled?: boolean
 `;
 
 export const StyledListGroupHeader = styled(StyledGroupHeader)`
-  font-family: 'Source Sans Pro SemiBold', 'Helvetica Neue', Arial, sans-serif;
-  font-size: ${({ theme }) => theme.helpers.remCalc(14)};
-  margin-top: 1rem;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  font-size: ${({ theme }) => theme.typography.fontSize.small};
+  margin-top: ${({ theme }) => theme.spacing.medium};
   color: ${({ theme }) => theme.colors.secondary50};
 `;
 
@@ -41,5 +41,6 @@ export const DropdownButton = styled(StyledButton)`
 
 StyledStatusMessage.defaultProps = { theme: defaultTheme };
 StyledDropdownIcon.defaultProps = { theme: defaultTheme };
+StyledListGroupHeader.defaultProps = { theme: defaultTheme };
 StyledInputContainer.defaultProps = { theme: defaultTheme };
 DropdownButton.defaultProps = { theme: defaultTheme };

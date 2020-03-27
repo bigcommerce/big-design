@@ -290,7 +290,7 @@ export default () => (
 
     <Text>
       It is possible to create grouped options with labels with a <Code primary>Select Group</Code> by passing{' '}
-      <Code primary>groupLabel</Code> and <Code primary>options</Code> to the top-level <Code primary>options</Code>{' '}
+      <Code primary>label</Code> and <Code primary>options</Code> to the top-level <Code primary>options</Code>{' '}
       property.
     </Text>
 
@@ -305,7 +305,7 @@ export default () => (
             onOptionChange={() => null}
             options={[
               {
-                groupLabel: 'Group 1',
+                label: 'Group 1',
                 options: [
                   { value: 'mx', content: 'Mexico' },
                   { value: 'ca', content: 'Canada' },
@@ -313,7 +313,7 @@ export default () => (
                 ],
               },
               {
-                groupLabel: 'Group 2',
+                label: 'Group 2',
                 options: [
                   { value: 'fr', content: 'France' },
                   { value: 'gr', content: 'Germany' },

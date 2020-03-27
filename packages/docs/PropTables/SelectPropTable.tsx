@@ -225,7 +225,7 @@ const selectActionProps: Prop[] = [
 
 const selectGroupProps: Prop[] = [
   {
-    name: 'groupLabel',
+    name: 'label',
     types: 'string',
     required: true,
     description: <>Adds a label to the option group.</>,
