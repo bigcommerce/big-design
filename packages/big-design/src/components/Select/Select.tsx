@@ -350,7 +350,7 @@ export const Select = typedMemo(
       (group: SelectOptionGroup<T>) => {
         return (
           <>
-            <StyledListGroupHeader>{group.label.toUpperCase()}</StyledListGroupHeader>
+            <StyledListGroupHeader role="group">{group.label.toUpperCase()}</StyledListGroupHeader>
             {renderOptions(group.options)}
           </>
         );

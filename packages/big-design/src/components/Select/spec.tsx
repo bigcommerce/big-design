@@ -571,17 +571,27 @@ test('options should allow icons', () => {
 });
 
 test('grouped select should render group labels', () => {
-  const { getByRole, getByText } = render(GroupedSelectMock);
+  const { getByRole, getAllByRole } = render(GroupedSelectMock);
 
   const button = getByRole('button');
 
   fireEvent.click(button);
 
-  const header1 = getByText('GROUP 1');
-  const header2 = getByText('GROUP 2');
+  const labels = getAllByRole('group');
 
-  expect(header1).toBeInTheDocument();
-  expect(header2).toBeInTheDocument();
+  expect(labels[0]).toBeInTheDocument();
+  expect(labels[1]).toBeInTheDocument();
+});
+
+test('group labels should be grayed out', () => {
+  const { getAllByRole, getByTestId } = render(GroupedSelectMock);
+  const input = getByTestId('groupSelect');
+  fireEvent.focus(input);
+
+  const labels = getAllByRole('group');
+
+  expect(labels[0]).toHaveStyle('color: #8C93AD');
+  expect(labels[1]).toHaveStyle('color: #8C93AD');
 });
 
 test('group labels should be skipped when using keyboard to navigate options', () => {
@@ -607,11 +617,11 @@ test('group labels should still render when filtering options', () => {
   fireEvent.click(button);
   fireEvent.change(getByTestId('groupSelect'), { target: { value: 'm' } });
 
-  const header1 = getByText('GROUP 1');
-  const header2 = getByText('GROUP 2');
+  const label1 = getByText('GROUP 1');
+  const label2 = getByText('GROUP 2');
   const options = getAllByRole('option');
 
   expect(options.length).toBe(2);
-  expect(header1).toBeInTheDocument();
-  expect(header2).toBeInTheDocument();
+  expect(label1).toBeInTheDocument();
+  expect(label2).toBeInTheDocument();
 });

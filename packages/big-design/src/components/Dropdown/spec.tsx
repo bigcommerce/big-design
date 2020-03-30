@@ -369,8 +369,8 @@ test('group labels are grayed out', () => {
 
   const labels = getAllByRole('group');
 
-  expect(labels[0]).toHaveStyle('color: #B4BAD1');
-  expect(labels[1]).toHaveStyle('color: #B4BAD1');
+  expect(labels[0]).toHaveStyle('color: #8C93AD');
+  expect(labels[1]).toHaveStyle('color: #8C93AD');
 });
 
 test('group labels are skipped over when using keyboard to navigate options', () => {
