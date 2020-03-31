@@ -11,9 +11,10 @@ import { FlexItem } from '../Flex/Item';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
+import { ListGroupHeader } from '../List/GroupHeader';
 import { ListItem } from '../List/Item';
 
-import { DropdownButton, StyledDropdownIcon, StyledInputContainer, StyledListGroupHeader } from './styled';
+import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from './styled';
 import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from './types';
 
 export const Select = typedMemo(
@@ -37,25 +38,9 @@ export const Select = typedMemo(
     value,
     ...rest
   }: SelectProps<T>): ReturnType<React.FC<SelectProps<T>>> => {
-    const isGroup = useCallback((item: SelectOption<T> | SelectOptionGroup<T>) => {
-      return 'options' in item && !('value' in item);
-    }, []);
-
-    const flattenOptions = useCallback(
-      (items: Array<SelectOption<T> | SelectOptionGroup<T>>): Array<SelectOption<T>> => {
-        return items.every(isGroup)
-          ? (items as Array<SelectOptionGroup<T>>)
-              .map((group: SelectOptionGroup<T>) => group.options)
-              .reduce((acc, curr) => acc.concat(curr), [])
-          : (items as Array<SelectOption<T>>);
-      },
-      [isGroup],
-    );
-
     // Merge options and action
     const flattenedOptions = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
       action,
-      flattenOptions,
       options,
     ]);
 
@@ -350,7 +335,7 @@ export const Select = typedMemo(
       (group: SelectOptionGroup<T>) => {
         return (
           <>
-            <StyledListGroupHeader role="group">{group.label.toUpperCase()}</StyledListGroupHeader>
+            <ListGroupHeader>{group.label.toUpperCase()}</ListGroupHeader>
             {renderOptions(group.options)}
           </>
         );
@@ -389,7 +374,7 @@ export const Select = typedMemo(
           )
         );
       }
-    }, [action, isGroup, isOpen, options, renderAction, renderGroup, renderOptions]);
+    }, [action, isOpen, options, renderAction, renderGroup, renderOptions]);
 
     const renderList = useMemo(() => {
       return (
@@ -422,6 +407,20 @@ export const Select = typedMemo(
     );
   },
 );
+
+const flattenOptions = <T extends any>(
+  items: Array<SelectOption<T> | SelectOptionGroup<T>>,
+): Array<SelectOption<T>> => {
+  return items.every(isGroup)
+    ? (items as Array<SelectOptionGroup<T>>)
+        .map((group: SelectOptionGroup<T>) => group.options)
+        .reduce((acc, curr) => acc.concat(curr), [])
+    : (items as Array<SelectOption<T>>);
+};
+
+const isGroup = <T extends any>(item: SelectOption<T> | SelectOptionGroup<T>) => {
+  return 'options' in item && !('value' in item);
+};
 
 const getContent = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
   const { icon } = item;

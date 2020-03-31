@@ -6,10 +6,11 @@ import { useUniqueId } from '../../hooks';
 import { Flex } from '../Flex';
 import { FlexItem } from '../Flex/Item';
 import { List } from '../List';
+import { ListGroupHeader } from '../List/GroupHeader';
 import { ListItem } from '../List/Item';
 import { Tooltip } from '../Tooltip';
 
-import { StyledLink, StyledListGroupHeader } from './styled';
+import { StyledLink } from './styled';
 import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from './types';
 
 export const Dropdown = memo(
@@ -144,7 +145,7 @@ export const Dropdown = memo(
       (group: DropdownItemGroup) => {
         return (
           <>
-            <StyledListGroupHeader role="group">{group.label.toUpperCase()}</StyledListGroupHeader>
+            <ListGroupHeader>{group.label.toUpperCase()}</ListGroupHeader>
             {renderItems(group.items)}
           </>
         );

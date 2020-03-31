@@ -20,14 +20,14 @@ const mockOptions = [
 
 const groupMockOptions = [
   {
-    label: 'group 1',
+    label: 'label 1',
     options: [
       { value: 'us', content: 'United States' },
       { value: 'mx', content: 'Mexico' },
     ],
   },
   {
-    label: 'group 2',
+    label: 'label 2',
     options: [
       { value: 'ca', content: 'Canada' },
       { value: 'en', content: 'England' },
@@ -571,27 +571,29 @@ test('options should allow icons', () => {
 });
 
 test('grouped select should render group labels', () => {
-  const { getByRole, getAllByRole } = render(GroupedSelectMock);
+  const { getByRole, getByText } = render(GroupedSelectMock);
 
   const button = getByRole('button');
 
   fireEvent.click(button);
 
-  const labels = getAllByRole('group');
+  const label1 = getByText('LABEL 1');
+  const label2 = getByText('LABEL 2');
 
-  expect(labels[0]).toBeInTheDocument();
-  expect(labels[1]).toBeInTheDocument();
+  expect(label1).toBeInTheDocument();
+  expect(label2).toBeInTheDocument();
 });
 
 test('group labels should be grayed out', () => {
-  const { getAllByRole, getByTestId } = render(GroupedSelectMock);
+  const { getByTestId, getByText } = render(GroupedSelectMock);
   const input = getByTestId('groupSelect');
   fireEvent.focus(input);
 
-  const labels = getAllByRole('group');
+  const label1 = getByText('LABEL 1');
+  const label2 = getByText('LABEL 2');
 
-  expect(labels[0]).toHaveStyle('color: #8C93AD');
-  expect(labels[1]).toHaveStyle('color: #8C93AD');
+  expect(label1).toHaveStyle('color: #8C93AD');
+  expect(label2).toHaveStyle('color: #8C93AD');
 });
 
 test('group labels should be skipped when using keyboard to navigate options', () => {
@@ -617,8 +619,8 @@ test('group labels should still render when filtering options', () => {
   fireEvent.click(button);
   fireEvent.change(getByTestId('groupSelect'), { target: { value: 'm' } });
 
-  const label1 = getByText('GROUP 1');
-  const label2 = getByText('GROUP 2');
+  const label1 = getByText('LABEL 1');
+  const label2 = getByText('LABEL 2');
   const options = getAllByRole('option');
 
   expect(options.length).toBe(2);
