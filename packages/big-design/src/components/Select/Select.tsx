@@ -335,7 +335,7 @@ export const Select = typedMemo(
       (group: SelectOptionGroup<T>) => {
         return (
           <>
-            <ListGroupHeader>{group.label.toUpperCase()}</ListGroupHeader>
+            <ListGroupHeader>{group.label}</ListGroupHeader>
             {renderOptions(group.options)}
           </>
         );

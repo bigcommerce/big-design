@@ -145,7 +145,7 @@ export const Dropdown = memo(
       (group: DropdownItemGroup) => {
         return (
           <>
-            <ListGroupHeader>{group.label.toUpperCase()}</ListGroupHeader>
+            <ListGroupHeader>{group.label}</ListGroupHeader>
             {renderItems(group.items)}
           </>
         );
