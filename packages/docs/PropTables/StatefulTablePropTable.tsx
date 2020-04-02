@@ -50,7 +50,7 @@ const statefulTableProps: Prop[] = [
     types: 'boolean',
     defaultValue: 'false',
     description:
-      "Hides the current tables's headers. Headers are only visually hidden to keep with accessibility best practices.",
+      'Hides header row with all table headers. Headers are only visually hidden to keep with accessibility best practices.',
   },
   {
     name: 'defaultSelected',
@@ -81,6 +81,13 @@ const tableColumnsProps: Prop[] = [
     types: 'string',
     required: true,
     description: 'Header title.',
+  },
+  {
+    name: 'hideHeader',
+    types: 'boolean',
+    defaultValue: 'false',
+    description:
+      'Hides individual header values in the header row. Header is only visually hidden to keep with accessibility best practices.',
   },
   {
     name: 'align',
