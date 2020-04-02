@@ -352,25 +352,30 @@ test('no errors expected if all options are disabled', () => {
   }).not.toThrow();
 });
 
-test('dropdown should have 2 group labels', () => {
-  const { getAllByRole, getByRole } = render(GroupedDropdownMock);
+test('dropdown should have 2 group labels, render uppercased', () => {
+  const { getByRole, getByText } = render(GroupedDropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
 
-  const labels = getAllByRole('group');
+  const label1 = getByText('Label 1');
+  const label2 = getByText('Label 2');
 
-  expect(labels.length).toBe(2);
+  expect(label1).toBeInTheDocument();
+  expect(label1).toHaveStyle('text-transform: uppercase');
+  expect(label2).toBeInTheDocument();
+  expect(label2).toHaveStyle('text-transform: uppercase');
 });
 
 test('group labels are grayed out', () => {
-  const { getAllByRole, getByRole } = render(GroupedDropdownMock);
+  const { getByRole, getByText } = render(GroupedDropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
 
-  const labels = getAllByRole('group');
+  const label1 = getByText('Label 1');
+  const label2 = getByText('Label 2');
 
-  expect(labels[0]).toHaveStyle('color: #B4BAD1');
-  expect(labels[1]).toHaveStyle('color: #B4BAD1');
+  expect(label1).toHaveStyle('color: #8C93AD');
+  expect(label2).toHaveStyle('color: #8C93AD');
 });
 
 test('group labels are skipped over when using keyboard to navigate options', () => {
@@ -390,13 +395,13 @@ test('group labels are skipped over when using keyboard to navigate options', ()
 });
 
 test('clicking label does not call onItemClick', () => {
-  const { getAllByRole, getByRole } = render(GroupedDropdownMock);
+  const { getByRole, getByText } = render(GroupedDropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
 
-  const labels = getAllByRole('group');
-  fireEvent.mouseOver(labels[0]);
-  fireEvent.click(labels[0]);
+  const label1 = getByText('Label 1');
+  fireEvent.mouseOver(label1);
+  fireEvent.click(label1);
 
   expect(onItemClick).not.toHaveBeenCalled();
 });

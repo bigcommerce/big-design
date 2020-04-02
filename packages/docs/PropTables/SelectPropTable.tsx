@@ -66,11 +66,12 @@ const selectProps: Prop[] = [
   },
   {
     name: 'options',
-    types: 'Array<SelectOption>',
+    types: 'Array<SelectOption> | Array<SelectOptionGroup>',
     required: true,
     description: (
       <>
-        Accepts an array of <Code>SelectOption</Code>. See example for usage.
+        Accepts an array of <Code>SelectOptions</Code> or an array of <Code>SelectOptionGroups</Code>. See examples for
+        usage.
       </>
     ),
   },
@@ -223,6 +224,25 @@ const selectActionProps: Prop[] = [
   },
 ];
 
+const selectGroupProps: Prop[] = [
+  {
+    name: 'label',
+    types: 'string',
+    required: true,
+    description: <>Adds a label to the option group.</>,
+  },
+  {
+    name: 'options',
+    types: 'Array<SelectOption>',
+    required: true,
+    description: (
+      <>
+        Accepts an array of <Code>SelectOption</Code>. See example for usage.
+      </>
+    ),
+  },
+];
+
 export const SelectPropTable: React.FC<PropTableWrapper> = props => (
   <PropTable title="Select" propList={selectProps} {...props} />
 );
@@ -233,4 +253,8 @@ export const SelectOptionPropTable: React.FC<PropTableWrapper> = props => (
 
 export const SelectActionPropTable: React.FC<PropTableWrapper> = props => (
   <PropTable title="SelectAction" propList={selectActionProps} {...props} />
+);
+
+export const SelectGroupPropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="SelectGroup" propList={selectGroupProps} {...props} />
 );
