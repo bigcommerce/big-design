@@ -37,6 +37,7 @@ export default class MyApp extends App {
         <Head>
           <link rel="icon" type="image/png" href={`${process.env.URL_PREFIX}/favicon.png`}></link>
           <title>BigDesign</title>
+          <meta property="og:image" content={`${process.env.URL_PREFIX}/og-image.png`} />
         </Head>
         <style jsx global>
           {`
