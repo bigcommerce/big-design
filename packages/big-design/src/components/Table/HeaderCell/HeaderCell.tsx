@@ -10,6 +10,7 @@ import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderCheckbox } from './
 export interface HeaderCellProps<T> extends React.TableHTMLAttributes<HTMLTableCellElement> {
   actionsRef: RefObject<HTMLDivElement>;
   column: TableColumn<T>;
+  hide?: boolean;
   isSorted?: boolean;
   sortDirection?: 'ASC' | 'DESC';
   stickyHeader?: boolean;
@@ -24,6 +25,7 @@ export interface HeaderCheckboxCellProps {
 const InternalHeaderCell = <T extends TableItem>({
   children,
   column,
+  hide = false,
   isSorted,
   onSortClick,
   sortDirection,
@@ -61,7 +63,7 @@ const InternalHeaderCell = <T extends TableItem>({
       width={width}
       stickyHeight={actionsSize.height}
     >
-      <StyledFlex alignItems="center" flexDirection="row" align={align}>
+      <StyledFlex alignItems="center" flexDirection="row" hide={hide} align={align}>
         {children}
         {renderSortIcon()}
       </StyledFlex>
