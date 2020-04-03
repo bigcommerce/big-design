@@ -65,8 +65,9 @@ const InternalHeaderCell = <T extends TableItem>({
     >
       <StyledFlex alignItems="center" flexDirection="row" hide={hide} align={align}>
         {children}
-        {renderSortIcon()}
+        {!hide && renderSortIcon()}
       </StyledFlex>
+      {hide && renderSortIcon()}
     </StyledTableHeaderCell>
   );
 };
