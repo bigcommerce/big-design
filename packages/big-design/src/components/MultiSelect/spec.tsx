@@ -110,6 +110,13 @@ test('select input has aria-controls', () => {
   expect(input.getAttribute('aria-controls')).toBe(getByRole('listbox').id);
 });
 
+test('select input has autocomplete=no', () => {
+  const { getByTestId } = render(MultiSelectMock);
+  const input = getByTestId('multi-select');
+
+  expect(input.getAttribute('autocomplete')).toBe('no');
+});
+
 test('renders input button', () => {
   const { getAllByRole } = render(MultiSelectMock);
 

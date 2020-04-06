@@ -208,7 +208,6 @@ exports[`simple form render 1`] = `
             class="c8"
           >
             <input
-              autocomplete="no"
               class="c9"
               id="bd-input-1"
               placeholder="Placeholder text"
@@ -239,7 +238,6 @@ exports[`simple form render 1`] = `
             class="c8"
           >
             <input
-              autocomplete="no"
               class="c9"
               id="bd-input-2"
               placeholder="Placeholder text"
