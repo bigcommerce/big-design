@@ -94,13 +94,14 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
         {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} actionsRef={actionsRef} />}
 
         {columns.map((column, index) => {
-          const { hash, header, isSortable } = column;
+          const { hash, header, isSortable, hideHeader } = column;
           const isSorted = isSortable && sortable && hash === sortable.columnHash;
           const sortDirection = sortable && sortable.direction;
 
           return (
             <HeaderCell
               column={column}
+              hide={hideHeader}
               isSorted={isSorted}
               key={index}
               onSortClick={onSortClick}

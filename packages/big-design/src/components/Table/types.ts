@@ -25,6 +25,7 @@ export interface TableColumn<T> {
   align?: 'left' | 'center' | 'right';
   hash: string;
   header: string;
+  hideHeader?: boolean;
   isSortable?: boolean;
   render: React.ComponentType<T> | ((props: T & { children?: ReactNode }, context?: any) => string | number);
   verticalAlign?: 'top' | 'center';
