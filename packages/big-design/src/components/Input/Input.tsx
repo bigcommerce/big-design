@@ -159,7 +159,6 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
           {renderedChips}
           <StyledInput
             {...props}
-            autoComplete="no"
             disabled={disabled}
             chips={chips}
             error={errors}

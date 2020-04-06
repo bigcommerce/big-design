@@ -216,7 +216,6 @@ exports[`renders all together 1`] = `
       class="c5"
     >
       <input
-        autocomplete="no"
         class="c6"
         id="bd-input-1"
       />
