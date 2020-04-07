@@ -336,7 +336,7 @@ exports[`render pagination component 1`] = `
       class="c7"
       id="bd-dropdown-1-menu"
       role="listbox"
-      style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;"
+      style="top: 0px; left: 0px; opacity: 0; pointer-events: none; position: absolute;"
       tabindex="-1"
     />
   </div>
@@ -750,7 +750,7 @@ exports[`render pagination component with invalid page info 1`] = `
       class="c7"
       id="bd-dropdown-1-menu"
       role="listbox"
-      style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;"
+      style="top: 0px; left: 0px; opacity: 0; pointer-events: none; position: absolute;"
       tabindex="-1"
     />
   </div>
@@ -1164,7 +1164,7 @@ exports[`render pagination component with invalid range info 1`] = `
       class="c7"
       id="bd-dropdown-1-menu"
       role="listbox"
-      style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;"
+      style="top: 0px; left: 0px; opacity: 0; pointer-events: none; position: absolute;"
       tabindex="-1"
     />
   </div>
@@ -1579,7 +1579,7 @@ exports[`render pagination component with no items 1`] = `
       class="c7"
       id="bd-dropdown-1-menu"
       role="listbox"
-      style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;"
+      style="top: 0px; left: 0px; opacity: 0; pointer-events: none; position: absolute;"
       tabindex="-1"
     />
   </div>

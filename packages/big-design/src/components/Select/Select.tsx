@@ -378,16 +378,22 @@ export const Select = typedMemo(
 
     const renderList = useMemo(() => {
       return (
-        <Popper eventsEnabled={isOpen} modifiers={{ offset: { offset: '0, 10' } }} placement={placement}>
-          {({ placement: popperPlacement, ref, scheduleUpdate, style: popperStyle }) => (
+        <Popper
+          modifiers={[
+            { name: 'eventListeners', options: { scroll: isOpen, resize: isOpen } },
+            { name: 'offset', options: { offset: [0, 10] } },
+          ]}
+          placement={placement}
+          strategy={positionFixed ? 'fixed' : 'absolute'}
+        >
+          {({ placement: popperPlacement, ref, style: popperStyle, update }) => (
             <List
               {...getMenuProps({ ref })}
               data-placement={popperPlacement}
               isOpen={isOpen}
               maxHeight={maxHeight}
-              positionFixed={positionFixed}
-              scheduleUpdate={scheduleUpdate}
               style={popperStyle}
+              update={update}
             >
               {renderChildren}
             </List>
