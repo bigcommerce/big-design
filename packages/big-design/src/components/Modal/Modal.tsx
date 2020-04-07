@@ -93,7 +93,7 @@ export const Modal: React.FC<ModalProps> = typedMemo(
 
     useEffect(() => {
       if (modalRef.current && !internalTrap) {
-        setInternalTrap(focusTrap(modalRef.current as HTMLElement, { initialFocus: modalRef.current }));
+        setInternalTrap(focusTrap(modalRef.current as HTMLElement, { fallbackFocus: modalRef.current }));
       }
 
       if (isOpen) {
