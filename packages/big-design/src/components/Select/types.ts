@@ -1,4 +1,4 @@
-import { Placement } from 'popper.js';
+import { Placement } from '@popperjs/core';
 import { RefObject } from 'react';
 
 import { InputProps } from '../Input';

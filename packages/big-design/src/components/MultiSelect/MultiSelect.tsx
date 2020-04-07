@@ -378,19 +378,21 @@ export const MultiSelect = typedMemo(
     const renderList = useMemo(() => {
       return (
         <Popper
+          modifiers={[
+            { name: 'eventListeners', options: { scroll: isOpen, resize: isOpen } },
+            { name: 'offset', options: { offset: [0, 10] } },
+          ]}
           placement={placement}
-          modifiers={{ offset: { offset: '0, 10' } }}
-          eventsEnabled={isOpen}
-          positionFixed={positionFixed}
+          strategy={positionFixed ? 'fixed' : 'absolute'}
         >
-          {({ placement: popperPlacement, ref, scheduleUpdate, style: popperStyle }) => (
+          {({ placement: popperPlacement, ref, style: popperStyle, update }) => (
             <List
               {...getMenuProps({ ref })}
               data-placement={popperPlacement}
               isOpen={isOpen}
               maxHeight={maxHeight}
-              scheduleUpdate={scheduleUpdate}
               style={popperStyle}
+              update={update}
             >
               {renderOptions}
             </List>

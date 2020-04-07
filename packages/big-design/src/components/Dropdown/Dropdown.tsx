@@ -171,35 +171,39 @@ export const Dropdown = memo(
 
     const renderList = useMemo(
       () => (
-        <Popper eventsEnabled={isOpen} modifiers={{ offset: { offset: '0, 10' } }} placement={placement}>
-          {({ placement: popperPlacement, ref, scheduleUpdate, style: popperStyle }) => {
-            return (
-              <List
-                {...rest}
-                {...getMenuProps({
-                  onKeyDown: event => {
-                    if (event.key === 'Enter') {
-                      const element = event.currentTarget.children[highlightedIndex];
-                      const link = element.querySelector('a');
+        <Popper
+          modifiers={[
+            { name: 'eventListeners', options: { scroll: isOpen, resize: isOpen } },
+            { name: 'offset', options: { offset: [0, 10] } },
+          ]}
+          placement={placement}
+        >
+          {({ placement: popperPlacement, ref, style: popperStyle, update }) => (
+            <List
+              {...rest}
+              {...getMenuProps({
+                onKeyDown: event => {
+                  if (event.key === 'Enter') {
+                    const element = event.currentTarget.children[highlightedIndex];
+                    const link = element.querySelector('a');
 
-                      // We want to click the link if it is selected
-                      if (link) {
-                        link.click();
-                      }
+                    // We want to click the link if it is selected
+                    if (link) {
+                      link.click();
                     }
-                  },
-                  ref,
-                })}
-                data-placement={popperPlacement}
-                isOpen={isOpen}
-                maxHeight={maxHeight}
-                scheduleUpdate={scheduleUpdate}
-                style={popperStyle}
-              >
-                {renderChildren}
-              </List>
-            );
-          }}
+                  }
+                },
+                ref,
+              })}
+              data-placement={popperPlacement}
+              isOpen={isOpen}
+              maxHeight={maxHeight}
+              style={popperStyle}
+              update={update}
+            >
+              {renderChildren}
+            </List>
+          )}
         </Popper>
       ),
       [getMenuProps, highlightedIndex, isOpen, maxHeight, placement, renderChildren, rest],
@@ -282,10 +286,7 @@ const wrapInTooltip = (tooltip: DropdownItem['tooltip'], tooltipTrigger: React.R
     <Tooltip
       placement="left"
       trigger={tooltipTrigger}
-      modifiers={{
-        preventOverflow: { enabled: true, escapeWithReference: true },
-        offset: { offset: '0, 20' },
-      }}
+      modifiers={[{ name: 'preventOverflow' }, { name: 'offset', options: { offset: [0, 20] } }]}
       inline={false}
     >
       {tooltip}

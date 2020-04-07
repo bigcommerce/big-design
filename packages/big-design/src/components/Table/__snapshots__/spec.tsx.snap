@@ -386,7 +386,7 @@ exports[`renders a pagination component 1`] = `
           class="c10"
           id="bd-dropdown-2-menu"
           role="listbox"
-          style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;"
+          style="top: 0px; left: 0px; opacity: 0; pointer-events: none; position: absolute;"
           tabindex="-1"
         />
       </div>

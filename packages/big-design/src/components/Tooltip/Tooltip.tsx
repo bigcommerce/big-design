@@ -16,7 +16,15 @@ export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Tooltip: React.FC<TooltipProps> = memo(({ children, inline = true, modifiers, trigger, ...props }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [tooltipContainer, setTooltipContainer] = useState<HTMLDivElement | null>(null);
-  const tooltipModifiers = useMemo(() => ({ offset: { offset: '0, 8' }, ...modifiers }), [modifiers]);
+  const tooltipModifiers = useMemo(() => {
+    const mods = modifiers ? modifiers : [];
+
+    return [
+      { name: 'eventListeners', options: { scroll: isVisible, resize: isVisible } },
+      { name: 'offset', options: { offset: [0, 8] } },
+      ...mods,
+    ];
+  }, [isVisible, modifiers]);
 
   useEffect(() => {
     const container = document.createElement('div');
@@ -70,7 +78,7 @@ export const Tooltip: React.FC<TooltipProps> = memo(({ children, inline = true, 
       </Reference>
       {tooltipContainer
         ? createPortal(
-            <Popper placement={props.placement || 'top'} modifiers={tooltipModifiers} eventsEnabled={isVisible}>
+            <Popper placement={props.placement || 'top'} modifiers={tooltipModifiers}>
               {({ placement, ref, style }) =>
                 isVisible && (
                   <StyledTooltip ref={ref} style={style} data-placement={placement}>
