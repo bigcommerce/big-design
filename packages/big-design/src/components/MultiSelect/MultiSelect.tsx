@@ -54,6 +54,9 @@ export const MultiSelect = typedMemo(
     const defaultRef: RefObject<HTMLInputElement> = createRef();
     const multiSelectUniqueId = useUniqueId('multi-select');
 
+    // Need to set items if options prop changes
+    useEffect(() => setItems(initialOptions), [initialOptions]);
+
     useEffect(() => {
       setInputValue('');
     }, [selectedOptions]);

@@ -546,6 +546,30 @@ test('multiselect should be able to deselect options', () => {
   expect(onChange).toHaveBeenCalledWith([mockOptions[1].value], [mockOptions[1]]);
 });
 
+test('multiselect options should immediately rerender when prop changes', () => {
+  const { getAllByRole, getByRole, rerender } = render(
+    <MultiSelect onOptionsChange={onChange} options={mockOptions} />,
+  );
+  const button = getByRole('button');
+  fireEvent.click(button);
+
+  let options = getAllByRole('option');
+  expect(options.length).toBe(5);
+
+  rerender(
+    <MultiSelect
+      onOptionsChange={onChange}
+      options={[
+        { content: 'foo', value: 'foo' },
+        { content: 'bar', value: 'bar' },
+      ]}
+    />,
+  );
+
+  options = getAllByRole('option');
+  expect(options.length).toBe(2);
+});
+
 test('chips should be rendered', () => {
   const { getAllByText } = render(MultiSelectMock);
 
