@@ -119,6 +119,28 @@ test('dropdown menu should have 4 dropdown items', () => {
   expect(options.length).toBe(4);
 });
 
+test('dropdown items should immediately rerender when prop changes', () => {
+  const { getAllByRole, getByRole, rerender } = render(DropdownMock);
+  const toggle = getByRole('button');
+  fireEvent.click(toggle);
+
+  let options = getAllByRole('option');
+  expect(options.length).toBe(4);
+
+  rerender(
+    <Dropdown
+      items={[
+        { content: 'Foo', onItemClick },
+        { content: 'Bar', onItemClick },
+      ]}
+      toggle={<Button>Button</Button>}
+    />,
+  );
+
+  options = getAllByRole('option');
+  expect(options.length).toBe(2);
+});
+
 test('first dropdown item should be selected when dropdown is opened', () => {
   const { getByRole, getAllByRole } = render(DropdownMock);
   const toggle = getByRole('button');

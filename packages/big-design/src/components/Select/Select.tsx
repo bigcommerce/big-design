@@ -60,6 +60,9 @@ export const Select = typedMemo(
     const defaultRef: RefObject<HTMLInputElement> = createRef();
     const selectUniqueId = useUniqueId('select');
 
+    // Need to set select options if options prop changes
+    useEffect(() => setSelectOptions(flattenedOptions), [flattenedOptions]);
+
     // Set the input's value to match the selected item
     useEffect(() => {
       setInputValue(selectedOption ? selectedOption.content : '');

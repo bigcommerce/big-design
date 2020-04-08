@@ -256,6 +256,28 @@ test('select items should be filterable', () => {
   expect(options.length).toBe(2);
 });
 
+test('select options should immediately rerender when prop changes', () => {
+  const { getAllByRole, getByRole, rerender } = render(<Select onOptionChange={onChange} options={mockOptions} />);
+  const button = getByRole('button');
+  fireEvent.click(button);
+
+  let options = getAllByRole('option');
+  expect(options.length).toBe(5);
+
+  rerender(
+    <Select
+      onOptionChange={onChange}
+      options={[
+        { content: 'foo', value: 'foo' },
+        { content: 'bar', value: 'bar' },
+      ]}
+    />,
+  );
+
+  options = getAllByRole('option');
+  expect(options.length).toBe(2);
+});
+
 test('up/down arrows should change select item selection', () => {
   const { getAllByRole, getByTestId } = render(SelectMock);
   const input = getByTestId('select');
