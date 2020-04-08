@@ -158,6 +158,10 @@ export default () => (
             { value: 2, content: 'Option' },
             { value: 3, content: 'Option' },
             { value: 4, content: 'Option' },
+            { value: 5, content: 'Option' },
+            { value: 6, content: 'Option' },
+            { value: 7, content: 'Option' },
+            { value: 8, content: 'Option' },
           ]}
           placeholder="Default"
           required
@@ -171,6 +175,10 @@ export default () => (
             { value: 2, content: 'Option' },
             { value: 3, content: 'Option' },
             { value: 4, content: 'Option' },
+            { value: 5, content: 'Option' },
+            { value: 6, content: 'Option' },
+            { value: 7, content: 'Option' },
+            { value: 8, content: 'Option' },
           ]}
           placeholder="Smaller"
           required
@@ -184,6 +192,14 @@ export default () => (
             { value: 2, content: 'Option' },
             { value: 3, content: 'Option' },
             { value: 4, content: 'Option' },
+            { value: 5, content: 'Option' },
+            { value: 6, content: 'Option' },
+            { value: 7, content: 'Option' },
+            { value: 8, content: 'Option' },
+            { value: 9, content: 'Option' },
+            { value: 10, content: 'Option' },
+            { value: 11, content: 'Option' },
+            { value: 12, content: 'Option' },
           ]}
           placeholder="Larger"
           required
