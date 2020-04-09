@@ -1,4 +1,5 @@
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
+import { remCalc } from '@bigcommerce/big-design-theme';
 import { fireEvent, render } from '@test/utils';
 import 'jest-styled-components';
 import React, { Fragment } from 'react';
@@ -117,6 +118,35 @@ test('dropdown menu should have 4 dropdown items', () => {
 
   const options = getAllByRole('option');
   expect(options.length).toBe(4);
+});
+
+test('should accept a maxHeight prop', () => {
+  const { getByRole } = render(
+    <Dropdown
+      items={[
+        { content: 'Foo', onItemClick },
+        { content: 'Bar', onItemClick },
+      ]}
+      maxHeight={350}
+      toggle={<Button>Button</Button>}
+    />,
+  );
+
+  const toggle = getByRole('button');
+  fireEvent.click(toggle);
+
+  const list = getByRole('listbox');
+  expect(list).toHaveStyleRule('max-height', remCalc(350));
+});
+
+test('should default max-height to 250', () => {
+  const { getByRole } = render(DropdownMock);
+
+  const toggle = getByRole('button');
+  fireEvent.click(toggle);
+
+  const list = getByRole('listbox');
+  expect(list).toHaveStyleRule('max-height', remCalc(250));
 });
 
 test('dropdown items should immediately rerender when prop changes', () => {

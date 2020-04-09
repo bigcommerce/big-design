@@ -1,4 +1,5 @@
 import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-design-icons';
+import { remCalc } from '@bigcommerce/big-design-theme';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
@@ -444,6 +445,40 @@ test('should render a non filterable select', () => {
 
   const input = getAllByLabelText('Countries')[0];
   expect(input.getAttribute('readonly')).toBe('');
+});
+
+test('should accept a maxHeight prop', () => {
+  const { getAllByLabelText, getByRole } = render(
+    <MultiSelect
+      label="Countries"
+      maxHeight={350}
+      onOptionsChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
+
+  const input = getAllByLabelText('Countries')[0];
+  fireEvent.focus(input);
+
+  const list = getByRole('listbox');
+  expect(list).toHaveStyleRule('max-height', remCalc(350));
+});
+
+test('should default max-height to 250', () => {
+  const { getAllByLabelText, getByRole } = render(MultiSelectMock);
+
+  const input = getAllByLabelText('Countries')[0];
+  fireEvent.focus(input);
+
+  const list = getByRole('listbox');
+  expect(list).toHaveStyleRule('max-height', remCalc(250));
 });
 
 test('should use the passed in ref object if provided', () => {

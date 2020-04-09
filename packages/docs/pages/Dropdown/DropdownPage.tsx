@@ -248,13 +248,11 @@ export default () => (
             { content: 'Item', onItemClick: item => item },
             { content: 'Item', onItemClick: item => item },
             { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
           ]}
           toggle={<Button>Default</Button>}
         />
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
             { content: 'Item', onItemClick: item => item },
             { content: 'Item', onItemClick: item => item },
             { content: 'Item', onItemClick: item => item },
@@ -269,6 +267,9 @@ export default () => (
         />
         <Dropdown
           items={[
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: item => item },
             { content: 'Item', onItemClick: item => item },
             { content: 'Item', onItemClick: item => item },
             { content: 'Item', onItemClick: item => item },
