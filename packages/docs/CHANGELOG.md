@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.17.1...@bigcommerce/docs@0.17.2) (2020-04-13)
+
+
+### Bug Fixes
+
+* add extra options for maxHeight examples and set up tests ([#367](https://github.com/bigcommerce/big-design/issues/367)) ([05f6aca](https://github.com/bigcommerce/big-design/commit/05f6aca5043c738d6f0714f23b94cee0dcd8dbf7))
+
+
+### Features
+
+* **component:** CHP-6188 adds grouping options to Select component ([#350](https://github.com/bigcommerce/big-design/issues/350)) ([16a8dd7](https://github.com/bigcommerce/big-design/commit/16a8dd763099a6de84f8d7a6b904fb539c50d364))
+* **component:** CHP-6225 adds ability to hide individual table headers ([#359](https://github.com/bigcommerce/big-design/issues/359)) ([b61b486](https://github.com/bigcommerce/big-design/commit/b61b486fd683bbaec443ce578dbebc5f338d10b9))
+* **docs:** add og:image for link preview ([#360](https://github.com/bigcommerce/big-design/issues/360)) ([31bc780](https://github.com/bigcommerce/big-design/commit/31bc780ab250472f164e08eb5d77c22a5dbe78fd))
+
+
+
+
+
 ## [0.17.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.17.0...@bigcommerce/docs@0.17.1) (2020-03-25)
 
 **Note:** Version bump only for package @bigcommerce/docs

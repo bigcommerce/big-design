@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.17.1...@bigcommerce/big-design@0.17.2) (2020-04-13)
+
+
+### Bug Fixes
+
+* add extra options for maxHeight examples and set up tests ([#367](https://github.com/bigcommerce/big-design/issues/367)) ([05f6aca](https://github.com/bigcommerce/big-design/commit/05f6aca5043c738d6f0714f23b94cee0dcd8dbf7))
+* autocomplete=no only set for Selects ([#362](https://github.com/bigcommerce/big-design/issues/362)) ([ace0bf4](https://github.com/bigcommerce/big-design/commit/ace0bf4df04e08905675826fa990549cbb798be4))
+* render new options for Selects when option prop changes ([#366](https://github.com/bigcommerce/big-design/issues/366)) ([72f066c](https://github.com/bigcommerce/big-design/commit/72f066ccf6a546ce1b20343c16693611cad2d5fd))
+* **component:** expose FormProps ([#369](https://github.com/bigcommerce/big-design/issues/369)) ([358f25f](https://github.com/bigcommerce/big-design/commit/358f25f48db47ca9a8f31b31327a39f456f97f4d))
+* **component:** modal focus first focusable element ([#365](https://github.com/bigcommerce/big-design/issues/365)) ([2c240a5](https://github.com/bigcommerce/big-design/commit/2c240a50d988301eb2b47745edd79d0a209a166c))
+
+
+### Features
+
+* **component:** CHP-6188 adds grouping options to Select component ([#350](https://github.com/bigcommerce/big-design/issues/350)) ([16a8dd7](https://github.com/bigcommerce/big-design/commit/16a8dd763099a6de84f8d7a6b904fb539c50d364))
+* **component:** CHP-6225 adds ability to hide individual table headers ([#359](https://github.com/bigcommerce/big-design/issues/359)) ([b61b486](https://github.com/bigcommerce/big-design/commit/b61b486fd683bbaec443ce578dbebc5f338d10b9))
+
+
+
+
+
 ## [0.17.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.17.0...@bigcommerce/big-design@0.17.1) (2020-03-25)
 
 
