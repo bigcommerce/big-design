@@ -6,7 +6,6 @@ import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
 import { StyledCounterInput, StyledCounterWrapper } from './private';
-// import { StyledInput, StyledInputWrapper } from '../Input/styled';
 
 export interface CounterProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactChild;
@@ -20,23 +19,35 @@ interface PrivateProps {
 }
 
 export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
-  ({ min = 0, max = 100, step = 1, forwardedRef, label, labelId, description, error, disabled, ...props }) => {
+  ({
+    min = 0,
+    max = 100,
+    step = 1,
+    forwardedRef,
+    label,
+    labelId,
+    description,
+    error,
+    disabled,
+    value = 0,
+    ...props
+  }) => {
     const [focus, setFocus] = useState(false);
-    const [value, setValue] = useState(0);
-    const previousValue = useRef(0);
+    const [count, setCount] = !isNaN(Number(value)) ? useState(Number(value)) : useState(0);
+    const previousValue = useRef(Number(value));
     const uniqueCounterId = useUniqueId('counter');
     const id = props.id ? props.id : uniqueCounterId;
 
     const decreaseIconColor = () => {
-      return value <= min ? 'secondary' : undefined;
+      return count <= min ? 'secondary' : undefined;
     };
 
     const increaseIconColor = () => {
-      return value >= max ? 'secondary' : undefined;
+      return count >= max ? 'secondary' : undefined;
     };
 
     useEffect(() => {
-      previousValue.current = value;
+      previousValue.current = count;
     });
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -56,16 +67,16 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     };
 
     const handleIncrease = () => {
-      if (value < max) {
-        setValue(previousValue.current + 1);
+      if (count < max) {
+        setCount(previousValue.current + 1);
       }
 
       return;
     };
 
     const handleDecrease = () => {
-      if (value > min) {
-        setValue(previousValue.current - 1);
+      if (count > min) {
+        setCount(previousValue.current - 1);
       }
 
       return;
@@ -74,7 +85,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
       const newValue = Number(event.currentTarget.value);
       if (!isNaN(newValue) && newValue >= min && newValue <= max) {
-        setValue(newValue);
+        setCount(newValue);
       }
 
       return;
@@ -168,7 +179,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
             {...props}
             ref={forwardedRef}
             onKeyDown={handleKeyPress}
-            value={value}
+            value={count}
             disabled={disabled}
             error={errors}
             id={id}
@@ -184,7 +195,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 );
 
 export const Counter = typedMemo(
-  forwardRef<HTMLInputElement, CounterProps>(({ className, style, type, width, height, ...props }, ref) => (
+  forwardRef<HTMLInputElement, CounterProps>(({ className, style, ...props }, ref) => (
     <StylableCounter {...props} forwardedRef={ref} />
   )),
 );
