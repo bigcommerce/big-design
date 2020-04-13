@@ -6,7 +6,7 @@ import { withTransition } from '../../mixins/transitions';
 
 import { InputProps } from './Input';
 
-interface StyledInputWrapperProps extends InputProps {
+export interface StyledInputWrapperProps extends InputProps {
   focus: boolean;
 }
 
