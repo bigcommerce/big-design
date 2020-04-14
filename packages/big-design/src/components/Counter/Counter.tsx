@@ -1,5 +1,5 @@
 import { AddCircleOutlineIcon, RemoveCircleOutlineIcon } from '@bigcommerce/big-design-icons';
-import React, { forwardRef, useEffect, useMemo, useRef, useState, Ref } from 'react';
+import React, { forwardRef, useMemo, useState, Ref } from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
@@ -12,6 +12,9 @@ export interface CounterProps extends React.InputHTMLAttributes<HTMLInputElement
   labelId?: string;
   description?: React.ReactChild;
   error?: React.ReactNode | React.ReactNode[];
+  value: number;
+  step?: number;
+  onCountChange(count: number): void;
 }
 
 interface PrivateProps {
@@ -29,26 +32,21 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     description,
     error,
     disabled,
-    value = 0,
+    value,
+    onCountChange,
     ...props
   }) => {
     const [focus, setFocus] = useState(false);
-    const [count, setCount] = !isNaN(Number(value)) ? useState(Number(value)) : useState(0);
-    const previousValue = useRef(Number(value));
     const uniqueCounterId = useUniqueId('counter');
     const id = props.id ? props.id : uniqueCounterId;
 
     const decreaseIconColor = () => {
-      return count <= min ? 'secondary' : undefined;
+      return value <= min ? 'secondary' : undefined;
     };
 
     const increaseIconColor = () => {
-      return count >= max ? 'secondary' : undefined;
+      return value >= max ? 'secondary' : undefined;
     };
-
-    useEffect(() => {
-      previousValue.current = count;
-    });
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
       const { onFocus } = props;
@@ -67,25 +65,40 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     };
 
     const handleIncrease = () => {
-      if (count < max) {
-        setCount(previousValue.current + 1);
+      if (value + step > max) {
+        return;
       }
-
-      return;
+      // Checks that the provided value is a multiple of the step
+      if (value % step === 0) {
+        onCountChange(value + step);
+      }
+      // If not, returns nearest higher value that is a multiple of the step
+      else {
+        onCountChange(value + (step - (value % step)));
+      }
     };
 
     const handleDecrease = () => {
-      if (count > min) {
-        setCount(previousValue.current - 1);
+      if (value - step < min) {
+        return;
       }
-
-      return;
+      // Checks that the provided value is a multiple of the step
+      if (value % step === 0) {
+        onCountChange(value - step);
+      }
+      // If not, returns nearest lower value that is a multiple of the step
+      else {
+        onCountChange(value - (value % step));
+      }
     };
 
-    const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = Number(event.currentTarget.value);
-      if (!isNaN(newValue) && newValue >= min && newValue <= max) {
-        setCount(newValue);
+      if (isNaN(newValue)) {
+        return;
+      }
+      if (newValue >= min && newValue <= max) {
+        onCountChange(newValue);
       }
 
       return;
@@ -179,7 +192,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
             {...props}
             ref={forwardedRef}
             onKeyDown={handleKeyPress}
-            value={count}
+            value={value}
             disabled={disabled}
             error={errors}
             id={id}
