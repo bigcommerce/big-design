@@ -1,28 +1,70 @@
 import { fireEvent, render } from '@test/utils';
 import 'jest-styled-components';
-import React from 'react';
+import React, { Ref } from 'react';
 
 import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
 
-import { Counter } from './index';
+import { Counter, CounterProps } from './index';
+
+interface MockCounterProps extends CounterProps {
+  dataTestId?: string;
+  ref?: Ref<HTMLInputElement>;
+}
+
+const val = 5;
+
+const handleChange = jest.fn(num => num);
+
+const requiredAttributes = {
+  value: val,
+  onCountChange: handleChange,
+};
+
+const counterMock = ({
+  ref,
+  label = 'Label',
+  labelId = '',
+  id = '',
+  error = '',
+  description = 'Description for the counter.',
+  value,
+  onCountChange,
+  min = 0,
+  max = 10,
+  dataTestId = '',
+}: MockCounterProps) => (
+  <Counter
+    ref={ref}
+    label={label}
+    labelId={labelId}
+    error={error}
+    id={id}
+    description={description}
+    value={value}
+    data-testid={dataTestId}
+    min={min}
+    max={max}
+    onCountChange={onCountChange}
+  />
+);
 
 test('forwards ref', () => {
   const ref = React.createRef<HTMLInputElement>();
-  const { container } = render(<Counter ref={ref} />);
+  const { container } = render(counterMock({ ref, ...requiredAttributes }));
   const counter = container.querySelector('input');
 
   expect(ref.current).toBe(counter);
 });
 
 test('renders a counter as an input tag', () => {
-  const { container } = render(<Counter />);
+  const { container } = render(counterMock(requiredAttributes));
 
   expect(container.querySelector('input')).toBeInTheDocument();
 });
 
 test('renders a counter with matched label', () => {
-  const { queryByLabelText } = render(<Counter label="Test Label" />);
+  const { queryByLabelText } = render(counterMock({ label: 'Test Label', ...requiredAttributes }));
 
   // This one checks for matching id and htmlFor
   expect(queryByLabelText('Test Label')).toBeInTheDocument();
@@ -31,8 +73,8 @@ test('renders a counter with matched label', () => {
 test('create unique ids if not provided', () => {
   const { queryByTestId } = render(
     <>
-      <Counter label="Test Label" data-testid="item1" />
-      <Counter label="Test Label" data-testid="item2" />
+      {counterMock({ dataTestId: 'item1', label: 'Test Label', ...requiredAttributes })}
+      {counterMock({ dataTestId: 'item2', label: 'Test Label', ...requiredAttributes })}
     </>,
   );
 
@@ -45,21 +87,21 @@ test('create unique ids if not provided', () => {
 });
 
 test('respects provided id', () => {
-  const { container } = render(<Counter id="test" label="Test Label" />);
+  const { container } = render(counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }));
   const counter = container.querySelector('#test') as HTMLInputElement;
 
   expect(counter.id).toBe('test');
 });
 
 test('matches label htmlFor with id provided', () => {
-  const { container } = render(<Counter id="test" label="Test Label" />);
+  const { container } = render(counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }));
   const label = container.querySelector('label') as HTMLLabelElement;
 
   expect(label.htmlFor).toBe('test');
 });
 
 test('respects provided labelId', () => {
-  const { container } = render(<Counter labelId="test" label="Test Label" />);
+  const { container } = render(counterMock({ label: 'Test Label', labelId: 'test', ...requiredAttributes }));
   const label = container.querySelector('#test') as HTMLLabelElement;
 
   expect(label.id).toBe('test');
@@ -67,18 +109,14 @@ test('respects provided labelId', () => {
 
 test('renders a description', () => {
   const descriptionText = 'This is a description';
-  const { queryByText } = render(<Counter description={descriptionText} />);
+  const { queryByText } = render(counterMock({ description: descriptionText, ...requiredAttributes }));
 
   expect(queryByText(descriptionText)).toBeInTheDocument();
 });
 
 test('renders an error', () => {
   const errorText = 'This is an error';
-  const { queryByText } = render(
-    <FormGroup>
-      <Counter error={errorText} />
-    </FormGroup>,
-  );
+  const { queryByText } = render(<FormGroup>{counterMock({ error: errorText, ...requiredAttributes })}</FormGroup>);
 
   expect(queryByText(errorText)).toBeInTheDocument();
 });
@@ -93,7 +131,7 @@ test('accepts a Label Component', () => {
     </FormControlLabel>
   );
 
-  const { queryByTestId } = render(<Counter label={CustomLabel} />);
+  const { queryByTestId } = render(counterMock({ label: CustomLabel, ...requiredAttributes }));
 
   expect(queryByTestId('test')).toBeInTheDocument();
 });
@@ -108,7 +146,7 @@ test('does not accept non-Label Components', () => {
     </div>
   );
 
-  const { queryByTestId } = render(<Counter label={NotALabel} />);
+  const { queryByTestId } = render(counterMock({ label: NotALabel, ...requiredAttributes }));
 
   expect(queryByTestId('test')).not.toBeInTheDocument();
 });
@@ -123,7 +161,7 @@ test('accepts a Description Component', () => {
     </FormControlDescription>
   );
 
-  const { queryByTestId } = render(<Counter description={CustomDescription} />);
+  const { queryByTestId } = render(counterMock({ description: CustomDescription, ...requiredAttributes }));
 
   expect(queryByTestId('test')).toBeInTheDocument();
 });
@@ -138,7 +176,7 @@ test('does not accept non-Description Components', () => {
     </div>
   );
 
-  const { queryByTestId } = render(<Counter description={NotADescription} />);
+  const { queryByTestId } = render(counterMock({ description: NotADescription, ...requiredAttributes }));
 
   expect(queryByTestId('test')).not.toBeInTheDocument();
 });
@@ -153,11 +191,7 @@ test('accepts an Error Component', () => {
     </FormControlError>
   );
 
-  const { queryByTestId } = render(
-    <FormGroup>
-      <Counter error={CustomError} />
-    </FormGroup>,
-  );
+  const { queryByTestId } = render(<FormGroup>{counterMock({ error: CustomError, ...requiredAttributes })}</FormGroup>);
 
   expect(queryByTestId('test')).toBeInTheDocument();
 });
@@ -172,26 +206,22 @@ test('does not accept non-Error Components', () => {
     </div>
   );
 
-  const { queryByTestId } = render(
-    <FormGroup>
-      <Counter error={NotAnError} />
-    </FormGroup>,
-  );
+  const { queryByTestId } = render(<FormGroup>{counterMock({ error: NotAnError, ...requiredAttributes })}</FormGroup>);
 
   expect(queryByTestId('test')).not.toBeInTheDocument();
 });
 
 test('renders both the add and subtract icons', () => {
-  const { getByDisplayValue } = render(<Counter />);
+  const { getByDisplayValue } = render(counterMock(requiredAttributes));
 
-  const counter = getByDisplayValue('0');
+  const counter = getByDisplayValue('5');
 
   expect(counter.previousSibling).toBeInTheDocument();
   expect(counter.nextElementSibling).toBeInTheDocument();
 });
 
 test('value increases when increase or decrease icons are clicked', () => {
-  const { getByDisplayValue } = render(<Counter value={5} />);
+  const { getByDisplayValue } = render(counterMock(requiredAttributes));
 
   const counter = getByDisplayValue('5') as HTMLInputElement;
   const decrease = counter.previousElementSibling as HTMLElement;
@@ -199,52 +229,50 @@ test('value increases when increase or decrease icons are clicked', () => {
 
   expect(counter.value).toEqual('5');
   fireEvent.click(increase);
-  fireEvent.click(increase);
 
-  expect(counter.value).toEqual('7');
+  expect(handleChange).toHaveBeenCalledWith(6);
   fireEvent.click(decrease);
-  expect(counter.value).toEqual('6');
+  expect(handleChange).toHaveBeenCalledWith(4);
 });
 
 test('value increases and decreases with arrow keypresses', () => {
-  const { getByDisplayValue } = render(<Counter />);
+  const { getByDisplayValue } = render(counterMock(requiredAttributes));
 
-  const counter = getByDisplayValue('0') as HTMLInputElement;
+  const counter = getByDisplayValue('5') as HTMLInputElement;
   counter.focus();
 
-  expect(counter.value).toEqual('0');
+  expect(counter.value).toEqual('5');
   fireEvent.keyDown(counter, { key: 'ArrowUp', code: 'ArrowUp' });
-  expect(counter.value).toEqual('1');
+  expect(handleChange).toHaveBeenCalledWith(6);
   fireEvent.keyDown(counter, { key: 'ArrowDown', code: 'ArrowDown' });
-  expect(counter.value).toEqual('0');
+  expect(handleChange).toHaveBeenCalledWith(4);
+});
+
+test('provided onCountChange function is called on value change', () => {
+  const { getByDisplayValue } = render(counterMock(requiredAttributes));
+
+  const counter = getByDisplayValue('5') as HTMLInputElement;
+  const increase = counter.nextElementSibling as HTMLElement;
+
+  expect(counter.value).toEqual('5');
+  fireEvent.click(increase);
+  expect(handleChange).toHaveBeenCalledWith(6);
 });
 
 test('error shows with valid string', () => {
   const error = 'Error';
-  const { container, rerender } = render(
-    <FormGroup>
-      <Counter error="" />
-    </FormGroup>,
-  );
+  const { container, rerender } = render(<FormGroup>{counterMock({ error: '', ...requiredAttributes })}</FormGroup>);
 
   expect(container.querySelector('[class*="StyledError"]')).not.toBeInTheDocument();
 
-  rerender(
-    <FormGroup>
-      <Counter error={error} />
-    </FormGroup>,
-  );
+  rerender(<FormGroup>{counterMock({ error, ...requiredAttributes })}</FormGroup>);
 
   expect(container.querySelector('[class*="StyledError"]')).toBeInTheDocument();
 });
 
 test('error shows when an array of strings', () => {
   const errors = ['Error 0', 'Error 1'];
-  const { getByText } = render(
-    <FormGroup>
-      <Counter error={errors} />
-    </FormGroup>,
-  );
+  const { getByText } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
 
   errors.forEach(error => expect(getByText(error)).toBeInTheDocument());
 });
@@ -252,11 +280,7 @@ test('error shows when an array of strings', () => {
 test('error shows when an array of Errors', () => {
   const testIds = ['error_0', 'error_1'];
   const errors = testIds.map(id => <FormControlError data-testid={id}>Error</FormControlError>);
-  const { getByTestId } = render(
-    <FormGroup>
-      <Counter error={errors} />
-    </FormGroup>,
-  );
+  const { getByTestId } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
 
   testIds.forEach(id => expect(getByTestId(id)).toBeInTheDocument());
 });
@@ -264,11 +288,7 @@ test('error shows when an array of Errors', () => {
 describe('error does not show when invalid type', () => {
   test('single element', () => {
     const error = <div data-testid="err">Error</div>;
-    const { queryByTestId } = render(
-      <FormGroup>
-        <Counter error={error} />
-      </FormGroup>,
-    );
+    const { queryByTestId } = render(<FormGroup>{counterMock({ error, ...requiredAttributes })}</FormGroup>);
 
     expect(warning).toHaveBeenCalledTimes(1);
     expect(queryByTestId('err')).not.toBeInTheDocument();
@@ -277,11 +297,7 @@ describe('error does not show when invalid type', () => {
   test('array of elements', () => {
     const errors = ['Error', <FormControlError>Error</FormControlError>, <div data-testid="err">Error</div>];
 
-    const { queryByTestId } = render(
-      <FormGroup>
-        <Counter error={errors} />
-      </FormGroup>,
-    );
+    const { queryByTestId } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
 
     expect(warning).toHaveBeenCalledTimes(1);
     expect(queryByTestId('err')).not.toBeInTheDocument();
@@ -289,7 +305,7 @@ describe('error does not show when invalid type', () => {
 });
 
 test('appends (optional) text to label if input is not required', () => {
-  const { container } = render(<Counter label="Test Label" />);
+  const { container } = render(counterMock({ label: 'Test Label', ...requiredAttributes }));
   const label = container.querySelector('label');
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
