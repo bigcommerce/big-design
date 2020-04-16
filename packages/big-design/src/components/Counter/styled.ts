@@ -1,18 +1,28 @@
 import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
+import { StyleableButton } from '../Button/private';
 import { StyledInput, StyledInputWrapper, StyledInputWrapperProps } from '../Input/private';
 
+export const StyledCounterButton = styled(StyleableButton)`
+  background-color: inherit;
+  border: none;
+
+  &[disabled],
+  &:active,
+  &:hover:not(:active) {
+    background-color: inherit;
+  }
+`;
+
 export const StyledCounterWrapper = styled(StyledInputWrapper)<StyledInputWrapperProps>`
-  padding-left: ${({ theme }) => theme.spacing.xxSmall};
-  padding-right: ${({ theme }) => theme.spacing.xxSmall};
+  padding: 0 ${({ theme }) => theme.spacing.xxSmall};
   width: ${remCalc(125)};
-  max-width: ${remCalc(320)};
 `;
 
 export const StyledCounterInput = styled(StyledInput)`
   text-align: center;
-  padding: ${({ theme }) => theme.spacing.none};
+  padding: 0;
 `;
 
 StyledCounterInput.defaultProps = { theme: defaultTheme };

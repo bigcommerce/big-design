@@ -5,7 +5,7 @@ import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
-import { StyledCounterInput, StyledCounterWrapper } from './styled';
+import { StyledCounterButton, StyledCounterInput, StyledCounterWrapper } from './styled';
 
 export interface CounterProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactChild;
@@ -41,11 +41,11 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     const id = props.id ? props.id : uniqueCounterId;
 
     const decreaseIconColor = () => {
-      return value <= min ? 'secondary' : undefined;
+      return value <= min ? 'secondary' : 'secondary60';
     };
 
     const increaseIconColor = () => {
-      return value >= max ? 'secondary' : undefined;
+      return value >= max ? 'secondary' : 'secondary60';
     };
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -64,7 +64,9 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       return onBlur && onBlur(event);
     };
 
-    const handleIncrease = () => {
+    const handleIncrease = (event: React.KeyboardEvent | React.MouseEvent) => {
+      event.preventDefault();
+
       if (value + step > max) {
         return;
       }
@@ -78,7 +80,9 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       }
     };
 
-    const handleDecrease = () => {
+    const handleDecrease = (event: React.KeyboardEvent | React.MouseEvent) => {
+      event.preventDefault();
+
       if (value - step < min) {
         return;
       }
@@ -107,10 +111,10 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     const handleKeyPress = (event: React.KeyboardEvent) => {
       switch (event.key) {
         case 'ArrowUp':
-          handleIncrease();
+          handleIncrease(event);
           break;
         case 'ArrowDown':
-          handleDecrease();
+          handleDecrease(event);
           break;
         default:
           break;
@@ -187,7 +191,11 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
         {renderedLabel}
         {renderedDescription}
         <StyledCounterWrapper disabled={disabled} error={errors} focus={focus}>
-          <RemoveCircleOutlineIcon onClick={handleDecrease} color={decreaseIconColor()} />
+          <StyledCounterButton
+            disabled={value <= min}
+            onClick={handleDecrease}
+            iconOnly={<RemoveCircleOutlineIcon title="Decrease count" color={decreaseIconColor()} />}
+          />
           <StyledCounterInput
             {...props}
             ref={forwardedRef}
@@ -200,7 +208,11 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
             onChange={handleChange}
             onFocus={handleFocus}
           />
-          <AddCircleOutlineIcon onClick={handleIncrease} color={increaseIconColor()} />
+          <StyledCounterButton
+            disabled={value >= max}
+            onClick={handleIncrease}
+            iconOnly={<AddCircleOutlineIcon title="Increase count" color={increaseIconColor()} />}
+          />
         </StyledCounterWrapper>
       </div>
     );

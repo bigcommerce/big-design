@@ -54,7 +54,7 @@ export default () => (
 
     <Text>
       Counters allow you to pass in an <Code primary>error</Code> message that will control the styles of a counter. The
-      logic on the counter can be controlled with the <Code primary>onChange</Code> prop.
+      logic on the counter can be controlled with the <Code primary>onCountChange</Code> prop.
     </Text>
 
     <CodePreview>
@@ -62,7 +62,7 @@ export default () => (
       {function Example() {
         const [counterValue, setCounterValue] = React.useState(0);
         const [errors, setErrors] = React.useState('Number of items must be at least 1.');
-        const handleChange = value => {
+        const handleChange = (value: number) => {
           setCounterValue(value);
 
           if (value >= 1) {
