@@ -7,7 +7,8 @@ import { createStyledIcon, IconProps, PrivateIconProps } from '../base';
 import { useUniqueId } from '../utils';
 
 const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ...props }) => {
-  const titleId = useUniqueId('icon');
+  const uniqueTitleId = useUniqueId('icon');
+  const titleId = title ? props.titleId || uniqueTitleId : undefined;
 
   return (
     <svg
