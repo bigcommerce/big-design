@@ -193,7 +193,6 @@ exports[`renders all together 1`] = `
       class="c3"
     >
       <svg
-        aria-labelledby="bd-icon-2"
         class="c4"
         data-testid="icon-left"
         fill="currentColor"
@@ -224,7 +223,6 @@ exports[`renders all together 1`] = `
       class="c7"
     >
       <svg
-        aria-labelledby="bd-icon-3"
         class="c4"
         data-testid="icon-right"
         fill="currentColor"
