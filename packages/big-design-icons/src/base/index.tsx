@@ -12,6 +12,7 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
 
 export interface PrivateIconProps {
   svgRef?: React.Ref<SVGSVGElement>;
+  titleId?: string;
 }
 
 export function createStyledIcon(Icon: React.FC<IconProps>) {
