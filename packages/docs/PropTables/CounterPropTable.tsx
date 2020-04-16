@@ -42,7 +42,7 @@ const counterProps: Prop[] = [
     required: true,
     description: (
       <>
-        Value for the <Code>Counter</Code>.
+        Value for the <Code>Counter</Code>. Only accepts whole numbers.
       </>
     ),
   },

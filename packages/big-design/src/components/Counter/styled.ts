@@ -30,5 +30,6 @@ export const StyledCounterInput = styled(StyledInput)`
   padding: 0;
 `;
 
+StyledCounterButton.defaultProps = { theme: defaultTheme };
 StyledCounterInput.defaultProps = { theme: defaultTheme };
 StyledCounterWrapper.defaultProps = { theme: defaultTheme };

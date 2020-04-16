@@ -212,12 +212,25 @@ test('does not accept non-Error Components', () => {
 });
 
 test('renders both the add and subtract icons', () => {
-  const { getByDisplayValue } = render(counterMock(requiredAttributes));
+  const { getAllByRole } = render(counterMock(requiredAttributes));
 
-  const counter = getByDisplayValue('5');
+  const buttons = getAllByRole('button');
 
-  expect(counter.previousSibling).toBeInTheDocument();
-  expect(counter.nextElementSibling).toBeInTheDocument();
+  expect(buttons.length).toBe(2);
+});
+
+test('buttons are disabled when value hits max or min', () => {
+  const { getAllByRole, rerender } = render(counterMock({ ...requiredAttributes, value: 0 }));
+
+  const buttons = getAllByRole('button');
+
+  expect(buttons[0]).toHaveProperty('disabled', true);
+  expect(buttons[1]).toHaveProperty('disabled', false);
+
+  rerender(counterMock({ ...requiredAttributes, value: 10 }));
+
+  expect(buttons[0]).toHaveProperty('disabled', false);
+  expect(buttons[1]).toHaveProperty('disabled', true);
 });
 
 test('value increases when increase or decrease icons are clicked', () => {
