@@ -24,7 +24,10 @@ module.exports = {
   ],
   env: {
     cjs: {
-      plugins: defaultPlugins,
+      plugins: [
+        ...defaultPlugins,
+        ['@babel/plugin-transform-runtime', { useESModules: false }]
+      ],
       ignore: ['**/spec.ts', '**/spec.tsx', '**/*.spec.ts', '**/*.spec.tsx']
     },
     es: {
