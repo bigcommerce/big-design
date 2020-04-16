@@ -7,11 +7,16 @@ import { StyledInput, StyledInputWrapper, StyledInputWrapperProps } from '../Inp
 export const StyledCounterButton = styled(StyleableButton)`
   background-color: inherit;
   border: none;
+  color: ${({ theme }) => theme.colors.secondary60};
 
   &[disabled],
   &:active,
   &:hover:not(:active) {
     background-color: inherit;
+  }
+
+  &[disabled] {
+    color: ${({ theme }) => theme.colors.secondary};
   }
 `;
 
