@@ -1,4 +1,4 @@
-import { rem, stripUnit, transparentize } from 'polished';
+import { math, rem, transparentize } from 'polished';
 
 import { themeOptions } from '../options';
 
@@ -9,14 +9,7 @@ export interface Helpers {
 }
 
 export const addValues = (first: string, second: string) => {
-  const [firstValue, firstUnit] = stripUnit(first, true);
-  const [secondValue, secondUnit] = stripUnit(second, true);
-
-  if (firstUnit !== secondUnit) {
-    throw new Error('units need to be of the same kind');
-  }
-
-  return `${Number(firstValue) + Number(secondValue)}${firstUnit}`;
+  return math(`${first} + ${second}`);
 };
 
 /**
