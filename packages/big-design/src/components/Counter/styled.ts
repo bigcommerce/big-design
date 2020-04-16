@@ -9,6 +9,10 @@ export const StyledCounterButton = styled(StyleableButton)`
   border: none;
   color: ${({ theme }) => theme.colors.secondary60};
 
+  ${({ theme }) => theme.breakpoints.mobile} {
+    width: auto;
+  }
+
   &[disabled],
   &:active,
   &:hover:not(:active) {
