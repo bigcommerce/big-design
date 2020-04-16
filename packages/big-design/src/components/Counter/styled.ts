@@ -1,7 +1,7 @@
 import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { StyledInput, StyledInputWrapper, StyledInputWrapperProps } from '../Input/styled';
+import { StyledInput, StyledInputWrapper, StyledInputWrapperProps } from '../Input/private';
 
 export const StyledCounterWrapper = styled(StyledInputWrapper)<StyledInputWrapperProps>`
   padding-left: ${({ theme }) => theme.spacing.xxSmall};

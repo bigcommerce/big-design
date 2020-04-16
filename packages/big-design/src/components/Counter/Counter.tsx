@@ -5,7 +5,7 @@ import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
-import { StyledCounterInput, StyledCounterWrapper } from './private';
+import { StyledCounterInput, StyledCounterWrapper } from './styled';
 
 export interface CounterProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactChild;
