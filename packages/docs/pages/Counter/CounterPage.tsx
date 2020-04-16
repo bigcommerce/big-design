@@ -9,7 +9,7 @@ export default () => (
     <H0>Counter</H0>
 
     <Text>
-      Counters are stylized numerical form controls with the ability of controling validation.{' '}
+      Counters are stylized numerical form controls with the ability to control validation.{' '}
       <Link href="https://design.bigcommerce.com/components/text-field" target="_blank">
         Text Field Design Guidelines
       </Link>
@@ -20,7 +20,7 @@ export default () => (
       {/* jsx-to-string:start */}
       {function Example() {
         const [counterValue, setCounterValue] = React.useState(5);
-        const handleChange = value => {
+        const handleChange = (value: number) => {
           setCounterValue(value);
         };
 
