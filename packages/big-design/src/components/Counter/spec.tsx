@@ -233,18 +233,27 @@ test('buttons are disabled when value hits max or min', () => {
   expect(buttons[1]).toHaveProperty('disabled', true);
 });
 
+test('value prop only accepts whole numbers', () => {
+  const { container, rerender } = render(counterMock({ max: 20, ...requiredAttributes }));
+
+  const input = container.getElementsByTagName('input');
+  fireEvent.change(input[0], { target: { value: 1.5 } });
+
+  expect(handleChange).toHaveBeenCalledWith(2);
+});
+
 test('value increases when increase or decrease icons are clicked', () => {
-  const { getByDisplayValue } = render(counterMock(requiredAttributes));
+  const { getByDisplayValue, container } = render(counterMock(requiredAttributes));
 
   const counter = getByDisplayValue('5') as HTMLInputElement;
-  const decrease = counter.previousElementSibling as HTMLElement;
-  const increase = counter.nextElementSibling as HTMLElement;
+
+  const icons = container.getElementsByTagName('svg');
 
   expect(counter.value).toEqual('5');
-  fireEvent.click(increase);
+  fireEvent.click(icons[1]);
 
   expect(handleChange).toHaveBeenCalledWith(6);
-  fireEvent.click(decrease);
+  fireEvent.click(icons[0]);
   expect(handleChange).toHaveBeenCalledWith(4);
 });
 
@@ -262,12 +271,10 @@ test('value increases and decreases with arrow keypresses', () => {
 });
 
 test('provided onCountChange function is called on value change', () => {
-  const { getByDisplayValue } = render(counterMock(requiredAttributes));
+  const { getByTitle } = render(counterMock(requiredAttributes));
 
-  const counter = getByDisplayValue('5') as HTMLInputElement;
-  const increase = counter.nextElementSibling as HTMLElement;
+  const increase = getByTitle('Increase count').parentNode;
 
-  expect(counter.value).toEqual('5');
   fireEvent.click(increase);
   expect(handleChange).toHaveBeenCalledWith(6);
 });

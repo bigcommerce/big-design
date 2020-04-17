@@ -8,10 +8,9 @@ export const StyledCounterButton = styled(StyleableButton)`
   background-color: inherit;
   border: none;
   color: ${({ theme }) => theme.colors.secondary60};
-
-  ${({ theme }) => theme.breakpoints.mobile} {
-    width: auto;
-  }
+  width: auto;
+  height: auto;
+  padding: 0;
 
   &[disabled],
   &:active,
