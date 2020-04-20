@@ -77,6 +77,9 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Checkbox/CheckboxPage" as="/checkbox">
             Checkbox
           </SideNavLink>
+          <SideNavLink href="/Counter/CounterPage" as="/counter">
+            Counter
+          </SideNavLink>
           <SideNavLink href="/Dropdown/DropdownPage" as="/dropdown">
             Dropdown
           </SideNavLink>
