@@ -31,6 +31,7 @@ export const StyledCounterWrapper = styled(StyledInputWrapper)<StyledInputWrappe
 export const StyledCounterInput = styled(StyledInput)`
   text-align: center;
   padding: 0;
+  overflow: hidden;
 `;
 
 StyledCounterButton.defaultProps = { theme: defaultTheme };
