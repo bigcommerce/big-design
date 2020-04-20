@@ -44,7 +44,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       if (!Number.isInteger(value)) {
         onCountChange(Math.round(value));
       }
-    });
+    }, [onCountChange, value]);
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
       const { onFocus } = props;
@@ -198,8 +198,9 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
         {renderedDescription}
         <StyledCounterWrapper disabled={disabled} error={errors} focus={focus}>
           <StyledCounterButton
+            onClick={handleDecrease}
             disabled={disabled || value <= min}
-            iconOnly={<RemoveCircleOutlineIcon onClick={handleDecrease} title="Decrease count" />}
+            iconOnly={<RemoveCircleOutlineIcon title="Decrease count" />}
           />
           <StyledCounterInput
             {...props}
@@ -214,8 +215,9 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
             onFocus={handleFocus}
           />
           <StyledCounterButton
+            onClick={handleIncrease}
             disabled={disabled || value >= max}
-            iconOnly={<AddCircleOutlineIcon onClick={handleIncrease} title="Increase count" />}
+            iconOnly={<AddCircleOutlineIcon title="Increase count" />}
           />
         </StyledCounterWrapper>
       </div>
