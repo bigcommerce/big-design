@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.17.2...@bigcommerce/big-design@0.18.0) (2020-04-20)
+
+
+### Bug Fixes
+
+* **icons:** contained aria-labelledby when title prop was undefined ([#374](https://github.com/bigcommerce/big-design/issues/374)) ([f0d4df7](https://github.com/bigcommerce/big-design/commit/f0d4df70894b364ec932dfc5c62cebda5dd10bda))
+
+
+### Features
+
+* **component:** adds Counter component to bigdesign ([#371](https://github.com/bigcommerce/big-design/issues/371)) ([cff133e](https://github.com/bigcommerce/big-design/commit/cff133ed83eee42a67cb4a6e3d928d1688027ba2))
+
+
+
+
+
 ## [0.17.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.17.1...@bigcommerce/big-design@0.17.2) (2020-04-13)
 
 

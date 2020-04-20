@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/deini/big-design/compare/@bigcommerce/configs@0.12.0...@bigcommerce/configs@0.13.0) (2020-04-20)
+
+
+### Bug Fixes
+
+* **configs:** use transform-runtime in cjs ([#372](https://github.com/deini/big-design/issues/372)) ([bbbdb15](https://github.com/deini/big-design/commit/bbbdb158e892ee34ad60b0b1485d0ca83e2b7ba9))
+
+
+
+
+
 # [0.12.0](https://github.com/deini/big-design/compare/@bigcommerce/configs@0.11.0...@bigcommerce/configs@0.12.0) (2020-03-25)
 
 
