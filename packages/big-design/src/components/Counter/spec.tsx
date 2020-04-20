@@ -234,7 +234,7 @@ test('buttons are disabled when value hits max or min', () => {
 });
 
 test('value prop only accepts whole numbers', () => {
-  const { container, rerender } = render(counterMock({ max: 20, ...requiredAttributes }));
+  const { container } = render(counterMock({ max: 20, ...requiredAttributes }));
 
   const input = container.getElementsByTagName('input');
   fireEvent.change(input[0], { target: { value: 1.5 } });
@@ -273,7 +273,7 @@ test('value increases and decreases with arrow keypresses', () => {
 test('provided onCountChange function is called on value change', () => {
   const { getByTitle } = render(counterMock(requiredAttributes));
 
-  const increase = getByTitle('Increase count').parentNode;
+  const increase = getByTitle('Increase count');
 
   fireEvent.click(increase);
   expect(handleChange).toHaveBeenCalledWith(6);
