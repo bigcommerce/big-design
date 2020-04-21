@@ -16,17 +16,19 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [isExpanded, setIsExpanded] = React.useState(false);
-        const handleToggle = () => setIsExpanded(!isExpanded);
+        const [title, setTitle] = React.useState('Show more');
+        const handleToggle = (isOpen: boolean) => setTitle(isOpen ? 'Show less' : 'Show more');
 
         return (
-          <Accordion title={isExpanded ? 'Show less' : 'Show more'} onToggle={handleToggle}>
-            <Text>
-              Ea tempor sunt amet labore proident dolor proident commodo in exercitation ea nulla sunt pariatur. Nulla
-              sunt ipsum do eu consectetur exercitation occaecat labore aliqua. Aute elit occaecat esse ea fugiat esse.
-              Reprehenderit sunt ea ea mollit commodo tempor amet fugiat.
-            </Text>
-          </Accordion>
+          <>
+            <Accordion title={title} onChange={handleToggle}>
+              <Text>
+                Ea tempor sunt amet labore proident dolor proident commodo in exercitation ea nulla sunt pariatur. Nulla
+                sunt ipsum do eu consectetur exercitation occaecat labore aliqua. Aute elit occaecat esse ea fugiat
+                esse. Reprehenderit sunt ea ea mollit commodo tempor amet fugiat.
+              </Text>
+            </Accordion>
+          </>
         );
       }}
       {/* jsx-to-string:end */}

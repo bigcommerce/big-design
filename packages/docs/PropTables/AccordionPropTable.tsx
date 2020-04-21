@@ -10,8 +10,14 @@ const accordionProps: Prop[] = [
     required: true,
   },
   {
-    name: 'onToggle',
-    types: '() => void',
+    name: 'initiallyOpen',
+    types: 'boolean',
+    description: 'Defines if panel with content is visible by default.',
+    required: false,
+  },
+  {
+    name: 'onChange',
+    types: '(isOpen: boolean) => void',
     description: 'Function that will be called when a title is clicked.',
     required: false,
   },
