@@ -78,7 +78,7 @@ exports[`render pagination component 1`] = `
   margin: 0;
   max-height: 15.625rem;
   outline: none;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 0.5rem 0;
   z-index: 1060;
 }
@@ -491,7 +491,7 @@ exports[`render pagination component with invalid page info 1`] = `
   margin: 0;
   max-height: 15.625rem;
   outline: none;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 0.5rem 0;
   z-index: 1060;
 }
@@ -904,7 +904,7 @@ exports[`render pagination component with invalid range info 1`] = `
   margin: 0;
   max-height: 15.625rem;
   outline: none;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 0.5rem 0;
   z-index: 1060;
 }
@@ -1318,7 +1318,7 @@ exports[`render pagination component with no items 1`] = `
   margin: 0;
   max-height: 15.625rem;
   outline: none;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 0.5rem 0;
   z-index: 1060;
 }

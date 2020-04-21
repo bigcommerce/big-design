@@ -14,7 +14,7 @@ export const StyledList = styled.ul<Partial<ListProps>>`
   margin: 0;
   max-height: ${({ theme, maxHeight }) => (maxHeight ? theme.helpers.remCalc(maxHeight) : '')};
   outline: none;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: ${({ theme }) => theme.spacing.xSmall} 0;
   z-index: ${({ theme }) => theme.zIndex.popover};
 `;
