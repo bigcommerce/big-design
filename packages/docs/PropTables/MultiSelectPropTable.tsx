@@ -3,7 +3,16 @@ import React from 'react';
 import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const selectProps: Prop[] = [
-  { name: 'action', types: 'SelectAction', description: 'Action option displayed at the end of the list.' },
+  {
+    name: 'action',
+    types: 'SelectAction',
+    description: 'Action option displayed at the end of the list.',
+  },
+  {
+    name: 'description',
+    types: 'string | FormControlDescription',
+    description: 'Append a description to the select field.',
+  },
   {
     name: 'disabled',
     defaultValue: 'false',
