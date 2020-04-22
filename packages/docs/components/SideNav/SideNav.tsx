@@ -50,8 +50,8 @@ export const SideNav: React.FC = () => {
         </SideNavGroup>
 
         <SideNavGroup title="Layout">
-          <SideNavLink href="/Accordion/AccordionPage" as="/accordion">
-            Accordion
+          <SideNavLink href="/Collapse/CollapsePage" as="/collapse">
+            Collapse
           </SideNavLink>
           <SideNavLink href="/Modal/ModalPage" as="/modal">
             Modal

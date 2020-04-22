@@ -1,4 +1,3 @@
-export * from './Accordion';
 export * from './Alert';
 export * from './Badge';
 export * from './Box';
@@ -6,6 +5,7 @@ export * from './Button';
 export * from './Counter';
 export * from './Checkbox';
 export * from './Chip';
+export * from './Collapse';
 export * from './Dropdown';
 export * from './Flex';
 export * from './Fieldset';

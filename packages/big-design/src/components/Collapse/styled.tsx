@@ -3,24 +3,26 @@ import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../mixins/transitions';
 import { StyleableButton } from '../Button/private';
-import { H3 } from '../Typography';
 
-export const StyledTitle = styled(H3)`
-  button {
-    width: auto;
-  }
-`;
-
-export const StyledButton = styled(StyleableButton)`
+export const StyledButton = styled(StyleableButton).attrs<{}, { isOpen?: boolean }>({})`
   padding-left: ${({ theme }) => theme.spacing.none};
   padding-right: ${({ theme }) => theme.spacing.none};
+  width: auto;
 
+  &:active,
   &:hover:not(:active) {
     background: none;
+    color: ${({ theme }) => theme.colors.primary70};
   }
-`;
 
-export const StyledIconWrapper = styled.span.attrs<{}, { isOpen?: boolean }>({})`
+  &:focus {
+    box-shadow: none;
+  }
+
+  span {
+    grid-gap: ${({ theme }) => theme.spacing.none};
+  }
+
   svg {
     ${withTransition(['transform'])}
 

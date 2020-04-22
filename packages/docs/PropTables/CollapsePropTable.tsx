@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Prop, PropTable, PropTableWrapper } from '../components';
 
-const accordionProps: Prop[] = [
+const collapseProps: Prop[] = [
   {
     name: 'title',
     types: 'string',
-    description: 'Accordion title.',
-    required: true,
+    description: 'Collapse title.',
+    required: false,
   },
   {
     name: 'initiallyOpen',
@@ -23,6 +23,6 @@ const accordionProps: Prop[] = [
   },
 ];
 
-export const AccordionPropTable: React.FC<PropTableWrapper> = props => (
-  <PropTable title="Accordion" propList={accordionProps} {...props} />
+export const CollapsePropTable: React.FC<PropTableWrapper> = props => (
+  <PropTable title="Collapse" propList={collapseProps} {...props} />
 );
