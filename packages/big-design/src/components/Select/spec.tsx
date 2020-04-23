@@ -2,7 +2,7 @@ import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-de
 import { remCalc } from '@bigcommerce/big-design-theme';
 import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
-import React from 'react';
+import React, { createRef } from 'react';
 
 import { FormGroup } from '../Form';
 
@@ -567,7 +567,7 @@ test('should default max-height to 250', () => {
 });
 
 test('should use the passed in ref object if provided', () => {
-  const ref = React.createRef<HTMLInputElement>();
+  const ref = createRef<HTMLInputElement>();
   const { getAllByLabelText } = render(
     <Select
       inputRef={ref}

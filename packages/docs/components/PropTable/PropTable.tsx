@@ -25,7 +25,7 @@ export interface PropTableProps {
 
 export type PropTableWrapper = Partial<PropTableProps>;
 
-export const PropTable: FC<PropTableProps> = props => {
+export const PropTable: FC<PropTableProps> = (props) => {
   const { collapsible, id, propList: items, title } = props;
 
   const renderTable = () => (

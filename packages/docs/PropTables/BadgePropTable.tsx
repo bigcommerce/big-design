@@ -17,6 +17,6 @@ const badgeProps: Prop[] = [
   },
 ];
 
-export const BadgePropTable: React.FC<PropTableWrapper> = props => (
+export const BadgePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Badge" propList={badgeProps} {...props} />
 );

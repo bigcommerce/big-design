@@ -4,7 +4,7 @@ import React from 'react';
 import { Code, CodePreview } from '../../components';
 import { ProgressCirclePropTable } from '../../PropTables';
 
-export default () => (
+const ProgressCirclePage = () => (
   <>
     <H0>Progress Circle</H0>
 
@@ -45,3 +45,5 @@ export default () => (
     <ProgressCirclePropTable />
   </>
 );
+
+export default ProgressCirclePage;

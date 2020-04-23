@@ -1,6 +1,7 @@
-import { render } from '@test/utils';
-import 'jest-styled-components';
 import React from 'react';
+import 'jest-styled-components';
+
+import { render } from '@test/utils';
 
 import { FormControlDescription as Description } from './Description';
 

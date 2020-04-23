@@ -1,4 +1,4 @@
-import { remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { StyleableButton } from '../Button/private';

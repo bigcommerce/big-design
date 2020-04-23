@@ -1,4 +1,4 @@
-import { TabsProps as _TabsProps, TabItem as _TabItem } from './Tabs';
+import { TabItem as _TabItem, TabsProps as _TabsProps } from './Tabs';
 
 export { Tabs } from './Tabs';
 

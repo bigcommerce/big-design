@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { HTMLAttributes, memo } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { excludePaddingProps } from '../../mixins/paddings/paddings';
@@ -11,12 +11,12 @@ export interface PanelAction extends Omit<ButtonProps, 'children'> {
   text?: string;
 }
 
-export interface PanelProps extends React.HTMLAttributes<HTMLElement>, MarginProps {
+export interface PanelProps extends HTMLAttributes<HTMLElement>, MarginProps {
   header?: string;
   action?: PanelAction;
 }
 
-export const RawPanel: React.FC<PanelProps> = memo(props => {
+export const RawPanel: React.FC<PanelProps> = memo((props) => {
   const filteredProps = excludePaddingProps(props);
   const { action, children, header, ...rest } = filteredProps;
 

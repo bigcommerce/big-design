@@ -1,6 +1,7 @@
-import { fireEvent, render } from '@test/utils';
+import React, { createRef } from 'react';
 import 'jest-styled-components';
-import React from 'react';
+
+import { fireEvent, render } from '@test/utils';
 
 import { Fieldset } from '../Fieldset';
 import { Input } from '../Input';
@@ -8,7 +9,7 @@ import { Input } from '../Input';
 import { Form, FormGroup } from './index';
 
 test('forwards ref', () => {
-  const ref = React.createRef<HTMLFormElement>();
+  const ref = createRef<HTMLFormElement>();
 
   const { container } = render(<Form ref={ref} />);
   const form = container.querySelector('form');

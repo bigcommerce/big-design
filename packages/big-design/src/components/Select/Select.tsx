@@ -1,6 +1,17 @@
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
-import React, { createRef, useCallback, useEffect, useMemo, useRef, useState, Fragment, RefObject } from 'react';
+import React, {
+  cloneElement,
+  createRef,
+  Fragment,
+  isValidElement,
+  RefObject,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
@@ -47,7 +58,7 @@ export const Select = typedMemo(
     const itemKey = useRef(0);
 
     const findSelectedOption = useMemo(() => {
-      return flattenedOptions.find(option => 'value' in option && option.value === value) as
+      return flattenedOptions.find((option) => 'value' in option && option.value === value) as
         | SelectOption<T>
         | undefined;
     }, [flattenedOptions, value]);
@@ -73,7 +84,7 @@ export const Select = typedMemo(
     }, [findSelectedOption]);
 
     const findSelectedOptionIndex = useMemo(() => {
-      return selectOptions.findIndex(item => 'value' in item && item.value === value);
+      return selectOptions.findIndex((item) => 'value' in item && item.value === value);
     }, [selectOptions, value]);
 
     useEffect(() => {
@@ -88,9 +99,9 @@ export const Select = typedMemo(
       setInputValue(changes.inputValue || '');
     };
 
-    const filterOptions = (inputVal: string = '') => {
+    const filterOptions = (inputVal = '') => {
       return flattenedOptions.filter(
-        option =>
+        (option) =>
           option.content === (action && action.content) ||
           option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
@@ -134,6 +145,8 @@ export const Select = typedMemo(
           ) {
             return { ...actionAndChanges.changes, inputValue: state.inputValue };
           }
+
+          return actionAndChanges.changes;
         default:
           return actionAndChanges.changes;
       }
@@ -154,7 +167,7 @@ export const Select = typedMemo(
       id: selectUniqueId,
       inputId: id,
       inputValue,
-      itemToString: option => (option ? option.content : ''),
+      itemToString: (option) => (option ? option.content : ''),
       items: selectOptions,
       labelId,
       onHighlightedIndexChange: handleOnHighlightedIndexChange,
@@ -218,7 +231,7 @@ export const Select = typedMemo(
                   autoComplete: 'no',
                   disabled,
                   onFocus: openMenu,
-                  onKeyDown: event => {
+                  onKeyDown: (event) => {
                     switch (event.key) {
                       case 'Enter':
                         event.preventDefault();
@@ -295,7 +308,7 @@ export const Select = typedMemo(
       (items: Array<SelectOption<T>>) => {
         return (
           isOpen &&
-          items.map(item => {
+          items.map((item) => {
             if (
               !selectOptions.find(
                 (option: SelectOption<T> | SelectAction) => 'value' in option && option.value === item.value,
@@ -444,8 +457,8 @@ const getContent = <T extends any>(item: SelectOption<T> | SelectAction, isHighl
 
 const renderIcon = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
   return (
-    React.isValidElement(item.icon) &&
-    React.cloneElement(item.icon, {
+    isValidElement(item.icon) &&
+    cloneElement(item.icon, {
       color: iconColor(item, isHighlighted),
       size: 'large',
     })

@@ -36,7 +36,7 @@ const InternalStatefulTable = <T extends TableItem>({
 }: StatefulTableProps<T>): React.ReactElement<StatefulTableProps<T>> => {
   const reducer = useMemo(() => createReducer<T>(), []);
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
-  const sortable = useMemo(() => columns.some(column => column.sortKey || column.sortFn), [columns]);
+  const sortable = useMemo(() => columns.some((column) => column.sortKey || column.sortFn), [columns]);
 
   const [state, dispatch] = useReducer(reducer, { columns, defaultSelected, items, pagination }, reducerInit);
 

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const tableProps: Prop[] = [
@@ -166,18 +168,18 @@ const tableSortableProps: Prop[] = [
   },
 ];
 
-export const TablePropTable: React.FC<PropTableWrapper> = props => (
+export const TablePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Table" propList={tableProps} {...props} />
 );
 
-export const TableColumnsPropTable: React.FC<PropTableWrapper> = props => (
+export const TableColumnsPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Table[Columns]" propList={tableColumnsProps} {...props} />
 );
 
-export const TableSelectablePropTable: React.FC<PropTableWrapper> = props => (
+export const TableSelectablePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Table[Selectable]" propList={tableSelectableProps} {...props} />
 );
 
-export const TableSortablePropTable: React.FC<PropTableWrapper> = props => (
+export const TableSortablePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Table[Sortable]" propList={tableSortableProps} {...props} />
 );

@@ -107,7 +107,7 @@ const items = [
   { sku: 'be1652e5', name: 'Wine - Cahors Ac 2000, Clos', stock: 21 },
 ];
 
-export default () => {
+const StatefulTablePage = () => {
   return (
     <>
       <H0>StatefulTable</H0>
@@ -162,3 +162,5 @@ export default () => {
     </>
   );
 };
+
+export default StatefulTablePage;

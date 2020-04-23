@@ -4,11 +4,11 @@ import React from 'react';
 import { BigDesignLogoIcon, GithubLogoIcon } from '../Icons';
 import { List } from '../List';
 
-import { StyledFlex } from './styled';
 import { SideNavGroup } from './SideNavGroup';
 import { SideNavLink, StyledLink } from './SideNavLink';
 import { SideNavLogo } from './SideNavLogo';
 import { SideNavMenu } from './SideNavMenu';
+import { StyledFlex } from './styled';
 
 const CodeSandboxUrl = process.env.CODE_SANDBOX_URL as string;
 

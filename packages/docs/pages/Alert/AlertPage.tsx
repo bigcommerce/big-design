@@ -1,4 +1,5 @@
-import { AlertsManager, AlertProps, Button, H0, H1, H2, Message, Text } from '@bigcommerce/big-design';
+import { AlertProps, AlertsManager, Button, H0, H1, H2, Message, Text } from '@bigcommerce/big-design';
+import React from 'react';
 
 import { Code, CodePreview, CodeSnippet } from '../../components';
 import {
@@ -6,11 +7,11 @@ import {
   AlertsManagerRemoveMethodList,
   AlertsManagerSubscribeMethodList,
 } from '../../MethodLists';
-import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../../PropTables/shared';
 import { AlertPropTable } from '../../PropTables/AlertPropTable';
+import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../../PropTables/shared';
 import { alertsManager } from '../_app';
 
-export default () => (
+const AlertPage = () => (
   <>
     <H0>Alerts</H0>
     <Text>An alert appears at the top right of the interface notifying the user after an action.</Text>
@@ -107,3 +108,5 @@ export default () => (
     <AlertsManagerSubscribeMethodList />
   </>
 );
+
+export default AlertPage;

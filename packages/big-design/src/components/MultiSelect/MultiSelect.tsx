@@ -1,5 +1,14 @@
 import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
-import React, { createRef, useCallback, useEffect, useMemo, useState, RefObject } from 'react';
+import React, {
+  cloneElement,
+  createRef,
+  isValidElement,
+  RefObject,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
@@ -43,7 +52,7 @@ export const MultiSelect = typedMemo(
 
     const findSelectedOptions = useMemo(() => {
       return initialOptions.filter(
-        option => value && value.find(val => 'value' in option && val === option.value) !== undefined,
+        (option) => value && value.find((val) => 'value' in option && val === option.value) !== undefined,
       ) as Array<SelectOption<T>>;
     }, [initialOptions, value]);
 
@@ -73,9 +82,9 @@ export const MultiSelect = typedMemo(
       setInputValue(changes.inputValue || '');
     };
 
-    const filterOptions = (inputVal: string = '') => {
+    const filterOptions = (inputVal = '') => {
       return initialOptions.filter(
-        option => option === action || option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
+        (option) => option === action || option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
     };
 
@@ -100,7 +109,7 @@ export const MultiSelect = typedMemo(
         case useCombobox.stateChangeTypes.InputBlur:
           return { ...actionAndChanges.changes, inputValue: '' };
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
-        case useCombobox.stateChangeTypes.ItemClick:
+        case useCombobox.stateChangeTypes.ItemClick: {
           if (!actionAndChanges.changes.selectedItem) {
             return actionAndChanges.changes;
           }
@@ -112,7 +121,7 @@ export const MultiSelect = typedMemo(
 
           const isChecked = Boolean(
             selectedOptions.find(
-              i =>
+              (i) =>
                 actionAndChanges.changes.selectedItem &&
                 'value' in actionAndChanges.changes.selectedItem &&
                 i.value === actionAndChanges.changes.selectedItem.value,
@@ -129,6 +138,7 @@ export const MultiSelect = typedMemo(
             inputValue: '',
             isOpen: true,
           };
+        }
         default:
           return actionAndChanges.changes;
       }
@@ -140,10 +150,10 @@ export const MultiSelect = typedMemo(
           return;
         }
 
-        const newOptions = selectedOptions.filter(i => i.value !== item.value);
+        const newOptions = selectedOptions.filter((i) => i.value !== item.value);
 
         onOptionsChange(
-          newOptions.map(option => option.value),
+          newOptions.map((option) => option.value),
           newOptions,
         );
 
@@ -161,7 +171,7 @@ export const MultiSelect = typedMemo(
         const newOptions = [...selectedOptions, item];
 
         onOptionsChange(
-          newOptions.map(option => option.value),
+          newOptions.map((option) => option.value),
           newOptions,
         );
 
@@ -184,7 +194,7 @@ export const MultiSelect = typedMemo(
       id: multiSelectUniqueId,
       inputId: id,
       inputValue,
-      itemToString: option => (option ? option.content : ''),
+      itemToString: (option) => (option ? option.content : ''),
       items,
       labelId,
       onInputValueChange: handleSetInputValue,
@@ -247,7 +257,7 @@ export const MultiSelect = typedMemo(
                   autoComplete: 'no',
                   disabled,
                   onFocus: openMenu,
-                  onKeyDown: event => {
+                  onKeyDown: (event) => {
                     switch (event.key) {
                       case 'Backspace':
                         if (!inputValue) {
@@ -338,7 +348,7 @@ export const MultiSelect = typedMemo(
           }
 
           const isHighlighted = highlightedIndex === index;
-          const isChecked = 'value' in item && Boolean(selectedOptions.find(i => i.value === item.value));
+          const isChecked = 'value' in item && Boolean(selectedOptions.find((i) => i.value === item.value));
 
           const { content, disabled: itemDisabled, icon, ...itemProps } = item as SelectOption<T>;
 
@@ -429,8 +439,8 @@ const getContent = <T extends any>(item: SelectOption<T> | SelectAction, isHighl
 
 const renderIcon = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
   return (
-    React.isValidElement(item.icon) &&
-    React.cloneElement(item.icon, {
+    isValidElement(item.icon) &&
+    cloneElement(item.icon, {
       color: iconColor(item, isHighlighted),
       size: 'large',
     })

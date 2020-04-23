@@ -1,8 +1,8 @@
-import { theme as defaultTheme, Colors, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
-import React from 'react';
+import { Colors, theme as defaultTheme, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
+import React, { SVGProps } from 'react';
 import styled from 'styled-components';
 
-export interface IconProps extends React.SVGProps<SVGSVGElement> {
+export interface IconProps extends SVGProps<SVGSVGElement> {
   className?: string;
   color?: keyof Colors;
   size?: keyof Spacing | number;

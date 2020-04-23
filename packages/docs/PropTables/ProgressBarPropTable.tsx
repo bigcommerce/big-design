@@ -10,6 +10,6 @@ const progressBarProps: Prop[] = [
   },
 ];
 
-export const ProgressBarPropTable: React.FC<PropTableWrapper> = props => (
+export const ProgressBarPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="ProgressBar" propList={progressBarProps} {...props} />
 );

@@ -1,9 +1,10 @@
 import { Box, H0, Text } from '@bigcommerce/big-design';
+import React from 'react';
 
 import { Code, CodePreview, NextLink } from '../../components';
 import { DisplayPropTable } from '../../PropTables';
 
-export default () => (
+const DisplayPage = () => (
   <>
     <H0>Display</H0>
 
@@ -48,3 +49,5 @@ export default () => (
     <DisplayPropTable />
   </>
 );
+
+export default DisplayPage;

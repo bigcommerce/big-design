@@ -1,12 +1,12 @@
 import { Button, Flex, FlexItem } from '@bigcommerce/big-design';
 import { MenuIcon } from '@bigcommerce/big-design-icons';
 import { default as Router } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { StyledMenu, StyledNavigation } from './styled';
 
-export const SideNavMenu: React.FC = props => {
-  const [isExpanded, setIsExpanded] = React.useState(false);
+export const SideNavMenu: React.FC = (props) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const handleClick = () => setIsExpanded(!isExpanded);
   Router.events.on('routeChangeComplete', () => setIsExpanded(false));
 

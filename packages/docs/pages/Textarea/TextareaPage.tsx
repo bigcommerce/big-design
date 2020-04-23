@@ -1,10 +1,10 @@
 import { Form, FormGroup, H0, H1, Link, Text, Textarea } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import { TextareaPropTable } from '../../PropTables';
 
-export default () => (
+const TextAreaPage = () => (
   <>
     <H0>Textarea</H0>
 
@@ -19,9 +19,9 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [value, setValue] = React.useState('');
+        const [value, setValue] = useState('');
 
-        const handleChange = event => setValue(event.target.value);
+        const handleChange = (event) => setValue(event.target.value);
 
         return (
           <Form>
@@ -109,3 +109,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default TextAreaPage;

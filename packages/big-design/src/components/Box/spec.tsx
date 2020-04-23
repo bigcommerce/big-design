@@ -1,6 +1,7 @@
-import { render } from '@test/utils';
+import React, { createRef } from 'react';
 import 'jest-styled-components';
-import React from 'react';
+
+import { render } from '@test/utils';
 
 import { Box } from './index';
 
@@ -76,7 +77,7 @@ test('renders as a different tag', () => {
 });
 
 test('box forwards ref', () => {
-  const ref = React.createRef<HTMLDivElement>();
+  const ref = createRef<HTMLDivElement>();
 
   const { container } = render(<Box ref={ref}>Hello</Box>);
   const div = container.querySelector('div');

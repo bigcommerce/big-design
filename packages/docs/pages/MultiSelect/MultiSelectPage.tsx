@@ -1,11 +1,11 @@
 import { Form, FormGroup, Grid, H0, H1, H2, Link, MultiSelect, Text } from '@bigcommerce/big-design';
 import { DeleteIcon } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import { MultiSelectPropTable, SelectActionPropTable, SelectOptionPropTable } from '../../PropTables';
 
-export default () => (
+const MultiSelectPage = () => (
   <>
     <H0>MultiSelects</H0>
 
@@ -20,8 +20,8 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [value, setValue] = React.useState(['mx']);
-        const handleChange = val => setValue(val);
+        const [value, setValue] = useState(['mx']);
+        const handleChange = (val) => setValue(val);
 
         return (
           <Form>
@@ -302,3 +302,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default MultiSelectPage;

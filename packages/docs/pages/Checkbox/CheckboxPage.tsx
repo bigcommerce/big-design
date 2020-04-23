@@ -1,10 +1,10 @@
 import { Checkbox, Form, FormGroup, H0, H1, Link, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import { CheckboxDescriptionLinkPropTable, CheckboxDescriptionPropTable, CheckboxPropTable } from '../../PropTables';
 
-export default () => (
+const CheckboxPage = () => (
   <>
     <H0>Checkbox</H0>
 
@@ -19,7 +19,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [checked, setChecked] = React.useState(false);
+        const [checked, setChecked] = useState(false);
         const handleChange = () => setChecked(!checked);
 
         return (
@@ -66,8 +66,8 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [checkedA, setChangeA] = React.useState(false);
-        const [checkedB, setChangeB] = React.useState(false);
+        const [checkedA, setChangeA] = useState(false);
+        const [checkedB, setChangeB] = useState(false);
         const handleChangeA = () => setChangeA(!checkedA);
         const handleChangeB = () => setChangeB(!checkedB);
 
@@ -100,3 +100,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default CheckboxPage;

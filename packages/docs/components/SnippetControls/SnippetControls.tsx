@@ -31,7 +31,7 @@ function onCopy(setIsCopying: (copying: boolean) => void, copyToClipboard: () =>
   }, 1000);
 }
 
-export const SnippetControls: React.FC<SnippetControls> = props => {
+export const SnippetControls: React.FC<SnippetControls> = (props) => {
   const { copyToClipboard, helperText, resetCode } = props;
   const [isCopying, setIsCopying] = useState(false);
   const { toggleTheme: toggleEditorTheme, setLanguage } = useContext(CodeEditorContext);

@@ -86,14 +86,14 @@ const textProps: Prop[] = [
   },
 ];
 
-export const TypographyPropTable: React.FC<PropTableWrapper> = props => (
+export const TypographyPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Typography" propList={typographyProps} {...props} />
 );
 
-export const HeadingPropTable: React.FC<PropTableWrapper> = props => (
+export const HeadingPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Heading" propList={headingProps} {...props} />
 );
 
-export const TextPropTable: React.FC<PropTableWrapper> = props => (
+export const TextPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Text" propList={textProps} {...props} />
 );

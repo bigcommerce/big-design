@@ -1,4 +1,3 @@
-import { Flex } from '@bigcommerce/big-design';
 import Link from 'next/link';
 import React from 'react';
 

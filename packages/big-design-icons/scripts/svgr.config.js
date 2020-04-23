@@ -1,4 +1,4 @@
-const prettierConfig = require('../prettier.config');
+const prettierConfig = require('../../../prettier.config');
 
 module.exports = {
   titleProp: true,
@@ -10,12 +10,12 @@ module.exports = {
     strokeWidth: '0',
   },
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
-  template({ template }, opts, { imports, componentName, props, jsx, exports }) {
+  template({ template }, _, { componentName, jsx }) {
     const code = `
     // **********************************
     // Auto-generated file, do NOT modify
     // **********************************
-    import React from 'react';
+    import React, { forwardRef, memo } from 'react';
     BREAK
 
     import { createStyledIcon, IconProps, PrivateIconProps } from '../base';
@@ -33,10 +33,10 @@ module.exports = {
     };
 
     BREAK
-    const IconWithForwardedRef = React.forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => <Icon {...iconProps} svgRef={ref} />);
+    const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => <Icon {...iconProps} svgRef={ref} />);
 
     BREAK
-    export const COMPONENT_NAME = React.memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
+    export const COMPONENT_NAME = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
 
     BREAK
     COMPONENT_NAME.displayName = '${componentName.name}';

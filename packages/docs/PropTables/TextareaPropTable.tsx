@@ -1,7 +1,6 @@
-import { H2, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
+import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
 const textareaProps: Prop[] = [
   {
@@ -50,6 +49,6 @@ const textareaProps: Prop[] = [
   },
 ];
 
-export const TextareaPropTable: React.FC<PropTableWrapper> = props => (
+export const TextareaPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Textarea" propList={textareaProps} {...props} />
 );

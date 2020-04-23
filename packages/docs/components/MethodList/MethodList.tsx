@@ -29,7 +29,9 @@ export const MethodList: React.FC<MethodListProps> = ({ name, intro, usage, para
 
       <Text>{intro}</Text>
 
-      <CodeSnippet language="javascript" showControls={false} children={usage} />
+      <CodeSnippet language="javascript" showControls={false}>
+        {usage}
+      </CodeSnippet>
 
       {parameterList && parameterList.length > 0 && (
         <>

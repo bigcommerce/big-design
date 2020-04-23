@@ -1,6 +1,7 @@
-import { render } from '@test/utils';
+import React, { createRef } from 'react';
 import 'jest-styled-components';
-import React from 'react';
+
+import { render } from '@test/utils';
 
 import { Flex, FlexItem } from './index';
 
@@ -56,7 +57,7 @@ test('Flex Item should handle falsy values (0)', () => {
 });
 
 test('Flex forwards ref', () => {
-  const ref = React.createRef<HTMLDivElement>();
+  const ref = createRef<HTMLDivElement>();
 
   const { container } = render(<Flex ref={ref}>Hello</Flex>);
   const div = container.querySelector('div');
@@ -65,7 +66,7 @@ test('Flex forwards ref', () => {
 });
 
 test('FlexItem forwards ref', () => {
-  const ref = React.createRef<HTMLDivElement>();
+  const ref = createRef<HTMLDivElement>();
 
   const { container } = render(<FlexItem ref={ref}>Hello</FlexItem>);
   const div = container.querySelector('div');

@@ -1,4 +1,4 @@
-import React, { forwardRef, useMemo, Ref } from 'react';
+import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo } from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
@@ -49,8 +49,8 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
       );
     }
 
-    if (React.isValidElement(label) && label.type === FormControlLabel) {
-      return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+    if (isValidElement(label) && label.type === FormControlLabel) {
+      return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
         id: labelId,
         htmlFor: id,
       });
@@ -68,7 +68,7 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
       return <FormControlDescription>{description}</FormControlDescription>;
     }
 
-    if (React.isValidElement(description) && description.type === FormControlDescription) {
+    if (isValidElement(description) && description.type === FormControlDescription) {
       return description;
     }
 
@@ -85,7 +85,7 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
         return err;
       }
 
-      if (React.isValidElement(err) && err.type === FormControlError) {
+      if (isValidElement(err) && err.type === FormControlError) {
         return err;
       }
 

@@ -16,13 +16,13 @@ interface Context {
 export const CodeEditorContext = createContext<Context>({
   language: 'tsx',
   theme: darkTheme,
-  // tslint:disable-next-line: no-empty
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setLanguage: () => {},
-  // tslint:disable-next-line: no-empty
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleTheme: () => {},
 });
 
-export const StoryWrapper: React.FC = props => {
+export const StoryWrapper: React.FC = (props) => {
   const [editorTheme, setEditorTheme] = useState(darkTheme);
   const [language, setLanguage] = useState<Language>('tsx');
   const toggleEditorTheme = () => setEditorTheme(editorTheme === darkTheme ? lightTheme : darkTheme);

@@ -1,10 +1,10 @@
 import { Button, H0, H1, Link, Modal, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import { ModalPropTable } from '../../PropTables';
 
-export default () => (
+const ModalPage = () => (
   <>
     <H0>Modal</H0>
 
@@ -20,7 +20,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [isOpen, setIsOpen] = React.useState(false);
+        const [isOpen, setIsOpen] = useState(false);
 
         return (
           <>
@@ -69,7 +69,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [isOpen, setIsOpen] = React.useState(false);
+        const [isOpen, setIsOpen] = useState(false);
 
         return (
           <>
@@ -101,3 +101,5 @@ export default () => (
     <ModalPropTable />
   </>
 );
+
+export default ModalPage;

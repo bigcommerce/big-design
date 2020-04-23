@@ -1,9 +1,9 @@
 import { MarginProps } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 
 import { StyledMethodBadge } from './styled';
 
-export interface MethodBadgeProps extends React.HTMLAttributes<HTMLDivElement>, MarginProps {
+export interface MethodBadgeProps extends HTMLAttributes<HTMLDivElement>, MarginProps {
   label: string;
 }
 

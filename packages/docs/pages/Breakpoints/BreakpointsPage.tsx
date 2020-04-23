@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { Code, CodePreview } from '../../components';
 
-export default () => (
+const BreakpointsPage = () => (
   <>
     <H0>Breakpoints</H0>
 
@@ -59,3 +59,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default BreakpointsPage;

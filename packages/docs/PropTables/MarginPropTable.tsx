@@ -68,6 +68,6 @@ const marginProps: Prop[] = [
   },
 ];
 
-export const MarginPropTable: React.FC<PropTableWrapper> = props => (
+export const MarginPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Margin" propList={marginProps} {...props} />
 );

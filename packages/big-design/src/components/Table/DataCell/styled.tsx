@@ -39,7 +39,7 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
   background-color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => `0 ${theme.spacing.small}`};
 
-  ${props =>
+  ${(props) =>
     props.isCheckbox &&
     css`
       width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};

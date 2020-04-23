@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { render } from 'react-dom';
-
-import { App } from './App';
 import { GlobalStyles } from '@bigcommerce/big-design';
 import { theme } from '@bigcommerce/big-design-theme';
+import React from 'react';
+import { render } from 'react-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+import { App } from './App';
 
 const AppGlobalStyles = createGlobalStyle`
   body {
@@ -23,5 +23,5 @@ render(
       <App />
     </>
   </ThemeProvider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

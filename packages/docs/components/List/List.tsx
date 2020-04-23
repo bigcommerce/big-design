@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
-import { StyledOrderedList, StyledUnorderedList } from './styled';
 import { ListItem } from './Item';
+import { StyledOrderedList, StyledUnorderedList } from './styled';
 
 export interface ListProps {
   columnCount?: number;
@@ -10,7 +10,7 @@ export interface ListProps {
   bulleted?: boolean;
 }
 
-export class List extends React.PureComponent<ListProps> {
+export class List extends PureComponent<ListProps> {
   static defaultProps = {
     columnCount: 1,
     columnGap: 'normal',

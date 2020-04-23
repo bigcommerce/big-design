@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 export const sharedMessagingProps: Prop[] = [
@@ -74,10 +76,10 @@ export const messagingLinkItemProps: Prop[] = [
   },
 ];
 
-export const MessagingItemPropTable: React.FC<PropTableWrapper> = props => (
+export const MessagingItemPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="" propList={messagingItemProps} {...props} id="message-item-prop-table" />
 );
 
-export const MessagingLinkItemPropTable: React.FC<PropTableWrapper> = props => (
+export const MessagingLinkItemPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="" propList={messagingLinkItemProps} {...props} id="message-link-item-prop-table" />
 );

@@ -1,10 +1,11 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import { render } from '@test/utils';
 import 'jest-styled-components';
 import React from 'react';
 import styled from 'styled-components';
 
-import { excludeMarginProps, withMargins, MarginProps } from './margins';
+import { render } from '@test/utils';
+
+import { excludeMarginProps, MarginProps, withMargins } from './margins';
 
 const TestComponent = styled.div<MarginProps>`
   ${withMargins()};

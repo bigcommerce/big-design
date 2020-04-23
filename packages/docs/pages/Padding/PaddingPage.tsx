@@ -4,7 +4,7 @@ import React from 'react';
 import { CodePreview, NextLink } from '../../components';
 import { PaddingPropTable } from '../../PropTables';
 
-export default () => (
+const PaddingPage = () => (
   <>
     <H0>Padding</H0>
 
@@ -49,3 +49,5 @@ export default () => (
     <PaddingPropTable />
   </>
 );
+
+export default PaddingPage;

@@ -1,4 +1,4 @@
-import { breakpointsOrder, Breakpoints, ThemeInterface } from '@bigcommerce/big-design-theme';
+import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { FlexedItemProps, FlexedOverload, FlexedProps } from './types';
@@ -51,7 +51,7 @@ const getResponsiveFlex: FlexedOverload = (
   );
 
   return (breakpointKeys as Array<keyof Breakpoints>).map(
-    breakpointKey =>
+    (breakpointKey) =>
       css`
         ${theme.breakpoints[breakpointKey]} {
           ${getSimpleFlex(flexedProp[breakpointKey], cssKey)}

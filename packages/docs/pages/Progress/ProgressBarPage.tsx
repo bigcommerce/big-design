@@ -4,7 +4,7 @@ import React from 'react';
 import { Code, CodePreview } from '../../components';
 import { ProgressBarPropTable } from '../../PropTables';
 
-export default () => (
+const ProgressBarPage = () => (
   <>
     <H0>Progress Bar</H0>
 
@@ -49,3 +49,5 @@ export default () => (
     <ProgressBarPropTable />
   </>
 );
+
+export default ProgressBarPage;

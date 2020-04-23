@@ -1,10 +1,12 @@
 import { AddIcon } from '@bigcommerce/big-design-icons';
-import { fireEvent, render } from '@test/utils';
+import React, { createRef } from 'react';
 import 'jest-styled-components';
-import React from 'react';
+
+import { fireEvent, render } from '@test/utils';
+
+import { StyleableButton } from './private';
 
 import { Button } from './index';
-import { StyleableButton } from './private';
 
 test('render default button', () => {
   const { container } = render(<Button>Button</Button>);
@@ -141,7 +143,7 @@ test('render icon left and right button', () => {
 });
 
 test('forwards ref', () => {
-  const ref = React.createRef<HTMLButtonElement>();
+  const ref = createRef<HTMLButtonElement>();
 
   const { container } = render(<Button ref={ref} />);
   const button = container.querySelector('button');

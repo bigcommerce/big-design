@@ -1,7 +1,7 @@
 import { addValues, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { withMargins, MarginProps } from '../../mixins';
+import { MarginProps, withMargins } from '../../mixins';
 import { withTransition } from '../../mixins/transitions';
 import { Flex } from '../Flex';
 
@@ -78,7 +78,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
       padding-right: ${theme.spacing.xSmall};
     `};
 
-  ${props => getButtonStyles(props)}
+  ${(props) => getButtonStyles(props)}
 `;
 
 export const ContentWrapper = styled.span.attrs<{}, { isLoading?: boolean }>({})`

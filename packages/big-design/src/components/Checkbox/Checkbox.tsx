@@ -1,12 +1,12 @@
 import { CheckIcon, RemoveIcon } from '@bigcommerce/big-design-icons';
-import React, { forwardRef, useMemo, Ref } from 'react';
+import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo } from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
-import { CheckboxContainer, CheckboxLabelContainer, HiddenCheckbox, StyledCheckbox } from './styled';
 import { CheckboxLabel } from './Label';
+import { CheckboxContainer, CheckboxLabelContainer, HiddenCheckbox, StyledCheckbox } from './styled';
 
 interface Props {
   hiddenLabel?: boolean;
@@ -55,8 +55,8 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       );
     }
 
-    if (React.isValidElement(label) && label.type === CheckboxLabel) {
-      return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+    if (isValidElement(label) && label.type === CheckboxLabel) {
+      return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
         hidden: hiddenLabel,
         htmlFor: id,
         id: labelId,
@@ -86,7 +86,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
         disabled={disabled}
         {...props}
         aria-labelledby={labelId}
-        ref={checkbox => {
+        ref={(checkbox) => {
           if (checkbox && typeof isIndeterminate === 'boolean') {
             checkbox.indeterminate = !checked && isIndeterminate;
           }

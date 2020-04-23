@@ -15,6 +15,6 @@ const panelProps: Prop[] = [
   },
 ];
 
-export const PanelPropTable: React.FC<PropTableWrapper> = props => (
+export const PanelPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Panel" propList={panelProps} {...props} />
 );

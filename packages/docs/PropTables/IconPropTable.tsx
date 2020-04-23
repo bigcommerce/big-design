@@ -28,7 +28,7 @@ const iconProps: Prop[] = [
   {
     name: 'size',
     types: [
-      <NextLink href="/Spacing/SpacingPage" as="/spacing">
+      <NextLink href="/Spacing/SpacingPage" as="/spacing" key="1">
         Spacing
       </NextLink>,
       'number',
@@ -45,6 +45,6 @@ const iconProps: Prop[] = [
   },
 ];
 
-export const IconPropTable: React.FC<PropTableWrapper> = props => (
+export const IconPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Icon" propList={iconProps} {...props} />
 );

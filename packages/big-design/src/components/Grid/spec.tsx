@@ -1,9 +1,11 @@
-import { render } from '@test/utils';
+import React, { createRef } from 'react';
 import 'jest-styled-components';
-import React from 'react';
+
+import { render } from '@test/utils';
+
+import { GridItem } from './Item';
 
 import { Grid } from './index';
-import { GridItem } from './Item';
 
 test('render Grid', () => {
   const template = `
@@ -55,7 +57,7 @@ test('rendering as another element retains inherited props and styles', () => {
 });
 
 test('grid forwards ref', () => {
-  const ref = React.createRef<HTMLDivElement>();
+  const ref = createRef<HTMLDivElement>();
   const { getByTestId } = render(<Grid ref={ref} data-testid="grid" />);
   const grid = getByTestId('grid');
 

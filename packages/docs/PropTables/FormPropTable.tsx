@@ -34,7 +34,7 @@ const formFieldsetProps: Prop[] = [
   },
 ];
 
-export const FormFieldsetPropTable: React.FC<PropTableWrapper> = props => (
+export const FormFieldsetPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Fieldset" propList={formFieldsetProps} {...props} />
 );
 
@@ -64,7 +64,7 @@ const formGroupProps: Prop[] = [
   },
 ];
 
-export const FormPropTable: React.FC<PropTableWrapper> = props => (
+export const FormPropTable: React.FC<PropTableWrapper> = (props) => (
   <>
     <Text>
       Supports all native <Code>&lt;form /&gt;</Code> element attributes.
@@ -73,6 +73,6 @@ export const FormPropTable: React.FC<PropTableWrapper> = props => (
   </>
 );
 
-export const FormGroupPropTable: React.FC<PropTableWrapper> = props => (
+export const FormGroupPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="FormGroup" propList={formGroupProps} {...props} />
 );

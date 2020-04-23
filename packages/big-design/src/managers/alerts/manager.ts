@@ -63,12 +63,12 @@ class AlertsManager {
     this.subscribers.push(subscriber);
 
     return () => {
-      this.subscribers = this.subscribers.filter(sub => sub !== subscriber);
+      this.subscribers = this.subscribers.filter((sub) => sub !== subscriber);
     };
   }
 
   private notifySubscribers() {
-    this.subscribers.forEach(subscriber => subscriber(this.alerts[0] || null));
+    this.subscribers.forEach((subscriber) => subscriber(this.alerts[0] || null));
   }
 
   private getUniqueId() {
@@ -82,7 +82,7 @@ class AlertsManager {
   };
 
   private containsKey(key: string) {
-    return !!this.alerts.find(alert => alert.key === key);
+    return !!this.alerts.find((alert) => alert.key === key);
   }
 }
 

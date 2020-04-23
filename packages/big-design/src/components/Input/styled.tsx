@@ -1,7 +1,7 @@
-import { addValues, remCalc, theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { addValues, theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { withPaddings, PaddingProps } from '../../mixins';
+import { PaddingProps, withPaddings } from '../../mixins';
 import { withTransition } from '../../mixins/transitions';
 
 import { InputProps } from './Input';

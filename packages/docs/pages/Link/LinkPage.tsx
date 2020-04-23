@@ -1,11 +1,10 @@
 import { H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
-import { OpenInNewIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
-import { Code, CodePreview } from '../../components';
+import { CodePreview } from '../../components';
 import { LinkPropTable, MarginPropTable } from '../../PropTables';
 
-export default () => (
+const LinkPage = () => (
   <>
     <H0>Link</H0>
 
@@ -41,3 +40,5 @@ export default () => (
     <MarginPropTable collapsible />
   </>
 );
+
+export default LinkPage;

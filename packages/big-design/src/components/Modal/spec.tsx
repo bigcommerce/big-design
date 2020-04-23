@@ -1,8 +1,10 @@
-import { fireEvent, render, wait } from '@test/utils';
-import 'jest-styled-components';
 import React from 'react';
 
+import 'jest-styled-components';
+import { fireEvent, render, wait } from '@test/utils';
+
 import { Button } from '../Button';
+import { Text } from '../Typography';
 
 import { Modal } from './Modal';
 
@@ -222,6 +224,7 @@ test('renders header', () => {
 });
 
 test('header ignores components', () => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore bypassing type to test wrong use case
   const { container } = render(<Modal isOpen={true} header={<Text>Header Title</Text>} />);
 

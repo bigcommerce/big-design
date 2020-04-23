@@ -1,10 +1,10 @@
 import { Counter, Form, FormGroup, H0, H1, Link, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import { CounterPropTable } from '../../PropTables';
 
-export default () => (
+const CounterPage = () => (
   <>
     <H0>Counter</H0>
 
@@ -19,7 +19,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [counterValue, setCounterValue] = React.useState(5);
+        const [counterValue, setCounterValue] = useState(5);
         const handleChange = (value: number) => {
           setCounterValue(value);
         };
@@ -60,8 +60,8 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [counterValue, setCounterValue] = React.useState(0);
-        const [errors, setErrors] = React.useState('Number of items must be at least 1.');
+        const [counterValue, setCounterValue] = useState(0);
+        const [errors, setErrors] = useState('Number of items must be at least 1.');
         const handleChange = (value: number) => {
           setCounterValue(value);
 
@@ -91,3 +91,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default CounterPage;

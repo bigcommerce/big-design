@@ -1,12 +1,14 @@
-import { render } from '@test/utils';
-import 'jest-styled-components';
 import React from 'react';
+import 'jest-styled-components';
+
+import { render } from '@test/utils';
 
 import { warning } from '../../utils';
 
-import { Fieldset } from './index';
 import { FieldsetDescription } from './Description';
 import { FieldsetLegend } from './Legend';
+
+import { Fieldset } from './index';
 
 test('renders a fieldset tag', () => {
   const { container } = render(<Fieldset />);

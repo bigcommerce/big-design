@@ -10,7 +10,7 @@ import { LinkProps } from './Link';
 export const StyledLink = styled.a<LinkProps & { isExternal?: boolean }>`
   ${withMargins()};
   ${withTransition(['color'], '70ms')}
-  ${props => props.ellipsis && ellipsis()};
+  ${(props) => props.ellipsis && ellipsis()};
 
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;

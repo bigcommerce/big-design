@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { CodePreview } from '../../components';
 import { BoxPropTable, DisplayPropTable, MarginPropTable, PaddingPropTable } from '../../PropTables';
 
-export default () => (
+const BoxPage = () => (
   <>
     <H0>Box</H0>
 
@@ -70,3 +70,5 @@ export default () => (
     </Box>
   </>
 );
+
+export default BoxPage;

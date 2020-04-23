@@ -10,7 +10,7 @@ module.exports = {
     CODE_SANDBOX_URL: `https://codesandbox.io/s/github/bigcommerce/big-design/tree/%40bigcommerce/examples%40${examplesVersion}/packages/examples`,
     URL_PREFIX: isProduction ? URL_PREFIX : '',
   },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  webpack: (config) => {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       use: [require.resolve('jsx-to-string-loader')],

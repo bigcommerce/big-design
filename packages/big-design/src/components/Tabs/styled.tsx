@@ -17,13 +17,13 @@ export const StyledTabs = styled(Flex)`
 export const StyledTab = styled(StyleableButton)<TabProps>`
   border: none;
   border-bottom: ${({ theme }) => theme.spacing.xxSmall} solid transparent;
-  border-bottom-color: ${props => (props.id === props.activeTab ? props.theme.colors.primary40 : 'transparent')};
+  border-bottom-color: ${(props) => (props.id === props.activeTab ? props.theme.colors.primary40 : 'transparent')};
   border-radius: 0;
   color: ${({ theme }) => theme.colors.primary};
-  pointer-events: ${props => (props.id === props.activeTab ? 'none' : 'auto')};
+  pointer-events: ${(props) => (props.id === props.activeTab ? 'none' : 'auto')};
   width: auto;
 
-  ${props =>
+  ${(props) =>
     props.id === props.activeTab &&
     css`
       color: ${props.theme.colors.secondary70};

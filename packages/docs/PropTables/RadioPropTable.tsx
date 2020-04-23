@@ -48,11 +48,11 @@ const radioDescriptionProps: Prop[] = [
   },
 ];
 
-export const RadioPropTable: React.FC<PropTableWrapper> = props => (
+export const RadioPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Radio" propList={radioProps} {...props} />
 );
 
-export const RadioDescriptionPropTable: React.FC<PropTableWrapper> = props => (
+export const RadioDescriptionPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
     title="Radio[RadioDescription]"
     propList={radioDescriptionProps}
@@ -61,7 +61,7 @@ export const RadioDescriptionPropTable: React.FC<PropTableWrapper> = props => (
   />
 );
 
-export const RadioDescriptionLinkPropTable: React.FC<PropTableWrapper> = props => (
+export const RadioDescriptionLinkPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
     title="Radio[RadioDescriptionLink]"
     propList={messagingLinkItemProps}

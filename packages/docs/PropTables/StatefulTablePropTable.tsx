@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const statefulTableProps: Prop[] = [
@@ -130,10 +132,10 @@ const tableColumnsProps: Prop[] = [
   },
 ];
 
-export const StatefulTablePropTable: React.FC<PropTableWrapper> = props => (
+export const StatefulTablePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="StatefulTable" propList={statefulTableProps} {...props} />
 );
 
-export const StatefulTableColumnsPropTable: React.FC<PropTableWrapper> = props => (
+export const StatefulTableColumnsPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="StatefulTable[Columns]" propList={tableColumnsProps} {...props} />
 );

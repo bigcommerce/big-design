@@ -1,4 +1,4 @@
-import { createAlertsManager, AlertsManager, GlobalStyles, Grid, GridItem } from '@bigcommerce/big-design';
+import { AlertsManager, createAlertsManager, GlobalStyles, Grid, GridItem } from '@bigcommerce/big-design';
 import { createTheme } from '@bigcommerce/big-design-theme';
 import App from 'next/app';
 import Head from 'next/head';
@@ -10,7 +10,7 @@ import { ThemeProvider } from 'styled-components';
 import { BetaRibbon, SideNav, StoryWrapper } from '../components';
 import { pageView } from '../utils/analytics/gtm';
 
-Router.events.on('routeChangeComplete', url => pageView(url));
+Router.events.on('routeChangeComplete', (url) => pageView(url));
 
 export const alertsManager = createAlertsManager();
 

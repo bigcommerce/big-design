@@ -81,7 +81,7 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
         itemsPerPage: state.pagination.itemsPerPage,
       });
 
-      const selectedItems = state.selectedItems.filter(item => items.includes(item));
+      const selectedItems = state.selectedItems.filter((item) => items.includes(item));
 
       return {
         ...state,
@@ -180,7 +180,7 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
 };
 
 function augmentColumns<T>(columns: Array<StatefulTableColumn<T>>) {
-  return columns.map(column => ({ ...column, isSortable: Boolean(column.sortKey || column.sortFn) }));
+  return columns.map((column) => ({ ...column, isSortable: Boolean(column.sortKey || column.sortFn) }));
 }
 
 function getItems<T>(

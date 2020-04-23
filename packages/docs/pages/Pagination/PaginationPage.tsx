@@ -1,10 +1,10 @@
 import { H0, H1, H2, Pagination, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { CodePreview } from '../../components';
 import { MarginPropTable, PaginationPropTable } from '../../PropTables';
 
-export default () => (
+const PaginationPage = () => (
   <>
     <H0>Pagination</H0>
 
@@ -19,18 +19,18 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function ExampleList() {
-        const [items] = React.useState(['Item1', 'Item2', 'Item3', 'Item 4', 'Item 5']);
-        const [ranges] = React.useState([2, 3, 4]);
-        const [range, setRange] = React.useState(ranges[0]);
-        const [page, setPage] = React.useState(1);
-        const [currentItems, setCurrentItems] = React.useState(['']);
+        const [items] = useState(['Item1', 'Item2', 'Item3', 'Item 4', 'Item 5']);
+        const [ranges] = useState([2, 3, 4]);
+        const [range, setRange] = useState(ranges[0]);
+        const [page, setPage] = useState(1);
+        const [currentItems, setCurrentItems] = useState(['']);
 
-        const onItemsPerPageChange = newRange => {
+        const onItemsPerPageChange = (newRange) => {
           setPage(1);
           setRange(newRange);
         };
 
-        React.useEffect(() => {
+        useEffect(() => {
           const maxItems = page * range;
           const lastItem = Math.min(maxItems, items.length);
           const firstItem = Math.max(0, maxItems - range);
@@ -45,11 +45,11 @@ export default () => (
               itemsPerPage={range}
               itemsPerPageOptions={ranges}
               totalItems={items.length}
-              onPageChange={newPage => setPage(newPage)}
+              onPageChange={(newPage) => setPage(newPage)}
               onItemsPerPageChange={onItemsPerPageChange}
             />
             <ul>
-              {currentItems.map(item => (
+              {currentItems.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
@@ -66,3 +66,5 @@ export default () => (
     <MarginPropTable collapsible />
   </>
 );
+
+export default PaginationPage;

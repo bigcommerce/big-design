@@ -1,5 +1,14 @@
 import { AddCircleOutlineIcon, RemoveCircleOutlineIcon } from '@bigcommerce/big-design-icons';
-import React, { forwardRef, useEffect, useMemo, useState, Ref } from 'react';
+import React, {
+  cloneElement,
+  forwardRef,
+  InputHTMLAttributes,
+  isValidElement,
+  Ref,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
@@ -7,7 +16,7 @@ import { FormControlDescription, FormControlError, FormControlLabel } from '../F
 
 import { StyledCounterButton, StyledCounterInput, StyledCounterWrapper } from './styled';
 
-export interface CounterProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface CounterProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactChild;
   labelId?: string;
   description?: React.ReactChild;
@@ -122,6 +131,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
           break;
         case 'Escape':
           onCountChange(0);
+          break;
         default:
           break;
       }
@@ -140,8 +150,8 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
         );
       }
 
-      if (React.isValidElement(label) && label.type === FormControlLabel) {
-        return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+      if (isValidElement(label) && label.type === FormControlLabel) {
+        return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
           id: labelId,
           htmlFor: id,
         });
@@ -159,7 +169,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
         return <FormControlDescription>{description}</FormControlDescription>;
       }
 
-      if (React.isValidElement(description) && description.type === FormControlDescription) {
+      if (isValidElement(description) && description.type === FormControlDescription) {
         return description;
       }
 
@@ -176,7 +186,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
           return err;
         }
 
-        if (React.isValidElement(err) && err.type === FormControlError) {
+        if (isValidElement(err) && err.type === FormControlError) {
           return err;
         }
 

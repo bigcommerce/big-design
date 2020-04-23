@@ -1,11 +1,11 @@
 import { Form, FormGroup, H0, H1, Input, Link, Text } from '@bigcommerce/big-design';
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import { InputPropTable } from '../../PropTables';
 
-export default () => (
+const InputPage = () => (
   <>
     <H0>Input</H0>
 
@@ -20,9 +20,9 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [value, setValue] = React.useState('');
+        const [value, setValue] = useState('');
 
-        const handleChange = event => setValue(event.target.value);
+        const handleChange = (event) => setValue(event.target.value);
 
         return (
           <Form>
@@ -91,3 +91,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default InputPage;

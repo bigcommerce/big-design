@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { LabelHTMLAttributes } from 'react';
 
 import { StyledLabel } from './styled';
 
-export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   renderOptional?: boolean;
 }
 

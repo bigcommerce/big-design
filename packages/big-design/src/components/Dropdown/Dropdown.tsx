@@ -1,5 +1,5 @@
 import { useSelect, UseSelectState } from 'downshift';
-import React, { memo, useCallback, useMemo, useRef, Fragment } from 'react';
+import React, { cloneElement, Fragment, isValidElement, memo, useCallback, useMemo, useRef } from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
@@ -51,7 +51,7 @@ export const Dropdown = memo(
       circularNavigation: true,
       defaultHighlightedIndex: 0,
       id: dropdownUniqueId,
-      itemToString: item => (item ? item.content : ''),
+      itemToString: (item) => (item ? item.content : ''),
       items: onlyItems,
       menuId: id,
       onSelectedItemChange: handleOnSelectedItemChange,
@@ -63,8 +63,8 @@ export const Dropdown = memo(
       return (
         <Reference>
           {({ ref }) =>
-            React.isValidElement(toggle) &&
-            React.cloneElement<React.HTMLAttributes<any> & React.RefAttributes<any>>(toggle as any, {
+            isValidElement(toggle) &&
+            cloneElement<React.HTMLAttributes<any> & React.RefAttributes<any>>(toggle as any, {
               ...getToggleButtonProps({
                 disabled,
                 ref,
@@ -135,7 +135,7 @@ export const Dropdown = memo(
       (dropdownItems: Array<DropdownItem | DropdownLinkItem>) => {
         return (
           Array.isArray(dropdownItems) &&
-          dropdownItems.map(item => (item.type === 'link' ? renderLinkItem(item) : renderItem(item)))
+          dropdownItems.map((item) => (item.type === 'link' ? renderLinkItem(item) : renderItem(item)))
         );
       },
       [renderItem, renderLinkItem],
@@ -182,7 +182,7 @@ export const Dropdown = memo(
             <List
               {...rest}
               {...getMenuProps({
-                onKeyDown: event => {
+                onKeyDown: (event) => {
                   if (event.key === 'Enter') {
                     const element = event.currentTarget.children[highlightedIndex];
                     const link = element.querySelector('a');
@@ -238,8 +238,8 @@ const isItem = (item: DropdownItem | DropdownLinkItem | DropdownItemGroup) => {
 
 const renderIcon = (item: DropdownItem | DropdownLinkItem, isHighlighted: boolean) => {
   return (
-    React.isValidElement(item.icon) &&
-    React.cloneElement(item.icon, {
+    isValidElement(item.icon) &&
+    cloneElement(item.icon, {
       color: iconColor(item, isHighlighted),
       size: 'large',
     })

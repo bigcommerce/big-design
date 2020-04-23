@@ -4,7 +4,7 @@ import React from 'react';
 import { CodePreview } from '../../components';
 import { MarginPropTable, PanelPropTable } from '../../PropTables';
 
-export default () => (
+const PanelPage = () => (
   <>
     <H0>Panels</H0>
 
@@ -53,3 +53,5 @@ export default () => (
     <MarginPropTable collapsible />
   </>
 );
+
+export default PanelPage;

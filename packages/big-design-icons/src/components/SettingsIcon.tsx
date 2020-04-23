@@ -1,7 +1,7 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import React from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { createStyledIcon, IconProps, PrivateIconProps } from '../base';
 import { useUniqueId } from '../utils';
@@ -29,10 +29,10 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
   );
 };
 
-const IconWithForwardedRef = React.forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => (
+const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => (
   <Icon {...iconProps} svgRef={ref} />
 ));
 
-export const SettingsIcon = React.memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
+export const SettingsIcon = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
 
 SettingsIcon.displayName = 'SettingsIcon';

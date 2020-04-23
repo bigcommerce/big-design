@@ -1,4 +1,4 @@
-import { breakpointsOrder, Breakpoints, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
+import { Breakpoints, breakpointsOrder, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
 import { Responsive } from '../../types';
@@ -37,7 +37,7 @@ function getResponsiveSpacings(responsiveSpacing: ResponsiveSpacingProp, theme: 
   );
 
   return (breakpointKeys as Array<keyof Breakpoints>).map(
-    breakpointKey =>
+    (breakpointKey) =>
       css`
         ${theme.breakpoints[breakpointKey]} {
           ${getSimpleSpacings(responsiveSpacing[breakpointKey] as keyof Spacing, theme, spacingKeys)}

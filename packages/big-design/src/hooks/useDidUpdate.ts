@@ -1,4 +1,4 @@
-import { useEffect, useRef, EffectCallback } from 'react';
+import { EffectCallback, useEffect, useRef } from 'react';
 
 export const useDidUpdate = (effect: EffectCallback) => {
   const isInitialRender = useRef(true);

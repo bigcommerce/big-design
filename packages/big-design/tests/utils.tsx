@@ -6,11 +6,13 @@ const BigDesignWrapper: React.FC = ({ children }) => {
   return <UIDReset>{children}</UIDReset>;
 };
 
-const customRender = (ui: React.ReactElement<any>, options: RenderOptions = {}) =>
+const customRender = (ui: React.ReactElement<unknown>, options: RenderOptions = {}) =>
   render(ui, { wrapper: BigDesignWrapper, ...options });
 
 // re-export everything
+// eslint-disable-next-line import/export
 export * from '@testing-library/react';
 
 // override render method
+// eslint-disable-next-line import/export
 export { customRender as render };

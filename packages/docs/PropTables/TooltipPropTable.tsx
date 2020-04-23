@@ -33,6 +33,6 @@ const tooltipProps: Prop[] = [
   },
 ];
 
-export const TooltipPropTable: React.FC<PropTableWrapper> = props => (
+export const TooltipPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Tooltip" propList={tooltipProps} {...props} />
 );

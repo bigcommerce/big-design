@@ -14,7 +14,7 @@ import {
   Text,
   Textarea,
 } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import {
@@ -26,7 +26,7 @@ import {
   FormPropTable,
 } from '../../PropTables';
 
-export default () => (
+const FormPage = () => (
   <>
     <H0>Forms</H0>
 
@@ -153,10 +153,10 @@ export default () => (
       {function Example() {
         const ERROR_MSG = 'Must be less than or equal to 3 characters long.';
 
-        const [value, setValue] = React.useState('BigCommerce');
-        const [error, setError] = React.useState(ERROR_MSG);
+        const [value, setValue] = useState('BigCommerce');
+        const [error, setError] = useState(ERROR_MSG);
 
-        const handleSubmit = event => {
+        const handleSubmit = (event) => {
           const form = event.currentTarget;
 
           if (form.checkValidity() === false) {
@@ -165,7 +165,7 @@ export default () => (
           }
         };
 
-        const handleChange = event => {
+        const handleChange = (event) => {
           const { target } = event;
           const regex = RegExp(target.pattern, 'g');
 
@@ -199,3 +199,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default FormPage;

@@ -1,7 +1,8 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { render } from '@test/utils';
-import 'jest-styled-components';
 import React from 'react';
+import 'jest-styled-components';
+
+import { render } from '@test/utils';
 
 import { Badge } from './index';
 
@@ -51,6 +52,7 @@ test('render secondary Badge', () => {
 });
 
 test("doesn't render if label prop is invalid", () => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const { container } = render(<Badge label={<p>Label</p>} />);
 
