@@ -72,6 +72,6 @@ const inputProps: Prop[] = [
   },
 ];
 
-export const InputPropTable: React.FC<PropTableWrapper> = props => (
+export const InputPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Input" propList={inputProps} {...props} />
 );

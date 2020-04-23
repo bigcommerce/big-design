@@ -4,7 +4,7 @@ import React from 'react';
 import { CodePreview, NextLink } from '../../components';
 import { MarginPropTable } from '../../PropTables';
 
-export default () => (
+const MarginPage = () => (
   <>
     <H0>Margin</H0>
 
@@ -45,3 +45,5 @@ export default () => (
     <MarginPropTable />
   </>
 );
+
+export default MarginPage;

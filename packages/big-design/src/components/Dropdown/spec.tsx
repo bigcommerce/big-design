@@ -1,8 +1,9 @@
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
-import { fireEvent, render } from '@test/utils';
-import 'jest-styled-components';
 import React, { Fragment } from 'react';
+import 'jest-styled-components';
+
+import { fireEvent, render } from '@test/utils';
 
 import { Button } from '../Button';
 
@@ -313,7 +314,7 @@ test('dropdown menu renders 4 link when passed options of type link', () => {
   const options = container.querySelectorAll('a');
   expect(options.length).toBe(4);
 
-  options.forEach(option => {
+  options.forEach((option) => {
     expect(option.getAttribute('href')).toBe('#');
   });
 });

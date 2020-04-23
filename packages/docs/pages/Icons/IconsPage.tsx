@@ -5,8 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { Code, CodePreview, CodeSnippet } from '../../components';
 import { IconPropTable } from '../../PropTables';
 
-export default () => {
-  const [icons, setIcons] = useState<any>({});
+const IconsPage = () => {
+  const [icons, setIcons] = useState<{}>({});
 
   useEffect(() => {
     const fetchIcons = async () => {
@@ -52,7 +52,7 @@ export default () => {
       <H1>Available Icons</H1>
 
       <Flex flexWrap="wrap" justifyContent="center">
-        {Object.keys(icons).map(iconName => {
+        {Object.keys(icons).map((iconName) => {
           const Icon = icons[iconName];
 
           return (
@@ -74,3 +74,5 @@ export default () => {
     </>
   );
 };
+
+export default IconsPage;

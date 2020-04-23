@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { BoxProps } from '../Box';
 
@@ -15,6 +15,4 @@ const RawGrid: React.FC<GridProps & PrivateProps> = ({ as, forwardedRef, ...rest
   <StyledGrid forwardedAs={as} ref={forwardedRef} {...rest} />
 );
 
-export const Grid = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => (
-  <RawGrid {...props} forwardedRef={ref} />
-));
+export const Grid = forwardRef<HTMLDivElement, GridProps>((props, ref) => <RawGrid {...props} forwardedRef={ref} />);

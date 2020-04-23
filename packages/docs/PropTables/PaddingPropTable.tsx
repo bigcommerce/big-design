@@ -71,6 +71,6 @@ const paddingProps: Prop[] = [
   },
 ];
 
-export const PaddingPropTable: React.FC<PropTableWrapper> = props => (
+export const PaddingPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Padding" propList={paddingProps} {...props} />
 );

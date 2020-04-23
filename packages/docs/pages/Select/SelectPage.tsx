@@ -1,11 +1,11 @@
 import { Form, FormGroup, Grid, H0, H1, H2, Link, Select, Text } from '@bigcommerce/big-design';
 import { DeleteIcon } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import { SelectActionPropTable, SelectGroupPropTable, SelectOptionPropTable, SelectPropTable } from '../../PropTables';
 
-export default () => (
+const SelectPage = () => (
   <>
     <H0>Selects</H0>
 
@@ -20,8 +20,8 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [value, setValue] = React.useState('mx');
-        const handleChange = val => setValue(val);
+        const [value, setValue] = useState('mx');
+        const handleChange = (val) => setValue(val);
 
         return (
           <Form>
@@ -344,3 +344,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default SelectPage;

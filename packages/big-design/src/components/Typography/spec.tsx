@@ -1,7 +1,9 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { render } from '@test/utils';
-import 'jest-styled-components';
 import React from 'react';
+
+import { render } from '@test/utils';
+
+import 'jest-styled-components';
 
 import { H0, H1, H2, H3, H4, Small, Text } from './Typography';
 
@@ -142,7 +144,7 @@ test('All typography components allow changing their color given a color prop', 
     </>,
   );
 
-  Array.from(container.children).forEach(child => {
+  Array.from(container.children).forEach((child) => {
     expect(child).toHaveStyle(`color: ${theme.colors.primary}`);
   });
 });
@@ -154,6 +156,8 @@ test('Headings can change their tag', () => {
 });
 
 test('Headings can not change their tag to non-heading tags', () => {
+  // Change this to @ts-expect-error when we upgrade to TS 3.9
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const { container } = render(<H2 as="p">Test</H2>);
 

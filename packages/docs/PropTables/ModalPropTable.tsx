@@ -63,6 +63,6 @@ const modalProps: Prop[] = [
   },
 ];
 
-export const ModalPropTable: React.FC<PropTableWrapper> = props => (
+export const ModalPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Modal" propList={modalProps} {...props} />
 );

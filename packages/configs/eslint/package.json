@@ -1,5 +1,0 @@
-{
-  "name": "@bigcommerce/configs/eslint",
-  "main": ".eslintrc.js",
-  "private": true
-}

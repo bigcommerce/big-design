@@ -21,6 +21,6 @@ const progressCircleProps: Prop[] = [
   },
 ];
 
-export const ProgressCirclePropTable: React.FC<PropTableWrapper> = props => (
+export const ProgressCirclePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="ProgressCircle" propList={progressCircleProps} {...props} />
 );

@@ -1,12 +1,12 @@
-import React, { memo, useMemo } from 'react';
+import React, { FieldsetHTMLAttributes, isValidElement, memo, useMemo } from 'react';
 
 import { warning } from '../../utils';
 
-import { StyledFieldset } from './styled';
 import { FieldsetDescription } from './Description';
 import { FieldsetLegend } from './Legend';
+import { StyledFieldset } from './styled';
 
-export interface FieldsetProps extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
+export interface FieldsetProps extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
   legend?: React.ReactChild;
   description?: React.ReactChild;
 }
@@ -18,7 +18,7 @@ export const Fieldset: React.FC<FieldsetProps> = memo(
         return <FieldsetLegend>{legend}</FieldsetLegend>;
       }
 
-      if (React.isValidElement(legend) && legend.type === FieldsetLegend) {
+      if (isValidElement(legend) && legend.type === FieldsetLegend) {
         return legend;
       }
 
@@ -34,7 +34,7 @@ export const Fieldset: React.FC<FieldsetProps> = memo(
         return <FieldsetDescription>{description}</FieldsetDescription>;
       }
 
-      if (React.isValidElement(description) && description.type === FieldsetDescription) {
+      if (isValidElement(description) && description.type === FieldsetDescription) {
         return description;
       }
 

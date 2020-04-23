@@ -23,7 +23,7 @@ const ExampleBox: React.FC<{ vertical?: boolean }> = ({ children, vertical }) =>
   </Box>
 );
 
-export default () => (
+const FlexPage = () => (
   <>
     <H0>Flex</H0>
 
@@ -140,3 +140,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default FlexPage;

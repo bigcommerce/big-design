@@ -1,11 +1,11 @@
-import React, { forwardRef, useMemo, Ref } from 'react';
+import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo } from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
-import { HiddenRadio, RadioContainer, RadioLabelContainer, StyledRadio } from './styled';
 import { RadioLabel } from './Label';
+import { HiddenRadio, RadioContainer, RadioLabelContainer, StyledRadio } from './styled';
 
 interface Props {
   label: React.ReactChild;
@@ -50,8 +50,8 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
       );
     }
 
-    if (React.isValidElement(label) && label.type === RadioLabel) {
-      return React.cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+    if (isValidElement(label) && label.type === RadioLabel) {
+      return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
         htmlFor: id,
         id: labelId,
       });

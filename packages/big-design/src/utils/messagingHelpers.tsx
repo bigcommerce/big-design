@@ -1,11 +1,11 @@
 import { CheckCircleIcon, ErrorIcon, InfoIcon, WarningIcon } from '@bigcommerce/big-design-icons';
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import { css } from 'styled-components';
 
 import { LinkProps } from '../components/Link';
 
-export interface SharedMessagingProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface SharedMessagingProps extends HTMLAttributes<HTMLDivElement> {
   header?: string;
   messages: MessageItem[];
   type?: MessagingType;
@@ -42,22 +42,22 @@ export const getMessagingIcon = (type: MessagingType, condensed?: boolean) => {
 
 export const getBorderStyle = (type: MessagingType, theme: ThemeInterface) => css`
   ${type === 'success' &&
-    css`
-      border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success};
-    `};
+  css`
+    border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success};
+  `};
 
   ${type === 'error' &&
-    css`
-      border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger};
-    `};
+  css`
+    border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger};
+  `};
 
   ${type === 'warning' &&
-    css`
-      border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50};
-    `};
+  css`
+    border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50};
+  `};
 
   ${type === 'info' &&
-    css`
-      border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60};
-    `};
+  css`
+    border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60};
+  `};
 `;

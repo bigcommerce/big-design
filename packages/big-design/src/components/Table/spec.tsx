@@ -1,6 +1,7 @@
-import { fireEvent, render } from '@test/utils';
-import 'jest-styled-components';
 import React, { CSSProperties } from 'react';
+import 'jest-styled-components';
+
+import { fireEvent, render } from '@test/utils';
 
 import { Table } from './Table';
 

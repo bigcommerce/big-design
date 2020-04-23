@@ -1,7 +1,8 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render } from '@test/utils';
-import 'jest-styled-components';
 import React from 'react';
+import 'jest-styled-components';
+
+import { fireEvent, render } from '@test/utils';
 
 import { Panel } from './Panel';
 
@@ -78,6 +79,7 @@ test('forwards data attributes', () => {
 
 test('ignores padding props', () => {
   const { getByTestId } = render(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore - ignoring since paddingRight is not a valid prop
     <Panel header="Test Header" data-testid="panel" paddingRight="xxxLarge">
       Dolore proident eiusmod sint est enim laboris

@@ -1,14 +1,8 @@
-import React from 'react';
-import {
-  Button,
-  H1,
-  Panel,
-  StatefulTable,
-  Text,
-  TableFigure
-} from '@bigcommerce/big-design';
-import { Product } from './data';
+import { Button, H1, Panel, StatefulTable, TableFigure, Text } from '@bigcommerce/big-design';
 import { DeleteIcon } from '@bigcommerce/big-design-icons';
+import React from 'react';
+
+import { Product } from './data';
 
 interface Props {
   products: Product[];
@@ -39,21 +33,21 @@ export const ProductList: React.FC<Props> = ({ onDelete, products }) => {
               {
                 header: 'Category',
                 hash: 'category',
-                render: ({ category }) => category
+                render: ({ category }) => category,
               },
               {
                 header: 'Stock',
                 hash: 'stock',
                 align: 'right',
                 render: renderStockColumn,
-                sortKey: 'stock'
+                sortKey: 'stock',
               },
               {
                 header: '',
                 align: 'right',
                 hash: 'actions',
-                render: renderOnDelete
-              }
+                render: renderOnDelete,
+              },
             ]}
             items={products}
             stickyHeader

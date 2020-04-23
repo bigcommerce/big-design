@@ -1,8 +1,8 @@
-import React, { forwardRef, memo, Ref } from 'react';
+import React, { forwardRef, LiHTMLAttributes, memo, Ref } from 'react';
 
 import { StyledListItem } from './styled';
 
-export interface ListItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+export interface ListItemProps extends LiHTMLAttributes<HTMLLIElement> {
   actionType?: 'normal' | 'destructive';
   disabled?: boolean;
   isAction?: boolean;

@@ -82,7 +82,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
       <Flex role="navigation" aria-label="pagination" flexDirection="row">
         <FlexItem>
           <Dropdown
-            items={itemsPerPageOptions.map(range => ({
+            items={itemsPerPageOptions.map((range) => ({
               content: `${range}`,
               hash: `${range}`,
               onItemClick: handleRangeChange,

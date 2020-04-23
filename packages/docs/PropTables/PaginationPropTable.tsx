@@ -41,6 +41,6 @@ const paginationProps: Prop[] = [
   },
 ];
 
-export const PaginationPropTable: React.FC<PropTableWrapper> = props => {
+export const PaginationPropTable: React.FC<PropTableWrapper> = (props) => {
   return <PropTable title="Pagination" propList={paginationProps} {...props} />;
 };

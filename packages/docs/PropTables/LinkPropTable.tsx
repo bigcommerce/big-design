@@ -1,4 +1,6 @@
-import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
+import React from 'react';
+
+import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
 const linkProps: Prop[] = [
   {
@@ -17,6 +19,6 @@ const linkProps: Prop[] = [
   },
 ];
 
-export const LinkPropTable: React.FC<PropTableWrapper> = props => (
+export const LinkPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Link" propList={linkProps} {...props} />
 );

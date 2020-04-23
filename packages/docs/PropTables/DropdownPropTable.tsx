@@ -201,18 +201,18 @@ const dropdownItemGroupProps: Prop[] = [
   },
 ];
 
-export const DropdownPropTable: React.FC<PropTableWrapper> = props => (
+export const DropdownPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Dropdown" propList={dropdownProps} {...props} />
 );
 
-export const DropdownItemPropTable: React.FC<PropTableWrapper> = props => (
+export const DropdownItemPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="DropdownItem" propList={dropdownItemProps} {...props} />
 );
 
-export const DropdownLinkItemPropTable: React.FC<PropTableWrapper> = props => (
+export const DropdownLinkItemPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="DropdownLinkItem" propList={dropdownLinkProps} {...props} />
 );
 
-export const DropdownItemGroupPropTable: React.FC<PropTableWrapper> = props => (
+export const DropdownItemGroupPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="DropdownItemGroup" propList={dropdownItemGroupProps} {...props} />
 );

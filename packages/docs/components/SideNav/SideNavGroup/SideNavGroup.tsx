@@ -9,7 +9,7 @@ const StyledList = styled(List)`
   padding: ${({ theme }) => theme.spacing.none};
 `;
 
-export const SideNavGroup: React.FC<{ title: string }> = props => {
+export const SideNavGroup: React.FC<{ title: string }> = (props) => {
   return (
     <Box marginTop={{ mobile: 'xxSmall', tablet: 'xLarge' }} marginHorizontal={{ mobile: 'medium', tablet: 'none' }}>
       <H4>{props.title}</H4>

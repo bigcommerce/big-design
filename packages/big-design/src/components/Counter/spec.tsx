@@ -1,6 +1,7 @@
-import { fireEvent, render } from '@test/utils';
+import React, { createRef, Ref } from 'react';
 import 'jest-styled-components';
-import React, { Ref } from 'react';
+
+import { fireEvent, render } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
@@ -14,7 +15,7 @@ interface MockCounterProps extends CounterProps {
 
 const val = 5;
 
-const handleChange = jest.fn(num => num);
+const handleChange = jest.fn((num) => num);
 
 const requiredAttributes = {
   value: val,
@@ -50,7 +51,7 @@ const counterMock = ({
 );
 
 test('forwards ref', () => {
-  const ref = React.createRef<HTMLInputElement>();
+  const ref = createRef<HTMLInputElement>();
   const { container } = render(counterMock({ ref, ...requiredAttributes }));
   const counter = container.querySelector('input');
 
@@ -294,15 +295,19 @@ test('error shows when an array of strings', () => {
   const errors = ['Error 0', 'Error 1'];
   const { getByText } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
 
-  errors.forEach(error => expect(getByText(error)).toBeInTheDocument());
+  errors.forEach((error) => expect(getByText(error)).toBeInTheDocument());
 });
 
 test('error shows when an array of Errors', () => {
   const testIds = ['error_0', 'error_1'];
-  const errors = testIds.map(id => <FormControlError data-testid={id}>Error</FormControlError>);
+  const errors = testIds.map((id) => (
+    <FormControlError data-testid={id} key={id}>
+      Error
+    </FormControlError>
+  ));
   const { getByTestId } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
 
-  testIds.forEach(id => expect(getByTestId(id)).toBeInTheDocument());
+  testIds.forEach((id) => expect(getByTestId(id)).toBeInTheDocument());
 });
 
 describe('error does not show when invalid type', () => {
@@ -315,7 +320,13 @@ describe('error does not show when invalid type', () => {
   });
 
   test('array of elements', () => {
-    const errors = ['Error', <FormControlError>Error</FormControlError>, <div data-testid="err">Error</div>];
+    const errors = [
+      'Error',
+      <FormControlError key="1">Error</FormControlError>,
+      <div data-testid="err" key="2">
+        Error
+      </div>,
+    ];
 
     const { queryByTestId } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
 

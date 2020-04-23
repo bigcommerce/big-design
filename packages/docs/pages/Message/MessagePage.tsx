@@ -1,11 +1,12 @@
 import { H0, H1, H2, Message, Text } from '@bigcommerce/big-design';
+import React from 'react';
 
 import { Code, CodePreview, Collapsible } from '../../components';
 import { MarginPropTable } from '../../PropTables';
-import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../../PropTables/shared';
 import { MessagePropTable } from '../../PropTables/MessagePropTable';
+import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../../PropTables/shared';
 
-export default () => (
+const MessagePage = () => (
   <>
     <H0>Messages</H0>
     <Text>
@@ -103,3 +104,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default MessagePage;

@@ -1,6 +1,7 @@
-import { render } from '@test/utils';
 import 'jest-styled-components';
-import React from 'react';
+import React, { createRef } from 'react';
+
+import { render } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
@@ -8,7 +9,7 @@ import { FormControlDescription, FormControlError, FormControlLabel, FormGroup }
 import { Textarea, TextareaProps } from './index';
 
 test('forwards ref', () => {
-  const ref = React.createRef<HTMLTextAreaElement>();
+  const ref = createRef<HTMLTextAreaElement>();
   const { container } = render(<Textarea ref={ref} />);
   const textarea = container.querySelector('textarea');
 
@@ -199,7 +200,13 @@ describe('error does not show when invalid type', () => {
   });
 
   test('array of elements', () => {
-    const errors = ['Error', <FormControlError>Error</FormControlError>, <div data-testid="err">Error</div>];
+    const errors = [
+      'Error',
+      <FormControlError key="1">Error</FormControlError>,
+      <div data-testid="err" key="2">
+        Error
+      </div>,
+    ];
 
     const { queryByTestId } = render(
       <FormGroup>

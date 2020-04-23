@@ -2,11 +2,11 @@
 // Auto-generated file, do NOT modify
 // **********************************
 import { createStyledIcon, IconProps } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { memo } from 'react';
 
 const Icon =
   /*#__PURE__*/
-  React.memo<Partial<IconProps>>(({ title, theme, ...props }) => (
+  memo<Partial<IconProps>>(({ title, theme, ...props }) => (
     <svg fill="currentColor" stroke="currentColor" strokeWidth="0" viewBox="0 0 20 20" {...props}>
       <title>{title}</title>
       <path

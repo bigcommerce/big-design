@@ -1,10 +1,10 @@
 import { Box, H0, H1, Link, Tabs, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
-import { TabsPropTable, TabItemPropTable } from '../../PropTables';
+import { TabItemPropTable, TabsPropTable } from '../../PropTables';
 
-export default () => (
+const TabsPage = () => (
   <>
     <H0>Tabs</H0>
 
@@ -20,7 +20,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [activeTab, setActiveTab] = React.useState('tab1');
+        const [activeTab, setActiveTab] = useState('tab1');
 
         const items = [
           { id: 'tab1', title: 'Example 1' },
@@ -49,3 +49,5 @@ export default () => (
     <TabItemPropTable id="tabs-items-prop-table" />
   </>
 );
+
+export default TabsPage;

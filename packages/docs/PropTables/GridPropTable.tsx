@@ -85,7 +85,7 @@ const gridProps: Prop[] = [
   },
 ];
 
-export const GridPropTable: React.FC<PropTableWrapper> = props => (
+export const GridPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Grid" propList={gridProps} {...props} />
 );
 
@@ -163,6 +163,6 @@ const gridItemProps: Prop[] = [
   },
 ];
 
-export const GridItemPropTable: React.FC<PropTableWrapper> = props => (
+export const GridItemPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="GridItem" propList={gridItemProps} {...props} />
 );

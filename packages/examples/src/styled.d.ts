@@ -2,5 +2,6 @@ import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import 'styled-components';
 
 declare module 'styled-components' {
-  export interface DefaultTheme extends ThemeInterface {} // tslint:disable-line
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface DefaultTheme extends ThemeInterface {}
 }

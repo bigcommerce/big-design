@@ -11,7 +11,7 @@ export const warning = (message: string): void => {
   // wrapping in production check for better dead code elimination
   if (!isProduction) {
     // Condition not passed
-    const text: string = `Warning: ${message}`;
+    const text = `Warning: ${message}`;
 
     // check console for IE9 support which provides console
     // only with open devtools
@@ -25,6 +25,7 @@ export const warning = (message: string): void => {
     // https://github.com/facebook/react/issues/4216
     try {
       throw Error(text);
-    } catch (x) {} // tslint:disable-line no-empty
+      // eslint-disable-next-line no-empty
+    } catch (x) {}
   }
 };

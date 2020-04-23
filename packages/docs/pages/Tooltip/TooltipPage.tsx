@@ -5,7 +5,7 @@ import React from 'react';
 import { Code, CodePreview } from '../../components';
 import { TooltipPropTable } from '../../PropTables';
 
-export default () => (
+const TooltipPage = () => (
   <>
     <H0>Tooltips</H0>
 
@@ -88,3 +88,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default TooltipPage;

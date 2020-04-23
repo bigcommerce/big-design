@@ -10,6 +10,6 @@ const displayProps: Prop[] = [
   },
 ];
 
-export const DisplayPropTable: React.FC<PropTableWrapper> = props => (
+export const DisplayPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Display" propList={displayProps} {...props} />
 );

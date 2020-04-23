@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { TableHTMLAttributes } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
-import { TableColumn, TableItem } from '../types';
 import { DataCell } from '../DataCell';
+import { TableColumn, TableItem } from '../types';
 
 import { StyledTableRow } from './styled';
 
-export interface RowProps<T> extends React.TableHTMLAttributes<HTMLTableRowElement> {
+export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
   isSelected?: boolean;
   isSelectable?: boolean;
   item: T;

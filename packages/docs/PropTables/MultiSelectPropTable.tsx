@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
+import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
 const selectProps: Prop[] = [
   {
@@ -127,111 +127,6 @@ const selectProps: Prop[] = [
   },
 ];
 
-const selectOptionProps: Prop[] = [
-  {
-    name: 'disabled',
-    defaultValue: 'false',
-    types: 'boolean',
-    description: (
-      <>
-        'Sets the <Code>SelectOption</Code> to disabled.'
-      </>
-    ),
-  },
-  {
-    name: 'content',
-    types: 'string',
-    required: true,
-    description: (
-      <>
-        'Sets the text content of the <Code>SelectOption</Code>.'
-      </>
-    ),
-  },
-  {
-    name: 'icon',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
-    description: (
-      <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the left of the text. Only available for single select.
-      </>
-    ),
-  },
-  {
-    name: 'value',
-    types: 'any',
-    required: true,
-    description: (
-      <>
-        'Stored value of the <Code>SelectOption</Code>.'
-      </>
-    ),
-  },
-];
-
-const selectActionProps: Prop[] = [
-  {
-    name: 'actionType',
-    types: ['normal', 'destructive'],
-    defaultValue: 'normal',
-    description: (
-      <>
-        'Indicates whether the <Code>SelectAction</Code> is of normal or destructive nature.'
-      </>
-    ),
-  },
-  {
-    name: 'disabled',
-    defaultValue: 'false',
-    types: 'boolean',
-    description: (
-      <>
-        'Sets the <Code>SelectAction</Code> to disabled.'
-      </>
-    ),
-  },
-  {
-    name: 'content',
-    types: 'string',
-    required: true,
-    description: (
-      <>
-        'Sets the text content of the <Code>SelectAction</Code>.'
-      </>
-    ),
-  },
-  {
-    name: 'icon',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
-    description: (
-      <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the left of the text.
-      </>
-    ),
-  },
-  {
-    name: 'onClick',
-    types: '(inputText: string): void',
-    description: 'Returns the current text in the input.',
-  },
-];
-
-export const MultiSelectPropTable: React.FC<PropTableWrapper> = props => (
+export const MultiSelectPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="MultiSelect" propList={selectProps} {...props} />
 );

@@ -1,4 +1,5 @@
 import Document, { DocumentContext, Head, Main, NextScript } from 'next/document';
+import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
 import { GTM_ID, GTM_URL } from '../utils/analytics/gtm';
@@ -13,7 +14,7 @@ export default class AppDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);

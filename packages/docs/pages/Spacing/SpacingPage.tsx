@@ -16,7 +16,7 @@ const StyledText = styled(Text)`
   margin: 0;
 `;
 
-export default () => {
+const SpacingPage = () => {
   const { spacing } = useContext(ThemeContext);
 
   return (
@@ -65,7 +65,7 @@ export default () => {
       <Flex justifyContent="space-around">
         {Object.keys(spacing)
           .reverse()
-          .map(key => (
+          .map((key) => (
             <Flex alignItems="center" key={key} flexDirection="column" paddingBottom="xxxLarge">
               <StyledText>{key}</StyledText>
               <BlueBox marginTop="medium" style={{ width: spacing[key], height: spacing[key] }} />
@@ -75,3 +75,5 @@ export default () => {
     </>
   );
 };
+
+export default SpacingPage;

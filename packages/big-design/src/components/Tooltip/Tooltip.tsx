@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo, useState } from 'react';
+import React, { HTMLAttributes, memo, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Manager, Popper, PopperProps, Reference } from 'react-popper';
 
@@ -6,7 +6,7 @@ import { Small } from '../Typography';
 
 import { StyledTooltip, StyledTooltipTrigger } from './styled';
 
-export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
   placement: PopperProps['placement'];
   trigger: React.ReactChild;
   modifiers?: PopperProps['modifiers'];

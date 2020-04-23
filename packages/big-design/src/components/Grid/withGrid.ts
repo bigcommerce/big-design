@@ -1,4 +1,4 @@
-import { breakpointsOrder, Breakpoints, ThemeInterface } from '@bigcommerce/big-design-theme';
+import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { GridedItemProps, GridedOverload, GridedProps } from './types';
@@ -56,7 +56,7 @@ const getResponsiveGrid: GridedOverload = (
   );
 
   return (breakpointKeys as Array<keyof Breakpoints>).map(
-    breakpointKey =>
+    (breakpointKey) =>
       css`
         ${theme.breakpoints[breakpointKey]} {
           ${getSimpleGrid(gridedProp[breakpointKey], cssKey)}

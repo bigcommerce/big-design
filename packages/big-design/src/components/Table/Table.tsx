@@ -4,14 +4,14 @@ import { useEventCallback, useUniqueId } from '../../hooks';
 import { MarginProps } from '../../mixins';
 import { typedMemo } from '../../utils';
 
-import { StyledTable, StyledTableFigure } from './styled';
-import { TableColumn, TableItem, TableProps } from './types';
 import { Actions } from './Actions';
 import { Body } from './Body';
 import { Head } from './Head';
 import { HeaderCell } from './HeaderCell';
 import { HeaderCheckboxCell } from './HeaderCell/HeaderCell';
 import { Row } from './Row';
+import { StyledTable, StyledTableFigure } from './styled';
+import { TableColumn, TableItem, TableProps } from './types';
 
 const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactElement<TableProps<T>> => {
   const {
@@ -46,7 +46,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     if (nextIsSelected) {
       onSelectionChange([...selectedItems, item]);
     } else {
-      onSelectionChange([...selectedItems].filter(selectedItem => selectedItem !== item));
+      onSelectionChange([...selectedItems].filter((selectedItem) => selectedItem !== item));
     }
   });
 
@@ -161,4 +161,4 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
 };
 
 export const Table = typedMemo(InternalTable);
-export const TableFigure: React.FC<MarginProps> = memo(props => <StyledTableFigure {...props} />);
+export const TableFigure: React.FC<MarginProps> = memo((props) => <StyledTableFigure {...props} />);

@@ -6,7 +6,7 @@ import { Code, CodeSnippet, List } from '../../components';
 
 const CodeSandboxUrl = process.env.CODE_SANDBOX_URL as string;
 
-export default () => {
+const GettingStartedPage = () => {
   const { spacing } = useContext(ThemeContext);
 
   return (
@@ -143,3 +143,5 @@ export default () => {
     </Flex>
   );
 };
+
+export default GettingStartedPage;

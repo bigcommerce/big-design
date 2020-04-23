@@ -1,4 +1,4 @@
-import { breakpointsOrder, Breakpoints, ThemeInterface } from '@bigcommerce/big-design-theme';
+import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { DisplayOverload, DisplayProps } from './types';
@@ -39,7 +39,7 @@ const getResponsiveDisplay: DisplayOverload = (
   );
 
   return (breakpointKeys as Array<keyof Breakpoints>).map(
-    breakpointKey =>
+    (breakpointKey) =>
       css`
         ${theme.breakpoints[breakpointKey]} {
           ${getSimpleDisplay(displayProp[breakpointKey], cssKey)}

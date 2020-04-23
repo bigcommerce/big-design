@@ -1,6 +1,7 @@
-import { fireEvent, render } from '@test/utils';
+import React, { createRef } from 'react';
 import 'jest-styled-components';
-import React from 'react';
+
+import { fireEvent, render } from '@test/utils';
 
 import { warning } from '../../utils';
 
@@ -93,7 +94,7 @@ test('triggers onChange when clicking styled and text label', () => {
 
   const labels = container.querySelectorAll('label');
 
-  labels.forEach(label => fireEvent.click(label));
+  labels.forEach((label) => fireEvent.click(label));
 
   expect(onChange).toHaveBeenCalledTimes(2);
 });
@@ -118,7 +119,7 @@ test('does not accept invalid label component', () => {
 });
 
 test('forwards ref', () => {
-  const ref = React.createRef<HTMLInputElement>();
+  const ref = createRef<HTMLInputElement>();
 
   const { container } = render(<Radio ref={ref} label="Checked" />);
   const input = container.querySelector('input');

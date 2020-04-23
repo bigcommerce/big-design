@@ -4,7 +4,7 @@ import React from 'react';
 import { Code, CodePreview } from '../../components';
 import { BadgePropTable, MarginPropTable } from '../../PropTables';
 
-export default () => (
+const BadgePage = () => (
   <>
     <H0>Badges</H0>
 
@@ -49,3 +49,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default BadgePage;

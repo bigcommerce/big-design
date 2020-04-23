@@ -50,7 +50,7 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 4px ${props => (props.error ? props.theme.colors.danger20 : props.theme.colors.primary20)};
+    box-shadow: 0 0 0 4px ${(props) => (props.error ? props.theme.colors.danger20 : props.theme.colors.primary20)};
   }
 
   &[disabled] {

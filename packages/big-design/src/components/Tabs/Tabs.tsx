@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { HTMLAttributes, memo } from 'react';
 
 import { StyledTab, StyledTabs } from './styled';
 
@@ -8,7 +8,7 @@ export interface TabItem {
   disabled?: boolean;
 }
 
-export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface TabsProps extends HTMLAttributes<HTMLDivElement> {
   activeTab?: TabItem['id'];
   items?: TabItem[];
   onTabClick?(tabId: TabItem['id']): void;

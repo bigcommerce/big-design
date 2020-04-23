@@ -59,7 +59,7 @@ const textModifiers = (props: TextProps) => css`
 `;
 
 export const StyledH0 = styled.h1<HeadingProps>`
-  ${props => commonTextStyles(props)};
+  ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xxxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.extraLight};
   line-height: ${({ theme }) => theme.lineHeight.xxxLarge};
@@ -68,7 +68,7 @@ export const StyledH0 = styled.h1<HeadingProps>`
 `;
 
 export const StyledH1 = styled.h1<HeadingProps>`
-  ${props => commonTextStyles(props)};
+  ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xxLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.light};
   line-height: ${({ theme }) => theme.lineHeight.xxLarge};
@@ -77,7 +77,7 @@ export const StyledH1 = styled.h1<HeadingProps>`
 `;
 
 export const StyledH2 = styled.h2<HeadingProps>`
-  ${props => commonTextStyles(props)};
+  ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.xLarge};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.xLarge};
@@ -85,7 +85,7 @@ export const StyledH2 = styled.h2<HeadingProps>`
 `;
 
 export const StyledH3 = styled.h3<HeadingProps>`
-  ${props => commonTextStyles(props)};
+  ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   line-height: ${({ theme }) => theme.lineHeight.large};
@@ -94,7 +94,7 @@ export const StyledH3 = styled.h3<HeadingProps>`
 `;
 
 export const StyledH4 = styled.h4<HeadingProps>`
-  ${props => commonTextStyles(props)};
+  ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   line-height: ${({ theme }) => theme.lineHeight.medium};
@@ -103,11 +103,11 @@ export const StyledH4 = styled.h4<HeadingProps>`
 `;
 
 export const StyledText = styled.p<TextProps>`
-  ${props => commonTextStyles(props)}
+  ${(props) => commonTextStyles(props)}
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.medium};
-  ${props => textModifiers(props)}
+  ${(props) => textModifiers(props)}
 
   &:last-child {
     margin-bottom: 0;
@@ -117,13 +117,13 @@ export const StyledText = styled.p<TextProps>`
 `;
 
 export const StyledSmall = styled.p<TextProps>`
-  ${props => commonTextStyles(props)};
+  ${(props) => commonTextStyles(props)};
   color: ${({ color, theme }) => (color ? theme.colors[color] : theme.colors.secondary60)};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.small};
   margin: 0 0 ${({ theme }) => theme.spacing.small};
-  ${props => textModifiers(props)}
+  ${(props) => textModifiers(props)}
 
   &:last-child {
     margin-bottom: 0;

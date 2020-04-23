@@ -2,8 +2,9 @@ import { transform } from '@babel/standalone';
 import * as BigDesign from '@bigcommerce/big-design';
 import * as BigDesignIcons from '@bigcommerce/big-design-icons';
 import clipboardCopy from 'clipboard-copy';
+// eslint-disable-next-line import/default
 import parser from 'prettier/parser-babylon';
-import prettier from 'prettier/standalone';
+import { format } from 'prettier/standalone';
 import React, { useContext, useEffect, useState } from 'react';
 import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
 import styled from 'styled-components';
@@ -17,6 +18,8 @@ const defaultScope = {
   ...BigDesign,
   ...BigDesignIcons,
   React,
+  useEffect,
+  useState,
   styled,
 };
 
@@ -35,7 +38,7 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
     presets: [['typescript', { allExtensions: true, isTSX: true, jsxPragma: 'preserve' }]],
   }).code;
 
-  return prettier.format(code, {
+  return format(code, {
     parser: 'babel',
     plugins: [parser],
     printWidth: 100,
@@ -55,10 +58,10 @@ function transformCode(input: string): string {
 }
 
 export interface CodePreviewProps {
-  scope?: { [key: string]: any };
+  scope?: { [key: string]: unknown };
 }
 
-export const CodePreview: React.FC<CodePreviewProps> = props => {
+export const CodePreview: React.FC<CodePreviewProps> = (props) => {
   const { children } = props;
   const { theme: editorTheme, language } = useContext(CodeEditorContext);
 

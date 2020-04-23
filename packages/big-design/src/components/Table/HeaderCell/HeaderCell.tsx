@@ -1,5 +1,5 @@
 import { ArrowDownwardIcon, ArrowUpwardIcon } from '@bigcommerce/big-design-icons';
-import React, { memo, RefObject } from 'react';
+import React, { memo, RefObject, TableHTMLAttributes } from 'react';
 
 import { useComponentSize } from '../../../hooks';
 import { typedMemo } from '../../../utils';
@@ -7,7 +7,7 @@ import { TableColumn, TableItem } from '../types';
 
 import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderCheckbox } from './styled';
 
-export interface HeaderCellProps<T> extends React.TableHTMLAttributes<HTMLTableCellElement> {
+export interface HeaderCellProps<T> extends TableHTMLAttributes<HTMLTableCellElement> {
   actionsRef: RefObject<HTMLDivElement>;
   column: TableColumn<T>;
   hide?: boolean;

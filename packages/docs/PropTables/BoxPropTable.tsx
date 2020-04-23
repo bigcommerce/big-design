@@ -67,6 +67,6 @@ const boxProps: Prop[] = [
   },
 ];
 
-export const BoxPropTable: React.FC<PropTableWrapper> = props => (
+export const BoxPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Box" propList={boxProps} {...props} />
 );

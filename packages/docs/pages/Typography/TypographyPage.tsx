@@ -1,10 +1,10 @@
-import { Box, Flex, H0, H1, H2, H3, H4, Link, Small, Text } from '@bigcommerce/big-design';
+import { Box, H0, H1, H2, H3, H4, Link, Small, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview, NextLink } from '../../components';
 import { HeadingPropTable, MarginPropTable, TextPropTable, TypographyPropTable } from '../../PropTables';
 
-export default () => (
+const TypographyPage = () => (
   <>
     <H0>Typography</H0>
 
@@ -112,3 +112,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default TypographyPage;

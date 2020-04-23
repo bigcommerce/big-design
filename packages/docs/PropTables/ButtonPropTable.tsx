@@ -74,6 +74,6 @@ const buttonProps: Prop[] = [
   },
 ];
 
-export const ButtonPropTable: React.FC<PropTableWrapper> = props => (
+export const ButtonPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Button" propList={buttonProps} {...props} />
 );

@@ -6,7 +6,7 @@ const defaultPlugins = [
   '@babel/plugin-proposal-object-rest-spread',
   '@babel/plugin-proposal-optional-chaining',
   // IE 11 support
-  '@babel/plugin-transform-object-assign'
+  '@babel/plugin-transform-object-assign',
 ];
 
 module.exports = {
@@ -15,31 +15,24 @@ module.exports = {
       '@babel/preset-env',
       {
         modules: ['cjs', 'test'].includes(BABEL_ENV) ? 'commonjs' : false,
-        targets:
-          BABEL_ENV === 'test' ? { node: 'current' } : { browsers: 'defaults' }
-      }
+        targets: BABEL_ENV === 'test' ? { node: 'current' } : { browsers: 'defaults' },
+      },
     ],
     '@babel/preset-typescript',
-    '@babel/preset-react'
+    '@babel/preset-react',
   ],
   env: {
     cjs: {
-      plugins: [
-        ...defaultPlugins,
-        ['@babel/plugin-transform-runtime', { useESModules: false }]
-      ],
-      ignore: ['**/spec.ts', '**/spec.tsx', '**/*.spec.ts', '**/*.spec.tsx']
+      plugins: [...defaultPlugins, ['@babel/plugin-transform-runtime', { useESModules: false }]],
+      ignore: ['**/spec.ts', '**/spec.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
     },
     es: {
-      plugins: [
-        ...defaultPlugins,
-        ['@babel/plugin-transform-runtime', { useESModules: true }]
-      ],
-      ignore: ['**/spec.ts', '**/spec.tsx', '**/*.spec.ts', '**/*.spec.tsx']
+      plugins: [...defaultPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
+      ignore: ['**/spec.ts', '**/spec.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
     },
     test: {
       plugins: defaultPlugins,
-      ignore: []
-    }
-  }
+      ignore: [],
+    },
+  },
 };

@@ -14,7 +14,7 @@ const StyledColor = styled(Box)`
   width: ${({ theme }) => theme.helpers.remCalc(300)};
 `;
 
-export default () => {
+const ColorsPage = () => {
   const { colors } = useContext(ThemeContext);
 
   return (
@@ -55,7 +55,7 @@ export default () => {
       <H1>Available Colors</H1>
 
       <Flex flexDirection="column">
-        {getFilteredColors(colors).map(color => (
+        {getFilteredColors(colors).map((color) => (
           <Flex alignItems="center" key={color}>
             <StyledColor backgroundColor={color as Color} />
             <Text marginLeft="medium">{getColorLabel(color)}</Text>
@@ -67,9 +67,11 @@ export default () => {
 };
 
 function getFilteredColors(colors: Colors) {
-  return Object.keys(colors).filter(color => !COLORS_TO_OMIT.includes(color));
+  return Object.keys(colors).filter((color) => !COLORS_TO_OMIT.includes(color));
 }
 
 function getColorLabel(color: string) {
   return color.includes('40') ? `${color} / ${color.replace('40', '')}` : color;
 }
+
+export default ColorsPage;

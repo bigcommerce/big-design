@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
 
 export const useRafState = <S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>] => {
   const frame = useRef(0);

@@ -1,10 +1,10 @@
 import { Fieldset, Form, FormGroup, H0, H1, Link, Radio, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import { RadioDescriptionLinkPropTable, RadioDescriptionPropTable, RadioPropTable } from '../../PropTables';
 
-export default () => (
+const RadioPage = () => (
   <>
     <H0>Radio</H0>
 
@@ -19,9 +19,9 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [selected, setSelected] = React.useState('');
+        const [selected, setSelected] = useState('');
 
-        const handleChange = event => setSelected(event.target.value);
+        const handleChange = (event) => setSelected(event.target.value);
 
         return (
           <Form>
@@ -61,11 +61,11 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [firstRadio, setFirstRadio] = React.useState('');
-        const [secondRadio, setSecondRadio] = React.useState('');
+        const [firstRadio, setFirstRadio] = useState('');
+        const [secondRadio, setSecondRadio] = useState('');
 
-        const handleFirstChange = event => setFirstRadio(event.target.value);
-        const handleSecondChange = event => setSecondRadio(event.target.value);
+        const handleFirstChange = (event) => setFirstRadio(event.target.value);
+        const handleSecondChange = (event) => setSecondRadio(event.target.value);
 
         return (
           <Form>
@@ -96,9 +96,9 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [selected, setSelected] = React.useState('');
+        const [selected, setSelected] = useState('');
 
-        const handleChange = event => setSelected(event.target.value);
+        const handleChange = (event) => setSelected(event.target.value);
 
         return (
           <Form>
@@ -140,3 +140,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default RadioPage;

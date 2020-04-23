@@ -27,7 +27,7 @@ export const StyledRadio = styled.label<StyledRadioProps>`
 
   background-color: ${({ disabled, theme }) => (disabled ? theme.colors.secondary10 : theme.colors.white)};
   border: ${({ theme }) => theme.border.box};
-  border-color: ${props => (props.checked ? props.theme.colors.primary40 : props.theme.colors.secondary30)};
+  border-color: ${(props) => (props.checked ? props.theme.colors.primary40 : props.theme.colors.secondary30)};
   border-radius: ${({ theme }) => theme.borderRadius.circle};
   color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
@@ -68,7 +68,7 @@ export const StyledRadio = styled.label<StyledRadioProps>`
     width: ${({ theme }) => theme.spacing.small};
   }
 
-  ${props =>
+  ${(props) =>
     props.checked &&
     css`
       &:after {

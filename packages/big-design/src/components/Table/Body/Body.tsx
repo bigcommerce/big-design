@@ -1,8 +1,8 @@
-import React, { memo } from 'react';
+import React, { memo, TableHTMLAttributes } from 'react';
 
 import { StyledTableBody } from './styled';
 
-export interface BodyProps extends React.TableHTMLAttributes<HTMLTableSectionElement> {
+export interface BodyProps extends TableHTMLAttributes<HTMLTableSectionElement> {
   withFirstRowBorder?: boolean;
 }
 

@@ -7,7 +7,7 @@ import { ListProps } from './List';
 export const StyledList = styled.ul<Partial<ListProps>>`
   ${({ theme }) => theme.shadow.raised};
 
-  ${props => !props.isOpen && hideVisually()}
+  ${(props) => !props.isOpen && hideVisually()}
 
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.secondary70};

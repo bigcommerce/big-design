@@ -17,7 +17,7 @@ const ExampleBox: React.FC = ({ children }) => (
   </Box>
 );
 
-export default () => (
+const GridPage = () => (
   <>
     <H0>Grid</H0>
 
@@ -132,3 +132,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default GridPage;

@@ -1,6 +1,7 @@
-import { fireEvent, render } from '@test/utils';
-import 'jest-styled-components';
 import React from 'react';
+import 'jest-styled-components';
+
+import { fireEvent, render } from '@test/utils';
 
 import { Chip } from './index';
 

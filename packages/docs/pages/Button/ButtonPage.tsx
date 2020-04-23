@@ -1,11 +1,11 @@
 import { Button, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
 import { AddIcon, ArrowDropDownIcon } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import { ButtonPropTable, MarginPropTable } from '../../PropTables';
 
-export default () => (
+const ButtonPage = () => (
   <>
     <H0>Buttons</H0>
 
@@ -73,13 +73,13 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function LoadingButton() {
-        const [isLoading, setLoading] = React.useState(false);
+        const [isLoading, setLoading] = useState(false);
 
         function simulateNetworkRequest() {
-          return new Promise(resolve => setTimeout(resolve, 2000));
+          return new Promise((resolve) => setTimeout(resolve, 2000));
         }
 
-        React.useEffect(() => {
+        useEffect(() => {
           if (isLoading) {
             simulateNetworkRequest().then(() => {
               setLoading(false);
@@ -140,3 +140,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default ButtonPage;

@@ -1,4 +1,4 @@
-import React, { memo, Ref } from 'react';
+import React, { ButtonHTMLAttributes, forwardRef, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { ProgressCircle } from '../ProgressCircle';
@@ -9,7 +9,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLButtonElement>;
 }
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, MarginProps {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, MarginProps {
   actionType?: 'normal' | 'destructive';
   iconLeft?: React.ReactNode;
   iconOnly?: React.ReactNode;
@@ -48,11 +48,11 @@ const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, ..
   );
 });
 
-export const StyleableButton = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
+export const StyleableButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
   <RawButton {...props} forwardedRef={ref} />
 ));
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, style, ...props }, ref) => (
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, style, ...props }, ref) => (
   <RawButton {...props} forwardedRef={ref} />
 ));
 

@@ -28,7 +28,7 @@ function formatCode(code: string) {
   // Number of whitespaces to remove from each line
   const padding = lines[0].search(/\S|$/);
 
-  return lines.map(line => line.substr(padding)).join('\n');
+  return lines.map((line) => line.substr(padding)).join('\n');
 }
 
 function getCode(children: React.ReactNode) {
@@ -39,7 +39,7 @@ function getCode(children: React.ReactNode) {
   return formatCode(children);
 }
 
-export const CodeSnippet: React.FC<EditorProps> = props => {
+export const CodeSnippet: React.FC<EditorProps> = (props) => {
   const { children, language, showControls } = props;
   const { theme: editorTheme } = useContext(CodeEditorContext);
   const code = getCode(children);

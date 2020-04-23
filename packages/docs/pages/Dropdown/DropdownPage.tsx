@@ -10,7 +10,7 @@ import {
   DropdownPropTable,
 } from '../../PropTables';
 
-export default () => (
+const DropdownPage = () => (
   <>
     <H0>Dropdown</H0>
 
@@ -27,16 +27,16 @@ export default () => (
       <Dropdown
         maxHeight={250}
         items={[
-          { content: 'Edit', onItemClick: item => item, hash: 'edit', icon: <EditIcon /> },
+          { content: 'Edit', onItemClick: (item) => item, hash: 'edit', icon: <EditIcon /> },
           {
             content: 'Duplicate',
-            onItemClick: item => item,
+            onItemClick: (item) => item,
             hash: 'duplicate',
             icon: <FileCopyIcon />,
           },
           {
             content: 'Copy',
-            onItemClick: item => item,
+            onItemClick: (item) => item,
             hash: 'copy',
             icon: <AssignmentIcon />,
             disabled: true,
@@ -44,7 +44,7 @@ export default () => (
           },
           {
             content: 'Delete',
-            onItemClick: item => item,
+            onItemClick: (item) => item,
             hash: 'delete',
             icon: <DeleteIcon />,
             actionType: 'destructive',
@@ -102,7 +102,7 @@ export default () => (
 
       <Dropdown
         items={[
-          { content: 'Item', icon: <EditIcon />, onItemClick: item => item },
+          { content: 'Item', icon: <EditIcon />, onItemClick: (item) => item },
           { content: 'Link', icon: <OpenInNewIcon />, type: 'link', url: '#' },
         ]}
         toggle={<Button>Button</Button>}
@@ -122,8 +122,8 @@ export default () => (
       {/* jsx-to-string:start */}
       <Dropdown
         items={[
-          { content: 'Save', onItemClick: item => item, actionType: 'normal' },
-          { content: 'Delete', onItemClick: item => item, actionType: 'destructive' },
+          { content: 'Save', onItemClick: (item) => item, actionType: 'normal' },
+          { content: 'Delete', onItemClick: (item) => item, actionType: 'destructive' },
         ]}
         toggle={<Button>Button</Button>}
       />
@@ -142,35 +142,35 @@ export default () => (
       <Grid gridColumns="repeat(4, min-content)">
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
           ]}
           toggle={<Button>Button</Button>}
         />
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
           ]}
           toggle={<Button actionType="destructive">Button</Button>}
         />
 
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
           ]}
           toggle={<Button variant="secondary">Button</Button>}
         />
 
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
           ]}
           toggle={<Button variant="subtle">Button</Button>}
         />
@@ -190,36 +190,36 @@ export default () => (
       <Grid gridColumns="repeat(4, min-content)">
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
           ]}
           placement="right"
           toggle={<Button>Right</Button>}
         />
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
           ]}
           placement="top"
           toggle={<Button>Top</Button>}
         />
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
           ]}
           placement="bottom-start"
           toggle={<Button>Bottom-Start</Button>}
         />
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
           ]}
           placement="bottom-end"
           toggle={<Button>Bottom-End</Button>}
@@ -240,45 +240,45 @@ export default () => (
       <Grid gridColumns="repeat(3, min-content)">
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
           ]}
           toggle={<Button>Default</Button>}
         />
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
           ]}
           maxHeight={150}
           toggle={<Button>Smaller</Button>}
         />
         <Dropdown
           items={[
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
-            { content: 'Item', onItemClick: item => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
+            { content: 'Item', onItemClick: (item) => item },
           ]}
           maxHeight={350}
           toggle={<Button>Longer</Button>}
@@ -301,17 +301,17 @@ export default () => (
           {
             label: 'Label 1',
             items: [
-              { content: 'Option 1', onItemClick: item => item },
-              { content: 'Option 2', onItemClick: item => item },
-              { content: 'Option 3', onItemClick: item => item },
+              { content: 'Option 1', onItemClick: (item) => item },
+              { content: 'Option 2', onItemClick: (item) => item },
+              { content: 'Option 3', onItemClick: (item) => item },
             ],
           },
           {
             label: 'Label 2',
             items: [
-              { content: 'Option 4', onItemClick: item => item },
-              { content: 'Option 5', onItemClick: item => item },
-              { content: 'Option 6', onItemClick: item => item },
+              { content: 'Option 4', onItemClick: (item) => item },
+              { content: 'Option 5', onItemClick: (item) => item },
+              { content: 'Option 6', onItemClick: (item) => item },
             ],
           },
         ]}
@@ -321,3 +321,5 @@ export default () => (
     </CodePreview>
   </>
 );
+
+export default DropdownPage;

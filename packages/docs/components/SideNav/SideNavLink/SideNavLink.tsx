@@ -1,4 +1,5 @@
 import { Link } from '@bigcommerce/big-design';
+import React from 'react';
 import styled from 'styled-components';
 
 import { List, NextLink } from '../../';
@@ -13,7 +14,7 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const SideNavLink: React.FC<{ href: string; as?: string }> = props => (
+export const SideNavLink: React.FC<{ href: string; as?: string }> = (props) => (
   <List.Item>
     <NextLink href={props.href} as={props.as}>
       <StyledLink href="">{props.children}</StyledLink>

@@ -1,10 +1,10 @@
-import React, { forwardRef, memo, Ref } from 'react';
+import React, { forwardRef, HTMLAttributes, memo, Ref } from 'react';
 
 import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
 
 import { StyledList } from './styled';
 
-export interface ListProps extends React.HTMLAttributes<HTMLUListElement> {
+export interface ListProps extends HTMLAttributes<HTMLUListElement> {
   isOpen: boolean;
   maxHeight: number;
   update(): void;

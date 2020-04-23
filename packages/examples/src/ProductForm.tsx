@@ -1,22 +1,14 @@
-import React from 'react';
+import { Box, Button, Form, FormGroup, H1, Input, Panel, Select } from '@bigcommerce/big-design';
 import { useFormik } from 'formik';
-import {
-  Box,
-  Button,
-  Form,
-  FormGroup,
-  H1,
-  Input,
-  Panel,
-  Select
-} from '@bigcommerce/big-design';
-import { Product } from './data';
+import React from 'react';
 import * as Yup from 'yup';
+
+import { Product } from './data';
 
 const initialValues: Product = {
   name: '',
   stock: 0,
-  category: 'Food'
+  category: 'Food',
 };
 
 interface Props {
@@ -29,18 +21,10 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
     resetForm();
   };
 
-  const {
-    errors,
-    handleChange,
-    handleSubmit,
-    resetForm,
-    setFieldValue,
-    touched,
-    values
-  } = useFormik<Product>({
+  const { errors, handleChange, handleSubmit, resetForm, setFieldValue, touched, values } = useFormik<Product>({
     initialValues,
     onSubmit,
-    validationSchema: ProductSchema
+    validationSchema: ProductSchema,
   });
 
   return (
@@ -76,11 +60,11 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
             <Select
               label="Category"
               name="category"
-              onOptionChange={item => setFieldValue('category', item)}
+              onOptionChange={(item) => setFieldValue('category', item)}
               value={values.category}
               options={[
                 { content: 'Food', value: 'Food' },
-                { content: 'Drink', value: 'Drink' }
+                { content: 'Drink', value: 'Drink' },
               ]}
               error={touched.category && errors.category}
               required
@@ -97,13 +81,7 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
 };
 
 const ProductSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2)
-    .max(50)
-    .required(),
-  stock: Yup.number()
-    .required()
-    .min(0)
-    .max(100),
-  category: Yup.string().required()
+  name: Yup.string().min(2).max(50).required(),
+  stock: Yup.number().required().min(0).max(100),
+  category: Yup.string().required(),
 });

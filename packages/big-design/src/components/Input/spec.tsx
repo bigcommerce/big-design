@@ -1,7 +1,8 @@
 import { AddIcon } from '@bigcommerce/big-design-icons';
-import { render } from '@test/utils';
+import React, { createRef } from 'react';
 import 'jest-styled-components';
-import React from 'react';
+
+import { render } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
@@ -9,7 +10,7 @@ import { FormControlDescription, FormControlError, FormControlLabel, FormGroup }
 import { Input } from './index';
 
 test('forwards ref', () => {
-  const ref = React.createRef<HTMLInputElement>();
+  const ref = createRef<HTMLInputElement>();
   const { container } = render(<Input ref={ref} />);
   const input = container.querySelector('input');
 
@@ -243,19 +244,23 @@ test('error shows when an array of strings', () => {
     </FormGroup>,
   );
 
-  errors.forEach(error => expect(getByText(error)).toBeInTheDocument());
+  errors.forEach((error) => expect(getByText(error)).toBeInTheDocument());
 });
 
 test('error shows when an array of Errors', () => {
   const testIds = ['error_0', 'error_1'];
-  const errors = testIds.map(id => <FormControlError data-testid={id}>Error</FormControlError>);
+  const errors = testIds.map((id) => (
+    <FormControlError data-testid={id} key={id}>
+      Error
+    </FormControlError>
+  ));
   const { getByTestId } = render(
     <FormGroup>
       <Input error={errors} />
     </FormGroup>,
   );
 
-  testIds.forEach(id => expect(getByTestId(id)).toBeInTheDocument());
+  testIds.forEach((id) => expect(getByTestId(id)).toBeInTheDocument());
 });
 
 describe('error does not show when invalid type', () => {
@@ -272,7 +277,13 @@ describe('error does not show when invalid type', () => {
   });
 
   test('array of elements', () => {
-    const errors = ['Error', <FormControlError>Error</FormControlError>, <div data-testid="err">Error</div>];
+    const errors = [
+      'Error',
+      <FormControlError key="1">Error</FormControlError>,
+      <div data-testid="err" key="2">
+        Error
+      </div>,
+    ];
 
     const { queryByTestId } = render(
       <FormGroup>

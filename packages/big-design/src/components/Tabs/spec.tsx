@@ -1,8 +1,10 @@
-import { fireEvent, render } from '@test/utils';
-import 'jest-styled-components';
 import React from 'react';
 
-import { Tabs, TabItem } from './Tabs';
+import { fireEvent, render } from '@test/utils';
+
+import 'jest-styled-components';
+
+import { TabItem, Tabs } from './Tabs';
 
 const items: TabItem[] = [
   { id: 'tab1', title: 'Tab 1' },
@@ -40,7 +42,7 @@ test('active tab has a tabindex', () => {
 
   const tabs = getAllByRole('tab');
 
-  tabs.forEach(tab => {
+  tabs.forEach((tab) => {
     if (tab.id === activeTab) {
       expect(tab.tabIndex).toBe(-1);
     } else {

@@ -1,5 +1,5 @@
 import { H0, H1, Table, TableItem, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { CodePreview } from '../../components';
 import {
@@ -39,7 +39,7 @@ const sort = (items, columnHash, direction) => {
     );
 };
 
-export default () => {
+const TablePage = () => {
   return (
     <>
       <H0>Table</H0>
@@ -75,7 +75,7 @@ export default () => {
       <CodePreview scope={{ data, columns }}>
         {/* jsx-to-string:start */}
         {function Example() {
-          const [selectedItems, setSelectedItems] = React.useState<Item[]>([]);
+          const [selectedItems, setSelectedItems] = useState<Item[]>([]);
 
           return (
             <Table
@@ -98,17 +98,17 @@ export default () => {
       <CodePreview scope={{ data, columns }}>
         {/* jsx-to-string:start */}
         {function Example() {
-          const [currentPage, setCurrentPage] = React.useState(1);
-          const [itemsPerPageOptions] = React.useState([5, 10, 20, 30]);
-          const [itemsPerPage, setItemsPerPage] = React.useState(5);
-          const [currentItems, setCurrentItems] = React.useState<Item[]>([]);
+          const [currentPage, setCurrentPage] = useState(1);
+          const [itemsPerPageOptions] = useState([5, 10, 20, 30]);
+          const [itemsPerPage, setItemsPerPage] = useState(5);
+          const [currentItems, setCurrentItems] = useState<Item[]>([]);
 
-          const onItemsPerPageChange = newRange => {
+          const onItemsPerPageChange = (newRange) => {
             setCurrentPage(1);
             setItemsPerPage(newRange);
           };
 
-          React.useEffect(() => {
+          useEffect(() => {
             const maxItems = currentPage * itemsPerPage;
             const lastItem = Math.min(maxItems, data.length);
             const firstItem = Math.max(0, maxItems - itemsPerPage);
@@ -141,14 +141,14 @@ export default () => {
       <CodePreview scope={{ data, columns, sort }}>
         {/* jsx-to-string:start */}
         {function Example() {
-          const [items, setItems] = React.useState(data);
-          const [columnHash, setColumnHash] = React.useState('');
-          const [direction, setDirection] = React.useState<'ASC' | 'DESC'>('ASC');
+          const [items, setItems] = useState(data);
+          const [columnHash, setColumnHash] = useState('');
+          const [direction, setDirection] = useState<'ASC' | 'DESC'>('ASC');
 
           const onSort = (newColumnHash, newDirection) => {
             setColumnHash(newColumnHash);
             setDirection(newDirection);
-            setItems(currentItems => sort(currentItems, newColumnHash, newDirection));
+            setItems((currentItems) => sort(currentItems, newColumnHash, newDirection));
           };
 
           return (
@@ -205,3 +205,5 @@ export default () => {
     </>
   );
 };
+
+export default TablePage;

@@ -64,7 +64,7 @@ const checkboxDescriptionProps: Prop[] = [
   },
 ];
 
-export const CheckboxPropTable: React.FC<PropTableWrapper> = props => (
+export const CheckboxPropTable: React.FC<PropTableWrapper> = (props) => (
   <>
     <Text>
       Supports all native <Code>&lt;input /&gt;</Code> element attributes.
@@ -73,7 +73,7 @@ export const CheckboxPropTable: React.FC<PropTableWrapper> = props => (
   </>
 );
 
-export const CheckboxDescriptionPropTable: React.FC<PropTableWrapper> = props => (
+export const CheckboxDescriptionPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
     title="Checkbox[CheckboxDescription]"
     propList={checkboxDescriptionProps}
@@ -82,7 +82,7 @@ export const CheckboxDescriptionPropTable: React.FC<PropTableWrapper> = props =>
   />
 );
 
-export const CheckboxDescriptionLinkPropTable: React.FC<PropTableWrapper> = props => (
+export const CheckboxDescriptionLinkPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
     title="Checkbox[CheckboxDescriptionLink]"
     propList={messagingLinkItemProps}

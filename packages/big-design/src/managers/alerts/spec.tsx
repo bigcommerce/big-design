@@ -1,13 +1,14 @@
-import { fireEvent, render } from '@test/utils';
 import '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
+import { fireEvent, render } from '@test/utils';
+
 import { AlertProps } from '../../components/Alert';
 
-import { createAlertsManager } from './manager';
 import { AlertsManager } from './AlertsManager';
+import { createAlertsManager } from './manager';
 
 let alertsManager: ReturnType<typeof createAlertsManager>;
 
@@ -35,7 +36,7 @@ describe('alertsManager functionality', () => {
 
   test('adds an alert - without key', () => {
     const alerts: AlertProps[] = [];
-    const subscriber = jest.fn(a => alerts.push(a));
+    const subscriber = jest.fn((a) => alerts.push(a));
 
     alertsManager.subscribe(subscriber);
 
@@ -48,7 +49,7 @@ describe('alertsManager functionality', () => {
 
   test('adds an alert - with key', () => {
     const alerts: AlertProps[] = [];
-    const subscriber = jest.fn(a => alerts.push(a));
+    const subscriber = jest.fn((a) => alerts.push(a));
 
     alertsManager.subscribe(subscriber);
 
@@ -86,7 +87,7 @@ describe('alertsManager functionality', () => {
 
   test('subscibes to updates', () => {
     const alerts = [];
-    const subscriber = jest.fn(a => alerts.push(a));
+    const subscriber = jest.fn((a) => alerts.push(a));
 
     alertsManager.subscribe(subscriber);
 
@@ -158,7 +159,7 @@ describe('AlertsManager', () => {
   test('renders alerts in proper order', () => {
     let displayedAlert: AlertProps;
     const { queryByRole, queryByText } = render(<AlertsManager manager={alertsManager} />);
-    const subscriber = jest.fn(alert => (displayedAlert = alert));
+    const subscriber = jest.fn((alert) => (displayedAlert = alert));
 
     alertsManager.subscribe(subscriber);
 
@@ -244,7 +245,7 @@ describe('AlertsManager', () => {
     expect(queryByRole('alert')).not.toBeInTheDocument();
 
     act(() => {
-      alerts.forEach(alert => {
+      alerts.forEach((alert) => {
         alertsManager.add(alert);
       });
     });
@@ -277,7 +278,7 @@ describe('AlertsManager', () => {
     expect(queryByRole('alert')).not.toBeInTheDocument();
 
     act(() => {
-      alerts.forEach(alert => {
+      alerts.forEach((alert) => {
         alertsManager.add(alert);
       });
     });

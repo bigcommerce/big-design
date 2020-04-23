@@ -1,8 +1,8 @@
-const { join } = require('path');
 const { outputFile, pathExists } = require('fs-extra');
-const fetch = require('node-fetch');
 const inquirer = require('inquirer');
 const inquirerAutocomplete = require('inquirer-autocomplete-prompt');
+const fetch = require('node-fetch');
+const { join } = require('path');
 
 inquirer.registerPrompt('autocomplete', inquirerAutocomplete);
 
@@ -48,9 +48,9 @@ async function fetchIconList() {
       source: (_answersSoFar, input = '') =>
         Promise.resolve(
           iconList
-            .filter(icon => icon.name.startsWith(input))
+            .filter((icon) => icon.name.startsWith(input))
             .sort()
-            .map(icon => ({ name: icon.name, value: icon })),
+            .map((icon) => ({ name: icon.name, value: icon })),
         ),
     },
   ]);

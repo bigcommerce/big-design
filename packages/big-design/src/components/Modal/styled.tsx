@@ -18,7 +18,7 @@ export const StyledModal = styled.div.attrs({
   width: 100%;
   z-index: ${({ theme }) => theme.zIndex.modalBackdrop};
 
-  ${props =>
+  ${(props) =>
     props.backdrop &&
     props.variant &&
     css`

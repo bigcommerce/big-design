@@ -1,8 +1,8 @@
-import React, { memo } from 'react';
+import React, { memo, TableHTMLAttributes } from 'react';
 
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 
-export interface DataCellProps extends React.TableHTMLAttributes<HTMLTableCellElement> {
+export interface DataCellProps extends TableHTMLAttributes<HTMLTableCellElement> {
   align?: 'left' | 'center' | 'right';
   isCheckbox?: boolean;
   verticalAlign?: 'top' | 'center';
