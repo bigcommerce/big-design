@@ -22,16 +22,7 @@
     "ci": "yarn run lint && yarn run build",
     "lint": "yarn run lint:tsc",
     "lint:tsc": "tsc --noEmit",
-    "precommit": "lint-staged",
     "prepublishOnly": "rimraf dist && yarn run ci"
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix",
-      "tslint --fix",
-      "prettier --write",
-      "git add"
-    ]
   },
   "files": [
     "dist",
@@ -41,7 +32,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.7",
+    "@babel/runtime": "^7.9.2",
     "@bigcommerce/big-design-theme": "^0.8.0",
     "react-uid": "^2.2.0"
   },
@@ -52,15 +43,15 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
-    "@babel/core": "^7.7.0",
+    "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.7.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
-    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@babel/plugin-transform-object-assign": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.1.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
     "@bigcommerce/configs": "^0.13.0",
     "@svgr/core": "^5.0.1",
     "@svgr/plugin-jsx": "^5.0.1",
@@ -76,14 +67,13 @@
     "glob-promise": "^3.4.0",
     "inquirer": "^7.0.4",
     "inquirer-autocomplete-prompt": "^1.0.1",
-    "lint-staged": "^9.2.0",
     "node-fetch": "^2.6.0",
     "prettier": "^1.16.4",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "rimraf": "^3.0.2",
     "styled-components": "^4.3.0",
-    "typescript": "^3.7.2",
+    "typescript": "^3.8.3",
     "typescript-styled-plugin": "^0.15.0"
   }
 }

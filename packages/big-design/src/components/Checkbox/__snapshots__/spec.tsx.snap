@@ -7,6 +7,19 @@ exports[`render Checkbox checked 1`] = `
   width: 1.5rem;
 }
 
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
 .c5 {
   margin-left: 0.5rem;
 }
@@ -78,19 +91,6 @@ exports[`render Checkbox checked 1`] = `
   opacity: 1;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -143,6 +143,20 @@ exports[`render Checkbox disabled checked 1`] = `
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+  cursor: not-allowed;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
 }
 
 .c5 {
@@ -223,20 +237,6 @@ exports[`render Checkbox disabled checked 1`] = `
   opacity: 1;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-  cursor: not-allowed;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -293,6 +293,20 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+  cursor: not-allowed;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
 }
 
 .c5 {
@@ -377,20 +391,6 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-  cursor: not-allowed;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -446,6 +446,20 @@ exports[`render Checkbox disabled unchecked 1`] = `
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+  cursor: not-allowed;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
 }
 
 .c5 {
@@ -530,20 +544,6 @@ exports[`render Checkbox disabled unchecked 1`] = `
   opacity: 0;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-  cursor: not-allowed;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -599,6 +599,19 @@ exports[`render Checkbox indeterminate 1`] = `
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
 }
 
 .c5 {
@@ -676,19 +689,6 @@ exports[`render Checkbox indeterminate 1`] = `
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -740,6 +740,19 @@ exports[`render Checkbox unchecked 1`] = `
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
 }
 
 .c5 {
@@ -817,19 +830,6 @@ exports[`render Checkbox unchecked 1`] = `
   opacity: 0;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -894,6 +894,19 @@ exports[`render Checkbox with description object 1`] = `
 }
 
 .c7:last-child {
+  margin-bottom: 0;
+}
+
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+
+.c6:last-child {
   margin-bottom: 0;
 }
 
@@ -997,19 +1010,6 @@ exports[`render Checkbox with description object 1`] = `
   opacity: 0;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -1091,6 +1091,19 @@ exports[`render Checkbox with description string 1`] = `
   margin-bottom: 0;
 }
 
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
 .c5 {
   margin-left: 0.5rem;
 }
@@ -1164,19 +1177,6 @@ exports[`render Checkbox with description string 1`] = `
 
 .c3 svg {
   opacity: 0;
-}
-
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
 }
 
 <div

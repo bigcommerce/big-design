@@ -2,6 +2,3 @@ node_modules
 dist
 .next
 packages/docs/out
-# jest.config.js
-# svgr.config.js
-# prettier.config.js

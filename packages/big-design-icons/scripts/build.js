@@ -32,6 +32,7 @@ async function generateIcons() {
 
       componentNames.add(name);
 
+      // eslint-disable-next-line no-console
       console.log(`Building: ${name}`);
 
       return convertToReactComponent(iconFilePath, name);
@@ -51,5 +52,6 @@ function cleanDestDirectory() {
 
   await outputFile(join(DEST_PATH, 'index.ts'), indexFile.join('\n'));
 
+  // eslint-disable-next-line no-console
   console.log('Done!');
 })();

@@ -16,22 +16,13 @@
     "start": "next",
     "ci": "yarn run lint && yarn run build-static",
     "lint": "yarn run lint:tsc",
-    "lint:tsc": "tsc --noEmit",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix",
-      "tslint --fix",
-      "prettier --write",
-      "git add"
-    ]
+    "lint:tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@babel/core": "^7.7.0",
-    "@babel/preset-react": "^7.7.0",
-    "@babel/preset-typescript": "^7.7.0",
-    "@babel/standalone": "^7.7.3",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
+    "@babel/standalone": "^7.9.5",
     "@bigcommerce/big-design": "^0.18.0",
     "@bigcommerce/big-design-icons": "^0.10.0",
     "@bigcommerce/big-design-theme": "^0.8.0",
@@ -57,7 +48,7 @@
     "jsx-to-string-loader": "^1.2.0",
     "next": "^9.0.3",
     "push-dir": "^0.4.1",
-    "typescript": "^3.7.2",
+    "typescript": "^3.8.3",
     "typescript-styled-plugin": "^0.15.0"
   }
 }

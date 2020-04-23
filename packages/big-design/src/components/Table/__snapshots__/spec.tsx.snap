@@ -466,14 +466,6 @@ exports[`renders a pagination component 1`] = `
 `;
 
 exports[`renders a simple table 1`] = `
-.c0 {
-  border-color: transparent;
-  border-spacing: 0;
-  color: #313440;
-  text-align: left;
-  width: 100%;
-}
-
 .c2 {
   box-sizing: border-box;
 }
@@ -539,6 +531,14 @@ exports[`renders a simple table 1`] = `
 
 .c5:hover {
   background-color: #F6F7FC;
+}
+
+.c0 {
+  border-color: transparent;
+  border-spacing: 0;
+  color: #313440;
+  text-align: left;
+  width: 100%;
 }
 
 <table
@@ -770,6 +770,29 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin-bottom: 0;
 }
 
+.c11 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c11:last-child {
+  margin-bottom: 0;
+}
+
 .c10 {
   margin-left: 0.5rem;
 }
@@ -839,29 +862,6 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 
 .c8 svg {
   opacity: 0;
-}
-
-.c11 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
-.c11:last-child {
-  margin-bottom: 0;
 }
 
 .c0 {
