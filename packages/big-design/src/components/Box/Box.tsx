@@ -15,6 +15,7 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, DisplayP
   borderRight?: keyof Border;
   borderTop?: keyof Border;
   borderRadius?: keyof BorderRadius;
+  clearfix?: boolean;
 }
 
 interface PrivateProps {
