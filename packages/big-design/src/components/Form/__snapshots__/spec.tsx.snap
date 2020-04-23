@@ -15,16 +15,6 @@ exports[`simple form render 1`] = `
   margin-bottom: 0;
 }
 
-.c1 {
-  border: none;
-  margin: 0 0 1.5rem;
-  padding: 0;
-}
-
-.c1:last-child {
-  margin: 0;
-}
-
 .c2 {
   color: #313440;
   margin: 0 0 1rem;
@@ -36,6 +26,16 @@ exports[`simple form render 1`] = `
 
 .c2:not(:last-child) {
   margin-bottom: 0.25rem;
+}
+
+.c1 {
+  border: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.c1:last-child {
+  margin: 0;
 }
 
 .c7 {

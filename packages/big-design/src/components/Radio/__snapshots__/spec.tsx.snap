@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render Radio (checked + disabled) 1`] = `
+.c5 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+  cursor: not-allowed;
+}
+
+.c5:last-child {
+  margin-bottom: 0;
+}
+
 .c4 {
   margin-left: 0.5rem;
 }
@@ -87,20 +101,6 @@ exports[`render Radio (checked + disabled) 1`] = `
   opacity: 1;
 }
 
-.c5 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-  cursor: not-allowed;
-}
-
-.c5:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -136,6 +136,19 @@ exports[`render Radio (checked + disabled) 1`] = `
 `;
 
 exports[`render Radio (checked) 1`] = `
+.c5 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+
+.c5:last-child {
+  margin-bottom: 0;
+}
+
 .c4 {
   margin-left: 0.5rem;
 }
@@ -216,19 +229,6 @@ exports[`render Radio (checked) 1`] = `
   opacity: 1;
 }
 
-.c5 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-}
-
-.c5:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -297,6 +297,19 @@ exports[`render Radio (unchecked + description object) 1`] = `
 
 .c8 {
   font-size: 0.875rem;
+}
+
+.c5 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+
+.c5:last-child {
+  margin-bottom: 0;
 }
 
 .c4 {
@@ -379,19 +392,6 @@ exports[`render Radio (unchecked + description object) 1`] = `
   width: 0.75rem;
 }
 
-.c5 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-}
-
-.c5:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -446,6 +446,19 @@ exports[`render Radio (unchecked + description text) 1`] = `
 }
 
 .c6:last-child {
+  margin-bottom: 0;
+}
+
+.c5 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+
+.c5:last-child {
   margin-bottom: 0;
 }
 
@@ -529,19 +542,6 @@ exports[`render Radio (unchecked + description text) 1`] = `
   width: 0.75rem;
 }
 
-.c5 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-}
-
-.c5:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -577,6 +577,20 @@ exports[`render Radio (unchecked + description text) 1`] = `
 `;
 
 exports[`render Radio (unchecked + disabled) 1`] = `
+.c5 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+  cursor: not-allowed;
+}
+
+.c5:last-child {
+  margin-bottom: 0;
+}
+
 .c4 {
   margin-left: 0.5rem;
 }
@@ -663,20 +677,6 @@ exports[`render Radio (unchecked + disabled) 1`] = `
   width: 0.75rem;
 }
 
-.c5 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-  cursor: not-allowed;
-}
-
-.c5:last-child {
-  margin-bottom: 0;
-}
-
 <div
   class="c0"
 >
@@ -711,6 +711,19 @@ exports[`render Radio (unchecked + disabled) 1`] = `
 `;
 
 exports[`render Radio (unchecked) 1`] = `
+.c5 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+
+.c5:last-child {
+  margin-bottom: 0;
+}
+
 .c4 {
   margin-left: 0.5rem;
 }
@@ -789,19 +802,6 @@ exports[`render Radio (unchecked) 1`] = `
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   width: 0.75rem;
-}
-
-.c5 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  cursor: pointer;
-}
-
-.c5:last-child {
-  margin-bottom: 0;
 }
 
 <div

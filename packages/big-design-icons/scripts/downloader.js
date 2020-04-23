@@ -9,6 +9,7 @@ inquirer.registerPrompt('autocomplete', inquirerAutocomplete);
 const DEST_PATH = join(__dirname, '..', 'svgs', 'material');
 
 async function downloadIcon(icon) {
+  // eslint-disable-next-line no-console
   console.log(`Downloading icon: ${icon.name}`);
 
   const response = await fetch(
@@ -58,6 +59,7 @@ async function fetchIconList() {
   const iconAlreadyExists = await iconExists(icon);
 
   if (iconAlreadyExists) {
+    // eslint-disable-next-line no-console
     console.log(`Icon "${icon.name}" already exists.`);
   } else {
     await downloadIcon(icon);

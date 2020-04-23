@@ -16,7 +16,8 @@ export const warning = (message: string): void => {
     // check console for IE9 support which provides console
     // only with open devtools
     if (typeof console !== 'undefined') {
-      console.warn(text); // tslint:disable-line no-console
+      // eslint-disable-next-line no-console
+      console.warn(text);
     }
 
     // Throwing an error and catching it immediately

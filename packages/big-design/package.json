@@ -26,22 +26,13 @@
     "start": "concurrently \"yarn:build:* --watch\"",
     "test": "BABEL_ENV=test jest",
     "test:watch": "yarn run test --watch",
-    "precommit": "lint-staged",
     "prepublishOnly": "rimraf dist && yarn run ci"
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix",
-      "tslint --fix",
-      "prettier --write",
-      "git add"
-    ]
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.7",
+    "@babel/runtime": "^7.9.2",
     "@bigcommerce/big-design-icons": "^0.10.0",
     "@bigcommerce/big-design-theme": "^0.8.0",
     "@popperjs/core": "^2.2.1",
@@ -58,36 +49,35 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
-    "@babel/core": "^7.7.0",
+    "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.7.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
-    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@babel/plugin-transform-object-assign": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.7.1",
-    "@babel/preset-react": "^7.7.0",
-    "@babel/preset-typescript": "^7.7.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
     "@bigcommerce/configs": "^0.13.0",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.0",
-    "@types/jest": "^25.1.2",
+    "@types/jest": "^25.2.1",
     "@types/node": "^13.1.8",
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.5",
     "@types/react-test-renderer": "^16.8.3",
     "@types/styled-components": "^4.1.12",
-    "babel-jest": "^25.1.0",
+    "babel-jest": "^25.4.0",
     "babel-plugin-styled-components": "^1.10.6",
     "concurrently": "^5.0.0",
-    "jest": "^25.1.0",
+    "jest": "^25.4.0",
     "jest-styled-components": "^6.3.1",
-    "lint-staged": "^9.2.0",
     "prettier": "^1.16.4",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "rimraf": "^3.0.2",
     "styled-components": "^4.3.0",
-    "typescript": "^3.7.2",
+    "typescript": "^3.8.3",
     "typescript-styled-plugin": "^0.15.0"
   }
 }
