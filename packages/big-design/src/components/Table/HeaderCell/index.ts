@@ -1,5 +1,2 @@
-import { HeaderCellProps as _HeaderCellProps } from './HeaderCell';
-
 export { HeaderCell } from './HeaderCell';
-
-export type HeaderCellProps<T> = _HeaderCellProps<T>;
+export type { HeaderCellProps } from './HeaderCell';
