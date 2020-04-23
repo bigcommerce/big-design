@@ -62,6 +62,12 @@ test('has shadow props', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('has clearfix prop', () => {
+  const { container } = render(<Box clearfix />);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
 test('renders as a different tag', () => {
   const { getByTestId } = render(<Box data-testid="box" as="section" />);
   const tag = getByTestId('box').tagName;

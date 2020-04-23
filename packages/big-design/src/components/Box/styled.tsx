@@ -1,4 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { clearFix } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { withDisplay, withMargins, withPaddings } from '../../mixins';
@@ -10,6 +11,8 @@ export const StyledBox = styled.div<BoxProps>`
   ${withMargins()}
   ${withPaddings()}
   box-sizing: border-box;
+
+  ${({ clearfix }) => clearfix && clearFix()};
 
   ${({ backgroundColor, theme }) =>
     backgroundColor &&

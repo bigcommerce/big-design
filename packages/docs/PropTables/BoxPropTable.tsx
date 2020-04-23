@@ -60,6 +60,11 @@ const boxProps: Prop[] = [
     types: ['normal', 'circle', 'none'],
     description: 'Determines type of border radius to be applied.',
   },
+  {
+    name: 'clearfix',
+    types: ['boolean'],
+    description: 'Adds a clearfix for floating internal elements.',
+  },
 ];
 
 export const BoxPropTable: React.FC<PropTableWrapper> = props => (
