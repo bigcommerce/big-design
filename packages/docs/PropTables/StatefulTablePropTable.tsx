@@ -115,7 +115,7 @@ const tableColumnsProps: Prop[] = [
   },
   {
     name: 'verticalAlign',
-    types: ['top', 'center'],
+    types: ['top', 'middle'],
     defaultValue: 'top',
     description: 'Sets vertical alignment for column (td only).',
   },
