@@ -102,7 +102,7 @@ test('tweaks column styles with props', () => {
           header: 'Sku',
           render: ({ sku }: any) => sku,
           align: 'right',
-          verticalAlign: 'center',
+          verticalAlign: 'middle',
         },
         {
           header: 'Name',
@@ -130,7 +130,7 @@ test('tweaks column styles with props', () => {
 
   expect(skuTd).toHaveStyle(`
     text-align: right;
-    vertical-align: center;
+    vertical-align: middle;
   `);
 
   expect(nameTd).toHaveStyle(`

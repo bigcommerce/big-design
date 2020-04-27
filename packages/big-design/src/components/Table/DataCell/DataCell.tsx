@@ -5,7 +5,7 @@ import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 export interface DataCellProps extends TableHTMLAttributes<HTMLTableCellElement> {
   align?: 'left' | 'center' | 'right';
   isCheckbox?: boolean;
-  verticalAlign?: 'top' | 'center';
+  verticalAlign?: 'top' | 'middle';
   width?: number | string;
   withBorder?: boolean;
   withPadding?: boolean;

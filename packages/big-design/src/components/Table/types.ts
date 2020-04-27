@@ -28,7 +28,7 @@ export interface TableColumn<T> {
   hideHeader?: boolean;
   isSortable?: boolean;
   render: React.ComponentType<T> | ((props: T & { children?: ReactNode }, context?: any) => string | number);
-  verticalAlign?: 'top' | 'center';
+  verticalAlign?: 'top' | 'middle';
   width?: number | string;
   withPadding?: boolean;
 }
