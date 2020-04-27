@@ -1,6 +1,7 @@
-import { fireEvent, render } from '@test/utils';
-import 'jest-styled-components';
 import React from 'react';
+import 'jest-styled-components';
+
+import { fireEvent, render } from '@test/utils';
 
 import { Text } from '../Typography';
 
@@ -44,9 +45,9 @@ test('title button has id', () => {
 });
 
 test('title button has aria-controls', () => {
-  const { container, getByRole } = render(CollapseWithStaticTitleMock);
+  const { getByRole } = render(CollapseWithStaticTitleMock);
   const button = getByRole('button');
-  const panel = container.lastChild as HTMLDivElement;
+  const panel = getByRole('region', { hidden: true });
 
   fireEvent.focus(button);
 
@@ -54,30 +55,33 @@ test('title button has aria-controls', () => {
 });
 
 test('title button has icon', () => {
-  const { container } = render(CollapseWithStaticTitleMock);
-  const icon = container.querySelector('svg');
+  const { getByRole } = render(CollapseWithStaticTitleMock);
+  const trigger = getByRole('button');
+  const icon = trigger.querySelector('svg');
 
   expect(icon).toBeInTheDocument();
 });
 
 test('title button icon in initially collapsed state', () => {
-  const { container } = render(CollapseWithStaticTitleMock);
-  const icon = container.querySelector('svg');
+  const { getByRole } = render(CollapseWithStaticTitleMock);
+  const trigger = getByRole('button');
+  const icon = trigger.querySelector('svg');
 
   expect(icon).not.toHaveStyle('transform: rotate(-180deg)');
 });
 
 test('title button icon in initially expanded state', () => {
-  const { container } = render(CollapseWithVisiblePanelMock);
-  const icon = container.querySelector('svg');
+  const { getByRole } = render(CollapseWithVisiblePanelMock);
+  const trigger = getByRole('button');
+  const icon = trigger.querySelector('svg');
 
   expect(icon).toHaveStyle('transform: rotate(-180deg)');
 });
 
 test('title button icon toggles on title click', () => {
-  const { container, getByRole } = render(CollapseWithStaticTitleMock);
+  const { getByRole } = render(CollapseWithStaticTitleMock);
   const trigger = getByRole('button');
-  const icon = container.querySelector('svg');
+  const icon = trigger.querySelector('svg');
 
   fireEvent.click(trigger);
 
@@ -89,15 +93,15 @@ test('title button icon toggles on title click', () => {
 });
 
 test('panel has id', () => {
-  const { container } = render(CollapseWithStaticTitleMock);
-  const panel = container.lastChild as HTMLDivElement;
+  const { getByRole } = render(CollapseWithStaticTitleMock);
+  const panel = getByRole('region', { hidden: true });
 
   expect(panel.id).toBeDefined();
 });
 
 test('panel has aria-labelledby attribute', () => {
-  const { container } = render(CollapseWithStaticTitleMock);
-  const panel = container.lastChild as HTMLDivElement;
+  const { getByRole } = render(CollapseWithStaticTitleMock);
+  const panel = getByRole('region', { hidden: true });
 
   expect(panel.getAttribute('aria-labelledby')).toBeDefined();
 });
@@ -105,37 +109,42 @@ test('panel has aria-labelledby attribute', () => {
 test('panel has role attribute', () => {
   const { getByRole } = render(CollapseWithStaticTitleMock);
   const panel = getByRole('region', { hidden: true });
+
   expect(panel).toBeInTheDocument();
 });
 
 test('panel is hidden', () => {
-  const { container } = render(CollapseWithStaticTitleMock);
+  const { getByRole } = render(CollapseWithStaticTitleMock);
+  const panel = getByRole('region', { hidden: true });
 
-  expect(container.lastChild).not.toBeVisible();
+  expect(panel).not.toBeVisible();
 });
 
 test('panel is visible', () => {
-  const { container } = render(CollapseWithVisiblePanelMock);
+  const { getByRole } = render(CollapseWithVisiblePanelMock);
+  const panel = getByRole('region', { hidden: true });
 
-  expect(container.lastChild).toBeVisible();
+  expect(panel).toBeVisible();
 });
 
 test('hidden panel becomes visible on title click', () => {
-  const { container, getByRole } = render(CollapseWithStaticTitleMock);
+  const { getByRole } = render(CollapseWithStaticTitleMock);
   const trigger = getByRole('button') as HTMLButtonElement;
+  const panel = getByRole('region', { hidden: true });
 
   fireEvent.click(trigger);
 
-  expect(container.lastChild).toBeVisible();
+  expect(panel).toBeVisible();
 });
 
 test('visible panel becomes hidden on title click', () => {
-  const { container, getByRole } = render(CollapseWithVisiblePanelMock);
+  const { getByRole } = render(CollapseWithVisiblePanelMock);
   const trigger = getByRole('button') as HTMLButtonElement;
+  const panel = getByRole('region', { hidden: true });
 
   fireEvent.click(trigger);
 
-  expect(container.lastChild).not.toBeVisible();
+  expect(panel).not.toBeVisible();
 });
 
 test('click on title toggles aria-expanded attribute on title button', () => {
