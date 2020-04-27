@@ -680,6 +680,25 @@ exports[`renders a simple table 1`] = `
 </table>
 `;
 
+exports[`renders a table figure 1`] = `
+.c0 {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+@media (min-width:720px) {
+  .c0 {
+    white-space: normal;
+  }
+}
+
+<figure
+  class="c0"
+/>
+`;
+
 exports[`selectable renders selectable actions and checkboxes 1`] = `
 .c9 {
   vertical-align: middle;
