@@ -29,7 +29,7 @@ export const PropTable: FC<PropTableProps> = (props) => {
   const { collapsible, id, propList: items, title } = props;
 
   const renderTable = () => (
-    <TableFigure>
+    <TableFigure marginBottom="xLarge">
       <Table
         columns={[
           {

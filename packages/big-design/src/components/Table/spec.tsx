@@ -3,7 +3,7 @@ import 'jest-styled-components';
 
 import { fireEvent, render } from '@test/utils';
 
-import { Table } from './Table';
+import { Table, TableFigure } from './Table';
 
 interface SimpleTableOptions {
   className?: string;
@@ -50,6 +50,12 @@ const getSimpleTable = ({
 
 test('renders a simple table', () => {
   const { container } = render(getSimpleTable());
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+test('renders a table figure', () => {
+  const { container } = render(<TableFigure />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
