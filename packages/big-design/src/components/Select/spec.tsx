@@ -171,21 +171,21 @@ test('select menu opens when focused on input', () => {
   const { getByTestId, queryByRole } = render(SelectMock);
   const input = getByTestId('select');
 
-  expect(queryByRole('listbox')).toBeEmpty();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 
   fireEvent.focus(input);
 
-  expect(queryByRole('listbox')).not.toBeEmpty();
+  expect(queryByRole('listbox')).toBeInTheDocument();
 });
 
 test('select menu opens/closes when input button is clicked', () => {
   const { getByRole, queryByRole } = render(SelectMock);
   const button = getByRole('button');
   fireEvent.click(button);
-  expect(queryByRole('listbox')).not.toBeEmpty();
+  expect(queryByRole('listbox')).toBeInTheDocument;
 
   fireEvent.click(button);
-  expect(queryByRole('listbox')).toBeEmpty();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('esc should close menu', () => {
@@ -193,10 +193,10 @@ test('esc should close menu', () => {
   const input = getByTestId('select');
 
   fireEvent.focus(input);
-  expect(queryByRole('listbox')).not.toBeEmpty();
+  expect(queryByRole('listbox')).toBeInTheDocument();
 
   fireEvent.keyDown(input, { key: 'Escape' });
-  expect(queryByRole('listbox')).toBeEmpty();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('blurring input should close menu', () => {
@@ -204,10 +204,10 @@ test('blurring input should close menu', () => {
   const input = getByTestId('select');
 
   fireEvent.focus(input);
-  expect(queryByRole('listbox')).not.toBeEmpty();
+  expect(queryByRole('listbox')).toBeInTheDocument();
 
   fireEvent.blur(input);
-  expect(queryByRole('listbox')).toBeEmpty();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('select has items', () => {
@@ -490,10 +490,11 @@ test('appends (optional) text to label if select is not required', () => {
 });
 
 test('does not forward styles', () => {
-  const { container, getByRole } = render(
+  const { container, getByRole, getByTestId } = render(
     <Select
       className="test"
       onOptionChange={onChange}
+      data-testid="select"
       label="Countries"
       options={[
         { value: 'us', content: 'United States' },
@@ -507,6 +508,9 @@ test('does not forward styles', () => {
     />,
   );
 
+  const input = getByTestId('select');
+
+  fireEvent.focus(input);
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(getByRole('listbox')).not.toHaveStyle('background: red');
 });
