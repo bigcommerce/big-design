@@ -306,45 +306,42 @@ export const Select = typedMemo(
 
     const renderOptions = useCallback(
       (items: Array<SelectOption<T>>) => {
-        return (
-          isOpen &&
-          items.map((item) => {
-            if (
-              !selectOptions.find(
-                (option: SelectOption<T> | SelectAction) => 'value' in option && option.value === item.value,
-              )
-            ) {
-              return null;
-            }
-            const key = itemKey.current;
+        items.map((item) => {
+          if (
+            !selectOptions.find(
+              (option: SelectOption<T> | SelectAction) => 'value' in option && option.value === item.value,
+            )
+          ) {
+            return null;
+          }
+          const key = itemKey.current;
 
-            itemKey.current += 1;
+          itemKey.current += 1;
 
-            const isHighlighted = highlightedIndex === key;
-            const isSelected = selectedOption ? 'value' in item && selectedOption.value === item.value : false;
+          const isHighlighted = highlightedIndex === key;
+          const isSelected = selectedOption ? 'value' in item && selectedOption.value === item.value : false;
 
-            const { disabled: itemDisabled, content, icon, ...itemProps } = item;
+          const { disabled: itemDisabled, content, icon, ...itemProps } = item;
 
-            return (
-              <ListItem
-                {...itemProps}
-                {...getItemProps({
-                  disabled: itemDisabled,
-                  index: key,
-                  item,
-                })}
-                isHighlighted={isHighlighted}
-                isSelected={isSelected}
-                key={`${content}-${key}`}
-              >
-                {getContent(item, isHighlighted)}
-                {isSelected && <CheckIcon color="primary" size="large" />}
-              </ListItem>
-            );
-          })
-        );
+          return (
+            <ListItem
+              {...itemProps}
+              {...getItemProps({
+                disabled: itemDisabled,
+                index: key,
+                item,
+              })}
+              isHighlighted={isHighlighted}
+              isSelected={isSelected}
+              key={`${content}-${key}`}
+            >
+              {getContent(item, isHighlighted)}
+              {isSelected && <CheckIcon color="primary" size="large" />}
+            </ListItem>
+          );
+        });
       },
-      [getItemProps, highlightedIndex, isOpen, selectedOption, selectOptions],
+      [getItemProps, highlightedIndex, selectedOption, selectOptions],
     );
 
     const renderGroup = useCallback(
@@ -363,16 +360,12 @@ export const Select = typedMemo(
       itemKey.current = 0;
 
       if (Array.isArray(options) && options.every(isGroup)) {
-        return (
-          isOpen && (
-            <>
-              {(options as Array<SelectOptionGroup<T>>).map((group, index) => (
-                <Fragment key={index}>{renderGroup(group)}</Fragment>
-              ))}
-              {action && renderAction(action)}
-            </>
-          )
-        );
+        <>
+          {(options as Array<SelectOptionGroup<T>>).map((group, index) => (
+            <Fragment key={index}>{renderGroup(group)}</Fragment>
+          ))}
+          {action && renderAction(action)}
+        </>;
       }
 
       if (
@@ -382,15 +375,13 @@ export const Select = typedMemo(
         })
       ) {
         return (
-          isOpen && (
-            <>
-              {renderOptions(options as Array<SelectOption<T>>)}
-              {action && renderAction(action)}
-            </>
-          )
+          <>
+            {renderOptions(options as Array<SelectOption<T>>)}
+            {action && renderAction(action)}
+          </>
         );
       }
-    }, [action, isOpen, options, renderAction, renderGroup, renderOptions]);
+    }, [action, options, renderAction, renderGroup, renderOptions]);
 
     const renderList = useMemo(() => {
       return (
@@ -423,7 +414,7 @@ export const Select = typedMemo(
         <Manager>
           {renderLabel}
           <div {...getComboboxProps()}>{renderInput}</div>
-          {renderList}
+          {isOpen && renderList}
         </Manager>
       </div>
     );
