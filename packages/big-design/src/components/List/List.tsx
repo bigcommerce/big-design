@@ -5,7 +5,6 @@ import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
 import { StyledList } from './styled';
 
 export interface ListProps extends HTMLAttributes<HTMLUListElement> {
-  isOpen: boolean;
   maxHeight: number;
   update(): void;
 }
@@ -18,12 +17,12 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({ forwardedRef, updat
   const { height, width } = useWindowSize();
 
   useIsomorphicLayoutEffect(() => {
-    async function scheduleUpdate() {
-      await update();
+    function scheduleUpdate() {
+      update();
     }
 
     scheduleUpdate();
-  }, [props.children, props.isOpen, height, width]);
+  }, [props.children, height, width]);
 
   return <StyledList ref={forwardedRef} {...props} />;
 };
