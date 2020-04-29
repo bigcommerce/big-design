@@ -7,7 +7,7 @@ const collapseProps: Prop[] = [
     name: 'title',
     types: 'string',
     description: 'Collapse title.',
-    required: false,
+    required: true,
   },
   {
     name: 'initiallyOpen',
@@ -16,13 +16,13 @@ const collapseProps: Prop[] = [
     required: false,
   },
   {
-    name: 'onChange',
+    name: 'onCollapseChange',
     types: '(isOpen: boolean) => void',
     description: 'Function that will be called when a title is clicked.',
     required: false,
   },
 ];
 
-export const CollapsePropTable: React.FC<PropTableWrapper> = props => (
+export const CollapsePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Collapse" propList={collapseProps} {...props} />
 );

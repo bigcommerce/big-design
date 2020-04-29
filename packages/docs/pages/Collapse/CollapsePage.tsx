@@ -15,12 +15,12 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [title, setTitle] = React.useState('Show additional data');
-        const handleChange = (isOpen: boolean) => setTitle(isOpen ? 'Hide additional data' : 'Show additional data');
+        const [title, setTitle] = React.useState('Show more');
+        const handleChange = (isOpen: boolean) => setTitle(isOpen ? 'Show less' : 'Show more');
 
         return (
           <>
-            <Collapse title={title} onCollapseChange={handleChange} id="test">
+            <Collapse title={title} onCollapseChange={handleChange}>
               <Text>
                 Ea tempor sunt amet labore proident dolor proident commodo in exercitation ea nulla sunt pariatur. Nulla
                 sunt ipsum do eu consectetur exercitation occaecat labore aliqua. Aute elit occaecat esse ea fugiat
