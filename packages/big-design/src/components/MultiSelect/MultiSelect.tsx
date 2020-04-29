@@ -340,61 +340,45 @@ export const MultiSelect = typedMemo(
     );
 
     const renderOptions = useMemo(() => {
-      return (
-        isOpen &&
-        items.map((item, index) => {
-          if (action && item.content === action.content) {
-            return renderAction(item as SelectAction);
-          }
+      return items.map((item, index) => {
+        if (action && item.content === action.content) {
+          return renderAction(item as SelectAction);
+        }
 
-          const isHighlighted = highlightedIndex === index;
-          const isChecked = 'value' in item && Boolean(selectedOptions.find((i) => i.value === item.value));
+        const isHighlighted = highlightedIndex === index;
+        const isChecked = 'value' in item && Boolean(selectedOptions.find((i) => i.value === item.value));
 
-          const { content, disabled: itemDisabled, icon, ...itemProps } = item as SelectOption<T>;
+        const { content, disabled: itemDisabled, icon, ...itemProps } = item as SelectOption<T>;
 
-          return (
-            <ListItemCheckbox
-              {...itemProps}
-              {...getItemProps({
-                disabled: itemDisabled,
-                item,
-                index,
-              })}
-              checked={isChecked}
-              isHighlighted={isHighlighted}
-              key={`${content}-${index}`}
-              onClick={() => {
-                if (itemDisabled) {
-                  return;
-                }
+        return (
+          <ListItemCheckbox
+            {...itemProps}
+            {...getItemProps({
+              disabled: itemDisabled,
+              item,
+              index,
+            })}
+            checked={isChecked}
+            isHighlighted={isHighlighted}
+            key={`${content}-${index}`}
+            onClick={() => {
+              if (itemDisabled) {
+                return;
+              }
 
-                isChecked ? removeItem(item as SelectOption<T>) : addSelectedItem(item as SelectOption<T>);
-              }}
-            >
-              {content}
-            </ListItemCheckbox>
-          );
-        })
-      );
-    }, [
-      action,
-      addSelectedItem,
-      getItemProps,
-      highlightedIndex,
-      isOpen,
-      items,
-      removeItem,
-      renderAction,
-      selectedOptions,
-    ]);
+              isChecked ? removeItem(item as SelectOption<T>) : addSelectedItem(item as SelectOption<T>);
+            }}
+          >
+            {content}
+          </ListItemCheckbox>
+        );
+      });
+    }, [action, addSelectedItem, getItemProps, highlightedIndex, items, removeItem, renderAction, selectedOptions]);
 
     const renderList = useMemo(() => {
       return (
         <Popper
-          modifiers={[
-            { name: 'eventListeners', options: { scroll: isOpen, resize: isOpen } },
-            { name: 'offset', options: { offset: [0, 10] } },
-          ]}
+          modifiers={[{ name: 'offset', options: { offset: [0, 10] } }]}
           placement={placement}
           strategy={positionFixed ? 'fixed' : 'absolute'}
         >
@@ -402,7 +386,6 @@ export const MultiSelect = typedMemo(
             <List
               {...getMenuProps({ ref })}
               data-placement={popperPlacement}
-              isOpen={isOpen}
               maxHeight={maxHeight}
               style={popperStyle}
               update={update}
@@ -412,14 +395,14 @@ export const MultiSelect = typedMemo(
           )}
         </Popper>
       );
-    }, [getMenuProps, isOpen, maxHeight, placement, positionFixed, renderOptions]);
+    }, [getMenuProps, maxHeight, placement, positionFixed, renderOptions]);
 
     return (
       <div>
         <Manager>
           {renderLabel}
           <div {...getComboboxProps()}>{renderInput}</div>
-          {renderList}
+          {isOpen && renderList}
         </Manager>
       </div>
     );

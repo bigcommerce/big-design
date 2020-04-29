@@ -2,6 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { withTransition } from '../../mixins/transitions';
+import { Box } from '../Box';
 
 export const StyledLink = styled.a`
   ${withTransition(['background-color', 'color'])}
@@ -18,4 +19,9 @@ export const StyledLink = styled.a`
   }
 `;
 
+export const StyledBox = styled(Box)`
+  position: relative;
+`;
+
 StyledLink.defaultProps = { theme: defaultTheme };
+StyledBox.defaultProps = { theme: defaultTheme };

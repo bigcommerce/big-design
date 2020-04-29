@@ -10,7 +10,7 @@ import { ListGroupHeader } from '../List/GroupHeader';
 import { ListItem } from '../List/Item';
 import { Tooltip } from '../Tooltip';
 
-import { StyledLink } from './styled';
+import { StyledBox, StyledLink } from './styled';
 import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from './types';
 
 export const Dropdown = memo(
@@ -33,17 +33,18 @@ export const Dropdown = memo(
 
     const dropdownUniqueId = useUniqueId('dropdown');
 
-    const handleOnSelectedItemChange = ({
-      selectedItem,
-    }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
-      if (!selectedItem) {
-        return;
-      }
+    const handleOnSelectedItemChange = useCallback(
+      ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
+        if (!selectedItem) {
+          return;
+        }
 
-      if (selectedItem.type !== 'link' && typeof selectedItem.onItemClick === 'function') {
-        selectedItem.onItemClick(selectedItem);
-      }
-    };
+        if (selectedItem.type !== 'link' && typeof selectedItem.onItemClick === 'function') {
+          selectedItem.onItemClick(selectedItem);
+        }
+      },
+      [],
+    );
 
     const { getItemProps, getMenuProps, getToggleButtonProps, highlightedIndex, isOpen } = useSelect<
       DropdownItem | DropdownLinkItem | null
@@ -158,24 +159,21 @@ export const Dropdown = memo(
       itemKey.current = 0;
 
       if (Array.isArray(items) && items.every(isGroup)) {
-        return (
-          isOpen &&
-          (items as DropdownItemGroup[]).map((group, index) => <Fragment key={index}>{renderGroup(group)}</Fragment>)
-        );
+        return (items as DropdownItemGroup[]).map((group, index) => (
+          <Fragment key={index}>{renderGroup(group)}</Fragment>
+        ));
       }
 
       if (Array.isArray(items) && items.every(isItem)) {
-        return isOpen && renderItems(items as Array<DropdownItem | DropdownLinkItem>);
+        return renderItems(items as Array<DropdownItem | DropdownLinkItem>);
       }
-    }, [isOpen, items, renderGroup, renderItems]);
+    }, [items, renderGroup, renderItems]);
 
     const renderList = useMemo(
       () => (
         <Popper
-          modifiers={[
-            { name: 'eventListeners', options: { scroll: isOpen, resize: isOpen } },
-            { name: 'offset', options: { offset: [0, 10] } },
-          ]}
+          modifiers={[{ name: 'eventListeners' }, { name: 'offset', options: { offset: [0, 10] } }]}
+          strategy="absolute"
           placement={placement}
         >
           {({ placement: popperPlacement, ref, style: popperStyle, update }) => (
@@ -196,7 +194,6 @@ export const Dropdown = memo(
                 ref,
               })}
               data-placement={popperPlacement}
-              isOpen={isOpen}
               maxHeight={maxHeight}
               style={popperStyle}
               update={update}
@@ -206,13 +203,15 @@ export const Dropdown = memo(
           )}
         </Popper>
       ),
-      [getMenuProps, highlightedIndex, isOpen, maxHeight, placement, renderChildren, rest],
+      [getMenuProps, highlightedIndex, maxHeight, placement, renderChildren, rest],
     );
 
     return (
       <Manager>
-        {renderToggle}
-        {renderList}
+        <StyledBox>
+          {renderToggle}
+          {isOpen && renderList}
+        </StyledBox>
       </Manager>
     );
   },
