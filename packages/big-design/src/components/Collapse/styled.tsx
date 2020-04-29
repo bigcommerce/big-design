@@ -2,23 +2,19 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../mixins/transitions';
-import { Box } from '../Box';
+import { ButtonProps } from '../Button';
 import { StyleableButton } from '../Button/private';
 
-export const StyledBox = styled(Box)`
-  margin-left: -${({ theme }) => theme.spacing.xxSmall};
-`;
+interface StyledButtonProps extends ButtonProps {
+  isOpen?: boolean;
+}
 
-export const StyledButton = styled(StyleableButton).attrs<{}, { isOpen?: boolean }>({})`
+export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
   height: auto;
   line-height: inherit;
-  margin-bottom: ${({ theme }) => theme.spacing.small};
   margin-left: -${({ theme }) => theme.spacing.xxSmall};
-  margin-top: ${({ theme }) => theme.spacing.small};
-  padding-bottom: ${({ theme }) => theme.spacing.xxSmall};
-  padding-left: ${({ theme }) => theme.spacing.xxSmall};
+  padding: ${({ theme }) => theme.spacing.xxSmall};
   padding-right: ${({ theme }) => theme.spacing.none};
-  padding-top: ${({ theme }) => theme.spacing.xxSmall};
   width: auto;
 
   &:active,
@@ -29,7 +25,6 @@ export const StyledButton = styled(StyleableButton).attrs<{}, { isOpen?: boolean
 
   span {
     grid-gap: ${({ theme }) => theme.spacing.none};
-    height: ${({ theme }) => theme.spacing.medium};
   }
 
   svg {
@@ -43,5 +38,4 @@ export const StyledButton = styled(StyleableButton).attrs<{}, { isOpen?: boolean
   }
 `;
 
-StyledBox.defaultProps = { theme: defaultTheme };
 StyledButton.defaultProps = { theme: defaultTheme };

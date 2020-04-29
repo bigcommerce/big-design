@@ -2,10 +2,11 @@ import { ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React, { useState } from 'react';
 
 import { useUniqueId } from '../../hooks';
+import { Box } from '../Box';
 
-import { StyledBox, StyledButton } from './styled';
+import { StyledButton } from './styled';
 
-export interface CollapseProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CollapseProps {
   title: string;
   initiallyOpen?: boolean;
   onCollapseChange?(isOpen: boolean): void;
@@ -36,19 +37,13 @@ export const Collapse: React.FC<CollapseProps> = ({ children, title, onCollapseC
         isOpen={isOpen}
         variant="subtle"
         onClick={handleTitleClick}
+        marginVertical="small"
       >
         {title}
       </StyledButton>
-      <StyledBox
-        aria-labelledby={triggerId}
-        display={isOpen ? 'block' : 'none'}
-        id={panelId}
-        hidden={!isOpen}
-        role="region"
-        paddingLeft="xxSmall"
-      >
+      <Box aria-labelledby={triggerId} display={isOpen ? 'block' : 'none'} id={panelId} hidden={!isOpen} role="region">
         {children}
-      </StyledBox>
+      </Box>
     </>
   );
 };
