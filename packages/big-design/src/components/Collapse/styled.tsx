@@ -43,4 +43,5 @@ export const StyledButton = styled(StyleableButton).attrs<{}, { isOpen?: boolean
   }
 `;
 
+StyledBox.defaultProps = { theme: defaultTheme };
 StyledButton.defaultProps = { theme: defaultTheme };
