@@ -1,3 +1,4 @@
+import type { State } from '@popperjs/core';
 import React, { forwardRef, HTMLAttributes, memo, Ref } from 'react';
 
 import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
@@ -6,7 +7,7 @@ import { StyledList } from './styled';
 
 export interface ListProps extends HTMLAttributes<HTMLUListElement> {
   maxHeight: number;
-  update(): void;
+  update(): Promise<Partial<State> | null>;
 }
 
 interface PrivateProps {
@@ -17,8 +18,8 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({ forwardedRef, updat
   const { height, width } = useWindowSize();
 
   useIsomorphicLayoutEffect(() => {
-    function scheduleUpdate() {
-      update();
+    async function scheduleUpdate() {
+      await update();
     }
 
     scheduleUpdate();
