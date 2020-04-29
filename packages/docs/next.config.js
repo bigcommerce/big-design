@@ -26,6 +26,7 @@ module.exports = {
     '/breakpoints': { page: '/Breakpoints/BreakpointsPage' },
     '/button': { page: '/Button/ButtonPage' },
     '/checkbox': { page: '/Checkbox/CheckboxPage' },
+    '/collapse': { page: '/Collapse/CollapsePage' },
     '/counter': { page: '/Counter/CounterPage' },
     '/colors': { page: '/Colors/ColorsPage' },
     '/display': { page: '/Display/DisplayPage' },

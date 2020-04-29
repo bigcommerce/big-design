@@ -2,6 +2,7 @@ export * from './BadgePropTable';
 export * from './BoxPropTable';
 export * from './ButtonPropTable';
 export * from './CheckboxPropTable';
+export * from './CollapsePropTable';
 export * from './CounterPropTable';
 export * from './DisplayPropTable';
 export * from './DropdownPropTable';
