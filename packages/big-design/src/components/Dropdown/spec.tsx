@@ -89,7 +89,7 @@ test('dropdown toggle has aria-expanded when dropdown menu is open', () => {
 test('renders the dropdown menu closed', () => {
   const { queryByRole } = render(DropdownMock);
 
-  expect(queryByRole('listbox')).not.toBeVisible();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('opens/closes dropdown menu when toggle is clicked', () => {
@@ -97,10 +97,10 @@ test('opens/closes dropdown menu when toggle is clicked', () => {
   const toggle = getByRole('button');
 
   fireEvent.click(toggle);
-  expect(queryByRole('listbox')).not.toBeEmpty();
+  expect(queryByRole('listbox')).toBeInTheDocument();
 
   fireEvent.click(toggle);
-  expect(queryByRole('listbox')).toBeEmpty();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('dropdown menu has aria-activedescendant', () => {
@@ -204,10 +204,10 @@ test('esc should close menu', () => {
   const toggle = getByRole('button');
 
   fireEvent.click(toggle);
-  expect(queryByRole('listbox')).not.toBeEmpty();
+  expect(queryByRole('listbox')).toBeInTheDocument();
 
   fireEvent.keyDown(getByRole('listbox'), { key: 'Escape' });
-  expect(queryByRole('listbox')).toBeEmpty();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('blurring list should close menu', () => {
@@ -220,10 +220,10 @@ test('blurring list should close menu', () => {
   const toggle = getByRole('button');
 
   fireEvent.click(toggle);
-  expect(queryByRole('listbox')).not.toBeEmpty();
+  expect(queryByRole('listbox')).toBeInTheDocument();
 
   fireEvent.blur(getByRole('listbox'));
-  expect(queryByRole('listbox')).toBeEmpty();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('home should select first dropdown item', () => {
@@ -332,6 +332,8 @@ test('does not forward styles', () => {
   const { container, getByRole } = render(
     <Dropdown className="test" style={{ background: 'red' }} items={[]} toggle={<Button>Button</Button>} />,
   );
+  const toggle = getByRole('button');
+  fireEvent.click(toggle);
 
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(getByRole('listbox')).not.toHaveStyle('background: red');

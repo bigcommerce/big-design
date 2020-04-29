@@ -134,11 +134,11 @@ test('multi select menu opens when focused on input', () => {
   const { getByTestId, queryByRole } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
 
-  expect(queryByRole('listbox')).toBeEmpty();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 
   fireEvent.focus(input);
 
-  expect(queryByRole('listbox')).not.toBeEmpty();
+  expect(queryByRole('listbox')).toBeInTheDocument();
 });
 
 test('multi select menu opens/closes when input button is clicked', () => {
@@ -146,10 +146,10 @@ test('multi select menu opens/closes when input button is clicked', () => {
   const button = getAllByRole('button')[2];
 
   fireEvent.click(button);
-  expect(queryByRole('listbox')).not.toBeEmpty();
+  expect(queryByRole('listbox')).toBeInTheDocument();
 
   fireEvent.click(button);
-  expect(queryByRole('listbox')).toBeEmpty();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('esc should close menu', () => {
@@ -157,10 +157,10 @@ test('esc should close menu', () => {
   const input = getByTestId('multi-select');
 
   fireEvent.focus(input);
-  expect(queryByRole('listbox')).not.toBeEmpty();
+  expect(queryByRole('listbox')).toBeInTheDocument();
 
   fireEvent.keyDown(input, { key: 'Escape' });
-  expect(queryByRole('listbox')).toBeEmpty();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('blurring input should close menu', () => {
@@ -168,10 +168,10 @@ test('blurring input should close menu', () => {
   const input = getByTestId('multi-select');
 
   fireEvent.focus(input);
-  expect(queryByRole('listbox')).not.toBeEmpty();
+  expect(queryByRole('listbox')).toBeInTheDocument();
 
   fireEvent.blur(input);
-  expect(queryByRole('listbox')).toBeEmpty();
+  expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
 test('multi select has items', () => {
@@ -405,9 +405,10 @@ test('appends (optional) text to label if select is not required', () => {
 });
 
 test('does not forward styles', () => {
-  const { container, getByRole } = render(
+  const { container, getByRole, getByTestId } = render(
     <MultiSelect
       className="test"
+      data-testid="multi-select"
       onOptionsChange={onChange}
       label="Countries"
       options={[
@@ -421,6 +422,9 @@ test('does not forward styles', () => {
       style={{ background: 'red' }}
     />,
   );
+
+  const input = getByTestId('multi-select');
+  fireEvent.focus(input);
 
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(getByRole('listbox')).not.toHaveStyle('background: red');
@@ -531,10 +535,10 @@ test('should call the provided refSetter if any', () => {
 test('multiselect should render four items with checkboxes', () => {
   const { getByRole, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
-  const menu = getByRole('listbox');
 
   fireEvent.focus(input);
 
+  const menu = getByRole('listbox');
   const options = menu.querySelectorAll('input[type="checkbox"]');
 
   expect(options.length).toEqual(5);
@@ -543,10 +547,10 @@ test('multiselect should render four items with checkboxes', () => {
 test('multiselect should have two selected options', () => {
   const { getByRole, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
-  const menu = getByRole('listbox');
 
   fireEvent.focus(input);
 
+  const menu = getByRole('listbox');
   const options = menu.querySelectorAll(':checked');
 
   expect(options.length).toEqual(2);

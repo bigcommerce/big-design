@@ -1,3 +1,4 @@
+import type { State } from '@popperjs/core';
 import React, { forwardRef, HTMLAttributes, memo, Ref } from 'react';
 
 import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
@@ -5,9 +6,8 @@ import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
 import { StyledList } from './styled';
 
 export interface ListProps extends HTMLAttributes<HTMLUListElement> {
-  isOpen: boolean;
   maxHeight: number;
-  update(): void;
+  update(): Promise<Partial<State> | null>;
 }
 
 interface PrivateProps {
@@ -23,7 +23,7 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({ forwardedRef, updat
     }
 
     scheduleUpdate();
-  }, [props.children, props.isOpen, height, width]);
+  }, [props.children, height, width]);
 
   return <StyledList ref={forwardedRef} {...props} />;
 };

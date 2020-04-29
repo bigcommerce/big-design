@@ -306,43 +306,40 @@ export const Select = typedMemo(
 
     const renderOptions = useCallback(
       (items: Array<SelectOption<T>>) => {
-        return (
-          isOpen &&
-          items.map((item) => {
-            if (
-              !selectOptions.find(
-                (option: SelectOption<T> | SelectAction) => 'value' in option && option.value === item.value,
-              )
-            ) {
-              return null;
-            }
-            const key = itemKey.current;
+        return items.map((item) => {
+          if (
+            !selectOptions.find(
+              (option: SelectOption<T> | SelectAction) => 'value' in option && option.value === item.value,
+            )
+          ) {
+            return null;
+          }
+          const key = itemKey.current;
 
-            itemKey.current += 1;
+          itemKey.current += 1;
 
-            const isHighlighted = highlightedIndex === key;
-            const isSelected = selectedOption ? 'value' in item && selectedOption.value === item.value : false;
+          const isHighlighted = highlightedIndex === key;
+          const isSelected = selectedOption ? 'value' in item && selectedOption.value === item.value : false;
 
-            const { disabled: itemDisabled, content, icon, ...itemProps } = item;
+          const { disabled: itemDisabled, content, icon, ...itemProps } = item;
 
-            return (
-              <ListItem
-                {...itemProps}
-                {...getItemProps({
-                  disabled: itemDisabled,
-                  index: key,
-                  item,
-                })}
-                isHighlighted={isHighlighted}
-                isSelected={isSelected}
-                key={`${content}-${key}`}
-              >
-                {getContent(item, isHighlighted)}
-                {isSelected && <CheckIcon color="primary" size="large" />}
-              </ListItem>
-            );
-          })
-        );
+          return (
+            <ListItem
+              {...itemProps}
+              {...getItemProps({
+                disabled: itemDisabled,
+                index: key,
+                item,
+              })}
+              isHighlighted={isHighlighted}
+              isSelected={isSelected}
+              key={`${content}-${key}`}
+            >
+              {getContent(item, isHighlighted)}
+              {isSelected && <CheckIcon color="primary" size="large" />}
+            </ListItem>
+          );
+        });
       },
       [getItemProps, highlightedIndex, selectedOption, selectOptions],
     );
@@ -391,10 +388,7 @@ export const Select = typedMemo(
     const renderList = useMemo(() => {
       return (
         <Popper
-          modifiers={[
-            { name: 'eventListeners', options: { scroll: isOpen, resize: isOpen } },
-            { name: 'offset', options: { offset: [0, 10] } },
-          ]}
+          modifiers={[{ name: 'offset', options: { offset: [0, 10] } }]}
           placement={placement}
           strategy={positionFixed ? 'fixed' : 'absolute'}
         >
@@ -402,7 +396,6 @@ export const Select = typedMemo(
             <List
               {...getMenuProps({ ref })}
               data-placement={popperPlacement}
-              isOpen={isOpen}
               maxHeight={maxHeight}
               style={popperStyle}
               update={update}
@@ -412,7 +405,7 @@ export const Select = typedMemo(
           )}
         </Popper>
       );
-    }, [getMenuProps, isOpen, maxHeight, placement, positionFixed, renderChildren]);
+    }, [getMenuProps, maxHeight, placement, positionFixed, renderChildren]);
 
     return (
       <div>
