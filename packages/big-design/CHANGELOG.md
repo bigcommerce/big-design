@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.18.0...@bigcommerce/big-design@0.19.0) (2020-04-29)
+
+
+### Bug Fixes
+
+* **component:** adds description to Select & MultiSelect ([#378](https://github.com/bigcommerce/big-design/issues/378)) ([b66c733](https://github.com/bigcommerce/big-design/commit/b66c733a418afdbce36c8c683a59f69a17dda1d0))
+* **component:** change scroll behavior to auto ([#379](https://github.com/bigcommerce/big-design/issues/379)) ([07afc3e](https://github.com/bigcommerce/big-design/commit/07afc3eff39905147ee54c4b88d51bb97e0cbfc5))
+* **component:** improve Dropdown & MultiSelect component performance ([#391](https://github.com/bigcommerce/big-design/issues/391)) ([659cada](https://github.com/bigcommerce/big-design/commit/659cada17051564cc3a6a360078600a5dce2ca05))
+* **component:** improves Select component performance ([#390](https://github.com/bigcommerce/big-design/issues/390)) ([699b897](https://github.com/bigcommerce/big-design/commit/699b89783febb5b0495207e9dddd0ddcce15011c))
+* **component:** prevent select from selecting option when blurring ([#392](https://github.com/bigcommerce/big-design/issues/392)) ([d8410a1](https://github.com/bigcommerce/big-design/commit/d8410a1d6031c429e74e95edd051c6a635e6041d))
+* **component:** remove bottom margin on the TableFigure component ([#385](https://github.com/bigcommerce/big-design/issues/385)) ([25d4760](https://github.com/bigcommerce/big-design/commit/25d47609787954e1da7de6deac41707e697c4bfc))
+* **component:** table column prop  incorrect value for middle alignment ([#383](https://github.com/bigcommerce/big-design/issues/383)) ([cb1eadb](https://github.com/bigcommerce/big-design/commit/cb1eadb7c501515b18fd93b792641eb5f286411d))
+
+
+### Features
+
+* **component:** add clearfix prop for Box component ([#381](https://github.com/bigcommerce/big-design/issues/381)) ([29b073b](https://github.com/bigcommerce/big-design/commit/29b073ba523429e8c1c04c7e4b02a4c88ff11b69))
+* **component:** add Collapse component ([#368](https://github.com/bigcommerce/big-design/issues/368)) ([233e6d1](https://github.com/bigcommerce/big-design/commit/233e6d17f3216179991619ccecb9b1027600818b))
+
+
+### BREAKING CHANGES
+
+* **component:** Visual breaking change; removes the bottom margin on `TableFigure` components.
+Use the built in `margin` props if margin is needed.
+
+
+
+
+
 # [0.18.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.17.2...@bigcommerce/big-design@0.18.0) (2020-04-20)
 
 

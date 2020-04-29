@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/deini/big-design/compare/@bigcommerce/configs@0.13.0...@bigcommerce/configs@0.14.0) (2020-04-29)
+
+**Note:** Version bump only for package @bigcommerce/configs
+
+
+
+
+
 # [0.13.0](https://github.com/deini/big-design/compare/@bigcommerce/configs@0.12.0...@bigcommerce/configs@0.13.0) (2020-04-20)
 
 
