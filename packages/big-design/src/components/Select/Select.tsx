@@ -110,7 +110,7 @@ export const Select = typedMemo(
     const handleOnHighlightedIndexChange = (
       changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>,
     ) => {
-      if (typeof changes.highlightedIndex !== 'undefined' && changes.highlightedIndex > -1) {
+      if (typeof changes.highlightedIndex !== 'undefined') {
         setHighlightedIndex(changes.highlightedIndex);
       }
     };

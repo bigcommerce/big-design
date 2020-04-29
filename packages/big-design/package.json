@@ -36,7 +36,7 @@
     "@bigcommerce/big-design-icons": "^0.10.0",
     "@bigcommerce/big-design-theme": "^0.8.0",
     "@popperjs/core": "^2.2.1",
-    "downshift": "^5.2.0",
+    "downshift": "^5.2.2",
     "focus-trap": "^5.1.0",
     "polished": "^3.0.3",
     "react-popper": "^2.1.0",
