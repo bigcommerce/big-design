@@ -344,7 +344,7 @@ export const Select = typedMemo(
           })
         );
       },
-      [getItemProps, highlightedIndex, isOpen, selectedOption, selectOptions],
+      [getItemProps, highlightedIndex, selectedOption, selectOptions],
     );
 
     const renderGroup = useCallback(
@@ -364,14 +364,12 @@ export const Select = typedMemo(
 
       if (Array.isArray(options) && options.every(isGroup)) {
         return (
-          isOpen && (
-            <>
-              {(options as Array<SelectOptionGroup<T>>).map((group, index) => (
-                <Fragment key={index}>{renderGroup(group)}</Fragment>
-              ))}
-              {action && renderAction(action)}
-            </>
-          )
+          <>
+            {(options as Array<SelectOptionGroup<T>>).map((group, index) => (
+              <Fragment key={index}>{renderGroup(group)}</Fragment>
+            ))}
+            {action && renderAction(action)}
+          </>
         );
       }
 
@@ -382,15 +380,13 @@ export const Select = typedMemo(
         })
       ) {
         return (
-          isOpen && (
-            <>
-              {renderOptions(options as Array<SelectOption<T>>)}
-              {action && renderAction(action)}
-            </>
-          )
+          <>
+            {renderOptions(options as Array<SelectOption<T>>)}
+            {action && renderAction(action)}
+          </>
         );
       }
-    }, [action, isOpen, options, renderAction, renderGroup, renderOptions]);
+    }, [action, options, renderAction, renderGroup, renderOptions]);
 
     const renderList = useMemo(() => {
       return (
@@ -423,7 +419,7 @@ export const Select = typedMemo(
         <Manager>
           {renderLabel}
           <div {...getComboboxProps()}>{renderInput}</div>
-          {renderList}
+          {isOpen && renderList}
         </Manager>
       </div>
     );
