@@ -47,5 +47,3 @@ export const Collapse: React.FC<CollapseProps> = ({ children, title, onCollapseC
     </>
   );
 };
-
-Collapse.displayName = 'Collapse';
