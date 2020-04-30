@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.19.0...@bigcommerce/big-design@0.19.1) (2020-04-30)
+
+
+### Bug Fixes
+
+* type regression for ts < 3.8 ([#395](https://github.com/bigcommerce/big-design/issues/395)) ([f476f9b](https://github.com/bigcommerce/big-design/commit/f476f9b3c2a950bb3bd3353a4ce180e994e465c0))
+
+
+
+
+
 # [0.19.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.18.0...@bigcommerce/big-design@0.19.0) (2020-04-29)
 
 
