@@ -1,4 +1,4 @@
-import type { Placement } from '@popperjs/core';
+import { Placement } from '@popperjs/core';
 
 import { ListItemProps } from '../List/Item';
 

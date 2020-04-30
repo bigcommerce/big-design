@@ -1,4 +1,4 @@
-import type { State } from '@popperjs/core';
+import { State } from '@popperjs/core';
 import React, { forwardRef, HTMLAttributes, memo, Ref } from 'react';
 
 import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
