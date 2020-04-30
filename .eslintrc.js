@@ -20,6 +20,7 @@ module.exports = {
     },
     'import/resolver': {
       typescript: {
+        alwaysTryTypes: true,
         directory: 'packages/*/tsconfig.json',
       },
     },
@@ -49,6 +50,7 @@ module.exports = {
         ignoreDeclarationSort: true,
       },
     ],
+    'import/named': 'off',
     // Remove this when https://github.com/benmosher/eslint-plugin-import/pull/1528 gets released
     'import/default': 'off',
     'import/order': [
