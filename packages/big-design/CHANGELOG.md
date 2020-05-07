@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.19.1...@bigcommerce/big-design@0.19.2) (2020-05-07)
+
+
+### Bug Fixes
+
+* lock downshift to 5.2.0 to fix behavior of onOptionChange ([#398](https://github.com/bigcommerce/big-design/issues/398)) ([ce73376](https://github.com/bigcommerce/big-design/commit/ce73376e2548137ace47e8b1a1513d2e92f287f5))
+
+
+
+
+
 ## [0.19.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.19.0...@bigcommerce/big-design@0.19.1) (2020-04-30)
 
 
