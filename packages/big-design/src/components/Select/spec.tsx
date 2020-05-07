@@ -348,6 +348,7 @@ test('clicking on select options should trigger onOptionChange', () => {
   const options = getAllByRole('option');
   fireEvent.click(options[3]);
   expect(onChange).toHaveBeenCalledWith(mockOptions[3].value, mockOptions[3]);
+  expect(onChange).toHaveBeenCalledTimes(1);
 });
 
 test('clicking on disabled select options should not trigger onItemClick', () => {
