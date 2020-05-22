@@ -2,8 +2,7 @@ import { transform } from '@babel/standalone';
 import * as BigDesign from '@bigcommerce/big-design';
 import * as BigDesignIcons from '@bigcommerce/big-design-icons';
 import clipboardCopy from 'clipboard-copy';
-// eslint-disable-next-line import/default
-import parser from 'prettier/parser-babylon';
+import parser from 'prettier/parser-babel';
 import { format } from 'prettier/standalone';
 import React, { useContext, useEffect, useState } from 'react';
 import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
