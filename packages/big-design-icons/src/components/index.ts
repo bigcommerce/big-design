@@ -20,6 +20,7 @@ export * from './ExpandLessIcon';
 export * from './ExpandMoreIcon';
 export * from './FileCopyIcon';
 export * from './FilterListIcon';
+export * from './FolderIcon';
 export * from './InfoIcon';
 export * from './InvertColorsIcon';
 export * from './LanguageIcon';
