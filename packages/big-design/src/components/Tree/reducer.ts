@@ -176,27 +176,32 @@ const initializeVisibleNodeIds = <T>(nodes: TreeProps<T>['nodes'], nodeMap: Node
     return [...acc, node.id, ...childrenIds];
   }, []);
 
-const initializeSelectedValues = <T>(nodes: TreeProps<T>['nodes'], radio: boolean): T[] =>
-  nodes.reduce<T[]>((acc, node) => {
-    const childrenValues =
-      node.children && node.children.length > 0 ? initializeSelectedValues(node.children, radio) : [];
+const initializeSelectedValues = <T>(nodes: TreeProps<T>['nodes'], radio: boolean): T[] => {
+  let selectedValues: T[] = [];
+  const queue = [...nodes];
 
-    if (node.value !== undefined) {
-      if (radio) {
-        if (acc.length < 1 || node.selected) {
-          return [node.value];
-        }
-
-        return [...childrenValues];
-      }
-
-      if (node.selected) {
-        return [...acc, node.value, ...childrenValues];
-      }
+  for (let i = 0; i < queue.length; i++) {
+    const node = queue[i];
+    if (node.children) {
+      // queue = queue.concat(node.children);
+      queue.splice(i + 1, 0, ...node.children);
     }
 
-    return [...acc, ...childrenValues];
-  }, []);
+    if (node.value !== undefined && !node.disabled) {
+      if (radio) {
+        if (node.selected || selectedValues.length < 1) {
+          selectedValues = [node.value];
+        }
+      } else {
+        if (node.selected && !node.disabled) {
+          selectedValues.push(node.value);
+        }
+      }
+    }
+  }
+
+  return selectedValues;
+};
 
 const initializeFocusNode = <T>(nodes: TreeProps<T>['nodes'], selectedValues: T[], visibleNodeIds: TreeNodeId[]) => {
   const initialFocusedNode = recursiveInitializeFocusNode(nodes, selectedValues, visibleNodeIds);
@@ -217,7 +222,7 @@ const recursiveInitializeFocusNode = <T>(
             ? recursiveInitializeFocusNode(node.children, selectedValues, visibleNodeIds)
             : null;
 
-        if (node.value && selectedValues.includes(node.value)) {
+        if (node.value !== undefined && selectedValues.includes(node.value)) {
           return node.id;
         }
 

@@ -27,6 +27,7 @@ const flexItemProps: FlexItemProps = { flexShrink: 0, marginLeft: 'xxSmall' };
 
 const InternalTreeNode = <T extends unknown>({
   children,
+  disabled,
   dispatch,
   icon,
   iconless,
@@ -83,7 +84,7 @@ const InternalTreeNode = <T extends unknown>({
   };
 
   const handleNodeSelected = useCallback(() => {
-    if (selectable === undefined || value === undefined) {
+    if (selectable === undefined || value === undefined || disabled) {
       return;
     }
 
@@ -110,7 +111,7 @@ const InternalTreeNode = <T extends unknown>({
     }
 
     dispatch({ type: 'SELECTED_NODE', values: newSelectedValues });
-  }, [dispatch, onSelect, selectable, state.selectedValues, value]);
+  }, [disabled, dispatch, onSelect, selectable, state.selectedValues, value]);
 
   // Needs to handle the following keyboard events:
   // https://www.w3.org/TR/wai-aria-practices/#keyboard-interaction-22
@@ -123,6 +124,8 @@ const InternalTreeNode = <T extends unknown>({
 
     switch (key) {
       case ' ':
+        e.preventDefault();
+
         handleNodeSelected();
         break;
 
@@ -137,10 +140,14 @@ const InternalTreeNode = <T extends unknown>({
         break;
 
       case 'ArrowDown':
+        e.preventDefault();
+
         dispatch({ type: 'FOCUS_DOWN', id: state.focusedNode });
         break;
 
       case 'ArrowUp':
+        e.preventDefault();
+
         dispatch({ type: 'FOCUS_UP', id: state.focusedNode });
         break;
 
@@ -211,10 +218,10 @@ const InternalTreeNode = <T extends unknown>({
       <FlexItem {...flexItemProps}>{icon}</FlexItem>
     ) : (
       <FlexItem {...flexItemProps}>
-        <FolderIcon color="primary30" size="xLarge" />
+        <FolderIcon color={disabled ? 'primary20' : 'primary30'} size="xLarge" />
       </FlexItem>
     );
-  }, [icon, iconless]);
+  }, [disabled, icon, iconless]);
 
   const renderedSelectable = useMemo(() => {
     if (value === undefined && selectable !== undefined) {
@@ -224,7 +231,13 @@ const InternalTreeNode = <T extends unknown>({
     if (selectable === 'radio') {
       return (
         <StyledSelectableWrapper {...flexItemProps}>
-          <StyledRadio aria-hidden checked={selected} onClick={handleNodeSelected} ref={selectableRef} />
+          <StyledRadio
+            aria-hidden
+            checked={selected}
+            disabled={disabled}
+            onClick={handleNodeSelected}
+            ref={selectableRef}
+          />
         </StyledSelectableWrapper>
       );
     }
@@ -232,13 +245,19 @@ const InternalTreeNode = <T extends unknown>({
     if (selectable === 'multi') {
       return (
         <StyledSelectableWrapper {...flexItemProps} padding="xxxSmall">
-          <StyledCheckbox aria-hidden checked={selected} onClick={handleNodeSelected} ref={selectableRef}>
+          <StyledCheckbox
+            aria-hidden
+            checked={selected}
+            disabled={disabled}
+            onClick={handleNodeSelected}
+            ref={selectableRef}
+          >
             {selected ? <CheckIcon /> : null}
           </StyledCheckbox>
         </StyledSelectableWrapper>
       );
     }
-  }, [handleNodeSelected, selected, selectable, value]);
+  }, [disabled, handleNodeSelected, selected, selectable, value]);
 
   useEffect(() => {
     if (state.focusedNode === id) {
