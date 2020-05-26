@@ -55,6 +55,7 @@ module.exports = {
     '/tabs': { page: '/Tabs/TabsPage' },
     '/textarea': { page: '/Textarea/TextareaPage' },
     '/tooltip': { page: '/Tooltip/TooltipPage' },
+    '/tree': { page: '/Tree/TreePage' },
     '/typography': { page: '/Typography/TypographyPage' },
 
     // Dev route for development purposes
