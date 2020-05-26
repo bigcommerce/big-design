@@ -1,34 +1,36 @@
 import { Reducer } from 'react';
 
-import { NodeMap, TreeItemId, TreeNodeProps, TreeProps, TreeState } from './types';
+import { NodeMap, TreeNodeId, TreeNodeProps, TreeProps, TreeState } from './types';
 
 interface InitArgs<T> {
   nodes: TreeNodeProps<T>[];
+  radio: boolean;
 }
 
-export const createReducerInit = <T>() => ({ nodes }: InitArgs<T>): TreeState<T> => {
+export const createReducerInit = <T>() => ({ nodes, radio }: InitArgs<T>): TreeState<T> => {
   const nodeMap = initializeNodeMap(nodes);
-  const expandedNodeIds = initializeExpandedNodeIds(nodes);
   const visibleNodeIds = initializeVisibleNodeIds(nodes, nodeMap);
+  const selectedValues = initializeSelectedValues(nodes, radio);
+  const focusedNode = initializeFocusNode(nodes, selectedValues, visibleNodeIds);
 
   return {
     nodes,
     nodeMap,
-    expandedNodeIds,
+    expandedNodeIds: initializeExpandedNodeIds(nodes),
     flattenedNodeIds: initializeFlattenedNodeIds(nodes),
-    focusedNode: nodes[0].id,
-    selectedValues: [],
+    focusedNode,
+    selectedValues,
     visibleNodeIds,
   };
 };
 
 export type Action<T> =
-  | { type: 'TOGGLE_NODE'; id: TreeItemId }
-  | { type: 'FOCUS'; id: TreeItemId }
-  | { type: 'FOCUS_DOWN'; id: TreeItemId }
-  | { type: 'FOCUS_UP'; id: TreeItemId }
-  | { type: 'FOCUS_RIGHT'; id: TreeItemId }
-  | { type: 'FOCUS_LEFT'; id: TreeItemId }
+  | { type: 'TOGGLE_NODE'; id: TreeNodeId }
+  | { type: 'FOCUS'; id: TreeNodeId }
+  | { type: 'FOCUS_DOWN'; id: TreeNodeId }
+  | { type: 'FOCUS_UP'; id: TreeNodeId }
+  | { type: 'FOCUS_RIGHT'; id: TreeNodeId }
+  | { type: 'FOCUS_LEFT'; id: TreeNodeId }
   | { type: 'FOCUS_FIRST' }
   | { type: 'FOCUS_LAST' }
   | { type: 'SELECTED_NODE'; values: T[] };
@@ -131,7 +133,7 @@ export const createReducer = <T>(): Reducer<TreeState<T>, Action<T>> => (state, 
   }
 };
 
-const initializeNodeMap = <T>(nodes: TreeProps<T>['nodes'], parent?: TreeItemId): NodeMap =>
+const initializeNodeMap = <T>(nodes: TreeProps<T>['nodes'], parent?: TreeNodeId): NodeMap =>
   nodes.reduce((acc, node) => {
     const childNodeMap = node.children ? initializeNodeMap(node.children, node.id) : {};
 
@@ -146,8 +148,8 @@ const initializeNodeMap = <T>(nodes: TreeProps<T>['nodes'], parent?: TreeItemId)
     };
   }, {});
 
-const initializeExpandedNodeIds = <T>(nodes: TreeProps<T>['nodes']): TreeItemId[] =>
-  nodes.reduce<TreeItemId[]>((acc, node) => {
+const initializeExpandedNodeIds = <T>(nodes: TreeProps<T>['nodes']): TreeNodeId[] =>
+  nodes.reduce<TreeNodeId[]>((acc, node) => {
     const childrenIds = node.children && node.children.length > 0 ? initializeExpandedNodeIds(node.children) : [];
 
     if (node.expanded) {
@@ -157,15 +159,15 @@ const initializeExpandedNodeIds = <T>(nodes: TreeProps<T>['nodes']): TreeItemId[
     return acc;
   }, []);
 
-const initializeFlattenedNodeIds = <T>(nodes: TreeProps<T>['nodes']): TreeItemId[] =>
-  nodes.reduce<TreeItemId[]>((acc, node) => {
+const initializeFlattenedNodeIds = <T>(nodes: TreeProps<T>['nodes']): TreeNodeId[] =>
+  nodes.reduce<TreeNodeId[]>((acc, node) => {
     const childrenIds = node.children && node.children.length > 0 ? initializeFlattenedNodeIds(node.children) : [];
 
     return [...acc, node.id, ...childrenIds];
   }, []);
 
-const initializeVisibleNodeIds = <T>(nodes: TreeProps<T>['nodes'], nodeMap: NodeMap): TreeItemId[] =>
-  nodes.reduce<TreeItemId[]>((acc, node) => {
+const initializeVisibleNodeIds = <T>(nodes: TreeProps<T>['nodes'], nodeMap: NodeMap): TreeNodeId[] =>
+  nodes.reduce<TreeNodeId[]>((acc, node) => {
     const childrenIds =
       node.expanded && node.children && node.children.length > 0
         ? initializeVisibleNodeIds(node.children, nodeMap)
@@ -174,7 +176,59 @@ const initializeVisibleNodeIds = <T>(nodes: TreeProps<T>['nodes'], nodeMap: Node
     return [...acc, node.id, ...childrenIds];
   }, []);
 
-const getNextVisibleNode = <T>(state: TreeState<T>, id: TreeItemId): TreeItemId => {
+const initializeSelectedValues = <T>(nodes: TreeProps<T>['nodes'], radio: boolean): T[] =>
+  nodes.reduce<T[]>((acc, node) => {
+    const childrenValues =
+      node.children && node.children.length > 0 ? initializeSelectedValues(node.children, radio) : [];
+
+    if (node.value !== undefined) {
+      if (radio) {
+        if (acc.length < 1 || node.selected) {
+          return [node.value];
+        }
+
+        return [...childrenValues];
+      }
+
+      if (node.selected) {
+        return [...acc, node.value, ...childrenValues];
+      }
+    }
+
+    return [...acc, ...childrenValues];
+  }, []);
+
+const initializeFocusNode = <T>(nodes: TreeProps<T>['nodes'], selectedValues: T[], visibleNodeIds: TreeNodeId[]) => {
+  const initialFocusedNode = recursiveInitializeFocusNode(nodes, selectedValues, visibleNodeIds);
+
+  return initialFocusedNode !== null ? initialFocusedNode : nodes[0].id;
+};
+
+const recursiveInitializeFocusNode = <T>(
+  nodes: TreeProps<T>['nodes'],
+  selectedValues: T[],
+  visibleNodeIds: TreeNodeId[],
+): TreeNodeId | null =>
+  nodes.reduce<TreeNodeId | null>((acc, node) => {
+    if (acc === null) {
+      if (visibleNodeIds.includes(node.id)) {
+        const childId =
+          node.children && node.children.length > 0
+            ? recursiveInitializeFocusNode(node.children, selectedValues, visibleNodeIds)
+            : null;
+
+        if (node.value && selectedValues.includes(node.value)) {
+          return node.id;
+        }
+
+        return childId;
+      }
+    }
+
+    return acc;
+  }, null);
+
+const getNextVisibleNode = <T>(state: TreeState<T>, id: TreeNodeId): TreeNodeId => {
   const index = state.flattenedNodeIds.indexOf(id);
 
   const nextPossibleIndex = index + 1;
@@ -187,7 +241,7 @@ const getNextVisibleNode = <T>(state: TreeState<T>, id: TreeItemId): TreeItemId 
   return state.visibleNodeIds.includes(nextPossibleId) ? nextPossibleId : getNextVisibleNode(state, nextPossibleId);
 };
 
-const getPreviousVisibleNode = <T>(state: TreeState<T>, id: TreeItemId): TreeItemId => {
+const getPreviousVisibleNode = <T>(state: TreeState<T>, id: TreeNodeId): TreeNodeId => {
   const index = state.flattenedNodeIds.indexOf(id);
 
   const previousPossibleIndex = index - 1;
@@ -203,7 +257,7 @@ const getPreviousVisibleNode = <T>(state: TreeState<T>, id: TreeItemId): TreeIte
 };
 
 // Inserts id in the correct order and returns a new array.
-const insertNode = (array: TreeItemId[], id: TreeItemId, flattenedNodeIds: TreeItemId[]): TreeItemId[] => {
+const insertNode = (array: TreeNodeId[], id: TreeNodeId, flattenedNodeIds: TreeNodeId[]): TreeNodeId[] => {
   if (array.includes(id)) {
     return array;
   }
@@ -213,7 +267,7 @@ const insertNode = (array: TreeItemId[], id: TreeItemId, flattenedNodeIds: TreeI
   return flattenedNodeIds.filter((nodeId) => newArr.includes(nodeId));
 };
 
-const removeChildNodes = (array: TreeItemId[], id: TreeItemId, nodeMap: NodeMap): TreeItemId[] => {
+const removeChildNodes = (array: TreeNodeId[], id: TreeNodeId, nodeMap: NodeMap): TreeNodeId[] => {
   let tempArr = [...array];
 
   if (nodeMap[id].children.length > 0) {
@@ -229,7 +283,7 @@ const removeChildNodes = (array: TreeItemId[], id: TreeItemId, nodeMap: NodeMap)
   return tempArr;
 };
 
-const buildVisibleNodes = <T>(nodes: TreeItemId[], state: TreeState<T>): TreeItemId[] => {
+const buildVisibleNodes = <T>(nodes: TreeNodeId[], state: TreeState<T>): TreeNodeId[] => {
   let list = [...state.visibleNodeIds];
 
   nodes.forEach((node) => {

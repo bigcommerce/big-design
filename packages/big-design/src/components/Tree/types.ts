@@ -9,33 +9,33 @@ export interface TreeProps<T> {
   onSelect?(values: T[] | T): void;
 }
 
-export type TreeItemId = string | number;
+export type TreeNodeId = string | number;
 
 export interface TreeNodeProps<T> {
   children?: TreeNodeProps<T>[];
   disabled?: boolean;
   expanded?: boolean;
   icon?: React.ReactChild | null;
-  id: TreeItemId;
+  id: TreeNodeId;
   label: string;
   selected?: boolean;
   value?: T;
 }
 
 export type NodeMap = {
-  [nodeId in TreeItemId]: {
-    children: TreeItemId[];
-    id: TreeItemId;
-    parent: TreeItemId;
+  [nodeId in TreeNodeId]: {
+    children: TreeNodeId[];
+    id: TreeNodeId;
+    parent: TreeNodeId;
   };
 };
 
 export interface TreeState<T> {
   nodes: TreeNodeProps<T>[];
   nodeMap: NodeMap;
-  expandedNodeIds: TreeItemId[];
-  flattenedNodeIds: TreeItemId[];
-  focusedNode: TreeItemId;
+  expandedNodeIds: TreeNodeId[];
+  flattenedNodeIds: TreeNodeId[];
+  focusedNode: TreeNodeId;
   selectedValues: Array<T>;
-  visibleNodeIds: TreeItemId[];
+  visibleNodeIds: TreeNodeId[];
 }

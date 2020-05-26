@@ -42,11 +42,14 @@ const InternalTreeNode = <T extends unknown>({
   const expanded = useIsExpanded(state, id);
   const selected = useIsSelected(state, value);
 
-  // The event target could be any element, but only typing
-  // to the follow for what we need.
-  const handleNodeToggle = (e?: React.MouseEvent<HTMLDivElement | HTMLLabelElement>) => {
+  // Could be multiple elements in which are clicked.
+  // Typing to generic Element type since all other elements extend from it.
+  const handleNodeToggle = (e?: React.MouseEvent<Element>) => {
+    dispatch({ type: 'FOCUS', id });
+
     // Prevents the collapse/expand when clicking on a radio or checkbox
-    if (e?.target === selectableRef.current) {
+    // Checks to see if every element inside the selectableRef gets clicked.
+    if (e?.target instanceof Node && selectableRef.current?.contains(e?.target)) {
       return;
     }
 
@@ -75,8 +78,6 @@ const InternalTreeNode = <T extends unknown>({
 
       dispatch({ type: 'TOGGLE_NODE', id });
     }
-
-    dispatch({ type: 'FOCUS', id });
   };
 
   const handleNodeSelected = useCallback(() => {
@@ -220,26 +221,16 @@ const InternalTreeNode = <T extends unknown>({
 
     if (selectable === 'radio') {
       return (
-        <FlexItem flexShrink={0} marginRight="xxSmall">
-          <StyledRadio
-            checked={selected}
-            onClick={handleNodeSelected}
-            aria-hidden
-            ref={(ref) => (selectableRef.current = ref)}
-          />
+        <FlexItem flexShrink={0} marginHorizontal="xxSmall">
+          <StyledRadio aria-hidden checked={selected} onClick={handleNodeSelected} ref={selectableRef} />
         </FlexItem>
       );
     }
 
     if (selectable === 'multi') {
       return (
-        <FlexItem flexShrink={0} marginRight="xxSmall">
-          <StyledCheckbox
-            checked={selected}
-            onClick={handleNodeSelected}
-            aria-hidden={true}
-            ref={(ref) => (selectableRef.current = ref)}
-          >
+        <FlexItem flexShrink={0} marginHorizontal="xxSmall">
+          <StyledCheckbox aria-hidden checked={selected} onClick={handleNodeSelected} ref={selectableRef}>
             {selected ? <CheckIcon /> : null}
           </StyledCheckbox>
         </FlexItem>
@@ -255,20 +246,18 @@ const InternalTreeNode = <T extends unknown>({
 
   return (
     <StyledLi
-      role="treeitem"
       aria-expanded={expanded}
-      tabIndex={state.focusedNode === id ? 0 : -1}
       onKeyDown={handleKeyEvent}
-      ref={(ref) => {
-        nodeRef.current = ref;
-      }}
+      ref={nodeRef}
+      role="treeitem"
+      tabIndex={state.focusedNode === id ? 0 : -1}
       {...additionalProps}
     >
       <StyledFlex alignItems="center" flexDirection="row" onClick={handleNodeToggle}>
         {renderedArrow}
         {renderedSelectable}
         {renderedIcon}
-        <Text as="span" marginLeft="xxSmall" ellipsis>
+        <Text as="span" ellipsis marginLeft="xxSmall">
           {label}
         </Text>
       </StyledFlex>
