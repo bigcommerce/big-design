@@ -3,7 +3,7 @@ import React, { Dispatch, useCallback, useEffect, useMemo, useRef } from 'react'
 
 import { typedMemo } from '../../../utils';
 import { StyledCheckbox } from '../../Checkbox/private';
-import { FlexItem } from '../../Flex';
+import { FlexItem, FlexItemProps } from '../../Flex';
 import { StyledRadio } from '../../Radio/styled';
 import { Text } from '../../Typography';
 import { useIsExpanded, useIsSelected } from '../hooks';
@@ -11,7 +11,7 @@ import { Action } from '../reducer';
 import { StyledUl } from '../styled';
 import { TreeNodeProps, TreeProps, TreeState } from '../types';
 
-import { StyledArrowWrapper, StyledFlex, StyledGap, StyledLi } from './styled';
+import { StyledArrowWrapper, StyledFlex, StyledGap, StyledLi, StyledSelectableWrapper } from './styled';
 
 interface PrivateTreeItemProps<T> {
   state: TreeState<T>;
@@ -22,6 +22,8 @@ interface PrivateTreeItemProps<T> {
   onCollapse?: TreeProps<T>['onCollapse'];
   onSelect?: TreeProps<T>['onSelect'];
 }
+
+const flexItemProps: FlexItemProps = { flexShrink: 0, marginLeft: 'xxSmall' };
 
 const InternalTreeNode = <T extends unknown>({
   children,
@@ -168,7 +170,7 @@ const InternalTreeNode = <T extends unknown>({
   const renderedArrow = useMemo(
     () =>
       children ? (
-        <StyledArrowWrapper expanded={expanded}>
+        <StyledArrowWrapper expanded={expanded} flexShrink={0}>
           <ChevronRightIcon color="secondary60" focusable={false} size="xLarge" />
         </StyledArrowWrapper>
       ) : (
@@ -206,9 +208,9 @@ const InternalTreeNode = <T extends unknown>({
     }
 
     return icon ? (
-      <FlexItem flexShrink={0}>{icon}</FlexItem>
+      <FlexItem {...flexItemProps}>{icon}</FlexItem>
     ) : (
-      <FlexItem flexShrink={0}>
+      <FlexItem {...flexItemProps}>
         <FolderIcon color="primary30" size="xLarge" />
       </FlexItem>
     );
@@ -221,19 +223,19 @@ const InternalTreeNode = <T extends unknown>({
 
     if (selectable === 'radio') {
       return (
-        <FlexItem flexShrink={0} marginHorizontal="xxSmall">
+        <StyledSelectableWrapper {...flexItemProps}>
           <StyledRadio aria-hidden checked={selected} onClick={handleNodeSelected} ref={selectableRef} />
-        </FlexItem>
+        </StyledSelectableWrapper>
       );
     }
 
     if (selectable === 'multi') {
       return (
-        <FlexItem flexShrink={0} marginHorizontal="xxSmall">
+        <StyledSelectableWrapper {...flexItemProps} padding="xxxSmall">
           <StyledCheckbox aria-hidden checked={selected} onClick={handleNodeSelected} ref={selectableRef}>
             {selected ? <CheckIcon /> : null}
           </StyledCheckbox>
-        </FlexItem>
+        </StyledSelectableWrapper>
       );
     }
   }, [handleNodeSelected, selected, selectable, value]);

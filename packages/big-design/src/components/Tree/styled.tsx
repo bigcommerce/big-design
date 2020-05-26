@@ -8,7 +8,7 @@ export const StyledUl = styled.ul`
   user-select: none;
 
   > li > ul {
-    margin-left: ${({ theme }) => theme.spacing.xLarge};
+    margin-left: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.xxSmall)};
   }
 `;
 

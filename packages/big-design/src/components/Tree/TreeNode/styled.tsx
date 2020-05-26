@@ -1,20 +1,22 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { Flex } from '../../Flex';
+import { Flex, FlexItem } from '../../Flex';
 
 export const StyledLi = styled.li`
   outline: 0;
 `;
 
-export const StyledArrowWrapper = styled.span<{ expanded: boolean }>`
-  flex-shrink: 0;
-
+export const StyledArrowWrapper = styled(FlexItem)<{ expanded: boolean }>`
   ${({ expanded }) =>
     expanded &&
     css`
       transform: rotate(90deg);
     `};
+`;
+
+export const StyledSelectableWrapper = styled(FlexItem)`
+  padding: 1px;
 `;
 
 export const StyledFlex = styled(Flex)`
@@ -24,6 +26,11 @@ export const StyledFlex = styled(Flex)`
   li:focus > &,
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary10};
+  }
+
+  label,
+  svg {
+    vertical-align: middle;
   }
 `;
 
