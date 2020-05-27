@@ -233,31 +233,23 @@ const recursiveInitializeFocusNode = <T>(
   }, null);
 
 const getNextVisibleNode = <T>(state: TreeState<T>, id: TreeNodeId): TreeNodeId => {
-  const index = state.flattenedNodeIds.indexOf(id);
+  const index = state.visibleNodeIds.indexOf(id);
 
-  const nextPossibleIndex = index + 1;
-  const nextPossibleId = state.flattenedNodeIds[nextPossibleIndex];
-
-  if (index === -1 || nextPossibleId === undefined) {
-    return id;
+  if (index !== -1 && index + 1 < state.visibleNodeIds.length) {
+    return state.visibleNodeIds[index + 1];
   }
 
-  return state.visibleNodeIds.includes(nextPossibleId) ? nextPossibleId : getNextVisibleNode(state, nextPossibleId);
+  return id;
 };
 
 const getPreviousVisibleNode = <T>(state: TreeState<T>, id: TreeNodeId): TreeNodeId => {
-  const index = state.flattenedNodeIds.indexOf(id);
+  const index = state.visibleNodeIds.indexOf(id);
 
-  const previousPossibleIndex = index - 1;
-  const previousPossibleId = state.flattenedNodeIds[previousPossibleIndex];
-
-  if (previousPossibleIndex === -1 || previousPossibleId === undefined) {
-    return id;
+  if (index !== -1 && index - 1 >= 0) {
+    return state.visibleNodeIds[index - 1];
   }
 
-  return state.visibleNodeIds.includes(previousPossibleId)
-    ? previousPossibleId
-    : getPreviousVisibleNode(state, previousPossibleId);
+  return id;
 };
 
 // Inserts id in the correct order and returns a new array.
