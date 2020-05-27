@@ -3,15 +3,22 @@ import React, { Dispatch, useCallback, useEffect, useMemo, useRef } from 'react'
 
 import { typedMemo } from '../../../utils';
 import { StyledCheckbox } from '../../Checkbox/private';
-import { FlexItem, FlexItemProps } from '../../Flex';
+import { FlexItemProps } from '../../Flex';
 import { StyledRadio } from '../../Radio/styled';
-import { Text } from '../../Typography';
 import { useIsExpanded, useIsSelected } from '../hooks';
 import { Action } from '../reducer';
 import { StyledUl } from '../styled';
 import { TreeNodeProps, TreeNodeRef, TreeProps, TreeState } from '../types';
 
-import { StyledArrowWrapper, StyledFlex, StyledGap, StyledLi, StyledSelectableWrapper } from './styled';
+import {
+  StyledArrowWrapper,
+  StyledFlex,
+  StyledFlexItem,
+  StyledGap,
+  StyledLi,
+  StyledSelectableWrapper,
+  StyledText,
+} from './styled';
 
 interface PrivateTreeItemProps<T> {
   state: TreeState<T>;
@@ -228,11 +235,11 @@ const InternalTreeNode = <T extends unknown>({
     }
 
     return icon ? (
-      <FlexItem {...flexItemProps}>{icon}</FlexItem>
+      <StyledFlexItem {...flexItemProps}>{icon}</StyledFlexItem>
     ) : (
-      <FlexItem {...flexItemProps}>
+      <StyledFlexItem {...flexItemProps}>
         <FolderIcon color={disabled ? 'primary20' : 'primary30'} size="xLarge" />
-      </FlexItem>
+      </StyledFlexItem>
     );
   }, [disabled, icon, iconless]);
 
@@ -257,7 +264,7 @@ const InternalTreeNode = <T extends unknown>({
 
     if (selectable === 'multi') {
       return (
-        <StyledSelectableWrapper {...flexItemProps} padding="xxxSmall">
+        <StyledSelectableWrapper {...flexItemProps}>
           <StyledCheckbox
             aria-hidden
             checked={selected}
@@ -287,13 +294,13 @@ const InternalTreeNode = <T extends unknown>({
       tabIndex={state.focusedNode === id ? 0 : -1}
       {...additionalProps}
     >
-      <StyledFlex alignItems="center" flexDirection="row" onClick={handleNodeToggle}>
+      <StyledFlex alignItems="center" flexDirection="row" onClick={handleNodeToggle} selected={selected}>
         {renderedArrow}
         {renderedSelectable}
         {renderedIcon}
-        <Text as="span" ellipsis marginLeft="xxSmall" color={disabled ? 'secondary50' : 'secondary70'}>
+        <StyledText as="span" ellipsis marginLeft="xxSmall" color={disabled ? 'secondary50' : 'secondary70'}>
           {label}
-        </Text>
+        </StyledText>
       </StyledFlex>
       {renderedChildren}
     </StyledLi>

@@ -1,4 +1,4 @@
-import React, { useMemo, useReducer } from 'react';
+import React, { useEffect, useMemo, useReducer } from 'react';
 
 import { typedMemo } from '../../utils';
 
@@ -19,6 +19,10 @@ const InternalTree = <T extends unknown>({
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
   const [state, dispatch] = useReducer(reducer, { nodes, radio: selectable === 'radio' }, reducerInit);
 
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
+
   const renderedItems = useMemo(
     () =>
       nodes.map((node, index) => (
@@ -38,7 +42,7 @@ const InternalTree = <T extends unknown>({
   );
 
   return (
-    <StyledUl role="tree" aria-multiselectable={selectable === 'multi'}>
+    <StyledUl role="tree" aria-multiselectable={selectable === 'multi'} style={{ overflow: 'hidden' }}>
       {renderedItems}
     </StyledUl>
   );
