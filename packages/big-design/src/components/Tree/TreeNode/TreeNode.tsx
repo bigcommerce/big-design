@@ -9,7 +9,7 @@ import { Text } from '../../Typography';
 import { useIsExpanded, useIsSelected } from '../hooks';
 import { Action } from '../reducer';
 import { StyledUl } from '../styled';
-import { TreeNodeProps, TreeProps, TreeState } from '../types';
+import { TreeNodeProps, TreeNodeRef, TreeProps, TreeState } from '../types';
 
 import { StyledArrowWrapper, StyledFlex, StyledGap, StyledLi, StyledSelectableWrapper } from './styled';
 
@@ -40,6 +40,7 @@ const InternalTreeNode = <T extends unknown>({
   state,
   value,
 }: TreeNodeProps<T> & PrivateTreeItemProps<T>): React.ReactElement<TreeNodeProps<T>> => {
+  const thisRef = useRef<TreeNodeRef<T>>({ children });
   const nodeRef = useRef<HTMLLIElement | null>(null);
   const selectableRef = useRef<HTMLLabelElement | null>(null);
   const expanded = useIsExpanded(state, id);
@@ -47,7 +48,7 @@ const InternalTreeNode = <T extends unknown>({
 
   // Could be multiple elements in which are clicked.
   // Typing to generic Element type since all other elements extend from it.
-  const handleNodeToggle = (e?: React.MouseEvent<Element>) => {
+  const handleNodeToggle = async (e?: React.MouseEvent<Element>) => {
     dispatch({ type: 'FOCUS', id });
 
     // Prevents the collapse/expand when clicking on a radio or checkbox
@@ -56,26 +57,38 @@ const InternalTreeNode = <T extends unknown>({
       return;
     }
 
-    if (children) {
+    if (thisRef.current.children) {
       if (!expanded) {
         if (typeof onExpand === 'function') {
-          onExpand({
-            children,
+          const callbackValue = await onExpand({
+            children: thisRef.current.children,
+            disabled,
             expanded,
             id,
             label,
+            selected,
             value,
           });
+
+          if (callbackValue) {
+            thisRef.current = callbackValue;
+          }
         }
       } else {
         if (typeof onCollapse === 'function') {
-          onCollapse({
-            children,
+          const callbackValue = await onCollapse({
+            children: thisRef.current.children,
+            disabled,
             expanded,
             id,
             label,
+            selected,
             value,
           });
+
+          if (callbackValue) {
+            thisRef.current = callbackValue;
+          }
         }
       }
 
@@ -131,7 +144,7 @@ const InternalTreeNode = <T extends unknown>({
 
       case 'Enter':
         if (nodeRef.current === e.currentTarget) {
-          if (children) {
+          if (thisRef.current.children) {
             handleNodeToggle();
           } else if (selectable) {
             handleNodeSelected();
@@ -176,22 +189,22 @@ const InternalTreeNode = <T extends unknown>({
 
   const renderedArrow = useMemo(
     () =>
-      children ? (
+      thisRef.current.children ? (
         <StyledArrowWrapper expanded={expanded} flexShrink={0}>
           <ChevronRightIcon color="secondary60" focusable={false} size="xLarge" />
         </StyledArrowWrapper>
       ) : (
         <StyledGap />
       ),
-    [children, expanded],
+    [expanded],
   );
 
   const renderedChildren = useMemo(
     () =>
-      children &&
+      thisRef.current.children &&
       expanded && (
         <StyledUl role="group">
-          {children?.map((child, index) => (
+          {thisRef.current.children?.map((child, index) => (
             <TreeNode
               {...child}
               dispatch={dispatch}
@@ -206,7 +219,7 @@ const InternalTreeNode = <T extends unknown>({
           ))}
         </StyledUl>
       ),
-    [children, dispatch, expanded, iconless, onCollapse, onExpand, onSelect, selectable, state],
+    [dispatch, expanded, iconless, onCollapse, onExpand, onSelect, selectable, state],
   );
 
   const renderedIcon = useMemo(() => {
@@ -278,7 +291,7 @@ const InternalTreeNode = <T extends unknown>({
         {renderedArrow}
         {renderedSelectable}
         {renderedIcon}
-        <Text as="span" ellipsis marginLeft="xxSmall">
+        <Text as="span" ellipsis marginLeft="xxSmall" color={disabled ? 'secondary50' : 'secondary70'}>
           {label}
         </Text>
       </StyledFlex>

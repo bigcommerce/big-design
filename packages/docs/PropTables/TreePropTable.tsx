@@ -20,13 +20,15 @@ const treeProps: Prop[] = [
   },
   {
     name: 'onCollapse',
-    types: '(node: TreeNode) => void',
-    description: 'Function that will get called when a tree node is collapsed.',
+    types: '(node: TreeNode) => TreeNodeRef | void',
+    description:
+      'Function that will get called when a tree node is collapsed. You can modify the children by returning an object with children as a key/value pair.',
   },
   {
     name: 'onExpand',
-    types: '(node: TreeNode) => void',
-    description: 'Function that will get called when a tree node is expanded.',
+    types: '(node: TreeNode) => TreeNodeRef | void',
+    description:
+      'Function that will get called when a tree node is expanded. You can modify the children by returning an object with children as a key/value pair.',
   },
   {
     name: 'onSelect',

@@ -1,4 +1,4 @@
-import { H0, H1, H2, Text, Tree } from '@bigcommerce/big-design';
+import { H0, H1, H2, Message, Text, Tree, TreeNodeProps } from '@bigcommerce/big-design';
 import { AssignmentIcon, LanguageIcon, StoreIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
@@ -34,7 +34,14 @@ const TabsPage = () => (
               },
             ],
           },
-          { id: 1, value: 1, label: 'Category', expanded: true, children: [{ id: 6, value: 6, label: 'Category' }] },
+          {
+            id: 1,
+            value: 1,
+            label: 'Category',
+            disabled: true,
+            expanded: true,
+            children: [{ id: 6, value: 6, label: 'Category' }],
+          },
           { id: 2, value: 2, label: 'Category' },
           { id: 3, value: 3, label: 'Category', selected: true, children: [{ id: 7, value: 7, label: 'Category' }] },
           { id: 4, value: 4, label: 'Category', children: [{ id: 8, value: 8, label: 'Category' }] },
@@ -74,6 +81,12 @@ const TabsPage = () => (
     </CodePreview>
 
     <H2>Custom Icons</H2>
+    <Text>You can replace the folder icon with a custom icon of your choice.</Text>
+    <Message
+      type="warning"
+      messages={[{ text: 'If you use the iconless prop, ALL icons with be hidden (including custom ones).' }]}
+      marginBottom="medium"
+    />
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
@@ -90,6 +103,37 @@ const TabsPage = () => (
         ];
 
         return <Tree nodes={nodes} />;
+      }}
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <H2>Modifying Children</H2>
+    <Text>
+      By returning a object containing new children nodes, you have the freedom of modifying/replacing children nodes.
+      This is useful when you need to asyncronously load in child nodes.
+    </Text>
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      {function Example() {
+        const nodes = [
+          {
+            id: 0,
+            label: 'Category',
+            children: [],
+          },
+          { id: 1, label: 'Category' },
+          { id: 2, label: 'Category' },
+        ];
+
+        const handleOnExpand = ({ children }: TreeNodeProps<undefined>) => {
+          if (children) {
+            return { children: [{ id: 3, label: 'Category' }] };
+          }
+
+          return { children };
+        };
+
+        return <Tree nodes={nodes} onExpand={handleOnExpand} />;
       }}
       {/* jsx-to-string:end */}
     </CodePreview>

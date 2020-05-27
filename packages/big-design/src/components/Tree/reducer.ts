@@ -14,7 +14,6 @@ export const createReducerInit = <T>() => ({ nodes, radio }: InitArgs<T>): TreeS
   const focusedNode = initializeFocusNode(nodes, selectedValues, visibleNodeIds);
 
   return {
-    nodes,
     nodeMap,
     expandedNodeIds: initializeExpandedNodeIds(nodes),
     flattenedNodeIds: initializeFlattenedNodeIds(nodes),

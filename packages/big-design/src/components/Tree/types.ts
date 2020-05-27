@@ -2,8 +2,8 @@ export interface TreeProps<T> {
   iconless?: boolean;
   nodes: TreeNodeProps<T>[];
   selectable?: 'radio' | 'multi';
-  onExpand?(node: TreeNodeProps<T>): void;
-  onCollapse?(node: TreeNodeProps<T>): void;
+  onExpand?(node: TreeNodeProps<T>): TreeNodeRef<T> | void;
+  onCollapse?(node: TreeNodeProps<T>): TreeNodeRef<T> | void;
   // Based on the selectable prop, it can either
   // return and array of values, or just one.
   onSelect?(values: T[] | T): void;
@@ -22,6 +22,8 @@ export interface TreeNodeProps<T> {
   value?: T;
 }
 
+export type TreeNodeRef<T> = Pick<TreeNodeProps<T>, 'children'>;
+
 export type NodeMap = {
   [nodeId in TreeNodeId]: {
     children: TreeNodeId[];
@@ -31,7 +33,6 @@ export type NodeMap = {
 };
 
 export interface TreeState<T> {
-  nodes: TreeNodeProps<T>[];
   nodeMap: NodeMap;
   expandedNodeIds: TreeNodeId[];
   flattenedNodeIds: TreeNodeId[];
