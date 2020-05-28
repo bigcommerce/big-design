@@ -12,11 +12,13 @@ export const createReducerInit = <T>() => ({ nodes, radio }: InitArgs<T>): TreeS
   const visibleNodeIds = initializeVisibleNodeIds(nodes, nodeMap);
   const selectedValues = initializeSelectedValues(nodes, radio);
   const focusedNode = initializeFocusNode(nodes, selectedValues, visibleNodeIds);
+  const expandedNodeIds = initializeExpandedNodeIds(nodes);
+  const flattenedNodeIds = initializeFlattenedNodeIds(nodes);
 
   return {
     nodeMap,
-    expandedNodeIds: initializeExpandedNodeIds(nodes),
-    flattenedNodeIds: initializeFlattenedNodeIds(nodes),
+    expandedNodeIds,
+    flattenedNodeIds,
     focusedNode,
     selectedValues,
     visibleNodeIds,
@@ -149,9 +151,9 @@ const initializeNodeMap = <T>(nodes: TreeProps<T>['nodes'], parent?: TreeNodeId)
 
 const initializeExpandedNodeIds = <T>(nodes: TreeProps<T>['nodes']): TreeNodeId[] =>
   nodes.reduce<TreeNodeId[]>((acc, node) => {
-    const childrenIds = node.children && node.children.length > 0 ? initializeExpandedNodeIds(node.children) : [];
-
     if (node.expanded) {
+      const childrenIds = node.children && node.children.length > 0 ? initializeExpandedNodeIds(node.children) : [];
+
       return [...acc, node.id, ...childrenIds];
     }
 
@@ -182,16 +184,14 @@ const initializeSelectedValues = <T>(nodes: TreeProps<T>['nodes'], radio: boolea
   for (let i = 0; i < queue.length; i++) {
     const node = queue[i];
     if (node.children) {
-      // queue = queue.concat(node.children);
       queue.splice(i + 1, 0, ...node.children);
     }
 
     if (node.value !== undefined && !node.disabled) {
-      if (radio) {
-        if (node.selected || selectedValues.length < 1) {
-          selectedValues = [node.value];
-        }
+      if (radio && (node.selected || selectedValues.length < 1)) {
+        selectedValues = [node.value];
       } else {
+        // If a multi-select tree...
         if (node.selected && !node.disabled) {
           selectedValues.push(node.value);
         }
@@ -253,30 +253,33 @@ const getPreviousVisibleNode = <T>(state: TreeState<T>, id: TreeNodeId): TreeNod
 };
 
 // Inserts id in the correct order and returns a new array.
-const insertNode = (array: TreeNodeId[], id: TreeNodeId, flattenedNodeIds: TreeNodeId[]): TreeNodeId[] => {
-  if (array.includes(id)) {
-    return array;
+const insertNode = (idList: TreeNodeId[], id: TreeNodeId, flattenedNodeIds: TreeNodeId[]): TreeNodeId[] => {
+  if (idList.includes(id)) {
+    return idList;
   }
 
-  const newArr = [...array, id];
+  const newArr = [...idList, id];
 
   return flattenedNodeIds.filter((nodeId) => newArr.includes(nodeId));
 };
 
-const removeChildNodes = (array: TreeNodeId[], id: TreeNodeId, nodeMap: NodeMap): TreeNodeId[] => {
-  let tempArr = [...array];
+const getChildNodes = (id: TreeNodeId, nodeMap: NodeMap): TreeNodeId[] =>
+  nodeMap[id].children.reduce<TreeNodeId[]>((acc, childId) => {
+    if (nodeMap[childId].children.length > 0) {
+      return [...acc, childId, ...getChildNodes(childId, nodeMap)];
+    }
 
+    return [...acc, childId];
+  }, []);
+
+const removeChildNodes = (idList: TreeNodeId[], id: TreeNodeId, nodeMap: NodeMap): TreeNodeId[] => {
   if (nodeMap[id].children.length > 0) {
-    tempArr = nodeMap[id].children.reduce((acc, childId) => {
-      return removeChildNodes(
-        acc.filter((nodeId) => nodeId !== childId),
-        childId,
-        nodeMap,
-      );
-    }, tempArr);
+    const childIds = getChildNodes(id, nodeMap);
+
+    return idList.filter((nodeId) => !childIds.includes(nodeId));
   }
 
-  return tempArr;
+  return idList;
 };
 
 const buildVisibleNodes = <T>(nodes: TreeNodeId[], state: TreeState<T>): TreeNodeId[] => {

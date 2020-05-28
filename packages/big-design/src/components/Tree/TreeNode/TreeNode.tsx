@@ -60,47 +60,48 @@ const InternalTreeNode = <T extends unknown>({
 
     // Prevents the collapse/expand when clicking on a radio or checkbox
     // Checks to see if every element inside the selectableRef gets clicked.
-    if (e?.target instanceof Node && selectableRef.current?.contains(e?.target)) {
+    if (
+      (e?.target instanceof Node && selectableRef.current?.contains(e?.target)) ||
+      thisRef.current.children === undefined
+    ) {
       return;
     }
 
-    if (thisRef.current.children) {
-      if (!expanded) {
-        if (typeof onExpand === 'function') {
-          const callbackValue = await onExpand({
-            children: thisRef.current.children,
-            disabled,
-            expanded,
-            id,
-            label,
-            selected,
-            value,
-          });
+    if (expanded) {
+      if (typeof onCollapse === 'function') {
+        const callbackValue = await onCollapse({
+          children: thisRef.current.children,
+          disabled,
+          expanded,
+          id,
+          label,
+          selected,
+          value,
+        });
 
-          if (callbackValue) {
-            thisRef.current = callbackValue;
-          }
-        }
-      } else {
-        if (typeof onCollapse === 'function') {
-          const callbackValue = await onCollapse({
-            children: thisRef.current.children,
-            disabled,
-            expanded,
-            id,
-            label,
-            selected,
-            value,
-          });
-
-          if (callbackValue) {
-            thisRef.current = callbackValue;
-          }
+        if (callbackValue) {
+          thisRef.current = callbackValue;
         }
       }
+    } else {
+      if (typeof onExpand === 'function') {
+        const callbackValue = await onExpand({
+          children: thisRef.current.children,
+          disabled,
+          expanded,
+          id,
+          label,
+          selected,
+          value,
+        });
 
-      dispatch({ type: 'TOGGLE_NODE', id });
+        if (callbackValue) {
+          thisRef.current = callbackValue;
+        }
+      }
     }
+
+    dispatch({ type: 'TOGGLE_NODE', id });
   };
 
   const handleNodeSelected = useCallback(() => {

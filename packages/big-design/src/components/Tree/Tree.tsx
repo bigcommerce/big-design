@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useReducer } from 'react';
+import React, { useMemo, useReducer } from 'react';
 
 import { typedMemo } from '../../utils';
 
@@ -18,10 +18,6 @@ const InternalTree = <T extends unknown>({
   const reducer = useMemo(() => createReducer<T>(), []);
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
   const [state, dispatch] = useReducer(reducer, { nodes, radio: selectable === 'radio' }, reducerInit);
-
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
 
   const renderedItems = useMemo(
     () =>

@@ -2,8 +2,8 @@ export interface TreeProps<T> {
   iconless?: boolean;
   nodes: TreeNodeProps<T>[];
   selectable?: 'radio' | 'multi';
-  onExpand?(node: TreeNodeProps<T>): TreeNodeRef<T> | void;
-  onCollapse?(node: TreeNodeProps<T>): TreeNodeRef<T> | void;
+  onExpand?(node: TreeNodeProps<T>): Promise<TreeNodeRef<T>> | TreeNodeRef<T> | void;
+  onCollapse?(node: TreeNodeProps<T>): Promise<TreeNodeRef<T>> | TreeNodeRef<T> | void;
   // Based on the selectable prop, it can either
   // return and array of values, or just one.
   onSelect?(values: T[] | T): void;
