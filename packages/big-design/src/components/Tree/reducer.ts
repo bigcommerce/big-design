@@ -1,5 +1,7 @@
 import { Reducer } from 'react';
 
+import { depthFirstSearch } from '../../utils';
+
 import { NodeMap, TreeNodeId, TreeNodeProps, TreeProps, TreeState } from './types';
 
 interface InitArgs<T> {
@@ -178,59 +180,36 @@ const initializeVisibleNodeIds = <T>(nodes: TreeProps<T>['nodes'], nodeMap: Node
   }, []);
 
 const initializeSelectedValues = <T>(nodes: TreeProps<T>['nodes'], radio: boolean): T[] => {
-  let selectedValues: T[] = [];
-  const queue = [...nodes];
+  let dfsValue;
 
-  for (let i = 0; i < queue.length; i++) {
-    const node = queue[i];
-    if (node.children) {
-      queue.splice(i + 1, 0, ...node.children);
-    }
+  if (radio) {
+    dfsValue = depthFirstSearch(nodes, (node) => (node.selected ? node.selected : false));
 
-    if (node.value !== undefined && !node.disabled) {
-      if (radio && (node.selected || selectedValues.length < 1)) {
-        selectedValues = [node.value];
-      } else {
-        // If a multi-select tree...
-        if (node.selected && !node.disabled) {
-          selectedValues.push(node.value);
-        }
-      }
-    }
+    return dfsValue && dfsValue.value ? [dfsValue.value] : [];
   }
 
-  return selectedValues;
+  dfsValue = depthFirstSearch(
+    nodes,
+    (node) => {
+      if (node.selected && !node.disabled) {
+        return true;
+      }
+
+      return false;
+    },
+    false,
+  );
+
+  return dfsValue ? dfsValue.reduce<T[]>((acc, node) => (node.value ? [...acc, node.value] : acc), []) : [];
 };
 
 const initializeFocusNode = <T>(nodes: TreeProps<T>['nodes'], selectedValues: T[], visibleNodeIds: TreeNodeId[]) => {
-  const initialFocusedNode = recursiveInitializeFocusNode(nodes, selectedValues, visibleNodeIds);
+  const initialFocusedNode = depthFirstSearch(nodes, (node) => {
+    return visibleNodeIds.includes(node.id) ? node.value !== undefined && selectedValues.includes(node.value) : false;
+  });
 
-  return initialFocusedNode !== null ? initialFocusedNode : nodes[0].id;
+  return initialFocusedNode !== null ? initialFocusedNode.id : nodes[0].id;
 };
-
-const recursiveInitializeFocusNode = <T>(
-  nodes: TreeProps<T>['nodes'],
-  selectedValues: T[],
-  visibleNodeIds: TreeNodeId[],
-): TreeNodeId | null =>
-  nodes.reduce<TreeNodeId | null>((acc, node) => {
-    if (acc === null) {
-      if (visibleNodeIds.includes(node.id)) {
-        const childId =
-          node.children && node.children.length > 0
-            ? recursiveInitializeFocusNode(node.children, selectedValues, visibleNodeIds)
-            : null;
-
-        if (node.value !== undefined && selectedValues.includes(node.value)) {
-          return node.id;
-        }
-
-        return childId;
-      }
-    }
-
-    return acc;
-  }, null);
 
 const getNextVisibleNode = <T>(state: TreeState<T>, id: TreeNodeId): TreeNodeId => {
   const index = state.visibleNodeIds.indexOf(id);
