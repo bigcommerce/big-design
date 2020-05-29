@@ -6,6 +6,7 @@ export * from './Counter';
 export * from './Checkbox';
 export * from './Chip';
 export * from './Collapse';
+export * from './Datepicker';
 export * from './Dropdown';
 export * from './Flex';
 export * from './Fieldset';

@@ -86,6 +86,9 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Counter/CounterPage" as="/counter">
             Counter
           </SideNavLink>
+          <SideNavLink href="/Datepicker/DatepickerPage" as="/datepicker">
+            Datepicker
+          </SideNavLink>
           <SideNavLink href="/Dropdown/DropdownPage" as="/dropdown">
             Dropdown
           </SideNavLink>
