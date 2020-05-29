@@ -180,15 +180,13 @@ const initializeVisibleNodeIds = <T>(nodes: TreeProps<T>['nodes'], nodeMap: Node
   }, []);
 
 const initializeSelectedValues = <T>(nodes: TreeProps<T>['nodes'], radio: boolean): T[] => {
-  let dfsValue;
-
   if (radio) {
-    dfsValue = depthFirstSearch(nodes, (node) => (node.selected ? node.selected : false));
+    const dfsValue = depthFirstSearch(nodes, (node) => (node.selected ? node.selected : false));
 
     return dfsValue && dfsValue.value ? [dfsValue.value] : [];
   }
 
-  dfsValue = depthFirstSearch(
+  const dfsValue = depthFirstSearch(
     nodes,
     (node) => {
       if (node.selected && !node.disabled) {

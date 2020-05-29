@@ -5,6 +5,11 @@ import React from 'react';
 import { Code, CodePreview } from '../../components';
 import { TreeNodePropTable, TreePropTable } from '../../PropTables';
 
+const fetchChildren = async (id: TreeNodeProps<undefined>['id']) =>
+  new Promise<TreeNodeProps<undefined>[] | undefined>((resolve, reject) =>
+    id ? resolve([{ id: 3, label: 'Category' }]) : reject(undefined),
+  );
+
 const TabsPage = () => (
   <>
     <H0>Tree</H0>
@@ -112,7 +117,7 @@ const TabsPage = () => (
       By returning a object containing new children nodes, you have the freedom of modifying/replacing children nodes.
       This is useful when you need to asyncronously load in child nodes.
     </Text>
-    <CodePreview>
+    <CodePreview scope={{ fetchChildren }}>
       {/* jsx-to-string:start */}
       {function Example() {
         const nodes = [
@@ -125,10 +130,8 @@ const TabsPage = () => (
           { id: 2, label: 'Category' },
         ];
 
-        const handleOnExpand = ({ children }: TreeNodeProps<undefined>) => {
-          if (children) {
-            return { children: [{ id: 3, label: 'Category' }] };
-          }
+        const handleOnExpand = async (node: TreeNodeProps<undefined>) => {
+          const children = await fetchChildren(node.id);
 
           return { children };
         };

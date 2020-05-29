@@ -3,11 +3,6 @@ import { TreeNodeProps, TreeProps } from '../components/Tree';
 export function depthFirstSearch<T>(
   nodes: TreeProps<T>['nodes'],
   predicate: (node: TreeNodeProps<T>) => boolean,
-  greedy?: boolean,
-): TreeNodeProps<T>[] | TreeNodeProps<T> | null;
-export function depthFirstSearch<T>(
-  nodes: TreeProps<T>['nodes'],
-  predicate: (node: TreeNodeProps<T>) => boolean,
   greedy?: true,
 ): TreeNodeProps<T> | null;
 export function depthFirstSearch<T>(
@@ -18,9 +13,14 @@ export function depthFirstSearch<T>(
 export function depthFirstSearch<T>(
   nodes: TreeProps<T>['nodes'],
   predicate: (node: TreeNodeProps<T>) => boolean,
+  greedy?: boolean,
+): TreeNodeProps<T>[] | TreeNodeProps<T> | null;
+export function depthFirstSearch<T>(
+  nodes: TreeProps<T>['nodes'],
+  predicate: (node: TreeNodeProps<T>) => boolean,
   greedy = true,
 ): TreeNodeProps<T>[] | TreeNodeProps<T> | null {
-  const list: TreeNodeProps<T>[] = [];
+  let list: TreeNodeProps<T>[] = [];
 
   for (const node of nodes) {
     if (predicate(node)) {
@@ -39,7 +39,7 @@ export function depthFirstSearch<T>(
       const nestedDfs = depthFirstSearch(node.children, predicate, greedy);
 
       if (nestedDfs) {
-        list.push(...nestedDfs);
+        list = list.concat(nestedDfs);
       }
     }
   }
