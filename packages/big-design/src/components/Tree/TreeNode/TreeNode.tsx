@@ -1,10 +1,11 @@
 import { CheckIcon, ChevronRightIcon, FolderIcon } from '@bigcommerce/big-design-icons';
-import React, { Dispatch, useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { Dispatch, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { StyledCheckbox } from '../../Checkbox/private';
 import { FlexItemProps } from '../../Flex';
 import { StyledRadio } from '../../Radio/styled';
+import { DelayedSpinner } from '../DelayedSpinner';
 import { useIsExpanded, useIsSelected } from '../hooks';
 import { Action } from '../reducer';
 import { StyledUl } from '../styled';
@@ -50,6 +51,7 @@ const InternalTreeNode = <T extends unknown>({
   const thisRef = useRef<TreeNodeRef<T>>({ children });
   const nodeRef = useRef<HTMLLIElement | null>(null);
   const selectableRef = useRef<HTMLLabelElement | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const expanded = useIsExpanded(state, id);
   const selected = useIsSelected(state, value);
 
@@ -66,6 +68,8 @@ const InternalTreeNode = <T extends unknown>({
     ) {
       return;
     }
+
+    dispatch({ type: 'TOGGLE_NODE', id });
 
     if (expanded) {
       if (typeof onCollapse === 'function') {
@@ -85,6 +89,8 @@ const InternalTreeNode = <T extends unknown>({
       }
     } else {
       if (typeof onExpand === 'function') {
+        setIsLoading(true);
+
         const callbackValue = await onExpand({
           children: thisRef.current.children,
           disabled,
@@ -98,10 +104,10 @@ const InternalTreeNode = <T extends unknown>({
         if (callbackValue) {
           thisRef.current = callbackValue;
         }
+
+        setIsLoading(false);
       }
     }
-
-    dispatch({ type: 'TOGGLE_NODE', id });
   };
 
   const handleNodeSelected = useCallback(() => {
@@ -212,22 +218,33 @@ const InternalTreeNode = <T extends unknown>({
       thisRef.current.children &&
       expanded && (
         <StyledUl role="group">
-          {thisRef.current.children?.map((child, index) => (
+          {isLoading && thisRef.current.children.length < 1 ? (
             <TreeNode
-              {...child}
+              id={-1}
+              label=""
+              icon={<DelayedSpinner />}
               dispatch={dispatch}
-              iconless={iconless}
-              key={index}
-              onCollapse={onCollapse}
-              onExpand={onExpand}
-              onSelect={onSelect}
               selectable={selectable}
               state={state}
             />
-          ))}
+          ) : (
+            thisRef.current.children?.map((child, index) => (
+              <TreeNode
+                {...child}
+                dispatch={dispatch}
+                iconless={iconless}
+                key={index}
+                onCollapse={onCollapse}
+                onExpand={onExpand}
+                onSelect={onSelect}
+                selectable={selectable}
+                state={state}
+              />
+            ))
+          )}
         </StyledUl>
       ),
-    [dispatch, expanded, iconless, onCollapse, onExpand, onSelect, selectable, state],
+    [dispatch, expanded, iconless, isLoading, onCollapse, onExpand, onSelect, selectable, state],
   );
 
   const renderedIcon = useMemo(() => {

@@ -7,7 +7,7 @@ import { TreeNodePropTable, TreePropTable } from '../../PropTables';
 
 const fetchChildren = async (id: TreeNodeProps<undefined>['id']) =>
   new Promise<TreeNodeProps<undefined>[] | undefined>((resolve, reject) =>
-    id ? resolve([{ id: 3, label: 'Category' }]) : reject(undefined),
+    id !== undefined ? setTimeout(() => resolve([{ id: 3, label: 'Category' }]), 2000) : reject(undefined),
   );
 
 const TabsPage = () => (
@@ -130,11 +130,11 @@ const TabsPage = () => (
           { id: 2, label: 'Category' },
         ];
 
-        const handleOnExpand = async (node: TreeNodeProps<undefined>) => {
+        async function handleOnExpand(node: TreeNodeProps<undefined>) {
           const children = await fetchChildren(node.id);
 
           return { children };
-        };
+        }
 
         return <Tree nodes={nodes} onExpand={handleOnExpand} />;
       }}
