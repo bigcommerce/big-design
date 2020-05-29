@@ -345,6 +345,58 @@ exports[`render small progress circle 1`] = `
 
 exports[`render xSmall progress circle 1`] = `
 .c0 {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c1 {
+  fill: transparent;
+  stroke-width: 0.1875rem;
+  stroke: #ECEEF5;
+}
+
+.c2 {
+  fill: transparent;
+  stroke-width: 0.1875rem;
+  stroke: #ECEEF5;
+  stroke-dasharray: 65.97344572538566 65.97344572538566;
+  stroke: #3C64F4;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation: ceJQKV 1s ease-out infinite;
+  animation: ceJQKV 1s ease-out infinite;
+  stroke-dashoffset: 65.97344572538566;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transition: stroke-dashoffset 0.35s;
+  transition: stroke-dashoffset 0.35s;
+}
+
+<div>
+  <svg
+    class="c0"
+    role="progressbar"
+  >
+    <circle
+      class="c1"
+      cx="0.75rem"
+      cy="0.75rem"
+      r="0.65625rem"
+    />
+    <circle
+      class="c2"
+      cx="0.75rem"
+      cy="0.75rem"
+      r="0.65625rem"
+    />
+  </svg>
+</div>
+`;
+
+exports[`render xSmall progress circle 2`] = `
+.c0 {
   height: 1rem;
   width: 1rem;
 }

@@ -15,7 +15,7 @@ const progressCircleProps: Prop[] = [
   },
   {
     name: 'size',
-    types: ['xSmall', 'small', 'medium', 'large'],
+    types: ['xxSmall', 'xSmall', 'small', 'medium', 'large'],
     defaultValue: 'medium',
     description: 'Size of the component.',
   },

@@ -53,3 +53,9 @@ test('render xSmall progress circle', () => {
 
   expect(container).toMatchSnapshot();
 });
+
+test('render xSmall progress circle', () => {
+  const { container } = render(<ProgressCircle size="xxSmall" />);
+
+  expect(container).toMatchSnapshot();
+});
