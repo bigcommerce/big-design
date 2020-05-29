@@ -30,7 +30,7 @@ const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, ..
   const renderLoadingSpinner = () => {
     return (
       <LoadingSpinnerWrapper alignItems="center">
-        <ProgressCircle size="xSmall" />
+        <ProgressCircle size="xxSmall" />
       </LoadingSpinnerWrapper>
     );
   };

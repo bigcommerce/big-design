@@ -9,7 +9,7 @@ import { StyledCircle, StyledCircleFiller, StyledProgressCircle, StyledText } fr
 export interface ProgressCircleProps {
   error?: boolean;
   percent?: number;
-  size?: 'xSmall' | 'small' | 'medium' | 'large';
+  size?: 'xxSmall' | 'xSmall' | 'small' | 'medium' | 'large';
 }
 
 export const ProgressCircle: React.FC<ProgressCircleProps> = typedMemo(({ error, percent, size = 'medium' }) => {
