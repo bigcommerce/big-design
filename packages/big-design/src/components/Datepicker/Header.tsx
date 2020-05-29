@@ -1,11 +1,12 @@
-import { Button } from '@bigcommerce/big-design';
 import { ChevronLeftIcon, ChevronRightIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
+
+import { Button } from '../Button';
 
 import { StyledHeader } from './styled';
 
 export interface HeaderProps {
-  date: Date;
+  date?: Date;
   nextMonthButtonDisabled?: boolean;
   prevMonthButtonDisabled?: boolean;
   decreaseMonth?(): void;
@@ -17,13 +18,13 @@ const months: string[] = Array(12)
   .map((_, i) => new Date(0, i).toLocaleString('en', { month: 'long' }));
 
 const Header: React.FC<HeaderProps> = ({
-  date,
+  date = new Date(),
   decreaseMonth,
   increaseMonth,
   prevMonthButtonDisabled,
   nextMonthButtonDisabled,
 }) => (
-  <StyledHeader>
+  <StyledHeader date={date}>
     <Button
       type="button"
       iconOnly={<ChevronLeftIcon />}

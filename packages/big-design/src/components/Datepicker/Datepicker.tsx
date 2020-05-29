@@ -1,7 +1,8 @@
-import { Input } from '@bigcommerce/big-design';
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { forwardRef, memo, Ref } from 'react';
 import ReactDatePicker from 'react-datepicker';
+
+import { Input } from '../Input';
 
 import Header from './Header';
 import { StyledDatepicker } from './styled';
@@ -12,30 +13,30 @@ interface Props {
   maxDate?: Date;
   minDate?: Date;
   required?: boolean;
-  value?: Date;
-  theme?: ThemeInterface;
+  selected?: Date | null;
   filterDate?(date: Date): boolean;
-  onDateChange(date: Date): void;
+  onChange(date: Date | null, event: React.SyntheticEvent<any> | undefined): void;
 }
 
-interface PrivateProps {
+export interface ExtraProps {
   forwardedRef: Ref<HTMLInputElement>;
+  theme?: ThemeInterface;
 }
 
 export type DatepickerProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
-const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
+const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
   filterDate,
   forwardedRef,
   label,
   maxDate,
   minDate,
-  onDateChange,
   required,
-  value,
+  selected,
   theme,
+  onChange,
 }) => (
-  <StyledDatepicker theme={theme} ref={forwardedRef}>
+  <StyledDatepicker theme={theme} forwardedRef={forwardedRef}>
     <ReactDatePicker
       renderCustomHeader={({
         date,
@@ -60,10 +61,10 @@ const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
       filterDate={filterDate}
       maxDate={maxDate}
       minDate={minDate}
-      selected={value}
+      selected={selected}
       placeholderText="DD /MM /YYYY"
       required={required}
-      onChange={onDateChange}
+      onChange={onChange}
     />
   </StyledDatepicker>
 );

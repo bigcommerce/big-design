@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { DatepickerProps } from './Datepicker';
+import { ExtraProps } from './Datepicker';
 import { HeaderProps } from './Header';
 
 export const StyledHeader = styled.div<HeaderProps>`
@@ -12,7 +12,7 @@ export const StyledHeader = styled.div<HeaderProps>`
   margin: ${({ theme }) => theme.spacing.small};
 `;
 
-export const StyledDatepicker = styled.div<DatepickerProps>`
+export const StyledDatepicker = styled.div<ExtraProps>`
   & .react-datepicker-wrapper {
     display: inline-block;
     width: 100%;
@@ -65,18 +65,20 @@ export const StyledDatepicker = styled.div<DatepickerProps>`
     background: ${({ theme }) => theme.colors.primary10};
     border-radius: ${({ theme }) => theme.borderRadius.normal};
     color: ${({ theme }) => theme.colors.secondary70};
+    outline: none;
   }
 
   & .react-datepicker__day:focus {
-    border: 4px solid ${({ theme }) => theme.colors.primary20};
     border-radius: ${({ theme }) => theme.borderRadius.normal};
     color: ${({ theme }) => theme.colors.secondary70};
+    outline: none;
   }
 
   & .react-datepicker__day:active {
     background: ${({ theme }) => theme.colors.primary20};
     border-radius: ${({ theme }) => theme.borderRadius.normal};
     color: ${({ theme }) => theme.colors.secondary70};
+    outline: none;
   }
 
   & .react-datepicker__day--today {
