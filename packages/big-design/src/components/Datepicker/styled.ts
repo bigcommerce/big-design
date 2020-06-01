@@ -9,7 +9,6 @@ export const StyledHeader = styled.div<HeaderProps>`
   display: flex;
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   justify-content: space-between;
-  margin: ${({ theme }) => theme.spacing.small};
 `;
 
 export const StyledDatepicker = styled.div<ExtraProps>`
@@ -25,8 +24,12 @@ export const StyledDatepicker = styled.div<ExtraProps>`
     width: 100%;
   }
 
+  & .react-datepicker__month-container {
+    margin: ${({ theme }) => theme.spacing.medium};
+  }
+
   & .react-datepicker__month {
-    margin: ${({ theme }) => theme.spacing.xSmall};
+    margin-top: ${({ theme }) => theme.spacing.xSmall};
     text-align: center;
   }
 
@@ -55,10 +58,10 @@ export const StyledDatepicker = styled.div<ExtraProps>`
   .react-datepicker__day {
     color: ${({ theme }) => theme.colors.secondary60};
     display: inline-block;
-    line-height: ${({ theme }) => theme.lineHeight.medium};
+    line-height: ${({ theme }) => theme.lineHeight.xLarge};
     margin: ${({ theme }) => theme.spacing.xxSmall};
     text-align: center;
-    width: 1.5rem;
+    width: ${({ theme }) => theme.lineHeight.xLarge};
   }
 
   & .react-datepicker__day:hover {
@@ -81,14 +84,29 @@ export const StyledDatepicker = styled.div<ExtraProps>`
     outline: none;
   }
 
-  & .react-datepicker__day--today {
-    border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
+  & .react-datepicker__day--today::after {
+    content: '';
+    display: block;
+    position: relative;
+    height: 2px;
+    background: ${({ theme }) => theme.colors.primary};
+    width: 24px;
+    margin-left: 4px;
+    bottom: 1px;
   }
 
   & .react-datepicker__day--selected {
     background: ${({ theme }) => theme.colors.primary};
     border-radius: ${({ theme }) => theme.borderRadius.normal};
     color: ${({ theme }) => theme.colors.white};
+  }
+
+  & .react-datepicker__day--selected:hover.react-datepicker__day--today::after {
+    bottom: 1px;
+  }
+
+  & .react-datepicker__day--selected.react-datepicker__day--today::after {
+    bottom: -4px;
   }
 
   & .react-datepicker__day--disabled {
@@ -103,10 +121,9 @@ export const StyledDatepicker = styled.div<ExtraProps>`
   & .bc-datepicker {
     background: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.shadow.floating};
-    display: inline-block;
+    display: flex;
     font-family: ${({ theme }) => theme.typography.fontFamily};
     font-size: ${({ theme }) => theme.typography.fontSize.small};
-    margin-top: ${({ theme }) => theme.spacing.xxSmall};
     position: relative;
   }
 

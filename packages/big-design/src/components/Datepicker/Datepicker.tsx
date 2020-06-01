@@ -8,14 +8,16 @@ import Header from './Header';
 import { StyledDatepicker } from './styled';
 
 interface Props {
+  dateFormat?: string;
   forwardedRef?: Ref<HTMLInputElement>;
   label?: string;
+  locale?: string;
   maxDate?: Date;
   minDate?: Date;
   required?: boolean;
   selected?: Date | null;
   filterDate?(date: Date): boolean;
-  onChange(date: Date | null, event: React.SyntheticEvent<any> | undefined): void;
+  onChange(date: Date): void;
 }
 
 export interface ExtraProps {
@@ -26,9 +28,11 @@ export interface ExtraProps {
 export type DatepickerProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
 const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
+  dateFormat,
   filterDate,
   forwardedRef,
   label,
+  locale,
   maxDate,
   minDate,
   required,
@@ -57,8 +61,9 @@ const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
       className="calendar-input"
       calendarClassName="bc-datepicker"
       disabledKeyboardNavigation
-      dateFormat="EE, dd MMM, yyyy"
+      dateFormat={dateFormat || 'EE, dd MMM, yyyy'}
       filterDate={filterDate}
+      locale={locale}
       maxDate={maxDate}
       minDate={minDate}
       selected={selected}
