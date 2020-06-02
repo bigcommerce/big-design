@@ -9,7 +9,7 @@ import { StyledDatepicker } from './styled';
 
 interface Props {
   dateFormat?: string;
-  forwardedRef?: Ref<HTMLInputElement>;
+  forwardedRef?: Ref<ReactDatePicker>;
   label?: string;
   locale?: string;
   maxDate?: Date;
@@ -21,11 +21,10 @@ interface Props {
 }
 
 export interface ExtraProps {
-  forwardedRef: Ref<HTMLInputElement>;
   theme?: ThemeInterface;
 }
 
-export type DatepickerProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
+export type DatepickerProps = Props;
 
 const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
   dateFormat,
@@ -40,7 +39,7 @@ const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
   theme,
   onChange,
 }) => (
-  <StyledDatepicker theme={theme} forwardedRef={forwardedRef}>
+  <StyledDatepicker theme={theme}>
     <ReactDatePicker
       renderCustomHeader={({
         date,
@@ -70,10 +69,11 @@ const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
       placeholderText="DD /MM /YYYY"
       required={required}
       onChange={onChange}
+      ref={forwardedRef}
     />
   </StyledDatepicker>
 );
 
 export const Datepicker = memo(
-  forwardRef<HTMLInputElement, DatepickerProps>((props, ref) => <RawDatePicker {...props} forwardedRef={ref} />),
+  forwardRef<ReactDatePicker, DatepickerProps>((props, ref) => <RawDatePicker {...props} forwardedRef={ref} />),
 );

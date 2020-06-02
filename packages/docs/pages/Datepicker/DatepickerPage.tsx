@@ -17,7 +17,7 @@ const DatepickerPage = () => (
         return (
           <Form>
             <FormGroup>
-              <Datepicker onChange={(value) => setDate(value)} selected={date} />
+              <Datepicker label="this is label" onChange={(value) => setDate(value)} selected={date} />
             </FormGroup>
           </Form>
         );
