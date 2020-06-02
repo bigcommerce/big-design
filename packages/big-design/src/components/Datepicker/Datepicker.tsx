@@ -8,12 +8,15 @@ import Header from './Header';
 import { StyledDatepicker } from './styled';
 
 interface Props {
+  ariaLabel?: string;
   dateFormat?: string;
+  error?: React.ReactNode;
   forwardedRef?: Ref<ReactDatePicker>;
   label?: string;
   locale?: string;
   maxDate?: Date;
   minDate?: Date;
+  placeholder?: string;
   required?: boolean;
   selected?: Date | null;
   filterDate?(date: Date): boolean;
@@ -27,6 +30,7 @@ export interface ExtraProps {
 export type DatepickerProps = Props;
 
 const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
+  ariaLabel,
   dateFormat,
   filterDate,
   forwardedRef,
@@ -34,6 +38,7 @@ const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
   locale,
   maxDate,
   minDate,
+  placeholder,
   required,
   selected,
   theme,
@@ -56,6 +61,7 @@ const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
           nextMonthButtonDisabled={nextMonthButtonDisabled}
         />
       )}
+      ariaLabelledBy={ariaLabel}
       customInput={<Input label={label} />}
       className="calendar-input"
       calendarClassName="bc-datepicker"
@@ -66,7 +72,7 @@ const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
       maxDate={maxDate}
       minDate={minDate}
       selected={selected}
-      placeholderText="DD /MM /YYYY"
+      placeholderText={placeholder}
       required={required}
       onChange={onChange}
       ref={forwardedRef}
