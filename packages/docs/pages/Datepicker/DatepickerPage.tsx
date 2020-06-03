@@ -68,6 +68,7 @@ const DatepickerPage = () => (
                 placeholder="Placeholder"
                 onChange={handleChange}
                 selected={date}
+                required
               />
             </FormGroup>
           </Form>
