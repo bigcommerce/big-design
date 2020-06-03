@@ -24,19 +24,17 @@ export interface TreeNodeProps<T> {
 
 export type TreeNodeRef<T> = Pick<TreeNodeProps<T>, 'children'>;
 
-export type NodeMap = {
-  [nodeId in TreeNodeId]: {
-    children: TreeNodeId[];
-    id: TreeNodeId;
-    parent: TreeNodeId;
-  };
+export type MapValues = {
+  children?: Set<TreeNodeId>;
+  id: TreeNodeId;
+  parent?: TreeNodeId;
 };
 
 export interface TreeState<T> {
-  nodeMap: NodeMap;
-  expandedNodeIds: TreeNodeId[];
+  nodeMap: Map<TreeNodeId, MapValues>;
+  expandedNodeIds: Set<TreeNodeId>;
   flattenedNodeIds: TreeNodeId[];
-  focusedNode: TreeNodeId;
-  selectedValues: Array<T>;
+  focusedNode: TreeNodeId | null;
+  selectedValues: Set<T>;
   visibleNodeIds: TreeNodeId[];
 }

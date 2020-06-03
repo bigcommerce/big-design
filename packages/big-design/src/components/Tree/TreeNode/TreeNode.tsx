@@ -115,25 +115,26 @@ const InternalTreeNode = <T extends unknown>({
       return;
     }
 
-    let newSelectedValues: T[] = [];
+    const newSelectedValues = new Set(state.selectedValues.values());
 
     if (selectable === 'multi') {
-      if (state.selectedValues.includes(value)) {
-        newSelectedValues = state.selectedValues.filter((selectedValue) => selectedValue !== value);
+      if (newSelectedValues.has(value)) {
+        newSelectedValues.delete(value);
       } else {
-        newSelectedValues = [...state.selectedValues, value];
+        newSelectedValues.add(value);
       }
 
       if (typeof onSelect === 'function') {
-        onSelect(newSelectedValues);
+        onSelect(Array.from(newSelectedValues));
       }
     }
 
     if (selectable === 'radio') {
-      newSelectedValues = [value];
+      newSelectedValues.clear();
+      newSelectedValues.add(value);
 
       if (typeof onSelect === 'function') {
-        onSelect(newSelectedValues[0]);
+        onSelect(newSelectedValues.values().next().value);
       }
     }
 
@@ -169,21 +170,38 @@ const InternalTreeNode = <T extends unknown>({
       case 'ArrowDown':
         e.preventDefault();
 
-        dispatch({ type: 'FOCUS_DOWN', id: state.focusedNode });
+        dispatch({ type: 'FOCUS_DOWN', id });
         break;
 
       case 'ArrowUp':
         e.preventDefault();
 
-        dispatch({ type: 'FOCUS_UP', id: state.focusedNode });
+        dispatch({ type: 'FOCUS_UP', id });
         break;
 
       case 'ArrowRight':
-        dispatch({ type: 'FOCUS_RIGHT', id: state.focusedNode });
+        if (thisRef.current?.children) {
+          if (expanded) {
+            dispatch({ type: 'FOCUS_DOWN', id });
+          } else {
+            handleNodeToggle();
+          }
+        }
         break;
 
       case 'ArrowLeft':
-        dispatch({ type: 'FOCUS_LEFT', id: state.focusedNode });
+        if (thisRef.current?.children) {
+          if (expanded) {
+            handleNodeToggle();
+
+            break;
+          }
+        }
+
+        if (state.nodeMap.get(id)?.parent) {
+          dispatch({ type: 'FOCUS_UP', id });
+        }
+
         break;
 
       case 'Home':
