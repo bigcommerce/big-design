@@ -1,6 +1,6 @@
 import { Reducer } from 'react';
 
-import { getNextVisibleNode, getPreviousVisibleNode, initialize, toggleNode } from './reducer.utils';
+import { asyncToggle, getNextVisibleNode, getPreviousVisibleNode, initialize, toggleNode } from './reducer.utils';
 import { TreeNodeId, TreeNodeProps, TreeState } from './types';
 
 interface InitArgs<T> {
@@ -12,6 +12,7 @@ export const createReducerInit = <T>() => ({ nodes, radio }: InitArgs<T>): TreeS
 
 export type Action<T> =
   | { type: 'TOGGLE_NODE'; id: TreeNodeId }
+  | { type: 'ASYNC_TOGGLE'; radio: boolean; id: TreeNodeId; children?: TreeNodeProps<T>[] }
   | { type: 'FOCUS'; id: TreeNodeId }
   | { type: 'FOCUS_DOWN'; id: TreeNodeId }
   | { type: 'FOCUS_UP'; id: TreeNodeId }
@@ -23,6 +24,9 @@ export const createReducer = <T>(): Reducer<TreeState<T>, Action<T>> => (state, 
   switch (action.type) {
     case 'TOGGLE_NODE':
       return toggleNode(state, action);
+
+    case 'ASYNC_TOGGLE':
+      return asyncToggle(state, action);
 
     case 'FOCUS':
       return {

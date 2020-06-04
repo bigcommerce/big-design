@@ -1,5 +1,5 @@
 import { Action } from './reducer';
-import { MapValues, TreeNodeId, TreeProps, TreeState } from './types';
+import { MapValues, TreeNodeId, TreeNodeProps, TreeProps, TreeState } from './types';
 
 export const initialize = <T>(nodes: TreeProps<T>['nodes'], radio: boolean): TreeState<T> => {
   const initialState: TreeState<T> = {
@@ -115,6 +115,67 @@ export const toggleNode = <T>(state: TreeState<T>, action: Extract<Action<T>, { 
     state.expandedNodeIds.add(action.id);
     state.visibleNodeIds.splice(state.visibleNodeIds.indexOf(action.id) + 1, 0, ...Array.from(node?.children ?? []));
   }
+
+  return state;
+};
+
+export const asyncToggle = <T>(state: TreeState<T>, action: Extract<Action<T>, { type: 'ASYNC_TOGGLE' }>) => {
+  const { children, id, radio } = action;
+
+  return recursiveToggle(state, radio, id, children);
+};
+
+export const recursiveToggle = <T>(
+  state: TreeState<T>,
+  radio: boolean,
+  id: TreeNodeId,
+  children?: TreeNodeProps<T>[],
+): TreeState<T> => {
+  if (!children) {
+    return state;
+  }
+
+  const parentNode = state.nodeMap.get(id);
+  const parentIndex = state.flattenedNodeIds.indexOf(id);
+  const childrenIds = children.map(({ id }) => id);
+
+  state.flattenedNodeIds.splice(
+    parentIndex + 1,
+    0,
+    ...childrenIds.filter((childId) => !state.flattenedNodeIds.includes(childId)),
+  );
+  state.visibleNodeIds.splice(
+    parentIndex + 1,
+    0,
+    ...childrenIds.filter((childId) => !state.visibleNodeIds.includes(childId)),
+  );
+
+  if (parentNode?.children) {
+    state.nodeMap.set(id, {
+      ...parentNode,
+      children: new Set(childrenIds),
+    });
+  }
+
+  children.forEach((child) => {
+    state.nodeMap.set(child.id, {
+      children: new Set(child.children?.map(({ id: childId }) => childId)),
+      id: child.id,
+      parent: getParentId(state.nodeMap, child.id),
+    });
+
+    if (child.expanded) {
+      state.expandedNodeIds.add(child.id);
+    }
+
+    if (child.selected && child.value !== undefined && (!radio || state.selectedValues.size === 0)) {
+      state.selectedValues.add(child.value);
+    }
+
+    if (child.children && child.children.length > 0) {
+      return recursiveToggle(state, radio, child.id, child.children);
+    }
+  });
 
   return state;
 };

@@ -103,6 +103,8 @@ const InternalTreeNode = <T extends unknown>({
 
         if (callbackValue) {
           thisRef.current = callbackValue;
+
+          dispatch({ type: 'ASYNC_TOGGLE', radio: selectable === 'radio', id, children: thisRef.current.children });
         }
 
         setIsLoading(false);
@@ -198,7 +200,7 @@ const InternalTreeNode = <T extends unknown>({
           }
         }
 
-        if (state.nodeMap.get(id)?.parent) {
+        if (state.nodeMap.get(id)?.parent !== undefined) {
           dispatch({ type: 'FOCUS_UP', id });
         }
 

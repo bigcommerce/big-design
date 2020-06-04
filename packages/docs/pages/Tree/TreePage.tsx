@@ -131,7 +131,7 @@ const TabsPage = () => (
         ];
 
         async function handleOnExpand(node: TreeNodeProps<undefined>) {
-          const children = await fetchChildren(node.id);
+          const children = node.id === 0 ? await fetchChildren(node.id) : node.children;
 
           return { children };
         }
