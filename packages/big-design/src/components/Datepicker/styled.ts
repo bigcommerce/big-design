@@ -77,6 +77,13 @@ export const StyledDatepicker = styled.div<ExtraProps>`
     outline: none;
   }
 
+  & .react-datepicker__day--keyboard-selected {
+    background: ${({ theme }) => theme.colors.primary10};
+    border-radius: ${({ theme }) => theme.borderRadius.normal};
+    color: ${({ theme }) => theme.colors.secondary70};
+    outline: none;
+  }
+
   & .react-datepicker__day:active {
     background: ${({ theme }) => theme.colors.primary20};
     border-radius: ${({ theme }) => theme.borderRadius.normal};

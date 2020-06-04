@@ -30,6 +30,7 @@ module.exports = {
     '/counter': { page: '/Counter/CounterPage' },
     '/colors': { page: '/Colors/ColorsPage' },
     '/display': { page: '/Display/DisplayPage' },
+    '/datepicker': { page: '/Datepicker/DatepickerPage' },
     '/dropdown': { page: '/Dropdown/DropdownPage' },
     '/flex': { page: '/Flex/FlexPage' },
     '/form': { page: '/Form/FormPage' },

@@ -32,6 +32,7 @@ export type DatepickerProps = Props;
 const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
   ariaLabel,
   dateFormat,
+  error,
   filterDate,
   forwardedRef,
   label,
@@ -62,10 +63,9 @@ const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
         />
       )}
       ariaLabelledBy={ariaLabel}
-      customInput={<Input label={label} />}
+      customInput={<Input label={label} error={error} />}
       className="calendar-input"
       calendarClassName="bc-datepicker"
-      disabledKeyboardNavigation
       dateFormat={dateFormat || 'EE, dd MMM, yyyy'}
       filterDate={filterDate}
       locale={locale}
