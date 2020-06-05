@@ -43,7 +43,7 @@ const recursiveInitialize = <T>(
 
     const parent = state.nodeMap.get(node.id)?.parent;
 
-    if ((parent && state.expandedNodeIds.has(parent)) || parent === undefined) {
+    if ((parent !== undefined && state.expandedNodeIds.has(parent)) || parent === undefined) {
       state.visibleNodeIds.push(node.id);
     }
 
@@ -104,7 +104,7 @@ export const toggleNode = <T>(state: TreeState<T>, action: Extract<Action<T>, { 
   if (state.expandedNodeIds.has(action.id)) {
     state.expandedNodeIds.delete(action.id);
 
-    node?.children?.forEach((childId) => {
+    node?.children.forEach((childId) => {
       const index = state.visibleNodeIds.indexOf(childId);
 
       if (index > -1) {

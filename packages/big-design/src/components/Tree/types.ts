@@ -25,7 +25,7 @@ export interface TreeNodeProps<T> {
 export type TreeNodeRef<T> = Pick<TreeNodeProps<T>, 'children'>;
 
 export type MapValues = {
-  children?: Set<TreeNodeId>;
+  children: Set<TreeNodeId>;
   id: TreeNodeId;
   parent?: TreeNodeId;
 };
