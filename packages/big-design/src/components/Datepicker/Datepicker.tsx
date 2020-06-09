@@ -7,7 +7,7 @@ import { Input } from '../Input';
 import Header from './Header';
 import { StyledDatepicker } from './styled';
 
-interface Props {
+export interface DatepickerProps {
   ariaLabel?: string;
   dateFormat?: string;
   error?: React.ReactNode;
@@ -26,8 +26,6 @@ interface Props {
 export interface ExtraProps {
   theme?: ThemeInterface;
 }
-
-export type DatepickerProps = Props;
 
 const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
   ariaLabel,
