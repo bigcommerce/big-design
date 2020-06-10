@@ -27,10 +27,12 @@ const recursiveInitialize = <T>(
   nodes.forEach((node) => {
     state.flattenedNodeIds.push(node.id);
 
+    const parent = getParentId(state.nodeMap, node.id);
+
     state.nodeMap.set(node.id, {
       children: new Set(node.children?.map((child) => child.id)),
       id: node.id,
-      parent: getParentId(state.nodeMap, node.id),
+      parent,
     });
 
     if (state.focusedNode === null) {
@@ -40,8 +42,6 @@ const recursiveInitialize = <T>(
     if (node.expanded) {
       state.expandedNodeIds.add(node.id);
     }
-
-    const parent = state.nodeMap.get(node.id)?.parent;
 
     if ((parent !== undefined && state.expandedNodeIds.has(parent)) || parent === undefined) {
       state.visibleNodeIds.push(node.id);
@@ -53,7 +53,7 @@ const recursiveInitialize = <T>(
 
     // Needs to happen after the recursive call for radio Trees
     // We want the closest node to the root to be selected.
-    if (node.selected && node.value) {
+    if (node.selected && node.value !== undefined) {
       if (radio) {
         state.selectedValues.clear();
       }

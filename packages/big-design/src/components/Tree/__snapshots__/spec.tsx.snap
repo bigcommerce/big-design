@@ -1,0 +1,1197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Tree component base 1`] = `
+<ul
+  aria-multiselectable="false"
+  class="styled__StyledUl-sc-7vo4ly-0 iuWuiq"
+  role="tree"
+  style="overflow: hidden;"
+>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="0"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledGap-sc-1073t7q-5 NiMQL"
+      />
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledGap-sc-1073t7q-5 NiMQL"
+      />
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 bhJOBV"
+          color="primary20"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bpfnms"
+        color="secondary50"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`renders Tree component iconless 1`] = `
+<ul
+  aria-multiselectable="false"
+  class="styled__StyledUl-sc-7vo4ly-0 iuWuiq"
+  role="tree"
+  style="overflow: hidden;"
+>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="0"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledGap-sc-1073t7q-5 NiMQL"
+      />
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledGap-sc-1073t7q-5 NiMQL"
+      />
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bpfnms"
+        color="secondary50"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`renders Tree component multi-select 1`] = `
+<ul
+  aria-multiselectable="true"
+  class="styled__StyledUl-sc-7vo4ly-0 iuWuiq"
+  role="tree"
+  style="overflow: hidden;"
+>
+  <li
+    aria-expanded="false"
+    aria-selected="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="0"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledSelectableWrapper-sc-1073t7q-2 ePCBYx"
+      >
+        <label
+          aria-hidden="true"
+          class="styled__StyledCheckbox-s1u0st-3 qxpOx"
+        />
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    aria-selected="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledGap-sc-1073t7q-5 NiMQL"
+      />
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledSelectableWrapper-sc-1073t7q-2 ePCBYx"
+      >
+        <label
+          aria-hidden="true"
+          class="styled__StyledCheckbox-s1u0st-3 qxpOx"
+        />
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    aria-selected="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledSelectableWrapper-sc-1073t7q-2 ePCBYx"
+      >
+        <label
+          aria-hidden="true"
+          class="styled__StyledCheckbox-s1u0st-3 qxpOx"
+        />
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    aria-selected="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledGap-sc-1073t7q-5 NiMQL"
+      />
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledSelectableWrapper-sc-1073t7q-2 ePCBYx"
+      >
+        <label
+          aria-hidden="true"
+          class="styled__StyledCheckbox-s1u0st-3 bkMkvo"
+          disabled=""
+        />
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 bhJOBV"
+          color="primary20"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bpfnms"
+        color="secondary50"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    aria-selected="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledSelectableWrapper-sc-1073t7q-2 ePCBYx"
+      >
+        <label
+          aria-hidden="true"
+          class="styled__StyledCheckbox-s1u0st-3 qxpOx"
+        />
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`renders Tree component radio-select 1`] = `
+<ul
+  aria-multiselectable="false"
+  class="styled__StyledUl-sc-7vo4ly-0 iuWuiq"
+  role="tree"
+  style="overflow: hidden;"
+>
+  <li
+    aria-expanded="false"
+    aria-selected="true"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="0"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 dYPCgX"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledSelectableWrapper-sc-1073t7q-2 ePCBYx"
+      >
+        <label
+          aria-hidden="true"
+          class="styled__StyledRadio-sc-1x9u9a8-3 bvKzMp"
+        />
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    aria-selected="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledGap-sc-1073t7q-5 NiMQL"
+      />
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledSelectableWrapper-sc-1073t7q-2 ePCBYx"
+      >
+        <label
+          aria-hidden="true"
+          class="styled__StyledRadio-sc-1x9u9a8-3 jACwtB"
+        />
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    aria-selected="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledSelectableWrapper-sc-1073t7q-2 ePCBYx"
+      >
+        <label
+          aria-hidden="true"
+          class="styled__StyledRadio-sc-1x9u9a8-3 jACwtB"
+        />
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    aria-selected="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledGap-sc-1073t7q-5 NiMQL"
+      />
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledSelectableWrapper-sc-1073t7q-2 ePCBYx"
+      >
+        <label
+          aria-hidden="true"
+          class="styled__StyledRadio-sc-1x9u9a8-3 lcaPsc"
+          disabled=""
+        />
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 bhJOBV"
+          color="primary20"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bpfnms"
+        color="secondary50"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    aria-selected="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledArrowWrapper-sc-1073t7q-1 eFYBMc"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 hrmBeX"
+          color="secondary60"
+          fill="currentColor"
+          focusable="false"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M9.29 6.71a.996.996 0 000 1.41L13.17 12l-3.88 3.88a.996.996 0 101.41 1.41l4.59-4.59a.996.996 0 000-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"
+          />
+        </svg>
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledSelectableWrapper-sc-1073t7q-2 ePCBYx"
+      >
+        <label
+          aria-hidden="true"
+          class="styled__StyledRadio-sc-1x9u9a8-3 jACwtB"
+        />
+      </div>
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`renders Tree component renders with string ids 1`] = `
+<ul
+  aria-multiselectable="false"
+  class="styled__StyledUl-sc-7vo4ly-0 iuWuiq"
+  role="tree"
+  style="overflow: hidden;"
+>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="0"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledGap-sc-1073t7q-5 NiMQL"
+      />
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+  <li
+    aria-expanded="false"
+    class="styled__StyledLi-sc-1073t7q-0 bXJWhx"
+    role="treeitem"
+    tabindex="-1"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 dpTZCB styled__StyledFlex-hcvk8l-0 hfwzWY styled__StyledFlex-sc-1073t7q-3 follZc"
+    >
+      <div
+        class="styled__StyledGap-sc-1073t7q-5 NiMQL"
+      />
+      <div
+        class="styled__StyledBox-sj5f1m-0 fuqqoy styled__StyledFlexItem-smjqtt-0 cOAnic styled__StyledFlexItem-sc-1073t7q-4 fYuUQB"
+      >
+        <svg
+          class="base__StyledIcon-a9u0e1-0 gjjWUL"
+          color="primary30"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M10.59 4.59C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.41-1.41z"
+          />
+        </svg>
+      </div>
+      <span
+        class="styled__StyledText-tqnj75-5 styled__StyledText-sc-1073t7q-6 bodesl"
+        color="secondary70"
+      >
+        Category
+      </span>
+    </div>
+  </li>
+</ul>
+`;
