@@ -12,7 +12,7 @@ beforeEach(() => {
       value: 0,
       label: 'Category',
       children: [
-        { id: 5, value: 5, label: 'Category', children: [{ id: 11, value: 11, label: 'Cateogry' }] },
+        { id: 5, value: 5, label: 'Category', children: [{ id: 11, value: 11, selected: true, label: 'Cateogry' }] },
         { id: 6, value: 6, label: 'Category', children: [{ id: 12, value: 12, label: 'Cateogry' }] },
       ],
     },
@@ -21,8 +21,9 @@ beforeEach(() => {
       id: 2,
       value: 2,
       label: 'Category',
+      selected: true,
       children: [
-        { id: 7, value: 7, label: 'Category' },
+        { id: 7, value: 7, selected: true, label: 'Category' },
         { id: 8, value: 8, label: 'Category' },
         { id: 9, value: 9, label: 'Category' },
       ],
