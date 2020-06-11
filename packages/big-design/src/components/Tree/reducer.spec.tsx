@@ -51,7 +51,7 @@ describe('tree state handling', () => {
               label: 'Category',
             },
           ],
-          radio: false,
+          selectable: 'multi',
         },
         reducerInit,
       ),

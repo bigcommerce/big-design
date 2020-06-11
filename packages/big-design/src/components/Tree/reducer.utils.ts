@@ -1,23 +1,44 @@
+import { depthFirstSearch } from '../../utils';
+
 import { Action } from './reducer';
 import { MapValues, TreeNodeId, TreeNodeProps, TreeProps, TreeState } from './types';
 
-export const initialize = <T>(nodes: TreeProps<T>['nodes'], radio: boolean): TreeState<T> => {
-  const initialState: TreeState<T> = {
-    nodeMap: new Map<TreeNodeId, MapValues>(),
-    expandedNodeIds: new Set(),
-    flattenedNodeIds: [],
-    focusedNode: null,
-    selectedValues: new Set(),
-    visibleNodeIds: [],
-  };
+export const initialize = <T>(nodes: TreeProps<T>['nodes'], selectable: TreeProps<T>['selectable']): TreeState<T> => {
+  const state = recursiveInitialize(
+    nodes,
+    {
+      nodeMap: new Map<TreeNodeId, MapValues>(),
+      expandedNodeIds: new Set(),
+      flattenedNodeIds: [],
+      focusedNode: null,
+      selectedValues: new Set(),
+      visibleNodeIds: [],
+    },
+    selectable,
+  );
 
-  return recursiveInitialize(nodes, initialState, radio);
+  if (!state.selectedValues.size) {
+    if (selectable === 'radio') {
+      const node = depthFirstSearch(nodes, (node) => node.value !== undefined);
+
+      if (node && node.value !== undefined) {
+        state.selectedValues.add(node.value);
+        state.focusedNode = node.id;
+      }
+    }
+
+    if (state.focusedNode === null && nodes[0]?.id !== undefined) {
+      state.focusedNode = nodes[0].id;
+    }
+  }
+
+  return state;
 };
 
 const recursiveInitialize = <T>(
   nodes: TreeProps<T>['nodes'] | undefined,
   state: TreeState<T>,
-  radio: boolean,
+  selectable: TreeProps<T>['selectable'],
 ): TreeState<T> => {
   if (!nodes || nodes.length < 1) {
     return state;
@@ -35,10 +56,6 @@ const recursiveInitialize = <T>(
       parent,
     });
 
-    if (state.focusedNode === null) {
-      state.focusedNode = node.id;
-    }
-
     if (node.expanded) {
       state.expandedNodeIds.add(node.id);
     }
@@ -47,19 +64,21 @@ const recursiveInitialize = <T>(
       state.visibleNodeIds.push(node.id);
     }
 
-    if (node.children && node.children.length > 0) {
-      recursiveInitialize(node.children, state, radio);
+    if (node.selected && node.value !== undefined) {
+      if (selectable === 'radio' && !state.selectedValues.size) {
+        state.selectedValues.add(node.value);
+        state.focusedNode = node.id;
+      } else if (selectable === 'multi') {
+        state.selectedValues.add(node.value);
+
+        if (state.focusedNode === null) {
+          state.focusedNode = node.id;
+        }
+      }
     }
 
-    // Needs to happen after the recursive call for radio Trees
-    // We want the closest node to the root to be selected.
-    if (node.selected && node.value !== undefined) {
-      if (radio) {
-        state.selectedValues.clear();
-      }
-
-      state.focusedNode = node.id;
-      state.selectedValues.add(node.value);
+    if (node.children && node.children.length > 0) {
+      recursiveInitialize(node.children, state, selectable);
     }
   });
 

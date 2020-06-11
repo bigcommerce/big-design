@@ -17,7 +17,7 @@ const InternalTree = <T extends unknown>({
 }: TreeProps<T>): React.ReactElement<TreeProps<T>> => {
   const reducer = useMemo(() => createReducer<T>(), []);
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
-  const [state, dispatch] = useReducer(reducer, { nodes, radio: selectable === 'radio' }, reducerInit);
+  const [state, dispatch] = useReducer(reducer, { nodes, selectable }, reducerInit);
 
   const renderedItems = useMemo(
     () =>

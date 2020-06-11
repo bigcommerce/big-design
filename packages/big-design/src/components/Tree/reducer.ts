@@ -1,14 +1,15 @@
 import { Reducer } from 'react';
 
 import { asyncToggle, getNextVisibleNode, getPreviousVisibleNode, initialize, toggleNode } from './reducer.utils';
-import { TreeNodeId, TreeNodeProps, TreeState } from './types';
+import { TreeNodeId, TreeNodeProps, TreeProps, TreeState } from './types';
 
 interface InitArgs<T> {
   nodes: TreeNodeProps<T>[];
-  radio: boolean;
+  selectable: TreeProps<T>['selectable'];
 }
 
-export const createReducerInit = <T>() => ({ nodes, radio }: InitArgs<T>): TreeState<T> => initialize(nodes, radio);
+export const createReducerInit = <T>() => ({ nodes, selectable }: InitArgs<T>): TreeState<T> =>
+  initialize(nodes, selectable);
 
 export type Action<T> =
   | { type: 'TOGGLE_NODE'; id: TreeNodeId }

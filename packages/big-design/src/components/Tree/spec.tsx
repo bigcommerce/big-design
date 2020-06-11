@@ -229,19 +229,12 @@ describe('handles click events', () => {
     { id: 2, value: 2, disabled: true, label: 'Category' },
   ];
 
-  let handleCollapse: any;
-  let handleExpand: any;
-  let handleSelect: any;
-
-  beforeEach(() => {
-    handleCollapse = jest.fn();
-    handleExpand = jest.fn();
-    handleSelect = jest.fn();
-  });
-
   test('click on row focuses and/or expands/contracts', async () => {
+    const handleCollapse = jest.fn();
+    const handleExpand = jest.fn();
+
     const { queryByRole, getAllByRole } = render(
-      <Tree nodes={nodes} onCollapse={handleCollapse} onExpand={handleExpand} onSelect={handleSelect} />,
+      <Tree nodes={nodes} onCollapse={handleCollapse} onExpand={handleExpand} />,
     );
 
     const treeitems = getAllByRole('treeitem');
@@ -271,9 +264,7 @@ describe('handles click events', () => {
     expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
     expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
 
-    await act(async () => {
-      await fireEvent.click(treeitems[0].firstChild as ChildNode);
-    });
+    fireEvent.click(treeitems[0].firstChild as ChildNode);
 
     expect(handleExpand).toHaveBeenCalledTimes(1);
     expect(handleCollapse).toHaveBeenCalledTimes(1);
@@ -281,61 +272,433 @@ describe('handles click events', () => {
     expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
   });
 
-  test('click on radio-select', async () => {
+  test('click on radio-select', () => {
+    const handleSelect = jest.fn();
     const { getAllByRole } = render(<Tree nodes={nodes} onSelect={handleSelect} selectable="radio" />);
 
     const treeitems = getAllByRole('treeitem');
 
     expect(treeitems[0].getAttribute('aria-selected')).toBe('true');
 
-    await act(async () => {
-      await fireEvent.click(treeitems[0].firstChild as ChildNode);
-      await fireEvent.click(treeitems[0].querySelector('label') as HTMLLabelElement);
-    });
+    fireEvent.click(treeitems[0].firstChild as ChildNode);
+    fireEvent.click(treeitems[0].querySelector('label') as HTMLLabelElement);
 
-    expect(treeitems[0].firstChild).toBe('true');
+    expect(treeitems[0].getAttribute('aria-selected')).toBe('true');
+
+    fireEvent.click(treeitems[1].querySelector('label') as HTMLLabelElement);
+
+    expect(treeitems[0].getAttribute('aria-selected')).toBe('false');
+    expect(treeitems[1].getAttribute('aria-selected')).toBe('true');
+
+    // Click on disabled item:
+    fireEvent.click(treeitems[2].querySelector('label') as HTMLLabelElement);
+
+    expect(treeitems[1].getAttribute('aria-selected')).toBe('true');
+    expect(treeitems[2].getAttribute('aria-selected')).toBe('false');
   });
 
-  test.todo('click on radio-select - disabled');
+  test('click on multi-select', () => {
+    const handleSelect = jest.fn();
+    const { getAllByRole } = render(<Tree nodes={nodes} onSelect={handleSelect} selectable="multi" />);
 
-  test.todo('click on multi-select');
+    const treeitems = getAllByRole('treeitem');
 
-  test.todo('click on multi-select - disabled');
+    expect(treeitems[0].getAttribute('aria-selected')).toBe('false');
+
+    fireEvent.click(treeitems[0].querySelector('label') as HTMLLabelElement);
+
+    expect(treeitems[0].getAttribute('aria-selected')).toBe('true');
+
+    fireEvent.click(treeitems[1].querySelector('label') as HTMLLabelElement);
+
+    expect(treeitems[0].getAttribute('aria-selected')).toBe('true');
+    expect(treeitems[1].getAttribute('aria-selected')).toBe('true');
+
+    // Click on disabled item:
+    fireEvent.click(treeitems[2].querySelector('label') as HTMLLabelElement);
+
+    expect(treeitems[1].getAttribute('aria-selected')).toBe('true');
+    expect(treeitems[2].getAttribute('aria-selected')).toBe('false');
+  });
 });
 
 describe('handles keyboard events', () => {
-  // const handleCollapse = jest.fn();
-  // const handleExpand = jest.fn();
-  // const handleSelect = jest.fn();
+  const label = 'Category';
+  const nodes = [
+    { id: 0, value: 0, label, expanded: true, children: [{ id: 3, value: 3, label }] },
+    { id: 1, value: 1, label, children: [{ id: 4, value: 4, label }] },
+    { id: 2, value: 2, label },
+  ];
 
-  test.todo('down traverses to next visible node');
-  test.todo('up traverses to previous visible node');
+  test('down traverses to next visible node', () => {
+    const { getAllByRole } = render(<Tree nodes={nodes} />);
+
+    const treeitems = getAllByRole('treeitem');
+
+    expect(treeitems.length).toBe(4);
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+
+    fireEvent.keyDown(treeitems[0], { key: 'ArrowDown', code: 'ArrowDown' });
+
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[1].getAttribute('tabIndex')).toBe('0');
+
+    fireEvent.keyDown(treeitems[1], { key: 'ArrowDown', code: 'ArrowDown' });
+
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[2].getAttribute('tabIndex')).toBe('0');
+
+    fireEvent.keyDown(treeitems[2], { key: 'ArrowDown', code: 'ArrowDown' });
+
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[2].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[3].getAttribute('tabIndex')).toBe('0');
+
+    // On a last item, down should not focus on anything else
+    fireEvent.keyDown(treeitems[3], { key: 'ArrowDown', code: 'ArrowDown' });
+
+    expect(treeitems[3].getAttribute('tabIndex')).toBe('0');
+  });
+  test('up traverses to previous visible node', () => {
+    const { getAllByRole } = render(<Tree nodes={nodes} />);
+
+    const treeitems = getAllByRole('treeitem');
+
+    expect(treeitems.length).toBe(4);
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+
+    // Set focus to last item:
+    fireEvent.click(treeitems[3].firstChild as ChildNode);
+
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[3].getAttribute('tabIndex')).toBe('0');
+
+    fireEvent.keyDown(treeitems[3], { key: 'ArrowUp', code: 'ArrowUp' });
+
+    expect(treeitems[3].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[2].getAttribute('tabIndex')).toBe('0');
+
+    fireEvent.keyDown(treeitems[2], { key: 'ArrowUp', code: 'ArrowUp' });
+
+    expect(treeitems[3].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[2].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[1].getAttribute('tabIndex')).toBe('0');
+
+    fireEvent.keyDown(treeitems[1], { key: 'ArrowUp', code: 'ArrowUp' });
+
+    expect(treeitems[3].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[2].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+
+    // On a last item, up should not focus on anything else
+    fireEvent.keyDown(treeitems[0], { key: 'ArrowUp', code: 'ArrowUp' });
+
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+  });
 
   describe('left keydown', () => {
-    test.todo('on expanded parent, traverses to parent');
-    test.todo('on expanded node, collapses node');
-    test.todo('on collapsed node with no parent, does nothing');
+    test('on expanded parent, traverses to parent', () => {
+      const { getAllByRole } = render(
+        <Tree nodes={[{ id: 0, label, expanded: true, children: [{ id: 1, label }] }]} />,
+      );
+
+      const treeitems = getAllByRole('treeitem');
+
+      expect(treeitems.length).toBe(2);
+
+      // Set focus to last item:
+      fireEvent.click(treeitems[1].firstChild as ChildNode);
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('0');
+
+      fireEvent.keyDown(treeitems[1], { key: 'ArrowLeft', code: 'ArrowLeft' });
+
+      expect(treeitems[1]).toBeInTheDocument();
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+    });
+
+    test('on expanded node, collapses node', () => {
+      const { getAllByRole } = render(
+        <Tree nodes={[{ id: 0, label, expanded: true, children: [{ id: 1, label }] }]} />,
+      );
+
+      const treeitems = getAllByRole('treeitem');
+
+      expect(treeitems.length).toBe(2);
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+      expect(treeitems[1]).toBeInTheDocument();
+
+      fireEvent.keyDown(treeitems[0], { key: 'ArrowLeft', code: 'ArrowLeft' });
+
+      expect(treeitems[1]).not.toBeInTheDocument();
+    });
+
+    test('on collapsed node with no parent, does nothing', () => {
+      const { getAllByRole } = render(
+        <Tree
+          nodes={[
+            { id: 0, label },
+            { id: 1, label, children: [{ id: 2, label }] },
+          ]}
+        />,
+      );
+
+      const treeitems = getAllByRole('treeitem');
+
+      expect(treeitems.length).toBe(2);
+
+      // Set focus to last item:
+      fireEvent.click(treeitems[1].firstChild as ChildNode);
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('0');
+
+      fireEvent.keyDown(treeitems[1], { key: 'ArrowLeft', code: 'ArrowLeft' });
+
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('0');
+    });
   });
 
   describe('right keydown', () => {
-    test.todo('on expanded node, traverses to child');
-    test.todo('on collapsed node, expands node');
-    test.todo('on a end node, does nothing');
+    test('on expanded node, traverses to child', () => {
+      const { getAllByRole } = render(
+        <Tree nodes={[{ id: 0, label, expanded: true, children: [{ id: 1, label }] }]} />,
+      );
+
+      const treeitems = getAllByRole('treeitem');
+
+      expect(treeitems.length).toBe(2);
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+
+      fireEvent.keyDown(treeitems[0], { key: 'ArrowRight', code: 'ArrowRight' });
+
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('0');
+    });
+
+    test('on collapsed node, expands node', () => {
+      const { getAllByRole } = render(<Tree nodes={[{ id: 0, label, children: [{ id: 1, label }] }]} />);
+
+      let treeitems = getAllByRole('treeitem');
+
+      expect(treeitems.length).toBe(1);
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+
+      fireEvent.keyDown(treeitems[0], { key: 'ArrowRight', code: 'ArrowRight' });
+
+      treeitems = getAllByRole('treeitem');
+
+      expect(treeitems.length).toBe(2);
+      expect(treeitems[1]).toBeInTheDocument();
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+    });
+
+    test('on a end node, does nothing', () => {
+      const { getAllByRole } = render(
+        <Tree
+          nodes={[
+            { id: 0, label, expanded: true, children: [{ id: 1, label }] },
+            { id: 2, label },
+          ]}
+        />,
+      );
+
+      const treeitems = getAllByRole('treeitem');
+
+      expect(treeitems.length).toBe(3);
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+      expect(treeitems[2].getAttribute('tabIndex')).toBe('-1');
+
+      // Set focus to child element:
+      fireEvent.click(treeitems[1].firstChild as ChildNode);
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('0');
+
+      fireEvent.keyDown(treeitems[1], { key: 'ArrowRight', code: 'ArrowRight' });
+
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('0');
+      expect(treeitems[2].getAttribute('tabIndex')).toBe('-1');
+    });
   });
 
   describe('enter keydown', () => {
-    test.todo('on a end node, if selectable, selects value');
-    test.todo('on a collapsed node, opens node');
+    test('on a end node, if selectable, selects value', () => {
+      const handleSelect = jest.fn();
+      const { getAllByRole } = render(
+        <Tree
+          nodes={[{ id: 0, value: 0, label, expanded: true, children: [{ id: 1, value: 1, label }] }]}
+          onSelect={handleSelect}
+          selectable="multi"
+        />,
+      );
+
+      const treeitems = getAllByRole('treeitem');
+
+      fireEvent.click(treeitems[1].firstChild as ChildNode);
+      expect(handleSelect).not.toHaveBeenCalled();
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('0');
+
+      fireEvent.keyDown(treeitems[1], { key: 'Enter', code: 'Enter' });
+
+      expect(handleSelect).toHaveBeenCalled();
+    });
+
+    test('on a collapsed node, opens node', () => {
+      const handleSelect = jest.fn();
+      const { getAllByRole } = render(
+        <Tree
+          nodes={[{ id: 0, value: 0, label, children: [{ id: 1, value: 1, label }] }]}
+          onSelect={handleSelect}
+          selectable="multi"
+        />,
+      );
+
+      let treeitems = getAllByRole('treeitem');
+
+      expect(handleSelect).not.toHaveBeenCalled();
+
+      fireEvent.keyDown(treeitems[0], { key: 'Enter', code: 'Enter' });
+
+      treeitems = getAllByRole('treeitem');
+
+      expect(treeitems.length).toBe(2);
+      expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+      expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+      expect(handleSelect).not.toHaveBeenCalled();
+    });
   });
 
   describe('space keydown', () => {
-    test.todo('multi-select node, selects values');
-    test.todo('radio-select node, selects value');
-    test.todo("on a disabled node, doesn't select node");
+    test('multi-select node, selects values', () => {
+      const handleSelect = jest.fn();
+      const { getAllByRole } = render(
+        <Tree
+          nodes={[
+            { id: 0, value: 0, label, expanded: true, children: [{ id: 1, value: 1, label }] },
+            { id: 2, value: 2, label, disabled: true },
+          ]}
+          onSelect={handleSelect}
+          selectable="multi"
+        />,
+      );
+
+      const treeitems = getAllByRole('treeitem');
+
+      expect(handleSelect).not.toHaveBeenCalled();
+
+      fireEvent.keyDown(treeitems[0], { key: ' ', code: ' ' });
+
+      expect(handleSelect).toHaveBeenCalledWith([0]);
+
+      fireEvent.keyDown(treeitems[1], { key: ' ', code: ' ' });
+
+      expect(handleSelect).toHaveBeenCalledWith([0, 1]);
+
+      fireEvent.keyDown(treeitems[1], { key: ' ', code: ' ' });
+
+      expect(handleSelect).toHaveBeenCalledWith([0]);
+
+      fireEvent.keyDown(treeitems[2], { key: ' ', code: ' ' });
+
+      expect(handleSelect).toHaveBeenCalledWith([0]);
+    });
+
+    test('radio-select node, selects value', () => {
+      const handleSelect = jest.fn();
+      const { getAllByRole } = render(
+        <Tree
+          nodes={[
+            { id: 0, value: 0, label, expanded: true, children: [{ id: 1, value: 1, label }] },
+            { id: 2, value: 2, label, disabled: true },
+          ]}
+          onSelect={handleSelect}
+          selectable="radio"
+        />,
+      );
+
+      const treeitems = getAllByRole('treeitem');
+
+      expect(handleSelect).not.toHaveBeenCalled();
+
+      fireEvent.keyDown(treeitems[0], { key: ' ', code: ' ' });
+
+      expect(handleSelect).toHaveBeenCalledWith(0);
+
+      fireEvent.keyDown(treeitems[1], { key: ' ', code: ' ' });
+
+      expect(handleSelect).toHaveBeenCalledWith(1);
+
+      fireEvent.keyDown(treeitems[1], { key: ' ', code: ' ' });
+
+      expect(handleSelect).toHaveBeenCalledWith(1);
+
+      fireEvent.keyDown(treeitems[2], { key: ' ', code: ' ' });
+
+      expect(handleSelect).toHaveBeenCalledWith(1);
+    });
   });
 
-  test.todo('home goes to first node');
-  test.todo('end goes to last node');
+  test('home goes to first node', () => {
+    const { getAllByRole } = render(
+      <Tree
+        nodes={[
+          { id: 0, label, expanded: true, children: [{ id: 1, label }] },
+          { id: 2, label },
+        ]}
+      />,
+    );
+
+    const treeitems = getAllByRole('treeitem');
+
+    expect(treeitems.length).toBe(3);
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+    expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[2].getAttribute('tabIndex')).toBe('-1');
+
+    // Set focus to child element:
+    fireEvent.click(treeitems[2].firstChild as ChildNode);
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[2].getAttribute('tabIndex')).toBe('0');
+
+    fireEvent.keyDown(treeitems[1], { key: 'Home', code: 'Home' });
+
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+    expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[2].getAttribute('tabIndex')).toBe('-1');
+  });
+
+  test('end goes to last node', () => {
+    const { getAllByRole } = render(
+      <Tree
+        nodes={[
+          { id: 0, label, expanded: true, children: [{ id: 1, label }] },
+          { id: 2, label },
+        ]}
+      />,
+    );
+
+    const treeitems = getAllByRole('treeitem');
+
+    expect(treeitems.length).toBe(3);
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
+    expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[2].getAttribute('tabIndex')).toBe('-1');
+
+    fireEvent.keyDown(treeitems[1], { key: 'End', code: 'End' });
+
+    expect(treeitems[0].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
+    expect(treeitems[2].getAttribute('tabIndex')).toBe('0');
+  });
 });
 
 describe('has the appropriate a11y roles et al', () => {
@@ -435,40 +798,3 @@ describe('has the appropriate a11y roles et al', () => {
     });
   });
 });
-
-// describe('expands a node', () => {
-//   test('onClick', () => {
-//     const { getByRole, getAllByRole } = render(<Tree nodes={nodes} />);
-
-//     const treeItem = getAllByRole('treeitem')[0].firstChild as ChildNode;
-
-//     fireEvent.click(treeItem);
-
-//     const { parentElement } = treeItem;
-
-//     expect(parentElement as HTMLElement).toMatchSnapshot();
-//     expect(getByRole('group')).toBeInTheDocument();
-//   });
-
-//   test('onKeyboard - enter', () => {
-//     const { queryByRole, queryAllByRole } = render(<Tree nodes={nodes} />);
-
-//     const treeItem = queryAllByRole('treeitem')[0];
-
-//     fireEvent.keyDown(treeItem, { key: 'Enter', code: 'Enter' });
-
-//     expect(treeItem.getAttribute('aria-expanded')).toBe('true');
-//     expect(queryByRole('group')).toBeInTheDocument();
-//   });
-
-//   test('onKeyboard - right', () => {
-//     const { queryByRole, queryAllByRole } = render(<Tree nodes={nodes} />);
-
-//     const treeItem = queryAllByRole('treeitem')[0];
-
-//     fireEvent.keyDown(treeItem, { key: 'ArrowRight', code: 'ArrowRight' });
-
-//     expect(treeItem.getAttribute('aria-expanded')).toBe('true');
-//     expect(queryByRole('group')).toBeInTheDocument();
-//   });
-// });
