@@ -6,7 +6,12 @@ export interface TreeProps<T> {
   onCollapse?(node: TreeNodeProps<T>): Promise<TreeNodeRef<T>> | TreeNodeRef<T> | void;
   // Based on the selectable prop, it can either
   // return and array of values, or just one.
-  onSelect?(values: T[] | T): void;
+  onSelect?(values: SelectValue<T>[] | SelectValue<T>): void;
+}
+
+export interface SelectValue<T> {
+  id: TreeNodeId;
+  value: T;
 }
 
 export type TreeNodeId = string | number;
@@ -35,6 +40,6 @@ export interface TreeState<T> {
   expandedNodeIds: Set<TreeNodeId>;
   flattenedNodeIds: TreeNodeId[];
   focusedNode: TreeNodeId | null;
-  selectedValues: Set<T>;
+  selectedValues: SelectValue<T>[];
   visibleNodeIds: TreeNodeId[];
 }

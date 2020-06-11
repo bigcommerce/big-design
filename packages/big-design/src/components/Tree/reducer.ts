@@ -1,7 +1,7 @@
 import { Reducer } from 'react';
 
 import { asyncToggle, getNextVisibleNode, getPreviousVisibleNode, initialize, toggleNode } from './reducer.utils';
-import { TreeNodeId, TreeNodeProps, TreeProps, TreeState } from './types';
+import { SelectValue, TreeNodeId, TreeNodeProps, TreeProps, TreeState } from './types';
 
 interface InitArgs<T> {
   nodes: TreeNodeProps<T>[];
@@ -19,7 +19,7 @@ export type Action<T> =
   | { type: 'FOCUS_UP'; id: TreeNodeId }
   | { type: 'FOCUS_FIRST' }
   | { type: 'FOCUS_LAST' }
-  | { type: 'SELECTED_NODE'; values: Set<T> };
+  | { type: 'SELECTED_NODE'; values: SelectValue<T>[] };
 
 export const createReducer = <T>(): Reducer<TreeState<T>, Action<T>> => (state, action) => {
   switch (action.type) {

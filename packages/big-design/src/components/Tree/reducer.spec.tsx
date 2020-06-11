@@ -126,7 +126,10 @@ describe('tree state handling', () => {
     });
 
     test('selectedValues', () => {
-      expect(state.selectedValues).toEqual(new Set([3, 4]));
+      expect(state.selectedValues).toEqual([
+        { id: 3, value: 3 },
+        { id: 4, value: 4 },
+      ]);
     });
   });
 
@@ -194,7 +197,7 @@ describe('tree state handling', () => {
       expect(state.selectedValues).toEqual(new Set([3, 4]));
 
       act(() => {
-        dispatch({ type: 'SELECTED_NODE', values: new Set([4]) });
+        dispatch({ type: 'SELECTED_NODE', values: [{ id: 4, value: 4 }] });
       });
 
       expect(hook.result.current[0].selectedValues).toEqual(new Set([4]));

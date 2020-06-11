@@ -11,18 +11,18 @@ export const initialize = <T>(nodes: TreeProps<T>['nodes'], selectable: TreeProp
       expandedNodeIds: new Set(),
       flattenedNodeIds: [],
       focusedNode: null,
-      selectedValues: new Set(),
+      selectedValues: [],
       visibleNodeIds: [],
     },
     selectable,
   );
 
-  if (!state.selectedValues.size) {
+  if (!state.selectedValues.length) {
     if (selectable === 'radio') {
       const node = depthFirstSearch(nodes, (node) => node.value !== undefined);
 
       if (node && node.value !== undefined) {
-        state.selectedValues.add(node.value);
+        state.selectedValues = [{ id: node.id, value: node.value }];
         state.focusedNode = node.id;
       }
     }
@@ -65,11 +65,11 @@ const recursiveInitialize = <T>(
     }
 
     if (node.selected && node.value !== undefined) {
-      if (selectable === 'radio' && !state.selectedValues.size) {
-        state.selectedValues.add(node.value);
+      if (selectable === 'radio' && !state.selectedValues.length) {
+        state.selectedValues = [{ id: node.id, value: node.value }];
         state.focusedNode = node.id;
       } else if (selectable === 'multi') {
-        state.selectedValues.add(node.value);
+        state.selectedValues = [...state.selectedValues, { id: node.id, value: node.value }];
 
         if (state.focusedNode === null) {
           state.focusedNode = node.id;
@@ -187,8 +187,8 @@ export const recursiveToggle = <T>(
       state.expandedNodeIds.add(child.id);
     }
 
-    if (child.selected && child.value !== undefined && (!radio || state.selectedValues.size === 0)) {
-      state.selectedValues.add(child.value);
+    if (child.selected && child.value !== undefined && (!radio || state.selectedValues.length === 0)) {
+      state.selectedValues = [...state.selectedValues, { id: child.id, value: child.value }];
     }
 
     if (child.children && child.children.length > 0) {

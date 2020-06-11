@@ -117,13 +117,13 @@ const InternalTreeNode = <T extends unknown>({
       return;
     }
 
-    const newSelectedValues = new Set(state.selectedValues.values());
+    let newSelectedValues = [...state.selectedValues];
 
     if (selectable === 'multi') {
-      if (newSelectedValues.has(value)) {
-        newSelectedValues.delete(value);
+      if (newSelectedValues.some((selectedValue) => selectedValue.value === value)) {
+        newSelectedValues = newSelectedValues.filter((selectedValue) => selectedValue.value !== value);
       } else {
-        newSelectedValues.add(value);
+        newSelectedValues = [...newSelectedValues, { id, value }];
       }
 
       if (typeof onSelect === 'function') {
@@ -132,16 +132,15 @@ const InternalTreeNode = <T extends unknown>({
     }
 
     if (selectable === 'radio') {
-      newSelectedValues.clear();
-      newSelectedValues.add(value);
+      newSelectedValues = [{ id, value }];
 
       if (typeof onSelect === 'function') {
-        onSelect(newSelectedValues.values().next().value);
+        onSelect(newSelectedValues[0]);
       }
     }
 
     dispatch({ type: 'SELECTED_NODE', values: newSelectedValues });
-  }, [disabled, dispatch, onSelect, selectable, state.selectedValues, value]);
+  }, [disabled, dispatch, id, onSelect, selectable, state.selectedValues, value]);
 
   // Needs to handle the following keyboard events:
   // https://www.w3.org/TR/wai-aria-practices/#keyboard-interaction-22

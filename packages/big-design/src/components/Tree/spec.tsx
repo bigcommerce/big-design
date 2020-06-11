@@ -210,7 +210,7 @@ describe('handles callback functions', () => {
     });
 
     expect(onSelect).toHaveBeenCalledTimes(1);
-    expect(onSelect).toHaveBeenCalledWith([0]);
+    expect(onSelect).toHaveBeenCalledWith([{ id: 0, value: 0 }]);
 
     act(() => {
       fireEvent.keyDown(treeitem, { key: ' ', code: ' ' });
@@ -596,19 +596,22 @@ describe('handles keyboard events', () => {
 
       fireEvent.keyDown(treeitems[0], { key: ' ', code: ' ' });
 
-      expect(handleSelect).toHaveBeenCalledWith([0]);
+      expect(handleSelect).toHaveBeenCalledWith([{ id: 0, value: 0 }]);
 
       fireEvent.keyDown(treeitems[1], { key: ' ', code: ' ' });
 
-      expect(handleSelect).toHaveBeenCalledWith([0, 1]);
+      expect(handleSelect).toHaveBeenCalledWith([
+        { id: 0, value: 0 },
+        { id: 1, value: 1 },
+      ]);
 
       fireEvent.keyDown(treeitems[1], { key: ' ', code: ' ' });
 
-      expect(handleSelect).toHaveBeenCalledWith([0]);
+      expect(handleSelect).toHaveBeenCalledWith([{ id: 0, value: 0 }]);
 
       fireEvent.keyDown(treeitems[2], { key: ' ', code: ' ' });
 
-      expect(handleSelect).toHaveBeenCalledWith([0]);
+      expect(handleSelect).not.toHaveBeenCalledTimes(4);
     });
 
     test('radio-select node, selects value', () => {
@@ -630,19 +633,19 @@ describe('handles keyboard events', () => {
 
       fireEvent.keyDown(treeitems[0], { key: ' ', code: ' ' });
 
-      expect(handleSelect).toHaveBeenCalledWith(0);
+      expect(handleSelect).toHaveBeenCalledWith({ id: 0, value: 0 });
 
       fireEvent.keyDown(treeitems[1], { key: ' ', code: ' ' });
 
-      expect(handleSelect).toHaveBeenCalledWith(1);
+      expect(handleSelect).toHaveBeenCalledWith({ id: 1, value: 1 });
 
       fireEvent.keyDown(treeitems[1], { key: ' ', code: ' ' });
 
-      expect(handleSelect).toHaveBeenCalledWith(1);
+      expect(handleSelect).toHaveBeenCalledWith({ id: 1, value: 1 });
 
       fireEvent.keyDown(treeitems[2], { key: ' ', code: ' ' });
 
-      expect(handleSelect).toHaveBeenCalledWith(1);
+      expect(handleSelect).not.toHaveBeenCalledTimes(4);
     });
   });
 
