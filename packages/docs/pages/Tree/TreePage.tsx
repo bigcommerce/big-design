@@ -33,9 +33,8 @@ const TabsPage = () => (
                 id: 5,
                 value: 5,
                 expanded: true,
-                selected: true,
                 label: 'Category',
-                children: [{ id: 9, value: 9, label: 'Category' }],
+                children: [{ id: 9, value: 9, selected: true, label: 'Category' }],
               },
             ],
           },
@@ -48,7 +47,13 @@ const TabsPage = () => (
             children: [{ id: 6, value: 6, label: 'Category' }],
           },
           { id: 2, value: 2, label: 'Category' },
-          { id: 3, value: 3, label: 'Category', selected: true, children: [{ id: 7, value: 7, label: 'Category' }] },
+          {
+            id: 3,
+            value: 3,
+            label: 'Category',
+            selected: true,
+            children: [{ id: 7, value: 7, selected: true, label: 'Category' }],
+          },
           { id: 4, value: 4, label: 'Category', children: [{ id: 8, value: 8, label: 'Category' }] },
         ];
 
@@ -115,7 +120,8 @@ const TabsPage = () => (
     <H2>Modifying Children</H2>
     <Text>
       By returning a object containing new children nodes, you have the freedom of modifying/replacing children nodes.
-      This is useful when you need to asyncronously load in child nodes.
+      This is useful when you need to asyncronously load in child nodes. We don't recommend modifying the nodes passed
+      into the Tree prop, as it rerenders the entire tree.
     </Text>
     <CodePreview scope={{ fetchChildren }}>
       {/* jsx-to-string:start */}

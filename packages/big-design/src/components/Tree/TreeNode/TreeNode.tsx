@@ -6,7 +6,7 @@ import { StyledCheckbox } from '../../Checkbox/private';
 import { FlexItemProps } from '../../Flex';
 import { StyledRadio } from '../../Radio/styled';
 import { DelayedSpinner } from '../DelayedSpinner';
-import { useIsExpanded, useIsSelected } from '../hooks';
+import { useIsExpanded, useIsSelected, useSelectedChildrenCount } from '../hooks';
 import { Action } from '../reducer';
 import { StyledUl } from '../styled';
 import { TreeNodeProps, TreeNodeRef, TreeProps, TreeState } from '../types';
@@ -54,6 +54,7 @@ const InternalTreeNode = <T extends unknown>({
   const [isLoading, setIsLoading] = useState(false);
   const expanded = useIsExpanded(state, id);
   const selected = useIsSelected(state, value);
+  const selectedChildrenCount = useSelectedChildrenCount(state, children);
 
   // Could be multiple elements in which are clicked.
   // Typing to generic Element type since all other elements extend from it.
@@ -337,6 +338,12 @@ const InternalTreeNode = <T extends unknown>({
         {renderedIcon}
         <StyledText as="span" ellipsis marginLeft="xxSmall" color={disabled ? 'secondary50' : 'secondary70'}>
           {label}
+          {selectedChildrenCount ? (
+            <StyledText as="span" color="primary">
+              {' '}
+              ({selectedChildrenCount})
+            </StyledText>
+          ) : null}
         </StyledText>
       </StyledFlex>
       {renderedChildren}
