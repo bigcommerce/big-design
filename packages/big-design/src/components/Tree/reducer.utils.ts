@@ -3,7 +3,10 @@ import { depthFirstSearch } from '../../utils';
 import { Action } from './reducer';
 import { MapValues, TreeNodeId, TreeNodeProps, TreeProps, TreeState } from './types';
 
-export const initialize = <T>(nodes: TreeProps<T>['nodes'], selectable: TreeProps<T>['selectable']): TreeState<T> => {
+export const initialize = <T>(
+  nodes: TreeProps<T>['initialNodes'],
+  selectable: TreeProps<T>['selectable'],
+): TreeState<T> => {
   const state = recursiveInitialize(
     nodes,
     {
@@ -30,7 +33,7 @@ export const initialize = <T>(nodes: TreeProps<T>['nodes'], selectable: TreeProp
       }
     }
 
-    if (state.focusedNode === null && nodes[0]?.id !== undefined) {
+    if (state.focusedNode === null && nodes?.length && nodes[0]?.id !== undefined) {
       focusedNode = nodes[0].id;
     }
   }
@@ -43,7 +46,7 @@ export const initialize = <T>(nodes: TreeProps<T>['nodes'], selectable: TreeProp
 };
 
 const recursiveInitialize = <T>(
-  nodes: TreeProps<T>['nodes'] | undefined,
+  nodes: TreeProps<T>['initialNodes'] | undefined,
   state: TreeState<T>,
   selectable: TreeProps<T>['selectable'],
 ): TreeState<T> => {

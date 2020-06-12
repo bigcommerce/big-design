@@ -57,7 +57,7 @@ const TabsPage = () => (
           { id: 4, value: 4, label: 'Category', children: [{ id: 8, value: 8, label: 'Category' }] },
         ];
 
-        return <Tree selectable="multi" nodes={nodes} />;
+        return <Tree selectable="multi" initialNodes={nodes} />;
       }}
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -85,7 +85,7 @@ const TabsPage = () => (
           { id: 2, value: 2, label: 'Category', disabled: true },
         ];
 
-        return <Tree selectable="radio" nodes={nodes} />;
+        return <Tree selectable="radio" initialNodes={nodes} />;
       }}
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -112,7 +112,7 @@ const TabsPage = () => (
           { id: 2, icon: <AssignmentIcon color="primary" />, label: 'Storefront - EU' },
         ];
 
-        return <Tree nodes={nodes} />;
+        return <Tree initialNodes={nodes} />;
       }}
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -142,7 +142,7 @@ const TabsPage = () => (
           return { children };
         }
 
-        return <Tree nodes={nodes} onExpand={handleOnExpand} />;
+        return <Tree initialNodes={nodes} onExpand={handleOnExpand} />;
       }}
       {/* jsx-to-string:end */}
     </CodePreview>

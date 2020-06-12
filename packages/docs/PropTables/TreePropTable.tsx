@@ -9,11 +9,11 @@ const treeProps: Prop[] = [
     description: 'Hides/shows all icons on the tree.',
   },
   {
-    name: 'nodes',
+    name: 'initialNodes',
     types: <NextLink href="#tree-node-prop-table">TreeNode[]</NextLink>,
     description: (
       <>
-        See <NextLink href="#tree-node-prop-table">below</NextLink> for usage.
+        Initial set of nodes to render. See <NextLink href="#tree-node-prop-table">below</NextLink> for usage.
       </>
     ),
     required: true,

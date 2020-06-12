@@ -47,25 +47,25 @@ beforeEach(() => {
 
 describe('renders Tree component', () => {
   test('base', () => {
-    const { container } = render(<Tree nodes={nodes} />);
+    const { container } = render(<Tree initialNodes={nodes} />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   test('multi-select', () => {
-    const { container } = render(<Tree nodes={nodes} selectable="multi" />);
+    const { container } = render(<Tree initialNodes={nodes} selectable="multi" />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   test('radio-select', () => {
-    const { container } = render(<Tree nodes={nodes} selectable="radio" />);
+    const { container } = render(<Tree initialNodes={nodes} selectable="radio" />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   test('iconless', () => {
-    const { container } = render(<Tree nodes={nodes} iconless />);
+    const { container } = render(<Tree initialNodes={nodes} iconless />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -73,7 +73,7 @@ describe('renders Tree component', () => {
   test('renders with string ids', () => {
     const { container } = render(
       <Tree
-        nodes={[
+        initialNodes={[
           { id: 'test-id', label: 'Category' },
           { id: 'test-id-2', label: 'Category' },
         ]}
@@ -84,13 +84,13 @@ describe('renders Tree component', () => {
   });
 });
 
-test('rerenders when props change', () => {
+test('does not rerender when props change', () => {
   const text = 'Category';
-  const { queryAllByText, rerender } = render(<Tree nodes={[]} />);
+  const { queryAllByText, rerender } = render(<Tree initialNodes={[]} />);
 
   expect(queryAllByText(text).length).toBe(0);
-  rerender(<Tree nodes={nodes} />);
-  expect(queryAllByText(text).length).toBe(5);
+  rerender(<Tree initialNodes={nodes} />);
+  expect(queryAllByText(text).length).toBe(0);
 });
 
 describe('handles callback functions', () => {
@@ -108,7 +108,7 @@ describe('handles callback functions', () => {
       });
 
       const { queryByText, getByRole } = render(
-        <Tree nodes={[{ id: 0, label: 'Category', children: [] }]} onExpand={onExpand} />,
+        <Tree initialNodes={[{ id: 0, label: 'Category', children: [] }]} onExpand={onExpand} />,
       );
 
       expect(queryByText(label)).not.toBeInTheDocument();
@@ -139,7 +139,7 @@ describe('handles callback functions', () => {
         children: [{ id: 1, label }],
       }));
       const { queryByText, getByRole } = render(
-        <Tree nodes={[{ id: 0, label: 'Category', children: [] }]} onExpand={onExpand} />,
+        <Tree initialNodes={[{ id: 0, label: 'Category', children: [] }]} onExpand={onExpand} />,
       );
 
       expect(queryByText(label)).not.toBeInTheDocument();
@@ -167,7 +167,7 @@ describe('handles callback functions', () => {
     const onCollapse = jest.fn();
     const { getAllByRole } = render(
       <Tree
-        nodes={[{ id: 0, label: 'Category', expanded: true, children: [{ id: 1, label: 'Subcategory' }] }]}
+        initialNodes={[{ id: 0, label: 'Category', expanded: true, children: [{ id: 1, label: 'Subcategory' }] }]}
         onCollapse={onCollapse}
       />,
     );
@@ -196,7 +196,9 @@ describe('handles callback functions', () => {
     const onSelect = jest.fn();
     const { getAllByRole } = render(
       <Tree
-        nodes={[{ id: 0, value: 0, label: 'Category', expanded: true, children: [{ id: 1, label: 'Subcategory' }] }]}
+        initialNodes={[
+          { id: 0, value: 0, label: 'Category', expanded: true, children: [{ id: 1, label: 'Subcategory' }] },
+        ]}
         onSelect={onSelect}
         selectable="multi"
       />,
@@ -235,7 +237,7 @@ describe('handles click events', () => {
     const handleExpand = jest.fn();
 
     const { queryByRole, getAllByRole } = render(
-      <Tree nodes={nodes} onCollapse={handleCollapse} onExpand={handleExpand} />,
+      <Tree initialNodes={nodes} onCollapse={handleCollapse} onExpand={handleExpand} />,
     );
 
     const treeitems = getAllByRole('treeitem');
@@ -275,7 +277,7 @@ describe('handles click events', () => {
 
   test('click on radio-select', () => {
     const handleSelect = jest.fn();
-    const { getAllByRole } = render(<Tree nodes={nodes} onSelect={handleSelect} selectable="radio" />);
+    const { getAllByRole } = render(<Tree initialNodes={nodes} onSelect={handleSelect} selectable="radio" />);
 
     const treeitems = getAllByRole('treeitem');
 
@@ -300,7 +302,7 @@ describe('handles click events', () => {
 
   test('click on multi-select', () => {
     const handleSelect = jest.fn();
-    const { getAllByRole } = render(<Tree nodes={nodes} onSelect={handleSelect} selectable="multi" />);
+    const { getAllByRole } = render(<Tree initialNodes={nodes} onSelect={handleSelect} selectable="multi" />);
 
     const treeitems = getAllByRole('treeitem');
 
@@ -332,7 +334,7 @@ describe('handles keyboard events', () => {
   ];
 
   test('down traverses to next visible node', () => {
-    const { getAllByRole } = render(<Tree nodes={nodes} />);
+    const { getAllByRole } = render(<Tree initialNodes={nodes} />);
 
     const treeitems = getAllByRole('treeitem');
 
@@ -363,7 +365,7 @@ describe('handles keyboard events', () => {
     expect(treeitems[3].getAttribute('tabIndex')).toBe('0');
   });
   test('up traverses to previous visible node', () => {
-    const { getAllByRole } = render(<Tree nodes={nodes} />);
+    const { getAllByRole } = render(<Tree initialNodes={nodes} />);
 
     const treeitems = getAllByRole('treeitem');
 
@@ -403,7 +405,7 @@ describe('handles keyboard events', () => {
   describe('left keydown', () => {
     test('on expanded parent, traverses to parent', () => {
       const { getAllByRole } = render(
-        <Tree nodes={[{ id: 0, label, expanded: true, children: [{ id: 1, label }] }]} />,
+        <Tree initialNodes={[{ id: 0, label, expanded: true, children: [{ id: 1, label }] }]} />,
       );
 
       const treeitems = getAllByRole('treeitem');
@@ -424,7 +426,7 @@ describe('handles keyboard events', () => {
 
     test('on expanded node, collapses node', () => {
       const { getAllByRole } = render(
-        <Tree nodes={[{ id: 0, label, expanded: true, children: [{ id: 1, label }] }]} />,
+        <Tree initialNodes={[{ id: 0, label, expanded: true, children: [{ id: 1, label }] }]} />,
       );
 
       const treeitems = getAllByRole('treeitem');
@@ -441,7 +443,7 @@ describe('handles keyboard events', () => {
     test('on collapsed node with no parent, does nothing', () => {
       const { getAllByRole } = render(
         <Tree
-          nodes={[
+          initialNodes={[
             { id: 0, label },
             { id: 1, label, children: [{ id: 2, label }] },
           ]}
@@ -467,7 +469,7 @@ describe('handles keyboard events', () => {
   describe('right keydown', () => {
     test('on expanded node, traverses to child', () => {
       const { getAllByRole } = render(
-        <Tree nodes={[{ id: 0, label, expanded: true, children: [{ id: 1, label }] }]} />,
+        <Tree initialNodes={[{ id: 0, label, expanded: true, children: [{ id: 1, label }] }]} />,
       );
 
       const treeitems = getAllByRole('treeitem');
@@ -483,7 +485,7 @@ describe('handles keyboard events', () => {
     });
 
     test('on collapsed node, expands node', () => {
-      const { getAllByRole } = render(<Tree nodes={[{ id: 0, label, children: [{ id: 1, label }] }]} />);
+      const { getAllByRole } = render(<Tree initialNodes={[{ id: 0, label, children: [{ id: 1, label }] }]} />);
 
       let treeitems = getAllByRole('treeitem');
 
@@ -503,7 +505,7 @@ describe('handles keyboard events', () => {
     test('on a end node, does nothing', () => {
       const { getAllByRole } = render(
         <Tree
-          nodes={[
+          initialNodes={[
             { id: 0, label, expanded: true, children: [{ id: 1, label }] },
             { id: 2, label },
           ]}
@@ -535,7 +537,7 @@ describe('handles keyboard events', () => {
       const handleSelect = jest.fn();
       const { getAllByRole } = render(
         <Tree
-          nodes={[{ id: 0, value: 0, label, expanded: true, children: [{ id: 1, value: 1, label }] }]}
+          initialNodes={[{ id: 0, value: 0, label, expanded: true, children: [{ id: 1, value: 1, label }] }]}
           onSelect={handleSelect}
           selectable="multi"
         />,
@@ -556,7 +558,7 @@ describe('handles keyboard events', () => {
       const handleSelect = jest.fn();
       const { getAllByRole } = render(
         <Tree
-          nodes={[{ id: 0, value: 0, label, children: [{ id: 1, value: 1, label }] }]}
+          initialNodes={[{ id: 0, value: 0, label, children: [{ id: 1, value: 1, label }] }]}
           onSelect={handleSelect}
           selectable="multi"
         />,
@@ -582,7 +584,7 @@ describe('handles keyboard events', () => {
       const handleSelect = jest.fn();
       const { getAllByRole } = render(
         <Tree
-          nodes={[
+          initialNodes={[
             { id: 0, value: 0, label, expanded: true, children: [{ id: 1, value: 1, label }] },
             { id: 2, value: 2, label, disabled: true },
           ]}
@@ -619,7 +621,7 @@ describe('handles keyboard events', () => {
       const handleSelect = jest.fn();
       const { getAllByRole } = render(
         <Tree
-          nodes={[
+          initialNodes={[
             { id: 0, value: 0, label, expanded: true, children: [{ id: 1, value: 1, label }] },
             { id: 2, value: 2, label, disabled: true },
           ]}
@@ -653,7 +655,7 @@ describe('handles keyboard events', () => {
   test('home goes to first node', () => {
     const { getAllByRole } = render(
       <Tree
-        nodes={[
+        initialNodes={[
           { id: 0, label, expanded: true, children: [{ id: 1, label }] },
           { id: 2, label },
         ]}
@@ -683,7 +685,7 @@ describe('handles keyboard events', () => {
   test('end goes to last node', () => {
     const { getAllByRole } = render(
       <Tree
-        nodes={[
+        initialNodes={[
           { id: 0, label, expanded: true, children: [{ id: 1, label }] },
           { id: 2, label },
         ]}
@@ -708,7 +710,7 @@ describe('handles keyboard events', () => {
 describe('has the appropriate a11y roles et al', () => {
   describe('roles for the outer tree', () => {
     test('multi-select', () => {
-      const { getByRole } = render(<Tree nodes={nodes} selectable="multi" />);
+      const { getByRole } = render(<Tree initialNodes={nodes} selectable="multi" />);
 
       const tree = getByRole('tree');
 
@@ -717,7 +719,7 @@ describe('has the appropriate a11y roles et al', () => {
     });
 
     test('radio/non-multi select', () => {
-      const { getByRole } = render(<Tree nodes={nodes} selectable="radio" />);
+      const { getByRole } = render(<Tree initialNodes={nodes} selectable="radio" />);
 
       const tree = getByRole('tree');
 
@@ -729,7 +731,7 @@ describe('has the appropriate a11y roles et al', () => {
   describe('roles for the inner tree element', () => {
     test('unexpanded', () => {
       const { getByRole } = render(
-        <Tree nodes={[{ id: 0, label: 'Category', children: [{ id: 1, label: 'Subcategory' }] }]} />,
+        <Tree initialNodes={[{ id: 0, label: 'Category', children: [{ id: 1, label: 'Subcategory' }] }]} />,
       );
 
       const treeitem = getByRole('treeitem');
@@ -741,7 +743,7 @@ describe('has the appropriate a11y roles et al', () => {
     test('unexpanded - selected vs. unselected', () => {
       const { getByRole } = render(
         <Tree
-          nodes={[{ id: 0, value: 0, label: 'Category', children: [{ id: 1, value: 1, label: 'Subcategory' }] }]}
+          initialNodes={[{ id: 0, value: 0, label: 'Category', children: [{ id: 1, value: 1, label: 'Subcategory' }] }]}
           selectable="multi"
         />,
       );
@@ -762,7 +764,9 @@ describe('has the appropriate a11y roles et al', () => {
 
     test('expanded', () => {
       const { getAllByRole } = render(
-        <Tree nodes={[{ id: 0, label: 'Category', expanded: true, children: [{ id: 1, label: 'Subcategory' }] }]} />,
+        <Tree
+          initialNodes={[{ id: 0, label: 'Category', expanded: true, children: [{ id: 1, label: 'Subcategory' }] }]}
+        />,
       );
 
       const treeitem = getAllByRole('treeitem')[0];
@@ -774,7 +778,7 @@ describe('has the appropriate a11y roles et al', () => {
     test('expanded - selected vs. unselected', () => {
       const { getAllByRole } = render(
         <Tree
-          nodes={[
+          initialNodes={[
             {
               id: 0,
               value: 0,
