@@ -17,22 +17,29 @@ export const initialize = <T>(nodes: TreeProps<T>['nodes'], selectable: TreeProp
     selectable,
   );
 
+  let selectedValues;
+  let focusedNode;
+
   if (!state.selectedValues.length) {
     if (selectable === 'radio') {
       const node = depthFirstSearch(nodes, (node) => node.value !== undefined);
 
       if (node && node.value !== undefined) {
-        state.selectedValues = [{ id: node.id, value: node.value }];
-        state.focusedNode = node.id;
+        selectedValues = [{ id: node.id, value: node.value }];
+        focusedNode = node.id;
       }
     }
 
     if (state.focusedNode === null && nodes[0]?.id !== undefined) {
-      state.focusedNode = nodes[0].id;
+      focusedNode = nodes[0].id;
     }
   }
 
-  return state;
+  return {
+    ...state,
+    selectedValues: selectedValues !== undefined ? selectedValues : state.selectedValues,
+    focusedNode: focusedNode !== undefined ? focusedNode : state.focusedNode,
+  };
 };
 
 const recursiveInitialize = <T>(
@@ -45,44 +52,59 @@ const recursiveInitialize = <T>(
   }
 
   // Order of statements in this loop is important.
-  nodes.forEach((node) => {
-    state.flattenedNodeIds.push(node.id);
+  return nodes.reduce<TreeState<T>>((acc, node) => {
+    const parent = getParentId(acc.nodeMap, node.id);
+    const nodeMap = new Map(acc.nodeMap);
+    const flattenedNodeIds = [...acc.flattenedNodeIds, node.id];
+    const expandedNodeIds = new Set(acc.expandedNodeIds);
 
-    const parent = getParentId(state.nodeMap, node.id);
+    let visibleNodeIds;
+    let selectedValues;
+    let focusedNode;
 
-    state.nodeMap.set(node.id, {
+    nodeMap.set(node.id, {
       children: new Set(node.children?.map((child) => child.id)),
       id: node.id,
       parent,
     });
 
     if (node.expanded) {
-      state.expandedNodeIds.add(node.id);
+      expandedNodeIds.add(node.id);
     }
 
-    if ((parent !== undefined && state.expandedNodeIds.has(parent)) || parent === undefined) {
-      state.visibleNodeIds.push(node.id);
+    if ((parent !== undefined && expandedNodeIds.has(parent)) || parent === undefined) {
+      visibleNodeIds = [...acc.visibleNodeIds, node.id];
     }
 
     if (node.selected && node.value !== undefined) {
-      if (selectable === 'radio' && !state.selectedValues.length) {
-        state.selectedValues = [{ id: node.id, value: node.value }];
-        state.focusedNode = node.id;
+      if (selectable === 'radio' && !acc.selectedValues.length) {
+        selectedValues = [{ id: node.id, value: node.value }];
+        focusedNode = node.id;
       } else if (selectable === 'multi') {
-        state.selectedValues = [...state.selectedValues, { id: node.id, value: node.value }];
+        selectedValues = [...acc.selectedValues, { id: node.id, value: node.value }];
 
-        if (state.focusedNode === null) {
-          state.focusedNode = node.id;
+        if (acc.focusedNode === null) {
+          focusedNode = node.id;
         }
       }
     }
 
-    if (node.children && node.children.length > 0) {
-      recursiveInitialize(node.children, state, selectable);
-    }
-  });
+    const newState = {
+      ...acc,
+      nodeMap,
+      flattenedNodeIds,
+      expandedNodeIds,
+      visibleNodeIds: visibleNodeIds !== undefined ? visibleNodeIds : acc.visibleNodeIds,
+      selectedValues: selectedValues !== undefined ? selectedValues : acc.selectedValues,
+      focusedNode: focusedNode !== undefined ? focusedNode : acc.focusedNode,
+    };
 
-  return state;
+    if (node.children && node.children.length > 0) {
+      return recursiveInitialize(node.children, newState, selectable);
+    }
+
+    return newState;
+  }, state);
 };
 
 const getParentId = (nodeMap: Map<TreeNodeId, MapValues>, id: TreeNodeId) => {
@@ -97,21 +119,24 @@ const getParentId = (nodeMap: Map<TreeNodeId, MapValues>, id: TreeNodeId) => {
   return undefined;
 };
 
-export const getNextVisibleNode = <T>(state: TreeState<T>, id: TreeNodeId): TreeNodeId => {
-  const index = state.visibleNodeIds.indexOf(id);
+export const getNextVisibleNode = <T>(visibleNodeIds: TreeState<T>['visibleNodeIds'], id: TreeNodeId): TreeNodeId => {
+  const index = visibleNodeIds.indexOf(id);
 
-  if (index !== -1 && index + 1 < state.visibleNodeIds.length) {
-    return state.visibleNodeIds[index + 1];
+  if (index !== -1 && index + 1 < visibleNodeIds.length) {
+    return visibleNodeIds[index + 1];
   }
 
   return id;
 };
 
-export const getPreviousVisibleNode = <T>(state: TreeState<T>, id: TreeNodeId): TreeNodeId => {
-  const index = state.visibleNodeIds.indexOf(id);
+export const getPreviousVisibleNode = <T>(
+  visibleNodeIds: TreeState<T>['visibleNodeIds'],
+  id: TreeNodeId,
+): TreeNodeId => {
+  const index = visibleNodeIds.indexOf(id);
 
   if (index !== -1 && index - 1 >= 0) {
-    return state.visibleNodeIds[index - 1];
+    return visibleNodeIds[index - 1];
   }
 
   return id;
@@ -119,23 +144,29 @@ export const getPreviousVisibleNode = <T>(state: TreeState<T>, id: TreeNodeId): 
 
 export const toggleNode = <T>(state: TreeState<T>, action: Extract<Action<T>, { type: 'TOGGLE_NODE' }>) => {
   const node = state.nodeMap.get(action.id);
+  const expandedNodeIds = new Set(state.expandedNodeIds);
+  const visibleNodeIds = [...state.visibleNodeIds];
 
   if (state.expandedNodeIds.has(action.id)) {
-    state.expandedNodeIds.delete(action.id);
+    expandedNodeIds.delete(action.id);
 
     node?.children.forEach((childId) => {
-      const index = state.visibleNodeIds.indexOf(childId);
+      const index = visibleNodeIds.indexOf(childId);
 
       if (index > -1) {
-        state.visibleNodeIds.splice(index, 1);
+        visibleNodeIds.splice(index, 1);
       }
     });
   } else {
-    state.expandedNodeIds.add(action.id);
-    state.visibleNodeIds.splice(state.visibleNodeIds.indexOf(action.id) + 1, 0, ...Array.from(node?.children ?? []));
+    expandedNodeIds.add(action.id);
+    visibleNodeIds.splice(visibleNodeIds.indexOf(action.id) + 1, 0, ...Array.from(node?.children ?? []));
   }
 
-  return state;
+  return {
+    ...state,
+    expandedNodeIds,
+    visibleNodeIds,
+  };
 };
 
 export const asyncToggle = <T>(state: TreeState<T>, action: Extract<Action<T>, { type: 'ASYNC_TOGGLE' }>) => {
@@ -157,44 +188,51 @@ export const recursiveToggle = <T>(
   const parentNode = state.nodeMap.get(id);
   const parentIndex = state.flattenedNodeIds.indexOf(id);
   const childrenIds = children.map(({ id }) => id);
+  const expandedNodeIds = new Set(state.expandedNodeIds);
+  const flattenedNodeIds = [...state.flattenedNodeIds];
+  const visibleNodeIds = [...state.visibleNodeIds];
+  const nodeMap = new Map(state.nodeMap);
 
-  state.flattenedNodeIds.splice(
-    parentIndex + 1,
-    0,
-    ...childrenIds.filter((childId) => !state.flattenedNodeIds.includes(childId)),
-  );
-  state.visibleNodeIds.splice(
-    parentIndex + 1,
-    0,
-    ...childrenIds.filter((childId) => !state.visibleNodeIds.includes(childId)),
-  );
+  let selectedValues = [...state.selectedValues];
+
+  flattenedNodeIds.splice(parentIndex + 1, 0, ...childrenIds.filter((childId) => !flattenedNodeIds.includes(childId)));
+  visibleNodeIds.splice(parentIndex + 1, 0, ...childrenIds.filter((childId) => !visibleNodeIds.includes(childId)));
 
   if (parentNode?.children) {
-    state.nodeMap.set(id, {
+    nodeMap.set(id, {
       ...parentNode,
       children: new Set(childrenIds),
     });
   }
 
-  children.forEach((child) => {
-    state.nodeMap.set(child.id, {
+  return children.reduce<TreeState<T>>((acc, child) => {
+    nodeMap.set(child.id, {
       children: new Set(child.children?.map(({ id: childId }) => childId)),
       id: child.id,
-      parent: getParentId(state.nodeMap, child.id),
+      parent: getParentId(nodeMap, child.id),
     });
 
     if (child.expanded) {
-      state.expandedNodeIds.add(child.id);
+      expandedNodeIds.add(child.id);
     }
 
-    if (child.selected && child.value !== undefined && (!radio || state.selectedValues.length === 0)) {
-      state.selectedValues = [...state.selectedValues, { id: child.id, value: child.value }];
+    if (child.selected && child.value !== undefined && (!radio || selectedValues.length === 0)) {
+      selectedValues = [...selectedValues, { id: child.id, value: child.value }];
     }
+
+    const newState = {
+      ...acc,
+      nodeMap,
+      flattenedNodeIds,
+      expandedNodeIds,
+      visibleNodeIds,
+      selectedValues,
+    };
 
     if (child.children && child.children.length > 0) {
-      return recursiveToggle(state, radio, child.id, child.children);
+      return recursiveToggle(newState, radio, child.id, child.children);
     }
-  });
 
-  return state;
+    return newState;
+  }, state);
 };

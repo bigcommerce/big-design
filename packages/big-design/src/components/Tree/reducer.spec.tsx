@@ -142,15 +142,15 @@ describe('tree state handling', () => {
         dispatch({ type: 'TOGGLE_NODE', id: 3 });
       });
 
-      expect(state.expandedNodeIds).toEqual(new Set([0, 3]));
-      expect(state.visibleNodeIds).toEqual([0, 3, 4, 1, 2]);
+      expect(hook.result.current[0].expandedNodeIds).toEqual(new Set([0, 3]));
+      expect(hook.result.current[0].visibleNodeIds).toEqual([0, 3, 4, 1, 2]);
 
       act(() => {
         dispatch({ type: 'TOGGLE_NODE', id: 3 });
       });
 
-      expect(state.expandedNodeIds).toEqual(new Set([0]));
-      expect(state.visibleNodeIds).toEqual([0, 3, 1, 2]);
+      expect(hook.result.current[0].expandedNodeIds).toEqual(new Set([0]));
+      expect(hook.result.current[0].visibleNodeIds).toEqual([0, 3, 1, 2]);
     });
 
     test('FOCUS', () => {

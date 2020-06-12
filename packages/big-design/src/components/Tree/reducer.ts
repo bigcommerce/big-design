@@ -38,13 +38,13 @@ export const createReducer = <T>(): Reducer<TreeState<T>, Action<T>> => (state, 
     case 'FOCUS_DOWN':
       return {
         ...state,
-        focusedNode: getNextVisibleNode(state, action.id),
+        focusedNode: getNextVisibleNode(state.visibleNodeIds, action.id),
       };
 
     case 'FOCUS_UP':
       return {
         ...state,
-        focusedNode: getPreviousVisibleNode(state, action.id),
+        focusedNode: getPreviousVisibleNode(state.visibleNodeIds, action.id),
       };
 
     case 'FOCUS_FIRST':
