@@ -1,6 +1,5 @@
-import React, { useMemo, useReducer } from 'react';
+import React, { useMemo, useReducer, useState } from 'react';
 
-import { usePropOnce } from '../../hooks';
 import { typedMemo } from '../../utils';
 
 import { createReducer, createReducerInit } from './reducer';
@@ -16,7 +15,7 @@ const InternalTree = <T extends unknown>({
   onSelect,
   selectable,
 }: TreeProps<T>): React.ReactElement<TreeProps<T>> => {
-  const nodes = usePropOnce(initialNodes);
+  const [nodes] = useState(initialNodes);
   const reducer = useMemo(() => createReducer<T>(), []);
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
   const [state, dispatch] = useReducer(reducer, { nodes, selectable }, reducerInit);

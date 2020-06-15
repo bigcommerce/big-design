@@ -13,7 +13,9 @@ const treeProps: Prop[] = [
     types: <NextLink href="#tree-node-prop-table">TreeNode[]</NextLink>,
     description: (
       <>
-        Initial set of nodes to render. See <NextLink href="#tree-node-prop-table">below</NextLink> for usage.
+        Initial set of nodes to render. If you modify <Code primary>initialNodes</Code>, the component will not
+        rerender. Use <Code primary>onCollapse</Code> or <Code primary>onSelect</Code> to mutate nodes. See{' '}
+        <NextLink href="#tree-node-prop-table">below</NextLink> for usage.
       </>
     ),
     required: true,
@@ -53,7 +55,7 @@ export const TreePropTable: React.FC<PropTableWrapper> = (props) => (
 
 const treeNodeProps: Prop[] = [
   {
-    name: 'nodes',
+    name: 'children',
     types: 'TreeNode[]',
     description: 'Children for the current node.',
   },
