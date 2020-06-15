@@ -1,9 +1,9 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
+import { Flex } from '..';
 import { Button } from '../Button';
-
-import { StyledHeader } from './styled';
+import { Text } from '../Typography';
 
 export interface HeaderProps {
   date?: Date;
@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({
   prevMonthButtonDisabled,
   nextMonthButtonDisabled,
 }) => (
-  <StyledHeader date={date}>
+  <Flex alignItems="center" justifyContent="space-between">
     <Button
       type="button"
       iconOnly={<ChevronLeftIcon />}
@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({
       variant="subtle"
     />
 
-    <span>{`${months[date.getMonth()]} ${date.getFullYear()}`}</span>
+    <Text as="span" marginBottom="none" bold>{`${months[date.getMonth()]} ${date.getFullYear()}`}</Text>
 
     <Button
       type="button"
@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({
       disabled={nextMonthButtonDisabled}
       variant="subtle"
     />
-  </StyledHeader>
+  </Flex>
 );
 
 export default Header;

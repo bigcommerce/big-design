@@ -1,4 +1,3 @@
-import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { forwardRef, memo, Ref } from 'react';
 import ReactDatePicker from 'react-datepicker';
 
@@ -11,7 +10,6 @@ export interface DatepickerProps {
   ariaLabel?: string;
   dateFormat?: string;
   error?: React.ReactNode;
-  forwardedRef?: Ref<ReactDatePicker>;
   label?: string;
   locale?: string;
   maxDate?: Date;
@@ -23,11 +21,11 @@ export interface DatepickerProps {
   onChange(date: Date): void;
 }
 
-export interface ExtraProps {
-  theme?: ThemeInterface;
+export interface PrivateProps {
+  forwardedRef: Ref<ReactDatePicker>;
 }
 
-const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
+const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
   ariaLabel,
   dateFormat,
   error,
@@ -40,10 +38,9 @@ const RawDatePicker: React.FC<DatepickerProps & ExtraProps> = ({
   placeholder,
   required,
   selected,
-  theme,
   onChange,
 }) => (
-  <StyledDatepicker theme={theme}>
+  <StyledDatepicker>
     <ReactDatePicker
       renderCustomHeader={({
         date,

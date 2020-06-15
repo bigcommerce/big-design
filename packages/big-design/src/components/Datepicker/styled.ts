@@ -1,17 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { ExtraProps } from './Datepicker';
-import { HeaderProps } from './Header';
-
-export const StyledHeader = styled.div<HeaderProps>`
-  align-items: center;
-  display: flex;
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-  justify-content: space-between;
-`;
-
-export const StyledDatepicker = styled.div<ExtraProps>`
+export const StyledDatepicker = styled.div`
   & .react-datepicker-wrapper {
     display: inline-block;
     width: 100%;
@@ -139,5 +129,4 @@ export const StyledDatepicker = styled.div<ExtraProps>`
   }
 `;
 
-StyledHeader.defaultProps = { theme: defaultTheme };
 StyledDatepicker.defaultProps = { theme: defaultTheme };
