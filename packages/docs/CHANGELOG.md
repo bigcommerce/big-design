@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.19.2...@bigcommerce/docs@0.20.0) (2020-06-16)
+
+
+### Features
+
+* **component:** add additional size to ProgressCircle component ([#409](https://github.com/bigcommerce/big-design/issues/409)) ([70fafaf](https://github.com/bigcommerce/big-design/commit/70fafaf5e9b61a408e97d72a24a5b88567482b33))
+* **component:** add Tree component ([#406](https://github.com/bigcommerce/big-design/issues/406)) ([c67643c](https://github.com/bigcommerce/big-design/commit/c67643cfdf425d078a1ea09bce12575e35f442e7))
+
+
+### BREAKING CHANGES
+
+* **component:** `xSmall` `ProgressCircle` size changed to `xxSmall`.
+
+
+
+
+
 ## [0.19.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.19.1...@bigcommerce/docs@0.19.2) (2020-05-07)
 
 **Note:** Version bump only for package @bigcommerce/docs

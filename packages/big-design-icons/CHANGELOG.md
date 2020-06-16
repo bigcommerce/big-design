@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.11.1...@bigcommerce/big-design-icons@0.12.0) (2020-06-16)
+
+
+### Features
+
+* **component:** add Tree component ([#406](https://github.com/bigcommerce/big-design/issues/406)) ([c67643c](https://github.com/bigcommerce/big-design/commit/c67643cfdf425d078a1ea09bce12575e35f442e7))
+
+
+
+
+
 ## [0.11.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.11.0...@bigcommerce/big-design-icons@0.11.1) (2020-04-30)
 
 
