@@ -153,13 +153,18 @@ const InternalTreeNode = <T extends unknown>({
     }
 
     switch (key) {
+      // Stopping propagation if inside a form
       case ' ':
         e.preventDefault();
+        e.stopPropagation();
 
         handleNodeSelected();
         break;
 
       case 'Enter':
+        e.preventDefault();
+        e.stopPropagation();
+
         if (nodeRef.current === e.currentTarget) {
           if (thisRef.current.children) {
             handleNodeToggle();
@@ -182,6 +187,8 @@ const InternalTreeNode = <T extends unknown>({
         break;
 
       case 'ArrowRight':
+        e.preventDefault();
+
         if (thisRef.current?.children) {
           if (expanded) {
             dispatch({ type: 'FOCUS_DOWN', id });
@@ -192,6 +199,8 @@ const InternalTreeNode = <T extends unknown>({
         break;
 
       case 'ArrowLeft':
+        e.preventDefault();
+
         if (thisRef.current?.children) {
           if (expanded) {
             handleNodeToggle();
@@ -207,10 +216,14 @@ const InternalTreeNode = <T extends unknown>({
         break;
 
       case 'Home':
+        e.preventDefault();
+
         dispatch({ type: 'FOCUS_FIRST' });
         break;
 
       case 'End':
+        e.preventDefault();
+
         dispatch({ type: 'FOCUS_LAST' });
         break;
 
