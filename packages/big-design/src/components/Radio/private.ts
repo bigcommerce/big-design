@@ -1,0 +1,1 @@
+export { StyledRadio } from './styled';
