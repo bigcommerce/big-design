@@ -1,6 +1,1 @@
-* @bigcommerce/channels-fe
-
-# Jorge's components:
-packages/big-design/src/components/Dropdown/ @jorgemoya
-packages/big-design/src/components/MultiSelect/ @jorgemoya
-packages/big-design/src/components/Select/ @jorgemoya
+* @bigcommerce/frontend
