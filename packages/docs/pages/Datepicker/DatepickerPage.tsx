@@ -13,7 +13,7 @@ const DatepickerPage = () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [date, setDate] = useState<Date>();
+        const [date, setDate] = useState<string>();
 
         return (
           <Form>
@@ -21,7 +21,9 @@ const DatepickerPage = () => (
               <Datepicker
                 label="Label"
                 placeholder="Placeholder"
-                onChange={(value) => setDate(value)}
+                minDate="06/03/2020"
+                maxDate="06/19/2020"
+                onDateChange={(value: string) => setDate(value)}
                 selected={date}
               />
             </FormGroup>
@@ -45,9 +47,9 @@ const DatepickerPage = () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [date, setDate] = useState<Date>();
+        const [date, setDate] = useState<string>();
         const [errors, setErrors] = useState('Please select a date.');
-        const handleChange = (value: Date) => {
+        const handleChange = (value: string) => {
           if (value) {
             setErrors('');
           } else {
@@ -66,7 +68,7 @@ const DatepickerPage = () => (
                 error={errors}
                 label="Label"
                 placeholder="Placeholder"
-                onChange={handleChange}
+                onDateChange={handleChange}
                 selected={date}
                 required
               />

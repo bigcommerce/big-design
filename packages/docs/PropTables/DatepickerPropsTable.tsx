@@ -4,8 +4,8 @@ import { Prop, PropTable, PropTableWrapper } from '../components';
 
 const datepickerProps: Prop[] = [
   {
-    name: 'onChange',
-    types: '(date: Date) => void',
+    name: 'onDateChange',
+    types: '(date: string) => void',
     required: true,
     description: 'Callback called with value of selected date.',
   },
@@ -16,29 +16,24 @@ const datepickerProps: Prop[] = [
   },
   {
     name: 'selected',
-    types: 'Date',
-    description: 'Selected date for the calendar.',
+    types: 'string',
+    description: 'The ISO time that should be used as the input value.',
   },
   {
     name: 'maxDate',
-    types: 'Date',
-    description: 'Maximum date that can selected in the calendar.',
+    types: 'string',
+    description: 'Maximum date in ISO format that can selected in the calendar.',
   },
   {
     name: 'minDate',
-    types: 'Date',
-    description: 'Minimum date that can selected in the calendar.',
+    types: 'string',
+    description: 'Minimum date in ISO format that can selected in the calendar.',
   },
   {
     name: 'dateFormat',
     types: 'string',
     defaultValue: 'EE, dd MMM, yyyy',
     description: 'Format for selected date to be displayed in input.',
-  },
-  {
-    name: 'filterDate',
-    types: '(date: Date) => boolean',
-    description: 'Only dates that pass the function condition can be selected.',
   },
   {
     name: 'locale',
