@@ -1,5 +1,5 @@
 import { enAU, enCA, enGB, enUS } from 'date-fns/locale';
-import React, { forwardRef, memo, Ref } from 'react';
+import React, { forwardRef, memo, Ref, useEffect, useState } from 'react';
 import ReactDatePicker, { registerLocale } from 'react-datepicker';
 
 registerLocale('en-US', enUS);
@@ -13,17 +13,10 @@ import Header from './Header';
 import { StyledDatepicker } from './styled';
 
 export interface Props {
-  ariaLabel?: string;
   dateFormat?: string;
   error?: React.ReactNode;
   label?: string;
   locale?: string;
-  maxDate?: string;
-  minDate?: string;
-  placeholder?: string;
-  required?: boolean;
-  selected?: string | null;
-  filterDate?(date: Date): boolean;
   onDateChange(date: string): void;
 }
 
@@ -40,15 +33,24 @@ const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
   forwardedRef,
   label,
   locale = 'en-US',
-  maxDate,
-  minDate,
-  placeholder,
-  required,
-  selected,
+  min,
+  max,
   onDateChange,
+  required,
+  placeholder,
+  value,
   ...props
 }) => {
+  const [selected, setSelected] = useState<Date>();
   const updateDate: (value: Date) => void = (value) => onDateChange(value.toISOString());
+
+  useEffect(() => {
+    if (typeof value === 'string') {
+      setSelected(new Date(value as string));
+    } else {
+      setSelected(undefined);
+    }
+  }, [value]);
 
   return (
     <StyledDatepicker>
@@ -74,9 +76,9 @@ const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
         dateFormat={dateFormat || 'EE, dd MMM, yyyy'}
         filterDate={filterDate}
         locale={locale}
-        maxDate={maxDate ? new Date(maxDate) : null}
-        minDate={minDate ? new Date(minDate) : null}
-        selected={selected ? new Date(selected) : null}
+        maxDate={max ? new Date(max) : undefined}
+        minDate={min ? new Date(min) : undefined}
+        selected={selected}
         placeholderText={placeholder}
         required={required}
         onChange={updateDate}

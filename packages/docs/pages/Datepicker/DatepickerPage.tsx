@@ -21,10 +21,10 @@ const DatepickerPage = () => (
               <Datepicker
                 label="Label"
                 placeholder="Placeholder"
-                minDate="06/03/2020"
-                maxDate="06/19/2020"
+                min="06/03/2020"
+                max="06/19/2020"
                 onDateChange={(value: string) => setDate(value)}
-                selected={date}
+                value={date}
               />
             </FormGroup>
           </Form>
@@ -41,7 +41,7 @@ const DatepickerPage = () => (
 
     <Text>
       Datepicker allows you to pass in an <Code primary>error</Code> message that will control the styles of a counter.
-      The logic on the datepicker can be controlled with the <Code primary>onChange</Code> prop.
+      The logic on the datepicker can be controlled with the <Code primary>onDateChange</Code> prop.
     </Text>
 
     <CodePreview>
@@ -69,7 +69,7 @@ const DatepickerPage = () => (
                 label="Label"
                 placeholder="Placeholder"
                 onDateChange={handleChange}
-                selected={date}
+                value={date}
                 required
               />
             </FormGroup>

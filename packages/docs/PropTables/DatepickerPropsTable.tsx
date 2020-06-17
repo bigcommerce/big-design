@@ -15,17 +15,17 @@ const datepickerProps: Prop[] = [
     description: 'Adds a label to the field.',
   },
   {
-    name: 'selected',
+    name: 'value',
     types: 'string',
     description: 'The ISO time that should be used as the input value.',
   },
   {
-    name: 'maxDate',
+    name: 'max',
     types: 'string',
     description: 'Maximum date in ISO format that can selected in the calendar.',
   },
   {
-    name: 'minDate',
+    name: 'min',
     types: 'string',
     description: 'Minimum date in ISO format that can selected in the calendar.',
   },
