@@ -26,6 +26,7 @@ const Header: React.FC<HeaderProps> = ({
 }) => (
   <Flex alignItems="center" justifyContent="space-between">
     <Button
+      title="View previous month."
       type="button"
       iconOnly={<ChevronLeftIcon />}
       onClick={decreaseMonth}
@@ -36,6 +37,7 @@ const Header: React.FC<HeaderProps> = ({
     <Text as="span" marginBottom="none" bold>{`${months[date.getMonth()]} ${date.getFullYear()}`}</Text>
 
     <Button
+      title="View next month."
       type="button"
       iconOnly={<ChevronRightIcon title="add" />}
       onClick={increaseMonth}
