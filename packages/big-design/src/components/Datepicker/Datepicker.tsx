@@ -29,7 +29,6 @@ export type DatepickerProps = Props & React.InputHTMLAttributes<HTMLInputElement
 const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
   dateFormat = 'EE, dd MMM, yyyy',
   error,
-  filterDate,
   forwardedRef,
   label,
   locale = 'en-US',
@@ -74,7 +73,6 @@ const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
         className="calendar-input"
         calendarClassName="bc-datepicker"
         dateFormat={dateFormat || 'EE, dd MMM, yyyy'}
-        filterDate={filterDate}
         locale={locale}
         maxDate={max ? new Date(max) : undefined}
         minDate={min ? new Date(min) : undefined}
