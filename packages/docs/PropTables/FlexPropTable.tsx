@@ -102,7 +102,7 @@ const flexItemProps: Prop[] = [
     defaultValue: '0',
     description: (
       <>
-        Determines how much a flex item can grow relitive to the rest of the flex items. Same as the{' '}
+        Determines how much a flex item can grow relative to the rest of the flex items. Same as the{' '}
         <Code highlight={false}>flex-grow</Code> CSS property.
       </>
     ),
@@ -124,7 +124,7 @@ const flexItemProps: Prop[] = [
     defaultValue: '1',
     description: (
       <>
-        Determines how much a flex item can shrink relitive to the rest of the flex items. Same as the{' '}
+        Determines how much a flex item can shrink relative to the rest of the flex items. Same as the{' '}
         <Code highlight={false}>flex-shrink</Code> CSS property.
       </>
     ),

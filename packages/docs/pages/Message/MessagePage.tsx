@@ -10,7 +10,7 @@ const MessagePage = () => (
   <>
     <H0>Messages</H0>
     <Text>
-      A message primarily used for displaying page/table messaging, feature/discover/system level mesaages, or even
+      A message primarily used for displaying page/table messaging, feature/discover/system level messages, or even
       non-critical messaging.
     </Text>
 
