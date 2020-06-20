@@ -36,7 +36,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: ${({ mobileFriendly }) => (mobileFriendly ? '100%' : 'auto')};
 
   &:focus {
     outline: none;

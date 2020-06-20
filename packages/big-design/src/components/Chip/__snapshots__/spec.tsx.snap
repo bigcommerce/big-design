@@ -74,7 +74,7 @@ exports[`renders with close button if onRemove is present 1`] = `
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;

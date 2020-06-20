@@ -88,7 +88,7 @@ exports[`render open modal 1`] = `
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   padding: 0 0.5rem;
   background-color: #3C64F4;
   border-color: #3C64F4;
@@ -388,7 +388,7 @@ exports[`render open modal without backdrop 1`] = `
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   padding: 0 0.5rem;
   background-color: #3C64F4;
   border-color: #3C64F4;
@@ -645,7 +645,7 @@ exports[`renders destructive action button 1`] = `
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   background-color: #DB3643;
   border-color: #DB3643;
   font-weight: 600;
@@ -765,7 +765,7 @@ exports[`renders secondary action button 1`] = `
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   background-color: transparent;
   border-color: #3C64F4;
   color: #3C64F4;

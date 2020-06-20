@@ -73,7 +73,7 @@ exports[`render Tabs 1`] = `
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -254,7 +254,7 @@ exports[`render Tabs with disabled item 1`] = `
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;

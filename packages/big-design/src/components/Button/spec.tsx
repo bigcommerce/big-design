@@ -142,6 +142,12 @@ test('render icon left and right button', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('render mobileFriendly button', () => {
+  const { container } = render(<Button mobileFriendly={true}>Button</Button>);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
 test('forwards ref', () => {
   const ref = createRef<HTMLButtonElement>();
 

@@ -438,7 +438,7 @@ exports[`renders close button 1`] = `
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   padding: 0 0.5rem;
   background-color: #3C64F4;
   border-color: #3C64F4;

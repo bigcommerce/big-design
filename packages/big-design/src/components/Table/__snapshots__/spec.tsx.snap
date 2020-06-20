@@ -127,7 +127,7 @@ exports[`renders a pagination component 1`] = `
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   padding-right: 0.5rem;
   background-color: transparent;
   border-color: transparent;
@@ -208,7 +208,7 @@ exports[`renders a pagination component 1`] = `
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
