@@ -1,15 +1,10 @@
-import { enAU, enCA, enGB, enUS } from 'date-fns/locale';
 import React, { forwardRef, memo, Ref, useEffect, useState } from 'react';
 import ReactDatePicker, { registerLocale } from 'react-datepicker';
-
-registerLocale('en-US', enUS);
-registerLocale('en-GB', enGB);
-registerLocale('en-AU', enAU);
-registerLocale('en-CA', enCA);
 
 import { Input } from '../Input';
 
 import Header from './Header';
+import { createLocalizationProvider } from './localizationProvider';
 import { StyledDatepicker } from './styled';
 
 export interface Props {
@@ -40,6 +35,9 @@ const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
   value,
   ...props
 }) => {
+  const localization = createLocalizationProvider(locale);
+  registerLocale(locale, localization);
+
   const [selected, setSelected] = useState<Date>();
   const updateDate: (value: Date) => void = (value) => onDateChange(value.toISOString());
 
@@ -62,6 +60,7 @@ const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
           nextMonthButtonDisabled,
         }) => (
           <Header
+            months={localization.monthsLong}
             date={date}
             decreaseMonth={decreaseMonth}
             increaseMonth={increaseMonth}

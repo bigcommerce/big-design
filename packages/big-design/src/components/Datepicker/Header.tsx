@@ -8,19 +8,17 @@ import { Text } from '../Typography';
 export interface HeaderProps {
   date?: Date;
   nextMonthButtonDisabled?: boolean;
+  months: any;
   prevMonthButtonDisabled?: boolean;
   decreaseMonth?(): void;
   increaseMonth?(): void;
 }
 
-const months: string[] = Array(12)
-  .fill('')
-  .map((_, i) => new Date(0, i).toLocaleString('en', { month: 'long' }));
-
 const Header: React.FC<HeaderProps> = ({
   date = new Date(),
   decreaseMonth,
   increaseMonth,
+  months,
   prevMonthButtonDisabled,
   nextMonthButtonDisabled,
 }) => (

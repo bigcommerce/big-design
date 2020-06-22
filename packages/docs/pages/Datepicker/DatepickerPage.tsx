@@ -25,6 +25,7 @@ const DatepickerPage = () => (
                 max="06/19/2020"
                 onDateChange={(value: string) => setDate(value)}
                 value={date}
+                locale="en-AU"
               />
             </FormGroup>
           </Form>

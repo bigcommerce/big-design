@@ -1,3 +1,4 @@
+import { Link } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Prop, PropTable, PropTableWrapper } from '../components';
@@ -38,7 +39,18 @@ const datepickerProps: Prop[] = [
   {
     name: 'locale',
     types: 'string',
-    description: 'Sets the locale for the calendar.',
+    defaultValue: 'en-US',
+    description: (
+      <>
+        Locale used to format the the date and calendar. See{' '}
+        <Link
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat"
+          target="_blank"
+        >
+          DateTimeFormat
+        </Link>
+      </>
+    ),
   },
 ];
 
