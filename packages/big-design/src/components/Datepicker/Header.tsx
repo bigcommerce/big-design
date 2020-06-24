@@ -8,7 +8,7 @@ import { Text } from '../Typography';
 interface HeaderProps {
   date?: Date;
   nextMonthButtonDisabled?: boolean;
-  months: any;
+  months: string[];
   prevMonthButtonDisabled?: boolean;
   decreaseMonth?(): void;
   increaseMonth?(): void;

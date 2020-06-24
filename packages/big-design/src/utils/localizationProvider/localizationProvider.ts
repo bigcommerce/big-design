@@ -7,10 +7,10 @@ export const createLocalizationProvider = (locale: string) => {
   });
 
   const monthsLong = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((month) =>
-    monthFormatter.format(new Date(2000, month, 1)),
+    monthFormatter.format(new Date(0, month, 1)),
   );
 
-  const daysShort = [1, 2, 3, 4, 5, 6, 7].map((day) => dayFormatter.format(new Date(2000, 9, day, 12)));
+  const daysShort = [1, 2, 3, 4, 5, 6, 7].map((day) => dayFormatter.format(new Date(0, 9, day, 12)));
 
   return {
     code: locale,

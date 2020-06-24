@@ -83,13 +83,13 @@ export const StyledDatepicker = styled.div`
 
   & .react-datepicker__day--today::after {
     background: ${({ theme }) => theme.colors.primary};
-    bottom: 1px;
+    bottom: ${({ theme }) => theme.helpers.remCalc(1)};
     content: '';
     display: block;
-    height: 2px;
-    margin-left: 4px;
+    height: ${({ theme }) => theme.helpers.remCalc(2)};
+    margin-left: ${({ theme }) => theme.spacing.xxSmall};
     position: relative;
-    width: 24px;
+    width: ${({ theme }) => theme.spacing.xLarge};
   }
 
   & .react-datepicker__day--selected {
@@ -99,11 +99,11 @@ export const StyledDatepicker = styled.div`
   }
 
   & .react-datepicker__day--selected:hover.react-datepicker__day--today::after {
-    bottom: 1px;
+    bottom: ${({ theme }) => theme.helpers.remCalc(1)};
   }
 
   & .react-datepicker__day--selected.react-datepicker__day--today::after {
-    bottom: -4px;
+    bottom: -${({ theme }) => theme.spacing.xxSmall};
   }
 
   & .react-datepicker__day--disabled {
@@ -126,7 +126,7 @@ export const StyledDatepicker = styled.div`
   }
 
   & .react-datepicker-popper {
-    z-index: 1;
+    z-index: ${({ theme }) => theme.zIndex.popover};
   }
 `;
 

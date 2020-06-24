@@ -7,7 +7,7 @@ import { Input } from '../Input';
 import Header from './Header';
 import { StyledDatepicker } from './styled';
 
-export interface Props {
+interface Props {
   dateFormat?: string;
   error?: React.ReactNode;
   label?: string;
