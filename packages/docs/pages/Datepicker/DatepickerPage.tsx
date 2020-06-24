@@ -36,6 +36,10 @@ const DatepickerPage = () => (
 
     <H1>API</H1>
 
+    <Text>
+      Supports all native <Code>&lt;input [type="date"] /&gt;</Code> element attributes.
+    </Text>
+
     <DatepickerPropTable />
 
     <H1>Error State</H1>

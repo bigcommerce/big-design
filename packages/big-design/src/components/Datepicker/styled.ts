@@ -82,14 +82,14 @@ export const StyledDatepicker = styled.div`
   }
 
   & .react-datepicker__day--today::after {
+    background: ${({ theme }) => theme.colors.primary};
+    bottom: 1px;
     content: '';
     display: block;
-    position: relative;
     height: 2px;
-    background: ${({ theme }) => theme.colors.primary};
-    width: 24px;
     margin-left: 4px;
-    bottom: 1px;
+    position: relative;
+    width: 24px;
   }
 
   & .react-datepicker__day--selected {
@@ -116,8 +116,9 @@ export const StyledDatepicker = styled.div`
   }
 
   & .bc-datepicker {
-    background: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.shadow.floating};
+
+    background: ${({ theme }) => theme.colors.white};
     display: flex;
     font-family: ${({ theme }) => theme.typography.fontFamily};
     font-size: ${({ theme }) => theme.typography.fontSize.small};

@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({
     <Button
       title="View previous month."
       type="button"
-      iconOnly={<ChevronLeftIcon />}
+      iconOnly={<ChevronLeftIcon title="View previous month." />}
       onClick={decreaseMonth}
       disabled={prevMonthButtonDisabled}
       variant="subtle"
@@ -37,7 +37,7 @@ const Header: React.FC<HeaderProps> = ({
     <Button
       title="View next month."
       type="button"
-      iconOnly={<ChevronRightIcon title="add" />}
+      iconOnly={<ChevronRightIcon title="View next month." />}
       onClick={increaseMonth}
       disabled={nextMonthButtonDisabled}
       variant="subtle"

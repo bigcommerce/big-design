@@ -1,10 +1,10 @@
 import React, { forwardRef, memo, Ref, useEffect, useState } from 'react';
 import ReactDatePicker, { registerLocale } from 'react-datepicker';
 
+import { createLocalizationProvider } from '../../utils';
 import { Input } from '../Input';
 
 import Header from './Header';
-import { createLocalizationProvider } from './localizationProvider';
 import { StyledDatepicker } from './styled';
 
 export interface Props {
@@ -21,7 +21,7 @@ export interface PrivateProps {
 
 export type DatepickerProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
-const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
+const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
   dateFormat = 'EE, dd MMM, yyyy',
   error,
   forwardedRef,
@@ -35,11 +35,11 @@ const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
   value,
   ...props
 }) => {
-  const localization = createLocalizationProvider(locale);
-  registerLocale(locale, localization);
-
   const [selected, setSelected] = useState<Date>();
-  const updateDate: (value: Date) => void = (value) => onDateChange(value.toISOString());
+  const localization = createLocalizationProvider(locale);
+
+  registerLocale(locale, localization);
+  const updateDate = (value: Date) => onDateChange(value.toISOString());
 
   useEffect(() => {
     if (typeof value === 'string') {
@@ -86,5 +86,5 @@ const RawDatePicker: React.FC<DatepickerProps & PrivateProps> = ({
 };
 
 export const Datepicker = memo(
-  forwardRef<ReactDatePicker, DatepickerProps>((props, ref) => <RawDatePicker {...props} forwardedRef={ref} />),
+  forwardRef<ReactDatePicker, DatepickerProps>((props, ref) => <RawDatepicker {...props} forwardedRef={ref} />),
 );
