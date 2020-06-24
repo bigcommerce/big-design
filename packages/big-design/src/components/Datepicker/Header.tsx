@@ -5,7 +5,7 @@ import { Flex } from '..';
 import { Button } from '../Button';
 import { Text } from '../Typography';
 
-export interface HeaderProps {
+interface HeaderProps {
   date?: Date;
   nextMonthButtonDisabled?: boolean;
   months: any;
