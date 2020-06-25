@@ -43,7 +43,7 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
 
   useEffect(() => {
     if (typeof value === 'string') {
-      setSelected(new Date(value as string));
+      setSelected(new Date(value));
     } else {
       setSelected(undefined);
     }
