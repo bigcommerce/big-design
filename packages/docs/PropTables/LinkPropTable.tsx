@@ -8,7 +8,7 @@ const linkProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Shows and external icons When the <Code primary>external</Code> flag is set and target="_blank".
+        Shows an external icon when the <Code primary>external</Code> flag is set and target="_blank".
       </>
     ),
   },
