@@ -27,7 +27,7 @@ const PaddingPage = () => (
 
     <Text>
       You can also specify paddings with an object to handle different paddings with different{' '}
-      <NextLink href="/Breakpoint/BreakpointPage" as="/breakpoints">
+      <NextLink href="/Breakpoints/BreakpointsPage" as="/breakpoints">
         breakpoints
       </NextLink>
       . All values must be of{' '}

@@ -73,8 +73,11 @@ const DropdownPage = () => (
     <H2>Links</H2>
 
     <Text>
-      A Dropdown can render a list of <NextLink href="/link">Links</NextLink> if it receives an object of type{' '}
-      <Code>LinkItem</Code>.
+      A Dropdown can render a list of{' '}
+      <NextLink href="/Link/LinkPage" as="/link">
+        Links
+      </NextLink>{' '}
+      if it receives an object of type <Code>LinkItem</Code>.
     </Text>
 
     <CodePreview>
@@ -94,7 +97,11 @@ const DropdownPage = () => (
     <H2>Icons</H2>
 
     <Text>
-      An Item accepts an <NextLink href="/icons">Icon</NextLink> component to render.
+      An Item accepts an{' '}
+      <NextLink href="/Icons/IconsPage" as="/icons">
+        Icon
+      </NextLink>{' '}
+      component to render.
     </Text>
 
     <CodePreview>
@@ -134,7 +141,10 @@ const DropdownPage = () => (
 
     <Text>
       Dropdown can be anchored to any <Code>ReactElement</Code>, including all types of{' '}
-      <NextLink href="/button">Buttons</NextLink>.
+      <NextLink href="/Button/ButtonPage" as="/button">
+        Buttons
+      </NextLink>
+      .
     </Text>
 
     <CodePreview>
