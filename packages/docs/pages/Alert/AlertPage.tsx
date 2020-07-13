@@ -4,6 +4,7 @@ import React from 'react';
 import { Code, CodePreview, CodeSnippet } from '../../components';
 import {
   AlertsManagerAddMethodList,
+  AlertsManagerClearMethodList,
   AlertsManagerRemoveMethodList,
   AlertsManagerSubscribeMethodList,
 } from '../../MethodLists';
@@ -104,6 +105,8 @@ const AlertPage = () => (
     <AlertsManagerAddMethodList />
 
     <AlertsManagerRemoveMethodList />
+
+    <AlertsManagerClearMethodList />
 
     <AlertsManagerSubscribeMethodList />
   </>

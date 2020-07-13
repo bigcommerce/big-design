@@ -41,6 +41,15 @@ class AlertsManager {
     return key;
   }
 
+  clear() {
+    const removed = this.alerts;
+
+    this.alerts = [];
+    this.notifySubscribers();
+
+    return removed;
+  }
+
   remove(key: string) {
     let removed: AlertProps | undefined;
 
