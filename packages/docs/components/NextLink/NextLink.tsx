@@ -3,6 +3,10 @@ import { default as NLink } from 'next/link';
 import React from 'react';
 
 function getLinkAs(as = '') {
+  if (!as) {
+    return undefined;
+  }
+
   const prefix = process.env.URL_PREFIX || '';
 
   return prefix + as;
