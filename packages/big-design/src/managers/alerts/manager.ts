@@ -6,6 +6,10 @@ interface PrivateAlert extends AlertProps {
   onClose(): void;
 }
 
+interface AddAlertConfig extends AlertProps {
+  fadeAway?: boolean;
+}
+
 class AlertsManager {
   private alerts: PrivateAlert[] = [];
   private counter = 0;
@@ -17,7 +21,7 @@ class AlertsManager {
     info: 3,
   };
 
-  add(alert: AlertProps): string {
+  add = (alert: AddAlertConfig): string => {
     if (alert.key && this.containsKey(alert.key)) {
       this.remove(alert.key);
     }
@@ -38,19 +42,23 @@ class AlertsManager {
 
     this.notifySubscribers();
 
-    return key;
-  }
+    if (alert.fadeAway) {
+      setTimeout(onClose, 5000);
+    }
 
-  clear() {
+    return key;
+  };
+
+  clear = () => {
     const removed = this.alerts;
 
     this.alerts = [];
     this.notifySubscribers();
 
     return removed;
-  }
+  };
 
-  remove(key: string) {
+  remove = (key: string) => {
     let removed: AlertProps | undefined;
 
     this.alerts = this.alerts.reduce((acc, alert) => {
@@ -66,15 +74,15 @@ class AlertsManager {
     this.notifySubscribers();
 
     return removed;
-  }
+  };
 
-  subscribe(subscriber: Subscriber) {
+  subscribe = (subscriber: Subscriber) => {
     this.subscribers.push(subscriber);
 
     return () => {
       this.subscribers = this.subscribers.filter((sub) => sub !== subscriber);
     };
-  }
+  };
 
   private notifySubscribers() {
     this.subscribers.forEach((subscriber) => subscriber(this.alerts[0] || null));
