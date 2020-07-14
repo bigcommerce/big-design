@@ -165,7 +165,11 @@ const dropdownLinkProps: Prop[] = [
     required: true,
     description: (
       <>
-        Wraps the <Code>content</Code> in a <NextLink href="/link">Link</NextLink> component.
+        Wraps the <Code>content</Code> in a{' '}
+        <NextLink href="/Link/LinkPage" as="/link">
+          Link
+        </NextLink>{' '}
+        component.
       </>
     ),
   },

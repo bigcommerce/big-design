@@ -113,8 +113,12 @@ const StatefulTablePage = () => {
       <H0>StatefulTable</H0>
 
       <Text>
-        StatefulTable is a wrapper of <NextLink href="/table">Table</NextLink> that simplifies it's usage when having
-        the full list of items in memory. It supports pagination, row selection, and sorting out of the box.
+        StatefulTable is a wrapper of{' '}
+        <NextLink href="/Table/TablePage" as="/table">
+          Table
+        </NextLink>{' '}
+        that simplifies it's usage when having the full list of items in memory. It supports pagination, row selection,
+        and sorting out of the box.
       </Text>
 
       <CodePreview>

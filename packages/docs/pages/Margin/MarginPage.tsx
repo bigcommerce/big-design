@@ -25,7 +25,7 @@ const MarginPage = () => (
 
     <Text>
       You can also specify margins with an object to handle different margins with different{' '}
-      <NextLink href="/Breakpoint/BreakpointPage" as="/breakpoints">
+      <NextLink href="/Breakpoints/BreakpointsPage" as="/breakpoints">
         breakpoints
       </NextLink>
       . All values must be of{' '}

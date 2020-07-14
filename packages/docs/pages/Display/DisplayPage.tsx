@@ -22,7 +22,7 @@ const DisplayPage = () => (
 
     <Text>
       It's also possible to use the prop with responsive{' '}
-      <NextLink href="/Breakpoint/BreakpointPage" as="/breakpoints">
+      <NextLink href="/Breakpoints/BreakpointsPage" as="/breakpoints">
         breakpoints
       </NextLink>
       :
