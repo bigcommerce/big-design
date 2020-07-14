@@ -75,6 +75,28 @@ describe('alertsManager functionality', () => {
     }
   });
 
+  test('removes all alerts', () => {
+    const testAlertA = { messages: [{ text: 'Text A' }] };
+    const testAlertB = { messages: [{ text: 'Text B' }] };
+    const mockSubscriber = jest.fn();
+
+    alertsManager.subscribe(mockSubscriber);
+    alertsManager.add(testAlertA);
+    alertsManager.add(testAlertB);
+
+    const removed = alertsManager.clear();
+
+    expect(removed).toEqual([
+      expect.objectContaining({ messages: testAlertA.messages }),
+      expect.objectContaining({ messages: testAlertB.messages }),
+    ]);
+
+    expect(mockSubscriber).toHaveBeenCalledTimes(3);
+    expect(mockSubscriber).toHaveBeenNthCalledWith(1, expect.objectContaining({ messages: testAlertA.messages }));
+    expect(mockSubscriber).toHaveBeenNthCalledWith(2, expect.objectContaining({ messages: testAlertA.messages }));
+    expect(mockSubscriber).toHaveBeenNthCalledWith(3, null);
+  });
+
   test("doesn't remove existing alert with invalid key", () => {
     const alertKey = alertsManager.add(alert);
 

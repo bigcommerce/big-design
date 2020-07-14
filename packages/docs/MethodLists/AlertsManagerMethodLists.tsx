@@ -43,6 +43,16 @@ export const AlertsManagerRemoveMethodList: React.FC = () => (
   />
 );
 
+export const AlertsManagerClearMethodList: React.FC = () => (
+  <MethodList
+    name="clear"
+    intro="Removes all alerts."
+    usage="alertsManager.clear()"
+    parameterList={[]}
+    returnDescription="Contains the alerts removed."
+  />
+);
+
 export const AlertsManagerSubscribeMethodList: React.FC = () => (
   <MethodList
     name="subscribe"
