@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.20.0...@bigcommerce/docs@0.21.0) (2020-07-14)
+
+
+### Bug Fixes
+
+* two typos in description text ([#411](https://github.com/bigcommerce/big-design/issues/411)) ([bd1e220](https://github.com/bigcommerce/big-design/commit/bd1e22082c95f685e7becdccb53ff71e038e1e5f))
+* **docs:** grammar update ([40d12b7](https://github.com/bigcommerce/big-design/commit/40d12b7ebae2a3dfa8e9861453572f57ad511466))
+* **docs:** update broken links ([#416](https://github.com/bigcommerce/big-design/issues/416)) ([0ef7ab7](https://github.com/bigcommerce/big-design/commit/0ef7ab7a620f7a4c9823dc730db3be40be9f7a44))
+
+
+### Features
+
+* **component:** add clear method to alerts manager ([#415](https://github.com/bigcommerce/big-design/issues/415)) ([8c472cc](https://github.com/bigcommerce/big-design/commit/8c472cc7fadb2d1766223457e86758321f639328))
+* **component:** add Datepicker component ([#408](https://github.com/bigcommerce/big-design/issues/408)) ([f23176a](https://github.com/bigcommerce/big-design/commit/f23176a403599ff678ddcbd61359e83c5e929685))
+
+
+
+
+
 # [0.20.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.19.2...@bigcommerce/docs@0.20.0) (2020-06-16)
 
 
