@@ -75,6 +75,24 @@ describe('alertsManager functionality', () => {
     }
   });
 
+  test('removes an alert with fadeAway', (done) => {
+    jest.useFakeTimers();
+
+    const mockSubscriber = jest.fn();
+    const testAlert = { ...alert, fadeAway: true, onClose: done, key: 'test-key' };
+
+    alertsManager.subscribe(mockSubscriber);
+
+    const alertKey = alertsManager.add(testAlert);
+
+    jest.runAllTimers();
+
+    expect(alertKey).not.toBeUndefined();
+    expect(mockSubscriber).toHaveBeenCalledTimes(2);
+    expect(mockSubscriber).toHaveBeenCalledWith(expect.objectContaining({ key: 'test-key' }));
+    expect(mockSubscriber).toHaveBeenCalledWith(null);
+  });
+
   test('removes all alerts', () => {
     const testAlertA = { messages: [{ text: 'Text A' }] };
     const testAlertB = { messages: [{ text: 'Text B' }] };

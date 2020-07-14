@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, MethodList } from '../components';
+import { MethodList } from '../components';
 
 export const AlertsManagerAddMethodList: React.FC = () => (
   <MethodList
@@ -12,15 +12,6 @@ export const AlertsManagerAddMethodList: React.FC = () => (
         param: 'alert',
         description: 'An object with the same key/values as the alert props.',
         required: true,
-      },
-      {
-        param: 'dismissCallback',
-        description: (
-          <>
-            Callback function to run when the alert is dismissed. Runs before the <Code>onClose</Code> function in the
-            passed in alert.
-          </>
-        ),
       },
     ]}
     returnDescription="The value of the alert key. If no key is provided, then an auto-generated one will be provided."
