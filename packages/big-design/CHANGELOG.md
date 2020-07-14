@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.21.0...@bigcommerce/big-design@0.21.1) (2020-07-14)
+
+
+### Features
+
+* **component:** add fadeAway option to alertsManager ([#417](https://github.com/bigcommerce/big-design/issues/417)) ([87b043c](https://github.com/bigcommerce/big-design/commit/87b043ce631e5795ce26dceabb1664274f6915f9))
+
+
+
+
+
 # [0.21.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.20.0...@bigcommerce/big-design@0.21.0) (2020-07-14)
 
 
