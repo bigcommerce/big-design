@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React, { createRef } from 'react';
 
-import { FormGroup } from '../Form';
+import { FormControlLabel, FormGroup } from '../Form';
 
 import { Select } from './';
 
@@ -81,8 +81,22 @@ test('renders select combobox', () => {
   expect(getByRole('combobox')).toBeInTheDocument();
 });
 
-test('renders select label', () => {
+test('renders select string label', () => {
   const { getByText } = render(SelectMock);
+
+  expect(getByText('Countries')).toBeInTheDocument();
+});
+
+test('renders FormControlLabel string label', () => {
+  const { getByText } = render(
+    <Select
+      label={<FormControlLabel>Countries</FormControlLabel>}
+      onOptionChange={onChange}
+      id="testId"
+      data-testid="select"
+      options={mockOptions}
+    />,
+  );
 
   expect(getByText('Countries')).toBeInTheDocument();
 });

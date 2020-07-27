@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React, { createRef } from 'react';
 
-import { FormGroup } from '../Form';
+import { FormControlLabel, FormGroup } from '../Form';
 
 import { MultiSelect } from './';
 
@@ -46,6 +46,25 @@ test('renders select combobox', () => {
 
 test('renders select label', () => {
   const { getByText } = render(MultiSelectMock);
+
+  expect(getByText('Countries')).toBeInTheDocument();
+});
+
+test('renders FormControlLabel string label', () => {
+  const { getByText } = render(
+    <MultiSelect
+      onOptionsChange={onChange}
+      label={<FormControlLabel>Countries</FormControlLabel>}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
 
   expect(getByText('Countries')).toBeInTheDocument();
 });

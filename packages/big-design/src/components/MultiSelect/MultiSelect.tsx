@@ -12,7 +12,7 @@ import React, {
 import { Manager, Popper, Reference } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
-import { typedMemo } from '../../utils';
+import { typedMemo, warning } from '../../utils';
 import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { FlexItem } from '../Flex/Item';
@@ -224,13 +224,24 @@ export const MultiSelect = typedMemo(
     }, [defaultRef, inputRef, setCallbackRef]);
 
     const renderLabel = useMemo(() => {
-      return typeof label === 'string' ? (
-        <FormControlLabel {...getLabelProps()} renderOptional={!required}>
-          {label}
-        </FormControlLabel>
-      ) : null;
-    }, [getLabelProps, label, required]);
+      if (!label) {
+        return null;
+      }
 
+      if (typeof label === 'string') {
+        return (
+          <FormControlLabel {...getLabelProps()} renderOptional={!required}>
+            {label}
+          </FormControlLabel>
+        );
+      }
+
+      if (isValidElement(label) && label.type === FormControlLabel) {
+        return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, getLabelProps());
+      }
+
+      warning('label must be either a string or a FormControlLabel component.');
+    }, [getLabelProps, label, required]);
     const renderToggle = useMemo(() => {
       return (
         <DropdownButton
