@@ -494,8 +494,12 @@ const iconColor = <T extends any>(item: SelectOption<T> | SelectAction, isHighli
 };
 
 const descriptionColor = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
-  if (!isHighlighted || !('onActionClick' in item)) {
+  if (item.disabled) {
     return 'secondary40';
+  }
+
+  if (!isHighlighted || !('onActionClick' in item)) {
+    return 'secondary60';
   }
 
   return 'actionType' in item ? (item.actionType === 'destructive' ? 'danger30' : 'primary30') : 'primary30';
