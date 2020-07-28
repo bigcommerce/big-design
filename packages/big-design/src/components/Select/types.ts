@@ -29,6 +29,7 @@ export interface SelectProps<T> extends BaseSelect {
 interface BaseItem
   extends Omit<ListItemProps, 'children' | 'content' | 'isAction' | 'isHighlighted' | 'isSelected' | 'value'> {
   content: string;
+  description?: string;
   icon?: React.ReactElement;
 }
 

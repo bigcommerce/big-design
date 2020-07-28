@@ -37,6 +37,12 @@ const groupMockOptions = [
   },
 ];
 
+const mockOptionsWithDescription = [
+  { value: 'us', content: 'United States', description: 'US Description' },
+  { value: 'mx', content: 'Mexico', description: 'MX Description' },
+  { value: 'fr', content: 'France', disabled: true, description: 'FR Description' },
+];
+
 const SelectMock = (
   <Select
     action={{
@@ -69,6 +75,26 @@ const GroupedSelectMock = (
     label="Countries"
     onOptionChange={onChange}
     options={groupMockOptions}
+    placeholder="Choose country"
+    required
+    value="mx"
+  />
+);
+
+const SelectWithOptionsDescriptions = (
+  <Select
+    action={{
+      actionType: 'destructive',
+      content: 'Remove Country',
+      description: 'Action Description',
+      icon: <DeleteIcon />,
+      onActionClick,
+    }}
+    data-testid="select"
+    error="Required"
+    label="Countries"
+    onOptionChange={onChange}
+    options={mockOptionsWithDescription}
     placeholder="Choose country"
     required
     value="mx"
@@ -711,4 +737,20 @@ test('group labels should still render when filtering options', () => {
   expect(options.length).toBe(2);
   expect(label1).toBeInTheDocument();
   expect(label2).toBeInTheDocument();
+});
+
+test('select option should supports description', () => {
+  const { getByText, getByTestId } = render(SelectWithOptionsDescriptions);
+  const input = getByTestId('select');
+  fireEvent.focus(input);
+
+  expect(getByText('US Description')).toBeInTheDocument();
+});
+
+test('select action should supports description', () => {
+  const { getByText, getByTestId } = render(SelectWithOptionsDescriptions);
+  const input = getByTestId('select');
+  fireEvent.focus(input);
+
+  expect(getByText('Action Description')).toBeInTheDocument();
 });
