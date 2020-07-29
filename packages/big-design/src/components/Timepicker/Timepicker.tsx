@@ -25,7 +25,14 @@ function getTimeIntervals() {
   return times.map((time) => ({ value: time, content: time }));
 }
 
-const RawTimePicker: React.FC<TimepickerProps & PrivateProps> = ({ error, label, onTimeChange, value, ...props }) => {
+const RawTimePicker: React.FC<TimepickerProps & PrivateProps> = ({
+  error,
+  forwardedRef,
+  label,
+  onTimeChange,
+  value,
+  ...props
+}) => {
   return (
     <Select
       label={label}
@@ -34,6 +41,7 @@ const RawTimePicker: React.FC<TimepickerProps & PrivateProps> = ({ error, label,
       onOptionChange={onTimeChange}
       placeholder="hh : mm"
       options={getTimeIntervals()}
+      inputRef={forwardedRef}
       {...props}
     />
   );
