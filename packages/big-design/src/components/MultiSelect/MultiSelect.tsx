@@ -389,7 +389,7 @@ export const MultiSelect = typedMemo(
     const renderList = useMemo(() => {
       return (
         <Popper
-          modifiers={[{ name: 'offset', options: { offset: [0, 10] } }]}
+          modifiers={[{ name: 'offset', options: { offset: [0, 4] } }]}
           placement={placement}
           strategy={positionFixed ? 'fixed' : 'absolute'}
         >

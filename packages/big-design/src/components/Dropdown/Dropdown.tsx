@@ -172,7 +172,7 @@ export const Dropdown = memo(
     const renderList = useMemo(
       () => (
         <Popper
-          modifiers={[{ name: 'eventListeners' }, { name: 'offset', options: { offset: [0, 10] } }]}
+          modifiers={[{ name: 'eventListeners' }, { name: 'offset', options: { offset: [0, 4] } }]}
           strategy="absolute"
           placement={placement}
         >
