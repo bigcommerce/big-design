@@ -30,6 +30,7 @@ export * from './Switch';
 export * from './Table';
 export * from './Tabs';
 export * from './Textarea';
+export * from './Timepicker';
 export * from './Tooltip';
 export * from './Tree';
 export * from './Typography';

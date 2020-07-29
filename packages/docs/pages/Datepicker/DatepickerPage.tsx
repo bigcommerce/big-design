@@ -1,14 +1,12 @@
-import { Datepicker, Form, FormGroup, H0, H1, Text } from '@bigcommerce/big-design';
+import { Datepicker, Form, FormGroup, H0, H1, Text, Timepicker } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
-import { DatepickerPropTable } from '../../PropTables';
+import { DatepickerPropTable, TimepickerPropTable } from '../../PropTables';
 
 const DatepickerPage = () => (
   <>
     <H0>Datepicker</H0>
-
-    <Text>Datepicker is good</Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
@@ -83,6 +81,25 @@ const DatepickerPage = () => (
       }}
       {/* jsx-to-string:end */}
     </CodePreview>
+
+    <H0>Timepicker</H0>
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      {function Example() {
+        const [time, setTime] = useState<string>();
+
+        return (
+          <Form>
+            <FormGroup>
+              <Timepicker value={time} onTimeChange={(value) => setTime(value)} />
+            </FormGroup>
+          </Form>
+        );
+      }}
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <TimepickerPropTable />
   </>
 );
 
