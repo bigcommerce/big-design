@@ -18,7 +18,7 @@ function getTimeIntervals() {
   const times = ['12:00 AM'];
 
   for (let i = 1; i < 24; i++) {
-    i < 12 ? times.push(`${i}:00 AM`) : times.push(`${i - 12 === 0 ? i : i - 12}:00 PM`);
+    i < 12 ? times.push(`${i}:00 AM`) : times.push(`${i === 12 ? i : i - 12}:00 PM`);
   }
   times.push('11:59 PM');
 
