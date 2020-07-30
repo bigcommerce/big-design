@@ -446,7 +446,7 @@ const isGroup = <T extends any>(item: SelectOption<T> | SelectOptionGroup<T>) =>
 };
 
 const getContent = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
-  const { content, description, icon } = item;
+  const { content, disabled, description, icon } = item;
 
   return (
     <Flex alignItems="center" flexDirection="row">
@@ -462,7 +462,7 @@ const getContent = <T extends any>(item: SelectOption<T> | SelectAction, isHighl
       {description ? (
         <FlexItem paddingVertical="xSmall">
           {content}
-          <Small color={descriptionColor(item, isHighlighted)}>{description}</Small>
+          <Small color={descriptionColor(disabled)}>{description}</Small>
         </FlexItem>
       ) : (
         content
@@ -493,14 +493,4 @@ const iconColor = <T extends any>(item: SelectOption<T> | SelectAction, isHighli
   return 'actionType' in item ? (item.actionType === 'destructive' ? 'danger50' : 'primary') : 'primary';
 };
 
-const descriptionColor = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
-  if (item.disabled) {
-    return 'secondary40';
-  }
-
-  if (!isHighlighted || !('onActionClick' in item)) {
-    return 'secondary60';
-  }
-
-  return 'actionType' in item ? (item.actionType === 'destructive' ? 'danger30' : 'primary30') : 'primary30';
-};
+const descriptionColor = (isDisabled: boolean | undefined) => (isDisabled ? 'secondary40' : 'secondary60');
