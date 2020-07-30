@@ -345,7 +345,7 @@ const SelectPage = () => (
 
     <H2>Option & Action Description</H2>
 
-    <Text>It is possible to add a description for select options and select action</Text>
+    <Text>It is possible to add a description for select options and actions</Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
