@@ -58,6 +58,7 @@ module.exports = {
     '/table': { page: '/Table/TablePage' },
     '/tabs': { page: '/Tabs/TabsPage' },
     '/textarea': { page: '/Textarea/TextareaPage' },
+    '/toggle': { page: '/Toggle/TogglePage' },
     '/tooltip': { page: '/Tooltip/TooltipPage' },
     '/tree': { page: '/Tree/TreePage' },
     '/typography': { page: '/Typography/TypographyPage' },

@@ -113,6 +113,9 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Textarea/TextareaPage" as="/textarea">
             Textarea
           </SideNavLink>
+          <SideNavLink href="/Toggle/TogglePage" as="/toggle">
+            Toggle
+          </SideNavLink>
         </SideNavGroup>
 
         <SideNavGroup title="Status &amp; Feedback">

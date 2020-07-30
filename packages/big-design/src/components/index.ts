@@ -29,6 +29,7 @@ export * from './StatefulTable';
 export * from './Table';
 export * from './Tabs';
 export * from './Textarea';
+export * from './Toggle';
 export * from './Tooltip';
 export * from './Tree';
 export * from './Typography';
