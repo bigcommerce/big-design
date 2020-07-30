@@ -19,6 +19,12 @@ const mockOptions = [
   { value: 'fr', content: 'France', disabled: true },
 ];
 
+const mockOptionsWithDescription = [
+  { value: 'us', content: 'United States', description: 'US Description' },
+  { value: 'mx', content: 'Mexico', description: 'MX Description' },
+  { value: 'fr', content: 'France', disabled: true, description: 'FR Description' },
+];
+
 const MultiSelectMock = (
   <MultiSelect
     action={{
@@ -35,6 +41,26 @@ const MultiSelectMock = (
     placeholder="Choose country"
     required
     value={['us', 'mx']}
+  />
+);
+
+const MultiSelectWithOptionsDescriptions = (
+  <MultiSelect
+    action={{
+      actionType: 'destructive',
+      content: 'Remove Country',
+      description: 'Action Description',
+      icon: <DeleteIcon />,
+      onActionClick,
+    }}
+    data-testid="select"
+    error="Required"
+    label="Countries"
+    onOptionsChange={onChange}
+    options={mockOptionsWithDescription}
+    placeholder="Choose country"
+    required
+    value={['mx']}
   />
 );
 
@@ -654,4 +680,20 @@ test('options should allow icons', () => {
 
   const svg = container.querySelectorAll('svg');
   expect(svg.length).toBe(3);
+});
+
+test('select option should supports description', () => {
+  const { getByText, getByTestId } = render(MultiSelectWithOptionsDescriptions);
+  const input = getByTestId('select');
+  fireEvent.focus(input);
+
+  expect(getByText('US Description')).toBeInTheDocument();
+});
+
+test('select action should supports description', () => {
+  const { getByText, getByTestId } = render(MultiSelectWithOptionsDescriptions);
+  const input = getByTestId('select');
+  fireEvent.focus(input);
+
+  expect(getByText('Action Description')).toBeInTheDocument();
 });

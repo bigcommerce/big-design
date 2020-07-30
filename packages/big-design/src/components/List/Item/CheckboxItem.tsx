@@ -1,6 +1,6 @@
 import React, { forwardRef, LiHTMLAttributes, memo, Ref } from 'react';
 
-import { Checkbox } from '../../Checkbox';
+import { Checkbox, CheckboxProps } from '../../Checkbox';
 
 import { StyledListItem } from './styled';
 
@@ -20,19 +20,16 @@ export interface ListItemCheckboxProps extends LiHTMLAttributes<HTMLLIElement> {
   isHighlighted: boolean;
 }
 
-const StyleableListCheckboxItem: React.FC<ListItemCheckboxProps & PrivateProps> = ({
-  checked,
-  children,
-  disabled,
-  forwardedRef,
-  ...props
-}) => {
+const StyleableListCheckboxItem: React.FC<
+  ListItemCheckboxProps & Pick<CheckboxProps, 'label' | 'description'> & PrivateProps
+> = ({ checked, disabled, description, forwardedRef, label, ...props }) => {
   return (
     <StyledListItem {...props} actionType="normal" isSelected={false} disabled={disabled} ref={forwardedRef}>
       <Checkbox
         checked={checked}
         disabled={disabled}
-        label={typeof children === 'string' ? children : ''}
+        description={description}
+        label={label}
         onChange={() => null}
         onClick={(event) => {
           event.preventDefault();
@@ -45,7 +42,7 @@ const StyleableListCheckboxItem: React.FC<ListItemCheckboxProps & PrivateProps> 
 };
 
 export const ListItemCheckbox = memo(
-  forwardRef<HTMLLIElement, ListCheckboxItemProps>((props, ref) => (
+  forwardRef<HTMLLIElement, ListCheckboxItemProps & Pick<CheckboxProps, 'label' | 'description'>>((props, ref) => (
     <StyleableListCheckboxItem {...props} forwardedRef={ref} />
   )),
 );

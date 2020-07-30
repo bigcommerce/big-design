@@ -18,7 +18,7 @@ export const StyledListItem = styled.li<ListItemProps>`
   min-height: ${({ theme }) => theme.helpers.remCalc(36)};
   min-width: ${({ theme }) => theme.helpers.remCalc(256)};
   outline: none;
-  padding: 0 ${({ theme }) => theme.spacing.medium};
+  padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.medium}`};
 
   a {
     align-items: center;

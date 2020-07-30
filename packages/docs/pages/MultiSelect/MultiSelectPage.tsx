@@ -300,6 +300,53 @@ const MultiSelectPage = () => (
       </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
+
+    <H2>Option & Action Description</H2>
+
+    <Text>It is possible to add a description for select options and select action</Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      {function Example() {
+        const [value, setValue] = useState([1]);
+        const handleChange = (val) => setValue(val);
+
+        return (
+          <Form>
+            <FormGroup>
+              <MultiSelect
+                action={{
+                  actionType: 'destructive',
+                  content: 'Remove',
+                  description: 'Description for remove action',
+                  icon: <DeleteIcon />,
+                  onActionClick: () => null,
+                }}
+                label="Select"
+                onOptionsChange={() => null}
+                options={[
+                  { value: 1, content: 'Option #1', description: 'Description for option #1' },
+                  {
+                    value: 2,
+                    content: 'Option #2',
+                    description: 'Description for option #2',
+                    disabled: true,
+                  },
+                  { value: 3, content: 'Option #3' },
+                  { value: 4, content: 'Option #4' },
+                  { value: 5, content: 'Option #5' },
+                ]}
+                onChange={handleChange}
+                placeholder="Choose option"
+                required
+                value={value}
+              />
+            </FormGroup>
+          </Form>
+        );
+      }}
+      {/* jsx-to-string:end */}
+    </CodePreview>
   </>
 );
 
