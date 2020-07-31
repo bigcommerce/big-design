@@ -150,6 +150,15 @@ const selectOptionProps: Prop[] = [
     ),
   },
   {
+    name: 'description',
+    types: 'string',
+    description: (
+      <>
+        Sets the content description of the <Code>SelectOption</Code>
+      </>
+    ),
+  },
+  {
     name: 'icon',
     types: (
       <NextLink href="/Icons/IconsPage" as="/icons">
@@ -206,6 +215,15 @@ const selectActionProps: Prop[] = [
     description: (
       <>
         'Sets the text content of the <Code>SelectAction</Code> .'
+      </>
+    ),
+  },
+  {
+    name: 'description',
+    types: 'string',
+    description: (
+      <>
+        Sets the content description of the <Code>SelectAction</Code>
       </>
     ),
   },

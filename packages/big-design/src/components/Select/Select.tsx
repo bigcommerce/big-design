@@ -24,6 +24,7 @@ import { Input } from '../Input';
 import { List } from '../List';
 import { ListGroupHeader } from '../List/GroupHeader';
 import { ListItem } from '../List/Item';
+import { Small } from '../Typography';
 
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from './styled';
 import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from './types';
@@ -317,8 +318,8 @@ export const Select = typedMemo(
     );
 
     const renderOptions = useCallback(
-      (items: Array<SelectOption<T>>) => {
-        return items.map((item) => {
+      (items: Array<SelectOption<T>>) =>
+        items.map((item) => {
           if (
             !selectOptions.find(
               (option: SelectOption<T> | SelectAction) => 'value' in option && option.value === item.value,
@@ -351,8 +352,7 @@ export const Select = typedMemo(
               {isSelected && <CheckIcon color="primary" size="large" />}
             </ListItem>
           );
-        });
-      },
+        }),
       [getItemProps, highlightedIndex, selectedOption, selectOptions],
     );
 
@@ -446,12 +446,27 @@ const isGroup = <T extends any>(item: SelectOption<T> | SelectOptionGroup<T>) =>
 };
 
 const getContent = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
-  const { icon } = item;
+  const { content, disabled, description, icon } = item;
 
   return (
     <Flex alignItems="center" flexDirection="row">
-      {icon && <FlexItem paddingRight="xSmall">{renderIcon(item, isHighlighted)}</FlexItem>}
-      {item.content}
+      {icon && (
+        <FlexItem
+          alignSelf={description ? 'flex-start' : undefined}
+          paddingRight="xSmall"
+          paddingTop={description ? 'xSmall' : undefined}
+        >
+          {renderIcon(item, isHighlighted)}
+        </FlexItem>
+      )}
+      {description ? (
+        <FlexItem paddingVertical="xSmall">
+          {content}
+          <Small color={descriptionColor(disabled)}>{description}</Small>
+        </FlexItem>
+      ) : (
+        content
+      )}
     </Flex>
   );
 };
@@ -477,3 +492,5 @@ const iconColor = <T extends any>(item: SelectOption<T> | SelectAction, isHighli
 
   return 'actionType' in item ? (item.actionType === 'destructive' ? 'danger50' : 'primary') : 'primary';
 };
+
+const descriptionColor = (isDisabled: boolean | undefined) => (isDisabled ? 'secondary40' : 'secondary60');
