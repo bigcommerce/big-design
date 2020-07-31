@@ -7,4 +7,8 @@ export const StyledLogo = styled.div`
     margin: 0 auto;
     max-width: 100%;
   }
+
+  p {
+    text-align: right;
+  }
 `;

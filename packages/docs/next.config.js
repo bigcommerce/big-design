@@ -1,3 +1,5 @@
+const bdPkg = require('../big-design/package.json');
+
 const pkg = require('./package.json');
 const isProduction = process.env.NODE_ENV === 'production';
 const isDev = !isProduction;
@@ -9,6 +11,7 @@ module.exports = {
   env: {
     CODE_SANDBOX_URL: `https://codesandbox.io/s/github/bigcommerce/big-design/tree/%40bigcommerce/examples%40${examplesVersion}/packages/examples`,
     URL_PREFIX: isProduction ? URL_PREFIX : '',
+    BD_VERSION: bdPkg.version,
   },
   webpack: (config) => {
     config.module.rules.push({
