@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.21.1...@bigcommerce/big-design@0.21.2) (2020-07-31)
+
+
+### Features
+
+* **component:** add description to select options and action ([#423](https://github.com/bigcommerce/big-design/issues/423)) ([2efaab5](https://github.com/bigcommerce/big-design/commit/2efaab5b9563a164540eb57e77a12504dc6169ce))
+* **component:** allow FormControlLabels in Selects ([#422](https://github.com/bigcommerce/big-design/issues/422)) ([f49dd81](https://github.com/bigcommerce/big-design/commit/f49dd81e1e30cfc45e951e828fabe4315ff4ad1e))
+* **component:** set offset to 4px for dropdowns ([#424](https://github.com/bigcommerce/big-design/issues/424)) ([e9705dd](https://github.com/bigcommerce/big-design/commit/e9705dda4bbd5ee40dc1f493db3204e3e9b1995e))
+
+
+
+
+
 ## [0.21.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.21.0...@bigcommerce/big-design@0.21.1) (2020-07-14)
 
 
