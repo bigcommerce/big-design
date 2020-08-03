@@ -35,6 +35,7 @@ const RawTimePicker: React.FC<TimepickerProps & PrivateProps> = ({
 }) => {
   return (
     <Select
+      autoWidth={true}
       label={label}
       error={error}
       value={value}

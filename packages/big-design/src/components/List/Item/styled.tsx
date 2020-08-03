@@ -16,7 +16,7 @@ export const StyledListItem = styled.li<ListItemProps>`
     isSelected ? theme.typography.fontWeight.semiBold : theme.typography.fontWeight.regular};
   justify-content: space-between;
   min-height: ${({ theme }) => theme.helpers.remCalc(36)};
-  min-width: ${({ theme }) => theme.helpers.remCalc(256)};
+  min-width: ${({ autoWidth, theme }) => (autoWidth ? 'auto' : theme.helpers.remCalc(256))};
   outline: none;
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.medium}`};
 

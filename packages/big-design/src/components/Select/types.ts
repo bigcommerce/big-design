@@ -6,6 +6,7 @@ import { ListItemProps } from '../List/Item';
 
 interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children'> {
   action?: SelectAction;
+  autoWidth?: boolean;
   description?: React.ReactChild;
   disabled?: boolean;
   error?: InputProps['error'];
