@@ -23,5 +23,5 @@ test('calls onTimeChange function when a value is selected', () => {
   expect(options.length).toBe(25);
   fireEvent.click(options[3]);
 
-  expect(changeFunction).toHaveBeenCalledWith('3:00 AM', { content: '3:00 AM', value: '3:00 AM' });
+  expect(changeFunction).toHaveBeenCalledWith('3:00', { content: '3:00 AM', value: '3:00' });
 });
