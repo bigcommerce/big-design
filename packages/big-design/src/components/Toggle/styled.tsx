@@ -2,13 +2,16 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled from 'styled-components';
 
+import { withTransition } from '../../mixins/transitions';
+
 import { ToggleLabelProps } from './Toggle';
 
-export const StyledToggleInput = styled.input`
+export const HiddenCheckbox = styled.input`
   ${hideVisually()}
 `;
 
 export const StyledToggleLabel = styled.label<ToggleLabelProps>`
+  ${withTransition(['background, border-color'])}
   background: ${({ checked, theme }) => (checked ? theme.colors.primary30 : theme.colors.secondary30)};
   border-color: ${({ checked, theme }) => (checked ? theme.colors.primary30 : theme.colors.secondary30)};
   border-radius: ${({ theme }) => theme.helpers.remCalc(8)};
@@ -16,10 +19,9 @@ export const StyledToggleLabel = styled.label<ToggleLabelProps>`
   height: ${({ theme }) => theme.helpers.remCalc(14)};
   position: relative;
   width: ${({ theme }) => theme.helpers.remCalc(38)};
-  transition: all 150ms ease-out;
-  transition-property: background, border-color;
 
   &::before {
+    ${withTransition(['background, transform'])}
     top: -${({ theme }) => theme.helpers.remCalc(5)};
     background: ${({ checked, theme }) => (checked ? theme.colors.primary40 : theme.colors.white)};
     border-radius: ${({ theme }) => theme.borderRadius.circle};
@@ -29,8 +31,6 @@ export const StyledToggleLabel = styled.label<ToggleLabelProps>`
     width: ${({ theme }) => theme.spacing.xLarge};
     left: calc(100% - ${({ theme }) => theme.spacing.large});
     box-shadow: ${({ theme }) => theme.shadow.raised};
-    transition: all 150ms ease-out;
-    transition-property: background, transform;
     ${({ checked }) =>
       !checked &&
       `

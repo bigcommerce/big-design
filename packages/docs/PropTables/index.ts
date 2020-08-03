@@ -27,6 +27,7 @@ export * from './StatefulTablePropTable';
 export * from './TablePropTable';
 export * from './TabsPropTable';
 export * from './TextareaPropTable';
+export * from './TogglePropTable';
 export * from './TooltipPropTable';
 export * from './TreePropTable';
 export * from './TypographyPropTable';
