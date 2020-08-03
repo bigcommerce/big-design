@@ -91,7 +91,7 @@ const DatepickerPage = () => (
         return (
           <Form>
             <FormGroup>
-              <Timepicker value={time} onTimeChange={(value) => setTime(value)} />
+              <Timepicker locale="en-US" value={time} onTimeChange={(value) => setTime(value)} />
             </FormGroup>
           </Form>
         );

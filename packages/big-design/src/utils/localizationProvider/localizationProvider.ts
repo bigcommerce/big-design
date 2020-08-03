@@ -12,6 +12,11 @@ export const createLocalizationProvider = (locale: string) => {
 
   const daysShort = [1, 2, 3, 4, 5, 6, 7].map((day) => dayFormatter.format(new Date(0, 9, day, 12)));
 
+  const timeFormatter = Intl.DateTimeFormat(locale, {
+    hour: 'numeric',
+    minute: 'numeric',
+  });
+
   return {
     code: locale,
     localize: {
@@ -21,5 +26,6 @@ export const createLocalizationProvider = (locale: string) => {
     monthsLong,
     // Required by datepicker.
     formatLong: {},
+    formatTime: timeFormatter.format,
   };
 };
