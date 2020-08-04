@@ -1,12 +1,12 @@
-import { Form, FormGroup, H0, H1, Toggle } from '@bigcommerce/big-design';
+import { Form, FormGroup, H0, H1, Switch } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { CodePreview } from '../../components';
-import { TogglePropTable } from '../../PropTables';
+import { SwitchPropTable } from '../../PropTables';
 
-const TogglePage = () => (
+const SwitchPage = () => (
   <>
-    <H0>Toggle</H0>
+    <H0>Switch</H0>
 
     <CodePreview>
       {/* jsx-to-string:start */}
@@ -17,7 +17,7 @@ const TogglePage = () => (
         return (
           <Form>
             <FormGroup>
-              <Toggle checked={checked} onChange={handleChange} />
+              <Switch checked={checked} onChange={handleChange} />
             </FormGroup>
           </Form>
         );
@@ -27,8 +27,8 @@ const TogglePage = () => (
 
     <H1>API</H1>
 
-    <TogglePropTable />
+    <SwitchPropTable />
   </>
 );
 
-export default TogglePage;
+export default SwitchPage;

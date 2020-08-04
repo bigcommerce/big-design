@@ -110,11 +110,11 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/MultiSelect/MultiSelectPage" as="/multi-select">
             MultiSelect
           </SideNavLink>
+          <SideNavLink href="/Switch/SwitchPage" as="/switch">
+            Switch
+          </SideNavLink>
           <SideNavLink href="/Textarea/TextareaPage" as="/textarea">
             Textarea
-          </SideNavLink>
-          <SideNavLink href="/Toggle/TogglePage" as="/toggle">
-            Toggle
           </SideNavLink>
         </SideNavGroup>
 
