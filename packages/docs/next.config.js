@@ -59,6 +59,7 @@ module.exports = {
     '/table': { page: '/Table/TablePage' },
     '/tabs': { page: '/Tabs/TabsPage' },
     '/textarea': { page: '/Textarea/TextareaPage' },
+    '/timepicker': { page: '/Timepicker/TimepickerPage' },
     '/tooltip': { page: '/Tooltip/TooltipPage' },
     '/tree': { page: '/Tree/TreePage' },
     '/typography': { page: '/Typography/TypographyPage' },
