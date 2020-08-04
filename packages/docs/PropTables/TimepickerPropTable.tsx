@@ -12,7 +12,7 @@ const timepickerProps: Prop[] = [
   },
   {
     name: 'label',
-    types: 'string',
+    types: ['string', 'FormControlLabel'],
     description: 'Adds a label to the field.',
   },
   {

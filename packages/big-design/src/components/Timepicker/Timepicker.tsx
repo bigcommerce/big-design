@@ -4,7 +4,7 @@ import { getTimeIntervals } from '../../utils';
 import { Select } from '../Select';
 interface Props {
   error?: React.ReactNode;
-  label?: string;
+  label?: React.ReactChild;
   locale?: string;
   onTimeChange(date: string): void;
 }
