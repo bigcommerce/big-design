@@ -26,10 +26,10 @@ export const StyledSwitchLabel = styled.label<SwitchLabelProps>`
 
   &::before {
     ${withTransition(['background, transform'])}
+    ${({ theme }) => theme.shadow.raised}
 
     background: ${({ checked, theme }) => (checked ? theme.colors.primary40 : theme.colors.white)};
     border-radius: ${({ theme }) => theme.borderRadius.circle};
-    box-shadow: ${({ theme }) => theme.shadow.raised};
     content: '';
     height: ${({ theme }) => theme.spacing.xLarge};
     left: calc(100% - ${({ theme }) => theme.spacing.large});
