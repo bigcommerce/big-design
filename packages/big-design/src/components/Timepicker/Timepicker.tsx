@@ -43,5 +43,7 @@ const RawTimePicker: React.FC<TimepickerProps & PrivateProps> = ({
 };
 
 export const Timepicker = memo(
-  forwardRef<HTMLInputElement, TimepickerProps>((props, ref) => <RawTimePicker {...props} forwardedRef={ref} />),
+  forwardRef<HTMLInputElement, TimepickerProps>(({ className, style, ...props }, ref) => (
+    <RawTimePicker {...props} forwardedRef={ref} />
+  )),
 );

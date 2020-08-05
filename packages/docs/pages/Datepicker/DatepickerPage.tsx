@@ -8,6 +8,8 @@ const DatepickerPage = () => (
   <>
     <H0>Datepicker</H0>
 
+    <Text>Use to select a single date from the calendar.</Text>
+
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
