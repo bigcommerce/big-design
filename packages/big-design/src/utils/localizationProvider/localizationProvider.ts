@@ -9,6 +9,17 @@ function getTimeIntervals24hr() {
   return times.map((time) => ({ value: time, content: time }));
 }
 
+interface LocalizationProviderInterface {
+  code?: string;
+  localize?: {
+    month(n: number): string;
+    day(n: number): string;
+  };
+  monthsLong?: string[];
+  formatLong?: {};
+  formatTime(date: Date): string;
+}
+
 const defaultTimeIntervals = getTimeIntervals24hr();
 
 export const createLocalizationProvider = (locale: string) => {
@@ -43,8 +54,7 @@ export const createLocalizationProvider = (locale: string) => {
   };
 };
 
-export function getTimeIntervals(locale: string) {
-  const localization = createLocalizationProvider(locale);
+export function getTimeIntervals(localization: LocalizationProviderInterface) {
   const localizedTimeIntervals = defaultTimeIntervals.map((time) => {
     const baseDate = new Date();
     const [hour, minute] = time.value.split(':');

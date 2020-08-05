@@ -1,6 +1,6 @@
-import React, { forwardRef, memo, Ref } from 'react';
+import React, { forwardRef, memo, Ref, useMemo } from 'react';
 
-import { getTimeIntervals } from '../../utils';
+import { createLocalizationProvider, getTimeIntervals } from '../../utils';
 import { Select } from '../Select';
 interface Props {
   error?: React.ReactNode;
@@ -24,6 +24,9 @@ const RawTimePicker: React.FC<TimepickerProps & PrivateProps> = ({
   value,
   ...props
 }) => {
+  const localization = createLocalizationProvider(locale);
+  const options = useMemo(() => getTimeIntervals(localization), [localization]);
+
   return (
     <Select
       autoWidth={true}
@@ -32,7 +35,7 @@ const RawTimePicker: React.FC<TimepickerProps & PrivateProps> = ({
       value={value}
       onOptionChange={onTimeChange}
       placeholder="hh : mm"
-      options={getTimeIntervals(locale)}
+      options={options}
       inputRef={forwardedRef}
       {...props}
     />
