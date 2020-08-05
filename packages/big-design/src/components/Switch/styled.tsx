@@ -13,9 +13,6 @@ type SwitchLabelProps = {
   disabled?: boolean;
 };
 
-const getShadow = (checked?: boolean) =>
-  `0px 0px 0px 4px ${checked ? 'rgba(62, 103, 248, 0.2)' : 'rgba(140, 147, 173, 0.2)'};`;
-
 export const StyledSwitchLabel = styled.label<SwitchLabelProps>`
   ${withTransition(['background, border-color'])}
 
@@ -29,13 +26,20 @@ export const StyledSwitchLabel = styled.label<SwitchLabelProps>`
 
   &:hover {
     &::before {
-      box-shadow: ${({ checked }) => getShadow(checked)};
+      ${({ checked, theme }) =>
+        checked
+          ? css`
+              box-shadow: 0px 0px 0px 4px ${theme.helpers.createRGBA(theme.colors.primary, 0.2)};
+            `
+          : css`
+              box-shadow: 0px 0px 0px 4px ${theme.helpers.createRGBA(theme.colors.secondary50, 0.2)};
+            `}
     }
   }
 
   &:focus {
     &::before {
-      box-shadow: 0px 0px 0px 4px rgba(62, 103, 248, 0.2);
+      box-shadow: 0px 0px 0px 4px ${({ theme }) => theme.helpers.createRGBA(theme.colors.primary, 0.2)};
     }
   }
 
@@ -48,6 +52,7 @@ export const StyledSwitchLabel = styled.label<SwitchLabelProps>`
       &:hover {
         &::before {
           ${({ theme }) => theme.shadow.raised}
+
           border-radius: ${({ theme }) => theme.borderRadius.circle};
         }
       }
@@ -84,8 +89,3 @@ export const StyledSwitchLabel = styled.label<SwitchLabelProps>`
 StyledSwitchLabel.defaultProps = {
   theme: defaultTheme,
 };
-
-// &:hover {
-//   blue -> 0px 0px 0px 3px rgba(62, 103, 248, 0.2);
-//   white -> 0px 0px 0px 3px rgba(140, 147, 173, 0.2);
-// }

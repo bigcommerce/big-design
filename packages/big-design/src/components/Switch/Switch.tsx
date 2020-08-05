@@ -12,8 +12,8 @@ interface PrivateProps {
 }
 
 export const RawSwitch: React.FC<SwitchProps & PrivateProps> = ({ checked, disabled, forwardedRef, ...props }) => {
-  const uniqueCheckboxId = useUniqueId('switch');
-  const id = props.id ? props.id : uniqueCheckboxId;
+  const uniqueSwitchId = useUniqueId('switch');
+  const id = props.id ? props.id : uniqueSwitchId;
 
   return (
     <Flex>
