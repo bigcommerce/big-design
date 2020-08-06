@@ -1,0 +1,493 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Switch checked 1`] = `
+.c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c2:focus + label::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
+.c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background,border-color;
+  transition-property: background,border-color;
+  background: #9EB3FC;
+  border-color: #9EB3FC;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  height: 0.875rem;
+  position: relative;
+  width: 2.375rem;
+}
+
+.c3:hover::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
+.c3:focus::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
+.c3::before {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background,-webkit-transform;
+  -webkit-transition-property: background,transform;
+  transition-property: background,transform;
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background: #3C64F4;
+  border-radius: 50%;
+  content: '';
+  height: 1.5rem;
+  left: calc(100% - 1.25rem);
+  position: absolute;
+  top: -0.3125rem;
+  width: 1.5rem;
+}
+
+@media (min-width:0px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:720px) {
+  .c1 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+<div
+  class="c0 c1"
+>
+  <input
+    checked=""
+    class="c2"
+    id="bd-switch-1"
+    type="checkbox"
+  />
+  <label
+    aria-hidden="true"
+    class="c3"
+    for="bd-switch-1"
+  />
+</div>
+`;
+
+exports[`render Switch disabled checked 1`] = `
+.c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c2:focus + label::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
+.c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background,border-color;
+  transition-property: background,border-color;
+  background: #9EB3FC;
+  border-color: #9EB3FC;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  height: 0.875rem;
+  position: relative;
+  width: 2.375rem;
+  background: #DBE3FE;
+  cursor: not-allowed;
+}
+
+.c3:hover::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
+.c3:focus::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
+.c3:hover::before {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  border-radius: 50%;
+}
+
+.c3::before {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background,-webkit-transform;
+  -webkit-transition-property: background,transform;
+  transition-property: background,transform;
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background: #3C64F4;
+  border-radius: 50%;
+  content: '';
+  height: 1.5rem;
+  left: calc(100% - 1.25rem);
+  position: absolute;
+  top: -0.3125rem;
+  width: 1.5rem;
+  background: #9EB3FC;
+  cursor: not-allowed;
+}
+
+@media (min-width:0px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:720px) {
+  .c1 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+<div
+  class="c0 c1"
+>
+  <input
+    checked=""
+    class="c2"
+    disabled=""
+    id="bd-switch-1"
+    type="checkbox"
+  />
+  <label
+    aria-hidden="true"
+    class="c3"
+    disabled=""
+    for="bd-switch-1"
+  />
+</div>
+`;
+
+exports[`render Switch disabled unchecked 1`] = `
+.c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c2:focus + label::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
+.c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background,border-color;
+  transition-property: background,border-color;
+  background: #D9DCE9;
+  border-color: #D9DCE9;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  height: 0.875rem;
+  position: relative;
+  width: 2.375rem;
+  background: #ECEEF5;
+  cursor: not-allowed;
+}
+
+.c3:hover::before {
+  box-shadow: 0px 0px 0px 4px rgba(140,147,173,0.2);
+}
+
+.c3:focus::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
+.c3:hover::before {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  border-radius: 50%;
+}
+
+.c3::before {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background,-webkit-transform;
+  -webkit-transition-property: background,transform;
+  transition-property: background,transform;
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background: #FFFFFF;
+  border-radius: 50%;
+  content: '';
+  height: 1.5rem;
+  left: calc(100% - 1.25rem);
+  position: absolute;
+  top: -0.3125rem;
+  width: 1.5rem;
+  background: #F6F7FC;
+  cursor: not-allowed;
+  -webkit-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+@media (min-width:0px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:720px) {
+  .c1 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+<div
+  class="c0 c1"
+>
+  <input
+    class="c2"
+    disabled=""
+    id="bd-switch-1"
+    type="checkbox"
+  />
+  <label
+    aria-hidden="true"
+    class="c3"
+    disabled=""
+    for="bd-switch-1"
+  />
+</div>
+`;
+
+exports[`render Switch unchecked 1`] = `
+.c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c2:focus + label::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
+.c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background,border-color;
+  transition-property: background,border-color;
+  background: #D9DCE9;
+  border-color: #D9DCE9;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  height: 0.875rem;
+  position: relative;
+  width: 2.375rem;
+}
+
+.c3:hover::before {
+  box-shadow: 0px 0px 0px 4px rgba(140,147,173,0.2);
+}
+
+.c3:focus::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
+.c3::before {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background,-webkit-transform;
+  -webkit-transition-property: background,transform;
+  transition-property: background,transform;
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background: #FFFFFF;
+  border-radius: 50%;
+  content: '';
+  height: 1.5rem;
+  left: calc(100% - 1.25rem);
+  position: absolute;
+  top: -0.3125rem;
+  width: 1.5rem;
+  -webkit-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+@media (min-width:0px) {
+  .c1 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:720px) {
+  .c1 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+<div
+  class="c0 c1"
+>
+  <input
+    class="c2"
+    id="bd-switch-1"
+    type="checkbox"
+  />
+  <label
+    aria-hidden="true"
+    class="c3"
+    for="bd-switch-1"
+  />
+</div>
+`;

@@ -24,6 +24,7 @@ export * from './ProgressCirclePropTable';
 export * from './RadioPropTable';
 export * from './SelectPropTable';
 export * from './StatefulTablePropTable';
+export * from './SwitchPropTable';
 export * from './TablePropTable';
 export * from './TabsPropTable';
 export * from './TextareaPropTable';
