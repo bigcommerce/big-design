@@ -6,6 +6,12 @@ import { withTransition } from '../../mixins/transitions';
 
 export const HiddenCheckbox = styled.input`
   ${hideVisually()}
+
+  ${({ theme }) =>
+    css`
+    &:focus + label::before {
+      box-shadow: 0px 0px 0px 4px ${theme.helpers.createRGBA(theme.colors.primary, 0.2)};
+    `}
 `;
 
 type SwitchLabelProps = {
@@ -87,5 +93,9 @@ export const StyledSwitchLabel = styled.label<SwitchLabelProps>`
 `;
 
 StyledSwitchLabel.defaultProps = {
+  theme: defaultTheme,
+};
+
+HiddenCheckbox.defaultProps = {
   theme: defaultTheme,
 };

@@ -39,6 +39,10 @@ exports[`render Switch checked 1`] = `
   width: 1px;
 }
 
+.c2:focus + label::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
 .c3 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
@@ -149,6 +153,10 @@ exports[`render Switch disabled checked 1`] = `
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.c2:focus + label::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
 }
 
 .c3 {
@@ -275,6 +283,10 @@ exports[`render Switch disabled unchecked 1`] = `
   width: 1px;
 }
 
+.c2:focus + label::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
+}
+
 .c3 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
@@ -399,6 +411,10 @@ exports[`render Switch unchecked 1`] = `
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.c2:focus + label::before {
+  box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
 }
 
 .c3 {
