@@ -28,6 +28,7 @@ export * from './SwitchPropTable';
 export * from './TablePropTable';
 export * from './TabsPropTable';
 export * from './TextareaPropTable';
+export * from './TimepickerPropTable';
 export * from './TooltipPropTable';
 export * from './TreePropTable';
 export * from './TypographyPropTable';

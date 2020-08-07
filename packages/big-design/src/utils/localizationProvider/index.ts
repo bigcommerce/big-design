@@ -1,1 +1,1 @@
-export { createLocalizationProvider } from './localizationProvider';
+export { createLocalizationProvider, getTimeIntervals } from './localizationProvider';

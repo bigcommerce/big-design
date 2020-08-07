@@ -30,6 +30,7 @@ import { MultiSelectProps } from './types';
 export const MultiSelect = typedMemo(
   <T extends any>({
     action,
+    autoWidth = false,
     className,
     disabled,
     filterable = true,
@@ -340,6 +341,7 @@ export const MultiSelect = typedMemo(
                 item: actionItem,
                 index,
               })}
+              autoWidth={autoWidth}
               isAction={true}
               isHighlighted={isHighlighted}
             >
@@ -348,7 +350,7 @@ export const MultiSelect = typedMemo(
           </Box>
         );
       },
-      [getItemProps, highlightedIndex, options.length],
+      [getItemProps, autoWidth, highlightedIndex, options.length],
     );
 
     const renderOptions = useMemo(() => {
@@ -370,6 +372,7 @@ export const MultiSelect = typedMemo(
               item,
               index,
             })}
+            autoWidth={autoWidth}
             checked={isChecked}
             description={item.description}
             isHighlighted={isHighlighted}
@@ -385,7 +388,17 @@ export const MultiSelect = typedMemo(
           />
         );
       });
-    }, [action, addSelectedItem, getItemProps, highlightedIndex, items, removeItem, renderAction, selectedOptions]);
+    }, [
+      action,
+      addSelectedItem,
+      getItemProps,
+      autoWidth,
+      highlightedIndex,
+      items,
+      removeItem,
+      renderAction,
+      selectedOptions,
+    ]);
 
     const renderList = useMemo(() => {
       return (

@@ -32,6 +32,7 @@ import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from './ty
 export const Select = typedMemo(
   <T extends any>({
     action,
+    autoWidth = false,
     className,
     disabled,
     filterable = true,
@@ -306,6 +307,7 @@ export const Select = typedMemo(
                 index,
                 item: actionItem,
               })}
+              autoWidth={autoWidth}
               isAction={true}
               isHighlighted={isHighlighted}
             >
@@ -314,7 +316,7 @@ export const Select = typedMemo(
           </Box>
         );
       },
-      [getItemProps, highlightedIndex, selectOptions.length],
+      [getItemProps, autoWidth, highlightedIndex, selectOptions.length],
     );
 
     const renderOptions = useCallback(
@@ -344,6 +346,7 @@ export const Select = typedMemo(
                 index: key,
                 item,
               })}
+              autoWidth={autoWidth}
               isHighlighted={isHighlighted}
               isSelected={isSelected}
               key={`${content}-${key}`}
@@ -353,7 +356,7 @@ export const Select = typedMemo(
             </ListItem>
           );
         }),
-      [getItemProps, highlightedIndex, selectedOption, selectOptions],
+      [getItemProps, autoWidth, highlightedIndex, selectedOption, selectOptions],
     );
 
     const renderGroup = useCallback(
