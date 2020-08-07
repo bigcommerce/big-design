@@ -1,14 +1,3 @@
-function getTimeIntervals24hr() {
-  const times = ['00:00'];
-
-  for (let i = 1; i < 24; i++) {
-    times.push(`${i}:00`);
-  }
-  times.push('23:59');
-
-  return times.map((time) => ({ value: time, content: time }));
-}
-
 interface LocalizationProviderInterface {
   code?: string;
   localize?: {
@@ -18,6 +7,17 @@ interface LocalizationProviderInterface {
   monthsLong?: string[];
   formatLong?: {};
   formatTime(date: Date): string;
+}
+
+function getTimeIntervals24hr() {
+  const times = ['00:00'];
+
+  for (let i = 1; i < 24; i++) {
+    times.push(`${i}:00`);
+  }
+  times.push('23:59');
+
+  return times.map((time) => ({ value: time, content: time }));
 }
 
 const defaultTimeIntervals = getTimeIntervals24hr();
