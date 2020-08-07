@@ -2,6 +2,7 @@ import React, { forwardRef, memo, Ref, useMemo } from 'react';
 
 import { createLocalizationProvider, getTimeIntervals } from '../../utils';
 import { Select } from '../Select';
+
 interface Props {
   error?: React.ReactNode;
   label?: React.ReactChild;
