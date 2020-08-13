@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.21.2...@bigcommerce/big-design@0.22.0) (2020-08-13)
+
+
+### Features
+
+* **component:** add Switch component  ([#429](https://github.com/bigcommerce/big-design/issues/429)) ([340bcec](https://github.com/bigcommerce/big-design/commit/340bcecdab6d919e2899a30ed50036905a65bf2d))
+* **component:** add Timepicker component ([#425](https://github.com/bigcommerce/big-design/issues/425)) ([23ee544](https://github.com/bigcommerce/big-design/commit/23ee544956719379ac45b0527ef8f73f26df22df))
+
+
+
+
+
 ## [0.21.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.21.1...@bigcommerce/big-design@0.21.2) (2020-07-31)
 
 

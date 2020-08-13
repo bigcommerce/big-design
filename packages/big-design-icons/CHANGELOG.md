@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.12.0...@bigcommerce/big-design-icons@0.13.0) (2020-08-13)
+
+
+### Features
+
+* **icons:** add code, brush and get_app icons ([#433](https://github.com/bigcommerce/big-design/issues/433)) ([bb48f2d](https://github.com/bigcommerce/big-design/commit/bb48f2d6aefa627f35137f6043b582268ac76ef4))
+
+
+
+
+
 # [0.12.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.11.1...@bigcommerce/big-design-icons@0.12.0) (2020-06-16)
 
 
