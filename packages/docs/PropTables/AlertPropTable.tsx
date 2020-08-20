@@ -13,12 +13,12 @@ const alertProps: Prop[] = [
     description: 'Key used to identify alert.',
   },
   {
-    name: 'fadeAway',
+    name: 'autoDismiss',
     types: 'boolean',
     defaultValue: 'false',
     description: (
       <>
-        <Text>Autoclose after 5 seconds.</Text>
+        <Text>Auto dismiss after 5 seconds.</Text>
         <Small>Note: Only valid when used with AlertManager.</Small>
       </>
     ),

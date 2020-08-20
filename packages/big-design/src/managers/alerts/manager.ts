@@ -7,7 +7,7 @@ interface PrivateAlert extends AlertProps {
 }
 
 interface AddAlertConfig extends AlertProps {
-  fadeAway?: boolean;
+  autoDismiss?: boolean;
 }
 
 class AlertsManager {
@@ -42,7 +42,7 @@ class AlertsManager {
 
     this.notifySubscribers();
 
-    if (alert.fadeAway) {
+    if (alert.autoDismiss) {
       setTimeout(onClose, 5000);
     }
 
