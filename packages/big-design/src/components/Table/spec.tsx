@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { Table, TableFigure } from './Table';
 
@@ -9,6 +9,7 @@ interface SimpleTableOptions {
   className?: string;
   columns?: any[];
   dataTestId?: string;
+  emptyComponent?: React.ReactElement;
   headerless?: boolean;
   id?: string;
   itemName?: string;
@@ -19,6 +20,7 @@ const getSimpleTable = ({
   className,
   columns,
   dataTestId,
+  emptyComponent,
   headerless,
   id,
   itemName,
@@ -30,6 +32,7 @@ const getSimpleTable = ({
     id={id}
     headerless={headerless}
     itemName={itemName}
+    emptyComponent={emptyComponent}
     style={style}
     columns={
       columns || [
@@ -443,5 +446,13 @@ describe('sortable', () => {
 
     expect(container.querySelector('th')).toBeInTheDocument();
     expect(container.querySelector('th')).not.toBeVisible();
+  });
+
+  test('renders the emptyComponent when there are no items', () => {
+    const emptyComponent = <p>There are no items!</p>;
+
+    render(getSimpleTable({ columns: [], emptyComponent }));
+
+    expect(screen.getByText(/no items/i)).toBeInTheDocument();
   });
 });

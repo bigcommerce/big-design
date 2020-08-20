@@ -18,6 +18,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     className,
     columns,
     actions,
+    emptyComponent,
     headerless = false,
     id,
     itemName,
@@ -137,6 +138,14 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     </Body>
   );
 
+  const renderEmptyState = () => {
+    if (items.length === 0 || emptyComponent) {
+      return emptyComponent;
+    }
+
+    return null;
+  };
+
   return (
     <>
       {shouldRenderActions() && (
@@ -156,6 +165,8 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
         {renderHeaders()}
         {renderItems()}
       </StyledTable>
+
+      {renderEmptyState()}
     </>
   );
 };
