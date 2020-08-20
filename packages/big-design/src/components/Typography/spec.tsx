@@ -5,7 +5,7 @@ import { render } from '@test/utils';
 
 import 'jest-styled-components';
 
-import { H0, H1, H2, H3, H4, Small, Text } from './Typography';
+import { H0, H1, H2, H3, H4, HR, Small, Text } from './Typography';
 
 test('render H0', () => {
   const { container } = render(<H0>Test</H0>);
@@ -45,6 +45,12 @@ test('render Small', () => {
 
 test('render Text', () => {
   const { container } = render(<Text>Test</Text>);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+test('render HR', () => {
+  const { container } = render(<HR />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
@@ -132,6 +138,13 @@ test('Text - does not forward styles', () => {
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
+test('HR - does not forward styles', () => {
+  const { container } = render(<HR className="test" style={{ background: 'red' }} />);
+
+  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.firstChild).not.toHaveStyle('background: red');
+});
+
 test('All typography components allow changing their color given a color prop', () => {
   const { container } = render(
     <>
@@ -147,6 +160,18 @@ test('All typography components allow changing their color given a color prop', 
   Array.from(container.children).forEach((child) => {
     expect(child).toHaveStyle(`color: ${theme.colors.primary}`);
   });
+});
+
+test('HR allows changing its color given a color prop', () => {
+  const { container } = render(<HR color="primary" />);
+
+  expect(container.firstChild).toHaveStyle(`border-bottom: 1px solid ${theme.colors.primary}`);
+});
+
+test('HR can change its margins given a margin prop', () => {
+  const { container } = render(<HR marginTop="medium" />);
+
+  expect(container.firstChild).toHaveStyle(`margin-top: ${theme.spacing.medium}`);
 });
 
 test('Headings can change their tag', () => {
