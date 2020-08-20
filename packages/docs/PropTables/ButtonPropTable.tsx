@@ -67,6 +67,12 @@ const buttonProps: Prop[] = [
     description: 'Used to determine if component is in a loading state.',
   },
   {
+    name: 'mobileWidth',
+    types: ['auto', '100%'],
+    defaultValue: '100%',
+    description: 'Determines the width in mobile viewport.',
+  },
+  {
     name: 'variant',
     types: ['primary', 'secondary', 'subtle'],
     defaultValue: 'primary',

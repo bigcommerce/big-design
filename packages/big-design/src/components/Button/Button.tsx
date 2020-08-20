@@ -15,6 +15,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, Ma
   iconOnly?: React.ReactNode;
   iconRight?: React.ReactNode;
   isLoading?: boolean;
+  mobileWidth?: 'auto' | '100%';
   variant?: 'primary' | 'secondary' | 'subtle';
 }
 
@@ -57,9 +58,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, s
 ));
 
 const defaultProps = {
-  actionType: 'normal' as 'normal',
+  actionType: 'normal' as const,
   isLoading: false,
-  variant: 'primary' as 'primary',
+  mobileWidth: '100%' as const,
+  variant: 'primary' as const,
 };
 
 Button.displayName = 'Button';
