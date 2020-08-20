@@ -86,6 +86,13 @@ const textProps: Prop[] = [
   },
 ];
 
+const hrProps: Prop[] = [
+  {
+    ...typographyProps[0],
+    defaultValue: 'secondary30',
+  },
+];
+
 export const TypographyPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Typography" propList={typographyProps} {...props} />
 );
@@ -96,4 +103,8 @@ export const HeadingPropTable: React.FC<PropTableWrapper> = (props) => (
 
 export const TextPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Text" propList={textProps} {...props} />
+);
+
+export const HRPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable title="HR" propList={hrProps} {...props} />
 );
