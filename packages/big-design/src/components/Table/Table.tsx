@@ -139,7 +139,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   );
 
   const renderEmptyState = () => {
-    if (items.length === 0 || emptyComponent) {
+    if (items.length === 0 && emptyComponent) {
       return emptyComponent;
     }
 
