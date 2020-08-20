@@ -1,3 +1,4 @@
+import { theme } from '@bigcommerce/big-design-theme';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
@@ -67,6 +68,16 @@ test('has clearfix prop', () => {
   const { container } = render(<Box clearfix />);
 
   expect(container.firstChild).toMatchSnapshot();
+});
+
+test('has zIndex props', () => {
+  const { container, rerender } = render(<Box zIndex="sticky" />);
+
+  expect(container.firstChild).toHaveStyle(`z-index: ${theme.zIndex.sticky}`);
+
+  rerender(<Box zIndex="popover" />);
+
+  expect(container.firstChild).toHaveStyle(`z-index: ${theme.zIndex.popover}`);
 });
 
 test('renders as a different tag', () => {
