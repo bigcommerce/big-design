@@ -19,6 +19,7 @@ export * from './MultiSelectPropTable';
 export * from './PaddingPropTable';
 export * from './PaginationPropTable';
 export * from './PanelPropTable';
+export * from './PopoverPropTable';
 export * from './ProgressBarPropTable';
 export * from './ProgressCirclePropTable';
 export * from './RadioPropTable';
