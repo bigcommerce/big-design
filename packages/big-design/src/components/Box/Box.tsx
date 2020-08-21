@@ -1,4 +1,4 @@
-import { Border, BorderRadius, Colors, Shadow } from '@bigcommerce/big-design-theme';
+import { Border, BorderRadius, Colors, Shadow, ZIndex } from '@bigcommerce/big-design-theme';
 import React, { forwardRef, HTMLAttributes, memo } from 'react';
 
 import { DisplayProps, MarginProps, PaddingProps } from '../../mixins';
@@ -16,6 +16,7 @@ export interface BoxProps extends HTMLAttributes<HTMLDivElement>, DisplayProps, 
   borderTop?: keyof Border;
   borderRadius?: keyof BorderRadius;
   clearfix?: boolean;
+  zIndex?: keyof ZIndex;
 }
 
 interface PrivateProps {

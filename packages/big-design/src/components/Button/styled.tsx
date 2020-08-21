@@ -36,7 +36,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: 100%;
+  width: ${({ mobileWidth }) => (mobileWidth === 'auto' ? 'auto' : '100%')};
 
   &:focus {
     outline: none;
@@ -48,7 +48,8 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   }
 
   & + .bd-button {
-    margin-top: ${({ theme }) => theme.spacing.xSmall};
+    margin-top: ${({ mobileWidth, theme }) => mobileWidth === '100%' && theme.spacing.xSmall};
+    margin-left: ${({ mobileWidth, theme }) => mobileWidth === 'auto' && theme.spacing.xSmall};
 
     ${({ theme }) => theme.breakpoints.tablet} {
       margin-top: ${({ theme }) => theme.spacing.none};

@@ -75,11 +75,11 @@ describe('alertsManager functionality', () => {
     }
   });
 
-  test('removes an alert with fadeAway', (done) => {
+  test('removes an alert with autoDismiss', (done) => {
     jest.useFakeTimers();
 
     const mockSubscriber = jest.fn();
-    const testAlert = { ...alert, fadeAway: true, onClose: done, key: 'test-key' };
+    const testAlert = { ...alert, autoDismiss: true, onClose: done, key: 'test-key' };
 
     alertsManager.subscribe(mockSubscriber);
 
