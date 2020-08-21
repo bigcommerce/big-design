@@ -3,7 +3,7 @@ import { remCalc } from '@bigcommerce/big-design-theme';
 import React, { Fragment } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen, waitForElement } from '@test/utils';
 
 import { Button } from '../Button';
 
@@ -14,10 +14,10 @@ const onItemClick = jest.fn();
 const DropdownMock = (
   <Dropdown
     items={[
-      { content: 'Option', onItemClick },
-      { content: 'Option', onItemClick },
-      { content: 'Option', onItemClick, actionType: 'destructive' },
-      { content: 'Option', onItemClick, icon: <CheckCircleIcon /> },
+      { content: 'Option 1', onItemClick },
+      { content: 'Option 2', onItemClick },
+      { content: 'Option 3', onItemClick, actionType: 'destructive' },
+      { content: 'Option 4', onItemClick, icon: <CheckCircleIcon /> },
     ]}
     toggle={<Button>Button</Button>}
   />
@@ -77,13 +77,15 @@ test('dropdown toggle has aria-haspopup', () => {
   expect(toggle.getAttribute('aria-haspopup')).toBe('listbox');
 });
 
-test('dropdown toggle has aria-expanded when dropdown menu is open', () => {
+test('dropdown toggle has aria-expanded when dropdown menu is open', async () => {
   const { getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
 
   fireEvent.click(toggle);
 
   expect(toggle.getAttribute('aria-expanded')).toBe('true');
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
 test('renders the dropdown menu closed', () => {
@@ -103,25 +105,29 @@ test('opens/closes dropdown menu when toggle is clicked', () => {
   expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
-test('dropdown menu has aria-activedescendant', () => {
+test('dropdown menu has aria-activedescendant', async () => {
   const { getAllByRole, getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
 
   const options = getAllByRole('option');
   expect(getByRole('listbox').getAttribute('aria-activedescendant')).toBe(options[0].id);
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('dropdown menu should have 4 dropdown items', () => {
+test('dropdown menu should have 4 dropdown items', async () => {
   const { getAllByRole, getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
 
   const options = getAllByRole('option');
   expect(options.length).toBe(4);
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('should accept a maxHeight prop', () => {
+test('should accept a maxHeight prop', async () => {
   const { getByRole } = render(
     <Dropdown
       items={[
@@ -138,9 +144,11 @@ test('should accept a maxHeight prop', () => {
 
   const list = getByRole('listbox');
   expect(list).toHaveStyleRule('max-height', remCalc(350));
+
+  await waitForElement(() => screen.getByRole('option', { name: /foo/i }));
 });
 
-test('should default max-height to 250', () => {
+test('should default max-height to 250', async () => {
   const { getByRole } = render(DropdownMock);
 
   const toggle = getByRole('button');
@@ -148,9 +156,11 @@ test('should default max-height to 250', () => {
 
   const list = getByRole('listbox');
   expect(list).toHaveStyleRule('max-height', remCalc(250));
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('dropdown items should immediately rerender when prop changes', () => {
+test('dropdown items should immediately rerender when prop changes', async () => {
   const { getAllByRole, getByRole, rerender } = render(DropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
@@ -170,18 +180,22 @@ test('dropdown items should immediately rerender when prop changes', () => {
 
   options = getAllByRole('option');
   expect(options.length).toBe(2);
+
+  await waitForElement(() => screen.getByRole('option', { name: /foo/i }));
 });
 
-test('first dropdown item should be selected when dropdown is opened', () => {
+test('first dropdown item should be selected when dropdown is opened', async () => {
   const { getByRole, getAllByRole } = render(DropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
 
   const option = getAllByRole('option')[0];
   expect(option.getAttribute('aria-selected')).toBe('true');
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('up/down arrows should change dropdown item selection', () => {
+test('up/down arrows should change dropdown item selection', async () => {
   const { getAllByRole, getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
@@ -197,6 +211,8 @@ test('up/down arrows should change dropdown item selection', () => {
 
   fireEvent.keyDown(menu, { key: 'ArrowUp' });
   expect(options[3].getAttribute('aria-selected')).toBe('true');
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
 test('esc should close menu', () => {
@@ -226,7 +242,7 @@ test('blurring list should close menu', () => {
   expect(queryByRole('listbox')).not.toBeInTheDocument();
 });
 
-test('home should select first dropdown item', () => {
+test('home should select first dropdown item', async () => {
   const { getAllByRole, getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
@@ -242,9 +258,11 @@ test('home should select first dropdown item', () => {
   fireEvent.keyDown(menu, { key: 'Home' });
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(menu.getAttribute('aria-activedescendant')).toEqual(options[0].id);
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('end should select last dropdown item', () => {
+test('end should select last dropdown item', async () => {
   const { getAllByRole, getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
@@ -257,6 +275,8 @@ test('end should select last dropdown item', () => {
   fireEvent.keyDown(menu, { key: 'End' });
   expect(options[3].getAttribute('aria-selected')).toBe('true');
   expect(menu.getAttribute('aria-activedescendant')).toEqual(options[3].id);
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
 test('enter should toggle onItemClick', () => {
@@ -271,7 +291,7 @@ test('enter should toggle onItemClick', () => {
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 
   fireEvent.keyDown(menu, { key: 'Enter' });
-  expect(onItemClick).toHaveBeenCalledWith({ content: 'Option', onItemClick });
+  expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
 });
 
 test('clicking on dropdown items should toggle onItemClick', () => {
@@ -281,10 +301,10 @@ test('clicking on dropdown items should toggle onItemClick', () => {
 
   const options = getAllByRole('option');
   fireEvent.click(options[1]);
-  expect(onItemClick).toHaveBeenCalledWith({ content: 'Option', onItemClick });
+  expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
 });
 
-test('dropdown items should be highlighted when moused over', () => {
+test('dropdown items should be highlighted when moused over', async () => {
   const { getByRole, getAllByRole } = render(DropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
@@ -293,16 +313,18 @@ test('dropdown items should be highlighted when moused over', () => {
   fireEvent.mouseOver(options[0]);
 
   expect(options[0].getAttribute('aria-selected')).toBe('true');
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('dropdown menu renders 4 link when passed options of type link', () => {
+test('dropdown menu renders 4 link when passed options of type link', async () => {
   const { container, getByRole } = render(
     <Dropdown
       items={[
-        { content: 'Option', url: '#', type: 'link' },
-        { content: 'Option', url: '#', type: 'link' },
-        { content: 'Option', url: '#', type: 'link' },
-        { content: 'Option', url: '#', type: 'link' },
+        { content: 'Option 1', url: '#', type: 'link' },
+        { content: 'Option 2', url: '#', type: 'link' },
+        { content: 'Option 3', url: '#', type: 'link' },
+        { content: 'Option 4', url: '#', type: 'link' },
       ]}
       toggle={<Button>Button</Button>}
     />,
@@ -317,29 +339,40 @@ test('dropdown menu renders 4 link when passed options of type link', () => {
   options.forEach((option) => {
     expect(option.getAttribute('href')).toBe('#');
   });
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('items renders icons', () => {
+test('items renders icons', async () => {
   const { container, getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
 
   const svg = container.querySelectorAll('svg');
   expect(svg.length).toBe(1);
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('does not forward styles', () => {
+test('does not forward styles', async () => {
   const { container, getByRole } = render(
-    <Dropdown className="test" style={{ background: 'red' }} items={[]} toggle={<Button>Button</Button>} />,
+    <Dropdown
+      className="test"
+      style={{ background: 'red' }}
+      items={[{ content: 'Option 1', url: '#', type: 'link' }]}
+      toggle={<Button>Button</Button>}
+    />,
   );
   const toggle = getByRole('button');
   fireEvent.click(toggle);
 
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(getByRole('listbox')).not.toHaveStyle('background: red');
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('renders tooltip with disabled item', () => {
+test('renders tooltip with disabled item', async () => {
   const tooltipContent = 'Option with tooltip';
   const tooltipText = 'This is tooltip message';
   const { getByRole, getByText } = render(
@@ -363,9 +396,11 @@ test('renders tooltip with disabled item', () => {
   fireEvent.mouseEnter(getByText(tooltipContent));
 
   expect(getByText(tooltipText)).toBeInTheDocument();
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test("doesn't render tooltip on enabled item", () => {
+test("doesn't render tooltip on enabled item", async () => {
   const tooltipContent = 'Option with tooltip';
   const tooltipText = 'This is tooltip message';
   const { getByRole, getByText, queryByText } = render(
@@ -388,9 +423,11 @@ test("doesn't render tooltip on enabled item", () => {
   fireEvent.mouseEnter(getByText(tooltipContent));
 
   expect(queryByText(tooltipText)).not.toBeInTheDocument();
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('no errors expected if all options are disabled', () => {
+test('no errors expected if all options are disabled', async () => {
   const { getByRole } = render(
     <Dropdown
       items={[
@@ -402,12 +439,12 @@ test('no errors expected if all options are disabled', () => {
   );
 
   const toggle = getByRole('button');
-  expect(() => {
-    fireEvent.click(toggle);
-  }).not.toThrow();
+  expect(() => fireEvent.click(toggle)).not.toThrow();
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('dropdown should have 2 group labels, render uppercased', () => {
+test('dropdown should have 2 group labels, render uppercased', async () => {
   const { getByRole, getByText } = render(GroupedDropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
@@ -419,9 +456,11 @@ test('dropdown should have 2 group labels, render uppercased', () => {
   expect(label1).toHaveStyle('text-transform: uppercase');
   expect(label2).toBeInTheDocument();
   expect(label2).toHaveStyle('text-transform: uppercase');
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('group labels are grayed out', () => {
+test('group labels are grayed out', async () => {
   const { getByRole, getByText } = render(GroupedDropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
@@ -431,9 +470,11 @@ test('group labels are grayed out', () => {
 
   expect(label1).toHaveStyle('color: #8C93AD');
   expect(label2).toHaveStyle('color: #8C93AD');
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('group labels are skipped over when using keyboard to navigate options', () => {
+test('group labels are skipped over when using keyboard to navigate options', async () => {
   const { getAllByRole, getByRole } = render(GroupedDropdownMock);
   const toggle = getByRole('button');
 
@@ -447,9 +488,11 @@ test('group labels are skipped over when using keyboard to navigate options', ()
   fireEvent.keyDown(menu, { key: 'ArrowDown' });
 
   expect(options[3].getAttribute('aria-selected')).toBe('true');
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('clicking label does not call onItemClick', () => {
+test('clicking label does not call onItemClick', async () => {
   const { getByRole, getByText } = render(GroupedDropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
@@ -459,4 +502,6 @@ test('clicking label does not call onItemClick', () => {
   fireEvent.click(label1);
 
   expect(onItemClick).not.toHaveBeenCalled();
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
