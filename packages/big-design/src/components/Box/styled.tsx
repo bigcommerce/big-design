@@ -57,6 +57,12 @@ export const StyledBox = styled.div<BoxProps>`
     css`
       border-radius: ${theme.borderRadius[borderRadius]};
     `};
+
+  ${({ zIndex, theme }) =>
+    zIndex &&
+    css`
+      z-index: ${theme.zIndex[zIndex]};
+    `};
 `;
 
 StyledBox.defaultProps = { theme: defaultTheme };
