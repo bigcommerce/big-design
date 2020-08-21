@@ -167,6 +167,9 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Padding/PaddingPage" as="/padding">
             Padding
           </SideNavLink>
+          <SideNavLink href="/Popover/PopoverPage" as="/popover">
+            Popover
+          </SideNavLink>
         </SideNavGroup>
 
         <SideNavGroup title="Helpful Links">
