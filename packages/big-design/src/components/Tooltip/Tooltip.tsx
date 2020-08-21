@@ -1,3 +1,4 @@
+import { Placement } from '@popperjs/core';
 import React, { HTMLAttributes, memo, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Manager, Popper, PopperProps, Reference } from 'react-popper';
@@ -7,9 +8,9 @@ import { Small } from '../Typography';
 import { StyledTooltip, StyledTooltipTrigger } from './styled';
 
 export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
-  placement: PopperProps['placement'];
+  placement: Placement;
   trigger: React.ReactChild;
-  modifiers?: PopperProps['modifiers'];
+  modifiers?: PopperProps<any>['modifiers'];
   inline?: boolean;
 }
 
