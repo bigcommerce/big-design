@@ -1,6 +1,7 @@
 export {
   StyleableText,
   StyleableSmall,
+  StyleableHR,
   StyleableH0,
   StyleableH1,
   StyleableH2,

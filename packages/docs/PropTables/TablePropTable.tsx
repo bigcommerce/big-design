@@ -74,6 +74,11 @@ const tableProps: Prop[] = [
     types: 'React.ComponentType<any>',
     description: 'Component to render custom actions.',
   },
+  {
+    name: 'emptyComponent',
+    types: 'React.ReactElement',
+    description: 'Component to render when there are no items.',
+  },
 ];
 
 const tableColumnsProps: Prop[] = [

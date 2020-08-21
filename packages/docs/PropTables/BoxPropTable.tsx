@@ -1,3 +1,4 @@
+import { Small, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
@@ -64,6 +65,16 @@ const boxProps: Prop[] = [
     name: 'clearfix',
     types: ['boolean'],
     description: 'Adds a clearfix for floating internal elements.',
+  },
+  {
+    name: 'zIndex',
+    types: ['sticky', 'fixed', 'modalBackdrop', 'modal', 'tooltip', 'popover'],
+    description: (
+      <>
+        <Text>Determines type of z-index to be applied.</Text>
+        <Small>Types are in order (sticky is low, popover is high).</Small>
+      </>
+    ),
   },
 ];
 
