@@ -1,14 +1,16 @@
 import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { Table, TableFigure } from './Table';
 
 interface SimpleTableOptions {
   className?: string;
   columns?: any[];
+  items?: any[];
   dataTestId?: string;
+  emptyComponent?: React.ReactElement;
   headerless?: boolean;
   id?: string;
   itemName?: string;
@@ -19,9 +21,11 @@ const getSimpleTable = ({
   className,
   columns,
   dataTestId,
+  emptyComponent,
   headerless,
   id,
   itemName,
+  items,
   style,
 }: SimpleTableOptions = {}) => (
   <Table
@@ -30,6 +34,7 @@ const getSimpleTable = ({
     id={id}
     headerless={headerless}
     itemName={itemName}
+    emptyComponent={emptyComponent}
     style={style}
     columns={
       columns || [
@@ -38,13 +43,15 @@ const getSimpleTable = ({
         { header: 'Stock', render: ({ stock }) => stock },
       ]
     }
-    items={[
-      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
-      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
-      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
-      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
-    ]}
+    items={
+      items || [
+        { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+        { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+        { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+        { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+        { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+      ]
+    }
   />
 );
 
@@ -443,5 +450,21 @@ describe('sortable', () => {
 
     expect(container.querySelector('th')).toBeInTheDocument();
     expect(container.querySelector('th')).not.toBeVisible();
+  });
+
+  test('renders the emptyComponent when there are no items', () => {
+    const emptyComponent = <p>There are no items!</p>;
+
+    render(getSimpleTable({ items: [], emptyComponent }));
+
+    expect(screen.getByText(/no items/i)).toBeInTheDocument();
+  });
+
+  test('does not render emptyComponent if there are items', () => {
+    const emptyComponent = <p>There are no items!</p>;
+
+    render(getSimpleTable({ emptyComponent }));
+
+    expect(screen.queryByText(/no items/i)).not.toBeInTheDocument();
   });
 });

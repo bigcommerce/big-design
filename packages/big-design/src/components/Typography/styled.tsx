@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import { withMargins } from '../../mixins';
 
-import { HeadingProps, TextProps, TypographyProps } from './types';
+import { HeadingProps, HRProps, TextProps, TypographyProps } from './types';
 
 const commonTextStyles = (props: TypographyProps) => css`
   color: ${({ theme }) => (props.color ? theme.colors[props.color] : theme.colors.secondary70)};
@@ -132,6 +132,14 @@ export const StyledSmall = styled.p<TextProps>`
   ${withMargins()};
 `;
 
+export const StyledHR = styled.hr<HRProps>`
+  ${withMargins()};
+
+  border: 0;
+  border-bottom: 1px solid
+    ${({ color, theme }) => (color && color in theme.colors ? theme.colors[color] : theme.colors.secondary30)};
+`;
+
 StyledH0.defaultProps = { theme: defaultTheme };
 StyledH1.defaultProps = { theme: defaultTheme };
 StyledH2.defaultProps = { theme: defaultTheme };
@@ -139,3 +147,4 @@ StyledH3.defaultProps = { theme: defaultTheme };
 StyledH4.defaultProps = { theme: defaultTheme };
 StyledText.defaultProps = { theme: defaultTheme };
 StyledSmall.defaultProps = { theme: defaultTheme };
+StyledHR.defaultProps = { theme: defaultTheme };

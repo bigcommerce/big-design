@@ -1,8 +1,8 @@
-import { Box, H0, H1, H2, H3, H4, Link, Small, Text } from '@bigcommerce/big-design';
+import { Box, H0, H1, H2, H3, H4, HR, Link, Small, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview, NextLink } from '../../components';
-import { HeadingPropTable, MarginPropTable, TextPropTable, TypographyPropTable } from '../../PropTables';
+import { HeadingPropTable, HRPropTable, MarginPropTable, TextPropTable, TypographyPropTable } from '../../PropTables';
 
 const TypographyPage = () => (
   <>
@@ -46,6 +46,18 @@ const TypographyPage = () => (
     <TextPropTable />
     <H2>Inherited Props</H2>
     <TypographyPropTable collapsible />
+    <MarginPropTable collapsible />
+
+    <H1>HR</H1>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <HR marginVertical="large" />
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
+    <HRPropTable />
+    <H2>Inherited Props</H2>
     <MarginPropTable collapsible />
 
     <H1>Examples</H1>

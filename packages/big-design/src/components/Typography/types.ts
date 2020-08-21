@@ -55,3 +55,9 @@ export type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> &
   TypographyProps & {
     as?: HeadingTag;
   };
+
+export type HRProps = React.HTMLAttributes<HTMLHRElement> &
+  MarginProps & {
+    color?: keyof Colors;
+    themne?: ThemeInterface;
+  };
