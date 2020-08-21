@@ -84,6 +84,17 @@ exports[`render H4 1`] = `
 </h4>
 `;
 
+exports[`render HR 1`] = `
+.c0 {
+  border: 0;
+  border-bottom: 1px solid #D9DCE9;
+}
+
+<hr
+  class="c0"
+/>
+`;
+
 exports[`render Small 1`] = `
 .c0 {
   color: #313440;
