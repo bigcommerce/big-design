@@ -505,3 +505,26 @@ test('clicking label does not call onItemClick', async () => {
 
   await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
+
+test('renders appropriate amount of list items', async () => {
+  const { getByRole, container } = render(
+    <Dropdown
+      items={[
+        {
+          label: 'Label 1',
+          items: [{ content: 'Option 1', onItemClick }],
+        },
+        {
+          items: [{ content: 'Option 2', onItemClick }],
+        },
+      ]}
+      toggle={<Button>Button</Button>}
+    />,
+  );
+  const toggle = getByRole('button');
+  fireEvent.click(toggle);
+
+  const listItems = await waitForElement(() => container.querySelectorAll('li'));
+
+  expect(listItems.length).toBe(3);
+});

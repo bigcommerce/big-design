@@ -146,7 +146,7 @@ export const Dropdown = memo(
       (group: DropdownItemGroup) => {
         return (
           <>
-            <ListGroupHeader>{group.label}</ListGroupHeader>
+            {group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
             {renderItems(group.items)}
           </>
         );
