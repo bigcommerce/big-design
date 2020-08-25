@@ -18,7 +18,7 @@ jest.mock('./src/utils', () => {
   let counter = 0;
 
   return {
-    ...jest.requireActual('./src/utils'),
+    ...jest.requireActual<any>('./src/utils'),
     warning: jest.fn(),
     resetCounter: () => (counter = 0),
     uniqueId: (context: string) => {

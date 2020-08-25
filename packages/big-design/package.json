@@ -80,7 +80,7 @@
     "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2",
     "styled-components": "^4.3.0",
-    "typescript": "^3.8.3",
+    "typescript": "~3.8.3",
     "typescript-styled-plugin": "^0.15.0"
   }
 }
