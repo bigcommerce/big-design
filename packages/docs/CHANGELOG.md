@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.22.0...@bigcommerce/docs@0.23.0) (2020-08-25)
+
+
+### Features
+
+* **component:** add emptyComponent prop to Table ([#436](https://github.com/bigcommerce/big-design/issues/436)) ([d1e877d](https://github.com/bigcommerce/big-design/commit/d1e877d71783c504267737bf40acbd4fc689f6e1))
+* **component:** add HR component ([#438](https://github.com/bigcommerce/big-design/issues/438)) ([eb657fc](https://github.com/bigcommerce/big-design/commit/eb657fca18824ecc2ea8756cef1d06645115ce30))
+* **component:** add mobileWidth prop to Button ([#435](https://github.com/bigcommerce/big-design/issues/435)) ([f04e120](https://github.com/bigcommerce/big-design/commit/f04e120f3fa1613b1e76b736374423c2bee780b5))
+* **component:** add zIndex prop to Box ([#439](https://github.com/bigcommerce/big-design/issues/439)) ([c025900](https://github.com/bigcommerce/big-design/commit/c025900d9562d5e3b0deafa127df28f277caeef9))
+* **component:** rename alertManager's fadeAway to autoDismiss ([#437](https://github.com/bigcommerce/big-design/issues/437)) ([11b1dff](https://github.com/bigcommerce/big-design/commit/11b1dff42f686b9241a2f508fb546b32db5d45d8))
+* **docs:** adds docs for Popover ([b37d109](https://github.com/bigcommerce/big-design/commit/b37d109c63b159ad91834d2e15b69a6d0237e0c6))
+
+
+### BREAKING CHANGES
+
+* **component:** If you are using alertManager's `fadeAway` option you will need to change it to `autoDismiss`.
+
+
+
+
+
 # [0.22.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.21.2...@bigcommerce/docs@0.22.0) (2020-08-13)
 
 
