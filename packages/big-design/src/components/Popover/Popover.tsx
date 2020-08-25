@@ -91,7 +91,7 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
             state.elements.popper.style.width = `${element.offsetWidth}px`;
           }
         },
-      } as Modifier<unknown>,
+      } as Modifier<unknown, unknown>,
     ],
     [offsetX, offsetY, matchAnchorElementWidth],
   );

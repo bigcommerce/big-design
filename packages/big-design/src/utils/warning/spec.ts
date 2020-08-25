@@ -3,7 +3,7 @@ import { warning } from './warning';
 const consoleError = jest.spyOn(console, 'warn').mockImplementation(jest.fn);
 
 jest.mock('./warning', () => ({
-  ...jest.requireActual('./warning'),
+  ...jest.requireActual<any>('./warning'),
 }));
 
 test('warning should throw a console.error', () => {
