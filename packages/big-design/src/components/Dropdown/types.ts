@@ -29,6 +29,6 @@ export interface DropdownLinkItem extends BaseItem {
 }
 
 export interface DropdownItemGroup {
-  label: string;
+  label?: string;
   items: Array<DropdownItem | DropdownLinkItem>;
 }
