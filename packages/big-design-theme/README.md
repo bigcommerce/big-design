@@ -29,6 +29,22 @@ or with `yarn`:
 yarn add @bigcommerce/big-design-theme styled-components
 ```
 
+```tsx
+// index.tsx
+
+import { theme } from '@bigcommerce/big-design-theme';
+import { ThemeProvider } from 'styled-components';
+
+// ...
+
+ReactDOM.render(
+  <ThemeProvider theme={theme}>
+      <App />
+  </ThemeProvider>,
+  document.getElementById('root'),
+);
+```
+
 #### Using a different html font size
 
 When your app uses an html font size different than `16px` you will need to create a new theme that uses
