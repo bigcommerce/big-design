@@ -7,6 +7,7 @@ import { Flex } from '../Flex';
 import { FlexItem } from '../Flex/Item';
 import { List } from '../List';
 import { ListGroupHeader } from '../List/GroupHeader';
+import { ListGroupSeparator } from '../List/GroupSeparator';
 import { ListItem } from '../List/Item';
 import { Tooltip } from '../Tooltip';
 
@@ -146,6 +147,7 @@ export const Dropdown = memo(
       (group: DropdownItemGroup) => {
         return (
           <>
+            {group.separated && <ListGroupSeparator />}
             {group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
             {renderItems(group.items)}
           </>
