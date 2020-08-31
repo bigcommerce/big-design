@@ -30,5 +30,6 @@ export interface DropdownLinkItem extends BaseItem {
 
 export interface DropdownItemGroup {
   label?: string;
+  separated?: boolean;
   items: Array<DropdownItem | DropdownLinkItem>;
 }
