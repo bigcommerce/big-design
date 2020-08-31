@@ -47,6 +47,22 @@ const GroupedDropdownMock = (
   />
 );
 
+const LineSeparatedGroupedDropdownMock = (
+  <Dropdown
+    items={[
+      {
+        label: 'Label 1',
+        items: [{ content: 'Option 1', onItemClick }],
+      },
+      {
+        separated: true,
+        items: [{ content: 'Option 2', onItemClick }],
+      },
+    ]}
+    toggle={<Button>Button</Button>}
+  />
+);
+
 test('renders dropdown toggle', () => {
   const { getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
@@ -527,4 +543,24 @@ test('renders appropriate amount of list items', async () => {
   const listItems = await waitForElement(() => container.querySelectorAll('li'));
 
   expect(listItems.length).toBe(3);
+});
+
+test('rendered line separators have correct accessibility properties', async () => {
+  const { getByRole, container } = render(LineSeparatedGroupedDropdownMock);
+  const toggle = getByRole('button');
+  fireEvent.click(toggle);
+
+  const hrListItem = await waitForElement(() => container.querySelectorAll('hr')[0].parentElement as HTMLElement);
+  expect(hrListItem.getAttribute('aria-hidden')).toBe('true');
+  expect(hrListItem.getAttribute('tabindex')).toBe('-1');
+});
+
+test('rendered line separators cannot be focused on', async () => {
+  const { getByRole, container } = render(LineSeparatedGroupedDropdownMock);
+  const toggle = getByRole('button');
+  fireEvent.click(toggle);
+
+  const hrListItem = await waitForElement(() => container.querySelectorAll('hr')[0].parentElement as HTMLElement);
+  fireEvent.mouseOver(hrListItem);
+  expect(document.activeElement).not.toEqual(hrListItem);
 });
