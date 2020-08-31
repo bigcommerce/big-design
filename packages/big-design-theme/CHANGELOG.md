@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.10.0...@bigcommerce/big-design-theme@0.10.1) (2020-08-31)
+
+
+### Features
+
+* **theme:** add DefaultTheme extension types ([cdfeb49](https://github.com/bigcommerce/big-design/commit/cdfeb493973cce48ed92e30951be2b8bc87ed194))
+
+
+
+
+
 # [0.10.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.9.0...@bigcommerce/big-design-theme@0.10.0) (2020-06-16)
 
 **Note:** Version bump only for package @bigcommerce/big-design-theme

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.23.0...@bigcommerce/docs@0.23.1) (2020-08-31)
+
+
+### Bug Fixes
+
+* **component:** allow Dropdown groups to have optional `label` ([1b12288](https://github.com/bigcommerce/big-design/commit/1b12288842143ebfab7b146caa94f4bf6f9acd94))
+
+
+### Features
+
+* **component:** add hr to dropdown when separated flag is true ([#445](https://github.com/bigcommerce/big-design/issues/445)) ([4123553](https://github.com/bigcommerce/big-design/commit/4123553137f82758537ffb192de57de78769531e))
+
+
+
+
+
 # [0.23.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.22.0...@bigcommerce/docs@0.23.0) (2020-08-25)
 
 
