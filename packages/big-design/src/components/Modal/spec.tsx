@@ -280,3 +280,11 @@ test('unmounts appropriately', () => {
   // Make sure mouse events still work for other components
   expect(onClick).toHaveBeenCalledTimes(1);
 });
+
+test('body overflowY should reset on unmount', () => {
+  const { unmount } = render(<Modal isOpen={true} />);
+
+  expect(document.body.style.overflowY).toEqual('hidden');
+  unmount();
+  expect(document.body.style.overflowY).toEqual('');
+});

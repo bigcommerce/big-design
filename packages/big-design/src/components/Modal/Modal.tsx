@@ -1,6 +1,6 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import focusTrap, { FocusTrap } from 'focus-trap';
-import React, { createRef, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { useUniqueId } from '../../hooks';
@@ -33,134 +33,126 @@ export interface ModalAction extends Omit<ButtonProps, 'children'> {
   text?: string;
 }
 
-export const Modal: React.FC<ModalProps> = typedMemo(
-  ({
-    actions,
-    backdrop = true,
-    children,
-    closeOnClickOutside = false,
-    closeOnEscKey = true,
-    header,
-    isOpen = false,
-    onClose = () => null,
-    variant = 'modal',
-  }) => {
-    const initialBodyOverflowYRef = useRef('');
-    const [internalTrap, setInternalTrap] = useState<FocusTrap | null>(null);
-    const [modalContainer, setModalContainer] = useState<HTMLDivElement | null>(null);
-    const headerUniqueId = useUniqueId('modal_header');
-    const modalRef = createRef<HTMLDivElement>();
-    const previousFocus = useRef(typeof document !== 'undefined' ? document.activeElement : null);
+export const Modal: React.FC<ModalProps> = typedMemo((props) => {
+  const [modalContainer, setModalContainer] = useState<HTMLDivElement | null>(null);
 
-    const onClickAway = (event: React.MouseEvent) => {
-      if (closeOnClickOutside && modalRef.current === event.target) {
-        onClose();
+  useEffect(() => {
+    const container = document.createElement('div');
+
+    document.body.appendChild(container);
+    setModalContainer(container);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (modalContainer) {
+        document.body.removeChild(modalContainer);
       }
     };
+  }, [modalContainer]);
 
-    const onKeyDown = (event: React.KeyboardEvent) => {
-      if (closeOnEscKey && event.key === 'Escape') {
-        onClose();
-      }
+  return props.isOpen && modalContainer ? createPortal(<InternalModal {...props} />, modalContainer) : null;
+});
+
+const InternalModal: React.FC<ModalProps> = ({
+  actions,
+  backdrop = true,
+  children,
+  closeOnClickOutside = false,
+  closeOnEscKey = true,
+  header,
+  onClose = () => null,
+  variant = 'modal',
+}) => {
+  const initialBodyOverflowYRef = useRef('');
+  const internalTrap = useRef<FocusTrap | null>(null);
+  const headerUniqueId = useUniqueId('modal_header');
+  const [modalRef, setModalRef] = useState<HTMLDivElement | null>(null);
+
+  const onClickAway = (event: React.MouseEvent) => {
+    if (closeOnClickOutside && modalRef === event.target) {
+      onClose();
+    }
+  };
+
+  const onKeyDown = (event: React.KeyboardEvent) => {
+    if (closeOnEscKey && event.key === 'Escape') {
+      onClose();
+    }
+  };
+
+  // Disable scroll on body when modal is open
+  useEffect(() => {
+    initialBodyOverflowYRef.current = document.body.style.overflowY || '';
+    document.body.style.overflowY = 'hidden';
+
+    return () => {
+      document.body.style.overflowY = initialBodyOverflowYRef.current;
     };
+  }, []);
 
-    useEffect(() => {
-      const container = document.createElement('div');
+  // Setup focus-trap
+  useEffect(() => {
+    if (modalRef && internalTrap.current === null) {
+      internalTrap.current = focusTrap(modalRef as HTMLElement, { fallbackFocus: modalRef });
+      internalTrap.current.activate();
+    }
 
-      document.body.appendChild(container);
-      setModalContainer(container);
-    }, []);
+    return () => {
+      internalTrap.current?.deactivate();
+    };
+  }, [internalTrap, modalRef]);
 
-    useEffect(() => {
-      return internalTrap?.deactivate;
-    }, [internalTrap]);
+  const renderedClose = useMemo(
+    () =>
+      variant === 'modal' && (
+        <StyledModalClose>
+          <MessagingButton onClick={onClose} iconOnly={<CloseIcon title="Close" />} />
+        </StyledModalClose>
+      ),
+    [onClose, variant],
+  );
 
-    useEffect(() => {
-      const prevFocus = previousFocus.current as HTMLElement;
+  const renderedHeader = useMemo(
+    () =>
+      header &&
+      typeof header === 'string' && (
+        <StyledModalHeader id={headerUniqueId}>
+          <H2 margin="none">{header}</H2>
+        </StyledModalHeader>
+      ),
+    [header, headerUniqueId],
+  );
 
-      return () => {
-        if (modalContainer) {
-          document.body.removeChild(modalContainer);
-        }
+  const renderedActions = useMemo(
+    () =>
+      Array.isArray(actions) && (
+        <StyledModalActions justifyContent="flex-end">
+          {actions.map(({ text, ...props }, index) => (
+            <Button key={index} {...props}>
+              {text}
+            </Button>
+          ))}
+        </StyledModalActions>
+      ),
+    [actions],
+  );
 
-        document.body.style.overflowY = initialBodyOverflowYRef.current;
-
-        if (prevFocus && typeof prevFocus.focus === 'function') {
-          prevFocus.focus();
-        }
-      };
-    }, [initialBodyOverflowYRef, modalContainer, previousFocus]);
-
-    useEffect(() => {
-      if (modalRef.current && !internalTrap) {
-        setInternalTrap(focusTrap(modalRef.current as HTMLElement, { fallbackFocus: modalRef.current }));
-      }
-
-      if (isOpen) {
-        initialBodyOverflowYRef.current = document.body.style.overflowY || '';
-        document.body.style.overflowY = 'hidden';
-        internalTrap?.activate();
-      } else {
-        initialBodyOverflowYRef.current = '';
-        document.body.style.overflowY = initialBodyOverflowYRef.current;
-        internalTrap?.deactivate();
-        setInternalTrap(null);
-      }
-    }, [initialBodyOverflowYRef, internalTrap, isOpen, modalRef]);
-
-    const renderedClose = useMemo(
-      () =>
-        variant === 'modal' && (
-          <StyledModalClose>
-            <MessagingButton onClick={onClose} iconOnly={<CloseIcon title="Close" />} />
-          </StyledModalClose>
-        ),
-      [onClose, variant],
-    );
-
-    const renderedHeader = useMemo(
-      () =>
-        header &&
-        typeof header === 'string' && (
-          <StyledModalHeader id={headerUniqueId}>
-            <H2 margin="none">{header}</H2>
-          </StyledModalHeader>
-        ),
-      [header, headerUniqueId],
-    );
-
-    const renderedActions = useMemo(
-      () =>
-        Array.isArray(actions) && (
-          <StyledModalActions justifyContent="flex-end">
-            {actions.map(({ text, ...props }, index) => (
-              <Button key={index} {...props}>
-                {text}
-              </Button>
-            ))}
-          </StyledModalActions>
-        ),
-      [actions],
-    );
-
-    const renderedContent = (
-      <StyledModal
-        backdrop={backdrop}
-        onClick={onClickAway}
-        onKeyDown={onKeyDown}
-        ref={modalRef}
-        variant={variant}
-        tabIndex={-1}
-      >
-        <StyledModalContent variant={variant} aria-labelledby={headerUniqueId} flexDirection="column">
-          {renderedClose}
-          {renderedHeader}
-          <StyledModalBody>{children}</StyledModalBody>
-          {renderedActions}
-        </StyledModalContent>
-      </StyledModal>
-    );
-
-    return isOpen && modalContainer ? createPortal(renderedContent, modalContainer) : null;
-  },
-);
+  return (
+    <StyledModal
+      backdrop={backdrop}
+      onClick={onClickAway}
+      onKeyDown={onKeyDown}
+      ref={setModalRef}
+      variant={variant}
+      tabIndex={-1}
+    >
+      <StyledModalContent variant={variant} aria-labelledby={headerUniqueId} flexDirection="column">
+        {renderedClose}
+        {renderedHeader}
+        <StyledModalBody>{children}</StyledModalBody>
+        {renderedActions}
+      </StyledModalContent>
+    </StyledModal>
+  );
+};
