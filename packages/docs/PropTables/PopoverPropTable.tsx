@@ -54,7 +54,7 @@ const popoverProps: Prop[] = [
     description: 'Determines the offset along the anchorElement.',
   },
   {
-    name: 'offsetY',
+    name: 'distance',
     types: 'number',
     defaultValue: '4',
     description: 'Determines the offset away from the anchorElement.',
