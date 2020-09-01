@@ -19,8 +19,8 @@ export interface PopoverProps extends BoxPropsWithoutMargins {
   isOpen: boolean;
   label: string;
   matchAnchorElementWidth?: boolean;
-  offsetX?: number;
-  offsetY?: number;
+  skidding?: number;
+  distance?: number;
   onClose?(): void;
   placement?: Placement;
 }
@@ -58,8 +58,8 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
   id,
   label,
   matchAnchorElementWidth = false,
-  offsetX = 0,
-  offsetY = 0,
+  skidding = 0,
+  distance = 4,
   onClose = () => null,
   placement = 'auto',
   role,
@@ -73,7 +73,7 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
       {
         name: 'offset',
         options: {
-          offset: [offsetX, offsetY],
+          offset: [skidding, distance],
         },
       },
       {
@@ -93,7 +93,7 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
         },
       } as Modifier<unknown, unknown>,
     ],
-    [offsetX, offsetY, matchAnchorElementWidth],
+    [skidding, distance, matchAnchorElementWidth],
   );
 
   const { styles, attributes } = usePopper(anchorElement, popperElement, {
