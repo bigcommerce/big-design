@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.23.1...@bigcommerce/docs@0.23.2) (2020-09-03)
+
+
+### Features
+
+* **component:** rename popover offset props and defaults ([#447](https://github.com/bigcommerce/big-design/issues/447)) ([4a88f09](https://github.com/bigcommerce/big-design/commit/4a88f09adf9383ba9861cfecd54c48155fc0b953))
+
+
+
+
+
 ## [0.23.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.23.0...@bigcommerce/docs@0.23.1) (2020-08-31)
 
 
