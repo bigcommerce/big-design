@@ -48,16 +48,16 @@ const popoverProps: Prop[] = [
     description: 'If set to true, the Popover will have the same width as its anchor element.',
   },
   {
-    name: 'offsetX',
+    name: 'skidding',
     types: 'number',
     defaultValue: '0',
-    description: 'Determines the popover offset on the X axis.',
+    description: 'Determines the offset along the anchorElement.',
   },
   {
-    name: 'offsetY',
+    name: 'distance',
     types: 'number',
-    defaultValue: '0',
-    description: 'Determines the popover offset on the Y axis.',
+    defaultValue: '4',
+    description: 'Determines the offset away from the anchorElement.',
   },
   {
     name: 'onClose',

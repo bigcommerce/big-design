@@ -22,7 +22,7 @@ export const Tooltip: React.FC<TooltipProps> = memo(({ children, inline = true, 
 
     return [
       { name: 'eventListeners', options: { scroll: isVisible, resize: isVisible } },
-      { name: 'offset', options: { offset: [0, 8] } },
+      { name: 'offset', options: { offset: [0, 4] } },
       ...mods,
     ];
   }, [isVisible, modifiers]);
