@@ -1,5 +1,6 @@
 export interface TreeProps<T> {
   iconless?: boolean;
+  id?: string;
   initialNodes: TreeNodeProps<T>[];
   selectable?: 'radio' | 'multi';
   onExpand?(node: TreeNodeProps<T>): Promise<TreeNodeRef<T>> | TreeNodeRef<T> | void;

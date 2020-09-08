@@ -84,6 +84,45 @@ describe('renders Tree component', () => {
   });
 });
 
+test('create unique ids if not provided', () => {
+  const { container } = render(
+    <Tree
+      initialNodes={[
+        { id: 1, label: 'Category' },
+        { id: 2, label: 'Category' },
+      ]}
+    />,
+  );
+
+  const nodes = container.querySelectorAll('li');
+
+  const node1 = nodes[0] as HTMLLIElement;
+  const node2 = nodes[1] as HTMLLIElement;
+
+  expect(node1).toBeDefined();
+  expect(node2).toBeDefined();
+  expect(node1.id).not.toBe(node2.id);
+});
+
+test('respects provided id', () => {
+  const { container } = render(
+    <Tree
+      initialNodes={[
+        { id: 1, label: 'Category' },
+        { id: 2, label: 'Category' },
+      ]}
+      id="test"
+    />,
+  );
+  const input = container.querySelector('#test') as HTMLLIElement;
+
+  expect(input.id).toBe('test');
+
+  const node1 = container.querySelector('#test-treenode-1');
+
+  expect(node1).toBeDefined();
+});
+
 test('does not rerender when props change', () => {
   const text = 'Category';
   const { queryAllByText, rerender } = render(<Tree initialNodes={[]} />);
