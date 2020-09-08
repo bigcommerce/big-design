@@ -1,5 +1,6 @@
 import React, { useMemo, useReducer, useState } from 'react';
 
+import { useUniqueId } from '../../hooks';
 import { typedMemo } from '../../utils';
 
 import { createReducer, createReducerInit } from './reducer';
@@ -9,6 +10,7 @@ import { TreeProps } from './types';
 
 const InternalTree = <T extends unknown>({
   iconless,
+  id,
   initialNodes,
   onCollapse,
   onExpand,
@@ -16,6 +18,8 @@ const InternalTree = <T extends unknown>({
   selectable,
 }: TreeProps<T>): React.ReactElement<TreeProps<T>> => {
   const [nodes] = useState(initialNodes);
+  const uniqueTreeId = useUniqueId('tree');
+  const treeId = id ?? uniqueTreeId;
   const reducer = useMemo(() => createReducer<T>(), []);
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
   const [state, dispatch] = useReducer(reducer, { nodes, selectable }, reducerInit);
@@ -33,13 +37,14 @@ const InternalTree = <T extends unknown>({
           onSelect={onSelect}
           selectable={selectable}
           state={state}
+          treeId={treeId}
         />
       )),
-    [iconless, nodes, onCollapse, onExpand, onSelect, selectable, state],
+    [iconless, nodes, onCollapse, onExpand, onSelect, selectable, state, treeId],
   );
 
   return (
-    <StyledUl role="tree" aria-multiselectable={selectable === 'multi'} style={{ overflow: 'hidden' }}>
+    <StyledUl id={treeId} role="tree" aria-multiselectable={selectable === 'multi'} style={{ overflow: 'hidden' }}>
       {renderedItems}
     </StyledUl>
   );

@@ -25,6 +25,7 @@ interface PrivateTreeItemProps<T> {
   state: TreeState<T>;
   dispatch: Dispatch<Action<T>>;
   iconless?: boolean;
+  treeId?: string;
   selectable: TreeProps<T>['selectable'];
   onExpand?: TreeProps<T>['onExpand'];
   onCollapse?: TreeProps<T>['onCollapse'];
@@ -46,11 +47,13 @@ const InternalTreeNode = <T extends unknown>({
   onSelect,
   selectable,
   state,
+  treeId,
   value,
 }: TreeNodeProps<T> & PrivateTreeItemProps<T>): React.ReactElement<TreeNodeProps<T>> => {
   const thisRef = useRef<TreeNodeRef<T>>({ children });
   const nodeRef = useRef<HTMLLIElement | null>(null);
   const selectableRef = useRef<HTMLLabelElement | null>(null);
+  const treeNodeId = `${treeId}-treenode-${id}`;
   const [isLoading, setIsLoading] = useState(false);
   const expanded = useIsExpanded(state, id);
   const selected = useIsSelected(state, value);
@@ -259,6 +262,7 @@ const InternalTreeNode = <T extends unknown>({
               dispatch={dispatch}
               selectable={selectable}
               state={state}
+              treeId={treeId}
             />
           ) : (
             thisRef.current.children?.map((child, index) => (
@@ -272,12 +276,13 @@ const InternalTreeNode = <T extends unknown>({
                 onSelect={onSelect}
                 selectable={selectable}
                 state={state}
+                treeId={treeId}
               />
             ))
           )}
         </StyledUl>
       ),
-    [dispatch, expanded, iconless, isLoading, onCollapse, onExpand, onSelect, selectable, state],
+    [dispatch, expanded, iconless, isLoading, onCollapse, onExpand, onSelect, selectable, state, treeId],
   );
 
   const renderedIcon = useMemo(() => {
@@ -339,6 +344,7 @@ const InternalTreeNode = <T extends unknown>({
   return (
     <StyledLi
       aria-expanded={expanded}
+      id={treeNodeId}
       onKeyDown={handleKeyEvent}
       ref={nodeRef}
       role="treeitem"
