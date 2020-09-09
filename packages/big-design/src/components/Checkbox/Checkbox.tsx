@@ -85,6 +85,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
         id={id}
         disabled={disabled}
         {...props}
+        aria-checked={checked}
         aria-labelledby={labelId}
         ref={(checkbox) => {
           if (checkbox && typeof isIndeterminate === 'boolean') {

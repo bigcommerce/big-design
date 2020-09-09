@@ -95,6 +95,7 @@ exports[`render Checkbox checked 1`] = `
   class="c0"
 >
   <input
+    aria-checked="true"
     aria-labelledby="bd-checkbox_label-2"
     checked=""
     class="c1 c2"
@@ -241,6 +242,7 @@ exports[`render Checkbox disabled checked 1`] = `
   class="c0"
 >
   <input
+    aria-checked="true"
     aria-labelledby="bd-checkbox_label-2"
     checked=""
     class="c1 c2"
@@ -548,6 +550,7 @@ exports[`render Checkbox disabled unchecked 1`] = `
   class="c0"
 >
   <input
+    aria-checked="false"
     aria-labelledby="bd-checkbox_label-2"
     class="c1 c2"
     disabled=""
@@ -834,6 +837,7 @@ exports[`render Checkbox unchecked 1`] = `
   class="c0"
 >
   <input
+    aria-checked="false"
     aria-labelledby="bd-checkbox_label-2"
     class="c1 c2"
     id="bd-checkbox-1"
@@ -1014,6 +1018,7 @@ exports[`render Checkbox with description object 1`] = `
   class="c0"
 >
   <input
+    aria-checked="false"
     aria-labelledby="bd-checkbox_label-2"
     class="c1 c2"
     id="bd-checkbox-1"
@@ -1183,6 +1188,7 @@ exports[`render Checkbox with description string 1`] = `
   class="c0"
 >
   <input
+    aria-checked="false"
     aria-labelledby="bd-checkbox_label-2"
     class="c1 c2"
     id="bd-checkbox-1"

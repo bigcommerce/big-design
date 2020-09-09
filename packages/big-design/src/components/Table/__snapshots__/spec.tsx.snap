@@ -894,6 +894,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         class="c5"
       >
         <input
+          aria-checked="false"
           aria-labelledby="bd-checkbox_label-3"
           class="c6 c7"
           id="bd-checkbox-2"
