@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.3](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.2...@bigcommerce/big-design@0.23.3) (2020-09-09)
+
+
+### Features
+
+* **component:** add aria-checked to Checkbox component ([0c84516](https://github.com/bigcommerce/big-design/commit/0c84516a5585581b7c6928a26de967a40dc6507c))
+* **component:** add id support for Tree component ([569fc1e](https://github.com/bigcommerce/big-design/commit/569fc1eae89735766fd67f9f6474cd32cf7cedc4))
+
+
+
+
+
 ## [0.23.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.1...@bigcommerce/big-design@0.23.2) (2020-09-03)
 
 
