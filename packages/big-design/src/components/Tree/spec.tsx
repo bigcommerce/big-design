@@ -266,16 +266,16 @@ describe('handles callback functions', () => {
 describe('handles click events', () => {
   const subcategory = 'Subcategory';
   const nodes = [
-    { id: 0, value: 0, label: 'Category', children: [{ id: 3, value: 3, label: subcategory }] },
-    { id: 1, value: 1, label: 'Category' },
-    { id: 2, value: 2, disabled: true, label: 'Category' },
+    { id: 0, value: 0, label: 'Category 1', children: [{ id: 3, value: 3, label: subcategory }] },
+    { id: 1, value: 1, label: 'Category 2' },
+    { id: 2, value: 2, disabled: true, label: 'Category 3' },
   ];
 
   test('click on row focuses and/or expands/contracts', async () => {
     const handleCollapse = jest.fn();
     const handleExpand = jest.fn();
 
-    const { queryByRole, getAllByRole } = render(
+    const { queryByRole, getAllByRole, getByText } = render(
       <Tree initialNodes={nodes} onCollapse={handleCollapse} onExpand={handleExpand} />,
     );
 
@@ -287,7 +287,7 @@ describe('handles click events', () => {
     expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
 
     await act(async () => {
-      await fireEvent.click(treeitems[1].firstChild as ChildNode);
+      await fireEvent.click(getByText('Category 2'));
     });
 
     expect(handleExpand).toHaveBeenCalledTimes(0);
@@ -297,7 +297,7 @@ describe('handles click events', () => {
     expect(treeitems[1].getAttribute('tabIndex')).toBe('0');
 
     await act(async () => {
-      await fireEvent.click(treeitems[0].firstChild as ChildNode);
+      await fireEvent.click(getByText('Category 1'));
     });
 
     expect(handleExpand).toHaveBeenCalledTimes(1);
@@ -306,7 +306,9 @@ describe('handles click events', () => {
     expect(treeitems[0].getAttribute('tabIndex')).toBe('0');
     expect(treeitems[1].getAttribute('tabIndex')).toBe('-1');
 
-    fireEvent.click(treeitems[0].firstChild as ChildNode);
+    await act(async () => {
+      await fireEvent.click(getByText('Category 1'));
+    });
 
     expect(handleExpand).toHaveBeenCalledTimes(1);
     expect(handleCollapse).toHaveBeenCalledTimes(1);
