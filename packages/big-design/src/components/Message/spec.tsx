@@ -105,3 +105,24 @@ test('does not forward styles', () => {
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
+
+test('renders actions', () => {
+  const fn = jest.fn();
+  const actions = [
+    { text: 'First Action', variant: 'subtle' as 'subtle', onClick: fn },
+    { text: 'Second Action', onClick: fn },
+  ];
+
+  const { container, getAllByRole } = render(<Message actions={actions} messages={[{ text: 'Success' }]} />);
+  const buttons = getAllByRole('button') as HTMLButtonElement[];
+
+  expect(container.firstChild).toMatchSnapshot();
+
+  fireEvent.click(buttons[0]);
+
+  expect(fn).toHaveBeenCalledTimes(1);
+
+  fireEvent.click(buttons[0]);
+
+  expect(fn).toHaveBeenCalledTimes(2);
+});

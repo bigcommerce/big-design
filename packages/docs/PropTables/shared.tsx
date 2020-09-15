@@ -4,6 +4,19 @@ import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components
 
 export const sharedMessagingProps: Prop[] = [
   {
+    name: 'actions',
+    types: 'object[]',
+    description: (
+      <>
+        Accepts an array of objects with{' '}
+        <NextLink href="/Button/ButtonPage" as="/button">
+          Button
+        </NextLink>{' '}
+        props and an additional <Code>text</Code> prop. See example for usage.
+      </>
+    ),
+  },
+  {
     name: 'header',
     types: 'string',
     description: 'Optional header to display in message.',

@@ -3,9 +3,11 @@ import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { HTMLAttributes } from 'react';
 import { css } from 'styled-components';
 
+import { ButtonProps } from '../components/Button';
 import { LinkProps } from '../components/Link';
 
 export interface SharedMessagingProps extends HTMLAttributes<HTMLDivElement> {
+  actions?: MessageAction[];
   header?: string;
   messages: MessageItem[];
   type?: MessagingType;
@@ -24,6 +26,10 @@ export interface MessageItem {
 export type MessageLinkItem = Pick<LinkProps, 'external' | 'href' | 'target'> & {
   text: string;
 };
+
+export interface MessageAction extends Omit<ButtonProps, 'children'> {
+  text: string;
+}
 
 export const getMessagingIcon = (type: MessagingType, condensed?: boolean) => {
   const size = condensed ? 'large' : 'xLarge';

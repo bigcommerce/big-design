@@ -21,6 +21,7 @@ const AlertPage = () => (
       {/* jsx-to-string:start */}
       {function Example() {
         const alert = {
+          actions: [{ text: 'Action', variant: 'secondary', onClick: () => null }],
           header: 'Optional Headline',
           messages: [
             {
