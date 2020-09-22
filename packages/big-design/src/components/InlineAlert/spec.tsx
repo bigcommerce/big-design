@@ -109,22 +109,23 @@ test('does not forward styles', () => {
 });
 
 test('renders actions', () => {
-  const fn = jest.fn();
+  const onClick = jest.fn();
   const actions = [
-    { text: 'First Action', variant: 'subtle' as 'subtle', onClick: fn },
-    { text: 'Second Action', onClick: fn },
+    { text: 'First Action', variant: 'subtle' as const, onClick: onClick },
+    { text: 'Second Action', onClick: onClick },
   ];
 
-  const { container, getAllByRole } = render(<InlineAlert actions={actions} messages={[{ text: 'Success' }]} />);
-  const buttons = getAllByRole('button') as HTMLButtonElement[];
+  const { container, getByRole } = render(<InlineAlert actions={actions} messages={[{ text: 'Success' }]} />);
+  const firstAction = getByRole('button', { name: 'First Action' });
+  const secondAction = getByRole('button', { name: 'Second Action' });
 
   expect(container.firstChild).toMatchSnapshot();
 
-  fireEvent.click(buttons[0]);
+  fireEvent.click(firstAction);
 
-  expect(fn).toHaveBeenCalledTimes(1);
+  expect(onClick).toHaveBeenCalledTimes(1);
 
-  fireEvent.click(buttons[0]);
+  fireEvent.click(secondAction);
 
-  expect(fn).toHaveBeenCalledTimes(2);
+  expect(onClick).toHaveBeenCalledTimes(2);
 });
