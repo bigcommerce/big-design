@@ -97,7 +97,7 @@ exports[`render default (success) Alert 1`] = `
       >
         Success
       </span>
-
+       
     </div>
   </div>
 </div>
@@ -196,7 +196,7 @@ exports[`render error Alert 1`] = `
       >
         Error
       </span>
-
+       
     </div>
   </div>
 </div>
@@ -299,7 +299,7 @@ exports[`render info Alert 1`] = `
       >
         Info
       </span>
-
+       
     </div>
   </div>
 </div>
@@ -398,7 +398,7 @@ exports[`render warning Alert 1`] = `
       >
         Warning
       </span>
-
+       
     </div>
   </div>
 </div>
@@ -638,7 +638,7 @@ exports[`renders close button 1`] = `
       >
         Success
       </span>
-
+       
     </div>
   </div>
   <div
@@ -788,7 +788,7 @@ exports[`renders header 1`] = `
       >
         Success
       </span>
-
+       
     </div>
   </div>
 </div>
@@ -938,7 +938,7 @@ exports[`renders with external link 1`] = `
       >
         Success
       </span>
-
+       
       <a
         class="c7 c8"
         href="#"
@@ -1093,7 +1093,7 @@ exports[`renders with link 1`] = `
       >
         Success
       </span>
-
+       
       <a
         class="c7 c8"
         href="#"
