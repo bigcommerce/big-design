@@ -97,7 +97,7 @@ exports[`render default (success) Alert 1`] = `
       >
         Success
       </span>
-       
+
     </div>
   </div>
 </div>
@@ -196,7 +196,7 @@ exports[`render error Alert 1`] = `
       >
         Error
       </span>
-       
+
     </div>
   </div>
 </div>
@@ -299,7 +299,7 @@ exports[`render info Alert 1`] = `
       >
         Info
       </span>
-       
+
     </div>
   </div>
 </div>
@@ -398,340 +398,7 @@ exports[`render warning Alert 1`] = `
       >
         Warning
       </span>
-       
-    </div>
-  </div>
-</div>
-`;
 
-exports[`renders actions 1`] = `
-.c4 {
-  vertical-align: middle;
-  color: #2AAB3F;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.c0 {
-  box-sizing: border-box;
-}
-
-.c7 {
-  margin-top: 0.5rem;
-  box-sizing: border-box;
-}
-
-.c8 {
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
-  transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid #D9DCE9;
-  border-radius: 0.25rem;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
-  font-size: 1rem;
-  font-weight: 400;
-  height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  line-height: 2rem;
-  outline: none;
-  padding: 0 1rem;
-  pointer-events: auto;
-  position: relative;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: 100%;
-  background-color: transparent;
-  border-color: transparent;
-  color: #3C64F4;
-}
-
-.c8:focus {
-  outline: none;
-}
-
-.c8[disabled] {
-  border-color: #D9DCE9;
-  pointer-events: none;
-}
-
-.c8 + .bd-button {
-  margin-top: 0.5rem;
-}
-
-.c8:active {
-  background-color: #DBE3FE;
-}
-
-.c8:focus {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c8:hover:not(:active) {
-  background-color: #F0F3FF;
-}
-
-.c8[disabled] {
-  border-color: transparent;
-  color: #D9DCE9;
-}
-
-.c10 {
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
-  transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid #D9DCE9;
-  border-radius: 0.25rem;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
-  font-size: 1rem;
-  font-weight: 400;
-  height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  line-height: 2rem;
-  outline: none;
-  padding: 0 1rem;
-  pointer-events: auto;
-  position: relative;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: 100%;
-  background-color: #3C64F4;
-  border-color: #3C64F4;
-  font-weight: 600;
-}
-
-.c10:focus {
-  outline: none;
-}
-
-.c10[disabled] {
-  border-color: #D9DCE9;
-  pointer-events: none;
-}
-
-.c10 + .bd-button {
-  margin-top: 0.5rem;
-}
-
-.c10:active {
-  background-color: #0B38D9;
-}
-
-.c10:focus {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c10:hover:not(:active) {
-  background-color: #2852EB;
-}
-
-.c10[disabled] {
-  background-color: #D9DCE9;
-}
-
-.c9 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: inline-grid;
-  grid-auto-flow: column;
-  grid-gap: 0.5rem;
-  visibility: visible;
-}
-
-.c1 {
-  grid-gap: 1rem;
-  display: grid;
-}
-
-.c3 {
-  grid-area: icon;
-}
-
-.c5 {
-  grid-area: messages;
-}
-
-.c2 {
-  border-radius: 0.25rem;
-  box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
-  -webkit-animation: eMLfYp .5s ease-in-out;
-  animation: eMLfYp .5s ease-in-out;
-  background-color: #FFFFFF;
-  grid-gap: 0.75rem;
-  max-width: 28.5rem;
-  padding: 0.75rem;
-  position: fixed;
-  right: 1rem;
-  top: 1rem;
-  z-index: 1030;
-  grid-template-areas: 'icon messages';
-  grid-template-columns: 1.5rem 1fr;
-  border-left: 0.25rem solid #2AAB3F;
-}
-
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
-  color: #313440;
-  vertical-align: middle;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
-}
-
-@media (min-width:720px) {
-  .c8 + .bd-button {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c8 {
-    width: auto;
-  }
-}
-
-@media (min-width:720px) {
-  .c10 + .bd-button {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c10 {
-    width: auto;
-  }
-}
-
-<div
-  class="c0 c1 c2"
-  role="alert"
-  type="success"
->
-  <div
-    class="c0 c3"
-  >
-    <svg
-      class="c4"
-      color="success"
-      fill="currentColor"
-      height="24"
-      stroke="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path
-        d="M0 0h24v24H0V0z"
-        fill="none"
-      />
-      <path
-        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM9.29 16.29L5.7 12.7a.996.996 0 111.41-1.41L10 14.17l6.88-6.88a.996.996 0 111.41 1.41l-7.59 7.59a.996.996 0 01-1.41 0z"
-      />
-    </svg>
-  </div>
-  <div
-    class="c0 c5"
-  >
-    <div
-      class="c0"
-    >
-      <span
-        class="c6"
-      >
-        Success
-      </span>
-       
-    </div>
-    <div
-      class="c7"
-    >
-      <button
-        class="c8 bd-button"
-        role="button"
-        tabindex="0"
-      >
-        <span
-          class="c9"
-        >
-          First Action
-        </span>
-      </button>
-      <button
-        class="c10 bd-button"
-        role="button"
-        tabindex="0"
-      >
-        <span
-          class="c9"
-        >
-          Second Action
-        </span>
-      </button>
     </div>
   </div>
 </div>
@@ -971,7 +638,7 @@ exports[`renders close button 1`] = `
       >
         Success
       </span>
-       
+
     </div>
   </div>
   <div
@@ -1121,7 +788,7 @@ exports[`renders header 1`] = `
       >
         Success
       </span>
-       
+
     </div>
   </div>
 </div>
@@ -1271,7 +938,7 @@ exports[`renders with external link 1`] = `
       >
         Success
       </span>
-       
+
       <a
         class="c7 c8"
         href="#"
@@ -1426,7 +1093,7 @@ exports[`renders with link 1`] = `
       >
         Success
       </span>
-       
+
       <a
         class="c7 c8"
         href="#"
