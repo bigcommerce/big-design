@@ -5,7 +5,6 @@ import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components
 import { sharedMessagingProps } from './shared';
 
 const messageProps: Prop[] = [
-  ...sharedMessagingProps,
   {
     name: 'actions',
     types: 'object[]',
@@ -19,6 +18,7 @@ const messageProps: Prop[] = [
       </>
     ),
   },
+  ...sharedMessagingProps,
 ];
 
 export const MessagePropTable: React.FC<PropTableWrapper> = (props) => (

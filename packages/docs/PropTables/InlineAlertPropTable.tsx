@@ -5,7 +5,6 @@ import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components
 import { sharedMessagingProps } from './shared';
 
 const inlineAlertProps: Prop[] = [
-  ...sharedMessagingProps,
   {
     name: 'actions',
     types: 'object[]',
@@ -19,6 +18,7 @@ const inlineAlertProps: Prop[] = [
       </>
     ),
   },
+  ...sharedMessagingProps,
 ];
 
 export const InlineAlertPropTable: React.FC<PropTableWrapper> = (props) => (
