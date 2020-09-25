@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.5](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.4...@bigcommerce/big-design@0.23.5) (2020-09-25)
+
+
+### Features
+
+* **component:** forward ref to Panel component ([771a88b](https://github.com/bigcommerce/big-design/commit/771a88b690e03f14745c8f5b5daf0fd0140fa27a))
+
+
+
+
+
 ## [0.23.4](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.3...@bigcommerce/big-design@0.23.4) (2020-09-16)
 
 
