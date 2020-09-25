@@ -1,5 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import React from 'react';
+import React, { createRef } from 'react';
 import 'jest-styled-components';
 
 import { fireEvent, render } from '@test/utils';
@@ -75,6 +75,15 @@ test('forwards data attributes', () => {
   const panel = getByTestId('panel');
 
   expect(panel).toBeInTheDocument();
+});
+
+test('forwards ref', () => {
+  const ref = createRef<HTMLDivElement>();
+
+  const { container } = render(<Panel ref={ref} />);
+  const panel = container.querySelector('div');
+
+  expect(panel).toBe(ref.current);
 });
 
 test('ignores padding props', () => {
