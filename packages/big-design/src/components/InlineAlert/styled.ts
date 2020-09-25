@@ -2,6 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 
 import { getBorderStyle } from '../../utils';
+import { Flex, FlexItem } from '../Flex';
 import { Grid } from '../Grid';
 import { Link } from '../Link';
 import { StyleableH4, StyleableSmall } from '../Typography/private';
@@ -46,7 +47,23 @@ export const StyledLink = styled(Link)`
   vertical-align: middle;
 `;
 
+export const StyledActionsWrapper = styled(Flex)`
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: -${({ theme }) => theme.spacing.xSmall};
+  margin-left: -${({ theme }) => theme.spacing.xxSmall};
+  margin-right: -${({ theme }) => theme.spacing.xxSmall};
+`;
+
+export const StyledActionWrapper = styled(FlexItem)`
+  margin-bottom: ${({ theme }) => theme.spacing.xSmall};
+  margin-left: ${({ theme }) => theme.spacing.xxSmall};
+  margin-right: ${({ theme }) => theme.spacing.xxSmall};
+`;
+
 StyledInlineAlert.defaultProps = { theme: defaultTheme };
 StyledHeader.defaultProps = { theme: defaultTheme };
 StyledMessageItem.defaultProps = { theme: defaultTheme };
 StyledLink.defaultProps = { theme: defaultTheme };
+StyledActionsWrapper.defaultProps = { theme: defaultTheme };
+StyledActionWrapper.defaultProps = { theme: defaultTheme };

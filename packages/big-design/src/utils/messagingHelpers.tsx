@@ -27,7 +27,7 @@ export type MessageLinkItem = Pick<LinkProps, 'external' | 'href' | 'target'> & 
   text: string;
 };
 
-export interface MessageAction extends Omit<ButtonProps, 'children'> {
+export interface MessageAction extends Omit<ButtonProps, 'children' | 'mobileWidth'> {
   text: string;
 }
 

@@ -8,7 +8,14 @@ import { Button } from '../Button';
 import { MessagingButton } from '../Button/private';
 import { GridItem } from '../Grid';
 
-import { StyledHeader, StyledInlineAlert, StyledLink, StyledMessageItem } from './styled';
+import {
+  StyledActionsWrapper,
+  StyledActionWrapper,
+  StyledHeader,
+  StyledInlineAlert,
+  StyledLink,
+  StyledMessageItem,
+} from './styled';
 
 export type InlineAlertProps = SharedMessagingProps & MarginProps;
 
@@ -31,13 +38,15 @@ export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style,
   const renderedActions = useMemo(
     () =>
       props.actions && (
-        <Box marginTop="xSmall">
+        <StyledActionsWrapper marginTop="xSmall">
           {props.actions.map(({ text, ...actionProps }, index) => (
-            <Button key={index} {...actionProps}>
-              {text}
-            </Button>
+            <StyledActionWrapper key={index}>
+              <Button mobileWidth="auto" {...actionProps}>
+                {text}
+              </Button>
+            </StyledActionWrapper>
           ))}
-        </Box>
+        </StyledActionsWrapper>
       ),
     [props.actions],
   );
