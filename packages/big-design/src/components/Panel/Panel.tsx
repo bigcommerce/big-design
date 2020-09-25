@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, memo } from 'react';
+import React, { forwardRef, HTMLAttributes, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { excludePaddingProps } from '../../mixins/paddings/paddings';
@@ -6,6 +6,10 @@ import { Button, ButtonProps } from '../Button';
 import { Flex } from '../Flex';
 
 import { StyledH2, StyledPanel } from './styled';
+
+interface PrivateProps {
+  forwardedRef: Ref<HTMLDivElement>;
+}
 
 export interface PanelAction extends Omit<ButtonProps, 'children'> {
   text?: string;
@@ -16,7 +20,7 @@ export interface PanelProps extends HTMLAttributes<HTMLElement>, MarginProps {
   action?: PanelAction;
 }
 
-export const RawPanel: React.FC<PanelProps> = memo((props) => {
+export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {
   const filteredProps = excludePaddingProps(props);
   const { action, children, header, ...rest } = filteredProps;
 
@@ -44,6 +48,7 @@ export const RawPanel: React.FC<PanelProps> = memo((props) => {
       shadow="raised"
       padding={{ mobile: 'medium', tablet: 'xxLarge' }}
       borderRadius="none"
+      ref={forwardedRef}
     >
       {renderHeader()}
       {children}
@@ -51,6 +56,8 @@ export const RawPanel: React.FC<PanelProps> = memo((props) => {
   );
 });
 
-export const Panel: React.FC<PanelProps> = ({ className, style, ...props }) => <RawPanel {...props} />;
+export const Panel = forwardRef<HTMLDivElement, PanelProps>(({ className, style, ...props }, ref) => (
+  <RawPanel {...props} forwardedRef={ref} />
+));
 
 Panel.displayName = 'Panel';
