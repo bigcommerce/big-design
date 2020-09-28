@@ -143,7 +143,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     if (Array.isArray(error)) {
       error.forEach(validateError);
 
-      return error;
+      return error.length > 0 ? error : null;
     }
 
     return validateError(error);
