@@ -52,7 +52,7 @@ export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style,
   );
 
   return (
-    <StyledInlineAlert {...filteredProps} role="alert">
+    <StyledInlineAlert {...filteredProps} backgroundColor="white" role="alert">
       <GridItem gridArea="icon">{icon}</GridItem>
       <GridItem gridArea="messages">
         {renderedHeader}

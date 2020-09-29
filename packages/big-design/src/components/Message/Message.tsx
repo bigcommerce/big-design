@@ -52,7 +52,7 @@ export const Message: React.FC<MessageProps> = memo(({ className, style, header,
   );
 
   return (
-    <StyledMessage {...filteredProps} role="alert">
+    <StyledMessage {...filteredProps} backgroundColor="white" role="alert">
       <GridItem gridArea="icon">{icon}</GridItem>
       <GridItem gridArea="messages">
         {renderedHeader}
