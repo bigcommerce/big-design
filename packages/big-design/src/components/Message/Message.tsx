@@ -2,7 +2,7 @@ import { CloseIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, useMemo } from 'react';
 
 import { excludePaddingProps, MarginProps } from '../../mixins';
-import { getMessagingIcon, SharedMessagingProps } from '../../utils';
+import { getActionVariant, getMessagingIcon, SharedMessagingProps } from '../../utils';
 import { Box } from '../Box';
 import { Button } from '../Button';
 import { MessagingButton } from '../Button/private';
@@ -39,9 +39,9 @@ export const Message: React.FC<MessageProps> = memo(({ className, style, header,
     () =>
       props.actions && (
         <StyledActionsWrapper marginTop="xSmall">
-          {props.actions.map(({ text, ...actionProps }, index) => (
+          {props.actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
             <StyledActionWrapper key={index}>
-              <Button mobileWidth="auto" {...actionProps}>
+              <Button mobileWidth="auto" variant={getActionVariant(variant)} {...actionProps}>
                 {text}
               </Button>
             </StyledActionWrapper>

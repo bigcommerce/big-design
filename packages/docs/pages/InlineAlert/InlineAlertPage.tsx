@@ -121,7 +121,7 @@ const InlineAlertPage = () => (
         <InlineAlert
           actions={[
             { text: 'First Action', onClick: () => null },
-            { text: 'Second Action', variant: 'secondary', onClick: () => null },
+            { text: 'Second Action', variant: 'subtle', onClick: () => null },
           ]}
           header="header"
           type="info"

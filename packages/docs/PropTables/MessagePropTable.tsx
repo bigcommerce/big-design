@@ -14,7 +14,8 @@ const messageProps: Prop[] = [
         <NextLink href="/Button/ButtonPage" as="/button">
           Button
         </NextLink>{' '}
-        props and an additional <Code>text</Code> prop. See example for usage.
+        props and an additional <Code>text</Code> prop. Also, only two variants will be available to use: "secondary"
+        and "subtle". See example for usage.
       </>
     ),
   },

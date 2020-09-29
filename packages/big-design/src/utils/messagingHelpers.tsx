@@ -27,8 +27,9 @@ export type MessageLinkItem = Pick<LinkProps, 'external' | 'href' | 'target'> & 
   text: string;
 };
 
-export interface MessageAction extends Omit<ButtonProps, 'children' | 'mobileWidth'> {
+export interface MessageAction extends Omit<ButtonProps, 'children' | 'mobileWidth' | 'variant'> {
   text: string;
+  variant?: Extract<ButtonProps['variant'], 'secondary' | 'subtle'>;
 }
 
 export const getMessagingIcon = (type: MessagingType, condensed?: boolean) => {
@@ -67,3 +68,5 @@ export const getBorderStyle = (type: MessagingType, theme: ThemeInterface) => cs
     border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60};
   `};
 `;
+
+export const getActionVariant = (variant: ButtonProps['variant']) => (variant === 'primary' ? 'secondary' : variant);

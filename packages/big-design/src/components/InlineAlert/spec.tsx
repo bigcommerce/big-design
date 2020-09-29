@@ -4,7 +4,7 @@ import 'jest-styled-components';
 
 import { fireEvent, render } from '@test/utils';
 
-import { InlineAlert } from './InlineAlert';
+import { InlineAlert, InlineAlertProps } from './InlineAlert';
 
 test('renders with margins', () => {
   const { container, rerender } = render(<InlineAlert messages={[{ text: 'Success' }]} />);
@@ -111,15 +111,20 @@ test('does not forward styles', () => {
 test('renders actions', () => {
   const onClick = jest.fn();
   const actions = [
-    { text: 'First Action', variant: 'subtle' as const, onClick: onClick },
-    { text: 'Second Action', onClick: onClick },
+    { text: 'First Action', onClick: onClick },
+    { text: 'Second Action', variant: 'primary', onClick: onClick },
   ];
 
-  const { container, getByRole } = render(<InlineAlert actions={actions} messages={[{ text: 'Success' }]} />);
+  const { container, getByRole } = render(
+    <InlineAlert actions={actions as InlineAlertProps['actions']} messages={[{ text: 'Success' }]} />,
+  );
   const firstAction = getByRole('button', { name: 'First Action' });
   const secondAction = getByRole('button', { name: 'Second Action' });
 
   expect(container.firstChild).toMatchSnapshot();
+
+  expect(firstAction).toHaveStyleRule('background-color', 'transparent');
+  expect(secondAction).toHaveStyleRule('background-color', 'transparent');
 
   fireEvent.click(firstAction);
 

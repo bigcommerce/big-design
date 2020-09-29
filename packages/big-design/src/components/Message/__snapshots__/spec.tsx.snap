@@ -475,7 +475,7 @@ exports[`renders actions 1`] = `
   white-space: nowrap;
   width: auto;
   background-color: transparent;
-  border-color: transparent;
+  border-color: #3C64F4;
   color: #3C64F4;
 }
 
@@ -505,87 +505,7 @@ exports[`renders actions 1`] = `
 }
 
 .c12[disabled] {
-  border-color: transparent;
   color: #D9DCE9;
-}
-
-.c14 {
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
-  transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid #D9DCE9;
-  border-radius: 0.25rem;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
-  font-size: 1rem;
-  font-weight: 400;
-  height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  line-height: 2rem;
-  outline: none;
-  padding: 0 1rem;
-  pointer-events: auto;
-  position: relative;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: auto;
-  background-color: #3C64F4;
-  border-color: #3C64F4;
-  font-weight: 600;
-}
-
-.c14:focus {
-  outline: none;
-}
-
-.c14[disabled] {
-  border-color: #D9DCE9;
-  pointer-events: none;
-}
-
-.c14 + .bd-button {
-  margin-left: 0.5rem;
-}
-
-.c14:active {
-  background-color: #0B38D9;
-}
-
-.c14:focus {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c14:hover:not(:active) {
-  background-color: #2852EB;
-}
-
-.c14[disabled] {
-  background-color: #D9DCE9;
 }
 
 .c13 {
@@ -688,19 +608,6 @@ exports[`renders actions 1`] = `
   }
 }
 
-@media (min-width:720px) {
-  .c14 + .bd-button {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c14 {
-    width: auto;
-  }
-}
-
 <div
   class="c0 c1 c2"
   role="alert"
@@ -763,7 +670,7 @@ exports[`renders actions 1`] = `
         class="c0 c10 c11"
       >
         <button
-          class="c14 bd-button"
+          class="c12 bd-button"
           role="button"
           tabindex="0"
         >
