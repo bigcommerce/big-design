@@ -241,7 +241,7 @@ test('error shows with valid string', () => {
 
   rerender(
     <FormGroup>
-      <Input label="Test" error={error} />
+      <Input error={error} />
     </FormGroup>,
   );
 
@@ -332,7 +332,7 @@ describe('error does not show when invalid type', () => {
 
     const { container, queryByTestId } = render(
       <FormGroup>
-        <Input label="Test" error={errors} />
+        <Input error={errors} />
       </FormGroup>,
     );
     const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
