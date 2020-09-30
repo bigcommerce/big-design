@@ -31,7 +31,7 @@ export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style,
   const renderedActions = useMemo(
     () =>
       props.actions && (
-        <StyledActionsWrapper marginTop="xSmall">
+        <StyledActionsWrapper flexDirection="row" flexWrap="wrap" marginTop="xSmall">
           {props.actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
             <Button
               key={index}

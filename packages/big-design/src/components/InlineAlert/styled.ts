@@ -48,8 +48,6 @@ export const StyledLink = styled(Link)`
 `;
 
 export const StyledActionsWrapper = styled(Flex)`
-  flex-direction: row;
-  flex-wrap: wrap;
   margin-bottom: -${({ theme }) => theme.spacing.xSmall};
   margin-left: -${({ theme }) => theme.spacing.xxSmall};
   margin-right: -${({ theme }) => theme.spacing.xxSmall};

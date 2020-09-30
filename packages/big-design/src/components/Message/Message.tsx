@@ -31,7 +31,7 @@ export const Message: React.FC<MessageProps> = memo(({ className, style, header,
   const renderedActions = useMemo(
     () =>
       props.actions && (
-        <StyledActionsWrapper marginTop="xSmall">
+        <StyledActionsWrapper flexDirection="row" flexWrap="wrap" marginTop="xSmall">
           {props.actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
             <Button
               key={index}
