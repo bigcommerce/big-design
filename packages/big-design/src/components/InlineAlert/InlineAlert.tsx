@@ -1,7 +1,7 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, useMemo } from 'react';
 
-import { excludePaddingProps, MarginProps } from '../../mixins';
+import { excludeMarginProps, excludePaddingProps, MarginProps } from '../../mixins';
 import { getActionVariant, getMessagingIcon, SharedMessagingProps } from '../../utils';
 import { Box } from '../Box';
 import { Button } from '../Button';
@@ -10,7 +10,6 @@ import { GridItem } from '../Grid';
 
 import {
   StyledActionsWrapper,
-  StyledActionWrapper,
   StyledHeader,
   StyledInlineAlert,
   StyledLink,
@@ -40,11 +39,16 @@ export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style,
       props.actions && (
         <StyledActionsWrapper marginTop="xSmall">
           {props.actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
-            <StyledActionWrapper key={index}>
-              <Button mobileWidth="auto" variant={getActionVariant(variant)} {...actionProps}>
-                {text}
-              </Button>
-            </StyledActionWrapper>
+            <Button
+              key={index}
+              marginBottom="xSmall"
+              marginHorizontal="xxSmall"
+              mobileWidth="auto"
+              variant={getActionVariant(variant)}
+              {...excludeMarginProps(actionProps)}
+            >
+              {text}
+            </Button>
           ))}
         </StyledActionsWrapper>
       ),

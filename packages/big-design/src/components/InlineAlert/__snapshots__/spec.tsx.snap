@@ -440,25 +440,6 @@ exports[`renders actions 1`] = `
 }
 
 .c11 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
-  align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
-  flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
-  order: 0;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
-}
-
-.c13 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -508,36 +489,42 @@ exports[`renders actions 1`] = `
   color: #3C64F4;
 }
 
-.c13:focus {
+.c11.c11 {
+  margin-bottom: 0.5rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.c11:focus {
   outline: none;
 }
 
-.c13[disabled] {
+.c11[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c13 + .bd-button {
+.c11 + .bd-button {
   margin-left: 0.5rem;
 }
 
-.c13:active {
+.c11:active {
   background-color: #DBE3FE;
 }
 
-.c13:focus {
+.c11:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c13:hover:not(:active) {
+.c11:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c13[disabled] {
+.c11[disabled] {
   color: #D9DCE9;
 }
 
-.c14 {
+.c12 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -603,12 +590,6 @@ exports[`renders actions 1`] = `
   margin-right: -0.25rem;
 }
 
-.c12 {
-  margin-bottom: 0.5rem;
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-}
-
 @media (min-width:0px) {
   .c9 {
     -webkit-flex-direction: column;
@@ -626,14 +607,14 @@ exports[`renders actions 1`] = `
 }
 
 @media (min-width:720px) {
-  .c13 + .bd-button {
+  .c11 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c13 {
+  .c11 {
     width: auto;
   }
 }
@@ -681,36 +662,28 @@ exports[`renders actions 1`] = `
     <div
       class="c8 c9 c10"
     >
-      <div
-        class="c3 c11 c12"
+      <button
+        class="c11 bd-button"
+        role="button"
+        tabindex="0"
       >
-        <button
-          class="c13 bd-button"
-          role="button"
-          tabindex="0"
+        <span
+          class="c12"
         >
-          <span
-            class="c14"
-          >
-            First Action
-          </span>
-        </button>
-      </div>
-      <div
-        class="c3 c11 c12"
+          First Action
+        </span>
+      </button>
+      <button
+        class="c11 bd-button"
+        role="button"
+        tabindex="0"
       >
-        <button
-          class="c13 bd-button"
-          role="button"
-          tabindex="0"
+        <span
+          class="c12"
         >
-          <span
-            class="c14"
-          >
-            Second Action
-          </span>
-        </button>
-      </div>
+          Second Action
+        </span>
+      </button>
     </div>
   </div>
 </div>

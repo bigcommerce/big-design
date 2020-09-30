@@ -29,7 +29,7 @@ export type MessageLinkItem = Pick<LinkProps, 'external' | 'href' | 'target'> & 
 
 export interface MessageAction extends Omit<ButtonProps, 'children' | 'mobileWidth' | 'variant'> {
   text: string;
-  variant?: Extract<ButtonProps['variant'], 'secondary' | 'subtle'>;
+  variant?: Exclude<ButtonProps['variant'], 'primary'>;
 }
 
 export const getMessagingIcon = (type: MessagingType, condensed?: boolean) => {
