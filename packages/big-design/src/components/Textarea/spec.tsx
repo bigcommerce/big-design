@@ -1,4 +1,5 @@
 import 'jest-styled-components';
+import { theme } from '@bigcommerce/big-design-theme';
 import React, { createRef } from 'react';
 
 import { render } from '@test/utils';
@@ -7,6 +8,9 @@ import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
 
 import { Textarea, TextareaProps } from './index';
+
+const basicBorderStyle = `1px solid ${theme.colors.secondary30}`;
+const errorBorderStyle = `1px solid ${theme.colors.danger40}`;
 
 test('forwards ref', () => {
   const ref = createRef<HTMLTextAreaElement>();
@@ -79,13 +83,15 @@ test('renders a description', () => {
 
 test('renders an error', () => {
   const errorText = 'This is an error';
-  const { queryByText } = render(
+  const { container, queryByText } = render(
     <FormGroup>
       <Textarea error={errorText} />
     </FormGroup>,
   );
+  const textarea = container.querySelector('textarea');
 
   expect(queryByText(errorText)).toBeInTheDocument();
+  expect(textarea).toHaveStyleRule('border', errorBorderStyle);
 });
 
 test('accepts a Label Component', () => {
@@ -158,13 +164,15 @@ test('accepts an Error Component', () => {
     </FormControlError>
   );
 
-  const { queryByTestId } = render(
+  const { container, queryByTestId } = render(
     <FormGroup>
       <Textarea error={CustomError} />
     </FormGroup>,
   );
+  const textarea = container.querySelector('textarea');
 
   expect(queryByTestId('test')).toBeInTheDocument();
+  expect(textarea).toHaveStyleRule('border', errorBorderStyle);
 });
 
 test('does not accept non-Error Components', () => {
@@ -177,26 +185,30 @@ test('does not accept non-Error Components', () => {
     </div>
   );
 
-  const { queryByTestId } = render(
+  const { container, queryByTestId } = render(
     <FormGroup>
       <Textarea error={NotAnError} />
     </FormGroup>,
   );
+  const textarea = container.querySelector('textarea');
 
   expect(queryByTestId('test')).not.toBeInTheDocument();
+  expect(textarea).toHaveStyleRule('border', basicBorderStyle);
 });
 
 describe('error does not show when invalid type', () => {
   test('single element', () => {
     const error = <div data-testid="err">Error</div>;
-    const { queryByTestId } = render(
+    const { container, queryByTestId } = render(
       <FormGroup>
         <Textarea error={error} />
       </FormGroup>,
     );
+    const textarea = container.querySelector('textarea');
 
     expect(warning).toHaveBeenCalledTimes(1);
     expect(queryByTestId('err')).not.toBeInTheDocument();
+    expect(textarea).toHaveStyleRule('border', basicBorderStyle);
   });
 
   test('array of elements', () => {
@@ -208,14 +220,16 @@ describe('error does not show when invalid type', () => {
       </div>,
     ];
 
-    const { queryByTestId } = render(
+    const { container, queryByTestId } = render(
       <FormGroup>
         <Textarea error={errors} />
       </FormGroup>,
     );
+    const textarea = container.querySelector('textarea');
 
     expect(warning).toHaveBeenCalledTimes(1);
     expect(queryByTestId('err')).not.toBeInTheDocument();
+    expect(textarea).toHaveStyleRule('border', errorBorderStyle);
   });
 });
 
@@ -254,4 +268,43 @@ test('renders all together', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
+});
+
+describe('error shows when an array of strings', () => {
+  test('empty array', () => {
+    const { container } = render(
+      <FormGroup>
+        <Textarea error={[]} />
+      </FormGroup>,
+    );
+    const textarea = container.querySelector('textarea');
+
+    expect(container.querySelector('[class*="StyledError"]')).not.toBeInTheDocument();
+    expect(textarea).toHaveStyleRule('border', basicBorderStyle);
+  });
+
+  test('array with empty strings', () => {
+    const { container } = render(
+      <FormGroup>
+        <Textarea error={['', '']} />
+      </FormGroup>,
+    );
+    const textarea = container.querySelector('textarea');
+
+    expect(container.querySelector('[class*="StyledError"]')).not.toBeInTheDocument();
+    expect(textarea).toHaveStyleRule('border', basicBorderStyle);
+  });
+
+  test('array with valid strings', () => {
+    const errors = ['Error 0', 'Error 1'];
+    const { container, getByText } = render(
+      <FormGroup>
+        <Textarea error={errors} />
+      </FormGroup>,
+    );
+    const textarea = container.querySelector('textarea');
+
+    expect(textarea).toHaveStyleRule('border', errorBorderStyle);
+    errors.forEach((error) => expect(getByText(error)).toBeInTheDocument());
+  });
 });

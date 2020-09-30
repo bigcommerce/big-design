@@ -141,9 +141,13 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     };
 
     if (Array.isArray(error)) {
-      error.forEach(validateError);
+      const nextError = error.reduce<Array<React.ReactNode>>((acc, errorItem) => {
+        const nextErrorItem = validateError(errorItem);
 
-      return error;
+        return nextErrorItem ? [...acc, nextErrorItem] : acc;
+      }, []);
+
+      return nextError.length > 0 ? nextError : null;
     }
 
     return validateError(error);
