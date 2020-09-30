@@ -102,6 +102,35 @@ const MessagePage = () => (
       </>
       {/* jsx-to-string:end */}
     </CodePreview>
+
+    <H2>Actions</H2>
+
+    <Text>
+      <Code primary>Message</Code>'s allow you to pass an optional <Code primary>actions</Code> prop.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <>
+        <Message
+          header="header"
+          type="info"
+          messages={[{ text: 'Required description copy.' }]}
+          marginVertical="medium"
+        />
+        <Message
+          actions={[
+            { text: 'First Action', onClick: () => null },
+            { text: 'Second Action', variant: 'subtle', onClick: () => null },
+          ]}
+          header="header"
+          type="info"
+          messages={[{ text: 'Required description copy.' }]}
+          marginVertical="medium"
+        />
+      </>
+      {/* jsx-to-string:end */}
+    </CodePreview>
   </>
 );
 

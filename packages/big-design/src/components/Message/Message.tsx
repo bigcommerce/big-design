@@ -1,13 +1,14 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, useMemo } from 'react';
 
-import { excludePaddingProps, MarginProps } from '../../mixins';
-import { getMessagingIcon, SharedMessagingProps } from '../../utils';
+import { excludeMarginProps, excludePaddingProps, MarginProps } from '../../mixins';
+import { getActionVariant, getMessagingIcon, SharedMessagingProps } from '../../utils';
 import { Box } from '../Box';
+import { Button } from '../Button';
 import { MessagingButton } from '../Button/private';
 import { GridItem } from '../Grid';
 
-import { StyledHeader, StyledLink, StyledMessage, StyledMessageItem } from './styled';
+import { StyledActionsWrapper, StyledHeader, StyledLink, StyledMessage, StyledMessageItem } from './styled';
 
 export type MessageProps = SharedMessagingProps & MarginProps;
 
@@ -27,12 +28,34 @@ export const Message: React.FC<MessageProps> = memo(({ className, style, header,
 
   const renderedHeader = useMemo(() => header && <StyledHeader>{header}</StyledHeader>, [header]);
 
+  const renderedActions = useMemo(
+    () =>
+      props.actions && (
+        <StyledActionsWrapper flexDirection="row" flexWrap="wrap" marginTop="xSmall">
+          {props.actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
+            <Button
+              {...excludeMarginProps(actionProps)}
+              key={index}
+              marginBottom="xSmall"
+              marginHorizontal="xxSmall"
+              mobileWidth="auto"
+              variant={getActionVariant(variant)}
+            >
+              {text}
+            </Button>
+          ))}
+        </StyledActionsWrapper>
+      ),
+    [props.actions],
+  );
+
   return (
-    <StyledMessage {...filteredProps} role="alert">
+    <StyledMessage {...filteredProps} backgroundColor="white" role="alert">
       <GridItem gridArea="icon">{icon}</GridItem>
       <GridItem gridArea="messages">
         {renderedHeader}
         {renderedMessages}
+        {renderedActions}
       </GridItem>
       {props.onClose && (
         <GridItem>

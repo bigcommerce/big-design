@@ -4,7 +4,7 @@ import React from 'react';
 import 'jest-styled-components';
 import { fireEvent, render } from '@test/utils';
 
-import { Message } from './Message';
+import { Message, MessageProps } from './Message';
 
 test('renders with margins', () => {
   const { container, rerender } = render(<Message messages={[{ text: 'Success' }]} />);
@@ -104,4 +104,31 @@ test('does not forward styles', () => {
 
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
+});
+
+test('renders actions', () => {
+  const onClick = jest.fn();
+  const actions = [
+    { text: 'First Action', onClick: onClick },
+    { text: 'Second Action', variant: 'primary', onClick: onClick },
+  ];
+
+  const { container, getByRole } = render(
+    <Message actions={actions as MessageProps['actions']} messages={[{ text: 'Success' }]} />,
+  );
+  const firstAction = getByRole('button', { name: 'First Action' });
+  const secondAction = getByRole('button', { name: 'Second Action' });
+
+  expect(container.firstChild).toMatchSnapshot();
+
+  expect(firstAction).toHaveStyleRule('background-color', 'transparent');
+  expect(secondAction).toHaveStyleRule('background-color', 'transparent');
+
+  fireEvent.click(firstAction);
+
+  expect(onClick).toHaveBeenCalledTimes(1);
+
+  fireEvent.click(secondAction);
+
+  expect(onClick).toHaveBeenCalledTimes(2);
 });
