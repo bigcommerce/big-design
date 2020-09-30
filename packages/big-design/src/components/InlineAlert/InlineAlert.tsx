@@ -8,13 +8,7 @@ import { Button } from '../Button';
 import { MessagingButton } from '../Button/private';
 import { GridItem } from '../Grid';
 
-import {
-  StyledActionsWrapper,
-  StyledHeader,
-  StyledInlineAlert,
-  StyledLink,
-  StyledMessageItem,
-} from './styled';
+import { StyledActionsWrapper, StyledHeader, StyledInlineAlert, StyledLink, StyledMessageItem } from './styled';
 
 export type InlineAlertProps = SharedMessagingProps & MarginProps;
 

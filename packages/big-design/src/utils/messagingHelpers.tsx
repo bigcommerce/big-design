@@ -5,6 +5,7 @@ import { css } from 'styled-components';
 
 import { ButtonProps } from '../components/Button';
 import { LinkProps } from '../components/Link';
+import { MarginProps } from '../mixins/margins';
 
 export interface SharedMessagingProps extends HTMLAttributes<HTMLDivElement> {
   actions?: MessageAction[];
@@ -27,7 +28,7 @@ export type MessageLinkItem = Pick<LinkProps, 'external' | 'href' | 'target'> & 
   text: string;
 };
 
-export interface MessageAction extends Omit<ButtonProps, 'children' | 'mobileWidth' | 'variant'> {
+export interface MessageAction extends Omit<ButtonProps, 'children' | 'mobileWidth' | 'variant' | keyof MarginProps> {
   text: string;
   variant?: Exclude<ButtonProps['variant'], 'primary'>;
 }
