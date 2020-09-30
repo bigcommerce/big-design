@@ -34,12 +34,12 @@ export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style,
         <StyledActionsWrapper flexDirection="row" flexWrap="wrap" marginTop="xSmall">
           {props.actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
             <Button
+              {...excludeMarginProps(actionProps)}
               key={index}
               marginBottom="xSmall"
               marginHorizontal="xxSmall"
               mobileWidth="auto"
               variant={getActionVariant(variant)}
-              {...excludeMarginProps(actionProps)}
             >
               {text}
             </Button>
