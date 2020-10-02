@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.6](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.5...@bigcommerce/big-design@0.23.6) (2020-10-02)
+
+
+### Bug Fixes
+
+* **component:** form controls error states ([#455](https://github.com/bigcommerce/big-design/issues/455)) ([64a2389](https://github.com/bigcommerce/big-design/commit/64a23891d3af058203ea9e5058950d4ff4f7cc7f))
+
+
+### Features
+
+* **component:** adding actions to alert component ([#453](https://github.com/bigcommerce/big-design/issues/453)) ([fe8eeab](https://github.com/bigcommerce/big-design/commit/fe8eeab5e21ffb7af69e9e898995bb17baede8c7))
+
+
+
+
+
 ## [0.23.5](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.4...@bigcommerce/big-design@0.23.5) (2020-09-25)
 
 

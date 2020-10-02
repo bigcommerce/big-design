@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.6](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.23.5...@bigcommerce/docs@0.23.6) (2020-10-02)
+
+
+### Features
+
+* **component:** adding actions to alert component ([#453](https://github.com/bigcommerce/big-design/issues/453)) ([fe8eeab](https://github.com/bigcommerce/big-design/commit/fe8eeab5e21ffb7af69e9e898995bb17baede8c7))
+
+
+
+
+
 ## [0.23.5](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.23.4...@bigcommerce/docs@0.23.5) (2020-09-25)
 
 **Note:** Version bump only for package @bigcommerce/docs
