@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render, screen } from '@test/utils';
+import { fireEvent, render, screen, waitForElement } from '@test/utils';
 
 import { Table, TableFigure } from './Table';
 
@@ -160,7 +160,7 @@ test('renders the total number of items + item name', () => {
   expect(itemNameNode).toBeInTheDocument();
 });
 
-test('renders a pagination component', () => {
+test('renders a pagination component', async () => {
   const onItemsPerPageChange = jest.fn();
   const onPageChange = jest.fn();
 
@@ -193,6 +193,7 @@ test('renders a pagination component', () => {
 
   expect(onPageChange).toHaveBeenCalledWith(2);
   expect(container.firstChild).toMatchSnapshot();
+  await waitForElement(() => screen.getByTitle('Next page'));
 });
 
 describe('selectable', () => {

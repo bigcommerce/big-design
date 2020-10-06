@@ -1,7 +1,7 @@
 import React from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, waitForElement } from '@test/utils';
 
 import { StatefulTable, StatefulTableProps } from './StatefulTable';
 
@@ -37,6 +37,7 @@ const getSimpleTable = (props: Partial<StatefulTableProps<TestItem>> = {}) => (
         sortKey: 'stock',
       },
     ]}
+    data-testid="simple-table"
     items={generateItems()}
     {...props}
   />
@@ -50,22 +51,24 @@ test('renders a non-paginated table by default', () => {
   expect(rows.length).toBe(104);
 });
 
-test('pagination can be enabled', () => {
-  const { container } = render(getSimpleTable({ pagination: true }));
+test('pagination can be enabled', async () => {
+  const { container, getByTestId } = render(getSimpleTable({ pagination: true }));
 
   const rows = container.querySelectorAll('tbody > tr');
 
   expect(rows.length).toBe(25);
+  await waitForElement(() => getByTestId('simple-table'));
 });
 
-test('changing pagination page changes the displayed items', () => {
-  const { getByTitle, getAllByTestId } = render(getSimpleTable({ pagination: true }));
+test('changing pagination page changes the displayed items', async () => {
+  const { getByTitle, getAllByTestId, getByTestId } = render(getSimpleTable({ pagination: true }));
 
   const pageOneItemName = getAllByTestId('name')[0].textContent;
   fireEvent.click(getByTitle('Next page'));
   const pageTwoItemName = getAllByTestId('name')[0].textContent;
 
   expect(pageOneItemName).not.toBe(pageTwoItemName);
+  await waitForElement(() => getByTestId('simple-table'));
 });
 
 test('renders rows without checkboxes by default', () => {
@@ -115,10 +118,12 @@ test('onSelectionChange gets called when an item selection happens', () => {
   expect(onSelectionChange).toHaveBeenCalledWith([testItemThree, testItemOne]);
 });
 
-test('multi-page select', () => {
+test('multi-page select', async () => {
   const onSelectionChange = jest.fn();
 
-  const { container, getByTitle } = render(getSimpleTable({ selectable: true, onSelectionChange, pagination: true }));
+  const { container, getByTitle, getByTestId } = render(
+    getSimpleTable({ selectable: true, onSelectionChange, pagination: true }),
+  );
 
   let checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
 
@@ -132,32 +137,36 @@ test('multi-page select', () => {
     { name: 'Product A - 1', stock: 1 },
     { name: 'Product Z - 1', stock: 26 },
   ]);
+  await waitForElement(() => getByTestId('simple-table'));
 });
 
-test('select all selects all items in the current page', () => {
+test('select all selects all items in the current page', async () => {
   const testItemOne = { name: 'Test Item', stock: 1 };
   const testItemTwo = { name: 'Test Item Two', stock: 2 };
   const testItemThree = { name: 'Test Item Three', stock: 3 };
   const items: TestItem[] = [testItemOne, testItemTwo, testItemThree];
   const onSelectionChange = jest.fn();
 
-  const { getAllByRole } = render(getSimpleTable({ selectable: true, items, onSelectionChange, pagination: true }));
+  const { getAllByRole, getByTestId } = render(
+    getSimpleTable({ selectable: true, items, onSelectionChange, pagination: true }),
+  );
 
   const checkbox = getAllByRole('checkbox')[0];
 
   fireEvent.click(checkbox);
 
   expect(onSelectionChange).toHaveBeenCalledWith([testItemOne, testItemTwo, testItemThree]);
+  await waitForElement(() => getByTestId('simple-table'));
 });
 
-test('unselect all should unselect all items in page', () => {
+test('unselect all should unselect all items in page', async () => {
   const testItemOne = { name: 'Test Item', stock: 1 };
   const testItemTwo = { name: 'Test Item Two', stock: 2 };
   const testItemThree = { name: 'Test Item Three', stock: 3 };
   const items: TestItem[] = [testItemOne, testItemTwo, testItemThree];
   const onSelectionChange = jest.fn();
 
-  const { getAllByRole } = render(
+  const { getAllByRole, getByTestId } = render(
     getSimpleTable({
       selectable: true,
       items,
@@ -172,6 +181,7 @@ test('unselect all should unselect all items in page', () => {
   fireEvent.click(checkbox);
 
   expect(onSelectionChange).toHaveBeenCalledWith([]);
+  await waitForElement(() => getByTestId('simple-table'));
 });
 
 test('sorts alphabetically', () => {

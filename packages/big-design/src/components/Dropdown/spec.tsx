@@ -63,40 +63,43 @@ const LineSeparatedGroupedDropdownMock = (
   />
 );
 
-test('renders dropdown toggle', () => {
+test('renders dropdown toggle', async () => {
   const { getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
 
   expect(toggle).toBeInTheDocument();
+  await waitForElement(() => getByRole('button'));
 });
 
-test('dropdown toggle has an id', () => {
+test('dropdown toggle has an id', async () => {
   const { getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
 
   expect(toggle.id).toBeDefined();
+  await waitForElement(() => getByRole('button'));
 });
 
-test('dropdown toggle accepts a custom id', () => {
+test('dropdown toggle accepts a custom id', async () => {
   const { getByRole } = render(
     <Dropdown items={[{ content: 'Option', onItemClick }]} toggle={<Button id="testId">Button</Button>} />,
   );
   const toggle = getByRole('button');
 
   expect(toggle.id).toBe('testId');
+  await waitForElement(() => getByRole('button'));
 });
 
-test('dropdown toggle has aria-haspopup', () => {
+test('dropdown toggle has aria-haspopup', async () => {
   const { getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
 
   expect(toggle.getAttribute('aria-haspopup')).toBe('listbox');
+  await waitForElement(() => getByRole('button'));
 });
 
 test('dropdown toggle has aria-expanded when dropdown menu is open', async () => {
   const { getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
-
   fireEvent.click(toggle);
 
   expect(toggle.getAttribute('aria-expanded')).toBe('true');
@@ -104,21 +107,23 @@ test('dropdown toggle has aria-expanded when dropdown menu is open', async () =>
   await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('renders the dropdown menu closed', () => {
+test('renders the dropdown menu closed', async () => {
   const { queryByRole } = render(DropdownMock);
 
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+  expect(queryByRole('listbox')).toBeEmptyDOMElement();
+  await waitForElement(() => queryByRole('listbox'));
 });
 
-test('opens/closes dropdown menu when toggle is clicked', () => {
+test('opens/closes dropdown menu when toggle is clicked', async () => {
   const { getByRole, queryByRole } = render(DropdownMock);
   const toggle = getByRole('button');
 
   fireEvent.click(toggle);
-  expect(queryByRole('listbox')).toBeInTheDocument();
+  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
 
   fireEvent.click(toggle);
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+  expect(queryByRole('listbox')).toBeEmptyDOMElement();
+  await waitForElement(() => queryByRole('listbox'));
 });
 
 test('dropdown menu has aria-activedescendant', async () => {
@@ -231,18 +236,19 @@ test('up/down arrows should change dropdown item selection', async () => {
   await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('esc should close menu', () => {
+test('esc should close menu', async () => {
   const { getByRole, queryByRole } = render(DropdownMock);
   const toggle = getByRole('button');
 
   fireEvent.click(toggle);
-  expect(queryByRole('listbox')).toBeInTheDocument();
+  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
 
   fireEvent.keyDown(getByRole('listbox'), { key: 'Escape' });
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+  expect(queryByRole('listbox')).toBeEmptyDOMElement();
+  await waitForElement(() => queryByRole('listbox'));
 });
 
-test('blurring list should close menu', () => {
+test('blurring list should close menu', async () => {
   const { getByRole, queryByRole } = render(
     <Fragment>
       {DropdownMock}
@@ -252,10 +258,11 @@ test('blurring list should close menu', () => {
   const toggle = getByRole('button');
 
   fireEvent.click(toggle);
-  expect(queryByRole('listbox')).toBeInTheDocument();
+  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
 
   fireEvent.blur(getByRole('listbox'));
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+  expect(queryByRole('listbox')).toBeEmptyDOMElement();
+  await waitForElement(() => queryByRole('listbox'));
 });
 
 test('home should select first dropdown item', async () => {
@@ -295,7 +302,7 @@ test('end should select last dropdown item', async () => {
   await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
-test('enter should toggle onItemClick', () => {
+test('enter should toggle onItemClick', async () => {
   const { getAllByRole, getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
@@ -308,9 +315,10 @@ test('enter should toggle onItemClick', () => {
 
   fireEvent.keyDown(menu, { key: 'Enter' });
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
+  await waitForElement(() => getByRole('listbox'));
 });
 
-test('clicking on dropdown items should toggle onItemClick', () => {
+test('clicking on dropdown items should toggle onItemClick', async () => {
   const { getAllByRole, getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
   fireEvent.click(toggle);
@@ -318,6 +326,7 @@ test('clicking on dropdown items should toggle onItemClick', () => {
   const options = getAllByRole('option');
   fireEvent.click(options[1]);
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
+  await waitForElement(() => getByRole('button'));
 });
 
 test('dropdown items should be highlighted when moused over', async () => {
