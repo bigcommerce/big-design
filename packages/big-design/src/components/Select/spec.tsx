@@ -3,6 +3,7 @@ import { remCalc } from '@bigcommerce/big-design-theme';
 import { fireEvent, render, screen, waitForElement } from '@testing-library/react';
 import 'jest-styled-components';
 import React, { createRef } from 'react';
+import { act } from 'react-dom/test-utils';
 
 import { FormControlLabel, FormGroup } from '../Form';
 
@@ -101,19 +102,21 @@ const SelectWithOptionsDescriptions = (
   />
 );
 
-test('renders select combobox', () => {
+test('renders select combobox', async () => {
   const { getByRole } = render(SelectMock);
 
   expect(getByRole('combobox')).toBeInTheDocument();
+  await waitForElement(() => getByRole('combobox'));
 });
 
-test('renders select string label', () => {
+test('renders select string label', async () => {
   const { getByText } = render(SelectMock);
 
   expect(getByText('Countries')).toBeInTheDocument();
+  await waitForElement(() => getByText('Countries'));
 });
 
-test('renders FormControlLabel string label', () => {
+test('renders FormControlLabel string label', async () => {
   const { getByText } = render(
     <Select
       label={<FormControlLabel>Countries</FormControlLabel>}
@@ -125,58 +128,67 @@ test('renders FormControlLabel string label', () => {
   );
 
   expect(getByText('Countries')).toBeInTheDocument();
+  await waitForElement(() => getByText('Countries'));
 });
 
-test('select label has id', () => {
+test('select label has id', async () => {
   const { getByText } = render(SelectMock);
 
   expect(getByText('Countries').id).toBeDefined();
+  await waitForElement(() => getByText('Countries'));
 });
 
-test('select label accepts custom id', () => {
+test('select label accepts custom id', async () => {
   const { getByText } = render(
     <Select onOptionChange={onChange} label="Countries" labelId="testId" options={mockOptions} />,
   );
 
   expect(getByText('Countries').id).toBe('testId');
+  await waitForElement(() => getByText('Countries'));
 });
 
-test('select label has for attribute', () => {
+test('select label has for attribute', async () => {
   const { getByText } = render(SelectMock);
 
   expect(getByText('Countries').hasAttribute('for')).toBe(true);
+  await waitForElement(() => getByText('Countries'));
 });
 
-test('renders select input', () => {
+test('renders select input', async () => {
   const { getByTestId } = render(SelectMock);
 
   expect(getByTestId('select')).toBeInTheDocument();
+  await waitForElement(() => getByTestId('select'));
 });
 
-test('select input has id', () => {
+test('select input has id', async () => {
   const { getByTestId } = render(SelectMock);
 
   expect(getByTestId('select').id).toBeDefined();
+  await waitForElement(() => getByTestId('select'));
 });
 
-test('select accepts custom id', () => {
+test('select accepts custom id', async () => {
   const { getByTestId } = render(
     <Select onOptionChange={onChange} id="testId" data-testid="select" options={mockOptions} />,
   );
 
   expect(getByTestId('select').id).toBe('testId');
+  await waitForElement(() => getByTestId('select'));
 });
 
-test('combobox has aria-haspopup', () => {
+test('combobox has aria-haspopup', async () => {
   const { getByRole } = render(SelectMock);
 
   expect(getByRole('combobox').getAttribute('aria-haspopup')).toBe('listbox');
+  await waitForElement(() => getByRole('combobox'));
 });
 
-test('select input has placeholder text', () => {
+test('select input has placeholder text', async () => {
   const { getByPlaceholderText } = render(SelectMock);
 
   expect(getByPlaceholderText('Choose country')).toBeDefined();
+  await waitForElement(() => getByPlaceholderText('Choose country'));
 });
 
 test('select input has aria-controls', async () => {
@@ -189,67 +201,73 @@ test('select input has aria-controls', async () => {
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
-test('select input has autocomplete=no', () => {
+test('select input has autocomplete=no', async () => {
   const { getByTestId } = render(SelectMock);
   const input = getByTestId('select');
 
   expect(input.getAttribute('autocomplete')).toBe('no');
+  await waitForElement(() => getByTestId('select'));
 });
 
-test('renders input button', () => {
+test('renders input button', async () => {
   const { getByRole } = render(SelectMock);
 
   expect(getByRole('button')).toBeDefined();
+  await waitForElement(() => getByRole('button'));
 });
 
-test('input button has aria-label', () => {
+test('input button has aria-label', async () => {
   const { getByRole } = render(SelectMock);
 
   expect(getByRole('button').getAttribute('aria-label')).toBe('toggle menu');
+  await waitForElement(() => getByRole('button'));
 });
 
 test('select menu opens when focused on input', async () => {
-  const { getByTestId, queryByRole } = render(SelectMock);
+  const { getByRole, getByTestId, queryByRole } = render(SelectMock);
   const input = getByTestId('select');
 
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+  expect(queryByRole('listbox')).toBeEmptyDOMElement();
 
   fireEvent.focus(input);
 
-  expect(queryByRole('listbox')).toBeInTheDocument();
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
+  await waitForElement(() => getByRole('option', { name: /mex/i }));
 });
 
-test('select menu opens/closes when input button is clicked', () => {
+test('select menu opens/closes when input button is clicked', async () => {
   const { getByRole, queryByRole } = render(SelectMock);
   const button = getByRole('button');
-  fireEvent.click(button);
-  expect(queryByRole('listbox')).toBeInTheDocument;
 
   fireEvent.click(button);
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+
+  fireEvent.click(button);
+  expect(queryByRole('listbox')).toBeEmptyDOMElement();
+  await waitForElement(() => queryByRole('listbox'));
 });
 
-test('esc should close menu', () => {
+test('esc should close menu', async () => {
   const { getByTestId, queryByRole } = render(SelectMock);
   const input = getByTestId('select');
 
   fireEvent.focus(input);
-  expect(queryByRole('listbox')).toBeInTheDocument();
+  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
 
   fireEvent.keyDown(input, { key: 'Escape' });
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+  expect(queryByRole('listbox')).toBeEmptyDOMElement();
+  await waitForElement(() => queryByRole('listbox'));
 });
 
-test('blurring input should close menu', () => {
+test('blurring input should close menu', async () => {
   const { getByTestId, queryByRole } = render(SelectMock);
   const input = getByTestId('select');
 
   fireEvent.focus(input);
-  expect(queryByRole('listbox')).toBeInTheDocument();
+  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
 
   fireEvent.blur(input);
-  expect(queryByRole('listbox')).not.toBeInTheDocument();
+  expect(queryByRole('listbox')).toBeEmptyDOMElement();
+  await waitForElement(() => queryByRole('listbox'));
 });
 
 test('select has items', async () => {
@@ -282,12 +300,13 @@ test('selected item should be highlighted when opened', async () => {
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
-test('select input text should match the value selected', () => {
+test('select input text should match the value selected', async () => {
   const { getByTestId } = render(SelectMock);
 
   const input = getByTestId('select');
 
   expect(input.getAttribute('value')).toEqual('Mexico');
+  await waitForElement(() => screen.getByTestId('select'));
 });
 
 test('select items should be filterable', async () => {
@@ -342,6 +361,7 @@ test('up/down arrows should change select item selection', async () => {
 
   fireEvent.keyDown(input, { key: 'ArrowUp' });
   fireEvent.keyDown(input, { key: 'ArrowUp' });
+
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
 
@@ -375,25 +395,26 @@ test('end should select last select item', async () => {
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 
   fireEvent.keyDown(input, { key: 'End' });
-
   expect(options[5].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[5].id);
 
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
-test('enter should trigger onOptionChange', () => {
+test('enter should trigger onOptionChange', async () => {
   const { getByTestId } = render(SelectMock);
   const input = getByTestId('select');
 
   fireEvent.focus(input);
+
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
 
   expect(onChange).toHaveBeenCalledWith(mockOptions[2].value, mockOptions[2]);
+  await waitForElement(() => screen.getByTestId('select'));
 });
 
-test('clicking on select options should trigger onOptionChange', () => {
+test('clicking on select options should trigger onOptionChange', async () => {
   const { getAllByRole, getByTestId } = render(SelectMock);
   const input = getByTestId('select');
   fireEvent.focus(input);
@@ -402,6 +423,7 @@ test('clicking on select options should trigger onOptionChange', () => {
   fireEvent.click(options[3]);
   expect(onChange).toHaveBeenCalledWith(mockOptions[3].value, mockOptions[3]);
   expect(onChange).toHaveBeenCalledTimes(1);
+  await waitForElement(() => screen.getByTestId('select'));
 });
 
 test('clicking on disabled select options should not trigger onItemClick', async () => {
@@ -425,7 +447,7 @@ test('select should render select action', async () => {
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
-test('select action should call onActionClick', () => {
+test('select action should call onActionClick', async () => {
   const { getByTestId, getAllByRole } = render(SelectMock);
   const input = getByTestId('select');
   fireEvent.focus(input);
@@ -433,6 +455,7 @@ test('select action should call onActionClick', () => {
   const options = getAllByRole('option');
   fireEvent.click(options[5]);
   expect(onActionClick).toHaveBeenCalled();
+  await waitForElement(() => screen.getByTestId('select'));
 });
 
 test('select action supports icons', async () => {
@@ -446,7 +469,7 @@ test('select action supports icons', async () => {
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
-test('select should render an error if one is provided', () => {
+test('select should render an error if one is provided', async () => {
   const { getByText } = render(
     <FormGroup>
       <Select
@@ -467,17 +490,19 @@ test('select should render an error if one is provided', () => {
   );
 
   expect(getByText('Required')).toBeInTheDocument();
+  await waitForElement(() => screen.getByText('Required'));
 });
 
-test('select should have a required attr if set as required', () => {
+test('select should have a required attr if set as required', async () => {
   const { getByTestId } = render(SelectMock);
 
   const input = getByTestId('select');
 
   expect(input.getAttribute('required')).toEqual('');
+  await waitForElement(() => screen.getByTestId('select'));
 });
 
-test('select should not have a required attr if not set as required', () => {
+test('select should not have a required attr if not set as required', async () => {
   const { getAllByLabelText } = render(
     <Select
       onOptionChange={onChange}
@@ -496,9 +521,10 @@ test('select should not have a required attr if not set as required', () => {
   const input = getAllByLabelText('Countries')[0];
 
   expect(input.getAttribute('required')).toEqual(null);
+  await waitForElement(() => screen.getAllByLabelText('Countries'));
 });
 
-test('select should have a disabled attr if set as disabled', () => {
+test('select should have a disabled attr if set as disabled', async () => {
   const { getAllByLabelText } = render(
     <Select
       disabled
@@ -518,18 +544,20 @@ test('select should have a disabled attr if set as disabled', () => {
   const input = getAllByLabelText('Countries')[0];
 
   expect(input.getAttribute('disabled')).toEqual('');
+  await waitForElement(() => screen.getAllByLabelText('Countries'));
 });
 
-test('select should not have a disabled attr if not set as disabled', () => {
+test('select should not have a disabled attr if not set as disabled', async () => {
   const { getAllByLabelText } = render(SelectMock);
 
   const input = getAllByLabelText('Countries')[0];
 
   expect(input.getAttribute('disabled')).toEqual(null);
+  await waitForElement(() => screen.getAllByLabelText('Countries'));
 });
 
-test('appends (optional) text to label if select is not required', () => {
-  const { container } = render(
+test('appends (optional) text to label if select is not required', async () => {
+  const { getByText } = render(
     <Select
       onOptionChange={onChange}
       label="Countries"
@@ -543,9 +571,10 @@ test('appends (optional) text to label if select is not required', () => {
       placeholder="Choose country"
     />,
   );
-  const label = container.querySelector('label');
+  const label = getByText('Countries');
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
+  await waitForElement(() => screen.getByText('Countries'));
 });
 
 test('does not forward styles', async () => {
@@ -576,7 +605,7 @@ test('does not forward styles', async () => {
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
-test('should render a non filterable select', () => {
+test('should render a non filterable select', async () => {
   const { getAllByLabelText } = render(
     <Select
       filterable={false}
@@ -595,6 +624,7 @@ test('should render a non filterable select', () => {
 
   const input = getAllByLabelText('Countries')[0];
   expect(input.getAttribute('readonly')).toBe('');
+  await waitForElement(() => screen.getAllByLabelText('Countries'));
 });
 
 test('should accept a maxHeight prop', async () => {
@@ -615,7 +645,9 @@ test('should accept a maxHeight prop', async () => {
   );
 
   const input = getAllByLabelText('Countries')[0];
-  fireEvent.focus(input);
+  act(() => {
+    fireEvent.focus(input);
+  });
 
   const list = getByRole('listbox');
   expect(list).toHaveStyleRule('max-height', remCalc(350));
@@ -627,7 +659,9 @@ test('should default max-height to 250', async () => {
   const { getAllByLabelText, getByRole } = render(SelectMock);
 
   const input = getAllByLabelText('Countries')[0];
-  fireEvent.focus(input);
+  act(() => {
+    fireEvent.focus(input);
+  });
 
   const list = getByRole('listbox');
   expect(list).toHaveStyleRule('max-height', remCalc(250));
@@ -635,7 +669,7 @@ test('should default max-height to 250', async () => {
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
-test('should use the passed in ref object if provided', () => {
+test('should use the passed in ref object if provided', async () => {
   const ref = createRef<HTMLInputElement>();
   const { getAllByLabelText } = render(
     <Select
@@ -656,9 +690,10 @@ test('should use the passed in ref object if provided', () => {
   const input = getAllByLabelText('Countries')[0];
 
   expect(ref.current).toEqual(input);
+  await waitForElement(() => screen.getAllByLabelText('Countries'));
 });
 
-test('should call the provided refSetter if any', () => {
+test('should call the provided refSetter if any', async () => {
   let inputRef: HTMLInputElement | null = null;
   const refSetter = (ref: HTMLInputElement) => (inputRef = ref);
   const { getAllByLabelText } = render(
@@ -680,6 +715,7 @@ test('should call the provided refSetter if any', () => {
   const input = getAllByLabelText('Countries')[0];
 
   expect(inputRef).toEqual(input);
+  await waitForElement(() => screen.getAllByLabelText('Countries'));
 });
 
 test('options should allow icons', async () => {

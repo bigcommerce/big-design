@@ -79,9 +79,8 @@ export const MultiSelect = typedMemo(
     const handleSetInputValue = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && changes.isOpen === true) {
         setItems(filterOptions(changes.inputValue));
+        setInputValue(changes.inputValue || '');
       }
-
-      setInputValue(changes.inputValue || '');
     };
 
     const filterOptions = (inputVal = '') => {
@@ -206,6 +205,13 @@ export const MultiSelect = typedMemo(
       stateReducer: handleStateReducer,
     });
 
+    // Reset the value when Multiselect is closed
+    useEffect(() => {
+      if (!isOpen) {
+        setInputValue('');
+      }
+    }, [isOpen]);
+
     const setCallbackRef = useCallback(
       (ref: HTMLInputElement) => {
         if (typeof inputRef === 'function') {
@@ -269,7 +275,9 @@ export const MultiSelect = typedMemo(
                 {...getInputProps({
                   autoComplete: 'no',
                   disabled,
-                  onFocus: openMenu,
+                  onFocus: () => {
+                    !isOpen && openMenu();
+                  },
                   onKeyDown: (event) => {
                     switch (event.key) {
                       case 'Backspace':
@@ -415,19 +423,19 @@ export const MultiSelect = typedMemo(
               style={popperStyle}
               update={update}
             >
-              {renderOptions}
+              {isOpen && renderOptions}
             </List>
           )}
         </Popper>
       );
-    }, [getMenuProps, maxHeight, placement, positionFixed, renderOptions]);
+    }, [getMenuProps, isOpen, maxHeight, placement, positionFixed, renderOptions]);
 
     return (
       <div>
         <Manager>
           {renderLabel}
           <div {...getComboboxProps()}>{renderInput}</div>
-          {isOpen && renderList}
+          {renderList}
         </Manager>
       </div>
     );

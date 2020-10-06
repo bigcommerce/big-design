@@ -7,7 +7,7 @@ exports[`renders a pagination component 1`] = `
   width: 2rem;
 }
 
-.c12 {
+.c13 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -77,6 +77,19 @@ exports[`renders a pagination component 1`] = `
   -webkit-flex-shrink: 1;
   -ms-flex-negative: 1;
   flex-shrink: 1;
+}
+
+.c11 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background-color: #FFFFFF;
+  color: #313440;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  z-index: 1060;
 }
 
 .c6 {
@@ -164,7 +177,7 @@ exports[`renders a pagination component 1`] = `
   color: #D9DCE9;
 }
 
-.c11 {
+.c12 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -215,32 +228,32 @@ exports[`renders a pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c11:focus {
+.c12:focus {
   outline: none;
 }
 
-.c11[disabled] {
+.c12[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c11 + .bd-button {
+.c12 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c11:active {
+.c12:active {
   background-color: #DBE3FE;
 }
 
-.c11:focus {
+.c12:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c11:hover:not(:active) {
+.c12:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c11[disabled] {
+.c12[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -302,14 +315,14 @@ exports[`renders a pagination component 1`] = `
 }
 
 @media (min-width:720px) {
-  .c11 + .bd-button {
+  .c12 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c11 {
+  .c12 {
     width: auto;
   }
 }
@@ -364,13 +377,22 @@ exports[`renders a pagination component 1`] = `
               </svg>
             </span>
           </button>
+          <ul
+            aria-labelledby="bd-dropdown-2-label"
+            class="c11"
+            data-placement="bottom-start"
+            id="bd-dropdown-2-menu"
+            role="listbox"
+            style="position: absolute; left: 0px; top: 0px;"
+            tabindex="-1"
+          />
         </div>
       </div>
       <div
         class="c1 c5"
       >
         <button
-          class="c11 c8"
+          class="c12 c8"
           disabled=""
           role="button"
           tabindex="0"
@@ -380,7 +402,7 @@ exports[`renders a pagination component 1`] = `
           >
             <svg
               aria-labelledby="bd-icon-4"
-              class="c12"
+              class="c13"
               fill="currentColor"
               height="24"
               stroke="currentColor"
@@ -404,7 +426,7 @@ exports[`renders a pagination component 1`] = `
           </span>
         </button>
         <button
-          class="c11 c8"
+          class="c12 c8"
           role="button"
           tabindex="0"
         >
@@ -413,7 +435,7 @@ exports[`renders a pagination component 1`] = `
           >
             <svg
               aria-labelledby="bd-icon-5"
-              class="c12"
+              class="c13"
               fill="currentColor"
               height="24"
               stroke="currentColor"

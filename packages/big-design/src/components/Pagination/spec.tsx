@@ -1,11 +1,11 @@
 import React from 'react';
 
 import 'jest-styled-components';
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, waitForElement } from '@test/utils';
 
 import { Pagination } from './index';
 
-test('render pagination component', () => {
+test('render pagination component', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { container } = render(
@@ -20,9 +20,10 @@ test('render pagination component', () => {
   );
 
   expect(container.firstChild).toMatchSnapshot();
+  await waitForElement(() => container.firstChild);
 });
 
-test('render pagination component with invalid page info', () => {
+test('render pagination component with invalid page info', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { container } = render(
@@ -37,9 +38,10 @@ test('render pagination component with invalid page info', () => {
   );
   expect(changePage).toHaveBeenCalled();
   expect(container.firstChild).toMatchSnapshot();
+  await waitForElement(() => container.firstChild);
 });
 
-test('render pagination component with invalid range info', () => {
+test('render pagination component with invalid range info', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { container } = render(
@@ -54,9 +56,10 @@ test('render pagination component with invalid range info', () => {
   );
   expect(changeRange).toHaveBeenCalled();
   expect(container.firstChild).toMatchSnapshot();
+  await waitForElement(() => container.firstChild);
 });
 
-test('render pagination component with no items', () => {
+test('render pagination component with no items', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { container } = render(
@@ -70,9 +73,10 @@ test('render pagination component with no items', () => {
     />,
   );
   expect(container.firstChild).toMatchSnapshot();
+  await waitForElement(() => container.firstChild);
 });
 
-test('trigger range change', () => {
+test('trigger range change', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { getByText } = render(
@@ -90,9 +94,10 @@ test('trigger range change', () => {
   fireEvent.keyDown(getByText('3'), { key: 'Enter', code: 13 });
 
   expect(changeRange).toHaveBeenCalled();
+  await waitForElement(() => getByText('1 - 2 of 10'));
 });
 
-test('trigger page decrease', () => {
+test('trigger page decrease', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { getByTitle } = render(
@@ -114,9 +119,10 @@ test('trigger page decrease', () => {
   fireEvent.click(button);
 
   expect(changePage).toHaveBeenCalled();
+  await waitForElement(() => getByTitle('Previous page'));
 });
 
-test('trigger page increase', () => {
+test('trigger page increase', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { getByTitle } = render(
@@ -138,4 +144,5 @@ test('trigger page increase', () => {
   fireEvent.click(button);
 
   expect(changePage).toHaveBeenCalled();
+  await waitForElement(() => getByTitle('Next page'));
 });

@@ -96,9 +96,8 @@ export const Select = typedMemo(
     const handleSetInputValue = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && changes.isOpen === true) {
         setSelectOptions(filterOptions(changes.inputValue));
+        setInputValue(changes.inputValue || '');
       }
-
-      setInputValue(changes.inputValue || '');
     };
 
     const filterOptions = (inputVal = '') => {
@@ -180,6 +179,13 @@ export const Select = typedMemo(
       stateReducer: handleStateReducer,
     });
 
+    // Reset the value when Select is closed
+    useEffect(() => {
+      if (!isOpen) {
+        setInputValue(selectedOption ? selectedOption.content : '');
+      }
+    }, [isOpen, selectedOption]);
+
     const setCallbackRef = useCallback(
       (ref: HTMLInputElement) => {
         if (typeof inputRef === 'function') {
@@ -244,7 +250,9 @@ export const Select = typedMemo(
                 {...getInputProps({
                   autoComplete: 'no',
                   disabled,
-                  onFocus: openMenu,
+                  onFocus: () => {
+                    !isOpen && openMenu();
+                  },
                   onKeyDown: (event) => {
                     switch (event.key) {
                       case 'Enter':
@@ -415,19 +423,19 @@ export const Select = typedMemo(
               style={popperStyle}
               update={update}
             >
-              {renderChildren}
+              {isOpen && renderChildren}
             </List>
           )}
         </Popper>
       );
-    }, [getMenuProps, maxHeight, placement, positionFixed, renderChildren]);
+    }, [getMenuProps, isOpen, maxHeight, placement, positionFixed, renderChildren]);
 
     return (
       <div>
         <Manager>
           {renderLabel}
           <div {...getComboboxProps()}>{renderInput}</div>
-          {isOpen && renderList}
+          {renderList}
         </Manager>
       </div>
     );

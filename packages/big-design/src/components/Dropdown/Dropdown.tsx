@@ -71,11 +71,12 @@ export const Dropdown = memo(
                 disabled,
                 ref,
               }),
+              'aria-expanded': isOpen,
             })
           }
         </Reference>
       );
-    }, [disabled, getToggleButtonProps, toggle]);
+    }, [disabled, getToggleButtonProps, isOpen, toggle]);
 
     const renderItem = useCallback(
       (item: DropdownItem) => {
@@ -200,19 +201,19 @@ export const Dropdown = memo(
               style={popperStyle}
               update={update}
             >
-              {renderChildren}
+              {isOpen && renderChildren}
             </List>
           )}
         </Popper>
       ),
-      [getMenuProps, highlightedIndex, maxHeight, placement, renderChildren, rest],
+      [getMenuProps, highlightedIndex, isOpen, maxHeight, placement, renderChildren, rest],
     );
 
     return (
       <Manager>
         <StyledBox>
           {renderToggle}
-          {isOpen && renderList}
+          {renderList}
         </StyledBox>
       </Manager>
     );
