@@ -34,7 +34,7 @@ export const createLocalizationProvider = (locale: string) => {
     monthFormatter.format(new Date(0, month, 1)),
   );
 
-  const daysShort = [1, 2, 3, 4, 5, 6, 7].map((day) => dayFormatter.format(new Date(0, 9, day, 12)));
+  const daysShort = [0, 1, 2, 3, 4, 5, 6].map((day) => dayFormatter.format(new Date(0, 9, day, 12)));
 
   const timeFormatter = Intl.DateTimeFormat(locale, {
     hour: 'numeric',
