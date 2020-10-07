@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.7](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.6...@bigcommerce/big-design@0.23.7) (2020-10-07)
+
+
+### Bug Fixes
+
+* **datepicker:** fix order of days displayed ([#457](https://github.com/bigcommerce/big-design/issues/457)) ([0753cd3](https://github.com/bigcommerce/big-design/commit/0753cd306f9ffe106297ef29be572f26f3cd27df))
+
+
+### Features
+
+* update downshift and fix tests ([#456](https://github.com/bigcommerce/big-design/issues/456)) ([5543b2a](https://github.com/bigcommerce/big-design/commit/5543b2a793abe8321bc66134cfc0edd24a33ea2c))
+
+
+
+
+
 ## [0.23.6](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.5...@bigcommerce/big-design@0.23.6) (2020-10-02)
 
 
