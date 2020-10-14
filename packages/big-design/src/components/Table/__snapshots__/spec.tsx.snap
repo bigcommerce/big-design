@@ -80,6 +80,16 @@ exports[`renders a pagination component 1`] = `
 }
 
 .c11 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;

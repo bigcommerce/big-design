@@ -6,6 +6,7 @@ import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
 import { StyledList } from './styled';
 
 export interface ListProps extends HTMLAttributes<HTMLUListElement> {
+  isOpen: boolean;
   maxHeight: number;
   update(): Promise<Partial<State> | null>;
 }
