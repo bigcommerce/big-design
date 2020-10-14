@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design",
-  "version": "0.23.7",
+  "version": "0.23.8",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",

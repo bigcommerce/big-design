@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.8](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.7...@bigcommerce/big-design@0.23.8) (2020-10-14)
+
+
+### Bug Fixes
+
+* open select when clicked and visually hide list ([#461](https://github.com/bigcommerce/big-design/issues/461)) ([2696a2e](https://github.com/bigcommerce/big-design/commit/2696a2eddc2ef2a71ef21eb5d15b63dff24d9abc))
+
+
+
+
+
 ## [0.23.7](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.6...@bigcommerce/big-design@0.23.7) (2020-10-07)
 
 
