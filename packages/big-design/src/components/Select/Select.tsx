@@ -250,6 +250,9 @@ export const Select = typedMemo(
                 {...getInputProps({
                   autoComplete: 'no',
                   disabled,
+                  onClick: () => {
+                    !isOpen && openMenu();
+                  },
                   onFocus: () => {
                     !isOpen && openMenu();
                   },
@@ -419,6 +422,7 @@ export const Select = typedMemo(
             <List
               {...getMenuProps({ ref })}
               data-placement={popperPlacement}
+              isOpen={isOpen}
               maxHeight={maxHeight}
               style={popperStyle}
               update={update}

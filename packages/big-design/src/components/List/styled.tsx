@@ -1,9 +1,12 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { hideVisually } from 'polished';
 import styled from 'styled-components';
 
 import { ListProps } from './List';
 
 export const StyledList = styled.ul<Partial<ListProps>>`
+  ${({ isOpen }) => !isOpen && hideVisually()}
+
   ${({ theme }) => theme.shadow.raised};
 
   background-color: ${({ theme }) => theme.colors.white};

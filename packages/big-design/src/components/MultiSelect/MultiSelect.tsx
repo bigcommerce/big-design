@@ -419,6 +419,7 @@ export const MultiSelect = typedMemo(
             <List
               {...getMenuProps({ ref })}
               data-placement={popperPlacement}
+              isOpen={isOpen}
               maxHeight={maxHeight}
               style={popperStyle}
               update={update}
