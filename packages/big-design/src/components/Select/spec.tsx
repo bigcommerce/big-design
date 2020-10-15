@@ -729,6 +729,7 @@ test('options should allow icons', async () => {
         { value: 'mx', content: 'Mexico', icon: <ArrowBackIcon /> },
       ]}
       placeholder="Choose country"
+      value="mx"
     />,
   );
 
@@ -736,7 +737,7 @@ test('options should allow icons', async () => {
   fireEvent.focus(input);
 
   const svg = container.querySelectorAll('svg');
-  expect(svg.length).toBe(3);
+  expect(svg.length).toBe(5);
 
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
