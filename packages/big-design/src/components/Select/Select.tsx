@@ -280,6 +280,7 @@ export const Select = typedMemo(
                   placeholder,
                   ref: getInputRef(),
                 })}
+                iconLeft={selectedOption?.icon}
                 iconRight={renderToggle}
                 readOnly={!filterable}
                 required={required}
