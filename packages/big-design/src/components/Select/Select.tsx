@@ -298,6 +298,7 @@ export const Select = typedMemo(
       isOpen,
       onOptionChange,
       openMenu,
+      selectedOption,
       placeholder,
       renderToggle,
       required,
