@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.8...@bigcommerce/big-design@0.24.0) (2020-10-16)
+
+
+### Bug Fixes
+
+* **component:** add missing prop to open dropdown ([#463](https://github.com/bigcommerce/big-design/issues/463)) ([10b26a6](https://github.com/bigcommerce/big-design/commit/10b26a6d8168a3f794b6890d01828bac0b76e1f8))
+
+
+### Features
+
+* **component:** show icon on selected item ([#462](https://github.com/bigcommerce/big-design/issues/462)) ([8b42ac1](https://github.com/bigcommerce/big-design/commit/8b42ac10b61bd9a7ff638f5aa4bcfdb3089f0581))
+
+
+
+
+
 ## [0.23.8](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.7...@bigcommerce/big-design@0.23.8) (2020-10-14)
 
 
