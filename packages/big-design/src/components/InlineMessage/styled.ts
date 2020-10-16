@@ -8,9 +8,9 @@ import { Link } from '../Link';
 import { StyleableH4, StyleableSmall } from '../Typography/private';
 import { TextProps } from '../Typography/types';
 
-import { InlineAlertProps } from './InlineAlert';
+import { InlineMessageProps } from './InlineMessage';
 
-export const StyledInlineAlert = styled(Grid)<InlineAlertProps>`
+export const StyledInlineMessage = styled(Grid)<InlineMessageProps>`
   border: ${({ theme }) => theme.border.box};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   grid-gap: ${({ theme }) => theme.spacing.xSmall};
@@ -53,7 +53,7 @@ export const StyledActionsWrapper = styled(Flex)`
   margin-right: -${({ theme }) => theme.spacing.xxSmall};
 `;
 
-StyledInlineAlert.defaultProps = { theme: defaultTheme };
+StyledInlineMessage.defaultProps = { theme: defaultTheme };
 StyledHeader.defaultProps = { theme: defaultTheme };
 StyledMessageItem.defaultProps = { theme: defaultTheme };
 StyledLink.defaultProps = { theme: defaultTheme };

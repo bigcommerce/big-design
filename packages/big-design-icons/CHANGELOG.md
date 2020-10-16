@@ -76,7 +76,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **component:** add Alerts, InlineAlerts, and Message components ([#340](https://github.com/bigcommerce/big-design/issues/340)) ([d541276](https://github.com/bigcommerce/big-design/commit/d54127603fba47b46cb35c3db4caf53ab24bafc3))
+* **component:** add Alerts, InlineMessages, and Message components ([#340](https://github.com/bigcommerce/big-design/issues/340)) ([d541276](https://github.com/bigcommerce/big-design/commit/d54127603fba47b46cb35c3db4caf53ab24bafc3))
 
 
 

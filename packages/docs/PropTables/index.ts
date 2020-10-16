@@ -11,6 +11,7 @@ export * from './FlexPropTable';
 export * from './FormPropTable';
 export * from './GridPropTable';
 export * from './IconPropTable';
+export * from './InlineMessagePropTable';
 export * from './InputPropTable';
 export * from './LinkPropTable';
 export * from './MarginPropTable';

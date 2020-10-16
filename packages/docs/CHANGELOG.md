@@ -288,7 +288,7 @@ Use the built in `margin` props if margin is needed.
 
 ### Features
 
-* **component:** add Alerts, InlineAlerts, and Message components ([#340](https://github.com/bigcommerce/big-design/issues/340)) ([d541276](https://github.com/bigcommerce/big-design/commit/d54127603fba47b46cb35c3db4caf53ab24bafc3))
+* **component:** add Alerts, InlineMessages, and Message components ([#340](https://github.com/bigcommerce/big-design/issues/340)) ([d541276](https://github.com/bigcommerce/big-design/commit/d54127603fba47b46cb35c3db4caf53ab24bafc3))
 * **component:** convert Dropdown/Select to FC and add MultiSelect ([#303](https://github.com/bigcommerce/big-design/issues/303)) ([0ab0e50](https://github.com/bigcommerce/big-design/commit/0ab0e50878405e3da18fbf4e6dc934539a0d6446))
 * **component:** restrict badges to use label props and style fixes ([#339](https://github.com/bigcommerce/big-design/issues/339)) ([a8af2f2](https://github.com/bigcommerce/big-design/commit/a8af2f2a122404046fa2d5762cf4dceac34476f9))
 

@@ -339,7 +339,7 @@ Use the built in `margin` props if margin is needed.
 
 ### Features
 
-* **component:** add Alerts, InlineAlerts, and Message components ([#340](https://github.com/bigcommerce/big-design/issues/340)) ([d541276](https://github.com/bigcommerce/big-design/commit/d54127603fba47b46cb35c3db4caf53ab24bafc3))
+* **component:** add Alerts, InlineMessages, and Message components ([#340](https://github.com/bigcommerce/big-design/issues/340)) ([d541276](https://github.com/bigcommerce/big-design/commit/d54127603fba47b46cb35c3db4caf53ab24bafc3))
 * **component:** bump scroll-into-view-if-needed and use auto behavior ([#334](https://github.com/bigcommerce/big-design/issues/334)) ([5bb0fdf](https://github.com/bigcommerce/big-design/commit/5bb0fdf5db15bfbadeb540733310158c1aaeb024))
 * **component:** convert Dropdown/Select to FC and add MultiSelect ([#303](https://github.com/bigcommerce/big-design/issues/303)) ([0ab0e50](https://github.com/bigcommerce/big-design/commit/0ab0e50878405e3da18fbf4e6dc934539a0d6446))
 * **component:** ensure Badge label prop is of type string ([#341](https://github.com/bigcommerce/big-design/issues/341)) ([a9b6847](https://github.com/bigcommerce/big-design/commit/a9b6847e4888f15f9e372a62e43b7542ecf65dfb))

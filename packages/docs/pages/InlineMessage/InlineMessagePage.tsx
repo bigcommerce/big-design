@@ -1,22 +1,21 @@
-import { H0, H1, H2, InlineAlert, Text } from '@bigcommerce/big-design';
+import { H0, H1, H2, InlineMessage, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview, Collapsible } from '../../components';
-import { MarginPropTable } from '../../PropTables';
-import { InlineAlertPropTable } from '../../PropTables/InlineAlertPropTable';
+import { InlineMessagePropTable, MarginPropTable } from '../../PropTables';
 import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../../PropTables/shared';
 
-const InlineAlertPage = () => (
+const InlineMessagePage = () => (
   <>
-    <H0>Inline Alerts</H0>
+    <H0>Inline Messages</H0>
     <Text>
-      An inline alert, mostly used for displaying alerts within Modals. Is a condensed version of the{' '}
+      An inline message, mostly used for displaying alerts within Modals. Is a condensed version of the{' '}
       <Code primary>Message</Code> component.
     </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <InlineAlert
+      <InlineMessage
         header="Header"
         messages={[
           {
@@ -34,11 +33,11 @@ const InlineAlertPage = () => (
 
     <H1>API</H1>
 
-    <InlineAlertPropTable />
+    <InlineMessagePropTable />
 
-    <MessagingItemPropTable title="InlineAlert[MessageItem]" />
+    <MessagingItemPropTable title="InlineMessage[MessageItem]" />
 
-    <MessagingLinkItemPropTable title="InlineAlert[MessageLinkItem]" />
+    <MessagingLinkItemPropTable title="InlineMessage[MessageLinkItem]" />
 
     <H2>Inherited Props</H2>
 
@@ -51,16 +50,16 @@ const InlineAlertPage = () => (
     <H2>Types</H2>
 
     <Text>
-      There are four types of <Code primary>InlineAlerts</Code> based on the level of message you want to display.
+      There are four types of <Code primary>InlineMessages</Code> based on the level of message you want to display.
     </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
       <>
-        <InlineAlert type="error" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
-        <InlineAlert type="success" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
-        <InlineAlert type="warning" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
-        <InlineAlert type="info" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
+        <InlineMessage type="error" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
+        <InlineMessage type="success" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
+        <InlineMessage type="warning" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
+        <InlineMessage type="info" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
       </>
       {/* jsx-to-string:end */}
     </CodePreview>
@@ -68,14 +67,14 @@ const InlineAlertPage = () => (
     <H2>Header</H2>
 
     <Text>
-      <Code primary>InlineAlert</Code>'s allow you to pass an optional <Code primary>header</Code> prop.
+      <Code primary>InlineMessage</Code>'s allow you to pass an optional <Code primary>header</Code> prop.
     </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
       <>
-        <InlineAlert type="success" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
-        <InlineAlert
+        <InlineMessage type="success" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
+        <InlineMessage
           header="Header"
           type="success"
           messages={[{ text: 'Required description copy.' }]}
@@ -92,8 +91,8 @@ const InlineAlertPage = () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       <>
-        <InlineAlert type="info" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
-        <InlineAlert
+        <InlineMessage type="info" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
+        <InlineMessage
           onClose={() => null}
           type="info"
           messages={[{ text: 'Required description copy.' }]}
@@ -106,19 +105,19 @@ const InlineAlertPage = () => (
     <H2>Actions</H2>
 
     <Text>
-      <Code primary>InlineAlert</Code>'s allow you to pass an optional <Code primary>actions</Code> prop.
+      <Code primary>InlineMessage</Code>'s allow you to pass an optional <Code primary>actions</Code> prop.
     </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
       <>
-        <InlineAlert
+        <InlineMessage
           header="header"
           type="info"
           messages={[{ text: 'Required description copy.' }]}
           marginVertical="medium"
         />
-        <InlineAlert
+        <InlineMessage
           actions={[
             { text: 'First Action', onClick: () => null },
             { text: 'Second Action', variant: 'subtle', onClick: () => null },
@@ -134,4 +133,4 @@ const InlineAlertPage = () => (
   </>
 );
 
-export default InlineAlertPage;
+export default InlineMessagePage;

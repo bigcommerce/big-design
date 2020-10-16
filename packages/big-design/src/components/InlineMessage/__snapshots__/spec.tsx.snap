@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render default (success) InlineAlert 1`] = `
+exports[`render default (success) InlineMessage 1`] = `
 .c5 {
   vertical-align: middle;
   color: #2AAB3F;
@@ -101,7 +101,7 @@ exports[`render default (success) InlineAlert 1`] = `
 </div>
 `;
 
-exports[`render error InlineAlert 1`] = `
+exports[`render error InlineMessage 1`] = `
 .c5 {
   vertical-align: middle;
   color: #DB3643;
@@ -198,7 +198,7 @@ exports[`render error InlineAlert 1`] = `
 </div>
 `;
 
-exports[`render info InlineAlert 1`] = `
+exports[`render info InlineMessage 1`] = `
 .c5 {
   vertical-align: middle;
   color: #0B38D9;
@@ -299,7 +299,7 @@ exports[`render info InlineAlert 1`] = `
 </div>
 `;
 
-exports[`render warning InlineAlert 1`] = `
+exports[`render warning InlineMessage 1`] = `
 .c5 {
   vertical-align: middle;
   color: #FFAE00;

@@ -8,11 +8,11 @@ import { Button } from '../Button';
 import { MessagingButton } from '../Button/private';
 import { GridItem } from '../Grid';
 
-import { StyledActionsWrapper, StyledHeader, StyledInlineAlert, StyledLink, StyledMessageItem } from './styled';
+import { StyledActionsWrapper, StyledHeader, StyledInlineMessage, StyledLink, StyledMessageItem } from './styled';
 
-export type InlineAlertProps = SharedMessagingProps & MarginProps;
+export type InlineMessageProps = SharedMessagingProps & MarginProps;
 
-export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style, header, ...props }) => {
+export const InlineMessage: React.FC<InlineMessageProps> = memo(({ className, style, header, ...props }) => {
   const filteredProps = excludePaddingProps(props);
   const icon = useMemo(() => props.type && getMessagingIcon(props.type, true), [props.type]);
 
@@ -50,7 +50,7 @@ export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style,
   );
 
   return (
-    <StyledInlineAlert {...filteredProps} backgroundColor="white" role="alert">
+    <StyledInlineMessage {...filteredProps} backgroundColor="white" role="alert">
       <GridItem gridArea="icon">{icon}</GridItem>
       <GridItem gridArea="messages">
         {renderedHeader}
@@ -62,11 +62,11 @@ export const InlineAlert: React.FC<InlineAlertProps> = memo(({ className, style,
           <MessagingButton onClick={props.onClose} iconOnly={<CloseIcon size="medium" title="Close." />} />
         </GridItem>
       )}
-    </StyledInlineAlert>
+    </StyledInlineMessage>
   );
 });
 
-InlineAlert.defaultProps = {
+InlineMessage.defaultProps = {
   messages: [],
   type: 'success',
 };
