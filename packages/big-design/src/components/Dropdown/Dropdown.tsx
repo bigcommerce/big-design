@@ -197,6 +197,7 @@ export const Dropdown = memo(
                 ref,
               })}
               data-placement={popperPlacement}
+              isOpen={isOpen}
               maxHeight={maxHeight}
               style={popperStyle}
               update={update}

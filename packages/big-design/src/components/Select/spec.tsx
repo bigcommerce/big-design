@@ -240,6 +240,7 @@ test('select menu opens/closes when input button is clicked', async () => {
   const button = getByRole('button');
 
   fireEvent.click(button);
+  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
 
   fireEvent.click(button);
   expect(queryByRole('listbox')).toBeEmptyDOMElement();
