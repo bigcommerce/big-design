@@ -32,6 +32,7 @@ export const StyledRadio = styled.label<StyledRadioProps>`
   color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
   display: inline-block;
+  flex-shrink: 0;
   height: ${({ theme }) => theme.spacing.large};
   position: relative;
   user-select: none;

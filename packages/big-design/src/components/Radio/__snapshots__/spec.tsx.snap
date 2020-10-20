@@ -63,6 +63,9 @@ exports[`render Radio (checked + disabled) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   height: 1.25rem;
   position: relative;
   -webkit-user-select: none;
@@ -189,6 +192,9 @@ exports[`render Radio (checked) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   height: 1.25rem;
   position: relative;
   -webkit-user-select: none;
@@ -356,6 +362,9 @@ exports[`render Radio (unchecked + description object) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   height: 1.25rem;
   position: relative;
   -webkit-user-select: none;
@@ -506,6 +515,9 @@ exports[`render Radio (unchecked + description text) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   height: 1.25rem;
   position: relative;
   -webkit-user-select: none;
@@ -643,6 +655,9 @@ exports[`render Radio (unchecked + disabled) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   height: 1.25rem;
   position: relative;
   -webkit-user-select: none;
@@ -768,6 +783,9 @@ exports[`render Radio (unchecked) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   height: 1.25rem;
   position: relative;
   -webkit-user-select: none;
