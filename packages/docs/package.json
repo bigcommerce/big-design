@@ -19,10 +19,10 @@
     "lint:tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/preset-typescript": "^7.9.0",
-    "@babel/standalone": "^7.9.5",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-react": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
+    "@babel/standalone": "^7.12.4",
     "@bigcommerce/big-design": "^0.24.0",
     "@bigcommerce/big-design-icons": "^0.13.1",
     "@bigcommerce/big-design-theme": "^0.10.1",
