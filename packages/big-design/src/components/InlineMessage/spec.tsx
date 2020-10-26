@@ -4,41 +4,41 @@ import 'jest-styled-components';
 
 import { fireEvent, render } from '@test/utils';
 
-import { InlineAlert, InlineAlertProps } from './InlineAlert';
+import { InlineMessage, InlineMessageProps } from './InlineMessage';
 
 test('renders with margins', () => {
-  const { container, rerender } = render(<InlineAlert messages={[{ text: 'Success' }]} />);
+  const { container, rerender } = render(<InlineMessage messages={[{ text: 'Success' }]} />);
 
   expect(container.firstChild).not.toHaveStyle('margin: 1rem');
 
-  rerender(<InlineAlert messages={[{ text: 'Success' }]} margin="medium" />);
+  rerender(<InlineMessage messages={[{ text: 'Success' }]} margin="medium" />);
 
   expect(container.firstChild).toHaveStyle('margin: 1rem');
 });
 
-test('render default (success) InlineAlert', () => {
-  const { container } = render(<InlineAlert messages={[{ text: 'Success' }]} />);
+test('render default (success) InlineMessage', () => {
+  const { container } = render(<InlineMessage messages={[{ text: 'Success' }]} />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success}`);
 });
 
-test('render error InlineAlert', () => {
-  const { container } = render(<InlineAlert messages={[{ text: 'Error' }]} type="error" />);
+test('render error InlineMessage', () => {
+  const { container } = render(<InlineMessage messages={[{ text: 'Error' }]} type="error" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger}`);
 });
 
-test('render warning InlineAlert', () => {
-  const { container } = render(<InlineAlert messages={[{ text: 'Warning' }]} type="warning" />);
+test('render warning InlineMessage', () => {
+  const { container } = render(<InlineMessage messages={[{ text: 'Warning' }]} type="warning" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50}`);
 });
 
-test('render info InlineAlert', () => {
-  const { container } = render(<InlineAlert messages={[{ text: 'Info' }]} type="info" />);
+test('render info InlineMessage', () => {
+  const { container } = render(<InlineMessage messages={[{ text: 'Info' }]} type="info" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60}`);
@@ -46,7 +46,7 @@ test('render info InlineAlert', () => {
 
 test('renders with link', () => {
   const { queryByRole, container } = render(
-    <InlineAlert messages={[{ text: 'Success', link: { text: 'Link', href: '#' } }]} />,
+    <InlineMessage messages={[{ text: 'Success', link: { text: 'Link', href: '#' } }]} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -59,7 +59,7 @@ test('renders with link', () => {
 
 test('renders with external link', () => {
   const { queryByRole, container } = render(
-    <InlineAlert
+    <InlineMessage
       messages={[{ text: 'Success', link: { text: 'Link', href: '#', external: true, target: '_blank' } }]}
     />,
   );
@@ -75,14 +75,14 @@ test('renders with external link', () => {
 });
 
 test('renders header', () => {
-  const { queryByText, container } = render(<InlineAlert header="Header" messages={[{ text: 'Success' }]} />);
+  const { queryByText, container } = render(<InlineMessage header="Header" messages={[{ text: 'Success' }]} />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(queryByText('Header')).not.toBeUndefined();
 });
 
 test('renders close button', () => {
-  const { queryByRole, container } = render(<InlineAlert onClose={() => null} messages={[{ text: 'Success' }]} />);
+  const { queryByRole, container } = render(<InlineMessage onClose={() => null} messages={[{ text: 'Success' }]} />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(queryByRole('button')).not.toBeUndefined();
@@ -90,7 +90,7 @@ test('renders close button', () => {
 
 test('trigger onClose', () => {
   const fn = jest.fn();
-  const { queryByRole } = render(<InlineAlert onClose={fn} messages={[{ text: 'Success' }]} />);
+  const { queryByRole } = render(<InlineMessage onClose={fn} messages={[{ text: 'Success' }]} />);
 
   const button = queryByRole('button') as HTMLButtonElement;
 
@@ -101,7 +101,7 @@ test('trigger onClose', () => {
 
 test('does not forward styles', () => {
   const { container } = render(
-    <InlineAlert messages={[{ text: 'Success' }]} className="test" style={{ background: 'red' }} />,
+    <InlineMessage messages={[{ text: 'Success' }]} className="test" style={{ background: 'red' }} />,
   );
 
   expect(container.getElementsByClassName('test').length).toBe(0);
@@ -116,7 +116,7 @@ test('renders actions', () => {
   ];
 
   const { container, getByRole } = render(
-    <InlineAlert actions={actions as InlineAlertProps['actions']} messages={[{ text: 'Success' }]} />,
+    <InlineMessage actions={actions as InlineMessageProps['actions']} messages={[{ text: 'Success' }]} />,
   );
   const firstAction = getByRole('button', { name: 'First Action' });
   const secondAction = getByRole('button', { name: 'Second Action' });

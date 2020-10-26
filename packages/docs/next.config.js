@@ -39,7 +39,7 @@ module.exports = {
     '/form': { page: '/Form/FormPage' },
     '/grid': { page: '/Grid/GridPage' },
     '/icons': { page: '/Icons/IconsPage' },
-    '/inline-alert': { page: '/InlineAlert/InlineAlertPage' },
+    '/inline-message': { page: '/InlineMessage/InlineMessagePage' },
     '/input': { page: '/Input/InputPage' },
     '/link': { page: '/Link/LinkPage' },
     '/margin': { page: '/Margin/MarginPage' },

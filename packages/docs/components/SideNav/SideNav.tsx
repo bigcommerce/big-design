@@ -128,8 +128,8 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Badge/BadgePage" as="/badge">
             Badge
           </SideNavLink>
-          <SideNavLink href="/InlineAlert/InlineAlertPage" as="/inline-alert">
-            Inline Alert
+          <SideNavLink href="/InlineMessage/InlineMessagePage" as="/inline-alert">
+            Inline Message
           </SideNavLink>
           <SideNavLink href="/Message/MessagePage" as="/message">
             Message
