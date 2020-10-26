@@ -16,7 +16,7 @@ jobs:
 
       - node/with-cache:
           cache-key: yarn.lock
-          cache-version: v2
+          cache-version: v3
           include-branch-in-cache-key: false
           steps:
             - run:
