@@ -1,4 +1,4 @@
-import { AlertProps, AlertsManager, Button, H0, H1, H2, Message, Text } from '@bigcommerce/big-design';
+import { AlertProps, Button, H0, H1, H2, Message, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview, CodeSnippet } from '../../components';
@@ -69,26 +69,43 @@ const AlertPage = () => (
       <Code>warning</Code>, <Code>success</Code>, <Code>info</Code>.
     </Text>
 
-    <Text>To use this component, wrap your app with this component:</Text>
+    <Text>
+      To use this component, put it in your root component (e.g. place it after <Code>GlobalStyles</Code> component):
+    </Text>
 
     <CodeSnippet>
-      {/* jsx-to-string:start */}
-      {function App() {
-        return (
-          <>
-            {/* ... */}
-            <AlertsManager manager={alertsManager} />
-            {/* ... */}
-          </>
-        );
-      }}
-
-      {/* jsx-to-string:end */}
+      {`
+        export const alertsManager = createAlertsManager(); // import this in child components to use alerts
+        
+        function App() {
+          return (
+            <>
+              {/* ... */}
+              <GlobalStyles />
+              <AlertsManager manager={alertsManager} />
+              {/* ... */}
+            </>
+          );
+        }
+      `}
     </CodeSnippet>
 
     <Text>
-      This works in conjunction with an instance created by <Code>createAlertsManager</Code> function below.
+      This works in conjunction with an instance created by <Code>createAlertsManager</Code> function below. You need to
+      export <Code>alertsManager</Code> instance and then you can import it in child components in order to trigger
+      alert:
     </Text>
+
+    <CodeSnippet>
+      {`
+        import { alertsManager } from '../App';
+
+        // ...
+
+        const alert = {...}; // alert props
+        alertsManager.add(alert);
+      `}
+    </CodeSnippet>
 
     <H2>createAlertsManager</H2>
 
