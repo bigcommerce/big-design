@@ -31,3 +31,17 @@ import { StoreIcon } from '@bigcommerce/big-design-icons';
   <StoreIcon />
 </App>
 ```
+
+### Adding New Icons
+
+To add new icons, use the built-in script to download the svg from [Material Icons - Rounded](https://material.io/resources/icons/?style=round):
+
+```
+yarn run download
+```
+
+After you've searched and downloaded your icon(s), run the build script to convert your svgs into React components:
+
+```
+yarn run build:icons
+```
