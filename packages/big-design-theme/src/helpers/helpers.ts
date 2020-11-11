@@ -1,4 +1,4 @@
-import { math, rem, transparentize } from 'polished';
+import { em, math, rem, transparentize } from 'polished';
 
 import { themeOptions } from '../options';
 
@@ -6,6 +6,7 @@ export interface Helpers {
   addValues(first: string, second: string): string;
   createRGBA(color: string, alpha: number): string;
   remCalc(value: string | number): string;
+  emCalc(value: string | number): string;
 }
 
 export const addValues = (first: string, second: string) => {
@@ -27,4 +28,10 @@ export const remCalc = (value: string | number) => {
   const { htmlFontSize } = themeOptions.getOptions();
 
   return rem(value, htmlFontSize);
+};
+
+export const emCalc = (value: string | number) => {
+  const { htmlFontSize } = themeOptions.getOptions();
+
+  return em(value, htmlFontSize);
 };
