@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.24.0...@bigcommerce/docs@0.25.0) (2020-11-12)
+
+
+### Bug Fixes
+
+* webpack 5 compatibility ([#466](https://github.com/bigcommerce/big-design/issues/466)) ([7e66238](https://github.com/bigcommerce/big-design/commit/7e66238ca42cb27d91b1a80cc9e1c8014808e27b))
+* **docs:** alert docs - alert management import clarification ([#470](https://github.com/bigcommerce/big-design/issues/470)) ([8a5e330](https://github.com/bigcommerce/big-design/commit/8a5e330afce88f7eb7d8183fdb24404c12f907be))
+
+
+### chore
+
+* **component:** rename InlineAlert to InlineMessage ([#464](https://github.com/bigcommerce/big-design/issues/464)) ([d88b504](https://github.com/bigcommerce/big-design/commit/d88b504094a5749948c0bb1993dd483a3f5a0363))
+
+
+### BREAKING CHANGES
+
+* **component:** Rename `InlineAlert` to `InlineMessage`.
+
+
+
+
+
 # [0.24.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.23.8...@bigcommerce/docs@0.24.0) (2020-10-16)
 
 **Note:** Version bump only for package @bigcommerce/docs

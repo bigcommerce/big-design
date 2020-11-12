@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.24.0...@bigcommerce/big-design@0.25.0) (2020-11-12)
+
+
+### Bug Fixes
+
+* **component:** do not shrink radio component ([#465](https://github.com/bigcommerce/big-design/issues/465)) ([886b41d](https://github.com/bigcommerce/big-design/commit/886b41da9f5ad538506503a9af2e17f669ee4904))
+* webpack 5 compatibility ([#466](https://github.com/bigcommerce/big-design/issues/466)) ([7e66238](https://github.com/bigcommerce/big-design/commit/7e66238ca42cb27d91b1a80cc9e1c8014808e27b))
+* **component:** updates progress circle to use em instead of rem due to error in Safari 14 ([#472](https://github.com/bigcommerce/big-design/issues/472)) ([3bedcc1](https://github.com/bigcommerce/big-design/commit/3bedcc1be8e5f5a8c9c63d634a1c567dd3016002))
+
+
+### chore
+
+* **component:** rename InlineAlert to InlineMessage ([#464](https://github.com/bigcommerce/big-design/issues/464)) ([d88b504](https://github.com/bigcommerce/big-design/commit/d88b504094a5749948c0bb1993dd483a3f5a0363))
+
+
+### BREAKING CHANGES
+
+* **component:** Rename `InlineAlert` to `InlineMessage`.
+
+
+
+
+
 # [0.24.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.23.8...@bigcommerce/big-design@0.24.0) (2020-10-16)
 
 

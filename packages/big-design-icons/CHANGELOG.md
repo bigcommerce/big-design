@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.13.1...@bigcommerce/big-design-icons@0.14.0) (2020-11-12)
+
+
+### Bug Fixes
+
+* webpack 5 compatibility ([#466](https://github.com/bigcommerce/big-design/issues/466)) ([7e66238](https://github.com/bigcommerce/big-design/commit/7e66238ca42cb27d91b1a80cc9e1c8014808e27b))
+
+
+
+
+
 ## [0.13.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.13.0...@bigcommerce/big-design-icons@0.13.1) (2020-08-31)
 
 **Note:** Version bump only for package @bigcommerce/big-design-icons
