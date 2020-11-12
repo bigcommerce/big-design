@@ -79,15 +79,15 @@ exports[`render determinant progress circle 1`] = `
   >
     <circle
       class="c1"
-      cx="1.5rem"
-      cy="1.5rem"
-      r="1.375rem"
+      cx="1.5em"
+      cy="1.5em"
+      r="1.375em"
     />
     <circle
       class="c2"
-      cx="1.5rem"
-      cy="1.5rem"
-      r="1.375rem"
+      cx="1.5em"
+      cy="1.5em"
+      r="1.375em"
     />
     <text
       class="c3"
@@ -173,15 +173,15 @@ exports[`render indeterminant progress bar 1`] = `
   >
     <circle
       class="c1"
-      cx="1.5rem"
-      cy="1.5rem"
-      r="1.375rem"
+      cx="1.5em"
+      cy="1.5em"
+      r="1.375em"
     />
     <circle
       class="c2"
-      cx="1.5rem"
-      cy="1.5rem"
-      r="1.375rem"
+      cx="1.5em"
+      cy="1.5em"
+      r="1.375em"
     />
   </svg>
 </div>
@@ -225,15 +225,15 @@ exports[`render large progress circle 1`] = `
   >
     <circle
       class="c1"
-      cx="2.5rem"
-      cy="2.5rem"
-      r="2.25rem"
+      cx="2.5em"
+      cy="2.5em"
+      r="2.25em"
     />
     <circle
       class="c2"
-      cx="2.5rem"
-      cy="2.5rem"
-      r="2.25rem"
+      cx="2.5em"
+      cy="2.5em"
+      r="2.25em"
     />
   </svg>
 </div>
@@ -277,15 +277,15 @@ exports[`render medium progress circle 1`] = `
   >
     <circle
       class="c1"
-      cx="1.5rem"
-      cy="1.5rem"
-      r="1.375rem"
+      cx="1.5em"
+      cy="1.5em"
+      r="1.375em"
     />
     <circle
       class="c2"
-      cx="1.5rem"
-      cy="1.5rem"
-      r="1.375rem"
+      cx="1.5em"
+      cy="1.5em"
+      r="1.375em"
     />
   </svg>
 </div>
@@ -329,15 +329,15 @@ exports[`render small progress circle 1`] = `
   >
     <circle
       class="c1"
-      cx="1rem"
-      cy="1rem"
-      r="0.875rem"
+      cx="1em"
+      cy="1em"
+      r="0.875em"
     />
     <circle
       class="c2"
-      cx="1rem"
-      cy="1rem"
-      r="0.875rem"
+      cx="1em"
+      cy="1em"
+      r="0.875em"
     />
   </svg>
 </div>
@@ -381,15 +381,15 @@ exports[`render xSmall progress circle 1`] = `
   >
     <circle
       class="c1"
-      cx="0.75rem"
-      cy="0.75rem"
-      r="0.65625rem"
+      cx="0.75em"
+      cy="0.75em"
+      r="0.65625em"
     />
     <circle
       class="c2"
-      cx="0.75rem"
-      cy="0.75rem"
-      r="0.65625rem"
+      cx="0.75em"
+      cy="0.75em"
+      r="0.65625em"
     />
   </svg>
 </div>
@@ -433,15 +433,15 @@ exports[`render xSmall progress circle 2`] = `
   >
     <circle
       class="c1"
-      cx="0.5rem"
-      cy="0.5rem"
-      r="0.4375rem"
+      cx="0.5em"
+      cy="0.5em"
+      r="0.4375em"
     />
     <circle
       class="c2"
-      cx="0.5rem"
-      cy="0.5rem"
-      r="0.4375rem"
+      cx="0.5em"
+      cy="0.5em"
+      r="0.4375em"
     />
   </svg>
 </div>
