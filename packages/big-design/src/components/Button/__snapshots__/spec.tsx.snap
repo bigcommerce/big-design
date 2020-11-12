@@ -1271,15 +1271,15 @@ exports[`render loading button 1`] = `
     >
       <circle
         class="c5"
-        cx="0.5rem"
-        cy="0.5rem"
-        r="0.4375rem"
+        cx="0.5em"
+        cy="0.5em"
+        r="0.4375em"
       />
       <circle
         class="c6"
-        cx="0.5rem"
-        cy="0.5rem"
-        r="0.4375rem"
+        cx="0.5em"
+        cy="0.5em"
+        r="0.4375em"
       />
     </svg>
   </div>

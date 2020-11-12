@@ -12,9 +12,10 @@ export const StyledProgressCircle = styled.svg<ProgressCircleProps>`
 `;
 
 export const StyledCircle = styled.circle.attrs(({ size, theme }: any) => ({
-  cx: theme.helpers.remCalc(getDimensions(size) / 2),
-  cy: theme.helpers.remCalc(getDimensions(size) / 2),
-  r: theme.helpers.remCalc(getDimensions(size) / 2 - getStrokeWidth(size) / 2),
+  // rem not usable for circle svg cx, cy, and r values in Safari 14
+  cx: theme.helpers.emCalc(getDimensions(size) / 2),
+  cy: theme.helpers.emCalc(getDimensions(size) / 2),
+  r: theme.helpers.emCalc(getDimensions(size) / 2 - getStrokeWidth(size) / 2),
 }))<ProgressCircleProps>`
   fill: transparent;
   stroke-width: ${({ size, theme }) => theme.helpers.remCalc(getStrokeWidth(size))};
