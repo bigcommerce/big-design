@@ -54,6 +54,7 @@ module.exports = {
     '/progress-circle': { page: '/Progress/ProgressCirclePage' },
     '/radio': { page: '/Radio/RadioPage' },
     '/select': { page: '/Select/SelectPage' },
+    '/new-select': { page: '/NewSelect/NewSelectPage' },
     '/spacing': { page: '/Spacing/SpacingPage' },
     '/statefulTable': { page: '/StatefulTable/StatefulTablePage' },
     '/statefulTree': { page: '/StatefulTree/StatefulTreePage' },

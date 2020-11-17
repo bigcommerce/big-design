@@ -3,9 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../../mixins/transitions';
 
-import { ListItemProps } from './Item';
-
-export const StyledListItem = styled.li<ListItemProps>`
+export const StyledListItem = styled.li<any>`
   ${withTransition(['background-color', 'color'])}
 
   align-items: center;

@@ -19,6 +19,7 @@ export * from './Link';
 export * from './Message';
 export * from './Modal';
 export * from './MultiSelect';
+export * from './NewSelect';
 export * from './Pagination';
 export * from './Panel';
 export * from './Popover';
