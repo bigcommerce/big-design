@@ -1,14 +1,15 @@
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import { useCombobox } from 'downshift';
-import React, { cloneElement, isValidElement, memo, useCallback, useMemo, useRef, useState } from 'react';
+import React, { cloneElement, Fragment, isValidElement, memo, useCallback, useMemo, useRef, useState } from 'react';
 
 import { typedMemo, warning } from '../../utils';
 import { Flex, FlexItem } from '../Flex';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
+import { ListGroupHeader } from '../List/GroupHeader';
 import { StyledListItem } from '../List/Item/styled';
 import { StyledList } from '../List/styled';
-import { SelectOption } from '../Select';
+import { SelectOption, SelectOptionGroup } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 import { SelectAction } from '../Select/types';
 import { Small } from '../Typography';
@@ -41,7 +42,7 @@ const Menu = memo(
 
           itemKey.current += 1;
 
-          console.log(item, key);
+          console.log(item, key, selectedItem, selectedItem?.value === item.value);
 
           return (
             <Item
@@ -58,11 +59,46 @@ const Menu = memo(
       [getItemProps, autoWidth, highlightedIndex, selectedItem],
     );
 
+    const renderGroup = useCallback(
+      (group: any) => {
+        return (
+          <>
+            <ListGroupHeader>{group.label}</ListGroupHeader>
+            {renderOptions(group.options)}
+          </>
+        );
+      },
+      [renderOptions],
+    );
+
     const renderChildren = useMemo(() => {
       itemKey.current = 0;
 
-      return renderOptions(items);
-    }, [renderOptions, items]);
+      if (Array.isArray(items) && items.every(isGroup)) {
+        return (
+          <>
+            {(items as Array<any>).map((group, index) => (
+              <Fragment key={index}>{renderGroup(group)}</Fragment>
+            ))}
+            {/* {action && renderAction(action)} */}
+          </>
+        );
+      }
+
+      if (
+        Array.isArray(items) &&
+        items.every((item: any) => {
+          return 'value' in item && !('options' in item);
+        })
+      ) {
+        return (
+          <>
+            {renderOptions(items as Array<any>)}
+            {/* {action && renderAction(action)} */}
+          </>
+        );
+      }
+    }, [renderGroup, renderOptions, items]);
 
     return <StyledList {...getMenuProps({ maxHeight })}>{renderChildren}</StyledList>;
   },
@@ -98,6 +134,8 @@ export const NewSelect = typedMemo(
   }: NewSelectProps) => {
     const [inputValue, setInputValue] = useState<string | undefined>('');
 
+    const items = useMemo(() => flattenOptions(options), [options]);
+
     const {
       getComboboxProps,
       getInputProps,
@@ -108,7 +146,7 @@ export const NewSelect = typedMemo(
       highlightedIndex,
       selectedItem,
     } = useCombobox({
-      items: options,
+      items,
       inputValue,
       onInputValueChange: ({ inputValue: newValue }) => setInputValue(newValue),
       onSelectedItemChange: ({ selectedItem }) =>
@@ -184,6 +222,20 @@ export const NewSelect = typedMemo(
     );
   },
 );
+
+const flattenOptions = <T extends any>(
+  items: Array<SelectOption<T> | SelectOptionGroup<T>>,
+): Array<SelectOption<T>> => {
+  return items.every(isGroup)
+    ? (items as Array<SelectOptionGroup<T>>)
+        .map((group: SelectOptionGroup<T>) => group.options)
+        .reduce((acc, curr) => acc.concat(curr), [])
+    : (items as Array<SelectOption<T>>);
+};
+
+const isGroup = <T extends any>(item: SelectOption<T> | SelectOptionGroup<T>) => {
+  return 'options' in item && !('value' in item);
+};
 
 const getContent = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
   const { content, disabled, description, icon } = item;
