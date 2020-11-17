@@ -1,35 +1,67 @@
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import { useCombobox } from 'downshift';
-import React, { cloneElement, Fragment, isValidElement, memo, useCallback, useMemo, useRef, useState } from 'react';
+import React, {
+  cloneElement,
+  createRef,
+  Fragment,
+  isValidElement,
+  memo,
+  RefObject,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { typedMemo, warning } from '../../utils';
+import { Box } from '../Box';
 import { Flex, FlexItem } from '../Flex';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { ListGroupHeader } from '../List/GroupHeader';
 import { StyledListItem } from '../List/Item/styled';
 import { StyledList } from '../List/styled';
-import { SelectOption, SelectOptionGroup } from '../Select';
+import { SelectOption, SelectOptionGroup, SelectProps } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 import { SelectAction } from '../Select/types';
 import { Small } from '../Typography';
 
-interface NewSelectProps {
-  filterable: boolean;
-  options: any;
-  label: React.ReactChild;
-  required: boolean;
-  disabled?: boolean;
-  placeholder: string;
-  maxHeight: number;
-}
-
-const Menu = memo(
-  ({ autoWidth, items, getMenuProps, getItemProps, highlightedIndex, maxHeight, selectedItem }: any) => {
+const Menu = typedMemo(
+  <T extends any>({
+    action,
+    autoWidth,
+    items,
+    getMenuProps,
+    getItemProps,
+    highlightedIndex,
+    maxHeight,
+    selectedItem,
+  }: any) => {
     const itemKey = useRef(0);
 
+    const renderAction = useCallback(
+      (action: SelectAction) => {
+        const key = itemKey.current;
+
+        return (
+          <Box borderTop="box" marginTop="xSmall" paddingTop="xSmall">
+            <Item
+              autoWidth={autoWidth}
+              key="action"
+              getItemProps={getItemProps}
+              item={action}
+              index={key}
+              isHighlighted={highlightedIndex === key}
+              isAction={true}
+            />
+          </Box>
+        );
+      },
+      [getItemProps, autoWidth, highlightedIndex],
+    );
+
     const renderOptions = useCallback(
-      (items: Array<any>) =>
+      (items: Array<SelectOption<T>>) =>
         items.map((item) => {
           //   if (
           //     !selectOptions.find(
@@ -39,10 +71,7 @@ const Menu = memo(
           //     return null;
           //   }
           const key = itemKey.current;
-
           itemKey.current += 1;
-
-          console.log(item, key, selectedItem, selectedItem?.value === item.value);
 
           return (
             <Item
@@ -60,7 +89,7 @@ const Menu = memo(
     );
 
     const renderGroup = useCallback(
-      (group: any) => {
+      (group: SelectOptionGroup<T>) => {
         return (
           <>
             <ListGroupHeader>{group.label}</ListGroupHeader>
@@ -77,28 +106,28 @@ const Menu = memo(
       if (Array.isArray(items) && items.every(isGroup)) {
         return (
           <>
-            {(items as Array<any>).map((group, index) => (
+            {(items as Array<SelectOptionGroup<T>>).map((group, index) => (
               <Fragment key={index}>{renderGroup(group)}</Fragment>
             ))}
-            {/* {action && renderAction(action)} */}
+            {action && renderAction(action)}
           </>
         );
       }
 
       if (
         Array.isArray(items) &&
-        items.every((item: any) => {
+        items.every((item: SelectOption<T> | SelectOptionGroup<T>) => {
           return 'value' in item && !('options' in item);
         })
       ) {
         return (
           <>
-            {renderOptions(items as Array<any>)}
-            {/* {action && renderAction(action)} */}
+            {renderOptions(items as Array<SelectOption<T>>)}
+            {action && renderAction(action)}
           </>
         );
       }
-    }, [renderGroup, renderOptions, items]);
+    }, [action, renderAction, renderGroup, renderOptions, items]);
 
     return <StyledList {...getMenuProps({ maxHeight })}>{renderChildren}</StyledList>;
   },
@@ -123,18 +152,35 @@ const Item = memo(({ getItemProps, isHighlighted, item, index, isSelected, selec
 
 export const NewSelect = typedMemo(
   <T extends any>({
-    filterable,
-    options,
-    label,
-    required,
+    action,
+    autoWidth = false,
+    className,
     disabled,
-    placeholder,
+    filterable = true,
+    inputRef,
+    id,
+    label,
+    labelId,
     maxHeight = 250,
-    ...rest
-  }: NewSelectProps) => {
+    onOptionChange,
+    options,
+    placeholder,
+    // placement = 'bottom-start' as 'bottom-start',
+    // positionFixed = false,
+    required,
+    style,
+    value,
+    ...props
+  }: SelectProps<T>): ReturnType<React.FC<SelectProps<T>>> => {
     const [inputValue, setInputValue] = useState<string | undefined>('');
 
-    const items = useMemo(() => flattenOptions(options), [options]);
+    const defaultRef: RefObject<HTMLInputElement> = createRef();
+
+    // We need to pass Downshift only options without groups for accessibility tracking
+    const items = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
+      action,
+      options,
+    ]);
 
     const {
       getComboboxProps,
@@ -153,6 +199,25 @@ export const NewSelect = typedMemo(
         alert(selectedItem ? `You selected ${selectedItem.content}` : 'Selection Cleared'),
       itemToString: (item: any) => (item ? item.content : ''),
     });
+
+    const setCallbackRef = useCallback(
+      (ref: HTMLInputElement) => {
+        if (typeof inputRef === 'function') {
+          inputRef(ref);
+        }
+      },
+      [inputRef],
+    );
+
+    const getInputRef = useCallback(() => {
+      if (inputRef && typeof inputRef === 'object') {
+        return inputRef;
+      } else if (typeof inputRef === 'function') {
+        return setCallbackRef;
+      }
+
+      return defaultRef;
+    }, [defaultRef, inputRef, setCallbackRef]);
 
     const renderLabel = useMemo(() => {
       if (!label) {
@@ -193,24 +258,28 @@ export const NewSelect = typedMemo(
       return (
         <StyledInputContainer>
           <Input
-            {...rest}
             {...getInputProps({
+              ...props,
               disabled,
               placeholder,
+              ref: getInputRef(),
+              readOnly: !filterable,
+              required: required,
             })}
+            iconLeft={selectedItem?.icon}
             iconRight={renderToggle}
-            readOnly={!filterable}
-            required={required}
           />
         </StyledInputContainer>
       );
-    }, [disabled, filterable, getInputProps, placeholder, renderToggle, required, rest]);
+    }, [disabled, filterable, getInputProps, placeholder, renderToggle, required, props, getInputRef, selectedItem]);
 
     return (
       <>
         {renderLabel}
         <div {...getComboboxProps()}>{renderInput}</div>
         <Menu
+          action={action}
+          autoWidth={autoWidth}
           getItemProps={getItemProps}
           getMenuProps={getMenuProps}
           highlightedIndex={highlightedIndex}
