@@ -13,6 +13,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { usePopper } from 'react-popper';
 
 import { typedMemo, warning } from '../../utils';
 import { Box } from '../Box';
@@ -21,7 +22,7 @@ import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { ListGroupHeader } from '../List/GroupHeader';
 import { StyledListItem } from '../List/Item/styled';
-import { StyledList } from '../List/styled';
+import { StyledList, StyledMenuContainer } from '../List/styled';
 import { SelectOption, SelectOptionGroup, SelectProps } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 import { SelectAction } from '../Select/types';
@@ -38,6 +39,7 @@ const Menu = typedMemo(
     maxHeight,
     selectedItem,
     selectOptions,
+    isOpen,
   }: any) => {
     const itemKey = useRef(0);
 
@@ -63,10 +65,8 @@ const Menu = typedMemo(
     );
 
     const renderOptions = useCallback(
-      (items: Array<SelectOption<T>>) => {
-        console.log(items);
-
-        return items.map((item) => {
+      (items: Array<SelectOption<T>>) =>
+        items.map((item) => {
           // Skip rendering the option if it not found in the filtered list
           if (
             !selectOptions.find(
@@ -89,8 +89,7 @@ const Menu = typedMemo(
               isSelected={selectedItem?.value === item.value}
             />
           );
-        });
-      },
+        }),
       [getItemProps, autoWidth, highlightedIndex, selectedItem, selectOptions],
     );
 
@@ -120,15 +119,12 @@ const Menu = typedMemo(
         );
       }
 
-      console.log('before', options);
       if (
         Array.isArray(options) &&
         options.every((item: SelectOption<T> | SelectOptionGroup<T>) => {
           return 'value' in item && !('options' in item);
         })
       ) {
-        console.log('inside', options);
-
         return (
           <>
             {renderOptions(options as Array<SelectOption<T>>)}
@@ -138,13 +134,11 @@ const Menu = typedMemo(
       }
     }, [action, renderAction, renderGroup, renderOptions, options]);
 
-    return <StyledList {...getMenuProps({ maxHeight })}>{renderChildren}</StyledList>;
+    return <StyledList {...getMenuProps({ maxHeight })}>{isOpen && renderChildren}</StyledList>;
   },
 );
 
 const Item = memo(({ getItemProps, isHighlighted, item, index, isSelected, selectedItem, ...props }: any) => {
-  console.log(item);
-
   return (
     <StyledListItem
       {...getItemProps({
@@ -176,7 +170,7 @@ export const NewSelect = typedMemo(
     onOptionChange,
     options,
     placeholder,
-    // placement = 'bottom-start' as 'bottom-start',
+    placement = 'bottom-start' as 'bottom-start',
     // positionFixed = false,
     required,
     style,
@@ -215,10 +209,8 @@ export const NewSelect = typedMemo(
       isOpen,
       inputValue,
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      console.log(isOpen, inputValue);
       if (filterable && isOpen) {
         setSelectOptions(filterOptions(inputValue));
-        console.log('setInputValue', inputValue);
         setInputValue(inputValue || '');
       }
     };
@@ -240,6 +232,7 @@ export const NewSelect = typedMemo(
       getToggleButtonProps,
       highlightedIndex,
       selectedItem,
+      isOpen,
     } = useCombobox({
       id: selectUniqueId,
       inputValue,
@@ -268,6 +261,21 @@ export const NewSelect = typedMemo(
 
       return defaultRef;
     }, [defaultRef, inputRef, setCallbackRef]);
+
+    const referenceRef = useRef(null);
+    const popperRef = useRef(null);
+
+    const { styles, attributes } = usePopper(referenceRef.current, popperRef.current, {
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 4],
+          },
+        },
+      ],
+      placement,
+    });
 
     const renderLabel = useMemo(() => {
       if (!label) {
@@ -306,7 +314,7 @@ export const NewSelect = typedMemo(
 
     const renderInput = useMemo(() => {
       return (
-        <StyledInputContainer>
+        <StyledInputContainer ref={referenceRef}>
           <Input
             {...getInputProps({
               ...props,
@@ -327,17 +335,20 @@ export const NewSelect = typedMemo(
       <>
         {renderLabel}
         <div {...getComboboxProps()}>{renderInput}</div>
-        <Menu
-          action={action}
-          autoWidth={autoWidth}
-          getItemProps={getItemProps}
-          getMenuProps={getMenuProps}
-          highlightedIndex={highlightedIndex}
-          options={options}
-          maxHeight={maxHeight}
-          selectedItem={selectedItem}
-          selectOptions={selectOptions}
-        />
+        <StyledMenuContainer ref={popperRef} style={styles.popper} {...attributes.poppper}>
+          <Menu
+            action={action}
+            autoWidth={autoWidth}
+            getItemProps={getItemProps}
+            getMenuProps={getMenuProps}
+            highlightedIndex={highlightedIndex}
+            options={options}
+            maxHeight={maxHeight}
+            selectedItem={selectedItem}
+            selectOptions={selectOptions}
+            isOpen={isOpen}
+          />
+        </StyledMenuContainer>
       </>
     );
   },

@@ -20,6 +20,8 @@ export const StyledDropdownIcon = styled(ArrowDropDownIcon)<{ disabled?: boolean
 `;
 
 export const StyledInputContainer = styled.div`
+  max-width: 26rem;
+
   input[readonly] {
     cursor: pointer;
   }
