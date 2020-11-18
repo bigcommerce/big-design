@@ -75,50 +75,34 @@ const NewSelectPage = () => (
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      {function Example() {
-        const [value, setValue] = useState('mx');
-        const handleChange = (val) => setValue(val);
-
-        return (
-          <Form>
-            <FormGroup>
-              <NewSelect
-                action={{
-                  actionType: 'destructive' as 'destructive',
-                  content: 'Remove Country',
-                  icon: <DeleteIcon />,
-                  onActionClick: () => null,
-                }}
-                filterable={true}
-                label="Countries"
-                maxHeight={300}
-                onOptionChange={handleChange}
-                options={[
-                  { value: 'us', content: 'United States' },
+      <Form>
+        <FormGroup>
+          <NewSelect
+            label="My Options"
+            filterable
+            value="ca"
+            onOptionChange={() => null}
+            options={[
+              {
+                label: 'Group 1',
+                options: [
                   { value: 'mx', content: 'Mexico' },
                   { value: 'ca', content: 'Canada' },
                   { value: 'en', content: 'England' },
+                ],
+              },
+              {
+                label: 'Group 2',
+                options: [
                   { value: 'fr', content: 'France' },
                   { value: 'gr', content: 'Germany' },
                   { value: 'ar', content: 'Argentina' },
-                  { value: 'ru', content: 'Russia', disabled: true },
-                  { value: 'ch', content: 'Chile' },
-                  { value: 'bo', content: 'Bolivia' },
-                  { value: 'jp', content: 'Japan' },
-                  { value: 'cn', content: 'China' },
-                  { value: 'sk', content: 'South Korea' },
-                  { value: 'au', content: 'Australia' },
-                  { value: 'ug', content: 'Uganda' },
-                ]}
-                placeholder={'Choose country'}
-                placement={'bottom-start'}
-                required
-                value={value}
-              />
-            </FormGroup>
-          </Form>
-        );
-      }}
+                ],
+              },
+            ]}
+          />
+        </FormGroup>
+      </Form>
       {/* jsx-to-string:end */}
     </CodePreview>
   </>

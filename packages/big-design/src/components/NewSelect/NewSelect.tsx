@@ -1,5 +1,5 @@
-import { CheckIcon } from '@bigcommerce/big-design-icons';
-import { useCombobox } from 'downshift';
+import { CheckIcon, useUniqueId } from '@bigcommerce/big-design-icons';
+import { useCombobox, UseComboboxState } from 'downshift';
 import React, {
   cloneElement,
   createRef,
@@ -8,6 +8,7 @@ import React, {
   memo,
   RefObject,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -30,12 +31,13 @@ const Menu = typedMemo(
   <T extends any>({
     action,
     autoWidth,
-    items,
+    options,
     getMenuProps,
     getItemProps,
     highlightedIndex,
     maxHeight,
     selectedItem,
+    selectOptions,
   }: any) => {
     const itemKey = useRef(0);
 
@@ -61,15 +63,18 @@ const Menu = typedMemo(
     );
 
     const renderOptions = useCallback(
-      (items: Array<SelectOption<T>>) =>
-        items.map((item) => {
-          //   if (
-          //     !selectOptions.find(
-          //       (option: SelectOption<T> | SelectAction) => 'value' in option && option.value === item.value,
-          //     )
-          //   ) {
-          //     return null;
-          //   }
+      (items: Array<SelectOption<T>>) => {
+        console.log(items);
+
+        return items.map((item) => {
+          // Skip rendering the option if it not found in the filtered list
+          if (
+            !selectOptions.find(
+              (option: SelectOption<T> | SelectAction) => 'value' in option && option.value === item.value,
+            )
+          ) {
+            return null;
+          }
           const key = itemKey.current;
           itemKey.current += 1;
 
@@ -84,8 +89,9 @@ const Menu = typedMemo(
               isSelected={selectedItem?.value === item.value}
             />
           );
-        }),
-      [getItemProps, autoWidth, highlightedIndex, selectedItem],
+        });
+      },
+      [getItemProps, autoWidth, highlightedIndex, selectedItem, selectOptions],
     );
 
     const renderGroup = useCallback(
@@ -103,10 +109,10 @@ const Menu = typedMemo(
     const renderChildren = useMemo(() => {
       itemKey.current = 0;
 
-      if (Array.isArray(items) && items.every(isGroup)) {
+      if (Array.isArray(options) && options.every(isGroup)) {
         return (
           <>
-            {(items as Array<SelectOptionGroup<T>>).map((group, index) => (
+            {(options as Array<SelectOptionGroup<T>>).map((group, index) => (
               <Fragment key={index}>{renderGroup(group)}</Fragment>
             ))}
             {action && renderAction(action)}
@@ -114,26 +120,31 @@ const Menu = typedMemo(
         );
       }
 
+      console.log('before', options);
       if (
-        Array.isArray(items) &&
-        items.every((item: SelectOption<T> | SelectOptionGroup<T>) => {
+        Array.isArray(options) &&
+        options.every((item: SelectOption<T> | SelectOptionGroup<T>) => {
           return 'value' in item && !('options' in item);
         })
       ) {
+        console.log('inside', options);
+
         return (
           <>
-            {renderOptions(items as Array<SelectOption<T>>)}
+            {renderOptions(options as Array<SelectOption<T>>)}
             {action && renderAction(action)}
           </>
         );
       }
-    }, [action, renderAction, renderGroup, renderOptions, items]);
+    }, [action, renderAction, renderGroup, renderOptions, options]);
 
     return <StyledList {...getMenuProps({ maxHeight })}>{renderChildren}</StyledList>;
   },
 );
 
 const Item = memo(({ getItemProps, isHighlighted, item, index, isSelected, selectedItem, ...props }: any) => {
+  console.log(item);
+
   return (
     <StyledListItem
       {...getItemProps({
@@ -175,12 +186,50 @@ export const NewSelect = typedMemo(
     const [inputValue, setInputValue] = useState<string | undefined>('');
 
     const defaultRef: RefObject<HTMLInputElement> = createRef();
+    const selectUniqueId = useUniqueId('select');
 
     // We need to pass Downshift only options without groups for accessibility tracking
     const items = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
       action,
       options,
     ]);
+
+    const selectedOption = useMemo(() => {
+      return items.find((item) => 'value' in item && item.value === value) as SelectOption<T> | undefined;
+    }, [items, value]);
+
+    const [selectOptions, setSelectOptions] = useState(items);
+
+    // Need to set select options if options prop changes
+    useEffect(() => setSelectOptions(items), [items]);
+
+    const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
+        // action.onActionClick(inputValue);
+      } else if (changes.selectedItem && 'value' in changes.selectedItem && typeof onOptionChange === 'function') {
+        onOptionChange(changes.selectedItem.value, changes.selectedItem);
+      }
+    };
+
+    const handleOnInputValueChange = ({
+      isOpen,
+      inputValue,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      console.log(isOpen, inputValue);
+      if (filterable && isOpen) {
+        setSelectOptions(filterOptions(inputValue));
+        console.log('setInputValue', inputValue);
+        setInputValue(inputValue || '');
+      }
+    };
+
+    const filterOptions = (inputVal = '') => {
+      return items.filter(
+        (item) =>
+          item.content === (action && action.content) ||
+          item.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
+      );
+    };
 
     const {
       getComboboxProps,
@@ -192,12 +241,13 @@ export const NewSelect = typedMemo(
       highlightedIndex,
       selectedItem,
     } = useCombobox({
-      items,
+      id: selectUniqueId,
       inputValue,
-      onInputValueChange: ({ inputValue: newValue }) => setInputValue(newValue),
-      onSelectedItemChange: ({ selectedItem }) =>
-        alert(selectedItem ? `You selected ${selectedItem.content}` : 'Selection Cleared'),
-      itemToString: (item: any) => (item ? item.content : ''),
+      itemToString: (item) => (item ? item.content : ''),
+      items: selectOptions,
+      onInputValueChange: handleOnInputValueChange,
+      onSelectedItemChange: handleOnSelectedItemChange,
+      selectedItem: selectedOption || null,
     });
 
     const setCallbackRef = useCallback(
@@ -283,9 +333,10 @@ export const NewSelect = typedMemo(
           getItemProps={getItemProps}
           getMenuProps={getMenuProps}
           highlightedIndex={highlightedIndex}
-          items={options}
+          options={options}
           maxHeight={maxHeight}
           selectedItem={selectedItem}
+          selectOptions={selectOptions}
         />
       </>
     );
