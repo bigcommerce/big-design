@@ -1,5 +1,5 @@
 import { CheckIcon, useUniqueId } from '@bigcommerce/big-design-icons';
-import { useCombobox, UseComboboxState } from 'downshift';
+import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
 import React, {
   cloneElement,
   createRef,
@@ -199,17 +199,16 @@ export const NewSelect = typedMemo(
 
     const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
-        // action.onActionClick(inputValue);
+        action.onActionClick(inputValue || null);
       } else if (changes.selectedItem && 'value' in changes.selectedItem && typeof onOptionChange === 'function') {
         onOptionChange(changes.selectedItem.value, changes.selectedItem);
       }
     };
 
     const handleOnInputValueChange = ({
-      isOpen,
       inputValue,
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && isOpen) {
+      if (filterable) {
         setSelectOptions(filterOptions(inputValue));
         setInputValue(inputValue || '');
       }
@@ -223,6 +222,18 @@ export const NewSelect = typedMemo(
       );
     };
 
+    const handleStateReducer = (
+      state: UseComboboxState<SelectOption<T> | SelectAction | null>,
+      actionAndChanges: UseComboboxStateChangeOptions<SelectOption<T> | SelectAction | null>,
+    ) => {
+      switch (actionAndChanges.type) {
+        case useCombobox.stateChangeTypes.InputBlur:
+          return { ...actionAndChanges.changes, inputValue: selectedOption ? selectedOption.content : '' };
+        default:
+          return actionAndChanges.changes;
+      }
+    };
+
     const {
       getComboboxProps,
       getInputProps,
@@ -233,6 +244,8 @@ export const NewSelect = typedMemo(
       highlightedIndex,
       selectedItem,
       isOpen,
+      openMenu,
+      closeMenu,
     } = useCombobox({
       id: selectUniqueId,
       inputValue,
@@ -241,6 +254,7 @@ export const NewSelect = typedMemo(
       onInputValueChange: handleOnInputValueChange,
       onSelectedItemChange: handleOnSelectedItemChange,
       selectedItem: selectedOption || null,
+      stateReducer: handleStateReducer,
     });
 
     const setCallbackRef = useCallback(
@@ -318,7 +332,31 @@ export const NewSelect = typedMemo(
           <Input
             {...getInputProps({
               ...props,
+              autoComplete: 'no',
               disabled,
+              onFocus: () => {
+                !isOpen && openMenu();
+              },
+              onKeyDown: (event) => {
+                switch (event.key) {
+                  case 'Enter':
+                    event.preventDefault();
+                    if (isOpen === false) {
+                      openMenu();
+                      (event.nativeEvent as any).preventDownshiftDefault = true;
+                    }
+                    break;
+                  case 'Escape':
+                    if (isOpen === false) {
+                      // Reset the value to empty
+                      onOptionChange();
+                    } else {
+                      closeMenu();
+                    }
+                    (event.nativeEvent as any).preventDownshiftDefault = true;
+                    break;
+                }
+              },
               placeholder,
               ref: getInputRef(),
               readOnly: !filterable,
@@ -329,7 +367,21 @@ export const NewSelect = typedMemo(
           />
         </StyledInputContainer>
       );
-    }, [disabled, filterable, getInputProps, placeholder, renderToggle, required, props, getInputRef, selectedItem]);
+    }, [
+      disabled,
+      filterable,
+      getInputProps,
+      placeholder,
+      renderToggle,
+      required,
+      props,
+      getInputRef,
+      selectedItem,
+      isOpen,
+      closeMenu,
+      openMenu,
+      onOptionChange,
+    ]);
 
     return (
       <>
