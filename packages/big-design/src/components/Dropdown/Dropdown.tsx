@@ -12,69 +12,53 @@ import { StyledList, StyledMenuContainer } from '../List/styled';
 import { Tooltip } from '../Tooltip';
 
 import { StyledBox, StyledLink } from './styled';
-import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from './types';
+import {
+  DropdownItem,
+  DropdownItemGroup,
+  DropdownItemProps,
+  DropdownLinkItem,
+  DropdownMenuProps,
+  DropdownProps,
+} from './types';
 
 const Menu = memo(
-  ({ items, getMenuProps, getItemProps, highlightedIndex, maxHeight, isOpen, update, ...rest }: any) => {
+  ({ items, getMenuProps, getItemProps, highlightedIndex, maxHeight, isOpen, update, ...rest }: DropdownMenuProps) => {
     const itemKey = useRef(0);
-
     const { height, width } = useWindowSize();
 
+    // Recalculate Popper for correct positioning
     useIsomorphicLayoutEffect(() => {
       async function scheduleUpdate() {
+        // Only update when menu is open
         if (update && isOpen) {
           await update();
         }
       }
 
-      console.log('useIsomorphicLayoutEffect', update);
       scheduleUpdate();
     }, [isOpen, height, width]);
-
-    const renderItem = useCallback(
-      (item: DropdownItem) => {
-        const key = itemKey.current;
-        itemKey.current += 1;
-
-        return (
-          <Item
-            getItemProps={getItemProps}
-            key={`${key}-${item.content}`}
-            item={item}
-            index={key}
-            isHighlighted={highlightedIndex === key}
-          />
-        );
-      },
-      [getItemProps, highlightedIndex],
-    );
-
-    const renderLinkItem = useCallback(
-      (item: DropdownLinkItem) => {
-        const key = itemKey.current;
-        itemKey.current += 1;
-
-        return (
-          <Item
-            getItemProps={getItemProps}
-            key={`${key}-${item.content}`}
-            item={item}
-            index={key}
-            isHighlighted={highlightedIndex === key}
-          />
-        );
-      },
-      [getItemProps, highlightedIndex],
-    );
 
     const renderItems = useCallback(
       (dropdownItems: Array<DropdownItem | DropdownLinkItem>) => {
         return (
           Array.isArray(dropdownItems) &&
-          dropdownItems.map((item) => (item.type === 'link' ? renderLinkItem(item) : renderItem(item)))
+          dropdownItems.map((item) => {
+            const key = itemKey.current;
+            itemKey.current += 1;
+
+            return (
+              <Item
+                getItemProps={getItemProps}
+                index={key}
+                isHighlighted={highlightedIndex === key}
+                item={item}
+                key={`${key}-${item.content}`}
+              />
+            );
+          })
         );
       },
-      [renderItem, renderLinkItem],
+      [getItemProps, highlightedIndex],
     );
 
     const renderGroup = useCallback(
@@ -108,7 +92,7 @@ const Menu = memo(
     return (
       <StyledList
         {...getMenuProps({
-          maxHeight,
+          ...rest,
           onKeyDown: (event) => {
             if (event.key === 'Enter') {
               const element = event.currentTarget.children[highlightedIndex];
@@ -120,8 +104,8 @@ const Menu = memo(
               }
             }
           },
-          ...rest,
         })}
+        maxHeight={maxHeight}
       >
         {isOpen && renderChildren}
       </StyledList>
@@ -129,16 +113,16 @@ const Menu = memo(
   },
 );
 
-const Item = memo(({ getItemProps, isHighlighted, item, index }: any) => {
+const Item = memo(({ getItemProps, isHighlighted, item, index }: DropdownItemProps) => {
   return (
     <StyledListItem
       {...getItemProps({
-        actionType: item.actionType || 'normal',
         index,
         item,
-        isAction: true,
-        isHighlighted,
       })}
+      actionType={item.actionType || 'normal'}
+      isAction={true}
+      isHighlighted={isHighlighted}
     >
       {getContent(item, isHighlighted)}
     </StyledListItem>
@@ -179,11 +163,7 @@ export const Dropdown = memo(
 
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
-        if (!selectedItem) {
-          return;
-        }
-
-        if (selectedItem.type !== 'link' && typeof selectedItem.onItemClick === 'function') {
+        if (selectedItem && selectedItem.type !== 'link' && typeof selectedItem.onItemClick === 'function') {
           selectedItem.onItemClick(selectedItem);
         }
       },
@@ -226,9 +206,9 @@ export const Dropdown = memo(
             getItemProps={getItemProps}
             getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
+            isOpen={isOpen}
             items={items}
             maxHeight={maxHeight}
-            isOpen={isOpen}
             update={update}
           />
         </StyledMenuContainer>

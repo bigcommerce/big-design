@@ -7,7 +7,7 @@ exports[`render pagination component 1`] = `
   width: 2rem;
 }
 
-.c10 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -60,17 +60,7 @@ exports[`render pagination component 1`] = `
   flex-shrink: 1;
 }
 
-.c8 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -80,6 +70,10 @@ exports[`render pagination component 1`] = `
   outline: none;
   overflow-y: auto;
   padding: 0.5rem 0;
+  z-index: 1060;
+}
+
+.c8 {
   z-index: 1060;
 }
 
@@ -168,7 +162,7 @@ exports[`render pagination component 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -219,32 +213,32 @@ exports[`render pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -282,14 +276,14 @@ exports[`render pagination component 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
   }
 }
@@ -337,22 +331,25 @@ exports[`render pagination component 1`] = `
           </svg>
         </span>
       </button>
-      <ul
-        aria-labelledby="bd-dropdown-1-label"
+      <div
         class="c8"
-        data-placement="bottom-start"
-        id="bd-dropdown-1-menu"
-        role="listbox"
         style="position: absolute; left: 0px; top: 0px;"
-        tabindex="-1"
-      />
+      >
+        <ul
+          aria-labelledby="bd-dropdown-1-label"
+          class="c9"
+          id="bd-dropdown-1-menu"
+          role="listbox"
+          tabindex="-1"
+        />
+      </div>
     </div>
   </div>
   <div
     class="c0 c2"
   >
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       role="button"
       tabindex="0"
@@ -362,7 +359,7 @@ exports[`render pagination component 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-3"
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -386,7 +383,7 @@ exports[`render pagination component 1`] = `
       </span>
     </button>
     <button
-      class="c9 c5"
+      class="c10 c5"
       role="button"
       tabindex="0"
     >
@@ -395,7 +392,7 @@ exports[`render pagination component 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-4"
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -429,7 +426,7 @@ exports[`render pagination component with invalid page info 1`] = `
   width: 2rem;
 }
 
-.c10 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -482,17 +479,7 @@ exports[`render pagination component with invalid page info 1`] = `
   flex-shrink: 1;
 }
 
-.c8 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -502,6 +489,10 @@ exports[`render pagination component with invalid page info 1`] = `
   outline: none;
   overflow-y: auto;
   padding: 0.5rem 0;
+  z-index: 1060;
+}
+
+.c8 {
   z-index: 1060;
 }
 
@@ -590,7 +581,7 @@ exports[`render pagination component with invalid page info 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -641,32 +632,32 @@ exports[`render pagination component with invalid page info 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -704,14 +695,14 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
   }
 }
@@ -759,22 +750,25 @@ exports[`render pagination component with invalid page info 1`] = `
           </svg>
         </span>
       </button>
-      <ul
-        aria-labelledby="bd-dropdown-1-label"
+      <div
         class="c8"
-        data-placement="bottom-start"
-        id="bd-dropdown-1-menu"
-        role="listbox"
         style="position: absolute; left: 0px; top: 0px;"
-        tabindex="-1"
-      />
+      >
+        <ul
+          aria-labelledby="bd-dropdown-1-label"
+          class="c9"
+          id="bd-dropdown-1-menu"
+          role="listbox"
+          tabindex="-1"
+        />
+      </div>
     </div>
   </div>
   <div
     class="c0 c2"
   >
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       role="button"
       tabindex="0"
@@ -784,7 +778,7 @@ exports[`render pagination component with invalid page info 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-3"
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -808,7 +802,7 @@ exports[`render pagination component with invalid page info 1`] = `
       </span>
     </button>
     <button
-      class="c9 c5"
+      class="c10 c5"
       role="button"
       tabindex="0"
     >
@@ -817,7 +811,7 @@ exports[`render pagination component with invalid page info 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-4"
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -851,7 +845,7 @@ exports[`render pagination component with invalid range info 1`] = `
   width: 2rem;
 }
 
-.c10 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -904,17 +898,7 @@ exports[`render pagination component with invalid range info 1`] = `
   flex-shrink: 1;
 }
 
-.c8 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -924,6 +908,10 @@ exports[`render pagination component with invalid range info 1`] = `
   outline: none;
   overflow-y: auto;
   padding: 0.5rem 0;
+  z-index: 1060;
+}
+
+.c8 {
   z-index: 1060;
 }
 
@@ -1012,7 +1000,7 @@ exports[`render pagination component with invalid range info 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -1063,32 +1051,32 @@ exports[`render pagination component with invalid range info 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -1126,14 +1114,14 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
   }
 }
@@ -1181,22 +1169,25 @@ exports[`render pagination component with invalid range info 1`] = `
           </svg>
         </span>
       </button>
-      <ul
-        aria-labelledby="bd-dropdown-1-label"
+      <div
         class="c8"
-        data-placement="bottom-start"
-        id="bd-dropdown-1-menu"
-        role="listbox"
         style="position: absolute; left: 0px; top: 0px;"
-        tabindex="-1"
-      />
+      >
+        <ul
+          aria-labelledby="bd-dropdown-1-label"
+          class="c9"
+          id="bd-dropdown-1-menu"
+          role="listbox"
+          tabindex="-1"
+        />
+      </div>
     </div>
   </div>
   <div
     class="c0 c2"
   >
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       role="button"
       tabindex="0"
@@ -1206,7 +1197,7 @@ exports[`render pagination component with invalid range info 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-3"
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1230,7 +1221,7 @@ exports[`render pagination component with invalid range info 1`] = `
       </span>
     </button>
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       role="button"
       tabindex="0"
@@ -1240,7 +1231,7 @@ exports[`render pagination component with invalid range info 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-4"
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1274,7 +1265,7 @@ exports[`render pagination component with no items 1`] = `
   width: 2rem;
 }
 
-.c10 {
+.c11 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -1327,17 +1318,7 @@ exports[`render pagination component with no items 1`] = `
   flex-shrink: 1;
 }
 
-.c8 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1347,6 +1328,10 @@ exports[`render pagination component with no items 1`] = `
   outline: none;
   overflow-y: auto;
   padding: 0.5rem 0;
+  z-index: 1060;
+}
+
+.c8 {
   z-index: 1060;
 }
 
@@ -1435,7 +1420,7 @@ exports[`render pagination component with no items 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -1486,32 +1471,32 @@ exports[`render pagination component with no items 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -1549,14 +1534,14 @@ exports[`render pagination component with no items 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
   }
 }
@@ -1604,22 +1589,25 @@ exports[`render pagination component with no items 1`] = `
           </svg>
         </span>
       </button>
-      <ul
-        aria-labelledby="bd-dropdown-1-label"
+      <div
         class="c8"
-        data-placement="bottom-start"
-        id="bd-dropdown-1-menu"
-        role="listbox"
         style="position: absolute; left: 0px; top: 0px;"
-        tabindex="-1"
-      />
+      >
+        <ul
+          aria-labelledby="bd-dropdown-1-label"
+          class="c9"
+          id="bd-dropdown-1-menu"
+          role="listbox"
+          tabindex="-1"
+        />
+      </div>
     </div>
   </div>
   <div
     class="c0 c2"
   >
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       role="button"
       tabindex="0"
@@ -1629,7 +1617,7 @@ exports[`render pagination component with no items 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-3"
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1653,7 +1641,7 @@ exports[`render pagination component with no items 1`] = `
       </span>
     </button>
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       role="button"
       tabindex="0"
@@ -1663,7 +1651,7 @@ exports[`render pagination component with no items 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-4"
-          class="c10"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
