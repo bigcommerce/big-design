@@ -1,18 +1,134 @@
 import { useSelect, UseSelectState } from 'downshift';
 import React, { cloneElement, Fragment, isValidElement, memo, useCallback, useMemo, useRef } from 'react';
-import { Manager, Popper, Reference } from 'react-popper';
+import { usePopper } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
 import { Flex } from '../Flex';
 import { FlexItem } from '../Flex/Item';
-import { List } from '../List';
 import { ListGroupHeader } from '../List/GroupHeader';
 import { ListGroupSeparator } from '../List/GroupSeparator';
-import { ListItem } from '../List/Item';
+import { StyledListItem } from '../List/Item/styled';
+import { StyledList, StyledMenuContainer } from '../List/styled';
 import { Tooltip } from '../Tooltip';
 
 import { StyledBox, StyledLink } from './styled';
 import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from './types';
+
+const Menu = memo(({ items, getMenuProps, getItemProps, highlightedIndex, maxHeight, isOpen, ...rest }: any) => {
+  const itemKey = useRef(0);
+
+  const renderItem = useCallback(
+    (item: DropdownItem) => {
+      const key = itemKey.current;
+      itemKey.current += 1;
+
+      return (
+        <Item
+          getItemProps={getItemProps}
+          key={item.content}
+          item={item}
+          index={key}
+          isHighlighted={highlightedIndex === key}
+        />
+      );
+    },
+    [getItemProps, highlightedIndex],
+  );
+
+  const renderLinkItem = useCallback(
+    (item: DropdownLinkItem) => {
+      const key = itemKey.current;
+      itemKey.current += 1;
+
+      return (
+        <Item
+          getItemProps={getItemProps}
+          key={item.content}
+          item={item}
+          index={key}
+          isHighlighted={highlightedIndex === key}
+        />
+      );
+    },
+    [getItemProps, highlightedIndex],
+  );
+
+  const renderItems = useCallback(
+    (dropdownItems: Array<DropdownItem | DropdownLinkItem>) => {
+      return (
+        Array.isArray(dropdownItems) &&
+        dropdownItems.map((item) => (item.type === 'link' ? renderLinkItem(item) : renderItem(item)))
+      );
+    },
+    [renderItem, renderLinkItem],
+  );
+
+  const renderGroup = useCallback(
+    (group: DropdownItemGroup) => {
+      return (
+        <>
+          {group.separated && <ListGroupSeparator />}
+          {group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
+          {renderItems(group.items)}
+        </>
+      );
+    },
+    [renderItems],
+  );
+
+  const renderChildren = useMemo(() => {
+    // Reset the key every time we rerender children
+    itemKey.current = 0;
+
+    if (Array.isArray(items) && items.every(isGroup)) {
+      return (items as DropdownItemGroup[]).map((group, index) => (
+        <Fragment key={index}>{renderGroup(group)}</Fragment>
+      ));
+    }
+
+    if (Array.isArray(items) && items.every(isItem)) {
+      return renderItems(items as Array<DropdownItem | DropdownLinkItem>);
+    }
+  }, [items, renderGroup, renderItems]);
+
+  return (
+    <StyledList
+      {...getMenuProps({
+        maxHeight,
+        onKeyDown: (event) => {
+          if (event.key === 'Enter') {
+            const element = event.currentTarget.children[highlightedIndex];
+            const link = element.querySelector('a');
+
+            // We want to click the link if it is selected
+            if (link) {
+              link.click();
+            }
+          }
+        },
+        ...rest,
+      })}
+    >
+      {isOpen && renderChildren}
+    </StyledList>
+  );
+});
+
+const Item = memo(({ getItemProps, isHighlighted, item, index }: any) => {
+  return (
+    <StyledListItem
+      {...getItemProps({
+        actionType: item.actionType || 'normal',
+        index,
+        item,
+        isAction: true,
+        isHighlighted,
+      })}
+    >
+      {getContent(item, isHighlighted)}
+    </StyledListItem>
+  );
+});
 
 export const Dropdown = memo(
   ({
@@ -29,10 +145,22 @@ export const Dropdown = memo(
     // We only need the items to pass down to Downshift, not groups
     const onlyItems = useMemo(() => flattenItems(items), [items]);
 
-    // We need to keep track of key since we need to use it between groups.
-    const itemKey = useRef(0);
-
     const dropdownUniqueId = useUniqueId('dropdown');
+
+    const referenceRef = useRef(null);
+    const popperRef = useRef(null);
+
+    const { styles, attributes } = usePopper(referenceRef.current, popperRef.current, {
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 4],
+          },
+        },
+      ],
+      placement,
+    });
 
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
@@ -63,160 +191,32 @@ export const Dropdown = memo(
 
     const renderToggle = useMemo(() => {
       return (
-        <Reference>
-          {({ ref }) =>
-            isValidElement(toggle) &&
-            cloneElement<React.HTMLAttributes<any> & React.RefAttributes<any>>(toggle as any, {
-              ...getToggleButtonProps({
-                disabled,
-                ref,
-              }),
-              'aria-expanded': isOpen,
-            })
-          }
-        </Reference>
+        isValidElement(toggle) &&
+        cloneElement<React.HTMLAttributes<any> & React.RefAttributes<any>>(toggle as any, {
+          ...getToggleButtonProps({
+            disabled,
+            ref: referenceRef,
+          }),
+          'aria-expanded': isOpen,
+        })
       );
     }, [disabled, getToggleButtonProps, isOpen, toggle]);
 
-    const renderItem = useCallback(
-      (item: DropdownItem) => {
-        const { actionType, content, disabled: itemDisabled, hash, onItemClick, type, ...itemProps } = item;
-        const key = itemKey.current;
-        const isHighlighted = highlightedIndex === key;
-
-        itemKey.current += 1;
-
-        return (
-          <ListItem
-            {...itemProps}
-            {...getItemProps({
-              disabled: itemDisabled,
-              index: key,
-              item,
-            })}
-            actionType={actionType}
-            isAction={true}
-            isHighlighted={isHighlighted}
-            key={`${content}-${key}`}
-          >
-            {getContent(item, isHighlighted)}
-          </ListItem>
-        );
-      },
-      [getItemProps, highlightedIndex],
-    );
-
-    const renderLinkItem = useCallback(
-      (item: DropdownLinkItem) => {
-        const { actionType, content, disabled: itemDisabled, url, target, type, ...itemProps } = item;
-        const key = itemKey.current;
-        const isHighlighted = highlightedIndex === key;
-
-        itemKey.current += 1;
-
-        return (
-          <ListItem
-            {...itemProps}
-            {...getItemProps({
-              disabled: itemDisabled,
-              index: key,
-              item,
-            })}
-            actionType={actionType}
-            isAction={true}
-            isHighlighted={isHighlighted}
-            key={`${content}-${key}`}
-          >
-            {getContent(item, isHighlighted)}
-          </ListItem>
-        );
-      },
-      [getItemProps, highlightedIndex],
-    );
-
-    const renderItems = useCallback(
-      (dropdownItems: Array<DropdownItem | DropdownLinkItem>) => {
-        return (
-          Array.isArray(dropdownItems) &&
-          dropdownItems.map((item) => (item.type === 'link' ? renderLinkItem(item) : renderItem(item)))
-        );
-      },
-      [renderItem, renderLinkItem],
-    );
-
-    const renderGroup = useCallback(
-      (group: DropdownItemGroup) => {
-        return (
-          <>
-            {group.separated && <ListGroupSeparator />}
-            {group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
-            {renderItems(group.items)}
-          </>
-        );
-      },
-      [renderItems],
-    );
-
-    const renderChildren = useMemo(() => {
-      // Reset the key every time we rerender children
-      itemKey.current = 0;
-
-      if (Array.isArray(items) && items.every(isGroup)) {
-        return (items as DropdownItemGroup[]).map((group, index) => (
-          <Fragment key={index}>{renderGroup(group)}</Fragment>
-        ));
-      }
-
-      if (Array.isArray(items) && items.every(isItem)) {
-        return renderItems(items as Array<DropdownItem | DropdownLinkItem>);
-      }
-    }, [items, renderGroup, renderItems]);
-
-    const renderList = useMemo(
-      () => (
-        <Popper
-          modifiers={[{ name: 'eventListeners' }, { name: 'offset', options: { offset: [0, 4] } }]}
-          strategy="absolute"
-          placement={placement}
-        >
-          {({ placement: popperPlacement, ref, style: popperStyle, update }) => (
-            <List
-              {...rest}
-              {...getMenuProps({
-                onKeyDown: (event) => {
-                  if (event.key === 'Enter') {
-                    const element = event.currentTarget.children[highlightedIndex];
-                    const link = element.querySelector('a');
-
-                    // We want to click the link if it is selected
-                    if (link) {
-                      link.click();
-                    }
-                  }
-                },
-                ref,
-              })}
-              data-placement={popperPlacement}
-              isOpen={isOpen}
-              maxHeight={maxHeight}
-              style={popperStyle}
-              update={update}
-            >
-              {isOpen && renderChildren}
-            </List>
-          )}
-        </Popper>
-      ),
-      [getMenuProps, highlightedIndex, isOpen, maxHeight, placement, renderChildren, rest],
-    );
-
     return (
-      <Manager>
-        <StyledBox>
-          {renderToggle}
-          {renderList}
-        </StyledBox>
-      </Manager>
+      <StyledBox>
+        {renderToggle}
+        <StyledMenuContainer ref={popperRef} style={styles.popper} {...attributes.poppper}>
+          <Menu
+            {...rest}
+            getItemProps={getItemProps}
+            getMenuProps={getMenuProps}
+            highlightedIndex={highlightedIndex}
+            items={items}
+            maxHeight={maxHeight}
+            isOpen={isOpen}
+          />
+        </StyledMenuContainer>
+      </StyledBox>
     );
   },
 );
