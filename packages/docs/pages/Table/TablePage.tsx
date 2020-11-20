@@ -1,7 +1,7 @@
-import { H0, H1, Table, TableItem, Text } from '@bigcommerce/big-design';
+import { H0, H1, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
-import { CodePreview } from '../../components';
+import { Code, CodePreview } from '../../components';
 import {
   TableColumnsPropTable,
   TablePropTable,
@@ -171,6 +171,50 @@ const TablePage = () => {
         }}
         {/* jsx-to-string:end */}
       </CodePreview>
+
+      <H1>Usage with TableFigure</H1>
+
+      <Text>
+        TableFigure components are used to wrap Tables and any relevant information to be grouped with them.
+        TableFigures also provide a scrollable overflow on mobile for Tables with large amounts of data. Try removing
+        the TableFigure component below in mobile view to see the differences.
+      </Text>
+
+      <CodePreview>
+        {/* jsx-to-string:start */}
+        <>
+          <TableFigure>
+            <Table
+              columns={[
+                { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+                { header: 'Name', hash: 'name', render: ({ name }) => name },
+                { header: 'Description', hash: 'description', render: ({ description }) => description },
+              ]}
+              items={[
+                {
+                  sku: 'SM13',
+                  name: 'Item 1',
+                  description:
+                    'Yar Pirate Ipsum Lee Buccaneer Gold Road bilge water nipperkin hogshead ye. Spanish Main belay parrel fore schooner haul wind flogging. Sutler maroon list warp scourge of the seven seas Gold Road knave. Ballast fluke cog jolly boat landlubber or just lubber tack no prey, no pay.',
+                },
+                {
+                  sku: 'DPB',
+                  name: 'Item 2',
+                  description:
+                    'Yar Pirate Ipsum Lee Buccaneer Gold Road bilge water nipperkin hogshead ye. Spanish Main belay parrel fore schooner haul wind flogging. Sutler maroon list warp scourge of the seven seas Gold Road knave. Ballast fluke cog jolly boat landlubber or just lubber tack no prey, no pay.',
+                },
+              ]}
+              stickyHeader
+            />
+            <Small marginTop="xSmall">Helpful text to be grouped with the table</Small>
+          </TableFigure>
+        </>
+        {/* jsx-to-string:end */}
+      </CodePreview>
+
+      <Text>
+        TableFigure supports all native <Code>&lt;figure /&gt;</Code> element attributes.
+      </Text>
 
       <H1>Customization Example</H1>
 
