@@ -175,9 +175,10 @@ const TablePage = () => {
       <H1>Usage with TableFigure</H1>
 
       <Text>
-        TableFigure components are used to wrap Tables and any relevant information to be grouped with them.
-        TableFigures also provide a scrollable overflow on mobile for Tables with large amounts of data. Try removing
-        the TableFigure component below in mobile view to see the differences.
+        <Code primary>TableFigure</Code> components are used to wrap tables and any relevant information to be grouped
+        with them.
+        <Code primary>TableFigure</Code>s also provide a scrollable overflow on mobile for tables with large amounts of
+        data. Try removing the <Code primary>TableFigure</Code> component below in mobile view to see the differences.
       </Text>
 
       <CodePreview>
@@ -193,15 +194,15 @@ const TablePage = () => {
               items={[
                 {
                   sku: 'SM13',
-                  name: 'Item 1',
+                  name: '[Sample] Smith Journal 13',
                   description:
-                    'Yar Pirate Ipsum Lee Buccaneer Gold Road bilge water nipperkin hogshead ye. Spanish Main belay parrel fore schooner haul wind flogging. Sutler maroon list warp scourge of the seven seas Gold Road knave. Ballast fluke cog jolly boat landlubber or just lubber tack no prey, no pay.',
+                    'Volume 13 of Smith Journal is crammed with more than its fair share of sharp minds. Top of the list would have to be Solomon Shereshevsky, who remembered every single thing he’d ever come across – a great skill to have when it came to party tricks, but enough to send him crackers. And then there’s Delbert Trew who spends more time than you can imagine thinking about something very sharp indeed: barbed wire. You can’t go past Samuel Morse, either, who was a famous portrait painter before he gave his name to the code he invented. What a genius! And we’re pretty taken with Noel Turner, who was smart enough to get around some pretty weird New Zealand laws to invent a car that, for a while, was a huge success. As well, you’ll find stories on a cross-dressing spy, a couple of Sydney nerds who revolutionised modern music, court illustration, big wheels, the dubious science of controlling the weather and a whole stack of other stuff.',
                 },
                 {
                   sku: 'DPB',
-                  name: 'Item 2',
+                  name: '	[Sample] Dustpan & Brush',
                   description:
-                    'Yar Pirate Ipsum Lee Buccaneer Gold Road bilge water nipperkin hogshead ye. Spanish Main belay parrel fore schooner haul wind flogging. Sutler maroon list warp scourge of the seven seas Gold Road knave. Ballast fluke cog jolly boat landlubber or just lubber tack no prey, no pay.',
+                    'A seemingly simple dustpan with a few features to make life easier. The arch and length of the dustpan eases cleanup, the wood turned handle provides firm grip and the rubber liner along the edge of the scoop will retrieve small crumbs with a single swipe. A key ring at the top makes storage a cinch - hang it off a broom closet hook when not in use.',
                 },
               ]}
               stickyHeader
