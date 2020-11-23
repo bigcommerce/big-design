@@ -1,4 +1,4 @@
-import { Form, FormGroup, H0, H1, Switch, Text } from '@bigcommerce/big-design';
+import { Box, H0, H1, Switch, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -9,7 +9,8 @@ const SwitchPage = () => (
     <H0>Switch</H0>
 
     <Text>
-      Switches are a stylized <Code>input[type="checkbox"]</Code> with controllable checked/unchecked states.
+      Switches are a stylized <Code>input[type="checkbox"]</Code> with controllable checked/unchecked states. Switches
+      are intended to be used for immediate toggle actions and are therefore not intended to be used in forms.
     </Text>
 
     <CodePreview>
@@ -17,13 +18,12 @@ const SwitchPage = () => (
       {function Example() {
         const [checked, setChecked] = useState(false);
         const handleChange = () => setChecked(!checked);
+        const boxColor = checked ? 'brand' : 'secondary20';
 
         return (
-          <Form>
-            <FormGroup>
-              <Switch checked={checked} onChange={handleChange} />
-            </FormGroup>
-          </Form>
+          <Box display="inline-block" padding="xLarge" backgroundColor={boxColor}>
+            <Switch checked={checked} onChange={handleChange} />
+          </Box>
         );
       }}
       {/* jsx-to-string:end */}
