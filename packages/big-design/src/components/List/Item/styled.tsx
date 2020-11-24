@@ -3,7 +3,9 @@ import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../../mixins/transitions';
 
-export const StyledListItem = styled.li<any>`
+import { ListItemProps } from '.';
+
+export const StyledListItem = styled.li<ListItemProps>`
   ${withTransition(['background-color', 'color'])}
 
   align-items: center;
@@ -67,4 +69,20 @@ export const StyledListItem = styled.li<any>`
   }
 `;
 
+export const StyledLink = styled.a`
+  ${withTransition(['background-color', 'color'])}
+
+  align-items: center;
+  color: ${({ theme }) => theme.colors.secondary70};
+  display: flex;
+  height: 100%;
+  text-decoration: none;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
 StyledListItem.defaultProps = { theme: defaultTheme };
+StyledLink.defaultProps = { theme: defaultTheme };

@@ -5,6 +5,7 @@ import { HTMLAttributes } from 'react';
 import { ListItemProps } from '../List/Item';
 
 export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
+  autoWidth: boolean;
   disabled?: boolean;
   items: Array<DropdownItem | DropdownLinkItem> | DropdownItemGroup[];
   maxHeight?: number;

@@ -1,136 +1,17 @@
 import { useSelect, UseSelectState } from 'downshift';
-import React, { cloneElement, Fragment, isValidElement, memo, useCallback, useMemo, useRef } from 'react';
+import React, { cloneElement, isValidElement, memo, useCallback, useMemo, useRef } from 'react';
 import { usePopper } from 'react-popper';
 
-import { useIsomorphicLayoutEffect, useUniqueId, useWindowSize } from '../../hooks';
-import { Flex } from '../Flex';
-import { FlexItem } from '../Flex/Item';
-import { ListGroupHeader } from '../List/GroupHeader';
-import { ListGroupSeparator } from '../List/GroupSeparator';
-import { StyledListItem } from '../List/Item/styled';
-import { StyledList, StyledMenuContainer } from '../List/styled';
-import { Tooltip } from '../Tooltip';
+import { useUniqueId } from '../../hooks';
+import { List } from '../List';
+import { StyledMenuContainer } from '../List/styled';
 
-import { StyledBox, StyledLink } from './styled';
-import {
-  DropdownItem,
-  DropdownItemGroup,
-  DropdownItemProps,
-  DropdownLinkItem,
-  DropdownMenuProps,
-  DropdownProps,
-} from './types';
-
-const Menu = memo(
-  ({ items, getMenuProps, getItemProps, highlightedIndex, maxHeight, isOpen, update, ...rest }: DropdownMenuProps) => {
-    const itemKey = useRef(0);
-    const { height, width } = useWindowSize();
-
-    // Recalculate Popper for correct positioning
-    useIsomorphicLayoutEffect(() => {
-      async function scheduleUpdate() {
-        // Only update when menu is open
-        if (update && isOpen) {
-          await update();
-        }
-      }
-
-      scheduleUpdate();
-    }, [isOpen, height, width]);
-
-    const renderItems = useCallback(
-      (dropdownItems: Array<DropdownItem | DropdownLinkItem>) => {
-        return (
-          Array.isArray(dropdownItems) &&
-          dropdownItems.map((item) => {
-            const key = itemKey.current;
-            itemKey.current += 1;
-
-            return (
-              <Item
-                getItemProps={getItemProps}
-                index={key}
-                isHighlighted={highlightedIndex === key}
-                item={item}
-                key={`${key}-${item.content}`}
-              />
-            );
-          })
-        );
-      },
-      [getItemProps, highlightedIndex],
-    );
-
-    const renderGroup = useCallback(
-      (group: DropdownItemGroup) => {
-        return (
-          <>
-            {group.separated && <ListGroupSeparator />}
-            {group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
-            {renderItems(group.items)}
-          </>
-        );
-      },
-      [renderItems],
-    );
-
-    const renderChildren = useMemo(() => {
-      // Reset the key every time we rerender children
-      itemKey.current = 0;
-
-      if (Array.isArray(items) && items.every(isGroup)) {
-        return (items as DropdownItemGroup[]).map((group, index) => (
-          <Fragment key={index}>{renderGroup(group)}</Fragment>
-        ));
-      }
-
-      if (Array.isArray(items) && items.every(isItem)) {
-        return renderItems(items as Array<DropdownItem | DropdownLinkItem>);
-      }
-    }, [items, renderGroup, renderItems]);
-
-    return (
-      <StyledList
-        {...getMenuProps({
-          ...rest,
-          onKeyDown: (event) => {
-            if (event.key === 'Enter') {
-              const element = event.currentTarget.children[highlightedIndex];
-              const link = element.querySelector('a');
-
-              // We want to click the link if it is selected
-              if (link) {
-                link.click();
-              }
-            }
-          },
-        })}
-        maxHeight={maxHeight}
-      >
-        {isOpen && renderChildren}
-      </StyledList>
-    );
-  },
-);
-
-const Item = memo(({ getItemProps, isHighlighted, item, index }: DropdownItemProps) => {
-  return (
-    <StyledListItem
-      {...getItemProps({
-        index,
-        item,
-      })}
-      actionType={item.actionType || 'normal'}
-      isAction={true}
-      isHighlighted={isHighlighted}
-    >
-      {getContent(item, isHighlighted)}
-    </StyledListItem>
-  );
-});
+import { StyledBox } from './styled';
+import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from './types';
 
 export const Dropdown = memo(
   ({
+    autoWidth = false,
     className,
     disabled = false,
     maxHeight = 250,
@@ -201,11 +82,13 @@ export const Dropdown = memo(
       <StyledBox>
         {renderToggle}
         <StyledMenuContainer ref={popperRef} style={styles.popper} {...attributes.poppper}>
-          <Menu
+          <List
             {...rest}
+            autoWidth={autoWidth}
             getItemProps={getItemProps}
             getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
+            isDropdown={true}
             isOpen={isOpen}
             items={items}
             maxHeight={maxHeight}
@@ -229,66 +112,4 @@ const flattenItems = (
 
 const isGroup = (item: DropdownItem | DropdownLinkItem | DropdownItemGroup) => {
   return 'items' in item && !('content' in item);
-};
-
-const isItem = (item: DropdownItem | DropdownLinkItem | DropdownItemGroup) => {
-  return 'content' in item && !('items' in item);
-};
-
-const renderIcon = (item: DropdownItem | DropdownLinkItem, isHighlighted: boolean) => {
-  return (
-    isValidElement(item.icon) &&
-    cloneElement(item.icon, {
-      color: iconColor(item, isHighlighted),
-      size: 'large',
-    })
-  );
-};
-
-const getContent = (item: DropdownItem | DropdownLinkItem, isHighlighted: boolean) => {
-  const { disabled: itemDisabled, icon, tooltip } = item;
-
-  const baseContent = (
-    <Flex alignItems="center" flexDirection="row">
-      {icon && <FlexItem paddingRight="xSmall">{renderIcon(item, isHighlighted)}</FlexItem>}
-      {item.content}
-    </Flex>
-  );
-
-  const content = item.type === 'link' && !itemDisabled ? wrapInLink(item, baseContent) : baseContent;
-
-  return itemDisabled && tooltip ? wrapInTooltip(tooltip, content) : content;
-};
-
-const iconColor = (item: DropdownItem | DropdownLinkItem, isHighlighted: boolean) => {
-  if (item.disabled) {
-    return 'secondary40';
-  }
-
-  if (!isHighlighted) {
-    return 'secondary60';
-  }
-
-  return item.actionType === 'destructive' ? 'danger50' : 'primary';
-};
-
-const wrapInLink = (item: DropdownLinkItem, content: React.ReactChild) => {
-  return (
-    <StyledLink href={item.url} tabIndex={-1} target={item.target}>
-      {content}
-    </StyledLink>
-  );
-};
-
-const wrapInTooltip = (tooltip: DropdownItem['tooltip'], tooltipTrigger: React.ReactChild) => {
-  return (
-    <Tooltip
-      placement="left"
-      trigger={tooltipTrigger}
-      modifiers={[{ name: 'preventOverflow' }, { name: 'offset', options: { offset: [0, 20] } }]}
-      inline={false}
-    >
-      {tooltip}
-    </Tooltip>
-  );
 };

@@ -1,5 +1,6 @@
-import { Placement } from '@popperjs/core';
-import React, { RefObject } from 'react';
+import { Placement, State } from '@popperjs/core';
+import { UseSelectPropGetters } from 'downshift';
+import React, { HTMLAttributes, RefObject } from 'react';
 
 import { InputProps } from '../Input';
 import { ListItemProps } from '../List/Item';
@@ -45,4 +46,29 @@ export interface SelectAction extends BaseItem {
 export interface SelectOptionGroup<T> {
   label: string;
   options: Array<SelectOption<T>>;
+}
+
+export interface SelectMenuProps<T> extends HTMLAttributes<HTMLUListElement> {
+  action?: SelectAction;
+  autoWidth: boolean;
+  getItemProps: UseSelectPropGetters<T>['getItemProps'];
+  getMenuProps: UseSelectPropGetters<T>['getMenuProps'];
+  highlightedIndex: number;
+  isOpen: boolean;
+  options: SelectProps<T>['options'];
+  maxHeight: number;
+  selectedItem: any;
+  selectOptions: (SelectAction | SelectOption<T>)[];
+  update: (() => Promise<Partial<State>>) | null;
+}
+
+export interface SelectItemProps<T> extends HTMLAttributes<HTMLLIElement> {
+  autoWidth: boolean;
+  getItemProps: UseSelectPropGetters<T>['getItemProps'];
+  index: number;
+  isAction?: boolean;
+  isHighlighted: boolean;
+  isSelected: boolean;
+  selectedItem: SelectOption<T> | SelectAction | null;
+  item: SelectOption<T> | SelectAction;
 }
