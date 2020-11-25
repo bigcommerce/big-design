@@ -4,10 +4,11 @@ import { usePopper } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
 import { List } from '../List';
+import { flattenItems } from '../List/List';
 import { StyledMenuContainer } from '../List/styled';
 
 import { StyledBox } from './styled';
-import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from './types';
+import { DropdownItem, DropdownLinkItem, DropdownProps } from './types';
 
 export const Dropdown = memo(
   ({
@@ -99,17 +100,3 @@ export const Dropdown = memo(
     );
   },
 );
-
-const flattenItems = (
-  items: Array<DropdownItem | DropdownLinkItem> | DropdownItemGroup[],
-): Array<DropdownItem | DropdownLinkItem> => {
-  return items.every(isGroup)
-    ? (items as DropdownItemGroup[])
-        .map((group: DropdownItemGroup) => group.items)
-        .reduce((acum, curr) => acum.concat(curr), [])
-    : (items as DropdownItem[]);
-};
-
-const isGroup = (item: DropdownItem | DropdownLinkItem | DropdownItemGroup) => {
-  return 'items' in item && !('content' in item);
-};

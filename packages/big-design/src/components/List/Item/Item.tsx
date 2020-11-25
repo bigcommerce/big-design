@@ -41,8 +41,8 @@ const StyleableListItem: React.FC<ListItemProps & PrivateProps> = ({
   addItem,
   removeItem,
   ...props
-}) => {
-  return removeItem && addItem ? (
+}) =>
+  removeItem && addItem ? (
     <StyledListItem
       {...getItemProps({
         ...props,
@@ -56,13 +56,12 @@ const StyleableListItem: React.FC<ListItemProps & PrivateProps> = ({
 
           isChecked ? removeItem(item) : addItem(item);
         },
-        ref: forwardRef,
+        ref: forwardedRef,
       })}
       actionType={actionType}
       autoWidth={autoWidth}
       isAction={isAction}
       isHighlighted={isHighlighted}
-      isSelected={isSelected}
     >
       <Checkbox
         checked={isChecked}
@@ -84,7 +83,7 @@ const StyleableListItem: React.FC<ListItemProps & PrivateProps> = ({
         disabled: item.disabled,
         index,
         item,
-        ref: forwardRef,
+        ref: forwardedRef,
       })}
       actionType={actionType}
       autoWidth={autoWidth}
@@ -96,7 +95,6 @@ const StyleableListItem: React.FC<ListItemProps & PrivateProps> = ({
       {isSelected && <CheckIcon color="primary" size="large" />}
     </StyledListItem>
   );
-};
 
 export const ListItem = memo(
   forwardRef<HTMLLIElement, ListItemProps>((props, ref) => <StyleableListItem {...props} forwardedRef={ref} />),

@@ -17,20 +17,22 @@ import { typedMemo, warning } from '../../utils';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
+import { flattenItems } from '../List/List';
 import { StyledMenuContainer } from '../List/styled';
-import { SelectOption, SelectOptionGroup, SelectProps } from '../Select';
+import { SelectOption, SelectProps } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 import { SelectAction } from '../Select/types';
 
 export const Select = typedMemo(
   <T extends any>({
+    // positionFixed = false,
     action,
     autoWidth = false,
     className,
     disabled,
     filterable = true,
-    inputRef,
     id,
+    inputRef,
     label,
     labelId,
     maxHeight = 250,
@@ -38,7 +40,6 @@ export const Select = typedMemo(
     options,
     placeholder,
     placement = 'bottom-start' as 'bottom-start',
-    // positionFixed = false,
     required,
     style,
     value,
@@ -50,7 +51,7 @@ export const Select = typedMemo(
     const selectUniqueId = useUniqueId('select');
 
     // We need to pass Downshift only options without groups for accessibility tracking
-    const items = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
+    const items = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
       action,
       options,
     ]);
@@ -235,19 +236,19 @@ export const Select = typedMemo(
         </StyledInputContainer>
       );
     }, [
+      closeMenu,
       disabled,
       filterable,
       getInputProps,
+      getInputRef,
+      isOpen,
+      onOptionChange,
+      openMenu,
       placeholder,
+      props,
       renderToggle,
       required,
-      props,
-      getInputRef,
       selectedItem,
-      isOpen,
-      closeMenu,
-      openMenu,
-      onOptionChange,
     ]);
 
     return (
@@ -258,14 +259,14 @@ export const Select = typedMemo(
           <List
             action={action}
             autoWidth={autoWidth}
+            filteredItems={selectOptions}
             getItemProps={getItemProps}
             getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
+            isOpen={isOpen}
             items={options}
             maxHeight={maxHeight}
             selectedItem={selectedItem}
-            filteredItems={selectOptions}
-            isOpen={isOpen}
             update={update}
           />
         </StyledMenuContainer>
@@ -273,17 +274,3 @@ export const Select = typedMemo(
     );
   },
 );
-
-const flattenOptions = <T extends any>(
-  items: Array<SelectOption<T> | SelectOptionGroup<T>>,
-): Array<SelectOption<T>> => {
-  return items.every(isGroup)
-    ? (items as Array<SelectOptionGroup<T>>)
-        .map((group: SelectOptionGroup<T>) => group.options)
-        .reduce((acc, curr) => acc.concat(curr), [])
-    : (items as Array<SelectOption<T>>);
-};
-
-const isGroup = <T extends any>(item: SelectOption<T> | SelectOptionGroup<T>) => {
-  return 'options' in item && !('value' in item);
-};

@@ -73,7 +73,7 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
       return (
         <Box borderTop="box" marginTop="xSmall" paddingTop="xSmall">
           <ListItem
-            // actionType={action.actionType || 'normal'}
+            actionType={action.actionType}
             autoWidth={autoWidth}
             getItemProps={getItemProps}
             index={key}
@@ -106,7 +106,9 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
           itemKey.current += 1;
 
           const isChecked =
-            'value' in item && Boolean(selectedItems.find((selected: any) => selected.value === item.value));
+            'value' in item &&
+            selectedItems &&
+            Boolean(selectedItems.find((selected: any) => selected.value === item.value));
 
           return (
             <ListItem
@@ -118,7 +120,7 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
               isAction={isDropdown}
               isChecked={isChecked}
               isHighlighted={highlightedIndex === key}
-              isSelected={selectedItem?.value === item.value}
+              isSelected={!isDropdown && selectedItem?.value === item.value}
               item={item}
               key={`${key}-${item.content}`}
               removeItem={removeItem}
@@ -163,7 +165,7 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
           {items.map((group, index) => (
             <Fragment key={index}>{renderGroup(group)}</Fragment>
           ))}
-          {action & renderAction(action)}
+          {action && renderAction(action)}
         </>
       );
     }
@@ -172,7 +174,7 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
       return (
         <>
           {renderItems(items)}
-          {action & renderAction(action)}
+          {action && renderAction(action)}
         </>
       );
     }
@@ -193,6 +195,7 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
             }
           }
         },
+        ref: forwardedRef,
       })}
       maxHeight={maxHeight}
     >
@@ -211,4 +214,10 @@ const isGroup = (item: any) => {
 
 const isItem = (item: any) => {
   return ('content' in item && !('items' in item)) || ('value' in item && !('options' in item));
+};
+
+export const flattenItems = (items: any): Array<any> => {
+  return items.every(isGroup)
+    ? items.map((group: any) => group.items || group.options).reduce((acum, curr) => acum.concat(curr), [])
+    : items;
 };
