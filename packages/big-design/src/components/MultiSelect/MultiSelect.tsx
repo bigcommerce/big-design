@@ -35,7 +35,7 @@ export const MultiSelect = typedMemo(
     inputRef,
     label,
     labelId,
-    maxHeight = 250,
+    maxHeight,
     onOptionsChange,
     options,
     placeholder,
@@ -97,8 +97,9 @@ export const MultiSelect = typedMemo(
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && isOpen === true) {
         setMultiSelectOptions(filterOptions(inputValue));
-        setInputValue(inputValue || '');
       }
+
+      setInputValue(inputValue || '');
     };
 
     const filterOptions = (inputVal = '') => {

@@ -15,7 +15,7 @@ export const Dropdown = memo(
     autoWidth = false,
     className,
     disabled = false,
-    maxHeight = 250,
+    maxHeight,
     id,
     items,
     placement = 'bottom-start' as 'bottom-start',
@@ -23,11 +23,12 @@ export const Dropdown = memo(
     style,
     ...rest
   }: DropdownProps) => {
-    // We only need the items to pass down to Downshift, not groups
-    const onlyItems = useMemo(() => flattenItems(items), [items]);
-
     const dropdownUniqueId = useUniqueId('dropdown');
 
+    // We only need the items to pass down to Downshift, not groups
+    const flattenedItems = useMemo(() => flattenItems(items), [items]);
+
+    // Popper
     const referenceRef = useRef(null);
     const popperRef = useRef(null);
 
@@ -46,6 +47,7 @@ export const Dropdown = memo(
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
         if (selectedItem && selectedItem.type !== 'link' && typeof selectedItem.onItemClick === 'function') {
+          // Call onItemClick with selected item
           selectedItem.onItemClick(selectedItem);
         }
       },
@@ -59,10 +61,10 @@ export const Dropdown = memo(
       defaultHighlightedIndex: 0,
       id: dropdownUniqueId,
       itemToString: (item) => (item ? item.content : ''),
-      items: onlyItems,
+      items: flattenedItems,
       menuId: id,
       onSelectedItemChange: handleOnSelectedItemChange,
-      selectedItem: null,
+      selectedItem: null, // We never set a selected item
       toggleButtonId: toggle.props.id,
     });
 
@@ -74,6 +76,7 @@ export const Dropdown = memo(
             disabled,
             ref: referenceRef,
           }),
+          // Because of memoization, we need to manually set this option
           'aria-expanded': isOpen,
         })
       );

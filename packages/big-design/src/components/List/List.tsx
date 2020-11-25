@@ -18,7 +18,7 @@ export interface ListProps extends HTMLAttributes<HTMLUListElement> {
   isOpen: boolean;
   items: any;
   isDropdown?: boolean;
-  maxHeight: number;
+  maxHeight?: number;
   selectedItem?: any;
   selectedItems?: any;
   addItem?(): void;

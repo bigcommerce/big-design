@@ -35,7 +35,7 @@ export const Select = typedMemo(
     inputRef,
     label,
     labelId,
-    maxHeight = 250,
+    maxHeight,
     onOptionChange,
     options,
     placeholder,
@@ -45,25 +45,27 @@ export const Select = typedMemo(
     value,
     ...props
   }: SelectProps<T>): ReturnType<React.FC<SelectProps<T>>> => {
-    const [inputValue, setInputValue] = useState<string | undefined>('');
-
     const defaultRef: RefObject<HTMLInputElement> = createRef();
     const selectUniqueId = useUniqueId('select');
 
+    const [inputValue, setInputValue] = useState<string | undefined>('');
+
     // We need to pass Downshift only options without groups for accessibility tracking
-    const items = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
+    const flattenedOptions = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
       action,
       options,
     ]);
 
+    // Find the selected option
     const selectedOption = useMemo(() => {
-      return items.find((item) => 'value' in item && item.value === value) as SelectOption<T> | undefined;
-    }, [items, value]);
+      return flattenedOptions.find((option) => 'value' in option && option.value === value);
+    }, [flattenedOptions, value]);
 
-    const [selectOptions, setSelectOptions] = useState(items);
+    // Initialize with flattened options
+    const [filteredOptions, setFilteredOptions] = useState(flattenedOptions);
 
     // Need to set select options if options prop changes
-    useEffect(() => setSelectOptions(items), [items]);
+    useEffect(() => setFilteredOptions(flattenedOptions), [flattenedOptions]);
 
     const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
@@ -77,24 +79,26 @@ export const Select = typedMemo(
       inputValue,
       isOpen,
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      // Filter only when List is open
       if (filterable && isOpen === true) {
-        setSelectOptions(filterOptions(inputValue));
-        setInputValue(inputValue || '');
+        setFilteredOptions(filterOptions(inputValue));
       }
+
+      setInputValue(inputValue || '');
     };
 
     const filterOptions = (inputVal = '') => {
-      return items.filter(
-        (item) =>
-          item.content === (action && action.content) ||
-          item.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
+      return flattenedOptions.filter(
+        (option) =>
+          option.content === (action && action.content) ||
+          option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
     };
 
-    const handleOnIsOpenChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && changes.isOpen === false) {
-        // Reset the items if filtered
-        setSelectOptions(items);
+    const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (filterable && isOpen === false) {
+        // Reset the options when the List is closed
+        setFilteredOptions(flattenedOptions);
       }
     };
 
@@ -124,9 +128,11 @@ export const Select = typedMemo(
       closeMenu,
     } = useCombobox({
       id: selectUniqueId,
+      inputId: id,
       inputValue,
       itemToString: (item) => (item ? item.content : ''),
-      items: selectOptions,
+      items: filteredOptions, // We only pass the filtered options for accessbility
+      labelId,
       onInputValueChange: handleOnInputValueChange,
       onIsOpenChange: handleOnIsOpenChange,
       onSelectedItemChange: handleOnSelectedItemChange,
@@ -268,7 +274,7 @@ export const Select = typedMemo(
           <List
             action={action}
             autoWidth={autoWidth}
-            filteredItems={selectOptions}
+            filteredItems={filteredOptions}
             getItemProps={getItemProps}
             getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
