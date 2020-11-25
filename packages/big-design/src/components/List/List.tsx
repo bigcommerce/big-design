@@ -90,10 +90,10 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
   );
 
   const renderItems = useCallback(
-    (dropdownItems) => {
+    (listItems) => {
       return (
-        Array.isArray(dropdownItems) &&
-        dropdownItems.map((item) => {
+        Array.isArray(listItems) &&
+        listItems.map((item) => {
           // Skip rendering the option if it not found in the filtered list
           if (
             filteredItems &&
