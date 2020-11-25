@@ -75,8 +75,9 @@ export const Select = typedMemo(
 
     const handleOnInputValueChange = ({
       inputValue,
+      isOpen,
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable) {
+      if (filterable && isOpen === true) {
         setSelectOptions(filterOptions(inputValue));
         setInputValue(inputValue || '');
       }
@@ -88,6 +89,13 @@ export const Select = typedMemo(
           item.content === (action && action.content) ||
           item.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
+    };
+
+    const handleOnIsOpenChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (filterable && changes.isOpen === false) {
+        // Reset the items if filtered
+        setSelectOptions(items);
+      }
     };
 
     const handleStateReducer = (
@@ -120,6 +128,7 @@ export const Select = typedMemo(
       itemToString: (item) => (item ? item.content : ''),
       items: selectOptions,
       onInputValueChange: handleOnInputValueChange,
+      onIsOpenChange: handleOnIsOpenChange,
       onSelectedItemChange: handleOnSelectedItemChange,
       selectedItem: selectedOption || null,
       stateReducer: handleStateReducer,

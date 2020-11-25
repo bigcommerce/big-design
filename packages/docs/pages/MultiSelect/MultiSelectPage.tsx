@@ -301,6 +301,46 @@ const MultiSelectPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
+    <H2>Select Groups</H2>
+
+    <Text>
+      It is possible to create grouped options with labels with a <Code primary>Select Group</Code> by passing{' '}
+      <Code primary>label</Code> and <Code primary>options</Code> to the top-level <Code primary>options</Code>{' '}
+      property.
+    </Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Form>
+        <FormGroup>
+          <MultiSelect
+            label="My Options"
+            filterable
+            onOptionsChange={() => null}
+            options={[
+              {
+                label: 'Group 1',
+                options: [
+                  { value: 'mx', content: 'Mexico' },
+                  { value: 'ca', content: 'Canada' },
+                  { value: 'en', content: 'England' },
+                ],
+              },
+              {
+                label: 'Group 2',
+                options: [
+                  { value: 'fr', content: 'France' },
+                  { value: 'gr', content: 'Germany' },
+                  { value: 'ar', content: 'Argentina' },
+                ],
+              },
+            ]}
+          />
+        </FormGroup>
+      </Form>
+      {/* jsx-to-string:end */}
+    </CodePreview>
+
     <H2>Option & Action Description</H2>
 
     <Text>It is possible to add a description for select options and actions.</Text>

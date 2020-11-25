@@ -17,6 +17,7 @@ import { typedMemo, warning } from '../../utils';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
+import { flattenItems } from '../List/List';
 import { StyledMenuContainer } from '../List/styled';
 import { SelectAction, SelectOption } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
@@ -45,16 +46,19 @@ export const MultiSelect = typedMemo(
     value,
     ...rest
   }: MultiSelectProps<T>): ReturnType<React.FC<MultiSelectProps<T>>> => {
-    // Merge options and action
-    const initialOptions = useMemo(() => (action ? [...options, action] : options), [action, options]);
+    // We need to pass Downshift only options without groups for accessibility tracking
+    const items = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
+      action,
+      options,
+    ]);
 
     const findSelectedOptions = useMemo(() => {
-      return initialOptions.filter(
-        (option) => value && value.find((val) => 'value' in option && val === option.value) !== undefined,
+      return items.filter(
+        (option: any) => value && value.find((val) => 'value' in option && val === option.value) !== undefined,
       ) as Array<SelectOption<T>>;
-    }, [initialOptions, value]);
+    }, [items, value]);
 
-    const [items, setItems] = useState(initialOptions);
+    const [multiSelectOptions, setMultiSelectOptions] = useState(items);
     const [inputValue, setInputValue] = useState('');
     const [selectedOptions, setSelectedOptions] = useState(findSelectedOptions);
 
@@ -77,7 +81,7 @@ export const MultiSelect = typedMemo(
     });
 
     // Need to set items if options prop changes
-    useEffect(() => setItems(initialOptions), [initialOptions]);
+    useEffect(() => setMultiSelectOptions(items), [items]);
 
     useEffect(() => {
       setInputValue('');
@@ -87,23 +91,26 @@ export const MultiSelect = typedMemo(
       setSelectedOptions(findSelectedOptions);
     }, [findSelectedOptions]);
 
-    const handleSetInputValue = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && changes.isOpen === true) {
-        setItems(filterOptions(changes.inputValue));
-        setInputValue(changes.inputValue || '');
+    const handleSetInputValue = ({
+      inputValue,
+      isOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (filterable && isOpen === true) {
+        setMultiSelectOptions(filterOptions(inputValue));
+        setInputValue(inputValue || '');
       }
     };
 
     const filterOptions = (inputVal = '') => {
-      return initialOptions.filter(
-        (option) => option === action || option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
+      return items.filter(
+        (option: any) => option === action || option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
     };
 
     const handleOnIsOpenChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && changes.isOpen === false) {
         // Reset the items if filtered
-        setItems(initialOptions);
+        setMultiSelectOptions(items);
       }
     };
 
@@ -169,9 +176,9 @@ export const MultiSelect = typedMemo(
           newOptions,
         );
 
-        setItems(initialOptions);
+        setMultiSelectOptions(items);
       },
-      [initialOptions, onOptionsChange, selectedOptions],
+      [items, onOptionsChange, selectedOptions],
     );
 
     const addSelectedItem = useCallback(
@@ -187,9 +194,9 @@ export const MultiSelect = typedMemo(
           newOptions,
         );
 
-        setItems(initialOptions);
+        setMultiSelectOptions(items);
       },
-      [initialOptions, onOptionsChange, selectedOptions],
+      [items, onOptionsChange, selectedOptions],
     );
 
     const {
@@ -202,12 +209,12 @@ export const MultiSelect = typedMemo(
       highlightedIndex,
       isOpen,
       openMenu,
-    } = useCombobox<SelectOption<T> | SelectAction | null>({
+    } = useCombobox({
       id: multiSelectUniqueId,
       inputId: id,
       inputValue,
       itemToString: (option) => (option ? option.content : ''),
-      items,
+      items: multiSelectOptions,
       labelId,
       onInputValueChange: handleSetInputValue,
       onIsOpenChange: handleOnIsOpenChange,
@@ -348,7 +355,7 @@ export const MultiSelect = typedMemo(
             action={action}
             addItem={addSelectedItem}
             autoWidth={autoWidth}
-            filteredItems={items}
+            filteredItems={multiSelectOptions}
             getItemProps={getItemProps}
             getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
