@@ -18,10 +18,9 @@ const SwitchPage = () => (
       {function Example() {
         const [checked, setChecked] = useState(false);
         const handleChange = () => setChecked(!checked);
-        const boxColor = checked ? 'white' : 'secondary20';
 
         return (
-          <Box display="inline-block" padding="xLarge" backgroundColor={boxColor}>
+          <Box>
             <Switch checked={checked} onChange={handleChange} />
           </Box>
         );
