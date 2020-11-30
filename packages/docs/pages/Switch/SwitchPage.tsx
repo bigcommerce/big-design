@@ -1,4 +1,4 @@
-import { Box, H0, H1, Switch, Text } from '@bigcommerce/big-design';
+import { H0, H1, Switch, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -19,11 +19,7 @@ const SwitchPage = () => (
         const [checked, setChecked] = useState(false);
         const handleChange = () => setChecked(!checked);
 
-        return (
-          <Box>
-            <Switch checked={checked} onChange={handleChange} />
-          </Box>
-        );
+        return <Switch checked={checked} onChange={handleChange} />;
       }}
       {/* jsx-to-string:end */}
     </CodePreview>
