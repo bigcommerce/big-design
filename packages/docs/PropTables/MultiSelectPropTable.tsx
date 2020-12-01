@@ -75,11 +75,12 @@ const selectProps: Prop[] = [
   },
   {
     name: 'options',
-    types: 'Array<SelectOption>',
+    types: 'Array<SelectOption> | Array<SelectOptionGroup>',
     required: true,
     description: (
       <>
-        Accepts an array of <Code>SelectOption</Code>. See example for usage.
+        Accepts an array of <Code>SelectOption</Code> or an array of <Code>SelectOptionGroups</Code>. See example for
+        usage.
       </>
     ),
   },

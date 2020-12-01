@@ -38,6 +38,16 @@ const dropdownProps: Prop[] = [
     description: 'Sets the placement of the Dropdown relative to the anchor.',
   },
   {
+    name: 'positionFixed',
+    defaultValue: 'false',
+    types: 'boolean',
+    description: (
+      <>
+        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to position the list.
+      </>
+    ),
+  },
+  {
     name: 'items',
     types: 'Array<DropdownItem | DropdownLinkItem> | Array<DropdownItemGroup>',
     required: true,

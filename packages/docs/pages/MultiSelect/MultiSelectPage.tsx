@@ -301,7 +301,7 @@ const MultiSelectPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H2>Select Groups</H2>
+    <H2>MultiSelect Groups</H2>
 
     <Text>
       It is possible to create grouped options with labels with a <Code primary>Select Group</Code> by passing{' '}
