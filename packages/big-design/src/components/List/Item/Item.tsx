@@ -14,6 +14,7 @@ import { StyledLink, StyledListItem } from './styled';
 export interface ListItemProps extends LiHTMLAttributes<HTMLLIElement> {
   actionType?: 'normal' | 'destructive';
   autoWidth?: boolean;
+  disabled?: boolean;
   index: number;
   isAction?: boolean;
   isChecked?: boolean;
