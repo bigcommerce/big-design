@@ -40,7 +40,7 @@ export const MultiSelect = typedMemo(
     options,
     placeholder,
     placement = 'bottom-start' as 'bottom-start',
-    // positionFixed = false,
+    positionFixed = false,
     required,
     style,
     value,
@@ -83,6 +83,7 @@ export const MultiSelect = typedMemo(
           },
         },
       ],
+      strategy: positionFixed ? 'fixed' : 'absolute',
       placement,
     });
 

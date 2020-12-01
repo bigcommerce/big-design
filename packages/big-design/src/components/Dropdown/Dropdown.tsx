@@ -19,6 +19,7 @@ export const Dropdown = memo(
     id,
     items,
     placement = 'bottom-start' as 'bottom-start',
+    positionFixed = false,
     toggle,
     style,
     ...rest
@@ -42,6 +43,7 @@ export const Dropdown = memo(
         },
       ],
       placement,
+      strategy: positionFixed ? 'fixed' : 'absolute',
     });
 
     const handleOnSelectedItemChange = useCallback(

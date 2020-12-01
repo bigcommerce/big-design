@@ -7,6 +7,7 @@ export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElemen
   items: Array<DropdownItem | DropdownLinkItem> | DropdownItemGroup[];
   maxHeight?: number;
   placement?: Placement;
+  positionFixed?: boolean;
   toggle: React.ReactElement;
 }
 

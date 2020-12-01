@@ -25,7 +25,6 @@ import { SelectAction } from '../Select/types';
 
 export const Select = typedMemo(
   <T extends any>({
-    // positionFixed = false,
     action,
     autoWidth = false,
     className,
@@ -40,6 +39,7 @@ export const Select = typedMemo(
     options,
     placeholder,
     placement = 'bottom-start' as 'bottom-start',
+    positionFixed = false,
     required,
     style,
     value,
@@ -80,6 +80,7 @@ export const Select = typedMemo(
           },
         },
       ],
+      strategy: positionFixed ? 'fixed' : 'absolute',
       placement,
     });
 
