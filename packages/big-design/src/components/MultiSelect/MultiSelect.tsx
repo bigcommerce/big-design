@@ -46,29 +46,35 @@ export const MultiSelect = typedMemo(
     value,
     ...rest
   }: MultiSelectProps<T>): ReturnType<React.FC<MultiSelectProps<T>>> => {
+    const defaultRef: RefObject<HTMLInputElement> = createRef();
+    const multiSelectUniqueId = useUniqueId('multi-select');
+
+    const [inputValue, setInputValue] = useState('');
+
     // We need to pass Downshift only options without groups for accessibility tracking
-    const items = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
+    const flattenedOptions = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
       action,
       options,
     ]);
 
-    const findSelectedOptions = useMemo(() => {
-      return items.filter(
+    // Find the selected options
+    const selectedOptions = useMemo(() => {
+      return flattenedOptions.filter(
         (option: any) => value && value.find((val) => 'value' in option && val === option.value) !== undefined,
       ) as Array<SelectOption<T>>;
-    }, [items, value]);
+    }, [flattenedOptions, value]);
 
-    const [multiSelectOptions, setMultiSelectOptions] = useState(items);
-    const [inputValue, setInputValue] = useState('');
-    const [selectedOptions, setSelectedOptions] = useState(findSelectedOptions);
+    // Initialize with flattened options
+    const [filteredOptions, setFilteredOptions] = useState(flattenedOptions);
 
-    const defaultRef: RefObject<HTMLInputElement> = createRef();
-    const multiSelectUniqueId = useUniqueId('multi-select');
+    // Need to set items if options prop changes
+    useEffect(() => setFilteredOptions(flattenedOptions), [flattenedOptions]);
 
+    // Popper
     const referenceRef = useRef(null);
     const popperRef = useRef(null);
 
-    const { styles, attributes } = usePopper(referenceRef.current, popperRef.current, {
+    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
       modifiers: [
         {
           name: 'offset',
@@ -80,30 +86,23 @@ export const MultiSelect = typedMemo(
       placement,
     });
 
-    // Need to set items if options prop changes
-    useEffect(() => setMultiSelectOptions(items), [items]);
-
     useEffect(() => {
       setInputValue('');
     }, [selectedOptions]);
-
-    useEffect(() => {
-      setSelectedOptions(findSelectedOptions);
-    }, [findSelectedOptions]);
 
     const handleSetInputValue = ({
       inputValue,
       isOpen,
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && isOpen === true) {
-        setMultiSelectOptions(filterOptions(inputValue));
+        setFilteredOptions(filterOptions(inputValue));
       }
 
       setInputValue(inputValue || '');
     };
 
     const filterOptions = (inputVal = '') => {
-      return items.filter(
+      return flattenedOptions.filter(
         (option: any) => option === action || option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
     };
@@ -111,7 +110,7 @@ export const MultiSelect = typedMemo(
     const handleOnIsOpenChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && changes.isOpen === false) {
         // Reset the items if filtered
-        setMultiSelectOptions(items);
+        setFilteredOptions(flattenedOptions);
       }
     };
 
@@ -177,9 +176,9 @@ export const MultiSelect = typedMemo(
           newOptions,
         );
 
-        setMultiSelectOptions(items);
+        setFilteredOptions(flattenedOptions);
       },
-      [items, onOptionsChange, selectedOptions],
+      [flattenedOptions, onOptionsChange, selectedOptions],
     );
 
     const addSelectedItem = useCallback(
@@ -195,9 +194,9 @@ export const MultiSelect = typedMemo(
           newOptions,
         );
 
-        setMultiSelectOptions(items);
+        setFilteredOptions(flattenedOptions);
       },
-      [items, onOptionsChange, selectedOptions],
+      [flattenedOptions, onOptionsChange, selectedOptions],
     );
 
     const {
@@ -215,7 +214,7 @@ export const MultiSelect = typedMemo(
       inputId: id,
       inputValue,
       itemToString: (option) => (option ? option.content : ''),
-      items: multiSelectOptions,
+      items: filteredOptions,
       labelId,
       onInputValueChange: handleSetInputValue,
       onIsOpenChange: handleOnIsOpenChange,
@@ -356,7 +355,7 @@ export const MultiSelect = typedMemo(
             action={action}
             addItem={addSelectedItem}
             autoWidth={autoWidth}
-            filteredItems={multiSelectOptions}
+            filteredItems={filteredOptions}
             getItemProps={getItemProps}
             getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
@@ -365,6 +364,7 @@ export const MultiSelect = typedMemo(
             maxHeight={maxHeight}
             removeItem={removeItem}
             selectedItems={selectedOptions}
+            update={update}
           />
         </StyledMenuContainer>
       </>

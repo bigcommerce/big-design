@@ -1,9 +1,7 @@
-import { Placement, State } from '@popperjs/core';
-import { UseSelectPropGetters } from 'downshift';
-import React, { HTMLAttributes, RefObject } from 'react';
+import { Placement } from '@popperjs/core';
+import React, { LiHTMLAttributes, RefObject } from 'react';
 
 import { InputProps } from '../Input';
-import { ListItemProps } from '../List/Item';
 
 interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children'> {
   action?: SelectAction;
@@ -23,52 +21,29 @@ interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'child
 }
 
 export interface SelectProps<T> extends BaseSelect {
-  options: Array<SelectOption<T> | SelectOptionGroup<T>>;
+  options: Array<SelectOption<T>> | Array<SelectOptionGroup<T>>;
   value?: T;
   onOptionChange(value?: T, option?: SelectOption<T>): void;
 }
 
-interface BaseItem
-  extends Omit<ListItemProps, 'children' | 'content' | 'isAction' | 'isHighlighted' | 'isSelected' | 'value'> {
+interface BaseItem extends LiHTMLAttributes<HTMLLIElement> {
   content: string;
   description?: string;
+  disabled?: boolean;
   icon?: React.ReactElement;
 }
 
-export interface SelectOption<T> extends Omit<BaseItem, 'actionType'> {
+export interface SelectOption<T> extends Omit<BaseItem, 'value'> {
   value: T;
 }
 
 export interface SelectAction extends BaseItem {
+  actionType?: 'normal' | 'destructive';
   onActionClick(inputText: string | null): void;
 }
 
 export interface SelectOptionGroup<T> {
   label: string;
+  separated?: boolean;
   options: Array<SelectOption<T>>;
-}
-
-export interface SelectMenuProps<T> extends HTMLAttributes<HTMLUListElement> {
-  action?: SelectAction;
-  autoWidth: boolean;
-  getItemProps: UseSelectPropGetters<T>['getItemProps'];
-  getMenuProps: UseSelectPropGetters<T>['getMenuProps'];
-  highlightedIndex: number;
-  isOpen: boolean;
-  options: SelectProps<T>['options'];
-  maxHeight: number;
-  selectedItem: any;
-  selectOptions: (SelectAction | SelectOption<T>)[];
-  update: (() => Promise<Partial<State>>) | null;
-}
-
-export interface SelectItemProps<T> extends HTMLAttributes<HTMLLIElement> {
-  autoWidth: boolean;
-  getItemProps: UseSelectPropGetters<T>['getItemProps'];
-  index: number;
-  isAction?: boolean;
-  isHighlighted: boolean;
-  isSelected: boolean;
-  selectedItem: SelectOption<T> | SelectAction | null;
-  item: SelectOption<T> | SelectAction;
 }

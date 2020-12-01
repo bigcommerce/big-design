@@ -4,6 +4,9 @@ import React, { forwardRef, Fragment, HTMLAttributes, memo, Ref, useCallback, us
 
 import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
 import { Box } from '../Box';
+import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from '../Dropdown';
+import { MultiSelectProps } from '../MultiSelect';
+import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from '../Select';
 
 import { ListGroupHeader } from './GroupHeader';
 import { ListGroupSeparator } from './GroupSeparator';
@@ -11,26 +14,28 @@ import { ListItem } from './Item';
 import { StyledList } from './styled';
 
 export interface ListProps extends HTMLAttributes<HTMLUListElement> {
-  action?: any;
+  action?: SelectAction;
   autoWidth: boolean;
-  filteredItems?: any;
+  filteredItems?: Array<SelectOption<any> | SelectAction>;
   highlightedIndex: number;
   isOpen: boolean;
-  items: any;
+  items: DropdownProps['items'] | SelectProps<any>['options'] | MultiSelectProps<any>['options'];
   isDropdown?: boolean;
   maxHeight?: number;
-  selectedItem?: any;
-  selectedItems?: any;
-  addItem?(): void;
+  selectedItem?: SelectOption<any> | SelectAction | null;
+  selectedItems?: Array<SelectOption<any>> | null;
+  addItem?(item: SelectOption<any>): void;
   getItemProps: UseSelectPropGetters<any>['getItemProps'];
   getMenuProps: UseSelectPropGetters<any>['getMenuProps'];
   update: (() => Promise<Partial<State>>) | null;
-  removeItem?(): void;
+  removeItem?(item: SelectOption<any>): void;
 }
 
 interface PrivateProps {
   forwardedRef: Ref<HTMLUListElement>;
 }
+
+type Items = DropdownItem | DropdownLinkItem | SelectOption<any> | SelectAction;
 
 const StyleableList: React.FC<ListProps & PrivateProps> = ({
   action,
@@ -67,7 +72,7 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
   }, [isOpen, height, width]);
 
   const renderAction = useCallback(
-    (action: any) => {
+    (action: SelectAction) => {
       const key = itemKey.current;
 
       return (
@@ -90,14 +95,14 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
   );
 
   const renderItems = useCallback(
-    (listItems) => {
+    (listItems: Array<DropdownItem | DropdownLinkItem> | Array<SelectOption<any>>) => {
       return (
         Array.isArray(listItems) &&
         listItems.map((item) => {
           // Skip rendering the option if it not found in the filtered list
           if (
             filteredItems &&
-            !filteredItems.find((filteredItem: any) => 'value' in filteredItem && filteredItem.value === item.value)
+            !filteredItems.find((filteredItem) => 'value' in filteredItem && filteredItem.value === item.value)
           ) {
             return null;
           }
@@ -108,7 +113,7 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
           const isChecked =
             'value' in item &&
             selectedItems &&
-            Boolean(selectedItems.find((selected: any) => selected.value === item.value));
+            Boolean(selectedItems.find((selected) => selected.value === item.value));
 
           return (
             <ListItem
@@ -118,9 +123,9 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
               getItemProps={getItemProps}
               index={key}
               isAction={isDropdown}
-              isChecked={isChecked}
+              isChecked={isChecked || false}
               isHighlighted={highlightedIndex === key}
-              isSelected={!isDropdown && selectedItem?.value === item.value}
+              isSelected={!isDropdown && (selectedItem as SelectOption<any>)?.value === item.value}
               item={item}
               key={`${key}-${item.content}`}
               removeItem={removeItem}
@@ -143,12 +148,12 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
   );
 
   const renderGroup = useCallback(
-    (group: any) => {
+    (group: DropdownItemGroup | SelectOptionGroup<any>) => {
       return (
         <>
           {group.separated && <ListGroupSeparator />}
           {group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
-          {renderItems(group.items || group.options)}
+          {renderItems((group as DropdownItemGroup).items || (group as SelectOptionGroup<any>).options)}
         </>
       );
     },
@@ -208,15 +213,17 @@ export const List = memo(
   forwardRef<HTMLUListElement, ListProps>((props, ref) => <StyleableList {...props} forwardedRef={ref} />),
 );
 
-const isGroup = (item: any) => {
+const isGroup = (item: DropdownItemGroup | SelectOptionGroup<any> | Items) => {
   return ('items' in item && !('content' in item)) || ('options' in item && !('value' in item));
 };
 
-const isItem = (item: any) => {
+const isItem = (item: DropdownItemGroup | SelectOptionGroup<any> | Items) => {
   return ('content' in item && !('items' in item)) || ('value' in item && !('options' in item));
 };
 
-export const flattenItems = (items: any): Array<any> => {
+export const flattenItems = (
+  items: Array<DropdownItemGroup | DropdownItem | DropdownLinkItem> | Array<SelectOptionGroup<any> | SelectOption<any>>,
+): Array<any> => {
   return items.every(isGroup)
     ? items.map((group: any) => group.items || group.options).reduce((acum, curr) => acum.concat(curr), [])
     : items;

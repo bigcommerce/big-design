@@ -3,6 +3,7 @@ import React, { RefObject } from 'react';
 
 import { InputProps } from '../Input';
 import { SelectAction, SelectOption } from '../Select';
+import { SelectOptionGroup } from '../Select/types';
 
 interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children'> {
   action?: SelectAction;
@@ -22,7 +23,7 @@ interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'child
 }
 
 export interface MultiSelectProps<T> extends BaseSelect {
-  options: Array<SelectOption<T>>;
+  options: Array<SelectOption<T>> | Array<SelectOptionGroup<T>>;
   value?: T[];
   onOptionsChange(value: T[], option: Array<SelectOption<T>>): void;
 }

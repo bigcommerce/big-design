@@ -54,9 +54,7 @@ export const Dropdown = memo(
       [],
     );
 
-    const { getItemProps, getMenuProps, getToggleButtonProps, highlightedIndex, isOpen } = useSelect<
-      DropdownItem | DropdownLinkItem | null
-    >({
+    const { getItemProps, getMenuProps, getToggleButtonProps, highlightedIndex, isOpen } = useSelect({
       circularNavigation: true,
       defaultHighlightedIndex: 0,
       id: dropdownUniqueId,

@@ -67,6 +67,22 @@ export const Select = typedMemo(
     // Need to set select options if options prop changes
     useEffect(() => setFilteredOptions(flattenedOptions), [flattenedOptions]);
 
+    // Popper
+    const referenceRef = useRef(null);
+    const popperRef = useRef(null);
+
+    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 4],
+          },
+        },
+      ],
+      placement,
+    });
+
     const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
         action.onActionClick(inputValue || null);
@@ -103,7 +119,7 @@ export const Select = typedMemo(
     };
 
     const handleStateReducer = (
-      state: UseComboboxState<SelectOption<T> | SelectAction | null>,
+      _state: UseComboboxState<SelectOption<T> | SelectAction | null>,
       actionAndChanges: UseComboboxStateChangeOptions<SelectOption<T> | SelectAction | null>,
     ) => {
       switch (actionAndChanges.type) {
@@ -131,7 +147,7 @@ export const Select = typedMemo(
       inputId: id,
       inputValue,
       itemToString: (item) => (item ? item.content : ''),
-      items: filteredOptions, // We only pass the filtered options for accessbility
+      items: filteredOptions,
       labelId,
       onInputValueChange: handleOnInputValueChange,
       onIsOpenChange: handleOnIsOpenChange,
@@ -158,21 +174,6 @@ export const Select = typedMemo(
 
       return defaultRef;
     }, [defaultRef, inputRef, setCallbackRef]);
-
-    const referenceRef = useRef(null);
-    const popperRef = useRef(null);
-
-    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 4],
-          },
-        },
-      ],
-      placement,
-    });
 
     const renderLabel = useMemo(() => {
       if (!label) {

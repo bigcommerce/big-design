@@ -3,7 +3,9 @@ import { UseSelectPropGetters } from 'downshift';
 import React, { cloneElement, forwardRef, isValidElement, LiHTMLAttributes, memo, Ref } from 'react';
 
 import { Checkbox } from '../../Checkbox';
+import { DropdownItem, DropdownLinkItem } from '../../Dropdown';
 import { Flex, FlexItem } from '../../Flex';
+import { SelectAction, SelectOption } from '../../Select';
 import { Tooltip } from '../../Tooltip';
 import { Small } from '../../Typography';
 
@@ -17,15 +19,17 @@ export interface ListItemProps extends LiHTMLAttributes<HTMLLIElement> {
   isChecked?: boolean;
   isHighlighted: boolean;
   isSelected?: boolean;
-  item: any;
+  item: DropdownItem | DropdownLinkItem | SelectOption<any> | SelectAction;
   getItemProps: UseSelectPropGetters<any>['getItemProps'];
-  addItem?(item: any): void;
-  removeItem?(item: any): void;
+  addItem?(item: SelectOption<any>): void;
+  removeItem?(item: SelectOption<any>): void;
 }
 
 interface PrivateProps {
   forwardedRef: Ref<HTMLLIElement>;
 }
+
+type Items = DropdownItem | DropdownLinkItem | SelectOption<any> | SelectAction;
 
 const StyleableListItem: React.FC<ListItemProps & PrivateProps> = ({
   actionType = 'normal' as 'normal',
@@ -54,7 +58,7 @@ const StyleableListItem: React.FC<ListItemProps & PrivateProps> = ({
             return;
           }
 
-          isChecked ? removeItem(item) : addItem(item);
+          isChecked ? removeItem(item as SelectOption<any>) : addItem(item as SelectOption<any>);
         },
         ref: forwardedRef,
       })}
@@ -66,7 +70,7 @@ const StyleableListItem: React.FC<ListItemProps & PrivateProps> = ({
       <Checkbox
         checked={isChecked}
         disabled={item.disabled}
-        description={item.description}
+        description={(item as SelectOption<any>).description}
         label={item.content}
         onChange={() => null}
         onClick={(event) => {
@@ -130,7 +134,7 @@ const getContent = (item: any, isHighlighted: boolean) => {
   return disabled && tooltip ? wrapInTooltip(tooltip, finalContent) : finalContent;
 };
 
-const renderIcon = (item: any, isHighlighted: boolean) => {
+const renderIcon = (item: Items, isHighlighted: boolean) => {
   return (
     isValidElement(item.icon) &&
     cloneElement(item.icon, {
@@ -140,7 +144,7 @@ const renderIcon = (item: any, isHighlighted: boolean) => {
   );
 };
 
-const iconColor = (item: any, isHighlighted: boolean) => {
+const iconColor = (item: Items, isHighlighted: boolean) => {
   if (item.disabled) {
     return 'secondary40';
   }
@@ -154,7 +158,7 @@ const iconColor = (item: any, isHighlighted: boolean) => {
 
 const descriptionColor = (isDisabled: boolean | undefined) => (isDisabled ? 'secondary40' : 'secondary60');
 
-const wrapInLink = (item: any, content: React.ReactChild) => {
+const wrapInLink = (item: DropdownLinkItem, content: React.ReactChild) => {
   return (
     <StyledLink href={item.url} tabIndex={-1} target={item.target}>
       {content}
