@@ -11,7 +11,7 @@ export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElemen
   toggle: React.ReactElement;
 }
 
-interface BaseItem extends LiHTMLAttributes<HTMLLIElement> {
+interface BaseItem extends Omit<LiHTMLAttributes<HTMLLIElement>, 'value'> {
   actionType?: 'normal' | 'destructive';
   content: string;
   disabled?: boolean;

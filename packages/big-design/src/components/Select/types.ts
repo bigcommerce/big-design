@@ -26,14 +26,14 @@ export interface SelectProps<T> extends BaseSelect {
   onOptionChange(value?: T, option?: SelectOption<T>): void;
 }
 
-interface BaseItem extends LiHTMLAttributes<HTMLLIElement> {
+interface BaseItem extends Omit<LiHTMLAttributes<HTMLLIElement>, 'value'> {
   content: string;
   description?: string;
   disabled?: boolean;
   icon?: React.ReactElement;
 }
 
-export interface SelectOption<T> extends Omit<BaseItem, 'value'> {
+export interface SelectOption<T> extends BaseItem {
   value: T;
 }
 

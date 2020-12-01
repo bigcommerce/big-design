@@ -54,7 +54,7 @@ export const Select = typedMemo(
     const flattenedOptions = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
       action,
       options,
-    ]);
+    ]) as Array<SelectOption<T> | SelectAction>;
 
     // Find the selected option
     const selectedOption = useMemo(() => {
@@ -132,6 +132,7 @@ export const Select = typedMemo(
     };
 
     const {
+      closeMenu,
       getComboboxProps,
       getInputProps,
       getItemProps,
@@ -139,10 +140,9 @@ export const Select = typedMemo(
       getMenuProps,
       getToggleButtonProps,
       highlightedIndex,
-      selectedItem,
       isOpen,
       openMenu,
-      closeMenu,
+      selectedItem,
     } = useCombobox({
       id: selectUniqueId,
       inputId: id,
