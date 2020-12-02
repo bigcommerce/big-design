@@ -105,8 +105,8 @@ export const ListItem = memo(
   forwardRef<HTMLLIElement, ListItemProps>((props, ref) => <StyleableListItem {...props} forwardedRef={ref} />),
 );
 
-const getContent = (item: any, isHighlighted: boolean) => {
-  const { content, disabled, description, icon, tooltip } = item;
+const getContent = (item: Items, isHighlighted: boolean) => {
+  const { content, disabled, description, icon } = item;
 
   const baseContent = (
     <Flex alignItems="center" flexDirection="row">
@@ -130,9 +130,10 @@ const getContent = (item: any, isHighlighted: boolean) => {
     </Flex>
   );
 
-  const finalContent = item.type === 'link' && !disabled ? wrapInLink(item, baseContent) : baseContent;
+  const finalContent =
+    'type' in item && item.type === 'link' && !disabled ? wrapInLink(item, baseContent) : baseContent;
 
-  return disabled && tooltip ? wrapInTooltip(tooltip, finalContent) : finalContent;
+  return disabled && 'tooltip' in item && item.tooltip ? wrapInTooltip(item.tooltip, finalContent) : finalContent;
 };
 
 const renderIcon = (item: Items, isHighlighted: boolean) => {

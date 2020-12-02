@@ -22,7 +22,7 @@ export const Dropdown = memo(
     positionFixed = false,
     toggle,
     style,
-    ...rest
+    ...props
   }: DropdownProps) => {
     const dropdownUniqueId = useUniqueId('dropdown');
 
@@ -31,6 +31,7 @@ export const Dropdown = memo(
 
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
+        // Links don't trigger an onItemClick
         if (selectedItem && selectedItem.type !== 'link' && typeof selectedItem.onItemClick === 'function') {
           // Call onItemClick with selected item
           selectedItem.onItemClick(selectedItem);
@@ -55,7 +56,7 @@ export const Dropdown = memo(
     const referenceRef = useRef(null);
     const popperRef = useRef(null);
 
-    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
+    const { attributes, styles, update } = usePopper(referenceRef.current, popperRef.current, {
       modifiers: [
         {
           name: 'eventListeners',
@@ -80,11 +81,10 @@ export const Dropdown = memo(
         isValidElement(toggle) &&
         cloneElement<React.HTMLAttributes<any> & React.RefAttributes<any>>(toggle as any, {
           ...getToggleButtonProps({
+            'aria-expanded': isOpen, // Because of memoization, we need to manually set this option
             disabled,
             ref: referenceRef,
           }),
-          // Because of memoization, we need to manually set this option
-          'aria-expanded': isOpen,
         })
       );
     }, [disabled, getToggleButtonProps, isOpen, toggle]);
@@ -94,7 +94,7 @@ export const Dropdown = memo(
         {renderToggle}
         <StyledMenuContainer ref={popperRef} style={styles.popper} {...attributes.poppper}>
           <List
-            {...rest}
+            {...props}
             autoWidth={autoWidth}
             getItemProps={getItemProps}
             getMenuProps={getMenuProps}

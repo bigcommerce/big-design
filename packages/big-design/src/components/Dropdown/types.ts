@@ -14,6 +14,7 @@ export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElemen
 interface BaseItem extends Omit<LiHTMLAttributes<HTMLLIElement>, 'value'> {
   actionType?: 'normal' | 'destructive';
   content: string;
+  description?: string;
   disabled?: boolean;
   icon?: React.ReactElement;
   tooltip?: string;

@@ -63,6 +63,18 @@ const LineSeparatedGroupedDropdownMock = (
   />
 );
 
+const DropdownWithItemsDescriptions = (
+  <Dropdown
+    items={[
+      { content: 'Option 1', onItemClick, description: 'Option 1 Description' },
+      { content: 'Option 2', onItemClick },
+      { content: 'Option 3', onItemClick, actionType: 'destructive' },
+      { content: 'Option 4', onItemClick, icon: <CheckCircleIcon /> },
+    ]}
+    toggle={<Button>Button</Button>}
+  />
+);
+
 test('renders dropdown toggle', async () => {
   const { getByRole } = render(DropdownMock);
   const toggle = getByRole('button');
@@ -572,4 +584,14 @@ test('rendered line separators cannot be focused on', async () => {
   const hrListItem = await waitForElement(() => container.querySelectorAll('hr')[0].parentElement as HTMLElement);
   fireEvent.mouseOver(hrListItem);
   expect(document.activeElement).not.toEqual(hrListItem);
+});
+
+test('items should supports description', async () => {
+  const { getByRole, getByText } = render(DropdownWithItemsDescriptions);
+  const toggle = getByRole('button');
+  fireEvent.click(toggle);
+
+  expect(getByText('Option 1 Description')).toBeInTheDocument();
+
+  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });

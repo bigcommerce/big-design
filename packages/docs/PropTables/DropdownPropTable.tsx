@@ -80,6 +80,15 @@ const dropdownItemProps: Prop[] = [
     description: 'Sets the text content of the DropdownItem.',
   },
   {
+    name: 'description',
+    types: 'string',
+    description: (
+      <>
+        Sets the content description of the <Code>DropdownItem</Code>
+      </>
+    ),
+  },
+  {
     name: 'disabled',
     types: 'boolean',
     description: 'Sets the item to disabled.',
@@ -141,6 +150,15 @@ const dropdownLinkProps: Prop[] = [
     types: 'string',
     required: true,
     description: 'Sets the text content of the DropdownLinkItem.',
+  },
+  {
+    name: 'description',
+    types: 'string',
+    description: (
+      <>
+        Sets the content description of the <Code>DropdownLinkItem</Code>
+      </>
+    ),
   },
   {
     name: 'disabled',

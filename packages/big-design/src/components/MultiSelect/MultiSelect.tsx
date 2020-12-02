@@ -44,7 +44,7 @@ export const MultiSelect = typedMemo(
     required,
     style,
     value,
-    ...rest
+    ...props
   }: MultiSelectProps<T>): ReturnType<React.FC<MultiSelectProps<T>>> => {
     const defaultRef: RefObject<HTMLInputElement> = createRef();
     const multiSelectUniqueId = useUniqueId('multi-select');
@@ -295,7 +295,7 @@ export const MultiSelect = typedMemo(
       return (
         <StyledInputContainer ref={referenceRef}>
           <Input
-            {...rest}
+            {...props}
             {...getInputProps({
               autoComplete: 'off',
               disabled,
@@ -347,10 +347,10 @@ export const MultiSelect = typedMemo(
       onOptionsChange,
       openMenu,
       placeholder,
+      props,
       removeItem,
       renderToggle,
       required,
-      rest,
       selectedOptions,
     ]);
 
