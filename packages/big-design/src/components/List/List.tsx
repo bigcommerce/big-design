@@ -197,7 +197,7 @@ const StyleableList: React.FC<ListProps & PrivateProps> = ({
             const link = element.querySelector('a');
 
             // We want to click the link if it is selected
-            if (link) {
+            if (link && !link.getAttribute('disabled')) {
               link.click();
             }
           }

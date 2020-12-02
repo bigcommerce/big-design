@@ -29,23 +29,6 @@ export const Dropdown = memo(
     // We only need the items to pass down to Downshift, not groups
     const flattenedItems = useMemo(() => flattenItems(items), [items]);
 
-    // Popper
-    const referenceRef = useRef(null);
-    const popperRef = useRef(null);
-
-    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 4],
-          },
-        },
-      ],
-      placement,
-      strategy: positionFixed ? 'fixed' : 'absolute',
-    });
-
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
         if (selectedItem && selectedItem.type !== 'link' && typeof selectedItem.onItemClick === 'function') {
@@ -66,6 +49,30 @@ export const Dropdown = memo(
       onSelectedItemChange: handleOnSelectedItemChange,
       selectedItem: null, // We never set a selected item
       toggleButtonId: toggle.props.id,
+    });
+
+    // Popper
+    const referenceRef = useRef(null);
+    const popperRef = useRef(null);
+
+    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
+      modifiers: [
+        {
+          name: 'eventListeners',
+          options: {
+            scroll: isOpen,
+            resize: isOpen,
+          },
+        },
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 4],
+          },
+        },
+      ],
+      placement,
+      strategy: positionFixed ? 'fixed' : 'absolute',
     });
 
     const renderToggle = useMemo(() => {

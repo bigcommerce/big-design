@@ -19,6 +19,24 @@ const mockOptions = [
   { value: 'fr', content: 'France', disabled: true },
 ];
 
+const groupMockOptions = [
+  {
+    label: 'Label 1',
+    options: [
+      { value: 'us', content: 'United States' },
+      { value: 'mx', content: 'Mexico' },
+    ],
+  },
+  {
+    label: 'Label 2',
+    options: [
+      { value: 'ca', content: 'Canada' },
+      { value: 'en', content: 'England' },
+      { value: 'fr', content: 'France', disabled: true },
+    ],
+  },
+];
+
 const mockOptionsWithDescription = [
   { value: 'us', content: 'United States', description: 'US Description' },
   { value: 'mx', content: 'Mexico', description: 'MX Description' },
@@ -41,6 +59,25 @@ const MultiSelectMock = (
     placeholder="Choose country"
     required
     value={['us', 'mx']}
+  />
+);
+
+const GroupedMultiSelectMock = (
+  <MultiSelect
+    action={{
+      actionType: 'destructive',
+      content: 'Remove Country',
+      icon: <DeleteIcon />,
+      onActionClick,
+    }}
+    data-testid="groupSelect"
+    error="Required"
+    label="Countries"
+    onOptionsChange={onChange}
+    options={groupMockOptions}
+    placeholder="Choose country"
+    required
+    value={['mx']}
   />
 );
 
@@ -747,6 +784,74 @@ test('options should allow icons', async () => {
 
   const svg = container.querySelectorAll('svg');
   expect(svg.length).toBe(3);
+
+  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+});
+
+test('grouped multiselect should render group labels, render uppercased', async () => {
+  const { getAllByLabelText, getByText } = render(GroupedMultiSelectMock);
+
+  const input = getAllByLabelText('Countries')[0];
+  fireEvent.focus(input);
+
+  const label1 = getByText('Label 1');
+  const label2 = getByText('Label 2');
+
+  expect(label1).toBeInTheDocument();
+  expect(label1).toHaveStyle('text-transform: uppercase');
+  expect(label2).toBeInTheDocument();
+  expect(label2).toHaveStyle('text-transform: uppercase');
+
+  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+});
+
+test('group labels should be grayed out', async () => {
+  const { getByTestId, getByText } = render(GroupedMultiSelectMock);
+  const input = getByTestId('groupSelect');
+  fireEvent.focus(input);
+
+  const label1 = getByText('Label 1');
+  const label2 = getByText('Label 2');
+
+  expect(label1).toHaveStyle('color: #8C93AD');
+  expect(label2).toHaveStyle('color: #8C93AD');
+
+  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+});
+
+test('group labels should be skipped when using keyboard to navigate options', async () => {
+  const { getAllByRole, getByTestId } = render(GroupedMultiSelectMock);
+  const input = getByTestId('groupSelect');
+  fireEvent.focus(input);
+
+  const options = getAllByRole('option');
+
+  expect(options.length).toBe(6);
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
+
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  expect(options[2].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[2].id);
+
+  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+});
+
+test('group labels should still render when filtering options', async () => {
+  const { getAllByRole, getByTestId, getByText } = render(GroupedMultiSelectMock);
+  const input = getByTestId('groupSelect');
+  fireEvent.focus(input);
+  fireEvent.change(input, { target: { value: 'm' } });
+
+  const label1 = getByText('Label 1');
+  const label2 = getByText('Label 2');
+  const options = getAllByRole('option');
+
+  expect(options.length).toBe(2);
+  expect(label1).toBeInTheDocument();
+  expect(label2).toBeInTheDocument();
 
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });

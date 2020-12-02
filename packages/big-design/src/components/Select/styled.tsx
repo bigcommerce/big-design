@@ -20,8 +20,6 @@ export const StyledDropdownIcon = styled(ArrowDropDownIcon)<{ disabled?: boolean
 `;
 
 export const StyledInputContainer = styled.div`
-  max-width: 26rem;
-
   input[readonly] {
     cursor: pointer;
   }
@@ -36,4 +34,3 @@ export const DropdownButton = styled(StyledButton)`
 StyledStatusMessage.defaultProps = { theme: defaultTheme };
 StyledDropdownIcon.defaultProps = { theme: defaultTheme };
 StyledInputContainer.defaultProps = { theme: defaultTheme };
-DropdownButton.defaultProps = { theme: defaultTheme };

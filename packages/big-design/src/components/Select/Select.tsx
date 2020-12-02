@@ -67,23 +67,6 @@ export const Select = typedMemo(
     // Need to set select options if options prop changes
     useEffect(() => setFilteredOptions(flattenedOptions), [flattenedOptions]);
 
-    // Popper
-    const referenceRef = useRef(null);
-    const popperRef = useRef(null);
-
-    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 4],
-          },
-        },
-      ],
-      strategy: positionFixed ? 'fixed' : 'absolute',
-      placement,
-    });
-
     const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
         action.onActionClick(inputValue || null);
@@ -155,6 +138,30 @@ export const Select = typedMemo(
       onSelectedItemChange: handleOnSelectedItemChange,
       selectedItem: selectedOption || null,
       stateReducer: handleStateReducer,
+    });
+
+    // Popper
+    const referenceRef = useRef(null);
+    const popperRef = useRef(null);
+
+    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
+      modifiers: [
+        {
+          name: 'eventListeners',
+          options: {
+            scroll: isOpen,
+            resize: isOpen,
+          },
+        },
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 4],
+          },
+        },
+      ],
+      strategy: positionFixed ? 'fixed' : 'absolute',
+      placement,
     });
 
     const setCallbackRef = useCallback(
@@ -269,7 +276,7 @@ export const Select = typedMemo(
     ]);
 
     return (
-      <>
+      <div>
         {renderLabel}
         <div {...getComboboxProps()}>{renderInput}</div>
         <StyledMenuContainer ref={popperRef} style={styles.popper} {...attributes.poppper}>
@@ -287,7 +294,7 @@ export const Select = typedMemo(
             update={update}
           />
         </StyledMenuContainer>
-      </>
+      </div>
     );
   },
 );

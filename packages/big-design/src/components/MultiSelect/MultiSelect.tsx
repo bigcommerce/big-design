@@ -70,23 +70,6 @@ export const MultiSelect = typedMemo(
     // Need to set items if options prop changes
     useEffect(() => setFilteredOptions(flattenedOptions), [flattenedOptions]);
 
-    // Popper
-    const referenceRef = useRef(null);
-    const popperRef = useRef(null);
-
-    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 4],
-          },
-        },
-      ],
-      strategy: positionFixed ? 'fixed' : 'absolute',
-      placement,
-    });
-
     useEffect(() => {
       setInputValue('');
     }, [selectedOptions]);
@@ -224,6 +207,30 @@ export const MultiSelect = typedMemo(
       stateReducer: handleStateReducer,
     });
 
+    // Popper
+    const referenceRef = useRef(null);
+    const popperRef = useRef(null);
+
+    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
+      modifiers: [
+        {
+          name: 'eventListeners',
+          options: {
+            scroll: isOpen,
+            resize: isOpen,
+          },
+        },
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 4],
+          },
+        },
+      ],
+      strategy: positionFixed ? 'fixed' : 'absolute',
+      placement,
+    });
+
     // Reset the value when Multiselect is closed
     useEffect(() => {
       if (!isOpen) {
@@ -348,7 +355,7 @@ export const MultiSelect = typedMemo(
     ]);
 
     return (
-      <>
+      <div>
         {renderLabel}
         <div {...getComboboxProps()}>{renderInput}</div>
         <StyledMenuContainer ref={popperRef} style={styles.popper} {...attributes.poppper}>
@@ -368,7 +375,7 @@ export const MultiSelect = typedMemo(
             update={update}
           />
         </StyledMenuContainer>
-      </>
+      </div>
     );
   },
 );
