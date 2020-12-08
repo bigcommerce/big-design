@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { ListProps } from './List';
 
-export const StyledList = styled.ul<Partial<ListProps>>`
+export const StyledList = styled.ul<Partial<ListProps<unknown>>>`
   ${({ theme }) => theme.shadow.raised};
 
   background-color: ${({ theme }) => theme.colors.white};

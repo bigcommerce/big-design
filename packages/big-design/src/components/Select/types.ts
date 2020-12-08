@@ -3,7 +3,7 @@ import React, { LiHTMLAttributes, RefObject } from 'react';
 
 import { InputProps } from '../Input';
 
-interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children'> {
+interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children' | 'value'> {
   action?: SelectAction;
   autoWidth?: boolean;
   description?: React.ReactChild;

@@ -25,7 +25,7 @@ import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Sel
 import { MultiSelectProps } from './types';
 
 export const MultiSelect = typedMemo(
-  <T extends any>({
+  <T extends unknown>({
     action,
     autoWidth = false,
     className,
@@ -39,7 +39,7 @@ export const MultiSelect = typedMemo(
     onOptionsChange,
     options,
     placeholder,
-    placement = 'bottom-start' as 'bottom-start',
+    placement = 'bottom-start' as const,
     positionFixed = false,
     required,
     style,
@@ -52,16 +52,21 @@ export const MultiSelect = typedMemo(
     const [inputValue, setInputValue] = useState('');
 
     // We need to pass Downshift only options without groups for accessibility tracking
-    const flattenedOptions = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
-      action,
-      options,
-    ]);
+    const flattenedOptions = useMemo(
+      () =>
+        action
+          ? [...flattenItems<SelectOption<T> | SelectAction>(options), action]
+          : flattenItems<SelectOption<T>>(options),
+      [action, options],
+    );
 
     // Find the selected options
     const selectedOptions = useMemo(() => {
-      return flattenedOptions.filter(
-        (option: any) => value && value.find((val) => 'value' in option && val === option.value) !== undefined,
-      ) as Array<SelectOption<T>>;
+      return (
+        (flattenedOptions.filter(
+          (option) => value && value.find((val) => 'value' in option && val === option.value) !== undefined,
+        ) as Array<SelectOption<T>>) || []
+      );
     }, [flattenedOptions, value]);
 
     // Initialize with flattened options
@@ -87,7 +92,7 @@ export const MultiSelect = typedMemo(
 
     const filterOptions = (inputVal = '') => {
       return flattenedOptions.filter(
-        (option: any) => option === action || option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
+        (option) => option === action || option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
     };
 
@@ -153,7 +158,7 @@ export const MultiSelect = typedMemo(
           return;
         }
 
-        const newOptions = selectedOptions.filter((i) => i.value !== item.value);
+        const newOptions = selectedOptions.filter((i) => i.value !== item.value) || [];
 
         onOptionsChange(
           newOptions.map((option) => option.value),

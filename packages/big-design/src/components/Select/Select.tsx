@@ -24,7 +24,7 @@ import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Sel
 import { SelectAction } from '../Select/types';
 
 export const Select = typedMemo(
-  <T extends any>({
+  <T extends unknown>({
     action,
     autoWidth = false,
     className,
@@ -38,7 +38,7 @@ export const Select = typedMemo(
     onOptionChange,
     options,
     placeholder,
-    placement = 'bottom-start' as 'bottom-start',
+    placement = 'bottom-start' as const,
     positionFixed = false,
     required,
     style,
@@ -51,14 +51,17 @@ export const Select = typedMemo(
     const [inputValue, setInputValue] = useState<string | undefined>('');
 
     // We need to pass Downshift only options without groups for accessibility tracking
-    const flattenedOptions = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
-      action,
-      options,
-    ]) as Array<SelectOption<T> | SelectAction>;
+    const flattenedOptions = useMemo(
+      () =>
+        action
+          ? [...flattenItems<SelectOption<T> | SelectAction>(options), action]
+          : flattenItems<SelectOption<T>>(options),
+      [action, options],
+    );
 
     // Find the selected option
     const selectedOption = useMemo(() => {
-      return flattenedOptions.find((option) => 'value' in option && option.value === value);
+      return flattenedOptions.find((option): option is SelectOption<T> => 'value' in option && option.value === value);
     }, [flattenedOptions, value]);
 
     // Initialize with flattened options

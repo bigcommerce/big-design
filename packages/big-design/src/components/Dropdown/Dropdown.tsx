@@ -18,7 +18,7 @@ export const Dropdown = memo(
     maxHeight,
     id,
     items,
-    placement = 'bottom-start' as 'bottom-start',
+    placement = 'bottom-start' as const,
     positionFixed = false,
     toggle,
     style,
@@ -27,7 +27,7 @@ export const Dropdown = memo(
     const dropdownUniqueId = useUniqueId('dropdown');
 
     // We only need the items to pass down to Downshift, not groups
-    const flattenedItems = useMemo(() => flattenItems(items), [items]);
+    const flattenedItems = useMemo(() => flattenItems<DropdownItem | DropdownLinkItem>(items), [items]);
 
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
