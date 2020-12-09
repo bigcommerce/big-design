@@ -237,6 +237,9 @@ export const Select = typedMemo(
               ...props,
               autoComplete: 'off',
               disabled,
+              onClick: () => {
+                !isOpen && openMenu();
+              },
               onFocus: () => {
                 !isOpen && openMenu();
               },

@@ -94,10 +94,10 @@ const StyleableList = typedMemo(
     );
 
     const renderItems = useCallback(
-      (listItems: Array<DropdownItem | DropdownLinkItem> | Array<SelectOption<T>>) => {
+      (listItems: Array<DropdownItem | DropdownLinkItem | SelectOption<T>>) => {
         return (
           Array.isArray(listItems) &&
-          (listItems as Array<DropdownItem | DropdownLinkItem | SelectOption<T>>).map((item) => {
+          listItems.map((item) => {
             // Skip rendering the option if it not found in the filtered list
             if (
               filteredItems &&
@@ -157,7 +157,8 @@ const StyleableList = typedMemo(
           <>
             {group.separated && <ListGroupSeparator />}
             {group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
-            {renderItems((group as DropdownItemGroup).items || (group as SelectOptionGroup<T>).options)}
+            {isItemGroup(group) && renderItems(group.items)}
+            {isOptionGroup(group) && renderItems(group.options)}
           </>
         );
       },

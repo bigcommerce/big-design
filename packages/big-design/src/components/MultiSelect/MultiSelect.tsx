@@ -316,6 +316,9 @@ export const MultiSelect = typedMemo(
             {...getInputProps({
               autoComplete: 'off',
               disabled,
+              onClick: () => {
+                !isOpen && openMenu();
+              },
               onFocus: () => {
                 !isOpen && openMenu();
               },
