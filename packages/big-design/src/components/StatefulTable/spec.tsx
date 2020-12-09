@@ -277,7 +277,7 @@ test('sorts using a custom sorting function', () => {
 });
 
 test('renders custom actions', () => {
-  const { getByTestId } = render(getSimpleTable({ actions: () => <div data-testid="customAction">Test Action</div> }));
+  const { getByTestId } = render(getSimpleTable({ actions: <div data-testid="customAction">Test Action</div> }));
 
   const customAction = getByTestId('customAction');
 

@@ -71,7 +71,7 @@ const tableProps: Prop[] = [
   },
   {
     name: 'actions',
-    types: 'React.ComponentType<any>',
+    types: 'React.ReactNode',
     description: 'Component to render custom actions.',
   },
   {
