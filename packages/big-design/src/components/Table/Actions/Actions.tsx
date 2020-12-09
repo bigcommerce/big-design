@@ -10,7 +10,7 @@ import { TableItem, TablePaginationProps, TableSelectable } from '../types';
 import { StyledFlex } from './styled';
 
 export interface ActionsProps<T> {
-  customActions?: React.ComponentType<any>;
+  customActions?: React.ReactNode;
   forwardedRef: RefObject<HTMLDivElement>;
   itemName?: string;
   items: T[];
@@ -51,9 +51,7 @@ const InternalActions = <T extends TableItem>({
   };
 
   const renderActions = () => {
-    const CustomActions = customActions;
-
-    return CustomActions ? <CustomActions /> : null;
+    return customActions ?? null;
   };
 
   return (
