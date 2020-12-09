@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.25.0...@bigcommerce/big-design@0.26.0-alpha.0) (2020-12-09)
+
+
+### Features
+
+* **component:** use ReactNode for table actions ([#478](https://github.com/bigcommerce/big-design/issues/478)) ([8622402](https://github.com/bigcommerce/big-design/commit/8622402b2fe751b3910639166c8002223d6fc559))
+
+
+### BREAKING CHANGES
+
+* **component:** Table and StatefulTable `actions` prop changed from expecint a
+React.ComponentType to React.ReactNode.
+
+Old:
+```jsx
+<Table actions={() => <Button>Some Action</Button>} />
+```
+
+New:
+```jsx
+<Table actions={<Button>Some Action</Button>} />
+```
+
+
+
+
+
 # [0.25.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.24.0...@bigcommerce/big-design@0.25.0) (2020-11-12)
 
 
