@@ -34,3 +34,4 @@ export const DropdownButton = styled(StyledButton)`
 StyledStatusMessage.defaultProps = { theme: defaultTheme };
 StyledDropdownIcon.defaultProps = { theme: defaultTheme };
 StyledInputContainer.defaultProps = { theme: defaultTheme };
+DropdownButton.defaultProps = { theme: defaultTheme };

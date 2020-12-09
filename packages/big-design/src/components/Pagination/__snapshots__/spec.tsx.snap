@@ -17,6 +17,11 @@ exports[`render pagination component 1`] = `
   box-sizing: border-box;
 }
 
+.c8 {
+  box-sizing: border-box;
+  z-index: 1060;
+}
+
 .c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
@@ -70,10 +75,6 @@ exports[`render pagination component 1`] = `
   outline: none;
   overflow-y: auto;
   padding: 0.5rem 0;
-  z-index: 1060;
-}
-
-.c8 {
   z-index: 1060;
 }
 
@@ -436,6 +437,11 @@ exports[`render pagination component with invalid page info 1`] = `
   box-sizing: border-box;
 }
 
+.c8 {
+  box-sizing: border-box;
+  z-index: 1060;
+}
+
 .c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
@@ -489,10 +495,6 @@ exports[`render pagination component with invalid page info 1`] = `
   outline: none;
   overflow-y: auto;
   padding: 0.5rem 0;
-  z-index: 1060;
-}
-
-.c8 {
   z-index: 1060;
 }
 
@@ -855,6 +857,11 @@ exports[`render pagination component with invalid range info 1`] = `
   box-sizing: border-box;
 }
 
+.c8 {
+  box-sizing: border-box;
+  z-index: 1060;
+}
+
 .c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
@@ -908,10 +915,6 @@ exports[`render pagination component with invalid range info 1`] = `
   outline: none;
   overflow-y: auto;
   padding: 0.5rem 0;
-  z-index: 1060;
-}
-
-.c8 {
   z-index: 1060;
 }
 
@@ -1275,6 +1278,11 @@ exports[`render pagination component with no items 1`] = `
   box-sizing: border-box;
 }
 
+.c8 {
+  box-sizing: border-box;
+  z-index: 1060;
+}
+
 .c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
@@ -1328,10 +1336,6 @@ exports[`render pagination component with no items 1`] = `
   outline: none;
   overflow-y: auto;
   padding: 0.5rem 0;
-  z-index: 1060;
-}
-
-.c8 {
   z-index: 1060;
 }
 

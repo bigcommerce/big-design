@@ -16,9 +16,4 @@ export const StyledList = styled.ul<Partial<ListProps<unknown>>>`
   z-index: ${({ theme }) => theme.zIndex.popover};
 `;
 
-export const StyledMenuContainer = styled.div`
-  z-index: ${({ theme }) => theme.zIndex.popover};
-`;
-
 StyledList.defaultProps = { theme: defaultTheme };
-StyledMenuContainer.defaultProps = { theme: defaultTheme };

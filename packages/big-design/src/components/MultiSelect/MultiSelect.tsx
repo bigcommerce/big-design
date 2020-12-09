@@ -14,10 +14,10 @@ import { usePopper } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
+import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
-import { StyledMenuContainer } from '../List/styled';
 import { SelectAction, SelectOption, SelectOptionGroup } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 
@@ -379,7 +379,7 @@ export const MultiSelect = typedMemo(
       <div>
         {renderLabel}
         <div {...getComboboxProps()}>{renderInput}</div>
-        <StyledMenuContainer ref={popperRef} style={styles.popper} {...attributes.poppper}>
+        <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
             action={action}
             addItem={addSelectedItem}
@@ -395,7 +395,7 @@ export const MultiSelect = typedMemo(
             selectedItems={selectedOptions}
             update={update}
           />
-        </StyledMenuContainer>
+        </Box>
       </div>
     );
   },

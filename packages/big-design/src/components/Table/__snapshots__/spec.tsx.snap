@@ -17,6 +17,11 @@ exports[`renders a pagination component 1`] = `
   box-sizing: border-box;
 }
 
+.c11 {
+  box-sizing: border-box;
+  z-index: 1060;
+}
+
 .c4 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
@@ -89,10 +94,6 @@ exports[`renders a pagination component 1`] = `
   outline: none;
   overflow-y: auto;
   padding: 0.5rem 0;
-  z-index: 1060;
-}
-
-.c11 {
   z-index: 1060;
 }
 

@@ -217,6 +217,7 @@ const StyleableList = typedMemo(
 );
 
 export const List = memo(
+  // Using unknown because memo looses the generic type
   forwardRef<HTMLUListElement, ListProps<unknown>>((props, ref) => <StyleableList {...props} forwardedRef={ref} />),
 );
 

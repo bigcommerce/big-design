@@ -3,13 +3,11 @@ import React, { cloneElement, isValidElement, memo, useCallback, useMemo, useRef
 import { usePopper } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
+import { Box } from '../Box';
 import { List } from '../List';
-import { StyledMenuContainer } from '../List/styled';
 
 import { StyledBox } from './styled';
-import { DropdownItem, DropdownLinkItem, DropdownProps } from './types';
-
-import { DropdownItemGroup } from '.';
+import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from './types';
 
 export const Dropdown = memo(
   ({
@@ -88,7 +86,7 @@ export const Dropdown = memo(
     const renderToggle = useMemo(() => {
       return (
         isValidElement(toggle) &&
-        cloneElement<React.HTMLAttributes<any> & React.RefAttributes<any>>(toggle as any, {
+        cloneElement(toggle, {
           ...getToggleButtonProps({
             'aria-expanded': isOpen, // Because of memoization, we need to manually set this option
             disabled,
@@ -101,7 +99,7 @@ export const Dropdown = memo(
     return (
       <StyledBox>
         {renderToggle}
-        <StyledMenuContainer ref={popperRef} style={styles.popper} {...attributes.poppper}>
+        <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
             {...props}
             autoWidth={autoWidth}
@@ -114,7 +112,7 @@ export const Dropdown = memo(
             maxHeight={maxHeight}
             update={update}
           />
-        </StyledMenuContainer>
+        </Box>
       </StyledBox>
     );
   },

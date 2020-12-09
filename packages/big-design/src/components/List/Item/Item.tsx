@@ -31,7 +31,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLLIElement>;
 }
 
-type Items = DropdownItem | DropdownLinkItem | SelectOption<unknown> | SelectAction;
+type Items<T> = DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction;
 
 const StyleableListItem = typedMemo(
   <T extends unknown>({
@@ -116,7 +116,7 @@ export const ListItem = memo(
   )),
 );
 
-const getContent = (item: Items, isHighlighted: boolean) => {
+const getContent = (item: Items<unknown>, isHighlighted: boolean) => {
   const { content, disabled, description, icon } = item;
 
   const baseContent = (
@@ -147,7 +147,7 @@ const getContent = (item: Items, isHighlighted: boolean) => {
   return disabled && 'tooltip' in item && item.tooltip ? wrapInTooltip(item.tooltip, finalContent) : finalContent;
 };
 
-const renderIcon = (item: Items, isHighlighted: boolean) => {
+const renderIcon = (item: Items<unknown>, isHighlighted: boolean) => {
   return (
     isValidElement(item.icon) &&
     cloneElement(item.icon, {
@@ -157,7 +157,7 @@ const renderIcon = (item: Items, isHighlighted: boolean) => {
   );
 };
 
-const iconColor = (item: Items, isHighlighted: boolean) => {
+const iconColor = (item: Items<unknown>, isHighlighted: boolean) => {
   if (item.disabled) {
     return 'secondary40';
   }

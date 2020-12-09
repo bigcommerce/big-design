@@ -1,4 +1,3 @@
-import { useUniqueId } from '@bigcommerce/big-design-icons';
 import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
 import React, {
   cloneElement,
@@ -13,11 +12,12 @@ import React, {
 } from 'react';
 import { usePopper } from 'react-popper';
 
+import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
+import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
-import { StyledMenuContainer } from '../List/styled';
 import { SelectOption, SelectOptionGroup, SelectProps } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 import { SelectAction } from '../Select/types';
@@ -295,7 +295,7 @@ export const Select = typedMemo(
       <div>
         {renderLabel}
         <div {...getComboboxProps()}>{renderInput}</div>
-        <StyledMenuContainer ref={popperRef} style={styles.popper} {...attributes.poppper}>
+        <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
             action={action}
             autoWidth={autoWidth}
@@ -309,7 +309,7 @@ export const Select = typedMemo(
             selectedItem={selectedItem && 'value' in selectedItem ? selectedItem : null}
             update={update}
           />
-        </StyledMenuContainer>
+        </Box>
       </div>
     );
   },
