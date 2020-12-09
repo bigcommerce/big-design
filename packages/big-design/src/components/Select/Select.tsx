@@ -51,13 +51,10 @@ export const Select = typedMemo(
     const [inputValue, setInputValue] = useState<string | undefined>('');
 
     // We need to pass Downshift only options without groups for accessibility tracking
-    const flattenedOptions = useMemo(
-      () =>
-        action
-          ? [...flattenItems<SelectOption<T> | SelectAction>(options), action]
-          : flattenItems<SelectOption<T>>(options),
-      [action, options],
-    );
+    const flattenedOptions = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
+      action,
+      options,
+    ]) as Array<SelectOption<T> | SelectAction>;
 
     // Find the selected option
     const selectedOption = useMemo(() => {
@@ -238,6 +235,7 @@ export const Select = typedMemo(
                     event.preventDefault();
                     if (isOpen === false) {
                       openMenu();
+                      // https://github.com/downshift-js/downshift/issues/734
                       (event.nativeEvent as any).preventDownshiftDefault = true;
                     }
                     break;
@@ -248,6 +246,7 @@ export const Select = typedMemo(
                     } else {
                       closeMenu();
                     }
+                    // https://github.com/downshift-js/downshift/issues/734
                     (event.nativeEvent as any).preventDownshiftDefault = true;
                     break;
                 }
@@ -293,7 +292,7 @@ export const Select = typedMemo(
             isOpen={isOpen}
             items={options}
             maxHeight={maxHeight}
-            selectedItem={selectedItem}
+            selectedItem={selectedItem && 'value' in selectedItem ? selectedItem : null}
             update={update}
           />
         </StyledMenuContainer>

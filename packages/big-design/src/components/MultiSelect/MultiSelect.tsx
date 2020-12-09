@@ -52,20 +52,18 @@ export const MultiSelect = typedMemo(
     const [inputValue, setInputValue] = useState('');
 
     // We need to pass Downshift only options without groups for accessibility tracking
-    const flattenedOptions = useMemo(
-      () =>
-        action
-          ? [...flattenItems<SelectOption<T> | SelectAction>(options), action]
-          : flattenItems<SelectOption<T>>(options),
-      [action, options],
-    );
+    const flattenedOptions = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
+      action,
+      options,
+    ]) as Array<SelectOption<T> | SelectAction>;
 
     // Find the selected options
     const selectedOptions = useMemo(() => {
       return (
-        (flattenedOptions.filter(
-          (option) => value && value.find((val) => 'value' in option && val === option.value) !== undefined,
-        ) as Array<SelectOption<T>>) || []
+        flattenedOptions.filter(
+          (option): option is SelectOption<T> =>
+            'value' in option && !!value && value.find((val) => val === option.value) !== undefined,
+        ) || []
       );
     }, [flattenedOptions, value]);
 
@@ -122,8 +120,10 @@ export const MultiSelect = typedMemo(
             return actionAndChanges.changes;
           }
 
+          const isSelectAction = (item: SelectAction | SelectOption<T>): item is SelectAction => item === action;
+
           // Prevent action from changing the input value
-          if (actionAndChanges.changes.selectedItem === action) {
+          if (isSelectAction(actionAndChanges.changes.selectedItem)) {
             return { ...actionAndChanges.changes, inputValue: state.inputValue };
           }
 
@@ -137,8 +137,8 @@ export const MultiSelect = typedMemo(
           );
 
           isChecked
-            ? removeItem(actionAndChanges.changes.selectedItem as SelectOption<T>)
-            : addSelectedItem(actionAndChanges.changes.selectedItem as SelectOption<T>);
+            ? removeItem(actionAndChanges.changes.selectedItem)
+            : addSelectedItem(actionAndChanges.changes.selectedItem);
 
           return {
             ...actionAndChanges.changes,
@@ -281,6 +281,7 @@ export const MultiSelect = typedMemo(
 
       warning('label must be either a string or a FormControlLabel component.');
     }, [getLabelProps, label, required]);
+
     const renderToggle = useMemo(() => {
       return (
         <DropdownButton
@@ -318,6 +319,7 @@ export const MultiSelect = typedMemo(
                     event.preventDefault();
                     if (isOpen === false) {
                       openMenu();
+                      // https://github.com/downshift-js/downshift/issues/734
                       (event.nativeEvent as any).preventDownshiftDefault = true;
                     }
                     break;

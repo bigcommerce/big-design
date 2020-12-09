@@ -5,8 +5,8 @@ import React, { forwardRef, Fragment, HTMLAttributes, memo, Ref, useCallback, us
 import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
-import { DropdownItem, DropdownItemGroup, DropdownLinkItem } from '../Dropdown';
-import { SelectAction, SelectOption, SelectOptionGroup } from '../Select';
+import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from '../Dropdown';
+import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from '../Select';
 
 import { ListGroupHeader } from './GroupHeader';
 import { ListGroupSeparator } from './GroupSeparator';
@@ -19,10 +19,10 @@ export interface ListProps<T> extends HTMLAttributes<HTMLUListElement> {
   filteredItems?: Array<SelectOption<T> | SelectAction>;
   highlightedIndex: number;
   isOpen: boolean;
-  items: Array<DropdownItemGroup | DropdownItem | DropdownLinkItem | SelectOptionGroup<T> | SelectOption<any>>;
+  items: DropdownProps['items'] | SelectProps<T>['options'];
   isDropdown?: boolean;
   maxHeight?: number;
-  selectedItem?: SelectOption<T> | SelectAction | null;
+  selectedItem?: SelectOption<T> | null;
   selectedItems?: Array<SelectOption<T>> | null;
   addItem?(item: SelectOption<T>): void;
   getItemProps: UseSelectPropGetters<any>['getItemProps'];
@@ -34,8 +34,6 @@ export interface ListProps<T> extends HTMLAttributes<HTMLUListElement> {
 interface PrivateProps {
   forwardedRef: Ref<HTMLUListElement>;
 }
-
-type Items = DropdownItem | DropdownLinkItem | SelectOption<any> | SelectAction;
 
 const StyleableList = typedMemo(
   <T extends unknown>({
@@ -70,7 +68,7 @@ const StyleableList = typedMemo(
       }
 
       scheduleUpdate();
-    }, [isOpen, height, width]);
+    }, [isOpen, height, width, selectedItems?.length]);
 
     const renderAction = useCallback(
       (action: SelectAction) => {
@@ -96,15 +94,15 @@ const StyleableList = typedMemo(
     );
 
     const renderItems = useCallback(
-      (listItems: Array<DropdownItem | DropdownLinkItem | SelectOption<any>>) => {
+      (listItems: Array<DropdownItem | DropdownLinkItem> | Array<SelectOption<T>>) => {
         return (
           Array.isArray(listItems) &&
-          listItems.map((item) => {
+          (listItems as Array<DropdownItem | DropdownLinkItem | SelectOption<T>>).map((item) => {
             // Skip rendering the option if it not found in the filtered list
             if (
               filteredItems &&
-              'value' in item &&
-              !filteredItems.find((filteredItem) => 'value' in filteredItem && filteredItem.value === item.value)
+              isOption(item) &&
+              !filteredItems.find((filteredItem) => isOption(filteredItem) && filteredItem.value === item.value)
             ) {
               return null;
             }
@@ -113,23 +111,25 @@ const StyleableList = typedMemo(
             itemKey.current += 1;
 
             const isChecked =
-              'value' in item &&
+              isOption(item) &&
               selectedItems &&
               Boolean(selectedItems.find((selected) => selected.value === item.value));
+
+            const hasActionType = (
+              item: DropdownItem | DropdownLinkItem | SelectOption<T>,
+            ): item is DropdownItem | DropdownLinkItem => 'actionType' in item;
 
             return (
               <ListItem
                 addItem={addItem}
                 autoWidth={autoWidth}
-                actionType={(item as DropdownItem).actionType}
+                actionType={hasActionType(item) ? item.actionType : 'normal'}
                 getItemProps={getItemProps}
                 index={key}
                 isAction={isDropdown}
                 isChecked={isChecked || false}
                 isHighlighted={highlightedIndex === key}
-                isSelected={
-                  !isDropdown && (selectedItem as SelectOption<any>)?.value === (item as SelectOption<T>).value
-                }
+                isSelected={!isDropdown && isOption(item) && selectedItem?.value === item.value}
                 item={item}
                 key={`${key}-${item.content}`}
                 removeItem={removeItem}
@@ -152,7 +152,7 @@ const StyleableList = typedMemo(
     );
 
     const renderGroup = useCallback(
-      (group: DropdownItemGroup | SelectOptionGroup<any>) => {
+      (group: DropdownItemGroup | SelectOptionGroup<T>) => {
         return (
           <>
             {group.separated && <ListGroupSeparator />}
@@ -168,21 +168,22 @@ const StyleableList = typedMemo(
       // Reset the key every time we rerender children
       itemKey.current = 0;
 
-      if (Array.isArray(items) && items.every(isGroup)) {
+      const groupFragment = (items: Array<DropdownItemGroup | SelectOptionGroup<T>>) =>
+        items.map((group, index) => <Fragment key={index}>{renderGroup(group)}</Fragment>);
+
+      if (Array.isArray(items) && isGroups(items)) {
         return (
           <>
-            {items.map((group, index) => (
-              <Fragment key={index}>{renderGroup(group as DropdownItemGroup | SelectOptionGroup<any>)}</Fragment>
-            ))}
+            {groupFragment(items)}
             {action && renderAction(action)}
           </>
         );
       }
 
-      if (Array.isArray(items) && items.every(isItem)) {
+      if (Array.isArray(items) && isItems(items)) {
         return (
           <>
-            {renderItems(items as Array<DropdownItem | DropdownLinkItem | SelectOption<any>>)}
+            {renderItems(items)}
             {action && renderAction(action)}
           </>
         );
@@ -218,20 +219,35 @@ export const List = memo(
   forwardRef<HTMLUListElement, ListProps<unknown>>((props, ref) => <StyleableList {...props} forwardedRef={ref} />),
 );
 
-const isGroup = (item: DropdownItemGroup | SelectOptionGroup<any> | Items) => {
-  return ('items' in item && !('content' in item)) || ('options' in item && !('value' in item));
-};
+type Items =
+  | DropdownItem
+  | DropdownLinkItem
+  | SelectOption<unknown>
+  | SelectAction
+  | DropdownItemGroup
+  | SelectOptionGroup<unknown>;
 
-const isItem = (item: DropdownItemGroup | SelectOptionGroup<any> | Items) => {
-  return ('content' in item && !('items' in item)) || ('value' in item && !('options' in item));
-};
+// Merging types into union
+// Issue: https://github.com/microsoft/TypeScript/issues/33591
 
-export function flattenItems<T>(
-  items: Array<
-    DropdownItemGroup | DropdownItem | DropdownLinkItem | SelectOptionGroup<unknown> | SelectOption<unknown>
-  >,
-): Array<T> {
-  return items.every(isGroup)
-    ? items.map((group: any) => group.items || group.options).reduce((acum, curr) => acum.concat(curr), [])
+const isGroups = (items: Array<Items>): items is Array<DropdownItemGroup> | Array<SelectOptionGroup<unknown>> =>
+  items.every((item) => isItemGroup(item) || isOptionGroup(item));
+
+const isItems = (items: Array<Items>): items is Array<DropdownItem | DropdownLinkItem> | Array<SelectOption<unknown>> =>
+  items.every((item) => isItem(item) || isOption(item));
+
+const isOption = (item: Items): item is SelectOption<unknown> => 'value' in item;
+
+const isItem = (item: Items): item is DropdownItem | DropdownLinkItem => 'content' in item && !('items' in item);
+
+const isItemGroup = (item: Items): item is DropdownItemGroup => 'items' in item && !('content' in item);
+
+const isOptionGroup = (item: Items): item is SelectOptionGroup<unknown> => 'options' in item && !('value' in item);
+
+export function flattenItems(items: ListProps<unknown>['items']) {
+  return isGroups(items)
+    ? (items as Array<DropdownItemGroup | SelectOptionGroup<unknown>>) // Need to use 'as' per previous issue
+        .map((group) => (group as DropdownItemGroup).items || (group as SelectOptionGroup<unknown>).options)
+        .reduce((acum, curr) => acum.concat(curr), [])
     : items;
 }
