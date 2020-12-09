@@ -4,11 +4,12 @@ import { usePopper } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
 import { List } from '../List';
-import { flattenItems } from '../List/List';
 import { StyledMenuContainer } from '../List/styled';
 
 import { StyledBox } from './styled';
 import { DropdownItem, DropdownLinkItem, DropdownProps } from './types';
+
+import { DropdownItemGroup } from '.';
 
 export const Dropdown = memo(
   ({
@@ -26,8 +27,16 @@ export const Dropdown = memo(
   }: DropdownProps) => {
     const dropdownUniqueId = useUniqueId('dropdown');
 
+    const flattenItems = useCallback((items: DropdownProps['items']) => {
+      const isGroups = (
+        items: Array<DropdownItemGroup | DropdownItem | DropdownLinkItem>,
+      ): items is Array<DropdownItemGroup> => items.every((items) => 'items' in items && !('content' in items));
+
+      return isGroups(items) ? items.map((group) => group.items).reduce((acum, curr) => acum.concat(curr), []) : items;
+    }, []);
+
     // We only need the items to pass down to Downshift, not groups
-    const flattenedItems = useMemo(() => flattenItems(items), [items]) as Array<DropdownItem | DropdownLinkItem>;
+    const flattenedItems = useMemo(() => flattenItems(items), [flattenItems, items]);
 
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {

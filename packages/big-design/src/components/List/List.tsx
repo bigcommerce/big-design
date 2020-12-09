@@ -243,11 +243,3 @@ const isItem = (item: Items): item is DropdownItem | DropdownLinkItem => 'conten
 const isItemGroup = (item: Items): item is DropdownItemGroup => 'items' in item && !('content' in item);
 
 const isOptionGroup = (item: Items): item is SelectOptionGroup<unknown> => 'options' in item && !('value' in item);
-
-export function flattenItems(items: ListProps<unknown>['items']) {
-  return isGroups(items)
-    ? (items as Array<DropdownItemGroup | SelectOptionGroup<unknown>>) // Need to use 'as' per previous issue
-        .map((group) => (group as DropdownItemGroup).items || (group as SelectOptionGroup<unknown>).options)
-        .reduce((acum, curr) => acum.concat(curr), [])
-    : items;
-}

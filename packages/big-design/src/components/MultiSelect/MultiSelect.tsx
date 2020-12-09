@@ -17,9 +17,8 @@ import { typedMemo, warning } from '../../utils';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
-import { flattenItems } from '../List/List';
 import { StyledMenuContainer } from '../List/styled';
-import { SelectAction, SelectOption } from '../Select';
+import { SelectAction, SelectOption, SelectOptionGroup } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 
 import { MultiSelectProps } from './types';
@@ -51,11 +50,23 @@ export const MultiSelect = typedMemo(
 
     const [inputValue, setInputValue] = useState('');
 
+    const flattenOptions = useCallback((options: MultiSelectProps<T>['options']) => {
+      const isGroups = (
+        options: Array<SelectOptionGroup<T> | SelectOption<T>>,
+      ): options is Array<SelectOptionGroup<T>> =>
+        options.every((option) => 'options' in option && !('value' in option));
+
+      return isGroups(options)
+        ? options.map((group) => group.options).reduce((acum, curr) => acum.concat(curr), [])
+        : options;
+    }, []);
+
     // We need to pass Downshift only options without groups for accessibility tracking
-    const flattenedOptions = useMemo(() => (action ? [...flattenItems(options), action] : flattenItems(options)), [
+    const flattenedOptions = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
       action,
+      flattenOptions,
       options,
-    ]) as Array<SelectOption<T> | SelectAction>;
+    ]);
 
     // Find the selected options
     const selectedOptions = useMemo(() => {
