@@ -273,7 +273,7 @@ export const MultiSelect = typedMemo(
               <Input
                 {...rest}
                 {...getInputProps({
-                  autoComplete: 'no',
+                  autoComplete: 'off',
                   disabled,
                   onFocus: () => {
                     !isOpen && openMenu();
@@ -307,7 +307,6 @@ export const MultiSelect = typedMemo(
                   label: option.content,
                   onDelete: () => removeItem(option),
                 }))}
-                autoComplete="no"
                 iconRight={renderToggle}
                 readOnly={!filterable}
                 required={required}
