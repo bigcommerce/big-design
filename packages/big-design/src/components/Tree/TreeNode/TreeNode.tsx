@@ -1,15 +1,15 @@
 import { CheckIcon, ChevronRightIcon, FolderIcon } from '@bigcommerce/big-design-icons';
-import React, { Dispatch, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { StyledCheckbox } from '../../Checkbox/private';
 import { FlexItemProps } from '../../Flex';
 import { StyledRadio } from '../../Radio/styled';
 import { DelayedSpinner } from '../DelayedSpinner';
-import { useIsExpanded, useIsSelected, useSelectedChildrenCount } from '../hooks';
-import { Action } from '../reducer';
+import { useSelectedChildrenCount } from '../hooks/useSelectedChildrenCount';
 import { StyledUl } from '../styled';
-import { TreeNodeProps, TreeNodeRef, TreeProps, TreeState } from '../types';
+import { TreeContext } from '../Tree';
+import { TreeNodeProps } from '../types';
 
 import {
   StyledArrowWrapper,
@@ -21,268 +21,138 @@ import {
   StyledText,
 } from './styled';
 
-interface PrivateTreeItemProps<T> {
-  state: TreeState<T>;
-  dispatch: Dispatch<Action<T>>;
-  iconless?: boolean;
-  treeId?: string;
-  selectable: TreeProps<T>['selectable'];
-  onExpand?: TreeProps<T>['onExpand'];
-  onCollapse?: TreeProps<T>['onCollapse'];
-  onSelect?: TreeProps<T>['onSelect'];
-}
-
 const flexItemProps: FlexItemProps = { flexShrink: 0, marginLeft: 'xxSmall' };
 
 const InternalTreeNode = <T extends unknown>({
   children,
-  disabled,
-  dispatch,
   icon,
-  iconless,
-  id,
   label,
-  onCollapse,
-  onExpand,
-  onSelect,
-  selectable,
-  state,
-  treeId,
   value,
-}: TreeNodeProps<T> & PrivateTreeItemProps<T>): React.ReactElement<TreeNodeProps<T>> => {
-  const thisRef = useRef<TreeNodeRef<T>>({ children });
+  id,
+}: TreeNodeProps<T>): React.ReactElement<TreeNodeProps<T>> => {
+  const { disabledNodes, expandable, focusable, iconless, onKeyDown, onNodeClick, selectable } = useContext(
+    TreeContext,
+  );
   const nodeRef = useRef<HTMLLIElement | null>(null);
   const selectableRef = useRef<HTMLLabelElement | null>(null);
-  const treeNodeId = `${treeId}-treenode-${id}`;
   const [isLoading, setIsLoading] = useState(false);
-  const expanded = useIsExpanded(state, id);
-  const selected = useIsSelected(state, value);
-  const selectedChildrenCount = useSelectedChildrenCount(state, children);
+  const isExpanded = expandable.expandedNodes.includes(id);
+  const isSelected = selectable?.selectedNodes?.includes(id);
+  const isDisabled = disabledNodes?.includes(id);
+  const isSelectable = value !== undefined && selectable?.type !== undefined && !isDisabled;
+  const selectedChildrenCount = useSelectedChildrenCount({ selectedNodes: selectable?.selectedNodes, children });
+
+  useEffect(() => {
+    if (
+      focusable.focusedNode === id &&
+      nodeRef.current !== document.activeElement &&
+      document.activeElement !== document.body
+    ) {
+      nodeRef.current?.focus();
+    }
+  }, [focusable, id]);
 
   // Could be multiple elements in which are clicked.
   // Typing to generic Element type since all other elements extend from it.
-  const handleNodeToggle = async (e?: React.MouseEvent<Element>) => {
-    dispatch({ type: 'FOCUS', id });
+  const handleNodeToggle = useCallback(
+    async (e?: React.MouseEvent<Element>) => {
+      // Prevents the collapse/expand when clicking on a radio or checkbox
+      // Checks to see if every element inside the selectableRef gets clicked.
+      if ((e?.target instanceof Node && selectableRef.current?.contains(e?.target)) || children === undefined) {
+        return;
+      }
 
-    // Prevents the collapse/expand when clicking on a radio or checkbox
-    // Checks to see if every element inside the selectableRef gets clicked.
-    if (
-      (e?.target instanceof Node && selectableRef.current?.contains(e?.target)) ||
-      thisRef.current.children === undefined
-    ) {
-      return;
-    }
+      if (typeof focusable.onFocus === 'function') {
+        focusable.onFocus(id);
+      }
 
-    dispatch({ type: 'TOGGLE_NODE', id });
+      if (typeof expandable.onToggle === 'function') {
+        await expandable.onToggle(id, isExpanded);
+      }
 
-    if (expanded) {
-      if (typeof onCollapse === 'function') {
-        const callbackValue = await onCollapse({
-          children: thisRef.current.children,
-          disabled,
-          expanded,
-          id,
-          label,
-          selected,
-          value,
-        });
+      if (isExpanded) {
+        if (typeof expandable.onCollapse === 'function') {
+          await expandable.onCollapse(id);
+        }
+      } else {
+        if (typeof expandable.onExpand === 'function') {
+          setIsLoading(true);
 
-        if (callbackValue) {
-          thisRef.current = callbackValue;
+          await expandable.onExpand(id);
+
+          setIsLoading(false);
         }
       }
-    } else {
-      if (typeof onExpand === 'function') {
-        setIsLoading(true);
-
-        const callbackValue = await onExpand({
-          children: thisRef.current.children,
-          disabled,
-          expanded,
-          id,
-          label,
-          selected,
-          value,
-        });
-
-        if (callbackValue) {
-          thisRef.current = callbackValue;
-
-          dispatch({ type: 'ASYNC_TOGGLE', radio: selectable === 'radio', id, children: thisRef.current.children });
-        }
-
-        setIsLoading(false);
-      }
-    }
-  };
+    },
+    [children, id, expandable, isExpanded, focusable],
+  );
 
   const handleNodeSelected = useCallback(() => {
-    if (selectable === undefined || value === undefined || disabled) {
+    if (!isSelectable) {
       return;
     }
 
-    let newSelectedValues = [...state.selectedValues];
+    if (typeof focusable.onFocus === 'function') {
+      focusable.onFocus(id);
+    }
 
-    if (selectable === 'multi') {
-      if (newSelectedValues.some((selectedValue) => selectedValue.value === value)) {
-        newSelectedValues = newSelectedValues.filter((selectedValue) => selectedValue.value !== value);
-      } else {
-        newSelectedValues = [...newSelectedValues, { id, value }];
+    if (typeof selectable?.onSelect === 'function') {
+      selectable.onSelect(id, value);
+    }
+  }, [focusable, id, isSelectable, selectable, value]);
+
+  const handleKeyEvent = useCallback(
+    (e: React.KeyboardEvent<HTMLLIElement>) => {
+      if (e.altKey || e.currentTarget !== e.target) {
+        return;
       }
 
-      if (typeof onSelect === 'function') {
-        onSelect(Array.from(newSelectedValues));
+      onKeyDown(e, { id, isExpanded, isSelectable, hasChildren: !!children?.length, value });
+    },
+    [children, id, isExpanded, isSelectable, onKeyDown, value],
+  );
+
+  const handleNodeClick = useCallback(
+    (e: React.MouseEvent<HTMLLIElement>) => {
+      // Prevents event bubbling
+      e.stopPropagation();
+
+      if (typeof onNodeClick === 'function') {
+        onNodeClick(e, id);
       }
-    }
+    },
+    [id, onNodeClick],
+  );
 
-    if (selectable === 'radio') {
-      newSelectedValues = [{ id, value }];
-
-      if (typeof onSelect === 'function') {
-        onSelect(newSelectedValues[0]);
-      }
-    }
-
-    dispatch({ type: 'SELECTED_NODE', values: newSelectedValues });
-  }, [disabled, dispatch, id, onSelect, selectable, state.selectedValues, value]);
-
-  // Needs to handle the following keyboard events:
-  // https://www.w3.org/TR/wai-aria-practices/#keyboard-interaction-22
-  const handleKeyEvent = (e: React.KeyboardEvent<HTMLLIElement>) => {
-    const key = e.key;
-
-    if (e.altKey || e.currentTarget !== e.target) {
-      return;
-    }
-
-    switch (key) {
-      // Stopping propagation if inside a form
-      case ' ':
-        e.preventDefault();
-        e.stopPropagation();
-
-        handleNodeSelected();
-        break;
-
-      case 'Enter':
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (nodeRef.current === e.currentTarget) {
-          if (thisRef.current.children) {
-            handleNodeToggle();
-          } else if (selectable) {
-            handleNodeSelected();
-          }
-        }
-        break;
-
-      case 'ArrowDown':
-        e.preventDefault();
-
-        dispatch({ type: 'FOCUS_DOWN', id });
-        break;
-
-      case 'ArrowUp':
-        e.preventDefault();
-
-        dispatch({ type: 'FOCUS_UP', id });
-        break;
-
-      case 'ArrowRight':
-        e.preventDefault();
-
-        if (thisRef.current?.children) {
-          if (expanded) {
-            dispatch({ type: 'FOCUS_DOWN', id });
-          } else {
-            handleNodeToggle();
-          }
-        }
-        break;
-
-      case 'ArrowLeft':
-        e.preventDefault();
-
-        if (thisRef.current?.children) {
-          if (expanded) {
-            handleNodeToggle();
-
-            break;
-          }
-        }
-
-        if (state.nodeMap.get(id)?.parent !== undefined) {
-          dispatch({ type: 'FOCUS_UP', id });
-        }
-
-        break;
-
-      case 'Home':
-        e.preventDefault();
-
-        dispatch({ type: 'FOCUS_FIRST' });
-        break;
-
-      case 'End':
-        e.preventDefault();
-
-        dispatch({ type: 'FOCUS_LAST' });
-        break;
-
-      default:
-        break;
-    }
-  };
-
-  const additionalProps = useMemo(() => (selectable ? { 'aria-selected': selected } : {}), [selectable, selected]);
+  const additionalProps = useMemo(() => (selectable?.type ? { 'aria-selected': isSelected } : {}), [
+    selectable,
+    isSelected,
+  ]);
 
   const renderedArrow = useMemo(
     () =>
-      thisRef.current.children ? (
-        <StyledArrowWrapper expanded={expanded} flexShrink={0}>
+      children ? (
+        <StyledArrowWrapper expanded={isExpanded} flexShrink={0}>
           <ChevronRightIcon color="secondary60" focusable={false} size="xLarge" />
         </StyledArrowWrapper>
       ) : (
         <StyledGap />
       ),
-    [expanded],
+    [children, isExpanded],
   );
 
   const renderedChildren = useMemo(
     () =>
-      thisRef.current.children &&
-      expanded && (
-        <StyledUl role="group">
-          {isLoading && thisRef.current.children.length < 1 ? (
-            <TreeNode
-              id={-1}
-              label=""
-              icon={<DelayedSpinner />}
-              dispatch={dispatch}
-              selectable={selectable}
-              state={state}
-              treeId={treeId}
-            />
+      children && (
+        <StyledUl role="group" show={isExpanded}>
+          {isLoading && children.length < 1 ? (
+            <TreeNode id="-1" label="" icon={<DelayedSpinner />} />
           ) : (
-            thisRef.current.children?.map((child, index) => (
-              <TreeNode
-                {...child}
-                dispatch={dispatch}
-                iconless={iconless}
-                key={index}
-                onCollapse={onCollapse}
-                onExpand={onExpand}
-                onSelect={onSelect}
-                selectable={selectable}
-                state={state}
-                treeId={treeId}
-              />
-            ))
+            children?.map((child, index) => <TreeNode {...child} key={index} />)
           )}
         </StyledUl>
       ),
-    [dispatch, expanded, iconless, isLoading, onCollapse, onExpand, onSelect, selectable, state, treeId],
+    [children, isExpanded, isLoading],
   );
 
   const renderedIcon = useMemo(() => {
@@ -294,23 +164,23 @@ const InternalTreeNode = <T extends unknown>({
       <StyledFlexItem {...flexItemProps}>{icon}</StyledFlexItem>
     ) : (
       <StyledFlexItem {...flexItemProps}>
-        <FolderIcon color={disabled ? 'primary20' : 'primary30'} size="xLarge" />
+        <FolderIcon color={isDisabled ? 'primary20' : 'primary30'} size="xLarge" />
       </StyledFlexItem>
     );
-  }, [disabled, icon, iconless]);
+  }, [isDisabled, icon, iconless]);
 
   const renderedSelectable = useMemo(() => {
-    if (value === undefined && selectable !== undefined) {
+    if (value === undefined || !selectable?.type) {
       return null;
     }
 
-    if (selectable === 'radio') {
+    if (selectable?.type === 'radio') {
       return (
         <StyledSelectableWrapper {...flexItemProps}>
           <StyledRadio
             aria-hidden
-            checked={selected}
-            disabled={disabled}
+            checked={isSelected}
+            disabled={isDisabled}
             onClick={handleNodeSelected}
             ref={selectableRef}
           />
@@ -318,55 +188,68 @@ const InternalTreeNode = <T extends unknown>({
       );
     }
 
-    if (selectable === 'multi') {
+    if (selectable?.type === 'multi') {
       return (
         <StyledSelectableWrapper {...flexItemProps}>
           <StyledCheckbox
             aria-hidden
-            checked={selected}
-            disabled={disabled}
+            checked={isSelected}
+            disabled={isDisabled}
             onClick={handleNodeSelected}
             ref={selectableRef}
           >
-            {selected ? <CheckIcon /> : null}
+            {isSelected ? <CheckIcon /> : null}
           </StyledCheckbox>
         </StyledSelectableWrapper>
       );
     }
-  }, [disabled, handleNodeSelected, selected, selectable, value]);
+  }, [isDisabled, handleNodeSelected, isSelected, selectable, value]);
 
-  useEffect(() => {
-    if (state.focusedNode === id) {
-      nodeRef?.current?.focus();
-    }
-  }, [state.focusedNode, id]);
-
-  return (
-    <StyledLi
-      aria-expanded={expanded}
-      id={treeNodeId}
-      onKeyDown={handleKeyEvent}
-      ref={nodeRef}
-      role="treeitem"
-      tabIndex={state.focusedNode === id ? 0 : -1}
-      {...additionalProps}
-    >
-      <StyledFlex alignItems="center" flexDirection="row" onClick={handleNodeToggle} selected={selected}>
-        {renderedArrow}
-        {renderedSelectable}
-        {renderedIcon}
-        <StyledText as="span" ellipsis marginLeft="xxSmall" color={disabled ? 'secondary50' : 'secondary70'}>
-          {label}
-          {selectedChildrenCount ? (
-            <StyledText as="span" color="primary">
-              {' '}
-              ({selectedChildrenCount})
-            </StyledText>
-          ) : null}
-        </StyledText>
-      </StyledFlex>
-      {renderedChildren}
-    </StyledLi>
+  return useMemo(
+    () => (
+      <StyledLi
+        aria-expanded={isExpanded}
+        onClick={handleNodeClick}
+        onKeyDown={handleKeyEvent}
+        ref={nodeRef}
+        role="treeitem"
+        tabIndex={focusable.focusedNode === id ? 0 : -1}
+        {...additionalProps}
+      >
+        <StyledFlex alignItems="center" flexDirection="row" onClick={handleNodeToggle} selected={isSelected}>
+          {renderedArrow}
+          {renderedSelectable}
+          {renderedIcon}
+          <StyledText as="span" ellipsis marginLeft="xxSmall" color={isDisabled ? 'secondary50' : 'secondary70'}>
+            {label}
+            {selectedChildrenCount ? (
+              <StyledText as="span" color="primary">
+                {' '}
+                ({selectedChildrenCount})
+              </StyledText>
+            ) : null}
+          </StyledText>
+        </StyledFlex>
+        {renderedChildren}
+      </StyledLi>
+    ),
+    [
+      additionalProps,
+      handleKeyEvent,
+      handleNodeClick,
+      handleNodeToggle,
+      id,
+      isDisabled,
+      isExpanded,
+      isSelected,
+      focusable,
+      label,
+      renderedArrow,
+      renderedChildren,
+      renderedSelectable,
+      renderedIcon,
+      selectedChildrenCount,
+    ],
   );
 };
 

@@ -1,46 +1,66 @@
-export interface TreeProps<T> {
-  iconless?: boolean;
-  id?: string;
-  initialNodes: TreeNodeProps<T>[];
-  selectable?: 'radio' | 'multi';
-  onExpand?(node: TreeNodeProps<T>): Promise<TreeNodeRef<T>> | TreeNodeRef<T> | void;
-  onCollapse?(node: TreeNodeProps<T>): Promise<TreeNodeRef<T>> | TreeNodeRef<T> | void;
-  // Based on the selectable prop, it can either
-  // return and array of values, or just one.
-  onSelect?(values: SelectValue<T>[] | SelectValue<T>): void;
-}
+export type TreeNodeId = string;
 
-export interface SelectValue<T> {
-  id: TreeNodeId;
-  value: T;
-}
+export type TreeSelectableType = 'radio' | 'multi' | undefined;
 
-export type TreeNodeId = string | number;
+export type TreeOnKeyDown<T> = (
+  e: React.KeyboardEvent<HTMLLIElement>,
+  node: { id: TreeNodeId; isExpanded: boolean; isSelectable: boolean; hasChildren: boolean; value: T },
+) => void;
+
+export type TreeOnNodeClick = (e: React.MouseEvent<HTMLLIElement>, nodeId: TreeNodeId) => void;
 
 export interface TreeNodeProps<T> {
   children?: TreeNodeProps<T>[];
-  disabled?: boolean;
-  expanded?: boolean;
   icon?: React.ReactChild | null;
   id: TreeNodeId;
   label: string;
-  selected?: boolean;
   value?: T;
 }
 
-export type TreeNodeRef<T> = Pick<TreeNodeProps<T>, 'children'>;
+export interface TreeExandable {
+  expandedNodes: TreeNodeId[];
+  onCollapse?(nodeId: TreeNodeId): void;
+  onExpand?(nodeId: TreeNodeId): void;
+  onToggle?(nodeId: TreeNodeId, isExpanded: boolean): void;
+}
 
-export type MapValues = {
-  children: Set<TreeNodeId>;
+export interface TreeSelectable<T> {
+  selectedNodes?: TreeNodeId[];
+  type: TreeSelectableType;
+  onSelect?: (nodeId: TreeNodeId, value: T) => void;
+}
+
+export interface TreeFocusable {
+  focusedNode: TreeNodeId;
+  onFocus(nodeId: TreeNodeId): void;
+}
+
+export interface TreeProps<T> {
+  nodes: TreeNodeProps<T>[];
+  iconless?: boolean;
+  id?: string;
+  expandable: TreeExandable;
+  focusable: TreeFocusable;
+  selectable?: TreeSelectable<T>;
+  disabledNodes?: TreeNodeId[];
+  onKeyDown: TreeOnKeyDown<T>;
+  onNodeClick?: TreeOnNodeClick;
+}
+
+export interface TreeContextState<T> {
+  disabledNodes?: TreeNodeId[];
+  expandable: TreeExandable;
+  focusable: TreeFocusable;
+  iconless?: boolean;
+  selectable?: TreeSelectable<T>;
+  onKeyDown: TreeOnKeyDown<T>;
+  onNodeClick?: TreeOnNodeClick;
+}
+
+export interface MapValues {
+  children: TreeNodeId[];
   id: TreeNodeId;
   parent?: TreeNodeId;
-};
-
-export interface TreeState<T> {
-  nodeMap: Map<TreeNodeId, MapValues>;
-  expandedNodeIds: Set<TreeNodeId>;
-  flattenedNodeIds: TreeNodeId[];
-  focusedNode: TreeNodeId | null;
-  selectedValues: SelectValue<T>[];
-  visibleNodeIds: TreeNodeId[];
 }
+
+export type NodeMap = Map<TreeNodeId, MapValues>;

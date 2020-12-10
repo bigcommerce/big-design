@@ -34,7 +34,7 @@ const sharedAfterStyles = css`
   z-index: 0;
 `;
 
-export const StyledFlex = styled(Flex)<{ selected: boolean }>`
+export const StyledFlex = styled(Flex)<{ selected?: boolean }>`
   cursor: pointer;
   min-height: ${({ theme }) => theme.helpers.addValues(theme.spacing.xxLarge, theme.spacing.xSmall)};
   position: relative;

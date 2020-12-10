@@ -1,22 +1,22 @@
 import { TreeNodeProps, TreeProps } from '../components/Tree';
 
 export function depthFirstSearch<T>(
-  nodes: TreeProps<T>['initialNodes'],
+  nodes: TreeProps<T>['nodes'],
   predicate: (node: TreeNodeProps<T>) => boolean,
   greedy?: true,
 ): TreeNodeProps<T> | null;
 export function depthFirstSearch<T>(
-  nodes: TreeProps<T>['initialNodes'],
+  nodes: TreeProps<T>['nodes'],
   predicate: (node: TreeNodeProps<T>) => boolean,
   greedy?: false,
 ): TreeNodeProps<T>[] | null;
 export function depthFirstSearch<T>(
-  nodes: TreeProps<T>['initialNodes'],
+  nodes: TreeProps<T>['nodes'],
   predicate: (node: TreeNodeProps<T>) => boolean,
   greedy?: boolean,
 ): TreeNodeProps<T>[] | TreeNodeProps<T> | null;
 export function depthFirstSearch<T>(
-  nodes: TreeProps<T>['initialNodes'],
+  nodes: TreeProps<T>['nodes'],
   predicate: (node: TreeNodeProps<T>) => boolean,
   greedy = true,
 ): TreeNodeProps<T>[] | TreeNodeProps<T> | null {
