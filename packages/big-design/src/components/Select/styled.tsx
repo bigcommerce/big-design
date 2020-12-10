@@ -3,7 +3,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { StyledButton } from '../Button/styled';
+import { StyleableButton } from '../Button/private';
 
 export const StyledStatusMessage = styled.div`
   ${hideVisually()}
@@ -25,7 +25,7 @@ export const StyledInputContainer = styled.div`
   }
 `;
 
-export const DropdownButton = styled(StyledButton)`
+export const DropdownButton = styled(StyleableButton)`
   color: ${({ theme }) => theme.colors.secondary60};
   height: auto;
   padding: 0;
