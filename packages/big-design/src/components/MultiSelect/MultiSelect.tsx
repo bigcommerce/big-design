@@ -312,8 +312,8 @@ export const MultiSelect = typedMemo(
       return (
         <StyledInputContainer ref={referenceRef}>
           <Input
-            {...props}
             {...getInputProps({
+              ...props,
               autoComplete: 'off',
               disabled,
               onClick: () => {
