@@ -17,7 +17,7 @@ export interface TreeNodeProps<T> {
   value?: T;
 }
 
-export interface TreeExandable {
+export interface TreeExpandable {
   expandedNodes: TreeNodeId[];
   onCollapse?(nodeId: TreeNodeId): void;
   onExpand?(nodeId: TreeNodeId): void;
@@ -39,7 +39,7 @@ export interface TreeProps<T> {
   nodes: TreeNodeProps<T>[];
   iconless?: boolean;
   id?: string;
-  expandable: TreeExandable;
+  expandable: TreeExpandable;
   focusable: TreeFocusable;
   selectable?: TreeSelectable<T>;
   disabledNodes?: TreeNodeId[];
@@ -49,7 +49,7 @@ export interface TreeProps<T> {
 
 export interface TreeContextState<T> {
   disabledNodes?: TreeNodeId[];
-  expandable: TreeExandable;
+  expandable: TreeExpandable;
   focusable: TreeFocusable;
   iconless?: boolean;
   selectable?: TreeSelectable<T>;

@@ -62,10 +62,6 @@ const InternalTreeNode = <T extends unknown>({
         return;
       }
 
-      if (typeof focusable.onFocus === 'function') {
-        focusable.onFocus(id);
-      }
-
       if (typeof expandable.onToggle === 'function') {
         await expandable.onToggle(id, isExpanded);
       }
@@ -84,7 +80,7 @@ const InternalTreeNode = <T extends unknown>({
         }
       }
     },
-    [children, id, expandable, isExpanded, focusable],
+    [children, id, expandable, isExpanded],
   );
 
   const handleNodeSelected = useCallback(() => {
@@ -92,14 +88,10 @@ const InternalTreeNode = <T extends unknown>({
       return;
     }
 
-    if (typeof focusable.onFocus === 'function') {
-      focusable.onFocus(id);
-    }
-
     if (typeof selectable?.onSelect === 'function') {
       selectable.onSelect(id, value);
     }
-  }, [focusable, id, isSelectable, selectable, value]);
+  }, [id, isSelectable, selectable, value]);
 
   const handleKeyEvent = useCallback(
     (e: React.KeyboardEvent<HTMLLIElement>) => {
@@ -117,11 +109,15 @@ const InternalTreeNode = <T extends unknown>({
       // Prevents event bubbling
       e.stopPropagation();
 
+      if (typeof focusable.onFocus === 'function') {
+        focusable.onFocus(id);
+      }
+
       if (typeof onNodeClick === 'function') {
         onNodeClick(e, id);
       }
     },
-    [id, onNodeClick],
+    [focusable, id, onNodeClick],
   );
 
   const additionalProps = useMemo(() => (selectable?.type ? { 'aria-selected': isSelected } : {}), [

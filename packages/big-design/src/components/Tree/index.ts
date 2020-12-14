@@ -1,6 +1,6 @@
 import {
   NodeMap as _NodeMap,
-  TreeExandable as _TreeExandable,
+  TreeExpandable as _TreeExandable,
   TreeFocusable as _TreeFocusable,
   TreeNodeId as _TreeNodeId,
   TreeNodeProps as _TreeNodeProps,
@@ -12,7 +12,7 @@ import {
 export * from './hooks';
 export { Tree } from './Tree';
 export type NodeMap = _NodeMap;
-export type TreeExandable = _TreeExandable;
+export type TreeExpandable = _TreeExandable;
 export type TreeFocusable = _TreeFocusable;
 export type TreeNodeId = _TreeNodeId;
 export type TreeProps<T> = _TreeProps<T>;

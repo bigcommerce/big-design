@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { TreeExandable } from '../../Tree';
+import { TreeExpandable } from '../../Tree';
 import { StatefulTreeProps } from '../StatefulTree';
 
 interface UseExpandableProps<T> {
@@ -12,20 +12,26 @@ export const useExpandable = <T>({ defaultExpanded, onExpandedChange }: UseExpan
   const [expandedNodes, setExpandedNodes] = useState(defaultExpanded ?? []);
 
   useEffect(() => {
+    if (defaultExpanded) {
+      setExpandedNodes(defaultExpanded);
+    }
+  }, [defaultExpanded]);
+
+  useEffect(() => {
     if (typeof onExpandedChange === 'function') {
       onExpandedChange(expandedNodes);
     }
   }, [expandedNodes, onExpandedChange]);
 
-  const onExpand: TreeExandable['onExpand'] = (nodeId) => {
+  const onExpand: TreeExpandable['onExpand'] = (nodeId) => {
     setExpandedNodes([...expandedNodes, nodeId]);
   };
 
-  const onCollapse: TreeExandable['onCollapse'] = (nodeId) => {
+  const onCollapse: TreeExpandable['onCollapse'] = (nodeId) => {
     setExpandedNodes((prevNodes) => prevNodes.filter((node) => node !== nodeId));
   };
 
-  const onToggle: TreeExandable['onToggle'] = (nodeId, isExpanded) => {
+  const onToggle: TreeExpandable['onToggle'] = (nodeId, isExpanded) => {
     if (isExpanded) {
       onCollapse(nodeId);
     } else {

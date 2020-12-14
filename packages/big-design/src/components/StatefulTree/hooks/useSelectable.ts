@@ -44,8 +44,16 @@ export const useSelectable = <T extends unknown>({
   onSelectionChange,
   type,
 }: UseSelectableProps<T>) => {
-  const [selectedNodes, setSelectedNodes] = useState<TreeNodeId[]>(defaultSelected ?? []);
-  const [selectedValues, setSelectedValues] = useState<T[]>(getDefaultSelectedValues({ nodes, selectedNodes, type }));
+  const [selectedNodes, setSelectedNodes] = useState<TreeNodeId[]>(type ? defaultSelected ?? [] : []);
+  const [selectedValues, setSelectedValues] = useState<T[]>(
+    type ? getDefaultSelectedValues({ nodes, selectedNodes, type }) : [],
+  );
+
+  useEffect(() => {
+    if (defaultSelected) {
+      setSelectedNodes(defaultSelected);
+    }
+  }, [defaultSelected]);
 
   useEffect(() => {
     if (type === 'radio') {

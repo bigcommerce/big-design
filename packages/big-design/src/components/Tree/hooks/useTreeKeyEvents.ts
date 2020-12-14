@@ -1,9 +1,9 @@
-import { NodeMap, TreeExandable, TreeFocusable, TreeNodeId, TreeOnKeyDown, TreeSelectable } from '../types';
+import { NodeMap, TreeExpandable, TreeFocusable, TreeNodeId, TreeOnKeyDown, TreeSelectable } from '../types';
 
 interface UseTreeKeyEventsProps<T> {
   onFocus: TreeFocusable['onFocus'];
   onSelect: TreeSelectable<T>['onSelect'];
-  onToggle: TreeExandable['onToggle'];
+  onToggle: TreeExpandable['onToggle'];
   nodeMap: NodeMap;
   visibleNodes: TreeNodeId[];
 }
