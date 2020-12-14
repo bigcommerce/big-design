@@ -201,11 +201,11 @@ test('select input has aria-controls', async () => {
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
-test('select input has autocomplete=no', async () => {
+test('select input has autocomplete=off', async () => {
   const { getByTestId } = render(SelectMock);
   const input = getByTestId('select');
 
-  expect(input.getAttribute('autocomplete')).toBe('no');
+  expect(input.getAttribute('autocomplete')).toBe('off');
   await waitForElement(() => getByTestId('select'));
 });
 

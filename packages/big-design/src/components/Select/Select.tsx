@@ -248,7 +248,7 @@ export const Select = typedMemo(
               <Input
                 {...rest}
                 {...getInputProps({
-                  autoComplete: 'no',
+                  autoComplete: 'off',
                   disabled,
                   onClick: () => {
                     !isOpen && openMenu();
