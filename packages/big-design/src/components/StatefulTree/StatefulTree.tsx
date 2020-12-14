@@ -7,10 +7,10 @@ import { useExpandable, useFocusable, useSelectable, useVisibleNodes } from './h
 
 export interface StatefulTreeProps<T>
   extends Omit<TreeProps<T>, 'expandable' | 'focusable' | 'selectable' | 'onKeyDown'> {
-  selectable?: TreeSelectable<T>['type'];
   defaultExpanded?: TreeNodeId[];
   defaultSelected?: TreeNodeId[];
-  onExpandedChange?: (expandedValues: TreeNodeId[]) => void;
+  selectable?: TreeSelectable<T>['type'];
+  onExpandedChange?: (expandedNodes: TreeNodeId[]) => void;
   onSelectionChange?: (selectedValues: T[]) => void;
 }
 

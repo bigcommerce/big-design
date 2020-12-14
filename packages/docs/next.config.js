@@ -56,13 +56,13 @@ module.exports = {
     '/select': { page: '/Select/SelectPage' },
     '/spacing': { page: '/Spacing/SpacingPage' },
     '/statefulTable': { page: '/StatefulTable/StatefulTablePage' },
+    '/statefulTree': { page: '/StatefulTree/StatefulTreePage' },
     '/switch': { page: '/Switch/SwitchPage' },
     '/table': { page: '/Table/TablePage' },
     '/tabs': { page: '/Tabs/TabsPage' },
     '/textarea': { page: '/Textarea/TextareaPage' },
     '/timepicker': { page: '/Timepicker/TimepickerPage' },
     '/tooltip': { page: '/Tooltip/TooltipPage' },
-    '/tree': { page: '/Tree/TreePage' },
     '/typography': { page: '/Typography/TypographyPage' },
 
     // Dev route for development purposes
