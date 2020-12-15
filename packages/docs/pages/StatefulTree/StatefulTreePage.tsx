@@ -90,7 +90,7 @@ const StatefulTreePage = () => (
     <Text>You can replace the folder icon with a custom icon of your choice.</Text>
     <Message
       type="warning"
-      messages={[{ text: 'If you use the iconless prop, ALL icons with be hidden (including custom ones).' }]}
+      messages={[{ text: 'If you use the iconless prop, ALL icons will be hidden (including custom ones).' }]}
       marginBottom="medium"
     />
     <CodePreview>

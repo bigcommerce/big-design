@@ -18,8 +18,6 @@ const getParentId = (nodeMap: NodeMap, id: TreeNodeId) => {
       return value.id;
     }
   }
-
-  return undefined;
 };
 
 const buildNodeMap = <T>({ nodes, nodeMap }: BuildNodeMapProps<T>): NodeMap => {
