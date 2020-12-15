@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.26.0-alpha.0...@bigcommerce/big-design@0.26.0-alpha.1) (2020-12-15)
+
+
+### Bug Fixes
+
+* **component:** ensure autocomplete works on Select component ([#482](https://github.com/bigcommerce/big-design/issues/482)) ([bded500](https://github.com/bigcommerce/big-design/commit/bded500296c77c3a03389182e25514dfe2391dac))
+
+
+
+
+
 # [0.26.0-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.25.0...@bigcommerce/big-design@0.26.0-alpha.0) (2020-12-09)
 
 
