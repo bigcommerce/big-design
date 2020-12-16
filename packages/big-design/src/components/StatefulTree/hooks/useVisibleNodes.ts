@@ -45,7 +45,7 @@ const buildVisibleNodes = ({ expandedNodes, nodeMap }: UseVisibleNodesProps) => 
 };
 
 export const useVisibleNodes = ({ expandedNodes, nodeMap }: UseVisibleNodesProps) => {
-  const [visibleNodes, setVisibleNodes] = useState(buildVisibleNodes({ expandedNodes, nodeMap }));
+  const [visibleNodes, setVisibleNodes] = useState(() => buildVisibleNodes({ expandedNodes, nodeMap }));
 
   useEffect(() => {
     setVisibleNodes(buildVisibleNodes({ expandedNodes, nodeMap }));

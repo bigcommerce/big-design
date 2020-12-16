@@ -1,11 +1,10 @@
 import { CheckIcon, ChevronRightIcon, FolderIcon } from '@bigcommerce/big-design-icons';
-import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { StyledCheckbox } from '../../Checkbox/private';
 import { FlexItemProps } from '../../Flex';
 import { StyledRadio } from '../../Radio/styled';
-import { DelayedSpinner } from '../DelayedSpinner';
 import { useSelectedChildrenCount } from '../hooks/useSelectedChildrenCount';
 import { StyledUl } from '../styled';
 import { TreeContext } from '../Tree';
@@ -35,7 +34,6 @@ const InternalTreeNode = <T extends unknown>({
   );
   const nodeRef = useRef<HTMLLIElement | null>(null);
   const selectableRef = useRef<HTMLLabelElement | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
   const isExpanded = expandable.expandedNodes.includes(id);
   const isSelected = selectable?.selectedNodes?.includes(id);
   const isDisabled = disabledNodes?.includes(id);
@@ -63,20 +61,16 @@ const InternalTreeNode = <T extends unknown>({
       }
 
       if (typeof expandable.onToggle === 'function') {
-        await expandable.onToggle(id, isExpanded);
+        expandable.onToggle(id, isExpanded);
       }
 
       if (isExpanded) {
         if (typeof expandable.onCollapse === 'function') {
-          await expandable.onCollapse(id);
+          expandable.onCollapse(id);
         }
       } else {
         if (typeof expandable.onExpand === 'function') {
-          setIsLoading(true);
-
-          await expandable.onExpand(id);
-
-          setIsLoading(false);
+          expandable.onExpand(id);
         }
       }
     },
@@ -141,14 +135,12 @@ const InternalTreeNode = <T extends unknown>({
     () =>
       children && (
         <StyledUl role="group" show={isExpanded}>
-          {isLoading && children.length < 1 ? (
-            <TreeNode id="-1" label="" icon={<DelayedSpinner />} />
-          ) : (
-            children?.map((child, index) => <TreeNode {...child} key={index} />)
-          )}
+          {children?.map((child, index) => (
+            <TreeNode {...child} key={index} />
+          ))}
         </StyledUl>
       ),
-    [children, isExpanded, isLoading],
+    [children, isExpanded],
   );
 
   const renderedIcon = useMemo(() => {

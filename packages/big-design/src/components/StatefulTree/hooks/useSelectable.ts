@@ -20,7 +20,7 @@ const getDefaultSelectedValues = <T>({ nodes, selectedNodes, type }: GetDefaultS
   if (type === 'radio') {
     const selectedNode = depthFirstSearch(nodes, ({ id, value }) => selectedNodes.includes(id) && value !== undefined);
 
-    if (selectedNode && selectedNode.value) {
+    if (selectedNode && selectedNode.value !== undefined) {
       return [selectedNode.value];
     }
   }
@@ -28,7 +28,7 @@ const getDefaultSelectedValues = <T>({ nodes, selectedNodes, type }: GetDefaultS
   if (type === 'multi') {
     return (
       depthFirstSearch(nodes, ({ id, value }) => selectedNodes.includes(id) && value !== undefined, false)?.reduce<T[]>(
-        (acc, node) => (node.value ? [...acc, node.value] : acc),
+        (acc, node) => (node.value !== undefined ? [...acc, node.value] : acc),
         [],
       ) ?? []
     );
@@ -44,8 +44,8 @@ export const useSelectable = <T extends unknown>({
   onSelectionChange,
   type,
 }: UseSelectableProps<T>) => {
-  const [selectedNodes, setSelectedNodes] = useState<TreeNodeId[]>(type ? defaultSelected ?? [] : []);
-  const [selectedValues, setSelectedValues] = useState<T[]>(
+  const [selectedNodes, setSelectedNodes] = useState(defaultSelected ?? []);
+  const [selectedValues, setSelectedValues] = useState<T[]>(() =>
     type ? getDefaultSelectedValues({ nodes, selectedNodes, type }) : [],
   );
 
@@ -72,7 +72,7 @@ export const useSelectable = <T extends unknown>({
         }
       }
     }
-  }, [type, selectedNodes.length, nodes]);
+  }, [nodes, selectedNodes.length, setSelectedNodes, type]);
 
   useEffect(() => {
     if (typeof onSelectionChange === 'function') {
@@ -81,19 +81,23 @@ export const useSelectable = <T extends unknown>({
   }, [onSelectionChange, selectedValues]);
 
   const onSelect: TreeSelectable<T>['onSelect'] = (nodeId, value) => {
-    if (!disabledNodes?.includes(nodeId)) {
-      if (type === 'multi') {
-        if (selectedNodes.includes(nodeId)) {
-          setSelectedNodes((prevNodes) => prevNodes.filter((prevNodeId) => prevNodeId !== nodeId));
-          setSelectedValues((prevValues) => prevValues.filter((prevValue) => prevValue !== value));
-        } else {
-          setSelectedNodes([...selectedNodes, nodeId]);
-          setSelectedValues([...selectedValues, value]);
-        }
-      } else if (type === 'radio' && !selectedNodes.includes(nodeId)) {
-        setSelectedNodes([nodeId]);
-        setSelectedValues([value]);
+    if (disabledNodes?.includes(nodeId)) {
+      return;
+    }
+
+    if (type === 'multi') {
+      if (selectedNodes.includes(nodeId)) {
+        setSelectedNodes((prevNodes) => prevNodes.filter((prevNodeId) => prevNodeId !== nodeId));
+        setSelectedValues((prevValues) => prevValues.filter((prevValue) => prevValue !== value));
+      } else {
+        setSelectedNodes([...selectedNodes, nodeId]);
+        setSelectedValues([...selectedValues, value]);
       }
+    }
+
+    if (type === 'radio' && !selectedNodes.includes(nodeId)) {
+      setSelectedNodes([nodeId]);
+      setSelectedValues([value]);
     }
   };
 

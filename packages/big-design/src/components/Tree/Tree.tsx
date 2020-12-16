@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useMemo } from 'react';
 
 import { StyledUl } from './styled';
 import { TreeNode } from './TreeNode';
@@ -27,7 +27,6 @@ export const Tree = <T extends unknown>({
   onNodeClick,
   selectable,
 }: TreeProps<T>): React.ReactElement<TreeProps<T>> => {
-  const [internalNodes, setInternalNodes] = useState(nodes);
   const initialTreeContext: TreeContextState<T> = {
     disabledNodes,
     expandable,
@@ -38,13 +37,7 @@ export const Tree = <T extends unknown>({
     selectable,
   };
 
-  useEffect(() => {
-    setInternalNodes(nodes);
-  }, [nodes]);
-
-  const renderedItems = useMemo(() => internalNodes.map((node, index) => <TreeNode {...node} key={index} />), [
-    internalNodes,
-  ]);
+  const renderedItems = useMemo(() => nodes.map((node, index) => <TreeNode {...node} key={index} />), [nodes]);
 
   return (
     <TreeContext.Provider value={initialTreeContext}>
