@@ -47,6 +47,7 @@ const TablePage = () => {
       <CodePreview>
         {/* jsx-to-string:start */}
         <Table
+          draggable={true}
           columns={[
             { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
             { header: 'Name', hash: 'name', render: ({ name }) => name },
