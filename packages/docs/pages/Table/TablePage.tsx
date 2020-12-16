@@ -39,6 +39,12 @@ const sort = (items, columnHash, direction) => {
     );
 };
 
+const dragEnd = (items, from, to) => {
+  const item = items.splice(from, 1);
+  items.splice(to, 0, ...item);
+  return items;
+};
+
 const TablePage = () => {
   return (
     <>
@@ -47,7 +53,6 @@ const TablePage = () => {
       <CodePreview>
         {/* jsx-to-string:start */}
         <Table
-          draggable={true}
           columns={[
             { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
             { header: 'Name', hash: 'name', render: ({ name }) => name },
@@ -246,6 +251,34 @@ const TablePage = () => {
             { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
           ]}
         />
+        {/* jsx-to-string:end */}
+      </CodePreview>
+
+      <H1>Usage with drag and drop</H1>
+
+      <CodePreview scope={{ data, dragEnd }}>
+        {/* jsx-to-string:start */}
+        {function Example() {
+          const [items, setItems] = useState(data);
+
+          const onDragEnd = (from: number, to: number) => setItems((currentItems) => dragEnd(currentItems, from, to));
+
+          return (
+            <Table
+              keyField="sku"
+              columns={[
+                { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
+                { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
+                { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
+              ]}
+              items={items}
+              itemName="Products"
+              dragAndDrop={{
+                onDragEnd,
+              }}
+            />
+          );
+        }}
         {/* jsx-to-string:end */}
       </CodePreview>
     </>

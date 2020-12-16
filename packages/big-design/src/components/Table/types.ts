@@ -8,6 +8,10 @@ export interface TableSelectable<T> {
   onSelectionChange(selectedItems: T[]): void;
 }
 
+export interface TableDraggable {
+  onDragEnd(from: number, to: number): void;
+}
+
 export type TableSortDirection = 'ASC' | 'DESC';
 
 export interface TableSortable<T> {
@@ -38,7 +42,7 @@ export type TablePaginationProps = Omit<PaginationProps, keyof MarginProps>;
 export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElement> {
   actions?: React.ReactNode;
   columns: Array<TableColumn<T>>;
-  draggable?: boolean;
+  dragAndDrop?: TableDraggable;
   emptyComponent?: React.ReactElement;
   headerless?: boolean;
   itemName?: string;
