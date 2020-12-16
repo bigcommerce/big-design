@@ -1,4 +1,4 @@
-import React, { TableHTMLAttributes } from 'react';
+import React, { forwardRef, TableHTMLAttributes } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
@@ -8,6 +8,7 @@ import { TableColumn, TableItem } from '../types';
 import { StyledTableRow } from './styled';
 
 export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
+  isDragging?: boolean;
   isSelected?: boolean;
   isSelectable?: boolean;
   item: T;
@@ -15,13 +16,20 @@ export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
   onItemSelect?(item: T): void;
 }
 
+interface PrivateProps {
+  forwardedRef?: React.Ref<HTMLTableRowElement>;
+}
+
 const InternalRow = <T extends TableItem>({
   columns,
+  forwardedRef,
+  isDragging = false,
   isSelectable = false,
   isSelected = false,
   item,
   onItemSelect,
-}: RowProps<T>) => {
+  ...rest
+}: RowProps<T> & PrivateProps) => {
   const onChange = () => {
     if (onItemSelect) {
       onItemSelect(item);
@@ -31,7 +39,7 @@ const InternalRow = <T extends TableItem>({
   const label = isSelected ? `Selected` : `Unselected`;
 
   return (
-    <StyledTableRow isSelected={isSelected}>
+    <StyledTableRow isSelected={isSelected} ref={forwardedRef} isDragging={isDragging} {...rest}>
       {isSelectable && (
         <DataCell key="data-checkbox" isCheckbox={true}>
           <Checkbox checked={isSelected} hiddenLabel label={label} onChange={onChange} />
@@ -50,4 +58,6 @@ const InternalRow = <T extends TableItem>({
   );
 };
 
-export const Row = typedMemo(InternalRow);
+export const Row = typedMemo(
+  forwardRef<HTMLTableRowElement, RowProps<any>>((props, ref) => <InternalRow {...props} forwardedRef={ref} />),
+);
