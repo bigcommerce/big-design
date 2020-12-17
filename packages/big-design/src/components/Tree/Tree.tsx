@@ -1,53 +1,49 @@
-import React, { useMemo, useReducer, useState } from 'react';
+import React, { createContext, useMemo } from 'react';
 
-import { useUniqueId } from '../../hooks';
-import { typedMemo } from '../../utils';
-
-import { createReducer, createReducerInit } from './reducer';
 import { StyledUl } from './styled';
 import { TreeNode } from './TreeNode';
-import { TreeProps } from './types';
+import { TreeContextState, TreeProps } from './types';
 
-const InternalTree = <T extends unknown>({
+// We don't have access to the type yet, so we need to pass any into the generic.
+export const TreeContext = createContext<TreeContextState<any>>({
+  expandable: {
+    expandedNodes: [],
+  },
+  focusable: {
+    focusedNode: '',
+    onFocus: () => null,
+  },
+  onKeyDown: () => null,
+});
+
+export const Tree = <T extends unknown>({
+  disabledNodes,
+  expandable,
+  focusable,
   iconless,
   id,
-  initialNodes,
-  onCollapse,
-  onExpand,
-  onSelect,
+  nodes,
+  onKeyDown,
+  onNodeClick,
   selectable,
 }: TreeProps<T>): React.ReactElement<TreeProps<T>> => {
-  const [nodes] = useState(initialNodes);
-  const uniqueTreeId = useUniqueId('tree');
-  const treeId = id ?? uniqueTreeId;
-  const reducer = useMemo(() => createReducer<T>(), []);
-  const reducerInit = useMemo(() => createReducerInit<T>(), []);
-  const [state, dispatch] = useReducer(reducer, { nodes, selectable }, reducerInit);
+  const initialTreeContext: TreeContextState<T> = {
+    disabledNodes,
+    expandable,
+    focusable,
+    iconless,
+    onKeyDown,
+    onNodeClick,
+    selectable,
+  };
 
-  const renderedItems = useMemo(
-    () =>
-      nodes.map((node, index) => (
-        <TreeNode
-          {...node}
-          dispatch={dispatch}
-          iconless={iconless}
-          key={index}
-          onCollapse={onCollapse}
-          onExpand={onExpand}
-          onSelect={onSelect}
-          selectable={selectable}
-          state={state}
-          treeId={treeId}
-        />
-      )),
-    [iconless, nodes, onCollapse, onExpand, onSelect, selectable, state, treeId],
-  );
+  const renderedItems = useMemo(() => nodes.map((node, index) => <TreeNode {...node} key={index} />), [nodes]);
 
   return (
-    <StyledUl id={treeId} role="tree" aria-multiselectable={selectable === 'multi'} style={{ overflow: 'hidden' }}>
-      {renderedItems}
-    </StyledUl>
+    <TreeContext.Provider value={initialTreeContext}>
+      <StyledUl id={id} role="tree" aria-multiselectable={selectable?.type === 'multi'} style={{ overflow: 'hidden' }}>
+        {renderedItems}
+      </StyledUl>
+    </TreeContext.Provider>
   );
 };
-
-export const Tree = typedMemo(InternalTree);

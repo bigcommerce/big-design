@@ -68,11 +68,11 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/StatefulTable/StatefulTablePage" as="/statefulTable">
             StatefulTable
           </SideNavLink>
+          <SideNavLink href="/StatefulTree/StatefulTreePage" as="/statefulTree">
+            StatefulTree
+          </SideNavLink>
           <SideNavLink href="/Tabs/TabsPage" as="/tabs">
             Tabs
-          </SideNavLink>
-          <SideNavLink href="/Tree/TreePage" as="/tree">
-            Tree
           </SideNavLink>
         </SideNavGroup>
 
