@@ -273,9 +273,7 @@ const TablePage = () => {
               ]}
               items={items}
               itemName="Products"
-              dragAndDrop={{
-                onDragEnd,
-              }}
+              onRowDrop={onDragEnd}
             />
           );
         }}

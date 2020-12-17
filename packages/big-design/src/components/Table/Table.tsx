@@ -9,7 +9,7 @@ import { Actions } from './Actions';
 import { Body } from './Body';
 import { Head } from './Head';
 import { HeaderCell } from './HeaderCell';
-import { HeaderCheckboxCell } from './HeaderCell/HeaderCell';
+import { DragIconHeaderCell, HeaderCheckboxCell } from './HeaderCell/HeaderCell';
 import { Row } from './Row';
 import { StyledTable, StyledTableFigure } from './styled';
 import { TableColumn, TableItem, TableProps } from './types';
@@ -19,13 +19,13 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     className,
     columns,
     actions,
-    dragAndDrop,
     emptyComponent,
     headerless = false,
     id,
     itemName,
     items,
     keyField = 'id',
+    onRowDrop,
     pagination,
     selectable,
     sortable,
@@ -92,9 +92,11 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
         return;
       }
 
-      dragAndDrop && dragAndDrop.onDragEnd(source.index, destination.index);
+      if (typeof onRowDrop === 'function') {
+        onRowDrop(source.index, destination.index);
+      }
     },
-    [dragAndDrop],
+    [onRowDrop],
   );
 
   const shouldRenderActions = () => {
@@ -112,6 +114,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   const renderHeaders = () => (
     <Head hidden={headerless}>
       <tr>
+        {typeof onRowDrop === 'function' && <DragIconHeaderCell actionsRef={actionsRef} />}
         {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} actionsRef={actionsRef} />}
 
         {columns.map((column, index) => {
@@ -138,37 +141,42 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     </Head>
   );
 
-  const renderItems = () =>
-    dragAndDrop ? (
-      <Droppable droppableId="priority-droppable">
-        {(provided) => (
-          <Body withFirstRowBorder={headerless} ref={provided.innerRef} {...provided.droppableProps}>
-            {items.map((item: T, index) => {
-              const key = getItemKey(item, index);
-              const isSelected = selectedItems.has(item);
+  const renderDroppableItems = () => (
+    <Droppable droppableId="bd-droppable">
+      {(provided) => (
+        <Body withFirstRowBorder={headerless} ref={provided.innerRef} {...provided.droppableProps}>
+          {items.map((item: T, index) => {
+            const key = getItemKey(item, index);
+            const isSelected = selectedItems.has(item);
 
-              return (
-                <Draggable key={key} draggableId={String(key)} index={index}>
-                  {(provided, snapshot) => (
-                    <Row
-                      isDragging={snapshot.isDragging}
-                      {...provided.dragHandleProps}
-                      {...provided.draggableProps}
-                      ref={provided.innerRef}
-                      columns={columns}
-                      isSelectable={isSelectable}
-                      isSelected={isSelected}
-                      item={item}
-                      onItemSelect={onItemSelect}
-                    />
-                  )}
-                </Draggable>
-              );
-            })}
-            {provided.placeholder}
-          </Body>
-        )}
-      </Droppable>
+            return (
+              <Draggable key={key} draggableId={String(key)} index={index}>
+                {(provided, snapshot) => (
+                  <Row
+                    isDragging={snapshot.isDragging}
+                    {...provided.dragHandleProps}
+                    {...provided.draggableProps}
+                    ref={provided.innerRef}
+                    columns={columns}
+                    isSelectable={isSelectable}
+                    isSelected={isSelected}
+                    item={item}
+                    onItemSelect={onItemSelect}
+                    showDragIcon={true}
+                  />
+                )}
+              </Draggable>
+            );
+          })}
+          {provided.placeholder}
+        </Body>
+      )}
+    </Droppable>
+  );
+
+  const renderItems = () =>
+    onRowDrop ? (
+      renderDroppableItems()
     ) : (
       <Body withFirstRowBorder={headerless}>
         {items.map((item: T, index) => {
@@ -197,6 +205,13 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     return null;
   };
 
+  const renderWithDragDropContext = () => (
+    <DragDropContext onDragEnd={onDragEnd}>
+      {renderHeaders()}
+      {renderItems()}
+    </DragDropContext>
+  );
+
   return (
     <>
       {shouldRenderActions() && (
@@ -213,11 +228,8 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
         />
       )}
       <StyledTable {...rest} id={tableIdRef.current}>
-        {dragAndDrop ? (
-          <DragDropContext onDragEnd={onDragEnd}>
-            {renderHeaders()}
-            {renderItems()}
-          </DragDropContext>
+        {onRowDrop ? (
+          renderWithDragDropContext()
         ) : (
           <>
             {renderHeaders()}

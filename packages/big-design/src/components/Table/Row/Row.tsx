@@ -1,3 +1,4 @@
+import { DragIndicatorIcon } from '@bigcommerce/big-design-icons';
 import React, { forwardRef, TableHTMLAttributes } from 'react';
 
 import { typedMemo } from '../../../utils';
@@ -13,6 +14,7 @@ export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
   isSelectable?: boolean;
   item: T;
   columns: Array<TableColumn<T>>;
+  showDragIcon?: boolean;
   onItemSelect?(item: T): void;
 }
 
@@ -27,6 +29,7 @@ const InternalRow = <T extends TableItem>({
   isSelectable = false,
   isSelected = false,
   item,
+  showDragIcon = false,
   onItemSelect,
   ...rest
 }: RowProps<T> & PrivateProps) => {
@@ -40,6 +43,11 @@ const InternalRow = <T extends TableItem>({
 
   return (
     <StyledTableRow isSelected={isSelected} ref={forwardedRef} isDragging={isDragging} {...rest}>
+      {showDragIcon && (
+        <DataCell>
+          <DragIndicatorIcon />
+        </DataCell>
+      )}
       {isSelectable && (
         <DataCell key="data-checkbox" isCheckbox={true}>
           <Checkbox checked={isSelected} hiddenLabel label={label} onChange={onChange} />

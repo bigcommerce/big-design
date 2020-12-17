@@ -22,6 +22,10 @@ export interface HeaderCheckboxCellProps {
   stickyHeader?: boolean;
 }
 
+export interface DragIconCellProps {
+  actionsRef: RefObject<HTMLDivElement>;
+}
+
 const InternalHeaderCell = <T extends TableItem>({
   children,
   column,
@@ -76,6 +80,12 @@ export const HeaderCheckboxCell: React.FC<HeaderCheckboxCellProps> = memo(({ sti
   const actionsSize = useComponentSize(actionsRef);
 
   return <StyledTableHeaderCheckbox stickyHeader={stickyHeader} stickyHeight={actionsSize.height} />;
+});
+
+export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(({ actionsRef }) => {
+  const actionsSize = useComponentSize(actionsRef);
+
+  return <StyledTableHeaderCell stickyHeight={actionsSize.height} />;
 });
 
 export const HeaderCell = typedMemo(InternalHeaderCell);
