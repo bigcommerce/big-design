@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.26.0-alpha.1...@bigcommerce/docs@0.26.0) (2020-12-17)
+
+
+### Code Refactoring
+
+* **component:** refactor Tree component API to StatefulTree ([#481](https://github.com/bigcommerce/big-design/issues/481)) ([25a2573](https://github.com/bigcommerce/big-design/commit/25a257379e00aa2e95a41eac80647f31d850afff))
+
+
+### BREAKING CHANGES
+
+* **component:** `Tree` component and now `StatefulTree` with new API changes.
+See dev docs for new API.
+
+
+
+
+
 # [0.26.0-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.26.0-alpha.0...@bigcommerce/docs@0.26.0-alpha.1) (2020-12-15)
 
 **Note:** Version bump only for package @bigcommerce/docs
