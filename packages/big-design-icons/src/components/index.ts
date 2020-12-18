@@ -25,6 +25,7 @@ export * from './FilterListIcon';
 export * from './FolderIcon';
 export * from './GetAppIcon';
 export * from './InfoIcon';
+export * from './InsertDriveFileIcon';
 export * from './InvertColorsIcon';
 export * from './LanguageIcon';
 export * from './MenuIcon';
