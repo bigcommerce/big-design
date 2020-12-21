@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.14.0...@bigcommerce/big-design-icons@0.14.1) (2020-12-21)
+
+
+### Features
+
+* **icons:** add insert_drive_file icon ([#486](https://github.com/bigcommerce/big-design/issues/486)) ([b07d9c6](https://github.com/bigcommerce/big-design/commit/b07d9c6f6416854212eb447d216117a40edb6b8e))
+
+
+
+
+
 # [0.14.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.13.1...@bigcommerce/big-design-icons@0.14.0) (2020-11-12)
 
 
