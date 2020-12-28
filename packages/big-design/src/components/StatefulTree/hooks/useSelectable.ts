@@ -52,8 +52,9 @@ export const useSelectable = <T extends unknown>({
   useEffect(() => {
     if (defaultSelected) {
       setSelectedNodes(defaultSelected);
+      setSelectedValues(getDefaultSelectedValues({ nodes, selectedNodes: defaultSelected, type }));
     }
-  }, [defaultSelected]);
+  }, [defaultSelected, nodes, type]);
 
   useEffect(() => {
     if (type === 'radio') {
