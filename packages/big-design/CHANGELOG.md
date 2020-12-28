@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.26.1...@bigcommerce/big-design@0.26.2) (2020-12-28)
+
+
+### Bug Fixes
+
+* **component:** selected values were not matching state ([#489](https://github.com/bigcommerce/big-design/issues/489)) ([dad585f](https://github.com/bigcommerce/big-design/commit/dad585f8a9a4a675496927d0b607605e82f7e4d1))
+
+
+
+
+
 ## [0.26.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.26.0...@bigcommerce/big-design@0.26.1) (2020-12-21)
 
 **Note:** Version bump only for package @bigcommerce/big-design
