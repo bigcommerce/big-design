@@ -1,5 +1,389 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`draggable renders drag and drop icon 1`] = `
+.c8 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c3 {
+  box-sizing: border-box;
+}
+
+.c4 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: #F6F7FC;
+  border-bottom: 1px solid #D9DCE9;
+  border-top: 1px solid #D9DCE9;
+  box-sizing: border-box;
+  color: #5E637A;
+  font-size: 1rem;
+  padding: 0.75rem;
+  white-space: nowrap;
+}
+
+.c2 {
+  background-color: #F6F7FC;
+  border-bottom: 1px solid #D9DCE9;
+  border-top: 1px solid #D9DCE9;
+  box-sizing: border-box;
+  color: #5E637A;
+  font-size: 1rem;
+  padding: 0.75rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.c5 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c7 {
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  color: #313440;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid #D9DCE9;
+}
+
+.c6 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  display: table-row;
+  background-color: transparent;
+}
+
+.c6:hover {
+  background-color: #F6F7FC;
+}
+
+.c0 {
+  border-color: transparent;
+  border-spacing: 0;
+  color: #313440;
+  text-align: left;
+  width: 100%;
+}
+
+<table
+  class="c0"
+  id="bd-table-1"
+>
+  <thead
+    class=""
+  >
+    <tr>
+      <th
+        class="c1"
+      />
+      <th
+        class="c2"
+      >
+        <div
+          class="c3 c4 c5"
+        >
+          Sku
+        </div>
+      </th>
+      <th
+        class="c1"
+      >
+        <div
+          class="c3 c4 c5"
+        >
+          Name
+        </div>
+      </th>
+      <th
+        class="c1"
+      >
+        <div
+          class="c3 c4 c5"
+        >
+          Stock
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    class=""
+    data-rbd-droppable-context-id="0"
+    data-rbd-droppable-id="bd-droppable"
+  >
+    <tr
+      aria-describedby="rbd-hidden-text-0-hidden-text-0"
+      class="c6"
+      data-rbd-drag-handle-context-id="0"
+      data-rbd-drag-handle-draggable-id="0"
+      data-rbd-draggable-context-id="0"
+      data-rbd-draggable-id="0"
+      draggable="false"
+      role="button"
+      tabindex="0"
+    >
+      <td
+        class="c7"
+      >
+        <svg
+          class="c8"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+          />
+        </svg>
+      </td>
+      <td
+        class="c7"
+      >
+        SM13
+      </td>
+      <td
+        class="c7"
+      >
+        [Sample] Smith Journal 13
+      </td>
+      <td
+        class="c7"
+      >
+        25
+      </td>
+    </tr>
+    <tr
+      aria-describedby="rbd-hidden-text-0-hidden-text-0"
+      class="c6"
+      data-rbd-drag-handle-context-id="0"
+      data-rbd-drag-handle-draggable-id="1"
+      data-rbd-draggable-context-id="0"
+      data-rbd-draggable-id="1"
+      draggable="false"
+      role="button"
+      tabindex="0"
+    >
+      <td
+        class="c7"
+      >
+        <svg
+          class="c8"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+          />
+        </svg>
+      </td>
+      <td
+        class="c7"
+      >
+        DPB
+      </td>
+      <td
+        class="c7"
+      >
+        [Sample] Dustpan & Brush
+      </td>
+      <td
+        class="c7"
+      >
+        34
+      </td>
+    </tr>
+    <tr
+      aria-describedby="rbd-hidden-text-0-hidden-text-0"
+      class="c6"
+      data-rbd-drag-handle-context-id="0"
+      data-rbd-drag-handle-draggable-id="2"
+      data-rbd-draggable-context-id="0"
+      data-rbd-draggable-id="2"
+      draggable="false"
+      role="button"
+      tabindex="0"
+    >
+      <td
+        class="c7"
+      >
+        <svg
+          class="c8"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+          />
+        </svg>
+      </td>
+      <td
+        class="c7"
+      >
+        OFSUC
+      </td>
+      <td
+        class="c7"
+      >
+        [Sample] Utility Caddy
+      </td>
+      <td
+        class="c7"
+      >
+        45
+      </td>
+    </tr>
+    <tr
+      aria-describedby="rbd-hidden-text-0-hidden-text-0"
+      class="c6"
+      data-rbd-drag-handle-context-id="0"
+      data-rbd-drag-handle-draggable-id="3"
+      data-rbd-draggable-context-id="0"
+      data-rbd-draggable-id="3"
+      draggable="false"
+      role="button"
+      tabindex="0"
+    >
+      <td
+        class="c7"
+      >
+        <svg
+          class="c8"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+          />
+        </svg>
+      </td>
+      <td
+        class="c7"
+      >
+        CLC
+      </td>
+      <td
+        class="c7"
+      >
+        [Sample] Canvas Laundry Cart
+      </td>
+      <td
+        class="c7"
+      >
+        2
+      </td>
+    </tr>
+    <tr
+      aria-describedby="rbd-hidden-text-0-hidden-text-0"
+      class="c6"
+      data-rbd-drag-handle-context-id="0"
+      data-rbd-drag-handle-draggable-id="4"
+      data-rbd-draggable-context-id="0"
+      data-rbd-draggable-id="4"
+      draggable="false"
+      role="button"
+      tabindex="0"
+    >
+      <td
+        class="c7"
+      >
+        <svg
+          class="c8"
+          fill="currentColor"
+          height="24"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+          />
+        </svg>
+      </td>
+      <td
+        class="c7"
+      >
+        CGLD
+      </td>
+      <td
+        class="c7"
+      >
+        [Sample] Laundry Detergent
+      </td>
+      <td
+        class="c7"
+      >
+        29
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
 exports[`renders a pagination component 1`] = `
 .c10 {
   vertical-align: middle;
@@ -535,6 +919,7 @@ exports[`renders a simple table 1`] = `
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color;
   transition-property: background-color;
+  display: table-row;
   background-color: transparent;
 }
 
