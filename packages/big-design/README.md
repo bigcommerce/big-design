@@ -8,16 +8,16 @@ You can find documentation and examples on our [docs page](https://bigcommerce.g
 
 ### Quick start guide
 
-Add BigDesign and styled-components to your project using `npm`:
+Add BigDesign and styled-components@4 to your project using `npm`:
 
 ```
-npm install @bigcommerce/big-design styled-components
+npm install @bigcommerce/big-design styled-components@4
 ```
 
 or with `yarn`:
 
 ```
-yarn add @bigcommerce/big-design styled-components
+yarn add @bigcommerce/big-design styled-components@4
 ```
 
 Import the `GlobalStyles` component and use it once in your app. This will set a few styles globally,
