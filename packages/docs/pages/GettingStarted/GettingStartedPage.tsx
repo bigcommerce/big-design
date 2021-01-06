@@ -90,7 +90,7 @@ const GettingStartedPage = () => {
 
       <Text>Add BigDesign and styled-components to your project:</Text>
       <CodeSnippet showControls={false} language="bash">
-        npm install @bigcommerce/big-design styled-components
+        npm install @bigcommerce/big-design styled-components@4
       </CodeSnippet>
 
       <Text>
