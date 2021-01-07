@@ -1,0 +1,7 @@
+{
+  "name": "@bigcommerce/big-design-icons/flags",
+  "sideEffects": false,
+  "main": "../dist/cjs/flags/index.js",
+  "module": "../dist/es/flags/index.js",
+  "typings": "../dist/flags/index.d.ts"
+}
