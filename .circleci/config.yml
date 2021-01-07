@@ -36,6 +36,10 @@ jobs:
           environment:
             NEXT_TELEMETRY_DISABLED: '1'
 
+      - run:
+          command: yarn run lint
+
+
 workflows:
   version: 2
   build_and_test:
