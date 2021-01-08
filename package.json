@@ -7,7 +7,9 @@
   ],
   "scripts": {
     "build": "lerna run build --stream",
-    "ci": "lerna run ci --stream",
+    "ci:build": "lerna run ci:build --stream",
+    "ci:lint": "yarn run lint && lerna run ci:lint --stream",
+    "ci:test": "lerna run ci:test --stream",
     "diff": "lerna diff",
     "lint": "eslint . --ext .ts,.tsx,.js",
     "start": "lerna run start --stream --parallel --ignore @bigcommerce/examples",

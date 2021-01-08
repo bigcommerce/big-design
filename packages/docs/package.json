@@ -14,9 +14,8 @@
     "build-static": "next build && next export",
     "deploy": "yarn run build-static && touch out/.nojekyll && push-dir --dir=out --branch=gh-pages --verbose",
     "start": "next",
-    "ci": "yarn run lint && yarn run build-static",
-    "lint": "yarn run lint:tsc",
-    "lint:tsc": "tsc --noEmit"
+    "ci:build": "yarn run build-static",
+    "ci:lint": "tsc --noEmit"
   },
   "dependencies": {
     "@babel/core": "^7.12.3",

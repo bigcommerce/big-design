@@ -19,9 +19,8 @@
     "build:dt": "tsc --emitDeclarationOnly",
     "build:icons": "node scripts/build.js",
     "download": "node scripts/downloader.js",
-    "ci": "yarn run lint && yarn run build",
-    "lint": "yarn run lint:tsc",
-    "lint:tsc": "tsc --noEmit",
+    "ci:build": "yarn run build",
+    "ci:lint": "tsc --noEmit",
     "prepublishOnly": "rimraf dist && yarn run ci"
   },
   "files": [

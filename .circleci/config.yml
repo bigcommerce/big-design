@@ -2,18 +2,30 @@ version: 2.1
 orbs:
   node: circleci/node@1.1.4
 
-jobs:
-  build:
-    executor:
-      name: node/default
-      tag: '10.16'
+#################################################################################
+# Aliases
+#################################################################################
+executor_defaults: &executor_defaults
+  executor:
+    name: node/default
+    tag: '10.16'
 
+filters_defaults: &filters_defaults
+  filters:
+    branches:
+      ignore: gh-pages
+
+#################################################################################
+# Commands
+#################################################################################
+commands:
+  install-yarn:
     steps:
-      - checkout
-
       - node/install-yarn:
           version: 1.17.3
 
+  install-deps:
+    steps:
       - node/with-cache:
           cache-key: yarn.lock
           cache-version: v3
@@ -31,20 +43,49 @@ jobs:
                       exit 1
                     fi
 
+#################################################################################
+# Jobs
+#################################################################################
+jobs:
+  lint:
+    <<: *executor_defaults
+    steps:
+      - checkout
+      - install-yarn
+      - install-deps
+      - run: yarn run ci:lint
+
+  test:
+    <<: *executor_defaults
+    steps:
+      - checkout
+      - install-yarn
+      - install-deps
+      - run: yarn run ci:test
+
+  build:
+    <<: *executor_defaults
+    steps:
+      - checkout
+      - install-yarn
+      - install-deps
       - run:
-          command: yarn run ci
+          command: yarn run ci:build
           environment:
             NEXT_TELEMETRY_DISABLED: '1'
 
-      - run:
-          command: yarn run lint
-
-
+#################################################################################
+# Workflows
+#################################################################################
 workflows:
   version: 2
-  build_and_test:
+  ci-checks:
     jobs:
+      - lint:
+        <<: *filters_defaults
+
+      - test:
+        <<: *filters_defaults
+
       - build:
-        filters:
-          branches:
-            ignore: gh-pages
+        <<: *filters_defaults

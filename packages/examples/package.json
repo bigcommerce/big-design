@@ -4,7 +4,8 @@
   "version": "0.13.2",
   "scripts": {
     "start": "parcel index.html",
-    "ci": "tsc --noEmit && parcel build index.html"
+    "ci:build": "parcel build index.html",
+    "ci:lint": "tsc --noEmit"
   },
   "dependencies": {
     "@bigcommerce/big-design": "^0.26.2",
