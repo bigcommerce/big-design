@@ -1,5 +1,5 @@
 import { Collapse, H0, H1, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import { CollapsePropTable } from '../../PropTables';
@@ -15,7 +15,7 @@ export default () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [title, setTitle] = React.useState('Show more');
+        const [title, setTitle] = useState('Show more');
         const handleChange = (isOpen: boolean) => setTitle(isOpen ? 'Show less' : 'Show more');
 
         return (

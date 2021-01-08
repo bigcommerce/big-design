@@ -55,7 +55,6 @@ const textModifiers = (props: TextProps) => css`
     css`
       text-transform: uppercase;
     `}
-
 `;
 
 export const StyledH0 = styled.h1<HeadingProps>`
