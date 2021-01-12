@@ -142,7 +142,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   );
 
   const renderDroppableItems = () => (
-    <Droppable droppableId="bd-droppable">
+    <Droppable droppableId={`${uniqueTableId}-bd-droppable`}>
       {(provided) => (
         <Body withFirstRowBorder={headerless} ref={provided.innerRef} {...provided.droppableProps}>
           {items.map((item: T, index) => {
@@ -205,13 +205,6 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     return null;
   };
 
-  const renderWithDragDropContext = () => (
-    <DragDropContext onDragEnd={onDragEnd}>
-      {renderHeaders()}
-      {renderItems()}
-    </DragDropContext>
-  );
-
   return (
     <>
       {shouldRenderActions() && (
@@ -229,7 +222,10 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
       )}
       <StyledTable {...rest} id={tableIdRef.current}>
         {onRowDrop ? (
-          renderWithDragDropContext()
+          <DragDropContext onDragEnd={onDragEnd}>
+            {renderHeaders()}
+            {renderItems()}
+          </DragDropContext>
         ) : (
           <>
             {renderHeaders()}

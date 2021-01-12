@@ -42,6 +42,7 @@ const sort = (items, columnHash, direction) => {
 const dragEnd = (items, from, to) => {
   const item = items.splice(from, 1);
   items.splice(to, 0, ...item);
+
   return items;
 };
 

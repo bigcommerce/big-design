@@ -496,6 +496,20 @@ describe('draggable', () => {
     const dragIcons = container.querySelectorAll('svg');
 
     expect(dragIcons?.length).toBe(items.length);
-    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('onRowDrop called with expected args when a row is dropped', () => {
+    const spaceKey = { keyCode: 32 };
+    const downKey = { keyCode: 40 };
+    const { container } = render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
+    const dragEl = container.querySelector('[data-rbd-draggable-id]') as HTMLElement;
+    dragEl.focus();
+    expect(dragEl).toHaveFocus();
+
+    fireEvent.keyDown(dragEl, spaceKey);
+    fireEvent.keyDown(dragEl, downKey);
+    fireEvent.keyDown(dragEl, spaceKey);
+
+    expect(onRowDrop).toHaveBeenCalledWith(0, 1);
   });
 });
