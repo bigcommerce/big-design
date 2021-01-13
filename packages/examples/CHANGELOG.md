@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/deini/big-design/compare/@bigcommerce/examples@0.13.2...@bigcommerce/examples@0.14.0) (2021-01-13)
+
+**Note:** Version bump only for package @bigcommerce/examples
+
+
+
+
+
 ## [0.13.2](https://github.com/chanceaclark/big-design/compare/@bigcommerce/examples@0.13.1...@bigcommerce/examples@0.13.2) (2020-12-28)
 
 **Note:** Version bump only for package @bigcommerce/examples

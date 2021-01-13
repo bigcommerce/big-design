@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.26.2...@bigcommerce/big-design@0.27.0) (2021-01-13)
+
+
+### Bug Fixes
+
+* **docs:** Specify styled-components version in the README ([#490](https://github.com/bigcommerce/big-design/issues/490)) ([c92403e](https://github.com/bigcommerce/big-design/commit/c92403edf8e29bf1afd3c9c163c37be6ffe17a6c))
+
+
+### Features
+
+* **component:** Add drag and drop support to table component ([#484](https://github.com/bigcommerce/big-design/issues/484)) ([c29d8bf](https://github.com/bigcommerce/big-design/commit/c29d8bffe5532521e0b68dd745e31b1992e896d3))
+
+
+
+
+
 ## [0.26.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.26.1...@bigcommerce/big-design@0.26.2) (2020-12-28)
 
 
