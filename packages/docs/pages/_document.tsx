@@ -1,5 +1,6 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
+import { resetServerContext } from 'react-beautiful-dnd';
 import { ServerStyleSheet } from 'styled-components';
 
 import { GTM_ID, GTM_URL } from '../utils/analytics/gtm';
@@ -8,6 +9,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 export default class AppDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
+    resetServerContext();
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 

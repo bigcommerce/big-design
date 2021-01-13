@@ -4,11 +4,13 @@ import styled from 'styled-components';
 import { withTransition } from '../../../mixins/transitions';
 
 interface StyledTableRowProps {
+  isDragging: boolean;
   isSelected: boolean;
 }
 
 export const StyledTableRow = styled.tr<StyledTableRowProps>`
   ${withTransition(['background-color'])}
+  display: ${({ isDragging }) => (isDragging ? 'table' : 'table-row')};
 
   background-color: ${({ isSelected, theme }) => (isSelected ? theme.colors.primary10 : 'transparent')};
 

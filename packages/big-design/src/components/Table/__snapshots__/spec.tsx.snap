@@ -535,6 +535,7 @@ exports[`renders a simple table 1`] = `
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color;
   transition-property: background-color;
+  display: table-row;
   background-color: transparent;
 }
 
