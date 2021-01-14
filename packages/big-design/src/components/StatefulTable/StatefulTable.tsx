@@ -16,6 +16,7 @@ export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable
 export interface StatefulTableProps<T>
   extends Omit<TableProps<T>, 'columns' | 'pagination' | 'selectable' | 'sortable'> {
   columns: Array<StatefulTableColumn<T>>;
+  dragAndDrop?: boolean;
   pagination?: boolean;
   selectable?: boolean;
   defaultSelected?: T[];
@@ -29,6 +30,7 @@ const InternalStatefulTable = <T extends TableItem>({
   items = [],
   keyField,
   onSelectionChange,
+  dragAndDrop = false,
   pagination = false,
   selectable = false,
   stickyHeader = false,
@@ -86,6 +88,16 @@ const InternalStatefulTable = <T extends TableItem>({
     onSort,
   ]);
 
+  const onDragEnd = useCallback(
+    (from: number, to: number) => {
+      const itemsClone = [...items];
+      const item = itemsClone.splice(from, 1);
+      itemsClone.splice(to, 0, ...item);
+      dispatch({ type: 'ITEMS_CHANGED', items: itemsClone, isPaginationEnabled: pagination });
+    },
+    [items, pagination],
+  );
+
   return (
     <Table
       {...rest}
@@ -97,6 +109,7 @@ const InternalStatefulTable = <T extends TableItem>({
       pagination={paginationOptions}
       selectable={selectableOptions}
       sortable={sortableOptions}
+      onRowDrop={dragAndDrop ? onDragEnd : undefined}
     />
   );
 };

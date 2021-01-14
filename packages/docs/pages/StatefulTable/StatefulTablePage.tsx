@@ -163,6 +163,28 @@ const StatefulTablePage = () => {
         />
         {/* jsx-to-string:end */}
       </CodePreview>
+
+      <H1>Usage with drag and drop</H1>
+
+      <CodePreview>
+        {/* jsx-to-string:start */}
+        <StatefulTable
+          columns={[
+            { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+            { header: 'Name', hash: 'name', render: ({ name }) => name },
+            { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+          ]}
+          items={[
+            { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+            { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+            { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+            { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+            { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+          ]}
+          dragAndDrop
+        />
+        {/* jsx-to-string:end */}
+      </CodePreview>
     </>
   );
 };

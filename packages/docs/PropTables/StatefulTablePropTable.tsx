@@ -20,6 +20,11 @@ const statefulTableProps: Prop[] = [
     required: true,
   },
   {
+    name: 'dragAndDrop',
+    types: 'boolean',
+    description: 'Defines if drag and drop is supported on the table.',
+  },
+  {
     name: 'itemName',
     types: 'string',
     description: 'Item name displayed on the table actions section.',
