@@ -60,6 +60,15 @@ test('pagination can be enabled', async () => {
   await waitForElement(() => getByTestId('simple-table'));
 });
 
+test('dragAndDrop can be enabled', async () => {
+  const { container, getByTestId } = render(getSimpleTable({ dragAndDrop: true }));
+
+  const rows = container.querySelectorAll('tbody > tr');
+
+  expect(rows.length).toBe(25);
+  await waitForElement(() => getByTestId('simple-table'));
+});
+
 test('changing pagination page changes the displayed items', async () => {
   const { getByTitle, getAllByTestId, getByTestId } = render(getSimpleTable({ pagination: true }));
 

@@ -16,12 +16,20 @@ export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable
 export interface StatefulTableProps<T>
   extends Omit<TableProps<T>, 'columns' | 'pagination' | 'selectable' | 'sortable'> {
   columns: Array<StatefulTableColumn<T>>;
-  dragAndDrop?: boolean;
+  draggable?: boolean;
   pagination?: boolean;
   selectable?: boolean;
   defaultSelected?: T[];
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }
+
+const swapArrayElements = <T extends unknown>(array: T[], from: number, to: number) => {
+  if (from > to) {
+    return [...array.slice(0, to), array[from], ...array.slice(to, from), ...array.slice(from + 1, array.length)];
+  } else {
+    return [...array.slice(0, from), ...array.slice(from + 1, to), array[from], ...array.slice(to, array.length)];
+  }
+};
 
 const InternalStatefulTable = <T extends TableItem>({
   columns = [],
@@ -30,7 +38,7 @@ const InternalStatefulTable = <T extends TableItem>({
   items = [],
   keyField,
   onSelectionChange,
-  dragAndDrop = false,
+  draggable = false,
   pagination = false,
   selectable = false,
   stickyHeader = false,
@@ -90,10 +98,9 @@ const InternalStatefulTable = <T extends TableItem>({
 
   const onDragEnd = useCallback(
     (from: number, to: number) => {
-      const itemsClone = [...items];
-      const item = itemsClone.splice(from, 1);
-      itemsClone.splice(to, 0, ...item);
-      dispatch({ type: 'ITEMS_CHANGED', items: itemsClone, isPaginationEnabled: pagination });
+      const updatedItems = swapArrayElements(items, from, to);
+
+      dispatch({ type: 'ITEMS_CHANGED', items: updatedItems, isPaginationEnabled: pagination });
     },
     [items, pagination],
   );
@@ -109,7 +116,7 @@ const InternalStatefulTable = <T extends TableItem>({
       pagination={paginationOptions}
       selectable={selectableOptions}
       sortable={sortableOptions}
-      onRowDrop={dragAndDrop ? onDragEnd : undefined}
+      onRowDrop={draggable ? onDragEnd : undefined}
     />
   );
 };
