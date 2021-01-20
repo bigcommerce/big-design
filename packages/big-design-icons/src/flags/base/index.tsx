@@ -12,7 +12,7 @@ export function createStyledFlagIcon(FlagIcon: React.FC<FlagIconProps>) {
   const StyledFlagIcon = styled(FlagIcon)`
     ${({ size, theme }) =>
       size && {
-        height: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
+        width: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
       }}
   `;
 
