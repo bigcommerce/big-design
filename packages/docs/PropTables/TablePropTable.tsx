@@ -31,6 +31,11 @@ const tableProps: Prop[] = [
     description: 'Unique property identifier for items.',
   },
   {
+    name: 'onRowDrop',
+    types: '(from: number, to: number) => void',
+    description: 'Callback called with form and to index once a row has been dragged and dropped.',
+  },
+  {
     name: 'pagination',
     types: (
       <NextLink href="/Pagination/PaginationPage" as="/pagination">
