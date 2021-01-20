@@ -23,12 +23,17 @@ export interface StatefulTableProps<T>
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }
 
-const swapArrayElements = <T extends unknown>(array: T[], from: number, to: number) => {
-  if (from > to) {
-    return [...array.slice(0, to), array[from], ...array.slice(to, from), ...array.slice(from + 1, array.length)];
-  } else {
-    return [...array.slice(0, from), ...array.slice(from + 1, to), array[from], ...array.slice(to, array.length)];
-  }
+const swapArrayElements = <T extends unknown>(array: T[], sourceIndex: number, destinationIndex: number) => {
+  const smallerIndex = Math.min(sourceIndex, destinationIndex);
+  const largerIndex = Math.max(sourceIndex, destinationIndex);
+
+  return [
+    ...array.slice(0, smallerIndex),
+    ...(sourceIndex < destinationIndex ? array.slice(smallerIndex + 1, largerIndex + 1) : []),
+    array[sourceIndex],
+    ...(sourceIndex > destinationIndex ? array.slice(smallerIndex, largerIndex) : []),
+    ...array.slice(largerIndex + 1),
+  ];
 };
 
 const InternalStatefulTable = <T extends TableItem>({
@@ -98,11 +103,11 @@ const InternalStatefulTable = <T extends TableItem>({
 
   const onDragEnd = useCallback(
     (from: number, to: number) => {
-      const updatedItems = swapArrayElements(items, from, to);
+      const updatedItems = swapArrayElements(state.currentItems, from, to);
 
       dispatch({ type: 'ITEMS_CHANGED', items: updatedItems, isPaginationEnabled: pagination });
     },
-    [items, pagination],
+    [state.currentItems, pagination],
   );
 
   return (
