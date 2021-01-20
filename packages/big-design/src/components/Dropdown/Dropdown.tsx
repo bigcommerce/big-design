@@ -1,298 +1,119 @@
 import { useSelect, UseSelectState } from 'downshift';
-import React, { cloneElement, Fragment, isValidElement, memo, useCallback, useMemo, useRef } from 'react';
-import { Manager, Popper, Reference } from 'react-popper';
+import React, { cloneElement, isValidElement, memo, useCallback, useMemo, useRef } from 'react';
+import { usePopper } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
-import { Flex } from '../Flex';
-import { FlexItem } from '../Flex/Item';
+import { Box } from '../Box';
 import { List } from '../List';
-import { ListGroupHeader } from '../List/GroupHeader';
-import { ListGroupSeparator } from '../List/GroupSeparator';
-import { ListItem } from '../List/Item';
-import { Tooltip } from '../Tooltip';
 
-import { StyledBox, StyledLink } from './styled';
+import { StyledBox } from './styled';
 import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from './types';
 
 export const Dropdown = memo(
   ({
+    autoWidth = false,
     className,
     disabled = false,
-    maxHeight = 250,
+    maxHeight,
     id,
     items,
-    placement = 'bottom-start' as 'bottom-start',
+    placement = 'bottom-start' as const,
+    positionFixed = false,
     toggle,
     style,
-    ...rest
+    ...props
   }: DropdownProps) => {
-    // We only need the items to pass down to Downshift, not groups
-    const onlyItems = useMemo(() => flattenItems(items), [items]);
-
-    // We need to keep track of key since we need to use it between groups.
-    const itemKey = useRef(0);
-
     const dropdownUniqueId = useUniqueId('dropdown');
+
+    const flattenItems = useCallback((items: DropdownProps['items']) => {
+      const isGroups = (
+        items: Array<DropdownItemGroup | DropdownItem | DropdownLinkItem>,
+      ): items is Array<DropdownItemGroup> => items.every((items) => 'items' in items && !('content' in items));
+
+      return isGroups(items) ? items.map((group) => group.items).reduce((acum, curr) => acum.concat(curr), []) : items;
+    }, []);
+
+    // We only need the items to pass down to Downshift, not groups
+    const flattenedItems = useMemo(() => flattenItems(items), [flattenItems, items]);
 
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
-        if (!selectedItem) {
-          return;
-        }
-
-        if (selectedItem.type !== 'link' && typeof selectedItem.onItemClick === 'function') {
+        // Links don't trigger an onItemClick
+        if (selectedItem && selectedItem.type !== 'link' && typeof selectedItem.onItemClick === 'function') {
+          // Call onItemClick with selected item
           selectedItem.onItemClick(selectedItem);
         }
       },
       [],
     );
 
-    const { getItemProps, getMenuProps, getToggleButtonProps, highlightedIndex, isOpen } = useSelect<
-      DropdownItem | DropdownLinkItem | null
-    >({
+    const { getItemProps, getMenuProps, getToggleButtonProps, highlightedIndex, isOpen } = useSelect({
       circularNavigation: true,
       defaultHighlightedIndex: 0,
       id: dropdownUniqueId,
       itemToString: (item) => (item ? item.content : ''),
-      items: onlyItems,
+      items: flattenedItems,
       menuId: id,
       onSelectedItemChange: handleOnSelectedItemChange,
-      selectedItem: null,
+      selectedItem: null, // We never set a selected item
       toggleButtonId: toggle.props.id,
+    });
+
+    // Popper
+    const referenceRef = useRef(null);
+    const popperRef = useRef(null);
+
+    const { attributes, styles, update } = usePopper(referenceRef.current, popperRef.current, {
+      modifiers: [
+        {
+          name: 'eventListeners',
+          options: {
+            scroll: isOpen,
+            resize: isOpen,
+          },
+        },
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 4],
+          },
+        },
+      ],
+      placement,
+      strategy: positionFixed ? 'fixed' : 'absolute',
     });
 
     const renderToggle = useMemo(() => {
       return (
-        <Reference>
-          {({ ref }) =>
-            isValidElement(toggle) &&
-            cloneElement<React.HTMLAttributes<any> & React.RefAttributes<any>>(toggle as any, {
-              ...getToggleButtonProps({
-                disabled,
-                ref,
-              }),
-              'aria-expanded': isOpen,
-            })
-          }
-        </Reference>
+        isValidElement(toggle) &&
+        cloneElement(toggle, {
+          ...getToggleButtonProps({
+            'aria-expanded': isOpen, // Because of memoization, we need to manually set this option
+            disabled,
+            ref: referenceRef,
+          }),
+        })
       );
     }, [disabled, getToggleButtonProps, isOpen, toggle]);
 
-    const renderItem = useCallback(
-      (item: DropdownItem) => {
-        const { actionType, content, disabled: itemDisabled, hash, onItemClick, type, ...itemProps } = item;
-        const key = itemKey.current;
-        const isHighlighted = highlightedIndex === key;
-
-        itemKey.current += 1;
-
-        return (
-          <ListItem
-            {...itemProps}
-            {...getItemProps({
-              disabled: itemDisabled,
-              index: key,
-              item,
-            })}
-            actionType={actionType}
-            isAction={true}
-            isHighlighted={isHighlighted}
-            key={`${content}-${key}`}
-          >
-            {getContent(item, isHighlighted)}
-          </ListItem>
-        );
-      },
-      [getItemProps, highlightedIndex],
-    );
-
-    const renderLinkItem = useCallback(
-      (item: DropdownLinkItem) => {
-        const { actionType, content, disabled: itemDisabled, url, target, type, ...itemProps } = item;
-        const key = itemKey.current;
-        const isHighlighted = highlightedIndex === key;
-
-        itemKey.current += 1;
-
-        return (
-          <ListItem
-            {...itemProps}
-            {...getItemProps({
-              disabled: itemDisabled,
-              index: key,
-              item,
-            })}
-            actionType={actionType}
-            isAction={true}
-            isHighlighted={isHighlighted}
-            key={`${content}-${key}`}
-          >
-            {getContent(item, isHighlighted)}
-          </ListItem>
-        );
-      },
-      [getItemProps, highlightedIndex],
-    );
-
-    const renderItems = useCallback(
-      (dropdownItems: Array<DropdownItem | DropdownLinkItem>) => {
-        return (
-          Array.isArray(dropdownItems) &&
-          dropdownItems.map((item) => (item.type === 'link' ? renderLinkItem(item) : renderItem(item)))
-        );
-      },
-      [renderItem, renderLinkItem],
-    );
-
-    const renderGroup = useCallback(
-      (group: DropdownItemGroup) => {
-        return (
-          <>
-            {group.separated && <ListGroupSeparator />}
-            {group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
-            {renderItems(group.items)}
-          </>
-        );
-      },
-      [renderItems],
-    );
-
-    const renderChildren = useMemo(() => {
-      // Reset the key every time we rerender children
-      itemKey.current = 0;
-
-      if (Array.isArray(items) && items.every(isGroup)) {
-        return (items as DropdownItemGroup[]).map((group, index) => (
-          <Fragment key={index}>{renderGroup(group)}</Fragment>
-        ));
-      }
-
-      if (Array.isArray(items) && items.every(isItem)) {
-        return renderItems(items as Array<DropdownItem | DropdownLinkItem>);
-      }
-    }, [items, renderGroup, renderItems]);
-
-    const renderList = useMemo(
-      () => (
-        <Popper
-          modifiers={[{ name: 'eventListeners' }, { name: 'offset', options: { offset: [0, 4] } }]}
-          strategy="absolute"
-          placement={placement}
-        >
-          {({ placement: popperPlacement, ref, style: popperStyle, update }) => (
-            <List
-              {...rest}
-              {...getMenuProps({
-                onKeyDown: (event) => {
-                  if (event.key === 'Enter') {
-                    const element = event.currentTarget.children[highlightedIndex];
-                    const link = element.querySelector('a');
-
-                    // We want to click the link if it is selected
-                    if (link) {
-                      link.click();
-                    }
-                  }
-                },
-                ref,
-              })}
-              data-placement={popperPlacement}
-              isOpen={isOpen}
-              maxHeight={maxHeight}
-              style={popperStyle}
-              update={update}
-            >
-              {isOpen && renderChildren}
-            </List>
-          )}
-        </Popper>
-      ),
-      [getMenuProps, highlightedIndex, isOpen, maxHeight, placement, renderChildren, rest],
-    );
-
     return (
-      <Manager>
-        <StyledBox>
-          {renderToggle}
-          {renderList}
-        </StyledBox>
-      </Manager>
+      <StyledBox>
+        {renderToggle}
+        <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
+          <List
+            {...props}
+            autoWidth={autoWidth}
+            getItemProps={getItemProps}
+            getMenuProps={getMenuProps}
+            highlightedIndex={highlightedIndex}
+            isDropdown={true}
+            isOpen={isOpen}
+            items={items}
+            maxHeight={maxHeight}
+            update={update}
+          />
+        </Box>
+      </StyledBox>
     );
   },
 );
-
-const flattenItems = (
-  items: Array<DropdownItem | DropdownLinkItem> | DropdownItemGroup[],
-): Array<DropdownItem | DropdownLinkItem> => {
-  return items.every(isGroup)
-    ? (items as DropdownItemGroup[])
-        .map((group: DropdownItemGroup) => group.items)
-        .reduce((acum, curr) => acum.concat(curr), [])
-    : (items as DropdownItem[]);
-};
-
-const isGroup = (item: DropdownItem | DropdownLinkItem | DropdownItemGroup) => {
-  return 'items' in item && !('content' in item);
-};
-
-const isItem = (item: DropdownItem | DropdownLinkItem | DropdownItemGroup) => {
-  return 'content' in item && !('items' in item);
-};
-
-const renderIcon = (item: DropdownItem | DropdownLinkItem, isHighlighted: boolean) => {
-  return (
-    isValidElement(item.icon) &&
-    cloneElement(item.icon, {
-      color: iconColor(item, isHighlighted),
-      size: 'large',
-    })
-  );
-};
-
-const getContent = (item: DropdownItem | DropdownLinkItem, isHighlighted: boolean) => {
-  const { disabled: itemDisabled, icon, tooltip } = item;
-
-  const baseContent = (
-    <Flex alignItems="center" flexDirection="row">
-      {icon && <FlexItem paddingRight="xSmall">{renderIcon(item, isHighlighted)}</FlexItem>}
-      {item.content}
-    </Flex>
-  );
-
-  const content = item.type === 'link' && !itemDisabled ? wrapInLink(item, baseContent) : baseContent;
-
-  return itemDisabled && tooltip ? wrapInTooltip(tooltip, content) : content;
-};
-
-const iconColor = (item: DropdownItem | DropdownLinkItem, isHighlighted: boolean) => {
-  if (item.disabled) {
-    return 'secondary40';
-  }
-
-  if (!isHighlighted) {
-    return 'secondary60';
-  }
-
-  return item.actionType === 'destructive' ? 'danger50' : 'primary';
-};
-
-const wrapInLink = (item: DropdownLinkItem, content: React.ReactChild) => {
-  return (
-    <StyledLink href={item.url} tabIndex={-1} target={item.target}>
-      {content}
-    </StyledLink>
-  );
-};
-
-const wrapInTooltip = (tooltip: DropdownItem['tooltip'], tooltipTrigger: React.ReactChild) => {
-  return (
-    <Tooltip
-      placement="left"
-      trigger={tooltipTrigger}
-      modifiers={[{ name: 'preventOverflow' }, { name: 'offset', options: { offset: [0, 20] } }]}
-      inline={false}
-    >
-      {tooltip}
-    </Tooltip>
-  );
-};

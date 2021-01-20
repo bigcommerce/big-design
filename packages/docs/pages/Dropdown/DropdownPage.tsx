@@ -329,6 +329,31 @@ const DropdownPage = () => (
       />
       {/* jsx-to-string:end */}
     </CodePreview>
+
+    <H2>Item Description</H2>
+
+    <Text>It is possible to add a description for items.</Text>
+
+    <CodePreview>
+      {/* jsx-to-string:start */}
+      <Dropdown
+        items={[
+          { hash: '1', content: 'Item #1', description: 'Description for option #1', onItemClick: (item) => item },
+          {
+            content: 'Item #2',
+            description: 'Description for item #2',
+            disabled: true,
+            type: 'link',
+            url: '#',
+          },
+          { hash: '3', content: 'Item #3', onItemClick: (item) => item },
+          { hash: '4', content: 'Item #4', onItemClick: (item) => item },
+          { hash: '5', content: 'Item #5', onItemClick: (item) => item },
+        ]}
+        toggle={<Button>Button</Button>}
+      />
+      {/* jsx-to-string:end */}
+    </CodePreview>
   </>
 );
 

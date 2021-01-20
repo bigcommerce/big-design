@@ -1,9 +1,7 @@
-import { CheckIcon } from '@bigcommerce/big-design-icons';
 import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
 import React, {
   cloneElement,
   createRef,
-  Fragment,
   isValidElement,
   RefObject,
   useCallback,
@@ -12,92 +10,92 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { Manager, Popper, Reference } from 'react-popper';
+import { usePopper } from 'react-popper';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { Box } from '../Box';
-import { Flex } from '../Flex';
-import { FlexItem } from '../Flex/Item';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
-import { ListGroupHeader } from '../List/GroupHeader';
-import { ListItem } from '../List/Item';
-import { Small } from '../Typography';
-
-import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from './styled';
-import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from './types';
+import { SelectOption, SelectOptionGroup, SelectProps } from '../Select';
+import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
+import { SelectAction } from '../Select/types';
 
 export const Select = typedMemo(
-  <T extends any>({
+  <T extends unknown>({
     action,
     autoWidth = false,
     className,
     disabled,
     filterable = true,
-    inputRef,
     id,
+    inputRef,
     label,
     labelId,
-    maxHeight = 250,
+    maxHeight,
     onOptionChange,
     options,
     placeholder,
-    placement = 'bottom-start' as 'bottom-start',
+    placement = 'bottom-start' as const,
     positionFixed = false,
     required,
     style,
     value,
-    ...rest
+    ...props
   }: SelectProps<T>): ReturnType<React.FC<SelectProps<T>>> => {
-    // Merge options and action
-    const flattenedOptions = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
-      action,
-      options,
-    ]);
-
-    const itemKey = useRef(0);
-
-    const findSelectedOption = useMemo(() => {
-      return flattenedOptions.find((option) => 'value' in option && option.value === value) as
-        | SelectOption<T>
-        | undefined;
-    }, [flattenedOptions, value]);
-
-    const [selectOptions, setSelectOptions] = useState(flattenedOptions);
-    const [inputValue, setInputValue] = useState(findSelectedOption ? findSelectedOption.content : '');
-    const [selectedOption, setSelectedOption] = useState(findSelectedOption);
-    const [highlightedIndex, setHighlightedIndex] = useState(0);
-
     const defaultRef: RefObject<HTMLInputElement> = createRef();
     const selectUniqueId = useUniqueId('select');
 
+    const [inputValue, setInputValue] = useState<string | undefined>('');
+
+    const flattenOptions = useCallback((options: SelectProps<T>['options']) => {
+      const isGroups = (
+        options: Array<SelectOptionGroup<T> | SelectOption<T>>,
+      ): options is Array<SelectOptionGroup<T>> =>
+        options.every((option) => 'options' in option && !('value' in option));
+
+      return isGroups(options)
+        ? options.map((group) => group.options).reduce((acum, curr) => acum.concat(curr), [])
+        : options;
+    }, []);
+
+    // We need to pass Downshift only options without groups for accessibility tracking
+    const flattenedOptions = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
+      action,
+      flattenOptions,
+      options,
+    ]);
+
+    // Find the selected option
+    const selectedOption = useMemo(() => {
+      return flattenedOptions.find((option): option is SelectOption<T> => 'value' in option && option.value === value);
+    }, [flattenedOptions, value]);
+
+    // Initialize with flattened options
+    const [filteredOptions, setFilteredOptions] = useState(flattenedOptions);
+
     // Need to set select options if options prop changes
-    useEffect(() => setSelectOptions(flattenedOptions), [flattenedOptions]);
+    useEffect(() => setFilteredOptions(flattenedOptions), [flattenedOptions]);
 
-    // Set the input's value to match the selected item
-    useEffect(() => {
-      setInputValue(selectedOption ? selectedOption.content : '');
-    }, [selectedOption]);
-
-    useEffect(() => {
-      setSelectedOption(findSelectedOption);
-    }, [findSelectedOption]);
-
-    const findSelectedOptionIndex = useMemo(() => {
-      return selectOptions.findIndex((item) => 'value' in item && item.value === value);
-    }, [selectOptions, value]);
-
-    useEffect(() => {
-      setHighlightedIndex(findSelectedOptionIndex);
-    }, [findSelectedOptionIndex]);
-
-    const handleSetInputValue = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && changes.isOpen === true) {
-        setSelectOptions(filterOptions(changes.inputValue));
-        setInputValue(changes.inputValue || '');
+    const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
+        action.onActionClick(inputValue || null);
+      } else if (changes.selectedItem && 'value' in changes.selectedItem && typeof onOptionChange === 'function') {
+        onOptionChange(changes.selectedItem.value, changes.selectedItem);
       }
+    };
+
+    const handleOnInputValueChange = ({
+      inputValue,
+      isOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      // Filter only when List is open
+      if (filterable && isOpen === true) {
+        setFilteredOptions(filterOptions(inputValue));
+      }
+
+      setInputValue(inputValue || '');
     };
 
     const filterOptions = (inputVal = '') => {
@@ -108,46 +106,20 @@ export const Select = typedMemo(
       );
     };
 
-    const handleOnHighlightedIndexChange = (
-      changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>,
-    ) => {
-      if (typeof changes.highlightedIndex !== 'undefined') {
-        setHighlightedIndex(changes.highlightedIndex);
-      }
-    };
-
-    const handleOnIsOpenChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && changes.isOpen === false) {
-        // Reset the items if filtered
-        setSelectOptions(flattenedOptions);
-      }
-    };
-
-    const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
-        action.onActionClick(inputValue);
-      } else if (changes.selectedItem && 'value' in changes.selectedItem && typeof onOptionChange === 'function') {
-        onOptionChange(changes.selectedItem.value, changes.selectedItem);
+    const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (filterable && isOpen === false) {
+        // Reset the options when the List is closed
+        setFilteredOptions(flattenedOptions);
       }
     };
 
     const handleStateReducer = (
-      state: UseComboboxState<SelectOption<T> | SelectAction | null>,
+      _state: UseComboboxState<SelectOption<T> | SelectAction | null>,
       actionAndChanges: UseComboboxStateChangeOptions<SelectOption<T> | SelectAction | null>,
     ) => {
       switch (actionAndChanges.type) {
         case useCombobox.stateChangeTypes.InputBlur:
           return { ...actionAndChanges.changes, inputValue: selectedOption ? selectedOption.content : '' };
-        case useCombobox.stateChangeTypes.InputKeyDownEnter:
-        case useCombobox.stateChangeTypes.ItemClick:
-          if (
-            (actionAndChanges.changes.selectedItem && actionAndChanges.changes.selectedItem.content) ===
-            (action && action.content)
-          ) {
-            return { ...actionAndChanges.changes, inputValue: state.inputValue };
-          }
-
-          return actionAndChanges.changes;
         default:
           return actionAndChanges.changes;
       }
@@ -161,30 +133,47 @@ export const Select = typedMemo(
       getLabelProps,
       getMenuProps,
       getToggleButtonProps,
+      highlightedIndex,
       isOpen,
       openMenu,
-    } = useCombobox<SelectOption<T> | SelectAction | null>({
-      highlightedIndex,
+      selectedItem,
+    } = useCombobox({
       id: selectUniqueId,
       inputId: id,
       inputValue,
-      itemToString: (option) => (option ? option.content : ''),
-      items: selectOptions,
+      itemToString: (item) => (item ? item.content : ''),
+      items: filteredOptions,
       labelId,
-      onHighlightedIndexChange: handleOnHighlightedIndexChange,
-      onInputValueChange: handleSetInputValue,
+      onInputValueChange: handleOnInputValueChange,
       onIsOpenChange: handleOnIsOpenChange,
       onSelectedItemChange: handleOnSelectedItemChange,
       selectedItem: selectedOption || null,
       stateReducer: handleStateReducer,
     });
 
-    // Reset the value when Select is closed
-    useEffect(() => {
-      if (!isOpen) {
-        setInputValue(selectedOption ? selectedOption.content : '');
-      }
-    }, [isOpen, selectedOption]);
+    // Popper
+    const referenceRef = useRef(null);
+    const popperRef = useRef(null);
+
+    const { styles, attributes, update } = usePopper(referenceRef.current, popperRef.current, {
+      modifiers: [
+        {
+          name: 'eventListeners',
+          options: {
+            scroll: isOpen,
+            resize: isOpen,
+          },
+        },
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 4],
+          },
+        },
+      ],
+      strategy: positionFixed ? 'fixed' : 'absolute',
+      placement,
+    });
 
     const setCallbackRef = useCallback(
       (ref: HTMLInputElement) => {
@@ -242,52 +231,49 @@ export const Select = typedMemo(
 
     const renderInput = useMemo(() => {
       return (
-        <Reference>
-          {({ ref }) => (
-            <StyledInputContainer ref={ref}>
-              <Input
-                {...rest}
-                {...getInputProps({
-                  autoComplete: 'off',
-                  disabled,
-                  onClick: () => {
-                    !isOpen && openMenu();
-                  },
-                  onFocus: () => {
-                    !isOpen && openMenu();
-                  },
-                  onKeyDown: (event) => {
-                    switch (event.key) {
-                      case 'Enter':
-                        event.preventDefault();
-                        if (isOpen === false) {
-                          openMenu();
-                          (event.nativeEvent as any).preventDownshiftDefault = true;
-                        }
-                        break;
-                      case 'Escape':
-                        if (isOpen === false) {
-                          // reset select
-                          onOptionChange();
-                          setHighlightedIndex(-1);
-                        } else {
-                          closeMenu();
-                        }
-                        (event.nativeEvent as any).preventDownshiftDefault = true;
-                        break;
+        <StyledInputContainer ref={referenceRef}>
+          <Input
+            {...getInputProps({
+              ...props,
+              autoComplete: 'off',
+              disabled,
+              onClick: () => {
+                !isOpen && openMenu();
+              },
+              onFocus: () => {
+                !isOpen && openMenu();
+              },
+              onKeyDown: (event) => {
+                switch (event.key) {
+                  case 'Enter':
+                    event.preventDefault();
+                    if (isOpen === false) {
+                      openMenu();
+                      // https://github.com/downshift-js/downshift/issues/734
+                      (event.nativeEvent as any).preventDownshiftDefault = true;
                     }
-                  },
-                  placeholder,
-                  ref: getInputRef(),
-                })}
-                iconLeft={selectedOption?.icon}
-                iconRight={renderToggle}
-                readOnly={!filterable}
-                required={required}
-              />
-            </StyledInputContainer>
-          )}
-        </Reference>
+                    break;
+                  case 'Escape':
+                    if (isOpen === false) {
+                      // Reset the value to empty
+                      onOptionChange();
+                    } else {
+                      closeMenu();
+                    }
+                    // https://github.com/downshift-js/downshift/issues/734
+                    (event.nativeEvent as any).preventDownshiftDefault = true;
+                    break;
+                }
+              },
+              placeholder,
+              ref: getInputRef(),
+              readOnly: !filterable,
+              required: required,
+            })}
+            iconLeft={selectedItem?.icon}
+            iconRight={renderToggle}
+          />
+        </StyledInputContainer>
       );
     }, [
       closeMenu,
@@ -298,216 +284,33 @@ export const Select = typedMemo(
       isOpen,
       onOptionChange,
       openMenu,
-      selectedOption,
       placeholder,
+      props,
       renderToggle,
       required,
-      rest,
+      selectedItem,
     ]);
-
-    const renderAction = useCallback(
-      (actionItem: SelectAction) => {
-        const index = selectOptions.length - 1;
-        const isHighlighted = highlightedIndex === index;
-        const { disabled: itemDisabled, content, icon, onActionClick, ...itemProps } = actionItem;
-
-        return (
-          <Box borderTop="box" marginTop="xSmall" paddingTop="xSmall" key={`${content}-${index}`}>
-            <ListItem
-              {...itemProps}
-              {...getItemProps({
-                disabled: itemDisabled,
-                index,
-                item: actionItem,
-              })}
-              autoWidth={autoWidth}
-              isAction={true}
-              isHighlighted={isHighlighted}
-            >
-              {getContent(actionItem, isHighlighted)}
-            </ListItem>
-          </Box>
-        );
-      },
-      [getItemProps, autoWidth, highlightedIndex, selectOptions.length],
-    );
-
-    const renderOptions = useCallback(
-      (items: Array<SelectOption<T>>) =>
-        items.map((item) => {
-          if (
-            !selectOptions.find(
-              (option: SelectOption<T> | SelectAction) => 'value' in option && option.value === item.value,
-            )
-          ) {
-            return null;
-          }
-          const key = itemKey.current;
-
-          itemKey.current += 1;
-
-          const isHighlighted = highlightedIndex === key;
-          const isSelected = selectedOption ? 'value' in item && selectedOption.value === item.value : false;
-
-          const { disabled: itemDisabled, content, icon, ...itemProps } = item;
-
-          return (
-            <ListItem
-              {...itemProps}
-              {...getItemProps({
-                disabled: itemDisabled,
-                index: key,
-                item,
-              })}
-              autoWidth={autoWidth}
-              isHighlighted={isHighlighted}
-              isSelected={isSelected}
-              key={`${content}-${key}`}
-            >
-              {getContent(item, isHighlighted)}
-              {isSelected && <CheckIcon color="primary" size="large" />}
-            </ListItem>
-          );
-        }),
-      [getItemProps, autoWidth, highlightedIndex, selectedOption, selectOptions],
-    );
-
-    const renderGroup = useCallback(
-      (group: SelectOptionGroup<T>) => {
-        return (
-          <>
-            <ListGroupHeader>{group.label}</ListGroupHeader>
-            {renderOptions(group.options)}
-          </>
-        );
-      },
-      [renderOptions],
-    );
-
-    const renderChildren = useMemo(() => {
-      itemKey.current = 0;
-
-      if (Array.isArray(options) && options.every(isGroup)) {
-        return (
-          <>
-            {(options as Array<SelectOptionGroup<T>>).map((group, index) => (
-              <Fragment key={index}>{renderGroup(group)}</Fragment>
-            ))}
-            {action && renderAction(action)}
-          </>
-        );
-      }
-
-      if (
-        Array.isArray(options) &&
-        options.every((item: SelectOption<T> | SelectOptionGroup<T>) => {
-          return 'value' in item && !('options' in item);
-        })
-      ) {
-        return (
-          <>
-            {renderOptions(options as Array<SelectOption<T>>)}
-            {action && renderAction(action)}
-          </>
-        );
-      }
-    }, [action, options, renderAction, renderGroup, renderOptions]);
-
-    const renderList = useMemo(() => {
-      return (
-        <Popper
-          modifiers={[{ name: 'offset', options: { offset: [0, 4] } }]}
-          placement={placement}
-          strategy={positionFixed ? 'fixed' : 'absolute'}
-        >
-          {({ placement: popperPlacement, ref, style: popperStyle, update }) => (
-            <List
-              {...getMenuProps({ ref })}
-              data-placement={popperPlacement}
-              isOpen={isOpen}
-              maxHeight={maxHeight}
-              style={popperStyle}
-              update={update}
-            >
-              {isOpen && renderChildren}
-            </List>
-          )}
-        </Popper>
-      );
-    }, [getMenuProps, isOpen, maxHeight, placement, positionFixed, renderChildren]);
 
     return (
       <div>
-        <Manager>
-          {renderLabel}
-          <div {...getComboboxProps()}>{renderInput}</div>
-          {renderList}
-        </Manager>
+        {renderLabel}
+        <div {...getComboboxProps()}>{renderInput}</div>
+        <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
+          <List
+            action={action}
+            autoWidth={autoWidth}
+            filteredItems={filteredOptions}
+            getItemProps={getItemProps}
+            getMenuProps={getMenuProps}
+            highlightedIndex={highlightedIndex}
+            isOpen={isOpen}
+            items={options}
+            maxHeight={maxHeight}
+            selectedItem={selectedItem && 'value' in selectedItem ? selectedItem : null}
+            update={update}
+          />
+        </Box>
       </div>
     );
   },
 );
-
-const flattenOptions = <T extends any>(
-  items: Array<SelectOption<T> | SelectOptionGroup<T>>,
-): Array<SelectOption<T>> => {
-  return items.every(isGroup)
-    ? (items as Array<SelectOptionGroup<T>>)
-        .map((group: SelectOptionGroup<T>) => group.options)
-        .reduce((acc, curr) => acc.concat(curr), [])
-    : (items as Array<SelectOption<T>>);
-};
-
-const isGroup = <T extends any>(item: SelectOption<T> | SelectOptionGroup<T>) => {
-  return 'options' in item && !('value' in item);
-};
-
-const getContent = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
-  const { content, disabled, description, icon } = item;
-
-  return (
-    <Flex alignItems="center" flexDirection="row">
-      {icon && (
-        <FlexItem
-          alignSelf={description ? 'flex-start' : undefined}
-          paddingRight="xSmall"
-          paddingTop={description ? 'xSmall' : undefined}
-        >
-          {renderIcon(item, isHighlighted)}
-        </FlexItem>
-      )}
-      {description ? (
-        <FlexItem paddingVertical="xSmall">
-          {content}
-          <Small color={descriptionColor(disabled)}>{description}</Small>
-        </FlexItem>
-      ) : (
-        content
-      )}
-    </Flex>
-  );
-};
-
-const renderIcon = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
-  return (
-    isValidElement(item.icon) &&
-    cloneElement(item.icon, {
-      color: iconColor(item, isHighlighted),
-      size: 'large',
-    })
-  );
-};
-
-const iconColor = <T extends any>(item: SelectOption<T> | SelectAction, isHighlighted: boolean) => {
-  if (item.disabled) {
-    return 'secondary40';
-  }
-
-  if (!isHighlighted || !('onActionClick' in item)) {
-    return 'secondary60';
-  }
-
-  return 'actionType' in item ? (item.actionType === 'destructive' ? 'danger50' : 'primary') : 'primary';
-};
-
-const descriptionColor = (isDisabled: boolean | undefined) => (isDisabled ? 'secondary40' : 'secondary60');

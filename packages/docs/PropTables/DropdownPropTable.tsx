@@ -38,6 +38,16 @@ const dropdownProps: Prop[] = [
     description: 'Sets the placement of the Dropdown relative to the anchor.',
   },
   {
+    name: 'positionFixed',
+    defaultValue: 'false',
+    types: 'boolean',
+    description: (
+      <>
+        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to position the list.
+      </>
+    ),
+  },
+  {
     name: 'items',
     types: 'Array<DropdownItem | DropdownLinkItem> | Array<DropdownItemGroup>',
     required: true,
@@ -68,6 +78,15 @@ const dropdownItemProps: Prop[] = [
     types: 'string',
     required: true,
     description: 'Sets the text content of the DropdownItem.',
+  },
+  {
+    name: 'description',
+    types: 'string',
+    description: (
+      <>
+        Sets the content description of the <Code>DropdownItem</Code>
+      </>
+    ),
   },
   {
     name: 'disabled',
@@ -131,6 +150,15 @@ const dropdownLinkProps: Prop[] = [
     types: 'string',
     required: true,
     description: 'Sets the text content of the DropdownLinkItem.',
+  },
+  {
+    name: 'description',
+    types: 'string',
+    description: (
+      <>
+        Sets the content description of the <Code>DropdownLinkItem</Code>
+      </>
+    ),
   },
   {
     name: 'disabled',

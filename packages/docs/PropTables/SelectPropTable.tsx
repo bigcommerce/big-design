@@ -259,6 +259,11 @@ const selectGroupProps: Prop[] = [
     description: <>Adds a label to the option group.</>,
   },
   {
+    name: 'separated',
+    types: 'boolean',
+    description: 'If true, adds a line separator above the group.',
+  },
+  {
     name: 'options',
     types: 'Array<SelectOption>',
     required: true,
