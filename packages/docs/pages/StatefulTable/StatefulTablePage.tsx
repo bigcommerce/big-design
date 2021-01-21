@@ -181,7 +181,7 @@ const StatefulTablePage = () => {
             { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
             { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
           ]}
-          draggable
+          onRowDrop={() => null}
         />
         {/* jsx-to-string:end */}
       </CodePreview>

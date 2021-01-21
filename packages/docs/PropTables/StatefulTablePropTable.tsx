@@ -20,11 +20,6 @@ const statefulTableProps: Prop[] = [
     required: true,
   },
   {
-    name: 'draggable',
-    types: 'boolean',
-    description: 'Defines if drag and drop is supported on the table.',
-  },
-  {
     name: 'itemName',
     types: 'string',
     description: 'Item name displayed on the table actions section.',
@@ -78,6 +73,11 @@ const statefulTableProps: Prop[] = [
     name: 'emptyComponent',
     types: 'React.ReactElement',
     description: 'Component to render when there are no items.',
+  },
+  {
+    name: 'onRowDrop',
+    types: '(items: any[]) => void',
+    description: 'Callback called with updated items list once drag and drop action has been completed.',
   },
 ];
 

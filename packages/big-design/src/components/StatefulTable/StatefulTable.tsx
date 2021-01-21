@@ -14,12 +14,12 @@ export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable
 }
 
 export interface StatefulTableProps<T>
-  extends Omit<TableProps<T>, 'columns' | 'pagination' | 'selectable' | 'sortable'> {
+  extends Omit<TableProps<T>, 'columns' | 'pagination' | 'selectable' | 'sortable' | 'onRowDrop'> {
   columns: Array<StatefulTableColumn<T>>;
-  draggable?: boolean;
   pagination?: boolean;
   selectable?: boolean;
   defaultSelected?: T[];
+  onRowDrop?(items: T[]): void;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }
 
@@ -43,7 +43,7 @@ const InternalStatefulTable = <T extends TableItem>({
   items = [],
   keyField,
   onSelectionChange,
-  draggable = false,
+  onRowDrop,
   pagination = false,
   selectable = false,
   stickyHeader = false,
@@ -106,6 +106,9 @@ const InternalStatefulTable = <T extends TableItem>({
       const updatedItems = swapArrayElements(state.currentItems, from, to);
 
       dispatch({ type: 'ITEMS_CHANGED', items: updatedItems, isPaginationEnabled: pagination });
+      if (typeof onRowDrop === 'function') {
+        onRowDrop(updatedItems);
+      }
     },
     [state.currentItems, pagination],
   );
@@ -121,7 +124,7 @@ const InternalStatefulTable = <T extends TableItem>({
       pagination={paginationOptions}
       selectable={selectableOptions}
       sortable={sortableOptions}
-      onRowDrop={draggable ? onDragEnd : undefined}
+      onRowDrop={onRowDrop ? onDragEnd : undefined}
     />
   );
 };
