@@ -1,5 +1,4 @@
 const { default: svgr } = require('@svgr/core');
-// const camelcase = require('camelcase');
 const { outputFile, readFile } = require('fs-extra');
 const glob = require('glob-promise');
 const { basename, join } = require('path');
