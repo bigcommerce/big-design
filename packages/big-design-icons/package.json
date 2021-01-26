@@ -18,6 +18,7 @@
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc --emitDeclarationOnly",
     "build:icons": "node scripts/build.js",
+    "build:flags": "node scripts/build-flags.js",
     "download": "node scripts/downloader.js",
     "ci": "yarn run lint && yarn run build",
     "lint": "yarn run lint:tsc",
@@ -26,6 +27,7 @@
   },
   "files": [
     "dist",
+    "flags",
     "svgs"
   ],
   "publishConfig": {
@@ -53,6 +55,7 @@
     "@babel/preset-react": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
     "@bigcommerce/configs": "^0.14.0",
+    "@jorgemoya/flag-icon-css": "3.5.0",
     "@svgr/core": "^5.0.1",
     "@svgr/plugin-jsx": "^5.0.1",
     "@svgr/plugin-prettier": "^5.0.1",

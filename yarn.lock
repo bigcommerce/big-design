@@ -2366,6 +2366,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
+"@jorgemoya/flag-icon-css@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@jorgemoya/flag-icon-css/-/flag-icon-css-3.5.0.tgz#3461cb5b71d67b14157c6c09418db91e071ad067"
+  integrity sha512-TiDiUjnAj3HRf7GPuP3jJjw+hnU+dE/PV7U1dMEmjvOHSO3QR4nN2pk1yLoC1QNSMuJ5CKj8H1t0saS+5S4e+A==
+
 "@lerna/add@3.21.0":
   version "3.21.0"
   resolved "https://registry.yarnpkg.com/@lerna/add/-/add-3.21.0.tgz#27007bde71cc7b0a2969ab3c2f0ae41578b4577b"
