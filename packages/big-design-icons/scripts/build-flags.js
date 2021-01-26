@@ -7,7 +7,7 @@ const { promisify } = require('util');
 
 const config = require('./svgr-flags.config');
 
-const SOURCE = join(__dirname, '..', '..', '..', 'node_modules', 'flag-icon-css', 'flags', '4x3', '*.svg');
+const SOURCE = join(__dirname, '..', '..', '..', 'node_modules', '@jorgemoya/flag-icon-css', 'flags', '4x3', '*.svg');
 const DEST_PATH = join(__dirname, '..', 'src', 'flags', 'components');
 
 const componentNames = new Set();
@@ -46,11 +46,6 @@ async function generateFlags() {
     iconFiles.map((iconFilePath) => {
       const filename = basename(iconFilePath, '.svg');
       const name = `${filename.replace('-', '').toUpperCase()}FlagIcon`;
-
-      // TODO: Skip these two flags for now
-      if (name === 'BOFlagIcon' || name === 'NZFlagIcon') {
-        return null;
-      }
 
       componentNames.add(name);
 
