@@ -9,6 +9,11 @@ const panelProps: Prop[] = [
     description: 'Defines the panel header text.',
   },
   {
+    name: 'headerId',
+    types: 'string',
+    description: 'Gives the header a HTML id attribute. Useful if you need to use hash navigation to a panel header.',
+  },
+  {
     name: 'action',
     types: 'ButtonProps &amp; { text: string }',
     description: 'Defines the panel action button.',

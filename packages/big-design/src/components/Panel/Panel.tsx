@@ -17,12 +17,13 @@ export interface PanelAction extends Omit<ButtonProps, 'children'> {
 
 export interface PanelProps extends HTMLAttributes<HTMLElement>, MarginProps {
   header?: string;
+  headerId?: string;
   action?: PanelAction;
 }
 
 export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {
   const filteredProps = excludePaddingProps(props);
-  const { action, children, header, ...rest } = filteredProps;
+  const { action, children, header, headerId, ...rest } = filteredProps;
 
   const renderHeader = () => {
     if (!header && !action) {
@@ -35,7 +36,7 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
 
     return (
       <Flex flexDirection="row">
-        {header && <StyledH2>{header}</StyledH2>}
+        {header && <StyledH2 id={headerId}>{header}</StyledH2>}
         {action && <Button {...action}>{action.text}</Button>}
       </Flex>
     );
