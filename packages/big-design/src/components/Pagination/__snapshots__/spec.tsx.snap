@@ -306,8 +306,6 @@ exports[`render pagination component 1`] = `
         aria-labelledby="bd-dropdown-1-label bd-dropdown-1-toggle-button"
         class="c4 c5"
         id="bd-dropdown-1-toggle-button"
-        role="button"
-        tabindex="0"
       >
         <span
           class="c6"
@@ -352,8 +350,6 @@ exports[`render pagination component 1`] = `
     <button
       class="c10 c5"
       disabled=""
-      role="button"
-      tabindex="0"
     >
       <span
         class="c6"
@@ -385,8 +381,6 @@ exports[`render pagination component 1`] = `
     </button>
     <button
       class="c10 c5"
-      role="button"
-      tabindex="0"
     >
       <span
         class="c6"
@@ -726,8 +720,6 @@ exports[`render pagination component with invalid page info 1`] = `
         aria-labelledby="bd-dropdown-1-label bd-dropdown-1-toggle-button"
         class="c4 c5"
         id="bd-dropdown-1-toggle-button"
-        role="button"
-        tabindex="0"
       >
         <span
           class="c6"
@@ -772,8 +764,6 @@ exports[`render pagination component with invalid page info 1`] = `
     <button
       class="c10 c5"
       disabled=""
-      role="button"
-      tabindex="0"
     >
       <span
         class="c6"
@@ -805,8 +795,6 @@ exports[`render pagination component with invalid page info 1`] = `
     </button>
     <button
       class="c10 c5"
-      role="button"
-      tabindex="0"
     >
       <span
         class="c6"
@@ -1146,8 +1134,6 @@ exports[`render pagination component with invalid range info 1`] = `
         aria-labelledby="bd-dropdown-1-label bd-dropdown-1-toggle-button"
         class="c4 c5"
         id="bd-dropdown-1-toggle-button"
-        role="button"
-        tabindex="0"
       >
         <span
           class="c6"
@@ -1192,8 +1178,6 @@ exports[`render pagination component with invalid range info 1`] = `
     <button
       class="c10 c5"
       disabled=""
-      role="button"
-      tabindex="0"
     >
       <span
         class="c6"
@@ -1226,8 +1210,6 @@ exports[`render pagination component with invalid range info 1`] = `
     <button
       class="c10 c5"
       disabled=""
-      role="button"
-      tabindex="0"
     >
       <span
         class="c6"
@@ -1567,8 +1549,6 @@ exports[`render pagination component with no items 1`] = `
         aria-labelledby="bd-dropdown-1-label bd-dropdown-1-toggle-button"
         class="c4 c5"
         id="bd-dropdown-1-toggle-button"
-        role="button"
-        tabindex="0"
       >
         <span
           class="c6"
@@ -1613,8 +1593,6 @@ exports[`render pagination component with no items 1`] = `
     <button
       class="c10 c5"
       disabled=""
-      role="button"
-      tabindex="0"
     >
       <span
         class="c6"
@@ -1647,8 +1625,6 @@ exports[`render pagination component with no items 1`] = `
     <button
       class="c10 c5"
       disabled=""
-      role="button"
-      tabindex="0"
     >
       <span
         class="c6"

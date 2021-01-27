@@ -646,8 +646,6 @@ exports[`renders close button 1`] = `
   >
     <button
       class="c7 c8"
-      role="button"
-      tabindex="0"
     >
       <span
         class="c9"

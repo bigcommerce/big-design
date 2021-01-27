@@ -109,8 +109,6 @@ exports[`render default button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -229,8 +227,6 @@ exports[`render destructive button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -350,8 +346,6 @@ exports[`render destructive disabled button 1`] = `
 <button
   class="c0 bd-button"
   disabled=""
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -471,8 +465,6 @@ exports[`render disabled button 1`] = `
 <button
   class="c0 bd-button"
   disabled=""
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -599,8 +591,6 @@ exports[`render icon left and right button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -760,8 +750,6 @@ exports[`render icon left button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -904,8 +892,6 @@ exports[`render icon only button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -1047,8 +1033,6 @@ exports[`render icon right button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -1259,8 +1243,6 @@ exports[`render loading button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <div
     class="c1 c2 c3"
@@ -1400,8 +1382,6 @@ exports[`render secondary button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -1520,8 +1500,6 @@ exports[`render secondary destructive button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -1641,8 +1619,6 @@ exports[`render secondary destructive disabled button 1`] = `
 <button
   class="c0 bd-button"
   disabled=""
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -1762,8 +1738,6 @@ exports[`render secondary disabled button 1`] = `
 <button
   class="c0 bd-button"
   disabled=""
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -1883,8 +1857,6 @@ exports[`render subtle button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -2004,8 +1976,6 @@ exports[`render subtle destructive button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -2126,8 +2096,6 @@ exports[`render subtle destructive disabled button 1`] = `
 <button
   class="c0 bd-button"
   disabled=""
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -2248,8 +2216,6 @@ exports[`render subtle disabled button 1`] = `
 <button
   class="c0 bd-button"
   disabled=""
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"

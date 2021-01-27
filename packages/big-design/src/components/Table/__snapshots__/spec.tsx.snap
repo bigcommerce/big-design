@@ -356,8 +356,6 @@ exports[`renders a pagination component 1`] = `
             aria-labelledby="bd-dropdown-2-label bd-dropdown-2-toggle-button"
             class="c7 c8"
             id="bd-dropdown-2-toggle-button"
-            role="button"
-            tabindex="0"
           >
             <span
               class="c9"
@@ -402,8 +400,6 @@ exports[`renders a pagination component 1`] = `
         <button
           class="c13 c8"
           disabled=""
-          role="button"
-          tabindex="0"
         >
           <span
             class="c9"
@@ -435,8 +431,6 @@ exports[`renders a pagination component 1`] = `
         </button>
         <button
           class="c13 c8"
-          role="button"
-          tabindex="0"
         >
           <span
             class="c9"
