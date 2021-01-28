@@ -162,9 +162,9 @@ const TablePage = () => {
             <Table
               keyField="sku"
               columns={[
-                { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
-                { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
-                { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
+                { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+                { header: 'Name', hash: 'name', render: ({ name }) => name },
+                { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
               ]}
               items={items}
               itemName="Products"
@@ -266,14 +266,12 @@ const TablePage = () => {
 
           return (
             <Table
-              keyField="sku"
               columns={[
                 { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
                 { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
                 { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
               ]}
               items={items}
-              itemName="Products"
               onRowDrop={onDragEnd}
             />
           );

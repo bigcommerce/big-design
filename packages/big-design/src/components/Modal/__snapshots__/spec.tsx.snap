@@ -262,8 +262,6 @@ exports[`render open modal 1`] = `
         >
           <button
             class="c5 c6"
-            role="button"
-            tabindex="0"
           >
             <span
               class="c7"
@@ -557,8 +555,6 @@ exports[`render open modal without backdrop 1`] = `
         >
           <button
             class="c5 c6"
-            role="button"
-            tabindex="0"
           >
             <span
               class="c7"
@@ -709,8 +705,6 @@ exports[`renders destructive action button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
@@ -829,8 +823,6 @@ exports[`renders secondary action button 1`] = `
 
 <button
   class="c0 bd-button"
-  role="button"
-  tabindex="0"
 >
   <span
     class="c1"
