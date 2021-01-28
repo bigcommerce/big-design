@@ -37,7 +37,7 @@ const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, ..
   };
 
   return (
-    <StyledButton className="bd-button" role="button" tabIndex={0} {...props} onClick={handleClick} ref={forwardedRef}>
+    <StyledButton className="bd-button" {...props} onClick={handleClick} ref={forwardedRef}>
       {props.isLoading ? renderLoadingSpinner() : null}
       <ContentWrapper isLoading={props.isLoading}>
         {!props.iconOnly && props.iconLeft}
