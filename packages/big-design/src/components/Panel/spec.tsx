@@ -111,3 +111,13 @@ test("panel action doesn't go to full width", () => {
 
   expect(button).toHaveStyle('width: auto');
 });
+
+test('forwards headerId to heading', () => {
+  const { getByText } = render(
+    <Panel header="Test Header" headerId="test-header">
+      Test
+    </Panel>,
+  );
+
+  expect(getByText('Test Header')).toHaveAttribute('id', 'test-header');
+});
