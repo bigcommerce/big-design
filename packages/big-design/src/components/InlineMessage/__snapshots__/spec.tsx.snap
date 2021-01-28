@@ -645,8 +645,6 @@ exports[`renders actions 1`] = `
     >
       <button
         class="c11 bd-button"
-        role="button"
-        tabindex="0"
       >
         <span
           class="c12"
@@ -656,8 +654,6 @@ exports[`renders actions 1`] = `
       </button>
       <button
         class="c11 bd-button"
-        role="button"
-        tabindex="0"
       >
         <span
           class="c12"
@@ -910,8 +906,6 @@ exports[`renders close button 1`] = `
   >
     <button
       class="c8 c9"
-      role="button"
-      tabindex="0"
     >
       <span
         class="c10"
