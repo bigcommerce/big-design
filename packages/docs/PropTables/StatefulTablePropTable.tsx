@@ -74,6 +74,11 @@ const statefulTableProps: Prop[] = [
     types: 'React.ReactElement',
     description: 'Component to render when there are no items.',
   },
+  {
+    name: 'onRowDrop',
+    types: '(items: any[]) => void',
+    description: 'Callback called with updated items list once drag and drop action has been completed.',
+  },
 ];
 
 const tableColumnsProps: Prop[] = [

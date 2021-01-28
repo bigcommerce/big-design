@@ -14,13 +14,27 @@ export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable
 }
 
 export interface StatefulTableProps<T>
-  extends Omit<TableProps<T>, 'columns' | 'pagination' | 'selectable' | 'sortable'> {
+  extends Omit<TableProps<T>, 'columns' | 'pagination' | 'selectable' | 'sortable' | 'onRowDrop'> {
   columns: Array<StatefulTableColumn<T>>;
   pagination?: boolean;
   selectable?: boolean;
   defaultSelected?: T[];
+  onRowDrop?(items: T[]): void;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }
+
+const swapArrayElements = <T extends unknown>(array: T[], sourceIndex: number, destinationIndex: number) => {
+  const smallerIndex = Math.min(sourceIndex, destinationIndex);
+  const largerIndex = Math.max(sourceIndex, destinationIndex);
+
+  return [
+    ...array.slice(0, smallerIndex),
+    ...(sourceIndex < destinationIndex ? array.slice(smallerIndex + 1, largerIndex + 1) : []),
+    array[sourceIndex],
+    ...(sourceIndex > destinationIndex ? array.slice(smallerIndex, largerIndex) : []),
+    ...array.slice(largerIndex + 1),
+  ];
+};
 
 const InternalStatefulTable = <T extends TableItem>({
   columns = [],
@@ -29,6 +43,7 @@ const InternalStatefulTable = <T extends TableItem>({
   items = [],
   keyField,
   onSelectionChange,
+  onRowDrop,
   pagination = false,
   selectable = false,
   stickyHeader = false,
@@ -86,6 +101,18 @@ const InternalStatefulTable = <T extends TableItem>({
     onSort,
   ]);
 
+  const onDragEnd = useCallback(
+    (from: number, to: number) => {
+      const updatedItems = swapArrayElements(state.currentItems, from, to);
+
+      dispatch({ type: 'ITEMS_CHANGED', items: updatedItems, isPaginationEnabled: pagination });
+      if (typeof onRowDrop === 'function') {
+        onRowDrop(updatedItems);
+      }
+    },
+    [state.currentItems, pagination],
+  );
+
   return (
     <Table
       {...rest}
@@ -97,6 +124,7 @@ const InternalStatefulTable = <T extends TableItem>({
       pagination={paginationOptions}
       selectable={selectableOptions}
       sortable={sortableOptions}
+      onRowDrop={onRowDrop ? onDragEnd : undefined}
     />
   );
 };
