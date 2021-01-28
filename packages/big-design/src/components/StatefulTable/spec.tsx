@@ -60,6 +60,35 @@ test('pagination can be enabled', async () => {
   await waitForElement(() => getByTestId('simple-table'));
 });
 
+test('dragAndDrop can be enabled', async () => {
+  const spaceKey = { keyCode: 32 };
+  const downKey = { keyCode: 40 };
+  const name = 'Product A - 1';
+  const onRowDrop = jest.fn();
+  const { container, getAllByTestId } = render(getSimpleTable({ onRowDrop }));
+
+  let dragEls = container.querySelectorAll('[data-rbd-draggable-id]') as NodeListOf<HTMLElement>;
+
+  let names = getAllByTestId('name');
+  // Item at index 0 has product name Product A - 1
+  expect(names[0].textContent).toBe(name);
+
+  dragEls[0].focus();
+  expect(dragEls[0]).toHaveFocus();
+
+  fireEvent.keyDown(dragEls[0], spaceKey);
+  fireEvent.keyDown(dragEls[0], downKey);
+  fireEvent.keyDown(dragEls[0], spaceKey);
+
+  dragEls = container.querySelectorAll('[data-rbd-draggable-id]') as NodeListOf<HTMLElement>;
+
+  names = getAllByTestId('name');
+
+  // After drag and drop item at index 1 has product name Product A - 1
+  expect(names[1].textContent).toBe(name);
+  expect(onRowDrop).toHaveBeenCalled();
+});
+
 test('changing pagination page changes the displayed items', async () => {
   const { getByTitle, getAllByTestId, getByTestId } = render(getSimpleTable({ pagination: true }));
 
