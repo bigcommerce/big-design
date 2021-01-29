@@ -19,6 +19,7 @@ export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
   box-sizing: border-box;
   display: flex;
   min-height: ${({ theme }) => addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
+  overflow: hidden;
   position: relative;
   width: 100%;
 

@@ -24,6 +24,7 @@ exports[`renders all together 1`] = `
   display: -ms-flexbox;
   display: flex;
   min-height: 2.25rem;
+  overflow: hidden;
   position: relative;
   width: 100%;
   border: 1px solid #D9DCE9;
