@@ -13,6 +13,7 @@ export * from './CheckIcon';
 export * from './ChevronLeftIcon';
 export * from './ChevronRightIcon';
 export * from './CloseIcon';
+export * from './CloudUploadIcon';
 export * from './CodeIcon';
 export * from './DeleteIcon';
 export * from './DragIndicatorIcon';
