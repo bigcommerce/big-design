@@ -28,6 +28,7 @@ export * from './RadioPropTable';
 export * from './SelectPropTable';
 export * from './StatefulTablePropTable';
 export * from './StatefulTreePropTable';
+export * from './StepperPropTable';
 export * from './SwitchPropTable';
 export * from './TablePropTable';
 export * from './TabsPropTable';

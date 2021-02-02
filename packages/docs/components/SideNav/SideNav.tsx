@@ -140,6 +140,9 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Progress/ProgressCirclePage" as="/progress-circle">
             Progress Circle
           </SideNavLink>
+          <SideNavLink href="/Stepper/StepperPage" as="/stepper">
+            Stepper
+          </SideNavLink>
           <SideNavLink href="/Tooltip/TooltipPage" as="/tooltip">
             Tooltip
           </SideNavLink>
