@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.27.0...@bigcommerce/big-design@0.28.0) (2021-02-11)
+
+
+### Bug Fixes
+
+* **component:** add disabled support to Datepicker ([#498](https://github.com/bigcommerce/big-design/issues/498)) ([223d424](https://github.com/bigcommerce/big-design/commit/223d424259a8217d7e135a8f757aa894f932ea4b))
+* **component:** performance improvements for Dropdown/Select components ([#475](https://github.com/bigcommerce/big-design/issues/475)) ([b5167f9](https://github.com/bigcommerce/big-design/commit/b5167f9f7c861354f730f96247fa63a86800d73e))
+* **component:** prevent autofill overflow on Inputs ([#500](https://github.com/bigcommerce/big-design/issues/500)) ([d955173](https://github.com/bigcommerce/big-design/commit/d95517383a251cd881516996d142e4c59e7e8ed2))
+* **component:** remove tabindex and role from Button ([#497](https://github.com/bigcommerce/big-design/issues/497)) ([2dc70a1](https://github.com/bigcommerce/big-design/commit/2dc70a1b733f5c3592ebe326cadf03a1f80d823b))
+
+
+### Features
+
+* **component:** Add drag and drop support to stateful table component ([#495](https://github.com/bigcommerce/big-design/issues/495)) ([c904f74](https://github.com/bigcommerce/big-design/commit/c904f74d2dda543a39af0adae822165f13123414))
+* **component:** add headerId prop to Panel ([#499](https://github.com/bigcommerce/big-design/issues/499)) ([39fff4f](https://github.com/bigcommerce/big-design/commit/39fff4f173c75cee052b713f8ccdfc8d88f0f627))
+
+
+
+
+
 # [0.27.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.26.2...@bigcommerce/big-design@0.27.0) (2021-01-13)
 
 

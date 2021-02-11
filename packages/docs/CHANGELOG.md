@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.27.0...@bigcommerce/docs@0.28.0) (2021-02-11)
+
+
+### Bug Fixes
+
+* **component:** performance improvements for Dropdown/Select components ([#475](https://github.com/bigcommerce/big-design/issues/475)) ([b5167f9](https://github.com/bigcommerce/big-design/commit/b5167f9f7c861354f730f96247fa63a86800d73e))
+
+
+### Features
+
+* **component:** Add drag and drop support to stateful table component ([#495](https://github.com/bigcommerce/big-design/issues/495)) ([c904f74](https://github.com/bigcommerce/big-design/commit/c904f74d2dda543a39af0adae822165f13123414))
+* **component:** add headerId prop to Panel ([#499](https://github.com/bigcommerce/big-design/issues/499)) ([39fff4f](https://github.com/bigcommerce/big-design/commit/39fff4f173c75cee052b713f8ccdfc8d88f0f627))
+* **icons:** add flag icons ([#493](https://github.com/bigcommerce/big-design/issues/493)) ([0519c8a](https://github.com/bigcommerce/big-design/commit/0519c8aa131461e52ffe40f40b1e45771f749c0f))
+
+
+
+
+
 # [0.27.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.26.2...@bigcommerce/docs@0.27.0) (2021-01-13)
 
 

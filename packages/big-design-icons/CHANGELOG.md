@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.14.1...@bigcommerce/big-design-icons@0.15.0) (2021-02-11)
+
+
+### Bug Fixes
+
+* **docs:** Specify styled-components version in the README ([#490](https://github.com/bigcommerce/big-design/issues/490)) ([c92403e](https://github.com/bigcommerce/big-design/commit/c92403edf8e29bf1afd3c9c163c37be6ffe17a6c))
+
+
+### Features
+
+* **icons:** add cloud upload icon ([#501](https://github.com/bigcommerce/big-design/issues/501)) ([aeb9aee](https://github.com/bigcommerce/big-design/commit/aeb9aeeb18a93064c61497fc439e7e82957c1a2e))
+* **icons:** add flag icons ([#493](https://github.com/bigcommerce/big-design/issues/493)) ([0519c8a](https://github.com/bigcommerce/big-design/commit/0519c8aa131461e52ffe40f40b1e45771f749c0f))
+
+
+
+
+
 ## [0.14.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.14.0...@bigcommerce/big-design-icons@0.14.1) (2020-12-21)
 
 
