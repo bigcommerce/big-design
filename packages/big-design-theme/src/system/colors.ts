@@ -1,4 +1,8 @@
 export interface Colors {
+  currentColor: string;
+  inherit: string;
+  transparent: string;
+
   white: string;
   brand: string;
 
@@ -49,6 +53,10 @@ export interface Colors {
 }
 
 export const colors: Colors = {
+  currentColor: 'currentColor',
+  inherit: 'inherit',
+  transparent: 'transparent',
+
   white: '#FFFFFF',
   brand: '#273A8A',
 
