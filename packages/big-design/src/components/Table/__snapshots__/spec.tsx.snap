@@ -382,7 +382,7 @@ exports[`renders a pagination component 1`] = `
           </button>
           <div
             class="c11"
-            style="position: absolute; left: 0px; top: 0px;"
+            style="position: fixed; left: 0px; top: 0px;"
           >
             <ul
               aria-labelledby="bd-dropdown-2-label"

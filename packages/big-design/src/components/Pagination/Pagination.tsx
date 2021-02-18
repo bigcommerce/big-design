@@ -87,6 +87,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
               hash: `${range}`,
               onItemClick: handleRangeChange,
             }))}
+            positionFixed={true}
             toggle={
               <StyledButton variant="subtle" iconRight={<ArrowDropDownIcon size="xxLarge" />}>
                 {showRanges()}
