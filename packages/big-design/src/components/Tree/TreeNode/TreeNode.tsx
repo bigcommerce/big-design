@@ -121,7 +121,7 @@ const InternalTreeNode = <T extends unknown>({
 
   const renderedArrow = useMemo(
     () =>
-      children ? (
+      children?.length ? (
         <StyledArrowWrapper expanded={isExpanded} flexShrink={0}>
           <ChevronRightIcon color="secondary60" focusable={false} size="xLarge" />
         </StyledArrowWrapper>
