@@ -133,7 +133,7 @@ const InternalTreeNode = <T extends unknown>({
 
   const renderedChildren = useMemo(
     () =>
-      children && (
+      children?.length && (
         <StyledUl role="group" show={isExpanded}>
           {children?.map((child, index) => (
             <TreeNode {...child} key={index} />
