@@ -3,6 +3,7 @@ const BABEL_ENV = process.env.BABEL_ENV;
 const defaultPlugins = [
   ['babel-plugin-styled-components', { pure: true }],
   '@babel/plugin-proposal-class-properties',
+  '@babel/plugin-proposal-nullish-coalescing-operator',
   '@babel/plugin-proposal-object-rest-spread',
   '@babel/plugin-proposal-optional-chaining',
   // IE 11 support

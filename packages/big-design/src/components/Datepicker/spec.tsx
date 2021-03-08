@@ -47,7 +47,7 @@ test('should use the passed in ref object if provided', () => {
 
   const input = container.querySelector('input');
 
-  fireEvent.focus(input as HTMLInputElement);
+  fireEvent.click(input as HTMLInputElement);
   const datepicker = container.querySelector('.react-datepicker');
 
   expect(datepicker?.className.includes(ref.current?.props.calendarClassName as string)).toBeTruthy();
@@ -65,9 +65,7 @@ test('calls onDateChange function when a date cell is clicked', () => {
 
   const input = container.querySelector('input');
 
-  act(() => {
-    fireEvent.focus(input as HTMLInputElement);
-  });
+  fireEvent.click(input as HTMLInputElement);
 
   const datepicker = container.querySelector('.react-datepicker');
 
@@ -105,9 +103,7 @@ test('dates before minimum date passed are disabled', () => {
   );
   const input = container.querySelector('input');
 
-  act(() => {
-    fireEvent.focus(input as HTMLInputElement);
-  });
+  fireEvent.click(input as HTMLInputElement);
 
   const disabledDate = container.querySelector('.react-datepicker__day--003');
   expect(disabledDate?.classList.contains('react-datepicker__day--disabled')).toBe(true);
@@ -121,9 +117,7 @@ test('dates after max date passed are disabled', () => {
   );
   const input = container.querySelector('input');
 
-  act(() => {
-    fireEvent.focus(input as HTMLInputElement);
-  });
+  fireEvent.click(input as HTMLInputElement);
 
   const disabledDate = container.querySelector('.react-datepicker__day--011');
   expect(disabledDate?.classList.contains('react-datepicker__day--disabled')).toBe(true);

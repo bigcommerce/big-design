@@ -22,7 +22,7 @@ test('calls onTimeChange function when a value is selected', async () => {
   const { getAllByRole, getByTestId } = render(<Timepicker onTimeChange={changeFunction} data-testid="timepicker" />);
 
   const input = getByTestId('timepicker');
-  fireEvent.focus(input);
+  fireEvent.click(input);
   const options = getAllByRole('option');
   expect(options.length).toBe(25);
   fireEvent.click(options[3]);
