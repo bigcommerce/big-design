@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.29.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.28.0...@bigcommerce/docs@0.29.0) (2021-03-08)
+
+
+### Features
+
+* **component:** add Stepper component ([#503](https://github.com/bigcommerce/big-design/issues/503)) ([994943c](https://github.com/bigcommerce/big-design/commit/994943ccec38ca4bd78f107966e274d374832629))
+
+
+
+
+
 # [0.28.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.27.0...@bigcommerce/docs@0.28.0) (2021-02-11)
 
 

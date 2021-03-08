@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.15.0...@bigcommerce/big-design-icons@0.16.0) (2021-03-08)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
 # [0.15.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.14.1...@bigcommerce/big-design-icons@0.15.0) (2021-02-11)
 
 

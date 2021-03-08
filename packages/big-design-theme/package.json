@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design-theme",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",

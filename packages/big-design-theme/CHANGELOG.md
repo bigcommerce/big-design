@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.11.0...@bigcommerce/big-design-theme@0.12.0) (2021-03-08)
+
+
+### Bug Fixes
+
+* **docs:** Specify styled-components version in the README ([#490](https://github.com/bigcommerce/big-design/issues/490)) ([c92403e](https://github.com/bigcommerce/big-design/commit/c92403edf8e29bf1afd3c9c163c37be6ffe17a6c))
+
+
+### Features
+
+* **theme:** add currentColor, inherit, and transparent props to colors ([#504](https://github.com/bigcommerce/big-design/issues/504)) ([3ef9b18](https://github.com/bigcommerce/big-design/commit/3ef9b1899ccef4c282f2f293e8fdd34d204e0420))
+
+
+
+
+
 # [0.11.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.10.1...@bigcommerce/big-design-theme@0.11.0) (2020-11-12)
 
 
