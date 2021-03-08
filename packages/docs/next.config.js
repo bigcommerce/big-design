@@ -57,6 +57,7 @@ module.exports = {
     '/spacing': { page: '/Spacing/SpacingPage' },
     '/statefulTable': { page: '/StatefulTable/StatefulTablePage' },
     '/statefulTree': { page: '/StatefulTree/StatefulTreePage' },
+    '/stepper': { page: '/Stepper/StepperPage' },
     '/switch': { page: '/Switch/SwitchPage' },
     '/table': { page: '/Table/TablePage' },
     '/tabs': { page: '/Tabs/TabsPage' },

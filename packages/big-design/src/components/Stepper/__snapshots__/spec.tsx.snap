@@ -1,0 +1,459 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Stepper 1`] = `
+.c0 {
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+
+.c2 {
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+
+.c5 {
+  box-sizing: border-box;
+  background-color: #3C64F4;
+}
+
+.c9 {
+  box-sizing: border-box;
+  background-color: #3C64F4;
+}
+
+.c12 {
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+
+.c15 {
+  box-sizing: border-box;
+  background-color: #D9DCE9;
+}
+
+.c16 {
+  box-sizing: border-box;
+  background-color: #8C93AD;
+}
+
+.c17 {
+  box-sizing: border-box;
+  background-color: #D9DCE9;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c6 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c8 {
+  vertical-align: middle;
+  color: #FFFFFF;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.c3 {
+  grid-gap: 1rem;
+  display: grid;
+}
+
+.c13 {
+  grid-gap: 1rem;
+  display: grid;
+}
+
+.c4 {
+  -webkit-flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  gap: 0.5rem;
+  grid-template-areas: 'light dash' 'text text';
+  grid-template-columns: auto 1fr;
+}
+
+.c7 {
+  border-radius: 1rem;
+  color: #FFFFFF;
+  grid-area: light;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c10 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  height: 0.125rem;
+  grid-area: dash;
+  width: 100%;
+}
+
+.c11 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  grid-area: text;
+}
+
+.c11:last-child {
+  margin-bottom: 0;
+}
+
+.c18 {
+  color: #8C93AD;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  grid-area: text;
+}
+
+.c18:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width:0px) {
+  .c2 {
+    display: none;
+  }
+}
+
+@media (min-width:720px) {
+  .c2 {
+    display: grid;
+  }
+}
+
+@media (min-width:720px) {
+  .c2 {
+    margin-right: 0.5rem;
+  }
+}
+
+@media (min-width:0px) {
+  .c5 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c5 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width:0px) {
+  .c5 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c5 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width:0px) {
+  .c9 {
+    display: none;
+  }
+}
+
+@media (min-width:720px) {
+  .c9 {
+    display: block;
+  }
+}
+
+@media (min-width:0px) {
+  .c12 {
+    display: grid;
+  }
+}
+
+@media (min-width:720px) {
+  .c12 {
+    display: grid;
+  }
+}
+
+@media (min-width:720px) {
+  .c12 {
+    margin-right: 0.5rem;
+  }
+}
+
+@media (min-width:0px) {
+  .c15 {
+    display: none;
+  }
+}
+
+@media (min-width:720px) {
+  .c15 {
+    display: block;
+  }
+}
+
+@media (min-width:0px) {
+  .c16 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c16 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width:0px) {
+  .c16 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c16 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width:0px) {
+  .c17 {
+    display: none;
+  }
+}
+
+@media (min-width:720px) {
+  .c17 {
+    display: none;
+  }
+}
+
+@media (min-width:0px) {
+  .c3 {
+    display: none;
+  }
+}
+
+@media (min-width:720px) {
+  .c3 {
+    display: grid;
+  }
+}
+
+@media (min-width:0px) {
+  .c13 {
+    display: grid;
+  }
+}
+
+@media (min-width:720px) {
+  .c13 {
+    display: grid;
+  }
+}
+
+@media (min-width:720px) {
+  .c4 {
+    grid-template-columns: 1.5rem 1fr;
+    grid-template-rows: 1.5rem 1fr;
+    max-width: 14.25rem;
+    min-width: 6rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c14 {
+    border: 0;
+    -webkit-clip: rect(0 0 0 0);
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}
+
+@media (min-width:720px) {
+  .c7 {
+    border-radius: 50%;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+<div
+  aria-valuemax="3"
+  aria-valuemin="0"
+  aria-valuenow="2"
+  aria-valuetext="Step 2: Settings"
+  class="c0 c1"
+  role="progressbar"
+>
+  <div
+    class="c2 c3 c4"
+    display="[object Object]"
+  >
+    <div
+      class="c5 c6 c7"
+    >
+      <svg
+        class="c8"
+        color="white"
+        fill="currentColor"
+        height="24"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+        <path
+          d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+        />
+      </svg>
+    </div>
+    <div
+      class="c9 c10"
+      display="[object Object]"
+    />
+    <p
+      class="c11"
+      color="secondary70"
+    >
+      Login
+    </p>
+  </div>
+  <div
+    class="c12 c13 c4"
+    display="[object Object]"
+  >
+    <div
+      class="c5 c6 c7"
+    >
+      <span>
+        <span
+          class="c14"
+        >
+          Step
+        </span>
+         2 
+        <span
+          class="c14"
+        >
+          of 
+          3
+        </span>
+      </span>
+    </div>
+    <div
+      class="c15 c10"
+      display="[object Object]"
+    />
+    <p
+      class="c11"
+      color="secondary70"
+    >
+      Settings
+    </p>
+  </div>
+  <div
+    class="c2 c3 c4"
+    display="[object Object]"
+  >
+    <div
+      class="c16 c6 c7"
+    >
+      <span>
+        <span
+          class="c14"
+        >
+          Step
+        </span>
+         3 
+        <span
+          class="c14"
+        >
+          of 
+          3
+        </span>
+      </span>
+    </div>
+    <div
+      class="c17 c10"
+      display="[object Object]"
+    />
+    <p
+      class="c18"
+      color="secondary50"
+    >
+      Import
+    </p>
+  </div>
+</div>
+`;
