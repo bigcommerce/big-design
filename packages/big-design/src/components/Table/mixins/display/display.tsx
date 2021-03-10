@@ -1,13 +1,13 @@
 import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { DisplayOverload, DisplayProps } from './types';
+import { TableColumnDisplayOverload, TableColumnDisplayProps } from './types';
 
-export const withDisplay = () => css<DisplayProps>`
+export const withTableColumnDisplay = () => css<TableColumnDisplayProps>`
   ${({ display, theme }) => display && getDisplayStyles(display, theme, 'display')};
 `;
 
-const getDisplayStyles: DisplayOverload = (
+const getDisplayStyles: TableColumnDisplayOverload = (
   displayProp: any,
   theme: ThemeInterface,
   cssKey: any,
@@ -27,7 +27,7 @@ const getSimpleDisplay = (displayProp: string | number, cssKey: string): Flatten
   ${cssKey}: ${displayProp}
 `;
 
-const getResponsiveDisplay: DisplayOverload = (
+const getResponsiveDisplay: TableColumnDisplayOverload = (
   displayProp: any,
   theme: ThemeInterface,
   cssKey: string,

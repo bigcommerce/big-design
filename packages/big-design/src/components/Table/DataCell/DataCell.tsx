@@ -1,10 +1,10 @@
 import React, { memo, TableHTMLAttributes } from 'react';
 
-import { ColumnDisplayProps } from '../../../mixins';
+import { TableColumnDisplayProps } from '../mixins';
 
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 
-export interface DataCellProps extends TableHTMLAttributes<HTMLTableCellElement>, ColumnDisplayProps {
+export interface DataCellProps extends TableHTMLAttributes<HTMLTableCellElement>, TableColumnDisplayProps {
   align?: 'left' | 'center' | 'right';
   isCheckbox?: boolean;
   verticalAlign?: 'top' | 'middle';

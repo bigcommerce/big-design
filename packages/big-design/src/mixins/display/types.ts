@@ -11,14 +11,8 @@ export type DisplayProps = Partial<{
   display: DisplayProp;
 }>;
 
-type ColumnDisplayProp = ResponsiveProp<'table-cell' | 'none'>;
-
-export type ColumnDisplayProps = Partial<{
-  display: ColumnDisplayProp;
-}>;
-
 export type DisplayOverload = (
-  displayProp: DisplayProp | ColumnDisplayProp,
+  displayProp: DisplayProp,
   theme: ThemeInterface,
   cssKey: 'display',
 ) => FlattenSimpleInterpolation;

@@ -110,7 +110,7 @@ const InternalStatefulTable = <T extends TableItem>({
         onRowDrop(updatedItems);
       }
     },
-    [onRowDrop, state.currentItems, pagination],
+    [state.currentItems, onRowDrop, pagination],
   );
 
   return (

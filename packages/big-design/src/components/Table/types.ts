@@ -1,7 +1,9 @@
 import { ReactNode } from 'react';
 
-import { ColumnDisplayProps, MarginProps } from '../../mixins';
+import { MarginProps } from '../../mixins';
 import { PaginationProps } from '../Pagination';
+
+import { TableColumnDisplayProps } from './mixins';
 
 export interface TableSelectable<T> {
   selectedItems: T[];
@@ -21,7 +23,7 @@ export interface TableItem {
   [key: string]: any;
 }
 
-export interface TableColumn<T> extends ColumnDisplayProps {
+export interface TableColumn<T> extends TableColumnDisplayProps {
   align?: 'left' | 'center' | 'right';
   hash: string;
   header: string;

@@ -2,10 +2,10 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { ColumnDisplayProps, withDisplay } from '../../../mixins';
 import { Flex } from '../../Flex';
+import { TableColumnDisplayProps, withTableColumnDisplay } from '../mixins';
 
-interface StyledTableHeaderCellProps extends ColumnDisplayProps {
+interface StyledTableHeaderCellProps extends TableColumnDisplayProps {
   isSortable?: boolean;
   width?: number | string;
   stickyHeader?: boolean;
@@ -18,7 +18,7 @@ interface StyledFlexProps {
 }
 
 export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
-  ${withDisplay()}
+  ${withTableColumnDisplay()}
 
   background-color: ${({ theme }) => theme.colors.secondary10};
   border-bottom: ${({ theme }) => theme.border.box};

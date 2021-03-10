@@ -2,13 +2,13 @@ import { ArrowDownwardIcon, ArrowUpwardIcon } from '@bigcommerce/big-design-icon
 import React, { memo, RefObject, TableHTMLAttributes } from 'react';
 
 import { useComponentSize } from '../../../hooks';
-import { ColumnDisplayProps } from '../../../mixins';
 import { typedMemo } from '../../../utils';
+import { TableColumnDisplayProps } from '../mixins';
 import { TableColumn, TableItem } from '../types';
 
 import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderCheckbox } from './styled';
 
-export interface HeaderCellProps<T> extends TableHTMLAttributes<HTMLTableCellElement>, ColumnDisplayProps {
+export interface HeaderCellProps<T> extends TableHTMLAttributes<HTMLTableCellElement>, TableColumnDisplayProps {
   actionsRef: RefObject<HTMLDivElement>;
   column: TableColumn<T>;
   hide?: boolean;

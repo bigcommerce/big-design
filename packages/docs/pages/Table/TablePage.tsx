@@ -56,13 +56,8 @@ const TablePage = () => {
         <Table
           columns={[
             { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
-            {
-              header: 'Name',
-              hash: 'name',
-              render: ({ name }) => name,
-              display: { mobile: 'none', tablet: 'table-cell' },
-            },
-            { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, display: 'none' },
+            { header: 'Name', hash: 'name', render: ({ name }) => name },
+            { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
           ]}
           items={[
             { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
@@ -201,11 +196,7 @@ const TablePage = () => {
               columns={[
                 { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
                 { header: 'Name', hash: 'name', render: ({ name }) => name },
-                {
-                  header: 'Description',
-                  hash: 'description',
-                  render: ({ description }) => description,
-                },
+                { header: 'Description', hash: 'description', render: ({ description }) => description },
               ]}
               items={[
                 {
