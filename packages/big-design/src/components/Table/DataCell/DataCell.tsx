@@ -16,8 +16,8 @@ export interface DataCellProps extends TableHTMLAttributes<HTMLTableCellElement>
 export const DataCell: React.FC<DataCellProps> = memo(
   ({
     align,
-    display,
     children,
+    display,
     isCheckbox,
     verticalAlign,
     width,
