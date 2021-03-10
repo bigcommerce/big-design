@@ -1,9 +1,9 @@
 import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { DisplayOverload, DisplayProps } from './types';
+import { ColumnDisplayProps, DisplayOverload, DisplayProps } from './types';
 
-export const withDisplay = () => css<DisplayProps>`
+export const withDisplay = () => css<DisplayProps | ColumnDisplayProps>`
   ${({ display, theme }) => display && getDisplayStyles(display, theme, 'display')};
 `;
 

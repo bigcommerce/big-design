@@ -114,8 +114,8 @@ const tableColumnsProps: Prop[] = [
   },
   {
     name: 'display',
-    types: ['block', 'inline-block', 'inline', 'inline-flex', 'flex', 'grid', 'inline-grid', 'table-cell', 'none'],
-    description: 'Sets the CSS display property of a component.',
+    types: ['table-cell', 'none'],
+    description: 'Sets the CSS display property of a column.',
   },
   {
     name: 'hash',

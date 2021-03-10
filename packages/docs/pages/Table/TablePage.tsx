@@ -56,7 +56,12 @@ const TablePage = () => {
         <Table
           columns={[
             { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
-            { header: 'Name', hash: 'name', render: ({ name }) => name, display: { mobile: 'none', tablet: 'block' } },
+            {
+              header: 'Name',
+              hash: 'name',
+              render: ({ name }) => name,
+              display: { mobile: 'none', tablet: 'table-cell' },
+            },
             { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, display: 'none' },
           ]}
           items={[
