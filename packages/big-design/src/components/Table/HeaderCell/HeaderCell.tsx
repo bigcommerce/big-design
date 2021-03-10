@@ -2,12 +2,13 @@ import { ArrowDownwardIcon, ArrowUpwardIcon } from '@bigcommerce/big-design-icon
 import React, { memo, RefObject, TableHTMLAttributes } from 'react';
 
 import { useComponentSize } from '../../../hooks';
+import { DisplayProps } from '../../../mixins';
 import { typedMemo } from '../../../utils';
 import { TableColumn, TableItem } from '../types';
 
 import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderCheckbox } from './styled';
 
-export interface HeaderCellProps<T> extends TableHTMLAttributes<HTMLTableCellElement> {
+export interface HeaderCellProps<T> extends TableHTMLAttributes<HTMLTableCellElement>, DisplayProps {
   actionsRef: RefObject<HTMLDivElement>;
   column: TableColumn<T>;
   hide?: boolean;
@@ -29,6 +30,7 @@ export interface DragIconCellProps {
 const InternalHeaderCell = <T extends TableItem>({
   children,
   column,
+  display,
   hide = false,
   isSorted,
   onSortClick,
@@ -61,6 +63,7 @@ const InternalHeaderCell = <T extends TableItem>({
 
   return (
     <StyledTableHeaderCell
+      display={display}
       isSortable={isSortable}
       stickyHeader={stickyHeader}
       onClick={handleClick}

@@ -4,7 +4,7 @@ import { FlattenSimpleInterpolation } from 'styled-components';
 import { ResponsiveProp } from '../../types';
 
 type DisplayProp = ResponsiveProp<
-  'block' | 'inline-block' | 'inline' | 'inline-flex' | 'flex' | 'grid' | 'inline-grid' | 'none'
+  'block' | 'inline-block' | 'inline' | 'inline-flex' | 'flex' | 'grid' | 'inline-grid' | 'table-cell' | 'none'
 >;
 
 export type DisplayProps = Partial<{

@@ -1,9 +1,13 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
+import { withDisplay } from '../../../mixins';
+
 import { DataCellProps } from './DataCell';
 
 export const StyledTableDataCell = styled.td<DataCellProps>`
+  ${withDisplay()}
+
   background-color: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
@@ -36,6 +40,8 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
 `;
 
 export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
+  ${withDisplay()}
+
   background-color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => `0 ${theme.spacing.small}`};
 
