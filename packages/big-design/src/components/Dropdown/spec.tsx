@@ -1,6 +1,6 @@
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
-import React, { Fragment } from 'react';
+import React from 'react';
 import 'jest-styled-components';
 
 import { fireEvent, render, screen, waitForElement } from '@test/utils';
@@ -256,23 +256,6 @@ test('esc should close menu', async () => {
   expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
 
   fireEvent.keyDown(getByRole('listbox'), { key: 'Escape' });
-  expect(queryByRole('listbox')).toBeEmptyDOMElement();
-  await waitForElement(() => queryByRole('listbox'));
-});
-
-test('blurring list should close menu', async () => {
-  const { getByRole, queryByRole } = render(
-    <Fragment>
-      {DropdownMock}
-      <input type="text" />
-    </Fragment>,
-  );
-  const toggle = getByRole('button');
-
-  fireEvent.click(toggle);
-  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
-
-  fireEvent.blur(getByRole('listbox'));
   expect(queryByRole('listbox')).toBeEmptyDOMElement();
   await waitForElement(() => queryByRole('listbox'));
 });

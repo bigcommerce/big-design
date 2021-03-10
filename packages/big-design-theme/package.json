@@ -35,14 +35,15 @@
     "polished": "^3.0.3"
   },
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0",
     "styled-components": "^4.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
     "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
     "@babel/plugin-proposal-optional-chaining": "^7.12.1",
     "@babel/plugin-transform-object-assign": "^7.12.1",
@@ -58,8 +59,8 @@
     "concurrently": "^5.0.0",
     "jest": "^25.4.0",
     "jest-styled-components": "^6.3.1",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
     "styled-components": "^4.3.0",
     "typescript": "~3.8.3",

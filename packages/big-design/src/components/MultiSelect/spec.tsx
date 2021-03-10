@@ -199,7 +199,7 @@ test('select input has aria-controls', async () => {
   const { getByRole, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
 
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   expect(input.getAttribute('aria-controls')).toBe(getByRole('listbox').id);
 
@@ -228,19 +228,6 @@ test('input button has aria-label', async () => {
   await waitForElement(() => getAllByRole('button'));
 });
 
-test('multi select menu opens when focused on input', async () => {
-  const { getByTestId, queryByRole } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
-
-  expect(queryByRole('listbox')).toBeEmptyDOMElement();
-
-  fireEvent.focus(input);
-
-  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
-});
-
 test('multi select menu opens/closes when input button is clicked', async () => {
   const { getAllByRole, queryByRole } = render(MultiSelectMock);
   const button = getAllByRole('button')[2];
@@ -257,7 +244,7 @@ test('esc should close menu', async () => {
   const { getByTestId, queryByRole } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
 
-  fireEvent.focus(input);
+  fireEvent.click(input);
   expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
 
   fireEvent.keyDown(input, { key: 'Escape' });
@@ -265,22 +252,10 @@ test('esc should close menu', async () => {
   await waitForElement(() => queryByRole('listbox'));
 });
 
-test('blurring input should close menu', async () => {
-  const { getByTestId, queryByRole } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
-
-  fireEvent.focus(input);
-  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
-
-  fireEvent.blur(input);
-  expect(queryByRole('listbox')).toBeEmptyDOMElement();
-  await waitForElement(() => queryByRole('listbox'));
-});
-
 test('multi select has items', async () => {
   const { getAllByRole, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   expect(getAllByRole('option').length).toBe(6);
 
@@ -301,7 +276,7 @@ test('multi select items should be unfiltered when opened', async () => {
 test('up/down arrows should change select item selection', async () => {
   const { getAllByRole, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const options = getAllByRole('option');
 
@@ -323,7 +298,7 @@ test('up/down arrows should change select item selection', async () => {
 test('home should select first select item', async () => {
   const { getAllByRole, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const options = getAllByRole('option');
 
@@ -340,7 +315,7 @@ test('home should select first select item', async () => {
 test('end should select last select item', async () => {
   const { getAllByRole, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const options = getAllByRole('option');
 
@@ -359,7 +334,7 @@ test('enter should trigger onOptionsChange', async () => {
   const { getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
 
-  fireEvent.focus(input);
+  fireEvent.click(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
 
@@ -370,7 +345,7 @@ test('enter should trigger onOptionsChange', async () => {
 test('clicking on select options should trigger onOptionsChange', async () => {
   const { getAllByRole, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const options = getAllByRole('option');
   fireEvent.click(options[3]);
@@ -385,7 +360,7 @@ test('clicking on select options should trigger onOptionsChange', async () => {
 test('clicking on disabled select options should not trigger onItemClick', async () => {
   const { getAllByRole, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const options = getAllByRole('option');
   fireEvent.click(options[4]);
@@ -397,7 +372,7 @@ test('clicking on disabled select options should not trigger onItemClick', async
 test('select should render select action', async () => {
   const { getByText, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   expect(getByText('Remove Country')).toBeInTheDocument();
 
@@ -407,7 +382,7 @@ test('select should render select action', async () => {
 test('select action should call onActionClick', async () => {
   const { getByTestId, getAllByRole } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const options = getAllByRole('option');
   fireEvent.click(options[5]);
@@ -418,7 +393,7 @@ test('select action should call onActionClick', async () => {
 test('select action supports icons', async () => {
   const { getByTestId, getByText } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const action = getByText('Remove Country');
   expect(action.querySelector('svg')).toBeDefined();
@@ -553,7 +528,7 @@ test('does not forward styles', async () => {
   );
 
   const input = getByTestId('multi-select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   expect(container.getElementsByClassName('test').length).toBe(0);
   expect(getByRole('listbox')).not.toHaveStyle('background: red');
@@ -601,7 +576,7 @@ test('should accept a maxHeight prop', async () => {
   );
 
   const input = getAllByLabelText('Countries')[0];
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const list = getByRole('listbox');
   expect(list).toHaveStyleRule('max-height', remCalc(350));
@@ -613,7 +588,7 @@ test('should default max-height to 250', async () => {
   const { getAllByLabelText, getByRole } = render(MultiSelectMock);
 
   const input = getAllByLabelText('Countries')[0];
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const list = getByRole('listbox');
   expect(list).toHaveStyleRule('max-height', remCalc(250));
@@ -674,7 +649,7 @@ test('multiselect should render four items with checkboxes', async () => {
   const { getByRole, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
 
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const menu = getByRole('listbox');
   const options = menu.querySelectorAll('input[type="checkbox"]');
@@ -688,7 +663,7 @@ test('multiselect should have two selected options', async () => {
   const { getByRole, getByTestId } = render(MultiSelectMock);
   const input = getByTestId('multi-select');
 
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const menu = getByRole('listbox');
   const options = menu.querySelectorAll(':checked');
@@ -703,7 +678,7 @@ test('multiselect should be able to select multiple options', async () => {
 
   const input = getAllByLabelText('Countries')[0];
 
-  fireEvent.focus(input);
+  fireEvent.click(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'ArrowDown' });
@@ -722,7 +697,7 @@ test('multiselect should be able to deselect options', async () => {
 
   const input = getAllByLabelText('Countries')[0];
 
-  fireEvent.focus(input);
+  fireEvent.click(input);
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'Enter' });
 
@@ -780,7 +755,7 @@ test('options should allow icons', async () => {
   );
 
   const input = getAllByLabelText('Countries')[0];
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const svg = container.querySelectorAll('svg');
   expect(svg.length).toBe(3);
@@ -792,7 +767,7 @@ test('grouped multiselect should render group labels, render uppercased', async 
   const { getAllByLabelText, getByText } = render(GroupedMultiSelectMock);
 
   const input = getAllByLabelText('Countries')[0];
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const label1 = getByText('Label 1');
   const label2 = getByText('Label 2');
@@ -808,7 +783,7 @@ test('grouped multiselect should render group labels, render uppercased', async 
 test('group labels should be grayed out', async () => {
   const { getByTestId, getByText } = render(GroupedMultiSelectMock);
   const input = getByTestId('groupSelect');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const label1 = getByText('Label 1');
   const label2 = getByText('Label 2');
@@ -822,7 +797,7 @@ test('group labels should be grayed out', async () => {
 test('group labels should be skipped when using keyboard to navigate options', async () => {
   const { getAllByRole, getByTestId } = render(GroupedMultiSelectMock);
   const input = getByTestId('groupSelect');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   const options = getAllByRole('option');
 
@@ -842,7 +817,7 @@ test('group labels should be skipped when using keyboard to navigate options', a
 test('group labels should still render when filtering options', async () => {
   const { getAllByRole, getByTestId, getByText } = render(GroupedMultiSelectMock);
   const input = getByTestId('groupSelect');
-  fireEvent.focus(input);
+  fireEvent.click(input);
   fireEvent.change(input, { target: { value: 'm' } });
 
   const label1 = getByText('Label 1');
@@ -859,7 +834,7 @@ test('group labels should still render when filtering options', async () => {
 test('select option should supports description', async () => {
   const { getByText, getByTestId } = render(MultiSelectWithOptionsDescriptions);
   const input = getByTestId('select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   expect(getByText('US Description')).toBeInTheDocument();
 
@@ -869,7 +844,7 @@ test('select option should supports description', async () => {
 test('select action should supports description', async () => {
   const { getByText, getByTestId } = render(MultiSelectWithOptionsDescriptions);
   const input = getByTestId('select');
-  fireEvent.focus(input);
+  fireEvent.click(input);
 
   expect(getByText('Action Description')).toBeInTheDocument();
 
