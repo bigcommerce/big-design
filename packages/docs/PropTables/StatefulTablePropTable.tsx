@@ -108,6 +108,11 @@ const tableColumnsProps: Prop[] = [
     description: 'Sets alignment for column.',
   },
   {
+    name: 'display',
+    types: ['table-cell', 'none'],
+    description: 'Sets the CSS display property of a column.',
+  },
+  {
     name: 'hash',
     types: 'string',
     required: true,
