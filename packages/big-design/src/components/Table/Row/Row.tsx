@@ -54,8 +54,15 @@ const InternalRow = <T extends TableItem>({
         </DataCell>
       )}
 
-      {columns.map(({ render: CellContent, align, verticalAlign, width, withPadding = true }, columnIndex) => (
-        <DataCell key={columnIndex} align={align} verticalAlign={verticalAlign} width={width} withPadding={withPadding}>
+      {columns.map(({ render: CellContent, align, display, verticalAlign, width, withPadding = true }, columnIndex) => (
+        <DataCell
+          key={columnIndex}
+          align={align}
+          display={display}
+          verticalAlign={verticalAlign}
+          width={width}
+          withPadding={withPadding}
+        >
           {/* https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
           {/*
         // @ts-ignore */}
