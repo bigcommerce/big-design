@@ -21,6 +21,7 @@ export * from './Modal';
 export * from './MultiSelect';
 export * from './Pagination';
 export * from './Panel';
+export * from './PillTabs';
 export * from './Popover';
 export * from './ProgressBar';
 export * from './ProgressCircle';

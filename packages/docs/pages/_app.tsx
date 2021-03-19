@@ -24,7 +24,7 @@ const gridTemplate = {
   `,
   tablet: `
     ". nav main ." 1fr
-    / 1fr 210px minmax(min-content, 1050px) 1fr;
+    / 1fr 210px minmax(0, 1050px) 1fr;
   `,
 };
 
