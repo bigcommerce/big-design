@@ -4,7 +4,7 @@ import React, { createRef, useCallback, useEffect, useMemo, useState } from 'rea
 import { useWindowResizeListener } from '../../hooks';
 import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
-import { Flex, FlexItem } from '../Flex';
+import { Flex } from '../Flex';
 
 import { StyledFlexItem, StyledPillTab } from './styled';
 
@@ -17,6 +17,8 @@ export interface PillTabItem {
 interface PillTabsProps {
   items: PillTabItem[];
 }
+
+const DROPDOWN_MENU_WIDTH = 42;
 
 export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
   const parentRef = createRef<HTMLDivElement>();
@@ -44,7 +46,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
         return stateObj;
       }
 
-      if (remainingWidth - pillWidth > 42) {
+      if (remainingWidth - pillWidth > DROPDOWN_MENU_WIDTH) {
         remainingWidth = remainingWidth - pillWidth;
 
         return {
@@ -86,13 +88,11 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
       }));
 
     return (
-      <FlexItem alignSelf="flex-end">
-        <Dropdown items={dropdownItems} toggle={<Button iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />} />
-      </FlexItem>
+      <Dropdown items={dropdownItems} toggle={<Button iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />} />
     );
   }, [pillsState]);
 
-  const renderPills = useMemo(
+  const renderedPills = useMemo(
     () =>
       items.map((item, index) => (
         <StyledFlexItem key={index} ref={pillsState[index].ref} isVisible={pillsState[index].isVisible}>
@@ -106,14 +106,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
 
   return (
     <Flex flexDirection="row" flexWrap="nowrap" ref={parentRef}>
-      {items.map((item, index) => (
-        <StyledFlexItem key={index} ref={pillsState[index].ref} isVisible={pillsState[index].isVisible}>
-          <StyledPillTab onClick={() => item.onClick(item)} variant="subtle" isActive={item.isActive}>
-            {item.text}
-          </StyledPillTab>
-        </StyledFlexItem>
-      ))}
-      {renderPills}
+      {renderedPills}
       {isMenuVisible ? renderDropdown() : null}
     </Flex>
   );
