@@ -4,6 +4,7 @@ import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautif
 import { useEventCallback, useUniqueId } from '../../hooks';
 import { MarginProps } from '../../mixins';
 import { typedMemo } from '../../utils';
+import { PillTabs } from '../PillTabs';
 
 import { Actions } from './Actions';
 import { Body } from './Body';
@@ -27,6 +28,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     keyField = 'id',
     onRowDrop,
     pagination,
+    pillTabs,
     selectable,
     sortable,
     stickyHeader,
@@ -206,8 +208,13 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     return null;
   };
 
+  const renderPillTabs = () => {
+    return pillTabs ? <PillTabs items={pillTabs} /> : null;
+  };
+
   return (
     <>
+      {renderPillTabs()}
       {shouldRenderActions() && (
         <Actions
           customActions={actions}

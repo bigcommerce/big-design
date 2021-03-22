@@ -1,14 +1,14 @@
 import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
-import React, { createRef, useCallback, useEffect, useState } from 'react';
+import React, { createRef, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useWindowResizeListener } from '../../hooks';
 import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
-import { Flex } from '../Flex';
+import { Flex, FlexItem } from '../Flex';
 
 import { StyledFlexItem, StyledPillTab } from './styled';
 
-interface PillTabItem {
+export interface PillTabItem {
   text: string;
   isActive: boolean;
   onClick(item: PillTabItem): void;
@@ -36,19 +36,16 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
     }
 
     let remainingWidth = parentWidth;
-    console.log('----- REMAINING: ', remainingWidth);
 
     const newState = pillsState.map((stateObj) => {
       const pillWidth = stateObj.ref.current?.offsetWidth;
 
-      console.log('pillWidth', pillWidth);
       if (!pillWidth) {
         return stateObj;
       }
 
-      if (remainingWidth - pillWidth > 48) {
+      if (remainingWidth - pillWidth > 42) {
         remainingWidth = remainingWidth - pillWidth;
-        console.log('Remaining width: ', remainingWidth);
 
         return {
           ...stateObj,
@@ -89,9 +86,23 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
       }));
 
     return (
-      <Dropdown items={dropdownItems} toggle={<Button iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />} />
+      <FlexItem alignSelf="flex-end">
+        <Dropdown items={dropdownItems} toggle={<Button iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />} />
+      </FlexItem>
     );
   }, [pillsState]);
+
+  const renderPills = useMemo(
+    () =>
+      items.map((item, index) => (
+        <StyledFlexItem key={index} ref={pillsState[index].ref} isVisible={pillsState[index].isVisible}>
+          <StyledPillTab onClick={() => item.onClick(item)} variant="subtle" isActive={item.isActive}>
+            {item.text}
+          </StyledPillTab>
+        </StyledFlexItem>
+      )),
+    [items, pillsState],
+  );
 
   return (
     <Flex flexDirection="row" flexWrap="nowrap" ref={parentRef}>
@@ -102,6 +113,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
           </StyledPillTab>
         </StyledFlexItem>
       ))}
+      {renderPills}
       {isMenuVisible ? renderDropdown() : null}
     </Flex>
   );

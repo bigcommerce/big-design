@@ -28,6 +28,6 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
       /* TODO: Best way to hide? */
       visibility: hidden;
       position: absolute;
-      z-index: -1000;
+      z-index: ${({ theme }) => -theme.zIndex.tooltip};
     `}
 `;
