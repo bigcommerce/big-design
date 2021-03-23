@@ -1,9 +1,10 @@
 export interface WorksheetColumn {
-  key: string;
-  name: string;
+  hash: string;
+  header: string;
+  type?: 'text';
 }
 
 export interface WorksheetProps<T> {
   columns: WorksheetColumn[];
-  data: T[];
+  items: T[];
 }

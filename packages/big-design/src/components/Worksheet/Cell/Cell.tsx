@@ -1,13 +1,15 @@
 import React, { memo, useMemo } from 'react';
 
 import { Small } from '../../Typography';
+import { useEditableCell } from '../hooks';
 import { useStore } from '../Worksheet';
 
 import { StyledCell } from './styled';
 import { CellProps } from './types';
 
-export const Cell: React.FC<CellProps> = memo(({ children, rowIndex, columnIndex }) => {
+export const Cell: React.FC<CellProps> = memo(({ columnIndex, rowIndex, type = 'text', value }) => {
   const cell = { columnIndex, rowIndex };
+  const { handleDoubleClick, handleBlur, handleKeyDown, isEditing, Editor } = useEditableCell({ type });
 
   const isSelected = useStore(
     useMemo(
@@ -28,11 +30,13 @@ export const Cell: React.FC<CellProps> = memo(({ children, rowIndex, columnIndex
     setSelectedCells([cell]);
   };
 
-  console.log(isSelected);
-
   return (
-    <StyledCell onClick={handleOnClick} isSelected={isSelected}>
-      <Small>{children}</Small>
+    <StyledCell onClick={handleOnClick} isSelected={isSelected} onDoubleClick={handleDoubleClick}>
+      {isEditing ? (
+        <Editor handleBlur={handleBlur} handleKeyDown={handleKeyDown} initialValue={value} />
+      ) : (
+        <Small>{value}</Small>
+      )}
     </StyledCell>
   );
 });

@@ -10,9 +10,13 @@ export const Row: React.FC<RowProps> = memo(({ columns, rowIndex, row }) => {
     <tr>
       <RowStatus rowIndex={rowIndex} />
       {columns.map((column, columnIndex) => (
-        <Cell key={`${rowIndex}-${columnIndex}`} columnIndex={columnIndex} rowIndex={rowIndex}>
-          {row[column.key]}
-        </Cell>
+        <Cell
+          key={`${rowIndex}-${columnIndex}`}
+          columnIndex={columnIndex}
+          rowIndex={rowIndex}
+          type={column.type}
+          value={row[column.hash]}
+        />
       ))}
     </tr>
   );
