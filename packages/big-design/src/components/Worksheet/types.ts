@@ -7,4 +7,5 @@ export interface WorksheetColumn {
 export interface WorksheetProps<T> {
   columns: WorksheetColumn[];
   items: T[];
+  onChange(items: T[]): void;
 }

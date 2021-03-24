@@ -1,15 +1,20 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { TextEditor } from '../test/TextEditor';
+import { TextEditor } from '../renamedEditors';
+
+import { useUpdateItems } from './useUpdateItems';
 
 export type EditableCellOnKeyDown<T> = (e: React.KeyboardEvent<HTMLInputElement>, cell: { value: T }) => void;
 
 interface UseEditableCellProps {
+  hash: string;
+  rowIndex: number;
   type?: 'text' | 'number';
 }
 
-export const useEditableCell = <T>({ type = 'text' }: UseEditableCellProps) => {
+export const useEditableCell = <T>({ hash, rowIndex, type = 'text' }: UseEditableCellProps) => {
   const [isEditing, setIsEditing] = useState(false);
+  const { updateItems } = useUpdateItems();
 
   const handleDoubleClick = () => {
     setIsEditing(true);
@@ -28,7 +33,7 @@ export const useEditableCell = <T>({ type = 'text' }: UseEditableCellProps) => {
           event.preventDefault();
           event.stopPropagation();
 
-          console.log('newValue', value);
+          updateItems([{ value, hash, rowIndex }]);
           setIsEditing(false);
 
           break;
@@ -41,7 +46,7 @@ export const useEditableCell = <T>({ type = 'text' }: UseEditableCellProps) => {
           break;
       }
     },
-    [],
+    [hash, rowIndex, updateItems],
   );
 
   const Editor = useMemo(() => {

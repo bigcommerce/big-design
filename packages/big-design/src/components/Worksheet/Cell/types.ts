@@ -1,6 +1,7 @@
 export interface CellProps {
   columnIndex: number;
+  hash: string;
   rowIndex: number;
-  value: string;
   type?: 'text';
+  value: string;
 }

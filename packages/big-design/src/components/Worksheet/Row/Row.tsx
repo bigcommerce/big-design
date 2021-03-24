@@ -15,7 +15,8 @@ export const Row: React.FC<RowProps> = memo(({ columns, rowIndex, row }) => {
           columnIndex={columnIndex}
           rowIndex={rowIndex}
           type={column.type}
-          value={row[column.hash]}
+          value={row[column.hash]} //TODO: fix
+          hash={column.hash}
         />
       ))}
     </tr>

@@ -7,10 +7,11 @@ import { useStore } from '../Worksheet';
 import { StyledCell } from './styled';
 import { CellProps } from './types';
 
-export const Cell: React.FC<CellProps> = memo(({ columnIndex, rowIndex, type = 'text', value }) => {
+export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, type = 'text', value }) => {
+  const { handleDoubleClick, handleBlur, handleKeyDown, isEditing, Editor } = useEditableCell({ hash, rowIndex, type });
   const cell = { columnIndex, rowIndex };
-  const { handleDoubleClick, handleBlur, handleKeyDown, isEditing, Editor } = useEditableCell({ type });
 
+  // TODO: refactor?
   const isSelected = useStore(
     useMemo(
       () => (state) =>

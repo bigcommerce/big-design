@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { StyledInput } from './styled';
 
-interface TextEditorProps {
+export interface TextEditorProps {
   initialValue: string;
   handleBlur: any;
   handleKeyDown: any;
@@ -23,7 +23,7 @@ export const TextEditor: React.FC<TextEditorProps> = ({ initialValue, handleBlur
   return (
     <StyledInput
       autoFocus
-      type={typeof value === 'number' ? 'number' : 'text'}
+      type={typeof value === 'number' ? 'number' : 'text'} // TODO: remove?
       value={value}
       onBlur={handleBlur}
       onChange={handleChange}

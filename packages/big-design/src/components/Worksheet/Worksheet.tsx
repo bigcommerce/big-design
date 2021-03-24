@@ -3,6 +3,7 @@ import create from 'zustand';
 
 import { typedMemo } from '../../utils';
 
+import { UpdateItemsProvider } from './context';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, Table } from './styled';
@@ -28,7 +29,7 @@ export const useStore = create<State<unknown>>((set) => ({
   setSelectedCells: (cells) => set((state) => ({ ...state, selectedCells: cells })),
 }));
 
-const InternalWorksheet = <T extends unknown>({ columns, items }: WorksheetProps<T>) => {
+const InternalWorksheet = <T extends unknown>({ columns, items, onChange }: WorksheetProps<T>) => {
   const renderHeaders = useMemo(
     () => (
       <thead>
@@ -47,7 +48,7 @@ const InternalWorksheet = <T extends unknown>({ columns, items }: WorksheetProps
     () => (
       <tbody>
         {items.map((row, rowIndex) => (
-          <Row key={rowIndex} columns={columns} rowIndex={rowIndex} row={row} />
+          <Row key={rowIndex} columns={columns} row={row} rowIndex={rowIndex} />
         ))}
       </tbody>
     ),
@@ -55,10 +56,12 @@ const InternalWorksheet = <T extends unknown>({ columns, items }: WorksheetProps
   );
 
   return (
-    <Table>
-      {renderHeaders}
-      {renderRows}
-    </Table>
+    <UpdateItemsProvider items={items} onChange={onChange}>
+      <Table>
+        {renderHeaders}
+        {renderRows}
+      </Table>
+    </UpdateItemsProvider>
   );
 };
 
