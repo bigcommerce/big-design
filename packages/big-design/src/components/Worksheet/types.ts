@@ -7,5 +7,13 @@ export interface WorksheetColumn {
 export interface WorksheetProps<T> {
   columns: WorksheetColumn[];
   items: T[];
-  onChange(items: T[]): void;
+  onChange(items: Cell[]): void;
+}
+
+export interface Cell {
+  columnIndex: number;
+  hash: string;
+  rowIndex: number;
+  value: string | number;
+  type?: 'text';
 }

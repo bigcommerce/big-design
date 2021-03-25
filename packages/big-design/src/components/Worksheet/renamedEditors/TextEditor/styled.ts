@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledInput = styled.input`
+export const StyledInput = styled.input<{ isEdited: boolean }>`
   width: 100%;
   height: 100%;
   border: 0;
@@ -16,6 +16,12 @@ export const StyledInput = styled.input`
   &:focus {
     outline: none;
   }
+
+  ${({ isEdited }) =>
+    isEdited &&
+    css`
+      background-color: ${({ theme }) => theme.colors.warning20};
+    `}
 `;
 
 StyledInput.defaultProps = { theme: defaultTheme };

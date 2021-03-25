@@ -1,18 +1,17 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import { TextEditor } from '../renamedEditors';
+import { Cell as CellType } from '../types';
 
 import { useUpdateItems } from './useUpdateItems';
 
-export type EditableCellOnKeyDown<T> = (e: React.KeyboardEvent<HTMLInputElement>, cell: { value: T }) => void;
+export type EditableCellOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: string | number) => void;
 
 interface UseEditableCellProps {
-  hash: string;
-  rowIndex: number;
-  type?: 'text' | 'number';
+  cell: CellType;
 }
 
-export const useEditableCell = <T>({ hash, rowIndex, type = 'text' }: UseEditableCellProps) => {
+export const useEditableCell = ({ cell }: UseEditableCellProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const { updateItems } = useUpdateItems();
 
@@ -24,8 +23,8 @@ export const useEditableCell = <T>({ hash, rowIndex, type = 'text' }: UseEditabl
     setIsEditing(false);
   };
 
-  const handleKeyDown: EditableCellOnKeyDown<T> = useCallback(
-    (event: React.KeyboardEvent<HTMLInputElement>, { value }) => {
+  const handleKeyDown: EditableCellOnKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>, newValue) => {
       const key = event.key;
 
       switch (key) {
@@ -33,7 +32,7 @@ export const useEditableCell = <T>({ hash, rowIndex, type = 'text' }: UseEditabl
           event.preventDefault();
           event.stopPropagation();
 
-          updateItems([{ value, hash, rowIndex }]);
+          updateItems([cell], [newValue]);
           setIsEditing(false);
 
           break;
@@ -46,16 +45,16 @@ export const useEditableCell = <T>({ hash, rowIndex, type = 'text' }: UseEditabl
           break;
       }
     },
-    [hash, rowIndex, updateItems],
+    [cell, updateItems],
   );
 
   const Editor = useMemo(() => {
-    switch (type) {
+    switch (cell.type) {
       default: {
         return TextEditor;
       }
     }
-  }, [type]);
+  }, [cell.type]);
 
   return useMemo(() => ({ Editor: Editor, handleBlur, handleDoubleClick, handleKeyDown, isEditing }), [
     Editor,

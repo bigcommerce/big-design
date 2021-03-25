@@ -1,44 +1,50 @@
 import React, { createContext, useCallback, useMemo } from 'react';
 
+import { Cell } from '../types';
+import { useStore } from '../Worksheet';
+
 export interface UpdateItemsContextType {
-  updateItems(items: Cell[]): void;
+  updateItems(items: Cell[], newValue: Array<string | number>): void;
 }
 
 interface UpdateItemsProviderProps<T> {
   items: T[];
-  onChange(items: T[]): void;
 }
 
-interface Cell {
-  value: any;
-  hash: string;
-  rowIndex: number;
+interface CellsWithNewValues {
+  cell: Cell;
+  newValue: string | number;
 }
 
 export const UpdateItemsContext = createContext<UpdateItemsContextType | null>(null);
 
 // TODO: fix type
-export const UpdateItemsProvider: React.FC<UpdateItemsProviderProps<any>> = ({ children, items, onChange }) => {
-  const updateItems = useCallback(
-    (cells: Cell[]) => {
-      const result = cells.reduce(
-        (accum, cell) => {
-          const index = cell.rowIndex;
+export const UpdateItemsProvider: React.FC<UpdateItemsProviderProps<any>> = ({ children, items }) => {
+  const setRows = useStore((state) => state.setRows);
+  const addEditedCells = useStore((state) => state.addEditedCells);
 
-          const row = accum[index];
-
-          const newRow = { ...row, [cell.hash]: cell.value };
-
-          accum[index] = newRow;
-
-          return accum;
-        },
-        [...items],
+  const updateItems: UpdateItemsContextType['updateItems'] = useCallback(
+    (cells, newValues) => {
+      const newEditedCells = cells.reduce<CellsWithNewValues[]>(
+        (accum, cell, index) =>
+          cell.value !== newValues[index] ? accum.concat({ cell, newValue: newValues[index] }) : accum,
+        [],
       );
 
-      onChange(result);
+      const updatedRows = newEditedCells.reduce((accum, { cell, newValue }) => {
+        const { rowIndex, hash } = cell;
+
+        const row = accum[rowIndex];
+        const updatedRow = { ...row, [hash]: newValue };
+        accum[rowIndex] = updatedRow;
+
+        return accum;
+      }, items);
+
+      setRows(updatedRows);
+      addEditedCells(newEditedCells.map(({ cell, newValue }) => ({ ...cell, value: newValue })));
     },
-    [items, onChange],
+    [addEditedCells, items, setRows],
   );
 
   const providerValue = useMemo(

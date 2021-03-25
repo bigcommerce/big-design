@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import create from 'zustand';
 
 import { typedMemo } from '../../utils';
@@ -7,29 +7,45 @@ import { UpdateItemsProvider } from './context';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, Table } from './styled';
-import { WorksheetProps } from './types';
-
-interface Cell {
-  columnIndex: number;
-  rowIndex: number;
-}
+import { Cell, WorksheetProps } from './types';
+import { mergeCells } from './utils';
 
 interface State<T> {
+  editedCells: Cell[];
+  rows: T[];
   selectedCells: Cell[];
-  selectedRows: T[];
+  selectedRows: number[];
+  addEditedCells: (cells: Cell[]) => void;
+  setRows: (rows: T[]) => void;
   setSelectedCells: (cells: Cell[]) => void;
-  setSelectedRows: (rows: T[]) => void;
+  setSelectedRows: (rows: number[]) => void;
 }
 
 // TODO: Fix Type
 export const useStore = create<State<unknown>>((set) => ({
+  editedCells: [],
+  rows: [],
   selectedRows: [],
   selectedCells: [],
-  setSelectedRows: (rows) => set((state) => ({ ...state, selectedRows: rows })),
+  addEditedCells: (cells) => set((state) => ({ ...state, editedCells: mergeCells(state.editedCells, cells) })),
+  setRows: (rows) => set((state) => ({ ...state, rows })),
+  setSelectedRows: (rowIndexes) => set((state) => ({ ...state, selectedRows: rowIndexes })),
   setSelectedCells: (cells) => set((state) => ({ ...state, selectedCells: cells })),
 }));
 
 const InternalWorksheet = <T extends unknown>({ columns, items, onChange }: WorksheetProps<T>) => {
+  const setRows = useStore((state) => state.setRows);
+  const editedCells = useStore((state) => state.editedCells);
+
+  useEffect(() => setRows(items), [items, setRows]);
+  useEffect(() => {
+    if (editedCells.length) {
+      onChange(editedCells);
+    }
+  }, [editedCells, onChange]);
+
+  const rows = useStore((state) => state.rows);
+
   const renderHeaders = useMemo(
     () => (
       <thead>
@@ -47,16 +63,19 @@ const InternalWorksheet = <T extends unknown>({ columns, items, onChange }: Work
   const renderRows = useMemo(
     () => (
       <tbody>
-        {items.map((row, rowIndex) => (
-          <Row key={rowIndex} columns={columns} row={row} rowIndex={rowIndex} />
+        {rows.map((
+          row, //TODO: fix
+          rowIndex,
+        ) => (
+          <Row key={rowIndex} columns={columns} rowIndex={rowIndex} />
         ))}
       </tbody>
     ),
-    [columns, items],
+    [columns, rows],
   );
 
   return (
-    <UpdateItemsProvider items={items} onChange={onChange}>
+    <UpdateItemsProvider items={rows}>
       <Table>
         {renderHeaders}
         {renderRows}

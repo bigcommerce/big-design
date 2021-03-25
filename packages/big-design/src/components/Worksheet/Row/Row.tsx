@@ -1,11 +1,18 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 
 import { Cell } from '../Cell';
 import { RowStatus } from '../RowStatus';
+import { WorksheetColumn } from '../types';
+import { useStore } from '../Worksheet';
 
-import { RowProps } from './types';
+interface RowProps {
+  rowIndex: number;
+  columns: WorksheetColumn[];
+}
 
-export const Row: React.FC<RowProps> = memo(({ columns, rowIndex, row }) => {
+export const Row: React.FC<RowProps> = memo(({ columns, rowIndex }) => {
+  const row = useStore(useMemo(() => (state) => state.rows[rowIndex], [rowIndex]));
+
   return (
     <tr>
       <RowStatus rowIndex={rowIndex} />

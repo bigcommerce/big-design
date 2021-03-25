@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 
+import { Cell } from '../../types';
+
 import { StyledInput } from './styled';
 
 export interface TextEditorProps {
-  initialValue: string;
-  handleBlur: any;
-  handleKeyDown: any;
+  cell: Cell;
+  handleBlur: any; //TODO: fix
+  handleKeyDown: any; //TODO: fix
+  isEdited: boolean;
 }
 
-export const TextEditor: React.FC<TextEditorProps> = ({ initialValue, handleBlur, handleKeyDown }) => {
-  const [value, setValue] = useState(initialValue);
+export const TextEditor: React.FC<TextEditorProps> = ({ cell, handleBlur, handleKeyDown, isEdited }) => {
+  const [value, setValue] = useState(cell.value);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
@@ -17,17 +20,18 @@ export const TextEditor: React.FC<TextEditorProps> = ({ initialValue, handleBlur
 
   // TODO: rename
   const handleOnKeydown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    handleKeyDown(event, { value });
+    handleKeyDown(event, value);
   };
 
   return (
     <StyledInput
       autoFocus
-      type={typeof value === 'number' ? 'number' : 'text'} // TODO: remove?
-      value={value}
+      isEdited={isEdited}
       onBlur={handleBlur}
       onChange={handleChange}
       onKeyDown={handleOnKeydown}
+      type={typeof value === 'number' ? 'number' : 'text'} // TODO: remove?
+      value={value}
     />
   );
 };

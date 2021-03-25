@@ -1,7 +1,7 @@
 import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-export const StyledCell = styled.td<{ isSelected?: boolean }>`
+export const StyledCell = styled.td<{ isSelected?: boolean; isEdited?: boolean }>`
   background-color: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => `${remCalc(0.5)} solid ${theme.colors.secondary30}`};
   box-sizing: border-box;
@@ -14,6 +14,12 @@ export const StyledCell = styled.td<{ isSelected?: boolean }>`
     isSelected &&
     css`
       outline: ${({ theme }) => `${remCalc(0.5)} solid ${theme.colors.primary}`};
+    `}
+
+  ${({ isEdited }) =>
+    isEdited &&
+    css`
+      background-color: ${({ theme }) => theme.colors.warning20};
     `}
 `;
 
