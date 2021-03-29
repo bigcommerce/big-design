@@ -1,48 +1,35 @@
 import React, { useEffect, useMemo } from 'react';
-import create from 'zustand';
 
 import { typedMemo } from '../../utils';
 
 import { UpdateItemsProvider } from './context';
+import { useStore } from './hooks';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, Table } from './styled';
-import { Cell, WorksheetProps } from './types';
-import { mergeCells } from './utils';
+import { WorksheetProps } from './types';
 
-interface State<T> {
-  editedCells: Cell[];
-  rows: T[];
-  selectedCells: Cell[];
-  selectedRows: number[];
-  addEditedCells: (cells: Cell[]) => void;
-  setRows: (rows: T[]) => void;
-  setSelectedCells: (cells: Cell[]) => void;
-  setSelectedRows: (rows: number[]) => void;
-}
-
-// TODO: Fix Type
-export const useStore = create<State<unknown>>((set) => ({
-  editedCells: [],
-  rows: [],
-  selectedRows: [],
-  selectedCells: [],
-  addEditedCells: (cells) => set((state) => ({ ...state, editedCells: mergeCells(state.editedCells, cells) })),
-  setRows: (rows) => set((state) => ({ ...state, rows })),
-  setSelectedRows: (rowIndexes) => set((state) => ({ ...state, selectedRows: rowIndexes })),
-  setSelectedCells: (cells) => set((state) => ({ ...state, selectedCells: cells })),
-}));
-
-const InternalWorksheet = <T extends unknown>({ columns, items, onChange }: WorksheetProps<T>) => {
+const InternalWorksheet = <T extends unknown>({ columns, items, onChange, onErrors }: WorksheetProps<T>) => {
   const setRows = useStore((state) => state.setRows);
   const editedCells = useStore((state) => state.editedCells);
+  const invalidCells = useStore((state) => state.invalidCells);
+
+  console.log('invalid cells', invalidCells);
 
   useEffect(() => setRows(items), [items, setRows]);
+
   useEffect(() => {
     if (editedCells.length) {
       onChange(editedCells);
     }
   }, [editedCells, onChange]);
+
+  useEffect(() => {
+    // TODO: being called twice
+    if (invalidCells.length && typeof onErrors === 'function') {
+      onErrors(invalidCells);
+    }
+  }, [invalidCells, onErrors]);
 
   const rows = useStore((state) => state.rows);
 

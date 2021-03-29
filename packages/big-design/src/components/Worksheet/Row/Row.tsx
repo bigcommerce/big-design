@@ -1,9 +1,9 @@
 import React, { memo, useMemo } from 'react';
 
 import { Cell } from '../Cell';
+import { useStore } from '../hooks';
 import { RowStatus } from '../RowStatus';
 import { WorksheetColumn } from '../types';
-import { useStore } from '../Worksheet';
 
 interface RowProps {
   rowIndex: number;
@@ -24,6 +24,7 @@ export const Row: React.FC<RowProps> = memo(({ columns, rowIndex }) => {
           type={column.type}
           value={row[column.hash]} //TODO: fix
           hash={column.hash}
+          validation={column.validation}
         />
       ))}
     </tr>

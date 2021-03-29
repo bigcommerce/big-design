@@ -1,17 +1,31 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Small } from '../../Typography';
-import { useEditableCell } from '../hooks';
+import { useEditableCell, useStore } from '../hooks';
 import { Cell as CellType } from '../types';
-import { useStore } from '../Worksheet';
 
 import { StyledCell } from './styled';
 
-type CellProps = CellType;
+interface CellProps extends CellType {
+  validation?(value: string | number): boolean;
+}
 
-export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, type = 'text', value }) => {
-  const cell = { columnIndex, rowIndex, hash, type, value };
+export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, type = 'text', value, validation }) => {
+  const cell = useMemo(() => ({ columnIndex, rowIndex, hash, type, value }), [
+    columnIndex,
+    rowIndex,
+    hash,
+    type,
+    value,
+  ]);
+
   const { handleDoubleClick, handleBlur, handleKeyDown, isEditing, Editor } = useEditableCell({ cell });
+  const setSelectedRows = useStore(useMemo(() => (state) => state.setSelectedRows, []));
+  const setSelectedCells = useStore(useMemo(() => (state) => state.setSelectedCells, []));
+  const addInvalidCells = useStore(useMemo(() => (state) => state.addInvalidCells, []));
+  const removeInvalidCells = useStore(useMemo(() => (state) => state.removeInvalidCells, []));
+
+  const [isCurrentlyInvalid, setIsCurrentlyInvalid] = useState(false);
 
   // TODO: refactor?
   const isSelected = useStore(
@@ -37,21 +51,43 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
     ),
   );
 
-  const setSelectedRows = useStore((state) => state.setSelectedRows);
-  const setSelectedCells = useStore((state) => state.setSelectedCells);
+  const isValid = useMemo(() => (typeof validation === 'function' ? validation(value) : true), [validation, value]);
 
-  const handleOnClick = () => {
+  useEffect(() => {
+    if (!isValid) {
+      addInvalidCells([cell]);
+      setIsCurrentlyInvalid(true);
+    } else if (isCurrentlyInvalid) {
+      console.log('remove', cell);
+      removeInvalidCells([cell]);
+      setIsCurrentlyInvalid(false);
+    }
+  }, [addInvalidCells, removeInvalidCells, cell, isCurrentlyInvalid, isValid]);
+
+  const handleOnClick = useCallback(() => {
     setSelectedRows([rowIndex]);
     setSelectedCells([cell]);
-  };
+  }, [cell, rowIndex, setSelectedCells, setSelectedRows]);
 
-  return (
-    <StyledCell onClick={handleOnClick} isEdited={isEdited} isSelected={isSelected} onDoubleClick={handleDoubleClick}>
-      {isEditing ? (
+  const renderedCell = useMemo(
+    () =>
+      isEditing ? (
         <Editor cell={cell} handleBlur={handleBlur} handleKeyDown={handleKeyDown} isEdited={isEdited} />
       ) : (
         <Small>{value}</Small>
-      )}
+      ),
+    [cell, handleBlur, handleKeyDown, isEdited, isEditing, value],
+  );
+
+  return (
+    <StyledCell
+      onClick={handleOnClick}
+      isEdited={isEdited}
+      isSelected={isSelected}
+      isValid={isValid}
+      onDoubleClick={handleDoubleClick}
+    >
+      {renderedCell}
     </StyledCell>
   );
 });

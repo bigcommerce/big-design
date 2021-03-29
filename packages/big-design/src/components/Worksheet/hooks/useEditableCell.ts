@@ -15,13 +15,13 @@ export const useEditableCell = ({ cell }: UseEditableCellProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const { updateItems } = useUpdateItems();
 
-  const handleDoubleClick = () => {
+  const handleDoubleClick = useCallback(() => {
     setIsEditing(true);
-  };
+  }, []);
 
-  const handleBlur = () => {
+  const handleBlur = useCallback(() => {
     setIsEditing(false);
-  };
+  }, []);
 
   const handleKeyDown: EditableCellOnKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>, newValue) => {
@@ -58,6 +58,8 @@ export const useEditableCell = ({ cell }: UseEditableCellProps) => {
 
   return useMemo(() => ({ Editor: Editor, handleBlur, handleDoubleClick, handleKeyDown, isEditing }), [
     Editor,
+    handleBlur,
+    handleDoubleClick,
     handleKeyDown,
     isEditing,
   ]);

@@ -1,7 +1,7 @@
-import React, { createContext, useCallback, useMemo } from 'react';
+import React, { createContext, memo, useCallback, useMemo } from 'react';
 
+import { useStore } from '../hooks';
 import { Cell } from '../types';
-import { useStore } from '../Worksheet';
 
 export interface UpdateItemsContextType {
   updateItems(items: Cell[], newValue: Array<string | number>): void;
@@ -19,7 +19,7 @@ interface CellsWithNewValues {
 export const UpdateItemsContext = createContext<UpdateItemsContextType | null>(null);
 
 // TODO: fix type
-export const UpdateItemsProvider: React.FC<UpdateItemsProviderProps<any>> = ({ children, items }) => {
+export const UpdateItemsProvider: React.FC<UpdateItemsProviderProps<any>> = memo(({ children, items }) => {
   const setRows = useStore((state) => state.setRows);
   const addEditedCells = useStore((state) => state.addEditedCells);
 
@@ -55,4 +55,4 @@ export const UpdateItemsProvider: React.FC<UpdateItemsProviderProps<any>> = ({ c
   );
 
   return <UpdateItemsContext.Provider value={providerValue}>{children}</UpdateItemsContext.Provider>;
-};
+});
