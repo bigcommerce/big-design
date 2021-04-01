@@ -1,10 +1,17 @@
-import React, { useCallback, useMemo, useReducer } from 'react';
+import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
+import { PillTabItem } from '../PillTabs';
 import { Table, TableColumn, TableItem, TableProps, TableSelectable, TableSortDirection } from '../Table';
 
 import { createReducer, createReducerInit } from './reducer';
+
+export interface StatefulTablePillTabFilter<T> {
+  text: string;
+  hash: string;
+  filter(items: T[]): T[];
+}
 
 export type StatefulTableSortFn<T> = (a: T, b: T, direction: TableSortDirection) => number;
 
@@ -14,9 +21,10 @@ export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable
 }
 
 export interface StatefulTableProps<T>
-  extends Omit<TableProps<T>, 'columns' | 'pagination' | 'selectable' | 'sortable' | 'onRowDrop'> {
+  extends Omit<TableProps<T>, 'columns' | 'pagination' | 'pillTabs' | 'selectable' | 'sortable' | 'onRowDrop'> {
   columns: Array<StatefulTableColumn<T>>;
   pagination?: boolean;
+  pillTabFilters?: StatefulTablePillTabFilter<T>[];
   selectable?: boolean;
   defaultSelected?: T[];
   onRowDrop?(items: T[]): void;
@@ -45,6 +53,7 @@ const InternalStatefulTable = <T extends TableItem>({
   onSelectionChange,
   onRowDrop,
   pagination = false,
+  pillTabFilters,
   selectable = false,
   stickyHeader = false,
   ...rest
@@ -53,7 +62,11 @@ const InternalStatefulTable = <T extends TableItem>({
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
   const sortable = useMemo(() => columns.some((column) => column.sortKey || column.sortFn), [columns]);
 
-  const [state, dispatch] = useReducer(reducer, { columns, defaultSelected, items, pagination }, reducerInit);
+  const [state, dispatch] = useReducer(
+    reducer,
+    { columns, defaultSelected, items, pagination, pillTabFilters },
+    reducerInit,
+  );
 
   const columnsChangedCallback = useCallback(() => dispatch({ type: 'COLUMNS_CHANGED', columns }), [columns]);
   const itemsChangedCallback = useCallback(
@@ -113,6 +126,26 @@ const InternalStatefulTable = <T extends TableItem>({
     [state.currentItems, onRowDrop, pagination],
   );
 
+  useEffect(() => {
+    if (!pillTabFilters) {
+      return;
+    }
+
+    if (state.pillTabs) {
+      return;
+    }
+
+    const pillTabs = pillTabFilters.map<PillTabItem>((pillTabFilter, index) => ({
+      text: pillTabFilter.text,
+      onClick: (item) => {
+        dispatch({ type: 'TOGGLE_PILL', pillIndex: index, filterHash: pillTabFilter.hash, isActive: item.isActive });
+      },
+      isActive: false,
+    }));
+
+    dispatch({ type: 'SET_PILL_TABS', pillTabs, pillTabFilters });
+  }, [pillTabFilters, pagination, state.pillTabs]);
+
   return (
     <Table
       {...rest}
@@ -122,6 +155,7 @@ const InternalStatefulTable = <T extends TableItem>({
       keyField={keyField}
       stickyHeader={stickyHeader}
       pagination={paginationOptions}
+      pillTabs={state.pillTabs}
       selectable={selectableOptions}
       sortable={sortableOptions}
       onRowDrop={onRowDrop ? onDragEnd : undefined}

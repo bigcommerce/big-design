@@ -1,3 +1,4 @@
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { StyleableButton } from '../Button/private';
@@ -26,8 +27,11 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
     !props.isVisible &&
     css`
       /* TODO: Best way to hide? */
-      visibility: hidden;
       position: absolute;
+      visibility: hidden;
       z-index: ${({ theme }) => -theme.zIndex.tooltip};
     `}
 `;
+
+StyledPillTab.defaultProps = { theme: defaultTheme };
+StyledFlexItem.defaultProps = { theme: defaultTheme };

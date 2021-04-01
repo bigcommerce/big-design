@@ -3,7 +3,7 @@ import 'jest-styled-components';
 
 import { fireEvent, render, waitForElement } from '@test/utils';
 
-import { StatefulTable, StatefulTableProps } from './StatefulTable';
+import { StatefulTable, StatefulTablePillTabFilter, StatefulTableProps } from './StatefulTable';
 
 interface TestItem {
   name: string;
@@ -323,4 +323,138 @@ test('renders headers by default and hides then via prop', () => {
 
   expect(container.querySelector('th')).toBeInTheDocument();
   expect(container.querySelector('th')).not.toBeVisible();
+});
+
+test('renders pill tabs with the pillTabFilters prop', () => {
+  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
+    {
+      text: 'In stock',
+      hash: 'in_stock',
+      filter: (items) => items.filter((item) => item.stock > 0),
+    },
+  ];
+  const { getByText } = render(getSimpleTable({ pillTabFilters }));
+  const customFilter = getByText('In stock');
+
+  expect(customFilter).toBeInTheDocument();
+  expect(customFilter).toBeVisible();
+});
+
+test('it executes the filter function on click', () => {
+  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
+    {
+      text: 'Stock 1',
+      hash: 'stock',
+      filter: (items) => items.filter((item) => item.stock === 1),
+    },
+  ];
+  const { container, getByText } = render(getSimpleTable({ pillTabFilters }));
+  const customFilter = getByText('Stock 1');
+
+  fireEvent.click(customFilter);
+
+  const rows = container.querySelectorAll('tbody > tr');
+
+  expect(rows.length).toBe(1);
+});
+
+test('can paginate on filtered rows', async () => {
+  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
+    {
+      text: 'Stock 1',
+      hash: 'stock',
+      filter: (items) => items.filter((item) => item.stock < 40),
+    },
+  ];
+  const { getByText, getByTestId } = render(getSimpleTable({ pillTabFilters, pagination: true }));
+  const customFilter = getByText('Stock 1');
+
+  fireEvent.click(customFilter);
+  await waitForElement(() => getByTestId('simple-table'));
+
+  const itemText = getByText('1 - 25 of 39');
+
+  expect(itemText).toBeInTheDocument();
+});
+
+test('can undo filter actions', () => {
+  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
+    {
+      text: 'Stock 1',
+      hash: 'stock',
+      filter: (items) => items.filter((item) => item.stock === 1),
+    },
+  ];
+  const { container, getByText } = render(getSimpleTable({ pillTabFilters }));
+  const customFilter = getByText('Stock 1');
+
+  fireEvent.click(customFilter);
+
+  let rows = container.querySelectorAll('tbody > tr');
+
+  expect(rows.length).toBe(1);
+
+  fireEvent.click(customFilter);
+
+  rows = container.querySelectorAll('tbody > tr');
+  expect(rows.length).toBe(104);
+});
+
+test('can stack filter actions', () => {
+  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
+    {
+      text: 'Stock 1',
+      hash: 'stock_1',
+      filter: (items) => items.filter((item) => item.stock === 1),
+    },
+    {
+      text: 'Stock 1 or 2',
+      hash: 'stock_2',
+      filter: (items) => items.filter((item) => item.stock === 1 || item.stock === 2),
+    },
+  ];
+  const { container, getByText } = render(getSimpleTable({ pillTabFilters }));
+  const customFilter1 = getByText('Stock 1');
+  const customFilter2 = getByText('Stock 1 or 2');
+
+  fireEvent.click(customFilter1);
+  fireEvent.click(customFilter2);
+
+  const rows = container.querySelectorAll('tbody > tr');
+
+  expect(rows.length).toBe(1);
+});
+
+test('can undo stacked filter actions', () => {
+  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
+    {
+      text: 'Stock 1',
+      hash: 'stock_1',
+      filter: (items) => items.filter((item) => item.stock === 1),
+    },
+    {
+      text: 'Stock 1 or 2',
+      hash: 'stock_2',
+      filter: (items) => items.filter((item) => item.stock === 1 || item.stock === 2),
+    },
+  ];
+  const { container, getByText } = render(getSimpleTable({ pillTabFilters }));
+  const customFilter1 = getByText('Stock 1');
+  const customFilter2 = getByText('Stock 1 or 2');
+
+  fireEvent.click(customFilter1);
+  fireEvent.click(customFilter2);
+
+  let rows = container.querySelectorAll('tbody > tr');
+  expect(rows.length).toBe(1);
+
+  fireEvent.click(customFilter1);
+
+  rows = container.querySelectorAll('tbody > tr');
+  expect(rows.length).toBe(2);
+
+  fireEvent.click(customFilter2);
+
+  rows = container.querySelectorAll('tbody > tr');
+  expect(rows.length).toBe(104);
 });

@@ -1,12 +1,16 @@
 import { Reducer } from 'react';
 
+import { PillTabItem } from '../PillTabs';
 import { TableSortDirection } from '../Table';
 
-import { StatefulTableColumn, StatefulTableSortFn } from './StatefulTable';
+import { StatefulTableColumn, StatefulTablePillTabFilter, StatefulTableSortFn } from './StatefulTable';
 
 interface State<T> {
+  activeFilters: string[];
   currentItems: T[];
   columns: Array<StatefulTableColumn<T> & { isSortable: boolean }>;
+  filteredItems: T[];
+  filters: Record<string, (items: T[]) => T[]>;
   isPaginationEnabled: boolean;
   items: T[];
   pagination: {
@@ -15,6 +19,7 @@ interface State<T> {
     itemsPerPageOptions: number[];
     totalItems: number;
   };
+  pillTabs?: PillTabItem[];
   selectedItems: T[];
   sortable: {
     direction: TableSortDirection;
@@ -35,8 +40,11 @@ export const createReducerInit = <T>() => ({ columns, defaultSelected, items, pa
   const currentItems = getItems(items, pagination, { currentPage, itemsPerPage });
 
   return {
+    activeFilters: [],
     currentItems,
     columns: augmentColumns(columns),
+    filteredItems: [],
+    filters: {},
     isPaginationEnabled: pagination,
     items,
     pagination: {
@@ -58,7 +66,9 @@ export type Action<T> =
   | { type: 'ITEMS_PER_PAGE_CHANGE'; itemsPerPage: number }
   | { type: 'PAGE_CHANGE'; page: number }
   | { type: 'SELECTED_ITEMS'; selectedItems: T[] }
-  | { type: 'SORT'; column: StatefulTableColumn<T>; direction: TableSortDirection };
+  | { type: 'SET_PILL_TABS'; pillTabs: PillTabItem[]; pillTabFilters: StatefulTablePillTabFilter<T>[] }
+  | { type: 'SORT'; column: StatefulTableColumn<T>; direction: TableSortDirection }
+  | { type: 'TOGGLE_PILL'; pillIndex: number; filterHash: StatefulTablePillTabFilter<T>['hash']; isActive: boolean };
 
 export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, action) => {
   switch (action.type) {
@@ -101,8 +111,10 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
     }
 
     case 'PAGE_CHANGE': {
+      const filtersActive = state.activeFilters.length > 0;
+      const items = filtersActive ? state.filteredItems : state.items;
       const currentPage = action.page;
-      const currentItems = getItems(state.items, true, {
+      const currentItems = getItems(items, true, {
         currentPage,
         itemsPerPage: state.pagination.itemsPerPage,
       });
@@ -140,6 +152,18 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
       return { ...state, selectedItems: action.selectedItems };
     }
 
+    case 'SET_PILL_TABS': {
+      const filters = action.pillTabFilters.reduce<State<T>['filters']>(
+        (filters, pillTabFilter) => ({
+          ...filters,
+          [pillTabFilter.hash]: pillTabFilter.filter,
+        }),
+        {},
+      );
+
+      return { ...state, pillTabs: action.pillTabs, filters };
+    }
+
     case 'SORT': {
       const { hash, sortFn, sortKey } = action.column;
       const direction = action.direction;
@@ -171,6 +195,43 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
           direction,
           columnHash: hash,
         },
+      };
+    }
+
+    case 'TOGGLE_PILL': {
+      if (!state.pillTabs) {
+        return state;
+      }
+
+      const updatedPills = state.pillTabs.map((pillTab, index) =>
+        index === action.pillIndex
+          ? {
+              ...pillTab,
+              isActive: !pillTab.isActive,
+            }
+          : pillTab,
+      );
+      const isCurrentPillActive = updatedPills[action.pillIndex].isActive;
+      const activeFilters = isCurrentPillActive
+        ? [...state.activeFilters, action.filterHash]
+        : state.activeFilters.filter((activeFilter) => activeFilter !== action.filterHash);
+      const currentItems = activeFilters.reduce((filteredItems, filterHash) => {
+        const filter = state.filters[filterHash];
+
+        return filter(filteredItems);
+      }, state.items);
+
+      return {
+        ...state,
+        activeFilters,
+        pagination: {
+          ...state.pagination,
+          currentPage: 1,
+          totalItems: currentItems.length,
+        },
+        pillTabs: updatedPills,
+        currentItems,
+        filteredItems: currentItems,
       };
     }
 

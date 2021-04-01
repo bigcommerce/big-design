@@ -1,4 +1,4 @@
-import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
+import { CheckIcon, MoreHorizIcon } from '@bigcommerce/big-design-icons';
 import React, { createRef, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useWindowResizeListener } from '../../hooks';
@@ -14,7 +14,7 @@ export interface PillTabItem {
   onClick(item: PillTabItem): void;
 }
 
-interface PillTabsProps {
+export interface PillTabsProps {
   items: PillTabItem[];
 }
 
@@ -81,22 +81,42 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
   const renderDropdown = useCallback(() => {
     const dropdownItems = pillsState
       .filter((stateObj) => !stateObj.isVisible)
-      .map((stateObj) => ({
-        content: stateObj.item.text,
-        onItemClick: () => stateObj.item.onClick(stateObj.item),
-        hash: stateObj.item.text.toLowerCase(),
-      }));
+      .map((stateObj) => {
+        const item = items.find((i) => i.text === stateObj.item.text);
+
+        return {
+          content: stateObj.item.text,
+          onItemClick: () => stateObj.item.onClick(stateObj.item),
+          hash: stateObj.item.text.toLowerCase(),
+          icon: item?.isActive ? <CheckIcon /> : undefined,
+        };
+      });
 
     return (
-      <Dropdown items={dropdownItems} toggle={<Button iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />} />
+      <Dropdown
+        items={dropdownItems}
+        toggle={
+          <Button data-testid="pilltabs-dropdown-toggle" iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />
+        }
+      />
     );
-  }, [pillsState]);
+  }, [items, pillsState]);
 
   const renderedPills = useMemo(
     () =>
       items.map((item, index) => (
-        <StyledFlexItem key={index} ref={pillsState[index].ref} isVisible={pillsState[index].isVisible}>
-          <StyledPillTab onClick={() => item.onClick(item)} variant="subtle" isActive={item.isActive}>
+        <StyledFlexItem
+          data-testid={`pilltabs-pill-${index}`}
+          key={index}
+          ref={pillsState[index].ref}
+          isVisible={pillsState[index].isVisible}
+        >
+          <StyledPillTab
+            disabled={!pillsState[index].isVisible}
+            onClick={() => item.onClick(item)}
+            variant="subtle"
+            isActive={item.isActive}
+          >
             {item.text}
           </StyledPillTab>
         </StyledFlexItem>
@@ -105,7 +125,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
   );
 
   return (
-    <Flex flexDirection="row" flexWrap="nowrap" ref={parentRef}>
+    <Flex data-testid="pilltabs-wrapper" flexDirection="row" flexWrap="nowrap" ref={parentRef}>
       {renderedPills}
       {isMenuVisible ? renderDropdown() : null}
     </Flex>
