@@ -215,11 +215,20 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
       const activeFilters = isCurrentPillActive
         ? [...state.activeFilters, action.filterHash]
         : state.activeFilters.filter((activeFilter) => activeFilter !== action.filterHash);
-      const currentItems = activeFilters.reduce((filteredItems, filterHash) => {
-        const filter = state.filters[filterHash];
+      const currentItems =
+        activeFilters.length > 0
+          ? activeFilters
+              .map((filterHash) => {
+                const filter = state.filters[filterHash];
 
-        return filter(filteredItems);
-      }, state.items);
+                return filter(state.items);
+              })
+              .reduce((results, filteredItems) => {
+                const dedupedItems = filteredItems.filter((item) => !results.includes(item));
+
+                return [...results, ...dedupedItems];
+              }, [])
+          : state.items;
 
       return {
         ...state,

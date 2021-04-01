@@ -400,7 +400,7 @@ test('can undo filter actions', () => {
   expect(rows.length).toBe(104);
 });
 
-test('can stack filter actions', () => {
+test('can stack filter actions (OR logic)', () => {
   const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
     {
       text: 'Stock 1',
@@ -408,21 +408,21 @@ test('can stack filter actions', () => {
       filter: (items) => items.filter((item) => item.stock === 1),
     },
     {
-      text: 'Stock 1 or 2',
+      text: 'Stock 2',
       hash: 'stock_2',
-      filter: (items) => items.filter((item) => item.stock === 1 || item.stock === 2),
+      filter: (items) => items.filter((item) => item.stock === 2),
     },
   ];
   const { container, getByText } = render(getSimpleTable({ pillTabFilters }));
   const customFilter1 = getByText('Stock 1');
-  const customFilter2 = getByText('Stock 1 or 2');
+  const customFilter2 = getByText('Stock 2');
 
   fireEvent.click(customFilter1);
   fireEvent.click(customFilter2);
 
   const rows = container.querySelectorAll('tbody > tr');
 
-  expect(rows.length).toBe(1);
+  expect(rows.length).toBe(2);
 });
 
 test('can undo stacked filter actions', () => {
@@ -433,25 +433,25 @@ test('can undo stacked filter actions', () => {
       filter: (items) => items.filter((item) => item.stock === 1),
     },
     {
-      text: 'Stock 1 or 2',
+      text: 'Stock 2',
       hash: 'stock_2',
-      filter: (items) => items.filter((item) => item.stock === 1 || item.stock === 2),
+      filter: (items) => items.filter((item) => item.stock === 2),
     },
   ];
   const { container, getByText } = render(getSimpleTable({ pillTabFilters }));
   const customFilter1 = getByText('Stock 1');
-  const customFilter2 = getByText('Stock 1 or 2');
+  const customFilter2 = getByText('Stock 2');
 
   fireEvent.click(customFilter1);
   fireEvent.click(customFilter2);
 
   let rows = container.querySelectorAll('tbody > tr');
-  expect(rows.length).toBe(1);
+  expect(rows.length).toBe(2);
 
   fireEvent.click(customFilter1);
 
   rows = container.querySelectorAll('tbody > tr');
-  expect(rows.length).toBe(2);
+  expect(rows.length).toBe(1);
 
   fireEvent.click(customFilter2);
 
