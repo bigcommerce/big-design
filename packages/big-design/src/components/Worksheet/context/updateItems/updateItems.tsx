@@ -1,7 +1,7 @@
 import React, { createContext, memo, useCallback, useMemo } from 'react';
 
-import { useStore } from '../hooks';
-import { Cell } from '../types';
+import { useStore } from '../../hooks';
+import { Cell } from '../../types';
 
 export interface UpdateItemsContextType {
   updateItems(items: Cell[], newValue: Array<string | number>): void;

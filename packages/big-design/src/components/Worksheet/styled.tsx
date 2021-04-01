@@ -13,7 +13,7 @@ export const Header = styled.th`
   border: ${({ theme }) => `${remCalc(0.5)} solid ${theme.colors.secondary30}`};
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary60};
-  font-weight: 600; //fix?
+  font-weight: 600; //TODO: fix?
   height: ${remCalc(52)};
   padding: 0 ${remCalc(17)};
   text-align: left;

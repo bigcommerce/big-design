@@ -18,13 +18,13 @@ export const Row: React.FC<RowProps> = memo(({ columns, rowIndex }) => {
       <RowStatus rowIndex={rowIndex} />
       {columns.map((column, columnIndex) => (
         <Cell
-          key={`${rowIndex}-${columnIndex}`}
           columnIndex={columnIndex}
-          rowIndex={rowIndex}
-          type={column.type}
-          value={row[column.hash]} //TODO: fix
           hash={column.hash}
+          key={`${rowIndex}-${columnIndex}`}
+          rowIndex={rowIndex}
+          type={column.type || 'text'}
           validation={column.validation}
+          value={row[column.hash]}
         />
       ))}
     </tr>

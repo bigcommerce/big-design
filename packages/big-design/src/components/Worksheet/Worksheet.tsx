@@ -10,13 +10,13 @@ import { Header, Table } from './styled';
 import { WorksheetProps } from './types';
 
 const InternalWorksheet = <T extends unknown>({ columns, items, onChange, onErrors }: WorksheetProps<T>) => {
+  const rows = useStore((state) => state.rows);
   const setRows = useStore((state) => state.setRows);
-  const editedCells = useStore((state) => state.editedCells);
-  const invalidCells = useStore((state) => state.invalidCells);
-
-  console.log('invalid cells', invalidCells);
 
   useEffect(() => setRows(items), [items, setRows]);
+
+  const editedCells = useStore((state) => state.editedCells);
+  const invalidCells = useStore((state) => state.invalidCells);
 
   useEffect(() => {
     if (editedCells.length) {
@@ -25,13 +25,10 @@ const InternalWorksheet = <T extends unknown>({ columns, items, onChange, onErro
   }, [editedCells, onChange]);
 
   useEffect(() => {
-    // TODO: being called twice
-    if (invalidCells.length && typeof onErrors === 'function') {
+    if (typeof onErrors === 'function' && invalidCells.length) {
       onErrors(invalidCells);
     }
   }, [invalidCells, onErrors]);
-
-  const rows = useStore((state) => state.rows);
 
   const renderHeaders = useMemo(
     () => (

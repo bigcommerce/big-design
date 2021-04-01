@@ -1,17 +1,13 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import { TextEditor } from '../renamedEditors';
-import { Cell as CellType } from '../types';
+import { Cell } from '../types';
 
 import { useUpdateItems } from './useUpdateItems';
 
 export type EditableCellOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: string | number) => void;
 
-interface UseEditableCellProps {
-  cell: CellType;
-}
-
-export const useEditableCell = ({ cell }: UseEditableCellProps) => {
+export const useEditableCell = (cell: Cell) => {
   const [isEditing, setIsEditing] = useState(false);
   const { updateItems } = useUpdateItems();
 

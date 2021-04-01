@@ -11,12 +11,14 @@ export const Status = styled.td<{ isInvalid?: boolean; isSelected?: boolean }>`
     isInvalid &&
     css`
       background-color: ${({ theme }) => `${theme.colors.danger}`};
+      border: ${({ theme }) => `${remCalc(0.5)} solid ${theme.colors.danger}`};
     `}
 
   ${({ isSelected }) =>
     isSelected &&
     css`
       background-color: ${({ theme }) => `${theme.colors.primary}`};
+      border: ${({ theme }) => `${remCalc(0.5)} solid ${theme.colors.primary}`};
     `}
 `;
 

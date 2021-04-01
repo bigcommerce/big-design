@@ -1,7 +1,7 @@
 export interface WorksheetColumn {
   hash: string;
   header: string;
-  type?: 'text';
+  type?: 'text' | 'number';
   validation?(value: string | number): boolean;
 }
 
@@ -17,5 +17,5 @@ export interface Cell {
   hash: string;
   rowIndex: number;
   value: string | number;
-  type?: 'text';
+  type?: 'text' | 'number';
 }

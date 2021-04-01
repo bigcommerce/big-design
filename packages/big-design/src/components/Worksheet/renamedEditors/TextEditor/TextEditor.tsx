@@ -19,9 +19,11 @@ export const TextEditor: React.FC<TextEditorProps> = ({ cell, handleBlur, handle
   };
 
   // TODO: rename
-  const handleOnKeydown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    handleKeyDown(event, value);
+  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    handleKeyDown(event, formatValue(value));
   };
+
+  const formatValue = (value: string | number) => (cell.type === 'number' ? Number(value) : value);
 
   return (
     <StyledInput
@@ -29,7 +31,7 @@ export const TextEditor: React.FC<TextEditorProps> = ({ cell, handleBlur, handle
       isEdited={isEdited}
       onBlur={handleBlur}
       onChange={handleChange}
-      onKeyDown={handleOnKeydown}
+      onKeyDown={handleOnKeyDown}
       type={typeof value === 'number' ? 'number' : 'text'} // TODO: remove?
       value={value}
     />
