@@ -278,6 +278,44 @@ const TablePage = () => {
         }}
         {/* jsx-to-string:end */}
       </CodePreview>
+
+      <H1>Usage with Pill Tabs</H1>
+
+      <CodePreview scope={{ data }}>
+        {/* jsx-to-string:start */}
+        {function Example() {
+          const [items, setItems] = useState(data);
+          const [activeFilters, setActiveFilters] = useState({
+            lowStock: false,
+          });
+          const pillTabs = [
+            {
+              isActive: activeFilters.lowStock,
+              text: 'Low Stock',
+              onClick: () => {
+                const isFilterActive = !activeFilters.lowStock;
+                const newItems = isFilterActive ? items.filter((item) => item.stock < 10) : data;
+
+                setItems(newItems);
+                setActiveFilters({ lowStock: isFilterActive });
+              },
+            },
+          ];
+
+          return (
+            <Table
+              columns={[
+                { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
+                { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
+                { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
+              ]}
+              items={items}
+              pillTabs={pillTabs}
+            />
+          );
+        }}
+        {/* jsx-to-string:end */}
+      </CodePreview>
     </>
   );
 };

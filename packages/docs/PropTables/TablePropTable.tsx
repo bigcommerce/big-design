@@ -45,6 +45,15 @@ const tableProps: Prop[] = [
     description: 'See pagination component for details.',
   },
   {
+    name: 'pillTabs',
+    types: (
+      <NextLink href="/PillTabs/PillTabsPage" as="/pill-tabs">
+        Pill Tabs
+      </NextLink>
+    ),
+    description: 'See Pill Tabs component for details.',
+  },
+  {
     name: 'selectable',
     types: <NextLink href="#table-selectable-prop-table">Selectable</NextLink>,
     description: (

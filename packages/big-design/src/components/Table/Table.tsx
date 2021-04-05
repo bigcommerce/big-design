@@ -4,6 +4,7 @@ import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautif
 import { useEventCallback, useUniqueId } from '../../hooks';
 import { MarginProps } from '../../mixins';
 import { typedMemo } from '../../utils';
+import { Box } from '../Box';
 import { PillTabs } from '../PillTabs';
 
 import { Actions } from './Actions';
@@ -209,7 +210,17 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   };
 
   const renderPillTabs = () => {
-    return pillTabs ? <PillTabs items={pillTabs} /> : null;
+    if (!pillTabs) {
+      return;
+    }
+
+    return shouldRenderActions() ? (
+      <PillTabs items={pillTabs} />
+    ) : (
+      <Box marginBottom="medium">
+        <PillTabs items={pillTabs} />
+      </Box>
+    );
   };
 
   return (
