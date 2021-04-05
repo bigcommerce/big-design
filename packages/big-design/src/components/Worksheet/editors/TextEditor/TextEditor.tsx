@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
+import { EditableCellKeyDown } from '../../hooks';
 import { Cell } from '../../types';
 
 import { StyledInput } from './styled';
 
 export interface TextEditorProps {
   cell: Cell;
-  handleBlur: any; //TODO: fix
-  handleKeyDown: any; //TODO: fix
+  handleBlur(): void;
+  handleKeyDown: EditableCellKeyDown;
   isEdited: boolean;
 }
 
@@ -18,8 +19,8 @@ export const TextEditor: React.FC<TextEditorProps> = ({ cell, handleBlur, handle
     setValue(event.target.value);
   };
 
-  // TODO: rename
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const forwardKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    // We always receive the value as a string type, cast to Number if column type is number
     handleKeyDown(event, formatValue(value));
   };
 
@@ -31,9 +32,8 @@ export const TextEditor: React.FC<TextEditorProps> = ({ cell, handleBlur, handle
       isEdited={isEdited}
       onBlur={handleBlur}
       onChange={handleChange}
-      onKeyDown={handleOnKeyDown}
-      type={typeof value === 'number' ? 'number' : 'text'} // TODO: remove?
-      value={value}
+      onKeyDown={forwardKeyDown}
+      value={value.toString()} // In case of NaN casting to string
     />
   );
 };

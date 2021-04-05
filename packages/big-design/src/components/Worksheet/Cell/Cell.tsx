@@ -2,11 +2,11 @@ import React, { memo, useCallback, useEffect, useMemo } from 'react';
 
 import { Small } from '../../Typography';
 import { useEditableCell, useStore } from '../hooks';
-import { Cell as CellType } from '../types'; //TODO: choose a better name?
+import { Cell as TCell } from '../types';
 
 import { StyledCell } from './styled';
 
-interface CellProps extends CellType {
+interface CellProps extends TCell {
   validation?(value: string | number): boolean;
 }
 
@@ -24,16 +24,7 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
   const setSelectedCells = useStore(useMemo(() => (state) => state.setSelectedCells, []));
   const addInvalidCells = useStore(useMemo(() => (state) => state.addInvalidCells, []));
   const removeInvalidCells = useStore(useMemo(() => (state) => state.removeInvalidCells, []));
-  //TODO: rename
-  const cellIsInvalid = useStore(
-    useMemo(
-      () => (state) =>
-        state.invalidCells.find((c) => c.rowIndex === cell.rowIndex && c.columnIndex === cell.columnIndex),
-      [cell.columnIndex, cell.rowIndex],
-    ),
-  );
 
-  // TODO: refactor?
   const isSelected = useStore(
     useMemo(
       () => (state) =>
@@ -45,7 +36,6 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
     ),
   );
 
-  // TODO: refactor?
   const isEdited = useStore(
     useMemo(
       () => (state) =>
@@ -57,22 +47,27 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
     ),
   );
 
+  const invalidCell = useStore(
+    useMemo(
+      () => (state) =>
+        state.invalidCells.find((c) => c.columnIndex === cell.columnIndex && c.rowIndex === cell.rowIndex),
+      [cell.columnIndex, cell.rowIndex],
+    ),
+  );
+
   const isValid = useMemo(() => (typeof validation === 'function' ? validation(value) : true), [validation, value]);
 
-  //TODO: refactor?
   useEffect(() => {
-    if (!isValid) {
-      if (cellIsInvalid) {
-        if (cellIsInvalid.value !== cell.value) {
-          addInvalidCells([cell]);
-        }
-      } else {
-        addInvalidCells([cell]);
-      }
-    } else if (cellIsInvalid) {
+    // Remove from invalidCells if now value is valid
+    if (isValid && invalidCell) {
       removeInvalidCells([cell]);
     }
-  }, [addInvalidCells, cell, cellIsInvalid, isValid, removeInvalidCells]);
+
+    // Add to invalidCells but only if value is different
+    if (!isValid && (!invalidCell || invalidCell.value !== cell.value)) {
+      addInvalidCells([cell]);
+    }
+  }, [addInvalidCells, cell, isValid, invalidCell, removeInvalidCells]);
 
   const handleClick = useCallback(() => {
     setSelectedRows([rowIndex]);
@@ -84,7 +79,8 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
       isEditing ? (
         <Editor cell={cell} handleBlur={handleBlur} handleKeyDown={handleKeyDown} isEdited={isEdited} />
       ) : (
-        <Small>{value}</Small>
+        // In case of NaN casting to string
+        <Small>{value.toString()}</Small>
       ),
     [cell, handleBlur, handleKeyDown, isEdited, isEditing, value],
   );

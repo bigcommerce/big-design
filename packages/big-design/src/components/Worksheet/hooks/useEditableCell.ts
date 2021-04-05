@@ -1,11 +1,11 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { TextEditor } from '../renamedEditors';
+import { TextEditor } from '../editors';
 import { Cell } from '../types';
 
 import { useUpdateItems } from './useUpdateItems';
 
-export type EditableCellOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: string | number) => void;
+export type EditableCellKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: Cell['value']) => void;
 
 export const useEditableCell = (cell: Cell) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -19,7 +19,7 @@ export const useEditableCell = (cell: Cell) => {
     setIsEditing(false);
   }, []);
 
-  const handleKeyDown: EditableCellOnKeyDown = useCallback(
+  const handleKeyDown: EditableCellKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>, newValue) => {
       const key = event.key;
 
@@ -46,6 +46,7 @@ export const useEditableCell = (cell: Cell) => {
 
   const Editor = useMemo(() => {
     switch (cell.type) {
+      // Will always defualt to TextEditor, at a later point we will add other types
       default: {
         return TextEditor;
       }

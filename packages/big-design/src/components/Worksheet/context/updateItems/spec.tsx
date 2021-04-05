@@ -26,13 +26,12 @@ const items = [
 
 describe('UpdateItemsProvider', () => {
   test('updates items', () => {
-    const wrapper = ({ children }) => <UpdateItemsProvider items={items}>{children}</UpdateItemsProvider>;
+    const wrapper: React.FC = ({ children }) => <UpdateItemsProvider items={items}>{children}</UpdateItemsProvider>;
 
     const { result: hook } = renderHook(() => useUpdateItems(), { wrapper });
     const { result: store } = renderHook(() => useStore());
 
     act(() =>
-      // TODO: remove hash, value since its not needed
       hook.current.updateItems(
         [
           { rowIndex: 1, columnIndex: 0, hash: 'productName', value: 'Shoes Name Two' },

@@ -6,8 +6,8 @@ import { RowStatus } from '../RowStatus';
 import { WorksheetColumn } from '../types';
 
 interface RowProps {
-  rowIndex: number;
   columns: WorksheetColumn[];
+  rowIndex: number;
 }
 
 export const Row: React.FC<RowProps> = memo(({ columns, rowIndex }) => {

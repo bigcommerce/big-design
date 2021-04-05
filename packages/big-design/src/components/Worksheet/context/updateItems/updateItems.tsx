@@ -4,28 +4,27 @@ import { useStore } from '../../hooks';
 import { Cell } from '../../types';
 
 export interface UpdateItemsContextType {
-  updateItems(items: Cell[], newValue: Array<string | number>): void;
+  updateItems(items: Cell[], newValue: Array<Cell['value']>): void;
 }
 
-interface UpdateItemsProviderProps<T> {
-  items: T[];
+interface UpdateItemsProviderProps {
+  items: any[]; //TODO: can we pass T type here?
 }
 
-interface CellsWithNewValues {
+interface UpdatedCell {
   cell: Cell;
-  newValue: string | number;
+  newValue: Cell['value'];
 }
 
 export const UpdateItemsContext = createContext<UpdateItemsContextType | null>(null);
 
-// TODO: fix type
-export const UpdateItemsProvider: React.FC<UpdateItemsProviderProps<any>> = memo(({ children, items }) => {
+export const UpdateItemsProvider: React.FC<UpdateItemsProviderProps> = memo(({ children, items }) => {
   const setRows = useStore((state) => state.setRows);
   const addEditedCells = useStore((state) => state.addEditedCells);
 
   const updateItems: UpdateItemsContextType['updateItems'] = useCallback(
     (cells, newValues) => {
-      const newEditedCells = cells.reduce<CellsWithNewValues[]>(
+      const newEditedCells = cells.reduce<UpdatedCell[]>(
         (accum, cell, index) =>
           cell.value !== newValues[index] ? accum.concat({ cell, newValue: newValues[index] }) : accum,
         [],

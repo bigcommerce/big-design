@@ -47,10 +47,7 @@ const InternalWorksheet = <T extends unknown>({ columns, items, onChange, onErro
   const renderRows = useMemo(
     () => (
       <tbody>
-        {rows.map((
-          row, //TODO: fix
-          rowIndex,
-        ) => (
+        {rows.map((_row, rowIndex) => (
           <Row key={rowIndex} columns={columns} rowIndex={rowIndex} />
         ))}
       </tbody>
