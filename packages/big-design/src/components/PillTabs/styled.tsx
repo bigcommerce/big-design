@@ -26,7 +26,6 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
   ${(props) =>
     !props.isVisible &&
     css`
-      /* TODO: Best way to hide? */
       position: absolute;
       visibility: hidden;
       z-index: ${({ theme }) => -theme.zIndex.tooltip};

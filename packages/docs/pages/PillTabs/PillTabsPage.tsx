@@ -10,11 +10,7 @@ const PillTabsPage = () => (
 
     <Text>
       The <Code primary>Pill Tabs</Code> component is used to provide a set of filters that act on a collection of
-      items. For usage with tables, see their respective components.{' '}
-      <Link href="https://design.bigcommerce.com/components/tabs" target="_blank">
-        MISSING URL
-      </Link>
-      .
+      items. For usage with tables, see their respective components.
     </Text>
 
     <CodePreview>

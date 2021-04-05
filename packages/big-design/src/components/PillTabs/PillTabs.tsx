@@ -18,10 +18,11 @@ export interface PillTabsProps {
   items: PillTabItem[];
 }
 
-const DROPDOWN_MENU_WIDTH = 42;
+// const DROPDOWN_MENU_WIDTH = 42;
 
 export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
   const parentRef = createRef<HTMLDivElement>();
+  const dropdownRef = createRef<HTMLDivElement>();
   const [pillsState, setPillsState] = useState(
     items.map((item) => ({
       isVisible: true,
@@ -32,8 +33,9 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const hideOverflownPills = useCallback(() => {
     const parentWidth = parentRef.current?.offsetWidth;
+    const dropdownWidth = dropdownRef.current?.offsetWidth;
 
-    if (!parentWidth) {
+    if (!parentWidth || !dropdownWidth) {
       return;
     }
 
@@ -46,7 +48,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
         return stateObj;
       }
 
-      if (remainingWidth - pillWidth > DROPDOWN_MENU_WIDTH) {
+      if (remainingWidth - pillWidth > dropdownWidth) {
         remainingWidth = remainingWidth - pillWidth;
 
         return {
@@ -68,7 +70,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
       setIsMenuVisible(newVisiblePills.length !== items.length);
       setPillsState(newState);
     }
-  }, [items, parentRef, pillsState]);
+  }, [items, parentRef, dropdownRef, pillsState]);
 
   useEffect(() => {
     hideOverflownPills();
@@ -93,14 +95,11 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
       });
 
     return (
-      <Dropdown
-        items={dropdownItems}
-        toggle={
-          <Button data-testid="pilltabs-dropdown-toggle" iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />
-        }
-      />
+      <StyledFlexItem data-testid="pilltabs-dropdown-toggle" isVisible={isMenuVisible} ref={dropdownRef}>
+        <Dropdown items={dropdownItems} toggle={<Button iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />} />
+      </StyledFlexItem>
     );
-  }, [items, pillsState]);
+  }, [items, pillsState, isMenuVisible, dropdownRef]);
 
   const renderedPills = useMemo(
     () =>
@@ -127,7 +126,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
   return (
     <Flex data-testid="pilltabs-wrapper" flexDirection="row" flexWrap="nowrap" ref={parentRef}>
       {renderedPills}
-      {isMenuVisible ? renderDropdown() : null}
+      {renderDropdown()}
     </Flex>
   );
 };
