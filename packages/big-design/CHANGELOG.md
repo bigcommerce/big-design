@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.29.0...@bigcommerce/big-design@0.29.1) (2021-03-29)
+
+
+### Features
+
+* **component:** add display prop to TableColumns ([#510](https://github.com/bigcommerce/big-design/issues/510)) ([0b863fe](https://github.com/bigcommerce/big-design/commit/0b863febebb80a9570b79eeda23e4caed5893119))
+
+
+
+
+
 # [0.29.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.28.0...@bigcommerce/big-design@0.29.0) (2021-03-08)
 
 
