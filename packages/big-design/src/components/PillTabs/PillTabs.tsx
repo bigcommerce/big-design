@@ -18,8 +18,6 @@ export interface PillTabsProps {
   items: PillTabItem[];
 }
 
-// const DROPDOWN_MENU_WIDTH = 42;
-
 export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
   const parentRef = createRef<HTMLDivElement>();
   const dropdownRef = createRef<HTMLDivElement>();
