@@ -565,8 +565,5 @@ test('it executes the given callback', () => {
 
   fireEvent.click(inStockBtn);
 
-  expect(onPillClick).toHaveBeenCalledWith({
-    title: 'In Stock',
-    id: 'in_stock',
-  });
+  expect(onPillClick).toHaveBeenCalledWith('in_stock');
 });

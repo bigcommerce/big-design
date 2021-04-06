@@ -297,7 +297,7 @@ test('it executes the given callback on click', () => {
 
   fireEvent.click(inStock);
 
-  expect(onClick).toHaveBeenCalledWith(item1);
+  expect(onClick).toHaveBeenCalledWith(item1.id);
 });
 
 test('cannot click on a hidden item', async () => {
