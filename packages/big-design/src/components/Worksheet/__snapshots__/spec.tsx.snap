@@ -64,15 +64,90 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        type="select"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
         >
-          Text
-        </p>
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-1-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-1-menu"
+                        aria-labelledby="bd-select-1-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-1-input"
+                        readonly=""
+                        value="Plastic"
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-1-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-1-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-1-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -124,15 +199,90 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        type="select"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
         >
-          Text
-        </p>
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-4-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-4-menu"
+                        aria-labelledby="bd-select-4-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-4-input"
+                        readonly=""
+                        value="Plastic"
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-4-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-4-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-4-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -184,15 +334,90 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        type="select"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
         >
-          Text
-        </p>
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-7-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-7-menu"
+                        aria-labelledby="bd-select-7-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-7-input"
+                        readonly=""
+                        value="Plastic"
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-7-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-7-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-7-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -244,15 +469,90 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        type="select"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
         >
-          Text
-        </p>
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-10-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-10-menu"
+                        aria-labelledby="bd-select-10-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-10-input"
+                        readonly=""
+                        value="Leather"
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-10-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-10-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-10-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -304,15 +604,90 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        type="select"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
         >
-          Text
-        </p>
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-13-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-13-menu"
+                        aria-labelledby="bd-select-13-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-13-input"
+                        readonly=""
+                        value="Leather"
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-13-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-13-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-13-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -364,15 +739,90 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        type="select"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
         >
-          Text
-        </p>
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-16-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-16-menu"
+                        aria-labelledby="bd-select-16-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-16-input"
+                        readonly=""
+                        value="Leather"
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-16-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-16-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-16-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -424,15 +874,90 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        type="select"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
         >
-          Text
-        </p>
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-19-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-19-menu"
+                        aria-labelledby="bd-select-19-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-19-input"
+                        readonly=""
+                        value="Plastic"
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-19-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-19-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-19-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -459,7 +984,7 @@ exports[`renders worksheet 1`] = `
     </tr>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 dQfqjh"
+        class="styled__Status-sc-1aacki0-0 jpxEqg"
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -484,15 +1009,90 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        class="styled__StyledCell-sc-1bt06ph-0 emuEZs"
+        type="select"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
         >
-          Text
-        </p>
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-22-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-22-menu"
+                        aria-labelledby="bd-select-22-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-22-input"
+                        readonly=""
+                        value=""
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-22-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-22-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-22-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -544,15 +1144,90 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        type="select"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
         >
-          Text
-        </p>
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-25-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-25-menu"
+                        aria-labelledby="bd-select-25-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-25-input"
+                        readonly=""
+                        value="Cloth"
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-25-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-25-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-25-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"

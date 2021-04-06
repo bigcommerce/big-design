@@ -1,11 +1,10 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { TextEditor } from '../editors';
 import { Cell, WorksheetItem } from '../types';
 
 import { useUpdateItems } from './useUpdateItems';
 
-export type EditableCellOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: string | number) => void;
+export type EditableCellOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: unknown) => void;
 
 export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -18,6 +17,14 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
   const handleBlur = useCallback(() => {
     setIsEditing(false);
   }, []);
+
+  const handleChange = useCallback(
+    (newValue: unknown) => {
+      updateItems([cell], [newValue]);
+      setIsEditing(false);
+    },
+    [cell, updateItems],
+  );
 
   const handleKeyDown: EditableCellOnKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>, newValue) => {
@@ -48,18 +55,9 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
     [cell, updateItems],
   );
 
-  const Editor = useMemo(() => {
-    switch (cell.type) {
-      // Will always defualt to TextEditor, at a later point we will add other types
-      default: {
-        return TextEditor;
-      }
-    }
-  }, [cell.type]);
-
-  return useMemo(() => ({ Editor: Editor, handleBlur, handleDoubleClick, handleKeyDown, isEditing }), [
-    Editor,
+  return useMemo(() => ({ handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing }), [
     handleBlur,
+    handleChange,
     handleDoubleClick,
     handleKeyDown,
     isEditing,

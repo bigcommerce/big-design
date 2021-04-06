@@ -1,3 +1,5 @@
+import { SelectOption } from '../Select';
+
 export interface Worksheet<Item extends WorksheetItem> {
   columns: WorksheetColumn<Item>[];
   items: Item[];
@@ -8,7 +10,8 @@ export interface Worksheet<Item extends WorksheetItem> {
 export interface WorksheetColumn<Item> {
   hash: keyof Item;
   header: string;
-  type?: 'text' | 'number';
+  options?: SelectOption<unknown>[];
+  type?: 'text' | 'number' | 'select';
   validation?(value: Item[keyof Item]): boolean;
 }
 

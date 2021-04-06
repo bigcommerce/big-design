@@ -2,24 +2,27 @@ import React, { useCallback, useEffect, useMemo } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Small } from '../../Typography';
+import { SelectEditor, TextEditor } from '../editors';
 import { useEditableCell, useStore } from '../hooks';
 import { Cell as TCell, WorksheetColumn, WorksheetItem } from '../types';
 
 import { StyledCell } from './styled';
 
 interface CellProps<Item> extends TCell<Item> {
+  options: WorksheetColumn<Item>['options'];
   validation: WorksheetColumn<Item>['validation'];
 }
 
 const InternalCell = <T extends WorksheetItem>({
   columnIndex,
   hash,
+  options,
   rowIndex,
   type,
   value,
   validation,
 }: CellProps<T>) => {
-  const cell = useMemo(() => ({ columnIndex, hash, rowIndex, type, value }), [
+  const cell: TCell<T> = useMemo(() => ({ columnIndex, hash, rowIndex, type, value }), [
     columnIndex,
     hash,
     rowIndex,
@@ -27,7 +30,7 @@ const InternalCell = <T extends WorksheetItem>({
     value,
   ]);
 
-  const { Editor, handleBlur, handleDoubleClick, handleKeyDown, isEditing } = useEditableCell<T>(cell);
+  const { handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing } = useEditableCell<T>(cell);
   const setSelectedRows = useStore((state) => state.setSelectedRows);
   const setSelectedCells = useStore((state) => state.setSelectedCells);
   const addInvalidCells = useStore((state) => state.addInvalidCells);
@@ -82,15 +85,20 @@ const InternalCell = <T extends WorksheetItem>({
     setSelectedCells([cell]);
   }, [cell, rowIndex, setSelectedCells, setSelectedRows]);
 
-  const renderedCell = useMemo(
-    () =>
-      isEditing ? (
-        <Editor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
-      ) : (
-        <Small color="secondary70">{`${value}`}</Small>
-      ),
-    [cell, handleBlur, handleKeyDown, isEdited, isEditing, value],
-  );
+  const renderedCell = useMemo(() => {
+    switch (type) {
+      case 'select':
+        return <SelectEditor cell={cell} isEdited={isEdited} onChange={handleChange} options={options} />;
+      // Default to TextEditor
+      default:
+        return isEditing ? (
+          <TextEditor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
+        ) : (
+          // In case of NaN casting to string
+          <Small color="secondary70">{value.toString()}</Small>
+        );
+    }
+  }, [cell, handleBlur, handleChange, handleKeyDown, isEdited, isEditing, options, type, value]);
 
   return (
     <StyledCell
