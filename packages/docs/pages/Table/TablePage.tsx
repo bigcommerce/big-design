@@ -288,7 +288,7 @@ const TablePage = () => {
           const [activePills, setActivePills] = useState<string[]>([]);
           const pillTabs: PillTabsProps = {
             activePills,
-            onPillClick: ({ id }) => {
+            onPillClick: (id) => {
               const isFilterActive = !activePills.includes(id);
               const newItems = isFilterActive ? items.filter((item) => item.stock < 10) : data;
               const updatedPills = isFilterActive
