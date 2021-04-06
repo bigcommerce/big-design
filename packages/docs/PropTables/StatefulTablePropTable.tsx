@@ -80,11 +80,11 @@ const statefulTableProps: Prop[] = [
     description: 'Callback called with updated items list once drag and drop action has been completed.',
   },
   {
-    name: 'pillTabFilters',
-    types: <NextLink href="#stateful-table-pill-tab-filters-prop-table">PillTabFilter[]</NextLink>,
+    name: 'tableFilters',
+    types: <NextLink href="#stateful-table-filters-prop-table">TableFilters</NextLink>,
     description: (
       <>
-        See <NextLink href="#stateful-table-pill-tab-filters-prop-table">below</NextLink> for usage.
+        See <NextLink href="#stateful-table-filters-prop-table">below</NextLink> for usage.
       </>
     ),
   },
@@ -156,20 +156,23 @@ const tableColumnsProps: Prop[] = [
   },
 ];
 
-const tablePillTabFiltersProps: Prop[] = [
+const tableFiltersProps: Prop[] = [
   {
-    name: 'text',
-    types: 'string',
-    description: 'The text to display inside the Pill Tab.',
-  },
-  {
-    name: 'hash',
-    types: 'string',
-    description: 'A unique identifier for the filtering function.',
+    description: (
+      <>
+        An array of pill tab items to render in the table. See{' '}
+        <NextLink href="/PillTabs/PillTabPage" as="/pill-tabs">
+          Pill Tabs
+        </NextLink>{' '}
+        for usage.
+      </>
+    ),
+    name: 'pillTabs',
+    types: 'PillTabItem[]',
   },
   {
     name: 'filter',
-    types: '(items: Item[]) => Item[]',
+    types: '(itemId: string, items: Item[]) => Item[]',
     description: 'A function that takes the current items and filters them according to the desired functionality.',
   },
 ];
@@ -182,6 +185,6 @@ export const StatefulTableColumnsPropTable: React.FC<PropTableWrapper> = (props)
   <PropTable title="StatefulTable[Columns]" propList={tableColumnsProps} {...props} />
 );
 
-export const StatefulTablePillTabFiltersPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="StatefulTable[PillTabFilters]" propList={tablePillTabFiltersProps} {...props} />
+export const StatefulTableFiltersPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable title="StatefulTable[TableFilters]" propList={tableFiltersProps} {...props} />
 );

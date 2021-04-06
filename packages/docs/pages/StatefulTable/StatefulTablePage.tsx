@@ -2,11 +2,7 @@ import { H0, H1, H2, StatefulTable, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { CodePreview, NextLink } from '../../components';
-import {
-  StatefulTableColumnsPropTable,
-  StatefulTablePillTabFiltersPropTable,
-  StatefulTablePropTable,
-} from '../../PropTables';
+import { StatefulTableColumnsPropTable, StatefulTableFiltersPropTable, StatefulTablePropTable } from '../../PropTables';
 
 const items = [
   { sku: '3137737c', name: 'Rice - Wild', stock: 29 },
@@ -147,7 +143,7 @@ const StatefulTablePage = () => {
       <H1>API</H1>
       <StatefulTablePropTable />
       <StatefulTableColumnsPropTable id="stateful-table-columns-prop-table" />
-      <StatefulTablePillTabFiltersPropTable id="stateful-table-pill-tab-filters-prop-table" />
+      <StatefulTableFiltersPropTable id="stateful-table-filters-prop-table" />
 
       <H1>Examples</H1>
       <H2>Usage with pagination, selection, and sorting.</H2>
@@ -208,18 +204,22 @@ const StatefulTablePage = () => {
             { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
             { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
           ]}
-          pillTabFilters={[
-            {
-              text: 'Low Stock',
-              hash: 'low_stock',
-              filter: (items) => items.filter((item) => item.stock < 10),
-            },
-            {
-              text: 'Out of Stock',
-              hash: 'out_stock',
-              filter: (items) => items.filter((item) => item.stock === 0),
-            },
-          ]}
+          tableFilters={{
+            filter: (pillId, items) =>
+              pillId === 'low_stock'
+                ? items.filter((item) => item.stock !== 0 && item.stock < 10)
+                : items.filter((item) => item.stock === 0),
+            pillTabs: [
+              {
+                id: 'low_stock',
+                title: 'Low Stock',
+              },
+              {
+                id: 'out_of_stock',
+                title: 'Out of Stock',
+              },
+            ],
+          }}
         />
         {/* jsx-to-string:end */}
       </CodePreview>

@@ -201,9 +201,6 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
       }
 
       const isCurrentPillActive = !state.activePills.includes(action.pillId);
-      // const updatedPills = isCurrentPillActive
-      //   ? [...state.pillTabsProps.items, { ...toggledPill }]
-      //   : pillTabs.filter((pill) => pill.id !== action.pillId);
       const activePills = isCurrentPillActive
         ? [...state.activePills, toggledPill.id]
         : state.activePills.filter((activeFilter) => activeFilter !== toggledPill.id);
@@ -228,7 +225,6 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
           currentPage: 1,
           totalItems: currentItems.length,
         },
-        // pillTabs: updatedPills,
         currentItems,
         filteredItems: currentItems,
       };

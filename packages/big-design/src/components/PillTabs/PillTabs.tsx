@@ -16,7 +16,7 @@ export interface PillTabItem {
 export interface PillTabsProps {
   items: PillTabItem[];
   activePills: string[];
-  onPillClick: (item: PillTabItem) => void;
+  onPillClick: (itemId: string) => void;
 }
 
 export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
@@ -88,7 +88,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
 
         return {
           content: stateObj.item.title,
-          onItemClick: () => onPillClick(stateObj.item),
+          onItemClick: () => onPillClick(stateObj.item.id),
           hash: stateObj.item.title.toLowerCase(),
           icon: isActive ? <CheckIcon /> : undefined,
         };
@@ -114,7 +114,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
             disabled={!pillsState[index].isVisible}
             variant="subtle"
             isActive={activePills.includes(item.id)}
-            onClick={() => onPillClick(item)}
+            onClick={() => onPillClick(item.id)}
           >
             {item.title}
           </StyledPillTab>

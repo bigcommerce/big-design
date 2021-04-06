@@ -4,6 +4,11 @@ import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const pillTabsPropTable: Prop[] = [
   {
+    name: 'activePills',
+    types: 'string[]',
+    description: 'The currently active pill ids as an array of strings',
+  },
+  {
     description: (
       <>
         See <NextLink href="#pill-tabs-items-prop-table">below</NextLink> for usage.
@@ -13,6 +18,12 @@ const pillTabsPropTable: Prop[] = [
     required: true,
     types: <NextLink href="#pill-tabs-items-prop-table">PillTabItem[]</NextLink>,
   },
+  {
+    name: 'onPillClick',
+    types: '(itemId: string) => void',
+    description: 'Function that will get called when a pill tab is clicked.',
+    required: true,
+  },
 ];
 
 export const PillTabsPropTable: React.FC<PropTableWrapper> = (props) => (
@@ -21,22 +32,16 @@ export const PillTabsPropTable: React.FC<PropTableWrapper> = (props) => (
 
 const tabItemProps: Prop[] = [
   {
-    name: 'text',
+    name: 'title',
     types: 'string',
-    description: 'The text inside the Pill Tab Item',
+    description: 'The text inside the Pill Tab Item.',
     required: true,
   },
   {
-    name: 'isActive',
-    types: 'boolean',
-    description: 'Flag that determines whether the tab is active or not',
+    description: 'A unique identifier for the pill.',
+    name: 'id',
     required: true,
-  },
-  {
-    name: 'onClick',
-    types: 'funtion',
-    description: 'A callback to execute whenever the Pill Tab Item is clicked',
-    required: true,
+    types: 'string',
   },
 ];
 

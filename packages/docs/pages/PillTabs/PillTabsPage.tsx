@@ -16,10 +16,7 @@ const PillTabsPage = () => (
     <CodePreview>
       {/* jsx-to-string:start */}
       {function Example() {
-        const [activeTabs, setActiveTabs] = useState({
-          shipping: false,
-          orders: false,
-        });
+        const [activePills, setActivePills] = useState<string[]>([]);
         const Card: React.FC<{ name: string; description: string }> = ({ name, description }) => (
           <Flex border="box" flexDirection="column" padding="medium" margin="small">
             <FlexItem marginBottom="small">
@@ -33,18 +30,18 @@ const PillTabsPage = () => (
             </FlexItem>
           </Flex>
         );
-        const pillTabItems = [
-          {
-            isActive: activeTabs.shipping,
-            text: 'Shipping',
-            onClick: () => setActiveTabs({ ...activeTabs, shipping: !activeTabs.shipping }),
-          },
-          {
-            isActive: activeTabs.orders,
-            text: 'Orders',
-            onClick: () => setActiveTabs({ ...activeTabs, orders: !activeTabs.orders }),
-          },
+        const items = [
+          { title: 'Shipping', id: 'shipping' },
+          { title: 'Orders', id: 'orders' },
         ];
+        const onPillClick = (pillId: string) => {
+          const isPillActive = !activePills.includes(pillId);
+          const updatedPills = isPillActive
+            ? [...activePills, pillId]
+            : activePills.filter((activePillId) => activePillId !== pillId);
+
+          setActivePills(updatedPills);
+        };
         const cards = [
           {
             name: 'Shipping App Pro',
@@ -67,13 +64,13 @@ const PillTabsPage = () => (
             type: 'other',
           },
         ];
-        const isFiltered = Object.values(activeTabs).some(Boolean);
-        const filteredCards = cards.filter((card) => activeTabs[card.type]);
+        const isFiltered = Boolean(activePills.length);
+        const filteredCards = cards.filter((card) => activePills.includes(card.type));
         const appCards = isFiltered ? filteredCards : cards;
 
         return (
           <Panel header="App Marketplace">
-            <PillTabs items={pillTabItems} />
+            <PillTabs activePills={activePills} items={items} onPillClick={onPillClick} />
             <Flex>
               {appCards.map(({ name, description }) => (
                 <Card key={name} name={name} description={description} />

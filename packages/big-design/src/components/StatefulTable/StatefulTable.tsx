@@ -132,8 +132,8 @@ const InternalStatefulTable = <T extends TableItem>({
 
     const pillTabsProps: PillTabsProps = {
       activePills: state.activePills,
-      onPillClick: (item) => {
-        dispatch({ type: 'TOGGLE_PILL', pillId: item.id, filter: tableFilters.filter });
+      onPillClick: (pillId) => {
+        dispatch({ type: 'TOGGLE_PILL', pillId, filter: tableFilters.filter });
       },
       items: tableFilters.pillTabs,
     };

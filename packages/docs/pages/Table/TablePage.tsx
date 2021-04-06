@@ -1,4 +1,4 @@
-import { H0, H1, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
+import { H0, H1, PillTabsProps, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -285,22 +285,21 @@ const TablePage = () => {
         {/* jsx-to-string:start */}
         {function Example() {
           const [items, setItems] = useState(data);
-          const [activeFilters, setActiveFilters] = useState({
-            lowStock: false,
-          });
-          const pillTabs = [
-            {
-              isActive: activeFilters.lowStock,
-              text: 'Low Stock',
-              onClick: () => {
-                const isFilterActive = !activeFilters.lowStock;
-                const newItems = isFilterActive ? items.filter((item) => item.stock < 10) : data;
+          const [activePills, setActivePills] = useState<string[]>([]);
+          const pillTabs: PillTabsProps = {
+            activePills,
+            onPillClick: ({ id }) => {
+              const isFilterActive = !activePills.includes(id);
+              const newItems = isFilterActive ? items.filter((item) => item.stock < 10) : data;
+              const updatedPills = isFilterActive
+                ? [...activePills, id]
+                : activePills.filter((activePillId) => activePillId !== id);
 
-                setItems(newItems);
-                setActiveFilters({ lowStock: isFilterActive });
-              },
+              setItems(newItems);
+              setActivePills(updatedPills);
             },
-          ];
+            items: [{ title: 'Low Stock', id: 'low_stock' }],
+          };
 
           return (
             <Table
