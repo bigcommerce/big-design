@@ -326,32 +326,28 @@ test('renders headers by default and hides then via prop', () => {
 });
 
 test('renders pill tabs with the pillTabFilters prop', () => {
-  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
-    {
-      text: 'In stock',
-      hash: 'in_stock',
-      filter: (items) => items.filter((item) => item.stock > 0),
-    },
-  ];
-  const { getByText } = render(getSimpleTable({ pillTabFilters }));
+  const tableFilters: StatefulTablePillTabFilter<TestItem> = {
+    pillTabs: [{ title: 'In stock', id: 'in_stock' }],
+    filter: (_itemId, items) => items.filter((item) => item.stock > 0),
+  };
+  const { getByText } = render(getSimpleTable({ tableFilters }));
   const customFilter = getByText('In stock');
 
   expect(customFilter).toBeInTheDocument();
   expect(customFilter).toBeVisible();
 });
 
-test('it executes the filter function on click', () => {
-  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
-    {
-      text: 'Stock 1',
-      hash: 'stock',
-      filter: (items) => items.filter((item) => item.stock === 1),
-    },
-  ];
-  const { container, getByText } = render(getSimpleTable({ pillTabFilters }));
-  const customFilter = getByText('Stock 1');
+test('it executes the filter function on click', async () => {
+  const pillTabFilters: StatefulTablePillTabFilter<TestItem> = {
+    pillTabs: [{ title: 'In stock', id: 'in_stock' }],
+    filter: (_itemId, items) => items.filter((item) => item.stock === 1),
+  };
+  const { container, getByText, getByTestId } = render(getSimpleTable({ tableFilters: pillTabFilters }));
+
+  const customFilter = getByText('In stock');
 
   fireEvent.click(customFilter);
+  await waitForElement(() => getByTestId('simple-table'));
 
   const rows = container.querySelectorAll('tbody > tr');
 
@@ -359,15 +355,12 @@ test('it executes the filter function on click', () => {
 });
 
 test('can paginate on filtered rows', async () => {
-  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
-    {
-      text: 'Stock 1',
-      hash: 'stock',
-      filter: (items) => items.filter((item) => item.stock < 40),
-    },
-  ];
-  const { getByText, getByTestId } = render(getSimpleTable({ pillTabFilters, pagination: true }));
-  const customFilter = getByText('Stock 1');
+  const pillTabFilters: StatefulTablePillTabFilter<TestItem> = {
+    pillTabs: [{ title: 'Low stock', id: 'in_stock' }],
+    filter: (_itemId, items) => items.filter((item) => item.stock < 40),
+  };
+  const { getByText, getByTestId } = render(getSimpleTable({ tableFilters: pillTabFilters, pagination: true }));
+  const customFilter = getByText('Low stock');
 
   fireEvent.click(customFilter);
   await waitForElement(() => getByTestId('simple-table'));
@@ -377,15 +370,12 @@ test('can paginate on filtered rows', async () => {
   expect(itemText).toBeInTheDocument();
 });
 
-test('can undo filter actions', () => {
-  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
-    {
-      text: 'Stock 1',
-      hash: 'stock',
-      filter: (items) => items.filter((item) => item.stock === 1),
-    },
-  ];
-  const { container, getByText } = render(getSimpleTable({ pillTabFilters }));
+test('can undo filter actions', async () => {
+  const pillTabFilters: StatefulTablePillTabFilter<TestItem> = {
+    pillTabs: [{ title: 'Stock 1', id: 'in_stock' }],
+    filter: (_itemId, items) => items.filter((item) => item.stock === 1),
+  };
+  const { container, getByText, getByTestId } = render(getSimpleTable({ tableFilters: pillTabFilters }));
   const customFilter = getByText('Stock 1');
 
   fireEvent.click(customFilter);
@@ -395,65 +385,63 @@ test('can undo filter actions', () => {
   expect(rows.length).toBe(1);
 
   fireEvent.click(customFilter);
+  await waitForElement(() => getByTestId('simple-table'));
 
   rows = container.querySelectorAll('tbody > tr');
   expect(rows.length).toBe(104);
 });
 
-test('can stack filter actions (OR logic)', () => {
-  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
-    {
-      text: 'Stock 1',
-      hash: 'stock_1',
-      filter: (items) => items.filter((item) => item.stock === 1),
-    },
-    {
-      text: 'Stock 2',
-      hash: 'stock_2',
-      filter: (items) => items.filter((item) => item.stock === 2),
-    },
-  ];
-  const { container, getByText } = render(getSimpleTable({ pillTabFilters }));
+test('can stack filter actions (OR logic)', async () => {
+  const pillTabFilters: StatefulTablePillTabFilter<TestItem> = {
+    pillTabs: [
+      { title: 'Stock 1', id: 'stock_1' },
+      { title: 'Stock 2', id: 'stock_2' },
+    ],
+    filter: (itemId, items) =>
+      itemId === 'stock_1' ? items.filter((item) => item.stock === 1) : items.filter((item) => item.stock === 2),
+  };
+  const { container, getByText, getByTestId } = render(getSimpleTable({ tableFilters: pillTabFilters }));
   const customFilter1 = getByText('Stock 1');
   const customFilter2 = getByText('Stock 2');
 
   fireEvent.click(customFilter1);
+  await waitForElement(() => getByTestId('simple-table'));
   fireEvent.click(customFilter2);
+  await waitForElement(() => getByTestId('simple-table'));
 
   const rows = container.querySelectorAll('tbody > tr');
 
   expect(rows.length).toBe(2);
 });
 
-test('can undo stacked filter actions', () => {
-  const pillTabFilters: StatefulTablePillTabFilter<TestItem>[] = [
-    {
-      text: 'Stock 1',
-      hash: 'stock_1',
-      filter: (items) => items.filter((item) => item.stock === 1),
-    },
-    {
-      text: 'Stock 2',
-      hash: 'stock_2',
-      filter: (items) => items.filter((item) => item.stock === 2),
-    },
-  ];
-  const { container, getByText } = render(getSimpleTable({ pillTabFilters }));
+test('can undo stacked filter actions', async () => {
+  const pillTabFilters: StatefulTablePillTabFilter<TestItem> = {
+    pillTabs: [
+      { title: 'Stock 1', id: 'stock_1' },
+      { title: 'Stock 2', id: 'stock_2' },
+    ],
+    filter: (itemId, items) =>
+      itemId === 'stock_1' ? items.filter((item) => item.stock === 1) : items.filter((item) => item.stock === 2),
+  };
+  const { container, getByText, getByTestId } = render(getSimpleTable({ tableFilters: pillTabFilters }));
   const customFilter1 = getByText('Stock 1');
   const customFilter2 = getByText('Stock 2');
 
   fireEvent.click(customFilter1);
   fireEvent.click(customFilter2);
+  await waitForElement(() => getByTestId('simple-table'));
 
   let rows = container.querySelectorAll('tbody > tr');
   expect(rows.length).toBe(2);
 
   fireEvent.click(customFilter1);
+  await waitForElement(() => getByTestId('simple-table'));
 
   rows = container.querySelectorAll('tbody > tr');
   expect(rows.length).toBe(1);
 
   fireEvent.click(customFilter2);
+  await waitForElement(() => getByTestId('simple-table'));
 
   rows = container.querySelectorAll('tbody > tr');
   expect(rows.length).toBe(104);

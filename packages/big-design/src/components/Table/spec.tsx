@@ -3,7 +3,7 @@ import 'jest-styled-components';
 
 import { fireEvent, render, screen, waitForElement } from '@test/utils';
 
-import { PillTabItem } from '../PillTabs';
+import { PillTabsProps } from '../PillTabs';
 
 import { Table, TableFigure } from './Table';
 
@@ -17,7 +17,7 @@ interface SimpleTableOptions {
   id?: string;
   itemName?: string;
   style?: CSSProperties;
-  pillTabs?: PillTabItem[];
+  pillTabs?: PillTabsProps;
 }
 
 const getSimpleTable = ({
@@ -520,18 +520,21 @@ describe('draggable', () => {
 });
 
 test('it renders pill tabs with the pillTabs prop', () => {
-  const pillTabs = [
+  const items = [
     {
-      text: 'In Stock',
-      isActive: false,
-      onClick: jest.fn(),
+      title: 'In Stock',
+      id: 'in_stock',
     },
     {
-      text: 'Low Stock',
-      isActive: false,
-      onClick: jest.fn(),
+      title: 'Low Stock',
+      id: 'low_stock',
     },
   ];
+  const pillTabs: PillTabsProps = {
+    onPillClick: jest.fn(),
+    activePills: [],
+    items,
+  };
   const { getByText } = render(getSimpleTable({ pillTabs }));
   const inStock = getByText('In Stock');
   const lowStock = getByText('Low Stock');
@@ -541,24 +544,29 @@ test('it renders pill tabs with the pillTabs prop', () => {
 });
 
 test('it executes the given callback', () => {
-  const inStockCb = jest.fn();
-  const inStock = {
-    text: 'In Stock',
-    isActive: false,
-    onClick: inStockCb,
-  };
-  const pillTabs = [
-    inStock,
+  const onPillClick = jest.fn();
+  const items = [
     {
-      text: 'Low Stock',
-      isActive: false,
-      onClick: jest.fn(),
+      title: 'In Stock',
+      id: 'in_stock',
+    },
+    {
+      title: 'Low Stock',
+      id: 'low_stock',
     },
   ];
+  const pillTabs: PillTabsProps = {
+    onPillClick,
+    activePills: [],
+    items,
+  };
   const { getByText } = render(getSimpleTable({ pillTabs }));
   const inStockBtn = getByText('In Stock');
 
   fireEvent.click(inStockBtn);
 
-  expect(inStockCb).toHaveBeenCalledWith(inStock);
+  expect(onPillClick).toHaveBeenCalledWith({
+    title: 'In Stock',
+    id: 'in_stock',
+  });
 });

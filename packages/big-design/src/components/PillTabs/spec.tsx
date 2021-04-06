@@ -12,10 +12,10 @@ const Wrapper = styled.div`
 
 Wrapper.defaultProps = { theme: defaultTheme };
 
-const TestComponent: React.FC<PillTabsProps> = ({ items }) => {
+const TestComponent: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
   return (
     <Wrapper data-testid="wrapper">
-      <PillTabs items={items} />
+      <PillTabs activePills={activePills} items={items} onPillClick={onPillClick} />
     </Wrapper>
   );
 };
@@ -34,13 +34,12 @@ test('it renders the given tabs', () => {
   const onClick = jest.fn();
   const items = [
     {
-      text: 'In stock',
-      isActive: false,
-      onClick,
+      title: 'In stock',
+      id: 'filter1',
     },
   ];
 
-  const { getByText } = render(<TestComponent items={items} />);
+  const { getByText } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
   const inStock = getByText('In stock');
 
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
@@ -65,13 +64,12 @@ test('dropdown is not visible if items fit', () => {
   const onClick = jest.fn();
   const items = [
     {
-      text: 'In stock',
-      isActive: false,
-      onClick,
+      title: 'In stock',
+      id: 'filter1',
     },
   ];
 
-  const { getByText, queryByTestId } = render(<TestComponent items={items} />);
+  const { getByText, queryByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
   const inStock = getByText('In stock');
   const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
 
@@ -95,18 +93,18 @@ test('renders dropdown if items dont fit', async () => {
   const onClick = jest.fn();
   const items = [
     {
-      text: 'In stock',
-      isActive: false,
-      onClick,
+      title: 'In stock',
+
+      id: 'filter1',
     },
     {
-      text: 'Long filter name',
-      isActive: false,
-      onClick,
+      title: 'Long filter name',
+
+      id: 'filter1',
     },
   ];
 
-  const { getByText, queryByTestId } = render(<TestComponent items={items} />);
+  const { getByText, queryByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
   await wait();
 
   const inStock = getByText('Long filter name');
@@ -132,23 +130,23 @@ test('renders all the filters if they fit', async () => {
   const onClick = jest.fn();
   const items = [
     {
-      text: 'In stock',
-      isActive: false,
-      onClick,
+      title: 'In stock',
+
+      id: 'filter1',
     },
     {
-      text: 'Filter 2',
-      isActive: false,
-      onClick,
+      title: 'Filter 2',
+
+      id: 'filter1',
     },
     {
-      text: 'Filter 3',
-      isActive: false,
-      onClick,
+      title: 'Filter 3',
+
+      id: 'filter1',
     },
   ];
 
-  const { getByText, queryByTestId } = render(<TestComponent items={items} />);
+  const { getByText, queryByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
   await wait();
 
   const inStock = getByText('In stock');
@@ -194,23 +192,23 @@ test('only the pills that fit are visible', async () => {
   const onClick = jest.fn();
   const items = [
     {
-      text: 'In stock',
-      isActive: false,
-      onClick,
+      title: 'In stock',
+
+      id: 'filter1',
     },
     {
-      text: 'Filter 2',
-      isActive: false,
-      onClick,
+      title: 'Filter 2',
+
+      id: 'filter1',
     },
     {
-      text: 'Filter 3',
-      isActive: false,
-      onClick,
+      title: 'Filter 3',
+
+      id: 'filter1',
     },
   ];
 
-  const { queryByTestId, getByTestId } = render(<TestComponent items={items} />);
+  const { queryByTestId, getByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
   await wait();
 
   const inStock = getByTestId('pilltabs-pill-0');
@@ -252,23 +250,23 @@ test('only the pills that fit are visible 2', async () => {
   const onClick = jest.fn();
   const items = [
     {
-      text: 'In stock',
-      isActive: false,
-      onClick,
+      title: 'In stock',
+
+      id: 'filter1',
     },
     {
-      text: 'Filter 2',
-      isActive: false,
-      onClick,
+      title: 'Filter 2',
+
+      id: 'filter1',
     },
     {
-      text: 'Filter 3',
-      isActive: false,
-      onClick,
+      title: 'Filter 3',
+
+      id: 'filter1',
     },
   ];
 
-  const { queryByTestId, getByTestId } = render(<TestComponent items={items} />);
+  const { queryByTestId, getByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
   await wait();
 
   const inStock = getByTestId('pilltabs-pill-0');
@@ -283,27 +281,23 @@ test('only the pills that fit are visible 2', async () => {
 });
 
 test('it executes the given callback on click', () => {
-  const onClick1 = jest.fn();
-  const onClick2 = jest.fn();
+  const onClick = jest.fn();
   const item1 = {
-    text: 'In stock',
-    isActive: false,
-    onClick: onClick1,
+    title: 'In stock',
+    id: 'filter1',
   };
   const item2 = {
-    text: 'Not in stock',
-    isActive: false,
-    onClick: onClick2,
+    title: 'Not in stock',
+    id: 'filter2',
   };
   const items = [item1, item2];
 
-  const { getByText } = render(<TestComponent items={items} />);
+  const { getByText } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
   const inStock = getByText('In stock');
 
   fireEvent.click(inStock);
 
-  expect(onClick1).toHaveBeenCalledWith(item1);
-  expect(onClick2).not.toHaveBeenCalled();
+  expect(onClick).toHaveBeenCalledWith(item1);
 });
 
 test('cannot click on a hidden item', async () => {
@@ -330,21 +324,18 @@ test('cannot click on a hidden item', async () => {
       },
     },
   });
-  const onClick1 = jest.fn();
-  const onClick2 = jest.fn();
+  const onClick = jest.fn();
   const item1 = {
-    text: 'In stock',
-    isActive: false,
-    onClick: onClick1,
+    title: 'In stock',
+    id: 'filter1',
   };
   const item2 = {
-    text: 'Not in stock',
-    isActive: false,
-    onClick: onClick2,
+    title: 'Not in stock',
+    id: 'filter2',
   };
   const items = [item1, item2];
 
-  const { getByText, getByTestId } = render(<TestComponent items={items} />);
+  const { getByText, getByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
   await wait();
   const notInStock = getByText('Not in stock');
@@ -353,5 +344,5 @@ test('cannot click on a hidden item', async () => {
   fireEvent.click(notInStock);
 
   expect(filter1).toHaveStyle(HIDDEN_STYLES);
-  expect(onClick2).not.toHaveBeenCalled();
+  expect(onClick).not.toHaveBeenCalled();
 });

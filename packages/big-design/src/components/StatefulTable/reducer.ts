@@ -1,16 +1,15 @@
 import { Reducer } from 'react';
 
-import { PillTabItem } from '../PillTabs';
+import { PillTabsProps } from '../PillTabs';
 import { TableSortDirection } from '../Table';
 
 import { StatefulTableColumn, StatefulTablePillTabFilter, StatefulTableSortFn } from './StatefulTable';
 
 interface State<T> {
-  activeFilters: string[];
+  activePills: string[];
   currentItems: T[];
   columns: Array<StatefulTableColumn<T> & { isSortable: boolean }>;
   filteredItems: T[];
-  filters: Record<string, (items: T[]) => T[]>;
   isPaginationEnabled: boolean;
   items: T[];
   pagination: {
@@ -19,7 +18,7 @@ interface State<T> {
     itemsPerPageOptions: number[];
     totalItems: number;
   };
-  pillTabs?: PillTabItem[];
+  pillTabsProps?: PillTabsProps;
   selectedItems: T[];
   sortable: {
     direction: TableSortDirection;
@@ -40,11 +39,10 @@ export const createReducerInit = <T>() => ({ columns, defaultSelected, items, pa
   const currentItems = getItems(items, pagination, { currentPage, itemsPerPage });
 
   return {
-    activeFilters: [],
+    activePills: [],
     currentItems,
     columns: augmentColumns(columns),
     filteredItems: [],
-    filters: {},
     isPaginationEnabled: pagination,
     items,
     pagination: {
@@ -66,9 +64,9 @@ export type Action<T> =
   | { type: 'ITEMS_PER_PAGE_CHANGE'; itemsPerPage: number }
   | { type: 'PAGE_CHANGE'; page: number }
   | { type: 'SELECTED_ITEMS'; selectedItems: T[] }
-  | { type: 'SET_PILL_TABS'; pillTabs: PillTabItem[]; pillTabFilters: StatefulTablePillTabFilter<T>[] }
   | { type: 'SORT'; column: StatefulTableColumn<T>; direction: TableSortDirection }
-  | { type: 'TOGGLE_PILL'; pillIndex: number; filterHash: StatefulTablePillTabFilter<T>['hash']; isActive: boolean };
+  | { type: 'SET_PILL_TABS_PROPS'; pillTabsProps: PillTabsProps }
+  | { type: 'TOGGLE_PILL'; pillId: string; filter: StatefulTablePillTabFilter<T>['filter'] };
 
 export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, action) => {
   switch (action.type) {
@@ -111,7 +109,7 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
     }
 
     case 'PAGE_CHANGE': {
-      const filtersActive = state.activeFilters.length > 0;
+      const filtersActive = state.activePills.length > 0;
       const items = filtersActive ? state.filteredItems : state.items;
       const currentPage = action.page;
       const currentItems = getItems(items, true, {
@@ -152,16 +150,8 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
       return { ...state, selectedItems: action.selectedItems };
     }
 
-    case 'SET_PILL_TABS': {
-      const filters = action.pillTabFilters.reduce<State<T>['filters']>(
-        (filters, pillTabFilter) => ({
-          ...filters,
-          [pillTabFilter.hash]: pillTabFilter.filter,
-        }),
-        {},
-      );
-
-      return { ...state, pillTabs: action.pillTabs, filters };
+    case 'SET_PILL_TABS_PROPS': {
+      return { ...state, pillTabsProps: action.pillTabsProps };
     }
 
     case 'SORT': {
@@ -199,29 +189,29 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
     }
 
     case 'TOGGLE_PILL': {
-      if (!state.pillTabs) {
+      if (!state.pillTabsProps) {
         return state;
       }
 
-      const updatedPills = state.pillTabs.map((pillTab, index) =>
-        index === action.pillIndex
-          ? {
-              ...pillTab,
-              isActive: !pillTab.isActive,
-            }
-          : pillTab,
-      );
-      const isCurrentPillActive = updatedPills[action.pillIndex].isActive;
-      const activeFilters = isCurrentPillActive
-        ? [...state.activeFilters, action.filterHash]
-        : state.activeFilters.filter((activeFilter) => activeFilter !== action.filterHash);
-      const currentItems =
-        activeFilters.length > 0
-          ? activeFilters
-              .map((filterHash) => {
-                const filter = state.filters[filterHash];
+      const pillTabs = state.pillTabsProps.items;
+      const toggledPill = pillTabs.find((pill) => pill.id === action.pillId);
 
-                return filter(state.items);
+      if (!toggledPill) {
+        return state;
+      }
+
+      const isCurrentPillActive = !state.activePills.includes(action.pillId);
+      // const updatedPills = isCurrentPillActive
+      //   ? [...state.pillTabsProps.items, { ...toggledPill }]
+      //   : pillTabs.filter((pill) => pill.id !== action.pillId);
+      const activePills = isCurrentPillActive
+        ? [...state.activePills, toggledPill.id]
+        : state.activePills.filter((activeFilter) => activeFilter !== toggledPill.id);
+      const currentItems =
+        activePills.length > 0
+          ? activePills
+              .map((pillId) => {
+                return action.filter(pillId, state.items);
               })
               .reduce((results, filteredItems) => {
                 const dedupedItems = filteredItems.filter((item) => !results.includes(item));
@@ -232,13 +222,13 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
 
       return {
         ...state,
-        activeFilters,
+        activePills,
         pagination: {
           ...state.pagination,
           currentPage: 1,
           totalItems: currentItems.length,
         },
-        pillTabs: updatedPills,
+        // pillTabs: updatedPills,
         currentItems,
         filteredItems: currentItems,
       };

@@ -9,16 +9,17 @@ import { Flex } from '../Flex';
 import { StyledFlexItem, StyledPillTab } from './styled';
 
 export interface PillTabItem {
-  text: string;
-  isActive: boolean;
-  onClick(item: PillTabItem): void;
+  id: string;
+  title: string;
 }
 
 export interface PillTabsProps {
   items: PillTabItem[];
+  activePills: string[];
+  onPillClick: (item: PillTabItem) => void;
 }
 
-export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
+export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
   const parentRef = createRef<HTMLDivElement>();
   const dropdownRef = createRef<HTMLDivElement>();
   const [pillsState, setPillsState] = useState(
@@ -82,13 +83,14 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
     const dropdownItems = pillsState
       .filter((stateObj) => !stateObj.isVisible)
       .map((stateObj) => {
-        const item = items.find((i) => i.text === stateObj.item.text);
+        const item = items.find((i) => i.title === stateObj.item.title);
+        const isActive = item ? activePills.includes(item.id) : false;
 
         return {
-          content: stateObj.item.text,
-          onItemClick: () => stateObj.item.onClick(stateObj.item),
-          hash: stateObj.item.text.toLowerCase(),
-          icon: item?.isActive ? <CheckIcon /> : undefined,
+          content: stateObj.item.title,
+          onItemClick: () => onPillClick(stateObj.item),
+          hash: stateObj.item.title.toLowerCase(),
+          icon: isActive ? <CheckIcon /> : undefined,
         };
       });
 
@@ -97,7 +99,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
         <Dropdown items={dropdownItems} toggle={<Button iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />} />
       </StyledFlexItem>
     );
-  }, [items, pillsState, isMenuVisible, dropdownRef]);
+  }, [items, pillsState, isMenuVisible, dropdownRef, activePills, onPillClick]);
 
   const renderedPills = useMemo(
     () =>
@@ -110,15 +112,15 @@ export const PillTabs: React.FC<PillTabsProps> = ({ items }) => {
         >
           <StyledPillTab
             disabled={!pillsState[index].isVisible}
-            onClick={() => item.onClick(item)}
             variant="subtle"
-            isActive={item.isActive}
+            isActive={activePills.includes(item.id)}
+            onClick={() => onPillClick(item)}
           >
-            {item.text}
+            {item.title}
           </StyledPillTab>
         </StyledFlexItem>
       )),
-    [items, pillsState],
+    [items, pillsState, activePills, onPillClick],
   );
 
   return (

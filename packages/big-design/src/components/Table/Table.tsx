@@ -215,10 +215,10 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     }
 
     return shouldRenderActions() ? (
-      <PillTabs items={pillTabs} />
+      <PillTabs {...pillTabs} />
     ) : (
       <Box marginBottom="medium">
-        <PillTabs items={pillTabs} />
+        <PillTabs {...pillTabs} />
       </Box>
     );
   };

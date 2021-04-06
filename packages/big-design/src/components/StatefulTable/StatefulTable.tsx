@@ -2,15 +2,14 @@ import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
-import { PillTabItem } from '../PillTabs';
+import { PillTabItem, PillTabsProps } from '../PillTabs';
 import { Table, TableColumn, TableItem, TableProps, TableSelectable, TableSortDirection } from '../Table';
 
 import { createReducer, createReducerInit } from './reducer';
 
 export interface StatefulTablePillTabFilter<T> {
-  text: string;
-  hash: string;
-  filter(items: T[]): T[];
+  pillTabs: PillTabItem[];
+  filter(itemId: string, items: T[]): T[];
 }
 
 export type StatefulTableSortFn<T> = (a: T, b: T, direction: TableSortDirection) => number;
@@ -24,7 +23,7 @@ export interface StatefulTableProps<T>
   extends Omit<TableProps<T>, 'columns' | 'pagination' | 'pillTabs' | 'selectable' | 'sortable' | 'onRowDrop'> {
   columns: Array<StatefulTableColumn<T>>;
   pagination?: boolean;
-  pillTabFilters?: StatefulTablePillTabFilter<T>[];
+  tableFilters?: StatefulTablePillTabFilter<T>;
   selectable?: boolean;
   defaultSelected?: T[];
   onRowDrop?(items: T[]): void;
@@ -53,7 +52,7 @@ const InternalStatefulTable = <T extends TableItem>({
   onSelectionChange,
   onRowDrop,
   pagination = false,
-  pillTabFilters,
+  tableFilters,
   selectable = false,
   stickyHeader = false,
   ...rest
@@ -64,7 +63,7 @@ const InternalStatefulTable = <T extends TableItem>({
 
   const [state, dispatch] = useReducer(
     reducer,
-    { columns, defaultSelected, items, pagination, pillTabFilters },
+    { columns, defaultSelected, items, pagination, tableFilters },
     reducerInit,
   );
 
@@ -127,24 +126,20 @@ const InternalStatefulTable = <T extends TableItem>({
   );
 
   useEffect(() => {
-    if (!pillTabFilters) {
+    if (!tableFilters) {
       return;
     }
 
-    if (state.pillTabs) {
-      return;
-    }
-
-    const pillTabs = pillTabFilters.map<PillTabItem>((pillTabFilter, index) => ({
-      text: pillTabFilter.text,
-      onClick: (item) => {
-        dispatch({ type: 'TOGGLE_PILL', pillIndex: index, filterHash: pillTabFilter.hash, isActive: item.isActive });
+    const pillTabsProps: PillTabsProps = {
+      activePills: state.activePills,
+      onPillClick: (item) => {
+        dispatch({ type: 'TOGGLE_PILL', pillId: item.id, filter: tableFilters.filter });
       },
-      isActive: false,
-    }));
+      items: tableFilters.pillTabs,
+    };
 
-    dispatch({ type: 'SET_PILL_TABS', pillTabs, pillTabFilters });
-  }, [pillTabFilters, pagination, state.pillTabs]);
+    dispatch({ type: 'SET_PILL_TABS_PROPS', pillTabsProps });
+  }, [tableFilters, state.activePills]);
 
   return (
     <Table
@@ -155,7 +150,7 @@ const InternalStatefulTable = <T extends TableItem>({
       keyField={keyField}
       stickyHeader={stickyHeader}
       pagination={paginationOptions}
-      pillTabs={state.pillTabs}
+      pillTabs={state.pillTabsProps}
       selectable={selectableOptions}
       sortable={sortableOptions}
       onRowDrop={onRowDrop ? onDragEnd : undefined}
