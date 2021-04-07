@@ -1,6 +1,7 @@
-import { fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import React from 'react';
 
+import { useStore } from './hooks';
 import { WorksheetColumn } from './types';
 import { Worksheet } from './Worksheet';
 
@@ -20,7 +21,6 @@ const items = [
     otherField2: 'Field',
     otherField3: 1,
   },
-
   {
     productName: 'Shoes Name Two',
     categories: 'Shoes',
@@ -79,12 +79,15 @@ const items = [
   },
 ];
 
-const handleChange = jest.fn();
-const handleErrors = jest.fn();
+let handleChange = jest.fn();
+let handleErrors = jest.fn();
+
+const initialStoreState = useStore.getState();
 
 beforeEach(() => {
-  handleChange.mockReset;
-  handleErrors.mockReset;
+  handleChange = jest.fn();
+  handleErrors = jest.fn();
+  act(() => useStore.setState(initialStoreState, true));
 });
 
 test('renders worksheet', () => {
@@ -93,47 +96,77 @@ test('renders worksheet', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('selects cell on click', () => {
-  const { getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
-  const cell = getByText('Shoes Name One').parentElement as HTMLTableDataCellElement;
-  const row = cell.parentElement as HTMLTableRowElement;
+describe('selection', () => {
+  test('selects cell on click', () => {
+    const { getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+    const cell = getByText('Shoes Name One').parentElement as HTMLTableDataCellElement;
+    const row = cell.parentElement as HTMLTableRowElement;
 
-  fireEvent.click(cell);
+    fireEvent.click(cell);
 
-  expect(cell).toHaveStyle('border-color: #3C64F4');
-  expect(row.firstChild).toHaveStyle('background-color: #3C64F4');
+    expect(cell).toHaveStyle('border-color: #3C64F4');
+    expect(row.firstChild).toHaveStyle('background-color: #3C64F4');
+  });
 });
 
-describe('TextEditor', () => {
-  test('renders TextEditor', () => {
+describe('edition', () => {
+  test('onChange is not called when value does not change', () => {
     const { getByDisplayValue, getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
-    const cell = getByText('Shoes Name One');
 
-    fireEvent.doubleClick(cell);
+    let cell;
+
+    cell = getByText('Shoes Name One');
+
+    fireEvent.doubleClick(getByText('Shoes Name One'));
 
     const input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
 
-    expect(input).toBeDefined();
+    fireEvent.change(input, { target: { value: 'Shoes Name One' } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+
+    cell = getByText('Shoes Name One');
+    expect(cell).toBeDefined();
+    expect(handleChange).not.toHaveBeenCalled();
   });
 
-  test('TextEditor returns edited cells', () => {
+  test('onChange is called when value changes', () => {
     const { getByDisplayValue, getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
-    const cell = getByText('Shoes Name One');
+
+    let cell;
+    let input;
+
+    cell = getByText('Shoes Name One');
 
     fireEvent.doubleClick(cell);
 
-    const input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
+    input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
 
     fireEvent.change(input, { target: { value: 'Shoes Name One Edit' } });
     fireEvent.keyDown(input, { key: 'Enter' });
 
-    expect(getByText('Shoes Name One Edit')).toBeDefined();
+    cell = getByText('Shoes Name One Edit');
+    expect(cell).toBeDefined();
+    expect(handleChange).toHaveBeenCalledTimes(1);
     expect(handleChange).toHaveBeenCalledWith([
       { columnIndex: 0, hash: 'productName', rowIndex: 2, type: 'text', value: 'Shoes Name One Edit' },
+    ]);
+
+    fireEvent.doubleClick(cell);
+
+    input = getByDisplayValue('Shoes Name One Edit') as HTMLInputElement;
+
+    fireEvent.change(input, { target: { value: 'Shoes Name One Edit 2' } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+
+    cell = getByText('Shoes Name One Edit 2');
+    expect(cell).toBeDefined();
+    expect(handleChange).toHaveBeenCalledTimes(2);
+    expect(handleChange).toHaveBeenCalledWith([
+      { columnIndex: 0, hash: 'productName', rowIndex: 2, type: 'text', value: 'Shoes Name One Edit 2' },
     ]);
   });
 });
@@ -177,5 +210,53 @@ describe('validation', () => {
       { columnIndex: 4, hash: 'otherField3', rowIndex: 1, type: 'number', value: 2 },
       { columnIndex: 4, hash: 'otherField3', rowIndex: 2, type: 'number', value: 3 },
     ]);
+  });
+});
+
+describe('TextEditor', () => {
+  test('renders TextEditor', () => {
+    const { getByDisplayValue, getByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const cell = getByText('Shoes Name One');
+
+    fireEvent.doubleClick(cell);
+
+    const input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
+
+    expect(input).toBeDefined();
+  });
+
+  test('TextEditor shows the appropriate state', () => {
+    const { getByDisplayValue, getByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    let input;
+    let cell;
+
+    cell = getByText('Shoes Name One');
+
+    expect(cell.parentNode).toHaveStyle('background-color: rgb(255, 255, 255);');
+
+    fireEvent.doubleClick(cell);
+
+    input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
+
+    expect(input).toHaveStyle('background-color: white;');
+
+    fireEvent.change(input, { target: { value: 'Shoes Name One Edit' } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+
+    cell = getByText('Shoes Name One Edit');
+
+    expect(cell.parentNode).toHaveStyle('background-color: #FFF9E6;');
+
+    fireEvent.doubleClick(cell);
+
+    input = getByDisplayValue('Shoes Name One Edit') as HTMLInputElement;
+
+    expect(input).toHaveStyle('background-color: #FFF9E6;');
   });
 });

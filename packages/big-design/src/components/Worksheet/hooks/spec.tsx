@@ -25,8 +25,6 @@ describe('useEditableCells', () => {
     stopPropagation = jest.fn();
   });
 
-  // afterAll(() => jest.unmock('./useUpdateItems'));
-
   test('double click', () => {
     const { result } = renderHook(() => useEditableCell(cell));
 

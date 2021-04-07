@@ -15,13 +15,14 @@ const InternalWorksheet = <T extends Record<string, unknown>>({
   onChange,
   onErrors,
 }: WorksheetProps<T>) => {
-  const rows = useStore((state) => state.rows);
+  const rows = useStore(useMemo(() => (state) => state.rows, []));
   const setRows = useStore((state) => state.setRows);
 
-  const editedCells = useStore((state) => state.editedCells);
-  const invalidCells = useStore((state) => state.invalidCells);
+  const editedCells = useStore(useMemo(() => (state) => state.editedCells, []));
+  const invalidCells = useStore(useMemo(() => (state) => state.invalidCells, []));
 
-  useEffect(() => setRows(items), [items, setRows]);
+  // Create a new reference since state mutates rows to prevent unecessary rerendering
+  useEffect(() => setRows([...items]), [items, setRows]);
 
   useEffect(() => {
     if (editedCells.length) {

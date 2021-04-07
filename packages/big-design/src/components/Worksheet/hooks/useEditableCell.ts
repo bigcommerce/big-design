@@ -28,7 +28,11 @@ export const useEditableCell = (cell: Cell<unknown>) => {
           event.preventDefault();
           event.stopPropagation();
 
-          updateItems([cell], [newValue]);
+          // Only call updateItems if cells have new values
+          if (cell.value !== newValue) {
+            updateItems([cell], [newValue]);
+          }
+
           setIsEditing(false);
 
           break;

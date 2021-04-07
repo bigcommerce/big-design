@@ -15,7 +15,7 @@ export const mergeCells = (oldCells: Cell<unknown>[], newCells: Cell<unknown>[])
 
       return accum.concat(newCell);
     },
-    [...oldCells],
+    [...oldCells], // Note: returns a new array every time
   );
 
 export const deleteCells = (oldCells: Cell<unknown>[], newCells: Cell<unknown>[]) =>

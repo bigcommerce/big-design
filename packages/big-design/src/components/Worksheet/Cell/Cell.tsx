@@ -11,15 +11,15 @@ interface CellProps extends TCell<string | number> {
 }
 
 export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, type, value, validation }) => {
-  const cell = useMemo(() => ({ columnIndex, rowIndex, hash, type, value }), [
+  const cell = useMemo(() => ({ columnIndex, hash, rowIndex, type, value }), [
     columnIndex,
-    rowIndex,
     hash,
+    rowIndex,
     type,
     value,
   ]);
 
-  const { handleDoubleClick, handleBlur, handleKeyDown, isEditing, Editor } = useEditableCell(cell);
+  const { Editor, handleBlur, handleDoubleClick, handleKeyDown, isEditing } = useEditableCell(cell);
   const setSelectedRows = useStore(useMemo(() => (state) => state.setSelectedRows, []));
   const setSelectedCells = useStore(useMemo(() => (state) => state.setSelectedCells, []));
   const addInvalidCells = useStore(useMemo(() => (state) => state.addInvalidCells, []));
@@ -28,10 +28,8 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
   const isSelected = useStore(
     useMemo(
       () => (state) =>
-        state.selectedCells.reduce(
-          (acc, selectedCell) =>
-            acc || (selectedCell.columnIndex === cell.columnIndex && selectedCell.rowIndex === cell.rowIndex),
-          false,
+        state.selectedCells.some(
+          (selectedCell) => selectedCell.columnIndex === cell.columnIndex && selectedCell.rowIndex === cell.rowIndex,
         ),
       [cell],
     ),
@@ -40,10 +38,8 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
   const isEdited = useStore(
     useMemo(
       () => (state) =>
-        state.editedCells.reduce(
-          (acc, editedCell) =>
-            acc || (editedCell.columnIndex === cell.columnIndex && editedCell.rowIndex === cell.rowIndex),
-          false,
+        state.editedCells.some(
+          (editedCell) => editedCell.columnIndex === cell.columnIndex && editedCell.rowIndex === cell.rowIndex,
         ),
       [cell],
     ),

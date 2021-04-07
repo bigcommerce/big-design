@@ -13,11 +13,6 @@ interface UpdateItemsProviderProps<T> {
   items: T[];
 }
 
-interface UpdatedCell {
-  cell: Cell<unknown>;
-  newValue: unknown;
-}
-
 export const UpdateItemsContext = createContext<UpdateItemsContextType | null>(null);
 
 export const UpdateItemsProvider = typedMemo(
@@ -27,24 +22,33 @@ export const UpdateItemsProvider = typedMemo(
 
     const updateItems: UpdateItemsContextType['updateItems'] = useCallback(
       (cells, newValues) => {
-        const newEditedCells = cells.reduce<UpdatedCell[]>(
-          (accum, cell, index) =>
-            cell.value !== newValues[index] ? accum.concat({ cell, newValue: newValues[index] }) : accum,
-          [],
+        setRows(
+          cells.reduce((accum, cell, index) => {
+            const { hash, rowIndex } = cell;
+
+            // Don't change since value is the same
+            if (cell.value === newValues[index]) {
+              return accum;
+            }
+
+            const row = accum[rowIndex];
+            const updatedRow = { ...row, [hash]: newValues[index] };
+            accum[rowIndex] = updatedRow;
+
+            return accum;
+          }, items),
         );
 
-        const updatedRows = newEditedCells.reduce((accum, { cell, newValue }) => {
-          const { rowIndex, hash } = cell;
+        addEditedCells(
+          cells.reduce<Cell<unknown>[]>((accum, cell, index) => {
+            // Don't add since value is the same
+            if (cell.value === newValues[index]) {
+              return accum;
+            }
 
-          const row = accum[rowIndex];
-          const updatedRow = { ...row, [hash]: newValue };
-          accum[rowIndex] = updatedRow;
-
-          return accum;
-        }, items);
-
-        setRows(updatedRows);
-        addEditedCells(newEditedCells.map(({ cell, newValue }) => ({ ...cell, value: newValue })));
+            return accum.concat({ ...cell, value: newValues[index] });
+          }, []),
+        );
       },
       [addEditedCells, items, setRows],
     );
