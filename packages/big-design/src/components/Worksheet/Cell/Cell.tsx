@@ -6,7 +6,7 @@ import { Cell as TCell } from '../types';
 
 import { StyledCell } from './styled';
 
-interface CellProps extends TCell {
+interface CellProps extends TCell<string | number> {
   validation?(value: string | number): boolean;
 }
 
@@ -29,7 +29,8 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
     useMemo(
       () => (state) =>
         state.selectedCells.reduce(
-          (acc, c) => acc || (c.columnIndex === cell.columnIndex && c.rowIndex === cell.rowIndex),
+          (acc, selectedCell) =>
+            acc || (selectedCell.columnIndex === cell.columnIndex && selectedCell.rowIndex === cell.rowIndex),
           false,
         ),
       [cell],
@@ -40,7 +41,8 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
     useMemo(
       () => (state) =>
         state.editedCells.reduce(
-          (acc, c) => acc || (c.columnIndex === cell.columnIndex && c.rowIndex === cell.rowIndex),
+          (acc, editedCell) =>
+            acc || (editedCell.columnIndex === cell.columnIndex && editedCell.rowIndex === cell.rowIndex),
           false,
         ),
       [cell],
@@ -50,7 +52,9 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
   const invalidCell = useStore(
     useMemo(
       () => (state) =>
-        state.invalidCells.find((c) => c.columnIndex === cell.columnIndex && c.rowIndex === cell.rowIndex),
+        state.invalidCells.find(
+          (invalidCell) => invalidCell.columnIndex === cell.columnIndex && invalidCell.rowIndex === cell.rowIndex,
+        ),
       [cell.columnIndex, cell.rowIndex],
     ),
   );
@@ -77,7 +81,7 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
   const renderedCell = useMemo(
     () =>
       isEditing ? (
-        <Editor cell={cell} handleBlur={handleBlur} handleKeyDown={handleKeyDown} isEdited={isEdited} />
+        <Editor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
       ) : (
         // In case of NaN casting to string
         <Small>{value.toString()}</Small>

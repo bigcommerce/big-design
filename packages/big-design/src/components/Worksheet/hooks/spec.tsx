@@ -5,7 +5,6 @@ import { act } from 'react-test-renderer';
 import { Cell } from '../types';
 
 import { useEditableCell } from './useEditableCell';
-// import { useUpdateItems } from './useUpdateItems';
 
 let mockUpdateItems = jest.fn();
 jest.mock('./useUpdateItems', () => ({
@@ -15,7 +14,7 @@ jest.mock('./useUpdateItems', () => ({
 }));
 
 describe('useEditableCells', () => {
-  const cell: Cell = { rowIndex: 0, columnIndex: 0, type: 'text', hash: 'category', value: 'Text' };
+  const cell: Cell<unknown> = { rowIndex: 0, columnIndex: 0, type: 'text', hash: 'category', value: 'Text' };
 
   let preventDefault: () => void;
   let stopPropagation: () => void;
@@ -92,18 +91,3 @@ describe('useEditableCells', () => {
     expect(result.current.isEditing).toBe(false);
   });
 });
-
-// jest.mock('./useUpdateItems', () => jest.requireActual('./useUpdateItems'));
-
-//TODO: fix this test
-// describe('useUpdateItems', () => {
-//   // beforeEach(() => {
-//   //   jest.unmock('./useUpdateItems');
-//   // });
-
-//   test('throws if is not wrapped in UpdateItemsProvider', () => {
-//     const { result } = renderHook(() => useUpdateItems());
-
-//     expect(result.error.message).toContain('UpdateItemsProvider');
-//   });
-// });

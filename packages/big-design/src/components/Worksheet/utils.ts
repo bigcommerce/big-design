@@ -1,20 +1,25 @@
 import { Cell } from './types';
 
-export const mergeCells = (oldCells: Cell[], newCells: Cell[]) =>
+export const mergeCells = (oldCells: Cell<unknown>[], newCells: Cell<unknown>[]) =>
   newCells.reduce(
-    (accum, cell) => {
-      const index = oldCells.findIndex((c) => c.rowIndex === cell.rowIndex && c.columnIndex === cell.columnIndex);
+    (accum, newCell) => {
+      const index = oldCells.findIndex(
+        (oldCell) => oldCell.rowIndex === newCell.rowIndex && oldCell.columnIndex === newCell.columnIndex,
+      );
 
       if (index > -1) {
-        accum[index] = cell;
+        accum[index] = newCell;
 
         return accum;
       }
 
-      return accum.concat(cell);
+      return accum.concat(newCell);
     },
     [...oldCells],
   );
 
-export const deleteCells = (oldCells: Cell[], newCells: Cell[]) =>
-  oldCells.filter((cell) => !newCells.find((c) => c.columnIndex === cell.columnIndex && c.rowIndex === cell.rowIndex));
+export const deleteCells = (oldCells: Cell<unknown>[], newCells: Cell<unknown>[]) =>
+  oldCells.filter(
+    (oldCell) =>
+      !newCells.find((newCell) => newCell.columnIndex === oldCell.columnIndex && newCell.rowIndex === oldCell.rowIndex),
+  );

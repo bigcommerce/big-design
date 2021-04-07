@@ -7,16 +7,21 @@ import { useStore } from './hooks';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, Table } from './styled';
-import { WorksheetProps } from './types';
+import { Worksheet as WorksheetProps } from './types';
 
-const InternalWorksheet = <T extends unknown>({ columns, items, onChange, onErrors }: WorksheetProps<T>) => {
+const InternalWorksheet = <T extends Record<string, unknown>>({
+  columns,
+  items,
+  onChange,
+  onErrors,
+}: WorksheetProps<T>) => {
   const rows = useStore((state) => state.rows);
   const setRows = useStore((state) => state.setRows);
 
-  useEffect(() => setRows(items), [items, setRows]);
-
   const editedCells = useStore((state) => state.editedCells);
   const invalidCells = useStore((state) => state.invalidCells);
+
+  useEffect(() => setRows(items), [items, setRows]);
 
   useEffect(() => {
     if (editedCells.length) {

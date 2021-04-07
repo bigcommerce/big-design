@@ -4,7 +4,7 @@ import { useStore } from '../hooks';
 
 import { Status } from './styled';
 
-export interface RowStatusProps {
+interface RowStatusProps {
   rowIndex: number;
 }
 

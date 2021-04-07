@@ -4,7 +4,7 @@ import React from 'react';
 import { WorksheetColumn } from './types';
 import { Worksheet } from './Worksheet';
 
-const columns: WorksheetColumn[] = [
+const columns: WorksheetColumn<string | number>[] = [
   { hash: 'productName', header: 'Product name' },
   { hash: 'categories', header: 'Categories' },
   { hash: 'otherField', header: 'Other field' },

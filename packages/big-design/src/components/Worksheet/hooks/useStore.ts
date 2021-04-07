@@ -3,21 +3,21 @@ import create, { State } from 'zustand';
 import { Cell } from '../types';
 import { deleteCells, mergeCells } from '../utils';
 
-interface BaseState extends State {
-  editedCells: Cell[];
-  invalidCells: Cell[];
-  rows: any[]; // TODO: Can we actually get a T type here?
-  selectedCells: Cell[];
+interface BaseState<Item> extends State {
+  editedCells: Cell<Item[keyof Item]>[];
+  invalidCells: Cell<Item[keyof Item]>[];
+  rows: Item[];
+  selectedCells: Cell<Item[keyof Item]>[];
   selectedRows: number[];
-  addEditedCells: (cells: Cell[]) => void;
-  addInvalidCells: (cells: Cell[]) => void;
-  removeInvalidCells: (cells: Cell[]) => void;
-  setRows: (rows: any[]) => void;
-  setSelectedCells: (cells: Cell[]) => void;
+  addEditedCells: (cells: Cell<Item[keyof Item]>[]) => void;
+  addInvalidCells: (cells: Cell<Item[keyof Item]>[]) => void;
+  removeInvalidCells: (cells: Cell<Item[keyof Item]>[]) => void;
+  setRows: (rows: Item[]) => void;
+  setSelectedCells: (cells: Cell<Item[keyof Item]>[]) => void;
   setSelectedRows: (rows: number[]) => void;
 }
 
-export const useStore = create<BaseState>((set) => ({
+export const useStore = create<BaseState<Record<string, any>>>((set) => ({
   editedCells: [],
   invalidCells: [],
   rows: [],

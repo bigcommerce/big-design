@@ -6,7 +6,7 @@ import { RowStatus } from '../RowStatus';
 import { WorksheetColumn } from '../types';
 
 interface RowProps {
-  columns: WorksheetColumn[];
+  columns: WorksheetColumn<unknown>[];
   rowIndex: number;
 }
 

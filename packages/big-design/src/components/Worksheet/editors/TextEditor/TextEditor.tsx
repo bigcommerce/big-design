@@ -6,22 +6,22 @@ import { Cell } from '../../types';
 import { StyledInput } from './styled';
 
 export interface TextEditorProps {
-  cell: Cell;
-  handleBlur(): void;
-  handleKeyDown: EditableCellKeyDown;
+  cell: Cell<string | number>;
   isEdited: boolean;
+  onBlur(): void;
+  onKeyDown: EditableCellKeyDown;
 }
 
-export const TextEditor: React.FC<TextEditorProps> = ({ cell, handleBlur, handleKeyDown, isEdited }) => {
+export const TextEditor: React.FC<TextEditorProps> = ({ cell, isEdited, onBlur, onKeyDown }) => {
   const [value, setValue] = useState(cell.value);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };
 
-  const forwardKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     // We always receive the value as a string type, cast to Number if column type is number
-    handleKeyDown(event, formatValue(value));
+    onKeyDown(event, formatValue(value));
   };
 
   const formatValue = (value: string | number) => (cell.type === 'number' ? Number(value) : value);
@@ -30,9 +30,9 @@ export const TextEditor: React.FC<TextEditorProps> = ({ cell, handleBlur, handle
     <StyledInput
       autoFocus
       isEdited={isEdited}
-      onBlur={handleBlur}
+      onBlur={onBlur}
       onChange={handleChange}
-      onKeyDown={forwardKeyDown}
+      onKeyDown={handleKeyDown}
       value={value.toString()} // In case of NaN casting to string
     />
   );
