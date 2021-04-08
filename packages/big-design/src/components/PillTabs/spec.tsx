@@ -39,9 +39,10 @@ test('it renders the given tabs', () => {
     },
   ];
 
-  const { getByText } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const { container, getByText } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
   const inStock = getByText('In stock');
 
+  expect(container).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
 });
 
@@ -69,15 +70,18 @@ test('dropdown is not visible if items fit', () => {
     },
   ];
 
-  const { getByText, queryByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const { container, getByText, queryByTestId } = render(
+    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
+  );
   const inStock = getByText('In stock');
   const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
 
+  expect(container).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
   expect(dropdownToggle).toHaveStyle(HIDDEN_STYLES);
 });
 
-test('renders dropdown if items dont fit', async () => {
+test('renders dropdown if items do not fit', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get() {
@@ -104,12 +108,15 @@ test('renders dropdown if items dont fit', async () => {
     },
   ];
 
-  const { getByText, queryByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const { container, getByText, queryByTestId } = render(
+    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
+  );
   await wait();
 
   const inStock = getByText('Long filter name');
   const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
 
+  expect(container).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
   expect(dropdownToggle).not.toHaveStyle(HIDDEN_STYLES);
 });
@@ -146,7 +153,9 @@ test('renders all the filters if they fit', async () => {
     },
   ];
 
-  const { getByText, queryByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const { container, getByText, queryByTestId } = render(
+    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
+  );
   await wait();
 
   const inStock = getByText('In stock');
@@ -154,6 +163,7 @@ test('renders all the filters if they fit', async () => {
   const filter3 = getByText('Filter 3');
   const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
 
+  expect(container).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
   expect(filter2).not.toHaveStyle(HIDDEN_STYLES);
   expect(filter3).not.toHaveStyle(HIDDEN_STYLES);
@@ -208,7 +218,9 @@ test('only the pills that fit are visible', async () => {
     },
   ];
 
-  const { queryByTestId, getByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const { container, queryByTestId, getByTestId } = render(
+    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
+  );
   await wait();
 
   const inStock = getByTestId('pilltabs-pill-0');
@@ -216,6 +228,7 @@ test('only the pills that fit are visible', async () => {
   const filter3 = getByTestId('pilltabs-pill-2');
   const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
 
+  expect(container).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
   expect(filter2).toHaveStyle(HIDDEN_STYLES);
   expect(filter3).toHaveStyle(HIDDEN_STYLES);
@@ -266,7 +279,9 @@ test('only the pills that fit are visible 2', async () => {
     },
   ];
 
-  const { queryByTestId, getByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const { container, queryByTestId, getByTestId } = render(
+    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
+  );
   await wait();
 
   const inStock = getByTestId('pilltabs-pill-0');
@@ -274,6 +289,7 @@ test('only the pills that fit are visible 2', async () => {
   const filter3 = getByTestId('pilltabs-pill-2');
   const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
 
+  expect(container).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
   expect(filter2).not.toHaveStyle(HIDDEN_STYLES);
   expect(filter3).toHaveStyle(HIDDEN_STYLES);

@@ -214,10 +214,8 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
       return;
     }
 
-    return shouldRenderActions() ? (
-      <PillTabs {...pillTabs} />
-    ) : (
-      <Box marginBottom="medium">
+    return (
+      <Box marginBottom={shouldRenderActions() ? 'none' : 'medium'}>
         <PillTabs {...pillTabs} />
       </Box>
     );

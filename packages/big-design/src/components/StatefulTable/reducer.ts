@@ -200,8 +200,8 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
         return state;
       }
 
-      const isCurrentPillActive = !state.activePills.includes(action.pillId);
-      const activePills = isCurrentPillActive
+      const isToggledPillActive = !state.activePills.includes(action.pillId);
+      const activePills = isToggledPillActive
         ? [...state.activePills, toggledPill.id]
         : state.activePills.filter((activeFilter) => activeFilter !== toggledPill.id);
       const currentItems =

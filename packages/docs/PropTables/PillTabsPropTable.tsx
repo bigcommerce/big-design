@@ -6,7 +6,7 @@ const pillTabsPropTable: Prop[] = [
   {
     name: 'activePills',
     types: 'string[]',
-    description: 'The currently active pill ids as an array of strings',
+    description: 'The currently active pill ids as an array of strings.',
   },
   {
     description: (

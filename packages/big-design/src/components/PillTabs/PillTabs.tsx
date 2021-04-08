@@ -22,6 +22,7 @@ export interface PillTabsProps {
 export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
   const parentRef = createRef<HTMLDivElement>();
   const dropdownRef = createRef<HTMLDivElement>();
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [pillsState, setPillsState] = useState(
     items.map((item) => ({
       isVisible: true,
@@ -29,7 +30,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       ref: createRef<HTMLDivElement>(),
     })),
   );
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
+
   const hideOverflownPills = useCallback(() => {
     const parentWidth = parentRef.current?.offsetWidth;
     const dropdownWidth = dropdownRef.current?.offsetWidth;
@@ -71,19 +72,11 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     }
   }, [items, parentRef, dropdownRef, pillsState]);
 
-  useEffect(() => {
-    hideOverflownPills();
-  }, [items, parentRef, pillsState, hideOverflownPills]);
-
-  useWindowResizeListener(() => {
-    hideOverflownPills();
-  });
-
-  const renderDropdown = useCallback(() => {
+  const renderedDropdown = useMemo(() => {
     const dropdownItems = pillsState
       .filter((stateObj) => !stateObj.isVisible)
       .map((stateObj) => {
-        const item = items.find((i) => i.title === stateObj.item.title);
+        const item = items.find(({ title }) => title === stateObj.item.title);
         const isActive = item ? activePills.includes(item.id) : false;
 
         return {
@@ -109,12 +102,14 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
           key={index}
           ref={pillsState[index].ref}
           isVisible={pillsState[index].isVisible}
+          role="listitem"
         >
           <StyledPillTab
             disabled={!pillsState[index].isVisible}
             variant="subtle"
             isActive={activePills.includes(item.id)}
             onClick={() => onPillClick(item.id)}
+            marginRight="xLarge"
           >
             {item.title}
           </StyledPillTab>
@@ -123,12 +118,20 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     [items, pillsState, activePills, onPillClick],
   );
 
-  return (
-    <Flex data-testid="pilltabs-wrapper" flexDirection="row" flexWrap="nowrap" ref={parentRef}>
+  useEffect(() => {
+    hideOverflownPills();
+  }, [items, parentRef, pillsState, hideOverflownPills]);
+
+  useWindowResizeListener(() => {
+    hideOverflownPills();
+  });
+
+  return items.length > 0 ? (
+    <Flex data-testid="pilltabs-wrapper" flexDirection="row" flexWrap="nowrap" ref={parentRef} role="list">
       {renderedPills}
-      {renderDropdown()}
+      {renderedDropdown}
     </Flex>
-  );
+  ) : null;
 };
 
 PillTabs.displayName = 'Pill Tabs';

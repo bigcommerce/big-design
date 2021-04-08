@@ -13,8 +13,6 @@ interface StyledFlexItemProps {
 }
 
 export const StyledPillTab = styled(StyleableButton)<StyledPillTabProps>`
-  margin-right: ${({ theme }) => theme.spacing.xLarge};
-
   ${(props) =>
     props.isActive &&
     css`
