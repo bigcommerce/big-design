@@ -169,6 +169,17 @@ describe('edition', () => {
       { columnIndex: 0, hash: 'productName', rowIndex: 2, type: 'text', value: 'Shoes Name One Edit 2' },
     ]);
   });
+
+  test('edition does not mutate items array', () => {
+    // At this point, if our previous tests mutated the items array, this value would be different
+    expect(items[2]).toStrictEqual({
+      productName: 'Shoes Name One',
+      categories: 'Shoes',
+      otherField: 'Text',
+      otherField2: 'Field',
+      otherField3: 3,
+    });
+  });
 });
 
 describe('validation', () => {
@@ -184,6 +195,9 @@ describe('validation', () => {
   });
 
   test('onErrors gets called with invalid cells', () => {
+    let cell;
+    let input;
+
     const { getByDisplayValue, getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} onErrors={handleErrors} />,
     );
@@ -195,11 +209,11 @@ describe('validation', () => {
       { columnIndex: 4, hash: 'otherField3', rowIndex: 2, type: 'number', value: 3 },
     ]);
 
-    const cell = getByText('1');
+    cell = getByText('1');
 
     fireEvent.doubleClick(cell);
 
-    const input = getByDisplayValue('1') as HTMLInputElement;
+    input = getByDisplayValue('1') as HTMLInputElement;
 
     fireEvent.change(input, { target: { value: 2 } });
     fireEvent.keyDown(input, { key: 'Enter' });
@@ -209,6 +223,21 @@ describe('validation', () => {
       { columnIndex: 4, hash: 'otherField3', rowIndex: 0, type: 'number', value: 2 },
       { columnIndex: 4, hash: 'otherField3', rowIndex: 1, type: 'number', value: 2 },
       { columnIndex: 4, hash: 'otherField3', rowIndex: 2, type: 'number', value: 3 },
+    ]);
+
+    cell = getByText('3');
+
+    fireEvent.doubleClick(cell);
+
+    input = getByDisplayValue('3') as HTMLInputElement;
+
+    fireEvent.change(input, { target: { value: 5 } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+
+    expect(handleErrors).toBeCalledTimes(3);
+    expect(handleErrors).toBeCalledWith([
+      { columnIndex: 4, hash: 'otherField3', rowIndex: 0, type: 'number', value: 2 },
+      { columnIndex: 4, hash: 'otherField3', rowIndex: 1, type: 'number', value: 2 },
     ]);
   });
 });

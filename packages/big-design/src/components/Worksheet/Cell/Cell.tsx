@@ -20,10 +20,10 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
   ]);
 
   const { Editor, handleBlur, handleDoubleClick, handleKeyDown, isEditing } = useEditableCell(cell);
-  const setSelectedRows = useStore(useMemo(() => (state) => state.setSelectedRows, []));
-  const setSelectedCells = useStore(useMemo(() => (state) => state.setSelectedCells, []));
-  const addInvalidCells = useStore(useMemo(() => (state) => state.addInvalidCells, []));
-  const removeInvalidCells = useStore(useMemo(() => (state) => state.removeInvalidCells, []));
+  const setSelectedRows = useStore((state) => state.setSelectedRows);
+  const setSelectedCells = useStore((state) => state.setSelectedCells);
+  const addInvalidCells = useStore((state) => state.addInvalidCells);
+  const removeInvalidCells = useStore((state) => state.removeInvalidCells);
 
   const isSelected = useStore(
     useMemo(
@@ -58,7 +58,7 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
   const isValid = useMemo(() => (typeof validation === 'function' ? validation(value) : true), [validation, value]);
 
   useEffect(() => {
-    // Remove from invalidCells if now value is valid
+    // Remove from invalidCells if new value is valid
     if (isValid && invalidCell) {
       removeInvalidCells([cell]);
     }
