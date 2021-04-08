@@ -43,6 +43,7 @@ exports[`renders worksheet 1`] = `
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -52,6 +53,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -61,6 +63,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -70,6 +73,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -78,7 +82,8 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gEYTOz"
+        class="styled__StyledCell-sc-1bt06ph-0 cRPtqa"
+        type="number"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -93,6 +98,7 @@ exports[`renders worksheet 1`] = `
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -102,6 +108,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -111,6 +118,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -120,6 +128,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -128,7 +137,8 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gEYTOz"
+        class="styled__StyledCell-sc-1bt06ph-0 cRPtqa"
+        type="number"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -143,6 +153,7 @@ exports[`renders worksheet 1`] = `
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -152,6 +163,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -161,6 +173,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -170,6 +183,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -178,7 +192,8 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gEYTOz"
+        class="styled__StyledCell-sc-1bt06ph-0 cRPtqa"
+        type="number"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -193,6 +208,7 @@ exports[`renders worksheet 1`] = `
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -202,6 +218,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -211,6 +228,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -220,6 +238,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -228,7 +247,8 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -243,6 +263,7 @@ exports[`renders worksheet 1`] = `
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -252,6 +273,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -261,6 +283,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -270,6 +293,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -278,7 +302,8 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -293,6 +318,7 @@ exports[`renders worksheet 1`] = `
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -302,6 +328,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -311,6 +338,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -320,6 +348,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -328,7 +357,8 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -343,6 +373,7 @@ exports[`renders worksheet 1`] = `
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -352,6 +383,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -361,6 +393,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -370,6 +403,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -378,7 +412,8 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -393,6 +428,7 @@ exports[`renders worksheet 1`] = `
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -402,6 +438,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -411,6 +448,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -420,6 +458,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -428,7 +467,8 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -443,6 +483,7 @@ exports[`renders worksheet 1`] = `
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -452,6 +493,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -461,6 +503,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -470,6 +513,7 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"
@@ -478,7 +522,8 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 kTSqSt"

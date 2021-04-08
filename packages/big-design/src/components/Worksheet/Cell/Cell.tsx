@@ -92,6 +92,7 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
       isValid={isValid}
       onClick={handleClick}
       onDoubleClick={handleDoubleClick}
+      type={type}
     >
       {renderedCell}
     </StyledCell>
