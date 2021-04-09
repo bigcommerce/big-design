@@ -45,7 +45,7 @@ const tableProps: Prop[] = [
     description: 'See pagination component for details.',
   },
   {
-    name: 'pillTabs',
+    name: 'filters',
     types: (
       <NextLink href="/PillTabs/PillTabsPage" as="/pill-tabs">
         Pill Tabs

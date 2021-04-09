@@ -279,7 +279,7 @@ const TablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with Pill Tabs</H1>
+      <H1>Usage with filters</H1>
 
       <CodePreview scope={{ data }}>
         {/* jsx-to-string:start */}
@@ -309,7 +309,7 @@ const TablePage = () => {
                 { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
               ]}
               items={items}
-              pillTabs={pillTabs}
+              filters={pillTabs}
             />
           );
         }}

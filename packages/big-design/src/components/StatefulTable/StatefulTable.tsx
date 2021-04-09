@@ -20,10 +20,10 @@ export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable
 }
 
 export interface StatefulTableProps<T>
-  extends Omit<TableProps<T>, 'columns' | 'pagination' | 'pillTabs' | 'selectable' | 'sortable' | 'onRowDrop'> {
+  extends Omit<TableProps<T>, 'columns' | 'pagination' | 'filters' | 'selectable' | 'sortable' | 'onRowDrop'> {
   columns: Array<StatefulTableColumn<T>>;
   pagination?: boolean;
-  tableFilters?: StatefulTablePillTabFilter<T>;
+  filters?: StatefulTablePillTabFilter<T>;
   selectable?: boolean;
   defaultSelected?: T[];
   onRowDrop?(items: T[]): void;
@@ -52,7 +52,7 @@ const InternalStatefulTable = <T extends TableItem>({
   onSelectionChange,
   onRowDrop,
   pagination = false,
-  tableFilters,
+  filters,
   selectable = false,
   stickyHeader = false,
   ...rest
@@ -61,11 +61,7 @@ const InternalStatefulTable = <T extends TableItem>({
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
   const sortable = useMemo(() => columns.some((column) => column.sortKey || column.sortFn), [columns]);
 
-  const [state, dispatch] = useReducer(
-    reducer,
-    { columns, defaultSelected, items, pagination, tableFilters },
-    reducerInit,
-  );
+  const [state, dispatch] = useReducer(reducer, { columns, defaultSelected, items, pagination, filters }, reducerInit);
 
   const columnsChangedCallback = useCallback(() => dispatch({ type: 'COLUMNS_CHANGED', columns }), [columns]);
   const itemsChangedCallback = useCallback(
@@ -126,33 +122,33 @@ const InternalStatefulTable = <T extends TableItem>({
   );
 
   useEffect(() => {
-    if (!tableFilters) {
+    if (!filters) {
       return;
     }
 
     const pillTabsProps: PillTabsProps = {
       activePills: state.activePills,
       onPillClick: (pillId) => {
-        dispatch({ type: 'TOGGLE_PILL', pillId, filter: tableFilters.filter });
+        dispatch({ type: 'TOGGLE_PILL', pillId, filter: filters.filter });
       },
-      items: tableFilters.pillTabs,
+      items: filters.pillTabs,
     };
 
     dispatch({ type: 'SET_PILL_TABS_PROPS', pillTabsProps });
-  }, [tableFilters, state.activePills]);
+  }, [filters, state.activePills]);
 
   return (
     <Table
       {...rest}
       columns={state.columns}
+      filters={state.pillTabsProps}
       itemName={itemName}
       items={state.currentItems}
       keyField={keyField}
-      stickyHeader={stickyHeader}
       pagination={paginationOptions}
-      pillTabs={state.pillTabsProps}
       selectable={selectableOptions}
       sortable={sortableOptions}
+      stickyHeader={stickyHeader}
       onRowDrop={onRowDrop ? onDragEnd : undefined}
     />
   );

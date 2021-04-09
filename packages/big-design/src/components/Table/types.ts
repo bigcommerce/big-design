@@ -46,7 +46,7 @@ export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElemen
   itemName?: string;
   items: T[];
   keyField?: string;
-  pillTabs?: PillTabsProps;
+  filters?: PillTabsProps;
   onRowDrop?(from: number, to: number): void;
   pagination?: TablePaginationProps;
   selectable?: TableSelectable<T>;

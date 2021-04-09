@@ -187,7 +187,7 @@ const StatefulTablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with Pill Tab filters</H1>
+      <H1>Usage with filters</H1>
 
       <CodePreview>
         {/* jsx-to-string:start */}
@@ -204,7 +204,7 @@ const StatefulTablePage = () => {
             { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
             { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
           ]}
-          tableFilters={{
+          filters={{
             filter: (pillId, items) =>
               pillId === 'low_stock'
                 ? items.filter((item) => item.stock !== 0 && item.stock < 10)

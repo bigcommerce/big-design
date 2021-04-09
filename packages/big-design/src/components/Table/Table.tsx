@@ -18,10 +18,11 @@ import { TableColumn, TableItem, TableProps } from './types';
 
 const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactElement<TableProps<T>> => {
   const {
+    actions,
     className,
     columns,
-    actions,
     emptyComponent,
+    filters,
     headerless = false,
     id,
     itemName,
@@ -29,7 +30,6 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     keyField = 'id',
     onRowDrop,
     pagination,
-    pillTabs,
     selectable,
     sortable,
     stickyHeader,
@@ -210,13 +210,13 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   };
 
   const renderPillTabs = () => {
-    if (!pillTabs) {
+    if (!filters) {
       return;
     }
 
     return (
       <Box marginBottom={shouldRenderActions() ? 'none' : 'medium'}>
-        <PillTabs {...pillTabs} />
+        <PillTabs {...filters} />
       </Box>
     );
   };

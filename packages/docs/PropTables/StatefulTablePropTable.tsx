@@ -80,8 +80,8 @@ const statefulTableProps: Prop[] = [
     description: 'Callback called with updated items list once drag and drop action has been completed.',
   },
   {
-    name: 'tableFilters',
-    types: <NextLink href="#stateful-table-filters-prop-table">TableFilters</NextLink>,
+    name: 'filters',
+    types: <NextLink href="#stateful-table-filters-prop-table">Filters</NextLink>,
     description: (
       <>
         See <NextLink href="#stateful-table-filters-prop-table">below</NextLink> for usage.
@@ -156,7 +156,7 @@ const tableColumnsProps: Prop[] = [
   },
 ];
 
-const tableFiltersProps: Prop[] = [
+const filterProps: Prop[] = [
   {
     description: (
       <>
@@ -186,5 +186,5 @@ export const StatefulTableColumnsPropTable: React.FC<PropTableWrapper> = (props)
 );
 
 export const StatefulTableFiltersPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="StatefulTable[TableFilters]" propList={tableFiltersProps} {...props} />
+  <PropTable title="StatefulTable[Filters]" propList={filterProps} {...props} />
 );
