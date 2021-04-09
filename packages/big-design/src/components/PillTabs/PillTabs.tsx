@@ -31,7 +31,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     })),
   );
 
-  const hideOverflownPills = useCallback(() => {
+  const hideOverflowedPills = useCallback(() => {
     const parentWidth = parentRef.current?.offsetWidth;
     const dropdownWidth = dropdownRef.current?.offsetWidth;
 
@@ -119,11 +119,11 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
   );
 
   useEffect(() => {
-    hideOverflownPills();
-  }, [items, parentRef, pillsState, hideOverflownPills]);
+    hideOverflowedPills();
+  }, [items, parentRef, pillsState, hideOverflowedPills]);
 
   useWindowResizeListener(() => {
-    hideOverflownPills();
+    hideOverflowedPills();
   });
 
   return items.length > 0 ? (
