@@ -40,7 +40,7 @@ const getSimpleTable = ({
     itemName={itemName}
     emptyComponent={emptyComponent}
     style={style}
-    pillTabs={pillTabs}
+    filters={pillTabs}
     columns={
       columns || [
         { header: 'Sku', render: ({ sku }) => sku },
