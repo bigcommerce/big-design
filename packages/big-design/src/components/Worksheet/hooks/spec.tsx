@@ -51,8 +51,6 @@ describe('useEditableCells', () => {
       result.current.handleDoubleClick();
       result.current.handleKeyDown(
         ({
-          currentTarget: 1,
-          target: 1,
           key: 'Enter',
           preventDefault,
           stopPropagation,
@@ -74,8 +72,6 @@ describe('useEditableCells', () => {
       result.current.handleDoubleClick();
       result.current.handleKeyDown(
         ({
-          currentTarget: 1,
-          target: 1,
           key: 'Escape',
           preventDefault,
           stopPropagation,

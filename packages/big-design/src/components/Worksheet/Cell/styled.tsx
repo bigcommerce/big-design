@@ -3,12 +3,14 @@ import styled, { css } from 'styled-components';
 
 import { WorksheetColumn } from '../types';
 
-export const StyledCell = styled.td<{
+interface StyledCellProps {
   isEdited?: boolean;
   isSelected?: boolean;
   isValid?: boolean;
   type?: WorksheetColumn<unknown>['type'];
-}>`
+}
+
+export const StyledCell = styled.td<StyledCellProps>`
   background-color: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => `${theme.helpers.remCalc(0.5)} solid ${theme.colors.secondary30}`};
   box-sizing: border-box;

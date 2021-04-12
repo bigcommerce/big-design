@@ -36,7 +36,7 @@ const InternalWorksheet = <T extends Record<string, unknown>>({
     }
   }, [invalidCells, onErrors]);
 
-  const renderHeaders = useMemo(
+  const renderedHeaders = useMemo(
     () => (
       <thead>
         <tr>
@@ -50,7 +50,7 @@ const InternalWorksheet = <T extends Record<string, unknown>>({
     [columns],
   );
 
-  const renderRows = useMemo(
+  const renderedRows = useMemo(
     () => (
       <tbody>
         {rows.map((_row, rowIndex) => (
@@ -64,8 +64,8 @@ const InternalWorksheet = <T extends Record<string, unknown>>({
   return (
     <UpdateItemsProvider items={rows}>
       <Table>
-        {renderHeaders}
-        {renderRows}
+        {renderedHeaders}
+        {renderedRows}
       </Table>
     </UpdateItemsProvider>
   );
