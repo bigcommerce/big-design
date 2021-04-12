@@ -80,7 +80,7 @@ export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, ty
         <Editor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
       ) : (
         // In case of NaN casting to string
-        <Small>{value.toString()}</Small>
+        <Small color="secondary70">{value.toString()}</Small>
       ),
     [cell, handleBlur, handleKeyDown, isEdited, isEditing, value],
   );

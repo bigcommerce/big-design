@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 
 export const StyledInput = styled.input<{ isEdited: boolean }>`
   border: 0;
-  color: ${({ theme }) => theme.colors.secondary60};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   height: 100%;
