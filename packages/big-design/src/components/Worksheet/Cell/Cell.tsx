@@ -6,11 +6,11 @@ import { Cell as TCell } from '../types';
 
 import { StyledCell } from './styled';
 
-interface CellProps extends TCell<string | number> {
-  validation?(value: string | number): boolean;
+interface CellProps<Value> extends TCell<Value> {
+  validation?(value: Value): boolean;
 }
 
-export const Cell: React.FC<CellProps> = memo(({ columnIndex, hash, rowIndex, type, value, validation }) => {
+export const Cell: React.FC<CellProps<any>> = memo(({ columnIndex, hash, rowIndex, type, value, validation }) => {
   const cell = useMemo(() => ({ columnIndex, hash, rowIndex, type, value }), [
     columnIndex,
     hash,
