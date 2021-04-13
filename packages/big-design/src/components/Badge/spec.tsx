@@ -51,6 +51,13 @@ test('render secondary Badge', () => {
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary60}`);
 });
 
+test('render info Badge', () => {
+  const { container } = render(<Badge label="Badge" variant="primary" />);
+
+  expect(container.firstChild).toMatchSnapshot();
+  expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary40}`);
+});
+
 test("doesn't render if label prop is invalid", () => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
