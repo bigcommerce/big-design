@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 import { EditableCellKeyDown } from '../../hooks';
 import { Cell } from '../../types';
@@ -12,7 +12,7 @@ export interface TextEditorProps {
   onKeyDown: EditableCellKeyDown;
 }
 
-export const TextEditor: React.FC<TextEditorProps> = ({ cell, isEdited, onBlur, onKeyDown }) => {
+export const TextEditor: React.FC<TextEditorProps> = memo(({ cell, isEdited, onBlur, onKeyDown }) => {
   const [value, setValue] = useState(cell.value);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,4 +36,4 @@ export const TextEditor: React.FC<TextEditorProps> = ({ cell, isEdited, onBlur, 
       value={value.toString()} // In case of NaN casting to string
     />
   );
-};
+});
