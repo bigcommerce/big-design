@@ -226,7 +226,7 @@ const dropdownItemGroupProps: Prop[] = [
     description: 'If true, adds a line separator above the group.',
   },
   {
-    name: 'options',
+    name: 'items',
     types: 'Array<DropdownItem | DropdownLinkItem>',
     required: true,
     description: (
