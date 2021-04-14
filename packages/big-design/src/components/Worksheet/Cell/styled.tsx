@@ -1,13 +1,13 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { WorksheetColumn } from '../types';
+import { Cell } from '../types';
 
 interface StyledCellProps {
   isEdited?: boolean;
   isSelected?: boolean;
   isValid?: boolean;
-  type?: WorksheetColumn<unknown>['type'];
+  type: Cell<unknown>['type'];
 }
 
 export const StyledCell = styled.td<StyledCellProps>`

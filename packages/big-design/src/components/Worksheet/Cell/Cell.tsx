@@ -2,14 +2,15 @@ import React, { memo, useCallback, useEffect, useMemo } from 'react';
 
 import { Small } from '../../Typography';
 import { useEditableCell, useStore } from '../hooks';
-import { Cell as TCell } from '../types';
+import { Cell as TCell, WorksheetColumn } from '../types';
 
 import { StyledCell } from './styled';
 
 interface CellProps<Value> extends TCell<Value> {
-  validation?(value: Value): boolean;
+  validation: WorksheetColumn<Value>['validation'];
 }
 
+// We can't know what value type a cell has
 export const Cell: React.FC<CellProps<any>> = memo(({ columnIndex, hash, rowIndex, type, value, validation }) => {
   const cell = useMemo(() => ({ columnIndex, hash, rowIndex, type, value }), [
     columnIndex,

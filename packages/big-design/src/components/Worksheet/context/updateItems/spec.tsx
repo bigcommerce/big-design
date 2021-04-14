@@ -34,8 +34,8 @@ describe('UpdateItemsProvider', () => {
     act(() =>
       hook.current.updateItems(
         [
-          { rowIndex: 1, columnIndex: 0, hash: 'productName', value: 'Shoes Name Two' },
-          { rowIndex: 1, columnIndex: 1, hash: 'categories', value: 'Shoes' },
+          { rowIndex: 1, columnIndex: 0, hash: 'productName', type: 'text', value: 'Shoes Name Two' },
+          { rowIndex: 1, columnIndex: 1, hash: 'categories', type: 'text', value: 'Shoes' },
         ],
         ['Clothes Name One', 'Clothes'],
       ),

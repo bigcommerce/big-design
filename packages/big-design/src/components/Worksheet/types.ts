@@ -17,5 +17,5 @@ export interface Cell<Value> {
   hash: string;
   rowIndex: number;
   value: Value;
-  type?: WorksheetColumn<Value>['type'];
+  type: Exclude<WorksheetColumn<Value>['type'], undefined>;
 }
