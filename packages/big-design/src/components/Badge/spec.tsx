@@ -51,7 +51,7 @@ test('render secondary Badge', () => {
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary60}`);
 });
 
-test('render info Badge', () => {
+test('render primary Badge', () => {
   const { container } = render(<Badge label="Badge" variant="primary" />);
 
   expect(container.firstChild).toMatchSnapshot();
