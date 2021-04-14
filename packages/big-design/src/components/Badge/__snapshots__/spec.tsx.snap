@@ -42,7 +42,7 @@ exports[`render default Badge 1`] = `
 </span>
 `;
 
-exports[`render info Badge 1`] = `
+exports[`render primary Badge 1`] = `
 .c0 {
   color: #FFFFFF;
   border-radius: 0.25rem;
