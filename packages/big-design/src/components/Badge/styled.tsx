@@ -42,6 +42,12 @@ export const StyledBadge = styled.span<Omit<BadgeProps, 'label'>>`
     css`
       background-color: ${theme.colors.danger40};
     `}
+
+  ${({ theme, variant }) =>
+    variant === 'primary' &&
+    css`
+      background-color: ${theme.colors.primary40};
+    `}
 `;
 
 StyledBadge.defaultProps = {

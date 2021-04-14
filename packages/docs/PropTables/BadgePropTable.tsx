@@ -11,7 +11,7 @@ const badgeProps: Prop[] = [
   },
   {
     name: 'variant',
-    types: ['danger', 'secondary', 'success', 'warning'],
+    types: ['danger', 'secondary', 'success', 'warning', 'primary'],
     description: 'Determines which badge to display.',
     defaultValue: 'secondary',
   },
