@@ -5,9 +5,9 @@ import { Cell } from '../types';
 
 import { useUpdateItems } from './useUpdateItems';
 
-export type EditableCellKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: unknown) => void;
+export type EditableCellKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: string | number) => void;
 
-export const useEditableCell = (cell: Cell<unknown>) => {
+export const useEditableCell = (cell: Cell<string | number>) => {
   const [isEditing, setIsEditing] = useState(false);
   const { updateItems } = useUpdateItems();
 

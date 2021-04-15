@@ -5,7 +5,7 @@ import { useStore } from './hooks';
 import { WorksheetColumn } from './types';
 import { Worksheet } from './Worksheet';
 
-const columns: WorksheetColumn<string | number>[] = [
+const columns: WorksheetColumn[] = [
   { hash: 'productName', header: 'Product name' },
   { hash: 'categories', header: 'Categories' },
   { hash: 'otherField', header: 'Other field' },

@@ -14,7 +14,7 @@ jest.mock('./useUpdateItems', () => ({
 }));
 
 describe('useEditableCells', () => {
-  const cell: Cell<unknown> = { rowIndex: 0, columnIndex: 0, type: 'text', hash: 'category', value: 'Text' };
+  const cell: Cell<string> = { rowIndex: 0, columnIndex: 0, type: 'text', hash: 'category', value: 'Text' };
 
   let preventDefault: () => void;
   let stopPropagation: () => void;
