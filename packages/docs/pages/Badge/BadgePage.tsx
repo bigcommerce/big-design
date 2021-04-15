@@ -32,18 +32,19 @@ const BadgePage = () => (
     <H1>Variants</H1>
 
     <Text>
-      There are four types of variants to choose from: <Code>success</Code>, <Code>secondary</Code>,{' '}
-      <Code>warning</Code>, and <Code>danger</Code>. You can determine what type by using the{' '}
+      There are five types of variants to choose from: <Code>success</Code>, <Code>secondary</Code>,{' '}
+      <Code>warning</Code>, <Code>danger</Code>, and <Code>primary</Code>. You can determine what type by using the{' '}
       <Code primary>variant</Code> prop.
     </Text>
 
     <CodePreview>
       {/* jsx-to-string:start */}
-      <Grid gridColumns="repeat(4, min-content)">
+      <Grid gridColumns="repeat(5, min-content)">
         <Badge variant="secondary" label="secondary" />
         <Badge variant="success" label="success" />
         <Badge variant="warning" label="warning" />
         <Badge variant="danger" label="danger" />
+        <Badge variant="primary" label="primary" />
       </Grid>
       {/* jsx-to-string:end */}
     </CodePreview>

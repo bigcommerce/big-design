@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.29.1...@bigcommerce/docs@0.29.2) (2021-04-14)
+
+
+### Bug Fixes
+
+* **docs:** dropdown doc fix ([#517](https://github.com/bigcommerce/big-design/issues/517)) ([0bf2a97](https://github.com/bigcommerce/big-design/commit/0bf2a97586f671959126cd79f23a14c2e3b6e4e0))
+
+
+### Features
+
+* **component:** add primary variant to badge ([#518](https://github.com/bigcommerce/big-design/issues/518)) ([e1bacf3](https://github.com/bigcommerce/big-design/commit/e1bacf3e05e08675f09a42220ce69bc49bdf12e9))
+
+
+
+
+
 ## [0.29.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.29.0...@bigcommerce/docs@0.29.1) (2021-03-29)
 
 

@@ -42,6 +42,27 @@ exports[`render default Badge 1`] = `
 </span>
 `;
 
+exports[`render primary Badge 1`] = `
+.c0 {
+  color: #FFFFFF;
+  border-radius: 0.25rem;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0 0.5rem;
+  background-color: #3C64F4;
+}
+
+<span
+  class="c0"
+>
+  Badge
+</span>
+`;
+
 exports[`render secondary Badge 1`] = `
 .c0 {
   color: #FFFFFF;
