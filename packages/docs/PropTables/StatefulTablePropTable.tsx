@@ -79,6 +79,15 @@ const statefulTableProps: Prop[] = [
     types: '(items: any[]) => void',
     description: 'Callback called with updated items list once drag and drop action has been completed.',
   },
+  {
+    name: 'filters',
+    types: <NextLink href="#stateful-table-filters-prop-table">Filters</NextLink>,
+    description: (
+      <>
+        See <NextLink href="#stateful-table-filters-prop-table">below</NextLink> for usage.
+      </>
+    ),
+  },
 ];
 
 const tableColumnsProps: Prop[] = [
@@ -147,10 +156,35 @@ const tableColumnsProps: Prop[] = [
   },
 ];
 
+const filterProps: Prop[] = [
+  {
+    description: (
+      <>
+        An array of pill tab items to render in the table. See{' '}
+        <NextLink href="/PillTabs/PillTabPage" as="/pill-tabs">
+          Pill Tabs
+        </NextLink>{' '}
+        for usage.
+      </>
+    ),
+    name: 'pillTabs',
+    types: 'PillTabItem[]',
+  },
+  {
+    name: 'filter',
+    types: '(itemId: string, items: Item[]) => Item[]',
+    description: 'A function that takes the current items and filters them according to the desired functionality.',
+  },
+];
+
 export const StatefulTablePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="StatefulTable" propList={statefulTableProps} {...props} />
 );
 
 export const StatefulTableColumnsPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="StatefulTable[Columns]" propList={tableColumnsProps} {...props} />
+);
+
+export const StatefulTableFiltersPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable title="StatefulTable[Filters]" propList={filterProps} {...props} />
 );

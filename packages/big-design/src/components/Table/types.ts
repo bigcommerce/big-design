@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { PaginationProps } from '../Pagination';
+import { PillTabsProps } from '../PillTabs';
 
 import { TableColumnDisplayProps } from './mixins';
 
@@ -45,6 +46,7 @@ export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElemen
   itemName?: string;
   items: T[];
   keyField?: string;
+  filters?: PillTabsProps;
   onRowDrop?(from: number, to: number): void;
   pagination?: TablePaginationProps;
   selectable?: TableSelectable<T>;

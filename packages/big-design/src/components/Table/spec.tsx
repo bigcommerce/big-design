@@ -3,6 +3,8 @@ import 'jest-styled-components';
 
 import { fireEvent, render, screen, waitForElement } from '@test/utils';
 
+import { PillTabsProps } from '../PillTabs';
+
 import { Table, TableFigure } from './Table';
 
 interface SimpleTableOptions {
@@ -15,6 +17,7 @@ interface SimpleTableOptions {
   id?: string;
   itemName?: string;
   style?: CSSProperties;
+  pillTabs?: PillTabsProps;
 }
 
 const getSimpleTable = ({
@@ -26,6 +29,7 @@ const getSimpleTable = ({
   id,
   itemName,
   items,
+  pillTabs,
   style,
 }: SimpleTableOptions = {}) => (
   <Table
@@ -36,6 +40,7 @@ const getSimpleTable = ({
     itemName={itemName}
     emptyComponent={emptyComponent}
     style={style}
+    filters={pillTabs}
     columns={
       columns || [
         { header: 'Sku', render: ({ sku }) => sku },
@@ -512,4 +517,53 @@ describe('draggable', () => {
 
     expect(onRowDrop).toHaveBeenCalledWith(0, 1);
   });
+});
+
+test('it renders pill tabs with the pillTabs prop', () => {
+  const items = [
+    {
+      title: 'In Stock',
+      id: 'in_stock',
+    },
+    {
+      title: 'Low Stock',
+      id: 'low_stock',
+    },
+  ];
+  const pillTabs: PillTabsProps = {
+    onPillClick: jest.fn(),
+    activePills: [],
+    items,
+  };
+  const { getByText } = render(getSimpleTable({ pillTabs }));
+  const inStock = getByText('In Stock');
+  const lowStock = getByText('Low Stock');
+
+  expect(inStock).toBeInTheDocument();
+  expect(lowStock).toBeInTheDocument();
+});
+
+test('it executes the given callback', () => {
+  const onPillClick = jest.fn();
+  const items = [
+    {
+      title: 'In Stock',
+      id: 'in_stock',
+    },
+    {
+      title: 'Low Stock',
+      id: 'low_stock',
+    },
+  ];
+  const pillTabs: PillTabsProps = {
+    onPillClick,
+    activePills: [],
+    items,
+  };
+  const { getByText } = render(getSimpleTable({ pillTabs }));
+  const inStockBtn = getByText('In Stock');
+
+  fireEvent.click(inStockBtn);
+
+  expect(onPillClick).toHaveBeenCalledWith('in_stock');
 });

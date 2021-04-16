@@ -49,6 +49,7 @@ module.exports = {
     '/padding': { page: '/Padding/PaddingPage' },
     '/pagination': { page: '/Pagination/PaginationPage' },
     '/panel': { page: '/Panel/PanelPage' },
+    '/pill-tabs': { page: '/PillTabs/PillTabsPage' },
     '/popover': { page: '/Popover/PopoverPage' },
     '/progress-bar': { page: '/Progress/ProgressBarPage' },
     '/progress-circle': { page: '/Progress/ProgressCirclePage' },

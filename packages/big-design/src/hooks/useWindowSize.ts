@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-
 import { isClient } from '../utils';
 
 import { useRafState } from './useRafState';
+import { useWindowResizeListener } from './useWindowResizeListener';
 
 interface State {
   height: number;
@@ -14,21 +13,14 @@ export const useWindowSize = () => {
     height: isClient ? window.innerHeight : -1,
     width: isClient ? window.innerWidth : -1,
   });
+  const resizeHandler = () => {
+    setState({
+      height: window.innerHeight,
+      width: window.innerWidth,
+    });
+  };
 
-  useEffect(() => {
-    const resizeHandler = () => {
-      setState({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-    };
-
-    window.addEventListener('resize', resizeHandler);
-
-    return () => {
-      window.removeEventListener('resize', resizeHandler);
-    };
-  }, [setState]);
+  useWindowResizeListener(resizeHandler);
 
   if (!isClient) {
     return state;

@@ -1,12 +1,15 @@
 import { Reducer } from 'react';
 
+import { PillTabsProps } from '../PillTabs';
 import { TableSortDirection } from '../Table';
 
-import { StatefulTableColumn, StatefulTableSortFn } from './StatefulTable';
+import { StatefulTableColumn, StatefulTablePillTabFilter, StatefulTableSortFn } from './StatefulTable';
 
 interface State<T> {
+  activePills: string[];
   currentItems: T[];
   columns: Array<StatefulTableColumn<T> & { isSortable: boolean }>;
+  filteredItems: T[];
   isPaginationEnabled: boolean;
   items: T[];
   pagination: {
@@ -15,6 +18,7 @@ interface State<T> {
     itemsPerPageOptions: number[];
     totalItems: number;
   };
+  pillTabsProps?: PillTabsProps;
   selectedItems: T[];
   sortable: {
     direction: TableSortDirection;
@@ -35,8 +39,10 @@ export const createReducerInit = <T>() => ({ columns, defaultSelected, items, pa
   const currentItems = getItems(items, pagination, { currentPage, itemsPerPage });
 
   return {
+    activePills: [],
     currentItems,
     columns: augmentColumns(columns),
+    filteredItems: [],
     isPaginationEnabled: pagination,
     items,
     pagination: {
@@ -58,7 +64,9 @@ export type Action<T> =
   | { type: 'ITEMS_PER_PAGE_CHANGE'; itemsPerPage: number }
   | { type: 'PAGE_CHANGE'; page: number }
   | { type: 'SELECTED_ITEMS'; selectedItems: T[] }
-  | { type: 'SORT'; column: StatefulTableColumn<T>; direction: TableSortDirection };
+  | { type: 'SORT'; column: StatefulTableColumn<T>; direction: TableSortDirection }
+  | { type: 'SET_PILL_TABS_PROPS'; pillTabsProps: PillTabsProps }
+  | { type: 'TOGGLE_PILL'; pillId: string; filter: StatefulTablePillTabFilter<T>['filter'] };
 
 export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, action) => {
   switch (action.type) {
@@ -101,8 +109,10 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
     }
 
     case 'PAGE_CHANGE': {
+      const filtersActive = state.activePills.length > 0;
+      const items = filtersActive ? state.filteredItems : state.items;
       const currentPage = action.page;
-      const currentItems = getItems(state.items, true, {
+      const currentItems = getItems(items, true, {
         currentPage,
         itemsPerPage: state.pagination.itemsPerPage,
       });
@@ -140,6 +150,10 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
       return { ...state, selectedItems: action.selectedItems };
     }
 
+    case 'SET_PILL_TABS_PROPS': {
+      return { ...state, pillTabsProps: action.pillTabsProps };
+    }
+
     case 'SORT': {
       const { hash, sortFn, sortKey } = action.column;
       const direction = action.direction;
@@ -171,6 +185,48 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
           direction,
           columnHash: hash,
         },
+      };
+    }
+
+    case 'TOGGLE_PILL': {
+      if (!state.pillTabsProps) {
+        return state;
+      }
+
+      const pillTabs = state.pillTabsProps.items;
+      const toggledPill = pillTabs.find((pill) => pill.id === action.pillId);
+
+      if (!toggledPill) {
+        return state;
+      }
+
+      const isToggledPillActive = !state.activePills.includes(action.pillId);
+      const activePills = isToggledPillActive
+        ? [...state.activePills, toggledPill.id]
+        : state.activePills.filter((activeFilter) => activeFilter !== toggledPill.id);
+      const currentItems =
+        activePills.length > 0
+          ? activePills
+              .map((pillId) => {
+                return action.filter(pillId, state.items);
+              })
+              .reduce((results, filteredItems) => {
+                const dedupedItems = filteredItems.filter((item) => !results.includes(item));
+
+                return [...results, ...dedupedItems];
+              }, [])
+          : state.items;
+
+      return {
+        ...state,
+        activePills,
+        pagination: {
+          ...state.pagination,
+          currentPage: 1,
+          totalItems: currentItems.length,
+        },
+        currentItems,
+        filteredItems: currentItems,
       };
     }
 

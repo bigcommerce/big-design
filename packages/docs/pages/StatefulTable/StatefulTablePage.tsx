@@ -2,7 +2,7 @@ import { H0, H1, H2, StatefulTable, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { CodePreview, NextLink } from '../../components';
-import { StatefulTableColumnsPropTable, StatefulTablePropTable } from '../../PropTables';
+import { StatefulTableColumnsPropTable, StatefulTableFiltersPropTable, StatefulTablePropTable } from '../../PropTables';
 
 const items = [
   { sku: '3137737c', name: 'Rice - Wild', stock: 29 },
@@ -143,6 +143,7 @@ const StatefulTablePage = () => {
       <H1>API</H1>
       <StatefulTablePropTable />
       <StatefulTableColumnsPropTable id="stateful-table-columns-prop-table" />
+      <StatefulTableFiltersPropTable id="stateful-table-filters-prop-table" />
 
       <H1>Examples</H1>
       <H2>Usage with pagination, selection, and sorting.</H2>
@@ -182,6 +183,43 @@ const StatefulTablePage = () => {
             { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
           ]}
           onRowDrop={() => null}
+        />
+        {/* jsx-to-string:end */}
+      </CodePreview>
+
+      <H1>Usage with filters</H1>
+
+      <CodePreview>
+        {/* jsx-to-string:start */}
+        <StatefulTable
+          columns={[
+            { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+            { header: 'Name', hash: 'name', render: ({ name }) => name },
+            { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+          ]}
+          items={[
+            { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+            { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+            { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 0 },
+            { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+            { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+          ]}
+          filters={{
+            filter: (pillId, items) =>
+              pillId === 'low_stock'
+                ? items.filter((item) => item.stock !== 0 && item.stock < 10)
+                : items.filter((item) => item.stock === 0),
+            pillTabs: [
+              {
+                id: 'low_stock',
+                title: 'Low Stock',
+              },
+              {
+                id: 'out_of_stock',
+                title: 'Out of Stock',
+              },
+            ],
+          }}
         />
         {/* jsx-to-string:end */}
       </CodePreview>

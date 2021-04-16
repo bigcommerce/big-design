@@ -4,4 +4,5 @@ export * from './useEventCallback';
 export * from './useIsomorphicLayoutEffect';
 export * from './useRafState';
 export * from './useUniqueId';
+export * from './useWindowResizeListener';
 export * from './useWindowSize';
