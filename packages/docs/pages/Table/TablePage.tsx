@@ -5,6 +5,7 @@ import { Code, CodePreview } from '../../components';
 import {
   TableColumnsPropTable,
   TablePropTable,
+  TableSearchPropTable,
   TableSelectablePropTable,
   TableSortablePropTable,
 } from '../../PropTables';
@@ -76,6 +77,7 @@ const TablePage = () => {
       <TableColumnsPropTable id="table-columns-prop-table" />
       <TableSelectablePropTable id="table-selectable-prop-table" />
       <TableSortablePropTable id="table-sortable-prop-table" />
+      <TableSearchPropTable id="table-search-prop-table" />
 
       <H1>Usage with selectable</H1>
 
@@ -310,6 +312,38 @@ const TablePage = () => {
               ]}
               items={items}
               filters={pillTabs}
+            />
+          );
+        }}
+        {/* jsx-to-string:end */}
+      </CodePreview>
+
+      <H1>Usage with search</H1>
+
+      <CodePreview scope={{ data }}>
+        {/* jsx-to-string:start */}
+        {function Example() {
+          const [items, setItems] = useState(data);
+          const [searchValue, setSearchValue] = useState('');
+          const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value);
+          const onSearchSubmit = () => {
+            const updatedItems = items.filter((item) => item.name.includes(searchValue));
+            setItems(updatedItems);
+          };
+
+          return (
+            <Table
+              columns={[
+                { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
+                { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
+                { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
+              ]}
+              items={items}
+              search={{
+                value: searchValue,
+                onSearchChange,
+                onSearchSubmit,
+              }}
             />
           );
         }}

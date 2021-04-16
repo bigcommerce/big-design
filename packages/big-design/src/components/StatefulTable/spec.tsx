@@ -3,7 +3,7 @@ import 'jest-styled-components';
 
 import { fireEvent, render, waitForElement } from '@test/utils';
 
-import { StatefulTable, StatefulTablePillTabFilter, StatefulTableProps } from './StatefulTable';
+import { StatefulTable, StatefulTablePillTabFilter, StatefulTableProps, StatefulTableSearch } from './StatefulTable';
 
 interface TestItem {
   name: string;
@@ -445,4 +445,64 @@ test('can undo stacked filter actions', async () => {
 
   rows = container.querySelectorAll('tbody > tr');
   expect(rows.length).toBe(104);
+});
+
+describe('test search in the StatefulTable', () => {
+  const filterName: StatefulTableSearch<TestItem>['filter'] = (value, items) =>
+    items.filter((item) => item.name.includes(value));
+  const filterStock: StatefulTableSearch<TestItem>['filter'] = (value, items) =>
+    items.filter((item) => item.stock < +value);
+
+  test('renders StatefulTable with the search prop', () => {
+    const search = { filter: filterName };
+    const { getByText } = render(getSimpleTable({ search }));
+    const customSearch = getByText('Search');
+
+    expect(customSearch).toBeInTheDocument();
+    expect(customSearch).toBeVisible();
+  });
+
+  test('it executes the filter function on click Search', async () => {
+    const search = { filter: filterName };
+    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search }));
+    const input = getByPlaceholderText('Search');
+
+    fireEvent.change(input, { target: { value: 'Product A - 1' } });
+    await waitForElement(() => fireEvent.click(getByText('Search')));
+
+    const rows = container.querySelectorAll('tbody > tr');
+
+    expect(rows.length).toBe(1);
+  });
+
+  test('can paginate on filtered rows', async () => {
+    const search = { filter: filterStock };
+    const { getByPlaceholderText, getByText } = render(getSimpleTable({ search, pagination: true }));
+    const input = getByPlaceholderText('Search');
+
+    fireEvent.change(input, { target: { value: '40' } });
+    await waitForElement(() => fireEvent.click(getByText('Search')));
+
+    expect(getByText('1 - 25 of 39')).toBeInTheDocument();
+  });
+
+  test('can undo filter actions', async () => {
+    const search = { filter: filterName };
+    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search }));
+    const input = getByPlaceholderText('Search');
+
+    fireEvent.change(input, { target: { value: 'Product A - 1' } });
+    fireEvent.click(getByText('Search'));
+
+    let rows = container.querySelectorAll('tbody > tr');
+
+    expect(rows.length).toBe(1);
+
+    fireEvent.change(input, { target: { value: '' } });
+    await waitForElement(() => fireEvent.click(getByText('Search')));
+
+    rows = container.querySelectorAll('tbody > tr');
+
+    expect(rows.length).toBe(104);
+  });
 });

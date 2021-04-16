@@ -54,6 +54,15 @@ const tableProps: Prop[] = [
     description: 'See Pill Tabs component for details.',
   },
   {
+    name: 'search',
+    types: <NextLink href="#table-search-prop-table">Search</NextLink>,
+    description: (
+      <>
+        See <NextLink href="#table-search-prop-table">below</NextLink> for usage.
+      </>
+    ),
+  },
+  {
     name: 'selectable',
     types: <NextLink href="#table-selectable-prop-table">Selectable</NextLink>,
     description: (
@@ -192,6 +201,27 @@ const tableSortableProps: Prop[] = [
   },
 ];
 
+const tableSearchProps: Prop[] = [
+  {
+    name: 'value',
+    types: 'string',
+    description: 'Value of input',
+    required: true,
+  },
+  {
+    name: 'onSearchChange',
+    types: '(event: React.ChangeEvent<HTMLInputElement>) => void',
+    description: 'onChange native attribute for input',
+    required: true,
+  },
+  {
+    name: 'onSearchSubmit',
+    types: '(event: FormEvent<HTMLFormElement>) => void',
+    description: 'onSubmit native attribute for form',
+    required: true,
+  },
+];
+
 export const TablePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Table" propList={tableProps} {...props} />
 );
@@ -206,4 +236,8 @@ export const TableSelectablePropTable: React.FC<PropTableWrapper> = (props) => (
 
 export const TableSortablePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Table[Sortable]" propList={tableSortableProps} {...props} />
+);
+
+export const TableSearchPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable title="Table[Search]" propList={tableSearchProps} {...props} />
 );

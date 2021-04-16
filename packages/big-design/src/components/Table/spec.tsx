@@ -6,6 +6,7 @@ import { fireEvent, render, screen, waitForElement } from '@test/utils';
 import { PillTabsProps } from '../PillTabs';
 
 import { Table, TableFigure } from './Table';
+import { TableSearch } from './types';
 
 interface SimpleTableOptions {
   className?: string;
@@ -18,6 +19,7 @@ interface SimpleTableOptions {
   itemName?: string;
   style?: CSSProperties;
   pillTabs?: PillTabsProps;
+  search?: TableSearch;
 }
 
 const getSimpleTable = ({
@@ -31,6 +33,7 @@ const getSimpleTable = ({
   items,
   pillTabs,
   style,
+  search,
 }: SimpleTableOptions = {}) => (
   <Table
     className={className}
@@ -41,6 +44,7 @@ const getSimpleTable = ({
     emptyComponent={emptyComponent}
     style={style}
     filters={pillTabs}
+    search={search}
     columns={
       columns || [
         { header: 'Sku', render: ({ sku }) => sku },
@@ -566,4 +570,54 @@ test('it executes the given callback', () => {
   fireEvent.click(inStockBtn);
 
   expect(onPillClick).toHaveBeenCalledWith('in_stock');
+});
+
+describe('test search in the Table', () => {
+  test('renders Table with the search prop', () => {
+    const search = {
+      value: 'Product',
+      onSearchChange: jest.fn(),
+      onSearchSubmit: jest.fn(),
+    };
+
+    const { getByText, getByPlaceholderText } = render(getSimpleTable({ search }));
+    const input = getByPlaceholderText('Search') as HTMLInputElement;
+
+    expect(getByText('Search')).toBeInTheDocument();
+    expect(getByPlaceholderText('Search')).toBeInTheDocument();
+    expect(input.value).toBe(search.value);
+  });
+
+  test('call onSearchChange when user change value in the input', () => {
+    const onSearchChange = jest.fn();
+
+    const search = {
+      onSearchChange,
+      value: '',
+      onSearchSubmit: jest.fn(),
+    };
+
+    const { getByPlaceholderText } = render(getSimpleTable({ search }));
+    const input = getByPlaceholderText('Search') as HTMLInputElement;
+
+    fireEvent.change(input, { target: { value: 'Product' } });
+
+    expect(onSearchChange).toHaveBeenCalled();
+  });
+
+  test('call onSearchSubmit when user click to the Search button', () => {
+    const onSearchSubmit = jest.fn();
+
+    const search = {
+      onSearchSubmit,
+      value: '',
+      onSearchChange: jest.fn(),
+    };
+
+    const { getByText } = render(getSimpleTable({ search }));
+
+    fireEvent.click(getByText('Search'));
+
+    expect(onSearchSubmit).toHaveBeenCalled();
+  });
 });

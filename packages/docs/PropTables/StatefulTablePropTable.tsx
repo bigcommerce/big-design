@@ -37,6 +37,15 @@ const statefulTableProps: Prop[] = [
     description: 'Defines if table should be paginated.',
   },
   {
+    name: 'search',
+    types: <NextLink href="#stateful-table-search-prop-table">Search</NextLink>,
+    description: (
+      <>
+        See <NextLink href="#stateful-table-search-prop-table">below</NextLink> for usage.
+      </>
+    ),
+  },
+  {
     name: 'selectable',
     types: 'boolean',
     defaultValue: 'false',
@@ -170,10 +179,14 @@ const filterProps: Prop[] = [
     name: 'pillTabs',
     types: 'PillTabItem[]',
   },
+];
+
+const tableSearchProps: Prop[] = [
   {
     name: 'filter',
     types: '(itemId: string, items: Item[]) => Item[]',
     description: 'A function that takes the current items and filters them according to the desired functionality.',
+    required: true,
   },
 ];
 
@@ -187,4 +200,8 @@ export const StatefulTableColumnsPropTable: React.FC<PropTableWrapper> = (props)
 
 export const StatefulTableFiltersPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="StatefulTable[Filters]" propList={filterProps} {...props} />
+);
+
+export const StatefulTableSearchPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable title="StatefulTable[Search]" propList={tableSearchProps} {...props} />
 );

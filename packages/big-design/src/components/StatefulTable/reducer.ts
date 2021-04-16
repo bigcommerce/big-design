@@ -3,7 +3,12 @@ import { Reducer } from 'react';
 import { PillTabsProps } from '../PillTabs';
 import { TableSortDirection } from '../Table';
 
-import { StatefulTableColumn, StatefulTablePillTabFilter, StatefulTableSortFn } from './StatefulTable';
+import {
+  StatefulTableColumn,
+  StatefulTablePillTabFilter,
+  StatefulTableSearch,
+  StatefulTableSortFn,
+} from './StatefulTable';
 
 interface State<T> {
   activePills: string[];
@@ -19,6 +24,8 @@ interface State<T> {
     totalItems: number;
   };
   pillTabsProps?: PillTabsProps;
+  searchValue?: string;
+  searchProps?: StatefulTableSearch<T>;
   selectedItems: T[];
   sortable: {
     direction: TableSortDirection;
@@ -51,6 +58,7 @@ export const createReducerInit = <T>() => ({ columns, defaultSelected, items, pa
       itemsPerPageOptions: [25, 50, 100, 250],
       totalItems: items.length,
     },
+    searchValue: '',
     selectedItems: defaultSelected,
     sortable: {
       direction: 'ASC',
@@ -66,7 +74,10 @@ export type Action<T> =
   | { type: 'SELECTED_ITEMS'; selectedItems: T[] }
   | { type: 'SORT'; column: StatefulTableColumn<T>; direction: TableSortDirection }
   | { type: 'SET_PILL_TABS_PROPS'; pillTabsProps: PillTabsProps }
-  | { type: 'TOGGLE_PILL'; pillId: string; filter: StatefulTablePillTabFilter<T>['filter'] };
+  | { type: 'TOGGLE_PILL'; pillId: string; filter: StatefulTablePillTabFilter<T>['filter'] }
+  | { type: 'SEARCH_VALUE_CHANGE'; value: string }
+  | { type: 'SEARCH_SUBMIT'; filter: StatefulTableSearch<T>['filter'] }
+  | { type: 'SET_SEARCH_PROPS'; searchProps: StatefulTableSearch<T> };
 
 export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, action) => {
   switch (action.type) {
@@ -109,7 +120,7 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
     }
 
     case 'PAGE_CHANGE': {
-      const filtersActive = state.activePills.length > 0;
+      const filtersActive = state.activePills.length > 0 || !!state.searchValue;
       const items = filtersActive ? state.filteredItems : state.items;
       const currentPage = action.page;
       const currentItems = getItems(items, true, {
@@ -144,6 +155,29 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
           itemsPerPage,
         },
       };
+    }
+
+    case 'SEARCH_VALUE_CHANGE': {
+      return { ...state, searchValue: action.value };
+    }
+
+    case 'SEARCH_SUBMIT': {
+      const currentItems = state.searchValue ? action.filter(state.searchValue, state.items) : state.items;
+
+      return {
+        ...state,
+        pagination: {
+          ...state.pagination,
+          currentPage: 1,
+          totalItems: currentItems.length,
+        },
+        currentItems,
+        filteredItems: currentItems,
+      };
+    }
+
+    case 'SET_SEARCH_PROPS': {
+      return { ...state, searchProps: action.searchProps };
     }
 
     case 'SELECTED_ITEMS': {
