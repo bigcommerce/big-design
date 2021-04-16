@@ -2,25 +2,25 @@ import React, { createContext, ReactNode, useCallback, useMemo } from 'react';
 
 import { typedMemo } from '../../../../utils';
 import { useStore } from '../../hooks';
-import { Cell } from '../../types';
+import { Cell, WorksheetItem } from '../../types';
 
-export interface UpdateItemsContextType {
-  updateItems(items: Cell<unknown>[], newValue: Array<unknown>): void;
+export interface UpdateItemsContextType<T> {
+  updateItems(items: Cell<T>[], newValue: Array<unknown>): void;
 }
 
-interface UpdateItemsProviderProps<T> {
+interface UpdateItemsProviderProps<Item> {
   children: ReactNode;
-  items: T[];
+  items: Item[];
 }
 
-export const UpdateItemsContext = createContext<UpdateItemsContextType | null>(null);
+export const UpdateItemsContext = createContext<UpdateItemsContextType<any> | null>(null);
 
 export const UpdateItemsProvider = typedMemo(
-  <T extends Record<string, unknown>>({ children, items }: UpdateItemsProviderProps<T>) => {
+  <T extends WorksheetItem>({ children, items }: UpdateItemsProviderProps<T>) => {
     const setRows = useStore((state) => state.setRows);
     const addEditedCells = useStore((state) => state.addEditedCells);
 
-    const updateItems: UpdateItemsContextType['updateItems'] = useCallback(
+    const updateItems: UpdateItemsContextType<T>['updateItems'] = useCallback(
       (cells, newValues) => {
         setRows(
           cells.reduce((accum, cell, index) => {
@@ -40,13 +40,13 @@ export const UpdateItemsProvider = typedMemo(
         );
 
         addEditedCells(
-          cells.reduce<Cell<unknown>[]>((accum, cell, index) => {
+          cells.reduce<Array<Cell<any>>>((accum, cell, index) => {
             // Don't add since value is the same
             if (cell.value === newValues[index]) {
               return accum;
             }
 
-            return accum.concat({ ...cell, value: newValues[index] });
+            return [...accum, { ...cell, value: newValues[index] }];
           }, []),
         );
       },

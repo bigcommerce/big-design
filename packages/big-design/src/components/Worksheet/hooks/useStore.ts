@@ -4,20 +4,20 @@ import { Cell } from '../types';
 import { deleteCells, mergeCells } from '../utils';
 
 interface BaseState<Item> extends State {
-  editedCells: Cell<Item[keyof Item]>[];
-  invalidCells: Cell<Item[keyof Item]>[];
+  editedCells: Array<Cell<Item>>;
+  invalidCells: Array<Cell<Item>>;
   rows: Item[];
-  selectedCells: Cell<Item[keyof Item]>[];
+  selectedCells: Array<Cell<Item>>;
   selectedRows: number[];
-  addEditedCells: (cells: Cell<Item[keyof Item]>[]) => void;
-  addInvalidCells: (cells: Cell<Item[keyof Item]>[]) => void;
-  removeInvalidCells: (cells: Cell<Item[keyof Item]>[]) => void;
+  addEditedCells: (cells: Array<Cell<Item>>) => void;
+  addInvalidCells: (cells: Array<Cell<Item>>) => void;
+  removeInvalidCells: (cells: Array<Cell<Item>>) => void;
   setRows: (rows: Item[]) => void;
-  setSelectedCells: (cells: Cell<Item[keyof Item]>[]) => void;
+  setSelectedCells: (cells: Array<Cell<Item>>) => void;
   setSelectedRows: (rows: number[]) => void;
 }
 
-export const useStore = create<BaseState<Record<string, any>>>((set) => ({
+export const useStore = create<BaseState<any>>((set) => ({
   editedCells: [],
   invalidCells: [],
   rows: [],

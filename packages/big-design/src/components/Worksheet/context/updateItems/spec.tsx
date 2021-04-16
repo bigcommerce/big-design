@@ -6,7 +6,15 @@ import { useStore, useUpdateItems } from '../../hooks';
 
 import { UpdateItemsProvider } from './updateItems';
 
-const items = [
+interface Product {
+  productName: string;
+  categories: string;
+  otherField: string;
+  otherField2: string;
+  otherField3: number;
+}
+
+const items: Product[] = [
   {
     productName: 'Shoes Name One',
     categories: 'Shoes',
@@ -14,7 +22,6 @@ const items = [
     otherField2: 'Field',
     otherField3: 1,
   },
-
   {
     productName: 'Shoes Name Two',
     categories: 'Shoes',

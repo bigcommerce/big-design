@@ -7,14 +7,14 @@ import { useStore } from './hooks';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, Table } from './styled';
-import { Worksheet as WorksheetProps } from './types';
+import { WorksheetItem, Worksheet as WorksheetProps } from './types';
 
-const InternalWorksheet = <T extends Record<string, unknown>>({
+const InternalWorksheet = <T extends WorksheetItem>({
   columns,
   items,
   onChange,
   onErrors,
-}: WorksheetProps<T>) => {
+}: WorksheetProps<T>): React.ReactElement<WorksheetProps<T>> => {
   const rows = useStore(useMemo(() => (state) => state.rows, []));
   const setRows = useStore((state) => state.setRows);
 

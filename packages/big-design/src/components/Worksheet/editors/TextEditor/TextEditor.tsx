@@ -1,19 +1,20 @@
-import React, { memo, useState } from 'react';
+import React, { useState } from 'react';
 
+import { typedMemo } from '../../../../utils';
 import { EditableCellKeyDown } from '../../hooks';
-import { Cell } from '../../types';
+import { Cell, WorksheetItem } from '../../types';
 
 import { StyledInput } from './styled';
 
-export interface TextEditorProps {
-  cell: Cell<string | number>;
+export interface TextEditorProps<Item> {
+  cell: Cell<Item>;
   isEdited: boolean;
   onBlur(): void;
-  onKeyDown: EditableCellKeyDown;
+  onKeyDown: EditableCellKeyDown<string | number>;
 }
 
-export const TextEditor = memo<TextEditorProps>(({ cell, isEdited, onBlur, onKeyDown }) => {
-  const [value, setValue] = useState(cell.value);
+const InternalTextEditor = <T extends WorksheetItem>({ cell, isEdited, onBlur, onKeyDown }: TextEditorProps<T>) => {
+  const [value, setValue] = useState(`${cell.value}`);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
@@ -24,7 +25,7 @@ export const TextEditor = memo<TextEditorProps>(({ cell, isEdited, onBlur, onKey
     onKeyDown(event, formatValue(value));
   };
 
-  const formatValue = (value: string | number) => (cell.type === 'number' ? Number(value) : value);
+  const formatValue = (value: string) => (cell.type === 'number' ? Number(value) : value);
 
   return (
     <StyledInput
@@ -36,4 +37,6 @@ export const TextEditor = memo<TextEditorProps>(({ cell, isEdited, onBlur, onKey
       value={value}
     />
   );
-});
+};
+
+export const TextEditor = typedMemo(InternalTextEditor);

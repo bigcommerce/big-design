@@ -1,21 +1,25 @@
-export interface Worksheet<Item> {
-  columns: WorksheetColumn[];
+export interface Worksheet<Item extends WorksheetItem> {
+  columns: WorksheetColumn<Item>[];
   items: Item[];
-  onChange(items: Array<Cell<Item[keyof Item]>>): void;
-  onErrors?(items: Array<Cell<Item[keyof Item]>>): void;
+  onChange(items: Array<Cell<Item>>): void;
+  onErrors?(items: Array<Cell<Item>>): void;
 }
 
-export interface WorksheetColumn {
-  hash: string;
+export interface WorksheetColumn<Item> {
+  hash: keyof Item;
   header: string;
   type?: 'text' | 'number';
-  validation?(value: string | number): boolean; // Will only return string or number as value
+  validation?(value: Item[keyof Item]): boolean;
 }
 
-export interface Cell<Value> {
+export interface Cell<Item> {
   columnIndex: number;
-  hash: string;
+  hash: keyof Item;
   rowIndex: number;
-  value: Value;
-  type: Exclude<WorksheetColumn['type'], undefined>;
+  value: Item[keyof Item];
+  type: 'text' | 'number';
+}
+
+export interface WorksheetItem {
+  [key: string]: any;
 }

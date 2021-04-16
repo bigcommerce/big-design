@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import { TextEditor } from '../editors';
-import { Cell } from '../types';
+import { Cell, WorksheetItem } from '../types';
 
 import { useUpdateItems } from './useUpdateItems';
 
-export type EditableCellKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: string | number) => void;
+export type EditableCellKeyDown<Value> = (event: React.KeyboardEvent<HTMLInputElement>, newValue: Value) => void;
 
-export const useEditableCell = (cell: Cell<string | number>) => {
+export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
   const [isEditing, setIsEditing] = useState(false);
   const { updateItems } = useUpdateItems();
 
@@ -19,7 +19,7 @@ export const useEditableCell = (cell: Cell<string | number>) => {
     setIsEditing(false);
   }, []);
 
-  const handleKeyDown: EditableCellKeyDown = useCallback(
+  const handleKeyDown: EditableCellKeyDown<string | number> = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>, newValue) => {
       const key = event.key;
 
