@@ -92,7 +92,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
         data-testid="pilltabs-dropdown-toggle"
         isVisible={isMenuVisible}
         ref={dropdownRef}
-        role="dropdown"
+        role="listitem"
       >
         <Dropdown items={dropdownItems} toggle={<Button iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />} />
       </StyledFlexItem>
