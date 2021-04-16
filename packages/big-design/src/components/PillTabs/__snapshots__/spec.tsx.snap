@@ -319,6 +319,7 @@ exports[`dropdown is not visible if items fit 1`] = `
       <div
         class="c1 c3 c6"
         data-testid="pilltabs-dropdown-toggle"
+        role="dropdown"
       >
         <div
           class="c1 c7"
@@ -696,6 +697,7 @@ exports[`it renders the given tabs 1`] = `
       <div
         class="c1 c3 c6"
         data-testid="pilltabs-dropdown-toggle"
+        role="dropdown"
       >
         <div
           class="c1 c7"
@@ -1105,6 +1107,7 @@ exports[`only the pills that fit are visible 1`] = `
       <div
         class="c1 c3 "
         data-testid="pilltabs-dropdown-toggle"
+        role="dropdown"
       >
         <div
           class="c1 c7"
@@ -1513,6 +1516,7 @@ exports[`only the pills that fit are visible 2 1`] = `
       <div
         class="c1 c3 "
         data-testid="pilltabs-dropdown-toggle"
+        role="dropdown"
       >
         <div
           class="c1 c7"
@@ -1920,6 +1924,7 @@ exports[`renders all the filters if they fit 1`] = `
       <div
         class="c1 c3 c6"
         data-testid="pilltabs-dropdown-toggle"
+        role="dropdown"
       >
         <div
           class="c1 c7"
@@ -2314,6 +2319,7 @@ exports[`renders dropdown if items do not fit 1`] = `
       <div
         class="c1 c3 "
         data-testid="pilltabs-dropdown-toggle"
+        role="dropdown"
       >
         <div
           class="c1 c7"
