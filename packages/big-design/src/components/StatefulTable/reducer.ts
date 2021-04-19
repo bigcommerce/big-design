@@ -74,10 +74,13 @@ export type Action<T> =
   | { type: 'SELECTED_ITEMS'; selectedItems: T[] }
   | { type: 'SORT'; column: StatefulTableColumn<T>; direction: TableSortDirection }
   | { type: 'SET_PILL_TABS_PROPS'; pillTabsProps: PillTabsProps }
-  | { type: 'TOGGLE_PILL'; pillId: string; filter: StatefulTablePillTabFilter<T>['filter'] }
   | { type: 'SEARCH_VALUE_CHANGE'; value: string }
-  | { type: 'SEARCH_SUBMIT'; filter: StatefulTableSearch<T>['filter'] }
-  | { type: 'SET_SEARCH_PROPS'; searchProps: StatefulTableSearch<T> };
+  | {
+      type: 'ON_FILTER_ITEMS';
+      filterSearch?: StatefulTableSearch<T>['filter'];
+      filterPills?: StatefulTablePillTabFilter<T>['filter'];
+      pillId?: string;
+    };
 
 export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, action) => {
   switch (action.type) {
@@ -161,25 +164,6 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
       return { ...state, searchValue: action.value };
     }
 
-    case 'SEARCH_SUBMIT': {
-      const currentItems = state.searchValue ? action.filter(state.searchValue, state.items) : state.items;
-
-      return {
-        ...state,
-        pagination: {
-          ...state.pagination,
-          currentPage: 1,
-          totalItems: currentItems.length,
-        },
-        currentItems,
-        filteredItems: currentItems,
-      };
-    }
-
-    case 'SET_SEARCH_PROPS': {
-      return { ...state, searchProps: action.searchProps };
-    }
-
     case 'SELECTED_ITEMS': {
       return { ...state, selectedItems: action.selectedItems };
     }
@@ -222,34 +206,42 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
       };
     }
 
-    case 'TOGGLE_PILL': {
-      if (!state.pillTabsProps) {
-        return state;
+    case 'ON_FILTER_ITEMS': {
+      const { filterPills, pillId, filterSearch } = action;
+      let currentItems = state.items;
+      let activePills = state.activePills;
+
+      if (filterPills && state.pillTabsProps) {
+        const pillTabs = state.pillTabsProps.items;
+
+        if (pillId) {
+          const toggledPill = pillTabs.find((pill) => pill.id === pillId);
+
+          if (!toggledPill) {
+            return state;
+          }
+
+          const isToggledPillActive = !state.activePills.includes(pillId);
+          activePills = isToggledPillActive
+            ? [...state.activePills, toggledPill.id]
+            : state.activePills.filter((activeFilter) => activeFilter !== toggledPill.id);
+        }
+
+        currentItems =
+          activePills.length > 0
+            ? activePills
+                .map((pillId) => filterPills(pillId, state.items))
+                .reduce((results, filteredItems) => {
+                  const dedupedItems = filteredItems.filter((item) => !results.includes(item));
+
+                  return [...results, ...dedupedItems];
+                }, [])
+            : state.items;
       }
 
-      const pillTabs = state.pillTabsProps.items;
-      const toggledPill = pillTabs.find((pill) => pill.id === action.pillId);
-
-      if (!toggledPill) {
-        return state;
+      if (filterSearch && state.searchValue) {
+        currentItems = filterSearch(state.searchValue, currentItems);
       }
-
-      const isToggledPillActive = !state.activePills.includes(action.pillId);
-      const activePills = isToggledPillActive
-        ? [...state.activePills, toggledPill.id]
-        : state.activePills.filter((activeFilter) => activeFilter !== toggledPill.id);
-      const currentItems =
-        activePills.length > 0
-          ? activePills
-              .map((pillId) => {
-                return action.filter(pillId, state.items);
-              })
-              .reduce((results, filteredItems) => {
-                const dedupedItems = filteredItems.filter((item) => !results.includes(item));
-
-                return [...results, ...dedupedItems];
-              }, [])
-          : state.items;
 
       return {
         ...state,

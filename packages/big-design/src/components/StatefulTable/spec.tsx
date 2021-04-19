@@ -475,6 +475,24 @@ describe('test search in the StatefulTable', () => {
     expect(rows.length).toBe(1);
   });
 
+  test('it executes the filter search and filter pills function on click Search', async () => {
+    const search = { filter: filterName };
+    const filters: StatefulTablePillTabFilter<TestItem> = {
+      pillTabs: [{ title: 'Stock 1', id: 'in_stock' }],
+      filter: (_itemId, items) => items.filter((item) => item.stock === 1),
+    };
+    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search, filters }));
+    const input = getByPlaceholderText('Search');
+
+    fireEvent.change(input, { target: { value: 'Product A' } });
+    await waitForElement(() => fireEvent.click(getByText('Search')));
+    fireEvent.click(getByText('Stock 1'));
+
+    const rows = container.querySelectorAll('tbody > tr');
+
+    expect(rows.length).toBe(1);
+  });
+
   test('can paginate on filtered rows', async () => {
     const search = { filter: filterStock };
     const { getByPlaceholderText, getByText } = render(getSimpleTable({ search, pagination: true }));

@@ -325,11 +325,32 @@ const TablePage = () => {
         {function Example() {
           const [items, setItems] = useState(data);
           const [searchValue, setSearchValue] = useState('');
+          // const [activePills, setActivePills] = useState<string[]>([]);
           const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value);
+
+          // const updateItems = () => {
+          //
+          // };
+
           const onSearchSubmit = () => {
-            const updatedItems = items.filter((item) => item.name.includes(searchValue));
+            const updatedItems = searchValue ? items.filter((item) => item.name.includes(searchValue)) : data;
             setItems(updatedItems);
           };
+
+          // const pillTabs: PillTabsProps = {
+          //   activePills,
+          //   onPillClick: (id) => {
+          //     const isFilterActive = !activePills.includes(id);
+          //     const newItems = isFilterActive ? items.filter((item) => item.stock < 10) : data;
+          //     const updatedPills = isFilterActive
+          //       ? [...activePills, id]
+          //       : activePills.filter((activePillId) => activePillId !== id);
+          //
+          //     setItems(newItems);
+          //     setActivePills(updatedPills);
+          //   },
+          //   items: [{ title: 'Low Stock', id: 'low_stock' }],
+          // };
 
           return (
             <Table
@@ -339,6 +360,7 @@ const TablePage = () => {
                 { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
               ]}
               items={items}
+              // filters={pillTabs}
               search={{
                 value: searchValue,
                 onSearchChange,

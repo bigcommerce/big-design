@@ -142,19 +142,13 @@ const InternalStatefulTable = <T extends TableItem>({
     const pillTabsProps: PillTabsProps = {
       activePills: state.activePills,
       onPillClick: (pillId) => {
-        dispatch({ type: 'TOGGLE_PILL', pillId, filter: filters.filter });
+        dispatch({ type: 'ON_FILTER_ITEMS', pillId, filterPills: filters.filter, filterSearch: search?.filter });
       },
       items: filters.pillTabs,
     };
 
     dispatch({ type: 'SET_PILL_TABS_PROPS', pillTabsProps });
-  }, [filters, state.activePills]);
-
-  useEffect(() => {
-    if (search) {
-      dispatch({ type: 'SET_SEARCH_PROPS', searchProps: search });
-    }
-  }, [search, dispatch]);
+  }, [filters, state.activePills, search]);
 
   const searchProps = useMemo(
     () =>
@@ -162,9 +156,10 @@ const InternalStatefulTable = <T extends TableItem>({
         value: state.searchValue,
         onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) =>
           dispatch({ type: 'SEARCH_VALUE_CHANGE', value: e.target.value }),
-        onSearchSubmit: () => dispatch({ type: 'SEARCH_SUBMIT', filter: search.filter }),
+        onSearchSubmit: () =>
+          dispatch({ type: 'ON_FILTER_ITEMS', filterSearch: search.filter, filterPills: filters?.filter }),
       },
-    [search, state.searchValue],
+    [search, state.searchValue, filters],
   );
 
   return (
