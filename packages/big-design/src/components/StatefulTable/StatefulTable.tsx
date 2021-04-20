@@ -154,9 +154,9 @@ const InternalStatefulTable = <T extends TableItem>({
     () =>
       search && {
         value: state.searchValue,
-        onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
           dispatch({ type: 'SEARCH_VALUE_CHANGE', value: e.target.value }),
-        onSearchSubmit: () =>
+        onSubmit: () =>
           dispatch({ type: 'ON_FILTER_ITEMS', filterSearch: search.filter, filterPills: filters?.filter }),
       },
     [search, state.searchValue, filters],

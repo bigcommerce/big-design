@@ -1,4 +1,4 @@
-import { H0, H1, PillTabsProps, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
+import { H0, H1, H2, PillTabsProps, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -318,39 +318,24 @@ const TablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with search</H1>
+      <H2>Usage with search</H2>
 
       <CodePreview scope={{ data }}>
         {/* jsx-to-string:start */}
         {function Example() {
           const [items, setItems] = useState(data);
           const [searchValue, setSearchValue] = useState('');
-          // const [activePills, setActivePills] = useState<string[]>([]);
-          const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value);
+          const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value);
 
-          // const updateItems = () => {
-          //
-          // };
+          const onSubmit = () => {
+            setItems((prevItems) => {
+              if (searchValue) {
+                return prevItems.filter((item) => item.name.includes(searchValue));
+              }
 
-          const onSearchSubmit = () => {
-            const updatedItems = searchValue ? items.filter((item) => item.name.includes(searchValue)) : data;
-            setItems(updatedItems);
+              return data;
+            });
           };
-
-          // const pillTabs: PillTabsProps = {
-          //   activePills,
-          //   onPillClick: (id) => {
-          //     const isFilterActive = !activePills.includes(id);
-          //     const newItems = isFilterActive ? items.filter((item) => item.stock < 10) : data;
-          //     const updatedPills = isFilterActive
-          //       ? [...activePills, id]
-          //       : activePills.filter((activePillId) => activePillId !== id);
-          //
-          //     setItems(newItems);
-          //     setActivePills(updatedPills);
-          //   },
-          //   items: [{ title: 'Low Stock', id: 'low_stock' }],
-          // };
 
           return (
             <Table
@@ -363,8 +348,8 @@ const TablePage = () => {
               // filters={pillTabs}
               search={{
                 value: searchValue,
-                onSearchChange,
-                onSearchSubmit,
+                onChange,
+                onSubmit,
               }}
             />
           );

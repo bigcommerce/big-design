@@ -42,8 +42,8 @@ export type TablePaginationProps = Omit<PaginationProps, keyof MarginProps>;
 
 export interface TableSearch {
   value: InputProps['value'];
-  onSearchChange: InputProps['onChange'];
-  onSearchSubmit: FormProps['onSubmit'];
+  onChange: InputProps['onChange'];
+  onSubmit: FormProps['onSubmit'];
 }
 
 export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElement> {

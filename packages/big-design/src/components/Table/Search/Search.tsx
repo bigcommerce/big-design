@@ -2,36 +2,35 @@ import { SearchIcon } from '@bigcommerce/big-design-icons';
 import React, { FormEvent } from 'react';
 
 import { Button } from '../../Button';
+import { Flex, FlexItem } from '../../Flex';
 import { Form } from '../../Form';
 import { Input } from '../../Input';
 import { TableSearch } from '../types';
 
-import { StyledFlex, StyledInput } from './styled';
-
-export const Search: React.FC<TableSearch> = ({ value, onSearchChange, onSearchSubmit }) => {
+export const Search: React.FC<TableSearch> = ({ value, onChange, onSubmit }) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
 
-    onSearchSubmit?.(event);
+    onSubmit?.(event);
   };
 
   return (
     <Form onSubmit={handleSubmit} fullWidth={true}>
-      <StyledFlex alignItems="center" flexDirection="row" justifyContent="stretch">
-        <StyledInput>
+      <Flex alignItems="center" backgroundColor="white" flexDirection="row" paddingBottom="xxSmall">
+        <FlexItem flexGrow={1} marginRight="small">
           <Input
             placeholder="Search"
-            type="text"
+            type="search"
             value={value}
-            onChange={onSearchChange}
-            iconLeft={<SearchIcon color="secondary" />}
+            onChange={onChange}
+            iconLeft={<SearchIcon color="secondary50" />}
           />
-        </StyledInput>
-        <Button variant="secondary" type="submit">
+        </FlexItem>
+        <Button mobileWidth="auto" type="submit" variant="secondary">
           Search
         </Button>
-      </StyledFlex>
+      </Flex>
     </Form>
   );
 };

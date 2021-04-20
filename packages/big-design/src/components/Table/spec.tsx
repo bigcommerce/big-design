@@ -576,8 +576,8 @@ describe('test search in the Table', () => {
   test('renders Table with the search prop', () => {
     const search = {
       value: 'Product',
-      onSearchChange: jest.fn(),
-      onSearchSubmit: jest.fn(),
+      onChange: jest.fn(),
+      onSubmit: jest.fn(),
     };
 
     const { getByText, getByPlaceholderText } = render(getSimpleTable({ search }));
@@ -588,13 +588,13 @@ describe('test search in the Table', () => {
     expect(input.value).toBe(search.value);
   });
 
-  test('call onSearchChange when user change value in the input', () => {
-    const onSearchChange = jest.fn();
+  test('call onChange when user change value in the input', () => {
+    const onChange = jest.fn();
 
     const search = {
-      onSearchChange,
+      onChange,
       value: '',
-      onSearchSubmit: jest.fn(),
+      onSubmit: jest.fn(),
     };
 
     const { getByPlaceholderText } = render(getSimpleTable({ search }));
@@ -602,22 +602,22 @@ describe('test search in the Table', () => {
 
     fireEvent.change(input, { target: { value: 'Product' } });
 
-    expect(onSearchChange).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalled();
   });
 
-  test('call onSearchSubmit when user click to the Search button', () => {
-    const onSearchSubmit = jest.fn();
+  test('call onSubmit when user click to the Search button', () => {
+    const onSubmit = jest.fn();
 
     const search = {
-      onSearchSubmit,
+      onSubmit,
       value: '',
-      onSearchChange: jest.fn(),
+      onChange: jest.fn(),
     };
 
     const { getByText } = render(getSimpleTable({ search }));
 
     fireEvent.click(getByText('Search'));
 
-    expect(onSearchSubmit).toHaveBeenCalled();
+    expect(onSubmit).toHaveBeenCalled();
   });
 });

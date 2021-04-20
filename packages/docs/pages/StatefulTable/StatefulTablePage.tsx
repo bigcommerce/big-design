@@ -171,7 +171,7 @@ const StatefulTablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with drag and drop</H1>
+      <H2>Usage with drag and drop</H2>
 
       <CodePreview>
         {/* jsx-to-string:start */}
@@ -193,7 +193,7 @@ const StatefulTablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with filters</H1>
+      <H2>Usage with filters</H2>
 
       <CodePreview>
         {/* jsx-to-string:start */}
@@ -230,7 +230,7 @@ const StatefulTablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H2>Usage with search and filters</H2>
+      <H2>Usage with search</H2>
 
       <CodePreview scope={{ items }}>
         {/* jsx-to-string:start */}
@@ -250,22 +250,6 @@ const StatefulTablePage = () => {
               selectable
               stickyHeader
               search={{ filter }}
-              filters={{
-                filter: (pillId, items) =>
-                  pillId === 'low_stock'
-                    ? items.filter((item) => item.stock !== 0 && item.stock < 10)
-                    : items.filter((item) => item.stock === 0),
-                pillTabs: [
-                  {
-                    id: 'low_stock',
-                    title: 'Low Stock',
-                  },
-                  {
-                    id: 'out_of_stock',
-                    title: 'Out of Stock',
-                  },
-                ],
-              }}
             />
           );
         }}
