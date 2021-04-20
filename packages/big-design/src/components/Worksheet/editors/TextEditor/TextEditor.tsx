@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { typedMemo } from '../../../../utils';
-import { EditableCellKeyDown } from '../../hooks';
+import { EditableCellOnKeyDown } from '../../hooks';
 import { Cell, WorksheetItem } from '../../types';
 
 import { StyledInput } from './styled';
@@ -10,7 +10,7 @@ export interface TextEditorProps<Item> {
   cell: Cell<Item>;
   isEdited: boolean;
   onBlur(): void;
-  onKeyDown: EditableCellKeyDown<string | number>;
+  onKeyDown: EditableCellOnKeyDown;
 }
 
 const InternalTextEditor = <T extends WorksheetItem>({ cell, isEdited, onBlur, onKeyDown }: TextEditorProps<T>) => {

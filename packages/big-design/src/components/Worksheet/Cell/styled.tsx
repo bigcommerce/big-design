@@ -1,14 +1,16 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-interface StyledCellProps {
+import { Cell, WorksheetItem } from '../types';
+
+interface StyledCellProps<Item> {
   isEdited?: boolean;
   isSelected?: boolean;
   isValid?: boolean;
-  type: 'text' | 'number';
+  type: Cell<Item>['type'];
 }
 
-export const StyledCell = styled.td<StyledCellProps>`
+export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
   background-color: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => `${theme.helpers.remCalc(0.5)} solid ${theme.colors.secondary30}`};
   box-sizing: border-box;
