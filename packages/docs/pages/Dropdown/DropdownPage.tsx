@@ -64,9 +64,9 @@ const DropdownPage = () => (
 
     <H1>API</H1>
     <DropdownPropTable />
-    <DropdownItemPropTable />
-    <DropdownLinkItemPropTable />
-    <DropdownItemGroupPropTable />
+    <DropdownItemPropTable id="dropdown-item-prop-table" />
+    <DropdownLinkItemPropTable id="dropdown-link-item-prop-table" />
+    <DropdownItemGroupPropTable id="dropdown-item-group-prop-table" />
 
     <H1>Examples</H1>
 

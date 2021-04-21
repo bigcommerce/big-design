@@ -80,6 +80,9 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Button/ButtonPage" as="/button">
             Button
           </SideNavLink>
+          <SideNavLink href="/ButtonGroup/ButtonGroupPage" as="/button-group">
+            ButtonGroup
+          </SideNavLink>
           <SideNavLink href="/Checkbox/CheckboxPage" as="/checkbox">
             Checkbox
           </SideNavLink>
