@@ -5,7 +5,7 @@ import { ButtonProps } from '../Button';
 import { StyleableButton } from '../Button/private';
 
 export const StyledButton = styled(StyleableButton)<ButtonProps & { isFirst?: boolean; isLast?: boolean }>`
-  border-radius: 0;
+  border-radius: ${({ theme }) => theme.borderRadius.none};
   margin-right: -1px;
 
   ${({ isFirst, theme }) =>
