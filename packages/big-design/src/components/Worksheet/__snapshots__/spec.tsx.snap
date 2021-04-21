@@ -1,0 +1,582 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders worksheet 1`] = `
+<table
+  class="styled__Table-sc-16rzzpq-0 jtWGEi"
+>
+  <thead>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 dQfqjh"
+      />
+      <th
+        class="styled__Header-sc-16rzzpq-1 hiiNAX"
+      >
+        Product name
+      </th>
+      <th
+        class="styled__Header-sc-16rzzpq-1 hiiNAX"
+      >
+        Categories
+      </th>
+      <th
+        class="styled__Header-sc-16rzzpq-1 hiiNAX"
+      >
+        Other field
+      </th>
+      <th
+        class="styled__Header-sc-16rzzpq-1 hiiNAX"
+      >
+        Other field
+      </th>
+      <th
+        class="styled__Header-sc-16rzzpq-1 hiiNAX"
+      >
+        Other field
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 jpxEqg"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Shoes Name Three
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Shoes
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRPtqa"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          1
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 jpxEqg"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Shoes Name Two
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Shoes
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRPtqa"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          2
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 jpxEqg"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Shoes Name One
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Shoes
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRPtqa"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          3
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 dQfqjh"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Variant
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Dresses
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          4
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 dQfqjh"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Variant
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Dresses
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          5
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 dQfqjh"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Variant
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Dresses
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          6
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 dQfqjh"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Variant
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Dresses
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          7
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 dQfqjh"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Dress Name One
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Dresses
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          8
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 dQfqjh"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Fans Name One
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Dresses
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          9
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
