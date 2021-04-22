@@ -3,7 +3,7 @@ import 'jest-styled-components';
 
 import { fireEvent, render, waitForElement } from '@test/utils';
 
-import { StatefulTable, StatefulTablePillTabFilter, StatefulTableProps, StatefulTableSearch } from './StatefulTable';
+import { StatefulTable, StatefulTablePillTabFilter, StatefulTableProps } from './StatefulTable';
 
 interface TestItem {
   name: string;
@@ -448,14 +448,8 @@ test('can undo stacked filter actions', async () => {
 });
 
 describe('test search in the StatefulTable', () => {
-  const filterName: StatefulTableSearch<TestItem>['filter'] = (value, items) =>
-    items.filter((item) => item.name.includes(value));
-  const filterStock: StatefulTableSearch<TestItem>['filter'] = (value, items) =>
-    items.filter((item) => item.stock < +value);
-
   test('renders StatefulTable with the search prop', () => {
-    const search = { filter: filterName };
-    const { getByText } = render(getSimpleTable({ search }));
+    const { getByText } = render(getSimpleTable({ search: true }));
     const customSearch = getByText('Search');
 
     expect(customSearch).toBeInTheDocument();
@@ -463,8 +457,7 @@ describe('test search in the StatefulTable', () => {
   });
 
   test('it executes the filter function on click Search', async () => {
-    const search = { filter: filterName };
-    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search }));
+    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true }));
     const input = getByPlaceholderText('Search');
 
     fireEvent.change(input, { target: { value: 'Product A - 1' } });
@@ -476,12 +469,11 @@ describe('test search in the StatefulTable', () => {
   });
 
   test('it executes the filter search and filter pills function on click Search', async () => {
-    const search = { filter: filterName };
     const filters: StatefulTablePillTabFilter<TestItem> = {
       pillTabs: [{ title: 'Stock 1', id: 'in_stock' }],
       filter: (_itemId, items) => items.filter((item) => item.stock === 1),
     };
-    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search, filters }));
+    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true, filters }));
     const input = getByPlaceholderText('Search');
 
     fireEvent.change(input, { target: { value: 'Product A' } });
@@ -494,19 +486,17 @@ describe('test search in the StatefulTable', () => {
   });
 
   test('can paginate on filtered rows', async () => {
-    const search = { filter: filterStock };
-    const { getByPlaceholderText, getByText } = render(getSimpleTable({ search, pagination: true }));
+    const { getByPlaceholderText, getByText } = render(getSimpleTable({ search: true, pagination: true }));
     const input = getByPlaceholderText('Search');
 
-    fireEvent.change(input, { target: { value: '40' } });
+    fireEvent.change(input, { target: { value: '1' } });
     await waitForElement(() => fireEvent.click(getByText('Search')));
 
-    expect(getByText('1 - 25 of 39')).toBeInTheDocument();
+    expect(getByText('1 - 25 of 38')).toBeInTheDocument();
   });
 
   test('can undo filter actions', async () => {
-    const search = { filter: filterName };
-    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search }));
+    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true }));
     const input = getByPlaceholderText('Search');
 
     fireEvent.change(input, { target: { value: 'Product A - 1' } });

@@ -333,7 +333,7 @@ function onSearchSubmit<T>(items: T[], searchValue: string, columns: Array<State
     columns.some((column) => {
       const element = item[column.hash as keyof T];
 
-      const checkInclude = (str: string) => str.toLowerCase().includes(searchValue);
+      const checkInclude = (str: string) => str.toLowerCase().trim().includes(searchValue.toLowerCase().trim());
 
       switch (typeof element) {
         case 'string':
