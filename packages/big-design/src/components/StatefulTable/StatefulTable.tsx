@@ -19,10 +19,6 @@ export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable
   sortFn?: StatefulTableSortFn<T>;
 }
 
-export interface StatefulTableSearch<T> {
-  filter(value: string, items: T[]): T[];
-}
-
 export interface StatefulTableProps<T>
   extends Omit<
     TableProps<T>,
@@ -33,7 +29,7 @@ export interface StatefulTableProps<T>
   filters?: StatefulTablePillTabFilter<T>;
   selectable?: boolean;
   defaultSelected?: T[];
-  search?: StatefulTableSearch<T>;
+  search?: boolean;
   onRowDrop?(items: T[]): void;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }
@@ -142,7 +138,7 @@ const InternalStatefulTable = <T extends TableItem>({
     const pillTabsProps: PillTabsProps = {
       activePills: state.activePills,
       onPillClick: (pillId) => {
-        dispatch({ type: 'ON_FILTER_ITEMS', pillId, filterPills: filters.filter, filterSearch: search?.filter });
+        dispatch({ type: 'TOGGLE_PILL', pillId, filter: filters.filter });
       },
       items: filters.pillTabs,
     };
@@ -152,13 +148,14 @@ const InternalStatefulTable = <T extends TableItem>({
 
   const searchProps = useMemo(
     () =>
-      search && {
-        value: state.searchValue,
-        onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-          dispatch({ type: 'SEARCH_VALUE_CHANGE', value: e.target.value }),
-        onSubmit: () =>
-          dispatch({ type: 'ON_FILTER_ITEMS', filterSearch: search.filter, filterPills: filters?.filter }),
-      },
+      search
+        ? {
+            value: state.searchValue,
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+              dispatch({ type: 'SEARCH_VALUE_CHANGE', value: e.target.value }),
+            onSubmit: () => dispatch({ type: 'ON_SEARCH_SUBMIT', filterPills: filters?.filter }),
+          }
+        : undefined,
     [search, state.searchValue, filters],
   );
 

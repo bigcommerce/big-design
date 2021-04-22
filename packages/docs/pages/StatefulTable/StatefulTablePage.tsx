@@ -2,12 +2,7 @@ import { H0, H1, H2, StatefulTable, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { CodePreview, NextLink } from '../../components';
-import {
-  StatefulTableColumnsPropTable,
-  StatefulTableFiltersPropTable,
-  StatefulTablePropTable,
-  StatefulTableSearchPropTable,
-} from '../../PropTables';
+import { StatefulTableColumnsPropTable, StatefulTableFiltersPropTable, StatefulTablePropTable } from '../../PropTables';
 
 const items = [
   { sku: '3137737c', name: 'Rice - Wild', stock: 29 },
@@ -149,7 +144,6 @@ const StatefulTablePage = () => {
       <StatefulTablePropTable />
       <StatefulTableColumnsPropTable id="stateful-table-columns-prop-table" />
       <StatefulTableFiltersPropTable id="stateful-table-filters-prop-table" />
-      <StatefulTableSearchPropTable id="stateful-table-search-prop-table" />
 
       <H1>Examples</H1>
       <H2>Usage with pagination, selection, and sorting.</H2>
@@ -235,8 +229,6 @@ const StatefulTablePage = () => {
       <CodePreview scope={{ items }}>
         {/* jsx-to-string:start */}
         {function Example() {
-          const filter = (value, items) => items.filter((item) => item.name.includes(value));
-
           return (
             <StatefulTable
               itemName="Products"
@@ -249,7 +241,7 @@ const StatefulTablePage = () => {
               pagination
               selectable
               stickyHeader
-              search={{ filter }}
+              search={true}
             />
           );
         }}

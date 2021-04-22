@@ -1,14 +1,9 @@
 import { Reducer } from 'react';
 
-import { PillTabsProps } from '../PillTabs';
+import { PillTabItem, PillTabsProps } from '../PillTabs';
 import { TableSortDirection } from '../Table';
 
-import {
-  StatefulTableColumn,
-  StatefulTablePillTabFilter,
-  StatefulTableSearch,
-  StatefulTableSortFn,
-} from './StatefulTable';
+import { StatefulTableColumn, StatefulTablePillTabFilter, StatefulTableSortFn } from './StatefulTable';
 
 interface State<T> {
   activePills: string[];
@@ -25,7 +20,7 @@ interface State<T> {
   };
   pillTabsProps?: PillTabsProps;
   searchValue?: string;
-  searchProps?: StatefulTableSearch<T>;
+  submittedSearchValue?: string;
   selectedItems: T[];
   sortable: {
     direction: TableSortDirection;
@@ -59,6 +54,7 @@ export const createReducerInit = <T>() => ({ columns, defaultSelected, items, pa
       totalItems: items.length,
     },
     searchValue: '',
+    submittedSearchValue: '',
     selectedItems: defaultSelected,
     sortable: {
       direction: 'ASC',
@@ -75,12 +71,8 @@ export type Action<T> =
   | { type: 'SORT'; column: StatefulTableColumn<T>; direction: TableSortDirection }
   | { type: 'SET_PILL_TABS_PROPS'; pillTabsProps: PillTabsProps }
   | { type: 'SEARCH_VALUE_CHANGE'; value: string }
-  | {
-      type: 'ON_FILTER_ITEMS';
-      filterSearch?: StatefulTableSearch<T>['filter'];
-      filterPills?: StatefulTablePillTabFilter<T>['filter'];
-      pillId?: string;
-    };
+  | { type: 'TOGGLE_PILL'; pillId: string; filter: StatefulTablePillTabFilter<T>['filter'] }
+  | { type: 'ON_SEARCH_SUBMIT'; filterPills?: StatefulTablePillTabFilter<T>['filter'] };
 
 export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, action) => {
   switch (action.type) {
@@ -206,41 +198,16 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
       };
     }
 
-    case 'ON_FILTER_ITEMS': {
-      const { filterPills, pillId, filterSearch } = action;
-      let currentItems = state.items;
-      let activePills = state.activePills;
-
-      if (filterPills && state.pillTabsProps) {
-        const pillTabs = state.pillTabsProps.items;
-
-        if (pillId) {
-          const toggledPill = pillTabs.find((pill) => pill.id === pillId);
-
-          if (!toggledPill) {
-            return state;
-          }
-
-          const isToggledPillActive = !state.activePills.includes(pillId);
-          activePills = isToggledPillActive
-            ? [...state.activePills, toggledPill.id]
-            : state.activePills.filter((activeFilter) => activeFilter !== toggledPill.id);
-        }
-
-        currentItems =
-          activePills.length > 0
-            ? activePills
-                .map((pillId) => filterPills(pillId, state.items))
-                .reduce((results, filteredItems) => {
-                  const dedupedItems = filteredItems.filter((item) => !results.includes(item));
-
-                  return [...results, ...dedupedItems];
-                }, [])
-            : state.items;
+    case 'TOGGLE_PILL': {
+      if (!state.pillTabsProps) {
+        return state;
       }
 
-      if (filterSearch && state.searchValue) {
-        currentItems = filterSearch(state.searchValue, currentItems);
+      const activePills = getActivePills(state.pillTabsProps.items, state.activePills, action.pillId);
+      let currentItems = togglePill(state.items, activePills, action.filter);
+
+      if (state.submittedSearchValue) {
+        currentItems = onSearchSubmit(currentItems, state.submittedSearchValue, state.columns);
       }
 
       return {
@@ -253,6 +220,32 @@ export const createReducer = <T>(): Reducer<State<T>, Action<T>> => (state, acti
         },
         currentItems,
         filteredItems: currentItems,
+      };
+    }
+
+    case 'ON_SEARCH_SUBMIT': {
+      const { searchValue, activePills } = state;
+
+      let currentItems = state.items;
+
+      if (activePills.length > 0 && action.filterPills) {
+        currentItems = togglePill(currentItems, activePills, action.filterPills);
+      }
+
+      if (searchValue) {
+        currentItems = onSearchSubmit(currentItems, searchValue, state.columns);
+      }
+
+      return {
+        ...state,
+        pagination: {
+          ...state.pagination,
+          currentPage: 1,
+          totalItems: currentItems.length,
+        },
+        currentItems,
+        filteredItems: currentItems,
+        submittedSearchValue: searchValue,
       };
     }
 
@@ -305,4 +298,54 @@ function sort<T>(items: T[], direction: TableSortDirection, sortKeyOrFn: keyof T
       ? firstValueString.localeCompare(secondValueString)
       : secondValueString.localeCompare(firstValueString);
   });
+}
+
+function getActivePills(pillTabs: PillTabItem[], activePills: string[], pillId: string): string[] {
+  const toggledPill = pillTabs.find((pill) => pill.id === pillId);
+
+  if (!toggledPill) {
+    return activePills;
+  }
+
+  const isToggledPillActive = !activePills.includes(pillId);
+
+  return isToggledPillActive
+    ? [...activePills, toggledPill.id]
+    : activePills.filter((activeFilter) => activeFilter !== toggledPill.id);
+}
+
+function togglePill<T>(items: T[], activePills: string[], filter: StatefulTablePillTabFilter<T>['filter']): T[] {
+  return activePills.length > 0
+    ? activePills
+        .map((pillId) => {
+          return filter(pillId, items);
+        })
+        .reduce((results, filteredItems) => {
+          const dedupedItems = filteredItems.filter((item) => !results.includes(item));
+
+          return [...results, ...dedupedItems];
+        }, [])
+    : items;
+}
+
+function onSearchSubmit<T>(items: T[], searchValue: string, columns: Array<StatefulTableColumn<T>>): T[] {
+  return items.filter((item) =>
+    columns.some((column) => {
+      const element = item[column.hash as keyof T];
+
+      const checkInclude = (str: string) => str.toLowerCase().includes(searchValue);
+
+      switch (typeof element) {
+        case 'string':
+          return checkInclude(element);
+
+        case 'number':
+        case 'boolean':
+          return checkInclude(element.toString());
+
+        default:
+          return;
+      }
+    }),
+  );
 }

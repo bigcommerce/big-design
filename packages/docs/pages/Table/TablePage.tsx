@@ -79,7 +79,8 @@ const TablePage = () => {
       <TableSortablePropTable id="table-sortable-prop-table" />
       <TableSearchPropTable id="table-search-prop-table" />
 
-      <H1>Usage with selectable</H1>
+      <H1>Examples</H1>
+      <H2>Usage with selectable</H2>
 
       <CodePreview scope={{ data, columns }}>
         {/* jsx-to-string:start */}
@@ -102,7 +103,7 @@ const TablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with pagination</H1>
+      <H2>Usage with pagination</H2>
 
       <CodePreview scope={{ data, columns }}>
         {/* jsx-to-string:start */}
@@ -145,7 +146,7 @@ const TablePage = () => {
         }}
         {/* jsx-to-string:end */}
       </CodePreview>
-      <H1>Usage with sortable</H1>
+      <H2>Usage with sortable</H2>
 
       <CodePreview scope={{ data, columns, sort }}>
         {/* jsx-to-string:start */}
@@ -181,7 +182,7 @@ const TablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with TableFigure</H1>
+      <H2>Usage with TableFigure</H2>
 
       <Text>
         <Code primary>TableFigure</Code> components are used to wrap tables and any relevant information to be grouped
@@ -226,7 +227,7 @@ const TablePage = () => {
         TableFigure supports all native <Code>&lt;figure /&gt;</Code> element attributes.
       </Text>
 
-      <H1>Customization Example</H1>
+      <H2>Customization Example</H2>
 
       <CodePreview>
         {/* jsx-to-string:start */}
@@ -257,7 +258,7 @@ const TablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with drag and drop</H1>
+      <H2>Usage with drag and drop</H2>
 
       <CodePreview scope={{ data, dragEnd }}>
         {/* jsx-to-string:start */}
@@ -281,7 +282,7 @@ const TablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with filters</H1>
+      <H2>Usage with filters</H2>
 
       <CodePreview scope={{ data }}>
         {/* jsx-to-string:start */}
@@ -345,7 +346,6 @@ const TablePage = () => {
                 { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
               ]}
               items={items}
-              // filters={pillTabs}
               search={{
                 value: searchValue,
                 onChange,

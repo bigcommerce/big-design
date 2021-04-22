@@ -38,12 +38,9 @@ const statefulTableProps: Prop[] = [
   },
   {
     name: 'search',
-    types: <NextLink href="#stateful-table-search-prop-table">Search</NextLink>,
-    description: (
-      <>
-        See <NextLink href="#stateful-table-search-prop-table">below</NextLink> for usage.
-      </>
-    ),
+    types: 'boolean',
+    defaultValue: 'false',
+    description: 'Defines if table should have search',
   },
   {
     name: 'selectable',
@@ -181,15 +178,6 @@ const filterProps: Prop[] = [
   },
 ];
 
-const tableSearchProps: Prop[] = [
-  {
-    name: 'filter',
-    types: '(itemId: string, items: Item[]) => Item[]',
-    description: 'A function that takes the current items and filters them according to the desired functionality.',
-    required: true,
-  },
-];
-
 export const StatefulTablePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="StatefulTable" propList={statefulTableProps} {...props} />
 );
@@ -200,8 +188,4 @@ export const StatefulTableColumnsPropTable: React.FC<PropTableWrapper> = (props)
 
 export const StatefulTableFiltersPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="StatefulTable[Filters]" propList={filterProps} {...props} />
-);
-
-export const StatefulTableSearchPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="StatefulTable[Search]" propList={tableSearchProps} {...props} />
 );
