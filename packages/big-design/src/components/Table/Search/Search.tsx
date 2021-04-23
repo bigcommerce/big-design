@@ -12,7 +12,9 @@ export const Search: React.FC<TableSearch> = ({ value, onChange, onSubmit }) => 
     event.preventDefault();
     event.stopPropagation();
 
-    onSubmit?.(event);
+    if (typeof onSubmit === 'function') {
+      onSubmit(event);
+    }
   };
 
   return (

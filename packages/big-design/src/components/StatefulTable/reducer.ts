@@ -327,21 +327,19 @@ function togglePill<T>(items: T[], activePills: string[], filter: StatefulTableP
         }, [])
     : items;
 }
+const checkInclude = (searchValue: string, str: string) =>
+  str.toLowerCase().trim().includes(searchValue.toLowerCase().trim());
 
 function onSearchSubmit<T>(items: T[], searchValue: string, columns: Array<StatefulTableColumn<T>>): T[] {
   return items.filter((item) =>
     columns.some((column) => {
       const element = item[column.hash as keyof T];
 
-      const checkInclude = (str: string) => str.toLowerCase().trim().includes(searchValue.toLowerCase().trim());
-
       switch (typeof element) {
         case 'string':
-          return checkInclude(element);
-
         case 'number':
         case 'boolean':
-          return checkInclude(element.toString());
+          return checkInclude(searchValue, element.toString());
 
         default:
           return;

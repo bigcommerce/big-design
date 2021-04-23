@@ -239,9 +239,8 @@ const StatefulTablePage = () => {
               ]}
               items={items}
               pagination
-              selectable
               stickyHeader
-              search={true}
+              search
             />
           );
         }}

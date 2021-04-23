@@ -40,7 +40,7 @@ const statefulTableProps: Prop[] = [
     name: 'search',
     types: 'boolean',
     defaultValue: 'false',
-    description: 'Defines if table should have search',
+    description: 'Defines if table should have search by visible fields with type string, number, boolean',
   },
   {
     name: 'selectable',
@@ -175,6 +175,11 @@ const filterProps: Prop[] = [
     ),
     name: 'pillTabs',
     types: 'PillTabItem[]',
+  },
+  {
+    name: 'filter',
+    types: '(itemId: string, items: Item[]) => Item[]',
+    description: 'A function that takes the current items and filters them according to the desired functionality.',
   },
 ];
 
