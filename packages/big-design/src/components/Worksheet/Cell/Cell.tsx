@@ -4,12 +4,12 @@ import { typedMemo } from '../../../utils';
 import { Small } from '../../Typography';
 import { SelectEditor, TextEditor } from '../editors';
 import { useEditableCell, useStore } from '../hooks';
-import { Cell as TCell, WorksheetColumn, WorksheetItem } from '../types';
+import { Cell as TCell, WorksheetColumn, WorksheetItem, WorksheetSelectableColumn } from '../types';
 
 import { StyledCell } from './styled';
 
 interface CellProps<Item> extends TCell<Item> {
-  options: WorksheetColumn<Item>['options'];
+  options: WorksheetSelectableColumn<Item>['options'];
   validation: WorksheetColumn<Item>['validation'];
 }
 
