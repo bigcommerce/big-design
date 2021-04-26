@@ -1,25 +1,22 @@
 import { SelectOption } from '../Select';
 
 export interface Worksheet<Item extends WorksheetItem> {
-  columns: Array<WorksheetTextColumn<Item> | WorksheetSelectableColumn<Item>>;
+  columns: Array<WorksheetColumn<Item>>;
   items: Item[];
   onChange(items: Array<Cell<Item>>): void;
   onErrors?(items: Array<Cell<Item>>): void;
 }
 
-export type WorksheetColumn<Item> = WorksheetTextColumn<Item> | WorksheetSelectableColumn<Item>;
+export type WorksheetColumn<Item> = WorksheetBaseColumn<Item> | WorksheetSelectableColumn<Item>;
 
-interface BaseColumn<Item> {
+interface WorksheetBaseColumn<Item> {
   hash: keyof Item;
   header: string;
+  type?: 'text' | 'number' | 'checkbox';
   validation?(value: Item[keyof Item]): boolean;
 }
 
-interface WorksheetTextColumn<Item> extends BaseColumn<Item> {
-  type?: 'text' | 'number';
-}
-
-export interface WorksheetSelectableColumn<Item> extends BaseColumn<Item> {
+export interface WorksheetSelectableColumn<Item> extends Omit<WorksheetBaseColumn<Item>, 'type'> {
   options: SelectOption<unknown>[];
   type: 'select';
 }
@@ -29,7 +26,7 @@ export interface Cell<Item> {
   hash: keyof Item;
   rowIndex: number;
   value: Item[keyof Item];
-  type: Exclude<WorksheetTextColumn<Item>['type'] | WorksheetSelectableColumn<Item>['type'], undefined>;
+  type: Exclude<WorksheetColumn<Item>['type'] | WorksheetSelectableColumn<Item>['type'], undefined>;
 }
 
 export interface WorksheetItem {

@@ -17,7 +17,7 @@ exports[`renders worksheet 1`] = `
       <th
         class="styled__Header-sc-16rzzpq-1 hiiNAX"
       >
-        Categories
+        Visible on storefront
       </th>
       <th
         class="styled__Header-sc-16rzzpq-1 hiiNAX"
@@ -33,13 +33,18 @@ exports[`renders worksheet 1`] = `
         class="styled__Header-sc-16rzzpq-1 hiiNAX"
       >
         Other field
+      </th>
+      <th
+        class="styled__Header-sc-16rzzpq-1 hiiNAX"
+      >
+        Number field
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 jpxEqg"
+        class="styled__Status-sc-1aacki0-0 dQfqjh"
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -53,98 +58,57 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Shoes
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
-        type="select"
+        class="styled__StyledCell-sc-1bt06ph-0 iNYKgU"
+        type="checkbox"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
         >
-          <div>
-            <div
-              aria-expanded="false"
-              aria-haspopup="listbox"
-              aria-owns="bd-select-1-menu"
-              role="combobox"
+          <div
+            class="styled__CheckboxContainer-s1u0st-1 kzragh"
+          >
+            <input
+              aria-checked="true"
+              aria-labelledby="bd-checkbox_label-2"
+              checked=""
+              class="styled__HiddenCheckbox-s1u0st-2 bDurHK"
+              id="bd-checkbox-1"
+              type="checkbox"
+            />
+            <label
+              aria-hidden="true"
+              class="styled__StyledCheckbox-s1u0st-3 hvGsjJ"
+              for="bd-checkbox-1"
             >
-              <div
-                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              <svg
+                class="base__StyledIcon-a9u0e1-0 gqewKr"
+                fill="currentColor"
+                height="24"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="24"
               >
-                <div>
-                  <span
-                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
-                  >
-                    <div
-                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
-                    >
-                      <input
-                        aria-autocomplete="list"
-                        aria-controls="bd-select-1-menu"
-                        aria-labelledby="bd-select-1-label"
-                        autocomplete="off"
-                        class="styled__StyledInput-g32raa-1 bmlNhQ"
-                        id="bd-select-1-input"
-                        readonly=""
-                        value="Plastic"
-                      />
-                    </div>
-                    <div
-                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
-                    >
-                      <button
-                        aria-label="toggle menu"
-                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
-                        id="bd-select-1-toggle-button"
-                        tabindex="-1"
-                        type="button"
-                      >
-                        <span
-                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
-                        >
-                          <svg
-                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
-                            fill="currentColor"
-                            height="24"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 24 24"
-                            width="24"
-                          >
-                            <path
-                              d="M0 0h24v24H0V0z"
-                              fill="none"
-                            />
-                            <path
-                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
-                  </span>
-                </div>
-              </div>
-            </div>
+                <path
+                  d="M0 0h24v24H0V0z"
+                  fill="none"
+                />
+                <path
+                  d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+                />
+              </svg>
+            </label>
             <div
-              class="styled__StyledBox-sj5f1m-0 dUQkBL"
-              style="position: absolute; left: 0px; top: 0px;"
+              class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
-              <ul
-                aria-labelledby="bd-select-1-label"
-                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
-                id="bd-select-1-menu"
-                role="listbox"
-              />
+              <label
+                class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                for="bd-checkbox-1"
+                hidden=""
+                id="bd-checkbox_label-2"
+              >
+                Checked
+              </label>
             </div>
           </div>
         </div>
@@ -157,45 +121,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          Field
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 cRPtqa"
-        type="number"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          1
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td
-        class="styled__Status-sc-1aacki0-0 jpxEqg"
-      />
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Shoes Name Two
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Shoes
+          Text
         </p>
       </td>
       <td
@@ -296,149 +222,14 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 cRPtqa"
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
         type="number"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          2
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td
-        class="styled__Status-sc-1aacki0-0 jpxEqg"
-      />
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Shoes Name One
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Shoes
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
-        type="select"
-      >
-        <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
-        >
-          <div>
-            <div
-              aria-expanded="false"
-              aria-haspopup="listbox"
-              aria-owns="bd-select-7-menu"
-              role="combobox"
-            >
-              <div
-                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
-              >
-                <div>
-                  <span
-                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
-                  >
-                    <div
-                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
-                    >
-                      <input
-                        aria-autocomplete="list"
-                        aria-controls="bd-select-7-menu"
-                        aria-labelledby="bd-select-7-label"
-                        autocomplete="off"
-                        class="styled__StyledInput-g32raa-1 bmlNhQ"
-                        id="bd-select-7-input"
-                        readonly=""
-                        value="Plastic"
-                      />
-                    </div>
-                    <div
-                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
-                    >
-                      <button
-                        aria-label="toggle menu"
-                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
-                        id="bd-select-7-toggle-button"
-                        tabindex="-1"
-                        type="button"
-                      >
-                        <span
-                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
-                        >
-                          <svg
-                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
-                            fill="currentColor"
-                            height="24"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 24 24"
-                            width="24"
-                          >
-                            <path
-                              d="M0 0h24v24H0V0z"
-                              fill="none"
-                            />
-                            <path
-                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div
-              class="styled__StyledBox-sj5f1m-0 dUQkBL"
-              style="position: absolute; left: 0px; top: 0px;"
-            >
-              <ul
-                aria-labelledby="bd-select-7-label"
-                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
-                id="bd-select-7-menu"
-                role="listbox"
-              />
-            </div>
-          </div>
-        </div>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Field
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 cRPtqa"
-        type="number"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          3
+          50
         </p>
       </td>
     </tr>
@@ -454,8 +245,64 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          Variant
+          Shoes Name Two
         </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 iNYKgU"
+        type="checkbox"
+      >
+        <div
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+        >
+          <div
+            class="styled__CheckboxContainer-s1u0st-1 kzragh"
+          >
+            <input
+              aria-checked="true"
+              aria-labelledby="bd-checkbox_label-8"
+              checked=""
+              class="styled__HiddenCheckbox-s1u0st-2 bDurHK"
+              id="bd-checkbox-7"
+              type="checkbox"
+            />
+            <label
+              aria-hidden="true"
+              class="styled__StyledCheckbox-s1u0st-3 hvGsjJ"
+              for="bd-checkbox-7"
+            >
+              <svg
+                class="base__StyledIcon-a9u0e1-0 gqewKr"
+                fill="currentColor"
+                height="24"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path
+                  d="M0 0h24v24H0V0z"
+                  fill="none"
+                />
+                <path
+                  d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+                />
+              </svg>
+            </label>
+            <div
+              class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
+            >
+              <label
+                class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                for="bd-checkbox-7"
+                hidden=""
+                id="bd-checkbox_label-8"
+              >
+                Checked
+              </label>
+            </div>
+          </div>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -465,7 +312,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          Dresses
+          Text
         </p>
       </td>
       <td
@@ -500,7 +347,7 @@ exports[`renders worksheet 1`] = `
                         class="styled__StyledInput-g32raa-1 bmlNhQ"
                         id="bd-select-10-input"
                         readonly=""
-                        value="Leather"
+                        value="Plastic"
                       />
                     </div>
                     <div
@@ -573,7 +420,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          4
+          50
         </p>
       </td>
     </tr>
@@ -589,102 +436,60 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          Variant
+          Shoes Name One
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Dresses
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
-        type="select"
+        class="styled__StyledCell-sc-1bt06ph-0 iNYKgU"
+        type="checkbox"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
         >
-          <div>
-            <div
-              aria-expanded="false"
-              aria-haspopup="listbox"
-              aria-owns="bd-select-13-menu"
-              role="combobox"
+          <div
+            class="styled__CheckboxContainer-s1u0st-1 kzragh"
+          >
+            <input
+              aria-checked="false"
+              aria-labelledby="bd-checkbox_label-14"
+              class="styled__HiddenCheckbox-s1u0st-2 bDurHK"
+              id="bd-checkbox-13"
+              type="checkbox"
+            />
+            <label
+              aria-hidden="true"
+              class="styled__StyledCheckbox-s1u0st-3 qxpOx"
+              for="bd-checkbox-13"
             >
-              <div
-                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              <svg
+                class="base__StyledIcon-a9u0e1-0 gqewKr"
+                fill="currentColor"
+                height="24"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="24"
               >
-                <div>
-                  <span
-                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
-                  >
-                    <div
-                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
-                    >
-                      <input
-                        aria-autocomplete="list"
-                        aria-controls="bd-select-13-menu"
-                        aria-labelledby="bd-select-13-label"
-                        autocomplete="off"
-                        class="styled__StyledInput-g32raa-1 bmlNhQ"
-                        id="bd-select-13-input"
-                        readonly=""
-                        value="Leather"
-                      />
-                    </div>
-                    <div
-                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
-                    >
-                      <button
-                        aria-label="toggle menu"
-                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
-                        id="bd-select-13-toggle-button"
-                        tabindex="-1"
-                        type="button"
-                      >
-                        <span
-                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
-                        >
-                          <svg
-                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
-                            fill="currentColor"
-                            height="24"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 24 24"
-                            width="24"
-                          >
-                            <path
-                              d="M0 0h24v24H0V0z"
-                              fill="none"
-                            />
-                            <path
-                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
-                  </span>
-                </div>
-              </div>
-            </div>
+                <path
+                  d="M0 0h24v24H0V0z"
+                  fill="none"
+                />
+                <path
+                  d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+                />
+              </svg>
+            </label>
             <div
-              class="styled__StyledBox-sj5f1m-0 dUQkBL"
-              style="position: absolute; left: 0px; top: 0px;"
+              class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
-              <ul
-                aria-labelledby="bd-select-13-label"
-                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
-                id="bd-select-13-menu"
-                role="listbox"
-              />
+              <label
+                class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                for="bd-checkbox-13"
+                hidden=""
+                id="bd-checkbox_label-14"
+              >
+                Unchecked
+              </label>
             </div>
           </div>
         </div>
@@ -697,45 +502,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          Field
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
-        type="number"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          5
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td
-        class="styled__Status-sc-1aacki0-0 dQfqjh"
-      />
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Variant
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Dresses
+          Text
         </p>
       </td>
       <td
@@ -843,7 +610,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          6
+          50
         </p>
       </td>
     </tr>
@@ -863,98 +630,57 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Dresses
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
-        type="select"
+        class="styled__StyledCell-sc-1bt06ph-0 iNYKgU"
+        type="checkbox"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
         >
-          <div>
-            <div
-              aria-expanded="false"
-              aria-haspopup="listbox"
-              aria-owns="bd-select-19-menu"
-              role="combobox"
+          <div
+            class="styled__CheckboxContainer-s1u0st-1 kzragh"
+          >
+            <input
+              aria-checked="true"
+              aria-labelledby="bd-checkbox_label-20"
+              checked=""
+              class="styled__HiddenCheckbox-s1u0st-2 bDurHK"
+              id="bd-checkbox-19"
+              type="checkbox"
+            />
+            <label
+              aria-hidden="true"
+              class="styled__StyledCheckbox-s1u0st-3 hvGsjJ"
+              for="bd-checkbox-19"
             >
-              <div
-                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              <svg
+                class="base__StyledIcon-a9u0e1-0 gqewKr"
+                fill="currentColor"
+                height="24"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="24"
               >
-                <div>
-                  <span
-                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
-                  >
-                    <div
-                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
-                    >
-                      <input
-                        aria-autocomplete="list"
-                        aria-controls="bd-select-19-menu"
-                        aria-labelledby="bd-select-19-label"
-                        autocomplete="off"
-                        class="styled__StyledInput-g32raa-1 bmlNhQ"
-                        id="bd-select-19-input"
-                        readonly=""
-                        value="Plastic"
-                      />
-                    </div>
-                    <div
-                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
-                    >
-                      <button
-                        aria-label="toggle menu"
-                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
-                        id="bd-select-19-toggle-button"
-                        tabindex="-1"
-                        type="button"
-                      >
-                        <span
-                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
-                        >
-                          <svg
-                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
-                            fill="currentColor"
-                            height="24"
-                            stroke="currentColor"
-                            stroke-width="0"
-                            viewBox="0 0 24 24"
-                            width="24"
-                          >
-                            <path
-                              d="M0 0h24v24H0V0z"
-                              fill="none"
-                            />
-                            <path
-                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </div>
-                  </span>
-                </div>
-              </div>
-            </div>
+                <path
+                  d="M0 0h24v24H0V0z"
+                  fill="none"
+                />
+                <path
+                  d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+                />
+              </svg>
+            </label>
             <div
-              class="styled__StyledBox-sj5f1m-0 dUQkBL"
-              style="position: absolute; left: 0px; top: 0px;"
+              class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
-              <ul
-                aria-labelledby="bd-select-19-label"
-                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
-                id="bd-select-19-menu"
-                role="listbox"
-              />
+              <label
+                class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                for="bd-checkbox-19"
+                hidden=""
+                id="bd-checkbox_label-20"
+              >
+                Checked
+              </label>
             </div>
           </div>
         </div>
@@ -967,49 +693,11 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          Field
+          Text
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
-        type="number"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          7
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td
-        class="styled__Status-sc-1aacki0-0 jpxEqg"
-      />
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Dress Name One
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
-      >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
-        >
-          Dresses
-        </p>
-      </td>
-      <td
-        class="styled__StyledCell-sc-1bt06ph-0 emuEZs"
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
         type="select"
       >
         <div
@@ -1040,7 +728,7 @@ exports[`renders worksheet 1`] = `
                         class="styled__StyledInput-g32raa-1 bmlNhQ"
                         id="bd-select-22-input"
                         readonly=""
-                        value=""
+                        value="Leather"
                       />
                     </div>
                     <div
@@ -1113,24 +801,78 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          8
+          50
         </p>
       </td>
     </tr>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 dQfqjh"
+        class="styled__Status-sc-1aacki0-0 jpxEqg"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        class="styled__StyledCell-sc-1bt06ph-0 gEYTOz"
         type="text"
       >
         <p
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
+        />
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 iNYKgU"
+        type="checkbox"
+      >
+        <div
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
         >
-          Fans Name One
-        </p>
+          <div
+            class="styled__CheckboxContainer-s1u0st-1 kzragh"
+          >
+            <input
+              aria-checked="true"
+              aria-labelledby="bd-checkbox_label-26"
+              checked=""
+              class="styled__HiddenCheckbox-s1u0st-2 bDurHK"
+              id="bd-checkbox-25"
+              type="checkbox"
+            />
+            <label
+              aria-hidden="true"
+              class="styled__StyledCheckbox-s1u0st-3 hvGsjJ"
+              for="bd-checkbox-25"
+            >
+              <svg
+                class="base__StyledIcon-a9u0e1-0 gqewKr"
+                fill="currentColor"
+                height="24"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path
+                  d="M0 0h24v24H0V0z"
+                  fill="none"
+                />
+                <path
+                  d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+                />
+              </svg>
+            </label>
+            <div
+              class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
+            >
+              <label
+                class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                for="bd-checkbox-25"
+                hidden=""
+                id="bd-checkbox_label-26"
+              >
+                Checked
+              </label>
+            </div>
+          </div>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
@@ -1140,11 +882,11 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          Dresses
+          Text
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        class="styled__StyledCell-sc-1bt06ph-0 emuEZs"
         type="select"
       >
         <div
@@ -1154,7 +896,7 @@ exports[`renders worksheet 1`] = `
             <div
               aria-expanded="false"
               aria-haspopup="listbox"
-              aria-owns="bd-select-25-menu"
+              aria-owns="bd-select-28-menu"
               role="combobox"
             >
               <div
@@ -1169,13 +911,13 @@ exports[`renders worksheet 1`] = `
                     >
                       <input
                         aria-autocomplete="list"
-                        aria-controls="bd-select-25-menu"
-                        aria-labelledby="bd-select-25-label"
+                        aria-controls="bd-select-28-menu"
+                        aria-labelledby="bd-select-28-label"
                         autocomplete="off"
                         class="styled__StyledInput-g32raa-1 bmlNhQ"
-                        id="bd-select-25-input"
+                        id="bd-select-28-input"
                         readonly=""
-                        value="Cloth"
+                        value=""
                       />
                     </div>
                     <div
@@ -1184,7 +926,7 @@ exports[`renders worksheet 1`] = `
                       <button
                         aria-label="toggle menu"
                         class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
-                        id="bd-select-25-toggle-button"
+                        id="bd-select-28-toggle-button"
                         tabindex="-1"
                         type="button"
                       >
@@ -1220,9 +962,9 @@ exports[`renders worksheet 1`] = `
               style="position: absolute; left: 0px; top: 0px;"
             >
               <ul
-                aria-labelledby="bd-select-25-label"
+                aria-labelledby="bd-select-28-label"
                 class="styled__StyledList-sc-5w3dcq-0 fWrtug"
-                id="bd-select-25-menu"
+                id="bd-select-28-menu"
                 role="listbox"
               />
             </div>
@@ -1248,7 +990,770 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          9
+          50
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 jpxEqg"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Variant
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 iNYKgU"
+        type="checkbox"
+      >
+        <div
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+        >
+          <div
+            class="styled__CheckboxContainer-s1u0st-1 kzragh"
+          >
+            <input
+              aria-checked="true"
+              aria-labelledby="bd-checkbox_label-32"
+              checked=""
+              class="styled__HiddenCheckbox-s1u0st-2 bDurHK"
+              id="bd-checkbox-31"
+              type="checkbox"
+            />
+            <label
+              aria-hidden="true"
+              class="styled__StyledCheckbox-s1u0st-3 hvGsjJ"
+              for="bd-checkbox-31"
+            >
+              <svg
+                class="base__StyledIcon-a9u0e1-0 gqewKr"
+                fill="currentColor"
+                height="24"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path
+                  d="M0 0h24v24H0V0z"
+                  fill="none"
+                />
+                <path
+                  d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+                />
+              </svg>
+            </label>
+            <div
+              class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
+            >
+              <label
+                class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                for="bd-checkbox-31"
+                hidden=""
+                id="bd-checkbox_label-32"
+              >
+                Checked
+              </label>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 emuEZs"
+        type="select"
+      >
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+        >
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-34-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-34-menu"
+                        aria-labelledby="bd-select-34-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-34-input"
+                        readonly=""
+                        value=""
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-34-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-34-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-34-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          50
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 jpxEqg"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Variant
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 iNYKgU"
+        type="checkbox"
+      >
+        <div
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+        >
+          <div
+            class="styled__CheckboxContainer-s1u0st-1 kzragh"
+          >
+            <input
+              aria-checked="false"
+              aria-labelledby="bd-checkbox_label-38"
+              class="styled__HiddenCheckbox-s1u0st-2 bDurHK"
+              id="bd-checkbox-37"
+              type="checkbox"
+            />
+            <label
+              aria-hidden="true"
+              class="styled__StyledCheckbox-s1u0st-3 qxpOx"
+              for="bd-checkbox-37"
+            >
+              <svg
+                class="base__StyledIcon-a9u0e1-0 gqewKr"
+                fill="currentColor"
+                height="24"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path
+                  d="M0 0h24v24H0V0z"
+                  fill="none"
+                />
+                <path
+                  d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+                />
+              </svg>
+            </label>
+            <div
+              class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
+            >
+              <label
+                class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                for="bd-checkbox-37"
+                hidden=""
+                id="bd-checkbox_label-38"
+              >
+                Unchecked
+              </label>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        type="select"
+      >
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+        >
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-40-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-40-menu"
+                        aria-labelledby="bd-select-40-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-40-input"
+                        readonly=""
+                        value="Leather"
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-40-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-40-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-40-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRPtqa"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          49
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 dQfqjh"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Dress Name One
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 iNYKgU"
+        type="checkbox"
+      >
+        <div
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+        >
+          <div
+            class="styled__CheckboxContainer-s1u0st-1 kzragh"
+          >
+            <input
+              aria-checked="true"
+              aria-labelledby="bd-checkbox_label-44"
+              checked=""
+              class="styled__HiddenCheckbox-s1u0st-2 bDurHK"
+              id="bd-checkbox-43"
+              type="checkbox"
+            />
+            <label
+              aria-hidden="true"
+              class="styled__StyledCheckbox-s1u0st-3 hvGsjJ"
+              for="bd-checkbox-43"
+            >
+              <svg
+                class="base__StyledIcon-a9u0e1-0 gqewKr"
+                fill="currentColor"
+                height="24"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path
+                  d="M0 0h24v24H0V0z"
+                  fill="none"
+                />
+                <path
+                  d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+                />
+              </svg>
+            </label>
+            <div
+              class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
+            >
+              <label
+                class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                for="bd-checkbox-43"
+                hidden=""
+                id="bd-checkbox_label-44"
+              >
+                Checked
+              </label>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        type="select"
+      >
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+        >
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-46-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-46-menu"
+                        aria-labelledby="bd-select-46-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-46-input"
+                        readonly=""
+                        value="Leather"
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-46-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-46-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-46-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          50
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class="styled__Status-sc-1aacki0-0 dQfqjh"
+      />
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Fans Name One
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 iNYKgU"
+        type="checkbox"
+      >
+        <div
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+        >
+          <div
+            class="styled__CheckboxContainer-s1u0st-1 kzragh"
+          >
+            <input
+              aria-checked="true"
+              aria-labelledby="bd-checkbox_label-50"
+              checked=""
+              class="styled__HiddenCheckbox-s1u0st-2 bDurHK"
+              id="bd-checkbox-49"
+              type="checkbox"
+            />
+            <label
+              aria-hidden="true"
+              class="styled__StyledCheckbox-s1u0st-3 hvGsjJ"
+              for="bd-checkbox-49"
+            >
+              <svg
+                class="base__StyledIcon-a9u0e1-0 gqewKr"
+                fill="currentColor"
+                height="24"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path
+                  d="M0 0h24v24H0V0z"
+                  fill="none"
+                />
+                <path
+                  d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+                />
+              </svg>
+            </label>
+            <div
+              class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
+            >
+              <label
+                class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                for="bd-checkbox-49"
+                hidden=""
+                id="bd-checkbox_label-50"
+              >
+                Checked
+              </label>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Text
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ckbwVn"
+        type="select"
+      >
+        <div
+          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+        >
+          <div>
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="bd-select-52-menu"
+              role="combobox"
+            >
+              <div
+                class="styled__StyledInputContainer-sc-1v66t78-2 hYKybX"
+              >
+                <div>
+                  <span
+                    class="styled__StyledInputWrapper-g32raa-0 fFUgrF"
+                  >
+                    <div
+                      class="styled__StyledInputContent-g32raa-3 dZqoEc"
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="bd-select-52-menu"
+                        aria-labelledby="bd-select-52-label"
+                        autocomplete="off"
+                        class="styled__StyledInput-g32raa-1 bmlNhQ"
+                        id="bd-select-52-input"
+                        readonly=""
+                        value="Leather"
+                      />
+                    </div>
+                    <div
+                      class="styled__StyledIconWrapper-g32raa-2 crTPTg"
+                    >
+                      <button
+                        aria-label="toggle menu"
+                        class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__DropdownButton-sc-1v66t78-3 jVMXGD"
+                        id="bd-select-52-toggle-button"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+                        >
+                          <svg
+                            class="base__StyledIcon-a9u0e1-0 gqewKr styled__StyledDropdownIcon-sc-1v66t78-1 cseddx"
+                            fill="currentColor"
+                            height="24"
+                            stroke="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path
+                              d="M0 0h24v24H0V0z"
+                              fill="none"
+                            />
+                            <path
+                              d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="styled__StyledBox-sj5f1m-0 dUQkBL"
+              style="position: absolute; left: 0px; top: 0px;"
+            >
+              <ul
+                aria-labelledby="bd-select-52-label"
+                class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+                id="bd-select-52-menu"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
+        type="text"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          Field
+        </p>
+      </td>
+      <td
+        class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
+        type="number"
+      >
+        <p
+          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          color="secondary70"
+        >
+          50
         </p>
       </td>
     </tr>
