@@ -22,7 +22,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
           columnIndex={columnIndex}
           hash={column.hash}
           key={`${rowIndex}-${columnIndex}`}
-          options={column.type === 'select' ? column.options : []}
+          options={column.type === 'select' ? column.options : undefined}
           rowIndex={rowIndex}
           type={column.type ?? 'text'}
           validation={column.validation}

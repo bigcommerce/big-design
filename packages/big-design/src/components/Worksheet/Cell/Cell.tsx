@@ -9,8 +9,8 @@ import { Cell as TCell, WorksheetColumn, WorksheetItem, WorksheetSelectableColum
 import { StyledCell } from './styled';
 
 interface CellProps<Item> extends TCell<Item> {
-  options: WorksheetSelectableColumn<Item>['options'];
-  validation: WorksheetColumn<Item>['validation'];
+  options?: WorksheetSelectableColumn<Item>['options'];
+  validation?: WorksheetColumn<Item>['validation'];
 }
 
 const InternalCell = <T extends WorksheetItem>({

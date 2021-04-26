@@ -10,7 +10,7 @@ export interface SelectEditorProps<Item> {
   cell: Cell<Item>;
   isEdited: boolean;
   onChange(value: unknown): void;
-  options: WorksheetSelectableColumn<Item>['options'];
+  options?: WorksheetSelectableColumn<Item>['options'];
 }
 
 const InternalSelectEditor = <T extends WorksheetItem>({
