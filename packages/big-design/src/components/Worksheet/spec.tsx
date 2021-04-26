@@ -1,4 +1,4 @@
-import { act, fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitForElement } from '@testing-library/react';
 import React from 'react';
 
 import { useStore } from './hooks';
@@ -16,7 +16,17 @@ interface Product {
 const columns: WorksheetColumn<Product>[] = [
   { hash: 'productName', header: 'Product name' },
   { hash: 'categories', header: 'Categories' },
-  { hash: 'otherField', header: 'Other field' },
+  {
+    hash: 'otherField',
+    header: 'Other field',
+    options: [
+      { value: 'Plastic', content: 'Plastic' },
+      { value: 'Leather', content: 'Leather' },
+      { value: 'Cloth', content: 'Cloth' },
+    ],
+    type: 'select',
+    validation: (value) => !!value,
+  },
   { hash: 'otherField2', header: 'Other field' },
   { hash: 'otherField3', header: 'Other field', type: 'number', validation: (value: number) => value >= 4 },
 ];
@@ -25,63 +35,63 @@ const items = [
   {
     productName: 'Shoes Name Three',
     categories: 'Shoes',
-    otherField: 'Text',
+    otherField: 'Plastic',
     otherField2: 'Field',
     otherField3: 1,
   },
   {
     productName: 'Shoes Name Two',
     categories: 'Shoes',
-    otherField: 'Text',
+    otherField: 'Plastic',
     otherField2: 'Field',
     otherField3: 2,
   },
   {
     productName: 'Shoes Name One',
     categories: 'Shoes',
-    otherField: 'Text',
+    otherField: 'Plastic',
     otherField2: 'Field',
     otherField3: 3,
   },
   {
     productName: 'Variant',
     categories: 'Dresses',
-    otherField: 'Text',
+    otherField: 'Leather',
     otherField2: 'Field',
     otherField3: 4,
   },
   {
     productName: 'Variant',
     categories: 'Dresses',
-    otherField: 'Text',
+    otherField: 'Leather',
     otherField2: 'Field',
     otherField3: 5,
   },
   {
     productName: 'Variant',
     categories: 'Dresses',
-    otherField: 'Text',
+    otherField: 'Leather',
     otherField2: 'Field',
     otherField3: 6,
   },
   {
     productName: 'Variant',
     categories: 'Dresses',
-    otherField: 'Text',
+    otherField: 'Plastic',
     otherField2: 'Field',
     otherField3: 7,
   },
   {
     productName: 'Dress Name One',
     categories: 'Dresses',
-    otherField: 'Text',
+    otherField: '',
     otherField2: 'Field',
     otherField3: 8,
   },
   {
     productName: 'Fans Name One',
     categories: 'Dresses',
-    otherField: 'Text',
+    otherField: 'Cloth',
     otherField2: 'Field',
     otherField3: 9,
   },
@@ -93,19 +103,23 @@ let handleErrors = jest.fn();
 const initialStoreState = useStore.getState();
 
 beforeEach(() => {
-  handleChange = jest.fn();
-  handleErrors = jest.fn();
-  act(() => useStore.setState(initialStoreState, true));
+  act(() => {
+    handleChange = jest.fn();
+    handleErrors = jest.fn();
+    useStore.setState(initialStoreState, true);
+  });
 });
 
-test('renders worksheet', () => {
+test('renders worksheet', async () => {
   const { container } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
   expect(container.firstChild).toMatchSnapshot();
+
+  await waitForElement(() => screen.getAllByRole('combobox'));
 });
 
 describe('selection', () => {
-  test('selects cell on click', () => {
+  test('selects cell on click', async () => {
     const { getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
     const cell = getByText('Shoes Name One').parentElement as HTMLTableDataCellElement;
     const row = cell.parentElement as HTMLTableRowElement;
@@ -114,11 +128,13 @@ describe('selection', () => {
 
     expect(cell).toHaveStyle('border-color: #3C64F4');
     expect(row.firstChild).toHaveStyle('background-color: #3C64F4');
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
   });
 });
 
 describe('edition', () => {
-  test('onChange is not called when value does not change', () => {
+  test('onChange is not called when value does not change', async () => {
     const { getByDisplayValue, getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
@@ -137,10 +153,12 @@ describe('edition', () => {
     cell = getByText('Shoes Name One');
     expect(cell).toBeDefined();
     expect(handleChange).not.toHaveBeenCalled();
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
   });
 
-  test('onChange is called when value changes', () => {
-    const { getByDisplayValue, getByText } = render(
+  test('onChange is called when value changes', async () => {
+    const { getAllByDisplayValue, getAllByRole, getByDisplayValue, getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
@@ -176,6 +194,26 @@ describe('edition', () => {
     expect(handleChange).toHaveBeenCalledWith([
       { columnIndex: 0, hash: 'productName', rowIndex: 2, type: 'text', value: 'Shoes Name One Edit 2' },
     ]);
+
+    const cells = getAllByDisplayValue('Plastic');
+
+    act(() => {
+      fireEvent.click(cells[0]);
+    });
+
+    const options = getAllByRole('option');
+
+    act(() => {
+      fireEvent.click(options[2]);
+    });
+
+    expect(handleChange).toHaveBeenCalledTimes(3);
+    expect(handleChange).toHaveBeenCalledWith([
+      { columnIndex: 0, hash: 'productName', rowIndex: 2, type: 'text', value: 'Shoes Name One Edit 2' },
+      { columnIndex: 2, hash: 'otherField', rowIndex: 0, type: 'select', value: 'Cloth' },
+    ]);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
   });
 
   test('edition does not mutate items array', () => {
@@ -183,7 +221,7 @@ describe('edition', () => {
     expect(items[2]).toStrictEqual({
       productName: 'Shoes Name One',
       categories: 'Shoes',
-      otherField: 'Text',
+      otherField: 'Plastic',
       otherField2: 'Field',
       otherField3: 3,
     });
@@ -191,7 +229,7 @@ describe('edition', () => {
 });
 
 describe('validation', () => {
-  test('invalid cells have the red border', () => {
+  test('invalid cells have the red border', async () => {
     const { getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} onErrors={handleErrors} />,
     );
@@ -200,9 +238,11 @@ describe('validation', () => {
 
     expect(cell).toHaveStyle('border-color: #DB3643');
     expect(row.firstChild).toHaveStyle('background-color: #DB3643');
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
   });
 
-  test('onErrors gets called with invalid cells', () => {
+  test('onErrors gets called with invalid cells', async () => {
     let cell;
     let input;
 
@@ -210,14 +250,17 @@ describe('validation', () => {
       <Worksheet columns={columns} items={items} onChange={handleChange} onErrors={handleErrors} />,
     );
 
+    await waitForElement(() => screen.getAllByRole('combobox'));
+
     expect(handleErrors).toBeCalledTimes(1);
     expect(handleErrors).toBeCalledWith([
       { columnIndex: 4, hash: 'otherField3', rowIndex: 0, type: 'number', value: 1 },
       { columnIndex: 4, hash: 'otherField3', rowIndex: 1, type: 'number', value: 2 },
       { columnIndex: 4, hash: 'otherField3', rowIndex: 2, type: 'number', value: 3 },
+      { columnIndex: 2, hash: 'otherField', rowIndex: 7, type: 'select', value: '' },
     ]);
 
-    cell = getByText('1');
+    cell = getByText('1') as HTMLElement;
 
     fireEvent.doubleClick(cell);
 
@@ -231,6 +274,7 @@ describe('validation', () => {
       { columnIndex: 4, hash: 'otherField3', rowIndex: 0, type: 'number', value: 2 },
       { columnIndex: 4, hash: 'otherField3', rowIndex: 1, type: 'number', value: 2 },
       { columnIndex: 4, hash: 'otherField3', rowIndex: 2, type: 'number', value: 3 },
+      { columnIndex: 2, hash: 'otherField', rowIndex: 7, type: 'select', value: '' },
     ]);
 
     cell = getByText('3');
@@ -246,12 +290,13 @@ describe('validation', () => {
     expect(handleErrors).toBeCalledWith([
       { columnIndex: 4, hash: 'otherField3', rowIndex: 0, type: 'number', value: 2 },
       { columnIndex: 4, hash: 'otherField3', rowIndex: 1, type: 'number', value: 2 },
+      { columnIndex: 2, hash: 'otherField', rowIndex: 7, type: 'select', value: '' },
     ]);
   });
 });
 
 describe('TextEditor', () => {
-  test('renders TextEditor', () => {
+  test('renders TextEditor', async () => {
     const { getByDisplayValue, getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
@@ -263,9 +308,11 @@ describe('TextEditor', () => {
     const input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
 
     expect(input).toBeDefined();
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
   });
 
-  test('TextEditor shows the appropriate state', () => {
+  test('TextEditor shows the appropriate state', async () => {
     const { getByDisplayValue, getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
@@ -295,5 +342,43 @@ describe('TextEditor', () => {
     input = getByDisplayValue('Shoes Name One Edit') as HTMLInputElement;
 
     expect(input).toHaveStyle('background-color: #FFF9E6;');
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+});
+
+describe('SelectEditor', () => {
+  test('renders SelectEditor', async () => {
+    const { getAllByRole } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const cells = getAllByRole('combobox');
+
+    expect(cells.length).toBe(9);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('SelectEditor shows the appropriate state', async () => {
+    const { getAllByRole, getAllByDisplayValue } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const cells = getAllByDisplayValue('Plastic');
+
+    expect(cells[0]).toHaveStyle('background-color: white');
+
+    act(() => {
+      fireEvent.click(cells[0]);
+    });
+
+    const options = getAllByRole('option');
+
+    act(() => {
+      fireEvent.click(options[2]);
+    });
+
+    expect(cells[0]).toHaveStyle('background-color: #FFF9E6;');
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
   });
 });

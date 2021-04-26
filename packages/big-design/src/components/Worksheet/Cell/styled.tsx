@@ -14,7 +14,7 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
   background-color: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => `${theme.helpers.remCalc(0.5)} solid ${theme.colors.secondary30}`};
   box-sizing: border-box;
-  padding: ${({ theme }) => `${theme.helpers.remCalc(6)} ${theme.helpers.remCalc(17)}`};
+  padding: ${({ theme, type }) => (type === 'select' ? 0 : `${theme.helpers.remCalc(6)} ${theme.helpers.remCalc(17)}`)};
   text-align: ${({ type }) => (type === 'number' ? 'right' : 'left')};
   user-select: none;
 
