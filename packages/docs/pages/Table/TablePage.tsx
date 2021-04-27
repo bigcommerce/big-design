@@ -1,10 +1,11 @@
-import { H0, H1, PillTabsProps, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
+import { H0, H1, H2, PillTabsProps, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
 import {
   TableColumnsPropTable,
   TablePropTable,
+  TableSearchPropTable,
   TableSelectablePropTable,
   TableSortablePropTable,
 } from '../../PropTables';
@@ -76,8 +77,10 @@ const TablePage = () => {
       <TableColumnsPropTable id="table-columns-prop-table" />
       <TableSelectablePropTable id="table-selectable-prop-table" />
       <TableSortablePropTable id="table-sortable-prop-table" />
+      <TableSearchPropTable id="table-search-prop-table" />
 
-      <H1>Usage with selectable</H1>
+      <H1>Examples</H1>
+      <H2>Usage with selectable</H2>
 
       <CodePreview scope={{ data, columns }}>
         {/* jsx-to-string:start */}
@@ -100,7 +103,7 @@ const TablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with pagination</H1>
+      <H2>Usage with pagination</H2>
 
       <CodePreview scope={{ data, columns }}>
         {/* jsx-to-string:start */}
@@ -143,7 +146,7 @@ const TablePage = () => {
         }}
         {/* jsx-to-string:end */}
       </CodePreview>
-      <H1>Usage with sortable</H1>
+      <H2>Usage with sortable</H2>
 
       <CodePreview scope={{ data, columns, sort }}>
         {/* jsx-to-string:start */}
@@ -179,7 +182,7 @@ const TablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with TableFigure</H1>
+      <H2>Usage with TableFigure</H2>
 
       <Text>
         <Code primary>TableFigure</Code> components are used to wrap tables and any relevant information to be grouped
@@ -224,7 +227,7 @@ const TablePage = () => {
         TableFigure supports all native <Code>&lt;figure /&gt;</Code> element attributes.
       </Text>
 
-      <H1>Customization Example</H1>
+      <H2>Customization Example</H2>
 
       <CodePreview>
         {/* jsx-to-string:start */}
@@ -255,7 +258,7 @@ const TablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with drag and drop</H1>
+      <H2>Usage with drag and drop</H2>
 
       <CodePreview scope={{ data, dragEnd }}>
         {/* jsx-to-string:start */}
@@ -279,7 +282,7 @@ const TablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with filters</H1>
+      <H2>Usage with filters</H2>
 
       <CodePreview scope={{ data }}>
         {/* jsx-to-string:start */}
@@ -310,6 +313,44 @@ const TablePage = () => {
               ]}
               items={items}
               filters={pillTabs}
+            />
+          );
+        }}
+        {/* jsx-to-string:end */}
+      </CodePreview>
+
+      <H2>Usage with search</H2>
+
+      <CodePreview scope={{ data }}>
+        {/* jsx-to-string:start */}
+        {function Example() {
+          const [items, setItems] = useState(data);
+          const [searchValue, setSearchValue] = useState('');
+          const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value);
+
+          const onSubmit = () => {
+            setItems((prevItems) => {
+              if (searchValue) {
+                return prevItems.filter((item) => item.name.includes(searchValue));
+              }
+
+              return data;
+            });
+          };
+
+          return (
+            <Table
+              columns={[
+                { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
+                { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
+                { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
+              ]}
+              items={items}
+              search={{
+                value: searchValue,
+                onChange,
+                onSubmit,
+              }}
             />
           );
         }}

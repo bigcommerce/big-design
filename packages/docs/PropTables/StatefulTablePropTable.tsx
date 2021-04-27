@@ -37,6 +37,13 @@ const statefulTableProps: Prop[] = [
     description: 'Defines if table should be paginated.',
   },
   {
+    name: 'search',
+    types: 'boolean',
+    defaultValue: 'false',
+    description:
+      'Indicates whether to display a search field for the table. Searches within visible string, number, or boolean type fields.',
+  },
+  {
     name: 'selectable',
     types: 'boolean',
     defaultValue: 'false',

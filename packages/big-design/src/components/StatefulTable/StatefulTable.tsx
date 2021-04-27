@@ -20,12 +20,16 @@ export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable
 }
 
 export interface StatefulTableProps<T>
-  extends Omit<TableProps<T>, 'columns' | 'pagination' | 'filters' | 'selectable' | 'sortable' | 'onRowDrop'> {
+  extends Omit<
+    TableProps<T>,
+    'columns' | 'pagination' | 'filters' | 'search' | 'selectable' | 'sortable' | 'onRowDrop'
+  > {
   columns: Array<StatefulTableColumn<T>>;
   pagination?: boolean;
   filters?: StatefulTablePillTabFilter<T>;
   selectable?: boolean;
   defaultSelected?: T[];
+  search?: boolean;
   onRowDrop?(items: T[]): void;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }
@@ -51,6 +55,7 @@ const InternalStatefulTable = <T extends TableItem>({
   keyField,
   onSelectionChange,
   onRowDrop,
+  search,
   pagination = false,
   filters,
   selectable = false,
@@ -61,7 +66,11 @@ const InternalStatefulTable = <T extends TableItem>({
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
   const sortable = useMemo(() => columns.some((column) => column.sortKey || column.sortFn), [columns]);
 
-  const [state, dispatch] = useReducer(reducer, { columns, defaultSelected, items, pagination, filters }, reducerInit);
+  const [state, dispatch] = useReducer(
+    reducer,
+    { columns, defaultSelected, items, pagination, filters, search },
+    reducerInit,
+  );
 
   const columnsChangedCallback = useCallback(() => dispatch({ type: 'COLUMNS_CHANGED', columns }), [columns]);
   const itemsChangedCallback = useCallback(
@@ -135,7 +144,20 @@ const InternalStatefulTable = <T extends TableItem>({
     };
 
     dispatch({ type: 'SET_PILL_TABS_PROPS', pillTabsProps });
-  }, [filters, state.activePills]);
+  }, [filters, state.activePills, search]);
+
+  const searchProps = useMemo(
+    () =>
+      search
+        ? {
+            value: state.searchValue,
+            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+              dispatch({ type: 'SEARCH_VALUE_CHANGE', value: e.target.value }),
+            onSubmit: () => dispatch({ type: 'ON_SEARCH_SUBMIT', filterPills: filters?.filter }),
+          }
+        : undefined,
+    [search, state.searchValue, filters],
+  );
 
   return (
     <Table
@@ -146,6 +168,7 @@ const InternalStatefulTable = <T extends TableItem>({
       items={state.currentItems}
       keyField={keyField}
       pagination={paginationOptions}
+      search={searchProps}
       selectable={selectableOptions}
       sortable={sortableOptions}
       stickyHeader={stickyHeader}

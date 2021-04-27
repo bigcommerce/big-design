@@ -165,7 +165,7 @@ const StatefulTablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with drag and drop</H1>
+      <H2>Usage with drag and drop</H2>
 
       <CodePreview>
         {/* jsx-to-string:start */}
@@ -187,7 +187,7 @@ const StatefulTablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
-      <H1>Usage with filters</H1>
+      <H2>Usage with filters</H2>
 
       <CodePreview>
         {/* jsx-to-string:start */}
@@ -221,6 +221,29 @@ const StatefulTablePage = () => {
             ],
           }}
         />
+        {/* jsx-to-string:end */}
+      </CodePreview>
+
+      <H2>Usage with search</H2>
+
+      <CodePreview scope={{ items }}>
+        {/* jsx-to-string:start */}
+        {function Example() {
+          return (
+            <StatefulTable
+              itemName="Products"
+              columns={[
+                { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+                { header: 'Name', hash: 'name', render: ({ name }) => name },
+                { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, sortKey: 'stock' },
+              ]}
+              items={items}
+              pagination
+              stickyHeader
+              search
+            />
+          );
+        }}
         {/* jsx-to-string:end */}
       </CodePreview>
     </>

@@ -13,6 +13,7 @@ import { Head } from './Head';
 import { HeaderCell } from './HeaderCell';
 import { DragIconHeaderCell, HeaderCheckboxCell } from './HeaderCell/HeaderCell';
 import { Row } from './Row';
+import { Search } from './Search';
 import { StyledTable, StyledTableFigure } from './styled';
 import { TableColumn, TableItem, TableProps } from './types';
 
@@ -34,6 +35,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     sortable,
     stickyHeader,
     style,
+    search,
     ...rest
   } = props;
 
@@ -215,8 +217,20 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     }
 
     return (
-      <Box marginBottom={shouldRenderActions() ? 'none' : 'medium'}>
+      <Box marginBottom={shouldRenderActions() && !search ? 'none' : 'medium'}>
         <PillTabs {...filters} />
+      </Box>
+    );
+  };
+
+  const renderSearch = () => {
+    if (!search) {
+      return;
+    }
+
+    return (
+      <Box marginBottom={shouldRenderActions() ? 'none' : 'medium'}>
+        <Search {...search} />
       </Box>
     );
   };
@@ -224,6 +238,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   return (
     <>
       {renderPillTabs()}
+      {renderSearch()}
       {shouldRenderActions() && (
         <Actions
           customActions={actions}

@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 
 import { MarginProps } from '../../mixins';
+import { FormProps } from '../Form';
+import { InputProps } from '../Input';
 import { PaginationProps } from '../Pagination';
 import { PillTabsProps } from '../PillTabs';
 
@@ -38,6 +40,12 @@ export interface TableColumn<T> extends TableColumnDisplayProps {
 
 export type TablePaginationProps = Omit<PaginationProps, keyof MarginProps>;
 
+export interface TableSearch {
+  value: InputProps['value'];
+  onChange: InputProps['onChange'];
+  onSubmit: FormProps['onSubmit'];
+}
+
 export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElement> {
   actions?: React.ReactNode;
   columns: Array<TableColumn<T>>;
@@ -49,6 +57,7 @@ export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElemen
   filters?: PillTabsProps;
   onRowDrop?(from: number, to: number): void;
   pagination?: TablePaginationProps;
+  search?: TableSearch;
   selectable?: TableSelectable<T>;
   sortable?: TableSortable<T>;
   stickyHeader?: boolean;
