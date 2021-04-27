@@ -40,7 +40,8 @@ const statefulTableProps: Prop[] = [
     name: 'search',
     types: 'boolean',
     defaultValue: 'false',
-    description: 'Defines if table should have search by visible fields with type string, number, boolean',
+    description:
+      'Indicates whether to display a search field for the table. Searches within visible string, number, or boolean type fields.',
   },
   {
     name: 'selectable',
