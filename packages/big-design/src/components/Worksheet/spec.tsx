@@ -7,93 +7,104 @@ import { Worksheet } from './Worksheet';
 
 interface Product {
   productName: string;
-  categories: string;
+  visibleOnStorefront: boolean;
   otherField: string;
   otherField2: string;
-  otherField3: number;
+  otherField3: string;
+  numberField: number;
 }
 
 const columns: WorksheetColumn<Product>[] = [
-  { hash: 'productName', header: 'Product name' },
-  { hash: 'categories', header: 'Categories' },
+  { hash: 'productName', header: 'Product name', validation: (value) => !!value },
+  { hash: 'visibleOnStorefront', header: 'Visible on storefront', type: 'checkbox' },
+  { hash: 'otherField', header: 'Other field' },
   {
-    hash: 'otherField',
+    hash: 'otherField2',
     header: 'Other field',
-    options: [
-      { value: 'Plastic', content: 'Plastic' },
-      { value: 'Leather', content: 'Leather' },
-      { value: 'Cloth', content: 'Cloth' },
-    ],
     type: 'select',
+    options: [
+      { value: 'plastic', content: 'Plastic' },
+      { value: 'leather', content: 'Leather' },
+      { value: 'cloth', content: 'Cloth' },
+    ],
     validation: (value) => !!value,
   },
-  { hash: 'otherField2', header: 'Other field' },
-  { hash: 'otherField3', header: 'Other field', type: 'number', validation: (value: number) => value >= 4 },
+  { hash: 'otherField3', header: 'Other field' },
+  { hash: 'numberField', header: 'Number field', type: 'number', validation: (value) => value >= 50 },
 ];
 
-const items = [
+const items: Product[] = [
   {
     productName: 'Shoes Name Three',
-    categories: 'Shoes',
-    otherField: 'Plastic',
-    otherField2: 'Field',
-    otherField3: 1,
+    visibleOnStorefront: true,
+    otherField: 'Text',
+    otherField2: 'plastic',
+    otherField3: 'Field',
+    numberField: 50,
   },
   {
     productName: 'Shoes Name Two',
-    categories: 'Shoes',
-    otherField: 'Plastic',
-    otherField2: 'Field',
-    otherField3: 2,
+    visibleOnStorefront: true,
+    otherField: 'Text',
+    otherField2: 'plastic',
+    otherField3: 'Field',
+    numberField: 50,
   },
   {
     productName: 'Shoes Name One',
-    categories: 'Shoes',
-    otherField: 'Plastic',
-    otherField2: 'Field',
-    otherField3: 3,
+    visibleOnStorefront: false,
+    otherField: 'Text',
+    otherField2: 'leather',
+    otherField3: 'Field',
+    numberField: 50,
   },
   {
     productName: 'Variant',
-    categories: 'Dresses',
-    otherField: 'Leather',
-    otherField2: 'Field',
-    otherField3: 4,
+    visibleOnStorefront: true,
+    otherField: 'Text',
+    otherField2: 'leather',
+    otherField3: 'Field',
+    numberField: 50,
+  },
+  {
+    productName: '',
+    visibleOnStorefront: true,
+    otherField: 'Text',
+    otherField2: '',
+    otherField3: 'Field',
+    numberField: 50,
   },
   {
     productName: 'Variant',
-    categories: 'Dresses',
-    otherField: 'Leather',
-    otherField2: 'Field',
-    otherField3: 5,
+    visibleOnStorefront: true,
+    otherField: 'Text',
+    otherField2: '',
+    otherField3: 'Field',
+    numberField: 50,
   },
   {
     productName: 'Variant',
-    categories: 'Dresses',
-    otherField: 'Leather',
-    otherField2: 'Field',
-    otherField3: 6,
-  },
-  {
-    productName: 'Variant',
-    categories: 'Dresses',
-    otherField: 'Plastic',
-    otherField2: 'Field',
-    otherField3: 7,
+    visibleOnStorefront: false,
+    otherField: 'Text',
+    otherField2: 'leather',
+    otherField3: 'Field',
+    numberField: 49,
   },
   {
     productName: 'Dress Name One',
-    categories: 'Dresses',
-    otherField: '',
-    otherField2: 'Field',
-    otherField3: 8,
+    visibleOnStorefront: true,
+    otherField: 'Text',
+    otherField2: 'leather',
+    otherField3: 'Field',
+    numberField: 50,
   },
   {
     productName: 'Fans Name One',
-    categories: 'Dresses',
-    otherField: 'Cloth',
-    otherField2: 'Field',
-    otherField3: 9,
+    visibleOnStorefront: true,
+    otherField: 'Text',
+    otherField2: 'leather',
+    otherField3: 'Field',
+    numberField: 50,
   },
 ];
 
@@ -158,7 +169,7 @@ describe('edition', () => {
   });
 
   test('onChange is called when value changes', async () => {
-    const { getAllByDisplayValue, getAllByRole, getByDisplayValue, getByText } = render(
+    const { getAllByDisplayValue, getAllByLabelText, getAllByRole, getByDisplayValue, getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
@@ -195,7 +206,7 @@ describe('edition', () => {
       { columnIndex: 0, hash: 'productName', rowIndex: 2, type: 'text', value: 'Shoes Name One Edit 2' },
     ]);
 
-    const cells = getAllByDisplayValue('Plastic');
+    let cells = getAllByDisplayValue('Plastic');
 
     act(() => {
       fireEvent.click(cells[0]);
@@ -210,7 +221,20 @@ describe('edition', () => {
     expect(handleChange).toHaveBeenCalledTimes(3);
     expect(handleChange).toHaveBeenCalledWith([
       { columnIndex: 0, hash: 'productName', rowIndex: 2, type: 'text', value: 'Shoes Name One Edit 2' },
-      { columnIndex: 2, hash: 'otherField', rowIndex: 0, type: 'select', value: 'Cloth' },
+      { columnIndex: 3, hash: 'otherField2', rowIndex: 0, type: 'select', value: 'cloth' },
+    ]);
+
+    cells = getAllByLabelText('Checked');
+
+    act(() => {
+      fireEvent.click(cells[0]);
+    });
+
+    expect(handleChange).toHaveBeenCalledTimes(4);
+    expect(handleChange).toHaveBeenCalledWith([
+      { columnIndex: 0, hash: 'productName', rowIndex: 2, type: 'text', value: 'Shoes Name One Edit 2' },
+      { columnIndex: 3, hash: 'otherField2', rowIndex: 0, type: 'select', value: 'cloth' },
+      { columnIndex: 1, hash: 'visibleOnStorefront', rowIndex: 0, type: 'checkbox', value: false },
     ]);
 
     await waitForElement(() => screen.getAllByRole('combobox'));
@@ -220,10 +244,11 @@ describe('edition', () => {
     // At this point, if our previous tests mutated the items array, this value would be different
     expect(items[2]).toStrictEqual({
       productName: 'Shoes Name One',
-      categories: 'Shoes',
-      otherField: 'Plastic',
-      otherField2: 'Field',
-      otherField3: 3,
+      visibleOnStorefront: false,
+      otherField: 'Text',
+      otherField2: 'leather',
+      otherField3: 'Field',
+      numberField: 50,
     });
   });
 });
@@ -233,10 +258,11 @@ describe('validation', () => {
     const { getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} onErrors={handleErrors} />,
     );
-    const cell = getByText('1').parentElement as HTMLTableDataCellElement;
+
+    const cell = getByText('49').parentElement as HTMLTableDataCellElement;
     const row = cell.parentElement as HTMLTableRowElement;
 
-    expect(cell).toHaveStyle('border-color: #DB3643');
+    expect(cell).toHaveStyle('border-color: #db3643');
     expect(row.firstChild).toHaveStyle('background-color: #DB3643');
 
     await waitForElement(() => screen.getAllByRole('combobox'));
@@ -254,43 +280,43 @@ describe('validation', () => {
 
     expect(handleErrors).toBeCalledTimes(1);
     expect(handleErrors).toBeCalledWith([
-      { columnIndex: 4, hash: 'otherField3', rowIndex: 0, type: 'number', value: 1 },
-      { columnIndex: 4, hash: 'otherField3', rowIndex: 1, type: 'number', value: 2 },
-      { columnIndex: 4, hash: 'otherField3', rowIndex: 2, type: 'number', value: 3 },
-      { columnIndex: 2, hash: 'otherField', rowIndex: 7, type: 'select', value: '' },
+      { columnIndex: 0, hash: 'productName', rowIndex: 4, type: 'text', value: '' },
+      { columnIndex: 3, hash: 'otherField2', rowIndex: 4, type: 'select', value: '' },
+      { columnIndex: 3, hash: 'otherField2', rowIndex: 5, type: 'select', value: '' },
+      { columnIndex: 5, hash: 'numberField', rowIndex: 6, type: 'number', value: 49 },
     ]);
 
-    cell = getByText('1') as HTMLElement;
+    cell = getByText('49') as HTMLElement;
 
     fireEvent.doubleClick(cell);
 
-    input = getByDisplayValue('1') as HTMLInputElement;
+    input = getByDisplayValue('49') as HTMLInputElement;
 
-    fireEvent.change(input, { target: { value: 2 } });
+    fireEvent.change(input, { target: { value: 40 } });
     fireEvent.keyDown(input, { key: 'Enter' });
 
     expect(handleErrors).toBeCalledTimes(2);
     expect(handleErrors).toBeCalledWith([
-      { columnIndex: 4, hash: 'otherField3', rowIndex: 0, type: 'number', value: 2 },
-      { columnIndex: 4, hash: 'otherField3', rowIndex: 1, type: 'number', value: 2 },
-      { columnIndex: 4, hash: 'otherField3', rowIndex: 2, type: 'number', value: 3 },
-      { columnIndex: 2, hash: 'otherField', rowIndex: 7, type: 'select', value: '' },
+      { columnIndex: 0, hash: 'productName', rowIndex: 4, type: 'text', value: '' },
+      { columnIndex: 3, hash: 'otherField2', rowIndex: 4, type: 'select', value: '' },
+      { columnIndex: 3, hash: 'otherField2', rowIndex: 5, type: 'select', value: '' },
+      { columnIndex: 5, hash: 'numberField', rowIndex: 6, type: 'number', value: 40 },
     ]);
 
-    cell = getByText('3');
+    cell = getByText('40');
 
     fireEvent.doubleClick(cell);
 
-    input = getByDisplayValue('3') as HTMLInputElement;
+    input = getByDisplayValue('40') as HTMLInputElement;
 
-    fireEvent.change(input, { target: { value: 5 } });
+    fireEvent.change(input, { target: { value: 60 } });
     fireEvent.keyDown(input, { key: 'Enter' });
 
     expect(handleErrors).toBeCalledTimes(3);
     expect(handleErrors).toBeCalledWith([
-      { columnIndex: 4, hash: 'otherField3', rowIndex: 0, type: 'number', value: 2 },
-      { columnIndex: 4, hash: 'otherField3', rowIndex: 1, type: 'number', value: 2 },
-      { columnIndex: 2, hash: 'otherField', rowIndex: 7, type: 'select', value: '' },
+      { columnIndex: 0, hash: 'productName', rowIndex: 4, type: 'text', value: '' },
+      { columnIndex: 3, hash: 'otherField2', rowIndex: 4, type: 'select', value: '' },
+      { columnIndex: 3, hash: 'otherField2', rowIndex: 5, type: 'select', value: '' },
     ]);
   });
 });
@@ -345,6 +371,27 @@ describe('TextEditor', () => {
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
+
+  test('column type number returns number', async () => {
+    const { getByDisplayValue, getByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const cell = getByText('49') as HTMLElement;
+
+    fireEvent.doubleClick(cell);
+
+    const input = getByDisplayValue('49') as HTMLInputElement;
+
+    fireEvent.change(input, { target: { value: 80 } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+
+    expect(handleChange).toHaveBeenCalledWith([
+      { columnIndex: 5, hash: 'numberField', rowIndex: 6, type: 'number', value: 80 },
+    ]);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
 });
 
 describe('SelectEditor', () => {
@@ -378,6 +425,37 @@ describe('SelectEditor', () => {
     });
 
     expect(cells[0]).toHaveStyle('background-color: #FFF9E6;');
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+});
+
+describe('CheckboxEditor', () => {
+  test('renders CheckboxEditor', async () => {
+    const { getAllByLabelText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    let cells = getAllByLabelText('Checked');
+
+    expect(cells.length).toBe(7);
+
+    cells = getAllByLabelText('Unchecked');
+
+    expect(cells.length).toBe(2);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('CheckboxEditor shows the appropriate state', async () => {
+    const { getAllByLabelText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const cells = getAllByLabelText('Checked');
+    const cell = cells[0];
+
+    act(() => {
+      fireEvent.click(cell);
+    });
+
+    expect(cell.parentElement?.parentElement?.parentElement).toHaveStyle('background-color: #FFF9E6;');
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });

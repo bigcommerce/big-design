@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Small } from '../../Typography';
-import { SelectEditor, TextEditor } from '../editors';
+import { CheckboxEditor, SelectEditor, TextEditor } from '../editors';
 import { useEditableCell, useStore } from '../hooks';
 import { Cell as TCell, WorksheetColumn, WorksheetItem, WorksheetSelectableColumn } from '../types';
 
@@ -89,13 +89,14 @@ const InternalCell = <T extends WorksheetItem>({
     switch (type) {
       case 'select':
         return <SelectEditor cell={cell} isEdited={isEdited} onChange={handleChange} options={options} />;
-      // Default to TextEditor
+      case 'checkbox':
+        return <CheckboxEditor cell={cell} onChange={handleChange} />;
       default:
         return isEditing ? (
           <TextEditor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
         ) : (
           // In case of NaN casting to string
-          <Small color="secondary70">{value.toString()}</Small>
+          <Small color="secondary70">{value ? value.toString() : ''}</Small>
         );
     }
   }, [cell, handleBlur, handleChange, handleKeyDown, isEdited, isEditing, options, type, value]);
