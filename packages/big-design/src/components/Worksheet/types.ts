@@ -4,7 +4,12 @@ export interface Worksheet<Item extends WorksheetItem> {
   columns: Array<WorksheetColumn<Item>>;
   items: Item[];
   onChange(items: Array<Cell<Item>>): void;
-  onErrors?(items: Array<Cell<Item>>): void;
+  onErrors?(items: WorksheetError<Item>[]): void;
+}
+
+export interface WorksheetError<Item extends WorksheetItem> {
+  item: Item;
+  errors: (keyof Item)[];
 }
 
 export type WorksheetColumn<Item> = WorksheetBaseColumn<Item> | WorksheetSelectableColumn<Item>;
