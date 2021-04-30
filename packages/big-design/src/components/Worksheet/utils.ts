@@ -25,26 +25,34 @@ export const deleteCells = <T extends WorksheetItem>(oldCells: Cell<T>[], newCel
   );
 
 export const editedRows = <T extends WorksheetItem>(editedCells: Cell<T>[], rows: T[]) =>
-  editedCells.reduce<T[]>((accum, editedCell) => {
-    const row = rows[editedCell.rowIndex];
+  editedCells.reduce<T[]>((accum, { rowIndex }) => {
+    const row = rows[rowIndex];
 
+    // Check to see if the row already exists in accum
     if (accum.find((editedRow) => editedRow === row)) {
       return accum;
     } else {
+      // Only append new rows
       return [...accum, row];
     }
   }, []);
 
-export const invalidRows = <T extends WorksheetItem>(invalidCells: Cell<T>[], rows: T[]) =>
-  invalidCells.reduce<WorksheetError<T>[]>((accum, invalidCell) => {
-    const row = rows[invalidCell.rowIndex];
-    const rowIndex = accum.findIndex((invalidRow) => invalidRow.item === row);
+export const invalidRows = <T extends WorksheetItem>(invalidCells: Cell<T>[], rows: T[]) => {
+  const mapObj = new Map();
 
-    if (rowIndex >= 0) {
-      accum[rowIndex].errors = [...accum[rowIndex].errors, invalidCell.hash];
-
-      return accum;
+  // Create Map with each row and append errors per row
+  invalidCells.forEach(({ rowIndex, hash }) => {
+    const row = rows[rowIndex];
+    if (mapObj.has(row)) {
+      const errors = mapObj.get(row);
+      mapObj.set(row, new Set([...errors, hash]));
     } else {
-      return [...accum, { item: row, errors: [invalidCell['hash']] }];
+      mapObj.set(row, new Set([hash]));
     }
-  }, []);
+  });
+
+  return Array.from(mapObj).map<WorksheetError<T>>(([item, errors]) => ({
+    item,
+    errors: Array.from(errors),
+  }));
+};
