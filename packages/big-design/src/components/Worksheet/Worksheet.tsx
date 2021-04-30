@@ -8,6 +8,7 @@ import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, Table } from './styled';
 import { WorksheetItem, Worksheet as WorksheetProps } from './types';
+import { editedRows, invalidRows } from './utils';
 
 const InternalWorksheet = <T extends WorksheetItem>({
   columns,
@@ -26,15 +27,15 @@ const InternalWorksheet = <T extends WorksheetItem>({
 
   useEffect(() => {
     if (editedCells.length) {
-      onChange(editedCells);
+      onChange(editedRows(editedCells, rows));
     }
-  }, [editedCells, onChange]);
+  }, [editedCells, onChange, rows]);
 
   useEffect(() => {
     if (typeof onErrors === 'function' && invalidCells.length) {
-      onErrors(invalidCells);
+      onErrors(invalidRows(invalidCells, rows));
     }
-  }, [invalidCells, onErrors]);
+  }, [invalidCells, onErrors, rows]);
 
   const renderedHeaders = useMemo(
     () => (
