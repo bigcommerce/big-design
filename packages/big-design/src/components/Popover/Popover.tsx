@@ -126,6 +126,10 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
         return;
       }
 
+      if (anchorElement?.contains(event.target)) {
+        return;
+      }
+
       onClose();
     };
 
@@ -134,7 +138,7 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
     return () => {
       document.removeEventListener('click', clickHandler);
     };
-  }, [closeOnClickOutside, onClose, popperElement]);
+  }, [anchorElement, closeOnClickOutside, onClose, popperElement]);
 
   // Setup close on Esc key
   useEffect(() => {
