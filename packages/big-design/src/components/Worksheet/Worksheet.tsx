@@ -4,10 +4,11 @@ import { typedMemo } from '../../utils';
 
 import { UpdateItemsProvider } from './context';
 import { useStore } from './hooks';
+import { WorksheetModal } from './Modal/Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, Table } from './styled';
-import { WorksheetItem, Worksheet as WorksheetProps } from './types';
+import { WorksheetItem, WorksheetModalColumn, Worksheet as WorksheetProps } from './types';
 import { editedRows, invalidRows } from './utils';
 
 const InternalWorksheet = <T extends WorksheetItem>({
@@ -62,12 +63,21 @@ const InternalWorksheet = <T extends WorksheetItem>({
     [columns, rows],
   );
 
+  const renderedModals = useMemo(
+    () =>
+      columns
+        .filter((column): column is WorksheetModalColumn<T> => column.type === 'modal')
+        .map((column, index) => <WorksheetModal column={column} key={index} />),
+    [columns],
+  );
+
   return (
     <UpdateItemsProvider items={rows}>
       <Table>
         {renderedHeaders}
         {renderedRows}
       </Table>
+      {renderedModals}
     </UpdateItemsProvider>
   );
 };

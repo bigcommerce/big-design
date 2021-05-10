@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Small } from '../../Typography';
-import { CheckboxEditor, SelectEditor, TextEditor } from '../editors';
+import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor } from '../editors';
 import { useEditableCell, useStore } from '../hooks';
 import { Cell as TCell, WorksheetColumn, WorksheetItem, WorksheetSelectableColumn } from '../types';
 
@@ -91,6 +91,8 @@ const InternalCell = <T extends WorksheetItem>({
         return <SelectEditor cell={cell} isEdited={isEdited} onChange={handleChange} options={options} />;
       case 'checkbox':
         return <CheckboxEditor cell={cell} onChange={handleChange} />;
+      case 'modal':
+        return <ModalEditor cell={cell} />;
       default:
         return isEditing ? (
           <TextEditor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
