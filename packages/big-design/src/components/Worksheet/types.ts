@@ -27,7 +27,9 @@ interface WorksheetBaseColumn<Item> {
 }
 
 export interface WorksheetSelectableColumn<Item> extends Omit<WorksheetBaseColumn<Item>, 'type'> {
-  options: SelectOption<unknown>[];
+  config: {
+    options: SelectOption<unknown>[];
+  };
   type: 'select';
 }
 
@@ -40,11 +42,6 @@ export interface WorksheetModalColumn<Item> extends Omit<WorksheetBaseColumn<Ite
     ): React.ComponentType<Item> | React.ReactElement;
   };
   type: 'modal';
-}
-
-export interface WorksheetRenderProps<Item> {
-  value: Item[keyof Item];
-  onChange: (value: Item[keyof Item]) => void;
 }
 
 export interface Cell<Item> {

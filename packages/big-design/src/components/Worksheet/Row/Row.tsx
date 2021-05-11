@@ -15,23 +15,21 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
   const row = useStore(useMemo(() => (state) => state.rows[rowIndex], [rowIndex]));
 
   return (
-    <>
-      <tr>
-        <RowStatus rowIndex={rowIndex} />
-        {columns.map((column, columnIndex) => (
-          <Cell
-            columnIndex={columnIndex}
-            hash={column.hash}
-            key={`${rowIndex}-${columnIndex}`}
-            options={column.type === 'select' ? column.options : undefined}
-            rowIndex={rowIndex}
-            type={column.type ?? 'text'}
-            validation={column.validation}
-            value={row[column.hash]}
-          />
-        ))}
-      </tr>
-    </>
+    <tr>
+      <RowStatus rowIndex={rowIndex} />
+      {columns.map((column, columnIndex) => (
+        <Cell
+          columnIndex={columnIndex}
+          hash={column.hash}
+          key={`${rowIndex}-${columnIndex}`}
+          options={column.type === 'select' ? column.config.options : undefined}
+          rowIndex={rowIndex}
+          type={column.type ?? 'text'}
+          validation={column.validation}
+          value={row[column.hash]}
+        />
+      ))}
+    </tr>
   );
 };
 

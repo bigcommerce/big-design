@@ -8,11 +8,11 @@ import { Cell, WorksheetItem } from '../../types';
 
 import { StyledLink } from './styled';
 
-export interface CustomEditorProps<Item> {
+export interface ModalEditorProps<Item> {
   cell: Cell<Item>;
 }
 
-const InternalModalEditor = <T extends WorksheetItem>({ cell }: CustomEditorProps<T>) => {
+const InternalModalEditor = <T extends WorksheetItem>({ cell }: ModalEditorProps<T>) => {
   const setOpenModal = useStore((state) => state.setOpenModal);
   const { hash, value } = cell;
 

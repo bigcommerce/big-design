@@ -68,11 +68,13 @@ const columns: WorksheetColumn<Product>[] = [
     hash: 'otherField2',
     header: 'Other field',
     type: 'select',
-    options: [
-      { value: 'plastic', content: 'Plastic' },
-      { value: 'leather', content: 'Leather' },
-      { value: 'cloth', content: 'Cloth' },
-    ],
+    config: {
+      options: [
+        { value: 'plastic', content: 'Plastic' },
+        { value: 'leather', content: 'Leather' },
+        { value: 'cloth', content: 'Cloth' },
+      ],
+    },
     validation: (value) => !!value,
   },
   {
@@ -723,18 +725,27 @@ describe('ModalEditor', () => {
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
 
-  // test('CheckboxEditor shows the appropriate state', async () => {
-  //   const { getAllByLabelText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+  test('ModalEditor shows the appropriate state', async () => {
+    const { getAllByText, getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-  //   const cells = getAllByLabelText('Checked');
-  //   const cell = cells[0];
+    const buttons = getAllByText('Edit');
 
-  //   act(() => {
-  //     fireEvent.click(cell);
-  //   });
+    expect(buttons.length).toBe(9);
 
-  //   expect(cell.parentElement?.parentElement?.parentElement).toHaveStyle('background-color: #FFF9E6;');
+    fireEvent.click(buttons[3]);
 
-  //   await waitForElement(() => screen.getAllByRole('combobox'));
-  // });
+    // Find checkbox to click
+    const parent = getByText('Category 0').parentNode?.parentNode;
+    const checkbox = parent?.querySelector('label');
+    fireEvent.click(checkbox as HTMLLabelElement);
+
+    const save = getByText('Save');
+    fireEvent.click(save);
+
+    const cell = buttons[3].parentNode?.parentNode;
+
+    expect(cell).toHaveStyle('background-color: #FFF9E6;');
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
 });
