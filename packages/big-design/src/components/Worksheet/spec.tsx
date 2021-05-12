@@ -742,7 +742,7 @@ describe('ModalEditor', () => {
     const save = getByText('Save');
     fireEvent.click(save);
 
-    const cell = buttons[3].parentNode?.parentNode;
+    const cell = buttons[3].parentNode?.parentNode?.parentNode;
 
     expect(cell).toHaveStyle('background-color: #FFF9E6;');
 

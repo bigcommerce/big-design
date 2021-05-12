@@ -6,7 +6,7 @@ import { Small } from '../../../Typography';
 import { useStore } from '../../hooks';
 import { Cell, WorksheetItem } from '../../types';
 
-import { StyledLink } from './styled';
+import { StyledButton } from './styled';
 
 export interface ModalEditorProps<Item> {
   cell: Cell<Item>;
@@ -25,7 +25,9 @@ const InternalModalEditor = <T extends WorksheetItem>({ cell }: ModalEditorProps
       <FlexItem paddingRight="small">
         <Small>{String(value)}</Small>
       </FlexItem>
-      <StyledLink onClick={handleClick}>Edit</StyledLink>
+      <StyledButton onClick={handleClick} variant="subtle">
+        Edit
+      </StyledButton>
     </Flex>
   );
 };

@@ -226,11 +226,15 @@ exports[`renders worksheet 1`] = `
               1
             </p>
           </div>
-          <a
-            class="styled__StyledLink-n9mww9-0 kLliXK styled__StyledLink-zoq9bz-0 iuvCdY"
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
           >
-            Edit
-          </a>
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
         </div>
       </td>
       <td
@@ -429,11 +433,15 @@ exports[`renders worksheet 1`] = `
               2
             </p>
           </div>
-          <a
-            class="styled__StyledLink-n9mww9-0 kLliXK styled__StyledLink-zoq9bz-0 iuvCdY"
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
           >
-            Edit
-          </a>
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
         </div>
       </td>
       <td
@@ -631,11 +639,15 @@ exports[`renders worksheet 1`] = `
               3
             </p>
           </div>
-          <a
-            class="styled__StyledLink-n9mww9-0 kLliXK styled__StyledLink-zoq9bz-0 iuvCdY"
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
           >
-            Edit
-          </a>
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
         </div>
       </td>
       <td
@@ -834,11 +846,15 @@ exports[`renders worksheet 1`] = `
               4
             </p>
           </div>
-          <a
-            class="styled__StyledLink-n9mww9-0 kLliXK styled__StyledLink-zoq9bz-0 iuvCdY"
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
           >
-            Edit
-          </a>
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
         </div>
       </td>
       <td
@@ -1035,11 +1051,15 @@ exports[`renders worksheet 1`] = `
               5
             </p>
           </div>
-          <a
-            class="styled__StyledLink-n9mww9-0 kLliXK styled__StyledLink-zoq9bz-0 iuvCdY"
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
           >
-            Edit
-          </a>
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
         </div>
       </td>
       <td
@@ -1238,11 +1258,15 @@ exports[`renders worksheet 1`] = `
               6
             </p>
           </div>
-          <a
-            class="styled__StyledLink-n9mww9-0 kLliXK styled__StyledLink-zoq9bz-0 iuvCdY"
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
           >
-            Edit
-          </a>
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
         </div>
       </td>
       <td
@@ -1440,11 +1464,15 @@ exports[`renders worksheet 1`] = `
               7
             </p>
           </div>
-          <a
-            class="styled__StyledLink-n9mww9-0 kLliXK styled__StyledLink-zoq9bz-0 iuvCdY"
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
           >
-            Edit
-          </a>
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
         </div>
       </td>
       <td
@@ -1643,11 +1671,15 @@ exports[`renders worksheet 1`] = `
               8
             </p>
           </div>
-          <a
-            class="styled__StyledLink-n9mww9-0 kLliXK styled__StyledLink-zoq9bz-0 iuvCdY"
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
           >
-            Edit
-          </a>
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
         </div>
       </td>
       <td
@@ -1846,11 +1878,15 @@ exports[`renders worksheet 1`] = `
               9
             </p>
           </div>
-          <a
-            class="styled__StyledLink-n9mww9-0 kLliXK styled__StyledLink-zoq9bz-0 iuvCdY"
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
           >
-            Edit
-          </a>
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
         </div>
       </td>
       <td
