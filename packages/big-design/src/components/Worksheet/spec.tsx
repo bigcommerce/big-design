@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, waitForElement } from '@testing-library/react';
+import { fireEvent, render, screen, waitForElement } from '@testing-library/react';
 import React from 'react';
 
 import { StatefulTree } from '../StatefulTree';
@@ -176,11 +176,9 @@ let handleErrors = jest.fn();
 const initialStoreState = useStore.getState();
 
 beforeEach(() => {
-  act(() => {
-    handleChange = jest.fn();
-    handleErrors = jest.fn();
-    useStore.setState(initialStoreState, true);
-  });
+  handleChange = jest.fn();
+  handleErrors = jest.fn();
+  useStore.setState(initialStoreState, true);
 });
 
 test('renders worksheet', async () => {
@@ -231,30 +229,33 @@ describe('edition', () => {
   });
 
   test('onChange is called when value changes', async () => {
-    const {
-      getAllByDisplayValue,
-      getAllByLabelText,
-      getAllByRole,
-      getAllByText,
-      getByDisplayValue,
-      getByText,
-    } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+    const { getAllByDisplayValue, getAllByRole, getByDisplayValue, getByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
 
     let cell;
-    let input;
 
     cell = getByText('Shoes Name One');
 
     fireEvent.doubleClick(cell);
 
-    input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
+    const input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
 
     fireEvent.change(input, { target: { value: 'Shoes Name One Edit' } });
     fireEvent.keyDown(input, { key: 'Enter' });
 
     cell = getByText('Shoes Name One Edit');
     expect(cell).toBeDefined();
-    expect(handleChange).toHaveBeenCalledTimes(1);
+
+    const cells = getAllByDisplayValue('Plastic');
+
+    fireEvent.click(cells[0]);
+
+    const options = getAllByRole('option');
+
+    fireEvent.click(options[2]);
+
+    expect(handleChange).toHaveBeenCalledTimes(2);
     expect(handleChange).toHaveBeenLastCalledWith([
       {
         id: 3,
@@ -265,53 +266,6 @@ describe('edition', () => {
         otherField3: 3,
         numberField: 50,
       },
-    ]);
-
-    fireEvent.doubleClick(cell);
-
-    input = getByDisplayValue('Shoes Name One Edit') as HTMLInputElement;
-
-    fireEvent.change(input, { target: { value: 'Shoes Name One Edit 2' } });
-    fireEvent.keyDown(input, { key: 'Enter' });
-
-    cell = getByText('Shoes Name One Edit 2');
-    expect(cell).toBeDefined();
-    expect(handleChange).toHaveBeenCalledTimes(2);
-    expect(handleChange).toHaveBeenLastCalledWith([
-      {
-        id: 3,
-        productName: 'Shoes Name One Edit 2',
-        visibleOnStorefront: false,
-        otherField: 'Text',
-        otherField2: 'leather',
-        otherField3: 3,
-        numberField: 50,
-      },
-    ]);
-
-    let cells = getAllByDisplayValue('Plastic');
-
-    act(() => {
-      fireEvent.click(cells[0]);
-    });
-
-    const options = getAllByRole('option');
-
-    act(() => {
-      fireEvent.click(options[2]);
-    });
-
-    expect(handleChange).toHaveBeenCalledTimes(3);
-    expect(handleChange).toHaveBeenLastCalledWith([
-      {
-        id: 3,
-        productName: 'Shoes Name One Edit 2',
-        visibleOnStorefront: false,
-        otherField: 'Text',
-        otherField2: 'leather',
-        otherField3: 3,
-        numberField: 50,
-      },
       {
         id: 1,
         productName: 'Shoes Name Three',
@@ -319,79 +273,6 @@ describe('edition', () => {
         otherField: 'Text',
         otherField2: 'cloth',
         otherField3: 1,
-        numberField: 50,
-      },
-    ]);
-
-    cells = getAllByLabelText('Checked');
-
-    act(() => {
-      fireEvent.click(cells[0]);
-    });
-
-    expect(handleChange).toHaveBeenCalledTimes(4);
-    expect(handleChange).toHaveBeenLastCalledWith([
-      {
-        id: 3,
-        productName: 'Shoes Name One Edit 2',
-        visibleOnStorefront: false,
-        otherField: 'Text',
-        otherField2: 'leather',
-        otherField3: 3,
-        numberField: 50,
-      },
-      {
-        id: 1,
-        productName: 'Shoes Name Three',
-        visibleOnStorefront: false,
-        otherField: 'Text',
-        otherField2: 'cloth',
-        otherField3: 1,
-        numberField: 50,
-      },
-    ]);
-
-    const buttons = getAllByText('Edit');
-
-    expect(buttons.length).toBe(9);
-
-    fireEvent.click(buttons[3]);
-
-    // Find checkbox to click
-    const parent = getByText('Category 0').parentNode?.parentNode;
-    const checkbox = parent?.querySelector('label');
-    fireEvent.click(checkbox as HTMLLabelElement);
-
-    const save = getByText('Save');
-    fireEvent.click(save);
-
-    expect(handleChange).toHaveBeenCalledTimes(5);
-    expect(handleChange).toHaveBeenLastCalledWith([
-      {
-        id: 3,
-        productName: 'Shoes Name One Edit 2',
-        visibleOnStorefront: false,
-        otherField: 'Text',
-        otherField2: 'leather',
-        otherField3: 3,
-        numberField: 50,
-      },
-      {
-        id: 1,
-        productName: 'Shoes Name Three',
-        visibleOnStorefront: false,
-        otherField: 'Text',
-        otherField2: 'cloth',
-        otherField3: 1,
-        numberField: 50,
-      },
-      {
-        id: 4,
-        productName: 'Variant',
-        visibleOnStorefront: true,
-        otherField: 'Text',
-        otherField2: 'leather',
-        otherField3: 0,
         numberField: 50,
       },
     ]);
@@ -583,7 +464,7 @@ describe('TextEditor', () => {
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
 
-  test('TextEditor shows the appropriate state', async () => {
+  test('TextEditor is editable', async () => {
     const { getByDisplayValue, getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
@@ -603,6 +484,19 @@ describe('TextEditor', () => {
 
     fireEvent.change(input, { target: { value: 'Shoes Name One Edit' } });
     fireEvent.keyDown(input, { key: 'Enter' });
+
+    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(handleChange).toHaveBeenLastCalledWith([
+      {
+        id: 3,
+        productName: 'Shoes Name One Edit',
+        visibleOnStorefront: false,
+        otherField: 'Text',
+        otherField2: 'leather',
+        otherField3: 3,
+        numberField: 50,
+      },
+    ]);
 
     cell = getByText('Shoes Name One Edit');
 
@@ -658,7 +552,7 @@ describe('SelectEditor', () => {
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
 
-  test('SelectEditor shows the appropriate state', async () => {
+  test('SelectEditor is editable', async () => {
     const { getAllByRole, getAllByDisplayValue } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
@@ -667,15 +561,24 @@ describe('SelectEditor', () => {
 
     expect(cells[0]).toHaveStyle('background-color: inherit');
 
-    act(() => {
-      fireEvent.click(cells[0]);
-    });
+    fireEvent.click(cells[0]);
 
     const options = getAllByRole('option');
 
-    act(() => {
-      fireEvent.click(options[2]);
-    });
+    fireEvent.click(options[2]);
+
+    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(handleChange).toHaveBeenLastCalledWith([
+      {
+        id: 1,
+        productName: 'Shoes Name Three',
+        visibleOnStorefront: true,
+        otherField: 'Text',
+        otherField2: 'cloth',
+        otherField3: 1,
+        numberField: 50,
+      },
+    ]);
 
     expect(cells[0]).toHaveStyle('background-color: #FFF9E6;');
 
@@ -698,15 +601,26 @@ describe('CheckboxEditor', () => {
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
 
-  test('CheckboxEditor shows the appropriate state', async () => {
+  test('CheckboxEditor is editable', async () => {
     const { getAllByLabelText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     const cells = getAllByLabelText('Checked');
     const cell = cells[0];
 
-    act(() => {
-      fireEvent.click(cell);
-    });
+    fireEvent.click(cell);
+
+    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(handleChange).toHaveBeenLastCalledWith([
+      {
+        id: 1,
+        productName: 'Shoes Name Three',
+        visibleOnStorefront: false,
+        otherField: 'Text',
+        otherField2: 'plastic',
+        otherField3: 1,
+        numberField: 50,
+      },
+    ]);
 
     expect(cell.parentElement?.parentElement?.parentElement).toHaveStyle('background-color: #FFF9E6;');
 
@@ -725,7 +639,7 @@ describe('ModalEditor', () => {
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
 
-  test('ModalEditor shows the appropriate state', async () => {
+  test('ModalEditor is editable', async () => {
     const { getAllByText, getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     const buttons = getAllByText('Edit');
@@ -741,6 +655,19 @@ describe('ModalEditor', () => {
 
     const save = getByText('Save');
     fireEvent.click(save);
+
+    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(handleChange).toHaveBeenLastCalledWith([
+      {
+        id: 4,
+        productName: 'Variant',
+        visibleOnStorefront: true,
+        otherField: 'Text',
+        otherField2: 'leather',
+        otherField3: 0,
+        numberField: 50,
+      },
+    ]);
 
     const cell = buttons[3].parentNode?.parentNode?.parentNode;
 

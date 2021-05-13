@@ -9,12 +9,12 @@ export const StyledButton = styled(StyleableButton)`
   line-height: ${({ theme }) => theme.lineHeight.small};
   padding: 0;
 
-  & :hover:not(:active) {
+  &:hover:not(:active) {
     background-color: inherit;
     color: ${({ theme }) => theme.colors.primary70};
   }
 
-  & :active {
+  &:active {
     background-color: inherit;
   }
 `;
