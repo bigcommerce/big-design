@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { SelectOption } from '../Select';
 
 export interface Worksheet<Item extends WorksheetItem> {
@@ -12,7 +14,10 @@ export interface WorksheetError<Item extends WorksheetItem> {
   errors: (keyof Item)[];
 }
 
-export type WorksheetColumn<Item> = WorksheetBaseColumn<Item> | WorksheetSelectableColumn<Item>;
+export type WorksheetColumn<Item> =
+  | WorksheetBaseColumn<Item>
+  | WorksheetSelectableColumn<Item>
+  | WorksheetModalColumn<Item>;
 
 interface WorksheetBaseColumn<Item> {
   hash: keyof Item;
@@ -22,8 +27,21 @@ interface WorksheetBaseColumn<Item> {
 }
 
 export interface WorksheetSelectableColumn<Item> extends Omit<WorksheetBaseColumn<Item>, 'type'> {
-  options: SelectOption<unknown>[];
+  config: {
+    options: SelectOption<unknown>[];
+  };
   type: 'select';
+}
+
+export interface WorksheetModalColumn<Item> extends Omit<WorksheetBaseColumn<Item>, 'type'> {
+  config: {
+    header?: string;
+    render(
+      value: Item[keyof Item],
+      onChange: (value: Item[keyof Item]) => void,
+    ): React.ComponentType<Item> | React.ReactElement;
+  };
+  type: 'modal';
 }
 
 export interface Cell<Item> {
@@ -31,7 +49,10 @@ export interface Cell<Item> {
   hash: keyof Item;
   rowIndex: number;
   value: Item[keyof Item];
-  type: Exclude<WorksheetColumn<Item>['type'] | WorksheetSelectableColumn<Item>['type'], undefined>;
+  type: Exclude<
+    WorksheetColumn<Item>['type'] | WorksheetSelectableColumn<Item>['type'] | WorksheetModalColumn<Item>['type'],
+    undefined
+  >;
 }
 
 export interface WorksheetItem {

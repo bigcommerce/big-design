@@ -212,14 +212,30 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        type="modal"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
         >
-          Field
-        </p>
+          <div
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+          >
+            <p
+              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+            >
+              1
+            </p>
+          </div>
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
+          >
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
@@ -403,14 +419,30 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        type="modal"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
         >
-          Field
-        </p>
+          <div
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+          >
+            <p
+              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+            >
+              2
+            </p>
+          </div>
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
+          >
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
@@ -593,14 +625,30 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        type="modal"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
         >
-          Field
-        </p>
+          <div
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+          >
+            <p
+              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+            >
+              3
+            </p>
+          </div>
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
+          >
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
@@ -784,14 +832,30 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        type="modal"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
         >
-          Field
-        </p>
+          <div
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+          >
+            <p
+              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+            >
+              4
+            </p>
+          </div>
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
+          >
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
@@ -973,14 +1037,30 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        type="modal"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
         >
-          Field
-        </p>
+          <div
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+          >
+            <p
+              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+            >
+              5
+            </p>
+          </div>
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
+          >
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
@@ -1164,14 +1244,30 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        type="modal"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
         >
-          Field
-        </p>
+          <div
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+          >
+            <p
+              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+            >
+              6
+            </p>
+          </div>
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
+          >
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
@@ -1354,14 +1450,30 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        type="modal"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
         >
-          Field
-        </p>
+          <div
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+          >
+            <p
+              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+            >
+              7
+            </p>
+          </div>
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
+          >
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 cRPtqa"
@@ -1545,14 +1657,30 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        type="modal"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
         >
-          Field
-        </p>
+          <div
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+          >
+            <p
+              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+            >
+              8
+            </p>
+          </div>
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
+          >
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
@@ -1736,14 +1864,30 @@ exports[`renders worksheet 1`] = `
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 ffzctK"
-        type="text"
+        type="modal"
       >
-        <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
-          color="secondary70"
+        <div
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
         >
-          Field
-        </p>
+          <div
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+          >
+            <p
+              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+            >
+              9
+            </p>
+          </div>
+          <button
+            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-zoq9bz-0 TMXCW"
+          >
+            <span
+              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+            >
+              Edit
+            </span>
+          </button>
+        </div>
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 cRUZl"
