@@ -1,0 +1,5 @@
+{
+  "name": "@bigcommerce/configs/jest",
+  "main": "jest.config.js",
+  "private": true
+}
