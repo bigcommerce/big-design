@@ -1,6 +1,6 @@
 ## What?
 
-Describe what changes you are making. i.e. `Adding additional eslint configs to catch potential bugs.`
+Describe what changes you are making. e.g. `Adding additional eslint configs to catch potential bugs.`
 
 ## Why?
 
