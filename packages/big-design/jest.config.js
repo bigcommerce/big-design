@@ -1,10 +1,18 @@
+const defaultJestConfig = require('@bigcommerce/configs/jest');
+
 module.exports = {
-  testRegex: '(<rootDir>/(tests|src)/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  ...defaultJestConfig,
   moduleNameMapper: {
-    '@src/(.*)': '<rootDir>/src/$1',
+    ...defaultJestConfig.moduleNameMapper,
     '@test/utils': '<rootDir>/tests/utils',
   },
-  coverageDirectory: '<rootDir>/coverage',
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  coverageThreshold: {
+    global: {
+      statements: 95.4,
+      branches: 86.72,
+      functions: 96.73,
+      lines: 95.44,
+    },
+  },
 };
