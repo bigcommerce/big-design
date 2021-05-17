@@ -26,8 +26,8 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.1.0",
-    "@commitlint/config-conventional": "^8.1.0",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "eslint": "^6.8.0",
@@ -42,5 +42,9 @@
     "lint-staged": "^9.2.0",
     "prettier": "^2.0.5",
     "typescript": "~3.8.3"
+  },
+  "resolutions": {
+    "is-svg": "^4.3.1",
+    "node-notifier": "^8.0.1"
   }
 }
