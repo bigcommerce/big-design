@@ -4,17 +4,25 @@ import { typedMemo } from '../../../utils';
 import { Small } from '../../Typography';
 import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor } from '../editors';
 import { useEditableCell, useStore } from '../hooks';
-import { Cell as TCell, WorksheetColumn, WorksheetItem, WorksheetSelectableColumn } from '../types';
+import {
+  Cell as TCell,
+  WorksheetColumn,
+  WorksheetItem,
+  WorksheetSelectableColumn,
+  WorksheetTextColumn,
+} from '../types';
 
 import { StyledCell } from './styled';
 
 interface CellProps<Item> extends TCell<Item> {
   options?: WorksheetSelectableColumn<Item>['config']['options'];
+  formatting?: WorksheetTextColumn<Item>['formatting'];
   validation?: WorksheetColumn<Item>['validation'];
 }
 
 const InternalCell = <T extends WorksheetItem>({
   columnIndex,
+  formatting,
   hash,
   options,
   rowIndex,
@@ -92,16 +100,18 @@ const InternalCell = <T extends WorksheetItem>({
       case 'checkbox':
         return <CheckboxEditor cell={cell} onChange={handleChange} />;
       case 'modal':
-        return <ModalEditor cell={cell} />;
+        return <ModalEditor cell={cell} formatting={formatting} />;
       default:
         return isEditing ? (
           <TextEditor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
+        ) : // In case of NaN casting to string
+        value ? (
+          <Small color="secondary70">{formatting ? formatting(value) : `${value}`}</Small>
         ) : (
-          // In case of NaN casting to string
-          <Small color="secondary70">{value ? value.toString() : ''}</Small>
+          <Small color="secondary70">{''}</Small>
         );
     }
-  }, [cell, handleBlur, handleChange, handleKeyDown, isEdited, isEditing, options, type, value]);
+  }, [cell, formatting, handleBlur, handleChange, handleKeyDown, isEdited, isEditing, options, type, value]);
 
   return (
     <StyledCell

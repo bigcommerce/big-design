@@ -61,7 +61,7 @@ const TreeComponent = (value: string | number | boolean, onChange: (value: strin
 };
 
 const columns: WorksheetColumn<Product>[] = [
-  { hash: 'productName', header: 'Product name', validation: (value) => !!value },
+  { hash: 'productName', header: 'Product name', validation: (value: string) => !!value },
   { hash: 'visibleOnStorefront', header: 'Visible on storefront', type: 'checkbox' },
   { hash: 'otherField', header: 'Other field' },
   {
@@ -75,7 +75,7 @@ const columns: WorksheetColumn<Product>[] = [
         { value: 'cloth', content: 'Cloth' },
       ],
     },
-    validation: (value) => !!value,
+    validation: (value: string) => !!value,
   },
   {
     hash: 'otherField3',
@@ -83,7 +83,13 @@ const columns: WorksheetColumn<Product>[] = [
     type: 'modal',
     config: { header: 'Choose categories', render: TreeComponent },
   },
-  { hash: 'numberField', header: 'Number field', type: 'number', validation: (value) => value >= 50 },
+  {
+    hash: 'numberField',
+    header: 'Number field',
+    type: 'number',
+    validation: (value: number) => value >= 50,
+    formatting: (value: number) => `$${value}.00`,
+  },
 ];
 
 const items: Product[] = [
@@ -300,7 +306,7 @@ describe('validation', () => {
       <Worksheet columns={columns} items={items} onChange={handleChange} onErrors={handleErrors} />,
     );
 
-    const cell = getByText('49').parentElement as HTMLTableDataCellElement;
+    const cell = getByText('$49.00').parentElement as HTMLTableDataCellElement;
     const row = cell.parentElement as HTMLTableRowElement;
 
     expect(cell).toHaveStyle('border-color: #db3643');
@@ -359,7 +365,7 @@ describe('validation', () => {
       },
     ]);
 
-    cell = getByText('49') as HTMLElement;
+    cell = getByText('$49.00') as HTMLElement;
 
     fireEvent.doubleClick(cell);
 
@@ -408,7 +414,7 @@ describe('validation', () => {
       },
     ]);
 
-    cell = getByText('40');
+    cell = getByText('$40.00');
 
     fireEvent.doubleClick(cell);
 
@@ -444,6 +450,16 @@ describe('validation', () => {
         errors: ['otherField2'],
       },
     ]);
+  });
+});
+
+describe('formatting', () => {
+  test('formats values', async () => {
+    const { getAllByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    expect(getAllByText('$50.00').length).toBe(8);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
   });
 });
 
@@ -516,7 +532,7 @@ describe('TextEditor', () => {
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
-    const cell = getByText('49') as HTMLElement;
+    const cell = getByText('$49.00') as HTMLElement;
 
     fireEvent.doubleClick(cell);
 

@@ -245,7 +245,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          50
+          $50.00
         </p>
       </td>
     </tr>
@@ -452,7 +452,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          50
+          $50.00
         </p>
       </td>
     </tr>
@@ -658,7 +658,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          50
+          $50.00
         </p>
       </td>
     </tr>
@@ -865,7 +865,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          50
+          $50.00
         </p>
       </td>
     </tr>
@@ -1070,7 +1070,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          50
+          $50.00
         </p>
       </td>
     </tr>
@@ -1277,7 +1277,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          50
+          $50.00
         </p>
       </td>
     </tr>
@@ -1483,7 +1483,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          49
+          $49.00
         </p>
       </td>
     </tr>
@@ -1690,7 +1690,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          50
+          $50.00
         </p>
       </td>
     </tr>
@@ -1897,7 +1897,7 @@ exports[`renders worksheet 1`] = `
           class="styled__StyledSmall-tqnj75-6 RpFkS"
           color="secondary70"
         >
-          50
+          $50.00
         </p>
       </td>
     </tr>

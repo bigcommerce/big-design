@@ -15,25 +15,40 @@ export interface WorksheetError<Item extends WorksheetItem> {
 }
 
 export type WorksheetColumn<Item> =
-  | WorksheetBaseColumn<Item>
+  | WorksheetTextColumn<Item>
+  | WorksheetNumberColumn<Item>
+  | WorksheetCheckboxColumn<Item>
   | WorksheetSelectableColumn<Item>
   | WorksheetModalColumn<Item>;
 
 interface WorksheetBaseColumn<Item> {
   hash: keyof Item;
   header: string;
-  type?: 'text' | 'number' | 'checkbox';
   validation?(value: Item[keyof Item]): boolean;
 }
 
-export interface WorksheetSelectableColumn<Item> extends Omit<WorksheetBaseColumn<Item>, 'type'> {
+export interface WorksheetTextColumn<Item> extends WorksheetBaseColumn<Item> {
+  type?: 'text';
+  formatting?(value: Item[keyof Item]): string;
+}
+
+export interface WorksheetNumberColumn<Item> extends WorksheetBaseColumn<Item> {
+  type: 'number';
+  formatting?(value: Item[keyof Item]): string;
+}
+
+export interface WorksheetCheckboxColumn<Item> extends WorksheetBaseColumn<Item> {
+  type: 'checkbox';
+}
+
+export interface WorksheetSelectableColumn<Item> extends WorksheetBaseColumn<Item> {
   config: {
     options: SelectOption<unknown>[];
   };
   type: 'select';
 }
 
-export interface WorksheetModalColumn<Item> extends Omit<WorksheetBaseColumn<Item>, 'type'> {
+export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
   config: {
     header?: string;
     render(
@@ -41,6 +56,7 @@ export interface WorksheetModalColumn<Item> extends Omit<WorksheetBaseColumn<Ite
       onChange: (value: Item[keyof Item]) => void,
     ): React.ComponentType<Item> | React.ReactElement;
   };
+  formatting?(value: Item[keyof Item]): string;
   type: 'modal';
 }
 
@@ -49,10 +65,7 @@ export interface Cell<Item> {
   hash: keyof Item;
   rowIndex: number;
   value: Item[keyof Item];
-  type: Exclude<
-    WorksheetColumn<Item>['type'] | WorksheetSelectableColumn<Item>['type'] | WorksheetModalColumn<Item>['type'],
-    undefined
-  >;
+  type: Exclude<WorksheetColumn<Item>['type'], undefined>;
 }
 
 export interface WorksheetItem {
