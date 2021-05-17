@@ -6,13 +6,13 @@ jobs:
   build:
     executor:
       name: node/default
-      tag: '10.16'
+      tag: '14.16'
 
     steps:
       - checkout
 
       - node/install-yarn:
-          version: 1.17.3
+          version: 1.22.10
 
       - node/with-cache:
           cache-key: yarn.lock
