@@ -1,10 +1,10 @@
 ## What?
 
-Describe what changes you are making. e.g. `Adding additional eslint configs to catch potential bugs.`
+Describe what changes you are making. e.g. `Adds X prop in the Box component.`
 
 ## Why?
 
-Please provide the reason(s) why you are making this change? Please no one-liners like, `We saw some bugs.`; expand upon the reason like, `Added X rule because it caught a bug in Y component. Added this check since this bug is sure to surface in other components.`
+Please provide the reason(s) why you are making this change? Please no one-liners like, `It was missing.`; expand upon the reason like, `Adds X prop because it was missing in the Box component. Documentation notes this prop exists, but it actually wasn't implemented.`
 
 ## Screenshots/Screen Recordings
 
