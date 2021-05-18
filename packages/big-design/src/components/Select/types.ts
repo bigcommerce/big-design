@@ -5,6 +5,7 @@ import { InputProps } from '../Input';
 
 interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children' | 'value'> {
   action?: SelectAction;
+  autoComplete?: string;
   autoWidth?: boolean;
   description?: React.ReactChild;
   disabled?: boolean;
