@@ -1,69 +1,65 @@
-import { AddIcon } from '@bigcommerce/big-design-icons';
-import { fireEvent, render, waitForElement } from '@testing-library/react';
-import 'jest-styled-components';
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { fireEvent, render, wait } from '@testing-library/react';
 import React from 'react';
 
 import { ButtonGroup } from './ButtonGroup';
 
-test('renders button items', () => {
-  const { container, getAllByRole } = render(
-    <ButtonGroup items={[{ content: 'Button 1' }, { content: 'Button 2' }, { content: <AddIcon /> }]} />,
-  );
+const HIDDEN_STYLES = {
+  'z-index': -defaultTheme.zIndex.tooltip,
+  position: 'absolute',
+  visibility: 'hidden',
+};
 
-  const items = getAllByRole('listitem');
+const originalPrototype = Object.getOwnPropertyDescriptors(window.HTMLElement.prototype);
 
-  expect(items[0].textContent).toEqual('Button 1');
-  expect(items[1].textContent).toEqual('Button 2');
-  expect(items[2].textContent).toHaveLength(0);
+beforeAll(() => {
+  Object.defineProperties(window.HTMLElement.prototype, {
+    offsetWidth: {
+      get() {
+        if (this.dataset.testid === 'button-group-wrapper') {
+          return 400;
+        }
 
-  expect(container.querySelectorAll('svg')).toHaveLength(1);
+        if (this.dataset.testid === 'button-group-dropdown-toggle') {
+          return 50;
+        }
+
+        return 100;
+      },
+    },
+  });
 });
 
-test('renders dropdown item', async () => {
-  const { getAllByRole, getByText } = render(
-    <ButtonGroup
-      items={[
-        { content: 'Button 1' },
-        {
-          items: [
-            { content: 'Edit', onItemClick: (item) => item, hash: 'edit' },
-            {
-              content: 'Duplicate',
-              hash: 'duplicate',
-              onItemClick: (item) => item,
-            },
-            {
-              content: 'Copy',
-              hash: 'copy',
-              onItemClick: (item) => item,
-            },
-            {
-              content: 'Delete',
-              hash: 'delete',
-              onItemClick: (item) => item,
-            },
-          ],
-          maxHeight: 250,
-          placement: 'bottom-start',
-          toggle: {
-            content: 'Button 2',
-          },
-        },
-      ]}
-    />,
+afterAll(() => Object.defineProperties(window.HTMLElement.prototype, originalPrototype));
+
+test('renders all actions if they are fit', () => {
+  const { getByText, getByTestId } = render(<ButtonGroup actions={[{ text: 'button 1' }, { text: 'button 2' }]} />);
+
+  expect(getByText('button 1')).not.toHaveStyle(HIDDEN_STYLES);
+  expect(getByText('button 2')).not.toHaveStyle(HIDDEN_STYLES);
+
+  expect(getByTestId('button-group-dropdown-toggle')).toHaveStyle(HIDDEN_STYLES);
+});
+
+test('renders dropdown with elements that do not fit', async () => {
+  const { getByText, getByTestId, getAllByRole } = render(
+    <ButtonGroup actions={[{ text: 'button 1' }, { text: 'button 2' }, { text: 'button 3' }, { text: 'button 4' }]} />,
   );
 
-  const items = getAllByRole('listitem');
+  await wait();
 
-  expect(items[0].textContent).toEqual('Button 1');
-  expect(items[1].textContent).toEqual('Button 2');
+  const dropdownToggle = getByTestId('button-group-dropdown-toggle');
 
-  fireEvent.click(items[1]);
+  expect(getByText('button 1')).not.toHaveStyle(HIDDEN_STYLES);
+  expect(getByText('button 2')).not.toHaveStyle(HIDDEN_STYLES);
+  expect(getByText('button 3')).not.toHaveStyle(HIDDEN_STYLES);
+  expect(getByText('button 4')).not.toHaveStyle(HIDDEN_STYLES);
+  expect(dropdownToggle).not.toHaveStyle(HIDDEN_STYLES);
 
-  await waitForElement(() => getAllByRole('option'));
+  fireEvent.click(dropdownToggle);
 
-  expect(getByText('Edit')).toBeInTheDocument();
-  expect(getByText('Duplicate')).toBeInTheDocument();
-  expect(getByText('Copy')).toBeInTheDocument();
-  expect(getByText('Delete')).toBeInTheDocument();
+  const options = getAllByRole('option');
+
+  expect(options).toHaveLength(1);
+  expect(options[0].textContent).toEqual('button 5');
 });

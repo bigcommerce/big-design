@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
-export const dropdownProps: Prop[] = [
+const dropdownProps: Prop[] = [
   {
     name: 'disabled',
     types: 'boolean',

@@ -3,8 +3,28 @@ import styled, { css } from 'styled-components';
 
 import { ButtonProps } from '../Button';
 import { StyleableButton } from '../Button/private';
+import { FlexItem } from '../Flex';
 
-export const StyledButton = styled(StyleableButton)<ButtonProps & { isFirst?: boolean; isLast?: boolean }>`
+interface StyledFlexItemProps {
+  isVisible: boolean;
+}
+
+interface StyledButtonProps extends ButtonProps {
+  isFirst?: boolean;
+  isLast?: boolean;
+}
+
+export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
+  ${(props) =>
+    !props.isVisible &&
+    css`
+      position: absolute;
+      visibility: hidden;
+      z-index: ${({ theme }) => -theme.zIndex.tooltip};
+    `}
+`;
+
+export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
   border-radius: ${({ theme }) => theme.borderRadius.none};
   margin-right: -1px;
 
@@ -28,4 +48,5 @@ export const StyledButton = styled(StyleableButton)<ButtonProps & { isFirst?: bo
   }
 `;
 
+StyledFlexItem.defaultProps = { theme: defaultTheme };
 StyledButton.defaultProps = { theme: defaultTheme };
