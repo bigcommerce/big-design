@@ -26,6 +26,7 @@ import { MultiSelectProps } from './types';
 export const MultiSelect = typedMemo(
   <T extends unknown>({
     action,
+    autoComplete = 'off',
     autoWidth = false,
     className,
     disabled,
@@ -314,7 +315,7 @@ export const MultiSelect = typedMemo(
           <Input
             {...getInputProps({
               ...props,
-              autoComplete: 'off',
+              autoComplete,
               disabled,
               onClick: () => {
                 !isOpen && openMenu();
@@ -359,6 +360,7 @@ export const MultiSelect = typedMemo(
         </StyledInputContainer>
       );
     }, [
+      autoComplete,
       disabled,
       filterable,
       getInputProps,
