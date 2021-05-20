@@ -8,7 +8,7 @@ const buttonGroupProps: Prop[] = [
     types: 'object[]',
     description: (
       <>
-        Accepts an array of objects with
+        Accepts an array of objects with{' '}
         <NextLink href="/Button/ButtonPage" as="/button">
           Button
         </NextLink>{' '}

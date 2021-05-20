@@ -110,7 +110,13 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
   const renderedActions = useMemo(
     () =>
       actionsState.map((stateObj, index) => (
-        <StyledFlexItem key={index} ref={stateObj.ref} isVisible={stateObj.isVisible} role="listitem">
+        <StyledFlexItem
+          data-testid={`button-group-action-${index}`}
+          key={index}
+          ref={stateObj.ref}
+          isVisible={stateObj.isVisible}
+          role="listitem"
+        >
           <StyledButton
             {...stateObj.action}
             isFirst={index === 0}
