@@ -101,7 +101,14 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
       >
         <Dropdown
           items={items}
-          toggle={<StyledButton iconOnly={<MoreHorizIcon title="add" />} variant="secondary" isLast />}
+          toggle={
+            <StyledButton
+              data-testid="button-group-dropdown-toggle-button"
+              iconOnly={<MoreHorizIcon title="add" />}
+              variant="secondary"
+              isLast
+            />
+          }
         />
       </StyledFlexItem>
     );

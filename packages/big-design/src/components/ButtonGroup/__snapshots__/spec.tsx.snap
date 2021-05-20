@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders all actions if they are fit 1`] = `
+<div>
+  <div
+    class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 kObzyk"
+    data-testid="button-group-wrapper"
+    role="list"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-sc-1xjvulo-0 hdrsUD"
+      data-testid="button-group-action-0"
+      role="listitem"
+    >
+      <button
+        class="styled__StyledButton-sc-3yq204-0 hgiyIJ styled__StyledButton-sc-1xjvulo-1 dDgWX"
+      >
+        <span
+          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+        >
+          button 1
+        </span>
+      </button>
+    </div>
+    <div
+      class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-sc-1xjvulo-0 hdrsUD"
+      data-testid="button-group-action-1"
+      role="listitem"
+    >
+      <button
+        class="styled__StyledButton-sc-3yq204-0 hgiyIJ styled__StyledButton-sc-1xjvulo-1 gwXCff"
+      >
+        <span
+          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+        >
+          button 2
+        </span>
+      </button>
+    </div>
+    <div
+      class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-sc-1xjvulo-0 fTFpVy"
+      data-testid="button-group-dropdown-toggle"
+      role="listitem"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledBox-sc-2535c9-0 bSLCfq"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-labelledby="bd-dropdown-1-label bd-dropdown-1-toggle-button"
+          class="styled__StyledButton-sc-3yq204-0 ivdfxj styled__StyledButton-sc-1xjvulo-1 gwXCff"
+          data-testid="button-group-dropdown-toggle-button"
+          id="bd-dropdown-1-toggle-button"
+        >
+          <span
+            class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+          >
+            <svg
+              aria-labelledby="bd-icon-2"
+              class="base__StyledIcon-a9u0e1-0 gqewKr"
+              fill="currentColor"
+              height="24"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <title
+                id="bd-icon-2"
+              >
+                add
+              </title>
+              <path
+                d="M0 0h24v24H0V0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="styled__StyledBox-sj5f1m-0 dUQkBL"
+          style="position: absolute; left: 0px; top: 0px;"
+        >
+          <ul
+            aria-labelledby="bd-dropdown-1-label"
+            class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+            id="bd-dropdown-1-menu"
+            role="listbox"
+            tabindex="-1"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders dropdown if buttons do not fit 1`] = `
+<div>
+  <div
+    class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 kObzyk"
+    data-testid="button-group-wrapper"
+    role="list"
+  >
+    <div
+      class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-sc-1xjvulo-0 hdrsUD"
+      data-testid="button-group-action-0"
+      role="listitem"
+    >
+      <button
+        class="styled__StyledButton-sc-3yq204-0 hgiyIJ styled__StyledButton-sc-1xjvulo-1 dDgWX"
+      >
+        <span
+          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+        >
+          button 1
+        </span>
+      </button>
+    </div>
+    <div
+      class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-sc-1xjvulo-0 hdrsUD"
+      data-testid="button-group-action-1"
+      role="listitem"
+    >
+      <button
+        class="styled__StyledButton-sc-3yq204-0 hgiyIJ styled__StyledButton-sc-1xjvulo-1 inqrqj"
+      >
+        <span
+          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+        >
+          button 2
+        </span>
+      </button>
+    </div>
+    <div
+      class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-sc-1xjvulo-0 fTFpVy"
+      data-testid="button-group-action-2"
+      role="listitem"
+    >
+      <button
+        class="styled__StyledButton-sc-3yq204-0 hgiyIJ styled__StyledButton-sc-1xjvulo-1 gwXCff"
+      >
+        <span
+          class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+        >
+          button 3
+        </span>
+      </button>
+    </div>
+    <div
+      class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-sc-1xjvulo-0 hdrsUD"
+      data-testid="button-group-dropdown-toggle"
+      role="listitem"
+    >
+      <div
+        class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledBox-sc-2535c9-0 bSLCfq"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-labelledby="bd-dropdown-3-label bd-dropdown-3-toggle-button"
+          class="styled__StyledButton-sc-3yq204-0 ivdfxj styled__StyledButton-sc-1xjvulo-1 gwXCff"
+          data-testid="button-group-dropdown-toggle-button"
+          id="bd-dropdown-3-toggle-button"
+        >
+          <span
+            class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+          >
+            <svg
+              aria-labelledby="bd-icon-4"
+              class="base__StyledIcon-a9u0e1-0 gqewKr"
+              fill="currentColor"
+              height="24"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <title
+                id="bd-icon-4"
+              >
+                add
+              </title>
+              <path
+                d="M0 0h24v24H0V0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="styled__StyledBox-sj5f1m-0 dUQkBL"
+          style="position: absolute; left: 0px; top: 0px;"
+        >
+          <ul
+            aria-labelledby="bd-dropdown-3-label"
+            class="styled__StyledList-sc-5w3dcq-0 fWrtug"
+            id="bd-dropdown-3-menu"
+            role="listbox"
+            tabindex="-1"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
