@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Modal } from '../../Modal';
-import { useEditableCell, useStore } from '../hooks';
+import { useEditableCell, useStore, useTableFocus } from '../hooks';
 import { WorksheetItem, WorksheetModalColumn } from '../types';
 
 interface WorksheetModalProps<Item> {
@@ -16,6 +16,9 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
   const isModalOpen = useStore(useMemo(() => (state) => state.openedModal === hash, [hash]));
   const selectedCell = useStore(useMemo(() => (state) => state.selectedCells[0], []));
   const setOpenModal = useStore((state) => state.setOpenModal);
+  const setEditingCell = useStore((state) => state.setEditingCell);
+
+  const { focusTable } = useTableFocus();
 
   const { handleChange } = useEditableCell<T>(selectedCell);
 
@@ -27,13 +30,19 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
     }
   }, [selectedCell]);
 
+  const handleClose = useCallback(() => {
+    setOpenModal(null);
+    setEditingCell(null);
+    focusTable();
+  }, [focusTable, setEditingCell, setOpenModal]);
+
   const handleSave = useCallback(() => {
     if (selectedCell && newValue !== null && newValue !== selectedCell.value) {
       handleChange(newValue);
     }
 
-    setOpenModal(null);
-  }, [handleChange, newValue, selectedCell, setOpenModal]);
+    handleClose();
+  }, [handleChange, handleClose, newValue, selectedCell]);
 
   const renderedContent = useMemo(() => {
     const onChange = (newValue: unknown) => {
@@ -48,7 +57,11 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
   return (
     <Modal
       actions={[
-        { text: 'Cancel', variant: 'subtle', onClick: () => setOpenModal(null) },
+        {
+          text: 'Cancel',
+          variant: 'subtle',
+          onClick: handleClose,
+        },
         {
           text: 'Save',
           onClick: handleSave,
@@ -58,7 +71,7 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
       closeOnEscKey={true}
       header={header}
       isOpen={isModalOpen}
-      onClose={() => setOpenModal(null)}
+      onClose={handleClose}
     >
       {renderedContent}
     </Modal>

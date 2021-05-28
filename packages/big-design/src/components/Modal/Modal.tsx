@@ -128,8 +128,18 @@ const InternalModal: React.FC<ModalProps> = ({
     () =>
       Array.isArray(actions) && (
         <StyledModalActions justifyContent="flex-end">
-          {actions.map(({ text, ...props }, index) => (
-            <Button key={index} {...props}>
+          {actions.map(({ text, onClick, ...props }, index) => (
+            <Button
+              key={index}
+              {...props}
+              onClick={(event) => {
+                internalTrap.current?.deactivate();
+
+                if (onClick) {
+                  onClick(event);
+                }
+              }}
+            >
               {text}
             </Button>
           ))}

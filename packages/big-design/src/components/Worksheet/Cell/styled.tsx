@@ -26,6 +26,7 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
     }
   }};
   user-select: none;
+  word-break: break-all;
 
   ${({ isSelected }) =>
     isSelected &&

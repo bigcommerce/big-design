@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { typedMemo } from '../../../../utils';
 import { Checkbox } from '../../../Checkbox';
@@ -8,10 +8,23 @@ import { CheckboxWrapper } from './styled';
 
 export interface CheckboxEditorProps<Item> {
   cell: Cell<Item>;
+  isEditing: boolean;
+  onBlur(): void;
   onChange(value: unknown): void;
 }
 
-const InternalCheckboxEditor = <T extends WorksheetItem>({ cell, onChange }: CheckboxEditorProps<T>) => {
+const InternalCheckboxEditor = <T extends WorksheetItem>({
+  cell,
+  isEditing,
+  onBlur,
+  onChange,
+}: CheckboxEditorProps<T>) => {
+  useEffect(() => {
+    if (isEditing) {
+      onChange(!cell.value);
+    }
+  }, [cell.value, isEditing, onChange]);
+
   const handleChange = () => {
     onChange(!cell.value);
   };
@@ -19,9 +32,10 @@ const InternalCheckboxEditor = <T extends WorksheetItem>({ cell, onChange }: Che
   return (
     <CheckboxWrapper>
       <Checkbox
-        label={cell.value ? 'Checked' : 'Unchecked'}
-        hiddenLabel={true}
         checked={cell.value}
+        hiddenLabel={true}
+        label={cell.value ? 'Checked' : 'Unchecked'}
+        onBlur={onBlur}
         onChange={handleChange}
       />
     </CheckboxWrapper>

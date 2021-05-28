@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef, useEffect } from 'react';
 
 import { typedMemo } from '../../../../utils';
 import { Flex, FlexItem } from '../../../Flex';
@@ -10,12 +10,21 @@ import { StyledButton } from './styled';
 
 export interface ModalEditorProps<Item> {
   cell: Cell<Item>;
+  isEditing: boolean;
   formatting?: WorksheetModalColumn<Item>['formatting'];
 }
 
-const InternalModalEditor = <T extends WorksheetItem>({ cell, formatting }: ModalEditorProps<T>) => {
+const InternalModalEditor = <T extends WorksheetItem>({ cell, formatting, isEditing }: ModalEditorProps<T>) => {
   const setOpenModal = useStore((state) => state.setOpenModal);
   const { hash, value } = cell;
+
+  const buttonRef = createRef<HTMLButtonElement>();
+
+  useEffect(() => {
+    if (isEditing) {
+      setOpenModal(hash);
+    }
+  }, [hash, isEditing, setOpenModal]);
 
   const handleClick = () => {
     setOpenModal(hash);
@@ -26,7 +35,7 @@ const InternalModalEditor = <T extends WorksheetItem>({ cell, formatting }: Moda
       <FlexItem paddingRight="small">
         <Small>{formatting ? formatting(value) : `${value}`}</Small>
       </FlexItem>
-      <StyledButton onClick={handleClick} variant="subtle">
+      <StyledButton onClick={handleClick} ref={buttonRef} variant="subtle">
         Edit
       </StyledButton>
     </Flex>

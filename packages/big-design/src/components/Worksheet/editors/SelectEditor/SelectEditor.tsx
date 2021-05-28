@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef, useEffect } from 'react';
 
 import { typedMemo } from '../../../../utils';
 import { Select } from '../../../Select';
@@ -9,23 +9,42 @@ import { SelectWrapper } from './styled';
 export interface SelectEditorProps<Item> {
   cell: Cell<Item>;
   isEdited: boolean;
-  onChange(value: unknown): void;
+  isEditing: boolean;
   options?: WorksheetSelectableColumn<Item>['config']['options'];
+  onBlur(): void;
+  onChange(value: unknown): void;
 }
 
 const InternalSelectEditor = <T extends WorksheetItem>({
   cell,
   isEdited,
+  isEditing,
+  onBlur,
   onChange,
   options = [],
 }: SelectEditorProps<T>) => {
+  const inputRef = createRef<HTMLInputElement>();
+
+  useEffect(() => {
+    if (isEditing && inputRef.current) {
+      inputRef.current.focus();
+    }
+  });
+
   const handleChange = (value: unknown) => {
     onChange(value);
   };
 
   return (
     <SelectWrapper isEdited={isEdited}>
-      <Select filterable={false} options={options} onOptionChange={handleChange} value={cell.value} />
+      <Select
+        filterable={false}
+        inputRef={inputRef}
+        onBlur={onBlur}
+        onOptionChange={handleChange}
+        options={options}
+        value={cell.value}
+      />
     </SelectWrapper>
   );
 };

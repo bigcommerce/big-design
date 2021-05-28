@@ -251,8 +251,12 @@ export const Select = typedMemo(
               onClick: () => {
                 !isOpen && openMenu();
               },
-              onFocus: () => {
+              onFocus: (event) => {
                 !isOpen && openMenu();
+
+                if (props.onFocus) {
+                  props.onFocus(event);
+                }
               },
               onKeyDown: (event) => {
                 switch (event.key) {

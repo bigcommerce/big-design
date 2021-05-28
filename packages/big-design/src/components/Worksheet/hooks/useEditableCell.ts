@@ -1,29 +1,47 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { Cell, WorksheetItem } from '../types';
 
+import { useNavigation } from './useNavigation';
+import { useStore } from './useStore';
+import { useTableFocus } from './useTableFocus';
 import { useUpdateItems } from './useUpdateItems';
 
 export type EditableCellOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: unknown) => void;
 
 export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
-  const [isEditing, setIsEditing] = useState(false);
+  const setEditingCell = useStore((state) => state.setEditingCell);
   const { updateItems } = useUpdateItems();
+  const { navigate } = useNavigation(cell);
+  const { focusTable } = useTableFocus();
+
+  const isEditing = useStore(
+    useMemo(
+      () => ({ editingCell }) =>
+        editingCell !== null && editingCell.columnIndex === cell.columnIndex && editingCell.rowIndex === cell.rowIndex,
+      [cell],
+    ),
+  );
+
+  const restoreFocus = useCallback(() => {
+    setEditingCell(null);
+    focusTable();
+  }, [focusTable, setEditingCell]);
 
   const handleDoubleClick = useCallback(() => {
-    setIsEditing(true);
-  }, []);
+    setEditingCell(cell);
+  }, [cell, setEditingCell]);
 
   const handleBlur = useCallback(() => {
-    setIsEditing(false);
-  }, []);
+    restoreFocus();
+  }, [restoreFocus]);
 
   const handleChange = useCallback(
     (newValue: unknown) => {
       updateItems([cell], [newValue]);
-      setIsEditing(false);
+      restoreFocus();
     },
-    [cell, updateItems],
+    [cell, restoreFocus, updateItems],
   );
 
   const handleKeyDown: EditableCellOnKeyDown = useCallback(
@@ -40,19 +58,24 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
             updateItems([cell], [newValue]);
           }
 
-          setIsEditing(false);
+          restoreFocus();
+
+          // Navigate down on enter
+          if (cell.type !== 'modal' && cell.type !== 'select') {
+            navigate({ rowIndex: 1, columnIndex: 0 });
+          }
 
           break;
         case 'Escape':
           event.preventDefault();
           event.stopPropagation();
 
-          setIsEditing(false);
+          restoreFocus();
 
           break;
       }
     },
-    [cell, updateItems],
+    [cell, navigate, restoreFocus, updateItems],
   );
 
   return useMemo(() => ({ handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing }), [

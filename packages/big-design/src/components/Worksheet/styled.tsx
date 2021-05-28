@@ -6,6 +6,10 @@ export const Table = styled.table`
   border-spacing: 0;
   table-layout: fixed;
   width: 100%;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Header = styled.th`
