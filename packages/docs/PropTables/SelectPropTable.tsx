@@ -159,6 +159,11 @@ const selectOptionProps: Prop[] = [
     ),
   },
   {
+    name: 'tooltip',
+    types: 'string',
+    description: <>Adds tooltip for disabled item.</>,
+  },
+  {
     name: 'icon',
     types: (
       <NextLink href="/Icons/IconsPage" as="/icons">
@@ -226,6 +231,11 @@ const selectActionProps: Prop[] = [
         Sets the content description of the <Code>SelectAction</Code>
       </>
     ),
+  },
+  {
+    name: 'tooltip',
+    types: 'string',
+    description: <>Adds tooltip for disabled item.</>,
   },
   {
     name: 'icon',

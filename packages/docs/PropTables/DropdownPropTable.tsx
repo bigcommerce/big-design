@@ -124,11 +124,7 @@ const dropdownItemProps: Prop[] = [
   {
     name: 'tooltip',
     types: 'string',
-    description: (
-      <>
-        Adds tooltip for disabled item. Default placement is set to <Code highlight={false}>right</Code>.
-      </>
-    ),
+    description: <>Adds tooltip for disabled item.</>,
   },
   {
     name: 'type',
@@ -185,11 +181,7 @@ const dropdownLinkProps: Prop[] = [
   {
     name: 'tooltip',
     types: 'string',
-    description: (
-      <>
-        Adds tooltip for disabled item. Default placement is set to <Code highlight={false}>right</Code>.
-      </>
-    ),
+    description: <>Adds tooltip for disabled item.</>,
   },
   {
     name: 'type',
