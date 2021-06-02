@@ -1,27 +1,63 @@
+import React from 'react';
+
 import { SelectOption } from '../Select';
 
 export interface Worksheet<Item extends WorksheetItem> {
-  columns: Array<WorksheetTextColumn<Item> | WorksheetSelectableColumn<Item>>;
+  columns: Array<WorksheetColumn<Item>>;
   items: Item[];
   onChange(items: Array<Cell<Item>>): void;
-  onErrors?(items: Array<Cell<Item>>): void;
+  onErrors?(items: WorksheetError<Item>[]): void;
 }
 
-export type WorksheetColumn<Item> = WorksheetTextColumn<Item> | WorksheetSelectableColumn<Item>;
+export interface WorksheetError<Item extends WorksheetItem> {
+  item: Item;
+  errors: (keyof Item)[];
+}
 
-interface BaseColumn<Item> {
+export type WorksheetColumn<Item> =
+  | WorksheetTextColumn<Item>
+  | WorksheetNumberColumn<Item>
+  | WorksheetCheckboxColumn<Item>
+  | WorksheetSelectableColumn<Item>
+  | WorksheetModalColumn<Item>;
+
+interface WorksheetBaseColumn<Item> {
   hash: keyof Item;
   header: string;
   validation?(value: Item[keyof Item]): boolean;
 }
 
-interface WorksheetTextColumn<Item> extends BaseColumn<Item> {
-  type?: 'text' | 'number';
+export interface WorksheetTextColumn<Item> extends WorksheetBaseColumn<Item> {
+  type?: 'text';
+  formatting?(value: Item[keyof Item]): string;
 }
 
-export interface WorksheetSelectableColumn<Item> extends BaseColumn<Item> {
-  options: SelectOption<unknown>[];
+export interface WorksheetNumberColumn<Item> extends WorksheetBaseColumn<Item> {
+  type: 'number';
+  formatting?(value: Item[keyof Item]): string;
+}
+
+export interface WorksheetCheckboxColumn<Item> extends WorksheetBaseColumn<Item> {
+  type: 'checkbox';
+}
+
+export interface WorksheetSelectableColumn<Item> extends WorksheetBaseColumn<Item> {
+  config: {
+    options: SelectOption<unknown>[];
+  };
   type: 'select';
+}
+
+export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
+  config: {
+    header?: string;
+    render(
+      value: Item[keyof Item],
+      onChange: (value: Item[keyof Item]) => void,
+    ): React.ComponentType<Item> | React.ReactElement;
+  };
+  formatting?(value: Item[keyof Item]): string;
+  type: 'modal';
 }
 
 export interface Cell<Item> {
@@ -29,7 +65,7 @@ export interface Cell<Item> {
   hash: keyof Item;
   rowIndex: number;
   value: Item[keyof Item];
-  type: Exclude<WorksheetTextColumn<Item>['type'] | WorksheetSelectableColumn<Item>['type'], undefined>;
+  type: Exclude<WorksheetColumn<Item>['type'], undefined>;
 }
 
 export interface WorksheetItem {

@@ -25,6 +25,7 @@ import { SelectAction } from '../Select/types';
 export const Select = typedMemo(
   <T extends unknown>({
     action,
+    autoComplete = 'off',
     autoWidth = false,
     className,
     disabled,
@@ -235,7 +236,7 @@ export const Select = typedMemo(
           <Input
             {...getInputProps({
               ...props,
-              autoComplete: 'off',
+              autoComplete,
               disabled,
               onClick: () => {
                 !isOpen && openMenu();
@@ -276,6 +277,7 @@ export const Select = typedMemo(
         </StyledInputContainer>
       );
     }, [
+      autoComplete,
       closeMenu,
       disabled,
       filterable,

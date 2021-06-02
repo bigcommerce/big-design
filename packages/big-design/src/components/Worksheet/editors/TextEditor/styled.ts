@@ -5,7 +5,6 @@ export const StyledInput = styled.input<{ isEdited: boolean }>`
   border: 0;
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
-  height: 100%;
   line-height: ${({ theme }) => theme.lineHeight.small};
   margin: 0;
   padding: 0;

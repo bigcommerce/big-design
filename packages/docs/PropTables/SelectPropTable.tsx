@@ -9,6 +9,12 @@ const selectProps: Prop[] = [
     description: 'Action option displayed at the end of the list.',
   },
   {
+    name: 'autoComplete',
+    defaultValue: 'off',
+    types: 'string',
+    description: 'Set the autoComplete property for the input.',
+  },
+  {
     name: 'description',
     types: 'string | FormControlDescription',
     description: 'Append a description to the select field.',

@@ -7,6 +7,7 @@ import { SelectOptionGroup } from '../Select/types';
 
 interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children'> {
   action?: SelectAction;
+  autoComplete?: string;
   autoWidth?: boolean;
   description?: React.ReactChild;
   disabled?: boolean;
