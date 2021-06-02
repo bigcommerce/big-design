@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Modal } from '../../Modal';
-import { useEditableCell, useStore, useTableFocus } from '../hooks';
+import { useStore, useTableFocus, useUpdateItems } from '../hooks';
 import { WorksheetItem, WorksheetModalColumn } from '../types';
 
 interface WorksheetModalProps<Item> {
@@ -20,7 +20,7 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
 
   const { focusTable } = useTableFocus();
 
-  const { handleChange } = useEditableCell<T>(selectedCell);
+  const { updateItems } = useUpdateItems();
 
   const [newValue, setNewValue] = useState<unknown>(null);
 
@@ -38,11 +38,11 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
 
   const handleSave = useCallback(() => {
     if (selectedCell && newValue !== null && newValue !== selectedCell.value) {
-      handleChange(newValue);
+      updateItems([selectedCell], [newValue]);
     }
 
     handleClose();
-  }, [handleChange, handleClose, newValue, selectedCell]);
+  }, [handleClose, newValue, selectedCell, updateItems]);
 
   const renderedContent = useMemo(() => {
     const onChange = (newValue: unknown) => {

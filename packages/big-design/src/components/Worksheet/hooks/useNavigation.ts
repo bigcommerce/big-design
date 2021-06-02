@@ -44,7 +44,7 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
         const type = columns[newPosition.columnIndex].type || 'text';
         const value = rows[newPosition.rowIndex][hash];
 
-        const cell: Cell<T> = { ...newPosition, hash, type, value };
+        const cell = { ...newPosition, hash, type, value };
 
         setSelectedCells([cell]);
         setSelectedRows([newPosition.rowIndex]);

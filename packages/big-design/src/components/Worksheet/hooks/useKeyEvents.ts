@@ -13,7 +13,9 @@ export const useKeyEvents = () => {
   const { navigate } = useNavigation(selectedCell);
 
   const editSelectedCell = useCallback(() => {
-    setEditingCell(selectedCell);
+    if (selectedCell) {
+      setEditingCell(selectedCell);
+    }
   }, [selectedCell, setEditingCell]);
 
   const handleKeyDown = useCallback(

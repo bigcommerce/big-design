@@ -463,6 +463,50 @@ describe('formatting', () => {
   });
 });
 
+describe('keyboard navigation', () => {
+  test('navigates with arrow keys', async () => {
+    const { getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    let cell = getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+
+    expect(cell.parentElement).toHaveStyle('border-color: #3C64F4');
+
+    fireEvent.keyDown(cell, { key: 'ArrowDown' });
+
+    cell = getByText('Shoes Name Two');
+
+    expect(cell.parentElement).toHaveStyle('border-color: #3C64F4');
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('navigates with tab', async () => {
+    const { getAllByText, getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const cell = getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+
+    expect(cell.parentElement).toHaveStyle('border-color: #3C64F4');
+
+    fireEvent.keyDown(cell, { key: 'Tab' });
+    fireEvent.keyDown(cell, { key: 'Tab' });
+
+    const cells = getAllByText('Text');
+
+    expect(cells[0].parentElement).toHaveStyle('border-color: #3C64F4');
+
+    fireEvent.keyDown(cell, { key: 'Tab', shiftKey: true });
+    fireEvent.keyDown(cell, { key: 'Tab', shiftKey: true });
+
+    expect(cell.parentElement).toHaveStyle('border-color: #3C64F4');
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+});
+
 describe('TextEditor', () => {
   test('renders TextEditor', async () => {
     const { getByDisplayValue, getByText } = render(
