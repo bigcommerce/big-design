@@ -11,7 +11,10 @@ export const StyledModal = styled.div.attrs({
   role: 'dialog',
   tabIndex: -1,
 })<Partial<ModalProps>>`
+  align-items: center;
+  display: flex;
   height: 100%;
+  justify-content: center;
   left: 0;
   position: fixed;
   top: 0;
@@ -38,9 +41,6 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
       ${theme.shadow.floating};
 
       max-width: ${theme.breakpointValues.tablet};
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
       width: 90%;
     `}
 
@@ -54,11 +54,8 @@ export const StyledModalContent = styled(Flex)<{ variant: ModalProps['variant'] 
         ${theme.shadow.floating};
 
         height: auto;
-        left: 50%;
         max-height: 90vh;
         max-width: ${theme.breakpointValues.tablet};
-        top: 50%;
-        transform: translate(-50%, -50%);
       }
 
       ${theme.breakpoints.desktop} {
