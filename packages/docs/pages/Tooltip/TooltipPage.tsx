@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, H0, H1, H2, Link, Text, Tooltip } from '@bigcommerce/big-design';
+import { Box, Button, Flex, Grid, H1, H3, H2, Link, Text, Tooltip } from '@bigcommerce/big-design';
 import { WarningIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
@@ -7,7 +7,7 @@ import { TooltipPropTable } from '../../PropTables';
 
 const TooltipPage = () => (
   <>
-    <H0>Tooltips</H0>
+    <H1>Tooltips</H1>
 
     <Text>
       Tooltips contain information to help users understand actions or page elements. They are short, and triggered by a
@@ -26,10 +26,10 @@ const TooltipPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
     <TooltipPropTable />
 
-    <H1>Examples</H1>
+    <H3>Examples</H3>
 
     <H2>Anchor</H2>
 

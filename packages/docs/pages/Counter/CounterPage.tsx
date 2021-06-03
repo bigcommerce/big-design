@@ -1,4 +1,4 @@
-import { Counter, Form, FormGroup, H0, H1, Link, Text } from '@bigcommerce/big-design';
+import { Counter, Form, FormGroup, H1, H3, Link, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -6,7 +6,7 @@ import { CounterPropTable } from '../../PropTables';
 
 const CounterPage = () => (
   <>
-    <H0>Counter</H0>
+    <H1>Counter</H1>
 
     <Text>
       Counters are stylized numerical form controls with the ability to control validation.{' '}
@@ -42,7 +42,7 @@ const CounterPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
 
     <Text>
       Supports most native <Code>&lt;input /&gt;</Code> element attributes.
@@ -50,7 +50,7 @@ const CounterPage = () => (
 
     <CounterPropTable />
 
-    <H1>Error State</H1>
+    <H3>Error State</H3>
 
     <Text>
       Counters allow you to pass in an <Code primary>error</Code> message that will control the styles of a counter. The

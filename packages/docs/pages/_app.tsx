@@ -66,13 +66,14 @@ export default class MyApp extends App {
                       gridGap="0"
                       style={{ minHeight: '100%' }}
                     >
-                      <GridItem gridArea="nav">
+                      <GridItem gridArea="nav" paddingTop="small">
                         <SideNav />
                       </GridItem>
                       <GridItem
                         gridArea="main"
                         marginVertical="medium"
                         marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
+                        paddingTop="medium"
                         style={{ maxWidth: '100%' }}
                       >
                         <StoryWrapper>

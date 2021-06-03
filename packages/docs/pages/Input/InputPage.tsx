@@ -1,4 +1,4 @@
-import { Form, FormGroup, H0, H1, Input, Link, Text } from '@bigcommerce/big-design';
+import { Form, FormGroup, H1, H3, Input, Link, Text } from '@bigcommerce/big-design';
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import React, { useState } from 'react';
 
@@ -7,7 +7,7 @@ import { InputPropTable } from '../../PropTables';
 
 const InputPage = () => (
   <>
-    <H0>Input</H0>
+    <H1>Input</H1>
 
     <Text>
       Inputs are stylized form controls with the ability of controling validation.{' '}
@@ -42,7 +42,7 @@ const InputPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
 
     <Text>
       Supports all native <Code>&lt;input /&gt;</Code> element attributes.
@@ -50,7 +50,7 @@ const InputPage = () => (
 
     <InputPropTable />
 
-    <H1>Error State</H1>
+    <H3>Error State</H3>
 
     <Text>
       Inputs allow you to pass in an <Code primary>error</Code> message that will control the styles of an input. The
@@ -73,7 +73,7 @@ const InputPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>Icons</H1>
+    <H3>Icons</H3>
 
     <Text>
       Inputs can also contain icons via the <Code>iconLeft</Code> &amp; <Code>iconRight</Code> props.

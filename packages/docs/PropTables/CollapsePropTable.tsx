@@ -22,5 +22,5 @@ const collapseProps: Prop[] = [
 ];
 
 export const CollapsePropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Collapse" propList={collapseProps} {...props} />
+  <PropTable title="Collapse props" propList={collapseProps} {...props} />
 );

@@ -5,8 +5,8 @@ import {
   Fieldset,
   Form,
   FormGroup,
-  H0,
   H1,
+  H3,
   Input,
   Link,
   Radio,
@@ -28,7 +28,7 @@ import {
 
 const FormPage = () => (
   <>
-    <H0>Forms</H0>
+    <H1>Forms</H1>
 
     <Text>
       Form fields are essential to any website or web application. <Code>id</Code>'s' will be auto-generated for
@@ -60,7 +60,7 @@ const FormPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
     <FormPropTable />
     <FormErrorPropTable id="error" />
     <FormLabelPropTable id="label" />
@@ -68,7 +68,7 @@ const FormPage = () => (
     <FormGroupPropTable />
     <FormFieldsetPropTable />
 
-    <H1>Input Types</H1>
+    <H3>Input Types</H3>
 
     <Text>
       BigDesign comes with various input types: <Code>Input</Code>, <Code>Checkbox</Code>, <Code>Radio</Code>,{' '}
@@ -107,7 +107,7 @@ const FormPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>Layout</H1>
+    <H3>Layout</H3>
 
     <Text>
       You can up to 3 <Code>Input</Code> components in row to add more dimension to a <Code>FormGroup</Code>.{' '}
@@ -140,7 +140,7 @@ const FormPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>Validation</H1>
+    <H3>Validation</H3>
 
     <Text>
       All form controls are tied to <Code primary>onChange</Code> or equivalent event handlers. Validation messages can

@@ -1,4 +1,4 @@
-import { Box, Flex, FlexItem, H0, H1, H2, Text } from '@bigcommerce/big-design';
+import { Box, Flex, FlexItem, H1, H3, H2, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -25,7 +25,7 @@ const ExampleBox: React.FC<{ vertical?: boolean }> = ({ children, vertical }) =>
 
 const FlexPage = () => (
   <>
-    <H0>Flex</H0>
+    <H1>Flex</H1>
 
     <Text>A flex container used for customizable layouts.</Text>
 
@@ -54,7 +54,7 @@ const FlexPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
     <FlexPropTable />
     <FlexItemPropTable />
 
@@ -64,7 +64,7 @@ const FlexPage = () => (
     <MarginPropTable collapsible />
     <PaddingPropTable collapsible />
 
-    <H1>Examples</H1>
+    <H3>Examples</H3>
 
     <Text>
       Flex container's can space their element with uniform spacing in-between each flex item using the{' '}

@@ -1,4 +1,4 @@
-import { Form, FormGroup, H0, Text, Timepicker } from '@bigcommerce/big-design';
+import { Form, FormGroup, H1, Text, Timepicker } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { CodePreview } from '../../components';
@@ -6,7 +6,7 @@ import { TimepickerPropTable } from '../../PropTables';
 
 const TimepickerPage = () => (
   <>
-    <H0>Timepicker</H0>
+    <H1>Timepicker</H1>
 
     <Text>Timepicker is used to select a time in specific hours and minutes.</Text>
 

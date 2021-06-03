@@ -21,7 +21,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({ children, title }) => 
   return (
     <div>
       <StyledFlex
-        marginBottom="xLarge"
+        marginBottom="xSmall"
         alignItems="center"
         onClick={toggleIsCollapsed}
         onKeyPress={handleKeyPressed}

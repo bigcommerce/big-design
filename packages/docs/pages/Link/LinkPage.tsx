@@ -1,4 +1,4 @@
-import { H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { H1, H3, H2, Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { CodePreview } from '../../components';
@@ -6,7 +6,7 @@ import { LinkPropTable, MarginPropTable } from '../../PropTables';
 
 const LinkPage = () => (
   <>
-    <H0>Link</H0>
+    <H1>Link</H1>
 
     <Text>
       A simple wrapper for anchor elements. Use instead of {'<a>'}. Supports all native anchor element attributes.{' '}
@@ -32,7 +32,7 @@ const LinkPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
 
     <LinkPropTable />
 

@@ -1,4 +1,4 @@
-import { Box, H0, Text } from '@bigcommerce/big-design';
+import { Box, H1, Text } from '@bigcommerce/big-design';
 import { breakpointValues } from '@bigcommerce/big-design-theme';
 import React from 'react';
 import styled from 'styled-components';
@@ -7,7 +7,7 @@ import { Code, CodePreview } from '../../components';
 
 const BreakpointsPage = () => (
   <>
-    <H0>Breakpoints</H0>
+    <H1>Breakpoints</H1>
 
     <Text>
       We provide access to our breakpoints' <Code>@media</Code> queries. Our breakpoints include{' '}

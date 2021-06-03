@@ -1,4 +1,4 @@
-import { Button, H0, H1, Text } from '@bigcommerce/big-design';
+import { Button, H1, H3, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { CodePreview, NextLink } from '../../components';
@@ -6,7 +6,7 @@ import { MarginPropTable } from '../../PropTables';
 
 const MarginPage = () => (
   <>
-    <H0>Margin</H0>
+    <H1>Margin</H1>
 
     <Text>
       Some of our components expose a simple way to modify their margin. The following example showcases the simples way
@@ -41,7 +41,7 @@ const MarginPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
     <MarginPropTable />
   </>
 );

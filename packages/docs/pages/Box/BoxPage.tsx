@@ -1,4 +1,4 @@
-import { Box, Flex, H0, H1, H2, Text } from '@bigcommerce/big-design';
+import { Box, Flex, H1, H3, H2, Text } from '@bigcommerce/big-design';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -7,7 +7,7 @@ import { BoxPropTable, DisplayPropTable, MarginPropTable, PaddingPropTable } fro
 
 const BoxPage = () => (
   <>
-    <H0>Box</H0>
+    <H1>Box</H1>
 
     <Text>Mostly used as a simple container or as a base to build other components.</Text>
 
@@ -19,7 +19,7 @@ const BoxPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
     <BoxPropTable />
 
     <H2>Inherited Props</H2>
@@ -27,7 +27,7 @@ const BoxPage = () => (
     <MarginPropTable collapsible />
     <PaddingPropTable collapsible />
 
-    <H1>Examples</H1>
+    <H3>Examples</H3>
 
     <Box>
       <Text>Box also supports multiple shadows, here is an example of how they look like:</Text>

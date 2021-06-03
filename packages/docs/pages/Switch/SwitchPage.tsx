@@ -1,4 +1,4 @@
-import { H0, H1, Switch, Text } from '@bigcommerce/big-design';
+import { H1, H3, Switch, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -6,7 +6,7 @@ import { SwitchPropTable } from '../../PropTables';
 
 const SwitchPage = () => (
   <>
-    <H0>Switch</H0>
+    <H1>Switch</H1>
 
     <Text>
       Switches are a stylized <Code>input[type="checkbox"]</Code> with controllable checked/unchecked states. Switches
@@ -24,7 +24,7 @@ const SwitchPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
 
     <SwitchPropTable />
   </>

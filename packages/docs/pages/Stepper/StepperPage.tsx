@@ -1,4 +1,4 @@
-import { Button, H0, H1, Stepper, Text } from '@bigcommerce/big-design';
+import { Button, H1, H1, Stepper, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -6,7 +6,7 @@ import { StepperPropTable } from '../../PropTables';
 
 const StepperPage = () => (
   <>
-    <H0>Stepper</H0>
+    <H1>Stepper</H1>
 
     <Text>
       The <Code primary>Stepper</Code> component is used to display a set number of steps. Useful for guiding a user

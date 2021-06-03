@@ -1,4 +1,4 @@
-import { Form, FormGroup, Grid, H0, H1, H2, Link, Select, Text } from '@bigcommerce/big-design';
+import { Form, FormGroup, Grid, H1, H3, H2, Link, Select, Text } from '@bigcommerce/big-design';
 import { DeleteIcon } from '@bigcommerce/big-design-icons';
 import React, { useState } from 'react';
 
@@ -7,7 +7,7 @@ import { SelectActionPropTable, SelectGroupPropTable, SelectOptionPropTable, Sel
 
 const SelectPage = () => (
   <>
-    <H0>Selects</H0>
+    <H1>Selects</H1>
 
     <Text>
       Select are typeable inputs with selectable dropdown items.{' '}
@@ -66,13 +66,13 @@ const SelectPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
     <SelectPropTable />
     <SelectOptionPropTable />
     <SelectActionPropTable />
     <SelectGroupPropTable />
 
-    <H1>Examples</H1>
+    <H3>Examples</H3>
 
     <H2>Position</H2>
 

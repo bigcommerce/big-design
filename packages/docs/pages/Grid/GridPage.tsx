@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { Box, Grid, GridItem, H1, H3, H2, Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -19,7 +19,7 @@ const ExampleBox: React.FC = ({ children }) => (
 
 const GridPage = () => (
   <>
-    <H0>Grid</H0>
+    <H1>Grid</H1>
 
     <Text>
       The Grid component is useful for creating intrinsicly responsive layouts.{' '}
@@ -48,7 +48,7 @@ const GridPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
 
     <GridPropTable />
     <GridItemPropTable />
@@ -59,7 +59,7 @@ const GridPage = () => (
     <MarginPropTable collapsible />
     <PaddingPropTable collapsible />
 
-    <H1>Examples</H1>
+    <H3>Examples</H3>
 
     <Text>
       Grid allows you to create custom layouts using combinations of <Code>gridTemplate</Code> and <Code>gridArea</Code>{' '}

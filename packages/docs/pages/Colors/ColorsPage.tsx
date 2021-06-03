@@ -1,4 +1,4 @@
-import { Box, Flex, H0, H1, Link, Text } from '@bigcommerce/big-design';
+import { Box, Flex, H1, Link, Text, Panel } from '@bigcommerce/big-design';
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
@@ -19,49 +19,51 @@ const ColorsPage = () => {
 
   return (
     <>
-      <H0>Colors</H0>
+      <H1>Colors</H1>
 
-      <Text>
-        Colors can be used directly on some of our components that expect a color as a prop.{' '}
-        <Link href="https://design.bigcommerce.com/components/colors" target="_blank">
-          Colors Design Guidelines
-        </Link>
-        .
-      </Text>
+      <Panel>
+        <Text>
+          Colors can be used directly on some of our components that expect a color as a prop.{' '}
+          <Link href="https://design.bigcommerce.com/components/colors" target="_blank">
+            Colors Design Guidelines
+          </Link>
+          .
+        </Text>
 
-      <CodePreview>
-        {/* jsx-to-string:start */}
-        <Box backgroundColor="secondary20" padding="medium">
-          Box example
-        </Box>
-        {/* jsx-to-string:end */}
-      </CodePreview>
+        <CodePreview>
+          {/* jsx-to-string:start */}
+          <Box backgroundColor="secondary20" padding="medium">
+            Box example
+          </Box>
+          {/* jsx-to-string:end */}
+        </CodePreview>
 
-      <Text>You can also use the colors directly from the theme to style other components, for example:</Text>
+        <Text>You can also use the colors directly from the theme to style other components, for example:</Text>
 
-      <CodePreview>
-        {/* jsx-to-string:start */}
-        {function Example() {
-          const StyledBox = styled(Box)(({ theme }) => ({
-            backgroundColor: theme.colors.secondary20,
-            padding: theme.spacing.medium,
-          }));
+        <CodePreview lastChild>
+          {/* jsx-to-string:start */}
+          {function Example() {
+            const StyledBox = styled(Box)(({ theme }) => ({
+              backgroundColor: theme.colors.secondary20,
+              padding: theme.spacing.medium,
+            }));
 
-          return <StyledBox>StyledBox Example</StyledBox>;
-        }}
-        {/* jsx-to-string:end */}
-      </CodePreview>
+            return <StyledBox>StyledBox Example</StyledBox>;
+          }}
+          {/* jsx-to-string:end */}
+        </CodePreview>
+      </Panel>
 
-      <H1>Available Colors</H1>
-
-      <Flex flexDirection="column">
-        {getFilteredColors(colors).map((color) => (
-          <Flex alignItems="center" key={color}>
-            <StyledColor backgroundColor={color as Color} />
-            <Text marginLeft="medium">{getColorLabel(color)}</Text>
-          </Flex>
-        ))}
-      </Flex>
+      <Panel header="Available colors">
+        <Flex flexDirection="column">
+          {getFilteredColors(colors).map((color) => (
+            <Flex alignItems="center" key={color}>
+              <StyledColor backgroundColor={color as Color} />
+              <Text marginLeft="medium">{getColorLabel(color)}</Text>
+            </Flex>
+          ))}
+        </Flex>
+      </Panel>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Checkbox, Form, FormGroup, H0, H1, Link, Text } from '@bigcommerce/big-design';
+import { Checkbox, Form, FormGroup, H1, H3, Link, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -6,7 +6,7 @@ import { CheckboxDescriptionLinkPropTable, CheckboxDescriptionPropTable, Checkbo
 
 const CheckboxPage = () => (
   <>
-    <H0>Checkbox</H0>
+    <H1>Checkbox</H1>
 
     <Text>
       Checkboxes are a stylized <Code>input[type="checkbox"]</Code> with controllable checked/unchecked states.{' '}
@@ -34,13 +34,13 @@ const CheckboxPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
 
     <CheckboxPropTable />
     <CheckboxDescriptionPropTable />
     <CheckboxDescriptionLinkPropTable />
 
-    <H1>Indeterminate</H1>
+    <H3>Indeterminate</H3>
 
     <Text>
       Checkboxes support <Code primary>isIndeterminate</Code> passed as a prop to show a combined state of partially
@@ -57,7 +57,7 @@ const CheckboxPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>Description</H1>
+    <H3>Description</H3>
 
     <Text>
       Checkboxes support <Code primary>description</Code> passed as a prop, which contains a text and an optional link.

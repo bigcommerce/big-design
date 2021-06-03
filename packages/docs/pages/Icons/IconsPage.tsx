@@ -1,4 +1,4 @@
-import { Flex, Form, FormGroup, H0, H1, Link, Select, Text } from '@bigcommerce/big-design';
+import { Flex, Form, FormGroup, H1, H3, Link, Select, Text, Panel, Message } from '@bigcommerce/big-design';
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import {
   ARFlagIcon,
@@ -35,146 +35,146 @@ const IconsPage = () => {
 
   return (
     <>
-      <H0>Icons</H0>
+      <H1>Icons</H1>
 
-      <Text>
-        Icons live in a separate package <Code>@bigcommerce/big-design-icons</Code>. To use the icons you will first
-        need to add the package to your app using <Code>npm install @bigcommerce/big-design-icons</Code> or{' '}
-        <Code>yarn add @bigcommerce/big-design-icons</Code>.
-      </Text>
+      <Panel>
+        <Text>To use an icon import the component from the package:</Text>
+        <CodeSnippet>{`import { CheckIcon } from '@bigcommerce/big-design-icons';`}</CodeSnippet>
+        <Text>Use it anywhere in your app:</Text>
+        <CodePreview lastChild>
+          {/* jsx-to-string:start */}
+          <CheckIcon color="success" size="xxxLarge" />
+          {/* jsx-to-string:end */}
+        </CodePreview>
+      </Panel>
 
-      <H1>Usage</H1>
+      <Message
+        type="warning"
+        messages={[
+          {
+            text:
+              'Icons live in the package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
+          },
+        ]}
+        marginBottom="medium"
+      />
 
-      <Text>To use an icon import the component from the package:</Text>
-
-      <CodeSnippet>{`import { CheckIcon } from '@bigcommerce/big-design-icons';`}</CodeSnippet>
-
-      <Text>Use it anywhere in your app:</Text>
-
-      <CodePreview>
-        {/* jsx-to-string:start */}
-        <CheckIcon color="success" size="xxxLarge" />
-        {/* jsx-to-string:end */}
-      </CodePreview>
-
-      <H1>API</H1>
       <IconPropTable />
 
-      <H1>Available Icons</H1>
+      <Panel header="Available icons">
+        <Flex flexWrap="wrap" justifyContent="center">
+          {Object.keys(icons).map((iconName) => {
+            const Icon = icons[iconName];
 
-      <Flex flexWrap="wrap" justifyContent="center">
-        {Object.keys(icons).map((iconName) => {
-          const Icon = icons[iconName];
+            return (
+              <Flex
+                key={iconName}
+                style={{ width: '300px' }}
+                flexDirection="column"
+                borderRadius="normal"
+                justifyContent="center"
+                alignItems="center"
+                padding="large"
+              >
+                <Icon size="xxxLarge" />
+                <Code>{`<${iconName} />`}</Code>
+              </Flex>
+            );
+          })}
+        </Flex>
+      </Panel>
 
-          return (
-            <Flex
-              key={iconName}
-              style={{ width: '300px' }}
-              flexDirection="column"
-              borderRadius="normal"
-              justifyContent="center"
-              alignItems="center"
-              padding="large"
-            >
-              <Icon size="xxxLarge" />
-              <Code>{`<${iconName} />`}</Code>
-            </Flex>
-          );
-        })}
-      </Flex>
+      <Panel header="Flags">
+        <Text>
+          A complete list of available flags is located{' '}
+          <Link href="https://flagicons.lipis.dev/" target="_blank">
+            here
+          </Link>
+          .
+        </Text>
 
-      <H0 marginTop="xxxLarge">Flags</H0>
+        <Text>To use a flag import the component from the package:</Text>
 
-      <Text>
-        Flags are a submodule in the separate Icons package <Code>@bigcommerce/big-design-icons/flags</Code>. To use the
-        Flags you will first need to add the Icons package to your app using{' '}
-        <Code>npm install @bigcommerce/big-design-icons</Code> or <Code>yarn add @bigcommerce/big-design-icons</Code>.{' '}
-        <Link href="https://design.bigcommerce.com/components/iconography" target="_blank">
-          Iconography Design Guidelines
-        </Link>
-        .
-      </Text>
+        <CodeSnippet>{`import { USFlagIcon } from '@bigcommerce/big-design-icons/flags';`}</CodeSnippet>
 
-      <Text>
-        A complete list of available flags is located{' '}
-        <Link href="https://flagicons.lipis.dev/" target="_blank">
-          here
-        </Link>
-        .
-      </Text>
+        <Text>Use it anywhere in your app:</Text>
 
-      <H1>Usage</H1>
+        <CodePreview scope={{ USFlagIcon }}>
+          {/* jsx-to-string:start */}
+          <USFlagIcon size="xxxLarge" />
+          {/* jsx-to-string:end */}
+        </CodePreview>
 
-      <Text>To use a flag import the component from the package:</Text>
+        <CodePreview
+          scope={{
+            ARFlagIcon,
+            AUFlagIcon,
+            CAFlagIcon,
+            CLFlagIcon,
+            CNFlagIcon,
+            DEFlagIcon,
+            FRFlagIcon,
+            GBFlagIcon,
+            JPFlagIcon,
+            KRFlagIcon,
+            MXFlagIcon,
+            RUFlagIcon,
+            USFlagIcon,
+          }}
+          lastChild
+        >
+          {/* jsx-to-string:start */}
+          {function Example() {
+            const [value, setValue] = useState('');
+            const handleChange = (val) => setValue(val);
 
-      <CodeSnippet>{`import { USFlagIcon } from '@bigcommerce/big-design-icons/flags';`}</CodeSnippet>
+            return (
+              <Form>
+                <FormGroup>
+                  <Select
+                    filterable={false}
+                    label="Countries"
+                    maxHeight={300}
+                    onOptionChange={handleChange}
+                    options={[
+                      { value: 'us', content: 'United States', icon: <USFlagIcon /> },
+                      { value: 'mx', content: 'Mexico', icon: <MXFlagIcon /> },
+                      { value: 'ca', content: 'Canada', icon: <CAFlagIcon /> },
+                      { value: 'en', content: 'England', icon: <GBFlagIcon /> },
+                      { value: 'fr', content: 'France', icon: <FRFlagIcon /> },
+                      { value: 'gr', content: 'Germany', icon: <DEFlagIcon /> },
+                      { value: 'ar', content: 'Argentina', icon: <ARFlagIcon /> },
+                      { value: 'ru', content: 'Russia', disabled: true, icon: <RUFlagIcon /> },
+                      { value: 'ch', content: 'Chile', icon: <CLFlagIcon /> },
+                      { value: 'jp', content: 'Japan', icon: <JPFlagIcon /> },
+                      { value: 'cn', content: 'China', icon: <CNFlagIcon /> },
+                      { value: 'sk', content: 'South Korea', icon: <KRFlagIcon /> },
+                      { value: 'au', content: 'Australia', icon: <AUFlagIcon /> },
+                    ]}
+                    placeholder={'Choose country'}
+                    placement={'bottom-start'}
+                    required
+                    value={value}
+                  />
+                </FormGroup>
+              </Form>
+            );
+          }}
+          {/* jsx-to-string:end */}
+        </CodePreview>
+      </Panel>
 
-      <Text>Use it anywhere in your app:</Text>
+      <Message
+        type="warning"
+        messages={[
+          {
+            text:
+              'Flags are a submodule of the Icons package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
+          },
+        ]}
+        marginBottom="medium"
+      />
 
-      <CodePreview scope={{ USFlagIcon }}>
-        {/* jsx-to-string:start */}
-        <USFlagIcon size="xxxLarge" />
-        {/* jsx-to-string:end */}
-      </CodePreview>
-
-      <CodePreview
-        scope={{
-          ARFlagIcon,
-          AUFlagIcon,
-          CAFlagIcon,
-          CLFlagIcon,
-          CNFlagIcon,
-          DEFlagIcon,
-          FRFlagIcon,
-          GBFlagIcon,
-          JPFlagIcon,
-          KRFlagIcon,
-          MXFlagIcon,
-          RUFlagIcon,
-          USFlagIcon,
-        }}
-      >
-        {/* jsx-to-string:start */}
-        {function Example() {
-          const [value, setValue] = useState('');
-          const handleChange = (val) => setValue(val);
-
-          return (
-            <Form>
-              <FormGroup>
-                <Select
-                  filterable={false}
-                  label="Countries"
-                  maxHeight={300}
-                  onOptionChange={handleChange}
-                  options={[
-                    { value: 'us', content: 'United States', icon: <USFlagIcon /> },
-                    { value: 'mx', content: 'Mexico', icon: <MXFlagIcon /> },
-                    { value: 'ca', content: 'Canada', icon: <CAFlagIcon /> },
-                    { value: 'en', content: 'England', icon: <GBFlagIcon /> },
-                    { value: 'fr', content: 'France', icon: <FRFlagIcon /> },
-                    { value: 'gr', content: 'Germany', icon: <DEFlagIcon /> },
-                    { value: 'ar', content: 'Argentina', icon: <ARFlagIcon /> },
-                    { value: 'ru', content: 'Russia', disabled: true, icon: <RUFlagIcon /> },
-                    { value: 'ch', content: 'Chile', icon: <CLFlagIcon /> },
-                    { value: 'jp', content: 'Japan', icon: <JPFlagIcon /> },
-                    { value: 'cn', content: 'China', icon: <CNFlagIcon /> },
-                    { value: 'sk', content: 'South Korea', icon: <KRFlagIcon /> },
-                    { value: 'au', content: 'Australia', icon: <AUFlagIcon /> },
-                  ]}
-                  placeholder={'Choose country'}
-                  placement={'bottom-start'}
-                  required
-                  value={value}
-                />
-              </FormGroup>
-            </Form>
-          );
-        }}
-        {/* jsx-to-string:end */}
-      </CodePreview>
-
-      <H1>API</H1>
       <FlagIconPropTable />
     </>
   );

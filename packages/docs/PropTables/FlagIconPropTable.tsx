@@ -30,5 +30,5 @@ const flagIconProps: Prop[] = [
 ];
 
 export const FlagIconPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="FlagIcon" propList={flagIconProps} {...props} />
+  <PropTable title="FlagIcon props" propList={flagIconProps} {...props} />
 );

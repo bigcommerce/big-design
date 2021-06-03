@@ -1,4 +1,4 @@
-import { Flex, FlexItem, H0, H1, Link, Panel, PillTabs, Text } from '@bigcommerce/big-design';
+import { Flex, FlexItem, H1, H3, Link, Panel, PillTabs, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -6,7 +6,7 @@ import { PillTabItemPropTable, PillTabsPropTable } from '../../PropTables';
 
 const PillTabsPage = () => (
   <>
-    <H0>Pill Tabs</H0>
+    <H1>Pill Tabs</H1>
 
     <Text>
       The <Code primary>Pill Tabs</Code> component is used to provide a set of filters that act on a collection of
@@ -82,7 +82,7 @@ const PillTabsPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
     <PillTabsPropTable />
     <PillTabItemPropTable id="pill-tabs-items-prop-table" />
   </>

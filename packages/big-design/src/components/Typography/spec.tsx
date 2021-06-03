@@ -63,9 +63,9 @@ test('render Text with ellipsis', () => {
 
 test('H0 - does not forward styles', () => {
   const { container } = render(
-    <H0 className="test" style={{ background: 'red' }}>
+    <H1 className="test" style={{ background: 'red' }}>
       Test
-    </H0>,
+    </H1>,
   );
 
   expect(container.getElementsByClassName('test').length).toBe(0);
@@ -74,9 +74,9 @@ test('H0 - does not forward styles', () => {
 
 test('H1 - does not forward styles', () => {
   const { container } = render(
-    <H1 className="test" style={{ background: 'red' }}>
+    <H3 className="test" style={{ background: 'red' }}>
       Test
-    </H1>,
+    </H3>,
   );
 
   expect(container.getElementsByClassName('test').length).toBe(0);
@@ -148,7 +148,7 @@ test('HR - does not forward styles', () => {
 test('All typography components allow changing their color given a color prop', () => {
   const { container } = render(
     <>
-      <H1 color="primary">Test</H1>
+      <H3 color="primary">Test</H3>
       <H2 color="primary">Test</H2>
       <H3 color="primary">Test</H3>
       <H4 color="primary">Test</H4>

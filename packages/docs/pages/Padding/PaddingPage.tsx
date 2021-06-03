@@ -1,4 +1,4 @@
-import { Box, H0, H1, Text } from '@bigcommerce/big-design';
+import { Box, H1, H3, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { CodePreview, NextLink } from '../../components';
@@ -6,7 +6,7 @@ import { PaddingPropTable } from '../../PropTables';
 
 const PaddingPage = () => (
   <>
-    <H0>Padding</H0>
+    <H1>Padding</H1>
 
     <Text>
       Some of our components expose a simple way to modify their padding. The following example showcases the simples
@@ -45,7 +45,7 @@ const PaddingPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
     <PaddingPropTable />
   </>
 );

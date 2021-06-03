@@ -1,4 +1,4 @@
-import { H0, H1, H2, InlineMessage, Text } from '@bigcommerce/big-design';
+import { H1, H3, H2, InlineMessage, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview, Collapsible } from '../../components';
@@ -7,7 +7,7 @@ import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../../PropTa
 
 const InlineMessagePage = () => (
   <>
-    <H0>Inline Messages</H0>
+    <H1>Inline Messages</H1>
     <Text>
       An inline message, mostly used for displaying alerts within Modals. Is a condensed version of the{' '}
       <Code primary>Message</Code> component.
@@ -31,7 +31,7 @@ const InlineMessagePage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
 
     <InlineMessagePropTable />
 
@@ -45,7 +45,7 @@ const InlineMessagePage = () => (
       <MarginPropTable />
     </Collapsible>
 
-    <H1>Examples</H1>
+    <H3>Examples</H3>
 
     <H2>Types</H2>
 

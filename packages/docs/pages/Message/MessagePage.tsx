@@ -1,4 +1,4 @@
-import { H0, H1, H2, Message, Text } from '@bigcommerce/big-design';
+import { H1, H3, H2, Message, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview, Collapsible } from '../../components';
@@ -8,7 +8,7 @@ import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../../PropTa
 
 const MessagePage = () => (
   <>
-    <H0>Messages</H0>
+    <H1>Messages</H1>
     <Text>
       A message primarily used for displaying page/table messaging, feature/discover/system level messages, or even
       non-critical messaging.
@@ -32,7 +32,7 @@ const MessagePage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
 
     <MessagePropTable />
 
@@ -46,7 +46,7 @@ const MessagePage = () => (
       <MarginPropTable />
     </Collapsible>
 
-    <H1>Examples</H1>
+    <H3>Examples</H3>
 
     <H2>Types</H2>
 

@@ -1,4 +1,4 @@
-import { Fieldset, Form, FormGroup, H0, H1, Link, Radio, Text } from '@bigcommerce/big-design';
+import { Fieldset, Form, FormGroup, H1, H3, Link, Radio, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -6,7 +6,7 @@ import { RadioDescriptionLinkPropTable, RadioDescriptionPropTable, RadioPropTabl
 
 const RadioPage = () => (
   <>
-    <H0>Radio</H0>
+    <H1>Radio</H1>
 
     <Text>
       Radios are single-selectable form control groups.{' '}
@@ -42,7 +42,7 @@ const RadioPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
 
     <Text>
       Supports all native <Code>&lt;input /&gt;</Code> element attributes.
@@ -52,7 +52,7 @@ const RadioPage = () => (
     <RadioDescriptionPropTable />
     <RadioDescriptionLinkPropTable />
 
-    <H1>Grouping</H1>
+    <H3>Grouping</H3>
 
     <Text>
       In order to group radio controls, use the <Code>Fieldset</Code> component to separate the controls.
@@ -87,7 +87,7 @@ const RadioPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>Description</H1>
+    <H3>Description</H3>
 
     <Text>
       Radio support <Code primary>description</Code> passed as a prop, which contains a text and an optional link.

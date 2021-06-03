@@ -1,4 +1,4 @@
-import { Button, Dropdown, Grid, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { Button, Dropdown, Grid, H1, H3, H2, Link, Text } from '@bigcommerce/big-design';
 import { AssignmentIcon, DeleteIcon, EditIcon, FileCopyIcon, OpenInNewIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
@@ -12,7 +12,7 @@ import {
 
 const DropdownPage = () => (
   <>
-    <H0>Dropdown</H0>
+    <H1>Dropdown</H1>
 
     <Text>
       Dropdowns are toggleable, contextual overlays for displaying lists.{' '}
@@ -62,13 +62,13 @@ const DropdownPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
     <DropdownPropTable />
     <DropdownItemPropTable />
     <DropdownLinkItemPropTable />
     <DropdownItemGroupPropTable />
 
-    <H1>Examples</H1>
+    <H3>Examples</H3>
 
     <H2>Links</H2>
 

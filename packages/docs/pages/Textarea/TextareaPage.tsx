@@ -1,4 +1,4 @@
-import { Form, FormGroup, H0, H1, Link, Text, Textarea } from '@bigcommerce/big-design';
+import { Form, FormGroup, H1, H3, Link, Text, Textarea } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -6,7 +6,7 @@ import { TextareaPropTable } from '../../PropTables';
 
 const TextAreaPage = () => (
   <>
-    <H0>Textarea</H0>
+    <H1>Textarea</H1>
 
     <Text>
       Textareas are stylized form controls with the ability of controling validation.{' '}
@@ -42,7 +42,7 @@ const TextAreaPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
 
     <Text>
       Supports all native <Code>&lt;textarea /&gt;</Code> element attributes.
@@ -50,7 +50,7 @@ const TextAreaPage = () => (
 
     <TextareaPropTable />
 
-    <H1>Error State</H1>
+    <H3>Error State</H3>
 
     <Text>
       Textareas allow you to pass in an <Code primary>error</Code> message that will control the styles of an input. The
@@ -74,7 +74,7 @@ const TextAreaPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>Controlling Rows</H1>
+    <H3>Controlling Rows</H3>
 
     <Text>
       By default, a <Code>Textarea</Code> displays with <Code>3</Code> rows. In order to set the intial amount of rows,
@@ -91,7 +91,7 @@ const TextAreaPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>Resizable</H1>
+    <H3>Resizable</H3>
 
     <Text>
       You can also control whether <Code>Textarea</Code> components are resizeable. Resizing is only available on the

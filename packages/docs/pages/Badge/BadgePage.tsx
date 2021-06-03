@@ -1,4 +1,4 @@
-import { Badge, Grid, H0, H1, H2, Link, Text } from '@bigcommerce/big-design';
+import { Badge, Grid, H1, H3, H2, Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -6,7 +6,7 @@ import { BadgePropTable, MarginPropTable } from '../../PropTables';
 
 const BadgePage = () => (
   <>
-    <H0>Badges</H0>
+    <H1>Badges</H1>
 
     <Text>
       Badges are used to quickly indicate status or information to a user visually. Each variant correlates to a
@@ -23,13 +23,13 @@ const BadgePage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
     <BadgePropTable />
 
     <H2>Inherited Props</H2>
     <MarginPropTable collapsible />
 
-    <H1>Variants</H1>
+    <H3>Variants</H3>
 
     <Text>
       There are five types of variants to choose from: <Code>success</Code>, <Code>secondary</Code>,{' '}

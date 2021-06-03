@@ -1,4 +1,4 @@
-import { H2, Link, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
+import { H3, Link, Small, Table, TableFigure, Text, Panel } from '@bigcommerce/big-design';
 import React, { FC, ReactNode } from 'react';
 
 import { Code } from '../Code';
@@ -21,15 +21,17 @@ export interface PropTableProps {
   id?: string;
   title: string;
   propList: Prop[];
+  renderAsContent?: boolean;
+  inheritedProps?: ReactNode;
 }
 
 export type PropTableWrapper = Partial<PropTableProps>;
 
 export const PropTable: FC<PropTableProps> = (props) => {
-  const { collapsible, id, propList: items, title } = props;
+  const { collapsible, id, propList: items, title, renderAsContent, inheritedProps } = props;
 
   const renderTable = () => (
-    <TableFigure marginBottom="xLarge">
+    <TableFigure marginBottom={renderAsContent || collapsible || inheritedProps ? 'xLarge' : 'none'}>
       <Table
         columns={[
           {
@@ -66,14 +68,30 @@ export const PropTable: FC<PropTableProps> = (props) => {
     </TableFigure>
   );
 
-  return collapsible ? (
-    <Collapsible title={`${title} Props`}>{renderTable()}</Collapsible>
-  ) : (
+  const renderContent = renderAsContent ? (
     <>
-      <H2 id={id}>{title}</H2>
+      <H3 id={id}>{title}</H3>
       {renderTable()}
+      {inheritedProps ? (
+        <>
+          <H3>Inherited</H3>
+          {inheritedProps}
+        </>
+      ) : null}
     </>
+  ) : (
+    <Panel header={title} id={id}>
+      {renderTable()}
+      {inheritedProps ? (
+        <>
+          <H3>Inherited</H3>
+          {inheritedProps}
+        </>
+      ) : null}
+    </Panel>
   );
+
+  return collapsible ? <Collapsible title={`${title} Props`}>{renderTable()}</Collapsible> : <>{renderContent}</>;
 };
 
 const TypesData: React.FC<TypesDataProps> = (props): any => {

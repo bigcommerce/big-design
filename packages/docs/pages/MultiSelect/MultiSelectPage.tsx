@@ -1,4 +1,4 @@
-import { Form, FormGroup, Grid, H0, H1, H2, Link, MultiSelect, Text } from '@bigcommerce/big-design';
+import { Form, FormGroup, Grid, H1, H3, H2, Link, MultiSelect, Text } from '@bigcommerce/big-design';
 import { DeleteIcon } from '@bigcommerce/big-design-icons';
 import React, { useState } from 'react';
 
@@ -7,7 +7,7 @@ import { MultiSelectPropTable, SelectActionPropTable, SelectOptionPropTable } fr
 
 const MultiSelectPage = () => (
   <>
-    <H0>MultiSelects</H0>
+    <H1>MultiSelects</H1>
 
     <Text>
       MultiSelect are typeable inputs with multiple selectable dropdown items.{' '}
@@ -66,12 +66,12 @@ const MultiSelectPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
     <MultiSelectPropTable />
     <SelectOptionPropTable />
     <SelectActionPropTable />
 
-    <H1>Examples</H1>
+    <H3>Examples</H3>
 
     <H2>Position</H2>
 
@@ -238,7 +238,7 @@ const MultiSelectPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>Action</H1>
+    <H3>Action</H3>
 
     <Text>
       Accepts an <Code>action</Code> object to display at the end of the list.

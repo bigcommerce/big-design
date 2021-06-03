@@ -1,4 +1,4 @@
-import { Box, H0, Text } from '@bigcommerce/big-design';
+import { Box, H1, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview, NextLink } from '../../components';
@@ -6,7 +6,7 @@ import { DisplayPropTable } from '../../PropTables';
 
 const DisplayPage = () => (
   <>
-    <H0>Display</H0>
+    <H1>Display</H1>
 
     <Text>
       A few of our components expose a <Code primary>display</Code> prop in order to change the CSS display property.

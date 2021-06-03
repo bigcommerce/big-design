@@ -1,4 +1,4 @@
-import { Datepicker, Form, FormGroup, H0, H1, Text } from '@bigcommerce/big-design';
+import { Datepicker, Form, FormGroup, H1, H3, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -6,7 +6,7 @@ import { DatepickerPropTable } from '../../PropTables';
 
 const DatepickerPage = () => (
   <>
-    <H0>Datepicker</H0>
+    <H1>Datepicker</H1>
 
     <Text>Use to select a single date from the calendar.</Text>
 
@@ -34,7 +34,7 @@ const DatepickerPage = () => (
       {/* jsx-to-string:end */}
     </CodePreview>
 
-    <H1>API</H1>
+    <H3>API</H3>
 
     <Text>
       Supports all native <Code>&lt;input [type="date"] /&gt;</Code> element attributes.
@@ -42,7 +42,7 @@ const DatepickerPage = () => (
 
     <DatepickerPropTable />
 
-    <H1>Error State</H1>
+    <H3>Error State</H3>
 
     <Text>
       Datepicker allows you to pass in an <Code primary>error</Code> message that will control the styles of a counter.
