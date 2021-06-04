@@ -32,6 +32,7 @@ interface BaseItem extends Omit<LiHTMLAttributes<HTMLLIElement>, 'value'> {
   description?: string;
   disabled?: boolean;
   icon?: React.ReactElement;
+  tooltip?: string;
 }
 
 export interface SelectOption<T> extends BaseItem {
