@@ -1,8 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
-import { Cell, WorksheetItem } from '../types';
-
-import { useStore } from './useStore';
+import { Cell, WorksheetItem } from '../../types';
+import { useStore } from '../useStore';
 
 interface Coordinate {
   columnIndex: number;

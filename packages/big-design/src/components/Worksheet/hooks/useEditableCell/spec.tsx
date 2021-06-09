@@ -2,12 +2,12 @@ import { renderHook } from '@testing-library/react-hooks';
 import React from 'react';
 import { act } from 'react-test-renderer';
 
-import { Cell } from '../types';
+import { Cell } from '../../types';
 
 import { useEditableCell } from './useEditableCell';
 
 let mockUpdateItems = jest.fn();
-jest.mock('./useUpdateItems', () => ({
+jest.mock('../useUpdateItems', () => ({
   useUpdateItems: () => ({
     updateItems: mockUpdateItems,
   }),

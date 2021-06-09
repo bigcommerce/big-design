@@ -1,7 +1,7 @@
 import create, { State } from 'zustand';
 
-import { Cell, WorksheetColumn } from '../types';
-import { deleteCells, mergeCells } from '../utils';
+import { Cell, WorksheetColumn } from '../../types';
+import { deleteCells, mergeCells } from '../../utils';
 
 interface BaseState<Item> extends State {
   columns: WorksheetColumn<Item>[];

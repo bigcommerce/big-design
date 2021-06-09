@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
-import { useNavigation } from './useNavigation';
-import { useStore } from './useStore';
+import { useNavigation } from '../useNavigation';
+import { useStore } from '../useStore';
 
 export const useKeyEvents = () => {
   // Get the first cell of the selected values

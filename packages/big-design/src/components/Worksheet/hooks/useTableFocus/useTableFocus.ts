@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 
-import { useStore } from './useStore';
+import { useStore } from '../useStore';
 
 export const useTableFocus = () => {
   const tableRef = useStore(useMemo(() => (state) => state.tableRef, []));
