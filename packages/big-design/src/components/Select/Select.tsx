@@ -35,6 +35,8 @@ export const Select = typedMemo(
     label,
     labelId,
     maxHeight,
+    onClose,
+    onOpen,
     onOptionChange,
     options,
     placeholder,
@@ -108,9 +110,17 @@ export const Select = typedMemo(
     };
 
     const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && isOpen === false) {
+      if (filterable && !isOpen) {
         // Reset the options when the List is closed
         setFilteredOptions(flattenedOptions);
+      }
+
+      if (isOpen && typeof onOpen === 'function') {
+        onOpen();
+      }
+
+      if (!isOpen && typeof onClose === 'function') {
+        onClose();
       }
     };
 
