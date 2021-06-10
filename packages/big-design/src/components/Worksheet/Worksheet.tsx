@@ -8,7 +8,7 @@ import { WorksheetModal } from './Modal/Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, Table } from './styled';
-import { WorksheetItem, WorksheetModalColumn, Worksheet as WorksheetProps } from './types';
+import { WorksheetItem, WorksheetModalColumn, WorksheetProps } from './types';
 import { editedRows, invalidRows } from './utils';
 
 const InternalWorksheet = <T extends WorksheetItem>({

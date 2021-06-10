@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SelectOption } from '../Select';
 
-export interface Worksheet<Item extends WorksheetItem> {
+export interface WorksheetProps<Item extends WorksheetItem> {
   columns: Array<WorksheetColumn<Item>>;
   items: Item[];
   onChange(items: Array<Cell<Item>>): void;
