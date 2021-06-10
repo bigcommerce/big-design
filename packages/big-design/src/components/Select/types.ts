@@ -19,6 +19,8 @@ interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'child
   placement?: Placement;
   positionFixed?: boolean;
   required?: boolean;
+  onClose?(): void;
+  onOpen?(): void;
 }
 
 export interface SelectProps<T> extends BaseSelect {

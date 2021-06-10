@@ -10,6 +10,8 @@ import { Select } from './';
 
 const onChange = jest.fn();
 const onActionClick = jest.fn();
+const onOpen = jest.fn();
+const onClose = jest.fn();
 
 const mockOptions = [
   { value: 'us', content: 'United States' },
@@ -54,6 +56,8 @@ const SelectMock = (
     data-testid="select"
     error="Required"
     label="Countries"
+    onClose={onClose}
+    onOpen={onOpen}
     onOptionChange={onChange}
     options={mockOptions}
     placeholder="Choose country"
@@ -424,6 +428,29 @@ test('clicking on disabled select options should not trigger onItemClick', async
   expect(onChange).not.toHaveBeenCalled();
 
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+});
+
+test('opening the Select triggers onOpen', async () => {
+  const { getByRole, queryByRole } = render(SelectMock);
+  const button = getByRole('button');
+
+  fireEvent.click(button);
+
+  expect(onOpen).toHaveBeenCalled();
+
+  await waitForElement(() => queryByRole('listbox'));
+});
+
+test('closing the Select triggers onClose', async () => {
+  const { getByRole, queryByRole } = render(SelectMock);
+  const button = getByRole('button');
+
+  fireEvent.click(button);
+  fireEvent.click(button);
+
+  expect(onClose).toHaveBeenCalled();
+
+  await waitForElement(() => queryByRole('listbox'));
 });
 
 test('select should render select action', async () => {
