@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/configs",
-  "version": "0.14.1",
+  "version": "0.15.0-alpha.0",
   "private": true,
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {

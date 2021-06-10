@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.30.0-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.29.2...@bigcommerce/docs@0.30.0-alpha.0) (2021-06-10)
+
+
+### Bug Fixes
+
+* fix tooltip documentation and interfaces  ([#546](https://github.com/bigcommerce/big-design/issues/546)) ([1014593](https://github.com/bigcommerce/big-design/commit/10145930e77f34dad20b8b9f26cdab57e6ddd7eb))
+* **docs:** update inline-message side nav link ([#529](https://github.com/bigcommerce/big-design/issues/529)) ([ba0c093](https://github.com/bigcommerce/big-design/commit/ba0c093704d0f0d4ba76e171d7f213b4220d1057))
+
+
+### Features
+
+* **component:** add autoComplete prop for selects ([#542](https://github.com/bigcommerce/big-design/issues/542)) ([5ac23fd](https://github.com/bigcommerce/big-design/commit/5ac23fddeaabba04eb9a41300f40234911912c0c))
+* **component:** add onOpen and onClose to Selects ([#549](https://github.com/bigcommerce/big-design/issues/549)) ([233d8b7](https://github.com/bigcommerce/big-design/commit/233d8b72514e5a4924656ea1eb375441963604e7))
+* **component:** add Pill Tabs component ([#515](https://github.com/bigcommerce/big-design/issues/515)) ([b89518f](https://github.com/bigcommerce/big-design/commit/b89518f9ef93923e562e6b8dd56d207901b9857a))
+* **component:** add Search to the Table and StatefulTable ([#521](https://github.com/bigcommerce/big-design/issues/521)) ([d5591ae](https://github.com/bigcommerce/big-design/commit/d5591ae4c878edf8d7d0e50f0d1b4645e972555d))
+
+
+
+
+
 ## [0.29.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.29.1...@bigcommerce/docs@0.29.2) (2021-04-14)
 
 

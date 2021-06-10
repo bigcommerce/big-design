@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.30.0-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.29.2...@bigcommerce/big-design@0.30.0-alpha.0) (2021-06-10)
+
+
+### Bug Fixes
+
+* fix tooltip documentation and interfaces  ([#546](https://github.com/bigcommerce/big-design/issues/546)) ([1014593](https://github.com/bigcommerce/big-design/commit/10145930e77f34dad20b8b9f26cdab57e6ddd7eb))
+* **component:** add element check to popover closeOnClickOutside effect ([#528](https://github.com/bigcommerce/big-design/issues/528)) ([af63ae1](https://github.com/bigcommerce/big-design/commit/af63ae11a164a562da455994d6febce852bfacd2))
+* **component:** change positioning of Modal ([#545](https://github.com/bigcommerce/big-design/issues/545)) ([e1e19a1](https://github.com/bigcommerce/big-design/commit/e1e19a128fb66ce7ccc2fe048c049f0911cf3273))
+
+
+### Features
+
+* **component:** add autoComplete prop for selects ([#542](https://github.com/bigcommerce/big-design/issues/542)) ([5ac23fd](https://github.com/bigcommerce/big-design/commit/5ac23fddeaabba04eb9a41300f40234911912c0c))
+* **component:** add onOpen and onClose to Selects ([#549](https://github.com/bigcommerce/big-design/issues/549)) ([233d8b7](https://github.com/bigcommerce/big-design/commit/233d8b72514e5a4924656ea1eb375441963604e7))
+* **component:** add Pill Tabs component ([#515](https://github.com/bigcommerce/big-design/issues/515)) ([b89518f](https://github.com/bigcommerce/big-design/commit/b89518f9ef93923e562e6b8dd56d207901b9857a))
+* **component:** add Search to the Table and StatefulTable ([#521](https://github.com/bigcommerce/big-design/issues/521)) ([d5591ae](https://github.com/bigcommerce/big-design/commit/d5591ae4c878edf8d7d0e50f0d1b4645e972555d))
+* **component:** add Worksheet component ([#516](https://github.com/bigcommerce/big-design/issues/516)) ([448b04e](https://github.com/bigcommerce/big-design/commit/448b04e1fefeb87d06ec7ff80c7c37a97c7377ac))
+* **component:** allow formatting of columns ([#538](https://github.com/bigcommerce/big-design/issues/538)) ([472aa71](https://github.com/bigcommerce/big-design/commit/472aa71a1f2ba28699dd2783bcfeeef56a7590d0))
+* **component:** implements checkbox column type ([#526](https://github.com/bigcommerce/big-design/issues/526)) ([5af1e75](https://github.com/bigcommerce/big-design/commit/5af1e75a73ac79c1785de13d34a8568af425d31d))
+* **component:** implements modal column type ([#532](https://github.com/bigcommerce/big-design/issues/532)) ([2c69939](https://github.com/bigcommerce/big-design/commit/2c69939bcc9e474e0d8e9cb64a258c4f6d72d628))
+* **component:** implements selectable column type ([#520](https://github.com/bigcommerce/big-design/issues/520)) ([9f6fb73](https://github.com/bigcommerce/big-design/commit/9f6fb739fd5f72cd40b7b457f913c9f3294aa458))
+
+
+
+
+
 ## [0.29.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.29.1...@bigcommerce/big-design@0.29.2) (2021-04-14)
 
 
