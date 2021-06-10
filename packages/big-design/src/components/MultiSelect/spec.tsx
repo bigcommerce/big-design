@@ -10,6 +10,8 @@ import { MultiSelect } from './';
 
 const onChange = jest.fn();
 const onActionClick = jest.fn();
+const onOpen = jest.fn();
+const onClose = jest.fn();
 
 const mockOptions = [
   { value: 'us', content: 'United States' },
@@ -54,6 +56,8 @@ const MultiSelectMock = (
     data-testid="multi-select"
     error="Required"
     label="Countries"
+    onClose={onClose}
+    onOpen={onOpen}
     onOptionsChange={onChange}
     options={mockOptions}
     placeholder="Choose country"
@@ -367,6 +371,29 @@ test('clicking on disabled select options should not trigger onItemClick', async
   expect(onChange).not.toHaveBeenCalled();
 
   await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+});
+
+test('opening the MultiSelect triggers onOpen', async () => {
+  const { getAllByRole, queryByRole } = render(MultiSelectMock);
+  const button = getAllByRole('button')[2];
+
+  fireEvent.click(button);
+
+  expect(onOpen).toHaveBeenCalled();
+
+  await waitForElement(() => queryByRole('listbox'));
+});
+
+test('closing the MultiSelect triggers onClose', async () => {
+  const { getAllByRole, queryByRole } = render(MultiSelectMock);
+  const button = getAllByRole('button')[2];
+
+  fireEvent.click(button);
+  fireEvent.click(button);
+
+  expect(onClose).toHaveBeenCalled();
+
+  await waitForElement(() => queryByRole('listbox'));
 });
 
 test('select should render select action', async () => {

@@ -36,6 +36,8 @@ export const MultiSelect = typedMemo(
     label,
     labelId,
     maxHeight,
+    onClose,
+    onOpen,
     onOptionsChange,
     options,
     placeholder,
@@ -106,10 +108,18 @@ export const MultiSelect = typedMemo(
       );
     };
 
-    const handleOnIsOpenChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && changes.isOpen === false) {
+    const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (filterable && !isOpen) {
         // Reset the items if filtered
         setFilteredOptions(flattenedOptions);
+      }
+
+      if (isOpen && typeof onOpen === 'function') {
+        onOpen();
+      }
+
+      if (!isOpen && typeof onClose === 'function') {
+        onClose();
       }
     };
 
