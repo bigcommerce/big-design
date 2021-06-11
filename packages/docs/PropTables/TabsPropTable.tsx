@@ -25,7 +25,7 @@ const tabsProps: Prop[] = [
 ];
 
 export const TabsPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Tabs props" propList={tabsProps} {...props} />
+  <PropTable title="Tabs" propList={tabsProps} {...props} />
 );
 
 const tabItemProps: Prop[] = [
@@ -49,5 +49,5 @@ const tabItemProps: Prop[] = [
 ];
 
 export const TabItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Tabs[TabItem] props" propList={tabItemProps} {...props} />
+  <PropTable title="Tabs[TabItem]" propList={tabItemProps} {...props} />
 );

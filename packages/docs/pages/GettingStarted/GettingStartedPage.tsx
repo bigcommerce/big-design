@@ -34,11 +34,6 @@ const GettingStartedPage = () => {
         <FlexItem alignSelf="center">
           <List columnCount={2} columnGap={spacing.xxxLarge}>
             <List.Item>
-              <Link href="https://design.bigcommerce.com/components" target="_blank">
-                Design Guidelines
-              </Link>
-            </List.Item>
-            <List.Item>
               <Link href="https://github.com/bigcommerce/big-design" target="_blank">
                 GitHub Repo
               </Link>

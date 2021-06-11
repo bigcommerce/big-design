@@ -64,7 +64,7 @@ const statefulTreeProps: Prop[] = [
 ];
 
 export const StatefulTreePropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="StatefulTree props" propList={statefulTreeProps} {...props} />
+  <PropTable title="StatefulTree" propList={statefulTreeProps} {...props} />
 );
 
 const treeNodeProps: Prop[] = [

@@ -28,7 +28,7 @@ export interface PropTableProps {
 export type PropTableWrapper = Partial<PropTableProps>;
 
 export const PropTable: FC<PropTableProps> = (props) => {
-  const { collapsible, id, propList: items, title, renderAsContent, inheritedProps } = props;
+  const { collapsible, id, propList: items, title, renderAsContent, inheritedProps, children } = props;
 
   const renderTable = () => (
     <TableFigure marginBottom={renderAsContent || collapsible || inheritedProps ? 'xLarge' : 'none'}>
@@ -71,6 +71,7 @@ export const PropTable: FC<PropTableProps> = (props) => {
   const renderContent = renderAsContent ? (
     <>
       <H3 id={id}>{title}</H3>
+      {children}
       {renderTable()}
       {inheritedProps ? (
         <>
@@ -81,6 +82,7 @@ export const PropTable: FC<PropTableProps> = (props) => {
     </>
   ) : (
     <Panel header={title} id={id}>
+      {children}
       {renderTable()}
       {inheritedProps ? (
         <>

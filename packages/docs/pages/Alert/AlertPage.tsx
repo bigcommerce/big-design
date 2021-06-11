@@ -1,4 +1,4 @@
-import { AlertProps, Button, H1, H3, Message, Text, Panel } from '@bigcommerce/big-design';
+import { AlertProps, Button, H1, H3, Message, Panel, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview, CodeSnippet } from '../../components';
@@ -76,7 +76,7 @@ const AlertPage = () => (
       <CodeSnippet>
         {`
           export const alertsManager = createAlertsManager(); // import this in child components to use alerts
-          
+
           function App() {
             return (
               <>
@@ -99,9 +99,9 @@ const AlertPage = () => (
       <CodeSnippet>
         {`
           import { alertsManager } from '../App';
-  
+
           // ...
-  
+
           const alert = {...}; // alert props
           alertsManager.add(alert);
         `}

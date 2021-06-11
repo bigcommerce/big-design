@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Text } from '@bigcommerce/big-design';
 import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
 const counterProps: Prop[] = [
@@ -86,5 +86,9 @@ const counterProps: Prop[] = [
 ];
 
 export const CounterPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Counter" propList={counterProps} {...props} />
+  <PropTable title="Counter" propList={counterProps} {...props}>
+    <Text>
+      Supports most native <Code>&lt;input /&gt;</Code> element attributes.
+    </Text>
+  </PropTable>
 );

@@ -1,15 +1,14 @@
-import { H2, Text } from '@bigcommerce/big-design';
+import { Text, H3, Panel } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
 export const FormErrorPropTable: React.FC<{ id?: string }> = ({ id }) => (
-  <>
-    <H2 id={id}>FormControlError</H2>
+  <Panel header="FormControlError" id={id}>
     <Text>
       Supports all native <Code>&lt;p /&gt;</Code> element attributes.
     </Text>
-  </>
+  </Panel>
 );
 
 const formProps: Prop[] = [
@@ -39,21 +38,19 @@ export const FormFieldsetPropTable: React.FC<PropTableWrapper> = (props) => (
 );
 
 export const FormLabelPropTable: React.FC<{ id?: string }> = ({ id }) => (
-  <>
-    <H2 id={id}>FormControlLabel</H2>
+  <Panel header="FormControlLabel" id={id}>
     <Text>
       Supports all native <Code>&lt;label /&gt;</Code> element attributes.
     </Text>
-  </>
+  </Panel>
 );
 
 export const FormDescriptionPropTable: React.FC<{ id?: string }> = ({ id }) => (
-  <>
-    <H2 id={id}>FormControlDescription</H2>
+  <Panel header="FormControlDescription" id={id}>
     <Text>
       Supports all native <Code>&lt;p /&gt;</Code> element attributes.
     </Text>
-  </>
+  </Panel>
 );
 
 const formGroupProps: Prop[] = [
@@ -65,12 +62,11 @@ const formGroupProps: Prop[] = [
 ];
 
 export const FormPropTable: React.FC<PropTableWrapper> = (props) => (
-  <>
+  <PropTable title="Form" propList={formProps} {...props}>
     <Text>
       Supports all native <Code>&lt;form /&gt;</Code> element attributes.
     </Text>
-    <PropTable title="Form" propList={formProps} {...props} />
-  </>
+  </PropTable>
 );
 
 export const FormGroupPropTable: React.FC<PropTableWrapper> = (props) => (
