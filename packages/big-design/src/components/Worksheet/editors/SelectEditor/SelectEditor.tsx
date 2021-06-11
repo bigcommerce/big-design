@@ -40,7 +40,7 @@ const InternalSelectEditor = <T extends WorksheetItem>({
       <Select
         filterable={false}
         inputRef={inputRef}
-        onBlur={onBlur}
+        onClose={onBlur}
         onOptionChange={handleChange}
         options={options}
         value={cell.value}

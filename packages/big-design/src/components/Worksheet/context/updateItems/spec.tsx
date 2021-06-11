@@ -31,6 +31,12 @@ const items: Product[] = [
   },
 ];
 
+const initialStoreState = useStore.getState();
+
+beforeEach(() => {
+  useStore.setState(initialStoreState, true);
+});
+
 describe('UpdateItemsProvider', () => {
   test('updates items', () => {
     const wrapper: React.FC = ({ children }) => <UpdateItemsProvider items={items}>{children}</UpdateItemsProvider>;
@@ -64,5 +70,21 @@ describe('UpdateItemsProvider', () => {
         otherField3: 2,
       },
     ]);
+  });
+
+  test('do not update if value is the same', () => {
+    const wrapper: React.FC = ({ children }) => <UpdateItemsProvider items={items}>{children}</UpdateItemsProvider>;
+
+    const { result: hook } = renderHook(() => useUpdateItems(), { wrapper });
+    const { result: store } = renderHook(() => useStore());
+
+    act(() =>
+      hook.current.updateItems(
+        [{ rowIndex: 0, columnIndex: 0, hash: 'productName', type: 'text', value: 'Shoes Name One' }],
+        ['Shoes Name One'],
+      ),
+    );
+
+    expect(store.current.editedCells).toStrictEqual([]);
   });
 });

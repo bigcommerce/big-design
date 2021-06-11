@@ -13,6 +13,13 @@ jest.mock('../useUpdateItems', () => ({
   }),
 }));
 
+const mockNavigate = jest.fn();
+jest.mock('../useNavigation', () => ({
+  useNavigation: () => ({
+    navigate: mockNavigate,
+  }),
+}));
+
 interface Product {
   category: string;
 }
@@ -67,6 +74,43 @@ describe('useEditableCells', () => {
     expect(stopPropagation).toHaveBeenCalledTimes(1);
     expect(mockUpdateItems).toHaveBeenCalledWith([cell], ['New Value']);
     expect(result.current.isEditing).toBe(false);
+
+    expect(mockNavigate).toHaveBeenCalledWith({ rowIndex: 1, columnIndex: 0 });
+  });
+
+  test('enter only updates if it has new values', () => {
+    const { result } = renderHook(() => useEditableCell(cell));
+
+    act(() => {
+      result.current.handleDoubleClick();
+      result.current.handleKeyDown(
+        ({
+          key: 'Enter',
+          preventDefault,
+          stopPropagation,
+        } as unknown) as React.KeyboardEvent<HTMLInputElement>,
+        'Text',
+      );
+    });
+
+    expect(mockUpdateItems).not.toHaveBeenCalled();
+  });
+
+  test('modal and select do not trigger a navigation', () => {
+    const { result } = renderHook(() => useEditableCell({ ...cell, type: 'select' }));
+
+    act(() => {
+      result.current.handleKeyDown(
+        ({
+          key: 'Enter',
+          preventDefault,
+          stopPropagation,
+        } as unknown) as React.KeyboardEvent<HTMLInputElement>,
+        'New Value',
+      );
+    });
+
+    expect(mockNavigate).not.toHaveBeenCalled();
   });
 
   test('escape', () => {
@@ -87,5 +131,15 @@ describe('useEditableCells', () => {
     expect(preventDefault).toHaveBeenCalledTimes(1);
     expect(stopPropagation).toHaveBeenCalledTimes(1);
     expect(result.current.isEditing).toBe(false);
+  });
+
+  test('on change', () => {
+    const { result } = renderHook(() => useEditableCell(cell));
+
+    act(() => {
+      result.current.handleChange('New Value');
+    });
+
+    expect(mockUpdateItems).toHaveBeenCalledWith([cell], ['New Value']);
   });
 });

@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
+import { act } from 'react-test-renderer';
 
 import { Cell, WorksheetColumn } from '../../types';
 import { useStore } from '../useStore';
@@ -48,15 +49,27 @@ beforeEach(() => {
 describe('useNavigation', () => {
   const cell: Cell<Product> = { rowIndex: 0, columnIndex: 0, type: 'text', hash: 'productName', value: 'One' };
 
-  test('navigations', () => {
-    const { result } = renderHook(() => useNavigation(cell));
+  test('navigates', () => {
+    const { result: hook } = renderHook(() => useNavigation(cell));
+    const { result: store } = renderHook(() => useStore());
 
-    result.current.navigate({ rowIndex: 1, columnIndex: 0 });
+    act(() => {
+      hook.current.navigate({ rowIndex: 1, columnIndex: 0 });
+    });
 
-    const { result: useStateResult } = renderHook(() => useStore((state) => state.selectedCells));
-
-    expect(useStateResult.current).toStrictEqual([
+    expect(store.current.selectedCells).toStrictEqual([
       { rowIndex: 1, columnIndex: 0, type: 'text', hash: 'productName', value: 'Two' },
     ]);
+  });
+
+  test('navigates only on valid position', () => {
+    const { result: hook } = renderHook(() => useNavigation(cell));
+    const { result: store } = renderHook(() => useStore());
+
+    act(() => {
+      hook.current.navigate({ rowIndex: 0, columnIndex: -1 });
+    });
+
+    expect(store.current.selectedCells).toStrictEqual([]);
   });
 });
