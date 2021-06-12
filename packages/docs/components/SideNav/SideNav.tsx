@@ -19,6 +19,7 @@ export const SideNav: React.FC = () => {
       alignContent={{ mobile: 'center', tablet: 'stretch' }}
       justifyContent={{ mobile: 'space-between', tablet: 'flex-start' }}
       padding="medium"
+      paddingLeft="xLarge"
       paddingBottom={{ mobile: 'medium', tablet: 'xxxLarge' }}
     >
       <FlexItem>
@@ -192,11 +193,6 @@ export const SideNav: React.FC = () => {
             url="https://github.com/bigcommerce/big-design"
             icon={<GithubLogoIcon title="Github Logo" />}
             title="Github"
-          />
-          <Link
-            url="https://design.bigcommerce.com/components"
-            icon={<BigDesignLogoIcon title="BigDesign Logo" />}
-            title="Design Guidelines"
           />
         </SideNavGroup>
       </SideNavMenu>
