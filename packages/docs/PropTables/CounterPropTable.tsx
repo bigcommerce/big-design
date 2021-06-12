@@ -1,5 +1,6 @@
-import React from 'react';
 import { Text } from '@bigcommerce/big-design';
+import React from 'react';
+
 import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
 const counterProps: Prop[] = [

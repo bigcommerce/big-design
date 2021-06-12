@@ -1,44 +1,60 @@
-import { H1, H3, H2, Link, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import { H1, Link, Panel, Tabs, Text } from '@bigcommerce/big-design';
+import React, { useContext } from 'react';
 
-import { CodePreview } from '../../components';
+import { ActiveTabContext, CodePreview } from '../../components';
 import { LinkPropTable, MarginPropTable } from '../../PropTables';
 
-const LinkPage = () => (
-  <>
-    <H1>Link</H1>
+const LinkPage = () => {
+  const { activeTab, setActiveTab } = useContext(ActiveTabContext);
+  const tabItems = [
+    { id: 'examples', title: 'Examples' },
+    { id: 'code', title: 'Code' },
+  ];
 
-    <Text>
-      A simple wrapper for anchor elements. Use instead of {'<a>'}. Supports all native anchor element attributes.{' '}
-      <Link href="https://design.bigcommerce.com/components/links" target="_blank">
-        Links Design Guidelines
-      </Link>
-      .
-    </Text>
+  const renderTabs = () => {
+    switch (activeTab) {
+      case 'code':
+        return <LinkPropTable inheritedProps={<MarginPropTable collapsible />} />;
+      case 'examples':
+      default:
+        return (
+          <>
+            <Panel>
+              {' '}
+              <CodePreview>
+                {/* jsx-to-string:start */}
+                <Link href="#">Link Example</Link>
+                {/* jsx-to-string:end */}
+              </CodePreview>
+            </Panel>
+            <Panel header="External link">
+              <Text>You can also include and external icon.</Text>
+              <CodePreview>
+                {/* jsx-to-string:start */}
+                <Link href="#" target="_blank" external>
+                  Learn More
+                </Link>
+                {/* jsx-to-string:end */}
+              </CodePreview>
+            </Panel>
+          </>
+        );
+    }
+  };
 
-    <CodePreview>
-      {/* jsx-to-string:start */}
-      <Link href="#">Link Example</Link>
-      {/* jsx-to-string:end */}
-    </CodePreview>
+  return (
+    <>
+      <H1>Link</H1>
 
-    <Text>You can also include and external icon.</Text>
+      <Text>
+        A simple wrapper for anchor elements. Use instead of {'<a>'}. Supports all native anchor element attributes.
+      </Text>
 
-    <CodePreview>
-      {/* jsx-to-string:start */}
-      <Link href="#" target="_blank" external>
-        Learn More
-      </Link>
-      {/* jsx-to-string:end */}
-    </CodePreview>
+      <Tabs activeTab={activeTab} items={tabItems} onTabClick={setActiveTab} />
 
-    <H3>API</H3>
-
-    <LinkPropTable />
-
-    <H2>Inherited Props</H2>
-    <MarginPropTable collapsible />
-  </>
-);
+      {renderTabs()}
+    </>
+  );
+};
 
 export default LinkPage;

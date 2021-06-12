@@ -1,7 +1,7 @@
 import { Link, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Prop, PropTable, PropTableWrapper, Code } from '../components';
+import { Code, Prop, PropTable, PropTableWrapper } from '../components';
 
 const datepickerProps: Prop[] = [
   {

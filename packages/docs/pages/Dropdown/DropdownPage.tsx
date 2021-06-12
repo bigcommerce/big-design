@@ -1,8 +1,8 @@
-import { Button, Dropdown, Grid, H1, Text, Panel, Tabs } from '@bigcommerce/big-design';
+import { Button, Dropdown, Grid, H1, Panel, Tabs, Text } from '@bigcommerce/big-design';
 import { AssignmentIcon, DeleteIcon, EditIcon, FileCopyIcon, OpenInNewIcon } from '@bigcommerce/big-design-icons';
 import React, { useContext } from 'react';
 
-import { Code, CodePreview, NextLink, ActiveTabContext } from '../../components';
+import { ActiveTabContext, Code, CodePreview, NextLink } from '../../components';
 import {
   DropdownItemGroupPropTable,
   DropdownItemPropTable,

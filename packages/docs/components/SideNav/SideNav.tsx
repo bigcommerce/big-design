@@ -62,14 +62,14 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Panel/PanelPage" as="/panel">
             Panel
           </SideNavLink>
-          <SideNavLink href="/Table/TablePage" as="/table">
-            Table
-          </SideNavLink>
           <SideNavLink href="/StatefulTable/StatefulTablePage" as="/statefulTable">
-            StatefulTable
+            Stateful table
           </SideNavLink>
           <SideNavLink href="/StatefulTree/StatefulTreePage" as="/statefulTree">
-            StatefulTree
+            Stateful tree
+          </SideNavLink>
+          <SideNavLink href="/Table/TablePage" as="/table">
+            Table
           </SideNavLink>
           <SideNavLink href="/Tabs/TabsPage" as="/tabs">
             Tabs
@@ -107,8 +107,11 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Link/LinkPage" as="/link">
             Link
           </SideNavLink>
+          <SideNavLink href="/MultiSelect/MultiSelectPage" as="/multi-select">
+            Multi select
+          </SideNavLink>
           <SideNavLink href="/PillTabs/PillTabsPage" as="/pill-tabs">
-            Pill Tabs
+            Pill tabs
           </SideNavLink>
           <SideNavLink href="/Radio/RadioPage" as="/radio">
             Radio
@@ -119,9 +122,6 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Select/SelectPage" as="/select">
             Select
           </SideNavLink>
-          <SideNavLink href="/MultiSelect/MultiSelectPage" as="/multi-select">
-            MultiSelect
-          </SideNavLink>
           <SideNavLink href="/Switch/SwitchPage" as="/switch">
             Switch
           </SideNavLink>
@@ -129,7 +129,7 @@ export const SideNav: React.FC = () => {
             Textarea
           </SideNavLink>
           <SideNavLink href="/Timepicker/TimepickerPage" as="/timepicker">
-            Timepicker
+            Time picker
           </SideNavLink>
         </SideNavGroup>
 
@@ -141,16 +141,16 @@ export const SideNav: React.FC = () => {
             Badge
           </SideNavLink>
           <SideNavLink href="/InlineMessage/InlineMessagePage" as="/inline-message">
-            Inline Message
+            Inline message
           </SideNavLink>
           <SideNavLink href="/Message/MessagePage" as="/message">
             Message
           </SideNavLink>
           <SideNavLink href="/Progress/ProgressBarPage" as="/progress-bar">
-            Progress Bar
+            Progress bar
           </SideNavLink>
           <SideNavLink href="/Progress/ProgressCirclePage" as="/progress-circle">
-            Progress Circle
+            Progress circle
           </SideNavLink>
           <SideNavLink href="/Stepper/StepperPage" as="/stepper">
             Stepper

@@ -1,4 +1,4 @@
-import { Box, H1, Text } from '@bigcommerce/big-design';
+import { Box, H1, Panel, Text } from '@bigcommerce/big-design';
 import { breakpointValues } from '@bigcommerce/big-design-theme';
 import React from 'react';
 import styled from 'styled-components';
@@ -16,47 +16,50 @@ const BreakpointsPage = () => (
       <Code>{breakpointValues.desktop}</Code> respectively.
     </Text>
 
-    <CodePreview>
-      {/* jsx-to-string:start */}
-      {function Example() {
-        const StyledBox = styled(Box)`
-          height: ${({ theme }) => theme.spacing.xxxLarge};
-          width: 100%;
+    <Panel>
+      <CodePreview>
+        {/* jsx-to-string:start */}
+        {function Example() {
+          const StyledBox = styled(Box)`
+            height: ${({ theme }) => theme.spacing.xxxLarge};
+            width: 100%;
 
-          ${({ theme }) => theme.breakpoints.tablet} {
-            width: 60%;
-          }
+            ${({ theme }) => theme.breakpoints.tablet} {
+              width: 60%;
+            }
 
-          ${({ theme }) => theme.breakpoints.desktop} {
-            width: 30%;
-          }
-        `;
+            ${({ theme }) => theme.breakpoints.desktop} {
+              width: 30%;
+            }
+          `;
 
-        return <StyledBox backgroundColor="secondary20" />;
-      }}
-      {/* jsx-to-string:end */}
-    </CodePreview>
+          return <StyledBox backgroundColor="secondary20" />;
+        }}
+        {/* jsx-to-string:end */}
+      </CodePreview>
+    </Panel>
+    <Panel header="Breakpoint values">
+      <Text>
+        We also expose the <Code primary>breakpointValues</Code> for each breakpoint.
+      </Text>
 
-    <Text>
-      We also expose the <Code primary>breakpointValues</Code> for each breakpoint.
-    </Text>
+      <CodePreview>
+        {/* jsx-to-string:start */}
+        {function Example() {
+          const StyledBox = styled(Box)`
+            height: ${({ theme }) => theme.spacing.xxxLarge};
+            width: 100%;
 
-    <CodePreview>
-      {/* jsx-to-string:start */}
-      {function Example() {
-        const StyledBox = styled(Box)`
-          height: ${({ theme }) => theme.spacing.xxxLarge};
-          width: 100%;
+            ${({ theme }) => theme.breakpoints.desktop} {
+              width: ${({ theme }) => theme.breakpointValues.tablet};
+            }
+          `;
 
-          ${({ theme }) => theme.breakpoints.desktop} {
-            width: ${({ theme }) => theme.breakpointValues.tablet};
-          }
-        `;
-
-        return <StyledBox backgroundColor="secondary20" />;
-      }}
-      {/* jsx-to-string:end */}
-    </CodePreview>
+          return <StyledBox backgroundColor="secondary20" />;
+        }}
+        {/* jsx-to-string:end */}
+      </CodePreview>
+    </Panel>
   </>
 );
 

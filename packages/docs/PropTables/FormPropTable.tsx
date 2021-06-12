@@ -1,4 +1,4 @@
-import { Text, H3, Panel } from '@bigcommerce/big-design';
+import { Panel, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, Prop, PropTable, PropTableWrapper } from '../components';

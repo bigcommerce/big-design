@@ -1,7 +1,7 @@
-import { H1, StatefulTable, Text, Panel, Tabs } from '@bigcommerce/big-design';
+import { H1, Panel, StatefulTable, Tabs, Text } from '@bigcommerce/big-design';
 import React, { useContext } from 'react';
 
-import { CodePreview, NextLink, ActiveTabContext } from '../../components';
+import { ActiveTabContext, CodePreview, NextLink } from '../../components';
 import { StatefulTableColumnsPropTable, StatefulTableFiltersPropTable, StatefulTablePropTable } from '../../PropTables';
 
 const items = [

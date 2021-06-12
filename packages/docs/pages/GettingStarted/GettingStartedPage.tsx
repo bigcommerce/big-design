@@ -1,4 +1,4 @@
-import { Flex, FlexItem, H3, H2, Link, Text, Panel } from '@bigcommerce/big-design';
+import { Flex, FlexItem, H2, H3, Link, Panel, Text } from '@bigcommerce/big-design';
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 

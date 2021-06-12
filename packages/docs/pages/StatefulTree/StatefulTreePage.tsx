@@ -1,8 +1,8 @@
-import { H1, Message, StatefulTree, Text, Panel, Tabs } from '@bigcommerce/big-design';
+import { H1, Message, Panel, StatefulTree, Tabs, Text } from '@bigcommerce/big-design';
 import { AssignmentIcon, LanguageIcon, StoreIcon } from '@bigcommerce/big-design-icons';
 import React, { useContext } from 'react';
 
-import { Code, CodePreview, ActiveTabContext } from '../../components';
+import { ActiveTabContext, Code, CodePreview } from '../../components';
 import { StatefulTreePropTable, TreeNodePropTable } from '../../PropTables';
 
 const StatefulTreePage = () => {

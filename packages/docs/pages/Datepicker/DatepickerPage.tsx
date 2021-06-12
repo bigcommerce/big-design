@@ -1,7 +1,7 @@
-import { Datepicker, Form, FormGroup, H1, Text, Panel, Tabs } from '@bigcommerce/big-design';
-import React, { useState, useContext } from 'react';
+import { Datepicker, Form, FormGroup, H1, Panel, Tabs, Text } from '@bigcommerce/big-design';
+import React, { useContext, useState } from 'react';
 
-import { Code, CodePreview, ActiveTabContext } from '../../components';
+import { ActiveTabContext, Code, CodePreview } from '../../components';
 import { DatepickerPropTable } from '../../PropTables';
 
 const DatepickerPage = () => {

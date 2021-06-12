@@ -1,136 +1,175 @@
-import { H1, H3, H2, InlineMessage, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import { H1, InlineMessage, Panel, Tabs, Text } from '@bigcommerce/big-design';
+import React, { useContext } from 'react';
 
-import { Code, CodePreview, Collapsible } from '../../components';
-import { InlineMessagePropTable, MarginPropTable } from '../../PropTables';
+import { ActiveTabContext, Code, CodePreview } from '../../components';
+import { InlineMessagePropTable } from '../../PropTables';
 import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../../PropTables/shared';
 
-const InlineMessagePage = () => (
-  <>
-    <H1>Inline Messages</H1>
-    <Text>
-      An inline message, mostly used for displaying alerts within Modals. Is a condensed version of the{' '}
-      <Code primary>Message</Code> component.
-    </Text>
+const InlineMessagePage = () => {
+  const { activeTab, setActiveTab } = useContext(ActiveTabContext);
+  const tabItems = [
+    { id: 'examples', title: 'Examples' },
+    { id: 'code', title: 'Code' },
+  ];
 
-    <CodePreview>
-      {/* jsx-to-string:start */}
-      <InlineMessage
-        header="Header"
-        messages={[
-          {
-            text: 'Required description copy.',
-            link: {
-              text: 'Optional Link',
-              href: '#',
-            },
-          },
-        ]}
-        onClose={() => null}
-      />
-      {/* jsx-to-string:end */}
-    </CodePreview>
+  const renderTabs = () => {
+    switch (activeTab) {
+      case 'code':
+        return (
+          <>
+            <InlineMessagePropTable />
 
-    <H3>API</H3>
+            <MessagingItemPropTable title="InlineMessage[MessageItem]" />
 
-    <InlineMessagePropTable />
+            <MessagingLinkItemPropTable title="InlineMessage[MessageLinkItem]" />
+          </>
+        );
+      case 'examples':
+      default:
+        return (
+          <>
+            <Panel>
+              <CodePreview>
+                {/* jsx-to-string:start */}
+                <InlineMessage
+                  header="Header"
+                  messages={[
+                    {
+                      text: 'Required description copy.',
+                      link: {
+                        text: 'Optional Link',
+                        href: '#',
+                      },
+                    },
+                  ]}
+                  onClose={() => null}
+                />
+                {/* jsx-to-string:end */}
+              </CodePreview>
+            </Panel>
+            <Panel header="Types">
+              <Text>
+                There are four types of <Code primary>InlineMessages</Code> based on the level of message you want to
+                display.
+              </Text>
 
-    <MessagingItemPropTable title="InlineMessage[MessageItem]" />
+              <CodePreview>
+                {/* jsx-to-string:start */}
+                <>
+                  <InlineMessage
+                    type="error"
+                    messages={[{ text: 'Required description copy.' }]}
+                    marginVertical="medium"
+                  />
+                  <InlineMessage
+                    type="success"
+                    messages={[{ text: 'Required description copy.' }]}
+                    marginVertical="medium"
+                  />
+                  <InlineMessage
+                    type="warning"
+                    messages={[{ text: 'Required description copy.' }]}
+                    marginVertical="medium"
+                  />
+                  <InlineMessage
+                    type="info"
+                    messages={[{ text: 'Required description copy.' }]}
+                    marginVertical="medium"
+                  />
+                </>
+                {/* jsx-to-string:end */}
+              </CodePreview>
+            </Panel>
+            <Panel header="Header">
+              <Text>
+                <Code primary>InlineMessage</Code>'s allow you to pass an optional <Code primary>header</Code> prop.
+              </Text>
 
-    <MessagingLinkItemPropTable title="InlineMessage[MessageLinkItem]" />
+              <CodePreview>
+                {/* jsx-to-string:start */}
+                <>
+                  <InlineMessage
+                    type="success"
+                    messages={[{ text: 'Required description copy.' }]}
+                    marginVertical="medium"
+                  />
+                  <InlineMessage
+                    header="Header"
+                    type="success"
+                    messages={[{ text: 'Required description copy.' }]}
+                    marginVertical="medium"
+                  />
+                </>
+                {/* jsx-to-string:end */}
+              </CodePreview>
+            </Panel>
+            <Panel header="onClose">
+              <Text>Toggles the visibility of the close button, and provides an on click callback.</Text>
 
-    <H2>Inherited Props</H2>
+              <CodePreview>
+                {/* jsx-to-string:start */}
+                <>
+                  <InlineMessage
+                    type="info"
+                    messages={[{ text: 'Required description copy.' }]}
+                    marginVertical="medium"
+                  />
+                  <InlineMessage
+                    onClose={() => null}
+                    type="info"
+                    messages={[{ text: 'Required description copy.' }]}
+                    marginVertical="medium"
+                  />
+                </>
+                {/* jsx-to-string:end */}
+              </CodePreview>
+            </Panel>
+            <Panel header="Actions">
+              <Text>
+                <Code primary>InlineMessage</Code>'s allow you to pass an optional <Code primary>actions</Code> prop.
+              </Text>
 
-    <Collapsible title="Inherited Props">
-      <MarginPropTable />
-    </Collapsible>
+              <CodePreview>
+                {/* jsx-to-string:start */}
+                <>
+                  <InlineMessage
+                    header="header"
+                    type="info"
+                    messages={[{ text: 'Required description copy.' }]}
+                    marginVertical="medium"
+                  />
+                  <InlineMessage
+                    actions={[
+                      { text: 'First Action', onClick: () => null },
+                      { text: 'Second Action', variant: 'subtle', onClick: () => null },
+                    ]}
+                    header="header"
+                    type="info"
+                    messages={[{ text: 'Required description copy.' }]}
+                    marginVertical="medium"
+                  />
+                </>
+                {/* jsx-to-string:end */}
+              </CodePreview>
+            </Panel>
+          </>
+        );
+    }
+  };
 
-    <H3>Examples</H3>
+  return (
+    <>
+      <H1>Inline message</H1>
+      <Text>
+        An inline message, mostly used for displaying alerts within Modals. Is a condensed version of the{' '}
+        <Code primary>Message</Code> component.
+      </Text>
 
-    <H2>Types</H2>
+      <Tabs activeTab={activeTab} items={tabItems} onTabClick={setActiveTab} />
 
-    <Text>
-      There are four types of <Code primary>InlineMessages</Code> based on the level of message you want to display.
-    </Text>
-
-    <CodePreview>
-      {/* jsx-to-string:start */}
-      <>
-        <InlineMessage type="error" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
-        <InlineMessage type="success" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
-        <InlineMessage type="warning" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
-        <InlineMessage type="info" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
-      </>
-      {/* jsx-to-string:end */}
-    </CodePreview>
-
-    <H2>Header</H2>
-
-    <Text>
-      <Code primary>InlineMessage</Code>'s allow you to pass an optional <Code primary>header</Code> prop.
-    </Text>
-
-    <CodePreview>
-      {/* jsx-to-string:start */}
-      <>
-        <InlineMessage type="success" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
-        <InlineMessage
-          header="Header"
-          type="success"
-          messages={[{ text: 'Required description copy.' }]}
-          marginVertical="medium"
-        />
-      </>
-      {/* jsx-to-string:end */}
-    </CodePreview>
-
-    <H2>onClose</H2>
-
-    <Text>Toggles the visibility of the close button, and provides an on click callback.</Text>
-
-    <CodePreview>
-      {/* jsx-to-string:start */}
-      <>
-        <InlineMessage type="info" messages={[{ text: 'Required description copy.' }]} marginVertical="medium" />
-        <InlineMessage
-          onClose={() => null}
-          type="info"
-          messages={[{ text: 'Required description copy.' }]}
-          marginVertical="medium"
-        />
-      </>
-      {/* jsx-to-string:end */}
-    </CodePreview>
-
-    <H2>Actions</H2>
-
-    <Text>
-      <Code primary>InlineMessage</Code>'s allow you to pass an optional <Code primary>actions</Code> prop.
-    </Text>
-
-    <CodePreview>
-      {/* jsx-to-string:start */}
-      <>
-        <InlineMessage
-          header="header"
-          type="info"
-          messages={[{ text: 'Required description copy.' }]}
-          marginVertical="medium"
-        />
-        <InlineMessage
-          actions={[
-            { text: 'First Action', onClick: () => null },
-            { text: 'Second Action', variant: 'subtle', onClick: () => null },
-          ]}
-          header="header"
-          type="info"
-          messages={[{ text: 'Required description copy.' }]}
-          marginVertical="medium"
-        />
-      </>
-      {/* jsx-to-string:end */}
-    </CodePreview>
-  </>
-);
+      {renderTabs()}
+    </>
+  );
+};
 
 export default InlineMessagePage;

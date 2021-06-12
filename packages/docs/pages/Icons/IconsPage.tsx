@@ -1,4 +1,4 @@
-import { Flex, Form, FormGroup, H1, Link, Message, Panel, Select, Text, Tabs } from '@bigcommerce/big-design';
+import { Flex, Form, FormGroup, H1, Link, Message, Panel, Select, Tabs, Text } from '@bigcommerce/big-design';
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import {
   ARFlagIcon,
@@ -15,9 +15,9 @@ import {
   RUFlagIcon,
   USFlagIcon,
 } from '@bigcommerce/big-design-icons/flags';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
-import { Code, CodePreview, CodeSnippet, ActiveTabContext } from '../../components';
+import { ActiveTabContext, Code, CodePreview, CodeSnippet } from '../../components';
 import { FlagIconPropTable, IconPropTable } from '../../PropTables';
 
 const IconsPage = () => {

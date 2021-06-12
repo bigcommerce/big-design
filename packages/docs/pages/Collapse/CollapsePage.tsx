@@ -1,7 +1,7 @@
-import { Collapse, H1, Text, Panel, Tabs } from '@bigcommerce/big-design';
-import React, { useState, useContext } from 'react';
+import { Collapse, H1, Panel, Tabs, Text } from '@bigcommerce/big-design';
+import React, { useContext, useState } from 'react';
 
-import { Code, CodePreview, ActiveTabContext } from '../../components';
+import { ActiveTabContext, CodePreview } from '../../components';
 import { CollapsePropTable } from '../../PropTables';
 
 export default () => {

@@ -1,9 +1,9 @@
-import { Box, Flex, H1, Link, Text, Panel, Tabs } from '@bigcommerce/big-design';
+import { Box, Flex, H1, Panel, Tabs, Text } from '@bigcommerce/big-design';
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
-import { CodePreview, ActiveTabContext } from '../../components';
+import { ActiveTabContext, CodePreview } from '../../components';
 
 const COLORS_TO_OMIT = ['primary', 'secondary', 'danger', 'warning', 'success'];
 type Colors = ThemeInterface['colors'];

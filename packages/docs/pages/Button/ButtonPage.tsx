@@ -1,8 +1,8 @@
-import { Button, H1, Panel, Text, Tabs } from '@bigcommerce/big-design';
+import { Button, H1, Panel, Tabs, Text } from '@bigcommerce/big-design';
 import { AddIcon, ArrowDropDownIcon } from '@bigcommerce/big-design-icons';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
-import { Code, CodePreview, ActiveTabContext } from '../../components';
+import { ActiveTabContext, Code, CodePreview } from '../../components';
 import { ButtonPropTable, MarginPropTable } from '../../PropTables';
 
 const ButtonPage = () => {
@@ -136,6 +136,7 @@ const ButtonPage = () => {
         );
     }
   };
+
   return (
     <>
       <H1>Buttons</H1>

@@ -1,7 +1,7 @@
-import { H1, Panel, Text, Tabs } from '@bigcommerce/big-design';
+import { H1, Panel, Tabs, Text } from '@bigcommerce/big-design';
 import React, { useContext } from 'react';
 
-import { CodePreview, ActiveTabContext } from '../../components';
+import { ActiveTabContext, CodePreview } from '../../components';
 import { MarginPropTable, PanelPropTable } from '../../PropTables';
 
 const PanelPage = () => {

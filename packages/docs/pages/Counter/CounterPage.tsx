@@ -1,7 +1,7 @@
-import { Counter, Form, FormGroup, H1, Panel, Text, Tabs } from '@bigcommerce/big-design';
-import React, { useState, useContext } from 'react';
+import { Counter, Form, FormGroup, H1, Panel, Tabs, Text } from '@bigcommerce/big-design';
+import React, { useContext, useState } from 'react';
 
-import { Code, CodePreview, ActiveTabContext } from '../../components';
+import { ActiveTabContext, Code, CodePreview } from '../../components';
 import { CounterPropTable } from '../../PropTables';
 
 const CounterPage = () => {
@@ -89,6 +89,7 @@ const CounterPage = () => {
         );
     }
   };
+
   return (
     <>
       <H1>Counter</H1>

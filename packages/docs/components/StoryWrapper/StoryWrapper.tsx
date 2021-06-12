@@ -1,4 +1,3 @@
-import { Panel } from '@bigcommerce/big-design';
 import { PrismTheme } from 'prism-react-renderer';
 import { default as lightTheme } from 'prism-react-renderer/themes/github';
 import { default as darkTheme } from 'prism-react-renderer/themes/oceanicNext';

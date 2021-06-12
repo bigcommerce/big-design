@@ -1,8 +1,8 @@
-import { Box, Button, Flex, H1, H3, Text, Panel, Tabs } from '@bigcommerce/big-design';
+import { Box, Button, Flex, H1, Panel, Tabs, Text } from '@bigcommerce/big-design';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
-import { CodePreview, NextLink, ActiveTabContext } from '../../components';
+import { ActiveTabContext, CodePreview, NextLink } from '../../components';
 
 const BlueBox = styled(Box)(({ theme }) => ({
   backgroundColor: theme.colors.primary,

@@ -1,7 +1,7 @@
-import { H1, Pagination, Panel, Text, Tabs } from '@bigcommerce/big-design';
-import React, { useEffect, useState, useContext } from 'react';
+import { H1, Pagination, Panel, Tabs, Text } from '@bigcommerce/big-design';
+import React, { useContext, useEffect, useState } from 'react';
 
-import { CodePreview, ActiveTabContext } from '../../components';
+import { ActiveTabContext, CodePreview } from '../../components';
 import { MarginPropTable, PaginationPropTable } from '../../PropTables';
 
 const PaginationPage = () => {

@@ -1,7 +1,7 @@
-import { Box, H0, H1, H2, H3, H4, HR, Small, Text, Panel, Tabs } from '@bigcommerce/big-design';
+import { Box, H0, H1, H2, H3, H4, HR, Panel, Small, Tabs, Text } from '@bigcommerce/big-design';
 import React, { useContext } from 'react';
 
-import { Code, CodePreview, NextLink, ActiveTabContext } from '../../components';
+import { ActiveTabContext, Code, CodePreview, NextLink } from '../../components';
 import { HeadingPropTable, HRPropTable, MarginPropTable, TextPropTable, TypographyPropTable } from '../../PropTables';
 
 const TypographyPage = () => {

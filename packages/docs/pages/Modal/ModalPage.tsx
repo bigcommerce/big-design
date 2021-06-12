@@ -1,7 +1,7 @@
-import { Button, H1, Modal, Text, Panel, Tabs } from '@bigcommerce/big-design';
+import { Button, H1, Modal, Panel, Tabs, Text } from '@bigcommerce/big-design';
 import React, { useContext, useState } from 'react';
 
-import { Code, CodePreview, ActiveTabContext } from '../../components';
+import { ActiveTabContext, Code, CodePreview } from '../../components';
 import { ModalPropTable } from '../../PropTables';
 
 const ModalPage = () => {
