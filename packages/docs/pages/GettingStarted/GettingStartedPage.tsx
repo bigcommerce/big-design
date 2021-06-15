@@ -15,11 +15,7 @@ const GettingStartedPage = () => {
         <img src={`${process.env.URL_PREFIX}/logo.svg`} alt="BigDesign Logo" style={{ width: 200 }} />
       </figure>
 
-      <FlexItem alignSelf="center">
-        <H3>BigDesign Developer Playground</H3>
-      </FlexItem>
-
-      <Panel>
+      <Panel header="BigDesign developer playground">
         <Text>
           BigCommerce’s library of React components lets developers build stylish apps that have a native BigCommerce
           feel at their core. Our components implement BigDesign principles to allow you to create an empathetic and
@@ -28,7 +24,7 @@ const GettingStartedPage = () => {
         </Text>
 
         <FlexItem alignSelf="center">
-          <H2 marginBottom="none">Helpful Resources</H2>
+          <H3 marginBottom="none">Helpful resources</H3>
         </FlexItem>
 
         <FlexItem alignSelf="center">
