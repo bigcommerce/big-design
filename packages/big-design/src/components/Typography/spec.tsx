@@ -63,9 +63,9 @@ test('render Text with ellipsis', () => {
 
 test('H0 - does not forward styles', () => {
   const { container } = render(
-    <H1 className="test" style={{ background: 'red' }}>
+    <H0 className="test" style={{ background: 'red' }}>
       Test
-    </H1>,
+    </H0>,
   );
 
   expect(container.getElementsByClassName('test').length).toBe(0);
@@ -74,9 +74,9 @@ test('H0 - does not forward styles', () => {
 
 test('H1 - does not forward styles', () => {
   const { container } = render(
-    <H3 className="test" style={{ background: 'red' }}>
+    <H1 className="test" style={{ background: 'red' }}>
       Test
-    </H3>,
+    </H1>,
   );
 
   expect(container.getElementsByClassName('test').length).toBe(0);
