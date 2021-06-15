@@ -20,7 +20,6 @@ const LinkPage = () => {
         return (
           <>
             <Panel>
-              {' '}
               <CodePreview>
                 {/* jsx-to-string:start */}
                 <Link href="#">Link Example</Link>
