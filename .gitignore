@@ -8,5 +8,3 @@ packages/docs/out
 packages/docs/pages/Dev
 .idea
 .DS_Store
-.parcel-cache
-.nova
