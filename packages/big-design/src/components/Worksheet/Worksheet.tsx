@@ -35,6 +35,7 @@ const InternalWorksheet = <T extends WorksheetItem>({
   // Save columns to use in navigation
   useEffect(() => setColumns(columns), [columns, setColumns]);
 
+  // Save ref to focus table when necessary
   useEffect(() => setTableRef(tableRef.current), [setTableRef, tableRef]);
 
   // Call onChange when a cell is edited
@@ -86,7 +87,7 @@ const InternalWorksheet = <T extends WorksheetItem>({
 
   return (
     <UpdateItemsProvider items={rows}>
-      <Table onKeyDown={handleKeyDown} tabIndex={0} ref={tableRef}>
+      <Table onKeyDown={handleKeyDown} ref={tableRef} tabIndex={0}>
         {renderedHeaders}
         {renderedRows}
       </Table>

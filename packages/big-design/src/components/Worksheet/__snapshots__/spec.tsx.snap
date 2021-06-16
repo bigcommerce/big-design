@@ -48,18 +48,19 @@ exports[`renders worksheet 1`] = `
         class="styled__Status-sc-1aacki0-0 dQfqjh"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Shoes Name Three"
         >
           Shoes Name Three
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 AhNUF"
+        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
         type="checkbox"
       >
         <div
@@ -115,18 +116,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Text"
         >
           Text
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDEkMO"
+        class="styled__StyledCell-sc-1bt06ph-0 Dfyyk"
         type="select"
       >
         <div
@@ -212,17 +214,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 fWrbhm"
         >
           <div
-            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-zoq9bz-1 dhsfUE"
           >
             <p
-              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+              class="styled__StyledSmall-tqnj75-6 PZvQl"
+              color="secondary70"
+              title="1"
             >
               1
             </p>
@@ -239,12 +243,13 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 frWqJh"
+        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
         type="number"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="$50.00"
         >
           $50.00
         </p>
@@ -255,18 +260,19 @@ exports[`renders worksheet 1`] = `
         class="styled__Status-sc-1aacki0-0 dQfqjh"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Shoes Name Two"
         >
           Shoes Name Two
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 AhNUF"
+        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
         type="checkbox"
       >
         <div
@@ -322,18 +328,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Text"
         >
           Text
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDEkMO"
+        class="styled__StyledCell-sc-1bt06ph-0 Dfyyk"
         type="select"
       >
         <div
@@ -419,17 +426,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 fWrbhm"
         >
           <div
-            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-zoq9bz-1 dhsfUE"
           >
             <p
-              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+              class="styled__StyledSmall-tqnj75-6 PZvQl"
+              color="secondary70"
+              title="2"
             >
               2
             </p>
@@ -446,12 +455,13 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 frWqJh"
+        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
         type="number"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="$50.00"
         >
           $50.00
         </p>
@@ -462,18 +472,19 @@ exports[`renders worksheet 1`] = `
         class="styled__Status-sc-1aacki0-0 dQfqjh"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Shoes Name One"
         >
           Shoes Name One
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 AhNUF"
+        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
         type="checkbox"
       >
         <div
@@ -528,18 +539,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Text"
         >
           Text
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDEkMO"
+        class="styled__StyledCell-sc-1bt06ph-0 Dfyyk"
         type="select"
       >
         <div
@@ -625,17 +637,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 fWrbhm"
         >
           <div
-            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-zoq9bz-1 dhsfUE"
           >
             <p
-              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+              class="styled__StyledSmall-tqnj75-6 PZvQl"
+              color="secondary70"
+              title="3"
             >
               3
             </p>
@@ -652,12 +666,13 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 frWqJh"
+        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
         type="number"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="$50.00"
         >
           $50.00
         </p>
@@ -668,18 +683,19 @@ exports[`renders worksheet 1`] = `
         class="styled__Status-sc-1aacki0-0 dQfqjh"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Variant"
         >
           Variant
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 AhNUF"
+        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
         type="checkbox"
       >
         <div
@@ -735,18 +751,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Text"
         >
           Text
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDEkMO"
+        class="styled__StyledCell-sc-1bt06ph-0 Dfyyk"
         type="select"
       >
         <div
@@ -832,17 +849,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 fWrbhm"
         >
           <div
-            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-zoq9bz-1 dhsfUE"
           >
             <p
-              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+              class="styled__StyledSmall-tqnj75-6 PZvQl"
+              color="secondary70"
+              title="4"
             >
               4
             </p>
@@ -859,12 +878,13 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 frWqJh"
+        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
         type="number"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="$50.00"
         >
           $50.00
         </p>
@@ -875,16 +895,17 @@ exports[`renders worksheet 1`] = `
         class="styled__Status-sc-1aacki0-0 jpxEqg"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 iuGXPh"
+        class="styled__StyledCell-sc-1bt06ph-0 iLwcsN"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title=""
         />
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 AhNUF"
+        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
         type="checkbox"
       >
         <div
@@ -940,18 +961,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Text"
         >
           Text
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hnZTfc"
+        class="styled__StyledCell-sc-1bt06ph-0 dRdQay"
         type="select"
       >
         <div
@@ -1037,17 +1059,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 fWrbhm"
         >
           <div
-            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-zoq9bz-1 dhsfUE"
           >
             <p
-              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+              class="styled__StyledSmall-tqnj75-6 PZvQl"
+              color="secondary70"
+              title="5"
             >
               5
             </p>
@@ -1064,12 +1088,13 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 frWqJh"
+        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
         type="number"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="$50.00"
         >
           $50.00
         </p>
@@ -1080,18 +1105,19 @@ exports[`renders worksheet 1`] = `
         class="styled__Status-sc-1aacki0-0 jpxEqg"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Variant"
         >
           Variant
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 AhNUF"
+        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
         type="checkbox"
       >
         <div
@@ -1147,18 +1173,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Text"
         >
           Text
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hnZTfc"
+        class="styled__StyledCell-sc-1bt06ph-0 dRdQay"
         type="select"
       >
         <div
@@ -1244,17 +1271,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 fWrbhm"
         >
           <div
-            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-zoq9bz-1 dhsfUE"
           >
             <p
-              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+              class="styled__StyledSmall-tqnj75-6 PZvQl"
+              color="secondary70"
+              title="6"
             >
               6
             </p>
@@ -1271,12 +1300,13 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 frWqJh"
+        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
         type="number"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="$50.00"
         >
           $50.00
         </p>
@@ -1287,18 +1317,19 @@ exports[`renders worksheet 1`] = `
         class="styled__Status-sc-1aacki0-0 jpxEqg"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Variant"
         >
           Variant
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 AhNUF"
+        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
         type="checkbox"
       >
         <div
@@ -1353,18 +1384,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Text"
         >
           Text
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDEkMO"
+        class="styled__StyledCell-sc-1bt06ph-0 Dfyyk"
         type="select"
       >
         <div
@@ -1450,17 +1482,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 fWrbhm"
         >
           <div
-            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-zoq9bz-1 dhsfUE"
           >
             <p
-              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+              class="styled__StyledSmall-tqnj75-6 PZvQl"
+              color="secondary70"
+              title="7"
             >
               7
             </p>
@@ -1477,12 +1511,13 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 cSJiQi"
+        class="styled__StyledCell-sc-1bt06ph-0 itFNTF"
         type="number"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="$49.00"
         >
           $49.00
         </p>
@@ -1493,18 +1528,19 @@ exports[`renders worksheet 1`] = `
         class="styled__Status-sc-1aacki0-0 dQfqjh"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Dress Name One"
         >
           Dress Name One
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 AhNUF"
+        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
         type="checkbox"
       >
         <div
@@ -1560,18 +1596,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Text"
         >
           Text
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDEkMO"
+        class="styled__StyledCell-sc-1bt06ph-0 Dfyyk"
         type="select"
       >
         <div
@@ -1657,17 +1694,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 fWrbhm"
         >
           <div
-            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-zoq9bz-1 dhsfUE"
           >
             <p
-              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+              class="styled__StyledSmall-tqnj75-6 PZvQl"
+              color="secondary70"
+              title="8"
             >
               8
             </p>
@@ -1684,12 +1723,13 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 frWqJh"
+        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
         type="number"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="$50.00"
         >
           $50.00
         </p>
@@ -1700,18 +1740,19 @@ exports[`renders worksheet 1`] = `
         class="styled__Status-sc-1aacki0-0 dQfqjh"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Fans Name One"
         >
           Fans Name One
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 AhNUF"
+        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
         type="checkbox"
       >
         <div
@@ -1767,18 +1808,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="text"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="Text"
         >
           Text
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDEkMO"
+        class="styled__StyledCell-sc-1bt06ph-0 Dfyyk"
         type="select"
       >
         <div
@@ -1864,17 +1906,19 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hchsdF"
+        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 vbeVb"
+          class="styled__StyledBox-sj5f1m-0 jvmRZj styled__StyledFlex-hcvk8l-0 fWrbhm"
         >
           <div
-            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe"
+            class="styled__StyledBox-sj5f1m-0 fEBlfP styled__StyledFlexItem-smjqtt-0 gJMDHe styled__StyledFlexItem-zoq9bz-1 dhsfUE"
           >
             <p
-              class="styled__StyledSmall-tqnj75-6 kTSqSt"
+              class="styled__StyledSmall-tqnj75-6 PZvQl"
+              color="secondary70"
+              title="9"
             >
               9
             </p>
@@ -1891,12 +1935,13 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 frWqJh"
+        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
         type="number"
       >
         <p
-          class="styled__StyledSmall-tqnj75-6 RpFkS"
+          class="styled__StyledSmall-tqnj75-6 PZvQl"
           color="secondary70"
+          title="$50.00"
         >
           $50.00
         </p>

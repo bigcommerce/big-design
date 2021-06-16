@@ -135,7 +135,7 @@ const InternalModal: React.FC<ModalProps> = ({
               onClick={(event) => {
                 internalTrap.current?.deactivate();
 
-                if (onClick) {
+                if (typeof onClick === 'function') {
                   onClick(event);
                 }
               }}

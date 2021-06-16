@@ -1,12 +1,12 @@
-import React, { createRef, useEffect } from 'react';
+import React, { createRef, useCallback, useEffect, useMemo } from 'react';
 
 import { typedMemo } from '../../../../utils';
-import { Flex, FlexItem } from '../../../Flex';
+import { Flex } from '../../../Flex';
 import { Small } from '../../../Typography';
 import { useStore } from '../../hooks';
 import { Cell, WorksheetItem, WorksheetModalColumn } from '../../types';
 
-import { StyledButton } from './styled';
+import { StyledButton, StyledFlexItem } from './styled';
 
 export interface ModalEditorProps<Item> {
   cell: Cell<Item>;
@@ -16,6 +16,7 @@ export interface ModalEditorProps<Item> {
 
 const InternalModalEditor = <T extends WorksheetItem>({ cell, formatting, isEditing }: ModalEditorProps<T>) => {
   const setOpenModal = useStore((state) => state.setOpenModal);
+  const setEditingCell = useStore((state) => state.setEditingCell);
   const { hash, value } = cell;
 
   const buttonRef = createRef<HTMLButtonElement>();
@@ -26,15 +27,20 @@ const InternalModalEditor = <T extends WorksheetItem>({ cell, formatting, isEdit
     }
   }, [hash, isEditing, setOpenModal]);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     setOpenModal(hash);
-  };
+    setEditingCell(cell);
+  }, [cell, hash, setEditingCell, setOpenModal]);
+
+  const cellValue = useMemo(() => (formatting ? formatting(value) : `${value}`), [formatting, value]);
 
   return (
-    <Flex justifyContent="space-between" alignItems="center">
-      <FlexItem paddingRight="small">
-        <Small>{formatting ? formatting(value) : `${value}`}</Small>
-      </FlexItem>
+    <Flex justifyContent="space-between" alignItems="center" flexWrap="wrap">
+      <StyledFlexItem paddingRight="small" flexShrink={1}>
+        <Small color="secondary70" ellipsis={true} title={cellValue}>
+          {cellValue}
+        </Small>
+      </StyledFlexItem>
       <StyledButton onClick={handleClick} ref={buttonRef} variant="subtle">
         Edit
       </StyledButton>

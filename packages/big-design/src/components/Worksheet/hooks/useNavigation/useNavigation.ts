@@ -33,6 +33,10 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
 
   const navigate = useCallback(
     (offset: Coordinate) => {
+      if (!selectedCell) {
+        return;
+      }
+
       const newPosition: Coordinate = {
         columnIndex: selectedCell.columnIndex + offset.columnIndex,
         rowIndex: selectedCell.rowIndex + offset.rowIndex,

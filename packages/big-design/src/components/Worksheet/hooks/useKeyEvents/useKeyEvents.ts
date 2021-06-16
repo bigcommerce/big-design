@@ -23,33 +23,49 @@ export const useKeyEvents = () => {
       const key = event.key;
 
       if (isEditing) {
-        return;
-      }
+        switch (key) {
+          case 'Enter':
+            navigate({ rowIndex: 1, columnIndex: 0 });
+            break;
+          case 'Tab':
+            navigate({ rowIndex: 0, columnIndex: event.shiftKey ? -1 : 1 });
+            break;
+          default:
+            return;
+        }
+      } else {
+        switch (key) {
+          case 'Enter':
+            editSelectedCell();
 
-      event.preventDefault();
+            if (selectedCell && selectedCell.type === 'checkbox') {
+              navigate({ rowIndex: 1, columnIndex: 0 });
+            }
+            break;
+          case ' ':
+            editSelectedCell();
+            break;
+          case 'ArrowUp':
+            navigate({ rowIndex: -1, columnIndex: 0 });
+            break;
+          case 'ArrowDown':
+            navigate({ rowIndex: 1, columnIndex: 0 });
+            break;
+          case 'ArrowRight':
+            navigate({ rowIndex: 0, columnIndex: 1 });
+            break;
+          case 'Tab':
+            navigate({ rowIndex: 0, columnIndex: event.shiftKey ? -1 : 1 });
+            break;
+          case 'ArrowLeft':
+            navigate({ rowIndex: 0, columnIndex: -1 });
+            break;
+        }
 
-      switch (key) {
-        case 'Enter':
-          editSelectedCell();
-          break;
-        case 'ArrowUp':
-          navigate({ rowIndex: -1, columnIndex: 0 });
-          break;
-        case 'ArrowDown':
-          navigate({ rowIndex: 1, columnIndex: 0 });
-          break;
-        case 'ArrowRight':
-          navigate({ rowIndex: 0, columnIndex: 1 });
-          break;
-        case 'Tab':
-          navigate({ rowIndex: 0, columnIndex: event.shiftKey ? -1 : 1 });
-          break;
-        case 'ArrowLeft':
-          navigate({ rowIndex: 0, columnIndex: -1 });
-          break;
+        event.preventDefault();
       }
     },
-    [editSelectedCell, isEditing, navigate],
+    [editSelectedCell, isEditing, navigate, selectedCell],
   );
 
   return useMemo(() => ({ handleKeyDown }), [handleKeyDown]);

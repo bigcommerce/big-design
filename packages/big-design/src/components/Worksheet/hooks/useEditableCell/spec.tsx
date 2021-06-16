@@ -28,12 +28,10 @@ describe('useEditableCells', () => {
   const cell: Cell<Product> = { rowIndex: 0, columnIndex: 0, type: 'text', hash: 'category', value: 'Text' };
 
   let preventDefault: () => void;
-  let stopPropagation: () => void;
 
   beforeEach(() => {
     mockUpdateItems = jest.fn();
     preventDefault = jest.fn();
-    stopPropagation = jest.fn();
   });
 
   test('double click', () => {
@@ -64,18 +62,14 @@ describe('useEditableCells', () => {
         ({
           key: 'Enter',
           preventDefault,
-          stopPropagation,
         } as unknown) as React.KeyboardEvent<HTMLInputElement>,
         'New Value',
       );
     });
 
     expect(preventDefault).toHaveBeenCalledTimes(1);
-    expect(stopPropagation).toHaveBeenCalledTimes(1);
     expect(mockUpdateItems).toHaveBeenCalledWith([cell], ['New Value']);
     expect(result.current.isEditing).toBe(false);
-
-    expect(mockNavigate).toHaveBeenCalledWith({ rowIndex: 1, columnIndex: 0 });
   });
 
   test('enter only updates if it has new values', () => {
@@ -87,13 +81,43 @@ describe('useEditableCells', () => {
         ({
           key: 'Enter',
           preventDefault,
-          stopPropagation,
         } as unknown) as React.KeyboardEvent<HTMLInputElement>,
         'Text',
       );
     });
 
     expect(mockUpdateItems).not.toHaveBeenCalled();
+  });
+
+  test('tab', () => {
+    const { result } = renderHook(() => useEditableCell(cell));
+
+    act(() => {
+      result.current.handleKeyDown(
+        ({
+          key: 'Tab',
+          preventDefault,
+        } as unknown) as React.KeyboardEvent<HTMLInputElement>,
+        'New Value',
+      );
+    });
+
+    expect(mockNavigate).toHaveBeenCalledWith({ columnIndex: 1, rowIndex: 0 });
+
+    act(() => {
+      result.current.handleKeyDown(
+        ({
+          key: 'Tab',
+          preventDefault,
+          shiftKey: true,
+        } as unknown) as React.KeyboardEvent<HTMLInputElement>,
+        'New Value',
+      );
+    });
+
+    expect(mockNavigate).toHaveBeenCalledWith({ columnIndex: -1, rowIndex: 0 });
+
+    expect(result.current.isEditing).toBe(false);
   });
 
   test('modal and select do not trigger a navigation', () => {
@@ -104,7 +128,6 @@ describe('useEditableCells', () => {
         ({
           key: 'Enter',
           preventDefault,
-          stopPropagation,
         } as unknown) as React.KeyboardEvent<HTMLInputElement>,
         'New Value',
       );
@@ -122,14 +145,12 @@ describe('useEditableCells', () => {
         ({
           key: 'Escape',
           preventDefault,
-          stopPropagation,
         } as unknown) as React.KeyboardEvent<HTMLInputElement>,
         'New Value',
       );
     });
 
     expect(preventDefault).toHaveBeenCalledTimes(1);
-    expect(stopPropagation).toHaveBeenCalledTimes(1);
     expect(result.current.isEditing).toBe(false);
   });
 

@@ -26,7 +26,6 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
     }
   }};
   user-select: none;
-  word-break: break-all;
 
   ${({ isSelected }) =>
     isSelected &&
@@ -45,6 +44,10 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
     css`
       background-color: ${({ theme }) => theme.colors.warning10};
     `}
+
+  & p {
+    display: block;
+  }
 `;
 
 StyledCell.defaultProps = { theme: defaultTheme };

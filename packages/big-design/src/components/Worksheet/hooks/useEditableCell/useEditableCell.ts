@@ -50,7 +50,6 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
       switch (key) {
         case 'Enter':
           event.preventDefault();
-          event.stopPropagation();
 
           // Only call updateItems if cells have new values
           if (cell.value !== newValue) {
@@ -59,15 +58,18 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
 
           restoreFocus();
 
-          // Navigate down on enter
-          if (cell.type !== 'modal' && cell.type !== 'select') {
-            navigate({ rowIndex: 1, columnIndex: 0 });
-          }
+          break;
+        case 'Tab':
+          event.preventDefault();
+
+          restoreFocus();
+
+          // Navigate lateraly on Tab
+          navigate({ rowIndex: 0, columnIndex: event.shiftKey ? -1 : 1 });
 
           break;
         case 'Escape':
           event.preventDefault();
-          event.stopPropagation();
 
           restoreFocus();
 

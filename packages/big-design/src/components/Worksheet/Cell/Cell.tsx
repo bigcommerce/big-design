@@ -94,6 +94,8 @@ const InternalCell = <T extends WorksheetItem>({
   }, [cell, rowIndex, setSelectedCells, setSelectedRows]);
 
   const renderedCell = useMemo(() => {
+    const cellValue = value ? (formatting ? formatting(value) : `${value}`) : value !== 'undefined' ? `${value}` : '';
+
     switch (type) {
       case 'select':
         return (
@@ -113,12 +115,10 @@ const InternalCell = <T extends WorksheetItem>({
       default:
         return isEditing ? (
           <TextEditor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
-        ) : // In case of NaN casting to string
-        value ? (
-          <Small color="secondary70">{formatting ? formatting(value) : `${value}`}</Small>
         ) : (
-          // In case of NaN casting to string
-          <Small color="secondary70">{value !== 'undefined' ? `${value}` : ''}</Small>
+          <Small color="secondary70" ellipsis title={cellValue}>
+            {`${cellValue}`}
+          </Small>
         );
     }
   }, [cell, formatting, handleBlur, handleChange, handleKeyDown, isEdited, isEditing, options, type, value]);
