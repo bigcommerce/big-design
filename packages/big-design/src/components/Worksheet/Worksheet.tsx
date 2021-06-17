@@ -58,7 +58,9 @@ const InternalWorksheet = <T extends WorksheetItem>({
         <tr>
           <Status />
           {columns.map((column, index) => (
-            <Header key={index}>{column.header}</Header>
+            <Header key={index} columnType={column.type}>
+              {column.header}
+            </Header>
           ))}
         </tr>
       </thead>
