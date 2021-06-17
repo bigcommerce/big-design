@@ -254,7 +254,7 @@ export const Select = typedMemo(
               onFocus: (event) => {
                 !isOpen && openMenu();
 
-                if (props.onFocus) {
+                if (typeof props.onFocus === 'function') {
                   props.onFocus(event);
                 }
               },

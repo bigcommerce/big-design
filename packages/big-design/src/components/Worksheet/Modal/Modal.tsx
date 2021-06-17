@@ -15,11 +15,11 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
 
   const isModalOpen = useStore(useMemo(() => (state) => state.openedModal === hash, [hash]));
   const selectedCell = useStore(useMemo(() => (state) => state.selectedCells[0], []));
+
   const setOpenModal = useStore((state) => state.setOpenModal);
   const setEditingCell = useStore((state) => state.setEditingCell);
 
   const { focusTable } = useTableFocus();
-
   const { updateItems } = useUpdateItems();
 
   const [newValue, setNewValue] = useState<unknown>(null);

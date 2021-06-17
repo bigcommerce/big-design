@@ -94,7 +94,8 @@ const InternalCell = <T extends WorksheetItem>({
   }, [cell, rowIndex, setSelectedCells, setSelectedRows]);
 
   const renderedCell = useMemo(() => {
-    const cellValue = value ? (formatting ? formatting(value) : `${value}`) : value !== 'undefined' ? `${value}` : '';
+    const cellValue =
+      value || value === 0 ? (formatting ? formatting(value) : `${value}`) : value !== 'undefined' ? `${value}` : '';
 
     switch (type) {
       case 'select':

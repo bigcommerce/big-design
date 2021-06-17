@@ -21,6 +21,7 @@ const InternalCheckboxEditor = <T extends WorksheetItem>({
 }: CheckboxEditorProps<T>) => {
   useEffect(() => {
     if (isEditing) {
+      // For checkbox we want to change the value when editing is called
       onChange(!cell.value);
     }
   }, [cell.value, isEditing, onChange]);
