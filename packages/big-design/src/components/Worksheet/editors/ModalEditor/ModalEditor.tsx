@@ -31,13 +31,13 @@ const InternalModalEditor = <T extends WorksheetItem>({ cell, formatting, isEdit
     setEditingCell(cell);
   }, [cell, setEditingCell]);
 
-  const cellValue = useMemo(() => (formatting ? formatting(value) : `${value}`), [formatting, value]);
+  const renderedValue = useMemo(() => (formatting ? formatting(value) : `${value}`), [formatting, value]);
 
   return (
     <Flex justifyContent="space-between" alignItems="center" flexWrap="wrap">
       <StyledFlexItem paddingRight="small" flexShrink={1}>
-        <Small color="secondary70" ellipsis={true} title={cellValue}>
-          {cellValue}
+        <Small color="secondary70" ellipsis={true} title={renderedValue}>
+          {renderedValue}
         </Small>
       </StyledFlexItem>
       <StyledButton onClick={handleClick} ref={buttonRef} variant="subtle">

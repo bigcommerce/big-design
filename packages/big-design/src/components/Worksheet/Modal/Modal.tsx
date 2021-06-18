@@ -11,7 +11,7 @@ interface WorksheetModalProps<Item> {
 
 const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetModalProps<T>) => {
   const { config, hash } = column;
-  const { header, render } = config;
+  const { header, render, saveActionText = 'Save', cancelActionText = 'Cancel' } = config;
 
   const isModalOpen = useStore(useMemo(() => (state) => state.openedModal === hash, [hash]));
   const selectedCell = useStore(useMemo(() => (state) => state.selectedCells[0], []));
@@ -58,12 +58,12 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
     <Modal
       actions={[
         {
-          text: 'Cancel',
+          text: cancelActionText,
           variant: 'subtle',
           onClick: handleClose,
         },
         {
-          text: 'Save',
+          text: saveActionText,
           onClick: handleSave,
         },
       ]}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import { typedMemo } from '../../../../utils';
 import { Checkbox } from '../../../Checkbox';
@@ -19,16 +19,18 @@ const InternalCheckboxEditor = <T extends WorksheetItem>({
   onBlur,
   onChange,
 }: CheckboxEditorProps<T>) => {
-  useEffect(() => {
-    if (isEditing) {
-      // For checkbox we want to change the value when editing is called
-      onChange(!cell.value);
-    }
-  }, [cell.value, isEditing, onChange]);
-
-  const handleChange = () => {
+  const handleChange = useCallback(() => {
     onChange(!cell.value);
-  };
+  }, [cell, onChange]);
+
+  useEffect(() => {
+    // For context, isEditing will only return true when a user has
+    // pressed `enter` or `space` when a checkbox cell is selected.
+    // It is virtually the same as clicking on the checkbox.
+    if (isEditing) {
+      handleChange();
+    }
+  }, [cell.value, handleChange, isEditing]);
 
   return (
     <CheckboxWrapper>
