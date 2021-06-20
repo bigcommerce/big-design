@@ -1,7 +1,7 @@
 import { Flex, FlexItem } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { BigDesignLogoIcon, GithubLogoIcon } from '../Icons';
+import { GithubLogoIcon } from '../Icons';
 import { List } from '../List';
 
 import { SideNavGroup } from './SideNavGroup';

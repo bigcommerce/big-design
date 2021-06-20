@@ -7,6 +7,7 @@ export * from './List';
 export * from './MethodBadge';
 export * from './MethodList';
 export * from './NextLink';
+export * from './PageNavigation';
 export * from './PropTable';
 export * from './SideNav';
 export * from './StoryWrapper';
