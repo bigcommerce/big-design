@@ -64,10 +64,10 @@ export const SideNav: React.FC = () => {
             Panel
           </SideNavLink>
           <SideNavLink href="/StatefulTable/StatefulTablePage" as="/statefulTable">
-            Stateful table
+            StatefulTable
           </SideNavLink>
           <SideNavLink href="/StatefulTree/StatefulTreePage" as="/statefulTree">
-            Stateful tree
+            StatefulTree
           </SideNavLink>
           <SideNavLink href="/Table/TablePage" as="/table">
             Table
@@ -109,10 +109,10 @@ export const SideNav: React.FC = () => {
             Link
           </SideNavLink>
           <SideNavLink href="/MultiSelect/MultiSelectPage" as="/multi-select">
-            Multi select
+            MultiSelect
           </SideNavLink>
           <SideNavLink href="/PillTabs/PillTabsPage" as="/pill-tabs">
-            Pill tabs
+            PillTabs
           </SideNavLink>
           <SideNavLink href="/Radio/RadioPage" as="/radio">
             Radio
@@ -130,7 +130,7 @@ export const SideNav: React.FC = () => {
             Textarea
           </SideNavLink>
           <SideNavLink href="/Timepicker/TimepickerPage" as="/timepicker">
-            Time picker
+            Timepicker
           </SideNavLink>
         </SideNavGroup>
 
@@ -148,10 +148,10 @@ export const SideNav: React.FC = () => {
             Message
           </SideNavLink>
           <SideNavLink href="/Progress/ProgressBarPage" as="/progress-bar">
-            Progress bar
+            ProgressBar
           </SideNavLink>
           <SideNavLink href="/Progress/ProgressCirclePage" as="/progress-circle">
-            Progress circle
+            ProgressCircle
           </SideNavLink>
           <SideNavLink href="/Stepper/StepperPage" as="/stepper">
             Stepper
