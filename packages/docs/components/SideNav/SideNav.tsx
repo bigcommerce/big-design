@@ -40,7 +40,7 @@ export const SideNav: React.FC = () => {
             Colors
           </SideNavLink>
           <SideNavLink href="/Icons/IconsPage" as="/icons">
-            Icons
+            Icon
           </SideNavLink>
           <SideNavLink href="/Spacing/SpacingPage" as="/spacing">
             Spacing
@@ -142,7 +142,7 @@ export const SideNav: React.FC = () => {
             Badge
           </SideNavLink>
           <SideNavLink href="/InlineMessage/InlineMessagePage" as="/inline-message">
-            Inline message
+            InlineMessage
           </SideNavLink>
           <SideNavLink href="/Message/MessagePage" as="/message">
             Message

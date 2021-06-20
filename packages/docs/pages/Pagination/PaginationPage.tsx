@@ -1,24 +1,18 @@
-import { H1, Pagination, Panel, Tabs, Text } from '@bigcommerce/big-design';
-import React, { useContext, useEffect, useState } from 'react';
+import { H1, Pagination, Panel, Text } from '@bigcommerce/big-design';
+import React, { useEffect, useState } from 'react';
 
-import { ActiveTabContext, CodePreview } from '../../components';
+import { CodePreview, PageNavigation } from '../../components';
 import { MarginPropTable, PaginationPropTable } from '../../PropTables';
 
 const PaginationPage = () => {
-  const { activeTab, setActiveTab } = useContext(ActiveTabContext);
-  const tabItems = [
-    { id: 'examples', title: 'Examples' },
-    { id: 'code', title: 'Code' },
-  ];
-
-  const renderTabs = () => {
-    switch (activeTab) {
-      case 'code':
-        return <PaginationPropTable inheritedProps={<MarginPropTable collapsible />} />;
-      case 'examples':
-      default:
-        return (
+  const items = [
+    {
+      id: 'examples',
+      title: 'Examples',
+      render: () => (
+        <>
           <Panel>
+            <Text>Pagination allows for navigation through pages of content.</Text>
             <CodePreview>
               {/* jsx-to-string:start */}
               {function ExampleList() {
@@ -62,18 +56,25 @@ const PaginationPage = () => {
               {/* jsx-to-string:end */}
             </CodePreview>
           </Panel>
-        );
-    }
-  };
+        </>
+      ),
+    },
+    {
+      id: 'code',
+      title: 'Code',
+      render: () => (
+        <>
+          <PaginationPropTable inheritedProps={<MarginPropTable collapsible />} />
+        </>
+      ),
+    },
+  ];
 
   return (
     <>
       <H1>Pagination</H1>
-      <Text>Pagination allows for navigation through pages of content.</Text>
 
-      <Tabs activeTab={activeTab} items={tabItems} onTabClick={setActiveTab} />
-
-      {renderTabs()}
+      <PageNavigation items={items} />
     </>
   );
 };

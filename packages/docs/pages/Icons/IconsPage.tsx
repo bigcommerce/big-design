@@ -1,4 +1,4 @@
-import { Flex, Form, FormGroup, H1, Link, Message, Panel, Select, Text } from '@bigcommerce/big-design';
+import { Flex, Form, FormGroup, H1, Link, InlineMessage, Panel, Select, Text } from '@bigcommerce/big-design';
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import {
   ARFlagIcon,
@@ -135,28 +135,30 @@ const IconsPage = () => {
       title: 'Code',
       render: () => (
         <>
-          <Message
-            type="warning"
-            messages={[
-              {
-                text:
-                  'Icons live in the package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
-              },
-            ]}
-            marginBottom="medium"
-          />
-          <IconPropTable />
-          <Message
-            type="warning"
-            messages={[
-              {
-                text:
-                  'Flags are a submodule of the Icons package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
-              },
-            ]}
-            marginBottom="medium"
-          />
-          <FlagIconPropTable />
+          <IconPropTable>
+            <InlineMessage
+              type="warning"
+              messages={[
+                {
+                  text:
+                    'Icons live in the package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
+                },
+              ]}
+              marginBottom="medium"
+            />
+          </IconPropTable>
+          <FlagIconPropTable>
+            <InlineMessage
+              type="warning"
+              messages={[
+                {
+                  text:
+                    'Flags are a submodule of the Icons package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
+                },
+              ]}
+              marginBottom="medium"
+            />
+          </FlagIconPropTable>
         </>
       ),
     },
@@ -192,7 +194,7 @@ const IconsPage = () => {
 
   return (
     <>
-      <H1>Icons</H1>
+      <H1>Icon</H1>
 
       <PageNavigation items={items} />
     </>

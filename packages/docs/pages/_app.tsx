@@ -73,7 +73,7 @@ export default class MyApp extends App {
                         gridArea="main"
                         marginVertical="medium"
                         marginHorizontal={{ mobile: 'small', tablet: 'xxLarge' }}
-                        paddingTop="medium"
+                        paddingTop="large"
                         style={{ maxWidth: '100%' }}
                       >
                         <StoryWrapper>

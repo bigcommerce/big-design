@@ -9,14 +9,13 @@ const BreakpointsPage = () => (
   <>
     <H1>Breakpoints</H1>
 
-    <Text>
-      We provide access to our breakpoints' <Code>@media</Code> queries. Our breakpoints include{' '}
-      <Code primary>mobile</Code>, <Code primary>tablet</Code> and <Code primary>desktop</Code> . Values for each
-      breakpoint are <Code>{breakpointValues.mobile}</Code>, <Code>{breakpointValues.tablet}</Code>, and{' '}
-      <Code>{breakpointValues.desktop}</Code> respectively.
-    </Text>
-
     <Panel>
+      <Text>
+        We provide access to our breakpoints' <Code>@media</Code> queries. Our breakpoints include{' '}
+        <Code primary>mobile</Code>, <Code primary>tablet</Code> and <Code primary>desktop</Code> . Values for each
+        breakpoint are <Code>{breakpointValues.mobile}</Code>, <Code>{breakpointValues.tablet}</Code>, and{' '}
+        <Code>{breakpointValues.desktop}</Code> respectively.
+      </Text>
       <CodePreview>
         {/* jsx-to-string:start */}
         {function Example() {
