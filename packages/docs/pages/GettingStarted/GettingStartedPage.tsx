@@ -16,7 +16,7 @@ const GettingStartedPage = () => {
           BigCommerce’s library of React components lets developers build stylish apps that have a native BigCommerce
           feel at their core. Our components implement BigDesign principles to allow you to create an empathetic and
           frictionless user experience. The documentation will demonstrate the visual style and behavior of each
-          component. Each component has props that you can pass to the components for further configuration.
+          component. Each component has props that can be passed for further configuration.
         </Text>
 
         <FlexItem alignSelf="center">
