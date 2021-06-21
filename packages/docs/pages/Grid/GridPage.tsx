@@ -25,7 +25,7 @@ const GridPage = () => {
       render: () => (
         <>
           <Panel>
-            <Text>The Grid component is useful for creating intrinsicly responsive layouts.</Text>
+            <Text>The Grid component is useful for creating intrinsically responsive layouts.</Text>
             <CodePreview scope={{ ExampleBox }}>
               {/* jsx-to-string:start */}
               <Grid>
