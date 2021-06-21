@@ -1,4 +1,4 @@
-import { Flex, FlexItem, H1, Link, PillTabs, Text, Panel } from '@bigcommerce/big-design';
+import { Flex, FlexItem, H1, Link, Panel, PillTabs, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { CodePreview, PageNavigation } from '../../components';

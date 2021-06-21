@@ -1,4 +1,4 @@
-import { H3, Link, Panel, Small, Table, TableFigure, Text, Flex } from '@bigcommerce/big-design';
+import { Flex, H3, Link, Panel, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
 import React, { FC, ReactNode } from 'react';
 
 import { Code } from '../Code';

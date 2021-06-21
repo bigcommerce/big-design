@@ -1,4 +1,4 @@
-import { Flex, Form, FormGroup, H1, Link, InlineMessage, Panel, Select, Text } from '@bigcommerce/big-design';
+import { Flex, Form, FormGroup, H1, InlineMessage, Link, Panel, Select, Text } from '@bigcommerce/big-design';
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import {
   ARFlagIcon,
