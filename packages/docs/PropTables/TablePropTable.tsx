@@ -154,6 +154,11 @@ const tableColumnsProps: Prop[] = [
     description: 'Sets vertical alignment for column (td only).',
   },
   {
+    name: 'tooltip',
+    types: 'string',
+    description: 'Tooltip for the table column header',
+  },
+  {
     name: 'width',
     types: ['string', 'number'],
     description: 'Sets column width.',
