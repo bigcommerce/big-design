@@ -58,7 +58,7 @@ const InternalHeaderCell = <T extends TableItem>({
     return (
       <>
         &nbsp;
-        <Tooltip trigger={<BaselineHelpIcon />} placement="right-end">
+        <Tooltip trigger={<BaselineHelpIcon data-testid="help-icon" />} placement="right-end">
           {tooltip}
         </Tooltip>
       </>
