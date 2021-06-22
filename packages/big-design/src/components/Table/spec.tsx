@@ -116,6 +116,19 @@ test('renders column with custom component', () => {
   expect(getAllByTestId('name').length).toBe(5);
 });
 
+test('renders column with tooltip icon', () => {
+  const { getByTestId } = render(
+    getSimpleTable({
+      columns: [
+        { header: 'Sku', render: ({ sku }: any) => sku },
+        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+      ],
+    }),
+  );
+
+  expect(getByTestId('help-icon')).toBeTruthy();
+});
+
 test('tweaks column styles with props', () => {
   const { container } = render(
     getSimpleTable({
