@@ -156,7 +156,7 @@ const tableColumnsProps: Prop[] = [
   {
     name: 'tooltip',
     types: 'string',
-    description: 'Tooltip for the table column header',
+    description: 'Tooltip for the table column header.',
   },
   {
     name: 'width',
