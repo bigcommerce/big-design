@@ -1,9 +1,10 @@
-import { Tooltip } from '@bigcommerce/big-design';
 import { ArrowDownwardIcon, ArrowUpwardIcon, BaselineHelpIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, RefObject, TableHTMLAttributes } from 'react';
 
 import { useComponentSize } from '../../../hooks';
 import { typedMemo } from '../../../utils';
+import { Box } from '../../Box';
+import { Tooltip } from '../../Tooltip';
 import { TableColumnDisplayProps } from '../mixins';
 import { TableColumn, TableItem } from '../types';
 
@@ -55,14 +56,22 @@ const InternalHeaderCell = <T extends TableItem>({
   };
 
   const renderTooltip = () => {
-    return (
-      <>
-        &nbsp;
-        <Tooltip trigger={<BaselineHelpIcon data-testid="help-icon" />} placement="right-end">
+    if (tooltip && typeof tooltip === 'string') {
+      return (
+        <Tooltip
+          trigger={
+            <Box as="span" marginLeft="xxSmall">
+              <BaselineHelpIcon size="medium" title="Tooltip icon" />
+            </Box>
+          }
+          placement="right"
+        >
           {tooltip}
         </Tooltip>
-      </>
-    );
+      );
+    }
+
+    return null;
   };
 
   const handleClick = (e: React.MouseEvent) => {
@@ -85,7 +94,7 @@ const InternalHeaderCell = <T extends TableItem>({
       <StyledFlex alignItems="center" flexDirection="row" hide={hide} align={align}>
         {children}
         {!hide && renderSortIcon()}
-        {tooltip && renderTooltip()}
+        {renderTooltip()}
       </StyledFlex>
       {hide && renderSortIcon()}
     </StyledTableHeaderCell>

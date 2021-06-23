@@ -182,6 +182,25 @@ const TablePage = () => {
         {/* jsx-to-string:end */}
       </CodePreview>
 
+      <H2>Usage with column header tooltip</H2>
+
+      <CodePreview>
+        {/* jsx-to-string:start */}
+        <Table
+          columns={[
+            { header: 'Sku', hash: 'sku', tooltip: 'Header tooltip', render: ({ sku }) => sku },
+            { header: 'Name', hash: 'name', render: ({ name }) => name },
+            { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+          ]}
+          items={[
+            { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+            { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+          ]}
+          stickyHeader
+        />
+        {/* jsx-to-string:end */}
+      </CodePreview>
+
       <H2>Usage with TableFigure</H2>
 
       <Text>

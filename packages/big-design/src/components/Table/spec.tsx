@@ -117,7 +117,7 @@ test('renders column with custom component', () => {
 });
 
 test('renders column with tooltip icon', () => {
-  const { getByTestId } = render(
+  const { getByTitle } = render(
     getSimpleTable({
       columns: [
         { header: 'Sku', render: ({ sku }: any) => sku },
@@ -126,7 +126,23 @@ test('renders column with tooltip icon', () => {
     }),
   );
 
-  expect(getByTestId('help-icon')).toBeTruthy();
+  expect(getByTitle('Tooltip icon')).toBeTruthy();
+});
+
+test('renders tooltip when hovering on icon', async () => {
+  const { getByTitle } = render(
+    getSimpleTable({
+      columns: [
+        { header: 'Sku', render: ({ sku }: any) => sku },
+        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+      ],
+    }),
+  );
+  fireEvent.mouseOver(getByTitle('Tooltip icon'));
+
+  const result = await waitForElement(() => screen.getByText('Some text'));
+
+  expect(result).toBeInTheDocument();
 });
 
 test('tweaks column styles with props', () => {
