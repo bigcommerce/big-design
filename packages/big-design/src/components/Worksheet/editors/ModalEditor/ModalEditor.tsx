@@ -36,7 +36,7 @@ const InternalModalEditor = <T extends WorksheetItem>({ cell, formatting, isEdit
   return (
     <Flex justifyContent="space-between" alignItems="center" flexWrap="wrap">
       <StyledFlexItem paddingRight="small" flexShrink={1}>
-        <Small color="secondary70" ellipsis={true} title={renderedValue}>
+        <Small color="secondary70" ellipsis title={renderedValue}>
           {renderedValue}
         </Small>
       </StyledFlexItem>

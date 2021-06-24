@@ -32,20 +32,16 @@ const InternalWorksheet = <T extends WorksheetItem>({
   // Create a new reference since state mutates rows to prevent unecessary rerendering
   useEffect(() => setRows([...items]), [items, setRows]);
 
-  // Save columns to use in navigation
   useEffect(() => setColumns(columns), [columns, setColumns]);
 
-  // Save ref to focus table when necessary
   useEffect(() => setTableRef(tableRef.current), [setTableRef, tableRef]);
 
-  // Call onChange when a cell is edited
   useEffect(() => {
     if (editedCells.length) {
       onChange(editedRows(editedCells, rows));
     }
   }, [editedCells, onChange, rows]);
 
-  // Call onErrors when a cell becomes invalid
   useEffect(() => {
     if (typeof onErrors === 'function' && invalidCells.length) {
       onErrors(invalidRows(invalidCells, rows));

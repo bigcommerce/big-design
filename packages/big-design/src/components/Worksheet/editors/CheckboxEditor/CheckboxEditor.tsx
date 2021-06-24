@@ -24,8 +24,8 @@ const InternalCheckboxEditor = <T extends WorksheetItem>({
   }, [cell, onChange]);
 
   useEffect(() => {
-    // For context, isEditing will only return true when a user has
-    // pressed `enter` or `space` when a checkbox cell is selected.
+    // isEditing will only return true when a user has pressed
+    // `enter` or `space` when a checkbox cell is selected.
     // It is virtually the same as clicking on the checkbox.
     if (isEditing) {
       handleChange();
