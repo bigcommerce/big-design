@@ -117,23 +117,29 @@ test('renders column with custom component', () => {
 });
 
 test('renders column with tooltip icon', () => {
-  const columns = [
-    { header: 'Sku', render: ({ sku }: any) => sku },
-    { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
-  ];
-  const { getByTitle } = render(getSimpleTable({ columns }));
+  const { getByTitle } = render(
+    getSimpleTable({
+      columns: [
+        { header: 'Sku', render: ({ sku }: any) => sku },
+        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+      ],
+    }),
+  );
 
-  expect(getByTitle(`Tooltip icon for the ${columns[1].header}`)).toBeTruthy();
+  expect(getByTitle('Hover or focus for additional context.')).toBeTruthy();
 });
 
 test('renders tooltip when hovering on icon', async () => {
-  const columns = [
-    { header: 'Sku', render: ({ sku }: any) => sku },
-    { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
-  ];
-  const { getByTitle } = render(getSimpleTable({ columns }));
+  const { getByTitle } = render(
+    getSimpleTable({
+      columns: [
+        { header: 'Sku', render: ({ sku }: any) => sku },
+        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+      ],
+    }),
+  );
 
-  fireEvent.mouseOver(getByTitle(`Tooltip icon for the ${columns[1].header}`));
+  fireEvent.mouseOver(getByTitle('Hover or focus for additional context.'));
 
   const result = await waitForElement(() => screen.getByText('Some text'));
 

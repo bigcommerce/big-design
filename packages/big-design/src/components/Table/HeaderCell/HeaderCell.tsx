@@ -56,7 +56,7 @@ const InternalHeaderCell = <T extends TableItem>({
     );
   };
 
-  const renderTooltip = (columnLabel: string) => {
+  const renderTooltip = () => {
     if (typeof tooltip === 'string' && tooltip.length > 0) {
       return (
         <Tooltip
@@ -66,7 +66,7 @@ const InternalHeaderCell = <T extends TableItem>({
               <BaselineHelpIcon
                 aria-describedby={tooltipId}
                 size="medium"
-                title={`Tooltip icon for the ${columnLabel}`}
+                title="Hover or focus for additional context."
               />
             </Box>
           }
@@ -100,7 +100,7 @@ const InternalHeaderCell = <T extends TableItem>({
       <StyledFlex alignItems="center" flexDirection="row" hide={hide} align={align}>
         {children}
         {!hide && renderSortIcon()}
-        {renderTooltip(children as string)}
+        {renderTooltip()}
       </StyledFlex>
       {hide && renderSortIcon()}
     </StyledTableHeaderCell>
