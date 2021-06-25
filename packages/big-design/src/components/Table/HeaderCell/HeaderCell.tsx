@@ -1,7 +1,7 @@
 import { ArrowDownwardIcon, ArrowUpwardIcon, BaselineHelpIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, RefObject, TableHTMLAttributes } from 'react';
 
-import { useComponentSize } from '../../../hooks';
+import { useComponentSize, useUniqueId } from '../../../hooks';
 import { typedMemo } from '../../../utils';
 import { Box } from '../../Box';
 import { Tooltip } from '../../Tooltip';
@@ -42,6 +42,7 @@ const InternalHeaderCell = <T extends TableItem>({
 }: HeaderCellProps<T>) => {
   const { align = 'left', isSortable, width, tooltip } = column;
   const actionsSize = useComponentSize(actionsRef);
+  const tooltipId = useUniqueId('table-header-tooltip');
 
   const renderSortIcon = () => {
     if (!isSorted) {
@@ -55,13 +56,18 @@ const InternalHeaderCell = <T extends TableItem>({
     );
   };
 
-  const renderTooltip = () => {
+  const renderTooltip = (columnLabel: string) => {
     if (typeof tooltip === 'string' && tooltip.length > 0) {
       return (
         <Tooltip
+          id={tooltipId}
           trigger={
             <Box as="span" marginLeft="xxSmall">
-              <BaselineHelpIcon size="medium" title="Tooltip icon" />
+              <BaselineHelpIcon
+                aria-describedby={tooltipId}
+                size="medium"
+                title={`Tooltip icon for the ${columnLabel}`}
+              />
             </Box>
           }
           placement="right"
@@ -94,7 +100,7 @@ const InternalHeaderCell = <T extends TableItem>({
       <StyledFlex alignItems="center" flexDirection="row" hide={hide} align={align}>
         {children}
         {!hide && renderSortIcon()}
-        {renderTooltip()}
+        {renderTooltip(children as string)}
       </StyledFlex>
       {hide && renderSortIcon()}
     </StyledTableHeaderCell>
