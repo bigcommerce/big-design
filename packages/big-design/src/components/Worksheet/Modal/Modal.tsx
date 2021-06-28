@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Modal } from '../../Modal';
-import { useEditableCell, useStore } from '../hooks';
+import { useStore, useTableFocus, useUpdateItems } from '../hooks';
 import { WorksheetItem, WorksheetModalColumn } from '../types';
 
 interface WorksheetModalProps<Item> {
@@ -11,13 +11,16 @@ interface WorksheetModalProps<Item> {
 
 const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetModalProps<T>) => {
   const { config, hash } = column;
-  const { header, render } = config;
+  const { header, render, saveActionText = 'Save', cancelActionText = 'Cancel' } = config;
 
   const isModalOpen = useStore(useMemo(() => (state) => state.openedModal === hash, [hash]));
   const selectedCell = useStore(useMemo(() => (state) => state.selectedCells[0], []));
-  const setOpenModal = useStore((state) => state.setOpenModal);
 
-  const { handleChange } = useEditableCell<T>(selectedCell);
+  const setOpenModal = useStore((state) => state.setOpenModal);
+  const setEditingCell = useStore((state) => state.setEditingCell);
+
+  const { focusTable } = useTableFocus();
+  const { updateItems } = useUpdateItems();
 
   const [newValue, setNewValue] = useState<unknown>(null);
 
@@ -27,13 +30,19 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
     }
   }, [selectedCell]);
 
+  const handleClose = useCallback(() => {
+    setOpenModal(null);
+    setEditingCell(null);
+    focusTable();
+  }, [focusTable, setEditingCell, setOpenModal]);
+
   const handleSave = useCallback(() => {
     if (selectedCell && newValue !== null && newValue !== selectedCell.value) {
-      handleChange(newValue);
+      updateItems([selectedCell], [newValue]);
     }
 
-    setOpenModal(null);
-  }, [handleChange, newValue, selectedCell, setOpenModal]);
+    handleClose();
+  }, [handleClose, newValue, selectedCell, updateItems]);
 
   const renderedContent = useMemo(() => {
     const onChange = (newValue: unknown) => {
@@ -48,9 +57,13 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
   return (
     <Modal
       actions={[
-        { text: 'Cancel', variant: 'subtle', onClick: () => setOpenModal(null) },
         {
-          text: 'Save',
+          text: cancelActionText,
+          variant: 'subtle',
+          onClick: handleClose,
+        },
+        {
+          text: saveActionText,
           onClick: handleSave,
         },
       ]}
@@ -58,7 +71,7 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
       closeOnEscKey={true}
       header={header}
       isOpen={isModalOpen}
-      onClose={() => setOpenModal(null)}
+      onClose={handleClose}
     >
       {renderedContent}
     </Modal>

@@ -1,3 +1,4 @@
+import { theme } from '@bigcommerce/big-design-theme';
 import { fireEvent, render, screen, waitForElement } from '@testing-library/react';
 import React from 'react';
 
@@ -203,8 +204,8 @@ describe('selection', () => {
 
     fireEvent.click(cell);
 
-    expect(cell).toHaveStyle('border-color: #3C64F4');
-    expect(row.firstChild).toHaveStyle('background-color: #3C64F4');
+    expect(cell).toHaveStyle(`border-color: ${theme.colors.primary}`);
+    expect(row.firstChild).toHaveStyle(`background-color: ${theme.colors.primary}`);
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
@@ -309,8 +310,8 @@ describe('validation', () => {
     const cell = getByText('$49.00').parentElement as HTMLTableDataCellElement;
     const row = cell.parentElement as HTMLTableRowElement;
 
-    expect(cell).toHaveStyle('border-color: #db3643');
-    expect(row.firstChild).toHaveStyle('background-color: #DB3643');
+    expect(cell).toHaveStyle(`border-color: ${theme.colors.danger}`);
+    expect(row.firstChild).toHaveStyle(`background-color: ${theme.colors.danger}`);
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
@@ -463,6 +464,50 @@ describe('formatting', () => {
   });
 });
 
+describe('keyboard navigation', () => {
+  test('navigates with arrow keys', async () => {
+    const { getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    let cell = getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowDown' });
+
+    cell = getByText('Shoes Name Two');
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('navigates with tab', async () => {
+    const { getAllByText, getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const cell = getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'Tab' });
+    fireEvent.keyDown(cell, { key: 'Tab' });
+
+    const cells = getAllByText('Text');
+
+    expect(cells[0].parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'Tab', shiftKey: true });
+    fireEvent.keyDown(cell, { key: 'Tab', shiftKey: true });
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+});
+
 describe('TextEditor', () => {
   test('renders TextEditor', async () => {
     const { getByDisplayValue, getByText } = render(
@@ -490,7 +535,7 @@ describe('TextEditor', () => {
 
     cell = getByText('Shoes Name One');
 
-    expect(cell.parentNode).toHaveStyle('background-color: rgb(255, 255, 255);');
+    expect(cell.parentNode).toHaveStyle(`background-color: ${theme.colors.white};`);
 
     fireEvent.doubleClick(cell);
 
@@ -516,13 +561,13 @@ describe('TextEditor', () => {
 
     cell = getByText('Shoes Name One Edit');
 
-    expect(cell.parentNode).toHaveStyle('background-color: #FFF9E6;');
+    expect(cell.parentNode).toHaveStyle(`background-color: ${theme.colors.warning10};`);
 
     fireEvent.doubleClick(cell);
 
     input = getByDisplayValue('Shoes Name One Edit') as HTMLInputElement;
 
-    expect(input).toHaveStyle('background-color: #FFF9E6;');
+    expect(input).toHaveStyle(`background-color: ${theme.colors.warning10};`);
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
@@ -596,7 +641,7 @@ describe('SelectEditor', () => {
       },
     ]);
 
-    expect(cells[0]).toHaveStyle('background-color: #FFF9E6;');
+    expect(cells[0]).toHaveStyle(`background-color: ${theme.colors.warning10};`);
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
@@ -638,7 +683,9 @@ describe('CheckboxEditor', () => {
       },
     ]);
 
-    expect(cell.parentElement?.parentElement?.parentElement).toHaveStyle('background-color: #FFF9E6;');
+    expect(cell.parentElement?.parentElement?.parentElement).toHaveStyle(
+      `background-color: ${theme.colors.warning10};`,
+    );
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
@@ -687,7 +734,7 @@ describe('ModalEditor', () => {
 
     const cell = buttons[3].parentNode?.parentNode?.parentNode;
 
-    expect(cell).toHaveStyle('background-color: #FFF9E6;');
+    expect(cell).toHaveStyle(`background-color: ${theme.colors.warning10};`);
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });

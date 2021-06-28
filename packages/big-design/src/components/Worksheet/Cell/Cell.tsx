@@ -93,25 +93,49 @@ const InternalCell = <T extends WorksheetItem>({
     setSelectedCells([cell]);
   }, [cell, rowIndex, setSelectedCells, setSelectedRows]);
 
+  const renderedValue = useMemo(() => {
+    if (value !== 'undefined' && value !== '' && !Number.isNaN(value)) {
+      if (typeof formatting === 'function') {
+        return formatting(value);
+      }
+
+      return `${value}`;
+    }
+
+    if (Number.isNaN(value)) {
+      return `${value}`;
+    }
+
+    return '';
+  }, [formatting, value]);
+
   const renderedCell = useMemo(() => {
     switch (type) {
       case 'select':
-        return <SelectEditor cell={cell} isEdited={isEdited} onChange={handleChange} options={options} />;
+        return (
+          <SelectEditor
+            cell={cell}
+            isEdited={isEdited}
+            isEditing={isEditing}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            options={options}
+          />
+        );
       case 'checkbox':
-        return <CheckboxEditor cell={cell} onChange={handleChange} />;
+        return <CheckboxEditor cell={cell} isEditing={isEditing} onBlur={handleBlur} onChange={handleChange} />;
       case 'modal':
-        return <ModalEditor cell={cell} formatting={formatting} />;
+        return <ModalEditor cell={cell} formatting={formatting} isEditing={isEditing} />;
       default:
         return isEditing ? (
           <TextEditor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
-        ) : // In case of NaN casting to string
-        value ? (
-          <Small color="secondary70">{formatting ? formatting(value) : `${value}`}</Small>
         ) : (
-          <Small color="secondary70">{''}</Small>
+          <Small color="secondary70" ellipsis title={renderedValue}>
+            {renderedValue}
+          </Small>
         );
     }
-  }, [cell, formatting, handleBlur, handleChange, handleKeyDown, isEdited, isEditing, options, type, value]);
+  }, [cell, formatting, handleBlur, handleChange, handleKeyDown, isEdited, isEditing, options, renderedValue, type]);
 
   return (
     <StyledCell
