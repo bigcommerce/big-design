@@ -30,6 +30,7 @@ export interface TableColumn<T> extends TableColumnDisplayProps {
   align?: 'left' | 'center' | 'right';
   hash: string;
   header: string;
+  tooltip?: string;
   hideHeader?: boolean;
   isSortable?: boolean;
   render: React.ComponentType<T> | ((props: T & { children?: ReactNode }, context?: any) => string | number);

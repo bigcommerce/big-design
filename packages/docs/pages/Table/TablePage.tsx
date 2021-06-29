@@ -56,7 +56,7 @@ const TablePage = () => {
         {/* jsx-to-string:start */}
         <Table
           columns={[
-            { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+            { header: 'Sku', hash: 'sku', tooltip: 'Header tooltip', render: ({ sku }) => sku },
             { header: 'Name', hash: 'name', render: ({ name }) => name },
             { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
           ]}
