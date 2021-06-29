@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { createRef, useEffect, useMemo } from 'react';
 
 import { typedMemo } from '../../utils';
 
 import { UpdateItemsProvider } from './context';
-import { useStore } from './hooks';
+import { useKeyEvents, useStore } from './hooks';
 import { WorksheetModal } from './Modal/Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
@@ -17,14 +17,24 @@ const InternalWorksheet = <T extends WorksheetItem>({
   onChange,
   onErrors,
 }: WorksheetProps<T>): React.ReactElement<WorksheetProps<T>> => {
-  const rows = useStore(useMemo(() => (state) => state.rows, []));
-  const setRows = useStore((state) => state.setRows);
+  const tableRef = createRef<HTMLTableElement>();
 
+  const setRows = useStore((state) => state.setRows);
+  const setColumns = useStore((state) => state.setColumns);
+  const setTableRef = useStore((state) => state.setTableRef);
+
+  const rows = useStore(useMemo(() => (state) => state.rows, []));
   const editedCells = useStore(useMemo(() => (state) => state.editedCells, []));
   const invalidCells = useStore(useMemo(() => (state) => state.invalidCells, []));
 
+  const { handleKeyDown } = useKeyEvents();
+
   // Create a new reference since state mutates rows to prevent unecessary rerendering
   useEffect(() => setRows([...items]), [items, setRows]);
+
+  useEffect(() => setColumns(columns), [columns, setColumns]);
+
+  useEffect(() => setTableRef(tableRef.current), [setTableRef, tableRef]);
 
   useEffect(() => {
     if (editedCells.length) {
@@ -44,7 +54,9 @@ const InternalWorksheet = <T extends WorksheetItem>({
         <tr>
           <Status />
           {columns.map((column, index) => (
-            <Header key={index}>{column.header}</Header>
+            <Header key={index} columnType={column.type}>
+              {column.header}
+            </Header>
           ))}
         </tr>
       </thead>
@@ -73,7 +85,7 @@ const InternalWorksheet = <T extends WorksheetItem>({
 
   return (
     <UpdateItemsProvider items={rows}>
-      <Table>
+      <Table onKeyDown={handleKeyDown} ref={tableRef} tabIndex={0}>
         {renderedHeaders}
         {renderedRows}
       </Table>

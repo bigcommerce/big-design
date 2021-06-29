@@ -44,6 +44,10 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
     css`
       background-color: ${({ theme }) => theme.colors.warning10};
     `}
+
+  & p {
+    display: block;
+  }
 `;
 
 StyledCell.defaultProps = { theme: defaultTheme };
