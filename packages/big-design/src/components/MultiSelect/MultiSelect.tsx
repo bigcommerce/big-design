@@ -369,7 +369,7 @@ export const MultiSelect = typedMemo(
             }))}
             iconRight={renderToggle}
             readOnly={!filterable}
-            required={required}
+            required={required && selectedOptions.length === 0 ? true : false}
           />
         </StyledInputContainer>
       );
