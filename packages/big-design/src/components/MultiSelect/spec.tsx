@@ -453,11 +453,26 @@ test('select should render an error if one is provided', async () => {
 });
 
 test('select should have a required attr if set as required', async () => {
-  const { getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  const { getAllByLabelText } = render(
+    <MultiSelect
+      onOptionsChange={onChange}
+      label="Countries"
+      placeholder="Choose country"
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      required
+    />,
+  );
+
+  const input = getAllByLabelText('Countries')[0];
 
   expect(input.getAttribute('required')).toEqual('');
-  await waitForElement(() => screen.getByTestId('multi-select'));
+  await waitForElement(() => screen.getAllByLabelText('Countries'));
 });
 
 test('select should not have a required attr if not set as required', async () => {
@@ -480,6 +495,14 @@ test('select should not have a required attr if not set as required', async () =
 
   expect(input.getAttribute('required')).toEqual(null);
   await waitForElement(() => screen.getAllByLabelText('Countries'));
+});
+
+test('required attr should be removed when item is selected', async () => {
+  const { getByTestId } = render(MultiSelectMock);
+  const input = getByTestId('multi-select');
+
+  expect(input.getAttribute('required')).toEqual(null);
+  await waitForElement(() => screen.getByTestId('multi-select'));
 });
 
 test('select should have a disabled attr if set as disabled', async () => {
