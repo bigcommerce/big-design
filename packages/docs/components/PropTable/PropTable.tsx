@@ -20,7 +20,7 @@ export interface PropTableProps {
   collapsible?: boolean;
   id?: string;
   title: string;
-  propList: Prop[];
+  propList?: Prop[];
   inheritedProps?: ReactNode;
 }
 
@@ -29,59 +29,58 @@ export type PropTableWrapper = Partial<PropTableProps>;
 export const PropTable: FC<PropTableProps> = (props) => {
   const { collapsible, id, propList: items, title, inheritedProps, children } = props;
 
-  const renderTable = () => (
-    <TableFigure marginBottom={collapsible || inheritedProps ? 'xLarge' : 'none'}>
-      <Table
-        columns={[
-          {
-            header: 'Prop name',
-            hash: 'propName',
-            render: ({ name, required }) => (
-              <>
-                <Code primary>{name}</Code>
-                {required ? <b> *</b> : null}
-              </>
-            ),
-          },
-          {
-            header: 'Type',
-            hash: 'type',
-            render: ({ types }) => <TypesData types={types} />,
-          },
-          {
-            header: 'Default',
-            hash: 'default',
-            render: ({ defaultValue }) => <Code highlight={false}>{defaultValue}</Code>,
-          },
-          {
-            header: 'Description',
-            hash: 'description',
-            width: '50%',
-            render: ({ description }) => <Text>{description}</Text>,
-          },
-        ]}
-        items={items}
-      />
+  const renderTable = () =>
+    items ? (
+      <TableFigure marginBottom={collapsible || inheritedProps ? 'xLarge' : 'none'}>
+        <Table
+          columns={[
+            {
+              header: 'Prop name',
+              hash: 'propName',
+              render: ({ name, required }) => (
+                <>
+                  <Code primary>{name}</Code>
+                  {required ? <b> *</b> : null}
+                </>
+              ),
+            },
+            {
+              header: 'Type',
+              hash: 'type',
+              render: ({ types }) => <TypesData types={types} />,
+            },
+            {
+              header: 'Default',
+              hash: 'default',
+              render: ({ defaultValue }) => <Code highlight={false}>{defaultValue}</Code>,
+            },
+            {
+              header: 'Description',
+              hash: 'description',
+              width: '50%',
+              render: ({ description }) => <Text>{description}</Text>,
+            },
+          ]}
+          items={items}
+        />
 
-      <Small marginTop="xSmall">Props ending with * are required</Small>
-    </TableFigure>
-  );
+        <Small marginTop="xSmall">Props ending with * are required</Small>
+      </TableFigure>
+    ) : null;
 
   return collapsible ? (
     <Collapsible title={`${title} Props`}>{renderTable()}</Collapsible>
   ) : (
-    <>
-      <Panel header={title} id={id}>
-        {children}
-        {renderTable()}
-        {inheritedProps ? (
-          <>
-            <H3>Inherited</H3>
-            <Flex flexDirection="column">{inheritedProps}</Flex>
-          </>
-        ) : null}
-      </Panel>
-    </>
+    <Panel header={title} id={id}>
+      {children}
+      {renderTable()}
+      {inheritedProps ? (
+        <>
+          <H3>Inherited</H3>
+          <Flex flexDirection="column">{inheritedProps}</Flex>
+        </>
+      ) : null}
+    </Panel>
   );
 };
 
