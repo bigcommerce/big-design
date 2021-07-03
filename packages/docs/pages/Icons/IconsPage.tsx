@@ -136,16 +136,9 @@ const IconsPage = () => {
       render: () => (
         <>
           <IconPropTable>
-            <InlineMessage
-              type="warning"
-              messages={[
-                {
-                  text:
-                    'Icons live in the package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
-                },
-              ]}
-              marginBottom="medium"
-            />
+            <CodeSnippet showControls={false} language="bash">
+              npm install @bigcommerce/big-design-icons // or yarn add @bigcommerce/big-design-icons
+            </CodeSnippet>
           </IconPropTable>
           <FlagIconPropTable>
             <InlineMessage
