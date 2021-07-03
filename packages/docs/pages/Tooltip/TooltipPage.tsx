@@ -83,8 +83,8 @@ const TooltipPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => <TooltipPropTable />,
     },
   ];

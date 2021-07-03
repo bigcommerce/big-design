@@ -38,8 +38,8 @@ const PanelPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => <PanelPropTable inheritedProps={<MarginPropTable collapsible />} />,
     },
   ];

@@ -51,8 +51,8 @@ const AlertPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => (
         <>
           <AlertPropTable>

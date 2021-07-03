@@ -98,8 +98,8 @@ const TextAreaPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => (
         <TextareaPropTable>
           <Text>

@@ -91,8 +91,8 @@ const CheckboxPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => (
         <>
           <CheckboxPropTable>

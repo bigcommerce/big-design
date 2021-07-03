@@ -89,8 +89,8 @@ const PillTabsPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => (
         <>
           <PillTabsPropTable />

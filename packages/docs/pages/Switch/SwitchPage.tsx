@@ -29,8 +29,8 @@ const SwitchPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => <SwitchPropTable />,
     },
   ];

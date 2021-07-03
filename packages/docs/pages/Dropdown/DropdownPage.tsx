@@ -345,8 +345,8 @@ const DropdownPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => (
         <>
           <DropdownPropTable />

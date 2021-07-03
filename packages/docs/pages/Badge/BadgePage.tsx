@@ -45,8 +45,8 @@ const BadgePage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => <BadgePropTable inheritedProps={<MarginPropTable collapsible />} />,
     },
   ];

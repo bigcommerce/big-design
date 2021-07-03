@@ -144,8 +144,8 @@ const InlineMessagePage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => (
         <>
           <InlineMessagePropTable />

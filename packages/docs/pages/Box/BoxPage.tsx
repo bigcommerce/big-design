@@ -64,8 +64,8 @@ const BoxPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => (
         <BoxPropTable
           inheritedProps={

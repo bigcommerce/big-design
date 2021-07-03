@@ -43,8 +43,8 @@ const ProgressBarPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => <ProgressBarPropTable />,
     },
   ];

@@ -90,8 +90,8 @@ const ModalPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => <ModalPropTable />,
     },
   ];

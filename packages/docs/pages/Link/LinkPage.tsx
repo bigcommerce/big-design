@@ -36,8 +36,8 @@ const LinkPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => <LinkPropTable inheritedProps={<MarginPropTable collapsible />} />,
     },
   ];

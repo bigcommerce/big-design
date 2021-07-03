@@ -82,8 +82,8 @@ const InputPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => (
         <InputPropTable>
           <Text>

@@ -31,8 +31,8 @@ const TimepickerPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => <TimepickerPropTable />,
     },
   ];

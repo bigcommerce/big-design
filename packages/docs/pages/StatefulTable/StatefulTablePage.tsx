@@ -243,8 +243,8 @@ const StatefulTablePage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => (
         <>
           <StatefulTablePropTable />

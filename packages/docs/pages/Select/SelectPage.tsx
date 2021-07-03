@@ -376,8 +376,8 @@ const SelectPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => (
         <>
           <SelectPropTable />

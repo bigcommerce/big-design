@@ -60,8 +60,8 @@ const PaginationPage = () => {
       ),
     },
     {
-      id: 'code',
-      title: 'Code',
+      id: 'props',
+      title: 'Props',
       render: () => (
         <>
           <PaginationPropTable inheritedProps={<MarginPropTable collapsible />} />
