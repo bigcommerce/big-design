@@ -46,5 +46,5 @@ const iconProps: Prop[] = [
 ];
 
 export const IconPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Icon props" propList={iconProps} {...props} />
+  <PropTable title="Icon" propList={iconProps} {...props} />
 );

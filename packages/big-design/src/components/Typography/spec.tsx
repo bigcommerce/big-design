@@ -148,7 +148,7 @@ test('HR - does not forward styles', () => {
 test('All typography components allow changing their color given a color prop', () => {
   const { container } = render(
     <>
-      <H3 color="primary">Test</H3>
+      <H1 color="primary">Test</H1>
       <H2 color="primary">Test</H2>
       <H3 color="primary">Test</H3>
       <H4 color="primary">Test</H4>
