@@ -27,6 +27,7 @@ export * from './PopoverPropTable';
 export * from './ProgressBarPropTable';
 export * from './ProgressCirclePropTable';
 export * from './RadioPropTable';
+export * from './SearchPropTable';
 export * from './SelectPropTable';
 export * from './StatefulTablePropTable';
 export * from './StatefulTreePropTable';

@@ -2,7 +2,9 @@ import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
+import { Box } from '../Box';
 import { PillTabItem, PillTabsProps } from '../PillTabs';
+import { Search } from '../Search';
 import { Table, TableColumn, TableItem, TableProps, TableSelectable, TableSortDirection } from '../Table';
 
 import { createReducer, createReducerInit } from './reducer';
@@ -159,21 +161,35 @@ const InternalStatefulTable = <T extends TableItem>({
     [search, state.searchValue, filters],
   );
 
+  const renderSearch = () => {
+    if (!search || !searchProps) {
+      return;
+    }
+
+    return (
+      <Box marginBottom="medium">
+        <Search {...searchProps} />
+      </Box>
+    );
+  };
+
   return (
-    <Table
-      {...rest}
-      columns={state.columns}
-      filters={state.pillTabsProps}
-      itemName={itemName}
-      items={state.currentItems}
-      keyField={keyField}
-      pagination={paginationOptions}
-      search={searchProps}
-      selectable={selectableOptions}
-      sortable={sortableOptions}
-      stickyHeader={stickyHeader}
-      onRowDrop={onRowDrop ? onDragEnd : undefined}
-    />
+    <>
+      {renderSearch()}
+      <Table
+        {...rest}
+        columns={state.columns}
+        filters={state.pillTabsProps}
+        itemName={itemName}
+        items={state.currentItems}
+        keyField={keyField}
+        pagination={paginationOptions}
+        selectable={selectableOptions}
+        sortable={sortableOptions}
+        stickyHeader={stickyHeader}
+        onRowDrop={onRowDrop ? onDragEnd : undefined}
+      />
+    </>
   );
 };
 

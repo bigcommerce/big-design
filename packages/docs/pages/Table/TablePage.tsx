@@ -5,7 +5,6 @@ import { Code, CodePreview } from '../../components';
 import {
   TableColumnsPropTable,
   TablePropTable,
-  TableSearchPropTable,
   TableSelectablePropTable,
   TableSortablePropTable,
 } from '../../PropTables';
@@ -77,7 +76,6 @@ const TablePage = () => {
       <TableColumnsPropTable id="table-columns-prop-table" />
       <TableSelectablePropTable id="table-selectable-prop-table" />
       <TableSortablePropTable id="table-sortable-prop-table" />
-      <TableSearchPropTable id="table-search-prop-table" />
 
       <H1>Examples</H1>
       <H2>Usage with selectable</H2>
@@ -313,44 +311,6 @@ const TablePage = () => {
               ]}
               items={items}
               filters={pillTabs}
-            />
-          );
-        }}
-        {/* jsx-to-string:end */}
-      </CodePreview>
-
-      <H2>Usage with search</H2>
-
-      <CodePreview scope={{ data }}>
-        {/* jsx-to-string:start */}
-        {function Example() {
-          const [items, setItems] = useState(data);
-          const [searchValue, setSearchValue] = useState('');
-          const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value);
-
-          const onSubmit = () => {
-            setItems((prevItems) => {
-              if (searchValue) {
-                return prevItems.filter((item) => item.name.includes(searchValue));
-              }
-
-              return data;
-            });
-          };
-
-          return (
-            <Table
-              columns={[
-                { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
-                { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
-                { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
-              ]}
-              items={items}
-              search={{
-                value: searchValue,
-                onChange,
-                onSubmit,
-              }}
             />
           );
         }}

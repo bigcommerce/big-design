@@ -110,6 +110,9 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Radio/RadioPage" as="/radio">
             Radio
           </SideNavLink>
+          <SideNavLink href="/Search/SearchPage" as="/search">
+            Search
+          </SideNavLink>
           <SideNavLink href="/Select/SelectPage" as="/select">
             Select
           </SideNavLink>
