@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.30.0-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.0-alpha.0...@bigcommerce/big-design@0.30.0-alpha.1) (2021-07-06)
+
+
+### Bug Fixes
+
+* **component:** handle required attribute in MultiSelects ([#555](https://github.com/bigcommerce/big-design/issues/555)) ([e3b4e5f](https://github.com/bigcommerce/big-design/commit/e3b4e5f89820cef96fcb256054bce85b99c450dc))
+
+
+### Features
+
+* **component:** implement keyboard navigation for Worksheet ([#544](https://github.com/bigcommerce/big-design/issues/544)) ([1e662d9](https://github.com/bigcommerce/big-design/commit/1e662d9a5b1bc3a7f0040b3690a7f21b9c7b78d6))
+* **component:** pass id to Tooltip wrapper ([#554](https://github.com/bigcommerce/big-design/issues/554)) ([a2fb9b2](https://github.com/bigcommerce/big-design/commit/a2fb9b2ed5f2135a70b86c34e15c64a4bb695b3a))
+
+
+
+
+
 # [0.30.0-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.29.2...@bigcommerce/big-design@0.30.0-alpha.0) (2021-06-10)
 
 
