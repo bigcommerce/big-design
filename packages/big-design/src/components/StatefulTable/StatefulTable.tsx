@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
-import { PillTabItem, PillTabsProps } from '../PillTabs';
+import { PillTabItem, PillTabs, PillTabsProps } from '../PillTabs';
 import { Search } from '../Search';
 import { Table, TableColumn, TableItem, TableProps, TableSelectable, TableSortDirection } from '../Table';
 
@@ -161,6 +161,18 @@ const InternalStatefulTable = <T extends TableItem>({
     [search, state.searchValue, filters],
   );
 
+  const renderPills = () => {
+    if (!filters || !state.pillTabsProps) {
+      return null;
+    }
+
+    return (
+      <Box marginBottom="medium">
+        <PillTabs {...state.pillTabsProps} />
+      </Box>
+    );
+  };
+
   const renderSearch = () => {
     if (!search || !searchProps) {
       return;
@@ -175,11 +187,11 @@ const InternalStatefulTable = <T extends TableItem>({
 
   return (
     <>
+      {renderPills()}
       {renderSearch()}
       <Table
         {...rest}
         columns={state.columns}
-        filters={state.pillTabsProps}
         itemName={itemName}
         items={state.currentItems}
         keyField={keyField}
