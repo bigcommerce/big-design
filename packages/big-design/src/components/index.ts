@@ -27,6 +27,7 @@ export * from './Popover';
 export * from './ProgressBar';
 export * from './ProgressCircle';
 export * from './Radio';
+export * from './Search';
 export * from './Select';
 export * from './StatefulTable';
 export * from './StatefulTree';

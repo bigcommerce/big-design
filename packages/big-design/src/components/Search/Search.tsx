@@ -1,13 +1,14 @@
 import { SearchIcon } from '@bigcommerce/big-design-icons';
 import React, { FormEvent } from 'react';
 
-import { Button } from '../../Button';
-import { Flex, FlexItem } from '../../Flex';
-import { Form } from '../../Form';
-import { Input } from '../../Input';
-import { TableSearch } from '../types';
+import { Button } from '../Button';
+import { Flex, FlexItem } from '../Flex';
+import { Form } from '../Form';
+import { Input } from '../Input';
 
-export const Search: React.FC<TableSearch> = ({ value, onChange, onSubmit }) => {
+import { SearchProps } from './types';
+
+export const Search: React.FC<SearchProps> = ({ value, onChange, onSubmit }) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
@@ -22,6 +23,7 @@ export const Search: React.FC<TableSearch> = ({ value, onChange, onSubmit }) => 
       <Flex alignItems="center" backgroundColor="white" flexDirection="row" paddingBottom="xxSmall">
         <FlexItem flexGrow={1} marginRight="small">
           <Input
+            aria-label="Search"
             placeholder="Search"
             type="search"
             value={value}
