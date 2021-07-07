@@ -36,7 +36,7 @@ const ButtonGroupPage = () => (
     <H1>Examples</H1>
     <H2>Action type destructive</H2>
     <Text>
-      By default action with <Code>actionsType: 'destructive'</Code> hides under ellipsis.
+      By default action with <Code>actionsType: 'destructive'</Code> hides under the ellipsis.
     </Text>
 
     <CodePreview>
@@ -48,7 +48,7 @@ const ButtonGroupPage = () => (
     </CodePreview>
 
     <H2>Icon property</H2>
-    <Text>Icon is available only for actions which is hidden under ellipsis.</Text>
+    <Text>Icon is available only for actions which is hidden under the ellipsis.</Text>
     <CodePreview>
       {/* jsx-to-string:start */}
       <Box style={{ width: 400 }}>
