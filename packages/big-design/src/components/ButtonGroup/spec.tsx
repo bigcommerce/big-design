@@ -10,15 +10,15 @@ beforeAll(() => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get() {
-        if (this.dataset.testid === 'button-group-dropdown') {
+        if (this.dataset.testid === 'buttongroup-dropdown') {
           return 50;
         }
 
-        if (this.dataset.testid === 'button-group-item') {
+        if (this.dataset.testid === 'buttongroup-item') {
           return 100;
         }
 
-        if (this.dataset.testid === 'button-group-wrapper') {
+        if (this.dataset.testid === 'buttongroup-wrapper') {
           return 400;
         }
 

@@ -18,12 +18,12 @@ export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement>, Margin
   actions: ButtonGroupAction[];
 }
 
-const excludeIconProps = <T extends any>({
+const excludeIconProps = ({
   iconOnly,
   iconRight,
   iconLeft,
   ...actionProps
-}: T): Pick<T, Exclude<keyof T, 'iconOnly' | 'iconRight' | 'iconLeft'>> => actionProps;
+}: ButtonProps & Pick<ButtonGroupAction, 'text'>): ButtonGroupAction => actionProps;
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapperProps }) => {
   const parentRef = createRef<HTMLDivElement>();
@@ -33,7 +33,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
     actions.map((action) => ({ isVisible: true, action: excludeIconProps(action), ref: createRef<HTMLDivElement>() })),
   );
 
-  const changeActionsVisibility = useCallback(() => {
+  const hideOverflowedActions = useCallback(() => {
     const parentWidth = parentRef.current?.offsetWidth;
     const dropdownWidth = dropdownRef.current?.offsetWidth;
 
@@ -73,7 +73,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
 
   const renderedDropdown = useMemo(
     () => (
-      <StyledFlexItem data-testid="button-group-dropdown" isVisible={isMenuVisible} ref={dropdownRef} role="listitem">
+      <StyledFlexItem data-testid="buttongroup-dropdown" isVisible={isMenuVisible} ref={dropdownRef} role="listitem">
         <Dropdown
           items={actionsState
             .filter(({ isVisible }) => !isVisible)
@@ -96,6 +96,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
               variant="secondary"
             />
           }
+          placement="bottom-end"
         />
       </StyledFlexItem>
     ),
@@ -111,7 +112,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
           const { text, icon, ...buttonProps } = action;
 
           return (
-            <StyledFlexItem data-testid="button-group-item" key={key} isVisible={isVisible} ref={ref} role="listitem">
+            <StyledFlexItem data-testid="buttongroup-item" key={key} isVisible={isVisible} ref={ref} role="listitem">
               <StyledButton {...buttonProps} variant="secondary">
                 {text}
               </StyledButton>
@@ -130,17 +131,17 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
   }, [actionsState, isMenuVisible]);
 
   useEffect(() => {
-    changeActionsVisibility();
-  }, [actions, parentRef, changeActionsVisibility]);
+    hideOverflowedActions();
+  }, [actions, parentRef, hideOverflowedActions]);
 
   useWindowResizeListener(() => {
-    changeActionsVisibility();
+    hideOverflowedActions();
   });
 
   return actions.length > 0 ? (
     <Flex
       {...wrapperProps}
-      data-testid="button-group-wrapper"
+      data-testid="buttongroup-wrapper"
       flexDirection="row"
       flexWrap="nowrap"
       ref={parentRef}
