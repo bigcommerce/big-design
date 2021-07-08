@@ -1,4 +1,4 @@
-import { H0, H1, H2, PillTabsProps, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
+import { H0, H1, H2, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
 import { Code, CodePreview } from '../../components';
@@ -274,43 +274,6 @@ const TablePage = () => {
               ]}
               items={items}
               onRowDrop={onDragEnd}
-            />
-          );
-        }}
-        {/* jsx-to-string:end */}
-      </CodePreview>
-
-      <H2>Usage with filters</H2>
-
-      <CodePreview scope={{ data }}>
-        {/* jsx-to-string:start */}
-        {function Example() {
-          const [items, setItems] = useState(data);
-          const [activePills, setActivePills] = useState<string[]>([]);
-          const pillTabs: PillTabsProps = {
-            activePills,
-            onPillClick: (id) => {
-              const isFilterActive = !activePills.includes(id);
-              const newItems = isFilterActive ? items.filter((item) => item.stock < 10) : data;
-              const updatedPills = isFilterActive
-                ? [...activePills, id]
-                : activePills.filter((activePillId) => activePillId !== id);
-
-              setItems(newItems);
-              setActivePills(updatedPills);
-            },
-            items: [{ title: 'Low Stock', id: 'low_stock' }],
-          };
-
-          return (
-            <Table
-              columns={[
-                { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
-                { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
-                { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
-              ]}
-              items={items}
-              filters={pillTabs}
             />
           );
         }}
