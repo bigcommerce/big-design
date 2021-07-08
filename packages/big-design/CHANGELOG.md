@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.30.0-alpha.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.0-alpha.1...@bigcommerce/big-design@0.30.0-alpha.2) (2021-07-08)
+
+
+### Features
+
+* **component:** add ButtonGroup component ([#556](https://github.com/bigcommerce/big-design/issues/556)) ([2350481](https://github.com/bigcommerce/big-design/commit/2350481ef113f317b5cd9db74a8337e63866bfcb))
+* **component:** move Search into its own exposed component ([#557](https://github.com/bigcommerce/big-design/issues/557)) ([6a5cdf5](https://github.com/bigcommerce/big-design/commit/6a5cdf5645a56a141530358b409c65cfaa15cb8d))
+
+
+
+
+
 # [0.30.0-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.0-alpha.0...@bigcommerce/big-design@0.30.0-alpha.1) (2021-07-06)
 
 
