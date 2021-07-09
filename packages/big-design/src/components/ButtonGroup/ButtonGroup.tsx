@@ -18,6 +18,12 @@ export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement>, Margin
   actions: ButtonGroupAction[];
 }
 
+interface ActionsState {
+  isVisible: boolean;
+  action: ButtonGroupAction;
+  ref: React.RefObject<HTMLDivElement>;
+}
+
 const excludeIconProps = ({
   iconOnly,
   iconRight,
@@ -29,9 +35,17 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
   const parentRef = createRef<HTMLDivElement>();
   const dropdownRef = createRef<HTMLDivElement>();
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [actionsState, setActionsState] = useState(
-    actions.map((action) => ({ isVisible: true, action: excludeIconProps(action), ref: createRef<HTMLDivElement>() })),
-  );
+  const [actionsState, setActionsState] = useState<ActionsState[]>([]);
+
+  useEffect(() => {
+    setActionsState(
+      actions.map((action) => ({
+        isVisible: true,
+        action: excludeIconProps(action),
+        ref: createRef<HTMLDivElement>(),
+      })),
+    );
+  }, [actions]);
 
   const hideOverflowedActions = useCallback(() => {
     const parentWidth = parentRef.current?.offsetWidth;
