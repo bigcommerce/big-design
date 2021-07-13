@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.30.0-alpha.3](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.0-alpha.2...@bigcommerce/big-design@0.30.0-alpha.3) (2021-07-13)
+
+
+### Bug Fixes
+
+* **component:** fix button group state ([#559](https://github.com/bigcommerce/big-design/issues/559)) ([dc1bddc](https://github.com/bigcommerce/big-design/commit/dc1bddc150263f77dd1a10e13f71117198ae4061))
+
+
+
+
+
 # [0.30.0-alpha.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.0-alpha.1...@bigcommerce/big-design@0.30.0-alpha.2) (2021-07-08)
 
 
