@@ -1,7 +1,10 @@
 import create, { State } from 'zustand';
+import createContext from 'zustand/context';
 
 import { Cell, WorksheetColumn } from '../../types';
 import { deleteCells, mergeCells } from '../../utils';
+
+export const { Provider, useStore } = createContext<BaseState<any>>();
 
 interface BaseState<Item> extends State {
   columns: WorksheetColumn<Item>[];
@@ -25,24 +28,25 @@ interface BaseState<Item> extends State {
   setTableRef: (ref: HTMLTableElement | null) => void;
 }
 
-export const useStore = create<BaseState<any>>((set) => ({
-  columns: [],
-  editedCells: [],
-  editingCell: null,
-  invalidCells: [],
-  openedModal: null,
-  rows: [],
-  selectedCells: [],
-  selectedRows: [],
-  tableRef: null,
-  addEditedCells: (cells) => set((state) => ({ ...state, editedCells: mergeCells(state.editedCells, cells) })),
-  addInvalidCells: (cells) => set((state) => ({ ...state, invalidCells: mergeCells(state.invalidCells, cells) })),
-  removeInvalidCells: (cells) => set((state) => ({ ...state, invalidCells: deleteCells(state.invalidCells, cells) })),
-  setColumns: (columns) => set((state) => ({ ...state, columns })),
-  setEditingCell: (cell) => set((state) => ({ ...state, editingCell: cell })),
-  setOpenModal: (value) => set((state) => ({ ...state, openedModal: value })),
-  setRows: (rows) => set((state) => ({ ...state, rows })),
-  setSelectedCells: (cells) => set((state) => ({ ...state, selectedCells: cells })),
-  setSelectedRows: (rowIndexes) => set((state) => ({ ...state, selectedRows: rowIndexes })),
-  setTableRef: (ref) => set((state) => ({ ...state, tableRef: ref })),
-}));
+export const createStore = () =>
+  create<BaseState<any>>((set) => ({
+    columns: [],
+    editedCells: [],
+    editingCell: null,
+    invalidCells: [],
+    openedModal: null,
+    rows: [],
+    selectedCells: [],
+    selectedRows: [],
+    tableRef: null,
+    addEditedCells: (cells) => set((state) => ({ ...state, editedCells: mergeCells(state.editedCells, cells) })),
+    addInvalidCells: (cells) => set((state) => ({ ...state, invalidCells: mergeCells(state.invalidCells, cells) })),
+    removeInvalidCells: (cells) => set((state) => ({ ...state, invalidCells: deleteCells(state.invalidCells, cells) })),
+    setColumns: (columns) => set((state) => ({ ...state, columns })),
+    setEditingCell: (cell) => set((state) => ({ ...state, editingCell: cell })),
+    setOpenModal: (value) => set((state) => ({ ...state, openedModal: value })),
+    setRows: (rows) => set((state) => ({ ...state, rows })),
+    setSelectedCells: (cells) => set((state) => ({ ...state, selectedCells: cells })),
+    setSelectedRows: (rowIndexes) => set((state) => ({ ...state, selectedRows: rowIndexes })),
+    setTableRef: (ref) => set((state) => ({ ...state, tableRef: ref })),
+  }));

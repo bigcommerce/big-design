@@ -30,8 +30,6 @@ export const useKeyEvents = () => {
           case 'Tab':
             navigate({ rowIndex: 0, columnIndex: event.shiftKey ? -1 : 1 });
             break;
-          default:
-            return;
         }
       } else {
         switch (key) {

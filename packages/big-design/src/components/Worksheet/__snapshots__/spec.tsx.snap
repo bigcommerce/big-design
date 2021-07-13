@@ -3,6 +3,7 @@
 exports[`renders worksheet 1`] = `
 <table
   class="styled__Table-sc-16rzzpq-0 eWZhUt"
+  data-testid="worksheet"
   tabindex="0"
 >
   <thead>

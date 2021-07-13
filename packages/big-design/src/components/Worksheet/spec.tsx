@@ -4,7 +4,6 @@ import React from 'react';
 
 import { StatefulTree } from '../StatefulTree';
 
-import { useStore } from './hooks';
 import { WorksheetColumn } from './types';
 import { Worksheet } from './Worksheet';
 
@@ -180,12 +179,9 @@ const items: Product[] = [
 let handleChange = jest.fn();
 let handleErrors = jest.fn();
 
-const initialStoreState = useStore.getState();
-
 beforeEach(() => {
   handleChange = jest.fn();
   handleErrors = jest.fn();
-  useStore.setState(initialStoreState, true);
 });
 
 test('renders worksheet', async () => {
@@ -283,6 +279,34 @@ describe('edition', () => {
         numberField: 50,
       },
     ]);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('regains focus when it stops editing', async () => {
+    const { getByText, getByDisplayValue, getByTestId } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const table = getByTestId('worksheet');
+
+    fireEvent.doubleClick(getByText('Shoes Name Three'));
+
+    fireEvent.keyDown(getByDisplayValue('Shoes Name Three'), { key: 'Tab' });
+
+    expect(table).toHaveFocus();
+
+    fireEvent.doubleClick(getByText('Shoes Name Three'));
+
+    fireEvent.keyDown(getByDisplayValue('Shoes Name Three'), { key: 'Tab', shiftKey: true });
+
+    expect(table).toHaveFocus();
+
+    fireEvent.doubleClick(getByText('Shoes Name Three'));
+
+    fireEvent.keyDown(getByDisplayValue('Shoes Name Three'), { key: 'Escape' });
+
+    expect(table).toHaveFocus();
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
@@ -466,11 +490,15 @@ describe('formatting', () => {
 
 describe('keyboard navigation', () => {
   test('navigates with arrow keys', async () => {
-    const { getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+    const { getAllByText, getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     let cell = getByText('Shoes Name Three');
 
     fireEvent.click(cell);
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowLeft' });
 
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
@@ -479,6 +507,19 @@ describe('keyboard navigation', () => {
     cell = getByText('Shoes Name Two');
 
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowUp' });
+
+    cell = getByText('Shoes Name Three');
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowRight' });
+    fireEvent.keyDown(cell, { key: 'ArrowRight' });
+
+    const cells = getAllByText('Text');
+
+    expect(cells[0].parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
@@ -503,6 +544,93 @@ describe('keyboard navigation', () => {
     fireEvent.keyDown(cell, { key: 'Tab', shiftKey: true });
 
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('enter starts editing the cell', async () => {
+    const { getByDisplayValue, getByText, getByTestId } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const worksheet = getByTestId('worksheet');
+
+    const cell = getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+    fireEvent.keyDown(worksheet, { key: 'Enter' });
+
+    expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('space starts editing the cell', async () => {
+    const { getByDisplayValue, getByTestId, getByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const worksheet = getByTestId('worksheet');
+
+    const cell = getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+    fireEvent.keyDown(worksheet, { key: ' ' });
+
+    expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('enter/space on checkbox navigates down and toggles value', async () => {
+    const { getAllByLabelText, getByTestId } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const worksheet = getByTestId('worksheet');
+    const cells = getAllByLabelText('Checked');
+
+    fireEvent.click(cells[0]);
+    fireEvent.keyDown(worksheet, { key: 'Enter' });
+
+    expect(handleChange).toHaveBeenCalledTimes(2);
+    expect(handleChange).toHaveBeenLastCalledWith([
+      {
+        id: 1,
+        productName: 'Shoes Name Three',
+        visibleOnStorefront: true,
+        otherField: 'Text',
+        otherField2: 'plastic',
+        otherField3: 1,
+        numberField: 50,
+      },
+    ]);
+
+    expect(cells[1].parentElement?.parentElement?.parentElement).toHaveStyle(`border-color: ${theme.colors.primary};`);
+
+    fireEvent.keyDown(worksheet, { key: ' ' });
+
+    expect(handleChange).toHaveBeenCalledTimes(3);
+    expect(handleChange).toHaveBeenLastCalledWith([
+      {
+        id: 1,
+        productName: 'Shoes Name Three',
+        visibleOnStorefront: true,
+        otherField: 'Text',
+        otherField2: 'plastic',
+        otherField3: 1,
+        numberField: 50,
+      },
+      {
+        id: 2,
+        productName: 'Shoes Name Two',
+        visibleOnStorefront: false,
+        otherField: 'Text',
+        otherField2: 'plastic',
+        otherField3: 2,
+        numberField: 50,
+      },
+    ]);
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
