@@ -1,7 +1,7 @@
-import { Link, Text } from '@bigcommerce/big-design';
+import { Link } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, Prop, PropTable, PropTableWrapper } from '../components';
+import { Prop, PropTable, PropTableWrapper } from '../components';
 
 const datepickerProps: Prop[] = [
   {
@@ -55,9 +55,5 @@ const datepickerProps: Prop[] = [
 ];
 
 export const DatepickerPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Datepicker" propList={datepickerProps} {...props}>
-    <Text>
-      Supports all native <Code>&lt;input [type="date"] /&gt;</Code> element attributes.
-    </Text>
-  </PropTable>
+  <PropTable title="Datepicker" propList={datepickerProps} nativeElement={['input[type="date"]', 'all']} {...props} />
 );

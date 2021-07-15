@@ -95,11 +95,7 @@ const CheckboxPage = () => {
       title: 'Props',
       render: () => (
         <>
-          <CheckboxPropTable>
-            <Text>
-              Supports all native <Code>&lt;input /&gt;</Code> element attributes.
-            </Text>
-          </CheckboxPropTable>
+          <CheckboxPropTable />
           <CheckboxDescriptionPropTable />
           <CheckboxDescriptionLinkPropTable />
         </>

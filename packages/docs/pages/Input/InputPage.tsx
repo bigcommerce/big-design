@@ -84,13 +84,7 @@ const InputPage = () => {
     {
       id: 'props',
       title: 'Props',
-      render: () => (
-        <InputPropTable>
-          <Text>
-            Supports all native <Code>&lt;input /&gt;</Code> element attributes.
-          </Text>
-        </InputPropTable>
-      ),
+      render: () => <InputPropTable />,
     },
   ];
 

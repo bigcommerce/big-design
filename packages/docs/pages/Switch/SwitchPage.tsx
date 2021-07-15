@@ -1,7 +1,7 @@
 import { H1, Panel, Switch, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
-import { CodePreview, PageNavigation } from '../../components';
+import { Code, CodePreview, PageNavigation } from '../../components';
 import { SwitchPropTable } from '../../PropTables';
 
 const SwitchPage = () => {
@@ -14,6 +14,9 @@ const SwitchPage = () => {
           <Text>
             Switches are intended for toggling actions that have an immediate effect and don't require saving. Therefore
             it is not appropriate to use a Switch in a form.
+          </Text>
+          <Text>
+            Switches are a stylized <Code>input[type="checkbox"]</Code> with controllable checked/unchecked states.
           </Text>
           <CodePreview>
             {/* jsx-to-string:start */}

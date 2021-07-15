@@ -203,3 +203,7 @@ export const TableSelectablePropTable: React.FC<PropTableWrapper> = (props) => (
 export const TableSortablePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Table[Sortable]" propList={tableSortableProps} {...props} />
 );
+
+export const TableFigurePropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable title="TableFigure" propList={[]} nativeElement={['figure', 'all']} {...props} />
+);

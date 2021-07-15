@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Code, CodePreview, PageNavigation } from '../../components';
 import {
   TableColumnsPropTable,
+  TableFigurePropTable,
   TablePropTable,
   TableSelectablePropTable,
   TableSortablePropTable,
@@ -214,9 +215,6 @@ const TablePage = () => {
               </>
               {/* jsx-to-string:end */}
             </CodePreview>
-            <Text>
-              TableFigure supports all native <Code>&lt;figure /&gt;</Code> element attributes.
-            </Text>
           </Panel>
           <Panel header="Customization example">
             <CodePreview>
@@ -357,6 +355,7 @@ const TablePage = () => {
           <TableColumnsPropTable id="table-columns-prop-table" />
           <TableSelectablePropTable id="table-selectable-prop-table" />
           <TableSortablePropTable id="table-sortable-prop-table" />
+          <TableFigurePropTable />
         </>
       ),
     },

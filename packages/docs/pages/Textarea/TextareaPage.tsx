@@ -100,13 +100,7 @@ const TextAreaPage = () => {
     {
       id: 'props',
       title: 'Props',
-      render: () => (
-        <TextareaPropTable>
-          <Text>
-            Supports all native <Code>&lt;textarea /&gt;</Code> element attributes.
-          </Text>
-        </TextareaPropTable>
-      ),
+      render: () => <TextareaPropTable />,
     },
   ];
 

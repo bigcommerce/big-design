@@ -133,11 +133,7 @@ const RadioPage = () => {
       title: 'Props',
       render: () => (
         <>
-          <RadioPropTable>
-            <Text>
-              Supports all native <Code>&lt;input /&gt;</Code> element attributes.
-            </Text>
-          </RadioPropTable>
+          <RadioPropTable />
           <RadioDescriptionPropTable />
           <RadioDescriptionLinkPropTable />
         </>
