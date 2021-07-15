@@ -68,6 +68,7 @@ module.exports = {
     '/timepicker': { page: '/Timepicker/TimepickerPage' },
     '/tooltip': { page: '/Tooltip/TooltipPage' },
     '/typography': { page: '/Typography/TypographyPage' },
+    '/worksheet': { page: '/Worksheet/WorksheetPage' },
 
     // Dev route for development purposes
     ...(isDev && { '/dev': { page: '/Dev/DevPage', query: { noNav: '' } } }),

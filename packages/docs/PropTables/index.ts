@@ -39,3 +39,4 @@ export * from './TextareaPropTable';
 export * from './TimepickerPropTable';
 export * from './TooltipPropTable';
 export * from './TypographyPropTable';
+export * from './WorksheetPropTable';
