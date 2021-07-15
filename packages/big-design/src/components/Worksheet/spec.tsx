@@ -284,11 +284,11 @@ describe('edition', () => {
   });
 
   test('regains focus when it stops editing', async () => {
-    const { getByText, getByDisplayValue, getByTestId } = render(
+    const { getByText, getByDisplayValue, getByRole } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
-    const table = getByTestId('worksheet');
+    const table = getByRole('table');
 
     fireEvent.doubleClick(getByText('Shoes Name Three'));
 
@@ -549,11 +549,11 @@ describe('keyboard navigation', () => {
   });
 
   test('enter starts editing the cell', async () => {
-    const { getByDisplayValue, getByText, getByTestId } = render(
+    const { getByDisplayValue, getByText, getByRole } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
-    const worksheet = getByTestId('worksheet');
+    const worksheet = getByRole('table');
 
     const cell = getByText('Shoes Name Three');
 
@@ -566,11 +566,11 @@ describe('keyboard navigation', () => {
   });
 
   test('space starts editing the cell', async () => {
-    const { getByDisplayValue, getByTestId, getByText } = render(
+    const { getByDisplayValue, getByText, getByRole } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
-    const worksheet = getByTestId('worksheet');
+    const worksheet = getByRole('table');
 
     const cell = getByText('Shoes Name Three');
 
@@ -583,11 +583,11 @@ describe('keyboard navigation', () => {
   });
 
   test('enter/space on checkbox navigates down and toggles value', async () => {
-    const { getAllByLabelText, getByTestId } = render(
+    const { getAllByLabelText, getByRole } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
-    const worksheet = getByTestId('worksheet');
+    const worksheet = getByRole('table');
     const cells = getAllByLabelText('Checked');
 
     fireEvent.click(cells[0]);
