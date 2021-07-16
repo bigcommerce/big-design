@@ -8,7 +8,8 @@ const worksheetProps: Prop[] = [
     types: ['TextColumn', 'NumberColumn', 'CheckboxColumn', 'SelectableColumn', 'ModalColumn'],
     description: (
       <>
-        See <NextLink href="#worksheet-text-column-prop-table">below</NextLink> for usage.
+        Columns will be of type <NextLink href="#worksheet-text-column-prop-table">TextColumn</NextLink> by default. See{' '}
+        <NextLink href="#worksheet-text-column-prop-table">below</NextLink> for usage.
       </>
     ),
     required: true,
@@ -41,19 +42,20 @@ const worksheetTextColumnProps: Prop[] = [
     name: 'hash',
     types: 'string',
     required: true,
-    description: 'Unique identifier for column.',
+    description:
+      'Unique identifier for the column value of each row. Used internally to identify and manage state values.',
   },
   {
     name: 'header',
     types: 'string',
     required: true,
-    description: 'Header title.',
+    description: 'Header for the column.',
   },
   {
     name: 'type',
-    types: ['text'],
+    types: 'text',
     defaultValue: 'text',
-    description: 'Sets the cell type of the column. By default all cells are of type text',
+    description: 'Sets the cell type of the column.',
   },
   {
     name: 'formatting',
@@ -78,11 +80,11 @@ const worksheetNumberColumnProps: Prop[] = [
     name: 'header',
     types: 'string',
     required: true,
-    description: 'Header title.',
+    description: 'Header for the column.',
   },
   {
     name: 'type',
-    types: ['number'],
+    types: 'number',
     required: true,
     description: 'Sets the cell type of the column.',
   },
@@ -109,11 +111,11 @@ const worksheetCheckboxColumnProps: Prop[] = [
     name: 'header',
     types: 'string',
     required: true,
-    description: 'Header title.',
+    description: 'Header for the column.',
   },
   {
     name: 'type',
-    types: ['checkbox'],
+    types: 'checkbox',
     required: true,
     description: 'Sets the cell type of the column.',
   },
@@ -135,11 +137,11 @@ const worksheetSelectableColumnProps: Prop[] = [
     name: 'header',
     types: 'string',
     required: true,
-    description: 'Header title.',
+    description: 'Header for the column.',
   },
   {
     name: 'type',
-    types: ['select'],
+    types: 'select',
     required: true,
     description: 'Sets the cell type of the column.',
   },
@@ -170,11 +172,11 @@ const worksheetModalColumnProps: Prop[] = [
     name: 'header',
     types: 'string',
     required: true,
-    description: 'Header title.',
+    description: 'Header for the column.',
   },
   {
     name: 'type',
-    types: ['modal'],
+    types: 'modal',
     required: true,
     description: 'Sets the cell type of the column.',
   },
@@ -223,7 +225,7 @@ const worksheetModalConfigProps: Prop[] = [
   {
     name: 'header',
     types: 'string',
-    description: 'Header title.',
+    description: 'Header for the column.',
   },
   {
     name: 'saveActionText',
