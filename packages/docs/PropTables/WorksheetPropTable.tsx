@@ -74,7 +74,8 @@ const worksheetNumberColumnProps: Prop[] = [
     name: 'hash',
     types: 'string',
     required: true,
-    description: 'Unique identifier for column.',
+    description:
+      'Unique identifier for the column value of each row. Used internally to identify and manage state values.',
   },
   {
     name: 'header',
@@ -105,7 +106,8 @@ const worksheetCheckboxColumnProps: Prop[] = [
     name: 'hash',
     types: 'string',
     required: true,
-    description: 'Unique identifier for column.',
+    description:
+      'Unique identifier for the column value of each row. Used internally to identify and manage state values.',
   },
   {
     name: 'header',
@@ -131,7 +133,8 @@ const worksheetSelectableColumnProps: Prop[] = [
     name: 'hash',
     types: 'string',
     required: true,
-    description: 'Unique identifier for column.',
+    description:
+      'Unique identifier for the column value of each row. Used internally to identify and manage state values.',
   },
   {
     name: 'header',
@@ -166,7 +169,8 @@ const worksheetModalColumnProps: Prop[] = [
     name: 'hash',
     types: 'string',
     required: true,
-    description: 'Unique identifier for column.',
+    description:
+      'Unique identifier for the column value of each row. Used internally to identify and manage state values.',
   },
   {
     name: 'header',
