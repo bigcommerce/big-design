@@ -74,6 +74,9 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Tabs/TabsPage" as="/tabs">
             Tabs
           </SideNavLink>
+          <SideNavLink href="/Worksheet/WorksheetPage" as="/worksheet">
+            Worksheet
+          </SideNavLink>
         </SideNavGroup>
 
         <SideNavGroup title="Actions &amp; Inputs">
