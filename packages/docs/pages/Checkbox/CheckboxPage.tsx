@@ -12,6 +12,9 @@ const CheckboxPage = () => {
       render: () => (
         <>
           <Panel>
+            <Text>
+              Checkboxes are a stylized <Code>input[type="checkbox"]</Code> with controllable checked/unchecked states.
+            </Text>
             <CodePreview>
               {/* jsx-to-string:start */}
               {function Example() {
@@ -106,9 +109,6 @@ const CheckboxPage = () => {
   return (
     <>
       <H1>Checkbox</H1>
-      <Text>
-        Checkboxes are a stylized <Code>input[type="checkbox"]</Code> with controllable checked/unchecked states.
-      </Text>
 
       <PageNavigation items={items} />
     </>

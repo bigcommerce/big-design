@@ -18,36 +18,34 @@ const AlertPage = () => {
       id: 'examples',
       title: 'Examples',
       render: () => (
-        <>
-          <Panel>
-            <Text>
-              Alerts are non-disruptive messages that appear at the top right of the window and provide quick, at a
-              glance feedback on the outcome of an action.
-            </Text>
-            <CodePreview scope={{ alertsManager }}>
-              {/* jsx-to-string:start */}
-              {function Example() {
-                const alert = {
-                  header: 'Optional Headline',
-                  messages: [
-                    {
-                      text: 'Required description copy.',
-                      link: {
-                        text: 'Optional Link',
-                        href: '#',
-                      },
+        <Panel>
+          <Text>
+            Alerts are non-disruptive messages that appear at the top right of the window and provide quick, at a glance
+            feedback on the outcome of an action.
+          </Text>
+          <CodePreview scope={{ alertsManager }}>
+            {/* jsx-to-string:start */}
+            {function Example() {
+              const alert = {
+                header: 'Optional Headline',
+                messages: [
+                  {
+                    text: 'Required description copy.',
+                    link: {
+                      text: 'Optional Link',
+                      href: '#',
                     },
-                  ],
-                  type: 'success',
-                  onClose: () => null,
-                } as AlertProps;
+                  },
+                ],
+                type: 'success',
+                onClose: () => null,
+              } as AlertProps;
 
-                return <Button onClick={() => alertsManager.add(alert)}>Trigger Alert</Button>;
-              }}
-              {/* jsx-to-string:end */}
-            </CodePreview>
-          </Panel>
-        </>
+              return <Button onClick={() => alertsManager.add(alert)}>Trigger Alert</Button>;
+            }}
+            {/* jsx-to-string:end */}
+          </CodePreview>
+        </Panel>
       ),
     },
     {

@@ -1,4 +1,4 @@
-import { H1, Panel, PillTabsProps, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
+import { H1, Panel, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
 import { Code, CodePreview, PageNavigation } from '../../components';
@@ -59,7 +59,7 @@ const TablePage = () => {
               {/* jsx-to-string:start */}
               <Table
                 columns={[
-                  { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+                  { header: 'Sku', hash: 'sku', tooltip: 'Header tooltip', render: ({ sku }) => sku },
                   { header: 'Name', hash: 'name', render: ({ name }) => name },
                   { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
                 ]}
@@ -158,9 +158,9 @@ const TablePage = () => {
                   <Table
                     keyField="sku"
                     columns={[
-                      { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
-                      { header: 'Name', hash: 'name', render: ({ name }) => name },
-                      { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+                      { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
+                      { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
+                      { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
                     ]}
                     items={items}
                     itemName="Products"
@@ -186,33 +186,31 @@ const TablePage = () => {
 
             <CodePreview>
               {/* jsx-to-string:start */}
-              <>
-                <TableFigure>
-                  <Table
-                    columns={[
-                      { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
-                      { header: 'Name', hash: 'name', render: ({ name }) => name },
-                      { header: 'Description', hash: 'description', render: ({ description }) => description },
-                    ]}
-                    items={[
-                      {
-                        sku: 'SM13',
-                        name: '[Sample] Smith Journal 13',
-                        description:
-                          'Volume 13 of Smith Journal is crammed with more than its fair share of sharp minds. Top of the list would have to be Solomon Shereshevsky, who remembered every single thing he’d ever come across – a great skill to have when it came to party tricks, but enough to send him crackers. And then there’s Delbert Trew who spends more time than you can imagine thinking about something very sharp indeed: barbed wire. You can’t go past Samuel Morse, either, who was a famous portrait painter before he gave his name to the code he invented. What a genius! And we’re pretty taken with Noel Turner, who was smart enough to get around some pretty weird New Zealand laws to invent a car that, for a while, was a huge success. As well, you’ll find stories on a cross-dressing spy, a couple of Sydney nerds who revolutionised modern music, court illustration, big wheels, the dubious science of controlling the weather and a whole stack of other stuff.',
-                      },
-                      {
-                        sku: 'DPB',
-                        name: '	[Sample] Dustpan & Brush',
-                        description:
-                          'A seemingly simple dustpan with a few features to make life easier. The arch and length of the dustpan eases cleanup, the wood turned handle provides firm grip and the rubber liner along the edge of the scoop will retrieve small crumbs with a single swipe. A key ring at the top makes storage a cinch - hang it off a broom closet hook when not in use.',
-                      },
-                    ]}
-                    stickyHeader
-                  />
-                  <Small marginTop="xSmall">Helpful text to be grouped with the table</Small>
-                </TableFigure>
-              </>
+              <TableFigure>
+                <Table
+                  columns={[
+                    { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+                    { header: 'Name', hash: 'name', render: ({ name }) => name },
+                    { header: 'Description', hash: 'description', render: ({ description }) => description },
+                  ]}
+                  items={[
+                    {
+                      sku: 'SM13',
+                      name: '[Sample] Smith Journal 13',
+                      description:
+                        'Volume 13 of Smith Journal is crammed with more than its fair share of sharp minds. Top of the list would have to be Solomon Shereshevsky, who remembered every single thing he’d ever come across – a great skill to have when it came to party tricks, but enough to send him crackers. And then there’s Delbert Trew who spends more time than you can imagine thinking about something very sharp indeed: barbed wire. You can’t go past Samuel Morse, either, who was a famous portrait painter before he gave his name to the code he invented. What a genius! And we’re pretty taken with Noel Turner, who was smart enough to get around some pretty weird New Zealand laws to invent a car that, for a while, was a huge success. As well, you’ll find stories on a cross-dressing spy, a couple of Sydney nerds who revolutionised modern music, court illustration, big wheels, the dubious science of controlling the weather and a whole stack of other stuff.',
+                    },
+                    {
+                      sku: 'DPB',
+                      name: '	[Sample] Dustpan & Brush',
+                      description:
+                        'A seemingly simple dustpan with a few features to make life easier. The arch and length of the dustpan eases cleanup, the wood turned handle provides firm grip and the rubber liner along the edge of the scoop will retrieve small crumbs with a single swipe. A key ring at the top makes storage a cinch - hang it off a broom closet hook when not in use.',
+                    },
+                  ]}
+                  stickyHeader
+                />
+                <Small marginTop="xSmall">Helpful text to be grouped with the table</Small>
+              </TableFigure>
               {/* jsx-to-string:end */}
             </CodePreview>
           </Panel>
@@ -258,85 +256,12 @@ const TablePage = () => {
                 return (
                   <Table
                     columns={[
-                      { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
-                      { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
-                      { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
+                      { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+                      { header: 'Name', hash: 'name', render: ({ name }) => name },
+                      { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
                     ]}
                     items={items}
                     onRowDrop={onDragEnd}
-                  />
-                );
-              }}
-              {/* jsx-to-string:end */}
-            </CodePreview>
-          </Panel>
-          <Panel header="Filters">
-            <CodePreview scope={{ data }}>
-              {/* jsx-to-string:start */}
-              {function Example() {
-                const [items, setItems] = useState(data);
-                const [activePills, setActivePills] = useState<string[]>([]);
-                const pillTabs: PillTabsProps = {
-                  activePills,
-                  onPillClick: (id) => {
-                    const isFilterActive = !activePills.includes(id);
-                    const newItems = isFilterActive ? items.filter((item) => item.stock < 10) : data;
-                    const updatedPills = isFilterActive
-                      ? [...activePills, id]
-                      : activePills.filter((activePillId) => activePillId !== id);
-
-                    setItems(newItems);
-                    setActivePills(updatedPills);
-                  },
-                  items: [{ title: 'Low Stock', id: 'low_stock' }],
-                };
-
-                return (
-                  <Table
-                    columns={[
-                      { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
-                      { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
-                      { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
-                    ]}
-                    items={items}
-                    filters={pillTabs}
-                  />
-                );
-              }}
-              {/* jsx-to-string:end */}
-            </CodePreview>
-          </Panel>
-          <Panel header="Search">
-            <CodePreview scope={{ data }}>
-              {/* jsx-to-string:start */}
-              {function Example() {
-                const [items, setItems] = useState(data);
-                const [searchValue, setSearchValue] = useState('');
-                const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value);
-
-                const onSubmit = () => {
-                  setItems((prevItems) => {
-                    if (searchValue) {
-                      return prevItems.filter((item) => item.name.includes(searchValue));
-                    }
-
-                    return data;
-                  });
-                };
-
-                return (
-                  <Table
-                    columns={[
-                      { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
-                      { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
-                      { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
-                    ]}
-                    items={items}
-                    search={{
-                      value: searchValue,
-                      onChange,
-                      onSubmit,
-                    }}
                   />
                 );
               }}

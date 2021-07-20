@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { CodePreview, PageNavigation } from '../../components';
 import { CollapsePropTable } from '../../PropTables';
 
-export default () => {
+const CollapsePage = () => {
   const items = [
     {
       id: 'examples',
@@ -50,3 +50,5 @@ export default () => {
     </>
   );
 };
+
+export default CollapsePage;

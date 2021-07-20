@@ -33,6 +33,10 @@ const FormPage = () => {
       render: () => (
         <>
           <Panel>
+            <Text>
+              Form fields are essential to any website or web application. <Code>id</Code>'s' will be auto-generated for
+              input/textarea and labels <Code>for</Code> attribute, unless manually specifying one.
+            </Text>
             <CodePreview>
               {/* jsx-to-string:start */}
               <Form>
@@ -209,10 +213,6 @@ const FormPage = () => {
   return (
     <>
       <H1>Form</H1>
-      <Text>
-        Form fields are essential to any website or web application. <Code>id</Code>'s' will be auto-generated for
-        input/textarea and labels <Code>for</Code> attribute, unless manually specifying one.
-      </Text>
 
       <PageNavigation items={items} />
     </>
