@@ -145,8 +145,7 @@ const IconsPage = () => {
               type="warning"
               messages={[
                 {
-                  text:
-                    'Flags are a submodule of the Icons package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
+                  text: 'Flags are a submodule of the Icons package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
                 },
               ]}
               marginBottom="medium"

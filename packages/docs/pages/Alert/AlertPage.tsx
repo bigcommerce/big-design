@@ -58,8 +58,7 @@ const AlertPage = () => {
               type="warning"
               messages={[
                 {
-                  text:
-                    'Note: You should not use the Alert component directly. Instead, inject the AlertsManager component into your app and use the instance created by the createAlertsManager utility function to control which Alerts are displayed.',
+                  text: 'Note: You should not use the Alert component directly. Instead, inject the AlertsManager component into your app and use the instance created by the createAlertsManager utility function to control which Alerts are displayed.',
                 },
               ]}
               marginBottom="large"

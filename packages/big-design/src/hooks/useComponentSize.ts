@@ -31,7 +31,7 @@ export const useComponentSize = <T extends HTMLElement>(ref: RefObject<T>): Comp
     if (typeof MutationObserver === 'function') {
       const observer = new MutationObserver(handleResize);
 
-      observer.observe((ref.current as unknown) as Node, { childList: true });
+      observer.observe(ref.current as unknown as Node, { childList: true });
 
       return () => {
         observer.disconnect();

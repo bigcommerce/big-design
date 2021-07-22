@@ -20,12 +20,14 @@ interface RowProps<Item> {
 const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>) => {
   const row = useStore(useMemo(() => (state) => state.rows[rowIndex], [rowIndex]));
 
-  const hasFormatting = useCallback((column: WorksheetColumn<T>): column is
-    | WorksheetTextColumn<T>
-    | WorksheetNumberColumn<T>
-    | WorksheetModalColumn<T> => {
-    return column.type === 'text' || column.type === 'number' || column.type === 'modal';
-  }, []);
+  const hasFormatting = useCallback(
+    (
+      column: WorksheetColumn<T>,
+    ): column is WorksheetTextColumn<T> | WorksheetNumberColumn<T> | WorksheetModalColumn<T> => {
+      return column.type === 'text' || column.type === 'number' || column.type === 'modal';
+    },
+    [],
+  );
 
   return (
     <tr>

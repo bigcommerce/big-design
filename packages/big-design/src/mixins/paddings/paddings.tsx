@@ -29,16 +29,8 @@ export const withPaddings = () => css<PaddingProps>`
 `;
 
 export function excludePaddingProps<T extends any>(props: T): Pick<T, Exclude<keyof T, keyof PaddingProps>> {
-  const {
-    padding,
-    paddingTop,
-    paddingRight,
-    paddingBottom,
-    paddingLeft,
-    paddingVertical,
-    paddingHorizontal,
-    ...rest
-  } = props;
+  const { padding, paddingTop, paddingRight, paddingBottom, paddingLeft, paddingVertical, paddingHorizontal, ...rest } =
+    props;
 
   return rest;
 }
