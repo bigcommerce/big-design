@@ -238,13 +238,13 @@ export const DropdownPropTable: React.FC<PropTableWrapper> = (props) => (
 );
 
 export const DropdownItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="DropdownItem" propList={dropdownItemProps} {...props} />
+  <PropTable title="Dropdown[DropdownItem]" propList={dropdownItemProps} {...props} />
 );
 
 export const DropdownLinkItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="DropdownLinkItem" propList={dropdownLinkProps} {...props} />
+  <PropTable title="Dropdown[DropdownLinkItem]" propList={dropdownLinkProps} {...props} />
 );
 
 export const DropdownItemGroupPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="DropdownItemGroup" propList={dropdownItemGroupProps} {...props} />
+  <PropTable title="Dropdown[DropdownItemGroup]" propList={dropdownItemGroupProps} {...props} />
 );

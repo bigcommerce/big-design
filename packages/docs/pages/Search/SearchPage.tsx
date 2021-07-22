@@ -1,7 +1,7 @@
-import { Box, H0, H1, Search, Table } from '@bigcommerce/big-design';
+import { Box, H1, Panel, Search, Table } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
-import { CodePreview } from '../../components';
+import { CodePreview, PageNavigation } from '../../components';
 import { SearchPropTable } from '../../PropTables';
 
 const data = [
@@ -15,48 +15,64 @@ const data = [
 ];
 
 const SearchPage = () => {
+  const items = [
+    {
+      id: 'examples',
+      title: 'Examples',
+      render: () => (
+        <>
+          <Panel>
+            <CodePreview scope={{ data }}>
+              {/* jsx-to-string:start */}
+              {function Example() {
+                const [items, setItems] = useState(data);
+                const [searchValue, setSearchValue] = useState('');
+                const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value);
+
+                const onSubmit = () => {
+                  setItems((prevItems) => {
+                    if (searchValue) {
+                      return prevItems.filter((item) => item.name.includes(searchValue));
+                    }
+
+                    return data;
+                  });
+                };
+
+                return (
+                  <>
+                    <Box marginBottom="medium">
+                      <Search value={searchValue} onChange={onChange} onSubmit={onSubmit} />
+                    </Box>
+                    <Table
+                      columns={[
+                        { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+                        { header: 'Name', hash: 'name', render: ({ name }) => name },
+                        { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+                      ]}
+                      items={items}
+                    />
+                  </>
+                );
+              }}
+              {/* jsx-to-string:end */}
+            </CodePreview>
+          </Panel>
+        </>
+      ),
+    },
+    {
+      id: 'props',
+      title: 'Props',
+      render: () => <SearchPropTable />,
+    },
+  ];
+
   return (
     <>
-      <H0>Search</H0>
+      <H1>Search</H1>
 
-      <CodePreview scope={{ data }}>
-        {/* jsx-to-string:start */}
-        {function Example() {
-          const [items, setItems] = useState(data);
-          const [searchValue, setSearchValue] = useState('');
-          const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value);
-
-          const onSubmit = () => {
-            setItems((prevItems) => {
-              if (searchValue) {
-                return prevItems.filter((item) => item.name.includes(searchValue));
-              }
-
-              return data;
-            });
-          };
-
-          return (
-            <>
-              <Box marginBottom="medium">
-                <Search value={searchValue} onChange={onChange} onSubmit={onSubmit} />
-              </Box>
-              <Table
-                columns={[
-                  { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
-                  { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
-                  { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
-                ]}
-                items={items}
-              />
-            </>
-          );
-        }}
-        {/* jsx-to-string:end */}
-      </CodePreview>
-
-      <H1>API</H1>
-      <SearchPropTable />
+      <PageNavigation items={items} />
     </>
   );
 };

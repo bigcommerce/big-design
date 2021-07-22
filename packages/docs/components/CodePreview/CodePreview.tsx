@@ -73,7 +73,7 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
   }, [children, language, setCode]);
 
   return (
-    <BigDesign.Box border="box" marginBottom="xxLarge">
+    <BigDesign.Box border="box">
       <LiveProvider code={code} scope={scope} theme={editorTheme} language={language} transformCode={transformCode}>
         <BigDesign.Box padding="medium" backgroundColor="white" borderBottom="box">
           <LivePreview />

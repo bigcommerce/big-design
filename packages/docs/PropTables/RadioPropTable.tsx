@@ -49,7 +49,7 @@ const radioDescriptionProps: Prop[] = [
 ];
 
 export const RadioPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Radio" propList={radioProps} {...props} />
+  <PropTable title="Radio" propList={radioProps} nativeElement={['input', 'all']} {...props} />
 );
 
 export const RadioDescriptionPropTable: React.FC<PropTableWrapper> = (props) => (

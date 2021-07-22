@@ -7,7 +7,7 @@ import React from 'react';
 import { UIDFork, UIDReset } from 'react-uid';
 import { ThemeProvider } from 'styled-components';
 
-import { BetaRibbon, SideNav, StoryWrapper } from '../components';
+import { BetaRibbon, SideNav, StoryWrapper, TabWrapper } from '../components';
 import { pageView } from '../utils/analytics/gtm';
 
 Router.events.on('routeChangeComplete', (url) => pageView(url));
@@ -66,17 +66,20 @@ export default class MyApp extends App {
                       gridGap="0"
                       style={{ minHeight: '100%' }}
                     >
-                      <GridItem gridArea="nav">
+                      <GridItem gridArea="nav" paddingTop="medium">
                         <SideNav />
                       </GridItem>
                       <GridItem
                         gridArea="main"
                         marginVertical="medium"
-                        marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
+                        marginHorizontal={{ mobile: 'small', tablet: 'xxLarge' }}
+                        paddingTop="large"
                         style={{ maxWidth: '100%' }}
                       >
                         <StoryWrapper>
-                          <Component {...pageProps} />
+                          <TabWrapper>
+                            <Component {...pageProps} />
+                          </TabWrapper>
                         </StoryWrapper>
                       </GridItem>
                     </Grid>
