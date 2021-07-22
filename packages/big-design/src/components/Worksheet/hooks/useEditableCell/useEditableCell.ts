@@ -28,7 +28,9 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
   }, [focusTable, setEditingCell]);
 
   const handleDoubleClick = useCallback(() => {
-    setEditingCell(cell);
+    if (!cell.disabled) {
+      setEditingCell(cell);
+    }
   }, [cell, setEditingCell]);
 
   const handleBlur = useCallback(() => {

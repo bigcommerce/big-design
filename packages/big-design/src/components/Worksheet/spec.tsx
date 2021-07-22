@@ -92,6 +92,41 @@ const columns: WorksheetColumn<Product>[] = [
   },
 ];
 
+const disabledColumns: WorksheetColumn<Product>[] = [
+  { hash: 'productName', header: 'Product name', validation: (value: string) => !!value, disabled: true },
+  { hash: 'visibleOnStorefront', header: 'Visible on storefront', type: 'checkbox', disabled: true },
+  { hash: 'otherField', header: 'Other field', disabled: true },
+  {
+    hash: 'otherField2',
+    header: 'Other field',
+    type: 'select',
+    config: {
+      options: [
+        { value: 'plastic', content: 'Plastic' },
+        { value: 'leather', content: 'Leather' },
+        { value: 'cloth', content: 'Cloth' },
+      ],
+    },
+    validation: (value: string) => !!value,
+    disabled: true,
+  },
+  {
+    hash: 'otherField3',
+    header: 'Other field',
+    type: 'modal',
+    config: { header: 'Choose categories', render: TreeComponent },
+    disabled: true,
+  },
+  {
+    hash: 'numberField',
+    header: 'Number field',
+    type: 'number',
+    validation: (value: number) => value >= 50,
+    formatting: (value: number) => `$${value}.00`,
+    disabled: true,
+  },
+];
+
 const items: Product[] = [
   {
     id: 1,
@@ -728,6 +763,16 @@ describe('TextEditor', () => {
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
+
+  test('renders in disabled state', async () => {
+    render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
+
+    const cell = screen.getByText('Shoes Name One');
+
+    expect(cell).toHaveStyle('color: #8C93AD');
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
 });
 
 describe('SelectEditor', () => {
@@ -748,8 +793,6 @@ describe('SelectEditor', () => {
 
     const cells = getAllByDisplayValue('Plastic');
 
-    expect(cells[0]).toHaveStyle('background-color: inherit');
-
     fireEvent.click(cells[0]);
 
     const options = getAllByRole('option');
@@ -769,7 +812,15 @@ describe('SelectEditor', () => {
       },
     ]);
 
-    expect(cells[0]).toHaveStyle(`background-color: ${theme.colors.warning10};`);
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('renders in disabled state', async () => {
+    render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
+
+    const cell = screen.getAllByDisplayValue('Plastic');
+
+    expect(cell[0]).toHaveAttribute('disabled');
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
@@ -811,9 +862,15 @@ describe('CheckboxEditor', () => {
       },
     ]);
 
-    expect(cell.parentElement?.parentElement?.parentElement).toHaveStyle(
-      `background-color: ${theme.colors.warning10};`,
-    );
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('renders in disabled state', async () => {
+    render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
+
+    const cell = screen.getAllByLabelText('Checked');
+
+    expect(cell[0]).toHaveAttribute('disabled');
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
@@ -863,6 +920,93 @@ describe('ModalEditor', () => {
     const cell = buttons[3].parentNode?.parentNode?.parentNode;
 
     expect(cell).toHaveStyle(`background-color: ${theme.colors.warning10};`);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('renders in disabled state', async () => {
+    render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
+
+    const buttons = screen.queryAllByText('Edit');
+
+    expect(buttons).toStrictEqual([]);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+});
+
+describe('disable', () => {
+  test('navigation works on disabled cells', async () => {
+    render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
+
+    let cell = screen.getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowLeft' });
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowDown' });
+
+    cell = screen.getByText('Shoes Name Two');
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowUp' });
+
+    cell = screen.getByText('Shoes Name Three');
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowRight' });
+    fireEvent.keyDown(cell, { key: 'ArrowRight' });
+
+    const cells = screen.getAllByText('Text');
+
+    expect(cells[0].parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('enter does not start editing the cell', async () => {
+    render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
+
+    const worksheet = screen.getByRole('table');
+
+    const cell = screen.getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+    fireEvent.keyDown(worksheet, { key: 'Enter' });
+
+    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('space does not start editing the cell', async () => {
+    render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
+
+    const worksheet = screen.getByRole('table');
+
+    const cell = screen.getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+    fireEvent.keyDown(worksheet, { key: ' ' });
+
+    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+
+    await waitForElement(() => screen.getAllByRole('combobox'));
+  });
+
+  test('mouse will not trigger input field', async () => {
+    render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
+
+    fireEvent.doubleClick(screen.getByText('Shoes Name One'));
+
+    expect(screen.queryByDisplayValue('Shoes Name One')).toBeNull();
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });

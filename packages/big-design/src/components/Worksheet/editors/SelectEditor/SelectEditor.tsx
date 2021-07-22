@@ -52,6 +52,7 @@ const InternalSelectEditor = <T extends WorksheetItem>({
   return (
     <SelectWrapper isEdited={isEdited}>
       <Select
+        disabled={cell.disabled}
         filterable={false}
         inputRef={inputRef}
         onClose={handleClose}

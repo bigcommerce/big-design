@@ -22,6 +22,7 @@ interface CellProps<Item> extends TCell<Item> {
 
 const InternalCell = <T extends WorksheetItem>({
   columnIndex,
+  disabled = false,
   formatting,
   hash,
   options,
@@ -30,8 +31,9 @@ const InternalCell = <T extends WorksheetItem>({
   value,
   validation,
 }: CellProps<T>) => {
-  const cell: TCell<T> = useMemo(() => ({ columnIndex, hash, rowIndex, type, value }), [
+  const cell: TCell<T> = useMemo(() => ({ columnIndex, disabled, hash, rowIndex, type, value }), [
     columnIndex,
+    disabled,
     hash,
     rowIndex,
     type,
@@ -127,15 +129,27 @@ const InternalCell = <T extends WorksheetItem>({
       case 'modal':
         return <ModalEditor cell={cell} formatting={formatting} isEditing={isEditing} />;
       default:
-        return isEditing ? (
+        return isEditing && !disabled ? (
           <TextEditor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
         ) : (
-          <Small color="secondary70" ellipsis title={renderedValue}>
+          <Small color={disabled ? 'secondary50' : 'secondary70'} ellipsis title={renderedValue}>
             {renderedValue}
           </Small>
         );
     }
-  }, [cell, formatting, handleBlur, handleChange, handleKeyDown, isEdited, isEditing, options, renderedValue, type]);
+  }, [
+    cell,
+    disabled,
+    formatting,
+    handleBlur,
+    handleChange,
+    handleKeyDown,
+    isEdited,
+    isEditing,
+    options,
+    renderedValue,
+    type,
+  ]);
 
   return (
     <StyledCell

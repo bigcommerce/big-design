@@ -22,6 +22,7 @@ export type WorksheetColumn<Item> =
   | WorksheetModalColumn<Item>;
 
 interface WorksheetBaseColumn<Item> {
+  disabled?: boolean;
   hash: keyof Item;
   header: string;
   validation?(value: Item[keyof Item]): boolean;
@@ -68,6 +69,7 @@ export interface Cell<Item> {
   rowIndex: number;
   value: Item[keyof Item];
   type: Exclude<WorksheetColumn<Item>['type'], undefined>;
+  disabled?: boolean;
 }
 
 export interface WorksheetItem {

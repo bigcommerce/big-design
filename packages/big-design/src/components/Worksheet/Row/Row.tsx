@@ -33,6 +33,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
       {columns.map((column, columnIndex) => (
         <Cell
           columnIndex={columnIndex}
+          disabled={column.disabled}
           formatting={hasFormatting(column) ? column.formatting : undefined}
           hash={column.hash}
           key={`${rowIndex}-${columnIndex}`}

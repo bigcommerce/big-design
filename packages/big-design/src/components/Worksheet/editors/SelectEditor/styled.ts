@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const SelectWrapper = styled.div<{ isEdited: boolean }>`
   span {
@@ -10,17 +10,21 @@ export const SelectWrapper = styled.div<{ isEdited: boolean }>`
     &:hover:not([disabled]) {
       border: none;
     }
+
+    &[disabled] {
+      background-color: ${({ theme }) => theme.colors.white};
+    }
   }
 
   input {
     font-size: ${({ theme }) => theme.typography.fontSize.small};
     font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
 
-    ${({ isEdited }) =>
-      isEdited &&
-      css`
-        background-color: ${({ theme }) => theme.colors.warning10};
-      `}
+    &[disabled] {
+      background-color: ${({ theme }) => theme.colors.transparent};
+      color: ${({ theme }) => theme.colors.secondary50};
+      cursor: default;
+    }
   }
 
   [role='option'] {
