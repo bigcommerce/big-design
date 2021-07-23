@@ -65,11 +65,11 @@ export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
 
 export interface Cell<Item> {
   columnIndex: number;
+  disabled?: boolean;
   hash: keyof Item;
   rowIndex: number;
-  value: Item[keyof Item];
   type: Exclude<WorksheetColumn<Item>['type'], undefined>;
-  disabled?: boolean;
+  value: Item[keyof Item];
 }
 
 export interface WorksheetItem {
