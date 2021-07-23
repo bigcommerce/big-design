@@ -67,6 +67,11 @@ const worksheetTextColumnProps: Prop[] = [
     types: '(value: any) => boolean',
     description: 'Will set a cell as invalid if it returns false.',
   },
+  {
+    name: 'disable',
+    types: 'boolean',
+    description: 'Disables cell manipulation for the entire column.',
+  },
 ];
 
 const worksheetNumberColumnProps: Prop[] = [
@@ -99,6 +104,11 @@ const worksheetNumberColumnProps: Prop[] = [
     types: '(value: any) => boolean',
     description: 'Function to test the validity of the cell.',
   },
+  {
+    name: 'disable',
+    types: 'boolean',
+    description: 'Disables cell manipulation for the entire column.',
+  },
 ];
 
 const worksheetCheckboxColumnProps: Prop[] = [
@@ -125,6 +135,11 @@ const worksheetCheckboxColumnProps: Prop[] = [
     name: 'validation',
     types: '(value: any) => boolean',
     description: 'Function to test the validity of the cell.',
+  },
+  {
+    name: 'disable',
+    types: 'boolean',
+    description: 'Disables cell manipulation for the entire column.',
   },
 ];
 
@@ -161,6 +176,11 @@ const worksheetSelectableColumnProps: Prop[] = [
         See <NextLink href="#worksheet-selectable-config-prop-table">below</NextLink> for usage.
       </>
     ),
+  },
+  {
+    name: 'disable',
+    types: 'boolean',
+    description: 'Disables cell manipulation for the entire column.',
   },
 ];
 
@@ -202,6 +222,11 @@ const worksheetModalColumnProps: Prop[] = [
         See <NextLink href="#worksheet-modal-config-prop-table">below</NextLink> for usage.
       </>
     ),
+  },
+  {
+    name: 'disable',
+    types: 'boolean',
+    description: 'Disables cell manipulation for the entire column.',
   },
 ];
 

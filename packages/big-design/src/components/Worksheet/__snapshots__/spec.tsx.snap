@@ -104,6 +104,7 @@ exports[`renders worksheet 1`] = `
               class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
               <label
+                aria-hidden="false"
                 class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
                 for="bd-checkbox-1"
                 hidden=""
@@ -132,7 +133,7 @@ exports[`renders worksheet 1`] = `
         type="select"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__SelectWrapper-sc-1bx33mv-0 bJTspY"
         >
           <div>
             <div
@@ -316,6 +317,7 @@ exports[`renders worksheet 1`] = `
               class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
               <label
+                aria-hidden="false"
                 class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
                 for="bd-checkbox-7"
                 hidden=""
@@ -344,7 +346,7 @@ exports[`renders worksheet 1`] = `
         type="select"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__SelectWrapper-sc-1bx33mv-0 bJTspY"
         >
           <div>
             <div
@@ -527,6 +529,7 @@ exports[`renders worksheet 1`] = `
               class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
               <label
+                aria-hidden="false"
                 class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
                 for="bd-checkbox-13"
                 hidden=""
@@ -555,7 +558,7 @@ exports[`renders worksheet 1`] = `
         type="select"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__SelectWrapper-sc-1bx33mv-0 bJTspY"
         >
           <div>
             <div
@@ -739,6 +742,7 @@ exports[`renders worksheet 1`] = `
               class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
               <label
+                aria-hidden="false"
                 class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
                 for="bd-checkbox-19"
                 hidden=""
@@ -767,7 +771,7 @@ exports[`renders worksheet 1`] = `
         type="select"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__SelectWrapper-sc-1bx33mv-0 bJTspY"
         >
           <div>
             <div
@@ -949,6 +953,7 @@ exports[`renders worksheet 1`] = `
               class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
               <label
+                aria-hidden="false"
                 class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
                 for="bd-checkbox-25"
                 hidden=""
@@ -977,7 +982,7 @@ exports[`renders worksheet 1`] = `
         type="select"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__SelectWrapper-sc-1bx33mv-0 bJTspY"
         >
           <div>
             <div
@@ -1161,6 +1166,7 @@ exports[`renders worksheet 1`] = `
               class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
               <label
+                aria-hidden="false"
                 class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
                 for="bd-checkbox-31"
                 hidden=""
@@ -1189,7 +1195,7 @@ exports[`renders worksheet 1`] = `
         type="select"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__SelectWrapper-sc-1bx33mv-0 bJTspY"
         >
           <div>
             <div
@@ -1372,6 +1378,7 @@ exports[`renders worksheet 1`] = `
               class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
               <label
+                aria-hidden="false"
                 class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
                 for="bd-checkbox-37"
                 hidden=""
@@ -1400,7 +1407,7 @@ exports[`renders worksheet 1`] = `
         type="select"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__SelectWrapper-sc-1bx33mv-0 bJTspY"
         >
           <div>
             <div
@@ -1584,6 +1591,7 @@ exports[`renders worksheet 1`] = `
               class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
               <label
+                aria-hidden="false"
                 class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
                 for="bd-checkbox-43"
                 hidden=""
@@ -1612,7 +1620,7 @@ exports[`renders worksheet 1`] = `
         type="select"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__SelectWrapper-sc-1bx33mv-0 bJTspY"
         >
           <div>
             <div
@@ -1796,6 +1804,7 @@ exports[`renders worksheet 1`] = `
               class="styled__CheckboxLabelContainer-s1u0st-0 jFHYyI"
             >
               <label
+                aria-hidden="false"
                 class="styled__StyledText-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
                 for="bd-checkbox-49"
                 hidden=""
@@ -1824,7 +1833,7 @@ exports[`renders worksheet 1`] = `
         type="select"
       >
         <div
-          class="styled__SelectWrapper-sc-1bx33mv-0 fyKIqi"
+          class="styled__SelectWrapper-sc-1bx33mv-0 bJTspY"
         >
           <div>
             <div

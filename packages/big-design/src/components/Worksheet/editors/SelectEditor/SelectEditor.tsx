@@ -9,7 +9,6 @@ import { SelectWrapper } from './styled';
 
 export interface SelectEditorProps<Item> {
   cell: Cell<Item>;
-  isEdited: boolean;
   isEditing: boolean;
   options?: WorksheetSelectableColumn<Item>['config']['options'];
   onBlur(): void;
@@ -18,7 +17,6 @@ export interface SelectEditorProps<Item> {
 
 const InternalSelectEditor = <T extends WorksheetItem>({
   cell,
-  isEdited,
   isEditing,
   onBlur,
   onChange,
@@ -50,8 +48,9 @@ const InternalSelectEditor = <T extends WorksheetItem>({
   }, [onBlur, setEditingCell]);
 
   return (
-    <SelectWrapper isEdited={isEdited}>
+    <SelectWrapper>
       <Select
+        disabled={cell.disabled}
         filterable={false}
         inputRef={inputRef}
         onClose={handleClose}

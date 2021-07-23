@@ -34,14 +34,18 @@ export const useKeyEvents = () => {
       } else {
         switch (key) {
           case 'Enter':
-            editSelectedCell();
+            if (selectedCell && !selectedCell.disabled) {
+              editSelectedCell();
 
-            if (selectedCell && selectedCell.type === 'checkbox') {
-              navigate({ rowIndex: 1, columnIndex: 0 });
+              if (selectedCell.type === 'checkbox') {
+                navigate({ rowIndex: 1, columnIndex: 0 });
+              }
             }
             break;
           case ' ':
-            editSelectedCell();
+            if (selectedCell && !selectedCell.disabled) {
+              editSelectedCell();
+            }
             break;
           case 'ArrowUp':
             navigate({ rowIndex: -1, columnIndex: 0 });

@@ -430,6 +430,40 @@ const WorksheetPage = () => {
               {/* jsx-to-string:end */}
             </CodePreview>
           </Panel>
+          <Panel header="Disabled columns">
+            <CodePreview>
+              {/* jsx-to-string:start */}
+              {function Example() {
+                const columns: WorksheetColumn<Partial<Product>>[] = [
+                  { hash: 'productName', header: 'Product name', validation: (value) => !!value },
+                  { hash: 'otherField', header: 'Other field', disabled: true },
+                ];
+
+                const items: Partial<Product>[] = [
+                  {
+                    id: 1,
+                    productName: 'Product 1',
+                    otherField: 'Text',
+                  },
+                  {
+                    id: 2,
+                    productName: 'Product 2',
+                    otherField: 'Text',
+                  },
+                  {
+                    id: 3,
+                    productName: 'Product 3',
+                    otherField: 'Text',
+                  },
+                ];
+
+                return (
+                  <Worksheet columns={columns} items={items} onChange={(items) => items} onErrors={(items) => items} />
+                );
+              }}
+              {/* jsx-to-string:end */}
+            </CodePreview>
+          </Panel>
         </>
       ),
     },
