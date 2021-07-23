@@ -117,7 +117,6 @@ const InternalCell = <T extends WorksheetItem>({
         return (
           <SelectEditor
             cell={cell}
-            isEdited={isEdited}
             isEditing={isEditing}
             onBlur={handleBlur}
             onChange={handleChange}

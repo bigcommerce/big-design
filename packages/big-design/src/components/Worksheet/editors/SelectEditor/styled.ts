@@ -1,9 +1,9 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-export const SelectWrapper = styled.div<{ isEdited: boolean }>`
+export const SelectWrapper = styled.div`
   span {
-    background-color: ${({ theme }) => theme.colors.transparent};
+    background-color: ${({ theme }) => theme.colors.inherit};
     border: none;
     box-shadow: none;
 
@@ -21,7 +21,7 @@ export const SelectWrapper = styled.div<{ isEdited: boolean }>`
     font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
 
     &[disabled] {
-      background-color: ${({ theme }) => theme.colors.transparent};
+      background-color: ${({ theme }) => theme.colors.inherit};
       color: ${({ theme }) => theme.colors.secondary50};
       cursor: default;
     }

@@ -927,7 +927,7 @@ describe('ModalEditor', () => {
   test('renders in disabled state', async () => {
     render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
 
-    const buttons = screen.queryAllByText('Edit');
+    const buttons = screen.queryAllByRole('button', { name: /edit/i });
 
     expect(buttons).toStrictEqual([]);
 
