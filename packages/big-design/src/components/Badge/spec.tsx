@@ -59,8 +59,7 @@ test('render primary Badge', () => {
 });
 
 test("doesn't render if label prop is invalid", () => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
+  // @ts-expect-error ignoring since label={Component} is not a valid prop
   const { container } = render(<Badge label={<p>Label</p>} />);
 
   expect(container.firstChild).toBe(null);

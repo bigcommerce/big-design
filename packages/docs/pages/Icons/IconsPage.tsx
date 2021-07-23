@@ -21,7 +21,7 @@ import { Code, CodePreview, CodeSnippet, PageNavigation } from '../../components
 import { FlagIconPropTable, IconPropTable } from '../../PropTables';
 
 const IconsPage = () => {
-  const [icons, setIcons] = useState<{}>({});
+  const [icons, setIcons] = useState<Record<symbol, unknown>>({});
 
   useEffect(() => {
     const fetchIcons = async () => {

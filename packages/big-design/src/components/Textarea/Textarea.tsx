@@ -6,7 +6,7 @@ import { FormControlDescription, FormControlError, FormControlLabel } from '../F
 
 import { StyledTextarea, StyledTextareaWrapper } from './styled';
 
-interface Props {
+export interface Props {
   description?: React.ReactChild;
   error?: React.ReactNode | React.ReactNode[];
   label?: React.ReactChild;

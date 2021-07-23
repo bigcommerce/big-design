@@ -5,7 +5,7 @@ interface LocalizationProviderInterface {
     day(n: number): string;
   };
   monthsLong?: string[];
-  formatLong?: {};
+  formatLong?: Record<string, unknown>;
   formatTime(date: Date): string;
 }
 
