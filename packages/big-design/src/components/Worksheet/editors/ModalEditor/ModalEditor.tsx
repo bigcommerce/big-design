@@ -40,11 +40,9 @@ const InternalModalEditor = <T extends WorksheetItem>({ cell, formatting, isEdit
           {renderedValue}
         </Small>
       </StyledFlexItem>
-      {!cell.disabled && (
-        <StyledButton onClick={handleClick} ref={buttonRef} variant="subtle">
-          Edit
-        </StyledButton>
-      )}
+      <StyledButton disabled={cell.disabled} onClick={handleClick} ref={buttonRef} variant="subtle">
+        Edit
+      </StyledButton>
     </Flex>
   );
 };

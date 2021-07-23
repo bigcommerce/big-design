@@ -927,9 +927,9 @@ describe('ModalEditor', () => {
   test('renders in disabled state', async () => {
     render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
 
-    const buttons = screen.queryAllByRole('button', { name: /edit/i });
+    const buttons = screen.getAllByRole('button', { name: /edit/i });
 
-    expect(buttons).toStrictEqual([]);
+    expect(buttons[0]).toHaveAttribute('disabled');
 
     await waitForElement(() => screen.getAllByRole('combobox'));
   });
