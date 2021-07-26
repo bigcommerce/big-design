@@ -166,7 +166,7 @@ exports[`simple form render 1`] = `
 
 @media (min-width:720px) {
   .c0 .c6,
-  .c0 .styled__StyledTextareaWrapper-c1uos0-0 {
+  .c0 .styled__StyledTextareaWrapper-sc-c1uos0-0 {
     max-width: 26rem;
   }
 }

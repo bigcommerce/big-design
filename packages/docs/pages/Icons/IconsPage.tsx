@@ -21,7 +21,7 @@ import { Code, CodePreview, CodeSnippet, PageNavigation } from '../../components
 import { FlagIconPropTable, IconPropTable } from '../../PropTables';
 
 const IconsPage = () => {
-  const [icons, setIcons] = useState<{}>({});
+  const [icons, setIcons] = useState<Record<symbol, unknown>>({});
 
   useEffect(() => {
     const fetchIcons = async () => {
@@ -145,8 +145,7 @@ const IconsPage = () => {
               type="warning"
               messages={[
                 {
-                  text:
-                    'Flags are a submodule of the Icons package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
+                  text: 'Flags are a submodule of the Icons package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
                 },
               ]}
               marginBottom="medium"

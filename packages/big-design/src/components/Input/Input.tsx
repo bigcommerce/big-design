@@ -6,7 +6,7 @@ import { Chip, ChipProps } from '../Chip';
 import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
 
 import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
-interface Props {
+export interface Props {
   chips?: ChipProps[];
   description?: React.ReactChild;
   error?: React.ReactNode | React.ReactNode[];

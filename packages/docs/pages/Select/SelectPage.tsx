@@ -25,7 +25,7 @@ const SelectPage = () => {
                     <FormGroup>
                       <Select
                         action={{
-                          actionType: 'destructive' as 'destructive',
+                          actionType: 'destructive' as const,
                           content: 'Remove Country',
                           icon: <DeleteIcon />,
                           onActionClick: () => null,

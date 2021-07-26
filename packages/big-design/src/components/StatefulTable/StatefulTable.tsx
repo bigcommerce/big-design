@@ -114,11 +114,10 @@ const InternalStatefulTable = <T extends TableItem>({
     [selectable, state.selectedItems, onItemSelect],
   );
 
-  const sortableOptions = useMemo(() => (sortable ? { ...state.sortable, onSort } : undefined), [
-    sortable,
-    state.sortable,
-    onSort,
-  ]);
+  const sortableOptions = useMemo(
+    () => (sortable ? { ...state.sortable, onSort } : undefined),
+    [sortable, state.sortable, onSort],
+  );
 
   const onDragEnd = useCallback(
     (from: number, to: number) => {

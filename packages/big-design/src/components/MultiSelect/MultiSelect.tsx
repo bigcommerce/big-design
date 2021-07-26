@@ -65,11 +65,10 @@ export const MultiSelect = typedMemo(
     }, []);
 
     // We need to pass Downshift only options without groups for accessibility tracking
-    const flattenedOptions = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
-      action,
-      flattenOptions,
-      options,
-    ]);
+    const flattenedOptions = useMemo(
+      () => (action ? [...flattenOptions(options), action] : flattenOptions(options)),
+      [action, flattenOptions, options],
+    );
 
     // Find the selected options
     const selectedOptions = useMemo(() => {

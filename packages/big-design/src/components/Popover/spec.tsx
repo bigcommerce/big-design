@@ -56,8 +56,7 @@ test('accepts Box props', async () => {
 });
 
 test('does not accept margin props', async () => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
+  // @ts-expect-error ignoring since margin is not a valid prop
   render(<TestComponent isOpen={true} padding="medium" margin="medium" />);
 
   const getPopover = () => screen.getByText(/some content/i);

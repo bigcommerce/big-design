@@ -16,8 +16,11 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
 
   const isEditing = useStore(
     useMemo(
-      () => ({ editingCell }) =>
-        editingCell !== null && editingCell.columnIndex === cell.columnIndex && editingCell.rowIndex === cell.rowIndex,
+      () =>
+        ({ editingCell }) =>
+          editingCell !== null &&
+          editingCell.columnIndex === cell.columnIndex &&
+          editingCell.rowIndex === cell.rowIndex,
       [cell],
     ),
   );
@@ -81,11 +84,8 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
     [cell, navigate, restoreFocus, updateItems],
   );
 
-  return useMemo(() => ({ handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing }), [
-    handleBlur,
-    handleChange,
-    handleDoubleClick,
-    handleKeyDown,
-    isEditing,
-  ]);
+  return useMemo(
+    () => ({ handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing }),
+    [handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing],
+  );
 };

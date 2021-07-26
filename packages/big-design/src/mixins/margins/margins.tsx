@@ -28,7 +28,9 @@ export const withMargins = () => css<MarginProps>`
     marginHorizontal && getSpacingStyles(marginHorizontal, theme, 'margin-left', 'margin-right')};
 `;
 
-export function excludeMarginProps<T extends any>(props: T): Pick<T, Exclude<keyof T, keyof MarginProps>> {
+export function excludeMarginProps<T extends Record<string, any>>(
+  props: T,
+): Pick<T, Exclude<keyof T, keyof MarginProps>> {
   const { margin, marginTop, marginRight, marginBottom, marginLeft, marginVertical, marginHorizontal, ...rest } = props;
 
   return rest;

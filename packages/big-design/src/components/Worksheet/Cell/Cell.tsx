@@ -31,14 +31,10 @@ const InternalCell = <T extends WorksheetItem>({
   value,
   validation,
 }: CellProps<T>) => {
-  const cell: TCell<T> = useMemo(() => ({ columnIndex, disabled, hash, rowIndex, type, value }), [
-    columnIndex,
-    disabled,
-    hash,
-    rowIndex,
-    type,
-    value,
-  ]);
+  const cell: TCell<T> = useMemo(
+    () => ({ columnIndex, disabled, hash, rowIndex, type, value }),
+    [columnIndex, disabled, hash, rowIndex, type, value],
+  );
 
   const { handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing } = useEditableCell<T>(cell);
   const setSelectedRows = useStore((state) => state.setSelectedRows);

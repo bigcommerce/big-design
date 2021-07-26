@@ -22,6 +22,7 @@ export const StyledCircle = styled.circle.attrs(({ size, theme }: any) => ({
   stroke: ${({ theme }) => theme.colors.secondary20};
 `;
 
+// @ts-expect-error TODO: Remove after upgrading to styled-components v5
 export const StyledCircleFiller = styled(StyledCircle)<ProgressCircleProps>`
   stroke-dasharray: ${({ size }) => getStrokeDashArray(size)};
   stroke: ${({ theme }) => theme.colors.primary};
