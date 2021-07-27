@@ -314,7 +314,31 @@ exports[`render open modal without backdrop 1`] = `
 <body
   style="overflow-y: hidden;"
 >
-  <div />
+  @media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:1025px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+<div />
   .c8 {
   vertical-align: middle;
   height: 1.5rem;
@@ -704,6 +728,22 @@ exports[`renders destructive action button 1`] = `
   visibility: visible;
 }
 
+@media (min-width:0px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
 @media (min-width:720px) {
   .c0 + .bd-button {
     margin-top: 0;
@@ -715,6 +755,26 @@ exports[`renders destructive action button 1`] = `
   .c0 {
     width: auto;
   }
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:1025px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
 }
 
 <button
@@ -822,6 +882,22 @@ exports[`renders secondary action button 1`] = `
   visibility: visible;
 }
 
+@media (min-width:0px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
 @media (min-width:720px) {
   .c0 + .bd-button {
     margin-top: 0;
@@ -833,6 +909,26 @@ exports[`renders secondary action button 1`] = `
   .c0 {
     width: auto;
   }
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:1025px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
 }
 
 <button

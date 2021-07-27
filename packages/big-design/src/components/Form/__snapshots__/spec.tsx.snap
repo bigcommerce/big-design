@@ -1,6 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`simple form render 1`] = `
+.c1 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  margin: 0 0 0.75rem;
+}
+
+.c5 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
+}
+
 .c3 {
   color: #313440;
   margin: 0 0 1rem;
@@ -15,26 +33,17 @@ exports[`simple form render 1`] = `
   margin-bottom: 0;
 }
 
-.c2 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.75rem;
-  margin: 0 0 0.75rem;
-}
-
 .c2:not(:last-child) {
   margin-bottom: 0.25rem;
 }
 
-.c1 {
+.c0 {
   border: none;
   margin: 0 0 1.5rem;
   padding: 0;
 }
 
-.c1:last-child {
+.c0:last-child {
   margin: 0;
 }
 
@@ -146,39 +155,34 @@ exports[`simple form render 1`] = `
   margin-bottom: 0;
 }
 
-.c5 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  margin: 0 0 0.5rem;
+.c6 {
   cursor: pointer;
   display: inline-block;
   margin-bottom: 0.25rem;
 }
 
-.c5::after {
+.c6::after {
   color: #5E637A;
   content: ' (optional)';
   font-weight: 400;
 }
 
 @media (min-width:720px) {
-  .c0 .c6,
-  .c0 .styled__StyledTextareaWrapper-sc-c1uos0-0 {
-    max-width: 26rem;
-  }
+
+}
+
+@media (min-width:720px) {
+
 }
 
 <form
-  class="c0"
+  class=""
 >
   <fieldset
-    class="c1"
+    class="c0"
   >
     <legend
-      class="c2"
+      class="c1 c2"
     >
       Primary contact
     </legend>
@@ -192,7 +196,7 @@ exports[`simple form render 1`] = `
     >
       <div>
         <label
-          class="c5"
+          class="c5 c6"
           for="bd-input-1"
         >
           First Name
@@ -203,7 +207,7 @@ exports[`simple form render 1`] = `
           This is an example description for First Name
         </p>
         <span
-          class="c6 c7"
+          class="c7"
         >
           <div
             class="c8"
@@ -222,7 +226,7 @@ exports[`simple form render 1`] = `
     >
       <div>
         <label
-          class="c5"
+          class="c5 c6"
           for="bd-input-2"
         >
           Middle Name
@@ -233,7 +237,7 @@ exports[`simple form render 1`] = `
           This is an example description for Last Name. Featuring a Left Icon.
         </p>
         <span
-          class="c6 c7"
+          class="c7"
         >
           <div
             class="c8"

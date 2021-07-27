@@ -48,9 +48,6 @@ exports[`render determinant progress circle 1`] = `
 }
 
 .c2 {
-  fill: transparent;
-  stroke-width: 0.25rem;
-  stroke: #ECEEF5;
   stroke-dasharray: 138.23007675795088 138.23007675795088;
   stroke: #3C64F4;
   -webkit-transform-origin: 50% 50%;
@@ -84,7 +81,7 @@ exports[`render determinant progress circle 1`] = `
       r="1.375em"
     />
     <circle
-      class="c2"
+      class="c1 c2"
       cx="1.5em"
       cy="1.5em"
       r="1.375em"
@@ -148,16 +145,13 @@ exports[`render indeterminant progress bar 1`] = `
 }
 
 .c2 {
-  fill: transparent;
-  stroke-width: 0.25rem;
-  stroke: #ECEEF5;
   stroke-dasharray: 138.23007675795088 138.23007675795088;
   stroke: #3C64F4;
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: dpAsNn 1s ease-out infinite;
-  animation: dpAsNn 1s ease-out infinite;
+  -webkit-animation: dfVSSu 1s ease-out infinite;
+  animation: dfVSSu 1s ease-out infinite;
   stroke-dashoffset: 138.23007675795088;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -178,7 +172,7 @@ exports[`render indeterminant progress bar 1`] = `
       r="1.375em"
     />
     <circle
-      class="c2"
+      class="c1 c2"
       cx="1.5em"
       cy="1.5em"
       r="1.375em"
@@ -200,16 +194,13 @@ exports[`render large progress circle 1`] = `
 }
 
 .c2 {
-  fill: transparent;
-  stroke-width: 0.5rem;
-  stroke: #ECEEF5;
   stroke-dasharray: 226.1946710584651 226.1946710584651;
   stroke: #3C64F4;
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: ibtQPx 1s ease-out infinite;
-  animation: ibtQPx 1s ease-out infinite;
+  -webkit-animation: krEchf 1s ease-out infinite;
+  animation: krEchf 1s ease-out infinite;
   stroke-dashoffset: 226.1946710584651;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -230,7 +221,7 @@ exports[`render large progress circle 1`] = `
       r="2.25em"
     />
     <circle
-      class="c2"
+      class="c1 c2"
       cx="2.5em"
       cy="2.5em"
       r="2.25em"
@@ -252,16 +243,13 @@ exports[`render medium progress circle 1`] = `
 }
 
 .c2 {
-  fill: transparent;
-  stroke-width: 0.25rem;
-  stroke: #ECEEF5;
   stroke-dasharray: 138.23007675795088 138.23007675795088;
   stroke: #3C64F4;
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: dpAsNn 1s ease-out infinite;
-  animation: dpAsNn 1s ease-out infinite;
+  -webkit-animation: dfVSSu 1s ease-out infinite;
+  animation: dfVSSu 1s ease-out infinite;
   stroke-dashoffset: 138.23007675795088;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -282,7 +270,7 @@ exports[`render medium progress circle 1`] = `
       r="1.375em"
     />
     <circle
-      class="c2"
+      class="c1 c2"
       cx="1.5em"
       cy="1.5em"
       r="1.375em"
@@ -304,16 +292,13 @@ exports[`render small progress circle 1`] = `
 }
 
 .c2 {
-  fill: transparent;
-  stroke-width: 0.25rem;
-  stroke: #ECEEF5;
   stroke-dasharray: 87.96459430051421 87.96459430051421;
   stroke: #3C64F4;
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: cYXnLG 1s ease-out infinite;
-  animation: cYXnLG 1s ease-out infinite;
+  -webkit-animation: kpuuIv 1s ease-out infinite;
+  animation: kpuuIv 1s ease-out infinite;
   stroke-dashoffset: 87.96459430051421;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -334,7 +319,7 @@ exports[`render small progress circle 1`] = `
       r="0.875em"
     />
     <circle
-      class="c2"
+      class="c1 c2"
       cx="1em"
       cy="1em"
       r="0.875em"
@@ -356,16 +341,13 @@ exports[`render xSmall progress circle 1`] = `
 }
 
 .c2 {
-  fill: transparent;
-  stroke-width: 0.1875rem;
-  stroke: #ECEEF5;
   stroke-dasharray: 65.97344572538566 65.97344572538566;
   stroke: #3C64F4;
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: ceJQKV 1s ease-out infinite;
-  animation: ceJQKV 1s ease-out infinite;
+  -webkit-animation: hiqbsE 1s ease-out infinite;
+  animation: hiqbsE 1s ease-out infinite;
   stroke-dashoffset: 65.97344572538566;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -386,7 +368,7 @@ exports[`render xSmall progress circle 1`] = `
       r="0.65625em"
     />
     <circle
-      class="c2"
+      class="c1 c2"
       cx="0.75em"
       cy="0.75em"
       r="0.65625em"
@@ -408,16 +390,13 @@ exports[`render xSmall progress circle 2`] = `
 }
 
 .c2 {
-  fill: transparent;
-  stroke-width: 0.125rem;
-  stroke: #ECEEF5;
   stroke-dasharray: 43.982297150257104 43.982297150257104;
   stroke: #3C64F4;
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: cWvsXs 1s ease-out infinite;
-  animation: cWvsXs 1s ease-out infinite;
+  -webkit-animation: fxwtRW 1s ease-out infinite;
+  animation: fxwtRW 1s ease-out infinite;
   stroke-dashoffset: 43.982297150257104;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -438,7 +417,7 @@ exports[`render xSmall progress circle 2`] = `
       r="0.4375em"
     />
     <circle
-      class="c2"
+      class="c1 c2"
       cx="0.5em"
       cy="0.5em"
       r="0.4375em"

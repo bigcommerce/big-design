@@ -78,16 +78,26 @@ const GettingStartedPage = () => {
       <Panel header="Getting started">
         <Text>Add BigDesign and styled-components to your project:</Text>
         <CodeSnippet showControls={false} language="bash">
-          npm install @bigcommerce/big-design styled-components@4
+          npm install @bigcommerce/big-design styled-components@5
+        </CodeSnippet>
+
+        <Text>
+          Add the font as a<Code>&lt;link&gt;</Code> in your <Code>index.html</Code>/<Code>&lt;head&gt;</Code> element.
+        </Text>
+
+        <CodeSnippet>
+          {`
+          <head>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600&display=swap" rel="stylesheet" />
+          </head>
+          `}
         </CodeSnippet>
 
         <Text>
           Import the <Code>GlobalStyles</Code> component and use it once in your app. This will set a few styles
-          globally, including a base font family,{' '}
-          <Link href="https://fonts.google.com/specimen/Source+Sans+Pro" target="_blank">
-            Source Sans Pro
-          </Link>{' '}
-          and{' '}
+          globally and add{' '}
           <Link href="https://github.com/necolas/normalize.css/" target="_blank">
             normalize.css
           </Link>

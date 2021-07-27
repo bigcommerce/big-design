@@ -307,7 +307,7 @@ exports[`dropdown is not visible if items fit 1`] = `
         role="listitem"
       >
         <button
-          class="c4 "
+          class="c4 styled__StyledPillTab-sc-1n62hko-0"
         >
           <span
             class="c5"
@@ -685,7 +685,7 @@ exports[`it renders the given tabs 1`] = `
         role="listitem"
       >
         <button
-          class="c4 "
+          class="c4 styled__StyledPillTab-sc-1n62hko-0"
         >
           <span
             class="c5"
@@ -1063,7 +1063,7 @@ exports[`only the pills that fit are visible 1`] = `
         role="listitem"
       >
         <button
-          class="c4 "
+          class="c4 styled__StyledPillTab-sc-1n62hko-0"
         >
           <span
             class="c5"
@@ -1078,7 +1078,7 @@ exports[`only the pills that fit are visible 1`] = `
         role="listitem"
       >
         <button
-          class="c4 "
+          class="c4 styled__StyledPillTab-sc-1n62hko-0"
           disabled=""
         >
           <span
@@ -1094,7 +1094,7 @@ exports[`only the pills that fit are visible 1`] = `
         role="listitem"
       >
         <button
-          class="c4 "
+          class="c4 styled__StyledPillTab-sc-1n62hko-0"
           disabled=""
         >
           <span
@@ -1473,7 +1473,7 @@ exports[`only the pills that fit are visible 2 1`] = `
         role="listitem"
       >
         <button
-          class="c4 "
+          class="c4 styled__StyledPillTab-sc-1n62hko-0"
         >
           <span
             class="c5"
@@ -1488,7 +1488,7 @@ exports[`only the pills that fit are visible 2 1`] = `
         role="listitem"
       >
         <button
-          class="c4 "
+          class="c4 styled__StyledPillTab-sc-1n62hko-0"
         >
           <span
             class="c5"
@@ -1503,7 +1503,7 @@ exports[`only the pills that fit are visible 2 1`] = `
         role="listitem"
       >
         <button
-          class="c4 "
+          class="c4 styled__StyledPillTab-sc-1n62hko-0"
           disabled=""
         >
           <span
@@ -1882,7 +1882,7 @@ exports[`renders all the filters if they fit 1`] = `
         role="listitem"
       >
         <button
-          class="c4 "
+          class="c4 styled__StyledPillTab-sc-1n62hko-0"
         >
           <span
             class="c5"
@@ -1897,7 +1897,7 @@ exports[`renders all the filters if they fit 1`] = `
         role="listitem"
       >
         <button
-          class="c4 "
+          class="c4 styled__StyledPillTab-sc-1n62hko-0"
         >
           <span
             class="c5"
@@ -1912,7 +1912,7 @@ exports[`renders all the filters if they fit 1`] = `
         role="listitem"
       >
         <button
-          class="c4 "
+          class="c4 styled__StyledPillTab-sc-1n62hko-0"
         >
           <span
             class="c5"
@@ -2290,7 +2290,7 @@ exports[`renders dropdown if items do not fit 1`] = `
         role="listitem"
       >
         <button
-          class="c5 "
+          class="c5 styled__StyledPillTab-sc-1n62hko-0"
           disabled=""
         >
           <span
@@ -2306,7 +2306,7 @@ exports[`renders dropdown if items do not fit 1`] = `
         role="listitem"
       >
         <button
-          class="c5 "
+          class="c5 styled__StyledPillTab-sc-1n62hko-0"
           disabled=""
         >
           <span

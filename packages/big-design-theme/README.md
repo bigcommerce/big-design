@@ -17,16 +17,16 @@ This package is only meant to be used directly when more advanced features are n
 
 ### Quick start guide
 
-Add the BigDesign theme and styled-components@4 to your project using `npm`:
+Add the BigDesign theme and styled-components@5 to your project using `npm`:
 
 ```
-npm install @bigcommerce/big-design-theme styled-components@4
+npm install @bigcommerce/big-design-theme styled-components@5
 ```
 
 or with `yarn`:
 
 ```
-yarn add @bigcommerce/big-design-theme styled-components@4
+yarn add @bigcommerce/big-design-theme styled-components@5
 ```
 
 ```tsx
