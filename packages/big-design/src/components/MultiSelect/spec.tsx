@@ -1,6 +1,6 @@
 import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, screen, waitForElement } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import React, { createRef } from 'react';
 
@@ -74,7 +74,7 @@ const GroupedMultiSelectMock = (
       icon: <DeleteIcon />,
       onActionClick,
     }}
-    data-testid="groupSelect"
+    data-testid="group-select"
     error="Required"
     label="Countries"
     onOptionsChange={onChange}
@@ -106,21 +106,23 @@ const MultiSelectWithOptionsDescriptions = (
 );
 
 test('renders select combobox', async () => {
-  const { getByRole } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  expect(getByRole('combobox')).toBeInTheDocument();
-  await waitForElement(() => getByRole('combobox'));
+  const combobox = await screen.findByRole('combobox');
+
+  expect(combobox).toBeInTheDocument();
 });
 
 test('renders select label', async () => {
-  const { getByText } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  expect(getByText('Countries')).toBeInTheDocument();
-  await waitForElement(() => getByText('Countries'));
+  const countries = await screen.findByText('Countries');
+
+  expect(countries).toBeInTheDocument();
 });
 
 test('renders FormControlLabel string label', async () => {
-  const { getByText } = render(
+  render(
     <MultiSelect
       onOptionsChange={onChange}
       label={<FormControlLabel>Countries</FormControlLabel>}
@@ -135,193 +137,215 @@ test('renders FormControlLabel string label', async () => {
     />,
   );
 
-  expect(getByText('Countries')).toBeInTheDocument();
-  await waitForElement(() => getByText('Countries'));
+  const countries = await screen.findByText('Countries');
+
+  expect(countries).toBeInTheDocument();
 });
 
 test('select label has id', async () => {
-  const { getByText } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  expect(getByText('Countries').id).toBeDefined();
-  await waitForElement(() => getByText('Countries'));
+  const countries = await screen.findByText('Countries');
+
+  expect(countries.id).toBeDefined();
 });
 
 test('select label accepts custom id', async () => {
-  const { getByText } = render(
-    <MultiSelect onOptionsChange={onChange} label="Countries" labelId="testId" options={mockOptions} />,
-  );
+  render(<MultiSelect onOptionsChange={onChange} label="Countries" labelId="testId" options={mockOptions} />);
 
-  expect(getByText('Countries').id).toBe('testId');
-  await waitForElement(() => getByText('Countries'));
+  const countries = await screen.findByText('Countries');
+
+  expect(countries.id).toBe('testId');
 });
 
 test('select label has for attribute', async () => {
-  const { getByText } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  expect(getByText('Countries').hasAttribute('for')).toBe(true);
-  await waitForElement(() => getByText('Countries'));
+  const countries = await screen.findByText('Countries');
+
+  expect(countries.hasAttribute('for')).toBe(true);
 });
 
 test('renders select input', async () => {
-  const { getByTestId } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  expect(getByTestId('multi-select')).toBeInTheDocument();
-  await waitForElement(() => getByTestId('multi-select'));
+  const select = await screen.findByTestId('multi-select');
+
+  expect(select).toBeInTheDocument();
 });
 
 test('select input has id', async () => {
-  const { getByTestId } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  expect(getByTestId('multi-select').id).toBeDefined();
-  await waitForElement(() => getByTestId('multi-select'));
+  const select = await screen.findByTestId('multi-select');
+
+  expect(select.id).toBeDefined();
 });
 
 test('select accepts custom id', async () => {
-  const { getByTestId } = render(
-    <MultiSelect onOptionsChange={onChange} id="testId" data-testid="multi-select" options={mockOptions} />,
-  );
+  render(<MultiSelect onOptionsChange={onChange} id="testId" data-testid="multi-select" options={mockOptions} />);
 
-  expect(getByTestId('multi-select').id).toBe('testId');
-  await waitForElement(() => getByTestId('multi-select'));
+  const select = await screen.findByTestId('multi-select');
+
+  expect(select.id).toBe('testId');
 });
 
 test('combobox has aria-haspopup', async () => {
-  const { getByRole } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  expect(getByRole('combobox').getAttribute('aria-haspopup')).toBe('listbox');
-  await waitForElement(() => getByRole('combobox'));
+  const combobox = await screen.findByRole('combobox');
+
+  expect(combobox.getAttribute('aria-haspopup')).toBe('listbox');
 });
 
 test('select input has placeholder text', async () => {
-  const { getByPlaceholderText } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  expect(getByPlaceholderText('Choose country')).toBeDefined();
-  await waitForElement(() => getByPlaceholderText('Choose country'));
+  const placeholder = await screen.findByPlaceholderText('Choose country');
+
+  expect(placeholder).toBeDefined();
 });
 
 test('select input has aria-controls', async () => {
-  const { getByRole, getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
 
   fireEvent.click(input);
 
-  expect(input.getAttribute('aria-controls')).toBe(getByRole('listbox').id);
+  const listbox = await screen.findByRole('listbox');
 
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(input.getAttribute('aria-controls')).toBe(listbox.id);
 });
 
 test('select input has autocomplete=off', async () => {
-  const { getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
 
-  expect(input.getAttribute('autocomplete')).toBe('off');
-  await waitForElement(() => getByTestId('multi-select'));
+  const select = await screen.findByTestId('multi-select');
+
+  expect(select.getAttribute('autocomplete')).toBe('off');
 });
 
 test('renders input button', async () => {
-  const { getAllByRole } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  expect(getAllByRole('button')[2]).toBeDefined();
-  await waitForElement(() => getAllByRole('button'));
-});
+  const button = await screen.findByLabelText('toggle menu');
 
-test('input button has aria-label', async () => {
-  const { getAllByRole } = render(MultiSelectMock);
-
-  expect(getAllByRole('button')[2].getAttribute('aria-label')).toBe('toggle menu');
-  await waitForElement(() => getAllByRole('button'));
+  expect(button).toBeInTheDocument();
 });
 
 test('multi select menu opens/closes when input button is clicked', async () => {
-  const { getAllByRole, queryByRole } = render(MultiSelectMock);
-  const button = getAllByRole('button')[2];
+  render(MultiSelectMock);
+
+  const button = await screen.findByLabelText('toggle menu');
 
   fireEvent.click(button);
-  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
+
+  const listbox = await screen.findByRole('listbox');
+
+  expect(listbox).not.toBeEmptyDOMElement();
 
   fireEvent.click(button);
-  expect(queryByRole('listbox')).toBeEmptyDOMElement();
-  await waitForElement(() => queryByRole('listbox'));
+
+  await screen.findByRole('listbox');
+
+  expect(listbox).toBeEmptyDOMElement();
 });
 
 test('esc should close menu', async () => {
-  const { getByTestId, queryByRole } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
 
   fireEvent.click(input);
-  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
+
+  const listbox = await screen.findByRole('listbox');
+
+  expect(listbox).not.toBeEmptyDOMElement();
 
   fireEvent.keyDown(input, { key: 'Escape' });
-  expect(queryByRole('listbox')).toBeEmptyDOMElement();
-  await waitForElement(() => queryByRole('listbox'));
+
+  await screen.findByRole('listbox');
+
+  expect(listbox).toBeEmptyDOMElement();
 });
 
 test('multi select has items', async () => {
-  const { getAllByRole, getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+
   fireEvent.click(input);
 
-  expect(getAllByRole('option').length).toBe(6);
+  const options = await screen.findAllByRole('option');
 
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(options.length).toBe(6);
 });
 
 test('multi select items should be unfiltered when opened', async () => {
-  const { getAllByRole } = render(MultiSelectMock);
-  const button = getAllByRole('button')[2];
+  render(MultiSelectMock);
+
+  const button = await screen.findByLabelText('toggle menu');
+
   fireEvent.click(button);
 
-  const options = getAllByRole('option');
-  expect(options.length).toBe(6);
+  const options = await screen.findAllByRole('option');
 
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(options.length).toBe(6);
 });
 
 test('up/down arrows should change select item selection', async () => {
-  const { getAllByRole, getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
+
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
+
   expect(options[1].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
 
   fireEvent.keyDown(input, { key: 'ArrowUp' });
+
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('home should select first select item', async () => {
-  const { getAllByRole, getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
 
   fireEvent.keyDown(input, { key: 'ArrowUp' });
+
   expect(options[5].getAttribute('aria-selected')).toBe('true');
 
   fireEvent.keyDown(input, { key: 'Home' });
+
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('end should select last select item', async () => {
-  const { getAllByRole, getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   expect(options[0].getAttribute('aria-selected')).toBe('true');
@@ -330,106 +354,118 @@ test('end should select last select item', async () => {
 
   expect(options[5].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[5].id);
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('enter should trigger onOptionsChange', async () => {
-  const { getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
 
-  fireEvent.click(input);
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  fireEvent.keyDown(input, { key: 'Enter' });
+  const input = screen.getByTestId('multi-select');
+
+  await act(async () => {
+    await fireEvent.click(input);
+    await fireEvent.keyDown(input, { key: 'ArrowDown' });
+    await fireEvent.keyDown(input, { key: 'Enter' });
+  });
 
   expect(onChange).toHaveBeenCalledWith([mockOptions[1].value], [mockOptions[1]]);
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('clicking on select options should trigger onOptionsChange', async () => {
-  const { getAllByRole, getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
+
   fireEvent.click(options[3]);
+
   expect(onChange).toHaveBeenCalledWith(
     [mockOptions[0].value, mockOptions[1].value, mockOptions[3].value],
     [mockOptions[0], mockOptions[1], mockOptions[3]],
   );
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('clicking on disabled select options should not trigger onItemClick', async () => {
-  const { getAllByRole, getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
-  fireEvent.click(options[4]);
-  expect(onChange).not.toHaveBeenCalled();
+  const options = await screen.findAllByRole('option');
 
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  fireEvent.click(options[4]);
+
+  expect(onChange).not.toHaveBeenCalled();
 });
 
 test('opening the MultiSelect triggers onOpen', async () => {
-  const { getAllByRole, queryByRole } = render(MultiSelectMock);
-  const button = getAllByRole('button')[2];
+  render(MultiSelectMock);
 
-  fireEvent.click(button);
+  const button = await screen.findByLabelText('toggle menu');
+
+  await act(async () => {
+    await fireEvent.click(button);
+  });
 
   expect(onOpen).toHaveBeenCalled();
-
-  await waitForElement(() => queryByRole('listbox'));
 });
 
 test('closing the MultiSelect triggers onClose', async () => {
-  const { getAllByRole, queryByRole } = render(MultiSelectMock);
-  const button = getAllByRole('button')[2];
+  render(MultiSelectMock);
 
-  fireEvent.click(button);
-  fireEvent.click(button);
+  const button = await screen.findByLabelText('toggle menu');
+
+  await act(async () => {
+    await fireEvent.click(button);
+    await fireEvent.click(button);
+  });
 
   expect(onClose).toHaveBeenCalled();
-
-  await waitForElement(() => queryByRole('listbox'));
 });
 
 test('select should render select action', async () => {
-  const { getByText, getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+
   fireEvent.click(input);
 
-  expect(getByText('Remove Country')).toBeInTheDocument();
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(await screen.findByText('Remove Country')).toBeInTheDocument();
 });
 
 test('select action should call onActionClick', async () => {
-  const { getByTestId, getAllByRole } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
-  fireEvent.click(options[5]);
+  const options = await screen.findAllByRole('option');
+
+  await act(async () => {
+    await fireEvent.click(options[5]);
+  });
+
   expect(onActionClick).toHaveBeenCalled();
-  await waitForElement(() => screen.getByTestId('multi-select'));
 });
 
 test('select action supports icons', async () => {
-  const { getByTestId, getByText } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+
   fireEvent.click(input);
 
-  const action = getByText('Remove Country');
-  expect(action.querySelector('svg')).toBeDefined();
+  const action = await screen.findByText('Remove Country');
 
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(action.querySelector('svg')).toBeDefined();
 });
 
 test('select should render an error if one is provided', async () => {
-  const { getByText } = render(
+  render(
     <FormGroup>
       <MultiSelect
         onOptionsChange={onChange}
@@ -448,12 +484,11 @@ test('select should render an error if one is provided', async () => {
     </FormGroup>,
   );
 
-  expect(getByText('Required')).toBeInTheDocument();
-  await waitForElement(() => screen.getByText('Required'));
+  expect(await screen.findByText('Required')).toBeInTheDocument();
 });
 
 test('select should have a required attr if set as required', async () => {
-  const { getAllByLabelText } = render(
+  render(
     <MultiSelect
       onOptionsChange={onChange}
       label="Countries"
@@ -469,14 +504,13 @@ test('select should have a required attr if set as required', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(input.getAttribute('required')).toEqual('');
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  expect(inputs[0].getAttribute('required')).toEqual('');
 });
 
 test('select should not have a required attr if not set as required', async () => {
-  const { getAllByLabelText } = render(
+  render(
     <MultiSelect
       onOptionsChange={onChange}
       label="Countries"
@@ -491,22 +525,21 @@ test('select should not have a required attr if not set as required', async () =
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(input.getAttribute('required')).toEqual(null);
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  expect(inputs[0].getAttribute('required')).toEqual(null);
 });
 
 test('required attr should be removed when item is selected', async () => {
-  const { getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = await screen.findByTestId('multi-select');
 
   expect(input.getAttribute('required')).toEqual(null);
-  await waitForElement(() => screen.getByTestId('multi-select'));
 });
 
 test('select should have a disabled attr if set as disabled', async () => {
-  const { getAllByLabelText } = render(
+  render(
     <MultiSelect
       disabled
       label="Countries"
@@ -522,23 +555,21 @@ test('select should have a disabled attr if set as disabled', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(input.getAttribute('disabled')).toEqual('');
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  expect(inputs[0].getAttribute('disabled')).toEqual('');
 });
 
 test('select should not have a disabled attr if not set as disabled', async () => {
-  const { getAllByLabelText } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(input.getAttribute('disabled')).toEqual(null);
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  expect(inputs[0].getAttribute('disabled')).toEqual(null);
 });
 
 test('appends (optional) text to label if select is not required', async () => {
-  const { getByText } = render(
+  render(
     <MultiSelect
       onOptionsChange={onChange}
       label="Countries"
@@ -552,14 +583,13 @@ test('appends (optional) text to label if select is not required', async () => {
       placeholder="Choose country"
     />,
   );
-  const label = getByText('Countries');
+  const label = await screen.findByText('Countries');
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
-  await waitForElement(() => screen.getByText('Countries'));
 });
 
 test('does not forward styles', async () => {
-  const { container, getByRole, getByTestId } = render(
+  render(
     <MultiSelect
       className="test"
       data-testid="multi-select"
@@ -577,17 +607,16 @@ test('does not forward styles', async () => {
     />,
   );
 
-  const input = getByTestId('multi-select');
+  const input = screen.getByTestId('multi-select');
+
   fireEvent.click(input);
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
-  expect(getByRole('listbox')).not.toHaveStyle('background: red');
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(input.getElementsByClassName('test').length).toBe(0);
+  expect(await screen.findByRole('listbox')).not.toHaveStyle('background: red');
 });
 
 test('should render a non filterable select', async () => {
-  const { getAllByLabelText } = render(
+  render(
     <MultiSelect
       filterable={false}
       label="Countries"
@@ -603,13 +632,13 @@ test('should render a non filterable select', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
-  expect(input.getAttribute('readonly')).toBe('');
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  const inputs = await screen.findAllByLabelText('Countries');
+
+  expect(inputs[0].getAttribute('readonly')).toBe('');
 });
 
 test('should accept a maxHeight prop', async () => {
-  const { getAllByLabelText, getByRole } = render(
+  render(
     <MultiSelect
       label="Countries"
       maxHeight={350}
@@ -625,30 +654,30 @@ test('should accept a maxHeight prop', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
-  fireEvent.click(input);
+  const inputs = screen.getAllByLabelText('Countries');
 
-  const list = getByRole('listbox');
+  fireEvent.click(inputs[0]);
+
+  const list = await screen.findByRole('listbox');
+
   expect(list).toHaveStyleRule('max-height', remCalc(350));
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('should default max-height to 250', async () => {
-  const { getAllByLabelText, getByRole } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  const input = getAllByLabelText('Countries')[0];
-  fireEvent.click(input);
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  const list = getByRole('listbox');
+  fireEvent.click(inputs[0]);
+
+  const list = await screen.findByRole('listbox');
+
   expect(list).toHaveStyleRule('max-height', remCalc(250));
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('should use the passed in ref object if provided', async () => {
   const ref = createRef<HTMLInputElement>();
-  const { getAllByLabelText } = render(
+  render(
     <MultiSelect
       inputRef={ref}
       label="Countries"
@@ -664,16 +693,15 @@ test('should use the passed in ref object if provided', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(ref.current).toEqual(input);
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  expect(ref.current).toEqual(inputs[0]);
 });
 
 test('should call the provided refSetter if any', async () => {
   let inputRef: HTMLInputElement | null = null;
   const refSetter = (ref: HTMLInputElement) => (inputRef = ref);
-  const { getAllByLabelText } = render(
+  render(
     <MultiSelect
       inputRef={refSetter}
       label="Countries"
@@ -689,81 +717,79 @@ test('should call the provided refSetter if any', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputRef).toEqual(input);
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  expect(inputRef).toEqual(inputs[0]);
 });
 
 test('multiselect should render four items with checkboxes', async () => {
-  const { getByRole, getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
 
   fireEvent.click(input);
 
-  const menu = getByRole('listbox');
+  const menu = await screen.findByRole('listbox');
   const options = menu.querySelectorAll('input[type="checkbox"]');
 
   expect(options.length).toEqual(5);
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('multiselect should have two selected options', async () => {
-  const { getByRole, getByTestId } = render(MultiSelectMock);
-  const input = getByTestId('multi-select');
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
 
   fireEvent.click(input);
 
-  const menu = getByRole('listbox');
+  const menu = await screen.findByRole('listbox');
   const options = menu.querySelectorAll(':checked');
 
   expect(options.length).toEqual(2);
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('multiselect should be able to select multiple options', async () => {
-  const { getAllByLabelText } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  const input = getAllByLabelText('Countries')[0];
+  const input = screen.getAllByLabelText('Countries')[0];
 
-  fireEvent.click(input);
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  fireEvent.keyDown(input, { key: 'Enter' });
+  await act(async () => {
+    await fireEvent.click(input);
+    await fireEvent.keyDown(input, { key: 'ArrowDown' });
+    await fireEvent.keyDown(input, { key: 'ArrowDown' });
+    await fireEvent.keyDown(input, { key: 'ArrowDown' });
+    await fireEvent.keyDown(input, { key: 'Enter' });
+  });
 
   expect(onChange).toHaveBeenCalledWith(
     [mockOptions[0].value, mockOptions[1].value, mockOptions[2].value],
     [mockOptions[0], mockOptions[1], mockOptions[2]],
   );
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('multiselect should be able to deselect options', async () => {
-  const { getAllByLabelText } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  fireEvent.click(input);
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  fireEvent.keyDown(input, { key: 'Enter' });
+  await act(async () => {
+    await fireEvent.click(inputs[0]);
+    await fireEvent.keyDown(inputs[0], { key: 'ArrowDown' });
+    await fireEvent.keyDown(inputs[0], { key: 'Enter' });
+  });
 
   expect(onChange).toHaveBeenCalledWith([mockOptions[1].value], [mockOptions[1]]);
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('multiselect options should immediately rerender when prop changes', async () => {
-  const { getAllByRole, getByRole, rerender } = render(
-    <MultiSelect onOptionsChange={onChange} options={mockOptions} />,
-  );
-  const button = getByRole('button');
+  const { rerender } = render(<MultiSelect onOptionsChange={onChange} options={mockOptions} />);
+
+  const button = await screen.findByRole('button');
+
   fireEvent.click(button);
 
-  let options = getAllByRole('option');
+  let options = await screen.findAllByRole('option');
+
   expect(options.length).toBe(5);
 
   rerender(
@@ -776,22 +802,20 @@ test('multiselect options should immediately rerender when prop changes', async 
     />,
   );
 
-  options = getAllByRole('option');
-  expect(options.length).toBe(2);
+  options = await screen.findAllByRole('option');
 
-  await waitForElement(() => screen.getByRole('option', { name: /foo/i }));
+  expect(options.length).toBe(2);
 });
 
 test('chips should be rendered', async () => {
-  const { getAllByText } = render(MultiSelectMock);
+  render(MultiSelectMock);
 
-  expect(getAllByText('United States').length).toEqual(1);
-  expect(getAllByText('Mexico').length).toEqual(1);
-  await waitForElement(() => screen.getAllByText('United States'));
+  expect((await screen.findAllByText('United States')).length).toEqual(1);
+  expect((await screen.findAllByText('Mexico')).length).toEqual(1);
 });
 
 test('options should allow icons', async () => {
-  const { container, getAllByLabelText } = render(
+  const { container } = render(
     <MultiSelect
       filterable={false}
       label="Countries"
@@ -804,99 +828,102 @@ test('options should allow icons', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
-  fireEvent.click(input);
+  const inputs = await screen.findAllByLabelText('Countries');
+
+  await act(async () => {
+    await fireEvent.click(inputs[0]);
+  });
 
   const svg = container.querySelectorAll('svg');
-  expect(svg.length).toBe(3);
 
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(svg.length).toBe(3);
 });
 
 test('grouped multiselect should render group labels, render uppercased', async () => {
-  const { getAllByLabelText, getByText } = render(GroupedMultiSelectMock);
+  render(GroupedMultiSelectMock);
 
-  const input = getAllByLabelText('Countries')[0];
-  fireEvent.click(input);
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  const label1 = getByText('Label 1');
-  const label2 = getByText('Label 2');
+  fireEvent.click(inputs[0]);
+
+  const label1 = await screen.findByText('Label 1');
+  const label2 = await screen.findByText('Label 2');
 
   expect(label1).toBeInTheDocument();
   expect(label1).toHaveStyle('text-transform: uppercase');
   expect(label2).toBeInTheDocument();
   expect(label2).toHaveStyle('text-transform: uppercase');
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('group labels should be grayed out', async () => {
-  const { getByTestId, getByText } = render(GroupedMultiSelectMock);
-  const input = getByTestId('groupSelect');
+  render(GroupedMultiSelectMock);
+
+  const input = await screen.findByTestId('group-select');
+
   fireEvent.click(input);
 
-  const label1 = getByText('Label 1');
-  const label2 = getByText('Label 2');
+  const label1 = await screen.findByText('Label 1');
+  const label2 = await screen.findByText('Label 2');
 
   expect(label1).toHaveStyle('color: #8C93AD');
   expect(label2).toHaveStyle('color: #8C93AD');
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('group labels should be skipped when using keyboard to navigate options', async () => {
-  const { getAllByRole, getByTestId } = render(GroupedMultiSelectMock);
-  const input = getByTestId('groupSelect');
+  render(GroupedMultiSelectMock);
+  const input = screen.getByTestId('group-select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
 
   expect(options.length).toBe(6);
+
   fireEvent.keyDown(input, { key: 'ArrowDown' });
+
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'ArrowDown' });
+
   expect(options[2].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[2].id);
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('group labels should still render when filtering options', async () => {
-  const { getAllByRole, getByTestId, getByText } = render(GroupedMultiSelectMock);
-  const input = getByTestId('groupSelect');
+  render(GroupedMultiSelectMock);
+
+  const input = await screen.findByTestId('group-select');
+
   fireEvent.click(input);
   fireEvent.change(input, { target: { value: 'm' } });
 
-  const label1 = getByText('Label 1');
-  const label2 = getByText('Label 2');
-  const options = getAllByRole('option');
+  const label1 = await screen.findByText('Label 1');
+  const label2 = await screen.findByText('Label 2');
+  const options = await screen.findAllByRole('option');
 
   expect(options.length).toBe(2);
   expect(label1).toBeInTheDocument();
   expect(label2).toBeInTheDocument();
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('select option should supports description', async () => {
-  const { getByText, getByTestId } = render(MultiSelectWithOptionsDescriptions);
-  const input = getByTestId('select');
+  render(MultiSelectWithOptionsDescriptions);
+
+  const input = await screen.findByTestId('select');
+
   fireEvent.click(input);
 
-  expect(getByText('US Description')).toBeInTheDocument();
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(await screen.findByText('US Description')).toBeInTheDocument();
 });
 
 test('select action should supports description', async () => {
-  const { getByText, getByTestId } = render(MultiSelectWithOptionsDescriptions);
-  const input = getByTestId('select');
+  render(MultiSelectWithOptionsDescriptions);
+
+  const input = await screen.findByTestId('select');
+
   fireEvent.click(input);
 
-  expect(getByText('Action Description')).toBeInTheDocument();
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(await screen.findByText('Action Description')).toBeInTheDocument();
 });
