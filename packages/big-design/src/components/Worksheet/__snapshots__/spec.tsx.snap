@@ -2,36 +2,36 @@
 
 exports[`renders worksheet 1`] = `
 <table
-  class="styled__Table-sc-16rzzpq-0 eWZhUt"
+  class="styled__Table-sc-16rzzpq-0 cDOfjs"
   tabindex="0"
 >
   <thead>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 dQfqjh"
+        class="styled__Status-sc-1aacki0-0 iuSuXw"
       />
       <th
-        class="styled__Header-sc-16rzzpq-1 hiiNAX"
+        class="styled__Header-sc-16rzzpq-1 eBiVIc"
       >
         Product name
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 hiiNAX"
+        class="styled__Header-sc-16rzzpq-1 eBiVIc"
       >
         Visible on storefront
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 hiiNAX"
+        class="styled__Header-sc-16rzzpq-1 eBiVIc"
       >
         Other field
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 hiiNAX"
+        class="styled__Header-sc-16rzzpq-1 eBiVIc"
       >
         Other field
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 hohMQL"
+        class="styled__Header-sc-16rzzpq-1 exsIhv"
       >
         Number field
       </th>
@@ -40,14 +40,14 @@ exports[`renders worksheet 1`] = `
   <tbody>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 dQfqjh"
+        class="styled__Status-sc-1aacki0-0 iuSuXw"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Shoes Name Three"
         >
@@ -55,30 +55,30 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
+        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
         type="checkbox"
       >
         <div
-          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 jgSEVL"
         >
           <div
-            class="styled__CheckboxContainer-sc-s1u0st-1 hoGZVm"
+            class="styled__CheckboxContainer-sc-s1u0st-1 jwTjuz"
           >
             <input
               aria-checked="true"
               aria-labelledby="bd-checkbox_label-2"
               checked=""
-              class="styled__HiddenCheckbox-sc-s1u0st-2 HiMTa"
+              class="styled__HiddenCheckbox-sc-s1u0st-2 fesOYn"
               id="bd-checkbox-1"
               type="checkbox"
             />
             <label
               aria-hidden="true"
-              class="styled__StyledCheckbox-sc-s1u0st-3 hlxaln"
+              class="styled__StyledCheckbox-sc-s1u0st-3 iTGSWB"
               for="bd-checkbox-1"
             >
               <svg
-                class="base__StyledIcon-sc-a9u0e1-0 jcsFSA"
+                class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -96,11 +96,11 @@ exports[`renders worksheet 1`] = `
               </svg>
             </label>
             <div
-              class="styled__CheckboxLabelContainer-sc-s1u0st-0 fsVjMt"
+              class="styled__CheckboxLabelContainer-sc-s1u0st-0 dqYAfq"
             >
               <label
                 aria-hidden="false"
-                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 kCTRAh gFPgdf"
                 for="bd-checkbox-1"
                 hidden=""
                 id="bd-checkbox_label-2"
@@ -112,11 +112,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Text"
         >
@@ -124,17 +124,17 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sc-sj5f1m-0 bVyIus styled__StyledFlex-sc-hcvk8l-0 lcivPq"
+          class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlex-sc-hcvk8l-0 dhhewn"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 eBGMhc styled__StyledFlexItem-sc-smjqtt-0 cEtHzl styled__StyledFlexItem-sc-zoq9bz-1 jhNRVE"
+            class="styled__StyledBox-sc-sj5f1m-0 fbjIpR styled__StyledFlexItem-sc-smjqtt-0 dYiLXE styled__StyledFlexItem-sc-zoq9bz-1 enfxxd"
           >
             <p
-              class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+              class="styled__StyledSmall-sc-tqnj75-6 buphHb"
               color="secondary70"
               title="1"
             >
@@ -142,10 +142,10 @@ exports[`renders worksheet 1`] = `
             </p>
           </div>
           <button
-            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-sc-zoq9bz-0 cfGbfD"
+            class="styled__StyledButton-sc-3yq204-0 bqyczY styled__StyledButton-sc-zoq9bz-0 gjuKcK"
           >
             <span
-              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+              class="styled__ContentWrapper-sc-3yq204-1 bBtdZJ"
             >
               Edit
             </span>
@@ -153,11 +153,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
+        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
         type="number"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="$50.00"
         >
@@ -167,14 +167,14 @@ exports[`renders worksheet 1`] = `
     </tr>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 dQfqjh"
+        class="styled__Status-sc-1aacki0-0 iuSuXw"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Shoes Name Two"
         >
@@ -182,30 +182,30 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
+        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
         type="checkbox"
       >
         <div
-          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 jgSEVL"
         >
           <div
-            class="styled__CheckboxContainer-sc-s1u0st-1 hoGZVm"
+            class="styled__CheckboxContainer-sc-s1u0st-1 jwTjuz"
           >
             <input
               aria-checked="true"
               aria-labelledby="bd-checkbox_label-5"
               checked=""
-              class="styled__HiddenCheckbox-sc-s1u0st-2 HiMTa"
+              class="styled__HiddenCheckbox-sc-s1u0st-2 fesOYn"
               id="bd-checkbox-4"
               type="checkbox"
             />
             <label
               aria-hidden="true"
-              class="styled__StyledCheckbox-sc-s1u0st-3 hlxaln"
+              class="styled__StyledCheckbox-sc-s1u0st-3 iTGSWB"
               for="bd-checkbox-4"
             >
               <svg
-                class="base__StyledIcon-sc-a9u0e1-0 jcsFSA"
+                class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -223,11 +223,11 @@ exports[`renders worksheet 1`] = `
               </svg>
             </label>
             <div
-              class="styled__CheckboxLabelContainer-sc-s1u0st-0 fsVjMt"
+              class="styled__CheckboxLabelContainer-sc-s1u0st-0 dqYAfq"
             >
               <label
                 aria-hidden="false"
-                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 kCTRAh gFPgdf"
                 for="bd-checkbox-4"
                 hidden=""
                 id="bd-checkbox_label-5"
@@ -239,11 +239,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Text"
         >
@@ -251,17 +251,17 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sc-sj5f1m-0 bVyIus styled__StyledFlex-sc-hcvk8l-0 lcivPq"
+          class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlex-sc-hcvk8l-0 dhhewn"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 eBGMhc styled__StyledFlexItem-sc-smjqtt-0 cEtHzl styled__StyledFlexItem-sc-zoq9bz-1 jhNRVE"
+            class="styled__StyledBox-sc-sj5f1m-0 fbjIpR styled__StyledFlexItem-sc-smjqtt-0 dYiLXE styled__StyledFlexItem-sc-zoq9bz-1 enfxxd"
           >
             <p
-              class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+              class="styled__StyledSmall-sc-tqnj75-6 buphHb"
               color="secondary70"
               title="2"
             >
@@ -269,10 +269,10 @@ exports[`renders worksheet 1`] = `
             </p>
           </div>
           <button
-            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-sc-zoq9bz-0 cfGbfD"
+            class="styled__StyledButton-sc-3yq204-0 bqyczY styled__StyledButton-sc-zoq9bz-0 gjuKcK"
           >
             <span
-              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+              class="styled__ContentWrapper-sc-3yq204-1 bBtdZJ"
             >
               Edit
             </span>
@@ -280,11 +280,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
+        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
         type="number"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="$50.00"
         >
@@ -294,14 +294,14 @@ exports[`renders worksheet 1`] = `
     </tr>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 dQfqjh"
+        class="styled__Status-sc-1aacki0-0 iuSuXw"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Shoes Name One"
         >
@@ -309,29 +309,29 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
+        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
         type="checkbox"
       >
         <div
-          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 jgSEVL"
         >
           <div
-            class="styled__CheckboxContainer-sc-s1u0st-1 hoGZVm"
+            class="styled__CheckboxContainer-sc-s1u0st-1 jwTjuz"
           >
             <input
               aria-checked="false"
               aria-labelledby="bd-checkbox_label-8"
-              class="styled__HiddenCheckbox-sc-s1u0st-2 HiMTa"
+              class="styled__HiddenCheckbox-sc-s1u0st-2 fesOYn"
               id="bd-checkbox-7"
               type="checkbox"
             />
             <label
               aria-hidden="true"
-              class="styled__StyledCheckbox-sc-s1u0st-3 BOTgh"
+              class="styled__StyledCheckbox-sc-s1u0st-3 bXFgcu"
               for="bd-checkbox-7"
             >
               <svg
-                class="base__StyledIcon-sc-a9u0e1-0 jcsFSA"
+                class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -349,11 +349,11 @@ exports[`renders worksheet 1`] = `
               </svg>
             </label>
             <div
-              class="styled__CheckboxLabelContainer-sc-s1u0st-0 fsVjMt"
+              class="styled__CheckboxLabelContainer-sc-s1u0st-0 dqYAfq"
             >
               <label
                 aria-hidden="false"
-                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 kCTRAh gFPgdf"
                 for="bd-checkbox-7"
                 hidden=""
                 id="bd-checkbox_label-8"
@@ -365,11 +365,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Text"
         >
@@ -377,17 +377,17 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sc-sj5f1m-0 bVyIus styled__StyledFlex-sc-hcvk8l-0 lcivPq"
+          class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlex-sc-hcvk8l-0 dhhewn"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 eBGMhc styled__StyledFlexItem-sc-smjqtt-0 cEtHzl styled__StyledFlexItem-sc-zoq9bz-1 jhNRVE"
+            class="styled__StyledBox-sc-sj5f1m-0 fbjIpR styled__StyledFlexItem-sc-smjqtt-0 dYiLXE styled__StyledFlexItem-sc-zoq9bz-1 enfxxd"
           >
             <p
-              class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+              class="styled__StyledSmall-sc-tqnj75-6 buphHb"
               color="secondary70"
               title="3"
             >
@@ -395,10 +395,10 @@ exports[`renders worksheet 1`] = `
             </p>
           </div>
           <button
-            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-sc-zoq9bz-0 cfGbfD"
+            class="styled__StyledButton-sc-3yq204-0 bqyczY styled__StyledButton-sc-zoq9bz-0 gjuKcK"
           >
             <span
-              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+              class="styled__ContentWrapper-sc-3yq204-1 bBtdZJ"
             >
               Edit
             </span>
@@ -406,11 +406,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
+        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
         type="number"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="$50.00"
         >
@@ -420,14 +420,14 @@ exports[`renders worksheet 1`] = `
     </tr>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 dQfqjh"
+        class="styled__Status-sc-1aacki0-0 iuSuXw"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Variant"
         >
@@ -435,30 +435,30 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
+        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
         type="checkbox"
       >
         <div
-          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 jgSEVL"
         >
           <div
-            class="styled__CheckboxContainer-sc-s1u0st-1 hoGZVm"
+            class="styled__CheckboxContainer-sc-s1u0st-1 jwTjuz"
           >
             <input
               aria-checked="true"
               aria-labelledby="bd-checkbox_label-11"
               checked=""
-              class="styled__HiddenCheckbox-sc-s1u0st-2 HiMTa"
+              class="styled__HiddenCheckbox-sc-s1u0st-2 fesOYn"
               id="bd-checkbox-10"
               type="checkbox"
             />
             <label
               aria-hidden="true"
-              class="styled__StyledCheckbox-sc-s1u0st-3 hlxaln"
+              class="styled__StyledCheckbox-sc-s1u0st-3 iTGSWB"
               for="bd-checkbox-10"
             >
               <svg
-                class="base__StyledIcon-sc-a9u0e1-0 jcsFSA"
+                class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -476,11 +476,11 @@ exports[`renders worksheet 1`] = `
               </svg>
             </label>
             <div
-              class="styled__CheckboxLabelContainer-sc-s1u0st-0 fsVjMt"
+              class="styled__CheckboxLabelContainer-sc-s1u0st-0 dqYAfq"
             >
               <label
                 aria-hidden="false"
-                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 kCTRAh gFPgdf"
                 for="bd-checkbox-10"
                 hidden=""
                 id="bd-checkbox_label-11"
@@ -492,11 +492,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Text"
         >
@@ -504,17 +504,17 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sc-sj5f1m-0 bVyIus styled__StyledFlex-sc-hcvk8l-0 lcivPq"
+          class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlex-sc-hcvk8l-0 dhhewn"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 eBGMhc styled__StyledFlexItem-sc-smjqtt-0 cEtHzl styled__StyledFlexItem-sc-zoq9bz-1 jhNRVE"
+            class="styled__StyledBox-sc-sj5f1m-0 fbjIpR styled__StyledFlexItem-sc-smjqtt-0 dYiLXE styled__StyledFlexItem-sc-zoq9bz-1 enfxxd"
           >
             <p
-              class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+              class="styled__StyledSmall-sc-tqnj75-6 buphHb"
               color="secondary70"
               title="4"
             >
@@ -522,10 +522,10 @@ exports[`renders worksheet 1`] = `
             </p>
           </div>
           <button
-            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-sc-zoq9bz-0 cfGbfD"
+            class="styled__StyledButton-sc-3yq204-0 bqyczY styled__StyledButton-sc-zoq9bz-0 gjuKcK"
           >
             <span
-              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+              class="styled__ContentWrapper-sc-3yq204-1 bBtdZJ"
             >
               Edit
             </span>
@@ -533,11 +533,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
+        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
         type="number"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="$50.00"
         >
@@ -547,43 +547,43 @@ exports[`renders worksheet 1`] = `
     </tr>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 jpxEqg"
+        class="styled__Status-sc-1aacki0-0 bogBHW"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 iLwcsN"
+        class="styled__StyledCell-sc-1bt06ph-0 kfcbVP"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title=""
         />
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
+        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
         type="checkbox"
       >
         <div
-          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 jgSEVL"
         >
           <div
-            class="styled__CheckboxContainer-sc-s1u0st-1 hoGZVm"
+            class="styled__CheckboxContainer-sc-s1u0st-1 jwTjuz"
           >
             <input
               aria-checked="true"
               aria-labelledby="bd-checkbox_label-14"
               checked=""
-              class="styled__HiddenCheckbox-sc-s1u0st-2 HiMTa"
+              class="styled__HiddenCheckbox-sc-s1u0st-2 fesOYn"
               id="bd-checkbox-13"
               type="checkbox"
             />
             <label
               aria-hidden="true"
-              class="styled__StyledCheckbox-sc-s1u0st-3 hlxaln"
+              class="styled__StyledCheckbox-sc-s1u0st-3 iTGSWB"
               for="bd-checkbox-13"
             >
               <svg
-                class="base__StyledIcon-sc-a9u0e1-0 jcsFSA"
+                class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -601,11 +601,11 @@ exports[`renders worksheet 1`] = `
               </svg>
             </label>
             <div
-              class="styled__CheckboxLabelContainer-sc-s1u0st-0 fsVjMt"
+              class="styled__CheckboxLabelContainer-sc-s1u0st-0 dqYAfq"
             >
               <label
                 aria-hidden="false"
-                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 kCTRAh gFPgdf"
                 for="bd-checkbox-13"
                 hidden=""
                 id="bd-checkbox_label-14"
@@ -617,11 +617,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Text"
         >
@@ -629,17 +629,17 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sc-sj5f1m-0 bVyIus styled__StyledFlex-sc-hcvk8l-0 lcivPq"
+          class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlex-sc-hcvk8l-0 dhhewn"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 eBGMhc styled__StyledFlexItem-sc-smjqtt-0 cEtHzl styled__StyledFlexItem-sc-zoq9bz-1 jhNRVE"
+            class="styled__StyledBox-sc-sj5f1m-0 fbjIpR styled__StyledFlexItem-sc-smjqtt-0 dYiLXE styled__StyledFlexItem-sc-zoq9bz-1 enfxxd"
           >
             <p
-              class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+              class="styled__StyledSmall-sc-tqnj75-6 buphHb"
               color="secondary70"
               title="5"
             >
@@ -647,10 +647,10 @@ exports[`renders worksheet 1`] = `
             </p>
           </div>
           <button
-            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-sc-zoq9bz-0 cfGbfD"
+            class="styled__StyledButton-sc-3yq204-0 bqyczY styled__StyledButton-sc-zoq9bz-0 gjuKcK"
           >
             <span
-              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+              class="styled__ContentWrapper-sc-3yq204-1 bBtdZJ"
             >
               Edit
             </span>
@@ -658,11 +658,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
+        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
         type="number"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="$50.00"
         >
@@ -672,14 +672,14 @@ exports[`renders worksheet 1`] = `
     </tr>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 dQfqjh"
+        class="styled__Status-sc-1aacki0-0 iuSuXw"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Variant"
         >
@@ -687,30 +687,30 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
+        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
         type="checkbox"
       >
         <div
-          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 jgSEVL"
         >
           <div
-            class="styled__CheckboxContainer-sc-s1u0st-1 hoGZVm"
+            class="styled__CheckboxContainer-sc-s1u0st-1 jwTjuz"
           >
             <input
               aria-checked="true"
               aria-labelledby="bd-checkbox_label-17"
               checked=""
-              class="styled__HiddenCheckbox-sc-s1u0st-2 HiMTa"
+              class="styled__HiddenCheckbox-sc-s1u0st-2 fesOYn"
               id="bd-checkbox-16"
               type="checkbox"
             />
             <label
               aria-hidden="true"
-              class="styled__StyledCheckbox-sc-s1u0st-3 hlxaln"
+              class="styled__StyledCheckbox-sc-s1u0st-3 iTGSWB"
               for="bd-checkbox-16"
             >
               <svg
-                class="base__StyledIcon-sc-a9u0e1-0 jcsFSA"
+                class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -728,11 +728,11 @@ exports[`renders worksheet 1`] = `
               </svg>
             </label>
             <div
-              class="styled__CheckboxLabelContainer-sc-s1u0st-0 fsVjMt"
+              class="styled__CheckboxLabelContainer-sc-s1u0st-0 dqYAfq"
             >
               <label
                 aria-hidden="false"
-                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 kCTRAh gFPgdf"
                 for="bd-checkbox-16"
                 hidden=""
                 id="bd-checkbox_label-17"
@@ -744,11 +744,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Text"
         >
@@ -756,17 +756,17 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sc-sj5f1m-0 bVyIus styled__StyledFlex-sc-hcvk8l-0 lcivPq"
+          class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlex-sc-hcvk8l-0 dhhewn"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 eBGMhc styled__StyledFlexItem-sc-smjqtt-0 cEtHzl styled__StyledFlexItem-sc-zoq9bz-1 jhNRVE"
+            class="styled__StyledBox-sc-sj5f1m-0 fbjIpR styled__StyledFlexItem-sc-smjqtt-0 dYiLXE styled__StyledFlexItem-sc-zoq9bz-1 enfxxd"
           >
             <p
-              class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+              class="styled__StyledSmall-sc-tqnj75-6 buphHb"
               color="secondary70"
               title="6"
             >
@@ -774,10 +774,10 @@ exports[`renders worksheet 1`] = `
             </p>
           </div>
           <button
-            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-sc-zoq9bz-0 cfGbfD"
+            class="styled__StyledButton-sc-3yq204-0 bqyczY styled__StyledButton-sc-zoq9bz-0 gjuKcK"
           >
             <span
-              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+              class="styled__ContentWrapper-sc-3yq204-1 bBtdZJ"
             >
               Edit
             </span>
@@ -785,11 +785,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
+        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
         type="number"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="$50.00"
         >
@@ -799,14 +799,14 @@ exports[`renders worksheet 1`] = `
     </tr>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 jpxEqg"
+        class="styled__Status-sc-1aacki0-0 bogBHW"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Variant"
         >
@@ -814,29 +814,29 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
+        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
         type="checkbox"
       >
         <div
-          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 jgSEVL"
         >
           <div
-            class="styled__CheckboxContainer-sc-s1u0st-1 hoGZVm"
+            class="styled__CheckboxContainer-sc-s1u0st-1 jwTjuz"
           >
             <input
               aria-checked="false"
               aria-labelledby="bd-checkbox_label-20"
-              class="styled__HiddenCheckbox-sc-s1u0st-2 HiMTa"
+              class="styled__HiddenCheckbox-sc-s1u0st-2 fesOYn"
               id="bd-checkbox-19"
               type="checkbox"
             />
             <label
               aria-hidden="true"
-              class="styled__StyledCheckbox-sc-s1u0st-3 BOTgh"
+              class="styled__StyledCheckbox-sc-s1u0st-3 bXFgcu"
               for="bd-checkbox-19"
             >
               <svg
-                class="base__StyledIcon-sc-a9u0e1-0 jcsFSA"
+                class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -854,11 +854,11 @@ exports[`renders worksheet 1`] = `
               </svg>
             </label>
             <div
-              class="styled__CheckboxLabelContainer-sc-s1u0st-0 fsVjMt"
+              class="styled__CheckboxLabelContainer-sc-s1u0st-0 dqYAfq"
             >
               <label
                 aria-hidden="false"
-                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 kCTRAh gFPgdf"
                 for="bd-checkbox-19"
                 hidden=""
                 id="bd-checkbox_label-20"
@@ -870,11 +870,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Text"
         >
@@ -882,17 +882,17 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sc-sj5f1m-0 bVyIus styled__StyledFlex-sc-hcvk8l-0 lcivPq"
+          class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlex-sc-hcvk8l-0 dhhewn"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 eBGMhc styled__StyledFlexItem-sc-smjqtt-0 cEtHzl styled__StyledFlexItem-sc-zoq9bz-1 jhNRVE"
+            class="styled__StyledBox-sc-sj5f1m-0 fbjIpR styled__StyledFlexItem-sc-smjqtt-0 dYiLXE styled__StyledFlexItem-sc-zoq9bz-1 enfxxd"
           >
             <p
-              class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+              class="styled__StyledSmall-sc-tqnj75-6 buphHb"
               color="secondary70"
               title="7"
             >
@@ -900,10 +900,10 @@ exports[`renders worksheet 1`] = `
             </p>
           </div>
           <button
-            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-sc-zoq9bz-0 cfGbfD"
+            class="styled__StyledButton-sc-3yq204-0 bqyczY styled__StyledButton-sc-zoq9bz-0 gjuKcK"
           >
             <span
-              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+              class="styled__ContentWrapper-sc-3yq204-1 bBtdZJ"
             >
               Edit
             </span>
@@ -911,11 +911,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 itFNTF"
+        class="styled__StyledCell-sc-1bt06ph-0 bnHyzk"
         type="number"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="$49.00"
         >
@@ -925,14 +925,14 @@ exports[`renders worksheet 1`] = `
     </tr>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 dQfqjh"
+        class="styled__Status-sc-1aacki0-0 iuSuXw"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Dress Name One"
         >
@@ -940,30 +940,30 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
+        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
         type="checkbox"
       >
         <div
-          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 jgSEVL"
         >
           <div
-            class="styled__CheckboxContainer-sc-s1u0st-1 hoGZVm"
+            class="styled__CheckboxContainer-sc-s1u0st-1 jwTjuz"
           >
             <input
               aria-checked="true"
               aria-labelledby="bd-checkbox_label-23"
               checked=""
-              class="styled__HiddenCheckbox-sc-s1u0st-2 HiMTa"
+              class="styled__HiddenCheckbox-sc-s1u0st-2 fesOYn"
               id="bd-checkbox-22"
               type="checkbox"
             />
             <label
               aria-hidden="true"
-              class="styled__StyledCheckbox-sc-s1u0st-3 hlxaln"
+              class="styled__StyledCheckbox-sc-s1u0st-3 iTGSWB"
               for="bd-checkbox-22"
             >
               <svg
-                class="base__StyledIcon-sc-a9u0e1-0 jcsFSA"
+                class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -981,11 +981,11 @@ exports[`renders worksheet 1`] = `
               </svg>
             </label>
             <div
-              class="styled__CheckboxLabelContainer-sc-s1u0st-0 fsVjMt"
+              class="styled__CheckboxLabelContainer-sc-s1u0st-0 dqYAfq"
             >
               <label
                 aria-hidden="false"
-                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 kCTRAh gFPgdf"
                 for="bd-checkbox-22"
                 hidden=""
                 id="bd-checkbox_label-23"
@@ -997,11 +997,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Text"
         >
@@ -1009,17 +1009,17 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sc-sj5f1m-0 bVyIus styled__StyledFlex-sc-hcvk8l-0 lcivPq"
+          class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlex-sc-hcvk8l-0 dhhewn"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 eBGMhc styled__StyledFlexItem-sc-smjqtt-0 cEtHzl styled__StyledFlexItem-sc-zoq9bz-1 jhNRVE"
+            class="styled__StyledBox-sc-sj5f1m-0 fbjIpR styled__StyledFlexItem-sc-smjqtt-0 dYiLXE styled__StyledFlexItem-sc-zoq9bz-1 enfxxd"
           >
             <p
-              class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+              class="styled__StyledSmall-sc-tqnj75-6 buphHb"
               color="secondary70"
               title="8"
             >
@@ -1027,10 +1027,10 @@ exports[`renders worksheet 1`] = `
             </p>
           </div>
           <button
-            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-sc-zoq9bz-0 cfGbfD"
+            class="styled__StyledButton-sc-3yq204-0 bqyczY styled__StyledButton-sc-zoq9bz-0 gjuKcK"
           >
             <span
-              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+              class="styled__ContentWrapper-sc-3yq204-1 bBtdZJ"
             >
               Edit
             </span>
@@ -1038,11 +1038,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
+        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
         type="number"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="$50.00"
         >
@@ -1052,14 +1052,14 @@ exports[`renders worksheet 1`] = `
     </tr>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 dQfqjh"
+        class="styled__Status-sc-1aacki0-0 iuSuXw"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Fans Name One"
         >
@@ -1067,30 +1067,30 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eanDzN"
+        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
         type="checkbox"
       >
         <div
-          class="styled__CheckboxWrapper-sc-1pcspgo-0 giEcli"
+          class="styled__CheckboxWrapper-sc-1pcspgo-0 jgSEVL"
         >
           <div
-            class="styled__CheckboxContainer-sc-s1u0st-1 hoGZVm"
+            class="styled__CheckboxContainer-sc-s1u0st-1 jwTjuz"
           >
             <input
               aria-checked="true"
               aria-labelledby="bd-checkbox_label-26"
               checked=""
-              class="styled__HiddenCheckbox-sc-s1u0st-2 HiMTa"
+              class="styled__HiddenCheckbox-sc-s1u0st-2 fesOYn"
               id="bd-checkbox-25"
               type="checkbox"
             />
             <label
               aria-hidden="true"
-              class="styled__StyledCheckbox-sc-s1u0st-3 hlxaln"
+              class="styled__StyledCheckbox-sc-s1u0st-3 iTGSWB"
               for="bd-checkbox-25"
             >
               <svg
-                class="base__StyledIcon-sc-a9u0e1-0 jcsFSA"
+                class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -1108,11 +1108,11 @@ exports[`renders worksheet 1`] = `
               </svg>
             </label>
             <div
-              class="styled__CheckboxLabelContainer-sc-s1u0st-0 fsVjMt"
+              class="styled__CheckboxLabelContainer-sc-s1u0st-0 dqYAfq"
             >
               <label
                 aria-hidden="false"
-                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 fxhvEG"
+                class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 kCTRAh gFPgdf"
                 for="bd-checkbox-25"
                 hidden=""
                 id="bd-checkbox_label-26"
@@ -1124,11 +1124,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="text"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="Text"
         >
@@ -1136,17 +1136,17 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 hDVFqs"
+        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
         type="modal"
       >
         <div
-          class="styled__StyledBox-sc-sj5f1m-0 bVyIus styled__StyledFlex-sc-hcvk8l-0 lcivPq"
+          class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlex-sc-hcvk8l-0 dhhewn"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 eBGMhc styled__StyledFlexItem-sc-smjqtt-0 cEtHzl styled__StyledFlexItem-sc-zoq9bz-1 jhNRVE"
+            class="styled__StyledBox-sc-sj5f1m-0 fbjIpR styled__StyledFlexItem-sc-smjqtt-0 dYiLXE styled__StyledFlexItem-sc-zoq9bz-1 enfxxd"
           >
             <p
-              class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+              class="styled__StyledSmall-sc-tqnj75-6 buphHb"
               color="secondary70"
               title="9"
             >
@@ -1154,10 +1154,10 @@ exports[`renders worksheet 1`] = `
             </p>
           </div>
           <button
-            class="styled__StyledButton-sc-3yq204-0 kQwjGx styled__StyledButton-sc-zoq9bz-0 cfGbfD"
+            class="styled__StyledButton-sc-3yq204-0 bqyczY styled__StyledButton-sc-zoq9bz-0 gjuKcK"
           >
             <span
-              class="styled__ContentWrapper-sc-3yq204-1 cUnSLq"
+              class="styled__ContentWrapper-sc-3yq204-1 bBtdZJ"
             >
               Edit
             </span>
@@ -1165,11 +1165,11 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 bRpSFs"
+        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
         type="number"
       >
         <p
-          class="styled__StyledSmall-sc-tqnj75-6 coOZF"
+          class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
           title="$50.00"
         >

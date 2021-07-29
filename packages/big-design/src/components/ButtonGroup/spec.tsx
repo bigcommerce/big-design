@@ -1,5 +1,5 @@
 import { AddIcon } from '@bigcommerce/big-design-icons';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { ButtonGroup } from './ButtonGroup';
@@ -30,8 +30,11 @@ beforeAll(() => {
 
 afterAll(() => Object.defineProperties(window.HTMLElement.prototype, originalPrototype));
 
-test('renders given actions', () => {
+test('renders given actions', async () => {
   render(<ButtonGroup actions={[{ text: 'button 1' }, { text: 'button 2' }, { text: 'button 3' }]} />);
+
+  // Prevents an act warning on component mount
+  await act(() => Promise.resolve());
 
   expect(screen.getByRole('button', { name: /button 1/i })).toBeVisible();
   expect(screen.getByRole('button', { name: /button 2/i })).toBeVisible();
@@ -97,11 +100,19 @@ test('dropdown item on click callback receives synthetic event', async () => {
     />,
   );
 
-  fireEvent.click(screen.getByTitle('more'));
+  // Accroding to https://www.w3.org/TR/accname-1.1/#step2A the
+  // accessibility name is an empty string if the element is hidden
+  const button = await screen.findByRole('button', {
+    name: (_, element) => {
+      return Boolean(element.textContent?.match(/button 4/i));
+    },
+    hidden: true,
+  });
 
-  fireEvent.click(await screen.findByRole('option', { name: /button 4/i }));
+  await act(async () => {
+    fireEvent.click(screen.getByTitle('more'));
+    fireEvent.click(await screen.findByRole('option', { name: /button 4/i }));
+  });
 
-  expect(mockOnClick).toHaveBeenCalledWith(
-    expect.objectContaining({ target: await screen.findByRole('button', { name: /button 4/i }) }),
-  );
+  expect(mockOnClick).toHaveBeenCalledWith(expect.objectContaining({ target: button }));
 });

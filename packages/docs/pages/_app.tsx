@@ -38,11 +38,15 @@ export default class MyApp extends App {
           <link rel="icon" type="image/svg+xml" href={`${process.env.URL_PREFIX}/favicon.svg`} />
           <title>BigDesign</title>
           <meta property="og:image" content={`${process.env.URL_PREFIX}/og-image.png`} />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <style jsx global>
           {`
-            @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600');
-
             html,
             body,
             #__next {

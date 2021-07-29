@@ -548,7 +548,7 @@ exports[`renders a simple table 1`] = `
   id="bd-table-1"
 >
   <thead
-    class=""
+    class="styled__StyledTableHead-sc-1p8j1x-0"
   >
     <tr>
       <th
@@ -581,7 +581,7 @@ exports[`renders a simple table 1`] = `
     </tr>
   </thead>
   <tbody
-    class=""
+    class="styled__StyledTableBody-sc-1bwe2hn-0"
   >
     <tr
       class="c5"
@@ -702,23 +702,23 @@ exports[`renders a table figure 1`] = `
 `;
 
 exports[`selectable renders selectable actions and checkboxes 1`] = `
-.c9 {
+.c10 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.c1 {
+  margin-right: 0.25rem;
+  box-sizing: border-box;
 }
 
 .c3 {
   box-sizing: border-box;
 }
 
-.c13 {
+.c15 {
   margin-right: 1rem;
-  box-sizing: border-box;
-}
-
-.c1 {
-  margin-right: 0.25rem;
   box-sizing: border-box;
 }
 
@@ -765,20 +765,19 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   flex-shrink: 0;
 }
 
-.c14 {
+.c12 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
-  margin: 0;
 }
 
-.c14:last-child {
+.c12:last-child {
   margin-bottom: 0;
 }
 
-.c12 {
+.c14 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -787,16 +786,24 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin-left: 0.75rem;
 }
 
-.c12:last-child {
+.c14:last-child {
   margin-bottom: 0;
 }
 
-.c11 {
+.c16 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
+  margin: 0;
+}
+
+.c16:last-child {
+  margin-bottom: 0;
+}
+
+.c13 {
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -810,11 +817,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   width: 1px;
 }
 
-.c11:last-child {
-  margin-bottom: 0;
-}
-
-.c10 {
+.c11 {
   margin-left: 0.5rem;
 }
 
@@ -842,7 +845,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   width: 1px;
 }
 
-.c8 {
+.c9 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,background,box-shadow,color,opacity;
@@ -873,7 +876,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   width: 1.25rem;
 }
 
-.c8:hover {
+.c9:hover {
   border-color: #B4BAD1;
 }
 
@@ -881,7 +884,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c8 svg {
+.c9 svg {
   opacity: 0;
 }
 
@@ -927,11 +930,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         />
         <label
           aria-hidden="true"
-          class="c8"
+          class="c8 c9"
           for="bd-checkbox-2"
         >
           <svg
-            class="c9"
+            class="c10"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -949,10 +952,10 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
           </svg>
         </label>
         <div
-          class="c10"
+          class="c11"
         >
           <label
-            class="c11"
+            class="c12 c13"
             for="bd-checkbox-2"
             hidden=""
             id="bd-checkbox_label-3"
@@ -962,17 +965,17 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         </div>
       </div>
       <p
-        class="c12"
+        class="c14"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c13 c2"
+    class="c15 c2"
   >
     <p
-      class="c14"
+      class="c16"
     >
       Product
     </p>
