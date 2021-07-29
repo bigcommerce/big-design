@@ -1,6 +1,6 @@
 import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, screen, waitForElement } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import React, { createRef } from 'react';
 
@@ -74,7 +74,7 @@ const GroupedSelectMock = (
       icon: <DeleteIcon />,
       onActionClick,
     }}
-    data-testid="groupSelect"
+    data-testid="group-select"
     error="Required"
     label="Countries"
     onOptionChange={onChange}
@@ -106,220 +106,256 @@ const SelectWithOptionsDescriptions = (
 );
 
 test('renders select combobox', async () => {
-  const { getByRole } = render(SelectMock);
+  render(SelectMock);
+  const combobox = await screen.findByRole('combobox');
 
-  expect(getByRole('combobox')).toBeInTheDocument();
-  await waitForElement(() => getByRole('combobox'));
+  expect(combobox).toBeInTheDocument();
 });
 
 test('renders select string label', async () => {
-  const { getByText } = render(SelectMock);
+  render(SelectMock);
 
-  expect(getByText('Countries')).toBeInTheDocument();
-  await waitForElement(() => getByText('Countries'));
+  const countries = await screen.findByText('Countries');
+
+  expect(countries).toBeInTheDocument();
 });
 
 test('renders FormControlLabel string label', async () => {
-  const { getByText } = render(
+  render(
     <Select
       label={<FormControlLabel>Countries</FormControlLabel>}
       onOptionChange={onChange}
-      id="testId"
       data-testid="select"
       options={mockOptions}
     />,
   );
 
-  expect(getByText('Countries')).toBeInTheDocument();
-  await waitForElement(() => getByText('Countries'));
+  const countries = await screen.findByText('Countries');
+
+  expect(countries).toBeInTheDocument();
 });
 
 test('select label has id', async () => {
-  const { getByText } = render(SelectMock);
+  render(SelectMock);
 
-  expect(getByText('Countries').id).toBeDefined();
-  await waitForElement(() => getByText('Countries'));
+  const countries = await screen.findByText('Countries');
+
+  expect(countries.id).toBeDefined();
 });
 
 test('select label accepts custom id', async () => {
-  const { getByText } = render(
-    <Select onOptionChange={onChange} label="Countries" labelId="testId" options={mockOptions} />,
-  );
+  render(<Select onOptionChange={onChange} label="Countries" labelId="testId" options={mockOptions} />);
 
-  expect(getByText('Countries').id).toBe('testId');
-  await waitForElement(() => getByText('Countries'));
+  const countries = await screen.findByText('Countries');
+
+  expect(countries.id).toBe('testId');
 });
 
 test('select label has for attribute', async () => {
-  const { getByText } = render(SelectMock);
+  render(SelectMock);
 
-  expect(getByText('Countries').hasAttribute('for')).toBe(true);
-  await waitForElement(() => getByText('Countries'));
+  const countries = await screen.findByText('Countries');
+
+  expect(countries.hasAttribute('for')).toBe(true);
 });
 
 test('renders select input', async () => {
-  const { getByTestId } = render(SelectMock);
+  render(SelectMock);
 
-  expect(getByTestId('select')).toBeInTheDocument();
-  await waitForElement(() => getByTestId('select'));
+  const select = await screen.findByTestId('select');
+
+  expect(select).toBeInTheDocument();
 });
 
 test('select input has id', async () => {
-  const { getByTestId } = render(SelectMock);
+  render(SelectMock);
 
-  expect(getByTestId('select').id).toBeDefined();
-  await waitForElement(() => getByTestId('select'));
+  const select = await screen.findByTestId('select');
+
+  expect(select.id).toBeDefined();
 });
 
 test('select accepts custom id', async () => {
-  const { getByTestId } = render(
-    <Select onOptionChange={onChange} id="testId" data-testid="select" options={mockOptions} />,
-  );
+  render(<Select onOptionChange={onChange} id="testId" data-testid="select" options={mockOptions} />);
 
-  expect(getByTestId('select').id).toBe('testId');
-  await waitForElement(() => getByTestId('select'));
+  const select = await screen.findByTestId('select');
+
+  expect(select.id).toBe('testId');
 });
 
 test('combobox has aria-haspopup', async () => {
-  const { getByRole } = render(SelectMock);
+  render(SelectMock);
 
-  expect(getByRole('combobox').getAttribute('aria-haspopup')).toBe('listbox');
-  await waitForElement(() => getByRole('combobox'));
+  const combobox = await screen.findByRole('combobox');
+
+  expect(combobox.getAttribute('aria-haspopup')).toBe('listbox');
 });
 
 test('select input has placeholder text', async () => {
-  const { getByPlaceholderText } = render(SelectMock);
+  render(SelectMock);
 
-  expect(getByPlaceholderText('Choose country')).toBeDefined();
-  await waitForElement(() => getByPlaceholderText('Choose country'));
+  const placeholder = await screen.findByPlaceholderText('Choose country');
+
+  expect(placeholder).toBeDefined();
 });
 
 test('select input has aria-controls', async () => {
-  const { getByRole, getByTestId } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
 
   fireEvent.click(input);
 
-  expect(input.getAttribute('aria-controls')).toBe(getByRole('listbox').id);
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  const listbox = await screen.findByRole('listbox');
+
+  expect(input.getAttribute('aria-controls')).toBe(listbox.id);
 });
 
 test('select input has autocomplete=off', async () => {
-  const { getByTestId } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = await screen.findByTestId('select');
 
   expect(input.getAttribute('autocomplete')).toBe('off');
-  await waitForElement(() => getByTestId('select'));
 });
 
 test('renders input button', async () => {
-  const { getByRole } = render(SelectMock);
+  render(SelectMock);
 
-  expect(getByRole('button')).toBeDefined();
-  await waitForElement(() => getByRole('button'));
+  const button = await screen.findByLabelText('toggle menu');
+
+  expect(button).toBeDefined();
 });
 
 test('input button has aria-label', async () => {
-  const { getByRole } = render(SelectMock);
+  render(SelectMock);
 
-  expect(getByRole('button').getAttribute('aria-label')).toBe('toggle menu');
-  await waitForElement(() => getByRole('button'));
+  const button = await screen.findByLabelText('toggle menu');
+
+  expect(button.getAttribute('aria-label')).toBe('toggle menu');
 });
 
 test('select menu opens when clicked on input', async () => {
-  const { getByRole, getByTestId, queryByRole } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
 
-  expect(queryByRole('listbox')).toBeEmptyDOMElement();
+  const input = screen.getByTestId('select');
+
+  const listbox = await screen.findByRole('listbox');
+
+  expect(listbox).toBeEmptyDOMElement();
 
   fireEvent.click(input);
 
-  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
-  await waitForElement(() => getByRole('option', { name: /mex/i }));
+  await screen.findByRole('listbox');
+
+  expect(listbox).not.toBeEmptyDOMElement();
 });
 
 test('select menu opens/closes when input button is clicked', async () => {
-  const { getByRole, queryByRole } = render(SelectMock);
-  const button = getByRole('button');
+  render(SelectMock);
+
+  const button = await screen.findByLabelText('toggle menu');
 
   fireEvent.click(button);
-  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
+
+  const listbox = await screen.findByRole('listbox');
+
+  expect(listbox).not.toBeEmptyDOMElement();
 
   fireEvent.click(button);
-  expect(queryByRole('listbox')).toBeEmptyDOMElement();
-  await waitForElement(() => queryByRole('listbox'));
+
+  await screen.findByRole('listbox');
+
+  expect(listbox).toBeEmptyDOMElement();
 });
 
 test('esc should close menu', async () => {
-  const { getByTestId, queryByRole } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
 
   fireEvent.click(input);
-  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
+
+  const listbox = await screen.findByRole('listbox');
+
+  expect(listbox).not.toBeEmptyDOMElement();
 
   fireEvent.keyDown(input, { key: 'Escape' });
-  expect(queryByRole('listbox')).toBeEmptyDOMElement();
-  await waitForElement(() => queryByRole('listbox'));
+
+  await screen.findByRole('listbox');
+
+  expect(listbox).toBeEmptyDOMElement();
 });
 
 test('select has items', async () => {
-  const { getAllByRole, getByTestId } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+
   fireEvent.click(input);
 
-  expect(getAllByRole('option').length).toBe(6);
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  const options = await screen.findAllByRole('option');
+
+  expect(options.length).toBe(6);
 });
 
 test('select items should be unfiltered when opened', async () => {
-  const { getAllByRole, getByRole } = render(SelectMock);
-  const button = getByRole('button');
+  render(SelectMock);
+
+  const button = await screen.findByLabelText('toggle menu');
+
   fireEvent.click(button);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
+
   expect(options.length).toBe(6);
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('selected item should be highlighted when opened', async () => {
-  const { getAllByRole, getByTestId } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
+
   expect(options[1].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('select input text should match the value selected', async () => {
-  const { getByTestId } = render(SelectMock);
+  render(SelectMock);
 
-  const input = getByTestId('select');
+  const input = await screen.findByTestId('select');
 
   expect(input.getAttribute('value')).toEqual('Mexico');
-  await waitForElement(() => screen.getByTestId('select'));
 });
 
 test('select items should be filterable', async () => {
-  const { getAllByRole, getByTestId, getByRole } = render(SelectMock);
-  const button = getByRole('button');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+  const button = await screen.findByLabelText('toggle menu');
 
   fireEvent.click(button);
-  fireEvent.change(getByTestId('select'), { target: { value: 'm' } });
 
-  const options = getAllByRole('option');
+  fireEvent.change(input, { target: { value: 'm' } });
+
+  const options = await screen.findAllByRole('option');
 
   expect(options.length).toBe(2);
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('select options should immediately rerender when prop changes', async () => {
-  const { getAllByRole, getByRole, rerender } = render(<Select onOptionChange={onChange} options={mockOptions} />);
-  const button = getByRole('button');
+  const { rerender } = render(<Select onOptionChange={onChange} options={mockOptions} />);
+
+  const button = await screen.findByLabelText('toggle menu');
+
   fireEvent.click(button);
 
-  let options = getAllByRole('option');
+  let options = await screen.findAllByRole('option');
+
   expect(options.length).toBe(5);
 
   rerender(
@@ -332,22 +368,25 @@ test('select options should immediately rerender when prop changes', async () =>
     />,
   );
 
-  options = getAllByRole('option');
+  options = await screen.findAllByRole('option');
+
   expect(options.length).toBe(2);
-  await waitForElement(() => screen.getByRole('option', { name: /foo/i }));
 });
 
 test('up/down arrows should change select item selection', async () => {
-  const { getAllByRole, getByTestId } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
 
   expect(options[1].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
+
   expect(options[2].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[2].id);
 
@@ -356,136 +395,151 @@ test('up/down arrows should change select item selection', async () => {
 
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('home should select first select item', async () => {
-  const { getAllByRole, getByTestId } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
 
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 
   fireEvent.keyDown(input, { key: 'Home' });
+
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('end should select last select item', async () => {
-  const { getAllByRole, getByTestId } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
 
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
 
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 
   fireEvent.keyDown(input, { key: 'End' });
+
   expect(options[5].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[5].id);
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('enter should trigger onOptionChange', async () => {
-  const { getByTestId } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
 
-  fireEvent.click(input);
+  const input = screen.getByTestId('select');
 
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  fireEvent.keyDown(input, { key: 'Enter' });
+  await act(async () => {
+    await fireEvent.click(input);
+    await fireEvent.keyDown(input, { key: 'ArrowDown' });
+    await fireEvent.keyDown(input, { key: 'Enter' });
+  });
 
   expect(onChange).toHaveBeenCalledWith(mockOptions[2].value, mockOptions[2]);
-  await waitForElement(() => screen.getByTestId('select'));
 });
 
 test('clicking on select options should trigger onOptionChange', async () => {
-  const { getAllByRole, getByTestId } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
-  fireEvent.click(options[3]);
+  const options = await screen.findAllByRole('option');
+
+  await act(async () => {
+    fireEvent.click(options[3]);
+  });
+
   expect(onChange).toHaveBeenCalledWith(mockOptions[3].value, mockOptions[3]);
   expect(onChange).toHaveBeenCalledTimes(1);
-  await waitForElement(() => screen.getByTestId('select'));
 });
 
 test('clicking on disabled select options should not trigger onItemClick', async () => {
-  const { getAllByRole, getByTestId } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+  const input = screen.getByTestId('select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
-  fireEvent.click(options[4]);
-  expect(onChange).not.toHaveBeenCalled();
+  const options = await screen.findAllByRole('option');
 
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  fireEvent.click(options[4]);
+
+  expect(onChange).not.toHaveBeenCalled();
 });
 
 test('opening the Select triggers onOpen', async () => {
-  const { getByRole, queryByRole } = render(SelectMock);
-  const button = getByRole('button');
+  render(SelectMock);
 
-  fireEvent.click(button);
+  const button = await screen.findByLabelText('toggle menu');
+
+  await act(async () => {
+    fireEvent.click(button);
+  });
 
   expect(onOpen).toHaveBeenCalled();
-
-  await waitForElement(() => queryByRole('listbox'));
 });
 
 test('closing the Select triggers onClose', async () => {
-  const { getByRole, queryByRole } = render(SelectMock);
-  const button = getByRole('button');
+  render(SelectMock);
 
-  fireEvent.click(button);
-  fireEvent.click(button);
+  const button = await screen.findByLabelText('toggle menu');
+
+  await act(async () => {
+    await fireEvent.click(button);
+    await fireEvent.click(button);
+  });
 
   expect(onClose).toHaveBeenCalled();
-
-  await waitForElement(() => queryByRole('listbox'));
 });
 
 test('select should render select action', async () => {
-  const { getByText, getByTestId } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+
   fireEvent.click(input);
 
-  expect(getByText('Remove Country')).toBeInTheDocument();
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(await screen.findByText('Remove Country')).toBeInTheDocument();
 });
 
 test('select action should call onActionClick', async () => {
-  const { getByTestId, getAllByRole } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
-  fireEvent.click(options[5]);
+  const options = await screen.findAllByRole('option');
+
+  await act(async () => {
+    fireEvent.click(options[5]);
+  });
+
   expect(onActionClick).toHaveBeenCalled();
-  await waitForElement(() => screen.getByTestId('select'));
 });
 
 test('select action supports icons', async () => {
-  const { getByTestId, getByText } = render(SelectMock);
-  const input = getByTestId('select');
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+
   fireEvent.click(input);
 
-  const action = getByText('Remove Country');
-  expect(action.querySelector('svg')).toBeDefined();
+  const action = await screen.findByText('Remove Country');
 
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(action.querySelector('svg')).toBeDefined();
 });
 
 test('select should render an error if one is provided', async () => {
-  const { getByText } = render(
+  render(
     <FormGroup>
       <Select
         onOptionChange={onChange}
@@ -504,21 +558,19 @@ test('select should render an error if one is provided', async () => {
     </FormGroup>,
   );
 
-  expect(getByText('Required')).toBeInTheDocument();
-  await waitForElement(() => screen.getByText('Required'));
+  expect(await screen.findByText('Required')).toBeInTheDocument();
 });
 
 test('select should have a required attr if set as required', async () => {
-  const { getByTestId } = render(SelectMock);
+  render(SelectMock);
 
-  const input = getByTestId('select');
+  const input = await screen.findByTestId('select');
 
   expect(input.getAttribute('required')).toEqual('');
-  await waitForElement(() => screen.getByTestId('select'));
 });
 
 test('select should not have a required attr if not set as required', async () => {
-  const { getAllByLabelText } = render(
+  render(
     <Select
       onOptionChange={onChange}
       label="Countries"
@@ -533,14 +585,13 @@ test('select should not have a required attr if not set as required', async () =
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(input.getAttribute('required')).toEqual(null);
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  expect(inputs[0].getAttribute('required')).toEqual(null);
 });
 
 test('select should have a disabled attr if set as disabled', async () => {
-  const { getAllByLabelText } = render(
+  render(
     <Select
       disabled
       onOptionChange={onChange}
@@ -556,23 +607,21 @@ test('select should have a disabled attr if set as disabled', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(input.getAttribute('disabled')).toEqual('');
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  expect(inputs[0].getAttribute('disabled')).toEqual('');
 });
 
 test('select should not have a disabled attr if not set as disabled', async () => {
-  const { getAllByLabelText } = render(SelectMock);
+  render(SelectMock);
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(input.getAttribute('disabled')).toEqual(null);
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  expect(inputs[0].getAttribute('disabled')).toEqual(null);
 });
 
 test('appends (optional) text to label if select is not required', async () => {
-  const { getByText } = render(
+  render(
     <Select
       onOptionChange={onChange}
       label="Countries"
@@ -586,14 +635,14 @@ test('appends (optional) text to label if select is not required', async () => {
       placeholder="Choose country"
     />,
   );
-  const label = getByText('Countries');
+
+  const label = await screen.findByText('Countries');
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
-  await waitForElement(() => screen.getByText('Countries'));
 });
 
 test('does not forward styles', async () => {
-  const { container, getByRole, getByTestId } = render(
+  render(
     <Select
       className="test"
       onOptionChange={onChange}
@@ -611,17 +660,16 @@ test('does not forward styles', async () => {
     />,
   );
 
-  const input = getByTestId('select');
+  const input = screen.getByTestId('select');
 
   fireEvent.click(input);
-  expect(container.getElementsByClassName('test').length).toBe(0);
-  expect(getByRole('listbox')).not.toHaveStyle('background: red');
 
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(input.getElementsByClassName('test').length).toBe(0);
+  expect(await screen.findByRole('listbox')).not.toHaveStyle('background: red');
 });
 
 test('should render a non filterable select', async () => {
-  const { getAllByLabelText } = render(
+  render(
     <Select
       filterable={false}
       label="Countries"
@@ -637,13 +685,13 @@ test('should render a non filterable select', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
-  expect(input.getAttribute('readonly')).toBe('');
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  const inputs = await screen.findAllByLabelText('Countries');
+
+  expect(inputs[0].getAttribute('readonly')).toBe('');
 });
 
 test('should accept a maxHeight prop', async () => {
-  const { getAllByLabelText, getByRole } = render(
+  render(
     <Select
       label="Countries"
       maxHeight={350}
@@ -659,32 +707,30 @@ test('should accept a maxHeight prop', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = screen.getAllByLabelText('Countries');
 
-  fireEvent.click(input);
+  fireEvent.click(inputs[0]);
 
-  const list = getByRole('listbox');
+  const list = await screen.findByRole('listbox');
+
   expect(list).toHaveStyleRule('max-height', remCalc(350));
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('should default max-height to 250', async () => {
-  const { getAllByLabelText, getByRole } = render(SelectMock);
+  render(SelectMock);
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  fireEvent.click(input);
+  fireEvent.click(inputs[0]);
 
-  const list = getByRole('listbox');
+  const list = await screen.findByRole('listbox');
+
   expect(list).toHaveStyleRule('max-height', remCalc(250));
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('should use the passed in ref object if provided', async () => {
   const ref = createRef<HTMLInputElement>();
-  const { getAllByLabelText } = render(
+  render(
     <Select
       inputRef={ref}
       label="Countries"
@@ -700,16 +746,15 @@ test('should use the passed in ref object if provided', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(ref.current).toEqual(input);
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  expect(ref.current).toEqual(inputs[0]);
 });
 
 test('should call the provided refSetter if any', async () => {
   let inputRef: HTMLInputElement | null = null;
   const refSetter = (ref: HTMLInputElement) => (inputRef = ref);
-  const { getAllByLabelText } = render(
+  render(
     <Select
       inputRef={refSetter}
       label="Countries"
@@ -725,14 +770,13 @@ test('should call the provided refSetter if any', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
+  const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputRef).toEqual(input);
-  await waitForElement(() => screen.getAllByLabelText('Countries'));
+  expect(inputRef).toEqual(inputs[0]);
 });
 
 test('options should allow icons', async () => {
-  const { container, getAllByLabelText } = render(
+  const { container } = render(
     <Select
       filterable={false}
       label="Countries"
@@ -746,99 +790,107 @@ test('options should allow icons', async () => {
     />,
   );
 
-  const input = getAllByLabelText('Countries')[0];
-  fireEvent.click(input);
+  const inputs = await screen.findAllByLabelText('Countries');
+
+  await act(async () => {
+    await fireEvent.click(inputs[0]);
+  });
 
   const svg = container.querySelectorAll('svg');
-  expect(svg.length).toBe(5);
 
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(svg.length).toBe(5);
 });
 
 test('grouped select should render group labels, render uppercased', async () => {
-  const { getByRole, getByText } = render(GroupedSelectMock);
+  render(GroupedSelectMock);
 
-  const button = getByRole('button');
+  const button = await screen.findByLabelText('toggle menu');
 
-  fireEvent.click(button);
+  await act(async () => {
+    fireEvent.click(button);
+  });
 
-  const label1 = getByText('Label 1');
-  const label2 = getByText('Label 2');
+  const label1 = screen.getByText('Label 1');
+  const label2 = screen.getByText('Label 2');
 
   expect(label1).toBeInTheDocument();
   expect(label1).toHaveStyle('text-transform: uppercase');
+
   expect(label2).toBeInTheDocument();
   expect(label2).toHaveStyle('text-transform: uppercase');
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('group labels should be grayed out', async () => {
-  const { getByTestId, getByText } = render(GroupedSelectMock);
-  const input = getByTestId('groupSelect');
-  fireEvent.click(input);
+  render(GroupedSelectMock);
 
-  const label1 = getByText('Label 1');
-  const label2 = getByText('Label 2');
+  const input = screen.getByTestId('group-select');
+
+  await act(async () => {
+    fireEvent.click(input);
+  });
+
+  const label1 = screen.getByText('Label 1');
+  const label2 = screen.getByText('Label 2');
 
   expect(label1).toHaveStyle('color: #8C93AD');
   expect(label2).toHaveStyle('color: #8C93AD');
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('group labels should be skipped when using keyboard to navigate options', async () => {
-  const { getAllByRole, getByTestId } = render(GroupedSelectMock);
-  const input = getByTestId('groupSelect');
+  render(GroupedSelectMock);
+
+  const input = screen.getByTestId('group-select');
+
   fireEvent.click(input);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
 
   expect(options.length).toBe(6);
   expect(options[1].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
+
   expect(options[2].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[2].id);
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('group labels should still render when filtering options', async () => {
-  const { getAllByRole, getByRole, getByTestId, getByText } = render(GroupedSelectMock);
-  const button = getByRole('button');
+  render(GroupedSelectMock);
+
+  const input = screen.getByTestId('group-select');
+  const button = await screen.findByLabelText('toggle menu');
 
   fireEvent.click(button);
-  fireEvent.change(getByTestId('groupSelect'), { target: { value: 'm' } });
 
-  const label1 = getByText('Label 1');
-  const label2 = getByText('Label 2');
-  const options = getAllByRole('option');
+  fireEvent.change(input, { target: { value: 'm' } });
+
+  const label1 = screen.getByText('Label 1');
+  const label2 = screen.getByText('Label 2');
+
+  const options = await screen.findAllByRole('option');
 
   expect(options.length).toBe(2);
   expect(label1).toBeInTheDocument();
   expect(label2).toBeInTheDocument();
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
 });
 
 test('select option should supports description', async () => {
-  const { getByText, getByTestId } = render(SelectWithOptionsDescriptions);
-  const input = getByTestId('select');
+  render(SelectWithOptionsDescriptions);
+
+  const input = screen.getByTestId('select');
+
   fireEvent.click(input);
 
-  expect(getByText('US Description')).toBeInTheDocument();
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(await screen.findByText('US Description')).toBeInTheDocument();
 });
 
 test('select action should supports description', async () => {
-  const { getByText, getByTestId } = render(SelectWithOptionsDescriptions);
-  const input = getByTestId('select');
+  render(SelectWithOptionsDescriptions);
+
+  const input = screen.getByTestId('select');
+
   fireEvent.click(input);
 
-  expect(getByText('Action Description')).toBeInTheDocument();
-
-  await waitForElement(() => screen.getByRole('option', { name: /mex/i }));
+  expect(await screen.findByText('Action Description')).toBeInTheDocument();
 });
