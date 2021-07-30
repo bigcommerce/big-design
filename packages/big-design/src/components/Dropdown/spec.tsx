@@ -113,7 +113,7 @@ test('dropdown toggle has aria-expanded when dropdown menu is open', async () =>
   const toggle = screen.getByRole('button');
 
   await act(async () => {
-    fireEvent.click(toggle);
+    await fireEvent.click(toggle);
   });
 
   expect(toggle.getAttribute('aria-expanded')).toBe('true');
@@ -153,7 +153,7 @@ test('dropdown menu has aria-activedescendant', async () => {
   fireEvent.click(toggle);
 
   const list = await screen.findByRole('listbox');
-  const options = await screen.findAllByRole('option');
+  const options = screen.getAllByRole('option');
 
   expect(list.getAttribute('aria-activedescendant')).toBe(options[0].id);
 });
@@ -249,7 +249,7 @@ test('up/down arrows should change dropdown item selection', async () => {
   fireEvent.click(toggle);
 
   const list = await screen.findByRole('listbox');
-  const options = await screen.findAllByRole('option');
+  const options = screen.getAllByRole('option');
 
   fireEvent.keyDown(list, { key: 'ArrowDown' });
 
@@ -290,7 +290,7 @@ test('home should select first dropdown item', async () => {
   fireEvent.click(toggle);
 
   const list = await screen.findByRole('listbox');
-  const options = await screen.findAllByRole('option');
+  const options = screen.getAllByRole('option');
 
   fireEvent.keyDown(list, { key: 'ArrowDown' });
   fireEvent.keyDown(list, { key: 'ArrowDown' });
@@ -312,7 +312,7 @@ test('end should select last dropdown item', async () => {
   fireEvent.click(toggle);
 
   const list = await screen.findByRole('listbox');
-  const options = await screen.findAllByRole('option');
+  const options = screen.getAllByRole('option');
 
   expect(options[0].getAttribute('aria-selected')).toBe('true');
 
@@ -330,14 +330,14 @@ test('enter should toggle onItemClick', async () => {
   fireEvent.click(toggle);
 
   const list = await screen.findByRole('listbox');
-  const options = await screen.findAllByRole('option');
+  const options = screen.getAllByRole('option');
 
   fireEvent.keyDown(list, { key: 'ArrowDown' });
 
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 
   await act(async () => {
-    fireEvent.keyDown(list, { key: 'Enter' });
+    await fireEvent.keyDown(list, { key: 'Enter' });
   });
 
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
@@ -353,7 +353,7 @@ test('clicking on dropdown items should toggle onItemClick', async () => {
   const options = await screen.findAllByRole('option');
 
   await act(async () => {
-    fireEvent.click(options[1]);
+    await fireEvent.click(options[1]);
   });
 
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
@@ -374,7 +374,7 @@ test('dropdown items should be highlighted when moused over', async () => {
 });
 
 test('dropdown menu renders 4 link when passed options of type link', async () => {
-  const { container } = render(
+  render(
     <Dropdown
       items={[
         { content: 'Option 1', url: '#', type: 'link' },
@@ -389,10 +389,11 @@ test('dropdown menu renders 4 link when passed options of type link', async () =
   const toggle = screen.getByRole('button');
 
   await act(async () => {
-    fireEvent.click(toggle);
+    await fireEvent.click(toggle);
   });
 
-  const options = container.querySelectorAll('a');
+  const list = await screen.findByRole('listbox');
+  const options = list.querySelectorAll('a');
 
   expect(options.length).toBe(4);
 
@@ -402,21 +403,23 @@ test('dropdown menu renders 4 link when passed options of type link', async () =
 });
 
 test('items renders icons', async () => {
-  const { container } = render(DropdownMock);
+  render(DropdownMock);
 
   const toggle = screen.getByRole('button');
 
   await act(async () => {
-    fireEvent.click(toggle);
+    await fireEvent.click(toggle);
   });
 
-  const svg = container.querySelectorAll('svg');
+  const list = await screen.findByRole('listbox');
 
-  expect(svg.length).toBe(1);
+  const svgs = list.querySelectorAll('svg');
+
+  expect(svgs.length).toBe(1);
 });
 
 test('does not forward styles', async () => {
-  const { container } = render(
+  render(
     <Dropdown
       className="test"
       style={{ background: 'red' }}
@@ -427,12 +430,12 @@ test('does not forward styles', async () => {
 
   const toggle = screen.getByRole('button');
 
-  await act(async () => {
-    fireEvent.click(toggle);
-  });
+  fireEvent.click(toggle);
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
-  expect(await screen.findByRole('listbox')).not.toHaveStyle('background: red');
+  const list = await screen.findByRole('listbox');
+
+  expect(list.getElementsByClassName('test').length).toBe(0);
+  expect(list).not.toHaveStyle('background: red');
 });
 
 test('renders tooltip with disabled item', async () => {
@@ -492,7 +495,7 @@ test("doesn't render tooltip on enabled item", async () => {
   const tooltip = screen.getByText(tooltipContent);
 
   await act(async () => {
-    fireEvent.mouseEnter(tooltip);
+    await fireEvent.mouseEnter(tooltip);
   });
 
   expect(await screen.queryByText(tooltipText)).not.toBeInTheDocument();
@@ -514,7 +517,7 @@ test('no errors expected if all options are disabled', () => {
   expect(
     async () =>
       await act(async () => {
-        fireEvent.click(toggle);
+        await fireEvent.click(toggle);
       }),
   ).not.toThrow();
 });
@@ -556,7 +559,7 @@ test('group labels are skipped over when using keyboard to navigate options', as
   fireEvent.click(toggle);
 
   const list = await screen.findByRole('listbox');
-  const options = await screen.findAllByRole('option');
+  const options = screen.getAllByRole('option');
 
   fireEvent.keyDown(list, { key: 'ArrowDown' });
   fireEvent.keyDown(list, { key: 'ArrowDown' });
@@ -575,8 +578,8 @@ test('clicking label does not call onItemClick', async () => {
   const label1 = await screen.findByText('Label 1');
 
   await act(async () => {
-    fireEvent.mouseOver(label1);
-    fireEvent.click(label1);
+    await fireEvent.mouseOver(label1);
+    await fireEvent.click(label1);
   });
 
   expect(onItemClick).not.toHaveBeenCalled();
