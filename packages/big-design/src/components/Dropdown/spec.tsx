@@ -407,9 +407,7 @@ test('items renders icons', async () => {
 
   const toggle = screen.getByRole('button');
 
-  await act(async () => {
-    await fireEvent.click(toggle);
-  });
+  fireEvent.click(toggle);
 
   const list = await screen.findByRole('listbox');
 
@@ -492,11 +490,9 @@ test("doesn't render tooltip on enabled item", async () => {
 
   fireEvent.click(toggle);
 
-  const tooltip = screen.getByText(tooltipContent);
+  const tooltip = await screen.findByText(tooltipContent);
 
-  await act(async () => {
-    await fireEvent.mouseEnter(tooltip);
-  });
+  fireEvent.mouseEnter(tooltip);
 
   expect(await screen.queryByText(tooltipText)).not.toBeInTheDocument();
 });
