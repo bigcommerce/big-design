@@ -3,7 +3,7 @@ import { remCalc } from '@bigcommerce/big-design-theme';
 import React from 'react';
 import 'jest-styled-components';
 
-import { act, fireEvent, render, screen, waitForElement } from '@test/utils';
+import { act, fireEvent, render, screen } from '@test/utils';
 
 import { Button } from '../Button';
 
@@ -583,7 +583,7 @@ test('clicking label does not call onItemClick', async () => {
 });
 
 test('renders appropriate amount of list items', async () => {
-  const { container } = render(
+  render(
     <Dropdown
       items={[
         {
@@ -602,36 +602,39 @@ test('renders appropriate amount of list items', async () => {
 
   fireEvent.click(toggle);
 
-  const listItems = await waitForElement(() => container.querySelectorAll('li'));
+  const list = await screen.findByRole('listbox');
+  const listItems = list.querySelectorAll('li');
 
   expect(listItems.length).toBe(3);
 });
 
 test('rendered line separators have correct accessibility properties', async () => {
-  const { container } = render(LineSeparatedGroupedDropdownMock);
+  render(LineSeparatedGroupedDropdownMock);
 
   const toggle = screen.getByRole('button');
 
   fireEvent.click(toggle);
 
-  const hrListItem = await waitForElement(() => container.querySelectorAll('hr')[0].parentElement as HTMLElement);
+  const list = await screen.findByRole('listbox');
+  const hrListItems = list.querySelectorAll('hr');
 
-  expect(hrListItem.getAttribute('aria-hidden')).toBe('true');
-  expect(hrListItem.getAttribute('tabindex')).toBe('-1');
+  expect(hrListItems[0].parentElement && hrListItems[0].parentElement.getAttribute('aria-hidden')).toBe('true');
+  expect(hrListItems[0].parentElement && hrListItems[0].parentElement.getAttribute('tabindex')).toBe('-1');
 });
 
 test('rendered line separators cannot be focused on', async () => {
-  const { container } = render(LineSeparatedGroupedDropdownMock);
+  render(LineSeparatedGroupedDropdownMock);
 
   const toggle = screen.getByRole('button');
 
   fireEvent.click(toggle);
 
-  const hrListItem = await waitForElement(() => container.querySelectorAll('hr')[0].parentElement as HTMLElement);
+  const list = await screen.findByRole('listbox');
+  const hrListItems = list.querySelectorAll('hr');
 
-  fireEvent.mouseOver(hrListItem);
+  fireEvent.mouseOver(hrListItems[0].parentElement as HTMLElement);
 
-  expect(document.activeElement).not.toEqual(hrListItem);
+  expect(document.activeElement).not.toEqual(hrListItems[0].parentElement);
 });
 
 test('items should supports description', async () => {
