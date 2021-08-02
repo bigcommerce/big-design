@@ -3,7 +3,7 @@ import { remCalc } from '@bigcommerce/big-design-theme';
 import React from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render, screen, waitForElement } from '@test/utils';
+import { act, fireEvent, render, screen } from '@test/utils';
 
 import { Button } from '../Button';
 
@@ -75,93 +75,103 @@ const DropdownWithItemsDescriptions = (
   />
 );
 
-test('renders dropdown toggle', async () => {
-  const { getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+test('renders dropdown toggle', () => {
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
 
   expect(toggle).toBeInTheDocument();
-  await waitForElement(() => getByRole('button'));
 });
 
-test('dropdown toggle has an id', async () => {
-  const { getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+test('dropdown toggle has an id', () => {
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
 
   expect(toggle.id).toBeDefined();
-  await waitForElement(() => getByRole('button'));
 });
 
-test('dropdown toggle accepts a custom id', async () => {
-  const { getByRole } = render(
-    <Dropdown items={[{ content: 'Option', onItemClick }]} toggle={<Button id="testId">Button</Button>} />,
-  );
-  const toggle = getByRole('button');
+test('dropdown toggle accepts a custom id', () => {
+  render(<Dropdown items={[{ content: 'Option', onItemClick }]} toggle={<Button id="testId">Button</Button>} />);
+
+  const toggle = screen.getByRole('button');
 
   expect(toggle.id).toBe('testId');
-  await waitForElement(() => getByRole('button'));
 });
 
-test('dropdown toggle has aria-haspopup', async () => {
-  const { getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+test('dropdown toggle has aria-haspopup', () => {
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
 
   expect(toggle.getAttribute('aria-haspopup')).toBe('listbox');
-  await waitForElement(() => getByRole('button'));
 });
 
 test('dropdown toggle has aria-expanded when dropdown menu is open', async () => {
-  const { getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
-  fireEvent.click(toggle);
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
+  await act(async () => {
+    await fireEvent.click(toggle);
+  });
 
   expect(toggle.getAttribute('aria-expanded')).toBe('true');
-
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
 test('renders the dropdown menu closed', async () => {
-  const { queryByRole } = render(DropdownMock);
+  render(DropdownMock);
 
-  expect(queryByRole('listbox')).toBeEmptyDOMElement();
-  await waitForElement(() => queryByRole('listbox'));
+  const list = await screen.findByRole('listbox');
+
+  expect(list).toBeEmptyDOMElement();
 });
 
 test('opens/closes dropdown menu when toggle is clicked', async () => {
-  const { getByRole, queryByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
 
   fireEvent.click(toggle);
-  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
+
+  const list = await screen.findByRole('listbox');
+
+  expect(list).not.toBeEmptyDOMElement();
 
   fireEvent.click(toggle);
-  expect(queryByRole('listbox')).toBeEmptyDOMElement();
-  await waitForElement(() => queryByRole('listbox'));
+
+  await screen.findByRole('listbox');
+
+  expect(list).toBeEmptyDOMElement();
 });
 
 test('dropdown menu has aria-activedescendant', async () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const options = getAllByRole('option');
-  expect(getByRole('listbox').getAttribute('aria-activedescendant')).toBe(options[0].id);
+  const list = await screen.findByRole('listbox');
+  const options = screen.getAllByRole('option');
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  expect(list.getAttribute('aria-activedescendant')).toBe(options[0].id);
 });
 
 test('dropdown menu should have 4 dropdown items', async () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const options = getAllByRole('option');
-  expect(options.length).toBe(4);
+  const options = await screen.findAllByRole('option');
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  expect(options.length).toBe(4);
 });
 
 test('should accept a maxHeight prop', async () => {
-  const { getByRole } = render(
+  render(
     <Dropdown
       items={[
         { content: 'Foo', onItemClick },
@@ -172,33 +182,36 @@ test('should accept a maxHeight prop', async () => {
     />,
   );
 
-  const toggle = getByRole('button');
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const list = getByRole('listbox');
-  expect(list).toHaveStyleRule('max-height', remCalc(350));
+  const list = await screen.findByRole('listbox');
 
-  await waitForElement(() => screen.getByRole('option', { name: /foo/i }));
+  expect(list).toHaveStyleRule('max-height', remCalc(350));
 });
 
 test('should default max-height to 250', async () => {
-  const { getByRole } = render(DropdownMock);
+  render(DropdownMock);
 
-  const toggle = getByRole('button');
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const list = getByRole('listbox');
-  expect(list).toHaveStyleRule('max-height', remCalc(250));
+  const list = await screen.findByRole('listbox');
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  expect(list).toHaveStyleRule('max-height', remCalc(250));
 });
 
 test('dropdown items should immediately rerender when prop changes', async () => {
-  const { getAllByRole, getByRole, rerender } = render(DropdownMock);
-  const toggle = getByRole('button');
+  const { rerender } = render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  let options = getAllByRole('option');
+  let options = await screen.findAllByRole('option');
+
   expect(options.length).toBe(4);
 
   rerender(
@@ -211,134 +224,157 @@ test('dropdown items should immediately rerender when prop changes', async () =>
     />,
   );
 
-  options = getAllByRole('option');
-  expect(options.length).toBe(2);
+  options = await screen.findAllByRole('option');
 
-  await waitForElement(() => screen.getByRole('option', { name: /foo/i }));
+  expect(options.length).toBe(2);
 });
 
 test('first dropdown item should be selected when dropdown is opened', async () => {
-  const { getByRole, getAllByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const option = getAllByRole('option')[0];
-  expect(option.getAttribute('aria-selected')).toBe('true');
+  const options = await screen.findAllByRole('option');
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  expect(options[0].getAttribute('aria-selected')).toBe('true');
 });
 
 test('up/down arrows should change dropdown item selection', async () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const menu = getByRole('listbox');
-  const options = getAllByRole('option');
+  const list = await screen.findByRole('listbox');
+  const options = screen.getAllByRole('option');
 
-  fireEvent.keyDown(menu, { key: 'ArrowDown' });
+  fireEvent.keyDown(list, { key: 'ArrowDown' });
+
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 
-  fireEvent.keyDown(menu, { key: 'ArrowUp' });
+  fireEvent.keyDown(list, { key: 'ArrowUp' });
+
   expect(options[0].getAttribute('aria-selected')).toBe('true');
 
-  fireEvent.keyDown(menu, { key: 'ArrowUp' });
-  expect(options[3].getAttribute('aria-selected')).toBe('true');
+  fireEvent.keyDown(list, { key: 'ArrowUp' });
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  expect(options[3].getAttribute('aria-selected')).toBe('true');
 });
 
 test('esc should close menu', async () => {
-  const { getByRole, queryByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
 
   fireEvent.click(toggle);
-  expect(queryByRole('listbox')).not.toBeEmptyDOMElement();
 
-  fireEvent.keyDown(getByRole('listbox'), { key: 'Escape' });
-  expect(queryByRole('listbox')).toBeEmptyDOMElement();
-  await waitForElement(() => queryByRole('listbox'));
+  const list = await screen.findByRole('listbox');
+
+  expect(list).not.toBeEmptyDOMElement();
+
+  fireEvent.keyDown(list, { key: 'Escape' });
+
+  await screen.findByRole('listbox');
+
+  expect(list).toBeEmptyDOMElement();
 });
 
 test('home should select first dropdown item', async () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const menu = getByRole('listbox');
-  const options = getAllByRole('option');
+  const list = await screen.findByRole('listbox');
+  const options = screen.getAllByRole('option');
 
-  fireEvent.keyDown(menu, { key: 'ArrowDown' });
-  fireEvent.keyDown(menu, { key: 'ArrowDown' });
-  fireEvent.keyDown(menu, { key: 'ArrowDown' });
+  fireEvent.keyDown(list, { key: 'ArrowDown' });
+  fireEvent.keyDown(list, { key: 'ArrowDown' });
+  fireEvent.keyDown(list, { key: 'ArrowDown' });
+
   expect(options[3].getAttribute('aria-selected')).toBe('true');
 
-  fireEvent.keyDown(menu, { key: 'Home' });
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
-  expect(menu.getAttribute('aria-activedescendant')).toEqual(options[0].id);
+  fireEvent.keyDown(list, { key: 'Home' });
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(list.getAttribute('aria-activedescendant')).toEqual(options[0].id);
 });
 
 test('end should select last dropdown item', async () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const menu = getByRole('listbox');
-  const options = getAllByRole('option');
+  const list = await screen.findByRole('listbox');
+  const options = screen.getAllByRole('option');
 
   expect(options[0].getAttribute('aria-selected')).toBe('true');
 
-  fireEvent.keyDown(menu, { key: 'End' });
-  expect(options[3].getAttribute('aria-selected')).toBe('true');
-  expect(menu.getAttribute('aria-activedescendant')).toEqual(options[3].id);
+  fireEvent.keyDown(list, { key: 'End' });
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  expect(options[3].getAttribute('aria-selected')).toBe('true');
+  expect(list.getAttribute('aria-activedescendant')).toEqual(options[3].id);
 });
 
 test('enter should toggle onItemClick', async () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const menu = getByRole('listbox');
-  const options = getAllByRole('option');
+  const list = await screen.findByRole('listbox');
+  const options = screen.getAllByRole('option');
 
-  fireEvent.keyDown(menu, { key: 'ArrowDown' });
+  fireEvent.keyDown(list, { key: 'ArrowDown' });
+
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 
-  fireEvent.keyDown(menu, { key: 'Enter' });
+  await act(async () => {
+    await fireEvent.keyDown(list, { key: 'Enter' });
+  });
+
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
-  await waitForElement(() => getByRole('listbox'));
 });
 
 test('clicking on dropdown items should toggle onItemClick', async () => {
-  const { getAllByRole, getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const options = getAllByRole('option');
-  fireEvent.click(options[1]);
+  const options = await screen.findAllByRole('option');
+
+  await act(async () => {
+    await fireEvent.click(options[1]);
+  });
+
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
-  await waitForElement(() => getByRole('button'));
 });
 
 test('dropdown items should be highlighted when moused over', async () => {
-  const { getByRole, getAllByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const options = getAllByRole('option');
+  const options = await screen.findAllByRole('option');
+
   fireEvent.mouseOver(options[0]);
 
   expect(options[0].getAttribute('aria-selected')).toBe('true');
-
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
 test('dropdown menu renders 4 link when passed options of type link', async () => {
-  const { container, getByRole } = render(
+  render(
     <Dropdown
       items={[
         { content: 'Option 1', url: '#', type: 'link' },
@@ -350,32 +386,38 @@ test('dropdown menu renders 4 link when passed options of type link', async () =
     />,
   );
 
-  const toggle = getByRole('button');
-  fireEvent.click(toggle);
+  const toggle = screen.getByRole('button');
 
-  const options = container.querySelectorAll('a');
+  await act(async () => {
+    await fireEvent.click(toggle);
+  });
+
+  const list = await screen.findByRole('listbox');
+  const options = list.querySelectorAll('a');
+
   expect(options.length).toBe(4);
 
   options.forEach((option) => {
     expect(option.getAttribute('href')).toBe('#');
   });
-
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
 test('items renders icons', async () => {
-  const { container, getByRole } = render(DropdownMock);
-  const toggle = getByRole('button');
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const svg = container.querySelectorAll('svg');
-  expect(svg.length).toBe(1);
+  const list = await screen.findByRole('listbox');
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  const svgs = list.querySelectorAll('svg');
+
+  expect(svgs.length).toBe(1);
 });
 
 test('does not forward styles', async () => {
-  const { container, getByRole } = render(
+  render(
     <Dropdown
       className="test"
       style={{ background: 'red' }}
@@ -383,19 +425,22 @@ test('does not forward styles', async () => {
       toggle={<Button>Button</Button>}
     />,
   );
-  const toggle = getByRole('button');
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
-  expect(getByRole('listbox')).not.toHaveStyle('background: red');
+  const list = await screen.findByRole('listbox');
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  expect(list.getElementsByClassName('test').length).toBe(0);
+  expect(list).not.toHaveStyle('background: red');
 });
 
 test('renders tooltip with disabled item', async () => {
   const tooltipContent = 'Option with tooltip';
   const tooltipText = 'This is tooltip message';
-  const { getByRole, getByText } = render(
+
+  render(
     <Dropdown
       items={[
         { content: 'Option 1', onItemClick },
@@ -410,20 +455,23 @@ test('renders tooltip with disabled item', async () => {
       toggle={<Button>Button</Button>}
     />,
   );
-  const toggle = getByRole('button');
+
+  const toggle = screen.getByRole('button');
 
   fireEvent.click(toggle);
-  fireEvent.mouseEnter(getByText(tooltipContent));
 
-  expect(getByText(tooltipText)).toBeInTheDocument();
+  const tooltip = screen.getByText(tooltipContent);
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  fireEvent.mouseEnter(tooltip);
+
+  expect(await screen.findByText(tooltipText)).toBeInTheDocument();
 });
 
 test("doesn't render tooltip on enabled item", async () => {
   const tooltipContent = 'Option with tooltip';
   const tooltipText = 'This is tooltip message';
-  const { getByRole, getByText, queryByText } = render(
+
+  render(
     <Dropdown
       items={[
         { content: 'Option 1', onItemClick },
@@ -437,18 +485,20 @@ test("doesn't render tooltip on enabled item", async () => {
       toggle={<Button>Button</Button>}
     />,
   );
-  const toggle = getByRole('button');
+
+  const toggle = screen.getByRole('button');
 
   fireEvent.click(toggle);
-  fireEvent.mouseEnter(getByText(tooltipContent));
 
-  expect(queryByText(tooltipText)).not.toBeInTheDocument();
+  const tooltip = await screen.findByText(tooltipContent);
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  fireEvent.mouseEnter(tooltip);
+
+  expect(await screen.queryByText(tooltipText)).not.toBeInTheDocument();
 });
 
-test('no errors expected if all options are disabled', async () => {
-  const { getByRole } = render(
+test('no errors expected if all options are disabled', () => {
+  render(
     <Dropdown
       items={[
         { content: 'Option 1', onItemClick, disabled: true },
@@ -458,76 +508,81 @@ test('no errors expected if all options are disabled', async () => {
     />,
   );
 
-  const toggle = getByRole('button');
-  expect(() => fireEvent.click(toggle)).not.toThrow();
+  const toggle = screen.getByRole('button');
 
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  expect(
+    async () =>
+      await act(async () => {
+        await fireEvent.click(toggle);
+      }),
+  ).not.toThrow();
 });
 
 test('dropdown should have 2 group labels, render uppercased', async () => {
-  const { getByRole, getByText } = render(GroupedDropdownMock);
-  const toggle = getByRole('button');
+  render(GroupedDropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const label1 = getByText('Label 1');
-  const label2 = getByText('Label 2');
+  const label1 = await screen.findByText('Label 1');
+  const label2 = await screen.findByText('Label 2');
 
   expect(label1).toBeInTheDocument();
   expect(label1).toHaveStyle('text-transform: uppercase');
   expect(label2).toBeInTheDocument();
   expect(label2).toHaveStyle('text-transform: uppercase');
-
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
 test('group labels are grayed out', async () => {
-  const { getByRole, getByText } = render(GroupedDropdownMock);
-  const toggle = getByRole('button');
+  render(GroupedDropdownMock);
+
+  const toggle = screen.getByRole('button');
   fireEvent.click(toggle);
 
-  const label1 = getByText('Label 1');
-  const label2 = getByText('Label 2');
+  const label1 = await screen.findByText('Label 1');
+  const label2 = await screen.findByText('Label 2');
 
   expect(label1).toHaveStyle('color: #8C93AD');
   expect(label2).toHaveStyle('color: #8C93AD');
-
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
 test('group labels are skipped over when using keyboard to navigate options', async () => {
-  const { getAllByRole, getByRole } = render(GroupedDropdownMock);
-  const toggle = getByRole('button');
+  render(GroupedDropdownMock);
+
+  const toggle = screen.getByRole('button');
 
   fireEvent.click(toggle);
 
-  const menu = getByRole('listbox');
-  const options = getAllByRole('option');
+  const list = await screen.findByRole('listbox');
+  const options = screen.getAllByRole('option');
 
-  fireEvent.keyDown(menu, { key: 'ArrowDown' });
-  fireEvent.keyDown(menu, { key: 'ArrowDown' });
-  fireEvent.keyDown(menu, { key: 'ArrowDown' });
+  fireEvent.keyDown(list, { key: 'ArrowDown' });
+  fireEvent.keyDown(list, { key: 'ArrowDown' });
+  fireEvent.keyDown(list, { key: 'ArrowDown' });
 
   expect(options[3].getAttribute('aria-selected')).toBe('true');
-
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
 test('clicking label does not call onItemClick', async () => {
-  const { getByRole, getByText } = render(GroupedDropdownMock);
-  const toggle = getByRole('button');
+  render(GroupedDropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const label1 = getByText('Label 1');
-  fireEvent.mouseOver(label1);
-  fireEvent.click(label1);
+  const label1 = await screen.findByText('Label 1');
+
+  await act(async () => {
+    await fireEvent.mouseOver(label1);
+    await fireEvent.click(label1);
+  });
 
   expect(onItemClick).not.toHaveBeenCalled();
-
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
 });
 
 test('renders appropriate amount of list items', async () => {
-  const { getByRole, container } = render(
+  render(
     <Dropdown
       items={[
         {
@@ -541,40 +596,52 @@ test('renders appropriate amount of list items', async () => {
       toggle={<Button>Button</Button>}
     />,
   );
-  const toggle = getByRole('button');
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const listItems = await waitForElement(() => container.querySelectorAll('li'));
+  const list = await screen.findByRole('listbox');
+  const listItems = list.querySelectorAll('li');
 
   expect(listItems.length).toBe(3);
 });
 
 test('rendered line separators have correct accessibility properties', async () => {
-  const { getByRole, container } = render(LineSeparatedGroupedDropdownMock);
-  const toggle = getByRole('button');
+  render(LineSeparatedGroupedDropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const hrListItem = await waitForElement(() => container.querySelectorAll('hr')[0].parentElement as HTMLElement);
-  expect(hrListItem.getAttribute('aria-hidden')).toBe('true');
-  expect(hrListItem.getAttribute('tabindex')).toBe('-1');
+  const list = await screen.findByRole('listbox');
+  const hrListItems = list.querySelectorAll('hr');
+
+  expect(hrListItems[0].parentElement && hrListItems[0].parentElement.getAttribute('aria-hidden')).toBe('true');
+  expect(hrListItems[0].parentElement && hrListItems[0].parentElement.getAttribute('tabindex')).toBe('-1');
 });
 
 test('rendered line separators cannot be focused on', async () => {
-  const { getByRole, container } = render(LineSeparatedGroupedDropdownMock);
-  const toggle = getByRole('button');
+  render(LineSeparatedGroupedDropdownMock);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  const hrListItem = await waitForElement(() => container.querySelectorAll('hr')[0].parentElement as HTMLElement);
-  fireEvent.mouseOver(hrListItem);
-  expect(document.activeElement).not.toEqual(hrListItem);
+  const list = await screen.findByRole('listbox');
+  const hrListItems = list.querySelectorAll('hr');
+
+  fireEvent.mouseOver(hrListItems[0].parentElement as HTMLElement);
+
+  expect(document.activeElement).not.toEqual(hrListItems[0].parentElement);
 });
 
 test('items should supports description', async () => {
-  const { getByRole, getByText } = render(DropdownWithItemsDescriptions);
-  const toggle = getByRole('button');
+  render(DropdownWithItemsDescriptions);
+
+  const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
-  expect(getByText('Option 1 Description')).toBeInTheDocument();
-
-  await waitForElement(() => screen.getByRole('option', { name: /option 1/i }));
+  expect(await screen.findByText('Option 1 Description')).toBeInTheDocument();
 });
