@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.30.0-alpha.4](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.0-alpha.3...@bigcommerce/big-design@0.30.0-alpha.4) (2021-08-02)
+
+
+### Bug Fixes
+
+* allow multiple instances of Worksheet ([#561](https://github.com/bigcommerce/big-design/issues/561)) ([364abb2](https://github.com/bigcommerce/big-design/commit/364abb26ed5141a23e8fcc7cb097660ce343b09c))
+
+
+### chore
+
+* **deps:** upgrade to styled-components v5 ([#566](https://github.com/bigcommerce/big-design/issues/566)) ([dd83711](https://github.com/bigcommerce/big-design/commit/dd83711797eb8aaa7a8406eebf1383116bff2420))
+
+
+### Features
+
+* **component:** add margin props to Form component ([#569](https://github.com/bigcommerce/big-design/issues/569)) ([422e345](https://github.com/bigcommerce/big-design/commit/422e345436080a51458342b1f73e54e032a76ba9))
+* **component:** add the option to disable columns in Worksheet ([#563](https://github.com/bigcommerce/big-design/issues/563)) ([181557f](https://github.com/bigcommerce/big-design/commit/181557ff00eaaadc0710d9092e838e11efc2da55))
+
+
+### BREAKING CHANGES
+
+* **deps:** You will need to update to styled-components v5. In addition,
+you will need to import the base fonts in your <head> element.
+See the "Getting Started" page or README.md for an example.
+
+
+
+
+
 # [0.30.0-alpha.3](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.0-alpha.2...@bigcommerce/big-design@0.30.0-alpha.3) (2021-07-13)
 
 

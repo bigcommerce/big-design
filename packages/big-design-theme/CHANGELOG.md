@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0-alpha.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.13.0-alpha.1...@bigcommerce/big-design-theme@0.13.0-alpha.2) (2021-08-02)
+
+
+### chore
+
+* **deps:** upgrade to styled-components v5 ([#566](https://github.com/bigcommerce/big-design/issues/566)) ([dd83711](https://github.com/bigcommerce/big-design/commit/dd83711797eb8aaa7a8406eebf1383116bff2420))
+
+
+### Features
+
+* **theme:** add listReset helper ([#570](https://github.com/bigcommerce/big-design/issues/570)) ([385b142](https://github.com/bigcommerce/big-design/commit/385b1426ee39171343070f9b31ad4e31d834b272))
+
+
+### BREAKING CHANGES
+
+* **deps:** You will need to update to styled-components v5. In addition,
+you will need to import the base fonts in your <head> element.
+See the "Getting Started" page or README.md for an example.
+
+
+
+
+
 # [0.13.0-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.13.0-alpha.0...@bigcommerce/big-design-theme@0.13.0-alpha.1) (2021-07-06)
 
 **Note:** Version bump only for package @bigcommerce/big-design-theme

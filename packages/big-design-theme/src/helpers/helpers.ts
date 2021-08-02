@@ -1,4 +1,5 @@
 import { em, math, rem, transparentize } from 'polished';
+import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { themeOptions } from '../options';
 
@@ -7,6 +8,7 @@ export interface Helpers {
   createRGBA(color: string, alpha: number): string;
   remCalc(value: string | number): string;
   emCalc(value: string | number): string;
+  listReset: FlattenSimpleInterpolation;
 }
 
 export const addValues = (first: string, second: string) => {
@@ -35,3 +37,9 @@ export const emCalc = (value: string | number) => {
 
   return em(value, htmlFontSize);
 };
+
+export const listReset = css`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+`;
