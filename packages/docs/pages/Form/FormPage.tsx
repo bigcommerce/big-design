@@ -23,6 +23,7 @@ import {
   FormGroupPropTable,
   FormLabelPropTable,
   FormPropTable,
+  MarginPropTable,
 } from '../../PropTables';
 
 const FormPage = () => {
@@ -199,7 +200,7 @@ const FormPage = () => {
       title: 'Props',
       render: () => (
         <>
-          <FormPropTable />
+          <FormPropTable inheritedProps={<MarginPropTable collapsible />} />
           <FormErrorPropTable id="error" />
           <FormLabelPropTable id="label" />
           <FormDescriptionPropTable id="label" />
