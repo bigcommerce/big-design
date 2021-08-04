@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.0-alpha.2...@bigcommerce/big-design-icons@0.17.0) (2021-08-04)
+
+
+### Features
+
+* **icons:** add content copy icon ([#572](https://github.com/bigcommerce/big-design/issues/572)) ([4ca0b76](https://github.com/bigcommerce/big-design/commit/4ca0b76d12cc5a9d2e1dd0b90d90bc2cfb6a1294))
+
+
+
+
+
 # [0.17.0-alpha.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.0-alpha.1...@bigcommerce/big-design-icons@0.17.0-alpha.2) (2021-08-02)
 
 
