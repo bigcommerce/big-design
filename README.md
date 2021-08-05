@@ -99,3 +99,39 @@ Run linter with:
 ```
 yarn run lint
 ```
+
+### Releasing
+
+This is for releasing new versions of all the packages.
+
+```
+GH_TOKEN=<token> yarn lerna publish <patch/minor/major> --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
+```
+
+#### Prereleases
+
+```
+GH_TOKEN=<token> yarn lerna publish prerelease --pre-dist-tag next --conventional-prerelease --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
+```
+
+To promote a prerelease add the `--conventional-graduate` flag to release command.
+
+```
+GH_TOKEN=<token> yarn lerna publish <patch/minor/major> --conventional-graduate --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
+```
+
+#### `from-package`
+
+`from-package` allows you to release what's on `upstream/master` if the publish script failed. By default the `lerna publish` command will push commits and tags before running through the build. This is a just-in-case command.
+
+```
+GH_TOKEN=<token> yarn lerna publish from-package --git-remote upstream
+```
+
+### BigDesign Documentation Release
+
+```
+yarn run build
+cd packages/docs
+GTM_ID=<gtm-id> yarn run deploy --remote upstream
+```
