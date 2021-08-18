@@ -8,14 +8,14 @@ import { CheckboxWrapper } from './styled';
 
 export interface CheckboxEditorProps<Item> {
   cell: Cell<Item>;
-  isEditing: boolean;
+  toggle: boolean;
   onBlur(): void;
   onChange(value: unknown): void;
 }
 
 const InternalCheckboxEditor = <T extends WorksheetItem>({
   cell,
-  isEditing,
+  toggle,
   onBlur,
   onChange,
 }: CheckboxEditorProps<T>) => {
@@ -24,13 +24,13 @@ const InternalCheckboxEditor = <T extends WorksheetItem>({
   }, [cell, onChange]);
 
   useEffect(() => {
-    // isEditing will only return true when a user has pressed
+    // toggle will only return true when a user has pressed
     // `enter` or `space` when a checkbox cell is selected.
     // It is virtually the same as clicking on the checkbox.
-    if (isEditing) {
+    if (toggle) {
       handleChange();
     }
-  }, [cell.value, handleChange, isEditing]);
+  }, [cell.value, handleChange, toggle]);
 
   return (
     <CheckboxWrapper>

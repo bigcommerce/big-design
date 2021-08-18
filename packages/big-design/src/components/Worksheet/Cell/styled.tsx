@@ -11,7 +11,7 @@ interface StyledCellProps<Item> {
 }
 
 export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.inherit};
   border: ${({ theme }) => `${theme.helpers.remCalc(0.5)} solid ${theme.colors.secondary30}`};
   box-sizing: border-box;
   padding: ${({ theme, type }) => (type === 'select' ? 0 : `${theme.helpers.remCalc(6)} ${theme.helpers.remCalc(17)}`)};

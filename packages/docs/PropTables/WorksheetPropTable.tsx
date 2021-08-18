@@ -15,6 +15,11 @@ const worksheetProps: Prop[] = [
     required: true,
   },
   {
+    name: 'expandableItems',
+    types: '[key: string]: Array<string | number>;',
+    description: 'Accepts an object with parent ids as keys and an array of child ids that will be hidden on render.',
+  },
+  {
     name: 'items',
     types: 'any[]',
     description: 'The array of items to display.',
