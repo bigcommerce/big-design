@@ -93,6 +93,52 @@ describe('alertsManager functionality', () => {
     expect(mockSubscriber).toHaveBeenCalledWith(null);
   });
 
+  test('removes one alert with autoDismiss at a time', (done) => {
+    jest.useFakeTimers();
+
+    const mockSubscriber = jest.fn();
+    const warningAlert = {
+      ...alert,
+      type: 'warning' as const,
+      autoDismiss: true,
+      onClose: done,
+      key: 'test-key-warning',
+    };
+    const errorAlert = {
+      ...alert,
+      type: 'error' as const,
+      autoDismiss: true,
+      onClose: jest.fn(),
+      key: 'test-key-error',
+    };
+
+    alertsManager.subscribe(mockSubscriber);
+
+    const warningAlertKey = alertsManager.add(warningAlert);
+
+    expect(warningAlertKey).not.toBeUndefined();
+    expect(mockSubscriber).toHaveBeenCalledTimes(1);
+    expect(mockSubscriber).toHaveBeenNthCalledWith(1, expect.objectContaining({ key: 'test-key-warning' }));
+
+    const errorAlertKey = alertsManager.add(errorAlert);
+
+    expect(errorAlertKey).not.toBeUndefined();
+    expect(mockSubscriber).toHaveBeenCalledTimes(2);
+    expect(mockSubscriber).toHaveBeenNthCalledWith(2, expect.objectContaining({ key: 'test-key-error' }));
+
+    // Run the timeout on the error alert and return back the next alert (warning).
+    jest.runOnlyPendingTimers();
+
+    expect(mockSubscriber).toHaveBeenCalledTimes(3);
+    expect(mockSubscriber).toHaveBeenNthCalledWith(3, expect.objectContaining({ key: 'test-key-warning' }));
+
+    // Run the timeout on the warning alert and return back the next alert (null).
+    jest.runOnlyPendingTimers();
+
+    expect(mockSubscriber).toHaveBeenCalledTimes(4);
+    expect(mockSubscriber).toHaveBeenNthCalledWith(4, null);
+  });
+
   test('removes all alerts', () => {
     const testAlertA = { messages: [{ text: 'Text A' }] };
     const testAlertB = { messages: [{ text: 'Text B' }] };
