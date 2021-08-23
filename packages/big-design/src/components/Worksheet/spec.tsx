@@ -915,6 +915,10 @@ describe('expandable', () => {
     fireEvent.click(buttons[1]);
 
     expect(screen.queryAllByRole('row').length).toBe(8);
+
+    fireEvent.keyDown(buttons[1], { key: 'Enter' });
+
+    expect(screen.queryAllByRole('row').length).toBe(10);
   });
 
   test('keyboard navigates correctly', () => {
