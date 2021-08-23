@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.0...@bigcommerce/big-design@0.30.1) (2021-08-23)
+
+
+### Bug Fixes
+
+* **component:** alert autoDismiss firing when not visible ([#578](https://github.com/bigcommerce/big-design/issues/578)) ([0c4fabd](https://github.com/bigcommerce/big-design/commit/0c4fabd827058ca69b3622a1d53007d41c14cb99))
+
+
+
+
+
 # [0.30.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.0-alpha.4...@bigcommerce/big-design@0.30.0) (2021-08-04)
 
 **Note:** Version bump only for package @bigcommerce/big-design

@@ -1,13 +1,13 @@
 {
   "name": "@bigcommerce/examples",
   "private": true,
-  "version": "0.17.0",
+  "version": "0.17.1",
   "scripts": {
     "start": "parcel index.html",
     "ci": "tsc --noEmit && parcel build index.html"
   },
   "dependencies": {
-    "@bigcommerce/big-design": "^0.30.0",
+    "@bigcommerce/big-design": "^0.30.1",
     "@bigcommerce/big-design-icons": "^0.17.0",
     "@bigcommerce/big-design-theme": "^0.13.0",
     "formik": "^2.0.6",
