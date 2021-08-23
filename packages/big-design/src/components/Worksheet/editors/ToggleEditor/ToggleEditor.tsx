@@ -1,4 +1,4 @@
-import { AddCircleOutlineIcon, RemoveCircleOutlineIcon } from '@bigcommerce/big-design-icons';
+import { ChevronRightIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, useEffect } from 'react';
 
 import { Flex } from '../../../Flex';
@@ -27,7 +27,7 @@ const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
     <Flex justifyContent="center">
       {hasExpanded ? (
         <StyledExpandButton
-          iconOnly={<RemoveCircleOutlineIcon />}
+          iconOnly={<ExpandMoreIcon />}
           onClick={() => {
             onToggle(true);
           }}
@@ -36,7 +36,7 @@ const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
         />
       ) : (
         <StyledExpandButton
-          iconOnly={<AddCircleOutlineIcon />}
+          iconOnly={<ChevronRightIcon />}
           onClick={() => {
             onToggle(false);
           }}
