@@ -5,6 +5,7 @@ import { StyleableButton } from '../../../Button/private';
 
 export const StyledExpandButton = styled(StyleableButton)`
   height: ${({ theme }) => theme.spacing.large};
+  width: ${({ theme }) => theme.spacing.xxSmall};
 `;
 
 StyledExpandButton.defaultProps = { theme: defaultTheme };

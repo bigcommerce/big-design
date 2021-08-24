@@ -8,30 +8,30 @@ exports[`renders worksheet 1`] = `
   <thead>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <th
-        class="styled__Header-sc-16rzzpq-1 eBiVIc"
+        class="styled__Header-sc-16rzzpq-1 heDzbg"
       >
         Product name
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 eBiVIc"
+        class="styled__Header-sc-16rzzpq-1 heDzbg"
       >
         Visible on storefront
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 eBiVIc"
+        class="styled__Header-sc-16rzzpq-1 heDzbg"
       >
         Other field
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 eBiVIc"
+        class="styled__Header-sc-16rzzpq-1 heDzbg"
       >
         Other field
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 exsIhv"
+        class="styled__Header-sc-16rzzpq-1 gJIQyX"
       >
         Number field
       </th>
@@ -42,7 +42,7 @@ exports[`renders worksheet 1`] = `
       class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
     >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
@@ -171,7 +171,7 @@ exports[`renders worksheet 1`] = `
       class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
     >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
@@ -300,7 +300,7 @@ exports[`renders worksheet 1`] = `
       class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
     >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
@@ -428,7 +428,7 @@ exports[`renders worksheet 1`] = `
       class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
     >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
@@ -557,7 +557,7 @@ exports[`renders worksheet 1`] = `
       class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
     >
       <td
-        class="styled__Status-sc-1aacki0-0 bogBHW"
+        class="styled__Status-sc-1aacki0-0 iHYWTZ"
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 gAQxVh"
@@ -684,7 +684,7 @@ exports[`renders worksheet 1`] = `
       class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
     >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
@@ -813,7 +813,7 @@ exports[`renders worksheet 1`] = `
       class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
     >
       <td
-        class="styled__Status-sc-1aacki0-0 bogBHW"
+        class="styled__Status-sc-1aacki0-0 iHYWTZ"
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
@@ -941,7 +941,7 @@ exports[`renders worksheet 1`] = `
       class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
     >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
@@ -1070,7 +1070,7 @@ exports[`renders worksheet 1`] = `
       class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
     >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
         class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
