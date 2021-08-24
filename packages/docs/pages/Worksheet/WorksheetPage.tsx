@@ -470,7 +470,7 @@ const WorksheetPage = () => {
               {function Example() {
                 const columns: WorksheetColumn<Partial<Product>>[] = [
                   { hash: 'productName', header: 'Product name', validation: (value) => !!value },
-                  { hash: 'otherField', header: 'Other field', disabled: true },
+                  { hash: 'otherField', header: 'Other field' },
                 ];
 
                 const expandableRows = {

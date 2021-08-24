@@ -945,6 +945,10 @@ describe('expandable', () => {
 
     expect(variants[0].parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
+    fireEvent.keyDown(cell, { key: 'ArrowUp' });
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
     fireEvent.click(buttons[0]);
     fireEvent.click(variants[0]);
 
