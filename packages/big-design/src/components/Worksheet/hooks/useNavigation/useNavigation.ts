@@ -50,16 +50,16 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
     if (rowIndex === 0) {
       if (columnIndex > 0) {
         return { columnIndex: ++columnIndex, rowIndex };
-      } else {
-        return { columnIndex: --columnIndex, rowIndex };
       }
-    } else {
-      if (rowIndex > 0) {
-        return { rowIndex: ++rowIndex, columnIndex };
-      } else {
-        return { rowIndex: --rowIndex, columnIndex };
-      }
+
+      return { columnIndex: --columnIndex, rowIndex };
     }
+
+    if (rowIndex > 0) {
+      return { rowIndex: ++rowIndex, columnIndex };
+    }
+
+    return { rowIndex: --rowIndex, columnIndex };
   }, []);
 
   const navigate: Navigate = useCallback(

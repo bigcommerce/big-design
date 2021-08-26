@@ -39,7 +39,7 @@ exports[`renders worksheet 1`] = `
   </thead>
   <tbody>
     <tr
-      class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
     >
       <td
         class="styled__Status-sc-1aacki0-0 fVocxD"
@@ -168,7 +168,7 @@ exports[`renders worksheet 1`] = `
       </td>
     </tr>
     <tr
-      class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
     >
       <td
         class="styled__Status-sc-1aacki0-0 fVocxD"
@@ -297,7 +297,7 @@ exports[`renders worksheet 1`] = `
       </td>
     </tr>
     <tr
-      class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
     >
       <td
         class="styled__Status-sc-1aacki0-0 fVocxD"
@@ -425,7 +425,7 @@ exports[`renders worksheet 1`] = `
       </td>
     </tr>
     <tr
-      class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
     >
       <td
         class="styled__Status-sc-1aacki0-0 fVocxD"
@@ -437,9 +437,9 @@ exports[`renders worksheet 1`] = `
         <p
           class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
-          title="Variant"
+          title="Variant 1"
         >
-          Variant
+          Variant 1
         </p>
       </td>
       <td
@@ -554,7 +554,7 @@ exports[`renders worksheet 1`] = `
       </td>
     </tr>
     <tr
-      class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
     >
       <td
         class="styled__Status-sc-1aacki0-0 iHYWTZ"
@@ -681,7 +681,7 @@ exports[`renders worksheet 1`] = `
       </td>
     </tr>
     <tr
-      class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
     >
       <td
         class="styled__Status-sc-1aacki0-0 fVocxD"
@@ -693,9 +693,9 @@ exports[`renders worksheet 1`] = `
         <p
           class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
-          title="Variant"
+          title="Variant 2"
         >
-          Variant
+          Variant 2
         </p>
       </td>
       <td
@@ -810,7 +810,7 @@ exports[`renders worksheet 1`] = `
       </td>
     </tr>
     <tr
-      class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
     >
       <td
         class="styled__Status-sc-1aacki0-0 iHYWTZ"
@@ -822,9 +822,9 @@ exports[`renders worksheet 1`] = `
         <p
           class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
-          title="Variant"
+          title="Variant 3"
         >
-          Variant
+          Variant 3
         </p>
       </td>
       <td
@@ -938,7 +938,7 @@ exports[`renders worksheet 1`] = `
       </td>
     </tr>
     <tr
-      class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
     >
       <td
         class="styled__Status-sc-1aacki0-0 fVocxD"
@@ -1067,7 +1067,7 @@ exports[`renders worksheet 1`] = `
       </td>
     </tr>
     <tr
-      class="styled__StyledTableRow-sc-1bzgr3l-0 bZhEme"
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
     >
       <td
         class="styled__Status-sc-1aacki0-0 fVocxD"

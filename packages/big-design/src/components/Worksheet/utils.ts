@@ -58,9 +58,5 @@ export const invalidRows = <T extends WorksheetItem>(invalidCells: Cell<T>[], ro
 };
 
 export const getHiddenRows = (expandableRows: ExpandableRows) => {
-  const keys = Object.keys(expandableRows);
-
-  return keys.reduce<Array<string | number>>((accum, key) => {
-    return [...accum, ...expandableRows[key]];
-  }, []);
+  return Object.values(expandableRows).flat();
 };

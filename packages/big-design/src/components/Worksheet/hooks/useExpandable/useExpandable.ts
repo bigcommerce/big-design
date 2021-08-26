@@ -9,11 +9,13 @@ export const useExpandable = (rowId: string | number) => {
 
   const onExpand = useCallback(() => {
     const childIds = expandableRows[rowId];
+
     setHiddenRows(hiddenRows.filter((hiddenRow) => !childIds.includes(hiddenRow)));
   }, [expandableRows, hiddenRows, rowId, setHiddenRows]);
 
   const onCollapse = useCallback(() => {
     const childIds = expandableRows[rowId];
+
     setHiddenRows([...hiddenRows, ...childIds]);
   }, [expandableRows, hiddenRows, rowId, setHiddenRows]);
 
@@ -28,7 +30,7 @@ export const useExpandable = (rowId: string | number) => {
     [onCollapse, onExpand],
   );
 
-  const isExpandable = (expandableRows !== null && expandableRows[rowId] !== undefined) || false;
+  const isExpandable = expandableRows !== null && expandableRows[rowId] !== undefined;
 
   const hasExpanded = isExpandable && !hiddenRows.some((row) => expandableRows[rowId].includes(row));
 

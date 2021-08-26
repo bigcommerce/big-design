@@ -2,7 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 export const StyledInput = styled.input<{ isEdited: boolean }>`
-  background-color: inherit;
+  background-color: ${({ theme }) => theme.colors.inherit};
   border: 0;
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};

@@ -143,7 +143,7 @@ const items: Product[] = [
   },
   {
     id: 4,
-    productName: 'Variant',
+    productName: 'Variant 1',
     visibleOnStorefront: true,
     otherField: 'Text',
     otherField2: 4,
@@ -159,7 +159,7 @@ const items: Product[] = [
   },
   {
     id: 6,
-    productName: 'Variant',
+    productName: 'Variant 2',
     visibleOnStorefront: true,
     otherField: 'Text',
     otherField2: 6,
@@ -167,7 +167,7 @@ const items: Product[] = [
   },
   {
     id: 7,
-    productName: 'Variant',
+    productName: 'Variant 3',
     visibleOnStorefront: false,
     otherField: 'Text',
     otherField2: 7,
@@ -337,7 +337,7 @@ describe('validation', () => {
       {
         item: {
           id: 7,
-          productName: 'Variant',
+          productName: 'Variant 3',
           visibleOnStorefront: false,
           otherField: 'Text',
           otherField2: 7,
@@ -372,7 +372,7 @@ describe('validation', () => {
       {
         item: {
           id: 7,
-          productName: 'Variant',
+          productName: 'Variant 3',
           visibleOnStorefront: false,
           otherField: 'Text',
           otherField2: 7,
@@ -623,7 +623,7 @@ describe('TextEditor', () => {
     expect(handleChange).toHaveBeenCalledWith([
       {
         id: 7,
-        productName: 'Variant',
+        productName: 'Variant 3',
         visibleOnStorefront: false,
         otherField: 'Text',
         otherField2: 7,
@@ -785,7 +785,7 @@ describe('ModalEditor', () => {
     expect(handleChange).toHaveBeenLastCalledWith([
       {
         id: 4,
-        productName: 'Variant',
+        productName: 'Variant 1',
         visibleOnStorefront: true,
         otherField: 'Text',
         otherField2: 0,
@@ -900,25 +900,38 @@ describe('expandable', () => {
       />,
     );
 
-    expect(screen.queryAllByRole('row').length).toBe(7);
+    // expect(screen.queryAllByRole('row').length).toBeVisible();
+    expect(screen.queryByRole('row', { name: /shoes name one/i })).not.toBeInTheDocument();
 
     const buttons = screen.queryAllByTitle('toggle row expanded');
 
     fireEvent.click(buttons[0]);
 
-    expect(screen.queryAllByRole('row').length).toBe(8);
+    expect(screen.queryByRole('row', { name: /shoes name one/i })).toBeInTheDocument();
+
+    // expect(screen.queryAllByRole('row').length).toBe(8);
+
+    expect(screen.queryByRole('row', { name: /variant 2/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('row', { name: /variant 3/i })).not.toBeInTheDocument();
 
     fireEvent.click(buttons[1]);
 
-    expect(screen.queryAllByRole('row').length).toBe(10);
+    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    // expect(screen.queryAllByRole('row').length).toBe(10);
 
     fireEvent.click(buttons[1]);
 
-    expect(screen.queryAllByRole('row').length).toBe(8);
+    expect(screen.queryByRole('row', { name: /variant 2/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('row', { name: /variant 3/i })).not.toBeInTheDocument();
+
+    // expect(screen.queryAllByRole('row').length).toBe(8);
 
     fireEvent.keyDown(buttons[1], { key: 'Enter' });
 
-    expect(screen.queryAllByRole('row').length).toBe(10);
+    // expect(screen.queryAllByRole('row').length).toBe(10);
+    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
   });
 
   test('keyboard navigates correctly', () => {
@@ -941,16 +954,16 @@ describe('expandable', () => {
 
     fireEvent.keyDown(cell, { key: 'ArrowDown' });
 
-    const variants = screen.getAllByText('Variant');
+    const variant = screen.getByText('Variant 1');
 
-    expect(variants[0].parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+    expect(variant.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.keyDown(cell, { key: 'ArrowUp' });
 
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.click(buttons[0]);
-    fireEvent.click(variants[0]);
+    fireEvent.click(variant);
 
     fireEvent.keyDown(cell, { key: 'ArrowUp' });
 
