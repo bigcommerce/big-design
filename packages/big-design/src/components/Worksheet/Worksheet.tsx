@@ -8,12 +8,13 @@ import { WorksheetModal } from './Modal/Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, Table } from './styled';
-import { WorksheetItem, WorksheetModalColumn, WorksheetProps } from './types';
+import { InternalWorksheetColumn, WorksheetItem, WorksheetModalColumn, WorksheetProps } from './types';
 import { editedRows, invalidRows } from './utils';
 
 const InternalWorksheet = typedMemo(
   <T extends WorksheetItem>({
     columns,
+    expandableRows,
     items,
     onChange,
     onErrors,
@@ -22,6 +23,7 @@ const InternalWorksheet = typedMemo(
 
     const setRows = useStore((state) => state.setRows);
     const setColumns = useStore((state) => state.setColumns);
+    const setExpandableRows = useStore((state) => state.setExpandableRows);
     const setTableRef = useStore((state) => state.setTableRef);
 
     const rows = useStore(useMemo(() => (state) => state.rows, []));
@@ -30,11 +32,15 @@ const InternalWorksheet = typedMemo(
 
     const { handleKeyDown } = useKeyEvents();
 
+    // Add a column for the toggle components
+    const expandedColumns: InternalWorksheetColumn<T>[] = useMemo(() => {
+      return expandableRows ? [{ hash: '', header: '', type: 'toggle' }, ...columns] : columns;
+    }, [columns, expandableRows]);
+
     // Create a new reference since state mutates rows to prevent unecessary rerendering
     useEffect(() => setRows([...items]), [items, setRows]);
-
-    useEffect(() => setColumns(columns), [columns, setColumns]);
-
+    useEffect(() => setColumns(expandedColumns), [expandedColumns, setColumns]);
+    useEffect(() => setExpandableRows(expandableRows || {}), [expandableRows, setExpandableRows]);
     useEffect(() => setTableRef(tableRef.current), [setTableRef, tableRef]);
 
     useEffect(() => {
@@ -54,7 +60,7 @@ const InternalWorksheet = typedMemo(
         <thead>
           <tr>
             <Status />
-            {columns.map((column, index) => (
+            {expandedColumns.map((column, index) => (
               <Header key={index} columnType={column.type}>
                 {column.header}
               </Header>
@@ -62,26 +68,26 @@ const InternalWorksheet = typedMemo(
           </tr>
         </thead>
       ),
-      [columns],
+      [expandedColumns],
     );
 
     const renderedRows = useMemo(
       () => (
         <tbody>
           {rows.map((_row, rowIndex) => (
-            <Row key={rowIndex} columns={columns} rowIndex={rowIndex} />
+            <Row columns={expandedColumns} key={rowIndex} rowIndex={rowIndex} />
           ))}
         </tbody>
       ),
-      [columns, rows],
+      [expandedColumns, rows],
     );
 
     const renderedModals = useMemo(
       () =>
-        columns
+        expandedColumns
           .filter((column): column is WorksheetModalColumn<T> => column.type === 'modal')
           .map((column, index) => <WorksheetModal column={column} key={index} />),
-      [columns],
+      [expandedColumns],
     );
 
     return (

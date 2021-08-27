@@ -464,6 +464,71 @@ const WorksheetPage = () => {
               {/* jsx-to-string:end */}
             </CodePreview>
           </Panel>
+          <Panel header="Expandable rows">
+            <CodePreview>
+              {/* jsx-to-string:start */}
+              {function Example() {
+                const columns: WorksheetColumn<Partial<Product>>[] = [
+                  { hash: 'productName', header: 'Product name', validation: (value) => !!value },
+                  { hash: 'otherField', header: 'Other field' },
+                ];
+
+                const expandableRows = {
+                  2: [3],
+                  4: [5, 6],
+                };
+
+                const items: Partial<Product>[] = [
+                  {
+                    id: 1,
+                    productName: 'Product 1',
+                    otherField: 'Text',
+                  },
+                  {
+                    id: 2,
+                    productName: 'Product 2',
+                    otherField: 'Text',
+                  },
+                  {
+                    id: 3,
+                    productName: 'Product 3',
+                    otherField: 'Text',
+                  },
+                  {
+                    id: 4,
+                    productName: 'Product 4',
+                    otherField: 'Text',
+                  },
+                  {
+                    id: 5,
+                    productName: 'Product 5',
+                    otherField: 'Text',
+                  },
+                  {
+                    id: 6,
+                    productName: 'Product 6',
+                    otherField: 'Text',
+                  },
+                  {
+                    id: 7,
+                    productName: 'Product 7',
+                    otherField: 'Text',
+                  },
+                ];
+
+                return (
+                  <Worksheet
+                    columns={columns}
+                    expandableRows={expandableRows}
+                    items={items}
+                    onChange={(items) => items}
+                    onErrors={(items) => items}
+                  />
+                );
+              }}
+              {/* jsx-to-string:end */}
+            </CodePreview>
+          </Panel>
         </>
       ),
     },

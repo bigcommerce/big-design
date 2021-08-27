@@ -2,9 +2,14 @@ import React from 'react';
 
 import { SelectOption } from '../Select';
 
+export interface ExpandableRows {
+  [key: string]: Array<string | number>;
+}
+
 export interface WorksheetProps<Item extends WorksheetItem> {
   columns: Array<WorksheetColumn<Item>>;
   items: Item[];
+  expandableRows?: ExpandableRows;
   onChange(items: Array<Cell<Item>>): void;
   onErrors?(items: WorksheetError<Item>[]): void;
 }
@@ -20,6 +25,14 @@ export type WorksheetColumn<Item> =
   | WorksheetCheckboxColumn<Item>
   | WorksheetSelectableColumn<Item>
   | WorksheetModalColumn<Item>;
+
+export type InternalWorksheetColumn<Item> =
+  | WorksheetTextColumn<Item>
+  | WorksheetNumberColumn<Item>
+  | WorksheetCheckboxColumn<Item>
+  | WorksheetSelectableColumn<Item>
+  | WorksheetModalColumn<Item>
+  | WorksheetToggleColumn<Item>;
 
 interface WorksheetBaseColumn<Item> {
   disabled?: boolean;
@@ -63,12 +76,17 @@ export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
   type: 'modal';
 }
 
+export interface WorksheetToggleColumn<Item> extends WorksheetBaseColumn<Item> {
+  type: 'toggle';
+}
+
 export interface Cell<Item> {
   columnIndex: number;
   disabled?: boolean;
   hash: keyof Item;
+  hidden?: boolean;
   rowIndex: number;
-  type: Exclude<WorksheetColumn<Item>['type'], undefined>;
+  type: Exclude<InternalWorksheetColumn<Item>['type'], undefined>;
   value: Item[keyof Item];
 }
 

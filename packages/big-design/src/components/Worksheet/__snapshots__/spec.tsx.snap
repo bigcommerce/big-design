@@ -8,42 +8,44 @@ exports[`renders worksheet 1`] = `
   <thead>
     <tr>
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <th
-        class="styled__Header-sc-16rzzpq-1 eBiVIc"
+        class="styled__Header-sc-16rzzpq-1 heDzbg"
       >
         Product name
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 eBiVIc"
+        class="styled__Header-sc-16rzzpq-1 heDzbg"
       >
         Visible on storefront
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 eBiVIc"
+        class="styled__Header-sc-16rzzpq-1 heDzbg"
       >
         Other field
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 eBiVIc"
+        class="styled__Header-sc-16rzzpq-1 heDzbg"
       >
         Other field
       </th>
       <th
-        class="styled__Header-sc-16rzzpq-1 exsIhv"
+        class="styled__Header-sc-16rzzpq-1 gJIQyX"
       >
         Number field
       </th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
+    >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -55,7 +57,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
+        class="styled__StyledCell-sc-1bt06ph-0 hyLUmn"
         type="checkbox"
       >
         <div
@@ -112,7 +114,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -124,7 +126,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="modal"
       >
         <div
@@ -153,7 +155,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
+        class="styled__StyledCell-sc-1bt06ph-0 kzazjs"
         type="number"
       >
         <p
@@ -165,12 +167,14 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
     </tr>
-    <tr>
+    <tr
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
+    >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -182,7 +186,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
+        class="styled__StyledCell-sc-1bt06ph-0 hyLUmn"
         type="checkbox"
       >
         <div
@@ -239,7 +243,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -251,7 +255,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="modal"
       >
         <div
@@ -280,7 +284,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
+        class="styled__StyledCell-sc-1bt06ph-0 kzazjs"
         type="number"
       >
         <p
@@ -292,12 +296,14 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
     </tr>
-    <tr>
+    <tr
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
+    >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -309,7 +315,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
+        class="styled__StyledCell-sc-1bt06ph-0 hyLUmn"
         type="checkbox"
       >
         <div
@@ -365,7 +371,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -377,7 +383,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="modal"
       >
         <div
@@ -406,7 +412,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
+        class="styled__StyledCell-sc-1bt06ph-0 kzazjs"
         type="number"
       >
         <p
@@ -418,24 +424,26 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
     </tr>
-    <tr>
+    <tr
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
+    >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
           class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
-          title="Variant"
+          title="Variant 1"
         >
-          Variant
+          Variant 1
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
+        class="styled__StyledCell-sc-1bt06ph-0 hyLUmn"
         type="checkbox"
       >
         <div
@@ -492,7 +500,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -504,7 +512,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="modal"
       >
         <div
@@ -533,7 +541,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
+        class="styled__StyledCell-sc-1bt06ph-0 kzazjs"
         type="number"
       >
         <p
@@ -545,12 +553,14 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
     </tr>
-    <tr>
+    <tr
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
+    >
       <td
-        class="styled__Status-sc-1aacki0-0 bogBHW"
+        class="styled__Status-sc-1aacki0-0 iHYWTZ"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 kfcbVP"
+        class="styled__StyledCell-sc-1bt06ph-0 gAQxVh"
         type="text"
       >
         <p
@@ -560,7 +570,7 @@ exports[`renders worksheet 1`] = `
         />
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
+        class="styled__StyledCell-sc-1bt06ph-0 hyLUmn"
         type="checkbox"
       >
         <div
@@ -617,7 +627,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -629,7 +639,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="modal"
       >
         <div
@@ -658,7 +668,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
+        class="styled__StyledCell-sc-1bt06ph-0 kzazjs"
         type="number"
       >
         <p
@@ -670,24 +680,26 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
     </tr>
-    <tr>
+    <tr
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
+    >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
           class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
-          title="Variant"
+          title="Variant 2"
         >
-          Variant
+          Variant 2
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
+        class="styled__StyledCell-sc-1bt06ph-0 hyLUmn"
         type="checkbox"
       >
         <div
@@ -744,7 +756,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -756,7 +768,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="modal"
       >
         <div
@@ -785,7 +797,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
+        class="styled__StyledCell-sc-1bt06ph-0 kzazjs"
         type="number"
       >
         <p
@@ -797,24 +809,26 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
     </tr>
-    <tr>
+    <tr
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
+    >
       <td
-        class="styled__Status-sc-1aacki0-0 bogBHW"
+        class="styled__Status-sc-1aacki0-0 iHYWTZ"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
           class="styled__StyledSmall-sc-tqnj75-6 buphHb"
           color="secondary70"
-          title="Variant"
+          title="Variant 3"
         >
-          Variant
+          Variant 3
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
+        class="styled__StyledCell-sc-1bt06ph-0 hyLUmn"
         type="checkbox"
       >
         <div
@@ -870,7 +884,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -882,7 +896,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="modal"
       >
         <div
@@ -911,7 +925,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 bnHyzk"
+        class="styled__StyledCell-sc-1bt06ph-0 iLTuMG"
         type="number"
       >
         <p
@@ -923,12 +937,14 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
     </tr>
-    <tr>
+    <tr
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
+    >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -940,7 +956,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
+        class="styled__StyledCell-sc-1bt06ph-0 hyLUmn"
         type="checkbox"
       >
         <div
@@ -997,7 +1013,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -1009,7 +1025,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="modal"
       >
         <div
@@ -1038,7 +1054,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
+        class="styled__StyledCell-sc-1bt06ph-0 kzazjs"
         type="number"
       >
         <p
@@ -1050,12 +1066,14 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
     </tr>
-    <tr>
+    <tr
+      class="styled__StyledTableRow-sc-1bzgr3l-0 jSCjAR"
+    >
       <td
-        class="styled__Status-sc-1aacki0-0 iuSuXw"
+        class="styled__Status-sc-1aacki0-0 fVocxD"
       />
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -1067,7 +1085,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 eDezrx"
+        class="styled__StyledCell-sc-1bt06ph-0 hyLUmn"
         type="checkbox"
       >
         <div
@@ -1124,7 +1142,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="text"
       >
         <p
@@ -1136,7 +1154,7 @@ exports[`renders worksheet 1`] = `
         </p>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 dIPfoJ"
+        class="styled__StyledCell-sc-1bt06ph-0 dIhdpr"
         type="modal"
       >
         <div
@@ -1165,7 +1183,7 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gdfHlK"
+        class="styled__StyledCell-sc-1bt06ph-0 kzazjs"
         type="number"
       >
         <p

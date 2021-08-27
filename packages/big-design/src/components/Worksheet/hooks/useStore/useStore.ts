@@ -1,15 +1,17 @@
 import create, { State } from 'zustand';
 import createContext from 'zustand/context';
 
-import { Cell, WorksheetColumn } from '../../types';
-import { deleteCells, mergeCells } from '../../utils';
+import { Cell, ExpandableRows, InternalWorksheetColumn } from '../../types';
+import { deleteCells, getHiddenRows, mergeCells } from '../../utils';
 
 export const { Provider, useStore } = createContext<BaseState<any>>();
 
 interface BaseState<Item> extends State {
-  columns: WorksheetColumn<Item>[];
+  columns: InternalWorksheetColumn<Item>[];
   editedCells: Array<Cell<Item>>;
   editingCell: Cell<Item> | null;
+  expandableRows: ExpandableRows;
+  hiddenRows: Array<string | number>;
   invalidCells: Array<Cell<Item>>;
   openedModal: keyof Item | null;
   rows: Item[];
@@ -19,8 +21,10 @@ interface BaseState<Item> extends State {
   addEditedCells: (cells: Array<Cell<Item>>) => void;
   addInvalidCells: (cells: Array<Cell<Item>>) => void;
   removeInvalidCells: (cells: Array<Cell<Item>>) => void;
-  setColumns: (columns: Array<WorksheetColumn<Item>>) => void;
+  setColumns: (columns: Array<InternalWorksheetColumn<Item>>) => void;
   setEditingCell: (cell: Cell<Item> | null) => void;
+  setExpandableRows: (expandableRows: ExpandableRows) => void;
+  setHiddenRows: (hiddenRow: Array<string | number>) => void;
   setOpenModal: (value: keyof Item | null) => void;
   setRows: (rows: Item[]) => void;
   setSelectedCells: (cells: Array<Cell<Item>>) => void;
@@ -33,6 +37,8 @@ export const createStore = () =>
     columns: [],
     editedCells: [],
     editingCell: null,
+    expandableRows: {},
+    hiddenRows: [],
     invalidCells: [],
     openedModal: null,
     rows: [],
@@ -44,6 +50,9 @@ export const createStore = () =>
     removeInvalidCells: (cells) => set((state) => ({ ...state, invalidCells: deleteCells(state.invalidCells, cells) })),
     setColumns: (columns) => set((state) => ({ ...state, columns })),
     setEditingCell: (cell) => set((state) => ({ ...state, editingCell: cell })),
+    setExpandableRows: (expandableRows) =>
+      set((state) => ({ ...state, expandableRows, hiddenRows: getHiddenRows(expandableRows) })),
+    setHiddenRows: (hiddenRows) => set((state) => ({ ...state, hiddenRows })),
     setOpenModal: (value) => set((state) => ({ ...state, openedModal: value })),
     setRows: (rows) => set((state) => ({ ...state, rows })),
     setSelectedCells: (cells) => set((state) => ({ ...state, selectedCells: cells })),

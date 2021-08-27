@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { Cell, WorksheetItem } from '../../types';
-import { useNavigation } from '../useNavigation';
 import { useStore } from '../useStore';
 import { useTableFocus } from '../useTableFocus';
 import { useUpdateItems } from '../useUpdateItems';
@@ -11,7 +10,6 @@ export type EditableCellOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement
 export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
   const setEditingCell = useStore((state) => state.setEditingCell);
   const { updateItems } = useUpdateItems();
-  const { navigate } = useNavigation(cell);
   const { focusTable } = useTableFocus();
 
   const isEditing = useStore(
@@ -64,15 +62,6 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
           restoreFocus();
 
           break;
-        case 'Tab':
-          event.preventDefault();
-
-          restoreFocus();
-
-          // Navigate lateraly on Tab
-          navigate({ rowIndex: 0, columnIndex: event.shiftKey ? -1 : 1 });
-
-          break;
         case 'Escape':
           event.preventDefault();
 
@@ -81,7 +70,7 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
           break;
       }
     },
-    [cell, navigate, restoreFocus, updateItems],
+    [cell, restoreFocus, updateItems],
   );
 
   return useMemo(

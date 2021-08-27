@@ -143,7 +143,7 @@ const items: Product[] = [
   },
   {
     id: 4,
-    productName: 'Variant',
+    productName: 'Variant 1',
     visibleOnStorefront: true,
     otherField: 'Text',
     otherField2: 4,
@@ -159,7 +159,7 @@ const items: Product[] = [
   },
   {
     id: 6,
-    productName: 'Variant',
+    productName: 'Variant 2',
     visibleOnStorefront: true,
     otherField: 'Text',
     otherField2: 6,
@@ -167,7 +167,7 @@ const items: Product[] = [
   },
   {
     id: 7,
-    productName: 'Variant',
+    productName: 'Variant 3',
     visibleOnStorefront: false,
     otherField: 'Text',
     otherField2: 7,
@@ -282,18 +282,6 @@ describe('edition', () => {
 
     fireEvent.doubleClick(getByText('Shoes Name Three'));
 
-    fireEvent.keyDown(getByDisplayValue('Shoes Name Three'), { key: 'Tab' });
-
-    expect(table).toHaveFocus();
-
-    fireEvent.doubleClick(getByText('Shoes Name Three'));
-
-    fireEvent.keyDown(getByDisplayValue('Shoes Name Three'), { key: 'Tab', shiftKey: true });
-
-    expect(table).toHaveFocus();
-
-    fireEvent.doubleClick(getByText('Shoes Name Three'));
-
     fireEvent.keyDown(getByDisplayValue('Shoes Name Three'), { key: 'Escape' });
 
     expect(table).toHaveFocus();
@@ -349,7 +337,7 @@ describe('validation', () => {
       {
         item: {
           id: 7,
-          productName: 'Variant',
+          productName: 'Variant 3',
           visibleOnStorefront: false,
           otherField: 'Text',
           otherField2: 7,
@@ -384,7 +372,7 @@ describe('validation', () => {
       {
         item: {
           id: 7,
-          productName: 'Variant',
+          productName: 'Variant 3',
           visibleOnStorefront: false,
           otherField: 'Text',
           otherField2: 7,
@@ -584,13 +572,13 @@ describe('TextEditor', () => {
 
     cell = getByText('Shoes Name One');
 
-    expect(cell.parentNode).toHaveStyle(`background-color: ${theme.colors.white};`);
+    expect(cell.parentNode).toHaveStyle(`background-color: ${theme.colors.inherit};`);
 
     fireEvent.doubleClick(cell);
 
     input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
 
-    expect(input).toHaveStyle('background-color: white;');
+    expect(input).toHaveStyle(`background-color: ${theme.colors.inherit}`);
 
     fireEvent.change(input, { target: { value: 'Shoes Name One Edit' } });
     fireEvent.keyDown(input, { key: 'Enter' });
@@ -635,7 +623,7 @@ describe('TextEditor', () => {
     expect(handleChange).toHaveBeenCalledWith([
       {
         id: 7,
-        productName: 'Variant',
+        productName: 'Variant 3',
         visibleOnStorefront: false,
         otherField: 'Text',
         otherField2: 7,
@@ -797,7 +785,7 @@ describe('ModalEditor', () => {
     expect(handleChange).toHaveBeenLastCalledWith([
       {
         id: 4,
-        productName: 'Variant',
+        productName: 'Variant 1',
         visibleOnStorefront: true,
         otherField: 'Text',
         otherField2: 0,
@@ -885,5 +873,102 @@ describe('disable', () => {
     fireEvent.doubleClick(screen.getByText('Shoes Name One'));
 
     expect(screen.queryByDisplayValue('Shoes Name One')).toBeNull();
+  });
+});
+
+describe('expandable', () => {
+  test('renders expandable buttons', () => {
+    render(
+      <Worksheet
+        columns={disabledColumns}
+        expandableRows={{ 2: [3], 5: [6, 7] }}
+        items={items}
+        onChange={handleChange}
+      />,
+    );
+
+    expect(screen.queryAllByTitle('toggle row expanded').length).toBe(2);
+  });
+
+  test('toggles rows', () => {
+    render(
+      <Worksheet
+        columns={disabledColumns}
+        expandableRows={{ 2: [3], 5: [6, 7] }}
+        items={items}
+        onChange={handleChange}
+      />,
+    );
+
+    // expect(screen.queryAllByRole('row').length).toBeVisible();
+    expect(screen.queryByRole('row', { name: /shoes name one/i })).not.toBeInTheDocument();
+
+    const buttons = screen.queryAllByTitle('toggle row expanded');
+
+    fireEvent.click(buttons[0]);
+
+    expect(screen.queryByRole('row', { name: /shoes name one/i })).toBeInTheDocument();
+
+    // expect(screen.queryAllByRole('row').length).toBe(8);
+
+    expect(screen.queryByRole('row', { name: /variant 2/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('row', { name: /variant 3/i })).not.toBeInTheDocument();
+
+    fireEvent.click(buttons[1]);
+
+    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    // expect(screen.queryAllByRole('row').length).toBe(10);
+
+    fireEvent.click(buttons[1]);
+
+    expect(screen.queryByRole('row', { name: /variant 2/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('row', { name: /variant 3/i })).not.toBeInTheDocument();
+
+    // expect(screen.queryAllByRole('row').length).toBe(8);
+
+    fireEvent.keyDown(buttons[1], { key: 'Enter' });
+
+    // expect(screen.queryAllByRole('row').length).toBe(10);
+    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+    expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
+  });
+
+  test('keyboard navigates correctly', () => {
+    render(
+      <Worksheet
+        columns={disabledColumns}
+        expandableRows={{ 2: [3], 5: [6, 7] }}
+        items={items}
+        onChange={handleChange}
+      />,
+    );
+
+    const buttons = screen.queryAllByTitle('toggle row expanded');
+
+    let cell = screen.getByText('Shoes Name Two');
+
+    fireEvent.click(cell);
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowDown' });
+
+    const variant = screen.getByText('Variant 1');
+
+    expect(variant.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowUp' });
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.click(buttons[0]);
+    fireEvent.click(variant);
+
+    fireEvent.keyDown(cell, { key: 'ArrowUp' });
+
+    cell = screen.getByText('Shoes Name One');
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
   });
 });

@@ -1,4 +1,5 @@
 export * from './useEditableCell';
+export * from './useExpandable';
 export * from './useKeyEvents';
 export * from './useNavigation';
 export * from './useStore';

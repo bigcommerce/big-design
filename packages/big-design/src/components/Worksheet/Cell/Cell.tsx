@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useMemo } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Small } from '../../Typography';
-import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor } from '../editors';
+import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor, ToggleEditor } from '../editors';
 import { useEditableCell, useStore } from '../hooks';
 import {
+  InternalWorksheetColumn,
   Cell as TCell,
-  WorksheetColumn,
   WorksheetItem,
   WorksheetSelectableColumn,
   WorksheetTextColumn,
@@ -16,8 +16,9 @@ import { StyledCell } from './styled';
 
 interface CellProps<Item> extends TCell<Item> {
   options?: WorksheetSelectableColumn<Item>['config']['options'];
+  rowId: number | string;
   formatting?: WorksheetTextColumn<Item>['formatting'];
-  validation?: WorksheetColumn<Item>['validation'];
+  validation?: InternalWorksheetColumn<Item>['validation'];
 }
 
 const InternalCell = <T extends WorksheetItem>({
@@ -28,8 +29,9 @@ const InternalCell = <T extends WorksheetItem>({
   options,
   rowIndex,
   type,
-  value,
+  rowId,
   validation,
+  value,
 }: CellProps<T>) => {
   const cell: TCell<T> = useMemo(
     () => ({ columnIndex, disabled, hash, rowIndex, type, value }),
@@ -120,9 +122,11 @@ const InternalCell = <T extends WorksheetItem>({
           />
         );
       case 'checkbox':
-        return <CheckboxEditor cell={cell} isEditing={isEditing} onBlur={handleBlur} onChange={handleChange} />;
+        return <CheckboxEditor cell={cell} toggle={isEditing} onBlur={handleBlur} onChange={handleChange} />;
       case 'modal':
         return <ModalEditor cell={cell} formatting={formatting} isEditing={isEditing} />;
+      case 'toggle':
+        return <ToggleEditor rowId={rowId} toggle={isEditing} />;
       default:
         return isEditing && !disabled ? (
           <TextEditor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
@@ -142,6 +146,7 @@ const InternalCell = <T extends WorksheetItem>({
     isEdited,
     isEditing,
     options,
+    rowId,
     renderedValue,
     type,
   ]);
