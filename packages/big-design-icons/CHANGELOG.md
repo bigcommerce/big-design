@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.0...@bigcommerce/big-design-icons@0.17.1) (2021-09-03)
+
+
+### Features
+
+* **icons:** Add Home/KeyboardDoubleArrowLeftIcon/SwapHoriz icons ([#583](https://github.com/bigcommerce/big-design/issues/583)) ([519655f](https://github.com/bigcommerce/big-design/commit/519655fe8ee3d619d1b85937e86635332fb77301))
+
+
+
+
+
 # [0.17.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.0-alpha.2...@bigcommerce/big-design-icons@0.17.0) (2021-08-04)
 
 

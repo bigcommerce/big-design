@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.1...@bigcommerce/docs@0.30.2) (2021-09-03)
+
+
+### Features
+
+* **component:** add expandable rows ([#579](https://github.com/bigcommerce/big-design/issues/579)) ([aea894e](https://github.com/bigcommerce/big-design/commit/aea894e9890138305ec298293c26c73c5a5e0463))
+
+
+
+
+
 ## [0.30.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.0...@bigcommerce/docs@0.30.1) (2021-08-23)
 
 **Note:** Version bump only for package @bigcommerce/docs

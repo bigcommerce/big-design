@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1](https://github.com/chanceaclark/big-design/compare/@bigcommerce/configs@0.15.0...@bigcommerce/configs@0.15.1) (2021-09-03)
+
+
+### Features
+
+* **component:** add expandable rows ([#579](https://github.com/chanceaclark/big-design/issues/579)) ([aea894e](https://github.com/chanceaclark/big-design/commit/aea894e9890138305ec298293c26c73c5a5e0463))
+
+
+
+
+
 # [0.15.0](https://github.com/chanceaclark/big-design/compare/@bigcommerce/configs@0.15.0-alpha.1...@bigcommerce/configs@0.15.0) (2021-08-04)
 
 **Note:** Version bump only for package @bigcommerce/configs
