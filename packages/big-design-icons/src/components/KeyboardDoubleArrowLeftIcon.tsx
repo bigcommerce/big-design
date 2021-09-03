@@ -24,8 +24,12 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M8.7 15.9L4.8 12l3.9-3.9a.984.984 0 000-1.4.984.984 0 00-1.4 0l-4.59 4.59a.996.996 0 000 1.41l4.59 4.6c.39.39 1.01.39 1.4 0a.984.984 0 000-1.4zm6.6 0l3.9-3.9-3.9-3.9a.984.984 0 010-1.4.984.984 0 011.4 0l4.59 4.59c.39.39.39 1.02 0 1.41l-4.59 4.6a.984.984 0 01-1.4 0 .984.984 0 010-1.4z" />
+      <g fill="none">
+        <path d="M0 0h24v24H0z" />
+        <path d="M0 0h24v24H0z" />
+      </g>
+      <path d="M18.29 17.29a.996.996 0 000-1.41L14.42 12l3.88-3.88a.996.996 0 10-1.41-1.41L12.3 11.3a.996.996 0 000 1.41l4.59 4.59c.38.38 1.01.38 1.4-.01z" />
+      <path d="M11.7 17.29a.996.996 0 000-1.41L7.83 12l3.88-3.88a.996.996 0 10-1.41-1.41L5.71 11.3a.996.996 0 000 1.41l4.59 4.59c.38.38 1.01.38 1.4-.01z" />
     </svg>
   );
 };
@@ -34,6 +38,6 @@ const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, re
   <Icon {...iconProps} svgRef={ref} />
 ));
 
-export const CodeIcon = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
+export const KeyboardDoubleArrowLeftIcon = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
 
-CodeIcon.displayName = 'CodeIcon';
+KeyboardDoubleArrowLeftIcon.displayName = 'KeyboardDoubleArrowLeftIcon';

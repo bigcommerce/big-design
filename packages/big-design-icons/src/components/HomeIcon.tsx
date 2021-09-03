@@ -25,7 +25,7 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M8.7 15.9L4.8 12l3.9-3.9a.984.984 0 000-1.4.984.984 0 00-1.4 0l-4.59 4.59a.996.996 0 000 1.41l4.59 4.6c.39.39 1.01.39 1.4 0a.984.984 0 000-1.4zm6.6 0l3.9-3.9-3.9-3.9a.984.984 0 010-1.4.984.984 0 011.4 0l4.59 4.59c.39.39.39 1.02 0 1.41l-4.59 4.6a.984.984 0 01-1.4 0 .984.984 0 010-1.4z" />
+      <path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
     </svg>
   );
 };
@@ -34,6 +34,6 @@ const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, re
   <Icon {...iconProps} svgRef={ref} />
 ));
 
-export const CodeIcon = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
+export const HomeIcon = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
 
-CodeIcon.displayName = 'CodeIcon';
+HomeIcon.displayName = 'HomeIcon';

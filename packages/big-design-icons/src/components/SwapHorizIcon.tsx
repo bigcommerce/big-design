@@ -25,7 +25,7 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M8.7 15.9L4.8 12l3.9-3.9a.984.984 0 000-1.4.984.984 0 00-1.4 0l-4.59 4.59a.996.996 0 000 1.41l4.59 4.6c.39.39 1.01.39 1.4 0a.984.984 0 000-1.4zm6.6 0l3.9-3.9-3.9-3.9a.984.984 0 010-1.4.984.984 0 011.4 0l4.59 4.59c.39.39.39 1.02 0 1.41l-4.59 4.6a.984.984 0 01-1.4 0 .984.984 0 010-1.4z" />
+      <path d="M6.14 11.86l-2.78 2.79c-.19.2-.19.51 0 .71l2.78 2.79c.31.32.85.09.85-.35V16H13c.55 0 1-.45 1-1s-.45-1-1-1H6.99v-1.79c0-.45-.54-.67-.85-.35zm14.51-3.21l-2.78-2.79c-.31-.32-.85-.09-.85.35V8H11c-.55 0-1 .45-1 1s.45 1 1 1h6.01v1.79c0 .45.54.67.85.35l2.78-2.79c.2-.19.2-.51.01-.7z" />
     </svg>
   );
 };
@@ -34,6 +34,6 @@ const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, re
   <Icon {...iconProps} svgRef={ref} />
 ));
 
-export const CodeIcon = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
+export const SwapHorizIcon = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
 
-CodeIcon.displayName = 'CodeIcon';
+SwapHorizIcon.displayName = 'SwapHorizIcon';
