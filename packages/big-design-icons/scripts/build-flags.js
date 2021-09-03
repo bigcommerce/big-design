@@ -29,6 +29,7 @@ async function convertToReactComponent(filePath, iconName) {
               prefix: iconName,
             },
             removeViewBox: false,
+            removeXMLNS: true,
           },
         ],
       },
