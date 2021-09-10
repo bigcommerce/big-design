@@ -362,6 +362,7 @@ exports[`renders Stepper 1`] = `
       class="c5 c6 c7"
     >
       <svg
+        aria-hidden="true"
         class="c8"
         color="white"
         fill="currentColor"

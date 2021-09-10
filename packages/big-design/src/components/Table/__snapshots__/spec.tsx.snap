@@ -362,6 +362,7 @@ exports[`renders a pagination component 1`] = `
             >
               1 - 3 of 5
               <svg
+                aria-hidden="true"
                 class="c10"
                 fill="currentColor"
                 height="24"
@@ -934,6 +935,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
           for="bd-checkbox-2"
         >
           <svg
+            aria-hidden="true"
             class="c10"
             fill="currentColor"
             height="24"

@@ -10,6 +10,7 @@ exports[`render completed determinant progress circle 1`] = `
 
 <div>
   <svg
+    aria-hidden="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="100"
@@ -110,6 +111,7 @@ exports[`render error determinant progress circle 1`] = `
 
 <div>
   <svg
+    aria-hidden="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="0"

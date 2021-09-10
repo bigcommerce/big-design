@@ -34,7 +34,7 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
 };
 
 const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => (
-  <Icon {...iconProps} svgRef={ref} />
+  <Icon aria-hidden={iconProps.title ? undefined : true} {...iconProps} svgRef={ref} />
 ));
 
 export const KeyboardDoubleArrowLeftIcon = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
