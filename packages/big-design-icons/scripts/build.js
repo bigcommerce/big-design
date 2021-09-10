@@ -6,6 +6,7 @@ const { basename, join } = require('path');
 const rimraf = require('rimraf');
 const { promisify } = require('util');
 
+const { format } = require('./format');
 const config = require('./svgr.config');
 
 const SOURCE = join(__dirname, '..', 'svgs', '*', '*.svg');
@@ -50,7 +51,11 @@ function cleanDestDirectory() {
 
   const indexFile = Array.from(componentNames).map((name) => `export * from './${name}';`);
 
-  await outputFile(join(DEST_PATH, 'index.ts'), indexFile.join('\n'));
+  const destFile = join(DEST_PATH, 'index.ts');
+
+  await outputFile(destFile, indexFile.join('\n'));
+
+  await format(destFile);
 
   // eslint-disable-next-line no-console
   console.log('Done!');
