@@ -3,7 +3,8 @@ import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo, useState
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { Chip, ChipProps } from '../Chip';
-import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
+import { FormControlDescription, FormControlLabel } from '../Form';
+import { useInputErrors } from '../Form/useInputErrors';
 
 import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
 export interface Props {
@@ -35,6 +36,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   const [focus, setFocus] = useState(false);
   const uniqueInputId = useUniqueId('input');
   const id = props.id ? props.id : uniqueInputId;
+  const { errors } = useInputErrors(id, error);
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     const { onFocus } = props;
@@ -122,36 +124,6 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
 
     return chips.map((chip) => <Chip {...chip} key={chip.label} marginBottom="none" />);
   }, [chips]);
-
-  const errors = useMemo(() => {
-    const validateError = (err: Props['error']) => {
-      if (!err) {
-        return null;
-      }
-
-      if (typeof err === 'string') {
-        return err;
-      }
-
-      if (isValidElement(err) && err.type === FormControlError) {
-        return err;
-      }
-
-      warning('error must be either a string or a FormControlError component.');
-    };
-
-    if (Array.isArray(error)) {
-      const nextError = error.reduce<Array<React.ReactNode>>((acc, errorItem) => {
-        const nextErrorItem = validateError(errorItem);
-
-        return nextErrorItem ? [...acc, nextErrorItem] : acc;
-      }, []);
-
-      return nextError.length > 0 ? nextError : null;
-    }
-
-    return validateError(error);
-  }, [error]);
 
   return (
     <div>
