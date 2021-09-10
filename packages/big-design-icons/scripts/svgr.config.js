@@ -33,7 +33,7 @@ module.exports = {
     };
 
     BREAK
-    const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => <Icon {...iconProps} svgRef={ref} />);
+    const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => <Icon aria-hidden={iconProps.title ? undefined : true} {...iconProps} svgRef={ref} />);
 
     BREAK
     export const COMPONENT_NAME = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));

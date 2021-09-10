@@ -80,6 +80,7 @@ exports[`renders worksheet 1`] = `
               for="bd-checkbox-1"
             >
               <svg
+                aria-hidden="true"
                 class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
@@ -209,6 +210,7 @@ exports[`renders worksheet 1`] = `
               for="bd-checkbox-4"
             >
               <svg
+                aria-hidden="true"
                 class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
@@ -337,6 +339,7 @@ exports[`renders worksheet 1`] = `
               for="bd-checkbox-7"
             >
               <svg
+                aria-hidden="true"
                 class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
@@ -466,6 +469,7 @@ exports[`renders worksheet 1`] = `
               for="bd-checkbox-10"
             >
               <svg
+                aria-hidden="true"
                 class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
@@ -593,6 +597,7 @@ exports[`renders worksheet 1`] = `
               for="bd-checkbox-13"
             >
               <svg
+                aria-hidden="true"
                 class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
@@ -722,6 +727,7 @@ exports[`renders worksheet 1`] = `
               for="bd-checkbox-16"
             >
               <svg
+                aria-hidden="true"
                 class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
@@ -850,6 +856,7 @@ exports[`renders worksheet 1`] = `
               for="bd-checkbox-19"
             >
               <svg
+                aria-hidden="true"
                 class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
@@ -979,6 +986,7 @@ exports[`renders worksheet 1`] = `
               for="bd-checkbox-22"
             >
               <svg
+                aria-hidden="true"
                 class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"
@@ -1108,6 +1116,7 @@ exports[`renders worksheet 1`] = `
               for="bd-checkbox-25"
             >
               <svg
+                aria-hidden="true"
                 class="base__StyledIcon-sc-a9u0e1-0 kiXDsL"
                 fill="currentColor"
                 height="24"

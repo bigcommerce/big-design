@@ -20,6 +20,7 @@ exports[`renders simple tree 1`] = `
         class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledArrowWrapper-sc-1073t7q-1 halJjp"
       >
         <svg
+          aria-hidden="true"
           class="base__StyledIcon-sc-a9u0e1-0 kwHAib"
           color="secondary60"
           fill="currentColor"
@@ -43,6 +44,7 @@ exports[`renders simple tree 1`] = `
         class="styled__StyledBox-sc-sj5f1m-0 iFpEPs styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledFlexItem-sc-1073t7q-4 ggSTVk"
       >
         <svg
+          aria-hidden="true"
           class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
           color="primary30"
           fill="currentColor"
@@ -85,6 +87,7 @@ exports[`renders simple tree 1`] = `
             class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledArrowWrapper-sc-1073t7q-1 halJjp"
           >
             <svg
+              aria-hidden="true"
               class="base__StyledIcon-sc-a9u0e1-0 kwHAib"
               color="secondary60"
               fill="currentColor"
@@ -108,6 +111,7 @@ exports[`renders simple tree 1`] = `
             class="styled__StyledBox-sc-sj5f1m-0 iFpEPs styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledFlexItem-sc-1073t7q-4 ggSTVk"
           >
             <svg
+              aria-hidden="true"
               class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
               color="primary30"
               fill="currentColor"
@@ -153,6 +157,7 @@ exports[`renders simple tree 1`] = `
                 class="styled__StyledBox-sc-sj5f1m-0 iFpEPs styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledFlexItem-sc-1073t7q-4 ggSTVk"
               >
                 <svg
+                  aria-hidden="true"
                   class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
                   color="primary30"
                   fill="currentColor"
@@ -196,6 +201,7 @@ exports[`renders simple tree 1`] = `
         class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledArrowWrapper-sc-1073t7q-1 halJjp"
       >
         <svg
+          aria-hidden="true"
           class="base__StyledIcon-sc-a9u0e1-0 kwHAib"
           color="secondary60"
           fill="currentColor"
@@ -219,6 +225,7 @@ exports[`renders simple tree 1`] = `
         class="styled__StyledBox-sc-sj5f1m-0 iFpEPs styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledFlexItem-sc-1073t7q-4 ggSTVk"
       >
         <svg
+          aria-hidden="true"
           class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
           color="primary30"
           fill="currentColor"
@@ -264,6 +271,7 @@ exports[`renders simple tree 1`] = `
             class="styled__StyledBox-sc-sj5f1m-0 iFpEPs styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledFlexItem-sc-1073t7q-4 ggSTVk"
           >
             <svg
+              aria-hidden="true"
               class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
               color="primary30"
               fill="currentColor"
@@ -308,6 +316,7 @@ exports[`renders simple tree 1`] = `
         class="styled__StyledBox-sc-sj5f1m-0 iFpEPs styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledFlexItem-sc-1073t7q-4 ggSTVk"
       >
         <svg
+          aria-hidden="true"
           class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
           color="primary30"
           fill="currentColor"
@@ -347,6 +356,7 @@ exports[`renders simple tree 1`] = `
         class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledArrowWrapper-sc-1073t7q-1 halJjp"
       >
         <svg
+          aria-hidden="true"
           class="base__StyledIcon-sc-a9u0e1-0 kwHAib"
           color="secondary60"
           fill="currentColor"
@@ -370,6 +380,7 @@ exports[`renders simple tree 1`] = `
         class="styled__StyledBox-sc-sj5f1m-0 iFpEPs styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledFlexItem-sc-1073t7q-4 ggSTVk"
       >
         <svg
+          aria-hidden="true"
           class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
           color="primary30"
           fill="currentColor"
@@ -415,6 +426,7 @@ exports[`renders simple tree 1`] = `
             class="styled__StyledBox-sc-sj5f1m-0 iFpEPs styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledFlexItem-sc-1073t7q-4 ggSTVk"
           >
             <svg
+              aria-hidden="true"
               class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
               color="primary30"
               fill="currentColor"
@@ -456,6 +468,7 @@ exports[`renders simple tree 1`] = `
         class="styled__StyledBox-sc-sj5f1m-0 fLCmGm styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledArrowWrapper-sc-1073t7q-1 halJjp"
       >
         <svg
+          aria-hidden="true"
           class="base__StyledIcon-sc-a9u0e1-0 kwHAib"
           color="secondary60"
           fill="currentColor"
@@ -479,6 +492,7 @@ exports[`renders simple tree 1`] = `
         class="styled__StyledBox-sc-sj5f1m-0 iFpEPs styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledFlexItem-sc-1073t7q-4 ggSTVk"
       >
         <svg
+          aria-hidden="true"
           class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
           color="primary30"
           fill="currentColor"
@@ -524,6 +538,7 @@ exports[`renders simple tree 1`] = `
             class="styled__StyledBox-sc-sj5f1m-0 iFpEPs styled__StyledFlexItem-sc-smjqtt-0 loqtGZ styled__StyledFlexItem-sc-1073t7q-4 ggSTVk"
           >
             <svg
+              aria-hidden="true"
               class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
               color="primary30"
               fill="currentColor"

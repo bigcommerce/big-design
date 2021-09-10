@@ -68,6 +68,7 @@ exports[`render default (success) Message 1`] = `
     class="c3 c4"
   >
     <svg
+      aria-hidden="true"
       class="c5"
       color="success"
       fill="currentColor"
@@ -171,6 +172,7 @@ exports[`render error Message 1`] = `
     class="c3 c4"
   >
     <svg
+      aria-hidden="true"
       class="c5"
       color="danger"
       fill="currentColor"
@@ -270,6 +272,7 @@ exports[`render info Message 1`] = `
     class="c3 c4"
   >
     <svg
+      aria-hidden="true"
       class="c5"
       color="primary60"
       fill="currentColor"
@@ -373,6 +376,7 @@ exports[`render warning Message 1`] = `
     class="c3 c4"
   >
     <svg
+      aria-hidden="true"
       class="c5"
       color="warning50"
       fill="currentColor"
@@ -619,6 +623,7 @@ exports[`renders actions 1`] = `
     class="c3 c4"
   >
     <svg
+      aria-hidden="true"
       class="c5"
       color="success"
       fill="currentColor"
@@ -881,6 +886,7 @@ exports[`renders close button 1`] = `
     class="c3 c4"
   >
     <svg
+      aria-hidden="true"
       class="c5"
       color="success"
       fill="currentColor"
@@ -1033,6 +1039,7 @@ exports[`renders header 1`] = `
     class="c3 c4"
   >
     <svg
+      aria-hidden="true"
       class="c5"
       color="success"
       fill="currentColor"
@@ -1188,6 +1195,7 @@ exports[`renders with external link 1`] = `
     class="c3 c4"
   >
     <svg
+      aria-hidden="true"
       class="c5"
       color="success"
       fill="currentColor"
@@ -1227,6 +1235,7 @@ exports[`renders with external link 1`] = `
           Link
         </span>
         <svg
+          aria-hidden="true"
           class="c11"
           fill="currentColor"
           height="24"
@@ -1343,6 +1352,7 @@ exports[`renders with link 1`] = `
     class="c3 c4"
   >
     <svg
+      aria-hidden="true"
       class="c5"
       color="success"
       fill="currentColor"

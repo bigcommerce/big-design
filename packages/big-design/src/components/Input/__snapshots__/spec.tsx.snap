@@ -197,6 +197,7 @@ exports[`renders all together 1`] = `
       class="c4"
     >
       <svg
+        aria-hidden="true"
         class="c5"
         data-testid="icon-left"
         fill="currentColor"
@@ -227,6 +228,7 @@ exports[`renders all together 1`] = `
       class="c8"
     >
       <svg
+        aria-hidden="true"
         class="c5"
         data-testid="icon-right"
         fill="currentColor"

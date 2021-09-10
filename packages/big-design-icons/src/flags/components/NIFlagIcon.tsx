@@ -12,22 +12,23 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
 
   return (
-    <svg viewBox="0 0 640 480" ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 640 480"
+      ref={svgRef}
+      aria-labelledby={titleId}
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
-        <linearGradient
-          id="NIFlagIcon__r"
-          x1={444.5}
-          x2={634.4}
-          y1={317.5}
-          y2={317.5}
-          gradientUnits="userSpaceOnUse"
-          xlinkHref="#NIFlagIcon__a"
-        />
         <linearGradient id="NIFlagIcon__f" x1={498.7} x2={500.6} y1={289.1} y2={283.4} gradientUnits="userSpaceOnUse">
           <stop offset={0} stopColor="#510000" />
           <stop offset={0.3} stopColor="#8a0000" />
           <stop offset={1} stopColor="#a00" />
+        </linearGradient>
+        <linearGradient id="NIFlagIcon__g" x1={501.4} x2={502.9} y1={291.4} y2={287.4} gradientUnits="userSpaceOnUse">
+          <stop offset={0} stopColor="#ff2a2a" />
+          <stop offset={1} stopColor="red" />
         </linearGradient>
         <linearGradient id="NIFlagIcon__b" x1={484.8} x2={484.8} y1={311.7} y2={317.6} gradientUnits="userSpaceOnUse">
           <stop offset={0} stopColor="#F5F549" />
@@ -83,10 +84,15 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           gradientUnits="userSpaceOnUse"
           xlinkHref="#NIFlagIcon__a"
         />
-        <linearGradient id="NIFlagIcon__g" x1={501.4} x2={502.9} y1={291.4} y2={287.4} gradientUnits="userSpaceOnUse">
-          <stop offset={0} stopColor="#ff2a2a" />
-          <stop offset={1} stopColor="red" />
-        </linearGradient>
+        <linearGradient
+          id="NIFlagIcon__r"
+          x1={444.5}
+          x2={634.4}
+          y1={317.5}
+          y2={317.5}
+          gradientUnits="userSpaceOnUse"
+          xlinkHref="#NIFlagIcon__a"
+        />
         <linearGradient
           id="NIFlagIcon__u"
           x1={484.8}
@@ -361,7 +367,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
 };
 
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
-  <FlagIcon {...iconProps} svgRef={ref} />
+  <FlagIcon aria-hidden={iconProps.title ? undefined : true} {...iconProps} svgRef={ref} />
 ));
 
 export const NIFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));

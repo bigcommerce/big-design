@@ -596,6 +596,7 @@ exports[`render icon left and right button 1`] = `
     class="c1"
   >
     <svg
+      aria-hidden="true"
       class="c2"
       fill="currentColor"
       height="24"
@@ -614,6 +615,7 @@ exports[`render icon left and right button 1`] = `
     </svg>
     Button
     <svg
+      aria-hidden="true"
       class="c2"
       fill="currentColor"
       height="24"
@@ -755,6 +757,7 @@ exports[`render icon left button 1`] = `
     class="c1"
   >
     <svg
+      aria-hidden="true"
       class="c2"
       fill="currentColor"
       height="24"
@@ -897,6 +900,7 @@ exports[`render icon only button 1`] = `
     class="c1"
   >
     <svg
+      aria-hidden="true"
       class="c2"
       fill="currentColor"
       height="24"
@@ -1039,6 +1043,7 @@ exports[`render icon right button 1`] = `
   >
     Button
     <svg
+      aria-hidden="true"
       class="c2"
       fill="currentColor"
       height="24"
