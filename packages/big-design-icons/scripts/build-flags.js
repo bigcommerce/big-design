@@ -1,8 +1,10 @@
 const { default: svgr } = require('@svgr/core');
 const { outputFile, readFile } = require('fs-extra');
 const glob = require('glob-promise');
+const { cpus } = require('os');
 const { basename, join } = require('path');
 const rimraf = require('rimraf');
+const asyncPool = require('tiny-async-pool');
 const { promisify } = require('util');
 
 const config = require('./svgr-flags.config');
@@ -43,19 +45,17 @@ async function convertToReactComponent(filePath, iconName) {
 async function generateFlags() {
   const iconFiles = await glob(SOURCE);
 
-  return Promise.all(
-    iconFiles.map((iconFilePath) => {
-      const filename = basename(iconFilePath, '.svg');
-      const name = `${filename.replace('-', '').toUpperCase()}FlagIcon`;
+  return asyncPool(cpus().length, iconFiles, (iconFilePath) => {
+    const filename = basename(iconFilePath, '.svg');
+    const name = `${filename.replace('-', '').toUpperCase()}FlagIcon`;
 
-      componentNames.add(name);
+    componentNames.add(name);
 
-      // eslint-disable-next-line no-console
-      console.log(`Building: ${name}`);
+    // eslint-disable-next-line no-console
+    console.log(`Building: ${name}`);
 
-      return convertToReactComponent(iconFilePath, name);
-    }),
-  );
+    return convertToReactComponent(iconFilePath, name);
+  });
 }
 
 function cleanDestDirectory() {
