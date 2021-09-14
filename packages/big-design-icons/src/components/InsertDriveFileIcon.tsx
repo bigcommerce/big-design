@@ -9,6 +9,7 @@ import { useUniqueId } from '../utils';
 const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ...props }) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
+  const ariaHidden = titleId ? undefined : true;
 
   return (
     <svg
@@ -18,6 +19,7 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
       stroke="currentColor"
       fill="currentColor"
       strokeWidth="0"
+      aria-hidden={ariaHidden}
       ref={svgRef}
       aria-labelledby={titleId}
       {...props}
@@ -30,7 +32,7 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
 };
 
 const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => (
-  <Icon aria-hidden={iconProps.title ? undefined : true} {...iconProps} svgRef={ref} />
+  <Icon {...iconProps} svgRef={ref} />
 ));
 
 export const InsertDriveFileIcon = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
