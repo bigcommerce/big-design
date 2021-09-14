@@ -5,6 +5,9 @@ module.exports = {
   ref: true,
   ext: 'tsx',
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
+  svgProps: {
+    'aria-hidden': '{ariaHidden}',
+  },
   template({ template }, _, { componentName, jsx }) {
     const flagName = componentName.name.replace('FlagIcon', '');
 
@@ -23,6 +26,7 @@ module.exports = {
     const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = '${flagName} flag', theme, ...props }) => {
       const uniqueTitleId = useUniqueId('icon');
       const titleId = title ? props.titleId || uniqueTitleId : undefined;
+      const ariaHidden = titleId ? undefined : true;
 
       BREAK
       return (
@@ -31,7 +35,7 @@ module.exports = {
     };
 
     BREAK
-    const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => <FlagIcon aria-hidden={iconProps.title ? undefined : true} {...iconProps} svgRef={ref} />);
+    const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => <FlagIcon {...iconProps} svgRef={ref} />);
 
     BREAK
     export const COMPONENT_NAME = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));

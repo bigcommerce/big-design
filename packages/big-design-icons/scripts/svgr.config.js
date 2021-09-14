@@ -8,6 +8,7 @@ module.exports = {
     stroke: 'currentColor',
     fill: 'currentColor',
     strokeWidth: '0',
+    'aria-hidden': '{ariaHidden}',
   },
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
   template({ template }, _, { componentName, jsx }) {
@@ -25,6 +26,7 @@ module.exports = {
     const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ...props }) => {
       const uniqueTitleId = useUniqueId('icon');
       const titleId = title ? props.titleId || uniqueTitleId : undefined;
+      const ariaHidden = titleId ? undefined : true;
 
       BREAK
       return (
@@ -33,7 +35,7 @@ module.exports = {
     };
 
     BREAK
-    const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => <Icon aria-hidden={iconProps.title ? undefined : true} {...iconProps} svgRef={ref} />);
+    const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => <Icon {...iconProps} svgRef={ref} />);
 
     BREAK
     export const COMPONENT_NAME = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
