@@ -1,5 +1,5 @@
 import { ErrorIcon } from '@bigcommerce/big-design-icons';
-import React, { Children, Fragment, HTMLAttributes, isValidElement } from 'react';
+import React, { Children, createContext, Fragment, HTMLAttributes, isValidElement, useMemo, useState } from 'react';
 
 import { warning } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
@@ -9,15 +9,36 @@ import { FormControlError } from '../Error';
 import { StyledError, StyledGroup, StyledInlineGroup } from './styled';
 
 export interface GroupProps extends HTMLAttributes<HTMLDivElement> {
-  errors?: React.ReactChild | React.ReactChild[];
+  errors?: React.ReactNode | React.ReactNode[];
 }
 
+type Errors = {
+  [inputKey: string]: React.ReactNode | React.ReactNode[];
+};
+
+interface Context {
+  errors?: Errors;
+  setErrors?: React.Dispatch<React.SetStateAction<Errors>>;
+}
+
+export const FormGroupContext = createContext<Context>({});
+
 export const FormGroup: React.FC<GroupProps> = (props) => {
+  const [inputErrors, setInputErrors] = useState<Errors>({});
+
   const { children, errors: groupErrors } = props;
   const childrenCount = Children.count(children);
   const inline = !Children.toArray(children).every((child) => {
     return isValidElement(child) && (child.type === Checkbox || child.type === Radio);
   });
+
+  const contextValue = useMemo(
+    () => ({
+      errors: inputErrors,
+      setErrors: setInputErrors,
+    }),
+    [inputErrors],
+  );
 
   const renderErrors = () => {
     // If Form.Group has errors prop, don't generate errors from children
@@ -25,29 +46,23 @@ export const FormGroup: React.FC<GroupProps> = (props) => {
       return generateErrors(groupErrors, true);
     }
 
-    return Children.map(children, (child) => {
-      if (isValidElement(child)) {
-        const { error } = child.props;
-
-        return error && generateErrors(error);
-      }
-    });
+    return inputErrors && generateErrors(Object.values(inputErrors));
   };
 
-  if (inline) {
-    return (
-      <StyledInlineGroup childrenCount={childrenCount}>
-        {children}
-        {renderErrors()}
-      </StyledInlineGroup>
-    );
-  }
-
   return (
-    <StyledGroup>
-      {children}
-      {renderErrors()}
-    </StyledGroup>
+    <FormGroupContext.Provider value={contextValue}>
+      {inline ? (
+        <StyledInlineGroup childrenCount={childrenCount}>
+          {children}
+          {renderErrors()}
+        </StyledInlineGroup>
+      ) : (
+        <StyledGroup>
+          {children}
+          {renderErrors()}
+        </StyledGroup>
+      )}
+    </FormGroupContext.Provider>
   );
 };
 

@@ -3,7 +3,6 @@ import 'jest-styled-components';
 
 import { fireEvent, render } from '@test/utils';
 
-import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
 
 import { Counter, CounterProps } from './index';
@@ -28,7 +27,7 @@ const counterMock = ({
   labelId = '',
   id = '',
   error = '',
-  description = 'Description for the counter.',
+  description = '',
   value,
   onCountChange,
   min = 0,
@@ -271,6 +270,26 @@ test('value increases and decreases with arrow keypresses', () => {
   expect(handleChange).toHaveBeenCalledWith(4);
 });
 
+test('value is set to 0 when pressing Escape', () => {
+  const { getByDisplayValue } = render(counterMock(requiredAttributes));
+
+  const counter = getByDisplayValue('5');
+
+  expect(counter.getAttribute('value')).toEqual('5');
+  fireEvent.keyDown(counter, { key: 'Escape', code: 'Escape' });
+  expect(handleChange).toHaveBeenCalledWith(0);
+});
+
+test('value does not change when pressing Enter', () => {
+  const { getByDisplayValue } = render(counterMock(requiredAttributes));
+
+  const counter = getByDisplayValue('5');
+
+  expect(counter.getAttribute('value')).toEqual('5');
+  fireEvent.keyDown(counter, { key: 'Enter', code: 'Enter' });
+  expect(handleChange).not.toHaveBeenCalled();
+});
+
 test('provided onCountChange function is called on value change', () => {
   const { getByTitle } = render(counterMock(requiredAttributes));
 
@@ -315,7 +334,6 @@ describe('error does not show when invalid type', () => {
     const error = <div data-testid="err">Error</div>;
     const { queryByTestId } = render(<FormGroup>{counterMock({ error, ...requiredAttributes })}</FormGroup>);
 
-    expect(warning).toHaveBeenCalledTimes(1);
     expect(queryByTestId('err')).not.toBeInTheDocument();
   });
 
@@ -330,7 +348,6 @@ describe('error does not show when invalid type', () => {
 
     const { queryByTestId } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
 
-    expect(warning).toHaveBeenCalledTimes(1);
     expect(queryByTestId('err')).not.toBeInTheDocument();
   });
 });
