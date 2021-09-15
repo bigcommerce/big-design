@@ -20,8 +20,10 @@ import React, { useEffect, useState } from 'react';
 import { Code, CodePreview, CodeSnippet, PageNavigation } from '../../components';
 import { FlagIconPropTable, IconPropTable } from '../../PropTables';
 
+type BigDesignIcons = Omit<typeof import('@bigcommerce/big-design-icons'), 'createStyledIcon' | 'useUniqueId'>;
+
 const IconsPage = () => {
-  const [icons, setIcons] = useState<Record<symbol, unknown>>({});
+  const [icons, setIcons] = useState<BigDesignIcons | Record<string, unknown>>({});
 
   useEffect(() => {
     const fetchIcons = async () => {
