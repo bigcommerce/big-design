@@ -364,7 +364,7 @@ export const MultiSelect = typedMemo(
             })}
             chips={selectedOptions.map((option: SelectOption<T>) => ({
               label: option.content,
-              onDelete: () => removeItem(option),
+              onDelete: disabled ? undefined : () => removeItem(option),
             }))}
             iconRight={renderToggle}
             readOnly={!filterable}

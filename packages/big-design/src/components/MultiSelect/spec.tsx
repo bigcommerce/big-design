@@ -105,6 +105,28 @@ const MultiSelectWithOptionsDescriptions = (
   />
 );
 
+const DisabledMultiSelectMock = (
+  <MultiSelect
+    action={{
+      actionType: 'destructive',
+      content: 'Remove Country',
+      icon: <DeleteIcon />,
+      onActionClick,
+    }}
+    data-testid="multi-select"
+    disabled
+    error="Required"
+    label="Countries"
+    onClose={onClose}
+    onOpen={onOpen}
+    onOptionsChange={onChange}
+    options={mockOptions}
+    placeholder="Choose country"
+    required
+    value={['us', 'mx']}
+  />
+);
+
 test('renders select combobox', async () => {
   render(MultiSelectMock);
 
@@ -812,6 +834,36 @@ test('chips should be rendered', async () => {
 
   expect((await screen.findAllByText('United States')).length).toEqual(1);
   expect((await screen.findAllByText('Mexico')).length).toEqual(1);
+
+  expect(
+    await screen.getByRole('button', {
+      name: /remove united states/i,
+    }),
+  ).toBeDefined();
+  expect(
+    await screen.getByRole('button', {
+      name: /remove mexico/i,
+    }),
+  ).toBeDefined();
+});
+
+test('chips should be rendered without close button when MultiSelect is disabled', async () => {
+  render(DisabledMultiSelectMock);
+
+  await screen.findAllByText('United States');
+  await screen.findAllByText('Mexico');
+
+  expect(
+    await screen.queryByRole('button', {
+      name: /remove united states/i,
+    }),
+  ).toBeNull();
+
+  expect(
+    await screen.queryByRole('button', {
+      name: /remove mexico/i,
+    }),
+  ).toBeNull();
 });
 
 test('options should allow icons', async () => {
