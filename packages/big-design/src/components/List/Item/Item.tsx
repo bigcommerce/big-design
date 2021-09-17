@@ -29,8 +29,6 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLLIElement>;
 }
 
-// type Items<T> = DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction;
-
 const StyleableListItem = typedMemo(
   <T extends unknown>({
     actionType = 'normal' as const,

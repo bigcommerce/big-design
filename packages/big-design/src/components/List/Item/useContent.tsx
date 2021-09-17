@@ -23,34 +23,35 @@ export const useContent = ({ item, isHighlighted }: useContentProps) => {
       return 'secondary60';
     }
 
-    return 'actionType' in item ? (item.actionType === 'destructive' ? 'danger50' : 'primary') : 'primary';
+    return 'actionType' in item && item.actionType ? 'danger50' : 'primary';
   }, [isHighlighted, item]);
 
-  const renderIcon = useMemo(() => {
-    return (
+  const renderIcon = useMemo(
+    () =>
       isValidElement(item.icon) &&
       cloneElement(item.icon, {
         color: iconColor,
         size: 'large',
-      })
-    );
-  }, [iconColor, item]);
+      }),
+    [iconColor, item],
+  );
 
   const descriptionColor = useCallback(
     (isDisabled: boolean | undefined) => (isDisabled ? 'secondary40' : 'secondary60'),
     [],
   );
 
-  const wrapInLink = useCallback((linkItem: DropdownLinkItem, content: React.ReactChild) => {
-    return (
+  const wrapInLink = useCallback(
+    (linkItem: DropdownLinkItem, content: React.ReactChild) => (
       <StyledLink href={linkItem.url} tabIndex={-1} target={linkItem.target}>
         {content}
       </StyledLink>
-    );
-  }, []);
+    ),
+    [],
+  );
 
-  const wrapInTooltip = useCallback((tooltip: string, tooltipTrigger: React.ReactChild) => {
-    return (
+  const wrapInTooltip = useCallback(
+    (tooltip: string, tooltipTrigger: React.ReactChild) => (
       <Tooltip
         placement="left"
         trigger={tooltipTrigger}
@@ -59,8 +60,9 @@ export const useContent = ({ item, isHighlighted }: useContentProps) => {
       >
         {tooltip}
       </Tooltip>
-    );
-  }, []);
+    ),
+    [],
+  );
 
   const getContent = useMemo(() => {
     const { content, disabled, description, icon } = item;
