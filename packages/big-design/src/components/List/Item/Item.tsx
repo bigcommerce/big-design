@@ -7,8 +7,8 @@ import { Checkbox } from '../../Checkbox';
 import { DropdownItem, DropdownLinkItem } from '../../Dropdown';
 import { SelectAction, SelectOption } from '../../Select';
 
+import { Content } from './Content';
 import { StyledListItem } from './styled';
-import { useContent } from './useContent';
 
 export interface ListItemProps<T> extends LiHTMLAttributes<HTMLLIElement> {
   actionType?: 'normal' | 'destructive';
@@ -44,10 +44,8 @@ const StyleableListItem = typedMemo(
     addItem,
     removeItem,
     ...props
-  }: ListItemProps<T> & PrivateProps): ReturnType<React.FC<ListItemProps<T> & PrivateProps>> => {
-    const content = useContent({ item, isHighlighted });
-
-    return removeItem && addItem ? (
+  }: ListItemProps<T> & PrivateProps): ReturnType<React.FC<ListItemProps<T> & PrivateProps>> =>
+    removeItem && addItem ? (
       <StyledListItem
         {...getItemProps({
           ...props,
@@ -102,11 +100,10 @@ const StyleableListItem = typedMemo(
         isHighlighted={isHighlighted}
         isSelected={isSelected}
       >
-        {content}
+        {<Content item={item} isHighlighted={isHighlighted} />}
         {isSelected && <CheckIcon color="primary" size="large" />}
       </StyledListItem>
-    );
-  },
+    ),
 );
 
 export const ListItem = memo(

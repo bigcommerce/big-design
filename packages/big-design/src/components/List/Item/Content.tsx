@@ -1,4 +1,4 @@
-import React, { cloneElement, isValidElement, useCallback, useMemo } from 'react';
+import React, { cloneElement, isValidElement, memo, useCallback, useMemo } from 'react';
 
 import { DropdownItem, DropdownLinkItem } from '../../Dropdown';
 import { Flex, FlexItem } from '../../Flex';
@@ -8,12 +8,12 @@ import { Small } from '../../Typography';
 
 import { StyledLink } from './styled';
 
-interface useContentProps {
+interface ContentProps {
   item: DropdownItem | DropdownLinkItem | SelectOption<any> | SelectAction;
   isHighlighted: boolean;
 }
 
-export const useContent = ({ item, isHighlighted }: useContentProps) => {
+export const Content = memo(({ item, isHighlighted }: ContentProps) => {
   const iconColor = useMemo(() => {
     if (item.disabled) {
       return 'secondary40';
@@ -96,4 +96,4 @@ export const useContent = ({ item, isHighlighted }: useContentProps) => {
   }, [descriptionColor, item, renderIcon, wrapInLink, wrapInTooltip]);
 
   return getContent;
-};
+});
