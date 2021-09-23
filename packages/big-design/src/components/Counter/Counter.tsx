@@ -12,7 +12,8 @@ import React, {
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
-import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
+import { FormControlDescription, FormControlLabel } from '../Form';
+import { useInputErrors } from '../Form/useInputErrors';
 
 import { StyledCounterButton, StyledCounterInput, StyledCounterWrapper } from './styled';
 
@@ -48,6 +49,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     const [focus, setFocus] = useState(false);
     const uniqueCounterId = useUniqueId('counter');
     const id = props.id ? props.id : uniqueCounterId;
+    const { errors } = useInputErrors(id, error);
 
     useEffect(() => {
       if (!Number.isInteger(value)) {
@@ -175,32 +177,6 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 
       warning('description must be either a string or a FormControlDescription component.');
     }, [description]);
-
-    const errors = useMemo(() => {
-      const validateError = (err: CounterProps['error']) => {
-        if (!err) {
-          return null;
-        }
-
-        if (typeof err === 'string') {
-          return err;
-        }
-
-        if (isValidElement(err) && err.type === FormControlError) {
-          return err;
-        }
-
-        warning('error must be either a string or a FormControlError component.');
-      };
-
-      if (Array.isArray(error)) {
-        error.forEach(validateError);
-
-        return error;
-      }
-
-      return validateError(error);
-    }, [error]);
 
     return (
       <div>

@@ -1,15 +1,9 @@
-import { H2, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, Prop, PropTable, PropTableWrapper } from '../components';
+import { Prop, PropTable, PropTableWrapper } from '../components';
 
-export const FormErrorPropTable: React.FC<{ id?: string }> = ({ id }) => (
-  <>
-    <H2 id={id}>FormControlError</H2>
-    <Text>
-      Supports all native <Code>&lt;p /&gt;</Code> element attributes.
-    </Text>
-  </>
+export const FormErrorPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable title="FormControlError" propList={[]} nativeElement={['p', 'all']} {...props} />
 );
 
 const formProps: Prop[] = [
@@ -38,22 +32,12 @@ export const FormFieldsetPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Fieldset" propList={formFieldsetProps} {...props} />
 );
 
-export const FormLabelPropTable: React.FC<{ id?: string }> = ({ id }) => (
-  <>
-    <H2 id={id}>FormControlLabel</H2>
-    <Text>
-      Supports all native <Code>&lt;label /&gt;</Code> element attributes.
-    </Text>
-  </>
+export const FormLabelPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable title="FormControlLabel" propList={[]} nativeElement={['label', 'all']} {...props} />
 );
 
-export const FormDescriptionPropTable: React.FC<{ id?: string }> = ({ id }) => (
-  <>
-    <H2 id={id}>FormControlDescription</H2>
-    <Text>
-      Supports all native <Code>&lt;p /&gt;</Code> element attributes.
-    </Text>
-  </>
+export const FormDescriptionPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable title="FormControlDescription" propList={[]} nativeElement={['p', 'all']} {...props} />
 );
 
 const formGroupProps: Prop[] = [
@@ -65,12 +49,7 @@ const formGroupProps: Prop[] = [
 ];
 
 export const FormPropTable: React.FC<PropTableWrapper> = (props) => (
-  <>
-    <Text>
-      Supports all native <Code>&lt;form /&gt;</Code> element attributes.
-    </Text>
-    <PropTable title="Form" propList={formProps} {...props} />
-  </>
+  <PropTable title="Form" propList={formProps} nativeElement={['form', 'all']} {...props} />
 );
 
 export const FormGroupPropTable: React.FC<PropTableWrapper> = (props) => (

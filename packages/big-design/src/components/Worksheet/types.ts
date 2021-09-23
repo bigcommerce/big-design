@@ -2,9 +2,14 @@ import React from 'react';
 
 import { SelectOption } from '../Select';
 
-export interface Worksheet<Item extends WorksheetItem> {
+export interface ExpandableRows {
+  [key: string]: Array<string | number>;
+}
+
+export interface WorksheetProps<Item extends WorksheetItem> {
   columns: Array<WorksheetColumn<Item>>;
   items: Item[];
+  expandableRows?: ExpandableRows;
   onChange(items: Array<Cell<Item>>): void;
   onErrors?(items: WorksheetError<Item>[]): void;
 }
@@ -21,7 +26,16 @@ export type WorksheetColumn<Item> =
   | WorksheetSelectableColumn<Item>
   | WorksheetModalColumn<Item>;
 
+export type InternalWorksheetColumn<Item> =
+  | WorksheetTextColumn<Item>
+  | WorksheetNumberColumn<Item>
+  | WorksheetCheckboxColumn<Item>
+  | WorksheetSelectableColumn<Item>
+  | WorksheetModalColumn<Item>
+  | WorksheetToggleColumn<Item>;
+
 interface WorksheetBaseColumn<Item> {
+  disabled?: boolean;
   hash: keyof Item;
   header: string;
   validation?(value: Item[keyof Item]): boolean;
@@ -50,22 +64,30 @@ export interface WorksheetSelectableColumn<Item> extends WorksheetBaseColumn<Ite
 
 export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
   config: {
+    cancelActionText?: string;
     header?: string;
     render(
       value: Item[keyof Item],
       onChange: (value: Item[keyof Item]) => void,
     ): React.ComponentType<Item> | React.ReactElement;
+    saveActionText?: string;
   };
   formatting?(value: Item[keyof Item]): string;
   type: 'modal';
 }
 
+export interface WorksheetToggleColumn<Item> extends WorksheetBaseColumn<Item> {
+  type: 'toggle';
+}
+
 export interface Cell<Item> {
   columnIndex: number;
+  disabled?: boolean;
   hash: keyof Item;
+  hidden?: boolean;
   rowIndex: number;
+  type: Exclude<InternalWorksheetColumn<Item>['type'], undefined>;
   value: Item[keyof Item];
-  type: Exclude<WorksheetColumn<Item>['type'], undefined>;
 }
 
 export interface WorksheetItem {

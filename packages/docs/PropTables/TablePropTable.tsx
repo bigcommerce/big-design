@@ -45,24 +45,6 @@ const tableProps: Prop[] = [
     description: 'See pagination component for details.',
   },
   {
-    name: 'filters',
-    types: (
-      <NextLink href="/PillTabs/PillTabsPage" as="/pill-tabs">
-        Pill Tabs
-      </NextLink>
-    ),
-    description: 'See Pill Tabs component for details.',
-  },
-  {
-    name: 'search',
-    types: <NextLink href="#table-search-prop-table">Search</NextLink>,
-    description: (
-      <>
-        See <NextLink href="#table-search-prop-table">below</NextLink> for usage.
-      </>
-    ),
-  },
-  {
     name: 'selectable',
     types: <NextLink href="#table-selectable-prop-table">Selectable</NextLink>,
     description: (
@@ -154,6 +136,11 @@ const tableColumnsProps: Prop[] = [
     description: 'Sets vertical alignment for column (td only).',
   },
   {
+    name: 'tooltip',
+    types: 'string',
+    description: 'Tooltip for the table column header.',
+  },
+  {
     name: 'width',
     types: ['string', 'number'],
     description: 'Sets column width.',
@@ -201,27 +188,6 @@ const tableSortableProps: Prop[] = [
   },
 ];
 
-const tableSearchProps: Prop[] = [
-  {
-    name: 'value',
-    types: 'string',
-    description: 'Value of the search input',
-    required: true,
-  },
-  {
-    name: 'onChange',
-    types: '(event: React.ChangeEvent<HTMLInputElement>) => void',
-    description: 'Native onChange attribute for a HTML input element.',
-    required: true,
-  },
-  {
-    name: 'onSubmit',
-    types: '(event: React.FormEvent<HTMLFormElement>) => void',
-    description: 'Native onSubmit attribute for a HTML form element.',
-    required: true,
-  },
-];
-
 export const TablePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Table" propList={tableProps} {...props} />
 );
@@ -238,6 +204,6 @@ export const TableSortablePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable title="Table[Sortable]" propList={tableSortableProps} {...props} />
 );
 
-export const TableSearchPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Table[Search]" propList={tableSearchProps} {...props} />
+export const TableFigurePropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable title="TableFigure" propList={[]} nativeElement={['figure', 'all']} {...props} />
 );

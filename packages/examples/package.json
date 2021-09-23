@@ -1,29 +1,29 @@
 {
   "name": "@bigcommerce/examples",
   "private": true,
-  "version": "0.16.2",
+  "version": "0.17.2",
   "scripts": {
     "start": "parcel index.html",
     "ci": "tsc --noEmit && parcel build index.html"
   },
   "dependencies": {
-    "@bigcommerce/big-design": "^0.29.2",
-    "@bigcommerce/big-design-icons": "^0.16.1",
-    "@bigcommerce/big-design-theme": "^0.12.1",
+    "@bigcommerce/big-design": "^0.30.2",
+    "@bigcommerce/big-design-icons": "^0.17.1",
+    "@bigcommerce/big-design-theme": "^0.13.1",
     "formik": "^2.0.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "styled-components": "^4.3.0",
+    "styled-components": "^5.3.0",
     "yup": "^0.28.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.2",
+    "@babel/core": "^7.15.5",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
-    "@types/styled-components": "^4.1.12",
+    "@types/styled-components": "^5.1.11",
     "@types/yup": "^0.26.24",
     "parcel": "^2.0.0-beta.2",
     "postcss": "^8.2.15",
-    "typescript": "^3.8.3"
+    "typescript": "^4.4.3"
   }
 }

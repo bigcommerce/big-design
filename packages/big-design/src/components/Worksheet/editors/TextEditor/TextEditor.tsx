@@ -25,7 +25,7 @@ const InternalTextEditor = <T extends WorksheetItem>({ cell, isEdited, onBlur, o
     onKeyDown(event, formatValue(value));
   };
 
-  const formatValue = (value: string) => (cell.type === 'number' ? Number(value) : value);
+  const formatValue = (value: string) => (cell.type === 'number' && value !== '' ? Number(value) : value);
 
   return (
     <StyledInput

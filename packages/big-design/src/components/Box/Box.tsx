@@ -25,8 +25,6 @@ interface PrivateProps {
 
 const RawBox: React.FC<BoxProps & PrivateProps> = (props) => <StyledBox ref={props.forwardedRef} {...props} />;
 
-export const Box = memo(
-  forwardRef<HTMLDivElement, BoxProps>((props, ref) => <RawBox {...props} forwardedRef={ref} />),
-);
+export const Box = memo(forwardRef<HTMLDivElement, BoxProps>((props, ref) => <RawBox {...props} forwardedRef={ref} />));
 
 Box.displayName = 'Box';

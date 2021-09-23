@@ -2,6 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { StyleableButton } from '../../../Button/Button';
+import { FlexItem } from '../../../Flex';
 
 export const StyledButton = styled(StyleableButton)`
   font-size: ${({ theme }) => theme.typography.fontSize.small};
@@ -19,4 +20,9 @@ export const StyledButton = styled(StyleableButton)`
   }
 `;
 
+export const StyledFlexItem = styled(FlexItem)`
+  overflow: hidden;
+`;
+
 StyledButton.defaultProps = { theme: defaultTheme };
+StyledFlexItem.defaultProps = { theme: defaultTheme };

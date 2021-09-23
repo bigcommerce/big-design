@@ -1,12 +1,12 @@
 {
   "name": "@bigcommerce/configs",
-  "version": "0.14.1",
+  "version": "0.15.1",
   "private": true,
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
-    "@typescript-eslint/parser": "^2.29.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-react-hooks": "^3.0.0",
-    "typescript": "^3.8.3"
+    "@typescript-eslint/parser": "^4.31.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "typescript": "^4.4.3"
   }
 }

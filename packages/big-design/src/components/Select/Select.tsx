@@ -35,6 +35,8 @@ export const Select = typedMemo(
     label,
     labelId,
     maxHeight,
+    onClose,
+    onOpen,
     onOptionChange,
     options,
     placeholder,
@@ -62,11 +64,10 @@ export const Select = typedMemo(
     }, []);
 
     // We need to pass Downshift only options without groups for accessibility tracking
-    const flattenedOptions = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
-      action,
-      flattenOptions,
-      options,
-    ]);
+    const flattenedOptions = useMemo(
+      () => (action ? [...flattenOptions(options), action] : flattenOptions(options)),
+      [action, flattenOptions, options],
+    );
 
     // Find the selected option
     const selectedOption = useMemo(() => {
@@ -108,9 +109,17 @@ export const Select = typedMemo(
     };
 
     const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && isOpen === false) {
+      if (filterable && !isOpen) {
         // Reset the options when the List is closed
         setFilteredOptions(flattenedOptions);
+      }
+
+      if (isOpen && typeof onOpen === 'function') {
+        onOpen();
+      }
+
+      if (!isOpen && typeof onClose === 'function') {
+        onClose();
       }
     };
 
@@ -241,8 +250,12 @@ export const Select = typedMemo(
               onClick: () => {
                 !isOpen && openMenu();
               },
-              onFocus: () => {
+              onFocus: (event) => {
                 !isOpen && openMenu();
+
+                if (typeof props.onFocus === 'function') {
+                  props.onFocus(event);
+                }
               },
               onKeyDown: (event) => {
                 switch (event.key) {

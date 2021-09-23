@@ -55,3 +55,13 @@ test('simple form render', () => {
 
   expect(container.firstChild).toMatchSnapshot();
 });
+
+test('has margin props', () => {
+  const { container, rerender } = render(<Form />);
+
+  expect(container.firstChild).not.toHaveStyle('margin: 1rem');
+
+  rerender(<Form margin="medium" />);
+
+  expect(container.firstChild).toHaveStyle('margin: 1rem');
+});

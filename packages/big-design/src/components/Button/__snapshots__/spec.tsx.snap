@@ -596,6 +596,7 @@ exports[`render icon left and right button 1`] = `
     class="c1"
   >
     <svg
+      aria-hidden="true"
       class="c2"
       fill="currentColor"
       height="24"
@@ -614,6 +615,7 @@ exports[`render icon left and right button 1`] = `
     </svg>
     Button
     <svg
+      aria-hidden="true"
       class="c2"
       fill="currentColor"
       height="24"
@@ -755,6 +757,7 @@ exports[`render icon left button 1`] = `
     class="c1"
   >
     <svg
+      aria-hidden="true"
       class="c2"
       fill="currentColor"
       height="24"
@@ -897,6 +900,7 @@ exports[`render icon only button 1`] = `
     class="c1"
   >
     <svg
+      aria-hidden="true"
       class="c2"
       fill="currentColor"
       height="24"
@@ -1039,6 +1043,7 @@ exports[`render icon right button 1`] = `
   >
     Button
     <svg
+      aria-hidden="true"
       class="c2"
       fill="currentColor"
       height="24"
@@ -1072,16 +1077,13 @@ exports[`render loading button 1`] = `
 }
 
 .c6 {
-  fill: transparent;
-  stroke-width: 0.125rem;
-  stroke: #ECEEF5;
   stroke-dasharray: 43.982297150257104 43.982297150257104;
   stroke: #3C64F4;
   -webkit-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: cWvsXs 1s ease-out infinite;
-  animation: cWvsXs 1s ease-out infinite;
+  -webkit-animation: fxwtRW 1s ease-out infinite;
+  animation: fxwtRW 1s ease-out infinite;
   stroke-dashoffset: 43.982297150257104;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -1258,7 +1260,7 @@ exports[`render loading button 1`] = `
         r="0.4375em"
       />
       <circle
-        class="c6"
+        class="c5 c6"
         cx="0.5em"
         cy="0.5em"
         r="0.4375em"

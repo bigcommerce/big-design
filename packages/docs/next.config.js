@@ -14,12 +14,20 @@ module.exports = {
     BD_VERSION: bdPkg.version,
   },
   webpack: (config) => {
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      use: [require.resolve('jsx-to-string-loader')],
-    });
-
-    return config;
+    return {
+      ...config,
+      module: {
+        ...config.module,
+        rules: [
+          ...config.module.rules,
+          {
+            test: /\.(ts|tsx)$/,
+            use: [require.resolve('jsx-to-string-loader')],
+          },
+        ],
+        noParse: /@babel\/standalone/,
+      },
+    };
   },
   exportPathMap: () => ({
     '/': { page: '/GettingStarted/GettingStartedPage' },
@@ -28,6 +36,7 @@ module.exports = {
     '/box': { page: '/Box/BoxPage' },
     '/breakpoints': { page: '/Breakpoints/BreakpointsPage' },
     '/button': { page: '/Button/ButtonPage' },
+    '/button-group': { page: '/ButtonGroup/ButtonGroupPage' },
     '/checkbox': { page: '/Checkbox/CheckboxPage' },
     '/collapse': { page: '/Collapse/CollapsePage' },
     '/counter': { page: '/Counter/CounterPage' },
@@ -54,6 +63,7 @@ module.exports = {
     '/progress-bar': { page: '/Progress/ProgressBarPage' },
     '/progress-circle': { page: '/Progress/ProgressCirclePage' },
     '/radio': { page: '/Radio/RadioPage' },
+    '/search': { page: '/Search/SearchPage' },
     '/select': { page: '/Select/SelectPage' },
     '/spacing': { page: '/Spacing/SpacingPage' },
     '/statefulTable': { page: '/StatefulTable/StatefulTablePage' },
@@ -66,6 +76,7 @@ module.exports = {
     '/timepicker': { page: '/Timepicker/TimepickerPage' },
     '/tooltip': { page: '/Tooltip/TooltipPage' },
     '/typography': { page: '/Typography/TypographyPage' },
+    '/worksheet': { page: '/Worksheet/WorksheetPage' },
 
     // Dev route for development purposes
     ...(isDev && { '/dev': { page: '/Dev/DevPage', query: { noNav: '' } } }),

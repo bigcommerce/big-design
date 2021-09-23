@@ -7,7 +7,7 @@ import React from 'react';
 import { UIDFork, UIDReset } from 'react-uid';
 import { ThemeProvider } from 'styled-components';
 
-import { BetaRibbon, SideNav, StoryWrapper } from '../components';
+import { BetaRibbon, SideNav, StoryWrapper, TabWrapper } from '../components';
 import { pageView } from '../utils/analytics/gtm';
 
 Router.events.on('routeChangeComplete', (url) => pageView(url));
@@ -35,14 +35,18 @@ export default class MyApp extends App {
     return (
       <>
         <Head>
-          <link rel="icon" type="image/png" href={`${process.env.URL_PREFIX}/favicon.png`}></link>
+          <link rel="icon" type="image/svg+xml" href={`${process.env.URL_PREFIX}/favicon.svg`} />
           <title>BigDesign</title>
           <meta property="og:image" content={`${process.env.URL_PREFIX}/og-image.png`} />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <style jsx global>
           {`
-            @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600');
-
             html,
             body,
             #__next {
@@ -66,17 +70,20 @@ export default class MyApp extends App {
                       gridGap="0"
                       style={{ minHeight: '100%' }}
                     >
-                      <GridItem gridArea="nav">
+                      <GridItem gridArea="nav" paddingTop="medium">
                         <SideNav />
                       </GridItem>
                       <GridItem
                         gridArea="main"
                         marginVertical="medium"
-                        marginHorizontal={{ mobile: 'none', tablet: 'xxLarge' }}
+                        marginHorizontal={{ mobile: 'small', tablet: 'xxLarge' }}
+                        paddingTop="large"
                         style={{ maxWidth: '100%' }}
                       >
                         <StoryWrapper>
-                          <Component {...pageProps} />
+                          <TabWrapper>
+                            <Component {...pageProps} />
+                          </TabWrapper>
                         </StoryWrapper>
                       </GridItem>
                     </Grid>

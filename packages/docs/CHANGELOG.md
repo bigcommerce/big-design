@@ -3,6 +3,107 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.1...@bigcommerce/docs@0.30.2) (2021-09-03)
+
+
+### Features
+
+* **component:** add expandable rows ([#579](https://github.com/bigcommerce/big-design/issues/579)) ([aea894e](https://github.com/bigcommerce/big-design/commit/aea894e9890138305ec298293c26c73c5a5e0463))
+
+
+
+
+
+## [0.30.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.0...@bigcommerce/docs@0.30.1) (2021-08-23)
+
+**Note:** Version bump only for package @bigcommerce/docs
+
+
+
+
+
+# [0.30.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.0-alpha.4...@bigcommerce/docs@0.30.0) (2021-08-04)
+
+**Note:** Version bump only for package @bigcommerce/docs
+
+
+
+
+
+# [0.30.0-alpha.4](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.0-alpha.3...@bigcommerce/docs@0.30.0-alpha.4) (2021-08-02)
+
+
+### chore
+
+* **deps:** upgrade to styled-components v5 ([#566](https://github.com/bigcommerce/big-design/issues/566)) ([dd83711](https://github.com/bigcommerce/big-design/commit/dd83711797eb8aaa7a8406eebf1383116bff2420))
+
+
+### Features
+
+* **component:** add margin props to Form component ([#569](https://github.com/bigcommerce/big-design/issues/569)) ([422e345](https://github.com/bigcommerce/big-design/commit/422e345436080a51458342b1f73e54e032a76ba9))
+* **component:** add the option to disable columns in Worksheet ([#563](https://github.com/bigcommerce/big-design/issues/563)) ([181557f](https://github.com/bigcommerce/big-design/commit/181557ff00eaaadc0710d9092e838e11efc2da55))
+* add worksheet docs ([#562](https://github.com/bigcommerce/big-design/issues/562)) ([936a26a](https://github.com/bigcommerce/big-design/commit/936a26a369d37634fafa09ea6e911db0f75f4760))
+* **docs:** add dark mode icon ([#560](https://github.com/bigcommerce/big-design/issues/560)) ([898796e](https://github.com/bigcommerce/big-design/commit/898796eae77effceba4424ae3c9606305c2cada1))
+
+
+### BREAKING CHANGES
+
+* **deps:** You will need to update to styled-components v5. In addition,
+you will need to import the base fonts in your <head> element.
+See the "Getting Started" page or README.md for an example.
+
+
+
+
+
+# [0.30.0-alpha.3](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.0-alpha.2...@bigcommerce/docs@0.30.0-alpha.3) (2021-07-13)
+
+**Note:** Version bump only for package @bigcommerce/docs
+
+
+
+
+
+# [0.30.0-alpha.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.0-alpha.1...@bigcommerce/docs@0.30.0-alpha.2) (2021-07-08)
+
+
+### Features
+
+* **component:** add ButtonGroup component ([#556](https://github.com/bigcommerce/big-design/issues/556)) ([2350481](https://github.com/bigcommerce/big-design/commit/2350481ef113f317b5cd9db74a8337e63866bfcb))
+* **component:** move Search into its own exposed component ([#557](https://github.com/bigcommerce/big-design/issues/557)) ([6a5cdf5](https://github.com/bigcommerce/big-design/commit/6a5cdf5645a56a141530358b409c65cfaa15cb8d))
+
+
+
+
+
+# [0.30.0-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.0-alpha.0...@bigcommerce/docs@0.30.0-alpha.1) (2021-07-06)
+
+**Note:** Version bump only for package @bigcommerce/docs
+
+
+
+
+
+# [0.30.0-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.29.2...@bigcommerce/docs@0.30.0-alpha.0) (2021-06-10)
+
+
+### Bug Fixes
+
+* fix tooltip documentation and interfaces  ([#546](https://github.com/bigcommerce/big-design/issues/546)) ([1014593](https://github.com/bigcommerce/big-design/commit/10145930e77f34dad20b8b9f26cdab57e6ddd7eb))
+* **docs:** update inline-message side nav link ([#529](https://github.com/bigcommerce/big-design/issues/529)) ([ba0c093](https://github.com/bigcommerce/big-design/commit/ba0c093704d0f0d4ba76e171d7f213b4220d1057))
+
+
+### Features
+
+* **component:** add autoComplete prop for selects ([#542](https://github.com/bigcommerce/big-design/issues/542)) ([5ac23fd](https://github.com/bigcommerce/big-design/commit/5ac23fddeaabba04eb9a41300f40234911912c0c))
+* **component:** add onOpen and onClose to Selects ([#549](https://github.com/bigcommerce/big-design/issues/549)) ([233d8b7](https://github.com/bigcommerce/big-design/commit/233d8b72514e5a4924656ea1eb375441963604e7))
+* **component:** add Pill Tabs component ([#515](https://github.com/bigcommerce/big-design/issues/515)) ([b89518f](https://github.com/bigcommerce/big-design/commit/b89518f9ef93923e562e6b8dd56d207901b9857a))
+* **component:** add Search to the Table and StatefulTable ([#521](https://github.com/bigcommerce/big-design/issues/521)) ([d5591ae](https://github.com/bigcommerce/big-design/commit/d5591ae4c878edf8d7d0e50f0d1b4645e972555d))
+
+
+
+
+
 ## [0.29.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.29.1...@bigcommerce/docs@0.29.2) (2021-04-14)
 
 

@@ -17,8 +17,6 @@ export interface SharedMessagingProps extends HTMLAttributes<HTMLDivElement> {
 
 export type MessagingType = 'success' | 'error' | 'warning' | 'info';
 
-export type MessagingVariant = 'alert' | 'message' | 'inline';
-
 export interface MessageItem {
   text: string;
   link?: MessageLinkItem;

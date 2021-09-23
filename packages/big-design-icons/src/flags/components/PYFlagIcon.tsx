@@ -10,9 +10,10 @@ import { createStyledFlagIcon, FlagIconProps } from '../base';
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'PY flag', theme, ...props }) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
+  const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
       {title ? <title id={titleId}>{title}</title> : null}
       <path fill="#0038a8" d="M0 319.7h640V480H0z" />
       <path fill="#fff" d="M0 160h640v160H0z" />

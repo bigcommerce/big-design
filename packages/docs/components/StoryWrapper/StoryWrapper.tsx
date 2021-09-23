@@ -1,4 +1,3 @@
-import { Panel } from '@bigcommerce/big-design';
 import { PrismTheme } from 'prism-react-renderer';
 import { default as lightTheme } from 'prism-react-renderer/themes/github';
 import { default as darkTheme } from 'prism-react-renderer/themes/oceanicNext';
@@ -28,10 +27,8 @@ export const StoryWrapper: React.FC = (props) => {
   const toggleEditorTheme = () => setEditorTheme(editorTheme === darkTheme ? lightTheme : darkTheme);
 
   return (
-    <Panel>
-      <CodeEditorContext.Provider value={{ theme: editorTheme, toggleTheme: toggleEditorTheme, language, setLanguage }}>
-        {props.children}
-      </CodeEditorContext.Provider>
-    </Panel>
+    <CodeEditorContext.Provider value={{ theme: editorTheme, toggleTheme: toggleEditorTheme, language, setLanguage }}>
+      {props.children}
+    </CodeEditorContext.Provider>
   );
 };

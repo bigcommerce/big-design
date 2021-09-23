@@ -4,8 +4,6 @@ import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautif
 import { useEventCallback, useUniqueId } from '../../hooks';
 import { MarginProps } from '../../mixins';
 import { typedMemo } from '../../utils';
-import { Box } from '../Box';
-import { PillTabs } from '../PillTabs';
 
 import { Actions } from './Actions';
 import { Body } from './Body';
@@ -13,7 +11,6 @@ import { Head } from './Head';
 import { HeaderCell } from './HeaderCell';
 import { DragIconHeaderCell, HeaderCheckboxCell } from './HeaderCell/HeaderCell';
 import { Row } from './Row';
-import { Search } from './Search';
 import { StyledTable, StyledTableFigure } from './styled';
 import { TableColumn, TableItem, TableProps } from './types';
 
@@ -23,7 +20,6 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     className,
     columns,
     emptyComponent,
-    filters,
     headerless = false,
     id,
     itemName,
@@ -35,7 +31,6 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     sortable,
     stickyHeader,
     style,
-    search,
     ...rest
   } = props;
 
@@ -211,34 +206,8 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     return null;
   };
 
-  const renderPillTabs = () => {
-    if (!filters) {
-      return;
-    }
-
-    return (
-      <Box marginBottom={shouldRenderActions() && !search ? 'none' : 'medium'}>
-        <PillTabs {...filters} />
-      </Box>
-    );
-  };
-
-  const renderSearch = () => {
-    if (!search) {
-      return;
-    }
-
-    return (
-      <Box marginBottom={shouldRenderActions() ? 'none' : 'medium'}>
-        <Search {...search} />
-      </Box>
-    );
-  };
-
   return (
     <>
-      {renderPillTabs()}
-      {renderSearch()}
       {shouldRenderActions() && (
         <Actions
           customActions={actions}

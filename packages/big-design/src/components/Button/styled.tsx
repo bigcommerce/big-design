@@ -82,7 +82,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   ${(props) => getButtonStyles(props)}
 `;
 
-export const ContentWrapper = styled.span.attrs<{}, { isLoading?: boolean }>({})`
+export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoading?: boolean }>({})`
   align-content: center;
   align-items: center;
   display: inline-grid;

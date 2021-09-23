@@ -1,6 +1,6 @@
 import { themeOptions } from '../options';
 
-import { addValues, createRGBA, emCalc, remCalc } from './helpers';
+import { addValues, createRGBA, emCalc, listReset, remCalc } from './helpers';
 
 describe('addValues', () => {
   test('adds px', () => {
@@ -94,4 +94,10 @@ describe('emCal', () => {
 
     expect(result).toEqual(expected);
   });
+});
+
+test('listReset returns reset css', () => {
+  const expected = ['list-style-type:none;margin:0;padding:0;'];
+
+  expect(listReset).toEqual(expected);
 });

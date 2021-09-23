@@ -8,6 +8,7 @@ module.exports = {
     stroke: 'currentColor',
     fill: 'currentColor',
     strokeWidth: '0',
+    'aria-hidden': '{ariaHidden}',
   },
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
   template({ template }, _, { componentName, jsx }) {
@@ -25,6 +26,7 @@ module.exports = {
     const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ...props }) => {
       const uniqueTitleId = useUniqueId('icon');
       const titleId = title ? props.titleId || uniqueTitleId : undefined;
+      const ariaHidden = titleId ? undefined : true;
 
       BREAK
       return (
@@ -56,7 +58,7 @@ module.exports = {
     });
   },
   svgoConfig: {
-    plugins: [{ removeViewBox: false }],
+    plugins: [{ removeViewBox: false, removeXMLNS: true }],
   },
   prettierConfig: {
     ...prettierConfig,

@@ -74,6 +74,16 @@ const selectProps: Prop[] = [
     ),
   },
   {
+    name: 'onClose',
+    types: '() => void',
+    description: 'Function that will be called when the Select is closed.',
+  },
+  {
+    name: 'onOpen',
+    types: '() => void',
+    description: 'Function that will be called when the Select is opened.',
+  },
+  {
     name: 'onOptionChange',
     types: '(value: any, option: SelectOption) => void',
     required: true,
@@ -296,13 +306,13 @@ export const SelectPropTable: React.FC<PropTableWrapper> = (props) => (
 );
 
 export const SelectOptionPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="SelectOption" propList={selectOptionProps} {...props} />
+  <PropTable title="Select[SelectOption]" propList={selectOptionProps} {...props} />
 );
 
 export const SelectActionPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="SelectAction" propList={selectActionProps} {...props} />
+  <PropTable title="Select[SelectAction]" propList={selectActionProps} {...props} />
 );
 
 export const SelectGroupPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="SelectGroup" propList={selectGroupProps} {...props} />
+  <PropTable title="Select[SelectGroup]" propList={selectGroupProps} {...props} />
 );

@@ -10,25 +10,33 @@ import { createStyledFlagIcon, FlagIconProps } from '../base';
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'VG flag', theme, ...props }) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
+  const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 640 480"
+      aria-hidden={ariaHidden}
+      ref={svgRef}
+      aria-labelledby={titleId}
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
-        <linearGradient
-          id="VGFlagIcon__i"
-          x1={103.1}
-          x2={92.5}
-          y1={111.3}
-          y2={107.8}
-          gradientTransform="matrix(.64274 0 0 1.4534 -98 33.7)"
-          gradientUnits="userSpaceOnUse"
-          xlinkHref="#VGFlagIcon__a"
-        />
         <linearGradient id="VGFlagIcon__a">
           <stop offset={0} stopColor="red" />
           <stop offset={1} stopColor="#ff0" />
         </linearGradient>
+        <linearGradient
+          id="VGFlagIcon__c"
+          x1={103.1}
+          x2={92.5}
+          y1={111.3}
+          y2={107.8}
+          gradientTransform="matrix(.64274 0 0 1.4534 -94.7 29.2)"
+          gradientUnits="userSpaceOnUse"
+          xlinkHref="#VGFlagIcon__a"
+        />
         <linearGradient
           id="VGFlagIcon__d"
           x1={103.1}
@@ -80,12 +88,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           xlinkHref="#VGFlagIcon__a"
         />
         <linearGradient
-          id="VGFlagIcon__c"
+          id="VGFlagIcon__i"
           x1={103.1}
           x2={92.5}
           y1={111.3}
           y2={107.8}
-          gradientTransform="matrix(.64274 0 0 1.4534 -94.7 29.2)"
+          gradientTransform="matrix(.64274 0 0 1.4534 -98 33.7)"
           gradientUnits="userSpaceOnUse"
           xlinkHref="#VGFlagIcon__a"
         />

@@ -1,4 +1,4 @@
-import { H2, Link, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
+import { Flex, H3, Link, Panel, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
 import React, { FC, ReactNode } from 'react';
 
 import { Code } from '../Code';
@@ -19,59 +19,89 @@ export interface Prop {
 export interface PropTableProps {
   collapsible?: boolean;
   id?: string;
-  title: string;
+  inheritedProps?: ReactNode;
+  nativeElement?: [string, 'most' | 'all'];
   propList: Prop[];
+  title: string;
 }
 
 export type PropTableWrapper = Partial<PropTableProps>;
 
 export const PropTable: FC<PropTableProps> = (props) => {
-  const { collapsible, id, propList: items, title } = props;
+  const { collapsible, id, propList: items, title, inheritedProps, nativeElement } = props;
 
-  const renderTable = () => (
-    <TableFigure marginBottom="xLarge">
-      <Table
-        columns={[
-          {
-            header: 'Prop Name',
-            hash: 'propName',
-            render: ({ name, required }) => (
-              <>
-                <Code primary>{name}</Code>
-                {required ? <b> *</b> : null}
-              </>
-            ),
-          },
-          {
-            header: 'Type',
-            hash: 'type',
-            render: ({ types }) => <TypesData types={types} />,
-          },
-          {
-            header: 'Default',
-            hash: 'default',
-            render: ({ defaultValue }) => <Code highlight={false}>{defaultValue}</Code>,
-          },
-          {
-            header: 'Description',
-            hash: 'description',
-            width: '50%',
-            render: ({ description }) => <Text>{description}</Text>,
-          },
-        ]}
-        items={items}
-      />
+  const renderTable = () => {
+    if (items.length > 0) {
+      return (
+        <TableFigure marginBottom={collapsible || inheritedProps ? 'xLarge' : 'none'}>
+          <Table
+            columns={[
+              {
+                header: 'Prop name',
+                hash: 'propName',
+                render: ({ name, required }) => (
+                  <>
+                    <Code primary>{name}</Code>
+                    {required ? <b> *</b> : null}
+                  </>
+                ),
+              },
+              {
+                header: 'Type',
+                hash: 'type',
+                render: ({ types }) => <TypesData types={types} />,
+              },
+              {
+                header: 'Default',
+                hash: 'default',
+                render: ({ defaultValue }) => <Code highlight={false}>{defaultValue}</Code>,
+              },
+              {
+                header: 'Description',
+                hash: 'description',
+                width: '50%',
+                render: ({ description }) => <Text>{description}</Text>,
+              },
+            ]}
+            items={items}
+          />
 
-      <Small marginTop="xSmall">Props ending with * are required</Small>
-    </TableFigure>
-  );
+          <Small marginTop="xSmall">Props ending with * are required</Small>
+        </TableFigure>
+      );
+    }
+
+    return null;
+  };
+
+  const renderNativeElement = () => {
+    if (nativeElement) {
+      const [element, supported] = nativeElement;
+
+      return (
+        <Text>
+          Supports {supported} native <Code>&lt;{element} /&gt;</Code> element attributes.
+        </Text>
+      );
+    }
+
+    return null;
+  };
 
   return collapsible ? (
     <Collapsible title={`${title} Props`}>{renderTable()}</Collapsible>
   ) : (
     <>
-      <H2 id={id}>{title}</H2>
-      {renderTable()}
+      <Panel header={title} headerId={id}>
+        {renderNativeElement()}
+        {renderTable()}
+        {inheritedProps ? (
+          <>
+            <H3>Inherited</H3>
+            <Flex flexDirection="column">{inheritedProps}</Flex>
+          </>
+        ) : null}
+      </Panel>
     </>
   );
 };

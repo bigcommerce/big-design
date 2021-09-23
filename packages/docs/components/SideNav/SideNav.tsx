@@ -1,7 +1,7 @@
 import { Flex, FlexItem } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { BigDesignLogoIcon, GithubLogoIcon } from '../Icons';
+import { GithubLogoIcon } from '../Icons';
 import { List } from '../List';
 
 import { SideNavGroup } from './SideNavGroup';
@@ -19,6 +19,7 @@ export const SideNav: React.FC = () => {
       alignContent={{ mobile: 'center', tablet: 'stretch' }}
       justifyContent={{ mobile: 'space-between', tablet: 'flex-start' }}
       padding="medium"
+      paddingLeft="xLarge"
       paddingBottom={{ mobile: 'medium', tablet: 'xxxLarge' }}
     >
       <FlexItem>
@@ -62,23 +63,29 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Panel/PanelPage" as="/panel">
             Panel
           </SideNavLink>
-          <SideNavLink href="/Table/TablePage" as="/table">
-            Table
-          </SideNavLink>
           <SideNavLink href="/StatefulTable/StatefulTablePage" as="/statefulTable">
             StatefulTable
           </SideNavLink>
           <SideNavLink href="/StatefulTree/StatefulTreePage" as="/statefulTree">
             StatefulTree
           </SideNavLink>
+          <SideNavLink href="/Table/TablePage" as="/table">
+            Table
+          </SideNavLink>
           <SideNavLink href="/Tabs/TabsPage" as="/tabs">
             Tabs
+          </SideNavLink>
+          <SideNavLink href="/Worksheet/WorksheetPage" as="/worksheet">
+            Worksheet
           </SideNavLink>
         </SideNavGroup>
 
         <SideNavGroup title="Actions &amp; Inputs">
           <SideNavLink href="/Button/ButtonPage" as="/button">
             Button
+          </SideNavLink>
+          <SideNavLink href="/ButtonGroup/ButtonGroupPage" as="/button-group">
+            ButtonGroup
           </SideNavLink>
           <SideNavLink href="/Checkbox/CheckboxPage" as="/checkbox">
             Checkbox
@@ -101,17 +108,20 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/Link/LinkPage" as="/link">
             Link
           </SideNavLink>
+          <SideNavLink href="/MultiSelect/MultiSelectPage" as="/multi-select">
+            MultiSelect
+          </SideNavLink>
           <SideNavLink href="/PillTabs/PillTabsPage" as="/pill-tabs">
-            Pill Tabs
+            PillTabs
           </SideNavLink>
           <SideNavLink href="/Radio/RadioPage" as="/radio">
             Radio
           </SideNavLink>
+          <SideNavLink href="/Search/SearchPage" as="/search">
+            Search
+          </SideNavLink>
           <SideNavLink href="/Select/SelectPage" as="/select">
             Select
-          </SideNavLink>
-          <SideNavLink href="/MultiSelect/MultiSelectPage" as="/multi-select">
-            MultiSelect
           </SideNavLink>
           <SideNavLink href="/Switch/SwitchPage" as="/switch">
             Switch
@@ -132,16 +142,16 @@ export const SideNav: React.FC = () => {
             Badge
           </SideNavLink>
           <SideNavLink href="/InlineMessage/InlineMessagePage" as="/inline-message">
-            Inline Message
+            InlineMessage
           </SideNavLink>
           <SideNavLink href="/Message/MessagePage" as="/message">
             Message
           </SideNavLink>
           <SideNavLink href="/Progress/ProgressBarPage" as="/progress-bar">
-            Progress Bar
+            ProgressBar
           </SideNavLink>
           <SideNavLink href="/Progress/ProgressCirclePage" as="/progress-circle">
-            Progress Circle
+            ProgressCircle
           </SideNavLink>
           <SideNavLink href="/Stepper/StepperPage" as="/stepper">
             Stepper
@@ -183,11 +193,6 @@ export const SideNav: React.FC = () => {
             url="https://github.com/bigcommerce/big-design"
             icon={<GithubLogoIcon title="Github Logo" />}
             title="Github"
-          />
-          <Link
-            url="https://design.bigcommerce.com/components"
-            icon={<BigDesignLogoIcon title="BigDesign Logo" />}
-            title="Design Guidelines"
           />
         </SideNavGroup>
       </SideNavMenu>

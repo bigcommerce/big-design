@@ -36,6 +36,8 @@ export const MultiSelect = typedMemo(
     label,
     labelId,
     maxHeight,
+    onClose,
+    onOpen,
     onOptionsChange,
     options,
     placeholder,
@@ -63,11 +65,10 @@ export const MultiSelect = typedMemo(
     }, []);
 
     // We need to pass Downshift only options without groups for accessibility tracking
-    const flattenedOptions = useMemo(() => (action ? [...flattenOptions(options), action] : flattenOptions(options)), [
-      action,
-      flattenOptions,
-      options,
-    ]);
+    const flattenedOptions = useMemo(
+      () => (action ? [...flattenOptions(options), action] : flattenOptions(options)),
+      [action, flattenOptions, options],
+    );
 
     // Find the selected options
     const selectedOptions = useMemo(() => {
@@ -106,10 +107,18 @@ export const MultiSelect = typedMemo(
       );
     };
 
-    const handleOnIsOpenChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && changes.isOpen === false) {
+    const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (filterable && !isOpen) {
         // Reset the items if filtered
         setFilteredOptions(flattenedOptions);
+      }
+
+      if (isOpen && typeof onOpen === 'function') {
+        onOpen();
+      }
+
+      if (!isOpen && typeof onClose === 'function') {
+        onClose();
       }
     };
 
@@ -320,8 +329,12 @@ export const MultiSelect = typedMemo(
               onClick: () => {
                 !isOpen && openMenu();
               },
-              onFocus: () => {
+              onFocus: (event) => {
                 !isOpen && openMenu();
+
+                if (typeof props.onFocus === 'function') {
+                  props.onFocus(event);
+                }
               },
               onKeyDown: (event) => {
                 switch (event.key) {
@@ -351,11 +364,11 @@ export const MultiSelect = typedMemo(
             })}
             chips={selectedOptions.map((option: SelectOption<T>) => ({
               label: option.content,
-              onDelete: () => removeItem(option),
+              onDelete: disabled ? undefined : () => removeItem(option),
             }))}
             iconRight={renderToggle}
             readOnly={!filterable}
-            required={required}
+            required={required && selectedOptions.length === 0}
           />
         </StyledInputContainer>
       );

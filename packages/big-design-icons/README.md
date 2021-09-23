@@ -8,16 +8,16 @@ You can find documentation, list of icons, and examples on our [docs page](https
 
 ### Quick start guide
 
-Add BigDesign Icons and styled-components@4 to your project using `npm`:
+Add BigDesign Icons and styled-components@5 to your project using `npm`:
 
 ```
-npm install @bigcommerce/big-design-icons styled-components@4
+npm install @bigcommerce/big-design-icons styled-components@5
 ```
 
 or with `yarn`:
 
 ```
-yarn add @bigcommerce/big-design-icons styled-components@4
+yarn add @bigcommerce/big-design-icons styled-components@5
 ```
 
 Import any icon component and use it anywhere in your app.

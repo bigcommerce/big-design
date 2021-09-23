@@ -88,8 +88,7 @@ test('forwards ref', () => {
 
 test('ignores padding props', () => {
   const { getByTestId } = render(
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore - ignoring since paddingRight is not a valid prop
+    // @ts-expect-error - ignoring since paddingRight is not a valid prop
     <Panel header="Test Header" data-testid="panel" paddingRight="xxxLarge">
       Dolore proident eiusmod sint est enim laboris
     </Panel>,

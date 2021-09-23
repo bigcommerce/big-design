@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/chanceaclark/big-design/compare/@bigcommerce/examples@0.17.1...@bigcommerce/examples@0.17.2) (2021-09-03)
+
+**Note:** Version bump only for package @bigcommerce/examples
+
+
+
+
+
+## [0.17.1](https://github.com/chanceaclark/big-design/compare/@bigcommerce/examples@0.17.0...@bigcommerce/examples@0.17.1) (2021-08-23)
+
+**Note:** Version bump only for package @bigcommerce/examples
+
+
+
+
+
+# [0.17.0](https://github.com/chanceaclark/big-design/compare/@bigcommerce/examples@0.17.0-alpha.4...@bigcommerce/examples@0.17.0) (2021-08-04)
+
+**Note:** Version bump only for package @bigcommerce/examples
+
+
+
+
+
+# [0.17.0-alpha.4](https://github.com/chanceaclark/big-design/compare/@bigcommerce/examples@0.17.0-alpha.3...@bigcommerce/examples@0.17.0-alpha.4) (2021-08-02)
+
+
+### chore
+
+* **deps:** upgrade to styled-components v5 ([#566](https://github.com/chanceaclark/big-design/issues/566)) ([dd83711](https://github.com/chanceaclark/big-design/commit/dd83711797eb8aaa7a8406eebf1383116bff2420))
+
+
+### BREAKING CHANGES
+
+* **deps:** You will need to update to styled-components v5. In addition,
+you will need to import the base fonts in your <head> element.
+See the "Getting Started" page or README.md for an example.
+
+
+
+
+
+# [0.17.0-alpha.3](https://github.com/chanceaclark/big-design/compare/@bigcommerce/examples@0.17.0-alpha.2...@bigcommerce/examples@0.17.0-alpha.3) (2021-07-13)
+
+**Note:** Version bump only for package @bigcommerce/examples
+
+
+
+
+
+# [0.17.0-alpha.2](https://github.com/chanceaclark/big-design/compare/@bigcommerce/examples@0.17.0-alpha.1...@bigcommerce/examples@0.17.0-alpha.2) (2021-07-08)
+
+**Note:** Version bump only for package @bigcommerce/examples
+
+
+
+
+
+# [0.17.0-alpha.1](https://github.com/chanceaclark/big-design/compare/@bigcommerce/examples@0.17.0-alpha.0...@bigcommerce/examples@0.17.0-alpha.1) (2021-07-06)
+
+**Note:** Version bump only for package @bigcommerce/examples
+
+
+
+
+
+# [0.17.0-alpha.0](https://github.com/chanceaclark/big-design/compare/@bigcommerce/examples@0.16.2...@bigcommerce/examples@0.17.0-alpha.0) (2021-06-10)
+
+**Note:** Version bump only for package @bigcommerce/examples
+
+
+
+
+
 ## [0.16.2](https://github.com/chanceaclark/big-design/compare/@bigcommerce/examples@0.16.1...@bigcommerce/examples@0.16.2) (2021-04-14)
 
 **Note:** Version bump only for package @bigcommerce/examples

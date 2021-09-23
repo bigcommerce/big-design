@@ -3,7 +3,6 @@ import 'jest-styled-components';
 
 import { render } from '@test/utils';
 
-import { warning } from '../../../utils';
 import { Input } from '../../Input';
 import { FormControlError } from '../Error';
 
@@ -30,6 +29,19 @@ test('renders group and input with error', () => {
   const { getByText } = render(
     <FormGroup>
       <Input error={error} />
+    </FormGroup>,
+  );
+
+  expect(getByText(error)).toBeInTheDocument();
+});
+
+test('renders group and nested input with error', () => {
+  const error = 'Error';
+  const { getByText } = render(
+    <FormGroup>
+      <div>
+        <Input error={error} />
+      </div>
     </FormGroup>,
   );
 
@@ -101,6 +113,5 @@ test('does not render invalid errors', () => {
     </FormGroup>,
   );
 
-  expect(warning).toBeCalledTimes(1);
   expect(queryByTestId(testId)).not.toBeInTheDocument();
 });

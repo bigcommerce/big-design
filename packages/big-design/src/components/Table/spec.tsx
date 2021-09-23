@@ -3,10 +3,7 @@ import 'jest-styled-components';
 
 import { fireEvent, render, screen, waitForElement } from '@test/utils';
 
-import { PillTabsProps } from '../PillTabs';
-
 import { Table, TableFigure } from './Table';
-import { TableSearch } from './types';
 
 interface SimpleTableOptions {
   className?: string;
@@ -18,8 +15,6 @@ interface SimpleTableOptions {
   id?: string;
   itemName?: string;
   style?: CSSProperties;
-  pillTabs?: PillTabsProps;
-  search?: TableSearch;
 }
 
 const getSimpleTable = ({
@@ -31,9 +26,7 @@ const getSimpleTable = ({
   id,
   itemName,
   items,
-  pillTabs,
   style,
-  search,
 }: SimpleTableOptions = {}) => (
   <Table
     className={className}
@@ -43,8 +36,6 @@ const getSimpleTable = ({
     itemName={itemName}
     emptyComponent={emptyComponent}
     style={style}
-    filters={pillTabs}
-    search={search}
     columns={
       columns || [
         { header: 'Sku', render: ({ sku }) => sku },
@@ -114,6 +105,36 @@ test('renders column with custom component', () => {
   );
 
   expect(getAllByTestId('name').length).toBe(5);
+});
+
+test('renders column with tooltip icon', () => {
+  const { getByTitle } = render(
+    getSimpleTable({
+      columns: [
+        { header: 'Sku', render: ({ sku }: any) => sku },
+        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+      ],
+    }),
+  );
+
+  expect(getByTitle('Hover or focus for additional context.')).toBeTruthy();
+});
+
+test('renders tooltip when hovering on icon', async () => {
+  const { getByTitle } = render(
+    getSimpleTable({
+      columns: [
+        { header: 'Sku', render: ({ sku }: any) => sku },
+        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+      ],
+    }),
+  );
+
+  fireEvent.mouseOver(getByTitle('Hover or focus for additional context.'));
+
+  const result = await waitForElement(() => screen.getByText('Some text'));
+
+  expect(result).toBeInTheDocument();
 });
 
 test('tweaks column styles with props', () => {
@@ -520,104 +541,5 @@ describe('draggable', () => {
     fireEvent.keyDown(dragEl, spaceKey);
 
     expect(onRowDrop).toHaveBeenCalledWith(0, 1);
-  });
-});
-
-test('it renders pill tabs with the pillTabs prop', () => {
-  const items = [
-    {
-      title: 'In Stock',
-      id: 'in_stock',
-    },
-    {
-      title: 'Low Stock',
-      id: 'low_stock',
-    },
-  ];
-  const pillTabs: PillTabsProps = {
-    onPillClick: jest.fn(),
-    activePills: [],
-    items,
-  };
-  const { getByText } = render(getSimpleTable({ pillTabs }));
-  const inStock = getByText('In Stock');
-  const lowStock = getByText('Low Stock');
-
-  expect(inStock).toBeInTheDocument();
-  expect(lowStock).toBeInTheDocument();
-});
-
-test('it executes the given callback', () => {
-  const onPillClick = jest.fn();
-  const items = [
-    {
-      title: 'In Stock',
-      id: 'in_stock',
-    },
-    {
-      title: 'Low Stock',
-      id: 'low_stock',
-    },
-  ];
-  const pillTabs: PillTabsProps = {
-    onPillClick,
-    activePills: [],
-    items,
-  };
-  const { getByText } = render(getSimpleTable({ pillTabs }));
-  const inStockBtn = getByText('In Stock');
-
-  fireEvent.click(inStockBtn);
-
-  expect(onPillClick).toHaveBeenCalledWith('in_stock');
-});
-
-describe('test search in the Table', () => {
-  test('renders Table with the search prop', () => {
-    const search = {
-      value: 'Product',
-      onChange: jest.fn(),
-      onSubmit: jest.fn(),
-    };
-
-    const { getByText, getByPlaceholderText } = render(getSimpleTable({ search }));
-    const input = getByPlaceholderText('Search') as HTMLInputElement;
-
-    expect(getByText('Search')).toBeInTheDocument();
-    expect(getByPlaceholderText('Search')).toBeInTheDocument();
-    expect(input.value).toBe(search.value);
-  });
-
-  test('call onChange when user change value in the input', () => {
-    const onChange = jest.fn();
-
-    const search = {
-      onChange,
-      value: '',
-      onSubmit: jest.fn(),
-    };
-
-    const { getByPlaceholderText } = render(getSimpleTable({ search }));
-    const input = getByPlaceholderText('Search') as HTMLInputElement;
-
-    fireEvent.change(input, { target: { value: 'Product' } });
-
-    expect(onChange).toHaveBeenCalled();
-  });
-
-  test('call onSubmit when user click to the Search button', () => {
-    const onSubmit = jest.fn();
-
-    const search = {
-      onSubmit,
-      value: '',
-      onChange: jest.fn(),
-    };
-
-    const { getByText } = render(getSimpleTable({ search }));
-
-    fireEvent.click(getByText('Search'));
-
-    expect(onSubmit).toHaveBeenCalled();
   });
 });

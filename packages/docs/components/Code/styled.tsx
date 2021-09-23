@@ -4,6 +4,7 @@ import { CodeProps } from './';
 
 export const StyledCode = styled.code<CodeProps>`
   color: ${({ theme }) => theme.colors.secondary70};
+  white-space: nowrap;
 
   ${({ highlight, primary, theme }) =>
     highlight &&
