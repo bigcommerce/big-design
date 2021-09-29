@@ -167,11 +167,8 @@ const filterProps: Prop[] = [
   {
     description: (
       <>
-        An array of pill tab items to render in the table. See{' '}
-        <NextLink href="/PillTabs/PillTabPage" as="/pill-tabs">
-          Pill Tabs
-        </NextLink>{' '}
-        for usage.
+        An array of pill tab items to render in the table. See <NextLink href="/pill-tabs">Pill Tabs</NextLink> for
+        usage.
       </>
     ),
     name: 'pillTabs',

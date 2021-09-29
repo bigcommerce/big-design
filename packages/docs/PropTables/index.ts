@@ -17,6 +17,7 @@ export * from './InlineMessagePropTable';
 export * from './InputPropTable';
 export * from './LinkPropTable';
 export * from './MarginPropTable';
+export * from './MessagePropTable';
 export * from './ModalPropTable';
 export * from './MultiSelectPropTable';
 export * from './PaddingPropTable';

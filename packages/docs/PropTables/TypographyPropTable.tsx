@@ -5,19 +5,11 @@ import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 const typographyProps: Prop[] = [
   {
     name: 'color',
-    types: (
-      <NextLink href="/Colors/ColorsPage" as="/colors">
-        Color
-      </NextLink>
-    ),
+    types: <NextLink href="/colors">Color</NextLink>,
     defaultValue: 'secondary70',
     description: (
       <>
-        Sets the text color given a color name from our{' '}
-        <NextLink href="/Colors/ColorsPage" as="/colors">
-          palette
-        </NextLink>
-        .
+        Sets the text color given a color name from our <NextLink href="/colors">palette</NextLink>.
       </>
     ),
   },

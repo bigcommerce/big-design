@@ -37,11 +37,7 @@ const tableProps: Prop[] = [
   },
   {
     name: 'pagination',
-    types: (
-      <NextLink href="/Pagination/PaginationPage" as="/pagination">
-        Pagination
-      </NextLink>
-    ),
+    types: <NextLink href="/pagination">Pagination</NextLink>,
     description: 'See pagination component for details.',
   },
   {

@@ -20,35 +20,19 @@ const inputProps: Prop[] = [
   },
   {
     name: 'iconLeft',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
+    types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
       </>
     ),
   },
   {
     name: 'iconRight',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
+    types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the right of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the right of the text.
       </>
     ),
   },
