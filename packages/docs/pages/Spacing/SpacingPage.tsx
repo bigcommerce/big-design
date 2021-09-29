@@ -67,8 +67,8 @@ const SpacingPage = () => {
       ),
     },
     {
-      id: 'props',
-      title: 'Props',
+      id: 'spacing',
+      title: 'Spacing values',
       render: () => (
         <Panel header="Spacing values">
           <Flex justifyContent="space-around">
