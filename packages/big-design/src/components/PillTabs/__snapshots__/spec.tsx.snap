@@ -110,7 +110,7 @@ exports[`dropdown is not visible if items fit 1`] = `
 }
 
 .c4.c4 {
-  margin-right: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .c4:focus {
@@ -488,7 +488,7 @@ exports[`it renders the given tabs 1`] = `
 }
 
 .c4.c4 {
-  margin-right: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .c4:focus {
@@ -866,7 +866,7 @@ exports[`only the pills that fit are visible 1`] = `
 }
 
 .c4.c4 {
-  margin-right: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .c4:focus {
@@ -1276,7 +1276,7 @@ exports[`only the pills that fit are visible 2 1`] = `
 }
 
 .c4.c4 {
-  margin-right: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .c4:focus {
@@ -1685,7 +1685,7 @@ exports[`renders all the filters if they fit 1`] = `
 }
 
 .c4.c4 {
-  margin-right: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .c4:focus {
@@ -2093,7 +2093,7 @@ exports[`renders dropdown if items do not fit 1`] = `
 }
 
 .c5.c5 {
-  margin-right: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .c5:focus {
