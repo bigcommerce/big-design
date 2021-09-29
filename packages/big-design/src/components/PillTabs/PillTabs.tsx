@@ -114,7 +114,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
             variant="subtle"
             isActive={activePills.includes(item.id)}
             onClick={() => onPillClick(item.id)}
-            marginRight="xLarge"
+            marginRight="xSmall"
           >
             {item.title}
           </StyledPillTab>
