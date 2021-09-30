@@ -3,6 +3,7 @@ export * from './Code';
 export * from './CodePreview';
 export * from './CodeSnippet';
 export * from './Collapsible';
+export * from './ContentRoutingTabs';
 export * from './List';
 export * from './MethodBadge';
 export * from './MethodList';
