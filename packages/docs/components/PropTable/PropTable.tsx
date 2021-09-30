@@ -23,18 +23,23 @@ export interface PropTableProps {
   nativeElement?: [string, 'most' | 'all'];
   propList: Prop[];
   title: string;
+  /**
+   * @deprecated Used to migrate to new documentation stucture
+   */
+  renderPanel?: boolean;
 }
 
 export type PropTableWrapper = Partial<PropTableProps>;
 
 export const PropTable: FC<PropTableProps> = (props) => {
-  const { collapsible, id, propList: items, title, inheritedProps, nativeElement } = props;
+  const { collapsible, id, propList: items, title, inheritedProps, nativeElement, renderPanel = true } = props;
 
   const renderTable = () => {
     if (items.length > 0) {
       return (
         <TableFigure marginBottom={collapsible || inheritedProps ? 'xLarge' : 'none'}>
           <Table
+            id={id}
             columns={[
               {
                 header: 'Prop name',
@@ -88,11 +93,9 @@ export const PropTable: FC<PropTableProps> = (props) => {
     return null;
   };
 
-  return collapsible ? (
-    <Collapsible title={`${title} Props`}>{renderTable()}</Collapsible>
-  ) : (
-    <>
-      <Panel header={title} headerId={id}>
+  const renderContent = () => {
+    return (
+      <>
         {renderNativeElement()}
         {renderTable()}
         {inheritedProps ? (
@@ -101,9 +104,19 @@ export const PropTable: FC<PropTableProps> = (props) => {
             <Flex flexDirection="column">{inheritedProps}</Flex>
           </>
         ) : null}
-      </Panel>
-    </>
-  );
+      </>
+    );
+  };
+
+  if (collapsible) {
+    return <Collapsible title={`${title} Props`}>{renderTable()}</Collapsible>;
+  }
+
+  if (renderPanel) {
+    return <Panel header={title}>{renderContent()}</Panel>;
+  }
+
+  return renderContent();
 };
 
 const TypesData: React.FC<TypesDataProps> = (props): any => {
