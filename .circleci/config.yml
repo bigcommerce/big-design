@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.4
+  node: circleci/node@4.7.0
 
 jobs:
   build:
@@ -14,22 +14,11 @@ jobs:
       - node/install-yarn:
           version: 1.22.10
 
-      - node/with-cache:
-          cache-key: yarn.lock
+      - node/install-packages:
+          with-cache: true
           cache-version: v3
           include-branch-in-cache-key: false
-          steps:
-            - run:
-                name: yarn install
-                command: |
-                    CKSUM_BEFORE=$(cksum yarn.lock)
-                    yarn install
-                    CKSUM_AFTER=$(cksum yarn.lock)
-                  
-                    if [[ $CKSUM_BEFORE != $CKSUM_AFTER ]]; then
-                      echo "yarn.lock was modified unexpectedly - terminating"
-                      exit 1
-                    fi
+          pkg-manager: yarn
 
       - run:
           command: yarn run ci
