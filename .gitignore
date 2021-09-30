@@ -6,6 +6,7 @@ coverage
 packages/docs/.next
 packages/docs/out
 packages/docs/pages/Dev
+packages/docs/pages/dev.tsx
 .idea
 .DS_Store
 .parcel-cache

@@ -8,11 +8,8 @@ const modalProps: Prop[] = [
     types: 'object[]',
     description: (
       <>
-        Accepts an array of objects with{' '}
-        <NextLink href="/Button/ButtonPage" as="/button">
-          Button
-        </NextLink>{' '}
-        props and an additional <Code>text</Code> prop. See example for usage.
+        Accepts an array of objects with <NextLink href="/button">Button</NextLink> props and an additional{' '}
+        <Code>text</Code> prop. See example for usage.
       </>
     ),
   },

@@ -100,18 +100,10 @@ const dropdownItemProps: Prop[] = [
   },
   {
     name: 'icon',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
+    types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
       </>
     ),
   },
@@ -163,18 +155,10 @@ const dropdownLinkProps: Prop[] = [
   },
   {
     name: 'icon',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
+    types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
       </>
     ),
   },
@@ -189,11 +173,7 @@ const dropdownLinkProps: Prop[] = [
     required: true,
     description: (
       <>
-        Wraps the <Code>content</Code> in a{' '}
-        <NextLink href="/Link/LinkPage" as="/link">
-          Link
-        </NextLink>{' '}
-        component.
+        Wraps the <Code>content</Code> in a <NextLink href="/link">Link</NextLink> component.
       </>
     ),
   },

@@ -29,56 +29,14 @@ module.exports = {
       },
     };
   },
-  exportPathMap: () => ({
-    '/': { page: '/GettingStarted/GettingStartedPage' },
-    '/alert': { page: '/Alert/AlertPage' },
-    '/badge': { page: '/Badge/BadgePage' },
-    '/box': { page: '/Box/BoxPage' },
-    '/breakpoints': { page: '/Breakpoints/BreakpointsPage' },
-    '/button': { page: '/Button/ButtonPage' },
-    '/button-group': { page: '/ButtonGroup/ButtonGroupPage' },
-    '/checkbox': { page: '/Checkbox/CheckboxPage' },
-    '/collapse': { page: '/Collapse/CollapsePage' },
-    '/counter': { page: '/Counter/CounterPage' },
-    '/colors': { page: '/Colors/ColorsPage' },
-    '/display': { page: '/Display/DisplayPage' },
-    '/datepicker': { page: '/Datepicker/DatepickerPage' },
-    '/dropdown': { page: '/Dropdown/DropdownPage' },
-    '/flex': { page: '/Flex/FlexPage' },
-    '/form': { page: '/Form/FormPage' },
-    '/grid': { page: '/Grid/GridPage' },
-    '/icons': { page: '/Icons/IconsPage' },
-    '/inline-message': { page: '/InlineMessage/InlineMessagePage' },
-    '/input': { page: '/Input/InputPage' },
-    '/link': { page: '/Link/LinkPage' },
-    '/margin': { page: '/Margin/MarginPage' },
-    '/message': { page: '/Message/MessagePage' },
-    '/modal': { page: '/Modal/ModalPage' },
-    '/multi-select': { page: '/MultiSelect/MultiSelectPage' },
-    '/padding': { page: '/Padding/PaddingPage' },
-    '/pagination': { page: '/Pagination/PaginationPage' },
-    '/panel': { page: '/Panel/PanelPage' },
-    '/pill-tabs': { page: '/PillTabs/PillTabsPage' },
-    '/popover': { page: '/Popover/PopoverPage' },
-    '/progress-bar': { page: '/Progress/ProgressBarPage' },
-    '/progress-circle': { page: '/Progress/ProgressCirclePage' },
-    '/radio': { page: '/Radio/RadioPage' },
-    '/search': { page: '/Search/SearchPage' },
-    '/select': { page: '/Select/SelectPage' },
-    '/spacing': { page: '/Spacing/SpacingPage' },
-    '/statefulTable': { page: '/StatefulTable/StatefulTablePage' },
-    '/statefulTree': { page: '/StatefulTree/StatefulTreePage' },
-    '/stepper': { page: '/Stepper/StepperPage' },
-    '/switch': { page: '/Switch/SwitchPage' },
-    '/table': { page: '/Table/TablePage' },
-    '/tabs': { page: '/Tabs/TabsPage' },
-    '/textarea': { page: '/Textarea/TextareaPage' },
-    '/timepicker': { page: '/Timepicker/TimepickerPage' },
-    '/tooltip': { page: '/Tooltip/TooltipPage' },
-    '/typography': { page: '/Typography/TypographyPage' },
-    '/worksheet': { page: '/Worksheet/WorksheetPage' },
+  exportPathMap: (defaultPathMap) => {
+    if (isDev) {
+      return defaultPathMap;
+    }
 
-    // Dev route for development purposes
-    ...(isDev && { '/dev': { page: '/Dev/DevPage', query: { noNav: '' } } }),
-  }),
+    // Ensures the dev page doesn't get built to production
+    const { '/dev': dev, ...rest } = defaultPathMap;
+
+    return rest;
+  },
 };

@@ -181,18 +181,11 @@ const selectOptionProps: Prop[] = [
   },
   {
     name: 'icon',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
+    types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the left of the text. Only available for single select.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text. Only available
+        for single select.
       </>
     ),
   },
@@ -255,18 +248,10 @@ const selectActionProps: Prop[] = [
   },
   {
     name: 'icon',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
+    types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
       </>
     ),
   },

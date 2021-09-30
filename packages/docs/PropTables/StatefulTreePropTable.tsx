@@ -75,11 +75,7 @@ const treeNodeProps: Prop[] = [
   },
   {
     name: 'icon',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
+    types: <NextLink href="/icons">Icon</NextLink>,
     description: 'Custom icon, in place of the folder icon.',
   },
   {
