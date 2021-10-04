@@ -84,7 +84,7 @@ Running the following commands will run `big-design` and `docs` in watch mode.
 
 ```
 yarn
-yarn run build
+yarn run build:icons
 yarn run start
 ```
 
