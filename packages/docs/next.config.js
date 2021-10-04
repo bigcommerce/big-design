@@ -1,3 +1,5 @@
+const withTM = require('next-transpile-modules')(['@bigcommerce/big-design', '@bigcommerce/big-design-theme']);
+
 const bdPkg = require('../big-design/package.json');
 
 const pkg = require('./package.json');
@@ -6,7 +8,7 @@ const isDev = !isProduction;
 const URL_PREFIX = '/big-design';
 const examplesVersion = pkg.devDependencies['@bigcommerce/examples'].replace('^', '');
 
-module.exports = {
+module.exports = withTM({
   assetPrefix: isProduction ? URL_PREFIX : '',
   env: {
     CODE_SANDBOX_URL: `https://codesandbox.io/s/github/bigcommerce/big-design/tree/%40bigcommerce/examples%40${examplesVersion}/packages/examples`,
@@ -39,4 +41,4 @@ module.exports = {
 
     return rest;
   },
-};
+});
