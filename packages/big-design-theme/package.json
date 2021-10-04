@@ -2,9 +2,7 @@
   "name": "@bigcommerce/big-design-theme",
   "version": "0.13.1",
   "sideEffects": false,
-  "main": "dist/cjs/index.js",
-  "module": "dist/es/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "src/index.ts",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "BigCommerce Inc",
   "repository": {
@@ -21,6 +19,8 @@
     "lint": "yarn run lint:tsc",
     "lint:tsc": "tsc --noEmit",
     "prepublishOnly": "rimraf dist && yarn run ci",
+    "prepack": "big-design-prepack",
+    "postpack": "big-design-postpack",
     "test": "BABEL_ENV=test jest",
     "test:watch": "yarn run test --watch"
   },
@@ -28,7 +28,10 @@
     "dist"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "main": "dist/cjs/index.js",
+    "module": "dist/es/index.js",
+    "typings": "dist/index.d.ts"
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
@@ -47,6 +50,7 @@
     "@babel/preset-react": "^7.12.1",
     "@babel/preset-typescript": "^7.15.0",
     "@bigcommerce/configs": "^0.15.1",
+    "@bigcommerce/pack": "^0.1.0",
     "@types/jest": "^25.2.1",
     "@types/styled-components": "^5.1.11",
     "babel-jest": "^25.5.1",
