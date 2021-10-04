@@ -2,9 +2,7 @@
   "name": "@bigcommerce/big-design",
   "version": "0.30.2",
   "sideEffects": false,
-  "main": "dist/cjs/index.js",
-  "module": "dist/es/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "src/index.ts",
   "author": "BigCommerce Inc",
   "repository": {
     "type": "git",
@@ -23,13 +21,17 @@
     "ci": "yarn run lint && yarn run test --maxWorkers=2 --coverage && yarn run build",
     "lint": "yarn run lint:tsc",
     "lint:tsc": "tsc --noEmit",
-    "start": "concurrently \"yarn:build:* --watch\"",
     "test": "BABEL_ENV=test jest",
     "test:watch": "yarn run test --watch",
-    "prepublishOnly": "rimraf dist && yarn run ci"
+    "prepublishOnly": "rimraf dist && yarn run ci",
+    "prepack": "big-design-prepack",
+    "postpack": "big-design-postpack"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "main": "dist/cjs/index.js",
+    "module": "dist/es/index.js",
+    "typings": "dist/index.d.ts"
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
@@ -59,6 +61,7 @@
     "@babel/preset-react": "^7.12.1",
     "@babel/preset-typescript": "^7.15.0",
     "@bigcommerce/configs": "^0.15.1",
+    "@bigcommerce/pack": "^0.1.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^9.4.0",
     "@testing-library/react-hooks": "^3.2.1",
