@@ -1,10 +1,17 @@
 {
-  "include": ["./src/*"],
   "compilerOptions": {
-    "lib": ["dom", "es2015"],
-    "jsx": "react",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "strict": true
-  }
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["./src"]
 }
