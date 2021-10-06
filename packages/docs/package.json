@@ -11,12 +11,10 @@
     "directory": "packages/docs"
   },
   "scripts": {
-    "build-static": "next build && next export",
-    "deploy": "yarn run build-static && touch out/.nojekyll && push-dir --dir=out --branch=gh-pages --verbose",
+    "build": "next build && next export",
+    "deploy": "yarn run build && touch out/.nojekyll && push-dir --dir=out --branch=gh-pages --verbose",
     "start": "next",
-    "ci": "yarn run lint && yarn run build-static",
-    "lint": "yarn run lint:tsc",
-    "lint:tsc": "tsc --noEmit"
+    "typeCheck": "tsc --noEmit"
   },
   "dependencies": {
     "@babel/core": "^7.15.5",

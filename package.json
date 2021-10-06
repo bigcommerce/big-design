@@ -8,7 +8,9 @@
   "scripts": {
     "build": "lerna run build --stream",
     "build:icons": "yarn workspace @bigcommerce/big-design-icons run build",
-    "ci": "lerna run ci --stream",
+    "ci:typeCheck": "lerna run typeCheck --stream",
+    "ci:test": "lerna run test --stream -- --maxWorkers=2 --coverage",
+    "ci:build": "lerna run build --stream",
     "diff": "lerna diff",
     "lint": "eslint . --ext .ts,.tsx,.js",
     "start": "yarn workspace @bigcommerce/docs run start",
