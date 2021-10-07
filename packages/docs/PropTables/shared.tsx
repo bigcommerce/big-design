@@ -10,10 +10,14 @@ export const sharedMessagingProps: Prop[] = [
   },
   {
     name: 'messages',
-    types: <NextLink href="#message-item-prop-table">MessageItem</NextLink>,
+    types: (
+      <NextLink href={{ hash: 'message-item-prop-table', query: { props: 'message-item' } }}>MessageItem</NextLink>
+    ),
     description: (
       <>
-        See <NextLink href="#message-item-prop-table">below</NextLink> for usage.
+        See{' '}
+        <NextLink href={{ hash: 'message-item-prop-table', query: { props: 'message-item' } }}>MessageItem</NextLink>{' '}
+        for usage.
       </>
     ),
     required: true,
@@ -40,10 +44,18 @@ const messagingItemProps: Prop[] = [
   },
   {
     name: 'link',
-    types: <NextLink href="#message-link-item-prop-table">MessageLinkItem</NextLink>,
+    types: (
+      <NextLink href={{ hash: 'message-link-item-prop-table', query: { props: 'message-link-item' } }}>
+        MessageLinkItem
+      </NextLink>
+    ),
     description: (
       <>
-        See <NextLink href="#message-link-item-prop-table">below</NextLink> for usage.
+        See{' '}
+        <NextLink href={{ hash: 'message-link-item-prop-table', query: { props: 'message-link-item' } }}>
+          MessageLinkItem
+        </NextLink>{' '}
+        for usage.
       </>
     ),
   },
