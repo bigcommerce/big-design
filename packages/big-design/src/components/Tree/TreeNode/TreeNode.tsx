@@ -29,9 +29,8 @@ const InternalTreeNode = <T extends unknown>({
   value,
   id,
 }: TreeNodeProps<T>): React.ReactElement<TreeNodeProps<T>> => {
-  const { disabledNodes, expandable, focusable, iconless, onKeyDown, onNodeClick, selectable } = useContext(
-    TreeContext,
-  );
+  const { disabledNodes, expandable, focusable, iconless, onKeyDown, onNodeClick, selectable } =
+    useContext(TreeContext);
   const nodeRef = useRef<HTMLLIElement | null>(null);
   const selectableRef = useRef<HTMLLabelElement | null>(null);
   const isExpanded = expandable.expandedNodes.includes(id);
@@ -114,10 +113,10 @@ const InternalTreeNode = <T extends unknown>({
     [focusable, id, onNodeClick],
   );
 
-  const additionalProps = useMemo(() => (selectable?.type ? { 'aria-selected': isSelected } : {}), [
-    selectable,
-    isSelected,
-  ]);
+  const additionalProps = useMemo(
+    () => (selectable?.type ? { 'aria-selected': isSelected } : {}),
+    [selectable, isSelected],
+  );
 
   const renderedArrow = useMemo(
     () =>

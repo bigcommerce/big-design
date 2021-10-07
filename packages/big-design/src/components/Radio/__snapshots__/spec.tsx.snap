@@ -1,21 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render Radio (checked + disabled) 1`] = `
-.c5 {
+.c6 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
+.c7 {
   cursor: pointer;
   cursor: not-allowed;
 }
 
-.c5:last-child {
-  margin-bottom: 0;
-}
-
-.c4 {
+.c5 {
   margin-left: 0.5rem;
 }
 
@@ -43,15 +46,7 @@ exports[`render Radio (checked + disabled) 1`] = `
   width: 1px;
 }
 
-.c1:focus + .c6 {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c1:focus + .c7 {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c3 {
+.c4 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,box-shadow;
@@ -81,7 +76,7 @@ exports[`render Radio (checked + disabled) 1`] = `
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:after {
+.c4:after {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: opacity;
@@ -100,7 +95,7 @@ exports[`render Radio (checked + disabled) 1`] = `
   width: 0.75rem;
 }
 
-.c3:after {
+.c4:after {
   opacity: 1;
 }
 
@@ -118,16 +113,16 @@ exports[`render Radio (checked + disabled) 1`] = `
   />
   <label
     aria-hidden="true"
-    class="c3"
+    class="c3 c4"
     disabled=""
     for="bd-radio-1"
   />
   <div
-    class="c4"
+    class="c5"
   >
     <label
       aria-hidden="true"
-      class="c5"
+      class="c6 c7"
       disabled=""
       for="bd-radio-1"
       id="bd-radio_label-2"
@@ -139,20 +134,23 @@ exports[`render Radio (checked + disabled) 1`] = `
 `;
 
 exports[`render Radio (checked) 1`] = `
-.c5 {
+.c6 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
-  cursor: pointer;
 }
 
-.c5:last-child {
+.c6:last-child {
   margin-bottom: 0;
 }
 
-.c4 {
+.c7 {
+  cursor: pointer;
+}
+
+.c5 {
   margin-left: 0.5rem;
 }
 
@@ -180,7 +178,7 @@ exports[`render Radio (checked) 1`] = `
   width: 1px;
 }
 
-.c3 {
+.c4 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,box-shadow;
@@ -204,7 +202,7 @@ exports[`render Radio (checked) 1`] = `
   width: 1.25rem;
 }
 
-.c3:hover {
+.c4:hover {
   border-color: #2852EB;
 }
 
@@ -212,7 +210,7 @@ exports[`render Radio (checked) 1`] = `
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:after {
+.c4:after {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: opacity;
@@ -231,7 +229,7 @@ exports[`render Radio (checked) 1`] = `
   width: 0.75rem;
 }
 
-.c3:after {
+.c4:after {
   opacity: 1;
 }
 
@@ -248,14 +246,14 @@ exports[`render Radio (checked) 1`] = `
   />
   <label
     aria-hidden="true"
-    class="c3"
+    class="c3 c4"
     for="bd-radio-1"
   />
   <div
-    class="c4"
+    class="c5"
   >
     <label
-      class="c5"
+      class="c6 c7"
       for="bd-radio-1"
       id="bd-radio_label-2"
     >
@@ -269,6 +267,18 @@ exports[`render Radio (unchecked + description object) 1`] = `
 .c6 {
   color: #313440;
   margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
+.c8 {
+  color: #313440;
+  margin: 0 0 1rem;
   color: #5E637A;
   font-size: 0.875rem;
   font-weight: 400;
@@ -276,11 +286,11 @@ exports[`render Radio (unchecked + description object) 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c6:last-child {
+.c8:last-child {
   margin-bottom: 0;
 }
 
-.c7 {
+.c9 {
   -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
   -webkit-transition-property: color;
@@ -293,32 +303,23 @@ exports[`render Radio (unchecked + description object) 1`] = `
   text-decoration: none;
 }
 
-.c7:active {
+.c9:active {
   color: #0024A6;
 }
 
-.c7:hover:not(:active) {
+.c9:hover:not(:active) {
   color: #0024A6;
 }
 
-.c8 {
+.c10 {
   font-size: 0.875rem;
 }
 
-.c5 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
+.c7 {
   cursor: pointer;
 }
 
-.c5:last-child {
-  margin-bottom: 0;
-}
-
-.c4 {
+.c5 {
   margin-left: 0.5rem;
 }
 
@@ -346,11 +347,7 @@ exports[`render Radio (unchecked + description object) 1`] = `
   width: 1px;
 }
 
-.c1:focus + .c9 {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c3 {
+.c4 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,box-shadow;
@@ -374,7 +371,7 @@ exports[`render Radio (unchecked + description object) 1`] = `
   width: 1.25rem;
 }
 
-.c3:hover {
+.c4:hover {
   border-color: #B4BAD1;
 }
 
@@ -382,7 +379,7 @@ exports[`render Radio (unchecked + description object) 1`] = `
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:after {
+.c4:after {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: opacity;
@@ -413,26 +410,26 @@ exports[`render Radio (unchecked + description object) 1`] = `
   />
   <label
     aria-hidden="true"
-    class="c3"
+    class="c3 c4"
     for="bd-radio-1"
   />
   <div
-    class="c4"
+    class="c5"
   >
     <label
-      class="c5"
+      class="c6 c7"
       for="bd-radio-1"
       id="bd-radio_label-2"
     >
       Unchecked
     </label>
     <p
-      class="c6"
+      class="c8"
     >
       description
        
       <a
-        class="c7 c8"
+        class="c9 c10"
         href="bar"
         target="foo"
       >
@@ -447,6 +444,18 @@ exports[`render Radio (unchecked + description text) 1`] = `
 .c6 {
   color: #313440;
   margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
+.c8 {
+  color: #313440;
+  margin: 0 0 1rem;
   color: #5E637A;
   font-size: 0.875rem;
   font-weight: 400;
@@ -454,24 +463,15 @@ exports[`render Radio (unchecked + description text) 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c6:last-child {
+.c8:last-child {
   margin-bottom: 0;
 }
 
-.c5 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
+.c7 {
   cursor: pointer;
 }
 
-.c5:last-child {
-  margin-bottom: 0;
-}
-
-.c4 {
+.c5 {
   margin-left: 0.5rem;
 }
 
@@ -499,11 +499,7 @@ exports[`render Radio (unchecked + description text) 1`] = `
   width: 1px;
 }
 
-.c1:focus + .c7 {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c3 {
+.c4 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,box-shadow;
@@ -527,7 +523,7 @@ exports[`render Radio (unchecked + description text) 1`] = `
   width: 1.25rem;
 }
 
-.c3:hover {
+.c4:hover {
   border-color: #B4BAD1;
 }
 
@@ -535,7 +531,7 @@ exports[`render Radio (unchecked + description text) 1`] = `
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:after {
+.c4:after {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: opacity;
@@ -566,21 +562,21 @@ exports[`render Radio (unchecked + description text) 1`] = `
   />
   <label
     aria-hidden="true"
-    class="c3"
+    class="c3 c4"
     for="bd-radio-1"
   />
   <div
-    class="c4"
+    class="c5"
   >
     <label
-      class="c5"
+      class="c6 c7"
       for="bd-radio-1"
       id="bd-radio_label-2"
     >
       Unchecked
     </label>
     <p
-      class="c6"
+      class="c8"
     >
       description
     </p>
@@ -589,21 +585,24 @@ exports[`render Radio (unchecked + description text) 1`] = `
 `;
 
 exports[`render Radio (unchecked + disabled) 1`] = `
-.c5 {
+.c6 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
+.c7 {
   cursor: pointer;
   cursor: not-allowed;
 }
 
-.c5:last-child {
-  margin-bottom: 0;
-}
-
-.c4 {
+.c5 {
   margin-left: 0.5rem;
 }
 
@@ -631,19 +630,7 @@ exports[`render Radio (unchecked + disabled) 1`] = `
   width: 1px;
 }
 
-.c1:focus + .c6 {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c1:focus + .c7 {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c1:focus + .c8 {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c3 {
+.c4 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,box-shadow;
@@ -673,7 +660,7 @@ exports[`render Radio (unchecked + disabled) 1`] = `
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:after {
+.c4:after {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: opacity;
@@ -705,16 +692,16 @@ exports[`render Radio (unchecked + disabled) 1`] = `
   />
   <label
     aria-hidden="true"
-    class="c3"
+    class="c3 c4"
     disabled=""
     for="bd-radio-1"
   />
   <div
-    class="c4"
+    class="c5"
   >
     <label
       aria-hidden="true"
-      class="c5"
+      class="c6 c7"
       disabled=""
       for="bd-radio-1"
       id="bd-radio_label-2"
@@ -726,20 +713,23 @@ exports[`render Radio (unchecked + disabled) 1`] = `
 `;
 
 exports[`render Radio (unchecked) 1`] = `
-.c5 {
+.c6 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
-  cursor: pointer;
 }
 
-.c5:last-child {
+.c6:last-child {
   margin-bottom: 0;
 }
 
-.c4 {
+.c7 {
+  cursor: pointer;
+}
+
+.c5 {
   margin-left: 0.5rem;
 }
 
@@ -767,11 +757,7 @@ exports[`render Radio (unchecked) 1`] = `
   width: 1px;
 }
 
-.c1:focus + .c6 {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c3 {
+.c4 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border-color,box-shadow;
@@ -795,7 +781,7 @@ exports[`render Radio (unchecked) 1`] = `
   width: 1.25rem;
 }
 
-.c3:hover {
+.c4:hover {
   border-color: #B4BAD1;
 }
 
@@ -803,7 +789,7 @@ exports[`render Radio (unchecked) 1`] = `
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c3:after {
+.c4:after {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: opacity;
@@ -834,14 +820,14 @@ exports[`render Radio (unchecked) 1`] = `
   />
   <label
     aria-hidden="true"
-    class="c3"
+    class="c3 c4"
     for="bd-radio-1"
   />
   <div
-    class="c4"
+    class="c5"
   >
     <label
-      class="c5"
+      class="c6 c7"
       for="bd-radio-1"
       id="bd-radio_label-2"
     >

@@ -2,7 +2,9 @@ import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
-import { PillTabItem, PillTabsProps } from '../PillTabs';
+import { Box } from '../Box';
+import { PillTabItem, PillTabs, PillTabsProps } from '../PillTabs';
+import { Search } from '../Search';
 import { Table, TableColumn, TableItem, TableProps, TableSelectable, TableSortDirection } from '../Table';
 
 import { createReducer, createReducerInit } from './reducer';
@@ -112,11 +114,10 @@ const InternalStatefulTable = <T extends TableItem>({
     [selectable, state.selectedItems, onItemSelect],
   );
 
-  const sortableOptions = useMemo(() => (sortable ? { ...state.sortable, onSort } : undefined), [
-    sortable,
-    state.sortable,
-    onSort,
-  ]);
+  const sortableOptions = useMemo(
+    () => (sortable ? { ...state.sortable, onSort } : undefined),
+    [sortable, state.sortable, onSort],
+  );
 
   const onDragEnd = useCallback(
     (from: number, to: number) => {
@@ -159,21 +160,47 @@ const InternalStatefulTable = <T extends TableItem>({
     [search, state.searchValue, filters],
   );
 
+  const renderPills = () => {
+    if (!filters || !state.pillTabsProps) {
+      return null;
+    }
+
+    return (
+      <Box marginBottom="medium">
+        <PillTabs {...state.pillTabsProps} />
+      </Box>
+    );
+  };
+
+  const renderSearch = () => {
+    if (!search || !searchProps) {
+      return;
+    }
+
+    return (
+      <Box marginBottom="medium">
+        <Search {...searchProps} />
+      </Box>
+    );
+  };
+
   return (
-    <Table
-      {...rest}
-      columns={state.columns}
-      filters={state.pillTabsProps}
-      itemName={itemName}
-      items={state.currentItems}
-      keyField={keyField}
-      pagination={paginationOptions}
-      search={searchProps}
-      selectable={selectableOptions}
-      sortable={sortableOptions}
-      stickyHeader={stickyHeader}
-      onRowDrop={onRowDrop ? onDragEnd : undefined}
-    />
+    <>
+      {renderPills()}
+      {renderSearch()}
+      <Table
+        {...rest}
+        columns={state.columns}
+        itemName={itemName}
+        items={state.currentItems}
+        keyField={keyField}
+        pagination={paginationOptions}
+        selectable={selectableOptions}
+        sortable={sortableOptions}
+        stickyHeader={stickyHeader}
+        onRowDrop={onRowDrop ? onDragEnd : undefined}
+      />
+    </>
   );
 };
 

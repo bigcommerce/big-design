@@ -1,39 +1,45 @@
 const BABEL_ENV = process.env.BABEL_ENV;
 
-const defaultPlugins = [
-  ['babel-plugin-styled-components', { pure: true }],
-  '@babel/plugin-proposal-class-properties',
-  '@babel/plugin-proposal-nullish-coalescing-operator',
-  '@babel/plugin-proposal-object-rest-spread',
-  '@babel/plugin-proposal-optional-chaining',
-  // IE 11 support
-  '@babel/plugin-transform-object-assign',
+const defaultPlugins = [['babel-plugin-styled-components', { pure: true }]];
+
+const browsers = [
+  'last 2 Chrome major versions',
+  'last 2 Firefox major versions',
+  'last 2 Safari major versions',
+  'last 2 Edge major versions',
+  'last 2 Android major versions',
+  'last 2 ChromeAndroid major versions',
+  'last 2 iOS major versions',
 ];
 
-module.exports = {
-  presets: [
-    [
-      '@babel/preset-env',
-      {
-        modules: ['cjs', 'test'].includes(BABEL_ENV) ? 'commonjs' : false,
-        targets: BABEL_ENV === 'test' ? { node: 'current' } : { browsers: 'defaults' },
-      },
+module.exports = function (api) {
+  api.cache(true);
+
+  return {
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          modules: ['cjs', 'test'].includes(BABEL_ENV) ? 'commonjs' : false,
+          targets: BABEL_ENV === 'test' ? { node: 'current' } : { browsers },
+        },
+      ],
+      '@babel/preset-typescript',
+      '@babel/preset-react',
     ],
-    '@babel/preset-typescript',
-    '@babel/preset-react',
-  ],
-  env: {
-    cjs: {
-      plugins: [...defaultPlugins, ['@babel/plugin-transform-runtime', { useESModules: false }]],
-      ignore: ['**/spec.ts', '**/spec.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
+    env: {
+      cjs: {
+        plugins: [...defaultPlugins, ['@babel/plugin-transform-runtime', { useESModules: false }]],
+        ignore: [/node_modules/, '**/spec.ts', '**/spec.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
+      },
+      es: {
+        plugins: [...defaultPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
+        ignore: [/node_modules/, '**/spec.ts', '**/spec.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
+      },
+      test: {
+        plugins: defaultPlugins,
+        ignore: [/node_modules/],
+      },
     },
-    es: {
-      plugins: [...defaultPlugins, ['@babel/plugin-transform-runtime', { useESModules: true }]],
-      ignore: ['**/spec.ts', '**/spec.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
-    },
-    test: {
-      plugins: defaultPlugins,
-      ignore: [],
-    },
-  },
+  };
 };

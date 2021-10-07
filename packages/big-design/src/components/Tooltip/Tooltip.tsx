@@ -14,7 +14,7 @@ export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
   inline?: boolean;
 }
 
-export const Tooltip: React.FC<TooltipProps> = memo(({ children, inline = true, modifiers, trigger, ...props }) => {
+export const Tooltip: React.FC<TooltipProps> = memo(({ children, inline = true, modifiers, trigger, id, ...props }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [tooltipContainer, setTooltipContainer] = useState<HTMLDivElement | null>(null);
   const tooltipModifiers = useMemo(() => {
@@ -82,7 +82,7 @@ export const Tooltip: React.FC<TooltipProps> = memo(({ children, inline = true, 
             <Popper placement={props.placement || 'top'} modifiers={tooltipModifiers}>
               {({ placement, ref, style }) =>
                 isVisible && (
-                  <StyledTooltip ref={ref} style={style} data-placement={placement}>
+                  <StyledTooltip id={id} ref={ref} style={style} data-placement={placement}>
                     {renderContent()}
                   </StyledTooltip>
                 )

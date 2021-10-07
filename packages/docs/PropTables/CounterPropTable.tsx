@@ -86,5 +86,5 @@ const counterProps: Prop[] = [
 ];
 
 export const CounterPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Counter" propList={counterProps} {...props} />
+  <PropTable title="Counter" propList={counterProps} nativeElement={['input', 'most']} {...props} />
 );

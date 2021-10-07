@@ -10,19 +10,31 @@ import { createStyledFlagIcon, FlagIconProps } from '../base';
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'GT flag', theme, ...props }) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
+  const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 640 480"
+      aria-hidden={ariaHidden}
+      ref={svgRef}
+      aria-labelledby={titleId}
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
-        <radialGradient id="GTFlagIcon__m" cx={477.9} cy={215.3} r={0.3} gradientUnits="userSpaceOnUse">
-          <stop offset={0.3} stopColor="#a50a0a" />
-          <stop offset={1} stopColor="#4c0505" />
-        </radialGradient>
         <radialGradient id="GTFlagIcon__a">
           <stop offset={0.2} stopColor="#f9f0aa" />
           <stop offset={1} stopColor="#b07e09" />
         </radialGradient>
+        <radialGradient
+          id="GTFlagIcon__d"
+          cx={447.4}
+          cy={308.3}
+          r={16.5}
+          gradientUnits="userSpaceOnUse"
+          xlinkHref="#GTFlagIcon__a"
+        />
         <radialGradient
           id="GTFlagIcon__e"
           cx={451.6}
@@ -55,14 +67,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           gradientUnits="userSpaceOnUse"
           xlinkHref="#GTFlagIcon__a"
         />
-        <radialGradient
-          id="GTFlagIcon__d"
-          cx={447.4}
-          cy={308.3}
-          r={16.5}
-          gradientUnits="userSpaceOnUse"
-          xlinkHref="#GTFlagIcon__a"
-        />
+        <radialGradient id="GTFlagIcon__m" cx={477.9} cy={215.3} r={0.3} gradientUnits="userSpaceOnUse">
+          <stop offset={0.3} stopColor="#a50a0a" />
+          <stop offset={1} stopColor="#4c0505" />
+        </radialGradient>
         <radialGradient
           id="GTFlagIcon__n"
           cx={489.1}

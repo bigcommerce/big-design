@@ -25,11 +25,25 @@ exports[`render default (success) Alert 1`] = `
   grid-area: messages;
 }
 
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
 .c2 {
   border-radius: 0.25rem;
   box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
-  -webkit-animation: eMLfYp .5s ease-in-out;
-  animation: eMLfYp .5s ease-in-out;
+  -webkit-animation: jBcSpD .5s ease-in-out;
+  animation: jBcSpD .5s ease-in-out;
   background-color: #FFFFFF;
   grid-gap: 0.75rem;
   max-width: 28.5rem;
@@ -43,20 +57,9 @@ exports[`render default (success) Alert 1`] = `
   border-left: 0.25rem solid #2AAB3F;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
+.c7 {
   color: #313440;
   vertical-align: middle;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
 }
 
 <div
@@ -68,6 +71,7 @@ exports[`render default (success) Alert 1`] = `
     class="c0 c3"
   >
     <svg
+      aria-hidden="true"
       class="c4"
       color="success"
       fill="currentColor"
@@ -93,7 +97,7 @@ exports[`render default (success) Alert 1`] = `
       class="c0"
     >
       <span
-        class="c6"
+        class="c6 c7"
       >
         Success
       </span>
@@ -128,11 +132,25 @@ exports[`render error Alert 1`] = `
   grid-area: messages;
 }
 
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
 .c2 {
   border-radius: 0.25rem;
   box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
-  -webkit-animation: eMLfYp .5s ease-in-out;
-  animation: eMLfYp .5s ease-in-out;
+  -webkit-animation: jBcSpD .5s ease-in-out;
+  animation: jBcSpD .5s ease-in-out;
   background-color: #FFFFFF;
   grid-gap: 0.75rem;
   max-width: 28.5rem;
@@ -146,20 +164,9 @@ exports[`render error Alert 1`] = `
   border-left: 0.25rem solid #DB3643;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
+.c7 {
   color: #313440;
   vertical-align: middle;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
 }
 
 <div
@@ -171,6 +178,7 @@ exports[`render error Alert 1`] = `
     class="c0 c3"
   >
     <svg
+      aria-hidden="true"
       class="c4"
       color="danger"
       fill="currentColor"
@@ -192,7 +200,7 @@ exports[`render error Alert 1`] = `
       class="c0"
     >
       <span
-        class="c6"
+        class="c6 c7"
       >
         Error
       </span>
@@ -227,11 +235,25 @@ exports[`render info Alert 1`] = `
   grid-area: messages;
 }
 
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
 .c2 {
   border-radius: 0.25rem;
   box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
-  -webkit-animation: eMLfYp .5s ease-in-out;
-  animation: eMLfYp .5s ease-in-out;
+  -webkit-animation: jBcSpD .5s ease-in-out;
+  animation: jBcSpD .5s ease-in-out;
   background-color: #FFFFFF;
   grid-gap: 0.75rem;
   max-width: 28.5rem;
@@ -245,20 +267,9 @@ exports[`render info Alert 1`] = `
   border-left: 0.25rem solid #0B38D9;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
+.c7 {
   color: #313440;
   vertical-align: middle;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
 }
 
 <div
@@ -270,6 +281,7 @@ exports[`render info Alert 1`] = `
     class="c0 c3"
   >
     <svg
+      aria-hidden="true"
       class="c4"
       color="primary60"
       fill="currentColor"
@@ -295,7 +307,7 @@ exports[`render info Alert 1`] = `
       class="c0"
     >
       <span
-        class="c6"
+        class="c6 c7"
       >
         Info
       </span>
@@ -330,11 +342,25 @@ exports[`render warning Alert 1`] = `
   grid-area: messages;
 }
 
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
 .c2 {
   border-radius: 0.25rem;
   box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
-  -webkit-animation: eMLfYp .5s ease-in-out;
-  animation: eMLfYp .5s ease-in-out;
+  -webkit-animation: jBcSpD .5s ease-in-out;
+  animation: jBcSpD .5s ease-in-out;
   background-color: #FFFFFF;
   grid-gap: 0.75rem;
   max-width: 28.5rem;
@@ -348,20 +374,9 @@ exports[`render warning Alert 1`] = `
   border-left: 0.25rem solid #FFAE00;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
+.c7 {
   color: #313440;
   vertical-align: middle;
-}
-
-.c6:last-child {
-  margin-bottom: 0;
 }
 
 <div
@@ -373,6 +388,7 @@ exports[`render warning Alert 1`] = `
     class="c0 c3"
   >
     <svg
+      aria-hidden="true"
       class="c4"
       color="warning50"
       fill="currentColor"
@@ -394,7 +410,7 @@ exports[`render warning Alert 1`] = `
       class="c0"
     >
       <span
-        class="c6"
+        class="c6 c7"
       >
         Warning
       </span>
@@ -412,7 +428,7 @@ exports[`renders close button 1`] = `
   width: 1.5rem;
 }
 
-.c10 {
+.c11 {
   vertical-align: middle;
   height: 1.25rem;
   width: 1.25rem;
@@ -422,7 +438,7 @@ exports[`renders close button 1`] = `
   box-sizing: border-box;
 }
 
-.c7 {
+.c8 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -473,36 +489,36 @@ exports[`renders close button 1`] = `
   font-weight: 600;
 }
 
-.c7:focus {
+.c8:focus {
   outline: none;
 }
 
-.c7[disabled] {
+.c8[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c7 + .bd-button {
+.c8 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c7:active {
+.c8:active {
   background-color: #0B38D9;
 }
 
-.c7:focus {
+.c8:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c7:hover:not(:active) {
+.c8:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c7[disabled] {
+.c8[disabled] {
   background-color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -516,7 +532,7 @@ exports[`renders close button 1`] = `
   visibility: visible;
 }
 
-.c8 {
+.c9 {
   background-color: transparent;
   border: none;
   color: #313440;
@@ -524,19 +540,19 @@ exports[`renders close button 1`] = `
   padding: 0;
 }
 
-.c8:active {
+.c9:active {
   background-color: #DBE3FE;
 }
 
-.c8:focus {
+.c9:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c8:hover:not(:active) {
+.c9:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c8[disabled] {
+.c9[disabled] {
   color: #D9DCE9;
 }
 
@@ -553,11 +569,25 @@ exports[`renders close button 1`] = `
   grid-area: messages;
 }
 
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
 .c2 {
   border-radius: 0.25rem;
   box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
-  -webkit-animation: eMLfYp .5s ease-in-out;
-  animation: eMLfYp .5s ease-in-out;
+  -webkit-animation: jBcSpD .5s ease-in-out;
+  animation: jBcSpD .5s ease-in-out;
   background-color: #FFFFFF;
   grid-gap: 0.75rem;
   max-width: 28.5rem;
@@ -571,31 +601,20 @@ exports[`renders close button 1`] = `
   border-left: 0.25rem solid #2AAB3F;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
+.c7 {
   color: #313440;
   vertical-align: middle;
 }
 
-.c6:last-child {
-  margin-bottom: 0;
-}
-
 @media (min-width:720px) {
-  .c7 + .bd-button {
+  .c8 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c7 {
+  .c8 {
     width: auto;
   }
 }
@@ -609,6 +628,7 @@ exports[`renders close button 1`] = `
     class="c0 c3"
   >
     <svg
+      aria-hidden="true"
       class="c4"
       color="success"
       fill="currentColor"
@@ -634,7 +654,7 @@ exports[`renders close button 1`] = `
       class="c0"
     >
       <span
-        class="c6"
+        class="c6 c7"
       >
         Success
       </span>
@@ -645,13 +665,14 @@ exports[`renders close button 1`] = `
     class="c0 "
   >
     <button
-      class="c7 c8"
+      class="c8 c9"
     >
       <span
-        class="c9"
+        class="c10"
       >
         <svg
-          class="c10"
+          aria-hidden="true"
+          class="c11"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -698,11 +719,34 @@ exports[`renders header 1`] = `
   grid-area: messages;
 }
 
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
+}
+
+.c8 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c8:last-child {
+  margin-bottom: 0;
+}
+
 .c2 {
   border-radius: 0.25rem;
   box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
-  -webkit-animation: eMLfYp .5s ease-in-out;
-  animation: eMLfYp .5s ease-in-out;
+  -webkit-animation: jBcSpD .5s ease-in-out;
+  animation: jBcSpD .5s ease-in-out;
   background-color: #FFFFFF;
   grid-gap: 0.75rem;
   max-width: 28.5rem;
@@ -716,31 +760,14 @@ exports[`renders header 1`] = `
   border-left: 0.25rem solid #2AAB3F;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  margin: 0 0 0.5rem;
+.c7 {
   line-height: 1rem;
   margin-bottom: 0.25rem;
 }
 
-.c7 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
+.c9 {
   color: #313440;
   vertical-align: middle;
-}
-
-.c7:last-child {
-  margin-bottom: 0;
 }
 
 <div
@@ -752,6 +779,7 @@ exports[`renders header 1`] = `
     class="c0 c3"
   >
     <svg
+      aria-hidden="true"
       class="c4"
       color="success"
       fill="currentColor"
@@ -774,7 +802,7 @@ exports[`renders header 1`] = `
     class="c0 c5"
   >
     <h4
-      class="c6"
+      class="c6 c7"
     >
       Header
     </h4>
@@ -782,7 +810,7 @@ exports[`renders header 1`] = `
       class="c0"
     >
       <span
-        class="c7"
+        class="c8 c9"
       >
         Success
       </span>
@@ -800,7 +828,7 @@ exports[`renders with external link 1`] = `
   width: 1.5rem;
 }
 
-.c9 {
+.c10 {
   vertical-align: middle;
   height: 1rem;
   width: 1rem;
@@ -823,7 +851,7 @@ exports[`renders with external link 1`] = `
   grid-area: messages;
 }
 
-.c7 {
+.c8 {
   -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
   -webkit-transition-property: color;
@@ -844,26 +872,40 @@ exports[`renders with external link 1`] = `
   align-items: center;
 }
 
-.c7:active {
+.c8:active {
   color: #0024A6;
 }
 
-.c7:hover:not(:active) {
+.c8:hover:not(:active) {
   color: #0024A6;
 }
 
-.c7 svg {
+.c8 svg {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   margin-left: 0.25rem;
 }
 
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
+}
+
 .c2 {
   border-radius: 0.25rem;
   box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
-  -webkit-animation: eMLfYp .5s ease-in-out;
-  animation: eMLfYp .5s ease-in-out;
+  -webkit-animation: jBcSpD .5s ease-in-out;
+  animation: jBcSpD .5s ease-in-out;
   background-color: #FFFFFF;
   grid-gap: 0.75rem;
   max-width: 28.5rem;
@@ -877,23 +919,12 @@ exports[`renders with external link 1`] = `
   border-left: 0.25rem solid #2AAB3F;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
+.c7 {
   color: #313440;
   vertical-align: middle;
 }
 
-.c6:last-child {
-  margin-bottom: 0;
-}
-
-.c8 {
+.c9 {
   font-size: 0.875rem;
   vertical-align: middle;
 }
@@ -907,6 +938,7 @@ exports[`renders with external link 1`] = `
     class="c0 c3"
   >
     <svg
+      aria-hidden="true"
       class="c4"
       color="success"
       fill="currentColor"
@@ -932,13 +964,13 @@ exports[`renders with external link 1`] = `
       class="c0"
     >
       <span
-        class="c6"
+        class="c6 c7"
       >
         Success
       </span>
        
       <a
-        class="c7 c8"
+        class="c8 c9"
         href="#"
         target="_blank"
       >
@@ -946,7 +978,8 @@ exports[`renders with external link 1`] = `
           Link
         </span>
         <svg
-          class="c9"
+          aria-hidden="true"
+          class="c10"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -993,7 +1026,7 @@ exports[`renders with link 1`] = `
   grid-area: messages;
 }
 
-.c7 {
+.c8 {
   -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
   -webkit-transition-property: color;
@@ -1006,19 +1039,33 @@ exports[`renders with link 1`] = `
   text-decoration: none;
 }
 
-.c7:active {
+.c8:active {
   color: #0024A6;
 }
 
-.c7:hover:not(:active) {
+.c8:hover:not(:active) {
   color: #0024A6;
+}
+
+.c6 {
+  color: #313440;
+  margin: 0 0 1rem;
+  color: #5E637A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.c6:last-child {
+  margin-bottom: 0;
 }
 
 .c2 {
   border-radius: 0.25rem;
   box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
-  -webkit-animation: eMLfYp .5s ease-in-out;
-  animation: eMLfYp .5s ease-in-out;
+  -webkit-animation: jBcSpD .5s ease-in-out;
+  animation: jBcSpD .5s ease-in-out;
   background-color: #FFFFFF;
   grid-gap: 0.75rem;
   max-width: 28.5rem;
@@ -1032,23 +1079,12 @@ exports[`renders with link 1`] = `
   border-left: 0.25rem solid #2AAB3F;
 }
 
-.c6 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
+.c7 {
   color: #313440;
   vertical-align: middle;
 }
 
-.c6:last-child {
-  margin-bottom: 0;
-}
-
-.c8 {
+.c9 {
   font-size: 0.875rem;
   vertical-align: middle;
 }
@@ -1062,6 +1098,7 @@ exports[`renders with link 1`] = `
     class="c0 c3"
   >
     <svg
+      aria-hidden="true"
       class="c4"
       color="success"
       fill="currentColor"
@@ -1087,13 +1124,13 @@ exports[`renders with link 1`] = `
       class="c0"
     >
       <span
-        class="c6"
+        class="c6 c7"
       >
         Success
       </span>
        
       <a
-        class="c7 c8"
+        class="c8 c9"
         href="#"
       >
         Link

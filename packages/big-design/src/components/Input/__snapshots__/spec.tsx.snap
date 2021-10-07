@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders all together 1`] = `
-.c4 {
+.c5 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c2 {
+.c3 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border,box-shadow;
@@ -30,15 +30,15 @@ exports[`renders all together 1`] = `
   border: 1px solid #D9DCE9;
 }
 
-.c2:hover:not([disabled]) {
+.c3:hover:not([disabled]) {
   border: 1px solid #B4BAD1;
 }
 
-.c2[disabled] {
+.c3[disabled] {
   background-color: #ECEEF5;
 }
 
-.c6 {
+.c7 {
   background-color: inherit;
   border: 0;
   box-sizing: border-box;
@@ -55,40 +55,40 @@ exports[`renders all together 1`] = `
   min-height: 2.125rem;
 }
 
-.c6:focus {
+.c7:focus {
   outline: none;
 }
 
-.c6::-webkit-input-placeholder {
+.c7::-webkit-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c6::-moz-placeholder {
+.c7::-moz-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c6:-ms-input-placeholder {
+.c7:-ms-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c6::placeholder {
+.c7::placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c6:-webkit-autofill {
+.c7:-webkit-autofill {
   background-color: #F0F3FF !important;
   -webkit-box-shadow: 0 0 0px 1000px #F0F3FF inset;
 }
 
-.c6[disabled] {
+.c7[disabled] {
   background-color: #ECEEF5;
 }
 
-.c3 {
+.c4 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -106,7 +106,7 @@ exports[`renders all together 1`] = `
   left: 0;
 }
 
-.c7 {
+.c8 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -124,7 +124,7 @@ exports[`renders all together 1`] = `
   right: 0;
 }
 
-.c5 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -143,7 +143,16 @@ exports[`renders all together 1`] = `
   height: 100%;
 }
 
-.c1 {
+.c0 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  margin: 0 0 0.5rem;
+}
+
+.c2 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -153,23 +162,17 @@ exports[`renders all together 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c1:last-child {
+.c2:last-child {
   margin-bottom: 0;
 }
 
-.c0 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  margin: 0 0 0.5rem;
+.c1 {
   cursor: pointer;
   display: inline-block;
   margin-bottom: 0.25rem;
 }
 
-.c0::after {
+.c1::after {
   color: #5E637A;
   content: ' (optional)';
   font-weight: 400;
@@ -177,24 +180,25 @@ exports[`renders all together 1`] = `
 
 <div>
   <label
-    class="c0"
+    class="c0 c1"
     for="bd-input-1"
   >
     This is a label
   </label>
   <p
-    class="c1"
+    class="c2"
   >
     This is a description
   </p>
   <span
-    class="c2"
+    class="c3"
   >
     <div
-      class="c3"
+      class="c4"
     >
       <svg
-        class="c4"
+        aria-hidden="true"
+        class="c5"
         data-testid="icon-left"
         fill="currentColor"
         height="24"
@@ -213,18 +217,19 @@ exports[`renders all together 1`] = `
       </svg>
     </div>
     <div
-      class="c5"
+      class="c6"
     >
       <input
-        class="c6"
+        class="c7"
         id="bd-input-1"
       />
     </div>
     <div
-      class="c7"
+      class="c8"
     >
       <svg
-        class="c4"
+        aria-hidden="true"
+        class="c5"
         data-testid="icon-right"
         fill="currentColor"
         height="24"

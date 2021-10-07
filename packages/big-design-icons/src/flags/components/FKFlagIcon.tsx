@@ -10,15 +10,19 @@ import { createStyledFlagIcon, FlagIconProps } from '../base';
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'FK flag', theme, ...props }) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
+  const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 640 480"
+      aria-hidden={ariaHidden}
+      ref={svgRef}
+      aria-labelledby={titleId}
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
-        <linearGradient id="FKFlagIcon__a">
-          <stop offset={0} stopColor="#a43907" />
-          <stop offset={1} stopColor="#fff" />
-        </linearGradient>
         <linearGradient
           id="FKFlagIcon__c"
           x1={444.4}
@@ -26,6 +30,16 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           y1={592.2}
           y2={577.1}
           gradientTransform="matrix(-1.08448 0 0 1.26674 909.5 -414.7)"
+          gradientUnits="userSpaceOnUse"
+          xlinkHref="#FKFlagIcon__a"
+        />
+        <linearGradient
+          id="FKFlagIcon__g"
+          x1={851.8}
+          x2={646.2}
+          y1={369.9}
+          y2={369.9}
+          gradientTransform="matrix(.85733 0 0 .9624 -161.5 .3)"
           gradientUnits="userSpaceOnUse"
           xlinkHref="#FKFlagIcon__a"
         />
@@ -59,16 +73,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           gradientUnits="userSpaceOnUse"
           xlinkHref="#FKFlagIcon__a"
         />
-        <linearGradient
-          id="FKFlagIcon__g"
-          x1={851.8}
-          x2={646.2}
-          y1={369.9}
-          y2={369.9}
-          gradientTransform="matrix(.85733 0 0 .9624 -161.5 .3)"
-          gradientUnits="userSpaceOnUse"
-          xlinkHref="#FKFlagIcon__a"
-        />
+        <linearGradient id="FKFlagIcon__a">
+          <stop offset={0} stopColor="#a43907" />
+          <stop offset={1} stopColor="#fff" />
+        </linearGradient>
         <linearGradient
           id="FKFlagIcon__h"
           x1={388.5}

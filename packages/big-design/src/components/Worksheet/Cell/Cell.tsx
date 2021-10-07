@@ -2,33 +2,41 @@ import React, { useCallback, useEffect, useMemo } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Small } from '../../Typography';
-import { CheckboxEditor, SelectEditor, TextEditor } from '../editors';
+import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor, ToggleEditor } from '../editors';
 import { useEditableCell, useStore } from '../hooks';
-import { Cell as TCell, WorksheetColumn, WorksheetItem, WorksheetSelectableColumn } from '../types';
+import {
+  InternalWorksheetColumn,
+  Cell as TCell,
+  WorksheetItem,
+  WorksheetSelectableColumn,
+  WorksheetTextColumn,
+} from '../types';
 
 import { StyledCell } from './styled';
 
 interface CellProps<Item> extends TCell<Item> {
-  options?: WorksheetSelectableColumn<Item>['options'];
-  validation?: WorksheetColumn<Item>['validation'];
+  options?: WorksheetSelectableColumn<Item>['config']['options'];
+  rowId: number | string;
+  formatting?: WorksheetTextColumn<Item>['formatting'];
+  validation?: InternalWorksheetColumn<Item>['validation'];
 }
 
 const InternalCell = <T extends WorksheetItem>({
   columnIndex,
+  disabled = false,
+  formatting,
   hash,
   options,
   rowIndex,
   type,
-  value,
+  rowId,
   validation,
+  value,
 }: CellProps<T>) => {
-  const cell: TCell<T> = useMemo(() => ({ columnIndex, hash, rowIndex, type, value }), [
-    columnIndex,
-    hash,
-    rowIndex,
-    type,
-    value,
-  ]);
+  const cell: TCell<T> = useMemo(
+    () => ({ columnIndex, disabled, hash, rowIndex, type, value }),
+    [columnIndex, disabled, hash, rowIndex, type, value],
+  );
 
   const { handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing } = useEditableCell<T>(cell);
   const setSelectedRows = useStore((state) => state.setSelectedRows);
@@ -85,21 +93,63 @@ const InternalCell = <T extends WorksheetItem>({
     setSelectedCells([cell]);
   }, [cell, rowIndex, setSelectedCells, setSelectedRows]);
 
+  const renderedValue = useMemo(() => {
+    if (value !== 'undefined' && value !== '' && !Number.isNaN(value)) {
+      if (typeof formatting === 'function') {
+        return formatting(value);
+      }
+
+      return `${value}`;
+    }
+
+    if (Number.isNaN(value)) {
+      return `${value}`;
+    }
+
+    return '';
+  }, [formatting, value]);
+
   const renderedCell = useMemo(() => {
     switch (type) {
       case 'select':
-        return <SelectEditor cell={cell} isEdited={isEdited} onChange={handleChange} options={options} />;
+        return (
+          <SelectEditor
+            cell={cell}
+            isEditing={isEditing}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            options={options}
+          />
+        );
       case 'checkbox':
-        return <CheckboxEditor cell={cell} onChange={handleChange} />;
+        return <CheckboxEditor cell={cell} toggle={isEditing} onBlur={handleBlur} onChange={handleChange} />;
+      case 'modal':
+        return <ModalEditor cell={cell} formatting={formatting} isEditing={isEditing} />;
+      case 'toggle':
+        return <ToggleEditor rowId={rowId} toggle={isEditing} />;
       default:
-        return isEditing ? (
+        return isEditing && !disabled ? (
           <TextEditor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
         ) : (
-          // In case of NaN casting to string
-          <Small color="secondary70">{value ? value.toString() : ''}</Small>
+          <Small color={disabled ? 'secondary50' : 'secondary70'} ellipsis title={renderedValue}>
+            {renderedValue}
+          </Small>
         );
     }
-  }, [cell, handleBlur, handleChange, handleKeyDown, isEdited, isEditing, options, type, value]);
+  }, [
+    cell,
+    disabled,
+    formatting,
+    handleBlur,
+    handleChange,
+    handleKeyDown,
+    isEdited,
+    isEditing,
+    options,
+    rowId,
+    renderedValue,
+    type,
+  ]);
 
   return (
     <StyledCell

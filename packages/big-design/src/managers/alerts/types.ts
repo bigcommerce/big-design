@@ -3,4 +3,4 @@ import { MessagingType } from '../../utils';
 
 export type TypeMap = { [key in MessagingType]: number };
 
-export type Subscriber = (alert: AlertProps) => void;
+export type Subscriber = (alert: AlertProps | null) => void;

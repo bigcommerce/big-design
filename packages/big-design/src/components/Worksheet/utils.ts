@@ -1,4 +1,4 @@
-import { Cell, WorksheetError, WorksheetItem } from './types';
+import { Cell, ExpandableRows, WorksheetError, WorksheetItem } from './types';
 
 export const mergeCells = <T extends WorksheetItem>(oldCells: Cell<T>[], newCells: Cell<T>[]) =>
   newCells.reduce(
@@ -55,4 +55,8 @@ export const invalidRows = <T extends WorksheetItem>(invalidCells: Cell<T>[], ro
     item,
     errors: Array.from(errors),
   }));
+};
+
+export const getHiddenRows = (expandableRows: ExpandableRows) => {
+  return Object.values(expandableRows).flat();
 };

@@ -11,18 +11,10 @@ const boxProps: Prop[] = [
   },
   {
     name: 'backgroundColor',
-    types: (
-      <NextLink href="/Colors/ColorsPage" as="/colors">
-        Color
-      </NextLink>
-    ),
+    types: <NextLink href="/colors">Color</NextLink>,
     description: (
       <>
-        Sets the background color given a color name from our{' '}
-        <NextLink href="/Colors/ColorsPage" as="/colors">
-          palette
-        </NextLink>
-        .
+        Sets the background color given a color name from our <NextLink href="/colors">palette</NextLink>.
       </>
     ),
   },

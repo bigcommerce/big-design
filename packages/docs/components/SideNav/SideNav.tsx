@@ -1,7 +1,7 @@
 import { Flex, FlexItem } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { BigDesignLogoIcon, GithubLogoIcon } from '../Icons';
+import { GithubLogoIcon } from '../Icons';
 import { List } from '../List';
 
 import { SideNavGroup } from './SideNavGroup';
@@ -19,6 +19,7 @@ export const SideNav: React.FC = () => {
       alignContent={{ mobile: 'center', tablet: 'stretch' }}
       justifyContent={{ mobile: 'space-between', tablet: 'flex-start' }}
       padding="medium"
+      paddingLeft="xLarge"
       paddingBottom={{ mobile: 'medium', tablet: 'xxxLarge' }}
     >
       <FlexItem>
@@ -27,155 +28,70 @@ export const SideNav: React.FC = () => {
 
       <SideNavMenu>
         <SideNavGroup title="Introduction">
-          <SideNavLink href="/GettingStarted/GettingStartedPage" as="/">
-            Getting Started
-          </SideNavLink>
+          <SideNavLink href="/">Getting Started</SideNavLink>
 
           <Link url={CodeSandboxUrl} title="CodeSandbox Example" />
         </SideNavGroup>
 
         <SideNavGroup title="Foundations">
-          <SideNavLink href="/Colors/ColorsPage" as="/colors">
-            Colors
-          </SideNavLink>
-          <SideNavLink href="/Icons/IconsPage" as="/icons">
-            Icons
-          </SideNavLink>
-          <SideNavLink href="/Spacing/SpacingPage" as="/spacing">
-            Spacing
-          </SideNavLink>
-          <SideNavLink href="/Typography/TypographyPage" as="/typography">
-            Typography
-          </SideNavLink>
+          <SideNavLink href="/colors">Colors</SideNavLink>
+          <SideNavLink href="/icons">Icons</SideNavLink>
+          <SideNavLink href="/spacing">Spacing</SideNavLink>
+          <SideNavLink href="/typography">Typography</SideNavLink>
         </SideNavGroup>
 
         <SideNavGroup title="Layout">
-          <SideNavLink href="/Collapse/CollapsePage" as="/collapse">
-            Collapse
-          </SideNavLink>
-          <SideNavLink href="/Modal/ModalPage" as="/modal">
-            Modal
-          </SideNavLink>
-          <SideNavLink href="/Pagination/PaginationPage" as="/pagination">
-            Pagination
-          </SideNavLink>
-          <SideNavLink href="/Panel/PanelPage" as="/panel">
-            Panel
-          </SideNavLink>
-          <SideNavLink href="/Table/TablePage" as="/table">
-            Table
-          </SideNavLink>
-          <SideNavLink href="/StatefulTable/StatefulTablePage" as="/statefulTable">
-            StatefulTable
-          </SideNavLink>
-          <SideNavLink href="/StatefulTree/StatefulTreePage" as="/statefulTree">
-            StatefulTree
-          </SideNavLink>
-          <SideNavLink href="/Tabs/TabsPage" as="/tabs">
-            Tabs
-          </SideNavLink>
+          <SideNavLink href="/collapse">Collapse</SideNavLink>
+          <SideNavLink href="/modal">Modal</SideNavLink>
+          <SideNavLink href="/pagination">Pagination</SideNavLink>
+          <SideNavLink href="/panel">Panel</SideNavLink>
+          <SideNavLink href="/statefulTable">StatefulTable</SideNavLink>
+          <SideNavLink href="/statefulTree">StatefulTree</SideNavLink>
+          <SideNavLink href="/table">Table</SideNavLink>
+          <SideNavLink href="/tabs">Tabs</SideNavLink>
+          <SideNavLink href="/worksheet">Worksheet</SideNavLink>
         </SideNavGroup>
 
         <SideNavGroup title="Actions &amp; Inputs">
-          <SideNavLink href="/Button/ButtonPage" as="/button">
-            Button
-          </SideNavLink>
-          <SideNavLink href="/Checkbox/CheckboxPage" as="/checkbox">
-            Checkbox
-          </SideNavLink>
-          <SideNavLink href="/Counter/CounterPage" as="/counter">
-            Counter
-          </SideNavLink>
-          <SideNavLink href="/Datepicker/DatepickerPage" as="/datepicker">
-            Datepicker
-          </SideNavLink>
-          <SideNavLink href="/Dropdown/DropdownPage" as="/dropdown">
-            Dropdown
-          </SideNavLink>
-          <SideNavLink href="/Form/FormPage" as="/form">
-            Form
-          </SideNavLink>
-          <SideNavLink href="/Input/InputPage" as="/input">
-            Input
-          </SideNavLink>
-          <SideNavLink href="/Link/LinkPage" as="/link">
-            Link
-          </SideNavLink>
-          <SideNavLink href="/PillTabs/PillTabsPage" as="/pill-tabs">
-            Pill Tabs
-          </SideNavLink>
-          <SideNavLink href="/Radio/RadioPage" as="/radio">
-            Radio
-          </SideNavLink>
-          <SideNavLink href="/Select/SelectPage" as="/select">
-            Select
-          </SideNavLink>
-          <SideNavLink href="/MultiSelect/MultiSelectPage" as="/multi-select">
-            MultiSelect
-          </SideNavLink>
-          <SideNavLink href="/Switch/SwitchPage" as="/switch">
-            Switch
-          </SideNavLink>
-          <SideNavLink href="/Textarea/TextareaPage" as="/textarea">
-            Textarea
-          </SideNavLink>
-          <SideNavLink href="/Timepicker/TimepickerPage" as="/timepicker">
-            Timepicker
-          </SideNavLink>
+          <SideNavLink href="/button">Button</SideNavLink>
+          <SideNavLink href="/button-group">ButtonGroup</SideNavLink>
+          <SideNavLink href="/checkbox">Checkbox</SideNavLink>
+          <SideNavLink href="/counter">Counter</SideNavLink>
+          <SideNavLink href="/datepicker">Datepicker</SideNavLink>
+          <SideNavLink href="/dropdown">Dropdown</SideNavLink>
+          <SideNavLink href="/form">Form</SideNavLink>
+          <SideNavLink href="/input">Input</SideNavLink>
+          <SideNavLink href="/link">Link</SideNavLink>
+          <SideNavLink href="/multi-select">MultiSelect</SideNavLink>
+          <SideNavLink href="/pill-tabs">PillTabs</SideNavLink>
+          <SideNavLink href="/radio">Radio</SideNavLink>
+          <SideNavLink href="/search">Search</SideNavLink>
+          <SideNavLink href="/select">Select</SideNavLink>
+          <SideNavLink href="/switch">Switch</SideNavLink>
+          <SideNavLink href="/textarea">Textarea</SideNavLink>
+          <SideNavLink href="/timepicker">Timepicker</SideNavLink>
         </SideNavGroup>
 
         <SideNavGroup title="Status &amp; Feedback">
-          <SideNavLink href="/Alert/AlertPage" as="/alert">
-            Alert
-          </SideNavLink>
-          <SideNavLink href="/Badge/BadgePage" as="/badge">
-            Badge
-          </SideNavLink>
-          <SideNavLink href="/InlineMessage/InlineMessagePage" as="/inline-message">
-            Inline Message
-          </SideNavLink>
-          <SideNavLink href="/Message/MessagePage" as="/message">
-            Message
-          </SideNavLink>
-          <SideNavLink href="/Progress/ProgressBarPage" as="/progress-bar">
-            Progress Bar
-          </SideNavLink>
-          <SideNavLink href="/Progress/ProgressCirclePage" as="/progress-circle">
-            Progress Circle
-          </SideNavLink>
-          <SideNavLink href="/Stepper/StepperPage" as="/stepper">
-            Stepper
-          </SideNavLink>
-          <SideNavLink href="/Tooltip/TooltipPage" as="/tooltip">
-            Tooltip
-          </SideNavLink>
+          <SideNavLink href="/alert">Alert</SideNavLink>
+          <SideNavLink href="/badge">Badge</SideNavLink>
+          <SideNavLink href="/inline-message">InlineMessage</SideNavLink>
+          <SideNavLink href="/message">Message</SideNavLink>
+          <SideNavLink href="/progress-bar">ProgressBar</SideNavLink>
+          <SideNavLink href="/progress-circle">ProgressCircle</SideNavLink>
+          <SideNavLink href="/stepper">Stepper</SideNavLink>
+          <SideNavLink href="/tooltip">Tooltip</SideNavLink>
         </SideNavGroup>
 
         <SideNavGroup title="Utilities">
-          <SideNavLink href="/Box/BoxPage" as="/box">
-            Box
-          </SideNavLink>
-          <SideNavLink href="/Breakpoints/BreakpointsPage" as="/breakpoints">
-            Breakpoints
-          </SideNavLink>
-          <SideNavLink href="/Display/DisplayPage" as="/display">
-            Display
-          </SideNavLink>
-          <SideNavLink href="/Flex/FlexPage" as="/flex">
-            Flex
-          </SideNavLink>
-          <SideNavLink href="/Grid/GridPage" as="/grid">
-            Grid
-          </SideNavLink>
-          <SideNavLink href="/Margin/MarginPage" as="/margin">
-            Margin
-          </SideNavLink>
-          <SideNavLink href="/Padding/PaddingPage" as="/padding">
-            Padding
-          </SideNavLink>
-          <SideNavLink href="/Popover/PopoverPage" as="/popover">
-            Popover
-          </SideNavLink>
+          <SideNavLink href="/box">Box</SideNavLink>
+          <SideNavLink href="/breakpoints">Breakpoints</SideNavLink>
+          <SideNavLink href="/display">Display</SideNavLink>
+          <SideNavLink href="/flex">Flex</SideNavLink>
+          <SideNavLink href="/grid">Grid</SideNavLink>
+          <SideNavLink href="/margin">Margin</SideNavLink>
+          <SideNavLink href="/padding">Padding</SideNavLink>
+          <SideNavLink href="/popover">Popover</SideNavLink>
         </SideNavGroup>
 
         <SideNavGroup title="Helpful Links">
@@ -183,11 +99,6 @@ export const SideNav: React.FC = () => {
             url="https://github.com/bigcommerce/big-design"
             icon={<GithubLogoIcon title="Github Logo" />}
             title="Github"
-          />
-          <Link
-            url="https://design.bigcommerce.com/components"
-            icon={<BigDesignLogoIcon title="BigDesign Logo" />}
-            title="Design Guidelines"
           />
         </SideNavGroup>
       </SideNavMenu>

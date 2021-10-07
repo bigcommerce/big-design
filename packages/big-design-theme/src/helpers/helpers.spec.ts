@@ -1,4 +1,6 @@
-import { addValues, createRGBA } from './helpers';
+import { themeOptions } from '../options';
+
+import { addValues, createRGBA, emCalc, listReset, remCalc } from './helpers';
 
 describe('addValues', () => {
   test('adds px', () => {
@@ -48,4 +50,54 @@ describe('createRGBA', () => {
     expect(createRGBA('#fff', -1)).toBe(expected);
     expect(createRGBA('#fff', -2)).toBe(expected);
   });
+});
+
+describe('remCal', () => {
+  beforeEach(() => {
+    themeOptions.setOptions({ htmlFontSize: 16 });
+  });
+
+  test('returns correct rem size off of default font size', () => {
+    const result = remCalc(4);
+    const expected = '0.25rem';
+
+    expect(result).toEqual(expected);
+  });
+
+  test('returns correct rem size off of modified default font size', () => {
+    themeOptions.setOptions({ htmlFontSize: 14 });
+
+    const result = remCalc(7);
+    const expected = '0.5rem';
+
+    expect(result).toEqual(expected);
+  });
+});
+
+describe('emCal', () => {
+  beforeEach(() => {
+    themeOptions.setOptions({ htmlFontSize: 16 });
+  });
+
+  test('returns correct em size off of default font size', () => {
+    const result = emCalc(4);
+    const expected = '0.25em';
+
+    expect(result).toEqual(expected);
+  });
+
+  test('returns correct em size off of modified default font size', () => {
+    themeOptions.setOptions({ htmlFontSize: 14 });
+
+    const result = emCalc(7);
+    const expected = '0.5em';
+
+    expect(result).toEqual(expected);
+  });
+});
+
+test('listReset returns reset css', () => {
+  const expected = ['list-style-type:none;margin:0;padding:0;'];
+
+  expect(listReset).toEqual(expected);
 });

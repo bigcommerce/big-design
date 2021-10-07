@@ -2,11 +2,12 @@ import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo } from 'r
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
-import { FormControlDescription, FormControlError, FormControlLabel } from '../Form';
+import { FormControlDescription, FormControlLabel } from '../Form';
+import { useInputErrors } from '../Form/useInputErrors';
 
 import { StyledTextarea, StyledTextareaWrapper } from './styled';
 
-interface Props {
+export interface Props {
   description?: React.ReactChild;
   error?: React.ReactNode | React.ReactNode[];
   label?: React.ReactChild;
@@ -33,6 +34,7 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
 }) => {
   const uniqueTextareaId = useUniqueId('textarea');
   const id = props.id ? props.id : uniqueTextareaId;
+  const { errors } = useInputErrors(id, error);
   const MAX_ROWS = 7;
   const numOfRows = rows && rows > MAX_ROWS ? MAX_ROWS : rows;
 
@@ -74,36 +76,6 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
 
     warning('description must be either a string or a FormControlDescription component.');
   }, [description]);
-
-  const errors = useMemo(() => {
-    const validateError = (err: Props['error']) => {
-      if (!err) {
-        return null;
-      }
-
-      if (typeof err === 'string') {
-        return err;
-      }
-
-      if (isValidElement(err) && err.type === FormControlError) {
-        return err;
-      }
-
-      warning('error must be either a string or a FormControlError component.');
-    };
-
-    if (Array.isArray(error)) {
-      const nextError = error.reduce<Array<React.ReactNode>>((acc, errorItem) => {
-        const nextErrorItem = validateError(errorItem);
-
-        return nextErrorItem ? [...acc, nextErrorItem] : acc;
-      }, []);
-
-      return nextError.length > 0 ? nextError : null;
-    }
-
-    return validateError(error);
-  }, [error]);
 
   return (
     <div>

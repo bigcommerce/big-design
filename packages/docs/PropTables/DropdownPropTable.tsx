@@ -100,18 +100,10 @@ const dropdownItemProps: Prop[] = [
   },
   {
     name: 'icon',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
+    types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
       </>
     ),
   },
@@ -124,11 +116,7 @@ const dropdownItemProps: Prop[] = [
   {
     name: 'tooltip',
     types: 'string',
-    description: (
-      <>
-        Adds tooltip for disabled item. Default placement is set to <Code highlight={false}>right</Code>.
-      </>
-    ),
+    description: <>Adds tooltip for disabled item.</>,
   },
   {
     name: 'type',
@@ -167,25 +155,17 @@ const dropdownLinkProps: Prop[] = [
   },
   {
     name: 'icon',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
+    types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
       </>
     ),
   },
   {
     name: 'tooltip',
-    types: "{ message: string, placement?: 'left' | 'right' }",
-    description: "Adds tooltip for disabled item. Placement is optional, if not passed - 'left' is set.",
+    types: 'string',
+    description: <>Adds tooltip for disabled item.</>,
   },
   {
     name: 'type',
@@ -193,11 +173,7 @@ const dropdownLinkProps: Prop[] = [
     required: true,
     description: (
       <>
-        Wraps the <Code>content</Code> in a{' '}
-        <NextLink href="/Link/LinkPage" as="/link">
-          Link
-        </NextLink>{' '}
-        component.
+        Wraps the <Code>content</Code> in a <NextLink href="/link">Link</NextLink> component.
       </>
     ),
   },
@@ -242,13 +218,13 @@ export const DropdownPropTable: React.FC<PropTableWrapper> = (props) => (
 );
 
 export const DropdownItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="DropdownItem" propList={dropdownItemProps} {...props} />
+  <PropTable title="Dropdown[DropdownItem]" propList={dropdownItemProps} {...props} />
 );
 
 export const DropdownLinkItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="DropdownLinkItem" propList={dropdownLinkProps} {...props} />
+  <PropTable title="Dropdown[DropdownLinkItem]" propList={dropdownLinkProps} {...props} />
 );
 
 export const DropdownItemGroupPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="DropdownItemGroup" propList={dropdownItemGroupProps} {...props} />
+  <PropTable title="Dropdown[DropdownItemGroup]" propList={dropdownItemGroupProps} {...props} />
 );

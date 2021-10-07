@@ -1,75 +1,109 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { createRef, useEffect, useMemo } from 'react';
 
 import { typedMemo } from '../../utils';
 
 import { UpdateItemsProvider } from './context';
-import { useStore } from './hooks';
+import { createStore, Provider, useKeyEvents, useStore } from './hooks';
+import { WorksheetModal } from './Modal/Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, Table } from './styled';
-import { WorksheetItem, Worksheet as WorksheetProps } from './types';
+import { InternalWorksheetColumn, WorksheetItem, WorksheetModalColumn, WorksheetProps } from './types';
 import { editedRows, invalidRows } from './utils';
 
-const InternalWorksheet = <T extends WorksheetItem>({
-  columns,
-  items,
-  onChange,
-  onErrors,
-}: WorksheetProps<T>): React.ReactElement<WorksheetProps<T>> => {
-  const rows = useStore(useMemo(() => (state) => state.rows, []));
-  const setRows = useStore((state) => state.setRows);
+const InternalWorksheet = typedMemo(
+  <T extends WorksheetItem>({
+    columns,
+    expandableRows,
+    items,
+    onChange,
+    onErrors,
+  }: WorksheetProps<T>): React.ReactElement<WorksheetProps<T>> => {
+    const tableRef = createRef<HTMLTableElement>();
 
-  const editedCells = useStore(useMemo(() => (state) => state.editedCells, []));
-  const invalidCells = useStore(useMemo(() => (state) => state.invalidCells, []));
+    const setRows = useStore((state) => state.setRows);
+    const setColumns = useStore((state) => state.setColumns);
+    const setExpandableRows = useStore((state) => state.setExpandableRows);
+    const setTableRef = useStore((state) => state.setTableRef);
 
-  // Create a new reference since state mutates rows to prevent unecessary rerendering
-  useEffect(() => setRows([...items]), [items, setRows]);
+    const rows = useStore(useMemo(() => (state) => state.rows, []));
+    const editedCells = useStore(useMemo(() => (state) => state.editedCells, []));
+    const invalidCells = useStore(useMemo(() => (state) => state.invalidCells, []));
 
-  useEffect(() => {
-    if (editedCells.length) {
-      onChange(editedRows(editedCells, rows));
-    }
-  }, [editedCells, onChange, rows]);
+    const { handleKeyDown } = useKeyEvents();
 
-  useEffect(() => {
-    if (typeof onErrors === 'function' && invalidCells.length) {
-      onErrors(invalidRows(invalidCells, rows));
-    }
-  }, [invalidCells, onErrors, rows]);
+    // Add a column for the toggle components
+    const expandedColumns: InternalWorksheetColumn<T>[] = useMemo(() => {
+      return expandableRows ? [{ hash: '', header: '', type: 'toggle' }, ...columns] : columns;
+    }, [columns, expandableRows]);
 
-  const renderedHeaders = useMemo(
-    () => (
-      <thead>
-        <tr>
-          <Status />
-          {columns.map((column, index) => (
-            <Header key={index}>{column.header}</Header>
+    // Create a new reference since state mutates rows to prevent unecessary rerendering
+    useEffect(() => setRows([...items]), [items, setRows]);
+    useEffect(() => setColumns(expandedColumns), [expandedColumns, setColumns]);
+    useEffect(() => setExpandableRows(expandableRows || {}), [expandableRows, setExpandableRows]);
+    useEffect(() => setTableRef(tableRef.current), [setTableRef, tableRef]);
+
+    useEffect(() => {
+      if (editedCells.length) {
+        onChange(editedRows(editedCells, rows));
+      }
+    }, [editedCells, onChange, rows]);
+
+    useEffect(() => {
+      if (typeof onErrors === 'function' && invalidCells.length) {
+        onErrors(invalidRows(invalidCells, rows));
+      }
+    }, [invalidCells, onErrors, rows]);
+
+    const renderedHeaders = useMemo(
+      () => (
+        <thead>
+          <tr>
+            <Status />
+            {expandedColumns.map((column, index) => (
+              <Header key={index} columnType={column.type}>
+                {column.header}
+              </Header>
+            ))}
+          </tr>
+        </thead>
+      ),
+      [expandedColumns],
+    );
+
+    const renderedRows = useMemo(
+      () => (
+        <tbody>
+          {rows.map((_row, rowIndex) => (
+            <Row columns={expandedColumns} key={rowIndex} rowIndex={rowIndex} />
           ))}
-        </tr>
-      </thead>
-    ),
-    [columns],
-  );
+        </tbody>
+      ),
+      [expandedColumns, rows],
+    );
 
-  const renderedRows = useMemo(
-    () => (
-      <tbody>
-        {rows.map((_row, rowIndex) => (
-          <Row key={rowIndex} columns={columns} rowIndex={rowIndex} />
-        ))}
-      </tbody>
-    ),
-    [columns, rows],
-  );
+    const renderedModals = useMemo(
+      () =>
+        expandedColumns
+          .filter((column): column is WorksheetModalColumn<T> => column.type === 'modal')
+          .map((column, index) => <WorksheetModal column={column} key={index} />),
+      [expandedColumns],
+    );
 
-  return (
-    <UpdateItemsProvider items={rows}>
-      <Table>
-        {renderedHeaders}
-        {renderedRows}
-      </Table>
-    </UpdateItemsProvider>
-  );
-};
+    return (
+      <UpdateItemsProvider items={rows}>
+        <Table onKeyDown={handleKeyDown} ref={tableRef} tabIndex={0}>
+          {renderedHeaders}
+          {renderedRows}
+        </Table>
+        {renderedModals}
+      </UpdateItemsProvider>
+    );
+  },
+);
 
-export const Worksheet = typedMemo(InternalWorksheet);
+export const Worksheet = typedMemo(<T extends WorksheetItem>(props: WorksheetProps<T>) => (
+  <Provider createStore={createStore}>
+    <InternalWorksheet {...props} />
+  </Provider>
+));

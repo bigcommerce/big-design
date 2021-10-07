@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.0...@bigcommerce/big-design-icons@0.17.1) (2021-09-03)
+
+
+### Features
+
+* **icons:** Add Home/KeyboardDoubleArrowLeftIcon/SwapHoriz icons ([#583](https://github.com/bigcommerce/big-design/issues/583)) ([519655f](https://github.com/bigcommerce/big-design/commit/519655fe8ee3d619d1b85937e86635332fb77301))
+
+
+
+
+
+# [0.17.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.0-alpha.2...@bigcommerce/big-design-icons@0.17.0) (2021-08-04)
+
+
+### Features
+
+* **icons:** add content copy icon ([#572](https://github.com/bigcommerce/big-design/issues/572)) ([4ca0b76](https://github.com/bigcommerce/big-design/commit/4ca0b76d12cc5a9d2e1dd0b90d90bc2cfb6a1294))
+
+
+
+
+
+# [0.17.0-alpha.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.0-alpha.1...@bigcommerce/big-design-icons@0.17.0-alpha.2) (2021-08-02)
+
+
+### chore
+
+* **deps:** upgrade to styled-components v5 ([#566](https://github.com/bigcommerce/big-design/issues/566)) ([dd83711](https://github.com/bigcommerce/big-design/commit/dd83711797eb8aaa7a8406eebf1383116bff2420))
+
+
+### BREAKING CHANGES
+
+* **deps:** You will need to update to styled-components v5. In addition,
+you will need to import the base fonts in your <head> element.
+See the "Getting Started" page or README.md for an example.
+
+
+
+
+
+# [0.17.0-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.0-alpha.0...@bigcommerce/big-design-icons@0.17.0-alpha.1) (2021-07-06)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
+# [0.17.0-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.16.1...@bigcommerce/big-design-icons@0.17.0-alpha.0) (2021-06-10)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
 ## [0.16.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.16.0...@bigcommerce/big-design-icons@0.16.1) (2021-03-29)
 
 **Note:** Version bump only for package @bigcommerce/big-design-icons

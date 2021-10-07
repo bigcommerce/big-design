@@ -9,6 +9,12 @@ const selectProps: Prop[] = [
     description: 'Action option displayed at the end of the list.',
   },
   {
+    name: 'autoComplete',
+    defaultValue: 'off',
+    types: 'string',
+    description: 'Set the autoComplete property for the input.',
+  },
+  {
     name: 'description',
     types: 'string | FormControlDescription',
     description: 'Append a description to the select field.',
@@ -66,6 +72,16 @@ const selectProps: Prop[] = [
         Sets a <Code>max-height</Code> to the dropdown.
       </>
     ),
+  },
+  {
+    name: 'onClose',
+    types: '() => void',
+    description: 'Function that will be called when the Select is closed.',
+  },
+  {
+    name: 'onOpen',
+    types: '() => void',
+    description: 'Function that will be called when the Select is opened.',
   },
   {
     name: 'onOptionChange',
@@ -159,19 +175,17 @@ const selectOptionProps: Prop[] = [
     ),
   },
   {
+    name: 'tooltip',
+    types: 'string',
+    description: <>Adds tooltip for disabled item.</>,
+  },
+  {
     name: 'icon',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
+    types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the left of the text. Only available for single select.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text. Only available
+        for single select.
       </>
     ),
   },
@@ -228,19 +242,16 @@ const selectActionProps: Prop[] = [
     ),
   },
   {
+    name: 'tooltip',
+    types: 'string',
+    description: <>Adds tooltip for disabled item.</>,
+  },
+  {
     name: 'icon',
-    types: (
-      <NextLink href="/Icons/IconsPage" as="/icons">
-        Icon
-      </NextLink>
-    ),
+    types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an{' '}
-        <NextLink href="/Icons/IconsPage" as="/icons">
-          Icon
-        </NextLink>{' '}
-        component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
       </>
     ),
   },
@@ -280,13 +291,13 @@ export const SelectPropTable: React.FC<PropTableWrapper> = (props) => (
 );
 
 export const SelectOptionPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="SelectOption" propList={selectOptionProps} {...props} />
+  <PropTable title="Select[SelectOption]" propList={selectOptionProps} {...props} />
 );
 
 export const SelectActionPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="SelectAction" propList={selectActionProps} {...props} />
+  <PropTable title="Select[SelectAction]" propList={selectActionProps} {...props} />
 );
 
 export const SelectGroupPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="SelectGroup" propList={selectGroupProps} {...props} />
+  <PropTable title="Select[SelectGroup]" propList={selectGroupProps} {...props} />
 );

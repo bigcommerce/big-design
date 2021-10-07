@@ -50,5 +50,5 @@ const textareaProps: Prop[] = [
 ];
 
 export const TextareaPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Textarea" propList={textareaProps} {...props} />
+  <PropTable title="Textarea" propList={textareaProps} nativeElement={['textarea', 'all']} {...props} />
 );

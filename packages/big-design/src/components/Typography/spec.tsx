@@ -181,9 +181,7 @@ test('Headings can change their tag', () => {
 });
 
 test('Headings can not change their tag to non-heading tags', () => {
-  // Change this to @ts-expect-error when we upgrade to TS 3.9
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
+  // @ts-expect-error ignoring since as="p" is not a valid prop
   const { container } = render(<H2 as="p">Test</H2>);
 
   expect(container.querySelector('p')).not.toBeInTheDocument();

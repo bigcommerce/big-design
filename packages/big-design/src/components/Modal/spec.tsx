@@ -224,8 +224,7 @@ test('renders header', () => {
 });
 
 test('header ignores components', () => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore bypassing type to test wrong use case
+  // @ts-expect-error ignoring since header={Component} is not a valid prop
   const { container } = render(<Modal isOpen={true} header={<Text>Header Title</Text>} />);
 
   expect(container.querySelector('h2')).toBe(null);

@@ -9,6 +9,12 @@ const selectProps: Prop[] = [
     description: 'Action option displayed at the end of the list.',
   },
   {
+    name: 'autoComplete',
+    defaultValue: 'off',
+    types: 'string',
+    description: 'Set the autoComplete property for the input.',
+  },
+  {
     name: 'description',
     types: 'string | FormControlDescription',
     description: 'Append a description to the select field.',
@@ -34,7 +40,7 @@ const selectProps: Prop[] = [
     defaultValue: 'true',
     description: (
       <>
-        Allows you to filter the <Code>SelectOptions</Code> in the <Code>Select</Code>.
+        Allows you to filter the <Code>SelectOptions</Code> in the <Code>MultiSelect</Code>.
       </>
     ),
   },
@@ -43,7 +49,7 @@ const selectProps: Prop[] = [
     types: 'React.Ref<HTMLInputElement> | React.RefObject<HTMLInputElement>',
     description: (
       <>
-        The provided ref will be used for the underlying input element used in the <Code>Select</Code>.
+        The provided ref will be used for the underlying input element used in the <Code>MultiSelect</Code>.
       </>
     ),
   },
@@ -66,6 +72,16 @@ const selectProps: Prop[] = [
         Sets a <Code>max-height</Code> to the dropdown.
       </>
     ),
+  },
+  {
+    name: 'onClose',
+    types: '() => void',
+    description: 'Function that will be called when the MultiSelect is closed.',
+  },
+  {
+    name: 'onOpen',
+    types: '() => void',
+    description: 'Function that will be called when the MultiSelect is opened.',
   },
   {
     name: 'onOptionsChange',

@@ -1,8 +1,10 @@
-import { ArrowDownwardIcon, ArrowUpwardIcon } from '@bigcommerce/big-design-icons';
+import { ArrowDownwardIcon, ArrowUpwardIcon, BaselineHelpIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, RefObject, TableHTMLAttributes } from 'react';
 
-import { useComponentSize } from '../../../hooks';
+import { useComponentSize, useUniqueId } from '../../../hooks';
 import { typedMemo } from '../../../utils';
+import { Box } from '../../Box';
+import { Tooltip } from '../../Tooltip';
 import { TableColumnDisplayProps } from '../mixins';
 import { TableColumn, TableItem } from '../types';
 
@@ -38,8 +40,9 @@ const InternalHeaderCell = <T extends TableItem>({
   stickyHeader,
   actionsRef,
 }: HeaderCellProps<T>) => {
-  const { align = 'left', isSortable, width } = column;
+  const { align = 'left', isSortable, width, tooltip } = column;
   const actionsSize = useComponentSize(actionsRef);
+  const tooltipId = useUniqueId('table-header-tooltip');
 
   const renderSortIcon = () => {
     if (!isSorted) {
@@ -51,6 +54,30 @@ const InternalHeaderCell = <T extends TableItem>({
     ) : (
       <ArrowDownwardIcon size="medium" data-testid="desc-icon" title="Descending order" />
     );
+  };
+
+  const renderTooltip = () => {
+    if (typeof tooltip === 'string' && tooltip.length > 0) {
+      return (
+        <Tooltip
+          id={tooltipId}
+          trigger={
+            <Box as="span" marginLeft="xxSmall">
+              <BaselineHelpIcon
+                aria-describedby={tooltipId}
+                size="medium"
+                title="Hover or focus for additional context."
+              />
+            </Box>
+          }
+          placement="right"
+        >
+          {tooltip}
+        </Tooltip>
+      );
+    }
+
+    return null;
   };
 
   const handleClick = (e: React.MouseEvent) => {
@@ -73,6 +100,7 @@ const InternalHeaderCell = <T extends TableItem>({
       <StyledFlex alignItems="center" flexDirection="row" hide={hide} align={align}>
         {children}
         {!hide && renderSortIcon()}
+        {renderTooltip()}
       </StyledFlex>
       {hide && renderSortIcon()}
     </StyledTableHeaderCell>

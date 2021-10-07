@@ -2,18 +2,22 @@ import { AlertProps } from '../../components/Alert';
 
 import { Subscriber, TypeMap } from './types';
 
-interface PrivateAlert extends AlertProps {
-  onClose(): void;
-}
-
 interface AddAlertConfig extends AlertProps {
   autoDismiss?: boolean;
+}
+
+interface PrivateAlert extends AddAlertConfig {
+  onClose(): void;
 }
 
 class AlertsManager {
   private alerts: PrivateAlert[] = [];
   private counter = 0;
   private subscribers: Subscriber[] = [];
+  private timeout: {
+    id?: number;
+    key?: PrivateAlert['key'];
+  } = {};
   private readonly typeMap: TypeMap = {
     error: 0,
     warning: 1,
@@ -40,11 +44,7 @@ class AlertsManager {
 
     this.alerts = this.alerts.concat([newAlert]).sort(this.sortAlerts);
 
-    this.notifySubscribers();
-
-    if (alert.autoDismiss) {
-      setTimeout(onClose, 5000);
-    }
+    this.afterEvent();
 
     return key;
   };
@@ -53,7 +53,7 @@ class AlertsManager {
     const removed = this.alerts;
 
     this.alerts = [];
-    this.notifySubscribers();
+    this.afterEvent();
 
     return removed;
   };
@@ -71,7 +71,7 @@ class AlertsManager {
       return [...acc, alert];
     }, [] as PrivateAlert[]);
 
-    this.notifySubscribers();
+    this.afterEvent();
 
     return removed;
   };
@@ -84,8 +84,32 @@ class AlertsManager {
     };
   };
 
+  private afterEvent() {
+    this.manageTimeout();
+    this.notifySubscribers();
+  }
+
+  private manageTimeout() {
+    const alert = this.alerts[0] ?? null;
+
+    if (this.timeout?.key === alert?.key) {
+      return;
+    }
+
+    if (this.timeout) {
+      window.clearTimeout(this.timeout.id);
+
+      this.timeout = {};
+    }
+
+    if (alert?.autoDismiss) {
+      this.timeout.key = alert.key;
+      this.timeout.id = window.setTimeout(alert.onClose, 5000);
+    }
+  }
+
   private notifySubscribers() {
-    this.subscribers.forEach((subscriber) => subscriber(this.alerts[0] || null));
+    this.subscribers.forEach((subscriber) => subscriber(this.alerts[0] ?? null));
   }
 
   private getUniqueId() {

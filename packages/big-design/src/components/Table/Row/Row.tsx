@@ -63,9 +63,8 @@ const InternalRow = <T extends TableItem>({
           width={width}
           withPadding={withPadding}
         >
-          {/* https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
           {/*
-        // @ts-ignore */}
+          // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
           <CellContent {...item} />
         </DataCell>
       ))}

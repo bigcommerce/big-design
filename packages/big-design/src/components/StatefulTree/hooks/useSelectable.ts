@@ -59,8 +59,8 @@ export const useSelectable = <T extends unknown>({
   useEffect(() => {
     if (type === 'radio') {
       if (selectedNodes.length >= 1) {
-        setSelectedNodes((prevSelected) => prevSelected.splice(0, 1));
-        setSelectedValues((prevValues) => prevValues.splice(0, 1));
+        setSelectedNodes((prevSelected) => prevSelected.slice(0, 1));
+        setSelectedValues((prevValues) => prevValues.slice(0, 1));
       } else {
         if (nodes.length) {
           const firstSelectedNode = depthFirstSearch(nodes, (node) => node.value !== undefined, true);

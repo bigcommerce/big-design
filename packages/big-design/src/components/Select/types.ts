@@ -5,6 +5,7 @@ import { InputProps } from '../Input';
 
 interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children' | 'value'> {
   action?: SelectAction;
+  autoComplete?: string;
   autoWidth?: boolean;
   description?: React.ReactChild;
   disabled?: boolean;
@@ -18,6 +19,8 @@ interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'child
   placement?: Placement;
   positionFixed?: boolean;
   required?: boolean;
+  onClose?(): void;
+  onOpen?(): void;
 }
 
 export interface SelectProps<T> extends BaseSelect {
@@ -31,6 +34,7 @@ interface BaseItem extends Omit<LiHTMLAttributes<HTMLLIElement>, 'value'> {
   description?: string;
   disabled?: boolean;
   icon?: React.ReactElement;
+  tooltip?: string;
 }
 
 export interface SelectOption<T> extends BaseItem {

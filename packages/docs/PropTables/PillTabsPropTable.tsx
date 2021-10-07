@@ -27,7 +27,7 @@ const pillTabsPropTable: Prop[] = [
 ];
 
 export const PillTabsPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Pill Tabs" propList={pillTabsPropTable} {...props} />
+  <PropTable title="PillTabs" propList={pillTabsPropTable} {...props} />
 );
 
 const tabItemProps: Prop[] = [

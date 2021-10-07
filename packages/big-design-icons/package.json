@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design-icons",
-  "version": "0.16.1",
+  "version": "0.17.1",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
@@ -20,10 +20,8 @@
     "build:icons": "node scripts/build.js",
     "build:flags": "node scripts/build-flags.js",
     "download": "node scripts/downloader.js",
-    "ci": "yarn run lint && yarn run build",
-    "lint": "yarn run lint:tsc",
-    "lint:tsc": "tsc --noEmit",
-    "prepublishOnly": "rimraf dist && yarn run ci"
+    "prepublishOnly": "rimraf dist && yarn run typeCheck && yarn run build",
+    "typeCheck": "tsc --noEmit"
   },
   "files": [
     "dist",
@@ -34,28 +32,23 @@
     "access": "public"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.1",
-    "@bigcommerce/big-design-theme": "^0.12.1",
+    "@babel/runtime": "^7.15.4",
+    "@bigcommerce/big-design-theme": "^0.13.1",
     "react-uid": "^2.3.1"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0",
-    "styled-components": "^4.3.0"
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-    "@babel/plugin-proposal-optional-chaining": "^7.12.1",
-    "@babel/plugin-transform-object-assign": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/cli": "^7.15.4",
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.12.1",
-    "@babel/preset-typescript": "^7.12.1",
-    "@bigcommerce/configs": "^0.14.1",
+    "@babel/preset-typescript": "^7.15.0",
+    "@bigcommerce/configs": "^0.15.1",
     "@jorgemoya/flag-icon-css": "3.5.0",
     "@svgr/core": "^5.0.1",
     "@svgr/plugin-jsx": "^5.0.1",
@@ -63,21 +56,22 @@
     "@svgr/plugin-svgo": "^5.0.1",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
-    "@types/styled-components": "^4.1.12",
-    "babel-plugin-styled-components": "^1.10.6",
-    "camelcase": "^5.3.1",
+    "@types/styled-components": "^5.1.11",
+    "babel-plugin-styled-components": "^1.13.2",
+    "camelcase": "^6.2.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "glob-promise": "^3.4.0",
     "inquirer": "^7.0.4",
     "inquirer-autocomplete-prompt": "^1.3.0",
     "node-fetch": "^2.6.0",
-    "prettier": "^2.0.5",
+    "prettier": "^2.4.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
-    "styled-components": "^4.3.0",
-    "typescript": "~3.8.3",
-    "typescript-styled-plugin": "^0.15.0"
+    "styled-components": "^5.3.0",
+    "tiny-async-pool": "^1.2.0",
+    "typescript": "^4.4.3",
+    "typescript-styled-plugin": "^0.18.1"
   }
 }

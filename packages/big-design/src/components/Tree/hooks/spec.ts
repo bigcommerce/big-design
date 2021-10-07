@@ -84,9 +84,13 @@ describe('useTreeKeyEvents', () => {
     const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
     result.current(
-      ({ currentTarget: 1, target: 1, key: ' ', preventDefault, stopPropagation } as unknown) as React.KeyboardEvent<
-        HTMLLIElement
-      >,
+      {
+        currentTarget: 1,
+        target: 1,
+        key: ' ',
+        preventDefault,
+        stopPropagation,
+      } as unknown as React.KeyboardEvent<HTMLLIElement>,
       { id: '0', isExpanded: false, isSelectable: true, hasChildren: false, value: 0 },
     );
 
@@ -100,13 +104,13 @@ describe('useTreeKeyEvents', () => {
       const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
       result.current(
-        ({
+        {
           currentTarget: 1,
           target: 1,
           key: 'Enter',
           preventDefault,
           stopPropagation,
-        } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+        } as unknown as React.KeyboardEvent<HTMLLIElement>,
         { id: '0', isExpanded: false, isSelectable: true, hasChildren: true, value: 0 },
       );
 
@@ -119,13 +123,13 @@ describe('useTreeKeyEvents', () => {
       const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
       result.current(
-        ({
+        {
           currentTarget: 1,
           target: 1,
           key: 'Enter',
           preventDefault,
           stopPropagation,
-        } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+        } as unknown as React.KeyboardEvent<HTMLLIElement>,
         { id: '0', isExpanded: false, isSelectable: true, hasChildren: false, value: 0 },
       );
 
@@ -140,13 +144,13 @@ describe('useTreeKeyEvents', () => {
     const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
     result.current(
-      ({
+      {
         currentTarget: 1,
         target: 1,
         key: 'ArrowDown',
         preventDefault,
         stopPropagation,
-      } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+      } as unknown as React.KeyboardEvent<HTMLLIElement>,
       { id: '0', isExpanded: false, isSelectable: true, hasChildren: false, value: 0 },
     );
 
@@ -160,13 +164,13 @@ describe('useTreeKeyEvents', () => {
     const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
     result.current(
-      ({
+      {
         currentTarget: 1,
         target: 1,
         key: 'ArrowDown',
         preventDefault,
         stopPropagation,
-      } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+      } as unknown as React.KeyboardEvent<HTMLLIElement>,
       { id: '1', isExpanded: false, isSelectable: true, hasChildren: false, value: 1 },
     );
 
@@ -180,13 +184,13 @@ describe('useTreeKeyEvents', () => {
     const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
     result.current(
-      ({
+      {
         currentTarget: 1,
         target: 1,
         key: 'ArrowUp',
         preventDefault,
         stopPropagation,
-      } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+      } as unknown as React.KeyboardEvent<HTMLLIElement>,
       { id: '1', isExpanded: false, isSelectable: true, hasChildren: false, value: 1 },
     );
 
@@ -200,13 +204,13 @@ describe('useTreeKeyEvents', () => {
     const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
     result.current(
-      ({
+      {
         currentTarget: 1,
         target: 1,
         key: 'ArrowUp',
         preventDefault,
         stopPropagation,
-      } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+      } as unknown as React.KeyboardEvent<HTMLLIElement>,
       { id: '0', isExpanded: false, isSelectable: true, hasChildren: false, value: 0 },
     );
 
@@ -221,13 +225,13 @@ describe('useTreeKeyEvents', () => {
       const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
       result.current(
-        ({
+        {
           currentTarget: 1,
           target: 1,
           key: 'ArrowRight',
           preventDefault,
           stopPropagation,
-        } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+        } as unknown as React.KeyboardEvent<HTMLLIElement>,
         { id: '0', isExpanded: true, isSelectable: true, hasChildren: true, value: 0 },
       );
 
@@ -240,13 +244,13 @@ describe('useTreeKeyEvents', () => {
       const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
       result.current(
-        ({
+        {
           currentTarget: 1,
           target: 1,
           key: 'ArrowRight',
           preventDefault,
           stopPropagation,
-        } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+        } as unknown as React.KeyboardEvent<HTMLLIElement>,
         { id: '0', isExpanded: false, isSelectable: true, hasChildren: true, value: 0 },
       );
 
@@ -263,13 +267,13 @@ describe('useTreeKeyEvents', () => {
       const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
       result.current(
-        ({
+        {
           currentTarget: 1,
           target: 1,
           key: 'ArrowLeft',
           preventDefault,
           stopPropagation,
-        } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+        } as unknown as React.KeyboardEvent<HTMLLIElement>,
         { id: '0', isExpanded: true, isSelectable: true, hasChildren: true, value: 0 },
       );
 
@@ -289,13 +293,13 @@ describe('useTreeKeyEvents', () => {
       const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
       result.current(
-        ({
+        {
           currentTarget: 1,
           target: 1,
           key: 'ArrowLeft',
           preventDefault,
           stopPropagation,
-        } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+        } as unknown as React.KeyboardEvent<HTMLLIElement>,
         { id: '1', isExpanded: false, isSelectable: true, hasChildren: true, value: 1 },
       );
 
@@ -310,13 +314,13 @@ describe('useTreeKeyEvents', () => {
     const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
     result.current(
-      ({
+      {
         currentTarget: 1,
         target: 1,
         key: 'Home',
         preventDefault,
         stopPropagation,
-      } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+      } as unknown as React.KeyboardEvent<HTMLLIElement>,
       { id: '1', isExpanded: false, isSelectable: true, hasChildren: false, value: 1 },
     );
 
@@ -330,13 +334,13 @@ describe('useTreeKeyEvents', () => {
     const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
 
     result.current(
-      ({
+      {
         currentTarget: 1,
         target: 1,
         key: 'End',
         preventDefault,
         stopPropagation,
-      } as unknown) as React.KeyboardEvent<HTMLLIElement>,
+      } as unknown as React.KeyboardEvent<HTMLLIElement>,
       { id: '0', isExpanded: false, isSelectable: true, hasChildren: false, value: 0 },
     );
 
