@@ -18,14 +18,12 @@
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/cjs",
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc -p tsconfig.declarations.json --emitDeclarationOnly",
-    "ci": "yarn run lint && yarn run test --maxWorkers=2 --coverage && yarn run build",
-    "lint": "yarn run lint:tsc",
-    "lint:tsc": "tsc --noEmit",
     "test": "BABEL_ENV=test jest",
     "test:watch": "yarn run test --watch",
-    "prepublishOnly": "rimraf dist && yarn run ci",
+    "prepublishOnly": "rimraf dist && yarn run typeCheck && yarn run test --maxWorkers=2 && yarn run build",
     "prepack": "big-design-prepack",
-    "postpack": "big-design-postpack"
+    "postpack": "big-design-postpack",
+    "typeCheck": "tsc --noEmit"
   },
   "publishConfig": {
     "access": "public",

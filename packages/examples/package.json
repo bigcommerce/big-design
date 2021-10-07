@@ -3,8 +3,9 @@
   "private": true,
   "version": "0.17.2",
   "scripts": {
+    "build": "vite build",
     "start": "vite",
-    "ci": "tsc && vite build"
+    "typeCheck": "tsc --noEmit"
   },
   "dependencies": {
     "@bigcommerce/big-design": "^0.30.2",
