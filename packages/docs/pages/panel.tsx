@@ -21,8 +21,6 @@ const PanelPage = () => {
       </Panel>
 
       <Panel header="Implementation" headerId="implementation">
-        <Text>The panel component is used to contain content in a structured format.</Text>
-
         <CodePreview>
           {/* jsx-to-string:start */}
           <Panel
