@@ -125,7 +125,7 @@ const TypesData: React.FC<TypesDataProps> = (props): any => {
   if (Array.isArray(types)) {
     return types.map((type, index) => {
       return (
-        <React.Fragment key={type}>
+        <React.Fragment key={type.key ?? index}>
           {type.type === Link ? <Code highlight={false}>{type}</Code> : <Code>{type}</Code>}
           {index < types.length - 1 ? ' | ' : null}
         </React.Fragment>

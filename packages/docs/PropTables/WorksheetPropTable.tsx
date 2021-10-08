@@ -5,11 +5,36 @@ import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components
 const worksheetProps: Prop[] = [
   {
     name: 'columns',
-    types: ['TextColumn', 'NumberColumn', 'CheckboxColumn', 'SelectableColumn', 'ModalColumn'],
+    types: [
+      <NextLink key="text" href={{ hash: 'worksheet-text-column-prop-table', query: { props: 'text-column' } }}>
+        TextColumn
+      </NextLink>,
+      <NextLink key="number" href={{ hash: 'worksheet-number-column-prop-table', query: { props: 'number-column' } }}>
+        NumberColumn
+      </NextLink>,
+      <NextLink
+        key="checkbox"
+        href={{ hash: 'worksheet-checkbox-column-prop-table', query: { props: 'checkbox-column' } }}
+      >
+        CheckboxColumn
+      </NextLink>,
+      <NextLink
+        key="selectable"
+        href={{ hash: 'worksheet-selectable-column-prop-table', query: { props: 'selectable-column' } }}
+      >
+        SelectableColumn
+      </NextLink>,
+      <NextLink key="modal" href={{ hash: 'worksheet-modal-column-prop-table', query: { props: 'modal-column' } }}>
+        ModalColumn
+      </NextLink>,
+    ],
     description: (
       <>
-        Columns will be of type <NextLink href="#worksheet-text-column-prop-table">TextColumn</NextLink> by default. See{' '}
-        <NextLink href="#worksheet-text-column-prop-table">below</NextLink> for usage.
+        Columns will be of type{' '}
+        <NextLink href={{ hash: 'worksheet-text-column-prop-table', query: { props: 'text-column' } }}>
+          TextColumn
+        </NextLink>{' '}
+        by default.
       </>
     ),
     required: true,
@@ -36,7 +61,9 @@ const worksheetProps: Prop[] = [
     types: '(items: WorksheetError[]) => void',
     description: (
       <>
-        Returns an array of <NextLink href="#worksheet-error-prop-table">Error</NextLink> when an error is present.
+        Returns an array of{' '}
+        <NextLink href={{ hash: 'worksheet-error-prop-table', query: { props: 'error' } }}>Error</NextLink> when an
+        error is present.
       </>
     ),
   },
@@ -175,10 +202,18 @@ const worksheetSelectableColumnProps: Prop[] = [
   },
   {
     name: 'config',
-    types: <NextLink href="#worksheet-selectable-config-prop-table">SelectableConfig</NextLink>,
+    types: (
+      <NextLink href={{ hash: 'worksheet-selectable-config-prop-table', query: { props: 'selectable-config' } }}>
+        SelectableConfig
+      </NextLink>
+    ),
     description: (
       <>
-        See <NextLink href="#worksheet-selectable-config-prop-table">below</NextLink> for usage.
+        See{' '}
+        <NextLink href={{ hash: 'worksheet-selectable-config-prop-table', query: { props: 'selectable-config' } }}>
+          SelectableConfig
+        </NextLink>{' '}
+        for usage.
       </>
     ),
   },
@@ -221,10 +256,18 @@ const worksheetModalColumnProps: Prop[] = [
   },
   {
     name: 'config',
-    types: <NextLink href="#worksheet-modal-config-prop-table">ModalConfig</NextLink>,
+    types: (
+      <NextLink href={{ hash: 'worksheet-modal-config-prop-table', query: { props: 'modal-config' } }}>
+        ModalConfig
+      </NextLink>
+    ),
     description: (
       <>
-        See <NextLink href="#worksheet-modal-config-prop-table">below</NextLink> for usage.
+        See{' '}
+        <NextLink href={{ hash: 'worksheet-modal-config-prop-table', query: { props: 'modal-config' } }}>
+          ModalConfig
+        </NextLink>{' '}
+        for usage.
       </>
     ),
   },
