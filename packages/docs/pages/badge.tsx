@@ -15,7 +15,7 @@ const BadgePage = () => {
         <List>
           <List.Item>
             Use badges to indicate the connection status of a 3rd party integration (e.g. payment method, a channel
-            connection)
+            connection).
           </List.Item>
           <List.Item>
             You can also use badges to call attention to new features (e.g. “new”) or recommended integrations.
