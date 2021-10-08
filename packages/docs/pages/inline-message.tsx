@@ -36,6 +36,7 @@ const InlineMessagePage = () => {
                     An inline message, mostly used for displaying alerts within Modals. Is a condensed version of the{' '}
                     <Code primary>Message</Code> component.
                   </Text>
+
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <InlineMessage
