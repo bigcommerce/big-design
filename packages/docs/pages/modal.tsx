@@ -26,8 +26,8 @@ const ModalPage = () => {
           id="implementation"
           routes={[
             {
-              id: 'modal-variant',
-              title: 'Modal Variant',
+              id: 'modal',
+              title: 'Modal',
               render: () => (
                 <>
                   <Text>
@@ -71,8 +71,8 @@ const ModalPage = () => {
               ),
             },
             {
-              id: 'dialog-variant',
-              title: 'Dialog variant',
+              id: 'dialog',
+              title: 'Dialog',
               render: () => (
                 <>
                   <Text>
