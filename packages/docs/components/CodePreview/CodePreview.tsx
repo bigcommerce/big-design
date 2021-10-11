@@ -66,7 +66,11 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
 
   const initialCode = getInitialCode(children, language);
   const [code, setCode] = useState(initialCode);
-  const scope = { ...defaultScope, ...props.scope };
+  const [scope, setScope] = useState({ ...defaultScope, ...props.scope });
+
+  useEffect(() => {
+    setScope({ ...defaultScope, ...props.scope });
+  }, [props.scope, setScope]);
 
   useEffect(() => {
     setCode(getInitialCode(children, language));
