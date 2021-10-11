@@ -5,10 +5,11 @@ import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 const tableProps: Prop[] = [
   {
     name: 'columns',
-    types: <NextLink href="#table-columns-prop-table">Columns[]</NextLink>,
+    types: <NextLink href={{ hash: 'table-columns-prop-table', query: { props: 'columns' } }}>Columns[]</NextLink>,
     description: (
       <>
-        See <NextLink href="#table-columns-prop-table">below</NextLink> for usage.
+        See <NextLink href={{ hash: 'table-columns-prop-table', query: { props: 'columns' } }}>Columns</NextLink> for
+        usage.
       </>
     ),
     required: true,
@@ -42,19 +43,24 @@ const tableProps: Prop[] = [
   },
   {
     name: 'selectable',
-    types: <NextLink href="#table-selectable-prop-table">Selectable</NextLink>,
+    types: (
+      <NextLink href={{ hash: 'table-selectable-prop-table', query: { props: 'selectable' } }}>Selectable</NextLink>
+    ),
     description: (
       <>
-        See <NextLink href="#table-selectable-prop-table">below</NextLink> for usage.
+        See{' '}
+        <NextLink href={{ hash: 'table-selectable-prop-table', query: { props: 'selectable' } }}>Selectable</NextLink>{' '}
+        for usage.
       </>
     ),
   },
   {
     name: 'sortable',
-    types: <NextLink href="#table-sortable-prop-table">Sortable</NextLink>,
+    types: <NextLink href={{ hash: 'table-sortable-prop-table', query: { props: 'sortable' } }}>Sortable</NextLink>,
     description: (
       <>
-        See <NextLink href="#table-sortable-prop-table">below</NextLink> for usage.
+        See <NextLink href={{ hash: 'table-sortable-prop-table', query: { props: 'sortable' } }}>Sortable</NextLink> for
+        usage.
       </>
     ),
   },
