@@ -5,4 +5,5 @@ module.exports = {
     '@src/(.*)': '<rootDir>/src/$1',
   },
   coverageDirectory: '<rootDir>/coverage',
+  testEnvironment: 'jsdom',
 };

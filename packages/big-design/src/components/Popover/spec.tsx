@@ -1,7 +1,7 @@
 import { theme } from '@bigcommerce/big-design-theme';
 import React, { useState } from 'react';
 
-import { fireEvent, render, screen, waitForElement } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { Popover } from './Popover';
 
@@ -32,7 +32,9 @@ test('it should not render popover content when not open', () => {
 test('it renders the popover content when open', async () => {
   render(<TestComponent isOpen={true} />);
 
-  await waitForElement(() => screen.getByText(/some content/i));
+  const text = await screen.findByText(/some content/i);
+
+  expect(text).toBeInTheDocument();
 });
 
 test('toggles between open and closed', async () => {
@@ -42,70 +44,61 @@ test('toggles between open and closed', async () => {
 
   fireEvent.click(screen.getByRole('button'));
 
-  await waitForElement(() => screen.getByText(/some content/i));
+  const text = await screen.findByText(/some content/i);
+
+  expect(text).toBeInTheDocument();
 });
 
 test('accepts Box props', async () => {
   render(<TestComponent isOpen={true} padding="medium" />);
 
-  const getPopover = () => screen.getByText(/some content/i);
+  const text = await screen.findByText(/some content/i);
 
-  await waitForElement(getPopover);
-
-  expect(getPopover()).toHaveStyle(`padding: ${theme.spacing.medium}`);
+  expect(text).toHaveStyle(`padding: ${theme.spacing.medium}`);
 });
 
 test('does not accept margin props', async () => {
   // @ts-expect-error ignoring since margin is not a valid prop
   render(<TestComponent isOpen={true} padding="medium" margin="medium" />);
 
-  const getPopover = () => screen.getByText(/some content/i);
+  const text = await screen.findByText(/some content/i);
 
-  await waitForElement(getPopover);
-
-  expect(getPopover()).toHaveStyle(`padding: ${theme.spacing.medium}`);
-  expect(getPopover()).not.toHaveStyle(`margin: ${theme.spacing.medium}`);
+  expect(text).toHaveStyle(`padding: ${theme.spacing.medium}`);
+  expect(text).not.toHaveStyle(`margin: ${theme.spacing.medium}`);
 });
 
 test('sets basic aria attributes', async () => {
   render(<TestComponent isOpen={true} />);
 
-  const getPopover = () => screen.getByText(/some content/i);
+  const text = await screen.findByText(/some content/i);
 
-  await waitForElement(getPopover);
-
-  const popover = getPopover();
-  const popoverId = popover.id;
+  const popoverId = text.id;
   const anchorButton = screen.getByRole('button');
 
   expect(anchorButton).toHaveAttribute('aria-controls', popoverId);
   expect(anchorButton).toHaveAttribute('aria-expanded', 'true');
   expect(anchorButton).toHaveAttribute('aria-haspopup', 'dialog');
-  expect(popover).toHaveAttribute('aria-label', 'Test Label');
+  expect(text).toHaveAttribute('aria-label', 'Test Label');
 });
 
 test('close on Escape by default', async () => {
   render(<TestComponent isOpen={true} />);
 
-  const getPopover = () => screen.queryByText(/some content/i);
-
-  await waitForElement(getPopover);
+  const text = await screen.findByText(/some content/i);
 
   fireEvent.keyDown(screen.getByRole('button'), { key: 'Escape' });
 
-  expect(getPopover()).not.toBeInTheDocument();
+  expect(text).not.toBeInTheDocument();
 });
 
 test('does not close on Escape when closeOnEscKey is false', async () => {
   render(<TestComponent isOpen={true} closeOnEscKey={false} />);
 
-  const getPopover = () => screen.queryByText(/some content/i);
+  const text = await screen.findByText(/some content/i);
 
-  await waitForElement(getPopover);
+  fireEvent.keyDown(text, { key: 'Escape' });
 
-  fireEvent.keyDown(screen.getByText(/some content/i), { key: 'Escape' });
-
-  expect(getPopover()).toBeInTheDocument();
+  expect(text).toBeInTheDocument();
 });
 
 test('close on click outisde by default', async () => {
@@ -116,13 +109,11 @@ test('close on click outisde by default', async () => {
     </>,
   );
 
-  const getPopover = () => screen.queryByText(/some content/i);
-
-  await waitForElement(getPopover);
+  const text = await screen.findByText(/some content/i);
 
   fireEvent.click(screen.getByText(/outside/i));
 
-  expect(getPopover()).not.toBeInTheDocument();
+  expect(text).not.toBeInTheDocument();
 });
 
 test('does not close when clicking inside the popover', async () => {
@@ -133,13 +124,11 @@ test('does not close when clicking inside the popover', async () => {
     </>,
   );
 
-  const getPopover = () => screen.queryByText(/some content/i);
+  const text = await screen.findByText(/some content/i);
 
-  await waitForElement(getPopover);
+  fireEvent.click(text);
 
-  fireEvent.click(screen.getByText(/some content/i));
-
-  expect(getPopover()).toBeInTheDocument();
+  expect(text).toBeInTheDocument();
 });
 
 test('does not close on click outisde when closeOnClickOutside is set to false', async () => {
@@ -150,11 +139,9 @@ test('does not close on click outisde when closeOnClickOutside is set to false',
     </>,
   );
 
-  const getPopover = () => screen.queryByText(/some content/i);
-
-  await waitForElement(getPopover);
+  const text = await screen.findByText(/some content/i);
 
   fireEvent.click(screen.getByText(/outside/i));
 
-  expect(getPopover()).toBeInTheDocument();
+  expect(text).toBeInTheDocument();
 });

@@ -333,7 +333,7 @@ exports[`render pagination component 1`] = `
       </button>
       <div
         class="c8"
-        style="position: fixed; left: 0px; top: 0px;"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
           aria-labelledby="bd-dropdown-1-label"
@@ -748,7 +748,7 @@ exports[`render pagination component with invalid page info 1`] = `
       </button>
       <div
         class="c8"
-        style="position: fixed; left: 0px; top: 0px;"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
           aria-labelledby="bd-dropdown-1-label"
@@ -1163,7 +1163,7 @@ exports[`render pagination component with invalid range info 1`] = `
       </button>
       <div
         class="c8"
-        style="position: fixed; left: 0px; top: 0px;"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
           aria-labelledby="bd-dropdown-1-label"
@@ -1579,7 +1579,7 @@ exports[`render pagination component with no items 1`] = `
       </button>
       <div
         class="c8"
-        style="position: fixed; left: 0px; top: 0px;"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
           aria-labelledby="bd-dropdown-1-label"
