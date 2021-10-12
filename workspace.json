@@ -19,10 +19,15 @@
         "build": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "command": "yarn run build",
-            "cwd": "packages/docs"
+            "command": "yarn workspace @bigcommerce/docs run build"
           },
-          "outputs": ["packages/docs/out"]
+          "outputs": ["packages/docs/out", "packages/docs/.next"]
+        },
+        "typeCheck": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "yarn workspace @bigcommerce/docs run typeCheck"
+          }
         }
       }
     },

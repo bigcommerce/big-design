@@ -6,6 +6,10 @@ jest.mock('./src/utils', () => ({
   warning: jest.fn(),
 }));
 
+beforeAll(() => {
+  console.error = jest.fn();
+});
+
 afterEach(() => {
   jest.clearAllMocks();
 
