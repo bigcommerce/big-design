@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "projects": {
+    "@bigcommerce/big-design": {
+      "root": "packages/big-design"
+    },
+    "@bigcommerce/big-design-icons": {
+      "root": "packages/big-design-icons"
+    },
+    "@bigcommerce/big-design-theme": {
+      "root": "packages/big-design-theme"
+    },
+    "@bigcommerce/configs": {
+      "root": "packages/configs"
+    },
+    "@bigcommerce/docs": {
+      "root": "packages/docs",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "yarn run build",
+            "cwd": "packages/docs"
+          },
+          "outputs": ["packages/docs/out"]
+        }
+      }
+    },
+    "@bigcommerce/examples": {
+      "root": "packages/examples"
+    },
+    "@bigcommerce/pack": {
+      "root": "packages/pack"
+    }
+  }
+}

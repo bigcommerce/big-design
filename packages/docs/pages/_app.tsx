@@ -14,6 +14,8 @@ Router.events.on('routeChangeComplete', (url) => pageView(url));
 
 export const alertsManager = createAlertsManager();
 
+// Algo
+
 const theme = createTheme();
 
 const gridTemplate = {

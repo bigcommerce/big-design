@@ -1,0 +1,32 @@
+{
+  "extends": "@nrwl/workspace/presets/npm.json",
+  "npmScope": "big-design",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "test", "lint"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "@bigcommerce/big-design": {},
+    "@bigcommerce/big-design-icons": {},
+    "@bigcommerce/big-design-theme": {},
+    "@bigcommerce/configs": {},
+    "@bigcommerce/docs": {},
+    "@bigcommerce/examples": {},
+    "@bigcommerce/pack": {}
+  },
+  "affected": {
+    "defaultBase": "master"
+  }
+}
