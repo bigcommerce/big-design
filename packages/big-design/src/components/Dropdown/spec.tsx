@@ -494,28 +494,32 @@ test("doesn't render tooltip on enabled item", async () => {
 
   fireEvent.mouseEnter(tooltip);
 
-  expect(await screen.queryByText(tooltipText)).not.toBeInTheDocument();
+  const tooltipHelpText = screen.queryByText(tooltipText);
+
+  expect(tooltipHelpText).not.toBeInTheDocument();
 });
 
-test('no errors expected if all options are disabled', () => {
+test('no errors expected if all options are disabled', async () => {
+  const onError = jest.fn();
+
   render(
     <Dropdown
       items={[
         { content: 'Option 1', onItemClick, disabled: true },
         { content: 'Option 2', onItemClick, disabled: true },
       ]}
+      onError={onError}
       toggle={<Button>Button</Button>}
     />,
   );
 
   const toggle = screen.getByRole('button');
 
-  expect(
-    async () =>
-      await act(async () => {
-        await fireEvent.click(toggle);
-      }),
-  ).not.toThrow();
+  fireEvent.click(toggle);
+
+  await screen.findByRole('listbox');
+
+  expect(onError).not.toThrow();
 });
 
 test('dropdown should have 2 group labels, render uppercased', async () => {
@@ -643,5 +647,7 @@ test('items should supports description', async () => {
 
   fireEvent.click(toggle);
 
-  expect(await screen.findByText('Option 1 Description')).toBeInTheDocument();
+  const description = await screen.findByText('Option 1 Description');
+
+  expect(description).toBeInTheDocument();
 });

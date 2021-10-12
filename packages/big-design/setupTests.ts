@@ -1,4 +1,3 @@
-import { cleanup } from '@test/utils';
 import '@testing-library/jest-dom/extend-expect';
 
 jest.mock('./src/utils', () => ({
@@ -8,7 +7,4 @@ jest.mock('./src/utils', () => ({
 
 afterEach(() => {
   jest.clearAllMocks();
-
-  // https://github.com/testing-library/react-testing-library/pull/519
-  cleanup();
 });

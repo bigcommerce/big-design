@@ -1,5 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, screen, waitForElement } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { StatefulTree } from '../StatefulTree';
@@ -643,27 +643,25 @@ describe('TextEditor', () => {
 
 describe('SelectEditor', () => {
   test('renders SelectEditor', async () => {
-    const { getAllByRole } = render(
+    const { findAllByRole } = render(
       <Worksheet columns={selectableColumns} items={selectableItems} onChange={handleChange} />,
     );
 
-    const cells = getAllByRole('combobox');
+    const cells = await findAllByRole('combobox');
 
     expect(cells.length).toBe(2);
-
-    await waitForElement(() => screen.getAllByRole('combobox'));
   });
 
   test('SelectEditor is editable', async () => {
-    const { getAllByRole, getAllByDisplayValue } = render(
+    const { findAllByRole, findAllByDisplayValue } = render(
       <Worksheet columns={selectableColumns} items={selectableItems} onChange={handleChange} />,
     );
 
-    const cells = getAllByDisplayValue('Value 1');
+    const cells = await findAllByDisplayValue('Value 1');
 
     fireEvent.click(cells[0]);
 
-    const options = getAllByRole('option');
+    const options = await findAllByRole('option');
 
     fireEvent.click(options[2]);
 
@@ -675,8 +673,6 @@ describe('SelectEditor', () => {
         otherField: 'value3',
       },
     ]);
-
-    await waitForElement(() => screen.getAllByRole('combobox'));
   });
 
   test('renders in disabled state', async () => {
@@ -704,11 +700,9 @@ describe('SelectEditor', () => {
       />,
     );
 
-    const cell = screen.getAllByDisplayValue('Value 1');
+    const cell = await screen.findAllByDisplayValue('Value 1');
 
     expect(cell[0]).toHaveAttribute('disabled');
-
-    await waitForElement(() => screen.getAllByRole('combobox'));
   });
 });
 

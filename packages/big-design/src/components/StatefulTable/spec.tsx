@@ -1,7 +1,7 @@
 import React from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render, waitForElement } from '@test/utils';
+import { fireEvent, render } from '@test/utils';
 
 import { StatefulTable, StatefulTablePillTabFilter, StatefulTableProps } from './StatefulTable';
 
@@ -43,21 +43,20 @@ const getSimpleTable = (props: Partial<StatefulTableProps<TestItem>> = {}) => (
   />
 );
 
-test('renders a non-paginated table by default', () => {
-  const { container } = render(getSimpleTable());
+test('renders a non-paginated table by default', async () => {
+  const { findAllByRole } = render(getSimpleTable());
 
-  const rows = container.querySelectorAll('tbody > tr');
+  const rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(104);
+  expect(rows.length).toBe(105);
 });
 
 test('pagination can be enabled', async () => {
-  const { container, getByTestId } = render(getSimpleTable({ pagination: true }));
+  const { findAllByRole } = render(getSimpleTable({ pagination: true }));
 
-  const rows = container.querySelectorAll('tbody > tr');
+  const rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(25);
-  await waitForElement(() => getByTestId('simple-table'));
+  expect(rows.length).toBe(26);
 });
 
 test('dragAndDrop can be enabled', async () => {
@@ -90,14 +89,15 @@ test('dragAndDrop can be enabled', async () => {
 });
 
 test('changing pagination page changes the displayed items', async () => {
-  const { getByTitle, getAllByTestId, getByTestId } = render(getSimpleTable({ pagination: true }));
+  const { getByTitle, getAllByTestId, findByTestId } = render(getSimpleTable({ pagination: true }));
+
+  await findByTestId('simple-table');
 
   const pageOneItemName = getAllByTestId('name')[0].textContent;
   fireEvent.click(getByTitle('Next page'));
   const pageTwoItemName = getAllByTestId('name')[0].textContent;
 
   expect(pageOneItemName).not.toBe(pageTwoItemName);
-  await waitForElement(() => getByTestId('simple-table'));
 });
 
 test('renders rows without checkboxes by default', () => {
@@ -150,23 +150,23 @@ test('onSelectionChange gets called when an item selection happens', () => {
 test('multi-page select', async () => {
   const onSelectionChange = jest.fn();
 
-  const { container, getByTitle, getByTestId } = render(
+  const { getByTitle, findByTestId } = render(
     getSimpleTable({ selectable: true, onSelectionChange, pagination: true }),
   );
 
-  let checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
+  const table = await findByTestId('simple-table');
+  let checkbox = table.querySelector('tbody > tr input') as HTMLInputElement;
 
   fireEvent.click(checkbox);
   fireEvent.click(getByTitle('Next page'));
 
-  checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
+  checkbox = table.querySelector('tbody > tr input') as HTMLInputElement;
   fireEvent.click(checkbox);
 
   expect(onSelectionChange).toHaveBeenCalledWith([
     { name: 'Product A - 1', stock: 1 },
     { name: 'Product Z - 1', stock: 26 },
   ]);
-  await waitForElement(() => getByTestId('simple-table'));
 });
 
 test('select all selects all items in the current page', async () => {
@@ -176,16 +176,17 @@ test('select all selects all items in the current page', async () => {
   const items: TestItem[] = [testItemOne, testItemTwo, testItemThree];
   const onSelectionChange = jest.fn();
 
-  const { getAllByRole, getByTestId } = render(
+  const { getAllByRole, findByTestId } = render(
     getSimpleTable({ selectable: true, items, onSelectionChange, pagination: true }),
   );
+
+  await findByTestId('simple-table');
 
   const checkbox = getAllByRole('checkbox')[0];
 
   fireEvent.click(checkbox);
 
   expect(onSelectionChange).toHaveBeenCalledWith([testItemOne, testItemTwo, testItemThree]);
-  await waitForElement(() => getByTestId('simple-table'));
 });
 
 test('unselect all should unselect all items in page', async () => {
@@ -195,7 +196,7 @@ test('unselect all should unselect all items in page', async () => {
   const items: TestItem[] = [testItemOne, testItemTwo, testItemThree];
   const onSelectionChange = jest.fn();
 
-  const { getAllByRole, getByTestId } = render(
+  const { getAllByRole, findByTestId } = render(
     getSimpleTable({
       selectable: true,
       items,
@@ -205,12 +206,13 @@ test('unselect all should unselect all items in page', async () => {
     }),
   );
 
+  await findByTestId('simple-table');
+
   const checkbox = getAllByRole('checkbox')[0];
 
   fireEvent.click(checkbox);
 
   expect(onSelectionChange).toHaveBeenCalledWith([]);
-  await waitForElement(() => getByTestId('simple-table'));
 });
 
 test('sorts alphabetically', () => {
@@ -342,16 +344,15 @@ test('it executes the filter function on click', async () => {
     pillTabs: [{ title: 'In stock', id: 'in_stock' }],
     filter: (_itemId, items) => items.filter((item) => item.stock === 1),
   };
-  const { container, getByText, getByTestId } = render(getSimpleTable({ filters }));
+  const { findAllByRole, findByText } = render(getSimpleTable({ filters }));
 
-  const customFilter = getByText('In stock');
+  const customFilter = await findByText('In stock');
 
   fireEvent.click(customFilter);
-  await waitForElement(() => getByTestId('simple-table'));
 
-  const rows = container.querySelectorAll('tbody > tr');
+  const rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(1);
+  expect(rows.length).toBe(2);
 });
 
 test('can paginate on filtered rows', async () => {
@@ -359,13 +360,12 @@ test('can paginate on filtered rows', async () => {
     pillTabs: [{ title: 'Low stock', id: 'in_stock' }],
     filter: (_itemId, items) => items.filter((item) => item.stock < 40),
   };
-  const { getByText, getByTestId } = render(getSimpleTable({ filters, pagination: true }));
-  const customFilter = getByText('Low stock');
+  const { findByText } = render(getSimpleTable({ filters, pagination: true }));
+  const customFilter = await findByText('Low stock');
 
   fireEvent.click(customFilter);
-  await waitForElement(() => getByTestId('simple-table'));
 
-  const itemText = getByText('1 - 25 of 39');
+  const itemText = await findByText('1 - 25 of 39');
 
   expect(itemText).toBeInTheDocument();
 });
@@ -375,20 +375,20 @@ test('can undo filter actions', async () => {
     pillTabs: [{ title: 'Stock 1', id: 'in_stock' }],
     filter: (_itemId, items) => items.filter((item) => item.stock === 1),
   };
-  const { container, getByText, getByTestId } = render(getSimpleTable({ filters }));
-  const customFilter = getByText('Stock 1');
+  const { findAllByRole, findByText } = render(getSimpleTable({ filters }));
+  const customFilter = await findByText('Stock 1');
 
   fireEvent.click(customFilter);
 
-  let rows = container.querySelectorAll('tbody > tr');
+  const filteredRows = await findAllByRole('row');
 
-  expect(rows.length).toBe(1);
+  expect(filteredRows.length).toBe(2);
 
   fireEvent.click(customFilter);
-  await waitForElement(() => getByTestId('simple-table'));
 
-  rows = container.querySelectorAll('tbody > tr');
-  expect(rows.length).toBe(104);
+  const rows = await findAllByRole('row');
+
+  expect(rows.length).toBe(105);
 });
 
 test('can stack filter actions (OR logic)', async () => {
@@ -400,18 +400,16 @@ test('can stack filter actions (OR logic)', async () => {
     filter: (itemId, items) =>
       itemId === 'stock_1' ? items.filter((item) => item.stock === 1) : items.filter((item) => item.stock === 2),
   };
-  const { container, getByText, getByTestId } = render(getSimpleTable({ filters }));
-  const customFilter1 = getByText('Stock 1');
-  const customFilter2 = getByText('Stock 2');
+  const { findAllByRole, findByText } = render(getSimpleTable({ filters }));
+  const customFilter1 = await findByText('Stock 1');
+  const customFilter2 = await findByText('Stock 2');
 
   fireEvent.click(customFilter1);
-  await waitForElement(() => getByTestId('simple-table'));
   fireEvent.click(customFilter2);
-  await waitForElement(() => getByTestId('simple-table'));
 
-  const rows = container.querySelectorAll('tbody > tr');
+  const rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(2);
+  expect(rows.length).toBe(3);
 });
 
 test('can undo stacked filter actions', async () => {
@@ -423,28 +421,28 @@ test('can undo stacked filter actions', async () => {
     filter: (itemId, items) =>
       itemId === 'stock_1' ? items.filter((item) => item.stock === 1) : items.filter((item) => item.stock === 2),
   };
-  const { container, getByText, getByTestId } = render(getSimpleTable({ filters }));
-  const customFilter1 = getByText('Stock 1');
-  const customFilter2 = getByText('Stock 2');
+  const { findAllByRole, findByText } = render(getSimpleTable({ filters }));
+  const customFilter1 = await findByText('Stock 1');
+  const customFilter2 = await findByText('Stock 2');
 
   fireEvent.click(customFilter1);
   fireEvent.click(customFilter2);
-  await waitForElement(() => getByTestId('simple-table'));
 
-  let rows = container.querySelectorAll('tbody > tr');
+  let rows = await findAllByRole('row');
+
+  expect(rows.length).toBe(3);
+
+  fireEvent.click(customFilter1);
+
+  rows = await findAllByRole('row');
+
   expect(rows.length).toBe(2);
 
-  fireEvent.click(customFilter1);
-  await waitForElement(() => getByTestId('simple-table'));
-
-  rows = container.querySelectorAll('tbody > tr');
-  expect(rows.length).toBe(1);
-
   fireEvent.click(customFilter2);
-  await waitForElement(() => getByTestId('simple-table'));
 
-  rows = container.querySelectorAll('tbody > tr');
-  expect(rows.length).toBe(104);
+  rows = await findAllByRole('row');
+
+  expect(rows.length).toBe(105);
 });
 
 describe('test search in the StatefulTable', () => {
@@ -457,15 +455,15 @@ describe('test search in the StatefulTable', () => {
   });
 
   test('it executes the filter function on click Search', async () => {
-    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true }));
+    const { findAllByRole, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true }));
     const input = getByPlaceholderText('Search');
 
     fireEvent.change(input, { target: { value: 'Product A - 1' } });
-    await waitForElement(() => fireEvent.click(getByText('Search')));
+    fireEvent.click(getByText('Search'));
 
-    const rows = container.querySelectorAll('tbody > tr');
+    const rows = await findAllByRole('row');
 
-    expect(rows.length).toBe(1);
+    expect(rows.length).toBe(2);
   });
 
   test('it executes the filter search and filter pills function on click Search', async () => {
@@ -473,44 +471,46 @@ describe('test search in the StatefulTable', () => {
       pillTabs: [{ title: 'Stock 1', id: 'in_stock' }],
       filter: (_itemId, items) => items.filter((item) => item.stock === 1),
     };
-    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true, filters }));
+    const { findAllByRole, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true, filters }));
     const input = getByPlaceholderText('Search');
 
     fireEvent.change(input, { target: { value: 'Product A' } });
-    await waitForElement(() => fireEvent.click(getByText('Search')));
+    fireEvent.click(getByText('Search'));
     fireEvent.click(getByText('Stock 1'));
 
-    const rows = container.querySelectorAll('tbody > tr');
+    const rows = await findAllByRole('row');
 
-    expect(rows.length).toBe(1);
+    expect(rows.length).toBe(2);
   });
 
   test('can paginate on filtered rows', async () => {
-    const { getByPlaceholderText, getByText } = render(getSimpleTable({ search: true, pagination: true }));
+    const { getByPlaceholderText, getByText, findByText } = render(getSimpleTable({ search: true, pagination: true }));
     const input = getByPlaceholderText('Search');
 
     fireEvent.change(input, { target: { value: '1' } });
-    await waitForElement(() => fireEvent.click(getByText('Search')));
+    fireEvent.click(getByText('Search'));
 
-    expect(getByText('1 - 25 of 38')).toBeInTheDocument();
+    const pagination = await findByText('1 - 25 of 38');
+
+    expect(pagination).toBeInTheDocument();
   });
 
   test('can undo filter actions', async () => {
-    const { container, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true }));
+    const { findAllByRole, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true }));
     const input = getByPlaceholderText('Search');
 
     fireEvent.change(input, { target: { value: 'Product A - 1' } });
     fireEvent.click(getByText('Search'));
 
-    let rows = container.querySelectorAll('tbody > tr');
+    let rows = await findAllByRole('row');
 
-    expect(rows.length).toBe(1);
+    expect(rows.length).toBe(2);
 
     fireEvent.change(input, { target: { value: '' } });
-    await waitForElement(() => fireEvent.click(getByText('Search')));
+    fireEvent.click(getByText('Search'));
 
-    rows = container.querySelectorAll('tbody > tr');
+    rows = await findAllByRole('row');
 
-    expect(rows.length).toBe(104);
+    expect(rows.length).toBe(105);
   });
 });

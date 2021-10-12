@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render, screen, waitForElement } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { Table, TableFigure } from './Table';
 
@@ -132,7 +132,7 @@ test('renders tooltip when hovering on icon', async () => {
 
   fireEvent.mouseOver(getByTitle('Hover or focus for additional context.'));
 
-  const result = await waitForElement(() => screen.getByText('Some text'));
+  const result = await screen.findByText('Some text');
 
   expect(result).toBeInTheDocument();
 });
@@ -194,7 +194,7 @@ test('renders a pagination component', async () => {
   const onItemsPerPageChange = jest.fn();
   const onPageChange = jest.fn();
 
-  const { container, getByTitle } = render(
+  const { container, findByRole, getByTitle } = render(
     <Table
       columns={[
         { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
@@ -221,9 +221,10 @@ test('renders a pagination component', async () => {
 
   fireEvent.click(getByTitle('Next page'));
 
+  await findByRole('table');
+
   expect(onPageChange).toHaveBeenCalledWith(2);
   expect(container.firstChild).toMatchSnapshot();
-  await waitForElement(() => screen.getByTitle('Next page'));
 });
 
 describe('selectable', () => {
