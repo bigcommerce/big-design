@@ -14,8 +14,8 @@
   },
   "scripts": {
     "build": "yarn run build:cjs && yarn run build:es && yarn run build:dt",
-    "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/cjs",
-    "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
+    "build:cjs": "NODE_ENV=production swc --config module.type=commonjs --extensions \".ts,.tsx\" ./src --out-dir ./dist/cjs",
+    "build:es": "NODE_ENV=production swc --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc --emitDeclarationOnly",
     "build:icons": "node scripts/build.js",
     "build:flags": "node scripts/build-flags.js",
@@ -32,8 +32,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@babel/runtime": "^7.15.4",
     "@bigcommerce/big-design-theme": "^0.13.1",
+    "@swc/helpers": "^0.2.13",
     "react-uid": "^2.3.1"
   },
   "peerDependencies": {
@@ -42,22 +42,18 @@
     "styled-components": "^5.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.4",
-    "@babel/core": "^7.15.5",
-    "@babel/plugin-transform-runtime": "^7.15.0",
-    "@babel/preset-env": "^7.15.6",
-    "@babel/preset-react": "^7.12.1",
-    "@babel/preset-typescript": "^7.15.0",
     "@bigcommerce/configs": "^0.15.1",
     "@jorgemoya/flag-icon-css": "3.5.0",
     "@svgr/core": "^5.0.1",
     "@svgr/plugin-jsx": "^5.0.1",
     "@svgr/plugin-prettier": "^5.0.1",
     "@svgr/plugin-svgo": "^5.0.1",
+    "@swc/cli": "^0.1.51",
+    "@swc/core": "^1.2.95",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/styled-components": "^5.1.11",
-    "babel-plugin-styled-components": "^1.13.2",
+    "browserslist": "^4.17.4",
     "camelcase": "^6.2.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
@@ -73,5 +69,14 @@
     "tiny-async-pool": "^1.2.0",
     "typescript": "^4.4.3",
     "typescript-styled-plugin": "^0.18.1"
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome major versions",
+    "last 2 Firefox major versions",
+    "last 2 Safari major versions",
+    "last 2 Edge major versions",
+    "last 2 Android major versions",
+    "last 2 ChromeAndroid major versions",
+    "last 2 iOS major versions"
+  ]
 }

@@ -21,7 +21,7 @@ exports[`renders simple tree 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 kwHAib"
+          class="sc-crzoAE jWDTfn"
           color="secondary60"
           fill="currentColor"
           focusable="false"
@@ -45,7 +45,7 @@ exports[`renders simple tree 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
+          class="sc-fKgJPI uFqNh"
           color="primary30"
           fill="currentColor"
           height="24"
@@ -88,7 +88,7 @@ exports[`renders simple tree 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="base__StyledIcon-sc-a9u0e1-0 kwHAib"
+              class="sc-crzoAE jWDTfn"
               color="secondary60"
               fill="currentColor"
               focusable="false"
@@ -112,7 +112,7 @@ exports[`renders simple tree 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
+              class="sc-fKgJPI uFqNh"
               color="primary30"
               fill="currentColor"
               height="24"
@@ -158,7 +158,7 @@ exports[`renders simple tree 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
+                  class="sc-fKgJPI uFqNh"
                   color="primary30"
                   fill="currentColor"
                   height="24"
@@ -202,7 +202,7 @@ exports[`renders simple tree 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 kwHAib"
+          class="sc-crzoAE jWDTfn"
           color="secondary60"
           fill="currentColor"
           focusable="false"
@@ -226,7 +226,7 @@ exports[`renders simple tree 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
+          class="sc-fKgJPI uFqNh"
           color="primary30"
           fill="currentColor"
           height="24"
@@ -272,7 +272,7 @@ exports[`renders simple tree 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
+              class="sc-fKgJPI uFqNh"
               color="primary30"
               fill="currentColor"
               height="24"
@@ -317,7 +317,7 @@ exports[`renders simple tree 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
+          class="sc-fKgJPI uFqNh"
           color="primary30"
           fill="currentColor"
           height="24"
@@ -357,7 +357,7 @@ exports[`renders simple tree 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 kwHAib"
+          class="sc-crzoAE jWDTfn"
           color="secondary60"
           fill="currentColor"
           focusable="false"
@@ -381,7 +381,7 @@ exports[`renders simple tree 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
+          class="sc-fKgJPI uFqNh"
           color="primary30"
           fill="currentColor"
           height="24"
@@ -427,7 +427,7 @@ exports[`renders simple tree 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
+              class="sc-fKgJPI uFqNh"
               color="primary30"
               fill="currentColor"
               height="24"
@@ -469,7 +469,7 @@ exports[`renders simple tree 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 kwHAib"
+          class="sc-crzoAE jWDTfn"
           color="secondary60"
           fill="currentColor"
           focusable="false"
@@ -493,7 +493,7 @@ exports[`renders simple tree 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
+          class="sc-fKgJPI uFqNh"
           color="primary30"
           fill="currentColor"
           height="24"
@@ -539,7 +539,7 @@ exports[`renders simple tree 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="base__StyledIcon-sc-a9u0e1-0 kmepXM"
+              class="sc-fKgJPI uFqNh"
               color="primary30"
               fill="currentColor"
               height="24"

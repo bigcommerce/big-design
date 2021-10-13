@@ -1,0 +1,13 @@
+{
+  "jsc": {
+    "externalHelpers": true,
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true
+    }
+  },
+  "module": {
+    "type": "es6"
+  },
+  "env": {}
+}

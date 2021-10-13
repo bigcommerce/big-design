@@ -13,6 +13,12 @@ exports[`renders a pagination component 1`] = `
   width: 1.5rem;
 }
 
+.c15 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c1 {
   box-sizing: border-box;
 }
@@ -438,7 +444,7 @@ exports[`renders a pagination component 1`] = `
           >
             <svg
               aria-labelledby="bd-icon-5"
-              class="c14"
+              class="c15"
               fill="currentColor"
               height="24"
               stroke="currentColor"

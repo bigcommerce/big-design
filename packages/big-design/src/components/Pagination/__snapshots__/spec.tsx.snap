@@ -13,6 +13,12 @@ exports[`render pagination component 1`] = `
   width: 1.5rem;
 }
 
+.c12 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c0 {
   box-sizing: border-box;
 }
@@ -388,7 +394,7 @@ exports[`render pagination component 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-4"
-          class="c11"
+          class="c12"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -423,6 +429,12 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 .c11 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c12 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -803,7 +815,7 @@ exports[`render pagination component with invalid page info 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-4"
-          class="c11"
+          class="c12"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -838,6 +850,12 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 .c11 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c12 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -1219,7 +1237,7 @@ exports[`render pagination component with invalid range info 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-4"
-          class="c11"
+          class="c12"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1254,6 +1272,12 @@ exports[`render pagination component with no items 1`] = `
 }
 
 .c11 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c12 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -1635,7 +1659,7 @@ exports[`render pagination component with no items 1`] = `
       >
         <svg
           aria-labelledby="bd-icon-4"
-          class="c11"
+          class="c12"
           fill="currentColor"
           height="24"
           stroke="currentColor"
