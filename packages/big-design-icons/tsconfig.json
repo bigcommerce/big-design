@@ -4,10 +4,12 @@
     "declaration": true,
     "declarationDir": "dist",
     "declarationMap": true,
+    "incremental": true,
     "jsx": "preserve",
     "module": "esnext",
-    "target": "esnext"
+    "target": "esnext",
+    "tsBuildInfoFile": "./.tsbuildinfo",
   },
   "includes": ["src"],
-  "exclude": ["dist"],
+  "exclude": ["dist", "node_modules", "scripts", "svgs"],
 }
