@@ -10,3 +10,4 @@ packages/docs/pages/dev.tsx
 .idea
 .DS_Store
 .parcel-cache
+.tsbuildinfo
