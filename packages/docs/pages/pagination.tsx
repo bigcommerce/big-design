@@ -1,7 +1,7 @@
 import { H1, Pagination, Panel, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
-import { CodePreview, List } from '../components';
+import { Code, CodePreview, List } from '../components';
 import { MarginPropTable, PaginationPropTable } from '../PropTables';
 
 const PaginationPage = () => {
@@ -11,20 +11,19 @@ const PaginationPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          Pagination is used to divide a long list or table into several pages, indicating other pages exist and
-          allowing the user to access them. This makes the content easier to read and ensures faster loading time. The
-          user can easily navigate through the pages in order, or jump to any page in the list. The user can also select
-          the number of results they want to see on each page, giving them more control over the way they view the data.
+          <Code primary>Pagination</Code> is used to divide a long list or table into several pages, indicating other
+          pages exist and allowing the user to access them. This makes the content easier to read and ensures faster
+          loading time. The user can easily navigate through the pages in order, or jump to any page in the list. The
+          user can also select the number of results they want to see on each page, giving them more control over the
+          way they view the data.
         </Text>
         <Text bold>When to use:</Text>
         <List>
-          <List.Item>On tables that contain more than X number of rows of data/content. </List.Item>
+          <List.Item>On tables that contain more than 25 number of rows of data/content. </List.Item>
         </List>
       </Panel>
 
       <Panel header="Implementation" headerId="implementation">
-        <Text>Pagination allows for navigation through pages of content.</Text>
-
         <CodePreview>
           {/* jsx-to-string:start */}
           {function ExampleList() {
