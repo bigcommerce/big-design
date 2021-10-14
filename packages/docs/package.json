@@ -3,7 +3,7 @@
   "version": "0.30.2",
   "private": true,
   "sideEffects": false,
-  "license": "SEE LICENSE IN LICENSE.md",
+  "license": "(MIT AND CC BY 3.0)",
   "author": "BigCommerce Inc",
   "repository": {
     "type": "git",

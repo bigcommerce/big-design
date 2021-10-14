@@ -135,3 +135,6 @@ yarn run build
 cd packages/docs
 GTM_ID=<gtm-id> yarn run deploy --remote upstream
 ```
+
+### License
+Big Design is licensed under MIT and CC BY 3.0. See [LICENSE.md](./LICENSE.md) for more details.
