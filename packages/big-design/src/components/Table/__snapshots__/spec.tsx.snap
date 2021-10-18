@@ -303,7 +303,7 @@ exports[`renders a pagination component 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.75rem;
+  padding: 0.75rem 1.5rem;
 }
 
 @media (min-width:720px) {
@@ -383,7 +383,7 @@ exports[`renders a pagination component 1`] = `
           </button>
           <div
             class="c11"
-            style="position: fixed; left: 0px; top: 0px;"
+            style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
           >
             <ul
               aria-labelledby="bd-dropdown-2-label"
@@ -507,6 +507,14 @@ exports[`renders a simple table 1`] = `
   white-space: nowrap;
 }
 
+.c1:first-of-type {
+  padding-left: 1.5rem;
+}
+
+.c1:last-of-type {
+  padding-right: 1.5rem;
+}
+
 .c4 {
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
@@ -521,6 +529,14 @@ exports[`renders a simple table 1`] = `
   font-size: 1rem;
   padding: 0.75rem;
   border-bottom: 1px solid #D9DCE9;
+}
+
+.c6:first-of-type {
+  padding-left: 1.5rem;
+}
+
+.c6:last-of-type {
+  padding-right: 1.5rem;
 }
 
 .c5 {
@@ -906,7 +922,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.75rem;
+  padding: 0.75rem 1.5rem;
 }
 
 <div

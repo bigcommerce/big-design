@@ -32,10 +32,22 @@ const checkboxProps: Prop[] = [
   },
   {
     name: 'description',
-    types: ['string', 'CheckboxDescription'],
+    types: [
+      'string',
+      <NextLink
+        key="checkbox-description"
+        href={{ hash: 'checkbox-description-prop-table', query: { props: 'checkbox-description' } }}
+      >
+        CheckboxDescription
+      </NextLink>,
+    ],
     description: (
       <>
-        See <NextLink href="#checkbox-description-prop-table">below</NextLink> for usage.
+        See{' '}
+        <NextLink href={{ hash: 'checkbox-description-prop-table', query: { props: 'checkbox-description' } }}>
+          CheckboxDescription
+        </NextLink>{' '}
+        for usage.
       </>
     ),
   },
@@ -54,10 +66,20 @@ const checkboxDescriptionProps: Prop[] = [
   },
   {
     name: 'link',
-    types: ['CheckboxDescriptionLink'],
+    types: (
+      <NextLink href={{ hash: 'checkbox-description-link-prop-table', query: { props: 'checkbox-description-link' } }}>
+        CheckboxDescriptionLink
+      </NextLink>
+    ),
     description: (
       <>
-        See <NextLink href="#checkbox-description-link-prop-table">below</NextLink> for usage.
+        See{' '}
+        <NextLink
+          href={{ hash: 'checkbox-description-link-prop-table', query: { props: 'checkbox-description-link' } }}
+        >
+          CheckboxDescriptionLink
+        </NextLink>{' '}
+        for usage.
       </>
     ),
   },

@@ -10,10 +10,10 @@ const tabsProps: Prop[] = [
   },
   {
     name: 'items',
-    types: <NextLink href="#tabs-items-prop-table">TabItem[]</NextLink>,
+    types: <NextLink href={{ hash: 'tab-item-prop-table', query: { props: 'tab-item' } }}>TabItem[]</NextLink>,
     description: (
       <>
-        See <NextLink href="#tabs-items-prop-table">below</NextLink> for usage.
+        See <NextLink href={{ hash: 'tab-item-prop-table', query: { props: 'tab-item' } }}>TabItem</NextLink> for usage.
       </>
     ),
   },

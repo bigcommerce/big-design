@@ -15,7 +15,7 @@ const panelProps: Prop[] = [
   },
   {
     name: 'action',
-    types: 'ButtonProps &amp; { text: string }',
+    types: 'ButtonProps & { text: string }',
     description: 'Defines the panel action button.',
   },
 ];

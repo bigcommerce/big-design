@@ -55,7 +55,7 @@ commands:
             - packages/configs/node_modules
             - packages/docs/node_modules
             - packages/examples/node_modules
-  
+
   pre-setup:
     steps:
       - checkout
@@ -75,9 +75,27 @@ jobs:
   build-icons:
     <<: *default_executor
 
+    parameters:
+      cache-version:
+        type: string
+        default: v1
+        description: Change the .tsbuildinfo cache version if you need to clear the cache for any reason.
+
     steps:
       - pre-setup
+      - attach-built-icons
+      - restore_cache:
+          name: 'Restoring build cache'
+          keys:
+            - big-design-icons-<<parameters.cache-version>>-{{ .Branch }}
+            - big-design-icons-<<parameters.cache-version>>
       - run: yarn workspace @bigcommerce/big-design-icons run build
+      - save_cache:
+          name: 'Saving build cache'
+          key: big-design-icons-<<parameters.cache-version>>-{{ .Branch }}
+          paths:
+            - packages/big-design-icons/.tsbuildinfo
+            - packages/big-design-icons/dist
       - persist_to_workspace:
           root: .
           paths:

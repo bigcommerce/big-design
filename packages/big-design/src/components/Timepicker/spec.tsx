@@ -1,6 +1,8 @@
 import 'jest-styled-components';
-import { fireEvent, render, waitForElement } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import React, { createRef } from 'react';
+
+import { act } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlError, FormControlLabel, FormGroup } from '../Form';
@@ -9,42 +11,49 @@ import { Timepicker } from './';
 
 test('should use the passed in ref object if provided', async () => {
   const ref = createRef<HTMLInputElement>();
-  const { container } = render(<Timepicker ref={ref} onTimeChange={jest.fn()} />);
+  const { findByRole } = render(<Timepicker ref={ref} onTimeChange={jest.fn()} />);
 
-  const input = container.querySelector('input');
+  const input = await findByRole('textbox');
 
   expect(ref.current).toEqual(input);
-  await waitForElement(() => container.querySelector('input'));
 });
 
 test('calls onTimeChange function when a value is selected', async () => {
   const changeFunction = jest.fn();
-  const { getAllByRole, getByTestId } = render(<Timepicker onTimeChange={changeFunction} data-testid="timepicker" />);
+  const { findAllByRole, findByTestId } = render(<Timepicker onTimeChange={changeFunction} data-testid="timepicker" />);
 
-  const input = getByTestId('timepicker');
-  fireEvent.click(input);
-  const options = getAllByRole('option');
+  const input = await findByTestId('timepicker');
+
+  await act(async () => {
+    await fireEvent.click(input);
+  });
+
+  const options = await findAllByRole('option');
+
   expect(options.length).toBe(25);
-  fireEvent.click(options[3]);
+
+  await act(async () => {
+    await fireEvent.click(options[3]);
+  });
 
   expect(changeFunction).toHaveBeenCalledWith('3:00', { content: '3:00 AM', value: '3:00' });
-  await waitForElement(() => getByTestId('timepicker'));
 });
 
 test('renders label as a string', async () => {
-  const { getByText } = render(<Timepicker label="Time" onTimeChange={jest.fn()} data-testid="timepicker" />);
+  const { findByText } = render(<Timepicker label="Time" onTimeChange={jest.fn()} data-testid="timepicker" />);
 
-  expect(getByText('Time')).toBeInTheDocument();
-  await waitForElement(() => getByText('Time'));
+  const text = await findByText('Time');
+
+  expect(text).toBeInTheDocument();
 });
 
 test('accepts a Label Component', async () => {
-  const { getByText, getByTestId } = render(
+  const { findByText } = render(
     <Timepicker label={<FormControlLabel>Time</FormControlLabel>} onTimeChange={jest.fn()} data-testid="timepicker" />,
   );
+  const text = await findByText('Time');
 
-  expect(getByText('Time')).toBeInTheDocument();
-  await waitForElement(() => getByTestId('timepicker'));
+  expect(text).toBeInTheDocument();
 });
 
 test('does not accept non-Label Components', async () => {
@@ -57,10 +66,14 @@ test('does not accept non-Label Components', async () => {
     </div>
   );
 
-  const { queryByTestId } = render(<Timepicker label={NotALabel} onTimeChange={jest.fn()} data-testid="timepicker" />);
+  const { queryByTestId, findByTestId } = render(
+    <Timepicker label={NotALabel} onTimeChange={jest.fn()} data-testid="timepicker" />,
+  );
 
-  expect(queryByTestId('test')).not.toBeInTheDocument();
-  await waitForElement(() => queryByTestId('timepicker'));
+  await findByTestId('timepicker');
+  const label = queryByTestId('test');
+
+  expect(label).not.toBeInTheDocument();
 });
 
 test('accepts an Error Component', async () => {
@@ -73,26 +86,28 @@ test('accepts an Error Component', async () => {
     </FormControlError>
   );
 
-  const { queryByTestId } = render(
+  const { findByTestId } = render(
     <FormGroup>
       <Timepicker error={CustomError} onTimeChange={jest.fn()} data-testid="timepicker" />
     </FormGroup>,
   );
 
-  expect(queryByTestId('test')).toBeInTheDocument();
-  await waitForElement(() => queryByTestId('timepicker'));
+  const label = await findByTestId('test');
+
+  expect(label).toBeInTheDocument();
 });
 
 test('renders an error', async () => {
   const errorText = 'This is an error';
-  const { queryByText, getByTestId } = render(
+  const { findByText } = render(
     <FormGroup>
       <Timepicker error={errorText} onTimeChange={jest.fn()} data-testid="timepicker" />
     </FormGroup>,
   );
 
-  expect(queryByText(errorText)).toBeInTheDocument();
-  await waitForElement(() => getByTestId('timepicker'));
+  const error = await findByText(errorText);
+
+  expect(error).toBeInTheDocument();
 });
 
 test('does not accept non-Error Components', async () => {
@@ -105,46 +120,55 @@ test('does not accept non-Error Components', async () => {
     </div>
   );
 
-  const { queryByTestId } = render(
+  const { queryByTestId, findByTestId } = render(
     <FormGroup>
       <Timepicker error={NotAnError} onTimeChange={jest.fn()} data-testid="timepicker" />
     </FormGroup>,
   );
 
-  expect(queryByTestId('test')).not.toBeInTheDocument();
-  await waitForElement(() => queryByTestId('timepicker'));
+  await findByTestId('timepicker');
+  const error = queryByTestId('test');
+
+  expect(error).not.toBeInTheDocument();
 });
 
 test('error shows with valid string', async () => {
-  const error = 'Error';
-  const { container, rerender, getByTestId } = render(
+  const errorMsg = 'Error';
+  const { rerender, findByText, queryByText, findByTestId } = render(
     <FormGroup>
       <Timepicker error="" onTimeChange={jest.fn()} data-testid="timepicker" />
     </FormGroup>,
   );
 
-  expect(container.querySelector('[class*="StyledError"]')).not.toBeInTheDocument();
+  await findByTestId('timepicker');
+  let error = queryByText(errorMsg);
+
+  expect(error).not.toBeInTheDocument();
 
   rerender(
     <FormGroup>
-      <Timepicker error={error} onTimeChange={jest.fn()} data-testid="timepicker" />
+      <Timepicker error={errorMsg} onTimeChange={jest.fn()} data-testid="timepicker" />
     </FormGroup>,
   );
 
-  expect(container.querySelector('[class*="StyledError"]')).toBeInTheDocument();
-  await waitForElement(() => getByTestId('timepicker'));
+  error = await findByText(errorMsg);
+
+  expect(error).toBeInTheDocument();
 });
 
 test('error shows when an array of strings', async () => {
   const errors = ['Error 0', 'Error 1'];
-  const { getByText, getByTestId } = render(
+  const { findByText } = render(
     <FormGroup>
       <Timepicker error={errors} onTimeChange={jest.fn()} data-testid="timepicker" />
     </FormGroup>,
   );
 
-  errors.forEach((error) => expect(getByText(error)).toBeInTheDocument());
-  await waitForElement(() => getByTestId('timepicker'));
+  const error0 = await findByText(errors[0]);
+  const error1 = await findByText(errors[1]);
+
+  expect(error0).toBeInTheDocument();
+  expect(error1).toBeInTheDocument();
 });
 
 test('error shows when an array of Errors', async () => {
@@ -154,28 +178,33 @@ test('error shows when an array of Errors', async () => {
       Error
     </FormControlError>
   ));
-  const { getByTestId } = render(
+  const { findByTestId } = render(
     <FormGroup>
       <Timepicker error={errors} onTimeChange={jest.fn()} data-testid="timepicker" />
     </FormGroup>,
   );
 
-  testIds.forEach((id) => expect(getByTestId(id)).toBeInTheDocument());
-  await waitForElement(() => getByTestId('timepicker'));
+  const error0 = await findByTestId(testIds[0]);
+  const error1 = await findByTestId(testIds[1]);
+
+  expect(error0).toBeInTheDocument();
+  expect(error1).toBeInTheDocument();
 });
 
 describe('error does not show when invalid type', () => {
   test('single element', async () => {
     const error = <div data-testid="err">Error</div>;
-    const { queryByTestId } = render(
+    const { queryByTestId, findByTestId } = render(
       <FormGroup>
         <Timepicker error={error} onTimeChange={jest.fn()} data-testid="timepicker" />
       </FormGroup>,
     );
 
+    await findByTestId('timepicker');
+    const err = queryByTestId('err');
+
     expect(warning).toHaveBeenCalledTimes(1);
-    expect(queryByTestId('err')).not.toBeInTheDocument();
-    await waitForElement(() => queryByTestId('timepicker'));
+    expect(err).not.toBeInTheDocument();
   });
 
   test('array of elements', async () => {
@@ -187,24 +216,24 @@ describe('error does not show when invalid type', () => {
       </div>,
     ];
 
-    const { queryByTestId } = render(
+    const { queryByTestId, findByTestId } = render(
       <FormGroup>
         <Timepicker error={errors} onTimeChange={jest.fn()} data-testid="timepicker" />
       </FormGroup>,
     );
 
+    await findByTestId('timepicker');
+    const err = queryByTestId('err');
+
     expect(warning).toHaveBeenCalledTimes(1);
-    expect(queryByTestId('err')).not.toBeInTheDocument();
-    await waitForElement(() => queryByTestId('timepicker'));
+    expect(err).not.toBeInTheDocument();
   });
 });
 
 test('appends (optional) text to label if input is not required', async () => {
-  const { container, getByTestId } = render(
-    <Timepicker label="Test Label" onTimeChange={jest.fn()} data-testid="timepicker" />,
-  );
-  const label = container.querySelector('label');
+  const { findByText } = render(<Timepicker label="Test Label" onTimeChange={jest.fn()} data-testid="timepicker" />);
+
+  const label = await findByText('Test Label');
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
-  await waitForElement(() => getByTestId('timepicker'));
 });

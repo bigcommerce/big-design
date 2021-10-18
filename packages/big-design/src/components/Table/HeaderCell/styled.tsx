@@ -29,6 +29,14 @@ export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
   padding: ${({ theme }) => theme.spacing.small};
   white-space: nowrap;
 
+  &:first-of-type {
+    padding-left: ${({ theme }) => theme.spacing.xLarge};
+  }
+
+  &:last-of-type {
+    padding-right: ${({ theme }) => theme.spacing.xLarge};
+  }
+
   ${({ isSortable }) =>
     isSortable &&
     css`

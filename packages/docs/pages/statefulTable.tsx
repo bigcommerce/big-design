@@ -1,7 +1,7 @@
 import { H1, Panel, StatefulTable, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { CodePreview, NextLink, PageNavigation } from '../components';
+import { CodePreview, ContentRoutingTabs, List, NextLink } from '../components';
 import { StatefulTableColumnsPropTable, StatefulTableFiltersPropTable, StatefulTablePropTable } from '../PropTables';
 
 const items = [
@@ -108,117 +108,65 @@ const items = [
 ];
 
 const StatefulTablePage = () => {
-  const navItems = [
-    {
-      id: 'examples',
-      title: 'Examples',
-      render: () => (
-        <>
-          <Panel>
-            <Text>
-              StatefulTable is a wrapper of <NextLink href="/table">Table</NextLink> that simplifies it's usage when
-              having the full list of items in memory. It supports pagination, row selection, and sorting out of the
-              box.
-            </Text>
-            <CodePreview>
-              {/* jsx-to-string:start */}
-              <StatefulTable
-                columns={[
-                  { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
-                  { header: 'Name', hash: 'name', render: ({ name }) => name },
-                  { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
-                ]}
-                items={[
-                  { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-                  { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
-                  { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
-                  { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
-                  { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
-                ]}
-              />
-              {/* jsx-to-string:end */}
-            </CodePreview>
-          </Panel>
-          <Panel header="Pagination and selection">
-            <CodePreview scope={{ items }}>
-              {/* jsx-to-string:start */}
-              <StatefulTable
-                itemName="Products"
-                columns={[
-                  { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
-                  { header: 'Name', hash: 'name', render: ({ name }) => name },
-                  { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, sortKey: 'stock' },
-                ]}
-                items={items}
-                pagination
-                selectable
-                stickyHeader
-              />
-              {/* jsx-to-string:end */}
-            </CodePreview>
-          </Panel>
-          <Panel header="Drag and drop">
-            <CodePreview>
-              {/* jsx-to-string:start */}
-              <StatefulTable
-                columns={[
-                  { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
-                  { header: 'Name', hash: 'name', render: ({ name }) => name },
-                  { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
-                ]}
-                items={[
-                  { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-                  { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
-                  { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
-                  { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
-                  { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
-                ]}
-                onRowDrop={() => null}
-              />
-              {/* jsx-to-string:end */}
-            </CodePreview>
-          </Panel>
-          <Panel header="Filters">
-            <CodePreview>
-              {/* jsx-to-string:start */}
-              <StatefulTable
-                columns={[
-                  { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
-                  { header: 'Name', hash: 'name', render: ({ name }) => name },
-                  { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
-                ]}
-                items={[
-                  { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-                  { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
-                  { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 0 },
-                  { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
-                  { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
-                ]}
-                filters={{
-                  filter: (pillId, items) =>
-                    pillId === 'low_stock'
-                      ? items.filter((item) => item.stock !== 0 && item.stock < 10)
-                      : items.filter((item) => item.stock === 0),
-                  pillTabs: [
-                    {
-                      id: 'low_stock',
-                      title: 'Low Stock',
-                    },
-                    {
-                      id: 'out_of_stock',
-                      title: 'Out of Stock',
-                    },
-                  ],
-                }}
-              />
-              {/* jsx-to-string:end */}
-            </CodePreview>
-          </Panel>
-          <Panel header="Search">
-            <CodePreview scope={{ items }}>
-              {/* jsx-to-string:start */}
-              {function Example() {
-                return (
+  return (
+    <>
+      <H1>StatefulTable</H1>
+
+      <Panel header="Overview" headerId="overview">
+        <Text>Stateful Tables are used to do custom actions and analysis across data related to a single subject.</Text>
+        <Text bold>When to use it:</Text>
+        <List>
+          <List.Item>
+            When you want the user to have deep interactions with multiple objects of the same type (e.g. orders,
+            customers)
+          </List.Item>
+          <List.Item>
+            When you need to have bulk actions across multiple objects of the same type (e.g. export, delete)
+          </List.Item>
+        </List>
+      </Panel>
+
+      <Panel header="Implementation" headerId="implementation">
+        <ContentRoutingTabs
+          id="implementation"
+          routes={[
+            {
+              id: 'basic',
+              title: 'Basic',
+              render: () => (
+                <>
+                  <Text>
+                    StatefulTable is a wrapper of <NextLink href="/table">Table</NextLink> that simplifies it's usage
+                    when having the full list of items in memory. It supports pagination, row selection, and sorting out
+                    of the box.
+                  </Text>
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <StatefulTable
+                      columns={[
+                        { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+                        { header: 'Name', hash: 'name', render: ({ name }) => name },
+                        { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+                      ]}
+                      items={[
+                        { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+                        { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+                        { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+                        { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+                        { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+                      ]}
+                    />
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </>
+              ),
+            },
+            {
+              id: 'pagination-and-selection',
+              title: 'Pagination and selection',
+              render: () => (
+                <CodePreview scope={{ items }}>
+                  {/* jsx-to-string:start */}
                   <StatefulTable
                     itemName="Products"
                     columns={[
@@ -228,35 +176,134 @@ const StatefulTablePage = () => {
                     ]}
                     items={items}
                     pagination
+                    selectable
                     stickyHeader
-                    search
                   />
-                );
-              }}
-              {/* jsx-to-string:end */}
-            </CodePreview>
-          </Panel>
-        </>
-      ),
-    },
-    {
-      id: 'props',
-      title: 'Props',
-      render: () => (
-        <>
-          <StatefulTablePropTable />
-          <StatefulTableColumnsPropTable id="stateful-table-columns-prop-table" />
-          <StatefulTableFiltersPropTable id="stateful-table-filters-prop-table" />
-        </>
-      ),
-    },
-  ];
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+            {
+              id: 'drag-and-drop',
+              title: 'Drag and drop',
+              render: () => (
+                <CodePreview>
+                  {/* jsx-to-string:start */}
+                  <StatefulTable
+                    columns={[
+                      { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+                      { header: 'Name', hash: 'name', render: ({ name }) => name },
+                      { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+                    ]}
+                    items={[
+                      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+                      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+                      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+                      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+                      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+                    ]}
+                    onRowDrop={() => null}
+                  />
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+            {
+              id: 'filters',
+              title: 'Filters',
+              render: () => (
+                <CodePreview>
+                  {/* jsx-to-string:start */}
+                  <StatefulTable
+                    columns={[
+                      { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+                      { header: 'Name', hash: 'name', render: ({ name }) => name },
+                      { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+                    ]}
+                    items={[
+                      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+                      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+                      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 0 },
+                      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+                      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+                    ]}
+                    filters={{
+                      filter: (pillId, items) =>
+                        pillId === 'low_stock'
+                          ? items.filter((item) => item.stock !== 0 && item.stock < 10)
+                          : items.filter((item) => item.stock === 0),
+                      pillTabs: [
+                        {
+                          id: 'low_stock',
+                          title: 'Low Stock',
+                        },
+                        {
+                          id: 'out_of_stock',
+                          title: 'Out of Stock',
+                        },
+                      ],
+                    }}
+                  />
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+            {
+              id: 'search',
+              title: 'Search',
+              render: () => (
+                <CodePreview scope={{ items }}>
+                  {/* jsx-to-string:start */}
+                  {function Example() {
+                    return (
+                      <StatefulTable
+                        itemName="Products"
+                        columns={[
+                          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+                          { header: 'Name', hash: 'name', render: ({ name }) => name },
+                          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, sortKey: 'stock' },
+                        ]}
+                        items={items}
+                        pagination
+                        stickyHeader
+                        search
+                      />
+                    );
+                  }}
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+          ]}
+        />
+      </Panel>
 
-  return (
-    <>
-      <H1>StatefulTable</H1>
-
-      <PageNavigation items={navItems} />
+      <Panel header="Props" headerId="props">
+        <ContentRoutingTabs
+          id="props"
+          routes={[
+            {
+              id: 'stateful-table',
+              title: 'StatefulTable',
+              render: () => <StatefulTablePropTable renderPanel={false} />,
+            },
+            {
+              id: 'columns',
+              title: 'Columns',
+              render: () => (
+                <StatefulTableColumnsPropTable id="stateful-table-columns-prop-table" renderPanel={false} />
+              ),
+            },
+            {
+              id: 'filters',
+              title: 'Filters',
+              render: () => (
+                <StatefulTableFiltersPropTable id="stateful-table-filters-prop-table" renderPanel={false} />
+              ),
+            },
+          ]}
+        />
+      </Panel>
     </>
   );
 };

@@ -31,10 +31,11 @@ const statefulTreeProps: Prop[] = [
   },
   {
     name: 'nodes',
-    types: <NextLink href="#tree-node-prop-table">TreeNode[]</NextLink>,
+    types: <NextLink href={{ hash: 'tree-node-prop-table', query: { props: 'treenode' } }}>TreeNode[]</NextLink>,
     description: (
       <>
-        Nodes to render in the tree. See <NextLink href="#tree-node-prop-table">below</NextLink> for usage.
+        Nodes to render in the tree. See{' '}
+        <NextLink href={{ hash: 'tree-node-prop-table', query: { props: 'treenode' } }}>TreeNode</NextLink> for usage.
       </>
     ),
     required: true,

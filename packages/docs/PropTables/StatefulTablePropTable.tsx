@@ -5,10 +5,14 @@ import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 const statefulTableProps: Prop[] = [
   {
     name: 'columns',
-    types: <NextLink href="#stateful-table-columns-prop-table">Columns[]</NextLink>,
+    types: (
+      <NextLink href={{ hash: 'stateful-table-columns-prop-table', query: { props: 'columns' } }}>Columns[]</NextLink>
+    ),
     description: (
       <>
-        See <NextLink href="#stateful-table-columns-prop-table">below</NextLink> for usage.
+        See{' '}
+        <NextLink href={{ hash: 'stateful-table-columns-prop-table', query: { props: 'columns' } }}>Columns</NextLink>{' '}
+        for usage.
       </>
     ),
     required: true,
@@ -88,10 +92,14 @@ const statefulTableProps: Prop[] = [
   },
   {
     name: 'filters',
-    types: <NextLink href="#stateful-table-filters-prop-table">Filters</NextLink>,
+    types: (
+      <NextLink href={{ hash: 'stateful-table-filters-prop-table', query: { props: 'filters' } }}>Filters</NextLink>
+    ),
     description: (
       <>
-        See <NextLink href="#stateful-table-filters-prop-table">below</NextLink> for usage.
+        See{' '}
+        <NextLink href={{ hash: 'stateful-table-filters-prop-table', query: { props: 'filters' } }}>Filters</NextLink>{' '}
+        for usage.
       </>
     ),
   },

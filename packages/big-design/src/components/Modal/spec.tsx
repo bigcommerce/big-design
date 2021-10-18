@@ -1,7 +1,7 @@
 import React from 'react';
 
 import 'jest-styled-components';
-import { fireEvent, render, wait } from '@test/utils';
+import { fireEvent, render, waitFor } from '@test/utils';
 
 import { Button } from '../Button';
 import { Text } from '../Typography';
@@ -180,7 +180,7 @@ test('do not pull focus to open modal that is rerendered', async () => {
   // Expect Modal to have focus
   expect(queryByText(text)).toBeInTheDocument();
 
-  await wait(() => expect(document.activeElement).toBe(queryByRole('dialog')));
+  await waitFor(() => expect(document.activeElement).toBe(queryByRole('dialog')));
 
   const input = document.getElementById('focusTest');
 

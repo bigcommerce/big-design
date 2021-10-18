@@ -5,5 +5,5 @@ import { useUpdateItems } from './index';
 test('throws if is not wrapped in UpdateItemsProvider', () => {
   const { result: hook } = renderHook(() => useUpdateItems());
 
-  expect(hook.error.message).toContain('UpdateItemsProvider');
+  expect(hook.error?.message).toContain('UpdateItemsProvider');
 });

@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, wait } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 import styled from 'styled-components';
@@ -108,12 +108,11 @@ test('renders dropdown if items do not fit', async () => {
     },
   ];
 
-  const { container, getByText, queryByTestId } = render(
+  const { container, findByText, queryByTestId } = render(
     <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
   );
-  await wait();
 
-  const inStock = getByText('Long filter name');
+  const inStock = await findByText('Long filter name');
   const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
 
   expect(container).toMatchSnapshot();
@@ -153,14 +152,13 @@ test('renders all the filters if they fit', async () => {
     },
   ];
 
-  const { container, getByText, queryByTestId } = render(
+  const { container, findByText, queryByTestId } = render(
     <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
   );
-  await wait();
 
-  const inStock = getByText('In stock');
-  const filter2 = getByText('Filter 2');
-  const filter3 = getByText('Filter 3');
+  const inStock = await findByText('In stock');
+  const filter2 = await findByText('Filter 2');
+  const filter3 = await findByText('Filter 3');
   const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
 
   expect(container).toMatchSnapshot();
@@ -218,14 +216,13 @@ test('only the pills that fit are visible', async () => {
     },
   ];
 
-  const { container, queryByTestId, getByTestId } = render(
+  const { container, queryByTestId, findByTestId } = render(
     <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
   );
-  await wait();
 
-  const inStock = getByTestId('pilltabs-pill-0');
-  const filter2 = getByTestId('pilltabs-pill-1');
-  const filter3 = getByTestId('pilltabs-pill-2');
+  const inStock = await findByTestId('pilltabs-pill-0');
+  const filter2 = await findByTestId('pilltabs-pill-1');
+  const filter3 = await findByTestId('pilltabs-pill-2');
   const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
 
   expect(container).toMatchSnapshot();
@@ -279,14 +276,13 @@ test('only the pills that fit are visible 2', async () => {
     },
   ];
 
-  const { container, queryByTestId, getByTestId } = render(
+  const { container, queryByTestId, findByTestId } = render(
     <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
   );
-  await wait();
 
-  const inStock = getByTestId('pilltabs-pill-0');
-  const filter2 = getByTestId('pilltabs-pill-1');
-  const filter3 = getByTestId('pilltabs-pill-2');
+  const inStock = await findByTestId('pilltabs-pill-0');
+  const filter2 = await findByTestId('pilltabs-pill-1');
+  const filter3 = await findByTestId('pilltabs-pill-2');
   const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
 
   expect(container).toMatchSnapshot();
@@ -351,10 +347,9 @@ test('cannot click on a hidden item', async () => {
   };
   const items = [item1, item2];
 
-  const { getByText, getByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const { findByText, getByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
-  await wait();
-  const notInStock = getByText('Not in stock');
+  const notInStock = await findByText('Not in stock');
   const filter1 = getByTestId('pilltabs-pill-1');
 
   fireEvent.click(notInStock);
