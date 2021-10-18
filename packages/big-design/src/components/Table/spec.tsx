@@ -178,7 +178,7 @@ test('tweaks column styles with props', () => {
 
   expect(nameTd).toHaveStyle(`
     width: 100px;
-    padding: 0;
+    padding: 0 0 0 0;
   `);
 });
 
