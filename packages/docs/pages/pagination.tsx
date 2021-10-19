@@ -1,7 +1,7 @@
 import { H1, Pagination, Panel, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
-import { Code, CodePreview, List } from '../components';
+import { Code, CodePreview, GuidelinesTable, List } from '../components';
 import { MarginPropTable, PaginationPropTable } from '../PropTables';
 
 const PaginationPage = () => {
@@ -70,6 +70,25 @@ const PaginationPage = () => {
 
       <Panel header="Props" headerId="props">
         <PaginationPropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              Place <Code primary>Pagination</Code> directly above the header of the table that it controls, right
+              aligned.
+            </>,
+            'Disable dropdown options greater than the option that will show the total number of results (e.g., if there are 42 results, the highest option should be 50).',
+            'Dropdown increments should be multiples of 10 and in increments that make sense for the context.',
+          ]}
+          discouraged={[
+            <>
+              Don’t place <Code primary>Pagination</Code> below a table.
+            </>,
+            'Don’t show dropdown arrow when there are less than 10 items.',
+          ]}
+        />
       </Panel>
     </>
   );
