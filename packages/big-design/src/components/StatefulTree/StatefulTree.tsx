@@ -9,6 +9,7 @@ export interface StatefulTreeProps<T>
   extends Omit<TreeProps<T>, 'expandable' | 'focusable' | 'selectable' | 'onKeyDown'> {
   defaultExpanded?: TreeNodeId[];
   defaultSelected?: TreeNodeId[];
+  iconless?: boolean;
   selectable?: TreeSelectable<T>['type'];
   onExpandedChange?: (expandedNodes: TreeNodeId[]) => void;
   onSelectionChange?: (selectedValues: T[]) => void;
@@ -19,6 +20,7 @@ const InternalStatefulTree = <T extends unknown>({
   defaultExpanded,
   defaultSelected,
   disabledNodes = [],
+  iconless,
   onNodeClick,
   onExpandedChange,
   onSelectionChange,
@@ -37,6 +39,7 @@ const InternalStatefulTree = <T extends unknown>({
       disabledNodes={disabledNodes}
       expandable={{ expandedNodes, onToggle }}
       focusable={{ focusedNode, onFocus }}
+      iconless={iconless}
       onKeyDown={onKeyDown}
       onNodeClick={onNodeClick}
       selectable={{ selectedNodes, onSelect, type }}
