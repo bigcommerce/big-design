@@ -800,7 +800,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
-  margin-left: 0.75rem;
+  margin-left: 1.5rem;
 }
 
 .c14:last-child {

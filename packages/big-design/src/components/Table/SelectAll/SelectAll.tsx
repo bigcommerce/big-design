@@ -60,7 +60,7 @@ export const SelectAll = <T extends TableItem>({
           checked={allInPageSelected}
           onChange={handleSelectAll}
         />
-        <Text marginLeft="small">
+        <Text marginLeft="xLarge">
           {totalSelectedItems === 0 ? `${totalItems}` : `${totalSelectedItems}/${totalItems}`}
         </Text>
       </Flex>
