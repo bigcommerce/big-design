@@ -72,7 +72,7 @@ const PaginationPage = () => {
         <PaginationPropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />
       </Panel>
 
-      <Panel header="Dos and Dont's" headerId="guidelines">
+      <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
           recommended={[
             <>
