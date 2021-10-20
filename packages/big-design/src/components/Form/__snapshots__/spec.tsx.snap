@@ -4,15 +4,6 @@ exports[`simple form render 1`] = `
 .c1 {
   color: #313440;
   margin: 0 0 1rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.75rem;
-  margin: 0 0 0.75rem;
-}
-
-.c5 {
-  color: #313440;
-  margin: 0 0 1rem;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5rem;
@@ -47,7 +38,7 @@ exports[`simple form render 1`] = `
   margin: 0;
 }
 
-.c7 {
+.c6 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: border,box-shadow;
@@ -70,15 +61,15 @@ exports[`simple form render 1`] = `
   border: 1px solid #D9DCE9;
 }
 
-.c7:hover:not([disabled]) {
+.c6:hover:not([disabled]) {
   border: 1px solid #B4BAD1;
 }
 
-.c7[disabled] {
+.c6[disabled] {
   background-color: #ECEEF5;
 }
 
-.c9 {
+.c8 {
   background-color: inherit;
   border: 0;
   box-sizing: border-box;
@@ -93,40 +84,40 @@ exports[`simple form render 1`] = `
   min-height: 2.125rem;
 }
 
-.c9:focus {
+.c8:focus {
   outline: none;
 }
 
-.c9::-webkit-input-placeholder {
+.c8::-webkit-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c9::-moz-placeholder {
+.c8::-moz-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c9:-ms-input-placeholder {
+.c8:-ms-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c9::placeholder {
+.c8::placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c9:-webkit-autofill {
+.c8:-webkit-autofill {
   background-color: #F0F3FF !important;
   -webkit-box-shadow: 0 0 0px 1000px #F0F3FF inset;
 }
 
-.c9[disabled] {
+.c8[disabled] {
   background-color: #ECEEF5;
 }
 
-.c8 {
+.c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -155,13 +146,13 @@ exports[`simple form render 1`] = `
   margin-bottom: 0;
 }
 
-.c6 {
+.c5 {
   cursor: pointer;
   display: inline-block;
   margin-bottom: 0.25rem;
 }
 
-.c6::after {
+.c5::after {
   color: #5E637A;
   content: ' (optional)';
   font-weight: 400;
@@ -196,7 +187,7 @@ exports[`simple form render 1`] = `
     >
       <div>
         <label
-          class="c5 c6"
+          class="c1 c5"
           for="bd-input-1"
         >
           First Name
@@ -207,13 +198,13 @@ exports[`simple form render 1`] = `
           This is an example description for First Name
         </p>
         <span
-          class="c7"
+          class="c6"
         >
           <div
-            class="c8"
+            class="c7"
           >
             <input
-              class="c9"
+              class="c8"
               id="bd-input-1"
               placeholder="Placeholder text"
             />
@@ -226,7 +217,7 @@ exports[`simple form render 1`] = `
     >
       <div>
         <label
-          class="c5 c6"
+          class="c1 c5"
           for="bd-input-2"
         >
           Middle Name
@@ -237,13 +228,13 @@ exports[`simple form render 1`] = `
           This is an example description for Last Name. Featuring a Left Icon.
         </p>
         <span
-          class="c7"
+          class="c6"
         >
           <div
-            class="c8"
+            class="c7"
           >
             <input
-              class="c9"
+              class="c8"
               id="bd-input-2"
               placeholder="Placeholder text"
             />
