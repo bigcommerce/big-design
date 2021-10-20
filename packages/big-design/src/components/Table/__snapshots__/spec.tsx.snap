@@ -886,6 +886,8 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin-bottom: 0.0625rem;
+  margin-top: 0.0625rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
