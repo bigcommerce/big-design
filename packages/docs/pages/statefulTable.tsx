@@ -1,7 +1,7 @@
 import { H1, Panel, StatefulTable, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { CodePreview, ContentRoutingTabs, List, NextLink } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
 import { StatefulTableColumnsPropTable, StatefulTableFiltersPropTable, StatefulTablePropTable } from '../PropTables';
 
 const items = [
@@ -113,7 +113,10 @@ const StatefulTablePage = () => {
       <H1>StatefulTable</H1>
 
       <Panel header="Overview" headerId="overview">
-        <Text>Stateful Tables are used to do custom actions and analysis across data related to a single subject.</Text>
+        <Text>
+          <Code primary>StatefulTables</Code> are used to do custom actions and analysis across data related to a single
+          subject.
+        </Text>
         <Text bold>When to use it:</Text>
         <List>
           <List.Item>
@@ -136,9 +139,9 @@ const StatefulTablePage = () => {
               render: () => (
                 <>
                   <Text>
-                    StatefulTable is a wrapper of <NextLink href="/table">Table</NextLink> that simplifies it's usage
-                    when having the full list of items in memory. It supports pagination, row selection, and sorting out
-                    of the box.
+                    <Code primary>StatefulTable</Code> is a wrapper of <NextLink href="/table">Table</NextLink> that
+                    simplifies it's usage when having the full list of items in memory. It supports pagination, row
+                    selection, and sorting out of the box.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -301,6 +304,21 @@ const StatefulTablePage = () => {
                 <StatefulTableFiltersPropTable id="stateful-table-filters-prop-table" renderPanel={false} />
               ),
             },
+          ]}
+        />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            'Let users sort the table by columns with relevant data (Dates, quantities) to help them find important information.',
+            'Add pagination controls if the user is likely to have 5+ rows of data to view.',
+            'Provide filter tabs on the table with common groupings of data (For example: “Active” or “inactive” records).',
+          ]}
+          discouraged={[
+            'Don’t use it as a replacement for a worksheet (e.g. when the user needs to edit all displayed data).',
+            'If using tables in cramped places like modals, avoid placing too many columns.',
+            'Don’t put multiple actions in the same table row - use an dropdown menu instead.',
           ]}
         />
       </Panel>

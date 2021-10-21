@@ -1,7 +1,7 @@
 import { Form, FormGroup, H1, Panel, Text, Timepicker } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
-import { Code, CodePreview, List } from '../components';
+import { Code, CodePreview, GuidelinesTable, List } from '../components';
 import { TimepickerPropTable } from '../PropTables';
 
 const TimepickerPage = () => {
@@ -41,6 +41,19 @@ const TimepickerPage = () => {
 
       <Panel header="Props" headerId="props">
         <TimepickerPropTable renderPanel={false} />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              Put the field next to the <Code primary>Timepicker</Code> field with unified label when there is a need to
+              pick date and time (see examples).
+            </>,
+            'Use local time formats.',
+          ]}
+          discouraged={[]}
+        />
       </Panel>
     </>
   );

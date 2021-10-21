@@ -1,7 +1,7 @@
 import { H1, Panel, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import {
   TableColumnsPropTable,
   TableFigurePropTable,
@@ -346,6 +346,27 @@ const TablePage = () => {
               title: 'TableFigure',
               render: () => <TableFigurePropTable renderPanel={false} />,
             },
+          ]}
+        />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            'Keep column headers to one or two words.',
+            'Add pagination controls if the user is likely to have 5+ rows of data to view.',
+          ]}
+          discouraged={[
+            <>
+              Don’t use this when you need to have complex interactions (e.g. filter) with the data in the{' '}
+              <Code primary>Table</Code>.
+            </>,
+            <>
+              Don’t put unrelated objects in the same <Code primary>Table</Code>.
+            </>,
+            <>
+              If using <Code primary>Table</Code>s in cramped places like modals, avoid placing too many columns.
+            </>,
           ]}
         />
       </Panel>

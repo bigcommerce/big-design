@@ -7,35 +7,39 @@ import { GuidelinesTableProps } from './types';
 export const GuidelinesTable: React.FC<GuidelinesTableProps> = ({ recommended, discouraged }) => {
   return (
     <>
-      <StatefulTable
-        columns={[{ header: 'Do', hash: 'do', render: ({ recommend }) => recommend }]}
-        items={recommended.map((rule) => ({
-          recommend: (
-            <Flex alignItems="center">
-              <FlexItem flexGrow={0} marginRight="large">
-                <CheckCircleIcon color="success" />
-              </FlexItem>
-              <FlexItem>{rule}</FlexItem>
-            </Flex>
-          ),
-        }))}
-      />
-
-      <Box marginTop="xLarge">
+      {recommended.length > 0 && (
         <StatefulTable
-          columns={[{ header: `Don't`, hash: 'dont', render: ({ discourage }) => discourage }]}
-          items={discouraged.map((rule) => ({
-            discourage: (
+          columns={[{ header: 'Do', hash: 'do', render: ({ recommend }) => recommend }]}
+          items={recommended.map((rule) => ({
+            recommend: (
               <Flex alignItems="center">
                 <FlexItem flexGrow={0} marginRight="large">
-                  <ErrorIcon color="danger" />
+                  <CheckCircleIcon color="success" />
                 </FlexItem>
                 <FlexItem>{rule}</FlexItem>
               </Flex>
             ),
           }))}
         />
-      </Box>
+      )}
+
+      {discouraged.length > 0 && (
+        <Box marginTop="xLarge">
+          <StatefulTable
+            columns={[{ header: `Don't`, hash: 'dont', render: ({ discourage }) => discourage }]}
+            items={discouraged.map((rule) => ({
+              discourage: (
+                <Flex alignItems="center">
+                  <FlexItem flexGrow={0} marginRight="large">
+                    <ErrorIcon color="danger" />
+                  </FlexItem>
+                  <FlexItem>{rule}</FlexItem>
+                </Flex>
+              ),
+            }))}
+          />
+        </Box>
+      )}
     </>
   );
 };

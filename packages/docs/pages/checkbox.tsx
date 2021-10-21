@@ -1,7 +1,7 @@
 import { Checkbox, Form, FormGroup, H1, Panel, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { CheckboxDescriptionLinkPropTable, CheckboxDescriptionPropTable, CheckboxPropTable } from '../PropTables';
 
 const CheckboxPage = () => {
@@ -10,10 +10,14 @@ const CheckboxPage = () => {
       <H1>Checkbox</H1>
 
       <Panel header="Overview" headerId="overview">
-        <Text>Checkboxes let users toggle settings on and off within a form.</Text>
+        <Text>
+          <Code primary>Checkbox</Code>es let users toggle settings on and off within a form.
+        </Text>
         <Text bold>When to use it:</Text>
         <List>
-          <List.Item>Use checkboxes when users can make toggle one or more items in a form.</List.Item>
+          <List.Item>
+            Use <Code primary>Checkbox</Code>es when users can make toggle one or more items in a form.
+          </List.Item>
         </List>
       </Panel>
 
@@ -27,8 +31,8 @@ const CheckboxPage = () => {
               render: () => (
                 <>
                   <Text>
-                    Checkboxes are a stylized <Code>input[type="checkbox"]</Code> with controllable checked/unchecked
-                    states.
+                    <Code primary>Checkbox</Code>es are a stylized <Code>input[type="checkbox"]</Code> with controllable
+                    checked/unchecked states.
                   </Text>
 
                   <CodePreview>
@@ -61,8 +65,8 @@ const CheckboxPage = () => {
               render: () => (
                 <>
                   <Text>
-                    Checkboxes support <Code primary>isIndeterminate</Code> passed as a prop to show a combined state of
-                    partially selected checkboxes.
+                    <Code primary>Checkbox</Code>es support <Code primary>isIndeterminate</Code> passed as a prop to
+                    show a combined state of partially selected checkboxes.
                   </Text>
 
                   <CodePreview>
@@ -83,8 +87,8 @@ const CheckboxPage = () => {
               render: () => (
                 <>
                   <Text>
-                    Checkboxes support <Code primary>description</Code> passed as a prop, which contains a text and an
-                    optional link.
+                    <Code primary>Checkbox</Code>es support <Code primary>description</Code> passed as a prop, which
+                    contains a text and an optional link.
                   </Text>
 
                   <CodePreview>
@@ -150,6 +154,24 @@ const CheckboxPage = () => {
                 <CheckboxDescriptionLinkPropTable id="checkbox-description-link-prop-table" renderPanel={false} />
               ),
             },
+          ]}
+        />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              Use <Code primary>Checkbox</Code>es to turn on and off settings within a form.
+            </>,
+            <>
+              Group related <Code primary>Checkbox</Code>es under input label (h4).
+            </>,
+          ]}
+          discouraged={[
+            <>
+              Apply changes made with the <Code primary>Checkbox</Code> right away without additional save action.
+            </>,
           ]}
         />
       </Panel>
