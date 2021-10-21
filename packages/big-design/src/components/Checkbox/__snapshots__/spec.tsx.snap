@@ -75,6 +75,8 @@ exports[`render Checkbox checked 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin-bottom: 0.0625rem;
+  margin-top: 0.0625rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -219,6 +221,8 @@ exports[`render Checkbox disabled checked 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin-bottom: 0.0625rem;
+  margin-top: 0.0625rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -366,6 +370,8 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin-bottom: 0.0625rem;
+  margin-top: 0.0625rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -511,6 +517,8 @@ exports[`render Checkbox disabled unchecked 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin-bottom: 0.0625rem;
+  margin-top: 0.0625rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -656,6 +664,8 @@ exports[`render Checkbox indeterminate 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin-bottom: 0.0625rem;
+  margin-top: 0.0625rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -797,6 +807,8 @@ exports[`render Checkbox unchecked 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin-bottom: 0.0625rem;
+  margin-top: 0.0625rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -978,6 +990,8 @@ exports[`render Checkbox with description object 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin-bottom: 0.0625rem;
+  margin-top: 0.0625rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1148,6 +1162,8 @@ exports[`render Checkbox with description string 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin-bottom: 0.0625rem;
+  margin-top: 0.0625rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
