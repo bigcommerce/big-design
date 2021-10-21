@@ -43,6 +43,8 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   display: inline-flex;
   height: ${({ theme }) => theme.spacing.large};
   justify-content: center;
+  margin-bottom: ${({ theme }) => theme.helpers.remCalc(1)};
+  margin-top: ${({ theme }) => theme.helpers.remCalc(1)};
   user-select: none;
   width: ${({ theme }) => theme.spacing.large};
 
