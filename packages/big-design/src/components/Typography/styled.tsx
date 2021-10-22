@@ -86,7 +86,7 @@ export const StyledH2 = styled.h2<HeadingProps>`
 export const StyledH3 = styled.h3<HeadingProps>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.large};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   line-height: ${({ theme }) => theme.lineHeight.large};
   margin: 0 0 ${({ theme }) => theme.spacing.small};
   ${withMargins()};
