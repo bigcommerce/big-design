@@ -61,6 +61,7 @@ exports[`render Checkbox checked 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #3C64F4;
+  box-sizing: border-box;
   border: 1px solid #D9DCE9;
   border-color: #3C64F4;
   border-radius: 0.25rem;
@@ -75,8 +76,8 @@ exports[`render Checkbox checked 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 0.0625rem;
-  margin-top: 0.0625rem;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -207,6 +208,7 @@ exports[`render Checkbox disabled checked 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #3C64F4;
+  box-sizing: border-box;
   border: 1px solid #D9DCE9;
   border-color: #3C64F4;
   border-radius: 0.25rem;
@@ -221,8 +223,8 @@ exports[`render Checkbox disabled checked 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 0.0625rem;
-  margin-top: 0.0625rem;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -356,6 +358,7 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #3C64F4;
+  box-sizing: border-box;
   border: 1px solid #D9DCE9;
   border-color: #3C64F4;
   border-radius: 0.25rem;
@@ -370,8 +373,8 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 0.0625rem;
-  margin-top: 0.0625rem;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -503,6 +506,7 @@ exports[`render Checkbox disabled unchecked 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
+  box-sizing: border-box;
   border: 1px solid #D9DCE9;
   border-color: #D9DCE9;
   border-radius: 0.25rem;
@@ -517,8 +521,8 @@ exports[`render Checkbox disabled unchecked 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 0.0625rem;
-  margin-top: 0.0625rem;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -650,6 +654,7 @@ exports[`render Checkbox indeterminate 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #3C64F4;
+  box-sizing: border-box;
   border: 1px solid #D9DCE9;
   border-color: #3C64F4;
   border-radius: 0.25rem;
@@ -664,8 +669,8 @@ exports[`render Checkbox indeterminate 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 0.0625rem;
-  margin-top: 0.0625rem;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -793,6 +798,7 @@ exports[`render Checkbox unchecked 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
+  box-sizing: border-box;
   border: 1px solid #D9DCE9;
   border-color: #D9DCE9;
   border-radius: 0.25rem;
@@ -807,8 +813,8 @@ exports[`render Checkbox unchecked 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 0.0625rem;
-  margin-top: 0.0625rem;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -976,6 +982,7 @@ exports[`render Checkbox with description object 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
+  box-sizing: border-box;
   border: 1px solid #D9DCE9;
   border-color: #D9DCE9;
   border-radius: 0.25rem;
@@ -990,8 +997,8 @@ exports[`render Checkbox with description object 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 0.0625rem;
-  margin-top: 0.0625rem;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1148,6 +1155,7 @@ exports[`render Checkbox with description string 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
+  box-sizing: border-box;
   border: 1px solid #D9DCE9;
   border-color: #D9DCE9;
   border-radius: 0.25rem;
@@ -1162,8 +1170,8 @@ exports[`render Checkbox with description string 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 0.0625rem;
-  margin-top: 0.0625rem;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
