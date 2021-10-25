@@ -6,14 +6,15 @@ import { SelectAction, SelectOption } from '../../Select';
 import { Tooltip } from '../../Tooltip';
 import { Small } from '../../Typography';
 
-import { StyledLink } from './styled';
+import { StyledLabel, StyledLink } from './styled';
 
 interface ContentProps {
   item: DropdownItem | DropdownLinkItem | SelectOption<any> | SelectAction;
   isHighlighted: boolean;
+  isSelected: boolean;
 }
 
-export const Content = memo(({ item, isHighlighted }: ContentProps) => {
+export const Content = memo(({ item, isHighlighted, isSelected }: ContentProps) => {
   const iconColor = useMemo(() => {
     if (item.disabled) {
       return 'secondary40';
@@ -84,7 +85,9 @@ export const Content = memo(({ item, isHighlighted }: ContentProps) => {
             <Small color={descriptionColor(disabled)}>{description}</Small>
           </FlexItem>
         ) : (
-          content
+          <StyledLabel content={content} isSelected={isSelected}>
+            {content}
+          </StyledLabel>
         )}
       </Flex>
     );
@@ -93,7 +96,7 @@ export const Content = memo(({ item, isHighlighted }: ContentProps) => {
       'type' in item && item.type === 'link' && !disabled ? wrapInLink(item, baseContent) : baseContent;
 
     return disabled && 'tooltip' in item && item.tooltip ? wrapInTooltip(item.tooltip, finalContent) : finalContent;
-  }, [descriptionColor, item, renderIcon, wrapInLink, wrapInTooltip]);
+  }, [descriptionColor, item, renderIcon, wrapInLink, wrapInTooltip, isSelected]);
 
   return getContent;
 });

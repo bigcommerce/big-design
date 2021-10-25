@@ -69,6 +69,19 @@ export const StyledListItem = styled.li<ListItemProps<unknown>>`
   }
 `;
 
+export const StyledLabel = styled.span<any>`
+  margin-right: ${({ theme, isSelected }) => (isSelected ? theme.helpers.remCalc(8) : theme.helpers.remCalc(28))};
+
+  &:after {
+    display: block;
+    content: attr(content);
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    font-weight: 700;
+  }
+`;
+
 export const StyledLink = styled.a`
   ${withTransition(['background-color', 'color'])}
 
@@ -86,3 +99,4 @@ export const StyledLink = styled.a`
 
 StyledListItem.defaultProps = { theme: defaultTheme };
 StyledLink.defaultProps = { theme: defaultTheme };
+StyledLabel.defaultProps = { theme: defaultTheme };
