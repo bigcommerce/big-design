@@ -1,7 +1,7 @@
 import { AlertProps, Button, H1, H3, Message, Panel, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, CodeSnippet, PageNavigation } from '../components';
+import { Code, CodePreview, CodeSnippet, ContentRoutingTabs, List } from '../components';
 import {
   AlertsManagerAddMethodList,
   AlertsManagerClearMethodList,
@@ -14,83 +14,97 @@ import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../PropTable
 import { alertsManager } from './_app';
 
 const AlertPage = () => {
-  const items = [
-    {
-      id: 'examples',
-      title: 'Examples',
-      render: () => (
-        <Panel>
-          <Text>
-            Alerts are non-disruptive messages that appear at the top right of the window and provide quick, at a glance
-            feedback on the outcome of an action.
-          </Text>
-          <CodePreview scope={{ alertsManager }}>
-            {/* jsx-to-string:start */}
-            {function Example() {
-              const alert = {
-                header: 'Optional Headline',
-                messages: [
-                  {
-                    text: 'Required description copy.',
-                    link: {
-                      text: 'Optional Link',
-                      href: '#',
-                    },
-                  },
-                ],
-                type: 'success',
-                onClose: () => null,
-              } as AlertProps;
+  return (
+    <>
+      <H1>Alert</H1>
 
-              return <Button onClick={() => alertsManager.add(alert)}>Trigger Alert</Button>;
-            }}
-            {/* jsx-to-string:end */}
-          </CodePreview>
-        </Panel>
-      ),
-    },
-    {
-      id: 'props',
-      title: 'Props',
-      render: () => (
-        <>
-          <AlertPropTable>
-            <Message
-              type="warning"
-              messages={[
+      <Panel header="Overview" headerId="overview">
+        <Text>
+          Alerts are non-disruptive messages that appear at the top right of the window and provide quick, at-a-glance
+          feedback on the outcome of an action.
+        </Text>
+        <Text bold>When to use:</Text>
+        <List>
+          <List.Item>To update merchants about a change or give them advice.</List.Item>
+        </List>
+      </Panel>
+
+      <Panel header="Implementation" headerId="implementation">
+        <CodePreview scope={{ alertsManager }}>
+          {/* jsx-to-string:start */}
+          {function Example() {
+            const alert = {
+              header: 'Optional Headline',
+              messages: [
                 {
-                  text: 'Note: You should not use the Alert component directly. Instead, inject the AlertsManager component into your app and use the instance created by the createAlertsManager utility function to control which Alerts are displayed.',
+                  text: 'Required description copy.',
+                  link: {
+                    text: 'Optional Link',
+                    href: '#',
+                  },
                 },
-              ]}
-              marginBottom="large"
-            />
-          </AlertPropTable>
+              ],
+              type: 'success',
+              onClose: () => null,
+            } as AlertProps;
 
-          <MessagingItemPropTable title="Alert[MessageItem]" />
+            return <Button onClick={() => alertsManager.add(alert)}>Trigger Alert</Button>;
+          }}
+          {/* jsx-to-string:end */}
+        </CodePreview>
+      </Panel>
 
-          <MessagingLinkItemPropTable title="Alert[MessageLinkItem]" />
-        </>
-      ),
-    },
-    {
-      id: 'manager',
-      title: 'Alert manager',
-      render: () => (
-        <>
-          <Panel header="AlertsManager">
-            <Text>
-              BigDesign comes with an <Code primary>AlertsManager</Code> component that will manage and display which
-              alerts to display and in which order by type. The order of priority from highest to lowest is{' '}
-              <Code>error</Code>, <Code>warning</Code>, <Code>success</Code>, <Code>info</Code>.
-            </Text>
+      <Panel header="Props" headerId="props">
+        <ContentRoutingTabs
+          id="props"
+          routes={[
+            {
+              id: 'alert',
+              title: 'Alert',
+              render: () => (
+                <>
+                  <Message
+                    type="error"
+                    marginTop="medium"
+                    messages={[
+                      {
+                        text: 'Note: You should not use the Alert component directly. Instead, inject the AlertsManager component into your app and use the instance created by the createAlertsManager utility function to control which Alerts are displayed.',
+                      },
+                    ]}
+                    marginBottom="large"
+                  />
+                  <AlertPropTable renderPanel={false} />
+                </>
+              ),
+            },
+            {
+              id: 'message-item',
+              title: 'MessageItem',
+              render: () => <MessagingItemPropTable renderPanel={false} />,
+            },
+            {
+              id: 'message-link-item',
+              title: 'MessageLinkItem',
+              render: () => <MessagingLinkItemPropTable renderPanel={false} />,
+            },
+          ]}
+        />
+      </Panel>
 
-            <Text>
-              To use this component, put it in your root component (e.g. place it after <Code>GlobalStyles</Code>{' '}
-              component):
-            </Text>
+      <Panel header="AlertsManager">
+        <Text>
+          BigDesign comes with an <Code primary>AlertsManager</Code> component that will manage and display which alerts
+          to display and in which order by type. The order of priority from highest to lowest is <Code>error</Code>,{' '}
+          <Code>warning</Code>, <Code>success</Code>, <Code>info</Code>.
+        </Text>
 
-            <CodeSnippet>
-              {`
+        <Text>
+          To use this component, put it in your root component (e.g. place it after <Code>GlobalStyles</Code>{' '}
+          component):
+        </Text>
+
+        <CodeSnippet>
+          {`
          export const alertsManager = createAlertsManager(); // import this in child components to use alerts
 
          function App() {
@@ -104,16 +118,16 @@ const AlertPage = () => {
            );
          }
        `}
-            </CodeSnippet>
-            <H3>Add alert</H3>
-            <Text>
-              This works in conjunction with an instance created by <Code>createAlertsManager</Code> function below. You
-              need to export <Code>alertsManager</Code> instance and then you can import it in child components in order
-              to trigger alert:
-            </Text>
+        </CodeSnippet>
+        <H3>Add alert</H3>
+        <Text>
+          This works in conjunction with an instance created by <Code>createAlertsManager</Code> function below. You
+          need to export <Code>alertsManager</Code> instance and then you can import it in child components in order to
+          trigger alert:
+        </Text>
 
-            <CodeSnippet>
-              {`
+        <CodeSnippet>
+          {`
          import { alertsManager } from '../App';
 
          // ...
@@ -121,36 +135,27 @@ const AlertPage = () => {
          const alert = {...}; // alert props
          alertsManager.add(alert);
        `}
-            </CodeSnippet>
-          </Panel>
-          <Panel header="Alert manager functions">
-            <Text>
-              The <Code>createAlertsManager</Code> function returns an instance for managing which alert to display.
-            </Text>
+        </CodeSnippet>
 
-            <CodeSnippet showControls={false}>
-              {/* jsx-to-string:start */}
-              const alertsManager = createAlertsManager();
-              {/* jsx-to-string:end */}
-            </CodeSnippet>
-            <AlertsManagerAddMethodList />
+        <H3>API</H3>
 
-            <AlertsManagerRemoveMethodList />
+        <Text>
+          The <Code>createAlertsManager</Code> function returns an instance for managing which alert to display.
+        </Text>
 
-            <AlertsManagerClearMethodList />
+        <CodeSnippet showControls={false}>
+          {/* jsx-to-string:start */}
+          const alertsManager = createAlertsManager();
+          {/* jsx-to-string:end */}
+        </CodeSnippet>
+        <AlertsManagerAddMethodList />
 
-            <AlertsManagerSubscribeMethodList />
-          </Panel>
-        </>
-      ),
-    },
-  ];
+        <AlertsManagerRemoveMethodList />
 
-  return (
-    <>
-      <H1>Alert</H1>
+        <AlertsManagerClearMethodList />
 
-      <PageNavigation items={items} />
+        <AlertsManagerSubscribeMethodList />
+      </Panel>
     </>
   );
 };
