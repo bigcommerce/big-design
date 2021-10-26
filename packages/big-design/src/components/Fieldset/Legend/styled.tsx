@@ -1,9 +1,9 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { DefaultTheme, StyledComponent } from 'styled-components';
 
-import { StyleableH3 } from '../../Typography/private';
+import { StyleableH4 } from '../../Typography/private';
 
-export const StyledFieldsetLegend = styled(StyleableH3).attrs({ as: 'legend' })`
+export const StyledFieldsetLegend = styled(StyleableH4).attrs({ as: 'legend' })`
   &:not(:last-child) {
     margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
   }
