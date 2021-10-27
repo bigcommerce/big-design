@@ -8,7 +8,7 @@ const counterProps: Prop[] = [
     types: ['string', 'FormControlLabel'],
     description: (
       <>
-        Label element for <Code primary>Counters</Code>. Component with auto generate <Code>id</Code>'s for the
+        Label element for <Code primary>Counters</Code>. Component will auto generate <Code>id</Code>'s for the
         accessibility API.
       </>
     ),
