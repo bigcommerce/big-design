@@ -14,13 +14,13 @@ const CounterPage = () => {
           <Code primary>Counter</Code> is a field that lets you increase or decrease its value incrementally, as well as
           directly input a value.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            Use <Code primary>Counter</Code>s to input values that have a small range of likely values (e.g. 1-10).
+            Use <Code primary>Counters</Code> to input values that have a small range of likely values (e.g. 1-10).
           </List.Item>
           <List.Item>
-            Use <Code primary>Counter</Code>s for values that are usually a number with some exceptions - e.g. number of
+            Use <Code primary>Counters</Code> for values that are usually a number with some exceptions - e.g. number of
             copies.
           </List.Item>
         </List>
@@ -36,7 +36,7 @@ const CounterPage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>Counter</Code>s are stylized numerical form controls with the ability to control
+                    <Code primary>Counters</Code> are stylized numerical form controls with the ability to control
                     validation.
                   </Text>
                   <CodePreview>
@@ -73,7 +73,7 @@ const CounterPage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>Counter</Code>s allow you to pass in an <Code primary>error</Code> message that will
+                    <Code primary>Counters</Code> allow you to pass in an <Code primary>error</Code> message that will
                     control the styles of a <Code primary>Counter</Code>. The logic on the counter can be controlled
                     with the <Code primary>onCountChange</Code> prop.
                   </Text>
@@ -125,11 +125,11 @@ const CounterPage = () => {
         <GuidelinesTable
           recommended={[
             <>
-              <Code primary>Counter</Code>s should have a default value that represents the most likley choice the user
+              <Code primary>Counters</Code> should have a default value that represents the most likley choice the user
               will take.
             </>,
             <>
-              <Code primary>Counter</Code>s should always have a clear label as to what the number represents.
+              <Code primary>Counters</Code> should always have a clear label as to what the number represents.
             </>,
             <>
               Include relevant signs (e.g. %, $) in the <Code primary>Counter</Code> to give context for the value’s
@@ -138,7 +138,7 @@ const CounterPage = () => {
           ]}
           discouraged={[
             <>
-              Avoid <Code primary>Counter</Code>s if the value will likley change by large/unpredictable increments
+              Avoid <Code primary>Counters</Code> if the value will likley change by large/unpredictable increments
               (e.g. price).
             </>,
           ]}

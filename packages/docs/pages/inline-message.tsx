@@ -12,10 +12,10 @@ const InlineMessagePage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          Inline messages inform merchants about important component/section level changes or persistent conditions that
-          need their attention.
+          <Code primary>InlineMessages</Code> inform merchants about important component/section level changes or
+          persistent conditions that need their attention.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>
             To alert the merchant of a change or condition related to an individual component or section.
@@ -33,8 +33,8 @@ const InlineMessagePage = () => {
               render: () => (
                 <>
                   <Text>
-                    An inline message, mostly used for displaying alerts within <Code primary>Modal</Code>s. Is a
-                    condensed version of the <Code primary>Message</Code> component.
+                    An inline message, mostly used for displaying alerts within <Code primary>Modals</Code>. Is a
+                    condensed version of the <NextLink href="/message">Message</NextLink> component.
                   </Text>
 
                   <CodePreview>
@@ -102,7 +102,7 @@ const InlineMessagePage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>InlineMessage</Code>'s allow you to pass an optional <Code primary>header</Code> prop.
+                    <Code primary>InlineMessages</Code> allow you to pass an optional <Code primary>header</Code> prop.
                   </Text>
 
                   <CodePreview>
@@ -158,8 +158,7 @@ const InlineMessagePage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>InlineMessage</Code>'s allow you to pass an optional <Code primary>actions</Code>{' '}
-                    prop.
+                    <Code primary>InlineMessages</Code> allow you to pass an optional <Code primary>actions</Code> prop.
                   </Text>
 
                   <CodePreview>
@@ -227,18 +226,18 @@ const InlineMessagePage = () => {
           ]}
           discouraged={[
             <>
-              Never use <Code primary>InlineMessage</Code>s for marketing information or upsell.
+              Never use <Code primary>InlineMessages</Code> for marketing information or upsell.
             </>,
             <>
-              Don’t use <Code primary>InlineMessage</Code>s as the primary entry point for information or actions that
+              Don’t use <Code primary>InlineMessages</Code> as the primary entry point for information or actions that
               the merchant needs on a regular basis.
             </>,
             <>
-              Never place <Code primary>InlineMessage</Code>s in the middle or at the bottom of a page. Instead use a{' '}
+              Never place <Code primary>InlineMessages</Code> in the middle or at the bottom of a page. Instead use a{' '}
               <NextLink href="/message">Message</NextLink>.
             </>,
             <>
-              Never use <Code primary>InlineMessage</Code>s for quick, dismissable feedback on actions. Instead use{' '}
+              Never use <Code primary>InlineMessages</Code> for quick, dismissable feedback on actions. Instead use{' '}
               <NextLink href="/alert">Alerts</NextLink>.
             </>,
           ]}

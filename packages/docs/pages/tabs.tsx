@@ -11,7 +11,7 @@ const TabsPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Tab</Code>s are navigation elements at the top of the page, used to switch between different
+          <Code primary>Tabs</Code> are navigation elements at the top of the page, used to switch between different
           groups of related content on a page.
         </Text>
         <Text bold>When to use:</Text>

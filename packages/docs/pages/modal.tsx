@@ -11,10 +11,10 @@ const ModalPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          Modals sit on top of the page, containing additional content or functionality without leaving the context of a
-          page.
+          <Code primary>Modals</Code> sit on top of the page, containing additional content or functionality without
+          leaving the context of a page.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>To focus on a particular on an specific task or content.</List.Item>
           <List.Item>To confirm high impact actions (e.g. deleting a configuration).</List.Item>
@@ -31,8 +31,9 @@ const ModalPage = () => {
               render: () => (
                 <>
                   <Text>
-                    A modal appears as a layer on top of the primary interface. Modals disrupt users from interacting
-                    with the page until they complete a specific task.
+                    A <Code primary>Modal</Code> appears as a layer on top of the primary interface.{' '}
+                    <Code primary>Modals</Code> disrupt users from interacting with the page until they complete a
+                    specific task.
                   </Text>
 
                   <CodePreview>
@@ -76,8 +77,9 @@ const ModalPage = () => {
               render: () => (
                 <>
                   <Text>
-                    Setting the variant prop to <Code primary>dialog</Code> results in a simplified version of a Modal.
-                    The purpose of a dialog is to act as a safety net for a user attempting a destructive action.
+                    Setting the variant prop to <Code primary>dialog</Code> results in a simplified version of a{' '}
+                    <Code primary>Modal</Code>. The purpose of a dialog is to act as a safety net for a user attempting
+                    a destructive action.
                   </Text>
 
                   <CodePreview>

@@ -11,10 +11,10 @@ const DatepickerPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Datepicker</Code>s allow users to select a specific date. Users can input dates either by typing
+          <Code primary>Datepickers</Code> allow users to select a specific date. Users can input dates either by typing
           on the field or by selecting from the dropdown calendar.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>
             Use a <Code primary>Datepicker</Code> when the user need to input a specific date. It works best when the

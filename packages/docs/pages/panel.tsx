@@ -1,7 +1,7 @@
 import { H1, Panel, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { CodePreview, List } from '../components';
+import { Code, CodePreview, List } from '../components';
 import { MarginPropTable, PanelPropTable } from '../PropTables';
 
 const PanelPage = () => {
@@ -11,12 +11,14 @@ const PanelPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          Panels allows group content within a page. Content and actions on a page that are not in the header should be
-          contained in a panel.
+          <Code primary>Panel</Code> allows group content within a page. Content and actions on a page that are not in
+          the header should be contained in a panel.
         </Text>
         <Text bold>When to use:</Text>
         <List>
-          <List.Item>Use seperate panels to group related content or tasks on a page.</List.Item>
+          <List.Item>
+            Use seperate <Code primary>Panels</Code> to group related content or tasks on a page.
+          </List.Item>
         </List>
       </Panel>
 

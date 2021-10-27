@@ -8,15 +8,17 @@ import { ButtonGroupPropTable } from '../PropTables';
 const ButtonGroupPage = () => {
   return (
     <>
-      <H1>Button Group</H1>
+      <H1>ButtonGroup</H1>
 
       <Panel header="Overview" headerId="overview">
         <Text>
           Allows to save space and reduce visual overload when there are multiple actions available for the same entity.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
-          <List.Item>In tables as a list of bulk actions available for the selected items.</List.Item>
+          <List.Item>
+            In <Code primary>Tables</Code> as a list of bulk actions available for the selected items.
+          </List.Item>
         </List>
       </Panel>
 
@@ -30,7 +32,7 @@ const ButtonGroupPage = () => {
               render: () => (
                 <>
                   <Text>
-                    The <Code primary>Button Group</Code> component is used for grouping actions like{' '}
+                    The <Code primary>ButtonGroup</Code> component is used for grouping actions like{' '}
                     <Code primary>Button</Code>. Allows to save space and reduce visual overload when there are multiple
                     actions available for the same entity.
                   </Text>

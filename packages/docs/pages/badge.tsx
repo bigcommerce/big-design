@@ -12,16 +12,16 @@ const BadgePage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Badge</Code>s are labels that indicate the status of an object on the page.
+          <Code primary>Badges</Code> are labels that indicate the status of an object on the page.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            Use <Code primary>Badge</Code>s to indicate the connection status of a 3rd party integration (e.g. payment
+            Use <Code primary>Badges</Code> to indicate the connection status of a 3rd party integration (e.g. payment
             method, a channel connection).
           </List.Item>
           <List.Item>
-            You can also use <Code primary>Badge</Code>s to call attention to new features (e.g. “new”) or recommended
+            You can also use <Code primary>Badges</Code> to call attention to new features (e.g. “new”) or recommended
             integrations.
           </List.Item>
         </List>
@@ -80,7 +80,7 @@ const BadgePage = () => {
           recommended={['Use the right colour for the right situation (e.g. red when something is broken / wrong).']}
           discouraged={[
             <>
-              Don’t apply multiple <Code primary>Badge</Code>s to the same object.
+              Don’t apply multiple <Code primary>Badges</Code> to the same object.
             </>,
           ]}
         />

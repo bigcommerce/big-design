@@ -17,21 +17,21 @@ const SwitchPage = () => {
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            <Code primary>Switch</Code>'s toggle between an “on” and an “off” state; one must always be selected.
+            <Code primary>Switches</Code> toggle between an “on” and an “off” state; one must always be selected.
           </List.Item>
           <List.Item>
             A <Code primary>Switch</Code>'s impact should be immediate. Therefore it is not appropriate to use a{' '}
             <Code primary>Switch</Code> in a form.
           </List.Item>
           <List.Item>
-            <Code primary>Switch</Code>'s should be used if each item in a list or set can be individually controlled.
+            <Code primary>Switches</Code> should be used if each item in a list or set can be individually controlled.
           </List.Item>
         </List>
       </Panel>
 
       <Panel header="Implementation" headerId="implementation">
         <Text>
-          <Code primary>Switch</Code>'s are a stylized <Code>input[type="checkbox"]</Code> with controllable
+          <Code primary>Switches</Code> are a stylized <Code>input[type="checkbox"]</Code> with controllable
           checked/unchecked states.
         </Text>
         <CodePreview>
@@ -81,13 +81,13 @@ const SwitchPage = () => {
               <Code primary>Switch</Code> alone should be sufficient to indicate status.
             </>,
             <>
-              Don’t use <Code primary>Switch</Code>es for actions that do not have immediate effect, or those that
+              Don’t use <Code primary>Switches</Code> for actions that do not have immediate effect, or those that
               require a Save or Confirm button. A single checkbox or radio buttons are better suited for these
               instances.
             </>,
             <>
-              Don’t use <Code primary>Switch</Code>es for settings that have ambiguous options.{' '}
-              <Code primary>Switch</Code>es should be used to toggle between “on” and “off.”
+              Don’t use <Code primary>Switches</Code> for settings that have ambiguous options.{' '}
+              <Code primary>Switches</Code> should be used to toggle between “on” and “off.”
             </>,
             <>Don’t use radio buttons, checkboxes, or other methods to indicate a setting is “on” or “off.”</>,
             <>

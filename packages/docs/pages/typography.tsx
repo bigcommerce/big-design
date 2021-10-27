@@ -10,7 +10,7 @@ const TypographyPage = () => {
       <H1>Typography</H1>
 
       <Panel header="Overview" headerId="overview">
-        <Text>BigCommerce uses Source Sans Pro for all text, with different weights for headings and subtext. </Text>
+        <Text>BigCommerce uses Source Sans Pro for all text, with different weights for headings and subtext.</Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>Use hero headers only for content-focused pages, e.g. a feature discovery page.</List.Item>

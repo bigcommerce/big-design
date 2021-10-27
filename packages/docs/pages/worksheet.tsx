@@ -100,8 +100,8 @@ const WorksheetPage = () => {
             additional details.
           </List.Item>
           <List.Item>
-            Unlike tables, a <Code primary>Worksheet</Code> component is actionable and interactive and should be used
-            in situations where editing is the primary purpose.
+            Unlike <Code primary>Tables</Code>, a <Code primary>Worksheet</Code> component is actionable and interactive
+            and should be used in situations where editing is the primary purpose.
           </List.Item>
         </List>
       </Panel>

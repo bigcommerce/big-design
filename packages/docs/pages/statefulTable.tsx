@@ -117,7 +117,7 @@ const StatefulTablePage = () => {
           <Code primary>StatefulTables</Code> are used to do custom actions and analysis across data related to a single
           subject.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>
             When you want the user to have deep interactions with multiple objects of the same type (e.g. orders,

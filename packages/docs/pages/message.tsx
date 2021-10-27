@@ -12,10 +12,10 @@ const MessagePage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Message</Code>s inform merchants about important page or system level changes or persistent
+          <Code primary>Messages</Code> inform merchants about important page or system level changes or persistent
           conditions that need their attention.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>To communicate to the merchant in a prominent way.</List.Item>
           <List.Item>To update them about a change or give them pertinent information.</List.Item>
@@ -102,7 +102,7 @@ const MessagePage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>Message</Code>s allow you to pass an optional <Code primary>header</Code> prop.
+                    <Code primary>Messages</Code> allow you to pass an optional <Code primary>header</Code> prop.
                   </Text>
 
                   <CodePreview>
@@ -158,7 +158,7 @@ const MessagePage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>Message</Code>s allow you to pass an optional <Code primary>actions</Code> prop.
+                    <Code primary>Messages</Code> allow you to pass an optional <Code primary>actions</Code> prop.
                   </Text>
 
                   <CodePreview>
@@ -217,7 +217,7 @@ const MessagePage = () => {
         <GuidelinesTable
           recommended={[
             'To display a page or system level message.',
-            'Can be persistent (until the issue is resolved)  or dismissable.',
+            'Can be persistent (until the issue is resolved) or dismissable.',
             'Should be placed directly below the page header at the top of the page.',
             'Should focus on a single theme or piece of information and must include a clear description that summarises the issue and how to resolve it.',
             'Be written in sentence case with appropriate punctuation.',
