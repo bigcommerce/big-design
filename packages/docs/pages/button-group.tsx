@@ -2,7 +2,7 @@ import { Box, ButtonGroup, H1, Panel, Text } from '@bigcommerce/big-design';
 import { CheckIcon, InfoIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { ButtonGroupPropTable } from '../PropTables';
 
 const ButtonGroupPage = () => {
@@ -107,6 +107,22 @@ const ButtonGroupPage = () => {
 
       <Panel header="Props" headerId="props">
         <ButtonGroupPropTable renderPanel={false} />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            'Hide secondary actions or actions that doesn’t fit the container under ellipsis.',
+            'Hide destructive actions under ellipsis.',
+            'Keep all the controls in the same outlined style.',
+            'Show only actions that are available for the entity.',
+          ]}
+          discouraged={[
+            'Move some controls to the second row.',
+            'Stylize some of the actions in the group differently (disabled, primary, destructive, etc.)',
+            'Use icons or text + icon for actions (except for ellipsis).',
+          ]}
+        />
       </Panel>
     </>
   );

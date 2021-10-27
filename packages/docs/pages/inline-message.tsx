@@ -1,7 +1,7 @@
 import { H1, InlineMessage, Panel, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
 import { InlineMessagePropTable } from '../PropTables';
 import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../PropTables/shared';
 
@@ -33,8 +33,8 @@ const InlineMessagePage = () => {
               render: () => (
                 <>
                   <Text>
-                    An inline message, mostly used for displaying alerts within Modals. Is a condensed version of the{' '}
-                    <Code primary>Message</Code> component.
+                    An inline message, mostly used for displaying alerts within <Code primary>Modal</Code>s. Is a
+                    condensed version of the <Code primary>Message</Code> component.
                   </Text>
 
                   <CodePreview>
@@ -210,6 +210,37 @@ const InlineMessagePage = () => {
               title: 'MessageLinkItem',
               render: () => <MessagingLinkItemPropTable id="message-link-item-prop-table" renderPanel={false} />,
             },
+          ]}
+        />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              Place message within the <Code primary>Modal</Code> or <Code primary>Panel</Code> where the information or
+              actions related to the message are located.
+            </>,
+            'Can be persistent (until the issue is resolved)  or dismissable.',
+            'Focus on a single theme or piece of information and include a clear description that summarises the issue and how to resolve it. ',
+            'Should be written in sentence case with appropriate punctuation. ',
+          ]}
+          discouraged={[
+            <>
+              Never use <Code primary>InlineMessage</Code>s for marketing information or upsell.
+            </>,
+            <>
+              Don’t use <Code primary>InlineMessage</Code>s as the primary entry point for information or actions that
+              the merchant needs on a regular basis.
+            </>,
+            <>
+              Never place <Code primary>InlineMessage</Code>s in the middle or at the bottom of a page. Instead use a{' '}
+              <NextLink href="/message">Message</NextLink>.
+            </>,
+            <>
+              Never use <Code primary>InlineMessage</Code>s for quick, dismissable feedback on actions. Instead use{' '}
+              <NextLink href="/alert">Alerts</NextLink>.
+            </>,
           ]}
         />
       </Panel>

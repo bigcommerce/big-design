@@ -1,7 +1,7 @@
 import { Form, FormGroup, H1, Panel, Text, Textarea } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { TextareaPropTable } from '../PropTables';
 
 const TextAreaPage = () => {
@@ -143,6 +143,23 @@ const TextAreaPage = () => {
 
       <Panel header="Props" headerId="props">
         <TextareaPropTable renderPanel={false} />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              Use the default size of the <Code primary>Textarea</Code> to set expectations of the size of user input -
+              e.g. a paragraph or single sentence.
+            </>,
+          ]}
+          discouraged={[
+            <>
+              Don’t use <Code primary>Textarea</Code>s when a single line text input is fine (e.g. a line for an
+              address).
+            </>,
+          ]}
+        />
       </Panel>
     </>
   );
