@@ -15,7 +15,7 @@ const StatefulTreePage = () => {
           The <Code primary>StatefulTree</Code> component is used to display a tree of items. Useful for defining a tree
           of categories or subcollections.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>To display a tree of items</List.Item>
           <List.Item>Creating or assigning items to a specific category/sub-category</List.Item>

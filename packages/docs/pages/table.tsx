@@ -54,8 +54,8 @@ const TablePage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Table</Code>'s' are used to display data related to a single subject, across one or more rows
-          and columns.
+          <Code primary>Tables</Code> are used to display data related to a single subject, across one or more rows and
+          columns.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -214,7 +214,7 @@ const TablePage = () => {
                 <>
                   <Text>
                     <Code primary>TableFigure</Code> components are used to wrap tables and any relevant information to
-                    be grouped with them. <Code primary>TableFigure</Code>s also provide a scrollable overflow on mobile
+                    be grouped with them. <Code primary>TableFigures</Code> also provide a scrollable overflow on mobile
                     for tables with large amounts of data. Try removing the <Code primary>TableFigure</Code> component
                     below in mobile view to see the differences.
                   </Text>

@@ -11,7 +11,7 @@ const TimepickerPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Timepicker</Code>s allow users to choose a time value from the provided options. They can be
+          <Code primary>Timepickers</Code> allow users to choose a time value from the provided options. They can be
           used for a wide range of scenarios like specifiying promotion start/end time, store location working hours and
           so on.
         </Text>

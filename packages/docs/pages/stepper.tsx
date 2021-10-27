@@ -65,7 +65,7 @@ const StepperPage = () => {
           ]}
           discouraged={[
             <>
-              Don’t use multiple <Code primary>Stepper</Code>s on one page.
+              Don’t use multiple <Code primary>Steppers</Code> on one page.
             </>,
             'Don’t use long step labels.',
             "Don’t add/modify number of steps dynamically. Number of steps shouldn't change mid-way through the flow due to what the user selected.",

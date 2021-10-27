@@ -13,7 +13,7 @@ const CollapsePage = () => {
         <Text>
           The <Code primary>Collapse</Code> component can hide/reveal content within a panel.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>
             Use <Code primary>Collapse</Code> to reduce clutter, hiding non-essential information or options on a panel

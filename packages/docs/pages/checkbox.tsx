@@ -11,12 +11,12 @@ const CheckboxPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Checkbox</Code>es let users toggle settings on and off within a form.
+          <Code primary>Checkboxes</Code> let users toggle settings on and off within a form.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            Use <Code primary>Checkbox</Code>es when users can make toggle one or more items in a form.
+            Use <Code primary>Checkboxes</Code> when users can toggle one or more items in a form.
           </List.Item>
         </List>
       </Panel>
@@ -31,7 +31,7 @@ const CheckboxPage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>Checkbox</Code>es are a stylized <Code>input[type="checkbox"]</Code> with controllable
+                    <Code primary>Checkboxes</Code> are a stylized <Code>input[type="checkbox"]</Code> with controllable
                     checked/unchecked states.
                   </Text>
 
@@ -65,8 +65,8 @@ const CheckboxPage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>Checkbox</Code>es support <Code primary>isIndeterminate</Code> passed as a prop to
-                    show a combined state of partially selected checkboxes.
+                    <Code primary>Checkboxes</Code> support <Code primary>isIndeterminate</Code> passed as a prop to
+                    show a combined state of partially selected <Code primary>Checkboxes</Code>.
                   </Text>
 
                   <CodePreview>
@@ -87,7 +87,7 @@ const CheckboxPage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>Checkbox</Code>es support <Code primary>description</Code> passed as a prop, which
+                    <Code primary>Checkboxes</Code> support <Code primary>description</Code> passed as a prop, which
                     contains a text and an optional link.
                   </Text>
 
@@ -162,10 +162,10 @@ const CheckboxPage = () => {
         <GuidelinesTable
           recommended={[
             <>
-              Use <Code primary>Checkbox</Code>es to turn on and off settings within a form.
+              Use <Code primary>Checkboxes</Code> to turn on and off settings within a form.
             </>,
             <>
-              Group related <Code primary>Checkbox</Code>es under input label (h4).
+              Group related <Code primary>Checkboxes</Code> under input label (h4).
             </>,
           ]}
           discouraged={[
