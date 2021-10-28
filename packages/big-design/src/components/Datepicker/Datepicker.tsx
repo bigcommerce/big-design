@@ -40,7 +40,7 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
   const localization = createLocalizationProvider(locale);
 
   registerLocale(locale, localization);
-  const updateDate = (value: Date) => onDateChange(value.toISOString());
+  const updateDate = (value: Date) => onDateChange(value ? value.toISOString() : value);
 
   useEffect(() => {
     if (typeof value === 'string') {
