@@ -1,7 +1,7 @@
 import { H1, Panel, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import {
   TableColumnsPropTable,
   TableFigurePropTable,
@@ -54,8 +54,8 @@ const TablePage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Table</Code>'s' are used to display data related to a single subject, across one or more rows
-          and columns.
+          <Code primary>Tables</Code> are used to display data related to a single subject, across one or more rows and
+          columns.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -214,7 +214,7 @@ const TablePage = () => {
                 <>
                   <Text>
                     <Code primary>TableFigure</Code> components are used to wrap tables and any relevant information to
-                    be grouped with them. <Code primary>TableFigure</Code>s also provide a scrollable overflow on mobile
+                    be grouped with them. <Code primary>TableFigures</Code> also provide a scrollable overflow on mobile
                     for tables with large amounts of data. Try removing the <Code primary>TableFigure</Code> component
                     below in mobile view to see the differences.
                   </Text>
@@ -346,6 +346,27 @@ const TablePage = () => {
               title: 'TableFigure',
               render: () => <TableFigurePropTable renderPanel={false} />,
             },
+          ]}
+        />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            'Keep column headers to one or two words.',
+            'Add pagination controls if the user is likely to have 5+ rows of data to view.',
+          ]}
+          discouraged={[
+            <>
+              Don’t use this when you need to have complex interactions (e.g. filter) with the data in the{' '}
+              <Code primary>Table</Code>.
+            </>,
+            <>
+              Don’t put unrelated objects in the same <Code primary>Table</Code>.
+            </>,
+            <>
+              If using <Code primary>Table</Code>s in cramped places like modals, avoid placing too many columns.
+            </>,
           ]}
         />
       </Panel>

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.3-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.2...@bigcommerce/big-design@0.30.3-alpha.0) (2021-10-28)
+
+
+### Bug Fixes
+
+* **component:** add iconless prop to StatefulTree ([dcbe4e6](https://github.com/bigcommerce/big-design/commit/dcbe4e634e332248cb4152f03a7b67ea62b390fa))
+* **component:** change fieldset legend from h3 to h4 ([#644](https://github.com/bigcommerce/big-design/issues/644)) ([4461ca8](https://github.com/bigcommerce/big-design/commit/4461ca81371571e342d314ea2a87afb260714842))
+* **component:** change table paddding ([#639](https://github.com/bigcommerce/big-design/issues/639)) ([134d088](https://github.com/bigcommerce/big-design/commit/134d088d5ec91121843e71cfe3d5a18e036e1689))
+* **component:** fix checkbox alignment to label ([#643](https://github.com/bigcommerce/big-design/issues/643)) ([ef96746](https://github.com/bigcommerce/big-design/commit/ef96746b42e3566082e4797c7c1032e171be867b))
+* **component:** fix PillTab margin ([#599](https://github.com/bigcommerce/big-design/issues/599)) ([c1a37c1](https://github.com/bigcommerce/big-design/commit/c1a37c15578347f9cf26923ace4ca5451bf6891e))
+* fix props mutation ([#598](https://github.com/bigcommerce/big-design/issues/598)) ([16ef1e8](https://github.com/bigcommerce/big-design/commit/16ef1e842d7a7dffd54602779f16e49577ac10c6))
+* **component:** hide close buttons in MultiSelect ([#593](https://github.com/bigcommerce/big-design/issues/593)) ([29e0b04](https://github.com/bigcommerce/big-design/commit/29e0b04439355d57c39968cd5d17b99f8c6e93f6))
+* **component:** input errors now showing when nested ([#586](https://github.com/bigcommerce/big-design/issues/586)) ([60bb970](https://github.com/bigcommerce/big-design/commit/60bb970bf18df61fae8f0eb238fd2516cfbb9014))
+* **icons:** add `aria-hidden=true` if an icon doesn't have a title ([e3bb896](https://github.com/bigcommerce/big-design/commit/e3bb896fed2d7b1afb30f0134f161cfae5a00398))
+
+
+### Features
+
+* **component:** prevent unecessary rerender of icons in Dropdowns ([#594](https://github.com/bigcommerce/big-design/issues/594)) ([cb46e6b](https://github.com/bigcommerce/big-design/commit/cb46e6b5c26768a066eabf6ae4b2d84b6760c554))
+
+
+
+
+
 ## [0.30.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.1...@bigcommerce/big-design@0.30.2) (2021-09-03)
 
 
