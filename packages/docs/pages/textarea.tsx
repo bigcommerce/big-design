@@ -1,7 +1,7 @@
 import { Form, FormGroup, H1, Panel, Text, Textarea } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { TextareaPropTable } from '../PropTables';
 
 const TextAreaPage = () => {
@@ -11,12 +11,12 @@ const TextAreaPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Textarea</Code>s are text inputs that can be expanded to fit multi-line text content from users.
+          <Code primary>Textareas</Code> are text inputs that can be expanded to fit multi-line text content from users.
         </Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            <Code primary>Textarea</Code>s are useful when users need to create multi-sentence or paragraph length
+            <Code primary>Textareas</Code> are useful when users need to create multi-sentence or paragraph length
             content - e.g. product decriptions or messages.
           </List.Item>
         </List>
@@ -63,7 +63,7 @@ const TextAreaPage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>Textarea</Code>s allow you to pass in an <Code primary>error</Code> message that will
+                    <Code primary>Textareas</Code> allow you to pass in an <Code primary>error</Code> message that will
                     control the styles of an input. The logic on the input can be controlled with the{' '}
                     <Code primary>onChange</Code> prop.
                   </Text>
@@ -143,6 +143,23 @@ const TextAreaPage = () => {
 
       <Panel header="Props" headerId="props">
         <TextareaPropTable renderPanel={false} />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              Use the default size of the <Code primary>Textarea</Code> to set expectations of the size of user input -
+              e.g. a paragraph or single sentence.
+            </>,
+          ]}
+          discouraged={[
+            <>
+              Don’t use <Code primary>Textareas</Code> when a single line text input is fine (e.g. a line for an
+              address).
+            </>,
+          ]}
+        />
       </Panel>
     </>
   );

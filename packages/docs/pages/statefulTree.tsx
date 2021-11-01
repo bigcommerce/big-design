@@ -2,7 +2,7 @@ import { H1, Message, Panel, StatefulTree, Text } from '@bigcommerce/big-design'
 import { AssignmentIcon, LanguageIcon, StoreIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { StatefulTreePropTable, TreeNodePropTable } from '../PropTables';
 
 const StatefulTreePage = () => {
@@ -15,7 +15,7 @@ const StatefulTreePage = () => {
           The <Code primary>StatefulTree</Code> component is used to display a tree of items. Useful for defining a tree
           of categories or subcollections.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>To display a tree of items</List.Item>
           <List.Item>Creating or assigning items to a specific category/sub-category</List.Item>
@@ -161,6 +161,21 @@ const StatefulTreePage = () => {
               title: 'TreeNode',
               render: () => <TreeNodePropTable id="tree-node-prop-table" renderPanel={false} />,
             },
+          ]}
+        />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            'Display collapsable side navigation if sub-categories exist.',
+            'Use an icon next to categories, regardless of heirarchy.',
+            'Use checkboxes when multiple items can be selected vs. radio buttons for either/or.',
+            'Selected sub-categories should always be shown numerically next to the parent catergories, both in collapsed or expanded states.',
+          ]}
+          discouraged={[
+            'Make sure radio buttons and checkboxes are used correctly within BigDesign Guidelines. Checkboxes are additive, radio buttons are either/or.',
+            'Don’t use to display a list of items.',
           ]}
         />
       </Panel>

@@ -1,7 +1,7 @@
 import { Form, FormGroup, H1, Panel, Text, Timepicker } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
-import { Code, CodePreview, List } from '../components';
+import { Code, CodePreview, GuidelinesTable, List } from '../components';
 import { TimepickerPropTable } from '../PropTables';
 
 const TimepickerPage = () => {
@@ -11,7 +11,7 @@ const TimepickerPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Timepicker</Code>s allow users to choose a time value from the provided options. They can be
+          <Code primary>Timepickers</Code> allow users to choose a time value from the provided options. They can be
           used for a wide range of scenarios like specifiying promotion start/end time, store location working hours and
           so on.
         </Text>
@@ -41,6 +41,19 @@ const TimepickerPage = () => {
 
       <Panel header="Props" headerId="props">
         <TimepickerPropTable renderPanel={false} />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              Put the field next to the <Code primary>Timepicker</Code> field with unified label when there is a need to
+              pick date and time (see examples).
+            </>,
+            'Use local time formats.',
+          ]}
+          discouraged={[]}
+        />
       </Panel>
     </>
   );

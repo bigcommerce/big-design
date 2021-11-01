@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.1...@bigcommerce/big-design-icons@0.17.2-alpha.0) (2021-10-28)
+
+
+### Bug Fixes
+
+* **icons:** add `aria-hidden=true` if an icon doesn't have a title ([e3bb896](https://github.com/bigcommerce/big-design/commit/e3bb896fed2d7b1afb30f0134f161cfae5a00398))
+* **icons:** Ensure aira-hidden is correctly set in flags ([9f49a2d](https://github.com/bigcommerce/big-design/commit/9f49a2dfd19734e797945483cb99efe8ea1503f1))
+
+
+
+
+
 ## [0.17.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.0...@bigcommerce/big-design-icons@0.17.1) (2021-09-03)
 
 

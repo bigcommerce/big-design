@@ -1,7 +1,7 @@
 import { H1, Message, Panel, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
 import { MarginPropTable, MessagePropTable } from '../PropTables';
 import { MessagingItemPropTable, MessagingLinkItemPropTable } from '../PropTables/shared';
 
@@ -12,10 +12,10 @@ const MessagePage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          Messages inform merchants about important page or system level changes or persistent conditions that need
-          their attention.
+          <Code primary>Messages</Code> inform merchants about important page or system level changes or persistent
+          conditions that need their attention.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>To communicate to the merchant in a prominent way.</List.Item>
           <List.Item>To update them about a change or give them pertinent information.</List.Item>
@@ -102,7 +102,7 @@ const MessagePage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>Message</Code>'s allow you to pass an optional <Code primary>header</Code> prop.
+                    <Code primary>Messages</Code> allow you to pass an optional <Code primary>header</Code> prop.
                   </Text>
 
                   <CodePreview>
@@ -158,7 +158,7 @@ const MessagePage = () => {
               render: () => (
                 <>
                   <Text>
-                    <Code primary>Message</Code>'s allow you to pass an optional <Code primary>actions</Code> prop.
+                    <Code primary>Messages</Code> allow you to pass an optional <Code primary>actions</Code> prop.
                   </Text>
 
                   <CodePreview>
@@ -209,6 +209,32 @@ const MessagePage = () => {
               title: 'MessageLinkItem',
               render: () => <MessagingLinkItemPropTable id="message-link-item-prop-table" renderPanel={false} />,
             },
+          ]}
+        />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            'To display a page or system level message.',
+            'Can be persistent (until the issue is resolved) or dismissable.',
+            'Should be placed directly below the page header at the top of the page.',
+            'Should focus on a single theme or piece of information and must include a clear description that summarises the issue and how to resolve it.',
+            'Be written in sentence case with appropriate punctuation.',
+          ]}
+          discouraged={[
+            <>
+              Never use <Code primary>Messages</Code> for marketing information or upsell.
+            </>,
+            'Not be used as the primary entry point for information or actions that the merchant needs on a regular basis.',
+            <>
+              Never place <Code primary>Messages</Code> in the middle or on the bottom of a page. Instead use an{' '}
+              <NextLink href="/inline-message">InlineMessage</NextLink>.
+            </>,
+            <>
+              Never use <Code primary>Messages</Code> for quick, dismissable feedback on actions. Instead use{' '}
+              <NextLink href="/alert">Alerts</NextLink>.
+            </>,
           ]}
         />
       </Panel>

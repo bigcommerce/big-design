@@ -2,7 +2,7 @@ import { Box, Button, Flex, Grid, H1, Panel, Text, Tooltip } from '@bigcommerce/
 import { WarningIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { TooltipPropTable } from '../PropTables';
 
 const TooltipPage = () => {
@@ -116,6 +116,31 @@ const TooltipPage = () => {
 
       <Panel header="Props" headerId="props">
         <TooltipPropTable renderPanel={false} />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              <Code primary>Tooltip</Code>s should have short, static information.
+            </>,
+            <>
+              Keep <Code primary>Tooltip</Code>s to less than three lines tall.
+            </>,
+          ]}
+          discouraged={[
+            <>
+              Avoid headers in <Code primary>Tooltip</Code>s.
+            </>,
+            <>
+              Don’t place actions in <Code primary>Tooltip</Code>s.
+            </>,
+            <>
+              If information is vital to complete a step, then it should be visible above/next to the element, not
+              hidden in the <Code primary>Tooltip</Code>.
+            </>,
+          ]}
+        />
       </Panel>
     </>
   );

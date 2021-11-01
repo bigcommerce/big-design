@@ -1,7 +1,7 @@
 import { H1, Panel, StatefulTree, Text, Worksheet, WorksheetColumn } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
 import {
   WorksheetCheckboxColumnPropTable,
   WorksheetErrorPropTable,
@@ -100,8 +100,8 @@ const WorksheetPage = () => {
             additional details.
           </List.Item>
           <List.Item>
-            Unlike tables, a worksheet component is actionable and interactive and should be used in situations where
-            editing is the primary purpose.
+            Unlike <Code primary>Tables</Code>, a <Code primary>Worksheet</Code> component is actionable and interactive
+            and should be used in situations where editing is the primary purpose.
           </List.Item>
         </List>
       </Panel>
@@ -683,6 +683,37 @@ const WorksheetPage = () => {
               title: 'Error',
               render: () => <WorksheetErrorPropTable id="worksheet-error-prop-table" renderPanel={false} />,
             },
+          ]}
+        />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              Always display a <Code primary>Worksheet</Code> component with collapsed side navigation.
+            </>,
+            'Column header names should use sentence case, be concise and describe the type of content displayed in that column.',
+            'Each row contains information related to a single entity.',
+            'Each cell contains either a single data point or groups of data from a multi-select interaction (e.g. categories).',
+            'Interactive elements per cell include: text/numerical input, subtle buttons which open a modal, checkboxes and drop downs.',
+            <>
+              Show the total number of items at the top of the <Code primary>Worksheet</Code>.
+            </>,
+            <>
+              Use the <Code primary>Worksheet</Code> for bulk editing actions.
+            </>,
+            <>
+              A <Code primary>Worksheet</Code> should always be on it’s own page. Never combine a worksheet with other
+              tables or panels of content.
+            </>,
+          ]}
+          discouraged={[
+            <>
+              Never use the <Code primary>Worksheet</Code> component to display a simple list of related content.
+              Instead use a <NextLink href="/table">Table</NextLink>.
+            </>,
+            'Editing or actions should always be initiated directly on a cell.  Do not use the actions icon/menu.',
           ]}
         />
       </Panel>

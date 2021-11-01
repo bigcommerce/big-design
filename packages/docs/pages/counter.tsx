@@ -1,7 +1,7 @@
 import { Counter, Form, FormGroup, H1, Panel, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { CounterPropTable } from '../PropTables';
 
 const CounterPage = () => {
@@ -11,14 +11,17 @@ const CounterPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          The counter is a field that let’s you increase or decrease its value incrementally, as well as directly input
-          a value.
+          <Code primary>Counter</Code> is a field that lets you increase or decrease its value incrementally, as well as
+          directly input a value.
         </Text>
-        <Text bold>When to use it:</Text>
+        <Text bold>When to use:</Text>
         <List>
-          <List.Item>Use counters to input values that have a small range of likley values (e.g. 1-10).</List.Item>
           <List.Item>
-            Use counters for values that are usually one number with some exceptions - e.g. number of copies.
+            Use <Code primary>Counters</Code> to input values that have a small range of likely values (e.g. 1-10).
+          </List.Item>
+          <List.Item>
+            Use <Code primary>Counters</Code> for values that are usually a number with some exceptions - e.g. number of
+            copies.
           </List.Item>
         </List>
       </Panel>
@@ -32,7 +35,10 @@ const CounterPage = () => {
               title: 'Basic',
               render: () => (
                 <>
-                  <Text>Counters are stylized numerical form controls with the ability to control validation.</Text>
+                  <Text>
+                    <Code primary>Counters</Code> are stylized numerical form controls with the ability to control
+                    validation.
+                  </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     {function Example() {
@@ -67,9 +73,9 @@ const CounterPage = () => {
               render: () => (
                 <>
                   <Text>
-                    Counters allow you to pass in an <Code primary>error</Code> message that will control the styles of
-                    a counter. The logic on the counter can be controlled with the <Code primary>onCountChange</Code>{' '}
-                    prop.
+                    <Code primary>Counters</Code> allow you to pass in an <Code primary>error</Code> message that will
+                    control the styles of a <Code primary>Counter</Code>. The logic on the counter can be controlled
+                    with the <Code primary>onCountChange</Code> prop.
                   </Text>
 
                   <CodePreview>
@@ -113,6 +119,30 @@ const CounterPage = () => {
 
       <Panel header="Props" headerId="props">
         <CounterPropTable renderPanel={false} />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              <Code primary>Counters</Code> should have a default value that represents the most likley choice the user
+              will take.
+            </>,
+            <>
+              <Code primary>Counters</Code> should always have a clear label as to what the number represents.
+            </>,
+            <>
+              Include relevant signs (e.g. %, $) in the <Code primary>Counter</Code> to give context for the value’s
+              type.
+            </>,
+          ]}
+          discouraged={[
+            <>
+              Avoid <Code primary>Counters</Code> if the value will likley change by large/unpredictable increments
+              (e.g. price).
+            </>,
+          ]}
+        />
       </Panel>
     </>
   );

@@ -9,7 +9,11 @@ const checkboxProps: Prop[] = [
     name: 'label',
     types: ['string', 'CheckboxLabel'],
     required: true,
-    description: 'Label to display next to a <Code>Checkbox</Code> component.',
+    description: (
+      <>
+        Label to display next to a <Code primary>Checkbox</Code> component.
+      </>
+    ),
   },
   {
     name: 'hiddenLabel',
@@ -60,7 +64,7 @@ const checkboxDescriptionProps: Prop[] = [
     required: true,
     description: (
       <>
-        Description to display below <Code>Label</Code>
+        Description to display below <Code primary>Label</Code>
       </>
     ),
   },

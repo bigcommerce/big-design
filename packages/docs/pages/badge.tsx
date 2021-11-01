@@ -2,6 +2,7 @@ import { Badge, Grid, H1, Panel, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { GuidelinesTable } from '../components/GuidelinesTable';
 import { BadgePropTable, MarginPropTable } from '../PropTables';
 
 const BadgePage = () => {
@@ -10,15 +11,18 @@ const BadgePage = () => {
       <H1>Badge</H1>
 
       <Panel header="Overview" headerId="overview">
-        <Text>Badges are labels that indicate the status of an object on the page.</Text>
-        <Text bold>When to use it:</Text>
+        <Text>
+          <Code primary>Badges</Code> are labels that indicate the status of an object on the page.
+        </Text>
+        <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            Use badges to indicate the connection status of a 3rd party integration (e.g. payment method, a channel
-            connection).
+            Use <Code primary>Badges</Code> to indicate the connection status of a 3rd party integration (e.g. payment
+            method, a channel connection).
           </List.Item>
           <List.Item>
-            You can also use badges to call attention to new features (e.g. “new”) or recommended integrations.
+            You can also use <Code primary>Badges</Code> to call attention to new features (e.g. “new”) or recommended
+            integrations.
           </List.Item>
         </List>
       </Panel>
@@ -69,6 +73,17 @@ const BadgePage = () => {
 
       <Panel header="Props" headerId="props">
         <BadgePropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={['Use the right colour for the right situation (e.g. red when something is broken / wrong).']}
+          discouraged={[
+            <>
+              Don’t apply multiple <Code primary>Badges</Code> to the same object.
+            </>,
+          ]}
+        />
       </Panel>
     </>
   );

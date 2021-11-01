@@ -2,7 +2,7 @@ import { Box, Flex, H1, Panel, Text } from '@bigcommerce/big-design';
 import React from 'react';
 import styled from 'styled-components';
 
-import { CodePreview, ContentRoutingTabs } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable } from '../components';
 import { BoxPropTable, DisplayPropTable, MarginPropTable, PaddingPropTable } from '../PropTables';
 
 const BoxPage = () => {
@@ -12,8 +12,9 @@ const BoxPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          Box is a base component that is used to create other components. Using different values for properties like
-          border, border radius, and drop shadow, it can be turned into form field, button, panel, etc.
+          <Code primary>Box</Code> is a base component that is used to create other components. Using different values
+          for properties like border, border radius, and drop shadow, it can be turned into form field, button, panel,
+          etc.
         </Text>
       </Panel>
 
@@ -43,7 +44,9 @@ const BoxPage = () => {
               title: 'Shadows',
               render: () => (
                 <>
-                  <Text>Box also supports multiple shadows, here is an example of how they look like:</Text>
+                  <Text>
+                    <Code primary>Box</Code> also supports multiple shadows, here is an example of how they look like:
+                  </Text>
 
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -66,8 +69,9 @@ const BoxPage = () => {
               render: () => (
                 <>
                   <Text>
-                    Box is extendable, here is an example on how to create an Avatar component extending from Box with a
-                    couple of extra styles:
+                    <Code primary>Box</Code> is extendable, here is an example on how to create an{' '}
+                    <Code primary>Avatar</Code> component extending from <Code primary>Box</Code> with a couple of extra
+                    styles:
                   </Text>
 
                   <CodePreview>
@@ -104,6 +108,17 @@ const BoxPage = () => {
             </>
           }
           renderPanel={false}
+        />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            'Apply 4px corner radius for all rectangular standalone components.',
+            'Apply raised drop shadow style to make the content on the grey background of the page stand out (panels).',
+            'Apply floating drop shadow style for elements that appear on top of the content of the page (pop-overs, alerts, drop menus, etc.).',
+          ]}
+          discouraged={['Use any other corner radius values.']}
         />
       </Panel>
     </>
