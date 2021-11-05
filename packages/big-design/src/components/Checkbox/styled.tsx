@@ -34,6 +34,7 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   align-items: center;
   background: ${({ checked, isIndeterminate, theme }) =>
     checked || isIndeterminate ? theme.colors.primary : theme.colors.white};
+  box-sizing: border-box;
   border: ${({ theme }) => theme.border.box};
   border-color: ${({ checked, isIndeterminate, theme }) =>
     checked || isIndeterminate ? theme.colors.primary : theme.colors.secondary30};
@@ -43,8 +44,8 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   display: inline-flex;
   height: ${({ theme }) => theme.spacing.large};
   justify-content: center;
-  margin-bottom: ${({ theme }) => theme.helpers.remCalc(1)};
-  margin-top: ${({ theme }) => theme.helpers.remCalc(1)};
+  margin-bottom: ${({ theme }) => theme.helpers.remCalc(2)};
+  margin-top: ${({ theme }) => theme.helpers.remCalc(2)};
   user-select: none;
   width: ${({ theme }) => theme.spacing.large};
 

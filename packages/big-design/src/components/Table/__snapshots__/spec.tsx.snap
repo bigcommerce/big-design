@@ -872,6 +872,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
+  box-sizing: border-box;
   border: 1px solid #D9DCE9;
   border-color: #D9DCE9;
   border-radius: 0.25rem;
@@ -886,8 +887,8 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 0.0625rem;
-  margin-top: 0.0625rem;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
