@@ -1,4 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
+import { screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
@@ -7,55 +8,61 @@ import { fireEvent, render } from '@test/utils';
 import { Alert } from './Alert';
 
 test('render default (success) Alert', () => {
-  const { container } = render(<Alert messages={[{ text: 'Success' }]} />);
+  render(<Alert messages={[{ text: 'Success' }]} />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success}`);
+  const alert = screen.getByRole('alert');
+
+  expect(alert).toMatchSnapshot();
+  expect(alert).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success}`);
 });
 
 test('render error Alert', () => {
-  const { container } = render(<Alert messages={[{ text: 'Error' }]} type="error" />);
+  render(<Alert messages={[{ text: 'Error' }]} type="error" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger}`);
+  const alert = screen.getByRole('alert');
+
+  expect(alert).toMatchSnapshot();
+  expect(alert).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger}`);
 });
 
 test('render warning Alert', () => {
-  const { container } = render(<Alert messages={[{ text: 'Warning' }]} type="warning" />);
+  render(<Alert messages={[{ text: 'Warning' }]} type="warning" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50}`);
+  const alert = screen.getByRole('alert');
+
+  expect(alert).toMatchSnapshot();
+  expect(alert).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50}`);
 });
 
 test('render info Alert', () => {
-  const { container } = render(<Alert messages={[{ text: 'Info' }]} type="info" />);
+  render(<Alert messages={[{ text: 'Info' }]} type="info" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60}`);
+  const alert = screen.getByRole('alert');
+
+  expect(alert).toMatchSnapshot();
+  expect(alert).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60}`);
 });
 
 test('renders with link', () => {
-  const { queryByRole, container } = render(
-    <Alert messages={[{ text: 'Success', link: { text: 'Link', href: '#' } }]} />,
-  );
+  render(<Alert messages={[{ text: 'Success', link: { text: 'Link', href: '#' } }]} />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  const alert = screen.getByRole('alert');
+  const link = screen.getByRole<HTMLAnchorElement>('link');
 
-  const link = queryByRole('link') as HTMLAnchorElement;
-
+  expect(alert).toMatchSnapshot();
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
 });
 
 test('renders with external link', () => {
-  const { queryByRole, container } = render(
+  render(
     <Alert messages={[{ text: 'Success', link: { text: 'Link', href: '#', external: true, target: '_blank' } }]} />,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  const alert = screen.getByRole('alert');
+  const link = screen.getByRole<HTMLAnchorElement>('link');
 
-  const link = queryByRole('link') as HTMLAnchorElement;
-
+  expect(alert).toMatchSnapshot();
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
   expect(link.target).toBe('_blank');
@@ -63,24 +70,30 @@ test('renders with external link', () => {
 });
 
 test('renders header', () => {
-  const { queryByText, container } = render(<Alert header="Header" messages={[{ text: 'Success' }]} />);
+  render(<Alert header="Header" messages={[{ text: 'Success' }]} />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(queryByText('Header')).not.toBeUndefined();
+  const alert = screen.getByRole('alert');
+  const heading = screen.getByRole('heading', { name: /header/i });
+
+  expect(alert).toMatchSnapshot();
+  expect(heading).not.toBeUndefined();
 });
 
 test('renders close button', () => {
-  const { queryByRole, container } = render(<Alert onClose={() => null} messages={[{ text: 'Success' }]} />);
+  render(<Alert onClose={() => null} messages={[{ text: 'Success' }]} />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(queryByRole('button')).not.toBeUndefined();
+  const alert = screen.getByRole('alert');
+  const button = screen.getByRole('button');
+
+  expect(alert).toMatchSnapshot();
+  expect(button).not.toBeUndefined();
 });
 
 test('trigger onClose', () => {
   const fn = jest.fn();
-  const { queryByRole } = render(<Alert onClose={fn} messages={[{ text: 'Success' }]} />);
+  render(<Alert onClose={fn} messages={[{ text: 'Success' }]} />);
 
-  const button = queryByRole('button') as HTMLButtonElement;
+  const button = screen.getByRole('button');
 
   fireEvent.click(button);
 
@@ -91,7 +104,8 @@ test('does not forward styles', () => {
   const { container } = render(
     <Alert messages={[{ text: 'Success' }]} className="test" style={{ background: 'red' }} />,
   );
+  const alert = screen.getByRole('alert');
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
-  expect(container.firstChild).not.toHaveStyle('background: red');
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
+  expect(alert).not.toHaveStyle('background: red');
 });
