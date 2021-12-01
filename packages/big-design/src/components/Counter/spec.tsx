@@ -1,320 +1,330 @@
-import React, { createRef, Ref } from 'react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import React, { ComponentProps, createRef, useState } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { render } from '@test/utils';
 
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
 
-import { Counter, CounterProps } from './index';
+import { Counter } from './index';
 
-interface MockCounterProps extends CounterProps {
-  dataTestId?: string;
-  ref?: Ref<HTMLInputElement>;
-}
+const CounterMock: React.FC<Partial<ComponentProps<typeof Counter>>> = ({ value = 5, ...props }) => {
+  const [counterValue, setCounterValue] = useState(value);
+  const handleChange = (value: number) => setCounterValue(value);
 
-const val = 5;
-
-const handleChange = jest.fn((num) => num);
-
-const requiredAttributes = {
-  value: val,
-  onCountChange: handleChange,
+  return (
+    <Counter
+      label="Label"
+      error=""
+      description=""
+      value={counterValue}
+      min={0}
+      max={100}
+      onCountChange={props.onCountChange ?? handleChange}
+      {...props}
+    />
+  );
 };
-
-const counterMock = ({
-  ref,
-  label = 'Label',
-  labelId = '',
-  id = '',
-  error = '',
-  description = '',
-  value,
-  onCountChange,
-  min = 0,
-  max = 10,
-  dataTestId = '',
-}: MockCounterProps) => (
-  <Counter
-    ref={ref}
-    label={label}
-    labelId={labelId}
-    error={error}
-    id={id}
-    description={description}
-    value={value}
-    data-testid={dataTestId}
-    min={min}
-    max={max}
-    onCountChange={onCountChange}
-  />
-);
 
 test('forwards ref', () => {
   const ref = createRef<HTMLInputElement>();
-  const { container } = render(counterMock({ ref, ...requiredAttributes }));
-  const counter = container.querySelector('input');
 
-  expect(ref.current).toBe(counter);
+  render(<Counter value={5} onCountChange={jest.fn()} ref={ref} />);
+
+  const input = screen.getByRole('textbox');
+
+  expect(ref.current).toBe(input);
 });
 
 test('renders a counter as an input tag', () => {
-  const { container } = render(counterMock(requiredAttributes));
+  render(<CounterMock value={5} />);
 
-  expect(container.querySelector('input')).toBeInTheDocument();
+  expect(screen.getByLabelText(/Label/i)).toBeInTheDocument();
 });
 
 test('renders a counter with matched label', () => {
-  const { queryByLabelText } = render(counterMock({ label: 'Test Label', ...requiredAttributes }));
+  render(<CounterMock value={5} label="Test Label" />);
 
   // This one checks for matching id and htmlFor
-  expect(queryByLabelText('Test Label')).toBeInTheDocument();
+  expect(screen.getByLabelText(/test label/i)).toBeInTheDocument();
 });
 
 test('create unique ids if not provided', () => {
-  const { queryByTestId } = render(
+  render(
     <>
-      {counterMock({ dataTestId: 'item1', label: 'Test Label', ...requiredAttributes })}
-      {counterMock({ dataTestId: 'item2', label: 'Test Label', ...requiredAttributes })}
+      <CounterMock value={5} label="Label First" />
+      <CounterMock value={5} label="Label Second" />
     </>,
   );
 
-  const item1 = queryByTestId('item1') as HTMLInputElement;
-  const item2 = queryByTestId('item2') as HTMLInputElement;
+  const item1 = screen.getByLabelText(/label first/i);
+  const item2 = screen.getByLabelText(/label second/i);
 
-  expect(item1).toBeDefined();
-  expect(item2).toBeDefined();
   expect(item1.id).not.toBe(item2.id);
 });
 
 test('respects provided id', () => {
-  const { container } = render(counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }));
-  const counter = container.querySelector('#test') as HTMLInputElement;
+  const providedIdValue = 'test';
 
-  expect(counter.id).toBe('test');
+  render(<CounterMock value={5} id={providedIdValue} label="Test Label" />);
+
+  const counter = screen.getByLabelText(/test label/i);
+
+  expect(counter).toHaveAttribute('id', providedIdValue);
 });
 
 test('matches label htmlFor with id provided', () => {
-  const { container } = render(counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }));
-  const label = container.querySelector('label') as HTMLLabelElement;
+  const providedValue = 'test';
 
-  expect(label.htmlFor).toBe('test');
+  render(<CounterMock value={5} id={providedValue} label="Test Label" />);
+
+  const label = screen.getByText<HTMLLabelElement>(/test label/i);
+
+  expect(label).toHaveAttribute('for', providedValue);
 });
 
 test('respects provided labelId', () => {
-  const { container } = render(counterMock({ label: 'Test Label', labelId: 'test', ...requiredAttributes }));
-  const label = container.querySelector('#test') as HTMLLabelElement;
+  const providedValue = 'test';
+  render(<CounterMock value={5} labelId={providedValue} label="Test Label" />);
 
-  expect(label.id).toBe('test');
+  const label = screen.getByText<HTMLLabelElement>(/test label/i);
+
+  expect(label).toHaveAttribute('id', providedValue);
 });
 
 test('renders a description', () => {
-  const descriptionText = 'This is a description';
-  const { queryByText } = render(counterMock({ description: descriptionText, ...requiredAttributes }));
+  const description = 'This is a description';
 
-  expect(queryByText(descriptionText)).toBeInTheDocument();
+  render(<CounterMock value={5} description={description} />);
+
+  expect(screen.getByText(description)).toBeInTheDocument();
 });
 
 test('renders an error', () => {
-  const errorText = 'This is an error';
-  const { queryByText } = render(<FormGroup>{counterMock({ error: errorText, ...requiredAttributes })}</FormGroup>);
+  const error = 'This is an error';
 
-  expect(queryByText(errorText)).toBeInTheDocument();
+  render(
+    <FormGroup>
+      <CounterMock value={5} error={error} />
+    </FormGroup>,
+  );
+
+  expect(screen.getByText(error)).toBeInTheDocument();
 });
 
 test('accepts a Label Component', () => {
   const CustomLabel = (
     <FormControlLabel>
       This is a custom Label
-      <a href="#" data-testid="test">
-        has a url
-      </a>
+      <a href="#">has a url</a>
     </FormControlLabel>
   );
 
-  const { queryByTestId } = render(counterMock({ label: CustomLabel, ...requiredAttributes }));
+  render(<CounterMock value={5} label={CustomLabel} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(screen.getByRole('link')).toBeInTheDocument();
 });
 
 test('does not accept non-Label Components', () => {
   const NotALabel = (
     <div>
       This is a not custom Label Component
-      <a href="#" data-testid="test">
-        has a url
-      </a>
+      <a href="#">has a url</a>
     </div>
   );
 
-  const { queryByTestId } = render(counterMock({ label: NotALabel, ...requiredAttributes }));
+  render(<CounterMock value={5} label={NotALabel} />);
 
-  expect(queryByTestId('test')).not.toBeInTheDocument();
+  expect(screen.queryByRole('link')).not.toBeInTheDocument();
 });
 
 test('accepts a Description Component', () => {
   const CustomDescription = (
     <FormControlDescription>
       This is a custom Description
-      <a href="#" data-testid="test">
-        has a url
-      </a>
+      <a href="#">has a url</a>
     </FormControlDescription>
   );
 
-  const { queryByTestId } = render(counterMock({ description: CustomDescription, ...requiredAttributes }));
+  render(<CounterMock value={5} description={CustomDescription} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(screen.getByRole('link')).toBeInTheDocument();
 });
 
 test('does not accept non-Description Components', () => {
   const NotADescription = (
     <div>
       This is a not custom description
-      <a href="#" data-testid="test">
-        has a url
-      </a>
+      <a href="#">has a url</a>
     </div>
   );
 
-  const { queryByTestId } = render(counterMock({ description: NotADescription, ...requiredAttributes }));
+  render(<CounterMock value={5} description={NotADescription} />);
 
-  expect(queryByTestId('test')).not.toBeInTheDocument();
+  expect(screen.queryByRole('link')).not.toBeInTheDocument();
 });
 
 test('accepts an Error Component', () => {
   const CustomError = (
     <FormControlError>
       This is a custom Error Component
-      <a href="#" data-testid="test">
-        has a url
-      </a>
+      <a href="#">has a url</a>
     </FormControlError>
   );
 
-  const { queryByTestId } = render(<FormGroup>{counterMock({ error: CustomError, ...requiredAttributes })}</FormGroup>);
+  render(
+    <FormGroup>
+      <CounterMock value={5} error={CustomError} />
+    </FormGroup>,
+  );
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(screen.getByRole('link')).toBeInTheDocument();
 });
 
 test('does not accept non-Error Components', () => {
   const NotAnError = (
     <div>
       This is a not a custom error component
-      <a href="#" data-testid="test">
-        has a url
-      </a>
+      <a href="#">has a url</a>
     </div>
   );
 
-  const { queryByTestId } = render(<FormGroup>{counterMock({ error: NotAnError, ...requiredAttributes })}</FormGroup>);
+  render(
+    <FormGroup>
+      <CounterMock value={5} error={NotAnError} />
+    </FormGroup>,
+  );
 
-  expect(queryByTestId('test')).not.toBeInTheDocument();
+  expect(screen.queryByRole('link')).not.toBeInTheDocument();
 });
 
 test('renders both the add and subtract icons', () => {
-  const { getAllByRole } = render(counterMock(requiredAttributes));
+  render(<CounterMock value={5} />);
 
-  const buttons = getAllByRole('button');
+  const buttons = screen.getAllByRole('button');
 
-  expect(buttons.length).toBe(2);
+  expect(buttons).toHaveLength(2);
 });
 
 test('buttons are disabled when value hits max or min', () => {
-  const { getAllByRole, rerender } = render(counterMock({ ...requiredAttributes, value: 0 }));
+  const { rerender } = render(<CounterMock value={0} />);
 
-  const buttons = getAllByRole('button');
+  const buttons = screen.getAllByRole('button');
 
-  expect(buttons[0]).toHaveProperty('disabled', true);
-  expect(buttons[1]).toHaveProperty('disabled', false);
+  expect(buttons[0]).toBeDisabled;
+  expect(buttons[1]).toBeEnabled;
 
-  rerender(counterMock({ ...requiredAttributes, value: 10 }));
+  rerender(<CounterMock value={10} />);
 
-  expect(buttons[0]).toHaveProperty('disabled', false);
-  expect(buttons[1]).toHaveProperty('disabled', true);
+  expect(buttons[0]).toBeEnabled;
+  expect(buttons[1]).toBeDisabled;
 });
 
 test('value prop only accepts whole numbers', () => {
-  const { container } = render(counterMock({ max: 20, ...requiredAttributes }));
+  render(<CounterMock value={5} />);
 
-  const input = container.getElementsByTagName('input');
-  fireEvent.change(input[0], { target: { value: 1.5 } });
+  const input = screen.getByRole('textbox');
+  const fractionalValue = '1.7';
 
-  expect(handleChange).toHaveBeenCalledWith(2);
+  userEvent.clear(input);
+  userEvent.type(input, fractionalValue);
+
+  expect(input).toHaveValue('17');
 });
 
 test('value increases when increase or decrease icons are clicked', () => {
-  const { getByDisplayValue, container } = render(counterMock(requiredAttributes));
+  const handleChange = jest.fn((num: number) => num);
+  render(<CounterMock value={5} onCountChange={handleChange} />);
 
-  const counter = getByDisplayValue('5') as HTMLInputElement;
+  const counter = screen.getByRole('textbox');
+  const increaseButton = screen.getByRole('button', { name: /increase count/i });
+  const decreaseButton = screen.getByRole('button', { name: /decrease count/i });
 
-  const icons = container.getElementsByTagName('svg');
+  expect(counter).toHaveValue('5');
 
-  expect(counter.value).toEqual('5');
-  fireEvent.click(icons[1]);
-
+  userEvent.click(increaseButton);
   expect(handleChange).toHaveBeenCalledWith(6);
-  fireEvent.click(icons[0]);
+
+  userEvent.click(decreaseButton);
   expect(handleChange).toHaveBeenCalledWith(4);
 });
 
 test('value increases and decreases with arrow keypresses', () => {
-  const { getByDisplayValue } = render(counterMock(requiredAttributes));
+  const handleChange = jest.fn((num: number) => num);
+  render(<CounterMock value={5} onCountChange={handleChange} />);
 
-  const counter = getByDisplayValue('5') as HTMLInputElement;
+  const counter = screen.getByRole('textbox');
   counter.focus();
 
-  expect(counter.value).toEqual('5');
-  fireEvent.keyDown(counter, { key: 'ArrowUp', code: 'ArrowUp' });
+  expect(counter).toHaveValue('5');
+  userEvent.type(counter, '{arrowup}');
   expect(handleChange).toHaveBeenCalledWith(6);
-  fireEvent.keyDown(counter, { key: 'ArrowDown', code: 'ArrowDown' });
+  userEvent.type(counter, '{arrowdown}');
   expect(handleChange).toHaveBeenCalledWith(4);
 });
 
 test('value is set to 0 when pressing Escape', () => {
-  const { getByDisplayValue } = render(counterMock(requiredAttributes));
+  const handleChange = jest.fn((num: number) => num);
+  render(<CounterMock value={5} onCountChange={handleChange} />);
 
-  const counter = getByDisplayValue('5');
+  const counter = screen.getByRole('textbox');
 
-  expect(counter.getAttribute('value')).toEqual('5');
-  fireEvent.keyDown(counter, { key: 'Escape', code: 'Escape' });
+  expect(counter).toHaveValue('5');
+  userEvent.type(counter, '{esc}');
   expect(handleChange).toHaveBeenCalledWith(0);
 });
 
 test('value does not change when pressing Enter', () => {
-  const { getByDisplayValue } = render(counterMock(requiredAttributes));
+  const handleChange = jest.fn((num: number) => num);
+  render(<CounterMock value={5} onCountChange={handleChange} />);
 
-  const counter = getByDisplayValue('5');
+  const counter = screen.getByRole('textbox');
 
-  expect(counter.getAttribute('value')).toEqual('5');
-  fireEvent.keyDown(counter, { key: 'Enter', code: 'Enter' });
+  expect(counter).toHaveValue('5');
+  userEvent.type(counter, '{enter}');
   expect(handleChange).not.toHaveBeenCalled();
 });
 
 test('provided onCountChange function is called on value change', () => {
-  const { getByTitle } = render(counterMock(requiredAttributes));
+  const handleChange = jest.fn((num: number) => num);
+  render(<CounterMock value={5} onCountChange={handleChange} />);
 
-  const increase = getByTitle('Increase count');
+  const increase = screen.getByTitle('Increase count');
 
-  fireEvent.click(increase);
+  userEvent.click(increase);
   expect(handleChange).toHaveBeenCalledWith(6);
 });
 
 test('error shows with valid string', () => {
   const error = 'Error';
-  const { container, rerender } = render(<FormGroup>{counterMock({ error: '', ...requiredAttributes })}</FormGroup>);
+  const { rerender } = render(
+    <FormGroup>
+      <CounterMock value={5} error="" />
+    </FormGroup>,
+  );
 
-  expect(container.querySelector('[class*="StyledError"]')).not.toBeInTheDocument();
+  expect(screen.queryByText(error)).not.toBeInTheDocument();
 
-  rerender(<FormGroup>{counterMock({ error, ...requiredAttributes })}</FormGroup>);
+  rerender(
+    <FormGroup>
+      <CounterMock value={5} error={error} />
+    </FormGroup>,
+  );
 
-  expect(container.querySelector('[class*="StyledError"]')).toBeInTheDocument();
+  expect(screen.getByText(error)).toBeInTheDocument();
 });
 
 test('error shows when an array of strings', () => {
   const errors = ['Error 0', 'Error 1'];
-  const { getByText } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
 
-  errors.forEach((error) => expect(getByText(error)).toBeInTheDocument());
+  render(
+    <FormGroup>
+      <CounterMock value={5} error={errors} />
+    </FormGroup>,
+  );
+
+  errors.forEach((error) => expect(screen.getByText(error)).toBeInTheDocument());
 });
 
 test('error shows when an array of Errors', () => {
@@ -324,17 +334,27 @@ test('error shows when an array of Errors', () => {
       Error
     </FormControlError>
   ));
-  const { getByTestId } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
 
-  testIds.forEach((id) => expect(getByTestId(id)).toBeInTheDocument());
+  render(
+    <FormGroup>
+      <CounterMock value={5} error={errors} />
+    </FormGroup>,
+  );
+
+  testIds.forEach((id) => expect(screen.getByTestId(id)).toBeInTheDocument());
 });
 
 describe('error does not show when invalid type', () => {
   test('single element', () => {
     const error = <div data-testid="err">Error</div>;
-    const { queryByTestId } = render(<FormGroup>{counterMock({ error, ...requiredAttributes })}</FormGroup>);
 
-    expect(queryByTestId('err')).not.toBeInTheDocument();
+    render(
+      <FormGroup>
+        <CounterMock value={5} error={error} />
+      </FormGroup>,
+    );
+
+    expect(screen.queryByTestId('err')).not.toBeInTheDocument();
   });
 
   test('array of elements', () => {
@@ -346,15 +366,20 @@ describe('error does not show when invalid type', () => {
       </div>,
     ];
 
-    const { queryByTestId } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
+    render(
+      <FormGroup>
+        <CounterMock value={5} error={errors} />
+      </FormGroup>,
+    );
 
-    expect(queryByTestId('err')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('err')).not.toBeInTheDocument();
   });
 });
 
 test('appends (optional) text to label if input is not required', () => {
-  const { container } = render(counterMock({ label: 'Test Label', ...requiredAttributes }));
-  const label = container.querySelector('label');
+  render(<CounterMock value={5} label="Test Label" />);
+
+  const label = screen.getByText(/test label/i);
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
 });
