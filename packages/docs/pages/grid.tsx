@@ -58,7 +58,7 @@ const GridPage = () => {
               "nav  main" 200px
               "foot  foot" 50px
               / 1fr 5fr;
-            `;
+              `;
 
                 return (
                   <Grid gridTemplate={template}>
