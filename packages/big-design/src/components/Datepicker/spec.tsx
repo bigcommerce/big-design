@@ -78,6 +78,23 @@ test('calls onDateChange function when a date cell is clicked', () => {
   expect(changeFunction).toHaveBeenCalled();
 });
 
+test('no error when input date value manually', () => {
+  const changeFunction = jest.fn();
+  const { container } = render(<Datepicker onDateChange={changeFunction} />);
+
+  const dateString = 'Wed, 03 June, 2020';
+  const input = container.querySelector('input');
+
+  fireEvent.input(input as HTMLInputElement, {
+    target: {
+      value: dateString,
+    },
+  });
+
+  expect(changeFunction).not.toBeCalled();
+  expect(input?.getAttribute('value')).toEqual(dateString);
+});
+
 test('renders an error if one is provided', () => {
   const { getByText } = render(
     <FormGroup>

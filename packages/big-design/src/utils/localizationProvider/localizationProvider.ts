@@ -1,3 +1,5 @@
+import { enUS as defaultLocale } from 'date-fns/locale';
+
 interface LocalizationProviderInterface {
   code?: string;
   localize?: {
@@ -6,6 +8,7 @@ interface LocalizationProviderInterface {
   };
   monthsLong?: string[];
   formatLong?: Record<string, unknown>;
+  match?: Record<string, unknown>;
   formatTime(date: Date): string;
 }
 
@@ -48,8 +51,8 @@ export const createLocalizationProvider = (locale: string) => {
       day: (n: number) => daysShort[n],
     },
     monthsLong,
-    // Required by datepicker.
-    formatLong: {},
+    formatLong: defaultLocale.formatLong,
+    match: defaultLocale.match,
     formatTime: timeFormatter.format,
   };
 };

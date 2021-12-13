@@ -37,6 +37,7 @@
     "@bigcommerce/big-design-theme": "^0.13.2-alpha.0",
     "@popperjs/core": "^2.5.4",
     "@types/react-datepicker": "^3.1.5",
+    "date-fns": "2.22.1",
     "downshift": "6.1.0",
     "focus-trap": "^5.1.0",
     "polished": "^4.0.0",
