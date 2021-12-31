@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, forwardRef, memo, Ref } from 'react';
+import React, { ButtonHTMLAttributes, forwardRef, LinkHTMLAttributes, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { ProgressCircle } from '../ProgressCircle';
@@ -6,24 +6,29 @@ import { ProgressCircle } from '../ProgressCircle';
 import { ContentWrapper, LoadingSpinnerWrapper, StyledButton } from './styled';
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLButtonElement>;
+  forwardedRef: Ref<HTMLButtonElement | HTMLLinkElement>;
 }
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, MarginProps {
-  actionType?: 'normal' | 'destructive';
-  iconLeft?: React.ReactNode;
-  iconOnly?: React.ReactNode;
-  iconRight?: React.ReactNode;
-  isLoading?: boolean;
-  mobileWidth?: 'auto' | '100%';
-  variant?: 'primary' | 'secondary' | 'subtle';
-}
+export type ButtonProps<H = LinkHTMLAttributes<HTMLLinkElement>['href']> = MarginProps &
+  (H extends LinkHTMLAttributes<HTMLLinkElement>['href']
+    ? ButtonHTMLAttributes<HTMLButtonElement>
+    : LinkHTMLAttributes<HTMLLinkElement>) & {
+    actionType?: 'normal' | 'destructive';
+    href?: H;
+    iconLeft?: React.ReactNode;
+    iconOnly?: React.ReactNode;
+    iconRight?: React.ReactNode;
+    isLoading?: boolean;
+    mobileWidth?: 'auto' | '100%';
+    variant?: 'primary' | 'secondary' | 'subtle';
+  };
 
 const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement | HTMLLinkElement>) => {
     const { disabled, isLoading, onClick } = props;
 
     if (onClick && !disabled && !isLoading) {
+      // TODO: figure out how to fix this type error
       onClick(event);
     }
   };
@@ -37,7 +42,14 @@ const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, ..
   };
 
   return (
-    <StyledButton className="bd-button" {...props} onClick={handleClick} ref={forwardedRef}>
+    <StyledButton
+      className="bd-button"
+      {...props}
+      as={props.href ? 'a' : 'button'}
+      onClick={handleClick}
+      // TODO: figure out how to fix this type error
+      ref={forwardedRef}
+    >
       {props.isLoading ? renderLoadingSpinner() : null}
       <ContentWrapper isLoading={props.isLoading}>
         {!props.iconOnly && props.iconLeft}
@@ -49,13 +61,13 @@ const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, ..
   );
 });
 
-export const StyleableButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
+export const StyleableButton = forwardRef<HTMLButtonElement | HTMLLinkElement, ButtonProps>((props, ref) => (
   <RawButton {...props} forwardedRef={ref} />
 ));
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, style, ...props }, ref) => (
-  <RawButton {...props} forwardedRef={ref} />
-));
+export const Button = forwardRef<HTMLButtonElement | HTMLLinkElement, ButtonProps>(
+  ({ className, style, ...props }, ref) => <RawButton {...props} forwardedRef={ref} />,
+);
 
 const defaultProps = {
   actionType: 'normal' as const,
