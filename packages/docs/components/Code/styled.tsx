@@ -10,7 +10,7 @@ export const StyledCode = styled.code<CodeProps>`
     highlight &&
     !primary &&
     css`
-      background-color: ${theme.colors.warning10};
+      background-color: ${theme.colors.warning20};
       padding: ${theme.spacing.xxSmall};
     `};
 
