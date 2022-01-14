@@ -24,7 +24,7 @@ import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Sel
 import { MultiSelectProps } from './types';
 
 export const MultiSelect = typedMemo(
-  <T extends unknown>({
+  <T,>({
     action,
     autoComplete = 'off',
     autoWidth = false,

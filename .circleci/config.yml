@@ -8,7 +8,7 @@ orbs:
 default_executor: &default_executor
   executor:
     name: node/default
-    tag: '14.16'
+    tag: '14.17'
 
 filter_branch: &filter_branch
   filters:

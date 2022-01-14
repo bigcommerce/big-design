@@ -36,7 +36,7 @@ export interface StatefulTableProps<T>
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }
 
-const swapArrayElements = <T extends unknown>(array: T[], sourceIndex: number, destinationIndex: number) => {
+const swapArrayElements = <T,>(array: T[], sourceIndex: number, destinationIndex: number) => {
   const smallerIndex = Math.min(sourceIndex, destinationIndex);
   const largerIndex = Math.max(sourceIndex, destinationIndex);
 

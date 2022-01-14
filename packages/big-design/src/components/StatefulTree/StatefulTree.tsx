@@ -15,7 +15,7 @@ export interface StatefulTreeProps<T>
   onSelectionChange?: (selectedValues: T[]) => void;
 }
 
-const InternalStatefulTree = <T extends unknown>({
+const InternalStatefulTree = <T,>({
   nodes = [],
   defaultExpanded,
   defaultSelected,

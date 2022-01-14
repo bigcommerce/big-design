@@ -23,7 +23,7 @@ import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Sel
 import { SelectAction } from '../Select/types';
 
 export const Select = typedMemo(
-  <T extends unknown>({
+  <T,>({
     action,
     autoComplete = 'off',
     autoWidth = false,

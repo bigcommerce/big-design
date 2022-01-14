@@ -30,7 +30,7 @@ interface PrivateProps {
 }
 
 const StyleableListItem = typedMemo(
-  <T extends unknown>({
+  <T,>({
     actionType = 'normal' as const,
     autoWidth = false,
     forwardedRef,
