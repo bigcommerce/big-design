@@ -106,7 +106,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     // The item ids and their order must match exactly with the internal state, if not, the state needs to be synced up
     if (itemIds.join() !== stateIds.join()) {
       const newState = items.map((item) => {
-        const oldItem = pillsState.filter((stateItem) => stateItem.item === item)[0];
+        const oldItem = pillsState.find((stateItem) => stateItem.item === item);
 
         if (oldItem) {
           return oldItem;
