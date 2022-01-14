@@ -5,7 +5,7 @@
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "typings": "dist/index.d.ts",
-  "license": "(MIT AND CC BY 3.0)",
+  "license": "(MIT AND CC-BY-3.0)",
   "author": "BigCommerce Inc",
   "repository": {
     "type": "git",

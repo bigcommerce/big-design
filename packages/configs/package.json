@@ -2,7 +2,7 @@
   "name": "@bigcommerce/configs",
   "version": "0.15.2-alpha.0",
   "private": true,
-  "license": "(MIT AND CC BY 3.0)",
+  "license": "(MIT AND CC-BY-3.0)",
   "dependencies": {
     "@typescript-eslint/parser": "^4.31.1",
     "eslint": "^7.32.0",

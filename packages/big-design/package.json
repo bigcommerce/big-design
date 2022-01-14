@@ -9,7 +9,7 @@
     "url": "https://github.com/bigcommerce/big-design.git",
     "directory": "packages/big-design"
   },
-  "license": "(MIT AND CC BY 3.0)",
+  "license": "(MIT AND CC-BY-3.0)",
   "files": [
     "dist"
   ],
