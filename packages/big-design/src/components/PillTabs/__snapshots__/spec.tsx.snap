@@ -1,22 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`dropdown is not visible if items fit 1`] = `
-.c9 {
+.c8 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c1 {
+.c0 {
   box-sizing: border-box;
 }
 
-.c10 {
+.c9 {
   box-sizing: border-box;
   z-index: 1060;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -40,7 +40,7 @@ exports[`dropdown is not visible if items fit 1`] = `
   display: flex;
 }
 
-.c3 {
+.c2 {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
@@ -59,7 +59,7 @@ exports[`dropdown is not visible if items fit 1`] = `
   flex-shrink: 1;
 }
 
-.c4 {
+.c3 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -109,41 +109,41 @@ exports[`dropdown is not visible if items fit 1`] = `
   color: #3C64F4;
 }
 
-.c4.c4 {
+.c3.c3 {
   margin-right: 0.5rem;
 }
 
-.c4:focus {
+.c3:focus {
   outline: none;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c4 + .bd-button {
+.c3 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c4:active {
+.c3:active {
   background-color: #DBE3FE;
 }
 
-.c4:focus {
+.c3:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4:hover:not(:active) {
+.c3:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c8 {
+.c7 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -194,37 +194,37 @@ exports[`dropdown is not visible if items fit 1`] = `
   color: #3C64F4;
 }
 
-.c8:focus {
+.c7:focus {
   outline: none;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c8 + .bd-button {
+.c7 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c8:active {
+.c7:active {
   background-color: #DBE3FE;
 }
 
-.c8:focus {
+.c7:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c8:hover:not(:active) {
+.c7:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c5 {
+.c4 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -238,7 +238,7 @@ exports[`dropdown is not visible if items fit 1`] = `
   visibility: visible;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -251,127 +251,116 @@ exports[`dropdown is not visible if items fit 1`] = `
   z-index: 1060;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c6 {
+.c5 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
 }
 
-.c0 {
-  width: 200px;
-}
-
 @media (min-width:720px) {
-  .c4 + .bd-button {
+  .c3 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 {
+  .c3 {
     width: auto;
   }
 }
 
 @media (min-width:720px) {
-  .c8 + .bd-button {
+  .c7 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c8 {
+  .c7 {
     width: auto;
   }
 }
 
-<div>
+<div
+  class="c0 c1"
+  data-testid="pilltabs-wrapper"
+  role="list"
+>
   <div
-    class="c0"
-    data-testid="wrapper"
+    class="c0 c2 "
+    data-testid="pilltabs-pill-0"
+    role="listitem"
+  >
+    <button
+      class="c3 styled__StyledPillTab-sc-1n62hko-0"
+    >
+      <span
+        class="c4"
+      >
+        In stock
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 c5"
+    data-testid="pilltabs-dropdown-toggle"
+    role="listitem"
   >
     <div
-      class="c1 c2"
-      data-testid="pilltabs-wrapper"
-      role="list"
+      class="c0 c6"
     >
-      <div
-        class="c1 c3 "
-        data-testid="pilltabs-pill-0"
-        role="listitem"
+      <button
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-labelledby="bd-dropdown-3-label bd-dropdown-3-toggle-button"
+        class="c7 bd-button"
+        id="bd-dropdown-3-toggle-button"
       >
-        <button
-          class="c4 styled__StyledPillTab-sc-1n62hko-0"
+        <span
+          class="c4"
         >
-          <span
-            class="c5"
+          <svg
+            aria-labelledby="bd-icon-4"
+            class="c8"
+            fill="currentColor"
+            height="24"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="24"
           >
-            In stock
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 c6"
-        data-testid="pilltabs-dropdown-toggle"
-        role="listitem"
-      >
-        <div
-          class="c1 c7"
-        >
-          <button
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-labelledby="bd-dropdown-3-label bd-dropdown-3-toggle-button"
-            class="c8 bd-button"
-            id="bd-dropdown-3-toggle-button"
-          >
-            <span
-              class="c5"
+            <title
+              id="bd-icon-4"
             >
-              <svg
-                aria-labelledby="bd-icon-4"
-                class="c9"
-                fill="currentColor"
-                height="24"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 24 24"
-                width="24"
-              >
-                <title
-                  id="bd-icon-4"
-                >
-                  add
-                </title>
-                <path
-                  d="M0 0h24v24H0V0z"
-                  fill="none"
-                />
-                <path
-                  d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-                />
-              </svg>
-            </span>
-          </button>
-          <div
-            class="c10"
-            style="position: absolute; left: 0px; top: 0px;"
-          >
-            <ul
-              aria-labelledby="bd-dropdown-3-label"
-              class="c11"
-              id="bd-dropdown-3-menu"
-              role="listbox"
-              tabindex="-1"
+              add
+            </title>
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
             />
-          </div>
-        </div>
+            <path
+              d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        class="c9"
+        style="position: absolute; left: 0px; top: 0px;"
+      >
+        <ul
+          aria-labelledby="bd-dropdown-3-label"
+          class="c10"
+          id="bd-dropdown-3-menu"
+          role="listbox"
+          tabindex="-1"
+        />
       </div>
     </div>
   </div>
@@ -379,22 +368,22 @@ exports[`dropdown is not visible if items fit 1`] = `
 `;
 
 exports[`it renders the given tabs 1`] = `
-.c9 {
+.c8 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c1 {
+.c0 {
   box-sizing: border-box;
 }
 
-.c10 {
+.c9 {
   box-sizing: border-box;
   z-index: 1060;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -418,7 +407,7 @@ exports[`it renders the given tabs 1`] = `
   display: flex;
 }
 
-.c3 {
+.c2 {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
@@ -437,7 +426,7 @@ exports[`it renders the given tabs 1`] = `
   flex-shrink: 1;
 }
 
-.c4 {
+.c3 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -487,41 +476,41 @@ exports[`it renders the given tabs 1`] = `
   color: #3C64F4;
 }
 
-.c4.c4 {
+.c3.c3 {
   margin-right: 0.5rem;
 }
 
-.c4:focus {
+.c3:focus {
   outline: none;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c4 + .bd-button {
+.c3 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c4:active {
+.c3:active {
   background-color: #DBE3FE;
 }
 
-.c4:focus {
+.c3:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4:hover:not(:active) {
+.c3:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c8 {
+.c7 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -572,37 +561,37 @@ exports[`it renders the given tabs 1`] = `
   color: #3C64F4;
 }
 
-.c8:focus {
+.c7:focus {
   outline: none;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c8 + .bd-button {
+.c7 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c8:active {
+.c7:active {
   background-color: #DBE3FE;
 }
 
-.c8:focus {
+.c7:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c8:hover:not(:active) {
+.c7:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c5 {
+.c4 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -616,7 +605,7 @@ exports[`it renders the given tabs 1`] = `
   visibility: visible;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -629,127 +618,116 @@ exports[`it renders the given tabs 1`] = `
   z-index: 1060;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c6 {
+.c5 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
 }
 
-.c0 {
-  width: 200px;
-}
-
 @media (min-width:720px) {
-  .c4 + .bd-button {
+  .c3 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 {
+  .c3 {
     width: auto;
   }
 }
 
 @media (min-width:720px) {
-  .c8 + .bd-button {
+  .c7 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c8 {
+  .c7 {
     width: auto;
   }
 }
 
-<div>
+<div
+  class="c0 c1"
+  data-testid="pilltabs-wrapper"
+  role="list"
+>
   <div
-    class="c0"
-    data-testid="wrapper"
+    class="c0 c2 "
+    data-testid="pilltabs-pill-0"
+    role="listitem"
+  >
+    <button
+      class="c3 styled__StyledPillTab-sc-1n62hko-0"
+    >
+      <span
+        class="c4"
+      >
+        In stock
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 c5"
+    data-testid="pilltabs-dropdown-toggle"
+    role="listitem"
   >
     <div
-      class="c1 c2"
-      data-testid="pilltabs-wrapper"
-      role="list"
+      class="c0 c6"
     >
-      <div
-        class="c1 c3 "
-        data-testid="pilltabs-pill-0"
-        role="listitem"
+      <button
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-labelledby="bd-dropdown-1-label bd-dropdown-1-toggle-button"
+        class="c7 bd-button"
+        id="bd-dropdown-1-toggle-button"
       >
-        <button
-          class="c4 styled__StyledPillTab-sc-1n62hko-0"
+        <span
+          class="c4"
         >
-          <span
-            class="c5"
+          <svg
+            aria-labelledby="bd-icon-2"
+            class="c8"
+            fill="currentColor"
+            height="24"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="24"
           >
-            In stock
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 c6"
-        data-testid="pilltabs-dropdown-toggle"
-        role="listitem"
-      >
-        <div
-          class="c1 c7"
-        >
-          <button
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-labelledby="bd-dropdown-1-label bd-dropdown-1-toggle-button"
-            class="c8 bd-button"
-            id="bd-dropdown-1-toggle-button"
-          >
-            <span
-              class="c5"
+            <title
+              id="bd-icon-2"
             >
-              <svg
-                aria-labelledby="bd-icon-2"
-                class="c9"
-                fill="currentColor"
-                height="24"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 24 24"
-                width="24"
-              >
-                <title
-                  id="bd-icon-2"
-                >
-                  add
-                </title>
-                <path
-                  d="M0 0h24v24H0V0z"
-                  fill="none"
-                />
-                <path
-                  d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-                />
-              </svg>
-            </span>
-          </button>
-          <div
-            class="c10"
-            style="position: absolute; left: 0px; top: 0px;"
-          >
-            <ul
-              aria-labelledby="bd-dropdown-1-label"
-              class="c11"
-              id="bd-dropdown-1-menu"
-              role="listbox"
-              tabindex="-1"
+              add
+            </title>
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
             />
-          </div>
-        </div>
+            <path
+              d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        class="c9"
+        style="position: absolute; left: 0px; top: 0px;"
+      >
+        <ul
+          aria-labelledby="bd-dropdown-1-label"
+          class="c10"
+          id="bd-dropdown-1-menu"
+          role="listbox"
+          tabindex="-1"
+        />
       </div>
     </div>
   </div>
@@ -757,22 +735,22 @@ exports[`it renders the given tabs 1`] = `
 `;
 
 exports[`only the pills that fit are visible 1`] = `
-.c9 {
+.c8 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c1 {
+.c0 {
   box-sizing: border-box;
 }
 
-.c10 {
+.c9 {
   box-sizing: border-box;
   z-index: 1060;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -796,7 +774,7 @@ exports[`only the pills that fit are visible 1`] = `
   display: flex;
 }
 
-.c3 {
+.c2 {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
@@ -815,7 +793,7 @@ exports[`only the pills that fit are visible 1`] = `
   flex-shrink: 1;
 }
 
-.c4 {
+.c3 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -865,41 +843,41 @@ exports[`only the pills that fit are visible 1`] = `
   color: #3C64F4;
 }
 
-.c4.c4 {
+.c3.c3 {
   margin-right: 0.5rem;
 }
 
-.c4:focus {
+.c3:focus {
   outline: none;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c4 + .bd-button {
+.c3 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c4:active {
+.c3:active {
   background-color: #DBE3FE;
 }
 
-.c4:focus {
+.c3:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4:hover:not(:active) {
+.c3:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c8 {
+.c7 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -950,37 +928,37 @@ exports[`only the pills that fit are visible 1`] = `
   color: #3C64F4;
 }
 
-.c8:focus {
+.c7:focus {
   outline: none;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c8 + .bd-button {
+.c7 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c8:active {
+.c7:active {
   background-color: #DBE3FE;
 }
 
-.c8:focus {
+.c7:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c8:hover:not(:active) {
+.c7:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c5 {
+.c4 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -994,7 +972,7 @@ exports[`only the pills that fit are visible 1`] = `
   visibility: visible;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1007,159 +985,148 @@ exports[`only the pills that fit are visible 1`] = `
   z-index: 1060;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c6 {
+.c5 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
 }
 
-.c0 {
-  width: 200px;
-}
-
 @media (min-width:720px) {
-  .c4 + .bd-button {
+  .c3 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 {
+  .c3 {
     width: auto;
   }
 }
 
 @media (min-width:720px) {
-  .c8 + .bd-button {
+  .c7 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c8 {
+  .c7 {
     width: auto;
   }
 }
 
-<div>
+<div
+  class="c0 c1"
+  data-testid="pilltabs-wrapper"
+  role="list"
+>
   <div
-    class="c0"
-    data-testid="wrapper"
+    class="c0 c2 "
+    data-testid="pilltabs-pill-0"
+    role="listitem"
+  >
+    <button
+      class="c3 styled__StyledPillTab-sc-1n62hko-0"
+    >
+      <span
+        class="c4"
+      >
+        In stock
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 c5"
+    data-testid="pilltabs-pill-1"
+    role="listitem"
+  >
+    <button
+      class="c3 styled__StyledPillTab-sc-1n62hko-0"
+      disabled=""
+    >
+      <span
+        class="c4"
+      >
+        Filter 2
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 c5"
+    data-testid="pilltabs-pill-2"
+    role="listitem"
+  >
+    <button
+      class="c3 styled__StyledPillTab-sc-1n62hko-0"
+      disabled=""
+    >
+      <span
+        class="c4"
+      >
+        Filter 3
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 "
+    data-testid="pilltabs-dropdown-toggle"
+    role="listitem"
   >
     <div
-      class="c1 c2"
-      data-testid="pilltabs-wrapper"
-      role="list"
+      class="c0 c6"
     >
-      <div
-        class="c1 c3 "
-        data-testid="pilltabs-pill-0"
-        role="listitem"
+      <button
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-labelledby="bd-dropdown-11-label bd-dropdown-11-toggle-button"
+        class="c7 bd-button"
+        id="bd-dropdown-11-toggle-button"
       >
-        <button
-          class="c4 styled__StyledPillTab-sc-1n62hko-0"
+        <span
+          class="c4"
         >
-          <span
-            class="c5"
+          <svg
+            aria-labelledby="bd-icon-12"
+            class="c8"
+            fill="currentColor"
+            height="24"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="24"
           >
-            In stock
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 c6"
-        data-testid="pilltabs-pill-1"
-        role="listitem"
-      >
-        <button
-          class="c4 styled__StyledPillTab-sc-1n62hko-0"
-          disabled=""
-        >
-          <span
-            class="c5"
-          >
-            Filter 2
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 c6"
-        data-testid="pilltabs-pill-2"
-        role="listitem"
-      >
-        <button
-          class="c4 styled__StyledPillTab-sc-1n62hko-0"
-          disabled=""
-        >
-          <span
-            class="c5"
-          >
-            Filter 3
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 "
-        data-testid="pilltabs-dropdown-toggle"
-        role="listitem"
-      >
-        <div
-          class="c1 c7"
-        >
-          <button
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-labelledby="bd-dropdown-11-label bd-dropdown-11-toggle-button"
-            class="c8 bd-button"
-            id="bd-dropdown-11-toggle-button"
-          >
-            <span
-              class="c5"
+            <title
+              id="bd-icon-12"
             >
-              <svg
-                aria-labelledby="bd-icon-12"
-                class="c9"
-                fill="currentColor"
-                height="24"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 24 24"
-                width="24"
-              >
-                <title
-                  id="bd-icon-12"
-                >
-                  add
-                </title>
-                <path
-                  d="M0 0h24v24H0V0z"
-                  fill="none"
-                />
-                <path
-                  d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-                />
-              </svg>
-            </span>
-          </button>
-          <div
-            class="c10"
-            style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
-          >
-            <ul
-              aria-labelledby="bd-dropdown-11-label"
-              class="c11"
-              id="bd-dropdown-11-menu"
-              role="listbox"
-              tabindex="-1"
+              add
+            </title>
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
             />
-          </div>
-        </div>
+            <path
+              d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        class="c9"
+        style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
+      >
+        <ul
+          aria-labelledby="bd-dropdown-11-label"
+          class="c10"
+          id="bd-dropdown-11-menu"
+          role="listbox"
+          tabindex="-1"
+        />
       </div>
     </div>
   </div>
@@ -1167,22 +1134,22 @@ exports[`only the pills that fit are visible 1`] = `
 `;
 
 exports[`only the pills that fit are visible 2 1`] = `
-.c9 {
+.c8 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c1 {
+.c0 {
   box-sizing: border-box;
 }
 
-.c10 {
+.c9 {
   box-sizing: border-box;
   z-index: 1060;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -1206,7 +1173,7 @@ exports[`only the pills that fit are visible 2 1`] = `
   display: flex;
 }
 
-.c3 {
+.c2 {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
@@ -1225,7 +1192,7 @@ exports[`only the pills that fit are visible 2 1`] = `
   flex-shrink: 1;
 }
 
-.c4 {
+.c3 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -1275,41 +1242,41 @@ exports[`only the pills that fit are visible 2 1`] = `
   color: #3C64F4;
 }
 
-.c4.c4 {
+.c3.c3 {
   margin-right: 0.5rem;
 }
 
-.c4:focus {
+.c3:focus {
   outline: none;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c4 + .bd-button {
+.c3 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c4:active {
+.c3:active {
   background-color: #DBE3FE;
 }
 
-.c4:focus {
+.c3:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c4:hover:not(:active) {
+.c3:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c4[disabled] {
+.c3[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c8 {
+.c7 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -1360,37 +1327,37 @@ exports[`only the pills that fit are visible 2 1`] = `
   color: #3C64F4;
 }
 
-.c8:focus {
+.c7:focus {
   outline: none;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c8 + .bd-button {
+.c7 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c8:active {
+.c7:active {
   background-color: #DBE3FE;
 }
 
-.c8:focus {
+.c7:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c8:hover:not(:active) {
+.c7:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
 
-.c5 {
+.c4 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -1404,7 +1371,7 @@ exports[`only the pills that fit are visible 2 1`] = `
   visibility: visible;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1417,158 +1384,147 @@ exports[`only the pills that fit are visible 2 1`] = `
   z-index: 1060;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c6 {
+.c5 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
 }
 
-.c0 {
-  width: 200px;
-}
-
 @media (min-width:720px) {
-  .c4 + .bd-button {
+  .c3 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c4 {
+  .c3 {
     width: auto;
   }
 }
 
 @media (min-width:720px) {
-  .c8 + .bd-button {
+  .c7 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c8 {
+  .c7 {
     width: auto;
   }
 }
 
-<div>
+<div
+  class="c0 c1"
+  data-testid="pilltabs-wrapper"
+  role="list"
+>
   <div
-    class="c0"
-    data-testid="wrapper"
+    class="c0 c2 "
+    data-testid="pilltabs-pill-0"
+    role="listitem"
+  >
+    <button
+      class="c3 styled__StyledPillTab-sc-1n62hko-0"
+    >
+      <span
+        class="c4"
+      >
+        In stock
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 "
+    data-testid="pilltabs-pill-1"
+    role="listitem"
+  >
+    <button
+      class="c3 styled__StyledPillTab-sc-1n62hko-0"
+    >
+      <span
+        class="c4"
+      >
+        Filter 2
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 c5"
+    data-testid="pilltabs-pill-2"
+    role="listitem"
+  >
+    <button
+      class="c3 styled__StyledPillTab-sc-1n62hko-0"
+      disabled=""
+    >
+      <span
+        class="c4"
+      >
+        Filter 3
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 "
+    data-testid="pilltabs-dropdown-toggle"
+    role="listitem"
   >
     <div
-      class="c1 c2"
-      data-testid="pilltabs-wrapper"
-      role="list"
+      class="c0 c6"
     >
-      <div
-        class="c1 c3 "
-        data-testid="pilltabs-pill-0"
-        role="listitem"
+      <button
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-labelledby="bd-dropdown-15-label bd-dropdown-15-toggle-button"
+        class="c7 bd-button"
+        id="bd-dropdown-15-toggle-button"
       >
-        <button
-          class="c4 styled__StyledPillTab-sc-1n62hko-0"
+        <span
+          class="c4"
         >
-          <span
-            class="c5"
+          <svg
+            aria-labelledby="bd-icon-16"
+            class="c8"
+            fill="currentColor"
+            height="24"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="24"
           >
-            In stock
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 "
-        data-testid="pilltabs-pill-1"
-        role="listitem"
-      >
-        <button
-          class="c4 styled__StyledPillTab-sc-1n62hko-0"
-        >
-          <span
-            class="c5"
-          >
-            Filter 2
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 c6"
-        data-testid="pilltabs-pill-2"
-        role="listitem"
-      >
-        <button
-          class="c4 styled__StyledPillTab-sc-1n62hko-0"
-          disabled=""
-        >
-          <span
-            class="c5"
-          >
-            Filter 3
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 "
-        data-testid="pilltabs-dropdown-toggle"
-        role="listitem"
-      >
-        <div
-          class="c1 c7"
-        >
-          <button
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-labelledby="bd-dropdown-15-label bd-dropdown-15-toggle-button"
-            class="c8 bd-button"
-            id="bd-dropdown-15-toggle-button"
-          >
-            <span
-              class="c5"
+            <title
+              id="bd-icon-16"
             >
-              <svg
-                aria-labelledby="bd-icon-16"
-                class="c9"
-                fill="currentColor"
-                height="24"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 24 24"
-                width="24"
-              >
-                <title
-                  id="bd-icon-16"
-                >
-                  add
-                </title>
-                <path
-                  d="M0 0h24v24H0V0z"
-                  fill="none"
-                />
-                <path
-                  d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-                />
-              </svg>
-            </span>
-          </button>
-          <div
-            class="c10"
-            style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
-          >
-            <ul
-              aria-labelledby="bd-dropdown-15-label"
-              class="c11"
-              id="bd-dropdown-15-menu"
-              role="listbox"
-              tabindex="-1"
+              add
+            </title>
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
             />
-          </div>
-        </div>
+            <path
+              d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        class="c9"
+        style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
+      >
+        <ul
+          aria-labelledby="bd-dropdown-15-label"
+          class="c10"
+          id="bd-dropdown-15-menu"
+          role="listbox"
+          tabindex="-1"
+        />
       </div>
     </div>
   </div>
@@ -1576,22 +1532,22 @@ exports[`only the pills that fit are visible 2 1`] = `
 `;
 
 exports[`renders all the filters if they fit 1`] = `
-.c9 {
+.c8 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
 }
 
-.c1 {
+.c0 {
   box-sizing: border-box;
 }
 
-.c10 {
+.c9 {
   box-sizing: border-box;
   z-index: 1060;
 }
 
-.c2 {
+.c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
@@ -1615,7 +1571,404 @@ exports[`renders all the filters if they fit 1`] = `
   display: flex;
 }
 
+.c2 {
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
 .c3 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  background-color: transparent;
+  border-color: transparent;
+  color: #3C64F4;
+}
+
+.c3.c3 {
+  margin-right: 0.5rem;
+}
+
+.c3:focus {
+  outline: none;
+}
+
+.c3[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c3 + .bd-button {
+  margin-top: 0.5rem;
+}
+
+.c3:active {
+  background-color: #DBE3FE;
+}
+
+.c3:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c3:hover:not(:active) {
+  background-color: #F0F3FF;
+}
+
+.c3[disabled] {
+  border-color: transparent;
+  color: #D9DCE9;
+}
+
+.c7 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  border-color: transparent;
+  color: #3C64F4;
+}
+
+.c7:focus {
+  outline: none;
+}
+
+.c7[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c7 + .bd-button {
+  margin-top: 0.5rem;
+}
+
+.c7:active {
+  background-color: #DBE3FE;
+}
+
+.c7:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c7:hover:not(:active) {
+  background-color: #F0F3FF;
+}
+
+.c7[disabled] {
+  border-color: transparent;
+  color: #D9DCE9;
+}
+
+.c4 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: visible;
+}
+
+.c10 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background-color: #FFFFFF;
+  color: #313440;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  z-index: 1060;
+}
+
+.c6 {
+  position: relative;
+}
+
+.c5 {
+  position: absolute;
+  visibility: hidden;
+  z-index: -1070;
+}
+
+@media (min-width:720px) {
+  .c3 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c3 {
+    width: auto;
+  }
+}
+
+@media (min-width:720px) {
+  .c7 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c7 {
+    width: auto;
+  }
+}
+
+<div
+  class="c0 c1"
+  data-testid="pilltabs-wrapper"
+  role="list"
+>
+  <div
+    class="c0 c2 "
+    data-testid="pilltabs-pill-0"
+    role="listitem"
+  >
+    <button
+      class="c3 styled__StyledPillTab-sc-1n62hko-0"
+    >
+      <span
+        class="c4"
+      >
+        In stock
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 "
+    data-testid="pilltabs-pill-1"
+    role="listitem"
+  >
+    <button
+      class="c3 styled__StyledPillTab-sc-1n62hko-0"
+    >
+      <span
+        class="c4"
+      >
+        Filter 2
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 "
+    data-testid="pilltabs-pill-2"
+    role="listitem"
+  >
+    <button
+      class="c3 styled__StyledPillTab-sc-1n62hko-0"
+    >
+      <span
+        class="c4"
+      >
+        Filter 3
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 c5"
+    data-testid="pilltabs-dropdown-toggle"
+    role="listitem"
+  >
+    <div
+      class="c0 c6"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-labelledby="bd-dropdown-9-label bd-dropdown-9-toggle-button"
+        class="c7 bd-button"
+        id="bd-dropdown-9-toggle-button"
+      >
+        <span
+          class="c4"
+        >
+          <svg
+            aria-labelledby="bd-icon-10"
+            class="c8"
+            fill="currentColor"
+            height="24"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <title
+              id="bd-icon-10"
+            >
+              add
+            </title>
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <path
+              d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        class="c9"
+        style="position: absolute; left: 0px; top: 0px;"
+      >
+        <ul
+          aria-labelledby="bd-dropdown-9-label"
+          class="c10"
+          id="bd-dropdown-9-menu"
+          role="listbox"
+          tabindex="-1"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders dropdown if items do not fit 1`] = `
+.c8 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c0 {
+  box-sizing: border-box;
+}
+
+.c9 {
+  box-sizing: border-box;
+  z-index: 1060;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
@@ -1718,7 +2071,7 @@ exports[`renders all the filters if they fit 1`] = `
   color: #D9DCE9;
 }
 
-.c8 {
+.c7 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -1769,32 +2122,32 @@ exports[`renders all the filters if they fit 1`] = `
   color: #3C64F4;
 }
 
-.c8:focus {
+.c7:focus {
   outline: none;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c8 + .bd-button {
+.c7 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c8:active {
+.c7:active {
   background-color: #DBE3FE;
 }
 
-.c8:focus {
+.c7:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c8:hover:not(:active) {
+.c7:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -1813,7 +2166,7 @@ exports[`renders all the filters if they fit 1`] = `
   visibility: visible;
 }
 
-.c11 {
+.c10 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1826,18 +2179,14 @@ exports[`renders all the filters if they fit 1`] = `
   z-index: 1060;
 }
 
-.c7 {
+.c6 {
   position: relative;
 }
 
-.c6 {
+.c3 {
   position: absolute;
   visibility: hidden;
   z-index: -1070;
-}
-
-.c0 {
-  width: 200px;
 }
 
 @media (min-width:720px) {
@@ -1854,524 +2203,109 @@ exports[`renders all the filters if they fit 1`] = `
 }
 
 @media (min-width:720px) {
-  .c8 + .bd-button {
+  .c7 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c8 {
+  .c7 {
     width: auto;
   }
 }
 
-<div>
+<div
+  class="c0 c1"
+  data-testid="pilltabs-wrapper"
+  role="list"
+>
   <div
-    class="c0"
-    data-testid="wrapper"
+    class="c0 c2 c3"
+    data-testid="pilltabs-pill-0"
+    role="listitem"
   >
-    <div
-      class="c1 c2"
-      data-testid="pilltabs-wrapper"
-      role="list"
+    <button
+      class="c4 styled__StyledPillTab-sc-1n62hko-0"
+      disabled=""
     >
-      <div
-        class="c1 c3 "
-        data-testid="pilltabs-pill-0"
-        role="listitem"
+      <span
+        class="c5"
       >
-        <button
-          class="c4 styled__StyledPillTab-sc-1n62hko-0"
-        >
-          <span
-            class="c5"
-          >
-            In stock
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 "
-        data-testid="pilltabs-pill-1"
-        role="listitem"
-      >
-        <button
-          class="c4 styled__StyledPillTab-sc-1n62hko-0"
-        >
-          <span
-            class="c5"
-          >
-            Filter 2
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 "
-        data-testid="pilltabs-pill-2"
-        role="listitem"
-      >
-        <button
-          class="c4 styled__StyledPillTab-sc-1n62hko-0"
-        >
-          <span
-            class="c5"
-          >
-            Filter 3
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 c6"
-        data-testid="pilltabs-dropdown-toggle"
-        role="listitem"
-      >
-        <div
-          class="c1 c7"
-        >
-          <button
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-labelledby="bd-dropdown-9-label bd-dropdown-9-toggle-button"
-            class="c8 bd-button"
-            id="bd-dropdown-9-toggle-button"
-          >
-            <span
-              class="c5"
-            >
-              <svg
-                aria-labelledby="bd-icon-10"
-                class="c9"
-                fill="currentColor"
-                height="24"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 24 24"
-                width="24"
-              >
-                <title
-                  id="bd-icon-10"
-                >
-                  add
-                </title>
-                <path
-                  d="M0 0h24v24H0V0z"
-                  fill="none"
-                />
-                <path
-                  d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-                />
-              </svg>
-            </span>
-          </button>
-          <div
-            class="c10"
-            style="position: absolute; left: 0px; top: 0px;"
-          >
-            <ul
-              aria-labelledby="bd-dropdown-9-label"
-              class="c11"
-              id="bd-dropdown-9-menu"
-              role="listbox"
-              tabindex="-1"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+        In stock
+      </span>
+    </button>
   </div>
-</div>
-`;
-
-exports[`renders dropdown if items do not fit 1`] = `
-.c9 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.c1 {
-  box-sizing: border-box;
-}
-
-.c10 {
-  box-sizing: border-box;
-  z-index: 1060;
-}
-
-.c2 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c3 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
-  align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
-  flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
-  order: 0;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
-}
-
-.c5 {
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
-  transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid #D9DCE9;
-  border-radius: 0.25rem;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
-  font-size: 1rem;
-  font-weight: 400;
-  height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  line-height: 2rem;
-  outline: none;
-  padding: 0 1rem;
-  pointer-events: auto;
-  position: relative;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: 100%;
-  background-color: transparent;
-  border-color: transparent;
-  color: #3C64F4;
-}
-
-.c5.c5 {
-  margin-right: 0.5rem;
-}
-
-.c5:focus {
-  outline: none;
-}
-
-.c5[disabled] {
-  border-color: #D9DCE9;
-  pointer-events: none;
-}
-
-.c5 + .bd-button {
-  margin-top: 0.5rem;
-}
-
-.c5:active {
-  background-color: #DBE3FE;
-}
-
-.c5:focus {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c5:hover:not(:active) {
-  background-color: #F0F3FF;
-}
-
-.c5[disabled] {
-  border-color: transparent;
-  color: #D9DCE9;
-}
-
-.c8 {
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
-  transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid #D9DCE9;
-  border-radius: 0.25rem;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
-  font-size: 1rem;
-  font-weight: 400;
-  height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  line-height: 2rem;
-  outline: none;
-  padding: 0 1rem;
-  pointer-events: auto;
-  position: relative;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: 100%;
-  padding: 0 0.5rem;
-  background-color: transparent;
-  border-color: transparent;
-  color: #3C64F4;
-}
-
-.c8:focus {
-  outline: none;
-}
-
-.c8[disabled] {
-  border-color: #D9DCE9;
-  pointer-events: none;
-}
-
-.c8 + .bd-button {
-  margin-top: 0.5rem;
-}
-
-.c8:active {
-  background-color: #DBE3FE;
-}
-
-.c8:focus {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c8:hover:not(:active) {
-  background-color: #F0F3FF;
-}
-
-.c8[disabled] {
-  border-color: transparent;
-  color: #D9DCE9;
-}
-
-.c6 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: inline-grid;
-  grid-auto-flow: column;
-  grid-gap: 0.5rem;
-  visibility: visible;
-}
-
-.c11 {
-  border-radius: 0.25rem;
-  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
-  background-color: #FFFFFF;
-  color: #313440;
-  margin: 0;
-  max-height: 15.625rem;
-  outline: none;
-  overflow-y: auto;
-  padding: 0.5rem 0;
-  z-index: 1060;
-}
-
-.c7 {
-  position: relative;
-}
-
-.c4 {
-  position: absolute;
-  visibility: hidden;
-  z-index: -1070;
-}
-
-.c0 {
-  width: 200px;
-}
-
-@media (min-width:720px) {
-  .c5 + .bd-button {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c5 {
-    width: auto;
-  }
-}
-
-@media (min-width:720px) {
-  .c8 + .bd-button {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c8 {
-    width: auto;
-  }
-}
-
-<div>
   <div
-    class="c0"
-    data-testid="wrapper"
+    class="c0 c2 c3"
+    data-testid="pilltabs-pill-1"
+    role="listitem"
+  >
+    <button
+      class="c4 styled__StyledPillTab-sc-1n62hko-0"
+      disabled=""
+    >
+      <span
+        class="c5"
+      >
+        Long filter name
+      </span>
+    </button>
+  </div>
+  <div
+    class="c0 c2 "
+    data-testid="pilltabs-dropdown-toggle"
+    role="listitem"
   >
     <div
-      class="c1 c2"
-      data-testid="pilltabs-wrapper"
-      role="list"
+      class="c0 c6"
     >
-      <div
-        class="c1 c3 c4"
-        data-testid="pilltabs-pill-0"
-        role="listitem"
+      <button
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-labelledby="bd-dropdown-5-label bd-dropdown-5-toggle-button"
+        class="c7 bd-button"
+        id="bd-dropdown-5-toggle-button"
       >
-        <button
-          class="c5 styled__StyledPillTab-sc-1n62hko-0"
-          disabled=""
+        <span
+          class="c5"
         >
-          <span
-            class="c6"
+          <svg
+            aria-labelledby="bd-icon-6"
+            class="c8"
+            fill="currentColor"
+            height="24"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="24"
           >
-            In stock
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 c4"
-        data-testid="pilltabs-pill-1"
-        role="listitem"
-      >
-        <button
-          class="c5 styled__StyledPillTab-sc-1n62hko-0"
-          disabled=""
-        >
-          <span
-            class="c6"
-          >
-            Long filter name
-          </span>
-        </button>
-      </div>
-      <div
-        class="c1 c3 "
-        data-testid="pilltabs-dropdown-toggle"
-        role="listitem"
-      >
-        <div
-          class="c1 c7"
-        >
-          <button
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-labelledby="bd-dropdown-5-label bd-dropdown-5-toggle-button"
-            class="c8 bd-button"
-            id="bd-dropdown-5-toggle-button"
-          >
-            <span
-              class="c6"
+            <title
+              id="bd-icon-6"
             >
-              <svg
-                aria-labelledby="bd-icon-6"
-                class="c9"
-                fill="currentColor"
-                height="24"
-                stroke="currentColor"
-                stroke-width="0"
-                viewBox="0 0 24 24"
-                width="24"
-              >
-                <title
-                  id="bd-icon-6"
-                >
-                  add
-                </title>
-                <path
-                  d="M0 0h24v24H0V0z"
-                  fill="none"
-                />
-                <path
-                  d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-                />
-              </svg>
-            </span>
-          </button>
-          <div
-            class="c10"
-            style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
-          >
-            <ul
-              aria-labelledby="bd-dropdown-5-label"
-              class="c11"
-              id="bd-dropdown-5-menu"
-              role="listbox"
-              tabindex="-1"
+              add
+            </title>
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
             />
-          </div>
-        </div>
+            <path
+              d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        class="c9"
+        style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
+      >
+        <ul
+          aria-labelledby="bd-dropdown-5-label"
+          class="c10"
+          id="bd-dropdown-5-menu"
+          role="listbox"
+          tabindex="-1"
+        />
       </div>
     </div>
   </div>

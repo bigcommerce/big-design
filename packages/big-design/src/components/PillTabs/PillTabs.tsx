@@ -99,27 +99,60 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     );
   }, [items, pillsState, isMenuVisible, dropdownRef, activePills, onPillClick]);
 
+  useEffect(() => {
+    const itemIds = items.map((item) => item.id);
+    const stateIds = pillsState.map((stateItem) => stateItem.item.id);
+
+    // The item ids and their order must match exactly with the internal state, if not, the state needs to be synced up
+    if (itemIds.join() !== stateIds.join()) {
+      const newState = items.map((item) => {
+        const oldItem = pillsState.find((stateItem) => stateItem.item === item);
+
+        if (oldItem) {
+          return oldItem;
+        }
+
+        return {
+          // hideOverflownPills will correct this field if it needs correction
+          isVisible: true,
+          item,
+          ref: createRef<HTMLDivElement>(),
+        };
+      });
+
+      setPillsState(newState);
+    }
+  }, [items, pillsState]);
+
   const renderedPills = useMemo(
     () =>
-      items.map((item, index) => (
-        <StyledFlexItem
-          data-testid={`pilltabs-pill-${index}`}
-          key={index}
-          ref={pillsState[index].ref}
-          isVisible={pillsState[index].isVisible}
-          role="listitem"
-        >
-          <StyledPillTab
-            disabled={!pillsState[index].isVisible}
-            variant="subtle"
-            isActive={activePills.includes(item.id)}
-            onClick={() => onPillClick(item.id)}
-            marginRight="xSmall"
+      items.map((item, index) => {
+        const pill = pillsState[index];
+
+        if (!pill) {
+          return;
+        }
+
+        return (
+          <StyledFlexItem
+            data-testid={`pilltabs-pill-${index}`}
+            key={index}
+            ref={pill.ref}
+            isVisible={pill.isVisible}
+            role="listitem"
           >
-            {item.title}
-          </StyledPillTab>
-        </StyledFlexItem>
-      )),
+            <StyledPillTab
+              disabled={!pill.isVisible}
+              variant="subtle"
+              isActive={activePills.includes(item.id)}
+              onClick={() => onPillClick(item.id)}
+              marginRight="xSmall"
+            >
+              {item.title}
+            </StyledPillTab>
+          </StyledFlexItem>
+        );
+      }),
     [items, pillsState, activePills, onPillClick],
   );
 
