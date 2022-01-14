@@ -100,7 +100,11 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
   }, [items, pillsState, isMenuVisible, dropdownRef, activePills, onPillClick]);
 
   useEffect(() => {
-    if (items.length !== pillsState.length) {
+    const itemIds = items.map((item) => item.id);
+    const stateIds = pillsState.map((stateItem) => stateItem.item.id);
+
+    // The item ids and their order must match exactly with the internal state, if not, the state needs to be synced up
+    if (itemIds.join() !== stateIds.join()) {
       const newState = items.map((item) => {
         const oldItem = pillsState.filter((stateItem) => stateItem.item === item)[0];
 
@@ -125,7 +129,6 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       items.map((item, index) => {
         const pill = pillsState[index];
 
-        // pillsState might be temporarily out of sync. Ignore missing pills while it updates
         if (!pill) {
           return;
         }

@@ -1,5 +1,6 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import 'jest-styled-components';
 import React from 'react';
 import styled from 'styled-components';
@@ -305,7 +306,7 @@ test('it executes the given callback on click', () => {
 
   const inStock = screen.getByText('In stock');
 
-  fireEvent.click(inStock);
+  userEvent.click(inStock);
 
   expect(onClick).toHaveBeenCalledWith(item1.id);
 });
@@ -350,8 +351,7 @@ test('cannot click on a hidden item', async () => {
   const notInStock = await screen.findByText('Not in stock');
   const filter1 = screen.getByTestId('pilltabs-pill-1');
 
-  fireEvent.click(notInStock);
-
+  expect(notInStock).toHaveStyle({ pointerEvents: '' });
   expect(filter1).toHaveStyle(HIDDEN_STYLES);
   expect(onClick).not.toHaveBeenCalled();
 });
@@ -432,4 +432,84 @@ test('allows to remove items', async () => {
   expect(inStock2).toBeInTheDocument();
   expect(notInStock2).not.toBeInTheDocument();
   expect(onSale2).toBeInTheDocument();
+});
+
+test('allows to swap items keeping the same length', async () => {
+  const onClick = jest.fn();
+  const item1 = {
+    title: 'In stock',
+    id: 'filter1',
+  };
+  const item2 = {
+    title: 'Not in stock',
+    id: 'filter2',
+  };
+  const item3 = {
+    title: 'On sale',
+    id: 'filter3',
+  };
+  const item4 = {
+    title: 'Featured',
+    id: 'filter4',
+  };
+  const items = [item1, item2, item3];
+
+  const { rerender } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+
+  const inStock1 = screen.getByText('In stock');
+  const notInStock1 = screen.getByText('Not in stock');
+  const onSale1 = screen.getByText('On sale');
+  const featured1 = screen.queryByText('Featured');
+
+  expect(inStock1).toBeInTheDocument();
+  expect(notInStock1).toBeInTheDocument();
+  expect(onSale1).toBeInTheDocument();
+  expect(featured1).not.toBeInTheDocument();
+
+  const newItems = [item1, item2, item4];
+
+  rerender(<TestComponent activePills={[]} items={newItems} onPillClick={onClick} />);
+
+  const inStock2 = await screen.findByText('In stock');
+  const notInStock2 = await screen.findByText('Not in stock');
+  const onSale2 = await screen.queryByText('On sale');
+  const featured2 = await screen.findByText('Featured');
+
+  expect(inStock2).toBeInTheDocument();
+  expect(notInStock2).toBeInTheDocument();
+  expect(onSale2).not.toBeInTheDocument();
+  expect(featured2).toBeInTheDocument();
+});
+
+test('sends the right id to the handler after swapping', async () => {
+  const onClick = jest.fn();
+  const item1 = {
+    title: 'In stock',
+    id: 'filter1',
+  };
+  const item2 = {
+    title: 'Not in stock',
+    id: 'filter2',
+  };
+  const item3 = {
+    title: 'On sale',
+    id: 'filter3',
+  };
+  const item4 = {
+    title: 'Featured',
+    id: 'filter4',
+  };
+  const items = [item1, item2, item3];
+
+  const { rerender } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+
+  const newItems = [item4, item2, item3];
+
+  rerender(<TestComponent activePills={[]} items={newItems} onPillClick={onClick} />);
+
+  const featured = await screen.findByText('Featured');
+
+  userEvent.click(featured);
+
+  expect(onClick).toHaveBeenCalledWith(item4.id);
 });
