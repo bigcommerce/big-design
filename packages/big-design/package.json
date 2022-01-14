@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design",
-  "version": "0.30.3-alpha.0",
+  "version": "0.30.3-alpha.1",
   "sideEffects": false,
   "main": "src/index.ts",
   "author": "BigCommerce Inc",
