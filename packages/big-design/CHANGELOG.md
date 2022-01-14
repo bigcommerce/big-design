@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.3-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.3-alpha.0...@bigcommerce/big-design@0.30.3-alpha.1) (2022-01-14)
+
+
+### Bug Fixes
+
+* **component:** allows pill tabs to receive updated items ([#667](https://github.com/bigcommerce/big-design/issues/667)) ([46e4e1e](https://github.com/bigcommerce/big-design/commit/46e4e1eee9587f146098d19487f79ec6d9d9ee16))
+* **component:** change checkbox margin and box sizing ([#646](https://github.com/bigcommerce/big-design/issues/646)) ([3c9ac79](https://github.com/bigcommerce/big-design/commit/3c9ac79ea9d3631542f2103f0ba40f088b423083))
+* **component:** error locale must match ([#575](https://github.com/bigcommerce/big-design/issues/575)) ([fdbbba7](https://github.com/bigcommerce/big-design/commit/fdbbba78e601757eb5934dcb68ccb87f9a75aeb1)), closes [#525](https://github.com/bigcommerce/big-design/issues/525) [#525](https://github.com/bigcommerce/big-design/issues/525) [#525](https://github.com/bigcommerce/big-design/issues/525)
+* **component:** fix h3 font-weight to regular ([#647](https://github.com/bigcommerce/big-design/issues/647)) ([7662b8e](https://github.com/bigcommerce/big-design/commit/7662b8ea68b8a14773f2522b2e5ac2268b74484f))
+
+
+
+
+
 ## [0.30.3-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.2...@bigcommerce/big-design@0.30.3-alpha.0) (2021-10-28)
 
 

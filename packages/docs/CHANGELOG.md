@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.3-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.3-alpha.0...@bigcommerce/docs@0.30.3-alpha.1) (2022-01-14)
+
+
+### Bug Fixes
+
+* **docs:** correct indentation on grid example. ([#656](https://github.com/bigcommerce/big-design/issues/656)) ([9d3d210](https://github.com/bigcommerce/big-design/commit/9d3d2102319487f69360cf2fee062fdfe4029471))
+
+
+### Features
+
+* **docs:** update breakpoints page to use new layout ([e67905c](https://github.com/bigcommerce/big-design/commit/e67905ced6aa96bc8083300ed43ce6cbc299d986))
+
+
+
+
+
 ## [0.30.3-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.2...@bigcommerce/docs@0.30.3-alpha.0) (2021-10-28)
 
 
