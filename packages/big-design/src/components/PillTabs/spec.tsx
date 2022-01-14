@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 import styled from 'styled-components';
@@ -39,10 +39,12 @@ test('it renders the given tabs', () => {
     },
   ];
 
-  const { container, getByText } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
-  const inStock = getByText('In stock');
+  render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
-  expect(container).toMatchSnapshot();
+  const inStock = screen.getByText('In stock');
+  const list = screen.getByRole('list');
+
+  expect(list).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
 });
 
@@ -70,13 +72,12 @@ test('dropdown is not visible if items fit', () => {
     },
   ];
 
-  const { container, getByText, queryByTestId } = render(
-    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
-  );
-  const inStock = getByText('In stock');
-  const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
+  render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const inStock = screen.getByText('In stock');
+  const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
+  const list = screen.getByRole('list');
 
-  expect(container).toMatchSnapshot();
+  expect(list).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
   expect(dropdownToggle).toHaveStyle(HIDDEN_STYLES);
 });
@@ -108,14 +109,13 @@ test('renders dropdown if items do not fit', async () => {
     },
   ];
 
-  const { container, findByText, queryByTestId } = render(
-    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
-  );
+  render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
-  const inStock = await findByText('Long filter name');
-  const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
+  const inStock = await screen.findByText('Long filter name');
+  const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
+  const list = screen.getByRole('list');
 
-  expect(container).toMatchSnapshot();
+  expect(list).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
   expect(dropdownToggle).not.toHaveStyle(HIDDEN_STYLES);
 });
@@ -152,16 +152,15 @@ test('renders all the filters if they fit', async () => {
     },
   ];
 
-  const { container, findByText, queryByTestId } = render(
-    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
-  );
+  render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
-  const inStock = await findByText('In stock');
-  const filter2 = await findByText('Filter 2');
-  const filter3 = await findByText('Filter 3');
-  const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
+  const inStock = await screen.findByText('In stock');
+  const filter2 = await screen.findByText('Filter 2');
+  const filter3 = await screen.findByText('Filter 3');
+  const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
+  const list = screen.getByRole('list');
 
-  expect(container).toMatchSnapshot();
+  expect(list).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
   expect(filter2).not.toHaveStyle(HIDDEN_STYLES);
   expect(filter3).not.toHaveStyle(HIDDEN_STYLES);
@@ -216,16 +215,15 @@ test('only the pills that fit are visible', async () => {
     },
   ];
 
-  const { container, queryByTestId, findByTestId } = render(
-    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
-  );
+  render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
-  const inStock = await findByTestId('pilltabs-pill-0');
-  const filter2 = await findByTestId('pilltabs-pill-1');
-  const filter3 = await findByTestId('pilltabs-pill-2');
-  const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
+  const inStock = await screen.findByTestId('pilltabs-pill-0');
+  const filter2 = await screen.findByTestId('pilltabs-pill-1');
+  const filter3 = await screen.findByTestId('pilltabs-pill-2');
+  const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
+  const list = screen.getByRole('list');
 
-  expect(container).toMatchSnapshot();
+  expect(list).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
   expect(filter2).toHaveStyle(HIDDEN_STYLES);
   expect(filter3).toHaveStyle(HIDDEN_STYLES);
@@ -276,16 +274,15 @@ test('only the pills that fit are visible 2', async () => {
     },
   ];
 
-  const { container, queryByTestId, findByTestId } = render(
-    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
-  );
+  render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
-  const inStock = await findByTestId('pilltabs-pill-0');
-  const filter2 = await findByTestId('pilltabs-pill-1');
-  const filter3 = await findByTestId('pilltabs-pill-2');
-  const dropdownToggle = queryByTestId('pilltabs-dropdown-toggle');
+  const inStock = await screen.findByTestId('pilltabs-pill-0');
+  const filter2 = await screen.findByTestId('pilltabs-pill-1');
+  const filter3 = await screen.findByTestId('pilltabs-pill-2');
+  const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
+  const list = screen.getByRole('list');
 
-  expect(container).toMatchSnapshot();
+  expect(list).toMatchSnapshot();
   expect(inStock).not.toHaveStyle(HIDDEN_STYLES);
   expect(filter2).not.toHaveStyle(HIDDEN_STYLES);
   expect(filter3).toHaveStyle(HIDDEN_STYLES);
@@ -304,8 +301,9 @@ test('it executes the given callback on click', () => {
   };
   const items = [item1, item2];
 
-  const { getByText } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
-  const inStock = getByText('In stock');
+  render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+
+  const inStock = screen.getByText('In stock');
 
   fireEvent.click(inStock);
 
@@ -347,13 +345,91 @@ test('cannot click on a hidden item', async () => {
   };
   const items = [item1, item2];
 
-  const { findByText, getByTestId } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
 
-  const notInStock = await findByText('Not in stock');
-  const filter1 = getByTestId('pilltabs-pill-1');
+  const notInStock = await screen.findByText('Not in stock');
+  const filter1 = screen.getByTestId('pilltabs-pill-1');
 
   fireEvent.click(notInStock);
 
   expect(filter1).toHaveStyle(HIDDEN_STYLES);
   expect(onClick).not.toHaveBeenCalled();
+});
+
+test('allows to add new items', async () => {
+  const onClick = jest.fn();
+  const item1 = {
+    title: 'In stock',
+    id: 'filter1',
+  };
+  const item2 = {
+    title: 'Not in stock',
+    id: 'filter2',
+  };
+  const item3 = {
+    title: 'On sale',
+    id: 'filter3',
+  };
+  const items = [item1, item2];
+
+  const { rerender } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+
+  const inStock1 = screen.getByText('In stock');
+  const notInStock1 = screen.getByText('Not in stock');
+  const onSale1 = screen.queryByText('On sale');
+
+  expect(inStock1).toBeInTheDocument();
+  expect(notInStock1).toBeInTheDocument();
+  expect(onSale1).not.toBeInTheDocument();
+
+  const newItems = [item1, item2, item3];
+
+  rerender(<TestComponent activePills={[]} items={newItems} onPillClick={onClick} />);
+
+  const inStock2 = await screen.findByText('In stock');
+  const notInStock2 = await screen.findByText('Not in stock');
+  const onSale2 = await screen.queryByText('On sale');
+
+  expect(inStock2).toBeInTheDocument();
+  expect(notInStock2).toBeInTheDocument();
+  expect(onSale2).toBeInTheDocument();
+});
+
+test('allows to remove items', async () => {
+  const onClick = jest.fn();
+  const item1 = {
+    title: 'In stock',
+    id: 'filter1',
+  };
+  const item2 = {
+    title: 'Not in stock',
+    id: 'filter2',
+  };
+  const item3 = {
+    title: 'On sale',
+    id: 'filter3',
+  };
+  const items = [item1, item2, item3];
+
+  const { rerender } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+
+  const inStock1 = screen.getByText('In stock');
+  const notInStock1 = screen.getByText('Not in stock');
+  const onSale1 = screen.getByText('On sale');
+
+  expect(inStock1).toBeInTheDocument();
+  expect(notInStock1).toBeInTheDocument();
+  expect(onSale1).toBeInTheDocument();
+
+  const newItems = [item1, item3];
+
+  rerender(<TestComponent activePills={[]} items={newItems} onPillClick={onClick} />);
+
+  const inStock2 = await screen.findByText('In stock');
+  const notInStock2 = await screen.queryByText('Not in stock');
+  const onSale2 = await screen.queryByText('On sale');
+
+  expect(inStock2).toBeInTheDocument();
+  expect(notInStock2).not.toBeInTheDocument();
+  expect(onSale2).toBeInTheDocument();
 });
