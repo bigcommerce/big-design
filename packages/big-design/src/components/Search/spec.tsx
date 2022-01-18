@@ -33,3 +33,11 @@ test('call onSubmit when user click to the Search button', () => {
 
   expect(onSubmit).toHaveBeenCalled();
 });
+
+test('Search input has autocomplete=off', async () => {
+  render(<Search value="" onChange={jest.fn()} onSubmit={jest.fn()} />);
+
+  const input = await screen.findByPlaceholderText('Search');
+
+  expect(input.getAttribute('autocomplete')).toBe('off');
+});

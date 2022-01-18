@@ -14,6 +14,7 @@ export const Search: React.FC<SearchProps> = ({
   onSubmit,
   placeholder = 'Search',
   'aria-label': ariaLabel = 'Search',
+  autoComplete = 'off',
   ...props
 }) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -32,6 +33,7 @@ export const Search: React.FC<SearchProps> = ({
           <Input
             {...props}
             aria-label={ariaLabel}
+            autoComplete={autoComplete}
             placeholder={placeholder}
             type="search"
             value={value}
