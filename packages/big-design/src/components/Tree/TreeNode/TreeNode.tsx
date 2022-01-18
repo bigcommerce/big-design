@@ -22,7 +22,7 @@ import {
 
 const flexItemProps: FlexItemProps = { flexShrink: 0, marginLeft: 'xxSmall' };
 
-const InternalTreeNode = <T extends unknown>({
+const InternalTreeNode = <T,>({
   children,
   icon,
   label,

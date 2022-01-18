@@ -36,7 +36,7 @@ interface PrivateProps {
 }
 
 const StyleableList = typedMemo(
-  <T extends unknown>({
+  <T,>({
     action,
     addItem,
     autoWidth,

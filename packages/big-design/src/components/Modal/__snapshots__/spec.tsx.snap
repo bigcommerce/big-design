@@ -311,35 +311,7 @@ exports[`render open modal 1`] = `
 `;
 
 exports[`render open modal without backdrop 1`] = `
-<body
-  style="overflow-y: hidden;"
->
-  @media (min-width:720px) {
-
-}
-
-@media (min-width:720px) {
-
-}
-
-@media (min-width:720px) {
-
-}
-
-@media (min-width:1025px) {
-
-}
-
-@media (min-width:720px) {
-
-}
-
-@media (min-width:720px) {
-
-}
-
-<div />
-  .c8 {
+.c8 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -577,7 +549,11 @@ exports[`render open modal without backdrop 1`] = `
   }
 }
 
-<div>
+<body
+  style="overflow-y: hidden;"
+>
+  <div />
+  <div>
     <div
       aria-modal="true"
       class="c0"

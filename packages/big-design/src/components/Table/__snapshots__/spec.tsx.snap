@@ -565,7 +565,7 @@ exports[`renders a simple table 1`] = `
   id="bd-table-1"
 >
   <thead
-    class="styled__StyledTableHead-sc-1p8j1x-0"
+    class=""
   >
     <tr>
       <th
@@ -598,7 +598,7 @@ exports[`renders a simple table 1`] = `
     </tr>
   </thead>
   <tbody
-    class="styled__StyledTableBody-sc-1bwe2hn-0"
+    class=""
   >
     <tr
       class="c5"

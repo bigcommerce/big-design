@@ -16,7 +16,7 @@ export const TreeContext = createContext<TreeContextState<any>>({
   onKeyDown: () => null,
 });
 
-export const Tree = <T extends unknown>({
+export const Tree = <T,>({
   disabledNodes,
   expandable,
   focusable,

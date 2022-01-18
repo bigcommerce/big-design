@@ -37,7 +37,7 @@ const getDefaultSelectedValues = <T>({ nodes, selectedNodes, type }: GetDefaultS
   return [];
 };
 
-export const useSelectable = <T extends unknown>({
+export const useSelectable = <T>({
   defaultSelected,
   disabledNodes,
   nodes,

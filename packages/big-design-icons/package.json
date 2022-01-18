@@ -5,7 +5,7 @@
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "typings": "dist/index.d.ts",
-  "license": "(MIT AND CC BY 3.0)",
+  "license": "(MIT AND CC-BY-3.0)",
   "author": "BigCommerce Inc",
   "repository": {
     "type": "git",
@@ -57,7 +57,7 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/styled-components": "^5.1.11",
-    "babel-plugin-styled-components": "^1.13.2",
+    "babel-plugin-styled-components": "^2.0.2",
     "camelcase": "^6.2.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
