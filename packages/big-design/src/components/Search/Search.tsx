@@ -8,7 +8,14 @@ import { Input } from '../Input';
 
 import { SearchProps } from './types';
 
-export const Search: React.FC<SearchProps> = ({ value, onChange, onSubmit }) => {
+export const Search: React.FC<SearchProps> = ({
+  value,
+  onChange,
+  onSubmit,
+  placeholder = 'Search',
+  'aria-label': ariaLabel = 'Search',
+  ...props
+}) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
@@ -23,8 +30,9 @@ export const Search: React.FC<SearchProps> = ({ value, onChange, onSubmit }) => 
       <Flex alignItems="center" backgroundColor="white" flexDirection="row" paddingBottom="xxSmall">
         <FlexItem flexGrow={1} marginRight="small">
           <Input
-            aria-label="Search"
-            placeholder="Search"
+            {...props}
+            aria-label={ariaLabel}
+            placeholder={placeholder}
             type="search"
             value={value}
             onChange={onChange}
