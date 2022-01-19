@@ -24,7 +24,16 @@ const GridPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Grid</Code> is a two-dimensional grid-based layout system.
+          The <Code primary>Grid</Code> component extends the <Code primary>Box</Code> utility component and provides a{' '}
+          <Link
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid"
+            external
+            target="_blank"
+            rel="external nofollow noreferrer"
+          >
+            CSS grid
+          </Link>{' '}
+          container alongside grid properties.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -202,7 +211,15 @@ const GridPage = () => {
         <GuidelinesTable
           recommended={[
             <>
-              Use <Link href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS-Tricks complete guide</Link>{' '}
+              Use{' '}
+              <Link
+                href="https://css-tricks.com/snippets/css/complete-guide-grid/"
+                external
+                target="_blank"
+                rel="external nofollow noreferrer"
+              >
+                CSS-Tricks complete guide
+              </Link>{' '}
               to grid.
             </>,
           ]}
