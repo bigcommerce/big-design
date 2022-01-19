@@ -30,8 +30,16 @@ const FlexPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          The <Code primary>Flex</Code> component extends the <Code primary>Box</Code> utility component and provides
-          CSS flexbox container alongside flexbox properties.
+          The <Code primary>Flex</Code> component extends the <Code primary>Box</Code> utility component and provides a{' '}
+          <Link
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex"
+            external
+            target="_blank"
+            rel="external nofollow noreferrer"
+          >
+            CSS flexbox
+          </Link>{' '}
+          container alongside flexbox properties.
         </Text>
 
         <Text bold>When to use:</Text>
@@ -230,7 +238,15 @@ const FlexPage = () => {
               Use <Code primary>FlexItem</Code> when children need specific flex properties.
             </>,
             <>
-              Use <Link href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">CSS-Tricks complete guide</Link>{' '}
+              Use{' '}
+              <Link
+                href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+                external
+                target="_blank"
+                rel="external nofollow noreferrer"
+              >
+                CSS-Tricks complete guide
+              </Link>{' '}
               to flexbox.
             </>,
           ]}
