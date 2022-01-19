@@ -8127,9 +8127,9 @@ react-is@^16.13.1, react-is@^16.7.0:
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
 react-live@^2.2.3:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/react-live/-/react-live-2.3.0.tgz#09fbac361903970e7cf51cee60729eeb164a5d87"
-  integrity sha512-b+Nc7x/bLu2sPX/If1uncrmUvYtXTqxY8QpzBw/X76SA3QJ1ggU0Ld6X5phLXZ469+XWO5lOU7OpAt0JoTyZPQ==
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-live/-/react-live-2.4.0.tgz#c550a6e3e344ad047c71a7776b9bf96a485d5762"
+  integrity sha512-1/JOjxPFBoXNgeEC4AqDyhw34qI2RJH1+3M4bXGnQTbwfA9qaUi66j4FfeRk0CBV05Lu8v80Maa1QZS/wmT/Pw==
   dependencies:
     "@types/buble" "^0.20.0"
     buble "0.19.6"
