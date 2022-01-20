@@ -21,6 +21,7 @@ export interface TableSortable<T> {
 export interface TableItem {
   id?: string | number;
   [key: string]: any;
+  expandableContent?: ReactNode;
 }
 
 export interface TableColumn<T> extends TableColumnDisplayProps {

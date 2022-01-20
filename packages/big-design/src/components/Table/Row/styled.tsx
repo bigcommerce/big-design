@@ -2,6 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { withTransition } from '../../../mixins/transitions';
+import { StyledTableDataCell } from '../DataCell/styled';
 
 interface StyledTableRowProps {
   isDragging: boolean;
@@ -17,6 +18,11 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondary10};
   }
+`;
+
+export const StyledDataCell = styled(StyledTableDataCell)`
+  background-color: ${({ theme }) => theme.colors.secondary10};
+  padding: ${({ theme }) => theme.spacing.small};
 `;
 
 StyledTableRow.defaultProps = { theme: defaultTheme };

@@ -111,9 +111,15 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     return index;
   };
 
+  const hasExpandableContent = items.some((item: T) => item.expandableContent);
+  const emptyHeaderCell = (
+    <HeaderCell actionsRef={actionsRef} column={{ hash: '', header: '', render: () => '', width: 0 }} />
+  );
+
   const renderHeaders = () => (
     <Head hidden={headerless}>
       <tr>
+        {hasExpandableContent && emptyHeaderCell}
         {typeof onRowDrop === 'function' && <DragIconHeaderCell actionsRef={actionsRef} />}
         {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} actionsRef={actionsRef} />}
 
@@ -154,6 +160,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
               <Draggable key={key} draggableId={String(key)} index={index}>
                 {(provided, snapshot) => (
                   <Row
+                    isExpandable={hasExpandableContent}
                     isDragging={snapshot.isDragging}
                     {...provided.dragHandleProps}
                     {...provided.draggableProps}
@@ -186,6 +193,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
 
           return (
             <Row
+              isExpandable={hasExpandableContent}
               columns={columns}
               isSelectable={isSelectable}
               isSelected={isSelected}

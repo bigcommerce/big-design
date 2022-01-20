@@ -6,6 +6,7 @@ import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 
 export interface DataCellProps extends TableHTMLAttributes<HTMLTableCellElement>, TableColumnDisplayProps {
   align?: 'left' | 'center' | 'right';
+  colSpan?: number;
   isCheckbox?: boolean;
   verticalAlign?: 'top' | 'middle';
   width?: number | string;
@@ -17,6 +18,7 @@ export const DataCell: React.FC<DataCellProps> = memo(
   ({
     align,
     children,
+    colSpan,
     display,
     isCheckbox,
     verticalAlign,
@@ -31,6 +33,7 @@ export const DataCell: React.FC<DataCellProps> = memo(
     ) : (
       <StyledTableDataCell
         align={align}
+        colSpan={colSpan}
         display={display}
         verticalAlign={verticalAlign}
         width={width}
