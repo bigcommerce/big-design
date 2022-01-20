@@ -92,7 +92,7 @@ const DisplayPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          recommended={['Use the display prop for responsiveness']}
+          recommended={['Use the display prop for responsiveness.']}
           discouraged={[
             <>
               Don't use <Code>display="none"</Code> directly on a component, instead don't render the it.
