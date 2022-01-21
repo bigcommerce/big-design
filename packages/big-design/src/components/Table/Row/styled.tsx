@@ -22,7 +22,12 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
 
 export const StyledDataCell = styled(StyledTableDataCell)`
   background-color: ${({ theme }) => theme.colors.secondary10};
-  padding: ${({ theme }) => theme.spacing.small};
+  padding: ${({ theme }) => theme.spacing.xLarge};
+  padding-left: ${({ theme }) => theme.spacing.small};
+
+  &:last-of-type {
+    padding-right: ${({ theme }) => theme.spacing.xLarge};
+  }
 `;
 
 StyledTableRow.defaultProps = { theme: defaultTheme };
