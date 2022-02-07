@@ -53,7 +53,7 @@ import { Button, GlobalStyles } from '@bigcommerce/big-design';
 
 ### Monorepo
 
-This is a monorepo that uses [Lerna](https://lernajs.io) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
+This is a monorepo that uses [Lerna](https://lerna.js.org/) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
 
 Workspaces are inside the [packages](https://github.com/bigcommerce/big-design/blob/master/packages) directory.
 
