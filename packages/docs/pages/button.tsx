@@ -12,26 +12,25 @@ const ButtonPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Buttons</Code> trigger an immediate action, which can continue within the current page, a new
-          page or modal.
+          Buttons trigger an immediate action, which can continue within the current page, a new page or modal.
         </Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            Use <Code primary>Primary Buttons</Code> for the most important action on a page (e.g. creating an object,
-            saving changes).
+            Use <Code>primary</Code> buttons for the most important action on a page (e.g. creating an object, saving
+            changes).
           </List.Item>
           <List.Item>
-            Use <Code primary>Secondary Buttons</Code> for other important page actions that are not the primary task on
-            the page.
+            Use <Code>secondary</Code> buttons for other important page actions that are not the primary task on the
+            page.
           </List.Item>
           <List.Item>
-            Use <Code primary>Subtle Buttons</Code> alongside <Code primary>Secondary</Code> or{' '}
-            <Code primary> Primary Buttons</Code> for teritiary actions, like to cancel or visit a related task.
+            Use <Code>subtle</Code> buttons alongside <Code>secondary</Code> or <Code>primary</Code> buttons for
+            teritiary actions, like to cancel or visit a related task.
           </List.Item>
           <List.Item>
-            Use <Code primary>Destructive Buttons</Code> in confirmations for important actions that cannot be undone
-            (like deleting something).
+            Use <Code>destructive</Code> buttons in confirmations for important actions that cannot be undone (like
+            deleting something).
           </List.Item>
         </List>
       </Panel>
@@ -202,16 +201,15 @@ const ButtonPage = () => {
           recommended={[
             <>Keep button labels short and concise.</>,
             <>
-              Where there are multiple <Code primary>Buttons</Code> together, ensure the “default” action is the{' '}
-              <Code primary>Primary Button</Code>.
+              Where there are multiple buttons together, ensure the “default” action is the <Code>primary</Code> button.
             </>,
             <>
-              <Code primary>Primary Buttons</Code> should only appear once per page.
+              <Code>primary</Code> button should only appear once per page.
             </>,
           ]}
           discouraged={[
             <>
-              Have more than one <Code primary>Primary Button</Code> on a page.
+              Have more than one <Code>primary</Code> button on a page.
             </>,
           ]}
         />
