@@ -204,7 +204,7 @@ const ButtonPage = () => {
               Where there are multiple buttons together, ensure the “default” action is the <Code>primary</Code> button.
             </>,
             <>
-              <Code>primary</Code> button should only appear once per page.
+              <Code>Primary</Code> button should only appear once per page.
             </>,
           ]}
           discouraged={[
