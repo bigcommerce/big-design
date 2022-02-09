@@ -89,7 +89,3 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
     </BigDesign.Box>
   );
 };
-
-CodePreview.defaultProps = {
-  scope: defaultScope,
-};
