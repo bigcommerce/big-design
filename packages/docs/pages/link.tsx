@@ -67,12 +67,12 @@ const LinkPage = () => {
         <GuidelinesTable
           recommended={[
             <>
-              Use the <Code primary>external</Code> prop when a link navigates away from the control panel
+              Use the <Code primary>external</Code> prop when a link navigates away from the control panel.
             </>,
-            <>Usually within a sentance to provide additional guidance or information</>,
-            <>Use descriptive text to set clear expectations of the link destination</>,
+            <>Usually within a sentance to provide additional guidance or information.</>,
+            <>Use descriptive text to set clear expectations of the link destination.</>,
           ]}
-          discouraged={[<>Avoid using links for actions – use a button instead</>]}
+          discouraged={[<>Avoid using links for actions – use a button instead.</>]}
         />
       </Panel>
     </>
