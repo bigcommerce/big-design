@@ -33,7 +33,7 @@ const LinkPage = () => {
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
-                    <Link href="#">Link Example</Link>
+                    <Link href="#">Link example</Link>
                     {/* jsx-to-string:end */}
                   </CodePreview>
                 </Fragment>
@@ -41,14 +41,14 @@ const LinkPage = () => {
             },
             {
               id: 'external-link',
-              title: 'External Link',
+              title: 'External link',
               render: () => (
                 <Fragment key="external-link">
                   <Text>You can also include an external icon.</Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <Link href="#" target="_blank" external>
-                      Learn More
+                      Learn more
                     </Link>
                     {/* jsx-to-string:end */}
                   </CodePreview>
@@ -60,7 +60,11 @@ const LinkPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <LinkPropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />
+        <LinkPropTable
+          inheritedProps={<MarginPropTable collapsible />}
+          renderPanel={false}
+          nativeElement={['a', 'all']}
+        />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
@@ -69,7 +73,7 @@ const LinkPage = () => {
             <>
               Use the <Code primary>external</Code> prop when a link navigates away from the control panel.
             </>,
-            <>Usually within a sentance to provide additional guidance or information.</>,
+            <>Usually within a sentence to provide additional guidance or information.</>,
             <>Use descriptive text to set clear expectations of the link destination.</>,
           ]}
           discouraged={[<>Avoid using links for actions – use a button instead.</>]}
