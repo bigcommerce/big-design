@@ -43,7 +43,7 @@ const ButtonPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>Buttons are calls to action used throughout the product experience.</Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -52,7 +52,7 @@ const ButtonPage = () => {
                     </Button>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
@@ -80,7 +80,7 @@ const ButtonPage = () => {
             },
             {
               id: 'action-types',
-              title: 'Action Types',
+              title: 'Action types',
               render: () => (
                 <Fragment key="action-types">
                   <Text>
