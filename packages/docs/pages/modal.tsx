@@ -131,8 +131,8 @@ const ModalPage = () => {
               <Code primary>Modals</Code> should require that users take an action.
             </>,
             <>
-              <Code primary>Modals</Code> should close when users press the Cancel or Primary button, not when merchants
-              click or tap the area outside the <Code primary>Modal</Code>.
+              <Code primary>Modals</Code> should close when users press an action button, not when merchants click or
+              tap the area outside the <Code primary>Modal</Code>.
             </>,
             <>
               It should be clear why the <Code primary>Modal</Code> was opened.
