@@ -12,7 +12,7 @@ const MultiSelectPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Multiselects</Code> allow users to select multiple items within a list of options.
+          <Code primary>MultiSelects</Code> allow users to select multiple items within a list of options.
         </Text>
         <Text bold>When to use:</Text>
         <List>
