@@ -12,7 +12,8 @@ const ButtonPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          Buttons trigger an immediate action, which can continue within the current page, a new page or modal.
+          <Code primary>Buttons</Code> trigger an immediate action, which can continue within the current page, a new
+          page or modal.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -44,7 +45,9 @@ const ButtonPage = () => {
               title: 'Basic',
               render: () => (
                 <Fragment key="basic">
-                  <Text>Buttons are calls to action used throughout the product experience.</Text>
+                  <Text>
+                    <Code primary>Buttons</Code> are calls to action used throughout the product experience.
+                  </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <Button actionType="normal" isLoading={false} variant="primary">
@@ -85,7 +88,7 @@ const ButtonPage = () => {
                 <Fragment key="action-types">
                   <Text>
                     There are two action types: <Code>normal</Code> &amp; <Code>destructive</Code>. They are used to
-                    indicate the nature of the action when clicking on the button.
+                    indicate the nature of the action when clicking on the <Code primary>Button</Code>.
                   </Text>
 
                   <CodePreview>
@@ -104,7 +107,10 @@ const ButtonPage = () => {
               title: 'Loading',
               render: () => (
                 <Fragment key="loading">
-                  <Text>The loading state is used when clicking a button will perform a asyncronous action.</Text>
+                  <Text>
+                    The loading state is used when clicking a <Code primary>Button</Code> will perform a asyncronous
+                    action.
+                  </Text>
 
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -142,8 +148,8 @@ const ButtonPage = () => {
               render: () => (
                 <Fragment key="disabled">
                   <Text>
-                    A disabled state is used to indicate no action can be done using the button by passing a{' '}
-                    <Code primary>disabled</Code> prop.
+                    A disabled state is used to indicate no action can be done using the <Code primary>Button</Code> by
+                    passing a <Code primary>disabled</Code> prop.
                   </Text>
 
                   <CodePreview>
@@ -168,8 +174,8 @@ const ButtonPage = () => {
               render: () => (
                 <Fragment key="icons">
                   <Text>
-                    A button can also include icons on either side of the text (or both). When using{' '}
-                    <Code primary>iconOnly</Code>, the <Code primary>iconLeft</Code> &amp;{' '}
+                    A <Code primary>Button</Code> can also include icons on either side of the text (or both). When
+                    using <Code primary>iconOnly</Code>, the <Code primary>iconLeft</Code> &amp;{' '}
                     <Code primary>iconRight</Code> components will be removed.
                   </Text>
 
@@ -201,7 +207,8 @@ const ButtonPage = () => {
           recommended={[
             <>Keep button labels short and concise.</>,
             <>
-              Where there are multiple buttons together, ensure the “default” action is the <Code>primary</Code> button.
+              Where there are multiple <Code primary>Buttons</Code> together, ensure the “default” action is the{' '}
+              <Code>primary</Code> button.
             </>,
             <>
               <Code>primary</Code> button should only appear once per page.
