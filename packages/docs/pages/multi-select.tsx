@@ -461,10 +461,6 @@ const MultiSelectPage = () => {
             },
           ]}
         />
-
-        {/* <MultiSelectPropTable />
-        <SelectOptionPropTable />
-        <SelectActionPropTable /> */}
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
