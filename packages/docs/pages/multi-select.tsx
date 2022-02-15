@@ -12,7 +12,7 @@ const MultiSelectPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Multiselects</Code> allow users to select multiple items within a list of options
+          <Code primary>Multiselects</Code> allow users to select multiple items within a list of options.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -163,7 +163,7 @@ const MultiSelectPage = () => {
               render: () => (
                 <Fragment key="max-height">
                   <Text>
-                    Once the content is longer than the max-height, the Dropdown will be scrollable. It is possible to
+                    Once the content is longer than the max-height, the dropdown will be scrollable. It is possible to
                     modify the dimension by passing a <Code primary>maxHeight</Code> property.
                   </Text>
 
@@ -441,19 +441,45 @@ const MultiSelectPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <MultiSelectPropTable />
+        <ContentRoutingTabs
+          id="props"
+          routes={[
+            {
+              id: 'multi-select',
+              title: 'MultiSelect',
+              render: () => <MultiSelectPropTable renderPanel={false} />,
+            },
+            {
+              id: 'select-option',
+              title: 'Select option',
+              render: () => <SelectOptionPropTable renderPanel={false} />,
+            },
+            {
+              id: 'select-action',
+              title: 'Select action',
+              render: () => <SelectActionPropTable renderPanel={false} />,
+            },
+          ]}
+        />
+
+        {/* <MultiSelectPropTable />
         <SelectOptionPropTable />
-        <SelectActionPropTable />
+        <SelectActionPropTable /> */}
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
           recommended={[
-            <>Have a default selection whenever possible. If there’s no logical default, leverage placeholder text</>,
-            <>Sort the list of options in a way that makes the most sense to users</>,
-            <>Provide the ability to search when there is a use case for particular choices</>,
+            <>Have a default selection whenever possible. If there’s no logical default, leverage placeholder text.</>,
+            <>Sort the list of options in a way that makes the most sense to users.</>,
+            <>Provide the ability to search when there is a use case for particular choices.</>,
           ]}
-          discouraged={[<>Avoid using a multiselect if there are less than three options provided in the dropdown</>]}
+          discouraged={[
+            <>
+              Avoid using a <Code primary>MultiSelect</Code> if there are less than three options provided in the
+              dropdown.
+            </>,
+          ]}
         />
       </Panel>
     </>

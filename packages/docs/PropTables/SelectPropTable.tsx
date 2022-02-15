@@ -151,7 +151,7 @@ const selectOptionProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Sets the <Code>SelectOption</Code> to disabled.'
+        Sets the <Code>SelectOption</Code> to disabled.
       </>
     ),
   },
@@ -161,7 +161,7 @@ const selectOptionProps: Prop[] = [
     required: true,
     description: (
       <>
-        'Sets the text content of the <Code>SelectOption</Code>.'
+        Sets the text content of the <Code>SelectOption</Code>.
       </>
     ),
   },
@@ -170,7 +170,7 @@ const selectOptionProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Sets the content description of the <Code>SelectOption</Code>
+        Sets the content description of the <Code>SelectOption</Code>.
       </>
     ),
   },
@@ -195,7 +195,7 @@ const selectOptionProps: Prop[] = [
     required: true,
     description: (
       <>
-        'Stored value of the <Code>SelectOption</Code>.'
+        Stored value of the <Code>SelectOption</Code>.
       </>
     ),
   },
@@ -208,7 +208,7 @@ const selectActionProps: Prop[] = [
     defaultValue: 'normal',
     description: (
       <>
-        'Indicates whether the <Code>SelectAction</Code> is of normal or destructive nature.'
+        Indicates whether the <Code>SelectAction</Code> is of normal or destructive nature.
       </>
     ),
   },
@@ -218,7 +218,7 @@ const selectActionProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        'Sets the <Code>SelectAction</Code> to disabled.'
+        Sets the <Code>SelectAction</Code> to disabled.
       </>
     ),
   },
@@ -228,7 +228,7 @@ const selectActionProps: Prop[] = [
     required: true,
     description: (
       <>
-        'Sets the text content of the <Code>SelectAction</Code> .'
+        Sets the text content of the <Code>SelectAction</Code>.
       </>
     ),
   },
@@ -237,7 +237,7 @@ const selectActionProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Sets the content description of the <Code>SelectAction</Code>
+        Sets the content description of the <Code>SelectAction</Code>.
       </>
     ),
   },
