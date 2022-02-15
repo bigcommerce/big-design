@@ -451,12 +451,12 @@ const MultiSelectPage = () => {
             },
             {
               id: 'select-option',
-              title: 'Select option',
+              title: 'SelectOption',
               render: () => <SelectOptionPropTable renderPanel={false} />,
             },
             {
               id: 'select-action',
-              title: 'Select action',
+              title: 'SelectAction',
               render: () => <SelectActionPropTable renderPanel={false} />,
             },
           ]}
