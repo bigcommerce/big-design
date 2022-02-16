@@ -59,7 +59,7 @@ const flexProps: Prop[] = [
   },
   {
     name: 'flexWrap',
-    types: ['nowrap', 'wrap', 'wrap-reversed'],
+    types: ['nowrap', 'wrap', 'wrap-reverse'],
     defaultValue: 'nowrap',
     description: (
       <>
