@@ -11,12 +11,12 @@ const pillTabsPropTable: Prop[] = [
   {
     description: (
       <>
-        See <NextLink href="#pill-tabs-items-prop-table">below</NextLink> for usage.
+        See <NextLink href="/pill-tabs?props=pill-tab-item#props">here</NextLink> for usage.
       </>
     ),
     name: 'items',
     required: true,
-    types: <NextLink href="#pill-tabs-items-prop-table">PillTabItem[]</NextLink>,
+    types: <NextLink href="/pill-tabs?props=pill-tab-item#props">PillTabItem[]</NextLink>,
   },
   {
     name: 'onPillClick',
