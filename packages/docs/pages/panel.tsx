@@ -1,7 +1,7 @@
 import { H1, Panel, Text } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, List } from '../components';
+import { Code, CodePreview, GuidelinesTable, List } from '../components';
 import { MarginPropTable, PanelPropTable } from '../PropTables';
 
 const PanelPage = () => {
@@ -49,6 +49,25 @@ const PanelPage = () => {
 
       <Panel header="Props" headerId="props">
         <PanelPropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              <Code primary>Panel</Code> should use headings that set clear expectations about the content inside.
+            </>,
+            <>
+              <Code primary>Panel</Code> should prioritize information so the most important content comes first.
+            </>,
+          ]}
+          discouraged={[
+            <>
+              <Code primary>Panel</Code> should avoid too many call-to-action buttons or links and have only one primary
+              call to action.
+            </>,
+          ]}
+        />
       </Panel>
     </>
   );
