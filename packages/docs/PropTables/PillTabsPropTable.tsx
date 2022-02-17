@@ -11,7 +11,10 @@ const pillTabsPropTable: Prop[] = [
   {
     description: (
       <>
-        See <NextLink href={{ hash: 'pill-tabs-items-prop-table', query: { props: 'pill-tab-item' } }}>here</NextLink>{' '}
+        See{' '}
+        <NextLink href={{ hash: 'pill-tabs-items-prop-table', query: { props: 'pill-tab-item' } }}>
+          PillTabItem
+        </NextLink>{' '}
         for usage.
       </>
     ),
