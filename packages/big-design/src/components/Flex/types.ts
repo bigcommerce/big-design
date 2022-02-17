@@ -27,7 +27,7 @@ type AlignSelf = ResponsiveProp<
 
 type FlexDirection = ResponsiveProp<'row' | 'column' | 'row-reverse' | 'column-reverse'>;
 
-type FlexWrap = ResponsiveProp<'nowrap' | 'wrap' | 'wrap-reversed'>;
+type FlexWrap = ResponsiveProp<'nowrap' | 'wrap' | 'wrap-reverse'>;
 
 type JustifyContent = ResponsiveProp<
   | 'normal'
