@@ -1,7 +1,7 @@
 import { Box, H1, Panel, Tabs, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
+import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
 import { TabItemPropTable, TabsPropTable } from '../PropTables';
 
 const TabsPage = () => {
@@ -17,6 +17,9 @@ const TabsPage = () => {
         <Text bold>When to use:</Text>
         <List>
           <List.Item>Breaking up a page’s content into distinct chunks or tasks.</List.Item>
+          <List.Item>
+            Navigating between groups of content that are related and at the same level of hierarchy.
+          </List.Item>
         </List>
       </Panel>
 
@@ -63,6 +66,41 @@ const TabsPage = () => {
               title: 'TabItem',
               render: () => <TabItemPropTable id="tab-item-prop-table" renderPanel={false} />,
             },
+          ]}
+        />
+      </Panel>
+
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          recommended={[
+            <>
+              Place <Code primary>Tabs</Code> with related content next to each other, and place in an order that is
+              conducive to the user’s success in the experience.
+            </>,
+            <>
+              If using the same <Code primary>Tabs</Code> for different pages, keep tab order consistent.
+            </>,
+            <>Make the tab label succinct and descriptive of the content within it.</>,
+            <>
+              Ensure <Code primary>Tabs</Code> relate to each other and organize the page’s content in a meaningful way.
+            </>,
+            <>
+              Use <Code primary>Tabs</Code> to switch between related content.
+            </>,
+          ]}
+          discouraged={[
+            <>
+              Don’t use more than eight <Code primary>Tabs</Code> per page. If more than eight <Code primary>Tabs</Code>{' '}
+              are needed, consider other types of navigation or content organization.
+            </>,
+            <>
+              Don’t use more than 4 words to label each <Code primary>Tab</Code>.
+            </>,
+            <>Don’t use icons in tab labels.</>,
+            <>
+              Don’t use <Code primary>Tabs</Code> to filter content on a page, instead use{' '}
+              <NextLink href="/pill-tabs">PillTabs</NextLink>.
+            </>,
           ]}
         />
       </Panel>
