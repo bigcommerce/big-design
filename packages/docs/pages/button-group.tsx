@@ -17,7 +17,7 @@ const ButtonGroupPage = () => {
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            In <NextLink href="/table">Table</NextLink> as a list of bulk actions available for the selected items.
+            In <NextLink href="/table">Tables</NextLink> as a list of bulk actions available for the selected items.
           </List.Item>
         </List>
       </Panel>
@@ -115,7 +115,7 @@ const ButtonGroupPage = () => {
         <GuidelinesTable
           recommended={[
             <>
-              Hide <Code>secondary</Code> actions or <Code primary>actions</Code> that doesn’t fit the container under
+              Hide <Code>secondary</Code> actions or <Code primary>actions</Code> that dont’t fit the container under
               ellipsis.
             </>,
             <>
