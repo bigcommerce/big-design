@@ -115,7 +115,7 @@ const ButtonGroupPage = () => {
         <GuidelinesTable
           recommended={[
             <>
-              Hide <Code>secondary</Code> actions or <Code primary>actions</Code> that dont’t fit the container under
+              Hide <Code>secondary</Code> actions or <Code primary>actions</Code> that don’t fit the container under
               ellipsis.
             </>,
             <>
