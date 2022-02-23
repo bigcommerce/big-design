@@ -67,7 +67,7 @@ export const messagingLinkItemProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Shows an external icon when the <Code primary>external</Code> flag is set and target="_blank".
+        Shows an external icon when the <Code primary>external</Code> prop is set and target="_blank".
       </>
     ),
   },

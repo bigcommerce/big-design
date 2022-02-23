@@ -10,7 +10,7 @@ const RadioPage = () => {
       <H1>Radio</H1>
 
       <Panel header="Overview" headerId="overview">
-        <Text>Radio buttons let users select an option from a list of two or more.</Text>
+        <Text>Radio buttons let users select an option from a list of two or more items.</Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
@@ -29,7 +29,7 @@ const RadioPage = () => {
               render: () => (
                 <Fragment key="basic">
                   <Text>
-                    <Code primary>Radios</Code> are group of items which a single option can be selected.
+                    A <Code primary>Radio</Code> is a group of items from which a single option can be selected.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -203,13 +203,13 @@ const RadioPage = () => {
         <GuidelinesTable
           recommended={[
             <>Group related radio buttons under input headings.</>,
-            <>Radio buttons should always have a default selected option.</>,
-            <>Radio buttons should always be laid out vertically.</>,
+            <>Include a default selected option with the radio buttons.</>,
+            <>Lay radio buttons vertically.</>,
           ]}
           discouraged={[
-            <>Don’t use radio buttons for long lists of short items - use a select input instead.</>,
+            <>Don’t use radio buttons for long lists of short items. Use a select input instead.</>,
             <>
-              A set of radio buttons should not have a state of being “unselected” - there must always be a selection.
+              A set of radio buttons should not have a state of being “unselected.” There must always be a selection.
             </>,
           ]}
         />
