@@ -127,7 +127,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
 
           return (
             <StyledFlexItem data-testid="buttongroup-item" key={key} isVisible={isVisible} ref={ref} role="listitem">
-              <StyledButton {...buttonProps} variant="secondary">
+              <StyledButton {...buttonProps} variant="secondary" isVisible={isVisible}>
                 {text}
               </StyledButton>
             </StyledFlexItem>

@@ -6,6 +6,7 @@ import { FlexItem } from '../Flex';
 
 interface StyledButtonProps {
   borderRadius?: boolean;
+  isVisible?: boolean;
 }
 
 interface StyledFlexItemProps {
@@ -25,6 +26,14 @@ export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
   &:focus {
     z-index: 1;
   }
+
+  ${({ isVisible }) => {
+    if (isVisible === false) {
+      return css`
+        display: none;
+      `;
+    }
+  }}
 `;
 
 export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
