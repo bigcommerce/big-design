@@ -163,8 +163,8 @@ const SelectPage = () => {
               render: () => (
                 <Fragment key="max-height">
                   <Text>
-                    Once the content is longer than the max-height, the Dropdown will be scrollable. It is possible to
-                    modify the dimension by passing a <Code primary>maxHeight</Code> property.
+                    Once the content is longer than the max-height, the <Code primary>Select</Code> will be scrollable.
+                    It is possible to modify the dimension by passing a <Code primary>maxHeight</Code> property.
                   </Text>
 
                   <CodePreview>
