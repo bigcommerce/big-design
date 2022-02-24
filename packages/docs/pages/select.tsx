@@ -32,7 +32,7 @@ const SelectPage = () => {
               render: () => (
                 <Fragment key="basic">
                   <Text>
-                    <Code primary>Select</Code> are typeable inputs with selectable dropdown items.
+                    <Code primary>Select</Code> are typeable inputs with selectable options.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
