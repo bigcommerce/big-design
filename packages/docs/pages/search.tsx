@@ -73,10 +73,10 @@ const SearchPage = () => {
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
           recommended={[
-            <>Make the search bar easily noticable.</>,
-            <>Always use a search icon within the input box to indicate search functionality.</>,
+            'Make the search bar easily noticable.',
+            'Always use a search icon within the input box to indicate search functionality.',
           ]}
-          discouraged={[<>Avoid using a search bar when there is small, easily navigable amount of data on a page.</>]}
+          discouraged={['Avoid using a search bar when there is small, easily navigable amount of data on a page.']}
         />
       </Panel>
     </>
