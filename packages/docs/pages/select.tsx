@@ -12,7 +12,7 @@ const SelectPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Select</Code> give merchants the ability to make a single selection or multiple selections from
+          <Code primary>Select</Code> gives merchants the ability to make a single selection or multiple selections from
           a list of options.
         </Text>
 
