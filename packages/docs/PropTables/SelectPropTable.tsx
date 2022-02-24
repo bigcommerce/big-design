@@ -25,7 +25,7 @@ const selectProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Disables the <Code>Select</Code> component.
+        Disables the <Code primary>Select</Code> component.
       </>
     ),
   },
@@ -40,7 +40,7 @@ const selectProps: Prop[] = [
     defaultValue: 'true',
     description: (
       <>
-        Allows you to filter the <Code>SelectOptions</Code> in the <Code>Select</Code>.
+        Allows you to filter the <Code>SelectOptions</Code> in the <Code primary>Select</Code>.
       </>
     ),
   },
@@ -49,7 +49,7 @@ const selectProps: Prop[] = [
     types: 'React.Ref<HTMLInputElement> | React.RefObject<HTMLInputElement>',
     description: (
       <>
-        The provided ref will be used for the underlying input element used in the <Code>Select</Code>.
+        The provided ref will be used for the underlying input element used in the <Code primary>Select</Code>.
       </>
     ),
   },
@@ -76,12 +76,20 @@ const selectProps: Prop[] = [
   {
     name: 'onClose',
     types: '() => void',
-    description: 'Function that will be called when the Select is closed.',
+    description: (
+      <>
+        Function that will be called when the <Code primary>Select</Code> is closed.
+      </>
+    ),
   },
   {
     name: 'onOpen',
     types: '() => void',
-    description: 'Function that will be called when the Select is opened.',
+    description: (
+      <>
+        Function that will be called when the <Code primary>Select</Code> is opened.
+      </>
+    ),
   },
   {
     name: 'onOptionChange',
@@ -95,8 +103,8 @@ const selectProps: Prop[] = [
     required: true,
     description: (
       <>
-        Accepts an array of <Code>SelectOptions</Code> or an array of <Code>SelectOptionGroups</Code>. See examples for
-        usage.
+        Accepts an array of <Code>SelectOptions</Code> or an array of <Code>SelectOptionGroups</Code>. See{' '}
+        <NextLink href={{ hash: 'implementation' }}>implementation</NextLink> section for usage.
       </>
     ),
   },
@@ -280,7 +288,8 @@ const selectGroupProps: Prop[] = [
     required: true,
     description: (
       <>
-        Accepts an array of <Code>SelectOption</Code>. See example for usage.
+        Accepts an array of <Code>SelectOption</Code>. See{' '}
+        <NextLink href={{ query: 'implementation=select-group' }}>example</NextLink> for usage.
       </>
     ),
   },
