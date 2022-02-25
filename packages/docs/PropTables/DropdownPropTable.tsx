@@ -35,7 +35,11 @@ const dropdownProps: Prop[] = [
       'top-start',
     ],
     defaultValue: 'bottom-start',
-    description: 'Sets the placement of the Dropdown relative to the anchor.',
+    description: (
+      <>
+        Sets the placement of the <Code primary>Dropdown </Code>relative to the anchor.
+      </>
+    ),
   },
   {
     name: 'positionFixed',
@@ -62,7 +66,11 @@ const dropdownProps: Prop[] = [
     name: 'toggle',
     types: 'ReactElement',
     required: true,
-    description: 'Element used as anchor. Toggles the dropdown.',
+    description: (
+      <>
+        Element used as anchor. Toggles the <Code primary>Dropdown</Code>.
+      </>
+    ),
   },
 ];
 
@@ -77,14 +85,18 @@ const dropdownItemProps: Prop[] = [
     name: 'content',
     types: 'string',
     required: true,
-    description: 'Sets the text content of the DropdownItem.',
+    description: (
+      <>
+        Sets the text content of the <Code>DropdownItem</Code>.
+      </>
+    ),
   },
   {
     name: 'description',
     types: 'string',
     description: (
       <>
-        Sets the content description of the <Code>DropdownItem</Code>
+        Sets the content description of the <Code>DropdownItem</Code>.
       </>
     ),
   },
@@ -137,14 +149,18 @@ const dropdownLinkProps: Prop[] = [
     name: 'content',
     types: 'string',
     required: true,
-    description: 'Sets the text content of the DropdownLinkItem.',
+    description: (
+      <>
+        Sets the text content of the <Code>DropdownLinkItem</Code>.
+      </>
+    ),
   },
   {
     name: 'description',
     types: 'string',
     description: (
       <>
-        Sets the content description of the <Code>DropdownLinkItem</Code>
+        Sets the content description of the <Code>DropdownLinkItem</Code>.
       </>
     ),
   },
@@ -207,7 +223,9 @@ const dropdownItemGroupProps: Prop[] = [
     required: true,
     description: (
       <>
-        Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See example for usage.
+        Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See{' '}
+        <NextLink href={{ query: 'implementation=item-groups' }}> example </NextLink>
+        for usage.
       </>
     ),
   },
