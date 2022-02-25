@@ -37,7 +37,7 @@ const dropdownProps: Prop[] = [
     defaultValue: 'bottom-start',
     description: (
       <>
-        Sets the placement of the <Code primary>Dropdown </Code>relative to the anchor.
+        Sets the placement of the <Code primary>Dropdown</Code> relative to the anchor.
       </>
     ),
   },
@@ -224,8 +224,7 @@ const dropdownItemGroupProps: Prop[] = [
     description: (
       <>
         Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See{' '}
-        <NextLink href={{ query: 'implementation=item-groups' }}> example </NextLink>
-        for usage.
+        <NextLink href={{ query: 'implementation=item-groups' }}>example</NextLink> for usage.
       </>
     ),
   },

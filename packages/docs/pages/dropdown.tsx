@@ -442,7 +442,7 @@ const DropdownPage = () => {
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
           recommended={[
-            'Anchor the dropdown menu in a position with is least obstructive to page information.',
+            'Anchor the dropdown menu in the least obstructive position on the page.',
             'Orgainze dropdown items in alphabetical order or by the most relevant content.',
             'Use placeholder text by default if no selection has been made.',
           ]}
