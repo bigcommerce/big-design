@@ -473,14 +473,14 @@ const SelectPage = () => {
         <GuidelinesTable
           recommended={[
             <>
-              Typically used within <NextLink href="/panel">Panels</NextLink>.
+              Use within <NextLink href="/panel">Panels</NextLink>.
             </>,
-            'All select options should be within a container.',
+            'Create all select options within a container.',
             <>
-              Be used for a single selection between 4 or more pre-defined <Code primary>options</Code>.
+              Use for a single selection between 4 or more pre-defined <Code primary>options</Code>.
             </>,
             'Default a selection if possible.',
-            'Placeholder text can be added if additional context is needed.',
+            'Add placeholder text if additional context is needed.',
             'Logically group select options when it makes sense.',
           ]}
           discouraged={[
