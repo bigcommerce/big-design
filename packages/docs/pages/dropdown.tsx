@@ -443,7 +443,7 @@ const DropdownPage = () => {
         <GuidelinesTable
           recommended={[
             'Anchor the dropdown menu in the least obstructive position on the page.',
-            'Orgainze dropdown items in alphabetical order or by the most relevant content.',
+            'Organize dropdown items in alphabetical order or by the most relevant content.',
             'Use placeholder text by default if no selection has been made.',
           ]}
           discouraged={[
