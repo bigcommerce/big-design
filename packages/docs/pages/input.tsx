@@ -12,14 +12,14 @@ const InputPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Inputs</Code> are form controls that allow the entry of numeric or text data, often supported by
+          <Code primary>Inputs</Code> are form controls that allow entering numeric or text data, often supported by
           system validation.
         </Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>Use text inputs to let the user input short lines of text or numbers.</List.Item>
           <List.Item>
-            Typically used within <NextLink href="/form">Forms</NextLink>.
+            Most of the time used within <NextLink href="/form">Forms</NextLink>.
           </List.Item>
         </List>
       </Panel>
@@ -125,7 +125,7 @@ const InputPage = () => {
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
           recommended={[
-            'Provide placeholder text, examples or formats of relevent content. Placeholder text disappears after user input.',
+            'Provide placeholder text, examples or formats of relevent content.',
             'Provide inline error notification post input submission.',
             <>
               Use <Code primary>labels</Code> to help users understand what information to enter.
