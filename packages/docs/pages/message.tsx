@@ -1,5 +1,5 @@
 import { H1, Message, Panel, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
 import { MarginPropTable, MessagePropTable } from '../PropTables';
@@ -31,7 +31,7 @@ const MessagePage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>
                     A message primarily used for displaying page/table messaging, feature/discover/system level
                     messages, or even non-critical messaging.
@@ -54,14 +54,14 @@ const MessagePage = () => {
                     />
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'types',
               title: 'Types',
               render: () => (
-                <>
+                <Fragment key="types">
                   <Text>
                     There are four types of <Code primary>Messages</Code> based on the level of message you want to
                     display.
@@ -93,14 +93,14 @@ const MessagePage = () => {
                     </>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'header',
               title: 'Header',
               render: () => (
-                <>
+                <Fragment key="header">
                   <Text>
                     <Code primary>Messages</Code> allow you to pass an optional <Code primary>header</Code> prop.
                   </Text>
@@ -122,14 +122,14 @@ const MessagePage = () => {
                     </>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'onclose',
               title: 'onClose',
               render: () => (
-                <>
+                <Fragment key="onclose">
                   <Text>Toggles the visibility of the close button, and provides an on click callback.</Text>
 
                   <CodePreview>
@@ -149,14 +149,14 @@ const MessagePage = () => {
                     </>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'actions',
               title: 'Actions',
               render: () => (
-                <>
+                <Fragment key="actions">
                   <Text>
                     <Code primary>Messages</Code> allow you to pass an optional <Code primary>actions</Code> prop.
                   </Text>
@@ -183,7 +183,7 @@ const MessagePage = () => {
                     </>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}
