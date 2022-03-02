@@ -65,7 +65,7 @@ const FormPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>
                     Form fields are essential to any website or web application. Unique <Code>id</Code>'s' will be
                     auto-generated for the form fields and labels <Code>for</Code> attribute, unless manually specified.
@@ -91,7 +91,7 @@ const FormPage = () => {
                     </Form>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
@@ -177,7 +177,7 @@ const FormPage = () => {
               id: 'layout',
               title: 'Layout',
               render: () => (
-                <>
+                <Fragment key="layout">
                   <Text>
                     You can up to 3 <Code>Input</Code> components in row to add more dimension to a{' '}
                     <Code>FormGroup</Code>. <Code>Radio</Code> and <Code>Checkbox</Code> components will never display
@@ -209,14 +209,14 @@ const FormPage = () => {
                     </Form>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'validation',
               title: 'Validation',
               render: () => (
-                <>
+                <Fragment key="validation">
                   <Text>
                     All form controls are tied to <Code primary>onChange</Code> or equivalent event handlers. Validation
                     messages can be passed through the <Code>error</Code> prop. All input errors in an{' '}
@@ -277,7 +277,7 @@ const FormPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}

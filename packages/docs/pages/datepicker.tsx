@@ -1,5 +1,5 @@
 import { Datepicker, Form, FormGroup, H1, Panel, Text } from '@bigcommerce/big-design';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { DatepickerPropTable } from '../PropTables';
@@ -31,7 +31,7 @@ const DatepickerPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>Use to select a single date from the calendar.</Text>
 
                   <CodePreview>
@@ -56,14 +56,14 @@ const DatepickerPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'error-states',
               title: 'Error states',
               render: () => (
-                <>
+                <Fragment key="error-state">
                   <Text>
                     <Code primary>Datepicker</Code> allows you to pass in an <Code primary>error</Code> message that
                     will control the styles of a counter. The logic on the <Code primary>Datepicker</Code> can be
@@ -103,7 +103,7 @@ const DatepickerPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}

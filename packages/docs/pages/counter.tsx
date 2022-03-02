@@ -1,5 +1,5 @@
 import { Counter, Form, FormGroup, H1, Panel, Text } from '@bigcommerce/big-design';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { CounterPropTable } from '../PropTables';
@@ -34,7 +34,7 @@ const CounterPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>
                     <Code primary>Counters</Code> are stylized numerical form controls with the ability to control
                     validation.
@@ -64,14 +64,14 @@ const CounterPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'error-states',
               title: 'Error states',
               render: () => (
-                <>
+                <Fragment key="error-states">
                   <Text>
                     <Code primary>Counters</Code> allow you to pass in an <Code primary>error</Code> message that will
                     control the styles of a <Code primary>Counter</Code>. The logic on the counter can be controlled
@@ -110,7 +110,7 @@ const CounterPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}

@@ -1,5 +1,5 @@
 import { Form, FormGroup, H1, Panel, Text, Textarea } from '@bigcommerce/big-design';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { TextareaPropTable } from '../PropTables';
@@ -30,7 +30,7 @@ const TextAreaPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <CodePreview>
+                <CodePreview key="basic">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const [value, setValue] = useState('');
@@ -61,7 +61,7 @@ const TextAreaPage = () => {
               id: 'error-state',
               title: 'Error state',
               render: () => (
-                <>
+                <Fragment key="error-state">
                   <Text>
                     <Code primary>Textareas</Code> allow you to pass in an <Code primary>error</Code> message that will
                     control the styles of an input. The logic on the input can be controlled with the{' '}
@@ -84,14 +84,14 @@ const TextAreaPage = () => {
                     </Form>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'controlling-rows',
               title: 'Controlling rows',
               render: () => (
-                <>
+                <Fragment key="controlling-rows">
                   <Text>
                     By default, a <Code primary>Textarea</Code> displays with <Code>3</Code> rows. In order to set the
                     intial amount of rows, pass in the <Code>rows</Code> prop. There can only be a maximum of{' '}
@@ -112,14 +112,14 @@ const TextAreaPage = () => {
                     </Form>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'resizable',
               title: 'Resizable',
               render: () => (
-                <>
+                <Fragment key="resizable">
                   <Text>
                     You can also control whether <Code primary>Textarea</Code> components are resizeable. Resizing is
                     only available on the vertical axis.
@@ -134,7 +134,7 @@ const TextAreaPage = () => {
                     </Form>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}
