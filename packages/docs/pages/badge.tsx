@@ -1,5 +1,5 @@
 import { Badge, Grid, H1, Panel, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
 import { GuidelinesTable } from '../components/GuidelinesTable';
@@ -35,7 +35,7 @@ const BadgePage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <CodePreview>
+                <CodePreview key="basic">
                   {/* jsx-to-string:start */}
                   <Badge label="active" variant="success" />
                   {/* jsx-to-string:end */}
@@ -46,7 +46,7 @@ const BadgePage = () => {
               id: 'variants',
               title: 'Variants',
               render: () => (
-                <>
+                <Fragment key="variants">
                   <Text>
                     There are five types of variants to choose from: <Code>success</Code>, <Code>secondary</Code>,{' '}
                     <Code>warning</Code>, <Code>danger</Code>, and <Code>primary</Code>. You can determine what type by
@@ -64,7 +64,7 @@ const BadgePage = () => {
                     </Grid>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}
