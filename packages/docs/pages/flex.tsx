@@ -1,5 +1,5 @@
 import { Box, Flex, FlexItem, H1, Link, Panel, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
 import {
@@ -61,7 +61,7 @@ const FlexPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <CodePreview scope={{ ExampleBox }}>
+                <CodePreview scope={{ ExampleBox }} key="basic">
                   {/* jsx-to-string:start */}
                   <Flex
                     alignContent="stretch"
@@ -91,7 +91,7 @@ const FlexPage = () => {
               id: 'justify-content',
               title: 'Justify content',
               render: () => (
-                <>
+                <Fragment key="justify-content">
                   <Text>
                     Flex container's can space their element with uniform spacing in-between each flex item using the{' '}
                     <Code primary>justifyContent</Code> prop.
@@ -115,14 +115,14 @@ const FlexPage = () => {
                     </Flex>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'column-layout',
               title: 'Column layout',
               render: () => (
-                <>
+                <Fragment key="column-layout">
                   <Text>
                     One way of creating a column based layout is using a combination of the{' '}
                     <Code primary>flexWrap</Code> prop on the flex container with an additional{' '}
@@ -147,14 +147,14 @@ const FlexPage = () => {
                     </Flex>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'sort-content',
               title: 'Sort content',
               render: () => (
-                <>
+                <Fragment key="sort-content">
                   <Text>
                     Using the <Code primary>flexOrder</Code> prop you can reorganize content based on the size generated
                     by setting the <Code primary>flexGrow</Code> prop. <Code primary>flexGrow</Code> allows the flex
@@ -179,7 +179,7 @@ const FlexPage = () => {
                     </Flex>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}

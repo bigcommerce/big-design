@@ -1,5 +1,5 @@
 import { Box, H1, Link, Panel, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, NextLink } from '../components';
 import { DisplayPropTable } from '../PropTables';
@@ -32,7 +32,7 @@ const DisplayPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>
                     A few of our components expose a <Code primary>display</Code> prop in order to change the CSS
                     display property. See a components prop table to see if this prop exists.
@@ -44,14 +44,14 @@ const DisplayPage = () => {
                     </Box>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'responsive',
               title: 'Responsive',
               render: () => (
-                <>
+                <Fragment key="responsive">
                   <Text>
                     It's also possible to use the prop with responsive{' '}
                     <NextLink href="/breakpoints">breakpoints</NextLink>:
@@ -79,7 +79,7 @@ const DisplayPage = () => {
                     </>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}

@@ -1,5 +1,5 @@
 import { Box, Flex, H1, Panel, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable } from '../components';
@@ -26,7 +26,7 @@ const BoxPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>Used as a simple container or as a base to build other components.</Text>
 
                   <CodePreview>
@@ -36,14 +36,14 @@ const BoxPage = () => {
                     </Box>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'shadows',
               title: 'Shadows',
               render: () => (
-                <>
+                <Fragment key="shadows">
                   <Text>
                     <Code primary>Box</Code> also supports multiple shadows, here is an example of how they look like:
                   </Text>
@@ -60,14 +60,14 @@ const BoxPage = () => {
                     </Flex>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'extending',
               title: 'Extending',
               render: () => (
-                <>
+                <Fragment key="extending">
                   <Text>
                     <Code primary>Box</Code> is extendable, here is an example on how to create an{' '}
                     <Code primary>Avatar</Code> component extending from <Code primary>Box</Code> with a couple of extra
@@ -91,7 +91,7 @@ const BoxPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}
