@@ -1,5 +1,5 @@
 import { H1, Panel, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import {
@@ -74,7 +74,7 @@ const TablePage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <CodePreview>
+                <CodePreview key="basic">
                   {/* jsx-to-string:start */}
                   <Table
                     columns={[
@@ -99,7 +99,7 @@ const TablePage = () => {
               id: 'selectable',
               title: 'Selectable',
               render: () => (
-                <CodePreview scope={{ data, columns }}>
+                <CodePreview scope={{ data, columns }} key="selectable">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const [selectedItems, setSelectedItems] = useState<Item[]>([]);
@@ -125,7 +125,7 @@ const TablePage = () => {
               id: 'pagination',
               title: 'Pagination',
               render: () => (
-                <CodePreview scope={{ data, columns }}>
+                <CodePreview scope={{ data, columns }} key="pagination">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const [currentPage, setCurrentPage] = useState(1);
@@ -172,7 +172,7 @@ const TablePage = () => {
               id: 'sortable',
               title: 'Sortable',
               render: () => (
-                <CodePreview scope={{ data, columns, sort }}>
+                <CodePreview scope={{ data, columns, sort }} key="sortable">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const [items, setItems] = useState(data);
@@ -211,7 +211,7 @@ const TablePage = () => {
               id: 'table-figure',
               title: 'TableFigure',
               render: () => (
-                <>
+                <Fragment key="table-figure">
                   <Text>
                     <Code primary>TableFigure</Code> components are used to wrap tables and any relevant information to
                     be grouped with them. <Code primary>TableFigures</Code> also provide a scrollable overflow on mobile
@@ -248,14 +248,14 @@ const TablePage = () => {
                     </TableFigure>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'custom',
               title: 'Custom',
               render: () => (
-                <CodePreview>
+                <CodePreview key="custom">
                   {/* jsx-to-string:start */}
                   <Table
                     columns={[
@@ -289,7 +289,7 @@ const TablePage = () => {
               id: 'drag-and-drop',
               title: 'Drag & Drop',
               render: () => (
-                <CodePreview scope={{ data, dragEnd }}>
+                <CodePreview scope={{ data, dragEnd }} key="drap-and-drop">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const [items, setItems] = useState(data);

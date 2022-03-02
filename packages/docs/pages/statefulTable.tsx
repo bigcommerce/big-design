@@ -1,5 +1,5 @@
 import { H1, Panel, StatefulTable, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
 import { StatefulTableColumnsPropTable, StatefulTableFiltersPropTable, StatefulTablePropTable } from '../PropTables';
@@ -137,7 +137,7 @@ const StatefulTablePage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>
                     <Code primary>StatefulTable</Code> is a wrapper of <NextLink href="/table">Table</NextLink> that
                     simplifies it's usage when having the full list of items in memory. It supports pagination, row
@@ -161,14 +161,14 @@ const StatefulTablePage = () => {
                     />
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'pagination-and-selection',
               title: 'Pagination and selection',
               render: () => (
-                <CodePreview scope={{ items }}>
+                <CodePreview scope={{ items }} key="pagination-and-selection">
                   {/* jsx-to-string:start */}
                   <StatefulTable
                     itemName="Products"
@@ -190,7 +190,7 @@ const StatefulTablePage = () => {
               id: 'drag-and-drop',
               title: 'Drag and drop',
               render: () => (
-                <CodePreview>
+                <CodePreview key="drag-and-drop">
                   {/* jsx-to-string:start */}
                   <StatefulTable
                     columns={[
@@ -215,7 +215,7 @@ const StatefulTablePage = () => {
               id: 'filters',
               title: 'Filters',
               render: () => (
-                <CodePreview>
+                <CodePreview key="filters">
                   {/* jsx-to-string:start */}
                   <StatefulTable
                     columns={[
@@ -255,7 +255,7 @@ const StatefulTablePage = () => {
               id: 'search',
               title: 'Search',
               render: () => (
-                <CodePreview scope={{ items }}>
+                <CodePreview scope={{ items }} key="search">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     return (
