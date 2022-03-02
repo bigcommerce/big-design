@@ -126,10 +126,10 @@ const InlineMessagePage = () => {
               ),
             },
             {
-              id: 'onClose',
+              id: 'onclose',
               title: 'onClose',
               render: () => (
-                <Fragment key="on-close">
+                <Fragment key="onclose">
                   <Text>Toggles the visibility of the close button, and provides an on click callback.</Text>
 
                   <CodePreview>
