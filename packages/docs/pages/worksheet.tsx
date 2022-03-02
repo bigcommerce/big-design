@@ -114,7 +114,7 @@ const WorksheetPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <CodePreview scope={{ CATEGORIES, CategoryTree, nodes }}>
+                <CodePreview scope={{ CATEGORIES, CategoryTree, nodes }} key="basic">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const columns: WorksheetColumn<Product>[] = [
@@ -263,7 +263,7 @@ const WorksheetPage = () => {
               id: 'text-columns',
               title: 'Text columns',
               render: () => (
-                <CodePreview>
+                <CodePreview key="text-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const columns: WorksheetColumn<Partial<Product>>[] = [
@@ -306,7 +306,7 @@ const WorksheetPage = () => {
               id: 'number-columns',
               title: 'Number columns',
               render: () => (
-                <CodePreview scope={{ CATEGORIES, CategoryTree, nodes }}>
+                <CodePreview scope={{ CATEGORIES, CategoryTree, nodes }} key="number-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const columns: WorksheetColumn<{ id: number; cost: number; stock: number }>[] = [
@@ -360,7 +360,7 @@ const WorksheetPage = () => {
               id: 'checkbox-columns',
               title: 'Checkbox columns',
               render: () => (
-                <CodePreview>
+                <CodePreview key="checkbox-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const columns: WorksheetColumn<Partial<Product>>[] = [
@@ -403,7 +403,7 @@ const WorksheetPage = () => {
               id: 'selectable-columns',
               title: 'Selectable columns',
               render: () => (
-                <CodePreview>
+                <CodePreview key="selectable-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const columns: WorksheetColumn<Partial<Product>>[] = [
@@ -458,7 +458,7 @@ const WorksheetPage = () => {
               id: 'modal-columns',
               title: 'Modal columns',
               render: () => (
-                <CodePreview scope={{ CATEGORIES, CategoryTree, nodes }}>
+                <CodePreview scope={{ CATEGORIES, CategoryTree, nodes }} key="modal-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const columns: WorksheetColumn<Partial<Product>>[] = [
@@ -510,7 +510,7 @@ const WorksheetPage = () => {
               id: 'disabled-columns',
               title: 'Disabled columns',
               render: () => (
-                <CodePreview>
+                <CodePreview key="disabled-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const columns: WorksheetColumn<Partial<Product>>[] = [
@@ -553,7 +553,7 @@ const WorksheetPage = () => {
               id: 'expandable-rows',
               title: 'Expandable rows',
               render: () => (
-                <CodePreview>
+                <CodePreview key="expandable-rows">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const columns: WorksheetColumn<Partial<Product>>[] = [

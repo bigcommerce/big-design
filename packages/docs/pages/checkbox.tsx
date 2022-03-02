@@ -1,5 +1,5 @@
 import { Checkbox, Form, FormGroup, H1, Panel, Text } from '@bigcommerce/big-design';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { CheckboxDescriptionLinkPropTable, CheckboxDescriptionPropTable, CheckboxPropTable } from '../PropTables';
@@ -29,7 +29,7 @@ const CheckboxPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>
                     <Code primary>Checkboxes</Code> are a stylized <Code>input[type="checkbox"]</Code> with controllable
                     checked/unchecked states.
@@ -56,14 +56,14 @@ const CheckboxPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'indeterminate',
               title: 'Indeterminate',
               render: () => (
-                <>
+                <Fragment key="implementation">
                   <Text>
                     <Code primary>Checkboxes</Code> support <Code primary>isIndeterminate</Code> passed as a prop to
                     show a combined state of partially selected <Code primary>Checkboxes</Code>.
@@ -78,14 +78,14 @@ const CheckboxPage = () => {
                     </Form>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'description',
               title: 'Description',
               render: () => (
-                <>
+                <Fragment key="description">
                   <Text>
                     <Code primary>Checkboxes</Code> support <Code primary>description</Code> passed as a prop, which
                     contains a text and an optional link.
@@ -126,7 +126,7 @@ const CheckboxPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}

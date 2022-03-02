@@ -1,6 +1,6 @@
 import { H1, Message, Panel, StatefulTree, Text } from '@bigcommerce/big-design';
 import { AssignmentIcon, LanguageIcon, StoreIcon } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { StatefulTreePropTable, TreeNodePropTable } from '../PropTables';
@@ -31,7 +31,7 @@ const StatefulTreePage = () => {
               id: 'multiple-selections',
               title: 'Multiple selections',
               render: () => (
-                <CodePreview>
+                <CodePreview key="multiple-selections">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const nodes = [
@@ -82,7 +82,7 @@ const StatefulTreePage = () => {
               id: 'single-select',
               title: 'Single selection',
               render: () => (
-                <CodePreview>
+                <CodePreview key="single-select">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const nodes = [
@@ -113,7 +113,7 @@ const StatefulTreePage = () => {
               id: 'custom-icons',
               title: 'Custom icons',
               render: () => (
-                <>
+                <Fragment key="custom-icons">
                   <Text>You can replace the folder icon with a custom icon of your choice.</Text>
                   <Message
                     type="warning"
@@ -140,7 +140,7 @@ const StatefulTreePage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}
