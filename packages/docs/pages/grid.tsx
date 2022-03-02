@@ -1,5 +1,5 @@
 import { Box, Grid, GridItem, H1, Link, Panel, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
 import {
@@ -51,7 +51,7 @@ const GridPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>
                     The <Code primary>Grid</Code> component is useful for creating intrinsically responsive layouts.
                   </Text>
@@ -74,14 +74,14 @@ const GridPage = () => {
                     </Grid>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'custom-layout',
               title: 'Custom layout',
               render: () => (
-                <>
+                <Fragment key="custom-layout">
                   <Text>
                     <Code primary>Grid</Code> allows you to create custom layouts using combinations of{' '}
                     <Code>gridTemplate</Code> and <Code>gridArea</Code> props.
@@ -116,14 +116,14 @@ const GridPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'column-layout',
               title: 'Column layout',
               render: () => (
-                <>
+                <Fragment key="column-layout">
                   <Text>
                     You can use the <Code>gridColumns</Code> prop to create columned layouts.
                   </Text>
@@ -158,7 +158,7 @@ const GridPage = () => {
                     </Grid>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}
