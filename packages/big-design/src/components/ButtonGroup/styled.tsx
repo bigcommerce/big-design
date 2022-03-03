@@ -27,13 +27,7 @@ export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
     z-index: 1;
   }
 
-  ${({ isVisible }) => {
-    if (isVisible === false) {
-      return css`
-        display: none;
-      `;
-    }
-  }}
+  display: ${({ isVisible = true }) => (isVisible ? 'inline-flex' : 'none')};
 `;
 
 export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
@@ -54,7 +48,7 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
   }
 
   ${({ isVisible }) =>
-    !isVisible &&
+    isVisible === false &&
     css`
       position: absolute;
       visibility: hidden;

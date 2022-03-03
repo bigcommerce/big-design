@@ -17,6 +17,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, Ma
   isLoading?: boolean;
   mobileWidth?: 'auto' | '100%';
   variant?: 'primary' | 'secondary' | 'subtle';
+  isVisible?: boolean;
 }
 
 const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {

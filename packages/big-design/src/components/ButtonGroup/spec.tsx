@@ -116,3 +116,29 @@ test('dropdown item on click callback receives synthetic event', async () => {
 
   expect(mockOnClick).toHaveBeenCalledWith(expect.objectContaining({ target: button }));
 });
+
+test('do not display buttons when their isVisible prop is false', async () => {
+  render(
+    <ButtonGroup
+      actions={[
+        { text: 'Button 1' },
+        { text: 'Button 2' },
+        { text: 'Button 3' },
+        { text: 'Button 4' },
+        { text: 'Button 5' },
+        { text: 'Button 6' },
+      ]}
+    />,
+  );
+
+  const [button1, button2, button3, button4, button5, button6] = await screen.findAllByRole('button', {
+    hidden: true,
+  });
+
+  expect(button1).toBeVisible();
+  expect(button2).toBeVisible();
+  expect(button3).toBeVisible();
+  expect(button4).not.toBeVisible();
+  expect(button5).not.toBeVisible();
+  expect(button6).not.toBeVisible();
+});
