@@ -82,7 +82,7 @@ const StyleableList = typedMemo(
               getItemProps={getItemProps}
               index={key}
               isAction={true}
-              isHighlighted={!action.disabled && highlightedIndex === key}
+              isHighlighted={highlightedIndex === key}
               isSelected={false}
               item={action}
               key="action"
