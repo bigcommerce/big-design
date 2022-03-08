@@ -48,7 +48,7 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
   }
 
   ${({ isVisible }) =>
-    isVisible === false &&
+    !isVisible &&
     css`
       position: absolute;
       visibility: hidden;
