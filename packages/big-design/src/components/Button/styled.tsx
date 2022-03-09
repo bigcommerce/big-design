@@ -81,7 +81,6 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
 
   ${(props) => getButtonStyles(props)}
 `;
-// visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
 
 export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoading?: boolean }>({})`
   align-content: center;
