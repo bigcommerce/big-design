@@ -7,6 +7,7 @@ import { ListItemProps } from '.';
 
 export const StyledListItem = styled.li<ListItemProps<unknown>>`
   ${withTransition(['background-color', 'color'])}
+
   align-items: center;
   box-sizing: border-box;
   cursor: pointer;
