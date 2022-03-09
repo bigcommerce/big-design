@@ -6,7 +6,6 @@ import { FlexItem } from '../Flex';
 
 interface StyledButtonProps {
   borderRadius?: boolean;
-  isVisible?: boolean;
 }
 
 interface StyledFlexItemProps {
@@ -26,8 +25,6 @@ export const StyledButton = styled(StyleableButton)<StyledButtonProps>`
   &:focus {
     z-index: 1;
   }
-
-  display: ${({ isVisible = true }) => (isVisible ? 'inline-flex' : 'none')};
 `;
 
 export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
@@ -52,6 +49,7 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
     css`
       position: absolute;
       visibility: hidden;
+      right: 9999999999px;
       z-index: ${({ theme }) => -theme.zIndex.tooltip};
     `}
 `;

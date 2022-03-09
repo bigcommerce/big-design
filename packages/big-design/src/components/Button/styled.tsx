@@ -81,6 +81,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
 
   ${(props) => getButtonStyles(props)}
 `;
+// visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
 
 export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoading?: boolean }>({})`
   align-content: center;
@@ -88,7 +89,11 @@ export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoa
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: ${({ theme }) => theme.spacing.xSmall};
-  visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
+  ${({ isLoading }) =>
+    isLoading &&
+    css`
+      visibility: hidden;
+    `};
 `;
 
 export const LoadingSpinnerWrapper = styled(Flex)`

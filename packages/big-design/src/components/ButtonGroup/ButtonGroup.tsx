@@ -104,7 +104,6 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
               borderRadius={actionsState.every(({ isVisible }) => !isVisible)}
               iconOnly={<MoreHorizIcon title="more" />}
               variant="secondary"
-              isVisible={isMenuVisible}
             />
           }
           placement="bottom-end"
@@ -124,7 +123,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
 
           return (
             <StyledFlexItem data-testid="buttongroup-item" key={key} isVisible={isVisible} ref={ref} role="listitem">
-              <StyledButton {...buttonProps} variant="secondary" isVisible={isVisible}>
+              <StyledButton {...buttonProps} variant="secondary">
                 {text}
               </StyledButton>
             </StyledFlexItem>
