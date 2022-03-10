@@ -91,7 +91,6 @@ exports[`render default button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -209,7 +208,6 @@ exports[`render destructive button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -327,7 +325,6 @@ exports[`render destructive disabled button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -446,7 +443,6 @@ exports[`render disabled button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -573,7 +569,6 @@ exports[`render icon left and right button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -734,7 +729,6 @@ exports[`render icon left button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -877,7 +871,6 @@ exports[`render icon only button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -1019,7 +1012,6 @@ exports[`render icon right button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -1366,7 +1358,6 @@ exports[`render secondary button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -1484,7 +1475,6 @@ exports[`render secondary destructive button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -1602,7 +1592,6 @@ exports[`render secondary destructive disabled button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -1721,7 +1710,6 @@ exports[`render secondary disabled button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -1841,7 +1829,6 @@ exports[`render subtle button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -1960,7 +1947,6 @@ exports[`render subtle destructive button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -2079,7 +2065,6 @@ exports[`render subtle destructive disabled button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {
@@ -2199,7 +2184,6 @@ exports[`render subtle disabled button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:720px) {

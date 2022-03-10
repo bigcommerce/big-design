@@ -88,6 +88,7 @@ export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoa
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: ${({ theme }) => theme.spacing.xSmall};
+
   ${({ isLoading }) =>
     isLoading &&
     css`

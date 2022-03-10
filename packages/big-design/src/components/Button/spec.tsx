@@ -187,3 +187,25 @@ test('render only icon only with left and right icons button', () => {
 
   expect(screen.getAllByTestId('icon-only')).toHaveLength(1);
 });
+
+test('hides content when isLoading is true', () => {
+  const plusIcon = <AddIcon data-testid="icon-only" role="icon" aria-hidden="false" />;
+  const { rerender } = render(
+    <Button isLoading={false} iconLeft={plusIcon}>
+      Button
+    </Button>,
+  );
+  const visibleContent = screen.getByRole('icon');
+
+  expect(visibleContent).toBeInTheDocument();
+
+  rerender(
+    <Button isLoading={true}>
+      <strong>Button</strong>
+    </Button>,
+  );
+
+  const hiddenContent = screen.queryByRole('icon');
+
+  expect(hiddenContent).not.toBeInTheDocument();
+});
