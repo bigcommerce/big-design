@@ -120,7 +120,6 @@ exports[`render Tabs 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c2 {
@@ -301,7 +300,6 @@ exports[`render Tabs with disabled item 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c2 {

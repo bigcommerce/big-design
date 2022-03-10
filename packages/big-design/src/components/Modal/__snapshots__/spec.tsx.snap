@@ -135,7 +135,6 @@ exports[`render open modal 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c6 {
@@ -436,7 +435,6 @@ exports[`render open modal without backdrop 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c6 {
@@ -701,7 +699,6 @@ exports[`renders destructive action button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:0px) {
@@ -855,7 +852,6 @@ exports[`renders secondary action button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:0px) {

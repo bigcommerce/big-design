@@ -235,7 +235,6 @@ exports[`dropdown is not visible if items fit 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c10 {
@@ -602,7 +601,6 @@ exports[`it renders the given tabs 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c10 {
@@ -969,7 +967,6 @@ exports[`only the pills that fit are visible 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c10 {
@@ -1368,7 +1365,6 @@ exports[`only the pills that fit are visible 2 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c10 {
@@ -1766,7 +1762,6 @@ exports[`renders all the filters if they fit 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c10 {
@@ -2163,7 +2158,6 @@ exports[`renders dropdown if items do not fit 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c10 {
