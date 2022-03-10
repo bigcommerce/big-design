@@ -128,7 +128,7 @@ const StyleableList = typedMemo(
                 index={key}
                 isAction={isDropdown}
                 isChecked={isChecked || false}
-                isHighlighted={highlightedIndex === key}
+                isHighlighted={!item.disabled && highlightedIndex === key}
                 isSelected={!isDropdown && isOption(item) && selectedItem?.value === item.value}
                 item={item}
                 key={`${key}-${item.content}`}

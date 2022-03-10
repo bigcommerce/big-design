@@ -550,7 +550,6 @@ exports[`renders actions 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c1 {
@@ -795,7 +794,6 @@ exports[`renders close button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c10 {

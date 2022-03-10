@@ -48,12 +48,8 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
   }, [actions]);
 
   const hideOverflowedActions = useCallback(() => {
-    const parentWidth = parentRef.current?.offsetWidth;
-    const dropdownWidth = dropdownRef.current?.offsetWidth;
-
-    if (!parentWidth || !dropdownWidth) {
-      return;
-    }
+    const parentWidth = parentRef.current?.offsetWidth ?? 0;
+    const dropdownWidth = dropdownRef.current?.offsetWidth ?? 0;
 
     let remainingWidth = parentWidth;
 

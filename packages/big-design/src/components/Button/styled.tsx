@@ -88,7 +88,12 @@ export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoa
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: ${({ theme }) => theme.spacing.xSmall};
-  visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
+
+  ${({ isLoading }) =>
+    isLoading &&
+    css`
+      visibility: hidden;
+    `};
 `;
 
 export const LoadingSpinnerWrapper = styled(Flex)`

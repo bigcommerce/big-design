@@ -255,7 +255,6 @@ exports[`render pagination component 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c5 {
@@ -670,7 +669,6 @@ exports[`render pagination component with invalid page info 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c5 {
@@ -1085,7 +1083,6 @@ exports[`render pagination component with invalid range info 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c5 {
@@ -1501,7 +1498,6 @@ exports[`render pagination component with no items 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c5 {
