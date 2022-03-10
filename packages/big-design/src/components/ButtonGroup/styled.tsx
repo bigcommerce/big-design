@@ -49,7 +49,6 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
     css`
       position: absolute;
       visibility: hidden;
-      right: 9999999999px;
       z-index: ${({ theme }) => -theme.zIndex.tooltip};
     `}
 `;
