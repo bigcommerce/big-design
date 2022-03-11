@@ -47,7 +47,6 @@ const IconsPage = () => {
           imported.
         </Text>
         <Text>
-          {' '}
           To use the icons install <Code primary>@bigcommerce/big-design-icons</Code> package from npm.
         </Text>
 
