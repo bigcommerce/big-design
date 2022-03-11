@@ -11,7 +11,8 @@ const MarginPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          BigDesign provides the <Code primary>margin</Code> prop which can be used in some of our components.
+          BigDesign provides <Code primary>padding</Code> prop which can be used in some of our components. Check out a
+          components' prop table to see if it inherits this prop.
         </Text>
       </Panel>
 
