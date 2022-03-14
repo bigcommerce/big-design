@@ -11,8 +11,8 @@ const PaddingPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          BigDesign provides <Code primary>padding</Code> prop which can be used for some of our components. Check out a
-          component's prop table to see if the component inherits this prop.
+          BigDesign provides a <Code primary>padding</Code> prop which can be used for some of our components. Check out
+          a component's prop table to see if the component inherits this prop.
         </Text>
       </Panel>
 
