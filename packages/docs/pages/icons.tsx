@@ -66,7 +66,7 @@ const IconsPage = () => {
               title: 'Basic',
               render: () => (
                 <Fragment key="basic">
-                  <Text>To use an icon import the component from the package:</Text>
+                  <Text>To use an icon, import the component from the package:</Text>
                   <CodeSnippet>{`import { CheckIcon } from '@bigcommerce/big-design-icons';`}</CodeSnippet>
                   <Text>Use it anywhere in your app:</Text>
                   <CodePreview>
