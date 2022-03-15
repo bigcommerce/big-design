@@ -32,6 +32,8 @@ export const Tabs: React.FC<TabsProps> = memo(
           {items.map(({ id, title, disabled }) => (
             <StyledTab
               activeTab={activeTab}
+              aria-expanded={id === activeTab ? 'true' : 'false'}
+              aria-controls={`${id}-content`}
               id={id}
               key={id}
               onClick={handleOnTabClick}

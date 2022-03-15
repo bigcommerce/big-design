@@ -38,12 +38,18 @@ const TabsPage = () => {
 
             return (
               <>
-                <Tabs activeTab={activeTab} items={items} onTabClick={setActiveTab} />
+                <Tabs
+                  aria-label="Example Tab Content"
+                  activeTab={activeTab}
+                  items={items}
+                  id="tab-example"
+                  onTabClick={setActiveTab}
+                />
                 <Box marginTop="large">
-                  {activeTab === 'tab1' && <Text>Content 1</Text>}
-                  {activeTab === 'tab2' && <Text>Content 2</Text>}
-                  {activeTab === 'tab3' && <Text>Content 3</Text>}
-                  {activeTab === 'tab4' && <Text>Content 4</Text>}
+                  {activeTab === 'tab1' && <Text id="tab1-content">Content 1</Text>}
+                  {activeTab === 'tab2' && <Text id="tab2-content">Content 2</Text>}
+                  {activeTab === 'tab3' && <Text id="tab3-content">Content 3</Text>}
+                  {activeTab === 'tab4' && <Text id="tab4-content">Content 4</Text>}
                 </Box>
               </>
             );
