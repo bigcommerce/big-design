@@ -154,7 +154,7 @@ exports[`render Tabs 1`] = `
   role="tablist"
 >
   <button
-    aria-controls="tab1-content"
+    aria-controls="content1"
     aria-expanded="false"
     class="c3 c4"
     id="tab1"
@@ -168,7 +168,7 @@ exports[`render Tabs 1`] = `
     </span>
   </button>
   <button
-    aria-controls="tab2-content"
+    aria-controls="content2"
     aria-expanded="false"
     class="c3 c4"
     id="tab2"
@@ -338,7 +338,7 @@ exports[`render Tabs with disabled item 1`] = `
   role="tablist"
 >
   <button
-    aria-controls="tab1-content"
+    aria-controls="content1"
     aria-expanded="false"
     class="c3 c4"
     id="tab1"
@@ -352,7 +352,7 @@ exports[`render Tabs with disabled item 1`] = `
     </span>
   </button>
   <button
-    aria-controls="tab2-content"
+    aria-controls="content2"
     aria-expanded="false"
     class="c3 c4"
     id="tab2"

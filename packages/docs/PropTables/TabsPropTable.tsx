@@ -30,6 +30,12 @@ export const TabsPropTable: React.FC<PropTableWrapper> = (props) => (
 
 const tabItemProps: Prop[] = [
   {
+    name: 'ariaControls',
+    types: 'string',
+    description: 'An ID corresponding to the HTML element where your content will be.',
+    required: false,
+  },
+  {
     name: 'id',
     types: 'string',
     description: 'Tab identifier, must be unique.',

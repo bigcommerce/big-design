@@ -3,6 +3,7 @@ import React, { HTMLAttributes, memo } from 'react';
 import { StyledTab, StyledTabs } from './styled';
 
 export interface TabItem {
+  ariaControls?: string;
   id: string;
   title: string;
   disabled?: boolean;
@@ -29,11 +30,11 @@ export const Tabs: React.FC<TabsProps> = memo(
     return (
       <>
         <StyledTabs {...props} flexDirection="row" role="tablist">
-          {items.map(({ id, title, disabled }) => (
+          {items.map(({ ariaControls, id, title, disabled }) => (
             <StyledTab
               activeTab={activeTab}
               aria-expanded={id === activeTab ? 'true' : 'false'}
-              aria-controls={`${id}-content`}
+              aria-controls={ariaControls || `${id}-content`}
               id={id}
               key={id}
               onClick={handleOnTabClick}
