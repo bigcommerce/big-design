@@ -5,12 +5,19 @@ import { render, screen } from '@test/utils';
 
 import 'jest-styled-components';
 
+import { warning } from '../../utils';
+
 import { TabItem, Tabs } from './Tabs';
 
 const items: TabItem[] = [
   { ariaControls: 'content1', id: 'tab1', title: 'Tab 1' },
   { ariaControls: 'content2', id: 'tab2', title: 'Tab 2' },
 ];
+
+jest.mock('../../utils', () => ({
+  ...jest.requireActual('../../utils'),
+  warning: jest.fn(),
+}));
 
 test('render Tabs', () => {
   const { container } = render(<Tabs items={items} />);
@@ -120,4 +127,43 @@ test('active tab has aria-expanded', () => {
 
   expect(tabs[0].getAttribute('aria-expanded')).toBe('true');
   expect(tabs[1].getAttribute('aria-expanded')).toBe('false');
+});
+
+test('shows a warning if ariaControls is missing or fallback id does not exist', () => {
+  const warningSpy = jest.fn();
+
+  jest.mocked(warning).mockImplementation(warningSpy);
+
+  const incompleteItems: TabItem[] = [
+    { id: 'tab1', title: 'Tab 1' },
+    { id: 'tab2', title: 'Tab 2' },
+  ];
+  render(<Tabs activeTab="tab1" items={incompleteItems} />);
+
+  expect(warningSpy).toHaveBeenCalled();
+});
+
+test('does not warn if ariaControls is present', () => {
+  const warningSpy = jest.fn();
+
+  jest.mocked(warning).mockImplementation(warningSpy);
+
+  render(<Tabs activeTab="tab1" items={items} />);
+
+  expect(warningSpy).not.toHaveBeenCalled();
+});
+
+test('does not warn if fallback id is valid', () => {
+  const warningSpy = jest.fn();
+
+  jest.mocked(warning).mockImplementation(warningSpy);
+
+  render(
+    <>
+      <Tabs activeTab="tab1" items={items} />
+      <div id="tab1-content">Hello world</div>
+    </>,
+  );
+
+  expect(warningSpy).not.toHaveBeenCalled();
 });

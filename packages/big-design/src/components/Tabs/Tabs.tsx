@@ -1,5 +1,7 @@
 import React, { HTMLAttributes, memo } from 'react';
 
+import { warning } from '../../utils';
+
 import { StyledTab, StyledTabs } from './styled';
 
 export interface TabItem {
@@ -26,6 +28,17 @@ export const Tabs: React.FC<TabsProps> = memo(
         onTabClick(tabId);
       }
     };
+
+    const activeItem = activeTab && items[Number(activeTab)];
+    const missingAriaControls = items.some((item) => !item.ariaControls);
+    const missingFallback =
+      activeItem && !document.getElementById(activeItem.ariaControls || `${activeItem.id}-content`);
+
+    if (missingAriaControls || missingFallback) {
+      warning(
+        'TabItems must have an ariaControls field, otherwise, an element with fallback ID "{tab.id}-content" must exist in the DOM',
+      );
+    }
 
     return (
       <>
