@@ -330,8 +330,6 @@ export const MultiSelect = typedMemo(
                 !isOpen && openMenu();
               },
               onFocus: (event) => {
-                !isOpen && openMenu();
-
                 if (typeof props.onFocus === 'function') {
                   props.onFocus(event);
                 }
