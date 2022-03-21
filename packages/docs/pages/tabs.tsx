@@ -30,20 +30,26 @@ const TabsPage = () => {
             const [activeTab, setActiveTab] = useState('tab1');
 
             const items = [
-              { id: 'tab1', title: 'Example 1' },
-              { id: 'tab2', title: 'Example 2' },
-              { id: 'tab3', title: 'Example 3' },
-              { id: 'tab4', title: 'Example 4', disabled: true },
+              { ariaControls: 'content1', id: 'tab1', title: 'Example 1' },
+              { ariaControls: 'content2', id: 'tab2', title: 'Example 2' },
+              { ariaControls: 'content3', id: 'tab3', title: 'Example 3' },
+              { ariaControls: 'content4', id: 'tab4', title: 'Example 4', disabled: true },
             ];
 
             return (
               <>
-                <Tabs activeTab={activeTab} items={items} onTabClick={setActiveTab} />
+                <Tabs
+                  aria-label="Example Tab Content"
+                  activeTab={activeTab}
+                  items={items}
+                  id="tab-example"
+                  onTabClick={setActiveTab}
+                />
                 <Box marginTop="large">
-                  {activeTab === 'tab1' && <Text>Content 1</Text>}
-                  {activeTab === 'tab2' && <Text>Content 2</Text>}
-                  {activeTab === 'tab3' && <Text>Content 3</Text>}
-                  {activeTab === 'tab4' && <Text>Content 4</Text>}
+                  {activeTab === 'tab1' && <Text id="content1">Content 1</Text>}
+                  {activeTab === 'tab2' && <Text id="content2">Content 2</Text>}
+                  {activeTab === 'tab3' && <Text id="content3">Content 3</Text>}
+                  {activeTab === 'tab4' && <Text id="content4">Content 4</Text>}
                 </Box>
               </>
             );
@@ -86,6 +92,10 @@ const TabsPage = () => {
             </>,
             <>
               Use <Code primary>Tabs</Code> to switch between related content.
+            </>,
+            <>
+              Use the <Code primary>ariaControls</Code> prop to match your content with the <Code primary>TabItem</Code>{' '}
+              that displays it.
             </>,
           ]}
           discouraged={[

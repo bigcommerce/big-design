@@ -1,8 +1,11 @@
 import React, { HTMLAttributes, memo } from 'react';
 
+import { warning } from '../../utils';
+
 import { StyledTab, StyledTabs } from './styled';
 
 export interface TabItem {
+  ariaControls?: string;
   id: string;
   title: string;
   disabled?: boolean;
@@ -26,12 +29,25 @@ export const Tabs: React.FC<TabsProps> = memo(
       }
     };
 
+    const activeItem = activeTab && items[Number(activeTab)];
+    const missingAriaControls = items.some((item) => !item.ariaControls);
+    const missingFallback =
+      activeItem && !document.getElementById(activeItem.ariaControls || `${activeItem.id}-content`);
+
+    if (missingAriaControls || missingFallback) {
+      warning(
+        'TabItems must have an ariaControls field, otherwise, an element with fallback ID "{tab.id}-content" must exist in the DOM',
+      );
+    }
+
     return (
       <>
         <StyledTabs {...props} flexDirection="row" role="tablist">
-          {items.map(({ id, title, disabled }) => (
+          {items.map(({ ariaControls, id, title, disabled }) => (
             <StyledTab
               activeTab={activeTab}
+              aria-expanded={id === activeTab ? 'true' : 'false'}
+              aria-controls={ariaControls || `${id}-content`}
               id={id}
               key={id}
               onClick={handleOnTabClick}
