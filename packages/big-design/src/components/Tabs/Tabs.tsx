@@ -46,7 +46,7 @@ export const Tabs: React.FC<TabsProps> = memo(
           {items.map(({ ariaControls, id, title, disabled }) => (
             <StyledTab
               activeTab={activeTab}
-              aria-expanded={id === activeTab ? 'true' : 'false'}
+              aria-selected={id === activeTab ? 'true' : 'false'}
               aria-controls={ariaControls || `${id}-content`}
               id={id}
               key={id}

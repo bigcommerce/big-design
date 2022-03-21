@@ -155,7 +155,7 @@ exports[`render Tabs 1`] = `
 >
   <button
     aria-controls="content1"
-    aria-expanded="false"
+    aria-selected="false"
     class="c3 c4"
     id="tab1"
     role="tab"
@@ -169,7 +169,7 @@ exports[`render Tabs 1`] = `
   </button>
   <button
     aria-controls="content2"
-    aria-expanded="false"
+    aria-selected="false"
     class="c3 c4"
     id="tab2"
     role="tab"
@@ -339,7 +339,7 @@ exports[`render Tabs with disabled item 1`] = `
 >
   <button
     aria-controls="content1"
-    aria-expanded="false"
+    aria-selected="false"
     class="c3 c4"
     id="tab1"
     role="tab"
@@ -353,7 +353,7 @@ exports[`render Tabs with disabled item 1`] = `
   </button>
   <button
     aria-controls="content2"
-    aria-expanded="false"
+    aria-selected="false"
     class="c3 c4"
     id="tab2"
     role="tab"
@@ -367,7 +367,7 @@ exports[`render Tabs with disabled item 1`] = `
   </button>
   <button
     aria-controls="tab3-content"
-    aria-expanded="false"
+    aria-selected="false"
     class="c3 c4"
     disabled=""
     id="tab3"
