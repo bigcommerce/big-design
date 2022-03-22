@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.3-alpha.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.3-alpha.1...@bigcommerce/big-design@0.30.3-alpha.2) (2022-03-22)
+
+
+### Bug Fixes
+
+* **component:** add missing aria roles to tabs ([#762](https://github.com/bigcommerce/big-design/issues/762)) ([7bcc3a0](https://github.com/bigcommerce/big-design/commit/7bcc3a07255e627b458f3c31dafc90a6278eb98f))
+* **component:** change flex-reversed to flex-reverse ([#721](https://github.com/bigcommerce/big-design/issues/721)) ([b65692b](https://github.com/bigcommerce/big-design/commit/b65692b72bc765286c9f29ed9a7e4a88eb1a48c0))
+* **component:** dont open select on focus ([#764](https://github.com/bigcommerce/big-design/issues/764)) ([ee64a77](https://github.com/bigcommerce/big-design/commit/ee64a77ebda303eb67fd003323c0f8f59da64faa))
+* **component:** use aria-selected for tabs ([#763](https://github.com/bigcommerce/big-design/issues/763)) ([2771096](https://github.com/bigcommerce/big-design/commit/277109635e9664f6e82a4cb68162550780e0ee59))
+* upgrade date-fns from 2.22.1 to 2.28.0 ([ee36ba3](https://github.com/bigcommerce/big-design/commit/ee36ba32e30400cc91d0b1aeee20ffc6fad9141d))
+* upgrade downshift from 6.1.0 to 6.1.7 ([#689](https://github.com/bigcommerce/big-design/issues/689)) ([1555964](https://github.com/bigcommerce/big-design/commit/155596443bd45208ce53669c557a08dfc110f9e4))
+
+
+### Features
+
+* **component:** a11y + i18n for Search ([6eb85e0](https://github.com/bigcommerce/big-design/commit/6eb85e0b11e9993df546a20e6e3c853c5243cc2d))
+* **component:** autoComplete off for Search ([4b50017](https://github.com/bigcommerce/big-design/commit/4b50017c9f4f540c222dab9661d96a7f67d2e0e4))
+* **docs:** fix button group issue (676) ([#737](https://github.com/bigcommerce/big-design/issues/737)) ([3c5da19](https://github.com/bigcommerce/big-design/commit/3c5da192ab889cf4672921c94e4d92a7c0837017))
+
+
+
+
+
 ## [0.30.3-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.3-alpha.0...@bigcommerce/big-design@0.30.3-alpha.1) (2022-01-14)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.3-alpha.2](https://github.com/rtalvarez/big-design/compare/@bigcommerce/examples@0.17.3-alpha.1...@bigcommerce/examples@0.17.3-alpha.2) (2022-03-22)
+
+
+### Bug Fixes
+
+* upgrade yup from 0.28.5 to 0.32.11 ([2441def](https://github.com/rtalvarez/big-design/commit/2441def54a9ecd4adbc33e0f968f0e93e6044645))
+
+
+
+
+
 ## [0.17.3-alpha.1](https://github.com/rtalvarez/big-design/compare/@bigcommerce/examples@0.17.3-alpha.0...@bigcommerce/examples@0.17.3-alpha.1) (2022-01-14)
 
 **Note:** Version bump only for package @bigcommerce/examples

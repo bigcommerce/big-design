@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.3-alpha.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.3-alpha.1...@bigcommerce/docs@0.30.3-alpha.2) (2022-03-22)
+
+
+### Bug Fixes
+
+* **component:** add missing aria roles to tabs ([#762](https://github.com/bigcommerce/big-design/issues/762)) ([7bcc3a0](https://github.com/bigcommerce/big-design/commit/7bcc3a07255e627b458f3c31dafc90a6278eb98f))
+* **component:** change flex-reversed to flex-reverse ([#721](https://github.com/bigcommerce/big-design/issues/721)) ([b65692b](https://github.com/bigcommerce/big-design/commit/b65692b72bc765286c9f29ed9a7e4a88eb1a48c0))
+
+
+### Features
+
+* **component:** a11y + i18n for Search ([6eb85e0](https://github.com/bigcommerce/big-design/commit/6eb85e0b11e9993df546a20e6e3c853c5243cc2d))
+* **docs:** add do and dont section ([#720](https://github.com/bigcommerce/big-design/issues/720)) ([20524a8](https://github.com/bigcommerce/big-design/commit/20524a8a5d5999c5eb9851da836af750fb6dc064))
+* **docs:** add do and dont section in tabs page ([#724](https://github.com/bigcommerce/big-design/issues/724)) ([d732b9f](https://github.com/bigcommerce/big-design/commit/d732b9fc5efb83ce0b7e8f730411dcb01902b831))
+* **docs:** fix code editor bug part 1 ([#746](https://github.com/bigcommerce/big-design/issues/746)) ([6d9b1f9](https://github.com/bigcommerce/big-design/commit/6d9b1f9ebfda644328a4067daecf5bab66a050d8))
+* **docs:** fix code editor bug part 2 ([#747](https://github.com/bigcommerce/big-design/issues/747)) ([b1b6470](https://github.com/bigcommerce/big-design/commit/b1b6470121aa27a446894fdd431ea1bf7d1a0a92))
+* **docs:** fix code editor bug part 3 ([#748](https://github.com/bigcommerce/big-design/issues/748)) ([38ac255](https://github.com/bigcommerce/big-design/commit/38ac255fd7f755371e09eb33b43c25e01f9a1bca))
+* **docs:** fix code editor bug part 4 ([#749](https://github.com/bigcommerce/big-design/issues/749)) ([13b583c](https://github.com/bigcommerce/big-design/commit/13b583cf6095f263ebec3c11623f1868938a283a))
+* **docs:** update button page to use new layout ([#711](https://github.com/bigcommerce/big-design/issues/711)) ([59676c2](https://github.com/bigcommerce/big-design/commit/59676c2e268251c8670e7377d3bc412216405aaa))
+* **docs:** update display page to use new layout ([#687](https://github.com/bigcommerce/big-design/issues/687)) ([21f929f](https://github.com/bigcommerce/big-design/commit/21f929f3badc45851003036291b3bc0ce32b2d2c))
+* **docs:** update dropdown page to use new layout ([#739](https://github.com/bigcommerce/big-design/issues/739)) ([cab8ede](https://github.com/bigcommerce/big-design/commit/cab8ede3e3e3976a2c73f43743c5f42083288ece))
+* **docs:** update flex page to use new layout ([#666](https://github.com/bigcommerce/big-design/issues/666)) ([4e6a6f6](https://github.com/bigcommerce/big-design/commit/4e6a6f601cfe5b44a82f3183cc97f538698225a3))
+* **docs:** update form page to use new layout ([61db0a9](https://github.com/bigcommerce/big-design/commit/61db0a9b39931d71a37aba74d54daec793f79577))
+* **docs:** update grid page to use new layout ([#683](https://github.com/bigcommerce/big-design/issues/683)) ([fcca1ed](https://github.com/bigcommerce/big-design/commit/fcca1ed61aff856e8f1a4e49f9961d43efc4582d))
+* **docs:** update icon page to use new layout ([#756](https://github.com/bigcommerce/big-design/issues/756)) ([5af0ada](https://github.com/bigcommerce/big-design/commit/5af0ada41e0807accb8e71179e6989dc22f72fa1))
+* **docs:** update input page to use new layout ([#740](https://github.com/bigcommerce/big-design/issues/740)) ([2bec9c4](https://github.com/bigcommerce/big-design/commit/2bec9c4b790d6ea638ba12423a798e3719083670))
+* **docs:** Update Link documentation page to use new layout ([#712](https://github.com/bigcommerce/big-design/issues/712)) ([4ae6247](https://github.com/bigcommerce/big-design/commit/4ae6247fed3da4e2b1ccd2655552eb053bae0549))
+* **docs:** update margin and padding pages to use new layout ([#755](https://github.com/bigcommerce/big-design/issues/755)) ([d32c2df](https://github.com/bigcommerce/big-design/commit/d32c2df8d97435b4cc88aaed47310631efd4be39))
+* **docs:** Update modal page to use new layout ([#713](https://github.com/bigcommerce/big-design/issues/713)) ([f489736](https://github.com/bigcommerce/big-design/commit/f4897368f391d1f847d47ec616d713627b3b8022))
+* **docs:** Update multi select page to use new layout ([#719](https://github.com/bigcommerce/big-design/issues/719)) ([74f34d0](https://github.com/bigcommerce/big-design/commit/74f34d0bad47b672e9723240889c25eadb05fa7a))
+* **docs:** update overview and do and don't sections in button group page ([#726](https://github.com/bigcommerce/big-design/issues/726)) ([1aae508](https://github.com/bigcommerce/big-design/commit/1aae5082a1119ea238087b38e628f5ed7ef2364c))
+* **docs:** update Pill tabs to use new layout ([#722](https://github.com/bigcommerce/big-design/issues/722)) ([b01a5cf](https://github.com/bigcommerce/big-design/commit/b01a5cfe11a9b779a8fe9e0ee08e090e1c95e2b3))
+* **docs:** update pogress circle page to use new layout ([#728](https://github.com/bigcommerce/big-design/issues/728)) ([d9a0235](https://github.com/bigcommerce/big-design/commit/d9a0235314fd8aeb2b21490a5fef2c6be25d20a5))
+* **docs:** update popover page to use new layout ([#688](https://github.com/bigcommerce/big-design/issues/688)) ([0e4425d](https://github.com/bigcommerce/big-design/commit/0e4425dd0495191bc0d1e84a7662f74a39c18516))
+* **docs:** update progress bar page to use new layout ([#727](https://github.com/bigcommerce/big-design/issues/727)) ([d4909c4](https://github.com/bigcommerce/big-design/commit/d4909c44fe8cc98eb4cfbb5a2397ed4f7306adfa))
+* **docs:** update radio page to use new layout ([#735](https://github.com/bigcommerce/big-design/issues/735)) ([60117f6](https://github.com/bigcommerce/big-design/commit/60117f647b130179101af4a9326317a036c0b30a))
+* **docs:** update search page to use new layout ([#736](https://github.com/bigcommerce/big-design/issues/736)) ([e1a3698](https://github.com/bigcommerce/big-design/commit/e1a369830785b80523fa5efe235cbd8333f86aea))
+* **docs:** update select page to use new layout ([#738](https://github.com/bigcommerce/big-design/issues/738)) ([1d61bc2](https://github.com/bigcommerce/big-design/commit/1d61bc204f08bede298b3dca04f7645bc1ab9754))
+
+
+
+
+
 ## [0.30.3-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.3-alpha.0...@bigcommerce/docs@0.30.3-alpha.1) (2022-01-14)
 
 
