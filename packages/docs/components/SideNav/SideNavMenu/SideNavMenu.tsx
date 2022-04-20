@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 import { StyledMenu, StyledNavigation } from './styled';
 
-export const SideNavMenu: React.FC = (props) => {
+export const SideNavMenu: React.FC<{ children?: React.ReactNode }> = (props) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const handleClick = () => setIsExpanded(!isExpanded);
   Router.events.on('routeChangeComplete', () => setIsExpanded(false));

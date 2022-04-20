@@ -79,17 +79,17 @@ test('title button icon in initially expanded state', () => {
   expect(icon).toHaveStyle('transform: rotate(-180deg)');
 });
 
-test('title button icon toggles on title click', () => {
+test('title button icon toggles on title click', async () => {
   render(CollapseWithStaticTitleMock);
 
   const trigger = screen.getByRole('button');
   const icon = trigger.querySelector('svg');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(icon).toHaveStyle('transform: rotate(-180deg)');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(icon).not.toHaveStyle('transform: rotate(-180deg)');
 });
@@ -134,48 +134,48 @@ test('panel is visible', () => {
   expect(panel).toBeVisible();
 });
 
-test('hidden panel becomes visible on title click', () => {
+test('hidden panel becomes visible on title click', async () => {
   render(CollapseWithStaticTitleMock);
 
   const trigger = screen.getByRole<HTMLButtonElement>('button');
   const panel = screen.getByRole('region', { hidden: true });
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(panel).toBeVisible();
 });
 
-test('visible panel becomes hidden on title click', () => {
+test('visible panel becomes hidden on title click', async () => {
   render(CollapseWithVisiblePanelMock);
 
   const trigger = screen.getByRole<HTMLButtonElement>('button');
   const panel = screen.getByRole('region', { hidden: true });
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(panel).not.toBeVisible();
 });
 
-test('click on title toggles aria-expanded attribute on title button', () => {
+test('click on title toggles aria-expanded attribute on title button', async () => {
   render(CollapseWithStaticTitleMock);
 
   const trigger = screen.getByRole<HTMLButtonElement>('button');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(trigger.getAttribute('aria-expanded')).toBe('true');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(trigger.getAttribute('aria-expanded')).toBe('false');
 });
 
-test('onCollapseChange is called', () => {
+test('onCollapseChange is called', async () => {
   render(CollapseWithStaticTitleMock);
 
   const trigger = screen.getByRole<HTMLButtonElement>('button');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(handleChange).toHaveBeenCalled();
 });

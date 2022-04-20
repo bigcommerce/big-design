@@ -47,8 +47,12 @@ export const createLocalizationProvider = (locale: string) => {
   return {
     code: locale,
     localize: {
-      month: (n: number) => monthsLong[n],
       day: (n: number) => daysShort[n],
+      dayPeriod: (n: number) => n,
+      era: (n: number) => n,
+      month: (n: number) => monthsLong[n],
+      ordinalNumber: (n: number) => n,
+      quarter: (n: number) => n,
     },
     monthsLong,
     formatLong: defaultLocale.formatLong,

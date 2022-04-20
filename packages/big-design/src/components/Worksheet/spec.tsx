@@ -1,5 +1,6 @@
 import { theme } from '@bigcommerce/big-design-theme';
 import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import { StatefulTree } from '../StatefulTree';
@@ -659,11 +660,11 @@ describe('SelectEditor', () => {
 
     const cells = await findAllByDisplayValue('Value 1');
 
-    fireEvent.click(cells[0]);
+    await userEvent.click(cells[0]);
 
     const options = await findAllByRole('option');
 
-    fireEvent.click(options[2]);
+    await userEvent.click(options[2]);
 
     expect(handleChange).toHaveBeenCalledTimes(1);
     expect(handleChange).toHaveBeenLastCalledWith([

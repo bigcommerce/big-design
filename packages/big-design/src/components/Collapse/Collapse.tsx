@@ -7,6 +7,7 @@ import { Box } from '../Box';
 import { StyledButton } from './styled';
 
 export interface CollapseProps {
+  children?: React.ReactNode;
   title: string;
   initiallyOpen?: boolean;
   onCollapseChange?(isOpen: boolean): void;

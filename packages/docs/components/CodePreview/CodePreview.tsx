@@ -57,14 +57,20 @@ function transformCode(input: string): string {
 }
 
 export interface CodePreviewProps {
+  children?: React.ReactNode | (() => JSX.Element);
   scope?: { [key: string]: unknown };
 }
 
 export const CodePreview: React.FC<CodePreviewProps> = (props) => {
   const { children } = props;
+
+  // We are intentionally casting the children to React.ReactNode because our code
+  // doesn't know that our custom babel loader converts () => JSX.Element to a string.
+  const castedChildren = children as React.ReactNode;
+
   const { theme: editorTheme, language } = useContext(CodeEditorContext);
 
-  const initialCode = getInitialCode(children, language);
+  const initialCode = getInitialCode(castedChildren, language);
   const [code, setCode] = useState(initialCode);
   const [scope, setScope] = useState({ ...defaultScope, ...props.scope });
 
@@ -73,8 +79,8 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
   }, [props.scope, setScope]);
 
   useEffect(() => {
-    setCode(getInitialCode(children, language));
-  }, [children, language, setCode]);
+    setCode(getInitialCode(castedChildren, language));
+  }, [castedChildren, language, setCode]);
 
   return (
     <BigDesign.Box border="box">

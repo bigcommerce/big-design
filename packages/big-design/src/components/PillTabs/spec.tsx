@@ -290,7 +290,7 @@ test('only the pills that fit are visible 2', async () => {
   expect(dropdownToggle).not.toHaveStyle(HIDDEN_STYLES);
 });
 
-test('it executes the given callback on click', () => {
+test('it executes the given callback on click', async () => {
   const onClick = jest.fn();
   const item1 = {
     title: 'In stock',
@@ -306,7 +306,7 @@ test('it executes the given callback on click', () => {
 
   const inStock = screen.getByText('In stock');
 
-  userEvent.click(inStock);
+  await userEvent.click(inStock);
 
   expect(onClick).toHaveBeenCalledWith(item1.id);
 });
@@ -509,7 +509,7 @@ test('sends the right id to the handler after swapping', async () => {
 
   const featured = await screen.findByText('Featured');
 
-  userEvent.click(featured);
+  await userEvent.click(featured);
 
   expect(onClick).toHaveBeenCalledWith(item4.id);
 });

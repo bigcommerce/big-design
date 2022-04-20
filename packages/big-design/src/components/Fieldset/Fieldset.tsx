@@ -7,6 +7,7 @@ import { FieldsetLegend } from './Legend';
 import { StyledFieldset } from './styled';
 
 export interface FieldsetProps extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
+  children?: React.ReactNode;
   legend?: React.ReactChild;
   description?: React.ReactChild;
 }

@@ -263,11 +263,11 @@ test('renders destructive action button', () => {
 
 test('unmounts appropriately', () => {
   const onClick = jest.fn();
-  const { getByTestId, rerender, unmount } = render(<Modal isOpen={true} />);
+  const { getByTestId, unmount } = render(<Modal isOpen={true} />);
 
   unmount();
 
-  rerender(
+  render(
     <Button onClick={onClick} data-testid="button">
       Test
     </Button>,

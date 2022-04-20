@@ -17,6 +17,7 @@ export interface Prop {
 }
 
 export interface PropTableProps {
+  children?: React.ReactNode;
   collapsible?: boolean;
   id?: string;
   inheritedProps?: ReactNode;

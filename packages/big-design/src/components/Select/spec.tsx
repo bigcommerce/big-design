@@ -2,6 +2,7 @@ import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-de
 import { remCalc } from '@bigcommerce/big-design-theme';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import 'jest-styled-components';
+import userEvent from '@testing-library/user-event';
 import React, { createRef } from 'react';
 
 import { FormControlLabel, FormGroup } from '../Form';
@@ -484,11 +485,8 @@ test('enter should trigger onOptionChange', async () => {
 
   const input = screen.getByTestId('select');
 
-  await act(async () => {
-    await fireEvent.click(input);
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'Enter' });
-  });
+  await userEvent.click(input);
+  await userEvent.keyboard('[arrowdown][enter]');
 
   expect(onChange).toHaveBeenCalledWith(mockOptions[2].value, mockOptions[2]);
 });
@@ -540,10 +538,8 @@ test('closing the Select triggers onClose', async () => {
 
   const button = await screen.findByLabelText('toggle menu');
 
-  await act(async () => {
-    await fireEvent.click(button);
-    await fireEvent.click(button);
-  });
+  await userEvent.click(button);
+  await userEvent.click(button);
 
   expect(onClose).toHaveBeenCalled();
 });

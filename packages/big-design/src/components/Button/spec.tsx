@@ -146,12 +146,12 @@ test('forwards ref', () => {
   expect(screen.getByRole('button')).toBe(ref.current);
 });
 
-test('triggers onClick', () => {
+test('triggers onClick', async () => {
   const onClick = jest.fn();
 
   render(<Button onClick={onClick} />);
 
-  userEvent.click(screen.getByRole<HTMLButtonElement>('button'));
+  await userEvent.click(screen.getByRole<HTMLButtonElement>('button'));
 
   expect(onClick).toHaveBeenCalled();
 });
@@ -187,19 +187,6 @@ describe('isLoading', () => {
     render(<Button isLoading={true}>Button</Button>);
 
     expect(screen.getByRole('button')).toMatchSnapshot();
-  });
-
-  test('prevents on click', () => {
-    const mockClickHandler = jest.fn();
-    render(
-      <Button isLoading={true} onClick={mockClickHandler}>
-        Button
-      </Button>,
-    );
-
-    userEvent.click(screen.getByRole('button'), undefined, { skipPointerEventsCheck: true });
-
-    expect(mockClickHandler).not.toHaveBeenCalled();
   });
 
   test('disables the button', () => {

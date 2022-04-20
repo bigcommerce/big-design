@@ -11,7 +11,7 @@ import {
   PaddingPropTable,
 } from '../PropTables';
 
-const ExampleBox: React.FC<{ vertical?: boolean }> = ({ children, vertical }) => (
+const ExampleBox: React.FC<{ children?: React.ReactNode; vertical?: boolean }> = ({ children, vertical }) => (
   <Box
     backgroundColor="secondary20"
     border="box"

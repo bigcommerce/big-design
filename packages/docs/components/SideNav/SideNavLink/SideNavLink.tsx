@@ -14,7 +14,7 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const SideNavLink: React.FC<{ href: string; as?: string }> = (props) => (
+export const SideNavLink: React.FC<{ children?: React.ReactNode; href: string; as?: string }> = (props) => (
   <List.Item>
     <NextLink href={props.href} as={props.as}>
       <StyledLink href="">{props.children}</StyledLink>

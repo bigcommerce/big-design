@@ -59,24 +59,24 @@ test('active tab has a tabindex', () => {
   });
 });
 
-test('onTabClick is called', () => {
+test('onTabClick is called', async () => {
   const onClick = jest.fn();
   render(<Tabs items={items} onTabClick={onClick} />);
   const trigger = screen.getByText('Tab 2');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(onClick).toHaveBeenCalled();
 });
 
-test('active tab changes on tab click', () => {
+test('active tab changes on tab click', async () => {
   const onClick = jest.fn();
 
   const { rerender } = render(<Tabs items={items} onTabClick={onClick} />);
 
   let trigger = screen.getByText('Tab 2');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(onClick).toHaveBeenCalled();
 
@@ -84,7 +84,7 @@ test('active tab changes on tab click', () => {
 
   trigger = screen.getByText('Tab 1');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(onClick).toHaveBeenCalled();
 });

@@ -19,7 +19,7 @@ export const useKeyEvents = () => {
   }, [selectedCell, setEditingCell]);
 
   const handleKeyDown = useCallback(
-    (event) => {
+    (event: React.KeyboardEvent) => {
       const key = event.key;
 
       if (isEditing) {

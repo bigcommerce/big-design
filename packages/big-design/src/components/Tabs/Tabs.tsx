@@ -13,6 +13,7 @@ export interface TabItem {
 
 export interface TabsProps extends HTMLAttributes<HTMLDivElement> {
   activeTab?: TabItem['id'];
+  children?: React.ReactNode;
   items?: TabItem[];
   onTabClick?(tabId: TabItem['id']): void;
 }

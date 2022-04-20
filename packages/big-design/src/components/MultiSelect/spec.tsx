@@ -2,6 +2,7 @@ import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-de
 import { remCalc } from '@bigcommerce/big-design-theme';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import 'jest-styled-components';
+import userEvent from '@testing-library/user-event';
 import React, { createRef } from 'react';
 
 import { FormControlLabel, FormGroup } from '../Form';
@@ -381,11 +382,9 @@ test('enter should trigger onOptionsChange', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  await act(async () => {
-    await fireEvent.click(input);
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'Enter' });
-  });
+  await userEvent.click(input);
+
+  await userEvent.keyboard('[arrowdown][enter]');
 
   expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
 });
@@ -438,10 +437,8 @@ test('closing the MultiSelect triggers onClose', async () => {
 
   const button = await screen.findByLabelText('toggle menu');
 
-  await act(async () => {
-    await fireEvent.click(button);
-    await fireEvent.click(button);
-  });
+  await userEvent.click(button);
+  await userEvent.click(button);
 
   expect(onClose).toHaveBeenCalled();
 });
@@ -773,13 +770,8 @@ test('multiselect should be able to select multiple options', async () => {
 
   const input = screen.getAllByLabelText('Countries')[0];
 
-  await act(async () => {
-    await fireEvent.click(input);
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'Enter' });
-  });
+  await userEvent.click(input);
+  await userEvent.keyboard('[arrowdown][arrowdown][arrowdown][enter]');
 
   expect(onChange).toHaveBeenCalledWith(
     [mockOptions[0].value, mockOptions[1].value, mockOptions[3].value],
@@ -792,11 +784,8 @@ test('multiselect should be able to deselect options', async () => {
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  await act(async () => {
-    await fireEvent.click(inputs[0]);
-    await fireEvent.keyDown(inputs[0], { key: 'ArrowDown' });
-    await fireEvent.keyDown(inputs[0], { key: 'Enter' });
-  });
+  await userEvent.click(inputs[0]);
+  await userEvent.keyboard('[arrowdown][enter]');
 
   expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
 });

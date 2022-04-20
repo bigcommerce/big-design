@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { StyledFlex } from './styled';
 
 interface CollapsibleProps {
+  children?: React.ReactNode;
   title: string;
 }
 

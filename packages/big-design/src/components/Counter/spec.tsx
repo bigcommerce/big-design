@@ -1,5 +1,6 @@
 import React, { createRef, Ref } from 'react';
 import 'jest-styled-components';
+import { act } from 'react-dom/test-utils';
 
 import { fireEvent, render } from '@test/utils';
 
@@ -261,7 +262,7 @@ test('value increases and decreases with arrow keypresses', () => {
   const { getByDisplayValue } = render(counterMock(requiredAttributes));
 
   const counter = getByDisplayValue('5') as HTMLInputElement;
-  counter.focus();
+  act(() => counter.focus());
 
   expect(counter.value).toEqual('5');
   fireEvent.keyDown(counter, { key: 'ArrowUp', code: 'ArrowUp' });

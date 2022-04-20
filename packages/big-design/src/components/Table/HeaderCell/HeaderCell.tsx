@@ -12,6 +12,7 @@ import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderCheckbox } from './
 
 export interface HeaderCellProps<T> extends TableHTMLAttributes<HTMLTableCellElement>, TableColumnDisplayProps {
   actionsRef: RefObject<HTMLDivElement>;
+  children?: React.ReactNode;
   column: TableColumn<T>;
   hide?: boolean;
   isSorted?: boolean;

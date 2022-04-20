@@ -16,6 +16,7 @@ export interface PanelAction extends Omit<ButtonProps, 'children'> {
 }
 
 export interface PanelProps extends HTMLAttributes<HTMLElement>, MarginProps {
+  children?: React.ReactNode;
   header?: string;
   headerId?: string;
   action?: PanelAction;

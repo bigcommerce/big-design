@@ -1,5 +1,5 @@
 import React, { forwardRef, memo, Ref, useEffect, useState } from 'react';
-import ReactDatePicker, { registerLocale } from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
 
 import { createLocalizationProvider } from '../../utils';
 import { Input } from '../Input';
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export interface PrivateProps {
-  forwardedRef: Ref<ReactDatePicker>;
+  forwardedRef: Ref<DatePicker>;
 }
 
 export type DatepickerProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
@@ -52,7 +52,7 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
 
   return (
     <StyledDatepicker>
-      <ReactDatePicker
+      <DatePicker
         renderCustomHeader={({
           date,
           decreaseMonth,
@@ -88,5 +88,5 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
 };
 
 export const Datepicker = memo(
-  forwardRef<ReactDatePicker, DatepickerProps>((props, ref) => <RawDatepicker {...props} forwardedRef={ref} />),
+  forwardRef<DatePicker, DatepickerProps>((props, ref) => <RawDatepicker {...props} forwardedRef={ref} />),
 );

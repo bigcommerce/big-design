@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 
 import { NodeMap, TreeExpandable, TreeFocusable, TreeNodeId, TreeNodeProps, TreeSelectable } from '../types';
 

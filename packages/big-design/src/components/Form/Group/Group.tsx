@@ -9,6 +9,7 @@ import { FormControlError } from '../Error';
 import { StyledError, StyledGroup, StyledInlineGroup } from './styled';
 
 export interface GroupProps extends HTMLAttributes<HTMLDivElement> {
+  children?: React.ReactNode;
   errors?: React.ReactNode | React.ReactNode[];
 }
 
