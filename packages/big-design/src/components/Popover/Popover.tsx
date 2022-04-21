@@ -1,4 +1,5 @@
-import { Modifier, Placement } from '@popperjs/core';
+import { Modifier, Obj, Placement } from '@popperjs/core';
+import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 
@@ -68,7 +69,7 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
   const previousFocus = useRef(typeof document !== 'undefined' ? document.activeElement : null);
 
-  const popperModifiers = useMemo(
+  const popperModifiers = useMemo<[Partial<OffsetModifier>, Modifier<unknown, Obj>]>(
     () => [
       {
         name: 'offset',
@@ -91,7 +92,7 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
             state.elements.popper.style.width = `${element.offsetWidth}px`;
           }
         },
-      } as Modifier<unknown, unknown>,
+      },
     ],
     [skidding, distance, matchAnchorElementWidth],
   );
