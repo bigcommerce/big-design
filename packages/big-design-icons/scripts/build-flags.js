@@ -42,9 +42,7 @@ async function convertToReactComponent(filePath, iconName) {
   return outputFile(destPath, code);
 }
 
-async function generateFlags() {
-  const iconFiles = await glob(SOURCE);
-
+function convertWithConcurrencyPool(iconFiles) {
   return asyncPool(cpus().length, iconFiles, (iconFilePath) => {
     const filename = basename(iconFilePath, '.svg');
     const name = `${filename.replace('-', '').toUpperCase()}FlagIcon`;
@@ -56,6 +54,13 @@ async function generateFlags() {
 
     return convertToReactComponent(iconFilePath, name);
   });
+}
+
+async function generateFlags() {
+  const iconFiles = await glob(SOURCE);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  for await (const _result of convertWithConcurrencyPool(iconFiles));
 }
 
 function cleanDestDirectory() {
