@@ -4,9 +4,9 @@ import React from 'react';
 import { Search } from './Search';
 
 test('renders the search component', () => {
-  render(<Search value="Product" onChange={jest.fn()} onSubmit={jest.fn()} />);
+  render(<Search onChange={jest.fn()} onSubmit={jest.fn()} value="Product" />);
 
-  const input = screen.getByLabelText('Search') as HTMLInputElement;
+  const input = screen.getByLabelText('Search');
 
   expect(screen.getByRole('button', { name: /search/i })).toBeInTheDocument();
   expect(input.value).toBe('Product');
@@ -15,9 +15,9 @@ test('renders the search component', () => {
 test('call onChange when user change value in the input', () => {
   const onChange = jest.fn();
 
-  render(<Search value="" onChange={onChange} onSubmit={jest.fn()} />);
+  render(<Search onChange={onChange} onSubmit={jest.fn()} value="" />);
 
-  const input = screen.getByLabelText('Search') as HTMLInputElement;
+  const input = screen.getByLabelText('Search');
 
   fireEvent.change(input, { target: { value: 'Product' } });
 
@@ -27,7 +27,7 @@ test('call onChange when user change value in the input', () => {
 test('call onSubmit when user click to the Search button', () => {
   const onSubmit = jest.fn();
 
-  render(<Search value="submit" onChange={jest.fn()} onSubmit={onSubmit} />);
+  render(<Search onChange={jest.fn()} onSubmit={onSubmit} value="submit" />);
 
   fireEvent.click(screen.getByRole('button', { name: /search/i }));
 
@@ -35,7 +35,7 @@ test('call onSubmit when user click to the Search button', () => {
 });
 
 test('Search input has autocomplete=off', async () => {
-  render(<Search value="" onChange={jest.fn()} onSubmit={jest.fn()} />);
+  render(<Search onChange={jest.fn()} onSubmit={jest.fn()} value="" />);
 
   const input = await screen.findByPlaceholderText('Search');
 

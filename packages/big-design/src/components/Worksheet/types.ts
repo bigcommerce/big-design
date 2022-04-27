@@ -11,12 +11,12 @@ export interface WorksheetProps<Item extends WorksheetItem> {
   items: Item[];
   expandableRows?: ExpandableRows;
   onChange(items: Array<Cell<Item>>): void;
-  onErrors?(items: WorksheetError<Item>[]): void;
+  onErrors?(items: Array<WorksheetError<Item>>): void;
 }
 
 export interface WorksheetError<Item extends WorksheetItem> {
   item: Item;
-  errors: (keyof Item)[];
+  errors: Array<keyof Item>;
 }
 
 export type WorksheetColumn<Item> =
@@ -57,7 +57,7 @@ export interface WorksheetCheckboxColumn<Item> extends WorksheetBaseColumn<Item>
 
 export interface WorksheetSelectableColumn<Item> extends WorksheetBaseColumn<Item> {
   config: {
-    options: SelectOption<unknown>[];
+    options: Array<SelectOption<unknown>>;
   };
   type: 'select';
 }

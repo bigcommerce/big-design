@@ -4,13 +4,19 @@ export type TreeSelectableType = 'radio' | 'multi' | undefined;
 
 export type TreeOnKeyDown<T> = (
   e: React.KeyboardEvent<HTMLLIElement>,
-  node: { id: TreeNodeId; isExpanded: boolean; isSelectable: boolean; hasChildren: boolean; value: T },
+  node: {
+    id: TreeNodeId;
+    isExpanded: boolean;
+    isSelectable: boolean;
+    hasChildren: boolean;
+    value: T;
+  },
 ) => void;
 
 export type TreeOnNodeClick = (e: React.MouseEvent<HTMLLIElement>, nodeId: TreeNodeId) => void;
 
 export interface TreeNodeProps<T> {
-  children?: TreeNodeProps<T>[];
+  children?: Array<TreeNodeProps<T>>;
   icon?: React.ReactChild | null;
   id: TreeNodeId;
   label: string;
@@ -36,7 +42,7 @@ export interface TreeFocusable {
 }
 
 export interface TreeProps<T> {
-  nodes: TreeNodeProps<T>[];
+  nodes: Array<TreeNodeProps<T>>;
   iconless?: boolean;
   id?: string;
   expandable: TreeExpandable;

@@ -35,8 +35,8 @@ const InternalCheckboxEditor = <T extends WorksheetItem>({
   return (
     <CheckboxWrapper>
       <Checkbox
-        disabled={cell.disabled}
         checked={cell.value}
+        disabled={cell.disabled}
         hiddenLabel={true}
         label={cell.value ? 'Checked' : 'Unchecked'}
         onBlur={onBlur}

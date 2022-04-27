@@ -15,4 +15,6 @@ const RawGrid: React.FC<GridProps & PrivateProps> = ({ as, forwardedRef, ...rest
   <StyledGrid forwardedAs={as} ref={forwardedRef} {...rest} />
 );
 
-export const Grid = forwardRef<HTMLDivElement, GridProps>((props, ref) => <RawGrid {...props} forwardedRef={ref} />);
+export const Grid = forwardRef<HTMLDivElement, GridProps>((props, ref) => (
+  <RawGrid {...props} forwardedRef={ref} />
+));

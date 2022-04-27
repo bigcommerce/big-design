@@ -27,6 +27,7 @@ export const useKeyEvents = () => {
           case 'Enter':
             navigate({ rowIndex: 1, columnIndex: 0 });
             break;
+
           case 'Tab':
             navigate({ rowIndex: 0, columnIndex: event.shiftKey ? -1 : 1 });
             break;
@@ -41,24 +42,32 @@ export const useKeyEvents = () => {
                 navigate({ rowIndex: 1, columnIndex: 0 });
               }
             }
+
             break;
+
           case ' ':
             if (selectedCell && !selectedCell.disabled) {
               editSelectedCell();
             }
+
             break;
+
           case 'ArrowUp':
             navigate({ rowIndex: -1, columnIndex: 0 });
             break;
+
           case 'ArrowDown':
             navigate({ rowIndex: 1, columnIndex: 0 });
             break;
+
           case 'ArrowRight':
             navigate({ rowIndex: 0, columnIndex: 1 });
             break;
+
           case 'Tab':
             navigate({ rowIndex: 0, columnIndex: event.shiftKey ? -1 : 1 });
             break;
+
           case 'ArrowLeft':
             navigate({ rowIndex: 0, columnIndex: -1 });
             break;

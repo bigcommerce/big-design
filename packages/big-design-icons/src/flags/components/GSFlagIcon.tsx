@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'GS flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'GS flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -817,6 +822,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         d="M447.7 204.4s5.1 3 7 12.2c16.7-1.2 22 4.7 22 4.7s13.7-6.6 20-5.4c2.3-4.7 8.7-10.7 8.7-10.7"
         fill="none"
         stroke="#000"
+        strokeLinecap="round"
         strokeWidth={1.1}
       />
       <path

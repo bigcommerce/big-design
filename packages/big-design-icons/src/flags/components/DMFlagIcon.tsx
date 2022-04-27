@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'DM flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'DM flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -140,10 +145,33 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           />
         </g>
         <g transform="matrix(1.04 0 0 1.04 -250.6 359.4)">
-          <g fill="#009200" stroke="#000" strokeWidth={2.5} transform="matrix(.16 -.02 0 .18 429.8 -215.6)">
-            <ellipse cx={680.2} cy={586.1} rx={30.8} ry={189.8} transform="matrix(1.4 0 0 1 -534.3 263.7)" />
-            <ellipse cx={680.2} cy={586.1} rx={30.8} ry={189.8} transform="matrix(1.5 0 0 1 -547.2 267)" />
-            <ellipse cx={680.2} cy={586.1} rx={30.8} ry={189.8} transform="matrix(1.2 0 0 1.1 -365 214.1)" />
+          <g
+            fill="#009200"
+            stroke="#000"
+            strokeWidth={2.5}
+            transform="matrix(.16 -.02 0 .18 429.8 -215.6)"
+          >
+            <ellipse
+              cx={680.2}
+              cy={586.1}
+              rx={30.8}
+              ry={189.8}
+              transform="matrix(1.4 0 0 1 -534.3 263.7)"
+            />
+            <ellipse
+              cx={680.2}
+              cy={586.1}
+              rx={30.8}
+              ry={189.8}
+              transform="matrix(1.5 0 0 1 -547.2 267)"
+            />
+            <ellipse
+              cx={680.2}
+              cy={586.1}
+              rx={30.8}
+              ry={189.8}
+              transform="matrix(1.2 0 0 1.1 -365 214.1)"
+            />
           </g>
           <g stroke="#000" transform="translate(72.9 -9.8)">
             <path
@@ -186,14 +214,62 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
             />
           </g>
           <g fill="#009200" stroke="#000" strokeWidth={2.5} transform="rotate(-5.8 688.4 -625.2)">
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.17 0 0 .32 369.8 -361.6)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.17 0 0 .32 364 -362.7)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.17 0 0 .32 360.6 -370.6)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.16 0 0 .35 369.3 -399.4)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.16 0 0 .33 377.4 -379)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.16 0 0 .33 373.2 -382.2)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.16 0 0 .33 368 -386.7)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.16 0 0 .33 363 -389.5)" />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.17 0 0 .32 369.8 -361.6)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.17 0 0 .32 364 -362.7)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.17 0 0 .32 360.6 -370.6)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.16 0 0 .35 369.3 -399.4)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.16 0 0 .33 377.4 -379)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.16 0 0 .33 373.2 -382.2)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.16 0 0 .33 368 -386.7)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.16 0 0 .33 363 -389.5)"
+            />
           </g>
           <path
             d="M482.6-141s-11.7 10-10.1 36.9c1.8 27 26.5 39.5 26.5 39.5s6.2-7.7 5.2-29.5c-2-31.8-13.8-45.7-13.8-45.7l-7.8-1.3z"
@@ -202,14 +278,62 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
             strokeWidth={0.5}
           />
           <g fill="#009200" stroke="#000" strokeWidth={2.5} transform="rotate(4.5 181 769.9)">
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.17 0 0 .32 369.8 -361.6)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.17 0 0 .32 364 -362.7)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.17 0 0 .32 360.6 -370.6)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.16 0 0 .35 369.3 -399.4)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.16 0 0 .33 377.4 -379)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.16 0 0 .33 373.2 -382.2)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.16 0 0 .33 368 -386.7)" />
-            <ellipse cx={427.1} cy={905} rx={20.8} ry={24.1} transform="matrix(.16 0 0 .33 363 -389.5)" />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.17 0 0 .32 369.8 -361.6)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.17 0 0 .32 364 -362.7)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.17 0 0 .32 360.6 -370.6)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.16 0 0 .35 369.3 -399.4)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.16 0 0 .33 377.4 -379)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.16 0 0 .33 373.2 -382.2)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.16 0 0 .33 368 -386.7)"
+            />
+            <ellipse
+              cx={427.1}
+              cy={905}
+              rx={20.8}
+              ry={24.1}
+              transform="matrix(.16 0 0 .33 363 -389.5)"
+            />
           </g>
           <ellipse
             cx={624.4}

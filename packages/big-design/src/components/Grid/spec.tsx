@@ -36,19 +36,19 @@ test('has display grid', () => {
 test('Grid forwards styles', () => {
   const { container } = render(<Grid className="test" style={{ background: 'red' }} />);
 
-  expect(container.getElementsByClassName('test').length).toBe(1);
+  expect(container.getElementsByClassName('test')).toHaveLength(1);
   expect(container.firstChild).toHaveStyle('background: red');
 });
 
 test('Grid item forwards styles', () => {
   const { container } = render(<GridItem className="test" style={{ background: 'red' }} />);
 
-  expect(container.getElementsByClassName('test').length).toBe(1);
+  expect(container.getElementsByClassName('test')).toHaveLength(1);
   expect(container.firstChild).toHaveStyle('background: red');
 });
 
 test('rendering as another element retains inherited props and styles', () => {
-  const { getByTestId } = render(<Grid as="section" margin="medium" data-testid="grid" />);
+  const { getByTestId } = render(<Grid as="section" data-testid="grid" margin="medium" />);
 
   const grid = getByTestId('grid');
 
@@ -58,7 +58,7 @@ test('rendering as another element retains inherited props and styles', () => {
 
 test('grid forwards ref', () => {
   const ref = createRef<HTMLDivElement>();
-  const { getByTestId } = render(<Grid ref={ref} data-testid="grid" />);
+  const { getByTestId } = render(<Grid data-testid="grid" ref={ref} />);
   const grid = getByTestId('grid');
 
   expect(grid).toBe(ref.current);

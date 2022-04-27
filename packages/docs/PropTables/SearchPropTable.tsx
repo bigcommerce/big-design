@@ -24,5 +24,5 @@ const searchProps: Prop[] = [
 ];
 
 export const SearchPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Search" propList={searchProps} nativeElement={['input', 'most']} {...props} />
+  <PropTable nativeElement={['input', 'most']} propList={searchProps} title="Search" {...props} />
 );

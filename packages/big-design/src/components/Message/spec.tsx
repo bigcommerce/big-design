@@ -11,7 +11,7 @@ test('renders with margins', () => {
 
   expect(container.firstChild).not.toHaveStyle('margin: 1rem');
 
-  rerender(<Message messages={[{ text: 'Success' }]} margin="medium" />);
+  rerender(<Message margin="medium" messages={[{ text: 'Success' }]} />);
 
   expect(container.firstChild).toHaveStyle('margin: 1rem');
 });
@@ -20,28 +20,36 @@ test('render default (success) Message', () => {
   const { container } = render(<Message messages={[{ text: 'Success' }]} />);
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success}`);
+  expect(container.firstChild).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success}`,
+  );
 });
 
 test('render error Message', () => {
   const { container } = render(<Message messages={[{ text: 'Error' }]} type="error" />);
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger}`);
+  expect(container.firstChild).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger}`,
+  );
 });
 
 test('render warning Message', () => {
   const { container } = render(<Message messages={[{ text: 'Warning' }]} type="warning" />);
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50}`);
+  expect(container.firstChild).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50}`,
+  );
 });
 
 test('render info Message', () => {
   const { container } = render(<Message messages={[{ text: 'Info' }]} type="info" />);
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60}`);
+  expect(container.firstChild).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60}`,
+  );
 });
 
 test('renders with link', () => {
@@ -59,7 +67,11 @@ test('renders with link', () => {
 
 test('renders with external link', () => {
   const { queryByRole, container } = render(
-    <Message messages={[{ text: 'Success', link: { text: 'Link', href: '#', external: true, target: '_blank' } }]} />,
+    <Message
+      messages={[
+        { text: 'Success', link: { text: 'Link', href: '#', external: true, target: '_blank' } },
+      ]}
+    />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -69,26 +81,30 @@ test('renders with external link', () => {
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
   expect(link.target).toBe('_blank');
-  expect(link.querySelector('svg')).not.toBeUndefined();
+  expect(link.querySelector('svg')).toBeDefined();
 });
 
 test('renders header', () => {
-  const { queryByText, container } = render(<Message header="Header" messages={[{ text: 'Success' }]} />);
+  const { queryByText, container } = render(
+    <Message header="Header" messages={[{ text: 'Success' }]} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(queryByText('Header')).not.toBeUndefined();
+  expect(queryByText('Header')).toBeDefined();
 });
 
 test('renders close button', () => {
-  const { queryByRole, container } = render(<Message onClose={() => null} messages={[{ text: 'Success' }]} />);
+  const { queryByRole, container } = render(
+    <Message messages={[{ text: 'Success' }]} onClose={() => null} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(queryByRole('button')).not.toBeUndefined();
+  expect(queryByRole('button')).toBeDefined();
 });
 
 test('trigger onClose', () => {
   const fn = jest.fn();
-  const { queryByRole } = render(<Message onClose={fn} messages={[{ text: 'Success' }]} />);
+  const { queryByRole } = render(<Message messages={[{ text: 'Success' }]} onClose={fn} />);
 
   const button = queryByRole('button') as HTMLButtonElement;
 
@@ -99,18 +115,18 @@ test('trigger onClose', () => {
 
 test('does not forward styles', () => {
   const { container } = render(
-    <Message messages={[{ text: 'Success' }]} className="test" style={{ background: 'red' }} />,
+    <Message className="test" messages={[{ text: 'Success' }]} style={{ background: 'red' }} />,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
 test('renders actions', () => {
   const onClick = jest.fn();
   const actions = [
-    { text: 'First Action', onClick: onClick },
-    { text: 'Second Action', variant: 'primary', onClick: onClick },
+    { text: 'First Action', onClick },
+    { text: 'Second Action', variant: 'primary', onClick },
   ];
 
   const { container, getByRole } = render(

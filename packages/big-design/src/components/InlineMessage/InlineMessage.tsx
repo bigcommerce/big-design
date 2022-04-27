@@ -8,63 +8,75 @@ import { Button } from '../Button';
 import { MessagingButton } from '../Button/private';
 import { GridItem } from '../Grid';
 
-import { StyledActionsWrapper, StyledHeader, StyledInlineMessage, StyledLink, StyledMessageItem } from './styled';
+import {
+  StyledActionsWrapper,
+  StyledHeader,
+  StyledInlineMessage,
+  StyledLink,
+  StyledMessageItem,
+} from './styled';
 
 export type InlineMessageProps = SharedMessagingProps & MarginProps;
 
-export const InlineMessage: React.FC<InlineMessageProps> = memo(({ className, style, header, ...props }) => {
-  const filteredProps = excludePaddingProps(props);
-  const icon = useMemo(() => props.type && getMessagingIcon(props.type, true), [props.type]);
+export const InlineMessage: React.FC<InlineMessageProps> = memo(
+  ({ className, style, header, ...props }) => {
+    const filteredProps = excludePaddingProps(props);
+    const icon = useMemo(() => props.type && getMessagingIcon(props.type, true), [props.type]);
 
-  const renderedMessages = useMemo(
-    () =>
-      props.messages.map(({ text, link }, index) => (
-        <Box key={index}>
-          <StyledMessageItem>{text}</StyledMessageItem> {link && <StyledLink {...link}>{link.text}</StyledLink>}
-        </Box>
-      )),
-    [props.messages],
-  );
+    const renderedMessages = useMemo(
+      () =>
+        props.messages.map(({ text, link }, index) => (
+          <Box key={index}>
+            <StyledMessageItem>{text}</StyledMessageItem>{' '}
+            {link && <StyledLink {...link}>{link.text}</StyledLink>}
+          </Box>
+        )),
+      [props.messages],
+    );
 
-  const renderedHeader = useMemo(() => header && <StyledHeader>{header}</StyledHeader>, [header]);
+    const renderedHeader = useMemo(() => header && <StyledHeader>{header}</StyledHeader>, [header]);
 
-  const renderedActions = useMemo(
-    () =>
-      props.actions && (
-        <StyledActionsWrapper flexDirection="row" flexWrap="wrap" marginTop="xSmall">
-          {props.actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
-            <Button
-              {...excludeMarginProps(actionProps)}
-              key={index}
-              marginBottom="xSmall"
-              marginHorizontal="xxSmall"
-              mobileWidth="auto"
-              variant={getActionVariant(variant)}
-            >
-              {text}
-            </Button>
-          ))}
-        </StyledActionsWrapper>
-      ),
-    [props.actions],
-  );
+    const renderedActions = useMemo(
+      () =>
+        props.actions && (
+          <StyledActionsWrapper flexDirection="row" flexWrap="wrap" marginTop="xSmall">
+            {props.actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
+              <Button
+                {...excludeMarginProps(actionProps)}
+                key={index}
+                marginBottom="xSmall"
+                marginHorizontal="xxSmall"
+                mobileWidth="auto"
+                variant={getActionVariant(variant)}
+              >
+                {text}
+              </Button>
+            ))}
+          </StyledActionsWrapper>
+        ),
+      [props.actions],
+    );
 
-  return (
-    <StyledInlineMessage {...filteredProps} backgroundColor="white" role="alert">
-      <GridItem gridArea="icon">{icon}</GridItem>
-      <GridItem gridArea="messages">
-        {renderedHeader}
-        {renderedMessages}
-        {renderedActions}
-      </GridItem>
-      {props.onClose && (
-        <GridItem>
-          <MessagingButton onClick={props.onClose} iconOnly={<CloseIcon size="medium" title="Close." />} />
+    return (
+      <StyledInlineMessage {...filteredProps} backgroundColor="white" role="alert">
+        <GridItem gridArea="icon">{icon}</GridItem>
+        <GridItem gridArea="messages">
+          {renderedHeader}
+          {renderedMessages}
+          {renderedActions}
         </GridItem>
-      )}
-    </StyledInlineMessage>
-  );
-});
+        {props.onClose && (
+          <GridItem>
+            <MessagingButton
+              iconOnly={<CloseIcon size="medium" title="Close." />}
+              onClick={props.onClose}
+            />
+          </GridItem>
+        )}
+      </StyledInlineMessage>
+    );
+  },
+);
 
 InlineMessage.defaultProps = {
   messages: [],

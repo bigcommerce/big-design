@@ -4,7 +4,9 @@ import { TableColumnDisplayProps } from '../mixins';
 
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 
-export interface DataCellProps extends TableHTMLAttributes<HTMLTableCellElement>, TableColumnDisplayProps {
+export interface DataCellProps
+  extends TableHTMLAttributes<HTMLTableCellElement>,
+    TableColumnDisplayProps {
   align?: 'left' | 'center' | 'right';
   isCheckbox?: boolean;
   verticalAlign?: 'top' | 'middle';
@@ -25,7 +27,12 @@ export const DataCell: React.FC<DataCellProps> = memo(
     withPadding = true,
   }: DataCellProps) => {
     return isCheckbox ? (
-      <StyledTableDataCheckbox align={align} display={display} width={width} withBorder={withBorder}>
+      <StyledTableDataCheckbox
+        align={align}
+        display={display}
+        width={width}
+        withBorder={withBorder}
+      >
         {children}
       </StyledTableDataCheckbox>
     ) : (

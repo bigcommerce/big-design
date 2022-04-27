@@ -42,36 +42,43 @@ const InternalRow = <T extends TableItem>({
   const label = isSelected ? `Selected` : `Unselected`;
 
   return (
-    <StyledTableRow isSelected={isSelected} ref={forwardedRef} isDragging={isDragging} {...rest}>
+    <StyledTableRow isDragging={isDragging} isSelected={isSelected} ref={forwardedRef} {...rest}>
       {showDragIcon && (
         <DataCell>
           <DragIndicatorIcon />
         </DataCell>
       )}
       {isSelectable && (
-        <DataCell key="data-checkbox" isCheckbox={true}>
+        <DataCell isCheckbox={true} key="data-checkbox">
           <Checkbox checked={isSelected} hiddenLabel label={label} onChange={onChange} />
         </DataCell>
       )}
 
-      {columns.map(({ render: CellContent, align, display, verticalAlign, width, withPadding = true }, columnIndex) => (
-        <DataCell
-          key={columnIndex}
-          align={align}
-          display={display}
-          verticalAlign={verticalAlign}
-          width={width}
-          withPadding={withPadding}
-        >
-          {/*
+      {columns.map(
+        (
+          { render: CellContent, align, display, verticalAlign, width, withPadding = true },
+          columnIndex,
+        ) => (
+          <DataCell
+            align={align}
+            display={display}
+            key={columnIndex}
+            verticalAlign={verticalAlign}
+            width={width}
+            withPadding={withPadding}
+          >
+            {/*
           // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
-          <CellContent {...item} />
-        </DataCell>
-      ))}
+            <CellContent {...item} />
+          </DataCell>
+        ),
+      )}
     </StyledTableRow>
   );
 };
 
 export const Row = typedMemo(
-  forwardRef<HTMLTableRowElement, RowProps<any>>((props, ref) => <InternalRow {...props} forwardedRef={ref} />),
+  forwardRef<HTMLTableRowElement, RowProps<any>>((props, ref) => (
+    <InternalRow {...props} forwardedRef={ref} />
+  )),
 );

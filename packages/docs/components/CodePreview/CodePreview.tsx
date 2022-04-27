@@ -78,11 +78,20 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
 
   return (
     <BigDesign.Box border="box">
-      <LiveProvider code={code} scope={scope} theme={editorTheme} language={language} transformCode={transformCode}>
-        <BigDesign.Box padding="medium" backgroundColor="white" borderBottom="box">
+      <LiveProvider
+        code={code}
+        language={language}
+        scope={scope}
+        theme={editorTheme}
+        transformCode={transformCode}
+      >
+        <BigDesign.Box backgroundColor="white" borderBottom="box" padding="medium">
           <LivePreview />
         </BigDesign.Box>
-        <SnippetControls copyToClipboard={() => clipboardCopy(code)} resetCode={() => setCode(initialCode)} />
+        <SnippetControls
+          copyToClipboard={() => clipboardCopy(code)}
+          resetCode={() => setCode(initialCode)}
+        />
         <LiveEditor onChange={setCode} />
         <StyledLiveError />
       </LiveProvider>

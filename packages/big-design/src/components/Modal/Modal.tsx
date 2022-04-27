@@ -51,7 +51,9 @@ export const Modal: React.FC<ModalProps> = typedMemo((props) => {
     };
   }, [modalContainer]);
 
-  return props.isOpen && modalContainer ? createPortal(<InternalModal {...props} />, modalContainer) : null;
+  return props.isOpen && modalContainer
+    ? createPortal(<InternalModal {...props} />, modalContainer)
+    : null;
 });
 
 const InternalModal: React.FC<ModalProps> = ({
@@ -107,7 +109,7 @@ const InternalModal: React.FC<ModalProps> = ({
     () =>
       variant === 'modal' && (
         <StyledModalClose>
-          <MessagingButton onClick={onClose} iconOnly={<CloseIcon title="Close" />} />
+          <MessagingButton iconOnly={<CloseIcon title="Close" />} onClick={onClose} />
         </StyledModalClose>
       ),
     [onClose, variant],
@@ -154,10 +156,10 @@ const InternalModal: React.FC<ModalProps> = ({
       onClick={onClickAway}
       onKeyDown={onKeyDown}
       ref={setModalRef}
-      variant={variant}
       tabIndex={-1}
+      variant={variant}
     >
-      <StyledModalContent variant={variant} aria-labelledby={headerUniqueId} flexDirection="column">
+      <StyledModalContent aria-labelledby={headerUniqueId} flexDirection="column" variant={variant}>
         {renderedClose}
         {renderedHeader}
         <StyledModalBody>{children}</StyledModalBody>

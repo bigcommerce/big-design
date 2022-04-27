@@ -12,11 +12,14 @@ const MultiSelectPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>MultiSelects</Code> allow users to select multiple items within a list of options.
+          <Code primary>MultiSelects</Code> allow users to select multiple items within a list of
+          options.
         </Text>
         <Text bold>When to use:</Text>
         <List>
-          <List.Item>To select multiple options within a list, usually of related or grouped items.</List.Item>
+          <List.Item>
+            To select multiple options within a list, usually of related or grouped items.
+          </List.Item>
           <List.Item>To select four or more predefined selections.</List.Item>
         </List>
       </Panel>
@@ -31,8 +34,8 @@ const MultiSelectPage = () => {
               render: () => (
                 <Fragment key="basic">
                   <Text>
-                    <Code primary>MultiSelects</Code> are typeable inputs with multiple selectable items within a
-                    dropdown.
+                    <Code primary>MultiSelects</Code> are typeable inputs with multiple selectable
+                    items within a dropdown.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -91,9 +94,9 @@ const MultiSelectPage = () => {
               render: () => (
                 <Fragment key="position">
                   <Text>
-                    <Code primary>MultiSelect</Code> can be anchored in different directions with the{' '}
-                    <Code primary>placement</Code> property. It will automatically find a position if there's not enough
-                    space in the chosen direction.
+                    <Code primary>MultiSelect</Code> can be anchored in different directions with
+                    the <Code primary>placement</Code> property. It will automatically find a
+                    position if there's not enough space in the chosen direction.
                   </Text>
 
                   <CodePreview>
@@ -163,8 +166,9 @@ const MultiSelectPage = () => {
               render: () => (
                 <Fragment key="max-height">
                   <Text>
-                    Once the content is longer than the max-height, the dropdown will be scrollable. It is possible to
-                    modify the dimension by passing a <Code primary>maxHeight</Code> property.
+                    Once the content is longer than the max-height, the dropdown will be scrollable.
+                    It is possible to modify the dimension by passing a{' '}
+                    <Code primary>maxHeight</Code> property.
                   </Text>
 
                   <CodePreview>
@@ -236,8 +240,9 @@ const MultiSelectPage = () => {
               render: () => (
                 <Fragment key="disabled">
                   <Text>
-                    It is possible to disable the entire select component, similar to how you would disable a native
-                    HTML select element, by using the <Code primary>disabled</Code> property.
+                    It is possible to disable the entire select component, similar to how you would
+                    disable a native HTML select element, by using the <Code primary>disabled</Code>{' '}
+                    property.
                   </Text>
 
                   <CodePreview>
@@ -319,8 +324,8 @@ const MultiSelectPage = () => {
                     <Form>
                       <FormGroup>
                         <MultiSelect
-                          label="Countries"
                           error="Need to choose a country before proceeding"
+                          label="Countries"
                           onOptionsChange={() => null}
                           options={[
                             { value: 'us', content: 'United States' },
@@ -345,9 +350,10 @@ const MultiSelectPage = () => {
               render: () => (
                 <Fragment key="multi-select-groups">
                   <Text>
-                    It is possible to create grouped options with labels with a <Code primary>Select Group</Code> by
-                    passing <Code primary>label</Code> and <Code primary>options</Code> to the top-level{' '}
-                    <Code primary>options</Code> property.
+                    It is possible to create grouped options with labels with a{' '}
+                    <Code primary>Select Group</Code> by passing <Code primary>label</Code> and{' '}
+                    <Code primary>options</Code> to the top-level <Code primary>options</Code>{' '}
+                    property.
                   </Text>
 
                   <CodePreview>
@@ -355,8 +361,8 @@ const MultiSelectPage = () => {
                     <Form>
                       <FormGroup>
                         <MultiSelect
-                          label="My Options"
                           filterable
+                          label="My Options"
                           onOptionsChange={() => null}
                           options={[
                             {
@@ -411,7 +417,11 @@ const MultiSelectPage = () => {
                               label="Select"
                               onOptionsChange={handleChange}
                               options={[
-                                { value: 1, content: 'Option #1', description: 'Description for option #1' },
+                                {
+                                  value: 1,
+                                  content: 'Option #1',
+                                  description: 'Description for option #1',
+                                },
                                 {
                                   value: 2,
                                   content: 'Option #2',
@@ -464,16 +474,19 @@ const MultiSelectPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          recommended={[
-            <>Have a default selection whenever possible. If there’s no logical default, leverage placeholder text.</>,
-            <>Sort the list of options in a way that makes the most sense to users.</>,
-            <>Provide the ability to search when there is a use case for particular choices.</>,
-          ]}
           discouraged={[
             <>
-              Avoid using a <Code primary>MultiSelect</Code> if there are less than three options provided in the
-              dropdown.
+              Avoid using a <Code primary>MultiSelect</Code> if there are less than three options
+              provided in the dropdown.
             </>,
+          ]}
+          recommended={[
+            <>
+              Have a default selection whenever possible. If there’s no logical default, leverage
+              placeholder text.
+            </>,
+            <>Sort the list of options in a way that makes the most sense to users.</>,
+            <>Provide the ability to search when there is a use case for particular choices.</>,
           ]}
         />
       </Panel>

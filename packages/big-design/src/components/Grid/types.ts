@@ -57,19 +57,67 @@ export type GridedItemProps = Partial<{
 }>;
 
 export interface GridedOverload {
-  (gridedProp: GridAreas, theme: ThemeInterface, cssKey: 'grid-template-areas'): FlattenSimpleInterpolation;
-  (gridedProp: GridAutoColumns, theme: ThemeInterface, cssKey: 'grid-auto-columns'): FlattenSimpleInterpolation;
-  (gridedProp: GridAutoFlow, theme: ThemeInterface, cssKey: 'grid-auto-flow'): FlattenSimpleInterpolation;
-  (gridedProp: GridAutoRows, theme: ThemeInterface, cssKey: 'grid-auto-rows'): FlattenSimpleInterpolation;
-  (gridedProp: GridColumns, theme: ThemeInterface, cssKey: 'grid-template-columns'): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridAreas,
+    theme: ThemeInterface,
+    cssKey: 'grid-template-areas',
+  ): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridAutoColumns,
+    theme: ThemeInterface,
+    cssKey: 'grid-auto-columns',
+  ): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridAutoFlow,
+    theme: ThemeInterface,
+    cssKey: 'grid-auto-flow',
+  ): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridAutoRows,
+    theme: ThemeInterface,
+    cssKey: 'grid-auto-rows',
+  ): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridColumns,
+    theme: ThemeInterface,
+    cssKey: 'grid-template-columns',
+  ): FlattenSimpleInterpolation;
   (gridedProp: GridGap, theme: ThemeInterface, cssKey: 'grid-gap'): FlattenSimpleInterpolation;
-  (gridedProp: GridRows, theme: ThemeInterface, cssKey: 'grid-template-rows'): FlattenSimpleInterpolation;
-  (gridedProp: GridTemplate, theme: ThemeInterface, cssKey: 'grid-template'): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridRows,
+    theme: ThemeInterface,
+    cssKey: 'grid-template-rows',
+  ): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridTemplate,
+    theme: ThemeInterface,
+    cssKey: 'grid-template',
+  ): FlattenSimpleInterpolation;
   (gridedProp: GridArea, theme: ThemeInterface, cssKey: 'grid-area'): FlattenSimpleInterpolation;
-  (gridedProp: GridColumn, theme: ThemeInterface, cssKey: 'grid-column'): FlattenSimpleInterpolation;
-  (gridedProp: GridColumnEnd, theme: ThemeInterface, cssKey: 'grid-column-end'): FlattenSimpleInterpolation;
-  (gridedProp: GridColumnStart, theme: ThemeInterface, cssKey: 'grid-column-start'): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridColumn,
+    theme: ThemeInterface,
+    cssKey: 'grid-column',
+  ): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridColumnEnd,
+    theme: ThemeInterface,
+    cssKey: 'grid-column-end',
+  ): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridColumnStart,
+    theme: ThemeInterface,
+    cssKey: 'grid-column-start',
+  ): FlattenSimpleInterpolation;
   (gridedProp: GridRow, theme: ThemeInterface, cssKey: 'grid-row'): FlattenSimpleInterpolation;
-  (gridedProp: GridRowEnd, theme: ThemeInterface, cssKey: 'grid-row-end'): FlattenSimpleInterpolation;
-  (gridedProp: GridRowStart, theme: ThemeInterface, cssKey: 'grid-row-start'): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridRowEnd,
+    theme: ThemeInterface,
+    cssKey: 'grid-row-end',
+  ): FlattenSimpleInterpolation;
+  (
+    gridedProp: GridRowStart,
+    theme: ThemeInterface,
+    cssKey: 'grid-row-start',
+  ): FlattenSimpleInterpolation;
 }

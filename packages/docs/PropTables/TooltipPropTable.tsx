@@ -34,5 +34,5 @@ const tooltipProps: Prop[] = [
 ];
 
 export const TooltipPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Tooltip" propList={tooltipProps} {...props} />
+  <PropTable propList={tooltipProps} title="Tooltip" {...props} />
 );

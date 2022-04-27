@@ -5,7 +5,10 @@ import { List } from '../../List';
 
 export const SideNavGroup: React.FC<{ title: string }> = (props) => {
   return (
-    <Box marginTop={{ mobile: 'xxSmall', tablet: 'xLarge' }} marginHorizontal={{ mobile: 'medium', tablet: 'none' }}>
+    <Box
+      marginHorizontal={{ mobile: 'medium', tablet: 'none' }}
+      marginTop={{ mobile: 'xxSmall', tablet: 'xLarge' }}
+    >
       <H4>{props.title}</H4>
       <List reset>{props.children}</List>
     </Box>

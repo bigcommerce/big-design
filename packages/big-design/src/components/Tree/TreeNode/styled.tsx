@@ -36,7 +36,8 @@ const sharedAfterStyles = css`
 
 export const StyledFlex = styled(Flex)<{ selected?: boolean }>`
   cursor: pointer;
-  min-height: ${({ theme }) => theme.helpers.addValues(theme.spacing.xxLarge, theme.spacing.xSmall)};
+  min-height: ${({ theme }) =>
+    theme.helpers.addValues(theme.spacing.xxLarge, theme.spacing.xSmall)};
   position: relative;
 
   li:focus > &,

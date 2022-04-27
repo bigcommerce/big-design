@@ -35,7 +35,9 @@ const recursiveSearch = ({ nodes, expandedNodes, nodeMap }: RecursiveSearchProps
 
 const buildVisibleNodes = ({ expandedNodes, nodeMap }: UseVisibleNodesProps) => {
   const entries = Array.from(nodeMap.entries());
-  const parentNodes: TreeNodeId[] = entries.filter(([, value]) => value.parent === undefined, []).map(([id]) => id);
+  const parentNodes: TreeNodeId[] = entries
+    .filter(([, value]) => value.parent === undefined, [])
+    .map(([id]) => id);
 
   return recursiveSearch({
     nodes: parentNodes,
@@ -45,7 +47,9 @@ const buildVisibleNodes = ({ expandedNodes, nodeMap }: UseVisibleNodesProps) => 
 };
 
 export const useVisibleNodes = ({ expandedNodes, nodeMap }: UseVisibleNodesProps) => {
-  const [visibleNodes, setVisibleNodes] = useState(() => buildVisibleNodes({ expandedNodes, nodeMap }));
+  const [visibleNodes, setVisibleNodes] = useState(() =>
+    buildVisibleNodes({ expandedNodes, nodeMap }),
+  );
 
   useEffect(() => {
     setVisibleNodes(buildVisibleNodes({ expandedNodes, nodeMap }));

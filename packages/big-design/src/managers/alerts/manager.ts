@@ -92,7 +92,7 @@ class AlertsManager {
   private manageTimeout() {
     const alert = this.alerts[0] ?? null;
 
-    if (this.timeout?.key === alert?.key) {
+    if (this.timeout.key === alert.key) {
       return;
     }
 
@@ -102,7 +102,7 @@ class AlertsManager {
       this.timeout = {};
     }
 
-    if (alert?.autoDismiss) {
+    if (alert.autoDismiss) {
       this.timeout.key = alert.key;
       this.timeout.id = window.setTimeout(alert.onClose, 5000);
     }

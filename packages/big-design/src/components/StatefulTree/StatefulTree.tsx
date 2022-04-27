@@ -28,18 +28,24 @@ const InternalStatefulTree = <T,>({
 }: StatefulTreeProps<T>): React.ReactElement<StatefulTreeProps<T>> => {
   const { focusedNode, onFocus } = useFocusable({ nodes, type, defaultSelected });
   const { expandedNodes, onToggle } = useExpandable({ defaultExpanded, onExpandedChange });
-  const { selectedNodes, onSelect } = useSelectable({ defaultSelected, disabledNodes, nodes, onSelectionChange, type });
+  const { selectedNodes, onSelect } = useSelectable({
+    defaultSelected,
+    disabledNodes,
+    nodes,
+    onSelectionChange,
+    type,
+  });
   const nodeMap = useNodeMap({ nodes });
   const { visibleNodes } = useVisibleNodes({ expandedNodes, nodeMap });
   const onKeyDown = useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes });
 
   return (
     <Tree
-      nodes={nodes}
       disabledNodes={disabledNodes}
       expandable={{ expandedNodes, onToggle }}
       focusable={{ focusedNode, onFocus }}
       iconless={iconless}
+      nodes={nodes}
       onKeyDown={onKeyDown}
       onNodeClick={onNodeClick}
       selectable={{ selectedNodes, onSelect, type }}

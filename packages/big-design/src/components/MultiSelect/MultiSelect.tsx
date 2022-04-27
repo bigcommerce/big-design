@@ -113,11 +113,15 @@ export const MultiSelect = typedMemo(
 
     const filterOptions = (inputVal = '') => {
       return flattenedOptions.filter(
-        (option) => option === action || option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
+        (option) =>
+          option === action ||
+          option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
     };
 
-    const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+    const handleOnIsOpenChange = ({
+      isOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && !isOpen) {
         // Reset the items if filtered
         setFilteredOptions(flattenedOptions);
@@ -132,7 +136,9 @@ export const MultiSelect = typedMemo(
       }
     };
 
-    const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+    const handleOnSelectedItemChange = (
+      changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>,
+    ) => {
       if (action && changes.selectedItem === action) {
         action.onActionClick(inputValue);
       }
@@ -145,13 +151,15 @@ export const MultiSelect = typedMemo(
       switch (actionAndChanges.type) {
         case useCombobox.stateChangeTypes.InputBlur:
           return { ...actionAndChanges.changes, inputValue: '' };
+
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick: {
           if (!actionAndChanges.changes.selectedItem) {
             return actionAndChanges.changes;
           }
 
-          const isSelectAction = (item: SelectAction | SelectOption<T>): item is SelectAction => item === action;
+          const isSelectAction = (item: SelectAction | SelectOption<T>): item is SelectAction =>
+            item === action;
 
           // Prevent action from changing the input value
           if (isSelectAction(actionAndChanges.changes.selectedItem)) {
@@ -178,6 +186,7 @@ export const MultiSelect = typedMemo(
             isOpen: true,
           };
         }
+
         default:
           return actionAndChanges.changes;
       }
@@ -309,7 +318,10 @@ export const MultiSelect = typedMemo(
       }
 
       if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, getLabelProps());
+        return cloneElement(
+          label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
+          getLabelProps(),
+        );
       }
 
       warning('label must be either a string or a FormControlLabel component.');
@@ -352,20 +364,26 @@ export const MultiSelect = typedMemo(
                     if (!inputValue) {
                       removeItem(selectedOptions[selectedOptions.length - 1]);
                     }
+
                     break;
+
                   case 'Enter':
                     event.preventDefault();
+
                     if (isOpen === false) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
                       (event.nativeEvent as any).preventDownshiftDefault = true;
                     }
+
                     break;
+
                   case 'Escape':
                     // Reset select
                     if (isOpen === false) {
                       onOptionsChange([], []);
                     }
+
                     break;
                 }
               },

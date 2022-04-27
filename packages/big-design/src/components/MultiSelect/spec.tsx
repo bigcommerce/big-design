@@ -146,8 +146,8 @@ test('renders select label', async () => {
 test('renders FormControlLabel string label', async () => {
   render(
     <MultiSelect
-      onOptionsChange={onChange}
       label={<FormControlLabel>Countries</FormControlLabel>}
+      onOptionsChange={onChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -173,7 +173,14 @@ test('select label has id', async () => {
 });
 
 test('select label accepts custom id', async () => {
-  render(<MultiSelect onOptionsChange={onChange} label="Countries" labelId="testId" options={mockOptions} />);
+  render(
+    <MultiSelect
+      label="Countries"
+      labelId="testId"
+      onOptionsChange={onChange}
+      options={mockOptions}
+    />,
+  );
 
   const countries = await screen.findByText('Countries');
 
@@ -205,7 +212,14 @@ test('select input has id', async () => {
 });
 
 test('select accepts custom id', async () => {
-  render(<MultiSelect onOptionsChange={onChange} id="testId" data-testid="multi-select" options={mockOptions} />);
+  render(
+    <MultiSelect
+      data-testid="multi-select"
+      id="testId"
+      onOptionsChange={onChange}
+      options={mockOptions}
+    />,
+  );
 
   const select = await screen.findByTestId('multi-select');
 
@@ -301,7 +315,7 @@ test('multi select has items', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(6);
+  expect(options).toHaveLength(6);
 });
 
 test('multi select items should be unfiltered when opened', async () => {
@@ -313,7 +327,7 @@ test('multi select items should be unfiltered when opened', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(6);
+  expect(options).toHaveLength(6);
 });
 
 test('up/down arrows should change select item selection', async () => {
@@ -488,10 +502,9 @@ test('select should render an error if one is provided', async () => {
   render(
     <FormGroup>
       <MultiSelect
-        onOptionsChange={onChange}
-        label="Countries"
         error="Required"
-        placeholder="Choose country"
+        label="Countries"
+        onOptionsChange={onChange}
         options={[
           { value: 'us', content: 'United States' },
           { value: 'mx', content: 'Mexico' },
@@ -499,6 +512,7 @@ test('select should render an error if one is provided', async () => {
           { value: 'en', content: 'England' },
           { value: 'fr', content: 'France', disabled: true },
         ]}
+        placeholder="Choose country"
         required
       />
     </FormGroup>,
@@ -510,9 +524,8 @@ test('select should render an error if one is provided', async () => {
 test('select should have a required attr if set as required', async () => {
   render(
     <MultiSelect
-      onOptionsChange={onChange}
       label="Countries"
-      placeholder="Choose country"
+      onOptionsChange={onChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -520,21 +533,21 @@ test('select should have a required attr if set as required', async () => {
         { value: 'en', content: 'England' },
         { value: 'fr', content: 'France', disabled: true },
       ]}
+      placeholder="Choose country"
       required
     />,
   );
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputs[0].getAttribute('required')).toEqual('');
+  expect(inputs[0].getAttribute('required')).toBe('');
 });
 
 test('select should not have a required attr if not set as required', async () => {
   render(
     <MultiSelect
-      onOptionsChange={onChange}
       label="Countries"
-      placeholder="Choose country"
+      onOptionsChange={onChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -542,12 +555,13 @@ test('select should not have a required attr if not set as required', async () =
         { value: 'en', content: 'England' },
         { value: 'fr', content: 'France', disabled: true },
       ]}
+      placeholder="Choose country"
     />,
   );
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputs[0].getAttribute('required')).toEqual(null);
+  expect(inputs[0].getAttribute('required')).toBeNull();
 });
 
 test('required attr should be removed when item is selected', async () => {
@@ -555,7 +569,7 @@ test('required attr should be removed when item is selected', async () => {
 
   const input = await screen.findByTestId('multi-select');
 
-  expect(input.getAttribute('required')).toEqual(null);
+  expect(input.getAttribute('required')).toBeNull();
 });
 
 test('select should have a disabled attr if set as disabled', async () => {
@@ -564,7 +578,6 @@ test('select should have a disabled attr if set as disabled', async () => {
       disabled
       label="Countries"
       onOptionsChange={onChange}
-      placeholder="Choose country"
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -572,12 +585,13 @@ test('select should have a disabled attr if set as disabled', async () => {
         { value: 'en', content: 'England' },
         { value: 'fr', content: 'France', disabled: true },
       ]}
+      placeholder="Choose country"
     />,
   );
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputs[0].getAttribute('disabled')).toEqual('');
+  expect(inputs[0].getAttribute('disabled')).toBe('');
 });
 
 test('select should not have a disabled attr if not set as disabled', async () => {
@@ -585,14 +599,14 @@ test('select should not have a disabled attr if not set as disabled', async () =
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputs[0].getAttribute('disabled')).toEqual(null);
+  expect(inputs[0].getAttribute('disabled')).toBeNull();
 });
 
 test('appends (optional) text to label if select is not required', async () => {
   render(
     <MultiSelect
-      onOptionsChange={onChange}
       label="Countries"
+      onOptionsChange={onChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -603,6 +617,7 @@ test('appends (optional) text to label if select is not required', async () => {
       placeholder="Choose country"
     />,
   );
+
   const label = await screen.findByText('Countries');
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
@@ -613,8 +628,8 @@ test('does not forward styles', async () => {
     <MultiSelect
       className="test"
       data-testid="multi-select"
-      onOptionsChange={onChange}
       label="Countries"
+      onOptionsChange={onChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -631,7 +646,7 @@ test('does not forward styles', async () => {
 
   fireEvent.click(input);
 
-  expect(input.getElementsByClassName('test').length).toBe(0);
+  expect(input.getElementsByClassName('test')).toHaveLength(0);
   expect(await screen.findByRole('listbox')).not.toHaveStyle('background: red');
 });
 
@@ -697,6 +712,7 @@ test('should default max-height to 250', async () => {
 
 test('should use the passed in ref object if provided', async () => {
   const ref = createRef<HTMLInputElement>();
+
   render(
     <MultiSelect
       inputRef={ref}
@@ -721,6 +737,7 @@ test('should use the passed in ref object if provided', async () => {
 test('should call the provided refSetter if any', async () => {
   let inputRef: HTMLInputElement | null = null;
   const refSetter = (ref: HTMLInputElement) => (inputRef = ref);
+
   render(
     <MultiSelect
       inputRef={refSetter}
@@ -752,7 +769,7 @@ test('multiselect should render four items with checkboxes', async () => {
   const menu = await screen.findByRole('listbox');
   const options = menu.querySelectorAll('input[type="checkbox"]');
 
-  expect(options.length).toEqual(5);
+  expect(options).toHaveLength(5);
 });
 
 test('multiselect should have two selected options', async () => {
@@ -765,7 +782,7 @@ test('multiselect should have two selected options', async () => {
   const menu = await screen.findByRole('listbox');
   const options = menu.querySelectorAll(':checked');
 
-  expect(options.length).toEqual(2);
+  expect(options).toHaveLength(2);
 });
 
 test('multiselect should be able to select multiple options', async () => {
@@ -810,7 +827,7 @@ test('multiselect options should immediately rerender when prop changes', async 
 
   let options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(5);
+  expect(options).toHaveLength(5);
 
   rerender(
     <MultiSelect
@@ -824,14 +841,14 @@ test('multiselect options should immediately rerender when prop changes', async 
 
   options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
 });
 
 test('chips should be rendered', async () => {
   render(MultiSelectMock);
 
-  expect((await screen.findAllByText('United States')).length).toEqual(1);
-  expect((await screen.findAllByText('Mexico')).length).toEqual(1);
+  expect(await screen.findAllByText('United States')).toHaveLength(1);
+  expect(await screen.findAllByText('Mexico')).toHaveLength(1);
 
   expect(
     await screen.getByRole('button', {
@@ -886,7 +903,7 @@ test('options should allow icons', async () => {
 
   const svg = container.querySelectorAll('svg');
 
-  expect(svg.length).toBe(3);
+  expect(svg).toHaveLength(3);
 });
 
 test('grouped multiselect should render group labels, render uppercased', async () => {
@@ -921,6 +938,7 @@ test('group labels should be grayed out', async () => {
 
 test('group labels should be skipped when using keyboard to navigate options', async () => {
   render(GroupedMultiSelectMock);
+
   const input = screen.getByTestId('group-select');
 
   fireEvent.click(input);
@@ -954,7 +972,7 @@ test('group labels should still render when filtering options', async () => {
   const label2 = await screen.findByText('Label 2');
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
   expect(label1).toBeInTheDocument();
   expect(label2).toBeInTheDocument();
 });

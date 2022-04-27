@@ -47,7 +47,8 @@ const dropdownProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to position the list.
+        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to
+        position the list.
       </>
     ),
   },
@@ -115,7 +116,8 @@ const dropdownItemProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the
+        text.
       </>
     ),
   },
@@ -173,7 +175,8 @@ const dropdownLinkProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the
+        text.
       </>
     ),
   },
@@ -230,17 +233,17 @@ const dropdownItemGroupProps: Prop[] = [
 ];
 
 export const DropdownPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Dropdown" propList={dropdownProps} {...props} />
+  <PropTable propList={dropdownProps} title="Dropdown" {...props} />
 );
 
 export const DropdownItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Dropdown[DropdownItem]" propList={dropdownItemProps} {...props} />
+  <PropTable propList={dropdownItemProps} title="Dropdown[DropdownItem]" {...props} />
 );
 
 export const DropdownLinkItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Dropdown[DropdownLinkItem]" propList={dropdownLinkProps} {...props} />
+  <PropTable propList={dropdownLinkProps} title="Dropdown[DropdownLinkItem]" {...props} />
 );
 
 export const DropdownItemGroupPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Dropdown[DropdownItemGroup]" propList={dropdownItemGroupProps} {...props} />
+  <PropTable propList={dropdownItemGroupProps} title="Dropdown[DropdownItemGroup]" {...props} />
 );

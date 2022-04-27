@@ -1,9 +1,8 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import 'jest-styled-components';
+import { render } from '@test/utils';
 import React from 'react';
 import styled from 'styled-components';
-
-import { render } from '@test/utils';
 
 import { withTableColumnDisplay } from './display';
 import { TableColumnDisplayProps } from './types';
@@ -21,7 +20,9 @@ test('display', () => {
 });
 
 test('responsive display', () => {
-  const { container } = render(<TestComponent display={{ mobile: 'none', tablet: 'table-cell' }} />);
+  const { container } = render(
+    <TestComponent display={{ mobile: 'none', tablet: 'table-cell' }} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
 });

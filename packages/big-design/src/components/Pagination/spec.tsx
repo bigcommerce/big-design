@@ -10,12 +10,12 @@ test('render pagination component', async () => {
   const changeRange = jest.fn();
   const { findByRole } = render(
     <Pagination
-      itemsPerPage={3}
       currentPage={1}
-      totalItems={10}
+      itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
-      onPageChange={changePage}
       onItemsPerPageChange={changeRange}
+      onPageChange={changePage}
+      totalItems={10}
     />,
   );
 
@@ -29,12 +29,12 @@ test('render pagination component with invalid page info', async () => {
   const changeRange = jest.fn();
   const { findByRole } = render(
     <Pagination
-      itemsPerPage={3}
       currentPage={-2}
-      totalItems={10}
+      itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
-      onPageChange={changePage}
       onItemsPerPageChange={changeRange}
+      onPageChange={changePage}
+      totalItems={10}
     />,
   );
 
@@ -49,12 +49,12 @@ test('render pagination component with invalid range info', async () => {
   const changeRange = jest.fn();
   const { findByRole } = render(
     <Pagination
-      itemsPerPage={-5}
       currentPage={1}
-      totalItems={10}
+      itemsPerPage={-5}
       itemsPerPageOptions={[2, 3, 5]}
-      onPageChange={changePage}
       onItemsPerPageChange={changeRange}
+      onPageChange={changePage}
+      totalItems={10}
     />,
   );
   const pagination = await findByRole('navigation');
@@ -68,12 +68,12 @@ test('render pagination component with no items', async () => {
   const changeRange = jest.fn();
   const { findByRole } = render(
     <Pagination
-      itemsPerPage={3}
       currentPage={1}
-      totalItems={0}
+      itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
-      onPageChange={changePage}
       onItemsPerPageChange={changeRange}
+      onPageChange={changePage}
+      totalItems={0}
     />,
   );
   const pagination = await findByRole('navigation');
@@ -86,12 +86,12 @@ test('trigger range change', async () => {
   const changeRange = jest.fn();
   const { getByText, findByText } = render(
     <Pagination
-      itemsPerPage={2}
       currentPage={1}
-      totalItems={10}
+      itemsPerPage={2}
       itemsPerPageOptions={[2, 3, 5]}
-      onPageChange={changePage}
       onItemsPerPageChange={changeRange}
+      onPageChange={changePage}
+      totalItems={10}
     />,
   );
 
@@ -110,12 +110,12 @@ test('trigger page decrease', async () => {
   const changeRange = jest.fn();
   const { findByTitle } = render(
     <Pagination
-      itemsPerPage={3}
       currentPage={2}
-      totalItems={10}
+      itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
-      onPageChange={changePage}
       onItemsPerPageChange={changeRange}
+      onPageChange={changePage}
+      totalItems={10}
     />,
   );
 
@@ -138,12 +138,12 @@ test('trigger page increase', async () => {
   const changeRange = jest.fn();
   const { findByTitle } = render(
     <Pagination
-      itemsPerPage={3}
       currentPage={1}
-      totalItems={10}
+      itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
-      onPageChange={changePage}
       onItemsPerPageChange={changeRange}
+      onPageChange={changePage}
+      totalItems={10}
     />,
   );
 

@@ -6,12 +6,16 @@ const statefulTableProps: Prop[] = [
   {
     name: 'columns',
     types: (
-      <NextLink href={{ hash: 'stateful-table-columns-prop-table', query: { props: 'columns' } }}>Columns[]</NextLink>
+      <NextLink href={{ hash: 'stateful-table-columns-prop-table', query: { props: 'columns' } }}>
+        Columns[]
+      </NextLink>
     ),
     description: (
       <>
         See{' '}
-        <NextLink href={{ hash: 'stateful-table-columns-prop-table', query: { props: 'columns' } }}>Columns</NextLink>{' '}
+        <NextLink href={{ hash: 'stateful-table-columns-prop-table', query: { props: 'columns' } }}>
+          Columns
+        </NextLink>{' '}
         for usage.
       </>
     ),
@@ -88,17 +92,22 @@ const statefulTableProps: Prop[] = [
   {
     name: 'onRowDrop',
     types: '(items: any[]) => void',
-    description: 'Callback called with updated items list once drag and drop action has been completed.',
+    description:
+      'Callback called with updated items list once drag and drop action has been completed.',
   },
   {
     name: 'filters',
     types: (
-      <NextLink href={{ hash: 'stateful-table-filters-prop-table', query: { props: 'filters' } }}>Filters</NextLink>
+      <NextLink href={{ hash: 'stateful-table-filters-prop-table', query: { props: 'filters' } }}>
+        Filters
+      </NextLink>
     ),
     description: (
       <>
         See{' '}
-        <NextLink href={{ hash: 'stateful-table-filters-prop-table', query: { props: 'filters' } }}>Filters</NextLink>{' '}
+        <NextLink href={{ hash: 'stateful-table-filters-prop-table', query: { props: 'filters' } }}>
+          Filters
+        </NextLink>{' '}
         for usage.
       </>
     ),
@@ -175,8 +184,8 @@ const filterProps: Prop[] = [
   {
     description: (
       <>
-        An array of pill tab items to render in the table. See <NextLink href="/pill-tabs">Pill Tabs</NextLink> for
-        usage.
+        An array of pill tab items to render in the table. See{' '}
+        <NextLink href="/pill-tabs">Pill Tabs</NextLink> for usage.
       </>
     ),
     name: 'pillTabs',
@@ -185,18 +194,19 @@ const filterProps: Prop[] = [
   {
     name: 'filter',
     types: '(itemId: string, items: Item[]) => Item[]',
-    description: 'A function that takes the current items and filters them according to the desired functionality.',
+    description:
+      'A function that takes the current items and filters them according to the desired functionality.',
   },
 ];
 
 export const StatefulTablePropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="StatefulTable" propList={statefulTableProps} {...props} />
+  <PropTable propList={statefulTableProps} title="StatefulTable" {...props} />
 );
 
 export const StatefulTableColumnsPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="StatefulTable[Columns]" propList={tableColumnsProps} {...props} />
+  <PropTable propList={tableColumnsProps} title="StatefulTable[Columns]" {...props} />
 );
 
 export const StatefulTableFiltersPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="StatefulTable[Filters]" propList={filterProps} {...props} />
+  <PropTable propList={filterProps} title="StatefulTable[Filters]" {...props} />
 );

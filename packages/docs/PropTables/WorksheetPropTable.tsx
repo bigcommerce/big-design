@@ -6,32 +6,46 @@ const worksheetProps: Prop[] = [
   {
     name: 'columns',
     types: [
-      <NextLink key="text" href={{ hash: 'worksheet-text-column-prop-table', query: { props: 'text-column' } }}>
+      <NextLink
+        href={{ hash: 'worksheet-text-column-prop-table', query: { props: 'text-column' } }}
+        key="text"
+      >
         TextColumn
       </NextLink>,
-      <NextLink key="number" href={{ hash: 'worksheet-number-column-prop-table', query: { props: 'number-column' } }}>
+      <NextLink
+        href={{ hash: 'worksheet-number-column-prop-table', query: { props: 'number-column' } }}
+        key="number"
+      >
         NumberColumn
       </NextLink>,
       <NextLink
-        key="checkbox"
         href={{ hash: 'worksheet-checkbox-column-prop-table', query: { props: 'checkbox-column' } }}
+        key="checkbox"
       >
         CheckboxColumn
       </NextLink>,
       <NextLink
+        href={{
+          hash: 'worksheet-selectable-column-prop-table',
+          query: { props: 'selectable-column' },
+        }}
         key="selectable"
-        href={{ hash: 'worksheet-selectable-column-prop-table', query: { props: 'selectable-column' } }}
       >
         SelectableColumn
       </NextLink>,
-      <NextLink key="modal" href={{ hash: 'worksheet-modal-column-prop-table', query: { props: 'modal-column' } }}>
+      <NextLink
+        href={{ hash: 'worksheet-modal-column-prop-table', query: { props: 'modal-column' } }}
+        key="modal"
+      >
         ModalColumn
       </NextLink>,
     ],
     description: (
       <>
         Columns will be of type{' '}
-        <NextLink href={{ hash: 'worksheet-text-column-prop-table', query: { props: 'text-column' } }}>
+        <NextLink
+          href={{ hash: 'worksheet-text-column-prop-table', query: { props: 'text-column' } }}
+        >
           TextColumn
         </NextLink>{' '}
         by default.
@@ -42,7 +56,8 @@ const worksheetProps: Prop[] = [
   {
     name: 'expandableItems',
     types: '[key: string]: Array<string | number>;',
-    description: 'Accepts an object with parent ids as keys and an array of child ids that will be hidden on render.',
+    description:
+      'Accepts an object with parent ids as keys and an array of child ids that will be hidden on render.',
   },
   {
     name: 'items',
@@ -62,8 +77,10 @@ const worksheetProps: Prop[] = [
     description: (
       <>
         Returns an array of{' '}
-        <NextLink href={{ hash: 'worksheet-error-prop-table', query: { props: 'error' } }}>Error</NextLink> when an
-        error is present.
+        <NextLink href={{ hash: 'worksheet-error-prop-table', query: { props: 'error' } }}>
+          Error
+        </NextLink>{' '}
+        when an error is present.
       </>
     ),
   },
@@ -203,14 +220,24 @@ const worksheetSelectableColumnProps: Prop[] = [
   {
     name: 'config',
     types: (
-      <NextLink href={{ hash: 'worksheet-selectable-config-prop-table', query: { props: 'selectable-config' } }}>
+      <NextLink
+        href={{
+          hash: 'worksheet-selectable-config-prop-table',
+          query: { props: 'selectable-config' },
+        }}
+      >
         SelectableConfig
       </NextLink>
     ),
     description: (
       <>
         See{' '}
-        <NextLink href={{ hash: 'worksheet-selectable-config-prop-table', query: { props: 'selectable-config' } }}>
+        <NextLink
+          href={{
+            hash: 'worksheet-selectable-config-prop-table',
+            query: { props: 'selectable-config' },
+          }}
+        >
           SelectableConfig
         </NextLink>{' '}
         for usage.
@@ -257,14 +284,18 @@ const worksheetModalColumnProps: Prop[] = [
   {
     name: 'config',
     types: (
-      <NextLink href={{ hash: 'worksheet-modal-config-prop-table', query: { props: 'modal-config' } }}>
+      <NextLink
+        href={{ hash: 'worksheet-modal-config-prop-table', query: { props: 'modal-config' } }}
+      >
         ModalConfig
       </NextLink>
     ),
     description: (
       <>
         See{' '}
-        <NextLink href={{ hash: 'worksheet-modal-config-prop-table', query: { props: 'modal-config' } }}>
+        <NextLink
+          href={{ hash: 'worksheet-modal-config-prop-table', query: { props: 'modal-config' } }}
+        >
           ModalConfig
         </NextLink>{' '}
         for usage.
@@ -285,8 +316,8 @@ const worksheetSelectableConfigProps: Prop[] = [
     required: true,
     description: (
       <>
-        Accepts an array of <Code>SelectOptions</Code> or an array of <Code>SelectOptionGroups</Code>. See examples for
-        usage.
+        Accepts an array of <Code>SelectOptions</Code> or an array of{' '}
+        <Code>SelectOptionGroups</Code>. See examples for usage.
       </>
     ),
   },
@@ -332,37 +363,45 @@ const worksheetErrorProps: Prop[] = [
 ];
 
 export const WorksheetPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Worksheet" propList={worksheetProps} {...props} />
+  <PropTable propList={worksheetProps} title="Worksheet" {...props} />
 );
 
 export const WorksheetTextColumnPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Worksheet[TextColumn]" propList={worksheetTextColumnProps} {...props} />
+  <PropTable propList={worksheetTextColumnProps} title="Worksheet[TextColumn]" {...props} />
 );
 
 export const WorksheetNumberColumnPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Worksheet[NumberColumn]" propList={worksheetNumberColumnProps} {...props} />
+  <PropTable propList={worksheetNumberColumnProps} title="Worksheet[NumberColumn]" {...props} />
 );
 
 export const WorksheetCheckboxColumnPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Worksheet[CheckboxColumn]" propList={worksheetCheckboxColumnProps} {...props} />
+  <PropTable propList={worksheetCheckboxColumnProps} title="Worksheet[CheckboxColumn]" {...props} />
 );
 
 export const WorksheetSelectableColumnPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Worksheet[SelectableColumn]" propList={worksheetSelectableColumnProps} {...props} />
+  <PropTable
+    propList={worksheetSelectableColumnProps}
+    title="Worksheet[SelectableColumn]"
+    {...props}
+  />
 );
 
 export const WorksheetModalColumnPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Worksheet[ModalColumn]" propList={worksheetModalColumnProps} {...props} />
+  <PropTable propList={worksheetModalColumnProps} title="Worksheet[ModalColumn]" {...props} />
 );
 
 export const WorksheetSelectableConfigPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Worksheet[SelectableConfig]" propList={worksheetSelectableConfigProps} {...props} />
+  <PropTable
+    propList={worksheetSelectableConfigProps}
+    title="Worksheet[SelectableConfig]"
+    {...props}
+  />
 );
 
 export const WorksheetModalConfigPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Worksheet[ModalConfig]" propList={worksheetModalConfigProps} {...props} />
+  <PropTable propList={worksheetModalConfigProps} title="Worksheet[ModalConfig]" {...props} />
 );
 
 export const WorksheetErrorPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Worksheet[Error]" propList={worksheetErrorProps} {...props} />
+  <PropTable propList={worksheetErrorProps} title="Worksheet[Error]" {...props} />
 );

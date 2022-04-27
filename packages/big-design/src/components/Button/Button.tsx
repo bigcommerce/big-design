@@ -53,9 +53,9 @@ export const StyleableButton = forwardRef<HTMLButtonElement, ButtonProps>((props
   <RawButton {...props} forwardedRef={ref} />
 ));
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, style, ...props }, ref) => (
-  <RawButton {...props} forwardedRef={ref} />
-));
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, style, ...props }, ref) => <RawButton {...props} forwardedRef={ref} />,
+);
 
 const defaultProps = {
   actionType: 'normal' as const,

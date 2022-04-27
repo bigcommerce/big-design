@@ -5,7 +5,7 @@ import { Tooltip } from './Tooltip';
 
 test('passes id to tooltip wrapper', async () => {
   render(
-    <Tooltip id="test-id" trigger="Trigger" placement="auto">
+    <Tooltip id="test-id" placement="auto" trigger="Trigger">
       Testing
     </Tooltip>,
   );

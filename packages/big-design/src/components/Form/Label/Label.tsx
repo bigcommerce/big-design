@@ -6,4 +6,6 @@ export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   renderOptional?: boolean;
 }
 
-export const FormControlLabel: React.FC<LabelProps> = ({ className, style, ...props }) => <StyledLabel {...props} />;
+export const FormControlLabel: React.FC<LabelProps> = ({ className, style, ...props }) => (
+  <StyledLabel {...props} />
+);

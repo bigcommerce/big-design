@@ -24,7 +24,7 @@ test('forwards styles', () => {
     </Flex>,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(1);
+  expect(container.getElementsByClassName('test')).toHaveLength(1);
   expect(container.firstChild).toHaveStyle('background: red');
 });
 
@@ -35,12 +35,12 @@ test('Flex Item forwards styles', () => {
     </FlexItem>,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(1);
+  expect(container.getElementsByClassName('test')).toHaveLength(1);
   expect(container.firstChild).toHaveStyle('background: red');
 });
 
 test('rendering as another element retains inherited props and styles', () => {
-  const { getByTestId } = render(<Flex as="section" margin="medium" data-testid="flex" />);
+  const { getByTestId } = render(<Flex as="section" data-testid="flex" margin="medium" />);
 
   const flex = getByTestId('flex');
 

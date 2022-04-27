@@ -31,7 +31,9 @@ test('render warning Alert', () => {
   const alert = screen.getByRole('alert');
 
   expect(alert).toMatchSnapshot();
-  expect(alert).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50}`);
+  expect(alert).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50}`,
+  );
 });
 
 test('render info Alert', () => {
@@ -40,7 +42,9 @@ test('render info Alert', () => {
   const alert = screen.getByRole('alert');
 
   expect(alert).toMatchSnapshot();
-  expect(alert).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60}`);
+  expect(alert).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60}`,
+  );
 });
 
 test('renders with link', () => {
@@ -56,7 +60,11 @@ test('renders with link', () => {
 
 test('renders with external link', () => {
   render(
-    <Alert messages={[{ text: 'Success', link: { text: 'Link', href: '#', external: true, target: '_blank' } }]} />,
+    <Alert
+      messages={[
+        { text: 'Success', link: { text: 'Link', href: '#', external: true, target: '_blank' } },
+      ]}
+    />,
   );
 
   const alert = screen.getByRole('alert');
@@ -66,7 +74,7 @@ test('renders with external link', () => {
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
   expect(link.target).toBe('_blank');
-  expect(link.querySelector('svg')).not.toBeUndefined();
+  expect(link.querySelector('svg')).toBeDefined();
 });
 
 test('renders header', () => {
@@ -76,22 +84,23 @@ test('renders header', () => {
   const heading = screen.getByRole('heading', { name: /header/i });
 
   expect(alert).toMatchSnapshot();
-  expect(heading).not.toBeUndefined();
+  expect(heading).toBeDefined();
 });
 
 test('renders close button', () => {
-  render(<Alert onClose={() => null} messages={[{ text: 'Success' }]} />);
+  render(<Alert messages={[{ text: 'Success' }]} onClose={() => null} />);
 
   const alert = screen.getByRole('alert');
   const button = screen.getByRole('button');
 
   expect(alert).toMatchSnapshot();
-  expect(button).not.toBeUndefined();
+  expect(button).toBeDefined();
 });
 
 test('trigger onClose', () => {
   const fn = jest.fn();
-  render(<Alert onClose={fn} messages={[{ text: 'Success' }]} />);
+
+  render(<Alert messages={[{ text: 'Success' }]} onClose={fn} />);
 
   const button = screen.getByRole('button');
 
@@ -102,7 +111,7 @@ test('trigger onClose', () => {
 
 test('does not forward styles', () => {
   const { container } = render(
-    <Alert messages={[{ text: 'Success' }]} className="test" style={{ background: 'red' }} />,
+    <Alert className="test" messages={[{ text: 'Success' }]} style={{ background: 'red' }} />,
   );
   const alert = screen.getByRole('alert');
 

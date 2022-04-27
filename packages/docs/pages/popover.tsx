@@ -11,8 +11,8 @@ const PopoverPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Popover</Code> is a component that floats around its anchor element. It's commonly used for
-          building other components such as dropdowns, tooltips, combobox, etc.
+          <Code primary>Popover</Code> is a component that floats around its anchor element. It's
+          commonly used for building other components such as dropdowns, tooltips, combobox, etc.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -30,7 +30,7 @@ const PopoverPage = () => {
 
               return (
                 <>
-                  <Button ref={setButtonRef} onClick={() => setIsOpen(true)}>
+                  <Button onClick={() => setIsOpen(true)} ref={setButtonRef}>
                     Open Popover
                   </Button>
                   <Popover
@@ -62,8 +62,11 @@ const PopoverPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          recommended={['Tie popup to click or hover events on elements.', 'Use concise textual phrases.']}
           discouraged={['Always display the popover.']}
+          recommended={[
+            'Tie popup to click or hover events on elements.',
+            'Use concise textual phrases.',
+          ]}
         />
       </Panel>
     </>

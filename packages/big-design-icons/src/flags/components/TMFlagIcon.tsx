@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'TM flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'TM flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -430,6 +435,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           d="M129.8 83.9h4.2l4.9-4.1h7.7l4.2-2-2-2-4.3 2h-4.2l-4.2-6.2-6.3 2v4.2h6.3l-6.3 6zm-28.2-43l-8.3-5.2h-4.9L90 34l-3.2-3.5 1.6-1.8 5 1.8 1.6-1.8.8 4.7 9.1 5.5-3.3 2zm47.4-4l8.2-5.3h5l-1.7-1.7 3.3-3.5-1.6-1.8-5 1.8-1.6-1.8-.8 4.7-9.1 5.6 3.3 2z"
           fill="#ca3745"
         />
+        <path d="M184.2 51.2v6.1l-6.8 8.2v6.1l-6.8 6.2H157l-11.3 6h-15.9V51.3h54.4z" fill="#fff" />
         <path
           d="M110.7 36.9l-8.3-5.3h-5l1.7-1.7-3.3-3.5 1.7-1.8 5 1.8 1.6-1.8.7 4.7 9.2 5.5-3.3 2zM97 49.2l-8.3-5.3h-5l1.7-1.8-3.3-3.5L84 37l5 1.8 1.6-1.8.7 4.7 9.2 5.5-3.3 2z"
           fill="#ca3745"

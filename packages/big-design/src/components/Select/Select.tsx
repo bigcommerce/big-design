@@ -71,7 +71,9 @@ export const Select = typedMemo(
 
     // Find the selected option
     const selectedOption = useMemo(() => {
-      return flattenedOptions.find((option): option is SelectOption<T> => 'value' in option && option.value === value);
+      return flattenedOptions.find(
+        (option): option is SelectOption<T> => 'value' in option && option.value === value,
+      );
     }, [flattenedOptions, value]);
 
     // Initialize with flattened options
@@ -87,7 +89,11 @@ export const Select = typedMemo(
     const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
         action.onActionClick(inputValue || null);
-      } else if (changes.selectedItem && 'value' in changes.selectedItem && typeof onOptionChange === 'function') {
+      } else if (
+        changes.selectedItem &&
+        'value' in changes.selectedItem &&
+        typeof onOptionChange === 'function'
+      ) {
         onOptionChange(changes.selectedItem.value, changes.selectedItem);
       }
     };
@@ -124,7 +130,9 @@ export const Select = typedMemo(
       );
     };
 
-    const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+    const handleOnIsOpenChange = ({
+      isOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && !isOpen) {
         // Reset the options when the List is closed
         setFilteredOptions(flattenedOptions);
@@ -145,7 +153,11 @@ export const Select = typedMemo(
     ) => {
       switch (actionAndChanges.type) {
         case useCombobox.stateChangeTypes.InputBlur:
-          return { ...actionAndChanges.changes, inputValue: selectedOption ? selectedOption.content : '' };
+          return {
+            ...actionAndChanges.changes,
+            inputValue: selectedOption ? selectedOption.content : '',
+          };
+
         default:
           return actionAndChanges.changes;
       }
@@ -235,7 +247,10 @@ export const Select = typedMemo(
       }
 
       if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, getLabelProps());
+        return cloneElement(
+          label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
+          getLabelProps(),
+        );
       }
 
       warning('label must be either a string or a FormControlLabel component.');
@@ -276,12 +291,15 @@ export const Select = typedMemo(
                 switch (event.key) {
                   case 'Enter':
                     event.preventDefault();
+
                     if (isOpen === false) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
                       (event.nativeEvent as any).preventDownshiftDefault = true;
                     }
+
                     break;
+
                   case 'Escape':
                     if (isOpen === false) {
                       // Reset the value to empty
@@ -289,6 +307,7 @@ export const Select = typedMemo(
                     } else {
                       closeMenu();
                     }
+
                     // https://github.com/downshift-js/downshift/issues/734
                     (event.nativeEvent as any).preventDownshiftDefault = true;
                     break;
@@ -297,7 +316,7 @@ export const Select = typedMemo(
               placeholder,
               ref: getInputRef(),
               readOnly: !filterable,
-              required: required,
+              required,
             })}
             iconLeft={selectedItem?.icon}
             iconRight={renderToggle}

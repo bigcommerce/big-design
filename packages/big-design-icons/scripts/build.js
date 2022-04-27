@@ -41,8 +41,8 @@ function convertWithConcurrencyPool(iconFiles) {
 async function generateIcons() {
   const iconFiles = await glob(SOURCE);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  for await (const _result of convertWithConcurrencyPool(iconFiles));
+  for await (const _result of convertWithConcurrencyPool(iconFiles)) {
+  }
 }
 
 function cleanDestDirectory() {

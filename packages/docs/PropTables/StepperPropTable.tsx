@@ -18,5 +18,5 @@ const stepperProps: Prop[] = [
 ];
 
 export const StepperPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Stepper" propList={stepperProps} {...props} />
+  <PropTable propList={stepperProps} title="Stepper" {...props} />
 );

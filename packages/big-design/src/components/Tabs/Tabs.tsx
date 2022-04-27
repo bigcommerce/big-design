@@ -41,25 +41,23 @@ export const Tabs: React.FC<TabsProps> = memo(
     }
 
     return (
-      <>
-        <StyledTabs {...props} flexDirection="row" role="tablist">
-          {items.map(({ ariaControls, id, title, disabled }) => (
-            <StyledTab
-              activeTab={activeTab}
-              aria-selected={id === activeTab ? 'true' : 'false'}
-              aria-controls={ariaControls || `${id}-content`}
-              id={id}
-              key={id}
-              onClick={handleOnTabClick}
-              role="tab"
-              tabIndex={id === activeTab ? -1 : 0}
-              disabled={disabled}
-            >
-              {title}
-            </StyledTab>
-          ))}
-        </StyledTabs>
-      </>
+      <StyledTabs {...props} flexDirection="row" role="tablist">
+        {items.map(({ ariaControls, id, title, disabled }) => (
+          <StyledTab
+            activeTab={activeTab}
+            aria-controls={ariaControls || `${id}-content`}
+            aria-selected={id === activeTab ? 'true' : 'false'}
+            disabled={disabled}
+            id={id}
+            key={id}
+            onClick={handleOnTabClick}
+            role="tab"
+            tabIndex={id === activeTab ? -1 : 0}
+          >
+            {title}
+          </StyledTab>
+        ))}
+      </StyledTabs>
     );
   },
 );

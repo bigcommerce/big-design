@@ -79,6 +79,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       if (value + step > max) {
         return;
       }
+
       // Checks that the provided value is a multiple of the step
       if (value % step === 0) {
         onCountChange(value + step);
@@ -95,6 +96,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       if (value - step < min) {
         return;
       }
+
       // Checks that the provided value is a multiple of the step
       if (value % step === 0) {
         onCountChange(value - step);
@@ -107,17 +109,18 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = Number(event.currentTarget.value);
+
       if (isNaN(newValue)) {
         return;
       }
+
       if (!Number.isInteger(newValue)) {
         onCountChange(Math.round(newValue));
       }
+
       if (newValue >= min && newValue <= max) {
         onCountChange(newValue);
       }
-
-      return;
     };
 
     const handleKeyPress = (event: React.KeyboardEvent) => {
@@ -125,15 +128,19 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
         case 'ArrowUp':
           handleIncrease(event);
           break;
+
         case 'ArrowDown':
           handleDecrease(event);
           break;
+
         case 'Enter':
           event.preventDefault();
           break;
+
         case 'Escape':
           onCountChange(0);
           break;
+
         default:
           break;
       }
@@ -146,17 +153,20 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel id={labelId} htmlFor={id} renderOptional={!props.required}>
+          <FormControlLabel htmlFor={id} id={labelId} renderOptional={!props.required}>
             {label}
           </FormControlLabel>
         );
       }
 
       if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
-          id: labelId,
-          htmlFor: id,
-        });
+        return cloneElement(
+          label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
+          {
+            id: labelId,
+            htmlFor: id,
+          },
+        );
       }
 
       warning('label must be either a string or a FormControlLabel component.');
@@ -184,26 +194,26 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
         {renderedDescription}
         <StyledCounterWrapper disabled={disabled} error={errors} focus={focus}>
           <StyledCounterButton
-            onClick={handleDecrease}
             disabled={disabled || value <= min}
             iconOnly={<RemoveCircleOutlineIcon title="Decrease count" />}
+            onClick={handleDecrease}
           />
           <StyledCounterInput
             {...props}
-            ref={forwardedRef}
-            onKeyDown={handleKeyPress}
-            value={value}
             disabled={disabled}
             error={errors}
             id={id}
             onBlur={handleBlur}
             onChange={handleChange}
             onFocus={handleFocus}
+            onKeyDown={handleKeyPress}
+            ref={forwardedRef}
+            value={value}
           />
           <StyledCounterButton
-            onClick={handleIncrease}
             disabled={disabled || value >= max}
             iconOnly={<AddCircleOutlineIcon title="Increase count" />}
+            onClick={handleIncrease}
           />
         </StyledCounterWrapper>
       </div>

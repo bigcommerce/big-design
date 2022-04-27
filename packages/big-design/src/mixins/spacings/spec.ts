@@ -20,7 +20,11 @@ test('multiple simple spacings', () => {
 });
 
 test('responsive spacing', () => {
-  const styles = getSpacingStyles({ mobile: 'none', tablet: 'small', desktop: 'medium' }, defaultTheme, 'border');
+  const styles = getSpacingStyles(
+    { mobile: 'none', tablet: 'small', desktop: 'medium' },
+    defaultTheme,
+    'border',
+  );
 
   expect(styles).toMatchSnapshot();
 });

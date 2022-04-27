@@ -14,7 +14,9 @@ import { Row } from './Row';
 import { StyledTable, StyledTableFigure } from './styled';
 import { TableColumn, TableItem, TableProps } from './types';
 
-const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactElement<TableProps<T>> => {
+const InternalTable = <T extends TableItem>(
+  props: TableProps<T>,
+): React.ReactElement<TableProps<T>> => {
   const {
     actions,
     className,
@@ -115,7 +117,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     <Head hidden={headerless}>
       <tr>
         {typeof onRowDrop === 'function' && <DragIconHeaderCell actionsRef={actionsRef} />}
-        {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} actionsRef={actionsRef} />}
+        {isSelectable && <HeaderCheckboxCell actionsRef={actionsRef} stickyHeader={stickyHeader} />}
 
         {columns.map((column, index) => {
           const { display, hash, header, isSortable, hideHeader } = column;
@@ -124,15 +126,15 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
 
           return (
             <HeaderCell
-              display={display}
+              actionsRef={actionsRef}
               column={column}
+              display={display}
               hide={hideHeader}
               isSorted={isSorted}
               key={index}
               onSortClick={onSortClick}
               sortDirection={sortDirection}
               stickyHeader={stickyHeader}
-              actionsRef={actionsRef}
             >
               {header}
             </HeaderCell>
@@ -145,24 +147,24 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   const renderDroppableItems = () => (
     <Droppable droppableId={`${uniqueTableId}-bd-droppable`}>
       {(provided) => (
-        <Body withFirstRowBorder={headerless} ref={provided.innerRef} {...provided.droppableProps}>
+        <Body ref={provided.innerRef} withFirstRowBorder={headerless} {...provided.droppableProps}>
           {items.map((item: T, index) => {
             const key = getItemKey(item, index);
             const isSelected = selectedItems.has(item);
 
             return (
-              <Draggable key={key} draggableId={String(key)} index={index}>
+              <Draggable draggableId={String(key)} index={index} key={key}>
                 {(provided, snapshot) => (
                   <Row
                     isDragging={snapshot.isDragging}
                     {...provided.dragHandleProps}
                     {...provided.draggableProps}
-                    ref={provided.innerRef}
                     columns={columns}
                     isSelectable={isSelectable}
                     isSelected={isSelected}
                     item={item}
                     onItemSelect={onItemSelect}
+                    ref={provided.innerRef}
                     showDragIcon={true}
                   />
                 )}
@@ -211,14 +213,14 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
       {shouldRenderActions() && (
         <Actions
           customActions={actions}
-          pagination={pagination}
-          onSelectionChange={selectable && selectable.onSelectionChange}
-          selectedItems={selectedItems}
-          items={items}
-          itemName={itemName}
-          tableId={tableIdRef.current}
-          stickyHeader={stickyHeader}
           forwardedRef={actionsRef}
+          itemName={itemName}
+          items={items}
+          onSelectionChange={selectable && selectable.onSelectionChange}
+          pagination={pagination}
+          selectedItems={selectedItems}
+          stickyHeader={stickyHeader}
+          tableId={tableIdRef.current}
         />
       )}
       <StyledTable {...rest} id={tableIdRef.current}>

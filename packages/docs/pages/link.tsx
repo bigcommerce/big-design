@@ -28,8 +28,8 @@ const LinkPage = () => {
               render: () => (
                 <Fragment key="basic">
                   <Text>
-                    A simple wrapper for anchor elements. Use instead of {'<a>'}. Supports all native anchor element
-                    attributes.
+                    A simple wrapper for anchor elements. Use instead of {'<a>'}. Supports all
+                    native anchor element attributes.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -47,7 +47,7 @@ const LinkPage = () => {
                   <Text>You can also include an external icon.</Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
-                    <Link href="#" target="_blank" external>
+                    <Link external href="#" target="_blank">
                       Learn more
                     </Link>
                     {/* jsx-to-string:end */}
@@ -65,14 +65,15 @@ const LinkPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
+          discouraged={[<>Avoid using links for actions – use a button instead.</>]}
           recommended={[
             <>
-              Use the <Code primary>external</Code> prop when a link navigates away from the control panel.
+              Use the <Code primary>external</Code> prop when a link navigates away from the control
+              panel.
             </>,
             <>Usually within a sentence to provide additional guidance or information.</>,
             <>Use descriptive text to set clear expectations of the link destination.</>,
           ]}
-          discouraged={[<>Avoid using links for actions – use a button instead.</>]}
         />
       </Panel>
     </>

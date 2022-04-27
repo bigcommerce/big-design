@@ -11,8 +11,8 @@ const PaddingPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          BigDesign provides a <Code primary>padding</Code> prop which can be used for some of our components. Check out
-          a component's prop table to see if the component inherits this prop.
+          BigDesign provides a <Code primary>padding</Code> prop which can be used for some of our
+          components. Check out a component's prop table to see if the component inherits this prop.
         </Text>
       </Panel>
 
@@ -26,12 +26,13 @@ const PaddingPage = () => {
               render: () => (
                 <Fragment key="basic">
                   <Text>
-                    The following example showcases the simplest way to use the <Code primary>padding</Code> prop by
-                    giving it a <NextLink href="/spacing">Spacing</NextLink> value.
+                    The following example showcases the simplest way to use the{' '}
+                    <Code primary>padding</Code> prop by giving it a{' '}
+                    <NextLink href="/spacing">Spacing</NextLink> value.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
-                    <Box padding="medium" backgroundColor="secondary20">
+                    <Box backgroundColor="secondary20" padding="medium">
                       Example
                     </Box>
                     {/* jsx-to-string:end */}
@@ -45,16 +46,16 @@ const PaddingPage = () => {
               render: () => (
                 <Fragment key="responsive-breakpoints">
                   <Text>
-                    You can also specify paddings with an object to handle different paddings with different{' '}
-                    <NextLink href="/breakpoints">breakpoints</NextLink>. All values must be of{' '}
-                    <NextLink href="/spacing">Spacing</NextLink> type.
+                    You can also specify paddings with an object to handle different paddings with
+                    different <NextLink href="/breakpoints">breakpoints</NextLink>. All values must
+                    be of <NextLink href="/spacing">Spacing</NextLink> type.
                   </Text>
 
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <Box
-                      padding={{ mobile: 'none', tablet: 'medium', desktop: 'xLarge' }}
                       backgroundColor="secondary20"
+                      padding={{ mobile: 'none', tablet: 'medium', desktop: 'xLarge' }}
                     >
                       Example
                     </Box>

@@ -39,5 +39,5 @@ const timepickerProps: Prop[] = [
 ];
 
 export const TimepickerPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Timepicker" propList={timepickerProps} {...props} />
+  <PropTable propList={timepickerProps} title="Timepicker" {...props} />
 );

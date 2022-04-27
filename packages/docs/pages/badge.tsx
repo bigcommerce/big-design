@@ -17,12 +17,12 @@ const BadgePage = () => {
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            Use <Code primary>Badges</Code> to indicate the connection status of a 3rd party integration (e.g. payment
-            method, a channel connection).
+            Use <Code primary>Badges</Code> to indicate the connection status of a 3rd party
+            integration (e.g. payment method, a channel connection).
           </List.Item>
           <List.Item>
-            You can also use <Code primary>Badges</Code> to call attention to new features (e.g. “new”) or recommended
-            integrations.
+            You can also use <Code primary>Badges</Code> to call attention to new features (e.g.
+            “new”) or recommended integrations.
           </List.Item>
         </List>
       </Panel>
@@ -48,19 +48,20 @@ const BadgePage = () => {
               render: () => (
                 <Fragment key="variants">
                   <Text>
-                    There are five types of variants to choose from: <Code>success</Code>, <Code>secondary</Code>,{' '}
-                    <Code>warning</Code>, <Code>danger</Code>, and <Code>primary</Code>. You can determine what type by
-                    using the <Code primary>variant</Code> prop.
+                    There are five types of variants to choose from: <Code>success</Code>,{' '}
+                    <Code>secondary</Code>, <Code>warning</Code>, <Code>danger</Code>, and{' '}
+                    <Code>primary</Code>. You can determine what type by using the{' '}
+                    <Code primary>variant</Code> prop.
                   </Text>
 
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <Grid gridColumns="repeat(5, min-content)">
-                      <Badge variant="secondary" label="secondary" />
-                      <Badge variant="success" label="success" />
-                      <Badge variant="warning" label="warning" />
-                      <Badge variant="danger" label="danger" />
-                      <Badge variant="primary" label="primary" />
+                      <Badge label="secondary" variant="secondary" />
+                      <Badge label="success" variant="success" />
+                      <Badge label="warning" variant="warning" />
+                      <Badge label="danger" variant="danger" />
+                      <Badge label="primary" variant="primary" />
                     </Grid>
                     {/* jsx-to-string:end */}
                   </CodePreview>
@@ -77,11 +78,13 @@ const BadgePage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          recommended={['Use the right colour for the right situation (e.g. red when something is broken / wrong).']}
           discouraged={[
             <>
               Don’t apply multiple <Code primary>Badges</Code> to the same object.
             </>,
+          ]}
+          recommended={[
+            'Use the right colour for the right situation (e.g. red when something is broken / wrong).',
           ]}
         />
       </Panel>

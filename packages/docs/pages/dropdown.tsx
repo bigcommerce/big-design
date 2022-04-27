@@ -1,8 +1,21 @@
 import { Button, Dropdown, Grid, H1, Panel, Text } from '@bigcommerce/big-design';
-import { AssignmentIcon, DeleteIcon, EditIcon, FileCopyIcon, OpenInNewIcon } from '@bigcommerce/big-design-icons';
+import {
+  AssignmentIcon,
+  DeleteIcon,
+  EditIcon,
+  FileCopyIcon,
+  OpenInNewIcon,
+} from '@bigcommerce/big-design-icons';
 import React, { Fragment } from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
+import {
+  Code,
+  CodePreview,
+  ContentRoutingTabs,
+  GuidelinesTable,
+  List,
+  NextLink,
+} from '../components';
 import {
   DropdownItemGroupPropTable,
   DropdownItemPropTable,
@@ -17,17 +30,22 @@ const DropdownPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Dropdowns</Code> are toggleable, contextual overlays for displaying list of items from which a
-          user can select one item. A selected item can be a link or an action.
+          <Code primary>Dropdowns</Code> are toggleable, contextual overlays for displaying list of
+          items from which a user can select one item. A selected item can be a link or an action.
         </Text>
         <Text bold>When to use:</Text>
 
         <List>
-          <List.Item>Use to hide secondary actions or links in order to reduce distraction.</List.Item>
           <List.Item>
-            Use for a set of actions that don’t fit in the available screen space (including overflow).
+            Use to hide secondary actions or links in order to reduce distraction.
           </List.Item>
-          <List.Item>Use when actions’ names are very long or actions require additional description.</List.Item>
+          <List.Item>
+            Use for a set of actions that don’t fit in the available screen space (including
+            overflow).
+          </List.Item>
+          <List.Item>
+            Use when actions’ names are very long or actions require additional description.
+          </List.Item>
         </List>
       </Panel>
 
@@ -41,14 +59,19 @@ const DropdownPage = () => {
               render: () => (
                 <Fragment key="basic">
                   <Text>
-                    <Code primary>Dropdowns</Code> are toggleable, contextual overlays for displaying lists.
+                    <Code primary>Dropdowns</Code> are toggleable, contextual overlays for
+                    displaying lists.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <Dropdown
-                      maxHeight={250}
                       items={[
-                        { content: 'Edit', onItemClick: (item) => item, hash: 'edit', icon: <EditIcon /> },
+                        {
+                          content: 'Edit',
+                          onItemClick: (item) => item,
+                          hash: 'edit',
+                          icon: <EditIcon />,
+                        },
                         {
                           content: 'Duplicate',
                           onItemClick: (item) => item,
@@ -77,6 +100,7 @@ const DropdownPage = () => {
                           url: '#',
                         },
                       ]}
+                      maxHeight={250}
                       placement="bottom-start"
                       toggle={<Button>Open menu</Button>}
                     />
@@ -91,8 +115,9 @@ const DropdownPage = () => {
               render: () => (
                 <Fragment key="links">
                   <Text>
-                    A <Code primary>Dropdown</Code> can render a list of <NextLink href="/link">Links</NextLink> if it
-                    receives an object of type <Code>LinkItem</Code>.
+                    A <Code primary>Dropdown</Code> can render a list of{' '}
+                    <NextLink href="/link">Links</NextLink> if it receives an object of type{' '}
+                    <Code>LinkItem</Code>.
                   </Text>
 
                   <CodePreview>
@@ -117,7 +142,8 @@ const DropdownPage = () => {
               render: () => (
                 <Fragment key="icons">
                   <Text>
-                    An <Code primary>item</Code> accepts an <NextLink href="/icons">Icon</NextLink> component to render.
+                    An <Code primary>item</Code> accepts an <NextLink href="/icons">Icon</NextLink>{' '}
+                    component to render.
                   </Text>
 
                   <CodePreview>
@@ -140,8 +166,8 @@ const DropdownPage = () => {
               render: () => (
                 <Fragment key="action-types">
                   <Text>
-                    There are two action types: <Code>normal</Code> &amp; <Code>destructive</Code>. They are used to
-                    indicate the nature of the action when hovering on the item.
+                    There are two action types: <Code>normal</Code> &amp; <Code>destructive</Code>.
+                    They are used to indicate the nature of the action when hovering on the item.
                   </Text>
 
                   <CodePreview>
@@ -149,7 +175,11 @@ const DropdownPage = () => {
                     <Dropdown
                       items={[
                         { content: 'Save', onItemClick: (item) => item, actionType: 'normal' },
-                        { content: 'Delete', onItemClick: (item) => item, actionType: 'destructive' },
+                        {
+                          content: 'Delete',
+                          onItemClick: (item) => item,
+                          actionType: 'destructive',
+                        },
                       ]}
                       toggle={<Button>Button</Button>}
                     />
@@ -164,8 +194,8 @@ const DropdownPage = () => {
               render: () => (
                 <Fragment key="toggle">
                   <Text>
-                    <Code primary>Dropdown</Code> can be anchored to any <Code>ReactElement</Code>, including all types
-                    of <NextLink href="/button">Buttons</NextLink>.
+                    <Code primary>Dropdown</Code> can be anchored to any <Code>ReactElement</Code>,
+                    including all types of <NextLink href="/button">Buttons</NextLink>.
                   </Text>
 
                   <CodePreview>
@@ -218,8 +248,8 @@ const DropdownPage = () => {
                 <Fragment key="placement">
                   <Text>
                     <Code primary>Dropdown</Code> can be anchored in different directions with the{' '}
-                    <Code primary>placement</Code> property. It will automatically find a placement if there's not
-                    enough space in the chosen direction.
+                    <Code primary>placement</Code> property. It will automatically find a placement
+                    if there's not enough space in the chosen direction.
                   </Text>
 
                   <CodePreview>
@@ -273,9 +303,9 @@ const DropdownPage = () => {
               render: () => (
                 <Fragment key="max-height">
                   <Text>
-                    Once the content is longer than the max-height, the <Code primary>Dropdown</Code> will be
-                    scrollable. It is possible to modify the dimension by passing a <Code primary>maxHeight</Code>{' '}
-                    property.
+                    Once the content is longer than the max-height, the{' '}
+                    <Code primary>Dropdown</Code> will be scrollable. It is possible to modify the
+                    dimension by passing a <Code primary>maxHeight</Code> property.
                   </Text>
 
                   <CodePreview>
@@ -339,7 +369,8 @@ const DropdownPage = () => {
                 <Fragment key="item-groups">
                   <Text>
                     Create <Code primary>Dropdowns</Code> with labeled groupings by passing{' '}
-                    <Code primary>DropdownItemGroup</Code>'s to the Dropdown's <Code primary>options</Code> property.
+                    <Code primary>DropdownItemGroup</Code>'s to the Dropdown's{' '}
+                    <Code primary>options</Code> property.
                   </Text>
 
                   <CodePreview>
@@ -441,17 +472,17 @@ const DropdownPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          recommended={[
-            'Anchor the dropdown menu in the least obstructive position on the page.',
-            'Organize dropdown items in alphabetical order or by the most relevant content.',
-            'Use placeholder text by default if no selection has been made.',
-          ]}
           discouraged={[
             'Avoid including complex information in a dropdown menu.',
             <>
               Don’t nest <Code primary>Dropdowns</Code> or use them to display complex information.
             </>,
             'Don’t use icons in dropdown items unless they provide additional and necessary context.',
+          ]}
+          recommended={[
+            'Anchor the dropdown menu in the least obstructive position on the page.',
+            'Organize dropdown items in alphabetical order or by the most relevant content.',
+            'Use placeholder text by default if no selection has been made.',
           ]}
         />
       </Panel>

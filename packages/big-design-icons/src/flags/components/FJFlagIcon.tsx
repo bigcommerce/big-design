@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'FJ flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'FJ flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -21,7 +26,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         <path d="M490.3 241.2v61.4h-69.4v22.3h69.4v71.5l11.2 4.3 11.1-4.3V325H582v-22.4h-69.4v-61.4z" fill="#d21034" />
         <path d="M420.9 193.2H582V246H420.8z" fill="#d21034" />
         <g strokeMiterlimit={3}>
-          <g fill="#fff" stroke="#000" strokeWidth={0.8} transform="translate(-96.9 97.5) scale(.66486)">
+          <g
+            fill="#fff"
+            stroke="#000"
+            strokeWidth={0.8}
+            transform="translate(-96.9 97.5) scale(.66486)"
+          >
             <ellipse cx={798.2} cy={192.2} rx={13.6} ry={11} />
             <ellipse cx={798.2} cy={186.5} rx={12.1} ry={6.1} />
             <ellipse cx={798.2} cy={198.8} rx={12.1} ry={6.1} />

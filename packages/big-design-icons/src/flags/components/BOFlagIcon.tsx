@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'BO flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'BO flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -1378,6 +1383,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         stroke="#000"
         strokeWidth={0.1}
       />
+      <path d="M298 172.7c-.5 1.7-.2 3.6 0 5" fill="#007934" stroke="#000" strokeWidth={0.1} />
       <path
         d="M293 189a.6.4 69.4 11.4 1.2.6.4 69.4 11-.4-1.1z"
         fillRule="evenodd"
@@ -1388,6 +1394,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           marker: 'none',
         }}
       />
+      <path d="M295.7 174.5c-.2 1.8.5 3.7 1 5.2" fill="#007934" stroke="#000" strokeWidth={0.1} />
       <path
         d="M294.3 188.7a.4.6 5.2 110 1.2.4.6 5.2 110-1.2z"
         fillRule="evenodd"
@@ -1398,6 +1405,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           marker: 'none',
         }}
       />
+      <path d="M293.9 177.7c.1 1.7 1 3.4 1.5 4.8" fill="#007934" stroke="#000" strokeWidth={0.1} />
       <path
         d="M295 191.6s.6-.5.8-1c.3-.5.2-.8.2-.8h.3l-.3.8-.1.4.6-.3.4-.4.1.2-.6.5c-.6.1-1.2.7-1.2.7"
         fill="#007934"
@@ -1405,6 +1413,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         stroke="#000"
         strokeWidth={0.1}
       />
+      <path d="M303.7 176.5c-1 1.2-2.7 1.9-4 2.5" fill="#007934" stroke="#000" strokeWidth={0.1} />
       <path
         d="M297.5 189.4a.4.6 31.5 10-.6 1 .4.6 31.5 10.6-1z"
         fillRule="evenodd"
@@ -1437,6 +1446,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         d="M295.6 196.2c.4 0 4-1.9 5-4.4.6-1.8.3-2.3.3-2.3s-.4-.3-1.4 1.2c-1 1.4-3.4 3.8-3.9 5.5z"
         fill="#007934"
         fillRule="evenodd"
+        overflow="visible"
         stroke="#000"
         strokeWidth={0.1}
       />
@@ -1445,6 +1455,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         d="M296.6 199.3c.3-.1 3.7-2.3 4.5-4.8.7-1.9.4-2.3.4-2.3s-.4-.3-1.3 1.3c-1 1.5-3.2 4-3.6 5.7z"
         fill="#007934"
         fillRule="evenodd"
+        overflow="visible"
         stroke="#000"
         strokeWidth={0.1}
       />
@@ -1496,6 +1507,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         stroke="#000"
         strokeWidth={0.1}
       />
+      <path d="M290.3 187.2c.5 1.8 2 3.4 3.2 4.6" fill="#007934" stroke="#000" strokeWidth={0.1} />
       <path
         d="M294.2 199.8a.7.5 45.9 111 1 .7.5 45.9 11-1-1z"
         fillRule="evenodd"
@@ -1582,6 +1594,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         stroke="#000"
         strokeWidth={0.1}
       />
+      <path d="M302.8 198.1c-.1 2-1 4-1.8 5.6" fill="#007934" stroke="#000" strokeWidth={0.1} />
       <path
         d="M299.5 208.7a.8.5 24.1 111.4.7.8.5 24.1 11-1.4-.7z"
         fillRule="evenodd"
@@ -1609,6 +1622,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         stroke="#000"
         strokeWidth={0.1}
       />
+      <path d="M293.1 206c2 1 4.4 1.2 6.3 1.4" fill="#007934" stroke="#000" strokeWidth={0.1} />
       <path
         d="M303.7 205.1a.8.5 69.5 10.6 1.5.8.5 69.5 10-.6-1.5zm-1.5.8a.8.5 43.7 101 1 .8.5 43.7 10-1-1z"
         fillRule="evenodd"
@@ -1634,6 +1648,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         stroke="#000"
         strokeWidth={0.1}
       />
+      <path d="M298.4 213.1c2.5.6 5.2 0 7.3-.5" fill="#007934" stroke="#000" strokeWidth={0.1} />
       <path
         d="M306.6 214a.9.6 5.4 111.7.2.9.6 5.4 11-1.7-.1zm.4-2a.9.6 31.2 111.5 1 .9.6 31.2 11-1.5-1z"
         fillRule="evenodd"
@@ -1655,7 +1670,6 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
       <path
         d="M311.4 213s.2-.7-.5-1.2c-.6-.5-1.1-.6-1.1-.6v-.4l1.2.7.4.3c.4.3 0-.8-.2-1l-.4-.7.3-.2.5 1 .2 2"
         fill="#007934"
-        fillRule="evenodd"
         stroke="#000"
         strokeWidth={0.1}
       />
@@ -1787,6 +1801,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
       <path
         d="M316.5 205.5s-3.5 4.5-3 5.2c.5.8 3.7-2 4.7-4s-1.7-1.4-1.7-1.4"
         fill="#452c25"
+      />
+      <path
+        d="M317.5 207.4s2.8-4.6 0 .9c-2.8 5.4-3.9 4.5-3.9 4.5-.2-.3 2.5-4 2.5-4s2-2.8 2.4-3.1"
+        fill="none"
         stroke="#000"
         strokeWidth={0.1}
       />
@@ -1992,6 +2010,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         d="M322.7 268.8c.3 0 .4 0 .6.6-.5-.2-.5-.1-.6-.6zm-.8.9c.6 1.4.8 2.6.7 3.7l-.3 2.5h.1c.6-2.5.5-4.4-.5-6.2z"
         fill="#e8a30e"
       />
+      <path d="M322.1 267.4c.2.1.7 0 .8.6-.6-.2-.6-.1-.8-.6z" fill="#e8a30e" />
+      <path d="M322.3 267.8c.2.1.6 0 .7.7-.6-.2-.6-.2-.7-.7z" fill="#e8a30e" />
+      <path d="M322.4 268.3c.2 0 .6-.1.8.7-.5-.1-.5-.3-.8-.7z" fill="#e8a30e" />
       <path
         d="M322.5 269.2l-.1.1c.8 2.1.9 4 .7 7h.1c.2-3 .1-5-.7-7zm-1.4-2.4c.4.3.5.2.5.8-.4-.1-.4-.3-.5-.8z"
         fill="#e8a30e"
@@ -2053,6 +2074,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         d="M327 269.7c-.3 0-.5-.1-.8.4.5 0 .5 0 .8-.4zm-3.5 2.7h1.1c.7 0 1.2.2 1.2.4s-.5.3-1.2.3h-1.1c-.7 0-1.3-.2-1.3-.4s.6-.3 1.3-.3z"
         fill="#e8a30e"
       />
+      <path d="M327.9 268.6c-.2 0-.6-.2-.9.3.6 0 .6 0 .9-.3z" fill="#e8a30e" />
+      <path d="M327.7 268.9c-.3 0-.7-.2-1 .4.7 0 .6 0 1-.4z" fill="#e8a30e" />
+      <path d="M327.4 269.4c-.2 0-.6-.4-1 .3.5 0 .6-.2 1-.3z" fill="#e8a30e" />
       <path
         d="M322.7 272.4l-.4.6a.3.3 0 00.2 0h.2l.4-.6h-.4zm.9 0l-.4.6h.4l.4-.6h-.4zm.9 0l-.4.7h.4l.4-.7h-.4zm.8 0l-.3.7h.4l.3-.6a.3.3 0 00-.2 0h-.2z"
         fill="#e8a30e"
@@ -2505,6 +2529,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         d="M306.6 202s-1 2.4-.5 2.6c.6.3 2-.1 3.2-2.2 1.2-2.2-.6-1.1-.6-1.1l-2 .7zm-3.3-3.5s-2.2 2.7-1.7 3.1c.4.4 3 .3 4.9-2.4 1.9-2.6 0 0 0 0l-.5-2.5-2.7 1.7"
         fill="#452c25"
       />
+      <path d="M301.2 197.1s-2.2 2.6-2 3c.2.5 3.2.3 5.6-2.2s.5-3.5.5-3.5l-4 2.6" fill="#452c25" />
       <path
         d="M306.6 202s-1 2.4-.5 2.6c.6.3 2-.1 3.2-2.2 1.2-2.2-.6-1.1-.6-1.1l-2 .7zm-3.3-3.5s-2.2 2.7-1.7 3.1c.4.4 3 .3 4.9-2.4 1.9-2.6 0 0 0 0l-.5-2.5-2.7 1.7"
         fill="none"

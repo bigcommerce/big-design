@@ -46,7 +46,7 @@ test('render secondary button', () => {
 
 test('render secondary disabled button', () => {
   render(
-    <Button variant="secondary" disabled>
+    <Button disabled variant="secondary">
       Button
     </Button>,
   );
@@ -56,7 +56,7 @@ test('render secondary disabled button', () => {
 
 test('render secondary destructive button', () => {
   render(
-    <Button variant="secondary" actionType="destructive">
+    <Button actionType="destructive" variant="secondary">
       Button
     </Button>,
   );
@@ -66,7 +66,7 @@ test('render secondary destructive button', () => {
 
 test('render secondary destructive disabled button', () => {
   render(
-    <Button variant="secondary" actionType="destructive" disabled>
+    <Button actionType="destructive" disabled variant="secondary">
       Button
     </Button>,
   );
@@ -82,7 +82,7 @@ test('render subtle button', () => {
 
 test('render subtle disabled button', () => {
   render(
-    <Button variant="subtle" disabled>
+    <Button disabled variant="subtle">
       Button
     </Button>,
   );
@@ -92,7 +92,7 @@ test('render subtle disabled button', () => {
 
 test('render subtle destructive button', () => {
   render(
-    <Button variant="subtle" actionType="destructive">
+    <Button actionType="destructive" variant="subtle">
       Button
     </Button>,
   );
@@ -102,7 +102,7 @@ test('render subtle destructive button', () => {
 
 test('render subtle destructive disabled button', () => {
   render(
-    <Button variant="subtle" actionType="destructive" disabled>
+    <Button actionType="destructive" disabled variant="subtle">
       Button
     </Button>,
   );
@@ -189,9 +189,9 @@ test('render only icon only with left and right icons button', () => {
 });
 
 test('hides content when isLoading is true', () => {
-  const plusIcon = <AddIcon role="icon" aria-hidden="false" />;
+  const plusIcon = <AddIcon aria-hidden="false" role="icon" />;
   const { rerender } = render(
-    <Button isLoading={false} iconLeft={plusIcon}>
+    <Button iconLeft={plusIcon} isLoading={false}>
       Button
     </Button>,
   );

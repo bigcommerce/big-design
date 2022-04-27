@@ -8,7 +8,12 @@ import { WorksheetModal } from './Modal/Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, Table } from './styled';
-import { InternalWorksheetColumn, WorksheetItem, WorksheetModalColumn, WorksheetProps } from './types';
+import {
+  InternalWorksheetColumn,
+  WorksheetItem,
+  WorksheetModalColumn,
+  WorksheetProps,
+} from './types';
 import { editedRows, invalidRows } from './utils';
 
 const InternalWorksheet = typedMemo(
@@ -33,7 +38,7 @@ const InternalWorksheet = typedMemo(
     const { handleKeyDown } = useKeyEvents();
 
     // Add a column for the toggle components
-    const expandedColumns: InternalWorksheetColumn<T>[] = useMemo(() => {
+    const expandedColumns: Array<InternalWorksheetColumn<T>> = useMemo(() => {
       return expandableRows ? [{ hash: '', header: '', type: 'toggle' }, ...columns] : columns;
     }, [columns, expandableRows]);
 
@@ -61,7 +66,7 @@ const InternalWorksheet = typedMemo(
           <tr>
             <Status />
             {expandedColumns.map((column, index) => (
-              <Header key={index} columnType={column.type}>
+              <Header columnType={column.type} key={index}>
                 {column.header}
               </Header>
             ))}

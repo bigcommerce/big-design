@@ -7,7 +7,7 @@ interface Context {
 
 export const ActiveTabContext = createContext<Context>({
   activeTab: '',
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+
   setActiveTab: () => null,
 });
 

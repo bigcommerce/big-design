@@ -2,7 +2,11 @@ import { Fieldset, Form, FormGroup, H1, Panel, Radio, Text } from '@bigcommerce/
 import React, { Fragment, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
-import { RadioDescriptionLinkPropTable, RadioDescriptionPropTable, RadioPropTable } from '../PropTables';
+import {
+  RadioDescriptionLinkPropTable,
+  RadioDescriptionPropTable,
+  RadioPropTable,
+} from '../PropTables';
 
 const RadioPage = () => {
   return (
@@ -14,7 +18,8 @@ const RadioPage = () => {
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            Use radio buttons when a user can only make one, mutually exclusive selection from a list.
+            Use radio buttons when a user can only make one, mutually exclusive selection from a
+            list.
           </List.Item>
         </List>
       </Panel>
@@ -29,7 +34,8 @@ const RadioPage = () => {
               render: () => (
                 <Fragment key="basic">
                   <Text>
-                    A <Code primary>Radio</Code> is a group of items from which a single option can be selected.
+                    A <Code primary>Radio</Code> is a group of items from which a single option can
+                    be selected.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -41,14 +47,24 @@ const RadioPage = () => {
                       return (
                         <Form>
                           <FormGroup>
-                            <Radio label="On" checked={selected === 'on'} value="on" onChange={handleChange} />
-                            <Radio label="Off" checked={selected === 'off'} value="off" onChange={handleChange} />
                             <Radio
-                              label="Disabled"
-                              disabled={true}
-                              checked={selected === 'disabled'}
-                              value="disabled"
+                              checked={selected === 'on'}
+                              label="On"
                               onChange={handleChange}
+                              value="on"
+                            />
+                            <Radio
+                              checked={selected === 'off'}
+                              label="Off"
+                              onChange={handleChange}
+                              value="off"
+                            />
+                            <Radio
+                              checked={selected === 'disabled'}
+                              disabled={true}
+                              label="Disabled"
+                              onChange={handleChange}
+                              value="disabled"
                             />
                           </FormGroup>
                         </Form>
@@ -65,7 +81,8 @@ const RadioPage = () => {
               render: () => (
                 <Fragment key="grouping">
                   <Text>
-                    In order to group radio controls, use the <Code>Fieldset</Code> component to separate the controls.
+                    In order to group radio controls, use the <Code>Fieldset</Code> component to
+                    separate the controls.
                   </Text>
 
                   <CodePreview>
@@ -81,28 +98,33 @@ const RadioPage = () => {
                         <Form>
                           <Fieldset legend="First Group">
                             <FormGroup>
-                              <Radio label="On" checked={firstRadio === 'on'} value="on" onChange={handleFirstChange} />
                               <Radio
-                                label="Off"
-                                checked={firstRadio === 'off'}
-                                value="off"
+                                checked={firstRadio === 'on'}
+                                label="On"
                                 onChange={handleFirstChange}
+                                value="on"
+                              />
+                              <Radio
+                                checked={firstRadio === 'off'}
+                                label="Off"
+                                onChange={handleFirstChange}
+                                value="off"
                               />
                             </FormGroup>
                           </Fieldset>
                           <Fieldset legend="Second Group">
                             <FormGroup>
                               <Radio
-                                label="On"
                                 checked={secondRadio === 'on'}
-                                value="on"
+                                label="On"
                                 onChange={handleSecondChange}
+                                value="on"
                               />
                               <Radio
-                                label="Off"
                                 checked={secondRadio === 'off'}
-                                value="off"
+                                label="Off"
                                 onChange={handleSecondChange}
+                                value="off"
                               />
                             </FormGroup>
                           </Fieldset>
@@ -120,8 +142,8 @@ const RadioPage = () => {
               render: () => (
                 <Fragment key="description">
                   <Text>
-                    Radio support <Code primary>description</Code> passed as a prop, which contains a text and an
-                    optional link.
+                    Radio support <Code primary>description</Code> passed as a prop, which contains
+                    a text and an optional link.
                   </Text>
 
                   <CodePreview>
@@ -135,22 +157,21 @@ const RadioPage = () => {
                         <Form>
                           <FormGroup>
                             <Radio
-                              label="On"
                               checked={selected === 'on'}
                               description="Description for on"
+                              label="On"
+                              onChange={handleChange}
                               value="on"
-                              onChange={handleChange}
                             />
                             <Radio
-                              label="Off"
-                              description="Description for off"
                               checked={selected === 'off'}
-                              value="off"
+                              description="Description for off"
+                              label="Off"
                               onChange={handleChange}
+                              value="off"
                             />
                             <Radio
-                              label="Disabled"
-                              disabled={true}
+                              checked={selected === 'disabled'}
                               description={{
                                 text: 'Description for disabled.',
                                 link: {
@@ -159,9 +180,10 @@ const RadioPage = () => {
                                   href: 'http://www.bigcommerce.com',
                                 },
                               }}
-                              checked={selected === 'disabled'}
-                              value="disabled"
+                              disabled={true}
+                              label="Disabled"
                               onChange={handleChange}
+                              value="disabled"
                             />
                           </FormGroup>
                         </Form>
@@ -201,16 +223,17 @@ const RadioPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
+          discouraged={[
+            <>Don’t use radio buttons for long lists of short items. Use a select input instead.</>,
+            <>
+              A set of radio buttons should not have a state of being “unselected.” There must
+              always be a selection.
+            </>,
+          ]}
           recommended={[
             <>Group related radio buttons under input headings.</>,
             <>Include a default selected option with the radio buttons.</>,
             <>Lay radio buttons vertically.</>,
-          ]}
-          discouraged={[
-            <>Don’t use radio buttons for long lists of short items. Use a select input instead.</>,
-            <>
-              A set of radio buttons should not have a state of being “unselected.” There must always be a selection.
-            </>,
           ]}
         />
       </Panel>

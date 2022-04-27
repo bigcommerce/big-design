@@ -12,7 +12,7 @@ interface PrivateProps {
 export type FlexItemProps = BoxProps & FlexedItemProps;
 
 const RawFlexItem: React.FC<FlexItemProps & PrivateProps> = ({ as, forwardedRef, ...props }) => (
-  <StyledFlexItem ref={forwardedRef} forwardedAs={as} {...props} />
+  <StyledFlexItem forwardedAs={as} ref={forwardedRef} {...props} />
 );
 
 export const FlexItem = forwardRef<HTMLDivElement, FlexItemProps>((props, ref) => (

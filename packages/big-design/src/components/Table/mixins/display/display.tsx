@@ -23,7 +23,10 @@ const getDisplayStyles: TableColumnDisplayOverload = (
   return [];
 };
 
-const getSimpleDisplay = (displayProp: string | number, cssKey: string): FlattenSimpleInterpolation => css`
+const getSimpleDisplay = (
+  displayProp: string | number,
+  cssKey: string,
+): FlattenSimpleInterpolation => css`
   ${cssKey}: ${displayProp}
 `;
 

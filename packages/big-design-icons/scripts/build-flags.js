@@ -9,7 +9,17 @@ const { promisify } = require('util');
 
 const config = require('./svgr-flags.config');
 
-const SOURCE = join(__dirname, '..', '..', '..', 'node_modules', '@jorgemoya/flag-icon-css', 'flags', '4x3', '*.svg');
+const SOURCE = join(
+  __dirname,
+  '..',
+  '..',
+  '..',
+  'node_modules',
+  '@jorgemoya/flag-icon-css',
+  'flags',
+  '4x3',
+  '*.svg',
+);
 const DEST_PATH = join(__dirname, '..', 'src', 'flags', 'components');
 
 const componentNames = new Set();
@@ -59,8 +69,8 @@ function convertWithConcurrencyPool(iconFiles) {
 async function generateFlags() {
   const iconFiles = await glob(SOURCE);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  for await (const _result of convertWithConcurrencyPool(iconFiles));
+  for await (const _result of convertWithConcurrencyPool(iconFiles)) {
+  }
 }
 
 function cleanDestDirectory() {

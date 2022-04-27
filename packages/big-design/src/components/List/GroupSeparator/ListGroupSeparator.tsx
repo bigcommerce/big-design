@@ -5,7 +5,7 @@ import { HR } from '../../Typography';
 import { StyledListItem } from './styled';
 
 export const ListGroupSeparator: React.FC<React.LiHTMLAttributes<HTMLLIElement>> = memo(() => (
-  <StyledListItem tabIndex={-1} onMouseDown={preventFocus} aria-hidden={true}>
+  <StyledListItem aria-hidden={true} onMouseDown={preventFocus} tabIndex={-1}>
     <HR marginVertical="xSmall" />
   </StyledListItem>
 ));

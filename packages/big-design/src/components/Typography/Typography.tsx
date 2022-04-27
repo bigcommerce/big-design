@@ -1,6 +1,15 @@
 import React, { memo } from 'react';
 
-import { StyledH0, StyledH1, StyledH2, StyledH3, StyledH4, StyledHR, StyledSmall, StyledText } from './styled';
+import {
+  StyledH0,
+  StyledH1,
+  StyledH2,
+  StyledH3,
+  StyledH4,
+  StyledHR,
+  StyledSmall,
+  StyledText,
+} from './styled';
 import { HeadingProps, HeadingTag, HRProps, TextProps } from './types';
 
 const validHeadingTags = new Set<HeadingTag>(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
@@ -16,10 +25,16 @@ export const StyleableH4 = StyledH4;
 export const StyleableHR = StyledHR;
 
 // Public
-export const Text: React.FC<TextProps> = memo(({ className, style, ...props }) => <StyleableText {...props} />);
-export const Small: React.FC<TextProps> = memo(({ className, style, ...props }) => <StyleableSmall {...props} />);
+export const Text: React.FC<TextProps> = memo(({ className, style, ...props }) => (
+  <StyleableText {...props} />
+));
+export const Small: React.FC<TextProps> = memo(({ className, style, ...props }) => (
+  <StyleableSmall {...props} />
+));
 
-export const HR: React.FC<HRProps> = memo(({ className, style, ...props }) => <StyleableHR {...props} />);
+export const HR: React.FC<HRProps> = memo(({ className, style, ...props }) => (
+  <StyleableHR {...props} />
+));
 
 export const H0: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
   <StyleableH0 as={getHeadingTag('h1', as)} {...props} />

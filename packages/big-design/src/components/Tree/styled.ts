@@ -8,7 +8,8 @@ export const StyledUl = styled.ul<{ show?: boolean }>`
   user-select: none;
 
   > li > ul {
-    padding-left: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.xxSmall)};
+    padding-left: ${({ theme }) =>
+      theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.xxSmall)};
   }
 
   ${({ show }) =>

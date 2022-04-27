@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'OM flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'OM flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -130,7 +135,11 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
             strokeWidth={1.2}
             transform="matrix(-.19848 0 0 .17744 145.3 -13.4)"
           />
-          <g fillRule="evenodd" strokeWidth={1.3} transform="matrix(-.19848 0 0 .17744 145.3 -13.4)">
+          <g
+            fillRule="evenodd"
+            strokeWidth={1.3}
+            transform="matrix(-.19848 0 0 .17744 145.3 -13.4)"
+          >
             <path
               d="M531.5 359.6c0-165.2 8-299.4 17.7-299.4 9.8 0 17.7 134.2 17.7 299.4h-35.4z"
               fill="#fff"
@@ -449,7 +458,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
               strokeWidth={1.3}
               transform="matrix(1.0702 0 0 1 64.8 53.1)"
             />
-            <circle cx={194.9} cy={166.5} r={10.6} strokeWidth={1.3} transform="matrix(1.427 0 0 1.3333 40.7 167.7)" />
+            <circle
+              cx={194.9}
+              cy={166.5}
+              r={10.6}
+              strokeWidth={1.3}
+              transform="matrix(1.427 0 0 1.3333 40.7 167.7)"
+            />
           </g>
           <g fill="#fff" fillRule="evenodd" transform="matrix(.19848 0 0 .17744 18.8 -19.1)">
             <rect height={21.3} rx={4.3} ry={3.7} strokeWidth={1.2} width={81.5} x={262.2} y={524.4} />

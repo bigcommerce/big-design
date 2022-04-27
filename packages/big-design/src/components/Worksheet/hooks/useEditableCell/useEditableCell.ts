@@ -5,7 +5,10 @@ import { useStore } from '../useStore';
 import { useTableFocus } from '../useTableFocus';
 import { useUpdateItems } from '../useUpdateItems';
 
-export type EditableCellOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: unknown) => void;
+export type EditableCellOnKeyDown = (
+  event: React.KeyboardEvent<HTMLInputElement>,
+  newValue: unknown,
+) => void;
 
 export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
   const setEditingCell = useStore((state) => state.setEditingCell);
@@ -62,6 +65,7 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
           restoreFocus();
 
           break;
+
         case 'Escape':
           event.preventDefault();
 

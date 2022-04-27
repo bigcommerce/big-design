@@ -31,21 +31,21 @@ test('simple form render', () => {
   const { container } = render(
     <Form>
       <Fieldset
-        legend="Primary contact"
         description="Minim velit quis aute adipisicing adipisicing do do exercitation cupidatat enim ex voluptate consequat labore."
+        legend="Primary contact"
       >
         <FormGroup>
           <Input
-            label="First Name"
             description="This is an example description for First Name"
+            label="First Name"
             placeholder="Placeholder text"
           />
         </FormGroup>
 
         <FormGroup>
           <Input
-            label="Middle Name"
             description="This is an example description for Last Name. Featuring a Left Icon."
+            label="Middle Name"
             placeholder="Placeholder text"
           />
         </FormGroup>

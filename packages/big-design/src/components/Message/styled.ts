@@ -20,7 +20,8 @@ export const StyledMessage = styled(Grid)<MessageProps>`
     onClose
       ? css`
           grid-template-areas: 'icon messages close';
-          grid-template-columns: ${({ theme }) => `${theme.spacing.xLarge} 1fr ${theme.spacing.large}`};
+          grid-template-columns: ${({ theme }) =>
+            `${theme.spacing.xLarge} 1fr ${theme.spacing.large}`};
         `
       : css`
           grid-template-areas: 'icon messages';

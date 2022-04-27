@@ -24,22 +24,24 @@ const Header: React.FC<HeaderProps> = ({
 }) => (
   <Flex alignItems="center" justifyContent="space-between">
     <Button
-      title="View previous month."
-      type="button"
+      disabled={prevMonthButtonDisabled}
       iconOnly={<ChevronLeftIcon title="View previous month." />}
       onClick={decreaseMonth}
-      disabled={prevMonthButtonDisabled}
+      title="View previous month."
+      type="button"
       variant="subtle"
     />
 
-    <Text as="span" marginBottom="none" bold>{`${months[date.getMonth()]} ${date.getFullYear()}`}</Text>
+    <Text as="span" bold marginBottom="none">{`${
+      months[date.getMonth()]
+    } ${date.getFullYear()}`}</Text>
 
     <Button
-      title="View next month."
-      type="button"
+      disabled={nextMonthButtonDisabled}
       iconOnly={<ChevronRightIcon title="View next month." />}
       onClick={increaseMonth}
-      disabled={nextMonthButtonDisabled}
+      title="View next month."
+      type="button"
       variant="subtle"
     />
   </Flex>

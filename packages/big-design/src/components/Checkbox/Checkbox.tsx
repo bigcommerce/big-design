@@ -6,7 +6,12 @@ import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
 import { CheckboxLabel } from './Label';
-import { CheckboxContainer, CheckboxLabelContainer, HiddenCheckbox, StyledCheckbox } from './styled';
+import {
+  CheckboxContainer,
+  CheckboxLabelContainer,
+  HiddenCheckbox,
+  StyledCheckbox,
+} from './styled';
 
 interface Props {
   hiddenLabel?: boolean;
@@ -49,18 +54,27 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <CheckboxLabel disabled={disabled} hidden={hiddenLabel} htmlFor={id} aria-hidden={disabled} id={labelId}>
+        <CheckboxLabel
+          aria-hidden={disabled}
+          disabled={disabled}
+          hidden={hiddenLabel}
+          htmlFor={id}
+          id={labelId}
+        >
           {label}
         </CheckboxLabel>
       );
     }
 
     if (isValidElement(label) && label.type === CheckboxLabel) {
-      return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
-        hidden: hiddenLabel,
-        htmlFor: id,
-        id: labelId,
-      });
+      return cloneElement(
+        label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
+        {
+          hidden: hiddenLabel,
+          htmlFor: id,
+          id: labelId,
+        },
+      );
     }
 
     warning('label must be either a string or a CheckboxLabel component.');
@@ -80,10 +94,10 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   return (
     <CheckboxContainer className={className} style={style}>
       <HiddenCheckbox
-        type="checkbox"
         checked={checked}
-        id={id}
         disabled={disabled}
+        id={id}
+        type="checkbox"
         {...props}
         aria-checked={checked}
         aria-labelledby={labelId}
@@ -106,11 +120,11 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       />
 
       <StyledCheckbox
-        disabled={disabled}
-        isIndeterminate={isIndeterminate}
-        checked={checked}
-        htmlFor={id}
         aria-hidden={true}
+        checked={checked}
+        disabled={disabled}
+        htmlFor={id}
+        isIndeterminate={isIndeterminate}
       >
         {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
       </StyledCheckbox>
