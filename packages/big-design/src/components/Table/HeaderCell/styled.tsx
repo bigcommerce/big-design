@@ -19,22 +19,21 @@ interface StyledFlexProps {
 
 export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
   ${withTableColumnDisplay()}
-
-  background-color: ${({ theme }) => theme.colors.secondary10};
+  background-color: ${({ theme }) => theme.colors.white};
   border-bottom: ${({ theme }) => theme.border.box};
   border-top: ${({ theme }) => theme.border.box};
   box-sizing: border-box;
-  color: ${({ theme }) => theme.colors.secondary60};
+  color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   padding: ${({ theme }) => theme.spacing.small};
   white-space: nowrap;
 
   &:first-of-type {
-    padding-left: ${({ theme }) => theme.spacing.xLarge};
+    padding-left: ${({ theme }) => theme.spacing.large};
   }
 
   &:last-of-type {
-    padding-right: ${({ theme }) => theme.spacing.xLarge};
+    padding-right: ${({ theme }) => theme.spacing.large};
   }
 
   ${({ isSortable }) =>
