@@ -15,11 +15,11 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
   padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing.small : 0)};
 
   &:first-of-type {
-    padding-left: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    padding-left: ${({ theme, withPadding }) => (withPadding ? theme.spacing.large : 0)};
   }
 
   &:last-of-type {
-    padding-right: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    padding-right: ${({ theme, withPadding }) => (withPadding ? theme.spacing.large : 0)};
   }
 
   ${({ theme, withBorder }) =>
@@ -54,11 +54,11 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
   padding: ${({ theme }) => `0 ${theme.spacing.small}`};
 
   &:first-of-type {
-    padding-left: ${({ theme }) => theme.spacing.xLarge};
+    padding-left: ${({ theme }) => theme.spacing.large};
   }
 
   &:last-of-type {
-    padding-right: ${({ theme }) => theme.spacing.xLarge};
+    padding-right: ${({ theme }) => theme.spacing.large};
   }
 
   ${(props) =>
