@@ -1,5 +1,5 @@
 import { CheckIcon, ChevronRightIcon, FolderIcon } from '@bigcommerce/big-design-icons';
-import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useContext, useMemo, useRef } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { StyledCheckbox } from '../../Checkbox/private';
@@ -38,16 +38,6 @@ const InternalTreeNode = <T,>({
   const isDisabled = disabledNodes?.includes(id);
   const isSelectable = value !== undefined && selectable?.type !== undefined && !isDisabled;
   const selectedChildrenCount = useSelectedChildrenCount({ selectedNodes: selectable?.selectedNodes, children });
-
-  useEffect(() => {
-    if (
-      focusable.focusedNode === id &&
-      nodeRef.current !== document.activeElement &&
-      document.activeElement !== document.body
-    ) {
-      nodeRef.current?.focus();
-    }
-  }, [focusable, id]);
 
   // Could be multiple elements in which are clicked.
   // Typing to generic Element type since all other elements extend from it.
