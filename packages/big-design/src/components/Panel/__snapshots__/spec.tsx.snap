@@ -18,7 +18,7 @@ exports[`render panel 1`] = `
 
 @media (min-width:720px) {
   .c0 {
-    padding: 2rem;
+    padding: 1.5rem;
   }
 }
 
