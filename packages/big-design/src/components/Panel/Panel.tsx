@@ -47,7 +47,7 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
       {...rest}
       backgroundColor="white"
       shadow="raised"
-      padding={{ mobile: 'medium', tablet: 'xxLarge' }}
+      padding={{ mobile: 'medium', tablet: 'xLarge' }}
       borderRadius="none"
       ref={forwardedRef}
     >
