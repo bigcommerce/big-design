@@ -302,7 +302,7 @@ exports[`renders a pagination component 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.5rem;
 }
 
 @media (min-width:720px) {
@@ -507,11 +507,11 @@ exports[`renders a simple table 1`] = `
 }
 
 .c1:first-of-type {
-  padding-left: 1.25rem;
+  padding-left: 1.5rem;
 }
 
 .c1:last-of-type {
-  padding-right: 1.25rem;
+  padding-right: 1.5rem;
 }
 
 .c4 {
@@ -531,11 +531,11 @@ exports[`renders a simple table 1`] = `
 }
 
 .c6:first-of-type {
-  padding-left: 1.25rem;
+  padding-left: 1.5rem;
 }
 
 .c6:last-of-type {
-  padding-right: 1.25rem;
+  padding-right: 1.5rem;
 }
 
 .c5 {
@@ -924,7 +924,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.5rem;
 }
 
 <div
