@@ -32,6 +32,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     'no-console': 'warn',
     'react/display-name': 'off',
+    'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never', propElementValues: 'always' }],
     'react/prop-types': 'off',
     'react/no-unescaped-entities': [
       'error',
