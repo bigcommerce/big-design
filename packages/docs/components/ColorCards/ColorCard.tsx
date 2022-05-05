@@ -55,8 +55,8 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorCard }) => {
 
       {description && (
         <Small color={colorCard.textColor} margin="small">
-          {description?.text}{' '}
-          {description?.href && (
+          {description.text}{' '}
+          {description.href && (
             <Link href={description.href} target="_blank">
               <Small color="inherit">Read more</Small>
             </Link>
