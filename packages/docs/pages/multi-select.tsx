@@ -409,7 +409,7 @@ const MultiSelectPage = () => {
                                 onActionClick: () => null,
                               }}
                               label="Select"
-                              onOptionsChange={() => null}
+                              onOptionsChange={handleChange}
                               options={[
                                 { value: 1, content: 'Option #1', description: 'Description for option #1' },
                                 {
@@ -422,7 +422,6 @@ const MultiSelectPage = () => {
                                 { value: 4, content: 'Option #4' },
                                 { value: 5, content: 'Option #5' },
                               ]}
-                              onChange={handleChange}
                               placeholder="Choose option"
                               required
                               value={value}
