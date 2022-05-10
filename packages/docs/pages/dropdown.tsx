@@ -418,22 +418,22 @@ const DropdownPage = () => {
             {
               id: 'dropdown',
               title: 'Dropdown',
-              render: () => <DropdownPropTable renderPanel={false} />,
+              render: () => <DropdownPropTable />,
             },
             {
               id: 'dropdown-item',
               title: 'DropdownItem',
-              render: () => <DropdownItemPropTable renderPanel={false} />,
+              render: () => <DropdownItemPropTable />,
             },
             {
               id: 'dropdown-link-item',
               title: 'DropdownLinkItem',
-              render: () => <DropdownLinkItemPropTable renderPanel={false} />,
+              render: () => <DropdownLinkItemPropTable />,
             },
             {
               id: 'dropdown-item-group',
               title: 'DropdownItemGroup',
-              render: () => <DropdownItemGroupPropTable renderPanel={false} />,
+              render: () => <DropdownItemGroupPropTable />,
             },
           ]}
         />

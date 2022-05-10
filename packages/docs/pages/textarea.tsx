@@ -142,7 +142,7 @@ const TextAreaPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <TextareaPropTable renderPanel={false} />
+        <TextareaPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

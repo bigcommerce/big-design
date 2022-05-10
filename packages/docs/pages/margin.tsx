@@ -61,7 +61,7 @@ const MarginPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <MarginPropTable renderPanel={false} />
+        <MarginPropTable />
       </Panel>
     </>
   );

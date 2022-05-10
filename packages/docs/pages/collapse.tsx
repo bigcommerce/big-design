@@ -48,7 +48,7 @@ const CollapsePage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <CollapsePropTable renderPanel={false} />
+        <CollapsePropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

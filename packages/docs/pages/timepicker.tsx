@@ -40,7 +40,7 @@ const TimepickerPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <TimepickerPropTable renderPanel={false} />
+        <TimepickerPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

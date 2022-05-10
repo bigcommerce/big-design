@@ -164,7 +164,6 @@ const TypographyPage = () => {
                       <MarginPropTable collapsible />
                     </>
                   }
-                  renderPanel={false}
                 />
               ),
             },
@@ -179,14 +178,13 @@ const TypographyPage = () => {
                       <MarginPropTable collapsible />
                     </>
                   }
-                  renderPanel={false}
                 />
               ),
             },
             {
               id: 'hr',
               title: 'HR',
-              render: () => <HRPropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />,
+              render: () => <HRPropTable inheritedProps={<MarginPropTable collapsible />} />,
             },
           ]}
         />

@@ -629,59 +629,47 @@ const WorksheetPage = () => {
             {
               id: 'worksheet',
               title: 'Worksheet',
-              render: () => <WorksheetPropTable renderPanel={false} />,
+              render: () => <WorksheetPropTable />,
             },
             {
               id: 'text-column',
               title: 'TextColumn',
-              render: () => <WorksheetTextColumnPropTable id="worksheet-text-column-prop-table" renderPanel={false} />,
+              render: () => <WorksheetTextColumnPropTable id="worksheet-text-column-prop-table" />,
             },
             {
               id: 'number-column',
               title: 'NumberColumn',
-              render: () => (
-                <WorksheetNumberColumnPropTable id="worksheet-number-column-prop-table" renderPanel={false} />
-              ),
+              render: () => <WorksheetNumberColumnPropTable id="worksheet-number-column-prop-table" />,
             },
             {
               id: 'checkbox-column',
               title: 'CheckboxColumn',
-              render: () => (
-                <WorksheetCheckboxColumnPropTable id="worksheet-checkbox-column-prop-table" renderPanel={false} />
-              ),
+              render: () => <WorksheetCheckboxColumnPropTable id="worksheet-checkbox-column-prop-table" />,
             },
             {
               id: 'selectable-column',
               title: 'SelectableColumn',
-              render: () => (
-                <WorksheetSelectableColumnPropTable id="worksheet-selectable-column-prop-table" renderPanel={false} />
-              ),
+              render: () => <WorksheetSelectableColumnPropTable id="worksheet-selectable-column-prop-table" />,
             },
             {
               id: 'modal-column',
               title: 'ModalColumn',
-              render: () => (
-                <WorksheetModalColumnPropTable id="worksheet-modal-column-prop-table" renderPanel={false} />
-              ),
+              render: () => <WorksheetModalColumnPropTable id="worksheet-modal-column-prop-table" />,
             },
             {
               id: 'selectable-config',
               title: 'SelectableConfig',
-              render: () => (
-                <WorksheetSelectableConfigPropTable id="worksheet-selectable-config-prop-table" renderPanel={false} />
-              ),
+              render: () => <WorksheetSelectableConfigPropTable id="worksheet-selectable-config-prop-table" />,
             },
             {
               id: 'modal-config',
               title: 'ModalConfig',
-              render: () => (
-                <WorksheetModalConfigPropTable id="worksheet-modal-config-prop-table" renderPanel={false} />
-              ),
+              render: () => <WorksheetModalConfigPropTable id="worksheet-modal-config-prop-table" />,
             },
             {
               id: 'error',
               title: 'Error',
-              render: () => <WorksheetErrorPropTable id="worksheet-error-prop-table" renderPanel={false} />,
+              render: () => <WorksheetErrorPropTable id="worksheet-error-prop-table" />,
             },
           ]}
         />

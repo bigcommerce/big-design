@@ -324,27 +324,27 @@ const TablePage = () => {
             {
               id: 'table',
               title: 'Table',
-              render: () => <TablePropTable renderPanel={false} />,
+              render: () => <TablePropTable />,
             },
             {
               id: 'columns',
               title: 'Columns',
-              render: () => <TableColumnsPropTable id="table-columns-prop-table" renderPanel={false} />,
+              render: () => <TableColumnsPropTable id="table-columns-prop-table" />,
             },
             {
               id: 'selectable',
               title: 'Selectable',
-              render: () => <TableSelectablePropTable id="table-selectable-prop-table" renderPanel={false} />,
+              render: () => <TableSelectablePropTable id="table-selectable-prop-table" />,
             },
             {
               id: 'sortable',
               title: 'Sortable',
-              render: () => <TableSortablePropTable id="table-sortable-prop-table" renderPanel={false} />,
+              render: () => <TableSortablePropTable id="table-sortable-prop-table" />,
             },
             {
               id: 'table-figure',
               title: 'TableFigure',
-              render: () => <TableFigurePropTable renderPanel={false} />,
+              render: () => <TableFigurePropTable />,
             },
           ]}
         />

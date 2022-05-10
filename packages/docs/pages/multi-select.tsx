@@ -446,17 +446,17 @@ const MultiSelectPage = () => {
             {
               id: 'multi-select',
               title: 'MultiSelect',
-              render: () => <MultiSelectPropTable renderPanel={false} />,
+              render: () => <MultiSelectPropTable />,
             },
             {
               id: 'select-option',
               title: 'SelectOption',
-              render: () => <SelectOptionPropTable renderPanel={false} />,
+              render: () => <SelectOptionPropTable />,
             },
             {
               id: 'select-action',
               title: 'SelectAction',
-              render: () => <SelectActionPropTable renderPanel={false} />,
+              render: () => <SelectActionPropTable />,
             },
           ]}
         />

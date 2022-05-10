@@ -121,7 +121,7 @@ const ModalPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <ModalPropTable renderPanel={false} />
+        <ModalPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="props">

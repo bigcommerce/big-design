@@ -72,7 +72,7 @@ const BadgePage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <BadgePropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />
+        <BadgePropTable inheritedProps={<MarginPropTable collapsible />} />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

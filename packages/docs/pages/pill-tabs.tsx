@@ -100,12 +100,12 @@ const PillTabsPage = () => {
             {
               id: 'pill-tabs',
               title: 'PillTabs',
-              render: () => <PillTabsPropTable renderPanel={false} />,
+              render: () => <PillTabsPropTable />,
             },
             {
               id: 'pill-tab-item',
               title: 'PillTabItem',
-              render: () => <PillTabItemPropTable id="pill-tabs-items-prop-table" renderPanel={false} />,
+              render: () => <PillTabItemPropTable id="pill-tabs-items-prop-table" />,
             },
           ]}
         />

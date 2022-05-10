@@ -60,11 +60,7 @@ const LinkPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <LinkPropTable
-          inheritedProps={<MarginPropTable collapsible />}
-          renderPanel={false}
-          nativeElement={['a', 'all']}
-        />
+        <LinkPropTable inheritedProps={<MarginPropTable collapsible />} nativeElement={['a', 'all']} />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

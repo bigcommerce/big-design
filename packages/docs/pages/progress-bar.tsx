@@ -79,7 +79,7 @@ const ProgressBarPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <ProgressBarPropTable renderPanel={false} />
+        <ProgressBarPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

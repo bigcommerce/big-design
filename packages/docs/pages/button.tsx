@@ -199,7 +199,7 @@ const ButtonPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <ButtonPropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />
+        <ButtonPropTable inheritedProps={<MarginPropTable collapsible />} />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

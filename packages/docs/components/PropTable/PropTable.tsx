@@ -1,4 +1,4 @@
-import { Flex, H3, Link, Panel, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
+import { Flex, H3, Link, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
 import React, { FC, ReactNode } from 'react';
 
 import { Code } from '../Code';
@@ -23,16 +23,12 @@ export interface PropTableProps {
   nativeElement?: [string, 'most' | 'all'];
   propList: Prop[];
   title: string;
-  /**
-   * @deprecated Used to migrate to new documentation stucture
-   */
-  renderPanel?: boolean;
 }
 
 export type PropTableWrapper = Partial<PropTableProps>;
 
 export const PropTable: FC<PropTableProps> = (props) => {
-  const { collapsible, id, propList: items, title, inheritedProps, nativeElement, renderPanel = true } = props;
+  const { collapsible, id, propList: items, title, inheritedProps, nativeElement } = props;
 
   const renderTable = () => {
     if (items.length > 0) {
@@ -110,10 +106,6 @@ export const PropTable: FC<PropTableProps> = (props) => {
 
   if (collapsible) {
     return <Collapsible title={`${title} Props`}>{renderTable()}</Collapsible>;
-  }
-
-  if (renderPanel) {
-    return <Panel header={title}>{renderContent()}</Panel>;
   }
 
   return renderContent();

@@ -154,12 +154,12 @@ const StatefulTreePage = () => {
             {
               id: 'stateful-tree',
               title: 'StatefulTree',
-              render: () => <StatefulTreePropTable renderPanel={false} />,
+              render: () => <StatefulTreePropTable />,
             },
             {
               id: 'tree-node',
               title: 'TreeNode',
-              render: () => <TreeNodePropTable id="tree-node-prop-table" renderPanel={false} />,
+              render: () => <TreeNodePropTable id="tree-node-prop-table" />,
             },
           ]}
         />

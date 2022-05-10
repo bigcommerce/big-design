@@ -108,7 +108,7 @@ const ButtonGroupPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <ButtonGroupPropTable renderPanel={false} />
+        <ButtonGroupPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

@@ -69,7 +69,7 @@ const PaginationPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <PaginationPropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />
+        <PaginationPropTable inheritedProps={<MarginPropTable collapsible />} />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

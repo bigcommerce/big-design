@@ -174,7 +174,6 @@ const GridPage = () => {
               title: 'Grid',
               render: () => (
                 <GridPropTable
-                  renderPanel={false}
                   inheritedProps={
                     <>
                       <BoxPropTable collapsible />
@@ -191,7 +190,6 @@ const GridPage = () => {
               title: 'GridItem',
               render: () => (
                 <GridItemPropTable
-                  renderPanel={false}
                   inheritedProps={
                     <>
                       <BoxPropTable collapsible />

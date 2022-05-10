@@ -118,7 +118,7 @@ const CounterPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <CounterPropTable renderPanel={false} />
+        <CounterPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
