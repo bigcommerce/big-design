@@ -3,6 +3,49 @@ import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { FlexedItemProps, FlexedOverload, FlexedProps } from './types';
 
+const getSimpleFlex = (
+  flexedProp: string | number,
+  cssKey: string,
+): FlattenSimpleInterpolation => css`
+  ${cssKey}: ${flexedProp}
+`;
+
+const getResponsiveFlex: FlexedOverload = (
+  flexedProp: keyof FlexedOverload,
+  theme: ThemeInterface,
+  cssKey: string,
+): FlattenSimpleInterpolation[] => {
+  const breakpointKeys: Array<keyof Breakpoints> = Object.keys(flexedProp).sort(
+    (firstBreakpoint: keyof Breakpoints, secondBreakpoint: keyof Breakpoints) =>
+      breakpointsOrder.indexOf(firstBreakpoint) - breakpointsOrder.indexOf(secondBreakpoint),
+  );
+
+  return breakpointKeys.map(
+    (breakpointKey: keyof Breakpoints) =>
+      css`
+        ${theme.breakpoints[breakpointKey]} {
+          ${getSimpleFlex(flexedProp[breakpointKey], cssKey)}
+        }
+      `,
+  );
+};
+
+const getFlexedStyles: FlexedOverload = (
+  flexedProp: keyof FlexedOverload,
+  theme: ThemeInterface,
+  cssKey: string,
+): FlattenSimpleInterpolation => {
+  if (typeof flexedProp === 'object') {
+    return getResponsiveFlex(flexedProp, theme, cssKey);
+  }
+
+  if (typeof flexedProp === 'string' || typeof flexedProp === 'number') {
+    return getSimpleFlex(flexedProp, cssKey);
+  }
+
+  return [];
+};
+
 export const withFlexedContainer = () => css<FlexedProps>`
   ${({ alignContent, theme }) =>
     alignContent && getFlexedStyles(alignContent, theme, 'align-content')};
@@ -24,47 +67,3 @@ export const withFlexedItems = () => css<FlexedItemProps>`
   ${({ flexShrink, theme }) =>
     typeof flexShrink !== 'undefined' && getFlexedStyles(flexShrink, theme, 'flex-shrink')};
 `;
-
-const getFlexedStyles: FlexedOverload = (
-  flexedProp: any,
-  theme: ThemeInterface,
-  cssKey: any,
-): FlattenSimpleInterpolation => {
-  if (typeof flexedProp === 'object') {
-    return getResponsiveFlex(flexedProp, theme, cssKey);
-  }
-
-  if (typeof flexedProp === 'string' || typeof flexedProp === 'number') {
-    return getSimpleFlex(flexedProp, cssKey);
-  }
-
-  return [];
-};
-
-const getSimpleFlex = (
-  flexedProp: string | number,
-  cssKey: string,
-): FlattenSimpleInterpolation => css`
-  ${cssKey}: ${flexedProp}
-`;
-
-const getResponsiveFlex: FlexedOverload = (
-  flexedProp: any,
-  theme: ThemeInterface,
-  cssKey: string,
-): FlattenSimpleInterpolation[] => {
-  const breakpointKeys = Object.keys(flexedProp).sort(
-    (firstBreakpoint, secondBreakpoint) =>
-      breakpointsOrder.indexOf(firstBreakpoint as keyof Breakpoints) -
-      breakpointsOrder.indexOf(secondBreakpoint as keyof Breakpoints),
-  );
-
-  return (breakpointKeys as Array<keyof Breakpoints>).map(
-    (breakpointKey) =>
-      css`
-        ${theme.breakpoints[breakpointKey]} {
-          ${getSimpleFlex(flexedProp[breakpointKey], cssKey)}
-        }
-      `,
-  );
-};

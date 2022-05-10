@@ -60,9 +60,9 @@ export const StyledSwitchLabel = styled.label<SwitchLabelProps>`
 
       &:hover {
         &::before {
-          ${({ theme }) => theme.shadow.raised}
+          ${theme.shadow.raised}
 
-          border-radius: ${({ theme }) => theme.borderRadius.circle};
+          border-radius: ${theme.borderRadius.circle};
         }
       }
     `}

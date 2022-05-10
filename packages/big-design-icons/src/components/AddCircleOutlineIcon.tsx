@@ -1,12 +1,12 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import React, { forwardRef, memo } from 'react';
+import React, { ForwardedRef, forwardRef, memo } from 'react';
 
 import { createStyledIcon, IconProps, PrivateIconProps } from '../base';
 import { useUniqueId } from '../utils';
 
-const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ...props }) => {
+const Icon: React.FC<PrivateIconProps> = ({ svgRef, title, theme, ...props }) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;

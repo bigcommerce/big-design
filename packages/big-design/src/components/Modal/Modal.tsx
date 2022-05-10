@@ -33,29 +33,6 @@ export interface ModalAction extends Omit<ButtonProps, 'children'> {
   text?: string;
 }
 
-export const Modal: React.FC<ModalProps> = typedMemo((props) => {
-  const [modalContainer, setModalContainer] = useState<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const container = document.createElement('div');
-
-    document.body.appendChild(container);
-    setModalContainer(container);
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      if (modalContainer) {
-        document.body.removeChild(modalContainer);
-      }
-    };
-  }, [modalContainer]);
-
-  return props.isOpen && modalContainer
-    ? createPortal(<InternalModal {...props} />, modalContainer)
-    : null;
-});
-
 const InternalModal: React.FC<ModalProps> = ({
   actions,
   backdrop = true,
@@ -96,7 +73,7 @@ const InternalModal: React.FC<ModalProps> = ({
   // Setup focus-trap
   useEffect(() => {
     if (modalRef && internalTrap.current === null) {
-      internalTrap.current = focusTrap(modalRef as HTMLElement, { fallbackFocus: modalRef });
+      internalTrap.current = focusTrap(modalRef, { fallbackFocus: modalRef });
       internalTrap.current.activate();
     }
 
@@ -168,3 +145,26 @@ const InternalModal: React.FC<ModalProps> = ({
     </StyledModal>
   );
 };
+
+export const Modal: React.FC<ModalProps> = typedMemo((props) => {
+  const [modalContainer, setModalContainer] = useState<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const container = document.createElement('div');
+
+    document.body.appendChild(container);
+    setModalContainer(container);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (modalContainer) {
+        document.body.removeChild(modalContainer);
+      }
+    };
+  }, [modalContainer]);
+
+  return props.isOpen && modalContainer
+    ? createPortal(<InternalModal {...props} />, modalContainer)
+    : null;
+});

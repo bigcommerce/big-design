@@ -53,15 +53,17 @@ export const MultiSelect = typedMemo(
 
     const [inputValue, setInputValue] = useState('');
 
-    const flattenOptions = useCallback((options: MultiSelectProps<T>['options']) => {
+    const flattenOptions = useCallback((optionsToFlatten: MultiSelectProps<T>['options']) => {
       const isGroups = (
-        options: Array<SelectOptionGroup<T> | SelectOption<T>>,
-      ): options is Array<SelectOptionGroup<T>> =>
-        options.every((option) => 'options' in option && !('value' in option));
+        groupOptions: Array<SelectOptionGroup<T> | SelectOption<T>>,
+      ): groupOptions is Array<SelectOptionGroup<T>> =>
+        groupOptions.every((option) => 'options' in option && !('value' in option));
 
-      return isGroups(options)
-        ? options.map((group) => group.options).reduce((acum, curr) => acum.concat(curr), [])
-        : options;
+      return isGroups(optionsToFlatten)
+        ? optionsToFlatten
+            .map((group) => group.options)
+            .reduce((acum, curr) => acum.concat(curr), [])
+        : optionsToFlatten;
     }, []);
 
     // We need to pass Downshift only options without groups for accessibility tracking
@@ -73,6 +75,7 @@ export const MultiSelect = typedMemo(
     // Find the selected options
     const selectedOptions = useMemo(() => {
       return (
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         flattenedOptions.filter(
           (option): option is SelectOption<T> =>
             'value' in option && !!value && value.find((val) => val === option.value) !== undefined,
@@ -119,19 +122,30 @@ export const MultiSelect = typedMemo(
       );
     };
 
-    const handleOnIsOpenChange = ({
-      isOpen,
+    const handleSetInputValue = ({
+      inputValue: localInputValue,
+      isOpen: localIsOpen,
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && !isOpen) {
+      if (filterable && localIsOpen === true) {
+        setFilteredOptions(filterOptions(localInputValue));
+      }
+
+      setInputValue(inputValue || '');
+    };
+
+    const handleOnIsOpenChange = ({
+      isOpen: localIsOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (filterable && !localIsOpen) {
         // Reset the items if filtered
         setFilteredOptions(flattenedOptions);
       }
 
-      if (isOpen && typeof onOpen === 'function') {
+      if (localIsOpen && typeof onOpen === 'function') {
         onOpen();
       }
 
-      if (!isOpen && typeof onClose === 'function') {
+      if (!localIsOpen && typeof onClose === 'function') {
         onClose();
       }
     };
@@ -143,6 +157,43 @@ export const MultiSelect = typedMemo(
         action.onActionClick(inputValue);
       }
     };
+
+    const removeItem = useCallback(
+      (item: SelectOption<T>) => {
+        if (!item.value) {
+          return;
+        }
+
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        const newOptions = selectedOptions.filter((i) => i.value !== item.value) || [];
+
+        onOptionsChange(
+          newOptions.map((option) => option.value),
+          newOptions,
+        );
+
+        setFilteredOptions(flattenedOptions);
+      },
+      [flattenedOptions, onOptionsChange, selectedOptions],
+    );
+
+    const addSelectedItem = useCallback(
+      (item: SelectOption<T>) => {
+        if (!item.value) {
+          return;
+        }
+
+        const newOptions = [...selectedOptions, item];
+
+        onOptionsChange(
+          newOptions.map((option) => option.value),
+          newOptions,
+        );
+
+        setFilteredOptions(flattenedOptions);
+      },
+      [flattenedOptions, onOptionsChange, selectedOptions],
+    );
 
     const handleStateReducer = (
       state: UseComboboxState<SelectOption<T> | SelectAction | null>,
@@ -175,9 +226,11 @@ export const MultiSelect = typedMemo(
             ),
           );
 
-          isChecked
-            ? removeItem(actionAndChanges.changes.selectedItem)
-            : addSelectedItem(actionAndChanges.changes.selectedItem);
+          if (isChecked) {
+            removeItem(actionAndChanges.changes.selectedItem);
+          } else {
+            addSelectedItem(actionAndChanges.changes.selectedItem);
+          }
 
           return {
             ...actionAndChanges.changes,
@@ -191,42 +244,6 @@ export const MultiSelect = typedMemo(
           return actionAndChanges.changes;
       }
     };
-
-    const removeItem = useCallback(
-      (item: SelectOption<T>) => {
-        if (!item) {
-          return;
-        }
-
-        const newOptions = selectedOptions.filter((i) => i.value !== item.value) || [];
-
-        onOptionsChange(
-          newOptions.map((option) => option.value),
-          newOptions,
-        );
-
-        setFilteredOptions(flattenedOptions);
-      },
-      [flattenedOptions, onOptionsChange, selectedOptions],
-    );
-
-    const addSelectedItem = useCallback(
-      (item: SelectOption<T>) => {
-        if (!item) {
-          return;
-        }
-
-        const newOptions = [...selectedOptions, item];
-
-        onOptionsChange(
-          newOptions.map((option) => option.value),
-          newOptions,
-        );
-
-        setFilteredOptions(flattenedOptions);
-      },
-      [flattenedOptions, onOptionsChange, selectedOptions],
-    );
 
     const {
       getComboboxProps,
@@ -319,7 +336,9 @@ export const MultiSelect = typedMemo(
 
       if (isValidElement(label) && label.type === FormControlLabel) {
         return cloneElement(
-          label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
+          label,
+          // disabling because type is from downshift
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           getLabelProps(),
         );
       }
@@ -351,7 +370,9 @@ export const MultiSelect = typedMemo(
               autoComplete,
               disabled,
               onClick: () => {
-                !isOpen && openMenu();
+                if (!isOpen) {
+                  openMenu();
+                }
               },
               onFocus: (event) => {
                 if (typeof props.onFocus === 'function') {
@@ -373,7 +394,7 @@ export const MultiSelect = typedMemo(
                     if (isOpen === false) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
-                      (event.nativeEvent as any).preventDownshiftDefault = true;
+                      event.nativeEvent.preventDownshiftDefault = true;
                     }
 
                     break;

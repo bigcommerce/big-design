@@ -1,9 +1,10 @@
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
 import React, { createRef } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import { act } from 'react-dom/test-utils';
+
+import { fireEvent, render } from '@test/utils';
 
 import { FormGroup } from '..';
 
@@ -46,13 +47,11 @@ test('should use the passed in ref object if provided', () => {
 
   const input = container.querySelector('input');
 
-  fireEvent.click(input as HTMLInputElement);
+  fireEvent.click(input);
 
   const datepicker = container.querySelector('.react-datepicker');
 
-  expect(
-    datepicker?.className.includes(ref.current?.props.calendarClassName as string),
-  ).toBeTruthy();
+  expect(datepicker?.className.includes(ref.current?.props.calendarClassName)).toBe(true);
 });
 
 test('renders select label', () => {
@@ -69,14 +68,14 @@ test('calls onDateChange function when a date cell is clicked', () => {
 
   const input = container.querySelector('input');
 
-  fireEvent.click(input as HTMLInputElement);
+  fireEvent.click(input);
 
   const datepicker = container.querySelector('.react-datepicker');
 
   const cell = datepicker?.querySelector('.react-datepicker__day--today');
 
   act(() => {
-    fireEvent.click(cell as HTMLElement);
+    fireEvent.click(cell);
   });
 
   expect(changeFunction).toHaveBeenCalled();
@@ -89,7 +88,7 @@ test('no error when input date value manually', () => {
   const dateString = 'Wed, 03 June, 2020';
   const input = container.querySelector('input');
 
-  fireEvent.input(input as HTMLInputElement, {
+  fireEvent.input(input, {
     target: {
       value: dateString,
     },
@@ -124,7 +123,7 @@ test('dates before minimum date passed are disabled', () => {
   );
   const input = container.querySelector('input');
 
-  fireEvent.click(input as HTMLInputElement);
+  fireEvent.click(input);
 
   const disabledDate = container.querySelector('.react-datepicker__day--003');
 
@@ -139,7 +138,7 @@ test('dates after max date passed are disabled', () => {
   );
   const input = container.querySelector('input');
 
-  fireEvent.click(input as HTMLInputElement);
+  fireEvent.click(input);
 
   const disabledDate = container.querySelector('.react-datepicker__day--011');
 

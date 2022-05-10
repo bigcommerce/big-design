@@ -39,8 +39,8 @@ export interface StatefulTableProps<T>
   selectable?: boolean;
   defaultSelected?: T[];
   search?: boolean;
-  onRowDrop?(items: T[]): void;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
+  onRowDrop?(items: T[]): void;
 }
 
 const swapArrayElements = <T,>(array: T[], sourceIndex: number, destinationIndex: number) => {

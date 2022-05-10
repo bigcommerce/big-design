@@ -16,7 +16,7 @@ import {
 interface Props {
   hiddenLabel?: boolean;
   isIndeterminate?: boolean;
-  label: React.ReactChild;
+  label: React.ReactChild | React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>;
   description?: CheckboxDescription | string;
 }
 
@@ -26,7 +26,7 @@ interface CheckboxDescription {
 }
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLInputElement>;
+  forwardedRef: Ref<HTMLInputElement> | React.MutableRefObject<HTMLInputElement | null>;
 }
 
 export type CheckboxProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
@@ -67,14 +67,11 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
     }
 
     if (isValidElement(label) && label.type === CheckboxLabel) {
-      return cloneElement(
-        label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
-        {
-          hidden: hiddenLabel,
-          htmlFor: id,
-          id: labelId,
-        },
-      );
+      return cloneElement(label, {
+        hidden: hiddenLabel,
+        htmlFor: id,
+        id: labelId,
+      });
     }
 
     warning('label must be either a string or a CheckboxLabel component.');
@@ -113,7 +110,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
               // RefObject.current is readonly in DefinitelyTyped
               // but in practice you can still write to it.
               // See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/31065
-              (forwardedRef as React.MutableRefObject<HTMLInputElement | null>).current = checkbox;
+              forwardedRef.current = checkbox;
             }
           }
         }}

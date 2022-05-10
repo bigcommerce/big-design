@@ -20,7 +20,7 @@ export interface ListItemProps<T> extends LiHTMLAttributes<HTMLLIElement> {
   isHighlighted: boolean;
   isSelected?: boolean;
   item: DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction;
-  getItemProps: UseSelectPropGetters<any>['getItemProps'];
+  getItemProps: UseSelectPropGetters<unknown>['getItemProps'];
   addItem?(item: SelectOption<T>): void;
   removeItem?(item: SelectOption<T>): void;
 }
@@ -58,11 +58,15 @@ const StyleableListItem = typedMemo(
             }
 
             const hasValue = (
-              item: DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction,
-            ): item is SelectOption<T> => 'value' in item;
+              localItem: DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction,
+            ): localItem is SelectOption<T> => 'value' in localItem;
 
             if (hasValue(item)) {
-              isChecked ? removeItem(item) : addItem(item);
+              if (isChecked) {
+                removeItem(item);
+              } else {
+                addItem(item);
+              }
             }
           },
           ref: forwardedRef,

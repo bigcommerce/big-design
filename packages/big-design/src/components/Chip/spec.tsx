@@ -1,9 +1,9 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import 'jest-styled-components';
 
 import { render } from '@test/utils';
+import 'jest-styled-components';
 
 import { Chip } from './index';
 

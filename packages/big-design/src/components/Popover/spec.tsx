@@ -1,6 +1,7 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, screen } from '@test/utils';
 import React, { useState } from 'react';
+
+import { fireEvent, render, screen } from '@test/utils';
 
 import { Popover } from './Popover';
 

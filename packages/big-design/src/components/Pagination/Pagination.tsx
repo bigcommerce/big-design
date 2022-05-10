@@ -33,7 +33,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
     const [itemRange, setItemRange] = useState({ start: 0, end: 0 });
 
     const handlePageOutOfBounds = useCallback(() => {
-      if (currentPage < 1 || isNaN(currentPage) || currentPage === undefined) {
+      if (currentPage < 1 || Number.isNaN(currentPage)) {
         onPageChange(1);
       } else if (currentPage > maxPages) {
         onPageChange(maxPages);
@@ -41,7 +41,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
     }, [currentPage, maxPages, onPageChange]);
 
     const handlePerPageOutOfBounds = useCallback(() => {
-      if (itemsPerPage < 1 || isNaN(itemsPerPage) || itemsPerPage === undefined) {
+      if (itemsPerPage < 1 || Number.isNaN(itemsPerPage)) {
         onItemsPerPageChange(itemsPerPageOptions[0]);
       }
     }, [itemsPerPage, onItemsPerPageChange, itemsPerPageOptions]);
@@ -53,7 +53,11 @@ export const Pagination: React.FC<PaginationProps> = memo(
       firstItemInRange = Math.min(firstItemInRange, totalItems);
       lastItemInRange = Math.min(lastItemInRange, totalItems);
 
-      if (lastItemInRange === 0 || isNaN(lastItemInRange) || isNaN(firstItemInRange)) {
+      if (
+        lastItemInRange === 0 ||
+        Number.isNaN(lastItemInRange) ||
+        Number.isNaN(firstItemInRange)
+      ) {
         firstItemInRange = 0;
         lastItemInRange = 0;
       }

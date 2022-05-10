@@ -31,9 +31,9 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
   );
 };
 
-const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => (
-  <Icon {...iconProps} svgRef={ref} />
-));
+const IconWithForwardedRef: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
+  (iconProps, ref) => <Icon {...iconProps} svgRef={ref} />,
+);
 
 export const AddIcon = memo(createStyledIcon(IconWithForwardedRef));
 

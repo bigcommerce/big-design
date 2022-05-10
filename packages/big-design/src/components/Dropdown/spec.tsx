@@ -112,13 +112,13 @@ test('dropdown toggle has aria-haspopup', () => {
   expect(toggle.getAttribute('aria-haspopup')).toBe('listbox');
 });
 
-test('dropdown toggle has aria-expanded when dropdown menu is open', async () => {
+test('dropdown toggle has aria-expanded when dropdown menu is open', () => {
   render(DropdownMock);
 
   const toggle = screen.getByRole('button');
 
-  await act(async () => {
-    await fireEvent.click(toggle);
+  act(() => {
+    fireEvent.click(toggle);
   });
 
   expect(toggle.getAttribute('aria-expanded')).toBe('true');
@@ -341,8 +341,8 @@ test('enter should toggle onItemClick', async () => {
 
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 
-  await act(async () => {
-    await fireEvent.keyDown(list, { key: 'Enter' });
+  act(() => {
+    fireEvent.keyDown(list, { key: 'Enter' });
   });
 
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
@@ -357,8 +357,8 @@ test('clicking on dropdown items should toggle onItemClick', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  await act(async () => {
-    await fireEvent.click(options[1]);
+  act(() => {
+    fireEvent.click(options[1]);
   });
 
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
@@ -393,8 +393,8 @@ test('dropdown menu renders 4 link when passed options of type link', async () =
 
   const toggle = screen.getByRole('button');
 
-  await act(async () => {
-    await fireEvent.click(toggle);
+  act(() => {
+    fireEvent.click(toggle);
   });
 
   const list = await screen.findByRole('listbox');
@@ -583,9 +583,9 @@ test('clicking label does not call onItemClick', async () => {
 
   const label1 = await screen.findByText('Label 1');
 
-  await act(async () => {
-    await fireEvent.mouseOver(label1);
-    await fireEvent.click(label1);
+  act(() => {
+    fireEvent.mouseOver(label1);
+    fireEvent.click(label1);
   });
 
   expect(onItemClick).not.toHaveBeenCalled();
@@ -645,7 +645,11 @@ test('rendered line separators cannot be focused on', async () => {
   const list = await screen.findByRole('listbox');
   const hrListItems = list.querySelectorAll('hr');
 
-  fireEvent.mouseOver(hrListItems[0].parentElement as HTMLElement);
+  if (hrListItems.length && hrListItems[0].parentElement) {
+    const el: HTMLElement = hrListItems[0].parentElement;
+
+    fireEvent.mouseOver(el);
+  }
 
   expect(document.activeElement).not.toEqual(hrListItems[0].parentElement);
 });

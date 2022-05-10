@@ -40,7 +40,7 @@ function convertWithConcurrencyPool(iconFiles) {
 
 async function generateIcons() {
   const iconFiles = await glob(SOURCE);
-
+  // eslint-disable-next-line
   for await (const _result of convertWithConcurrencyPool(iconFiles)) {
   }
 }

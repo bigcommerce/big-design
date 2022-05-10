@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { StyleableH4 } from '../../Typography/private';
 
@@ -21,6 +21,6 @@ export const StyledLabel = styled(StyleableH4).attrs({
         font-weight: ${theme.typography.fontWeight.regular};
       }
     `}
-` as StyledComponent<'label', DefaultTheme>;
+`;
 
 StyledLabel.defaultProps = { theme: defaultTheme };

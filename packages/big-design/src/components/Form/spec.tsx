@@ -20,7 +20,7 @@ test('forwards ref', () => {
 test('calls onSubmit', () => {
   const onSubmit = jest.fn();
   const { container } = render(<Form onSubmit={onSubmit} />);
-  const form = container.querySelector('form') as HTMLFormElement;
+  const form = container.querySelector('form');
 
   fireEvent.submit(form);
 

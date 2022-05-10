@@ -41,7 +41,7 @@ const InternalTable = <T extends TableItem>(
   const tableIdRef = useRef(id || uniqueTableId);
   const isSelectable = Boolean(selectable);
   const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
-  const eventCallback = useEventCallback((item: T) => {
+  const eventCallback = useEventCallback((item: T | null) => {
     if (!selectable || !item) {
       return;
     }
@@ -105,7 +105,10 @@ const InternalTable = <T extends TableItem>(
     return Boolean(actions) || Boolean(pagination) || Boolean(selectable) || Boolean(itemName);
   };
 
-  const getItemKey = (item: T, index: number): string | number => {
+  const getItemKey = (
+    item: { [x: string]: string | number | undefined },
+    index: number,
+  ): string | number => {
     if (item[keyField] !== undefined) {
       return item[keyField];
     }
@@ -154,6 +157,7 @@ const InternalTable = <T extends TableItem>(
 
             return (
               <Draggable draggableId={String(key)} index={index} key={key}>
+                {/* eslint-disable-next-line @typescript-eslint/no-shadow */}
                 {(provided, snapshot) => (
                   <Row
                     isDragging={snapshot.isDragging}

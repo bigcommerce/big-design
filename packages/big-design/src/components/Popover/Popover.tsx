@@ -28,37 +28,9 @@ export interface PopoverProps extends BoxPropsWithoutMargins {
   matchAnchorElementWidth?: boolean;
   skidding?: number;
   distance?: number;
-  onClose?(): void;
   placement?: Placement;
+  onClose?(): void;
 }
-
-export const Popover: React.FC<PopoverProps> = ({
-  anchorElement,
-  children,
-  isOpen,
-  role = 'dialog',
-  ...props
-}) => {
-  const uniquePopoverId = useUniqueId('popover');
-  const rest = excludeMarginProps(props);
-
-  useEffect(() => {
-    if (!anchorElement) {
-      return;
-    }
-
-    anchorElement.setAttribute('aria-controls', uniquePopoverId);
-    anchorElement.setAttribute('aria-expanded', String(isOpen));
-    anchorElement.setAttribute('aria-haspopup', role);
-  }, [anchorElement, isOpen, role, uniquePopoverId]);
-
-  return isOpen ? (
-    <InternalPopover anchorElement={anchorElement} {...rest} id={uniquePopoverId}>
-      {children}
-    </InternalPopover>
-  ) : null;
-};
-
 type InternalPopoverProps = Omit<PopoverProps, 'isOpen'>;
 
 // We use an Internal component that mounts/unmounts on isOpen
@@ -115,10 +87,14 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
   });
 
   useEffect(() => {
-    const prevFocus = previousFocus.current as HTMLElement;
+    if (!previousFocus.current) {
+      return;
+    }
+
+    const prevFocus: HTMLElement = previousFocus.current;
 
     return () => {
-      if (prevFocus && typeof prevFocus.focus === 'function') {
+      if (typeof prevFocus.focus === 'function') {
         prevFocus.focus();
       }
     };
@@ -190,4 +166,31 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
       {children}
     </Box>
   );
+};
+
+export const Popover: React.FC<PopoverProps> = ({
+  anchorElement,
+  children,
+  isOpen,
+  role = 'dialog',
+  ...props
+}) => {
+  const uniquePopoverId = useUniqueId('popover');
+  const rest = excludeMarginProps(props);
+
+  useEffect(() => {
+    if (!anchorElement) {
+      return;
+    }
+
+    anchorElement.setAttribute('aria-controls', uniquePopoverId);
+    anchorElement.setAttribute('aria-expanded', String(isOpen));
+    anchorElement.setAttribute('aria-haspopup', role);
+  }, [anchorElement, isOpen, role, uniquePopoverId]);
+
+  return isOpen ? (
+    <InternalPopover anchorElement={anchorElement} {...rest} id={uniquePopoverId}>
+      {children}
+    </InternalPopover>
+  ) : null;
 };

@@ -36,7 +36,7 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
 
     return (
       <Flex flexDirection="row">
-        {header && <StyledH2 id={headerId}>{header}</StyledH2>}
+        {header.length > 0 && <StyledH2 id={headerId}>{header}</StyledH2>}
         {action && <Button {...action}>{action.text}</Button>}
       </Flex>
     );

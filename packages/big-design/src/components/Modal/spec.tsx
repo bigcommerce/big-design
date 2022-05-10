@@ -58,7 +58,7 @@ test('triggers onClose when pressing esc', () => {
     </Modal>,
   );
 
-  const element = queryByText(text) as HTMLElement;
+  const element = queryByText(text);
 
   fireEvent.keyDown(element, { key: 'Escape' });
 
@@ -75,7 +75,7 @@ test('does not trigger onClose when pressing esc and closeOnEscKey is false', ()
     </Modal>,
   );
 
-  const element = queryByText(text) as HTMLElement;
+  const element = queryByText(text);
 
   fireEvent.keyDown(element, { key: 'Escape' });
 
@@ -92,7 +92,7 @@ test('trigger onClose when clicking outside the modal', () => {
     </Modal>,
   );
 
-  const element = queryByRole('dialog') as HTMLElement;
+  const element = queryByRole('dialog');
 
   fireEvent.click(element);
 
@@ -109,7 +109,7 @@ test('do not trigger onClose when clicking outside the modal and closeOnClickOut
     </Modal>,
   );
 
-  const element = queryByRole('dialog') as HTMLElement;
+  const element = queryByRole('dialog');
 
   fireEvent.click(element);
 
@@ -125,7 +125,7 @@ test('do not trigger onClose when clicking inside the modal', () => {
     </Modal>,
   );
 
-  const element = queryByTestId('inside-modal') as HTMLElement;
+  const element = queryByTestId('inside-modal');
 
   fireEvent.click(element);
 
@@ -187,23 +187,23 @@ test('do not pull focus to open modal that is rerendered', async () => {
   const input = document.getElementById('focusTest');
 
   // Focus on input
-  if (input !== null) {
+  if (input) {
     input.focus();
-
-    expect(input).toHaveFocus();
-
-    // Rerender as open
-    rerender(
-      <Modal isOpen={true}>
-        {text}
-        <input id="focusTest" />
-      </Modal>,
-    );
-
-    // Expect input to still have focus and not modal
-    expect(input).toHaveFocus();
-    expect(document.activeElement).not.toBe(queryByRole('dialog'));
   }
+
+  expect(input).toHaveFocus();
+
+  // Rerender as open
+  rerender(
+    <Modal isOpen={true}>
+      {text}
+      <input id="focusTest" />
+    </Modal>,
+  );
+
+  // Expect input to still have focus and not modal
+  expect(input).toHaveFocus();
+  expect(document.activeElement).not.toBe(queryByRole('dialog'));
 });
 
 test('body has scroll locked on modal open', () => {

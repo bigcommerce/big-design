@@ -1,4 +1,4 @@
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { StyleableText } from '../../Typography/private';
 
@@ -16,4 +16,4 @@ export const StyledLabel = styled(StyleableText).attrs({
     css`
       cursor: not-allowed;
     `}
-` as StyledComponent<'label', DefaultTheme, StyledLabelProps>;
+`;

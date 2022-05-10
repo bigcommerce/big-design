@@ -1,9 +1,46 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme, ThemeInterface } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { withTransition } from '../../../mixins/transitions';
 
 import { ListItemProps } from '.';
+
+interface StyleArgument {
+  actionType?: string;
+  isAction?: boolean;
+  isHighlighted: boolean;
+  theme: ThemeInterface;
+}
+
+const getActionStyle = ({ actionType, isAction, isHighlighted, theme }: StyleArgument) => {
+  if (!isHighlighted) {
+    return;
+  }
+
+  if (isAction) {
+    if (actionType === 'normal') {
+      return css`
+        background-color: ${theme.colors.primary10};
+        color: ${theme.colors.primary};
+        a {
+          color: ${theme.colors.primary};
+        }
+      `;
+    }
+
+    return css`
+      background-color: ${theme.colors.danger10};
+      color: ${theme.colors.danger50};
+      a {
+        color: ${theme.colors.danger50};
+      }
+    `;
+  }
+
+  return css`
+    background-color: ${theme.colors.secondary10};
+  `;
+};
 
 export const StyledListItem = styled.li<ListItemProps<unknown>>`
   ${withTransition(['background-color', 'color'])}
@@ -34,28 +71,7 @@ export const StyledListItem = styled.li<ListItemProps<unknown>>`
   }
 
   ${({ actionType, isAction, isHighlighted, theme }) =>
-    isHighlighted &&
-    (isAction
-      ? actionType === 'normal'
-        ? css`
-            background-color: ${theme.colors.primary10};
-            color: ${theme.colors.primary};
-
-            a {
-              color: ${theme.colors.primary};
-            }
-          `
-        : css`
-            background-color: ${theme.colors.danger10};
-            color: ${theme.colors.danger50};
-
-            a {
-              color: ${theme.colors.danger50};
-            }
-          `
-      : css`
-          background-color: ${theme.colors.secondary10};
-        `)}
+    getActionStyle({ actionType, isAction, isHighlighted, theme })}
 
   ${({ disabled, theme }) =>
     disabled &&

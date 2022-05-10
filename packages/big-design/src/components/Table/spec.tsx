@@ -4,11 +4,29 @@ import 'jest-styled-components';
 import { fireEvent, render, screen } from '@test/utils';
 
 import { Table, TableFigure } from './Table';
+import { TableColumn } from './types';
+
+interface ColumnRenderArgument {
+  sku: string;
+  name: string;
+  stock: string;
+}
+
+interface TestColumn {
+  header: string;
+  render: (x: ColumnRenderArgument) => void;
+}
+
+interface Item {
+  sku: string;
+  name: string;
+  stock: number;
+}
 
 interface SimpleTableOptions {
   className?: string;
-  columns?: any[];
-  items?: any[];
+  columns?: Array<TableColumn<TestColumn>>;
+  items?: Item[];
   dataTestId?: string;
   emptyComponent?: React.ReactElement;
   headerless?: boolean;
@@ -32,9 +50,9 @@ const getSimpleTable = ({
     className={className}
     columns={
       columns || [
-        { header: 'Sku', render: ({ sku }) => sku },
-        { header: 'Name', render: ({ name }) => name },
-        { header: 'Stock', render: ({ stock }) => stock },
+        { hash: 'sku', header: 'Sku', render: ({ sku }) => sku },
+        { hash: 'name', header: 'Name', render: ({ name }) => name },
+        { hash: 'stock', header: 'Stock', render: ({ stock }) => stock },
       ]
     }
     data-testid={dataTestId}
@@ -72,7 +90,7 @@ test('generates a table id automatically', () => {
 
   const table = getByRole('table');
 
-  expect(table.id).toBeTruthy();
+  expect(table.id).toBeDefined();
 });
 
 test('forwards id and testid when provided', () => {

@@ -25,15 +25,15 @@ export const Dropdown = memo(
   }: DropdownProps) => {
     const dropdownUniqueId = useUniqueId('dropdown');
 
-    const flattenItems = useCallback((items: DropdownProps['items']) => {
+    const flattenItems = useCallback((itemsToFlatten: DropdownProps['items']) => {
       const isGroups = (
-        items: Array<DropdownItemGroup | DropdownItem | DropdownLinkItem>,
-      ): items is DropdownItemGroup[] =>
-        items.every((items) => 'items' in items && !('content' in items));
+        groupItems: Array<DropdownItemGroup | DropdownItem | DropdownLinkItem>,
+      ): groupItems is DropdownItemGroup[] =>
+        groupItems.every((localItems) => 'items' in localItems && !('content' in localItems));
 
-      return isGroups(items)
-        ? items.map((group) => group.items).reduce((acum, curr) => acum.concat(curr), [])
-        : items;
+      return isGroups(itemsToFlatten)
+        ? itemsToFlatten.map((group) => group.items).reduce((acum, curr) => acum.concat(curr), [])
+        : itemsToFlatten;
     }, []);
 
     // We only need the items to pass down to Downshift, not groups
@@ -94,8 +94,11 @@ export const Dropdown = memo(
     const renderToggle = useMemo(() => {
       return (
         isValidElement(toggle) &&
+        // disabling since downshift manages these types
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         cloneElement(toggle, {
           ...getToggleButtonProps({
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             'aria-expanded': isOpen, // Because of memoization, we need to manually set this option
             disabled,
             ref: referenceRef,

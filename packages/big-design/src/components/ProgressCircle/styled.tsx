@@ -1,8 +1,13 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css, DefaultTheme, keyframes } from 'styled-components';
 
 import { CIRCLE_CIRCUMFERENCES, CIRCLE_DIMENSIONS, CIRCLE_STROKE_WIDTHS } from './constants';
 import { ProgressCircleProps } from './ProgressCircle';
+
+interface ThemeArgument {
+  theme: DefaultTheme;
+  size: ProgressCircleProps['size'];
+}
 
 export const StyledProgressCircle = styled.svg<ProgressCircleProps>`
   ${({ size, theme }) => css`
@@ -11,7 +16,7 @@ export const StyledProgressCircle = styled.svg<ProgressCircleProps>`
   `}
 `;
 
-export const StyledCircle = styled.circle.attrs(({ size, theme }: any) => ({
+export const StyledCircle = styled.circle.attrs(({ size, theme }: ThemeArgument) => ({
   // rem not usable for circle svg cx, cy, and r values in Safari 14
   cx: theme.helpers.emCalc(getDimensions(size) / 2),
   cy: theme.helpers.emCalc(getDimensions(size) / 2),
@@ -20,6 +25,20 @@ export const StyledCircle = styled.circle.attrs(({ size, theme }: any) => ({
   fill: transparent;
   stroke-width: ${({ size, theme }) => theme.helpers.remCalc(getStrokeWidth(size))};
   stroke: ${({ theme }) => theme.colors.secondary20};
+`;
+
+const spin = (size: ProgressCircleProps['size']) => keyframes`
+  0% {
+    stroke-dashoffset: ${fillLength(0, size) * -1};
+    transform: rotate(-90deg);
+  }
+  50% {
+    stroke-dashoffset: ${fillLength(37.5, size) * -1};
+  }
+  100% {
+    stroke-dashoffset: ${fillLength(0, size) * -1};
+    transform: rotate(270deg);
+  }
 `;
 
 export const StyledCircleFiller = styled(StyledCircle)<ProgressCircleProps>`
@@ -52,20 +71,6 @@ export const StyledText = styled.text.attrs(() => ({
     size === 'large' ? theme.typography.fontSize.large : theme.typography.fontSize.small};
   font-weight: ${({ size, theme }) =>
     size === 'large' ? theme.typography.fontWeight.semiBold : theme.typography.fontWeight.regular};
-`;
-
-const spin = (size: ProgressCircleProps['size']) => keyframes`
-  0% {
-    stroke-dashoffset: ${fillLength(0, size) * -1};
-    transform: rotate(-90deg);
-  }
-  50% {
-    stroke-dashoffset: ${fillLength(37.5, size) * -1};
-  }
-  100% {
-    stroke-dashoffset: ${fillLength(0, size) * -1};
-    transform: rotate(270deg);
-  }
 `;
 
 function getDimensions(size: ProgressCircleProps['size'] = 'medium') {

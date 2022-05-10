@@ -9,7 +9,7 @@ import { Small } from '../../Typography';
 import { StyledLink } from './styled';
 
 interface ContentProps {
-  item: DropdownItem | DropdownLinkItem | SelectOption<any> | SelectAction;
+  item: DropdownItem | DropdownLinkItem | SelectOption<unknown> | SelectAction;
   isHighlighted: boolean;
 }
 

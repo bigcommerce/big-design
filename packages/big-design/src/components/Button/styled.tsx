@@ -106,6 +106,7 @@ export const LoadingSpinnerWrapper = styled(Flex)`
  * These can be generated dynamically but I'm leaning towards being extra
  * explicit and being able to handle corner cases and changes from design easily
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const ButtonPrimary = css<ButtonProps>`
   background-color: ${({ theme }) => theme.colors.primary};
   border-color: ${({ theme }) => theme.colors.primary};
@@ -128,6 +129,7 @@ const ButtonPrimary = css<ButtonProps>`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const ButtonPrimaryDestructive = css<ButtonProps>`
   background-color: ${({ theme }) => theme.colors.danger};
   border-color: ${({ theme }) => theme.colors.danger};
@@ -150,6 +152,7 @@ const ButtonPrimaryDestructive = css<ButtonProps>`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const ButtonSecondary = css<ButtonProps>`
   background-color: transparent;
   border-color: ${({ theme }) => theme.colors.primary};
@@ -172,6 +175,7 @@ const ButtonSecondary = css<ButtonProps>`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const ButtonSecondaryDestructive = css<ButtonProps>`
   background-color: transparent;
   border-color: ${({ theme }) => theme.colors.danger};
@@ -194,6 +198,7 @@ const ButtonSecondaryDestructive = css<ButtonProps>`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const ButtonSubtle = css<ButtonProps>`
   background-color: transparent;
   border-color: transparent;
@@ -217,6 +222,7 @@ const ButtonSubtle = css<ButtonProps>`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const ButtonSubtleDestructive = css<ButtonProps>`
   background-color: transparent;
   border-color: transparent;

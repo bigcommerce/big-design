@@ -14,7 +14,7 @@ interface MockCounterProps extends CounterProps {
 
 const val = 5;
 
-const handleChange = jest.fn((num) => num);
+const handleChange = jest.fn((num: number) => num);
 
 const requiredAttributes = {
   value: val,
@@ -78,8 +78,8 @@ test('create unique ids if not provided', () => {
     </>,
   );
 
-  const item1 = queryByTestId('item1') as HTMLInputElement;
-  const item2 = queryByTestId('item2') as HTMLInputElement;
+  const item1 = queryByTestId('item1');
+  const item2 = queryByTestId('item2');
 
   expect(item1).toBeDefined();
   expect(item2).toBeDefined();
@@ -90,7 +90,7 @@ test('respects provided id', () => {
   const { container } = render(
     counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }),
   );
-  const counter = container.querySelector('#test') as HTMLInputElement;
+  const counter = container.querySelector('#test');
 
   expect(counter.id).toBe('test');
 });
@@ -99,7 +99,7 @@ test('matches label htmlFor with id provided', () => {
   const { container } = render(
     counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }),
   );
-  const label = container.querySelector('label') as HTMLLabelElement;
+  const label = container.querySelector('label');
 
   expect(label.htmlFor).toBe('test');
 });
@@ -108,7 +108,7 @@ test('respects provided labelId', () => {
   const { container } = render(
     counterMock({ label: 'Test Label', labelId: 'test', ...requiredAttributes }),
   );
-  const label = container.querySelector('#test') as HTMLLabelElement;
+  const label = container.querySelector('#test');
 
   expect(label.id).toBe('test');
 });
@@ -135,7 +135,7 @@ test('accepts a Label Component', () => {
   const CustomLabel = (
     <FormControlLabel>
       This is a custom Label
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </FormControlLabel>
@@ -150,7 +150,7 @@ test('does not accept non-Label Components', () => {
   const NotALabel = (
     <div>
       This is a not custom Label Component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </div>
@@ -165,7 +165,7 @@ test('accepts a Description Component', () => {
   const CustomDescription = (
     <FormControlDescription>
       This is a custom Description
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </FormControlDescription>
@@ -182,7 +182,7 @@ test('does not accept non-Description Components', () => {
   const NotADescription = (
     <div>
       This is a not custom description
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </div>
@@ -199,7 +199,7 @@ test('accepts an Error Component', () => {
   const CustomError = (
     <FormControlError>
       This is a custom Error Component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </FormControlError>
@@ -216,7 +216,7 @@ test('does not accept non-Error Components', () => {
   const NotAnError = (
     <div>
       This is a not a custom error component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </div>
@@ -264,7 +264,7 @@ test('value prop only accepts whole numbers', () => {
 test('value increases when increase or decrease icons are clicked', () => {
   const { getByDisplayValue, container } = render(counterMock(requiredAttributes));
 
-  const counter = getByDisplayValue('5') as HTMLInputElement;
+  const counter = getByDisplayValue('5');
 
   const icons = container.getElementsByTagName('svg');
 
@@ -282,7 +282,7 @@ test('value increases when increase or decrease icons are clicked', () => {
 test('value increases and decreases with arrow keypresses', () => {
   const { getByDisplayValue } = render(counterMock(requiredAttributes));
 
-  const counter = getByDisplayValue('5') as HTMLInputElement;
+  const counter = getByDisplayValue('5');
 
   counter.focus();
 

@@ -121,9 +121,9 @@ test('trigger page decrease', async () => {
 
   let title = await findByTitle('Previous page');
 
-  const svg = title.parentNode as HTMLElement;
-  const span = svg.parentNode as HTMLElement;
-  const button = span.parentNode as HTMLButtonElement;
+  const svg = title.parentNode;
+  const span = svg.parentNode;
+  const button = span.parentNode;
 
   fireEvent.click(button);
 
@@ -149,9 +149,9 @@ test('trigger page increase', async () => {
 
   let title = await findByTitle('Next page');
 
-  const svg = title.parentNode as HTMLElement;
-  const span = svg.parentNode as HTMLElement;
-  const button = span.parentNode as HTMLButtonElement;
+  const svg = title.parentNode;
+  const span = svg.parentNode;
+  const button = span.parentNode;
 
   fireEvent.click(button);
 

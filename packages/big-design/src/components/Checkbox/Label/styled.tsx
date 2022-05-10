@@ -1,6 +1,6 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { StyleableText } from '../../Typography/private';
 
@@ -21,6 +21,6 @@ export const StyledLabel = styled(StyleableText).attrs({
     `}
 
   ${({ hidden }) => hidden && hideVisually()}
-` as StyledComponent<'label', DefaultTheme, StyledLabelProps>;
+`;
 
 StyledLabel.defaultProps = { theme: defaultTheme };

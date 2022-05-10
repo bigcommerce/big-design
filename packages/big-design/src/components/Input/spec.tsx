@@ -42,8 +42,8 @@ test('create unique ids if not provided', () => {
     </>,
   );
 
-  const item1 = queryByTestId('item1') as HTMLInputElement;
-  const item2 = queryByTestId('item2') as HTMLInputElement;
+  const item1 = queryByTestId('item1');
+  const item2 = queryByTestId('item2');
 
   expect(item1).toBeDefined();
   expect(item2).toBeDefined();
@@ -52,21 +52,21 @@ test('create unique ids if not provided', () => {
 
 test('respects provided id', () => {
   const { container } = render(<Input id="test" label="Test Label" />);
-  const input = container.querySelector('#test') as HTMLInputElement;
+  const input = container.querySelector('#test');
 
   expect(input.id).toBe('test');
 });
 
 test('matches label htmlFor with id provided', () => {
   const { container } = render(<Input id="test" label="Test Label" />);
-  const label = container.querySelector('label') as HTMLLabelElement;
+  const label = container.querySelector('label');
 
   expect(label.htmlFor).toBe('test');
 });
 
 test('respects provided labelId', () => {
   const { container } = render(<Input label="Test Label" labelId="test" />);
-  const label = container.querySelector('#test') as HTMLLabelElement;
+  const label = container.querySelector('#test');
 
   expect(label.id).toBe('test');
 });
@@ -95,7 +95,7 @@ test('accepts a Label Component', () => {
   const CustomLabel = (
     <FormControlLabel>
       This is a custom Label
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </FormControlLabel>
@@ -110,7 +110,7 @@ test('does not accept non-Label Components', () => {
   const NotALabel = (
     <div>
       This is a not custom Label Component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </div>
@@ -125,7 +125,7 @@ test('accepts a Description Component', () => {
   const CustomDescription = (
     <FormControlDescription>
       This is a custom Description
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </FormControlDescription>
@@ -140,7 +140,7 @@ test('does not accept non-Description Components', () => {
   const NotADescription = (
     <div>
       This is a not custom description
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </div>
@@ -155,7 +155,7 @@ test('accepts an Error Component', () => {
   const CustomError = (
     <FormControlError>
       This is a custom Error Component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </FormControlError>
@@ -176,7 +176,7 @@ test('does not accept non-Error Components', () => {
   const NotAnError = (
     <div>
       This is a not a custom error component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </div>

@@ -59,7 +59,7 @@ test('renders with link', () => {
 
   expect(container.firstChild).toMatchSnapshot();
 
-  const link = queryByRole('link') as HTMLAnchorElement;
+  const link = queryByRole('link');
 
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
@@ -76,7 +76,7 @@ test('renders with external link', () => {
 
   expect(container.firstChild).toMatchSnapshot();
 
-  const link = queryByRole('link') as HTMLAnchorElement;
+  const link = queryByRole('link');
 
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
@@ -106,7 +106,7 @@ test('trigger onClose', () => {
   const fn = jest.fn();
   const { queryByRole } = render(<InlineMessage messages={[{ text: 'Success' }]} onClose={fn} />);
 
-  const button = queryByRole('button') as HTMLButtonElement;
+  const button = queryByRole('button');
 
   fireEvent.click(button);
 
@@ -128,16 +128,13 @@ test('does not forward styles', () => {
 
 test('renders actions', () => {
   const onClick = jest.fn();
-  const actions = [
+  const actions: InlineMessageProps['actions'] = [
     { text: 'First Action', onClick },
-    { text: 'Second Action', variant: 'primary', onClick },
+    { text: 'Second Action', variant: 'secondary', onClick },
   ];
 
   const { container, getByRole } = render(
-    <InlineMessage
-      actions={actions as InlineMessageProps['actions']}
-      messages={[{ text: 'Success' }]}
-    />,
+    <InlineMessage actions={actions} messages={[{ text: 'Success' }]} />,
   );
   const firstAction = getByRole('button', { name: 'First Action' });
   const secondAction = getByRole('button', { name: 'Second Action' });

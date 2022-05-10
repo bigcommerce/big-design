@@ -10,7 +10,7 @@ export interface BoxProps
     DisplayProps,
     MarginProps,
     PaddingProps {
-  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+  as?: keyof JSX.IntrinsicElements | React.ComponentType<unknown>;
   backgroundColor?: keyof Colors;
   shadow?: keyof Shadow;
   border?: keyof Border;
@@ -27,8 +27,8 @@ interface PrivateProps {
   forwardedRef: React.Ref<HTMLDivElement>;
 }
 
-const RawBox: React.FC<BoxProps & PrivateProps> = (props) => (
-  <StyledBox ref={props.forwardedRef} {...props} />
+const RawBox: React.FC<BoxProps & PrivateProps> = ({ forwardedRef, ...rest }) => (
+  <StyledBox ref={forwardedRef} {...rest} />
 );
 
 export const Box = memo(

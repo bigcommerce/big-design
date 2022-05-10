@@ -22,6 +22,38 @@ import { ListGroupSeparator } from './GroupSeparator';
 import { ListItem } from './Item';
 import { StyledList } from './styled';
 
+type Items =
+  | DropdownItem
+  | DropdownLinkItem
+  | SelectOption<unknown>
+  | SelectAction
+  | DropdownItemGroup
+  | SelectOptionGroup<unknown>;
+
+// Merging types into union
+// Issue: https://github.com/microsoft/TypeScript/issues/33591
+
+const isItemGroup = (item: Items): item is DropdownItemGroup =>
+  'items' in item && !('content' in item);
+
+const isOptionGroup = (item: Items): item is SelectOptionGroup<unknown> =>
+  'options' in item && !('value' in item);
+
+const isGroups = (
+  items: Items[],
+): items is DropdownItemGroup[] | Array<SelectOptionGroup<unknown>> =>
+  items.every((item) => isItemGroup(item) || isOptionGroup(item));
+
+const isItem = (item: Items): item is DropdownItem | DropdownLinkItem =>
+  'content' in item && !('items' in item);
+
+const isOption = (item: Items): item is SelectOption<unknown> => 'value' in item;
+
+const isItems = (
+  items: Items[],
+): items is Array<DropdownItem | DropdownLinkItem> | Array<SelectOption<unknown>> =>
+  items.every((item) => isItem(item) || isOption(item));
+
 export interface ListProps<T> extends HTMLAttributes<HTMLUListElement> {
   action?: SelectAction;
   autoWidth: boolean;
@@ -33,10 +65,10 @@ export interface ListProps<T> extends HTMLAttributes<HTMLUListElement> {
   maxHeight?: number;
   selectedItem?: SelectOption<T> | null;
   selectedItems?: Array<SelectOption<T>> | null;
-  addItem?(item: SelectOption<T>): void;
-  getItemProps: UseSelectPropGetters<any>['getItemProps'];
-  getMenuProps: UseSelectPropGetters<any>['getMenuProps'];
+  getItemProps: UseSelectPropGetters<unknown>['getItemProps'];
+  getMenuProps: UseSelectPropGetters<unknown>['getMenuProps'];
   update: (() => Promise<Partial<State>>) | null;
+  addItem?(item: SelectOption<T>): void;
   removeItem?(item: SelectOption<T>): void;
 }
 
@@ -68,7 +100,7 @@ const StyleableList = typedMemo(
     const { height, width } = useWindowSize();
 
     // Recalculate Popper for correct positioning
-    useIsomorphicLayoutEffect(() => {
+    useIsomorphicLayoutEffect(async () => {
       async function scheduleUpdate() {
         // Only update when menu is open
         if (update && isOpen) {
@@ -76,24 +108,24 @@ const StyleableList = typedMemo(
         }
       }
 
-      scheduleUpdate();
+      await scheduleUpdate();
     }, [isOpen, height, width, selectedItems?.length]);
 
     const renderAction = useCallback(
-      (action: SelectAction) => {
+      (localAction: SelectAction) => {
         const key = itemKey.current;
 
         return (
           <Box borderTop="box" marginTop="xSmall" paddingTop="xSmall">
             <ListItem
-              actionType={action.actionType}
+              actionType={localAction.actionType}
               autoWidth={autoWidth}
               getItemProps={getItemProps}
               index={key}
               isAction={true}
               isHighlighted={highlightedIndex === key}
               isSelected={false}
-              item={action}
+              item={localAction}
               key="action"
             />
           </Box>
@@ -128,8 +160,8 @@ const StyleableList = typedMemo(
               Boolean(selectedItems.find((selected) => selected.value === item.value));
 
             const hasActionType = (
-              item: DropdownItem | DropdownLinkItem | SelectOption<T>,
-            ): item is DropdownItem | DropdownLinkItem => 'actionType' in item;
+              localItem: DropdownItem | DropdownLinkItem | SelectOption<T>,
+            ): localItem is DropdownItem | DropdownLinkItem => 'actionType' in localItem;
 
             return (
               <ListItem
@@ -168,7 +200,7 @@ const StyleableList = typedMemo(
         return (
           <>
             {group.separated && <ListGroupSeparator />}
-            {group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
+            {!!group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
             {isItemGroup(group) && renderItems(group.items)}
             {isOptionGroup(group) && renderItems(group.options)}
           </>
@@ -181,8 +213,8 @@ const StyleableList = typedMemo(
       // Reset the key every time we rerender children
       itemKey.current = 0;
 
-      const groupFragment = (items: Array<DropdownItemGroup | SelectOptionGroup<T>>) =>
-        items.map((group, index) => <Fragment key={index}>{renderGroup(group)}</Fragment>);
+      const groupFragment = (localItems: Array<DropdownItemGroup | SelectOptionGroup<T>>) =>
+        localItems.map((group, index) => <Fragment key={index}>{renderGroup(group)}</Fragment>);
 
       if (Array.isArray(items) && isGroups(items)) {
         return (
@@ -234,35 +266,3 @@ export const List = memo(
     <StyleableList {...props} forwardedRef={ref} />
   )),
 );
-
-type Items =
-  | DropdownItem
-  | DropdownLinkItem
-  | SelectOption<unknown>
-  | SelectAction
-  | DropdownItemGroup
-  | SelectOptionGroup<unknown>;
-
-// Merging types into union
-// Issue: https://github.com/microsoft/TypeScript/issues/33591
-
-const isGroups = (
-  items: Items[],
-): items is DropdownItemGroup[] | Array<SelectOptionGroup<unknown>> =>
-  items.every((item) => isItemGroup(item) || isOptionGroup(item));
-
-const isItems = (
-  items: Items[],
-): items is Array<DropdownItem | DropdownLinkItem> | Array<SelectOption<unknown>> =>
-  items.every((item) => isItem(item) || isOption(item));
-
-const isOption = (item: Items): item is SelectOption<unknown> => 'value' in item;
-
-const isItem = (item: Items): item is DropdownItem | DropdownLinkItem =>
-  'content' in item && !('items' in item);
-
-const isItemGroup = (item: Items): item is DropdownItemGroup =>
-  'items' in item && !('content' in item);
-
-const isOptionGroup = (item: Items): item is SelectOptionGroup<unknown> =>
-  'options' in item && !('value' in item);

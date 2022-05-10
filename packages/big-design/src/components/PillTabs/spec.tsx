@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import 'jest-styled-components';
 import React from 'react';
@@ -26,6 +26,7 @@ const originalPrototype = Object.getOwnPropertyDescriptors(window.HTMLElement.pr
 afterAll(() => Object.defineProperties(window.HTMLElement.prototype, originalPrototype));
 
 const HIDDEN_STYLES = {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   'z-index': -defaultTheme.zIndex.tooltip,
   position: 'absolute',
   visibility: 'hidden',
@@ -53,14 +54,17 @@ test('dropdown is not visible if items fit', () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get() {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-pill-0') {
           return 100;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
         return parseFloat(this.style.width) || 0;
       },
     },
@@ -89,10 +93,12 @@ test('renders dropdown if items do not fit', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get() {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
         return parseFloat(this.style.width) || 300;
       },
     },
@@ -127,10 +133,12 @@ test('renders all the filters if they fit', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get() {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
         return parseFloat(this.style.width) || 50;
       },
     },
@@ -174,26 +182,32 @@ test('only the pills that fit are visible', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get() {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-dropdown-toggle') {
           return 50;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-pill-0') {
           return 300;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-pill-1') {
           return 300;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-pill-2') {
           return 300;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
         return parseFloat(this.style.width) || 0;
       },
     },
@@ -237,22 +251,27 @@ test('only the pills that fit are visible 2', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get() {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-pill-0') {
           return 100;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-pill-1') {
           return 100;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-pill-2') {
           return 300;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
         return parseFloat(this.style.width) || 50;
       },
     },
@@ -317,22 +336,27 @@ test('cannot click on a hidden item', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get() {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-dropdown-toggle') {
           return 50;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-pill-0') {
           return 340;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'pilltabs-pill-1') {
           return 200;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
         return parseFloat(this.style.width) || 50;
       },
     },
@@ -393,11 +417,12 @@ test('allows to add new items', async () => {
 
   const inStock2 = await screen.findByText('In stock');
   const notInStock2 = await screen.findByText('Not in stock');
-  const onSale2 = await screen.queryByText('On sale');
+  const onSale2 = screen.queryByText('On sale');
 
   expect(inStock2).toBeInTheDocument();
   expect(notInStock2).toBeInTheDocument();
-  expect(onSale2).toBeInTheDocument();
+
+  await waitFor(() => expect(onSale2).toBeInTheDocument());
 });
 
 test('allows to remove items', async () => {
@@ -433,12 +458,15 @@ test('allows to remove items', async () => {
   rerender(<TestComponent activePills={[]} items={newItems} onPillClick={onClick} />);
 
   const inStock2 = await screen.findByText('In stock');
-  const notInStock2 = await screen.queryByText('Not in stock');
-  const onSale2 = await screen.queryByText('On sale');
+  const notInStock2 = screen.queryByText('Not in stock');
+  const onSale2 = screen.queryByText('On sale');
 
   expect(inStock2).toBeInTheDocument();
-  expect(notInStock2).not.toBeInTheDocument();
-  expect(onSale2).toBeInTheDocument();
+
+  await waitFor(() => {
+    expect(notInStock2).not.toBeInTheDocument();
+    expect(onSale2).toBeInTheDocument();
+  });
 });
 
 test('allows to swap items keeping the same length', async () => {
@@ -481,12 +509,14 @@ test('allows to swap items keeping the same length', async () => {
 
   const inStock2 = await screen.findByText('In stock');
   const notInStock2 = await screen.findByText('Not in stock');
-  const onSale2 = await screen.queryByText('On sale');
+  const onSale2 = screen.queryByText('On sale');
   const featured2 = await screen.findByText('Featured');
 
   expect(inStock2).toBeInTheDocument();
   expect(notInStock2).toBeInTheDocument();
-  expect(onSale2).not.toBeInTheDocument();
+
+  await waitFor(() => expect(onSale2).not.toBeInTheDocument());
+
   expect(featured2).toBeInTheDocument();
 });
 

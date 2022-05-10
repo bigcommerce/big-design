@@ -1,7 +1,8 @@
 import 'jest-styled-components';
 
-import { render } from '@test/utils';
 import React from 'react';
+
+import { render } from '@test/utils';
 
 import { ProgressCircle } from './ProgressCircle';
 
@@ -53,7 +54,7 @@ test('render xSmall progress circle', () => {
   expect(container).toMatchSnapshot();
 });
 
-test('render xSmall progress circle', () => {
+test('render xxSmall progress circle', () => {
   const { container } = render(<ProgressCircle size="xxSmall" />);
 
   expect(container).toMatchSnapshot();

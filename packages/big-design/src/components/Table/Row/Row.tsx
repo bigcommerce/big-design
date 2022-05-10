@@ -56,6 +56,7 @@ const InternalRow = <T extends TableItem>({
 
       {columns.map(
         (
+          // eslint-disable-next-line @typescript-eslint/naming-convention
           { render: CellContent, align, display, verticalAlign, width, withPadding = true },
           columnIndex,
         ) => (
@@ -78,7 +79,7 @@ const InternalRow = <T extends TableItem>({
 };
 
 export const Row = typedMemo(
-  forwardRef<HTMLTableRowElement, RowProps<any>>((props, ref) => (
+  forwardRef<HTMLTableRowElement, RowProps<TableItem>>((props, ref) => (
     <InternalRow {...props} forwardedRef={ref} />
   )),
 );

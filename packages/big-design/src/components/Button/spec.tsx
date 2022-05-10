@@ -189,7 +189,7 @@ test('render only icon only with left and right icons button', () => {
 });
 
 test('hides content when isLoading is true', () => {
-  const plusIcon = <AddIcon aria-hidden="false" role="icon" />;
+  const plusIcon = <AddIcon aria-hidden="false" role="button" />;
   const { rerender } = render(
     <Button iconLeft={plusIcon} isLoading={false}>
       Button

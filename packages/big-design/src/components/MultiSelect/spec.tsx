@@ -1,6 +1,6 @@
 import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import 'jest-styled-components';
 import React, { createRef } from 'react';
 
@@ -395,10 +395,10 @@ test('enter should trigger onOptionsChange', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  await act(async () => {
-    await fireEvent.click(input);
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'Enter' });
+  act(() => {
+    fireEvent.click(input);
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.keyDown(input, { key: 'Enter' });
   });
 
   expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
@@ -440,11 +440,11 @@ test('opening the MultiSelect triggers onOpen', async () => {
 
   const button = await screen.findByLabelText('toggle menu');
 
-  await act(async () => {
-    await fireEvent.click(button);
+  act(() => {
+    fireEvent.click(button);
   });
 
-  expect(onOpen).toHaveBeenCalled();
+  await waitFor(() => expect(onOpen).toHaveBeenCalled());
 });
 
 test('closing the MultiSelect triggers onClose', async () => {
@@ -452,12 +452,12 @@ test('closing the MultiSelect triggers onClose', async () => {
 
   const button = await screen.findByLabelText('toggle menu');
 
-  await act(async () => {
-    await fireEvent.click(button);
-    await fireEvent.click(button);
+  act(() => {
+    fireEvent.click(button);
+    fireEvent.click(button);
   });
 
-  expect(onClose).toHaveBeenCalled();
+  await waitFor(() => expect(onClose).toHaveBeenCalled());
 });
 
 test('select should render select action', async () => {
@@ -479,11 +479,11 @@ test('select action should call onActionClick', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  await act(async () => {
-    await fireEvent.click(options[5]);
+  act(() => {
+    fireEvent.click(options[5]);
   });
 
-  expect(onActionClick).toHaveBeenCalled();
+  await waitFor(() => expect(onActionClick).toHaveBeenCalled());
 });
 
 test('select action supports icons', async () => {
@@ -790,12 +790,12 @@ test('multiselect should be able to select multiple options', async () => {
 
   const input = screen.getAllByLabelText('Countries')[0];
 
-  await act(async () => {
-    await fireEvent.click(input);
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'Enter' });
+  act(() => {
+    fireEvent.click(input);
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.keyDown(input, { key: 'Enter' });
   });
 
   expect(onChange).toHaveBeenCalledWith(
@@ -809,10 +809,10 @@ test('multiselect should be able to deselect options', async () => {
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  await act(async () => {
-    await fireEvent.click(inputs[0]);
-    await fireEvent.keyDown(inputs[0], { key: 'ArrowDown' });
-    await fireEvent.keyDown(inputs[0], { key: 'Enter' });
+  act(() => {
+    fireEvent.click(inputs[0]);
+    fireEvent.keyDown(inputs[0], { key: 'ArrowDown' });
+    fireEvent.keyDown(inputs[0], { key: 'Enter' });
   });
 
   expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
@@ -851,14 +851,18 @@ test('chips should be rendered', async () => {
   expect(await screen.findAllByText('Mexico')).toHaveLength(1);
 
   expect(
-    await screen.getByRole('button', {
-      name: /remove united states/i,
-    }),
+    await waitFor(() =>
+      screen.getByRole('button', {
+        name: /remove united states/i,
+      }),
+    ),
   ).toBeDefined();
   expect(
-    await screen.getByRole('button', {
-      name: /remove mexico/i,
-    }),
+    await waitFor(() =>
+      screen.getByRole('button', {
+        name: /remove mexico/i,
+      }),
+    ),
   ).toBeDefined();
 });
 
@@ -869,15 +873,19 @@ test('chips should be rendered without close button when MultiSelect is disabled
   await screen.findAllByText('Mexico');
 
   expect(
-    await screen.queryByRole('button', {
-      name: /remove united states/i,
-    }),
+    await waitFor(() =>
+      screen.queryByRole('button', {
+        name: /remove united states/i,
+      }),
+    ),
   ).toBeNull();
 
   expect(
-    await screen.queryByRole('button', {
-      name: /remove mexico/i,
-    }),
+    await waitFor(() =>
+      screen.queryByRole('button', {
+        name: /remove mexico/i,
+      }),
+    ),
   ).toBeNull();
 });
 
@@ -897,13 +905,13 @@ test('options should allow icons', async () => {
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  await act(async () => {
-    await fireEvent.click(inputs[0]);
+  act(() => {
+    fireEvent.click(inputs[0]);
   });
 
   const svg = container.querySelectorAll('svg');
 
-  expect(svg).toHaveLength(3);
+  await waitFor(() => expect(svg).toHaveLength(3));
 });
 
 test('grouped multiselect should render group labels, render uppercased', async () => {

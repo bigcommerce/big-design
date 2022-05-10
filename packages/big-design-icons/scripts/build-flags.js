@@ -68,7 +68,7 @@ function convertWithConcurrencyPool(iconFiles) {
 
 async function generateFlags() {
   const iconFiles = await glob(SOURCE);
-
+  // eslint-disable-next-line
   for await (const _result of convertWithConcurrencyPool(iconFiles)) {
   }
 }

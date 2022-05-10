@@ -69,13 +69,10 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     }
 
     if (isValidElement(label) && label.type === FormControlLabel) {
-      return cloneElement(
-        label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
-        {
-          id: labelId,
-          htmlFor: id,
-        },
-      );
+      return cloneElement(label, {
+        id: labelId,
+        htmlFor: id,
+      });
     }
 
     warning('label must be either a string or a FormControlLabel component.');

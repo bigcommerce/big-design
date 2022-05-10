@@ -31,49 +31,6 @@ interface Context {
 
 export const FormGroupContext = createContext<Context>({});
 
-export const FormGroup: React.FC<GroupProps> = (props) => {
-  const [inputErrors, setInputErrors] = useState<Errors>({});
-
-  const { children, errors: groupErrors } = props;
-  const childrenCount = Children.count(children);
-  const inline = !Children.toArray(children).every((child) => {
-    return isValidElement(child) && (child.type === Checkbox || child.type === Radio);
-  });
-
-  const contextValue = useMemo(
-    () => ({
-      errors: inputErrors,
-      setErrors: setInputErrors,
-    }),
-    [inputErrors],
-  );
-
-  const renderErrors = () => {
-    // If Form.Group has errors prop, don't generate errors from children
-    if (groupErrors) {
-      return generateErrors(groupErrors, true);
-    }
-
-    return inputErrors && generateErrors(Object.values(inputErrors));
-  };
-
-  return (
-    <FormGroupContext.Provider value={contextValue}>
-      {inline ? (
-        <StyledInlineGroup childrenCount={childrenCount}>
-          {children}
-          {renderErrors()}
-        </StyledInlineGroup>
-      ) : (
-        <StyledGroup>
-          {children}
-          {renderErrors()}
-        </StyledGroup>
-      )}
-    </FormGroupContext.Provider>
-  );
-};
-
 const generateErrors = (
   errors: GroupProps['errors'],
   fromGroup = false,
@@ -114,4 +71,49 @@ const generateErrors = (
       'errors must be either a string, FormControlError, or an array of strings or FormControlError components.',
     );
   }
+};
+
+export const FormGroup: React.FC<GroupProps> = (props) => {
+  const [inputErrors, setInputErrors] = useState<Errors>({});
+
+  const { children, errors: groupErrors } = props;
+  const childrenCount = Children.count(children);
+  const inline = !Children.toArray(children).every((child) => {
+    return isValidElement(child) && (child.type === Checkbox || child.type === Radio);
+  });
+
+  const contextValue = useMemo(
+    () => ({
+      errors: inputErrors,
+      setErrors: setInputErrors,
+    }),
+    [inputErrors],
+  );
+
+  const renderErrors = () => {
+    // If Form.Group has errors prop, don't generate errors from children
+    if (groupErrors) {
+      return generateErrors(groupErrors, true);
+    }
+
+    const errorVals = Object.values(inputErrors);
+
+    return errorVals.length > 0 && generateErrors(errorVals);
+  };
+
+  return (
+    <FormGroupContext.Provider value={contextValue}>
+      {inline ? (
+        <StyledInlineGroup childrenCount={childrenCount}>
+          {children}
+          {renderErrors()}
+        </StyledInlineGroup>
+      ) : (
+        <StyledGroup>
+          {children}
+          {renderErrors()}
+        </StyledGroup>
+      )}
+    </FormGroupContext.Provider>
+  );
 };

@@ -31,4 +31,18 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: [
+          './packages/big-design/tsconfig.json',
+          './packages/big-design-icons/tsconfig.json',
+          './packages/big-design-theme/tsconfig.json',
+          './packages/docs/tsconfig.json',
+          './packages/examples/tsconfig.json',
+        ],
+      },
+    },
+  },
 };

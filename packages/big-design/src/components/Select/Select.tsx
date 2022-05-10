@@ -52,15 +52,17 @@ export const Select = typedMemo(
 
     const [inputValue, setInputValue] = useState<string | undefined>('');
 
-    const flattenOptions = useCallback((options: SelectProps<T>['options']) => {
+    const flattenOptions = useCallback((optionsToFlatten: SelectProps<T>['options']) => {
       const isGroups = (
-        options: Array<SelectOptionGroup<T> | SelectOption<T>>,
-      ): options is Array<SelectOptionGroup<T>> =>
-        options.every((option) => 'options' in option && !('value' in option));
+        groupOptions: Array<SelectOptionGroup<T> | SelectOption<T>>,
+      ): groupOptions is Array<SelectOptionGroup<T>> =>
+        groupOptions.every((option) => 'options' in option && !('value' in option));
 
-      return isGroups(options)
-        ? options.map((group) => group.options).reduce((acum, curr) => acum.concat(curr), [])
-        : options;
+      return isGroups(optionsToFlatten)
+        ? optionsToFlatten
+            .map((group) => group.options)
+            .reduce((acum, curr) => acum.concat(curr), [])
+        : optionsToFlatten;
     }, []);
 
     // We need to pass Downshift only options without groups for accessibility tracking
@@ -130,19 +132,31 @@ export const Select = typedMemo(
       );
     };
 
-    const handleOnIsOpenChange = ({
-      isOpen,
+    const handleOnInputValueChange = ({
+      inputValue: localInputValue,
+      isOpen: localIsOpen,
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && !isOpen) {
+      // Filter only when List is open
+      if (filterable && localIsOpen === true) {
+        setFilteredOptions(filterOptions(localInputValue));
+      }
+
+      setInputValue(localInputValue || '');
+    };
+
+    const handleOnIsOpenChange = ({
+      isOpen: localIsOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (filterable && !localIsOpen) {
         // Reset the options when the List is closed
         setFilteredOptions(flattenedOptions);
       }
 
-      if (isOpen && typeof onOpen === 'function') {
+      if (localIsOpen && typeof onOpen === 'function') {
         onOpen();
       }
 
-      if (!isOpen && typeof onClose === 'function') {
+      if (!localIsOpen && typeof onClose === 'function') {
         onClose();
       }
     };
@@ -247,10 +261,8 @@ export const Select = typedMemo(
       }
 
       if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement(
-          label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
-          getLabelProps(),
-        );
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        return cloneElement(label, getLabelProps());
       }
 
       warning('label must be either a string or a FormControlLabel component.');
@@ -280,7 +292,11 @@ export const Select = typedMemo(
               autoComplete,
               disabled,
               onClick: () => {
-                !isOpen && openMenu();
+                if (isOpen) {
+                  return;
+                }
+
+                openMenu();
               },
               onFocus: (event) => {
                 if (typeof props.onFocus === 'function') {
@@ -295,7 +311,7 @@ export const Select = typedMemo(
                     if (isOpen === false) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
-                      (event.nativeEvent as any).preventDownshiftDefault = true;
+                      event.nativeEvent.preventDownshiftDefault = true;
                     }
 
                     break;
@@ -309,7 +325,7 @@ export const Select = typedMemo(
                     }
 
                     // https://github.com/downshift-js/downshift/issues/734
-                    (event.nativeEvent as any).preventDownshiftDefault = true;
+                    event.nativeEvent.preventDownshiftDefault = true;
                     break;
                 }
               },

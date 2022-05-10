@@ -3,6 +3,49 @@ import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { GridedItemProps, GridedOverload, GridedProps } from './types';
 
+const getSimpleGrid = (
+  gridedProp: string | number,
+  cssKey: string,
+): FlattenSimpleInterpolation => css`
+  ${cssKey}: ${gridedProp}
+`;
+
+const getResponsiveGrid: GridedOverload = (
+  gridedProp: keyof GridedOverload,
+  theme: ThemeInterface,
+  cssKey: string,
+): FlattenSimpleInterpolation[] => {
+  const breakpointKeys = Object.keys(gridedProp).sort(
+    (firstBreakpoint: keyof Breakpoints, secondBreakpoint: keyof Breakpoints) =>
+      breakpointsOrder.indexOf(firstBreakpoint) - breakpointsOrder.indexOf(secondBreakpoint),
+  );
+
+  return breakpointKeys.map(
+    (breakpointKey) =>
+      css`
+        ${theme.breakpoints[breakpointKey]} {
+          ${getSimpleGrid(gridedProp[breakpointKey], cssKey)}
+        }
+      `,
+  );
+};
+
+const getGridedStyles: GridedOverload = (
+  gridedProp: keyof GridedOverload,
+  theme: ThemeInterface,
+  cssKey: string,
+): FlattenSimpleInterpolation => {
+  if (typeof gridedProp === 'object') {
+    return getResponsiveGrid(gridedProp, theme, cssKey);
+  }
+
+  if (typeof gridedProp === 'string' || typeof gridedProp === 'number') {
+    return getSimpleGrid(gridedProp, cssKey);
+  }
+
+  return [];
+};
+
 export const withGridedContainer = () => css<GridedProps>`
   ${({ gridAreas, theme }) =>
     gridAreas && getGridedStyles(gridAreas, theme, 'grid-template-areas')};
@@ -32,47 +75,3 @@ export const withGridedItems = () => css<GridedItemProps>`
   ${({ gridRowStart, theme }) =>
     gridRowStart && getGridedStyles(gridRowStart, theme, 'grid-row-start')};
 `;
-
-const getGridedStyles: GridedOverload = (
-  gridedProp: any,
-  theme: ThemeInterface,
-  cssKey: any,
-): FlattenSimpleInterpolation => {
-  if (typeof gridedProp === 'object') {
-    return getResponsiveGrid(gridedProp, theme, cssKey);
-  }
-
-  if (typeof gridedProp === 'string' || typeof gridedProp === 'number') {
-    return getSimpleGrid(gridedProp, cssKey);
-  }
-
-  return [];
-};
-
-const getSimpleGrid = (
-  gridedProp: string | number,
-  cssKey: string,
-): FlattenSimpleInterpolation => css`
-  ${cssKey}: ${gridedProp}
-`;
-
-const getResponsiveGrid: GridedOverload = (
-  gridedProp: any,
-  theme: ThemeInterface,
-  cssKey: string,
-): FlattenSimpleInterpolation[] => {
-  const breakpointKeys = Object.keys(gridedProp).sort(
-    (firstBreakpoint, secondBreakpoint) =>
-      breakpointsOrder.indexOf(firstBreakpoint as keyof Breakpoints) -
-      breakpointsOrder.indexOf(secondBreakpoint as keyof Breakpoints),
-  );
-
-  return (breakpointKeys as Array<keyof Breakpoints>).map(
-    (breakpointKey) =>
-      css`
-        ${theme.breakpoints[breakpointKey]} {
-          ${getSimpleGrid(gridedProp[breakpointKey], cssKey)}
-        }
-      `,
-  );
-};

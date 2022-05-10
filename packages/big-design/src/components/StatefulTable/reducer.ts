@@ -82,6 +82,7 @@ export type Action<T> =
 
 export const createReducer =
   <T>(): Reducer<State<T>, Action<T>> =>
+  // eslint-disable-next-line complexity
   (state, action) => {
     switch (action.type) {
       case 'COLUMNS_CHANGED': {
@@ -180,11 +181,13 @@ export const createReducer =
           return state;
         }
 
-        const items = sortKey
-          ? sort(state.items, direction, sortKey)
-          : sortFn
-          ? sort(state.items, direction, sortFn)
-          : state.items;
+        let items = state.items;
+
+        if (sortKey) {
+          items = sort(state.items, direction, sortKey);
+        } else if (sortFn) {
+          items = sort(state.items, direction, sortFn);
+        }
 
         const currentItems = getItems(items, state.isPaginationEnabled, {
           currentPage: 1,
@@ -290,6 +293,7 @@ function getItems<T>(
 }
 
 function sort<T>(items: T[], direction: TableSortDirection, sortKey: keyof T): T[];
+// eslint-disable-next-line @typescript-eslint/unified-signatures
 function sort<T>(items: T[], direction: TableSortDirection, sortFn: StatefulTableSortFn<T>): T[];
 
 function sort<T>(
@@ -360,18 +364,18 @@ function onSearchSubmit<T>(
   searchValue: string,
   columns: Array<StatefulTableColumn<T>>,
 ): T[] {
+  const acceptedTypes = ['number', 'string', 'boolean'];
+
   return items.filter((item) =>
     columns.some((column) => {
-      const element = item[column.hash as keyof T];
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const element: string | number | boolean = item[column.hash] ? item[column.hash] : null;
 
-      switch (typeof element) {
-        case 'string':
-        case 'number':
-        case 'boolean':
-          return checkInclude(searchValue, element.toString());
-
-        default:
+      if (element && acceptedTypes.includes(typeof element)) {
+        return checkInclude(searchValue, element.toString());
       }
+
+      return false;
     }),
   );
 }

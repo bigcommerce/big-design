@@ -21,6 +21,7 @@ interface TestItem {
  * ]
  */
 const generateItems = (): TestItem[] =>
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   [...Array(104)].map((_, index) => ({
     name: `Product ${String.fromCharCode(65 + (index % 26))} - ${Math.ceil((index + 1) / 26)}`,
     stock: index + 1,
@@ -64,21 +65,23 @@ test('pagination can be enabled', async () => {
   expect(rows).toHaveLength(26);
 });
 
-test('dragAndDrop can be enabled', async () => {
+test('dragAndDrop can be enabled', () => {
   const spaceKey = { keyCode: 32 };
   const downKey = { keyCode: 40 };
   const name = 'Product A - 1';
   const onRowDrop = jest.fn();
   const { container, getAllByTestId } = render(getSimpleTable({ onRowDrop }));
 
-  let dragEls = container.querySelectorAll('[data-rbd-draggable-id]');
+  let dragEls: NodeListOf<HTMLElement> = container.querySelectorAll('[data-rbd-draggable-id]');
 
   let names = getAllByTestId('name');
 
   // Item at index 0 has product name Product A - 1
   expect(names[0].textContent).toBe(name);
 
-  dragEls[0].focus();
+  if (dragEls.length) {
+    dragEls[0].focus();
+  }
 
   expect(dragEls[0]).toHaveFocus();
 
@@ -124,7 +127,7 @@ test('renders rows without checkboxes when opting in to selectable', () => {
 
 test('items are unselected by default', () => {
   const { container } = render(getSimpleTable({ selectable: true }));
-  const checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
+  const checkbox = container.querySelector('tbody > tr input');
 
   expect(checkbox.checked).toBe(false);
 });
@@ -135,7 +138,7 @@ test('items can be selected by default', () => {
   const { container } = render(
     getSimpleTable({ selectable: true, items, defaultSelected: [testItem] }),
   );
-  const checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
+  const checkbox = container.querySelector('tbody > tr input');
 
   expect(checkbox.checked).toBe(true);
 });
@@ -156,7 +159,7 @@ test('onSelectionChange gets called when an item selection happens', () => {
     }),
   );
 
-  const checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
+  const checkbox = container.querySelector('tbody > tr input');
 
   fireEvent.click(checkbox);
 
@@ -171,12 +174,12 @@ test('multi-page select', async () => {
   );
 
   const table = await findByTestId('simple-table');
-  let checkbox = table.querySelector('tbody > tr input') as HTMLInputElement;
+  let checkbox = table.querySelector('tbody > tr input');
 
   fireEvent.click(checkbox);
   fireEvent.click(getByTitle('Next page'));
 
-  checkbox = table.querySelector('tbody > tr input') as HTMLInputElement;
+  checkbox = table.querySelector('tbody > tr input');
   fireEvent.click(checkbox);
 
   expect(onSelectionChange).toHaveBeenCalledWith([

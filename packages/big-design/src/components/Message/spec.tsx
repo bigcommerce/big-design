@@ -4,7 +4,7 @@ import React from 'react';
 import 'jest-styled-components';
 import { fireEvent, render } from '@test/utils';
 
-import { Message, MessageProps } from './Message';
+import { Message } from './Message';
 
 test('renders with margins', () => {
   const { container, rerender } = render(<Message messages={[{ text: 'Success' }]} />);
@@ -59,7 +59,7 @@ test('renders with link', () => {
 
   expect(container.firstChild).toMatchSnapshot();
 
-  const link = queryByRole('link') as HTMLAnchorElement;
+  const link = queryByRole('link');
 
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
@@ -76,7 +76,7 @@ test('renders with external link', () => {
 
   expect(container.firstChild).toMatchSnapshot();
 
-  const link = queryByRole('link') as HTMLAnchorElement;
+  const link = queryByRole('link');
 
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
@@ -106,7 +106,7 @@ test('trigger onClose', () => {
   const fn = jest.fn();
   const { queryByRole } = render(<Message messages={[{ text: 'Success' }]} onClose={fn} />);
 
-  const button = queryByRole('button') as HTMLButtonElement;
+  const button = queryByRole('button');
 
   fireEvent.click(button);
 
@@ -130,7 +130,7 @@ test('renders actions', () => {
   ];
 
   const { container, getByRole } = render(
-    <Message actions={actions as MessageProps['actions']} messages={[{ text: 'Success' }]} />,
+    <Message actions={actions} messages={[{ text: 'Success' }]} />,
   );
   const firstAction = getByRole('button', { name: 'First Action' });
   const secondAction = getByRole('button', { name: 'Second Action' });

@@ -110,7 +110,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = Number(event.currentTarget.value);
 
-      if (isNaN(newValue)) {
+      if (Number.isNaN(newValue)) {
         return;
       }
 
@@ -160,13 +160,10 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       }
 
       if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement(
-          label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
-          {
-            id: labelId,
-            htmlFor: id,
-          },
-        );
+        return cloneElement(label, {
+          id: labelId,
+          htmlFor: id,
+        });
       }
 
       warning('label must be either a string or a FormControlLabel component.');

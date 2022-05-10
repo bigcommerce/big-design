@@ -78,7 +78,7 @@ test('has correct value when checked', () => {
   const { getByTestId } = render(
     <Radio checked={true} data-testid="radio" label="Checked" onChange={() => null} />,
   );
-  const radio = getByTestId('radio') as HTMLInputElement;
+  const radio = getByTestId('radio');
 
   expect(radio.checked).toBe(true);
 });
@@ -87,7 +87,7 @@ test('has correct value when unchecked', () => {
   const { getByTestId } = render(
     <Radio checked={false} data-testid="radio" label="Unchecked" onChange={() => null} />,
   );
-  const radio = getByTestId('radio') as HTMLInputElement;
+  const radio = getByTestId('radio');
 
   expect(radio.checked).toBe(false);
 });
@@ -97,7 +97,7 @@ test('triggers onChange when clicking the radio button', () => {
   const { getByTestId } = render(
     <Radio checked={false} data-testid="radio" label="Checked" onChange={onChange} />,
   );
-  const radio = getByTestId('radio') as HTMLInputElement;
+  const radio = getByTestId('radio');
 
   fireEvent.click(radio);
 

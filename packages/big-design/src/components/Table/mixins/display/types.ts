@@ -3,7 +3,7 @@ import { FlattenSimpleInterpolation } from 'styled-components';
 
 import { ResponsiveProp } from '../../../../types';
 
-type TableColumnDisplayProp = ResponsiveProp<'table-cell' | 'none'>;
+export type TableColumnDisplayProp = ResponsiveProp<'table-cell' | 'none' | string>;
 
 export type TableColumnDisplayProps = Partial<{
   display: TableColumnDisplayProp;

@@ -7,7 +7,7 @@ interface StyledProps {
   childrenCount?: number;
 }
 
-const SharedGroupStyles = css`
+const sharedGroupStyles = css`
   display: grid;
   grid-gap: ${({ theme }) => `${theme.spacing.xSmall} ${theme.spacing.medium}`};
   margin-bottom: ${({ theme }) => theme.spacing.medium};
@@ -22,11 +22,11 @@ export const StyledError = styled(Flex)`
 `;
 
 export const StyledGroup = styled.div`
-  ${SharedGroupStyles};
+  ${sharedGroupStyles};
 `;
 
 export const StyledInlineGroup = styled.div<StyledProps>`
-  ${SharedGroupStyles};
+  ${sharedGroupStyles};
 
   ${({ theme }) => theme.breakpoints.tablet} {
     ${({ childrenCount, theme }) =>

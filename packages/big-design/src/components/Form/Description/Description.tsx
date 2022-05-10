@@ -25,12 +25,10 @@ export const FormControlDescription: React.FC<TextProps & FormControlDescription
     }
 
     return (
-      link && (
-        <>
-          {' '}
-          <StyledLink {...link}>{link.text}</StyledLink>
-        </>
-      )
+      <>
+        {' '}
+        <StyledLink {...link}>{link.text}</StyledLink>
+      </>
     );
   }, [link]);
 

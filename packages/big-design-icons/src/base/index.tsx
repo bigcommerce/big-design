@@ -10,8 +10,8 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
   title?: string;
 }
 
-export interface PrivateIconProps {
-  svgRef?: React.Ref<SVGSVGElement>;
+export interface PrivateIconProps extends IconProps {
+  svgRef?: ForwardedRef<SVGSVGElement>;
   titleId?: string;
 }
 
@@ -21,9 +21,9 @@ export function createStyledIcon(
   const StyledIcon = styled(Icon)`
     vertical-align: middle;
 
-    ${({ color, theme }) => color && { color: theme.colors[color] }}
+    ${({ color, theme }: StyledObjectArgument) => color && { color: theme.colors[color] }}
 
-    ${({ size, theme }) =>
+    ${({ size, theme }: StyledObjectArgument) =>
       size && {
         height: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],
         width: typeof size === 'number' ? theme.helpers.remCalc(size) : theme.spacing[size],

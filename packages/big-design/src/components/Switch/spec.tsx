@@ -34,7 +34,7 @@ describe('render Switch', () => {
     const { getByTestId } = render(
       <Switch checked={true} data-testid="switch" onChange={() => null} />,
     );
-    const input = getByTestId('switch') as HTMLInputElement;
+    const input = getByTestId('switch');
 
     expect(input.checked).toBe(true);
   });
@@ -43,7 +43,7 @@ describe('render Switch', () => {
     const { getByTestId } = render(
       <Switch checked={false} data-testid="switch" onChange={() => null} />,
     );
-    const input = getByTestId('switch') as HTMLInputElement;
+    const input = getByTestId('switch');
 
     expect(input.checked).toBe(false);
   });
@@ -53,7 +53,7 @@ describe('render Switch', () => {
     const { getByTestId } = render(
       <Switch checked={true} data-testid="switch" onChange={onChange} />,
     );
-    const checkbox = getByTestId('switch') as HTMLInputElement;
+    const checkbox = getByTestId('switch');
 
     fireEvent.click(checkbox);
 

@@ -1,6 +1,7 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render } from '@test/utils';
 import React from 'react';
+
+import { fireEvent, render } from '@test/utils';
 
 import { StatefulTree, StatefulTreeProps, TreeNodeProps } from '.';
 
@@ -114,13 +115,15 @@ describe('selectable = multi', () => {
     const onSelectionChange = jest.fn();
     const { container } = render(getSimpleTree({ selectable: 'multi', onSelectionChange }));
 
-    const firstNodeLabel = container.querySelectorAll('[role="treeitem"] label')[0];
+    const queryNodes = container.querySelectorAll('[role="treeitem"] label');
+
+    const firstNodeLabel = queryNodes.length ? queryNodes[0] : null;
 
     if (firstNodeLabel) {
       fireEvent.click(firstNodeLabel);
-
-      expect(onSelectionChange).toHaveBeenCalledWith([0]);
     }
+
+    expect(onSelectionChange).toHaveBeenCalledWith([0]);
   });
 });
 
@@ -172,12 +175,13 @@ describe('selectable = radio', () => {
     const onSelectionChange = jest.fn();
     const { container } = render(getSimpleTree({ selectable: 'radio', onSelectionChange }));
 
-    const firstNodeLabel = container.querySelectorAll('[role="treeitem"] label')[0];
+    const queryNodes = container.querySelectorAll('[role="treeitem"] label');
+    const firstNodeLabel = queryNodes.length ? queryNodes[0] : null;
 
     if (firstNodeLabel) {
       fireEvent.click(firstNodeLabel);
-
-      expect(onSelectionChange).toHaveBeenCalledWith([0]);
     }
+
+    expect(onSelectionChange).toHaveBeenCalledWith([0]);
   });
 });

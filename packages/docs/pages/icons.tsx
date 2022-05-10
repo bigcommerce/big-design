@@ -41,6 +41,7 @@ const IconsPage = () => {
   useEffect(() => {
     const fetchIcons = async () => {
       const { createStyledIcon, useUniqueId, ...iconsModule } = await import(
+        /* webpackChunkName: 'bigcommerce/big-design-icons' */
         '@bigcommerce/big-design-icons'
       );
 

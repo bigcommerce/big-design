@@ -96,7 +96,7 @@ test('has correct value for checked', () => {
   const { getByTestId } = render(
     <Checkbox checked={true} data-testid="checkbox" label="Checked" onChange={() => null} />,
   );
-  const input = getByTestId('checkbox') as HTMLInputElement;
+  const input: HTMLInputElement = getByTestId('checkbox');
 
   expect(input.checked).toBe(true);
 });
@@ -105,7 +105,7 @@ test('has correct value for unchecked', () => {
   const { getByTestId } = render(
     <Checkbox checked={false} data-testid="checkbox" label="Checked" onChange={() => null} />,
   );
-  const input = getByTestId('checkbox') as HTMLInputElement;
+  const input = getByTestId('checkbox');
 
   expect(input.checked).toBe(false);
 });
@@ -120,7 +120,7 @@ test('has correct value for indeterminate', () => {
       onChange={() => null}
     />,
   );
-  const input = getByTestId('checkbox') as HTMLInputElement;
+  const input = getByTestId('checkbox');
 
   expect(input.checked).toBe(false);
 });
@@ -130,7 +130,7 @@ test('triggers onChange when clicking the checkbox', () => {
   const { getByTestId } = render(
     <Checkbox checked={true} data-testid="checkbox" label="Checked" onChange={onChange} />,
   );
-  const checkbox = getByTestId('checkbox') as HTMLInputElement;
+  const checkbox = getByTestId('checkbox');
 
   fireEvent.click(checkbox);
 

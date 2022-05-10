@@ -132,10 +132,6 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       items.map((item, index) => {
         const pill = pillsState[index];
 
-        if (!pill) {
-          return;
-        }
-
         return (
           <StyledFlexItem
             data-testid={`pilltabs-pill-${index}`}
