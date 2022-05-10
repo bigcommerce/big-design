@@ -132,7 +132,7 @@ const dropdownItemProps: Prop[] = [
   },
   {
     name: 'type',
-    types: 'text',
+    types: "'text'",
     description: 'Type of the item.',
   },
 ];
