@@ -169,8 +169,8 @@ const IconsPage = () => {
           id="props"
           routes={[
             {
-              id: 'Icon',
-              title: 'icon',
+              id: 'icon',
+              title: 'Icon',
               render: () => (
                 <IconPropTable renderPanel={false}>
                   <CodeSnippet showControls={false} language="bash">
@@ -208,7 +208,7 @@ const IconsPage = () => {
             return (
               <Flex
                 key={iconName}
-                style={{ width: '300px' }}
+                style={{ width: '300px', gap: '1rem' }}
                 flexDirection="column"
                 borderRadius="normal"
                 justifyContent="center"
