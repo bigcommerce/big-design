@@ -195,7 +195,6 @@ const FlexPage = () => {
               title: 'Flex',
               render: () => (
                 <FlexPropTable
-                  renderPanel={false}
                   inheritedProps={
                     <>
                       <BoxPropTable collapsible />
@@ -212,7 +211,6 @@ const FlexPage = () => {
               title: 'FlexItem',
               render: () => (
                 <FlexItemPropTable
-                  renderPanel={false}
                   inheritedProps={
                     <>
                       <BoxPropTable collapsible />

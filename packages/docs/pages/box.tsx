@@ -107,7 +107,6 @@ const BoxPage = () => {
               <PaddingPropTable collapsible />
             </>
           }
-          renderPanel={false}
         />
       </Panel>
 

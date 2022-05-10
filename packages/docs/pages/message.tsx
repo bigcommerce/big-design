@@ -197,17 +197,17 @@ const MessagePage = () => {
             {
               id: 'inline-message',
               title: 'InlineMessage',
-              render: () => <MessagePropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />,
+              render: () => <MessagePropTable inheritedProps={<MarginPropTable collapsible />} />,
             },
             {
               id: 'message-item',
               title: 'MessageItem',
-              render: () => <MessagingItemPropTable id="message-item-prop-table" renderPanel={false} />,
+              render: () => <MessagingItemPropTable id="message-item-prop-table" />,
             },
             {
               id: 'message-link-item',
               title: 'MessageLinkItem',
-              render: () => <MessagingLinkItemPropTable id="message-link-item-prop-table" renderPanel={false} />,
+              render: () => <MessagingLinkItemPropTable id="message-link-item-prop-table" />,
             },
           ]}
         />

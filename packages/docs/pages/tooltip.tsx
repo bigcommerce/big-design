@@ -115,7 +115,7 @@ const TooltipPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <TooltipPropTable renderPanel={false} />
+        <TooltipPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

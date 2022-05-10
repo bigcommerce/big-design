@@ -111,7 +111,7 @@ const DatepickerPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <DatepickerPropTable renderPanel={false} />
+        <DatepickerPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

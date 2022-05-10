@@ -73,19 +73,19 @@ const AlertPage = () => {
                     ]}
                     marginBottom="large"
                   />
-                  <AlertPropTable renderPanel={false} />
+                  <AlertPropTable />
                 </>
               ),
             },
             {
               id: 'message-item',
               title: 'MessageItem',
-              render: () => <MessagingItemPropTable renderPanel={false} />,
+              render: () => <MessagingItemPropTable />,
             },
             {
               id: 'message-link-item',
               title: 'MessageLinkItem',
-              render: () => <MessagingLinkItemPropTable renderPanel={false} />,
+              render: () => <MessagingLinkItemPropTable />,
             },
           ]}
         />

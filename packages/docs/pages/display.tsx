@@ -87,7 +87,7 @@ const DisplayPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <DisplayPropTable renderPanel={false} />
+        <DisplayPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

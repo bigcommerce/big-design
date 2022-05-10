@@ -68,7 +68,7 @@ const PaddingPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <PaddingPropTable renderPanel={false} />
+        <PaddingPropTable />
       </Panel>
     </>
   );

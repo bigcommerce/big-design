@@ -67,7 +67,7 @@ const SearchPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <SearchPropTable renderPanel={false} />
+        <SearchPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

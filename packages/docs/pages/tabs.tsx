@@ -65,12 +65,12 @@ const TabsPage = () => {
             {
               id: 'tabs',
               title: 'Tabs',
-              render: () => <TabsPropTable renderPanel={false} />,
+              render: () => <TabsPropTable />,
             },
             {
               id: 'tab-item',
               title: 'TabItem',
-              render: () => <TabItemPropTable id="tab-item-prop-table" renderPanel={false} />,
+              render: () => <TabItemPropTable id="tab-item-prop-table" />,
             },
           ]}
         />

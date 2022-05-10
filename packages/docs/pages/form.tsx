@@ -291,32 +291,32 @@ const FormPage = () => {
             {
               id: 'form',
               title: 'Form',
-              render: () => <FormPropTable renderPanel={false} inheritedProps={<MarginPropTable collapsible />} />,
+              render: () => <FormPropTable inheritedProps={<MarginPropTable collapsible />} />,
             },
             {
               id: 'form-group',
               title: 'FormGroup',
-              render: () => <FormGroupPropTable renderPanel={false} />,
+              render: () => <FormGroupPropTable />,
             },
             {
               id: 'form-control-error',
               title: 'FormControlError',
-              render: () => <FormErrorPropTable renderPanel={false} />,
+              render: () => <FormErrorPropTable />,
             },
             {
               id: 'form-control-label',
               title: 'FormControlLabel',
-              render: () => <FormLabelPropTable renderPanel={false} />,
+              render: () => <FormLabelPropTable />,
             },
             {
               id: 'form-control-description',
               title: 'FormControlDescription',
-              render: () => <FormDescriptionPropTable renderPanel={false} />,
+              render: () => <FormDescriptionPropTable />,
             },
             {
               id: 'form-fieldset',
               title: 'Fieldset',
-              render: () => <FormFieldsetPropTable renderPanel={false} />,
+              render: () => <FormFieldsetPropTable />,
             },
           ]}
         />

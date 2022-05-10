@@ -48,7 +48,7 @@ const StepperPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <StepperPropTable renderPanel={false} />
+        <StepperPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

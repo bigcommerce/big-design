@@ -448,22 +448,22 @@ const SelectPage = () => {
             {
               id: 'select',
               title: 'Select',
-              render: () => <SelectPropTable renderPanel={false} />,
+              render: () => <SelectPropTable />,
             },
             {
               id: 'select-option',
               title: 'SelectOption',
-              render: () => <SelectOptionPropTable renderPanel={false} />,
+              render: () => <SelectOptionPropTable />,
             },
             {
               id: 'select-action',
               title: 'SelectAction',
-              render: () => <SelectActionPropTable renderPanel={false} />,
+              render: () => <SelectActionPropTable />,
             },
             {
               id: 'select-group',
               title: 'SelectGroup',
-              render: () => <SelectGroupPropTable renderPanel={false} />,
+              render: () => <SelectGroupPropTable />,
             },
           ]}
         />

@@ -47,7 +47,7 @@ const SwitchPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <SwitchPropTable renderPanel={false} />
+        <SwitchPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

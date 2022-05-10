@@ -172,7 +172,7 @@ const IconsPage = () => {
               id: 'icon',
               title: 'Icon',
               render: () => (
-                <IconPropTable renderPanel={false}>
+                <IconPropTable>
                   <CodeSnippet showControls={false} language="bash">
                     npm install @bigcommerce/big-design-icons // or yarn add @bigcommerce/big-design-icons
                   </CodeSnippet>
@@ -183,7 +183,7 @@ const IconsPage = () => {
               id: 'flag-icon',
               title: 'Flag icon',
               render: () => (
-                <FlagIconPropTable renderPanel={false}>
+                <FlagIconPropTable>
                   <InlineMessage
                     type="warning"
                     messages={[

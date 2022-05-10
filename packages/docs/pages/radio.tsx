@@ -183,17 +183,17 @@ const RadioPage = () => {
             {
               id: 'radio',
               title: 'Radio',
-              render: () => <RadioPropTable renderPanel={false} />,
+              render: () => <RadioPropTable />,
             },
             {
               id: 'radio-description',
               title: 'RadioDescription',
-              render: () => <RadioDescriptionPropTable renderPanel={false} />,
+              render: () => <RadioDescriptionPropTable />,
             },
             {
               id: 'radio-description-link',
               title: 'RadioDescriptionLink',
-              render: () => <RadioDescriptionLinkPropTable renderPanel={false} />,
+              render: () => <RadioDescriptionLinkPropTable />,
             },
           ]}
         />

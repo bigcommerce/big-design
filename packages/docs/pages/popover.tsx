@@ -57,7 +57,6 @@ const PopoverPage = () => {
               <PaddingPropTable collapsible />
             </>
           }
-          renderPanel={false}
         />
       </Panel>
 

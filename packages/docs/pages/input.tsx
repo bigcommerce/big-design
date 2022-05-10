@@ -119,7 +119,7 @@ const InputPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <InputPropTable renderPanel={false} />
+        <InputPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">

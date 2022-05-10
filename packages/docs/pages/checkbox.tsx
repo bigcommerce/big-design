@@ -140,19 +140,17 @@ const CheckboxPage = () => {
             {
               id: 'checkbox',
               title: 'Checkbox',
-              render: () => <CheckboxPropTable renderPanel={false} />,
+              render: () => <CheckboxPropTable />,
             },
             {
               id: 'checkbox-description',
               title: 'CheckboxDescription',
-              render: () => <CheckboxDescriptionPropTable id="checkbox-description-prop-table" renderPanel={false} />,
+              render: () => <CheckboxDescriptionPropTable id="checkbox-description-prop-table" />,
             },
             {
               id: 'checkbox-description-link',
               title: 'CheckboxDescriptionLink',
-              render: () => (
-                <CheckboxDescriptionLinkPropTable id="checkbox-description-link-prop-table" renderPanel={false} />
-              ),
+              render: () => <CheckboxDescriptionLinkPropTable id="checkbox-description-link-prop-table" />,
             },
           ]}
         />

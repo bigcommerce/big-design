@@ -48,7 +48,7 @@ const PanelPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <PanelPropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />
+        <PanelPropTable inheritedProps={<MarginPropTable collapsible />} />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
