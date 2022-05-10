@@ -53,7 +53,7 @@
     "@types/styled-components": "^5.1.11",
     "babel-jest": "^27.2.5",
     "babel-plugin-styled-components": "^2.0.2",
-    "jest": "^27.2.5",
+    "jest": "^28.1.0",
     "jest-styled-components": "^7.0.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
