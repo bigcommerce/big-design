@@ -133,7 +133,6 @@ const dropdownItemProps: Prop[] = [
   {
     name: 'type',
     types: "'text'",
-    defaultValue: "'text'",
     description: 'Type of the item.',
   },
 ];
