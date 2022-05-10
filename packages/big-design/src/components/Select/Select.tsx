@@ -80,6 +80,10 @@ export const Select = typedMemo(
     // Need to set select options if options prop changes
     useEffect(() => setFilteredOptions(flattenedOptions), [flattenedOptions]);
 
+    const getFirstMatchingOptionIndex = (filteredOptions: (SelectOption<T> | SelectAction)[]) => {
+      return filteredOptions.findIndex((option) => !option.disabled);
+    };
+
     const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
         action.onActionClick(inputValue || null);
@@ -118,10 +122,6 @@ export const Select = typedMemo(
           option.content === (action && action.content) ||
           option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
-    };
-
-    const getFirstMatchingOptionIndex = (filteredOptions: (SelectOption<T> | SelectAction)[]) => {
-      return filteredOptions.findIndex((option) => !option.disabled);
     };
 
     const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {

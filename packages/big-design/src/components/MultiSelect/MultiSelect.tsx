@@ -90,6 +90,10 @@ export const MultiSelect = typedMemo(
       setInputValue('');
     }, [selectedOptions]);
 
+    const getFirstMatchingOptionIndex = (filteredOptions: (SelectOption<T> | SelectAction)[]) => {
+      return filteredOptions.findIndex((option) => !option.disabled);
+    };
+
     const handleSetInputValue = ({
       inputValue,
       isOpen,
@@ -111,10 +115,6 @@ export const MultiSelect = typedMemo(
       return flattenedOptions.filter(
         (option) => option === action || option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
-    };
-
-    const getFirstMatchingOptionIndex = (filteredOptions: (SelectOption<T> | SelectAction)[]) => {
-      return filteredOptions.findIndex((option) => !option.disabled);
     };
 
     const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
