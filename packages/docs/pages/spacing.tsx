@@ -22,7 +22,7 @@ const SpacingPage = () => {
         <Text>
           BigDesign core theme provides a pre-defined set of spacing values that are primarily used with any of the{' '}
           <Code primary>padding</Code> and <Code primary>margin</Code> props. There are a few ways we can consume these
-          values
+          values.
         </Text>
         <Text bold>When to use:</Text>
         <List>
