@@ -347,6 +347,54 @@ test('select items should be filterable', async () => {
   expect(options.length).toBe(2);
 });
 
+test('autoselects first matching option when filtering', async () => {
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.change(input, { target: { value: 'm' } });
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options.length).toBe(2);
+  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(options[1].getAttribute('aria-selected')).toBe('false');
+});
+
+test('does not autoselect first matching option when it is disabled', async () => {
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.change(input, { target: { value: 'f' } });
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options.length).toBe(2);
+  expect(options[0].getAttribute('aria-selected')).toBe('false');
+  expect(options[1].getAttribute('aria-selected')).toBe('true');
+});
+
+test('previous option remains selected after clearing the input value', async () => {
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+
+  fireEvent.change(input, { target: { value: 'ca' } });
+
+  const canadaOption = await screen.findByRole('option', { name: 'Canada' });
+
+  expect(canadaOption.getAttribute('aria-selected')).toBe('true');
+
+  fireEvent.change(input, { target: { value: '' } });
+
+  const options = await screen.findAllByRole('option');
+  const mexicoOption = await screen.findByRole('option', { name: 'Mexico' });
+
+  expect(options.length).toBe(6);
+  expect(mexicoOption.getAttribute('aria-selected')).toBe('true');
+});
+
 test('select options should immediately rerender when prop changes', async () => {
   const { rerender } = render(<Select onOptionChange={onChange} options={mockOptions} />);
 

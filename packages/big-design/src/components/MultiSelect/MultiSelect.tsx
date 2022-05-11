@@ -90,12 +90,22 @@ export const MultiSelect = typedMemo(
       setInputValue('');
     }, [selectedOptions]);
 
+    const getFirstMatchingOptionIndex = (filteredOptions: (SelectOption<T> | SelectAction)[]) => {
+      return filteredOptions.findIndex((option) => !option.disabled);
+    };
+
     const handleSetInputValue = ({
       inputValue,
       isOpen,
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && isOpen === true) {
-        setFilteredOptions(filterOptions(inputValue));
+        const newFilteredOptions = filterOptions(inputValue);
+        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
+
+        setFilteredOptions(newFilteredOptions);
+
+        // Auto highlight first matching option
+        setHighlightedIndex(firstMatchingOptionIndex);
       }
 
       setInputValue(inputValue || '');
@@ -219,8 +229,10 @@ export const MultiSelect = typedMemo(
       highlightedIndex,
       isOpen,
       openMenu,
+      setHighlightedIndex,
     } = useCombobox({
       id: multiSelectUniqueId,
+      initialHighlightedIndex: 0,
       inputId: id,
       inputValue,
       itemToString: (option) => (option ? option.content : ''),

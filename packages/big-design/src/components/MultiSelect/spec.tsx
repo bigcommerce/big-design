@@ -325,8 +325,6 @@ test('up/down arrows should change select item selection', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
 
@@ -370,7 +368,7 @@ test('end should select last select item', async () => {
   const options = await screen.findAllByRole('option');
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(options[1].getAttribute('aria-selected')).toBe('true');
 
   fireEvent.keyDown(input, { key: 'End' });
 
@@ -389,7 +387,7 @@ test('enter should trigger onOptionsChange', async () => {
     await fireEvent.keyDown(input, { key: 'Enter' });
   });
 
-  expect(onChange).toHaveBeenCalledWith([mockOptions[1].value], [mockOptions[1]]);
+  expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
 });
 
 test('clicking on select options should trigger onOptionsChange', async () => {
@@ -784,8 +782,8 @@ test('multiselect should be able to select multiple options', async () => {
   });
 
   expect(onChange).toHaveBeenCalledWith(
-    [mockOptions[0].value, mockOptions[1].value, mockOptions[2].value],
-    [mockOptions[0], mockOptions[1], mockOptions[2]],
+    [mockOptions[0].value, mockOptions[1].value, mockOptions[3].value],
+    [mockOptions[0], mockOptions[1], mockOptions[3]],
   );
 });
 
@@ -800,7 +798,7 @@ test('multiselect should be able to deselect options', async () => {
     await fireEvent.keyDown(inputs[0], { key: 'Enter' });
   });
 
-  expect(onChange).toHaveBeenCalledWith([mockOptions[1].value], [mockOptions[1]]);
+  expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
 });
 
 test('multiselect options should immediately rerender when prop changes', async () => {
@@ -930,17 +928,18 @@ test('group labels should be skipped when using keyboard to navigate options', a
   const options = await screen.findAllByRole('option');
 
   expect(options.length).toBe(6);
-
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-
   expect(options[0].getAttribute('aria-selected')).toBe('true');
-  expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
+
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+
+  expect(options[1].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   fireEvent.keyDown(input, { key: 'ArrowDown' });
 
-  expect(options[2].getAttribute('aria-selected')).toBe('true');
-  expect(input.getAttribute('aria-activedescendant')).toEqual(options[2].id);
+  expect(options[3].getAttribute('aria-selected')).toBe('true');
+  expect(input.getAttribute('aria-activedescendant')).toEqual(options[3].id);
 });
 
 test('group labels should still render when filtering options', async () => {
@@ -958,6 +957,53 @@ test('group labels should still render when filtering options', async () => {
   expect(options.length).toBe(2);
   expect(label1).toBeInTheDocument();
   expect(label2).toBeInTheDocument();
+});
+
+test('autoselects first matching option when filtering', async () => {
+  render(MultiSelectMock);
+
+  const input = await screen.findByTestId('multi-select');
+
+  fireEvent.change(input, { target: { value: 'm' } });
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options.length).toBe(2);
+  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(options[1].getAttribute('aria-selected')).toBe('false');
+});
+
+test('does not autoselect first matching option when it is disabled', async () => {
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+
+  fireEvent.change(input, { target: { value: 'f' } });
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options.length).toBe(2);
+  expect(options[0].getAttribute('aria-selected')).toBe('false');
+  expect(options[1].getAttribute('aria-selected')).toBe('true');
+});
+
+test('after clearing the input value, first option is always selected', async () => {
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+
+  fireEvent.change(input, { target: { value: 'Can' } });
+
+  const canadaOption = await screen.findByRole('option', { name: 'Canada' });
+
+  expect(canadaOption.getAttribute('aria-selected')).toBe('true');
+
+  fireEvent.change(input, { target: { value: '' } });
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options.length).toBe(6);
+  expect(options[0].getAttribute('aria-selected')).toBe('true');
 });
 
 test('select option should supports description', async () => {

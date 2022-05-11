@@ -80,6 +80,10 @@ export const Select = typedMemo(
     // Need to set select options if options prop changes
     useEffect(() => setFilteredOptions(flattenedOptions), [flattenedOptions]);
 
+    const getFirstMatchingOptionIndex = (filteredOptions: (SelectOption<T> | SelectAction)[]) => {
+      return filteredOptions.findIndex((option) => !option.disabled);
+    };
+
     const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
         action.onActionClick(inputValue || null);
@@ -94,7 +98,19 @@ export const Select = typedMemo(
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       // Filter only when List is open
       if (filterable && isOpen === true) {
-        setFilteredOptions(filterOptions(inputValue));
+        const newFilteredOptions = filterOptions(inputValue);
+        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
+
+        setFilteredOptions(newFilteredOptions);
+
+        // Auto highlight first matching option
+        if (inputValue !== '') {
+          setHighlightedIndex(firstMatchingOptionIndex);
+        } else if (selectedItem) {
+          const selectedItemIndex = flattenedOptions.indexOf(selectedItem);
+
+          setHighlightedIndex(selectedItemIndex);
+        }
       }
 
       setInputValue(inputValue || '');
@@ -147,6 +163,7 @@ export const Select = typedMemo(
       isOpen,
       openMenu,
       selectedItem,
+      setHighlightedIndex,
     } = useCombobox({
       id: selectUniqueId,
       inputId: id,
