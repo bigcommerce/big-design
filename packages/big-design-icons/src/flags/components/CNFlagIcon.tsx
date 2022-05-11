@@ -14,41 +14,41 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
 
   return (
     <svg
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 640 480"
       aria-hidden={ariaHidden}
-      ref={svgRef}
       aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
-        <path id="CNFlagIcon__a" fill="#ffde00" d="M-.6.8L0-1 .6.8-1-.3h2z" />
+        <path d="M-.6.8L0-1 .6.8-1-.3h2z" fill="#ffde00" id="CNFlagIcon__a" />
       </defs>
-      <path fill="#de2910" d="M0 0h640v480H0z" />
-      <use width={30} height={20} transform="matrix(71.9991 0 0 72 120 120)" xlinkHref="#CNFlagIcon__a" />
+      <path d="M0 0h640v480H0z" fill="#de2910" />
+      <use height={20} transform="matrix(71.9991 0 0 72 120 120)" width={30} xlinkHref="#CNFlagIcon__a" />
       <use
-        width={30}
         height={20}
         transform="matrix(-12.33562 -20.5871 20.58684 -12.33577 240.3 48)"
+        width={30}
         xlinkHref="#CNFlagIcon__a"
       />
       <use
-        width={30}
         height={20}
         transform="matrix(-3.38573 -23.75998 23.75968 -3.38578 288 95.8)"
+        width={30}
         xlinkHref="#CNFlagIcon__a"
       />
       <use
-        width={30}
         height={20}
         transform="matrix(6.5991 -23.0749 23.0746 6.59919 288 168)"
+        width={30}
         xlinkHref="#CNFlagIcon__a"
       />
       <use
-        width={30}
         height={20}
         transform="matrix(14.9991 -18.73557 18.73533 14.99929 240 216)"
+        width={30}
         xlinkHref="#CNFlagIcon__a"
       />
     </svg>
@@ -59,6 +59,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const CNFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const CNFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 CNFlagIcon.displayName = 'CNFlagIcon';

@@ -13,17 +13,17 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="BYFlagIcon__a">
-          <path fillOpacity={0.7} d="M0 0h682.6v512H0z" />
+          <path d="M0 0h682.6v512H0z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g fillRule="evenodd" clipPath="url(#BYFlagIcon__a)" transform="scale(.9376 .9375)">
-        <path fill="#b20000" d="M0 0h1024v340.1H0z" />
-        <path fill="#429f00" d="M0 340.1h1024V512H0z" />
-        <path fill="#fff" d="M0 0h113.4v512H0z" />
+      <g clipPath="url(#BYFlagIcon__a)" fillRule="evenodd" transform="scale(.9376 .9375)">
+        <path d="M0 0h1024v340.1H0z" fill="#b20000" />
+        <path d="M0 340.1h1024V512H0z" fill="#429f00" />
+        <path d="M0 0h113.4v512H0z" fill="#fff" />
         <g fill="#b20000" strokeWidth="1pt">
           <path d="M5.4 8.7h5.4v8.7H5.4zm16.2 0h16.2v8.7H21.6zM27 0h5.4v8.7H27zm27 0h5.4v8.7H54zm21.6 8.7h16.2v8.7H75.6zM81 0h5.4v8.7H81zM16.2 17.4H27V26H16.2zm16.2 0h10.8V26H32.4zm37.8 0H81V26H70.2zm16.2 0h10.8V26H86.4zM10.8 26h10.8v8.7H10.8zm27 0h10.8v8.7H37.8zm27 0h10.8v8.7H64.8zm27 0h10.8v8.7H91.8zm10.8-17.3h5.4v8.7h-5.4zm-97.2 26h10.8v8.7H5.4zm37.8 0H54v8.7H43.2zm54 0H108v8.7H97.2zm-86.4 26h10.8v8.7H10.8zm5.4 8.7H27v8.7H16.2zm21.6-8.6h10.8v8.6H37.8zm-5.4 8.6h10.8v8.7H32.4zm-10.8 8.7h16.2v8.7H21.6z" />
           <path d="M27 86.8h5.4v8.7H27zm37.8-26h10.8v8.6H64.8zm5.4 8.6H81v8.7H70.2zm21.6-8.6h10.8v8.6H91.8zm-5.4 8.6h10.8v8.7H86.4zm-10.8 8.7h16.2v8.7H75.6zm5.4 8.7h5.4v8.7H81zM54 78h5.4v8.7H54zM0 78h5.4v8.7H0zm108 0h5.4v8.7H108zm-81 43.4h5.4v8.7H27zm-5.4 8.8h16.2v8.6H21.6zm-5.4 8.6h27v8.7h-27zM81 121.5h5.4v8.7H81zm-5.4 8.7h16.2v8.6H75.6zm-5.4 8.6h27v8.7h-27zm5.4 43.4h27v8.7h-27zm-10.8-34.7h37.8v8.7H64.8zm-54 0h37.8v8.7H10.8zm5.4 43.4h16.2v8.7H16.2zm-5.4-8.7h27v8.7h-27zM86.4 165h27v8.7h-27zM81 191h16.2v8.7H81z" />
@@ -41,6 +41,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const BYFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const BYFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 BYFlagIcon.displayName = 'BYFlagIcon';

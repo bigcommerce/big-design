@@ -13,11 +13,11 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
       {title ? <title id={titleId}>{title}</title> : null}
-      <path fill="#0038a8" d="M0 319.7h640V480H0z" />
-      <path fill="#fff" d="M0 160h640v160H0z" />
-      <path fill="#d52b1e" d="M0 0h640v160H0z" />
+      <path d="M0 319.7h640V480H0z" fill="#0038a8" />
+      <path d="M0 160h640v160H0z" fill="#fff" />
+      <path d="M0 0h640v160H0z" fill="#d52b1e" />
       <g fill="none" stroke="#000" transform="translate(-116.4) scale(1.45455)">
         <circle cx={300} cy={165} r={42.2} strokeWidth={1.1} />
         <circle cx={300} cy={165} r={34.7} strokeWidth={0.5} />
@@ -170,10 +170,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         <path d="M314.8 263.4l-9.3 2.6h10l1.3-1.5-2-1z" />
       </g>
       <path
+        d="M327.6 249.5l-7.6-5.3-7.6 5.3 2.9-8.4-6.7-5.2h8.6l2.8-8.4 2.8 8.4h8.6l-6.7 5.2 2.9 8.4z"
         fill="#fedf00"
         stroke="#000"
         strokeWidth={0.4}
-        d="M327.6 249.5l-7.6-5.3-7.6 5.3 2.9-8.4-6.7-5.2h8.6l2.8-8.4 2.8 8.4h8.6l-6.7 5.2 2.9 8.4z"
       />
     </svg>
   );
@@ -183,6 +183,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const PYFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const PYFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 PYFlagIcon.displayName = 'PYFlagIcon';

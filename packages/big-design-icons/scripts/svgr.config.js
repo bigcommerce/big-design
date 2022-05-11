@@ -38,7 +38,7 @@ module.exports = {
     const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => <Icon {...iconProps} svgRef={ref} />);
 
     BREAK
-    export const COMPONENT_NAME = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
+    export const COMPONENT_NAME = memo(createStyledIcon(IconWithForwardedRef));
 
     BREAK
     COMPONENT_NAME.displayName = '${componentName.name}';

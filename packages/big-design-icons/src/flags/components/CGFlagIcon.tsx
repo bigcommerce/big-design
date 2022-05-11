@@ -13,17 +13,17 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="CGFlagIcon__a">
-          <path fillOpacity={0.7} d="M-79.5 32h640v480h-640z" />
+          <path d="M-79.5 32h640v480h-640z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g fillRule="evenodd" strokeWidth="1pt" clipPath="url(#CGFlagIcon__a)" transform="translate(79.5 -32)">
-        <path fill="#ff0" d="M-119.5 32h720v480h-720z" />
-        <path fill="#00ca00" d="M-119.5 32v480l480-480h-480z" />
-        <path fill="red" d="M120.5 512h480V32l-480 480z" />
+      <g clipPath="url(#CGFlagIcon__a)" fillRule="evenodd" strokeWidth="1pt" transform="translate(79.5 -32)">
+        <path d="M-119.5 32h720v480h-720z" fill="#ff0" />
+        <path d="M-119.5 32v480l480-480h-480z" fill="#00ca00" />
+        <path d="M120.5 512h480V32l-480 480z" fill="red" />
       </g>
     </svg>
   );
@@ -33,6 +33,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const CGFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const CGFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 CGFlagIcon.displayName = 'CGFlagIcon';

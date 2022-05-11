@@ -13,15 +13,15 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="AXFlagIcon__a">
-          <path fillOpacity={0.7} d="M106.3 0h1133.3v850H106.3z" />
+          <path d="M106.3 0h1133.3v850H106.3z" fillOpacity={0.7} />
         </clipPath>
       </defs>
       <g clipPath="url(#AXFlagIcon__a)" transform="matrix(.56472 0 0 .56482 -60 -.1)">
-        <path fill="#0053a5" d="M0 0h1300v850H0z" />
+        <path d="M0 0h1300v850H0z" fill="#0053a5" />
         <g fill="#ffce00">
           <path d="M400 0h250v850H400z" />
           <path d="M0 300h1300v250H0z" />
@@ -39,6 +39,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const AXFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const AXFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 AXFlagIcon.displayName = 'AXFlagIcon';

@@ -13,14 +13,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
       {title ? <title id={titleId}>{title}</title> : null}
       <clipPath id="TWFlagIcon__a">
         <path d="M0 0h640v480H0z" />
       </clipPath>
       <g clipPath="url(#TWFlagIcon__a)">
-        <path fill="red" d="M0 0h720v480H0z" />
-        <path fill="#000095" d="M0 0h360v240H0z" />
+        <path d="M0 0h720v480H0z" fill="red" />
+        <path d="M0 0h360v240H0z" fill="#000095" />
         <g fill="#fff">
           <path d="M154 126.9l-2.5 9.6 9.4 2.6-1.8-7.1zm46.9 5.1l-1.8 7.1 9.4-2.6-2.5-9.6zm-41.8-24l-5.1 5.1 1.9 6.9z" />
           <path d="M155.9 120l-1.9 6.9 5.1 5.1z" />
@@ -44,8 +44,8 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           <path d="M192 75.1L180 30l-12 45.1 12 12z" />
           <path d="M173.1 94l6.9-6.9-12-12-4.5 16.4z" />
         </g>
-        <circle cx={180} cy={120} r={51.1} fill="#000095" />
-        <circle cx={180} cy={120} r={45.1} fill="#fff" />
+        <circle cx={180} cy={120} fill="#000095" r={51.1} />
+        <circle cx={180} cy={120} fill="#fff" r={45.1} />
       </g>
     </svg>
   );
@@ -55,6 +55,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const TWFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const TWFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 TWFlagIcon.displayName = 'TWFlagIcon';
