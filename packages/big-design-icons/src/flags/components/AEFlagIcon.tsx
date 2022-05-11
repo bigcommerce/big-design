@@ -13,12 +13,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
       {title ? <title id={titleId}>{title}</title> : null}
-      <path fill="#00732f" d="M0 0h640v160H0z" />
-      <path fill="#fff" d="M0 160h640v160H0z" />
+      <path d="M0 0h640v160H0z" fill="#00732f" />
+      <path d="M0 160h640v160H0z" fill="#fff" />
       <path d="M0 320h640v160H0z" />
-      <path fill="red" d="M0 0h220v480H0z" />
+      <path d="M0 0h220v480H0z" fill="red" />
     </svg>
   );
 };
@@ -27,6 +27,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const AEFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const AEFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 AEFlagIcon.displayName = 'AEFlagIcon';

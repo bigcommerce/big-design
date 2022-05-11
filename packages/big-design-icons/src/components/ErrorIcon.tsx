@@ -13,15 +13,15 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
 
   return (
     <svg
-      width={24}
-      height={24}
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      fill="currentColor"
-      strokeWidth="0"
       aria-hidden={ariaHidden}
-      ref={svgRef}
       aria-labelledby={titleId}
+      fill="currentColor"
+      height={24}
+      ref={svgRef}
+      stroke="currentColor"
+      strokeWidth="0"
+      viewBox="0 0 24 24"
+      width={24}
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
@@ -34,6 +34,6 @@ const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, re
   <Icon {...iconProps} svgRef={ref} />
 ));
 
-export const ErrorIcon = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
+export const ErrorIcon = memo(createStyledIcon(IconWithForwardedRef));
 
 ErrorIcon.displayName = 'ErrorIcon';

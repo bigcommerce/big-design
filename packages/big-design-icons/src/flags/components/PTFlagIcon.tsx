@@ -14,16 +14,16 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
 
   return (
     <svg
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 640 480"
       aria-hidden={ariaHidden}
-      ref={svgRef}
       aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path fill="red" d="M256 0h384v480H256z" />
-      <path fill="#060" d="M0 0h256v480H0z" />
+      <path d="M256 0h384v480H256z" fill="red" />
+      <path d="M0 0h256v480H0z" fill="#060" />
       <g fill="#ff0" fillRule="evenodd" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={0.6}>
         <path d="M339.5 306.2c-32.3-1-180-93.2-181-108l8.1-13.5c14.7 21.3 165.7 111 180.6 107.8l-7.7 13.7" />
         <path d="M164.9 182.8c-2.9 7.8 38.6 33.4 88.4 63.8 49.9 30.3 92.9 49 96 46.4l1.5-2.8c-.6 1-2 1.3-4.3.6-13.5-3.9-48.6-20-92.1-46.4-43.6-26.4-81.4-50.7-87.3-61a6.3 6.3 0 01-.6-3.1h-.2l-1.2 2.2-.2.3zm175.3 123.8c-.5 1-1.6 1-3.5.8-12-1.3-48.6-19.1-91.9-45-50.4-30.2-92-57.6-87.4-64.8l1.2-2.2.2.1c-4 12.2 82.1 61.4 87.2 64.6 49.8 30.8 91.8 48.9 95.5 44.2l-1.3 2.3z" />
@@ -45,42 +45,42 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
       </g>
       <g transform="translate(0 26.7) scale(1.06667)">
         <path
+          d="M180.6 211a58.7 58.7 0 0017.5 41.7 59 59 0 0041.8 17.6 59.4 59.4 0 0042-17.4 59 59 0 0017.4-41.8v-79.2l-118.7-.2V211z"
           fill="#fff"
           stroke="#000"
           strokeWidth={0.7}
-          d="M180.6 211a58.7 58.7 0 0017.5 41.7 59 59 0 0041.8 17.6 59.4 59.4 0 0042-17.4 59 59 0 0017.4-41.8v-79.2l-118.7-.2V211z"
         />
         <path
+          d="M182.8 211.1a56.4 56.4 0 0016.8 40 57 57 0 0040.2 16.8 56.9 56.9 0 0040.2-16.6 56.4 56.4 0 0016.7-40v-77H183v76.8m91-53.7v48.9l-.1 5.1a33.2 33.2 0 01-10 24 34 34 0 01-24 10c-9.4 0-17.7-4-23.9-10.2a34 34 0 01-10-24v-54l68 .2z"
           fill="red"
           stroke="#000"
           strokeWidth={0.5}
-          d="M182.8 211.1a56.4 56.4 0 0016.8 40 57 57 0 0040.2 16.8 56.9 56.9 0 0040.2-16.6 56.4 56.4 0 0016.7-40v-77H183v76.8m91-53.7v48.9l-.1 5.1a33.2 33.2 0 01-10 24 34 34 0 01-24 10c-9.4 0-17.7-4-23.9-10.2a34 34 0 01-10-24v-54l68 .2z"
         />
         <g id="PTFlagIcon__e">
-          <g id="PTFlagIcon__d" fill="#ff0" stroke="#000" strokeWidth={0.5}>
-            <path stroke="none" d="M190.2 154.4c.1-5.5 4-6.8 4-6.8.1 0 4.3 1.4 4.3 6.9h-8.3" />
+          <g fill="#ff0" id="PTFlagIcon__d" stroke="#000" strokeWidth={0.5}>
+            <path d="M190.2 154.4c.1-5.5 4-6.8 4-6.8.1 0 4.3 1.4 4.3 6.9h-8.3" stroke="none" />
             <path d="M186.8 147.7l-.7 6.3h4.2c0-5.2 4-6 4-6 .1 0 4 1.1 4.1 6h4.2l-.8-6.4h-15zm-1 6.4h17c.3 0 .6.3.6.7 0 .5-.3.8-.6.8h-17c-.3 0-.6-.3-.6-.8 0-.4.3-.7.7-.7z" />
             <path d="M192 154c0-3.3 2.3-4.2 2.3-4.2s2.3 1 2.3 4.2H192m-5.8-9h16.3c.3 0 .6.4.6.8 0 .3-.3.6-.6.6h-16.3c-.3 0-.6-.3-.6-.7 0-.3.3-.6.6-.6zm.4 1.5H202c.3 0 .6.3.6.7 0 .4-.3.7-.6.7h-15.5c-.4 0-.6-.3-.6-.7 0-.4.2-.7.6-.7zm5-10.6h1.2v.8h.9v-.8h1.3v.9h.9v-1h1.2v2c0 .4-.2.6-.5.6h-4.4c-.3 0-.6-.2-.6-.5v-2zm4.6 2.7l.3 6.4h-4.3l.3-6.5h3.7" />
-            <path id="PTFlagIcon__a" d="M191 141.6v3.4h-4v-3.4h4z" />
-            <use width="100%" height="100%" x={10.6} xlinkHref="#PTFlagIcon__a" />
+            <path d="M191 141.6v3.4h-4v-3.4h4z" id="PTFlagIcon__a" />
+            <use height="100%" width="100%" x={10.6} xlinkHref="#PTFlagIcon__a" />
             <path
-              id="PTFlagIcon__b"
               d="M186.3 139h1.2v1h.9v-1h1.2v1h.9v-1h1.2v2c0 .4-.2.6-.5.6h-4.3a.6.6 0 01-.6-.6v-2z"
+              id="PTFlagIcon__b"
             />
-            <use width="100%" height="100%" x={10.6} xlinkHref="#PTFlagIcon__b" />
-            <path fill="#000" stroke="none" d="M193.9 140.6c0-.6.9-.6.9 0v1.6h-.9v-1.6" />
-            <path id="PTFlagIcon__c" fill="#000" stroke="none" d="M188.6 142.8c0-.6.8-.6.8 0v1.2h-.8v-1.2" />
-            <use width="100%" height="100%" x={10.6} xlinkHref="#PTFlagIcon__c" />
+            <use height="100%" width="100%" x={10.6} xlinkHref="#PTFlagIcon__b" />
+            <path d="M193.9 140.6c0-.6.9-.6.9 0v1.6h-.9v-1.6" fill="#000" stroke="none" />
+            <path d="M188.6 142.8c0-.6.8-.6.8 0v1.2h-.8v-1.2" fill="#000" id="PTFlagIcon__c" stroke="none" />
+            <use height="100%" width="100%" x={10.6} xlinkHref="#PTFlagIcon__c" />
           </g>
-          <use width="100%" height="100%" y={46.3} xlinkHref="#PTFlagIcon__d" />
-          <use width="100%" height="100%" transform="rotate(-45.2 312.8 180)" xlinkHref="#PTFlagIcon__d" />
+          <use height="100%" width="100%" xlinkHref="#PTFlagIcon__d" y={46.3} />
+          <use height="100%" transform="rotate(-45.2 312.8 180)" width="100%" xlinkHref="#PTFlagIcon__d" />
         </g>
-        <use width="100%" height="100%" x={45.7} xlinkHref="#PTFlagIcon__d" />
-        <use width="100%" height="100%" transform="matrix(-1 0 0 1 479.8 0)" xlinkHref="#PTFlagIcon__e" />
-        <g id="PTFlagIcon__f" fill="#fff">
+        <use height="100%" width="100%" x={45.7} xlinkHref="#PTFlagIcon__d" />
+        <use height="100%" transform="matrix(-1 0 0 1 479.8 0)" width="100%" xlinkHref="#PTFlagIcon__e" />
+        <g fill="#fff" id="PTFlagIcon__f">
           <path
-            fill="#039"
             d="M232.6 202.4a8.3 8.3 0 002.2 5.7 7.2 7.2 0 005.3 2.4c2.1 0 4-1 5.3-2.4a8.3 8.3 0 002.2-5.7v-10.8h-15v10.8"
+            fill="#039"
           />
           <circle cx={236.1} cy={195.7} r={1.5} />
           <circle cx={244.4} cy={195.7} r={1.5} />
@@ -88,10 +88,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           <circle cx={236.1} cy={203.9} r={1.5} />
           <circle cx={244.4} cy={203.9} r={1.5} />
         </g>
-        <use width="100%" height="100%" y={-26} xlinkHref="#PTFlagIcon__f" />
-        <use width="100%" height="100%" x={-20.8} xlinkHref="#PTFlagIcon__f" />
-        <use width="100%" height="100%" x={20.8} xlinkHref="#PTFlagIcon__f" />
-        <use width="100%" height="100%" y={25.8} xlinkHref="#PTFlagIcon__f" />
+        <use height="100%" width="100%" xlinkHref="#PTFlagIcon__f" y={-26} />
+        <use height="100%" width="100%" x={-20.8} xlinkHref="#PTFlagIcon__f" />
+        <use height="100%" width="100%" x={20.8} xlinkHref="#PTFlagIcon__f" />
+        <use height="100%" width="100%" xlinkHref="#PTFlagIcon__f" y={25.8} />
       </g>
     </svg>
   );
@@ -101,6 +101,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const PTFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const PTFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 PTFlagIcon.displayName = 'PTFlagIcon';

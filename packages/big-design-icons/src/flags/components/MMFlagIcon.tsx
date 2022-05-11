@@ -14,28 +14,28 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
 
   return (
     <svg
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 640 480"
       aria-hidden={ariaHidden}
-      ref={svgRef}
       aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
-        <path id="MMFlagIcon__a" fill="#fff" d="M0-.5l.2.5h-.4z" transform="scale(8.844)" />
+        <path d="M0-.5l.2.5h-.4z" fill="#fff" id="MMFlagIcon__a" transform="scale(8.844)" />
         <g id="MMFlagIcon__b">
-          <use width={18} height={12} transform="rotate(-144)" xlinkHref="#MMFlagIcon__a" />
-          <use width={18} height={12} transform="rotate(-72)" xlinkHref="#MMFlagIcon__a" />
-          <use width={18} height={12} xlinkHref="#MMFlagIcon__a" />
-          <use width={18} height={12} transform="rotate(72)" xlinkHref="#MMFlagIcon__a" />
-          <use width={18} height={12} transform="rotate(144)" xlinkHref="#MMFlagIcon__a" />
+          <use height={12} transform="rotate(-144)" width={18} xlinkHref="#MMFlagIcon__a" />
+          <use height={12} transform="rotate(-72)" width={18} xlinkHref="#MMFlagIcon__a" />
+          <use height={12} width={18} xlinkHref="#MMFlagIcon__a" />
+          <use height={12} transform="rotate(72)" width={18} xlinkHref="#MMFlagIcon__a" />
+          <use height={12} transform="rotate(144)" width={18} xlinkHref="#MMFlagIcon__a" />
         </g>
       </defs>
-      <path fill="#fecb00" d="M0-.1h640V160H0z" />
-      <path fill="#ea2839" d="M0 320h640v160H0z" />
-      <path fill="#34b233" d="M0 160h640v160H0z" />
-      <use width={18} height={12} x={9} y={6.4} transform="matrix(40 0 0 40 -40 0)" xlinkHref="#MMFlagIcon__b" />
+      <path d="M0-.1h640V160H0z" fill="#fecb00" />
+      <path d="M0 320h640v160H0z" fill="#ea2839" />
+      <path d="M0 160h640v160H0z" fill="#34b233" />
+      <use height={12} transform="matrix(40 0 0 40 -40 0)" width={18} x={9} xlinkHref="#MMFlagIcon__b" y={6.4} />
     </svg>
   );
 };
@@ -44,6 +44,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const MMFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const MMFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 MMFlagIcon.displayName = 'MMFlagIcon';

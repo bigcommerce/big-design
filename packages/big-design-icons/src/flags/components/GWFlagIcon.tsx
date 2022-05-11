@@ -14,25 +14,25 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
 
   return (
     <svg
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 640 480"
       aria-hidden={ariaHidden}
-      ref={svgRef}
       aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path fill="#ce1126" d="M0 0h220v480H0z" />
-      <path fill="#fcd116" d="M220 0h420v240H220z" />
-      <path fill="#009e49" d="M220 240h420v240H220z" />
+      <path d="M0 0h220v480H0z" fill="#ce1126" />
+      <path d="M220 0h420v240H220z" fill="#fcd116" />
+      <path d="M220 240h420v240H220z" fill="#009e49" />
       <g id="GWFlagIcon__b" transform="matrix(80 0 0 80 110 240)">
-        <path id="GWFlagIcon__a" d="M0-1v1h.5" transform="rotate(18 0 -1)" />
-        <use width="100%" height="100%" transform="scale(-1 1)" xlinkHref="#GWFlagIcon__a" />
+        <path d="M0-1v1h.5" id="GWFlagIcon__a" transform="rotate(18 0 -1)" />
+        <use height="100%" transform="scale(-1 1)" width="100%" xlinkHref="#GWFlagIcon__a" />
       </g>
-      <use width="100%" height="100%" transform="rotate(72 110 240)" xlinkHref="#GWFlagIcon__b" />
-      <use width="100%" height="100%" transform="rotate(144 110 240)" xlinkHref="#GWFlagIcon__b" />
-      <use width="100%" height="100%" transform="rotate(-144 110 240)" xlinkHref="#GWFlagIcon__b" />
-      <use width="100%" height="100%" transform="rotate(-72 110 240)" xlinkHref="#GWFlagIcon__b" />
+      <use height="100%" transform="rotate(72 110 240)" width="100%" xlinkHref="#GWFlagIcon__b" />
+      <use height="100%" transform="rotate(144 110 240)" width="100%" xlinkHref="#GWFlagIcon__b" />
+      <use height="100%" transform="rotate(-144 110 240)" width="100%" xlinkHref="#GWFlagIcon__b" />
+      <use height="100%" transform="rotate(-72 110 240)" width="100%" xlinkHref="#GWFlagIcon__b" />
     </svg>
   );
 };
@@ -41,6 +41,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const GWFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const GWFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 GWFlagIcon.displayName = 'GWFlagIcon';

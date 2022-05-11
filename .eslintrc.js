@@ -76,5 +76,11 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 'off',
       },
     },
+    {
+      files: 'packages/big-design-icons/**/*.tsx',
+      rules: {
+        'react/jsx-sort-props': 'warn',
+      },
+    },
   ],
 };

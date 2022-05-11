@@ -13,18 +13,18 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="BJFlagIcon__a">
-          <path fill="gray" d="M67.6-154h666v666h-666z" />
+          <path d="M67.6-154h666v666h-666z" fill="gray" />
         </clipPath>
       </defs>
       <g clipPath="url(#BJFlagIcon__a)" transform="matrix(.961 0 0 .7207 -65 111)">
         <g fillRule="evenodd" strokeWidth="1pt">
-          <path fill="#319400" d="M0-154h333v666H0z" />
-          <path fill="#ffd600" d="M333-154h666v333H333z" />
-          <path fill="#de2110" d="M333 179h666v333H333z" />
+          <path d="M0-154h333v666H0z" fill="#319400" />
+          <path d="M333-154h666v333H333z" fill="#ffd600" />
+          <path d="M333 179h666v333H333z" fill="#de2110" />
         </g>
       </g>
     </svg>
@@ -35,6 +35,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const BJFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const BJFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 BJFlagIcon.displayName = 'BJFlagIcon';

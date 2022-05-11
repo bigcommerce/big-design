@@ -14,11 +14,11 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
 
   return (
     <svg
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 640 480"
       aria-hidden={ariaHidden}
-      ref={svgRef}
       aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
@@ -40,90 +40,90 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           <use transform="scale(-1 1) rotate(72)" xlinkHref="#NZFlagIcon__a" />
         </g>
       </defs>
-      <path fill="#00247d" fillRule="evenodd" d="M0 0h640v480H0z" />
+      <path d="M0 0h640v480H0z" fill="#00247d" fillRule="evenodd" />
       <g transform="translate(-93 36.1) scale(.66825)">
         <use
-          width="100%"
-          height="100%"
           fill="#fff"
+          height="100%"
           transform="matrix(45.4 0 0 45.4 900 120)"
+          width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
         <use
-          width="100%"
-          height="100%"
           fill="#cc142b"
+          height="100%"
           transform="matrix(30 0 0 30 900 120)"
+          width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
       </g>
       <g transform="rotate(82 534.2 125) scale(.66825)">
         <use
-          width="100%"
-          height="100%"
           fill="#fff"
+          height="100%"
           transform="rotate(-82 519 -457.7) scale(40.4)"
+          width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
         <use
-          width="100%"
-          height="100%"
           fill="#cc142b"
+          height="100%"
           transform="rotate(-82 519 -457.7) scale(25)"
+          width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
       </g>
       <g transform="rotate(82 534.2 125) scale(.66825)">
         <use
-          width="100%"
-          height="100%"
           fill="#fff"
+          height="100%"
           transform="rotate(-82 668.6 -327.7) scale(45.4)"
+          width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
         <use
-          width="100%"
-          height="100%"
           fill="#cc142b"
+          height="100%"
           transform="rotate(-82 668.6 -327.7) scale(30)"
+          width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
       </g>
       <g transform="translate(-93 36.1) scale(.66825)">
         <use
-          width="100%"
-          height="100%"
           fill="#fff"
+          height="100%"
           transform="matrix(50.4 0 0 50.4 900 480)"
+          width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
         <use
-          width="100%"
-          height="100%"
           fill="#cc142b"
+          height="100%"
           transform="matrix(35 0 0 35 900 480)"
+          width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
       </g>
       <path
+        clipPath="url(#NZFlagIcon__c)"
+        d="M0 0l600 300M0 300L600 0"
         stroke="#fff"
         strokeWidth={60}
-        d="M0 0l600 300M0 300L600 0"
-        clipPath="url(#NZFlagIcon__c)"
         transform="scale(.60681 .73139)"
       />
       <path
+        clipPath="url(#NZFlagIcon__d)"
+        d="M0 0l600 300M0 300L600 0"
         stroke="#cc142b"
         strokeWidth={40}
-        d="M0 0l600 300M0 300L600 0"
-        clipPath="url(#NZFlagIcon__d)"
         transform="scale(.60681 .73139)"
       />
       <path
-        fill="#fff"
-        d="M151.7 0v79.4H0V140h151.7v79.4h60.7v-79.3H364V79.4H212.4V0z"
         clipPath="url(#NZFlagIcon__c)"
         color="#000"
+        d="M151.7 0v79.4H0V140h151.7v79.4h60.7v-79.3H364V79.4H212.4V0z"
+        fill="#fff"
         fontFamily="sans-serif"
         fontWeight={400}
         overflow="visible"
@@ -140,9 +140,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         }}
       />
       <path
-        fill="#cc142b"
-        d="M163.8 0v91.5H0v36.4h163.8v91.5h36.4V128h163.9V91.5H200.2V0z"
         color="#000"
+        d="M163.8 0v91.5H0v36.4h163.8v91.5h36.4V128h163.9V91.5H200.2V0z"
+        fill="#cc142b"
         fontFamily="sans-serif"
         fontWeight={400}
         overflow="visible"
@@ -166,6 +166,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const NZFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const NZFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 NZFlagIcon.displayName = 'NZFlagIcon';

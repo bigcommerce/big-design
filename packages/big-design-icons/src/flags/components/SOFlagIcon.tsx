@@ -13,18 +13,18 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="SOFlagIcon__a">
-          <path fillOpacity={0.7} d="M-85.3 0h682.6v512H-85.3z" />
+          <path d="M-85.3 0h682.6v512H-85.3z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g fillRule="evenodd" clipPath="url(#SOFlagIcon__a)" transform="translate(80) scale(.9375)">
-        <path fill="#40a6ff" d="M-128 0h768v512h-768z" />
+      <g clipPath="url(#SOFlagIcon__a)" fillRule="evenodd" transform="translate(80) scale(.9375)">
+        <path d="M-128 0h768v512h-768z" fill="#40a6ff" />
         <path
-          fill="#fff"
           d="M336.5 381.2L254 327.7l-82.1 54 30.5-87.7-82-54.2L222 239l31.4-87.5 32.1 87.3 101.4.1-81.5 54.7 31.2 87.6z"
+          fill="#fff"
         />
       </g>
     </svg>
@@ -35,6 +35,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const SOFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const SOFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 SOFlagIcon.displayName = 'SOFlagIcon';

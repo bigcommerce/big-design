@@ -38,7 +38,7 @@ module.exports = {
     const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => <FlagIcon {...iconProps} svgRef={ref} />);
 
     BREAK
-    export const COMPONENT_NAME = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+    export const COMPONENT_NAME = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
     BREAK
     COMPONENT_NAME.displayName = '${componentName.name}';
