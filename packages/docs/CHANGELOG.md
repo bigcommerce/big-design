@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.3-alpha.2...@bigcommerce/docs@0.31.0) (2022-05-11)
+
+
+### Bug Fixes
+
+* **docs:** fix typo in DropdownPropTable ([#819](https://github.com/bigcommerce/big-design/issues/819)) ([b6f9aa6](https://github.com/bigcommerce/big-design/commit/b6f9aa6dcc62c09d8d1e0705be36f2435d12b3cb))
+* **docs:** minor page fixes ([bf264b6](https://github.com/bigcommerce/big-design/commit/bf264b691e1991e1897a1ccdd45b292f8f4b7e7e))
+* **docs:** remove code ([#812](https://github.com/bigcommerce/big-design/issues/812)) ([ed4de14](https://github.com/bigcommerce/big-design/commit/ed4de1458a90d6d0cfe1ff16a5db32e73efa018d))
+
+
+### Features
+
+* **component:** auto-highlight first matching option in Select and MultiSelect ([#818](https://github.com/bigcommerce/big-design/issues/818)) ([76eeeb7](https://github.com/bigcommerce/big-design/commit/76eeeb730af0318d24e7dd863e352d6ab6d0125f))
+* **docs:** add new layout to Spacing page ([#821](https://github.com/bigcommerce/big-design/issues/821)) ([ea92094](https://github.com/bigcommerce/big-design/commit/ea920940a3ba0e68a6e4c9cf7b765705bf83bc21))
+* **docs:** update colors page to use new layout ([#805](https://github.com/bigcommerce/big-design/issues/805)) ([fd94357](https://github.com/bigcommerce/big-design/commit/fd943576c76474fde3874870ed07d80932072df4))
+
+
+
+
+
 ## [0.30.3-alpha.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.3-alpha.1...@bigcommerce/docs@0.30.3-alpha.2) (2022-03-22)
 
 

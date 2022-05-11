@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.2-alpha.1...@bigcommerce/big-design-icons@0.18.0) (2022-05-11)
+
+
+### Bug Fixes
+
+* tiny-async-pool api changes ([b4c04ba](https://github.com/bigcommerce/big-design/commit/b4c04bac3556b084ac1d39d2f0fde57efd7d8f43))
+
+
+
+
+
 ## [0.17.2-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.2-alpha.0...@bigcommerce/big-design-icons@0.17.2-alpha.1) (2022-03-22)
 
 **Note:** Version bump only for package @bigcommerce/big-design-icons

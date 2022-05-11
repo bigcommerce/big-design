@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.3-alpha.2...@bigcommerce/big-design@0.31.0) (2022-05-11)
+
+
+### Features
+
+* **component:** auto-highlight first matching option in Select and MultiSelect ([#818](https://github.com/bigcommerce/big-design/issues/818)) ([76eeeb7](https://github.com/bigcommerce/big-design/commit/76eeeb730af0318d24e7dd863e352d6ab6d0125f))
+
+
+
+
+
 ## [0.30.3-alpha.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.3-alpha.1...@bigcommerce/big-design@0.30.3-alpha.2) (2022-03-22)
 
 
