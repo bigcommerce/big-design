@@ -1,6 +1,7 @@
-import { render, screen } from '@test/utils';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
+
+import { render, screen } from '@test/utils';
 
 import 'jest-styled-components';
 
@@ -52,8 +53,10 @@ test('active tab has a tabindex', () => {
 
   tabs.forEach((tab) => {
     if (tab.id === activeTab) {
+      // eslint-disable-next-line jest/no-conditional-expect
       expect(tab.tabIndex).toBe(-1);
     } else {
+      // eslint-disable-next-line jest/no-conditional-expect
       expect(tab.tabIndex).toBe(0);
     }
   });

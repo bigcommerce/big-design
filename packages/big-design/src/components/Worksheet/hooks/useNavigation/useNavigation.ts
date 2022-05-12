@@ -11,6 +11,7 @@ interface Coordinate {
 type Navigate = (offset: Coordinate) => void;
 
 export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   const rows = useStore(useMemo(() => (state) => state.rows, []));
   const columns = useStore(useMemo(() => (state) => state.columns, []));
   const hiddenRows = useStore(useMemo(() => (state) => state.hiddenRows, []));
@@ -36,9 +37,12 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
 
   const isHidden = useCallback(
     (rowIndex: number) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const row = rows[rowIndex];
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const { id } = row;
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       return hiddenRows.includes(id);
     },
     [hiddenRows, rows],
@@ -49,21 +53,22 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
   const getNextOffset = useCallback(({ columnIndex, rowIndex }: Coordinate) => {
     if (rowIndex === 0) {
       if (columnIndex > 0) {
-        return { columnIndex: ++columnIndex, rowIndex };
+        return { columnIndex: columnIndex + 1, rowIndex };
       }
 
-      return { columnIndex: --columnIndex, rowIndex };
+      return { columnIndex: columnIndex + 1, rowIndex };
     }
 
     if (rowIndex > 0) {
-      return { rowIndex: ++rowIndex, columnIndex };
+      return { rowIndex: rowIndex + 1, columnIndex };
     }
 
-    return { rowIndex: --rowIndex, columnIndex };
+    return { rowIndex: rowIndex + 1, columnIndex };
   }, []);
 
   const navigate: Navigate = useCallback(
     (offset: Coordinate) => {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (!selectedCell) {
         return;
       }
@@ -80,9 +85,11 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
 
         const hash = columns[newPosition.columnIndex].hash;
         const type = columns[newPosition.columnIndex].type || 'text';
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
         const value = rows[newPosition.rowIndex][hash];
         const disabled = columns[newPosition.columnIndex].disabled || false;
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const cell = { ...newPosition, disabled, hash, type, value };
 
         setSelectedCells([cell]);

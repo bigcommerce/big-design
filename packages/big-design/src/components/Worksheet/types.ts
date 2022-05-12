@@ -66,14 +66,14 @@ export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
   config: {
     cancelActionText?: string;
     header?: string;
+    saveActionText?: string;
     render(
       value: Item[keyof Item],
       onChange: (value: Item[keyof Item]) => void,
     ): React.ComponentType<Item> | React.ReactElement;
-    saveActionText?: string;
   };
-  formatting?(value: Item[keyof Item]): string;
   type: 'modal';
+  formatting?(value: Item[keyof Item]): string;
 }
 
 export interface WorksheetToggleColumn<Item> extends WorksheetBaseColumn<Item> {
@@ -91,5 +91,6 @@ export interface Cell<Item> {
 }
 
 export interface WorksheetItem {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }

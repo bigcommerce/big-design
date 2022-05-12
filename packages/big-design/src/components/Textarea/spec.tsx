@@ -1,12 +1,13 @@
 import 'jest-styled-components';
 import { theme } from '@bigcommerce/big-design-theme';
-import { render } from '@test/utils';
 import React, { createRef } from 'react';
+
+import { render } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
 
-import { Textarea, TextareaProps } from './index';
+import { Textarea } from './index';
 
 const basicBorderStyle = `1px solid ${theme.colors.secondary30}`;
 const errorBorderStyle = `1px solid ${theme.colors.danger40}`;
@@ -44,8 +45,8 @@ test('create unique ids if not provided', () => {
     </>,
   );
 
-  const item1 = queryByTestId('item1') as HTMLTextAreaElement;
-  const item2 = queryByTestId('item2') as HTMLTextAreaElement;
+  const item1 = queryByTestId('item1');
+  const item2 = queryByTestId('item2');
 
   expect(item1).toBeDefined();
   expect(item2).toBeDefined();
@@ -54,21 +55,21 @@ test('create unique ids if not provided', () => {
 
 test('respects provided id', () => {
   const { container } = render(<Textarea id="test" label="Test Label" />);
-  const textarea = container.querySelector('#test') as HTMLTextAreaElement;
+  const textarea = container.querySelector('#test');
 
   expect(textarea.id).toBe('test');
 });
 
 test('matches label htmlFor with id provided', () => {
   const { container } = render(<Textarea id="test" label="Test Label" />);
-  const label = container.querySelector('label') as HTMLLabelElement;
+  const label = container.querySelector('label');
 
   expect(label.htmlFor).toBe('test');
 });
 
 test('respects provided labelId', () => {
   const { container } = render(<Textarea label="Test Label" labelId="test" />);
-  const label = container.querySelector('#test') as HTMLLabelElement;
+  const label = container.querySelector('#test');
 
   expect(label.id).toBe('test');
 });
@@ -97,7 +98,7 @@ test('accepts a Label Component', () => {
   const CustomLabel = (
     <FormControlLabel>
       This is a custom Label
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </FormControlLabel>
@@ -112,7 +113,7 @@ test('does not accept non-Label Components', () => {
   const NotALabel = (
     <div>
       This is a not custom Label Component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </div>
@@ -127,7 +128,7 @@ test('accepts a Description Component', () => {
   const CustomDescription = (
     <FormControlDescription>
       This is a custom Description
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </FormControlDescription>
@@ -142,7 +143,7 @@ test('does not accept non-Description Components', () => {
   const NotADescription = (
     <div>
       This is a not custom description
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </div>
@@ -157,7 +158,7 @@ test('accepts an Error Component', () => {
   const CustomError = (
     <FormControlError>
       This is a custom Error Component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </FormControlError>
@@ -178,7 +179,7 @@ test('does not accept non-Error Components', () => {
   const NotAnError = (
     <div>
       This is a not a custom error component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </div>
@@ -236,18 +237,16 @@ test('accepts valid row property', () => {
   const rows = 3;
   const { baseElement } = render(<Textarea data-testid="test-rows" rows={rows} />);
 
-  const textarea = baseElement.querySelector('textarea') as HTMLTextAreaElement;
+  const textarea = baseElement.querySelector('textarea');
 
   expect(textarea.getAttribute('rows')).toBe(`${rows}`);
 });
 
 test('does not accept invalid row property', () => {
   const rows = 9;
-  const { baseElement } = render(
-    <Textarea data-testid="test-rows" rows={rows as TextareaProps['rows']} />,
-  );
+  const { baseElement } = render(<Textarea data-testid="test-rows" rows={rows} />);
 
-  const textarea = baseElement.querySelector('textarea') as HTMLTextAreaElement;
+  const textarea = baseElement.querySelector('textarea');
 
   expect(textarea.getAttribute('rows')).not.toBe(`${rows}`);
 });

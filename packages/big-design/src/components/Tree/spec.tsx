@@ -1,6 +1,7 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { act, fireEvent, render, RenderResult } from '@test/utils';
 import React from 'react';
+
+import { act, fireEvent, render, RenderResult, waitFor } from '@test/utils';
 
 import { Tree } from './Tree';
 import { TreeExpandable, TreeFocusable, TreeNodeProps, TreeOnKeyDown, TreeProps } from './types';
@@ -42,7 +43,7 @@ const nodes: Array<TreeNodeProps<number>> = [
 
 let expandable: TreeExpandable;
 let focusable: TreeFocusable;
-let onKeyDown: TreeOnKeyDown<any>;
+let onKeyDown: TreeOnKeyDown<unknown>;
 
 beforeEach(() => {
   expandable = { expandedNodes: [], onToggle: jest.fn() };
@@ -51,11 +52,11 @@ beforeEach(() => {
 });
 
 const renderDefaultTree = (
-  additionalProps?: Partial<TreeProps<any>>,
+  additionalProps?: Partial<TreeProps<unknown>>,
 ): RenderResult & {
   expandable: TreeExpandable;
   focusable: TreeFocusable;
-  onKeyDown: TreeOnKeyDown<any>;
+  onKeyDown: TreeOnKeyDown<unknown>;
 } => {
   const rendered = render(
     <Tree
@@ -91,27 +92,27 @@ test('does not forward styles', () => {
 });
 
 test('expands node on click', () => {
-  const { getByText, expandable } = renderDefaultTree();
+  const { getByText, expandable: testExapandable } = renderDefaultTree();
   const firstTreeNode = getByText('Test Node 0');
 
   act(() => {
     fireEvent.click(firstTreeNode);
   });
 
-  expect(expandable.onToggle).toHaveBeenCalledWith('0', false);
+  expect(testExapandable.onToggle).toHaveBeenCalledWith('0', false);
 });
 
-test('calles onKeyDown event', () => {
-  const { getByText, onKeyDown } = renderDefaultTree();
+test('calles onKeyDown event', async () => {
+  const { getByText, onKeyDown: testOnKeyDown } = renderDefaultTree();
   const firstTreeNode = getByText('Test Node 0').parentElement?.parentElement;
 
   if (firstTreeNode) {
     act(() => {
       fireEvent.keyDown(firstTreeNode);
     });
-
-    expect(onKeyDown).toHaveBeenCalledTimes(1);
   }
+
+  await waitFor(() => expect(testOnKeyDown).toHaveBeenCalledTimes(1));
 });
 
 test('renders with no icons', () => {
@@ -175,9 +176,9 @@ test('trigger onSelect', () => {
 
   if (multi) {
     fireEvent.click(multi);
-
-    expect(onSelect).toHaveBeenCalledWith('0', 0);
   }
+
+  expect(onSelect).toHaveBeenCalledWith('0', 0);
 });
 
 test('renders expanded nodes', () => {
@@ -190,7 +191,7 @@ test('renders expanded nodes', () => {
   expect(getByText('Test Node 9')).toBeVisible();
 });
 
-test("disabled nodes don't trigger onSelect", () => {
+test("disabled nodes don't trigger onSelect", async () => {
   const onSelect = jest.fn();
   const { container } = renderDefaultTree({
     nodes: [{ id: '0', value: 0, label: 'Test Node 0' }],
@@ -202,9 +203,9 @@ test("disabled nodes don't trigger onSelect", () => {
 
   if (multi) {
     fireEvent.click(multi);
-
-    expect(onSelect).not.toHaveBeenCalled();
   }
+
+  await waitFor(() => expect(onSelect).not.toHaveBeenCalled());
 });
 
 test('triggers onNodeClick', () => {
@@ -250,9 +251,9 @@ test('expanding node triggers onExpand', async () => {
     expandable: { expandedNodes: [], onExpand },
   });
 
-  await act(async () => {
-    await fireEvent.click(getByText('Test Node 0'));
+  act(() => {
+    fireEvent.click(getByText('Test Node 0'));
   });
 
-  expect(onExpand).toHaveBeenCalledWith('0');
+  await waitFor(() => expect(onExpand).toHaveBeenCalledWith('0'));
 });

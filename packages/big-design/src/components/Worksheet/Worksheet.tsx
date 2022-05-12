@@ -31,6 +31,7 @@ const InternalWorksheet = typedMemo(
     const setExpandableRows = useStore((state) => state.setExpandableRows);
     const setTableRef = useStore((state) => state.setTableRef);
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     const rows = useStore(useMemo(() => (state) => state.rows, []));
     const editedCells = useStore(useMemo(() => (state) => state.editedCells, []));
     const invalidCells = useStore(useMemo(() => (state) => state.invalidCells, []));
@@ -50,12 +51,14 @@ const InternalWorksheet = typedMemo(
 
     useEffect(() => {
       if (editedCells.length) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         onChange(editedRows(editedCells, rows));
       }
     }, [editedCells, onChange, rows]);
 
     useEffect(() => {
       if (typeof onErrors === 'function' && invalidCells.length) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         onErrors(invalidRows(invalidCells, rows));
       }
     }, [invalidCells, onErrors, rows]);

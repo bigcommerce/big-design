@@ -10,7 +10,7 @@ import { StyledTooltip, StyledTooltipTrigger } from './styled';
 export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
   placement: Placement;
   trigger: React.ReactChild;
-  modifiers?: PopperProps<any>['modifiers'];
+  modifiers?: PopperProps<unknown>['modifiers'];
   inline?: boolean;
 }
 
@@ -80,6 +80,7 @@ export const Tooltip: React.FC<TooltipProps> = memo(
         </Reference>
         {tooltipContainer
           ? createPortal(
+              // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
               <Popper modifiers={tooltipModifiers} placement={props.placement || 'top'}>
                 {({ placement, ref, style }) =>
                   isVisible && (

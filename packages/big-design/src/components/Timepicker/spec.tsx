@@ -1,7 +1,8 @@
 import 'jest-styled-components';
-import { act } from '@test/utils';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import React, { createRef } from 'react';
+
+import { act } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlError, FormControlLabel, FormGroup } from '../Form';
@@ -25,19 +26,21 @@ test('calls onTimeChange function when a value is selected', async () => {
 
   const input = await findByTestId('timepicker');
 
-  await act(async () => {
-    await fireEvent.click(input);
+  act(() => {
+    fireEvent.click(input);
   });
 
   const options = await findAllByRole('option');
 
-  expect(options).toHaveLength(25);
+  await waitFor(() => expect(options).toHaveLength(25));
 
-  await act(async () => {
-    await fireEvent.click(options[3]);
+  act(() => {
+    fireEvent.click(options[3]);
   });
 
-  expect(changeFunction).toHaveBeenCalledWith('3:00', { content: '3:00 AM', value: '3:00' });
+  await waitFor(() =>
+    expect(changeFunction).toHaveBeenCalledWith('3:00', { content: '3:00 AM', value: '3:00' }),
+  );
 });
 
 test('renders label as a string', async () => {
@@ -67,7 +70,7 @@ test('does not accept non-Label Components', async () => {
   const NotALabel = (
     <div>
       This is a not custom Label Component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </div>
@@ -88,7 +91,7 @@ test('accepts an Error Component', async () => {
   const CustomError = (
     <FormControlError>
       This is a custom Error Component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </FormControlError>
@@ -122,7 +125,7 @@ test('does not accept non-Error Components', async () => {
   const NotAnError = (
     <div>
       This is a not a custom error component
-      <a data-testid="test" href="#">
+      <a data-testid="test" href="#top">
         has a url
       </a>
     </div>

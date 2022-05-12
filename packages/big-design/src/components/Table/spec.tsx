@@ -1,32 +1,18 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
 
 import { fireEvent, render, screen } from '@test/utils';
 
 import { Table, TableFigure } from './Table';
-import { TableColumn } from './types';
-
-interface ColumnRenderArgument {
-  sku: string;
-  name: string;
-  stock: string;
-}
-
-interface TestColumn {
-  header: string;
-  render: (x: ColumnRenderArgument) => void;
-}
-
-interface Item {
-  sku: string;
-  name: string;
-  stock: number;
-}
 
 interface SimpleTableOptions {
   className?: string;
-  columns?: Array<TableColumn<TestColumn>>;
-  items?: Item[];
+  columns?: any[];
+  items?: any[];
   dataTestId?: string;
   emptyComponent?: React.ReactElement;
   headerless?: boolean;
@@ -50,9 +36,9 @@ const getSimpleTable = ({
     className={className}
     columns={
       columns || [
-        { hash: 'sku', header: 'Sku', render: ({ sku }) => sku },
-        { hash: 'name', header: 'Name', render: ({ name }) => name },
-        { hash: 'stock', header: 'Stock', render: ({ stock }) => stock },
+        { header: 'Sku', render: ({ sku }) => sku },
+        { header: 'Name', render: ({ name }) => name },
+        { header: 'Stock', render: ({ stock }) => stock },
       ]
     }
     data-testid={dataTestId}
@@ -135,7 +121,7 @@ test('renders column with tooltip icon', () => {
     }),
   );
 
-  expect(getByTitle('Hover or focus for additional context.')).toBeTruthy();
+  expect(getByTitle('Hover or focus for additional context.')).toBeDefined();
 });
 
 test('renders tooltip when hovering on icon', async () => {
@@ -281,6 +267,7 @@ describe('selectable', () => {
     );
 
     // One per item + Actions (select all) checkbox
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/restrict-plus-operands
     expect(getAllByRole('checkbox')).toHaveLength(items.length + 1);
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -298,7 +285,7 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
+    const [selectAllCheckbox] = getAllByRole('checkbox');
 
     // Select All
     expect(selectAllCheckbox.checked).toBe(false);
@@ -327,7 +314,7 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
+    const [selectAllCheckbox] = getAllByRole('checkbox');
 
     // Select All
     expect(selectAllCheckbox.checked).toBe(false);
@@ -350,7 +337,7 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
+    const [selectAllCheckbox] = getAllByRole('checkbox');
 
     // Deselect all
     expect(selectAllCheckbox.checked).toBe(true);
@@ -379,7 +366,7 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
+    const [selectAllCheckbox] = getAllByRole('checkbox');
 
     // Deselect all
     expect(selectAllCheckbox.checked).toBe(true);
@@ -440,10 +427,11 @@ describe('sortable', () => {
       />,
     );
 
-    const skuHeader = container.querySelector('th') as HTMLTableCellElement;
+    const skuHeader = container.querySelector('th');
 
     fireEvent.click(skuHeader);
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onSort).toHaveBeenCalledWith('sku', 'DESC', columns[0]);
   });
 
@@ -484,6 +472,7 @@ describe('sortable', () => {
 
     fireEvent.click(sortIcon);
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onSort).toHaveBeenCalledWith('sku', 'DESC', columns[0]);
   });
 
@@ -555,6 +544,7 @@ describe('draggable', () => {
     const { container } = render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
     const dragIcons = container.querySelectorAll('svg');
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(dragIcons).toHaveLength(items.length);
   });
 
@@ -562,15 +552,19 @@ describe('draggable', () => {
     const spaceKey = { keyCode: 32 };
     const downKey = { keyCode: 40 };
     const { container } = render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
-    const dragEl = container.querySelector('[data-rbd-draggable-id]') as HTMLElement;
+    const dragEl: HTMLElement | null = container.querySelector('[data-rbd-draggable-id]');
 
-    dragEl.focus();
+    if (dragEl) {
+      dragEl.focus();
+    }
 
     expect(dragEl).toHaveFocus();
 
-    fireEvent.keyDown(dragEl, spaceKey);
-    fireEvent.keyDown(dragEl, downKey);
-    fireEvent.keyDown(dragEl, spaceKey);
+    if (dragEl) {
+      fireEvent.keyDown(dragEl, spaceKey);
+      fireEvent.keyDown(dragEl, downKey);
+      fireEvent.keyDown(dragEl, spaceKey);
+    }
 
     expect(onRowDrop).toHaveBeenCalledWith(0, 1);
   });

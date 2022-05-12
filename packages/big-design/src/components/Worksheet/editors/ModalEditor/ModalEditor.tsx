@@ -36,6 +36,7 @@ const InternalModalEditor = <T extends WorksheetItem>({
   }, [cell, setEditingCell]);
 
   const renderedValue = useMemo(
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     () => (formatting ? formatting(value) : `${value}`),
     [formatting, value],
   );

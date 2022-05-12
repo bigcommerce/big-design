@@ -20,21 +20,26 @@ interface RowProps<Item> {
 }
 
 const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return
   const row = useStore(useMemo(() => (state) => state.rows[rowIndex], [rowIndex]));
   const expandableRows = useStore(useMemo(() => (state) => state.expandableRows, []));
 
   const isExpanded = useStore(
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
     useMemo(() => (state) => !state.hiddenRows.includes(row.id), [row.id]),
   );
 
   const parentId = useMemo(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!expandableRows) {
       return;
     }
 
     const rowIds = Object.keys(expandableRows);
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return rowIds.find((rowId) => expandableRows[rowId].find((childId) => childId === row.id));
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   }, [expandableRows, row.id]);
 
   const isChild = useMemo(() => parentId !== undefined, [parentId]);
@@ -59,10 +64,12 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
           hash={column.hash}
           key={`${rowIndex}-${columnIndex}`}
           options={column.type === 'select' ? column.config.options : undefined}
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
           rowId={row.id}
           rowIndex={rowIndex}
           type={column.type ?? 'text'}
           validation={column.validation}
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
           value={row[column.hash]}
         />
       ))}

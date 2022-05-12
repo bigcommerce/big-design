@@ -36,7 +36,7 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
   const id = props.id ? props.id : uniqueTextareaId;
   const { errors } = useInputErrors(id, error);
   const MAX_ROWS = 7;
-  const numOfRows = rows && rows > MAX_ROWS ? MAX_ROWS : rows;
+  const numOfRows = rows > MAX_ROWS ? MAX_ROWS : rows;
 
   const renderedLabel = useMemo(() => {
     if (!label) {
@@ -52,13 +52,10 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
     }
 
     if (isValidElement(label) && label.type === FormControlLabel) {
-      return cloneElement(
-        label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
-        {
-          id: labelId,
-          htmlFor: id,
-        },
-      );
+      return cloneElement(label, {
+        id: labelId,
+        htmlFor: id,
+      });
     }
 
     warning('label must be either a string or a FormControlLabel component.');

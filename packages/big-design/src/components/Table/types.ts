@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react';
 
 import { MarginProps } from '../../mixins';
@@ -19,8 +20,8 @@ export interface TableSortable<T> {
 }
 
 export interface TableItem {
-  id?: string | number;
   [key: string]: any;
+  id?: string | number;
 }
 
 export interface TableColumn<T> extends TableColumnDisplayProps {
@@ -48,9 +49,9 @@ export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElemen
   itemName?: string;
   items: T[];
   keyField?: string;
-  onRowDrop?(from: number, to: number): void;
   pagination?: TablePaginationProps;
   selectable?: TableSelectable<T>;
   sortable?: TableSortable<T>;
   stickyHeader?: boolean;
+  onRowDrop?(from: number, to: number): void;
 }

@@ -44,6 +44,7 @@ export const useTreeKeyEvents = <T>({
 }: UseTreeKeyEventsProps<T>) => {
   // Needs to handle the following keyboard events:
   // https://www.w3.org/TR/wai-aria-practices/#keyboard-interaction-22
+  // eslint-disable-next-line complexity
   const onKeyDown: TreeOnKeyDown<T> = (
     e: React.KeyboardEvent<HTMLLIElement>,
     { id, isExpanded, isSelectable, hasChildren, value },
@@ -82,13 +83,11 @@ export const useTreeKeyEvents = <T>({
 
       case 'ArrowDown':
         e.preventDefault();
-
         onFocus(getNextVisibleNode(visibleNodes, id));
         break;
 
       case 'ArrowUp':
         e.preventDefault();
-
         onFocus(getPreviousVisibleNode(visibleNodes, id));
         break;
 
@@ -126,7 +125,6 @@ export const useTreeKeyEvents = <T>({
 
       case 'Home':
         e.preventDefault();
-
         onFocus(visibleNodes[0]);
         break;
 

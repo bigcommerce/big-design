@@ -104,7 +104,7 @@ describe('useTreeKeyEvents', () => {
         key: ' ',
         preventDefault,
         stopPropagation,
-      } as unknown as React.KeyboardEvent<HTMLLIElement>,
+      },
       { id: '0', isExpanded: false, isSelectable: true, hasChildren: false, value: 0 },
     );
 
@@ -126,7 +126,7 @@ describe('useTreeKeyEvents', () => {
           key: 'Enter',
           preventDefault,
           stopPropagation,
-        } as unknown as React.KeyboardEvent<HTMLLIElement>,
+        },
         { id: '0', isExpanded: false, isSelectable: true, hasChildren: true, value: 0 },
       );
 
@@ -147,7 +147,7 @@ describe('useTreeKeyEvents', () => {
           key: 'Enter',
           preventDefault,
           stopPropagation,
-        } as unknown as React.KeyboardEvent<HTMLLIElement>,
+        },
         { id: '0', isExpanded: false, isSelectable: true, hasChildren: false, value: 0 },
       );
 
@@ -171,7 +171,7 @@ describe('useTreeKeyEvents', () => {
         key: 'ArrowDown',
         preventDefault,
         stopPropagation,
-      } as unknown as React.KeyboardEvent<HTMLLIElement>,
+      },
       { id: '0', isExpanded: false, isSelectable: true, hasChildren: false, value: 0 },
     );
 
@@ -194,7 +194,7 @@ describe('useTreeKeyEvents', () => {
         key: 'ArrowDown',
         preventDefault,
         stopPropagation,
-      } as unknown as React.KeyboardEvent<HTMLLIElement>,
+      },
       { id: '1', isExpanded: false, isSelectable: true, hasChildren: false, value: 1 },
     );
 
@@ -217,7 +217,7 @@ describe('useTreeKeyEvents', () => {
         key: 'ArrowUp',
         preventDefault,
         stopPropagation,
-      } as unknown as React.KeyboardEvent<HTMLLIElement>,
+      },
       { id: '1', isExpanded: false, isSelectable: true, hasChildren: false, value: 1 },
     );
 
@@ -240,7 +240,7 @@ describe('useTreeKeyEvents', () => {
         key: 'ArrowUp',
         preventDefault,
         stopPropagation,
-      } as unknown as React.KeyboardEvent<HTMLLIElement>,
+      },
       { id: '0', isExpanded: false, isSelectable: true, hasChildren: false, value: 0 },
     );
 
@@ -264,7 +264,7 @@ describe('useTreeKeyEvents', () => {
           key: 'ArrowRight',
           preventDefault,
           stopPropagation,
-        } as unknown as React.KeyboardEvent<HTMLLIElement>,
+        },
         { id: '0', isExpanded: true, isSelectable: true, hasChildren: true, value: 0 },
       );
 
@@ -285,7 +285,7 @@ describe('useTreeKeyEvents', () => {
           key: 'ArrowRight',
           preventDefault,
           stopPropagation,
-        } as unknown as React.KeyboardEvent<HTMLLIElement>,
+        },
         { id: '0', isExpanded: false, isSelectable: true, hasChildren: true, value: 0 },
       );
 
@@ -310,7 +310,7 @@ describe('useTreeKeyEvents', () => {
           key: 'ArrowLeft',
           preventDefault,
           stopPropagation,
-        } as unknown as React.KeyboardEvent<HTMLLIElement>,
+        },
         { id: '0', isExpanded: true, isSelectable: true, hasChildren: true, value: 0 },
       );
 
@@ -338,7 +338,7 @@ describe('useTreeKeyEvents', () => {
           key: 'ArrowLeft',
           preventDefault,
           stopPropagation,
-        } as unknown as React.KeyboardEvent<HTMLLIElement>,
+        },
         { id: '1', isExpanded: false, isSelectable: true, hasChildren: true, value: 1 },
       );
 
@@ -362,7 +362,7 @@ describe('useTreeKeyEvents', () => {
         key: 'Home',
         preventDefault,
         stopPropagation,
-      } as unknown as React.KeyboardEvent<HTMLLIElement>,
+      },
       { id: '1', isExpanded: false, isSelectable: true, hasChildren: false, value: 1 },
     );
 
@@ -385,7 +385,7 @@ describe('useTreeKeyEvents', () => {
         key: 'End',
         preventDefault,
         stopPropagation,
-      } as unknown as React.KeyboardEvent<HTMLLIElement>,
+      },
       { id: '0', isExpanded: false, isSelectable: true, hasChildren: false, value: 0 },
     );
 

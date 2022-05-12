@@ -25,6 +25,7 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
   const [newValue, setNewValue] = useState<unknown>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (selectedCell) {
       setNewValue(selectedCell.value);
     }
@@ -37,6 +38,7 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
   }, [focusTable, setEditingCell, setOpenModal]);
 
   const handleSave = useCallback(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (selectedCell && newValue !== null && newValue !== selectedCell.value) {
       updateItems([selectedCell], [newValue]);
     }
@@ -45,12 +47,13 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
   }, [handleClose, newValue, selectedCell, updateItems]);
 
   const renderedContent = useMemo(() => {
-    const onChange = (newValue: unknown) => {
-      if (newValue !== undefined) {
-        setNewValue(newValue);
+    const onChange = (localNewValue: unknown) => {
+      if (localNewValue !== undefined) {
+        setNewValue(localNewValue);
       }
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-unsafe-argument
     return selectedCell ? render(selectedCell.value, onChange) : null;
   }, [selectedCell, render]);
 

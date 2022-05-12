@@ -13,7 +13,9 @@ interface BuildNodeMapProps<T> extends UseNodeMapProps<T> {
 const getParentId = (nodeMap: NodeMap, id: TreeNodeId) => {
   const iterator = nodeMap.entries();
 
+  // eslint-disable-next-line no-restricted-syntax
   for (const [, value] of iterator) {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (value.children && value.children.includes(id)) {
       return value.id;
     }
@@ -21,6 +23,7 @@ const getParentId = (nodeMap: NodeMap, id: TreeNodeId) => {
 };
 
 const buildNodeMap = <T>({ nodes, nodeMap }: BuildNodeMapProps<T>): NodeMap => {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!nodes || nodes.length < 1) {
     return nodeMap;
   }

@@ -5,6 +5,7 @@ import { TreeNode } from './TreeNode';
 import { TreeContextState, TreeProps } from './types';
 
 // We don't have access to the type yet, so we need to pass any into the generic.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const TreeContext = createContext<TreeContextState<any>>({
   expandable: {
     expandedNodes: [],

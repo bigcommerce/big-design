@@ -13,7 +13,7 @@ interface UpdateItemsProviderProps<Item> {
   items: Item[];
 }
 
-export const UpdateItemsContext = createContext<UpdateItemsContextType<any> | null>(null);
+export const UpdateItemsContext = createContext<UpdateItemsContextType<unknown> | null>(null);
 
 export const UpdateItemsProvider = typedMemo(
   <T extends WorksheetItem>({ children, items }: UpdateItemsProviderProps<T>) => {
@@ -41,6 +41,7 @@ export const UpdateItemsProvider = typedMemo(
         );
 
         addEditedCells(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           cells.reduce<Array<Cell<any>>>((accum, cell, index) => {
             // Don't add since value is the same
             if (cell.value === newValues[index]) {

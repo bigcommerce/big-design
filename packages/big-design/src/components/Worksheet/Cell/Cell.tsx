@@ -72,8 +72,9 @@ const InternalCell = <T extends WorksheetItem>({
     useMemo(
       () => (state) =>
         state.invalidCells.find(
-          (invalidCell) =>
-            invalidCell.columnIndex === cell.columnIndex && invalidCell.rowIndex === cell.rowIndex,
+          (localInvalidCell) =>
+            localInvalidCell.columnIndex === cell.columnIndex &&
+            localInvalidCell.rowIndex === cell.rowIndex,
         ),
       [cell.columnIndex, cell.rowIndex],
     ),
@@ -107,10 +108,12 @@ const InternalCell = <T extends WorksheetItem>({
         return formatting(value);
       }
 
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       return `${value}`;
     }
 
     if (Number.isNaN(value)) {
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       return `${value}`;
     }
 

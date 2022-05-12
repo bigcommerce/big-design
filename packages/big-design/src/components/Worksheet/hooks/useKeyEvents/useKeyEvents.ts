@@ -7,19 +7,27 @@ export const useKeyEvents = () => {
   // Get the first cell of the selected values
   const selectedCell = useStore(useMemo(() => (state) => state.selectedCells[0], []));
 
-  const isEditing = useStore(useMemo(() => (state) => state.editingCell !== null, []));
+  const isEditing = useStore(
+    useMemo(
+      () =>
+        ({ editingCell }) =>
+          editingCell !== null,
+      [],
+    ),
+  );
   const setEditingCell = useStore((state) => state.setEditingCell);
 
   const { navigate } = useNavigation(selectedCell);
 
   const editSelectedCell = useCallback(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (selectedCell) {
       setEditingCell(selectedCell);
     }
   }, [selectedCell, setEditingCell]);
 
   const handleKeyDown = useCallback(
-    (event) => {
+    (event: KeyboardEvent) => {
       const key = event.key;
 
       if (isEditing) {
@@ -35,6 +43,7 @@ export const useKeyEvents = () => {
       } else {
         switch (key) {
           case 'Enter':
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             if (selectedCell && !selectedCell.disabled) {
               editSelectedCell();
 
@@ -46,6 +55,7 @@ export const useKeyEvents = () => {
             break;
 
           case ' ':
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             if (selectedCell && !selectedCell.disabled) {
               editSelectedCell();
             }

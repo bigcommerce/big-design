@@ -14,6 +14,10 @@ import { HeadingProps, HeadingTag, HRProps, TextProps } from './types';
 
 const validHeadingTags = new Set<HeadingTag>(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
 
+const getHeadingTag = (defaultTag: HeadingTag, tag?: HeadingTag): HeadingTag => {
+  return tag && validHeadingTags.has(tag) ? tag : defaultTag;
+};
+
 // Private
 export const StyleableText = StyledText;
 export const StyleableSmall = StyledSmall;
@@ -55,10 +59,6 @@ export const H3: React.FC<HeadingProps> = memo(({ className, style, as, ...props
 export const H4: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
   <StyleableH4 as={getHeadingTag('h4', as)} {...props} />
 ));
-
-const getHeadingTag = (defaultTag: HeadingTag, tag?: HeadingTag): HeadingTag => {
-  return tag && validHeadingTags.has(tag) ? tag : defaultTag;
-};
 
 Text.displayName = 'Text';
 Small.displayName = 'Small';

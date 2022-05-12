@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import create, { State } from 'zustand';
 import createContext from 'zustand/context';
 

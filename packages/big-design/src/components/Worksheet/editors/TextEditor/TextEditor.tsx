@@ -9,8 +9,8 @@ import { StyledInput } from './styled';
 export interface TextEditorProps<Item> {
   cell: Cell<Item>;
   isEdited: boolean;
-  onBlur(): void;
   onKeyDown: EditableCellOnKeyDown;
+  onBlur(): void;
 }
 
 const InternalTextEditor = <T extends WorksheetItem>({
@@ -19,22 +19,24 @@ const InternalTextEditor = <T extends WorksheetItem>({
   onBlur,
   onKeyDown,
 }: TextEditorProps<T>) => {
+  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
   const [value, setValue] = useState(`${cell.value}`);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };
 
+  const formatValue = (localValue: string) =>
+    cell.type === 'number' && localValue !== '' ? Number(localValue) : localValue;
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     // We always receive the value as a string type, cast to Number if column type is number
     onKeyDown(event, formatValue(value));
   };
 
-  const formatValue = (value: string) =>
-    cell.type === 'number' && value !== '' ? Number(value) : value;
-
   return (
     <StyledInput
+      // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus
       isEdited={isEdited}
       onBlur={onBlur}

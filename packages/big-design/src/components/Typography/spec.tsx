@@ -1,6 +1,8 @@
+/* eslint-disable react/jsx-pascal-case */
 import { theme } from '@bigcommerce/big-design-theme';
-import { render } from '@test/utils';
 import React from 'react';
+
+import { render } from '@test/utils';
 
 import 'jest-styled-components';
 

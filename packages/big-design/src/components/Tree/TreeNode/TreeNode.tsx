@@ -55,7 +55,7 @@ const InternalTreeNode = <T,>({
   // Could be multiple elements in which are clicked.
   // Typing to generic Element type since all other elements extend from it.
   const handleNodeToggle = useCallback(
-    async (e?: React.MouseEvent<Element>) => {
+    (e?: React.MouseEvent<Element>) => {
       // Prevents the collapse/expand when clicking on a radio or checkbox
       // Checks to see if every element inside the selectableRef gets clicked.
       if (
@@ -118,6 +118,7 @@ const InternalTreeNode = <T,>({
   );
 
   const additionalProps = useMemo(
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     () => (selectable?.type ? { 'aria-selected': isSelected } : {}),
     [selectable, isSelected],
   );
@@ -139,6 +140,7 @@ const InternalTreeNode = <T,>({
       children && (
         <StyledUl role="group" show={isExpanded}>
           {children.map((child, index) => (
+            // eslint-disable-next-line @typescript-eslint/no-use-before-define
             <TreeNode {...child} key={index} />
           ))}
         </StyledUl>
@@ -179,6 +181,7 @@ const InternalTreeNode = <T,>({
       );
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (selectable.type === 'multi') {
       return (
         <StyledSelectableWrapper {...flexItemProps}>
