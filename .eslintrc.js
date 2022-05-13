@@ -28,6 +28,7 @@ module.exports = {
       files: 'packages/big-design-icons/**/*.tsx',
       rules: {
         'react/jsx-sort-props': 'warn',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
       },
     },
   ],

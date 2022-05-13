@@ -29,7 +29,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       {title ? <title id={titleId}>{title}</title> : null}
       <path d="M256 0h384v480H256z" fill="red" />
       <path d="M0 0h256v480H0z" fill="#060" />
-      <g fill="#ff0" fillRule="evenodd" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth={0.6}>
+      <g
+        fill="#ff0"
+        fillRule="evenodd"
+        stroke="#000"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={0.6}
+      >
         <path d="M339.5 306.2c-32.3-1-180-93.2-181-108l8.1-13.5c14.7 21.3 165.7 111 180.6 107.8l-7.7 13.7" />
         <path d="M164.9 182.8c-2.9 7.8 38.6 33.4 88.4 63.8 49.9 30.3 92.9 49 96 46.4l1.5-2.8c-.6 1-2 1.3-4.3.6-13.5-3.9-48.6-20-92.1-46.4-43.6-26.4-81.4-50.7-87.3-61a6.3 6.3 0 01-.6-3.1h-.2l-1.2 2.2-.2.3zm175.3 123.8c-.5 1-1.6 1-3.5.8-12-1.3-48.6-19.1-91.9-45-50.4-30.2-92-57.6-87.4-64.8l1.2-2.2.2.1c-4 12.2 82.1 61.4 87.2 64.6 49.8 30.8 91.8 48.9 95.5 44.2l-1.3 2.3z" />
         <path d="M256.2 207.2c32.2-.3 72-4.4 95-13.6l-5-8c-13.5 7.5-53.5 12.5-90.3 13.2-43.4-.4-74.1-4.5-89.5-14.8l-4.6 8.6c28.2 12 57.2 14.5 94.4 14.6" />
@@ -74,14 +81,29 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             />
             <use height="100%" width="100%" x={10.6} xlinkHref="#PTFlagIcon__b" />
             <path d="M193.9 140.6c0-.6.9-.6.9 0v1.6h-.9v-1.6" fill="#000" stroke="none" />
-            <path d="M188.6 142.8c0-.6.8-.6.8 0v1.2h-.8v-1.2" fill="#000" id="PTFlagIcon__c" stroke="none" />
+            <path
+              d="M188.6 142.8c0-.6.8-.6.8 0v1.2h-.8v-1.2"
+              fill="#000"
+              id="PTFlagIcon__c"
+              stroke="none"
+            />
             <use height="100%" width="100%" x={10.6} xlinkHref="#PTFlagIcon__c" />
           </g>
           <use height="100%" width="100%" xlinkHref="#PTFlagIcon__d" y={46.3} />
-          <use height="100%" transform="rotate(-45.2 312.8 180)" width="100%" xlinkHref="#PTFlagIcon__d" />
+          <use
+            height="100%"
+            transform="rotate(-45.2 312.8 180)"
+            width="100%"
+            xlinkHref="#PTFlagIcon__d"
+          />
         </g>
         <use height="100%" width="100%" x={45.7} xlinkHref="#PTFlagIcon__d" />
-        <use height="100%" transform="matrix(-1 0 0 1 479.8 0)" width="100%" xlinkHref="#PTFlagIcon__e" />
+        <use
+          height="100%"
+          transform="matrix(-1 0 0 1 479.8 0)"
+          width="100%"
+          xlinkHref="#PTFlagIcon__e"
+        />
         <g fill="#fff" id="PTFlagIcon__f">
           <path
             d="M232.6 202.4a8.3 8.3 0 002.2 5.7 7.2 7.2 0 005.3 2.4c2.1 0 4-1 5.3-2.4a8.3 8.3 0 002.2-5.7v-10.8h-15v10.8"

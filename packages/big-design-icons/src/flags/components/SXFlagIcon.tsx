@@ -18,7 +18,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="SXFlagIcon__a">
@@ -48,7 +54,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           d="M190.2 261.5c0 1.6.9 3 1.2 4.5 1.9 11.2 3.6 26-7.8 32.9-12.8 8-29.4 4.6-44.1 8.9-3 .8-7 3.5-9 5.4-1.4-.9-2.7-2.2-4.4-3-12.1-6.4-27.9-4.3-41.5-7.8-6.9-2.1-14-7.5-15.8-14.5-4.4-18.4 6.2-34.1 5-52.4-.8-14-3.2-27.3-6.4-40.4 10.7 5 23 5.8 35 3.4A51.6 51.6 0 01130 201c4.6-2 10-2.9 15-3.4 9.3 1 19.4 2.6 29.1 2.6 6.5-.4 12.4-2.2 18-4.7-3.3 21.6-9.8 44.2-1.9 66"
           fill="#80cfe1"
         />
-        <path d="M171 265.8v-20.4h2.4l-31-20-.1-10.5h3l-15.6-11-15.4 11h3v10.5l-30.9 20h2.5v20.3H171" fill="#fff" />
+        <path
+          d="M171 265.8v-20.4h2.4l-31-20-.1-10.5h3l-15.6-11-15.4 11h3v10.5l-30.9 20h2.5v20.3H171"
+          fill="#fff"
+        />
         <path
           d="M376 906.5v-17.8h2.1l-27-17.5-.1-9h2.6l-13.6-9.8-13.5 9.7h2.6l.1 9.1-27 17.5h2.2v17.7H376z"
           fill="none"
@@ -64,7 +73,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           strokeWidth={1.2}
           transform="matrix(1.1464 0 0 1.1461 -260 -773.1)"
         />
-        <path d="M87.1 292.1v-21.5h4l-.2 21.7.2-21.6-5.8-.1v-4.7l89.4.2v4.5h-5.4v21.8l-.1-21.8h4l.2 21.6" fill="#fff" />
+        <path
+          d="M87.1 292.1v-21.5h4l-.2 21.7.2-21.6-5.8-.1v-4.7l89.4.2v4.5h-5.4v21.8l-.1-21.8h4l.2 21.6"
+          fill="#fff"
+        />
         <path
           d="M302.8 929.4v-18.8h3.5l-.2 19 .2-18.8-5-.2v-4l78 .1v4h-4.8l.1 19-.2-19h3.6l.1 18.8"
           fill="none"
@@ -174,7 +186,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           strokeWidth={0.3}
           transform="matrix(1.1464 0 0 1.1461 -260 -773.1)"
         />
-        <path d="M25.7 268l14 1c.3 11.8 1.8 57 55.8 59.5L93.8 345c-65.7.6-70.7-55.5-68-77" fill="#ff0" />
+        <path
+          d="M25.7 268l14 1c.3 11.8 1.8 57 55.8 59.5L93.8 345c-65.7.6-70.7-55.5-68-77"
+          fill="#ff0"
+        />
         <path
           d="M249.3 908.4l12.2.8c.3 10.4 1.5 49.8 48.7 52l-1.5 14.4c-57.4.6-61.7-48.4-59.4-67.2zm44.8 70.1l14.4-3.1"
           fill="none"
@@ -198,7 +213,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           strokeWidth={0.3}
           transform="matrix(1.1464 0 0 1.1461 -260 -773.1)"
         />
-        <path d="M234.3 268.1l-14 1c-.2 11.8-1.3 57-55.3 59.5l2 16.4c65.7.8 70.2-55.4 67.4-76.9" fill="#ff0" />
+        <path
+          d="M234.3 268.1l-14 1c-.2 11.8-1.3 57-55.3 59.5l2 16.4c65.7.8 70.2-55.4 67.4-76.9"
+          fill="#ff0"
+        />
         <path
           d="M431.2 908.5l-12.2.8c-.2 10.4-1 49.9-48.2 52l1.6 14.3c57.4.7 61.3-48.3 58.8-67zm-44.2 70l-14.4-3"
           fill="none"

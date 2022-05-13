@@ -18,7 +18,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <rect fill="#fff" fillRule="evenodd" height={160} rx={0} ry={0} width={640} y={160} />
       <rect fillRule="evenodd" height={160} rx={0} ry={0} width={640} y={320} />

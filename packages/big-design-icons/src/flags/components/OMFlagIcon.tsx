@@ -18,7 +18,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="OMFlagIcon__a">
@@ -31,8 +37,24 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         <path d="M174.6-35.4h564.9v190h-565z" fill="#fff" fillRule="evenodd" />
         <g stroke="#ef2d28">
           <g fill="#fff" fillRule="evenodd" transform="matrix(.19848 0 0 .17744 111.3 -13.4)">
-            <rect height={85} rx={11.3} ry={11.8} strokeWidth={1.4} width={138.2} x={17.7} y={467.7} />
-            <rect height={78} rx={10.7} ry={10.9} strokeWidth={1.3} width={131.1} x={21.3} y={471.3} />
+            <rect
+              height={85}
+              rx={11.3}
+              ry={11.8}
+              strokeWidth={1.4}
+              width={138.2}
+              x={17.7}
+              y={467.7}
+            />
+            <rect
+              height={78}
+              rx={10.7}
+              ry={10.9}
+              strokeWidth={1.3}
+              width={131.1}
+              x={21.3}
+              y={471.3}
+            />
             <path
               d="M65 396l9.7.5.4 5.8 8 5.3 6.2-6.7 7.5 5.3-7 5.8 1.7 8 8.8-.5V430l-7-.4-3.6 6.6 8 7.5-6.2 6.2-6.7-6.6-9.7 2.6.5 9.7-10.6 1-1.4-9.4-8.8-4.8-4.9 6.6-7.5-4.9 4.4-7.5-5.3-4.8H34l-.4-13.7 7.5.9 5.3-8-6.2-6.2 8-7 5.7 5.7 9.7-1.8L65 396z"
               strokeWidth={1.3}
@@ -52,8 +74,24 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             />
           </g>
           <g fill="#fff" fillRule="evenodd" transform="matrix(.19848 0 0 .17744 19.1 -14)">
-            <rect height={85} rx={11.3} ry={11.8} strokeWidth={1.4} width={138.2} x={17.7} y={467.7} />
-            <rect height={78} rx={10.7} ry={10.9} strokeWidth={1.3} width={131.1} x={21.3} y={471.3} />
+            <rect
+              height={85}
+              rx={11.3}
+              ry={11.8}
+              strokeWidth={1.4}
+              width={138.2}
+              x={17.7}
+              y={467.7}
+            />
+            <rect
+              height={78}
+              rx={10.7}
+              ry={10.9}
+              strokeWidth={1.3}
+              width={131.1}
+              x={21.3}
+              y={471.3}
+            />
             <path
               d="M65 396l9.7.5.4 5.8 8 5.3 6.2-6.7 7.5 5.3-7 5.8 1.7 8 8.8-.5V430l-7-.4-3.6 6.6 8 7.5-6.2 6.2-6.7-6.6-9.7 2.6.5 9.7-10.6 1-1.4-9.4-8.8-4.8-4.9 6.6-7.5-4.9 4.4-7.5-5.3-4.8H34l-.4-13.7 7.5.9 5.3-8-6.2-6.2 8-7 5.7 5.7 9.7-1.8L65 396z"
               strokeWidth={1.3}
@@ -447,12 +485,48 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
               strokeWidth={1.3}
               transform="matrix(1.0333 0 0 1 75.3 63.8)"
             />
-            <circle cx={194.9} cy={166.5} r={10.6} strokeWidth={1.3} transform="matrix(1.0333 0 0 1 75.3 60.2)" />
-            <circle cx={194.9} cy={166.5} r={10.6} strokeWidth={1.3} transform="matrix(1.0333 0 0 1 163.2 60.2)" />
-            <circle cx={194.9} cy={166.5} r={10.6} strokeWidth={1.3} transform="matrix(1.0333 0 0 1 119.3 60.2)" />
-            <circle cx={194.9} cy={166.5} r={10.6} strokeWidth={1.3} transform="matrix(1.0333 0 0 1 119.3 24.8)" />
-            <circle cx={194.9} cy={166.5} r={10.6} strokeWidth={1.3} transform="matrix(1.0702 0 0 1 80 226.8)" />
-            <circle cx={194.9} cy={166.5} r={10.6} strokeWidth={1.3} transform="matrix(1.0702 0 0 1 140.6 226.8)" />
+            <circle
+              cx={194.9}
+              cy={166.5}
+              r={10.6}
+              strokeWidth={1.3}
+              transform="matrix(1.0333 0 0 1 75.3 60.2)"
+            />
+            <circle
+              cx={194.9}
+              cy={166.5}
+              r={10.6}
+              strokeWidth={1.3}
+              transform="matrix(1.0333 0 0 1 163.2 60.2)"
+            />
+            <circle
+              cx={194.9}
+              cy={166.5}
+              r={10.6}
+              strokeWidth={1.3}
+              transform="matrix(1.0333 0 0 1 119.3 60.2)"
+            />
+            <circle
+              cx={194.9}
+              cy={166.5}
+              r={10.6}
+              strokeWidth={1.3}
+              transform="matrix(1.0333 0 0 1 119.3 24.8)"
+            />
+            <circle
+              cx={194.9}
+              cy={166.5}
+              r={10.6}
+              strokeWidth={1.3}
+              transform="matrix(1.0702 0 0 1 80 226.8)"
+            />
+            <circle
+              cx={194.9}
+              cy={166.5}
+              r={10.6}
+              strokeWidth={1.3}
+              transform="matrix(1.0702 0 0 1 140.6 226.8)"
+            />
             <path
               d="M212.6 311.8h49.6l-24.8 31.9-24.8-31.9z"
               strokeWidth={1.3}
@@ -467,7 +541,15 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             />
           </g>
           <g fill="#fff" fillRule="evenodd" transform="matrix(.19848 0 0 .17744 18.8 -19.1)">
-            <rect height={21.3} rx={4.3} ry={3.7} strokeWidth={1.2} width={81.5} x={262.2} y={524.4} />
+            <rect
+              height={21.3}
+              rx={4.3}
+              ry={3.7}
+              strokeWidth={1.2}
+              width={81.5}
+              x={262.2}
+              y={524.4}
+            />
             <path
               d="M368.5 506.7c-9.8 0-17.7 8.3-17.7 18.5v16.1a18 18 0 0017.7 18.5 18 18 0 0017.7-18.5v-16a18 18 0 00-17.7-18.6zm0 7c-5.9 0-10.6 6.7-10.6 14.9v9.3c0 8.2 4.7 14.8 10.6 14.8 5.9 0 10.6-6.6 10.6-14.8v-9.3c0-8.2-4.7-14.8-10.6-14.8zm-92.1-3.5c-6 0-10.6 6.6-10.6 14.9v16.4c0 8.2 4.7 14.8 10.6 14.8 5.9 0 10.6-6.6 10.6-14.8V525c0-8.3-4.7-14.9-10.6-14.9zm0-7a18 18 0 00-17.7 18.5v23.2a18 18 0 0017.7 18.5c9.8 0 17.7-8.3 17.7-18.5v-23.2a18 18 0 00-17.7-18.6z"
               strokeWidth={1.2}
@@ -486,11 +568,51 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
               strokeWidth={0.9}
               transform="matrix(1.8 0 0 1.1176 -425.2 245.7)"
             />
-            <rect height={21.3} rx={2.3} ry={3.7} strokeWidth={1.2} width={42.5} x={375.6} y={524.4} />
-            <rect height={28.4} rx={1.3} ry={4.9} strokeWidth={1.2} width={24.8} x={336.6} y={520.9} />
-            <rect height={28.4} rx={1.3} ry={4.9} strokeWidth={1.2} width={24.8} x={219.7} y={520.9} />
-            <rect height={35.4} rx={2.6} ry={6.1} strokeWidth={1.2} width={49.6} x={141.7} y={517.3} />
-            <rect height={35.4} rx={2.5} ry={6.1} strokeWidth={1.2} width={46.1} x={450} y={520.9} />
+            <rect
+              height={21.3}
+              rx={2.3}
+              ry={3.7}
+              strokeWidth={1.2}
+              width={42.5}
+              x={375.6}
+              y={524.4}
+            />
+            <rect
+              height={28.4}
+              rx={1.3}
+              ry={4.9}
+              strokeWidth={1.2}
+              width={24.8}
+              x={336.6}
+              y={520.9}
+            />
+            <rect
+              height={28.4}
+              rx={1.3}
+              ry={4.9}
+              strokeWidth={1.2}
+              width={24.8}
+              x={219.7}
+              y={520.9}
+            />
+            <rect
+              height={35.4}
+              rx={2.6}
+              ry={6.1}
+              strokeWidth={1.2}
+              width={49.6}
+              x={141.7}
+              y={517.3}
+            />
+            <rect
+              height={35.4}
+              rx={2.5}
+              ry={6.1}
+              strokeWidth={1.2}
+              width={46.1}
+              x={450}
+              y={520.9}
+            />
           </g>
         </g>
       </g>

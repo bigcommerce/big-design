@@ -361,7 +361,7 @@ test('autoselects first matching option when filtering', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(options[1].getAttribute('aria-selected')).toBe('false');
 });
@@ -375,7 +375,7 @@ test('does not autoselect first matching option when it is disabled', async () =
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
   expect(options[0].getAttribute('aria-selected')).toBe('false');
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 });
@@ -396,7 +396,7 @@ test('previous option remains selected after clearing the input value', async ()
   const options = await screen.findAllByRole('option');
   const mexicoOption = await screen.findByRole('option', { name: 'Mexico' });
 
-  expect(options.length).toBe(6);
+  expect(options).toHaveLength(6);
   expect(mexicoOption.getAttribute('aria-selected')).toBe('true');
 });
 

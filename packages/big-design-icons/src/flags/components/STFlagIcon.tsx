@@ -40,7 +40,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         <use height="100%" transform="rotate(-144)" width="100%" xlinkHref="#STFlagIcon__b" />
         <use height="100%" transform="rotate(-72)" width="100%" xlinkHref="#STFlagIcon__b" />
       </g>
-      <use height="100%" transform="translate(-523.2)" width="100%" x={700} xlinkHref="#STFlagIcon__c" />
+      <use
+        height="100%"
+        transform="translate(-523.2)"
+        width="100%"
+        x={700}
+        xlinkHref="#STFlagIcon__c"
+      />
     </svg>
   );
 };

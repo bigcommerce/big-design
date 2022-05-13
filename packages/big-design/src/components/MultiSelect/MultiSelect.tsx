@@ -93,7 +93,9 @@ export const MultiSelect = typedMemo(
       setInputValue('');
     }, [selectedOptions]);
 
-    const getFirstMatchingOptionIndex = (filteredOptions: (SelectOption<T> | SelectAction)[]) => {
+    const getFirstMatchingOptionIndex = (
+      filteredOptions: Array<SelectOption<T> | SelectAction>,
+    ) => {
       return filteredOptions.findIndex((option) => !option.disabled);
     };
 

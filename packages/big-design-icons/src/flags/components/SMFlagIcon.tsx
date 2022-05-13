@@ -18,7 +18,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <g fillRule="evenodd" strokeWidth="1pt">
         <path d="M0 240h640v240H0z" fill="#19b6ef" />
@@ -121,7 +127,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         stroke="#000"
         strokeWidth={1.1}
       />
-      <path d="M323.6 143a6 6 0 11-12 0 6 6 0 0112 0z" fill="#fff" fillRule="evenodd" stroke="#000" strokeWidth={1.1} />
+      <path
+        d="M323.6 143a6 6 0 11-12 0 6 6 0 0112 0z"
+        fill="#fff"
+        fillRule="evenodd"
+        stroke="#000"
+        strokeWidth={1.1}
+      />
       <path
         d="M322.7 132a5.4 5.4 0 11-10.8 0 5.4 5.4 0 0110.8 0z"
         fill="#fff"

@@ -84,11 +84,15 @@ export const Select = typedMemo(
     // Need to set select options if options prop changes
     useEffect(() => setFilteredOptions(flattenedOptions), [flattenedOptions]);
 
-    const getFirstMatchingOptionIndex = (filteredOptions: (SelectOption<T> | SelectAction)[]) => {
+    const getFirstMatchingOptionIndex = (
+      filteredOptions: Array<SelectOption<T> | SelectAction>,
+    ) => {
       return filteredOptions.findIndex((option) => !option.disabled);
     };
 
-    const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+    const handleOnSelectedItemChange = (
+      changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>,
+    ) => {
       if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
         action.onActionClick(inputValue || null);
       } else if (

@@ -18,7 +18,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="TMFlagIcon__a">
@@ -146,34 +152,202 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             strokeWidth={0.1}
             transform="matrix(.74419 0 0 .62 -392 -6.5)"
           />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -374.1 -39)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -367.6 -39)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -361 -39)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -371.5 -41.1)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -363.7 -41.1)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -371.6 -36.8)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -363.7 -36.7)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -353.2 -50)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -346.6 -50)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -340 -50)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -350.5 -52.2)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -342.7 -52.2)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -350.6 -47.9)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -342.7 -47.8)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -374.2 -60.9)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -367.6 -60.9)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -361 -61)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -371.6 -63.1)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -363.7 -63.1)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -371.6 -58.8)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -363.7 -58.7)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -395.3 -49.8)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -388.7 -49.8)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -382.1 -49.9)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -392.6 -52)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -384.8 -52)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -392.7 -47.7)" />
-          <circle cx={413.7} cy={582} fill="#fff" r={0.9} transform="matrix(.74419 0 0 .62 -384.8 -47.6)" />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -374.1 -39)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -367.6 -39)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -361 -39)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -371.5 -41.1)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -363.7 -41.1)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -371.6 -36.8)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -363.7 -36.7)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -353.2 -50)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -346.6 -50)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -340 -50)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -350.5 -52.2)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -342.7 -52.2)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -350.6 -47.9)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -342.7 -47.8)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -374.2 -60.9)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -367.6 -60.9)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -361 -61)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -371.6 -63.1)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -363.7 -63.1)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -371.6 -58.8)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -363.7 -58.7)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -395.3 -49.8)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -388.7 -49.8)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -382.1 -49.9)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -392.6 -52)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -384.8 -52)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -392.7 -47.7)"
+          />
+          <circle
+            cx={413.7}
+            cy={582}
+            fill="#fff"
+            r={0.9}
+            transform="matrix(.74419 0 0 .62 -384.8 -47.6)"
+          />
         </g>
         <path
           d="M138.9 255.8l4.5-2.2 4.6 2.2h-9.1zm-13.6 0l4.5-2.2 4.6 2.2h-9.1zm-13.6 0l4.5-2.2 4.6 2.2h-9.1zm27.2-49l4.5 2.2 4.6-2.1h-9.1zm-13.6 0l4.5 2.2 4.6-2.1h-9.1zm-13.6 0l4.5 2.2 4.6-2.1h-9.1z"
@@ -190,10 +364,22 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           strokeWidth={0.3}
           transform="matrix(1.2798 0 0 1.1995 211.4 -5.6)"
         />
-        <path d="M122.9 231.3h-6.7v-4.2h4.5v-3.9h4.4v-3.6h4.5v4.5c-3.7 0-6.7 3-6.7 7.2z" fill="#fff" />
-        <path d="M136.3 231.3h6.7v-4.2h-4.5v-3.9H134v-3.6h-4.4v4.5c3.7 0 6.7 3 6.7 7.2z" fill="#faae29" />
-        <path d="M136.3 231.3h6.7v4.2h-4.5v3.9H134v3.6h-4.4v-4.5c3.7 0 6.7-3 6.7-7.2z" fill="#fff" />
-        <path d="M122.9 231.3h-6.7v4.2h4.5v3.9h4.4v3.6h4.5v-4.5c-3.7 0-6.7-3-6.7-7.2z" fill="#faae29" />
+        <path
+          d="M122.9 231.3h-6.7v-4.2h4.5v-3.9h4.4v-3.6h4.5v4.5c-3.7 0-6.7 3-6.7 7.2z"
+          fill="#fff"
+        />
+        <path
+          d="M136.3 231.3h6.7v-4.2h-4.5v-3.9H134v-3.6h-4.4v4.5c3.7 0 6.7 3 6.7 7.2z"
+          fill="#faae29"
+        />
+        <path
+          d="M136.3 231.3h6.7v4.2h-4.5v3.9H134v3.6h-4.4v-4.5c3.7 0 6.7-3 6.7-7.2z"
+          fill="#fff"
+        />
+        <path
+          d="M122.9 231.3h-6.7v4.2h4.5v3.9h4.4v3.6h4.5v-4.5c-3.7 0-6.7-3-6.7-7.2z"
+          fill="#faae29"
+        />
         <path d="M136.3 231.3h-6.7v-7.2c3.7 0 6.7 3.3 6.7 7.2z" fill="#28ae66" />
         <path d="M136.3 231.3h-6.7v7.2c3.7 0 6.7-3.2 6.7-7.2z" fill="#ca3745" />
         <path d="M122.9 231.3h6.7v7.2c-3.7 0-6.7-3.2-6.7-7.2z" fill="#28ae66" />
@@ -417,19 +603,31 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           transform="matrix(1.2798 0 0 1.1535 222.8 -36.7)"
         />
         <path d="M75.4 51.2v6.1l6.8 8.2v6.1l6.8 6.2h13.6l11.4 6h15.8V51.3H75.4z" fill="#faae29" />
-        <path d="M110.7 65.5l-8.3 5.3h-5l1.7 1.7-3.3 3.5 1.7 1.8 5-1.8 1.6 1.8.7-4.7 9.2-5.6-3.3-2z" fill="#ca3745" />
+        <path
+          d="M110.7 65.5l-8.3 5.3h-5l1.7 1.7-3.3 3.5 1.7 1.8 5-1.8 1.6 1.8.7-4.7 9.2-5.6-3.3-2z"
+          fill="#ca3745"
+        />
         <path
           d="M101.6 61.4l-8.3 5.3h-4.9l1.6 1.7-3.2 3.5 1.6 1.8 5-1.8 1.6 1.8.8-4.7 9.1-5.5-3.3-2zm-4.5-8.2l-8.3 5.3h-5l1.7 1.8-3.3 3.5 1.7 1.7 5-1.8 1.6 1.8.7-4.7 9.2-5.5-3.3-2z"
           fill="#ca3745"
         />
-        <path d="M184.2 51.2v-6.1l-6.8-8.2v-6.1l-6.8-6.2H157l-11.3-6.1h-15.9v32.7h54.4z" fill="#faae29" />
-        <path d="M129.8 83.9h-4.2l-4.8-4.1H113l-4.2-2 2.1-2 4.2 2h4.2l4.2-6.2 6.3 2v4.2h-6.3l6.3 6z" fill="#ca3745" />
+        <path
+          d="M184.2 51.2v-6.1l-6.8-8.2v-6.1l-6.8-6.2H157l-11.3-6.1h-15.9v32.7h54.4z"
+          fill="#faae29"
+        />
+        <path
+          d="M129.8 83.9h-4.2l-4.8-4.1H113l-4.2-2 2.1-2 4.2 2h4.2l4.2-6.2 6.3 2v4.2h-6.3l6.3 6z"
+          fill="#ca3745"
+        />
         <path d="M75.4 51.2v-6.1l6.8-8.2v-6.1l6.8-6.2h13.6l11.4-6.1h15.8v32.7H75.4z" fill="#fff" />
         <path
           d="M129.8 18.5h-4.2l-4.8 4H113l-4.2 2.1 2.1 2 4.2-2h4.2l4.2 6.2 6.3-2v-4.2h-6.3l6.3-6.1z"
           fill="#ca3745"
         />
-        <path d="M129.8 18.5h4.2l4.9 4h7.7l4.2 2.1-2 2-4.3-2h-4.2l-4.2 6.2-6.3-2v-4.2h6.3l-6.3-6.1z" fill="#ca3745" />
+        <path
+          d="M129.8 18.5h4.2l4.9 4h7.7l4.2 2.1-2 2-4.3-2h-4.2l-4.2 6.2-6.3-2v-4.2h6.3l-6.3-6.1z"
+          fill="#ca3745"
+        />
         <path d="M184.2 51.2v6.1l-6.8 8.2v6.1l-6.8 6.2H157l-11.3 6h-15.9V51.3h54.4z" fill="#fff" />
         <path
           d="M129.8 83.9h4.2l4.9-4.1h7.7l4.2-2-2-2-4.3 2h-4.2l-4.2-6.2-6.3 2v4.2h6.3l-6.3 6zm-28.2-43l-8.3-5.2h-4.9L90 34l-3.2-3.5 1.6-1.8 5 1.8 1.6-1.8.8 4.7 9.1 5.5-3.3 2zm47.4-4l8.2-5.3h5l-1.7-1.7 3.3-3.5-1.6-1.8-5 1.8-1.6-1.8-.8 4.7-9.1 5.6 3.3 2z"
@@ -458,7 +656,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fill="#fff"
         />
         <path d="M170.6 51.2h-40.8V26.7L148 36.9h13.6v8.2l9.1 6.1z" fill="#28ae66" />
-        <path d="M149 65.5l8.2 5.3h5l-1.7 1.7 3.3 3.5-1.6 1.8-5-1.8-1.6 1.8-.8-4.7-9.1-5.6 3.3-2z" fill="#ca3745" />
+        <path
+          d="M149 65.5l8.2 5.3h5l-1.7 1.7 3.3 3.5-1.6 1.8-5-1.8-1.6 1.8-.8-4.7-9.1-5.6 3.3-2z"
+          fill="#ca3745"
+        />
         <path
           d="M158 61.4l8.3 5.3h5l-1.7 1.7 3.3 3.5-1.6 1.8-5-1.8-1.6 1.8-.8-4.7-9.1-5.5 3.2-2zm4.6-8.2l8.3 5.3h4.9l-1.7 1.7 3.3 3.5-1.6 1.8-5-1.8-1.6 1.8-.8-4.7-9.1-5.5 3.3-2z"
           fill="#ca3745"
@@ -480,7 +681,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fill="#28ae66"
         />
         <path d="M116.2 51.2L129.8 41l13.6 10.2-13.6 10.2-13.6-10.2z" fill="#fff" />
-        <path d="M85.7 55.3l2.1 2-2 2h-2.2l-6.3-8.1h2.1l4.2 6.1h2.1l-2-2 2-2H90v2h-4.2z" fill="#ca3745" />
+        <path
+          d="M85.7 55.3l2.1 2-2 2h-2.2l-6.3-8.1h2.1l4.2 6.1h2.1l-2-2 2-2H90v2h-4.2z"
+          fill="#ca3745"
+        />
         <path
           d="M85.7 47.1l2.1-2-2-2h-2.2l-6.3 8.1h2.1l4.2-6.1h2.1l-2 2 2 2H90v-2h-4.2zm88.2 8.2l-2 2 2 2h2.1l6.3-8.1h-2l-4.3 6.1h-2l2-2-2-2h-4.3v2h4.2z"
           fill="#ca3745"
@@ -501,8 +705,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           d="M87.2 396.3h2.2V392H94v4.2h2.3v-9.8H94v4.2h-4.5v-4.2h-2.3v9.8zm57.9 32.6h2.3v-4.2h4.5v4.2h2.3V419H152v4.2h-4.6V419h-2.2v9.8zm-36.6-49h2.3v-4.1h4.6v4.2h2.2v-9.8h-2.2v4.2h-4.6v-4.2h-2.3v9.8zm33.5 0h2.3v-4.1h4.6v4.2h2.3v-9.8h-2.3v4.2h-4.6v-4.2H142v9.8zm21.4 16.4h2.2V392h4.6v4.2h2.3v-9.8h-2.3v4.2h-4.6v-4.2h-2.2v9.8zm0 16.3h2.2v-4.2h4.6v4.2h2.3v-9.8h-2.3v4.2h-4.6v-4.2h-2.2v9.8z"
           fill="#c00"
         />
-        <path d="M129.8 435.4v-35.9h54.9v16.3L148 435.4h-18.3zm0-71.7v35.8H75v-16.3l36.5-19.5h18.3z" fill="#faae29" />
-        <path d="M129.8 363.7v35.8h54.9v-16.3L148 363.7h-18.3zm0 71.7v-35.9H75v16.3l36.5 19.6h18.3z" fill="#fff" />
+        <path
+          d="M129.8 435.4v-35.9h54.9v16.3L148 435.4h-18.3zm0-71.7v35.8H75v-16.3l36.5-19.5h18.3z"
+          fill="#faae29"
+        />
+        <path
+          d="M129.8 363.7v35.8h54.9v-16.3L148 363.7h-18.3zm0 71.7v-35.9H75v16.3l36.5 19.6h18.3z"
+          fill="#fff"
+        />
         <path
           d="M-177.2 368.5h21.3l-21.3-10.6v10.6zm24.8-1.8v17.7H-186v-14.1h-7.1l-8.9-5.3v-12.4l5.4-5.4h-7.1V365h-1.8v-19.5h17.7l35.4 21.2z"
           fill="#faae29"
@@ -510,7 +720,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           strokeWidth={0.1}
           transform="matrix(1.0321 0 0 .92 342 45.9)"
         />
-        <path d="M111.5 388.1V411h5.5l12.8 6.6 12.8-6.6h5.5v-22.8h-5.5l-12.8-6.5-12.8 6.5h-5.5z" fill="#ca3745" />
+        <path
+          d="M111.5 388.1V411h5.5l12.8 6.6 12.8-6.6h5.5v-22.8h-5.5l-12.8-6.5-12.8 6.5h-5.5z"
+          fill="#ca3745"
+        />
         <path
           d="M-177.2 368.5h21.3l-21.3-10.6v10.6zm24.8-1.8v17.7H-186v-14.1h-7.1l-8.9-5.3v-12.4l5.4-5.4h-7.1V365h-1.8v-19.5h17.7l35.4 21.2z"
           fill="#faae29"

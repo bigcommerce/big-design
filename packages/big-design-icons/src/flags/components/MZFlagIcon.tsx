@@ -18,7 +18,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="MZFlagIcon__a">
@@ -54,7 +60,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           strokeLinejoin="round"
           strokeWidth={1.1}
         />
-        <path d="M148 246.6l-.3 38.8m31.7-38.3L186 278" fill="none" stroke="#000" strokeWidth={1.2} />
+        <path
+          d="M148 246.6l-.3 38.8m31.7-38.3L186 278"
+          fill="none"
+          stroke="#000"
+          strokeWidth={1.2}
+        />
         <path
           d="M117 246.6l-3.7 16"
           fill="none"

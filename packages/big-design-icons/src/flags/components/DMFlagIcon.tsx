@@ -18,7 +18,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="DMFlagIcon__a">
@@ -33,7 +39,15 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         <path d="M-260 226.6H772.6v50.2H-260z" />
         <path d="M-260 276.8H772.6v50.1H-260z" fill="#fff" />
         <path d="M276.2 0h48.5v512h-48.5z" fill="#fff" />
-        <rect fill="#e72910" height={275} ry={137.5} transform="scale(-1)" width={273.8} x={-394.6} y={-393.9} />
+        <rect
+          fill="#e72910"
+          height={275}
+          ry={137.5}
+          transform="scale(-1)"
+          width={273.8}
+          x={-394.6}
+          y={-393.9}
+        />
         <g strokeWidth="1pt">
           <path d="M250.5 137l5.6-16 5.1 15.7s17.1.5 17.1.2-13.5 10.3-13.5 10.3l6.1 17.6c-.2-.5-14.8-10.9-14.8-10.9s-14.8 10.4-14.5 10.4 5.6-17 5.6-17l-13.3-10.1 16.6-.3z" />
           <path

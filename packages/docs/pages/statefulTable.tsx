@@ -316,12 +316,16 @@ const StatefulTablePage = () => {
             {
               id: 'columns',
               title: 'Columns',
-              render: () => <StatefulTableColumnsPropTable id="stateful-table-columns-prop-table" />,
+              render: () => (
+                <StatefulTableColumnsPropTable id="stateful-table-columns-prop-table" />
+              ),
             },
             {
               id: 'filters',
               title: 'Filters',
-              render: () => <StatefulTableFiltersPropTable id="stateful-table-filters-prop-table" />,
+              render: () => (
+                <StatefulTableFiltersPropTable id="stateful-table-filters-prop-table" />
+              ),
             },
           ]}
         />

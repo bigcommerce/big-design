@@ -41,13 +41,26 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         <use height="100%" stroke="#000" width="100%" xlinkHref="#KEFlagIcon__a" />
         <use fill="#fff" height="100%" width="100%" xlinkHref="#KEFlagIcon__a" />
       </g>
-      <use height="100%" transform="matrix(-1 0 0 1 640 0)" width="100%" xlinkHref="#KEFlagIcon__b" />
+      <use
+        height="100%"
+        transform="matrix(-1 0 0 1 640 0)"
+        width="100%"
+        xlinkHref="#KEFlagIcon__b"
+      />
       <path
         d="M640.5 168H377c-9-24-39-72-57-72s-48 48-57 72H-.2v144H263c9 24 39 72 57 72s48-48 57-72h263.5V168z"
         fill="#b00"
       />
-      <path d="M377 312c9-24 15-48 15-72s-6-48-15-72c-9 24-15 48-15 72s6 48 15 72" id="KEFlagIcon__c" />
-      <use height="100%" transform="matrix(-1 0 0 1 640 0)" width="100%" xlinkHref="#KEFlagIcon__c" />
+      <path
+        d="M377 312c9-24 15-48 15-72s-6-48-15-72c-9 24-15 48-15 72s6 48 15 72"
+        id="KEFlagIcon__c"
+      />
+      <use
+        height="100%"
+        transform="matrix(-1 0 0 1 640 0)"
+        width="100%"
+        xlinkHref="#KEFlagIcon__c"
+      />
       <g fill="#fff" transform="matrix(3 0 0 3 320 240)">
         <ellipse rx={4} ry={6} />
         <path d="M1 5.8s4 8 4 21-4 21-4 21z" id="KEFlagIcon__d" />

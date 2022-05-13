@@ -382,6 +382,7 @@ test('end should select last select item', async () => {
   const options = await screen.findAllByRole('option');
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
+
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 
   fireEvent.keyDown(input, { key: 'End' });
@@ -953,7 +954,7 @@ test('group labels should be skipped when using keyboard to navigate options', a
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(6);
+  expect(options).toHaveLength(6);
   expect(options[0].getAttribute('aria-selected')).toBe('true');
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
@@ -994,7 +995,7 @@ test('autoselects first matching option when filtering', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(options[1].getAttribute('aria-selected')).toBe('false');
 });
@@ -1008,7 +1009,7 @@ test('does not autoselect first matching option when it is disabled', async () =
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
   expect(options[0].getAttribute('aria-selected')).toBe('false');
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 });
@@ -1028,7 +1029,7 @@ test('after clearing the input value, first option is always selected', async ()
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(6);
+  expect(options).toHaveLength(6);
   expect(options[0].getAttribute('aria-selected')).toBe('true');
 });
 

@@ -18,14 +18,23 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <path d="M0 0h640v480H0z" fill="#e32118" />
       <path d="M0 0h640v320H0z" fill="#fff" />
       <path d="M0 0h640v160H0z" fill="#3e9a00" />
       <path d="M0 0v480l180-240z" fill="#0073ce" />
       <g stroke="#000">
-        <path d="M281.6 191.8h76.6V272c0 27-35.2 6.2-38.2 20.6-5.2-14.8-38.2 6.6-38.2-22.2l-.2-78.6z" fill="#fff" />
+        <path
+          d="M281.6 191.8h76.6V272c0 27-35.2 6.2-38.2 20.6-5.2-14.8-38.2 6.6-38.2-22.2l-.2-78.6z"
+          fill="#fff"
+        />
         <path
           d="M325.4 279.8s-1 1-2.8.2c-1.8-.8-2-51.4-2-51.4 4-4.4 7.2-5.8 7.2-5.8l2.4 2c-9 4.6-8.2 11.2-7.4 22.6.2 4.2.2 9.6 1.2 14.8 1.4 6.6 4.2 12.2 4.4 16.4.2 2.6-3 1.2-3 1.2z"
           fill="#73452b"
@@ -41,7 +50,11 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fill="#a36629"
           strokeWidth={0.2}
         />
-        <path d="M313.4 279.2c-.6-3.2 5.2-11.4 4.8-20m5 7c1.8 5 2.6 9.4 2.2 13.6" fill="none" strokeWidth={0.2} />
+        <path
+          d="M313.4 279.2c-.6-3.2 5.2-11.4 4.8-20m5 7c1.8 5 2.6 9.4 2.2 13.6"
+          fill="none"
+          strokeWidth={0.2}
+        />
         <path
           d="M331 208c1.2-1.4 1.2-1.4 3.4-1.4.4-3 5.4-3 5.8.8 4-.8 4.8 1.6 3.2 4 3.8-1 7.2 0 6.2 4.4 6.8 1.8 4.2 6.6 1.2 7.6-.4 3-3.2 4-7 2.8-4.8 3.4-7.6 2.2-9.8-1.2-5.4.8-5.8-.4-8.2-3.4-4.2 1.8-5 1.8-8.6-.4-.2 2.8-1.2 2-3 1.8.2 3.6-1.2 5.2-4.4 4 2.4 5-3.8 7.2-6.8 3-2.8.2-3-.6-4.4-1.6-1.2 4-5.6 3.4-6.4 1.2-5.6-.8-5-3.8-.4-4 .4-3.2 3.2-2.6 5-2.2.2-2 1.4-1.6 2.4-1.2-.6-1.4-.2-2.2 1.6-2.6-2.6-3.4-1-4.6 1.6-5.8-1.4-3.2 1-3 2.8-3.2-.2-3.4.8-4 4.4-4.4-.4-1.2.2-2.2 2.2-2.2-1.2-3.4.4-4.2 4-3.6.6-5 11.2-2.6 10.4 4.2 3 .4 4 1 4.8 3.4z"
           fill="#009a3b"

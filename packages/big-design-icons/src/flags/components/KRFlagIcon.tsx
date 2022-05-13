@@ -18,14 +18,24 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="KRFlagIcon__a">
           <path d="M-95.8-.4h682.7v512H-95.8z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g clipPath="url(#KRFlagIcon__a)" fillRule="evenodd" transform="translate(89.8 .4) scale(.9375)">
+      <g
+        clipPath="url(#KRFlagIcon__a)"
+        fillRule="evenodd"
+        transform="translate(89.8 .4) scale(.9375)"
+      >
         <path d="M610.6 511.6h-730.2V-.4h730.2z" fill="#fff" />
         <path d="M251.9 256a112.5 112.5 0 11-225 0 112.5 112.5 0 01225 0z" fill="#fff" />
         <path

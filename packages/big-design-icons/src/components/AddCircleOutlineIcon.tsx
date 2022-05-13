@@ -1,7 +1,7 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import React, { ForwardedRef, forwardRef, memo } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import { createStyledIcon, IconProps, PrivateIconProps } from '../base';
 import { useUniqueId } from '../utils';

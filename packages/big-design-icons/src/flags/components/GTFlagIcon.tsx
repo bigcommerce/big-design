@@ -72,7 +72,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           r={13}
           xlinkHref="#GTFlagIcon__a"
         />
-        <radialGradient cx={477.9} cy={215.3} gradientUnits="userSpaceOnUse" id="GTFlagIcon__m" r={0.3}>
+        <radialGradient
+          cx={477.9}
+          cy={215.3}
+          gradientUnits="userSpaceOnUse"
+          id="GTFlagIcon__m"
+          r={0.3}
+        >
           <stop offset={0.3} stopColor="#a50a0a" />
           <stop offset={1} stopColor="#4c0505" />
         </radialGradient>
@@ -89,19 +95,47 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           <stop offset={0} stopColor="#fff" />
           <stop offset={1} stopColor="#fff" stopOpacity={0} />
         </radialGradient>
-        <linearGradient gradientUnits="userSpaceOnUse" id="GTFlagIcon__h" x1={473.9} x2={472.4} y1={259.2} y2={232}>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="GTFlagIcon__h"
+          x1={473.9}
+          x2={472.4}
+          y1={259.2}
+          y2={232}
+        >
           <stop offset={0.2} stopColor="#b07e09" stopOpacity={0} />
           <stop offset={1} stopColor="#b07e09" />
         </linearGradient>
-        <linearGradient gradientUnits="userSpaceOnUse" id="GTFlagIcon__i" x1={483.1} x2={485.5} y1={296.7} y2={326.6}>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="GTFlagIcon__i"
+          x1={483.1}
+          x2={485.5}
+          y1={296.7}
+          y2={326.6}
+        >
           <stop offset={0.2} stopColor="#b07e09" stopOpacity={0} />
           <stop offset={1} stopColor="#b07e09" />
         </linearGradient>
-        <linearGradient gradientUnits="userSpaceOnUse" id="GTFlagIcon__k" x1={451.5} x2={455.4} y1={249.5} y2={240.6}>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="GTFlagIcon__k"
+          x1={451.5}
+          x2={455.4}
+          y1={249.5}
+          y2={240.6}
+        >
           <stop offset={0.2} stopColor="#f9f0aa" />
           <stop offset={1} stopColor="#b07e09" />
         </linearGradient>
-        <linearGradient gradientUnits="userSpaceOnUse" id="GTFlagIcon__l" x1={473.3} x2={475.9} y1={237.3} y2={270.4}>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="GTFlagIcon__l"
+          x1={473.3}
+          x2={475.9}
+          y1={237.3}
+          y2={270.4}
+        >
           <stop offset={0.2} stopColor="#f9f0aa" />
           <stop offset={1} stopColor="#b07e09" />
         </linearGradient>
@@ -142,9 +176,15 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             </g>
             <path d="M394 293.8c-6 1.3-8.7-12-4.1-27.1 1 13.5 2.8 26.1 4 27z" fill="#67923d" />
             <path d="M392.7 293.7a53 53 0 019-24.7c2 15.8-4.5 26.3-9 24.7z" fill="#67923d" />
-            <path d="M392.8 293.6c4.4 1.6 10.9-8.8 8.9-24.6-3.5 13.3-7.5 23.8-8.9 24.6z" fill="#406325" />
+            <path
+              d="M392.8 293.6c4.4 1.6 10.9-8.8 8.9-24.6-3.5 13.3-7.5 23.8-8.9 24.6z"
+              fill="#406325"
+            />
             <path d="M394.1 303.3a50 50 0 0110.6-23.7c.8 16.2-6.3 25.9-10.6 23.7z" fill="#67923d" />
-            <path d="M394.2 303.4c4.2 2.2 11.3-7.3 10.5-23.5-4.4 12.8-9 22.9-10.5 23.5z" fill="#406325" />
+            <path
+              d="M394.2 303.4c4.2 2.2 11.3-7.3 10.5-23.5-4.4 12.8-9 22.9-10.5 23.5z"
+              fill="#406325"
+            />
           </g>
           <g fill="#ba1f3e" stroke="#511124" strokeWidth={0.2}>
             <circle cx={396.8} cy={251.3} r={1.1} />
@@ -195,7 +235,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
               d="M567.8 293.6c.5-7.5-7-23-9-24.7-2 15.8 4.5 26.3 9 24.7zm-5.2-43.2c3.8.4 6.4-9.4 1.1-21.7a73 73 0 01-1.2 21.7zm-58.1 120.1c3.8 3.6 14.4-4.4 18.7-21.8-8.8 12.3-17 21.6-18.7 21.8zm54.6-41.5c2.8 3.3 12-2.1 17-15.8a77.8 77.8 0 01-17 15.8z"
               fill="#406325"
             />
-            <path d="M567.7 293.5c-4.5 1.7-10.9-8.7-8.9-24.5 3.5 13.2 7.5 23.7 8.9 24.5z" fill="#67923d" />
+            <path
+              d="M567.7 293.5c-4.5 1.7-10.9-8.7-8.9-24.5 3.5 13.2 7.5 23.7 8.9 24.5z"
+              fill="#67923d"
+            />
           </g>
           <g fill="#ba1f3e" stroke="#511124" strokeWidth={0.2}>
             <circle cx={564.6} cy={254.9} r={1.1} />
@@ -240,10 +283,19 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           />
           <circle cx={438.2} cy={328.1} fill="none" r={0.6} strokeWidth={0.2} />
           <circle cx={434.4} cy={331.9} fill="none" r={0.6} strokeWidth={0.2} />
-          <path d="M441 322.4l-1-.8a11.6 11.6 0 01-.8-.8 11.4 11.4 0 011.8 1.6z" fill="#485654" stroke="none" />
+          <path
+            d="M441 322.4l-1-.8a11.6 11.6 0 01-.8-.8 11.4 11.4 0 011.8 1.6z"
+            fill="#485654"
+            stroke="none"
+          />
           <path d="M502.2 259l3.5 3.5.6-.6-3.5-3.4-.6.6z" />
         </g>
-        <use height="100%" transform="rotate(-177.2 487 -.2)" width="100%" xlinkHref="#GTFlagIcon__b" />
+        <use
+          height="100%"
+          transform="rotate(-177.2 487 -.2)"
+          width="100%"
+          xlinkHref="#GTFlagIcon__b"
+        />
         <g stroke="#24420e" strokeWidth={0.2}>
           <path
             d="M434 365.4a55.9 55.9 0 00-29.3.9c16.3 8 29.5 4.6 29.2-1zm89 3.3a55 55 0 0129.2 1c-16.3 7.9-29.6 4.5-29.3-1z"
@@ -261,7 +313,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             stroke="#485654"
             strokeWidth={0.2}
           />
-          <path d="M510.6 359.8L509 361c-23-29.6-55.1-57.9-76.7-69.1 30.1 13.9 55.4 41.8 78 67.7h.2z" fill="#8c959d" />
+          <path
+            d="M510.6 359.8L509 361c-23-29.6-55.1-57.9-76.7-69.1 30.1 13.9 55.4 41.8 78 67.7h.2z"
+            fill="#8c959d"
+          />
           <path
             d="M510.6 359.8L509 361a302.3 302.3 0 00-16.9-19.7 336 336 0 00-18.3-18.3 284.2 284.2 0 00-19.8-16.8 195.9 195.9 0 00-10.6-7.6c-3.6-2.3-7.3-4.6-11.1-6.6v-.2a136 136 0 0122.5 13.3 210.9 210.9 0 0120 16.6 360 360 0 0118.3 18.5c6 6.4 11.6 13 17.4 19.4zm0 0a899.3 899.3 0 00-17.5-19.4 360.2 360.2 0 00-18.3-18.5 212 212 0 00-20-16.6 134.7 134.7 0 00-22.4-13.2v-.2a200.9 200.9 0 0121.7 14.3A285 285 0 01474 323a336 336 0 0118.3 18.3 302.3 302.3 0 0116.8 19.8l1.5-1.4z"
             fill="#485654"
@@ -286,7 +341,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             fill="#6c301e"
           />
         </g>
-        <use height="100%" transform="rotate(-176.6 490 -.4)" width="100%" xlinkHref="#GTFlagIcon__c" />
+        <use
+          height="100%"
+          transform="rotate(-176.6 490 -.4)"
+          width="100%"
+          xlinkHref="#GTFlagIcon__c"
+        />
         <g stroke="#24420e" strokeWidth={0.2}>
           <path
             d="M409.2 240a52.4 52.4 0 0019.5-17.9c-15.6 4.2-22.7 14.4-19.5 18zm145.8 4.7a50 50 0 00-15.6-19.9c2.8 15.2 12 22.8 15.6 20z"
@@ -302,8 +362,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             d="M452.2 318.1s-6.2.7-7.9-7.8c-1.8-9.1 5.3-10 5.3-10s8.1-.9 13.2-1l2.2 18-12.8.8z"
             fill="url(#GTFlagIcon__d)"
           />
-          <path d="M453 315.4s-4 .7-4.8-5.6c-.6-4.5 2.2-5.1 2.2-5.1l9.2 1.6v8.2l-6.6.9z" fill="url(#GTFlagIcon__e)" />
-          <path d="M450.4 304.7s5.9-.4 9-.8l1.3 5.7-7.1.4s-.5-5.1-3.2-5.3z" fill="url(#GTFlagIcon__f)" />
+          <path
+            d="M453 315.4s-4 .7-4.8-5.6c-.6-4.5 2.2-5.1 2.2-5.1l9.2 1.6v8.2l-6.6.9z"
+            fill="url(#GTFlagIcon__e)"
+          />
+          <path
+            d="M450.4 304.7s5.9-.4 9-.8l1.3 5.7-7.1.4s-.5-5.1-3.2-5.3z"
+            fill="url(#GTFlagIcon__f)"
+          />
           <path
             d="M449.2 300.4s7.5-1.9 8.5 6.5c.2 2.1-1 7.1-4.7 8.5l13.9-1.5-1.3-15-4.6.4s-10 .3-11.8 1z"
             fill="url(#GTFlagIcon__g)"
@@ -349,7 +415,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           stroke="#a08307"
           strokeWidth={0.2}
         />
-        <path d="M471 216.7a9.9 9.9 0 011-.3 9.8 9.8 0 011.2-.2 9.8 9.8 0 01-1 .3 10 10 0 01-1.2.2z" fill="#a08307" />
+        <path
+          d="M471 216.7a9.9 9.9 0 011-.3 9.8 9.8 0 011.2-.2 9.8 9.8 0 01-1 .3 10 10 0 01-1.2.2z"
+          fill="#a08307"
+        />
         <circle cx={477.7} cy={215.4} r={0.8} stroke="#000" strokeWidth={0.1} />
         <circle cx={477.9} cy={215.3} fill="url(#GTFlagIcon__n)" r={0.3} />
         <g fill="#34541f">

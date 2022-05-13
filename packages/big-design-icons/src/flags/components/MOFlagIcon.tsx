@@ -39,7 +39,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fill="#fbd116"
         />
       </g>
-      <use height="100%" transform="matrix(-1 0 0 1 640 0)" width="100%" xlinkHref="#MOFlagIcon__a" />
+      <use
+        height="100%"
+        transform="matrix(-1 0 0 1 640 0)"
+        width="100%"
+        xlinkHref="#MOFlagIcon__a"
+      />
     </svg>
   );
 };

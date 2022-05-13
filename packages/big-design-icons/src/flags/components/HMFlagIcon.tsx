@@ -18,11 +18,20 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <g strokeWidth="1pt">
         <path d="M0 0h640v480H0z" fill="#006" />
-        <path d="M0 0v30.6l372.6 243h46.9V243L46.9 0H0zm419.5 0v30.6l-372.6 243H0V243L372.6 0h46.9z" fill="#fff" />
+        <path
+          d="M0 0v30.6l372.6 243h46.9V243L46.9 0H0zm419.5 0v30.6l-372.6 243H0V243L372.6 0h46.9z"
+          fill="#fff"
+        />
         <path d="M174.8 0v273.6h69.9V0h-70zM0 91.2v91.2h419.5V91.2H0z" fill="#fff" />
         <path
           d="M0 109.4v54.8h419.5v-54.8H0zM188.8 0v273.6h42V0h-42zM0 273.6l139.8-91.2h31.3L31.3 273.6H0zM0 0l139.8 91.2h-31.2L0 20.4V0zm248.4 91.2L388.2 0h31.3L279.6 91.2h-31.2zm171 182.4l-139.7-91.2h31.2l108.6 70.8v20.4z"

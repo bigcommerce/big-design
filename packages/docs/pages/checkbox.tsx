@@ -155,7 +155,9 @@ const CheckboxPage = () => {
             {
               id: 'checkbox-description-link',
               title: 'CheckboxDescriptionLink',
-              render: () => <CheckboxDescriptionLinkPropTable id="checkbox-description-link-prop-table" />,
+              render: () => (
+                <CheckboxDescriptionLinkPropTable id="checkbox-description-link-prop-table" />
+              ),
             },
           ]}
         />

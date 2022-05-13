@@ -686,32 +686,44 @@ const WorksheetPage = () => {
             {
               id: 'number-column',
               title: 'NumberColumn',
-              render: () => <WorksheetNumberColumnPropTable id="worksheet-number-column-prop-table" />,
+              render: () => (
+                <WorksheetNumberColumnPropTable id="worksheet-number-column-prop-table" />
+              ),
             },
             {
               id: 'checkbox-column',
               title: 'CheckboxColumn',
-              render: () => <WorksheetCheckboxColumnPropTable id="worksheet-checkbox-column-prop-table" />,
+              render: () => (
+                <WorksheetCheckboxColumnPropTable id="worksheet-checkbox-column-prop-table" />
+              ),
             },
             {
               id: 'selectable-column',
               title: 'SelectableColumn',
-              render: () => <WorksheetSelectableColumnPropTable id="worksheet-selectable-column-prop-table" />,
+              render: () => (
+                <WorksheetSelectableColumnPropTable id="worksheet-selectable-column-prop-table" />
+              ),
             },
             {
               id: 'modal-column',
               title: 'ModalColumn',
-              render: () => <WorksheetModalColumnPropTable id="worksheet-modal-column-prop-table" />,
+              render: () => (
+                <WorksheetModalColumnPropTable id="worksheet-modal-column-prop-table" />
+              ),
             },
             {
               id: 'selectable-config',
               title: 'SelectableConfig',
-              render: () => <WorksheetSelectableConfigPropTable id="worksheet-selectable-config-prop-table" />,
+              render: () => (
+                <WorksheetSelectableConfigPropTable id="worksheet-selectable-config-prop-table" />
+              ),
             },
             {
               id: 'modal-config',
               title: 'ModalConfig',
-              render: () => <WorksheetModalConfigPropTable id="worksheet-modal-config-prop-table" />,
+              render: () => (
+                <WorksheetModalConfigPropTable id="worksheet-modal-config-prop-table" />
+              ),
             },
             {
               id: 'error',

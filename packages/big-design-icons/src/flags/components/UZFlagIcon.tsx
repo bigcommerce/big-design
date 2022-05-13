@@ -39,7 +39,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             <g id="UZFlagIcon__c">
               <g id="UZFlagIcon__b">
                 <path d="M0-6L-1.9-.3 1 .7" id="UZFlagIcon__a" />
-                <use height="100%" transform="scale(-1 1)" width="100%" xlinkHref="#UZFlagIcon__a" />
+                <use
+                  height="100%"
+                  transform="scale(-1 1)"
+                  width="100%"
+                  xlinkHref="#UZFlagIcon__a"
+                />
               </g>
               <use height="100%" transform="rotate(72)" width="100%" xlinkHref="#UZFlagIcon__b" />
             </g>

@@ -195,8 +195,9 @@ const IconsPage = () => {
               title: 'Icon',
               render: () => (
                 <IconPropTable>
-                  <CodeSnippet showControls={false} language="bash">
-                    npm install @bigcommerce/big-design-icons // or yarn add @bigcommerce/big-design-icons
+                  <CodeSnippet language="bash" showControls={false}>
+                    npm install @bigcommerce/big-design-icons // or yarn add
+                    @bigcommerce/big-design-icons
                   </CodeSnippet>
                 </IconPropTable>
               ),
@@ -229,14 +230,14 @@ const IconsPage = () => {
 
             return (
               <Flex
-                key={iconName}
-                style={{ width: '300px', gap: '1rem' }}
-                flexDirection="column"
                 borderRadius="normal"
+                flexDirection="column"
                 flexDirection="column"
                 justifyContent="center"
                 key={iconName}
+                key={iconName}
                 padding="large"
+                style={{ width: '300px', gap: '1rem' }}
                 style={{ width: '300px' }}
               >
                 <Icon size="xxxLarge" />

@@ -18,7 +18,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <path d="M0 0h640v480H0z" fill="#012169" />
       <path d="M484.3 180.4l2 2z" fill="#49497d" />
@@ -785,7 +791,11 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         d="M504.3 270.8c-8-1-20.1 3.3-25 3.7-1.5-5.1-.8-5.5-7.4-9 2.3 8.6 2.8 9 0 12-11.8 2.9-24-12.7-23.8-20.8 0-8.3 3.2-5 4-17-6 2-4.8 9.5-8.3 12.8-4 .6-6.6-5.3-12-6.3-1.8 3.7 5.5 7.5 7.6 9.9 7.9 8.2 5.2 27.5 13.3 33.5-.4 4.2-3.4 6.8-8 9.4 9.3 2.9 13-3.7 16.7-4 8.8-.2 18.3.4 25.5-7.3 5.4-6 3.3-6.5 8.8-9 3.7-1.4 12.6-7.2 8.6-8z"
         fill="#f90"
       />
-      <path d="M485.5 285.9a1.6 1.6 0 111.7-2.8 1.6 1.6 0 01-1.7 2.8z" fill="#fff" fillRule="evenodd" />
+      <path
+        d="M485.5 285.9a1.6 1.6 0 111.7-2.8 1.6 1.6 0 01-1.7 2.8z"
+        fill="#fff"
+        fillRule="evenodd"
+      />
       <path d="M0 0h320v240H0z" fill="#012169" />
       <path
         d="M37.5 0l122 90.5L281 0h39v31l-120 89.5 120 89V240h-40l-120-89.5L40.5 240H0v-30l119.5-89L0 32V0z"

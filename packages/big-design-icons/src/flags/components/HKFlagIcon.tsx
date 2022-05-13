@@ -18,7 +18,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="HKFlagIcon__a">
@@ -32,8 +38,19 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fill="#fff"
           fillRule="evenodd"
         />
-        <path d="M232 164.5v-.3" fill="#ba0000" fillRule="evenodd" stroke="#000" strokeWidth={2.1} />
-        <path d="M235.3 241.8c-20-17.7-18.3-62.4-3-77.3" fill="none" stroke="#ba0000" strokeWidth={2.1} />
+        <path
+          d="M232 164.5v-.3"
+          fill="#ba0000"
+          fillRule="evenodd"
+          stroke="#000"
+          strokeWidth={2.1}
+        />
+        <path
+          d="M235.3 241.8c-20-17.7-18.3-62.4-3-77.3"
+          fill="none"
+          stroke="#ba0000"
+          strokeWidth={2.1}
+        />
         <path
           d="M244.6 154.5l3.3 5.5-6-2.5-4.7 5 .8-6.5-6-2.5 6.5-1.5.8-6.4 3.3 5.5 6.6-1.5"
           fill="#ba0000"
@@ -45,7 +62,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fillRule="evenodd"
         />
         <path d="M323 210.2h.3" fill="#ba0000" fillRule="evenodd" stroke="#000" strokeWidth={2.1} />
-        <path d="M250 236c11.2-24.4 54.4-35.8 73.1-25.6" fill="none" stroke="#ba0000" strokeWidth={2.1} />
+        <path
+          d="M250 236c11.2-24.4 54.4-35.8 73.1-25.6"
+          fill="none"
+          stroke="#ba0000"
+          strokeWidth={2.1}
+        />
         <path
           d="M336.3 219.3L332 224l.6-6.5-6-3 6.3-1 .6-6.7 3.4 6 6.4-1.2-4.3 4.7 3.3 6"
           fill="#ba0000"
@@ -56,8 +78,19 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fill="#fff"
           fillRule="evenodd"
         />
-        <path d="M306.5 310.1l.2.2" fill="#ba0000" fillRule="evenodd" stroke="#000" strokeWidth={2.1} />
-        <path d="M259 249c26.6 2.9 51.1 40.2 47.4 61.3" fill="none" stroke="#ba0000" strokeWidth={2.1} />
+        <path
+          d="M306.5 310.1l.2.2"
+          fill="#ba0000"
+          fillRule="evenodd"
+          stroke="#000"
+          strokeWidth={2.1}
+        />
+        <path
+          d="M259 249c26.6 2.9 51.1 40.2 47.4 61.3"
+          fill="none"
+          stroke="#ba0000"
+          strokeWidth={2.1}
+        />
         <path
           d="M302.1 325.6l-5.9-2.6 6.5-1.5.8-6.7 3.1 5.7 6.5-1.5-4.5 5 3 5.7-5.8-2.6-4.5 5.1"
           fill="#ba0000"
@@ -68,8 +101,19 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fill="#fff"
           fillRule="evenodd"
         />
-        <path d="M205.1 325.3l-.1.2" fill="#ba0000" fillRule="evenodd" stroke="#000" strokeWidth={2.1} />
-        <path d="M250.3 262.4c4.9 26.4-24.1 60.5-45.4 62.7" fill="none" stroke="#ba0000" strokeWidth={2.1} />
+        <path
+          d="M205.1 325.3l-.1.2"
+          fill="#ba0000"
+          fillRule="evenodd"
+          stroke="#000"
+          strokeWidth={2.1}
+        />
+        <path
+          d="M250.3 262.4c4.9 26.4-24.1 60.5-45.4 62.7"
+          fill="none"
+          stroke="#ba0000"
+          strokeWidth={2.1}
+        />
         <path
           d="M189 325.4l.9-6.4 3.3 5.7 6.6-1-4.6 4.6 3.3 5.7-6.1-2.9-4.6 4.6.8-6.4-6.1-2.9"
           fill="#ba0000"
@@ -80,8 +124,19 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fill="#fff"
           fillRule="evenodd"
         />
-        <path d="M160.7 235.2l-.2-.1" fill="#ba0000" fillRule="evenodd" stroke="#000" strokeWidth={2.1} />
-        <path d="M235 256.9c-23.2 13.3-65-2.7-74.2-22" fill="none" stroke="#ba0000" strokeWidth={2.1} />
+        <path
+          d="M160.7 235.2l-.2-.1"
+          fill="#ba0000"
+          fillRule="evenodd"
+          stroke="#000"
+          strokeWidth={2.1}
+        />
+        <path
+          d="M235 256.9c-23.2 13.3-65-2.7-74.2-22"
+          fill="none"
+          stroke="#ba0000"
+          strokeWidth={2.1}
+        />
         <path
           d="M155.3 220l6.3-1.3-4.3 5 3.1 5.9-5.8-2.8-4.3 5 .7-6.8-5.9-2.8 6.3-1.3.7-6.8"
           fill="#ba0000"

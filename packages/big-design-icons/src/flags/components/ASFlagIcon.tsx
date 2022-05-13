@@ -18,7 +18,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="ASFlagIcon__a">
@@ -81,7 +87,11 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             fill="none"
             strokeWidth={1.9}
           />
-          <path d="M373.4 230.4a4.8 4.8 0 11-9.6 0 4.8 4.8 0 019.6 0z" fill="none" strokeWidth={1.6} />
+          <path
+            d="M373.4 230.4a4.8 4.8 0 11-9.6 0 4.8 4.8 0 019.6 0z"
+            fill="none"
+            strokeWidth={1.6}
+          />
           <path
             d="M570.1 220.1l50.3 9.6s5.5-6.4 2.6-9.9c7.6-1.7 5.5-11.6 5.5-11.6s8.7-3.8 1.5-12.5c5-5-1.2-8.7-1.2-8.7s2-8.7-4.3-9.6c1.7-7-11-9.3-11-9.3s-26.5 7.3-45.1 7.8c6 6.1-2.3 10-2.3 10s4.9 3.4 3.4 6.3c-1.4 3 1 6.1-5.5 8.2 8.4 3.7-.9 10.1-.9 10.1s9.3 6.4 7 9.6z"
             fill="#fff"
@@ -98,8 +108,16 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             fill="none"
             strokeWidth={1.9}
           />
-          <path d="M436.2 151.5s27.2-14 31.5-15.6c4.3-1.5 14-13.8-.6-13.8" fill="none" strokeWidth={1.9} />
-          <path d="M449.4 157c.3 0 22.3-14.4 29.6-16.2 4-5.5 1.8-11.3-4.9-10.1" fill="none" strokeWidth={1.9} />
+          <path
+            d="M436.2 151.5s27.2-14 31.5-15.6c4.3-1.5 14-13.8-.6-13.8"
+            fill="none"
+            strokeWidth={1.9}
+          />
+          <path
+            d="M449.4 157c.3 0 22.3-14.4 29.6-16.2 4-5.5 1.8-11.3-4.9-10.1"
+            fill="none"
+            strokeWidth={1.9}
+          />
           <path
             d="M480.9 137.1c.6-.3 11.9-.6 7.9 8.3-5.8 4.2-30.9 16.8-30.9 16.8m17.1-34.5l47.7-16s4-8.2-1.8-9.4m39.7-14.4c0 .3 6.1 3.7 2.4 9.2-6.7 4-38.4 11.6-38.4 11.6M608.9 83l-45 12.6m41.6-2.5l-39 12m35.7-2.2l-34.6 10.4m28.1-.6c-.9 0-25.6 7.6-25.6 7.6m20.2 0l-16 6.4m12 2.2a321 321 0 00-13.8 5.8m9.8 1.2l-12.2 5.8m-8.9 7.3s1.5.6 1.2 2.5m-32 14.3s5.1 1.9.3 6.8c-2.5 3.3-9.5 2.4-13.8 8.5m46.8-83.7s6.4 1.5 1.5 9.8c-12.8 4.9-38.8 12.8-38.8 12.8s-1.2 2.2-4.6 4a758.6 758.6 0 01-40.3 12.2m84.3-29.3s7 3 0 8.2c-8 4.6-35.7 13.2-35.7 13.2s-.4 2.4-1.6 3.3c-1.2 1-37.9 13.2-37.9 13.2"
             fill="none"

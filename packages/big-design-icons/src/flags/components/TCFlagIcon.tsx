@@ -18,20 +18,35 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <path d="M640 480V0H0v480h640z" fill="#006" />
       <path d="M0 0h373.7v232.2H0z" fill="#006" fillRule="evenodd" />
       <g strokeWidth="1pt">
-        <path d="M0 0v26l331.9 206.2h41.8v-26L41.7 0H0zm373.7 0v26l-332 206.2H0v-26L331.9 0h41.8z" fill="#fff" />
+        <path
+          d="M0 0v26l331.9 206.2h41.8v-26L41.7 0H0zm373.7 0v26l-332 206.2H0v-26L331.9 0h41.8z"
+          fill="#fff"
+        />
         <path d="M155.7 0v232.2H218V0h-62.3zM0 77.4v77.4h373.7V77.4H0z" fill="#fff" />
         <path
           d="M0 92.9v46.4h373.7V92.9H0zM168.2 0v232.2h37.3V0h-37.4zM0 232.2l124.6-77.4h27.8L27.8 232.2H0zM0 0l124.6 77.4H96.7L0 17.3V0zm221.3 77.4L345.8 0h27.9L249 77.4h-27.8zm152.4 154.8L249 154.8h28l96.7 60v17.4z"
           fill="#c00"
         />
       </g>
-      <path d="M612.5 212.4v80c0 65.6-25.7 125.6-102.2 162.1C434 418 408.1 358 408.1 292.3v-79.8h204.5z" fill="#fff" />
-      <path d="M605.7 220.6V295c0 61.2-24 117.2-95.3 151.3-71.3-34-95.4-90-95.4-151.3v-74.5h190.7z" fill="#fdc300" />
+      <path
+        d="M612.5 212.4v80c0 65.6-25.7 125.6-102.2 162.1C434 418 408.1 358 408.1 292.3v-79.8h204.5z"
+        fill="#fff"
+      />
+      <path
+        d="M605.7 220.6V295c0 61.2-24 117.2-95.3 151.3-71.3-34-95.4-90-95.4-151.3v-74.5h190.7z"
+        fill="#fdc300"
+      />
       <g stroke="#000" strokeWidth={0.1}>
         <path
           d="M206 52.9a2 2 0 00-1.3-.5c.1-1.3-.8-1.8-1.5-2-.7-.3-1-.6-1-1.1-.1-.5-.5-.9-1.1-1-.6-.2-1.2-.8-1.4-1.1-.2-.3-.3-.3-.5.2s-.9 1.5-.2 1.5c-.5.4-.8.8-.5 1.4-.3.3-.5.7-.1.8l.6.4c-.4 0-.5.8.4 1-.2 0-.3.6.1.6-.5 0-1 .8-1.6.8-.7 0-1 .2-1 .5l-.6.8c.5 0 .8 0 1-.2s.7-.3 1 0c.3.2 1 .3 1.2.2-.6.5-1 1-1.1 1.6 0 .6-.5 1.2-1 1.4-.3.2-1 .6-1.1 1.2.5 1.4 1.3 1.7 2.1 2.1 1.4.6 2.3 1.1 2.9 1.8.6.6.8.1 1.7 1.3.9 1 1.7 3.2 2.6 3.5.9.4 2 .2 2.6-1 .7-1 1-12.4-2.2-14.3z"
