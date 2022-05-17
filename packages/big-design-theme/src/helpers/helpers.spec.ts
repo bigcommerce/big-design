@@ -1,6 +1,6 @@
 import { themeOptions } from '../options';
 
-import { addValues, createRGBA, emCalc, listReset, remCalc } from './helpers';
+import { addValues, createRGBA, emCalc, hideVisually, listReset, remCalc } from './helpers';
 
 describe('addValues', () => {
   test('adds px', () => {
@@ -100,4 +100,18 @@ test('listReset returns reset css', () => {
   const expected = ['list-style-type:none;margin:0;padding:0;'];
 
   expect(listReset).toEqual(expected);
+});
+
+test('listReset returns reset css', () => {
+  expect(hideVisually()).toEqual({
+    border: '0',
+    clip: 'rect(0 0 0 0)',
+    height: '1px',
+    margin: '-1px',
+    overflow: 'hidden',
+    padding: '0',
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    width: '1px',
+  });
 });
