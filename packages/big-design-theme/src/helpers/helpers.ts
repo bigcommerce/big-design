@@ -1,4 +1,4 @@
-import { em, math, rem, transparentize } from 'polished';
+import { em, hideVisually, math, rem, transparentize } from 'polished';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { themeOptions } from '../options';
@@ -9,6 +9,7 @@ export interface Helpers {
   remCalc(value: string | number): string;
   emCalc(value: string | number): string;
   listReset: FlattenSimpleInterpolation;
+  hideVisually: typeof hideVisually;
 }
 
 export const addValues = (first: string, second: string) => {
@@ -43,3 +44,5 @@ export const listReset = css`
   margin: 0;
   padding: 0;
 `;
+
+export { hideVisually } from 'polished';
