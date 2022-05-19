@@ -1,5 +1,216 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`isLoading render loading button 1`] = `
+.c4 {
+  height: 1rem;
+  width: 1rem;
+}
+
+.c5 {
+  fill: transparent;
+  stroke-width: 0.125rem;
+  stroke: #ECEEF5;
+}
+
+.c6 {
+  stroke-dasharray: 43.982297150257104 43.982297150257104;
+  stroke: #3C64F4;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation: fxwtRW 1s ease-out infinite;
+  animation: fxwtRW 1s ease-out infinite;
+  stroke-dashoffset: 43.982297150257104;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transition: stroke-dashoffset 0.35s;
+  transition: stroke-dashoffset 0.35s;
+}
+
+.c1 {
+  box-sizing: border-box;
+}
+
+.c2 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: background-color,border-color,box-shadow,color;
+  transition-property: background-color,border-color,box-shadow,color;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 2rem;
+  outline: none;
+  padding: 0 1rem;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  background-color: #3C64F4;
+  border-color: #3C64F4;
+  font-weight: 600;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0[disabled] {
+  border-color: #D9DCE9;
+  pointer-events: none;
+}
+
+.c0 + .bd-button {
+  margin-top: 0.5rem;
+}
+
+.c0:active {
+  background-color: #0B38D9;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c0:hover:not(:active) {
+  background-color: #2852EB;
+}
+
+.c0[disabled] {
+  background-color: #D9DCE9;
+}
+
+.c7 {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  visibility: hidden;
+}
+
+.c3 {
+  position: absolute;
+}
+
+@media (min-width:0px) {
+  .c2 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:720px) {
+  .c2 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 + .bd-button {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    width: auto;
+  }
+}
+
+<button
+  class="c0 bd-button"
+  disabled=""
+>
+  <div
+    class="c1 c2 c3"
+  >
+    <svg
+      class="c4"
+      role="progressbar"
+    >
+      <circle
+        class="c5"
+        cx="0.5em"
+        cy="0.5em"
+        r="0.4375em"
+      />
+      <circle
+        class="c5 c6"
+        cx="0.5em"
+        cy="0.5em"
+        r="0.4375em"
+      />
+    </svg>
+  </div>
+  <span
+    class="c7"
+  >
+    Button
+  </span>
+</button>
+`;
+
 exports[`render default button 1`] = `
 .c0 {
   -webkit-transition: all 150ms ease-out;
@@ -34,7 +245,6 @@ exports[`render default button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -151,7 +361,6 @@ exports[`render destructive button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -268,7 +477,6 @@ exports[`render destructive disabled button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -386,7 +594,6 @@ exports[`render disabled button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -510,7 +717,6 @@ exports[`render icon left and right button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -671,7 +877,6 @@ exports[`render icon left button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -813,7 +1018,6 @@ exports[`render icon only button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -954,7 +1158,6 @@ exports[`render icon right button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -1056,217 +1259,6 @@ exports[`render icon right button 1`] = `
 </button>
 `;
 
-exports[`render loading button 1`] = `
-.c4 {
-  height: 1rem;
-  width: 1rem;
-}
-
-.c5 {
-  fill: transparent;
-  stroke-width: 0.125rem;
-  stroke: #ECEEF5;
-}
-
-.c6 {
-  stroke-dasharray: 43.982297150257104 43.982297150257104;
-  stroke: #3C64F4;
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
-  -webkit-animation: fxwtRW 1s ease-out infinite;
-  animation: fxwtRW 1s ease-out infinite;
-  stroke-dashoffset: 43.982297150257104;
-  -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-  -webkit-transition: stroke-dashoffset 0.35s;
-  transition: stroke-dashoffset 0.35s;
-}
-
-.c1 {
-  box-sizing: border-box;
-}
-
-.c2 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c0 {
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
-  transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid #D9DCE9;
-  border-radius: 0.25rem;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
-  font-size: 1rem;
-  font-weight: 400;
-  height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  line-height: 2rem;
-  outline: none;
-  padding: 0 1rem;
-  pointer-events: none;
-  position: relative;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: 100%;
-  background-color: #3C64F4;
-  border-color: #3C64F4;
-  font-weight: 600;
-}
-
-.c0:focus {
-  outline: none;
-}
-
-.c0[disabled] {
-  border-color: #D9DCE9;
-  pointer-events: none;
-}
-
-.c0 + .bd-button {
-  margin-top: 0.5rem;
-}
-
-.c0:active {
-  background-color: #0B38D9;
-}
-
-.c0:focus {
-  box-shadow: 0 0 0 0.25rem #DBE3FE;
-}
-
-.c0:hover:not(:active) {
-  background-color: #2852EB;
-}
-
-.c0[disabled] {
-  background-color: #D9DCE9;
-}
-
-.c7 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: inline-grid;
-  grid-auto-flow: column;
-  grid-gap: 0.5rem;
-  visibility: hidden;
-}
-
-.c3 {
-  position: absolute;
-}
-
-@media (min-width:0px) {
-  .c2 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media (min-width:720px) {
-  .c2 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media (min-width:720px) {
-  .c0 + .bd-button {
-    margin-top: 0;
-    margin-left: 0.5rem;
-  }
-}
-
-@media (min-width:720px) {
-  .c0 {
-    width: auto;
-  }
-}
-
-<button
-  class="c0 bd-button"
->
-  <div
-    class="c1 c2 c3"
-  >
-    <svg
-      class="c4"
-      role="progressbar"
-    >
-      <circle
-        class="c5"
-        cx="0.5em"
-        cy="0.5em"
-        r="0.4375em"
-      />
-      <circle
-        class="c5 c6"
-        cx="0.5em"
-        cy="0.5em"
-        r="0.4375em"
-      />
-    </svg>
-  </div>
-  <span
-    class="c7"
-  >
-    Button
-  </span>
-</button>
-`;
-
 exports[`render secondary button 1`] = `
 .c0 {
   -webkit-transition: all 150ms ease-out;
@@ -1301,7 +1293,6 @@ exports[`render secondary button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -1418,7 +1409,6 @@ exports[`render secondary destructive button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -1535,7 +1525,6 @@ exports[`render secondary destructive disabled button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -1653,7 +1642,6 @@ exports[`render secondary disabled button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -1771,7 +1759,6 @@ exports[`render subtle button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -1889,7 +1876,6 @@ exports[`render subtle destructive button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -2007,7 +1993,6 @@ exports[`render subtle destructive disabled button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -2126,7 +2111,6 @@ exports[`render subtle disabled button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;

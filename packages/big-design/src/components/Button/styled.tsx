@@ -29,7 +29,6 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   line-height: ${({ theme }) => theme.lineHeight.xLarge};
   outline: none;
   padding: ${({ theme }) => `0 ${theme.spacing.medium}`};
-  pointer-events: ${({ isLoading }) => (isLoading ? 'none' : 'auto')};
   position: relative;
   text-align: center;
   text-decoration: none;

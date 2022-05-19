@@ -19,27 +19,17 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, Ma
   variant?: 'primary' | 'secondary' | 'subtle';
 }
 
-const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const { disabled, isLoading, onClick } = props;
+const LoadingSpinner = () => (
+  <LoadingSpinnerWrapper alignItems="center">
+    <ProgressCircle size="xxSmall" />
+  </LoadingSpinnerWrapper>
+);
 
-    if (onClick && !disabled && !isLoading) {
-      onClick(event);
-    }
-  };
-
-  const renderLoadingSpinner = () => {
-    return (
-      <LoadingSpinnerWrapper alignItems="center">
-        <ProgressCircle size="xxSmall" />
-      </LoadingSpinnerWrapper>
-    );
-  };
-
+const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, isLoading, disabled, ...props }) => {
   return (
-    <StyledButton className="bd-button" {...props} onClick={handleClick} ref={forwardedRef}>
-      {props.isLoading ? renderLoadingSpinner() : null}
-      <ContentWrapper isLoading={props.isLoading}>
+    <StyledButton className="bd-button" {...props} ref={forwardedRef} disabled={isLoading || disabled}>
+      {isLoading ? <LoadingSpinner /> : null}
+      <ContentWrapper isLoading={isLoading}>
         {!props.iconOnly && props.iconLeft}
         {props.iconOnly}
         {!props.iconOnly && props.children}
