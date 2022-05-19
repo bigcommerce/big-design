@@ -110,12 +110,6 @@ test('render subtle destructive disabled button', () => {
   expect(screen.getByRole('button')).toMatchSnapshot();
 });
 
-test('render loading button', () => {
-  render(<Button isLoading={true}>Button</Button>);
-
-  expect(screen.getByRole('button')).toMatchSnapshot();
-});
-
 test('render icon only button', () => {
   render(<Button iconOnly={<AddIcon />}>Button</Button>);
 
@@ -188,24 +182,47 @@ test('render only icon only with left and right icons button', () => {
   expect(screen.getAllByTestId('icon-only')).toHaveLength(1);
 });
 
-test('hides content when isLoading is true', () => {
-  const plusIcon = <AddIcon role="icon" aria-hidden="false" />;
-  const { rerender } = render(
-    <Button isLoading={false} iconLeft={plusIcon}>
-      Button
-    </Button>,
-  );
-  const visibleContent = screen.getByRole('icon');
+describe('isLoading', () => {
+  test('render loading button', () => {
+    render(<Button isLoading={true}>Button</Button>);
 
-  expect(visibleContent).toBeInTheDocument();
+    expect(screen.getByRole('button')).toMatchSnapshot();
+  });
 
-  rerender(
-    <Button isLoading={true}>
-      <strong>Button</strong>
-    </Button>,
-  );
+  test('prevents on click', () => {
+    const mockClickHandler = jest.fn();
+    render(
+      <Button isLoading={true} onClick={mockClickHandler}>
+        Button
+      </Button>,
+    );
 
-  const hiddenContent = screen.queryByRole('icon');
+    userEvent.click(screen.getByRole('button'), undefined, { skipPointerEventsCheck: true });
 
-  expect(hiddenContent).not.toBeInTheDocument();
+    expect(mockClickHandler).not.toHaveBeenCalled();
+  });
+
+  test('disables the button', () => {
+    render(<Button isLoading={true}>Button</Button>);
+
+    expect(screen.getByRole('button')).toBeDisabled();
+  });
+
+  test('hides content', () => {
+    const plusIcon = <AddIcon role="icon" aria-hidden="false" />;
+    const { rerender } = render(
+      <Button isLoading={false} iconLeft={plusIcon}>
+        Foo
+      </Button>,
+    );
+    const visibleContent = screen.getByRole('icon');
+
+    expect(visibleContent).toBeInTheDocument();
+
+    rerender(<Button isLoading={true}>Foo</Button>);
+
+    const hiddenContent = screen.queryByRole('icon');
+
+    expect(hiddenContent).not.toBeInTheDocument();
+  });
 });
