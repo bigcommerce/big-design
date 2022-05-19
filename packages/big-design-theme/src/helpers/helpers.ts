@@ -5,12 +5,11 @@ import { themeOptions } from '../options';
 
 export interface Helpers {
   listReset: FlattenSimpleInterpolation;
+  hideVisually: typeof hideVisually;
   addValues(first: string, second: string): string;
   createRGBA(color: string, alpha: number): string;
   remCalc(value: string | number): string;
   emCalc(value: string | number): string;
-  listReset: FlattenSimpleInterpolation;
-  hideVisually: typeof hideVisually;
 }
 
 export const addValues = (first: string, second: string) => {

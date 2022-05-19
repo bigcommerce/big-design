@@ -102,7 +102,7 @@ test('listReset returns reset css', () => {
   expect(listReset).toEqual(expected);
 });
 
-test('listReset returns reset css', () => {
+test('hideVisually returns proper css', () => {
   expect(hideVisually()).toEqual({
     border: '0',
     clip: 'rect(0 0 0 0)',
