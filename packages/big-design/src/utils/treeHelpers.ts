@@ -23,6 +23,7 @@ export function depthFirstSearch<T>(
 ): Array<TreeNodeProps<T>> | TreeNodeProps<T> | null {
   let list: Array<TreeNodeProps<T>> = [];
 
+  // eslint-disable-next-line no-restricted-syntax
   for (const node of nodes) {
     if (predicate(node)) {
       if (greedy) {

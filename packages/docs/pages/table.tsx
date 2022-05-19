@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { H1, Panel, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
 import React, { Fragment, useEffect, useState } from 'react';
 
@@ -33,20 +36,17 @@ const columns = [
 ];
 
 const sort = (items, columnHash, direction) => {
-  return items
-    .concat()
-    .sort((a, b) =>
-      direction === 'ASC'
-        ? a[columnHash] >= b[columnHash]
-          ? 1
-          : -1
-        : a[columnHash] <= b[columnHash]
-        ? 1
-        : -1,
-    );
+  return items.concat().sort((a, b) => {
+    if (direction === 'ASC') {
+      return a[columnHash] >= b[columnHash] ? 1 : -1;
+    }
+
+    return a[columnHash] <= b[columnHash] ? 1 : -1;
+  });
 };
 
 const dragEnd = (items, from, to) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const item = items.splice(from, 1);
 
   items.splice(to, 0, ...item);
@@ -146,7 +146,7 @@ const TablePage = () => {
                     const [itemsPerPage, setItemsPerPage] = useState(5);
                     const [currentItems, setCurrentItems] = useState<Item[]>([]);
 
-                    const onItemsPerPageChange = (newRange) => {
+                    const onItemsPerPageChange = (newRange: number) => {
                       setCurrentPage(1);
                       setItemsPerPage(newRange);
                     };
@@ -192,7 +192,7 @@ const TablePage = () => {
                     const [columnHash, setColumnHash] = useState('');
                     const [direction, setDirection] = useState<'ASC' | 'DESC'>('ASC');
 
-                    const onSort = (newColumnHash, newDirection) => {
+                    const onSort = (newColumnHash: string, newDirection: string) => {
                       setColumnHash(newColumnHash);
                       setDirection(newDirection);
                       setItems((currentItems) => sort(currentItems, newColumnHash, newDirection));

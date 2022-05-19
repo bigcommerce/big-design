@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Box, Grid, GridItem, H1, Link, Panel, Text } from '@bigcommerce/big-design';
 import React, { Fragment } from 'react';
 

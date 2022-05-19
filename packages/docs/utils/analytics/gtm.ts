@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 const GTM_CONFIG = {
   ID: process.env.GTM_ID || '',
   AUTH: process.env.GTM_AUTH || '',

@@ -32,7 +32,7 @@ export const withPaddings = () => css<PaddingProps>`
     getSpacingStyles(paddingHorizontal, theme, 'padding-left', 'padding-right')};
 `;
 
-export function excludePaddingProps<T extends Record<string, any>>(
+export function excludePaddingProps<T extends Record<string, unknown>>(
   props: T,
 ): Pick<T, Exclude<keyof T, keyof PaddingProps>> {
   const {

@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { ListProps } from './List';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const SharedListStyles = css<ListProps>`
   color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};

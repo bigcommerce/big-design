@@ -7,6 +7,7 @@ import { StyledLogo } from './styled';
 export const SideNavLogo: React.FC = () => (
   <Link href="/">
     <StyledLogo>
+      {/* eslint-disable-next-line @typescript-eslint/restrict-template-expressions */ ''}
       <img alt="BigDesign Logo" src={`${process.env.URL_PREFIX}/logo-with-text.svg`} />
       <Small>v{process.env.BD_VERSION}</Small>
     </StyledLogo>

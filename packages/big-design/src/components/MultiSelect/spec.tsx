@@ -402,7 +402,9 @@ test('enter should trigger onOptionsChange', async () => {
     fireEvent.keyDown(input, { key: 'Enter' });
   });
 
-  expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
+  await waitFor(() => {
+    expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
+  });
 });
 
 test('clicking on select options should trigger onOptionsChange', async () => {
@@ -799,10 +801,12 @@ test('multiselect should be able to select multiple options', async () => {
     fireEvent.keyDown(input, { key: 'Enter' });
   });
 
-  expect(onChange).toHaveBeenCalledWith(
-    [mockOptions[0].value, mockOptions[1].value, mockOptions[3].value],
-    [mockOptions[0], mockOptions[1], mockOptions[3]],
-  );
+  await waitFor(() => {
+    expect(onChange).toHaveBeenCalledWith(
+      [mockOptions[0].value, mockOptions[1].value, mockOptions[3].value],
+      [mockOptions[0], mockOptions[1], mockOptions[3]],
+    );
+  });
 });
 
 test('multiselect should be able to deselect options', async () => {

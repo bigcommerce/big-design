@@ -125,7 +125,7 @@ const ButtonPage = () => {
 
                       useEffect(() => {
                         if (isLoading) {
-                          simulateNetworkRequest().then(() => {
+                          await simulateNetworkRequest().then(() => {
                             setLoading(false);
                           });
                         }

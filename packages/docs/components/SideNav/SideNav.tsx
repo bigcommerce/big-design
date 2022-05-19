@@ -10,7 +10,28 @@ import { SideNavLogo } from './SideNavLogo';
 import { SideNavMenu } from './SideNavMenu';
 import { StyledFlex } from './styled';
 
-const CodeSandboxUrl = process.env.CODE_SANDBOX_URL as string;
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const CodeSandboxUrl: string = process.env.CODE_SANDBOX_URL;
+
+const Link: React.FC<{ url: string; icon?: React.ReactNode; title: string }> = ({
+  url,
+  icon,
+  title,
+}) => {
+  const getChildrenWithIcon = () => (
+    <Flex alignItems="center">
+      {icon} <FlexItem marginLeft="xSmall">{title}</FlexItem>
+    </Flex>
+  );
+
+  return (
+    <List.Item>
+      <StyledLink href={url} target="_blank">
+        {icon ? getChildrenWithIcon() : title}
+      </StyledLink>
+    </List.Item>
+  );
+};
 
 export const SideNav: React.FC = () => {
   return (
@@ -103,25 +124,5 @@ export const SideNav: React.FC = () => {
         </SideNavGroup>
       </SideNavMenu>
     </StyledFlex>
-  );
-};
-
-const Link: React.FC<{ url: string; icon?: React.ReactNode; title: string }> = ({
-  url,
-  icon,
-  title,
-}) => {
-  const getChildrenWithIcon = () => (
-    <Flex alignItems="center">
-      {icon} <FlexItem marginLeft="xSmall">{title}</FlexItem>
-    </Flex>
-  );
-
-  return (
-    <List.Item>
-      <StyledLink href={url} target="_blank">
-        {icon ? getChildrenWithIcon() : title}
-      </StyledLink>
-    </List.Item>
   );
 };

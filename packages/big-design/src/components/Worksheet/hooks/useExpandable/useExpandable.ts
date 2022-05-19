@@ -30,6 +30,7 @@ export const useExpandable = (rowId: string | number) => {
     [onCollapse, onExpand],
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   const isExpandable = expandableRows !== null && expandableRows[rowId] !== undefined;
 
   const hasExpanded =

@@ -1,5 +1,5 @@
 import { Link } from '@bigcommerce/big-design';
-import { LinkProps, default as NLink } from 'next/link';
+import NLink, { LinkProps } from 'next/link';
 import React from 'react';
 
 function getLinkAs(as = '') {

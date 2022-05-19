@@ -15,7 +15,7 @@ interface LocalizationProviderInterface {
 function getTimeIntervals24hr() {
   const times = ['00:00'];
 
-  for (let i = 1; i < 24; i++) {
+  for (let i = 1; i < 24; i += 1) {
     times.push(`${i}:00`);
   }
 
@@ -66,7 +66,7 @@ export function getTimeIntervals(localization: LocalizationProviderInterface) {
     const [hour, minute] = time.value.split(':');
 
     baseDate.setHours(parseInt(hour, 10));
-    baseDate.setMinutes(parseInt(minute, 0));
+    baseDate.setMinutes(parseInt(minute, 10));
 
     return {
       content: localization.formatTime(baseDate),

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import { Box, H0, H1, H2, H3, H4, HR, Panel, Small, Text } from '@bigcommerce/big-design';
 import React, { Fragment } from 'react';
 

@@ -50,20 +50,15 @@ function getResponsiveSpacings(
   spacingKeys: string[],
 ) {
   const breakpointKeys = Object.keys(responsiveSpacing).sort(
-    (a, b) =>
-      breakpointsOrder.indexOf(a as keyof Breakpoints) -
-      breakpointsOrder.indexOf(b as keyof Breakpoints),
+    (a: keyof Breakpoints, b: keyof Breakpoints) =>
+      breakpointsOrder.indexOf(a) - breakpointsOrder.indexOf(b),
   );
 
-  return (breakpointKeys as Array<keyof Breakpoints>).map(
+  return breakpointKeys.map(
     (breakpointKey) =>
       css`
         ${theme.breakpoints[breakpointKey]} {
-          ${getSimpleSpacings(
-            responsiveSpacing[breakpointKey] as keyof Spacing,
-            theme,
-            spacingKeys,
-          )}
+          ${getSimpleSpacings(responsiveSpacing[breakpointKey], theme, spacingKeys)}
         }
       `,
   );

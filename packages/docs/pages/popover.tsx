@@ -21,32 +21,30 @@ const PopoverPage = () => {
       </Panel>
 
       <Panel header="Implementation" headerId="implementation">
-        <>
-          <CodePreview>
-            {/* jsx-to-string:start */}
-            {function Example() {
-              const [isOpen, setIsOpen] = useState(false);
-              const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null);
+        <CodePreview>
+          {/* jsx-to-string:start */}
+          {function Example() {
+            const [isOpen, setIsOpen] = useState(false);
+            const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null);
 
-              return (
-                <>
-                  <Button onClick={() => setIsOpen(true)} ref={setButtonRef}>
-                    Open Popover
-                  </Button>
-                  <Popover
-                    anchorElement={buttonRef}
-                    isOpen={isOpen}
-                    label="Example Popover"
-                    onClose={() => setIsOpen(false)}
-                  >
-                    <Text>This is the popover content!</Text>
-                  </Popover>
-                </>
-              );
-            }}
-            {/* jsx-to-string:end */}
-          </CodePreview>
-        </>
+            return (
+              <>
+                <Button onClick={() => setIsOpen(true)} ref={setButtonRef}>
+                  Open Popover
+                </Button>
+                <Popover
+                  anchorElement={buttonRef}
+                  isOpen={isOpen}
+                  label="Example Popover"
+                  onClose={() => setIsOpen(false)}
+                >
+                  <Text>This is the popover content!</Text>
+                </Popover>
+              </>
+            );
+          }}
+          {/* jsx-to-string:end */}
+        </CodePreview>
       </Panel>
 
       <Panel header="Props" headerId="props">

@@ -36,7 +36,7 @@ const PaginationPage = () => {
             const [page, setPage] = useState(1);
             const [currentItems, setCurrentItems] = useState(['']);
 
-            const onItemsPerPageChange = (newRange) => {
+            const onItemsPerPageChange = (newRange: number) => {
               setPage(1);
               setRange(newRange);
             };

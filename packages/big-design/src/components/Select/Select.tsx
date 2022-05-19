@@ -85,9 +85,9 @@ export const Select = typedMemo(
     useEffect(() => setFilteredOptions(flattenedOptions), [flattenedOptions]);
 
     const getFirstMatchingOptionIndex = (
-      filteredOptions: Array<SelectOption<T> | SelectAction>,
+      localFilteredOptions: Array<SelectOption<T> | SelectAction>,
     ) => {
-      return filteredOptions.findIndex((option) => !option.disabled);
+      return localFilteredOptions.findIndex((option) => !option.disabled);
     };
 
     const handleOnSelectedItemChange = (
@@ -102,30 +102,6 @@ export const Select = typedMemo(
       ) {
         onOptionChange(changes.selectedItem.value, changes.selectedItem);
       }
-    };
-
-    const handleOnInputValueChange = ({
-      inputValue,
-      isOpen,
-    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      // Filter only when List is open
-      if (filterable && isOpen === true) {
-        const newFilteredOptions = filterOptions(inputValue);
-        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
-
-        setFilteredOptions(newFilteredOptions);
-
-        // Auto highlight first matching option
-        if (inputValue !== '') {
-          setHighlightedIndex(firstMatchingOptionIndex);
-        } else if (selectedItem) {
-          const selectedItemIndex = flattenedOptions.indexOf(selectedItem);
-
-          setHighlightedIndex(selectedItemIndex);
-        }
-      }
-
-      setInputValue(inputValue || '');
     };
 
     const filterOptions = (inputVal = '') => {
@@ -207,6 +183,30 @@ export const Select = typedMemo(
       selectedItem: selectedOption || null,
       stateReducer: handleStateReducer,
     });
+
+    const handleOnInputValueChange = ({
+      inputValue: localInputValue,
+      isOpen: localIsOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      // Filter only when List is open
+      if (filterable && localIsOpen === true) {
+        const newFilteredOptions = filterOptions(localInputValue);
+        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
+
+        setFilteredOptions(newFilteredOptions);
+
+        // Auto highlight first matching option
+        if (inputValue !== '') {
+          setHighlightedIndex(firstMatchingOptionIndex);
+        } else if (selectedItem) {
+          const selectedItemIndex = flattenedOptions.indexOf(selectedItem);
+
+          setHighlightedIndex(selectedItemIndex);
+        }
+      }
+
+      setInputValue(inputValue || '');
+    };
 
     // Popper
     const referenceRef = useRef(null);

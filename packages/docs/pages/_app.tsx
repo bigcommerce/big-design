@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import {
   AlertsManager,
   createAlertsManager,
@@ -8,7 +9,8 @@ import {
 import { createTheme } from '@bigcommerce/big-design-theme';
 import App from 'next/app';
 import Head from 'next/head';
-import { default as Router } from 'next/router';
+// eslint-disable-next-line import/no-named-as-default
+import Router from 'next/router';
 import React from 'react';
 import { UIDFork, UIDReset } from 'react-uid';
 import { ThemeProvider } from 'styled-components';
@@ -16,7 +18,7 @@ import { ThemeProvider } from 'styled-components';
 import { BetaRibbon, SideNav, StoryWrapper, TabWrapper } from '../components';
 import { pageView } from '../utils/analytics/gtm';
 
-Router.events.on('routeChangeComplete', (url) => pageView(url));
+Router.events.on('routeChangeComplete', (url: string) => pageView(url));
 
 export const alertsManager = createAlertsManager();
 
@@ -36,6 +38,7 @@ const gridTemplate = {
 
 export default class MyApp extends App {
   render() {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { Component, pageProps, router } = this.props;
 
     return (

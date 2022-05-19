@@ -30,6 +30,7 @@ export const withMargins = () => css<MarginProps>`
     marginHorizontal && getSpacingStyles(marginHorizontal, theme, 'margin-left', 'margin-right')};
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function excludeMarginProps<T extends Record<string, any>>(
   props: T,
 ): Pick<T, Exclude<keyof T, keyof MarginProps>> {

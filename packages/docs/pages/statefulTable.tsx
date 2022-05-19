@@ -242,10 +242,10 @@ const StatefulTablePage = () => {
                       { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
                     ]}
                     filters={{
-                      filter: (pillId, items) =>
+                      filter: (pillId, filterItems) =>
                         pillId === 'low_stock'
-                          ? items.filter((item) => item.stock !== 0 && item.stock < 10)
-                          : items.filter((item) => item.stock === 0),
+                          ? filterItems.filter((item) => item.stock !== 0 && item.stock < 10)
+                          : filterItems.filter((item) => item.stock === 0),
                       pillTabs: [
                         {
                           id: 'low_stock',

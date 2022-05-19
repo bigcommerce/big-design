@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { H1, Panel, StatefulTree, Text, Worksheet, WorksheetColumn } from '@bigcommerce/big-design';
 import React from 'react';
 
@@ -31,7 +32,11 @@ interface Product {
   numberField: number;
 }
 
-const CATEGORIES = {
+interface Category {
+  [x: number]: string;
+}
+
+const CATEGORIES: Category = {
   0: 'Category 0',
   1: 'Category 1',
   2: 'Category 2',
@@ -86,6 +91,7 @@ const CategoryTree = (value, onChange) => {
       defaultSelected={[String(value)]}
       disabledNodes={['1']}
       nodes={nodes}
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
       onSelectionChange={(selectedNodes) => onChange(selectedNodes[0])}
       selectable="radio"
     />
@@ -269,8 +275,8 @@ const WorksheetPage = () => {
                       <Worksheet
                         columns={columns}
                         items={items}
-                        onChange={(items) => items}
-                        onErrors={(items) => items}
+                        onChange={(changeItems) => changeItems}
+                        onErrors={(errorItems) => errorItems}
                       />
                     );
                   }}
@@ -316,8 +322,8 @@ const WorksheetPage = () => {
                       <Worksheet
                         columns={columns}
                         items={items}
-                        onChange={(items) => items}
-                        onErrors={(items) => items}
+                        onChange={(changeItems) => changeItems}
+                        onErrors={(errorItems) => errorItems}
                       />
                     );
                   }}
@@ -374,8 +380,8 @@ const WorksheetPage = () => {
                       <Worksheet
                         columns={columns}
                         items={items}
-                        onChange={(items) => items}
-                        onErrors={(items) => items}
+                        onChange={(changeItems) => changeItems}
+                        onErrors={(errorItems) => errorItems}
                       />
                     );
                   }}
@@ -421,8 +427,8 @@ const WorksheetPage = () => {
                       <Worksheet
                         columns={columns}
                         items={items}
-                        onChange={(items) => items}
-                        onErrors={(items) => items}
+                        onChange={(changeItems) => changeItems}
+                        onErrors={(errorItems) => errorItems}
                       />
                     );
                   }}
@@ -480,8 +486,8 @@ const WorksheetPage = () => {
                       <Worksheet
                         columns={columns}
                         items={items}
-                        onChange={(items) => items}
-                        onErrors={(items) => items}
+                        onChange={(changeItems) => changeItems}
+                        onErrors={(errorItems) => errorItems}
                       />
                     );
                   }}
@@ -536,8 +542,8 @@ const WorksheetPage = () => {
                       <Worksheet
                         columns={columns}
                         items={items}
-                        onChange={(items) => items}
-                        onErrors={(items) => items}
+                        onChange={(changeItems) => changeItems}
+                        onErrors={(errorItems) => errorItems}
                       />
                     );
                   }}
@@ -583,8 +589,8 @@ const WorksheetPage = () => {
                       <Worksheet
                         columns={columns}
                         items={items}
-                        onChange={(items) => items}
-                        onErrors={(items) => items}
+                        onChange={(changeItems) => changeItems}
+                        onErrors={(errorItems) => errorItems}
                       />
                     );
                   }}
@@ -656,8 +662,8 @@ const WorksheetPage = () => {
                         columns={columns}
                         expandableRows={expandableRows}
                         items={items}
-                        onChange={(items) => items}
-                        onErrors={(items) => items}
+                        onChange={(changeItems) => changeItems}
+                        onErrors={(errorItems) => errorItems}
                       />
                     );
                   }}

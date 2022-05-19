@@ -69,7 +69,7 @@ class AlertsManager {
       }
 
       return [...acc, alert];
-    }, [] as PrivateAlert[]);
+    }, []);
 
     this.afterEvent();
 
@@ -96,7 +96,7 @@ class AlertsManager {
       return;
     }
 
-    if (this.timeout) {
+    if (this.timeout.id) {
       window.clearTimeout(this.timeout.id);
 
       this.timeout = {};
@@ -119,7 +119,7 @@ class AlertsManager {
   }
 
   private sortAlerts = (a: PrivateAlert, b: PrivateAlert) => {
-    return this.typeMap[a.type as keyof TypeMap] - this.typeMap[b.type as keyof TypeMap];
+    return this.typeMap[a.type] - this.typeMap[b.type];
   };
 
   private containsKey(key: string) {

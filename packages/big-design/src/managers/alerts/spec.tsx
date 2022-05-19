@@ -20,7 +20,7 @@ describe('alertsManager functionality', () => {
   const testKey = 'test';
   const alert = {
     messages: [{ text: 'Text' }],
-  } as AlertProps;
+  };
 
   test('assigns auto generated key to alert', () => {
     const alertKey = alertsManager.add(alert);
@@ -36,7 +36,7 @@ describe('alertsManager functionality', () => {
 
   test('adds an alert - without key', () => {
     const alerts: AlertProps[] = [];
-    const subscriber = jest.fn((a) => alerts.push(a));
+    const subscriber = jest.fn((a: AlertProps) => alerts.push(a));
 
     alertsManager.subscribe(subscriber);
 
@@ -49,7 +49,7 @@ describe('alertsManager functionality', () => {
 
   test('adds an alert - with key', () => {
     const alerts: AlertProps[] = [];
-    const subscriber = jest.fn((a) => alerts.push(a));
+    const subscriber = jest.fn((a: AlertProps) => alerts.push(a));
 
     alertsManager.subscribe(subscriber);
 
@@ -68,11 +68,13 @@ describe('alertsManager functionality', () => {
 
     const removed = alertsManager.remove(alertKey);
 
-    if (removed) {
-      const { onClose, ...removedAlert } = removed;
-
-      expect(removedAlert.key).toEqual(alertKey);
+    if (!removed) {
+      return;
     }
+
+    const { onClose, ...removedAlert } = removed;
+
+    expect(removedAlert.key).toEqual(alertKey);
   });
 
   test('removes an alert with autoDismiss', (done) => {
@@ -226,21 +228,21 @@ describe('AlertsManager', () => {
     type: 'success',
     key: 'success',
     onClose: () => null,
-  } as AlertProps;
+  };
 
   const errorAlert = {
     messages: [{ text: 'Error' }],
     type: 'error',
     key: 'error',
     onClose: () => null,
-  } as AlertProps;
+  };
 
   const infoAlert = {
     messages: [{ text: 'Info' }],
     type: 'info',
     key: 'info',
     onClose: () => null,
-  } as AlertProps;
+  };
 
   const alerts: AlertProps[] = [infoAlert, errorAlert, successAlert];
 
@@ -260,7 +262,7 @@ describe('AlertsManager', () => {
   test('renders alerts in proper order', () => {
     let displayedAlert: AlertProps;
     const { queryByRole, queryByText } = render(<AlertsManager manager={alertsManager} />);
-    const subscriber = jest.fn((alert) => (displayedAlert = alert));
+    const subscriber = jest.fn((alert: AlertProps) => (displayedAlert = alert));
 
     alertsManager.subscribe(subscriber);
 
@@ -272,22 +274,24 @@ describe('AlertsManager', () => {
 
         expect(subscriber).toHaveBeenCalledTimes(index + 1);
 
-        if (index === alerts.length - 1) {
-          expect(displayedAlert.key).toEqual(errorAlert.key);
+        if (index !== alert.length - 1) {
+          return;
         }
+
+        expect(displayedAlert.key).toEqual(errorAlert.key);
       });
     });
 
     expect(queryByText(errorAlert.messages[0].text)).toBeInTheDocument();
 
     act(() => {
-      alertsManager.remove(errorAlert.key as string);
+      alertsManager.remove(errorAlert.key);
     });
 
     expect(queryByText(successAlert.messages[0].text)).toBeInTheDocument();
 
     act(() => {
-      alertsManager.remove(successAlert.key as string);
+      alertsManager.remove(successAlert.key);
     });
 
     expect(queryByText(infoAlert.messages[0].text)).toBeInTheDocument();
@@ -304,7 +308,7 @@ describe('AlertsManager', () => {
 
     expect(queryByRole('alert')).toBeInTheDocument();
 
-    const closeButton = container.querySelector('button') as HTMLButtonElement;
+    const closeButton = container.querySelector('button');
 
     expect(closeButton).toBeDefined();
 
@@ -329,7 +333,7 @@ describe('AlertsManager', () => {
     expect(queryByRole('alert')).toBeInTheDocument();
 
     act(() => {
-      removedAlert = alertsManager.remove(key) as AlertProps;
+      removedAlert = alertsManager.remove(key);
 
       expect(removedAlert).toBeDefined();
     });
@@ -354,8 +358,8 @@ describe('AlertsManager', () => {
     expect(queryByRole('alert')).toBeInTheDocument();
     expect(subscriber).toHaveBeenCalledTimes(alerts.length);
 
-    for (let index = 0; index < alerts.length; index++) {
-      const closeButton = container.querySelector('button') as HTMLButtonElement;
+    for (let index = 0; index < alerts.length; index += 1) {
+      const closeButton = container.querySelector('button');
 
       expect(closeButton).toBeDefined();
 
@@ -389,7 +393,7 @@ describe('AlertsManager', () => {
 
     alerts.forEach((alert, index) => {
       act(() => {
-        alertsManager.remove(alert.key as string);
+        alertsManager.remove(alert.key);
       });
 
       expect(subscriber).toHaveBeenCalledTimes(alerts.length + index + 1);

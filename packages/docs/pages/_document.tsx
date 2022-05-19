@@ -1,5 +1,6 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { resetServerContext } from 'react-beautiful-dnd';
 import { ServerStyleSheet } from 'styled-components';
 
@@ -17,6 +18,7 @@ export default class AppDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
+          // eslint-disable-next-line @typescript-eslint/naming-convention
           enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
         });
 
@@ -55,6 +57,7 @@ export default class AppDocument extends Document {
         <script async src={GTM_URL} />
         <script
           dangerouslySetInnerHTML={{
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             __html: `
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}

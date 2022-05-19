@@ -9,8 +9,8 @@ export const useContentRoutingTabs = (routes: Route[], id: string) => {
   const activePill = queryValue && !Array.isArray(queryValue) ? queryValue : routes[0].id;
   const activeContent = routes.find((content) => content.id === activePill);
 
-  const handlePillClick = (pillId: string) => {
-    push({ query: { ...query, [id]: pillId } }, undefined, { scroll: false, shallow: true });
+  const handlePillClick = async (pillId: string) => {
+    await push({ query: { ...query, [id]: pillId } }, undefined, { scroll: false, shallow: true });
   };
 
   return {

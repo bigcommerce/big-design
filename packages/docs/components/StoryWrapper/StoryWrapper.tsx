@@ -1,6 +1,6 @@
 import { PrismTheme } from 'prism-react-renderer';
-import { default as lightTheme } from 'prism-react-renderer/themes/github';
-import { default as darkTheme } from 'prism-react-renderer/themes/oceanicNext';
+import lightTheme from 'prism-react-renderer/themes/github';
+import darkTheme from 'prism-react-renderer/themes/oceanicNext';
 import React, { createContext, useState } from 'react';
 
 export type Language = 'jsx' | 'tsx';
@@ -22,6 +22,7 @@ export const CodeEditorContext = createContext<Context>({
 });
 
 export const StoryWrapper: React.FC = (props) => {
+  const { children } = props;
   const [editorTheme, setEditorTheme] = useState(darkTheme);
   const [language, setLanguage] = useState<Language>('tsx');
   const toggleEditorTheme = () =>
@@ -31,7 +32,7 @@ export const StoryWrapper: React.FC = (props) => {
     <CodeEditorContext.Provider
       value={{ theme: editorTheme, toggleTheme: toggleEditorTheme, language, setLanguage }}
     >
-      {props.children}
+      {children}
     </CodeEditorContext.Provider>
   );
 };

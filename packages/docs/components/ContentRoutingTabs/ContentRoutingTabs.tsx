@@ -9,6 +9,7 @@ const RawContentRoutingTabs: React.FC<ContentRoutingTabsProps> = ({ routes, id }
 
   return (
     <>
+      {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
       <PillTabs activePills={activePills} items={pills} onPillClick={handlePillClick} />
       <Box marginTop="xSmall">{activeContent?.render()}</Box>
     </>
@@ -16,7 +17,9 @@ const RawContentRoutingTabs: React.FC<ContentRoutingTabsProps> = ({ routes, id }
 };
 
 export const ContentRoutingTabs: React.FC<ContentRoutingTabsProps> = (props) => {
-  if (props.routes.length === 0) {
+  const { routes } = props;
+
+  if (routes.length === 0) {
     return null;
   }
 

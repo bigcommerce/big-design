@@ -4,7 +4,7 @@ import { ThemeContext } from 'styled-components';
 
 import { Code, CodeSnippet, List } from '../components';
 
-const CodeSandboxUrl = process.env.CODE_SANDBOX_URL as string;
+const CODE_SANDBOX_URL: string = process.env.CODE_SANDBOX_URL;
 
 const GettingStartedPage = () => {
   const { spacing } = useContext(ThemeContext);
@@ -61,7 +61,7 @@ const GettingStartedPage = () => {
               </Link>
             </List.Item>
             <List.Item>
-              <Link href={CodeSandboxUrl} target="_blank">
+              <Link href={CODE_SANDBOX_URL} target="_blank">
                 CodeSandbox Example
               </Link>
             </List.Item>

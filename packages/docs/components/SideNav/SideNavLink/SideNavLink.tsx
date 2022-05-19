@@ -14,10 +14,14 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const SideNavLink: React.FC<{ href: string; as?: string }> = (props) => (
-  <List.Item>
-    <NextLink as={props.as} href={props.href}>
-      <StyledLink href="">{props.children}</StyledLink>
-    </NextLink>
-  </List.Item>
-);
+export const SideNavLink: React.FC<{ href: string; as?: string }> = (props) => {
+  const { as, href, children } = props;
+
+  return (
+    <List.Item>
+      <NextLink as={as} href={href}>
+        <StyledLink href="">{children}</StyledLink>
+      </NextLink>
+    </List.Item>
+  );
+};

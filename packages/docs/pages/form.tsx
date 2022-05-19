@@ -239,21 +239,25 @@ const FormPage = () => {
                       const [value, setValue] = useState('BigCommerce');
                       const [error, setError] = useState(ERROR_MSG);
 
-                      const handleSubmit = (event) => {
+                      const handleSubmit = (event: React.SyntheticEvent) => {
                         const form = event.currentTarget;
 
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         if (form.checkValidity() === false) {
                           event.preventDefault();
                           event.stopPropagation();
                         }
                       };
 
-                      const handleChange = (event) => {
+                      const handleChange = (event: React.ChangeEvent) => {
                         const { target } = event;
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                         const regex = RegExp(target.pattern, 'g');
 
+                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions, @typescript-eslint/no-unsafe-argument
                         regex.test(target.value) ? setError('') : setError(ERROR_MSG);
 
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                         setValue(target.value);
                       };
 

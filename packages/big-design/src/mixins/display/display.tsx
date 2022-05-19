@@ -3,14 +3,38 @@ import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { DisplayOverload, DisplayProps } from './types';
 
-export const withDisplay = () => css<DisplayProps>`
-  ${({ display, theme }) => display && getDisplayStyles(display, theme, 'display')};
+const getSimpleDisplay = (
+  displayProp: string | number,
+  cssKey: string,
+): FlattenSimpleInterpolation => css`
+  ${cssKey}: ${displayProp}
 `;
 
-const getDisplayStyles: DisplayOverload = (
-  displayProp: any,
+const getResponsiveDisplay: DisplayOverload = (
+  displayProp: unknown,
   theme: ThemeInterface,
-  cssKey: any,
+  cssKey: string,
+): FlattenSimpleInterpolation[] => {
+  const breakpointKeys = Object.keys(displayProp).sort(
+    (firstBreakpoint: keyof Breakpoints, secondBreakpoint: keyof Breakpoints) =>
+      breakpointsOrder.indexOf(firstBreakpoint) - breakpointsOrder.indexOf(secondBreakpoint),
+  );
+
+  return breakpointKeys.map(
+    (breakpointKey) =>
+      css`
+        ${theme.breakpoints[breakpointKey]} {
+          ${/* eslint-disable-next-line @typescript-eslint/no-unsafe-argument */ ''}
+          ${getSimpleDisplay(displayProp[breakpointKey], cssKey)}
+        }
+      `,
+  );
+};
+
+const getDisplayStyles: DisplayOverload = (
+  displayProp: unknown,
+  theme: ThemeInterface,
+  cssKey: string,
 ): FlattenSimpleInterpolation => {
   if (typeof displayProp === 'object') {
     return getResponsiveDisplay(displayProp, theme, cssKey);
@@ -23,30 +47,6 @@ const getDisplayStyles: DisplayOverload = (
   return [];
 };
 
-const getSimpleDisplay = (
-  displayProp: string | number,
-  cssKey: string,
-): FlattenSimpleInterpolation => css`
-  ${cssKey}: ${displayProp}
+export const withDisplay = () => css<DisplayProps>`
+  ${({ display, theme }) => display && getDisplayStyles(display, theme, 'display')};
 `;
-
-const getResponsiveDisplay: DisplayOverload = (
-  displayProp: any,
-  theme: ThemeInterface,
-  cssKey: string,
-): FlattenSimpleInterpolation[] => {
-  const breakpointKeys = Object.keys(displayProp).sort(
-    (firstBreakpoint, secondBreakpoint) =>
-      breakpointsOrder.indexOf(firstBreakpoint as keyof Breakpoints) -
-      breakpointsOrder.indexOf(secondBreakpoint as keyof Breakpoints),
-  );
-
-  return (breakpointKeys as Array<keyof Breakpoints>).map(
-    (breakpointKey) =>
-      css`
-        ${theme.breakpoints[breakpointKey]} {
-          ${getSimpleDisplay(displayProp[breakpointKey], cssKey)}
-        }
-      `,
-  );
-};

@@ -16,7 +16,7 @@ export interface MethodListProps {
   name: string;
   intro: string;
   usage: string;
-  parameterList: Parmeter[];
+  parameterList?: Parmeter[];
   returnDescription: React.ReactNode;
 }
 

@@ -41,7 +41,7 @@ const MultiSelectPage = () => {
                     {/* jsx-to-string:start */}
                     {function Example() {
                       const [value, setValue] = useState(['mx']);
-                      const handleChange = (val) => setValue(val);
+                      const handleChange = (val: string) => setValue(val);
 
                       return (
                         <Form>
@@ -401,7 +401,7 @@ const MultiSelectPage = () => {
                     {/* jsx-to-string:start */}
                     {function Example() {
                       const [value, setValue] = useState([1]);
-                      const handleChange = (val) => setValue(val);
+                      const handleChange = (val: string) => setValue(val);
 
                       return (
                         <Form>

@@ -5,7 +5,7 @@ import { Code } from '../Code';
 import { Collapsible } from '../Collapsible';
 
 interface TypesDataProps {
-  types: any;
+  types: unknown;
 }
 
 export interface Prop {
@@ -26,6 +26,25 @@ export interface PropTableProps {
 }
 
 export type PropTableWrapper = Partial<PropTableProps>;
+
+const TypesData: React.FC<TypesDataProps> = (props): JSXElement => {
+  const { types } = props;
+
+  if (Array.isArray(types)) {
+    return types.map((type, index) => {
+      return (
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        <React.Fragment key={type.key ?? index}>
+          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
+          {type.type === Link ? <Code highlight={false}>{type}</Code> : <Code>{type}</Code>}
+          {index < types.length - 1 ? ' | ' : null}
+        </React.Fragment>
+      );
+    });
+  }
+
+  return types.type === Link ? <Code highlight={false}>{types}</Code> : <Code>{types}</Code>;
+};
 
 export const PropTable: FC<PropTableProps> = (props) => {
   const { collapsible, id, propList: items, title, inheritedProps, nativeElement } = props;
@@ -109,21 +128,4 @@ export const PropTable: FC<PropTableProps> = (props) => {
   }
 
   return renderContent();
-};
-
-const TypesData: React.FC<TypesDataProps> = (props): any => {
-  const { types } = props;
-
-  if (Array.isArray(types)) {
-    return types.map((type, index) => {
-      return (
-        <React.Fragment key={type.key ?? index}>
-          {type.type === Link ? <Code highlight={false}>{type}</Code> : <Code>{type}</Code>}
-          {index < types.length - 1 ? ' | ' : null}
-        </React.Fragment>
-      );
-    });
-  }
-
-  return types.type === Link ? <Code highlight={false}>{types}</Code> : <Code>{types}</Code>;
 };

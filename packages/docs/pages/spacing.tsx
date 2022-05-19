@@ -94,6 +94,7 @@ const SpacingPage = () => {
             .map((key) => (
               <Flex alignItems="center" flexDirection="column" key={key} paddingBottom="small">
                 <Code>{key}</Code>
+                {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
                 <BlueBox marginTop="medium" style={{ width: spacing[key], height: spacing[key] }} />
               </Flex>
             ))}

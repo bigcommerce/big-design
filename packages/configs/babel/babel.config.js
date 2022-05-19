@@ -12,7 +12,7 @@ const browsers = [
   'last 2 iOS major versions',
 ];
 
-module.exports = function (api) {
+function configGenerator(api) {
   api.cache(true);
 
   return {
@@ -42,4 +42,6 @@ module.exports = function (api) {
       },
     },
   };
-};
+}
+
+module.exports = configGenerator;

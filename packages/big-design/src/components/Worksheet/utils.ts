@@ -55,8 +55,10 @@ export const invalidRows = <T extends WorksheetItem>(invalidCells: Array<Cell<T>
     const row = rows[rowIndex];
 
     if (mapObj.has(row)) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const errors = mapObj.get(row);
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       mapObj.set(row, new Set([...errors, hash]));
     } else {
       mapObj.set(row, new Set([hash]));
@@ -64,7 +66,9 @@ export const invalidRows = <T extends WorksheetItem>(invalidCells: Array<Cell<T>
   });
 
   return Array.from(mapObj).map<WorksheetError<T>>(([item, errors]) => ({
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     item,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     errors: Array.from(errors),
   }));
 };

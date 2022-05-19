@@ -94,26 +94,9 @@ export const MultiSelect = typedMemo(
     }, [selectedOptions]);
 
     const getFirstMatchingOptionIndex = (
-      filteredOptions: Array<SelectOption<T> | SelectAction>,
+      localFilteredOptions: Array<SelectOption<T> | SelectAction>,
     ) => {
-      return filteredOptions.findIndex((option) => !option.disabled);
-    };
-
-    const handleSetInputValue = ({
-      inputValue,
-      isOpen,
-    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && isOpen === true) {
-        const newFilteredOptions = filterOptions(inputValue);
-        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
-
-        setFilteredOptions(newFilteredOptions);
-
-        // Auto highlight first matching option
-        setHighlightedIndex(firstMatchingOptionIndex);
-      }
-
-      setInputValue(inputValue || '');
+      return localFilteredOptions.findIndex((option) => !option.disabled);
     };
 
     const filterOptions = (inputVal = '') => {
@@ -272,6 +255,23 @@ export const MultiSelect = typedMemo(
       selectedItem: null,
       stateReducer: handleStateReducer,
     });
+
+    const handleSetInputValue = ({
+      inputValue: localInputValue,
+      isOpen: localIsOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (filterable && localIsOpen === true) {
+        const newFilteredOptions = filterOptions(localInputValue);
+        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
+
+        setFilteredOptions(newFilteredOptions);
+
+        // Auto highlight first matching option
+        setHighlightedIndex(firstMatchingOptionIndex);
+      }
+
+      setInputValue(localInputValue || '');
+    };
 
     // Popper
     const referenceRef = useRef(null);

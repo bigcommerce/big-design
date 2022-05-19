@@ -42,7 +42,8 @@ const RadioPage = () => {
                     {function Example() {
                       const [selected, setSelected] = useState('');
 
-                      const handleChange = (event) => setSelected(event.target.value);
+                      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+                        setSelected(event.target.value);
 
                       return (
                         <Form>
@@ -91,8 +92,10 @@ const RadioPage = () => {
                       const [firstRadio, setFirstRadio] = useState('');
                       const [secondRadio, setSecondRadio] = useState('');
 
-                      const handleFirstChange = (event) => setFirstRadio(event.target.value);
-                      const handleSecondChange = (event) => setSecondRadio(event.target.value);
+                      const handleFirstChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+                        setFirstRadio(event.target.value);
+                      const handleSecondChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+                        setSecondRadio(event.target.value);
 
                       return (
                         <Form>
@@ -151,7 +154,8 @@ const RadioPage = () => {
                     {function Example() {
                       const [selected, setSelected] = useState('');
 
-                      const handleChange = (event) => setSelected(event.target.value);
+                      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+                        setSelected(event.target.value);
 
                       return (
                         <Form>

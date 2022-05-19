@@ -11,7 +11,7 @@ const AppGlobalStyles = createGlobalStyle`
     height: 100%;
     max-width: 1080px;
     margin: 2rem auto;
-    background-color: ${({ theme }) => theme.colors.secondary10};
+    background-color: ${({ theme: localTheme }) => localTheme.colors.secondary10};
   }
 `;
 

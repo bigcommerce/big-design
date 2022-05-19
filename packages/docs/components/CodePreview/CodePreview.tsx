@@ -16,6 +16,7 @@ import { StyledLiveError } from './styled';
 const defaultScope = {
   ...BigDesign,
   ...BigDesignIcons,
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   React,
   useEffect,
   useState,
@@ -31,7 +32,8 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
     return children;
   }
 
-  const code = transform(children, {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+  const code: string = transform(children, {
     compact: false,
     retainLines: true,
     presets: [['typescript', { allExtensions: true, isTSX: true, jsxPragma: 'preserve' }]],
@@ -48,6 +50,7 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
 
 function transformCode(input: string): string {
   try {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return
     return transform(input, {
       presets: [['typescript', { allExtensions: true, isTSX: true }], 'react'],
     }).code;
@@ -61,16 +64,16 @@ export interface CodePreviewProps {
 }
 
 export const CodePreview: React.FC<CodePreviewProps> = (props) => {
-  const { children } = props;
+  const { children, scope: propsScope } = props;
   const { theme: editorTheme, language } = useContext(CodeEditorContext);
 
   const initialCode = getInitialCode(children, language);
   const [code, setCode] = useState(initialCode);
-  const [scope, setScope] = useState({ ...defaultScope, ...props.scope });
+  const [scope, setScope] = useState({ ...defaultScope, ...propsScope });
 
   useEffect(() => {
-    setScope({ ...defaultScope, ...props.scope });
-  }, [props.scope, setScope]);
+    setScope({ ...defaultScope, ...propsScope });
+  }, [propsScope, setScope]);
 
   useEffect(() => {
     setCode(getInitialCode(children, language));
@@ -89,6 +92,7 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
           <LivePreview />
         </BigDesign.Box>
         <SnippetControls
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           copyToClipboard={() => clipboardCopy(code)}
           resetCode={() => setCode(initialCode)}
         />

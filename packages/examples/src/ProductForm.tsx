@@ -15,9 +15,16 @@ interface Props {
   onNewProduct(product: Product): void;
 }
 
+const ProductSchema = Yup.object().shape({
+  name: Yup.string().min(2).max(50).required(),
+  stock: Yup.number().required().min(0).max(100),
+  category: Yup.string().required(),
+});
+
 export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
   const onSubmit = (product: Product) => {
     onNewProduct(product);
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     resetForm();
   };
 
@@ -62,6 +69,7 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
               error={touched.category && errors.category}
               label="Category"
               name="category"
+              // eslint-disable-next-line @typescript-eslint/no-misused-promises
               onOptionChange={(item) => setFieldValue('category', item)}
               options={[
                 { content: 'Food', value: 'Food' },
@@ -80,9 +88,3 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
     </>
   );
 };
-
-const ProductSchema = Yup.object().shape({
-  name: Yup.string().min(2).max(50).required(),
-  stock: Yup.number().required().min(0).max(100),
-  category: Yup.string().required(),
-});

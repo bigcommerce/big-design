@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {
   Flex,
   Form,
@@ -48,7 +49,7 @@ const IconsPage = () => {
       setIcons(iconsModule);
     };
 
-    fetchIcons();
+    await fetchIcons();
   }, []);
 
   return (
@@ -139,7 +140,7 @@ const IconsPage = () => {
                     {/* jsx-to-string:start */}
                     {function Example() {
                       const [value, setValue] = useState('');
-                      const handleChange = (val) => setValue(val);
+                      const handleChange = (val: string) => setValue(val);
 
                       return (
                         <Form>
@@ -226,19 +227,17 @@ const IconsPage = () => {
       <Panel header="Available icons" headerId="available-icons">
         <Flex flexWrap="wrap" justifyContent="center">
           {Object.keys(icons).map((iconName) => {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             const Icon = icons[iconName];
 
             return (
               <Flex
                 borderRadius="normal"
                 flexDirection="column"
-                flexDirection="column"
                 justifyContent="center"
-                key={iconName}
                 key={iconName}
                 padding="large"
                 style={{ width: '300px', gap: '1rem' }}
-                style={{ width: '300px' }}
               >
                 <Icon size="xxxLarge" />
                 <Code>{`<${iconName} />`}</Code>
