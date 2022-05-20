@@ -107,17 +107,6 @@ export const MultiSelect = typedMemo(
       );
     };
 
-    const handleSetInputValue = ({
-      inputValue: localInputValue,
-      isOpen: localIsOpen,
-    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && localIsOpen === true) {
-        setFilteredOptions(filterOptions(localInputValue));
-      }
-
-      setInputValue(inputValue || '');
-    };
-
     const handleOnIsOpenChange = ({
       isOpen: localIsOpen,
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
@@ -249,6 +238,7 @@ export const MultiSelect = typedMemo(
       itemToString: (option) => (option ? option.content : ''),
       items: filteredOptions,
       labelId,
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       onInputValueChange: handleSetInputValue,
       onIsOpenChange: handleOnIsOpenChange,
       onSelectedItemChange: handleOnSelectedItemChange,
