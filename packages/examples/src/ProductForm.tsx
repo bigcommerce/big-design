@@ -69,7 +69,6 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
               error={touched.category && errors.category}
               label="Category"
               name="category"
-              // eslint-disable-next-line @typescript-eslint/no-misused-promises
               onOptionChange={(item) => setFieldValue('category', item)}
               options={[
                 { content: 'Food', value: 'Food' },

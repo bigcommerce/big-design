@@ -47,7 +47,6 @@ export const CodeSnippet: React.FC<EditorProps> = (props) => {
   return (
     <Box border="box" marginBottom="xxLarge">
       {showControls && (
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises
         <SnippetControls copyToClipboard={() => clipboardCopy(code)} helperText="Code example" />
       )}
 

@@ -83,8 +83,8 @@ const SelectPage = () => {
                                 { value: 'au', content: 'Australia' },
                                 { value: 'ug', content: 'Uganda' },
                               ]}
-                              placeholder={'Choose country'}
-                              placement={'bottom-start'}
+                              placeholder="Choose country"
+                              placement="bottom-start"
                               required
                               value={value}
                             />
@@ -308,8 +308,8 @@ const SelectPage = () => {
                             { value: 'ca', content: 'Canada' },
                             { value: 'en', content: 'England' },
                           ]}
-                          placeholder={'Choose country'}
-                          placement={'bottom-start'}
+                          placeholder="Choose country"
+                          placement="bottom-start"
                           required
                         />
                       </FormGroup>
@@ -342,8 +342,8 @@ const SelectPage = () => {
                             { value: 'ca', content: 'Canada' },
                             { value: 'en', content: 'England' },
                           ]}
-                          placeholder={'Choose country'}
-                          placement={'bottom-start'}
+                          placeholder="Choose country"
+                          placement="bottom-start"
                           required
                         />
                       </FormGroup>

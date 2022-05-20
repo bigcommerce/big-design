@@ -170,8 +170,8 @@ const IconsPage = () => {
                                 { value: 'sk', content: 'South Korea', icon: <KRFlagIcon /> },
                                 { value: 'au', content: 'Australia', icon: <AUFlagIcon /> },
                               ]}
-                              placeholder={'Choose country'}
-                              placement={'bottom-start'}
+                              placeholder="Choose country"
+                              placement="bottom-start"
                               required
                               value={value}
                             />

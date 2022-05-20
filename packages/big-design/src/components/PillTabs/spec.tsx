@@ -26,7 +26,6 @@ const originalPrototype = Object.getOwnPropertyDescriptors(window.HTMLElement.pr
 afterAll(() => Object.defineProperties(window.HTMLElement.prototype, originalPrototype));
 
 const HIDDEN_STYLES = {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   'z-index': -defaultTheme.zIndex.tooltip,
   position: 'absolute',
   visibility: 'hidden',

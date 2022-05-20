@@ -98,7 +98,6 @@ export const Dropdown = memo(
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         cloneElement(toggle, {
           ...getToggleButtonProps({
-            // eslint-disable-next-line @typescript-eslint/naming-convention
             'aria-expanded': isOpen, // Because of memoization, we need to manually set this option
             disabled,
             ref: referenceRef,

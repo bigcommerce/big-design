@@ -74,8 +74,8 @@ const MultiSelectPage = () => {
                                 { value: 'au', content: 'Australia' },
                                 { value: 'ug', content: 'Uganda' },
                               ]}
-                              placeholder={'Choose country'}
-                              placement={'bottom-start'}
+                              placeholder="Choose country"
+                              placement="bottom-start"
                               required
                               value={value}
                             />
@@ -299,8 +299,8 @@ const MultiSelectPage = () => {
                             { value: 'ca', content: 'Canada' },
                             { value: 'en', content: 'England' },
                           ]}
-                          placeholder={'Choose country'}
-                          placement={'bottom-start'}
+                          placeholder="Choose country"
+                          placement="bottom-start"
                           required
                         />
                       </FormGroup>
@@ -333,8 +333,8 @@ const MultiSelectPage = () => {
                             { value: 'ca', content: 'Canada' },
                             { value: 'en', content: 'England' },
                           ]}
-                          placeholder={'Choose country'}
-                          placement={'bottom-start'}
+                          placeholder="Choose country"
+                          placement="bottom-start"
                           required
                         />
                       </FormGroup>

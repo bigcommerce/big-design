@@ -104,7 +104,7 @@ const StyleableListItem = typedMemo(
         isHighlighted={isHighlighted}
         isSelected={isSelected}
       >
-        {<Content isHighlighted={isHighlighted} item={item} />}
+        <Content isHighlighted={isHighlighted} item={item} />
         {isSelected && <CheckIcon color="primary" size="large" />}
       </StyledListItem>
     ),

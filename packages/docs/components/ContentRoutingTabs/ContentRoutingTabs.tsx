@@ -9,7 +9,7 @@ const RawContentRoutingTabs: React.FC<ContentRoutingTabsProps> = ({ routes, id }
 
   return (
     <>
-      {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
+      {}
       <PillTabs activePills={activePills} items={pills} onPillClick={handlePillClick} />
       <Box marginTop="xSmall">{activeContent?.render()}</Box>
     </>

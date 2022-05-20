@@ -92,7 +92,6 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
           <LivePreview />
         </BigDesign.Box>
         <SnippetControls
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           copyToClipboard={() => clipboardCopy(code)}
           resetCode={() => setCode(initialCode)}
         />

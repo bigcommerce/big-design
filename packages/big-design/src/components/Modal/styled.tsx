@@ -7,7 +7,6 @@ import { Flex } from '../Flex';
 import { ModalProps } from './Modal';
 
 export const StyledModal = styled.div.attrs({
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   'aria-modal': true,
   role: 'dialog',
   tabIndex: -1,
