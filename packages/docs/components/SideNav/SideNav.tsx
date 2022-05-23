@@ -10,8 +10,7 @@ import { SideNavLogo } from './SideNavLogo';
 import { SideNavMenu } from './SideNavMenu';
 import { StyledFlex } from './styled';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-const CodeSandboxUrl: string = process.env.CODE_SANDBOX_URL;
+const CODE_SANDBOX_URL = process.env.CODE_SANDBOX_URL;
 
 const Link: React.FC<{ url: string; icon?: React.ReactNode; title: string }> = ({
   url,
@@ -51,7 +50,7 @@ export const SideNav: React.FC = () => {
         <SideNavGroup title="Introduction">
           <SideNavLink href="/">Getting Started</SideNavLink>
 
-          <Link title="CodeSandbox Example" url={CodeSandboxUrl} />
+          <Link title="CodeSandbox Example" url={String(CODE_SANDBOX_URL)} />
         </SideNavGroup>
 
         <SideNavGroup title="Foundations">

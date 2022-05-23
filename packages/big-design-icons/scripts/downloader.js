@@ -49,9 +49,9 @@ async function fetchIconList() {
       source: (_answersSoFar, input = '') =>
         Promise.resolve(
           iconList
-            .filter((tIcon) => tIcon.name.startsWith(input))
+            .filter((iconArgument) => iconArgument.name.startsWith(input))
             .sort()
-            .map((tIcon) => ({ name: tIcon.name, value: icon })),
+            .map((iconArgument) => ({ name: iconArgument.name, value: icon })),
         ),
     },
   ]);

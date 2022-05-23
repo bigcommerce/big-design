@@ -2,8 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { ListProps } from './List';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-const SharedListStyles = css<ListProps>`
+const sharedListStyles = css<ListProps>`
   color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
@@ -23,9 +22,9 @@ const SharedListStyles = css<ListProps>`
 `;
 
 export const StyledOrderedList = styled.ol<ListProps>`
-  ${SharedListStyles};
+  ${sharedListStyles};
 `;
 
 export const StyledUnorderedList = styled.ul<ListProps>`
-  ${SharedListStyles}
+  ${sharedListStyles}
 `;

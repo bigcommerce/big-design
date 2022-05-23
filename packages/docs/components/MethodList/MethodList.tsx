@@ -16,7 +16,7 @@ export interface MethodListProps {
   name: string;
   intro: string;
   usage: string;
-  parameterList?: Parmeter[];
+  parameterList: Parmeter[];
   returnDescription: React.ReactNode;
 }
 
@@ -39,7 +39,7 @@ export const MethodList: React.FC<MethodListProps> = ({
         {usage}
       </CodeSnippet>
 
-      {parameterList && parameterList.length > 0 && (
+      {parameterList.length > 0 && (
         <>
           <MethodBadge label="Parameters" />
 

@@ -37,6 +37,7 @@
   "devDependencies": {
     "@bigcommerce/configs": "^0.16.0",
     "@bigcommerce/examples": "^0.18.0",
+    "@types/babel__standalone": "^7.1.4",
     "@types/gtag.js": "^0.0.10",
     "@types/node": "^17.0.18",
     "@types/prettier": "^2.0.1",

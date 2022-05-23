@@ -12,7 +12,8 @@ const browsers = [
   'last 2 iOS major versions',
 ];
 
-function configGenerator(api) {
+// eslint-disable-next-line func-names
+module.exports = function (api) {
   api.cache(true);
 
   return {
@@ -42,6 +43,4 @@ function configGenerator(api) {
       },
     },
   };
-}
-
-module.exports = configGenerator;
+};

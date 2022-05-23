@@ -5,7 +5,6 @@ export interface BreakpointValues {
 }
 
 export interface Breakpoints {
-  [x: string]: string;
   mobile: string;
   tablet: string;
   desktop: string;

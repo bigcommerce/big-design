@@ -9,8 +9,7 @@ import {
 import { createTheme } from '@bigcommerce/big-design-theme';
 import App from 'next/app';
 import Head from 'next/head';
-// eslint-disable-next-line import/no-named-as-default
-import Router from 'next/router';
+import { Router } from 'next/router';
 import React from 'react';
 import { UIDFork, UIDReset } from 'react-uid';
 import { ThemeProvider } from 'styled-components';

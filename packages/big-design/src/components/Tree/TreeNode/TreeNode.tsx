@@ -118,6 +118,7 @@ const InternalTreeNode = <T,>({
   );
 
   const additionalProps = useMemo(
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     () => (selectable?.type ? { 'aria-selected': isSelected } : {}),
     [selectable, isSelected],
   );

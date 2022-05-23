@@ -12,6 +12,7 @@ export interface ChipProps extends MarginProps {
 }
 
 export const Chip: React.FC<ChipProps> = memo(({ children, label, onDelete, ...rest }) => {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const ariaLabel = label ? { 'aria-label': `Remove ${label}` } : {};
 
   const renderDeleteButton = () =>

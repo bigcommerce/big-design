@@ -16,6 +16,7 @@ test('multiple simple spacings', () => {
   expect(styles).toEqual({
     border: '1rem',
 
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     'padding-right': '1rem',
   });
 });

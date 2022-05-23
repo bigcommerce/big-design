@@ -6,7 +6,7 @@
     "declarationDir": "dist",
     "declarationMap": true,
     "paths": {
-      "@test/*": ["tests/*"]
+      "@test/utils": ["tests/utils"]
     }
   },
   "include": ["src", "setupTests.ts", "tests"]

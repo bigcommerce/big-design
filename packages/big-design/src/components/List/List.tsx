@@ -100,7 +100,7 @@ const StyleableList = typedMemo(
     const { height, width } = useWindowSize();
 
     // Recalculate Popper for correct positioning
-    useIsomorphicLayoutEffect(async () => {
+    useIsomorphicLayoutEffect(() => {
       async function scheduleUpdate() {
         // Only update when menu is open
         if (update && isOpen) {
@@ -108,7 +108,7 @@ const StyleableList = typedMemo(
         }
       }
 
-      await scheduleUpdate();
+      void scheduleUpdate();
     }, [isOpen, height, width, selectedItems?.length]);
 
     const renderAction = useCallback(

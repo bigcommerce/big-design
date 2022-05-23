@@ -1,13 +1,11 @@
 import { Button, Flex, FlexItem } from '@bigcommerce/big-design';
 import { MenuIcon } from '@bigcommerce/big-design-icons';
-// eslint-disable-next-line import/no-named-as-default
-import Router from 'next/router';
+import { Router } from 'next/router';
 import React, { useState } from 'react';
 
 import { StyledMenu, StyledNavigation } from './styled';
 
-export const SideNavMenu: React.FC = (props) => {
-  const { children } = props;
+export const SideNavMenu: React.FC = ({ children }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const handleClick = () => setIsExpanded(!isExpanded);
 

@@ -14,7 +14,6 @@ const items: TabItem[] = [
   { ariaControls: 'content2', id: 'tab2', title: 'Tab 2' },
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 jest.mock('../../utils', () => ({
   ...jest.requireActual('../../utils'),
   warning: jest.fn(),

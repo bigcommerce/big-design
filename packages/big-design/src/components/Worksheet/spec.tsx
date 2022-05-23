@@ -928,6 +928,7 @@ describe('expandable', () => {
     render(
       <Worksheet
         columns={disabledColumns}
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         expandableRows={{ 2: [3], 5: [6, 7] }}
         items={items}
         onChange={handleChange}
@@ -941,6 +942,7 @@ describe('expandable', () => {
     render(
       <Worksheet
         columns={disabledColumns}
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         expandableRows={{ 2: [3], 5: [6, 7] }}
         items={items}
         onChange={handleChange}
@@ -985,6 +987,7 @@ describe('expandable', () => {
     render(
       <Worksheet
         columns={disabledColumns}
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         expandableRows={{ 2: [3], 5: [6, 7] }}
         items={items}
         onChange={handleChange}

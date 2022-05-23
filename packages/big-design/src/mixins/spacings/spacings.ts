@@ -1,9 +1,4 @@
-import {
-  Breakpoints,
-  breakpointsOrder,
-  Spacing,
-  ThemeInterface,
-} from '@bigcommerce/big-design-theme';
+import { breakpointsOrder, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
 import { Responsive } from '../../types';
@@ -50,14 +45,14 @@ function getResponsiveSpacings(
   spacingKeys: string[],
 ) {
   const breakpointKeys = Object.keys(responsiveSpacing).sort(
-    (a: keyof Breakpoints, b: keyof Breakpoints) =>
-      breakpointsOrder.indexOf(a) - breakpointsOrder.indexOf(b),
+    (a, b) => breakpointsOrder.indexOf(a) - breakpointsOrder.indexOf(b),
   );
 
   return breakpointKeys.map(
     (breakpointKey) =>
       css`
         ${theme.breakpoints[breakpointKey]} {
+          ${/* eslint-disable-next-line @typescript-eslint/no-unsafe-argument */ ''}
           ${getSimpleSpacings(responsiveSpacing[breakpointKey], theme, spacingKeys)}
         }
       `,

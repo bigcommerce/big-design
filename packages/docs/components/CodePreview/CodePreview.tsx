@@ -32,7 +32,6 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
     return children;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
   const code: string = transform(children, {
     compact: false,
     retainLines: true,
@@ -50,7 +49,6 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
 
 function transformCode(input: string): string {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return
     return transform(input, {
       presets: [['typescript', { allExtensions: true, isTSX: true }], 'react'],
     }).code;
@@ -92,6 +90,7 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
           <LivePreview />
         </BigDesign.Box>
         <SnippetControls
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           copyToClipboard={() => clipboardCopy(code)}
           resetCode={() => setCode(initialCode)}
         />
