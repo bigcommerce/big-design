@@ -988,9 +988,9 @@
     regenerator-runtime "^0.13.4"
 
 "@babel/standalone@^7.15.6":
-  version "7.17.11"
-  resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.17.11.tgz#9cc17674da762332b2e40d469ce37725a6136487"
-  integrity sha512-47wVYBeTktYHwtzlFuK7qqV/H5X6mU4MUNqpQ9iiJOqnP8rWL0eX0GWLKRsv8D8suYzhuS1K/dtwgGr+26U7Gg==
+  version "7.18.1"
+  resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.18.1.tgz#9641af95830626b3ee9583d52404420be5b4381b"
+  integrity sha512-RPTw2fR7FlvRqOa4/UCVgFz7RrL+gka8imIaswu6a8DOLDZ0bP+/ttHNw3W4vvabvScjDWNVtR0RG/C13KQBtw==
 
 "@babel/template@^7.16.7", "@babel/template@^7.3.3":
   version "7.16.7"
