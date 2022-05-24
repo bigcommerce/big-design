@@ -1,5 +1,6 @@
 import 'jest-styled-components';
 
+import { Placement } from '@popperjs/core';
 import React, { createRef } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import { act } from 'react-dom/test-utils';
@@ -10,28 +11,11 @@ import { FormGroup } from '..';
 
 import { Datepicker } from './index';
 
-type Placements =
-  | 'auto'
-  | 'auto-end'
-  | 'auto-start'
-  | 'bottom'
-  | 'bottom-end'
-  | 'bottom-start'
-  | 'left'
-  | 'left-end'
-  | 'left-start'
-  | 'right'
-  | 'right-end'
-  | 'right-start'
-  | 'top'
-  | 'top-end'
-  | 'top-start';
-
 jest.mock(
   'popper.js',
   () =>
     class Popper {
-      static placements: Placements[] = [
+      static placements: Placement[] = [
         'auto',
         'auto-end',
         'auto-start',
