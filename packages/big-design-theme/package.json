@@ -51,7 +51,7 @@
     "@bigcommerce/pack": "^0.2.0",
     "@types/jest": "^27.0.2",
     "@types/styled-components": "^5.1.11",
-    "babel-jest": "^27.2.5",
+    "babel-jest": "^28.1.0",
     "babel-plugin-styled-components": "^2.0.2",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
