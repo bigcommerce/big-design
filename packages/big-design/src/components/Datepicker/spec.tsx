@@ -1,5 +1,6 @@
 import 'jest-styled-components';
 
+import { Placement } from '@popperjs/core';
 import React, { createRef } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import { act } from 'react-dom/test-utils';
@@ -14,7 +15,7 @@ jest.mock(
   'popper.js',
   () =>
     class Popper {
-      static placements = [
+      static placements: Placement[] = [
         'auto',
         'auto-end',
         'auto-start',
