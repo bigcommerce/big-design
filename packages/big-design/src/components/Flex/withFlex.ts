@@ -7,6 +7,9 @@ export const withFlexedContainer = () => css<FlexedProps>`
   ${({ alignContent, theme }) => alignContent && getFlexedStyles(alignContent, theme, 'align-content')};
   ${({ alignItems, theme }) => alignItems && getFlexedStyles(alignItems, theme, 'align-items')};
   ${({ flexDirection, theme }) => flexDirection && getFlexedStyles(flexDirection, theme, 'flex-direction')};
+  ${({ flexGap, theme }) => flexGap && getFlexedStyles(flexGap, theme, 'gap')};
+  ${({ flexColumnGap, theme }) => flexColumnGap && getFlexedStyles(flexColumnGap, theme, 'column-gap')};
+  ${({ flexRowGap, theme }) => flexRowGap && getFlexedStyles(flexRowGap, theme, 'row-gap')};
   ${({ flexWrap, theme }) => flexWrap && getFlexedStyles(flexWrap, theme, 'flex-wrap')};
   ${({ justifyContent, theme }) => justifyContent && getFlexedStyles(justifyContent, theme, 'justify-content')};
 `;

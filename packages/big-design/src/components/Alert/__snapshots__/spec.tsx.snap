@@ -13,7 +13,7 @@ exports[`render default (success) Alert 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -120,7 +120,7 @@ exports[`render error Alert 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -223,7 +223,7 @@ exports[`render info Alert 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -330,7 +330,7 @@ exports[`render warning Alert 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -555,7 +555,7 @@ exports[`renders close button 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -705,7 +705,7 @@ exports[`renders header 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -837,7 +837,7 @@ exports[`renders with external link 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -1012,7 +1012,7 @@ exports[`renders with link 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 

@@ -26,12 +26,40 @@ const flexProps: Prop[] = [
     ),
   },
   {
+    name: 'flexColumnGap',
+    types: 'string',
+    description: (
+      <>
+        Sets the size of the gap between flex columns. Same as the <Code highlight={false}>column-gap</Code> CSS
+        property.
+      </>
+    ),
+  },
+  {
     name: 'flexDirection',
     types: ['row', 'column', 'row-reverse', 'column-reverse'],
     defaultValue: 'row',
     description: (
       <>
         Determines the direction of flex items. Same as the <Code highlight={false}>flex-direction</Code> CSS property.
+      </>
+    ),
+  },
+  {
+    name: 'flexGap',
+    types: 'string',
+    description: (
+      <>
+        Controls the spacing between flex items. Same as the <Code highlight={false}>gap</Code> CSS property.
+      </>
+    ),
+  },
+  {
+    name: 'flexRowGap',
+    types: 'string',
+    description: (
+      <>
+        Sets the size of the gap between flex rows. Same as the <Code highlight={false}>row-gap</Code> CSS property.
       </>
     ),
   },

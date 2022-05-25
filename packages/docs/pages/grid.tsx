@@ -91,9 +91,9 @@ const GridPage = () => {
                     {/* jsx-to-string:start */}
                     {function Example() {
                       const template = `
-                      "head head" 80px
-                      "nav  main" 200px
-                      "foot  foot" 50px
+                      "head head" 5rem
+                      "nav  main" 12.5rem
+                      "foot  foot" 3.2rem
                       / 1fr 5fr;
                       `;
 

@@ -9,8 +9,10 @@ export const withGridedContainer = () => css<GridedProps>`
   ${({ gridAutoFlow, theme }) => gridAutoFlow && getGridedStyles(gridAutoFlow, theme, 'grid-auto-flow')};
   ${({ gridAutoRows, theme }) => gridAutoRows && getGridedStyles(gridAutoRows, theme, 'grid-auto-rows')};
   ${({ gridColumns, theme }) => gridColumns && getGridedStyles(gridColumns, theme, 'grid-template-columns')};
-  ${({ gridGap, theme }) => gridGap && getGridedStyles(gridGap, theme, 'grid-gap')};
+  ${({ gridGap, theme }) => gridGap && getGridedStyles(gridGap, theme, 'gap')};
+  ${({ gridColumnGap, theme }) => gridColumnGap && getGridedStyles(gridColumnGap, theme, 'column-gap')};
   ${({ gridRows, theme }) => gridRows && getGridedStyles(gridRows, theme, 'grid-template-rows')};
+  ${({ gridRowGap, theme }) => gridRowGap && getGridedStyles(gridRowGap, theme, 'row-gap')};
   ${({ gridTemplate, theme }) => gridTemplate && getGridedStyles(gridTemplate, theme, 'grid-template')};
 `;
 
