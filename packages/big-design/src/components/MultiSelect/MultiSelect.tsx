@@ -238,8 +238,8 @@ export const MultiSelect = typedMemo(
       itemToString: (option) => (option ? option.content : ''),
       items: filteredOptions,
       labelId,
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      onInputValueChange: handleSetInputValue,
+      // @ts-expect-error need other properties from hook in method
+      onInputValueChange: handleSetInputValue, // eslint-disable-line @typescript-eslint/no-use-before-define
       onIsOpenChange: handleOnIsOpenChange,
       onSelectedItemChange: handleOnSelectedItemChange,
       selectedItem: null,
@@ -386,6 +386,7 @@ export const MultiSelect = typedMemo(
                     if (isOpen === false) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
+                      // @ts-expect-error downshift issue
                       event.nativeEvent.preventDownshiftDefault = true;
                     }
 

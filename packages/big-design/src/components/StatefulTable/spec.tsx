@@ -127,9 +127,9 @@ test('renders rows without checkboxes when opting in to selectable', () => {
 
 test('items are unselected by default', () => {
   const { container } = render(getSimpleTable({ selectable: true }));
-  const checkbox = container.querySelector('tbody > tr input');
+  const checkboxes: NodeListOf<HTMLInputElement> = container.querySelectorAll('tbody > tr input');
 
-  expect(checkbox.checked).toBe(false);
+  expect(checkboxes[0].checked).toBe(false);
 });
 
 test('items can be selected by default', () => {
@@ -138,9 +138,9 @@ test('items can be selected by default', () => {
   const { container } = render(
     getSimpleTable({ selectable: true, items, defaultSelected: [testItem] }),
   );
-  const checkbox = container.querySelector('tbody > tr input');
+  const checkboxes: NodeListOf<HTMLInputElement> = container.querySelectorAll('tbody > tr input');
 
-  expect(checkbox.checked).toBe(true);
+  expect(checkboxes[0].checked).toBe(true);
 });
 
 test('onSelectionChange gets called when an item selection happens', () => {
@@ -159,9 +159,9 @@ test('onSelectionChange gets called when an item selection happens', () => {
     }),
   );
 
-  const checkbox = container.querySelector('tbody > tr input');
+  const checkboxes: NodeListOf<HTMLInputElement> = container.querySelectorAll('tbody > tr input');
 
-  fireEvent.click(checkbox);
+  fireEvent.click(checkboxes[0]);
 
   expect(onSelectionChange).toHaveBeenCalledWith([testItemThree, testItemOne]);
 });
@@ -174,12 +174,14 @@ test('multi-page select', async () => {
   );
 
   const table = await findByTestId('simple-table');
-  let checkbox = table.querySelector('tbody > tr input');
+  let checkboxes: NodeListOf<HTMLInputElement> = table.querySelectorAll('tbody > tr input');
+  let checkbox = checkboxes[0];
 
   fireEvent.click(checkbox);
   fireEvent.click(getByTitle('Next page'));
 
-  checkbox = table.querySelector('tbody > tr input');
+  checkboxes = table.querySelectorAll('tbody > tr input');
+  checkbox = checkboxes[0];
   fireEvent.click(checkbox);
 
   expect(onSelectionChange).toHaveBeenCalledWith([

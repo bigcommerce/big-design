@@ -13,7 +13,8 @@ interface UpdateItemsProviderProps<Item> {
   items: Item[];
 }
 
-export const UpdateItemsContext = createContext<UpdateItemsContextType<unknown> | null>(null);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const UpdateItemsContext = createContext<UpdateItemsContextType<any> | null>(null);
 
 export const UpdateItemsProvider = typedMemo(
   <T extends WorksheetItem>({ children, items }: UpdateItemsProviderProps<T>) => {

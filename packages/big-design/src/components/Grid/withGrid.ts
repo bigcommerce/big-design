@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
@@ -11,11 +14,12 @@ const getSimpleGrid = (
 `;
 
 const getResponsiveGrid: GridedOverload = (
-  gridedProp: keyof GridedOverload,
+  gridedProp: any,
   theme: ThemeInterface,
   cssKey: string,
 ): FlattenSimpleInterpolation[] => {
   const breakpointKeys = Object.keys(gridedProp).sort(
+    // @ts-expect-error actually breakpoint key
     (firstBreakpoint: keyof Breakpoints, secondBreakpoint: keyof Breakpoints) =>
       breakpointsOrder.indexOf(firstBreakpoint) - breakpointsOrder.indexOf(secondBreakpoint),
   );
@@ -23,6 +27,7 @@ const getResponsiveGrid: GridedOverload = (
   return breakpointKeys.map(
     (breakpointKey) =>
       css`
+        ${/* @ts-expect-error actually breakpoint key */ ''}
         ${theme.breakpoints[breakpointKey]} {
           ${getSimpleGrid(gridedProp[breakpointKey], cssKey)}
         }
@@ -31,11 +36,12 @@ const getResponsiveGrid: GridedOverload = (
 };
 
 const getGridedStyles: GridedOverload = (
-  gridedProp: keyof GridedOverload,
+  gridedProp: any,
   theme: ThemeInterface,
   cssKey: string,
 ): FlattenSimpleInterpolation => {
   if (typeof gridedProp === 'object') {
+    // @ts-expect-error @todo refactor grid types
     return getResponsiveGrid(gridedProp, theme, cssKey);
   }
 

@@ -10,6 +10,7 @@ import { GridItem } from '../Grid';
 import { StyledAlert, StyledHeader, StyledLink, StyledMessageItem } from './styled';
 
 export interface AlertProps extends Omit<SharedMessagingProps, 'actions'> {
+  [x: string]: unknown;
   key?: string;
 }
 

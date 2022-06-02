@@ -2,7 +2,8 @@ import { theme } from '@bigcommerce/big-design-theme';
 import React from 'react';
 
 import 'jest-styled-components';
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
+import { MessageAction } from 'src/utils/messagingHelpers';
 
 import { Message } from './Message';
 
@@ -52,21 +53,21 @@ test('render info Message', () => {
   );
 });
 
-test('renders with link', () => {
-  const { queryByRole, container } = render(
+test('renders with link', async () => {
+  const { container } = render(
     <Message messages={[{ text: 'Success', link: { text: 'Link', href: '#' } }]} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
 
-  const link = queryByRole('link');
+  const link = await screen.findByRole<HTMLLinkElement>('link');
 
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
 });
 
-test('renders with external link', () => {
-  const { queryByRole, container } = render(
+test('renders with external link', async () => {
+  const { container } = render(
     <Message
       messages={[
         { text: 'Success', link: { text: 'Link', href: '#', external: true, target: '_blank' } },
@@ -76,7 +77,7 @@ test('renders with external link', () => {
 
   expect(container.firstChild).toMatchSnapshot();
 
-  const link = queryByRole('link');
+  const link = await screen.findByRole<HTMLLinkElement>('link');
 
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
@@ -102,11 +103,12 @@ test('renders close button', () => {
   expect(queryByRole('button')).toBeDefined();
 });
 
-test('trigger onClose', () => {
+test('trigger onClose', async () => {
   const fn = jest.fn();
-  const { queryByRole } = render(<Message messages={[{ text: 'Success' }]} onClose={fn} />);
 
-  const button = queryByRole('button');
+  render(<Message messages={[{ text: 'Success' }]} onClose={fn} />);
+
+  const button = await screen.findByRole<HTMLButtonElement>('button');
 
   fireEvent.click(button);
 
@@ -124,9 +126,9 @@ test('does not forward styles', () => {
 
 test('renders actions', () => {
   const onClick = jest.fn();
-  const actions = [
+  const actions: MessageAction[] = [
     { text: 'First Action', onClick },
-    { text: 'Second Action', variant: 'primary', onClick },
+    { text: 'Second Action', variant: 'secondary', onClick },
   ];
 
   const { container, getByRole } = render(

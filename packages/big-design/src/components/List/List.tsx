@@ -65,7 +65,8 @@ export interface ListProps<T> extends HTMLAttributes<HTMLUListElement> {
   maxHeight?: number;
   selectedItem?: SelectOption<T> | null;
   selectedItems?: Array<SelectOption<T>> | null;
-  getItemProps: UseSelectPropGetters<unknown>['getItemProps'];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getItemProps: UseSelectPropGetters<any>['getItemProps'];
   getMenuProps: UseSelectPropGetters<unknown>['getMenuProps'];
   update: (() => Promise<Partial<State>>) | null;
   addItem?(item: SelectOption<T>): void;

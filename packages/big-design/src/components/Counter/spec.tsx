@@ -1,7 +1,7 @@
 import React, { createRef, Ref } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
 
@@ -70,45 +70,41 @@ test('renders a counter with matched label', () => {
   expect(queryByLabelText('Test Label')).toBeInTheDocument();
 });
 
-test('create unique ids if not provided', () => {
-  const { queryByTestId } = render(
+test('create unique ids if not provided', async () => {
+  render(
     <>
       {counterMock({ dataTestId: 'item1', label: 'Test Label', ...requiredAttributes })}
       {counterMock({ dataTestId: 'item2', label: 'Test Label', ...requiredAttributes })}
     </>,
   );
 
-  const item1 = queryByTestId('item1');
-  const item2 = queryByTestId('item2');
+  const [item1, item2] = await screen.findAllByRole<HTMLInputElement>('input');
 
   expect(item1).toBeDefined();
   expect(item2).toBeDefined();
   expect(item1.id).not.toBe(item2.id);
 });
 
-test('respects provided id', () => {
-  const { container } = render(
-    counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }),
-  );
-  const counter = container.querySelector('#test');
+test('respects provided id', async () => {
+  render(counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }));
+
+  const counter = await screen.findByRole<HTMLInputElement>('input');
 
   expect(counter.id).toBe('test');
 });
 
-test('matches label htmlFor with id provided', () => {
-  const { container } = render(
-    counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }),
-  );
-  const label = container.querySelector('label');
+test('matches label htmlFor with id provided', async () => {
+  render(counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }));
+
+  const label = await screen.findByLabelText<HTMLLabelElement>('Test Label');
 
   expect(label.htmlFor).toBe('test');
 });
 
-test('respects provided labelId', () => {
-  const { container } = render(
-    counterMock({ label: 'Test Label', labelId: 'test', ...requiredAttributes }),
-  );
-  const label = container.querySelector('#test');
+test('respects provided labelId', async () => {
+  render(counterMock({ label: 'Test Label', labelId: 'test', ...requiredAttributes }));
+
+  const label = await screen.findByLabelText<HTMLLabelElement>('Test Label');
 
   expect(label.id).toBe('test');
 });
@@ -261,10 +257,10 @@ test('value prop only accepts whole numbers', () => {
   expect(handleChange).toHaveBeenCalledWith(2);
 });
 
-test('value increases when increase or decrease icons are clicked', () => {
-  const { getByDisplayValue, container } = render(counterMock(requiredAttributes));
+test('value increases when increase or decrease icons are clicked', async () => {
+  const { container } = render(counterMock(requiredAttributes));
 
-  const counter = getByDisplayValue('5');
+  const counter = await screen.findByDisplayValue<HTMLInputElement>('5');
 
   const icons = container.getElementsByTagName('svg');
 
@@ -280,9 +276,9 @@ test('value increases when increase or decrease icons are clicked', () => {
 });
 
 test('value increases and decreases with arrow keypresses', () => {
-  const { getByDisplayValue } = render(counterMock(requiredAttributes));
+  render(counterMock(requiredAttributes));
 
-  const counter = getByDisplayValue('5');
+  const counter = screen.getByDisplayValue<HTMLInputElement>('5');
 
   counter.focus();
 

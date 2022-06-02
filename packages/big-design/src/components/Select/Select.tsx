@@ -165,8 +165,8 @@ export const Select = typedMemo(
       itemToString: (item) => (item ? item.content : ''),
       items: filteredOptions,
       labelId,
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      onInputValueChange: handleOnInputValueChange,
+      // @ts-expect-error need setHighlightedIndex from downshift
+      onInputValueChange: handleOnInputValueChange, // eslint-disable-line @typescript-eslint/no-use-before-define
       onIsOpenChange: handleOnIsOpenChange,
       onSelectedItemChange: handleOnSelectedItemChange,
       selectedItem: selectedOption || null,
@@ -304,6 +304,7 @@ export const Select = typedMemo(
                     if (isOpen === false) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
+                      // @ts-expect-error downshift ts issue
                       event.nativeEvent.preventDownshiftDefault = true;
                     }
 
@@ -318,6 +319,7 @@ export const Select = typedMemo(
                     }
 
                     // https://github.com/downshift-js/downshift/issues/734
+                    // @ts-expect-error downshift ts issue
                     event.nativeEvent.preventDownshiftDefault = true;
                     break;
                 }

@@ -368,8 +368,8 @@ function onSearchSubmit<T>(
 
   return items.filter((item) =>
     columns.some((column) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const element: string | number | boolean = item[column.hash] ? item[column.hash] : null;
+      // @ts-expect-error @todo refactor types
+      const element: string | number | boolean = item[column.hash] ? item[column.hash] : null; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
 
       if (element && acceptedTypes.includes(typeof element)) {
         return checkInclude(searchValue, element.toString());

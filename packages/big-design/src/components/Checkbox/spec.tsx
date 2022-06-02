@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
 
@@ -92,26 +92,24 @@ describe('render Checkbox', () => {
   });
 });
 
-test('has correct value for checked', () => {
-  const { getByTestId } = render(
-    <Checkbox checked={true} data-testid="checkbox" label="Checked" onChange={() => null} />,
-  );
-  const input: HTMLInputElement = getByTestId('checkbox');
+test('has correct value for checked', async () => {
+  render(<Checkbox checked={true} data-testid="checkbox" label="Checked" onChange={() => null} />);
+
+  const input = await screen.findByTestId<HTMLInputElement>('checkbox');
 
   expect(input.checked).toBe(true);
 });
 
-test('has correct value for unchecked', () => {
-  const { getByTestId } = render(
-    <Checkbox checked={false} data-testid="checkbox" label="Checked" onChange={() => null} />,
-  );
-  const input = getByTestId('checkbox');
+test('has correct value for unchecked', async () => {
+  render(<Checkbox checked={false} data-testid="checkbox" label="Checked" onChange={() => null} />);
+
+  const input = await screen.findByTestId<HTMLInputElement>('checkbox');
 
   expect(input.checked).toBe(false);
 });
 
-test('has correct value for indeterminate', () => {
-  const { getByTestId } = render(
+test('has correct value for indeterminate', async () => {
+  render(
     <Checkbox
       checked={false}
       data-testid="checkbox"
@@ -120,7 +118,8 @@ test('has correct value for indeterminate', () => {
       onChange={() => null}
     />,
   );
-  const input = getByTestId('checkbox');
+
+  const input = await screen.findByTestId<HTMLInputElement>('checkbox');
 
   expect(input.checked).toBe(false);
 });

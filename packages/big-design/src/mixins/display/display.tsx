@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
@@ -11,11 +14,13 @@ const getSimpleDisplay = (
 `;
 
 const getResponsiveDisplay: DisplayOverload = (
-  displayProp: unknown,
+  displayProp: any,
   theme: ThemeInterface,
   cssKey: string,
 ): FlattenSimpleInterpolation[] => {
-  const breakpointKeys = Object.keys(displayProp).sort(
+  // @ts-expect-error Object.keys type is string[]
+  const breakpointKeys: Array<keyof Breakpoints> = Object.keys(displayProp).sort(
+    // @ts-expect-error Object.keys casues type to be string
     (firstBreakpoint: keyof Breakpoints, secondBreakpoint: keyof Breakpoints) =>
       breakpointsOrder.indexOf(firstBreakpoint) - breakpointsOrder.indexOf(secondBreakpoint),
   );
@@ -24,7 +29,6 @@ const getResponsiveDisplay: DisplayOverload = (
     (breakpointKey) =>
       css`
         ${theme.breakpoints[breakpointKey]} {
-          ${/* eslint-disable-next-line @typescript-eslint/no-unsafe-argument */ ''}
           ${getSimpleDisplay(displayProp[breakpointKey], cssKey)}
         }
       `,
@@ -32,11 +36,12 @@ const getResponsiveDisplay: DisplayOverload = (
 };
 
 const getDisplayStyles: DisplayOverload = (
-  displayProp: unknown,
+  displayProp: any,
   theme: ThemeInterface,
   cssKey: string,
 ): FlattenSimpleInterpolation => {
   if (typeof displayProp === 'object') {
+    // @ts-expect-error refactor types
     return getResponsiveDisplay(displayProp, theme, cssKey);
   }
 

@@ -3,12 +3,13 @@ import React from 'react';
 
 import { Search } from './Search';
 
-test('renders the search component', () => {
+test('renders the search component', async () => {
   render(<Search onChange={jest.fn()} onSubmit={jest.fn()} value="Product" />);
 
-  const input = screen.getByLabelText('Search');
+  const input = await screen.findByLabelText<HTMLInputElement>('Search');
+  const button = await screen.findByRole<HTMLButtonElement>('button', { name: /search/i });
 
-  expect(screen.getByRole('button', { name: /search/i })).toBeInTheDocument();
+  expect(button).toBeInTheDocument();
   expect(input.value).toBe('Product');
 });
 

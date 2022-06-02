@@ -15,7 +15,9 @@ const getResponsiveDisplay = (
   theme: ThemeInterface,
   cssKey: string,
 ): FlattenSimpleInterpolation[] => {
-  const breakpointKeys: string[] = Object.keys(displayProp).sort(
+  // @ts-expect-error Object.keys type is string[]
+  const breakpointKeys: Array<keyof Breakpoints> = Object.keys(displayProp).sort(
+    // @ts-expect-error Object.keys causes type to be string
     (firstBreakpoint: keyof Breakpoints, secondBreakpoint: keyof Breakpoints) =>
       breakpointsOrder.indexOf(firstBreakpoint) - breakpointsOrder.indexOf(secondBreakpoint),
   );
@@ -24,8 +26,8 @@ const getResponsiveDisplay = (
     (breakpointKey: keyof Breakpoints) =>
       css`
         ${theme.breakpoints[breakpointKey]} {
-          ${/* eslint-disable-next-line @typescript-eslint/no-unsafe-argument */ ''}
-          ${getSimpleDisplay(displayProp[breakpointKey], cssKey)}
+          ${/* @ts-expect-error @refactor fix types */ ''}
+          ${getSimpleDisplay(displayProp[breakpointKey], cssKey) /* eslint-disable-line @typescript-eslint/no-unsafe-argument, prettier/prettier */ }
         }
       `,
   );

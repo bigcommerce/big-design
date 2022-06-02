@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { Switch } from './index';
 
@@ -30,20 +30,18 @@ describe('render Switch', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('has correct value for checked', () => {
-    const { getByTestId } = render(
-      <Switch checked={true} data-testid="switch" onChange={() => null} />,
-    );
-    const input = getByTestId('switch');
+  test('has correct value for checked', async () => {
+    render(<Switch checked={true} data-testid="switch" onChange={() => null} />);
+
+    const input = await screen.findByTestId<HTMLInputElement>('switch');
 
     expect(input.checked).toBe(true);
   });
 
-  test('has correct value for unchecked', () => {
-    const { getByTestId } = render(
-      <Switch checked={false} data-testid="switch" onChange={() => null} />,
-    );
-    const input = getByTestId('switch');
+  test('has correct value for unchecked', async () => {
+    render(<Switch checked={false} data-testid="switch" onChange={() => null} />);
+
+    const input = await screen.findByTestId<HTMLInputElement>('switch');
 
     expect(input.checked).toBe(false);
   });

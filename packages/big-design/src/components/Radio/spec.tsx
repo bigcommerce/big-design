@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
 
@@ -74,20 +74,18 @@ test('render Radio (unchecked + disabled)', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('has correct value when checked', () => {
-  const { getByTestId } = render(
-    <Radio checked={true} data-testid="radio" label="Checked" onChange={() => null} />,
-  );
-  const radio = getByTestId('radio');
+test('has correct value when checked', async () => {
+  render(<Radio checked={true} data-testid="radio" label="Checked" onChange={() => null} />);
+
+  const radio = await screen.findByTestId<HTMLInputElement>('radio');
 
   expect(radio.checked).toBe(true);
 });
 
-test('has correct value when unchecked', () => {
-  const { getByTestId } = render(
-    <Radio checked={false} data-testid="radio" label="Unchecked" onChange={() => null} />,
-  );
-  const radio = getByTestId('radio');
+test('has correct value when unchecked', async () => {
+  render(<Radio checked={false} data-testid="radio" label="Unchecked" onChange={() => null} />);
+
+  const radio = await screen.findByTestId<HTMLInputElement>('radio');
 
   expect(radio.checked).toBe(false);
 });

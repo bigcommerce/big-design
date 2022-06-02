@@ -110,6 +110,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
               // RefObject.current is readonly in DefinitelyTyped
               // but in practice you can still write to it.
               // See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/31065
+              // @ts-expect-error Can still write
               forwardedRef.current = checkbox;
             }
           }

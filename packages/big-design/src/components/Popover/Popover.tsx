@@ -91,6 +91,7 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
       return;
     }
 
+    // @ts-expect-error current is HTMLElement
     const prevFocus: HTMLElement = previousFocus.current;
 
     return () => {

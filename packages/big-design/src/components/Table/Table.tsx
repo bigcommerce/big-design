@@ -110,6 +110,7 @@ const InternalTable = <T extends TableItem>(
     index: number,
   ): string | number => {
     if (item[keyField] !== undefined) {
+      // @ts-expect-error if statement check prevents undefined
       return item[keyField];
     }
 
@@ -163,10 +164,12 @@ const InternalTable = <T extends TableItem>(
                     isDragging={snapshot.isDragging}
                     {...provided.dragHandleProps}
                     {...provided.draggableProps}
+                    // @ts-expect-error refactor table types
                     columns={columns}
                     isSelectable={isSelectable}
                     isSelected={isSelected}
                     item={item}
+                    // @ts-expect-error refactor table types
                     onItemSelect={onItemSelect}
                     ref={provided.innerRef}
                     showDragIcon={true}
@@ -192,11 +195,13 @@ const InternalTable = <T extends TableItem>(
 
           return (
             <Row
+              // @ts-expect-error refactor table types
               columns={columns}
               isSelectable={isSelectable}
               isSelected={isSelected}
               item={item}
               key={key}
+              // @ts-expect-error refactor table types
               onItemSelect={onItemSelect}
             />
           );

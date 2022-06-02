@@ -100,6 +100,7 @@ const InternalWorksheet = typedMemo(
 
     return (
       <UpdateItemsProvider items={rows}>
+        {/* @ts-expect-error refactor onKeyDown */}
         <Table onKeyDown={handleKeyDown} ref={tableRef} tabIndex={0}>
           {renderedHeaders}
           {renderedRows}

@@ -99,7 +99,9 @@ describe('useTreeKeyEvents', () => {
 
     result.current(
       {
+        // @ts-expect-error find better mock for types
         currentTarget: 1,
+        // @ts-expect-error find better mock for types
         target: 1,
         key: ' ',
         preventDefault,
@@ -121,7 +123,9 @@ describe('useTreeKeyEvents', () => {
 
       result.current(
         {
+          // @ts-expect-error find better mock for types
           currentTarget: 1,
+          // @ts-expect-error find better mock for types
           target: 1,
           key: 'Enter',
           preventDefault,
@@ -142,7 +146,9 @@ describe('useTreeKeyEvents', () => {
 
       result.current(
         {
+          // @ts-expect-error find better mock for types
           currentTarget: 1,
+          // @ts-expect-error find better mock for types
           target: 1,
           key: 'Enter',
           preventDefault,
@@ -166,7 +172,9 @@ describe('useTreeKeyEvents', () => {
 
     result.current(
       {
+        // @ts-expect-error find better mock for types
         currentTarget: 1,
+        // @ts-expect-error find better mock for types
         target: 1,
         key: 'ArrowDown',
         preventDefault,
@@ -189,7 +197,9 @@ describe('useTreeKeyEvents', () => {
 
     result.current(
       {
+        // @ts-expect-error find better mock for types
         currentTarget: 1,
+        // @ts-expect-error find better mock for types
         target: 1,
         key: 'ArrowDown',
         preventDefault,
@@ -212,7 +222,9 @@ describe('useTreeKeyEvents', () => {
 
     result.current(
       {
+        // @ts-expect-error find better mock for types
         currentTarget: 1,
+        // @ts-expect-error find better mock for types
         target: 1,
         key: 'ArrowUp',
         preventDefault,
@@ -235,7 +247,9 @@ describe('useTreeKeyEvents', () => {
 
     result.current(
       {
+        // @ts-expect-error find better mock for types
         currentTarget: 1,
+        // @ts-expect-error find better mock for types
         target: 1,
         key: 'ArrowUp',
         preventDefault,
@@ -259,7 +273,9 @@ describe('useTreeKeyEvents', () => {
 
       result.current(
         {
+          // @ts-expect-error find better mock for types
           currentTarget: 1,
+          // @ts-expect-error find better mock for types
           target: 1,
           key: 'ArrowRight',
           preventDefault,
@@ -280,7 +296,9 @@ describe('useTreeKeyEvents', () => {
 
       result.current(
         {
+          // @ts-expect-error find better mock for types
           currentTarget: 1,
+          // @ts-expect-error find better mock for types
           target: 1,
           key: 'ArrowRight',
           preventDefault,
@@ -305,7 +323,9 @@ describe('useTreeKeyEvents', () => {
 
       result.current(
         {
+          // @ts-expect-error find better mock for types
           currentTarget: 1,
+          // @ts-expect-error find better mock for types
           target: 1,
           key: 'ArrowLeft',
           preventDefault,
@@ -333,7 +353,9 @@ describe('useTreeKeyEvents', () => {
 
       result.current(
         {
+          // @ts-expect-error find better mock for types
           currentTarget: 1,
+          // @ts-expect-error find better mock for types
           target: 1,
           key: 'ArrowLeft',
           preventDefault,
@@ -357,7 +379,9 @@ describe('useTreeKeyEvents', () => {
 
     result.current(
       {
+        // @ts-expect-error find better mock for types
         currentTarget: 1,
+        // @ts-expect-error find better mock for types
         target: 1,
         key: 'Home',
         preventDefault,
@@ -380,7 +404,9 @@ describe('useTreeKeyEvents', () => {
 
     result.current(
       {
+        // @ts-expect-error find better mock for types
         currentTarget: 1,
+        // @ts-expect-error find better mock for types
         target: 1,
         key: 'End',
         preventDefault,

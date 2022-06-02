@@ -272,8 +272,8 @@ describe('selectable', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('click on select all should call selectedItems with all items', () => {
-    const { getAllByRole } = render(
+  test('click on select all should call selectedItems with all items', async () => {
+    render(
       <Table
         columns={columns}
         itemName={itemName}
@@ -285,7 +285,7 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox');
+    const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Select All
     expect(selectAllCheckbox.checked).toBe(false);
@@ -295,14 +295,14 @@ describe('selectable', () => {
     expect(onSelectionChange).toHaveBeenCalledWith(items);
   });
 
-  test('click on select all should call selectedItems with all items respecting multi-page', () => {
+  test('click on select all should call selectedItems with all items respecting multi-page', async () => {
     const previouslySelectedItem = {
       sku: 'Test',
       name: 'Test Previously Select Item (multi-page)',
       stock: 25,
     };
 
-    const { getAllByRole } = render(
+    render(
       <Table
         columns={columns}
         itemName={itemName}
@@ -314,7 +314,7 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox');
+    const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Select All
     expect(selectAllCheckbox.checked).toBe(false);
@@ -324,8 +324,8 @@ describe('selectable', () => {
     expect(onSelectionChange).toHaveBeenCalledWith([previouslySelectedItem, ...items]);
   });
 
-  test('select all when already all selected should deselect all items', () => {
-    const { getAllByRole } = render(
+  test('select all when already all selected should deselect all items', async () => {
+    render(
       <Table
         columns={columns}
         itemName={itemName}
@@ -337,7 +337,7 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox');
+    const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Deselect all
     expect(selectAllCheckbox.checked).toBe(true);
@@ -347,14 +347,14 @@ describe('selectable', () => {
     expect(onSelectionChange).toHaveBeenCalledWith([]);
   });
 
-  test('select all when already all selected should deselect all items and respect multi-page', () => {
+  test('select all when already all selected should deselect all items and respect multi-page', async () => {
     const previouslySelectedItem = {
       sku: 'Test',
       name: 'Test Previously Select Item (multi-page)',
       stock: 25,
     };
 
-    const { getAllByRole } = render(
+    render(
       <Table
         columns={columns}
         itemName={itemName}
@@ -366,7 +366,7 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox');
+    const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Deselect all
     expect(selectAllCheckbox.checked).toBe(true);
@@ -427,9 +427,9 @@ describe('sortable', () => {
       />,
     );
 
-    const skuHeader = container.querySelector('th');
+    const skuHeaders: NodeListOf<HTMLTableCellElement> = container.querySelectorAll('th');
 
-    fireEvent.click(skuHeader);
+    fireEvent.click(skuHeaders[0]);
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     expect(onSort).toHaveBeenCalledWith('sku', 'DESC', columns[0]);

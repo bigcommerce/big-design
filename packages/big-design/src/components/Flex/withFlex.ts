@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
@@ -10,12 +13,14 @@ const getSimpleFlex = (
   ${cssKey}: ${flexedProp}
 `;
 
-const getResponsiveFlex: FlexedOverload = (
-  flexedProp: keyof FlexedOverload,
+const getResponsiveFlex = (
+  flexedProp: any,
   theme: ThemeInterface,
   cssKey: string,
 ): FlattenSimpleInterpolation[] => {
+  // @ts-expect-error Object.keys type is string[]
   const breakpointKeys: Array<keyof Breakpoints> = Object.keys(flexedProp).sort(
+    // @ts-expect-error Object.keys casues type to be string
     (firstBreakpoint: keyof Breakpoints, secondBreakpoint: keyof Breakpoints) =>
       breakpointsOrder.indexOf(firstBreakpoint) - breakpointsOrder.indexOf(secondBreakpoint),
   );
@@ -31,7 +36,7 @@ const getResponsiveFlex: FlexedOverload = (
 };
 
 const getFlexedStyles: FlexedOverload = (
-  flexedProp: keyof FlexedOverload,
+  flexedProp: any,
   theme: ThemeInterface,
   cssKey: string,
 ): FlattenSimpleInterpolation => {

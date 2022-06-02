@@ -1,5 +1,6 @@
 import 'jest-styled-components';
 
+import { screen } from '@testing-library/react';
 import React, { createRef } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import { act } from 'react-dom/test-utils';
@@ -41,17 +42,19 @@ jest.mock(
     },
 );
 
-test('should use the passed in ref object if provided', () => {
+test('should use the passed in ref object if provided', async () => {
   const ref = createRef<ReactDatePicker>();
   const { container } = render(<Datepicker onDateChange={jest.fn()} ref={ref} />);
 
-  const input = container.querySelector('input');
+  const input = await screen.findByRole('input');
 
   fireEvent.click(input);
 
   const datepicker = container.querySelector('.react-datepicker');
+  const refClassname =
+    ref.current && ref.current.props.calendarClassName ? ref.current.props.calendarClassName : '';
 
-  expect(datepicker?.className.includes(ref.current?.props.calendarClassName)).toBe(true);
+  expect(datepicker?.className.includes(refClassname)).toBe(true);
 });
 
 test('renders select label', () => {
@@ -62,11 +65,12 @@ test('renders select label', () => {
   expect(getByText('test')).toBeInTheDocument();
 });
 
-test('calls onDateChange function when a date cell is clicked', () => {
+test('calls onDateChange function when a date cell is clicked', async () => {
   const changeFunction = jest.fn();
+
   const { container } = render(<Datepicker onDateChange={changeFunction} />);
 
-  const input = container.querySelector('input');
+  const input = await screen.findByRole<HTMLInputElement>('input');
 
   fireEvent.click(input);
 
@@ -74,19 +78,22 @@ test('calls onDateChange function when a date cell is clicked', () => {
 
   const cell = datepicker?.querySelector('.react-datepicker__day--today');
 
-  act(() => {
-    fireEvent.click(cell);
-  });
+  if (cell) {
+    act(() => {
+      fireEvent.click(cell);
+    });
+  }
 
   expect(changeFunction).toHaveBeenCalled();
 });
 
-test('no error when input date value manually', () => {
+test('no error when input date value manually', async () => {
   const changeFunction = jest.fn();
-  const { container } = render(<Datepicker onDateChange={changeFunction} />);
+
+  render(<Datepicker onDateChange={changeFunction} />);
 
   const dateString = 'Wed, 03 June, 2020';
-  const input = container.querySelector('input');
+  const input = await screen.findByRole<HTMLInputElement>('input');
 
   fireEvent.input(input, {
     target: {
@@ -95,7 +102,7 @@ test('no error when input date value manually', () => {
   });
 
   expect(changeFunction).not.toHaveBeenCalled();
-  expect(input?.getAttribute('value')).toEqual(dateString);
+  expect(input.getAttribute('value')).toEqual(dateString);
 });
 
 test('renders an error if one is provided', () => {
@@ -115,13 +122,13 @@ test('appends (optional) text to label if select is not required', () => {
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
 });
 
-test('dates before minimum date passed are disabled', () => {
+test('dates before minimum date passed are disabled', async () => {
   const selectedDate = '2020/1/5';
   const minimumDate = '2020/1/4';
   const { container } = render(
     <Datepicker label="label" min={minimumDate} onDateChange={jest.fn()} value={selectedDate} />,
   );
-  const input = container.querySelector('input');
+  const input = await screen.findByRole('input');
 
   fireEvent.click(input);
 
@@ -130,13 +137,13 @@ test('dates before minimum date passed are disabled', () => {
   expect(disabledDate?.classList.contains('react-datepicker__day--disabled')).toBe(true);
 });
 
-test('dates after max date passed are disabled', () => {
+test('dates after max date passed are disabled', async () => {
   const selectedDate = '2020/1/5';
   const maximumDate = '2020/1/10';
   const { container } = render(
     <Datepicker label="label" max={maximumDate} onDateChange={jest.fn()} value={selectedDate} />,
   );
-  const input = container.querySelector('input');
+  const input = await screen.findByRole('input');
 
   fireEvent.click(input);
 

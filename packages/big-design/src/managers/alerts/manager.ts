@@ -61,7 +61,7 @@ class AlertsManager {
   remove = (key: string) => {
     let removed: AlertProps | undefined;
 
-    this.alerts = this.alerts.reduce((acc, alert) => {
+    this.alerts = this.alerts.reduce((acc: PrivateAlert[], alert) => {
       if (alert.key === key) {
         removed = alert;
 
@@ -119,6 +119,7 @@ class AlertsManager {
   }
 
   private sortAlerts = (a: PrivateAlert, b: PrivateAlert) => {
+    // @ts-expect-error type is optional
     return this.typeMap[a.type] - this.typeMap[b.type];
   };
 

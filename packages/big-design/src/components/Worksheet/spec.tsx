@@ -244,17 +244,20 @@ test('renders worksheet', () => {
 });
 
 describe('selection', () => {
-  test('selects cell on click', () => {
-    const { getByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
-    const cell = getByText('Shoes Name One').parentElement;
-    const row = cell.parentElement;
+  test('selects cell on click', async () => {
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    fireEvent.click(cell);
+    const foundElement = await screen.findByText('Shoes Name One');
+    const cell = foundElement.parentElement;
+
+    if (cell) {
+      fireEvent.click(cell);
+    }
 
     expect(cell).toHaveStyle(`border-color: ${theme.colors.primary}`);
-    expect(row.firstChild).toHaveStyle(`background-color: ${theme.colors.primary}`);
+    expect(cell?.parentElement?.firstChild).toHaveStyle(
+      `background-color: ${theme.colors.primary}`,
+    );
   });
 });
 
@@ -336,10 +339,9 @@ describe('validation', () => {
     );
 
     const cell = getByText('$49.00').parentElement;
-    const row = cell.parentElement;
 
     expect(cell).toHaveStyle(`border-color: ${theme.colors.danger}`);
-    expect(row.firstChild).toHaveStyle(`background-color: ${theme.colors.danger}`);
+    expect(cell?.parentElement?.firstChild).toHaveStyle(`background-color: ${theme.colors.danger}`);
   });
 
   test('onErrors gets called with invalid cells', () => {
@@ -822,7 +824,9 @@ describe('ModalEditor', () => {
     const parent = getByText('Category 0').parentNode?.parentNode;
     const checkbox = parent?.querySelector('label');
 
-    fireEvent.click(checkbox);
+    if (checkbox) {
+      fireEvent.click(checkbox);
+    }
 
     const save = getByText('Save');
 

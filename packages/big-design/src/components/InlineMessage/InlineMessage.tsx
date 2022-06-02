@@ -20,7 +20,7 @@ export type InlineMessageProps = SharedMessagingProps & MarginProps;
 
 export const InlineMessage: React.FC<InlineMessageProps> = memo(
   ({ className, style, header, ...props }) => {
-    const filteredProps = excludePaddingProps(props);
+    const filteredProps = excludePaddingProps<InlineMessageProps>(props);
     const icon = useMemo(() => props.type && getMessagingIcon(props.type, true), [props.type]);
 
     const renderedMessages = useMemo(

@@ -32,7 +32,8 @@ export const withPaddings = () => css<PaddingProps>`
     getSpacingStyles(paddingHorizontal, theme, 'padding-left', 'padding-right')};
 `;
 
-export function excludePaddingProps<T extends Record<string, unknown>>(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function excludePaddingProps<T extends Record<string, any>>(
   props: T,
 ): Pick<T, Exclude<keyof T, keyof PaddingProps>> {
   const {
