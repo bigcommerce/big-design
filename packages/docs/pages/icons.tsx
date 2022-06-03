@@ -49,7 +49,7 @@ const IconsPage = () => {
       setIcons(iconsModule);
     };
 
-    await fetchIcons();
+    void fetchIcons();
   }, []);
 
   return (
@@ -226,9 +226,9 @@ const IconsPage = () => {
 
       <Panel header="Available icons" headerId="available-icons">
         <Flex flexWrap="wrap" justifyContent="center">
-          {Object.keys(icons).map((iconName) => {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            const Icon = icons[iconName];
+          {Object.keys(icons).map((iconName: string) => {
+            // @ts-expect-error implicit any
+            const Icon = icons[iconName]; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
 
             return (
               <Flex

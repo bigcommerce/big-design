@@ -32,6 +32,7 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
     return children;
   }
 
+  // @ts-expect-error babel type error
   const code: string = transform(children, {
     compact: false,
     retainLines: true,
@@ -49,6 +50,7 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
 
 function transformCode(input: string): string {
   try {
+    // @ts-expect-error babel type error
     return transform(input, {
       presets: [['typescript', { allExtensions: true, isTSX: true }], 'react'],
     }).code;

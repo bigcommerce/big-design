@@ -12,7 +12,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({ children, title }) => 
   const [isCollapsed, setCollapsed] = useState(true);
   const toggleIsCollapsed = () => setCollapsed(!isCollapsed);
 
-  const handleKeyPressed = (e: KeyboardEventHandler<HTMLDivElement>) => {
+  const handleKeyPressed: KeyboardEventHandler<HTMLDivElement> = (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       toggleIsCollapsed();
     }

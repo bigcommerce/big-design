@@ -84,14 +84,13 @@ const nodes = [
   },
 ];
 
-const CategoryTree = (value, onChange) => {
+const CategoryTree = (value: number, onChange: (x: number) => void) => {
   return (
     <StatefulTree
       defaultExpanded={['0', '5', '1']}
       defaultSelected={[String(value)]}
       disabledNodes={['1']}
       nodes={nodes}
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
       onSelectionChange={(selectedNodes) => onChange(selectedNodes[0])}
       selectable="radio"
     />

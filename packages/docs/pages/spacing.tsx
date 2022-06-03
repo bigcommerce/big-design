@@ -1,4 +1,5 @@
 import { Box, Button, Flex, H1, Panel, Text } from '@bigcommerce/big-design';
+import { Spacing } from '@bigcommerce/big-design-theme';
 import React, { Fragment, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
@@ -89,15 +90,14 @@ const SpacingPage = () => {
 
       <Panel header="Spacing values" headerId="spacing-values">
         <Flex justifyContent="space-around">
-          {Object.keys(spacing)
-            .reverse()
-            .map((key) => (
-              <Flex alignItems="center" flexDirection="column" key={key} paddingBottom="small">
-                <Code>{key}</Code>
-                {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-                <BlueBox marginTop="medium" style={{ width: spacing[key], height: spacing[key] }} />
-              </Flex>
-            ))}
+          {/* eslint-disable-next-line @typescript-eslint/consistent-type-assertions */}
+          {(Object.keys(spacing) as Array<keyof Spacing>).reverse().map((key) => (
+            <Flex alignItems="center" flexDirection="column" key={key} paddingBottom="small">
+              <Code>{key}</Code>
+              {}
+              <BlueBox marginTop="medium" style={{ width: spacing[key], height: spacing[key] }} />
+            </Flex>
+          ))}
         </Flex>
       </Panel>
     </>

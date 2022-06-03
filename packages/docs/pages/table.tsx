@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { H1, Panel, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
 import React, { Fragment, useEffect, useState } from 'react';
 
@@ -30,12 +27,12 @@ const data: Item[] = [
 ];
 
 const columns = [
-  { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
-  { header: 'Name', hash: 'name', render: ({ name }) => name },
-  { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+  { header: 'Sku', hash: 'sku', render: ({ sku }: Item) => sku },
+  { header: 'Name', hash: 'name', render: ({ name }: Item) => name },
+  { header: 'Stock', hash: 'stock', render: ({ stock }: Item) => stock },
 ];
 
-const sort = (items, columnHash, direction) => {
+const sort = (items: Item[], columnHash: string, direction: string) => {
   return items.concat().sort((a, b) => {
     if (direction === 'ASC') {
       return a[columnHash] >= b[columnHash] ? 1 : -1;
@@ -45,8 +42,7 @@ const sort = (items, columnHash, direction) => {
   });
 };
 
-const dragEnd = (items, from, to) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const dragEnd = (items: Item[], from: number, to: number) => {
   const item = items.splice(from, 1);
 
   items.splice(to, 0, ...item);
@@ -192,7 +188,7 @@ const TablePage = () => {
                     const [columnHash, setColumnHash] = useState('');
                     const [direction, setDirection] = useState<'ASC' | 'DESC'>('ASC');
 
-                    const onSort = (newColumnHash: string, newDirection: string) => {
+                    const onSort = (newColumnHash: string, newDirection: 'ASC' | 'DESC') => {
                       setColumnHash(newColumnHash);
                       setDirection(newDirection);
                       setItems((currentItems) => sort(currentItems, newColumnHash, newDirection));

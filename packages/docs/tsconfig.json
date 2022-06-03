@@ -9,7 +9,6 @@
     "resolveJsonModule": true,
     "jsx": "preserve",
     "noUnusedLocals": false,
-    "noImplicitAny": false,
     "incremental": true
   },
   "include": [

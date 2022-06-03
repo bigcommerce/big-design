@@ -27,10 +27,11 @@ export interface PropTableProps {
 
 export type PropTableWrapper = Partial<PropTableProps>;
 
-const TypesData: React.FC<TypesDataProps> = (props): JSXElement => {
+const TypesData: React.FC<TypesDataProps> = (props): JSX.Element => {
   const { types } = props;
 
   if (Array.isArray(types)) {
+    // @ts-expect-error refactor types
     return types.map((type, index) => {
       return (
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
@@ -43,6 +44,7 @@ const TypesData: React.FC<TypesDataProps> = (props): JSXElement => {
     });
   }
 
+  // @ts-expect-error refactor types
   return types.type === Link ? <Code highlight={false}>{types}</Code> : <Code>{types}</Code>;
 };
 

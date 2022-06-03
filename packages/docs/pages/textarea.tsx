@@ -36,7 +36,7 @@ const TextAreaPage = () => {
                   {function Example() {
                     const [value, setValue] = useState('');
 
-                    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+                    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
                       setValue(event.target.value);
 
                     return (

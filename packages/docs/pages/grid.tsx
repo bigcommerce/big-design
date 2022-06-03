@@ -196,7 +196,6 @@ const GridPage = () => {
                       <PaddingPropTable collapsible />
                     </>
                   }
-                  renderPanel={false}
                 />
               ),
             },
@@ -213,7 +212,6 @@ const GridPage = () => {
                       <PaddingPropTable collapsible />
                     </>
                   }
-                  renderPanel={false}
                 />
               ),
             },

@@ -411,7 +411,7 @@ const SelectPage = () => {
                     {/* jsx-to-string:start */}
                     {function Example() {
                       const [value, setValue] = useState(1);
-                      const handleChange = (val: string) => setValue(val);
+                      const handleChange = (val: number) => setValue(val);
 
                       return (
                         <Form>
@@ -425,8 +425,7 @@ const SelectPage = () => {
                                 onActionClick: () => null,
                               }}
                               label="Select"
-                              onChange={handleChange}
-                              onOptionChange={() => null}
+                              onOptionChange={handleChange}
                               options={[
                                 {
                                   value: 1,

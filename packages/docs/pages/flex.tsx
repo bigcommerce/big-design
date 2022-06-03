@@ -238,7 +238,6 @@ const FlexPage = () => {
                       <PaddingPropTable collapsible />
                     </>
                   }
-                  renderPanel={false}
                 />
               ),
             },
@@ -255,7 +254,6 @@ const FlexPage = () => {
                       <PaddingPropTable collapsible />
                     </>
                   }
-                  renderPanel={false}
                 />
               ),
             },

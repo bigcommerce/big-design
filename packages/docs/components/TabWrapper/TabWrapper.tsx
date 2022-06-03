@@ -13,8 +13,7 @@ export const ActiveTabContext = createContext<Context>({
 
 export const TabWrapper: React.FC = ({ children }) => {
   const [openTab, setOpenTab] = useState('examples');
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  const setTab = (newTab) => setOpenTab(newTab);
+  const setTab = (newTab: string) => setOpenTab(newTab);
 
   return (
     <ActiveTabContext.Provider value={{ activeTab: openTab, setActiveTab: setTab }}>

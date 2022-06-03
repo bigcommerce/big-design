@@ -240,24 +240,22 @@ const FormPage = () => {
                       const [error, setError] = useState(ERROR_MSG);
 
                       const handleSubmit = (event: React.SyntheticEvent) => {
-                        const form = event.currentTarget;
+                        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+                        const form = event.currentTarget as HTMLFormElement;
 
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                         if (form.checkValidity() === false) {
                           event.preventDefault();
                           event.stopPropagation();
                         }
                       };
 
-                      const handleChange = (event: React.ChangeEvent) => {
+                      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                         const { target } = event;
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                         const regex = RegExp(target.pattern, 'g');
 
-                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions, @typescript-eslint/no-unsafe-argument
-                        regex.test(target.value) ? setError('') : setError(ERROR_MSG);
+                        const errorMessage = regex.test(target.value) ? '' : ERROR_MSG;
 
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                        setError(errorMessage);
                         setValue(target.value);
                       };
 
