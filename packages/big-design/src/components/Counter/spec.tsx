@@ -50,6 +50,8 @@ const counterMock = ({
   />
 );
 
+// TODO: Update tests to use userEvent
+
 test('forwards ref', () => {
   const ref = createRef<HTMLInputElement>();
   const { container } = render(counterMock({ ref, ...requiredAttributes }));
