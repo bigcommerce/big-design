@@ -54,11 +54,21 @@ const gridProps: Prop[] = [
     ),
   },
   {
+    name: 'gridColumnGap',
+    types: 'string',
+    description: (
+      <>
+        Sets the size of the gap between grid columns. Same as the <Code highlight={false}>column-gap</Code> CSS
+        property.
+      </>
+    ),
+  },
+  {
     name: 'gridGap',
     types: 'string',
     description: (
       <>
-        Controls the spacing between grid items. Same as the <Code highlight={false}>grid-gap</Code> CSS property.
+        Controls the spacing between grid items. Same as the <Code highlight={false}>gap</Code> CSS property.
       </>
     ),
   },
@@ -69,6 +79,15 @@ const gridProps: Prop[] = [
       <>
         Defines the rows of the grid with a space-separated list of values. Same as the{' '}
         <Code highlight={false}>grid-template-rows</Code> CSS property.
+      </>
+    ),
+  },
+  {
+    name: 'gridRowGap',
+    types: 'string',
+    description: (
+      <>
+        Sets the size of the gap between grid rows. Same as the <Code highlight={false}>row-gap</Code> CSS property.
       </>
     ),
   },

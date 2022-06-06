@@ -18,7 +18,7 @@ exports[`render default (success) InlineMessage 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -123,7 +123,7 @@ exports[`render error InlineMessage 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -224,7 +224,7 @@ exports[`render info InlineMessage 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -329,7 +329,7 @@ exports[`render warning InlineMessage 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -556,7 +556,7 @@ exports[`renders actions 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -824,7 +824,7 @@ exports[`renders close button 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -977,7 +977,7 @@ exports[`renders header 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -1108,7 +1108,7 @@ exports[`renders with external link 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -1281,7 +1281,7 @@ exports[`renders with link 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 

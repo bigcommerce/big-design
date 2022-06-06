@@ -33,6 +33,16 @@ test('has display grid', () => {
   expect(container.firstChild).toHaveStyle('display: grid');
 });
 
+test('has gap properties', () => {
+  const { container, rerender } = render(<Grid gridGap="3rem" />);
+
+  expect(container.firstChild).toHaveStyle('gap: 3rem');
+
+  rerender(<Grid gridColumnGap="1rem" gridRowGap="2rem" />);
+
+  expect(container.firstChild).toHaveStyle({ 'row-gap': '2rem', 'column-gap': '1rem' });
+});
+
 test('Grid forwards styles', () => {
   const { container } = render(<Grid className="test" style={{ background: 'red' }} />);
 

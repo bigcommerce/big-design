@@ -17,6 +17,20 @@ test('has display flex', () => {
   expect(container.firstChild).toHaveStyle('display: flex');
 });
 
+test('has gap properties', () => {
+  const { container, rerender } = render(<Flex flexGap="3rem">Flex</Flex>);
+
+  expect(container.firstChild).toHaveStyle('gap: 3rem');
+
+  rerender(
+    <Flex flexRowGap="2rem" flexColumnGap="1rem">
+      Flex
+    </Flex>,
+  );
+
+  expect(container.firstChild).toHaveStyle({ 'row-gap': '2rem', 'column-gap': '1rem' });
+});
+
 test('forwards styles', () => {
   const { container } = render(
     <Flex className="test" style={{ background: 'red' }}>

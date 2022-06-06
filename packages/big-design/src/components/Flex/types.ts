@@ -25,7 +25,21 @@ type AlignSelf = ResponsiveProp<
   'auto' | 'normal' | 'self-start' | 'self-end' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
 >;
 
+type FlexBasis = ResponsiveProp<'auto' | 'fill' | 'min-content' | 'max-content' | 'fit-content' | 'content' | string>;
+
+type FlexColumnGap = ResponsiveProp<string>;
+
 type FlexDirection = ResponsiveProp<'row' | 'column' | 'row-reverse' | 'column-reverse'>;
+
+type FlexGap = ResponsiveProp<string>;
+
+type FlexGrow = ResponsiveProp<number>;
+
+type FlexOrder = ResponsiveProp<number>;
+
+type FlexRowGap = ResponsiveProp<string>;
+
+type FlexShrink = ResponsiveProp<number>;
 
 type FlexWrap = ResponsiveProp<'nowrap' | 'wrap' | 'wrap-reverse'>;
 
@@ -45,18 +59,13 @@ type JustifyContent = ResponsiveProp<
   | 'stretch'
 >;
 
-type FlexBasis = ResponsiveProp<'auto' | 'fill' | 'min-content' | 'max-content' | 'fit-content' | 'content' | string>;
-
-type FlexGrow = ResponsiveProp<number>;
-
-type FlexOrder = ResponsiveProp<number>;
-
-type FlexShrink = ResponsiveProp<number>;
-
 export type FlexedProps = Partial<{
   alignContent: AlignContent;
   alignItems: AlignItems;
+  flexColumnGap: FlexColumnGap;
   flexDirection: FlexDirection;
+  flexGap: FlexGap;
+  flexRowGap: FlexRowGap;
   flexWrap: FlexWrap;
   justifyContent: JustifyContent;
 }>;
@@ -72,7 +81,10 @@ export type FlexedItemProps = Partial<{
 export interface FlexedOverload {
   (flexedProp: AlignContent, theme: ThemeInterface, cssKey: 'align-content'): FlattenSimpleInterpolation;
   (flexedProp: AlignItems, theme: ThemeInterface, cssKey: 'align-items'): FlattenSimpleInterpolation;
+  (flexedProp: FlexColumnGap, theme: ThemeInterface, cssKey: 'column-gap'): FlattenSimpleInterpolation;
   (flexedProp: FlexDirection, theme: ThemeInterface, cssKey: 'flex-direction'): FlattenSimpleInterpolation;
+  (flexedProp: FlexGap, theme: ThemeInterface, cssKey: 'gap'): FlattenSimpleInterpolation;
+  (flexedProp: FlexRowGap, theme: ThemeInterface, cssKey: 'row-gap'): FlattenSimpleInterpolation;
   (flexedProp: FlexWrap, theme: ThemeInterface, cssKey: 'flex-wrap'): FlattenSimpleInterpolation;
   (flexedProp: JustifyContent, theme: ThemeInterface, cssKey: 'justify-content'): FlattenSimpleInterpolation;
   (flexedProp: AlignSelf, theme: ThemeInterface, cssKey: 'align-self'): FlattenSimpleInterpolation;
