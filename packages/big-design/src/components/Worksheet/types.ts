@@ -10,7 +10,7 @@ export interface WorksheetProps<Item extends WorksheetItem> {
   columns: Array<WorksheetColumn<Item>>;
   items: Item[];
   expandableRows?: ExpandableRows;
-  onChange(items: Array<Cell<Item>>): void;
+  onChange(items: Array<Item>): void;
   onErrors?(items: WorksheetError<Item>[]): void;
 }
 
