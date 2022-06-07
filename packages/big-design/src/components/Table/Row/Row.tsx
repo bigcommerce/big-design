@@ -9,11 +9,12 @@ import { TableColumn, TableItem } from '../types';
 import { StyledTableRow } from './styled';
 
 export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
+  columns: Array<TableColumn<T>>;
+  headerCellWidths: Array<number | string>;
+  item: T;
   isDragging?: boolean;
   isSelected?: boolean;
   isSelectable?: boolean;
-  item: T;
-  columns: Array<TableColumn<T>>;
   showDragIcon?: boolean;
   onItemSelect?(item: T): void;
 }
@@ -25,6 +26,7 @@ interface PrivateProps {
 const InternalRow = <T extends TableItem>({
   columns,
   forwardedRef,
+  headerCellWidths,
   isDragging = false,
   isSelectable = false,
   isSelected = false,
@@ -44,7 +46,7 @@ const InternalRow = <T extends TableItem>({
   return (
     <StyledTableRow isSelected={isSelected} ref={forwardedRef} isDragging={isDragging} {...rest}>
       {showDragIcon && (
-        <DataCell>
+        <DataCell width={headerCellWidths[0]}>
           <DragIndicatorIcon />
         </DataCell>
       )}
@@ -54,20 +56,24 @@ const InternalRow = <T extends TableItem>({
         </DataCell>
       )}
 
-      {columns.map(({ render: CellContent, align, display, verticalAlign, width, withPadding = true }, columnIndex) => (
-        <DataCell
-          key={columnIndex}
-          align={align}
-          display={display}
-          verticalAlign={verticalAlign}
-          width={width}
-          withPadding={withPadding}
-        >
-          {/*
+      {columns.map(({ render: CellContent, align, display, verticalAlign, width, withPadding = true }, columnIndex) => {
+        const cellWidth = headerCellWidths[columnIndex + 1];
+
+        return (
+          <DataCell
+            key={columnIndex}
+            align={align}
+            display={display}
+            verticalAlign={verticalAlign}
+            width={isDragging ? cellWidth : width}
+            withPadding={withPadding}
+          >
+            {/*
           // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
-          <CellContent {...item} />
-        </DataCell>
-      ))}
+            <CellContent {...item} />
+          </DataCell>
+        );
+      })}
     </StyledTableRow>
   );
 };
