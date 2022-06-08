@@ -133,7 +133,7 @@ GH_TOKEN=<token> yarn lerna publish from-package --git-remote upstream
 ```
 yarn run build
 cd packages/docs
-GTM_ID=<gtm-id> yarn run deploy --remote upstream
+yarn run deploy --remote upstream
 ```
 
 ### License
