@@ -40,6 +40,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   const isSelectable = Boolean(selectable);
   const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
   const [headerCellWidths, setHeaderCellWidths] = useState<Array<number | string>>([]);
+  const headerCellIconRef = useRef<HTMLTableCellElement>(null);
   const eventCallback = useEventCallback((item: T) => {
     if (!selectable || !item) {
       return;
@@ -103,17 +104,12 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   );
 
   const onBeforeDragStart = () => {
-    const headerCellIconId = window.document.getElementById('header-cell-icon');
-    const headerCellIconWidth = headerCellIconId?.getBoundingClientRect().width ?? 'auto';
+    const headerCellIconWidth = headerCellIconRef.current?.offsetWidth ?? 'auto';
 
     const headerCellsWidths = columns.map((_column, index) => {
       const headerCellElement = window.document.getElementById(`header-cell-${index}`);
 
-      if (headerCellElement !== null) {
-        return headerCellElement.getBoundingClientRect().width;
-      }
-
-      return 'auto';
+      return headerCellElement?.getBoundingClientRect().width ?? 'auto';
     });
 
     const allHeaderWidths = [headerCellIconWidth, ...headerCellsWidths];
@@ -138,8 +134,8 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
         {typeof onRowDrop === 'function' && (
           <DragIconHeaderCell
             actionsRef={actionsRef}
-            id="header-cell-icon"
             width={headerCellWidths.length ? headerCellWidths[0] : 'auto'}
+            headerCellIconRef={headerCellIconRef}
           />
         )}
         {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} actionsRef={actionsRef} />}

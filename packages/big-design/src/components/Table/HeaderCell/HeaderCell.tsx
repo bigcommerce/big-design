@@ -28,7 +28,7 @@ export interface HeaderCheckboxCellProps {
 
 export interface DragIconCellProps {
   actionsRef: RefObject<HTMLDivElement>;
-  id: string;
+  headerCellIconRef: RefObject<HTMLTableCellElement>;
   width: number | string;
 }
 
@@ -118,10 +118,10 @@ export const HeaderCheckboxCell: React.FC<HeaderCheckboxCellProps> = memo(({ sti
   return <StyledTableHeaderCheckbox stickyHeader={stickyHeader} stickyHeight={actionsSize.height} />;
 });
 
-export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(({ actionsRef, id, width }) => {
+export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(({ actionsRef, headerCellIconRef, width }) => {
   const actionsSize = useComponentSize(actionsRef);
 
-  return <StyledTableHeaderCell id={id} stickyHeight={actionsSize.height} width={width} />;
+  return <StyledTableHeaderCell stickyHeight={actionsSize.height} ref={headerCellIconRef} width={width} />;
 });
 
 export const HeaderCell = typedMemo(InternalHeaderCell);
