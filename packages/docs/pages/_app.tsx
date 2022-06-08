@@ -1,16 +1,14 @@
 import { AlertsManager, createAlertsManager, GlobalStyles, Grid, GridItem } from '@bigcommerce/big-design';
 import { createTheme } from '@bigcommerce/big-design-theme';
-import App from 'next/app';
 import Head from 'next/head';
-import { default as Router, useRouter } from 'next/router';
-import React from 'react';
+import { useRouter } from 'next/router';
+import Script from 'next/script';
+import React, { useEffect } from 'react';
 import { UIDFork, UIDReset } from 'react-uid';
 import { ThemeProvider } from 'styled-components';
 
 import { BetaRibbon, SideNav, StoryWrapper } from '../components';
-import { pageView } from '../utils/analytics/gtm';
-
-Router.events.on('routeChangeComplete', (url) => pageView(url));
+import { GTM_ID, isProd, pageView } from '../utils/analytics/gtm';
 
 export const alertsManager = createAlertsManager();
 
@@ -28,8 +26,22 @@ const gridTemplate = {
   `,
 };
 
+const handleRouteChange = (url: string) => {
+  pageView(url);
+};
+
 const App = ({ Component, pageProps }) => {
   const router = useRouter();
+
+  useEffect(() => {
+    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on('hashChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off('hashChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <>
@@ -53,6 +65,22 @@ const App = ({ Component, pageProps }) => {
           }
         `}
       </style>
+      {isProd && GTM_ID && (
+        <>
+          <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`} />
+          <Script
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GTM_ID}');
+          `,
+            }}
+          />
+        </>
+      )}
       <UIDReset>
         <UIDFork>
           <ThemeProvider theme={theme}>
