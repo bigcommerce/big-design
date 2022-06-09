@@ -64,7 +64,7 @@ test('respects provided id', async () => {
 test('matches label htmlFor with id provided', async () => {
   render(<Textarea id="test" label="Test Label" />);
 
-  const label = await screen.findByLabelText<HTMLLabelElement>('Test Label');
+  const label = await screen.findByText<HTMLLabelElement>('Test Label');
 
   expect(label.htmlFor).toBe('test');
 });
@@ -72,7 +72,7 @@ test('matches label htmlFor with id provided', async () => {
 test('respects provided labelId', async () => {
   render(<Textarea label="Test Label" labelId="test" />);
 
-  const label = await screen.findByLabelText('Test Label');
+  const label = await screen.findByText('Test Label');
 
   expect(label.id).toBe('test');
 });

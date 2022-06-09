@@ -1,5 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 
 import { StatefulTree } from '../StatefulTree';
@@ -699,11 +699,11 @@ describe('SelectEditor', () => {
 
     const cells = await findAllByDisplayValue('Value 1');
 
-    fireEvent.click(cells[0]);
+    await waitFor(() => fireEvent.click(cells[0]));
 
     const options = await findAllByRole('option');
 
-    fireEvent.click(options[2]);
+    await waitFor(() => fireEvent.click(options[2]));
 
     expect(handleChange).toHaveBeenCalledTimes(1);
     expect(handleChange).toHaveBeenLastCalledWith([
@@ -987,7 +987,7 @@ describe('expandable', () => {
     expect(screen.queryByRole('row', { name: /variant 2/i })).toBeInTheDocument();
   });
 
-  test('keyboard navigates correctly', () => {
+  test('keyboard navigates correctly', async () => {
     render(
       <Worksheet
         columns={disabledColumns}
@@ -1000,7 +1000,7 @@ describe('expandable', () => {
 
     const buttons = screen.queryAllByTitle('toggle row expanded');
 
-    let cell = screen.getByText('Shoes Name Two');
+    let cell = await screen.findByText('Shoes Name Two');
 
     fireEvent.click(cell);
 
@@ -1012,9 +1012,10 @@ describe('expandable', () => {
 
     expect(variant.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
+    // await waitFor(() => fireEvent.click(variant));
     fireEvent.keyDown(cell, { key: 'ArrowUp' });
 
-    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+    expect(variant.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
 
     fireEvent.click(buttons[0]);
     fireEvent.click(variant);

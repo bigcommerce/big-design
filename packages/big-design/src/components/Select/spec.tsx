@@ -489,10 +489,10 @@ test('enter should trigger onOptionChange', async () => {
 
   const input = screen.getByTestId('select');
 
-  act(() => {
-    fireEvent.click(input);
-    fireEvent.keyDown(input, { key: 'ArrowDown' });
-    fireEvent.keyDown(input, { key: 'Enter' });
+  await act(async () => {
+    await waitFor(() => fireEvent.click(input));
+    await waitFor(() => fireEvent.keyDown(input, { key: 'ArrowDown' }));
+    await waitFor(() => fireEvent.keyDown(input, { key: 'Enter' }));
   });
 
   await waitFor(() => expect(onChange).toHaveBeenCalledWith(mockOptions[2].value, mockOptions[2]));
@@ -547,9 +547,9 @@ test('closing the Select triggers onClose', async () => {
 
   const button = await screen.findByLabelText('toggle menu');
 
-  act(() => {
-    fireEvent.click(button);
-    fireEvent.click(button);
+  await act(async () => {
+    await waitFor(() => fireEvent.click(button));
+    await waitFor(() => fireEvent.click(button));
   });
 
   await waitFor(() => expect(onClose).toHaveBeenCalled());

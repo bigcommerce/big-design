@@ -51,9 +51,9 @@ test('create unique ids if not provided', async () => {
 });
 
 test('respects provided id', async () => {
-  render(<Input id="test" label="Test Label" />);
+  render(<Input data-testid="input-test" id="test" label="Test Label" />);
 
-  const input = await screen.findByRole<HTMLInputElement>('input');
+  const input = await screen.findByTestId<HTMLInputElement>('input-test');
 
   expect(input.id).toBe('test');
 });
@@ -61,7 +61,7 @@ test('respects provided id', async () => {
 test('matches label htmlFor with id provided', async () => {
   render(<Input id="test" label="Test Label" />);
 
-  const label = await screen.findByLabelText<HTMLLabelElement>('label');
+  const label = await screen.findByText<HTMLLabelElement>('Test Label');
 
   expect(label.htmlFor).toBe('test');
 });
@@ -69,7 +69,7 @@ test('matches label htmlFor with id provided', async () => {
 test('respects provided labelId', async () => {
   render(<Input label="Test Label" labelId="test" />);
 
-  const label = await screen.findByLabelText<HTMLLabelElement>('test');
+  const label = await screen.findByText<HTMLLabelElement>('Test Label');
 
   expect(label.id).toBe('test');
 });

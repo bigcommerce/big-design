@@ -417,12 +417,11 @@ test('allows to add new items', async () => {
 
   const inStock2 = await screen.findByText('In stock');
   const notInStock2 = await screen.findByText('Not in stock');
-  const onSale2 = screen.queryByText('On sale');
+  const onSale2 = await waitFor(() => screen.queryByText('On sale'));
 
   expect(inStock2).toBeInTheDocument();
   expect(notInStock2).toBeInTheDocument();
-
-  await waitFor(() => expect(onSale2).toBeInTheDocument());
+  expect(onSale2).toBeInTheDocument();
 });
 
 test('allows to remove items', async () => {

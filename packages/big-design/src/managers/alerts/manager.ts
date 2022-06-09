@@ -92,11 +92,18 @@ class AlertsManager {
   private manageTimeout() {
     const alert = this.alerts[0] ?? null;
 
-    if (this.timeout.key === alert.key) {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (!alert) {
       return;
     }
 
-    if (this.timeout.id) {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (this.timeout?.key === alert.key) {
+      return;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (this.timeout) {
       window.clearTimeout(this.timeout.id);
 
       this.timeout = {};

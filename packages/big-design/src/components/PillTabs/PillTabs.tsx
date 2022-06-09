@@ -132,6 +132,11 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       items.map((item, index) => {
         const pill = pillsState[index];
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        if (!pill) {
+          return null;
+        }
+
         return (
           <StyledFlexItem
             data-testid={`pilltabs-pill-${index}`}

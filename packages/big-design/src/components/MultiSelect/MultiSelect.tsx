@@ -219,6 +219,24 @@ export const MultiSelect = typedMemo(
       }
     };
 
+    const handleSetInputValue = ({
+      inputValue: localInputValue,
+      isOpen: localIsOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      if (filterable && localIsOpen === true) {
+        const newFilteredOptions = filterOptions(localInputValue);
+        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
+
+        setFilteredOptions(newFilteredOptions);
+
+        // Auto highlight first matching option
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        setHighlightedIndex(firstMatchingOptionIndex);
+      }
+
+      setInputValue(localInputValue || '');
+    };
+
     const {
       getComboboxProps,
       getInputProps,
@@ -238,30 +256,12 @@ export const MultiSelect = typedMemo(
       itemToString: (option) => (option ? option.content : ''),
       items: filteredOptions,
       labelId,
-      // @ts-expect-error need other properties from hook in method
-      onInputValueChange: handleSetInputValue, // eslint-disable-line @typescript-eslint/no-use-before-define
+      onInputValueChange: handleSetInputValue,
       onIsOpenChange: handleOnIsOpenChange,
       onSelectedItemChange: handleOnSelectedItemChange,
       selectedItem: null,
       stateReducer: handleStateReducer,
     });
-
-    const handleSetInputValue = ({
-      inputValue: localInputValue,
-      isOpen: localIsOpen,
-    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      if (filterable && localIsOpen === true) {
-        const newFilteredOptions = filterOptions(localInputValue);
-        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
-
-        setFilteredOptions(newFilteredOptions);
-
-        // Auto highlight first matching option
-        setHighlightedIndex(firstMatchingOptionIndex);
-      }
-
-      setInputValue(localInputValue || '');
-    };
 
     // Popper
     const referenceRef = useRef(null);

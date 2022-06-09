@@ -394,17 +394,15 @@ test('end should select last select item', async () => {
 test('enter should trigger onOptionsChange', async () => {
   render(MultiSelectMock);
 
-  const input = screen.getByTestId('multi-select');
+  const input = await screen.findByTestId('multi-select');
 
-  act(() => {
-    fireEvent.click(input);
-    fireEvent.keyDown(input, { key: 'ArrowDown' });
-    fireEvent.keyDown(input, { key: 'Enter' });
+  await act(async () => {
+    await waitFor(() => fireEvent.click(input));
+    await waitFor(() => fireEvent.keyDown(input, { key: 'ArrowDown' }));
+    await waitFor(() => fireEvent.keyDown(input, { key: 'Enter' }));
   });
 
-  await waitFor(() => {
-    expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
-  });
+  expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
 });
 
 test('clicking on select options should trigger onOptionsChange', async () => {
@@ -455,12 +453,12 @@ test('closing the MultiSelect triggers onClose', async () => {
 
   const button = await screen.findByLabelText('toggle menu');
 
-  act(() => {
-    fireEvent.click(button);
-    fireEvent.click(button);
+  await act(async () => {
+    await waitFor(() => fireEvent.click(button));
+    await waitFor(() => fireEvent.click(button));
   });
 
-  await waitFor(() => expect(onClose).toHaveBeenCalled());
+  expect(onClose).toHaveBeenCalled();
 });
 
 test('select should render select action', async () => {
@@ -793,20 +791,18 @@ test('multiselect should be able to select multiple options', async () => {
 
   const input = screen.getAllByLabelText('Countries')[0];
 
-  act(() => {
-    fireEvent.click(input);
-    fireEvent.keyDown(input, { key: 'ArrowDown' });
-    fireEvent.keyDown(input, { key: 'ArrowDown' });
-    fireEvent.keyDown(input, { key: 'ArrowDown' });
-    fireEvent.keyDown(input, { key: 'Enter' });
+  await act(async () => {
+    await waitFor(() => fireEvent.click(input));
+    await waitFor(() => fireEvent.keyDown(input, { key: 'ArrowDown' }));
+    await waitFor(() => fireEvent.keyDown(input, { key: 'ArrowDown' }));
+    await waitFor(() => fireEvent.keyDown(input, { key: 'ArrowDown' }));
+    await waitFor(() => fireEvent.keyDown(input, { key: 'Enter' }));
   });
 
-  await waitFor(() => {
-    expect(onChange).toHaveBeenCalledWith(
-      [mockOptions[0].value, mockOptions[1].value, mockOptions[3].value],
-      [mockOptions[0], mockOptions[1], mockOptions[3]],
-    );
-  });
+  expect(onChange).toHaveBeenCalledWith(
+    [mockOptions[0].value, mockOptions[1].value, mockOptions[3].value],
+    [mockOptions[0], mockOptions[1], mockOptions[3]],
+  );
 });
 
 test('multiselect should be able to deselect options', async () => {
@@ -814,10 +810,10 @@ test('multiselect should be able to deselect options', async () => {
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  act(() => {
-    fireEvent.click(inputs[0]);
-    fireEvent.keyDown(inputs[0], { key: 'ArrowDown' });
-    fireEvent.keyDown(inputs[0], { key: 'Enter' });
+  await act(async () => {
+    await waitFor(() => fireEvent.click(inputs[0]));
+    await waitFor(() => fireEvent.keyDown(inputs[0], { key: 'ArrowDown' }));
+    await waitFor(() => fireEvent.keyDown(inputs[0], { key: 'Enter' }));
   });
 
   expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);

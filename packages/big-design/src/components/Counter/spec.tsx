@@ -78,7 +78,7 @@ test('create unique ids if not provided', async () => {
     </>,
   );
 
-  const [item1, item2] = await screen.findAllByRole<HTMLInputElement>('input');
+  const [item1, item2] = await screen.findAllByLabelText<HTMLInputElement>('Test Label');
 
   expect(item1).toBeDefined();
   expect(item2).toBeDefined();
@@ -88,7 +88,7 @@ test('create unique ids if not provided', async () => {
 test('respects provided id', async () => {
   render(counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }));
 
-  const counter = await screen.findByRole<HTMLInputElement>('input');
+  const counter = await screen.findByLabelText('Test Label');
 
   expect(counter.id).toBe('test');
 });
@@ -96,7 +96,7 @@ test('respects provided id', async () => {
 test('matches label htmlFor with id provided', async () => {
   render(counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }));
 
-  const label = await screen.findByLabelText<HTMLLabelElement>('Test Label');
+  const label = await screen.findByText<HTMLLabelElement>('Test Label');
 
   expect(label.htmlFor).toBe('test');
 });
@@ -104,7 +104,7 @@ test('matches label htmlFor with id provided', async () => {
 test('respects provided labelId', async () => {
   render(counterMock({ label: 'Test Label', labelId: 'test', ...requiredAttributes }));
 
-  const label = await screen.findByLabelText<HTMLLabelElement>('Test Label');
+  const label = await screen.findByText<HTMLLabelElement>('Test Label');
 
   expect(label.id).toBe('test');
 });

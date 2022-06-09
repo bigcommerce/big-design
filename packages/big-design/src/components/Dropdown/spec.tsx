@@ -3,7 +3,7 @@ import { remCalc } from '@bigcommerce/big-design-theme';
 import React from 'react';
 import 'jest-styled-components';
 
-import { act, fireEvent, render, screen } from '@test/utils';
+import { act, fireEvent, render, screen, waitFor } from '@test/utils';
 
 import { Button } from '../Button';
 
@@ -112,13 +112,13 @@ test('dropdown toggle has aria-haspopup', () => {
   expect(toggle.getAttribute('aria-haspopup')).toBe('listbox');
 });
 
-test('dropdown toggle has aria-expanded when dropdown menu is open', () => {
+test('dropdown toggle has aria-expanded when dropdown menu is open', async () => {
   render(DropdownMock);
 
   const toggle = screen.getByRole('button');
 
-  act(() => {
-    fireEvent.click(toggle);
+  await act(async () => {
+    await waitFor(() => fireEvent.click(toggle));
   });
 
   expect(toggle.getAttribute('aria-expanded')).toBe('true');
@@ -337,12 +337,12 @@ test('enter should toggle onItemClick', async () => {
   const list = await screen.findByRole('listbox');
   const options = screen.getAllByRole('option');
 
-  fireEvent.keyDown(list, { key: 'ArrowDown' });
+  await waitFor(() => fireEvent.keyDown(list, { key: 'ArrowDown' }));
 
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 
-  act(() => {
-    fireEvent.keyDown(list, { key: 'Enter' });
+  await act(async () => {
+    await waitFor(() => fireEvent.keyDown(list, { key: 'Enter' }));
   });
 
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
@@ -357,8 +357,8 @@ test('clicking on dropdown items should toggle onItemClick', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  act(() => {
-    fireEvent.click(options[1]);
+  await act(async () => {
+    await waitFor(() => fireEvent.click(options[1]));
   });
 
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
@@ -393,8 +393,8 @@ test('dropdown menu renders 4 link when passed options of type link', async () =
 
   const toggle = screen.getByRole('button');
 
-  act(() => {
-    fireEvent.click(toggle);
+  await act(async () => {
+    await waitFor(() => fireEvent.click(toggle));
   });
 
   const list = await screen.findByRole('listbox');
@@ -583,9 +583,9 @@ test('clicking label does not call onItemClick', async () => {
 
   const label1 = await screen.findByText('Label 1');
 
-  act(() => {
-    fireEvent.mouseOver(label1);
-    fireEvent.click(label1);
+  await act(async () => {
+    await waitFor(() => fireEvent.mouseOver(label1));
+    await waitFor(() => fireEvent.click(label1));
   });
 
   expect(onItemClick).not.toHaveBeenCalled();

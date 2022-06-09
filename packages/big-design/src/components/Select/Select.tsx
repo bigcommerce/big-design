@@ -145,6 +145,34 @@ export const Select = typedMemo(
       }
     };
 
+    const handleOnInputValueChange = ({
+      inputValue: inputValueArgument,
+      isOpen: localIsOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+      // Filter only when List is open
+      if (filterable && localIsOpen === true) {
+        const newFilteredOptions = filterOptions(inputValueArgument);
+        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
+
+        setFilteredOptions(newFilteredOptions);
+
+        // Auto highlight first matching option
+        if (inputValueArgument !== '') {
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+          setHighlightedIndex(firstMatchingOptionIndex);
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        } else if (selectedItem) {
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+          const selectedItemIndex = flattenedOptions.indexOf(selectedItem);
+
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+          setHighlightedIndex(selectedItemIndex);
+        }
+      }
+
+      setInputValue(inputValueArgument || '');
+    };
+
     const {
       closeMenu,
       getComboboxProps,
@@ -165,37 +193,12 @@ export const Select = typedMemo(
       itemToString: (item) => (item ? item.content : ''),
       items: filteredOptions,
       labelId,
-      // @ts-expect-error need setHighlightedIndex from downshift
-      onInputValueChange: handleOnInputValueChange, // eslint-disable-line @typescript-eslint/no-use-before-define
+      onInputValueChange: handleOnInputValueChange,
       onIsOpenChange: handleOnIsOpenChange,
       onSelectedItemChange: handleOnSelectedItemChange,
       selectedItem: selectedOption || null,
       stateReducer: handleStateReducer,
     });
-
-    const handleOnInputValueChange = ({
-      inputValue: localInputValue,
-      isOpen: localIsOpen,
-    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
-      // Filter only when List is open
-      if (filterable && localIsOpen === true) {
-        const newFilteredOptions = filterOptions(localInputValue);
-        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
-
-        setFilteredOptions(newFilteredOptions);
-
-        // Auto highlight first matching option
-        if (inputValue !== '') {
-          setHighlightedIndex(firstMatchingOptionIndex);
-        } else if (selectedItem) {
-          const selectedItemIndex = flattenedOptions.indexOf(selectedItem);
-
-          setHighlightedIndex(selectedItemIndex);
-        }
-      }
-
-      setInputValue(inputValue || '');
-    };
 
     // Popper
     const referenceRef = useRef(null);
