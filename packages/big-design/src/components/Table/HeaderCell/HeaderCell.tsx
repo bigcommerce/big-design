@@ -13,6 +13,7 @@ import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderCheckbox } from './
 export interface HeaderCellProps<T> extends TableHTMLAttributes<HTMLTableCellElement>, TableColumnDisplayProps {
   actionsRef: RefObject<HTMLDivElement>;
   column: TableColumn<T>;
+  id: string;
   hide?: boolean;
   isSorted?: boolean;
   sortDirection?: 'ASC' | 'DESC';
@@ -27,18 +28,21 @@ export interface HeaderCheckboxCellProps {
 
 export interface DragIconCellProps {
   actionsRef: RefObject<HTMLDivElement>;
+  headerCellIconRef: RefObject<HTMLTableCellElement>;
+  width: number | string;
 }
 
 const InternalHeaderCell = <T extends TableItem>({
+  actionsRef,
   children,
   column,
   display,
   hide = false,
+  id,
   isSorted,
   onSortClick,
   sortDirection,
   stickyHeader,
-  actionsRef,
 }: HeaderCellProps<T>) => {
   const { align = 'left', isSortable, width, tooltip } = column;
   const actionsSize = useComponentSize(actionsRef);
@@ -91,6 +95,7 @@ const InternalHeaderCell = <T extends TableItem>({
   return (
     <StyledTableHeaderCell
       display={display}
+      id={id}
       isSortable={isSortable}
       stickyHeader={stickyHeader}
       onClick={handleClick}
@@ -113,10 +118,10 @@ export const HeaderCheckboxCell: React.FC<HeaderCheckboxCellProps> = memo(({ sti
   return <StyledTableHeaderCheckbox stickyHeader={stickyHeader} stickyHeight={actionsSize.height} />;
 });
 
-export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(({ actionsRef }) => {
+export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(({ actionsRef, headerCellIconRef, width }) => {
   const actionsSize = useComponentSize(actionsRef);
 
-  return <StyledTableHeaderCell stickyHeight={actionsSize.height} />;
+  return <StyledTableHeaderCell stickyHeight={actionsSize.height} ref={headerCellIconRef} width={width} />;
 });
 
 export const HeaderCell = typedMemo(InternalHeaderCell);

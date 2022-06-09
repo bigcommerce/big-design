@@ -39,6 +39,8 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   const tableIdRef = useRef(id || uniqueTableId);
   const isSelectable = Boolean(selectable);
   const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
+  const [headerCellWidths, setHeaderCellWidths] = useState<Array<number | string>>([]);
+  const headerCellIconRef = useRef<HTMLTableCellElement>(null);
   const eventCallback = useEventCallback((item: T) => {
     if (!selectable || !item) {
       return;
@@ -95,9 +97,24 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
       if (typeof onRowDrop === 'function') {
         onRowDrop(source.index, destination.index);
       }
+
+      setHeaderCellWidths([]);
     },
     [onRowDrop],
   );
+
+  const onBeforeDragStart = () => {
+    const headerCellIconWidth = headerCellIconRef.current?.offsetWidth ?? 'auto';
+
+    const headerCellsWidths = columns.map((_column, index) => {
+      const headerCellElement = window.document.getElementById(`header-cell-${index}`);
+
+      return headerCellElement?.getBoundingClientRect().width ?? 'auto';
+    });
+
+    const allHeaderWidths = [headerCellIconWidth, ...headerCellsWidths];
+    setHeaderCellWidths(allHeaderWidths);
+  };
 
   const shouldRenderActions = () => {
     return Boolean(actions) || Boolean(pagination) || Boolean(selectable) || Boolean(itemName);
@@ -114,19 +131,28 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   const renderHeaders = () => (
     <Head hidden={headerless}>
       <tr>
-        {typeof onRowDrop === 'function' && <DragIconHeaderCell actionsRef={actionsRef} />}
+        {typeof onRowDrop === 'function' && (
+          <DragIconHeaderCell
+            actionsRef={actionsRef}
+            width={headerCellWidths.length ? headerCellWidths[0] : 'auto'}
+            headerCellIconRef={headerCellIconRef}
+          />
+        )}
         {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} actionsRef={actionsRef} />}
 
         {columns.map((column, index) => {
-          const { display, hash, header, isSortable, hideHeader } = column;
+          const { display, hash, header, isSortable, hideHeader, width } = column;
           const isSorted = isSortable && sortable && hash === sortable.columnHash;
           const sortDirection = sortable && sortable.direction;
+          const headerCellWidth = headerCellWidths[index + 1];
+          const widthColumn = headerCellWidth ?? width;
 
           return (
             <HeaderCell
               display={display}
-              column={column}
+              column={{ ...column, width: widthColumn }}
               hide={hideHeader}
+              id={`header-cell-${index}`}
               isSorted={isSorted}
               key={index}
               onSortClick={onSortClick}
@@ -159,6 +185,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
                     {...provided.draggableProps}
                     ref={provided.innerRef}
                     columns={columns}
+                    headerCellWidths={headerCellWidths}
                     isSelectable={isSelectable}
                     isSelected={isSelected}
                     item={item}
@@ -187,6 +214,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
           return (
             <Row
               columns={columns}
+              headerCellWidths={headerCellWidths}
               isSelectable={isSelectable}
               isSelected={isSelected}
               item={item}
@@ -223,7 +251,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
       )}
       <StyledTable {...rest} id={tableIdRef.current}>
         {onRowDrop ? (
-          <DragDropContext onDragEnd={onDragEnd}>
+          <DragDropContext onBeforeDragStart={onBeforeDragStart} onDragEnd={onDragEnd}>
             {renderHeaders()}
             {renderItems()}
           </DragDropContext>
