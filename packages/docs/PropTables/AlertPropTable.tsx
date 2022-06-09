@@ -26,5 +26,5 @@ const alertProps: Prop[] = [
 ];
 
 export const AlertPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Alert" propList={alertProps} {...props} />
+  <PropTable propList={alertProps} title="Alert" {...props} />
 );

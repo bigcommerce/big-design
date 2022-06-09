@@ -35,17 +35,17 @@ const counterMock = ({
   dataTestId = '',
 }: MockCounterProps) => (
   <Counter
-    ref={ref}
-    label={label}
-    labelId={labelId}
+    data-testid={dataTestId}
+    description={description}
     error={error}
     id={id}
-    description={description}
-    value={value}
-    data-testid={dataTestId}
-    min={min}
+    label={label}
+    labelId={labelId}
     max={max}
+    min={min}
     onCountChange={onCountChange}
+    ref={ref}
+    value={value}
   />
 );
 
@@ -87,21 +87,27 @@ test('create unique ids if not provided', () => {
 });
 
 test('respects provided id', () => {
-  const { container } = render(counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }));
+  const { container } = render(
+    counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }),
+  );
   const counter = container.querySelector('#test') as HTMLInputElement;
 
   expect(counter.id).toBe('test');
 });
 
 test('matches label htmlFor with id provided', () => {
-  const { container } = render(counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }));
+  const { container } = render(
+    counterMock({ id: 'test', label: 'Test Label', ...requiredAttributes }),
+  );
   const label = container.querySelector('label') as HTMLLabelElement;
 
   expect(label.htmlFor).toBe('test');
 });
 
 test('respects provided labelId', () => {
-  const { container } = render(counterMock({ label: 'Test Label', labelId: 'test', ...requiredAttributes }));
+  const { container } = render(
+    counterMock({ label: 'Test Label', labelId: 'test', ...requiredAttributes }),
+  );
   const label = container.querySelector('#test') as HTMLLabelElement;
 
   expect(label.id).toBe('test');
@@ -109,14 +115,18 @@ test('respects provided labelId', () => {
 
 test('renders a description', () => {
   const descriptionText = 'This is a description';
-  const { queryByText } = render(counterMock({ description: descriptionText, ...requiredAttributes }));
+  const { queryByText } = render(
+    counterMock({ description: descriptionText, ...requiredAttributes }),
+  );
 
   expect(queryByText(descriptionText)).toBeInTheDocument();
 });
 
 test('renders an error', () => {
   const errorText = 'This is an error';
-  const { queryByText } = render(<FormGroup>{counterMock({ error: errorText, ...requiredAttributes })}</FormGroup>);
+  const { queryByText } = render(
+    <FormGroup>{counterMock({ error: errorText, ...requiredAttributes })}</FormGroup>,
+  );
 
   expect(queryByText(errorText)).toBeInTheDocument();
 });
@@ -125,7 +135,7 @@ test('accepts a Label Component', () => {
   const CustomLabel = (
     <FormControlLabel>
       This is a custom Label
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </FormControlLabel>
@@ -140,7 +150,7 @@ test('does not accept non-Label Components', () => {
   const NotALabel = (
     <div>
       This is a not custom Label Component
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </div>
@@ -155,13 +165,15 @@ test('accepts a Description Component', () => {
   const CustomDescription = (
     <FormControlDescription>
       This is a custom Description
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </FormControlDescription>
   );
 
-  const { queryByTestId } = render(counterMock({ description: CustomDescription, ...requiredAttributes }));
+  const { queryByTestId } = render(
+    counterMock({ description: CustomDescription, ...requiredAttributes }),
+  );
 
   expect(queryByTestId('test')).toBeInTheDocument();
 });
@@ -170,13 +182,15 @@ test('does not accept non-Description Components', () => {
   const NotADescription = (
     <div>
       This is a not custom description
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </div>
   );
 
-  const { queryByTestId } = render(counterMock({ description: NotADescription, ...requiredAttributes }));
+  const { queryByTestId } = render(
+    counterMock({ description: NotADescription, ...requiredAttributes }),
+  );
 
   expect(queryByTestId('test')).not.toBeInTheDocument();
 });
@@ -185,13 +199,15 @@ test('accepts an Error Component', () => {
   const CustomError = (
     <FormControlError>
       This is a custom Error Component
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </FormControlError>
   );
 
-  const { queryByTestId } = render(<FormGroup>{counterMock({ error: CustomError, ...requiredAttributes })}</FormGroup>);
+  const { queryByTestId } = render(
+    <FormGroup>{counterMock({ error: CustomError, ...requiredAttributes })}</FormGroup>,
+  );
 
   expect(queryByTestId('test')).toBeInTheDocument();
 });
@@ -200,13 +216,15 @@ test('does not accept non-Error Components', () => {
   const NotAnError = (
     <div>
       This is a not a custom error component
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </div>
   );
 
-  const { queryByTestId } = render(<FormGroup>{counterMock({ error: NotAnError, ...requiredAttributes })}</FormGroup>);
+  const { queryByTestId } = render(
+    <FormGroup>{counterMock({ error: NotAnError, ...requiredAttributes })}</FormGroup>,
+  );
 
   expect(queryByTestId('test')).not.toBeInTheDocument();
 });
@@ -216,7 +234,7 @@ test('renders both the add and subtract icons', () => {
 
   const buttons = getAllByRole('button');
 
-  expect(buttons.length).toBe(2);
+  expect(buttons).toHaveLength(2);
 });
 
 test('buttons are disabled when value hits max or min', () => {
@@ -237,6 +255,7 @@ test('value prop only accepts whole numbers', () => {
   const { container } = render(counterMock({ max: 20, ...requiredAttributes }));
 
   const input = container.getElementsByTagName('input');
+
   fireEvent.change(input[0], { target: { value: 1.5 } });
 
   expect(handleChange).toHaveBeenCalledWith(2);
@@ -249,11 +268,14 @@ test('value increases when increase or decrease icons are clicked', () => {
 
   const icons = container.getElementsByTagName('svg');
 
-  expect(counter.value).toEqual('5');
+  expect(counter.value).toBe('5');
+
   fireEvent.click(icons[1]);
 
   expect(handleChange).toHaveBeenCalledWith(6);
+
   fireEvent.click(icons[0]);
+
   expect(handleChange).toHaveBeenCalledWith(4);
 });
 
@@ -261,12 +283,17 @@ test('value increases and decreases with arrow keypresses', () => {
   const { getByDisplayValue } = render(counterMock(requiredAttributes));
 
   const counter = getByDisplayValue('5') as HTMLInputElement;
+
   counter.focus();
 
-  expect(counter.value).toEqual('5');
+  expect(counter.value).toBe('5');
+
   fireEvent.keyDown(counter, { key: 'ArrowUp', code: 'ArrowUp' });
+
   expect(handleChange).toHaveBeenCalledWith(6);
+
   fireEvent.keyDown(counter, { key: 'ArrowDown', code: 'ArrowDown' });
+
   expect(handleChange).toHaveBeenCalledWith(4);
 });
 
@@ -275,8 +302,10 @@ test('value is set to 0 when pressing Escape', () => {
 
   const counter = getByDisplayValue('5');
 
-  expect(counter.getAttribute('value')).toEqual('5');
+  expect(counter.getAttribute('value')).toBe('5');
+
   fireEvent.keyDown(counter, { key: 'Escape', code: 'Escape' });
+
   expect(handleChange).toHaveBeenCalledWith(0);
 });
 
@@ -285,8 +314,10 @@ test('value does not change when pressing Enter', () => {
 
   const counter = getByDisplayValue('5');
 
-  expect(counter.getAttribute('value')).toEqual('5');
+  expect(counter.getAttribute('value')).toBe('5');
+
   fireEvent.keyDown(counter, { key: 'Enter', code: 'Enter' });
+
   expect(handleChange).not.toHaveBeenCalled();
 });
 
@@ -296,12 +327,15 @@ test('provided onCountChange function is called on value change', () => {
   const increase = getByTitle('Increase count');
 
   fireEvent.click(increase);
+
   expect(handleChange).toHaveBeenCalledWith(6);
 });
 
 test('error shows with valid string', () => {
   const error = 'Error';
-  const { container, rerender } = render(<FormGroup>{counterMock({ error: '', ...requiredAttributes })}</FormGroup>);
+  const { container, rerender } = render(
+    <FormGroup>{counterMock({ error: '', ...requiredAttributes })}</FormGroup>,
+  );
 
   expect(container.querySelector('[class*="StyledError"]')).not.toBeInTheDocument();
 
@@ -312,7 +346,9 @@ test('error shows with valid string', () => {
 
 test('error shows when an array of strings', () => {
   const errors = ['Error 0', 'Error 1'];
-  const { getByText } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
+  const { getByText } = render(
+    <FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>,
+  );
 
   errors.forEach((error) => expect(getByText(error)).toBeInTheDocument());
 });
@@ -324,7 +360,9 @@ test('error shows when an array of Errors', () => {
       Error
     </FormControlError>
   ));
-  const { getByTestId } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
+  const { getByTestId } = render(
+    <FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>,
+  );
 
   testIds.forEach((id) => expect(getByTestId(id)).toBeInTheDocument());
 });
@@ -332,7 +370,9 @@ test('error shows when an array of Errors', () => {
 describe('error does not show when invalid type', () => {
   test('single element', () => {
     const error = <div data-testid="err">Error</div>;
-    const { queryByTestId } = render(<FormGroup>{counterMock({ error, ...requiredAttributes })}</FormGroup>);
+    const { queryByTestId } = render(
+      <FormGroup>{counterMock({ error, ...requiredAttributes })}</FormGroup>,
+    );
 
     expect(queryByTestId('err')).not.toBeInTheDocument();
   });
@@ -346,7 +386,9 @@ describe('error does not show when invalid type', () => {
       </div>,
     ];
 
-    const { queryByTestId } = render(<FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>);
+    const { queryByTestId } = render(
+      <FormGroup>{counterMock({ error: errors, ...requiredAttributes })}</FormGroup>,
+    );
 
     expect(queryByTestId('err')).not.toBeInTheDocument();
   });

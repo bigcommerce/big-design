@@ -8,8 +8,9 @@ const gridProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Defines a grid template by referencing the names of the grid areas which are specified with the grid-area
-        property of a grid item. Same as the <Code highlight={false}>grid-template-areas</Code> CSS property.
+        Defines a grid template by referencing the names of the grid areas which are specified with
+        the grid-area property of a grid item. Same as the{' '}
+        <Code highlight={false}>grid-template-areas</Code> CSS property.
       </>
     ),
   },
@@ -28,8 +29,8 @@ const gridProps: Prop[] = [
     types: ['row', 'column', 'dense', 'row dense', 'column dense', 'inherit', 'initial', 'unset'],
     description: (
       <>
-        Controls how auto placement of grid items work. Same as the <Code highlight={false}>grid-auto-flow</Code> CSS
-        property.
+        Controls how auto placement of grid items work. Same as the{' '}
+        <Code highlight={false}>grid-auto-flow</Code> CSS property.
       </>
     ),
   },
@@ -58,8 +59,8 @@ const gridProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Sets the size of the gap between grid columns. Same as the <Code highlight={false}>column-gap</Code> CSS
-        property.
+        Sets the size of the gap between grid columns. Same as the{' '}
+        <Code highlight={false}>column-gap</Code> CSS property.
       </>
     ),
   },
@@ -68,7 +69,8 @@ const gridProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Controls the spacing between grid items. Same as the <Code highlight={false}>gap</Code> CSS property.
+        Controls the spacing between grid items. Same as the <Code highlight={false}>gap</Code> CSS
+        property.
       </>
     ),
   },
@@ -87,7 +89,8 @@ const gridProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Sets the size of the gap between grid rows. Same as the <Code highlight={false}>row-gap</Code> CSS property.
+        Sets the size of the gap between grid rows. Same as the{' '}
+        <Code highlight={false}>row-gap</Code> CSS property.
       </>
     ),
   },
@@ -97,15 +100,16 @@ const gridProps: Prop[] = [
     description: (
       <>
         Shorthand for <Code highlight={false}>grid-template-columns</Code>,{' '}
-        <Code highlight={false}>grid-template-rows</Code>, and <Code highlight={false}>grid-template-areas</Code>. Same
-        as the <Code highlight={false}>grid-template</Code> CSS property.
+        <Code highlight={false}>grid-template-rows</Code>, and{' '}
+        <Code highlight={false}>grid-template-areas</Code>. Same as the{' '}
+        <Code highlight={false}>grid-template</Code> CSS property.
       </>
     ),
   },
 ];
 
 export const GridPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Grid" propList={gridProps} {...props} />
+  <PropTable propList={gridProps} title="Grid" {...props} />
 );
 
 const gridItemProps: Prop[] = [
@@ -114,8 +118,8 @@ const gridItemProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Gives a grid item and area defined via <Code highlight={false}>grid-template-areas</Code>. Same as the{' '}
-        <Code highlight={false}>grid-area</Code> CSS property.
+        Gives a grid item and area defined via <Code highlight={false}>grid-template-areas</Code>.
+        Same as the <Code highlight={false}>grid-area</Code> CSS property.
       </>
     ),
   },
@@ -125,8 +129,8 @@ const gridItemProps: Prop[] = [
     description: (
       <>
         Shorthand for <Code highlight={false}>grid-column-start</Code> and{' '}
-        <Code highlight={false}>grid-column-end</Code>. Same as the <Code highlight={false}>grid-column</Code> CSS
-        property.
+        <Code highlight={false}>grid-column-end</Code>. Same as the{' '}
+        <Code highlight={false}>grid-column</Code> CSS property.
       </>
     ),
   },
@@ -135,8 +139,8 @@ const gridItemProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Determines a grid item's location within the grid by referring to specific grid lines. Same as the{' '}
-        <Code highlight={false}>grid-column-end</Code> CSS property.
+        Determines a grid item's location within the grid by referring to specific grid lines. Same
+        as the <Code highlight={false}>grid-column-end</Code> CSS property.
       </>
     ),
   },
@@ -145,8 +149,8 @@ const gridItemProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Determines a grid item's location within the grid by referring to specific grid lines. Same as the{' '}
-        <Code highlight={false}>grid-column-start</Code> CSS property.
+        Determines a grid item's location within the grid by referring to specific grid lines. Same
+        as the <Code highlight={false}>grid-column-start</Code> CSS property.
       </>
     ),
   },
@@ -155,8 +159,9 @@ const gridItemProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Shorthand for <Code highlight={false}>grid-row-start</Code> and <Code highlight={false}>grid-row-end</Code>.
-        Same as the <Code highlight={false}>grid-row</Code> CSS property.
+        Shorthand for <Code highlight={false}>grid-row-start</Code> and{' '}
+        <Code highlight={false}>grid-row-end</Code>. Same as the{' '}
+        <Code highlight={false}>grid-row</Code> CSS property.
       </>
     ),
   },
@@ -165,8 +170,8 @@ const gridItemProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Determines a grid item's location within the grid by referring to specific grid lines. Same as the{' '}
-        <Code highlight={false}>grid-row-end</Code> CSS property.
+        Determines a grid item's location within the grid by referring to specific grid lines. Same
+        as the <Code highlight={false}>grid-row-end</Code> CSS property.
       </>
     ),
   },
@@ -175,13 +180,13 @@ const gridItemProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Determines a grid item's location within the grid by referring to specific grid lines. Same as the{' '}
-        <Code highlight={false}>grid-row-start</Code> CSS property.
+        Determines a grid item's location within the grid by referring to specific grid lines. Same
+        as the <Code highlight={false}>grid-row-start</Code> CSS property.
       </>
     ),
   },
 ];
 
 export const GridItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="GridItem" propList={gridItemProps} {...props} />
+  <PropTable propList={gridItemProps} title="GridItem" {...props} />
 );

@@ -89,7 +89,16 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
         setSelectedRows([newPosition.rowIndex]);
       }
     },
-    [columns, getNextOffset, isHidden, isValidPosition, rows, selectedCell, setSelectedCells, setSelectedRows],
+    [
+      columns,
+      getNextOffset,
+      isHidden,
+      isValidPosition,
+      rows,
+      selectedCell,
+      setSelectedCells,
+      setSelectedRows,
+    ],
   );
 
   return useMemo(() => ({ navigate }), [navigate]);

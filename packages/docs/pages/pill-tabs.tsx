@@ -11,13 +11,15 @@ const PillTabsPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>PillTabs</Code> are horizontal navigation buttons within panels. They switch between frequently
-          used filters or sub-views of the same content.
+          <Code primary>PillTabs</Code> are horizontal navigation buttons within panels. They switch
+          between frequently used filters or sub-views of the same content.
         </Text>
 
         <Text bold>When to use:</Text>
         <List>
-          <List.Item>To switch between different views or filters of data within a table.</List.Item>
+          <List.Item>
+            To switch between different views or filters of data within a table.
+          </List.Item>
           <List.Item>To switch between different variants of content.</List.Item>
         </List>
       </Panel>
@@ -27,8 +29,17 @@ const PillTabsPage = () => {
           {/* jsx-to-string:start */}
           {function Example() {
             const [activePills, setActivePills] = useState<string[]>([]);
-            const Card: React.FC<{ name: string; description: string }> = ({ name, description }) => (
-              <Flex border="box" flexDirection="column" padding="medium" margin="xxSmall" borderRadius="normal">
+            const Card: React.FC<{ name: string; description: string }> = ({
+              name,
+              description,
+            }) => (
+              <Flex
+                border="box"
+                borderRadius="normal"
+                flexDirection="column"
+                margin="xxSmall"
+                padding="medium"
+              >
                 <FlexItem marginBottom="xxSmall">
                   <Text bold>{name}</Text>
                 </FlexItem>
@@ -83,7 +94,7 @@ const PillTabsPage = () => {
                 <PillTabs activePills={activePills} items={items} onPillClick={onPillClick} />
                 <Flex>
                   {appCards.map(({ name, description }) => (
-                    <Card key={name} name={name} description={description} />
+                    <Card description={description} key={name} name={name} />
                   ))}
                 </Flex>
               </>
@@ -113,18 +124,20 @@ const PillTabsPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          recommended={[
-            <>Use on pages that have a large amount of content.</>,
-            <>Be concise on the navigation labels, ideally one or two words rather than a phrase.</>,
-            <>
-              Default page view should have no <Code primary>PillTabs</Code> selected.
-            </>,
-          ]}
           discouraged={[
             <>Don’t use to navigate between unrelated items.</>,
             <>Don’t link to content that’s hidden in default view.</>,
             <>
               Never use <Code primary>PillTabs</Code> to navigate a user away from the current page.
+            </>,
+          ]}
+          recommended={[
+            <>Use on pages that have a large amount of content.</>,
+            <>
+              Be concise on the navigation labels, ideally one or two words rather than a phrase.
+            </>,
+            <>
+              Default page view should have no <Code primary>PillTabs</Code> selected.
             </>,
           ]}
         />

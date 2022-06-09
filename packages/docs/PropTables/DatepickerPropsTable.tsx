@@ -55,5 +55,10 @@ const datepickerProps: Prop[] = [
 ];
 
 export const DatepickerPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Datepicker" propList={datepickerProps} nativeElement={['input[type="date"]', 'all']} {...props} />
+  <PropTable
+    nativeElement={['input[type="date"]', 'all']}
+    propList={datepickerProps}
+    title="Datepicker"
+    {...props}
+  />
 );

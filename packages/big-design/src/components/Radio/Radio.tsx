@@ -44,17 +44,20 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <RadioLabel htmlFor={id} id={labelId} disabled={disabled} aria-hidden={disabled}>
+        <RadioLabel aria-hidden={disabled} disabled={disabled} htmlFor={id} id={labelId}>
           {label}
         </RadioLabel>
       );
     }
 
     if (isValidElement(label) && label.type === RadioLabel) {
-      return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
-        htmlFor: id,
-        id: labelId,
-      });
+      return cloneElement(
+        label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
+        {
+          htmlFor: id,
+          id: labelId,
+        },
+      );
     }
 
     warning('label must be either a string or a RadioLabel component.');
@@ -74,15 +77,15 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
   return (
     <RadioContainer className={className} style={style}>
       <HiddenRadio
-        type="radio"
         checked={checked}
-        id={id}
         disabled={disabled}
+        id={id}
+        type="radio"
         {...props}
         aria-labelledby={labelId}
         ref={forwardedRef}
       />
-      <StyledRadio checked={checked} disabled={disabled} htmlFor={id} aria-hidden={true} />
+      <StyledRadio aria-hidden={true} checked={checked} disabled={disabled} htmlFor={id} />
       <RadioLabelContainer>
         {renderedLabel}
         {renderedDescription}

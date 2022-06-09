@@ -18,6 +18,7 @@ export const addValues = (first: string, second: string) => {
 
 /**
  * Creates and rgba color giving a hex and an amount
+ *
  * @param color hex color
  * @param alpha number between 0 and 1
  */

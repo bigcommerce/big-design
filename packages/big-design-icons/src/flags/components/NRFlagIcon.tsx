@@ -7,20 +7,36 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'NR flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'NR flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="NRFlagIcon__a">
           <path d="M-54.7 0H628v512H-54.7z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g clipPath="url(#NRFlagIcon__a)" fillRule="evenodd" strokeWidth="1pt" transform="translate(51.3) scale(.9375)">
+      <g
+        clipPath="url(#NRFlagIcon__a)"
+        fillRule="evenodd"
+        strokeWidth="1pt"
+        transform="translate(51.3) scale(.9375)"
+      >
         <path d="M-140 0H884v512H-140z" fill="#002170" />
         <path d="M-140 234.1H884V278H-140z" fill="#ffb20d" />
         <path

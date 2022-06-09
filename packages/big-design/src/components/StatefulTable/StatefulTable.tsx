@@ -5,7 +5,14 @@ import { typedMemo } from '../../utils';
 import { Box } from '../Box';
 import { PillTabItem, PillTabs, PillTabsProps } from '../PillTabs';
 import { Search } from '../Search';
-import { Table, TableColumn, TableItem, TableProps, TableSelectable, TableSortDirection } from '../Table';
+import {
+  Table,
+  TableColumn,
+  TableItem,
+  TableProps,
+  TableSelectable,
+  TableSortDirection,
+} from '../Table';
 
 import { createReducer, createReducerInit } from './reducer';
 
@@ -66,7 +73,10 @@ const InternalStatefulTable = <T extends TableItem>({
 }: StatefulTableProps<T>): React.ReactElement<StatefulTableProps<T>> => {
   const reducer = useMemo(() => createReducer<T>(), []);
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
-  const sortable = useMemo(() => columns.some((column) => column.sortKey || column.sortFn), [columns]);
+  const sortable = useMemo(
+    () => columns.some((column) => column.sortKey || column.sortFn),
+    [columns],
+  );
 
   const [state, dispatch] = useReducer(
     reducer,
@@ -74,7 +84,10 @@ const InternalStatefulTable = <T extends TableItem>({
     reducerInit,
   );
 
-  const columnsChangedCallback = useCallback(() => dispatch({ type: 'COLUMNS_CHANGED', columns }), [columns]);
+  const columnsChangedCallback = useCallback(
+    () => dispatch({ type: 'COLUMNS_CHANGED', columns }),
+    [columns],
+  );
   const itemsChangedCallback = useCallback(
     () => dispatch({ type: 'ITEMS_CHANGED', items, isPaginationEnabled: pagination }),
     [items, pagination],
@@ -100,9 +113,12 @@ const InternalStatefulTable = <T extends TableItem>({
     [onSelectionChange],
   );
 
-  const onSort = useCallback((_columnHash: string, direction: TableSortDirection, column: StatefulTableColumn<T>) => {
-    dispatch({ type: 'SORT', column, direction });
-  }, []);
+  const onSort = useCallback(
+    (_columnHash: string, direction: TableSortDirection, column: StatefulTableColumn<T>) => {
+      dispatch({ type: 'SORT', column, direction });
+    },
+    [],
+  );
 
   const paginationOptions = useMemo(
     () => (pagination ? { ...state.pagination, onItemsPerPageChange, onPageChange } : undefined),
@@ -110,7 +126,10 @@ const InternalStatefulTable = <T extends TableItem>({
   );
 
   const selectableOptions = useMemo(
-    () => (selectable ? { selectedItems: state.selectedItems, onSelectionChange: onItemSelect } : undefined),
+    () =>
+      selectable
+        ? { selectedItems: state.selectedItems, onSelectionChange: onItemSelect }
+        : undefined,
     [selectable, state.selectedItems, onItemSelect],
   );
 
@@ -124,6 +143,7 @@ const InternalStatefulTable = <T extends TableItem>({
       const updatedItems = swapArrayElements(state.currentItems, from, to);
 
       dispatch({ type: 'ITEMS_CHANGED', items: updatedItems, isPaginationEnabled: pagination });
+
       if (typeof onRowDrop === 'function') {
         onRowDrop(updatedItems);
       }
@@ -194,11 +214,11 @@ const InternalStatefulTable = <T extends TableItem>({
         itemName={itemName}
         items={state.currentItems}
         keyField={keyField}
+        onRowDrop={onRowDrop ? onDragEnd : undefined}
         pagination={paginationOptions}
         selectable={selectableOptions}
         sortable={sortableOptions}
         stickyHeader={stickyHeader}
-        onRowDrop={onRowDrop ? onDragEnd : undefined}
       />
     </>
   );

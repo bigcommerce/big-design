@@ -1,8 +1,12 @@
-const withTM = require('next-transpile-modules')(['@bigcommerce/big-design', '@bigcommerce/big-design-theme']);
+const withTM = require('next-transpile-modules')([
+  '@bigcommerce/big-design',
+  '@bigcommerce/big-design-theme',
+]);
 
 const bdPkg = require('../big-design/package.json');
 
 const pkg = require('./package.json');
+
 const isProduction = process.env.NODE_ENV === 'production';
 const isDev = !isProduction;
 const URL_PREFIX = '/big-design';

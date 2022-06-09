@@ -9,8 +9,8 @@ const flexProps: Prop[] = [
     defaultValue: 'stretch',
     description: (
       <>
-        Modifies the behavior of the <Code highlight={false}>flex-wrap</Code> property on the vertical axis. Same as the{' '}
-        <Code highlight={false}>align-content</Code> CSS property.
+        Modifies the behavior of the <Code highlight={false}>flex-wrap</Code> property on the
+        vertical axis. Same as the <Code highlight={false}>align-content</Code> CSS property.
       </>
     ),
   },
@@ -30,8 +30,8 @@ const flexProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Sets the size of the gap between flex columns. Same as the <Code highlight={false}>column-gap</Code> CSS
-        property.
+        Sets the size of the gap between flex columns. Same as the{' '}
+        <Code highlight={false}>column-gap</Code> CSS property.
       </>
     ),
   },
@@ -41,7 +41,8 @@ const flexProps: Prop[] = [
     defaultValue: 'row',
     description: (
       <>
-        Determines the direction of flex items. Same as the <Code highlight={false}>flex-direction</Code> CSS property.
+        Determines the direction of flex items. Same as the{' '}
+        <Code highlight={false}>flex-direction</Code> CSS property.
       </>
     ),
   },
@@ -50,7 +51,8 @@ const flexProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Controls the spacing between flex items. Same as the <Code highlight={false}>gap</Code> CSS property.
+        Controls the spacing between flex items. Same as the <Code highlight={false}>gap</Code> CSS
+        property.
       </>
     ),
   },
@@ -59,7 +61,8 @@ const flexProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Sets the size of the gap between flex rows. Same as the <Code highlight={false}>row-gap</Code> CSS property.
+        Sets the size of the gap between flex rows. Same as the{' '}
+        <Code highlight={false}>row-gap</Code> CSS property.
       </>
     ),
   },
@@ -80,8 +83,8 @@ const flexProps: Prop[] = [
     defaultValue: 'flex-start',
     description: (
       <>
-        Modifies the behavior of the <Code highlight={false}>flex-wrap</Code> property on the horizontal axis. Same as
-        the <Code highlight={false}>justify-content</Code> CSS property.
+        Modifies the behavior of the <Code highlight={false}>flex-wrap</Code> property on the
+        horizontal axis. Same as the <Code highlight={false}>justify-content</Code> CSS property.
       </>
     ),
   },
@@ -91,15 +94,15 @@ const flexProps: Prop[] = [
     defaultValue: 'nowrap',
     description: (
       <>
-        Controls whether flex items should wrap or not. Same as the <Code highlight={false}>flex-wrap</Code> CSS
-        property.
+        Controls whether flex items should wrap or not. Same as the{' '}
+        <Code highlight={false}>flex-wrap</Code> CSS property.
       </>
     ),
   },
 ];
 
 export const FlexPropTable: React.FC<PropTableWrapper> = (props) => {
-  return <PropTable title="Flex" propList={flexProps} {...props} />;
+  return <PropTable propList={flexProps} title="Flex" {...props} />;
 };
 
 const flexItemProps: Prop[] = [
@@ -109,8 +112,8 @@ const flexItemProps: Prop[] = [
     defaultValue: 'auto',
     description: (
       <>
-        Overrides the flex items container <Code highlight={false}>align-items</Code> property. Same as the{' '}
-        <Code highlight={false}>align-self</Code> CSS property.
+        Overrides the flex items container <Code highlight={false}>align-items</Code> property. Same
+        as the <Code highlight={false}>align-self</Code> CSS property.
       </>
     ),
   },
@@ -120,7 +123,8 @@ const flexItemProps: Prop[] = [
     defaultValue: 'auto',
     description: (
       <>
-        Specifies the inital length of a flex item. Same as the <Code highlight={false}>flex-basis</Code> CSS property.
+        Specifies the inital length of a flex item. Same as the{' '}
+        <Code highlight={false}>flex-basis</Code> CSS property.
       </>
     ),
   },
@@ -141,8 +145,8 @@ const flexItemProps: Prop[] = [
     defaultValue: '0',
     description: (
       <>
-        Modifies which order a flex item will appear relative to the other flex items in the container. Same as the{' '}
-        <Code highlight={false}>order</Code> CSS property.
+        Modifies which order a flex item will appear relative to the other flex items in the
+        container. Same as the <Code highlight={false}>order</Code> CSS property.
       </>
     ),
   },
@@ -152,13 +156,13 @@ const flexItemProps: Prop[] = [
     defaultValue: '1',
     description: (
       <>
-        Determines how much a flex item can shrink relative to the rest of the flex items. Same as the{' '}
-        <Code highlight={false}>flex-shrink</Code> CSS property.
+        Determines how much a flex item can shrink relative to the rest of the flex items. Same as
+        the <Code highlight={false}>flex-shrink</Code> CSS property.
       </>
     ),
   },
 ];
 
 export const FlexItemPropTable: React.FC<PropTableWrapper> = (props) => {
-  return <PropTable title="FlexItem" propList={flexItemProps} {...props} />;
+  return <PropTable propList={flexItemProps} title="FlexItem" {...props} />;
 };

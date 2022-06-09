@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'LI flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'LI flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -58,7 +63,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           <circle cx={130.2} cy={157.2} r={4.9} />
           <path d="M215 119.5l-.5 6.5c-12.3-2-29.7-8.8-46-8.8-15 0-26.6 6-26.6 21.2 0 14.9 6.3 28.5 14.7 42.3l-8.7 4c-7.8-15-14.3-28-14.3-45.4 0-14.6 11.5-29 31.3-29 17.5 0 35.4 6 50.1 9.2z" />
         </g>
-        <use height="100%" transform="matrix(-1 0 0 1 444 0)" width="100%" xlinkHref="#LIFlagIcon__a" />
+        <use
+          height="100%"
+          transform="matrix(-1 0 0 1 444 0)"
+          width="100%"
+          xlinkHref="#LIFlagIcon__a"
+        />
         <path d="M222 53.1l-5.2 9.7 5.2 9.6 5.1-9.6L222 53zm0 24.4l-5.2 9.6 5.2 9.7 5-9.8-5.1-9.6zM203.6 75l8.1 5.1 8.1-5.1-8-5.2-8.2 5.2zm20.5 0l8.1 5.1 8.2-5.1-8.2-5.2-8 5.2z" />
         <circle cx={222} cy={75.1} r={3.9} />
         <circle cx={222} cy={100} r={10.5} />

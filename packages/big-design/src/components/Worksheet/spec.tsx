@@ -16,7 +16,10 @@ interface Product {
   numberField: number;
 }
 
-const TreeComponent = (value: string | number | boolean, onChange: (value: string | number | boolean) => void) => {
+const TreeComponent = (
+  value: string | number | boolean,
+  onChange: (value: string | number | boolean) => void,
+) => {
   const nodes = [
     {
       id: '0',
@@ -44,7 +47,12 @@ const TreeComponent = (value: string | number | boolean, onChange: (value: strin
       label: 'Category 3',
       children: [{ id: '7', value: 7, label: 'Category 7' }],
     },
-    { id: '4', value: 4, label: 'Category 4', children: [{ id: '8', value: 8, label: 'Category 8' }] },
+    {
+      id: '4',
+      value: 4,
+      label: 'Category 4',
+      children: [{ id: '8', value: 8, label: 'Category 8' }],
+    },
   ];
 
   return (
@@ -59,7 +67,7 @@ const TreeComponent = (value: string | number | boolean, onChange: (value: strin
   );
 };
 
-const columns: WorksheetColumn<Product>[] = [
+const columns: Array<WorksheetColumn<Product>> = [
   { hash: 'productName', header: 'Product name', validation: (value: string) => !!value },
   { hash: 'visibleOnStorefront', header: 'Visible on storefront', type: 'checkbox' },
   { hash: 'otherField', header: 'Other field' },
@@ -78,8 +86,13 @@ const columns: WorksheetColumn<Product>[] = [
   },
 ];
 
-const selectableColumns: WorksheetColumn<Partial<Product>>[] = [
-  { hash: 'productName', header: 'Product name', validation: (value: string) => !!value, disabled: true },
+const selectableColumns: Array<WorksheetColumn<Partial<Product>>> = [
+  {
+    hash: 'productName',
+    header: 'Product name',
+    validation: (value: string) => !!value,
+    disabled: true,
+  },
   {
     hash: 'otherField',
     header: 'Other field',
@@ -95,9 +108,19 @@ const selectableColumns: WorksheetColumn<Partial<Product>>[] = [
   },
 ];
 
-const disabledColumns: WorksheetColumn<Product>[] = [
-  { hash: 'productName', header: 'Product name', validation: (value: string) => !!value, disabled: true },
-  { hash: 'visibleOnStorefront', header: 'Visible on storefront', type: 'checkbox', disabled: true },
+const disabledColumns: Array<WorksheetColumn<Product>> = [
+  {
+    hash: 'productName',
+    header: 'Product name',
+    validation: (value: string) => !!value,
+    disabled: true,
+  },
+  {
+    hash: 'visibleOnStorefront',
+    header: 'Visible on storefront',
+    type: 'checkbox',
+    disabled: true,
+  },
   { hash: 'otherField', header: 'Other field', disabled: true },
   {
     hash: 'otherField2',
@@ -191,7 +214,7 @@ const items: Product[] = [
   },
 ];
 
-const selectableItems: Partial<Product>[] = [
+const selectableItems: Array<Partial<Product>> = [
   {
     id: 1,
     productName: 'Shoes Name One',
@@ -213,14 +236,18 @@ beforeEach(() => {
 });
 
 test('renders worksheet', () => {
-  const { container } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+  const { container } = render(
+    <Worksheet columns={columns} items={items} onChange={handleChange} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
 describe('selection', () => {
   test('selects cell on click', () => {
-    const { getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+    const { getByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
     const cell = getByText('Shoes Name One').parentElement as HTMLTableDataCellElement;
     const row = cell.parentElement as HTMLTableRowElement;
 
@@ -249,6 +276,7 @@ describe('edition', () => {
     fireEvent.keyDown(input, { key: 'Enter' });
 
     cell = getByText('Shoes Name One');
+
     expect(cell).toBeDefined();
     expect(handleChange).not.toHaveBeenCalled();
   });
@@ -270,6 +298,7 @@ describe('edition', () => {
     fireEvent.keyDown(input, { key: 'Enter' });
 
     cell = getByText('Shoes Name One Edit');
+
     expect(cell).toBeDefined();
   });
 
@@ -321,8 +350,8 @@ describe('validation', () => {
       <Worksheet columns={columns} items={items} onChange={handleChange} onErrors={handleErrors} />,
     );
 
-    expect(handleErrors).toBeCalledTimes(1);
-    expect(handleErrors).toBeCalledWith([
+    expect(handleErrors).toHaveBeenCalledTimes(1);
+    expect(handleErrors).toHaveBeenCalledWith([
       {
         item: {
           id: 5,
@@ -347,7 +376,7 @@ describe('validation', () => {
       },
     ]);
 
-    cell = getByText('$49.00') as HTMLElement;
+    cell = getByText('$49.00');
 
     fireEvent.doubleClick(cell);
 
@@ -356,8 +385,8 @@ describe('validation', () => {
     fireEvent.change(input, { target: { value: 40 } });
     fireEvent.keyDown(input, { key: 'Enter' });
 
-    expect(handleErrors).toBeCalledTimes(2);
-    expect(handleErrors).toBeCalledWith([
+    expect(handleErrors).toHaveBeenCalledTimes(2);
+    expect(handleErrors).toHaveBeenCalledWith([
       {
         item: {
           id: 5,
@@ -391,8 +420,8 @@ describe('validation', () => {
     fireEvent.change(input, { target: { value: 60 } });
     fireEvent.keyDown(input, { key: 'Enter' });
 
-    expect(handleErrors).toBeCalledTimes(3);
-    expect(handleErrors).toBeCalledWith([
+    expect(handleErrors).toHaveBeenCalledTimes(3);
+    expect(handleErrors).toHaveBeenCalledWith([
       {
         item: {
           id: 5,
@@ -410,17 +439,22 @@ describe('validation', () => {
 
 describe('formatting', () => {
   test('formats values', () => {
-    const { getAllByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+    const { getAllByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
 
-    expect(getAllByText('$50.00').length).toBe(8);
+    expect(getAllByText('$50.00')).toHaveLength(8);
   });
 });
 
 describe('keyboard navigation', () => {
   test('navigates with arrow keys', () => {
-    const { getAllByText, getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+    const { getAllByText, getByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
 
     let cell = getByText('Shoes Name Three');
+
     fireEvent.click(cell);
 
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
@@ -450,7 +484,9 @@ describe('keyboard navigation', () => {
   });
 
   test('navigates with tab', () => {
-    const { getAllByText, getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+    const { getAllByText, getByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
 
     const cell = getByText('Shoes Name Three');
 
@@ -521,7 +557,9 @@ describe('keyboard navigation', () => {
         numberField: 50,
       },
     ]);
-    expect(cells[1].parentElement?.parentElement?.parentElement).toHaveStyle(`border-color: ${theme.colors.primary};`);
+    expect(cells[1].parentElement?.parentElement?.parentElement).toHaveStyle(
+      `border-color: ${theme.colors.primary};`,
+    );
 
     fireEvent.keyDown(worksheet, { key: ' ' });
 
@@ -611,7 +649,7 @@ describe('TextEditor', () => {
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
-    const cell = getByText('$49.00') as HTMLElement;
+    const cell = getByText('$49.00');
 
     fireEvent.doubleClick(cell);
 
@@ -649,7 +687,7 @@ describe('SelectEditor', () => {
 
     const cells = await findAllByRole('combobox');
 
-    expect(cells.length).toBe(2);
+    expect(cells).toHaveLength(2);
   });
 
   test('SelectEditor is editable', async () => {
@@ -679,7 +717,12 @@ describe('SelectEditor', () => {
     render(
       <Worksheet
         columns={[
-          { hash: 'productName', header: 'Product name', validation: (value: string) => !!value, disabled: true },
+          {
+            hash: 'productName',
+            header: 'Product name',
+            validation: (value: string) => !!value,
+            disabled: true,
+          },
           {
             hash: 'otherField',
             header: 'Other field',
@@ -708,19 +751,23 @@ describe('SelectEditor', () => {
 
 describe('CheckboxEditor', () => {
   test('renders CheckboxEditor', () => {
-    const { getAllByLabelText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+    const { getAllByLabelText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
 
     let cells = getAllByLabelText('Checked');
 
-    expect(cells.length).toBe(7);
+    expect(cells).toHaveLength(7);
 
     cells = getAllByLabelText('Unchecked');
 
-    expect(cells.length).toBe(2);
+    expect(cells).toHaveLength(2);
   });
 
   test('CheckboxEditor is editable', () => {
-    const { getAllByLabelText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+    const { getAllByLabelText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
 
     const cells = getAllByLabelText('Checked');
     const cell = cells[0];
@@ -751,28 +798,34 @@ describe('CheckboxEditor', () => {
 
 describe('ModalEditor', () => {
   test('renders ModalEditor', () => {
-    const { getAllByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+    const { getAllByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
 
     const buttons = getAllByText('Edit');
 
-    expect(buttons.length).toBe(9);
+    expect(buttons).toHaveLength(9);
   });
 
   test('ModalEditor is editable', () => {
-    const { getAllByText, getByText } = render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+    const { getAllByText, getByText } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
 
     const buttons = getAllByText('Edit');
 
-    expect(buttons.length).toBe(9);
+    expect(buttons).toHaveLength(9);
 
     fireEvent.click(buttons[3]);
 
     // Find checkbox to click
     const parent = getByText('Category 0').parentNode?.parentNode;
     const checkbox = parent?.querySelector('label');
+
     fireEvent.click(checkbox as HTMLLabelElement);
 
     const save = getByText('Save');
+
     fireEvent.click(save);
 
     expect(handleChange).toHaveBeenCalledTimes(1);
@@ -881,7 +934,7 @@ describe('expandable', () => {
       />,
     );
 
-    expect(screen.queryAllByTitle('toggle row expanded').length).toBe(2);
+    expect(screen.queryAllByTitle('toggle row expanded')).toHaveLength(2);
   });
 
   test('toggles rows', () => {

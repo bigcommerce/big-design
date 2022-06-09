@@ -53,10 +53,10 @@ export const Content = memo(({ item, isHighlighted }: ContentProps) => {
   const wrapInTooltip = useCallback(
     (tooltip: string, tooltipTrigger: React.ReactChild) => (
       <Tooltip
+        inline={false}
+        modifiers={[{ name: 'preventOverflow' }, { name: 'offset', options: { offset: [0, 20] } }]}
         placement="left"
         trigger={tooltipTrigger}
-        modifiers={[{ name: 'preventOverflow' }, { name: 'offset', options: { offset: [0, 20] } }]}
-        inline={false}
       >
         {tooltip}
       </Tooltip>
@@ -90,9 +90,13 @@ export const Content = memo(({ item, isHighlighted }: ContentProps) => {
     );
 
     const finalContent =
-      'type' in item && item.type === 'link' && !disabled ? wrapInLink(item, baseContent) : baseContent;
+      'type' in item && item.type === 'link' && !disabled
+        ? wrapInLink(item, baseContent)
+        : baseContent;
 
-    return disabled && 'tooltip' in item && item.tooltip ? wrapInTooltip(item.tooltip, finalContent) : finalContent;
+    return disabled && 'tooltip' in item && item.tooltip
+      ? wrapInTooltip(item.tooltip, finalContent)
+      : finalContent;
   }, [descriptionColor, item, renderIcon, wrapInLink, wrapInTooltip]);
 
   return getContent;

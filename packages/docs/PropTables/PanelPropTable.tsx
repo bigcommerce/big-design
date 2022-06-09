@@ -17,8 +17,8 @@ const panelProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Gives the header a HTML <Code>id</Code> attribute. Useful if you need to use hash navigation to a{' '}
-        <Code primary>Panel</Code> header.
+        Gives the header a HTML <Code>id</Code> attribute. Useful if you need to use hash navigation
+        to a <Code primary>Panel</Code> header.
       </>
     ),
   },
@@ -34,5 +34,5 @@ const panelProps: Prop[] = [
 ];
 
 export const PanelPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Panel" propList={panelProps} {...props} />
+  <PropTable propList={panelProps} title="Panel" {...props} />
 );

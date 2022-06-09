@@ -5,7 +5,7 @@ import { fireEvent, render } from '@test/utils';
 
 import { StatefulTree, StatefulTreeProps, TreeNodeProps } from '.';
 
-const nodes: TreeNodeProps<number>[] = [
+const nodes: Array<TreeNodeProps<number>> = [
   {
     id: '0',
     value: 0,
@@ -32,22 +32,29 @@ const nodes: TreeNodeProps<number>[] = [
     label: 'Test Node 3',
     children: [{ id: '7', value: 7, label: 'Test Node 7' }],
   },
-  { id: '4', value: 4, label: 'Test Node 4', children: [{ id: '8', value: 8, label: 'Test Node 8' }] },
+  {
+    id: '4',
+    value: 4,
+    label: 'Test Node 4',
+    children: [{ id: '8', value: 8, label: 'Test Node 8' }],
+  },
 ];
 
-const getSimpleTree = (props: Partial<StatefulTreeProps<number>> = {}) => <StatefulTree nodes={nodes} {...props} />;
+const getSimpleTree = (props: Partial<StatefulTreeProps<number>> = {}) => (
+  <StatefulTree nodes={nodes} {...props} />
+);
 
 test('renders non-selectable Tree by default', () => {
   const { container, getAllByRole } = render(getSimpleTree());
 
-  expect(container.querySelectorAll('label').length).toEqual(0);
-  expect(getAllByRole('treeitem', { hidden: true }).length).toEqual(10);
+  expect(container.querySelectorAll('label')).toHaveLength(0);
+  expect(getAllByRole('treeitem', { hidden: true })).toHaveLength(10);
 });
 
 test('defaultExpanded items are expanded by default', () => {
   const { getAllByRole, getByText } = render(getSimpleTree({ defaultExpanded: ['0'] }));
 
-  expect(getAllByRole('treeitem').length).toBe(6);
+  expect(getAllByRole('treeitem')).toHaveLength(6);
   expect(getByText('Test Node 5')).toBeVisible();
   expect(getByText('Test Node 6')).not.toBeVisible();
 });
@@ -76,7 +83,7 @@ describe('selectable = multi', () => {
 
     const checkboxes = container.querySelectorAll('label');
 
-    expect(checkboxes.length).toEqual(10);
+    expect(checkboxes).toHaveLength(10);
     expect(checkboxes[0]).toHaveStyle(`border-radius: ${theme.borderRadius.normal}`);
   });
 
@@ -85,7 +92,7 @@ describe('selectable = multi', () => {
 
     const checkboxes = container.querySelectorAll('label');
 
-    expect(checkboxes.length).toEqual(10);
+    expect(checkboxes).toHaveLength(10);
 
     checkboxes.forEach((checkbox) => {
       expect(checkbox.querySelector('svg')).not.toBeInTheDocument();
@@ -93,13 +100,15 @@ describe('selectable = multi', () => {
   });
 
   test('defaultSelected items are selected by default', () => {
-    const { container } = render(getSimpleTree({ selectable: 'multi', defaultSelected: ['0', '6'] }));
+    const { container } = render(
+      getSimpleTree({ selectable: 'multi', defaultSelected: ['0', '6'] }),
+    );
 
     const selectedNodes = container.querySelectorAll('[aria-selected="true"]');
     const deselectedNodes = container.querySelectorAll('[aria-selected="false"]');
 
-    expect(selectedNodes.length).toEqual(2);
-    expect(deselectedNodes.length).toEqual(8);
+    expect(selectedNodes).toHaveLength(2);
+    expect(deselectedNodes).toHaveLength(8);
   });
 
   test('onSelectionChange gets called when an item selection happens', () => {
@@ -122,7 +131,7 @@ describe('selectable = radio', () => {
 
     const checkboxes = container.querySelectorAll('label');
 
-    expect(checkboxes.length).toEqual(10);
+    expect(checkboxes).toHaveLength(10);
     expect(checkboxes[0]).toHaveStyle(`border-radius: ${theme.borderRadius.circle}`);
   });
 
@@ -133,7 +142,7 @@ describe('selectable = radio', () => {
     const deselectedNodes = container.querySelectorAll('[aria-selected="false"]');
 
     expect(selectedNode).toBeInTheDocument();
-    expect(deselectedNodes.length).toEqual(9);
+    expect(deselectedNodes).toHaveLength(9);
   });
 
   test('defaultSelected item is selected by default', () => {
@@ -143,19 +152,21 @@ describe('selectable = radio', () => {
     const deselectedNodes = container.querySelectorAll('[aria-selected="false"]');
 
     expect(selectedNode).toBeInTheDocument();
-    expect(selectedNode?.textContent).toEqual('Test Node 2');
-    expect(deselectedNodes.length).toEqual(9);
+    expect(selectedNode?.textContent).toBe('Test Node 2');
+    expect(deselectedNodes).toHaveLength(9);
   });
 
   test('first defaultSelected item is selected by default from list', () => {
-    const { container } = render(getSimpleTree({ selectable: 'radio', defaultSelected: ['2', '6'] }));
+    const { container } = render(
+      getSimpleTree({ selectable: 'radio', defaultSelected: ['2', '6'] }),
+    );
 
     const selectedNode = container.querySelector('[aria-selected="true"]');
     const deselectedNodes = container.querySelectorAll('[aria-selected="false"]');
 
     expect(selectedNode).toBeInTheDocument();
-    expect(selectedNode?.textContent).toEqual('Test Node 2');
-    expect(deselectedNodes.length).toEqual(9);
+    expect(selectedNode?.textContent).toBe('Test Node 2');
+    expect(deselectedNodes).toHaveLength(9);
   });
 
   test('onSelectionChange gets called when an item selection happens', () => {

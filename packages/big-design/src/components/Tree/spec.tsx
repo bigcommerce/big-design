@@ -6,7 +6,7 @@ import { act, fireEvent, render, RenderResult } from '@test/utils';
 import { Tree } from './Tree';
 import { TreeExpandable, TreeFocusable, TreeNodeProps, TreeOnKeyDown, TreeProps } from './types';
 
-const nodes: TreeNodeProps<number>[] = [
+const nodes: Array<TreeNodeProps<number>> = [
   {
     id: '0',
     value: 0,
@@ -33,7 +33,12 @@ const nodes: TreeNodeProps<number>[] = [
     label: 'Test Node 3',
     children: [{ id: '7', value: 7, label: 'Test Node 7' }],
   },
-  { id: '4', value: 4, label: 'Test Node 4', children: [{ id: '8', value: 8, label: 'Test Node 8' }] },
+  {
+    id: '4',
+    value: 4,
+    label: 'Test Node 4',
+    children: [{ id: '8', value: 8, label: 'Test Node 8' }],
+  },
 ];
 
 let expandable: TreeExpandable;
@@ -48,9 +53,19 @@ beforeEach(() => {
 
 const renderDefaultTree = (
   additionalProps?: Partial<TreeProps<any>>,
-): RenderResult & { expandable: TreeExpandable; focusable: TreeFocusable; onKeyDown: TreeOnKeyDown<any> } => {
+): RenderResult & {
+  expandable: TreeExpandable;
+  focusable: TreeFocusable;
+  onKeyDown: TreeOnKeyDown<any>;
+} => {
   const rendered = render(
-    <Tree nodes={nodes} expandable={expandable} focusable={focusable} onKeyDown={onKeyDown} {...additionalProps} />,
+    <Tree
+      expandable={expandable}
+      focusable={focusable}
+      nodes={nodes}
+      onKeyDown={onKeyDown}
+      {...additionalProps}
+    />,
   );
 
   return {
@@ -72,7 +87,7 @@ test('does not forward styles', () => {
   // @ts-ignore
   const { container } = renderDefaultTree({ className: 'test', style: { background: 'red' } });
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
@@ -101,7 +116,10 @@ test('calles onKeyDown event', () => {
 });
 
 test('renders with no icons', () => {
-  const { container } = renderDefaultTree({ nodes: [{ id: '0', label: 'Test Node 0' }], iconless: true });
+  const { container } = renderDefaultTree({
+    nodes: [{ id: '0', label: 'Test Node 0' }],
+    iconless: true,
+  });
 
   expect(container.querySelector('svg')).not.toBeInTheDocument();
 });
@@ -164,7 +182,9 @@ test('trigger onSelect', () => {
 });
 
 test('renders expanded nodes', () => {
-  const { getByText } = renderDefaultTree({ expandable: { expandedNodes: ['0', '5'], onExpand: jest.fn() } });
+  const { getByText } = renderDefaultTree({
+    expandable: { expandedNodes: ['0', '5'], onExpand: jest.fn() },
+  });
 
   expect(getByText('Test Node 5')).toBeVisible();
   expect(getByText('Test Node 6')).not.toBeVisible();
@@ -190,7 +210,10 @@ test("disabled nodes don't trigger onSelect", () => {
 
 test('triggers onNodeClick', () => {
   const onNodeClick = jest.fn();
-  const { getByText } = renderDefaultTree({ nodes: [{ id: '0', label: 'Test Node 0' }], onNodeClick });
+  const { getByText } = renderDefaultTree({
+    nodes: [{ id: '0', label: 'Test Node 0' }],
+    onNodeClick,
+  });
 
   fireEvent.click(getByText('Test Node 0'));
 

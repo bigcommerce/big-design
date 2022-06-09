@@ -46,9 +46,11 @@ export const CodeSnippet: React.FC<EditorProps> = (props) => {
 
   return (
     <Box border="box" marginBottom="xxLarge">
-      {showControls && <SnippetControls copyToClipboard={() => clipboardCopy(code)} helperText="Code example" />}
+      {showControls && (
+        <SnippetControls copyToClipboard={() => clipboardCopy(code)} helperText="Code example" />
+      )}
 
-      <Editor code={code} theme={editorTheme} language={language} disabled />
+      <Editor code={code} disabled language={language} theme={editorTheme} />
     </Box>
   );
 };

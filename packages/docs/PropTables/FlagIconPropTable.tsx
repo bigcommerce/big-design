@@ -19,12 +19,13 @@ const flagIconProps: Prop[] = [
     ],
     description: (
       <>
-        Determines the size of the icon. Accepts a <NextLink href="/spacing">Spacing</NextLink> value or a number of px.
+        Determines the size of the icon. Accepts a <NextLink href="/spacing">Spacing</NextLink>{' '}
+        value or a number of px.
       </>
     ),
   },
 ];
 
 export const FlagIconPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="FlagIcon" propList={flagIconProps} {...props} />
+  <PropTable propList={flagIconProps} title="FlagIcon" {...props} />
 );

@@ -43,7 +43,7 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
   ${({ width }) =>
     width !== undefined &&
     css`
-      width: ${typeof width === 'string' ? width : width + 'px'};
+      width: ${typeof width === 'string' ? width : `${width}px`};
     `};
 `;
 

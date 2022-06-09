@@ -86,7 +86,9 @@ test('paddingHorizontal', () => {
 });
 
 test('simple paddings combination', () => {
-  const { container } = render(<TestComponent paddingTop="medium" paddingBottom="none" paddingRight="small" />);
+  const { container } = render(
+    <TestComponent paddingBottom="none" paddingRight="small" paddingTop="medium" />,
+  );
 
   expect(container.firstChild).toHaveStyle('padding-top: 1rem');
   expect(container.firstChild).toHaveStyle('padding-bottom: 0px');
@@ -94,19 +96,25 @@ test('simple paddings combination', () => {
 });
 
 test('responsive padding', () => {
-  const { container } = render(<TestComponent padding={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />);
+  const { container } = render(
+    <TestComponent padding={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
 test('responsive paddingTop', () => {
-  const { container } = render(<TestComponent paddingTop={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />);
+  const { container } = render(
+    <TestComponent paddingTop={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
 test('responsive paddingRight', () => {
-  const { container } = render(<TestComponent paddingRight={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />);
+  const { container } = render(
+    <TestComponent paddingRight={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
 });
@@ -120,7 +128,9 @@ test('responsive paddingBottom', () => {
 });
 
 test('responsive paddingLeft', () => {
-  const { container } = render(<TestComponent paddingLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />);
+  const { container } = render(
+    <TestComponent paddingLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
 });
@@ -144,9 +154,9 @@ test('responsive paddingHorizontal', () => {
 test('responsive and non responsive combination', () => {
   const { container } = render(
     <TestComponent
-      paddingTop="none"
-      paddingLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
       paddingBottom="medium"
+      paddingLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
+      paddingTop="none"
     />,
   );
 

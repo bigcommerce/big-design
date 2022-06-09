@@ -44,5 +44,5 @@ const paddingProps: Prop[] = [
 ];
 
 export const PaddingPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Padding" propList={paddingProps} {...props} />
+  <PropTable propList={paddingProps} title="Padding" {...props} />
 );

@@ -4,22 +4,29 @@ import { css, FlattenSimpleInterpolation } from 'styled-components';
 import { FlexedItemProps, FlexedOverload, FlexedProps } from './types';
 
 export const withFlexedContainer = () => css<FlexedProps>`
-  ${({ alignContent, theme }) => alignContent && getFlexedStyles(alignContent, theme, 'align-content')};
+  ${({ alignContent, theme }) =>
+    alignContent && getFlexedStyles(alignContent, theme, 'align-content')};
   ${({ alignItems, theme }) => alignItems && getFlexedStyles(alignItems, theme, 'align-items')};
-  ${({ flexDirection, theme }) => flexDirection && getFlexedStyles(flexDirection, theme, 'flex-direction')};
+  ${({ flexDirection, theme }) =>
+    flexDirection && getFlexedStyles(flexDirection, theme, 'flex-direction')};
   ${({ flexGap, theme }) => flexGap && getFlexedStyles(flexGap, theme, 'gap')};
-  ${({ flexColumnGap, theme }) => flexColumnGap && getFlexedStyles(flexColumnGap, theme, 'column-gap')};
+  ${({ flexColumnGap, theme }) =>
+    flexColumnGap && getFlexedStyles(flexColumnGap, theme, 'column-gap')};
   ${({ flexRowGap, theme }) => flexRowGap && getFlexedStyles(flexRowGap, theme, 'row-gap')};
   ${({ flexWrap, theme }) => flexWrap && getFlexedStyles(flexWrap, theme, 'flex-wrap')};
-  ${({ justifyContent, theme }) => justifyContent && getFlexedStyles(justifyContent, theme, 'justify-content')};
+  ${({ justifyContent, theme }) =>
+    justifyContent && getFlexedStyles(justifyContent, theme, 'justify-content')};
 `;
 
 export const withFlexedItems = () => css<FlexedItemProps>`
   ${({ alignSelf, theme }) => alignSelf && getFlexedStyles(alignSelf, theme, 'align-self')};
   ${({ flexBasis, theme }) => flexBasis && getFlexedStyles(flexBasis, theme, 'flex-basis')};
-  ${({ flexGrow, theme }) => typeof flexGrow !== 'undefined' && getFlexedStyles(flexGrow, theme, 'flex-grow')};
-  ${({ flexOrder, theme }) => typeof flexOrder !== 'undefined' && getFlexedStyles(flexOrder, theme, 'order')};
-  ${({ flexShrink, theme }) => typeof flexShrink !== 'undefined' && getFlexedStyles(flexShrink, theme, 'flex-shrink')};
+  ${({ flexGrow, theme }) =>
+    typeof flexGrow !== 'undefined' && getFlexedStyles(flexGrow, theme, 'flex-grow')};
+  ${({ flexOrder, theme }) =>
+    typeof flexOrder !== 'undefined' && getFlexedStyles(flexOrder, theme, 'order')};
+  ${({ flexShrink, theme }) =>
+    typeof flexShrink !== 'undefined' && getFlexedStyles(flexShrink, theme, 'flex-shrink')};
 `;
 
 const getFlexedStyles: FlexedOverload = (
@@ -38,7 +45,10 @@ const getFlexedStyles: FlexedOverload = (
   return [];
 };
 
-const getSimpleFlex = (flexedProp: string | number, cssKey: string): FlattenSimpleInterpolation => css`
+const getSimpleFlex = (
+  flexedProp: string | number,
+  cssKey: string,
+): FlattenSimpleInterpolation => css`
   ${cssKey}: ${flexedProp}
 `;
 

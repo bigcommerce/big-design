@@ -19,7 +19,7 @@ test('render open modal', () => {
 test('render open modal without backdrop', () => {
   const text = 'This is a modal';
   const { queryByText } = render(
-    <Modal isOpen={true} backdrop={false}>
+    <Modal backdrop={false} isOpen={true}>
       {text}
     </Modal>,
   );
@@ -42,7 +42,9 @@ test('open/hides when props changes', () => {
   const { queryByText, rerender } = render(<Modal isOpen={false}>{text}</Modal>);
 
   expect(queryByText(text)).not.toBeInTheDocument();
+
   rerender(<Modal isOpen={true}>{text}</Modal>);
+
   expect(queryByText(text)).toBeInTheDocument();
 });
 
@@ -68,7 +70,7 @@ test('does not trigger onClose when pressing esc and closeOnEscKey is false', ()
   const onClose = jest.fn();
 
   const { queryByText } = render(
-    <Modal isOpen={true} onClose={onClose} closeOnEscKey={false}>
+    <Modal closeOnEscKey={false} isOpen={true} onClose={onClose}>
       {text}
     </Modal>,
   );
@@ -85,7 +87,7 @@ test('trigger onClose when clicking outside the modal', () => {
   const onClose = jest.fn();
 
   const { queryByRole } = render(
-    <Modal isOpen={true} onClose={onClose} closeOnClickOutside={true}>
+    <Modal closeOnClickOutside={true} isOpen={true} onClose={onClose}>
       {text}
     </Modal>,
   );
@@ -187,6 +189,7 @@ test('do not pull focus to open modal that is rerendered', async () => {
   // Focus on input
   if (input !== null) {
     input.focus();
+
     expect(input).toHaveFocus();
 
     // Rerender as open
@@ -206,40 +209,42 @@ test('do not pull focus to open modal that is rerendered', async () => {
 test('body has scroll locked on modal open', () => {
   const { rerender } = render(<Modal isOpen={false} />);
 
-  expect(document.body.style.overflowY).toEqual('');
+  expect(document.body.style.overflowY).toBe('');
 
   rerender(<Modal isOpen={true} />);
 
-  expect(document.body.style.overflowY).toEqual('hidden');
+  expect(document.body.style.overflowY).toBe('hidden');
 
   rerender(<Modal isOpen={false} />);
 
-  expect(document.body.style.overflowY).toEqual('');
+  expect(document.body.style.overflowY).toBe('');
 });
 
 test('renders header', () => {
-  const { getByText } = render(<Modal isOpen={true} header="Header Title" />);
+  const { getByText } = render(<Modal header="Header Title" isOpen={true} />);
 
   expect(getByText('Header Title')).toBeInTheDocument();
 });
 
 test('header ignores components', () => {
   // @ts-expect-error ignoring since header={Component} is not a valid prop
-  const { container } = render(<Modal isOpen={true} header={<Text>Header Title</Text>} />);
+  const { container } = render(<Modal header={<Text>Header Title</Text>} isOpen={true} />);
 
-  expect(container.querySelector('h2')).toBe(null);
+  expect(container.querySelector('h2')).toBeNull();
 });
 
 test('renders actions', () => {
-  const { getAllByRole } = render(<Modal isOpen={true} actions={[{ text: 'Cancel' }, { text: 'Apply' }]} />);
+  const { getAllByRole } = render(
+    <Modal actions={[{ text: 'Cancel' }, { text: 'Apply' }]} isOpen={true} />,
+  );
 
-  expect(getAllByRole('button').length).toBe(3);
+  expect(getAllByRole('button')).toHaveLength(3);
 });
 
 test('action button triggers onClick', () => {
   const onClick = jest.fn();
 
-  const { getAllByRole } = render(<Modal isOpen={true} actions={[{ text: 'Apply', onClick }]} />);
+  const { getAllByRole } = render(<Modal actions={[{ text: 'Apply', onClick }]} isOpen={true} />);
   const button = getAllByRole('button')[1];
 
   fireEvent.click(button);
@@ -248,14 +253,18 @@ test('action button triggers onClick', () => {
 });
 
 test('renders secondary action button', () => {
-  const { getAllByRole } = render(<Modal isOpen={true} actions={[{ text: 'Apply', variant: 'secondary' }]} />);
+  const { getAllByRole } = render(
+    <Modal actions={[{ text: 'Apply', variant: 'secondary' }]} isOpen={true} />,
+  );
   const button = getAllByRole('button')[1];
 
   expect(button).toMatchSnapshot();
 });
 
 test('renders destructive action button', () => {
-  const { getAllByRole } = render(<Modal isOpen={true} actions={[{ text: 'Apply', actionType: 'destructive' }]} />);
+  const { getAllByRole } = render(
+    <Modal actions={[{ text: 'Apply', actionType: 'destructive' }]} isOpen={true} />,
+  );
   const button = getAllByRole('button')[1];
 
   expect(button).toMatchSnapshot();
@@ -268,12 +277,13 @@ test('unmounts appropriately', () => {
   unmount();
 
   rerender(
-    <Button onClick={onClick} data-testid="button">
+    <Button data-testid="button" onClick={onClick}>
       Test
     </Button>,
   );
 
   const button = getByTestId('button');
+
   button.click();
 
   // Make sure mouse events still work for other components
@@ -283,7 +293,9 @@ test('unmounts appropriately', () => {
 test('body overflowY should reset on unmount', () => {
   const { unmount } = render(<Modal isOpen={true} />);
 
-  expect(document.body.style.overflowY).toEqual('hidden');
+  expect(document.body.style.overflowY).toBe('hidden');
+
   unmount();
-  expect(document.body.style.overflowY).toEqual('');
+
+  expect(document.body.style.overflowY).toBe('');
 });

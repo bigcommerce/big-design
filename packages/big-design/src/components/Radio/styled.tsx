@@ -25,9 +25,11 @@ export const HiddenRadio = styled.input`
 export const StyledRadio = styled.label<StyledRadioProps>`
   ${withTransition(['border-color', 'box-shadow'])}
 
-  background-color: ${({ disabled, theme }) => (disabled ? theme.colors.secondary10 : theme.colors.white)};
+  background-color: ${({ disabled, theme }) =>
+    disabled ? theme.colors.secondary10 : theme.colors.white};
   border: ${({ theme }) => theme.border.box};
-  border-color: ${(props) => (props.checked ? props.theme.colors.primary40 : props.theme.colors.secondary30)};
+  border-color: ${(props) =>
+    props.checked ? props.theme.colors.primary40 : props.theme.colors.secondary30};
   border-radius: ${({ theme }) => theme.borderRadius.circle};
   color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
@@ -57,7 +59,8 @@ export const StyledRadio = styled.label<StyledRadioProps>`
   &:after {
     ${withTransition(['opacity'])}
 
-    background-color: ${({ disabled, theme }) => (disabled ? theme.colors.secondary40 : theme.colors.primary40)};
+    background-color: ${({ disabled, theme }) =>
+      disabled ? theme.colors.secondary40 : theme.colors.primary40};
     border-radius: 50%;
     content: '';
     height: ${({ theme }) => theme.spacing.small};

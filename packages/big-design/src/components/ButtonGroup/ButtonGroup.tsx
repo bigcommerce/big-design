@@ -1,5 +1,13 @@
 import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
-import React, { createRef, HTMLAttributes, memo, useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+  createRef,
+  HTMLAttributes,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 import { useWindowResizeListener } from '../../hooks';
 import { MarginProps } from '../../mixins';
@@ -9,7 +17,8 @@ import { Flex } from '../Flex';
 
 import { StyledButton, StyledFlexItem } from './styled';
 
-export interface ButtonGroupAction extends Omit<ButtonProps, 'children' | 'iconOnly' | 'iconRight' | 'iconLeft'> {
+export interface ButtonGroupAction
+  extends Omit<ButtonProps, 'children' | 'iconOnly' | 'iconRight' | 'iconLeft'> {
   text: string;
   icon?: React.ReactElement;
 }
@@ -65,7 +74,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
       }
 
       if (remainingWidth - actionWidth > dropdownWidth) {
-        remainingWidth = remainingWidth - actionWidth;
+        remainingWidth -= actionWidth;
 
         return { ...stateObj, isVisible: true };
       }
@@ -83,7 +92,12 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
 
   const renderedDropdown = useMemo(
     () => (
-      <StyledFlexItem data-testid="buttongroup-dropdown" isVisible={isMenuVisible} ref={dropdownRef} role="listitem">
+      <StyledFlexItem
+        data-testid="buttongroup-dropdown"
+        isVisible={isMenuVisible}
+        ref={dropdownRef}
+        role="listitem"
+      >
         <Dropdown
           items={actionsState
             .filter(({ isVisible }) => !isVisible)
@@ -99,6 +113,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
               hash: action.text.toLowerCase(),
               icon: action.icon,
             }))}
+          placement="bottom-end"
           toggle={
             <StyledButton
               borderRadius={actionsState.every(({ isVisible }) => !isVisible)}
@@ -106,7 +121,6 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
               variant="secondary"
             />
           }
-          placement="bottom-end"
         />
       </StyledFlexItem>
     ),
@@ -122,7 +136,13 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
           const { text, icon, ...buttonProps } = action;
 
           return (
-            <StyledFlexItem data-testid="buttongroup-item" key={key} isVisible={isVisible} ref={ref} role="listitem">
+            <StyledFlexItem
+              data-testid="buttongroup-item"
+              isVisible={isVisible}
+              key={key}
+              ref={ref}
+              role="listitem"
+            >
               <StyledButton {...buttonProps} variant="secondary">
                 {text}
               </StyledButton>

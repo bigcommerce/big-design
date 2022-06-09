@@ -11,8 +11,8 @@ const PanelPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Panel</Code> allows group content within a page. Content and actions on a page that are not in
-          the header should be contained in a panel.
+          <Code primary>Panel</Code> allows group content within a page. Content and actions on a
+          page that are not in the header should be contained in a panel.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -26,7 +26,6 @@ const PanelPage = () => {
         <CodePreview>
           {/* jsx-to-string:start */}
           <Panel
-            header="Panel header"
             action={{
               variant: 'secondary',
               text: 'Button',
@@ -34,13 +33,16 @@ const PanelPage = () => {
                 // Do some action
               },
             }}
+            header="Panel header"
           >
             <Text>
-              Lorem ipsum dolor amet officia humblebrag selvage, subway tile vexillologist id pickled adaptogen fashion
-              axe. Ennui meh pitchfork banh mi. Keffiyeh PBRB echo park gastropub. Pop-up neutra brunch ullamco affogato
-              shaman vexillologist quinoa post-ironic locavore. Retro selfies proident synth ethical quinoa marfa
-              chartreuse dolor vexillologist gochujang. Tempor poke unicorn, readymade crucifix fugiat culpa. Kinfolk
-              hella asymmetrical, meggings et consectetur lomo farm-to-table exercitation DIY.
+              Lorem ipsum dolor amet officia humblebrag selvage, subway tile vexillologist id
+              pickled adaptogen fashion axe. Ennui meh pitchfork banh mi. Keffiyeh PBRB echo park
+              gastropub. Pop-up neutra brunch ullamco affogato shaman vexillologist quinoa
+              post-ironic locavore. Retro selfies proident synth ethical quinoa marfa chartreuse
+              dolor vexillologist gochujang. Tempor poke unicorn, readymade crucifix fugiat culpa.
+              Kinfolk hella asymmetrical, meggings et consectetur lomo farm-to-table exercitation
+              DIY.
             </Text>
           </Panel>
           {/* jsx-to-string:end */}
@@ -53,18 +55,20 @@ const PanelPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          recommended={[
-            <>
-              <Code primary>Panel</Code> should use headings that set clear expectations about the content inside.
-            </>,
-            <>
-              <Code primary>Panel</Code> should prioritize information so the most important content comes first.
-            </>,
-          ]}
           discouraged={[
             <>
-              <Code primary>Panel</Code> should avoid too many call-to-action buttons or links and have only one primary
-              call to action.
+              <Code primary>Panel</Code> should avoid too many call-to-action buttons or links and
+              have only one primary call to action.
+            </>,
+          ]}
+          recommended={[
+            <>
+              <Code primary>Panel</Code> should use headings that set clear expectations about the
+              content inside.
+            </>,
+            <>
+              <Code primary>Panel</Code> should prioritize information so the most important content
+              comes first.
             </>,
           ]}
         />

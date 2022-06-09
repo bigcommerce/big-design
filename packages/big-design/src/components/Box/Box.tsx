@@ -5,7 +5,11 @@ import { DisplayProps, MarginProps, PaddingProps } from '../../mixins';
 
 import { StyledBox } from './styled';
 
-export interface BoxProps extends HTMLAttributes<HTMLDivElement>, DisplayProps, MarginProps, PaddingProps {
+export interface BoxProps
+  extends HTMLAttributes<HTMLDivElement>,
+    DisplayProps,
+    MarginProps,
+    PaddingProps {
   as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
   backgroundColor?: keyof Colors;
   shadow?: keyof Shadow;
@@ -23,8 +27,12 @@ interface PrivateProps {
   forwardedRef: React.Ref<HTMLDivElement>;
 }
 
-const RawBox: React.FC<BoxProps & PrivateProps> = (props) => <StyledBox ref={props.forwardedRef} {...props} />;
+const RawBox: React.FC<BoxProps & PrivateProps> = (props) => (
+  <StyledBox ref={props.forwardedRef} {...props} />
+);
 
-export const Box = memo(forwardRef<HTMLDivElement, BoxProps>((props, ref) => <RawBox {...props} forwardedRef={ref} />));
+export const Box = memo(
+  forwardRef<HTMLDivElement, BoxProps>((props, ref) => <RawBox {...props} forwardedRef={ref} />),
+);
 
 Box.displayName = 'Box';

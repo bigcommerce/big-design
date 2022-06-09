@@ -9,10 +9,15 @@ interface RowStatusProps {
 }
 
 export const RowStatus: React.FC<RowStatusProps> = memo(({ rowIndex }) => {
-  const isSelected = useStore(useMemo(() => (state) => state.selectedRows.includes(rowIndex), [rowIndex]));
+  const isSelected = useStore(
+    useMemo(() => (state) => state.selectedRows.includes(rowIndex), [rowIndex]),
+  );
 
   const isInvalid = useStore(
-    useMemo(() => (state) => state.invalidCells.some((invalidCell) => invalidCell.rowIndex === rowIndex), [rowIndex]),
+    useMemo(
+      () => (state) => state.invalidCells.some((invalidCell) => invalidCell.rowIndex === rowIndex),
+      [rowIndex],
+    ),
   );
 
   return <Status isInvalid={isInvalid} isSelected={isSelected} />;

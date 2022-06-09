@@ -27,12 +27,13 @@ const iconProps: Prop[] = [
     ],
     description: (
       <>
-        Determines the size of the icon. Accepts a <NextLink href="/spacing">Spacing</NextLink> value or a number of px.
+        Determines the size of the icon. Accepts a <NextLink href="/spacing">Spacing</NextLink>{' '}
+        value or a number of px.
       </>
     ),
   },
 ];
 
 export const IconPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Icon" propList={iconProps} {...props} />
+  <PropTable propList={iconProps} title="Icon" {...props} />
 );

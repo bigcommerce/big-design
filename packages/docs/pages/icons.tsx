@@ -1,4 +1,14 @@
-import { Flex, Form, FormGroup, H1, InlineMessage, Link, Panel, Select, Text } from '@bigcommerce/big-design';
+import {
+  Flex,
+  Form,
+  FormGroup,
+  H1,
+  InlineMessage,
+  Link,
+  Panel,
+  Select,
+  Text,
+} from '@bigcommerce/big-design';
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import {
   ARFlagIcon,
@@ -20,14 +30,19 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Code, CodePreview, CodeSnippet, ContentRoutingTabs, List, NextLink } from '../components';
 import { FlagIconPropTable, IconPropTable } from '../PropTables';
 
-type BigDesignIcons = Omit<typeof import('@bigcommerce/big-design-icons'), 'createStyledIcon' | 'useUniqueId'>;
+type BigDesignIcons = Omit<
+  typeof import('@bigcommerce/big-design-icons'),
+  'createStyledIcon' | 'useUniqueId'
+>;
 
 const IconsPage = () => {
   const [icons, setIcons] = useState<BigDesignIcons | Record<string, unknown>>({});
 
   useEffect(() => {
     const fetchIcons = async () => {
-      const { createStyledIcon, useUniqueId, ...iconsModule } = await import('@bigcommerce/big-design-icons');
+      const { createStyledIcon, useUniqueId, ...iconsModule } = await import(
+        '@bigcommerce/big-design-icons'
+      );
 
       setIcons(iconsModule);
     };
@@ -41,13 +56,14 @@ const IconsPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          BigDesign offers a variety of <NextLink href={{ hash: 'available-icons' }}>icon</NextLink> components that can
-          be used in a project. We also provide{' '}
-          <NextLink href={{ query: 'implementation=country-flags' }}>Country flags</NextLink> icons that can be
-          imported.
+          BigDesign offers a variety of <NextLink href={{ hash: 'available-icons' }}>icon</NextLink>{' '}
+          components that can be used in a project. We also provide{' '}
+          <NextLink href={{ query: 'implementation=country-flags' }}>Country flags</NextLink> icons
+          that can be imported.
         </Text>
         <Text>
-          To use the icons install <Code primary>@bigcommerce/big-design-icons</Code> package from npm.
+          To use the icons install <Code primary>@bigcommerce/big-design-icons</Code> package from
+          npm.
         </Text>
 
         <Text bold>When to use:</Text>
@@ -140,7 +156,12 @@ const IconsPage = () => {
                                 { value: 'fr', content: 'France', icon: <FRFlagIcon /> },
                                 { value: 'gr', content: 'Germany', icon: <DEFlagIcon /> },
                                 { value: 'ar', content: 'Argentina', icon: <ARFlagIcon /> },
-                                { value: 'ru', content: 'Russia', disabled: true, icon: <RUFlagIcon /> },
+                                {
+                                  value: 'ru',
+                                  content: 'Russia',
+                                  disabled: true,
+                                  icon: <RUFlagIcon />,
+                                },
                                 { value: 'ch', content: 'Chile', icon: <CLFlagIcon /> },
                                 { value: 'jp', content: 'Japan', icon: <JPFlagIcon /> },
                                 { value: 'cn', content: 'China', icon: <CNFlagIcon /> },
@@ -173,8 +194,9 @@ const IconsPage = () => {
               title: 'Icon',
               render: () => (
                 <IconPropTable>
-                  <CodeSnippet showControls={false} language="bash">
-                    npm install @bigcommerce/big-design-icons // or yarn add @bigcommerce/big-design-icons
+                  <CodeSnippet language="bash" showControls={false}>
+                    npm install @bigcommerce/big-design-icons // or yarn add
+                    @bigcommerce/big-design-icons
                   </CodeSnippet>
                 </IconPropTable>
               ),
@@ -185,13 +207,13 @@ const IconsPage = () => {
               render: () => (
                 <FlagIconPropTable>
                   <InlineMessage
-                    type="warning"
+                    marginBottom="medium"
                     messages={[
                       {
                         text: 'Flags are a submodule of the Icons package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
                       },
                     ]}
-                    marginBottom="medium"
+                    type="warning"
                   />
                 </FlagIconPropTable>
               ),
@@ -207,13 +229,13 @@ const IconsPage = () => {
 
             return (
               <Flex
-                key={iconName}
-                style={{ width: '300px', gap: '1rem' }}
-                flexDirection="column"
-                borderRadius="normal"
-                justifyContent="center"
                 alignItems="center"
+                borderRadius="normal"
+                flexDirection="column"
+                justifyContent="center"
+                key={iconName}
                 padding="large"
+                style={{ width: '300px', gap: '1rem' }}
               >
                 <Icon size="xxxLarge" />
                 <Code>{`<${iconName} />`}</Code>

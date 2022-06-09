@@ -28,9 +28,12 @@ export const Dropdown = memo(
     const flattenItems = useCallback((items: DropdownProps['items']) => {
       const isGroups = (
         items: Array<DropdownItemGroup | DropdownItem | DropdownLinkItem>,
-      ): items is Array<DropdownItemGroup> => items.every((items) => 'items' in items && !('content' in items));
+      ): items is DropdownItemGroup[] =>
+        items.every((items) => 'items' in items && !('content' in items));
 
-      return isGroups(items) ? items.map((group) => group.items).reduce((acum, curr) => acum.concat(curr), []) : items;
+      return isGroups(items)
+        ? items.map((group) => group.items).reduce((acum, curr) => acum.concat(curr), [])
+        : items;
     }, []);
 
     // We only need the items to pass down to Downshift, not groups
@@ -39,7 +42,11 @@ export const Dropdown = memo(
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
         // Links don't trigger an onItemClick
-        if (selectedItem && selectedItem.type !== 'link' && typeof selectedItem.onItemClick === 'function') {
+        if (
+          selectedItem &&
+          selectedItem.type !== 'link' &&
+          typeof selectedItem.onItemClick === 'function'
+        ) {
           // Call onItemClick with selected item
           selectedItem.onItemClick(selectedItem);
         }
@@ -47,17 +54,18 @@ export const Dropdown = memo(
       [],
     );
 
-    const { getItemProps, getMenuProps, getToggleButtonProps, highlightedIndex, isOpen } = useSelect({
-      circularNavigation: true,
-      defaultHighlightedIndex: 0,
-      id: dropdownUniqueId,
-      itemToString: (item) => (item ? item.content : ''),
-      items: flattenedItems,
-      menuId: id,
-      onSelectedItemChange: handleOnSelectedItemChange,
-      selectedItem: null, // We never set a selected item
-      toggleButtonId: toggle.props.id,
-    });
+    const { getItemProps, getMenuProps, getToggleButtonProps, highlightedIndex, isOpen } =
+      useSelect({
+        circularNavigation: true,
+        defaultHighlightedIndex: 0,
+        id: dropdownUniqueId,
+        itemToString: (item) => (item ? item.content : ''),
+        items: flattenedItems,
+        menuId: id,
+        onSelectedItemChange: handleOnSelectedItemChange,
+        selectedItem: null, // We never set a selected item
+        toggleButtonId: toggle.props.id,
+      });
 
     // Popper
     const referenceRef = useRef(null);

@@ -34,7 +34,8 @@ const SearchPage = () => {
           {function Example() {
             const [items, setItems] = useState(data);
             const [searchValue, setSearchValue] = useState('');
-            const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value);
+            const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+              setSearchValue(event.target.value);
 
             const onSubmit = () => {
               setItems((prevItems) => {
@@ -49,7 +50,7 @@ const SearchPage = () => {
             return (
               <>
                 <Box marginBottom="medium">
-                  <Search value={searchValue} onChange={onChange} onSubmit={onSubmit} />
+                  <Search onChange={onChange} onSubmit={onSubmit} value={searchValue} />
                 </Box>
                 <Table
                   columns={[
@@ -72,11 +73,13 @@ const SearchPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
+          discouraged={[
+            'Avoid using a search bar when there is small, easily navigable amount of data on a page.',
+          ]}
           recommended={[
             'Make the search bar easily noticable.',
             'Always use a search icon within the input box to indicate search functionality.',
           ]}
-          discouraged={['Avoid using a search bar when there is small, easily navigable amount of data on a page.']}
         />
       </Panel>
     </>

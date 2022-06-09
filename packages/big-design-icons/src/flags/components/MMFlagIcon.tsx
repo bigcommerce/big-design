@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'MM flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'MM flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -35,7 +40,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
       <path d="M0-.1h640V160H0z" fill="#fecb00" />
       <path d="M0 320h640v160H0z" fill="#ea2839" />
       <path d="M0 160h640v160H0z" fill="#34b233" />
-      <use height={12} transform="matrix(40 0 0 40 -40 0)" width={18} x={9} xlinkHref="#MMFlagIcon__b" y={6.4} />
+      <use
+        height={12}
+        transform="matrix(40 0 0 40 -40 0)"
+        width={18}
+        x={9}
+        xlinkHref="#MMFlagIcon__b"
+        y={6.4}
+      />
     </svg>
   );
 };

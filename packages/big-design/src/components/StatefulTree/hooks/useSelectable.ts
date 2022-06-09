@@ -16,9 +16,16 @@ interface GetDefaultSelectedValuesProps<T> extends Pick<UseSelectableProps<T>, '
   selectedNodes: TreeNodeId[];
 }
 
-const getDefaultSelectedValues = <T>({ nodes, selectedNodes, type }: GetDefaultSelectedValuesProps<T>) => {
+const getDefaultSelectedValues = <T>({
+  nodes,
+  selectedNodes,
+  type,
+}: GetDefaultSelectedValuesProps<T>) => {
   if (type === 'radio') {
-    const selectedNode = depthFirstSearch(nodes, ({ id, value }) => selectedNodes.includes(id) && value !== undefined);
+    const selectedNode = depthFirstSearch(
+      nodes,
+      ({ id, value }) => selectedNodes.includes(id) && value !== undefined,
+    );
 
     if (selectedNode && selectedNode.value !== undefined) {
       return [selectedNode.value];
@@ -27,10 +34,12 @@ const getDefaultSelectedValues = <T>({ nodes, selectedNodes, type }: GetDefaultS
 
   if (type === 'multi') {
     return (
-      depthFirstSearch(nodes, ({ id, value }) => selectedNodes.includes(id) && value !== undefined, false)?.reduce<T[]>(
-        (acc, node) => (node.value !== undefined ? [...acc, node.value] : acc),
-        [],
-      ) ?? []
+      depthFirstSearch(
+        nodes,
+        ({ id, value }) => selectedNodes.includes(id) && value !== undefined,
+        false,
+      )?.reduce<T[]>((acc, node) => (node.value !== undefined ? [...acc, node.value] : acc), []) ??
+      []
     );
   }
 
@@ -61,15 +70,13 @@ export const useSelectable = <T>({
       if (selectedNodes.length >= 1) {
         setSelectedNodes((prevSelected) => prevSelected.slice(0, 1));
         setSelectedValues((prevValues) => prevValues.slice(0, 1));
-      } else {
-        if (nodes.length) {
-          const firstSelectedNode = depthFirstSearch(nodes, (node) => node.value !== undefined, true);
+      } else if (nodes.length) {
+        const firstSelectedNode = depthFirstSearch(nodes, (node) => node.value !== undefined, true);
 
-          // Need to check for undefined value since TS can't determine from DFS check.
-          if (firstSelectedNode && firstSelectedNode.value !== undefined) {
-            setSelectedNodes([firstSelectedNode.id]);
-            setSelectedValues([firstSelectedNode.value]);
-          }
+        // Need to check for undefined value since TS can't determine from DFS check.
+        if (firstSelectedNode && firstSelectedNode.value !== undefined) {
+          setSelectedNodes([firstSelectedNode.id]);
+          setSelectedValues([firstSelectedNode.value]);
         }
       }
     }

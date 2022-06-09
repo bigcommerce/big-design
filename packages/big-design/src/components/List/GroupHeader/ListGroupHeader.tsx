@@ -4,7 +4,7 @@ import { StyledGroupHeader } from './styled';
 
 export const ListGroupHeader: React.FC<React.LiHTMLAttributes<HTMLLIElement>> = memo(
   ({ className, style, value, ...rest }) => (
-    <StyledGroupHeader {...rest} tabIndex={-1} onMouseDown={preventFocus} aria-hidden={true} />
+    <StyledGroupHeader {...rest} aria-hidden={true} onMouseDown={preventFocus} tabIndex={-1} />
   ),
 );
 

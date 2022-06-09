@@ -2,6 +2,7 @@ import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/do
 import React from 'react';
 import { resetServerContext } from 'react-beautiful-dnd';
 import { ServerStyleSheet } from 'styled-components';
+
 export default class AppDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();

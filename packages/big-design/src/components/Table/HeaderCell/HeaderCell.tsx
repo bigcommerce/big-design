@@ -1,4 +1,8 @@
-import { ArrowDownwardIcon, ArrowUpwardIcon, BaselineHelpIcon } from '@bigcommerce/big-design-icons';
+import {
+  ArrowDownwardIcon,
+  ArrowUpwardIcon,
+  BaselineHelpIcon,
+} from '@bigcommerce/big-design-icons';
 import React, { memo, RefObject, TableHTMLAttributes } from 'react';
 
 import { useComponentSize, useUniqueId } from '../../../hooks';
@@ -10,7 +14,9 @@ import { TableColumn, TableItem } from '../types';
 
 import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderCheckbox } from './styled';
 
-export interface HeaderCellProps<T> extends TableHTMLAttributes<HTMLTableCellElement>, TableColumnDisplayProps {
+export interface HeaderCellProps<T>
+  extends TableHTMLAttributes<HTMLTableCellElement>,
+    TableColumnDisplayProps {
   actionsRef: RefObject<HTMLDivElement>;
   column: TableColumn<T>;
   id: string;
@@ -54,9 +60,9 @@ const InternalHeaderCell = <T extends TableItem>({
     }
 
     return sortDirection === 'ASC' ? (
-      <ArrowUpwardIcon size="medium" data-testid="asc-icon" title="Ascending order" />
+      <ArrowUpwardIcon data-testid="asc-icon" size="medium" title="Ascending order" />
     ) : (
-      <ArrowDownwardIcon size="medium" data-testid="desc-icon" title="Descending order" />
+      <ArrowDownwardIcon data-testid="desc-icon" size="medium" title="Descending order" />
     );
   };
 
@@ -65,6 +71,7 @@ const InternalHeaderCell = <T extends TableItem>({
       return (
         <Tooltip
           id={tooltipId}
+          placement="right"
           trigger={
             <Box as="span" marginLeft="xxSmall">
               <BaselineHelpIcon
@@ -74,7 +81,6 @@ const InternalHeaderCell = <T extends TableItem>({
               />
             </Box>
           }
-          placement="right"
         >
           {tooltip}
         </Tooltip>
@@ -97,12 +103,12 @@ const InternalHeaderCell = <T extends TableItem>({
       display={display}
       id={id}
       isSortable={isSortable}
-      stickyHeader={stickyHeader}
       onClick={handleClick}
-      width={width}
+      stickyHeader={stickyHeader}
       stickyHeight={actionsSize.height}
+      width={width}
     >
-      <StyledFlex alignItems="center" flexDirection="row" hide={hide} align={align}>
+      <StyledFlex align={align} alignItems="center" flexDirection="row" hide={hide}>
         {children}
         {!hide && renderSortIcon()}
         {renderTooltip()}
@@ -112,16 +118,28 @@ const InternalHeaderCell = <T extends TableItem>({
   );
 };
 
-export const HeaderCheckboxCell: React.FC<HeaderCheckboxCellProps> = memo(({ stickyHeader, actionsRef }) => {
-  const actionsSize = useComponentSize(actionsRef);
+export const HeaderCheckboxCell: React.FC<HeaderCheckboxCellProps> = memo(
+  ({ stickyHeader, actionsRef }) => {
+    const actionsSize = useComponentSize(actionsRef);
 
-  return <StyledTableHeaderCheckbox stickyHeader={stickyHeader} stickyHeight={actionsSize.height} />;
-});
+    return (
+      <StyledTableHeaderCheckbox stickyHeader={stickyHeader} stickyHeight={actionsSize.height} />
+    );
+  },
+);
 
-export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(({ actionsRef, headerCellIconRef, width }) => {
-  const actionsSize = useComponentSize(actionsRef);
+export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(
+  ({ actionsRef, headerCellIconRef, width }) => {
+    const actionsSize = useComponentSize(actionsRef);
 
-  return <StyledTableHeaderCell stickyHeight={actionsSize.height} ref={headerCellIconRef} width={width} />;
-});
+    return (
+      <StyledTableHeaderCell
+        ref={headerCellIconRef}
+        stickyHeight={actionsSize.height}
+        width={width}
+      />
+    );
+  },
+);
 
 export const HeaderCell = typedMemo(InternalHeaderCell);

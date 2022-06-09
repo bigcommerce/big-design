@@ -20,7 +20,13 @@ export interface MethodListProps {
   returnDescription: React.ReactNode;
 }
 
-export const MethodList: React.FC<MethodListProps> = ({ name, intro, usage, parameterList, returnDescription }) => {
+export const MethodList: React.FC<MethodListProps> = ({
+  name,
+  intro,
+  usage,
+  parameterList,
+  returnDescription,
+}) => {
   return (
     <>
       <H3>

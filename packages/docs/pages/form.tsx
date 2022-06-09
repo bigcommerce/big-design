@@ -42,14 +42,15 @@ const FormPage = () => {
         <Text>
           The provided <Code primary>Form</Code> component is a wrapper around an{' '}
           <Link
-            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"
             external
-            target="_blank"
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"
             rel="nofollow noreferrer"
+            target="_blank"
           >
             HTML {'<form />'}
           </Link>{' '}
-          element. It provides form width styling and accessibility features when using form controls within.
+          element. It provides form width styling and accessibility features when using form
+          controls within.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -67,23 +68,24 @@ const FormPage = () => {
               render: () => (
                 <Fragment key="basic">
                   <Text>
-                    Form fields are essential to any website or web application. Unique <Code>id</Code>'s' will be
-                    auto-generated for the form fields and labels <Code>for</Code> attribute, unless manually specified.
+                    Form fields are essential to any website or web application. Unique{' '}
+                    <Code>id</Code>'s' will be auto-generated for the form fields and labels{' '}
+                    <Code>for</Code> attribute, unless manually specified.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <Form>
                       <FormGroup>
                         <Input
-                          label="Email"
-                          type="email"
                           description="Please provide a valid email address."
+                          label="Email"
                           placeholder="Email address"
                           required
+                          type="email"
                         />
                       </FormGroup>
                       <FormGroup>
-                        <Input label="Password" type="password" placeholder="Password" required />
+                        <Input label="Password" placeholder="Password" required type="password" />
                       </FormGroup>
                       <Box marginTop="xxLarge">
                         <Button type="submit">Sign in</Button>
@@ -101,9 +103,10 @@ const FormPage = () => {
                 // React doesn't see this fragment as unique, so we use a key to force uniqueness.
                 <Fragment key="input-types">
                   <Text>
-                    BigDesign comes with many input types: <Code>Input</Code>, <Code>Checkbox</Code>, <Code>Radio</Code>
-                    , <Code>Select</Code>, <Code>MultiSelect</Code>, <Code>Textarea</Code>, <Code>Counter</Code>,{' '}
-                    <Code>Switch</Code>, <Code>Datepicker</Code>, and <Code>Timepicker</Code>.
+                    BigDesign comes with many input types: <Code>Input</Code>, <Code>Checkbox</Code>
+                    , <Code>Radio</Code>, <Code>Select</Code>, <Code>MultiSelect</Code>,{' '}
+                    <Code>Textarea</Code>, <Code>Counter</Code>, <Code>Switch</Code>,{' '}
+                    <Code>Datepicker</Code>, and <Code>Timepicker</Code>.
                   </Text>
 
                   <CodePreview>
@@ -113,10 +116,10 @@ const FormPage = () => {
                         <Input label="Example Input" placeholder="Example" />
                       </FormGroup>
                       <FormGroup>
-                        <Checkbox checked={true} onChange={() => null} label="Example Checkbox" />
+                        <Checkbox checked={true} label="Example Checkbox" onChange={() => null} />
                       </FormGroup>
                       <FormGroup>
-                        <Radio checked={true} onChange={() => null} label="Example Radio" />
+                        <Radio checked={true} label="Example Radio" onChange={() => null} />
                       </FormGroup>
                       <FormGroup>
                         <Select
@@ -148,7 +151,7 @@ const FormPage = () => {
                         <Textarea label="Example Textarea" placeholder="Example" />
                       </FormGroup>
                       <FormGroup>
-                        <Counter label="Example Counter" value={1} onCountChange={() => null} />
+                        <Counter label="Example Counter" onCountChange={() => null} value={1} />
                       </FormGroup>
                       <FormGroup>
                         <div>
@@ -158,14 +161,18 @@ const FormPage = () => {
                       </FormGroup>
                       <FormGroup>
                         <Datepicker
-                          label="Example Datepicker"
-                          value={new Date().toISOString()}
-                          onDateChange={() => null}
                           dateFormat="MMMM d, yyyy"
+                          label="Example Datepicker"
+                          onDateChange={() => null}
+                          value={new Date().toISOString()}
                         />
                       </FormGroup>
                       <FormGroup>
-                        <Timepicker label="Example Timepicker" value={'13:00'} onTimeChange={() => null} />
+                        <Timepicker
+                          label="Example Timepicker"
+                          onTimeChange={() => null}
+                          value={'13:00'}
+                        />
                       </FormGroup>
                     </Form>
                     {/* jsx-to-string:end */}
@@ -180,8 +187,8 @@ const FormPage = () => {
                 <Fragment key="layout">
                   <Text>
                     You can up to 3 <Code>Input</Code> components in row to add more dimension to a{' '}
-                    <Code>FormGroup</Code>. <Code>Radio</Code> and <Code>Checkbox</Code> components will never display
-                    inline inside a <Code>FormGroup</Code>.
+                    <Code>FormGroup</Code>. <Code>Radio</Code> and <Code>Checkbox</Code> components
+                    will never display inline inside a <Code>FormGroup</Code>.
                   </Text>
 
                   <CodePreview>
@@ -201,7 +208,7 @@ const FormPage = () => {
                       </FormGroup>
                       <Fieldset legend="Shipping Method">
                         <FormGroup>
-                          <Radio label="Free – Three Day Shipping" checked onChange={() => null} />
+                          <Radio checked label="Free – Three Day Shipping" onChange={() => null} />
                           <Radio label="$4.99 – Two Day Shipping" />
                           <Radio label="$9.99 – One Day Shipping" />
                         </FormGroup>
@@ -218,9 +225,10 @@ const FormPage = () => {
               render: () => (
                 <Fragment key="validation">
                   <Text>
-                    All form controls are tied to <Code primary>onChange</Code> or equivalent event handlers. Validation
-                    messages can be passed through the <Code>error</Code> prop. All input errors in an{' '}
-                    <Code>FormGroup</Code> will appear at the bottom of the group component component.
+                    All form controls are tied to <Code primary>onChange</Code> or equivalent event
+                    handlers. Validation messages can be passed through the <Code>error</Code> prop.
+                    All input errors in an <Code>FormGroup</Code> will appear at the bottom of the
+                    group component component.
                   </Text>
 
                   <CodePreview>
@@ -253,21 +261,26 @@ const FormPage = () => {
                         <Form onSubmit={handleSubmit}>
                           <FormGroup>
                             <Input
-                              label="Example"
                               description="Remove characters to preview validation."
-                              value={value}
                               error={error}
+                              label="Example"
                               onChange={handleChange}
                               pattern="^.{1,3}$"
                               required
+                              value={value}
                             />
                           </FormGroup>
                           <FormGroup>
-                            <Input label="City" error="You must enter a valid City." placeholder="Austin" required />
+                            <Input
+                              error="You must enter a valid City."
+                              label="City"
+                              placeholder="Austin"
+                              required
+                            />
                             <Input label="State" placeholder="Texas" required />
                             <Input
-                              label="Postal Code"
                               error="You must enter a valid Postal Code."
+                              label="Postal Code"
                               placeholder="78726"
                               required
                             />
@@ -324,18 +337,18 @@ const FormPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
+          discouraged={['Use forms for immediate actions (i.e. toggling a setting)']}
           recommended={[
             <>
-              Use max-width form for most scenarios. <Code primary>fullWidth</Code> prop should be used non-traditional
-              forms.
+              Use max-width form for most scenarios. <Code primary>fullWidth</Code> prop should be
+              used non-traditional forms.
             </>,
             <>
-              Use <Code>type="submit"</Code> on the button you want as your submit button (HTML defaults the first
-              button as the submit action)
+              Use <Code>type="submit"</Code> on the button you want as your submit button (HTML
+              defaults the first button as the submit action)
             </>,
             'Validate form fields before the user submits the form.',
           ]}
-          discouraged={['Use forms for immediate actions (i.e. toggling a setting)']}
         />
       </Panel>
     </>

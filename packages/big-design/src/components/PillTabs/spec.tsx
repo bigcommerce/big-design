@@ -65,6 +65,7 @@ test('dropdown is not visible if items fit', () => {
       },
     },
   });
+
   const onClick = jest.fn();
   const items = [
     {
@@ -74,6 +75,7 @@ test('dropdown is not visible if items fit', () => {
   ];
 
   render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+
   const inStock = screen.getByText('In stock');
   const dropdownToggle = screen.queryByTestId('pilltabs-dropdown-toggle');
   const list = screen.getByRole('list');
@@ -335,6 +337,7 @@ test('cannot click on a hidden item', async () => {
       },
     },
   });
+
   const onClick = jest.fn();
   const item1 = {
     title: 'In stock',
@@ -372,7 +375,9 @@ test('allows to add new items', async () => {
   };
   const items = [item1, item2];
 
-  const { rerender } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const { rerender } = render(
+    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
+  );
 
   const inStock1 = screen.getByText('In stock');
   const notInStock1 = screen.getByText('Not in stock');
@@ -411,7 +416,9 @@ test('allows to remove items', async () => {
   };
   const items = [item1, item2, item3];
 
-  const { rerender } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const { rerender } = render(
+    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
+  );
 
   const inStock1 = screen.getByText('In stock');
   const notInStock1 = screen.getByText('Not in stock');
@@ -454,7 +461,9 @@ test('allows to swap items keeping the same length', async () => {
   };
   const items = [item1, item2, item3];
 
-  const { rerender } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const { rerender } = render(
+    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
+  );
 
   const inStock1 = screen.getByText('In stock');
   const notInStock1 = screen.getByText('Not in stock');
@@ -501,7 +510,9 @@ test('sends the right id to the handler after swapping', async () => {
   };
   const items = [item1, item2, item3];
 
-  const { rerender } = render(<TestComponent activePills={[]} items={items} onPillClick={onClick} />);
+  const { rerender } = render(
+    <TestComponent activePills={[]} items={items} onPillClick={onClick} />,
+  );
 
   const newItems = [item4, item2, item3];
 

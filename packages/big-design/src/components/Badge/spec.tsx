@@ -62,5 +62,5 @@ test("doesn't render if label prop is invalid", () => {
   // @ts-expect-error ignoring since label={Component} is not a valid prop
   const { container } = render(<Badge label={<p>Label</p>} />);
 
-  expect(container.firstChild).toBe(null);
+  expect(container.firstChild).toBeNull();
 });

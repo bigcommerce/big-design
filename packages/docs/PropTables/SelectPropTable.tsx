@@ -49,7 +49,8 @@ const selectProps: Prop[] = [
     types: 'React.Ref<HTMLInputElement> | React.RefObject<HTMLInputElement>',
     description: (
       <>
-        The provided ref will be used for the underlying input element used in the <Code primary>Select</Code>.
+        The provided ref will be used for the underlying input element used in the{' '}
+        <Code primary>Select</Code>.
       </>
     ),
   },
@@ -103,7 +104,8 @@ const selectProps: Prop[] = [
     required: true,
     description: (
       <>
-        Accepts an array of <Code>SelectOptions</Code> or an array of <Code>SelectOptionGroups</Code>. See{' '}
+        Accepts an array of <Code>SelectOptions</Code> or an array of{' '}
+        <Code>SelectOptionGroups</Code>. See{' '}
         <NextLink href={{ hash: 'implementation' }}>implementation</NextLink> section for usage.
       </>
     ),
@@ -136,7 +138,8 @@ const selectProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to position the list.
+        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to
+        position the list.
       </>
     ),
   },
@@ -192,8 +195,8 @@ const selectOptionProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text. Only available
-        for single select.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the
+        text. Only available for single select.
       </>
     ),
   },
@@ -259,7 +262,8 @@ const selectActionProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the
+        text.
       </>
     ),
   },
@@ -296,17 +300,17 @@ const selectGroupProps: Prop[] = [
 ];
 
 export const SelectPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Select" propList={selectProps} {...props} />
+  <PropTable propList={selectProps} title="Select" {...props} />
 );
 
 export const SelectOptionPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Select[SelectOption]" propList={selectOptionProps} {...props} />
+  <PropTable propList={selectOptionProps} title="Select[SelectOption]" {...props} />
 );
 
 export const SelectActionPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Select[SelectAction]" propList={selectActionProps} {...props} />
+  <PropTable propList={selectActionProps} title="Select[SelectAction]" {...props} />
 );
 
 export const SelectGroupPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Select[SelectGroup]" propList={selectGroupProps} {...props} />
+  <PropTable propList={selectGroupProps} title="Select[SelectGroup]" {...props} />
 );

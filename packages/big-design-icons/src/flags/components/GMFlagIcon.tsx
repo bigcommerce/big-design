@@ -7,20 +7,36 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'GM flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'GM flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="GMFlagIcon__a">
           <path d="M0-48h640v480H0z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g clipPath="url(#GMFlagIcon__a)" fillRule="evenodd" strokeWidth="1pt" transform="translate(0 48)">
+      <g
+        clipPath="url(#GMFlagIcon__a)"
+        fillRule="evenodd"
+        strokeWidth="1pt"
+        transform="translate(0 48)"
+      >
         <path d="M0-128h640V85.3H0z" fill="red" />
         <path d="M0 85.3h640V121H0z" fill="#fff" />
         <path d="M0 120.9h640V263H0z" fill="#009" />

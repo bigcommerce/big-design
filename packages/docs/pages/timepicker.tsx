@@ -11,9 +11,9 @@ const TimepickerPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Timepickers</Code> allow users to choose a time value from the provided options. They can be
-          used for a wide range of scenarios like specifiying promotion start/end time, store location working hours and
-          so on.
+          <Code primary>Timepickers</Code> allow users to choose a time value from the provided
+          options. They can be used for a wide range of scenarios like specifiying promotion
+          start/end time, store location working hours and so on.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -30,7 +30,11 @@ const TimepickerPage = () => {
             return (
               <Form>
                 <FormGroup>
-                  <Timepicker locale="en-US" value={time} onTimeChange={(value) => setTime(value)} />
+                  <Timepicker
+                    locale="en-US"
+                    onTimeChange={(value) => setTime(value)}
+                    value={time}
+                  />
                 </FormGroup>
               </Form>
             );
@@ -45,14 +49,14 @@ const TimepickerPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
+          discouraged={[]}
           recommended={[
             <>
-              Put the field next to the <Code primary>Timepicker</Code> field with unified label when there is a need to
-              pick date and time (see examples).
+              Put the field next to the <Code primary>Timepicker</Code> field with unified label
+              when there is a need to pick date and time (see examples).
             </>,
             'Use local time formats.',
           ]}
-          discouraged={[]}
         />
       </Panel>
     </>

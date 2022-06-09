@@ -37,8 +37,8 @@ test('renders an input with matched label', () => {
 test('create unique ids if not provided', () => {
   const { queryByTestId } = render(
     <>
-      <Input label="Test Label" data-testid="item1" />
-      <Input label="Test Label" data-testid="item2" />
+      <Input data-testid="item1" label="Test Label" />
+      <Input data-testid="item2" label="Test Label" />
     </>,
   );
 
@@ -65,7 +65,7 @@ test('matches label htmlFor with id provided', () => {
 });
 
 test('respects provided labelId', () => {
-  const { container } = render(<Input labelId="test" label="Test Label" />);
+  const { container } = render(<Input label="Test Label" labelId="test" />);
   const label = container.querySelector('#test') as HTMLLabelElement;
 
   expect(label.id).toBe('test');
@@ -95,7 +95,7 @@ test('accepts a Label Component', () => {
   const CustomLabel = (
     <FormControlLabel>
       This is a custom Label
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </FormControlLabel>
@@ -110,7 +110,7 @@ test('does not accept non-Label Components', () => {
   const NotALabel = (
     <div>
       This is a not custom Label Component
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </div>
@@ -125,7 +125,7 @@ test('accepts a Description Component', () => {
   const CustomDescription = (
     <FormControlDescription>
       This is a custom Description
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </FormControlDescription>
@@ -140,7 +140,7 @@ test('does not accept non-Description Components', () => {
   const NotADescription = (
     <div>
       This is a not custom description
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </div>
@@ -155,7 +155,7 @@ test('accepts an Error Component', () => {
   const CustomError = (
     <FormControlError>
       This is a custom Error Component
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </FormControlError>
@@ -176,7 +176,7 @@ test('does not accept non-Error Components', () => {
   const NotAnError = (
     <div>
       This is a not a custom error component
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </div>
@@ -207,7 +207,10 @@ test('renders iconRight', () => {
 
 test('renders both icons', () => {
   const { queryByTestId } = render(
-    <Input iconRight={<AddIcon data-testid="icon-right" />} iconLeft={<AddIcon data-testid="icon-left" />} />,
+    <Input
+      iconLeft={<AddIcon data-testid="icon-left" />}
+      iconRight={<AddIcon data-testid="icon-right" />}
+    />,
   );
 
   expect(queryByTestId('icon-left')).toBeInTheDocument();
@@ -217,10 +220,10 @@ test('renders both icons', () => {
 test('renders all together', () => {
   const { container } = render(
     <Input
-      label="This is a label"
       description="This is a description"
-      iconRight={<AddIcon data-testid="icon-right" />}
       iconLeft={<AddIcon data-testid="icon-left" />}
+      iconRight={<AddIcon data-testid="icon-right" />}
+      label="This is a label"
     />,
   );
 
@@ -284,6 +287,7 @@ describe('error shows when an array of strings', () => {
     const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
     expect(styledInputWrapper).toHaveStyleRule('border', errorBorderStyle);
+
     errors.forEach((error) => expect(getByText(error)).toBeInTheDocument());
   });
 });
@@ -303,6 +307,7 @@ test('error shows when an array of Errors', () => {
   const styledInputWrapper = container.querySelector('[class*="StyledInputWrapper"]');
 
   testIds.forEach((id) => expect(getByTestId(id)).toBeInTheDocument());
+
   expect(styledInputWrapper).toHaveStyleRule('border', errorBorderStyle);
 });
 

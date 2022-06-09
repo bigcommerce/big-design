@@ -20,14 +20,15 @@ const SpacingPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          BigDesign core theme provides a pre-defined set of spacing values that are primarily used with any of the{' '}
-          <Code primary>padding</Code> and <Code primary>margin</Code> props. There are a few ways we can consume these
-          values.
+          BigDesign core theme provides a pre-defined set of spacing values that are primarily used
+          with any of the <Code primary>padding</Code> and <Code primary>margin</Code> props. There
+          are a few ways we can consume these values.
         </Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            Using the <NextLink href="/margin">Margin</NextLink> and <NextLink href="/padding">Padding</NextLink> props.
+            Using the <NextLink href="/margin">Margin</NextLink> and{' '}
+            <NextLink href="/padding">Padding</NextLink> props.
           </List.Item>
           <List.Item>Consuming it from the theme in a custom component.</List.Item>
         </List>
@@ -43,8 +44,9 @@ const SpacingPage = () => {
               render: () => (
                 <Fragment key="property">
                   <Text>
-                    Certain components will include <Code primary>padding</Code> and <Code primary>margin</Code> props.
-                    You can use the spacing keys to apply spacing values to those props.
+                    Certain components will include <Code primary>padding</Code> and{' '}
+                    <Code primary>margin</Code> props. You can use the spacing keys to apply spacing
+                    values to those props.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -62,7 +64,9 @@ const SpacingPage = () => {
               title: 'Applying to a style',
               render: () => (
                 <Fragment key="style">
-                  <Text>You can also use spacing directly from the theme to style other components.</Text>
+                  <Text>
+                    You can also use spacing directly from the theme to style other components.
+                  </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     {function Example() {
@@ -88,7 +92,7 @@ const SpacingPage = () => {
           {Object.keys(spacing)
             .reverse()
             .map((key) => (
-              <Flex alignItems="center" key={key} flexDirection="column" paddingBottom="small">
+              <Flex alignItems="center" flexDirection="column" key={key} paddingBottom="small">
                 <Code>{key}</Code>
                 <BlueBox marginTop="medium" style={{ width: spacing[key], height: spacing[key] }} />
               </Flex>

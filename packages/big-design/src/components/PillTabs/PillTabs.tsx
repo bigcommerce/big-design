@@ -49,7 +49,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       }
 
       if (remainingWidth - pillWidth > dropdownWidth) {
-        remainingWidth = remainingWidth - pillWidth;
+        remainingWidth -= pillWidth;
 
         return {
           ...stateObj,
@@ -94,7 +94,10 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
         ref={dropdownRef}
         role="listitem"
       >
-        <Dropdown items={dropdownItems} toggle={<Button iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />} />
+        <Dropdown
+          items={dropdownItems}
+          toggle={<Button iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />}
+        />
       </StyledFlexItem>
     );
   }, [items, pillsState, isMenuVisible, dropdownRef, activePills, onPillClick]);
@@ -136,17 +139,17 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
         return (
           <StyledFlexItem
             data-testid={`pilltabs-pill-${index}`}
+            isVisible={pill.isVisible}
             key={index}
             ref={pill.ref}
-            isVisible={pill.isVisible}
             role="listitem"
           >
             <StyledPillTab
               disabled={!pill.isVisible}
-              variant="subtle"
               isActive={activePills.includes(item.id)}
-              onClick={() => onPillClick(item.id)}
               marginRight="xSmall"
+              onClick={() => onPillClick(item.id)}
+              variant="subtle"
             >
               {item.title}
             </StyledPillTab>
@@ -165,7 +168,13 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
   });
 
   return items.length > 0 ? (
-    <Flex data-testid="pilltabs-wrapper" flexDirection="row" flexWrap="nowrap" ref={parentRef} role="list">
+    <Flex
+      data-testid="pilltabs-wrapper"
+      flexDirection="row"
+      flexWrap="nowrap"
+      ref={parentRef}
+      role="list"
+    >
       {renderedPills}
       {renderedDropdown}
     </Flex>

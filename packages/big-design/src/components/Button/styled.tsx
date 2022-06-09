@@ -81,7 +81,9 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   ${(props) => getButtonStyles(props)}
 `;
 
-export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoading?: boolean }>({})`
+export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoading?: boolean }>(
+  {},
+)`
   align-content: center;
   align-items: center;
   display: inline-grid;
@@ -243,8 +245,10 @@ function getButtonStyles(props: ButtonProps) {
   switch (variant) {
     case 'primary':
       return actionType === 'destructive' ? ButtonPrimaryDestructive : ButtonPrimary;
+
     case 'secondary':
       return actionType === 'destructive' ? ButtonSecondaryDestructive : ButtonSecondary;
+
     case 'subtle':
       return actionType === 'destructive' ? ButtonSubtleDestructive : ButtonSubtle;
   }

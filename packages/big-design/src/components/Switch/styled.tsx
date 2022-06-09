@@ -14,16 +14,18 @@ export const HiddenCheckbox = styled.input`
     `}
 `;
 
-type SwitchLabelProps = {
+interface SwitchLabelProps {
   checked?: boolean;
   disabled?: boolean;
-};
+}
 
 export const StyledSwitchLabel = styled.label<SwitchLabelProps>`
   ${withTransition(['background, border-color'])}
 
-  background: ${({ checked, theme }) => (checked ? theme.colors.primary30 : theme.colors.secondary30)};
-  border-color: ${({ checked, theme }) => (checked ? theme.colors.primary30 : theme.colors.secondary30)};
+  background: ${({ checked, theme }) =>
+    checked ? theme.colors.primary30 : theme.colors.secondary30};
+  border-color: ${({ checked, theme }) =>
+    checked ? theme.colors.primary30 : theme.colors.secondary30};
   border-radius: ${({ theme }) => theme.helpers.remCalc(8)};
   cursor: pointer;
   height: ${({ theme }) => theme.helpers.remCalc(14)};
@@ -45,7 +47,8 @@ export const StyledSwitchLabel = styled.label<SwitchLabelProps>`
 
   &:focus {
     &::before {
-      box-shadow: 0px 0px 0px 4px ${({ theme }) => theme.helpers.createRGBA(theme.colors.primary, 0.2)};
+      box-shadow: 0px 0px 0px 4px
+        ${({ theme }) => theme.helpers.createRGBA(theme.colors.primary, 0.2)};
     }
   }
 

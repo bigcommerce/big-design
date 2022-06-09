@@ -9,9 +9,10 @@ import { Panel } from './Panel';
 test('render panel', () => {
   const { container } = render(
     <Panel>
-      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur officia ex. Ipsum eiusmod
-      fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse deserunt nostrud ipsum id adipisicing enim velit
-      labore. Nulla exercitation laborum laboris Lorem irure sit esse nulla mollit aliquip consectetur velit
+      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
+      officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
+      deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris
+      Lorem irure sit esse nulla mollit aliquip consectetur velit
     </Panel>,
   );
 
@@ -21,22 +22,24 @@ test('render panel', () => {
 test('does not forward styles', () => {
   const { container } = render(
     <Panel className="test" style={{ background: 'red' }}>
-      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur officia ex. Ipsum eiusmod
-      fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse deserunt nostrud ipsum id adipisicing enim velit
-      labore. Nulla exercitation laborum laboris Lorem irure sit esse nulla mollit aliquip consectetur velit
+      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
+      officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
+      deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris
+      Lorem irure sit esse nulla mollit aliquip consectetur velit
     </Panel>,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
 test('renders a header and action', () => {
   const { getByRole } = render(
-    <Panel header="Test Header" action={{ text: 'Test Action' }}>
-      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur officia ex. Ipsum eiusmod
-      fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse deserunt nostrud ipsum id adipisicing enim velit
-      labore. Nulla exercitation laborum laboris Lorem irure sit esse nulla mollit aliquip consectetur velit
+    <Panel action={{ text: 'Test Action' }} header="Test Header">
+      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
+      officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
+      deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris
+      Lorem irure sit esse nulla mollit aliquip consectetur velit
     </Panel>,
   );
 
@@ -55,8 +58,9 @@ test('action options get forwarded to button', () => {
   const onClick = jest.fn();
 
   const { getByRole } = render(
-    <Panel header="Test Header" action={{ text: 'Test Action', onClick }}>
-      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur officia ex. Ipsum eiusmod
+    <Panel action={{ text: 'Test Action', onClick }} header="Test Header">
+      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
+      officia ex. Ipsum eiusmod
     </Panel>,
   );
 
@@ -67,7 +71,7 @@ test('action options get forwarded to button', () => {
 
 test('forwards data attributes', () => {
   const { getByTestId } = render(
-    <Panel header="Test Header" data-testid="panel">
+    <Panel data-testid="panel" header="Test Header">
       Dolore proident eiusmod sint est enim laboris
     </Panel>,
   );
@@ -89,7 +93,7 @@ test('forwards ref', () => {
 test('ignores padding props', () => {
   const { getByTestId } = render(
     // @ts-expect-error - ignoring since paddingRight is not a valid prop
-    <Panel header="Test Header" data-testid="panel" paddingRight="xxxLarge">
+    <Panel data-testid="panel" header="Test Header" paddingRight="xxxLarge">
       Dolore proident eiusmod sint est enim laboris
     </Panel>,
   );
@@ -101,7 +105,7 @@ test('ignores padding props', () => {
 
 test("panel action doesn't go to full width", () => {
   const { getByRole } = render(
-    <Panel header="Test Header" action={{ text: 'Test Action' }}>
+    <Panel action={{ text: 'Test Action' }} header="Test Header">
       Test
     </Panel>,
   );

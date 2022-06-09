@@ -6,7 +6,14 @@ import { TablePaginationProps } from '../types';
 import { StyledPaginationContainer } from './styled';
 
 export const TablePagination: React.FC<TablePaginationProps> = memo(
-  ({ currentPage, itemsPerPage, itemsPerPageOptions, onItemsPerPageChange, onPageChange, totalItems }) => {
+  ({
+    currentPage,
+    itemsPerPage,
+    itemsPerPageOptions,
+    onItemsPerPageChange,
+    onPageChange,
+    totalItems,
+  }) => {
     return (
       <StyledPaginationContainer flexShrink={0}>
         <Pagination

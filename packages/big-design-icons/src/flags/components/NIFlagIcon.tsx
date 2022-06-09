@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'NI flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'NI flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -23,16 +28,37 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
-        <linearGradient gradientUnits="userSpaceOnUse" id="NIFlagIcon__f" x1={498.7} x2={500.6} y1={289.1} y2={283.4}>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="NIFlagIcon__f"
+          x1={498.7}
+          x2={500.6}
+          y1={289.1}
+          y2={283.4}
+        >
           <stop offset={0} stopColor="#510000" />
           <stop offset={0.3} stopColor="#8a0000" />
           <stop offset={1} stopColor="#a00" />
         </linearGradient>
-        <linearGradient gradientUnits="userSpaceOnUse" id="NIFlagIcon__g" x1={501.4} x2={502.9} y1={291.4} y2={287.4}>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="NIFlagIcon__g"
+          x1={501.4}
+          x2={502.9}
+          y1={291.4}
+          y2={287.4}
+        >
           <stop offset={0} stopColor="#ff2a2a" />
           <stop offset={1} stopColor="red" />
         </linearGradient>
-        <linearGradient gradientUnits="userSpaceOnUse" id="NIFlagIcon__b" x1={484.8} x2={484.8} y1={311.7} y2={317.6}>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="NIFlagIcon__b"
+          x1={484.8}
+          x2={484.8}
+          y1={311.7}
+          y2={317.6}
+        >
           <stop offset={0} stopColor="#F5F549" />
           <stop offset={1} stopColor="#97C924" />
         </linearGradient>
@@ -192,19 +218,79 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
             />
             <path d="M500 277.5h-.1l.1 3 .1-3h-.1z" fill="#fff" />
           </g>
-          <use height="100%" transform="rotate(72 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__d" />
-          <use height="100%" transform="rotate(144 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__d" />
-          <use height="100%" transform="rotate(-144 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__d" />
-          <use height="100%" transform="rotate(-72 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__d" />
+          <use
+            height="100%"
+            transform="rotate(72 500 285.5)"
+            width="100%"
+            xlinkHref="#NIFlagIcon__d"
+          />
+          <use
+            height="100%"
+            transform="rotate(144 500 285.5)"
+            width="100%"
+            xlinkHref="#NIFlagIcon__d"
+          />
+          <use
+            height="100%"
+            transform="rotate(-144 500 285.5)"
+            width="100%"
+            xlinkHref="#NIFlagIcon__d"
+          />
+          <use
+            height="100%"
+            transform="rotate(-72 500 285.5)"
+            width="100%"
+            xlinkHref="#NIFlagIcon__d"
+          />
         </g>
-        <use height="100%" transform="rotate(8 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__e" />
-        <use height="100%" transform="rotate(16 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__e" />
-        <use height="100%" transform="rotate(24 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__e" />
-        <use height="100%" transform="rotate(32 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__e" />
-        <use height="100%" transform="rotate(40 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__e" />
-        <use height="100%" transform="rotate(48 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__e" />
-        <use height="100%" transform="rotate(56 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__e" />
-        <use height="100%" transform="rotate(64 500 285.5)" width="100%" xlinkHref="#NIFlagIcon__e" />
+        <use
+          height="100%"
+          transform="rotate(8 500 285.5)"
+          width="100%"
+          xlinkHref="#NIFlagIcon__e"
+        />
+        <use
+          height="100%"
+          transform="rotate(16 500 285.5)"
+          width="100%"
+          xlinkHref="#NIFlagIcon__e"
+        />
+        <use
+          height="100%"
+          transform="rotate(24 500 285.5)"
+          width="100%"
+          xlinkHref="#NIFlagIcon__e"
+        />
+        <use
+          height="100%"
+          transform="rotate(32 500 285.5)"
+          width="100%"
+          xlinkHref="#NIFlagIcon__e"
+        />
+        <use
+          height="100%"
+          transform="rotate(40 500 285.5)"
+          width="100%"
+          xlinkHref="#NIFlagIcon__e"
+        />
+        <use
+          height="100%"
+          transform="rotate(48 500 285.5)"
+          width="100%"
+          xlinkHref="#NIFlagIcon__e"
+        />
+        <use
+          height="100%"
+          transform="rotate(56 500 285.5)"
+          width="100%"
+          xlinkHref="#NIFlagIcon__e"
+        />
+        <use
+          height="100%"
+          transform="rotate(64 500 285.5)"
+          width="100%"
+          xlinkHref="#NIFlagIcon__e"
+        />
         <path
           d="M500 265.8a44.2 44.2 0 00-29 10.8L456.4 302a45 45 0 00-.8 8.3h5a39.4 39.4 0 0178.7 0h5a45 45 0 00-.7-8.3L529 276.6a44.3 44.3 0 00-29-10.8z"
           fill="red"
@@ -221,8 +307,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           d="M500 268.3a42 42 0 00-34.9 18.6l-2.8 4.9a41.8 41.8 0 00-4.3 18.5h2.7a39.4 39.4 0 0178.6 0h2.7a41.8 41.8 0 00-4.3-18.5l-2.8-5a42 42 0 00-34.9-18.6z"
           fill="#0f0"
         />
-        <path d="M500 269a41.2 41.2 0 00-41.2 41.3h1.9a39.4 39.4 0 0178.6 0h1.9A41.2 41.2 0 00500 269z" fill="#0cf" />
-        <path d="M500 269.8a40.4 40.4 0 00-40.4 40.4h1.4a39 39 0 1178 0h1.4A40.4 40.4 0 00500 270z" fill="#00f" />
+        <path
+          d="M500 269a41.2 41.2 0 00-41.2 41.3h1.9a39.4 39.4 0 0178.6 0h1.9A41.2 41.2 0 00500 269z"
+          fill="#0cf"
+        />
+        <path
+          d="M500 269.8a40.4 40.4 0 00-40.4 40.4h1.4a39 39 0 1178 0h1.4A40.4 40.4 0 00500 270z"
+          fill="#00f"
+        />
         <path
           d="M500 270.7a39.6 39.6 0 00-39.6 40.3h.8v-.8a38.8 38.8 0 1177.6.8h.8v-.8a39.6 39.6 0 00-39.6-39.6z"
           fill="purple"
@@ -263,11 +355,35 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
               fill="url(#NIFlagIcon__j)"
               id="NIFlagIcon__l"
             />
-            <use fill="url(#NIFlagIcon__k)" height="100%" width="100%" xlinkHref="#NIFlagIcon__l" y={-1.1} />
-            <use fill="url(#NIFlagIcon__m)" height="100%" width="100%" xlinkHref="#NIFlagIcon__l" y={-2.2} />
+            <use
+              fill="url(#NIFlagIcon__k)"
+              height="100%"
+              width="100%"
+              xlinkHref="#NIFlagIcon__l"
+              y={-1.1}
+            />
+            <use
+              fill="url(#NIFlagIcon__m)"
+              height="100%"
+              width="100%"
+              xlinkHref="#NIFlagIcon__l"
+              y={-2.2}
+            />
           </g>
-          <use fill="url(#NIFlagIcon__n)" height="100%" width="100%" xlinkHref="#NIFlagIcon__o" y={-3.3} />
-          <use fill="url(#NIFlagIcon__p)" height="100%" width="100%" xlinkHref="#NIFlagIcon__o" y={-6.7} />
+          <use
+            fill="url(#NIFlagIcon__n)"
+            height="100%"
+            width="100%"
+            xlinkHref="#NIFlagIcon__o"
+            y={-3.3}
+          />
+          <use
+            fill="url(#NIFlagIcon__p)"
+            height="100%"
+            width="100%"
+            xlinkHref="#NIFlagIcon__o"
+            y={-6.7}
+          />
           <path
             d="M453.2 307.5v.2h93.7l-.1-.2h-93.6zm-.2.3l-.1.3H547l-.1-.3h-94zm-.2.4l-.2.3h94.8l-.2-.3h-94.4zm-.3.5l-.3.5h95.6l-.3-.5h-95zm-.4.7l-.3.5h96.4l-.3-.5h-95.8zm-.4.7l-.2.4h97l-.2-.4h-96.6zm-.4.7l-.2.4H549l-.3-.4h-97.4zm-.4.7l-.3.6h98.8l-.3-.6H451z"
             fill="url(#NIFlagIcon__q)"
@@ -292,7 +408,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
               d="M530 298.9c-.5 6-2.3 13.2-6.7 17.8-1.6 1.3-3.7 2.6-5.6 2.3 6.7-5.5 10.8-14 12.2-20.1z"
               fill="#c6cb24"
             />
-            <path d="M524.5 309.3c-1 2.7-4.8 6.7-8.8 10h-2.9c2.5-.2 8.3-5 11.7-10z" fill="#9ecb34" />
+            <path
+              d="M524.5 309.3c-1 2.7-4.8 6.7-8.8 10h-2.9c2.5-.2 8.3-5 11.7-10z"
+              fill="#9ecb34"
+            />
           </g>
           <use height="100%" width="100%" x={-15.3} xlinkHref="#NIFlagIcon__t" />
           <g fill="#c6cb24">
@@ -325,13 +444,19 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
               d="M484.8 297.5c-.8 0-1.3.2-1.6.3l-.3.3a43.4 43.4 0 01-8.1 15c-3.4 4.3-9.7 8.6-14 9l-4.3 7.5h48v-10.7a23.2 23.2 0 01-9.5-6 33.6 33.6 0 01-8.4-14.8l-.3-.3a2.9 2.9 0 00-1.5-.3z"
               fill="#97c924"
             />
-            <path d="M483.4 298.9c-.6 9-5.6 20.5-11.3 22.4-1.9.7-5.1.9-6.2 1a36 36 0 0017.6-23.4z" fill="#93bc30" />
+            <path
+              d="M483.4 298.9c-.6 9-5.6 20.5-11.3 22.4-1.9.7-5.1.9-6.2 1a36 36 0 0017.6-23.4z"
+              fill="#93bc30"
+            />
             <path
               d="M484.8 297.5h-.5v10.8c0 2.3.9 4.2 2 6.4l.2.5c.5 1.1.8 1.5 2.3 2.7a22 22 0 0014.8 4c-1.1-.9-2.3-1.7-3.4-2.4l4.5-.5a23 23 0 01-9.7-6.2 30.5 30.5 0 01-1.4-1.5l-.6-.8a35 35 0 01-3.2-4.5 34.2 34.2 0 01-1-2 34 34 0 01-1.6-3.9 31.7 31.7 0 01-.6-2l-.3-.3a2.2 2.2 0 00-.6-.2 3.6 3.6 0 00-1-.1z"
               fill="#ede71f"
             />
             <path d="M485.4 298.9c.5 6 2.3 13.2 6.7 17.8 1.6 1.3 3.6 2.6 5.6 2.3a38.5 38.5 0 01-12.3-20.1z" />
-            <path d="M489.6 307.3a35 35 0 0014.6 14.9h2.5c-4.4-2.4-11.5-5.8-17-15z" fill="#9ecb34" />
+            <path
+              d="M489.6 307.3a35 35 0 0014.6 14.9h2.5c-4.4-2.4-11.5-5.8-17-15z"
+              fill="#9ecb34"
+            />
           </g>
           <use fill="#c6cb24" height="100%" width="100%" x={-15.4} xlinkHref="#NIFlagIcon__w" />
         </g>

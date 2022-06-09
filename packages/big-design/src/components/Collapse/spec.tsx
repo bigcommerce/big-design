@@ -12,12 +12,12 @@ import { Collapse } from './Collapse';
 const handleChange = jest.fn();
 
 const CollapseWithStaticTitleMock = (
-  <Collapse title="title" onCollapseChange={handleChange}>
+  <Collapse onCollapseChange={handleChange} title="title">
     <Text>Content</Text>
   </Collapse>
 );
 const CollapseWithVisiblePanelMock = (
-  <Collapse title="show more" initiallyOpen>
+  <Collapse initiallyOpen title="show more">
     <Text>Content</Text>
   </Collapse>
 );

@@ -38,7 +38,8 @@ const InternalCell = <T extends WorksheetItem>({
     [columnIndex, disabled, hash, rowIndex, type, value],
   );
 
-  const { handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing } = useEditableCell<T>(cell);
+  const { handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing } =
+    useEditableCell<T>(cell);
   const setSelectedRows = useStore((state) => state.setSelectedRows);
   const setSelectedCells = useStore((state) => state.setSelectedCells);
   const addInvalidCells = useStore((state) => state.addInvalidCells);
@@ -48,7 +49,9 @@ const InternalCell = <T extends WorksheetItem>({
     useMemo(
       () => (state) =>
         state.selectedCells.some(
-          (selectedCell) => selectedCell.columnIndex === cell.columnIndex && selectedCell.rowIndex === cell.rowIndex,
+          (selectedCell) =>
+            selectedCell.columnIndex === cell.columnIndex &&
+            selectedCell.rowIndex === cell.rowIndex,
         ),
       [cell],
     ),
@@ -58,7 +61,8 @@ const InternalCell = <T extends WorksheetItem>({
     useMemo(
       () => (state) =>
         state.editedCells.some(
-          (editedCell) => editedCell.columnIndex === cell.columnIndex && editedCell.rowIndex === cell.rowIndex,
+          (editedCell) =>
+            editedCell.columnIndex === cell.columnIndex && editedCell.rowIndex === cell.rowIndex,
         ),
       [cell],
     ),
@@ -68,13 +72,17 @@ const InternalCell = <T extends WorksheetItem>({
     useMemo(
       () => (state) =>
         state.invalidCells.find(
-          (invalidCell) => invalidCell.columnIndex === cell.columnIndex && invalidCell.rowIndex === cell.rowIndex,
+          (invalidCell) =>
+            invalidCell.columnIndex === cell.columnIndex && invalidCell.rowIndex === cell.rowIndex,
         ),
       [cell.columnIndex, cell.rowIndex],
     ),
   );
 
-  const isValid = useMemo(() => (typeof validation === 'function' ? validation(value) : true), [validation, value]);
+  const isValid = useMemo(
+    () => (typeof validation === 'function' ? validation(value) : true),
+    [validation, value],
+  );
 
   useEffect(() => {
     // Remove from invalidCells if new value is valid
@@ -121,15 +129,31 @@ const InternalCell = <T extends WorksheetItem>({
             options={options}
           />
         );
+
       case 'checkbox':
-        return <CheckboxEditor cell={cell} toggle={isEditing} onBlur={handleBlur} onChange={handleChange} />;
+        return (
+          <CheckboxEditor
+            cell={cell}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            toggle={isEditing}
+          />
+        );
+
       case 'modal':
         return <ModalEditor cell={cell} formatting={formatting} isEditing={isEditing} />;
+
       case 'toggle':
         return <ToggleEditor rowId={rowId} toggle={isEditing} />;
+
       default:
         return isEditing && !disabled ? (
-          <TextEditor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
+          <TextEditor
+            cell={cell}
+            isEdited={isEdited}
+            onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
+          />
         ) : (
           <Small color={disabled ? 'secondary50' : 'secondary70'} ellipsis title={renderedValue}>
             {renderedValue}

@@ -68,7 +68,7 @@ test('H0 - does not forward styles', () => {
     </H0>,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
@@ -79,7 +79,7 @@ test('H1 - does not forward styles', () => {
     </H1>,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
@@ -90,7 +90,7 @@ test('H2 - does not forward styles', () => {
     </H2>,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
@@ -101,7 +101,7 @@ test('H3 - does not forward styles', () => {
     </H3>,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
@@ -112,7 +112,7 @@ test('H4 - does not forward styles', () => {
     </H4>,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
@@ -123,7 +123,7 @@ test('Small - does not forward styles', () => {
     </Small>,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
@@ -134,14 +134,14 @@ test('Text - does not forward styles', () => {
     </Text>,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
 test('HR - does not forward styles', () => {
   const { container } = render(<HR className="test" style={{ background: 'red' }} />);
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
@@ -196,16 +196,16 @@ test('Text and Small can change their tag', () => {
     </>,
   );
 
-  expect(container.querySelectorAll('span').length).toBe(2);
+  expect(container.querySelectorAll('span')).toHaveLength(2);
 });
 
 test('Text and Small accept text modifiers', () => {
   const { getByTestId } = render(
     <>
-      <Text bold italic underline uppercase data-testid="text">
+      <Text bold data-testid="text" italic underline uppercase>
         Some Text
       </Text>
-      <Small strikethrough lowercase data-testid="small">
+      <Small data-testid="small" lowercase strikethrough>
         Some Text
       </Small>
     </>,

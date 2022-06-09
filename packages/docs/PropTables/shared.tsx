@@ -11,12 +11,16 @@ export const sharedMessagingProps: Prop[] = [
   {
     name: 'messages',
     types: (
-      <NextLink href={{ hash: 'message-item-prop-table', query: { props: 'message-item' } }}>MessageItem</NextLink>
+      <NextLink href={{ hash: 'message-item-prop-table', query: { props: 'message-item' } }}>
+        MessageItem
+      </NextLink>
     ),
     description: (
       <>
         See{' '}
-        <NextLink href={{ hash: 'message-item-prop-table', query: { props: 'message-item' } }}>MessageItem</NextLink>{' '}
+        <NextLink href={{ hash: 'message-item-prop-table', query: { props: 'message-item' } }}>
+          MessageItem
+        </NextLink>{' '}
         for usage.
       </>
     ),
@@ -45,14 +49,18 @@ const messagingItemProps: Prop[] = [
   {
     name: 'link',
     types: (
-      <NextLink href={{ hash: 'message-link-item-prop-table', query: { props: 'message-link-item' } }}>
+      <NextLink
+        href={{ hash: 'message-link-item-prop-table', query: { props: 'message-link-item' } }}
+      >
         MessageLinkItem
       </NextLink>
     ),
     description: (
       <>
         See{' '}
-        <NextLink href={{ hash: 'message-link-item-prop-table', query: { props: 'message-link-item' } }}>
+        <NextLink
+          href={{ hash: 'message-link-item-prop-table', query: { props: 'message-link-item' } }}
+        >
           MessageLinkItem
         </NextLink>{' '}
         for usage.
@@ -67,7 +75,8 @@ export const messagingLinkItemProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Shows an external icon when the <Code primary>external</Code> prop is set and target="_blank".
+        Shows an external icon when the <Code primary>external</Code> prop is set and
+        target="_blank".
       </>
     ),
   },
@@ -89,9 +98,14 @@ export const messagingLinkItemProps: Prop[] = [
 ];
 
 export const MessagingItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="" propList={messagingItemProps} {...props} id="message-item-prop-table" />
+  <PropTable propList={messagingItemProps} title="" {...props} id="message-item-prop-table" />
 );
 
 export const MessagingLinkItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="" propList={messagingLinkItemProps} {...props} id="message-link-item-prop-table" />
+  <PropTable
+    propList={messagingLinkItemProps}
+    title=""
+    {...props}
+    id="message-link-item-prop-table"
+  />
 );

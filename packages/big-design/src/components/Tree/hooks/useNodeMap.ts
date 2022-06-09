@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { NodeMap, TreeNodeId, TreeNodeProps } from '../types';
 
 interface UseNodeMapProps<T> {
-  nodes: TreeNodeProps<T>[];
+  nodes: Array<TreeNodeProps<T>>;
 }
 
 interface BuildNodeMapProps<T> extends UseNodeMapProps<T> {

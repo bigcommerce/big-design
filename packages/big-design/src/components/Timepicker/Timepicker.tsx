@@ -31,13 +31,13 @@ const RawTimePicker: React.FC<TimepickerProps & PrivateProps> = ({
   return (
     <Select
       autoWidth={true}
-      label={label}
       error={error}
-      value={value}
-      onOptionChange={onTimeChange}
-      placeholder="hh : mm"
-      options={options}
       inputRef={forwardedRef}
+      label={label}
+      onOptionChange={onTimeChange}
+      options={options}
+      placeholder="hh : mm"
+      value={value}
       {...props}
     />
   );

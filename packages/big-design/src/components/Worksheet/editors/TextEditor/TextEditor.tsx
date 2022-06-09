@@ -13,7 +13,12 @@ export interface TextEditorProps<Item> {
   onKeyDown: EditableCellOnKeyDown;
 }
 
-const InternalTextEditor = <T extends WorksheetItem>({ cell, isEdited, onBlur, onKeyDown }: TextEditorProps<T>) => {
+const InternalTextEditor = <T extends WorksheetItem>({
+  cell,
+  isEdited,
+  onBlur,
+  onKeyDown,
+}: TextEditorProps<T>) => {
   const [value, setValue] = useState(`${cell.value}`);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +30,8 @@ const InternalTextEditor = <T extends WorksheetItem>({ cell, isEdited, onBlur, o
     onKeyDown(event, formatValue(value));
   };
 
-  const formatValue = (value: string) => (cell.type === 'number' && value !== '' ? Number(value) : value);
+  const formatValue = (value: string) =>
+    cell.type === 'number' && value !== '' ? Number(value) : value;
 
   return (
     <StyledInput
