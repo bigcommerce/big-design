@@ -14,7 +14,7 @@ export const RadioLabelContainer = styled.div`
 `;
 
 export const RadioContainer = styled.div`
-  align-items: flex-start;
+  align-items: center;
   display: flex;
 `;
 
