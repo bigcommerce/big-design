@@ -71,7 +71,7 @@ test('dragAndDrop can be enabled', async () => {
   const onRowDrop = jest.fn();
   const { container, getAllByTestId } = render(getSimpleTable({ onRowDrop }));
 
-  let dragEls = container.querySelectorAll('[data-rbd-draggable-id]');
+  let dragEls = container.querySelectorAll<HTMLButtonElement>('[data-rbd-draggable-id]');
 
   let names = getAllByTestId('name');
 

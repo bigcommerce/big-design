@@ -6,7 +6,7 @@ import { Search } from './Search';
 test('renders the search component', () => {
   render(<Search onChange={jest.fn()} onSubmit={jest.fn()} value="Product" />);
 
-  const input = screen.getByLabelText('Search');
+  const input = screen.getByLabelText<HTMLInputElement>('Search');
 
   expect(screen.getByRole('button', { name: /search/i })).toBeInTheDocument();
   expect(input.value).toBe('Product');

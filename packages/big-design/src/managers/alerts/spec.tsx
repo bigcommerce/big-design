@@ -187,7 +187,7 @@ describe('alertsManager functionality', () => {
   });
 
   test('subscibes to updates', () => {
-    const alerts = [];
+    const alerts: AlertProps[] = [];
     const subscriber = jest.fn((a) => alerts.push(a));
 
     alertsManager.subscribe(subscriber);
