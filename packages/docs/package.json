@@ -16,6 +16,7 @@
     "start": "next",
     "typeCheck": "tsc --noEmit"
   },
+  "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
     "@babel/core": "^7.15.5",
     "@babel/preset-react": "^7.12.1",
