@@ -46,10 +46,10 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
     <StyledPanel
       {...rest}
       backgroundColor="white"
-      shadow="raised"
-      padding={{ mobile: 'medium', tablet: 'xLarge' }}
       borderRadius="none"
+      padding={{ mobile: 'medium', tablet: 'xLarge' }}
       ref={forwardedRef}
+      shadow="raised"
     >
       {renderHeader()}
       {children}
@@ -57,8 +57,8 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
   );
 });
 
-export const Panel = forwardRef<HTMLDivElement, PanelProps>(({ className, style, ...props }, ref) => (
-  <RawPanel {...props} forwardedRef={ref} />
-));
+export const Panel = forwardRef<HTMLDivElement, PanelProps>(
+  ({ className, style, ...props }, ref) => <RawPanel {...props} forwardedRef={ref} />,
+);
 
 Panel.displayName = 'Panel';

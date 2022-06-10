@@ -10,7 +10,13 @@ import { Box, BoxProps } from '../Box';
 // Margin can't be used with popper elements
 type BoxPropsWithoutMargins = Omit<
   BoxProps,
-  'margin' | 'marginBottom' | 'marginHorizontal' | 'marginLeft' | 'marginRight' | 'marginTop' | 'marginVertical'
+  | 'margin'
+  | 'marginBottom'
+  | 'marginHorizontal'
+  | 'marginLeft'
+  | 'marginRight'
+  | 'marginTop'
+  | 'marginVertical'
 >;
 
 export interface PopoverProps extends BoxPropsWithoutMargins {
@@ -26,7 +32,13 @@ export interface PopoverProps extends BoxPropsWithoutMargins {
   placement?: Placement;
 }
 
-export const Popover: React.FC<PopoverProps> = ({ anchorElement, children, isOpen, role = 'dialog', ...props }) => {
+export const Popover: React.FC<PopoverProps> = ({
+  anchorElement,
+  children,
+  isOpen,
+  role = 'dialog',
+  ...props
+}) => {
   const uniquePopoverId = useUniqueId('popover');
   const rest = excludeMarginProps(props);
 

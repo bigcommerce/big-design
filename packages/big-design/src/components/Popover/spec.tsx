@@ -13,10 +13,16 @@ const TestComponent: React.FC<Partial<PopoverProps>> = ({ isOpen = false, ...res
 
   return (
     <>
-      <button ref={setButtonRef} onClick={() => setOpen((s) => !s)}>
+      <button onClick={() => setOpen((s) => !s)} ref={setButtonRef}>
         Test Button
       </button>
-      <Popover anchorElement={buttonRef} isOpen={open} label="Test Label" {...rest} onClose={() => setOpen(false)}>
+      <Popover
+        anchorElement={buttonRef}
+        isOpen={open}
+        label="Test Label"
+        {...rest}
+        onClose={() => setOpen(false)}
+      >
         Some Content
       </Popover>
     </>
@@ -59,7 +65,7 @@ test('accepts Box props', async () => {
 
 test('does not accept margin props', async () => {
   // @ts-expect-error ignoring since margin is not a valid prop
-  render(<TestComponent isOpen={true} padding="medium" margin="medium" />);
+  render(<TestComponent isOpen={true} margin="medium" padding="medium" />);
 
   const text = await screen.findByText(/some content/i);
 
@@ -92,7 +98,7 @@ test('close on Escape by default', async () => {
 });
 
 test('does not close on Escape when closeOnEscKey is false', async () => {
-  render(<TestComponent isOpen={true} closeOnEscKey={false} />);
+  render(<TestComponent closeOnEscKey={false} isOpen={true} />);
 
   const text = await screen.findByText(/some content/i);
 
@@ -135,7 +141,7 @@ test('does not close on click outisde when closeOnClickOutside is set to false',
   render(
     <>
       <p>Outside Content</p>
-      <TestComponent isOpen={true} closeOnClickOutside={false} />
+      <TestComponent closeOnClickOutside={false} isOpen={true} />
     </>,
   );
 

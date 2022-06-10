@@ -9,7 +9,9 @@ export interface FlagIconProps extends SVGProps<SVGSVGElement> {
 }
 
 export function createStyledFlagIcon(
-  FlagIcon: ForwardRefExoticComponent<PropsWithoutRef<FlagIconProps> & RefAttributes<SVGSVGElement>>,
+  FlagIcon: ForwardRefExoticComponent<
+    PropsWithoutRef<FlagIconProps> & RefAttributes<SVGSVGElement>
+  >,
 ) {
   const StyledFlagIcon = styled(FlagIcon)`
     ${({ size, theme }) =>

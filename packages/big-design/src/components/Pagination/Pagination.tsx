@@ -1,4 +1,8 @@
-import { ArrowDropDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@bigcommerce/big-design-icons';
+import {
+  ArrowDropDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from '@bigcommerce/big-design-icons';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import { MarginProps } from '../../mixins';
@@ -17,7 +21,14 @@ export interface PaginationProps extends MarginProps {
 }
 
 export const Pagination: React.FC<PaginationProps> = memo(
-  ({ itemsPerPage, currentPage, totalItems, itemsPerPageOptions = [], onPageChange, onItemsPerPageChange }) => {
+  ({
+    itemsPerPage,
+    currentPage,
+    totalItems,
+    itemsPerPageOptions = [],
+    onPageChange,
+    onItemsPerPageChange,
+  }) => {
     const [maxPages, setMaxPages] = useState(Math.max(1, Math.ceil(totalItems / itemsPerPage)));
     const [itemRange, setItemRange] = useState({ start: 0, end: 0 });
 
@@ -58,7 +69,14 @@ export const Pagination: React.FC<PaginationProps> = memo(
       calculateRange();
 
       setMaxPages(Math.max(1, Math.ceil(totalItems / itemsPerPage)));
-    }, [calculateRange, currentPage, handlePageOutOfBounds, handlePerPageOutOfBounds, itemsPerPage, totalItems]);
+    }, [
+      calculateRange,
+      currentPage,
+      handlePageOutOfBounds,
+      handlePerPageOutOfBounds,
+      itemsPerPage,
+      totalItems,
+    ]);
 
     const handlePageIncrease = () => {
       onPageChange(currentPage + 1);
@@ -79,7 +97,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
     };
 
     return (
-      <Flex role="navigation" aria-label="pagination" flexDirection="row">
+      <Flex aria-label="pagination" flexDirection="row" role="navigation">
         <FlexItem>
           <Dropdown
             items={itemsPerPageOptions.map((range) => ({
@@ -89,7 +107,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
             }))}
             positionFixed={true}
             toggle={
-              <StyledButton variant="subtle" iconRight={<ArrowDropDownIcon size="xxLarge" />}>
+              <StyledButton iconRight={<ArrowDropDownIcon size="xxLarge" />} variant="subtle">
                 {showRanges()}
               </StyledButton>
             }
@@ -97,17 +115,17 @@ export const Pagination: React.FC<PaginationProps> = memo(
         </FlexItem>
         <FlexItem>
           <StyledButton
-            iconOnly={<ChevronLeftIcon title="Previous page" />}
-            variant="subtle"
             disabled={currentPage <= 1}
+            iconOnly={<ChevronLeftIcon title="Previous page" />}
             onClick={handlePageDecrease}
+            variant="subtle"
           />
 
           <StyledButton
-            iconOnly={<ChevronRightIcon title="Next page" />}
-            variant="subtle"
             disabled={currentPage >= maxPages}
+            iconOnly={<ChevronRightIcon title="Next page" />}
             onClick={handlePageIncrease}
+            variant="subtle"
           />
         </FlexItem>
       </Flex>

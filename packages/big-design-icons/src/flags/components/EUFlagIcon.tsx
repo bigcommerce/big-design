@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'EU flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'EU flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -41,9 +46,24 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         <use height="100%" width="100%" xlinkHref="#EUFlagIcon__d" y={6} />
         <g id="EUFlagIcon__e">
           <use height="100%" width="100%" x={-6} xlinkHref="#EUFlagIcon__d" />
-          <use height="100%" transform="rotate(-144 -2.3 -2.1)" width="100%" xlinkHref="#EUFlagIcon__d" />
-          <use height="100%" transform="rotate(144 -2.1 -2.3)" width="100%" xlinkHref="#EUFlagIcon__d" />
-          <use height="100%" transform="rotate(72 -4.7 -2)" width="100%" xlinkHref="#EUFlagIcon__d" />
+          <use
+            height="100%"
+            transform="rotate(-144 -2.3 -2.1)"
+            width="100%"
+            xlinkHref="#EUFlagIcon__d"
+          />
+          <use
+            height="100%"
+            transform="rotate(144 -2.1 -2.3)"
+            width="100%"
+            xlinkHref="#EUFlagIcon__d"
+          />
+          <use
+            height="100%"
+            transform="rotate(72 -4.7 -2)"
+            width="100%"
+            xlinkHref="#EUFlagIcon__d"
+          />
           <use height="100%" transform="rotate(72 -5 .5)" width="100%" xlinkHref="#EUFlagIcon__d" />
         </g>
         <use height="100%" transform="scale(-1 1)" width="100%" xlinkHref="#EUFlagIcon__e" />

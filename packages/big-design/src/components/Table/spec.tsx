@@ -30,12 +30,6 @@ const getSimpleTable = ({
 }: SimpleTableOptions = {}) => (
   <Table
     className={className}
-    data-testid={dataTestId}
-    id={id}
-    headerless={headerless}
-    itemName={itemName}
-    emptyComponent={emptyComponent}
-    style={style}
     columns={
       columns || [
         { header: 'Sku', render: ({ sku }) => sku },
@@ -43,6 +37,11 @@ const getSimpleTable = ({
         { header: 'Stock', render: ({ stock }) => stock },
       ]
     }
+    data-testid={dataTestId}
+    emptyComponent={emptyComponent}
+    headerless={headerless}
+    id={id}
+    itemName={itemName}
     items={
       items || [
         { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
@@ -52,6 +51,7 @@ const getSimpleTable = ({
         { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
       ]
     }
+    style={style}
   />
 );
 
@@ -90,7 +90,7 @@ test('forwards id and testid when provided', () => {
 test('does not forward styles', () => {
   const { container } = render(getSimpleTable({ className: 'test', style: { background: 'red' } }));
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
@@ -104,7 +104,7 @@ test('renders column with custom component', () => {
     }),
   );
 
-  expect(getAllByTestId('name').length).toBe(5);
+  expect(getAllByTestId('name')).toHaveLength(5);
 });
 
 test('renders column with tooltip icon', () => {
@@ -263,7 +263,7 @@ describe('selectable', () => {
     );
 
     // One per item + Actions (select all) checkbox
-    expect(getAllByRole('checkbox').length).toBe(items.length + 1);
+    expect(getAllByRole('checkbox')).toHaveLength(items.length + 1);
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -284,7 +284,9 @@ describe('selectable', () => {
 
     // Select All
     expect(selectAllCheckbox.checked).toBe(false);
+
     fireEvent.click(selectAllCheckbox);
+
     expect(onSelectionChange).toHaveBeenCalledWith(items);
   });
 
@@ -311,6 +313,7 @@ describe('selectable', () => {
 
     // Select All
     expect(selectAllCheckbox.checked).toBe(false);
+
     fireEvent.click(selectAllCheckbox);
 
     expect(onSelectionChange).toHaveBeenCalledWith([previouslySelectedItem, ...items]);
@@ -333,7 +336,9 @@ describe('selectable', () => {
 
     // Deselect all
     expect(selectAllCheckbox.checked).toBe(true);
+
     fireEvent.click(selectAllCheckbox);
+
     expect(onSelectionChange).toHaveBeenCalledWith([]);
   });
 
@@ -360,7 +365,9 @@ describe('selectable', () => {
 
     // Deselect all
     expect(selectAllCheckbox.checked).toBe(true);
+
     fireEvent.click(selectAllCheckbox);
+
     expect(onSelectionChange).toHaveBeenCalledWith([previouslySelectedItem]);
   });
 });
@@ -419,7 +426,7 @@ describe('sortable', () => {
 
     fireEvent.click(skuHeader);
 
-    expect(onSort).toBeCalledWith('sku', 'DESC', columns[0]);
+    expect(onSort).toHaveBeenCalledWith('sku', 'DESC', columns[0]);
   });
 
   test('does not call onSort when pressing a non-sortable header', () => {
@@ -439,7 +446,7 @@ describe('sortable', () => {
 
     fireEvent.click(nameHeader[1]);
 
-    expect(onSort).not.toBeCalled();
+    expect(onSort).not.toHaveBeenCalled();
   });
 
   test('calls onSort when pressing the direction icon', () => {
@@ -459,12 +466,16 @@ describe('sortable', () => {
 
     fireEvent.click(sortIcon);
 
-    expect(onSort).toBeCalledWith('sku', 'DESC', columns[0]);
+    expect(onSort).toHaveBeenCalledWith('sku', 'DESC', columns[0]);
   });
 
   test('renders custom actions', () => {
     const { getByTestId } = render(
-      <Table columns={columns} items={items} actions={<div data-testid="customAction">Test Action</div>} />,
+      <Table
+        actions={<div data-testid="customAction">Test Action</div>}
+        columns={columns}
+        items={items}
+      />,
     );
 
     const customAction = getByTestId('customAction');
@@ -526,7 +537,7 @@ describe('draggable', () => {
     const { container } = render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
     const dragIcons = container.querySelectorAll('svg');
 
-    expect(dragIcons?.length).toBe(items.length);
+    expect(dragIcons).toHaveLength(items.length);
   });
 
   test('onRowDrop called with expected args when a row is dropped', () => {
@@ -534,7 +545,9 @@ describe('draggable', () => {
     const downKey = { keyCode: 40 };
     const { container } = render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
     const dragEl = container.querySelector('[data-rbd-draggable-id]') as HTMLElement;
+
     dragEl.focus();
+
     expect(dragEl).toHaveFocus();
 
     fireEvent.keyDown(dragEl, spaceKey);

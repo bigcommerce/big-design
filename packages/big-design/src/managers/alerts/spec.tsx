@@ -25,7 +25,7 @@ describe('alertsManager functionality', () => {
   test('assigns auto generated key to alert', () => {
     const alertKey = alertsManager.add(alert);
 
-    expect(alertKey).toEqual('alert-1');
+    expect(alertKey).toBe('alert-1');
   });
 
   test('passes custom key to alert', () => {
@@ -40,11 +40,11 @@ describe('alertsManager functionality', () => {
 
     alertsManager.subscribe(subscriber);
 
-    expect(alerts.length).toBe(0);
+    expect(alerts).toHaveLength(0);
 
     alertsManager.add(alert);
 
-    expect(alerts.length).toBe(1);
+    expect(alerts).toHaveLength(1);
   });
 
   test('adds an alert - with key', () => {
@@ -53,18 +53,18 @@ describe('alertsManager functionality', () => {
 
     alertsManager.subscribe(subscriber);
 
-    expect(alerts.length).toBe(0);
+    expect(alerts).toHaveLength(0);
 
     alertsManager.add({ ...alert, key: testKey });
 
-    expect(alerts.length).toBe(1);
+    expect(alerts).toHaveLength(1);
     expect(alerts[0].key).toBe(testKey);
   });
 
   test('removes an alert', () => {
     const alertKey = alertsManager.add(alert);
 
-    expect(alertKey).not.toBeUndefined();
+    expect(alertKey).toBeDefined();
 
     const removed = alertsManager.remove(alertKey);
 
@@ -87,7 +87,7 @@ describe('alertsManager functionality', () => {
 
     jest.runAllTimers();
 
-    expect(alertKey).not.toBeUndefined();
+    expect(alertKey).toBeDefined();
     expect(mockSubscriber).toHaveBeenCalledTimes(2);
     expect(mockSubscriber).toHaveBeenCalledWith(expect.objectContaining({ key: 'test-key' }));
     expect(mockSubscriber).toHaveBeenCalledWith(null);
@@ -116,21 +116,30 @@ describe('alertsManager functionality', () => {
 
     const warningAlertKey = alertsManager.add(warningAlert);
 
-    expect(warningAlertKey).not.toBeUndefined();
+    expect(warningAlertKey).toBeDefined();
     expect(mockSubscriber).toHaveBeenCalledTimes(1);
-    expect(mockSubscriber).toHaveBeenNthCalledWith(1, expect.objectContaining({ key: 'test-key-warning' }));
+    expect(mockSubscriber).toHaveBeenNthCalledWith(
+      1,
+      expect.objectContaining({ key: 'test-key-warning' }),
+    );
 
     const errorAlertKey = alertsManager.add(errorAlert);
 
-    expect(errorAlertKey).not.toBeUndefined();
+    expect(errorAlertKey).toBeDefined();
     expect(mockSubscriber).toHaveBeenCalledTimes(2);
-    expect(mockSubscriber).toHaveBeenNthCalledWith(2, expect.objectContaining({ key: 'test-key-error' }));
+    expect(mockSubscriber).toHaveBeenNthCalledWith(
+      2,
+      expect.objectContaining({ key: 'test-key-error' }),
+    );
 
     // Run the timeout on the error alert and return back the next alert (warning).
     jest.runOnlyPendingTimers();
 
     expect(mockSubscriber).toHaveBeenCalledTimes(3);
-    expect(mockSubscriber).toHaveBeenNthCalledWith(3, expect.objectContaining({ key: 'test-key-warning' }));
+    expect(mockSubscriber).toHaveBeenNthCalledWith(
+      3,
+      expect.objectContaining({ key: 'test-key-warning' }),
+    );
 
     // Run the timeout on the warning alert and return back the next alert (null).
     jest.runOnlyPendingTimers();
@@ -156,15 +165,21 @@ describe('alertsManager functionality', () => {
     ]);
 
     expect(mockSubscriber).toHaveBeenCalledTimes(3);
-    expect(mockSubscriber).toHaveBeenNthCalledWith(1, expect.objectContaining({ messages: testAlertA.messages }));
-    expect(mockSubscriber).toHaveBeenNthCalledWith(2, expect.objectContaining({ messages: testAlertA.messages }));
+    expect(mockSubscriber).toHaveBeenNthCalledWith(
+      1,
+      expect.objectContaining({ messages: testAlertA.messages }),
+    );
+    expect(mockSubscriber).toHaveBeenNthCalledWith(
+      2,
+      expect.objectContaining({ messages: testAlertA.messages }),
+    );
     expect(mockSubscriber).toHaveBeenNthCalledWith(3, null);
   });
 
   test("doesn't remove existing alert with invalid key", () => {
     const alertKey = alertsManager.add(alert);
 
-    expect(alertKey).not.toBeUndefined();
+    expect(alertKey).toBeDefined();
 
     const removed = alertsManager.remove('some-random-key');
 
@@ -172,18 +187,18 @@ describe('alertsManager functionality', () => {
   });
 
   test('subscibes to updates', () => {
-    const alerts = [];
+    const alerts: AlertProps[] = [];
     const subscriber = jest.fn((a) => alerts.push(a));
 
     alertsManager.subscribe(subscriber);
 
-    expect(alerts.length).toBe(0);
-    expect(subscriber).not.toBeCalled();
+    expect(alerts).toHaveLength(0);
+    expect(subscriber).not.toHaveBeenCalled();
 
     alertsManager.add(alert);
 
-    expect(alerts.length).toBe(1);
-    expect(subscriber).toBeCalled();
+    expect(alerts).toHaveLength(1);
+    expect(subscriber).toHaveBeenCalled();
   });
 
   test('unsubscribes to updates', () => {
@@ -191,17 +206,17 @@ describe('alertsManager functionality', () => {
 
     const unsubscribe = alertsManager.subscribe(subscriber);
 
-    expect(subscriber).not.toBeCalled();
+    expect(subscriber).not.toHaveBeenCalled();
 
     alertsManager.add(alert);
 
-    expect(subscriber).toBeCalledTimes(1);
+    expect(subscriber).toHaveBeenCalledTimes(1);
 
     unsubscribe();
 
     alertsManager.add(alert);
 
-    expect(subscriber).toBeCalledTimes(1);
+    expect(subscriber).toHaveBeenCalledTimes(1);
   });
 });
 

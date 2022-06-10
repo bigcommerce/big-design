@@ -1,7 +1,14 @@
 import { Box, H1, Panel, Tabs, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
+import {
+  Code,
+  CodePreview,
+  ContentRoutingTabs,
+  GuidelinesTable,
+  List,
+  NextLink,
+} from '../components';
 import { TabItemPropTable, TabsPropTable } from '../PropTables';
 
 const TabsPage = () => {
@@ -11,14 +18,15 @@ const TabsPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Tabs</Code> are navigation elements at the top of the page, used to switch between different
-          groups of related content on a page.
+          <Code primary>Tabs</Code> are navigation elements at the top of the page, used to switch
+          between different groups of related content on a page.
         </Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>Breaking up a page’s content into distinct chunks or tasks.</List.Item>
           <List.Item>
-            Navigating between groups of content that are related and at the same level of hierarchy.
+            Navigating between groups of content that are related and at the same level of
+            hierarchy.
           </List.Item>
         </List>
       </Panel>
@@ -39,10 +47,10 @@ const TabsPage = () => {
             return (
               <>
                 <Tabs
-                  aria-label="Example Tab Content"
                   activeTab={activeTab}
-                  items={items}
+                  aria-label="Example Tab Content"
                   id="tab-example"
+                  items={items}
                   onTabClick={setActiveTab}
                 />
                 <Box marginTop="large">
@@ -78,30 +86,11 @@ const TabsPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          recommended={[
-            <>
-              Place <Code primary>Tabs</Code> with related content next to each other, and place in an order that is
-              conducive to the user’s success in the experience.
-            </>,
-            <>
-              If using the same <Code primary>Tabs</Code> for different pages, keep tab order consistent.
-            </>,
-            <>Make the tab label succinct and descriptive of the content within it.</>,
-            <>
-              Ensure <Code primary>Tabs</Code> relate to each other and organize the page’s content in a meaningful way.
-            </>,
-            <>
-              Use <Code primary>Tabs</Code> to switch between related content.
-            </>,
-            <>
-              Use the <Code primary>ariaControls</Code> prop to match your content with the <Code primary>TabItem</Code>{' '}
-              that displays it.
-            </>,
-          ]}
           discouraged={[
             <>
-              Don’t use more than eight <Code primary>Tabs</Code> per page. If more than eight <Code primary>Tabs</Code>{' '}
-              are needed, consider other types of navigation or content organization.
+              Don’t use more than eight <Code primary>Tabs</Code> per page. If more than eight{' '}
+              <Code primary>Tabs</Code> are needed, consider other types of navigation or content
+              organization.
             </>,
             <>
               Don’t use more than 4 words to label each <Code primary>Tab</Code>.
@@ -110,6 +99,28 @@ const TabsPage = () => {
             <>
               Don’t use <Code primary>Tabs</Code> to filter content on a page, instead use{' '}
               <NextLink href="/pill-tabs">PillTabs</NextLink>.
+            </>,
+          ]}
+          recommended={[
+            <>
+              Place <Code primary>Tabs</Code> with related content next to each other, and place in
+              an order that is conducive to the user’s success in the experience.
+            </>,
+            <>
+              If using the same <Code primary>Tabs</Code> for different pages, keep tab order
+              consistent.
+            </>,
+            <>Make the tab label succinct and descriptive of the content within it.</>,
+            <>
+              Ensure <Code primary>Tabs</Code> relate to each other and organize the page’s content
+              in a meaningful way.
+            </>,
+            <>
+              Use <Code primary>Tabs</Code> to switch between related content.
+            </>,
+            <>
+              Use the <Code primary>ariaControls</Code> prop to match your content with the{' '}
+              <Code primary>TabItem</Code> that displays it.
             </>,
           ]}
         />

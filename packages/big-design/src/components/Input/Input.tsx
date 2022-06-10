@@ -7,6 +7,7 @@ import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
 
 import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
+
 export interface Props {
   chips?: ChipProps[];
   description?: React.ReactChild;
@@ -61,17 +62,20 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <FormControlLabel id={labelId} htmlFor={id} renderOptional={!props.required}>
+        <FormControlLabel htmlFor={id} id={labelId} renderOptional={!props.required}>
           {label}
         </FormControlLabel>
       );
     }
 
     if (isValidElement(label) && label.type === FormControlLabel) {
-      return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
-        id: labelId,
-        htmlFor: id,
-      });
+      return cloneElement(
+        label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
+        {
+          id: labelId,
+          htmlFor: id,
+        },
+      );
     }
 
     warning('label must be either a string or a FormControlLabel component.');
@@ -135,8 +139,8 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
           {renderedChips}
           <StyledInput
             {...props}
-            disabled={disabled}
             chips={chips}
+            disabled={disabled}
             error={errors}
             id={id}
             onBlur={handleBlur}

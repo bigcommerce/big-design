@@ -60,11 +60,16 @@ const InternalActions = <T extends TableItem>({
       aria-controls={tableId}
       flexDirection="row"
       justifyContent="stretch"
-      stickyHeader={stickyHeader}
       ref={forwardedRef}
+      stickyHeader={stickyHeader}
       {...props}
     >
-      <SelectAll onChange={onSelectionChange} selectedItems={selectedItems} items={items} totalItems={totalItems} />
+      <SelectAll
+        items={items}
+        onChange={onSelectionChange}
+        selectedItems={selectedItems}
+        totalItems={totalItems}
+      />
       {renderItemName()}
       {renderActions()}
 

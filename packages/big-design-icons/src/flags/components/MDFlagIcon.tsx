@@ -7,13 +7,24 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'MD flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'MD flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <g fillRule="evenodd" strokeWidth="1pt">
         <path d="M0 0h213.3v480H0z" fill="#00319c" />
@@ -83,9 +94,21 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           fill="none"
           transform="matrix(-.68905 0 0 .65843 443.4 -190.7)"
         />
-        <path d="M301.4 557l-.2 158.8" fill="none" transform="matrix(-.68905 0 0 1.24911 443.4 -566.8)" />
-        <path d="M301.4 539.3l-.2 176.5" fill="none" transform="matrix(-.68905 0 0 1.12111 431.4 -464)" />
-        <path d="M301.4 539.3l-.2 176.5" fill="none" transform="matrix(-.68905 0 0 1.2559 419.2 -548.3)" />
+        <path
+          d="M301.4 557l-.2 158.8"
+          fill="none"
+          transform="matrix(-.68905 0 0 1.24911 443.4 -566.8)"
+        />
+        <path
+          d="M301.4 539.3l-.2 176.5"
+          fill="none"
+          transform="matrix(-.68905 0 0 1.12111 431.4 -464)"
+        />
+        <path
+          d="M301.4 539.3l-.2 176.5"
+          fill="none"
+          transform="matrix(-.68905 0 0 1.2559 419.2 -548.3)"
+        />
       </g>
       <g stroke="#000" strokeWidth={2.5}>
         <path
@@ -109,9 +132,21 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           fill="none"
           transform="matrix(.68905 0 0 .65843 199.3 -190.7)"
         />
-        <path d="M301.4 557l-.2 158.8" fill="none" transform="matrix(.68905 0 0 1.24911 199.3 -566.8)" />
-        <path d="M301.4 539.3l-.2 176.5" fill="none" transform="matrix(.68905 0 0 1.12111 211.4 -464)" />
-        <path d="M301.4 539.3l-.2 176.5" fill="none" transform="matrix(.68905 0 0 1.2559 223.6 -548.3)" />
+        <path
+          d="M301.4 557l-.2 158.8"
+          fill="none"
+          transform="matrix(.68905 0 0 1.24911 199.3 -566.8)"
+        />
+        <path
+          d="M301.4 539.3l-.2 176.5"
+          fill="none"
+          transform="matrix(.68905 0 0 1.12111 211.4 -464)"
+        />
+        <path
+          d="M301.4 539.3l-.2 176.5"
+          fill="none"
+          transform="matrix(.68905 0 0 1.2559 223.6 -548.3)"
+        />
       </g>
       <path
         d="M177.2 696.3c0 24.4-9.6 44.3-21.3 44.3-11.7 0-21.3-19.9-21.3-44.3S144.3 652 156 652s21.3 19.8 21.3 44.3z"
@@ -259,8 +294,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         transform="matrix(.68905 0 0 .65843 13.7 -146.4)"
       />
       <g fillRule="evenodd">
-        <path d="M297.8 120.4c-12.4 0-14 2-19.6 3.9 0-5.4 13.8-11.7 26-11.7 0 3.9-3.2 7.8-6.4 7.8z" fill="#da4500" />
-        <path d="M316.5 108c0 2.5-2.2 4.6-4.9 4.6s-4.9-2.1-4.9-4.7 2.2-4.6 4.9-4.6 4.9 2 4.9 4.6z" fill="#cac9c7" />
+        <path
+          d="M297.8 120.4c-12.4 0-14 2-19.6 3.9 0-5.4 13.8-11.7 26-11.7 0 3.9-3.2 7.8-6.4 7.8z"
+          fill="#da4500"
+        />
+        <path
+          d="M316.5 108c0 2.5-2.2 4.6-4.9 4.6s-4.9-2.1-4.9-4.7 2.2-4.6 4.9-4.6 4.9 2 4.9 4.6z"
+          fill="#cac9c7"
+        />
         <path
           d="M361.4 357.9v10.6h17.7v53.1h10.7v-53.1h17.7v-10.6h-17.7v-14.2H379v14.2h-17.7z"
           fill="#ff0"

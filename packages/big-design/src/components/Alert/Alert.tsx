@@ -21,7 +21,8 @@ export const Alert: React.FC<AlertProps> = memo(({ className, style, header, ...
     () =>
       props.messages.map(({ text, link }, index) => (
         <Box key={index}>
-          <StyledMessageItem>{text}</StyledMessageItem> {link && <StyledLink {...link}>{link.text}</StyledLink>}
+          <StyledMessageItem>{text}</StyledMessageItem>{' '}
+          {link && <StyledLink {...link}>{link.text}</StyledLink>}
         </Box>
       )),
     [props.messages],
@@ -38,7 +39,7 @@ export const Alert: React.FC<AlertProps> = memo(({ className, style, header, ...
       </GridItem>
       {props.onClose && (
         <GridItem>
-          <MessagingButton onClick={props.onClose} iconOnly={<CloseIcon size="large" />} />
+          <MessagingButton iconOnly={<CloseIcon size="large" />} onClick={props.onClose} />
         </GridItem>
       )}
     </StyledAlert>

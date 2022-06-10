@@ -27,18 +27,18 @@ export const Search: React.FC<SearchProps> = ({
   };
 
   return (
-    <Form onSubmit={handleSubmit} fullWidth={true}>
+    <Form fullWidth={true} onSubmit={handleSubmit}>
       <Flex alignItems="center" backgroundColor="white" flexDirection="row" paddingBottom="xxSmall">
         <FlexItem flexGrow={1} marginRight="small">
           <Input
             {...props}
             aria-label={ariaLabel}
             autoComplete={autoComplete}
+            iconLeft={<SearchIcon color="secondary50" />}
+            onChange={onChange}
             placeholder={placeholder}
             type="search"
             value={value}
-            onChange={onChange}
-            iconLeft={<SearchIcon color="secondary50" />}
           />
         </FlexItem>
         <Button mobileWidth="auto" type="submit" variant="secondary">

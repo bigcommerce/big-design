@@ -107,6 +107,7 @@ const SelectWithOptionsDescriptions = (
 
 test('renders select combobox', async () => {
   render(SelectMock);
+
   const combobox = await screen.findByRole('combobox');
 
   expect(combobox).toBeInTheDocument();
@@ -123,9 +124,9 @@ test('renders select string label', async () => {
 test('renders FormControlLabel string label', async () => {
   render(
     <Select
+      data-testid="select"
       label={<FormControlLabel>Countries</FormControlLabel>}
       onOptionChange={onChange}
-      data-testid="select"
       options={mockOptions}
     />,
   );
@@ -144,7 +145,9 @@ test('select label has id', async () => {
 });
 
 test('select label accepts custom id', async () => {
-  render(<Select onOptionChange={onChange} label="Countries" labelId="testId" options={mockOptions} />);
+  render(
+    <Select label="Countries" labelId="testId" onOptionChange={onChange} options={mockOptions} />,
+  );
 
   const countries = await screen.findByText('Countries');
 
@@ -176,7 +179,9 @@ test('select input has id', async () => {
 });
 
 test('select accepts custom id', async () => {
-  render(<Select onOptionChange={onChange} id="testId" data-testid="select" options={mockOptions} />);
+  render(
+    <Select data-testid="select" id="testId" onOptionChange={onChange} options={mockOptions} />,
+  );
 
   const select = await screen.findByTestId('select');
 
@@ -296,7 +301,7 @@ test('select has items', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(6);
+  expect(options).toHaveLength(6);
 });
 
 test('select items should be unfiltered when opened', async () => {
@@ -308,7 +313,7 @@ test('select items should be unfiltered when opened', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(6);
+  expect(options).toHaveLength(6);
 });
 
 test('selected item should be highlighted when opened', async () => {
@@ -329,7 +334,7 @@ test('select input text should match the value selected', async () => {
 
   const input = await screen.findByTestId('select');
 
-  expect(input.getAttribute('value')).toEqual('Mexico');
+  expect(input.getAttribute('value')).toBe('Mexico');
 });
 
 test('select items should be filterable', async () => {
@@ -344,7 +349,7 @@ test('select items should be filterable', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
 });
 
 test('autoselects first matching option when filtering', async () => {
@@ -356,7 +361,7 @@ test('autoselects first matching option when filtering', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(options[1].getAttribute('aria-selected')).toBe('false');
 });
@@ -370,7 +375,7 @@ test('does not autoselect first matching option when it is disabled', async () =
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
   expect(options[0].getAttribute('aria-selected')).toBe('false');
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 });
@@ -391,7 +396,7 @@ test('previous option remains selected after clearing the input value', async ()
   const options = await screen.findAllByRole('option');
   const mexicoOption = await screen.findByRole('option', { name: 'Mexico' });
 
-  expect(options.length).toBe(6);
+  expect(options).toHaveLength(6);
   expect(mexicoOption.getAttribute('aria-selected')).toBe('true');
 });
 
@@ -404,7 +409,7 @@ test('select options should immediately rerender when prop changes', async () =>
 
   let options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(5);
+  expect(options).toHaveLength(5);
 
   rerender(
     <Select
@@ -418,7 +423,7 @@ test('select options should immediately rerender when prop changes', async () =>
 
   options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
 });
 
 test('up/down arrows should change select item selection', async () => {
@@ -512,6 +517,7 @@ test('clicking on select options should trigger onOptionChange', async () => {
 
 test('clicking on disabled select options should not trigger onItemClick', async () => {
   render(SelectMock);
+
   const input = screen.getByTestId('select');
 
   fireEvent.click(input);
@@ -590,10 +596,9 @@ test('select should render an error if one is provided', async () => {
   render(
     <FormGroup>
       <Select
-        onOptionChange={onChange}
-        label="Countries"
         error="Required"
-        placeholder="Choose country"
+        label="Countries"
+        onOptionChange={onChange}
         options={[
           { value: 'us', content: 'United States' },
           { value: 'mx', content: 'Mexico' },
@@ -601,6 +606,7 @@ test('select should render an error if one is provided', async () => {
           { value: 'en', content: 'England' },
           { value: 'fr', content: 'France', disabled: true },
         ]}
+        placeholder="Choose country"
         required
       />
     </FormGroup>,
@@ -614,15 +620,14 @@ test('select should have a required attr if set as required', async () => {
 
   const input = await screen.findByTestId('select');
 
-  expect(input.getAttribute('required')).toEqual('');
+  expect(input.getAttribute('required')).toBe('');
 });
 
 test('select should not have a required attr if not set as required', async () => {
   render(
     <Select
-      onOptionChange={onChange}
       label="Countries"
-      placeholder="Choose country"
+      onOptionChange={onChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -630,21 +635,21 @@ test('select should not have a required attr if not set as required', async () =
         { value: 'en', content: 'England' },
         { value: 'fr', content: 'France', disabled: true },
       ]}
+      placeholder="Choose country"
     />,
   );
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputs[0].getAttribute('required')).toEqual(null);
+  expect(inputs[0].getAttribute('required')).toBeNull();
 });
 
 test('select should have a disabled attr if set as disabled', async () => {
   render(
     <Select
       disabled
-      onOptionChange={onChange}
       label="Countries"
-      placeholder="Choose country"
+      onOptionChange={onChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -652,12 +657,13 @@ test('select should have a disabled attr if set as disabled', async () => {
         { value: 'en', content: 'England' },
         { value: 'fr', content: 'France', disabled: true },
       ]}
+      placeholder="Choose country"
     />,
   );
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputs[0].getAttribute('disabled')).toEqual('');
+  expect(inputs[0].getAttribute('disabled')).toBe('');
 });
 
 test('select should not have a disabled attr if not set as disabled', async () => {
@@ -665,14 +671,14 @@ test('select should not have a disabled attr if not set as disabled', async () =
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  expect(inputs[0].getAttribute('disabled')).toEqual(null);
+  expect(inputs[0].getAttribute('disabled')).toBeNull();
 });
 
 test('appends (optional) text to label if select is not required', async () => {
   render(
     <Select
-      onOptionChange={onChange}
       label="Countries"
+      onOptionChange={onChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -693,9 +699,9 @@ test('does not forward styles', async () => {
   render(
     <Select
       className="test"
-      onOptionChange={onChange}
       data-testid="select"
       label="Countries"
+      onOptionChange={onChange}
       options={[
         { value: 'us', content: 'United States' },
         { value: 'mx', content: 'Mexico' },
@@ -712,7 +718,7 @@ test('does not forward styles', async () => {
 
   fireEvent.click(input);
 
-  expect(input.getElementsByClassName('test').length).toBe(0);
+  expect(input.getElementsByClassName('test')).toHaveLength(0);
   expect(await screen.findByRole('listbox')).not.toHaveStyle('background: red');
 });
 
@@ -778,6 +784,7 @@ test('should default max-height to 250', async () => {
 
 test('should use the passed in ref object if provided', async () => {
   const ref = createRef<HTMLInputElement>();
+
   render(
     <Select
       inputRef={ref}
@@ -802,6 +809,7 @@ test('should use the passed in ref object if provided', async () => {
 test('should call the provided refSetter if any', async () => {
   let inputRef: HTMLInputElement | null = null;
   const refSetter = (ref: HTMLInputElement) => (inputRef = ref);
+
   render(
     <Select
       inputRef={refSetter}
@@ -846,7 +854,7 @@ test('options should allow icons', async () => {
 
   const svg = container.querySelectorAll('svg');
 
-  expect(svg.length).toBe(5);
+  expect(svg).toHaveLength(5);
 });
 
 test('grouped select should render group labels, render uppercased', async () => {
@@ -893,7 +901,7 @@ test('group labels should be skipped when using keyboard to navigate options', a
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(6);
+  expect(options).toHaveLength(6);
   expect(options[1].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
 
@@ -918,7 +926,7 @@ test('group labels should still render when filtering options', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
   expect(label1).toBeInTheDocument();
   expect(label2).toBeInTheDocument();
 });

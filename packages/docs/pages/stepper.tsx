@@ -11,15 +11,18 @@ const StepperPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Stepper</Code> is used to display the progress of a particular process through numbered steps to
-          keep the user on track and increase the percentage of completeness.
+          <Code primary>Stepper</Code> is used to display the progress of a particular process
+          through numbered steps to keep the user on track and increase the percentage of
+          completeness.
         </Text>
         <Text bold>When to use:</Text>
         <List>
-          <List.Item>To guide users through a complex flow which needs multiple(3-5) steps.</List.Item>
           <List.Item>
-            When dealing with a complex process which can't be easily completed and benefits from dividing it into
-            smaller distinct steps.
+            To guide users through a complex flow which needs multiple(3-5) steps.
+          </List.Item>
+          <List.Item>
+            When dealing with a complex process which can't be easily completed and benefits from
+            dividing it into smaller distinct steps.
           </List.Item>
         </List>
       </Panel>
@@ -33,11 +36,14 @@ const StepperPage = () => {
 
             return (
               <>
-                <Stepper steps={steps} currentStep={currentStep} />
-                <Button onClick={() => setCurrentStep(0)} disabled={currentStep === 0}>
+                <Stepper currentStep={currentStep} steps={steps} />
+                <Button disabled={currentStep === 0} onClick={() => setCurrentStep(0)}>
                   Reset
                 </Button>
-                <Button onClick={() => setCurrentStep(currentStep + 1)} disabled={currentStep === steps.length - 1}>
+                <Button
+                  disabled={currentStep === steps.length - 1}
+                  onClick={() => setCurrentStep(currentStep + 1)}
+                >
                   Next
                 </Button>
               </>
@@ -53,6 +59,13 @@ const StepperPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
+          discouraged={[
+            <>
+              Don’t use multiple <Code primary>Steppers</Code> on one page.
+            </>,
+            'Don’t use long step labels.',
+            "Don’t add/modify number of steps dynamically. Number of steps shouldn't change mid-way through the flow due to what the user selected.",
+          ]}
           recommended={[
             'Should be placed directly below the page header at the top of the page and left aligned with the panel below.',
             'Display the steps in order from left to right.',
@@ -62,13 +75,6 @@ const StepperPage = () => {
             'Strongly recommend content should only be saved/created at the end of flow and it should be explictly called out when it’s saved/created.',
             'Each step needs be completed before proceeding to the next one.',
             'Always allow the user to go back to the previous step.',
-          ]}
-          discouraged={[
-            <>
-              Don’t use multiple <Code primary>Steppers</Code> on one page.
-            </>,
-            'Don’t use long step labels.',
-            "Don’t add/modify number of steps dynamically. Number of steps shouldn't change mid-way through the flow due to what the user selected.",
           ]}
         />
       </Panel>

@@ -8,7 +8,8 @@ const linkProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Shows an external icon when the <Code primary>external</Code> flag is set and target="_blank".
+        Shows an external icon when the <Code primary>external</Code> flag is set and
+        target="_blank".
       </>
     ),
   },
@@ -20,5 +21,5 @@ const linkProps: Prop[] = [
 ];
 
 export const LinkPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Link" propList={linkProps} {...props} />
+  <PropTable propList={linkProps} title="Link" {...props} />
 );

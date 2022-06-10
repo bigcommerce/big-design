@@ -49,7 +49,8 @@ const selectProps: Prop[] = [
     types: 'React.Ref<HTMLInputElement> | React.RefObject<HTMLInputElement>',
     description: (
       <>
-        The provided ref will be used for the underlying input element used in the <Code>MultiSelect</Code>.
+        The provided ref will be used for the underlying input element used in the{' '}
+        <Code>MultiSelect</Code>.
       </>
     ),
   },
@@ -95,8 +96,8 @@ const selectProps: Prop[] = [
     required: true,
     description: (
       <>
-        Accepts an array of <Code>SelectOption</Code> or an array of <Code>SelectOptionGroups</Code>. See example for
-        usage.
+        Accepts an array of <Code>SelectOption</Code> or an array of <Code>SelectOptionGroups</Code>
+        . See example for usage.
       </>
     ),
   },
@@ -128,7 +129,8 @@ const selectProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to position the items.
+        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to
+        position the items.
       </>
     ),
   },
@@ -145,5 +147,5 @@ const selectProps: Prop[] = [
 ];
 
 export const MultiSelectPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="MultiSelect" propList={selectProps} {...props} />
+  <PropTable propList={selectProps} title="MultiSelect" {...props} />
 );

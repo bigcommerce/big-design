@@ -7,13 +7,24 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'UG flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'UG flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="UGFlagIcon__a">
@@ -121,7 +132,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           strokeLinejoin="round"
           strokeWidth={0.9}
         />
-        <path d="M228.4 209.9s10.5-2.6 11.8-2.2" fill="none" stroke="#fff" strokeLinecap="round" strokeWidth={0.9} />
+        <path
+          d="M228.4 209.9s10.5-2.6 11.8-2.2"
+          fill="none"
+          stroke="#fff"
+          strokeLinecap="round"
+          strokeWidth={0.9}
+        />
         <path d="M-128 426.7h768V512h-768z" fill="#de3908" fillRule="evenodd" />
       </g>
     </svg>

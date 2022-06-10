@@ -15,7 +15,7 @@ import {
 import { StyledTableRow } from './styled';
 
 interface RowProps<Item> {
-  columns: InternalWorksheetColumn<Item>[];
+  columns: Array<InternalWorksheetColumn<Item>>;
   rowIndex: number;
 }
 
@@ -23,7 +23,9 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
   const row = useStore(useMemo(() => (state) => state.rows[rowIndex], [rowIndex]));
   const expandableRows = useStore(useMemo(() => (state) => state.expandableRows, []));
 
-  const isExpanded = useStore(useMemo(() => (state) => !state.hiddenRows.includes(row.id), [row.id]));
+  const isExpanded = useStore(
+    useMemo(() => (state) => !state.hiddenRows.includes(row.id), [row.id]),
+  );
 
   const parentId = useMemo(() => {
     if (!expandableRows) {

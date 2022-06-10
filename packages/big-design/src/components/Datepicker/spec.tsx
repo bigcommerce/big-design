@@ -44,18 +44,23 @@ jest.mock(
 
 test('should use the passed in ref object if provided', () => {
   const ref = createRef<ReactDatePicker>();
-  const { container } = render(<Datepicker ref={ref} onDateChange={jest.fn()} />);
+  const { container } = render(<Datepicker onDateChange={jest.fn()} ref={ref} />);
 
   const input = container.querySelector('input');
 
   fireEvent.click(input as HTMLInputElement);
+
   const datepicker = container.querySelector('.react-datepicker');
 
-  expect(datepicker?.className.includes(ref.current?.props.calendarClassName as string)).toBeTruthy();
+  expect(
+    datepicker?.className.includes(ref.current?.props.calendarClassName as string),
+  ).toBeTruthy();
 });
 
 test('renders select label', () => {
-  const { getByText } = render(<Datepicker data-testid="datepicker" label={'test'} onDateChange={jest.fn()} />);
+  const { getByText } = render(
+    <Datepicker data-testid="datepicker" label={'test'} onDateChange={jest.fn()} />,
+  );
 
   expect(getByText('test')).toBeInTheDocument();
 });
@@ -92,14 +97,14 @@ test('no error when input date value manually', () => {
     },
   });
 
-  expect(changeFunction).not.toBeCalled();
+  expect(changeFunction).not.toHaveBeenCalled();
   expect(input?.getAttribute('value')).toEqual(dateString);
 });
 
 test('renders an error if one is provided', () => {
   const { getByText } = render(
     <FormGroup>
-      <Datepicker onDateChange={jest.fn()} error="Required" />
+      <Datepicker error="Required" onDateChange={jest.fn()} />
     </FormGroup>,
   );
 
@@ -107,7 +112,7 @@ test('renders an error if one is provided', () => {
 });
 
 test('appends (optional) text to label if select is not required', () => {
-  const { container } = render(<Datepicker onDateChange={jest.fn()} label="label" />);
+  const { container } = render(<Datepicker label="label" onDateChange={jest.fn()} />);
   const label = container.querySelector('label');
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
@@ -117,13 +122,14 @@ test('dates before minimum date passed are disabled', () => {
   const selectedDate = '2020/1/5';
   const minimumDate = '2020/1/4';
   const { container } = render(
-    <Datepicker onDateChange={jest.fn()} value={selectedDate} min={minimumDate} label="label" />,
+    <Datepicker label="label" min={minimumDate} onDateChange={jest.fn()} value={selectedDate} />,
   );
   const input = container.querySelector('input');
 
   fireEvent.click(input as HTMLInputElement);
 
   const disabledDate = container.querySelector('.react-datepicker__day--003');
+
   expect(disabledDate?.classList.contains('react-datepicker__day--disabled')).toBe(true);
 });
 
@@ -131,12 +137,13 @@ test('dates after max date passed are disabled', () => {
   const selectedDate = '2020/1/5';
   const maximumDate = '2020/1/10';
   const { container } = render(
-    <Datepicker onDateChange={jest.fn()} value={selectedDate} max={maximumDate} label="label" />,
+    <Datepicker label="label" max={maximumDate} onDateChange={jest.fn()} value={selectedDate} />,
   );
   const input = container.querySelector('input');
 
   fireEvent.click(input as HTMLInputElement);
 
   const disabledDate = container.querySelector('.react-datepicker__day--011');
+
   expect(disabledDate?.classList.contains('react-datepicker__day--disabled')).toBe(true);
 });

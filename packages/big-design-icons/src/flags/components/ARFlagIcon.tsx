@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'AR flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'AR flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -32,17 +37,37 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           stroke="#85340a"
           strokeWidth={1.1}
         />
-        <use height="100%" transform="rotate(22.5 400 250)" width="100%" xlinkHref="#ARFlagIcon__a" />
+        <use
+          height="100%"
+          transform="rotate(22.5 400 250)"
+          width="100%"
+          xlinkHref="#ARFlagIcon__a"
+        />
         <use height="100%" transform="rotate(45 400 250)" width="100%" xlinkHref="#ARFlagIcon__a" />
-        <use height="100%" transform="rotate(67.5 400 250)" width="100%" xlinkHref="#ARFlagIcon__a" />
+        <use
+          height="100%"
+          transform="rotate(67.5 400 250)"
+          width="100%"
+          xlinkHref="#ARFlagIcon__a"
+        />
         <path
           d="M404.3 274.4c.5 9 5.6 13 4.6 21.3 2.2-6.5-3.1-11.6-2.8-21.2m-7.7-23.8l19.5 42.6-16.3-43.9"
           fill="#85340a"
           id="ARFlagIcon__b"
         />
-        <use height="100%" transform="rotate(22.5 400 250)" width="100%" xlinkHref="#ARFlagIcon__b" />
+        <use
+          height="100%"
+          transform="rotate(22.5 400 250)"
+          width="100%"
+          xlinkHref="#ARFlagIcon__b"
+        />
         <use height="100%" transform="rotate(45 400 250)" width="100%" xlinkHref="#ARFlagIcon__b" />
-        <use height="100%" transform="rotate(67.5 400 250)" width="100%" xlinkHref="#ARFlagIcon__b" />
+        <use
+          height="100%"
+          transform="rotate(67.5 400 250)"
+          width="100%"
+          xlinkHref="#ARFlagIcon__b"
+        />
       </g>
       <use height="100%" transform="rotate(90 320 240)" width="100%" xlinkHref="#ARFlagIcon__c" />
       <use height="100%" transform="rotate(180 320 240)" width="100%" xlinkHref="#ARFlagIcon__c" />
@@ -53,10 +78,25 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         fill="#843511"
         id="ARFlagIcon__h"
       />
-      <use height="100%" transform="matrix(-1 0 0 1 640.2 0)" width="100%" xlinkHref="#ARFlagIcon__d" />
-      <use height="100%" transform="matrix(-1 0 0 1 640.2 0)" width="100%" xlinkHref="#ARFlagIcon__e" />
+      <use
+        height="100%"
+        transform="matrix(-1 0 0 1 640.2 0)"
+        width="100%"
+        xlinkHref="#ARFlagIcon__d"
+      />
+      <use
+        height="100%"
+        transform="matrix(-1 0 0 1 640.2 0)"
+        width="100%"
+        xlinkHref="#ARFlagIcon__e"
+      />
       <use height="100%" transform="translate(18.1)" width="100%" xlinkHref="#ARFlagIcon__f" />
-      <use height="100%" transform="matrix(-1 0 0 1 640.2 0)" width="100%" xlinkHref="#ARFlagIcon__g" />
+      <use
+        height="100%"
+        transform="matrix(-1 0 0 1 640.2 0)"
+        width="100%"
+        xlinkHref="#ARFlagIcon__g"
+      />
       <path
         d="M316 243.7a1.9 1.9 0 101.8 2.9 4 4 0 002.2.6h.2a3.9 3.9 0 002.3-.6 1.9 1.9 0 101.8-3c.5.3.8.7.8 1.3 0 .6-.5 1.2-1.2 1.2a1.2 1.2 0 01-1.2-1.2 3 3 0 01-2.6 1.7 3 3 0 01-2.5-1.7 1.2 1.2 0 01-1.3 1.2c-.6 0-1.2-.6-1.2-1.2s.3-1 .8-1.2zm2 5.5c-2.1 0-3 1.8-4.8 3 1-.4 1.9-1.2 3.3-2s2.7.2 3.5.2c.8 0 2-1 3.5-.2 1.4.8 2.3 1.6 3.3 2-1.9-1.2-2.7-3-4.8-3a5.5 5.5 0 00-2 .6 5.5 5.5 0 00-2-.7z"
         fill="#85340a"

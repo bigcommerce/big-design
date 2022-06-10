@@ -8,7 +8,13 @@ import { Button } from '../Button';
 import { MessagingButton } from '../Button/private';
 import { GridItem } from '../Grid';
 
-import { StyledActionsWrapper, StyledHeader, StyledLink, StyledMessage, StyledMessageItem } from './styled';
+import {
+  StyledActionsWrapper,
+  StyledHeader,
+  StyledLink,
+  StyledMessage,
+  StyledMessageItem,
+} from './styled';
 
 export type MessageProps = SharedMessagingProps & MarginProps;
 
@@ -20,7 +26,8 @@ export const Message: React.FC<MessageProps> = memo(({ className, style, header,
     () =>
       props.messages.map(({ text, link }, index) => (
         <Box key={index}>
-          <StyledMessageItem>{text}</StyledMessageItem> {link && <StyledLink {...link}>{link.text}</StyledLink>}
+          <StyledMessageItem>{text}</StyledMessageItem>{' '}
+          {link && <StyledLink {...link}>{link.text}</StyledLink>}
         </Box>
       )),
     [props.messages],
@@ -59,7 +66,10 @@ export const Message: React.FC<MessageProps> = memo(({ className, style, header,
       </GridItem>
       {props.onClose && (
         <GridItem>
-          <MessagingButton onClick={props.onClose} iconOnly={<CloseIcon size="large" title="Close." />} />
+          <MessagingButton
+            iconOnly={<CloseIcon size="large" title="Close." />}
+            onClick={props.onClose}
+          />
         </GridItem>
       )}
     </StyledMessage>

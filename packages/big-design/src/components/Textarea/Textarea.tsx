@@ -45,17 +45,20 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <FormControlLabel id={labelId} htmlFor={id} renderOptional={!props.required}>
+        <FormControlLabel htmlFor={id} id={labelId} renderOptional={!props.required}>
           {label}
         </FormControlLabel>
       );
     }
 
     if (isValidElement(label) && label.type === FormControlLabel) {
-      return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
-        id: labelId,
-        htmlFor: id,
-      });
+      return cloneElement(
+        label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
+        {
+          id: labelId,
+          htmlFor: id,
+        },
+      );
     }
 
     warning('label must be either a string or a FormControlLabel component.');
@@ -82,7 +85,14 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
       {renderedLabel}
       {renderedDescription}
       <StyledTextareaWrapper>
-        <StyledTextarea {...props} error={errors} id={id} rows={numOfRows} resize={resize} ref={forwardedRef} />
+        <StyledTextarea
+          {...props}
+          error={errors}
+          id={id}
+          ref={forwardedRef}
+          resize={resize}
+          rows={numOfRows}
+        />
       </StyledTextareaWrapper>
     </div>
   );

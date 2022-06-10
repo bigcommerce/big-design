@@ -35,7 +35,6 @@ export const PropTable: FC<PropTableProps> = (props) => {
       return (
         <TableFigure marginBottom={collapsible || inheritedProps ? 'xLarge' : 'none'}>
           <Table
-            id={id}
             columns={[
               {
                 header: 'Prop name',
@@ -64,6 +63,7 @@ export const PropTable: FC<PropTableProps> = (props) => {
                 render: ({ description }) => <Text>{description}</Text>,
               },
             ]}
+            id={id}
             items={items}
           />
 

@@ -41,11 +41,12 @@ test('Tabs has a role', () => {
 test('Tab items have a role', () => {
   render(<Tabs items={items} />);
 
-  expect(screen.getAllByRole('tab').length).toBe(2);
+  expect(screen.getAllByRole('tab')).toHaveLength(2);
 });
 
 test('active tab has a tabindex', () => {
   const activeTab = 'tab2';
+
   render(<Tabs activeTab={activeTab} items={items} />);
 
   const tabs = screen.getAllByRole('tab');
@@ -61,7 +62,9 @@ test('active tab has a tabindex', () => {
 
 test('onTabClick is called', () => {
   const onClick = jest.fn();
+
   render(<Tabs items={items} onTabClick={onClick} />);
+
   const trigger = screen.getByText('Tab 2');
 
   userEvent.click(trigger);
@@ -105,9 +108,11 @@ test("clicking a disabled tab doesn't set the active tab", () => {
 });
 
 test('does not forward styles', () => {
-  const { container } = render(<Tabs className="test" style={{ background: 'red' }} items={items} />);
+  const { container } = render(
+    <Tabs className="test" items={items} style={{ background: 'red' }} />,
+  );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
@@ -138,6 +143,7 @@ test('shows a warning if ariaControls is missing or fallback id does not exist',
     { id: 'tab1', title: 'Tab 1' },
     { id: 'tab2', title: 'Tab 2' },
   ];
+
   render(<Tabs activeTab="tab1" items={incompleteItems} />);
 
   expect(warningSpy).toHaveBeenCalled();

@@ -18,7 +18,7 @@ export const App: React.FC = () => {
   return (
     <>
       <ProductForm onNewProduct={handleNewProduct} />
-      <ProductList products={products} onDelete={handleOnDelete} />
+      <ProductList onDelete={handleOnDelete} products={products} />
     </>
   );
 };

@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'CW flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'CW flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -31,8 +36,24 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
       <g clipPath="url(#CWFlagIcon__a)" transform="scale(.94)">
         <path d="M0 0h768v512H0z" fill="#002b7f" />
         <path d="M0 320h768v64H0z" fill="#f9e814" />
-        <use fill="#fff" height={9000} transform="scale(42.67)" width={13500} x={2} xlinkHref="#CWFlagIcon__b" y={2} />
-        <use fill="#fff" height={9000} transform="scale(56.9)" width={13500} x={3} xlinkHref="#CWFlagIcon__b" y={3} />
+        <use
+          fill="#fff"
+          height={9000}
+          transform="scale(42.67)"
+          width={13500}
+          x={2}
+          xlinkHref="#CWFlagIcon__b"
+          y={2}
+        />
+        <use
+          fill="#fff"
+          height={9000}
+          transform="scale(56.9)"
+          width={13500}
+          x={3}
+          xlinkHref="#CWFlagIcon__b"
+          y={3}
+        />
       </g>
     </svg>
   );

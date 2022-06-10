@@ -15,4 +15,6 @@ const RawFlex: React.FC<FlexProps & PrivateProps> = ({ as, forwardedRef, ...rest
   <StyledFlex forwardedAs={as} ref={forwardedRef} {...rest} />
 );
 
-export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => <RawFlex {...props} forwardedRef={ref} />);
+export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => (
+  <RawFlex {...props} forwardedRef={ref} />
+));

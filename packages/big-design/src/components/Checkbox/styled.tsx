@@ -52,7 +52,9 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
   ${({ checked, disabled, isIndeterminate, theme }) =>
     disabled &&
     css`
-      background: ${checked || isIndeterminate ? theme.colors.secondary30 : theme.colors.secondary10};
+      background: ${checked || isIndeterminate
+        ? theme.colors.secondary30
+        : theme.colors.secondary10};
       border-color: ${theme.colors.secondary30};
       cursor: not-allowed;
     `};

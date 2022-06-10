@@ -31,11 +31,18 @@ const statefulTreeProps: Prop[] = [
   },
   {
     name: 'nodes',
-    types: <NextLink href={{ hash: 'tree-node-prop-table', query: { props: 'treenode' } }}>TreeNode[]</NextLink>,
+    types: (
+      <NextLink href={{ hash: 'tree-node-prop-table', query: { props: 'treenode' } }}>
+        TreeNode[]
+      </NextLink>
+    ),
     description: (
       <>
         Nodes to render in the tree. See{' '}
-        <NextLink href={{ hash: 'tree-node-prop-table', query: { props: 'treenode' } }}>TreeNode</NextLink> for usage.
+        <NextLink href={{ hash: 'tree-node-prop-table', query: { props: 'treenode' } }}>
+          TreeNode
+        </NextLink>{' '}
+        for usage.
       </>
     ),
     required: true,
@@ -65,7 +72,7 @@ const statefulTreeProps: Prop[] = [
 ];
 
 export const StatefulTreePropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="StatefulTree" propList={statefulTreeProps} {...props} />
+  <PropTable propList={statefulTreeProps} title="StatefulTree" {...props} />
 );
 
 const treeNodeProps: Prop[] = [
@@ -96,13 +103,13 @@ const treeNodeProps: Prop[] = [
     types: 'T',
     description: (
       <>
-        Value of the selected node. A checkbox or radio will not appear if <Code primary>value</Code> and{' '}
-        <Code primary>selectable</Code> is not defined.
+        Value of the selected node. A checkbox or radio will not appear if{' '}
+        <Code primary>value</Code> and <Code primary>selectable</Code> is not defined.
       </>
     ),
   },
 ];
 
 export const TreeNodePropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="StatefulTree[TreeNode]" propList={treeNodeProps} {...props} />
+  <PropTable propList={treeNodeProps} title="StatefulTree[TreeNode]" {...props} />
 );

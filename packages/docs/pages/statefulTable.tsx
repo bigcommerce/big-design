@@ -1,8 +1,19 @@
 import { H1, Panel, StatefulTable, Text } from '@bigcommerce/big-design';
 import React, { Fragment } from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
-import { StatefulTableColumnsPropTable, StatefulTableFiltersPropTable, StatefulTablePropTable } from '../PropTables';
+import {
+  Code,
+  CodePreview,
+  ContentRoutingTabs,
+  GuidelinesTable,
+  List,
+  NextLink,
+} from '../components';
+import {
+  StatefulTableColumnsPropTable,
+  StatefulTableFiltersPropTable,
+  StatefulTablePropTable,
+} from '../PropTables';
 
 const items = [
   { sku: '3137737c', name: 'Rice - Wild', stock: 29 },
@@ -114,17 +125,18 @@ const StatefulTablePage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>StatefulTables</Code> are used to do custom actions and analysis across data related to a single
-          subject.
+          <Code primary>StatefulTables</Code> are used to do custom actions and analysis across data
+          related to a single subject.
         </Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            When you want the user to have deep interactions with multiple objects of the same type (e.g. orders,
-            customers)
+            When you want the user to have deep interactions with multiple objects of the same type
+            (e.g. orders, customers)
           </List.Item>
           <List.Item>
-            When you need to have bulk actions across multiple objects of the same type (e.g. export, delete)
+            When you need to have bulk actions across multiple objects of the same type (e.g.
+            export, delete)
           </List.Item>
         </List>
       </Panel>
@@ -139,9 +151,10 @@ const StatefulTablePage = () => {
               render: () => (
                 <Fragment key="basic">
                   <Text>
-                    <Code primary>StatefulTable</Code> is a wrapper of <NextLink href="/table">Table</NextLink> that
-                    simplifies it's usage when having the full list of items in memory. It supports pagination, row
-                    selection, and sorting out of the box.
+                    <Code primary>StatefulTable</Code> is a wrapper of{' '}
+                    <NextLink href="/table">Table</NextLink> that simplifies it's usage when having
+                    the full list of items in memory. It supports pagination, row selection, and
+                    sorting out of the box.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -168,15 +181,20 @@ const StatefulTablePage = () => {
               id: 'pagination-and-selection',
               title: 'Pagination and selection',
               render: () => (
-                <CodePreview scope={{ items }} key="pagination-and-selection">
+                <CodePreview key="pagination-and-selection" scope={{ items }}>
                   {/* jsx-to-string:start */}
                   <StatefulTable
-                    itemName="Products"
                     columns={[
                       { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
                       { header: 'Name', hash: 'name', render: ({ name }) => name },
-                      { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, sortKey: 'stock' },
+                      {
+                        header: 'Stock',
+                        hash: 'stock',
+                        render: ({ stock }) => stock,
+                        sortKey: 'stock',
+                      },
                     ]}
+                    itemName="Products"
                     items={items}
                     pagination
                     selectable
@@ -223,13 +241,6 @@ const StatefulTablePage = () => {
                       { header: 'Name', hash: 'name', render: ({ name }) => name },
                       { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
                     ]}
-                    items={[
-                      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-                      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
-                      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 0 },
-                      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
-                      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
-                    ]}
                     filters={{
                       filter: (pillId, items) =>
                         pillId === 'low_stock'
@@ -246,6 +257,13 @@ const StatefulTablePage = () => {
                         },
                       ],
                     }}
+                    items={[
+                      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+                      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+                      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 0 },
+                      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+                      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+                    ]}
                   />
                   {/* jsx-to-string:end */}
                 </CodePreview>
@@ -255,21 +273,26 @@ const StatefulTablePage = () => {
               id: 'search',
               title: 'Search',
               render: () => (
-                <CodePreview scope={{ items }} key="search">
+                <CodePreview key="search" scope={{ items }}>
                   {/* jsx-to-string:start */}
                   {function Example() {
                     return (
                       <StatefulTable
-                        itemName="Products"
                         columns={[
                           { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
                           { header: 'Name', hash: 'name', render: ({ name }) => name },
-                          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, sortKey: 'stock' },
+                          {
+                            header: 'Stock',
+                            hash: 'stock',
+                            render: ({ stock }) => stock,
+                            sortKey: 'stock',
+                          },
                         ]}
+                        itemName="Products"
                         items={items}
                         pagination
-                        stickyHeader
                         search
+                        stickyHeader
                       />
                     );
                   }}
@@ -293,12 +316,16 @@ const StatefulTablePage = () => {
             {
               id: 'columns',
               title: 'Columns',
-              render: () => <StatefulTableColumnsPropTable id="stateful-table-columns-prop-table" />,
+              render: () => (
+                <StatefulTableColumnsPropTable id="stateful-table-columns-prop-table" />
+              ),
             },
             {
               id: 'filters',
               title: 'Filters',
-              render: () => <StatefulTableFiltersPropTable id="stateful-table-filters-prop-table" />,
+              render: () => (
+                <StatefulTableFiltersPropTable id="stateful-table-filters-prop-table" />
+              ),
             },
           ]}
         />
@@ -306,15 +333,15 @@ const StatefulTablePage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          recommended={[
-            'Let users sort the table by columns with relevant data (Dates, quantities) to help them find important information.',
-            'Add pagination controls if the user is likely to have 5+ rows of data to view.',
-            'Provide filter tabs on the table with common groupings of data (For example: “Active” or “inactive” records).',
-          ]}
           discouraged={[
             'Don’t use it as a replacement for a worksheet (e.g. when the user needs to edit all displayed data).',
             'If using tables in cramped places like modals, avoid placing too many columns.',
             'Don’t put multiple actions in the same table row - use an dropdown menu instead.',
+          ]}
+          recommended={[
+            'Let users sort the table by columns with relevant data (Dates, quantities) to help them find important information.',
+            'Add pagination controls if the user is likely to have 5+ rows of data to view.',
+            'Provide filter tabs on the table with common groupings of data (For example: “Active” or “inactive” records).',
           ]}
         />
       </Panel>

@@ -7,13 +7,24 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'MN flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'MN flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <path d="M0 0h640v480H0z" fill="#c4272f" />
       <path d="M213.3 0h213.4v480H213.3z" fill="#015197" />
@@ -30,7 +41,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         fill="#f9cf02"
       />
       <circle cx={107} cy={306.8} fill="#f9cf02" r={33.7} stroke="#c4272f" strokeWidth={3.8} />
-      <path d="M107 273a16.9 16.9 0 010 33.8 16.9 16.9 0 100 33.7" fill="none" stroke="#c4272f" strokeWidth={3.8} />
+      <path
+        d="M107 273a16.9 16.9 0 010 33.8 16.9 16.9 0 100 33.7"
+        fill="none"
+        stroke="#c4272f"
+        strokeWidth={3.8}
+      />
       <circle cx={107} cy={289.9} fill="#c4272f" r={6.4} />
       <circle cx={107} cy={323.6} fill="#c4272f" r={6.4} />
     </svg>

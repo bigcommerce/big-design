@@ -25,10 +25,10 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorCard }) => {
     if (hasSecondaryTextColor) {
       return (
         <Flex alignItems="flex-end">
-          <Text marginRight="xSmall" marginBottom="none" color={colorCard.textColor}>
+          <Text color={colorCard.textColor} marginBottom="none" marginRight="xSmall">
             {colorCard.contrast}
           </Text>
-          <Text marginBottom="none" color={colorCard.secondaryTextColor}>
+          <Text color={colorCard.secondaryTextColor} marginBottom="none">
             {colorCard.contrast}
           </Text>
         </Flex>
@@ -36,7 +36,7 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorCard }) => {
     }
 
     return (
-      <Text margin="none" color={colorCard.textColor}>
+      <Text color={colorCard.textColor} margin="none">
         {colorCard.contrast}
       </Text>
     );
@@ -45,11 +45,11 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorCard }) => {
   return (
     <StyledColor
       backgroundColor={colorCard.name}
-      justifyContent={hasHexColor ? 'space-between' : 'baseline'}
-      flexDirection="column"
       border="box"
+      flexDirection="column"
+      justifyContent={hasHexColor ? 'space-between' : 'baseline'}
     >
-      <Text margin="small" color={colorCard.textColor} bold>
+      <Text bold color={colorCard.textColor} margin="small">
         {getColorLabel(colorCard.name)}
       </Text>
 
@@ -65,8 +65,8 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorCard }) => {
       )}
 
       {hasHexColor && (
-        <Flex margin="small" justifyContent="space-between" flexWrap="wrap">
-          <Text margin="none" color={colorCard.textColor}>
+        <Flex flexWrap="wrap" justifyContent="space-between" margin="small">
+          <Text color={colorCard.textColor} margin="none">
             {colorValue}
           </Text>
 

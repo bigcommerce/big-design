@@ -14,7 +14,11 @@ export interface ModalEditorProps<Item> {
   formatting?: WorksheetModalColumn<Item>['formatting'];
 }
 
-const InternalModalEditor = <T extends WorksheetItem>({ cell, formatting, isEditing }: ModalEditorProps<T>) => {
+const InternalModalEditor = <T extends WorksheetItem>({
+  cell,
+  formatting,
+  isEditing,
+}: ModalEditorProps<T>) => {
   const setOpenModal = useStore((state) => state.setOpenModal);
   const setEditingCell = useStore((state) => state.setEditingCell);
   const { hash, value } = cell;
@@ -31,11 +35,14 @@ const InternalModalEditor = <T extends WorksheetItem>({ cell, formatting, isEdit
     setEditingCell(cell);
   }, [cell, setEditingCell]);
 
-  const renderedValue = useMemo(() => (formatting ? formatting(value) : `${value}`), [formatting, value]);
+  const renderedValue = useMemo(
+    () => (formatting ? formatting(value) : `${value}`),
+    [formatting, value],
+  );
 
   return (
-    <Flex justifyContent="space-between" alignItems="center" flexWrap="wrap">
-      <StyledFlexItem paddingRight="small" flexShrink={1}>
+    <Flex alignItems="center" flexWrap="wrap" justifyContent="space-between">
+      <StyledFlexItem flexShrink={1} paddingRight="small">
         <Small color={cell.disabled ? 'secondary50' : 'secondary70'} ellipsis title={renderedValue}>
           {renderedValue}
         </Small>

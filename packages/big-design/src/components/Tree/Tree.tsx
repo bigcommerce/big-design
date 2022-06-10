@@ -37,11 +37,19 @@ export const Tree = <T,>({
     selectable,
   };
 
-  const renderedItems = useMemo(() => nodes.map((node, index) => <TreeNode {...node} key={index} />), [nodes]);
+  const renderedItems = useMemo(
+    () => nodes.map((node, index) => <TreeNode {...node} key={index} />),
+    [nodes],
+  );
 
   return (
     <TreeContext.Provider value={initialTreeContext}>
-      <StyledUl id={id} role="tree" aria-multiselectable={selectable?.type === 'multi'} style={{ overflow: 'hidden' }}>
+      <StyledUl
+        aria-multiselectable={selectable?.type === 'multi'}
+        id={id}
+        role="tree"
+        style={{ overflow: 'hidden' }}
+      >
         {renderedItems}
       </StyledUl>
     </TreeContext.Provider>

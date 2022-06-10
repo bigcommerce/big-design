@@ -7,7 +7,7 @@ import { deleteCells, getHiddenRows, mergeCells } from '../../utils';
 export const { Provider, useStore } = createContext<BaseState<any>>();
 
 interface BaseState<Item> extends State {
-  columns: InternalWorksheetColumn<Item>[];
+  columns: Array<InternalWorksheetColumn<Item>>;
   editedCells: Array<Cell<Item>>;
   editingCell: Cell<Item> | null;
   expandableRows: ExpandableRows;
@@ -45,9 +45,12 @@ export const createStore = () =>
     selectedCells: [],
     selectedRows: [],
     tableRef: null,
-    addEditedCells: (cells) => set((state) => ({ ...state, editedCells: mergeCells(state.editedCells, cells) })),
-    addInvalidCells: (cells) => set((state) => ({ ...state, invalidCells: mergeCells(state.invalidCells, cells) })),
-    removeInvalidCells: (cells) => set((state) => ({ ...state, invalidCells: deleteCells(state.invalidCells, cells) })),
+    addEditedCells: (cells) =>
+      set((state) => ({ ...state, editedCells: mergeCells(state.editedCells, cells) })),
+    addInvalidCells: (cells) =>
+      set((state) => ({ ...state, invalidCells: mergeCells(state.invalidCells, cells) })),
+    removeInvalidCells: (cells) =>
+      set((state) => ({ ...state, invalidCells: deleteCells(state.invalidCells, cells) })),
     setColumns: (columns) => set((state) => ({ ...state, columns })),
     setEditingCell: (cell) => set((state) => ({ ...state, editingCell: cell })),
     setExpandableRows: (expandableRows) =>

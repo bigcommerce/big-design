@@ -31,7 +31,9 @@ beforeAll(() => {
 afterAll(() => Object.defineProperties(window.HTMLElement.prototype, originalPrototype));
 
 test('renders given actions', async () => {
-  render(<ButtonGroup actions={[{ text: 'button 1' }, { text: 'button 2' }, { text: 'button 3' }]} />);
+  render(
+    <ButtonGroup actions={[{ text: 'button 1' }, { text: 'button 2' }, { text: 'button 3' }]} />,
+  );
 
   // Prevents an act warning on component mount
   await act(() => Promise.resolve());
@@ -43,7 +45,14 @@ test('renders given actions', async () => {
 
 test('renders dropdown if items do not fit', async () => {
   render(
-    <ButtonGroup actions={[{ text: 'button 1' }, { text: 'button 2' }, { text: 'button 3' }, { text: 'button 4' }]} />,
+    <ButtonGroup
+      actions={[
+        { text: 'button 1' },
+        { text: 'button 2' },
+        { text: 'button 3' },
+        { text: 'button 4' },
+      ]}
+    />,
   );
 
   expect(screen.getByText('button 4')).not.toBeVisible();
@@ -56,7 +65,11 @@ test('renders dropdown if items do not fit', async () => {
 test('renders dropdown if some of items have destructive type', async () => {
   render(
     <ButtonGroup
-      actions={[{ actionType: 'destructive', text: 'button 1' }, { text: 'button 2' }, { text: 'button 3' }]}
+      actions={[
+        { actionType: 'destructive', text: 'button 1' },
+        { text: 'button 2' },
+        { text: 'button 3' },
+      ]}
     />,
   );
 

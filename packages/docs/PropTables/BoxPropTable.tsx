@@ -14,7 +14,8 @@ const boxProps: Prop[] = [
     types: <NextLink href="/colors">Color</NextLink>,
     description: (
       <>
-        Sets the background color given a color name from our <NextLink href="/colors">palette</NextLink>.
+        Sets the background color given a color name from our{' '}
+        <NextLink href="/colors">palette</NextLink>.
       </>
     ),
   },
@@ -71,5 +72,5 @@ const boxProps: Prop[] = [
 ];
 
 export const BoxPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Box" propList={boxProps} {...props} />
+  <PropTable propList={boxProps} title="Box" {...props} />
 );

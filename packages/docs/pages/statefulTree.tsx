@@ -12,8 +12,8 @@ const StatefulTreePage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          The <Code primary>StatefulTree</Code> component is used to display a tree of items. Useful for defining a tree
-          of categories or subcollections.
+          The <Code primary>StatefulTree</Code> component is used to display a tree of items. Useful
+          for defining a tree of categories or subcollections.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -61,7 +61,12 @@ const StatefulTreePage = () => {
                         label: 'Category',
                         children: [{ id: '7', value: 7, label: 'Category' }],
                       },
-                      { id: '4', value: 4, label: 'Category', children: [{ id: '8', value: 8, label: 'Category' }] },
+                      {
+                        id: '4',
+                        value: 4,
+                        label: 'Category',
+                        children: [{ id: '8', value: 8, label: 'Category' }],
+                      },
                     ];
 
                     return (
@@ -98,10 +103,10 @@ const StatefulTreePage = () => {
 
                     return (
                       <StatefulTree
-                        selectable="radio"
-                        nodes={nodes}
                         defaultExpanded={['0']}
                         disabledNodes={['0', '2']}
+                        nodes={nodes}
+                        selectable="radio"
                       />
                     );
                   }}
@@ -116,11 +121,13 @@ const StatefulTreePage = () => {
                 <Fragment key="custom-icons">
                   <Text>You can replace the folder icon with a custom icon of your choice.</Text>
                   <Message
-                    type="warning"
-                    messages={[
-                      { text: 'If you use the iconless prop, ALL icons will be hidden (including custom ones).' },
-                    ]}
                     marginBottom="medium"
+                    messages={[
+                      {
+                        text: 'If you use the iconless prop, ALL icons will be hidden (including custom ones).',
+                      },
+                    ]}
+                    type="warning"
                   />
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -132,8 +139,16 @@ const StatefulTreePage = () => {
                           label: 'Storefront - US',
                           children: [{ id: '3', label: 'Subcategory' }],
                         },
-                        { id: '1', icon: <LanguageIcon color="primary" />, label: 'Storefront - CA' },
-                        { id: '2', icon: <AssignmentIcon color="primary" />, label: 'Storefront - EU' },
+                        {
+                          id: '1',
+                          icon: <LanguageIcon color="primary" />,
+                          label: 'Storefront - CA',
+                        },
+                        {
+                          id: '2',
+                          icon: <AssignmentIcon color="primary" />,
+                          label: 'Storefront - EU',
+                        },
                       ];
 
                       return <StatefulTree defaultExpanded={['0']} nodes={nodes} />;
@@ -167,15 +182,15 @@ const StatefulTreePage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
+          discouraged={[
+            'Make sure radio buttons and checkboxes are used correctly within BigDesign Guidelines. Checkboxes are additive, radio buttons are either/or.',
+            'Don’t use to display a list of items.',
+          ]}
           recommended={[
             'Display collapsable side navigation if sub-categories exist.',
             'Use an icon next to categories, regardless of heirarchy.',
             'Use checkboxes when multiple items can be selected vs. radio buttons for either/or.',
             'Selected sub-categories should always be shown numerically next to the parent catergories, both in collapsed or expanded states.',
-          ]}
-          discouraged={[
-            'Make sure radio buttons and checkboxes are used correctly within BigDesign Guidelines. Checkboxes are additive, radio buttons are either/or.',
-            'Don’t use to display a list of items.',
           ]}
         />
       </Panel>

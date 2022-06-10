@@ -16,7 +16,7 @@ export const NextLink: React.FC<{ href: LinkProps['href']; as?: string }> = (pro
   const { as, children, href } = props;
 
   return (
-    <NLink href={href} as={getLinkAs(as)} passHref={true}>
+    <NLink as={getLinkAs(as)} href={href} passHref={true}>
       {typeof children === 'string' ? <Link>{children}</Link> : children}
     </NLink>
   );

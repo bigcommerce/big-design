@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'AF flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'AF flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -27,7 +32,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         <path d="M426.7 0H640v480H426.7z" fill="#090" />
         <path d="M213.3 0h213.4v480H213.3z" fill="#bf0000" />
       </g>
-      <g fill="#fff" fillRule="evenodd" stroke="#bd6b00" strokeWidth={0.5} transform="translate(1 27.3) scale(1.06346)">
+      <g
+        fill="#fff"
+        fillRule="evenodd"
+        stroke="#bd6b00"
+        strokeWidth={0.5}
+        transform="translate(1 27.3) scale(1.06346)"
+      >
         <path d="M319.5 225.8h8.3c0 3.2 2 6.6 4.5 8.5h-16c2.5-2.2 3.2-5 3.2-8.5z" />
         <path d="M266.7 178.5l4.6 5 57 .2 4.6-5-14.6-.3-7-5h-23l-6.6 5.1h-15z" stroke="none" />
         <path d="M290 172.7h19.7c2.6-1.4 3.5-5.9 3.5-8.4 0-7.4-5.3-11-10.5-11.2-.8 0-1.7-.6-1.9-1.3-.5-1.6-.4-2.7-1-2.6-.4 0-.3 1-.7 2.4-.3.8-1.1 1.5-2 1.6-6.4.3-10.6 5-10.5 11.1.1 4 .6 6.4 3.4 8.4z" />
@@ -38,7 +49,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           d="M284.7 219.8h3.2v-5.6c0-2.4 2.2-4.9 3.2-5 1.2 0 2.9 2.3 3 4.8v5.8h3.4v-14.4h-12.8v14.4zm25.6 3.3h4v3.2h-4zm-2.4-5.3h4v3.1h-4zm-3.9-5.4h4v3.1h-4zm-3.3-4.5h4v3.1h-4z"
           fill="none"
         />
-        <path d="M298 219.8l4.2.2 7.3 6.4v-3.8l-2.5-1.8v-3l-3.6-2v-3.3l-3.5-1.2V207l-1.7-1.5-.1 14.4z" fill="none" />
+        <path
+          d="M298 219.8l4.2.2 7.3 6.4v-3.8l-2.5-1.8v-3l-3.6-2v-3.3l-3.5-1.2V207l-1.7-1.5-.1 14.4z"
+          fill="none"
+        />
         <path d="M315.4 210.3h1v7.1h-1z" />
         <g id="AFFlagIcon__a">
           <path d="M257.3 186.5c-1.2-2-2.7 2.8-7.8 6.3-2.3 1.6-4 5.9-4 8.7 0 2 .2 3.9 0 5.8-.1 1.1-1.4 3.8-.5 4.5 2.2 1.6 5.1 5.4 6.4 6.7 1.2 1 2.2-5.3 3-8 1-3 .6-6.7 3.2-9.4 1.8-2 6.4-3.8 6-4.6l-6.3-10z" />
@@ -110,7 +124,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
             stroke="none"
           />
         </g>
-        <use height="100%" transform="scale(-1 1)" width="100%" x={-600} xlinkHref="#AFFlagIcon__a" />
+        <use
+          height="100%"
+          transform="scale(-1 1)"
+          width="100%"
+          x={-600}
+          xlinkHref="#AFFlagIcon__a"
+        />
         <g stroke="none">
           <path d="M328.5 286.6c0 1.2.2 2.2 1 3.1a19 19 0 00-13.8 1.1c-1.8.8-4-1-1.9-2.7 3-2.3 9.7-1 14.7-1.5zm-57.5 0a7 7 0 01-.4 3c4.4-1.7 9.1-.2 13.6 1.6 3 1.3 3.3-1 2.8-1.7a6.5 6.5 0 00-5-2.9h-11zm3.8-21.7c-1.3-.5-2.7 0-4 1.4-4.3 4.2-9.4 8.3-13.5 11.6-1.5 1.3-3 3.7 3.4 6 .3.2 5 2 8 2 1.3 0 1.3 1.8 1 2.3-.5 1-.1 1.4-1.1 2.3-1.1 1 0 2.1 1 1.3 3.6-3.2 9.6-1.1 15.3.7 1.4.4 3.8.3 3.8-1.6 0-2 1.5-3.4 2.4-3.5 2.4.4 14 .5 17.5.1 2-.3 2.2 2.9 3.3 4 .8.9 3.7 1.1 5.8.2 4-1.8 10-1.8 12.5 0 1 .7 1.9 0 1.3-.7-.8-1-.7-1.6-1.1-2.4-1-2-.2-2.4.8-2.5 11-1.5 14.6-5.2 11.2-8.3-4.4-3.8-9.2-7.7-13.4-12.2-1.2-1.2-2-1.7-4.3-.7a66.5 66.5 0 01-25.3 5.9 76 76 0 01-24.6-5.8z" />
           <path

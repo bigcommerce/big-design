@@ -5,7 +5,7 @@ import { useStore } from '../../hooks';
 import { Cell, WorksheetItem } from '../../types';
 
 export interface UpdateItemsContextType<T> {
-  updateItems(items: Cell<T>[], newValue: Array<unknown>): void;
+  updateItems(items: Array<Cell<T>>, newValue: unknown[]): void;
 }
 
 interface UpdateItemsProviderProps<Item> {
@@ -33,6 +33,7 @@ export const UpdateItemsProvider = typedMemo(
 
             const row = accum[rowIndex];
             const updatedRow = { ...row, [hash]: newValues[index] };
+
             accum[rowIndex] = updatedRow;
 
             return accum;
@@ -60,6 +61,8 @@ export const UpdateItemsProvider = typedMemo(
       [updateItems],
     );
 
-    return <UpdateItemsContext.Provider value={providerValue}>{children}</UpdateItemsContext.Provider>;
+    return (
+      <UpdateItemsContext.Provider value={providerValue}>{children}</UpdateItemsContext.Provider>
+    );
   },
 );

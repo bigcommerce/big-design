@@ -17,9 +17,10 @@ const BreakpointsPage = () => (
 
     <Panel header="Overview" headerId="overview">
       <Text>
-        BigDesign exposes a set of <Code primary>breakpoints</Code> and <Code primary>breakpointValues</Code> that can
-        be used to create responsive layouts and components. Our breakpoints include <Code primary>mobile</Code>,{' '}
-        <Code primary>tablet</Code> and <Code primary>desktop</Code>. For each breakpoint, the breakpoint values are{' '}
+        BigDesign exposes a set of <Code primary>breakpoints</Code> and{' '}
+        <Code primary>breakpointValues</Code> that can be used to create responsive layouts and
+        components. Our breakpoints include <Code primary>mobile</Code>, <Code primary>tablet</Code>{' '}
+        and <Code primary>desktop</Code>. For each breakpoint, the breakpoint values are{' '}
         <Code>{breakpointValues.mobile}</Code>, <Code>{breakpointValues.tablet}</Code>, and{' '}
         <Code>{breakpointValues.desktop}</Code> respectively.
       </Text>
@@ -36,8 +37,9 @@ const BreakpointsPage = () => (
               <Fragment key="basic">
                 <Text>
                   Most utility components contain responsive props. You can pass in an object with{' '}
-                  <Code primary>breakpoints</Code> as keys to provide values at each breakpoint. BigDesign is
-                  mobile-first in nature, so bigger screen size values will override smaller ones.
+                  <Code primary>breakpoints</Code> as keys to provide values at each breakpoint.
+                  BigDesign is mobile-first in nature, so bigger screen size values will override
+                  smaller ones.
                 </Text>
 
                 <CodePreview scope={{ Box }}>
@@ -56,18 +58,20 @@ const BreakpointsPage = () => (
             render: () => (
               <Fragment key="extending">
                 <Message
+                  marginVertical="medium"
                   messages={[
-                    { text: 'Before extending a component, if possible, use one of BigDesigns core components.' },
+                    {
+                      text: 'Before extending a component, if possible, use one of BigDesigns core components.',
+                    },
                   ]}
                   type="warning"
-                  marginVertical="medium"
                 />
                 <Text>
                   If you need a customized wrapper you can extend one of our utility components (
-                  <Code primary>Box</Code>, <Code primary>Flex</Code>, or <Code primary>Grid</Code>) using{' '}
-                  <Code>styled-components</Code>. Exposed on the <Code primary>theme</Code> object is the{' '}
-                  <Code primary>breakpoints</Code> key. The values returned are <Code>@media</Code> queries ready for
-                  consumtion.
+                  <Code primary>Box</Code>, <Code primary>Flex</Code>, or <Code primary>Grid</Code>)
+                  using <Code>styled-components</Code>. Exposed on the <Code primary>theme</Code>{' '}
+                  object is the <Code primary>breakpoints</Code> key. The values returned are{' '}
+                  <Code>@media</Code> queries ready for consumtion.
                 </Text>
 
                 <CodePreview scope={{ Box }}>
@@ -99,8 +103,9 @@ const BreakpointsPage = () => (
             render: () => (
               <Fragment key="breakpoint-values">
                 <Text>
-                  <Code primary>breakpointValues</Code> are also exposed on the <Code primary>theme</Code> object. Each
-                  value is the <Code>px</Code> value of each breakpoint.
+                  <Code primary>breakpointValues</Code> are also exposed on the{' '}
+                  <Code primary>theme</Code> object. Each value is the <Code>px</Code> value of each
+                  breakpoint.
                 </Text>
 
                 <CodePreview scope={{ Box }}>
@@ -127,7 +132,10 @@ const BreakpointsPage = () => (
     </Panel>
 
     <Panel header="Do's and Don'ts" headerId="guidelines">
-      <GuidelinesTable recommended={['Use built in responsive props, where applicable.']} discouraged={[]} />
+      <GuidelinesTable
+        discouraged={[]}
+        recommended={['Use built in responsive props, where applicable.']}
+      />
     </Panel>
   </>
 );

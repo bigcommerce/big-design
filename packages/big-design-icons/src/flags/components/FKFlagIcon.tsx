@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'FK flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'FK flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -426,8 +431,18 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           strokeWidth={0.5}
           transform="matrix(1.25 0 0 1.3 259.4 -430)"
         />
-        <use height={496.1} transform="translate(-6.6 7.3)" width={992.1} xlinkHref="#FKFlagIcon__l" />
-        <use height={496.1} transform="translate(6.6 3.8)" width={992.1} xlinkHref="#FKFlagIcon__l" />
+        <use
+          height={496.1}
+          transform="translate(-6.6 7.3)"
+          width={992.1}
+          xlinkHref="#FKFlagIcon__l"
+        />
+        <use
+          height={496.1}
+          transform="translate(6.6 3.8)"
+          width={992.1}
+          xlinkHref="#FKFlagIcon__l"
+        />
         <use height={496.1} transform="translate(0 11)" width={992.1} xlinkHref="#FKFlagIcon__l" />
         <path
           d="M409 477a1.9 1.9 0 11-3.8 0 1.9 1.9 0 013.8 0z"

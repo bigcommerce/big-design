@@ -9,18 +9,19 @@ export function depthFirstSearch<T>(
   nodes: TreeProps<T>['nodes'],
   predicate: (node: TreeNodeProps<T>) => boolean,
   greedy?: false,
-): TreeNodeProps<T>[] | null;
+): Array<TreeNodeProps<T>> | null;
 export function depthFirstSearch<T>(
   nodes: TreeProps<T>['nodes'],
   predicate: (node: TreeNodeProps<T>) => boolean,
   greedy?: boolean,
-): TreeNodeProps<T>[] | TreeNodeProps<T> | null;
+): Array<TreeNodeProps<T>> | TreeNodeProps<T> | null;
+
 export function depthFirstSearch<T>(
   nodes: TreeProps<T>['nodes'],
   predicate: (node: TreeNodeProps<T>) => boolean,
   greedy = true,
-): TreeNodeProps<T>[] | TreeNodeProps<T> | null {
-  let list: TreeNodeProps<T>[] = [];
+): Array<TreeNodeProps<T>> | TreeNodeProps<T> | null {
+  let list: Array<TreeNodeProps<T>> = [];
 
   for (const node of nodes) {
     if (predicate(node)) {

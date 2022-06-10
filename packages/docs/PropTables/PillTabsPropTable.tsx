@@ -35,7 +35,7 @@ const pillTabsPropTable: Prop[] = [
 ];
 
 export const PillTabsPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="PillTabs" propList={pillTabsPropTable} {...props} />
+  <PropTable propList={pillTabsPropTable} title="PillTabs" {...props} />
 );
 
 const tabItemProps: Prop[] = [
@@ -54,5 +54,5 @@ const tabItemProps: Prop[] = [
 ];
 
 export const PillTabItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="PillTabs[PillTabItem]" propList={tabItemProps} {...props} />
+  <PropTable propList={tabItemProps} title="PillTabs[PillTabItem]" {...props} />
 );

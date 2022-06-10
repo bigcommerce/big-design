@@ -21,7 +21,9 @@ const radioProps: Prop[] = [
     description: (
       <>
         See{' '}
-        <NextLink href={{ hash: 'radio-description-prop-table', query: { props: 'radio-description' } }}>
+        <NextLink
+          href={{ hash: 'radio-description-prop-table', query: { props: 'radio-description' } }}
+        >
           RadioDescription
         </NextLink>{' '}
         for usage.
@@ -47,7 +49,12 @@ const radioDescriptionProps: Prop[] = [
     description: (
       <>
         See{' '}
-        <NextLink href={{ hash: 'radio-description-link-prop-table', query: { props: 'radio-description-link' } }}>
+        <NextLink
+          href={{
+            hash: 'radio-description-link-prop-table',
+            query: { props: 'radio-description-link' },
+          }}
+        >
           RadioDescriptionLink
         </NextLink>{' '}
         for usage.
@@ -57,13 +64,13 @@ const radioDescriptionProps: Prop[] = [
 ];
 
 export const RadioPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Radio" propList={radioProps} nativeElement={['input', 'all']} {...props} />
+  <PropTable nativeElement={['input', 'all']} propList={radioProps} title="Radio" {...props} />
 );
 
 export const RadioDescriptionPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
-    title="Radio[RadioDescription]"
     propList={radioDescriptionProps}
+    title="Radio[RadioDescription]"
     {...props}
     id="radio-description-prop-table"
   />
@@ -71,8 +78,8 @@ export const RadioDescriptionPropTable: React.FC<PropTableWrapper> = (props) => 
 
 export const RadioDescriptionLinkPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
-    title="Radio[RadioDescriptionLink]"
     propList={messagingLinkItemProps}
+    title="Radio[RadioDescriptionLink]"
     {...props}
     id="radio-description-link-prop-table"
   />

@@ -1,4 +1,9 @@
-import { Colors, theme as defaultTheme, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
+import {
+  Colors,
+  theme as defaultTheme,
+  Spacing,
+  ThemeInterface,
+} from '@bigcommerce/big-design-theme';
 import React, { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes, SVGProps } from 'react';
 import styled from 'styled-components';
 

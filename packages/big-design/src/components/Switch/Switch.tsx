@@ -11,14 +11,26 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLInputElement>;
 }
 
-export const RawSwitch: React.FC<SwitchProps & PrivateProps> = ({ checked, disabled, forwardedRef, ...props }) => {
+export const RawSwitch: React.FC<SwitchProps & PrivateProps> = ({
+  checked,
+  disabled,
+  forwardedRef,
+  ...props
+}) => {
   const uniqueSwitchId = useUniqueId('switch');
   const id = props.id ? props.id : uniqueSwitchId;
 
   return (
     <Flex>
-      <HiddenCheckbox id={id} type="checkbox" checked={checked} disabled={disabled} {...props} ref={forwardedRef} />
-      <StyledSwitchLabel aria-hidden={true} disabled={disabled} htmlFor={id} checked={checked} />
+      <HiddenCheckbox
+        checked={checked}
+        disabled={disabled}
+        id={id}
+        type="checkbox"
+        {...props}
+        ref={forwardedRef}
+      />
+      <StyledSwitchLabel aria-hidden={true} checked={checked} disabled={disabled} htmlFor={id} />
     </Flex>
   );
 };

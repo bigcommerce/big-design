@@ -19,26 +19,30 @@ describe('render Switch', () => {
   });
 
   test('disabled checked', () => {
-    const { container } = render(<Switch checked={true} onChange={() => null} disabled />);
+    const { container } = render(<Switch checked={true} disabled onChange={() => null} />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   test('disabled unchecked', () => {
-    const { container } = render(<Switch checked={false} onChange={() => null} disabled />);
+    const { container } = render(<Switch checked={false} disabled onChange={() => null} />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   test('has correct value for checked', () => {
-    const { getByTestId } = render(<Switch checked={true} onChange={() => null} data-testid="switch" />);
+    const { getByTestId } = render(
+      <Switch checked={true} data-testid="switch" onChange={() => null} />,
+    );
     const input = getByTestId('switch') as HTMLInputElement;
 
     expect(input.checked).toBe(true);
   });
 
   test('has correct value for unchecked', () => {
-    const { getByTestId } = render(<Switch checked={false} onChange={() => null} data-testid="switch" />);
+    const { getByTestId } = render(
+      <Switch checked={false} data-testid="switch" onChange={() => null} />,
+    );
     const input = getByTestId('switch') as HTMLInputElement;
 
     expect(input.checked).toBe(false);
@@ -46,7 +50,9 @@ describe('render Switch', () => {
 
   test('triggers onChange when clicking the checkbox', () => {
     const onChange = jest.fn();
-    const { getByTestId } = render(<Switch checked={true} onChange={onChange} data-testid="switch" />);
+    const { getByTestId } = render(
+      <Switch checked={true} data-testid="switch" onChange={onChange} />,
+    );
     const checkbox = getByTestId('switch') as HTMLInputElement;
 
     fireEvent.click(checkbox);
@@ -57,7 +63,7 @@ describe('render Switch', () => {
   test('forwards ref', () => {
     const ref = createRef<HTMLInputElement>();
 
-    const { container } = render(<Switch ref={ref} data-testid="switch" />);
+    const { container } = render(<Switch data-testid="switch" ref={ref} />);
     const input = container.querySelector('input');
 
     expect(input).toBe(ref.current);

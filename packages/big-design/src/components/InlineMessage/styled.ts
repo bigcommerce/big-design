@@ -21,7 +21,8 @@ export const StyledInlineMessage = styled(Grid)<InlineMessageProps>`
     onClose
       ? css`
           grid-template-areas: 'icon messages close';
-          grid-template-columns: ${({ theme }) => `${theme.spacing.large} 1fr ${theme.spacing.medium}`};
+          grid-template-columns: ${({ theme }) =>
+            `${theme.spacing.large} 1fr ${theme.spacing.medium}`};
         `
       : css`
           grid-template-areas: 'icon messages';

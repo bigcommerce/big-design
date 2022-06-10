@@ -45,7 +45,7 @@ export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
   ${({ width }) =>
     width !== undefined &&
     css`
-      width: ${typeof width === 'string' ? width : width + 'px'};
+      width: ${typeof width === 'string' ? width : `${width}px`};
     `};
 
   ${({ theme, stickyHeader, stickyHeight }) =>
@@ -72,10 +72,12 @@ export const StyledFlex = styled(Flex)<StyledFlexProps>`
         return css`
           justify-content: center;
         `;
+
       case 'right':
         return css`
           justify-content: flex-end;
         `;
+
       default:
         return css`
           justify-content: flex-start;

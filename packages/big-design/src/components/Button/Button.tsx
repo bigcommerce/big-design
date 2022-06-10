@@ -25,27 +25,34 @@ const LoadingSpinner = () => (
   </LoadingSpinnerWrapper>
 );
 
-const RawButton: React.FC<ButtonProps & PrivateProps> = memo(({ forwardedRef, isLoading, disabled, ...props }) => {
-  return (
-    <StyledButton className="bd-button" {...props} ref={forwardedRef} disabled={isLoading || disabled}>
-      {isLoading ? <LoadingSpinner /> : null}
-      <ContentWrapper isLoading={isLoading}>
-        {!props.iconOnly && props.iconLeft}
-        {props.iconOnly}
-        {!props.iconOnly && props.children}
-        {!props.iconOnly && props.iconRight}
-      </ContentWrapper>
-    </StyledButton>
-  );
-});
+const RawButton: React.FC<ButtonProps & PrivateProps> = memo(
+  ({ forwardedRef, isLoading, disabled, ...props }) => {
+    return (
+      <StyledButton
+        className="bd-button"
+        {...props}
+        disabled={isLoading || disabled}
+        ref={forwardedRef}
+      >
+        {isLoading ? <LoadingSpinner /> : null}
+        <ContentWrapper isLoading={isLoading}>
+          {!props.iconOnly && props.iconLeft}
+          {props.iconOnly}
+          {!props.iconOnly && props.children}
+          {!props.iconOnly && props.iconRight}
+        </ContentWrapper>
+      </StyledButton>
+    );
+  },
+);
 
 export const StyleableButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
   <RawButton {...props} forwardedRef={ref} />
 ));
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, style, ...props }, ref) => (
-  <RawButton {...props} forwardedRef={ref} />
-));
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, style, ...props }, ref) => <RawButton {...props} forwardedRef={ref} />,
+);
 
 const defaultProps = {
   actionType: 'normal' as const,

@@ -18,8 +18,8 @@ export const Step: React.FC<StepProps> = memo(({ index, selectedIndex, stepperLe
   return (
     <StyledStep
       display={{ mobile: isSelected ? 'grid' : 'none', tablet: 'grid' }}
-      marginRight={{ tablet: 'xSmall' }}
       marginBottom="xLarge"
+      marginRight={{ tablet: 'xSmall' }}
     >
       <StyledLight
         alignItems="center"
@@ -41,8 +41,8 @@ export const Step: React.FC<StepProps> = memo(({ index, selectedIndex, stepperLe
         )}
       </StyledLight>
       <StyledDash
-        display={{ mobile: 'none', tablet: index === stepperLength - 1 ? 'none' : 'block' }}
         backgroundColor={isComplete ? 'primary' : 'secondary30'}
+        display={{ mobile: 'none', tablet: index === stepperLength - 1 ? 'none' : 'block' }}
       />
       <StyledText color={isActive ? 'secondary70' : 'secondary50'}>{text}</StyledText>
     </StyledStep>

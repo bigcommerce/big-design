@@ -16,7 +16,7 @@ describe('addValues', () => {
   });
 
   test("throws when units don't match", () => {
-    expect(() => addValues('1px', '1rem')).toThrowError();
+    expect(() => addValues('1px', '1rem')).toThrow();
   });
 });
 

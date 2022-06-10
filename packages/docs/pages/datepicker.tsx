@@ -11,14 +11,15 @@ const DatepickerPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Datepickers</Code> allow users to select a specific date. Users can input dates either by typing
-          on the field or by selecting from the dropdown calendar.
+          <Code primary>Datepickers</Code> allow users to select a specific date. Users can input
+          dates either by typing on the field or by selecting from the dropdown calendar.
         </Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            Use a <Code primary>Datepicker</Code> when the user need to input a specific date. It works best when the
-            user need to pick a date close to the present time or the exact date is known by the user.
+            Use a <Code primary>Datepicker</Code> when the user need to input a specific date. It
+            works best when the user need to pick a date close to the present time or the exact date
+            is known by the user.
           </List.Item>
         </List>
       </Panel>
@@ -44,11 +45,11 @@ const DatepickerPage = () => {
                           <FormGroup>
                             <Datepicker
                               label="Pick a date"
-                              min="06/03/2020"
+                              locale="en-US"
                               max="06/19/2020"
+                              min="06/03/2020"
                               onDateChange={(value: string) => setDate(value)}
                               value={date}
-                              locale="en-US"
                             />
                           </FormGroup>
                         </Form>
@@ -65,9 +66,10 @@ const DatepickerPage = () => {
               render: () => (
                 <Fragment key="error-state">
                   <Text>
-                    <Code primary>Datepicker</Code> allows you to pass in an <Code primary>error</Code> message that
-                    will control the styles of a counter. The logic on the <Code primary>Datepicker</Code> can be
-                    controlled with the <Code primary>onDateChange</Code> prop.
+                    <Code primary>Datepicker</Code> allows you to pass in an{' '}
+                    <Code primary>error</Code> message that will control the styles of a counter.
+                    The logic on the <Code primary>Datepicker</Code> can be controlled with the{' '}
+                    <Code primary>onDateChange</Code> prop.
                   </Text>
 
                   <CodePreview>
@@ -94,8 +96,8 @@ const DatepickerPage = () => {
                               error={errors}
                               label="Pick a date"
                               onDateChange={handleChange}
-                              value={date}
                               required
+                              value={date}
                             />
                           </FormGroup>
                         </Form>
@@ -116,17 +118,18 @@ const DatepickerPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
+          discouraged={[
+            "Don’t enable dates that are erroneous in the context, for example, don’t enable dates in the past when users are planning a campaign, and don't enable a date that is prior to the start date in the end date picker.",
+          ]}
           recommended={[
             'The selectable dates in the dropdown calendar should be suitable for the context. Use min and max dates to help prevent user error.',
             <>
-              <Code primary>Datepicker</Code> works best when the user need to pick a date in the near future (or past)
-              or the exact date is known by the user. If a user needs to input a far distant date, consider having the
-              dropdown calendar default open to a more convenient day.
+              <Code primary>Datepicker</Code> works best when the user need to pick a date in the
+              near future (or past) or the exact date is known by the user. If a user needs to input
+              a far distant date, consider having the dropdown calendar default open to a more
+              convenient day.
             </>,
             'Spell out the name of the month to distinguish it from the day.',
-          ]}
-          discouraged={[
-            "Don’t enable dates that are erroneous in the context, for example, don’t enable dates in the past when users are planning a campaign, and don't enable a date that is prior to the start date in the end date picker.",
           ]}
         />
       </Panel>

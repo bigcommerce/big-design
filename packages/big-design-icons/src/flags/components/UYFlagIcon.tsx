@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'UY flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'UY flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -23,7 +28,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <path d="M0 0h640v480H0z" fill="#fff" />
-      <path d="M266 53.3h374v53.4H266zm0 106.7h374v53.3H266zM0 266.7h640V320H0zm0 106.6h640v53.4H0z" fill="#0038a8" />
+      <path
+        d="M266 53.3h374v53.4H266zm0 106.7h374v53.3H266zM0 266.7h640V320H0zm0 106.6h640v53.4H0z"
+        fill="#0038a8"
+      />
       <g
         fill="#fcd116"
         stroke="#000"
@@ -34,7 +42,11 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
         <g id="UYFlagIcon__c">
           <g id="UYFlagIcon__b">
             <g id="UYFlagIcon__a">
-              <path d="M1.5 9L6 12c-8 13 1 15-6 21 3-7-3-5-3-17" strokeLinecap="square" transform="rotate(22.5)" />
+              <path
+                d="M1.5 9L6 12c-8 13 1 15-6 21 3-7-3-5-3-17"
+                strokeLinecap="square"
+                transform="rotate(22.5)"
+              />
               <path d="M0 11c-2 13 4.5 17 0 22" fill="none" transform="rotate(22.5)" />
               <path d="M0 0h6L0 33-6 0h6v33" />
             </g>

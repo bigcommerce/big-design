@@ -7,20 +7,35 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'KP flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'KP flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg aria-hidden={ariaHidden} aria-labelledby={titleId} ref={svgRef} viewBox="0 0 640 480" {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="KPFlagIcon__a">
           <path d="M5 .1h682.6V512H5.1z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g clipPath="url(#KPFlagIcon__a)" fillRule="evenodd" transform="translate(-4.8 -.1) scale(.93768)">
+      <g
+        clipPath="url(#KPFlagIcon__a)"
+        fillRule="evenodd"
+        transform="translate(-4.8 -.1) scale(.93768)"
+      >
         <path d="M776 511.5H-76V.5h852z" fill="#fff" stroke="#000" />
         <path d="M776 419H-76v92.5h852z" fill="#3e5698" />
         <path d="M776 397.6H-76V114.4h852z" fill="#c60000" />

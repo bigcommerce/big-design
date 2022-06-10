@@ -86,17 +86,17 @@ const hrProps: Prop[] = [
 ];
 
 export const TypographyPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Typography" propList={typographyProps} {...props} />
+  <PropTable propList={typographyProps} title="Typography" {...props} />
 );
 
 export const HeadingPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Heading" propList={headingProps} {...props} />
+  <PropTable propList={headingProps} title="Heading" {...props} />
 );
 
 export const TextPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Text" propList={textProps} {...props} />
+  <PropTable propList={textProps} title="Text" {...props} />
 );
 
 export const HRPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="HR" propList={hrProps} {...props} />
+  <PropTable propList={hrProps} title="HR" {...props} />
 );

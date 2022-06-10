@@ -92,7 +92,12 @@ test('dropdown toggle has an id', () => {
 });
 
 test('dropdown toggle accepts a custom id', () => {
-  render(<Dropdown items={[{ content: 'Option', onItemClick }]} toggle={<Button id="testId">Button</Button>} />);
+  render(
+    <Dropdown
+      items={[{ content: 'Option', onItemClick }]}
+      toggle={<Button id="testId">Button</Button>}
+    />,
+  );
 
   const toggle = screen.getByRole('button');
 
@@ -167,7 +172,7 @@ test('dropdown menu should have 4 dropdown items', async () => {
 
   const options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(4);
+  expect(options).toHaveLength(4);
 });
 
 test('should accept a maxHeight prop', async () => {
@@ -212,7 +217,7 @@ test('dropdown items should immediately rerender when prop changes', async () =>
 
   let options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(4);
+  expect(options).toHaveLength(4);
 
   rerender(
     <Dropdown
@@ -226,7 +231,7 @@ test('dropdown items should immediately rerender when prop changes', async () =>
 
   options = await screen.findAllByRole('option');
 
-  expect(options.length).toBe(2);
+  expect(options).toHaveLength(2);
 });
 
 test('first dropdown item should be selected when dropdown is opened', async () => {
@@ -395,7 +400,7 @@ test('dropdown menu renders 4 link when passed options of type link', async () =
   const list = await screen.findByRole('listbox');
   const options = list.querySelectorAll('a');
 
-  expect(options.length).toBe(4);
+  expect(options).toHaveLength(4);
 
   options.forEach((option) => {
     expect(option.getAttribute('href')).toBe('#');
@@ -413,15 +418,15 @@ test('items renders icons', async () => {
 
   const svgs = list.querySelectorAll('svg');
 
-  expect(svgs.length).toBe(1);
+  expect(svgs).toHaveLength(1);
 });
 
 test('does not forward styles', async () => {
   render(
     <Dropdown
       className="test"
-      style={{ background: 'red' }}
       items={[{ content: 'Option 1', url: '#', type: 'link' }]}
+      style={{ background: 'red' }}
       toggle={<Button>Button</Button>}
     />,
   );
@@ -432,7 +437,7 @@ test('does not forward styles', async () => {
 
   const list = await screen.findByRole('listbox');
 
-  expect(list.getElementsByClassName('test').length).toBe(0);
+  expect(list.getElementsByClassName('test')).toHaveLength(0);
   expect(list).not.toHaveStyle('background: red');
 });
 
@@ -542,6 +547,7 @@ test('group labels are grayed out', async () => {
   render(GroupedDropdownMock);
 
   const toggle = screen.getByRole('button');
+
   fireEvent.click(toggle);
 
   const label1 = await screen.findByText('Label 1');
@@ -608,7 +614,7 @@ test('renders appropriate amount of list items', async () => {
   const list = await screen.findByRole('listbox');
   const listItems = list.querySelectorAll('li');
 
-  expect(listItems.length).toBe(3);
+  expect(listItems).toHaveLength(3);
 });
 
 test('rendered line separators have correct accessibility properties', async () => {
@@ -621,8 +627,12 @@ test('rendered line separators have correct accessibility properties', async () 
   const list = await screen.findByRole('listbox');
   const hrListItems = list.querySelectorAll('hr');
 
-  expect(hrListItems[0].parentElement && hrListItems[0].parentElement.getAttribute('aria-hidden')).toBe('true');
-  expect(hrListItems[0].parentElement && hrListItems[0].parentElement.getAttribute('tabindex')).toBe('-1');
+  expect(
+    hrListItems[0].parentElement && hrListItems[0].parentElement.getAttribute('aria-hidden'),
+  ).toBe('true');
+  expect(
+    hrListItems[0].parentElement && hrListItems[0].parentElement.getAttribute('tabindex'),
+  ).toBe('-1');
 });
 
 test('rendered line separators cannot be focused on', async () => {

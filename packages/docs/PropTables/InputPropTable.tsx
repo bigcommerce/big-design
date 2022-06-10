@@ -13,8 +13,8 @@ const inputProps: Prop[] = [
     types: ['string', 'string[]', 'FormControlError', 'FormControlError[]'],
     description: (
       <>
-        Displays an error message for the field. Error message will be passed to the <Code>FormGroup</Code> for display
-        purposes.
+        Displays an error message for the field. Error message will be passed to the{' '}
+        <Code>FormGroup</Code> for display purposes.
       </>
     ),
   },
@@ -23,7 +23,8 @@ const inputProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the
+        text.
       </>
     ),
   },
@@ -32,7 +33,8 @@ const inputProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the right of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the right of the
+        text.
       </>
     ),
   },
@@ -41,7 +43,8 @@ const inputProps: Prop[] = [
     types: ['string', 'FormControlLabel'],
     description: (
       <>
-        Label element for inputs. Component with auto generate <Code>id</Code>'s for the accessibility API.
+        Label element for inputs. Component with auto generate <Code>id</Code>'s for the
+        accessibility API.
       </>
     ),
   },
@@ -57,5 +60,5 @@ const inputProps: Prop[] = [
 ];
 
 export const InputPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Input" propList={inputProps} nativeElement={['input', 'all']} {...props} />
+  <PropTable nativeElement={['input', 'all']} propList={inputProps} title="Input" {...props} />
 );

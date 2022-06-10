@@ -11,5 +11,5 @@ const progressBarProps: Prop[] = [
 ];
 
 export const ProgressBarPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="ProgressBar" propList={progressBarProps} {...props} />
+  <PropTable propList={progressBarProps} title="ProgressBar" {...props} />
 );

@@ -7,7 +7,12 @@ import { PrivateIconProps } from '../../base';
 import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'JE flag', theme, ...props }) => {
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'JE flag',
+  theme,
+  ...props
+}) => {
   const uniqueTitleId = useUniqueId('icon');
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
@@ -64,15 +69,28 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
               fill="#ff0016"
               strokeWidth={0.1}
             />
-            <path d="M113 26.5l-1-.3m1 .3h-1m1 .1l-.9.3m1.7-.4l1-.3m-1 .3h1.2m-1.2.1l1 .3" strokeWidth={0.1} />
+            <path
+              d="M113 26.5l-1-.3m1 .3h-1m1 .1l-.9.3m1.7-.4l1-.3m-1 .3h1.2m-1.2.1l1 .3"
+              strokeWidth={0.1}
+            />
             <path
               d="M108.1 23.4c-.3-.4-1 0-1 .4.2-.3.6.1.9 0 .1 0 .3-.2.1-.4zm-.3.9c-.3-.4-1.1 0-1.1.4.2-.3.6.1.9 0 .1 0 .3-.3.2-.4zm-.2 1.2c-.4-.4-1.1 0-1 .5.2-.3.6 0 .8 0 .2-.1.3-.4.1-.5zm.3 3.7c-.4-.4-1 .1-1 .6.2-.4.7 0 1-.2 0 0 .2-.3 0-.5zm0 .7c-.5-.1-1 .6-.7 1 0-.5.6-.3.8-.5l-.1-.5zm.6.7c-.5-.2-1 .4-.7.8 0-.3.6-.2.7-.4v-.5zm11.7 1.1c-.5-.1-1 .5-.7 1 0-.5.6-.3.8-.5l-.1-.5zm.6.6c-.5-.1-.9.6-.6 1 0-.5.6-.4.7-.6.1-.1.1-.4 0-.4zm-.4-1.4c-.4-.2-1 .4-.9.8.2-.4.7-.1.9-.3V31zm8.3 1c-.4-.1-.8.6-.6 1 0-.4.6-.3.8-.5 0-.2 0-.5-.2-.5zm0-.7c-.4-.3-1 .3-.8.7.2-.3.7-.1.9-.3v-.5zm.4 1.3c-.5 0-.9.7-.6 1 0-.4.6-.3.7-.5.1-.2 0-.4-.1-.5zm-15.6-5.2c.3 0 .4.1.4.7 0 1 0 1.6-.4 1.6-.3 0-.3-.5-.3-1.3 0-.4 0-.7-.1-.6 0-.3.1-.4.4-.4z"
               fill="#0051ba"
               strokeWidth={0}
             />
           </g>
-          <use height={18} transform="matrix(.9 0 0 .9 11.6 13.7)" width={30} xlinkHref="#JEFlagIcon__b" />
-          <use height={18} transform="matrix(.67 0 0 .75 39.2 27.5)" width={30} xlinkHref="#JEFlagIcon__b" />
+          <use
+            height={18}
+            transform="matrix(.9 0 0 .9 11.6 13.7)"
+            width={30}
+            xlinkHref="#JEFlagIcon__b"
+          />
+          <use
+            height={18}
+            transform="matrix(.67 0 0 .75 39.2 27.5)"
+            width={30}
+            xlinkHref="#JEFlagIcon__b"
+          />
         </g>
       </g>
     </svg>

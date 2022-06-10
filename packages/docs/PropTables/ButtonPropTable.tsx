@@ -14,7 +14,8 @@ const buttonProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the
+        text.
       </>
     ),
   },
@@ -23,7 +24,8 @@ const buttonProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to replace content with an icon.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to replace content with an
+        icon.
       </>
     ),
   },
@@ -32,7 +34,8 @@ const buttonProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the right of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the right of the
+        text.
       </>
     ),
   },
@@ -57,5 +60,5 @@ const buttonProps: Prop[] = [
 ];
 
 export const ButtonPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Button" propList={buttonProps} {...props} />
+  <PropTable propList={buttonProps} title="Button" {...props} />
 );

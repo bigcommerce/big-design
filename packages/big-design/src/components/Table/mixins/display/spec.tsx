@@ -21,7 +21,9 @@ test('display', () => {
 });
 
 test('responsive display', () => {
-  const { container } = render(<TestComponent display={{ mobile: 'none', tablet: 'table-cell' }} />);
+  const { container } = render(
+    <TestComponent display={{ mobile: 'none', tablet: 'table-cell' }} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
 });
