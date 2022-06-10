@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.31.0...@bigcommerce/big-design@0.31.1) (2022-06-10)
+
+
+### Bug Fixes
+
+* **component:** fix Worksheet onchnage typings ([#858](https://github.com/bigcommerce/big-design/issues/858)) ([3710cf5](https://github.com/bigcommerce/big-design/commit/3710cf5fb32b033ebbe5bcc90b0d3887c2037781))
+* **component:** StatefulTable and Table has rendering hiccup when dragging & dropping ([#860](https://github.com/bigcommerce/big-design/issues/860)) ([81c9d4b](https://github.com/bigcommerce/big-design/commit/81c9d4b6f221999f9ee463a3f2b72f6af5ddff06))
+
+
+### Features
+
+* **component:** add css gap props in Flex and Grid components ([#849](https://github.com/bigcommerce/big-design/issues/849)) ([d7ae396](https://github.com/bigcommerce/big-design/commit/d7ae3960d292e2481c3bdcedda0a4ba14f261950))
+* **component:** disable button when isLoading ([0bb27b4](https://github.com/bigcommerce/big-design/commit/0bb27b44f1f51a0d0f653114a7dec72c035eeffb))
+
+
+
+
+
 # [0.31.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.30.3-alpha.2...@bigcommerce/big-design@0.31.0) (2022-05-11)
 
 

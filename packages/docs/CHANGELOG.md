@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.31.0...@bigcommerce/docs@0.31.1) (2022-06-10)
+
+
+### Features
+
+* **component:** add css gap props in Flex and Grid components ([#849](https://github.com/bigcommerce/big-design/issues/849)) ([d7ae396](https://github.com/bigcommerce/big-design/commit/d7ae3960d292e2481c3bdcedda0a4ba14f261950))
+
+
+
+
+
 # [0.31.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.3-alpha.2...@bigcommerce/docs@0.31.0) (2022-05-11)
 
 

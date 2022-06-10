@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.14.0...@bigcommerce/big-design-theme@0.14.1) (2022-06-10)
+
+
+### Features
+
+* **theme:** re-export hideVisually from polished ([e102e6d](https://github.com/bigcommerce/big-design/commit/e102e6dfc6d28b311556946d3e90d2323885713f))
+
+
+
+
+
 # [0.14.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.13.2-alpha.1...@bigcommerce/big-design-theme@0.14.0) (2022-05-11)
 
 **Note:** Version bump only for package @bigcommerce/big-design-theme
