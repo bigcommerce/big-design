@@ -2612,6 +2612,18 @@
     deepmerge "^4.2.2"
     svgo "^1.2.2"
 
+"@tanstack/react-table@8.0.0-beta.8":
+  version "8.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.0.0-beta.8.tgz#f5992029a216e1b0eac0bb2289d6387806fb5a34"
+  integrity sha512-hffDi9NnSI2tl/l3cW0CH8ErI1aJOWzIo6of0t1KMGdfES6mDcnfYMMRjm89ffaWogqVrdkKFJfbNAwV0g/0iA==
+  dependencies:
+    "@tanstack/table-core" "8.0.0-beta.8"
+
+"@tanstack/table-core@8.0.0-beta.8":
+  version "8.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.0.0-beta.8.tgz#ade867e0f8f282ffba15fb465fbed2847c4a6832"
+  integrity sha512-uIl9kHsuyP09Mc5DBhCzBavRg/e2KNUnZmb7/SW6ec+l2cyC4n64c1B64rDVzIn0CaV/0ajuXB4gI3xfcGsPfg==
+
 "@testing-library/dom@^8.0.0", "@testing-library/dom@^8.11.1":
   version "8.13.0"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.13.0.tgz#bc00bdd64c7d8b40841e27a70211399ad3af46f5"

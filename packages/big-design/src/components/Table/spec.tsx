@@ -38,9 +38,9 @@ const getSimpleTable = ({
     style={style}
     columns={
       columns || [
-        { header: 'Sku', render: ({ sku }) => sku },
-        { header: 'Name', render: ({ name }) => name },
-        { header: 'Stock', render: ({ stock }) => stock },
+        { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+        { header: 'Name', hash: 'name', render: ({ name }) => name },
+        { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
       ]
     }
     items={
@@ -98,8 +98,8 @@ test('renders column with custom component', () => {
   const { getAllByTestId } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', render: ({ name }: any) => <h3 data-testid="name">{name}</h3> },
+        { header: 'Sku', hash: 'sku', render: ({ sku }: any) => sku },
+        { header: 'Name', hash: 'name', render: ({ name }: any) => <h3 data-testid="name">{name}</h3> },
       ],
     }),
   );
@@ -111,8 +111,8 @@ test('renders column with tooltip icon', () => {
   const { getByTitle } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+        { header: 'Sku', hash: 'sku', render: ({ sku }: any) => sku },
+        { header: 'Name', hash: 'name', tooltip: 'Some text', render: ({ name }: any) => name },
       ],
     }),
   );
@@ -124,8 +124,8 @@ test('renders tooltip when hovering on icon', async () => {
   const { getByTitle } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+        { header: 'Sku', hash: 'sku', render: ({ sku }: any) => sku },
+        { header: 'Name', hash: 'name', tooltip: 'Some text', render: ({ name }: any) => name },
       ],
     }),
   );
@@ -143,12 +143,14 @@ test('tweaks column styles with props', () => {
       columns: [
         {
           header: 'Sku',
+          hash: 'sku',
           render: ({ sku }: any) => sku,
           align: 'right',
           verticalAlign: 'middle',
         },
         {
           header: 'Name',
+          hash: 'name',
           render: ({ name }: any) => name,
           width: 100,
           withPadding: false,
