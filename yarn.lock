@@ -9726,9 +9726,9 @@ through@2, "through@>=2.2.7 <3", through@^2.3.4, through@^2.3.6, through@^2.3.8:
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
 
 tiny-async-pool@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/tiny-async-pool/-/tiny-async-pool-2.0.1.tgz#b91a5e9fa539f2d89b2201cd843a7341fe2710a7"
-  integrity sha512-QIXBQdZdFWb7sLsuS5R8+23YdUXypkplXG+C3AMkEVzUlAZ/2EWrQzfAey0l4/r8ih+F7KgbJdPWHrfOce908A==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-async-pool/-/tiny-async-pool-2.1.0.tgz#3ec126568c18a7916912fb9fbecf812337ec6b84"
+  integrity sha512-ltAHPh/9k0STRQqaoUX52NH4ZQYAJz24ZAEwf1Zm+HYg3l9OXTWeqWKyYsHu40wF/F0rxd2N2bk5sLvX2qlSvg==
 
 tiny-invariant@^1.0.6:
   version "1.1.0"
