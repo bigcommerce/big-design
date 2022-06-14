@@ -1,10 +1,11 @@
 import 'jest-styled-components';
 
+import userEvent from '@testing-library/user-event';
 import React, { createRef } from 'react';
 import type { ReactDatePicker } from 'react-datepicker';
 import { act } from 'react-dom/test-utils';
 
-import { fireEvent, render, waitFor } from '@test/utils';
+import { fireEvent, render, screen, waitFor } from '@test/utils';
 
 import { FormGroup } from '..';
 
@@ -14,15 +15,12 @@ test('should use the passed in ref object if provided', async () => {
   const ref = createRef<ReactDatePicker>();
   const { container } = render(<Datepicker onDateChange={jest.fn()} ref={ref} />);
 
-  const input = container.querySelector('input');
+  const input = await screen.findByRole('textbox');
 
-  if (input) {
-    await waitFor(() => fireEvent.click(input));
-  }
+  await userEvent.click(input);
 
   const datepicker = container.querySelector('.react-datepicker');
-  const refClassname =
-    ref.current && ref.current.props.calendarClassName ? ref.current.props.calendarClassName : '';
+  const refClassname = ref?.current?.props?.calendarClassName ?? '';
 
   expect(datepicker?.className.includes(refClassname)).toBeTruthy();
 });
@@ -39,11 +37,9 @@ test('calls onDateChange function when a date cell is clicked', async () => {
   const changeFunction = jest.fn();
   const { container } = render(<Datepicker onDateChange={changeFunction} />);
 
-  const input = container.querySelector('input');
+  const input = await screen.findByRole('textbox');
 
-  if (input) {
-    await waitFor(() => fireEvent.click(input));
-  }
+  await userEvent.click(input);
 
   const datepicker = container.querySelector('.react-datepicker');
 
@@ -60,19 +56,19 @@ test('calls onDateChange function when a date cell is clicked', async () => {
 
 test('no error when input date value manually', async () => {
   const changeFunction = jest.fn();
-  const { container } = render(<Datepicker onDateChange={changeFunction} />);
+
+  render(<Datepicker onDateChange={changeFunction} />);
 
   const dateString = 'Wed, 03 June, 2020';
-  const input = container.querySelector('input');
+
+  const input = await screen.findByRole('textbox');
 
   await waitFor(() => {
-    if (input) {
-      fireEvent.input(input, {
-        target: {
-          value: dateString,
-        },
-      });
-    }
+    fireEvent.input(input, {
+      target: {
+        value: dateString,
+      },
+    });
   });
 
   expect(changeFunction).not.toHaveBeenCalled();
@@ -102,11 +98,9 @@ test('dates before minimum date passed are disabled', async () => {
   const { container } = render(
     <Datepicker label="label" min={minimumDate} onDateChange={jest.fn()} value={selectedDate} />,
   );
-  const input = container.querySelector('input');
+  const input = await screen.findByRole('textbox');
 
-  if (input) {
-    await waitFor(() => fireEvent.click(input));
-  }
+  await userEvent.click(input);
 
   const disabledDate = container.querySelector('.react-datepicker__day--003');
 
@@ -119,11 +113,9 @@ test('dates after max date passed are disabled', async () => {
   const { container } = render(
     <Datepicker label="label" max={maximumDate} onDateChange={jest.fn()} value={selectedDate} />,
   );
-  const input = container.querySelector('input');
+  const input = await screen.findByRole('textbox');
 
-  if (input) {
-    await waitFor(() => fireEvent.click(input));
-  }
+  await userEvent.click(input);
 
   const disabledDate = container.querySelector('.react-datepicker__day--011');
 

@@ -59,7 +59,7 @@ const getSimpleGrid = (
   ${cssKey}: ${gridedProp}
 `;
 
-const getResponsiveGrid: GridedOverload = (
+const getResponsiveGrid = (
   gridedProp: any,
   theme: ThemeInterface,
   cssKey: string,

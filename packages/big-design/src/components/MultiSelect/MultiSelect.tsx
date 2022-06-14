@@ -320,11 +320,7 @@ export const MultiSelect = typedMemo(
       }
 
       if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement(
-          // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-          label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
-          getLabelProps(),
-        );
+        return cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, getLabelProps());
       }
 
       warning('label must be either a string or a FormControlLabel component.');

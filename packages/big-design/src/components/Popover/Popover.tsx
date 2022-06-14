@@ -115,11 +115,10 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
   });
 
   useEffect(() => {
-    // @ts-expect-error current is HTMLElement
-    const prevFocus: HTMLElement = previousFocus.current;
+    const prevFocus = previousFocus.current;
 
     return () => {
-      if (prevFocus && typeof prevFocus.focus === 'function') {
+      if (prevFocus instanceof HTMLElement) {
         prevFocus.focus();
       }
     };

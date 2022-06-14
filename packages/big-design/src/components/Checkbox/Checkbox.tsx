@@ -67,15 +67,11 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
     }
 
     if (isValidElement(label) && label.type === CheckboxLabel) {
-      return cloneElement(
-        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-        label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
-        {
-          hidden: hiddenLabel,
-          htmlFor: id,
-          id: labelId,
-        },
-      );
+      return cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, {
+        hidden: hiddenLabel,
+        htmlFor: id,
+        id: labelId,
+      });
     }
 
     warning('label must be either a string or a CheckboxLabel component.');
@@ -114,7 +110,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
               // RefObject.current is readonly in DefinitelyTyped
               // but in practice you can still write to it.
               // See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/31065
-              // @ts-expect-error Can still write
+              // @ts-expect-error TODO look into useImperativeHandle
               forwardedRef.current = checkbox;
             }
           }

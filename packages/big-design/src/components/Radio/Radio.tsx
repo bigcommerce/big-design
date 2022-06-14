@@ -51,14 +51,10 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
     }
 
     if (isValidElement(label) && label.type === RadioLabel) {
-      return cloneElement(
-        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-        label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
-        {
-          htmlFor: id,
-          id: labelId,
-        },
-      );
+      return cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, {
+        htmlFor: id,
+        id: labelId,
+      });
     }
 
     warning('label must be either a string or a RadioLabel component.');

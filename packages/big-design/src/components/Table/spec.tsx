@@ -540,23 +540,22 @@ describe('draggable', () => {
     expect(dragIcons).toHaveLength(items.length);
   });
 
-  test('onRowDrop called with expected args when a row is dropped', () => {
+  test('onRowDrop called with expected args when a row is dropped', async () => {
     const spaceKey = { keyCode: 32 };
     const downKey = { keyCode: 40 };
-    const { container } = render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
-    const dragEl: HTMLElement | null = container.querySelector('[data-rbd-draggable-id]');
 
-    if (dragEl && dragEl.focus) {
-      dragEl.focus();
-    }
+    render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
+
+    const dragEls = await screen.findAllByRole<HTMLButtonElement>('button');
+    const dragEl = dragEls[0];
+
+    dragEl.focus();
 
     expect(dragEl).toHaveFocus();
 
-    if (dragEl) {
-      fireEvent.keyDown(dragEl, spaceKey);
-      fireEvent.keyDown(dragEl, downKey);
-      fireEvent.keyDown(dragEl, spaceKey);
-    }
+    fireEvent.keyDown(dragEl, spaceKey);
+    fireEvent.keyDown(dragEl, downKey);
+    fireEvent.keyDown(dragEl, spaceKey);
 
     expect(onRowDrop).toHaveBeenCalledWith(0, 1);
   });

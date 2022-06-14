@@ -69,7 +69,7 @@ const InternalModal: React.FC<ModalProps> = ({
   const initialBodyOverflowYRef = useRef('');
   const internalTrap = useRef<FocusTrap | null>(null);
   const headerUniqueId = useUniqueId('modal_header');
-  const [modalRef, setModalRef] = useState<HTMLDivElement | HTMLElement | null>(null);
+  const [modalRef, setModalRef] = useState<HTMLDivElement | null>(null);
 
   const onClickAway = (event: React.MouseEvent) => {
     if (closeOnClickOutside && modalRef === event.target) {

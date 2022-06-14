@@ -61,7 +61,7 @@ class AlertsManager {
   remove = (key: string) => {
     let removed: AlertProps | undefined;
 
-    this.alerts = this.alerts.reduce((acc: PrivateAlert[], alert) => {
+    this.alerts = this.alerts.reduce<PrivateAlert[]>((acc, alert) => {
       if (alert.key === key) {
         removed = alert;
 

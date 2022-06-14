@@ -1,7 +1,7 @@
 import React from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { StatefulTable, StatefulTablePillTabFilter, StatefulTableProps } from './StatefulTable';
 
@@ -122,32 +122,33 @@ test('renders rows without checkboxes when opting in to selectable', () => {
   expect(queryAllByRole('checkbox')).toHaveLength(105);
 });
 
-test('items are unselected by default', () => {
-  const { container } = render(getSimpleTable({ selectable: true }));
-  const checkboxes: NodeListOf<HTMLInputElement> = container.querySelectorAll('tbody > tr input');
+test('items are unselected by default', async () => {
+  render(getSimpleTable({ selectable: true }));
+
+  const checkboxes = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
   expect(checkboxes[0].checked).toBe(false);
 });
 
-test('items can be selected by default', () => {
+test('items can be selected by default', async () => {
   const testItem = { name: 'Test Item', stock: 1 };
   const items: TestItem[] = [testItem];
-  const { container } = render(
-    getSimpleTable({ selectable: true, items, defaultSelected: [testItem] }),
-  );
-  const checkboxes: NodeListOf<HTMLInputElement> = container.querySelectorAll('tbody > tr input');
+
+  render(getSimpleTable({ selectable: true, items, defaultSelected: [testItem] }));
+
+  const checkboxes = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
   expect(checkboxes[0].checked).toBe(true);
 });
 
-test('onSelectionChange gets called when an item selection happens', () => {
+test('onSelectionChange gets called when an item selection happens', async () => {
   const testItemOne = { name: 'Test Item', stock: 1 };
   const testItemTwo = { name: 'Test Item Two', stock: 2 };
   const testItemThree = { name: 'Test Item Three', stock: 3 };
   const items: TestItem[] = [testItemOne, testItemTwo, testItemThree];
   const onSelectionChange = jest.fn();
 
-  const { container } = render(
+  render(
     getSimpleTable({
       selectable: true,
       items,
@@ -156,9 +157,9 @@ test('onSelectionChange gets called when an item selection happens', () => {
     }),
   );
 
-  const checkboxes: NodeListOf<HTMLInputElement> = container.querySelectorAll('tbody > tr input');
+  const checkboxes = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
-  fireEvent.click(checkboxes[0]);
+  fireEvent.click(checkboxes[1]);
 
   expect(onSelectionChange).toHaveBeenCalledWith([testItemThree, testItemOne]);
 });
