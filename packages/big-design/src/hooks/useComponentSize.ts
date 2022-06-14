@@ -31,6 +31,7 @@ export const useComponentSize = <T extends HTMLElement>(ref: RefObject<T>): Comp
     if (typeof MutationObserver === 'function') {
       const observer = new MutationObserver(handleResize);
 
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       observer.observe(ref.current as unknown as Node, { childList: true });
 
       return () => {

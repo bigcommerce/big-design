@@ -5,6 +5,7 @@ import { StyleableH4 } from '../../Typography/private';
 
 import { LabelProps } from './Label';
 
+// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export const StyledLabel = styled(StyleableH4).attrs({
   as: 'label',
 })<LabelProps>`

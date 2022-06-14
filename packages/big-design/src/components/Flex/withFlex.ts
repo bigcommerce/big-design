@@ -52,17 +52,20 @@ const getSimpleFlex = (
   ${cssKey}: ${flexedProp}
 `;
 
-const getResponsiveFlex: FlexedOverload = (
+const getResponsiveFlex = (
   flexedProp: any,
   theme: ThemeInterface,
   cssKey: string,
 ): FlattenSimpleInterpolation[] => {
   const breakpointKeys = Object.keys(flexedProp).sort(
     (firstBreakpoint, secondBreakpoint) =>
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       breakpointsOrder.indexOf(firstBreakpoint as keyof Breakpoints) -
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       breakpointsOrder.indexOf(secondBreakpoint as keyof Breakpoints),
   );
 
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   return (breakpointKeys as Array<keyof Breakpoints>).map(
     (breakpointKey) =>
       css`

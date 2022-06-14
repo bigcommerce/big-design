@@ -2,7 +2,7 @@ import { theme } from '@bigcommerce/big-design-theme';
 import React from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { InlineMessage, InlineMessageProps } from './InlineMessage';
 
@@ -52,21 +52,21 @@ test('render info InlineMessage', () => {
   );
 });
 
-test('renders with link', () => {
-  const { queryByRole, container } = render(
+test('renders with link', async () => {
+  const { container } = render(
     <InlineMessage messages={[{ text: 'Success', link: { text: 'Link', href: '#' } }]} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
 
-  const link = queryByRole('link') as HTMLAnchorElement;
+  const link = await screen.findByRole<HTMLAnchorElement>('link');
 
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
 });
 
-test('renders with external link', () => {
-  const { queryByRole, container } = render(
+test('renders with external link', async () => {
+  const { container } = render(
     <InlineMessage
       messages={[
         { text: 'Success', link: { text: 'Link', href: '#', external: true, target: '_blank' } },
@@ -76,7 +76,7 @@ test('renders with external link', () => {
 
   expect(container.firstChild).toMatchSnapshot();
 
-  const link = queryByRole('link') as HTMLAnchorElement;
+  const link = await screen.findByRole<HTMLAnchorElement>('link');
 
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
@@ -102,11 +102,12 @@ test('renders close button', () => {
   expect(queryByRole('button')).toBeDefined();
 });
 
-test('trigger onClose', () => {
+test('trigger onClose', async () => {
   const fn = jest.fn();
-  const { queryByRole } = render(<InlineMessage messages={[{ text: 'Success' }]} onClose={fn} />);
 
-  const button = queryByRole('button') as HTMLButtonElement;
+  render(<InlineMessage messages={[{ text: 'Success' }]} onClose={fn} />);
+
+  const button = await screen.findByRole<HTMLButtonElement>('button');
 
   fireEvent.click(button);
 
@@ -128,16 +129,13 @@ test('does not forward styles', () => {
 
 test('renders actions', () => {
   const onClick = jest.fn();
-  const actions = [
+  const actions: InlineMessageProps['actions'] = [
     { text: 'First Action', onClick },
-    { text: 'Second Action', variant: 'primary', onClick },
+    { text: 'Second Action', variant: 'secondary', onClick },
   ];
 
   const { container, getByRole } = render(
-    <InlineMessage
-      actions={actions as InlineMessageProps['actions']}
-      messages={[{ text: 'Success' }]}
-    />,
+    <InlineMessage actions={actions} messages={[{ text: 'Success' }]} />,
   );
   const firstAction = getByRole('button', { name: 'First Action' });
   const secondAction = getByRole('button', { name: 'Second Action' });

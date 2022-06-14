@@ -52,6 +52,7 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
 
     if (isValidElement(label) && label.type === RadioLabel) {
       return cloneElement(
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
         {
           htmlFor: id,

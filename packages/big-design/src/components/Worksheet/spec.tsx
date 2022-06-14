@@ -244,17 +244,20 @@ test('renders worksheet', () => {
 });
 
 describe('selection', () => {
-  test('selects cell on click', () => {
-    const { getByText } = render(
-      <Worksheet columns={columns} items={items} onChange={handleChange} />,
-    );
-    const cell = getByText('Shoes Name One').parentElement as HTMLTableDataCellElement;
-    const row = cell.parentElement as HTMLTableRowElement;
+  test('selects cell on click', async () => {
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
-    fireEvent.click(cell);
+    const foundElement = await screen.findByText('Shoes Name One');
+    const cell = foundElement.parentElement;
+
+    if (cell) {
+      fireEvent.click(cell);
+    }
 
     expect(cell).toHaveStyle(`border-color: ${theme.colors.primary}`);
-    expect(row.firstChild).toHaveStyle(`background-color: ${theme.colors.primary}`);
+    expect(cell?.parentElement?.firstChild).toHaveStyle(
+      `background-color: ${theme.colors.primary}`,
+    );
   });
 });
 
@@ -270,7 +273,7 @@ describe('edition', () => {
 
     fireEvent.doubleClick(getByText('Shoes Name One'));
 
-    const input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
+    const input = getByDisplayValue('Shoes Name One');
 
     fireEvent.change(input, { target: { value: 'Shoes Name One' } });
     fireEvent.keyDown(input, { key: 'Enter' });
@@ -292,7 +295,7 @@ describe('edition', () => {
 
     fireEvent.doubleClick(cell);
 
-    const input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
+    const input = getByDisplayValue('Shoes Name One');
 
     fireEvent.change(input, { target: { value: 'Shoes Name One Edit' } });
     fireEvent.keyDown(input, { key: 'Enter' });
@@ -335,18 +338,18 @@ describe('validation', () => {
       <Worksheet columns={columns} items={items} onChange={handleChange} onErrors={handleErrors} />,
     );
 
-    const cell = getByText('$49.00').parentElement as HTMLTableDataCellElement;
-    const row = cell.parentElement as HTMLTableRowElement;
+    const cell = getByText('$49.00').parentElement;
+    const row = cell?.parentElement;
 
     expect(cell).toHaveStyle(`border-color: ${theme.colors.danger}`);
-    expect(row.firstChild).toHaveStyle(`background-color: ${theme.colors.danger}`);
+    expect(row?.firstChild).toHaveStyle(`background-color: ${theme.colors.danger}`);
   });
 
-  test('onErrors gets called with invalid cells', () => {
+  test('onErrors gets called with invalid cells', async () => {
     let cell;
     let input;
 
-    const { getByDisplayValue, getByText } = render(
+    const { getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} onErrors={handleErrors} />,
     );
 
@@ -380,7 +383,7 @@ describe('validation', () => {
 
     fireEvent.doubleClick(cell);
 
-    input = getByDisplayValue('49') as HTMLInputElement;
+    input = await screen.findByDisplayValue<HTMLInputElement>('49');
 
     fireEvent.change(input, { target: { value: 40 } });
     fireEvent.keyDown(input, { key: 'Enter' });
@@ -415,7 +418,7 @@ describe('validation', () => {
 
     fireEvent.doubleClick(cell);
 
-    input = getByDisplayValue('40') as HTMLInputElement;
+    input = await screen.findByDisplayValue<HTMLInputElement>('40');
 
     fireEvent.change(input, { target: { value: 60 } });
     fireEvent.keyDown(input, { key: 'Enter' });
@@ -586,8 +589,8 @@ describe('keyboard navigation', () => {
 });
 
 describe('TextEditor', () => {
-  test('renders TextEditor', () => {
-    const { getByDisplayValue, getByText } = render(
+  test('renders TextEditor', async () => {
+    const { getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
@@ -595,13 +598,13 @@ describe('TextEditor', () => {
 
     fireEvent.doubleClick(cell);
 
-    const input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
+    const input = await screen.findByDisplayValue<HTMLInputElement>('Shoes Name One');
 
     expect(input).toBeDefined();
   });
 
-  test('TextEditor is editable', () => {
-    const { getByDisplayValue, getByText } = render(
+  test('TextEditor is editable', async () => {
+    const { getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
@@ -614,7 +617,7 @@ describe('TextEditor', () => {
 
     fireEvent.doubleClick(cell);
 
-    input = getByDisplayValue('Shoes Name One') as HTMLInputElement;
+    input = await screen.findByDisplayValue<HTMLInputElement>('Shoes Name One');
 
     expect(input).toHaveStyle(`background-color: ${theme.colors.inherit}`);
 
@@ -639,13 +642,13 @@ describe('TextEditor', () => {
 
     fireEvent.doubleClick(cell);
 
-    input = getByDisplayValue('Shoes Name One Edit') as HTMLInputElement;
+    input = await screen.findByDisplayValue<HTMLInputElement>('Shoes Name One Edit');
 
     expect(input).toHaveStyle(`background-color: ${theme.colors.warning10};`);
   });
 
-  test('column type number returns number', () => {
-    const { getByDisplayValue, getByText } = render(
+  test('column type number returns number', async () => {
+    const { getByText } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
@@ -653,7 +656,7 @@ describe('TextEditor', () => {
 
     fireEvent.doubleClick(cell);
 
-    const input = getByDisplayValue('49') as HTMLInputElement;
+    const input = await screen.findByDisplayValue<HTMLInputElement>('49');
 
     fireEvent.change(input, { target: { value: 80 } });
     fireEvent.keyDown(input, { key: 'Enter' });
@@ -822,7 +825,9 @@ describe('ModalEditor', () => {
     const parent = getByText('Category 0').parentNode?.parentNode;
     const checkbox = parent?.querySelector('label');
 
-    fireEvent.click(checkbox as HTMLLabelElement);
+    if (checkbox) {
+      fireEvent.click(checkbox);
+    }
 
     const save = getByText('Save');
 

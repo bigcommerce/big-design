@@ -252,6 +252,7 @@ export const Select = typedMemo(
 
       if (isValidElement(label) && label.type === FormControlLabel) {
         return cloneElement(
+          // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
           label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
           getLabelProps(),
         );
@@ -299,6 +300,7 @@ export const Select = typedMemo(
                     if (isOpen === false) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
+                      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                       (event.nativeEvent as any).preventDownshiftDefault = true;
                     }
 
@@ -313,6 +315,7 @@ export const Select = typedMemo(
                     }
 
                     // https://github.com/downshift-js/downshift/issues/734
+                    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                     (event.nativeEvent as any).preventDownshiftDefault = true;
                     break;
                 }

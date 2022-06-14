@@ -51,15 +51,19 @@ function getResponsiveSpacings(
 ) {
   const breakpointKeys = Object.keys(responsiveSpacing).sort(
     (a, b) =>
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       breakpointsOrder.indexOf(a as keyof Breakpoints) -
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       breakpointsOrder.indexOf(b as keyof Breakpoints),
   );
 
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   return (breakpointKeys as Array<keyof Breakpoints>).map(
     (breakpointKey) =>
       css`
         ${theme.breakpoints[breakpointKey]} {
           ${getSimpleSpacings(
+            // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
             responsiveSpacing[breakpointKey] as keyof Spacing,
             theme,
             spacingKeys,

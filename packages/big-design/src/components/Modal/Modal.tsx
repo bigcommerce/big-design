@@ -69,7 +69,7 @@ const InternalModal: React.FC<ModalProps> = ({
   const initialBodyOverflowYRef = useRef('');
   const internalTrap = useRef<FocusTrap | null>(null);
   const headerUniqueId = useUniqueId('modal_header');
-  const [modalRef, setModalRef] = useState<HTMLDivElement | null>(null);
+  const [modalRef, setModalRef] = useState<HTMLDivElement | HTMLElement | null>(null);
 
   const onClickAway = (event: React.MouseEvent) => {
     if (closeOnClickOutside && modalRef === event.target) {
@@ -96,7 +96,7 @@ const InternalModal: React.FC<ModalProps> = ({
   // Setup focus-trap
   useEffect(() => {
     if (modalRef && internalTrap.current === null) {
-      internalTrap.current = focusTrap(modalRef as HTMLElement, { fallbackFocus: modalRef });
+      internalTrap.current = focusTrap(modalRef, { fallbackFocus: modalRef });
       internalTrap.current.activate();
     }
 

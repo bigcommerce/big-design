@@ -9,6 +9,7 @@ export interface StyledLabelProps extends React.LabelHTMLAttributes<HTMLLabelEle
   disabled?: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export const StyledLabel = styled(StyleableText).attrs({
   as: 'label',
 })<StyledLabelProps>`

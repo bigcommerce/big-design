@@ -19,7 +19,7 @@ test('renders a fieldset tag', () => {
 test('renders legend', () => {
   const legendText = 'legend text';
   const { container } = render(<Fieldset legend={legendText} />);
-  const legend = container.querySelector('legend') as HTMLLegendElement;
+  const legend = container.querySelector('legend');
 
   expect(legend).toBeInTheDocument();
 });

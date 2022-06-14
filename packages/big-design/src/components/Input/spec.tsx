@@ -3,7 +3,7 @@ import { theme } from '@bigcommerce/big-design-theme';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
-import { render } from '@test/utils';
+import { render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
@@ -34,39 +34,42 @@ test('renders an input with matched label', () => {
   expect(queryByLabelText('Test Label')).toBeInTheDocument();
 });
 
-test('create unique ids if not provided', () => {
-  const { queryByTestId } = render(
+test('create unique ids if not provided', async () => {
+  render(
     <>
       <Input data-testid="item1" label="Test Label" />
       <Input data-testid="item2" label="Test Label" />
     </>,
   );
 
-  const item1 = queryByTestId('item1') as HTMLInputElement;
-  const item2 = queryByTestId('item2') as HTMLInputElement;
+  const item1 = await screen.findByTestId('item1');
+  const item2 = await screen.findByTestId('item2');
 
   expect(item1).toBeDefined();
   expect(item2).toBeDefined();
   expect(item1.id).not.toBe(item2.id);
 });
 
-test('respects provided id', () => {
-  const { container } = render(<Input id="test" label="Test Label" />);
-  const input = container.querySelector('#test') as HTMLInputElement;
+test('respects provided id', async () => {
+  render(<Input data-testid="test-input" id="test" label="Test Label" />);
+
+  const input = await screen.findByTestId<HTMLInputElement>('test-input');
 
   expect(input.id).toBe('test');
 });
 
-test('matches label htmlFor with id provided', () => {
-  const { container } = render(<Input id="test" label="Test Label" />);
-  const label = container.querySelector('label') as HTMLLabelElement;
+test('matches label htmlFor with id provided', async () => {
+  render(<Input id="test" label="Test Label" />);
+
+  const label = await screen.findByText<HTMLLabelElement>('Test Label');
 
   expect(label.htmlFor).toBe('test');
 });
 
-test('respects provided labelId', () => {
-  const { container } = render(<Input label="Test Label" labelId="test" />);
-  const label = container.querySelector('#test') as HTMLLabelElement;
+test('respects provided labelId', async () => {
+  render(<Input label="Test Label" labelId="test" />);
+
+  const label = await screen.findByText<HTMLLabelElement>('Test Label');
 
   expect(label.id).toBe('test');
 });

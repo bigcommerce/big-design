@@ -2,12 +2,12 @@ import 'jest-styled-components';
 import { theme } from '@bigcommerce/big-design-theme';
 import React, { createRef } from 'react';
 
-import { render } from '@test/utils';
+import { render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
 
-import { Textarea, TextareaProps } from './index';
+import { Textarea } from './index';
 
 const basicBorderStyle = `1px solid ${theme.colors.secondary30}`;
 const errorBorderStyle = `1px solid ${theme.colors.danger40}`;
@@ -33,8 +33,8 @@ test('renders an textarea with matched label', () => {
   expect(queryByLabelText('Test Label')).toBeInTheDocument();
 });
 
-test('create unique ids if not provided', () => {
-  const { queryByTestId } = render(
+test('create unique ids if not provided', async () => {
+  render(
     <>
       <FormGroup>
         <Textarea data-testid="item1" label="Test Label" />
@@ -45,31 +45,34 @@ test('create unique ids if not provided', () => {
     </>,
   );
 
-  const item1 = queryByTestId('item1') as HTMLTextAreaElement;
-  const item2 = queryByTestId('item2') as HTMLTextAreaElement;
+  const item1 = await screen.findByTestId('item1');
+  const item2 = await screen.findByTestId('item2');
 
   expect(item1).toBeDefined();
   expect(item2).toBeDefined();
   expect(item1.id).not.toBe(item2.id);
 });
 
-test('respects provided id', () => {
-  const { container } = render(<Textarea id="test" label="Test Label" />);
-  const textarea = container.querySelector('#test') as HTMLTextAreaElement;
+test('respects provided id', async () => {
+  render(<Textarea id="test" label="Test Label" />);
+
+  const textarea = await screen.findByLabelText<HTMLTextAreaElement>('Test Label');
 
   expect(textarea.id).toBe('test');
 });
 
-test('matches label htmlFor with id provided', () => {
-  const { container } = render(<Textarea id="test" label="Test Label" />);
-  const label = container.querySelector('label') as HTMLLabelElement;
+test('matches label htmlFor with id provided', async () => {
+  render(<Textarea id="test" label="Test Label" />);
+
+  const label = await screen.findByText<HTMLLabelElement>('Test Label');
 
   expect(label.htmlFor).toBe('test');
 });
 
-test('respects provided labelId', () => {
-  const { container } = render(<Textarea label="Test Label" labelId="test" />);
-  const label = container.querySelector('#test') as HTMLLabelElement;
+test('respects provided labelId', async () => {
+  render(<Textarea label="Test Label" labelId="test" />);
+
+  const label = await screen.findByText<HTMLLabelElement>('Test Label');
 
   expect(label.id).toBe('test');
 });
@@ -233,22 +236,23 @@ describe('error does not show when invalid type', () => {
   });
 });
 
-test('accepts valid row property', () => {
+test('accepts valid row property', async () => {
   const rows = 3;
-  const { baseElement } = render(<Textarea data-testid="test-rows" rows={rows} />);
 
-  const textarea = baseElement.querySelector('textarea') as HTMLTextAreaElement;
+  render(<Textarea data-testid="test-rows" rows={rows} />);
+
+  const textarea = await screen.findByTestId('test-rows');
 
   expect(textarea.getAttribute('rows')).toBe(`${rows}`);
 });
 
-test('does not accept invalid row property', () => {
+test('does not accept invalid row property', async () => {
   const rows = 9;
-  const { baseElement } = render(
-    <Textarea data-testid="test-rows" rows={rows as TextareaProps['rows']} />,
-  );
 
-  const textarea = baseElement.querySelector('textarea') as HTMLTextAreaElement;
+  // @ts-expect-error negative test
+  render(<Textarea data-testid="test-rows" rows={rows} />);
+
+  const textarea = await screen.findByTestId('test-rows');
 
   expect(textarea.getAttribute('rows')).not.toBe(`${rows}`);
 });

@@ -37,10 +37,13 @@ const getResponsiveDisplay: DisplayOverload = (
 ): FlattenSimpleInterpolation[] => {
   const breakpointKeys = Object.keys(displayProp).sort(
     (firstBreakpoint, secondBreakpoint) =>
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       breakpointsOrder.indexOf(firstBreakpoint as keyof Breakpoints) -
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       breakpointsOrder.indexOf(secondBreakpoint as keyof Breakpoints),
   );
 
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   return (breakpointKeys as Array<keyof Breakpoints>).map(
     (breakpointKey) =>
       css`

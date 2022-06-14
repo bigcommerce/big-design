@@ -38,6 +38,7 @@ export const StyledHeader = styled(StyleableH4)`
   margin-bottom: ${({ theme }) => theme.spacing.none};
 `;
 
+// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 export const StyledMessageItem = styled(StyleableSmall).attrs({ as: 'span' })`
   color: ${({ theme }) => theme.colors.secondary70};
   vertical-align: middle;

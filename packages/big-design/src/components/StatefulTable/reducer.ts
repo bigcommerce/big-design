@@ -362,6 +362,7 @@ function onSearchSubmit<T>(
 ): T[] {
   return items.filter((item) =>
     columns.some((column) => {
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       const element = item[column.hash as keyof T];
 
       switch (typeof element) {

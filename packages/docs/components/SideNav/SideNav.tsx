@@ -10,7 +10,7 @@ import { SideNavLogo } from './SideNavLogo';
 import { SideNavMenu } from './SideNavMenu';
 import { StyledFlex } from './styled';
 
-const CodeSandboxUrl = process.env.CODE_SANDBOX_URL as string;
+const CodeSandboxUrl = process.env.CODE_SANDBOX_URL;
 
 export const SideNav: React.FC = () => {
   return (
@@ -30,7 +30,7 @@ export const SideNav: React.FC = () => {
         <SideNavGroup title="Introduction">
           <SideNavLink href="/">Getting Started</SideNavLink>
 
-          <Link title="CodeSandbox Example" url={CodeSandboxUrl} />
+          <Link title="CodeSandbox Example" url={String(CodeSandboxUrl)} />
         </SideNavGroup>
 
         <SideNavGroup title="Foundations">

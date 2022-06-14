@@ -161,6 +161,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 
       if (isValidElement(label) && label.type === FormControlLabel) {
         return cloneElement(
+          // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
           label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
           {
             id: labelId,

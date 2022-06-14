@@ -68,6 +68,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
 
     if (isValidElement(label) && label.type === CheckboxLabel) {
       return cloneElement(
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
         {
           hidden: hiddenLabel,
@@ -113,7 +114,8 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
               // RefObject.current is readonly in DefinitelyTyped
               // but in practice you can still write to it.
               // See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/31065
-              (forwardedRef as React.MutableRefObject<HTMLInputElement | null>).current = checkbox;
+              // @ts-expect-error Can still write
+              forwardedRef.current = checkbox;
             }
           }
         }}
