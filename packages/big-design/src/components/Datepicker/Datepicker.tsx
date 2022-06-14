@@ -1,5 +1,5 @@
 import React, { forwardRef, memo, Ref, useEffect, useState } from 'react';
-import ReactDatePicker, { registerLocale } from 'react-datepicker';
+import { default as ReactDatePicker, registerLocale } from 'react-datepicker';
 
 import { createLocalizationProvider } from '../../utils';
 import { Input } from '../Input';

@@ -1,8 +1,7 @@
 import 'jest-styled-components';
 
-import { Placement } from '@popperjs/core';
 import React, { createRef } from 'react';
-import ReactDatePicker from 'react-datepicker';
+import type { ReactDatePicker } from 'react-datepicker';
 import { act } from 'react-dom/test-utils';
 
 import { fireEvent, render } from '@test/utils';
@@ -10,37 +9,6 @@ import { fireEvent, render } from '@test/utils';
 import { FormGroup } from '..';
 
 import { Datepicker } from './index';
-
-jest.mock(
-  'popper.js',
-  () =>
-    class Popper {
-      static placements: Placement[] = [
-        'auto',
-        'auto-end',
-        'auto-start',
-        'bottom',
-        'bottom-end',
-        'bottom-start',
-        'left',
-        'left-end',
-        'left-start',
-        'right',
-        'right-end',
-        'right-start',
-        'top',
-        'top-end',
-        'top-start',
-      ];
-
-      constructor() {
-        return {
-          destroy: () => jest.fn(),
-          scheduleUpdate: () => jest.fn(),
-        };
-      }
-    },
-);
 
 test('should use the passed in ref object if provided', () => {
   const ref = createRef<ReactDatePicker>();

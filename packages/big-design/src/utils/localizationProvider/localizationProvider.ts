@@ -1,4 +1,5 @@
-import { enUS as defaultLocale } from 'date-fns/locale';
+import type { Locale } from 'date-fns';
+import { default as defaultLocale } from 'date-fns/locale/en-US';
 
 interface LocalizationProviderInterface {
   code?: string;
@@ -26,7 +27,12 @@ function getTimeIntervals24hr() {
 
 const defaultTimeIntervals = getTimeIntervals24hr();
 
-export const createLocalizationProvider = (locale: string) => {
+interface LocaleProvider extends Locale {
+  monthsLong: string[];
+  formatTime(date?: Date | number): string;
+}
+
+export const createLocalizationProvider = (locale: string): LocaleProvider => {
   const dayFormatter = Intl.DateTimeFormat(locale, {
     weekday: 'short',
   });
@@ -52,6 +58,10 @@ export const createLocalizationProvider = (locale: string) => {
     localize: {
       month: (n: number) => monthsLong[n],
       day: (n: number) => daysShort[n],
+      ordinalNumber: (n: number) => defaultLocale.localize?.ordinalNumber(n) ?? n,
+      era: (n: number) => defaultLocale.localize?.era(n) ?? n,
+      quarter: (n: number) => defaultLocale.localize?.quarter(n) ?? n,
+      dayPeriod: (n: number) => defaultLocale.localize?.dayPeriod(n) ?? n,
     },
     monthsLong,
     formatLong: defaultLocale.formatLong,
