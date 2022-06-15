@@ -35,15 +35,14 @@ test('renders select label', () => {
 
 test('calls onDateChange function when a date cell is clicked', async () => {
   const changeFunction = jest.fn();
-  const { container } = render(<Datepicker onDateChange={changeFunction} />);
+
+  render(<Datepicker onDateChange={changeFunction} />);
 
   const input = await screen.findByRole('textbox');
 
   await userEvent.click(input);
 
-  const datepicker = container.querySelector('.react-datepicker');
-
-  const cell = datepicker?.querySelector('.react-datepicker__day--today');
+  const cell = await screen.findByRole('option', { current: 'date' });
 
   await act(async () => {
     if (cell) {
