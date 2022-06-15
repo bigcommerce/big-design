@@ -118,7 +118,9 @@ const TypesData: React.FC<TypesDataProps> = (props): any => {
   if (Array.isArray(types)) {
     return types.map((type, index) => {
       return (
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         <React.Fragment key={type.key ?? index}>
+          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
           {type.type === Link ? <Code highlight={false}>{type}</Code> : <Code>{type}</Code>}
           {index < types.length - 1 ? ' | ' : null}
         </React.Fragment>
@@ -126,5 +128,6 @@ const TypesData: React.FC<TypesDataProps> = (props): any => {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   return types.type === Link ? <Code highlight={false}>{types}</Code> : <Code>{types}</Code>;
 };

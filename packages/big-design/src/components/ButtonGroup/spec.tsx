@@ -10,14 +10,17 @@ beforeAll(() => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get() {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'buttongroup-dropdown') {
           return 50;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'buttongroup-item') {
           return 100;
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (this.dataset.testid === 'buttongroup-wrapper') {
           return 400;
         }

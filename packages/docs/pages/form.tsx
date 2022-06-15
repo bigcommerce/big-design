@@ -239,7 +239,7 @@ const FormPage = () => {
                       const [value, setValue] = useState('BigCommerce');
                       const [error, setError] = useState(ERROR_MSG);
 
-                      const handleSubmit = (event) => {
+                      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                         const form = event.currentTarget;
 
                         if (form.checkValidity() === false) {
@@ -248,7 +248,7 @@ const FormPage = () => {
                         }
                       };
 
-                      const handleChange = (event) => {
+                      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                         const { target } = event;
                         const regex = RegExp(target.pattern, 'g');
 

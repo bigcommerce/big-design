@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
 

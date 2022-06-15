@@ -31,6 +31,7 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
     return children;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const code = transform(children, {
     compact: false,
     retainLines: true,
@@ -48,6 +49,7 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
 
 function transformCode(input: string): string {
   try {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return transform(input, {
       presets: [['typescript', { allExtensions: true, isTSX: true }], 'react'],
     }).code;
