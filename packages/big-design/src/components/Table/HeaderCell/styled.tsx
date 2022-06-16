@@ -60,7 +60,7 @@ export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
     `}
 `;
 
-export const StyledTableHeaderCheckbox = styled(StyledTableHeaderCell)`
+export const StyledTableHeaderIcon = styled(StyledTableHeaderCell)`
   width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
   white-space: nowrap;
 `;
@@ -89,4 +89,4 @@ export const StyledFlex = styled(Flex)<StyledFlexProps>`
 
 StyledFlex.defaultProps = { theme: defaultTheme };
 StyledTableHeaderCell.defaultProps = { theme: defaultTheme };
-StyledTableHeaderCheckbox.defaultProps = { theme: defaultTheme };
+StyledTableHeaderIcon.defaultProps = { theme: defaultTheme };
