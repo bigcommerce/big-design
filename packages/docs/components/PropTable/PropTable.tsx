@@ -125,5 +125,8 @@ const TypesData: React.FC<TypesDataProps> = (props): any => {
     });
   }
 
+  // return null;
+
+  // console.log('========', types);
   return types.type === Link ? <Code highlight={false}>{types}</Code> : <Code>{types}</Code>;
 };

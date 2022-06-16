@@ -41,10 +41,12 @@ const sort = (items, columnHash, direction) => {
 };
 
 const dragEnd = (items, from, to) => {
-  const item = items.splice(from, 1);
-  items.splice(to, 0, ...item);
+  const newItems = [...items];
+  const item = newItems.splice(from, 1);
 
-  return items;
+  newItems.splice(to, 0, ...item);
+
+  return newItems;
 };
 
 const TablePage = () => {
@@ -131,7 +133,7 @@ const TablePage = () => {
                     const [currentPage, setCurrentPage] = useState(1);
                     const [itemsPerPageOptions] = useState([5, 10, 20, 30]);
                     const [itemsPerPage, setItemsPerPage] = useState(5);
-                    const [currentItems, setCurrentItems] = useState<Item[]>([]);
+                    const [currentItems, setCurrentItems] = useState<Item[]>([data[0]]);
 
                     const onItemsPerPageChange = (newRange) => {
                       setCurrentPage(1);
@@ -299,6 +301,7 @@ const TablePage = () => {
 
                     return (
                       <Table
+                        // keyField="sku"
                         columns={[
                           { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
                           { header: 'Name', hash: 'name', render: ({ name }) => name },
