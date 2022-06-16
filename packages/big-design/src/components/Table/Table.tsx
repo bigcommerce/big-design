@@ -138,7 +138,7 @@ const InternalTable = <T extends TableItem>(
           <DragIconHeaderCell
             actionsRef={actionsRef}
             headerCellIconRef={headerCellIconRef}
-            width={headerCellWidths.length ? headerCellWidths[0] : '50px'}
+            width={headerCellWidths.length ? headerCellWidths[0] : 'auto'}
           />
         )}
         {isSelectable && <HeaderCheckboxCell actionsRef={actionsRef} stickyHeader={stickyHeader} />}
