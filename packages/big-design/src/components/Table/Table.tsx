@@ -35,7 +35,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     ...rest
   } = props;
 
-  const table = createTable().setRowType<T>();
+  const table = createTable().setRowType<TableItem>();
   const actionsRef = useRef<HTMLDivElement>(null);
   const uniqueTableId = useUniqueId('table');
   const tableIdRef = useRef(id || uniqueTableId);
@@ -44,7 +44,6 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   const [headerCellWidths, setHeaderCellWidths] = useState<Array<number | string>>([]);
   const headerCellIconRef = useRef<HTMLTableCellElement>(null);
 
-  // TODO: Fix TS type
   const columnsReactTable = useMemo(() => {
     return columns.map((column) => {
       const { header: columnHeader, hash } = column;
@@ -52,7 +51,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
       return table.createDataColumn(hash, {
         header: columnHeader,
         meta: { ...column },
-      } as any);
+      });
     });
   }, [columns, table]);
 
@@ -173,7 +172,8 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
             {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} actionsRef={actionsRef} />}
 
             {headerGroup.headers.map((header, index) => {
-              const column = instanceReactTable.getColumn(header.id).columnDef.meta as any;
+              // TODO: Check this type.
+              const column = instanceReactTable.getColumn(header.id).columnDef.meta as TableColumn<T>;
               const { display, hash, isSortable, hideHeader, width } = column;
               const isSorted = isSortable && sortable && hash === sortable.columnHash;
               const sortDirection = sortable && sortable.direction;
@@ -208,10 +208,11 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
       {(provided) => (
         <Body withFirstRowBorder={headerless} ref={provided.innerRef} {...provided.droppableProps}>
           {instanceReactTable.getRowModel().rows.map((row, index) => {
-            const reactTableRow = row.original as any;
+            const reactTableRow = row.original as T;
             const key = getItemKey(reactTableRow, index);
             const isSelected = selectedItems.has(reactTableRow);
-            const reactTableColumns = instanceReactTable.getAllColumns() as any;
+            // TODO: Check this type.
+            const reactTableColumns = instanceReactTable.getAllColumns() as unknown as Array<TableColumn<T>>;
 
             return (
               <Draggable key={key} draggableId={String(key)} index={index}>
@@ -245,10 +246,12 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     ) : (
       <Body withFirstRowBorder={headerless}>
         {instanceReactTable.getRowModel().rows.map((row, index) => {
-          const reactTableRow = row.original as any;
+          // TODO: Check this type.
+          const reactTableRow = row.original as T;
           const key = getItemKey(reactTableRow, index);
           const isSelected = selectedItems.has(reactTableRow);
-          const reactTableColumns = instanceReactTable.getAllColumns() as any;
+          // TODO: Check this type.
+          const reactTableColumns = instanceReactTable.getAllColumns() as unknown as Array<TableColumn<T>>;
 
           return (
             <Row
