@@ -127,16 +127,10 @@ export const HeaderCheckboxCell: React.FC<HeaderCheckboxCellProps> = memo(
 );
 
 export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(
-  ({ actionsRef, headerCellIconRef, width }) => {
+  ({ actionsRef, headerCellIconRef }) => {
     const actionsSize = useComponentSize(actionsRef);
 
-    return (
-      <StyledTableHeaderIcon
-        ref={headerCellIconRef}
-        stickyHeight={actionsSize.height}
-        width={width}
-      />
-    );
+    return <StyledTableHeaderIcon ref={headerCellIconRef} stickyHeight={actionsSize.height} />;
   },
 );
 
