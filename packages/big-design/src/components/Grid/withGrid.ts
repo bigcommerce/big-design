@@ -46,7 +46,11 @@ const getSimpleGrid = (gridedProp: string | number, cssKey: string): FlattenSimp
   ${cssKey}: ${gridedProp}
 `;
 
-const getResponsiveGrid = (gridedProp: any, theme: ThemeInterface, cssKey: string): FlattenSimpleInterpolation[] => {
+const getResponsiveGrid: GridedOverload = (
+  gridedProp: any,
+  theme: ThemeInterface,
+  cssKey: string,
+): FlattenSimpleInterpolation[] => {
   const breakpointKeys = Object.keys(gridedProp).sort(
     (firstBreakpoint, secondBreakpoint) =>
       breakpointsOrder.indexOf(firstBreakpoint as keyof Breakpoints) -

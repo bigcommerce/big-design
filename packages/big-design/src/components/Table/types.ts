@@ -38,12 +38,6 @@ export interface TableColumn<T> extends TableColumnDisplayProps {
 
 export type TablePaginationProps = Omit<PaginationProps, keyof MarginProps>;
 
-// TODO: define correctly types.
-export interface TableRowsColumn<T> {
-  [columnName: string]: TableColumn<T>['header'];
-}
-
-// TODO: check type for items;
 export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElement> {
   actions?: React.ReactNode;
   columns: Array<TableColumn<T>>;

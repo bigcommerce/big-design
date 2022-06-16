@@ -35,7 +35,6 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     ...rest
   } = props;
 
-  // TODO: check if this would be better to live outside. Had to put it inside the component because of TS (genetal T).
   const table = createTable().setRowType<T>();
   const actionsRef = useRef<HTMLDivElement>(null);
   const uniqueTableId = useUniqueId('table');
@@ -48,10 +47,11 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   // TODO: Fix TS type
   const columnsReactTable = useMemo(() => {
     return columns.map((column) => {
-      return table.createDataColumn(column.hash, {
-        header: column.header,
+      const { header: columnHeader, hash } = column;
+
+      return table.createDataColumn(hash, {
+        header: columnHeader,
         meta: { ...column },
-        // cell: (props) => console.log(props.getValue(), 'here the info'),
       } as any);
     });
   }, [columns, table]);
@@ -173,7 +173,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
             {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} actionsRef={actionsRef} />}
 
             {headerGroup.headers.map((header, index) => {
-              const column = instanceReactTable.getColumn(header.id).columnDef.meta;
+              const column = instanceReactTable.getColumn(header.id).columnDef.meta as any;
               const { display, hash, isSortable, hideHeader, width } = column;
               const isSorted = isSortable && sortable && hash === sortable.columnHash;
               const sortDirection = sortable && sortable.direction;
@@ -208,10 +208,10 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
       {(provided) => (
         <Body withFirstRowBorder={headerless} ref={provided.innerRef} {...provided.droppableProps}>
           {instanceReactTable.getRowModel().rows.map((row, index) => {
-            const currentItem = row.original;
-            const key = getItemKey(currentItem, index);
-            const isSelected = selectedItems.has(currentItem);
-            const allColumns = instanceReactTable.getAllColumns();
+            const reactTableRow = row.original as any;
+            const key = getItemKey(reactTableRow, index);
+            const isSelected = selectedItems.has(reactTableRow);
+            const reactTableColumns = instanceReactTable.getAllColumns() as any;
 
             return (
               <Draggable key={key} draggableId={String(key)} index={index}>
@@ -221,11 +221,11 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
                     {...provided.dragHandleProps}
                     {...provided.draggableProps}
                     ref={provided.innerRef}
-                    columns={allColumns}
+                    columns={reactTableColumns}
                     headerCellWidths={headerCellWidths}
                     isSelectable={isSelectable}
                     isSelected={isSelected}
-                    item={currentItem}
+                    item={reactTableRow}
                     onItemSelect={onItemSelect}
                     showDragIcon={true}
                   />
@@ -244,19 +244,20 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
       renderDroppableItems()
     ) : (
       <Body withFirstRowBorder={headerless}>
-        {instanceReactTable.getRowModel().rows.map((row) => {
-          const currentItem = row.original;
-          const isSelected = selectedItems.has(currentItem);
-          const allColumns = instanceReactTable.getAllColumns();
+        {instanceReactTable.getRowModel().rows.map((row, index) => {
+          const reactTableRow = row.original as any;
+          const key = getItemKey(reactTableRow, index);
+          const isSelected = selectedItems.has(reactTableRow);
+          const reactTableColumns = instanceReactTable.getAllColumns() as any;
 
           return (
             <Row
-              columns={allColumns}
+              columns={reactTableColumns}
               headerCellWidths={headerCellWidths}
               isSelectable={isSelectable}
               isSelected={isSelected}
-              item={currentItem}
-              key={row.id}
+              item={reactTableRow}
+              key={key}
               onItemSelect={onItemSelect}
             />
           );

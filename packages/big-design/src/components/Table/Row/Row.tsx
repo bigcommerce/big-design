@@ -56,28 +56,7 @@ const InternalRow = <T extends TableItem>({
         </DataCell>
       )}
 
-      {/* {row.getVisibleCells().map((cell: any, cellIndex: any) => {
-        const column = columns[cellIndex];
-        const { render: CellContent, align, display, verticalAlign, width, withPadding = true } = column;
-        const cellWidth = headerCellWidths[cellIndex + 1];
-
-        return (
-          <DataCell
-            key={cell.id}
-            align={align}
-            display={display}
-            verticalAlign={verticalAlign}
-            width={isDragging ? cellWidth : width}
-            withPadding={withPadding}
-          > */}
-      {/*
-          // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
-      {/* <CellContent {...item} />
-          </DataCell>
-        );
-      })} */}
-
-      {columns.map(({ columnDef }, columnIndex) => {
+      {columns.map(({ columnDef }: any, columnIndex) => {
         const { render: CellContent, align, display, verticalAlign, width, withPadding = true } = columnDef.meta;
         const cellWidth = headerCellWidths[columnIndex + 1];
 

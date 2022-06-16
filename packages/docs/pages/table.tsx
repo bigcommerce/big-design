@@ -133,7 +133,7 @@ const TablePage = () => {
                     const [currentPage, setCurrentPage] = useState(1);
                     const [itemsPerPageOptions] = useState([5, 10, 20, 30]);
                     const [itemsPerPage, setItemsPerPage] = useState(5);
-                    const [currentItems, setCurrentItems] = useState<Item[]>([data[0]]);
+                    const [currentItems, setCurrentItems] = useState<Item[]>([]);
 
                     const onItemsPerPageChange = (newRange) => {
                       setCurrentPage(1);
@@ -301,7 +301,6 @@ const TablePage = () => {
 
                     return (
                       <Table
-                        // keyField="sku"
                         columns={[
                           { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
                           { header: 'Name', hash: 'name', render: ({ name }) => name },
