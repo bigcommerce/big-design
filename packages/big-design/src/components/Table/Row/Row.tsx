@@ -17,7 +17,6 @@ export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
   isSelectable?: boolean;
   showDragIcon?: boolean;
   onItemSelect?(item: T): void;
-  row: any;
 }
 
 interface PrivateProps {
@@ -34,7 +33,6 @@ const InternalRow = <T extends TableItem>({
   item,
   showDragIcon = false,
   onItemSelect,
-  row,
   ...rest
 }: RowProps<T> & PrivateProps) => {
   const onChange = () => {
@@ -79,7 +77,8 @@ const InternalRow = <T extends TableItem>({
         );
       })} */}
 
-      {columns.map(({ render: CellContent, align, display, verticalAlign, width, withPadding = true }, columnIndex) => {
+      {columns.map(({ columnDef }, columnIndex) => {
+        const { render: CellContent, align, display, verticalAlign, width, withPadding = true } = columnDef.meta;
         const cellWidth = headerCellWidths[columnIndex + 1];
 
         return (
@@ -93,7 +92,7 @@ const InternalRow = <T extends TableItem>({
           >
             {/*
           // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
-            <CellContent {...row.original} />
+            <CellContent {...item} />
           </DataCell>
         );
       })}
