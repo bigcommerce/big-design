@@ -35,7 +35,6 @@ export interface HeaderCheckboxCellProps {
 export interface DragIconCellProps {
   actionsRef: RefObject<HTMLDivElement>;
   headerCellIconRef: RefObject<HTMLTableCellElement>;
-  width: number | string;
 }
 
 const InternalHeaderCell = <T extends TableItem>({
