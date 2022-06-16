@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -53,7 +52,7 @@ test('it renders the given tabs', () => {
 test('dropdown is not visible if items fit', () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
-      get() {
+      get(this: HTMLElement) {
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
@@ -89,7 +88,7 @@ test('dropdown is not visible if items fit', () => {
 test('renders dropdown if items do not fit', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
-      get() {
+      get(this: HTMLElement) {
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
@@ -127,7 +126,7 @@ test('renders dropdown if items do not fit', async () => {
 test('renders all the filters if they fit', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
-      get() {
+      get(this: HTMLElement) {
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
@@ -174,7 +173,7 @@ test('renders all the filters if they fit', async () => {
 test('only the pills that fit are visible', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
-      get() {
+      get(this: HTMLElement) {
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
@@ -237,7 +236,7 @@ test('only the pills that fit are visible', async () => {
 test('only the pills that fit are visible 2', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
-      get() {
+      get(this: HTMLElement) {
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
@@ -317,7 +316,7 @@ test('it executes the given callback on click', () => {
 test('cannot click on a hidden item', async () => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
-      get() {
+      get(this: HTMLElement) {
         if (this.dataset.testid === 'pilltabs-wrapper') {
           return 400;
         }
