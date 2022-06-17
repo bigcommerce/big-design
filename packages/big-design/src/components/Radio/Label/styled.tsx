@@ -1,13 +1,15 @@
 import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 
+import { TextProps } from '../../Typography';
 import { StyleableText } from '../../Typography/private';
 
 export interface StyledLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   disabled?: boolean;
 }
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-export const StyledLabel = styled(StyleableText).attrs({
+export const StyledLabel = styled<
+  StyledComponent<'label' | 'p', DefaultTheme, Partial<TextProps>> & StyledLabelProps
+>(StyleableText).attrs({
   as: 'label',
 })<StyledLabelProps>`
   cursor: pointer;
@@ -17,4 +19,4 @@ export const StyledLabel = styled(StyleableText).attrs({
     css`
       cursor: not-allowed;
     `}
-` as StyledComponent<'label', DefaultTheme, StyledLabelProps>;
+`;

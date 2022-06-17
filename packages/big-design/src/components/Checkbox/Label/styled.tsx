@@ -3,14 +3,16 @@ import { hideVisually } from 'polished';
 import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 
 import { StyleableText } from '../../Typography/private';
+import { TextProps } from '../../Typography/types';
 
 export interface StyledLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   hidden?: boolean;
   disabled?: boolean;
 }
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-export const StyledLabel = styled(StyleableText).attrs({
+export const StyledLabel = styled<
+  StyledComponent<'label' | 'p', DefaultTheme, Partial<TextProps>> & StyledLabelProps
+>(StyleableText).attrs({
   as: 'label',
 })<StyledLabelProps>`
   cursor: pointer;
@@ -22,6 +24,6 @@ export const StyledLabel = styled(StyleableText).attrs({
     `}
 
   ${({ hidden }) => hidden && hideVisually()}
-` as StyledComponent<'label', DefaultTheme, StyledLabelProps>;
+`;
 
 StyledLabel.defaultProps = { theme: defaultTheme };

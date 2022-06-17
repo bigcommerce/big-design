@@ -3,7 +3,6 @@ import 'jest-styled-components';
 import userEvent from '@testing-library/user-event';
 import React, { createRef } from 'react';
 import type { ReactDatePicker } from 'react-datepicker';
-import { act } from 'react-dom/test-utils';
 
 import { fireEvent, render, screen, waitFor } from '@test/utils';
 
@@ -44,11 +43,7 @@ test('calls onDateChange function when a date cell is clicked', async () => {
 
   const cell = await screen.findByRole('option', { current: 'date' });
 
-  await act(async () => {
-    if (cell) {
-      await waitFor(() => fireEvent.click(cell));
-    }
-  });
+  await userEvent.click(cell);
 
   expect(changeFunction).toHaveBeenCalled();
 });
