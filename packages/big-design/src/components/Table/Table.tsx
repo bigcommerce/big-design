@@ -135,11 +135,7 @@ const InternalTable = <T extends TableItem>(
     <Head hidden={headerless}>
       <tr>
         {typeof onRowDrop === 'function' && (
-          <DragIconHeaderCell
-            actionsRef={actionsRef}
-            headerCellIconRef={headerCellIconRef}
-            width={headerCellWidths.length ? headerCellWidths[0] : 'auto'}
-          />
+          <DragIconHeaderCell actionsRef={actionsRef} headerCellIconRef={headerCellIconRef} />
         )}
         {isSelectable && <HeaderCheckboxCell actionsRef={actionsRef} stickyHeader={stickyHeader} />}
 

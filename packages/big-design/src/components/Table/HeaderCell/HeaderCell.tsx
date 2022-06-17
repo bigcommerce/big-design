@@ -12,7 +12,7 @@ import { Tooltip } from '../../Tooltip';
 import { TableColumnDisplayProps } from '../mixins';
 import { TableColumn, TableItem } from '../types';
 
-import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderCheckbox } from './styled';
+import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderIcon } from './styled';
 
 export interface HeaderCellProps<T>
   extends TableHTMLAttributes<HTMLTableCellElement>,
@@ -35,7 +35,6 @@ export interface HeaderCheckboxCellProps {
 export interface DragIconCellProps {
   actionsRef: RefObject<HTMLDivElement>;
   headerCellIconRef: RefObject<HTMLTableCellElement>;
-  width: number | string;
 }
 
 const InternalHeaderCell = <T extends TableItem>({
@@ -122,23 +121,15 @@ export const HeaderCheckboxCell: React.FC<HeaderCheckboxCellProps> = memo(
   ({ stickyHeader, actionsRef }) => {
     const actionsSize = useComponentSize(actionsRef);
 
-    return (
-      <StyledTableHeaderCheckbox stickyHeader={stickyHeader} stickyHeight={actionsSize.height} />
-    );
+    return <StyledTableHeaderIcon stickyHeader={stickyHeader} stickyHeight={actionsSize.height} />;
   },
 );
 
 export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(
-  ({ actionsRef, headerCellIconRef, width }) => {
+  ({ actionsRef, headerCellIconRef }) => {
     const actionsSize = useComponentSize(actionsRef);
 
-    return (
-      <StyledTableHeaderCell
-        ref={headerCellIconRef}
-        stickyHeight={actionsSize.height}
-        width={width}
-      />
-    );
+    return <StyledTableHeaderIcon ref={headerCellIconRef} stickyHeight={actionsSize.height} />;
   },
 );
 
