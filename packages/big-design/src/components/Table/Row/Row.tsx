@@ -17,6 +17,8 @@ export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
   isSelectable?: boolean;
   showDragIcon?: boolean;
   onItemSelect?(item: T): void;
+  isIndeterminate: boolean;
+  [key: string]: unknown;
 }
 
 interface PrivateProps {
@@ -33,13 +35,14 @@ const InternalRow = <T extends TableItem>({
   item,
   showDragIcon = false,
   onItemSelect,
+  isIndeterminate,
   ...rest
 }: RowProps<T> & PrivateProps) => {
-  const onChange = () => {
-    if (onItemSelect) {
-      onItemSelect(item);
-    }
-  };
+  // const onChange = () => {
+  //   if (onItemSelect) {
+  //     onItemSelect(item);
+  //   }
+  // };
 
   const label = isSelected ? `Selected` : `Unselected`;
 
@@ -52,7 +55,14 @@ const InternalRow = <T extends TableItem>({
       )}
       {isSelectable && (
         <DataCell key="data-checkbox" isCheckbox={true}>
-          <Checkbox checked={isSelected} hiddenLabel label={label} onChange={onChange} />
+          <Checkbox
+            checked={isSelected}
+            hiddenLabel
+            label={label}
+            // onChange={onChange}
+            onChange={rest.onSelectionChange}
+            isIndeterminate={isIndeterminate}
+          />
         </DataCell>
       )}
 

@@ -11,6 +11,7 @@ export interface SelectAllProps<T> {
   onChange?: TableSelectable<T>['onSelectionChange'];
   pagination?: TablePaginationProps;
   selectedItems: Set<T>;
+  [key: string]: unknown;
 }
 
 export const SelectAll = <T extends TableItem>({
@@ -18,35 +19,43 @@ export const SelectAll = <T extends TableItem>({
   onChange,
   selectedItems,
   totalItems,
+  ...props
 }: SelectAllProps<T>) => {
-  const allInPageSelected = items.length > 0 && items.every((item) => selectedItems.has(item));
-  const someInPageSelected = items.length > 0 && items.some((item) => selectedItems.has(item));
+  items;
+  // const allInPageSelected = items.length > 0 && items.every((item) => selectedItems.has(item));
+  // const someInPageSelected = items.length > 0 && items.some((item) => selectedItems.has(item));
 
-  const handleSelectAll = () => {
-    if (typeof onChange !== 'function') {
-      return;
-    }
+  // const handleSelectAll = () => {
+  //   if (typeof onChange !== 'function') {
+  //     return;
+  //   }
 
-    if (selectedItems.size === 0) {
-      return onChange([...items]);
-    }
+  //   if (selectedItems.size === 0) {
+  //     return onChange([...items]);
+  //   }
 
-    if (allInPageSelected) {
-      const newSelectedItems = new Set(selectedItems);
+  //   if (allInPageSelected) {
+  //     const newSelectedItems = new Set(selectedItems);
 
-      items.forEach((item) => newSelectedItems.delete(item));
+  //     items.forEach((item) => newSelectedItems.delete(item));
 
-      return onChange([...newSelectedItems]);
-    }
+  //     return onChange([...newSelectedItems]);
+  //   }
 
-    return onChange([...new Set([...selectedItems, ...items])]);
-  };
+  //   return onChange([...new Set([...selectedItems, ...items])]);
+  // };
 
-  if (typeof onChange !== 'function') {
-    return null;
-  }
+  // if (typeof onChange !== 'function') {
+  //   return null;
+  // }
 
   const totalSelectedItems = selectedItems.size;
+
+  // console.log(selectedItems, 'here teh selectedItems');
+
+  // console.log(totalSelectedItems, 'here teht total selected items');
+
+  const allInPageSelected = undefined;
 
   const label = allInPageSelected ? 'Deselect All' : 'Select All';
 
@@ -54,11 +63,14 @@ export const SelectAll = <T extends TableItem>({
     <FlexItem marginRight="xxSmall" flexShrink={0}>
       <Flex flexDirection="row">
         <Checkbox
-          isIndeterminate={someInPageSelected}
+          // isIndeterminate={someInPageSelected}
+          isIndeterminate={props.indeterminate}
           hiddenLabel
           label={label}
-          checked={allInPageSelected}
-          onChange={handleSelectAll}
+          // checked={allInPageSelected}
+          // onChange={handleSelectAll}
+          onChange={onChange}
+          checked={props.checked}
         />
         <Text marginLeft="small">
           {totalSelectedItems === 0 ? `${totalItems}` : `${totalSelectedItems}/${totalItems}`}

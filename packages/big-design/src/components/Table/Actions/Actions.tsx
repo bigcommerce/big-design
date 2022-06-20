@@ -19,6 +19,7 @@ export interface ActionsProps<T> {
   selectedItems: Set<T>;
   stickyHeader?: boolean;
   tableId: string;
+  [key: string]: unknown;
 }
 
 const InternalActions = <T extends TableItem>({
@@ -35,6 +36,7 @@ const InternalActions = <T extends TableItem>({
 }: ActionsProps<T>) => {
   const isSelectable = typeof onSelectionChange === 'function';
   const totalItems = pagination ? pagination.totalItems : items.length;
+  // console.log(props, 'here the props');
 
   const renderItemName = () => {
     if (typeof itemName !== 'string') {
@@ -64,7 +66,14 @@ const InternalActions = <T extends TableItem>({
       ref={forwardedRef}
       {...props}
     >
-      <SelectAll onChange={onSelectionChange} selectedItems={selectedItems} items={items} totalItems={totalItems} />
+      <SelectAll
+        onChange={onSelectionChange}
+        selectedItems={selectedItems}
+        items={items}
+        totalItems={totalItems}
+        indeterminate={props.indeterminate}
+        checked={props.checked}
+      />
       {renderItemName()}
       {renderActions()}
 

@@ -42,6 +42,11 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   const id = props.id ? props.id : uniqueCheckboxId;
   const labelId = useUniqueId('checkbox_label');
 
+  // console.log(checked, 'here the checked');
+  // console.log(isIndeterminate, 'here is indetermiante');
+  // console.log(props.onChange, 'here the on change');
+  console.log(checked, 'here the checked');
+
   const renderedLabel = useMemo(() => {
     if (!label) {
       return null;

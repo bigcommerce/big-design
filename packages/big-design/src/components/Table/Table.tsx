@@ -1,8 +1,8 @@
 import { createTable, getCoreRowModel, useTableInstance } from '@tanstack/react-table';
-import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 
-import { useEventCallback, useUniqueId } from '../../hooks';
+import { useUniqueId } from '../../hooks';
 import { MarginProps } from '../../mixins';
 import { typedMemo } from '../../utils';
 
@@ -40,7 +40,8 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   const uniqueTableId = useUniqueId('table');
   const tableIdRef = useRef(id || uniqueTableId);
   const isSelectable = Boolean(selectable);
-  const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
+  // const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
+  // const [selectedItems, setRowSelection] = useState<Set<T>>({});
   const [headerCellWidths, setHeaderCellWidths] = useState<Array<number | string>>([]);
   const headerCellIconRef = useRef<HTMLTableCellElement>(null);
 
@@ -58,42 +59,48 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   // TODO: check if we should implement sorting react table functionality.
   // TODO: check if we should implement select react table functionality.
   // TODO: check if we should implement pagination react table functionality.
+  // TODO: Check TS issue when adding selectedItems in the state
   const instanceReactTable = useTableInstance(table, {
     data: items,
     columns: columnsReactTable,
-    manualSorting: false,
-    manualPagination: true,
-    getSubRows: (row) => row.subRows,
+    // manualSorting: false,
+    // manualPagination: true,
+    state: {
+      rowSelection: selectable?.selectedItems,
+    },
+    enableRowSelection: true,
+    onRowSelectionChange: selectable?.onSelectionChange,
+    getSubRows: (row: any) => row.subRows,
     getCoreRowModel: getCoreRowModel(),
     debugTable: true,
     debugHeaders: true,
     debugColumns: true,
-  });
+  } as any);
 
-  const eventCallback = useEventCallback((item: T) => {
-    if (!selectable || !item) {
-      return;
-    }
+  // const eventCallback = useEventCallback((item: T) => {
+  //   if (!selectable || !item) {
+  //     return;
+  //   }
 
-    const { onSelectionChange } = selectable;
-    const nextIsSelected = !selectedItems.has(item);
+  //   const { onSelectionChange } = selectable;
+  //   const nextIsSelected = !selectedItems.has(item);
 
-    if (nextIsSelected) {
-      onSelectionChange([...selectedItems, item]);
-    } else {
-      onSelectionChange([...selectedItems].filter((selectedItem) => selectedItem !== item));
-    }
-  });
+  //   if (nextIsSelected) {
+  //     onSelectionChange([...selectedItems, item]);
+  //   } else {
+  //     onSelectionChange([...selectedItems].filter((selectedItem) => selectedItem !== item));
+  //   }
+  // });
 
-  const selectableConditionalDep = selectable ? selectable.selectedItems : null;
+  // const selectableConditionalDep = selectable ? selectable.selectedItems : null;
 
-  useEffect(() => {
-    if (selectable) {
-      setSelectedItems(new Set(selectable.selectedItems));
-    }
-  }, [selectable, selectableConditionalDep]);
+  // useEffect(() => {
+  //   if (selectable) {
+  //     setSelectedItems(new Set(selectable.selectedItems));
+  //   }
+  // }, [selectable, selectableConditionalDep]);
 
-  const onItemSelect = selectable ? eventCallback : undefined;
+  // const onItemSelect = selectable ? eventCallback : undefined;
 
   const onSortClick = useCallback(
     (column: TableColumn<T>) => {
@@ -157,6 +164,8 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     return index;
   };
 
+  // const principalHeaderGroups = instanceReactTable.getHeaderGroups().slice(1);
+
   const renderHeaders = () => (
     <Head hidden={headerless}>
       {instanceReactTable.getHeaderGroups().map((headerGroup) => {
@@ -200,6 +209,47 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
           </tr>
         );
       })}
+      {/* {instanceReactTable.getHeaderGroups().map((headerGroup) => {
+        return (
+          <tr key={headerGroup.id}>
+            {typeof onRowDrop === 'function' && (
+              <DragIconHeaderCell
+                actionsRef={actionsRef}
+                width={headerCellWidths.length ? headerCellWidths[0] : 'auto'}
+                headerCellIconRef={headerCellIconRef}
+              />
+            )}
+            {isSelectable && <HeaderCheckboxCell stickyHeader={stickyHeader} actionsRef={actionsRef} />}
+
+            {headerGroup.headers.map((header, index) => {
+              // TODO: Check this type.
+              const column = instanceReactTable.getColumn(header.id).columnDef.meta as TableColumn<T>;
+              const { display, hash, isSortable, hideHeader, width } = column;
+              const isSorted = isSortable && sortable && hash === sortable.columnHash;
+              const sortDirection = sortable && sortable.direction;
+              const headerCellWidth = headerCellWidths[index + 1];
+              const widthColumn = headerCellWidth ?? width;
+
+              return (
+                <HeaderCell
+                  display={display}
+                  column={{ ...column, width: widthColumn }}
+                  hide={hideHeader}
+                  id={`header-cell-${index}`}
+                  isSorted={isSorted}
+                  key={header.id}
+                  onSortClick={onSortClick}
+                  sortDirection={sortDirection}
+                  stickyHeader={stickyHeader}
+                  actionsRef={actionsRef}
+                >
+                  {header.renderHeader()}
+                </HeaderCell>
+              );
+            })}
+          </tr>
+        );
+      })} */}
     </Head>
   );
 
@@ -210,7 +260,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
           {instanceReactTable.getRowModel().rows.map((row, index) => {
             const reactTableRow = row.original as T;
             const key = getItemKey(reactTableRow, index);
-            const isSelected = selectedItems.has(reactTableRow);
+            // const isSelected = selectedItems.has(reactTableRow);
             // TODO: Check this type.
             const reactTableColumns = instanceReactTable.getAllColumns() as unknown as Array<TableColumn<T>>;
 
@@ -225,10 +275,13 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
                     columns={reactTableColumns}
                     headerCellWidths={headerCellWidths}
                     isSelectable={isSelectable}
-                    isSelected={isSelected}
+                    // isSelected={isSelected}
                     item={reactTableRow}
-                    onItemSelect={onItemSelect}
+                    // onItemSelect={onItemSelect}
                     showDragIcon={true}
+                    isSelected={row.getIsSelected()}
+                    onSelectionChange={row.getToggleSelectedHandler()}
+                    isIndeterminate={row.getIsSomeSelected()}
                   />
                 )}
               </Draggable>
@@ -249,7 +302,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
           // TODO: Check this type.
           const reactTableRow = row.original as T;
           const key = getItemKey(reactTableRow, index);
-          const isSelected = selectedItems.has(reactTableRow);
+          // const isSelected = selectedItems.has(reactTableRow);
           // TODO: Check this type.
           const reactTableColumns = instanceReactTable.getAllColumns() as unknown as Array<TableColumn<T>>;
 
@@ -258,10 +311,13 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
               columns={reactTableColumns}
               headerCellWidths={headerCellWidths}
               isSelectable={isSelectable}
-              isSelected={isSelected}
+              // isSelected={isSelected}
               item={reactTableRow}
               key={key}
-              onItemSelect={onItemSelect}
+              // onItemSelect={onItemSelect}
+              isSelected={row.getIsSelected()}
+              onSelectionChange={row.getToggleSelectedHandler()}
+              isIndeterminate={row.getIsSomeSelected()}
             />
           );
         })}
@@ -276,19 +332,25 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     return null;
   };
 
+  // console.log(selectedItems, 'here the selected items in table');
+
   return (
     <>
       {shouldRenderActions() && (
         <Actions
           customActions={actions}
           pagination={pagination}
-          onSelectionChange={selectable && selectable.onSelectionChange}
-          selectedItems={selectedItems}
+          // onSelectionChange={selectable && selectable.onSelectionChange}
+          selectedItems={selectable && selectable.selectedItems}
           items={items}
           itemName={itemName}
           tableId={tableIdRef.current}
           stickyHeader={stickyHeader}
           forwardedRef={actionsRef}
+          indeterminate={instanceReactTable.getIsSomeRowsSelected()}
+          checked={instanceReactTable.getIsAllRowsSelected()}
+          // eslint-disable-next-line react/jsx-no-duplicate-props
+          onSelectionChange={instanceReactTable.getToggleAllRowsSelectedHandler()}
         />
       )}
       <StyledTable {...rest} id={tableIdRef.current}>
