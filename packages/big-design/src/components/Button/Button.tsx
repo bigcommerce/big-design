@@ -11,6 +11,7 @@ interface PrivateProps {
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, MarginProps {
   actionType?: 'normal' | 'destructive';
+  children?: React.ReactNode;
   iconLeft?: React.ReactNode;
   iconOnly?: React.ReactNode;
   iconRight?: React.ReactNode;

@@ -18,7 +18,7 @@ import {
   PaddingPropTable,
 } from '../PropTables';
 
-const ExampleBox: React.FC = ({ children }) => (
+const ExampleBox: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
   <Box backgroundColor="secondary20" border="box" padding="small" style={{ height: '100%' }}>
     {children}
   </Box>

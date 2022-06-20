@@ -6,6 +6,7 @@ import { Small, TextProps } from '../../Typography';
 import { StyledLink } from './styled';
 
 export interface FormControlDescriptionProps {
+  children?: React.ReactNode;
   link?: FormControlDescriptionLinkProps;
 }
 

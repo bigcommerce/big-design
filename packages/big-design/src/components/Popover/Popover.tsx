@@ -21,6 +21,7 @@ type BoxPropsWithoutMargins = Omit<
 
 export interface PopoverProps extends BoxPropsWithoutMargins {
   anchorElement: Element | null;
+  children?: React.ReactNode;
   closeOnClickOutside?: boolean;
   closeOnEscKey?: boolean;
   isOpen: boolean;

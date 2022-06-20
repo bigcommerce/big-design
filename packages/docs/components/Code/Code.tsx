@@ -3,6 +3,7 @@ import React from 'react';
 import { StyledCode } from './styled';
 
 export interface CodeProps {
+  children?: React.ReactNode;
   primary?: boolean;
   highlight?: boolean;
 }
