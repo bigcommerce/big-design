@@ -1,5 +1,5 @@
 import { createTable, getCoreRowModel, useTableInstance } from '@tanstack/react-table';
-import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 
 import { useUniqueId } from '../../hooks';
@@ -40,7 +40,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
   const uniqueTableId = useUniqueId('table');
   const tableIdRef = useRef(id || uniqueTableId);
   const isSelectable = Boolean(selectable);
-  // const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
+  const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
   // const [selectedItems, setRowSelection] = useState<Set<T>>({});
   const [headerCellWidths, setHeaderCellWidths] = useState<Array<number | string>>([]);
   const headerCellIconRef = useRef<HTMLTableCellElement>(null);
@@ -66,16 +66,34 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
     // manualSorting: false,
     // manualPagination: true,
     state: {
-      rowSelection: selectable?.selectedItems,
+      // rowSelection: selectable?.selectedItems,
+      rowSelection: selectedItems,
     },
     enableRowSelection: true,
-    onRowSelectionChange: selectable?.onSelectionChange,
+    // onRowSelectionChange: selectable?.onSelectionChange,
+    onRowSelectionChange: setSelectedItems,
     getSubRows: (row: any) => row.subRows,
     getCoreRowModel: getCoreRowModel(),
     debugTable: true,
     debugHeaders: true,
     debugColumns: true,
   } as any);
+
+  useEffect(() => {
+    const currentSelectedItems = selectedItems ?? [];
+
+    const trasformCurrentSelectedItems = (selectedItems: any) => {
+      return items.filter((item, index) => {
+        if (selectedItems[index]) {
+          return item;
+        }
+      });
+    };
+
+    selectable?.onSelectionChange(trasformCurrentSelectedItems(currentSelectedItems) as any);
+  }, [items, selectedItems]);
+
+  // console.log(transformedSelectedItems, 'here the transformed ones');
 
   // const eventCallback = useEventCallback((item: T) => {
   //   if (!selectable || !item) {
@@ -342,6 +360,7 @@ const InternalTable = <T extends TableItem>(props: TableProps<T>): React.ReactEl
           pagination={pagination}
           // onSelectionChange={selectable && selectable.onSelectionChange}
           selectedItems={selectable && selectable.selectedItems}
+          // selectedItems={selectedItems}
           items={items}
           itemName={itemName}
           tableId={tableIdRef.current}

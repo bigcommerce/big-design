@@ -21,6 +21,7 @@ export const SelectAll = <T extends TableItem>({
   totalItems,
   ...props
 }: SelectAllProps<T>) => {
+  // TODO: delete this
   items;
   // const allInPageSelected = items.length > 0 && items.every((item) => selectedItems.has(item));
   // const someInPageSelected = items.length > 0 && items.some((item) => selectedItems.has(item));
@@ -49,15 +50,16 @@ export const SelectAll = <T extends TableItem>({
   //   return null;
   // }
 
-  const totalSelectedItems = selectedItems.size;
+  const totalSelectedItems = selectedItems.length;
 
   // console.log(selectedItems, 'here teh selectedItems');
 
   // console.log(totalSelectedItems, 'here teht total selected items');
 
-  const allInPageSelected = undefined;
+  // const allInPageSelected = undefined;
 
-  const label = allInPageSelected ? 'Deselect All' : 'Select All';
+  // const label = allInPageSelected ? 'Deselect All' : 'Select All';
+  const label = props.checked ? 'Deselect All' : 'Select All';
 
   return (
     <FlexItem marginRight="xxSmall" flexShrink={0}>
