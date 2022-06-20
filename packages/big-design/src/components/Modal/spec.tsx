@@ -1,7 +1,7 @@
 import React from 'react';
 
 import 'jest-styled-components';
-import { fireEvent, render, waitFor } from '@test/utils';
+import { fireEvent, render, screen, waitFor } from '@test/utils';
 
 import { Button } from '../Button';
 import { Text } from '../Typography';
@@ -48,84 +48,84 @@ test('open/hides when props changes', () => {
   expect(queryByText(text)).toBeInTheDocument();
 });
 
-test('triggers onClose when pressing esc', () => {
+test('triggers onClose when pressing esc', async () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByText } = render(
+  render(
     <Modal isOpen={true} onClose={onClose}>
       {text}
     </Modal>,
   );
 
-  const element = queryByText(text) as HTMLElement;
+  const element = await screen.findByText<HTMLElement>(text);
 
   fireEvent.keyDown(element, { key: 'Escape' });
 
   expect(onClose).toHaveBeenCalled();
 });
 
-test('does not trigger onClose when pressing esc and closeOnEscKey is false', () => {
+test('does not trigger onClose when pressing esc and closeOnEscKey is false', async () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByText } = render(
+  render(
     <Modal closeOnEscKey={false} isOpen={true} onClose={onClose}>
       {text}
     </Modal>,
   );
 
-  const element = queryByText(text) as HTMLElement;
+  const element = await screen.findByText<HTMLElement>(text);
 
   fireEvent.keyDown(element, { key: 'Escape' });
 
   expect(onClose).not.toHaveBeenCalled();
 });
 
-test('trigger onClose when clicking outside the modal', () => {
+test('trigger onClose when clicking outside the modal', async () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByRole } = render(
+  render(
     <Modal closeOnClickOutside={true} isOpen={true} onClose={onClose}>
       {text}
     </Modal>,
   );
 
-  const element = queryByRole('dialog') as HTMLElement;
+  const element = await screen.findByRole<HTMLElement>('dialog');
 
   fireEvent.click(element);
 
   expect(onClose).toHaveBeenCalled();
 });
 
-test('do not trigger onClose when clicking outside the modal and closeOnClickOutside is false', () => {
+test('do not trigger onClose when clicking outside the modal and closeOnClickOutside is false', async () => {
   const text = 'This is a modal';
   const onClose = jest.fn();
 
-  const { queryByRole } = render(
+  render(
     <Modal isOpen={true} onClose={onClose}>
       {text}
     </Modal>,
   );
 
-  const element = queryByRole('dialog') as HTMLElement;
+  const element = await screen.findByRole<HTMLElement>('dialog');
 
   fireEvent.click(element);
 
   expect(onClose).not.toHaveBeenCalled();
 });
 
-test('do not trigger onClose when clicking inside the modal', () => {
+test('do not trigger onClose when clicking inside the modal', async () => {
   const onClose = jest.fn();
 
-  const { queryByTestId } = render(
+  render(
     <Modal isOpen={true} onClose={onClose}>
       <p data-testid="inside-modal">Content</p>
     </Modal>,
   );
 
-  const element = queryByTestId('inside-modal') as HTMLElement;
+  const element = await screen.findByTestId<HTMLElement>('inside-modal');
 
   fireEvent.click(element);
 

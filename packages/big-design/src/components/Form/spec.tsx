@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen, waitFor } from '@test/utils';
 
 import { Fieldset } from '../Fieldset';
 import { Input } from '../Input';
@@ -17,12 +17,14 @@ test('forwards ref', () => {
   expect(form).toBe(ref.current);
 });
 
-test('calls onSubmit', () => {
+test('calls onSubmit', async () => {
   const onSubmit = jest.fn();
-  const { container } = render(<Form onSubmit={onSubmit} />);
-  const form = container.querySelector('form') as HTMLFormElement;
 
-  fireEvent.submit(form);
+  render(<Form name="testForm" onSubmit={onSubmit} />);
+
+  const form = await screen.findByRole('form');
+
+  await waitFor(() => fireEvent.submit(form));
 
   expect(onSubmit).toHaveBeenCalled();
 });

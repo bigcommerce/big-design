@@ -33,7 +33,7 @@ const AlertPage = () => {
         <CodePreview scope={{ alertsManager }}>
           {/* jsx-to-string:start */}
           {function Example() {
-            const alert = {
+            const alert: AlertProps = {
               header: 'Optional Headline',
               messages: [
                 {
@@ -46,7 +46,7 @@ const AlertPage = () => {
               ],
               type: 'success',
               onClose: () => null,
-            } as AlertProps;
+            };
 
             return <Button onClick={() => alertsManager.add(alert)}>Trigger Alert</Button>;
           }}

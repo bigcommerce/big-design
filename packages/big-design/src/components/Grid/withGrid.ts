@@ -59,17 +59,20 @@ const getSimpleGrid = (
   ${cssKey}: ${gridedProp}
 `;
 
-const getResponsiveGrid: GridedOverload = (
+const getResponsiveGrid = (
   gridedProp: any,
   theme: ThemeInterface,
   cssKey: string,
 ): FlattenSimpleInterpolation[] => {
   const breakpointKeys = Object.keys(gridedProp).sort(
     (firstBreakpoint, secondBreakpoint) =>
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       breakpointsOrder.indexOf(firstBreakpoint as keyof Breakpoints) -
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       breakpointsOrder.indexOf(secondBreakpoint as keyof Breakpoints),
   );
 
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   return (breakpointKeys as Array<keyof Breakpoints>).map(
     (breakpointKey) =>
       css`

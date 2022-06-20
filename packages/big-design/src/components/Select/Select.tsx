@@ -251,10 +251,7 @@ export const Select = typedMemo(
       }
 
       if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement(
-          label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
-          getLabelProps(),
-        );
+        return cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, getLabelProps());
       }
 
       warning('label must be either a string or a FormControlLabel component.');
@@ -299,6 +296,7 @@ export const Select = typedMemo(
                     if (isOpen === false) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
+                      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                       (event.nativeEvent as any).preventDownshiftDefault = true;
                     }
 
@@ -313,6 +311,7 @@ export const Select = typedMemo(
                     }
 
                     // https://github.com/downshift-js/downshift/issues/734
+                    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                     (event.nativeEvent as any).preventDownshiftDefault = true;
                     break;
                 }

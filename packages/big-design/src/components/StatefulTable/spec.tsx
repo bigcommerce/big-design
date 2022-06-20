@@ -1,7 +1,7 @@
 import React from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { StatefulTable, StatefulTablePillTabFilter, StatefulTableProps } from './StatefulTable';
 
@@ -122,32 +122,33 @@ test('renders rows without checkboxes when opting in to selectable', () => {
   expect(queryAllByRole('checkbox')).toHaveLength(105);
 });
 
-test('items are unselected by default', () => {
-  const { container } = render(getSimpleTable({ selectable: true }));
-  const checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
+test('items are unselected by default', async () => {
+  render(getSimpleTable({ selectable: true }));
 
-  expect(checkbox.checked).toBe(false);
+  const checkboxes = await screen.findAllByRole<HTMLInputElement>('checkbox');
+
+  expect(checkboxes[0].checked).toBe(false);
 });
 
-test('items can be selected by default', () => {
+test('items can be selected by default', async () => {
   const testItem = { name: 'Test Item', stock: 1 };
   const items: TestItem[] = [testItem];
-  const { container } = render(
-    getSimpleTable({ selectable: true, items, defaultSelected: [testItem] }),
-  );
-  const checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
 
-  expect(checkbox.checked).toBe(true);
+  render(getSimpleTable({ selectable: true, items, defaultSelected: [testItem] }));
+
+  const checkboxes = await screen.findAllByRole<HTMLInputElement>('checkbox');
+
+  expect(checkboxes[0].checked).toBe(true);
 });
 
-test('onSelectionChange gets called when an item selection happens', () => {
+test('onSelectionChange gets called when an item selection happens', async () => {
   const testItemOne = { name: 'Test Item', stock: 1 };
   const testItemTwo = { name: 'Test Item Two', stock: 2 };
   const testItemThree = { name: 'Test Item Three', stock: 3 };
   const items: TestItem[] = [testItemOne, testItemTwo, testItemThree];
   const onSelectionChange = jest.fn();
 
-  const { container } = render(
+  render(
     getSimpleTable({
       selectable: true,
       items,
@@ -156,9 +157,9 @@ test('onSelectionChange gets called when an item selection happens', () => {
     }),
   );
 
-  const checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
+  const checkboxes = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
-  fireEvent.click(checkbox);
+  fireEvent.click(checkboxes[1]);
 
   expect(onSelectionChange).toHaveBeenCalledWith([testItemThree, testItemOne]);
 });
@@ -171,12 +172,14 @@ test('multi-page select', async () => {
   );
 
   const table = await findByTestId('simple-table');
-  let checkbox = table.querySelector('tbody > tr input') as HTMLInputElement;
+  let checkboxes: NodeListOf<HTMLInputElement> = table.querySelectorAll('tbody > tr input');
+  let checkbox = checkboxes[0];
 
   fireEvent.click(checkbox);
   fireEvent.click(getByTitle('Next page'));
 
-  checkbox = table.querySelector('tbody > tr input') as HTMLInputElement;
+  checkboxes = table.querySelectorAll('tbody > tr input');
+  checkbox = checkboxes[0];
   fireEvent.click(checkbox);
 
   expect(onSelectionChange).toHaveBeenCalledWith([

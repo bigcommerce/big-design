@@ -96,7 +96,7 @@ const InternalModal: React.FC<ModalProps> = ({
   // Setup focus-trap
   useEffect(() => {
     if (modalRef && internalTrap.current === null) {
-      internalTrap.current = focusTrap(modalRef as HTMLElement, { fallbackFocus: modalRef });
+      internalTrap.current = focusTrap(modalRef, { fallbackFocus: modalRef });
       internalTrap.current.activate();
     }
 

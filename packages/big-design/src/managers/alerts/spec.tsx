@@ -3,7 +3,7 @@ import 'jest-styled-components';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { AlertProps } from '../../components/Alert';
 
@@ -12,15 +12,17 @@ import { createAlertsManager } from './manager';
 
 let alertsManager: ReturnType<typeof createAlertsManager>;
 
+type KeyedAlertProps = AlertProps & { key: string };
+
 beforeEach(() => {
   alertsManager = createAlertsManager();
 });
 
 describe('alertsManager functionality', () => {
   const testKey = 'test';
-  const alert = {
+  const alert: AlertProps = {
     messages: [{ text: 'Text' }],
-  } as AlertProps;
+  };
 
   test('assigns auto generated key to alert', () => {
     const alertKey = alertsManager.add(alert);
@@ -221,28 +223,28 @@ describe('alertsManager functionality', () => {
 });
 
 describe('AlertsManager', () => {
-  const successAlert = {
+  const successAlert: KeyedAlertProps = {
     messages: [{ text: 'Success' }],
     type: 'success',
     key: 'success',
     onClose: () => null,
-  } as AlertProps;
+  };
 
-  const errorAlert = {
+  const errorAlert: KeyedAlertProps = {
     messages: [{ text: 'Error' }],
     type: 'error',
     key: 'error',
     onClose: () => null,
-  } as AlertProps;
+  };
 
-  const infoAlert = {
+  const infoAlert: KeyedAlertProps = {
     messages: [{ text: 'Info' }],
     type: 'info',
     key: 'info',
     onClose: () => null,
-  } as AlertProps;
+  };
 
-  const alerts: AlertProps[] = [infoAlert, errorAlert, successAlert];
+  const alerts: KeyedAlertProps[] = [infoAlert, errorAlert, successAlert];
 
   test('renders alert', () => {
     const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
@@ -281,20 +283,20 @@ describe('AlertsManager', () => {
     expect(queryByText(errorAlert.messages[0].text)).toBeInTheDocument();
 
     act(() => {
-      alertsManager.remove(errorAlert.key as string);
+      alertsManager.remove(errorAlert.key);
     });
 
     expect(queryByText(successAlert.messages[0].text)).toBeInTheDocument();
 
     act(() => {
-      alertsManager.remove(successAlert.key as string);
+      alertsManager.remove(successAlert.key);
     });
 
     expect(queryByText(infoAlert.messages[0].text)).toBeInTheDocument();
   });
 
-  test('closes an alert with close button', () => {
-    const { queryByRole, container } = render(<AlertsManager manager={alertsManager} />);
+  test('closes an alert with close button', async () => {
+    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
 
     expect(queryByRole('alert')).not.toBeInTheDocument();
 
@@ -304,7 +306,7 @@ describe('AlertsManager', () => {
 
     expect(queryByRole('alert')).toBeInTheDocument();
 
-    const closeButton = container.querySelector('button') as HTMLButtonElement;
+    const closeButton = await screen.findByRole('button');
 
     expect(closeButton).toBeDefined();
 
@@ -317,7 +319,7 @@ describe('AlertsManager', () => {
 
   test('closes an alert with alertsManager', () => {
     let key: string;
-    let removedAlert: AlertProps;
+    let removedAlert: AlertProps | undefined;
     const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
 
     expect(queryByRole('alert')).not.toBeInTheDocument();
@@ -329,7 +331,7 @@ describe('AlertsManager', () => {
     expect(queryByRole('alert')).toBeInTheDocument();
 
     act(() => {
-      removedAlert = alertsManager.remove(key) as AlertProps;
+      removedAlert = alertsManager.remove(key);
 
       expect(removedAlert).toBeDefined();
     });
@@ -337,9 +339,9 @@ describe('AlertsManager', () => {
     expect(queryByRole('alert')).not.toBeInTheDocument();
   });
 
-  test('closes multiple alerts with close button', () => {
+  test('closes multiple alerts with close button', async () => {
     const subscriber = jest.fn();
-    const { queryByRole, container } = render(<AlertsManager manager={alertsManager} />);
+    const { queryByRole } = render(<AlertsManager manager={alertsManager} />);
 
     alertsManager.subscribe(subscriber);
 
@@ -355,12 +357,13 @@ describe('AlertsManager', () => {
     expect(subscriber).toHaveBeenCalledTimes(alerts.length);
 
     for (let index = 0; index < alerts.length; index++) {
-      const closeButton = container.querySelector('button') as HTMLButtonElement;
+      // eslint-disable-next-line no-await-in-loop
+      const closeButtons = await screen.findAllByRole('button');
 
-      expect(closeButton).toBeDefined();
+      expect(closeButtons[0]).toBeDefined();
 
       act(() => {
-        fireEvent.click(closeButton);
+        fireEvent.click(closeButtons[0]);
       });
 
       expect(subscriber).toHaveBeenCalledTimes(alerts.length + index + 1);
@@ -389,7 +392,7 @@ describe('AlertsManager', () => {
 
     alerts.forEach((alert, index) => {
       act(() => {
-        alertsManager.remove(alert.key as string);
+        alertsManager.remove(alert.key);
       });
 
       expect(subscriber).toHaveBeenCalledTimes(alerts.length + index + 1);

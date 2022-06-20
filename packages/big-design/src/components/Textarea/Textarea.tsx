@@ -52,13 +52,10 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
     }
 
     if (isValidElement(label) && label.type === FormControlLabel) {
-      return cloneElement(
-        label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>,
-        {
-          id: labelId,
-          htmlFor: id,
-        },
-      );
+      return cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, {
+        id: labelId,
+        htmlFor: id,
+      });
     }
 
     warning('label must be either a string or a FormControlLabel component.');

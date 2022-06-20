@@ -115,10 +115,10 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
   });
 
   useEffect(() => {
-    const prevFocus = previousFocus.current as HTMLElement;
+    const prevFocus = previousFocus.current;
 
     return () => {
-      if (prevFocus && typeof prevFocus.focus === 'function') {
+      if (prevFocus instanceof HTMLElement) {
         prevFocus.focus();
       }
     };

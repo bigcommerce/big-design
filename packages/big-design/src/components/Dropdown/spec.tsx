@@ -645,7 +645,11 @@ test('rendered line separators cannot be focused on', async () => {
   const list = await screen.findByRole('listbox');
   const hrListItems = list.querySelectorAll('hr');
 
-  fireEvent.mouseOver(hrListItems[0].parentElement as HTMLElement);
+  if (hrListItems.length && hrListItems[0].parentElement) {
+    const el: HTMLElement = hrListItems[0].parentElement;
+
+    fireEvent.mouseOver(el);
+  }
 
   expect(document.activeElement).not.toEqual(hrListItems[0].parentElement);
 });

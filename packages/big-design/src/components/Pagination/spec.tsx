@@ -1,7 +1,7 @@
 import React from 'react';
 
 import 'jest-styled-components';
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen, waitFor } from '@test/utils';
 
 import { Pagination } from './index';
 
@@ -108,7 +108,8 @@ test('trigger range change', async () => {
 test('trigger page decrease', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
-  const { findByTitle } = render(
+
+  render(
     <Pagination
       currentPage={2}
       itemsPerPage={3}
@@ -119,15 +120,17 @@ test('trigger page decrease', async () => {
     />,
   );
 
-  let title = await findByTitle('Previous page');
+  let title = await screen.findByTitle('Previous page');
 
-  const svg = title.parentNode as HTMLElement;
-  const span = svg.parentNode as HTMLElement;
-  const button = span.parentNode as HTMLButtonElement;
+  const svg = title.parentNode;
+  const span = svg?.parentNode ?? null;
+  const button = span?.parentNode ?? null;
 
-  fireEvent.click(button);
+  if (button) {
+    await waitFor(() => fireEvent.click(button));
+  }
 
-  title = await findByTitle('Previous page');
+  title = await screen.findByTitle('Previous page');
 
   expect(changePage).toHaveBeenCalled();
   expect(title).toBeInTheDocument();
@@ -136,7 +139,8 @@ test('trigger page decrease', async () => {
 test('trigger page increase', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
-  const { findByTitle } = render(
+
+  render(
     <Pagination
       currentPage={1}
       itemsPerPage={3}
@@ -147,15 +151,17 @@ test('trigger page increase', async () => {
     />,
   );
 
-  let title = await findByTitle('Next page');
+  let title = await screen.findByTitle('Next page');
 
-  const svg = title.parentNode as HTMLElement;
-  const span = svg.parentNode as HTMLElement;
-  const button = span.parentNode as HTMLButtonElement;
+  const svg = title.parentNode;
+  const span = svg?.parentNode ?? null;
+  const button = span?.parentNode ?? null;
 
-  fireEvent.click(button);
+  if (button) {
+    await waitFor(() => fireEvent.click(button));
+  }
 
-  title = await findByTitle('Next page');
+  title = await screen.findByTitle('Next page');
 
   expect(changePage).toHaveBeenCalled();
   expect(title).toBeInTheDocument();

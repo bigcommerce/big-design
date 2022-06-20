@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
 import { renderHook } from '@testing-library/react-hooks';
 
 import {
