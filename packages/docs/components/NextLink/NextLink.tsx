@@ -12,7 +12,13 @@ function getLinkAs(as = '') {
   return prefix + as;
 }
 
-export const NextLink: React.FC<{ href: LinkProps['href']; as?: string }> = (props) => {
+interface Props {
+  children?: React.ReactNode;
+  href: LinkProps['href'];
+  as?: string;
+}
+
+export const NextLink: React.FC<Props> = (props) => {
   const { as, children, href } = props;
 
   return (

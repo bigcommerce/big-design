@@ -21,6 +21,7 @@ import {
 export interface ModalProps {
   actions?: ModalAction[];
   backdrop?: boolean;
+  children?: React.ReactNode;
   closeOnClickOutside?: boolean;
   closeOnEscKey?: boolean;
   header?: string;

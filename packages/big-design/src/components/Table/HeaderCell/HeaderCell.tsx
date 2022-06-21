@@ -18,6 +18,7 @@ export interface HeaderCellProps<T>
   extends TableHTMLAttributes<HTMLTableCellElement>,
     TableColumnDisplayProps {
   actionsRef: RefObject<HTMLDivElement>;
+  children?: React.ReactNode;
   column: TableColumn<T>;
   id: string;
   hide?: boolean;

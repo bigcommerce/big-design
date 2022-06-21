@@ -1,7 +1,7 @@
 import create, { State } from 'zustand';
 import createContext from 'zustand/context';
 
-import { Cell, ExpandableRows, InternalWorksheetColumn } from '../../types';
+import { Cell, DisabledRows, ExpandableRows, InternalWorksheetColumn } from '../../types';
 import { deleteCells, getHiddenRows, mergeCells } from '../../utils';
 
 export const { Provider, useStore } = createContext<BaseState<any>>();
@@ -11,6 +11,7 @@ interface BaseState<Item> extends State {
   editedCells: Array<Cell<Item>>;
   editingCell: Cell<Item> | null;
   expandableRows: ExpandableRows;
+  disabledRows: DisabledRows;
   hiddenRows: Array<string | number>;
   invalidCells: Array<Cell<Item>>;
   openedModal: keyof Item | null;
@@ -24,6 +25,7 @@ interface BaseState<Item> extends State {
   setColumns: (columns: Array<InternalWorksheetColumn<Item>>) => void;
   setEditingCell: (cell: Cell<Item> | null) => void;
   setExpandableRows: (expandableRows: ExpandableRows) => void;
+  setDisabledRows: (disabledRows: DisabledRows) => void;
   setHiddenRows: (hiddenRow: Array<string | number>) => void;
   setOpenModal: (value: keyof Item | null) => void;
   setRows: (rows: Item[]) => void;
@@ -38,6 +40,7 @@ export const createStore = () =>
     editedCells: [],
     editingCell: null,
     expandableRows: {},
+    disabledRows: [],
     hiddenRows: [],
     invalidCells: [],
     openedModal: null,
@@ -55,6 +58,7 @@ export const createStore = () =>
     setEditingCell: (cell) => set((state) => ({ ...state, editingCell: cell })),
     setExpandableRows: (expandableRows) =>
       set((state) => ({ ...state, expandableRows, hiddenRows: getHiddenRows(expandableRows) })),
+    setDisabledRows: (disabledRows) => set((state) => ({ ...state, disabledRows })),
     setHiddenRows: (hiddenRows) => set((state) => ({ ...state, hiddenRows })),
     setOpenModal: (value) => set((state) => ({ ...state, openedModal: value })),
     setRows: (rows) => set((state) => ({ ...state, rows })),

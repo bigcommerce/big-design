@@ -6,10 +6,13 @@ export interface ExpandableRows {
   [key: string]: Array<string | number>;
 }
 
+export type DisabledRows = Array<string | number>;
+
 export interface WorksheetProps<Item extends WorksheetItem> {
   columns: Array<WorksheetColumn<Item>>;
   items: Item[];
   expandableRows?: ExpandableRows;
+  disabledRows?: DisabledRows;
   onChange(items: Item[]): void;
   onErrors?(items: Array<WorksheetError<Item>>): void;
 }
@@ -66,10 +69,7 @@ export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
   config: {
     cancelActionText?: string;
     header?: string;
-    render(
-      value: Item[keyof Item],
-      onChange: (value: Item[keyof Item]) => void,
-    ): React.ComponentType<Item> | React.ReactElement;
+    render(value: Item[keyof Item], onChange: (value: Item[keyof Item]) => void): React.ReactNode;
     saveActionText?: string;
   };
   formatting?(value: Item[keyof Item]): string;

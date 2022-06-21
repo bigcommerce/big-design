@@ -3,14 +3,19 @@ import React from 'react';
 
 import { List } from '../../List';
 
-export const SideNavGroup: React.FC<{ title: string }> = (props) => {
+interface Props {
+  children?: React.ReactNode;
+  title: string;
+}
+
+export const SideNavGroup: React.FC<Props> = ({ children, title }) => {
   return (
     <Box
       marginHorizontal={{ mobile: 'medium', tablet: 'none' }}
       marginTop={{ mobile: 'xxSmall', tablet: 'xLarge' }}
     >
-      <H4>{props.title}</H4>
-      <List reset>{props.children}</List>
+      <H4>{title}</H4>
+      <List reset>{children}</List>
     </Box>
   );
 };

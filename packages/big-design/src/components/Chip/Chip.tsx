@@ -7,6 +7,7 @@ import { Text } from '../Typography';
 import { StyledChip, StyledCloseButton } from './styled';
 
 export interface ChipProps extends MarginProps {
+  children?: React.ReactNode;
   label: string;
   onDelete?(): void;
 }
