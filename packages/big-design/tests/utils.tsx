@@ -2,7 +2,7 @@ import { render, RenderOptions } from '@testing-library/react';
 import React from 'react';
 import { UIDReset } from 'react-uid';
 
-const BigDesignWrapper: React.FC = ({ children }) => {
+const BigDesignWrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return <UIDReset>{children}</UIDReset>;
 };
 

@@ -69,10 +69,7 @@ export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
   config: {
     cancelActionText?: string;
     header?: string;
-    render(
-      value: Item[keyof Item],
-      onChange: (value: Item[keyof Item]) => void,
-    ): React.ComponentType<Item> | React.ReactElement;
+    render(value: Item[keyof Item], onChange: (value: Item[keyof Item]) => void): React.ReactNode;
     saveActionText?: string;
   };
   formatting?(value: Item[keyof Item]): string;

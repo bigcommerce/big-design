@@ -21,7 +21,7 @@ export const CodeEditorContext = createContext<Context>({
   toggleTheme: () => {},
 });
 
-export const StoryWrapper: React.FC = (props) => {
+export const StoryWrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const [editorTheme, setEditorTheme] = useState(darkTheme);
   const [language, setLanguage] = useState<Language>('tsx');
   const toggleEditorTheme = () =>
@@ -31,7 +31,7 @@ export const StoryWrapper: React.FC = (props) => {
     <CodeEditorContext.Provider
       value={{ theme: editorTheme, toggleTheme: toggleEditorTheme, language, setLanguage }}
     >
-      {props.children}
+      {children}
     </CodeEditorContext.Provider>
   );
 };

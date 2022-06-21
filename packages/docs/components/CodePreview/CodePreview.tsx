@@ -57,6 +57,7 @@ function transformCode(input: string): string {
 }
 
 export interface CodePreviewProps {
+  children?: React.ReactNode;
   scope?: { [key: string]: unknown };
 }
 
