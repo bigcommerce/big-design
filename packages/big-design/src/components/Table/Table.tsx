@@ -268,4 +268,6 @@ const InternalTable = <T extends TableItem>(
 };
 
 export const Table = typedMemo(InternalTable);
-export const TableFigure: React.FC<MarginProps> = memo((props) => <StyledTableFigure {...props} />);
+export const TableFigure: React.FC<{ children?: React.ReactNode } & MarginProps> = memo((props) => (
+  <StyledTableFigure {...props} />
+));

@@ -8,6 +8,7 @@ export interface DataCellProps
   extends TableHTMLAttributes<HTMLTableCellElement>,
     TableColumnDisplayProps {
   align?: 'left' | 'center' | 'right';
+  children?: React.ReactNode;
   isCheckbox?: boolean;
   verticalAlign?: 'top' | 'middle';
   width?: number | string;

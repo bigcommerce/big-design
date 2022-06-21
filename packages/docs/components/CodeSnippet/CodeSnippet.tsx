@@ -8,6 +8,7 @@ import { SnippetControls } from '../SnippetControls';
 import { CodeEditorContext } from '../StoryWrapper/StoryWrapper';
 
 interface EditorProps {
+  children?: React.ReactNode;
   language?: Language;
   showControls?: boolean;
 }
