@@ -928,6 +928,83 @@ describe('disable', () => {
   });
 });
 
+describe('disable rows', () => {
+  test('navigation works on disabled cells', () => {
+    render(
+      <Worksheet columns={columns} disabledRows={[1, 2]} items={items} onChange={handleChange} />,
+    );
+
+    let cell = screen.getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowLeft' });
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowDown' });
+
+    cell = screen.getByText('Shoes Name Two');
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowUp' });
+
+    cell = screen.getByText('Shoes Name Three');
+
+    expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+
+    fireEvent.keyDown(cell, { key: 'ArrowRight' });
+    fireEvent.keyDown(cell, { key: 'ArrowRight' });
+
+    const cells = screen.getAllByText('Text');
+
+    expect(cells[0].parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+  });
+
+  test('enter does not start editing the cell', () => {
+    render(
+      <Worksheet columns={columns} disabledRows={[1, 2]} items={items} onChange={handleChange} />,
+    );
+
+    const worksheet = screen.getByRole('table');
+
+    const cell = screen.getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+    fireEvent.keyDown(worksheet, { key: 'Enter' });
+
+    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+  });
+
+  test('space does not start editing the cell', () => {
+    render(
+      <Worksheet columns={columns} disabledRows={[1, 2]} items={items} onChange={handleChange} />,
+    );
+
+    const worksheet = screen.getByRole('table');
+
+    const cell = screen.getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+    fireEvent.keyDown(worksheet, { key: ' ' });
+
+    expect(screen.queryByDisplayValue('Shoes Name Three')).toBeNull();
+  });
+
+  test('mouse will not trigger input field', () => {
+    render(
+      <Worksheet columns={columns} disabledRows={[1, 3]} items={items} onChange={handleChange} />,
+    );
+
+    fireEvent.doubleClick(screen.getByText('Shoes Name One'));
+
+    expect(screen.queryByDisplayValue('Shoes Name One')).toBeNull();
+  });
+});
+
 describe('expandable', () => {
   test('renders expandable buttons', () => {
     render(

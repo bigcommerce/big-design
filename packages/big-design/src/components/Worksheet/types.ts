@@ -6,10 +6,13 @@ export interface ExpandableRows {
   [key: string]: Array<string | number>;
 }
 
+export type DisabledRows = Array<string | number>;
+
 export interface WorksheetProps<Item extends WorksheetItem> {
   columns: Array<WorksheetColumn<Item>>;
   items: Item[];
   expandableRows?: ExpandableRows;
+  disabledRows?: DisabledRows;
   onChange(items: Item[]): void;
   onErrors?(items: Array<WorksheetError<Item>>): void;
 }

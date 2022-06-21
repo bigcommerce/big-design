@@ -60,6 +60,11 @@ const worksheetProps: Prop[] = [
       'Accepts an object with parent ids as keys and an array of child ids that will be hidden on render.',
   },
   {
+    name: 'disabledRows',
+    types: 'Array<string | number>',
+    description: 'Accepts an array with ids of rows that will be disabled.',
+  },
+  {
     name: 'items',
     types: 'any[]',
     description: 'The array of items to display.',
