@@ -26,6 +26,9 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
   const isExpanded = useStore(
     useMemo(() => (state) => !state.hiddenRows.includes(row.id), [row.id]),
   );
+  const isDisabled = useStore(
+    useMemo(() => (state) => state.disabledRows.includes(row.id), [row.id]),
+  );
 
   const parentId = useMemo(() => {
     if (!expandableRows) {
@@ -54,7 +57,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
       {columns.map((column, columnIndex) => (
         <Cell
           columnIndex={columnIndex}
-          disabled={column.disabled}
+          disabled={column.disabled || isDisabled}
           formatting={hasFormatting(column) ? column.formatting : undefined}
           hash={column.hash}
           key={`${rowIndex}-${columnIndex}`}

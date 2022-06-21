@@ -665,6 +665,66 @@ const WorksheetPage = () => {
                 </CodePreview>
               ),
             },
+            {
+              id: 'disabled-rows',
+              title: 'Disabled rows',
+              render: () => (
+                <CodePreview key="disabled-rows">
+                  {/* jsx-to-string:start */}
+                  {function Example() {
+                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                      },
+                      { hash: 'otherField', header: 'Other field' },
+                    ];
+
+                    const disabledRows = [2, 4];
+
+                    const items: Array<Partial<Product>> = [
+                      {
+                        id: 1,
+                        productName: 'Product 1',
+                        otherField: 'Text',
+                      },
+                      {
+                        id: 2,
+                        productName: 'Product 2',
+                        otherField: 'Text',
+                      },
+                      {
+                        id: 3,
+                        productName: 'Product 3',
+                        otherField: 'Text',
+                      },
+                      {
+                        id: 4,
+                        productName: 'Product 4',
+                        otherField: 'Text',
+                      },
+                      {
+                        id: 5,
+                        productName: 'Product 5',
+                        otherField: 'Text',
+                      },
+                    ];
+
+                    return (
+                      <Worksheet
+                        columns={columns}
+                        disabledRows={disabledRows}
+                        items={items}
+                        onChange={(items) => items}
+                        onErrors={(items) => items}
+                      />
+                    );
+                  }}
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
           ]}
         />
       </Panel>
