@@ -1,11 +1,11 @@
 import { Flex, H3, Link, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
-import React, { FC, ReactNode } from 'react';
+import React, { FC, isValidElement, ReactNode } from 'react';
 
 import { Code } from '../Code';
 import { Collapsible } from '../Collapsible';
 
 interface TypesDataProps {
-  types: any;
+  types: Prop['types'] | string[] | string;
 }
 
 export interface Prop {
@@ -116,18 +116,23 @@ const TypesData: React.FC<TypesDataProps> = (props): any => {
   const { types } = props;
 
   if (Array.isArray(types)) {
-    return types.map((type, index) => {
+    return types.map((type: ReactNode | string, index) => {
       return (
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        <React.Fragment key={type.key ?? index}>
-          {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
-          {type.type === Link ? <Code highlight={false}>{type}</Code> : <Code>{type}</Code>}
+        <React.Fragment key={isValidElement(type) && type.key ? type.key : index}>
+          {isValidElement(type) && type.type === Link ? (
+            <Code highlight={false}>{type}</Code>
+          ) : (
+            <Code>{type}</Code>
+          )}
           {index < types.length - 1 ? ' | ' : null}
         </React.Fragment>
       );
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  return types.type === Link ? <Code highlight={false}>{types}</Code> : <Code>{types}</Code>;
+  return types && isValidElement(types) && types.type === Link ? (
+    <Code highlight={false}>{types}</Code>
+  ) : (
+    <Code>{types}</Code>
+  );
 };

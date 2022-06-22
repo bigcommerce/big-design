@@ -10,7 +10,8 @@ import { SideNavLogo } from './SideNavLogo';
 import { SideNavMenu } from './SideNavMenu';
 import { StyledFlex } from './styled';
 
-const CodeSandboxUrl = process.env?.CODE_SANDBOX_URL ?? '';
+// const CodeSandboxUrl = process.env?.CODE_SANDBOX_URL ?? '';
+const CodeSandboxUrl = '';
 
 export const SideNav: React.FC = () => {
   return (

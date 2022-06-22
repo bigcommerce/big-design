@@ -8,8 +8,10 @@ import {
   Form,
   FormControlLabel,
   FormGroup,
+  FormProps,
   H1,
   Input,
+  InputProps,
   Link,
   MultiSelect,
   Panel,
@@ -239,7 +241,7 @@ const FormPage = () => {
                       const [value, setValue] = useState('BigCommerce');
                       const [error, setError] = useState(ERROR_MSG);
 
-                      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+                      const handleSubmit: FormProps['onSubmit'] = (event) => {
                         const form = event.currentTarget;
 
                         if (form.checkValidity() === false) {
@@ -248,7 +250,7 @@ const FormPage = () => {
                         }
                       };
 
-                      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+                      const handleChange: InputProps['onChange'] = (event) => {
                         const { target } = event;
                         const regex = RegExp(target.pattern, 'g');
 

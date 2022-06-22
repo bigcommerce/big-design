@@ -1,8 +1,6 @@
 import { Placement } from '@popperjs/core';
 import { LiHTMLAttributes } from 'react';
 
-import { ButtonProps } from '../Button';
-
 export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
   autoWidth?: boolean;
   disabled?: boolean;
@@ -10,7 +8,7 @@ export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElemen
   maxHeight?: number;
   placement?: Placement;
   positionFixed?: boolean;
-  toggle: React.ReactElement<ButtonProps>;
+  toggle: React.ReactElement<unknown>;
 }
 
 interface BaseItem extends Omit<LiHTMLAttributes<HTMLLIElement>, 'value'> {
