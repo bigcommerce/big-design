@@ -1,4 +1,13 @@
-import { Fieldset, Form, FormGroup, H1, Panel, Radio, Text } from '@bigcommerce/big-design';
+import {
+  Fieldset,
+  Form,
+  FormGroup,
+  H1,
+  InputProps,
+  Panel,
+  Radio,
+  Text,
+} from '@bigcommerce/big-design';
 import React, { Fragment, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
@@ -42,7 +51,7 @@ const RadioPage = () => {
                     {function Example() {
                       const [selected, setSelected] = useState('');
 
-                      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+                      const handleChange: InputProps['onChange'] = (event) =>
                         setSelected(event.target.value);
 
                       return (
@@ -92,9 +101,9 @@ const RadioPage = () => {
                       const [firstRadio, setFirstRadio] = useState('');
                       const [secondRadio, setSecondRadio] = useState('');
 
-                      const handleFirstChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+                      const handleFirstChange: InputProps['onChange'] = (event) =>
                         setFirstRadio(event.target.value);
-                      const handleSecondChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+                      const handleSecondChange: InputProps['onChange'] = (event) =>
                         setSecondRadio(event.target.value);
 
                       return (
@@ -154,7 +163,7 @@ const RadioPage = () => {
                     {function Example() {
                       const [selected, setSelected] = useState('');
 
-                      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+                      const handleChange: InputProps['onChange'] = (event) =>
                         setSelected(event.target.value);
 
                       return (

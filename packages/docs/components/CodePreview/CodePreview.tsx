@@ -1,4 +1,3 @@
-import { BabelFileResult } from '@babel/core';
 import { transform } from '@babel/standalone';
 import * as BigDesign from '@bigcommerce/big-design';
 import * as BigDesignIcons from '@bigcommerce/big-design-icons';
@@ -32,13 +31,13 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
     return children;
   }
 
-  const transformResult: BabelFileResult = transform(children, {
+  const transformResult = transform(children, {
     compact: false,
     retainLines: true,
     presets: [['typescript', { allExtensions: true, isTSX: true, jsxPragma: 'preserve' }]],
   });
 
-  const code = transformResult.code ?? '';
+  const code = transformResult.code ?? children;
 
   return format(code, {
     parser: 'babel',
@@ -51,11 +50,11 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
 
 function transformCode(input: string): string {
   try {
-    const transformResult: BabelFileResult = transform(input, {
+    const transformResult = transform(input, {
       presets: [['typescript', { allExtensions: true, isTSX: true }], 'react'],
     });
 
-    return transformResult.code ?? '';
+    return transformResult.code ?? input;
   } catch (e) {
     return input;
   }

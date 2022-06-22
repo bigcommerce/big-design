@@ -1,22 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
 
 import { fireEvent, render, screen } from '@test/utils';
 
 import { Table, TableFigure } from './Table';
-import { TableColumn } from './types';
-
-interface SimpleTableItem {
-  sku: string;
-  name: string;
-  stock: number;
-}
+import { TableColumn, TableItem } from './types';
 
 interface SimpleTableOptions {
   className?: string;
-  columns?: Array<TableColumn<SimpleTableItem>>;
-  items?: SimpleTableItem[];
+  columns?: Array<TableColumn<TableItem>>;
+  items?: TableItem[];
   dataTestId?: string;
   emptyComponent?: React.ReactElement;
   headerless?: boolean;
@@ -242,8 +235,8 @@ test('renders a pagination component', async () => {
 });
 
 describe('selectable', () => {
-  let columns: any;
-  let items: any;
+  let columns: Array<TableColumn<TableItem>>;
+  let items: TableItem[];
   let onSelectionChange: jest.Mock;
   const itemName = 'Product';
 
@@ -387,8 +380,8 @@ describe('selectable', () => {
 });
 
 describe('sortable', () => {
-  let columns: any;
-  let items: any;
+  let columns: Array<TableColumn<TableItem>>;
+  let items: TableItem[];
   let onSort: jest.Mock;
 
   beforeEach(() => {
@@ -527,8 +520,8 @@ describe('sortable', () => {
 });
 
 describe('draggable', () => {
-  let columns: any;
-  let items: any;
+  let columns: Array<TableColumn<TableItem>>;
+  let items: TableItem[];
   let onRowDrop: jest.Mock;
 
   beforeEach(() => {
