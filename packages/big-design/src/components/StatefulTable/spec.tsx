@@ -144,7 +144,7 @@ test('onSelectionChange gets called when an item selection happens', () => {
 
   fireEvent.click(checkbox);
 
-  expect(onSelectionChange).toHaveBeenCalledWith([testItemThree, testItemOne]);
+  expect(onSelectionChange).toHaveBeenCalledWith([testItemOne, testItemThree]);
 });
 
 test('multi-page select', async () => {

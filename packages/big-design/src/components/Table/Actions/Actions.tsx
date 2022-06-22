@@ -16,10 +16,12 @@ export interface ActionsProps<T> {
   items: T[];
   pagination?: TablePaginationProps;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
-  selectedItems: Set<T>;
+  selectedItems: T[];
   stickyHeader?: boolean;
   tableId: string;
-  [key: string]: unknown;
+  isIndeterminate: boolean;
+  isAllSelected: boolean;
+  isSelectable: boolean;
 }
 
 const InternalActions = <T extends TableItem>({
@@ -32,11 +34,14 @@ const InternalActions = <T extends TableItem>({
   selectedItems,
   stickyHeader,
   tableId,
+  isIndeterminate,
+  isAllSelected,
+  isSelectable,
   ...props
 }: ActionsProps<T>) => {
-  const isSelectable = typeof onSelectionChange === 'function';
+  // TODO: Refactor this. Think about isSelectable.
+  // const isSelectable = typeof onSelectionChange === 'function';
   const totalItems = pagination ? pagination.totalItems : items.length;
-  // console.log(props, 'here the props');
 
   const renderItemName = () => {
     if (typeof itemName !== 'string') {
@@ -66,14 +71,16 @@ const InternalActions = <T extends TableItem>({
       ref={forwardedRef}
       {...props}
     >
-      <SelectAll
-        onChange={onSelectionChange}
-        selectedItems={selectedItems}
-        items={items}
-        totalItems={totalItems}
-        indeterminate={props.indeterminate}
-        checked={props.checked}
-      />
+      {isSelectable && (
+        <SelectAll
+          onChange={onSelectionChange}
+          selectedItems={selectedItems}
+          totalItems={totalItems}
+          isIndeterminate={isIndeterminate}
+          isAllSelected={isAllSelected}
+        />
+      )}
+
       {renderItemName()}
       {renderActions()}
 

@@ -5,6 +5,7 @@ import { fireEvent, render, screen } from '@test/utils';
 
 import { Table, TableFigure } from './Table';
 
+// TODO: update types
 interface SimpleTableOptions {
   className?: string;
   columns?: any[];
@@ -16,7 +17,6 @@ interface SimpleTableOptions {
   itemName?: string;
   style?: CSSProperties;
 }
-
 const getSimpleTable = ({
   className,
   columns,
@@ -38,9 +38,9 @@ const getSimpleTable = ({
     style={style}
     columns={
       columns || [
-        { header: 'Sku', render: ({ sku }) => sku },
-        { header: 'Name', render: ({ name }) => name },
-        { header: 'Stock', render: ({ stock }) => stock },
+        { header: 'Sku', render: ({ sku }) => sku, hash: 'sku' },
+        { header: 'Name', render: ({ name }) => name, hash: 'name' },
+        { header: 'Stock', render: ({ stock }) => stock, hash: 'stock' },
       ]
     }
     items={
@@ -98,8 +98,8 @@ test('renders column with custom component', () => {
   const { getAllByTestId } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', render: ({ name }: any) => <h3 data-testid="name">{name}</h3> },
+        { header: 'Sku', render: ({ sku }: any) => sku, hash: 'sku' },
+        { header: 'Name', render: ({ name }: any) => <h3 data-testid="name">{name}</h3>, hash: 'name' },
       ],
     }),
   );
@@ -111,8 +111,8 @@ test('renders column with tooltip icon', () => {
   const { getByTitle } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+        { header: 'Sku', render: ({ sku }: any) => sku, hash: 'sku' },
+        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name, hash: 'name' },
       ],
     }),
   );
@@ -124,8 +124,8 @@ test('renders tooltip when hovering on icon', async () => {
   const { getByTitle } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+        { header: 'Sku', render: ({ sku }: any) => sku, hash: 'sku' },
+        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name, hash: 'name' },
       ],
     }),
   );
@@ -146,12 +146,14 @@ test('tweaks column styles with props', () => {
           render: ({ sku }: any) => sku,
           align: 'right',
           verticalAlign: 'middle',
+          hash: 'sku',
         },
         {
           header: 'Name',
           render: ({ name }: any) => name,
           width: 100,
           withPadding: false,
+          hash: 'name',
         },
       ],
     }),

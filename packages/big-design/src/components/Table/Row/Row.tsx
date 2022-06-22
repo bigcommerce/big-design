@@ -16,9 +16,8 @@ export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
   isSelected?: boolean;
   isSelectable?: boolean;
   showDragIcon?: boolean;
-  onItemSelect?(item: T): void;
+  onItemSelect?(item: unknown): void;
   isIndeterminate: boolean;
-  [key: string]: unknown;
 }
 
 interface PrivateProps {
@@ -38,12 +37,6 @@ const InternalRow = <T extends TableItem>({
   isIndeterminate,
   ...rest
 }: RowProps<T> & PrivateProps) => {
-  // const onChange = () => {
-  //   if (onItemSelect) {
-  //     onItemSelect(item);
-  //   }
-  // };
-
   const label = isSelected ? `Selected` : `Unselected`;
 
   return (
@@ -59,8 +52,7 @@ const InternalRow = <T extends TableItem>({
             checked={isSelected}
             hiddenLabel
             label={label}
-            // onChange={onChange}
-            onChange={rest.onSelectionChange}
+            onChange={onItemSelect}
             isIndeterminate={isIndeterminate}
           />
         </DataCell>
@@ -79,8 +71,6 @@ const InternalRow = <T extends TableItem>({
             width={isDragging ? cellWidth : width}
             withPadding={withPadding}
           >
-            {/*
-          // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
             <CellContent {...item} />
           </DataCell>
         );
