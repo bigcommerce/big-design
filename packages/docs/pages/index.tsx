@@ -4,7 +4,7 @@ import { ThemeContext } from 'styled-components';
 
 import { Code, CodeSnippet, List } from '../components';
 
-const CodeSandboxUrl = process.env?.CODE_SANDBOX_URL ?? '';
+const CodeSandboxUrl = process.env.CODE_SANDBOX_URL ?? '';
 
 const GettingStartedPage = () => {
   const { spacing } = useContext(ThemeContext);
