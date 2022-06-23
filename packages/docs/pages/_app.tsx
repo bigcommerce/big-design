@@ -71,7 +71,7 @@ const App = ({ Component, pageProps }) => {
           }
         `}
       </style>
-      {isProd && GTM_ID && (
+      {Boolean(isProd && GTM_ID) && (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`}
