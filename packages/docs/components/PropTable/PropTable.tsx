@@ -1,11 +1,11 @@
 import { Flex, H3, Link, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
-import React, { FC, ReactNode } from 'react';
+import React, { FC, isValidElement, ReactNode } from 'react';
 
 import { Code } from '../Code';
 import { Collapsible } from '../Collapsible';
 
 interface TypesDataProps {
-  types: any;
+  types: Prop['types'];
 }
 
 export interface Prop {
@@ -112,19 +112,27 @@ export const PropTable: FC<PropTableProps> = (props) => {
   return renderContent();
 };
 
+const TypeCode = ({ type }: { type: ReactNode }) => {
+  if (isValidElement(type) && type.type === Link) {
+    return <Code highlight={false}>{type}</Code>;
+  }
+
+  return <Code>{type}</Code>;
+};
+
 const TypesData: React.FC<TypesDataProps> = (props): any => {
   const { types } = props;
 
   if (Array.isArray(types)) {
     return types.map((type, index) => {
       return (
-        <React.Fragment key={type.key ?? index}>
-          {type.type === Link ? <Code highlight={false}>{type}</Code> : <Code>{type}</Code>}
+        <React.Fragment key={isValidElement(type) && type.key ? type.key : index}>
+          <TypeCode type={type} />
           {index < types.length - 1 ? ' | ' : null}
         </React.Fragment>
       );
     });
   }
 
-  return types.type === Link ? <Code highlight={false}>{types}</Code> : <Code>{types}</Code>;
+  return <TypeCode type={types} />;
 };

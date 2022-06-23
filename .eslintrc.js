@@ -28,7 +28,6 @@ module.exports = {
         '@bigcommerce/jsx-short-circuit-conditionals': 'off',
         '@typescript-eslint/naming-convention': 'off',
         '@typescript-eslint/no-unsafe-return': 'off',
-        '@typescript-eslint/no-unsafe-member-access': 'off',
         '@typescript-eslint/no-unsafe-argument': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-shadow': 'off',

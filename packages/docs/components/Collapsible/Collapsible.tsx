@@ -1,6 +1,6 @@
 import { Text } from '@bigcommerce/big-design';
 import { ChevronRightIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
-import React, { useState } from 'react';
+import React, { KeyboardEventHandler, useState } from 'react';
 
 import { StyledFlex } from './styled';
 
@@ -13,7 +13,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({ children, title }) => 
   const [isCollapsed, setCollapsed] = useState(true);
   const toggleIsCollapsed = () => setCollapsed(!isCollapsed);
 
-  const handleKeyPressed = (e) => {
+  const handleKeyPressed: KeyboardEventHandler<HTMLDivElement> = (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       toggleIsCollapsed();
     }

@@ -64,6 +64,7 @@ export const Dropdown = memo(
         menuId: id,
         onSelectedItemChange: handleOnSelectedItemChange,
         selectedItem: null, // We never set a selected item
+        // @ts-expect-error toggle is of unknown type
         toggleButtonId: toggle.props.id,
       });
 

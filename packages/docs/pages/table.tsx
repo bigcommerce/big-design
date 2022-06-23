@@ -32,7 +32,7 @@ const columns = [
   { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
 ];
 
-const sort = (items, columnHash, direction) => {
+const sort = (items: Item[], columnHash: string, direction: string) => {
   return items
     .concat()
     .sort((a, b) =>
@@ -46,7 +46,7 @@ const sort = (items, columnHash, direction) => {
     );
 };
 
-const dragEnd = (items, from, to) => {
+const dragEnd = (items: Item[], from: number, to: number) => {
   const item = items.splice(from, 1);
 
   items.splice(to, 0, ...item);

@@ -31,11 +31,13 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
     return children;
   }
 
-  const code = transform(children, {
+  const transformResult = transform(children, {
     compact: false,
     retainLines: true,
     presets: [['typescript', { allExtensions: true, isTSX: true, jsxPragma: 'preserve' }]],
-  }).code;
+  });
+
+  const code = transformResult.code ?? children;
 
   return format(code, {
     parser: 'babel',
@@ -48,9 +50,11 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
 
 function transformCode(input: string): string {
   try {
-    return transform(input, {
+    const transformResult = transform(input, {
       presets: [['typescript', { allExtensions: true, isTSX: true }], 'react'],
-    }).code;
+    });
+
+    return transformResult.code ?? input;
   } catch (e) {
     return input;
   }

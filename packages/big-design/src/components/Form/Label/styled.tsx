@@ -6,6 +6,10 @@ import { HeadingProps } from '../../Typography/types';
 
 import { LabelProps } from './Label';
 
+interface StyledLabelArgument extends LabelProps {
+  theme: DefaultTheme;
+}
+
 export const StyledLabel = styled<
   StyledComponent<'label' | 'h4', DefaultTheme, Partial<HeadingProps>> & LabelProps
 >(StyleableH4).attrs({
@@ -13,9 +17,9 @@ export const StyledLabel = styled<
 })<LabelProps>`
   cursor: pointer;
   display: inline-block;
-  margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
+  margin-bottom: ${({ theme }: StyledLabelArgument) => theme.spacing.xxSmall};
 
-  ${({ theme, renderOptional }) =>
+  ${({ theme, renderOptional }: StyledLabelArgument) =>
     renderOptional &&
     css`
       &::after {

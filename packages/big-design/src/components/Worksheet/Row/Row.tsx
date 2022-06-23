@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { useCallback, useMemo } from 'react';
 
 import { typedMemo } from '../../../utils';

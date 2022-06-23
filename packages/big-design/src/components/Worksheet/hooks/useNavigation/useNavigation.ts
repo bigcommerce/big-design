@@ -80,6 +80,7 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
 
         const hash = columns[newPosition.columnIndex].hash;
         const type = columns[newPosition.columnIndex].type || 'text';
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         const value = rows[newPosition.rowIndex][hash];
         const disabled = columns[newPosition.columnIndex].disabled || false;
 

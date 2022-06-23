@@ -9,7 +9,7 @@ const originalPrototype = Object.getOwnPropertyDescriptors(window.HTMLElement.pr
 beforeAll(() => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
-      get() {
+      get(this: HTMLElement) {
         if (this.dataset.testid === 'buttongroup-dropdown') {
           return 50;
         }

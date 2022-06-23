@@ -1,4 +1,4 @@
-import { Form, FormGroup, H1, Input, Panel, Text } from '@bigcommerce/big-design';
+import { Form, FormGroup, H1, Input, InputProps, Panel, Text } from '@bigcommerce/big-design';
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import React, { Fragment, useState } from 'react';
 
@@ -51,7 +51,8 @@ const InputPage = () => {
                     {function Example() {
                       const [value, setValue] = useState('');
 
-                      const handleChange = (event) => setValue(event.target.value);
+                      const handleChange: InputProps['onChange'] = (event) =>
+                        setValue(event.target.value);
 
                       return (
                         <Form>

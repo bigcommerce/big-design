@@ -77,6 +77,7 @@ const getResponsiveGrid = (
     (breakpointKey) =>
       css`
         ${theme.breakpoints[breakpointKey]} {
+          ${/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */ ''}
           ${getSimpleGrid(gridedProp[breakpointKey], cssKey)}
         }
       `,

@@ -11,7 +11,7 @@ export const StyledProgressCircle = styled.svg<ProgressCircleProps>`
   `}
 `;
 
-export const StyledCircle = styled.circle.attrs(({ size, theme }: any) => ({
+export const StyledCircle = styled.circle.attrs<ProgressCircleProps>(({ size, theme }) => ({
   // rem not usable for circle svg cx, cy, and r values in Safari 14
   cx: theme.helpers.emCalc(getDimensions(size) / 2),
   cy: theme.helpers.emCalc(getDimensions(size) / 2),

@@ -4,11 +4,12 @@ import 'jest-styled-components';
 import { fireEvent, render, screen } from '@test/utils';
 
 import { Table, TableFigure } from './Table';
+import { TableColumn, TableItem } from './types';
 
 interface SimpleTableOptions {
   className?: string;
-  columns?: any[];
-  items?: any[];
+  columns?: Array<TableColumn<TableItem>>;
+  items?: TableItem[];
   dataTestId?: string;
   emptyComponent?: React.ReactElement;
   headerless?: boolean;
@@ -32,9 +33,9 @@ const getSimpleTable = ({
     className={className}
     columns={
       columns || [
-        { header: 'Sku', render: ({ sku }) => sku },
-        { header: 'Name', render: ({ name }) => name },
-        { header: 'Stock', render: ({ stock }) => stock },
+        { hash: 'sku', header: 'Sku', render: ({ sku }) => sku },
+        { hash: 'name', header: 'Name', render: ({ name }) => name },
+        { hash: 'stock', header: 'Stock', render: ({ stock }) => stock },
       ]
     }
     data-testid={dataTestId}
@@ -98,8 +99,12 @@ test('renders column with custom component', () => {
   const { getAllByTestId } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', render: ({ name }: any) => <h3 data-testid="name">{name}</h3> },
+        { hash: 'sku', header: 'Sku', render: ({ sku }: any) => sku },
+        {
+          hash: 'name',
+          header: 'Name',
+          render: ({ name }: any) => <h3 data-testid="name">{name}</h3>,
+        },
       ],
     }),
   );
@@ -111,8 +116,8 @@ test('renders column with tooltip icon', () => {
   const { getByTitle } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+        { hash: 'sku', header: 'Sku', render: ({ sku }: any) => sku },
+        { hash: 'name', header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
       ],
     }),
   );
@@ -124,8 +129,8 @@ test('renders tooltip when hovering on icon', async () => {
   const { getByTitle } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+        { hash: 'sku', header: 'Sku', render: ({ sku }: any) => sku },
+        { hash: 'name', header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
       ],
     }),
   );
@@ -142,12 +147,14 @@ test('tweaks column styles with props', () => {
     getSimpleTable({
       columns: [
         {
+          hash: '1',
           header: 'Sku',
           render: ({ sku }: any) => sku,
           align: 'right',
           verticalAlign: 'middle',
         },
         {
+          hash: '2',
           header: 'Name',
           render: ({ name }: any) => name,
           width: 100,
@@ -228,8 +235,8 @@ test('renders a pagination component', async () => {
 });
 
 describe('selectable', () => {
-  let columns: any;
-  let items: any;
+  let columns: Array<TableColumn<TableItem>>;
+  let items: TableItem[];
   let onSelectionChange: jest.Mock;
   const itemName = 'Product';
 
@@ -373,8 +380,8 @@ describe('selectable', () => {
 });
 
 describe('sortable', () => {
-  let columns: any;
-  let items: any;
+  let columns: Array<TableColumn<TableItem>>;
+  let items: TableItem[];
   let onSort: jest.Mock;
 
   beforeEach(() => {
@@ -513,8 +520,8 @@ describe('sortable', () => {
 });
 
 describe('draggable', () => {
-  let columns: any;
-  let items: any;
+  let columns: Array<TableColumn<TableItem>>;
+  let items: TableItem[];
   let onRowDrop: jest.Mock;
 
   beforeEach(() => {

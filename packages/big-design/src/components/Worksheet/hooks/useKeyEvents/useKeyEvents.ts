@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { useNavigation } from '../useNavigation';
 import { useStore } from '../useStore';
@@ -19,7 +19,7 @@ export const useKeyEvents = () => {
   }, [selectedCell, setEditingCell]);
 
   const handleKeyDown = useCallback(
-    (event) => {
+    (event: React.KeyboardEvent) => {
       const key = event.key;
 
       if (isEditing) {
