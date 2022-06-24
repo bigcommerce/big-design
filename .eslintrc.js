@@ -25,7 +25,6 @@ module.exports = {
     {
       files: ['**/*.ts', '**/*.tsx', '**/*.js'],
       rules: {
-        '@bigcommerce/jsx-short-circuit-conditionals': 'off',
         '@typescript-eslint/naming-convention': 'off',
         '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/no-unsafe-argument': 'off',

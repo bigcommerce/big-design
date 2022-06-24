@@ -168,7 +168,7 @@ const StyleableList = typedMemo(
         return (
           <>
             {group.separated && <ListGroupSeparator />}
-            {group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
+            {Boolean(group.label) && <ListGroupHeader>{group.label}</ListGroupHeader>}
             {isItemGroup(group) && renderItems(group.items)}
             {isOptionGroup(group) && renderItems(group.options)}
           </>
