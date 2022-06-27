@@ -2,6 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { withTransition } from '../../../mixins/transitions';
+import { StyleableButton } from '../../Button/Button';
 
 interface StyledTableRowProps {
   isDragging: boolean;
@@ -20,4 +21,10 @@ export const StyledTableRow = styled.tr<StyledTableRowProps>`
   }
 `;
 
+export const StyledExpandedIcon = styled(StyleableButton)`
+  color: ${({ theme }) => theme.colors.secondary60};
+  padding: 0;
+`;
+
 StyledTableRow.defaultProps = { theme: defaultTheme };
+StyledExpandedIcon.defaultProps = { theme: defaultTheme };

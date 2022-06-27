@@ -5,7 +5,7 @@ import { FlexItem } from '../../Flex';
 import { Text } from '../../Typography';
 import { SelectAll } from '../SelectAll';
 import { TablePagination } from '../TablePagination';
-import { TableItem, TablePaginationProps, TableSelectable } from '../types';
+import { TableExpandable, TableItem, TablePaginationProps, TableSelectable } from '../types';
 
 import { StyledFlex } from './styled';
 
@@ -14,11 +14,13 @@ export interface ActionsProps<T> {
   forwardedRef: RefObject<HTMLDivElement>;
   itemName?: string;
   items: T[];
+  isExpandable: boolean;
   pagination?: TablePaginationProps;
-  onSelectionChange?: TableSelectable<T>['onSelectionChange'];
-  selectedItems: Set<T>;
+  selectedItems: TableSelectable['selectedItems'];
   stickyHeader?: boolean;
   tableId: string;
+  expandedRowSelector?: TableExpandable<T>['expandedRowSelector'];
+  onSelectionChange?: TableSelectable['onSelectionChange'];
 }
 
 const InternalActions = <T extends TableItem>({
@@ -26,11 +28,13 @@ const InternalActions = <T extends TableItem>({
   forwardedRef,
   itemName,
   items = [],
-  onSelectionChange,
   pagination,
   selectedItems,
   stickyHeader,
   tableId,
+  isExpandable,
+  expandedRowSelector,
+  onSelectionChange,
   ...props
 }: ActionsProps<T>) => {
   const isSelectable = typeof onSelectionChange === 'function';
@@ -64,12 +68,16 @@ const InternalActions = <T extends TableItem>({
       stickyHeader={stickyHeader}
       {...props}
     >
-      <SelectAll
-        items={items}
-        onChange={onSelectionChange}
-        selectedItems={selectedItems}
-        totalItems={totalItems}
-      />
+      {isSelectable && (
+        <SelectAll
+          expandedRowSelector={expandedRowSelector}
+          isExpandable={isExpandable}
+          items={items}
+          onChange={onSelectionChange}
+          selectedItems={selectedItems}
+          totalItems={totalItems}
+        />
+      )}
       {renderItemName()}
       {renderActions()}
 

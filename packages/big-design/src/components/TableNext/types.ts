@@ -5,9 +5,15 @@ import { PaginationProps } from '../Pagination';
 
 import { TableColumnDisplayProps } from './mixins';
 
-export interface TableSelectable<T> {
-  selectedItems: T[];
-  onSelectionChange(selectedItems: T[]): void;
+export interface TableSelectable {
+  selectedItems: Record<string, true>;
+  onSelectionChange(selectedItems: Record<string, true>): void;
+}
+
+export interface TableExpandable<T> {
+  expandedRows: Record<string, true>;
+  onExpandedChange(expandedItems: Record<string, true>): void;
+  expandedRowSelector: (item: T) => T[] | undefined;
 }
 
 export type TableSortDirection = 'ASC' | 'DESC';
@@ -44,13 +50,14 @@ export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElemen
   actions?: React.ReactNode;
   columns: Array<TableColumn<T>>;
   emptyComponent?: React.ReactElement;
+  expandable?: TableExpandable<T>;
   headerless?: boolean;
   itemName?: string;
   items: T[];
   keyField?: string;
   onRowDrop?(from: number, to: number): void;
   pagination?: TablePaginationProps;
-  selectable?: TableSelectable<T>;
+  selectable?: TableSelectable;
   sortable?: TableSortable<T>;
   stickyHeader?: boolean;
 }

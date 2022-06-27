@@ -66,6 +66,7 @@ const InternalHeaderCell = <T extends TableItem>({
     );
   };
 
+  // TODO: Update this. Return early if we don't have tooltip.
   const renderTooltip = () => {
     if (typeof tooltip === 'string' && tooltip.length > 0) {
       return (

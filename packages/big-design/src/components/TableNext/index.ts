@@ -1,1 +1,1 @@
-export { TableNext, TableNextFigure } from './TableNext';
+export { TableNext, TableFigureNext } from './TableNext';

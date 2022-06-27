@@ -1,25 +1,28 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
+import { withPaddings } from '../../../mixins';
 import { withTableColumnDisplay } from '../mixins';
 
 import { DataCellProps } from './DataCell';
 
 export const StyledTableDataCell = styled.td<DataCellProps>`
   ${withTableColumnDisplay()}
-
+  ${withPaddings()}
+  
   background-color: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
-  padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing.small : 0)};
 
   &:first-of-type {
-    padding-left: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    padding-left: ${({ theme, paddingHorizontal, padding }) =>
+      padding || paddingHorizontal ? theme.spacing.xLarge : 0};
   }
 
   &:last-of-type {
-    padding-right: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    padding-right: ${({ theme, paddingHorizontal, padding }) =>
+      padding || paddingHorizontal ? theme.spacing.xLarge : 0};
   }
 
   ${({ theme, withBorder }) =>
@@ -57,9 +60,11 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
     padding-left: ${({ theme }) => theme.spacing.xLarge};
   }
 
-  &:last-of-type {
-    padding-right: ${({ theme }) => theme.spacing.xLarge};
-  }
+  ${({ isExpandable }) =>
+    isExpandable &&
+    css`
+      padding-right: 0;
+    `}
 
   ${(props) =>
     props.isCheckbox &&

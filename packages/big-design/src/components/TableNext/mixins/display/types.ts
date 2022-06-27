@@ -5,9 +5,9 @@ import { ResponsiveProp } from '../../../../types';
 
 type TableColumnDisplayProp = ResponsiveProp<'table-cell' | 'none'>;
 
-export type TableColumnDisplayProps = Partial<{
-  display: TableColumnDisplayProp;
-}>;
+export interface TableColumnDisplayProps {
+  display?: TableColumnDisplayProp;
+}
 
 export type TableColumnDisplayOverload = (
   displayProp: TableColumnDisplayProp,

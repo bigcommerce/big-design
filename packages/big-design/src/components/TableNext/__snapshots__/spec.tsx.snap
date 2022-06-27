@@ -469,6 +469,14 @@ exports[`renders a simple table 1`] = `
   box-sizing: border-box;
 }
 
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+}
+
 .c3 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
@@ -520,11 +528,11 @@ exports[`renders a simple table 1`] = `
 }
 
 .c6 {
+  padding: 0.75rem;
   background-color: #FFFFFF;
   box-sizing: border-box;
   color: #313440;
   font-size: 1rem;
-  padding: 0.75rem;
   border-bottom: 1px solid #D9DCE9;
 }
 
@@ -606,36 +614,32 @@ exports[`renders a simple table 1`] = `
       <td
         class="c6"
       >
-        SM13
+        <div
+          class="c7"
+          display="flex"
+        >
+          SM13
+        </div>
       </td>
       <td
         class="c6"
       >
-        [Sample] Smith Journal 13
+        <div
+          class="c7"
+          display="flex"
+        >
+          [Sample] Smith Journal 13
+        </div>
       </td>
       <td
         class="c6"
       >
-        25
-      </td>
-    </tr>
-    <tr
-      class="c5"
-    >
-      <td
-        class="c6"
-      >
-        DPB
-      </td>
-      <td
-        class="c6"
-      >
-        [Sample] Dustpan & Brush
-      </td>
-      <td
-        class="c6"
-      >
-        34
+        <div
+          class="c7"
+          display="flex"
+        >
+          25
+        </div>
       </td>
     </tr>
     <tr
@@ -644,36 +648,32 @@ exports[`renders a simple table 1`] = `
       <td
         class="c6"
       >
-        OFSUC
+        <div
+          class="c7"
+          display="flex"
+        >
+          DPB
+        </div>
       </td>
       <td
         class="c6"
       >
-        [Sample] Utility Caddy
+        <div
+          class="c7"
+          display="flex"
+        >
+          [Sample] Dustpan & Brush
+        </div>
       </td>
       <td
         class="c6"
       >
-        45
-      </td>
-    </tr>
-    <tr
-      class="c5"
-    >
-      <td
-        class="c6"
-      >
-        CLC
-      </td>
-      <td
-        class="c6"
-      >
-        [Sample] Canvas Laundry Cart
-      </td>
-      <td
-        class="c6"
-      >
-        2
+        <div
+          class="c7"
+          display="flex"
+        >
+          34
+        </div>
       </td>
     </tr>
     <tr
@@ -682,17 +682,100 @@ exports[`renders a simple table 1`] = `
       <td
         class="c6"
       >
-        CGLD
+        <div
+          class="c7"
+          display="flex"
+        >
+          OFSUC
+        </div>
       </td>
       <td
         class="c6"
       >
-        [Sample] Laundry Detergent
+        <div
+          class="c7"
+          display="flex"
+        >
+          [Sample] Utility Caddy
+        </div>
       </td>
       <td
         class="c6"
       >
-        29
+        <div
+          class="c7"
+          display="flex"
+        >
+          45
+        </div>
+      </td>
+    </tr>
+    <tr
+      class="c5"
+    >
+      <td
+        class="c6"
+      >
+        <div
+          class="c7"
+          display="flex"
+        >
+          CLC
+        </div>
+      </td>
+      <td
+        class="c6"
+      >
+        <div
+          class="c7"
+          display="flex"
+        >
+          [Sample] Canvas Laundry Cart
+        </div>
+      </td>
+      <td
+        class="c6"
+      >
+        <div
+          class="c7"
+          display="flex"
+        >
+          2
+        </div>
+      </td>
+    </tr>
+    <tr
+      class="c5"
+    >
+      <td
+        class="c6"
+      >
+        <div
+          class="c7"
+          display="flex"
+        >
+          CGLD
+        </div>
+      </td>
+      <td
+        class="c6"
+      >
+        <div
+          class="c7"
+          display="flex"
+        >
+          [Sample] Laundry Detergent
+        </div>
+      </td>
+      <td
+        class="c6"
+      >
+        <div
+          class="c7"
+          display="flex"
+        >
+          29
+        </div>
       </td>
     </tr>
   </tbody>
@@ -926,6 +1009,300 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   display: -ms-flexbox;
   display: flex;
   padding: 0.75rem 1.5rem;
+}
+
+<div
+  aria-controls="bd-table-1"
+  class="c0"
+>
+  <div
+    class="c1 c2"
+  >
+    <div
+      class="c3 c4"
+    >
+      <div
+        class="c5"
+      >
+        <input
+          aria-checked="false"
+          aria-labelledby="bd-checkbox_label-3"
+          class="c6 c7"
+          id="bd-checkbox-2"
+          type="checkbox"
+        />
+        <label
+          aria-hidden="true"
+          class="c8 c9"
+          for="bd-checkbox-2"
+        >
+          <svg
+            aria-hidden="true"
+            class="c10"
+            fill="currentColor"
+            height="24"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <path
+              d="M9 16.17L5.53 12.7a.996.996 0 10-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 10-1.41-1.41L9 16.17z"
+            />
+          </svg>
+        </label>
+        <div
+          class="c11"
+        >
+          <label
+            class="c12 c13"
+            for="bd-checkbox-2"
+            hidden=""
+            id="bd-checkbox_label-3"
+          >
+            Select All
+          </label>
+        </div>
+      </div>
+      <p
+        class="c14"
+      >
+        5
+      </p>
+    </div>
+  </div>
+  <div
+    class="c15 c2"
+  >
+    <p
+      class="c16"
+    >
+      Product
+    </p>
+  </div>
+</div>
+`;
+
+exports[`selectable renders selectable actions, checkboxes when having parent rows and children rows 1`] = `
+.c10 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c1 {
+  margin-right: 0.25rem;
+  box-sizing: border-box;
+}
+
+.c3 {
+  box-sizing: border-box;
+}
+
+.c15 {
+  margin-right: 1rem;
+  box-sizing: border-box;
+}
+
+.c4 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c12 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c12:last-child {
+  margin-bottom: 0;
+}
+
+.c14 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin-left: 0.75rem;
+}
+
+.c14:last-child {
+  margin-bottom: 0;
+}
+
+.c16 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.c16:last-child {
+  margin-bottom: 0;
+}
+
+.c13 {
+  cursor: pointer;
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c11 {
+  margin-left: 0.5rem;
+}
+
+.c5 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c7 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.c9 {
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
+  transition-property: border-color,background,box-shadow,color,opacity;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  border: 1px solid #D9DCE9;
+  border-color: #D9DCE9;
+  border-radius: 0.25rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 1.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 0.125rem;
+  margin-top: 0.125rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1.25rem;
+}
+
+.c9:hover {
+  border-color: #B4BAD1;
+}
+
+.c6:focus + .c8 {
+  box-shadow: 0 0 0 0.25rem #DBE3FE;
+}
+
+.c9 svg {
+  opacity: 0;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: stretch;
+  -webkit-justify-content: stretch;
+  -ms-flex-pack: stretch;
+  justify-content: stretch;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.75rem 1.5rem;
+}
+
+@media (min-width:720px) {
+
+}
+
+@media (min-width:720px) {
+
 }
 
 <div

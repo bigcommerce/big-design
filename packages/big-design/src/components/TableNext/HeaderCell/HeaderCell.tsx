@@ -67,27 +67,23 @@ const InternalHeaderCell = <T extends TableItem>({
   };
 
   const renderTooltip = () => {
-    if (typeof tooltip === 'string' && tooltip.length > 0) {
-      return (
-        <Tooltip
-          id={tooltipId}
-          placement="right"
-          trigger={
-            <Box as="span" marginLeft="xxSmall">
-              <BaselineHelpIcon
-                aria-describedby={tooltipId}
-                size="medium"
-                title="Hover or focus for additional context."
-              />
-            </Box>
-          }
-        >
-          {tooltip}
-        </Tooltip>
-      );
-    }
-
-    return null;
+    return (
+      <Tooltip
+        id={tooltipId}
+        placement="right"
+        trigger={
+          <Box as="span" marginLeft="xxSmall">
+            <BaselineHelpIcon
+              aria-describedby={tooltipId}
+              size="medium"
+              title="Hover or focus for additional context."
+            />
+          </Box>
+        }
+      >
+        {tooltip}
+      </Tooltip>
+    );
   };
 
   const handleClick = (e: React.MouseEvent) => {
@@ -111,7 +107,7 @@ const InternalHeaderCell = <T extends TableItem>({
       <StyledFlex align={align} alignItems="center" flexDirection="row" hide={hide}>
         {children}
         {!hide && renderSortIcon()}
-        {renderTooltip()}
+        {Boolean(tooltip) && renderTooltip()}
       </StyledFlex>
       {hide && renderSortIcon()}
     </StyledTableHeaderCell>
@@ -133,5 +129,11 @@ export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(
     return <StyledTableHeaderIcon ref={headerCellIconRef} stickyHeight={actionsSize.height} />;
   },
 );
+
+export const ExpandableHeaderCell: React.FC<DragIconCellProps> = memo(({ actionsRef }) => {
+  const actionsSize = useComponentSize(actionsRef);
+
+  return <StyledTableHeaderIcon stickyHeight={actionsSize.height} />;
+});
 
 export const HeaderCell = typedMemo(InternalHeaderCell);

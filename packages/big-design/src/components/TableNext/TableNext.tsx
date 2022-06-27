@@ -1,7 +1,7 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 
-import { useEventCallback, useUniqueId } from '../../hooks';
+import { useUniqueId } from '../../hooks';
 import { MarginProps } from '../../mixins';
 import { typedMemo } from '../../utils';
 
@@ -9,8 +9,13 @@ import { Actions } from './Actions';
 import { Body } from './Body';
 import { Head } from './Head';
 import { HeaderCell } from './HeaderCell';
-import { DragIconHeaderCell, HeaderCheckboxCell } from './HeaderCell/HeaderCell';
-import { Row } from './Row';
+import {
+  DragIconHeaderCell,
+  ExpandableHeaderCell,
+  HeaderCheckboxCell,
+} from './HeaderCell/HeaderCell';
+import { useExpandable, useSelectable } from './hooks';
+import { RowContainer } from './RowContainer';
 import { StyledTable, StyledTableFigure } from './styled';
 import { TableColumn, TableItem, TableProps } from './types';
 
@@ -22,51 +27,29 @@ const InternalTableNext = <T extends TableItem>(
     className,
     columns,
     emptyComponent,
+    expandable,
     headerless = false,
     id,
     itemName,
     items,
     keyField = 'id',
-    onRowDrop,
     pagination,
     selectable,
     sortable,
     stickyHeader,
     style,
+    onRowDrop,
     ...rest
   } = props;
 
   const actionsRef = useRef<HTMLDivElement>(null);
   const uniqueTableId = useUniqueId('table');
   const tableIdRef = useRef(id || uniqueTableId);
-  const isSelectable = Boolean(selectable);
-  const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());
   const [headerCellWidths, setHeaderCellWidths] = useState<Array<number | string>>([]);
   const headerCellIconRef = useRef<HTMLTableCellElement>(null);
-  const eventCallback = useEventCallback((item: T) => {
-    if (!selectable || !item) {
-      return;
-    }
-
-    const { onSelectionChange } = selectable;
-    const nextIsSelected = !selectedItems.has(item);
-
-    if (nextIsSelected) {
-      onSelectionChange([...selectedItems, item]);
-    } else {
-      onSelectionChange([...selectedItems].filter((selectedItem) => selectedItem !== item));
-    }
-  });
-
-  const selectableConditionalDep = selectable ? selectable.selectedItems : null;
-
-  useEffect(() => {
-    if (selectable) {
-      setSelectedItems(new Set(selectable.selectedItems));
-    }
-  }, [selectable, selectableConditionalDep]);
-
-  const onItemSelect = selectable ? eventCallback : undefined;
+  const { isSelectable, onItemSelect, selectedItems } = useSelectable(selectable);
+  const { expandedRows, expandedRowSelector, isExpandable, onExpandedRow, setExpandedRows } =
+    useExpandable(expandable);
 
   const onSortClick = useCallback(
     (column: TableColumn<T>) => {
@@ -105,6 +88,12 @@ const InternalTableNext = <T extends TableItem>(
     [onRowDrop],
   );
 
+  const onBeforeCapture = () => {
+    if (isExpandable) {
+      setExpandedRows({});
+    }
+  };
+
   const onBeforeDragStart = () => {
     const headerCellIconWidth = headerCellIconRef.current?.offsetWidth ?? 'auto';
 
@@ -138,6 +127,10 @@ const InternalTableNext = <T extends TableItem>(
           <DragIconHeaderCell actionsRef={actionsRef} headerCellIconRef={headerCellIconRef} />
         )}
         {isSelectable && <HeaderCheckboxCell actionsRef={actionsRef} stickyHeader={stickyHeader} />}
+
+        {expandedRowSelector !== undefined && (
+          <ExpandableHeaderCell actionsRef={actionsRef} headerCellIconRef={headerCellIconRef} />
+        )}
 
         {columns.map((column, index) => {
           const { display, hash, header, isSortable, hideHeader, width } = column;
@@ -173,22 +166,28 @@ const InternalTableNext = <T extends TableItem>(
         <Body ref={provided.innerRef} withFirstRowBorder={headerless} {...provided.droppableProps}>
           {items.map((item: T, index) => {
             const key = getItemKey(item, index);
-            const isSelected = selectedItems.has(item);
 
             return (
               <Draggable draggableId={String(key)} index={index} key={key}>
                 {(provided, snapshot) => (
-                  <Row
+                  <RowContainer
                     isDragging={snapshot.isDragging}
                     {...provided.dragHandleProps}
                     {...provided.draggableProps}
                     columns={columns}
+                    expandedRowSelector={expandedRowSelector}
+                    expandedRows={expandedRows}
+                    getItemKey={getItemKey}
                     headerCellWidths={headerCellWidths}
+                    isExpandable={isExpandable}
                     isSelectable={isSelectable}
-                    isSelected={isSelected}
                     item={item}
+                    key={key}
+                    onExpandedRow={onExpandedRow}
                     onItemSelect={onItemSelect}
+                    parentRowIndex={index}
                     ref={provided.innerRef}
+                    selectedItems={selectedItems}
                     showDragIcon={true}
                   />
                 )}
@@ -208,17 +207,23 @@ const InternalTableNext = <T extends TableItem>(
       <Body withFirstRowBorder={headerless}>
         {items.map((item: T, index) => {
           const key = getItemKey(item, index);
-          const isSelected = selectedItems.has(item);
 
           return (
-            <Row
+            <RowContainer
               columns={columns}
+              expandedRowSelector={expandedRowSelector}
+              expandedRows={expandedRows}
+              getItemKey={getItemKey}
               headerCellWidths={headerCellWidths}
+              headerless={headerless}
+              isExpandable={isExpandable}
               isSelectable={isSelectable}
-              isSelected={isSelected}
               item={item}
               key={key}
+              onExpandedRow={onExpandedRow}
               onItemSelect={onItemSelect}
+              parentRowIndex={index}
+              selectedItems={selectedItems}
             />
           );
         })}
@@ -238,7 +243,9 @@ const InternalTableNext = <T extends TableItem>(
       {shouldRenderActions() && (
         <Actions
           customActions={actions}
+          expandedRowSelector={expandedRowSelector}
           forwardedRef={actionsRef}
+          isExpandable={isExpandable}
           itemName={itemName}
           items={items}
           onSelectionChange={selectable && selectable.onSelectionChange}
@@ -250,7 +257,11 @@ const InternalTableNext = <T extends TableItem>(
       )}
       <StyledTable {...rest} id={tableIdRef.current}>
         {onRowDrop ? (
-          <DragDropContext onBeforeDragStart={onBeforeDragStart} onDragEnd={onDragEnd}>
+          <DragDropContext
+            onBeforeCapture={onBeforeCapture}
+            onBeforeDragStart={onBeforeDragStart}
+            onDragEnd={onDragEnd}
+          >
             {renderHeaders()}
             {renderItems()}
           </DragDropContext>
@@ -268,6 +279,6 @@ const InternalTableNext = <T extends TableItem>(
 };
 
 export const TableNext = typedMemo(InternalTableNext);
-export const TableNextFigure: React.FC<{ children?: React.ReactNode } & MarginProps> = memo(
+export const TableFigureNext: React.FC<{ children?: React.ReactNode } & MarginProps> = memo(
   (props) => <StyledTableFigure {...props} />,
 );

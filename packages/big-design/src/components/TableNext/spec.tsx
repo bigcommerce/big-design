@@ -1,15 +1,23 @@
+import userEvent from '@testing-library/user-event';
 import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render, screen } from '@test/utils';
+import { fireEvent, render, screen, within } from '@test/utils';
 
-import { TableNext, TableNextFigure } from './TableNext';
-import { TableColumn, TableItem } from './types';
+import { TableFigureNext, TableNext } from './TableNext';
+import { TableColumn } from './types';
+
+interface Item {
+  sku: string;
+  name: string;
+  stock: number;
+  children?: Item[];
+}
 
 interface SimpleTableOptions {
   className?: string;
-  columns?: Array<TableColumn<TableItem>>;
-  items?: TableItem[];
+  columns?: Array<TableColumn<Item>>;
+  items?: Item[];
   dataTestId?: string;
   emptyComponent?: React.ReactElement;
   headerless?: boolean;
@@ -28,33 +36,40 @@ const getSimpleTable = ({
   itemName,
   items,
   style,
-}: SimpleTableOptions = {}) => (
-  <TableNext
-    className={className}
-    columns={
-      columns || [
-        { hash: 'sku', header: 'Sku', render: ({ sku }) => sku },
-        { hash: 'name', header: 'Name', render: ({ name }) => name },
-        { hash: 'stock', header: 'Stock', render: ({ stock }) => stock },
-      ]
-    }
-    data-testid={dataTestId}
-    emptyComponent={emptyComponent}
-    headerless={headerless}
-    id={id}
-    itemName={itemName}
-    items={
-      items || [
-        { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-        { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
-        { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
-        { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
-        { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
-      ]
-    }
-    style={style}
-  />
-);
+}: SimpleTableOptions = {}) => {
+  const defaultColumns: Array<TableColumn<Item>> = [
+    { hash: 'sku', header: 'Sku', render: ({ sku }) => sku },
+    { hash: 'name', header: 'Name', render: ({ name }) => name },
+    { hash: 'stock', header: 'Stock', render: ({ stock }) => stock },
+  ];
+
+  const defaultItems: Item[] = [
+    { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+    { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+    { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+    { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+    { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+  ];
+
+  return (
+    <TableNext
+      className={className}
+      columns={columns || defaultColumns}
+      data-testid={dataTestId}
+      emptyComponent={emptyComponent}
+      headerless={headerless}
+      id={id}
+      itemName={itemName}
+      items={items || defaultItems}
+      style={style}
+    />
+  );
+};
+
+const mockChildrenRows = [
+  { sku: 'SM13', name: 'Color pink', stock: 10 },
+  { sku: 'SM13', name: 'Color black', stock: 15 },
+];
 
 test('renders a simple table', () => {
   const { container } = render(getSimpleTable());
@@ -63,7 +78,7 @@ test('renders a simple table', () => {
 });
 
 test('renders a table figure', () => {
-  const { container } = render(<TableNextFigure />);
+  const { container } = render(<TableFigureNext />);
 
   expect(container.firstChild).toMatchSnapshot();
 });
@@ -185,7 +200,6 @@ test('tweaks column styles with props', () => {
 
   expect(nameTd).toHaveStyle(`
     width: 100px;
-    padding: 0 0 0 0;
   `);
 });
 
@@ -215,6 +229,7 @@ test('renders a pagination component', async () => {
         { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
         { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
       ]}
+      keyField="sku"
       pagination={{
         currentPage: 1,
         itemsPerPage: 3,
@@ -235,17 +250,19 @@ test('renders a pagination component', async () => {
 });
 
 describe('selectable', () => {
-  let columns: Array<TableColumn<TableItem>>;
-  let items: TableItem[];
+  let columns: Array<TableColumn<Item>>;
+  let items: Item[];
   let onSelectionChange: jest.Mock;
+  let onExpandedChange: jest.Mock;
   const itemName = 'Product';
 
   beforeEach(() => {
     onSelectionChange = jest.fn();
+    onExpandedChange = jest.fn();
     items = [
-      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
-      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25, children: mockChildrenRows },
+      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34, children: mockChildrenRows },
+      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45, children: mockChildrenRows },
       { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
       { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
     ];
@@ -264,13 +281,36 @@ describe('selectable', () => {
         items={items}
         selectable={{
           onSelectionChange,
-          selectedItems: [],
+          selectedItems: {},
         }}
       />,
     );
 
     // One per item + Actions (select all) checkbox
     expect(getAllByRole('checkbox')).toHaveLength(items.length + 1);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('renders selectable actions, checkboxes when having parent rows and children rows', () => {
+    const { container, getAllByRole } = render(
+      <TableNext
+        columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          onExpandedChange,
+          expandedRowSelector: ({ children }) => children,
+        }}
+        itemName={itemName}
+        items={items}
+        selectable={{
+          onSelectionChange,
+          selectedItems: {},
+        }}
+      />,
+    );
+
+    // One per parent row and child row + Actions (select all) checkbox
+    expect(getAllByRole('checkbox')).toHaveLength(items.length + mockChildrenRows.length * 3 + 1);
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -282,51 +322,74 @@ describe('selectable', () => {
         items={items}
         selectable={{
           onSelectionChange,
-          selectedItems: [],
+          selectedItems: {},
         }}
       />,
     );
 
     const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
+    const selectedItems = items.reduce((acc: Record<string, true>, _parentRow, parentRowIndex) => {
+      acc[`${parentRowIndex}`] = true;
+
+      return acc;
+    }, {});
 
     // Select All
     expect(selectAllCheckbox.checked).toBe(false);
 
     fireEvent.click(selectAllCheckbox);
 
-    expect(onSelectionChange).toHaveBeenCalledWith(items);
+    expect(onSelectionChange).toHaveBeenCalledWith(selectedItems);
   });
 
-  test('click on select all should call selectedItems with all items respecting multi-page', async () => {
-    const previouslySelectedItem = {
-      sku: 'Test',
-      name: 'Test Previously Select Item (multi-page)',
-      stock: 25,
-    };
-
+  test('click on select all should call selectedItems with all parentRows and chilrenRows', async () => {
     render(
       <TableNext
         columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          onExpandedChange,
+          expandedRowSelector: ({ children }) => children,
+        }}
         itemName={itemName}
         items={items}
         selectable={{
           onSelectionChange,
-          selectedItems: [previouslySelectedItem],
+          selectedItems: {},
         }}
       />,
     );
 
     const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
+    const selectedItems = items.reduce((acc: Record<string, true>, parentRow, parentRowIndex) => {
+      acc[`${parentRowIndex}`] = true;
+
+      const { children } = parentRow;
+
+      if (children !== undefined) {
+        children.forEach((_childRow, childRowIndex) => {
+          acc[`${parentRowIndex}.${childRowIndex}`] = true;
+        });
+      }
+
+      return acc;
+    }, {});
 
     // Select All
     expect(selectAllCheckbox.checked).toBe(false);
 
     fireEvent.click(selectAllCheckbox);
 
-    expect(onSelectionChange).toHaveBeenCalledWith([previouslySelectedItem, ...items]);
+    expect(onSelectionChange).toHaveBeenCalledWith(selectedItems);
   });
 
   test('select all when already all selected should deselect all items', async () => {
+    const selectedItems = items.reduce((acc: Record<string, true>, _parentRow, parentRowIndex) => {
+      acc[`${parentRowIndex}`] = true;
+
+      return acc;
+    }, {});
+
     render(
       <TableNext
         columns={columns}
@@ -334,7 +397,7 @@ describe('selectable', () => {
         items={items}
         selectable={{
           onSelectionChange,
-          selectedItems: items,
+          selectedItems,
         }}
       />,
     );
@@ -346,24 +409,37 @@ describe('selectable', () => {
 
     fireEvent.click(selectAllCheckbox);
 
-    expect(onSelectionChange).toHaveBeenCalledWith([]);
+    expect(onSelectionChange).toHaveBeenCalledWith({});
   });
 
-  test('select all when already all selected should deselect all items and respect multi-page', async () => {
-    const previouslySelectedItem = {
-      sku: 'Test',
-      name: 'Test Previously Select Item (multi-page)',
-      stock: 25,
-    };
+  test('select all (parent row + children rows) when already all selected should deselect all items', async () => {
+    const selectedItems = items.reduce((acc: Record<string, true>, parentRow, parentRowIndex) => {
+      acc[`${parentRowIndex}`] = true;
+
+      const { children } = parentRow;
+
+      if (children !== undefined) {
+        children.forEach((_childRow, childRowIndex) => {
+          acc[`${parentRowIndex}.${childRowIndex}`] = true;
+        });
+      }
+
+      return acc;
+    }, {});
 
     render(
       <TableNext
         columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          onExpandedChange,
+          expandedRowSelector: ({ children }) => children,
+        }}
         itemName={itemName}
         items={items}
         selectable={{
           onSelectionChange,
-          selectedItems: [previouslySelectedItem, ...items],
+          selectedItems,
         }}
       />,
     );
@@ -375,13 +451,139 @@ describe('selectable', () => {
 
     fireEvent.click(selectAllCheckbox);
 
-    expect(onSelectionChange).toHaveBeenCalledWith([previouslySelectedItem]);
+    expect(onSelectionChange).toHaveBeenCalledWith({});
+  });
+
+  test('select all children rows when selecting a parent row', async () => {
+    render(
+      <TableNext
+        columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          onExpandedChange,
+          expandedRowSelector: ({ children }) => children,
+        }}
+        itemName={itemName}
+        items={items}
+        selectable={{
+          onSelectionChange,
+          selectedItems: {},
+        }}
+      />,
+    );
+
+    const parentRow = await screen.findByRole('row', { name: /Smith Journal 13/ });
+    const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
+
+    // Select all
+    expect(checkbox.checked).toBe(false);
+
+    await userEvent.click(checkbox);
+
+    const selectedItems: Record<string, true> = { 0: true };
+
+    const { children } = items[0];
+
+    if (children) {
+      children.forEach((_childRow: Item, childRowIndex: number) => {
+        selectedItems[`0.${childRowIndex}`] = true;
+      });
+    }
+
+    expect(onSelectionChange).toHaveBeenCalledWith(selectedItems);
+  });
+
+  test('unselect all children rows when unselecting a parent row', async () => {
+    render(
+      <TableNext
+        columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          onExpandedChange,
+          expandedRowSelector: ({ children }) => children,
+        }}
+        itemName={itemName}
+        items={items}
+        selectable={{
+          onSelectionChange,
+          selectedItems: { 0: true, '0.0': true, '0.1': true },
+        }}
+      />,
+    );
+
+    const parentRow = await screen.findByRole('row', { name: /Smith Journal 13/ });
+    const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
+
+    // Deselect all
+    expect(checkbox.checked).toBe(true);
+
+    await userEvent.click(checkbox);
+
+    expect(onSelectionChange).toHaveBeenCalledWith({});
+  });
+
+  test('selects a parent row when a single child row is selected', async () => {
+    render(
+      <TableNext
+        columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          onExpandedChange,
+          expandedRowSelector: ({ children }) => children,
+        }}
+        itemName={itemName}
+        items={items}
+        selectable={{
+          onSelectionChange,
+          selectedItems: {},
+        }}
+      />,
+    );
+
+    const [firstChildRow] = await screen.findAllByRole('row', { name: /Color pink/ });
+    const childRowCheckbox = await within(firstChildRow).findByRole<HTMLInputElement>('checkbox');
+
+    expect(childRowCheckbox.checked).toBe(false);
+
+    await userEvent.click(childRowCheckbox);
+
+    const selectedItems: Record<string, true> = { '0': true, '0.0': true };
+
+    expect(onSelectionChange).toHaveBeenCalledWith(selectedItems);
+  });
+
+  test('unselects a parent row when a single child row is selected', async () => {
+    render(
+      <TableNext
+        columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          onExpandedChange,
+          expandedRowSelector: ({ children }) => children,
+        }}
+        itemName={itemName}
+        items={items}
+        selectable={{
+          onSelectionChange,
+          selectedItems: { '0': true, '0.0': true },
+        }}
+      />,
+    );
+
+    const [firstChildRow] = await screen.findAllByRole('row', { name: /Color pink/ });
+    const childRowCheckbox = await within(firstChildRow).findByRole<HTMLInputElement>('checkbox');
+
+    expect(childRowCheckbox.checked).toBe(true);
+
+    await userEvent.click(childRowCheckbox);
+
+    expect(onSelectionChange).toHaveBeenCalledWith({});
   });
 });
 
 describe('sortable', () => {
-  let columns: Array<TableColumn<TableItem>>;
-  let items: TableItem[];
+  let columns: Array<TableColumn<Item>>;
+  let items: Item[];
   let onSort: jest.Mock;
 
   beforeEach(() => {
@@ -520,16 +722,17 @@ describe('sortable', () => {
 });
 
 describe('draggable', () => {
-  let columns: Array<TableColumn<TableItem>>;
-  let items: TableItem[];
+  let columns: Array<TableColumn<Item>>;
+  let items: Item[];
   let onRowDrop: jest.Mock;
+  let onExpandedChange: jest.Mock;
 
   beforeEach(() => {
     onRowDrop = jest.fn();
     items = [
-      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
-      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25, children: mockChildrenRows },
+      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34, children: mockChildrenRows },
+      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45, children: mockChildrenRows },
       { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
       { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
     ];
@@ -540,13 +743,37 @@ describe('draggable', () => {
     ];
   });
 
-  test('renders drag and drop icon', () => {
+  test('renders drag and drop icon only', () => {
     const { container } = render(
       <TableNext columns={columns} items={items} onRowDrop={onRowDrop} />,
     );
     const dragIcons = container.querySelectorAll('svg');
 
     expect(dragIcons).toHaveLength(items.length);
+  });
+
+  test('render drag and drop icons and expanded icons only for parent rows when expanded mode is on', () => {
+    const { container } = render(
+      <TableNext
+        columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          onExpandedChange,
+          expandedRowSelector: ({ children }) => children,
+        }}
+        items={items}
+        onRowDrop={onRowDrop}
+      />,
+    );
+
+    const dragIcons = container.querySelectorAll('svg');
+    // Only parent rows;
+    const totalDragIcons = items.length;
+    // Only parents with chidren rows);
+    const totalExpandedIcons = items.length - 2;
+
+    // Total of drag icons (only parents) + expanded icons (only parents with chidren rows);
+    expect(dragIcons).toHaveLength(totalDragIcons + totalExpandedIcons);
   });
 
   test('onRowDrop called with expected args when a row is dropped', async () => {
@@ -567,5 +794,88 @@ describe('draggable', () => {
     fireEvent.keyDown(dragEl, spaceKey);
 
     expect(onRowDrop).toHaveBeenCalledWith(0, 1);
+  });
+});
+
+describe('expandable', () => {
+  let columns: Array<TableColumn<Item>>;
+  let items: Item[];
+  let onExpandedChange: jest.Mock;
+
+  beforeEach(() => {
+    onExpandedChange = jest.fn();
+    items = [
+      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25, children: mockChildrenRows },
+      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34, children: mockChildrenRows },
+      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45, children: mockChildrenRows },
+    ];
+    columns = [
+      { header: 'Sku', hash: 'sku', render: ({ sku }: any) => sku, isSortable: true },
+      { header: 'Name', hash: 'name', render: ({ name }: any) => name },
+      { header: 'Stock', hash: 'stock', render: ({ stock }: any) => stock },
+    ];
+  });
+
+  test('render expanded icons only for parent rows', async () => {
+    render(
+      <TableNext
+        columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          onExpandedChange,
+          expandedRowSelector: ({ children }) => children,
+        }}
+        items={items}
+      />,
+    );
+
+    const expandIcons = await screen.findAllByRole('button');
+
+    expect(expandIcons).toHaveLength(items.length);
+  });
+
+  test('expands a parent row when clicking on the expand icon', async () => {
+    render(
+      <TableNext
+        columns={columns}
+        expandable={{
+          expandedRows: {},
+          onExpandedChange,
+          expandedRowSelector: ({ children }) => children,
+        }}
+        items={items}
+      />,
+    );
+
+    const parentRow = await screen.findByRole('row', { name: /Smith Journal 13/i });
+    const expandIcon = await within(parentRow).findByRole('button');
+
+    await userEvent.click(expandIcon);
+
+    expect(onExpandedChange).toHaveBeenCalledWith({ 0: true });
+    expect(onExpandedChange).not.toHaveBeenCalledWith({ 1: true });
+    expect(onExpandedChange).not.toHaveBeenCalledWith({ 2: true });
+  });
+
+  test('unexpands an expanded parent row when clicking on the expand icon', async () => {
+    render(
+      <TableNext
+        columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          onExpandedChange,
+          expandedRowSelector: ({ children }) => children,
+        }}
+        items={items}
+      />,
+    );
+
+    const parentRow = await screen.findByRole('row', { name: /Smith Journal 13/i });
+    const expandIcon = await within(parentRow).findByRole('button');
+
+    await userEvent.click(expandIcon);
+
+    expect(onExpandedChange).toHaveBeenCalledWith({ 1: true, 2: true });
+    expect(onExpandedChange).not.toHaveBeenCalledWith({ 0: true, 1: true, 2: true });
   });
 });
