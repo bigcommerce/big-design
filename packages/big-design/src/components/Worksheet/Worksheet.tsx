@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useMemo } from 'react';
+import React, { createRef, useEffect, useMemo, useRef } from 'react';
 
 import { typedMemo } from '../../utils';
 
@@ -26,6 +26,7 @@ const InternalWorksheet = typedMemo(
     onErrors,
   }: WorksheetProps<T>): React.ReactElement<WorksheetProps<T>> => {
     const tableRef = createRef<HTMLTableElement>();
+    const shouldBeTriggeredOnChange = useRef(false);
 
     const setRows = useStore((state) => state.setRows);
     const setColumns = useStore((state) => state.setColumns);
@@ -44,15 +45,22 @@ const InternalWorksheet = typedMemo(
       return expandableRows ? [{ hash: '', header: '', type: 'toggle' }, ...columns] : columns;
     }, [columns, expandableRows]);
 
+    useEffect(() => {
+      shouldBeTriggeredOnChange.current = editedCells.length > 0;
+    }, [editedCells]);
+
     // Create a new reference since state mutates rows to prevent unecessary rerendering
-    useEffect(() => setRows([...items]), [items, setRows]);
+    useEffect(() => {
+      shouldBeTriggeredOnChange.current = false;
+      setRows([...items]);
+    }, [items, setRows]);
     useEffect(() => setColumns(expandedColumns), [expandedColumns, setColumns]);
     useEffect(() => setExpandableRows(expandableRows || {}), [expandableRows, setExpandableRows]);
     useEffect(() => setDisabledRows(disabledRows || []), [disabledRows, setDisabledRows]);
     useEffect(() => setTableRef(tableRef.current), [setTableRef, tableRef]);
 
     useEffect(() => {
-      if (editedCells.length) {
+      if (editedCells.length && shouldBeTriggeredOnChange.current) {
         onChange(editedRows(editedCells, rows));
       }
     }, [editedCells, onChange, rows]);
