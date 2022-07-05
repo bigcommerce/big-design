@@ -1,22 +1,21 @@
 import { Placement } from '@popperjs/core';
-import React, { HTMLAttributes, memo, useEffect, useMemo, useState } from 'react';
+import React, { cloneElement, HTMLAttributes, memo, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Manager, Popper, PopperProps, Reference } from 'react-popper';
 
 import { Small } from '../Typography';
 
-import { StyledTooltip, StyledTooltipTrigger } from './styled';
+import { StyledTooltip } from './styled';
 
 export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   placement: Placement;
-  trigger: React.ReactChild;
+  trigger: React.ReactElement;
   modifiers?: PopperProps<any>['modifiers'];
-  inline?: boolean;
 }
 
 export const Tooltip: React.FC<TooltipProps> = memo(
-  ({ children, inline = true, modifiers, trigger, id, ...props }) => {
+  ({ children, modifiers, trigger, id, ...props }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [tooltipContainer, setTooltipContainer] = useState<HTMLDivElement | null>(null);
     const tooltipModifiers = useMemo(() => {
@@ -65,19 +64,16 @@ export const Tooltip: React.FC<TooltipProps> = memo(
     return (
       <Manager>
         <Reference>
-          {({ ref }) => (
-            <StyledTooltipTrigger
-              inline={inline}
-              onBlur={hideTooltip}
-              onFocus={showTooltip}
-              onKeyDown={onKeyDown}
-              onMouseEnter={showTooltip}
-              onMouseLeave={hideTooltip}
-              ref={ref}
-            >
-              {trigger}
-            </StyledTooltipTrigger>
-          )}
+          {({ ref }) =>
+            cloneElement(trigger, {
+              ref,
+              onBlur: hideTooltip,
+              onFocus: showTooltip,
+              onKeyDown,
+              onMouseEnter: showTooltip,
+              onMouseLeave: hideTooltip,
+            })
+          }
         </Reference>
         {tooltipContainer
           ? createPortal(

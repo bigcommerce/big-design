@@ -51,9 +51,8 @@ export const Content = memo(({ item, isHighlighted }: ContentProps) => {
   );
 
   const wrapInTooltip = useCallback(
-    (tooltip: string, tooltipTrigger: React.ReactChild) => (
+    (tooltip: string, tooltipTrigger: React.ReactElement) => (
       <Tooltip
-        inline={false}
         modifiers={[{ name: 'preventOverflow' }, { name: 'offset', options: { offset: [0, 20] } }]}
         placement="left"
         trigger={tooltipTrigger}

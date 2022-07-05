@@ -5,9 +5,9 @@ import { Prop, PropTable, PropTableWrapper } from '../components';
 const tooltipProps: Prop[] = [
   {
     name: 'trigger',
-    types: 'ReactNode',
+    types: 'ReactElement',
     required: true,
-    description: 'React Node that triggers the tooltip on hover.',
+    description: 'React Element that triggers the tooltip on hover.',
   },
   {
     name: 'placement',
