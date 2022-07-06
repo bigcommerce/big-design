@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.32.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.31.1...@bigcommerce/docs@0.32.0) (2022-07-06)
+
+
+### Bug Fixes
+
+* **configs:** fix process env variable ([#890](https://github.com/bigcommerce/big-design/issues/890)) ([d2b7f0e](https://github.com/bigcommerce/big-design/commit/d2b7f0e67f028335bb90e4ef2503feee1d0876b8))
+* **docs:** fix the name of the worksheet props ([#888](https://github.com/bigcommerce/big-design/issues/888)) ([8303cdd](https://github.com/bigcommerce/big-design/commit/8303cddf9462f68c9525f2ccf211fa9e1a94140b))
+
+
+### Features
+
+* **component:** add rows disabling for worksheet ([#887](https://github.com/bigcommerce/big-design/issues/887)) ([fdd9303](https://github.com/bigcommerce/big-design/commit/fdd9303717cde570efff0ef2eeb74cc28b61ba85))
+* **component:** remove tooltip wrapper ([b924899](https://github.com/bigcommerce/big-design/commit/b92489911d2ccb075389eb2be3586d32ab124a4c))
+
+
+### BREAKING CHANGES
+
+* **component:** - Removes the `inline` prop on the tooltip
+- Strings are not allowed in the `trigger` prop
+
+
+
+
+
 ## [0.31.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.31.0...@bigcommerce/docs@0.31.1) (2022-06-10)
 
 

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.32.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.31.1...@bigcommerce/big-design@0.32.0) (2022-07-06)
+
+
+### Bug Fixes
+
+* **component:** add set width if unset ([#880](https://github.com/bigcommerce/big-design/issues/880)) ([3e2e08b](https://github.com/bigcommerce/big-design/commit/3e2e08be6046080e26323dbd603aa9ffb0e1819f))
+* **component:** fix extra triggering of onChange (Worksheet) ([#896](https://github.com/bigcommerce/big-design/issues/896)) ([abf525e](https://github.com/bigcommerce/big-design/commit/abf525e2ca7acb285c1421547621354a0ab2c6b1))
+
+
+### Features
+
+* **component:** add rows disabling for worksheet ([#887](https://github.com/bigcommerce/big-design/issues/887)) ([fdd9303](https://github.com/bigcommerce/big-design/commit/fdd9303717cde570efff0ef2eeb74cc28b61ba85))
+* **component:** remove tooltip wrapper ([b924899](https://github.com/bigcommerce/big-design/commit/b92489911d2ccb075389eb2be3586d32ab124a4c))
+
+
+### BREAKING CHANGES
+
+* **component:** - Removes the `inline` prop on the tooltip
+- Strings are not allowed in the `trigger` prop
+
+
+
+
+
 ## [0.31.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.31.0...@bigcommerce/big-design@0.31.1) (2022-06-10)
 
 
