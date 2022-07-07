@@ -19,8 +19,9 @@
     "build:dt": "tsc --emitDeclarationOnly",
     "build:icons": "node scripts/build.js",
     "build:flags": "node scripts/build-flags.js",
+    "clean": "rimraf dist && rimraf .tsbuildinfo",
     "download": "node scripts/downloader.js",
-    "prepublishOnly": "rimraf dist && yarn run typeCheck && yarn run build",
+    "prepublishOnly": "yarn run clean && yarn run typeCheck && yarn run build",
     "typeCheck": "tsc --noEmit"
   },
   "files": [
