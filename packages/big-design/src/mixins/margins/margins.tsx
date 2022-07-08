@@ -4,7 +4,7 @@ import { css } from 'styled-components';
 import { ResponsiveProp } from '../../types';
 import { getSpacingStyles } from '../spacings';
 
-type MarginProp = ResponsiveProp<keyof Spacing>;
+type MarginProp = ResponsiveProp<keyof Spacing | 'auto'>;
 
 export type MarginProps = Partial<{
   margin: MarginProp;
