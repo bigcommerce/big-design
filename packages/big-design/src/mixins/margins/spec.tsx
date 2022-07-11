@@ -177,3 +177,9 @@ test('excludeMarginProps removes all margin props from an object', () => {
 
   expect(excludeMarginProps(props)).toEqual({ testKey: 'test-value' });
 });
+
+test('non-spacing value auto', () => {
+  const { container } = render(<TestComponent margin="auto" />);
+
+  expect(container.firstChild).toHaveStyle('margin: auto');
+});
