@@ -182,6 +182,19 @@ test('render only icon only with left and right icons button', () => {
   expect(screen.getAllByTestId('icon-only')).toHaveLength(1);
 });
 
+test('renders as anchor', () => {
+  render(
+    <Button as="a" href="https://example.com">
+      Link
+    </Button>,
+  );
+
+  const link = screen.getByRole('link', { name: 'Link' });
+
+  expect(link).toHaveAttribute('href', 'https://example.com');
+  expect(link.tagName).toBe('A');
+});
+
 describe('isLoading', () => {
   test('render loading button', () => {
     render(<Button isLoading={true}>Button</Button>);

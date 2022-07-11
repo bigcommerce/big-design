@@ -10,6 +10,13 @@ const buttonProps: Prop[] = [
     description: "Indicates whether your button's action is of normal or destructive nature.",
   },
   {
+    name: 'as',
+    types: ['button', 'a'],
+    defaultValue: 'button',
+    description:
+      'While discouraged, you can change the element type of the button. This is useful for using the button as a link.',
+  },
+  {
     name: 'iconLeft',
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (

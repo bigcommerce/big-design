@@ -5,9 +5,11 @@ import { MarginProps, withMargins } from '../../mixins';
 import { withTransition } from '../../mixins/transitions';
 import { Flex } from '../Flex';
 
-import { ButtonProps } from './index';
+import { InternalButtonProps as ButtonProps } from './Button';
 
-export const StyledButton = styled.button<ButtonProps & MarginProps>`
+type Props = ButtonProps & MarginProps;
+
+export const StyledButton = styled.button<Props>`
   ${withTransition(['background-color', 'border-color', 'box-shadow', 'color'])}
 
   && {
