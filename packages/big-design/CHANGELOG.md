@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.32.0...@bigcommerce/big-design@0.32.1) (2022-07-12)
+
+
+### Features
+
+* **component:** support margin auto ([#905](https://github.com/bigcommerce/big-design/issues/905)) ([7c45ceb](https://github.com/bigcommerce/big-design/commit/7c45ceb338851aa03a5a26a017680bf68f14b9c0))
+
+
+
+
+
 # [0.32.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.31.1...@bigcommerce/big-design@0.32.0) (2022-07-06)
 
 
