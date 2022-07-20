@@ -10,7 +10,9 @@ export interface DataCellProps
     TableColumnDisplayProps,
     PaddingProps {
   align?: 'left' | 'center' | 'right';
+  checkEmptyCell?: boolean;
   children?: React.ReactNode;
+  colSpan?: number;
   isExpandable?: boolean;
   isCheckbox?: boolean;
   verticalAlign?: 'top' | 'middle';
@@ -21,7 +23,9 @@ export interface DataCellProps
 export const DataCell: React.FC<DataCellProps> = memo(
   ({
     align,
+    checkEmptyCell,
     children,
+    colSpan,
     display,
     isCheckbox,
     isExpandable = false,
@@ -45,6 +49,8 @@ export const DataCell: React.FC<DataCellProps> = memo(
     ) : (
       <StyledTableDataCell
         align={align}
+        checkEmptyCell={checkEmptyCell}
+        colSpan={colSpan}
         display={display}
         padding={padding}
         paddingHorizontal={paddingHorizontal}
