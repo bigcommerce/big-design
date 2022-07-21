@@ -96,7 +96,7 @@ const InternalWorksheet = typedMemo(
     }, [editedCells, onChange, rows]);
 
     useEffect(() => {
-      if (typeof onErrors === 'function' && invalidCells.length) {
+      if (typeof onErrors === 'function' && shouldBeTriggeredOnChange.current) {
         onErrors(invalidRows(invalidCells, rows));
       }
     }, [invalidCells, onErrors, rows]);
