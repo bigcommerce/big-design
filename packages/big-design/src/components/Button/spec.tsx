@@ -146,12 +146,12 @@ test('forwards ref', () => {
   expect(screen.getByRole('button')).toBe(ref.current);
 });
 
-test('triggers onClick', () => {
+test('triggers onClick', async () => {
   const onClick = jest.fn();
 
   render(<Button onClick={onClick} />);
 
-  userEvent.click(screen.getByRole<HTMLButtonElement>('button'));
+  await userEvent.click(screen.getByRole<HTMLButtonElement>('button'));
 
   expect(onClick).toHaveBeenCalled();
 });
@@ -189,7 +189,7 @@ describe('isLoading', () => {
     expect(screen.getByRole('button')).toMatchSnapshot();
   });
 
-  test('prevents on click', () => {
+  test('prevents on click', async () => {
     const mockClickHandler = jest.fn();
 
     render(
@@ -198,7 +198,7 @@ describe('isLoading', () => {
       </Button>,
     );
 
-    userEvent.click(screen.getByRole('button'), undefined, { skipPointerEventsCheck: true });
+    await userEvent.click(screen.getByRole('button'), { pointerEventsCheck: 0 });
 
     expect(mockClickHandler).not.toHaveBeenCalled();
   });
