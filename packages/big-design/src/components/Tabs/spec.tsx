@@ -60,26 +60,26 @@ test('active tab has a tabindex', () => {
   });
 });
 
-test('onTabClick is called', () => {
+test('onTabClick is called', async () => {
   const onClick = jest.fn();
 
   render(<Tabs items={items} onTabClick={onClick} />);
 
   const trigger = screen.getByText('Tab 2');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(onClick).toHaveBeenCalled();
 });
 
-test('active tab changes on tab click', () => {
+test('active tab changes on tab click', async () => {
   const onClick = jest.fn();
 
   const { rerender } = render(<Tabs items={items} onTabClick={onClick} />);
 
   let trigger = screen.getByText('Tab 2');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(onClick).toHaveBeenCalled();
 
@@ -87,12 +87,12 @@ test('active tab changes on tab click', () => {
 
   trigger = screen.getByText('Tab 1');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(onClick).toHaveBeenCalled();
 });
 
-test("clicking a disabled tab doesn't set the active tab", () => {
+test("clicking a disabled tab doesn't set the active tab", async () => {
   let activeTab = 'tab1';
   const disabledItems: TabItem[] = [...items, { id: 'tab3', title: 'Tab 3', disabled: true }];
   const setActiveTab = jest.fn((tabId: string) => (activeTab = tabId));
@@ -101,7 +101,7 @@ test("clicking a disabled tab doesn't set the active tab", () => {
 
   const trigger = screen.getByText('Tab 3');
 
-  userEvent.click(trigger);
+  await userEvent.click(trigger);
 
   expect(setActiveTab).not.toHaveBeenCalled();
   expect(activeTab).toBe('tab1');
