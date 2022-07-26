@@ -24,7 +24,7 @@
   "prettier": "@bigcommerce/eslint-config/prettier",
   "devDependencies": {
     "@bigcommerce/eslint-config": "^2.4.0",
-    "@commitlint/cli": "^16.1.0",
+    "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^16.0.0",
     "@types/babel__standalone": "^7.1.4",
     "eslint": "^8.11.0",
