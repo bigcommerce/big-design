@@ -14,7 +14,7 @@ export interface TableExpandable<T> {
   expandedRows: Record<string, true>;
   expandedRowSelector: (item: T) => T[] | undefined;
   onExpandedChange(expandedItems: Record<string, true>, expandedIndex: number): void;
-  renderHelperRow?:
+  helperRowRenderer?:
     | ComponentType<{ parentRowIndex: number; children?: ReactNode }>
     | ((props: { parentRowIndex: number; children?: ReactNode }, context?: any) => ReactNode);
 }

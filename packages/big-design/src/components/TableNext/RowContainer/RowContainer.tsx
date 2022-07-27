@@ -11,7 +11,7 @@ interface InternalRowContainerProps<T>
   expandedRowSelector?: TableExpandable<T>['expandedRowSelector'];
   getItemKey: (item: T, index: number) => string | number;
   headerless?: boolean;
-  renderHelperRow?: TableExpandable<T>['renderHelperRow'];
+  helperRowRenderer?: TableExpandable<T>['helperRowRenderer'];
 }
 
 interface PrivateProps {
@@ -29,7 +29,7 @@ const InternalRowContainer = <T extends TableItem>({
   item,
   parentRowIndex,
   showDragIcon,
-  renderHelperRow: HelperRow,
+  helperRowRenderer: HelperRow,
   expandedRowSelector,
   getItemKey,
   onItemSelect,

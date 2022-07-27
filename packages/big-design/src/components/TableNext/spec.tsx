@@ -891,7 +891,7 @@ describe('expandable', () => {
           expandedRows: { 0: true, 1: true, 2: true },
           expandedRowSelector: ({ children }) => children,
           onExpandedChange,
-          renderHelperRow: HelperRow,
+          helperRowRenderer: HelperRow,
         }}
         items={items}
       />,
@@ -918,7 +918,7 @@ describe('expandable', () => {
           expandedRows: { 0: true, 1: true, 2: true },
           expandedRowSelector: ({ children }) => children,
           onExpandedChange,
-          renderHelperRow: HelperRow,
+          helperRowRenderer: HelperRow,
         }}
         items={items}
       />,

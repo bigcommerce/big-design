@@ -42,27 +42,23 @@ export const useRowState = <T>({
     }
   };
 
-  const hasChildrenRows = childrenRows !== undefined;
-  const totalChildrenRows = childrenRows?.length ?? 0;
+  const hasChildrenRows = Array.isArray(childrenRows);
 
   const allChildrenRowsSelected =
     isExpandable &&
-    hasChildrenRows &&
-    childrenRows.every((_childRow, childRowIndex) => {
+    childrenRows?.every((_childRow, childRowIndex) => {
       return selectedItems[`${parentRowIndex}.${childRowIndex}`] !== undefined;
     });
 
   const someChildrenRowsSelected =
     isExpandable &&
-    hasChildrenRows &&
-    childrenRows.some((_childRow, childRowIndex) => {
+    childrenRows?.some((_childRow, childRowIndex) => {
       return selectedItems[`${parentRowIndex}.${childRowIndex}`] !== undefined;
     });
 
   const label = isSelected ? `Selected` : `Unselected`;
 
-  const isChecked =
-    isExpandable && hasChildrenRows && totalChildrenRows > 0 ? allChildrenRowsSelected : isSelected;
+  const isChecked = isExpandable && hasChildrenRows ? allChildrenRowsSelected : isSelected;
 
   const isIndeterminate = isExpandable && hasChildrenRows ? someChildrenRowsSelected : undefined;
 
