@@ -73,13 +73,7 @@ const InternalRow = <T extends TableItem>({
   const renderSelectDataCell = () => {
     if (isSelectable && isParentRow) {
       return (
-        <DataCell
-          cellPadding={0}
-          isCheckbox={true}
-          isExpandable={isExpandable}
-          key="data-checkbox"
-          width={10}
-        >
+        <DataCell isCheckbox={true} isExpandable={isExpandable} key="data-checkbox" width={10}>
           <Checkbox
             checked={isChecked}
             hiddenLabel
