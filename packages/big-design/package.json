@@ -45,7 +45,7 @@
     "react-datepicker": "^4.8.0",
     "react-popper": "^2.2.4",
     "react-uid": "^2.3.1",
-    "zustand": "^3.5.7"
+    "zustand": "^4.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0",
