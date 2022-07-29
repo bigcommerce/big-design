@@ -5,6 +5,8 @@ import { DataCell } from '../DataCell';
 import { Row, RowProps } from '../Row';
 import { TableExpandable, TableItem } from '../types';
 
+import { calculateColSpan } from './helpers';
+
 interface InternalRowContainerProps<T>
   extends Omit<RowProps<T>, 'isSelected' | 'isParentRows' | 'childrenRows' | 'isDraggable'> {
   expandedRows: TableExpandable<T>['expandedRows'];
@@ -95,7 +97,10 @@ const InternalRowContainer = <T extends TableItem>({
         })}
       {isExpanded && childrenRows !== undefined && hasHelperRowComponent && (
         <tr key={`extra-helper-row-${parentRowIndex}`}>
-          <DataCell checkEmptyCell={true} colSpan={10000} width={100}>
+          <DataCell
+            checkEmptyCell={true}
+            colSpan={calculateColSpan({ columns, isExpandable, isDraggable, isSelectable })}
+          >
             {/*
 // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
             <HelperRow parentRowIndex={parentRowIndex} />
