@@ -1,7 +1,6 @@
 import React, { ReactNode, TableHTMLAttributes } from 'react';
 
 import { MarginProps } from '../../mixins';
-// import { ButtonProps } from '../Button/Button';
 import { PaginationProps } from '../Pagination';
 
 import { TableColumnDisplayProps } from './mixins';
