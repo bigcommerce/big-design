@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import React, { CSSProperties, FC } from 'react';
+import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
 
 import { fireEvent, render, screen, within } from '@test/utils';
@@ -879,10 +879,11 @@ describe('expandable', () => {
     expect(onExpandedChange).not.toHaveBeenCalledWith({ 0: true, 1: true, 2: true });
   });
 
-  test('renders a cell with a helper row component in a expanded parent', async () => {
-    const HelperRow: FC<{ parentRowIndex: number }> = ({ parentRowIndex }) => {
-      return <button>View more {parentRowIndex}</button>;
-    };
+  test('When isEnabled is true renders a cell with a button', async () => {
+    const onClick = jest.fn();
+    const showText = jest.fn(() => 'View more');
+    const isLoading = jest.fn(() => false);
+    const showLoadMore = jest.fn(() => true);
 
     render(
       <TableNext
@@ -891,7 +892,12 @@ describe('expandable', () => {
           expandedRows: { 0: true, 1: true, 2: true },
           expandedRowSelector: ({ children }) => children,
           onExpandedChange,
-          helperRowRenderer: HelperRow,
+          loadMoreAction: {
+            text: showText,
+            isLoading,
+            onClick,
+            showLoadMore,
+          },
         }}
         items={items}
       />,
@@ -902,30 +908,32 @@ describe('expandable', () => {
     expect(cellsWithHelperRow).toHaveLength(3);
   });
 
-  test('does not render a cell component when a helper row component returns null', async () => {
-    const HelperRow: FC<{ parentRowIndex: number }> = ({ parentRowIndex }) => {
-      if (parentRowIndex === 0) {
-        return <button>Only 0 index!</button>;
-      }
-
-      return null;
-    };
+  test('When showLoadMore is false does not render a cell with a button', async () => {
+    const onClick = jest.fn();
+    const showText = jest.fn(() => 'View more');
+    const isLoading = jest.fn(() => false);
+    const showLoadMore = jest.fn(() => false);
 
     render(
       <TableNext
         columns={columns}
         expandable={{
-          expandedRows: { 0: true, 1: true, 2: true },
+          expandedRows: { 0: true },
           expandedRowSelector: ({ children }) => children,
           onExpandedChange,
-          helperRowRenderer: HelperRow,
+          loadMoreAction: {
+            text: showText,
+            isLoading,
+            onClick,
+            showLoadMore,
+          },
         }}
         items={items}
       />,
     );
 
-    const cellsWithHelperRow = await screen.findAllByRole('cell', { name: 'Only 0 index!' });
+    const cellWithHelperRow = screen.queryByRole('cell', { name: 'View more' });
 
-    expect(cellsWithHelperRow).toHaveLength(1);
+    expect(cellWithHelperRow).not.toBeInTheDocument();
   });
 });

@@ -1,6 +1,7 @@
-import React, { ComponentType, ReactNode, TableHTMLAttributes } from 'react';
+import React, { ReactNode, TableHTMLAttributes } from 'react';
 
 import { MarginProps } from '../../mixins';
+import { ButtonProps } from '../Button/Button';
 import { PaginationProps } from '../Pagination';
 
 import { TableColumnDisplayProps } from './mixins';
@@ -10,13 +11,19 @@ export interface TableSelectable {
   onSelectionChange(selectedItems: Record<string, true>): void;
 }
 
+export interface TableExpandableAction
+  extends Omit<ButtonProps, 'children' | 'isLoading' | 'onClick' | 'variant'> {
+  text: (parentRowIndex: number) => string | undefined;
+  isLoading: (parentRowIndex: number) => boolean;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>, parentRowIndex: number) => void;
+  showLoadMore: (parentRowIndex?: number) => boolean;
+}
+
 export interface TableExpandable<T> {
   expandedRows: Record<string, true>;
   expandedRowSelector: (item: T) => T[] | undefined;
   onExpandedChange(expandedItems: Record<string, true>, expandedIndex: number): void;
-  helperRowRenderer?:
-    | ComponentType<{ parentRowIndex: number; children?: ReactNode }>
-    | ((props: { parentRowIndex: number; children?: ReactNode }, context?: any) => ReactNode);
+  loadMoreAction?: TableExpandableAction;
 }
 
 export type TableSortDirection = 'ASC' | 'DESC';
