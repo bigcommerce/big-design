@@ -3,7 +3,7 @@ import { TableSelectable } from '../types';
 
 interface UseRowStateProps<T> {
   childRowIndex?: number;
-  childrenRows: T[];
+  childrenRows?: T[];
   isExpandable: boolean;
   isParentRow: boolean;
   isSelected?: boolean;
@@ -28,7 +28,7 @@ export const useRowState = <T>({
     if (onItemSelect) {
       onItemSelect({
         childRowIndex: childRowIndex ?? null,
-        childrenRows,
+        childrenRows: childrenRows ?? [],
         isParentRow,
         isExpandable,
         parentRowIndex,
@@ -42,23 +42,24 @@ export const useRowState = <T>({
     }
   };
 
-  const hasChildrenRows = childrenRows.length > 0;
+  const hasChildrenRows = Array.isArray(childrenRows);
 
   const allChildrenRowsSelected =
     isExpandable &&
-    childrenRows.every((_childRow, childRowIndex) => {
+    childrenRows?.every((_childRow, childRowIndex) => {
       return selectedItems[`${parentRowIndex}.${childRowIndex}`] !== undefined;
     });
 
   const someChildrenRowsSelected =
     isExpandable &&
-    childrenRows.some((_childRow, childRowIndex) => {
+    childrenRows?.some((_childRow, childRowIndex) => {
       return selectedItems[`${parentRowIndex}.${childRowIndex}`] !== undefined;
     });
 
   const label = isSelected ? `Selected` : `Unselected`;
 
   const isChecked = isExpandable && hasChildrenRows ? allChildrenRowsSelected : isSelected;
+
   const isIndeterminate = isExpandable && hasChildrenRows ? someChildrenRowsSelected : undefined;
 
   return {

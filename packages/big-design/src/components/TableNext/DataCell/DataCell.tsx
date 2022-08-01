@@ -1,4 +1,4 @@
-import React, { memo, TableHTMLAttributes } from 'react';
+import React, { memo, TdHTMLAttributes } from 'react';
 
 import { PaddingProps } from '../../../mixins';
 import { TableColumnDisplayProps } from '../mixins';
@@ -6,10 +6,11 @@ import { TableColumnDisplayProps } from '../mixins';
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 
 export interface DataCellProps
-  extends TableHTMLAttributes<HTMLTableCellElement>,
+  extends TdHTMLAttributes<HTMLTableCellElement>,
     TableColumnDisplayProps,
     PaddingProps {
   align?: 'left' | 'center' | 'right';
+  checkEmptyCell?: boolean;
   children?: React.ReactNode;
   isExpandable?: boolean;
   isCheckbox?: boolean;
@@ -21,7 +22,9 @@ export interface DataCellProps
 export const DataCell: React.FC<DataCellProps> = memo(
   ({
     align,
+    checkEmptyCell,
     children,
+    colSpan,
     display,
     isCheckbox,
     isExpandable = false,
@@ -45,6 +48,8 @@ export const DataCell: React.FC<DataCellProps> = memo(
     ) : (
       <StyledTableDataCell
         align={align}
+        checkEmptyCell={checkEmptyCell}
+        colSpan={colSpan}
         display={display}
         padding={padding}
         paddingHorizontal={paddingHorizontal}

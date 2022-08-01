@@ -17,7 +17,7 @@ interface PrivateProps {
 }
 
 export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
-  childrenRows: T[];
+  childrenRows?: T[];
   childRowIndex?: number;
   columns: Array<TableColumn<T>>;
   headerCellWidths: Array<number | string>;
@@ -57,7 +57,7 @@ const InternalRow = <T extends TableItem>({
   isParentRow = false,
   ...rest
 }: RowProps<T> & PrivateProps) => {
-  const { hasChildrenRows, label, onChange, onExpandedChange, isChecked, isIndeterminate } =
+  const { hasChildrenRows, isChecked, isIndeterminate, label, onChange, onExpandedChange } =
     useRowState({
       childRowIndex,
       childrenRows,
@@ -73,13 +73,7 @@ const InternalRow = <T extends TableItem>({
   const renderSelectDataCell = () => {
     if (isSelectable && isParentRow) {
       return (
-        <DataCell
-          cellPadding={0}
-          isCheckbox={true}
-          isExpandable={isExpandable}
-          key="data-checkbox"
-          width={10}
-        >
+        <DataCell isCheckbox={true} isExpandable={isExpandable} key="data-checkbox" width={10}>
           <Checkbox
             checked={isChecked}
             hiddenLabel

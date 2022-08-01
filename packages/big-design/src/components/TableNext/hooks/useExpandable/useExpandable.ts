@@ -21,13 +21,13 @@ export const useExpandable = <T>(expandable?: TableExpandable<T>) => {
         ([key]) => key !== `${parentRowIndex}`,
       );
 
-      onExpandedChange(Object.fromEntries(newExpandedRows));
+      onExpandedChange(Object.fromEntries(newExpandedRows), parentRowIndex);
     } else {
       const newExpandedRows = { ...expandedRows };
 
       newExpandedRows[parentRowIndex] = true;
 
-      onExpandedChange(newExpandedRows);
+      onExpandedChange(newExpandedRows, parentRowIndex);
     }
   });
 

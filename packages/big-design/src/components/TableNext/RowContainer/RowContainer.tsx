@@ -1,8 +1,11 @@
 import React, { forwardRef } from 'react';
 
 import { typedMemo } from '../../../utils';
+import { DataCell } from '../DataCell';
 import { Row, RowProps } from '../Row';
 import { TableExpandable, TableItem } from '../types';
+
+import { calculateColSpan } from './helpers';
 
 interface InternalRowContainerProps<T>
   extends Omit<RowProps<T>, 'isSelected' | 'isParentRows' | 'childrenRows' | 'isDraggable'> {
@@ -10,6 +13,7 @@ interface InternalRowContainerProps<T>
   expandedRowSelector?: TableExpandable<T>['expandedRowSelector'];
   getItemKey: (item: T, index: number) => string | number;
   headerless?: boolean;
+  helperRowRenderer?: TableExpandable<T>['helperRowRenderer'];
 }
 
 interface PrivateProps {
@@ -27,6 +31,7 @@ const InternalRowContainer = <T extends TableItem>({
   item,
   parentRowIndex,
   showDragIcon,
+  helperRowRenderer: HelperRow,
   expandedRowSelector,
   getItemKey,
   onItemSelect,
@@ -38,11 +43,12 @@ const InternalRowContainer = <T extends TableItem>({
   const isExpanded = expandedRows[parentRowIndex] !== undefined;
   const childrenRows: T[] | undefined = expandedRowSelector ? expandedRowSelector?.(item) : [];
   const isDraggable: boolean = showDragIcon === true;
+  const hasHelperRowComponent = HelperRow !== undefined;
 
   return (
     <>
       <Row
-        childrenRows={childrenRows ?? []}
+        childrenRows={childrenRows}
         columns={columns}
         headerCellWidths={headerCellWidths}
         isDraggable={isDraggable}
@@ -89,6 +95,18 @@ const InternalRowContainer = <T extends TableItem>({
             />
           );
         })}
+      {isExpanded && childrenRows !== undefined && hasHelperRowComponent && (
+        <tr key={`extra-helper-row-${parentRowIndex}`}>
+          <DataCell
+            checkEmptyCell={true}
+            colSpan={calculateColSpan({ columns, isExpandable, isDraggable, isSelectable })}
+          >
+            {/*
+// @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
+            <HelperRow parentRowIndex={parentRowIndex} />
+          </DataCell>
+        </tr>
+      )}
     </>
   );
 };

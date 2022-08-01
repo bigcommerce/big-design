@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, FC } from 'react';
 import 'jest-styled-components';
 
 import { fireEvent, render, screen, within } from '@test/utils';
@@ -852,7 +852,7 @@ describe('expandable', () => {
 
     await userEvent.click(expandIcon);
 
-    expect(onExpandedChange).toHaveBeenCalledWith({ 0: true });
+    expect(onExpandedChange).toHaveBeenCalledWith({ 0: true }, 0);
     expect(onExpandedChange).not.toHaveBeenCalledWith({ 1: true });
     expect(onExpandedChange).not.toHaveBeenCalledWith({ 2: true });
   });
@@ -875,7 +875,57 @@ describe('expandable', () => {
 
     await userEvent.click(expandIcon);
 
-    expect(onExpandedChange).toHaveBeenCalledWith({ 1: true, 2: true });
+    expect(onExpandedChange).toHaveBeenCalledWith({ 1: true, 2: true }, 0);
     expect(onExpandedChange).not.toHaveBeenCalledWith({ 0: true, 1: true, 2: true });
+  });
+
+  test('renders a cell with a helper row component in a expanded parent', async () => {
+    const HelperRow: FC<{ parentRowIndex: number }> = ({ parentRowIndex }) => {
+      return <button>View more {parentRowIndex}</button>;
+    };
+
+    render(
+      <TableNext
+        columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          expandedRowSelector: ({ children }) => children,
+          onExpandedChange,
+          helperRowRenderer: HelperRow,
+        }}
+        items={items}
+      />,
+    );
+
+    const cellsWithHelperRow = await screen.findAllByRole('cell', { name: /View more/ });
+
+    expect(cellsWithHelperRow).toHaveLength(3);
+  });
+
+  test('does not render a cell component when a helper row component returns null', async () => {
+    const HelperRow: FC<{ parentRowIndex: number }> = ({ parentRowIndex }) => {
+      if (parentRowIndex === 0) {
+        return <button>Only 0 index!</button>;
+      }
+
+      return null;
+    };
+
+    render(
+      <TableNext
+        columns={columns}
+        expandable={{
+          expandedRows: { 0: true, 1: true, 2: true },
+          expandedRowSelector: ({ children }) => children,
+          onExpandedChange,
+          helperRowRenderer: HelperRow,
+        }}
+        items={items}
+      />,
+    );
+
+    const cellsWithHelperRow = await screen.findAllByRole('cell', { name: 'Only 0 index!' });
+
+    expect(cellsWithHelperRow).toHaveLength(1);
   });
 });
