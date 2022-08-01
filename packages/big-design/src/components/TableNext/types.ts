@@ -1,7 +1,7 @@
 import React, { ReactNode, TableHTMLAttributes } from 'react';
 
 import { MarginProps } from '../../mixins';
-import { ButtonProps } from '../Button/Button';
+// import { ButtonProps } from '../Button/Button';
 import { PaginationProps } from '../Pagination';
 
 import { TableColumnDisplayProps } from './mixins';
@@ -10,13 +10,11 @@ export interface TableSelectable {
   selectedItems: Record<string, true>;
   onSelectionChange(selectedItems: Record<string, true>): void;
 }
-
-export interface TableExpandableAction
-  extends Omit<ButtonProps, 'children' | 'isLoading' | 'onClick' | 'variant'> {
-  text: (parentRowIndex: number) => string | undefined;
+export interface TableExpandableAction {
   isLoading: (parentRowIndex: number) => boolean;
   onClick: (event: React.MouseEvent<HTMLButtonElement>, parentRowIndex: number) => void;
   showLoadMore: (parentRowIndex?: number) => boolean;
+  text: (parentRowIndex: number) => string | undefined;
 }
 
 export interface TableExpandable<T> {
