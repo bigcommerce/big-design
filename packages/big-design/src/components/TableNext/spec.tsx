@@ -879,7 +879,7 @@ describe('expandable', () => {
     expect(onExpandedChange).not.toHaveBeenCalledWith({ 0: true, 1: true, 2: true });
   });
 
-  test('when loadMoreAction exists a cell with a button is rendered', async () => {
+  test('renders a "View more" button on an expandable row', async () => {
     const onClick = jest.fn();
 
     render(
@@ -906,7 +906,7 @@ describe('expandable', () => {
     expect(cellsWithHelperRow).toHaveLength(3);
   });
 
-  test('when loadMoreAction is undefined does not render a cell with a button', async () => {
+  test('does not render a View more button when action value is undefined', async () => {
     render(
       <TableNext
         columns={columns}
