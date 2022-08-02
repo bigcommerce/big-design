@@ -43,17 +43,6 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
       vertical-align: ${verticalAlign};
     `};
 
-  ${({ checkEmptyCell }) => {
-    return (
-      checkEmptyCell &&
-      css`
-        &:empty {
-          display: none;
-        }
-      `
-    );
-  }};
-
   ${({ width }) =>
     width !== undefined &&
     css`
