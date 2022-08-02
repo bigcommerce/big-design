@@ -1,3 +1,5 @@
+export * from './AccordionGroup';
+export * from './AccordionGroup/AccordionPanel';
 export * from './Alert';
 export * from './Badge';
 export * from './Box';

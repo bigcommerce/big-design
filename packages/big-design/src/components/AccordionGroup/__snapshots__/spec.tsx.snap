@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders accordion group header 1`] = `
+<h2
+  class="styled__StyledH2-sc-tqnj75-2 styled__StyledH2-sc-1beu9nj-1 kEGvNd eqAvQy"
+>
+  Test Accordion
+</h2>
+`;
