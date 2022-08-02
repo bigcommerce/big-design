@@ -879,11 +879,8 @@ describe('expandable', () => {
     expect(onExpandedChange).not.toHaveBeenCalledWith({ 0: true, 1: true, 2: true });
   });
 
-  test('When isEnabled is true renders a cell with a button', async () => {
+  test('When loadMoreAction exists a cell with a button', async () => {
     const onClick = jest.fn();
-    const showText = jest.fn(() => 'View more');
-    const isLoading = jest.fn(() => false);
-    const showLoadMore = jest.fn(() => true);
 
     render(
       <TableNext
@@ -892,11 +889,12 @@ describe('expandable', () => {
           expandedRows: { 0: true, 1: true, 2: true },
           expandedRowSelector: ({ children }) => children,
           onExpandedChange,
-          loadMoreAction: {
-            text: showText,
-            isLoading,
-            onClick,
-            showLoadMore,
+          getLoadMoreAction: () => {
+            return {
+              text: 'View more',
+              isLoading: false,
+              onClick,
+            };
           },
         }}
         items={items}
@@ -908,12 +906,7 @@ describe('expandable', () => {
     expect(cellsWithHelperRow).toHaveLength(3);
   });
 
-  test('When showLoadMore is false does not render a cell with a button', async () => {
-    const onClick = jest.fn();
-    const showText = jest.fn(() => 'View more');
-    const isLoading = jest.fn(() => false);
-    const showLoadMore = jest.fn(() => false);
-
+  test('When loadMoreAction is undefined does not render a cell with a button', async () => {
     render(
       <TableNext
         columns={columns}
@@ -921,11 +914,8 @@ describe('expandable', () => {
           expandedRows: { 0: true },
           expandedRowSelector: ({ children }) => children,
           onExpandedChange,
-          loadMoreAction: {
-            text: showText,
-            isLoading,
-            onClick,
-            showLoadMore,
+          getLoadMoreAction: () => {
+            return undefined;
           },
         }}
         items={items}

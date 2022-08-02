@@ -9,18 +9,19 @@ export interface TableSelectable {
   selectedItems: Record<string, true>;
   onSelectionChange(selectedItems: Record<string, true>): void;
 }
-export interface TableExpandableAction {
-  isLoading: (parentRowIndex: number) => boolean;
+export interface LoadMoreAction {
+  isLoading: boolean;
   onClick: (event: React.MouseEvent<HTMLButtonElement>, parentRowIndex: number) => void;
-  showLoadMore: (parentRowIndex?: number) => boolean;
-  text: (parentRowIndex: number) => string | undefined;
+  text: string;
 }
+
+type LoadMoreActionCallback = (parentRowIndex: number) => LoadMoreAction | undefined;
 
 export interface TableExpandable<T> {
   expandedRows: Record<string, true>;
   expandedRowSelector: (item: T) => T[] | undefined;
   onExpandedChange(expandedItems: Record<string, true>, expandedIndex: number): void;
-  loadMoreAction?: TableExpandableAction;
+  getLoadMoreAction?: LoadMoreActionCallback;
 }
 
 export type TableSortDirection = 'ASC' | 'DESC';

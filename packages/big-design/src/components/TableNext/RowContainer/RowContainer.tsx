@@ -14,7 +14,7 @@ interface InternalRowContainerProps<T>
   expandedRowSelector?: TableExpandable<T>['expandedRowSelector'];
   getItemKey: (item: T, index: number) => string | number;
   headerless?: boolean;
-  loadMoreAction?: TableExpandable<T>['loadMoreAction'];
+  getLoadMoreAction?: TableExpandable<T>['getLoadMoreAction'];
 }
 
 interface PrivateProps {
@@ -30,7 +30,7 @@ const InternalRowContainer = <T extends TableItem>({
   isExpandable = false,
   isSelectable = false,
   item,
-  loadMoreAction,
+  getLoadMoreAction,
   parentRowIndex,
   showDragIcon,
   expandedRowSelector,
@@ -44,9 +44,7 @@ const InternalRowContainer = <T extends TableItem>({
   const isExpanded = expandedRows[parentRowIndex] !== undefined;
   const childrenRows: T[] | undefined = expandedRowSelector ? expandedRowSelector?.(item) : [];
   const isDraggable: boolean = showDragIcon === true;
-  const showLoadMore = loadMoreAction?.showLoadMore(parentRowIndex);
-  const isLoading = loadMoreAction?.isLoading(parentRowIndex);
-  const text = loadMoreAction?.text(parentRowIndex);
+  const loadMoreAction = getLoadMoreAction?.(parentRowIndex);
 
   return (
     <>
@@ -98,18 +96,18 @@ const InternalRowContainer = <T extends TableItem>({
             />
           );
         })}
-      {isExpanded && childrenRows !== undefined && showLoadMore && (
+      {isExpanded && childrenRows !== undefined && loadMoreAction && (
         <tr key={`extra-helper-row-${parentRowIndex}`}>
           <DataCell
             colSpan={calculateColSpan({ columns, isExpandable, isDraggable, isSelectable })}
           >
             <StyleableButton
-              isLoading={isLoading}
-              onClick={(e) => loadMoreAction?.onClick(e, parentRowIndex)}
+              isLoading={loadMoreAction.isLoading}
+              onClick={(e) => loadMoreAction.onClick(e, parentRowIndex)}
               style={{ width: '100%' }}
               variant="subtle"
             >
-              {text}
+              {loadMoreAction.text}
             </StyleableButton>
           </DataCell>
         </tr>
