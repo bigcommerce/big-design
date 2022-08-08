@@ -165,7 +165,7 @@ const InternalRow = <T extends TableItem>({
               verticalAlign={verticalAlign}
               width={isDragging ? cellWidth : width}
             >
-              <Flex alignItems="center">
+              <Flex alignItems="center" flexDirection="row">
                 {columnIndex === 0 && isExpandable && isSelectable && !isParentRow && (
                   <Checkbox
                     checked={isSelected}
