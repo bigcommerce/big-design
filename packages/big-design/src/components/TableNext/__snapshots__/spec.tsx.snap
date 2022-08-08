@@ -303,6 +303,14 @@ exports[`renders a pagination component 1`] = `
   padding: 0.75rem 1.5rem;
 }
 
+@media (min-width:0px) {
+
+}
+
+@media (min-width:720px) {
+
+}
+
 @media (min-width:720px) {
   .c7 + .bd-button {
     margin-top: 0;
@@ -469,14 +477,6 @@ exports[`renders a simple table 1`] = `
   box-sizing: border-box;
 }
 
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  box-sizing: border-box;
-}
-
 .c3 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
@@ -488,6 +488,27 @@ exports[`renders a simple table 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c7 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
@@ -565,6 +586,22 @@ exports[`renders a simple table 1`] = `
   width: 100%;
 }
 
+@media (min-width:0px) {
+  .c7 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width:720px) {
+  .c7 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
 <table
   class="c0"
   id="bd-table-1"
@@ -615,8 +652,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           SM13
         </div>
@@ -625,8 +661,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           [Sample] Smith Journal 13
         </div>
@@ -635,8 +670,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           25
         </div>
@@ -649,8 +683,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           DPB
         </div>
@@ -659,8 +692,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           [Sample] Dustpan & Brush
         </div>
@@ -669,8 +701,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           34
         </div>
@@ -683,8 +714,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           OFSUC
         </div>
@@ -693,8 +723,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           [Sample] Utility Caddy
         </div>
@@ -703,8 +732,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           45
         </div>
@@ -717,8 +745,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           CLC
         </div>
@@ -727,8 +754,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           [Sample] Canvas Laundry Cart
         </div>
@@ -737,8 +763,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           2
         </div>
@@ -751,8 +776,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           CGLD
         </div>
@@ -761,8 +785,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           [Sample] Laundry Detergent
         </div>
@@ -771,8 +794,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c7"
         >
           29
         </div>
@@ -1009,6 +1031,14 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   display: -ms-flexbox;
   display: flex;
   padding: 0.75rem 1.5rem;
+}
+
+@media (min-width:0px) {
+
+}
+
+@media (min-width:720px) {
+
 }
 
 <div
@@ -1295,6 +1325,14 @@ exports[`selectable renders selectable actions, checkboxes when having parent ro
   display: -ms-flexbox;
   display: flex;
   padding: 0.75rem 1.5rem;
+}
+
+@media (min-width:0px) {
+
+}
+
+@media (min-width:720px) {
+
 }
 
 @media (min-width:720px) {
