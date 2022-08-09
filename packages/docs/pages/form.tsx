@@ -173,7 +173,7 @@ const FormPage = () => {
                         <Timepicker
                           label="Example Timepicker"
                           onTimeChange={() => null}
-                          value={'13:00'}
+                          value="13:00"
                         />
                       </FormGroup>
                     </Form>
