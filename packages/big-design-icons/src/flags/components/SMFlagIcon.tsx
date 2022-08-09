@@ -328,42 +328,42 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       <g fontFamily="Trebuchet MS" fontSize={9} fontWeight="bold">
         <text transform="translate(-465 -233.3) scale(1.6657)" x={448.6} y={344.3}>
           <tspan x={448.6} y={344.3}>
-            {'L'}
+            L
           </tspan>
         </text>
         <text transform="translate(-465 -233.3) scale(1.6657)" x={453.6} y={344.6}>
           <tspan x={453.6} y={344.6}>
-            {'I'}
+            I
           </tspan>
         </text>
         <text transform="translate(-465 -233.3) scale(1.6657)" x={456.7} y={345.1}>
           <tspan x={456.7} y={345.1}>
-            {'B'}
+            B
           </tspan>
         </text>
         <text transform="translate(-465 -233.3) scale(1.6657)" x={462.6} y={345.5}>
           <tspan x={462.6} y={345.5}>
-            {'E'}
+            E
           </tspan>
         </text>
         <text transform="translate(-465 -233.3) scale(1.6657)" x={468.3} y={345.6}>
           <tspan x={468.3} y={345.6}>
-            {'R'}
+            R
           </tspan>
         </text>
         <text transform="translate(-465 -233.3) scale(1.6657)" x={473.9} y={345.4}>
           <tspan x={473.9} y={345.4}>
-            {'T'}
+            T
           </tspan>
         </text>
         <text transform="translate(-465 -233.3) scale(1.6657)" x={479.3} y={344.5}>
           <tspan x={479.3} y={344.5}>
-            {'A'}
+            A
           </tspan>
         </text>
         <text transform="translate(-465 -233.3) scale(1.6657)" x={485.5} y={344.3}>
           <tspan x={485.5} y={344.3}>
-            {'S'}
+            S
           </tspan>
         </text>
       </g>
