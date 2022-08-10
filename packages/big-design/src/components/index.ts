@@ -36,7 +36,6 @@ export * from './StatefulTree';
 export * from './Stepper';
 export * from './Switch';
 export * from './Table';
-export * from './TableNext';
 export * from './Tabs';
 export * from './Textarea';
 export * from './Timepicker';

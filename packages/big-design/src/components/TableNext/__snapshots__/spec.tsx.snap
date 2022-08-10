@@ -469,14 +469,6 @@ exports[`renders a simple table 1`] = `
   box-sizing: border-box;
 }
 
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  box-sizing: border-box;
-}
-
 .c3 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
@@ -615,8 +607,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           SM13
         </div>
@@ -625,8 +616,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           [Sample] Smith Journal 13
         </div>
@@ -635,8 +625,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           25
         </div>
@@ -649,8 +638,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           DPB
         </div>
@@ -659,8 +647,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           [Sample] Dustpan & Brush
         </div>
@@ -669,8 +656,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           34
         </div>
@@ -683,8 +669,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           OFSUC
         </div>
@@ -693,8 +678,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           [Sample] Utility Caddy
         </div>
@@ -703,8 +687,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           45
         </div>
@@ -717,8 +700,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           CLC
         </div>
@@ -727,8 +709,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           [Sample] Canvas Laundry Cart
         </div>
@@ -737,8 +718,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           2
         </div>
@@ -751,8 +731,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           CGLD
         </div>
@@ -761,8 +740,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           [Sample] Laundry Detergent
         </div>
@@ -771,8 +749,7 @@ exports[`renders a simple table 1`] = `
         class="c6"
       >
         <div
-          class="c7"
-          display="flex"
+          class="c2 c3"
         >
           29
         </div>

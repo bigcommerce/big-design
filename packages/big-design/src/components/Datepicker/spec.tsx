@@ -26,7 +26,7 @@ test('should use the passed in ref object if provided', async () => {
 
 test('renders select label', () => {
   const { getByText } = render(
-    <Datepicker data-testid="datepicker" label={'test'} onDateChange={jest.fn()} />,
+    <Datepicker data-testid="datepicker" label="test" onDateChange={jest.fn()} />,
   );
 
   expect(getByText('test')).toBeInTheDocument();

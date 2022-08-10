@@ -2,9 +2,9 @@ import { ChevronRightIcon, DragIndicatorIcon, ExpandMoreIcon } from '@bigcommerc
 import React, { forwardRef, ReactNode, TableHTMLAttributes } from 'react';
 
 import { typedMemo } from '../../../utils';
-import { Box } from '../../Box';
 import { MessagingButton } from '../../Button/private';
 import { Checkbox } from '../../Checkbox';
+import { Flex } from '../../Flex';
 import { DataCell } from '../DataCell';
 import { OnItemSelectFn } from '../hooks';
 import { TableColumn, TableItem, TableSelectable } from '../types';
@@ -106,7 +106,7 @@ const InternalRow = <T extends TableItem>({
       const needsHorizontalPadding = !isSelectable && !isDraggable;
 
       return (
-        <DataCell paddingHorizontal={needsHorizontalPadding ? 'small' : 'none'}>
+        <DataCell align="center" paddingHorizontal={needsHorizontalPadding ? 'small' : 'none'}>
           <MessagingButton
             iconOnly={isExpanded ? <ExpandMoreIcon /> : <ChevronRightIcon />}
             onClick={onExpandedChange}
@@ -165,7 +165,7 @@ const InternalRow = <T extends TableItem>({
               verticalAlign={verticalAlign}
               width={isDragging ? cellWidth : width}
             >
-              <Box display="flex">
+              <Flex alignItems="center" flexDirection="row">
                 {columnIndex === 0 && isExpandable && isSelectable && !isParentRow && (
                   <Checkbox
                     checked={isSelected}
@@ -178,7 +178,7 @@ const InternalRow = <T extends TableItem>({
                 {/*
           // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
                 <CellContent {...item} />
-              </Box>
+              </Flex>
             </DataCell>
           );
         },

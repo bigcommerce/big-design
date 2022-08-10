@@ -347,7 +347,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={362.4}
       >
         <tspan x={-328.3} y={362.4}>
-          {'L'}
+          L
         </tspan>
       </text>
       <text
@@ -359,7 +359,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={384.3}
       >
         <tspan x={-292.3} y={384.3}>
-          {'E'}
+          E
         </tspan>
       </text>
       <text
@@ -371,7 +371,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={451.7}
       >
         <tspan x={-239.8} y={451.7}>
-          {'O'}
+          O
         </tspan>
       </text>
       <text
@@ -383,7 +383,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={430}
       >
         <tspan x={-188.5} y={430}>
-          {'T'}
+          T
         </tspan>
       </text>
       <text
@@ -395,7 +395,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={451.5}
       >
         <tspan x={-115.4} y={451.5}>
-          {'E'}
+          E
         </tspan>
       </text>
       <text
@@ -407,7 +407,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={453.1}
       >
         <tspan x={-94.1} y={453.1}>
-          {'R'}
+          R
         </tspan>
       </text>
       <text
@@ -419,7 +419,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={455}
       >
         <tspan x={-68.4} y={455}>
-          {'R'}
+          R
         </tspan>
       </text>
       <text
@@ -431,7 +431,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={445.7}
       >
         <tspan x={112} y={445.7}>
-          {'R'}
+          R
         </tspan>
       </text>
       <text
@@ -443,7 +443,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={430.8}
       >
         <tspan x={180.2} y={430.8}>
-          {'R'}
+          R
         </tspan>
       </text>
       <text
@@ -455,7 +455,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={275.2}
       >
         <tspan x={414.8} y={275.2}>
-          {'R'}
+          R
         </tspan>
       </text>
       <text
@@ -467,7 +467,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={193.1}
       >
         <tspan x={483.9} y={193.1}>
-          {'E'}
+          E
         </tspan>
       </text>
       <text
@@ -479,7 +479,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={414}
       >
         <tspan x={309.1} y={414}>
-          {'O'}
+          O
         </tspan>
       </text>
       <text
@@ -491,7 +491,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={459.3}
       >
         <tspan x={105.1} y={459.3}>
-          {'O'}
+          O
         </tspan>
       </text>
       <text
@@ -503,7 +503,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={455.8}
       >
         <tspan x={-45.7} y={455.8}>
-          {'A'}
+          A
         </tspan>
       </text>
       <text
@@ -515,7 +515,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={144.7}
       >
         <tspan x={518.4} y={144.7}>
-          {'A'}
+          A
         </tspan>
       </text>
       <text
@@ -527,7 +527,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={388.3}
       >
         <tspan x={271.2} y={388.3}>
-          {'A'}
+          A
         </tspan>
       </text>
       <text
@@ -539,7 +539,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={455.2}
       >
         <tspan x={40.3} y={455.2}>
-          {'M'}
+          M
         </tspan>
       </text>
       <text
@@ -551,7 +551,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={448.1}
       >
         <tspan x={94.4} y={448.1}>
-          {'P'}
+          P
         </tspan>
       </text>
       <text
@@ -563,7 +563,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={437.6}
       >
         <tspan x={155.1} y={437.6}>
-          {'P'}
+          P
         </tspan>
       </text>
       <text
@@ -575,7 +575,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={276.7}
       >
         <tspan x={405.1} y={276.7}>
-          {'P'}
+          P
         </tspan>
       </text>
       <text
@@ -587,7 +587,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={409.8}
       >
         <tspan x={232.1} y={409.8}>
-          {'I'}
+          I
         </tspan>
       </text>
       <text
@@ -599,7 +599,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={132.1}
       >
         <tspan x={530.4} y={132.1}>
-          {'T'}
+          T
         </tspan>
       </text>
       <text
@@ -611,7 +611,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={218.5}
       >
         <tspan x={464.2} y={218.5}>
-          {'T'}
+          T
         </tspan>
       </text>
       <text
@@ -623,7 +623,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={362}
       >
         <tspan x={313.7} y={362}>
-          {'M'}
+          M
         </tspan>
       </text>
       <text
@@ -635,7 +635,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         y={123.3}
       >
         <tspan x={513.7} y={123.3}>
-          {'G'}
+          G
         </tspan>
       </text>
       <path
