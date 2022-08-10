@@ -1,7 +1,9 @@
 import React, { memo, useMemo } from 'react';
 
+import { Panel } from '../Panel';
+
 import { AccordionPanel, AccordionPanelProps } from './AccordionPanel';
-import { StyledAccordionGroup, StyledH2 } from './styled';
+import { StyledAccordionPanelWrapper } from './styled';
 
 export interface AccordionGroupProps {
   header: string;
@@ -14,9 +16,8 @@ export const AccordionGroup: React.FC<AccordionGroupProps> = memo(({ header, pan
   }, [panels]);
 
   return (
-    <StyledAccordionGroup>
-      <StyledH2>{header}</StyledH2>
-      {renderedPanels}
-    </StyledAccordionGroup>
+    <Panel header={header}>
+      <StyledAccordionPanelWrapper>{renderedPanels}</StyledAccordionPanelWrapper>
+    </Panel>
   );
 });

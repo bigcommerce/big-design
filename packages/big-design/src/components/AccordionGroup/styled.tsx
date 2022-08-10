@@ -1,19 +1,20 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { Box } from '../Box';
-import { StyleableH2 } from '../Typography/Typography';
+import { Flex } from '../Flex';
 
-export const StyledAccordionGroup = styled(Box)`
-  border-radius: ${({ theme }) => theme.borderRadius.normal};
-  border: ${({ theme }) => theme.border.box};
-  ${({ theme }) => theme.shadow.raised};
+export const StyledAccordionPanelWrapper = styled(Flex)`
+  flex-direction: column;
+
+  margin-bottom: -${({ theme }) => theme.spacing.medium};
+  margin-left: -${({ theme }) => theme.spacing.medium};
+  margin-right: -${({ theme }) => theme.spacing.medium};
+
+  ${({ theme }) => theme.breakpoints.tablet} {
+    margin-bottom: -${({ theme }) => theme.spacing.xLarge};
+    margin-left: -${({ theme }) => theme.spacing.xLarge};
+    margin-right: -${({ theme }) => theme.spacing.xLarge};
+  }
 `;
 
-export const StyledH2 = styled(StyleableH2)`
-  padding: ${({ theme }) => theme.spacing.xLarge};
-  border-bottom: ${({ theme }) => theme.border.box};
-  margin: 0;
-`;
-
-StyledAccordionGroup.defaultProps = { theme: defaultTheme };
+StyledAccordionPanelWrapper.defaultProps = { theme: defaultTheme };

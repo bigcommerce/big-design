@@ -66,13 +66,13 @@ test('accordion panel collapses and expands on click', async () => {
 
   const buttonPanel = await screen.findByRole('button');
 
-  userEvent.click(buttonPanel);
+  await userEvent.click(buttonPanel);
 
   const panelChild = await screen.findByRole('region');
 
   expect(panelChild).toBeVisible();
 
-  userEvent.click(buttonPanel);
+  await userEvent.click(buttonPanel);
 
   expect(panelChild).not.toBeVisible();
 });
