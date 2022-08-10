@@ -1,17 +1,22 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 
+import { AccordionPanel, AccordionPanelProps } from './AccordionPanel';
 import { StyledAccordionGroup, StyledH2 } from './styled';
 
 export interface AccordionGroupProps {
   header: string;
-  children?: React.ReactNode;
+  panels: AccordionPanelProps[];
 }
 
-export const AccordionGroup: React.FC<AccordionGroupProps> = memo(({ header, children }) => {
+export const AccordionGroup: React.FC<AccordionGroupProps> = memo(({ header, panels }) => {
+  const renderedPanels = useMemo(() => {
+    return panels.map((panel, index) => <AccordionPanel {...panel} key={index} />);
+  }, [panels]);
+
   return (
     <StyledAccordionGroup>
       <StyledH2>{header}</StyledH2>
-      {children}
+      {renderedPanels}
     </StyledAccordionGroup>
   );
 });

@@ -1,22 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-interface UseAccordionProps {
-  defaultExpanded?: boolean;
-}
-
-export const useAccordion = ({ defaultExpanded }: UseAccordionProps) => {
-  const [isExpanded, setisExpanded] = useState(false);
-
-  useEffect(() => {
-    if (defaultExpanded) {
-      setisExpanded(defaultExpanded);
-    }
-  }, [defaultExpanded]);
+export const useAccordion = (defaultExpanded: boolean) => {
+  const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
   const onClick = () => {
-    const nextIsExpanded = !isExpanded;
-
-    setisExpanded(nextIsExpanded);
+    setIsExpanded(!isExpanded);
   };
 
   return {

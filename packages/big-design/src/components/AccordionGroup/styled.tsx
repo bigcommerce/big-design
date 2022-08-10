@@ -5,7 +5,6 @@ import { Box } from '../Box';
 import { StyleableH2 } from '../Typography/Typography';
 
 export const StyledAccordionGroup = styled(Box)`
-  background: white;
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   border: ${({ theme }) => theme.border.box};
   ${({ theme }) => theme.shadow.raised};

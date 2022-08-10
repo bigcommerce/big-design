@@ -1,15 +1,4 @@
-import {
-  AccordionGroup,
-  AccordionPanel,
-  Form,
-  FormGroup,
-  H1,
-  InputProps,
-  Panel,
-  Radio,
-  Text,
-} from '@bigcommerce/big-design';
-import { ErrorIcon } from '@bigcommerce/big-design-icons';
+import { AccordionGroup, H1, Panel, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
@@ -49,53 +38,41 @@ const AccordionPanelPage = () => {
             const [isExpanded, setIsExpanded] = useState(false);
 
             const onClick = () => {
-              const nextIsExpanded = !isExpanded;
-
-              setIsExpanded(nextIsExpanded);
+              setIsExpanded(!isExpanded);
             };
 
-            const [selected, setSelected] = useState('');
-
-            const handleChange: InputProps['onChange'] = (event) => setSelected(event.target.value);
+            const panels = [
+              {
+                defaultExpanded: true,
+                header: 'Panel Header',
+                isExpanded,
+                onClick,
+                children: (
+                  <Text>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit
+                    libero volutpat. Eu lobortis elementum nibh tellus molestie nunc non.
+                  </Text>
+                ),
+              },
+              {
+                header: 'Panel Header',
+                isExpanded,
+                onClick,
+                children: (
+                  <Text>
+                    Nullam eleifend a lectus non consequat. Fusce non mauris at velit sodales
+                    venenatis vitae ut erat. In hac habitasse platea dictumst. Quisque venenatis
+                    turpis at dapibus posuere. Phasellus pulvinar velit id tellus luctus, ac
+                    pharetra libero consequat.
+                  </Text>
+                ),
+              },
+            ];
 
             return (
               <>
-                <AccordionGroup header="Accordion Group Panel Header">
-                  <AccordionPanel
-                    defaultExpanded={true}
-                    header="Panel Header"
-                    isExpanded={isExpanded}
-                    onClick={onClick}
-                  >
-                    <Text>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit
-                      libero volutpat. Eu lobortis elementum nibh tellus molestie nunc non.
-                    </Text>
-                  </AccordionPanel>
-                  <AccordionPanel
-                    header="Panel Header"
-                    iconLeft={<ErrorIcon color="danger40" />}
-                    isExpanded={isExpanded}
-                  >
-                    <Form>
-                      <FormGroup>
-                        <Radio
-                          checked={selected === 'catalog'}
-                          label="Entire Catalog"
-                          onChange={handleChange}
-                          value="catalog"
-                        />
-                        <Radio
-                          checked={selected === 'product'}
-                          label="Individual Product"
-                          onChange={handleChange}
-                          value="product"
-                        />
-                      </FormGroup>
-                    </Form>
-                  </AccordionPanel>
-                </AccordionGroup>
+                <AccordionGroup header="Accordion Group Panel Header" panels={panels} />
               </>
             );
           }}
@@ -109,13 +86,13 @@ const AccordionPanelPage = () => {
           routes={[
             {
               id: 'accordion-group',
-              title: 'Accordion Group',
+              title: 'AccordionGroup',
               render: () => <AccordionGroupPropTable />,
             },
             {
               id: 'accordion',
-              title: 'Accordion Panel',
-              render: () => <AccordionPanelPropTable />,
+              title: 'AccordionPanel',
+              render: () => <AccordionPanelPropTable id="accordion-panel-prop-table" />,
             },
           ]}
         />
@@ -124,22 +101,17 @@ const AccordionPanelPage = () => {
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
           discouraged={[
-            <>Do not use accordions to hide important user tasks.</>,
-            <>Do not use the icon prop unless it provides benefit to the user.</>,
-            <>Do not nest accordions within accordions.</>,
-            <>Do not use an accordions to hide a singular piece of content.</>,
+            'Do not use accordions to hide important user tasks.',
+            'Do not use the icon prop unless it provides benefit to the user.',
+            'Do not nest accordions within accordions.',
+            'Do not use an accordion to hide a singular piece of content.',
           ]}
           recommended={[
-            <>Choose meaningful headers that describe the content revealed on expand.</>,
-            <>
-              Use the icon prop sparingly; an appropriate use would be the status of a task hidden
-              in the accordions.
-            </>,
-            <>Use accordions to present parallel content or like items.</>,
-            <>Limit the number of tasks hidden in each accordions to one.</>,
-            <>
-              Start with all panels collapsed unless the user has been redirected to the content.
-            </>,
+            'Choose meaningful headers that describe the content revealed on expand.',
+            'Use the icon prop sparingly; an appropriate use would be the status of a task hidden in the accordion.',
+            'Use accordions to present parallel content or like items.',
+            'Limit the number of tasks hidden in each accordion to one.',
+            'Start with all panels collapsed unless the user has been redirected to the content.',
           ]}
         />
       </Panel>

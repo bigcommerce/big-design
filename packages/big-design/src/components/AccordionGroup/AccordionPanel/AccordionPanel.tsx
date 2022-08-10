@@ -1,15 +1,15 @@
 import { Text } from '@bigcommerce/big-design';
-import { ExpandLessIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
+import { ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React, { HTMLAttributes, memo } from 'react';
 
 import { useUniqueId } from '../../../hooks';
 import { BoxProps } from '../../Box/Box';
 import { useAccordion } from '../hooks/useAccordion';
 
-import { StyledAccordion, StyledAccordionButton, StyledBox, StyledGridItem } from './styled';
+import { StyledAccordion, StyledAccordionButton, StyledAccordionContent } from './styled';
 
 export interface AccordionPanelProps extends HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   header: string;
   isExpanded: boolean;
   onClick?: () => void;
@@ -18,35 +18,29 @@ export interface AccordionPanelProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const AccordionPanel: React.FC<AccordionPanelProps & BoxProps> = memo(
-  ({ children, header, iconLeft, defaultExpanded = false, ...props }) => {
-    const { isExpanded, onClick } = useAccordion({ defaultExpanded });
+  ({ children, header, iconLeft, defaultExpanded = false, className, style, ...props }) => {
+    const { isExpanded, onClick } = useAccordion(defaultExpanded);
     const accordionId = useUniqueId('accordion');
     const accordionItemId = useUniqueId('accordion-item');
 
     return (
-      <StyledAccordion {...props} isExpanded={isExpanded}>
+      <StyledAccordion {...props}>
         <StyledAccordionButton
+          {...props}
           aria-controls={accordionItemId}
           aria-expanded={isExpanded}
+          iconLeft={iconLeft}
+          iconRight={<ExpandMoreIcon className="collapse-icon" color="secondary70" />}
           id={accordionId}
+          isExpanded={isExpanded}
           onClick={onClick}
           variant="subtle"
         >
-          <StyledGridItem>
-            {iconLeft}
-            <Text as="span" marginLeft={iconLeft ? 'small' : 'none'}>
-              {header}
-            </Text>
-          </StyledGridItem>
-          <StyledGridItem>
-            {isExpanded ? (
-              <ExpandLessIcon color="secondary70" />
-            ) : (
-              <ExpandMoreIcon color="secondary70" />
-            )}
-          </StyledGridItem>
+          <Text marginBottom="none" marginLeft={iconLeft ? 'xxxLarge' : 'none'}>
+            {header}
+          </Text>
         </StyledAccordionButton>
-        <StyledBox
+        <StyledAccordionContent
           {...props}
           aria-labelledby={accordionId}
           display={isExpanded ? 'block' : 'none'}
@@ -56,7 +50,7 @@ export const AccordionPanel: React.FC<AccordionPanelProps & BoxProps> = memo(
           role="region"
         >
           {children}
-        </StyledBox>
+        </StyledAccordionContent>
       </StyledAccordion>
     );
   },

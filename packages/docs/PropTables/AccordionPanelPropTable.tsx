@@ -4,8 +4,12 @@ import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components
 
 const accordionGroupProps: Prop[] = [
   {
-    name: 'children',
-    types: 'React.ReactNode',
+    name: 'panels',
+    types: (
+      <NextLink href={{ hash: 'accordion-panel-prop-table', query: { props: 'accordion-panel' } }}>
+        AccordionPanelProps[]
+      </NextLink>
+    ),
     description: (
       <>
         See{' '}
@@ -17,6 +21,7 @@ const accordionGroupProps: Prop[] = [
         for usage.
       </>
     ),
+    required: true,
   },
   {
     name: 'header',
@@ -69,8 +74,8 @@ const accordionPanelProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the
-        Accordion header.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the{' '}
+        <Code primary>Accordion Panel</Code> header.
       </>
     ),
   },
@@ -97,5 +102,5 @@ const accordionPanelProps: Prop[] = [
 ];
 
 export const AccordionPanelPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable propList={accordionPanelProps} title="Accordion" {...props} />
+  <PropTable propList={accordionPanelProps} title="Accordion Panel" {...props} />
 );

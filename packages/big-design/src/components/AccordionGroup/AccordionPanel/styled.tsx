@@ -1,13 +1,13 @@
 import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+import { withTransition } from '../../../mixins/transitions';
 import { Box } from '../../Box';
 import { StyleableButton } from '../../Button/private';
-import { GridItem } from '../../Grid/Item';
 
 import { AccordionPanelProps } from './index';
 
-export const StyledAccordionButton = styled(StyleableButton)`
+export const StyledAccordionButton = styled(StyleableButton)<AccordionPanelProps>`
   background: white;
   border-bottom: ${({ theme }) => theme.border.box};
   border-radius: 0;
@@ -17,16 +17,36 @@ export const StyledAccordionButton = styled(StyleableButton)`
   & > span {
     width: 100%;
   }
-`;
 
-export const StyledGridItem = styled(GridItem)`
-  &:last-child {
-    grid-column: 5;
-    text-align: right;
+  &:focus {
+    z-index: ${({ theme }) => theme.zIndex.fixed};
+  }
+
+  svg:not(.collapse-icon) {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .collapse-icon {
+    ${withTransition(['transform'])}
+
+    position: absolute;
+    right: ${({ theme }) => theme.spacing.medium};
+
+    ${({ isExpanded }) =>
+      isExpanded &&
+      css`
+        transform: rotate(-180deg);
+      `}
+  }
+
+  p {
+    grid-row: 1;
+    grid-column: 1;
   }
 `;
 
-export const StyledBox = styled(Box)<AccordionPanelProps>`
+export const StyledAccordionContent = styled(Box)<AccordionPanelProps>`
   border-bottom: ${({ theme }) => theme.border.box};
   padding: ${({ theme }) => theme.spacing.xLarge}};
   padding-left: ${({ iconLeft, theme }) => (iconLeft ? remCalc(60) : `${theme.spacing.xLarge}`)};
@@ -45,5 +65,4 @@ export const StyledAccordion = styled(Box)<AccordionPanelProps>`
 
 StyledAccordionButton.defaultProps = { theme: defaultTheme };
 StyledAccordion.defaultProps = { theme: defaultTheme };
-StyledBox.defaultProps = { theme: defaultTheme };
-StyledGridItem.defaultProps = { theme: defaultTheme };
+StyledAccordionContent.defaultProps = { theme: defaultTheme };

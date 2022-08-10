@@ -2,27 +2,38 @@ import { ErrorIcon } from '@bigcommerce/big-design-icons';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
-import { render, screen, waitFor } from '@test/utils';
+import { render, screen } from '@test/utils';
 
 import { Text } from '../Typography';
 
 import { AccordionGroup } from './AccordionGroup';
-import { AccordionPanel } from './AccordionPanel';
 
 const handleClick = jest.fn();
 
-const mockAccordion = (
-  <AccordionPanel header="Panel Header" isExpanded onClick={handleClick}>
-    <Text>This is a child component</Text>
-  </AccordionPanel>
-);
+const mockPanel = [
+  {
+    header: 'Panel Header',
+    isExpanded: false,
+    iconLeft: <ErrorIcon />,
+    onClick: handleClick,
+    children: <Text>This is a child component</Text>,
+  },
+];
 
-const mockAccordionGroup = (
-  <AccordionGroup header="Test Accordion">
-    <AccordionPanel header="Panel Header" isExpanded onClick={handleClick}>
-      <Text>This is a child component</Text>
-    </AccordionPanel>
-  </AccordionGroup>
+const mockAccordionGroup = <AccordionGroup header="Test Accordion" panels={mockPanel} />;
+
+const mockDefaultExpandPanel = [
+  {
+    defaultExpanded: true,
+    header: 'Panel Header',
+    isExpanded: false,
+    onClick: handleClick,
+    children: <Text>This is a child component</Text>,
+  },
+];
+
+const mockAccordionGroupDefault = (
+  <AccordionGroup header="Test Accordion" panels={mockDefaultExpandPanel} />
 );
 
 test('it renders accordion group header', async () => {
@@ -34,7 +45,7 @@ test('it renders accordion group header', async () => {
   expect(header).toBeVisible();
 });
 
-test('it renders accordion children', async () => {
+test('it renders accordion panel children', async () => {
   render(mockAccordionGroup);
 
   const child = await screen.findByText('Panel Header');
@@ -42,68 +53,52 @@ test('it renders accordion children', async () => {
   expect(child).toBeVisible();
 });
 
-test('accordion item renders header', async () => {
-  render(mockAccordion);
+test('accordion panel renders header', async () => {
+  render(mockAccordionGroup);
 
   const header = await screen.findByText('Panel Header');
 
   expect(header).toBeVisible();
 });
 
-test('accordion row collapses and expands on click', async () => {
-  render(mockAccordion);
+test('accordion panel collapses and expands on click', async () => {
+  render(mockAccordionGroup);
 
-  const panel = await screen.findByRole('button');
+  const buttonPanel = await screen.findByRole('button');
 
-  userEvent.click(panel);
+  userEvent.click(buttonPanel);
 
-  await waitFor(() => {
-    expect(panel.getAttribute('aria-expanded')).toBe('true');
-  });
+  const panelChild = await screen.findByRole('region');
 
-  userEvent.click(panel);
+  expect(panelChild).toBeVisible();
 
-  await waitFor(() => {
-    expect(panel.getAttribute('aria-expanded')).toBe('false');
-  });
+  userEvent.click(buttonPanel);
+
+  expect(panelChild).not.toBeVisible();
 });
 
-test('accordion row renders children', async () => {
-  render(mockAccordion);
+test('accordion panel renders children', async () => {
+  render(mockAccordionGroup);
 
-  const panel = await screen.findByRole('button');
+  const buttonPanel = await screen.findByRole('button');
 
-  userEvent.click(panel);
+  userEvent.click(buttonPanel);
 
   const child = await screen.findByRole('region');
 
   expect(child).toBeVisible();
 });
 
-test('if defaultExpanded is set to true, accordion is expanded', async () => {
-  render(
-    <AccordionPanel defaultExpanded={true} header="Panel Header" isExpanded onClick={handleClick}>
-      <Text>This is a child component</Text>
-    </AccordionPanel>,
-  );
+test('if defaultExpanded is set to true, accordion panel is expanded', async () => {
+  render(mockAccordionGroupDefault);
 
-  const panel = await screen.findByRole('button');
+  const panelChild = await screen.findByRole('region');
 
-  expect(panel.getAttribute('aria-expanded')).toBe('true');
+  expect(panelChild).toBeVisible();
 });
 
-test('it renders icon if iconLeft prop is set', async () => {
-  render(
-    <AccordionPanel
-      defaultExpanded={true}
-      header="Panel Header"
-      iconLeft={<ErrorIcon />}
-      isExpanded
-      onClick={handleClick}
-    >
-      <Text>This is a child component</Text>
-    </AccordionPanel>,
-  );
+test('it renders icon if iconLeft prop is defined', async () => {
+  render(mockAccordionGroup);
 
   const icons = (await screen.findByRole('button')).querySelectorAll('svg');
 
