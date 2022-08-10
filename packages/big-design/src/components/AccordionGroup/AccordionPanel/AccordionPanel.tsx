@@ -19,7 +19,7 @@ export interface AccordionPanelProps extends HTMLAttributes<HTMLDivElement> {
 
 export const AccordionPanel: React.FC<AccordionPanelProps & BoxProps> = memo(
   ({ children, header, iconLeft, defaultExpanded = false, className, style, ...props }) => {
-    const { isExpanded, onClick } = useAccordion(defaultExpanded ?? false);
+    const { isExpanded, onClick } = useAccordion(defaultExpanded);
     const accordionId = useUniqueId('accordion');
     const accordionItemId = useUniqueId('accordion-item');
 
