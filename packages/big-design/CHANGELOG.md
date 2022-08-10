@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.2-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.32.1...@bigcommerce/big-design@0.32.2-alpha.0) (2022-08-10)
+
+
+### Bug Fixes
+
+* **component:** Fix space and alignment in TableNext ([#934](https://github.com/bigcommerce/big-design/issues/934)) ([493fc83](https://github.com/bigcommerce/big-design/commit/493fc83d74a2b85c4e90ed91299b6c5b36e4cbbd))
+
+
+### Features
+
+* **component:** TableNext - add loadAction prop ([#927](https://github.com/bigcommerce/big-design/issues/927)) ([b37254d](https://github.com/bigcommerce/big-design/commit/b37254d48598e36ec87c7701c9513f40522d4593))
+
+
+
+
+
 ## [0.32.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.32.0...@bigcommerce/big-design@0.32.1) (2022-07-12)
 
 
