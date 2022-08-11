@@ -5,9 +5,16 @@ import { withTransition } from '../../../mixins/transitions';
 import { Box } from '../../Box';
 import { StyleableButton } from '../../Button/private';
 
-import { AccordionPanelProps } from './index';
+interface StyledAccordionButtonProps {
+  isExpanded: boolean;
+}
 
-export const StyledAccordionButton = styled(StyleableButton)<AccordionPanelProps>`
+interface StyledAccordionContentProps {
+  iconLeft: React.ReactNode;
+}
+
+// export const StyledAccordionButton = styled(StyleableButton)<AccordionPanelProps>`
+export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButtonProps>`
   border-top: ${({ theme }) => theme.border.box};
   border-radius: 0;
   padding: ${({ theme }) => theme.spacing.xLarge};
@@ -51,7 +58,8 @@ export const StyledAccordionButton = styled(StyleableButton)<AccordionPanelProps
   }
 `;
 
-export const StyledAccordionContent = styled(Box)<AccordionPanelProps>`
+// export const StyledAccordionContent = styled(Box)<AccordionPanelProps>`
+export const StyledAccordionContent = styled(Box)<StyledAccordionContentProps>`
   padding: ${({ theme }) => theme.spacing.xLarge}};
   padding-left: ${({ iconLeft, theme }) => (iconLeft ? remCalc(60) : `${theme.spacing.xLarge}`)};
 `;

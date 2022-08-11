@@ -1,5 +1,5 @@
 import { AccordionGroup, H1, Panel, Text } from '@bigcommerce/big-design';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import {
@@ -35,18 +35,11 @@ const AccordionPanelPage = () => {
         <CodePreview>
           {/* jsx-to-string:start */}
           {function Example() {
-            const [isExpanded, setIsExpanded] = useState(false);
-
-            const onClick = () => {
-              setIsExpanded(!isExpanded);
-            };
-
             const panels = [
               {
                 defaultExpanded: true,
                 header: 'Panel Header',
-                isExpanded,
-                onClick,
+                isExpanded: false,
                 children: (
                   <Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -57,8 +50,7 @@ const AccordionPanelPage = () => {
               },
               {
                 header: 'Panel Header',
-                isExpanded,
-                onClick,
+                isExpanded: false,
                 children: (
                   <Text>
                     Nullam eleifend a lectus non consequat. Fusce non mauris at velit sodales
@@ -70,11 +62,7 @@ const AccordionPanelPage = () => {
               },
             ];
 
-            return (
-              <>
-                <AccordionGroup header="Accordion Group Panel Header" panels={panels} />
-              </>
-            );
+            return <AccordionGroup header="Accordion Group Panel Header" panels={panels} />;
           }}
           {/* jsx-to-string:end */}
         </CodePreview>

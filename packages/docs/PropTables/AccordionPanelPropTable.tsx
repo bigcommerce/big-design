@@ -89,16 +89,6 @@ const accordionPanelProps: Prop[] = [
     ),
     required: true,
   },
-
-  {
-    name: 'onClick',
-    types: '() => void',
-    description: (
-      <>
-        Function that will be called when an <Code primary>Accordion Panel</Code> is clicked.
-      </>
-    ),
-  },
 ];
 
 export const AccordionPanelPropTable: React.FC<PropTableWrapper> = (props) => (

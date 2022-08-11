@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo } from 'react';
 
 import { Panel } from '../Panel';
 
@@ -11,9 +11,7 @@ export interface AccordionGroupProps {
 }
 
 export const AccordionGroup: React.FC<AccordionGroupProps> = memo(({ header, panels }) => {
-  const renderedPanels = useMemo(() => {
-    return panels.map((panel, index) => <AccordionPanel {...panel} key={index} />);
-  }, [panels]);
+  const renderedPanels = panels.map((panel, index) => <AccordionPanel {...panel} key={index} />);
 
   return (
     <Panel header={header}>

@@ -10,11 +10,11 @@ import { StyledAccordionButton, StyledAccordionContent } from './styled';
 
 export interface AccordionPanelProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
+  defaultExpanded?: boolean;
   header: string;
+  iconLeft?: React.ReactNode;
   isExpanded: boolean;
   onClick?: () => void;
-  iconLeft?: React.ReactNode;
-  defaultExpanded?: boolean;
 }
 
 export const AccordionPanel: React.FC<AccordionPanelProps & BoxProps> = memo(
@@ -26,7 +26,6 @@ export const AccordionPanel: React.FC<AccordionPanelProps & BoxProps> = memo(
     return (
       <Box {...props}>
         <StyledAccordionButton
-          {...props}
           aria-controls={accordionItemId}
           aria-expanded={isExpanded}
           iconLeft={iconLeft}
@@ -41,7 +40,6 @@ export const AccordionPanel: React.FC<AccordionPanelProps & BoxProps> = memo(
           </Text>
         </StyledAccordionButton>
         <StyledAccordionContent
-          {...props}
           aria-labelledby={accordionId}
           display={isExpanded ? 'block' : 'none'}
           hidden={!isExpanded}
