@@ -19,8 +19,13 @@ export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButt
   padding: ${({ theme }) => theme.spacing.xLarge};
   text-align: left;
   width: 100%;
-  & > span {
+  span {
     width: 100%;
+    color: ${({ theme }) => theme.colors.secondary70};
+    grid-template-columns: ${({ iconLeft, theme }) =>
+      iconLeft
+        ? `${theme.spacing.xLarge} 1fr ${theme.spacing.medium}`
+        : `1fr ${theme.spacing.medium}`};
   }
 
   ${({ isExpanded }) =>
@@ -33,27 +38,14 @@ export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButt
     z-index: ${({ theme }) => theme.zIndex.fixed};
   }
 
-  svg:not(.collapse-icon) {
-    grid-row: 1;
-    grid-column: 1;
-  }
-
   .collapse-icon {
     ${withTransition(['transform'])}
-
-    position: absolute;
-    right: ${({ theme }) => theme.spacing.medium};
 
     ${({ isExpanded }) =>
       isExpanded &&
       css`
         transform: rotate(-180deg);
       `}
-  }
-
-  p {
-    grid-row: 1;
-    grid-column: 1;
   }
 `;
 

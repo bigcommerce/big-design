@@ -1,14 +1,12 @@
-import { Text } from '@bigcommerce/big-design';
 import { ExpandMoreIcon } from '@bigcommerce/big-design-icons';
-import React, { HTMLAttributes, memo } from 'react';
+import React, { memo } from 'react';
 
-import { useUniqueId } from '../../../hooks';
+import { useAccordion, useUniqueId } from '../../../hooks';
 import { Box, BoxProps } from '../../Box/Box';
-import { useAccordion } from '../hooks/useAccordion';
 
 import { StyledAccordionButton, StyledAccordionContent } from './styled';
 
-export interface AccordionPanelProps extends HTMLAttributes<HTMLDivElement> {
+export interface AccordionPanelProps {
   children?: React.ReactNode;
   defaultExpanded?: boolean;
   header: string;
@@ -35,9 +33,7 @@ export const AccordionPanel: React.FC<AccordionPanelProps & BoxProps> = memo(
           onClick={onClick}
           variant="subtle"
         >
-          <Text marginBottom="none" marginLeft={iconLeft ? 'xxxLarge' : 'none'}>
-            {header}
-          </Text>
+          {header}
         </StyledAccordionButton>
         <StyledAccordionContent
           aria-labelledby={accordionId}
