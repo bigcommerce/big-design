@@ -13,7 +13,6 @@ interface StyledAccordionContentProps {
   iconLeft: React.ReactNode;
 }
 
-// export const StyledAccordionButton = styled(StyleableButton)<AccordionPanelProps>`
 export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButtonProps>`
   border-top: ${({ theme }) => theme.border.box};
   border-radius: 0;
@@ -58,7 +57,6 @@ export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButt
   }
 `;
 
-// export const StyledAccordionContent = styled(Box)<AccordionPanelProps>`
 export const StyledAccordionContent = styled(Box)<StyledAccordionContentProps>`
   padding: ${({ theme }) => theme.spacing.xLarge}};
   padding-left: ${({ iconLeft, theme }) => (iconLeft ? remCalc(60) : `${theme.spacing.xLarge}`)};
