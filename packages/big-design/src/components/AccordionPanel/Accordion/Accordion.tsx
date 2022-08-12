@@ -1,28 +1,26 @@
 import { ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React, { memo } from 'react';
 
-import { useAccordion, useUniqueId } from '../../../hooks';
-import { Box, BoxProps } from '../../Box/Box';
+import { useUniqueId } from '../../../hooks';
 
 import { StyledAccordionButton, StyledAccordionContent } from './styled';
 
-export interface AccordionPanelProps {
+export interface AccordionProps {
   children?: React.ReactNode;
   defaultExpanded?: boolean;
   header: string;
   iconLeft?: React.ReactNode;
   isExpanded: boolean;
-  onClick?: () => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const AccordionPanel: React.FC<AccordionPanelProps & BoxProps> = memo(
-  ({ children, header, iconLeft, defaultExpanded = false, className, style, ...props }) => {
-    const { isExpanded, onClick } = useAccordion(defaultExpanded);
+export const Accordion: React.FC<AccordionProps> = memo(
+  ({ children, header, iconLeft, isExpanded, onClick }) => {
     const accordionId = useUniqueId('accordion');
     const accordionItemId = useUniqueId('accordion-item');
 
     return (
-      <Box {...props}>
+      <>
         <StyledAccordionButton
           aria-controls={accordionItemId}
           aria-expanded={isExpanded}
@@ -45,7 +43,7 @@ export const AccordionPanel: React.FC<AccordionPanelProps & BoxProps> = memo(
         >
           {children}
         </StyledAccordionContent>
-      </Box>
+      </>
     );
   },
 );

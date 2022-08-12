@@ -6,4 +6,3 @@ export * from './useRafState';
 export * from './useUniqueId';
 export * from './useWindowResizeListener';
 export * from './useWindowSize';
-export * from './useAccordion';
