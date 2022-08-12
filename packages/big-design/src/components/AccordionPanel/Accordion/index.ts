@@ -1,4 +1,4 @@
-import { AccordionPanelProps as _AccordionPanelProps } from './AccordionPanel';
+import { AccordionProps as _AccordionProps } from './Accordion';
 
-export { AccordionPanel } from './AccordionPanel';
-export type AccordionPanelProps = _AccordionPanelProps;
+export { Accordion } from './Accordion';
+export type AccordionProps = _AccordionProps;

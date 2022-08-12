@@ -1,4 +1,5 @@
-import { AccordionGroupProps as _AccordionGroupProps } from './AccordionGroup';
+import { AccordionPanelProps as _AccordionPanelProps } from './AccordionPanel';
 
-export { AccordionGroup } from './AccordionGroup';
-export type AccordionGroupProps = _AccordionGroupProps;
+export { AccordionPanel } from './AccordionPanel';
+export { useAccordionPanel } from './hooks';
+export type AccordionPanelProps = _AccordionPanelProps;
