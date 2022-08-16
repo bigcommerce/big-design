@@ -10,15 +10,13 @@ import { AccordionProps } from './Accordion';
 
 import { AccordionPanel, useAccordionPanel } from '.';
 
-let panels: AccordionProps[];
-
 const TestComponent: React.FC = () => {
-  ({ panels } = useAccordionPanel([
+  const { panels } = useAccordionPanel([
     {
       header: 'Panel Header',
       children: <Text>This is a child component</Text>,
     },
-  ]));
+  ]);
 
   return <AccordionPanel header="Accordion Panel Header" panels={panels} />;
 };
@@ -39,14 +37,14 @@ const TestComponentWithoutHook: React.FC = () => {
 };
 
 const TestComponentWithDefault: React.FC = () => {
-  ({ panels } = useAccordionPanel([
+  const { panels } = useAccordionPanel([
     {
       defaultExpanded: true,
       header: 'Panel Header',
       iconLeft: <ErrorIcon />,
       children: <Text>This is a child component</Text>,
     },
-  ]));
+  ]);
 
   return <AccordionPanel header="Accordion Panel Header" panels={panels} />;
 };
