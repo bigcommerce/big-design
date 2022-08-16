@@ -2,21 +2,19 @@ import React from 'react';
 
 import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
-const accordionGroupProps: Prop[] = [
+const accordionPanelProps: Prop[] = [
   {
     name: 'panels',
     types: (
-      <NextLink href={{ hash: 'accordion-panel-prop-table', query: { props: 'accordion-panel' } }}>
-        AccordionPanelProps[]
+      <NextLink href={{ hash: 'accordion-prop-table', query: { props: 'accordion' } }}>
+        AccordionProps[]
       </NextLink>
     ),
     description: (
       <>
         See{' '}
-        <NextLink
-          href={{ hash: 'accordion-panel-prop-table', query: { props: 'accordion-panel' } }}
-        >
-          Accordion Panel
+        <NextLink href={{ hash: 'accordion-prop-table', query: { props: 'accordion' } }}>
+          Accordion
         </NextLink>{' '}
         for usage.
       </>
@@ -28,24 +26,24 @@ const accordionGroupProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Defines the <Code primary>AccordionGroup</Code> header text
+        Defines the <Code primary>Accordion Panel</Code> header text
       </>
     ),
     required: true,
   },
 ];
 
-export const AccordionGroupPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable propList={accordionGroupProps} title="Accordion Group" {...props} />
+export const AccordionPanelPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable propList={accordionPanelProps} title="Accordion Panel" {...props} />
 );
 
-const accordionPanelProps: Prop[] = [
+const accordionProps: Prop[] = [
   {
     name: 'children',
     types: 'React.ReactNode',
     description: (
       <>
-        Render individual components to expandable region of <Code primary>Accordion Panel</Code>.
+        Render individual components to expandable region of <Code primary>Accordion</Code>.
       </>
     ),
     required: true,
@@ -55,7 +53,7 @@ const accordionPanelProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Defines if <Code primary>Accordion Panel</Code> is expanded by default.
+        Defines if <Code primary>Accordion</Code> is expanded by default.
       </>
     ),
   },
@@ -64,7 +62,7 @@ const accordionPanelProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Defines the <Code primary>Accordion Panel</Code> header text.
+        Defines the <Code primary>Accordion</Code> header text.
       </>
     ),
     required: true,
@@ -75,7 +73,7 @@ const accordionPanelProps: Prop[] = [
     description: (
       <>
         Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the{' '}
-        <Code primary>Accordion Panel</Code> header.
+        <Code primary>Accordion</Code> header.
       </>
     ),
   },
@@ -84,22 +82,23 @@ const accordionPanelProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Defines if <Code primary>Accordion Panel</Code> is expanded.
+        Defines if <Code primary>Accordion</Code> is expanded.
       </>
     ),
     required: true,
   },
   {
     name: 'onClick',
-    types: '() => void',
+    types: 'React.MouseEventHandler<HTMLButtonElement>',
     description: (
       <>
-        Function that will be called when an <Code primary>Accordion Panel</Code> is clicked.
+        Function that will be called when an <Code primary>Accordion</Code> is clicked.
       </>
     ),
+    required: true,
   },
 ];
 
-export const AccordionPanelPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable propList={accordionPanelProps} title="Accordion Panel" {...props} />
+export const AccordionPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable propList={accordionProps} title="Accordion" {...props} />
 );

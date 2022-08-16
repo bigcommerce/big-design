@@ -1,11 +1,8 @@
-import { AccordionGroup, H1, Panel, Text } from '@bigcommerce/big-design';
+import { AccordionPanel, H1, Panel, Text, useAccordionPanel } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
-import {
-  AccordionGroupPropTable,
-  AccordionPanelPropTable,
-} from '../PropTables/AccordionPanelPropTable';
+import { AccordionPanelPropTable, AccordionPropTable } from '../PropTables/AccordionPanelPropTable';
 
 const AccordionPanelPage = () => {
   return (
@@ -35,11 +32,10 @@ const AccordionPanelPage = () => {
         <CodePreview>
           {/* jsx-to-string:start */}
           {function Example() {
-            const panels = [
+            const { panels } = useAccordionPanel([
               {
                 defaultExpanded: true,
                 header: 'Panel Header',
-                isExpanded: false,
                 children: (
                   <Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -50,7 +46,6 @@ const AccordionPanelPage = () => {
               },
               {
                 header: 'Panel Header',
-                isExpanded: false,
                 children: (
                   <Text>
                     Nullam eleifend a lectus non consequat. Fusce non mauris at velit sodales
@@ -60,9 +55,9 @@ const AccordionPanelPage = () => {
                   </Text>
                 ),
               },
-            ];
+            ]);
 
-            return <AccordionGroup header="Accordion Group Panel Header" panels={panels} />;
+            return <AccordionPanel header="Accordion Panel Header" panels={panels} />;
           }}
           {/* jsx-to-string:end */}
         </CodePreview>
@@ -73,14 +68,14 @@ const AccordionPanelPage = () => {
           id="props"
           routes={[
             {
-              id: 'accordion-group',
-              title: 'AccordionGroup',
-              render: () => <AccordionGroupPropTable />,
+              id: 'accordion-panel',
+              title: 'AccordionPanel',
+              render: () => <AccordionPanelPropTable />,
             },
             {
               id: 'accordion',
-              title: 'AccordionPanel',
-              render: () => <AccordionPanelPropTable id="accordion-panel-prop-table" />,
+              title: 'Accordion',
+              render: () => <AccordionPropTable id="accordion-prop-table" />,
             },
           ]}
         />
