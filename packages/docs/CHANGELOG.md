@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.33.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.32.2-alpha.0...@bigcommerce/docs@0.33.0) (2022-08-17)
+
+
+### Features
+
+* **component:** add AccordionPanel component ([#933](https://github.com/bigcommerce/big-design/issues/933)) ([e22ffa2](https://github.com/bigcommerce/big-design/commit/e22ffa2cc8b4321a656dd19c3f3d0785a24eab8d))
+
+
+
+
+
 ## [0.32.2-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.32.1...@bigcommerce/docs@0.32.2-alpha.0) (2022-08-10)
 
 **Note:** Version bump only for package @bigcommerce/docs

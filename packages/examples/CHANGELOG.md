@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](/compare/@bigcommerce/examples@0.19.2-alpha.0...@bigcommerce/examples@0.20.0) (2022-08-17)
+
+**Note:** Version bump only for package @bigcommerce/examples
+
+
+
+
+
 ## [0.19.2-alpha.0](https://github.com/chanceaclark/big-design/compare/@bigcommerce/examples@0.19.1...@bigcommerce/examples@0.19.2-alpha.0) (2022-08-10)
 
 **Note:** Version bump only for package @bigcommerce/examples
