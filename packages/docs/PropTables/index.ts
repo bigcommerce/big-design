@@ -1,3 +1,4 @@
+export * from './AccordionPanelPropTable';
 export * from './BadgePropTable';
 export * from './BoxPropTable';
 export * from './ButtonPropTable';
