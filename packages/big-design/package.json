@@ -39,7 +39,7 @@
     "@types/react-datepicker": "^4.4.2",
     "date-fns": "2.29.2",
     "downshift": "6.1.9",
-    "focus-trap": "^5.1.0",
+    "focus-trap": "^7.0.0",
     "polished": "^4.0.0",
     "react-beautiful-dnd": "^13.1.0",
     "react-datepicker": "^4.8.0",
