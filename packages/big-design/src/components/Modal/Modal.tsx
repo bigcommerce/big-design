@@ -1,5 +1,5 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
-import focusTrap, { FocusTrap } from 'focus-trap';
+import { createFocusTrap, FocusTrap } from 'focus-trap';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -97,7 +97,7 @@ const InternalModal: React.FC<ModalProps> = ({
   // Setup focus-trap
   useEffect(() => {
     if (modalRef && internalTrap.current === null) {
-      internalTrap.current = focusTrap(modalRef, { fallbackFocus: modalRef });
+      internalTrap.current = createFocusTrap(modalRef, { fallbackFocus: modalRef });
       internalTrap.current.activate();
     }
 
