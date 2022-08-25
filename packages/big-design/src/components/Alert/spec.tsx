@@ -1,9 +1,10 @@
 import { theme } from '@bigcommerce/big-design-theme';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { render } from '@test/utils';
 
 import { Alert } from './Alert';
 
@@ -97,14 +98,14 @@ test('renders close button', () => {
   expect(button).toBeDefined();
 });
 
-test('trigger onClose', () => {
+test('trigger onClose', async () => {
   const fn = jest.fn();
 
   render(<Alert messages={[{ text: 'Success' }]} onClose={fn} />);
 
   const button = screen.getByRole('button');
 
-  fireEvent.click(button);
+  await userEvent.click(button);
 
   expect(fn).toHaveBeenCalled();
 });

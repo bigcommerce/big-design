@@ -1,5 +1,6 @@
 import { AddIcon } from '@bigcommerce/big-design-icons';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import { ButtonGroup } from './ButtonGroup';
@@ -57,7 +58,7 @@ test('renders dropdown if items do not fit', async () => {
 
   expect(screen.getByText('button 4')).not.toBeVisible();
 
-  fireEvent.click(screen.getByTitle('more'));
+  await userEvent.click(screen.getByRole('button', { name: 'more' }));
 
   expect(await screen.findByRole('option', { name: /button 4/i })).toBeVisible();
 });
@@ -75,7 +76,7 @@ test('renders dropdown if some of items have destructive type', async () => {
 
   expect(screen.getByText('button 1')).not.toBeVisible();
 
-  fireEvent.click(screen.getByTitle('more'));
+  await userEvent.click(screen.getByRole('button', { name: 'more' }));
 
   expect(await screen.findByRole('option', { name: /button 1/i })).toBeVisible();
 });
@@ -92,9 +93,9 @@ test('renders icon only with dropdown item', async () => {
     />,
   );
 
-  expect(screen.queryByTitle('button 3 icon')).toBeNull();
+  expect(screen.queryByTitle('button 3 icon')).not.toBeInTheDocument();
 
-  fireEvent.click(screen.getByTitle('more'));
+  await userEvent.click(screen.getByRole('button', { name: 'more' }));
 
   expect(await screen.findByTitle('button 4 icon')).toBeInTheDocument();
 });
@@ -122,10 +123,8 @@ test('dropdown item on click callback receives synthetic event', async () => {
     hidden: true,
   });
 
-  await act(async () => {
-    fireEvent.click(screen.getByTitle('more'));
-    fireEvent.click(await screen.findByRole('option', { name: /button 4/i }));
-  });
+  await userEvent.click(screen.getByRole('button', { name: 'more' }));
+  await userEvent.click(await screen.findByRole('option', { name: /button 4/i }));
 
   expect(mockOnClick).toHaveBeenCalledWith(expect.objectContaining({ target: button }));
 });
