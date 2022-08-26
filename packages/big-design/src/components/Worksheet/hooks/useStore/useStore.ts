@@ -1,12 +1,11 @@
-import create, { State } from 'zustand';
-import createContext from 'zustand/context';
+import { useContext } from 'react';
+import { createStore, useStore } from 'zustand';
 
 import { Cell, DisabledRows, ExpandableRows, InternalWorksheetColumn } from '../../types';
 import { deleteCells, getHiddenRows, mergeCells } from '../../utils';
+import { WorksheetContext } from '../../Worksheet';
 
-export const { Provider, useStore } = createContext<BaseState<any>>();
-
-interface BaseState<Item> extends State {
+export interface BaseState<Item> {
   columns: Array<InternalWorksheetColumn<Item>>;
   editedCells: Array<Cell<Item>>;
   editingCell: Cell<Item> | null;
@@ -34,8 +33,8 @@ interface BaseState<Item> extends State {
   setTableRef: (ref: HTMLTableElement | null) => void;
 }
 
-export const createStore = () =>
-  create<BaseState<any>>((set) => ({
+export const createWorkSheetStore = <Item>() =>
+  createStore<BaseState<Item>>((set) => ({
     columns: [],
     editedCells: [],
     editingCell: null,
@@ -66,3 +65,13 @@ export const createStore = () =>
     setSelectedRows: (rowIndexes) => set((state) => ({ ...state, selectedRows: rowIndexes })),
     setTableRef: (ref) => set((state) => ({ ...state, tableRef: ref })),
   }));
+
+export const useWorksheetStore = () => {
+  const store = useContext(WorksheetContext);
+
+  if (!store) {
+    throw new Error('store is null');
+  }
+
+  return { store, useStore };
+};

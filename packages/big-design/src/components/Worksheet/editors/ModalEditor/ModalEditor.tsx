@@ -3,7 +3,7 @@ import React, { createRef, useCallback, useEffect, useMemo } from 'react';
 import { typedMemo } from '../../../../utils';
 import { Flex } from '../../../Flex';
 import { Small } from '../../../Typography';
-import { useStore } from '../../hooks';
+import { useWorksheetStore } from '../../hooks';
 import { Cell, WorksheetItem, WorksheetModalColumn } from '../../types';
 
 import { StyledButton, StyledFlexItem } from './styled';
@@ -19,8 +19,9 @@ const InternalModalEditor = <T extends WorksheetItem>({
   formatting,
   isEditing,
 }: ModalEditorProps<T>) => {
-  const setOpenModal = useStore((state) => state.setOpenModal);
-  const setEditingCell = useStore((state) => state.setEditingCell);
+  const { store, useStore } = useWorksheetStore();
+  const setOpenModal = useStore(store, (state) => state.setOpenModal);
+  const setEditingCell = useStore(store, (state) => state.setEditingCell);
   const { hash, value } = cell;
 
   const buttonRef = createRef<HTMLButtonElement>();

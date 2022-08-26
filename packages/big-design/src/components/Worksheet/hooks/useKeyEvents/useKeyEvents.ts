@@ -1,14 +1,23 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { useNavigation } from '../useNavigation';
-import { useStore } from '../useStore';
+import { useWorksheetStore } from '../useStore';
 
 export const useKeyEvents = () => {
+  const { store, useStore } = useWorksheetStore();
   // Get the first cell of the selected values
-  const selectedCell = useStore(useMemo(() => (state) => state.selectedCells[0], []));
+  const selectedCell = useStore(
+    store,
+    useMemo(() => (state) => state.selectedCells[0], []),
+  );
 
-  const isEditing = useStore(useMemo(() => (state) => state.editingCell !== null, []));
-  const setEditingCell = useStore((state) => state.setEditingCell);
+  const isEditing = useStore(
+    store,
+
+    useMemo(() => (state) => state.editingCell !== null, []),
+  );
+
+  const setEditingCell = useStore(store, (state) => state.setEditingCell);
 
   const { navigate } = useNavigation(selectedCell);
 

@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { Cell, WorksheetItem } from '../../types';
-import { useStore } from '../useStore';
+import { useWorksheetStore } from '../useStore';
 import { useTableFocus } from '../useTableFocus';
 import { useUpdateItems } from '../useUpdateItems';
 
@@ -11,11 +11,13 @@ export type EditableCellOnKeyDown = (
 ) => void;
 
 export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
-  const setEditingCell = useStore((state) => state.setEditingCell);
+  const { store, useStore } = useWorksheetStore();
+  const setEditingCell = useStore(store, (state) => state.setEditingCell);
   const { updateItems } = useUpdateItems();
   const { focusTable } = useTableFocus();
 
   const isEditing = useStore(
+    store,
     useMemo(
       () =>
         ({ editingCell }) =>

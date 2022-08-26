@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { useCallback, useMemo } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Cell } from '../Cell';
-import { useStore } from '../hooks';
+import { useWorksheetStore } from '../hooks';
 import { RowStatus } from '../RowStatus';
 import {
   InternalWorksheetColumn,
@@ -21,14 +20,24 @@ interface RowProps<Item> {
 }
 
 const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>) => {
-  const row = useStore(useMemo(() => (state) => state.rows[rowIndex], [rowIndex]));
-  const expandableRows = useStore(useMemo(() => (state) => state.expandableRows, []));
+  const { store, useStore } = useWorksheetStore();
+  const row: T = useStore(
+    store,
+    useMemo(() => (state) => state.rows[rowIndex], [rowIndex]),
+  );
+  const expandableRows = useStore(
+    store,
+    useMemo(() => (state) => state.expandableRows, []),
+  );
 
   const isExpanded = useStore(
+    store,
     useMemo(() => (state) => !state.hiddenRows.includes(row.id), [row.id]),
   );
+
   const isDisabled = useStore(
-    useMemo(() => (state) => state.disabledRows.includes(row.id), [row.id]),
+    store,
+    useMemo(() => (state) => state.disabledRows.includes(row.id), [row]),
   );
 
   const parentId = useMemo(() => {
@@ -38,7 +47,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
 
     const rowIds = Object.keys(expandableRows);
 
-    return rowIds.find((rowId) => expandableRows[rowId].find((childId) => childId === row.id));
+    return rowIds.find((rowId) => expandableRows[rowId].find((childId: any) => childId === row.id));
   }, [expandableRows, row.id]);
 
   const isChild = useMemo(() => parentId !== undefined, [parentId]);

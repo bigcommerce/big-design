@@ -2,7 +2,7 @@ import { ChevronRightIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons'
 import React, { memo, useEffect } from 'react';
 
 import { Flex } from '../../../Flex';
-import { useExpandable, useStore } from '../../hooks';
+import { useExpandable, useWorksheetStore } from '../../hooks';
 
 import { StyledExpandButton } from './styled';
 
@@ -13,7 +13,8 @@ interface ToggleEditorProps {
 
 const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
   const { onToggle, isExpandable, hasExpanded } = useExpandable(rowId);
-  const setEditingCell = useStore((state) => state.setEditingCell);
+  const { store, useStore } = useWorksheetStore();
+  const setEditingCell = useStore(store, (state) => state.setEditingCell);
 
   useEffect(() => {
     if (toggle && isExpandable) {
