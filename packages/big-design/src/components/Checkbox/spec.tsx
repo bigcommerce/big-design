@@ -1,7 +1,8 @@
+import userEvent from '@testing-library/user-event';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render, screen } from '@test/utils';
+import { render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
 
@@ -131,20 +132,21 @@ test('triggers onChange when clicking the checkbox', async () => {
 
   const checkbox = await screen.findByTestId<HTMLInputElement>('checkbox');
 
-  fireEvent.click(checkbox);
+  await userEvent.click(checkbox);
 
   expect(onChange).toHaveBeenCalled();
 });
 
-test('triggers onChange when clicking styled and text label', () => {
+test('triggers onChange when clicking styled and text label', async () => {
   const onChange = jest.fn();
   const { container } = render(
     <Checkbox checked={true} data-testid="checkbox" label="Checked" onChange={onChange} />,
   );
 
-  const labels = container.querySelectorAll('label');
+  const [labelWithText, labelWithoutText] = Array.from(container.querySelectorAll('label'));
 
-  labels.forEach((label) => fireEvent.click(label));
+  await userEvent.click(labelWithText);
+  await userEvent.click(labelWithoutText);
 
   expect(onChange).toHaveBeenCalledTimes(2);
 });
