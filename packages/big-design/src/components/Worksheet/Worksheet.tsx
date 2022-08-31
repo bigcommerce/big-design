@@ -4,7 +4,7 @@ import { StoreApi } from 'zustand';
 import { typedMemo } from '../../utils';
 
 import { UpdateItemsProvider } from './context';
-import { BaseState, createWorkSheetStore, useKeyEvents, useWorksheetStore } from './hooks';
+import { BaseState, createWorksheetStore, useKeyEvents, useWorksheetStore } from './hooks';
 import { WorksheetModal } from './Modal/Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
@@ -132,7 +132,7 @@ const InternalWorksheet = typedMemo(
 export const WorksheetContext = createContext<StoreApi<BaseState<any>> | null>(null);
 
 export const Worksheet = typedMemo(<T extends WorksheetItem>(props: WorksheetProps<T>) => {
-  const store = createWorkSheetStore<T>();
+  const store = createWorksheetStore<T>();
 
   return (
     <WorksheetContext.Provider value={store}>

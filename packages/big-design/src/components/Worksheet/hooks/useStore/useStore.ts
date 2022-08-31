@@ -33,7 +33,7 @@ export interface BaseState<Item> {
   setTableRef: (ref: HTMLTableElement | null) => void;
 }
 
-export const createWorkSheetStore = <Item>() =>
+export const createWorksheetStore = <Item>() =>
   createStore<BaseState<Item>>((set) => ({
     columns: [],
     editedCells: [],
@@ -70,7 +70,7 @@ export const useWorksheetStore = () => {
   const store = useContext(WorksheetContext);
 
   if (!store) {
-    throw new Error(' worksheet store value is null');
+    throw new Error(' Worksheet store value is null');
   }
 
   return { store, useStore };
