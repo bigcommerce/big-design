@@ -14,6 +14,7 @@ interface ToggleEditorProps {
 const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
   const { onToggle, isExpandable, hasExpanded } = useExpandable(rowId);
   const { store, useStore } = useWorksheetStore();
+
   const setEditingCell = useStore(store, (state) => state.setEditingCell);
 
   useEffect(() => {

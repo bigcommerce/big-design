@@ -18,6 +18,7 @@ export const UpdateItemsContext = createContext<UpdateItemsContextType<any> | nu
 export const UpdateItemsProvider = typedMemo(
   <T extends WorksheetItem>({ children, items }: UpdateItemsProviderProps<T>) => {
     const { store, useStore } = useWorksheetStore();
+
     const setRows = useStore(store, (state) => state.setRows);
     const addEditedCells = useStore(store, (state) => state.addEditedCells);
 

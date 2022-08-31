@@ -6,7 +6,6 @@ export const useExpandable = (rowId: string | number) => {
   const { store, useStore } = useWorksheetStore();
 
   const expandableRows = useStore(store, (state) => state.expandableRows);
-
   const hiddenRows = useStore(store, (state) => state.hiddenRows);
   const setHiddenRows = useStore(store, (state) => state.setHiddenRows);
 

@@ -5,18 +5,17 @@ import { useWorksheetStore } from '../useStore';
 
 export const useKeyEvents = () => {
   const { store, useStore } = useWorksheetStore();
+
   // Get the first cell of the selected values
   const selectedCell = useStore(
     store,
     useMemo(() => (state) => state.selectedCells[0], []),
   );
-
   const isEditing = useStore(
     store,
 
     useMemo(() => (state) => state.editingCell !== null, []),
   );
-
   const setEditingCell = useStore(store, (state) => state.setEditingCell);
 
   const { navigate } = useNavigation(selectedCell);

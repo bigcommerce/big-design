@@ -18,7 +18,6 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
     store,
     useMemo(() => (state) => state.openedModal === hash, [hash]),
   );
-
   const selectedCell = useStore(
     store,
     useMemo(() => (state) => state.selectedCells[0], []),

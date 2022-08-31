@@ -21,6 +21,7 @@ interface RowProps<Item> {
 
 const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>) => {
   const { store, useStore } = useWorksheetStore();
+
   const row: T = useStore(
     store,
     useMemo(() => (state) => state.rows[rowIndex], [rowIndex]),
@@ -34,10 +35,9 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
     store,
     useMemo(() => (state) => !state.hiddenRows.includes(row.id), [row.id]),
   );
-
   const isDisabled = useStore(
     store,
-    useMemo(() => (state) => state.disabledRows.includes(row.id), [row]),
+    useMemo(() => (state) => state.disabledRows.includes(row.id), [row.id]),
   );
 
   const parentId = useMemo(() => {
@@ -47,7 +47,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
 
     const rowIds = Object.keys(expandableRows);
 
-    return rowIds.find((rowId) => expandableRows[rowId].find((childId: any) => childId === row.id));
+    return rowIds.find((rowId) => expandableRows[rowId].find((childId) => childId === row.id));
   }, [expandableRows, row.id]);
 
   const isChild = useMemo(() => parentId !== undefined, [parentId]);

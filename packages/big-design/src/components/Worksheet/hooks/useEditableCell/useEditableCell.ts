@@ -12,6 +12,7 @@ export type EditableCellOnKeyDown = (
 
 export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
   const { store, useStore } = useWorksheetStore();
+
   const setEditingCell = useStore(store, (state) => state.setEditingCell);
   const { updateItems } = useUpdateItems();
   const { focusTable } = useTableFocus();

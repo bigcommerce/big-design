@@ -12,6 +12,7 @@ type Navigate = (offset: Coordinate) => void;
 
 export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) => {
   const { store, useStore } = useWorksheetStore();
+
   const rows: T[] = useStore(
     store,
     useMemo(() => (state) => state.rows, []),
@@ -90,7 +91,6 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
 
         const hash = columns[newPosition.columnIndex].hash;
         const type = columns[newPosition.columnIndex].type || 'text';
-
         const value = rows[newPosition.rowIndex][hash];
         const disabled = columns[newPosition.columnIndex].disabled || false;
 

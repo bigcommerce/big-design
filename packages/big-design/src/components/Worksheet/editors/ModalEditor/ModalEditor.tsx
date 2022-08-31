@@ -20,6 +20,7 @@ const InternalModalEditor = <T extends WorksheetItem>({
   isEditing,
 }: ModalEditorProps<T>) => {
   const { store, useStore } = useWorksheetStore();
+
   const setOpenModal = useStore(store, (state) => state.setOpenModal);
   const setEditingCell = useStore(store, (state) => state.setEditingCell);
   const { hash, value } = cell;
