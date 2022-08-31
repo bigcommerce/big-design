@@ -70,7 +70,7 @@ export const useWorksheetStore = () => {
   const store = useContext(WorksheetContext);
 
   if (!store) {
-    throw new Error(' Worksheet store value is null');
+    throw new Error('Worksheet store value is null');
   }
 
   return { store, useStore };
