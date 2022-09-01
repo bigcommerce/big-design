@@ -2,10 +2,11 @@ import React, { forwardRef, HTMLAttributes, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { excludePaddingProps } from '../../mixins/paddings/paddings';
+import { Box } from '../Box';
 import { Button, ButtonProps } from '../Button';
 import { Flex } from '../Flex';
 
-import { StyledH2, StyledPanel } from './styled';
+import { StyledH2 } from './styled';
 
 interface PrivateProps {
   forwardedRef: Ref<HTMLDivElement>;
@@ -44,7 +45,8 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
   };
 
   return (
-    <StyledPanel
+    <Box
+      marginBottom="medium"
       {...rest}
       backgroundColor="white"
       borderRadius="none"
@@ -54,7 +56,7 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
     >
       {renderHeader()}
       {children}
-    </StyledPanel>
+    </Box>
   );
 });
 
