@@ -67,7 +67,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
           rowIndex={rowIndex}
           type={column.type ?? 'text'}
           validation={column.validation}
-          value={row[column.hash]}
+          value={row[column.hash] ?? ''}
         />
       ))}
     </StyledTableRow>

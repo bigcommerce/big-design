@@ -36,7 +36,7 @@ const InternalModalEditor = <T extends WorksheetItem>({
   }, [cell, setEditingCell]);
 
   const renderedValue = useMemo(
-    () => (formatting ? formatting(value) : `${value}`),
+    () => (typeof formatting === 'function' ? formatting(value) : `${value}`),
     [formatting, value],
   );
 

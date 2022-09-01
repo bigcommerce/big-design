@@ -380,10 +380,8 @@ exports[`renders worksheet 1`] = `
         <p
           class="styled__StyledSmall-sc-tqnj75-6 dCgytK"
           color="secondary70"
-          title="Text"
-        >
-          Text
-        </p>
+          title=""
+        />
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 xtpxS"
@@ -584,16 +582,15 @@ exports[`renders worksheet 1`] = `
             class="styled__CheckboxContainer-sc-s1u0st-1 egATGS"
           >
             <input
-              aria-checked="true"
+              aria-checked=""
               aria-labelledby="bd-checkbox_label-14"
-              checked=""
               class="styled__HiddenCheckbox-sc-s1u0st-2 bXnoDS"
               id="bd-checkbox-13"
               type="checkbox"
             />
             <label
               aria-hidden="true"
-              class="styled__StyledCheckbox-sc-s1u0st-3 kppkKN"
+              class="styled__StyledCheckbox-sc-s1u0st-3 Brufm"
               for="bd-checkbox-13"
             >
               <svg
@@ -625,7 +622,7 @@ exports[`renders worksheet 1`] = `
                 hidden=""
                 id="bd-checkbox_label-14"
               >
-                Checked
+                Unchecked
               </label>
             </div>
           </div>
@@ -638,10 +635,8 @@ exports[`renders worksheet 1`] = `
         <p
           class="styled__StyledSmall-sc-tqnj75-6 dCgytK"
           color="secondary70"
-          title="Text"
-        >
-          Text
-        </p>
+          title=""
+        />
       </td>
       <td
         class="styled__StyledCell-sc-1bt06ph-0 xtpxS"
@@ -656,10 +651,8 @@ exports[`renders worksheet 1`] = `
             <p
               class="styled__StyledSmall-sc-tqnj75-6 dCgytK"
               color="secondary70"
-              title="5"
-            >
-              5
-            </p>
+              title=""
+            />
           </div>
           <button
             class="styled__StyledButton-sc-3yq204-0 gOcBkn styled__StyledButton-sc-zoq9bz-0 lnZrnv"
@@ -673,16 +666,14 @@ exports[`renders worksheet 1`] = `
         </div>
       </td>
       <td
-        class="styled__StyledCell-sc-1bt06ph-0 gdKilx"
+        class="styled__StyledCell-sc-1bt06ph-0 jFgUHj"
         type="number"
       >
         <p
           class="styled__StyledSmall-sc-tqnj75-6 dCgytK"
           color="secondary70"
-          title="$50.00"
-        >
-          $50.00
-        </p>
+          title=""
+        />
       </td>
     </tr>
     <tr

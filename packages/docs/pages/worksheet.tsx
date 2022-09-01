@@ -172,7 +172,7 @@ const WorksheetPage = () => {
                       },
                     ];
 
-                    const items: Product[] = [
+                    const items: Array<Partial<Product>> = [
                       {
                         id: 1,
                         productName: 'Product 1',
@@ -194,11 +194,6 @@ const WorksheetPage = () => {
                       {
                         id: 3,
                         productName: 'Product 3',
-                        isVisible: false,
-                        otherField: 'Text',
-                        otherField2: 'option-2',
-                        otherField3: 8,
-                        numberField: 50,
                       },
                       {
                         id: 4,

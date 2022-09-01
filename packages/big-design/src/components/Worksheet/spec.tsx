@@ -139,7 +139,7 @@ const disabledColumns: Array<WorksheetColumn<Product>> = [
   },
 ];
 
-const items: Product[] = [
+const items: Array<Partial<Product>> = [
   {
     id: 1,
     productName: 'Shoes Name Three',
@@ -160,7 +160,6 @@ const items: Product[] = [
     id: 3,
     productName: 'Shoes Name One',
     visibleOnStorefront: false,
-    otherField: 'Text',
     otherField2: 3,
     numberField: 50,
   },
@@ -174,11 +173,6 @@ const items: Product[] = [
   },
   {
     id: 5,
-    productName: '',
-    visibleOnStorefront: true,
-    otherField: 'Text',
-    otherField2: 5,
-    numberField: 50,
   },
   {
     id: 6,
@@ -303,6 +297,15 @@ describe('edition', () => {
     cell = getByText('Shoes Name One Edit');
 
     expect(cell).toBeDefined();
+    expect(handleChange).toHaveBeenCalledWith([
+      {
+        id: 3,
+        numberField: 50,
+        otherField2: 3,
+        productName: 'Shoes Name One Edit',
+        visibleOnStorefront: false,
+      },
+    ]);
   });
 
   test('regains focus when it stops editing', () => {
@@ -325,7 +328,6 @@ describe('edition', () => {
       id: 3,
       productName: 'Shoes Name One',
       visibleOnStorefront: false,
-      otherField: 'Text',
       otherField2: 3,
       numberField: 50,
     });
@@ -358,13 +360,8 @@ describe('validation', () => {
       {
         item: {
           id: 5,
-          productName: '',
-          visibleOnStorefront: true,
-          otherField: 'Text',
-          otherField2: 5,
-          numberField: 50,
         },
-        errors: ['productName'],
+        errors: ['productName', 'numberField'],
       },
       {
         item: {
@@ -393,13 +390,8 @@ describe('validation', () => {
       {
         item: {
           id: 5,
-          productName: '',
-          visibleOnStorefront: true,
-          otherField: 'Text',
-          otherField2: 5,
-          numberField: 50,
         },
-        errors: ['productName'],
+        errors: ['productName', 'numberField'],
       },
       {
         item: {
@@ -428,13 +420,8 @@ describe('validation', () => {
       {
         item: {
           id: 5,
-          productName: '',
-          visibleOnStorefront: true,
-          otherField: 'Text',
-          otherField2: 5,
-          numberField: 50,
         },
-        errors: ['productName'],
+        errors: ['productName', 'numberField'],
       },
     ]);
   });
@@ -446,7 +433,7 @@ describe('formatting', () => {
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
-    expect(getAllByText('$50.00')).toHaveLength(8);
+    expect(getAllByText('$50.00')).toHaveLength(7);
   });
 });
 
@@ -630,7 +617,6 @@ describe('TextEditor', () => {
         id: 3,
         productName: 'Shoes Name One Edit',
         visibleOnStorefront: false,
-        otherField: 'Text',
         otherField2: 3,
         numberField: 50,
       },
@@ -760,11 +746,11 @@ describe('CheckboxEditor', () => {
 
     let cells = getAllByLabelText('Checked');
 
-    expect(cells).toHaveLength(7);
+    expect(cells).toHaveLength(6);
 
     cells = getAllByLabelText('Unchecked');
 
-    expect(cells).toHaveLength(2);
+    expect(cells).toHaveLength(3);
   });
 
   test('CheckboxEditor is editable', () => {
