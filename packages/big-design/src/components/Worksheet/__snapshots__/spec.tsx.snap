@@ -582,7 +582,6 @@ exports[`renders worksheet 1`] = `
             class="styled__CheckboxContainer-sc-s1u0st-1 egATGS"
           >
             <input
-              aria-checked=""
               aria-labelledby="bd-checkbox_label-14"
               class="styled__HiddenCheckbox-sc-s1u0st-2 bXnoDS"
               id="bd-checkbox-13"
