@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { useNavigation } from '../useNavigation';
-import { useWorksheetStore } from '../useStore';
+import { useWorksheetStore } from '../useWorksheetStore';
 
 export const useKeyEvents = () => {
   const { store, useStore } = useWorksheetStore();

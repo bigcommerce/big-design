@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
 import { Cell, InternalWorksheetColumn, WorksheetItem } from '../../types';
-import { useWorksheetStore } from '../useStore';
+import { useWorksheetStore } from '../useWorksheetStore';
 
 interface Coordinate {
   columnIndex: number;

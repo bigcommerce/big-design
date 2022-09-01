@@ -1,9 +1,9 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { Cell, WorksheetItem } from '../../types';
-import { useWorksheetStore } from '../useStore';
 import { useTableFocus } from '../useTableFocus';
 import { useUpdateItems } from '../useUpdateItems';
+import { useWorksheetStore } from '../useWorksheetStore';
 
 export type EditableCellOnKeyDown = (
   event: React.KeyboardEvent<HTMLInputElement>,

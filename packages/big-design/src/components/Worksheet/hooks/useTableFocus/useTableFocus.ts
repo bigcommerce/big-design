@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 
-import { useWorksheetStore } from '../useStore';
+import { useWorksheetStore } from '../useWorksheetStore';
 
 export const useTableFocus = () => {
   const { store, useStore } = useWorksheetStore();

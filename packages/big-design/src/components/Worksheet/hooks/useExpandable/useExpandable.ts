@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 
-import { useWorksheetStore } from '../useStore';
+import { useWorksheetStore } from '../useWorksheetStore';
 
 export const useExpandable = (rowId: string | number) => {
   const { store, useStore } = useWorksheetStore();
