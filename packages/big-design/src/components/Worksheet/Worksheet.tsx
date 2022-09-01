@@ -1,9 +1,10 @@
-import React, { createRef, useEffect, useMemo, useRef } from 'react';
+import React, { createContext, createRef, useEffect, useMemo, useRef } from 'react';
+import { StoreApi } from 'zustand';
 
 import { typedMemo } from '../../utils';
 
 import { UpdateItemsProvider } from './context';
-import { createStore, Provider, useKeyEvents, useStore } from './hooks';
+import { BaseState, createWorksheetStore, useKeyEvents, useWorksheetStore } from './hooks';
 import { WorksheetModal } from './Modal/Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
@@ -27,16 +28,26 @@ const InternalWorksheet = typedMemo(
   }: WorksheetProps<T>): React.ReactElement<WorksheetProps<T>> => {
     const tableRef = createRef<HTMLTableElement>();
     const shouldBeTriggeredOnChange = useRef(false);
+    const { store, useStore } = useWorksheetStore();
 
-    const setRows = useStore((state) => state.setRows);
-    const setColumns = useStore((state) => state.setColumns);
-    const setExpandableRows = useStore((state) => state.setExpandableRows);
-    const setDisabledRows = useStore((state) => state.setDisabledRows);
-    const setTableRef = useStore((state) => state.setTableRef);
+    const setRows = useStore(store, (state) => state.setRows);
+    const setColumns = useStore(store, (state) => state.setColumns);
+    const setExpandableRows = useStore(store, (state) => state.setExpandableRows);
+    const setDisabledRows = useStore(store, (state) => state.setDisabledRows);
+    const setTableRef = useStore(store, (state) => state.setTableRef);
 
-    const rows = useStore(useMemo(() => (state) => state.rows, []));
-    const editedCells = useStore(useMemo(() => (state) => state.editedCells, []));
-    const invalidCells = useStore(useMemo(() => (state) => state.invalidCells, []));
+    const rows = useStore(
+      store,
+      useMemo(() => (state) => state.rows, []),
+    );
+    const editedCells = useStore(
+      store,
+      useMemo(() => (state) => state.editedCells, []),
+    );
+    const invalidCells = useStore(
+      store,
+      useMemo(() => (state) => state.invalidCells, []),
+    );
 
     const { handleKeyDown } = useKeyEvents();
 
@@ -118,8 +129,14 @@ const InternalWorksheet = typedMemo(
   },
 );
 
-export const Worksheet = typedMemo(<T extends WorksheetItem>(props: WorksheetProps<T>) => (
-  <Provider createStore={createStore}>
-    <InternalWorksheet {...props} />
-  </Provider>
-));
+export const WorksheetContext = createContext<StoreApi<BaseState<any>> | null>(null);
+
+export const Worksheet = typedMemo(<T extends WorksheetItem>(props: WorksheetProps<T>) => {
+  const store = createWorksheetStore<T>();
+
+  return (
+    <WorksheetContext.Provider value={store}>
+      <InternalWorksheet {...props} />
+    </WorksheetContext.Provider>
+  );
+});

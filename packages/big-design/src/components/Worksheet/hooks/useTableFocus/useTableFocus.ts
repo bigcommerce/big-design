@@ -1,9 +1,14 @@
 import { useCallback, useMemo } from 'react';
 
-import { useStore } from '../useStore';
+import { useWorksheetStore } from '../useWorksheetStore';
 
 export const useTableFocus = () => {
-  const tableRef = useStore(useMemo(() => (state) => state.tableRef, []));
+  const { store, useStore } = useWorksheetStore();
+
+  const tableRef = useStore(
+    store,
+    useMemo(() => (state) => state.tableRef, []),
+  );
 
   const focusTable = useCallback(() => {
     if (tableRef) {

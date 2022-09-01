@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useCallback, useMemo } from 'react';
 
 import { typedMemo } from '../../../../utils';
-import { useStore } from '../../hooks';
+import { useWorksheetStore } from '../../hooks';
 import { Cell, WorksheetItem } from '../../types';
 
 export interface UpdateItemsContextType<T> {
@@ -17,8 +17,10 @@ export const UpdateItemsContext = createContext<UpdateItemsContextType<any> | nu
 
 export const UpdateItemsProvider = typedMemo(
   <T extends WorksheetItem>({ children, items }: UpdateItemsProviderProps<T>) => {
-    const setRows = useStore((state) => state.setRows);
-    const addEditedCells = useStore((state) => state.addEditedCells);
+    const { store, useStore } = useWorksheetStore();
+
+    const setRows = useStore(store, (state) => state.setRows);
+    const addEditedCells = useStore(store, (state) => state.addEditedCells);
 
     const updateItems: UpdateItemsContextType<T>['updateItems'] = useCallback(
       (cells, newValues) => {

@@ -35,7 +35,7 @@ const InternalCheckboxEditor = <T extends WorksheetItem>({
   return (
     <CheckboxWrapper>
       <Checkbox
-        checked={cell.value}
+        checked={cell.value === '' ? undefined : cell.value}
         disabled={cell.disabled}
         hiddenLabel={true}
         label={cell.value ? 'Checked' : 'Unchecked'}

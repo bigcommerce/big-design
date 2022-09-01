@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo } from 'react';
 import { typedMemo } from '../../../utils';
 import { Small } from '../../Typography';
 import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor, ToggleEditor } from '../editors';
-import { useEditableCell, useStore } from '../hooks';
+import { useEditableCell, useWorksheetStore } from '../hooks';
 import {
   InternalWorksheetColumn,
   Cell as TCell,
@@ -40,12 +40,15 @@ const InternalCell = <T extends WorksheetItem>({
 
   const { handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing } =
     useEditableCell<T>(cell);
-  const setSelectedRows = useStore((state) => state.setSelectedRows);
-  const setSelectedCells = useStore((state) => state.setSelectedCells);
-  const addInvalidCells = useStore((state) => state.addInvalidCells);
-  const removeInvalidCells = useStore((state) => state.removeInvalidCells);
+  const { store, useStore } = useWorksheetStore();
+
+  const setSelectedRows = useStore(store, (state) => state.setSelectedRows);
+  const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
+  const addInvalidCells = useStore(store, (state) => state.addInvalidCells);
+  const removeInvalidCells = useStore(store, (state) => state.removeInvalidCells);
 
   const isSelected = useStore(
+    store,
     useMemo(
       () => (state) =>
         state.selectedCells.some(
@@ -58,6 +61,7 @@ const InternalCell = <T extends WorksheetItem>({
   );
 
   const isEdited = useStore(
+    store,
     useMemo(
       () => (state) =>
         state.editedCells.some(
@@ -69,6 +73,7 @@ const InternalCell = <T extends WorksheetItem>({
   );
 
   const invalidCell = useStore(
+    store,
     useMemo(
       () => (state) =>
         state.invalidCells.find(

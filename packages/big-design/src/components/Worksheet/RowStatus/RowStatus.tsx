@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from 'react';
 
-import { useStore } from '../hooks';
+import { useWorksheetStore } from '../hooks';
 
 import { Status } from './styled';
 
@@ -9,11 +9,15 @@ interface RowStatusProps {
 }
 
 export const RowStatus: React.FC<RowStatusProps> = memo(({ rowIndex }) => {
-  const isSelected = useStore(
+  const { store, useStore } = useWorksheetStore();
+
+  const isSelected: boolean = useStore(
+    store,
     useMemo(() => (state) => state.selectedRows.includes(rowIndex), [rowIndex]),
   );
 
   const isInvalid = useStore(
+    store,
     useMemo(
       () => (state) => state.invalidCells.some((invalidCell) => invalidCell.rowIndex === rowIndex),
       [rowIndex],

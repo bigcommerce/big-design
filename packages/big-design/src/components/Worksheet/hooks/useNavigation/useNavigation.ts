@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
-import { Cell, WorksheetItem } from '../../types';
-import { useStore } from '../useStore';
+import { Cell, InternalWorksheetColumn, WorksheetItem } from '../../types';
+import { useWorksheetStore } from '../useWorksheetStore';
 
 interface Coordinate {
   columnIndex: number;
@@ -11,12 +11,23 @@ interface Coordinate {
 type Navigate = (offset: Coordinate) => void;
 
 export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) => {
-  const rows = useStore(useMemo(() => (state) => state.rows, []));
-  const columns = useStore(useMemo(() => (state) => state.columns, []));
-  const hiddenRows = useStore(useMemo(() => (state) => state.hiddenRows, []));
+  const { store, useStore } = useWorksheetStore();
 
-  const setSelectedCells = useStore((state) => state.setSelectedCells);
-  const setSelectedRows = useStore((state) => state.setSelectedRows);
+  const rows: T[] = useStore(
+    store,
+    useMemo(() => (state) => state.rows, []),
+  );
+  const columns: Array<InternalWorksheetColumn<T>> = useStore(
+    store,
+    useMemo(() => (state) => state.columns, []),
+  );
+  const hiddenRows = useStore(
+    store,
+    useMemo(() => (state) => state.hiddenRows, []),
+  );
+
+  const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
+  const setSelectedRows = useStore(store, (state) => state.setSelectedRows);
 
   const isValidPosition = useCallback(
     (position: Coordinate) => {
@@ -80,7 +91,6 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
 
         const hash = columns[newPosition.columnIndex].hash;
         const type = columns[newPosition.columnIndex].type || 'text';
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         const value = rows[newPosition.rowIndex][hash];
         const disabled = columns[newPosition.columnIndex].disabled || false;
 

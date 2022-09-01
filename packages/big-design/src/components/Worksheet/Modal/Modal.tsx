@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Modal } from '../../Modal';
-import { useStore, useTableFocus, useUpdateItems } from '../hooks';
+import { useTableFocus, useUpdateItems, useWorksheetStore } from '../hooks';
 import { WorksheetItem, WorksheetModalColumn } from '../types';
 
 interface WorksheetModalProps<Item> {
@@ -12,12 +12,19 @@ interface WorksheetModalProps<Item> {
 const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetModalProps<T>) => {
   const { config, hash } = column;
   const { header, render, saveActionText = 'Save', cancelActionText = 'Cancel' } = config;
+  const { store, useStore } = useWorksheetStore();
 
-  const isModalOpen = useStore(useMemo(() => (state) => state.openedModal === hash, [hash]));
-  const selectedCell = useStore(useMemo(() => (state) => state.selectedCells[0], []));
+  const isModalOpen: boolean = useStore(
+    store,
+    useMemo(() => (state) => state.openedModal === hash, [hash]),
+  );
+  const selectedCell = useStore(
+    store,
+    useMemo(() => (state) => state.selectedCells[0], []),
+  );
 
-  const setOpenModal = useStore((state) => state.setOpenModal);
-  const setEditingCell = useStore((state) => state.setEditingCell);
+  const setOpenModal = useStore(store, (state) => state.setOpenModal);
+  const setEditingCell = useStore(store, (state) => state.setEditingCell);
 
   const { focusTable } = useTableFocus();
   const { updateItems } = useUpdateItems();
