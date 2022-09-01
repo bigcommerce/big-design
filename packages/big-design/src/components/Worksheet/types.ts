@@ -41,17 +41,17 @@ interface WorksheetBaseColumn<Item> {
   disabled?: boolean;
   hash: keyof Item;
   header: string;
-  validation?(value: Item[keyof Item]): boolean;
+  validation?(value: Item[keyof Item] | ''): boolean;
 }
 
 export interface WorksheetTextColumn<Item> extends WorksheetBaseColumn<Item> {
   type?: 'text';
-  formatting?(value: Item[keyof Item]): string;
+  formatting?(value: Item[keyof Item] | ''): string;
 }
 
 export interface WorksheetNumberColumn<Item> extends WorksheetBaseColumn<Item> {
   type: 'number';
-  formatting?(value: Item[keyof Item]): string;
+  formatting?(value: Item[keyof Item] | ''): string;
 }
 
 export interface WorksheetCheckboxColumn<Item> extends WorksheetBaseColumn<Item> {
@@ -72,7 +72,7 @@ export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
     render(value: Item[keyof Item], onChange: (value: Item[keyof Item]) => void): React.ReactNode;
     saveActionText?: string;
   };
-  formatting?(value: Item[keyof Item]): string;
+  formatting?(value: Item[keyof Item] | ''): string;
   type: 'modal';
 }
 
@@ -87,7 +87,7 @@ export interface Cell<Item> {
   hidden?: boolean;
   rowIndex: number;
   type: Exclude<InternalWorksheetColumn<Item>['type'], undefined>;
-  value: Item[keyof Item];
+  value: Item[keyof Item] | '';
 }
 
 export interface WorksheetItem {
