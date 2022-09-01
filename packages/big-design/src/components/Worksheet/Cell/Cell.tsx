@@ -102,19 +102,11 @@ const InternalCell = <T extends WorksheetItem>({
   }, [cell, rowIndex, setSelectedCells, setSelectedRows]);
 
   const renderedValue = useMemo(() => {
-    if (value !== 'undefined' && value !== '' && !Number.isNaN(value)) {
-      if (typeof formatting === 'function') {
-        return formatting(value);
-      }
-
-      return `${value}`;
+    if (typeof formatting === 'function' && value !== '' && !Number.isNaN(value)) {
+      return formatting(value);
     }
 
-    if (Number.isNaN(value)) {
-      return `${value}`;
-    }
-
-    return '';
+    return `${value}`;
   }, [formatting, value]);
 
   const renderedCell = useMemo(() => {
