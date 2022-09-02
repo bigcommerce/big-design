@@ -1,7 +1,9 @@
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render, screen } from '@test/utils';
+import { render, screen } from '@test/utils';
+
+import userEvent from '@testing-library/user-event';
 
 import { Switch } from './index';
 
@@ -53,7 +55,7 @@ describe('render Switch', () => {
 
     const checkbox = await screen.findByTestId<HTMLInputElement>('switch');
 
-    fireEvent.click(checkbox);
+    await userEvent.click(checkbox);
 
     expect(onChange).toHaveBeenCalled();
   });

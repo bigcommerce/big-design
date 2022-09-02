@@ -1,6 +1,7 @@
 import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import 'jest-styled-components';
 import React, { createRef } from 'react';
 
@@ -247,7 +248,7 @@ test('select input has aria-controls', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const listbox = await screen.findByRole('listbox');
 
@@ -273,15 +274,15 @@ test('renders input button', async () => {
 test('multi select menu opens/closes when input button is clicked', async () => {
   render(MultiSelectMock);
 
-  const button = await screen.findByLabelText('toggle menu');
+  const button = await screen.findByRole('button', { name: 'toggle menu' });
 
-  fireEvent.click(button);
+  await userEvent.click(button);
 
   const listbox = await screen.findByRole('listbox');
 
   expect(listbox).not.toBeEmptyDOMElement();
 
-  fireEvent.click(button);
+  await userEvent.click(button);
 
   await screen.findByRole('listbox');
 
@@ -293,13 +294,13 @@ test('esc should close menu', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const listbox = await screen.findByRole('listbox');
 
   expect(listbox).not.toBeEmptyDOMElement();
 
-  fireEvent.keyDown(input, { key: 'Escape' });
+  await userEvent.keyboard('{escape}');
 
   await screen.findByRole('listbox');
 
@@ -311,7 +312,7 @@ test('multi select has items', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const options = await screen.findAllByRole('option');
 
@@ -323,7 +324,7 @@ test('multi select items should be unfiltered when opened', async () => {
 
   const button = await screen.findByLabelText('toggle menu');
 
-  fireEvent.click(button);
+  await userEvent.click(button);
 
   const options = await screen.findAllByRole('option');
 
@@ -335,19 +336,19 @@ test('up/down arrows should change select item selection', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const options = await screen.findAllByRole('option');
 
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
 
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  await userEvent.keyboard('{arrowdown}');
 
   expect(options[1].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
 
-  fireEvent.keyDown(input, { key: 'ArrowUp' });
+  await userEvent.keyboard(`{arrowup}`);
 
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
@@ -358,15 +359,15 @@ test('home should select first select item', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const options = await screen.findAllByRole('option');
 
-  fireEvent.keyDown(input, { key: 'ArrowUp' });
+  await userEvent.keyboard('{arrowup}');
 
   expect(options[5].getAttribute('aria-selected')).toBe('true');
 
-  fireEvent.keyDown(input, { key: 'Home' });
+  await userEvent.keyboard('{home}');
 
   expect(options[0].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[0].id);
@@ -377,15 +378,15 @@ test('end should select last select item', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const options = await screen.findAllByRole('option');
 
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  await userEvent.keyboard('{arrowdown}');
 
   expect(options[1].getAttribute('aria-selected')).toBe('true');
 
-  fireEvent.keyDown(input, { key: 'End' });
+  await userEvent.keyboard('{end}');
 
   expect(options[5].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[5].id);
@@ -396,11 +397,8 @@ test('enter should trigger onOptionsChange', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  await act(async () => {
-    await fireEvent.click(input);
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'Enter' });
-  });
+  await userEvent.click(input);
+  await userEvent.keyboard('{arrowdown}{enter}');
 
   expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
 });
@@ -410,11 +408,11 @@ test('clicking on select options should trigger onOptionsChange', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const options = await screen.findAllByRole('option');
 
-  fireEvent.click(options[3]);
+  await userEvent.click(options[3]);
 
   expect(onChange).toHaveBeenCalledWith(
     [mockOptions[0].value, mockOptions[1].value, mockOptions[3].value],
@@ -427,11 +425,11 @@ test('clicking on disabled select options should not trigger onItemClick', async
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const options = await screen.findAllByRole('option');
 
-  fireEvent.click(options[4]);
+  await userEvent.click(options[4]);
 
   expect(onChange).not.toHaveBeenCalled();
 });
@@ -441,9 +439,7 @@ test('opening the MultiSelect triggers onOpen', async () => {
 
   const button = await screen.findByLabelText('toggle menu');
 
-  await act(async () => {
-    await fireEvent.click(button);
-  });
+  await userEvent.click(button);
 
   expect(onOpen).toHaveBeenCalled();
 });
@@ -453,10 +449,7 @@ test('closing the MultiSelect triggers onClose', async () => {
 
   const button = await screen.findByLabelText('toggle menu');
 
-  await act(async () => {
-    await fireEvent.click(button);
-    await fireEvent.click(button);
-  });
+  await userEvent.dblClick(button);
 
   expect(onClose).toHaveBeenCalled();
 });
@@ -466,7 +459,7 @@ test('select should render select action', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   expect(await screen.findByText('Remove Country')).toBeInTheDocument();
 });
@@ -476,13 +469,11 @@ test('select action should call onActionClick', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const options = await screen.findAllByRole('option');
 
-  await act(async () => {
-    await fireEvent.click(options[5]);
-  });
+  await userEvent.click(options[5]);
 
   expect(onActionClick).toHaveBeenCalled();
 });
@@ -492,7 +483,7 @@ test('select action supports icons', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const action = await screen.findByText('Remove Country');
 
@@ -645,7 +636,7 @@ test('does not forward styles', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   expect(input.getElementsByClassName('test')).toHaveLength(0);
   expect(await screen.findByRole('listbox')).not.toHaveStyle('background: red');
@@ -692,7 +683,7 @@ test('should accept a maxHeight prop', async () => {
 
   const inputs = screen.getAllByLabelText('Countries');
 
-  fireEvent.click(inputs[0]);
+  await userEvent.click(inputs[0]);
 
   const list = await screen.findByRole('listbox');
 
@@ -704,7 +695,7 @@ test('should default max-height to 250', async () => {
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  fireEvent.click(inputs[0]);
+  await userEvent.click(inputs[0]);
 
   const list = await screen.findByRole('listbox');
 
@@ -765,7 +756,7 @@ test('multiselect should render four items with checkboxes', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const menu = await screen.findByRole('listbox');
   const options = menu.querySelectorAll('input[type="checkbox"]');
@@ -778,7 +769,7 @@ test('multiselect should have two selected options', async () => {
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const menu = await screen.findByRole('listbox');
   const options = menu.querySelectorAll(':checked');
@@ -791,13 +782,8 @@ test('multiselect should be able to select multiple options', async () => {
 
   const input = screen.getAllByLabelText('Countries')[0];
 
-  await act(async () => {
-    await fireEvent.click(input);
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'ArrowDown' });
-    await fireEvent.keyDown(input, { key: 'Enter' });
-  });
+  await userEvent.click(input);
+  await userEvent.keyboard('{arrowdown}{arrowdown}{arrowdown}{enter}');
 
   expect(onChange).toHaveBeenCalledWith(
     [mockOptions[0].value, mockOptions[1].value, mockOptions[3].value],
@@ -810,11 +796,8 @@ test('multiselect should be able to deselect options', async () => {
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  await act(async () => {
-    await fireEvent.click(inputs[0]);
-    await fireEvent.keyDown(inputs[0], { key: 'ArrowDown' });
-    await fireEvent.keyDown(inputs[0], { key: 'Enter' });
-  });
+  await userEvent.click(inputs[0]);
+  await userEvent.keyboard('{arrowdown}{enter}');
 
   expect(onChange).toHaveBeenCalledWith([mockOptions[0].value], [mockOptions[0]]);
 });
@@ -824,7 +807,7 @@ test('multiselect options should immediately rerender when prop changes', async 
 
   const button = await screen.findByRole('button');
 
-  fireEvent.click(button);
+  await userEvent.click(button);
 
   let options = await screen.findAllByRole('option');
 
@@ -898,9 +881,7 @@ test('options should allow icons', async () => {
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  await act(async () => {
-    await fireEvent.click(inputs[0]);
-  });
+  await userEvent.click(inputs[0]);
 
   const svg = container.querySelectorAll('svg');
 
@@ -912,7 +893,7 @@ test('grouped multiselect should render group labels, render uppercased', async 
 
   const inputs = await screen.findAllByLabelText('Countries');
 
-  fireEvent.click(inputs[0]);
+  await userEvent.click(inputs[0]);
 
   const label1 = await screen.findByText('Label 1');
   const label2 = await screen.findByText('Label 2');
@@ -928,7 +909,7 @@ test('group labels should be grayed out', async () => {
 
   const input = await screen.findByTestId('group-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const label1 = await screen.findByText('Label 1');
   const label2 = await screen.findByText('Label 2');
@@ -942,20 +923,19 @@ test('group labels should be skipped when using keyboard to navigate options', a
 
   const input = screen.getByTestId('group-select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const options = await screen.findAllByRole('option');
 
   expect(options).toHaveLength(6);
   expect(options[0].getAttribute('aria-selected')).toBe('true');
 
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  await userEvent.keyboard('{arrowdown}');
 
   expect(options[1].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[1].id);
 
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
-  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  await userEvent.keyboard('{arrowdown}{arrowdown}');
 
   expect(options[3].getAttribute('aria-selected')).toBe('true');
   expect(input.getAttribute('aria-activedescendant')).toEqual(options[3].id);
@@ -966,8 +946,7 @@ test('group labels should still render when filtering options', async () => {
 
   const input = await screen.findByTestId('group-select');
 
-  fireEvent.click(input);
-  fireEvent.change(input, { target: { value: 'm' } });
+  await userEvent.type(input, 'm');
 
   const label1 = await screen.findByText('Label 1');
   const label2 = await screen.findByText('Label 2');
@@ -983,7 +962,7 @@ test('autoselects first matching option when filtering', async () => {
 
   const input = await screen.findByTestId('multi-select');
 
-  fireEvent.change(input, { target: { value: 'm' } });
+  await userEvent.type(input, 'm');
 
   const options = await screen.findAllByRole('option');
 
@@ -997,7 +976,7 @@ test('does not autoselect first matching option when it is disabled', async () =
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.change(input, { target: { value: 'f' } });
+  await userEvent.type(input, 'f');
 
   const options = await screen.findAllByRole('option');
 
@@ -1011,13 +990,14 @@ test('after clearing the input value, first option is always selected', async ()
 
   const input = screen.getByTestId('multi-select');
 
-  fireEvent.change(input, { target: { value: 'Can' } });
+  await userEvent.clear(input);
+  await userEvent.type(input, 'Can');
 
   const canadaOption = await screen.findByRole('option', { name: 'Canada' });
 
   expect(canadaOption.getAttribute('aria-selected')).toBe('true');
 
-  fireEvent.change(input, { target: { value: '' } });
+  await userEvent.clear(input);
 
   const options = await screen.findAllByRole('option');
 
@@ -1030,7 +1010,7 @@ test('select option should supports description', async () => {
 
   const input = await screen.findByTestId('select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   expect(await screen.findByText('US Description')).toBeInTheDocument();
 });
@@ -1040,7 +1020,7 @@ test('select action should supports description', async () => {
 
   const input = await screen.findByTestId('select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   expect(await screen.findByText('Action Description')).toBeInTheDocument();
 });
