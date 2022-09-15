@@ -69,6 +69,12 @@ export const invalidRows = <T extends WorksheetItem>(invalidCells: Array<Cell<T>
   }));
 };
 
-export const getHiddenRows = (expandableRows: ExpandableRows) => {
-  return Object.values(expandableRows).flat();
-};
+export const getHiddenRows = (
+  expandableRows: ExpandableRows,
+  defaultExpandedRows: Array<string | number> = [],
+) =>
+  Object.entries(expandableRows).reduce<Array<string | number>>(
+    (accum, [key, value]) =>
+      defaultExpandedRows.map(String).includes(key) ? accum : [...accum, ...value],
+    [],
+  );
