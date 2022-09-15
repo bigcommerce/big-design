@@ -23,7 +23,10 @@ export interface BaseState<Item> {
   removeInvalidCells: (cells: Array<Cell<Item>>) => void;
   setColumns: (columns: Array<InternalWorksheetColumn<Item>>) => void;
   setEditingCell: (cell: Cell<Item> | null) => void;
-  setExpandableRows: (expandableRows: ExpandableRows) => void;
+  setExpandableRows: (
+    expandableRows: ExpandableRows,
+    defaultExpandedRows?: Array<string | number>,
+  ) => void;
   setDisabledRows: (disabledRows: DisabledRows) => void;
   setHiddenRows: (hiddenRow: Array<string | number>) => void;
   setOpenModal: (value: keyof Item | null) => void;
@@ -55,8 +58,12 @@ export const createWorksheetStore = <Item>() =>
       set((state) => ({ ...state, invalidCells: deleteCells(state.invalidCells, cells) })),
     setColumns: (columns) => set((state) => ({ ...state, columns })),
     setEditingCell: (cell) => set((state) => ({ ...state, editingCell: cell })),
-    setExpandableRows: (expandableRows) =>
-      set((state) => ({ ...state, expandableRows, hiddenRows: getHiddenRows(expandableRows) })),
+    setExpandableRows: (expandableRows, defaultExpandedRows) =>
+      set((state) => ({
+        ...state,
+        expandableRows,
+        hiddenRows: getHiddenRows(expandableRows, defaultExpandedRows),
+      })),
     setDisabledRows: (disabledRows) => set((state) => ({ ...state, disabledRows })),
     setHiddenRows: (hiddenRows) => set((state) => ({ ...state, hiddenRows })),
     setOpenModal: (value) => set((state) => ({ ...state, openedModal: value })),

@@ -21,6 +21,7 @@ const InternalWorksheet = typedMemo(
   <T extends WorksheetItem>({
     columns,
     expandableRows,
+    defaultExpandedRows,
     disabledRows,
     items,
     onChange,
@@ -66,7 +67,10 @@ const InternalWorksheet = typedMemo(
       setRows([...items]);
     }, [items, setRows]);
     useEffect(() => setColumns(expandedColumns), [expandedColumns, setColumns]);
-    useEffect(() => setExpandableRows(expandableRows || {}), [expandableRows, setExpandableRows]);
+    useEffect(
+      () => setExpandableRows(expandableRows || {}, defaultExpandedRows || []),
+      [expandableRows, defaultExpandedRows, setExpandableRows],
+    );
     useEffect(() => setDisabledRows(disabledRows || []), [disabledRows, setDisabledRows]);
     useEffect(() => setTableRef(tableRef.current), [setTableRef, tableRef]);
 

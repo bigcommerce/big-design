@@ -649,6 +649,7 @@ const WorksheetPage = () => {
                     return (
                       <Worksheet
                         columns={columns}
+                        defaultExpandedRows={[4]}
                         expandableRows={expandableRows}
                         items={items}
                         onChange={(items) => items}
