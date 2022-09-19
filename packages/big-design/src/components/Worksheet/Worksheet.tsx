@@ -8,7 +8,7 @@ import { BaseState, createWorksheetStore, useKeyEvents, useWorksheetStore } from
 import { WorksheetModal } from './Modal/Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
-import { Header, Table } from './styled';
+import { Header, StyledBox, Table } from './styled';
 import {
   InternalWorksheetColumn,
   WorksheetItem,
@@ -54,7 +54,9 @@ const InternalWorksheet = typedMemo(
 
     // Add a column for the toggle components
     const expandedColumns: Array<InternalWorksheetColumn<T>> = useMemo(() => {
-      return expandableRows ? [{ hash: '', header: '', type: 'toggle' }, ...columns] : columns;
+      return expandableRows
+        ? [{ hash: '', header: '', type: 'toggle', width: 50 }, ...columns]
+        : columns;
     }, [columns, expandableRows]);
 
     useEffect(() => {
@@ -92,13 +94,18 @@ const InternalWorksheet = typedMemo(
           <tr>
             <Status />
             {expandedColumns.map((column, index) => (
-              <Header columnType={column.type} key={index}>
+              <Header columnType={column.type} columnWidth={column.width || 'auto'} key={index}>
                 {column.header}
               </Header>
             ))}
           </tr>
         </thead>
       ),
+      [expandedColumns],
+    );
+
+    const tableHasStaticWidth = useMemo(
+      () => expandedColumns.every((column) => column.width && typeof column.width === 'number'),
       [expandedColumns],
     );
 
@@ -123,10 +130,17 @@ const InternalWorksheet = typedMemo(
 
     return (
       <UpdateItemsProvider items={rows}>
-        <Table onKeyDown={handleKeyDown} ref={tableRef} tabIndex={0}>
-          {renderedHeaders}
-          {renderedRows}
-        </Table>
+        <StyledBox>
+          <Table
+            hasStaticWidth={tableHasStaticWidth}
+            onKeyDown={handleKeyDown}
+            ref={tableRef}
+            tabIndex={0}
+          >
+            {renderedHeaders}
+            {renderedRows}
+          </Table>
+        </StyledBox>
         {renderedModals}
       </UpdateItemsProvider>
     );

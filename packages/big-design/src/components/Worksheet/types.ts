@@ -42,6 +42,7 @@ interface WorksheetBaseColumn<Item> {
   disabled?: boolean;
   hash: keyof Item;
   header: string;
+  width?: string | number;
   validation?(value: Item[keyof Item] | ''): boolean;
 }
 
