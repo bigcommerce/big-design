@@ -1678,11 +1678,6 @@
     "@types/yargs" "^17.0.8"
     chalk "^4.0.0"
 
-"@jorgemoya/flag-icon-css@3.5.0":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@jorgemoya/flag-icon-css/-/flag-icon-css-3.5.0.tgz#3461cb5b71d67b14157c6c09418db91e071ad067"
-  integrity sha512-TiDiUjnAj3HRf7GPuP3jJjw+hnU+dE/PV7U1dMEmjvOHSO3QR4nN2pk1yLoC1QNSMuJ5CKj8H1t0saS+5S4e+A==
-
 "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.2.tgz#c1aedc61e853f2bb9f5dfe6d4442d3b565b253b9"
@@ -5686,6 +5681,11 @@ find-up@^5.0.0:
   dependencies:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
+
+flag-icons@^6.6.6:
+  version "6.6.6"
+  resolved "https://registry.yarnpkg.com/flag-icons/-/flag-icons-6.6.6.tgz#9ddff81e1126778ca6a5a1e0e2cfac2e865f2cb7"
+  integrity sha512-4lHDKxldnQ7q617pf9Dx9nAetT+9zcMpUexbRrc9kjLw9KJgZ83zA5Dky3Vv7ZDzUjAiZ46x/cy5P0HnEnqA2A==
 
 flat-cache@^3.0.4:
   version "3.0.4"

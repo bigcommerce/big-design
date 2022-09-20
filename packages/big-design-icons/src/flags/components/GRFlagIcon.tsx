@@ -26,20 +26,20 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path d="M0 0h640v53.3H0z" fill="#005bae" fillRule="evenodd" />
+      <path d="M0 0h640v53.3H0z" fill="#0d5eaf" fillRule="evenodd" />
       <path d="M0 53.3h640v53.4H0z" fill="#fff" fillRule="evenodd" />
-      <path d="M0 106.7h640V160H0z" fill="#005bae" fillRule="evenodd" />
+      <path d="M0 106.7h640V160H0z" fill="#0d5eaf" fillRule="evenodd" />
       <path d="M0 160h640v53.3H0z" fill="#fff" fillRule="evenodd" />
-      <path d="M0 0h266.7v266.7H0z" fill="#005bae" />
-      <path d="M0 213.3h640v53.4H0z" fill="#005bae" fillRule="evenodd" />
+      <path d="M0 0h266.7v266.7H0z" fill="#0d5eaf" />
+      <path d="M0 213.3h640v53.4H0z" fill="#0d5eaf" fillRule="evenodd" />
       <path d="M0 266.7h640V320H0z" fill="#fff" fillRule="evenodd" />
-      <path d="M0 320h640v53.3H0z" fill="#005bae" fillRule="evenodd" />
+      <path d="M0 320h640v53.3H0z" fill="#0d5eaf" fillRule="evenodd" />
       <path d="M0 373.3h640v53.4H0z" fill="#fff" fillRule="evenodd" />
       <g fill="#fff" fillRule="evenodd" strokeWidth={1.3}>
-        <path d="M106.667 0H160v266.666h-53.333z" />
-        <path d="M0 106.667h266.666V160H0z" />
+        <path d="M106.7 0H160v266.7h-53.3z" />
+        <path d="M0 106.7h266.7V160H0z" />
       </g>
-      <path d="M0 426.7h640V480H0z" fill="#005bae" />
+      <path d="M0 426.7h640V480H0z" fill="#0d5eaf" />
     </svg>
   );
 };

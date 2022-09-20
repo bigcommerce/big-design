@@ -15,7 +15,7 @@ const SOURCE = join(
   '..',
   '..',
   'node_modules',
-  '@jorgemoya/flag-icon-css',
+  'flag-icons',
   'flags',
   '4x3',
   '*.svg',

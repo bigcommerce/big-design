@@ -87,7 +87,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         />
         <linearGradient
           gradientUnits="userSpaceOnUse"
-          id="NIFlagIcon__n"
+          id="NIFlagIcon__o"
           x1={444.5}
           x2={634.4}
           xlinkHref="#NIFlagIcon__a"
@@ -151,7 +151,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         />
         <linearGradient
           gradientUnits="userSpaceOnUse"
-          id="NIFlagIcon__k"
+          id="NIFlagIcon__l"
           x1={444.5}
           x2={634.4}
           xlinkHref="#NIFlagIcon__a"
@@ -349,39 +349,39 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         />
         <g fill="url(#NIFlagIcon__h)">
           <path d="M453.1 307.6l-10 17.3H557l-10-17.2h-93.8z" fill="#fff" />
-          <g fill="url(#NIFlagIcon__i)" id="NIFlagIcon__o">
+          <g fill="url(#NIFlagIcon__i)" id="NIFlagIcon__n">
             <path
               d="M449.7 321.4a36 36 0 00-4.7.3l-.5.9c2.4-.3 4.7-.7 7.2-.7 3.2 0 6.2.8 9.7.8h4.6c3.5 0 6.4-.8 9.7-.8 3.3 0 6.3.8 9.8.8h4.6c3.5 0 6.4-.8 9.7-.8 3.3 0 6.3.8 9.8.8h4.5c3.5 0 6.5-.8 9.8-.8 3.3 0 6.3.8 9.8.8h4.5c3.5 0 6.5-.8 9.8-.8 2.6 0 5 .5 7.5.7l-.5-1a38 38 0 00-4.4-.2h-4.5c-3.5 0-6.5.7-9.8.8-3.3 0-6.3-.8-9.8-.8H522c-3.5 0-6.5.7-9.8.8-3.3 0-6.3-.8-9.8-.8H498c-3.5 0-6.5.7-9.8.8-3.3 0-6.3-.8-9.8-.8h-4.5c-3.5 0-6.5.7-9.8.8-3.3 0-6.2-.8-9.7-.8h-4.6z"
               fill="url(#NIFlagIcon__j)"
-              id="NIFlagIcon__l"
+              id="NIFlagIcon__k"
             />
             <use
-              fill="url(#NIFlagIcon__k)"
+              fill="url(#NIFlagIcon__l)"
               height="100%"
               width="100%"
-              xlinkHref="#NIFlagIcon__l"
+              xlinkHref="#NIFlagIcon__k"
               y={-1.1}
             />
             <use
               fill="url(#NIFlagIcon__m)"
               height="100%"
               width="100%"
-              xlinkHref="#NIFlagIcon__l"
+              xlinkHref="#NIFlagIcon__k"
               y={-2.2}
             />
           </g>
           <use
-            fill="url(#NIFlagIcon__n)"
+            fill="url(#NIFlagIcon__o)"
             height="100%"
             width="100%"
-            xlinkHref="#NIFlagIcon__o"
+            xlinkHref="#NIFlagIcon__n"
             y={-3.3}
           />
           <use
             fill="url(#NIFlagIcon__p)"
             height="100%"
             width="100%"
-            xlinkHref="#NIFlagIcon__o"
+            xlinkHref="#NIFlagIcon__n"
             y={-6.7}
           />
           <path

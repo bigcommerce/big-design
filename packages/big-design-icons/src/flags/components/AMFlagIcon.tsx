@@ -26,9 +26,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path d="M0 0h640v160H0z" fill="red" />
-      <path d="M0 160h640v160H0z" fill="#00f" />
-      <path d="M0 320h640v160H0z" fill="orange" />
+      <path d="M0 0h640v160H0z" fill="#d90012" />
+      <path d="M0 160h640v160H0z" fill="#0033a0" />
+      <path d="M0 320h640v160H0z" fill="#f2a800" />
     </svg>
   );
 };

@@ -9,7 +9,7 @@ import { createStyledFlagIcon, FlagIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
-  title = 'JP flag',
+  title = 'XX flag',
   theme,
   ...props
 }) => {
@@ -26,26 +26,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <defs>
-        <clipPath id="JPFlagIcon__a">
-          <path d="M-88 32h640v480H-88z" fillOpacity={0.7} />
-        </clipPath>
-      </defs>
-      <g
-        clipPath="url(#JPFlagIcon__a)"
+      <path
+        d="M.5.5h638.9v478.9H.5z"
+        fill="#fff"
         fillRule="evenodd"
-        strokeWidth="1pt"
-        transform="translate(88 -32)"
-      >
-        <path d="M-128 32h720v480h-720z" fill="#fff" />
-        <circle
-          cx={523.1}
-          cy={344.1}
-          fill="#bc002d"
-          r={194.9}
-          transform="translate(-168.4 8.6) scale(.76554)"
-        />
-      </g>
+        stroke="#adb5bd"
+        strokeWidth={1.1}
+      />
+      <path d="M.5.5l639 479m0-479l-639 479" fill="none" stroke="#adb5bd" strokeWidth={1.1} />
     </svg>
   );
 };
@@ -54,6 +42,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const JPFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
+export const XXFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
-JPFlagIcon.displayName = 'JPFlagIcon';
+XXFlagIcon.displayName = 'XXFlagIcon';

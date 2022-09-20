@@ -326,46 +326,26 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         <path d="M317 329.3c-3.2-.6-4.4-.4-6.6-.6l-5.1 15.8c8 .7 15.3.7 15.3.7-4.8-1-3.7-15.8-3.6-15.9z" />
       </g>
       <g fontFamily="Trebuchet MS" fontSize={9} fontWeight="bold">
-        <text transform="translate(-465 -233.3) scale(1.6657)" x={448.6} y={344.3}>
-          <tspan x={448.6} y={344.3}>
-            L
-          </tspan>
-        </text>
-        <text transform="translate(-465 -233.3) scale(1.6657)" x={453.6} y={344.6}>
-          <tspan x={453.6} y={344.6}>
-            I
-          </tspan>
-        </text>
-        <text transform="translate(-465 -233.3) scale(1.6657)" x={456.7} y={345.1}>
-          <tspan x={456.7} y={345.1}>
-            B
-          </tspan>
-        </text>
-        <text transform="translate(-465 -233.3) scale(1.6657)" x={462.6} y={345.5}>
-          <tspan x={462.6} y={345.5}>
-            E
-          </tspan>
-        </text>
-        <text transform="translate(-465 -233.3) scale(1.6657)" x={468.3} y={345.6}>
-          <tspan x={468.3} y={345.6}>
-            R
-          </tspan>
-        </text>
-        <text transform="translate(-465 -233.3) scale(1.6657)" x={473.9} y={345.4}>
-          <tspan x={473.9} y={345.4}>
-            T
-          </tspan>
-        </text>
-        <text transform="translate(-465 -233.3) scale(1.6657)" x={479.3} y={344.5}>
-          <tspan x={479.3} y={344.5}>
-            A
-          </tspan>
-        </text>
-        <text transform="translate(-465 -233.3) scale(1.6657)" x={485.5} y={344.3}>
-          <tspan x={485.5} y={344.3}>
-            S
-          </tspan>
-        </text>
+        <path aria-label="L" d="M283.4 340.2v-10.7h1.8v9h5v1.7z" />
+        <path aria-label="I" d="M291.7 340.7V330h1.9v10.7z" />
+        <path
+          aria-label="B"
+          d="M300 341.5h-3.3V331l3.2-.2q1.7 0 2.5.7 1 .8 1 2.1 0 1.2-1.3 2 2 .7 2 2.9 0 1.5-1.2 2.3-1 .8-2.8.8zm-1.3-9.1v2.5h1q1.7 0 1.7-1.4 0-1.1-1.7-1.1h-1zm0 4v3.5h1q1.2 0 1.7-.4.7-.3.7-1.3t-.5-1.3q-.5-.5-1.9-.5h-1z"
+        />
+        <path aria-label="E" d="M308.6 333v2.7h3.4v1.7h-3.4v3.1h5v1.7h-6.9v-10.7h6.7v1.7z" />
+        <path
+          aria-label="R"
+          d="M322.2 342.4l-2.8-4.5H318v4.5h-1.8v-10.7h1.2l1.6-.2q4.2 0 4.2 3.2 0 1-.5 1.7-.7.8-1.5 1.1l3.3 4.9zm-4.2-9v2.8h.9l1.6-.2q.7-.3.7-1.3 0-.8-.5-1.2-.7-.3-2-.3h-.7z"
+        />
+        <path aria-label="T" d="M329.9 333v9h-2v-9h-3.4v-1.6h8.9v1.6z" />
+        <path
+          aria-label="A"
+          d="M340.7 340.5l-.8-2.1h-3.7l-.7 2.1h-2.1l4.3-10.8h.8l4.4 10.8zM338 333l-1.1 4h2.5z"
+        />
+        <path
+          aria-label="S"
+          d="M344.4 339.7l.6-1.7q1.2.7 2.2.7 1.7 0 1.7-1.2l-.4-1-1.6-1.1-1.7-1-.7-1-.1-1.2q0-1.3.8-2.2 1-.6 2.3-.6 1.9 0 2.9.6l-.7 1.7q-1-.8-2.2-.8-.6 0-1 .3-.3.3-.3 1 0 .8 2 1.8 1.2.5 1.7 1l.6 1 .2 1.4q0 1.3-1 2.1t-2.7.9q-1.6 0-2.6-.9z"
+        />
       </g>
       <path
         d="M231.3 318.6c10.1 1.2 24.1.3 30.2 0M216 284.2c8.6 6.7 27.1 10.7 26.8 10.7m10.7 1.8c-2.8-14-5.8-17.4-8.3-26.2m-43.5-15.8c14.3 6.4 16.5 10.6 25.6 17m5.2-14c1.2-17.3 3.6-21.9 7.9-25.9m-38.7-2c5.2 5.7 22.2 23.7 22.2 23.7m-7-39.6c6.4 4.5 6.4 21 6.4 21"

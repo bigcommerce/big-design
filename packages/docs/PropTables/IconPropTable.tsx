@@ -20,7 +20,7 @@ const iconProps: Prop[] = [
   {
     name: 'size',
     types: [
-      <NextLink href="/spacing" key="1">
+      <NextLink href="/spacing" key="spacing-link">
         Spacing
       </NextLink>,
       'number',

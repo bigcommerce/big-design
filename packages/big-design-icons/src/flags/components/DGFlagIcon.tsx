@@ -9,7 +9,7 @@ import { createStyledFlagIcon, FlagIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
-  title = 'IO flag',
+  title = 'DG flag',
   theme,
   ...props
 }) => {
@@ -566,6 +566,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const IOFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
+export const DGFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
-IOFlagIcon.displayName = 'IOFlagIcon';
+DGFlagIcon.displayName = 'DGFlagIcon';
