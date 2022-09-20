@@ -50,6 +50,8 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
 
   & p {
     display: block;
+    white-space: inherit;
+    word-break: break-word;
   }
 `;
 

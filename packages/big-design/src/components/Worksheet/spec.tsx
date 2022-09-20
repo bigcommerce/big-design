@@ -69,8 +69,8 @@ const TreeComponent = (
 
 const columns: Array<WorksheetColumn<Product>> = [
   { hash: 'productName', header: 'Product name', validation: (value: string) => !!value },
-  { hash: 'visibleOnStorefront', header: 'Visible on storefront', type: 'checkbox' },
-  { hash: 'otherField', header: 'Other field' },
+  { hash: 'visibleOnStorefront', header: 'Visible on storefront', type: 'checkbox', width: 80 },
+  { hash: 'otherField', header: 'Other field', width: 'auto' },
   {
     hash: 'otherField2',
     header: 'Other field',
@@ -83,6 +83,7 @@ const columns: Array<WorksheetColumn<Product>> = [
     type: 'number',
     validation: (value: number) => value >= 50,
     formatting: (value: number) => `$${value}.00`,
+    width: 90,
   },
 ];
 
@@ -1085,5 +1086,37 @@ describe('expandable', () => {
     cell = screen.getByText('Shoes Name One');
 
     expect(cell.parentElement).toHaveStyle(`border-color: ${theme.colors.primary}`);
+  });
+});
+
+describe('column widths', () => {
+  test('table has 100% width when some or none columns have fixed width', () => {
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const table = screen.getByRole('table');
+
+    expect(table).toHaveStyle('width: 100%');
+  });
+
+  test('table has auto width if all columns have fixed width', () => {
+    render(
+      <Worksheet columns={[{ ...columns[0], width: 90 }]} items={items} onChange={handleChange} />,
+    );
+
+    const table = screen.getByRole('table');
+
+    expect(table).toHaveStyle('width: auto');
+  });
+
+  test('columns have defined widths (or auto if none)', async () => {
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const productNameColumn = await screen.findByText('Product name');
+    const visibleOnStorefrontColumn = await screen.findByText('Visible on storefront');
+    const numberFieldColumn = await screen.findByText('Number field');
+
+    expect(productNameColumn).toHaveStyle('width: auto');
+    expect(visibleOnStorefrontColumn).toHaveStyle('width: 80px');
+    expect(numberFieldColumn).toHaveStyle('width: 90px');
   });
 });

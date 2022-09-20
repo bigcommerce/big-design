@@ -131,6 +131,11 @@ const worksheetTextColumnProps: Prop[] = [
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
   },
+  {
+    name: 'width',
+    types: ['string', 'number'],
+    description: 'Sets column width.',
+  },
 ];
 
 const worksheetNumberColumnProps: Prop[] = [
@@ -168,6 +173,11 @@ const worksheetNumberColumnProps: Prop[] = [
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
   },
+  {
+    name: 'width',
+    types: ['string', 'number'],
+    description: 'Sets column width.',
+  },
 ];
 
 const worksheetCheckboxColumnProps: Prop[] = [
@@ -199,6 +209,11 @@ const worksheetCheckboxColumnProps: Prop[] = [
     name: 'disable',
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
+  },
+  {
+    name: 'width',
+    types: ['string', 'number'],
+    description: 'Sets column width.',
   },
 ];
 
@@ -259,6 +274,11 @@ const worksheetSelectableColumnProps: Prop[] = [
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
   },
+  {
+    name: 'width',
+    types: ['string', 'number'],
+    description: 'Sets column width.',
+  },
 ];
 
 const worksheetModalColumnProps: Prop[] = [
@@ -316,6 +336,11 @@ const worksheetModalColumnProps: Prop[] = [
     name: 'disable',
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
+  },
+  {
+    name: 'width',
+    types: ['string', 'number'],
+    description: 'Sets column width.',
   },
 ];
 

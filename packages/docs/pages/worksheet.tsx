@@ -136,8 +136,9 @@ const WorksheetPage = () => {
                         hash: 'productName',
                         header: 'Product name',
                         validation: (value) => !!value,
+                        width: 200,
                       },
-                      { hash: 'isVisible', header: 'Visible', type: 'checkbox' },
+                      { hash: 'isVisible', header: 'Visible', type: 'checkbox', width: 80 },
                       { hash: 'otherField', header: 'Other field' },
                       {
                         hash: 'otherField2',
@@ -151,6 +152,7 @@ const WorksheetPage = () => {
                           ],
                         },
                         validation: (value) => !!value,
+                        width: 200,
                       },
                       {
                         hash: 'otherField3',
@@ -169,6 +171,7 @@ const WorksheetPage = () => {
                         formatting: (value: number) => `$${value}.00`,
                         validation: (value: number) =>
                           typeof value === 'number' && !Number.isNaN(value),
+                        width: 100,
                       },
                     ];
 
