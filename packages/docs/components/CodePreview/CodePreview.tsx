@@ -22,7 +22,9 @@ const defaultScope = {
   styled,
 };
 
-function getInitialCode(children: React.ReactNode, language: Language): string {
+type CodePreviewChildren = React.ReactNode | (() => JSX.Element);
+
+function getInitialCode(children: CodePreviewChildren, language: Language): string {
   if (typeof children !== 'string') {
     throw new Error('<CodePreview> children must be of type string');
   }
@@ -61,7 +63,7 @@ function transformCode(input: string): string {
 }
 
 export interface CodePreviewProps {
-  children?: React.ReactNode;
+  children?: CodePreviewChildren;
   scope?: { [key: string]: unknown };
 }
 

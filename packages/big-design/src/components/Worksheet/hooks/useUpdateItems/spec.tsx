@@ -1,9 +1,27 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
+import { Component, PropsWithChildren } from 'react';
 
 import { useUpdateItems } from './index';
 
-test('throws if is not wrapped in UpdateItemsProvider', () => {
-  const { result: hook } = renderHook(() => useUpdateItems());
+beforeEach(() => {
+  // We need to suppress console errors, otherwise we'll blow up the console.
+  // eslint-disable-next-line no-console
+  console.error = jest.fn();
+});
 
-  expect(hook.error?.message).toContain('UpdateItemsProvider');
+test('throws if is not wrapped in UpdateItemsProvider', () => {
+  let error;
+
+  renderHook(() => useUpdateItems(), {
+    wrapper: class Wrapper extends Component<PropsWithChildren<unknown>> {
+      override componentDidCatch(err: unknown) {
+        error = err;
+      }
+      override render() {
+        return this.props.children;
+      }
+    },
+  });
+
+  expect(error).toEqual(new Error('useUpdateItems must be used within an <UpdateItemsProvider>'));
 });

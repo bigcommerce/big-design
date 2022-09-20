@@ -1,4 +1,4 @@
-import { Small, Text } from '@bigcommerce/big-design';
+import { Small } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
@@ -64,8 +64,11 @@ const boxProps: Prop[] = [
     types: ['sticky', 'fixed', 'modalBackdrop', 'modal', 'tooltip', 'popover'],
     description: (
       <>
-        <Text>Determines type of z-index to be applied.</Text>
-        <Small>Types are in order (sticky is low, popover is high).</Small>
+        Determines type of z-index to be applied.
+        {/* I hate using a br but the as prop doesn't support div for now */}
+        {/* TODO: Support div for as prop */}
+        <br />
+        <Small as="span">Types are in order (sticky is low, popover is high).</Small>
       </>
     ),
   },

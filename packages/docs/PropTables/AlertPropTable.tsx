@@ -1,4 +1,4 @@
-import { Small, Text } from '@bigcommerce/big-design';
+import { Small } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { Prop, PropTable, PropTableWrapper } from '../components';
@@ -18,8 +18,11 @@ const alertProps: Prop[] = [
     defaultValue: 'false',
     description: (
       <>
-        <Text>Auto dismiss after 5 seconds.</Text>
-        <Small>Note: Only valid when used with AlertManager.</Small>
+        Auto dismiss after 5 seconds.
+        {/* I hate using a br but the as prop doesn't support div for now */}
+        {/* TODO: Support div for as prop */}
+        <br />
+        <Small as="span">Note: Only valid when used with AlertManager.</Small>
       </>
     ),
   },

@@ -1,6 +1,7 @@
 import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
 import { act, fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import 'jest-styled-components';
 import React, { createRef } from 'react';
 
@@ -546,10 +547,9 @@ test('closing the Select triggers onClose', async () => {
 
   const button = await screen.findByLabelText('toggle menu');
 
-  await act(async () => {
-    await fireEvent.click(button);
-    await fireEvent.click(button);
-  });
+  await userEvent.click(button);
+
+  await userEvent.click(button);
 
   expect(onClose).toHaveBeenCalled();
 });
