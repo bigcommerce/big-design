@@ -9,7 +9,7 @@ import { createStyledFlagIcon, FlagIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
-  title = 'SH flag',
+  title = 'AC flag',
   theme,
   ...props
 }) => {
@@ -299,6 +299,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const SHFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
+export const ACFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
-SHFlagIcon.displayName = 'SHFlagIcon';
+ACFlagIcon.displayName = 'ACFlagIcon';

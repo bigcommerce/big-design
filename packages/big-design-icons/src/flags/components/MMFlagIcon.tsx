@@ -27,27 +27,16 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <defs>
-        <path d="M0-.5l.2.5h-.4z" fill="#fff" id="MMFlagIcon__a" transform="scale(8.844)" />
-        <g id="MMFlagIcon__b">
-          <use height={12} transform="rotate(-144)" width={18} xlinkHref="#MMFlagIcon__a" />
-          <use height={12} transform="rotate(-72)" width={18} xlinkHref="#MMFlagIcon__a" />
-          <use height={12} width={18} xlinkHref="#MMFlagIcon__a" />
-          <use height={12} transform="rotate(72)" width={18} xlinkHref="#MMFlagIcon__a" />
-          <use height={12} transform="rotate(144)" width={18} xlinkHref="#MMFlagIcon__a" />
-        </g>
-      </defs>
-      <path d="M0-.1h640V160H0z" fill="#fecb00" />
+      <path d="M0 0h640v480H0z" fill="#fecb00" />
+      <path d="M0 160h640v320H0z" fill="#34b233" />
       <path d="M0 320h640v160H0z" fill="#ea2839" />
-      <path d="M0 160h640v160H0z" fill="#34b233" />
-      <use
-        height={12}
-        transform="matrix(40 0 0 40 -40 0)"
-        width={18}
-        x={9}
-        xlinkHref="#MMFlagIcon__b"
-        y={6.4}
-      />
+      <g transform="translate(320 256.9) scale(176.87999)">
+        <path d="M0-1l.3 1h-.6z" fill="#fff" id="MMFlagIcon__a" />
+        <use height="100%" transform="rotate(-144)" width="100%" xlinkHref="#MMFlagIcon__a" />
+        <use height="100%" transform="rotate(-72)" width="100%" xlinkHref="#MMFlagIcon__a" />
+        <use height="100%" transform="rotate(72)" width="100%" xlinkHref="#MMFlagIcon__a" />
+        <use height="100%" transform="rotate(144)" width="100%" xlinkHref="#MMFlagIcon__a" />
+      </g>
     </svg>
   );
 };

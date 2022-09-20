@@ -28,9 +28,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
-        <path d="M-.6.8L0-1 .6.8-1-.3h2z" fill="#ffde00" id="CNFlagIcon__a" />
+        <path d="M-.6.8L0-1 .6.8-1-.3h2z" fill="#ff0" id="CNFlagIcon__a" />
       </defs>
-      <path d="M0 0h640v480H0z" fill="#de2910" />
+      <path d="M0 0h640v480H0z" fill="#ee1c25" />
       <use
         height={20}
         transform="matrix(71.9991 0 0 72 120 120)"

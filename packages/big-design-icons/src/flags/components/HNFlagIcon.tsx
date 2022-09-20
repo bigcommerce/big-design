@@ -27,9 +27,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path d="M0 0h640v480H0z" fill="#0073cf" />
+      <path d="M0 0h640v480H0z" fill="#18c3df" />
       <path d="M0 160h640v160H0z" fill="#fff" />
-      <g fill="#0073cf" id="HNFlagIcon__c" transform="translate(320 240) scale(26.66665)">
+      <g fill="#18c3df" id="HNFlagIcon__c" transform="translate(320 240) scale(26.66665)">
         <g id="HNFlagIcon__b">
           <path d="M-.3 0l.5.1L0-1z" id="HNFlagIcon__a" />
           <use height="100%" transform="scale(-1 1)" width="100%" xlinkHref="#HNFlagIcon__a" />
