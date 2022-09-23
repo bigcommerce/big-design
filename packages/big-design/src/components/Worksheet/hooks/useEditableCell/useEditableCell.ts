@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { FocusEvent, useCallback, useMemo } from 'react';
 
 import { Cell, WorksheetItem } from '../../types';
 import { useTableFocus } from '../useTableFocus';
@@ -40,9 +40,19 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
     }
   }, [cell, setEditingCell]);
 
-  const handleBlur = useCallback(() => {
-    restoreFocus();
-  }, [restoreFocus]);
+  const handleBlur = useCallback(
+    (event?: FocusEvent<HTMLInputElement>, cell?: Cell<T>) => {
+      const isNumberCell = cell?.type === 'number';
+      const isTextCell = cell?.type === 'text';
+
+      if (isNumberCell || isTextCell) {
+        updateItems([cell], [isNumberCell ? Number(event?.target.value) : event?.target.value]);
+      }
+
+      restoreFocus();
+    },
+    [restoreFocus, updateItems],
+  );
 
   const handleChange = useCallback(
     (newValue: unknown) => {
@@ -58,6 +68,7 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
 
       switch (key) {
         case 'Enter':
+        case 'Tab':
           event.preventDefault();
 
           // Only call updateItems if cells have new values

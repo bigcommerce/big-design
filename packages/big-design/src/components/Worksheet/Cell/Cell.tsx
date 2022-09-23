@@ -47,6 +47,11 @@ const InternalCell = <T extends WorksheetItem>({
   const addInvalidCells = useStore(store, (state) => state.addInvalidCells);
   const removeInvalidCells = useStore(store, (state) => state.removeInvalidCells);
 
+  const editWithValue = useStore(
+    store,
+    useMemo(() => (state) => state.editWithValue, []),
+  );
+
   const isSelected = useStore(
     store,
     useMemo(
@@ -147,6 +152,7 @@ const InternalCell = <T extends WorksheetItem>({
         return isEditing && !disabled ? (
           <TextEditor
             cell={cell}
+            initialValue={editWithValue}
             isEdited={isEdited}
             onBlur={handleBlur}
             onKeyDown={handleKeyDown}
@@ -160,15 +166,16 @@ const InternalCell = <T extends WorksheetItem>({
   }, [
     cell,
     disabled,
+    editWithValue,
     formatting,
     handleBlur,
     handleChange,
     handleKeyDown,
-    isEdited,
     isEditing,
+    isEdited,
     options,
-    rowId,
     renderedValue,
+    rowId,
     type,
   ]);
 

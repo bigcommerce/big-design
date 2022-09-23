@@ -9,6 +9,7 @@ export interface BaseState<Item> {
   columns: Array<InternalWorksheetColumn<Item>>;
   editedCells: Array<Cell<Item>>;
   editingCell: Cell<Item> | null;
+  editWithValue: string;
   expandableRows: ExpandableRows;
   disabledRows: DisabledRows;
   hiddenRows: Array<string | number>;
@@ -22,11 +23,11 @@ export interface BaseState<Item> {
   addInvalidCells: (cells: Array<Cell<Item>>) => void;
   removeInvalidCells: (cells: Array<Cell<Item>>) => void;
   setColumns: (columns: Array<InternalWorksheetColumn<Item>>) => void;
-  setEditingCell: (cell: Cell<Item> | null) => void;
   setExpandableRows: (
     expandableRows: ExpandableRows,
     defaultExpandedRows?: Array<string | number>,
   ) => void;
+  setEditingCell: (cell: Cell<Item> | null, editWithValue?: string) => void;
   setDisabledRows: (disabledRows: DisabledRows) => void;
   setHiddenRows: (hiddenRow: Array<string | number>) => void;
   setOpenModal: (value: keyof Item | null) => void;
@@ -41,6 +42,7 @@ export const createWorksheetStore = <Item>() =>
     columns: [],
     editedCells: [],
     editingCell: null,
+    editWithValue: '',
     expandableRows: {},
     disabledRows: [],
     hiddenRows: [],
@@ -57,13 +59,14 @@ export const createWorksheetStore = <Item>() =>
     removeInvalidCells: (cells) =>
       set((state) => ({ ...state, invalidCells: deleteCells(state.invalidCells, cells) })),
     setColumns: (columns) => set((state) => ({ ...state, columns })),
-    setEditingCell: (cell) => set((state) => ({ ...state, editingCell: cell })),
     setExpandableRows: (expandableRows, defaultExpandedRows) =>
       set((state) => ({
         ...state,
         expandableRows,
         hiddenRows: getHiddenRows(expandableRows, defaultExpandedRows),
       })),
+    setEditingCell: (cell, editWithValue = '') =>
+      set((state) => ({ ...state, editingCell: cell, editWithValue })),
     setDisabledRows: (disabledRows) => set((state) => ({ ...state, disabledRows })),
     setHiddenRows: (hiddenRows) => set((state) => ({ ...state, hiddenRows })),
     setOpenModal: (value) => set((state) => ({ ...state, openedModal: value })),

@@ -309,6 +309,31 @@ describe('edition', () => {
     ]);
   });
 
+  test('onChange is called when value changes after focus out', () => {
+    const { getByText, getByRole, getByDisplayValue } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    fireEvent.click(getByText('Shoes Name Three'));
+
+    fireEvent.keyDown(getByRole('table'), { key: 'H' });
+
+    expect(getByDisplayValue('H')).toBeDefined();
+
+    fireEvent.blur(getByDisplayValue('H'));
+
+    expect(handleChange).toHaveBeenCalledWith([
+      {
+        id: 1,
+        productName: 'H',
+        visibleOnStorefront: true,
+        otherField: 'Text',
+        otherField2: 1,
+        numberField: 50,
+      },
+    ]);
+  });
+
   test('regains focus when it stops editing', () => {
     const { getByText, getByDisplayValue, getByRole } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
@@ -510,6 +535,20 @@ describe('keyboard navigation', () => {
     fireEvent.keyDown(worksheet, { key: 'Enter' });
 
     expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
+  });
+
+  test('typing starts editing the cell', () => {
+    const { getByDisplayValue, getByText, getByRole } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const worksheet = getByRole('table');
+    const cell = getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+    fireEvent.keyDown(worksheet, { key: 'a' });
+
+    expect(getByDisplayValue('a')).toBeDefined();
   });
 
   test('space starts editing the cell', () => {
