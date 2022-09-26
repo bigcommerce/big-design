@@ -74,6 +74,7 @@ const InternalActions = <T extends TableItem>({
           isExpandable={isExpandable}
           items={items}
           onChange={onSelectionChange}
+          pagination={pagination}
           selectedItems={selectedItems}
           totalItems={totalItems}
         />
