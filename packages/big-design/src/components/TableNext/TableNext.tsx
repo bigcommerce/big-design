@@ -14,6 +14,7 @@ import {
   ExpandableHeaderCell,
   HeaderCheckboxCell,
 } from './HeaderCell/HeaderCell';
+import { getPagedIndex } from './helpers';
 import { useExpandable, useSelectable } from './hooks';
 import { RowContainer } from './RowContainer';
 import { StyledTable, StyledTableFigure } from './styled';
@@ -166,6 +167,7 @@ const InternalTableNext = <T extends TableItem>(
         <Body ref={provided.innerRef} withFirstRowBorder={headerless} {...provided.droppableProps}>
           {items.map((item: T, index) => {
             const key = getItemKey(item, index);
+            const pagedIndex = getPagedIndex(index, pagination);
 
             return (
               <Draggable draggableId={String(key)} index={index} key={key}>
@@ -186,7 +188,7 @@ const InternalTableNext = <T extends TableItem>(
                     key={key}
                     onExpandedRow={onExpandedRow}
                     onItemSelect={onItemSelect}
-                    parentRowIndex={index}
+                    parentRowIndex={pagedIndex}
                     ref={provided.innerRef}
                     selectedItems={selectedItems}
                     showDragIcon={true}
@@ -208,6 +210,7 @@ const InternalTableNext = <T extends TableItem>(
       <Body withFirstRowBorder={headerless}>
         {items.map((item: T, index) => {
           const key = getItemKey(item, index);
+          const pagedIndex = getPagedIndex(index, pagination);
 
           return (
             <RowContainer
@@ -224,7 +227,7 @@ const InternalTableNext = <T extends TableItem>(
               key={key}
               onExpandedRow={onExpandedRow}
               onItemSelect={onItemSelect}
-              parentRowIndex={index}
+              parentRowIndex={pagedIndex}
               selectedItems={selectedItems}
             />
           );

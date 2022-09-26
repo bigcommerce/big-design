@@ -1,42 +1,17 @@
-import { TableExpandable, TableSelectable } from '../types';
-
 import {
   areAllInPageSelected,
   areSomeInPageSelected,
+  getSelectAllState,
   getTotalSelectedItems,
-  selectAll,
 } from './helpers';
+import { SelectAllProps } from './SelectAll';
 
-interface useSelectAllStateProps<T> {
-  isExpandable: boolean;
-  items: T[];
-  selectedItems: TableSelectable['selectedItems'];
-  expandedRowSelector?: TableExpandable<T>['expandedRowSelector'];
-  onChange?: TableSelectable['onSelectionChange'];
-}
+export const useSelectAllState = <T>(props: SelectAllProps<T>) => {
+  const { selectedItems, onChange } = props;
 
-export const useSelectAllState = <T>({
-  expandedRowSelector,
-  isExpandable,
-  items,
-  selectedItems,
-  onChange,
-}: useSelectAllStateProps<T>) => {
-  const allInPageSelected = areAllInPageSelected({
-    expandedRowSelector,
-    isExpandable,
-    items,
-    selectedItems,
-  });
-
-  const someInPageSelected = areSomeInPageSelected({
-    expandedRowSelector,
-    isExpandable,
-    items,
-    selectedItems,
-  });
-
-  const totalSelectedItems = getTotalSelectedItems(items, selectedItems);
+  const allInPageSelected = areAllInPageSelected(props);
+  const someInPageSelected = areSomeInPageSelected(props);
+  const totalSelectedItems = getTotalSelectedItems(selectedItems);
   const label = allInPageSelected ? 'Deselect All' : 'Select All';
 
   const handleSelectAll = () => {
@@ -44,15 +19,7 @@ export const useSelectAllState = <T>({
       return;
     }
 
-    if (allInPageSelected) {
-      return onChange({});
-    }
-
-    const newSelectedItems = selectAll({
-      expandedRowSelector,
-      isExpandable,
-      items,
-    });
+    const newSelectedItems = getSelectAllState(props);
 
     return onChange(newSelectedItems);
   };

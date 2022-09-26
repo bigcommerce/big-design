@@ -3,7 +3,7 @@ import React from 'react';
 import { Checkbox } from '../../Checkbox';
 import { Flex, FlexItem } from '../../Flex';
 import { Text } from '../../Typography';
-import { TableExpandable, TableItem, TableSelectable } from '../types';
+import { TableExpandable, TableItem, TablePaginationProps, TableSelectable } from '../types';
 
 import { useSelectAllState } from './useSelectAllState';
 
@@ -14,18 +14,14 @@ export interface SelectAllProps<T> {
   onChange?: TableSelectable['onSelectionChange'];
   selectedItems: TableSelectable['selectedItems'];
   totalItems: number;
+  pagination?: TablePaginationProps;
 }
 
-export const SelectAll = <T extends TableItem>({
-  expandedRowSelector,
-  isExpandable,
-  items = [],
-  onChange,
-  selectedItems,
-  totalItems,
-}: SelectAllProps<T>) => {
+export const SelectAll = <T extends TableItem>(props: SelectAllProps<T>) => {
   const { allInPageSelected, handleSelectAll, label, someInPageSelected, totalSelectedItems } =
-    useSelectAllState({ expandedRowSelector, isExpandable, items, selectedItems, onChange });
+    useSelectAllState(props);
+
+  const { totalItems } = props;
 
   return (
     <FlexItem flexShrink={0} marginRight="xxSmall">

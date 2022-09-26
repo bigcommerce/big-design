@@ -211,42 +211,262 @@ test('renders the total number of items + item name', () => {
   expect(itemNameNode).toBeInTheDocument();
 });
 
-test('renders a pagination component', async () => {
-  const onItemsPerPageChange = jest.fn();
-  const onPageChange = jest.fn();
+describe('pagination', () => {
+  test('renders a pagination component', async () => {
+    const onItemsPerPageChange = jest.fn();
+    const onPageChange = jest.fn();
 
-  const { container, findByRole, getByTitle } = render(
-    <TableNext
-      columns={[
-        { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
-        { header: 'Name', hash: 'name', render: ({ name }) => name },
-        { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
-      ]}
-      items={[
-        { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-        { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
-        { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
-        { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
-        { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
-      ]}
-      keyField="sku"
-      pagination={{
-        currentPage: 1,
-        itemsPerPage: 3,
-        totalItems: 5,
-        itemsPerPageOptions: [3, 5, 10],
-        onItemsPerPageChange,
-        onPageChange,
-      }}
-    />,
-  );
+    const { container, findByRole, getByTitle } = render(
+      <TableNext
+        columns={[
+          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+          { header: 'Name', hash: 'name', render: ({ name }) => name },
+          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+        ]}
+        items={[
+          { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+          { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+          { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+          { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+          { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+        ]}
+        keyField="sku"
+        pagination={{
+          currentPage: 1,
+          itemsPerPage: 3,
+          totalItems: 5,
+          itemsPerPageOptions: [3, 5, 10],
+          onItemsPerPageChange,
+          onPageChange,
+        }}
+      />,
+    );
 
-  fireEvent.click(getByTitle('Next page'));
+    fireEvent.click(getByTitle('Next page'));
 
-  await findByRole('table');
+    await findByRole('table');
 
-  expect(onPageChange).toHaveBeenCalledWith(2);
-  expect(container.firstChild).toMatchSnapshot();
+    expect(onPageChange).toHaveBeenCalledWith(2);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('selection persists indexes on other pages', async () => {
+    const onSelectionChange = jest.fn();
+
+    const items = [
+      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+    ];
+
+    render(
+      <TableNext
+        columns={[
+          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+          { header: 'Name', hash: 'name', render: ({ name }) => name },
+          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+        ]}
+        items={items.filter((_, index) => index >= 3 && index < 6)}
+        keyField="sku"
+        pagination={{
+          currentPage: 2,
+          itemsPerPage: 3,
+          totalItems: items.length,
+          itemsPerPageOptions: [3, 5, 10],
+          onItemsPerPageChange: jest.fn(),
+          onPageChange: jest.fn(),
+        }}
+        selectable={{
+          selectedItems: { 0: true },
+          onSelectionChange,
+        }}
+      />,
+    );
+
+    const [, firstRow] = await screen.findAllByRole('row');
+    const firstRowCheckbox = within(firstRow).getByRole('checkbox');
+
+    await userEvent.click(firstRowCheckbox);
+
+    expect(onSelectionChange).toHaveBeenCalledWith({ 0: true, 3: true });
+  });
+
+  test('deselection persists indexes on other pages', async () => {
+    const onSelectionChange = jest.fn();
+
+    const items = [
+      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+    ];
+
+    render(
+      <TableNext
+        columns={[
+          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+          { header: 'Name', hash: 'name', render: ({ name }) => name },
+          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+        ]}
+        items={items.filter((_, index) => index >= 3 && index < 6)}
+        keyField="sku"
+        pagination={{
+          currentPage: 2,
+          itemsPerPage: 3,
+          totalItems: items.length,
+          itemsPerPageOptions: [3, 5, 10],
+          onItemsPerPageChange: jest.fn(),
+          onPageChange: jest.fn(),
+        }}
+        selectable={{
+          selectedItems: { 0: true, 3: true },
+          onSelectionChange,
+        }}
+      />,
+    );
+
+    const [, firstRow] = await screen.findAllByRole('row');
+    const firstRowCheckbox = within(firstRow).getByRole('checkbox');
+
+    await userEvent.click(firstRowCheckbox);
+
+    expect(onSelectionChange).toHaveBeenCalledWith({ 0: true });
+  });
+
+  test('select all persists indexes on other pages', async () => {
+    const onSelectionChange = jest.fn();
+
+    const items = [
+      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+    ];
+
+    render(
+      <TableNext
+        columns={[
+          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+          { header: 'Name', hash: 'name', render: ({ name }) => name },
+          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+        ]}
+        items={items.filter((_, index) => index >= 3 && index < 6)}
+        keyField="sku"
+        pagination={{
+          currentPage: 2,
+          itemsPerPage: 3,
+          totalItems: items.length,
+          itemsPerPageOptions: [3, 5, 10],
+          onItemsPerPageChange: jest.fn(),
+          onPageChange: jest.fn(),
+        }}
+        selectable={{
+          selectedItems: { 0: true, 3: true },
+          onSelectionChange,
+        }}
+      />,
+    );
+
+    const selectAll = await screen.findByRole('checkbox', { name: /select all/i });
+
+    await userEvent.click(selectAll);
+
+    expect(onSelectionChange).toHaveBeenCalledWith({ 0: true, 3: true, 4: true });
+  });
+
+  test('deselect all persists indexes on other pages', async () => {
+    const onSelectionChange = jest.fn();
+
+    const items = [
+      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+    ];
+
+    render(
+      <TableNext
+        columns={[
+          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+          { header: 'Name', hash: 'name', render: ({ name }) => name },
+          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+        ]}
+        items={items.filter((_, index) => index >= 3 && index < 6)}
+        keyField="sku"
+        pagination={{
+          currentPage: 2,
+          itemsPerPage: 3,
+          totalItems: items.length,
+          itemsPerPageOptions: [3, 5, 10],
+          onItemsPerPageChange: jest.fn(),
+          onPageChange: jest.fn(),
+        }}
+        selectable={{
+          selectedItems: { 0: true, 3: true, 4: true },
+          onSelectionChange,
+        }}
+      />,
+    );
+
+    const deselectAll = await screen.findByRole('checkbox', { name: /deselect all/i });
+
+    await userEvent.click(deselectAll);
+
+    expect(onSelectionChange).toHaveBeenCalledWith({ 0: true });
+  });
+
+  test("selected expandable rows doesn't count towards total selected items", () => {
+    const items = [
+      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+      {
+        sku: 'CLC',
+        name: '[Sample] Canvas Laundry Cart',
+        stock: 2,
+        variants: [{ sku: 'CLC-RED', name: '[Sample] Canvas Laundry Cart - Red', stock: 2 }],
+      },
+      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+    ];
+
+    render(
+      <TableNext
+        columns={[
+          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+          { header: 'Name', hash: 'name', render: ({ name }) => name },
+          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+        ]}
+        expandable={{
+          expandedRows: {},
+          onExpandedChange: jest.fn(),
+          expandedRowSelector: (row) => row?.variants,
+        }}
+        items={items.filter((_, index) => index >= 3 && index < 6)}
+        keyField="sku"
+        pagination={{
+          currentPage: 2,
+          itemsPerPage: 3,
+          totalItems: items.length,
+          itemsPerPageOptions: [3, 5, 10],
+          onItemsPerPageChange: jest.fn(),
+          onPageChange: jest.fn(),
+        }}
+        selectable={{
+          selectedItems: { 0: true, 3: true, '3.0': true, 4: true },
+          onSelectionChange: jest.fn(),
+        }}
+      />,
+    );
+
+    const selectedItems = screen.getByText('3/5');
+
+    expect(selectedItems).toBeInTheDocument();
+  });
 });
 
 describe('selectable', () => {
