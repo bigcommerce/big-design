@@ -58,7 +58,9 @@ const ColorCard: React.FC<ColorCardProps> = ({ colorCard }) => {
           {description.text}{' '}
           {Boolean(description.href) && (
             <Link href={description.href} target="_blank">
-              <Small color="inherit">Read more</Small>
+              <Small as="span" color="inherit">
+                Read more
+              </Small>
             </Link>
           )}
         </Small>
