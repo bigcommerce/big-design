@@ -1,3 +1,4 @@
+import { IconProps } from '@bigcommerce/big-design-icons';
 import React, { cloneElement, isValidElement, memo, useCallback, useMemo } from 'react';
 
 import { DropdownItem, DropdownLinkItem } from '../../Dropdown';
@@ -28,7 +29,7 @@ export const Content = memo(({ item, isHighlighted }: ContentProps) => {
 
   const renderIcon = useMemo(
     () =>
-      isValidElement(item.icon) &&
+      isValidElement<IconProps>(item.icon) &&
       cloneElement(item.icon, {
         color: iconColor,
         size: 'large',

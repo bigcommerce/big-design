@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a pagination component 1`] = `
+exports[`pagination renders a pagination component 1`] = `
 .c10 {
   vertical-align: middle;
   height: 2rem;

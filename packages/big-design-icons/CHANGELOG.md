@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.20.0...@bigcommerce/big-design-icons@0.20.1) (2022-09-27)
+
+
+### Features
+
+* **deps:** unfork from flag-icons dependency ([ac723e3](https://github.com/bigcommerce/big-design/commit/ac723e384ec3c482d78107558cd31e7793a515f1))
+
+
+
+
+
 # [0.20.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.19.2-alpha.0...@bigcommerce/big-design-icons@0.20.0) (2022-08-17)
 
 **Note:** Version bump only for package @bigcommerce/big-design-icons
