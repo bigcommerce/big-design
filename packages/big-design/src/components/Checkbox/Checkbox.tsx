@@ -1,5 +1,12 @@
 import { CheckIcon, RemoveIcon } from '@bigcommerce/big-design-icons';
-import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo } from 'react';
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  LabelHTMLAttributes,
+  Ref,
+  useMemo,
+} from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
@@ -66,8 +73,11 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       );
     }
 
-    if (isValidElement(label) && label.type === CheckboxLabel) {
-      return cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, {
+    if (
+      isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+      label.type === CheckboxLabel
+    ) {
+      return cloneElement(label, {
         hidden: hiddenLabel,
         htmlFor: id,
         id: labelId,
