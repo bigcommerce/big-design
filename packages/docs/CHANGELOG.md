@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.33.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.33.0...@bigcommerce/docs@0.33.1) (2022-09-27)
+
+
+### Bug Fixes
+
+* **component:** render empty string when prop is undefined ([#961](https://github.com/bigcommerce/big-design/issues/961)) ([c286723](https://github.com/bigcommerce/big-design/commit/c286723f9a6c641243ed9571508ba5bb352918b8))
+
+
+### Features
+
+* **component:** allow custom column widths and overflow worksheet ([#975](https://github.com/bigcommerce/big-design/issues/975)) ([272dc39](https://github.com/bigcommerce/big-design/commit/272dc3973cc7d8ce4d20f82d80ab89e519c3704a))
+* **component:** inv-1713 Implement default expanded worksheet rows ([#974](https://github.com/bigcommerce/big-design/issues/974)) ([6d7c32b](https://github.com/bigcommerce/big-design/commit/6d7c32ba05b798e75543895e29402b9329e403ac))
+* **deps:** unfork from flag-icons dependency ([ac723e3](https://github.com/bigcommerce/big-design/commit/ac723e384ec3c482d78107558cd31e7793a515f1))
+
+
+### BREAKING CHANGES
+
+* **component:** Text in columns will wrap (instead of ellipsis) and Worksheet will have a scrollable overflow if larger than viewport.
+
+
+
+
+
 # [0.33.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.32.2-alpha.0...@bigcommerce/docs@0.33.0) (2022-08-17)
 
 
