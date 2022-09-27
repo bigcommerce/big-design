@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.34.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.33.1...@bigcommerce/docs@0.34.0) (2022-09-27)
+
+
+### Features
+
+* **deps:** react@18 support ([51c688b](https://github.com/bigcommerce/big-design/commit/51c688b282277964eb01c1ed67c5c27cc0bc4c3e))
+
+
+
+
+
 ## [0.33.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.33.0...@bigcommerce/docs@0.33.1) (2022-09-27)
 
 

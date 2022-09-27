@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.16.1...@bigcommerce/big-design-theme@0.17.0) (2022-09-27)
+
+
+### Features
+
+* **deps:** react@18 support ([51c688b](https://github.com/bigcommerce/big-design/commit/51c688b282277964eb01c1ed67c5c27cc0bc4c3e))
+
+
+
+
+
 ## [0.16.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.16.0...@bigcommerce/big-design-theme@0.16.1) (2022-09-27)
 
 **Note:** Version bump only for package @bigcommerce/big-design-theme
