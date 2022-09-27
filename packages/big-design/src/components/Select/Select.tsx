@@ -3,6 +3,7 @@ import React, {
   cloneElement,
   createRef,
   isValidElement,
+  LabelHTMLAttributes,
   RefObject,
   useCallback,
   useEffect,
@@ -250,8 +251,11 @@ export const Select = typedMemo(
         );
       }
 
-      if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, getLabelProps());
+      if (
+        isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+        label.type === FormControlLabel
+      ) {
+        return cloneElement(label, getLabelProps());
       }
 
       warning('label must be either a string or a FormControlLabel component.');

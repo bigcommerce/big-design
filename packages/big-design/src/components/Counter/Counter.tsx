@@ -4,6 +4,7 @@ import React, {
   forwardRef,
   InputHTMLAttributes,
   isValidElement,
+  LabelHTMLAttributes,
   Ref,
   useEffect,
   useMemo,
@@ -159,8 +160,11 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
         );
       }
 
-      if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, {
+      if (
+        isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+        label.type === FormControlLabel
+      ) {
+        return cloneElement(label, {
           id: labelId,
           htmlFor: id,
         });

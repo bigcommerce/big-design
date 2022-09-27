@@ -1,4 +1,12 @@
-import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo, useState } from 'react';
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  LabelHTMLAttributes,
+  Ref,
+  useMemo,
+  useState,
+} from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
@@ -68,8 +76,11 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
       );
     }
 
-    if (isValidElement(label) && label.type === FormControlLabel) {
-      return cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, {
+    if (
+      isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+      label.type === FormControlLabel
+    ) {
+      return cloneElement(label, {
         id: labelId,
         htmlFor: id,
       });

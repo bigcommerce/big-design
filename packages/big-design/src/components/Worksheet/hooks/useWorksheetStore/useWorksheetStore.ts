@@ -1,7 +1,13 @@
 import { useContext } from 'react';
 import { createStore, useStore } from 'zustand';
 
-import { Cell, DisabledRows, ExpandableRows, InternalWorksheetColumn } from '../../types';
+import {
+  Cell,
+  DisabledRows,
+  ExpandableRows,
+  InternalWorksheetColumn,
+  WorksheetItem,
+} from '../../types';
 import { deleteCells, getHiddenRows, mergeCells } from '../../utils';
 import { WorksheetContext } from '../../Worksheet';
 
@@ -36,7 +42,7 @@ export interface BaseState<Item> {
   setTableRef: (ref: HTMLTableElement | null) => void;
 }
 
-export const createWorksheetStore = <Item>() =>
+export const createWorksheetStore = <Item extends WorksheetItem>() =>
   createStore<BaseState<Item>>((set) => ({
     columns: [],
     editedCells: [],

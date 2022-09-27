@@ -1,4 +1,11 @@
-import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo } from 'react';
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  LabelHTMLAttributes,
+  Ref,
+  useMemo,
+} from 'react';
 
 import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
@@ -50,8 +57,8 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
       );
     }
 
-    if (isValidElement(label) && label.type === RadioLabel) {
-      return cloneElement<React.LabelHTMLAttributes<HTMLLabelElement>>(label, {
+    if (isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) && label.type === RadioLabel) {
+      return cloneElement(label, {
         htmlFor: id,
         id: labelId,
       });
