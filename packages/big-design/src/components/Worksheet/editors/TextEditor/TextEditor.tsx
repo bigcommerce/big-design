@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { typedMemo } from '../../../../utils';
 import { EditableCellOnKeyDown } from '../../hooks';
@@ -8,24 +8,35 @@ import { StyledInput } from './styled';
 
 export interface TextEditorProps<Item> {
   cell: Cell<Item>;
+  initialValue?: string;
   isEdited: boolean;
-  onBlur(): void;
+  onBlur(event?: React.FocusEvent<HTMLInputElement>, cell?: Cell<Item>): void;
   onKeyDown: EditableCellOnKeyDown;
 }
 
 const InternalTextEditor = <T extends WorksheetItem>({
   cell,
   isEdited,
+  initialValue,
   onBlur,
   onKeyDown,
 }: TextEditorProps<T>) => {
-  const [value, setValue] = useState(`${cell.value}`);
+  const [value, setValue] = useState(initialValue || `${cell.value}`);
+  const isBlurBlocked = useRef(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    // Avoiding the calling of `onBlur` when user press `Escape`
+    // since we handle `onBlur` as saving of the cell data and it conflicts;
+    if (event.key === 'Escape') {
+      isBlurBlocked.current = true;
+    } else {
+      isBlurBlocked.current = false;
+    }
+
     // We always receive the value as a string type, cast to Number if column type is number
     onKeyDown(event, formatValue(value));
   };
@@ -37,7 +48,11 @@ const InternalTextEditor = <T extends WorksheetItem>({
     <StyledInput
       autoFocus
       isEdited={isEdited}
-      onBlur={onBlur}
+      onBlur={(event?: React.FocusEvent<HTMLInputElement>) => {
+        if (!isBlurBlocked.current) {
+          onBlur(event, cell);
+        }
+      }}
       onChange={handleChange}
       onKeyDown={handleKeyDown}
       value={value}

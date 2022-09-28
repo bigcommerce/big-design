@@ -20,11 +20,14 @@ export const useKeyEvents = () => {
 
   const { navigate } = useNavigation(selectedCell);
 
-  const editSelectedCell = useCallback(() => {
-    if (selectedCell) {
-      setEditingCell(selectedCell);
-    }
-  }, [selectedCell, setEditingCell]);
+  const editSelectedCell = useCallback(
+    (editWithValue = '') => {
+      if (selectedCell) {
+        setEditingCell(selectedCell, editWithValue);
+      }
+    },
+    [selectedCell, setEditingCell],
+  );
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent) => {
@@ -79,6 +82,15 @@ export const useKeyEvents = () => {
           case 'ArrowLeft':
             navigate({ rowIndex: 0, columnIndex: -1 });
             break;
+
+          default:
+            if (
+              key !== 'Escape' &&
+              (selectedCell.type === 'text' || selectedCell.type === 'number')
+            ) {
+              event.preventDefault();
+              editSelectedCell(key);
+            }
         }
 
         event.preventDefault();
