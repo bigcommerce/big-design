@@ -24,6 +24,7 @@ const InternalWorksheet = typedMemo(
     defaultExpandedRows,
     disabledRows,
     items,
+    minWidth,
     onChange,
     onErrors,
   }: WorksheetProps<T>): React.ReactElement<WorksheetProps<T>> => {
@@ -133,6 +134,7 @@ const InternalWorksheet = typedMemo(
         <StyledBox>
           <Table
             hasStaticWidth={tableHasStaticWidth}
+            minWidth={minWidth}
             onKeyDown={handleKeyDown}
             ref={tableRef}
             tabIndex={0}

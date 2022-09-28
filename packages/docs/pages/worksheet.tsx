@@ -267,6 +267,7 @@ const WorksheetPage = () => {
                       <Worksheet
                         columns={columns}
                         items={items}
+                        minWidth={900}
                         onChange={(items) => items}
                         onErrors={(items) => items}
                       />

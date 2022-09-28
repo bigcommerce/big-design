@@ -5,7 +5,7 @@ exports[`renders worksheet 1`] = `
   class="styled__StyledBox-sc-sj5f1m-0 gHBxjL styled__StyledBox-sc-16rzzpq-2 jjhxof"
 >
   <table
-    class="styled__Table-sc-16rzzpq-0 hiKdjk"
+    class="styled__Table-sc-16rzzpq-0 iumFEW"
     tabindex="0"
   >
     <thead>
@@ -14,27 +14,27 @@ exports[`renders worksheet 1`] = `
           class="styled__Status-sc-1aacki0-0 eDVZgo"
         />
         <th
-          class="styled__Header-sc-16rzzpq-1 cRvCWu"
+          class="styled__Header-sc-16rzzpq-1 bAyhTK"
         >
           Product name
         </th>
         <th
-          class="styled__Header-sc-16rzzpq-1 biTmCe"
+          class="styled__Header-sc-16rzzpq-1 iEhMHd"
         >
           Visible on storefront
         </th>
         <th
-          class="styled__Header-sc-16rzzpq-1 cRvCWu"
+          class="styled__Header-sc-16rzzpq-1 bAyhTK"
         >
           Other field
         </th>
         <th
-          class="styled__Header-sc-16rzzpq-1 cRvCWu"
+          class="styled__Header-sc-16rzzpq-1 bAyhTK"
         >
           Other field
         </th>
         <th
-          class="styled__Header-sc-16rzzpq-1 cyFJXl"
+          class="styled__Header-sc-16rzzpq-1 ZLAqT"
         >
           Number field
         </th>
