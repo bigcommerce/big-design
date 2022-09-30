@@ -5,9 +5,12 @@ import { Box } from '../Box';
 
 import { InternalWorksheetColumn } from './types';
 
-export const Table = styled.table<{ hasStaticWidth: boolean }>`
+export const Table = styled.table<{ minWidth?: number; hasStaticWidth: boolean }>`
   border-collapse: collapse;
   border-spacing: 0;
+  min-width: ${({ minWidth, hasStaticWidth }) =>
+    minWidth && !hasStaticWidth ? `${minWidth}px` : 'auto'};
+  table-layout: fixed;
   width: ${({ hasStaticWidth }) => (hasStaticWidth ? 'auto' : '100%')};
 
   &:focus {
@@ -24,8 +27,6 @@ export const Header = styled.th<{
   color: ${({ theme }) => theme.colors.secondary60};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   height: ${({ theme }) => theme.helpers.remCalc(52)};
-  min-width: ${({ columnWidth }) =>
-    typeof columnWidth === 'string' ? columnWidth : `${columnWidth}px`};
   overflow: hidden;
   padding: ${({ theme }) => `0 ${theme.helpers.remCalc(17)}`};
   text-align: ${({ columnType }) => (columnType === 'number' ? 'right' : 'left')};

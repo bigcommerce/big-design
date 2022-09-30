@@ -94,6 +94,11 @@ const worksheetProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'minWidth',
+    types: 'number',
+    description: 'Sets a min-width.',
+  },
 ];
 
 const worksheetTextColumnProps: Prop[] = [
