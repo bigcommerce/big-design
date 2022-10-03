@@ -19,9 +19,9 @@ import { useInputErrors } from '../Form/useInputErrors';
 import { StyledCounterButton, StyledCounterInput, StyledCounterWrapper } from './styled';
 
 export interface CounterProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: React.ReactChild;
+  label?: React.ReactNode;
   labelId?: string;
-  description?: React.ReactChild;
+  description?: React.ReactNode;
   error?: React.ReactNode | React.ReactNode[];
   value: number;
   step?: number;
@@ -74,9 +74,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       return onBlur && onBlur(event);
     };
 
-    const handleIncrease = (event: React.KeyboardEvent | React.MouseEvent) => {
-      event.preventDefault();
-
+    const handleIncrease = () => {
       if (value + step > max) {
         return;
       }
@@ -91,9 +89,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       }
     };
 
-    const handleDecrease = (event: React.KeyboardEvent | React.MouseEvent) => {
-      event.preventDefault();
-
+    const handleDecrease = () => {
       if (value - step < min) {
         return;
       }
@@ -127,15 +123,11 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     const handleKeyPress = (event: React.KeyboardEvent) => {
       switch (event.key) {
         case 'ArrowUp':
-          handleIncrease(event);
+          handleIncrease();
           break;
 
         case 'ArrowDown':
-          handleDecrease(event);
-          break;
-
-        case 'Enter':
-          event.preventDefault();
+          handleDecrease();
           break;
 
         case 'Escape':
@@ -198,6 +190,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
             disabled={disabled || value <= min}
             iconOnly={<RemoveCircleOutlineIcon title="Decrease count" />}
             onClick={handleDecrease}
+            type="button"
           />
           <StyledCounterInput
             {...props}
@@ -215,6 +208,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
             disabled={disabled || value >= max}
             iconOnly={<AddCircleOutlineIcon title="Increase count" />}
             onClick={handleIncrease}
+            type="button"
           />
         </StyledCounterWrapper>
       </div>
