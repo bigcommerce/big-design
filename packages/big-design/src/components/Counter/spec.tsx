@@ -1,9 +1,8 @@
+import userEvent from '@testing-library/user-event';
 import React, { createRef, Ref } from 'react';
 import 'jest-styled-components';
 
-import userEvent from '@testing-library/user-event';
-
-import { fireEvent, render, screen } from '@test/utils';
+import { render, screen } from '@test/utils';
 
 import { Button } from '../Button';
 import {
@@ -256,12 +255,8 @@ test('buttons are disabled when value hits max or min', () => {
   expect(buttons[1]).toHaveProperty('disabled', true);
 });
 
-test('value prop only accepts whole numbers', () => {
-  const { container } = render(counterMock({ max: 20, ...requiredAttributes }));
-
-  const input = container.getElementsByTagName('input');
-
-  fireEvent.change(input[0], { target: { value: 1.5 } });
+test('value prop only accepts whole numbers', async () => {
+  render(counterMock({ max: 20, ...requiredAttributes, value: 1.5 }));
 
   expect(handleChange).toHaveBeenCalledWith(2);
 });
@@ -275,16 +270,16 @@ test('value increases when increase or decrease icons are clicked', async () => 
 
   expect(counter.value).toBe('5');
 
-  fireEvent.click(icons[1]);
+  await userEvent.click(icons[1]);
 
   expect(handleChange).toHaveBeenCalledWith(6);
 
-  fireEvent.click(icons[0]);
+  await userEvent.click(icons[0]);
 
   expect(handleChange).toHaveBeenCalledWith(4);
 });
 
-test('value increases and decreases with arrow keypresses', () => {
+test('value increases and decreases with arrow keypresses', async () => {
   render(counterMock(requiredAttributes));
 
   const counter = screen.getByDisplayValue<HTMLInputElement>('5');
@@ -293,45 +288,45 @@ test('value increases and decreases with arrow keypresses', () => {
 
   expect(counter.value).toBe('5');
 
-  fireEvent.keyDown(counter, { key: 'ArrowUp', code: 'ArrowUp' });
+  await userEvent.keyboard('{arrowUp}');
 
   expect(handleChange).toHaveBeenCalledWith(6);
 
-  fireEvent.keyDown(counter, { key: 'ArrowDown', code: 'ArrowDown' });
+  await userEvent.keyboard('{arrowDown}');
 
   expect(handleChange).toHaveBeenCalledWith(4);
 });
 
-test('value is set to 0 when pressing Escape', () => {
+test('value is set to 0 when pressing Escape', async () => {
   const { getByDisplayValue } = render(counterMock(requiredAttributes));
 
   const counter = getByDisplayValue('5');
 
   expect(counter.getAttribute('value')).toBe('5');
 
-  fireEvent.keyDown(counter, { key: 'Escape', code: 'Escape' });
+  await userEvent.type(counter, '{escape}');
 
   expect(handleChange).toHaveBeenCalledWith(0);
 });
 
-test('value does not change when pressing Enter', () => {
+test('value does not change when pressing Enter', async () => {
   const { getByDisplayValue } = render(counterMock(requiredAttributes));
 
   const counter = getByDisplayValue('5');
 
   expect(counter.getAttribute('value')).toBe('5');
 
-  fireEvent.keyDown(counter, { key: 'Enter', code: 'Enter' });
+  await userEvent.type(counter, '{enter}');
 
   expect(handleChange).not.toHaveBeenCalled();
 });
 
-test('provided onCountChange function is called on value change', () => {
+test('provided onCountChange function is called on value change', async () => {
   const { getByTitle } = render(counterMock(requiredAttributes));
 
   const increase = getByTitle('Increase count');
 
-  fireEvent.click(increase);
+  await userEvent.click(increase);
 
   expect(handleChange).toHaveBeenCalledWith(6);
 });
@@ -372,25 +367,23 @@ test('error shows when an array of Errors', () => {
   testIds.forEach((id) => expect(getByTestId(id)).toBeInTheDocument());
 });
 
-test('testing', async () => {
-  const handleOnSubmit = jest.fn((e) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+test('input value does not change when submitting the form via Enter key', async () => {
+  const handleOnSubmit = jest.fn((e: React.FormEvent) => {
     e.preventDefault();
   });
 
-  const { getByTestId } = render(
+  render(
     <Form onSubmit={handleOnSubmit}>
-      <FormGroup>
-        {counterMock({ ...requiredAttributes, dataTestId: 'counter-input', value: 5 })}
-      </FormGroup>
+      <FormGroup>{counterMock({ ...requiredAttributes })}</FormGroup>
       <Button type="submit">Save</Button>
     </Form>,
   );
 
-  const input = getByTestId('counter-input');
+  const input = await screen.findByDisplayValue<HTMLInputElement>('5');
 
-  await userEvent.type(input, '6{enter}');
+  await userEvent.type(input, '{enter}');
 
+  expect(handleChange).not.toHaveBeenCalled();
   expect(handleOnSubmit).toHaveBeenCalledTimes(1);
 });
 
