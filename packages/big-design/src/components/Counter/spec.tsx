@@ -1,9 +1,18 @@
 import React, { createRef, Ref } from 'react';
 import 'jest-styled-components';
 
+import userEvent from '@testing-library/user-event';
+
 import { fireEvent, render, screen } from '@test/utils';
 
-import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
+import { Button } from '../Button';
+import {
+  Form,
+  FormControlDescription,
+  FormControlError,
+  FormControlLabel,
+  FormGroup,
+} from '../Form';
 
 import { Counter, CounterProps } from './index';
 
@@ -361,6 +370,28 @@ test('error shows when an array of Errors', () => {
   );
 
   testIds.forEach((id) => expect(getByTestId(id)).toBeInTheDocument());
+});
+
+test('testing', async () => {
+  const handleOnSubmit = jest.fn((e) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    e.preventDefault();
+  });
+
+  const { getByTestId } = render(
+    <Form onSubmit={handleOnSubmit}>
+      <FormGroup>
+        {counterMock({ ...requiredAttributes, dataTestId: 'counter-input', value: 5 })}
+      </FormGroup>
+      <Button type="submit">Save</Button>
+    </Form>,
+  );
+
+  const input = getByTestId('counter-input');
+
+  await userEvent.type(input, '6{enter}');
+
+  expect(handleOnSubmit).toHaveBeenCalledTimes(1);
 });
 
 describe('error does not show when invalid type', () => {
