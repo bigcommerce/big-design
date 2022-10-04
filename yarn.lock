@@ -1014,9 +1014,9 @@
     regenerator-runtime "^0.13.4"
 
 "@babel/standalone@^7.15.6":
-  version "7.18.13"
-  resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.18.13.tgz#380fd841d95bfd55435282f323136c1ad2469b86"
-  integrity sha512-5hjvvFkaXyfQri+s4CAZtx6FTKclfTNd2QN2RwgzCVJhnYYgKh4YFBCnNJSxurzvpSKD2NmpCkoWAkMc+j9y+g==
+  version "7.19.3"
+  resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.19.3.tgz#c14f669c931e5579021b432c612bb4d027603ee8"
+  integrity sha512-zSdDx28L6f27Y59OMrl8mBbtyB/cpIGlHm7wVOHlcmUTpD10AiUILkekZATkkpsuTagTWezdJmUaeY8P2SONUA==
 
 "@babel/template@^7.18.10", "@babel/template@^7.3.3":
   version "7.18.10"
