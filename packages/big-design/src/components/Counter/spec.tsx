@@ -367,14 +367,14 @@ test('error shows when an array of Errors', () => {
   testIds.forEach((id) => expect(getByTestId(id)).toBeInTheDocument());
 });
 
-test('input value does not change when submitting the form via Enter key', async () => {
+test('input counter value does not change when using it inside a form', async () => {
   const handleOnSubmit = jest.fn((e: React.FormEvent) => {
     e.preventDefault();
   });
 
   render(
     <Form onSubmit={handleOnSubmit}>
-      <FormGroup>{counterMock({ ...requiredAttributes })}</FormGroup>
+      <FormGroup>{counterMock(requiredAttributes)}</FormGroup>
       <Button type="submit">Save</Button>
     </Form>,
   );
