@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.34.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.34.0...@bigcommerce/big-design@0.34.1) (2022-10-06)
+
+
+### Bug Fixes
+
+* **component:** fix counter component when submitting a form ([#992](https://github.com/bigcommerce/big-design/issues/992)) ([3e1dadd](https://github.com/bigcommerce/big-design/commit/3e1dadd9764ef7059ba991fb376db828538fc044))
+* **component:** fix table selection bug on individual rows ([f1a81ed](https://github.com/bigcommerce/big-design/commit/f1a81ed3ad3db0b8c051a6bffb8af902d8bf9188))
+* **component:** prevent column resizing when editing text field ([#991](https://github.com/bigcommerce/big-design/issues/991)) ([66c0b68](https://github.com/bigcommerce/big-design/commit/66c0b686560d2bbe159b2238e3c02b918b494df8))
+
+
+### Features
+
+* **component:** change updating cell strategy for text and number fields ([#984](https://github.com/bigcommerce/big-design/issues/984)) ([ffb23ad](https://github.com/bigcommerce/big-design/commit/ffb23ad71af29f6f97e1b4e2ab1a064c12674133))
+
+
+
+
+
 # [0.34.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.33.1...@bigcommerce/big-design@0.34.0) (2022-09-27)
 
 

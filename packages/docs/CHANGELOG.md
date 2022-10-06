@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.34.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.34.0...@bigcommerce/docs@0.34.1) (2022-10-06)
+
+
+### Bug Fixes
+
+* **component:** prevent column resizing when editing text field ([#991](https://github.com/bigcommerce/big-design/issues/991)) ([66c0b68](https://github.com/bigcommerce/big-design/commit/66c0b686560d2bbe159b2238e3c02b918b494df8))
+
+
+
+
+
 # [0.34.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.33.1...@bigcommerce/docs@0.34.0) (2022-09-27)
 
 
