@@ -420,6 +420,162 @@ describe('pagination', () => {
     expect(onSelectionChange).toHaveBeenCalledWith({ 0: true });
   });
 
+  test('selecting individual rows persists selection across pages', async () => {
+    const onSelectionChange = jest.fn();
+
+    const items = [
+      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+      { sku: 'TWB', name: '[Sample] Tiered Wire Basket', stock: 49 },
+      { sku: 'OCG', name: '[Sample] Oak Cheese Grater', stock: 16 },
+      { sku: 'SLLPJ', name: '[Sample] 1 L Le Parfait Jar', stock: 31 },
+      { sku: 'CC3C', name: '[Sample] Chemex Coffeemaker 3 Cup', stock: 22 },
+      { sku: 'ABS', name: '[Sample] Able Brewing System', stock: 41 },
+      { sku: 'OTS', name: '[Sample] Orbit Terrarium - Small', stock: 14 },
+      { sku: 'OTL', name: '[Sample] Orbit Terrarium - Large', stock: 12 },
+      { sku: 'SLCTBS', name: '[Sample] Fog Linen Chambray Towel - Beige Stripe', stock: 34 },
+    ];
+
+    render(
+      <TableNext
+        columns={[
+          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+          { header: 'Name', hash: 'name', render: ({ name }) => name },
+          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+        ]}
+        items={items.filter((_, index) => index < 10)}
+        keyField="sku"
+        pagination={{
+          currentPage: 1,
+          itemsPerPage: 10,
+          totalItems: items.length,
+          itemsPerPageOptions: [3, 5, 10],
+          onItemsPerPageChange: jest.fn(),
+          onPageChange: jest.fn(),
+        }}
+        selectable={{
+          selectedItems: {
+            0: true,
+            2: true,
+            3: true,
+            4: true,
+            5: true,
+            6: true,
+            7: true,
+            8: true,
+            9: true,
+            10: true,
+            11: true,
+            12: true,
+          },
+          onSelectionChange,
+        }}
+      />,
+    );
+
+    const [, tableBody] = await screen.findAllByRole('rowgroup');
+    const [, secondRowCheckbox] = await within(tableBody).findAllByRole('checkbox');
+
+    await userEvent.click(secondRowCheckbox);
+
+    expect(onSelectionChange).toHaveBeenCalledWith({
+      0: true,
+      1: true,
+      2: true,
+      3: true,
+      4: true,
+      5: true,
+      6: true,
+      7: true,
+      8: true,
+      9: true,
+      10: true,
+      11: true,
+      12: true,
+    });
+  });
+
+  test('deselecting individual rows persists selection across pages', async () => {
+    const onSelectionChange = jest.fn();
+
+    const items = [
+      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+      { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+      { sku: 'TWB', name: '[Sample] Tiered Wire Basket', stock: 49 },
+      { sku: 'OCG', name: '[Sample] Oak Cheese Grater', stock: 16 },
+      { sku: 'SLLPJ', name: '[Sample] 1 L Le Parfait Jar', stock: 31 },
+      { sku: 'CC3C', name: '[Sample] Chemex Coffeemaker 3 Cup', stock: 22 },
+      { sku: 'ABS', name: '[Sample] Able Brewing System', stock: 41 },
+      { sku: 'OTS', name: '[Sample] Orbit Terrarium - Small', stock: 14 },
+      { sku: 'OTL', name: '[Sample] Orbit Terrarium - Large', stock: 12 },
+      { sku: 'SLCTBS', name: '[Sample] Fog Linen Chambray Towel - Beige Stripe', stock: 34 },
+    ];
+
+    render(
+      <TableNext
+        columns={[
+          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+          { header: 'Name', hash: 'name', render: ({ name }) => name },
+          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+        ]}
+        items={items.filter((_, index) => index < 10)}
+        keyField="sku"
+        pagination={{
+          currentPage: 1,
+          itemsPerPage: 10,
+          totalItems: items.length,
+          itemsPerPageOptions: [3, 5, 10],
+          onItemsPerPageChange: jest.fn(),
+          onPageChange: jest.fn(),
+        }}
+        selectable={{
+          selectedItems: {
+            0: true,
+            1: true,
+            2: true,
+            3: true,
+            4: true,
+            5: true,
+            6: true,
+            7: true,
+            8: true,
+            9: true,
+            10: true,
+            11: true,
+            12: true,
+          },
+          onSelectionChange,
+        }}
+      />,
+    );
+
+    const [, tableBody] = await screen.findAllByRole('rowgroup');
+    const [, secondRowCheckbox] = await within(tableBody).findAllByRole('checkbox');
+
+    await userEvent.click(secondRowCheckbox);
+
+    expect(onSelectionChange).toHaveBeenCalledWith({
+      0: true,
+      2: true,
+      3: true,
+      4: true,
+      5: true,
+      6: true,
+      7: true,
+      8: true,
+      9: true,
+      10: true,
+      11: true,
+      12: true,
+    });
+  });
+
   test("selected expandable rows doesn't count towards total selected items", () => {
     const items = [
       { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },

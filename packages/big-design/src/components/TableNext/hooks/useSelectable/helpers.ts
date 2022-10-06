@@ -66,9 +66,11 @@ function unselectParent<T>({
 }
 
 function unselectParentAndChildren<T>({ selectedItems, parentRowIndex }: SelectRowArg<T>) {
-  const newSelectedItems = Object.entries(selectedItems).filter(
-    ([key]) => !key.startsWith(`${parentRowIndex}`),
-  );
+  const newSelectedItems = Object.entries(selectedItems).filter(([key]) => {
+    const [parentIndex] = key.split('.').map((key) => parseInt(key, 10));
+
+    return parentIndex !== parentRowIndex;
+  });
 
   return Object.fromEntries(newSelectedItems);
 }
