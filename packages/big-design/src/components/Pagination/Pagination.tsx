@@ -18,6 +18,9 @@ export interface PaginationProps extends MarginProps {
   totalItems: number;
   onPageChange(page: number): void;
   onItemsPerPageChange(range: number): void;
+  previousPageLabel?: string;
+  nextPageLabel?: string;
+  getRangeLabel?(start: number, end: number, totalItems: number): string;
 }
 
 export const Pagination: React.FC<PaginationProps> = memo(
@@ -28,6 +31,9 @@ export const Pagination: React.FC<PaginationProps> = memo(
     itemsPerPageOptions = [],
     onPageChange,
     onItemsPerPageChange,
+    previousPageLabel = 'Previous page',
+    nextPageLabel = 'Next page',
+    getRangeLabel = null,
   }) => {
     const [maxPages, setMaxPages] = useState(Math.max(1, Math.ceil(totalItems / itemsPerPage)));
     const [itemRange, setItemRange] = useState({ start: 0, end: 0 });
@@ -90,11 +96,10 @@ export const Pagination: React.FC<PaginationProps> = memo(
       return onItemsPerPageChange(Number(item.hash));
     };
 
-    const showRanges = () => {
-      return itemRange.start === itemRange.end
-        ? `${itemRange.start} of ${totalItems}`
-        : `${itemRange.start} - ${itemRange.end} of ${totalItems}`;
-    };
+    if (getRangeLabel === null) {
+      getRangeLabel = (start: number, end: number, totalItems: number): string =>
+        start === end ? `${start} of ${totalItems}` : `${start} - ${end} of ${totalItems}`;
+    }
 
     return (
       <Flex aria-label="pagination" flexDirection="row" role="navigation">
@@ -108,7 +113,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
             positionFixed={true}
             toggle={
               <StyledButton iconRight={<ArrowDropDownIcon size="xxLarge" />} variant="subtle">
-                {showRanges()}
+                {getRangeLabel(itemRange.start, itemRange.end, totalItems)}
               </StyledButton>
             }
           />
@@ -116,14 +121,14 @@ export const Pagination: React.FC<PaginationProps> = memo(
         <FlexItem>
           <StyledButton
             disabled={currentPage <= 1}
-            iconOnly={<ChevronLeftIcon title="Previous page" />}
+            iconOnly={<ChevronLeftIcon title={previousPageLabel} />}
             onClick={handlePageDecrease}
             variant="subtle"
           />
 
           <StyledButton
             disabled={currentPage >= maxPages}
-            iconOnly={<ChevronRightIcon title="Next page" />}
+            iconOnly={<ChevronRightIcon title={nextPageLabel} />}
             onClick={handlePageIncrease}
             variant="subtle"
           />

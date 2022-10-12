@@ -39,6 +39,26 @@ const paginationProps: Prop[] = [
     required: true,
     description: 'Function that will be called when a new per-page range is selected.',
   },
+  {
+    name: 'previousPageLabel',
+    types: 'string',
+    required: false,
+    defaultValue: 'Previous page',
+    description: 'Overrides the title and aria label of the previous page navigation arrow.',
+  },
+  {
+    name: 'nextPageLabel',
+    types: 'string',
+    required: false,
+    defaultValue: 'Next page',
+    description: 'Overrides the title and aria label of the next page navigation arrow.',
+  },
+  {
+    name: 'getRangeLabel',
+    types: '(start: number, end: number, totalItems: number) => string',
+    required: false,
+    description: 'A callback to format the label of the per-page range dropdown.',
+  },
 ];
 
 export const PaginationPropTable: React.FC<PropTableWrapper> = (props) => {
