@@ -152,7 +152,7 @@ const InternalWorksheet = typedMemo(
 export const WorksheetContext = createContext<StoreApi<BaseState<any>> | null>(null);
 
 export const Worksheet = typedMemo(<T extends WorksheetItem>(props: WorksheetProps<T>) => {
-  const store = createWorksheetStore<T>();
+  const store = useMemo(() => createWorksheetStore<T>(), []);
 
   return (
     <WorksheetContext.Provider value={store}>
