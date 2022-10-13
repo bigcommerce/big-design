@@ -24,6 +24,14 @@ export interface PaginationProps extends MarginProps {
   getRangeLabel?(start: number, end: number, totalItems: number): string;
 }
 
+const defaultGetRangeLabel = (start: number, end: number, totalItems: number): string => {
+  if (start === end) {
+    return `${start} of ${totalItems}`;
+  }
+
+  return `${start} - ${end} of ${totalItems}`;
+};
+
 export const Pagination: React.FC<PaginationProps> = memo(
   ({
     itemsPerPage,
@@ -35,7 +43,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
     label = 'pagination',
     previousLabel = 'Previous page',
     nextLabel = 'Next page',
-    getRangeLabel = null,
+    getRangeLabel = defaultGetRangeLabel,
   }) => {
     const [maxPages, setMaxPages] = useState(Math.max(1, Math.ceil(totalItems / itemsPerPage)));
     const [itemRange, setItemRange] = useState({ start: 0, end: 0 });
@@ -97,11 +105,6 @@ export const Pagination: React.FC<PaginationProps> = memo(
     const handleRangeChange = (item: DropdownItem) => {
       return onItemsPerPageChange(Number(item.hash));
     };
-
-    if (getRangeLabel === null) {
-      getRangeLabel = (start: number, end: number, totalItems: number): string =>
-        start === end ? `${start} of ${totalItems}` : `${start} - ${end} of ${totalItems}`;
-    }
 
     return (
       <Flex aria-label={label} flexDirection="row" role="navigation">
