@@ -40,14 +40,21 @@ const paginationProps: Prop[] = [
     description: 'Function that will be called when a new per-page range is selected.',
   },
   {
-    name: 'previousPageLabel',
+    name: 'label',
+    types: 'string',
+    required: false,
+    defaultValue: 'pagination',
+    description: 'Overrides the aria label of the pagination wrapper navigation element.',
+  },
+  {
+    name: 'previousLabel',
     types: 'string',
     required: false,
     defaultValue: 'Previous page',
     description: 'Overrides the title and aria label of the previous page navigation arrow.',
   },
   {
-    name: 'nextPageLabel',
+    name: 'nextLabel',
     types: 'string',
     required: false,
     defaultValue: 'Next page',

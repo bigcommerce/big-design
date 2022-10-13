@@ -93,14 +93,16 @@ test('render pagination component while overriding button labels', () => {
       getRangeLabel={getRangeLabel}
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
-      nextPageLabel="[Custom] Next page"
+      label="[Custom] Pagination"
+      nextLabel="[Custom] Next page"
       onItemsPerPageChange={changeRange}
       onPageChange={changePage}
-      previousPageLabel="[Custom] Previous page"
+      previousLabel="[Custom] Previous page"
       totalItems={10}
     />,
   );
 
+  getByRole('navigation', { name: '[Custom] Pagination' });
   getByRole('button', { name: '[Custom label] 1-3 of 10' });
   getByRole('button', { name: '[Custom] Previous page' });
   getByRole('button', { name: '[Custom] Next page' });

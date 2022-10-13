@@ -279,13 +279,15 @@ describe('pagination', () => {
           itemsPerPageOptions: [3, 5, 10],
           onItemsPerPageChange,
           onPageChange,
-          previousPageLabel: '[Custom] Previous page',
-          nextPageLabel: '[Custom] Next page',
+          label: '[Custom] Pagination',
+          previousLabel: '[Custom] Previous page',
+          nextLabel: '[Custom] Next page',
           getRangeLabel,
         }}
       />,
     );
 
+    getByRole('navigation', { name: '[Custom] Pagination' });
     getByRole('button', { name: '[Custom label] 1-3 of 5' });
     getByRole('button', { name: '[Custom] Previous page' });
     getByRole('button', { name: '[Custom] Next page' });

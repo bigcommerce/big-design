@@ -18,8 +18,9 @@ export interface PaginationProps extends MarginProps {
   totalItems: number;
   onPageChange(page: number): void;
   onItemsPerPageChange(range: number): void;
-  previousPageLabel?: string;
-  nextPageLabel?: string;
+  label?: string;
+  previousLabel?: string;
+  nextLabel?: string;
   getRangeLabel?(start: number, end: number, totalItems: number): string;
 }
 
@@ -31,8 +32,9 @@ export const Pagination: React.FC<PaginationProps> = memo(
     itemsPerPageOptions = [],
     onPageChange,
     onItemsPerPageChange,
-    previousPageLabel = 'Previous page',
-    nextPageLabel = 'Next page',
+    label = 'pagination',
+    previousLabel = 'Previous page',
+    nextLabel = 'Next page',
     getRangeLabel = null,
   }) => {
     const [maxPages, setMaxPages] = useState(Math.max(1, Math.ceil(totalItems / itemsPerPage)));
@@ -102,7 +104,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
     }
 
     return (
-      <Flex aria-label="pagination" flexDirection="row" role="navigation">
+      <Flex aria-label={label} flexDirection="row" role="navigation">
         <FlexItem>
           <Dropdown
             items={itemsPerPageOptions.map((range) => ({
@@ -121,14 +123,14 @@ export const Pagination: React.FC<PaginationProps> = memo(
         <FlexItem>
           <StyledButton
             disabled={currentPage <= 1}
-            iconOnly={<ChevronLeftIcon title={previousPageLabel} />}
+            iconOnly={<ChevronLeftIcon title={previousLabel} />}
             onClick={handlePageDecrease}
             variant="subtle"
           />
 
           <StyledButton
             disabled={currentPage >= maxPages}
-            iconOnly={<ChevronRightIcon title={nextPageLabel} />}
+            iconOnly={<ChevronRightIcon title={nextLabel} />}
             onClick={handlePageIncrease}
             variant="subtle"
           />

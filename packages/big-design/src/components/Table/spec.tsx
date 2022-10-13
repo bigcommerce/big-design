@@ -263,12 +263,14 @@ test('renders a pagination component with custom button labels', () => {
         onItemsPerPageChange,
         onPageChange,
         getRangeLabel,
-        previousPageLabel: '[Custom] Previous page',
-        nextPageLabel: '[Custom] Next page',
+        label: '[Custom] Pagination',
+        previousLabel: '[Custom] Previous page',
+        nextLabel: '[Custom] Next page',
       }}
     />,
   );
 
+  getByRole('navigation', { name: '[Custom] Pagination' });
   getByRole('button', { name: '[Custom label] 1-3 of 5' });
   getByRole('button', { name: '[Custom] Previous page' });
   getByRole('button', { name: '[Custom] Next page' });
