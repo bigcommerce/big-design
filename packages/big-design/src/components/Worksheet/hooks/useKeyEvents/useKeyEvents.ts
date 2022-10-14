@@ -86,6 +86,7 @@ export const useKeyEvents = () => {
           default:
             if (
               key !== 'Escape' &&
+              key.length === 1 &&
               (selectedCell.type === 'text' || selectedCell.type === 'number')
             ) {
               event.preventDefault();
