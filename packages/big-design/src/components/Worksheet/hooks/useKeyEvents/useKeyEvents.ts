@@ -83,6 +83,14 @@ export const useKeyEvents = () => {
             navigate({ rowIndex: 0, columnIndex: -1 });
             break;
 
+          case 'Meta':
+            editSelectedCell();
+            break;
+
+          case 'Control':
+            editSelectedCell();
+            break;
+
           default:
             if (
               key !== 'Escape' &&
