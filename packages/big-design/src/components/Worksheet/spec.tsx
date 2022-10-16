@@ -553,7 +553,7 @@ describe('keyboard navigation', () => {
   });
 
   test('cell is not editted when key length is greater than 1', async () => {
-    const { getByText, debug, queryByDisplayValue } = render(
+    const { getByText, queryByDisplayValue } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
@@ -564,8 +564,6 @@ describe('keyboard navigation', () => {
 
     expect(getByText('Shoes Name Three')).toBeInTheDocument();
     expect(queryByDisplayValue('capslock')).not.toBeInTheDocument();
-
-    debug(cell);
   });
 
   test('cell is not editted when using Meta key', async () => {
