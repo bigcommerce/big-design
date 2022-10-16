@@ -552,6 +552,63 @@ describe('keyboard navigation', () => {
     expect(getByDisplayValue('a')).toBeDefined();
   });
 
+  test('cell is not editted when key length is greater than 1', async () => {
+    const { getByText, debug, queryByDisplayValue } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const cell = getByText('Shoes Name Three');
+
+    await userEvent.click(cell);
+    await userEvent.keyboard('{capslock}');
+
+    expect(getByText('Shoes Name Three')).toBeInTheDocument();
+    expect(queryByDisplayValue('capslock')).not.toBeInTheDocument();
+
+    debug(cell);
+  });
+
+  test('cell is not editted when using Meta key', async () => {
+    const { getByText, getByDisplayValue, queryByDisplayValue } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const cell = getByText('Shoes Name Three');
+
+    await userEvent.click(cell);
+    await userEvent.keyboard('{meta}');
+
+    expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
+    expect(queryByDisplayValue('Meta')).not.toBeInTheDocument();
+  });
+
+  test('cell is not editted when using Control key', async () => {
+    const { getByText, getByDisplayValue, queryByDisplayValue } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const cell = getByText('Shoes Name Three');
+
+    await userEvent.click(cell);
+    await userEvent.keyboard('{control}');
+
+    expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
+    expect(queryByDisplayValue('Control')).not.toBeInTheDocument();
+  });
+
+  test('current content in cell is not deleted when copy new text in the cell', async () => {
+    const { getByText, getByDisplayValue } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const cell = getByText('Shoes Name Three');
+
+    await userEvent.dblClick(cell);
+    await userEvent.paste('hello');
+
+    expect(getByDisplayValue('Shoes Name Threehello')).toBeDefined();
+  });
+
   test('space starts editing the cell', () => {
     const { getByDisplayValue, getByText, getByRole } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,

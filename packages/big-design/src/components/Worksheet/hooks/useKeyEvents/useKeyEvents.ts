@@ -100,6 +100,8 @@ export const useKeyEvents = () => {
               event.preventDefault();
               editSelectedCell(key);
             }
+
+            break;
         }
 
         event.preventDefault();
