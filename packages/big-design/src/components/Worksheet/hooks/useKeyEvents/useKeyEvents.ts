@@ -3,6 +3,12 @@ import React, { useCallback, useMemo } from 'react';
 import { useNavigation } from '../useNavigation';
 import { useWorksheetStore } from '../useWorksheetStore';
 
+export interface EditingCellsArgs {
+  editWithValue?: string;
+  isMetaKey?: boolean;
+  isControlKey?: boolean;
+}
+
 export const useKeyEvents = () => {
   const { store, useStore } = useWorksheetStore();
 
@@ -21,9 +27,9 @@ export const useKeyEvents = () => {
   const { navigate } = useNavigation(selectedCell);
 
   const editSelectedCell = useCallback(
-    (editWithValue = '') => {
+    ({ isMetaKey = false, isControlKey = false, editWithValue = '' }: EditingCellsArgs = {}) => {
       if (selectedCell) {
-        setEditingCell(selectedCell, editWithValue);
+        return setEditingCell({ cell: selectedCell, isMetaKey, isControlKey, editWithValue });
       }
     },
     [selectedCell, setEditingCell],
@@ -47,7 +53,7 @@ export const useKeyEvents = () => {
         switch (key) {
           case 'Enter':
             if (selectedCell && !selectedCell.disabled) {
-              editSelectedCell();
+              editSelectedCell({});
 
               if (selectedCell.type === 'checkbox') {
                 navigate({ rowIndex: 1, columnIndex: 0 });
@@ -84,11 +90,17 @@ export const useKeyEvents = () => {
             break;
 
           case 'Meta':
-            editSelectedCell();
+            if (selectedCell) {
+              editSelectedCell({ isMetaKey: true });
+            }
+
             break;
 
           case 'Control':
-            editSelectedCell();
+            if (selectedCell) {
+              editSelectedCell({ isControlKey: true });
+            }
+
             break;
 
           default:
@@ -98,7 +110,7 @@ export const useKeyEvents = () => {
               (selectedCell.type === 'text' || selectedCell.type === 'number')
             ) {
               event.preventDefault();
-              editSelectedCell(key);
+              editSelectedCell({ editWithValue: key });
             }
 
             break;

@@ -22,7 +22,7 @@ const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
       onToggle(hasExpanded);
     }
 
-    setEditingCell(null);
+    setEditingCell({ cell: null });
   }, [hasExpanded, isExpandable, onToggle, setEditingCell, toggle]);
 
   return isExpandable ? (

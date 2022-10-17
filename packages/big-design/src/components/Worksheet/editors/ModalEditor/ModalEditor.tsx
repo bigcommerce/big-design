@@ -34,7 +34,7 @@ const InternalModalEditor = <T extends WorksheetItem>({
   }, [hash, isEditing, setOpenModal]);
 
   const handleClick = useCallback(() => {
-    setEditingCell(cell);
+    setEditingCell({ cell });
   }, [cell, setEditingCell]);
 
   const renderedValue = useMemo(

@@ -41,12 +41,12 @@ const InternalSelectEditor = <T extends WorksheetItem>({
   );
 
   const handleOpen = useCallback(() => {
-    setEditingCell(cell);
+    setEditingCell({ cell });
   }, [cell, setEditingCell]);
 
   const handleClose = useCallback(() => {
     onBlur();
-    setEditingCell(null);
+    setEditingCell({ cell: null });
   }, [onBlur, setEditingCell]);
 
   return (
