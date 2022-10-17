@@ -594,7 +594,7 @@ describe('keyboard navigation', () => {
     expect(queryByDisplayValue('Control')).not.toBeInTheDocument();
   });
 
-  test('current content in cell is not deleted when copy new text in the cell', async () => {
+  test('current content in cell is not deleted when double cliking and copy new text in the cell', async () => {
     const { getByText, getByDisplayValue } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
