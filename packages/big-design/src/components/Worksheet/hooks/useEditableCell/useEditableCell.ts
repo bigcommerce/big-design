@@ -30,13 +30,13 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
   );
 
   const restoreFocus = useCallback(() => {
-    setEditingCell(null);
+    setEditingCell({ cell: null });
     focusTable();
   }, [focusTable, setEditingCell]);
 
   const handleDoubleClick = useCallback(() => {
     if (!cell.disabled) {
-      setEditingCell(cell);
+      setEditingCell({ cell });
     }
   }, [cell, setEditingCell]);
 

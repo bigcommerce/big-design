@@ -39,7 +39,7 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
 
   const handleClose = useCallback(() => {
     setOpenModal(null);
-    setEditingCell(null);
+    setEditingCell({ cell: null });
     focusTable();
   }, [focusTable, setEditingCell, setOpenModal]);
 

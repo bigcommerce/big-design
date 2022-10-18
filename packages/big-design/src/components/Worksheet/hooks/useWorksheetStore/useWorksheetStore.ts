@@ -10,11 +10,18 @@ import {
 } from '../../types';
 import { deleteCells, getHiddenRows, mergeCells } from '../../utils';
 import { WorksheetContext } from '../../Worksheet';
+import { EditingCellsArgs } from '../useKeyEvents';
+
+export interface SetEditingCellArgs<T> extends EditingCellsArgs {
+  cell: Cell<T> | null;
+}
 
 export interface BaseState<Item> {
   columns: Array<InternalWorksheetColumn<Item>>;
   editedCells: Array<Cell<Item>>;
   editingCell: Cell<Item> | null;
+  isMetaKey: boolean;
+  isControlKey: boolean;
   editWithValue: string;
   expandableRows: ExpandableRows;
   disabledRows: DisabledRows;
@@ -33,7 +40,12 @@ export interface BaseState<Item> {
     expandableRows: ExpandableRows,
     defaultExpandedRows?: Array<string | number>,
   ) => void;
-  setEditingCell: (cell: Cell<Item> | null, editWithValue?: string) => void;
+  setEditingCell: ({
+    cell,
+    isMetaKey,
+    isControlKey,
+    editWithValue,
+  }: SetEditingCellArgs<Item>) => void;
   setDisabledRows: (disabledRows: DisabledRows) => void;
   setHiddenRows: (hiddenRow: Array<string | number>) => void;
   setOpenModal: (value: keyof Item | null) => void;
@@ -48,6 +60,8 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
     columns: [],
     editedCells: [],
     editingCell: null,
+    isMetaKey: false,
+    isControlKey: false,
     editWithValue: '',
     expandableRows: {},
     disabledRows: [],
@@ -71,8 +85,11 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
         expandableRows,
         hiddenRows: getHiddenRows(expandableRows, defaultExpandedRows),
       })),
-    setEditingCell: (cell, editWithValue = '') =>
-      set((state) => ({ ...state, editingCell: cell, editWithValue })),
+    setEditingCell: ({ cell, isMetaKey = false, isControlKey = false, editWithValue = '' }) => {
+      set((state) => {
+        return { ...state, editingCell: cell, isMetaKey, isControlKey, editWithValue };
+      });
+    },
     setDisabledRows: (disabledRows) => set((state) => ({ ...state, disabledRows })),
     setHiddenRows: (hiddenRows) => set((state) => ({ ...state, hiddenRows })),
     setOpenModal: (value) => set((state) => ({ ...state, openedModal: value })),

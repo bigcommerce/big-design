@@ -52,6 +52,10 @@ const InternalCell = <T extends WorksheetItem>({
     useMemo(() => (state) => state.editWithValue, []),
   );
 
+  const isMetaKey = useStore(store, (state) => state.isMetaKey);
+
+  const isControlKey = useStore(store, (state) => state.isControlKey);
+
   const isSelected = useStore(
     store,
     useMemo(
@@ -153,7 +157,9 @@ const InternalCell = <T extends WorksheetItem>({
           <TextEditor
             cell={cell}
             initialValue={editWithValue}
+            isControlKey={isControlKey}
             isEdited={isEdited}
+            isMetaKey={isMetaKey}
             onBlur={handleBlur}
             onKeyDown={handleKeyDown}
           />
@@ -164,19 +170,21 @@ const InternalCell = <T extends WorksheetItem>({
         );
     }
   }, [
+    type,
     cell,
-    disabled,
-    editWithValue,
-    formatting,
     handleBlur,
     handleChange,
-    handleKeyDown,
-    isEditing,
-    isEdited,
     options,
-    renderedValue,
+    isEditing,
+    formatting,
     rowId,
-    type,
+    disabled,
+    editWithValue,
+    isControlKey,
+    isEdited,
+    isMetaKey,
+    handleKeyDown,
+    renderedValue,
   ]);
 
   return (

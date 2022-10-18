@@ -12,6 +12,8 @@ export interface TextEditorProps<Item> {
   isEdited: boolean;
   onBlur(event?: React.FocusEvent<HTMLInputElement>, cell?: Cell<Item>): void;
   onKeyDown: EditableCellOnKeyDown;
+  isMetaKey: boolean;
+  isControlKey: boolean;
 }
 
 const InternalTextEditor = <T extends WorksheetItem>({
@@ -20,9 +22,13 @@ const InternalTextEditor = <T extends WorksheetItem>({
   initialValue,
   onBlur,
   onKeyDown,
+  isMetaKey,
+  isControlKey,
 }: TextEditorProps<T>) => {
   const [value, setValue] = useState(initialValue || `${cell.value}`);
   const isBlurBlocked = useRef(false);
+  const [isMetaKeyValue, setIsMetaKeyValue] = useState(isMetaKey);
+  const [isControlValue, setIsControlKeyValue] = useState(isControlKey);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
@@ -33,6 +39,14 @@ const InternalTextEditor = <T extends WorksheetItem>({
     // since we handle `onBlur` as saving of the cell data and it conflicts;
     if (event.key === 'Escape') {
       isBlurBlocked.current = true;
+    } else if (isMetaKeyValue && event.key === 'v' && event.metaKey) {
+      setValue('');
+      isBlurBlocked.current = false;
+      setIsMetaKeyValue(false);
+    } else if (isControlValue && event.key === 'v' && event.ctrlKey) {
+      setValue('');
+      isBlurBlocked.current = false;
+      setIsControlKeyValue(false);
     } else {
       isBlurBlocked.current = false;
     }

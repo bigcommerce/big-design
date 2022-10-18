@@ -3,6 +3,12 @@ import React, { useCallback, useMemo } from 'react';
 import { useNavigation } from '../useNavigation';
 import { useWorksheetStore } from '../useWorksheetStore';
 
+export interface EditingCellsArgs {
+  editWithValue?: string;
+  isMetaKey?: boolean;
+  isControlKey?: boolean;
+}
+
 export const useKeyEvents = () => {
   const { store, useStore } = useWorksheetStore();
 
@@ -21,9 +27,9 @@ export const useKeyEvents = () => {
   const { navigate } = useNavigation(selectedCell);
 
   const editSelectedCell = useCallback(
-    (editWithValue = '') => {
+    ({ isMetaKey = false, isControlKey = false, editWithValue = '' }: EditingCellsArgs = {}) => {
       if (selectedCell) {
-        setEditingCell(selectedCell, editWithValue);
+        return setEditingCell({ cell: selectedCell, isMetaKey, isControlKey, editWithValue });
       }
     },
     [selectedCell, setEditingCell],
@@ -47,7 +53,7 @@ export const useKeyEvents = () => {
         switch (key) {
           case 'Enter':
             if (selectedCell && !selectedCell.disabled) {
-              editSelectedCell();
+              editSelectedCell({});
 
               if (selectedCell.type === 'checkbox') {
                 navigate({ rowIndex: 1, columnIndex: 0 });
@@ -83,14 +89,31 @@ export const useKeyEvents = () => {
             navigate({ rowIndex: 0, columnIndex: -1 });
             break;
 
+          case 'Meta':
+            if (selectedCell) {
+              editSelectedCell({ isMetaKey: true });
+            }
+
+            break;
+
+          case 'Control':
+            if (selectedCell) {
+              editSelectedCell({ isControlKey: true });
+            }
+
+            break;
+
           default:
             if (
               key !== 'Escape' &&
+              key.length === 1 &&
               (selectedCell.type === 'text' || selectedCell.type === 'number')
             ) {
               event.preventDefault();
-              editSelectedCell(key);
+              editSelectedCell({ editWithValue: key });
             }
+
+            break;
         }
 
         event.preventDefault();
