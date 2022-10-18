@@ -250,6 +250,49 @@ describe('pagination', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('renders a pagination component with custom button labels', () => {
+    const getRangeLabel = (first: number, last: number, totalItems: number) => {
+      return `[Custom label] ${first}-${last} of ${totalItems}`;
+    };
+    const onItemsPerPageChange = jest.fn();
+    const onPageChange = jest.fn();
+
+    const { getByRole } = render(
+      <TableNext
+        columns={[
+          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+          { header: 'Name', hash: 'name', render: ({ name }) => name },
+          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+        ]}
+        items={[
+          { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+          { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+          { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+          { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+          { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+        ]}
+        keyField="sku"
+        pagination={{
+          currentPage: 1,
+          itemsPerPage: 3,
+          totalItems: 5,
+          itemsPerPageOptions: [3, 5, 10],
+          onItemsPerPageChange,
+          onPageChange,
+          label: '[Custom] Pagination',
+          previousLabel: '[Custom] Previous page',
+          nextLabel: '[Custom] Next page',
+          getRangeLabel,
+        }}
+      />,
+    );
+
+    getByRole('navigation', { name: '[Custom] Pagination' });
+    getByRole('button', { name: '[Custom label] 1-3 of 5' });
+    getByRole('button', { name: '[Custom] Previous page' });
+    getByRole('button', { name: '[Custom] Next page' });
+  });
+
   test('selection persists indexes on other pages', async () => {
     const onSelectionChange = jest.fn();
 

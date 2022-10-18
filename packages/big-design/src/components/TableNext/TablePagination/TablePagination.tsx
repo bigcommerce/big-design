@@ -13,15 +13,23 @@ export const TablePagination: React.FC<TablePaginationProps> = memo(
     onItemsPerPageChange,
     onPageChange,
     totalItems,
+    label,
+    previousLabel,
+    nextLabel,
+    getRangeLabel,
   }) => {
     return (
       <StyledPaginationContainer flexShrink={0}>
         <Pagination
           currentPage={currentPage}
+          getRangeLabel={getRangeLabel}
           itemsPerPage={itemsPerPage}
           itemsPerPageOptions={itemsPerPageOptions}
+          label={label}
+          nextLabel={nextLabel}
           onItemsPerPageChange={onItemsPerPageChange}
           onPageChange={onPageChange}
+          previousLabel={previousLabel}
           totalItems={totalItems}
         />
       </StyledPaginationContainer>

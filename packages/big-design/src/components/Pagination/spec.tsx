@@ -81,6 +81,33 @@ test('render pagination component with no items', async () => {
   expect(pagination).toMatchSnapshot();
 });
 
+test('render pagination component while overriding button labels', () => {
+  const getRangeLabel = (first: number, last: number, totalItems: number) => {
+    return `[Custom label] ${first}-${last} of ${totalItems}`;
+  };
+  const changePage = jest.fn();
+  const changeRange = jest.fn();
+  const { getByRole } = render(
+    <Pagination
+      currentPage={1}
+      getRangeLabel={getRangeLabel}
+      itemsPerPage={3}
+      itemsPerPageOptions={[2, 3, 5]}
+      label="[Custom] Pagination"
+      nextLabel="[Custom] Next page"
+      onItemsPerPageChange={changeRange}
+      onPageChange={changePage}
+      previousLabel="[Custom] Previous page"
+      totalItems={10}
+    />,
+  );
+
+  getByRole('navigation', { name: '[Custom] Pagination' });
+  getByRole('button', { name: '[Custom label] 1-3 of 10' });
+  getByRole('button', { name: '[Custom] Previous page' });
+  getByRole('button', { name: '[Custom] Next page' });
+});
+
 test('trigger range change', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
