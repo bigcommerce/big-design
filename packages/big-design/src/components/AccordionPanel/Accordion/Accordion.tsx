@@ -29,6 +29,7 @@ export const Accordion: React.FC<AccordionProps> = memo(
           id={accordionId}
           isExpanded={isExpanded}
           onClick={onClick}
+          type="button"
           variant="subtle"
         >
           {header}
