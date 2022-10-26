@@ -34,7 +34,7 @@ import { StoreIcon } from '@bigcommerce/big-design-icons';
 
 ### Adding New Icons
 
-To add new icons, use the built-in script to download the svg from [Material Icons - Rounded](https://material.io/resources/icons/?style=round):
+To add new icons, use the built-in script to download the svg from [Material Icons - Rounded](https://fonts.google.com/icons?selected=Material+Icons&icon.style=Rounded):
 
 ```
 yarn run download
