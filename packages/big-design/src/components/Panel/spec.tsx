@@ -2,7 +2,7 @@ import { theme } from '@bigcommerce/big-design-theme';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { Panel } from './Panel';
 
@@ -123,4 +123,22 @@ test('forwards headerId to heading', () => {
   );
 
   expect(getByText('Test Header')).toHaveAttribute('id', 'test-header');
+});
+
+test('applies the right border radius values', async () => {
+  render(
+    <Panel role="region">
+      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
+      officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
+      deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris
+      Lorem irure sit esse nulla mollit aliquip consectetur velit
+    </Panel>,
+  );
+
+  const panel = await screen.findByRole('region');
+
+  expect(panel).toHaveStyleRule('border-radius', `${theme.borderRadius.none}`);
+  expect(panel).toHaveStyleRule('border-radius', theme.borderRadius.normal, {
+    media: `(min-width:${theme.breakpointValues.tablet})`,
+  });
 });
