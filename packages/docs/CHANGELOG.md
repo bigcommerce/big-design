@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.34.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.34.1...@bigcommerce/docs@0.34.2) (2022-10-27)
+
+
+### Features
+
+* **component:** provide props for customising pagination button labels ([#1008](https://github.com/bigcommerce/big-design/issues/1008)) ([ccba275](https://github.com/bigcommerce/big-design/commit/ccba275c8ea0035560cf70b668dd1373a10ec30e))
+
+
+
+
+
 ## [0.34.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.34.0...@bigcommerce/docs@0.34.1) (2022-10-06)
 
 

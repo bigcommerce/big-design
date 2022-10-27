@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.34.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.34.1...@bigcommerce/big-design@0.34.2) (2022-10-27)
+
+
+### Bug Fixes
+
+* **component:** add border-radius back to Panel component ([1a6b24c](https://github.com/bigcommerce/big-design/commit/1a6b24c3e63af65aa0cf99502bea3bcb9e811399))
+* **component:** add type button to StyledAccordionButton (1022) ([#1023](https://github.com/bigcommerce/big-design/issues/1023)) ([46acb11](https://github.com/bigcommerce/big-design/commit/46acb1166110b1f801dfb5faac26c3ad4f60ffca))
+* **component:** fix worksheet context ([#1007](https://github.com/bigcommerce/big-design/issues/1007)) ([0af1f9d](https://github.com/bigcommerce/big-design/commit/0af1f9dfb2d231ace73ebeb056cb15b40244ef8a))
+* **component:** keys presses fill the field in with the key code in worksheet ([#1015](https://github.com/bigcommerce/big-design/issues/1015)) ([b6a9677](https://github.com/bigcommerce/big-design/commit/b6a96778e1db50763a1e3ec1250a1c01854451aa))
+
+
+### Features
+
+* **component:** provide props for customising pagination button labels ([#1008](https://github.com/bigcommerce/big-design/issues/1008)) ([ccba275](https://github.com/bigcommerce/big-design/commit/ccba275c8ea0035560cf70b668dd1373a10ec30e))
+
+
+
+
+
 ## [0.34.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.34.0...@bigcommerce/big-design@0.34.1) (2022-10-06)
 
 
