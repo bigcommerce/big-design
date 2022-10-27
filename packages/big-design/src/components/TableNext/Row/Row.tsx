@@ -57,31 +57,20 @@ const InternalRow = <T extends TableItem>({
   isParentRow = false,
   ...rest
 }: RowProps<T> & PrivateProps) => {
-  const { hasChildrenRows, isChecked, isIndeterminate, label, onChange, onExpandedChange } =
-    useRowState({
-      childRowIndex,
-      childrenRows,
-      isExpandable,
-      isParentRow,
-      isSelected,
-      onExpandedRow,
-      onItemSelect,
-      selectedItems,
-      parentRowIndex,
-    });
+  const { hasChildrenRows, isChecked, label, onChange, onExpandedChange } = useRowState({
+    childrenRows,
+    isParentRow,
+    isSelected,
+    onExpandedRow,
+    onItemSelect,
+    parentRowIndex,
+  });
 
   const renderSelectDataCell = () => {
     if (isSelectable && isParentRow) {
       return (
         <DataCell isCheckbox={true} isExpandable={isExpandable} key="data-checkbox" width={10}>
-          <Checkbox
-            checked={isChecked}
-            hiddenLabel
-            isIndeterminate={isIndeterminate}
-            label={label}
-            onChange={onChange}
-            width={0}
-          />
+          <Checkbox checked={isChecked} hiddenLabel label={label} onChange={onChange} width={0} />
         </DataCell>
       );
     }
@@ -166,17 +155,7 @@ const InternalRow = <T extends TableItem>({
               width={isDragging ? cellWidth : width}
             >
               <Flex alignItems="center" flexDirection="row">
-                {columnIndex === 0 && isExpandable && isSelectable && !isParentRow && (
-                  <Checkbox
-                    checked={isSelected}
-                    hiddenLabel
-                    label={label}
-                    onChange={onChange}
-                    width={0}
-                  />
-                )}
-                {/*
-          // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
+                {/* @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
                 <CellContent {...item} />
               </Flex>
             </DataCell>

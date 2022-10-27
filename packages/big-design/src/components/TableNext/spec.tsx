@@ -618,54 +618,6 @@ describe('pagination', () => {
       12: true,
     });
   });
-
-  test("selected expandable rows doesn't count towards total selected items", () => {
-    const items = [
-      { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-      { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
-      { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
-      {
-        sku: 'CLC',
-        name: '[Sample] Canvas Laundry Cart',
-        stock: 2,
-        variants: [{ sku: 'CLC-RED', name: '[Sample] Canvas Laundry Cart - Red', stock: 2 }],
-      },
-      { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
-    ];
-
-    render(
-      <TableNext
-        columns={[
-          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
-          { header: 'Name', hash: 'name', render: ({ name }) => name },
-          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
-        ]}
-        expandable={{
-          expandedRows: {},
-          onExpandedChange: jest.fn(),
-          expandedRowSelector: (row) => row?.variants,
-        }}
-        items={items.filter((_, index) => index >= 3 && index < 6)}
-        keyField="sku"
-        pagination={{
-          currentPage: 2,
-          itemsPerPage: 3,
-          totalItems: items.length,
-          itemsPerPageOptions: [3, 5, 10],
-          onItemsPerPageChange: jest.fn(),
-          onPageChange: jest.fn(),
-        }}
-        selectable={{
-          selectedItems: { 0: true, 3: true, '3.0': true, 4: true },
-          onSelectionChange: jest.fn(),
-        }}
-      />,
-    );
-
-    const selectedItems = screen.getByText('3/5');
-
-    expect(selectedItems).toBeInTheDocument();
-  });
 });
 
 describe('selectable', () => {
@@ -728,8 +680,8 @@ describe('selectable', () => {
       />,
     );
 
-    // One per parent row and child row + Actions (select all) checkbox
-    expect(getAllByRole('checkbox')).toHaveLength(items.length + mockChildrenRows.length * 3 + 1);
+    // One per parent row + Actions (select all) checkbox
+    expect(getAllByRole('checkbox')).toHaveLength(items.length + 1);
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -749,47 +701,6 @@ describe('selectable', () => {
     const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
     const selectedItems = items.reduce((acc: Record<string, true>, _parentRow, parentRowIndex) => {
       acc[`${parentRowIndex}`] = true;
-
-      return acc;
-    }, {});
-
-    // Select All
-    expect(selectAllCheckbox.checked).toBe(false);
-
-    fireEvent.click(selectAllCheckbox);
-
-    expect(onSelectionChange).toHaveBeenCalledWith(selectedItems);
-  });
-
-  test('click on select all should call selectedItems with all parentRows and chilrenRows', async () => {
-    render(
-      <TableNext
-        columns={columns}
-        expandable={{
-          expandedRows: { 0: true, 1: true, 2: true },
-          onExpandedChange,
-          expandedRowSelector: ({ children }) => children,
-        }}
-        itemName={itemName}
-        items={items}
-        selectable={{
-          onSelectionChange,
-          selectedItems: {},
-        }}
-      />,
-    );
-
-    const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
-    const selectedItems = items.reduce((acc: Record<string, true>, parentRow, parentRowIndex) => {
-      acc[`${parentRowIndex}`] = true;
-
-      const { children } = parentRow;
-
-      if (children !== undefined) {
-        children.forEach((_childRow, childRowIndex) => {
-          acc[`${parentRowIndex}.${childRowIndex}`] = true;
-        });
-      }
 
       return acc;
     }, {});
@@ -832,16 +743,8 @@ describe('selectable', () => {
   });
 
   test('select all (parent row + children rows) when already all selected should deselect all items', async () => {
-    const selectedItems = items.reduce((acc: Record<string, true>, parentRow, parentRowIndex) => {
+    const selectedItems = items.reduce((acc: Record<string, true>, _, parentRowIndex) => {
       acc[`${parentRowIndex}`] = true;
-
-      const { children } = parentRow;
-
-      if (children !== undefined) {
-        children.forEach((_childRow, childRowIndex) => {
-          acc[`${parentRowIndex}.${childRowIndex}`] = true;
-        });
-      }
 
       return acc;
     }, {});
@@ -869,132 +772,6 @@ describe('selectable', () => {
     expect(selectAllCheckbox.checked).toBe(true);
 
     fireEvent.click(selectAllCheckbox);
-
-    expect(onSelectionChange).toHaveBeenCalledWith({});
-  });
-
-  test('select all children rows when selecting a parent row', async () => {
-    render(
-      <TableNext
-        columns={columns}
-        expandable={{
-          expandedRows: { 0: true, 1: true, 2: true },
-          onExpandedChange,
-          expandedRowSelector: ({ children }) => children,
-        }}
-        itemName={itemName}
-        items={items}
-        selectable={{
-          onSelectionChange,
-          selectedItems: {},
-        }}
-      />,
-    );
-
-    const parentRow = await screen.findByRole('row', { name: /Smith Journal 13/ });
-    const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
-
-    // Select all
-    expect(checkbox.checked).toBe(false);
-
-    await userEvent.click(checkbox);
-
-    const selectedItems: Record<string, true> = { 0: true };
-
-    const { children } = items[0];
-
-    if (children) {
-      children.forEach((_childRow: Item, childRowIndex: number) => {
-        selectedItems[`0.${childRowIndex}`] = true;
-      });
-    }
-
-    expect(onSelectionChange).toHaveBeenCalledWith(selectedItems);
-  });
-
-  test('unselect all children rows when unselecting a parent row', async () => {
-    render(
-      <TableNext
-        columns={columns}
-        expandable={{
-          expandedRows: { 0: true, 1: true, 2: true },
-          onExpandedChange,
-          expandedRowSelector: ({ children }) => children,
-        }}
-        itemName={itemName}
-        items={items}
-        selectable={{
-          onSelectionChange,
-          selectedItems: { 0: true, '0.0': true, '0.1': true },
-        }}
-      />,
-    );
-
-    const parentRow = await screen.findByRole('row', { name: /Smith Journal 13/ });
-    const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
-
-    // Deselect all
-    expect(checkbox.checked).toBe(true);
-
-    await userEvent.click(checkbox);
-
-    expect(onSelectionChange).toHaveBeenCalledWith({});
-  });
-
-  test('selects a parent row when a single child row is selected', async () => {
-    render(
-      <TableNext
-        columns={columns}
-        expandable={{
-          expandedRows: { 0: true, 1: true, 2: true },
-          onExpandedChange,
-          expandedRowSelector: ({ children }) => children,
-        }}
-        itemName={itemName}
-        items={items}
-        selectable={{
-          onSelectionChange,
-          selectedItems: {},
-        }}
-      />,
-    );
-
-    const [firstChildRow] = await screen.findAllByRole('row', { name: /Color pink/ });
-    const childRowCheckbox = await within(firstChildRow).findByRole<HTMLInputElement>('checkbox');
-
-    expect(childRowCheckbox.checked).toBe(false);
-
-    await userEvent.click(childRowCheckbox);
-
-    const selectedItems: Record<string, true> = { '0': true, '0.0': true };
-
-    expect(onSelectionChange).toHaveBeenCalledWith(selectedItems);
-  });
-
-  test('unselects a parent row when a single child row is selected', async () => {
-    render(
-      <TableNext
-        columns={columns}
-        expandable={{
-          expandedRows: { 0: true, 1: true, 2: true },
-          onExpandedChange,
-          expandedRowSelector: ({ children }) => children,
-        }}
-        itemName={itemName}
-        items={items}
-        selectable={{
-          onSelectionChange,
-          selectedItems: { '0': true, '0.0': true },
-        }}
-      />,
-    );
-
-    const [firstChildRow] = await screen.findAllByRole('row', { name: /Color pink/ });
-    const childRowCheckbox = await within(firstChildRow).findByRole<HTMLInputElement>('checkbox');
-
-    expect(childRowCheckbox.checked).toBe(true);
-
-    await userEvent.click(childRowCheckbox);
 
     expect(onSelectionChange).toHaveBeenCalledWith({});
   });

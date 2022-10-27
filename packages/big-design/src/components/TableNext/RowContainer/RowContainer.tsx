@@ -72,8 +72,6 @@ const InternalRowContainer = <T extends TableItem>({
         isExpanded &&
         childrenRows?.map((childRow: T, childRowIndex: number) => {
           const key = getItemKey(childRow, childRowIndex);
-          const isChildRowSelected =
-            selectedItems[`${parentRowIndex}.${childRowIndex}`] !== undefined;
 
           return (
             <Row
@@ -85,11 +83,9 @@ const InternalRowContainer = <T extends TableItem>({
               isDragging={false}
               isExpandable={isExpandable}
               isParentRow={false}
-              isSelectable={isSelectable}
-              isSelected={isChildRowSelected}
+              isSelectable={isSelectable} // for rendering extra cells
               item={childRow}
               key={key}
-              onItemSelect={onItemSelect}
               parentRowIndex={parentRowIndex}
               selectedItems={selectedItems}
               showDragIcon={showDragIcon}

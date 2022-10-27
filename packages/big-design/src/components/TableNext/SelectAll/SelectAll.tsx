@@ -3,13 +3,11 @@ import React from 'react';
 import { Checkbox } from '../../Checkbox';
 import { Flex, FlexItem } from '../../Flex';
 import { Text } from '../../Typography';
-import { TableExpandable, TableItem, TablePaginationProps, TableSelectable } from '../types';
+import { TableItem, TablePaginationProps, TableSelectable } from '../types';
 
 import { useSelectAllState } from './useSelectAllState';
 
 export interface SelectAllProps<T> {
-  expandedRowSelector?: TableExpandable<T>['expandedRowSelector'];
-  isExpandable: boolean;
   items: T[];
   onChange?: TableSelectable['onSelectionChange'];
   selectedItems: TableSelectable['selectedItems'];
