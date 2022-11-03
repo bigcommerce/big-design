@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.34.3](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.34.2...@bigcommerce/big-design@0.34.3) (2022-11-03)
+
+
+### Features
+
+* **component:** allow fullWidth on inline form fields ([f1f9c1e](https://github.com/bigcommerce/big-design/commit/f1f9c1e08ca214485f54ea8e102df00e6cada4cb))
+
+
+
+
+
 ## [0.34.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.34.1...@bigcommerce/big-design@0.34.2) (2022-10-27)
 
 
