@@ -13,6 +13,7 @@ import { warning } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
 import { Radio } from '../../Radio';
 import { FormControlError } from '../Error';
+import { useFormContext } from '../useFormContext';
 
 import { StyledError, StyledGroup, StyledInlineGroup } from './styled';
 
@@ -33,6 +34,7 @@ interface Context {
 export const FormGroupContext = createContext<Context>({});
 
 export const FormGroup: React.FC<GroupProps> = (props) => {
+  const { fullWidth } = useFormContext();
   const [inputErrors, setInputErrors] = useState<Errors>({});
 
   const { children, errors: groupErrors } = props;
@@ -61,7 +63,7 @@ export const FormGroup: React.FC<GroupProps> = (props) => {
   return (
     <FormGroupContext.Provider value={contextValue}>
       {inline ? (
-        <StyledInlineGroup childrenCount={childrenCount}>
+        <StyledInlineGroup childrenCount={childrenCount} fullWidth={fullWidth}>
           {children}
           {renderErrors()}
         </StyledInlineGroup>
