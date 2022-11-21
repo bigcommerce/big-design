@@ -4,10 +4,10 @@ import React, {
   isValidElement,
   LabelHTMLAttributes,
   Ref,
+  useId,
   useMemo,
 } from 'react';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
@@ -39,7 +39,7 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
   resize = true,
   ...props
 }) => {
-  const uniqueTextareaId = useUniqueId('textarea');
+  const uniqueTextareaId = useId();
   const id = props.id ? props.id : uniqueTextareaId;
   const { errors } = useInputErrors(id, error);
   const MAX_ROWS = 7;

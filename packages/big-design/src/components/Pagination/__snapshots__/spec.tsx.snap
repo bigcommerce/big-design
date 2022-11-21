@@ -300,9 +300,9 @@ exports[`render pagination component 1`] = `
       <button
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="bd-dropdown-1-label bd-dropdown-1-toggle-button"
+        aria-labelledby=":r0:-label :r0:-toggle-button"
         class="c4 c5"
-        id="bd-dropdown-1-toggle-button"
+        id=":r0:-toggle-button"
       >
         <span
           class="c6"
@@ -333,9 +333,9 @@ exports[`render pagination component 1`] = `
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
-          aria-labelledby="bd-dropdown-1-label"
+          aria-labelledby=":r0:-label"
           class="c9"
-          id="bd-dropdown-1-menu"
+          id=":r0:-menu"
           role="listbox"
           tabindex="-1"
         />
@@ -353,7 +353,7 @@ exports[`render pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby="bd-icon-3"
+          aria-labelledby=":r2:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -363,7 +363,7 @@ exports[`render pagination component 1`] = `
           width="24"
         >
           <title
-            id="bd-icon-3"
+            id=":r2:"
           >
             Previous page
           </title>
@@ -384,7 +384,7 @@ exports[`render pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby="bd-icon-4"
+          aria-labelledby=":r3:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -394,7 +394,7 @@ exports[`render pagination component 1`] = `
           width="24"
         >
           <title
-            id="bd-icon-4"
+            id=":r3:"
           >
             Next page
           </title>
@@ -712,9 +712,9 @@ exports[`render pagination component with invalid page info 1`] = `
       <button
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="bd-dropdown-1-label bd-dropdown-1-toggle-button"
+        aria-labelledby=":r4:-label :r4:-toggle-button"
         class="c4 c5"
-        id="bd-dropdown-1-toggle-button"
+        id=":r4:-toggle-button"
       >
         <span
           class="c6"
@@ -745,9 +745,9 @@ exports[`render pagination component with invalid page info 1`] = `
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
-          aria-labelledby="bd-dropdown-1-label"
+          aria-labelledby=":r4:-label"
           class="c9"
-          id="bd-dropdown-1-menu"
+          id=":r4:-menu"
           role="listbox"
           tabindex="-1"
         />
@@ -765,7 +765,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby="bd-icon-3"
+          aria-labelledby=":r6:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -775,7 +775,7 @@ exports[`render pagination component with invalid page info 1`] = `
           width="24"
         >
           <title
-            id="bd-icon-3"
+            id=":r6:"
           >
             Previous page
           </title>
@@ -796,7 +796,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby="bd-icon-4"
+          aria-labelledby=":r7:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -806,7 +806,7 @@ exports[`render pagination component with invalid page info 1`] = `
           width="24"
         >
           <title
-            id="bd-icon-4"
+            id=":r7:"
           >
             Next page
           </title>
@@ -1124,9 +1124,9 @@ exports[`render pagination component with invalid range info 1`] = `
       <button
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="bd-dropdown-1-label bd-dropdown-1-toggle-button"
+        aria-labelledby=":r8:-label :r8:-toggle-button"
         class="c4 c5"
-        id="bd-dropdown-1-toggle-button"
+        id=":r8:-toggle-button"
       >
         <span
           class="c6"
@@ -1157,9 +1157,9 @@ exports[`render pagination component with invalid range info 1`] = `
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
-          aria-labelledby="bd-dropdown-1-label"
+          aria-labelledby=":r8:-label"
           class="c9"
-          id="bd-dropdown-1-menu"
+          id=":r8:-menu"
           role="listbox"
           tabindex="-1"
         />
@@ -1177,7 +1177,7 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby="bd-icon-3"
+          aria-labelledby=":ra:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -1187,7 +1187,7 @@ exports[`render pagination component with invalid range info 1`] = `
           width="24"
         >
           <title
-            id="bd-icon-3"
+            id=":ra:"
           >
             Previous page
           </title>
@@ -1209,7 +1209,7 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby="bd-icon-4"
+          aria-labelledby=":rb:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -1219,7 +1219,7 @@ exports[`render pagination component with invalid range info 1`] = `
           width="24"
         >
           <title
-            id="bd-icon-4"
+            id=":rb:"
           >
             Next page
           </title>
@@ -1537,9 +1537,9 @@ exports[`render pagination component with no items 1`] = `
       <button
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="bd-dropdown-1-label bd-dropdown-1-toggle-button"
+        aria-labelledby=":rc:-label :rc:-toggle-button"
         class="c4 c5"
-        id="bd-dropdown-1-toggle-button"
+        id=":rc:-toggle-button"
       >
         <span
           class="c6"
@@ -1570,9 +1570,9 @@ exports[`render pagination component with no items 1`] = `
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
-          aria-labelledby="bd-dropdown-1-label"
+          aria-labelledby=":rc:-label"
           class="c9"
-          id="bd-dropdown-1-menu"
+          id=":rc:-menu"
           role="listbox"
           tabindex="-1"
         />
@@ -1590,7 +1590,7 @@ exports[`render pagination component with no items 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby="bd-icon-3"
+          aria-labelledby=":re:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -1600,7 +1600,7 @@ exports[`render pagination component with no items 1`] = `
           width="24"
         >
           <title
-            id="bd-icon-3"
+            id=":re:"
           >
             Previous page
           </title>
@@ -1622,7 +1622,7 @@ exports[`render pagination component with no items 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby="bd-icon-4"
+          aria-labelledby=":rf:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -1632,7 +1632,7 @@ exports[`render pagination component with no items 1`] = `
           width="24"
         >
           <title
-            id="bd-icon-4"
+            id=":rf:"
           >
             Next page
           </title>

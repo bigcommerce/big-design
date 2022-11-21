@@ -105,13 +105,13 @@ exports[`render Switch checked 1`] = `
   <input
     checked=""
     class="c2"
-    id="bd-switch-1"
+    id=":r0:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3"
-    for="bd-switch-1"
+    for=":r0:"
   />
 </div>
 `;
@@ -232,14 +232,14 @@ exports[`render Switch disabled checked 1`] = `
     checked=""
     class="c2"
     disabled=""
-    id="bd-switch-1"
+    id=":r2:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3"
     disabled=""
-    for="bd-switch-1"
+    for=":r2:"
   />
 </div>
 `;
@@ -362,14 +362,14 @@ exports[`render Switch disabled unchecked 1`] = `
   <input
     class="c2"
     disabled=""
-    id="bd-switch-1"
+    id=":r3:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3"
     disabled=""
-    for="bd-switch-1"
+    for=":r3:"
   />
 </div>
 `;
@@ -481,13 +481,13 @@ exports[`render Switch unchecked 1`] = `
 >
   <input
     class="c2"
-    id="bd-switch-1"
+    id=":r1:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3"
-    for="bd-switch-1"
+    for=":r1:"
   />
 </div>
 `;

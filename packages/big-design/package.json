@@ -44,12 +44,11 @@
     "react-beautiful-dnd": "^13.1.1",
     "react-datepicker": "^4.8.0",
     "react-popper": "^2.3.0",
-    "react-uid": "^2.3.1",
     "zustand": "^4.1.1"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {

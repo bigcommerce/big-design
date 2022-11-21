@@ -30,19 +30,14 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Code, CodePreview, CodeSnippet, ContentRoutingTabs, List, NextLink } from '../components';
 import { FlagIconPropTable, IconPropTable } from '../PropTables';
 
-type BigDesignIcons = Omit<
-  typeof import('@bigcommerce/big-design-icons'),
-  'createStyledIcon' | 'useUniqueId'
->;
+type BigDesignIcons = Omit<typeof import('@bigcommerce/big-design-icons'), 'createStyledIcon'>;
 
 const IconsPage = () => {
   const [icons, setIcons] = useState<BigDesignIcons | Record<string, unknown>>({});
 
   useEffect(() => {
     const fetchIcons = async () => {
-      const { createStyledIcon, useUniqueId, ...iconsModule } = await import(
-        '@bigcommerce/big-design-icons'
-      );
+      const { createStyledIcon, ...iconsModule } = await import('@bigcommerce/big-design-icons');
 
       setIcons(iconsModule);
     };

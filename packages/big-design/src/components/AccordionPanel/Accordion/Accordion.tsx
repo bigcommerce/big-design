@@ -1,7 +1,5 @@
 import { ExpandMoreIcon } from '@bigcommerce/big-design-icons';
-import React, { memo } from 'react';
-
-import { useUniqueId } from '../../../hooks';
+import React, { memo, useId } from 'react';
 
 import { StyledAccordionButton, StyledAccordionContent } from './styled';
 
@@ -16,8 +14,8 @@ export interface AccordionProps {
 
 export const Accordion: React.FC<AccordionProps> = memo(
   ({ children, header, iconLeft, isExpanded, onClick }) => {
-    const accordionId = useUniqueId('accordion');
-    const accordionItemId = useUniqueId('accordion-item');
+    const accordionId = useId();
+    const accordionItemId = useId();
 
     return (
       <>

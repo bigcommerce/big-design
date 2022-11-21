@@ -7,13 +7,13 @@ import React, {
   RefObject,
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
 } from 'react';
 import { usePopper } from 'react-popper';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
@@ -49,7 +49,7 @@ export const Select = typedMemo(
     ...props
   }: SelectProps<T>): ReturnType<React.FC<SelectProps<T>>> => {
     const defaultRef: RefObject<HTMLInputElement> = createRef();
-    const selectUniqueId = useUniqueId('select');
+    const selectUniqueId = useId();
 
     const [inputValue, setInputValue] = useState<string | undefined>('');
 

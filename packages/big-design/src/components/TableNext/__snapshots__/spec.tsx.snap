@@ -330,7 +330,7 @@ exports[`pagination renders a pagination component 1`] = `
 }
 
 <div
-  aria-controls="bd-table-1"
+  aria-controls=":r12:"
   class="c0"
 >
   <div
@@ -350,9 +350,9 @@ exports[`pagination renders a pagination component 1`] = `
           <button
             aria-expanded="false"
             aria-haspopup="listbox"
-            aria-labelledby="bd-dropdown-2-label bd-dropdown-2-toggle-button"
+            aria-labelledby=":r13:-label :r13:-toggle-button"
             class="c7 c8"
-            id="bd-dropdown-2-toggle-button"
+            id=":r13:-toggle-button"
           >
             <span
               class="c9"
@@ -383,9 +383,9 @@ exports[`pagination renders a pagination component 1`] = `
             style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
           >
             <ul
-              aria-labelledby="bd-dropdown-2-label"
+              aria-labelledby=":r13:-label"
               class="c12"
-              id="bd-dropdown-2-menu"
+              id=":r13:-menu"
               role="listbox"
               tabindex="-1"
             />
@@ -403,7 +403,7 @@ exports[`pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby="bd-icon-4"
+              aria-labelledby=":r15:"
               class="c14"
               fill="currentColor"
               height="24"
@@ -413,7 +413,7 @@ exports[`pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id="bd-icon-4"
+                id=":r15:"
               >
                 Previous page
               </title>
@@ -434,7 +434,7 @@ exports[`pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby="bd-icon-5"
+              aria-labelledby=":r16:"
               class="c14"
               fill="currentColor"
               height="24"
@@ -444,7 +444,7 @@ exports[`pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id="bd-icon-5"
+                id=":r16:"
               >
                 Next page
               </title>
@@ -559,7 +559,7 @@ exports[`renders a simple table 1`] = `
 
 <table
   class="c0"
-  id="bd-table-1"
+  id=":r0:"
 >
   <thead
     class=""
@@ -989,7 +989,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 <div
-  aria-controls="bd-table-1"
+  aria-controls=":r6b:"
   class="c0"
 >
   <div
@@ -1003,15 +1003,15 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
       >
         <input
           aria-checked="false"
-          aria-labelledby="bd-checkbox_label-3"
+          aria-labelledby=":r6d:"
           class="c6 c7"
-          id="bd-checkbox-2"
+          id=":r6c:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for="bd-checkbox-2"
+          for=":r6c:"
         >
           <svg
             aria-hidden="true"
@@ -1037,9 +1037,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         >
           <label
             class="c12 c13"
-            for="bd-checkbox-2"
+            for=":r6c:"
             hidden=""
-            id="bd-checkbox_label-3"
+            id=":r6d:"
           >
             Select All
           </label>
@@ -1283,7 +1283,7 @@ exports[`selectable renders selectable actions, checkboxes when having parent ro
 }
 
 <div
-  aria-controls="bd-table-1"
+  aria-controls=":r71:"
   class="c0"
 >
   <div
@@ -1297,15 +1297,15 @@ exports[`selectable renders selectable actions, checkboxes when having parent ro
       >
         <input
           aria-checked="false"
-          aria-labelledby="bd-checkbox_label-3"
+          aria-labelledby=":r73:"
           class="c6 c7"
-          id="bd-checkbox-2"
+          id=":r72:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for="bd-checkbox-2"
+          for=":r72:"
         >
           <svg
             aria-hidden="true"
@@ -1331,9 +1331,9 @@ exports[`selectable renders selectable actions, checkboxes when having parent ro
         >
           <label
             class="c12 c13"
-            for="bd-checkbox-2"
+            for=":r72:"
             hidden=""
-            id="bd-checkbox_label-3"
+            id=":r73:"
           >
             Select All
           </label>

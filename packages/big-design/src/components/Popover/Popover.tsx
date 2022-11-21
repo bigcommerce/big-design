@@ -1,9 +1,8 @@
 import { Modifier, Obj, Placement } from '@popperjs/core';
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 
-import { useUniqueId } from '../../hooks';
 import { excludeMarginProps } from '../../mixins';
 import { Box, BoxProps } from '../Box';
 
@@ -40,7 +39,7 @@ export const Popover: React.FC<PopoverProps> = ({
   role = 'dialog',
   ...props
 }) => {
-  const uniquePopoverId = useUniqueId('popover');
+  const uniquePopoverId = useId();
   const rest = excludeMarginProps(props);
 
   useEffect(() => {

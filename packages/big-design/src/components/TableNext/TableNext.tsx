@@ -1,7 +1,6 @@
-import React, { memo, useCallback, useRef, useState } from 'react';
+import React, { memo, useCallback, useId, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 
-import { useUniqueId } from '../../hooks';
 import { MarginProps } from '../../mixins';
 import { typedMemo } from '../../utils';
 
@@ -44,7 +43,7 @@ const InternalTableNext = <T extends TableItem>(
   } = props;
 
   const actionsRef = useRef<HTMLDivElement>(null);
-  const uniqueTableId = useUniqueId('table');
+  const uniqueTableId = useId();
   const tableIdRef = useRef(id || uniqueTableId);
   const [headerCellWidths, setHeaderCellWidths] = useState<Array<number | string>>([]);
   const headerCellIconRef = useRef<HTMLTableCellElement>(null);
