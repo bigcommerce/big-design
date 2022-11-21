@@ -89,7 +89,15 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
         code={code}
         language={language}
         scope={scope}
-        theme={editorTheme}
+        theme={{
+          ...editorTheme,
+          plain: {
+            ...editorTheme.plain,
+            // Adds back previous version stylings
+            fontFamily: 'monospace',
+            whiteSpace: 'pre-wrap',
+          },
+        }}
         transformCode={transformCode}
       >
         <BigDesign.Box backgroundColor="white" borderBottom="box" padding="medium">
@@ -99,7 +107,13 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
           copyToClipboard={() => clipboardCopy(code)}
           resetCode={() => setCode(initialCode)}
         />
-        <LiveEditor onChange={setCode} />
+        <BigDesign.Box>
+          <LiveEditor
+            onChange={setCode}
+            // Adds background and text color
+            style={editorTheme.plain}
+          />
+        </BigDesign.Box>
         <StyledLiveError />
       </LiveProvider>
     </BigDesign.Box>

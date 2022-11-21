@@ -51,12 +51,27 @@ export const CodeSnippet: React.FC<EditorProps> = (props) => {
         <SnippetControls copyToClipboard={() => clipboardCopy(code)} helperText="Code example" />
       )}
 
-      <Editor code={code} disabled language={language} theme={editorTheme} />
+      <Editor
+        code={code}
+        disabled
+        language={language}
+        // Adds background and text color
+        style={editorTheme.plain}
+        theme={{
+          ...editorTheme,
+          plain: {
+            ...editorTheme.plain,
+            // Adds back previous version stylings
+            fontFamily: 'monospace',
+            whiteSpace: 'pre-wrap',
+          },
+        }}
+      />
     </Box>
   );
 };
 
 CodeSnippet.defaultProps = {
-  language: 'jsx',
+  language: 'tsx',
   showControls: true,
 };
