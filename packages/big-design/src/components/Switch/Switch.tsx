@@ -1,6 +1,5 @@
-import React, { forwardRef, memo, Ref } from 'react';
+import React, { forwardRef, memo, Ref, useId } from 'react';
 
-import { useUniqueId } from '../../hooks';
 import { Flex } from '../Flex';
 
 import { HiddenCheckbox, StyledSwitchLabel } from './styled';
@@ -17,7 +16,7 @@ export const RawSwitch: React.FC<SwitchProps & PrivateProps> = ({
   forwardedRef,
   ...props
 }) => {
-  const uniqueSwitchId = useUniqueId('switch');
+  const uniqueSwitchId = useId();
   const id = props.id ? props.id : uniqueSwitchId;
 
   return (

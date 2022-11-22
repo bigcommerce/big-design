@@ -1,7 +1,7 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useId, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 
-import { useEventCallback, useUniqueId } from '../../hooks';
+import { useEventCallback } from '../../hooks';
 import { MarginProps } from '../../mixins';
 import { typedMemo } from '../../utils';
 
@@ -37,7 +37,7 @@ const InternalTable = <T extends TableItem>(
   } = props;
 
   const actionsRef = useRef<HTMLDivElement>(null);
-  const uniqueTableId = useUniqueId('table');
+  const uniqueTableId = useId();
   const tableIdRef = useRef(id || uniqueTableId);
   const isSelectable = Boolean(selectable);
   const [selectedItems, setSelectedItems] = useState<Set<T>>(new Set());

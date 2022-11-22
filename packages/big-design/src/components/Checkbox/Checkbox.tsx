@@ -5,10 +5,10 @@ import React, {
   isValidElement,
   LabelHTMLAttributes,
   Ref,
+  useId,
   useMemo,
 } from 'react';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
@@ -50,9 +50,9 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   style,
   ...props
 }) => {
-  const uniqueCheckboxId = useUniqueId('checkbox');
+  const uniqueCheckboxId = useId();
+  const labelId = useId();
   const id = props.id ? props.id : uniqueCheckboxId;
-  const labelId = useUniqueId('checkbox_label');
 
   const renderedLabel = useMemo(() => {
     if (!label) {

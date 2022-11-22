@@ -7,11 +7,11 @@ import React, {
   LabelHTMLAttributes,
   Ref,
   useEffect,
+  useId,
   useMemo,
   useState,
 } from 'react';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
@@ -48,7 +48,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     ...props
   }) => {
     const [focus, setFocus] = useState(false);
-    const uniqueCounterId = useUniqueId('counter');
+    const uniqueCounterId = useId();
     const id = props.id ? props.id : uniqueCounterId;
     const { errors } = useInputErrors(id, error);
 

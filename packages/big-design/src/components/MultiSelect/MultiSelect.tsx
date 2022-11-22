@@ -7,13 +7,13 @@ import React, {
   RefObject,
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
 } from 'react';
 import { usePopper } from 'react-popper';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
@@ -50,7 +50,7 @@ export const MultiSelect = typedMemo(
     ...props
   }: MultiSelectProps<T>): ReturnType<React.FC<MultiSelectProps<T>>> => {
     const defaultRef: RefObject<HTMLInputElement> = createRef();
-    const multiSelectUniqueId = useUniqueId('multi-select');
+    const multiSelectUniqueId = useId();
 
     const [inputValue, setInputValue] = useState('');
 

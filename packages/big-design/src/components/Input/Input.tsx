@@ -4,11 +4,11 @@ import React, {
   isValidElement,
   LabelHTMLAttributes,
   Ref,
+  useId,
   useMemo,
   useState,
 } from 'react';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { Chip, ChipProps } from '../Chip';
 import { FormControlDescription, FormControlLabel } from '../Form';
@@ -43,7 +43,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
-  const uniqueInputId = useUniqueId('input');
+  const uniqueInputId = useId();
   const id = props.id ? props.id : uniqueInputId;
   const { errors } = useInputErrors(id, error);
 

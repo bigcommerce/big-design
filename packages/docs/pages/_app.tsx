@@ -10,7 +10,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import React, { useEffect } from 'react';
-import { UIDFork, UIDReset } from 'react-uid';
 import { ThemeProvider } from 'styled-components';
 
 import { BetaRibbon, SideNav, StoryWrapper } from '../components';
@@ -90,44 +89,40 @@ const App = ({ Component, pageProps }) => {
           />
         </>
       )}
-      <UIDReset>
-        <UIDFork>
-          <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <>
+          <GlobalStyles />
+          <AlertsManager manager={alertsManager} />
+          {router.query.noNav ? (
+            <Component {...pageProps} />
+          ) : (
             <>
-              <GlobalStyles />
-              <AlertsManager manager={alertsManager} />
-              {router.query.noNav ? (
-                <Component {...pageProps} />
-              ) : (
-                <>
-                  <Grid
-                    backgroundColor="secondary10"
-                    gridGap="0"
-                    gridTemplate={gridTemplate}
-                    style={{ minHeight: '100%' }}
-                  >
-                    <GridItem gridArea="nav" paddingTop="medium">
-                      <SideNav />
-                    </GridItem>
-                    <GridItem
-                      gridArea="main"
-                      marginHorizontal={{ mobile: 'small', tablet: 'xxLarge' }}
-                      marginVertical="medium"
-                      paddingTop="large"
-                      style={{ maxWidth: '100%' }}
-                    >
-                      <StoryWrapper>
-                        <Component {...pageProps} />
-                      </StoryWrapper>
-                    </GridItem>
-                  </Grid>
-                  <BetaRibbon />
-                </>
-              )}
+              <Grid
+                backgroundColor="secondary10"
+                gridGap="0"
+                gridTemplate={gridTemplate}
+                style={{ minHeight: '100%' }}
+              >
+                <GridItem gridArea="nav" paddingTop="medium">
+                  <SideNav />
+                </GridItem>
+                <GridItem
+                  gridArea="main"
+                  marginHorizontal={{ mobile: 'small', tablet: 'xxLarge' }}
+                  marginVertical="medium"
+                  paddingTop="large"
+                  style={{ maxWidth: '100%' }}
+                >
+                  <StoryWrapper>
+                    <Component {...pageProps} />
+                  </StoryWrapper>
+                </GridItem>
+              </Grid>
+              <BetaRibbon />
             </>
-          </ThemeProvider>
-        </UIDFork>
-      </UIDReset>
+          )}
+        </>
+      </ThemeProvider>
     </>
   );
 };

@@ -3,9 +3,9 @@ import {
   ArrowUpwardIcon,
   BaselineHelpIcon,
 } from '@bigcommerce/big-design-icons';
-import React, { memo, RefObject, TableHTMLAttributes } from 'react';
+import React, { memo, RefObject, TableHTMLAttributes, useId } from 'react';
 
-import { useComponentSize, useUniqueId } from '../../../hooks';
+import { useComponentSize } from '../../../hooks';
 import { typedMemo } from '../../../utils';
 import { Box } from '../../Box';
 import { Tooltip } from '../../Tooltip';
@@ -52,7 +52,7 @@ const InternalHeaderCell = <T extends TableItem>({
 }: HeaderCellProps<T>) => {
   const { align = 'left', isSortable, width, tooltip } = column;
   const actionsSize = useComponentSize(actionsRef);
-  const tooltipId = useUniqueId('table-header-tooltip');
+  const tooltipId = useId();
 
   const renderSortIcon = () => {
     if (!isSorted) {

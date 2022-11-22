@@ -1,9 +1,8 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import { createFocusTrap, FocusTrap } from 'focus-trap';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Button, ButtonProps } from '../Button';
 import { MessagingButton } from '../Button/private';
@@ -69,7 +68,7 @@ const InternalModal: React.FC<ModalProps> = ({
 }) => {
   const initialBodyOverflowYRef = useRef('');
   const internalTrap = useRef<FocusTrap | null>(null);
-  const headerUniqueId = useUniqueId('modal_header');
+  const headerUniqueId = useId();
   const [modalRef, setModalRef] = useState<HTMLDivElement | null>(null);
 
   const onClickAway = (event: React.MouseEvent) => {

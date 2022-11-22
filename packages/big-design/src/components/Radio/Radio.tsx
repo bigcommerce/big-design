@@ -4,10 +4,10 @@ import React, {
   isValidElement,
   LabelHTMLAttributes,
   Ref,
+  useId,
   useMemo,
 } from 'react';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
@@ -40,9 +40,9 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
   style,
   ...props
 }) => {
-  const uniqueRadioId = useUniqueId('radio');
+  const uniqueRadioId = useId();
+  const labelId = useId();
   const id = props.id ? props.id : uniqueRadioId;
-  const labelId = useUniqueId('radio_label');
 
   const renderedLabel = useMemo(() => {
     if (!label) {

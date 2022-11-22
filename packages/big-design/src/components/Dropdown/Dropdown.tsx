@@ -1,8 +1,15 @@
 import { useSelect, UseSelectState } from 'downshift';
-import React, { cloneElement, isValidElement, memo, useCallback, useMemo, useRef } from 'react';
+import React, {
+  cloneElement,
+  isValidElement,
+  memo,
+  useCallback,
+  useId,
+  useMemo,
+  useRef,
+} from 'react';
 import { usePopper } from 'react-popper';
 
-import { useUniqueId } from '../../hooks';
 import { Box } from '../Box';
 import { List } from '../List';
 
@@ -23,7 +30,7 @@ export const Dropdown = memo(
     style,
     ...props
   }: DropdownProps) => {
-    const dropdownUniqueId = useUniqueId('dropdown');
+    const dropdownUniqueId = useId();
 
     const flattenItems = useCallback((items: DropdownProps['items']) => {
       const isGroups = (

@@ -103,11 +103,11 @@ exports[`render Radio (checked + disabled) 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="bd-radio_label-2"
+    aria-labelledby=":r9:"
     checked=""
     class="c1 c2"
     disabled=""
-    id="bd-radio-1"
+    id=":r8:"
     name="test-group"
     type="radio"
   />
@@ -115,7 +115,7 @@ exports[`render Radio (checked + disabled) 1`] = `
     aria-hidden="true"
     class="c3 c4"
     disabled=""
-    for="bd-radio-1"
+    for=":r8:"
   />
   <div
     class="c5"
@@ -124,8 +124,8 @@ exports[`render Radio (checked + disabled) 1`] = `
       aria-hidden="true"
       class="c6 c7"
       disabled=""
-      for="bd-radio-1"
-      id="bd-radio_label-2"
+      for=":r8:"
+      id=":r9:"
     >
       Checked
     </label>
@@ -237,25 +237,25 @@ exports[`render Radio (checked) 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="bd-radio_label-2"
+    aria-labelledby=":r1:"
     checked=""
     class="c1 c2"
-    id="bd-radio-1"
+    id=":r0:"
     name="test-group"
     type="radio"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
-    for="bd-radio-1"
+    for=":r0:"
   />
   <div
     class="c5"
   >
     <label
       class="c6 c7"
-      for="bd-radio-1"
-      id="bd-radio_label-2"
+      for=":r0:"
+      id=":r1:"
     >
       Checked
     </label>
@@ -402,24 +402,24 @@ exports[`render Radio (unchecked + description object) 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="bd-radio_label-2"
+    aria-labelledby=":r5:"
     class="c1 c2"
-    id="bd-radio-1"
+    id=":r4:"
     name="test-group"
     type="radio"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
-    for="bd-radio-1"
+    for=":r4:"
   />
   <div
     class="c5"
   >
     <label
       class="c6 c7"
-      for="bd-radio-1"
-      id="bd-radio_label-2"
+      for=":r4:"
+      id=":r5:"
     >
       Unchecked
     </label>
@@ -554,24 +554,24 @@ exports[`render Radio (unchecked + description text) 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="bd-radio_label-2"
+    aria-labelledby=":r7:"
     class="c1 c2"
-    id="bd-radio-1"
+    id=":r6:"
     name="test-group"
     type="radio"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
-    for="bd-radio-1"
+    for=":r6:"
   />
   <div
     class="c5"
   >
     <label
       class="c6 c7"
-      for="bd-radio-1"
-      id="bd-radio_label-2"
+      for=":r6:"
+      id=":r7:"
     >
       Unchecked
     </label>
@@ -683,10 +683,10 @@ exports[`render Radio (unchecked + disabled) 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="bd-radio_label-2"
+    aria-labelledby=":rb:"
     class="c1 c2"
     disabled=""
-    id="bd-radio-1"
+    id=":ra:"
     name="test-group"
     type="radio"
   />
@@ -694,7 +694,7 @@ exports[`render Radio (unchecked + disabled) 1`] = `
     aria-hidden="true"
     class="c3 c4"
     disabled=""
-    for="bd-radio-1"
+    for=":ra:"
   />
   <div
     class="c5"
@@ -703,8 +703,8 @@ exports[`render Radio (unchecked + disabled) 1`] = `
       aria-hidden="true"
       class="c6 c7"
       disabled=""
-      for="bd-radio-1"
-      id="bd-radio_label-2"
+      for=":ra:"
+      id=":rb:"
     >
       Unchecked
     </label>
@@ -812,24 +812,24 @@ exports[`render Radio (unchecked) 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="bd-radio_label-2"
+    aria-labelledby=":r3:"
     class="c1 c2"
-    id="bd-radio-1"
+    id=":r2:"
     name="test-group"
     type="radio"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
-    for="bd-radio-1"
+    for=":r2:"
   />
   <div
     class="c5"
   >
     <label
       class="c6 c7"
-      for="bd-radio-1"
-      id="bd-radio_label-2"
+      for=":r2:"
+      id=":r3:"
     >
       Unchecked
     </label>

@@ -1,10 +1,9 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import React, { forwardRef, memo } from 'react';
+import React, { forwardRef, memo, useId } from 'react';
 
 import { PrivateIconProps } from '../../base';
-import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
@@ -13,7 +12,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   theme,
   ...props
 }) => {
-  const uniqueTitleId = useUniqueId('icon');
+  const uniqueTitleId = useId();
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
