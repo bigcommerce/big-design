@@ -117,7 +117,11 @@ export const Pagination: React.FC<PaginationProps> = memo(
             }))}
             positionFixed={true}
             toggle={
-              <StyledButton iconRight={<ArrowDropDownIcon size="xxLarge" />} variant="subtle">
+              <StyledButton
+                iconRight={<ArrowDropDownIcon size="xxLarge" />}
+                type="button"
+                variant="subtle"
+              >
                 {getRangeLabel(itemRange.start, itemRange.end, totalItems)}
               </StyledButton>
             }
@@ -128,6 +132,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
             disabled={currentPage <= 1}
             iconOnly={<ChevronLeftIcon title={previousLabel} />}
             onClick={handlePageDecrease}
+            type="button"
             variant="subtle"
           />
 
@@ -135,6 +140,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
             disabled={currentPage >= maxPages}
             iconOnly={<ChevronRightIcon title={nextLabel} />}
             onClick={handlePageIncrease}
+            type="button"
             variant="subtle"
           />
         </FlexItem>

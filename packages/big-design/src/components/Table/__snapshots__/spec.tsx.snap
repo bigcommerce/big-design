@@ -353,6 +353,7 @@ exports[`renders a pagination component 1`] = `
             aria-labelledby=":r13:-label :r13:-toggle-button"
             class="c7 c8"
             id=":r13:-toggle-button"
+            type="button"
           >
             <span
               class="c9"
@@ -398,6 +399,7 @@ exports[`renders a pagination component 1`] = `
         <button
           class="c13 c8"
           disabled=""
+          type="button"
         >
           <span
             class="c9"
@@ -429,6 +431,7 @@ exports[`renders a pagination component 1`] = `
         </button>
         <button
           class="c13 c8"
+          type="button"
         >
           <span
             class="c9"
