@@ -18,8 +18,8 @@ interface PrivateProps {
 }
 
 const ALIGN_MAP: Record<string, FlexedProps['justifyContent']> = {
-  right: 'flex-start',
-  left: 'flex-end',
+  left: 'flex-start',
+  right: 'flex-end',
   center: 'center',
 };
 
