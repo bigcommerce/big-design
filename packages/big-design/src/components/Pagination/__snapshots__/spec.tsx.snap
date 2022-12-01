@@ -303,6 +303,7 @@ exports[`render pagination component 1`] = `
         aria-labelledby=":r0:-label :r0:-toggle-button"
         class="c4 c5"
         id=":r0:-toggle-button"
+        type="button"
       >
         <span
           class="c6"
@@ -348,6 +349,7 @@ exports[`render pagination component 1`] = `
     <button
       class="c10 c5"
       disabled=""
+      type="button"
     >
       <span
         class="c6"
@@ -379,6 +381,7 @@ exports[`render pagination component 1`] = `
     </button>
     <button
       class="c10 c5"
+      type="button"
     >
       <span
         class="c6"
@@ -715,6 +718,7 @@ exports[`render pagination component with invalid page info 1`] = `
         aria-labelledby=":r4:-label :r4:-toggle-button"
         class="c4 c5"
         id=":r4:-toggle-button"
+        type="button"
       >
         <span
           class="c6"
@@ -760,6 +764,7 @@ exports[`render pagination component with invalid page info 1`] = `
     <button
       class="c10 c5"
       disabled=""
+      type="button"
     >
       <span
         class="c6"
@@ -791,6 +796,7 @@ exports[`render pagination component with invalid page info 1`] = `
     </button>
     <button
       class="c10 c5"
+      type="button"
     >
       <span
         class="c6"
@@ -1127,6 +1133,7 @@ exports[`render pagination component with invalid range info 1`] = `
         aria-labelledby=":r8:-label :r8:-toggle-button"
         class="c4 c5"
         id=":r8:-toggle-button"
+        type="button"
       >
         <span
           class="c6"
@@ -1172,6 +1179,7 @@ exports[`render pagination component with invalid range info 1`] = `
     <button
       class="c10 c5"
       disabled=""
+      type="button"
     >
       <span
         class="c6"
@@ -1204,6 +1212,7 @@ exports[`render pagination component with invalid range info 1`] = `
     <button
       class="c10 c5"
       disabled=""
+      type="button"
     >
       <span
         class="c6"
@@ -1540,6 +1549,7 @@ exports[`render pagination component with no items 1`] = `
         aria-labelledby=":rc:-label :rc:-toggle-button"
         class="c4 c5"
         id=":rc:-toggle-button"
+        type="button"
       >
         <span
           class="c6"
@@ -1585,6 +1595,7 @@ exports[`render pagination component with no items 1`] = `
     <button
       class="c10 c5"
       disabled=""
+      type="button"
     >
       <span
         class="c6"
@@ -1617,6 +1628,7 @@ exports[`render pagination component with no items 1`] = `
     <button
       class="c10 c5"
       disabled=""
+      type="button"
     >
       <span
         class="c6"
