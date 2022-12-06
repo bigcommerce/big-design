@@ -5,6 +5,7 @@ import { typedMemo } from '../../../utils';
 import { MessagingButton } from '../../Button/private';
 import { Checkbox } from '../../Checkbox';
 import { Flex } from '../../Flex';
+import { FlexedProps } from '../../Flex/types';
 import { DataCell } from '../DataCell';
 import { OnItemSelectFn } from '../hooks';
 import { TableColumn, TableItem, TableSelectable } from '../types';
@@ -15,6 +16,12 @@ import { useRowState } from './useRowState';
 interface PrivateProps {
   forwardedRef?: React.Ref<HTMLTableRowElement>;
 }
+
+const ALIGN_MAP: Record<string, FlexedProps['justifyContent']> = {
+  left: 'flex-start',
+  right: 'flex-end',
+  center: 'center',
+};
 
 export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
   childrenRows?: T[];
@@ -154,7 +161,11 @@ const InternalRow = <T extends TableItem>({
               verticalAlign={verticalAlign}
               width={isDragging ? cellWidth : width}
             >
-              <Flex alignItems="center" flexDirection="row">
+              <Flex
+                alignItems="center"
+                flexDirection="row"
+                justifyContent={align && ALIGN_MAP[align]}
+              >
                 {/* @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
                 <CellContent {...item} />
               </Flex>
