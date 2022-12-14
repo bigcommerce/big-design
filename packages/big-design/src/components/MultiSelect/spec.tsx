@@ -1,6 +1,6 @@
 import { ArrowBackIcon, ArrowForwardIcon, DeleteIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import 'jest-styled-components';
 import React, { createRef } from 'react';
@@ -57,6 +57,19 @@ const MultiSelectMock = (
     data-testid="multi-select"
     error="Required"
     label="Countries"
+    onClose={onClose}
+    onOpen={onOpen}
+    onOptionsChange={onChange}
+    options={mockOptions}
+    placeholder="Choose country"
+    required
+    value={['us', 'mx']}
+  />
+);
+
+const VisuallyHiddenLabelMultiSelectMock = (
+  <MultiSelect
+    aria-label="Countries"
     onClose={onClose}
     onOpen={onOpen}
     onOptionsChange={onChange}
@@ -1023,4 +1036,16 @@ test('select action should supports description', async () => {
   await userEvent.click(input);
 
   expect(await screen.findByText('Action Description')).toBeInTheDocument();
+});
+
+test('combobox and input can have accessible names without a visible label', async () => {
+  render(VisuallyHiddenLabelMultiSelectMock);
+
+  const combobox = await screen.findByRole('combobox', { name: 'Countries' });
+
+  expect(combobox).toBeInTheDocument();
+
+  const input = await within(combobox).findByRole('textbox', { name: 'Countries' });
+
+  expect(input).toBeInTheDocument();
 });

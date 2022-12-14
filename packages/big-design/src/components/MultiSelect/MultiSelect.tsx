@@ -257,6 +257,15 @@ export const MultiSelect = typedMemo(
       stateReducer: handleStateReducer,
     });
 
+    let comboboxProps = getComboboxProps();
+
+    if (!label && props['aria-label']) {
+      comboboxProps = {
+        ...comboboxProps,
+        'aria-label': props['aria-label'],
+      };
+    }
+
     // Popper
     const referenceRef = useRef(null);
     const popperRef = useRef(null);
@@ -425,7 +434,7 @@ export const MultiSelect = typedMemo(
     return (
       <div>
         {renderLabel}
-        <div {...getComboboxProps()}>{renderInput}</div>
+        <div {...comboboxProps}>{renderInput}</div>
         <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
             action={action}
