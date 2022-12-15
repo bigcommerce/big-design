@@ -36,6 +36,7 @@ exports[`has individual border props 1`] = `
   box-sizing: border-box;
   border-right: 1px solid #D9DCE9;
   border-bottom: 1px solid #D9DCE9;
+  border-left: 1px solid #D9DCE9;
 }
 
 <div

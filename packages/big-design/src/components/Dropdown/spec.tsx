@@ -1,5 +1,6 @@
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
 
@@ -109,7 +110,7 @@ test('dropdown toggle has aria-haspopup', () => {
 
   const toggle = screen.getByRole('button');
 
-  expect(toggle.getAttribute('aria-haspopup')).toBe('listbox');
+  expect(toggle).toHaveAttribute('aria-haspopup', 'menu');
 });
 
 test('dropdown toggle has aria-expanded when dropdown menu is open', async () => {
@@ -117,17 +118,15 @@ test('dropdown toggle has aria-expanded when dropdown menu is open', async () =>
 
   const toggle = screen.getByRole('button');
 
-  await act(async () => {
-    await fireEvent.click(toggle);
-  });
+  await userEvent.click(toggle);
 
-  expect(toggle.getAttribute('aria-expanded')).toBe('true');
+  expect(toggle).toHaveAttribute('aria-expanded', 'true');
 });
 
 test('renders the dropdown menu closed', async () => {
   render(DropdownMock);
 
-  const list = await screen.findByRole('listbox');
+  const list = await screen.findByRole('menu');
 
   expect(list).toBeEmptyDOMElement();
 });
@@ -139,13 +138,11 @@ test('opens/closes dropdown menu when toggle is clicked', async () => {
 
   fireEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
+  const list = await screen.findByRole('menu');
 
   expect(list).not.toBeEmptyDOMElement();
 
-  fireEvent.click(toggle);
-
-  await screen.findByRole('listbox');
+  await userEvent.click(toggle);
 
   expect(list).toBeEmptyDOMElement();
 });
@@ -155,12 +152,11 @@ test('dropdown menu has aria-activedescendant', async () => {
 
   const toggle = screen.getByRole('button');
 
-  fireEvent.click(toggle);
+  await userEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
   const options = screen.getAllByRole('option');
 
-  expect(list.getAttribute('aria-activedescendant')).toBe(options[0].id);
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[0].id);
 });
 
 test('dropdown menu should have 4 dropdown items', async () => {
@@ -191,7 +187,7 @@ test('should accept a maxHeight prop', async () => {
 
   fireEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
+  const list = await screen.findByRole('menu');
 
   expect(list).toHaveStyleRule('max-height', remCalc(350));
 });
@@ -203,7 +199,7 @@ test('should default max-height to 250', async () => {
 
   fireEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
+  const list = await screen.findByRole('menu');
 
   expect(list).toHaveStyleRule('max-height', remCalc(250));
 });
@@ -243,7 +239,7 @@ test('first dropdown item should be selected when dropdown is opened', async () 
 
   const options = await screen.findAllByRole('option');
 
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[0].id);
 });
 
 test('up/down arrows should change dropdown item selection', async () => {
@@ -251,22 +247,27 @@ test('up/down arrows should change dropdown item selection', async () => {
 
   const toggle = screen.getByRole('button');
 
-  fireEvent.click(toggle);
+  await userEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
   const options = screen.getAllByRole('option');
 
-  fireEvent.keyDown(list, { key: 'ArrowDown' });
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[0].id);
 
-  expect(options[1].getAttribute('aria-selected')).toBe('true');
+  await userEvent.keyboard('{ArrowDown}');
 
-  fireEvent.keyDown(list, { key: 'ArrowUp' });
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[1].id);
 
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  await userEvent.keyboard('{ArrowUp}');
 
-  fireEvent.keyDown(list, { key: 'ArrowUp' });
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[0].id);
 
-  expect(options[3].getAttribute('aria-selected')).toBe('true');
+  await userEvent.keyboard('{ArrowUp}');
+
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[3].id);
+
+  await userEvent.keyboard('{ArrowDown}');
+
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[0].id);
 });
 
 test('esc should close menu', async () => {
@@ -274,15 +275,15 @@ test('esc should close menu', async () => {
 
   const toggle = screen.getByRole('button');
 
-  fireEvent.click(toggle);
+  await userEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
+  const list = await screen.findByRole('menu');
 
   expect(list).not.toBeEmptyDOMElement();
 
-  fireEvent.keyDown(list, { key: 'Escape' });
+  await userEvent.keyboard('{Escape}');
 
-  await screen.findByRole('listbox');
+  await screen.findByRole('menu');
 
   expect(list).toBeEmptyDOMElement();
 });
@@ -292,21 +293,19 @@ test('home should select first dropdown item', async () => {
 
   const toggle = screen.getByRole('button');
 
-  fireEvent.click(toggle);
+  await userEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
   const options = screen.getAllByRole('option');
 
-  fireEvent.keyDown(list, { key: 'ArrowDown' });
-  fireEvent.keyDown(list, { key: 'ArrowDown' });
-  fireEvent.keyDown(list, { key: 'ArrowDown' });
+  await userEvent.keyboard('{ArrowDown}');
+  await userEvent.keyboard('{ArrowDown}');
+  await userEvent.keyboard('{ArrowDown}');
 
-  expect(options[3].getAttribute('aria-selected')).toBe('true');
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[3].id);
 
-  fireEvent.keyDown(list, { key: 'Home' });
+  await userEvent.keyboard('{Home}');
 
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
-  expect(list.getAttribute('aria-activedescendant')).toEqual(options[0].id);
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[0].id);
 });
 
 test('end should select last dropdown item', async () => {
@@ -314,17 +313,15 @@ test('end should select last dropdown item', async () => {
 
   const toggle = screen.getByRole('button');
 
-  fireEvent.click(toggle);
+  await userEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
   const options = screen.getAllByRole('option');
 
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[0].id);
 
-  fireEvent.keyDown(list, { key: 'End' });
+  await userEvent.keyboard('{End}');
 
-  expect(options[3].getAttribute('aria-selected')).toBe('true');
-  expect(list.getAttribute('aria-activedescendant')).toEqual(options[3].id);
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[3].id);
 });
 
 test('enter should toggle onItemClick', async () => {
@@ -332,18 +329,15 @@ test('enter should toggle onItemClick', async () => {
 
   const toggle = screen.getByRole('button');
 
-  fireEvent.click(toggle);
+  await userEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
   const options = screen.getAllByRole('option');
 
-  fireEvent.keyDown(list, { key: 'ArrowDown' });
+  await userEvent.keyboard('{ArrowDown}');
 
-  expect(options[1].getAttribute('aria-selected')).toBe('true');
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[1].id);
 
-  await act(async () => {
-    await fireEvent.keyDown(list, { key: 'Enter' });
-  });
+  await userEvent.keyboard('{Enter}');
 
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
 });
@@ -353,13 +347,11 @@ test('clicking on dropdown items should toggle onItemClick', async () => {
 
   const toggle = screen.getByRole('button');
 
-  fireEvent.click(toggle);
+  await userEvent.click(toggle);
 
   const options = await screen.findAllByRole('option');
 
-  await act(async () => {
-    await fireEvent.click(options[1]);
-  });
+  await userEvent.click(options[1]);
 
   expect(onItemClick).toHaveBeenCalledWith({ content: 'Option 2', onItemClick });
 });
@@ -369,13 +361,13 @@ test('dropdown items should be highlighted when moused over', async () => {
 
   const toggle = screen.getByRole('button');
 
-  fireEvent.click(toggle);
+  await userEvent.click(toggle);
 
   const options = await screen.findAllByRole('option');
 
   fireEvent.mouseOver(options[0]);
 
-  expect(options[0].getAttribute('aria-selected')).toBe('true');
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[0].id);
 });
 
 test('dropdown menu renders 4 link when passed options of type link', async () => {
@@ -397,7 +389,7 @@ test('dropdown menu renders 4 link when passed options of type link', async () =
     await fireEvent.click(toggle);
   });
 
-  const list = await screen.findByRole('listbox');
+  const list = await screen.findByRole('menu');
   const options = list.querySelectorAll('a');
 
   expect(options).toHaveLength(4);
@@ -414,7 +406,7 @@ test('items renders icons', async () => {
 
   fireEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
+  const list = await screen.findByRole('menu');
 
   const svgs = list.querySelectorAll('svg');
 
@@ -435,7 +427,7 @@ test('does not forward styles', async () => {
 
   fireEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
+  const list = await screen.findByRole('menu');
 
   expect(list.getElementsByClassName('test')).toHaveLength(0);
   expect(list).not.toHaveStyle('background: red');
@@ -522,7 +514,7 @@ test('no errors expected if all options are disabled', async () => {
 
   fireEvent.click(toggle);
 
-  await screen.findByRole('listbox');
+  await screen.findByRole('menu');
 
   expect(onError).not.toThrow();
 });
@@ -562,16 +554,17 @@ test('group labels are skipped over when using keyboard to navigate options', as
 
   const toggle = screen.getByRole('button');
 
-  fireEvent.click(toggle);
+  await userEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
   const options = screen.getAllByRole('option');
 
-  fireEvent.keyDown(list, { key: 'ArrowDown' });
-  fireEvent.keyDown(list, { key: 'ArrowDown' });
-  fireEvent.keyDown(list, { key: 'ArrowDown' });
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[0].id);
 
-  expect(options[3].getAttribute('aria-selected')).toBe('true');
+  await userEvent.keyboard('{ArrowDown}');
+  await userEvent.keyboard('{ArrowDown}');
+  await userEvent.keyboard('{ArrowDown}');
+
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[3].id);
 });
 
 test('clicking label does not call onItemClick', async () => {
@@ -611,7 +604,7 @@ test('renders appropriate amount of list items', async () => {
 
   fireEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
+  const list = await screen.findByRole('menu');
   const listItems = list.querySelectorAll('li');
 
   expect(listItems).toHaveLength(3);
@@ -624,7 +617,7 @@ test('rendered line separators have correct accessibility properties', async () 
 
   fireEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
+  const list = await screen.findByRole('menu');
   const hrListItems = list.querySelectorAll('hr');
 
   expect(
@@ -642,7 +635,7 @@ test('rendered line separators cannot be focused on', async () => {
 
   fireEvent.click(toggle);
 
-  const list = await screen.findByRole('listbox');
+  const list = await screen.findByRole('menu');
   const hrListItems = list.querySelectorAll('hr');
 
   if (hrListItems.length && hrListItems[0].parentElement) {

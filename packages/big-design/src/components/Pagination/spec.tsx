@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import 'jest-styled-components';
@@ -102,16 +103,21 @@ test('render pagination component while overriding button labels', () => {
     />,
   );
 
-  getByRole('navigation', { name: '[Custom] Pagination' });
-  getByRole('button', { name: '[Custom label] 1-3 of 10' });
-  getByRole('button', { name: '[Custom] Previous page' });
-  getByRole('button', { name: '[Custom] Next page' });
+  const pagination = getByRole('navigation', { name: '[Custom] Pagination' });
+  const dropdown = getByRole('button', { name: '[Custom label] 1-3 of 10' });
+  const prevPage = getByRole('button', { name: '[Custom] Previous page' });
+  const nextPage = getByRole('button', { name: '[Custom] Next page' });
+
+  expect(pagination).toBeInTheDocument();
+  expect(dropdown).toBeInTheDocument();
+  expect(prevPage).toBeInTheDocument();
+  expect(nextPage).toBeInTheDocument();
 });
 
 test('trigger range change', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
-  const { getByText, findByText } = render(
+  const { findByText } = render(
     <Pagination
       currentPage={1}
       itemsPerPage={2}
@@ -122,11 +128,10 @@ test('trigger range change', async () => {
     />,
   );
 
-  fireEvent.click(getByText('1 - 2 of 10'));
-  fireEvent.keyDown(getByText('2'), { key: 'ArrowDown', code: 40 });
-  fireEvent.keyDown(getByText('3'), { key: 'Enter', code: 13 });
-
   const option = await findByText('1 - 2 of 10');
+
+  await userEvent.click(option);
+  await userEvent.keyboard('{ArrowDown}{Enter}');
 
   expect(changeRange).toHaveBeenCalled();
   expect(option).toBeInTheDocument();
