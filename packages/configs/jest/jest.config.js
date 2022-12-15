@@ -6,4 +6,5 @@ module.exports = {
   },
   coverageDirectory: '<rootDir>/coverage',
   testEnvironment: 'jsdom',
+  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
 };

@@ -55,7 +55,7 @@ test('has border props', () => {
 
 test('has individual border props', () => {
   render(
-    <Box borderBottom="box" borderRight="box">
+    <Box borderBottom="box" borderLeft="box" borderRight="box">
       test
     </Box>,
   );

@@ -13,7 +13,7 @@ test('should use the passed in ref object if provided', async () => {
   const ref = createRef<HTMLInputElement>();
   const { findByRole } = render(<Timepicker onTimeChange={jest.fn()} ref={ref} />);
 
-  const input = await findByRole('textbox');
+  const input = await findByRole('combobox');
 
   expect(ref.current).toEqual(input);
 });
