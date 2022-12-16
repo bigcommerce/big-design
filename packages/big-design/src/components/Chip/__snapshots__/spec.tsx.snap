@@ -74,7 +74,6 @@ exports[`renders with close button if onRemove is present 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -155,6 +154,8 @@ exports[`renders with close button if onRemove is present 1`] = `
 @media (min-width:720px) {
   .c3 {
     width: auto;
+    padding: 0;
+    width: 2.25rem;
   }
 }
 

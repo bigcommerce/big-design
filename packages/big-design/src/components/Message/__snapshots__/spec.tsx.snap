@@ -746,7 +746,6 @@ exports[`renders close button 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: #3C64F4;
   border-color: #3C64F4;
   font-weight: 600;
@@ -870,6 +869,8 @@ exports[`renders close button 1`] = `
 @media (min-width:720px) {
   .c9 {
     width: auto;
+    padding: 0;
+    width: 2.25rem;
   }
 }
 

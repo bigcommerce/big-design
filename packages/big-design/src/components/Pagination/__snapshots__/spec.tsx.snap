@@ -206,7 +206,6 @@ exports[`render pagination component 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -283,6 +282,8 @@ exports[`render pagination component 1`] = `
 @media (min-width:720px) {
   .c10 {
     width: auto;
+    padding: 0;
+    width: 2.25rem;
   }
 }
 
@@ -621,7 +622,6 @@ exports[`render pagination component with invalid page info 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -698,6 +698,8 @@ exports[`render pagination component with invalid page info 1`] = `
 @media (min-width:720px) {
   .c10 {
     width: auto;
+    padding: 0;
+    width: 2.25rem;
   }
 }
 
@@ -1036,7 +1038,6 @@ exports[`render pagination component with invalid range info 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -1113,6 +1114,8 @@ exports[`render pagination component with invalid range info 1`] = `
 @media (min-width:720px) {
   .c10 {
     width: auto;
+    padding: 0;
+    width: 2.25rem;
   }
 }
 
@@ -1452,7 +1455,6 @@ exports[`render pagination component with no items 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -1529,6 +1531,8 @@ exports[`render pagination component with no items 1`] = `
 @media (min-width:720px) {
   .c10 {
     width: auto;
+    padding: 0;
+    width: 2.25rem;
   }
 }
 
