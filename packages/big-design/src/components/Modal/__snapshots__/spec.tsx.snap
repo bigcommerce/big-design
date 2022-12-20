@@ -216,7 +216,7 @@ exports[`render open modal 1`] = `
   .c5 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 
@@ -515,7 +515,7 @@ exports[`render open modal without backdrop 1`] = `
   .c5 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 

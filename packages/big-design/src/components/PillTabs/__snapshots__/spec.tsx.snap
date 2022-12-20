@@ -281,7 +281,7 @@ exports[`dropdown is not visible if items fit 1`] = `
   .c7 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 
@@ -646,7 +646,7 @@ exports[`it renders the given tabs 1`] = `
   .c7 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 
@@ -1011,7 +1011,7 @@ exports[`only the pills that fit are visible 1`] = `
   .c7 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 
@@ -1408,7 +1408,7 @@ exports[`only the pills that fit are visible 2 1`] = `
   .c7 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 
@@ -1804,7 +1804,7 @@ exports[`renders all the filters if they fit 1`] = `
   .c7 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 
@@ -2199,7 +2199,7 @@ exports[`renders dropdown if items do not fit 1`] = `
   .c7 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 

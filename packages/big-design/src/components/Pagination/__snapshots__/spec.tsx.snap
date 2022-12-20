@@ -283,7 +283,7 @@ exports[`render pagination component 1`] = `
   .c10 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 
@@ -699,7 +699,7 @@ exports[`render pagination component with invalid page info 1`] = `
   .c10 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 
@@ -1115,7 +1115,7 @@ exports[`render pagination component with invalid range info 1`] = `
   .c10 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 
@@ -1532,7 +1532,7 @@ exports[`render pagination component with no items 1`] = `
   .c10 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 

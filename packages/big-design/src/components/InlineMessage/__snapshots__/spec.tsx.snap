@@ -876,7 +876,7 @@ exports[`renders close button 1`] = `
   .c9 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 

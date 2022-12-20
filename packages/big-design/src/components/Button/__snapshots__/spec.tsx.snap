@@ -1087,7 +1087,7 @@ exports[`render icon only button 1`] = `
   .c0 {
     width: auto;
     padding: 0;
-    width: 2.25rem;
+    min-width: 2.25rem;
   }
 }
 
