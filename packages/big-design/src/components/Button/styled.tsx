@@ -63,7 +63,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
       icon &&
       css`
         padding: 0;
-        width: ${addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
+        min-width: ${addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
       `};
   }
 
