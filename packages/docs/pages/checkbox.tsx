@@ -141,7 +141,7 @@ const CheckboxPage = () => {
                 <Fragment key="badge">
                   <Text>
                     <Code primary>Checkboxes</Code> support <Code primary>Badge</Code> to display{' '}
-                    specify information
+                    status information.
                   </Text>
 
                   <CodePreview>
@@ -155,8 +155,8 @@ const CheckboxPage = () => {
                           <FormGroup>
                             <Checkbox
                               badge={{
-                                label: 'secondary',
-                                variant: 'secondary',
+                                label: 'warning',
+                                variant: 'warning',
                               }}
                               checked={checked}
                               label={checked ? 'Checked' : 'Unchecked'}
@@ -164,8 +164,8 @@ const CheckboxPage = () => {
                             />
                             <Checkbox
                               badge={{
-                                label: 'success',
-                                variant: 'success',
+                                label: 'danger',
+                                variant: 'danger',
                               }}
                               disabled={true}
                               label="Disabled"
