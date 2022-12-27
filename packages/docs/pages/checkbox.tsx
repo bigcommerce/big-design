@@ -134,6 +134,51 @@ const CheckboxPage = () => {
                 </Fragment>
               ),
             },
+            {
+              id: 'badge',
+              title: 'Badge',
+              render: () => (
+                <Fragment key="badge">
+                  <Text>
+                    <Code primary>Checkboxes</Code> support <Code primary>Badge</Code> to display{' '}
+                    specify information
+                  </Text>
+
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    {function Example() {
+                      const [checked, setChecked] = useState(false);
+                      const handleChange = () => setChecked(!checked);
+
+                      return (
+                        <Form>
+                          <FormGroup>
+                            <Checkbox
+                              badge={{
+                                label: 'secondary',
+                                variant: 'secondary',
+                              }}
+                              checked={checked}
+                              label={checked ? 'Checked' : 'Unchecked'}
+                              onChange={handleChange}
+                            />
+                            <Checkbox
+                              badge={{
+                                label: 'success',
+                                variant: 'success',
+                              }}
+                              disabled={true}
+                              label="Disabled"
+                            />
+                          </FormGroup>
+                        </Form>
+                      );
+                    }}
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
           ]}
         />
       </Panel>

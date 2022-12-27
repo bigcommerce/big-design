@@ -10,6 +10,7 @@ import React, {
 } from 'react';
 
 import { typedMemo, warning } from '../../utils';
+import { Badge, BadgeProps } from '../Badge';
 import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
 import { CheckboxLabel } from './Label';
@@ -25,6 +26,7 @@ interface Props {
   isIndeterminate?: boolean;
   label: React.ReactChild;
   description?: CheckboxDescription | string;
+  badge?: BadgeProps;
 }
 
 interface CheckboxDescription {
@@ -48,6 +50,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   label,
   forwardedRef,
   style,
+  badge,
   ...props
 }) => {
   const uniqueCheckboxId = useId();
@@ -61,15 +64,18 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <CheckboxLabel
-          aria-hidden={disabled}
-          disabled={disabled}
-          hidden={hiddenLabel}
-          htmlFor={id}
-          id={labelId}
-        >
-          {label}
-        </CheckboxLabel>
+        <>
+          <CheckboxLabel
+            aria-hidden={disabled}
+            disabled={disabled}
+            hidden={hiddenLabel}
+            htmlFor={id}
+            id={labelId}
+          >
+            {label}
+          </CheckboxLabel>
+          {badge ? <Badge marginLeft="xSmall" {...badge} /> : null}
+        </>
       );
     }
 
@@ -85,7 +91,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
     }
 
     warning('label must be either a string or a CheckboxLabel component.');
-  }, [disabled, hiddenLabel, id, label, labelId]);
+  }, [badge, disabled, hiddenLabel, id, label, labelId]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {
