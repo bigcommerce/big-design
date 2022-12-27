@@ -57,7 +57,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.26",
     "babel-plugin-styled-components": "^2.0.7",
-    "camelcase": "^6.2.0",
+    "camelcase": "^7.0.1",
     "flag-icons": "^6.6.6",
     "fs-extra": "^10.0.1",
     "glob": "^8.0.1",
