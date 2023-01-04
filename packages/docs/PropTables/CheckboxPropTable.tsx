@@ -62,6 +62,19 @@ const checkboxProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'badge',
+    types: [
+      <NextLink href="/badge" key="badge-type">
+        BadgeProps
+      </NextLink>,
+    ],
+    description: (
+      <>
+        See <NextLink href="/badge">Badge</NextLink> for usage.
+      </>
+    ),
+  },
 ];
 
 const checkboxDescriptionProps: Prop[] = [

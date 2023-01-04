@@ -46,6 +46,23 @@ describe('render Checkbox', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  test('with badge props', () => {
+    const { container } = render(
+      <Checkbox
+        badge={{
+          label: 'Badge',
+          variant: 'secondary',
+        }}
+        description="description text"
+        label="Unchecked"
+        name="test-group"
+        onChange={() => null}
+      />,
+    );
+
+    expect(container.firstChild).toBeInTheDocument();
+  });
+
   test('with description string', () => {
     const { container } = render(
       <Checkbox
