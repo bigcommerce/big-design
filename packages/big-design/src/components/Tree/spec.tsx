@@ -286,3 +286,18 @@ test('expanding node triggers onExpand', async () => {
 
   expect(onExpand).toHaveBeenCalledWith('0');
 });
+
+test('should focus when tabbed on', async () => {
+  renderDefaultTree({
+    nodes: [{ id: '0', label: 'Test Node 0' }],
+    focusable: { focusedNode: '0', onFocus: jest.fn() },
+  });
+
+  const node = await screen.findByRole('treeitem');
+
+  expect(node).not.toHaveFocus();
+
+  await userEvent.tab();
+
+  expect(node).toHaveFocus();
+});
