@@ -1,4 +1,4 @@
-import React, { createContext, useMemo } from 'react';
+import React, { createContext, useMemo, useRef } from 'react';
 
 import { StyledUl } from './styled';
 import { TreeNode } from './TreeNode';
@@ -14,6 +14,7 @@ export const TreeContext = createContext<TreeContextState<any>>({
     onFocus: () => null,
   },
   onKeyDown: () => null,
+  treeRef: { current: null },
 });
 
 export const Tree = <T,>({
@@ -27,6 +28,8 @@ export const Tree = <T,>({
   onNodeClick,
   selectable,
 }: TreeProps<T>): React.ReactElement<TreeProps<T>> => {
+  const treeRef = useRef<HTMLUListElement>(null);
+
   const initialTreeContext: TreeContextState<T> = {
     disabledNodes,
     expandable,
@@ -35,6 +38,7 @@ export const Tree = <T,>({
     onKeyDown,
     onNodeClick,
     selectable,
+    treeRef,
   };
 
   const renderedItems = useMemo(
@@ -47,6 +51,7 @@ export const Tree = <T,>({
       <StyledUl
         aria-multiselectable={selectable?.type === 'multi'}
         id={id}
+        ref={treeRef}
         role="tree"
         style={{ overflow: 'hidden' }}
       >

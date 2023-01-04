@@ -29,8 +29,16 @@ const InternalTreeNode = <T,>({
   value,
   id,
 }: TreeNodeProps<T>): React.ReactElement<TreeNodeProps<T>> => {
-  const { disabledNodes, expandable, focusable, iconless, onKeyDown, onNodeClick, selectable } =
-    useContext(TreeContext);
+  const {
+    disabledNodes,
+    expandable,
+    focusable,
+    iconless,
+    onKeyDown,
+    onNodeClick,
+    selectable,
+    treeRef,
+  } = useContext(TreeContext);
   const nodeRef = useRef<HTMLLIElement | null>(null);
   const selectableRef = useRef<HTMLLabelElement | null>(null);
   const isExpanded = expandable.expandedNodes.includes(id);
@@ -46,11 +54,12 @@ const InternalTreeNode = <T,>({
     if (
       focusable.focusedNode === id &&
       nodeRef.current !== document.activeElement &&
-      document.activeElement !== document.body
+      document.activeElement !== document.body &&
+      treeRef.current?.contains(document.activeElement)
     ) {
       nodeRef.current?.focus();
     }
-  }, [focusable, id]);
+  }, [focusable, id, treeRef]);
 
   // Could be multiple elements in which are clicked.
   // Typing to generic Element type since all other elements extend from it.

@@ -1,3 +1,5 @@
+import { RefObject } from 'react';
+
 export type TreeNodeId = string;
 
 export type TreeSelectableType = 'radio' | 'multi' | undefined;
@@ -61,6 +63,7 @@ export interface TreeContextState<T> {
   selectable?: TreeSelectable<T>;
   onKeyDown: TreeOnKeyDown<T>;
   onNodeClick?: TreeOnNodeClick;
+  treeRef: RefObject<HTMLUListElement>;
 }
 
 export interface MapValues {
