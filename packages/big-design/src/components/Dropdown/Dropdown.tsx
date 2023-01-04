@@ -1,4 +1,4 @@
-import { useSelect, UseSelectState } from 'downshift';
+import { useSelect, UseSelectProps, UseSelectState } from 'downshift';
 import React, {
   cloneElement,
   isValidElement,
@@ -61,9 +61,34 @@ export const Dropdown = memo(
       [],
     );
 
+    const stateReducer: UseSelectProps<DropdownItem | DropdownLinkItem>['stateReducer'] = (
+      state,
+      actionAndChanges,
+    ) => {
+      const { changes, type } = actionAndChanges;
+
+      switch (type) {
+        case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowDown:
+          if (state.highlightedIndex === flattenedItems.length - 1) {
+            return { ...changes, highlightedIndex: 0 };
+          }
+
+          return changes;
+
+        case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowUp:
+          if (state.highlightedIndex === 0) {
+            return { ...changes, highlightedIndex: flattenedItems.length - 1 };
+          }
+
+          return changes;
+
+        default:
+          return changes;
+      }
+    };
+
     const { getItemProps, getMenuProps, getToggleButtonProps, highlightedIndex, isOpen } =
       useSelect({
-        circularNavigation: true,
         defaultHighlightedIndex: 0,
         id: dropdownUniqueId,
         itemToString: (item) => (item ? item.content : ''),
@@ -71,6 +96,7 @@ export const Dropdown = memo(
         menuId: id,
         onSelectedItemChange: handleOnSelectedItemChange,
         selectedItem: null, // We never set a selected item
+        stateReducer,
         // @ts-expect-error toggle is of unknown type
         toggleButtonId: toggle.props.id,
       });
@@ -99,28 +125,28 @@ export const Dropdown = memo(
       strategy: positionFixed ? 'fixed' : 'absolute',
     });
 
-    const renderToggle = useMemo(() => {
-      return (
-        isValidElement(toggle) &&
-        cloneElement(toggle, {
-          ...getToggleButtonProps({
-            'aria-expanded': isOpen, // Because of memoization, we need to manually set this option
-            disabled,
-            ref: referenceRef,
-          }),
-        })
-      );
-    }, [disabled, getToggleButtonProps, isOpen, toggle]);
+    const clonedToggle =
+      isValidElement(toggle) &&
+      cloneElement(toggle, {
+        ...getToggleButtonProps({
+          'aria-haspopup': 'menu',
+          // Downshift sets this to a label id that doesn't exist
+          'aria-labelledby': undefined,
+          disabled,
+          ref: referenceRef,
+          role: 'button',
+        }),
+      });
 
     return (
       <StyledBox>
-        {renderToggle}
+        {clonedToggle}
         <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
             {...props}
             autoWidth={autoWidth}
             getItemProps={getItemProps}
-            getMenuProps={getMenuProps}
+            getMenuProps={() => getMenuProps({ role: 'menu' })}
             highlightedIndex={highlightedIndex}
             isDropdown={true}
             isOpen={isOpen}

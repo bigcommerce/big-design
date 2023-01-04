@@ -54,6 +54,17 @@ export const MultiSelect = typedMemo(
 
     const [inputValue, setInputValue] = useState('');
 
+    // aria-labelledby takes presedence over aria-label so we need to strip it out if there is no label
+    // Downshift v7 automatically adds aria-labelledby to props even if there is no label defined
+    // This is a workaround to remove the aria-labelledby if there is no label defined
+    const ariaLabelledBy = useMemo(() => {
+      if (props['aria-label'] && !label) {
+        return { 'aria-labelledby': undefined };
+      }
+
+      return {};
+    }, [label, props]);
+
     const flattenOptions = useCallback((options: MultiSelectProps<T>['options']) => {
       const isGroups = (
         options: Array<SelectOptionGroup<T> | SelectOption<T>>,
@@ -232,7 +243,6 @@ export const MultiSelect = typedMemo(
     );
 
     const {
-      getComboboxProps,
       getInputProps,
       getItemProps,
       getLabelProps,
@@ -351,6 +361,7 @@ export const MultiSelect = typedMemo(
           <Input
             {...getInputProps({
               ...props,
+              ...ariaLabelledBy,
               autoComplete,
               disabled,
               onClick: () => {
@@ -406,6 +417,7 @@ export const MultiSelect = typedMemo(
       );
     }, [
       autoComplete,
+      ariaLabelledBy,
       disabled,
       filterable,
       getInputProps,
@@ -425,7 +437,7 @@ export const MultiSelect = typedMemo(
     return (
       <div>
         {renderLabel}
-        <div {...getComboboxProps()}>{renderInput}</div>
+        {renderInput}
         <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
             action={action}
@@ -433,7 +445,7 @@ export const MultiSelect = typedMemo(
             autoWidth={autoWidth}
             filteredItems={filteredOptions}
             getItemProps={getItemProps}
-            getMenuProps={getMenuProps}
+            getMenuProps={() => getMenuProps({ ...ariaLabelledBy })}
             highlightedIndex={highlightedIndex}
             isOpen={isOpen}
             items={options}

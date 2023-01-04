@@ -58,13 +58,14 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
 
   ${({ theme }) => theme.breakpoints.tablet} {
     width: auto;
-  }
 
-  ${({ iconOnly: icon, theme }) =>
-    icon &&
-    css`
-      padding: 0 ${theme.spacing.xSmall};
-    `};
+    ${({ iconOnly: icon, theme }) =>
+      icon &&
+      css`
+        padding: 0;
+        min-width: ${addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
+      `};
+  }
 
   ${({ iconLeft, theme }) =>
     iconLeft &&

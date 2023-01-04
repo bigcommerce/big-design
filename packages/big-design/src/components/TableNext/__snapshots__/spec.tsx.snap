@@ -225,7 +225,6 @@ exports[`pagination renders a pagination component 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -326,6 +325,8 @@ exports[`pagination renders a pagination component 1`] = `
 @media (min-width:720px) {
   .c13 {
     width: auto;
+    padding: 0;
+    min-width: 2.25rem;
   }
 }
 
@@ -348,11 +349,14 @@ exports[`pagination renders a pagination component 1`] = `
           class="c1 c6"
         >
           <button
+            aria-activedescendant=""
+            aria-controls=":r13:-menu"
             aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-labelledby=":r13:-label :r13:-toggle-button"
+            aria-haspopup="menu"
             class="c7 c8"
             id=":r13:-toggle-button"
+            role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -387,7 +391,7 @@ exports[`pagination renders a pagination component 1`] = `
               aria-labelledby=":r13:-label"
               class="c12"
               id=":r13:-menu"
-              role="listbox"
+              role="menu"
               tabindex="-1"
             />
           </div>

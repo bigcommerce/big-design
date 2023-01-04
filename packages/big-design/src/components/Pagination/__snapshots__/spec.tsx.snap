@@ -206,7 +206,6 @@ exports[`render pagination component 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -283,6 +282,8 @@ exports[`render pagination component 1`] = `
 @media (min-width:720px) {
   .c10 {
     width: auto;
+    padding: 0;
+    min-width: 2.25rem;
   }
 }
 
@@ -298,11 +299,14 @@ exports[`render pagination component 1`] = `
       class="c0 c3"
     >
       <button
+        aria-activedescendant=""
+        aria-controls=":r0:-menu"
         aria-expanded="false"
-        aria-haspopup="listbox"
-        aria-labelledby=":r0:-label :r0:-toggle-button"
+        aria-haspopup="menu"
         class="c4 c5"
         id=":r0:-toggle-button"
+        role="button"
+        tabindex="0"
         type="button"
       >
         <span
@@ -337,7 +341,7 @@ exports[`render pagination component 1`] = `
           aria-labelledby=":r0:-label"
           class="c9"
           id=":r0:-menu"
-          role="listbox"
+          role="menu"
           tabindex="-1"
         />
       </div>
@@ -621,7 +625,6 @@ exports[`render pagination component with invalid page info 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -698,6 +701,8 @@ exports[`render pagination component with invalid page info 1`] = `
 @media (min-width:720px) {
   .c10 {
     width: auto;
+    padding: 0;
+    min-width: 2.25rem;
   }
 }
 
@@ -713,11 +718,14 @@ exports[`render pagination component with invalid page info 1`] = `
       class="c0 c3"
     >
       <button
+        aria-activedescendant=""
+        aria-controls=":r4:-menu"
         aria-expanded="false"
-        aria-haspopup="listbox"
-        aria-labelledby=":r4:-label :r4:-toggle-button"
+        aria-haspopup="menu"
         class="c4 c5"
         id=":r4:-toggle-button"
+        role="button"
+        tabindex="0"
         type="button"
       >
         <span
@@ -752,7 +760,7 @@ exports[`render pagination component with invalid page info 1`] = `
           aria-labelledby=":r4:-label"
           class="c9"
           id=":r4:-menu"
-          role="listbox"
+          role="menu"
           tabindex="-1"
         />
       </div>
@@ -1036,7 +1044,6 @@ exports[`render pagination component with invalid range info 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -1113,6 +1120,8 @@ exports[`render pagination component with invalid range info 1`] = `
 @media (min-width:720px) {
   .c10 {
     width: auto;
+    padding: 0;
+    min-width: 2.25rem;
   }
 }
 
@@ -1128,11 +1137,14 @@ exports[`render pagination component with invalid range info 1`] = `
       class="c0 c3"
     >
       <button
+        aria-activedescendant=""
+        aria-controls=":r8:-menu"
         aria-expanded="false"
-        aria-haspopup="listbox"
-        aria-labelledby=":r8:-label :r8:-toggle-button"
+        aria-haspopup="menu"
         class="c4 c5"
         id=":r8:-toggle-button"
+        role="button"
+        tabindex="0"
         type="button"
       >
         <span
@@ -1167,7 +1179,7 @@ exports[`render pagination component with invalid range info 1`] = `
           aria-labelledby=":r8:-label"
           class="c9"
           id=":r8:-menu"
-          role="listbox"
+          role="menu"
           tabindex="-1"
         />
       </div>
@@ -1452,7 +1464,6 @@ exports[`render pagination component with no items 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: transparent;
   border-color: transparent;
   color: #3C64F4;
@@ -1529,6 +1540,8 @@ exports[`render pagination component with no items 1`] = `
 @media (min-width:720px) {
   .c10 {
     width: auto;
+    padding: 0;
+    min-width: 2.25rem;
   }
 }
 
@@ -1544,11 +1557,14 @@ exports[`render pagination component with no items 1`] = `
       class="c0 c3"
     >
       <button
+        aria-activedescendant=""
+        aria-controls=":rc:-menu"
         aria-expanded="false"
-        aria-haspopup="listbox"
-        aria-labelledby=":rc:-label :rc:-toggle-button"
+        aria-haspopup="menu"
         class="c4 c5"
         id=":rc:-toggle-button"
+        role="button"
+        tabindex="0"
         type="button"
       >
         <span
@@ -1583,7 +1599,7 @@ exports[`render pagination component with no items 1`] = `
           aria-labelledby=":rc:-label"
           class="c9"
           id=":rc:-menu"
-          role="listbox"
+          role="menu"
           tabindex="-1"
         />
       </div>

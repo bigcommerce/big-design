@@ -227,14 +227,6 @@ test('select accepts custom id', async () => {
   expect(select.id).toBe('testId');
 });
 
-test('combobox has aria-haspopup', async () => {
-  render(MultiSelectMock);
-
-  const combobox = await screen.findByRole('combobox');
-
-  expect(combobox.getAttribute('aria-haspopup')).toBe('listbox');
-});
-
 test('select input has placeholder text', async () => {
   render(MultiSelectMock);
 
@@ -1023,4 +1015,29 @@ test('select action should supports description', async () => {
   await userEvent.click(input);
 
   expect(await screen.findByText('Action Description')).toBeInTheDocument();
+});
+
+describe('aria-labelledby', () => {
+  it('should not be set if using aria-label', async () => {
+    render(<MultiSelect aria-label="Countries" onOptionsChange={onChange} options={mockOptions} />);
+
+    const input = await screen.findByRole('combobox');
+
+    expect(input).not.toHaveAttribute('aria-labelledby');
+  });
+
+  it('should set if using label', async () => {
+    render(
+      <MultiSelect
+        label="Countries"
+        labelId="countries"
+        onOptionsChange={onChange}
+        options={mockOptions}
+      />,
+    );
+
+    const input = await screen.findByRole('combobox');
+
+    expect(input).toHaveAttribute('aria-labelledby', 'countries');
+  });
 });

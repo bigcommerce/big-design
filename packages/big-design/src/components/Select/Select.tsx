@@ -53,6 +53,17 @@ export const Select = typedMemo(
 
     const [inputValue, setInputValue] = useState<string | undefined>('');
 
+    // aria-labelledby takes presedence over aria-label so we need to strip it out if there is no label
+    // Downshift v7 automatically adds aria-labelledby to props even if there is no label defined
+    // This is a workaround to remove the aria-labelledby if there is no label defined
+    const ariaLabelledBy = useMemo(() => {
+      if (props['aria-label'] && !label) {
+        return { 'aria-labelledby': undefined };
+      }
+
+      return {};
+    }, [label, props]);
+
     const flattenOptions = useCallback((options: SelectProps<T>['options']) => {
       const isGroups = (
         options: Array<SelectOptionGroup<T> | SelectOption<T>>,
@@ -170,7 +181,6 @@ export const Select = typedMemo(
 
     const {
       closeMenu,
-      getComboboxProps,
       getInputProps,
       getItemProps,
       getLabelProps,
@@ -282,6 +292,7 @@ export const Select = typedMemo(
           <Input
             {...getInputProps({
               ...props,
+              ...ariaLabelledBy,
               autoComplete,
               disabled,
               onClick: () => {
@@ -332,6 +343,7 @@ export const Select = typedMemo(
       );
     }, [
       autoComplete,
+      ariaLabelledBy,
       closeMenu,
       disabled,
       filterable,
@@ -350,14 +362,14 @@ export const Select = typedMemo(
     return (
       <div>
         {renderLabel}
-        <div {...getComboboxProps()}>{renderInput}</div>
+        {renderInput}
         <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
             action={action}
             autoWidth={autoWidth}
             filteredItems={filteredOptions}
             getItemProps={getItemProps}
-            getMenuProps={getMenuProps}
+            getMenuProps={() => getMenuProps({ ...ariaLabelledBy })}
             highlightedIndex={highlightedIndex}
             isOpen={isOpen}
             items={options}

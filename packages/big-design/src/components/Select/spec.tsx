@@ -189,14 +189,6 @@ test('select accepts custom id', async () => {
   expect(select.id).toBe('testId');
 });
 
-test('combobox has aria-haspopup', async () => {
-  render(SelectMock);
-
-  const combobox = await screen.findByRole('combobox');
-
-  expect(combobox.getAttribute('aria-haspopup')).toBe('listbox');
-});
-
 test('select input has placeholder text', async () => {
   render(SelectMock);
 
@@ -280,17 +272,27 @@ test('esc should close menu', async () => {
 
   const input = screen.getByTestId('select');
 
-  fireEvent.click(input);
+  await userEvent.click(input);
 
   const listbox = await screen.findByRole('listbox');
 
   expect(listbox).not.toBeEmptyDOMElement();
 
-  fireEvent.keyDown(input, { key: 'Escape' });
-
-  await screen.findByRole('listbox');
+  await userEvent.keyboard('{Escape}');
 
   expect(listbox).toBeEmptyDOMElement();
+});
+
+test('select calls onFocus callback', async () => {
+  const onFocus = jest.fn();
+
+  render(<Select onFocus={onFocus} onOptionChange={onChange} options={[]} />);
+
+  const input = screen.getByRole('combobox');
+
+  await userEvent.click(input);
+
+  expect(onFocus).toHaveBeenCalled();
 });
 
 test('select has items', async () => {
@@ -949,4 +951,29 @@ test('select action should supports description', async () => {
   fireEvent.click(input);
 
   expect(await screen.findByText('Action Description')).toBeInTheDocument();
+});
+
+describe('aria-labelledby', () => {
+  it('should not be set if using aria-label', async () => {
+    render(<Select aria-label="Countries" onOptionChange={onChange} options={mockOptions} />);
+
+    const input = await screen.findByRole('combobox');
+
+    expect(input).not.toHaveAttribute('aria-labelledby');
+  });
+
+  it('should set if using label', async () => {
+    render(
+      <Select
+        label="Countries"
+        labelId="countries"
+        onOptionChange={onChange}
+        options={mockOptions}
+      />,
+    );
+
+    const input = await screen.findByRole('combobox');
+
+    expect(input).toHaveAttribute('aria-labelledby', 'countries');
+  });
 });
