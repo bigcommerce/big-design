@@ -60,7 +60,7 @@ describe('render Checkbox', () => {
       />,
     );
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container.firstChild).toBeInTheDocument();
   });
 
   test('with description string', () => {

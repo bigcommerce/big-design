@@ -64,18 +64,16 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <>
-          <CheckboxLabel
-            aria-hidden={disabled}
-            disabled={disabled}
-            hidden={hiddenLabel}
-            htmlFor={id}
-            id={labelId}
-          >
-            {label}
-            {badge ? <Badge marginLeft="xSmall" {...badge} /> : null}
-          </CheckboxLabel>
-        </>
+        <CheckboxLabel
+          aria-hidden={disabled}
+          disabled={disabled}
+          hidden={hiddenLabel}
+          htmlFor={id}
+          id={labelId}
+        >
+          {label}
+          {badge ? <Badge marginLeft="xSmall" {...badge} /> : null}
+        </CheckboxLabel>
       );
     }
 
