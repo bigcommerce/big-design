@@ -73,8 +73,8 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
             id={labelId}
           >
             {label}
+            {badge ? <Badge marginLeft="xSmall" {...badge} /> : null}
           </CheckboxLabel>
-          {badge ? <Badge marginLeft="xSmall" {...badge} /> : null}
         </>
       );
     }

@@ -140,7 +140,7 @@ const CheckboxPage = () => {
               render: () => (
                 <Fragment key="badge">
                   <Text>
-                    <Code primary>Checkboxes</Code> support <Code primary>Badge</Code> to display{' '}
+                    <Code primary>Checkboxes</Code> support <Code primary>Badge</Code> that display{' '}
                     status information.
                   </Text>
 
