@@ -1,7 +1,8 @@
 import { theme } from '@bigcommerce/big-design-theme';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { StatefulTree, StatefulTreeProps, TreeNodeProps } from '.';
 
@@ -181,4 +182,21 @@ describe('selectable = radio', () => {
       expect(onSelectionChange).toHaveBeenCalledWith([0]);
     }
   });
+});
+
+test('should focus on TreeItem on arrow down', async () => {
+  render(getSimpleTree());
+
+  const node0 = await screen.findByRole('treeitem', { name: 'Test Node 0' });
+  const node1 = await screen.findByRole('treeitem', { name: 'Test Node 1' });
+
+  await userEvent.tab();
+
+  expect(node0).toHaveFocus();
+  expect(node1).not.toHaveFocus();
+
+  await userEvent.keyboard('{ArrowDown}');
+
+  expect(node0).not.toHaveFocus();
+  expect(node1).toHaveFocus();
 });
