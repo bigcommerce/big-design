@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.21.0...@bigcommerce/big-design-icons@0.22.0) (2023-01-09)
+
+
+### Features
+
+* convert to react@18 only ([#1044](https://github.com/bigcommerce/big-design/issues/1044)) ([06c4697](https://github.com/bigcommerce/big-design/commit/06c469721bc06d1f872bed6bf5a46e6b568644e5))
+
+
+### BREAKING CHANGES
+
+* Requires `react@18` or higher.
+
+
+
+
+
 # [0.21.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.20.1...@bigcommerce/big-design-icons@0.21.0) (2022-09-27)
 
 

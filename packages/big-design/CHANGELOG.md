@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.35.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.34.3...@bigcommerce/big-design@0.35.0) (2023-01-09)
+
+
+### Bug Fixes
+
+* **component:** fix table-next column alignment ([#1056](https://github.com/bigcommerce/big-design/issues/1056)) ([7293d10](https://github.com/bigcommerce/big-design/commit/7293d107ee686e7f90c277aca00d2361bb0edef2))
+* **component:** make iconOnly button square ([#1069](https://github.com/bigcommerce/big-design/issues/1069)) ([f6448d6](https://github.com/bigcommerce/big-design/commit/f6448d679bfc43639831f0621234063b870ede4e))
+* **component:** only focus on TreeItem when focus within Tree component ([#1087](https://github.com/bigcommerce/big-design/issues/1087)) ([64d102d](https://github.com/bigcommerce/big-design/commit/64d102d4ce3b8eaf947de68286899e798b84cb26))
+* **component:** specify button type for pagination ([#1055](https://github.com/bigcommerce/big-design/issues/1055)) ([e886c4f](https://github.com/bigcommerce/big-design/commit/e886c4f8a523dd459cb47f9b8b347d7904a9454f))
+
+
+### Features
+
+* **component:** add Badge props to Checkbox component ([#1080](https://github.com/bigcommerce/big-design/issues/1080)) ([e53f820](https://github.com/bigcommerce/big-design/commit/e53f820272513d128da2c489281bc31c9b15f590))
+* convert to react@18 only ([#1044](https://github.com/bigcommerce/big-design/issues/1044)) ([06c4697](https://github.com/bigcommerce/big-design/commit/06c469721bc06d1f872bed6bf5a46e6b568644e5))
+* **deps:** update downshift and apply a11y patterns ([597e8d1](https://github.com/bigcommerce/big-design/commit/597e8d173c140e7561f84af7037c9808cc53083b))
+
+
+### BREAKING CHANGES
+
+* Requires `react@18` or higher.
+
+
+
+
+
 ## [0.34.3](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.34.2...@bigcommerce/big-design@0.34.3) (2022-11-03)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.35.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.34.3...@bigcommerce/docs@0.35.0) (2023-01-09)
+
+
+### Features
+
+* **component:** add Badge props to Checkbox component ([#1080](https://github.com/bigcommerce/big-design/issues/1080)) ([e53f820](https://github.com/bigcommerce/big-design/commit/e53f820272513d128da2c489281bc31c9b15f590))
+* convert to react@18 only ([#1044](https://github.com/bigcommerce/big-design/issues/1044)) ([06c4697](https://github.com/bigcommerce/big-design/commit/06c469721bc06d1f872bed6bf5a46e6b568644e5))
+
+
+### BREAKING CHANGES
+
+* Requires `react@18` or higher.
+
+
+
+
+
 ## [0.34.3](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.34.2...@bigcommerce/docs@0.34.3) (2022-11-03)
 
 **Note:** Version bump only for package @bigcommerce/docs

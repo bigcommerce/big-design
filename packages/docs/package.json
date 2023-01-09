@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/docs",
-  "version": "0.34.3",
+  "version": "0.35.0",
   "private": true,
   "sideEffects": false,
   "license": "(MIT AND CC-BY-3.0)",
@@ -22,9 +22,9 @@
     "@babel/preset-react": "^7.12.1",
     "@babel/preset-typescript": "^7.15.0",
     "@babel/standalone": "^7.15.6",
-    "@bigcommerce/big-design": "^0.34.3",
-    "@bigcommerce/big-design-icons": "^0.21.0",
-    "@bigcommerce/big-design-theme": "^0.17.0",
+    "@bigcommerce/big-design": "^0.35.0",
+    "@bigcommerce/big-design-icons": "^0.22.0",
+    "@bigcommerce/big-design-theme": "^0.18.0",
     "clipboard-copy": "^4.0.1",
     "next-transpile-modules": "^10.0.0",
     "prettier": "^2.4.0",
@@ -35,8 +35,8 @@
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
-    "@bigcommerce/configs": "^0.16.0",
-    "@bigcommerce/examples": "^0.21.3",
+    "@bigcommerce/configs": "^0.17.0",
+    "@bigcommerce/examples": "^0.22.0",
     "@types/gtag.js": "^0.0.12",
     "@types/node": "^16.0.0",
     "@types/prettier": "^2.0.1",
