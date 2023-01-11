@@ -1,17 +1,12 @@
-import {
-  areAllInPageSelected,
-  areSomeInPageSelected,
-  getSelectAllState,
-  getTotalSelectedItems,
-} from './helpers';
+import { areAllInPageSelected, areSomeInPageSelected, getSelectAllState } from './helpers';
 import { SelectAllProps } from './SelectAll';
 
 export const useSelectAllState = <T>(props: SelectAllProps<T>) => {
-  const { selectedItems, onChange } = props;
+  const { onChange } = props;
 
   const allInPageSelected = areAllInPageSelected(props);
   const someInPageSelected = areSomeInPageSelected(props);
-  const totalSelectedItems = getTotalSelectedItems(selectedItems);
+  const totalSelectedItems = props.selectedParentRowsCrossPages.size;
   const label = allInPageSelected ? 'Deselect All' : 'Select All';
 
   const handleSelectAll = () => {

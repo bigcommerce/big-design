@@ -1,11 +1,17 @@
-import React, { RefObject } from 'react';
+import React, { Dispatch, RefObject, SetStateAction } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { FlexItem } from '../../Flex';
 import { Text } from '../../Typography';
 import { SelectAll } from '../SelectAll';
 import { TablePagination } from '../TablePagination';
-import { TableExpandable, TableItem, TablePaginationProps, TableSelectable } from '../types';
+import {
+  TableExpandable,
+  TableItem,
+  TablePaginationProps,
+  TableProps,
+  TableSelectable,
+} from '../types';
 
 import { StyledFlex } from './styled';
 
@@ -14,13 +20,16 @@ export interface ActionsProps<T> {
   forwardedRef: RefObject<HTMLDivElement>;
   itemName?: string;
   items: T[];
-  isExpandable: boolean;
   pagination?: TablePaginationProps;
   selectedItems: TableSelectable['selectedItems'];
   stickyHeader?: boolean;
   tableId: string;
-  expandedRowSelector?: TableExpandable<T>['expandedRowSelector'];
+  getChildren?: TableExpandable<T>['getChildren'];
   onSelectionChange?: TableSelectable['onSelectionChange'];
+  getRowId: NonNullable<TableProps<T>['getRowId']>;
+  setSelectedParentRowsCrossPages: Dispatch<SetStateAction<Set<string>>>;
+  selectedParentRowsCrossPages: Set<string>;
+  isChildrenRowsSelectable?: boolean;
 }
 
 const InternalActions = <T extends TableItem>({
@@ -32,9 +41,12 @@ const InternalActions = <T extends TableItem>({
   selectedItems,
   stickyHeader,
   tableId,
-  isExpandable,
-  expandedRowSelector,
+  getChildren,
   onSelectionChange,
+  getRowId,
+  setSelectedParentRowsCrossPages,
+  selectedParentRowsCrossPages,
+  isChildrenRowsSelectable,
   ...props
 }: ActionsProps<T>) => {
   const isSelectable = typeof onSelectionChange === 'function';
@@ -70,10 +82,15 @@ const InternalActions = <T extends TableItem>({
     >
       {isSelectable && (
         <SelectAll
+          getChildren={getChildren}
+          getRowId={getRowId}
+          isChildrenRowsSelectable={isChildrenRowsSelectable}
           items={items}
           onChange={onSelectionChange}
           pagination={pagination}
           selectedItems={selectedItems}
+          selectedParentRowsCrossPages={selectedParentRowsCrossPages}
+          setSelectedParentRowsCrossPages={setSelectedParentRowsCrossPages}
           totalItems={totalItems}
         />
       )}

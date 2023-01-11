@@ -1,47 +1,63 @@
-import { OnItemSelectFn } from '../hooks';
+import { TableSelectable } from '../types';
 
-interface UseRowStateProps<T> {
-  childRowIndex?: number;
-  childrenRows?: T[];
+interface UseRowStateProps {
   isParentRow: boolean;
   isSelected?: boolean;
-  onExpandedRow?(parentRowIndex: number | null): void;
-  onItemSelect?: OnItemSelectFn;
-  parentRowIndex: number;
+  selectedItems: TableSelectable['selectedItems'];
+  onExpandedRow?(parentRowId: string | undefined): void;
+  isChildrenRowsSelectable: boolean;
+  childrenRowsIds: string[];
 }
 
-export const useRowState = <T>({
-  childrenRows,
+export const useRowState = ({
   isParentRow,
   isSelected,
-  onExpandedRow,
-  onItemSelect,
-  parentRowIndex,
-}: UseRowStateProps<T>) => {
-  const onChange = () => {
-    if (onItemSelect) {
-      onItemSelect({
-        isParentRow,
-        parentRowIndex,
-      });
+  selectedItems,
+  isChildrenRowsSelectable,
+  childrenRowsIds,
+}: UseRowStateProps) => {
+  const hasChildrenRows = Boolean(childrenRowsIds.length);
+
+  const allChildrenRowsSelected =
+    isChildrenRowsSelectable &&
+    hasChildrenRows &&
+    childrenRowsIds.every((childRowId) => {
+      return selectedItems[childRowId] !== undefined;
+    });
+
+  const someChildrenRowsSelected =
+    isChildrenRowsSelectable &&
+    hasChildrenRows &&
+    childrenRowsIds.some((childRowId) => {
+      return selectedItems[childRowId] !== undefined;
+    });
+
+  const isRowChecked = () => {
+    if (isParentRow) {
+      return isChildrenRowsSelectable && hasChildrenRows ? allChildrenRowsSelected : isSelected;
     }
+
+    return isSelected;
   };
 
-  const onExpandedChange = () => {
-    if (onExpandedRow) {
-      onExpandedRow(parentRowIndex ?? null);
+  const isRowIndeterminate = () => {
+    if (isParentRow) {
+      return isChildrenRowsSelectable && hasChildrenRows ? someChildrenRowsSelected : false;
     }
+
+    return false;
   };
 
-  const hasChildrenRows = Array.isArray(childrenRows);
+  const isChecked = isRowChecked();
+
+  const isIndeterminate = isRowIndeterminate();
 
   const label = isSelected ? `Selected` : `Unselected`;
 
   return {
     hasChildrenRows,
-    isChecked: isSelected,
+    isChecked,
+    isIndeterminate,
     label,
-    onChange,
-    onExpandedChange,
   };
 };

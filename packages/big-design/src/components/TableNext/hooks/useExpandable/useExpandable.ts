@@ -7,27 +7,27 @@ export const useExpandable = <T>(expandable?: TableExpandable<T>) => {
   const [expandedRows, setExpandedRows] = useState<TableExpandable<T>['expandedRows']>({});
   const isExpandable = Boolean(expandable);
 
-  const expandedItemsEventCallback = useEventCallback((parentRowIndex: number | null) => {
-    if (!expandable || parentRowIndex === null) {
+  const expandedItemsEventCallback = useEventCallback((parentRowId: string) => {
+    if (!expandable || parentRowId === null) {
       return;
     }
 
     const { onExpandedChange } = expandable;
 
-    const isExpandedRow = expandedRows[parentRowIndex] !== undefined;
+    const isExpandedRow = expandedRows[parentRowId] !== undefined;
 
     if (isExpandedRow) {
-      const newExpandedRows = Object.entries(expandedRows).filter(
-        ([key]) => key !== `${parentRowIndex}`,
-      );
+      const newExpandedRows = Object.entries(expandedRows).filter(([key]) => {
+        return key !== `${parentRowId}`;
+      });
 
-      onExpandedChange(Object.fromEntries(newExpandedRows), parentRowIndex);
+      onExpandedChange(Object.fromEntries(newExpandedRows), parentRowId);
     } else {
       const newExpandedRows = { ...expandedRows };
 
-      newExpandedRows[parentRowIndex] = true;
+      newExpandedRows[parentRowId] = true;
 
-      onExpandedChange(newExpandedRows, parentRowIndex);
+      onExpandedChange(newExpandedRows, parentRowId);
     }
   });
 
@@ -39,7 +39,7 @@ export const useExpandable = <T>(expandable?: TableExpandable<T>) => {
 
   return {
     expandedRows,
-    expandedRowSelector: expandable?.expandedRowSelector,
+    getChildren: expandable?.getChildren,
     isExpandable,
     onExpandedRow: isExpandable ? expandedItemsEventCallback : undefined,
     setExpandedRows,
