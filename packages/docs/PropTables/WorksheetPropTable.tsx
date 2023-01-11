@@ -141,6 +141,11 @@ const worksheetTextColumnProps: Prop[] = [
     types: ['string', 'number'],
     description: 'Sets column width.',
   },
+  {
+    name: 'tooltip',
+    types: 'string',
+    description: 'Tooltip for the worksheet column header.',
+  },
 ];
 
 const worksheetNumberColumnProps: Prop[] = [
@@ -183,6 +188,11 @@ const worksheetNumberColumnProps: Prop[] = [
     types: ['string', 'number'],
     description: 'Sets column width.',
   },
+  {
+    name: 'tooltip',
+    types: 'string',
+    description: 'Tooltip for the worksheet column header.',
+  },
 ];
 
 const worksheetCheckboxColumnProps: Prop[] = [
@@ -219,6 +229,11 @@ const worksheetCheckboxColumnProps: Prop[] = [
     name: 'width',
     types: ['string', 'number'],
     description: 'Sets column width.',
+  },
+  {
+    name: 'tooltip',
+    types: 'string',
+    description: 'Tooltip for the worksheet column header.',
   },
 ];
 
@@ -284,6 +299,11 @@ const worksheetSelectableColumnProps: Prop[] = [
     types: ['string', 'number'],
     description: 'Sets column width.',
   },
+  {
+    name: 'tooltip',
+    types: 'string',
+    description: 'Tooltip for the worksheet column header.',
+  },
 ];
 
 const worksheetModalColumnProps: Prop[] = [
@@ -346,6 +366,11 @@ const worksheetModalColumnProps: Prop[] = [
     name: 'width',
     types: ['string', 'number'],
     description: 'Sets column width.',
+  },
+  {
+    name: 'tooltip',
+    types: 'string',
+    description: 'Tooltip for the worksheet column header.',
   },
 ];
 

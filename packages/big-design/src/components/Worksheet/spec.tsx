@@ -81,6 +81,7 @@ const columns: Array<WorksheetColumn<Product>> = [
   {
     hash: 'numberField',
     header: 'Number field',
+    tooltip: 'Info about number field',
     type: 'number',
     validation: (value: number) => value >= 50,
     formatting: (value: number) => `$${value}.00`,
@@ -1221,5 +1222,27 @@ describe('column widths', () => {
     expect(productNameColumn).toHaveStyle('width: auto');
     expect(visibleOnStorefrontColumn).toHaveStyle('width: 80px');
     expect(numberFieldColumn).toHaveStyle('width: 90px');
+  });
+});
+
+describe('Header tooltip', () => {
+  test('renders column with tooltip icon', () => {
+    const { getByTitle } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    expect(getByTitle('Hover or focus for additional context.')).toBeTruthy();
+  });
+
+  test('renders tooltip when hovering on icon', async () => {
+    const { getByTitle } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    await userEvent.hover(getByTitle('Hover or focus for additional context.'));
+
+    const result = screen.getByText('Info about number field');
+
+    expect(result).toBeInTheDocument();
   });
 });

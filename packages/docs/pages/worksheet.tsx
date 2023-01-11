@@ -137,6 +137,7 @@ const WorksheetPage = () => {
                         header: 'Product name',
                         validation: (value) => !!value,
                         width: 200,
+                        tooltip: 'Tooltip text',
                       },
                       { hash: 'isVisible', header: 'Visible', type: 'checkbox', width: 80 },
                       { hash: 'otherField', header: 'Other field' },

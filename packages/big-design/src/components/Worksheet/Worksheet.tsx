@@ -1,7 +1,18 @@
-import React, { createContext, createRef, useEffect, useMemo, useRef } from 'react';
+import { BaselineHelpIcon } from '@bigcommerce/big-design-icons';
+import React, {
+  createContext,
+  createRef,
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+} from 'react';
 import { StoreApi } from 'zustand';
 
 import { typedMemo } from '../../utils';
+import { Box } from '../Box';
+import { Tooltip } from '../Tooltip';
 
 import { UpdateItemsProvider } from './context';
 import { BaseState, createWorksheetStore, useKeyEvents, useWorksheetStore } from './hooks';
@@ -31,6 +42,7 @@ const InternalWorksheet = typedMemo(
     const tableRef = createRef<HTMLTableElement>();
     const shouldBeTriggeredOnChange = useRef(false);
     const { store, useStore } = useWorksheetStore();
+    const tooltipId = useId();
 
     const setRows = useStore(store, (state) => state.setRows);
     const setColumns = useStore(store, (state) => state.setColumns);
@@ -89,6 +101,33 @@ const InternalWorksheet = typedMemo(
       }
     }, [invalidCells, onErrors, rows]);
 
+    const getRenderedTooltip = useCallback(
+      (tooltip?: string) => {
+        if (typeof tooltip === 'string' && tooltip.length > 0) {
+          return (
+            <Tooltip
+              id={tooltipId}
+              placement="right"
+              trigger={
+                <Box as="span" marginLeft="xxSmall">
+                  <BaselineHelpIcon
+                    aria-describedby={tooltipId}
+                    size="medium"
+                    title="Hover or focus for additional context."
+                  />
+                </Box>
+              }
+            >
+              {tooltip}
+            </Tooltip>
+          );
+        }
+
+        return null;
+      },
+      [tooltipId],
+    );
+
     const renderedHeaders = useMemo(
       () => (
         <thead>
@@ -96,13 +135,13 @@ const InternalWorksheet = typedMemo(
             <Status />
             {expandedColumns.map((column, index) => (
               <Header columnType={column.type} columnWidth={column.width || 'auto'} key={index}>
-                {column.header}
+                {column.header} {getRenderedTooltip(column.tooltip)}
               </Header>
             ))}
           </tr>
         </thead>
       ),
-      [expandedColumns],
+      [expandedColumns, getRenderedTooltip],
     );
 
     const tableHasStaticWidth = useMemo(
