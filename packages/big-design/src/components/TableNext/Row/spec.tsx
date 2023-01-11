@@ -6,7 +6,6 @@ import { render, screen } from '@test/utils';
 import { TableColumn } from '../types';
 
 import { Row } from './Row';
-import { useRowState } from './useRowState';
 
 interface Item {
   sku: string;
@@ -25,39 +24,23 @@ const defaultColumns: Array<TableColumn<Item>> = [
 
 test('renders a table row', async () => {
   render(
-    <Row
-      columns={defaultColumns}
-      headerCellWidths={[]}
-      isDraggable={false}
-      item={item}
-      parentRowIndex={0}
-      selectedItems={{}}
-    />,
+    <table>
+      <tbody>
+        <Row
+          childrenRowsIds={[]}
+          columns={defaultColumns}
+          headerCellWidths={[]}
+          isDraggable={false}
+          item={item}
+          onItemSelect={() => jest.fn}
+          parentRowId="0"
+          selectedItems={{}}
+        />
+      </tbody>
+    </table>,
   );
 
   const name = await screen.findByRole('row', { name: /Smith Journal 13/i });
 
   expect(name).toBeVisible();
-});
-
-test('row state callbacks execute argument callback', () => {
-  const onExpandedRow = jest.fn();
-  const onItemSelect = jest.fn();
-
-  const { onChange, onExpandedChange } = useRowState({
-    childrenRows: [],
-    isParentRow: true,
-    isSelected: false,
-    onExpandedRow,
-    onItemSelect,
-    parentRowIndex: 0,
-  });
-
-  onChange();
-
-  expect(onItemSelect).toHaveBeenCalled();
-
-  onExpandedChange();
-
-  expect(onExpandedRow).toHaveBeenCalled();
 });
