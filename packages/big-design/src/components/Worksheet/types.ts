@@ -44,6 +44,7 @@ interface WorksheetBaseColumn<Item> {
   hash: keyof Item;
   header: string;
   width?: string | number;
+  tooltip?: string;
   validation?(value: Item[keyof Item] | ''): boolean;
 }
 
