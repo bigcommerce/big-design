@@ -39,6 +39,13 @@ const InternalTableNext = <T extends TableItem>(
     stickyHeader,
     style,
     onRowDrop,
+    getRowId = (_item, parentRowIndex, childRowIndex) => {
+      if (childRowIndex !== undefined) {
+        return `${parentRowIndex}.${childRowIndex}`;
+      }
+
+      return `${parentRowIndex}`;
+    },
     ...rest
   } = props;
 
@@ -47,8 +54,15 @@ const InternalTableNext = <T extends TableItem>(
   const tableIdRef = useRef(id || uniqueTableId);
   const [headerCellWidths, setHeaderCellWidths] = useState<Array<number | string>>([]);
   const headerCellIconRef = useRef<HTMLTableCellElement>(null);
-  const { isSelectable, onItemSelect, selectedItems } = useSelectable(selectable);
-  const { expandedRows, expandedRowSelector, isExpandable, onExpandedRow, setExpandedRows } =
+  const {
+    isSelectable,
+    onItemSelect,
+    selectedItems,
+    isChildrenRowsSelectable,
+    setSelectedParentRowsCrossPages,
+    selectedParentRowsCrossPages,
+  } = useSelectable(selectable);
+  const { expandedRows, getChildren, isExpandable, onExpandedRow, setExpandedRows } =
     useExpandable(expandable);
 
   const onSortClick = useCallback(
@@ -128,7 +142,7 @@ const InternalTableNext = <T extends TableItem>(
         )}
         {isSelectable && <HeaderCheckboxCell actionsRef={actionsRef} stickyHeader={stickyHeader} />}
 
-        {expandedRowSelector !== undefined && (
+        {getChildren !== undefined && (
           <ExpandableHeaderCell actionsRef={actionsRef} headerCellIconRef={headerCellIconRef} />
         )}
 
@@ -176,11 +190,13 @@ const InternalTableNext = <T extends TableItem>(
                     {...provided.dragHandleProps}
                     {...provided.draggableProps}
                     columns={columns}
-                    expandedRowSelector={expandedRowSelector}
                     expandedRows={expandedRows}
+                    getChildren={getChildren}
                     getItemKey={getItemKey}
                     getLoadMoreAction={expandable?.getLoadMoreAction}
+                    getRowId={getRowId}
                     headerCellWidths={headerCellWidths}
+                    isChildrenRowsSelectable={isChildrenRowsSelectable}
                     isExpandable={isExpandable}
                     isSelectable={isSelectable}
                     item={item}
@@ -214,12 +230,14 @@ const InternalTableNext = <T extends TableItem>(
           return (
             <RowContainer
               columns={columns}
-              expandedRowSelector={expandedRowSelector}
               expandedRows={expandedRows}
+              getChildren={getChildren}
               getItemKey={getItemKey}
               getLoadMoreAction={expandable?.getLoadMoreAction}
+              getRowId={getRowId}
               headerCellWidths={headerCellWidths}
               headerless={headerless}
+              isChildrenRowsSelectable={isChildrenRowsSelectable}
               isExpandable={isExpandable}
               isSelectable={isSelectable}
               item={item}
@@ -247,14 +265,17 @@ const InternalTableNext = <T extends TableItem>(
       {shouldRenderActions() && (
         <Actions
           customActions={actions}
-          expandedRowSelector={expandedRowSelector}
           forwardedRef={actionsRef}
-          isExpandable={isExpandable}
+          getChildren={getChildren}
+          getRowId={getRowId}
+          isChildrenRowsSelectable={isChildrenRowsSelectable}
           itemName={itemName}
           items={items}
           onSelectionChange={selectable && selectable.onSelectionChange}
           pagination={pagination}
           selectedItems={selectedItems}
+          selectedParentRowsCrossPages={selectedParentRowsCrossPages}
+          setSelectedParentRowsCrossPages={setSelectedParentRowsCrossPages}
           stickyHeader={stickyHeader}
           tableId={tableIdRef.current}
         />

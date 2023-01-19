@@ -7,7 +7,6 @@ import { Checkbox } from '../../Checkbox';
 import { Flex } from '../../Flex';
 import { FlexedProps } from '../../Flex/types';
 import { DataCell } from '../DataCell';
-import { OnItemSelectFn } from '../hooks';
 import { TableColumn, TableItem, TableSelectable } from '../types';
 
 import { StyledTableRow } from './styled';
@@ -24,8 +23,6 @@ const ALIGN_MAP: Record<string, FlexedProps['justifyContent']> = {
 };
 
 export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
-  childrenRows?: T[];
-  childRowIndex?: number;
   columns: Array<TableColumn<T>>;
   headerCellWidths: Array<number | string>;
   isDraggable: boolean;
@@ -36,16 +33,17 @@ export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
   isSelected?: boolean;
   isSelectable?: boolean;
   item: T;
-  parentRowIndex: number;
   selectedItems: TableSelectable['selectedItems'];
   showDragIcon?: boolean;
-  onExpandedRow?(parentRowIndex: number | null): void;
-  onItemSelect?: OnItemSelectFn;
+  isChildrenRowsSelectable?: TableSelectable['isChildrenRowsSelectable'];
+  onExpandedRow?: () => void;
+  onItemSelect: () => void;
+  parentRowId: string;
+  childRowId?: string;
+  childrenRowsIds: string[];
 }
 
 const InternalRow = <T extends TableItem>({
-  childrenRows,
-  childRowIndex,
   columns,
   forwardedRef,
   headerCellWidths,
@@ -55,36 +53,44 @@ const InternalRow = <T extends TableItem>({
   isSelectable = false,
   isSelected = false,
   item,
-  parentRowIndex,
   showDragIcon = false,
   onItemSelect,
   onExpandedRow,
   isExpanded = false,
   selectedItems,
   isParentRow = false,
+  isChildrenRowsSelectable = false,
+  parentRowId,
+  childRowId,
+  childrenRowsIds,
   ...rest
 }: RowProps<T> & PrivateProps) => {
-  const { hasChildrenRows, isChecked, label, onChange, onExpandedChange } = useRowState({
-    childrenRows,
+  const { hasChildrenRows, isChecked, isIndeterminate, label } = useRowState({
     isParentRow,
     isSelected,
-    onExpandedRow,
-    onItemSelect,
-    parentRowIndex,
+    selectedItems,
+    isChildrenRowsSelectable,
+    childrenRowsIds,
   });
 
   const renderSelectDataCell = () => {
     if (isSelectable && isParentRow) {
       return (
         <DataCell isCheckbox={true} isExpandable={isExpandable} key="data-checkbox" width={10}>
-          <Checkbox checked={isChecked} hiddenLabel label={label} onChange={onChange} width={0} />
+          <Checkbox
+            checked={isChecked}
+            hiddenLabel
+            isIndeterminate={isIndeterminate}
+            label={label}
+            onChange={onItemSelect}
+            width={0}
+          />
         </DataCell>
       );
     }
 
     return null;
   };
-
   const renderDragIconCell = () => {
     if (showDragIcon && isParentRow) {
       return (
@@ -96,7 +102,6 @@ const InternalRow = <T extends TableItem>({
 
     return null;
   };
-
   const renderExpandedIconCell = () => {
     if (isExpandable && isParentRow && hasChildrenRows) {
       const needsHorizontalPadding = !isSelectable && !isDraggable;
@@ -105,7 +110,8 @@ const InternalRow = <T extends TableItem>({
         <DataCell align="center" paddingHorizontal={needsHorizontalPadding ? 'small' : 'none'}>
           <MessagingButton
             iconOnly={isExpanded ? <ExpandMoreIcon /> : <ChevronRightIcon />}
-            onClick={onExpandedChange}
+            onClick={onExpandedRow}
+            type="button"
             variant="subtle"
           />
         </DataCell>
@@ -114,24 +120,22 @@ const InternalRow = <T extends TableItem>({
 
     return null;
   };
-
   const renderExtraCellsForParentRow = (): ReactNode[] => {
     if (!hasChildrenRows) {
-      return [<DataCell key={`parent-extra-cell-${parentRowIndex}-1`} />];
+      return [<DataCell key={`parent-extra-cell-${parentRowId}-1`} />];
     }
 
     return [];
   };
-
   const renderExtraCellsForChildRow = () => {
-    const extraDataCells: ReactNode[] = [<DataCell key={`child-extra-cell-${childRowIndex}-0`} />];
+    const extraDataCells: ReactNode[] = [<DataCell key={`child-extra-cell-${childRowId}-0`} />];
 
     if (isDraggable) {
-      extraDataCells.push(<DataCell key={`child-extra-cell-${childRowIndex}-1`} />);
+      extraDataCells.push(<DataCell key={`child-extra-cell-${childRowId}-1`} />);
     }
 
     if (isSelectable) {
-      extraDataCells.push(<DataCell key={`child-extra-cell-${childRowIndex}-2`} />);
+      extraDataCells.push(<DataCell key={`child-extra-cell-${childRowId}-2`} />);
     }
 
     return extraDataCells;
@@ -144,7 +148,6 @@ const InternalRow = <T extends TableItem>({
       {renderExpandedIconCell()}
       {isParentRow && isExpandable && renderExtraCellsForParentRow()}
       {isExpandable && !isParentRow && renderExtraCellsForChildRow()}
-
       {columns.map(
         (
           { render: CellContent, align, display, verticalAlign, width, withPadding = true },
@@ -166,7 +169,17 @@ const InternalRow = <T extends TableItem>({
                 flexDirection="row"
                 justifyContent={align && ALIGN_MAP[align]}
               >
-                {/* @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
+                {columnIndex === 0 && !isParentRow && isChildrenRowsSelectable && (
+                  <Checkbox
+                    checked={isSelected}
+                    hiddenLabel
+                    label={label}
+                    onChange={onItemSelect}
+                    width={0}
+                  />
+                )}
+                {/*
+          // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
                 <CellContent {...item} />
               </Flex>
             </DataCell>
