@@ -52,7 +52,7 @@
     "@svgr/core": "^5.0.1",
     "@svgr/plugin-jsx": "^5.0.1",
     "@svgr/plugin-prettier": "^5.0.1",
-    "@svgr/plugin-svgo": "^5.0.1",
+    "@svgr/plugin-svgo": "^6.5.1",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.26",
