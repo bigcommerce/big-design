@@ -534,6 +534,7 @@ exports[`renders close button 1`] = `
   border: none;
   color: #313440;
   height: auto;
+  min-width: auto;
   padding: 0;
 }
 

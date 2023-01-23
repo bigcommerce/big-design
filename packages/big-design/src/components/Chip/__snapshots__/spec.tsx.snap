@@ -142,6 +142,7 @@ exports[`renders with close button if onRemove is present 1`] = `
   height: auto;
   padding: 0;
   width: auto;
+  min-width: auto;
 }
 
 @media (min-width:720px) {

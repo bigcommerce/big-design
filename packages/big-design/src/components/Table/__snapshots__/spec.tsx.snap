@@ -349,14 +349,11 @@ exports[`renders a pagination component 1`] = `
           class="c1 c6"
         >
           <button
-            aria-activedescendant=""
-            aria-controls=":r13:-menu"
             aria-expanded="false"
             aria-haspopup="menu"
             class="c7 c8"
             id=":r13:-toggle-button"
             role="button"
-            tabindex="0"
             type="button"
           >
             <span

@@ -299,14 +299,11 @@ exports[`render pagination component 1`] = `
       class="c0 c3"
     >
       <button
-        aria-activedescendant=""
-        aria-controls=":r0:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
         id=":r0:-toggle-button"
         role="button"
-        tabindex="0"
         type="button"
       >
         <span
@@ -718,14 +715,11 @@ exports[`render pagination component with invalid page info 1`] = `
       class="c0 c3"
     >
       <button
-        aria-activedescendant=""
-        aria-controls=":r4:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
         id=":r4:-toggle-button"
         role="button"
-        tabindex="0"
         type="button"
       >
         <span
@@ -1137,14 +1131,11 @@ exports[`render pagination component with invalid range info 1`] = `
       class="c0 c3"
     >
       <button
-        aria-activedescendant=""
-        aria-controls=":r8:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
         id=":r8:-toggle-button"
         role="button"
-        tabindex="0"
         type="button"
       >
         <span
@@ -1557,14 +1548,11 @@ exports[`render pagination component with no items 1`] = `
       class="c0 c3"
     >
       <button
-        aria-activedescendant=""
-        aria-controls=":rc:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
         id=":rc:-toggle-button"
         role="button"
-        tabindex="0"
         type="button"
       >
         <span

@@ -314,14 +314,11 @@ exports[`dropdown is not visible if items fit 1`] = `
       class="c0 c6"
     >
       <button
-        aria-activedescendant=""
-        aria-controls=":r2:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
         id=":r2:-toggle-button"
         role="button"
-        tabindex="0"
       >
         <span
           class="c4"
@@ -682,14 +679,11 @@ exports[`it renders the given tabs 1`] = `
       class="c0 c6"
     >
       <button
-        aria-activedescendant=""
-        aria-controls=":r0:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
         id=":r0:-toggle-button"
         role="button"
-        tabindex="0"
       >
         <span
           class="c4"
@@ -1082,14 +1076,11 @@ exports[`only the pills that fit are visible 1`] = `
       class="c0 c6"
     >
       <button
-        aria-activedescendant=""
-        aria-controls=":r8:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
         id=":r8:-toggle-button"
         role="button"
-        tabindex="0"
       >
         <span
           class="c4"
@@ -1481,14 +1472,11 @@ exports[`only the pills that fit are visible 2 1`] = `
       class="c0 c6"
     >
       <button
-        aria-activedescendant=""
-        aria-controls=":ra:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
         id=":ra:-toggle-button"
         role="button"
-        tabindex="0"
       >
         <span
           class="c4"
@@ -1879,14 +1867,11 @@ exports[`renders all the filters if they fit 1`] = `
       class="c0 c6"
     >
       <button
-        aria-activedescendant=""
-        aria-controls=":r6:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
         id=":r6:-toggle-button"
         role="button"
-        tabindex="0"
       >
         <span
           class="c4"
@@ -2264,14 +2249,11 @@ exports[`renders dropdown if items do not fit 1`] = `
       class="c0 c6"
     >
       <button
-        aria-activedescendant=""
-        aria-controls=":r4:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c7 bd-button"
         id=":r4:-toggle-button"
         role="button"
-        tabindex="0"
       >
         <span
           class="c5"

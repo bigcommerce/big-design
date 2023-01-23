@@ -15,6 +15,7 @@ export const StyledCloseButton = styled(StyleableButton)`
   height: auto;
   padding: 0;
   width: auto;
+  min-width: auto;
 `;
 
 StyledChip.defaultProps = {
