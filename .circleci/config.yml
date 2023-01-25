@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@4.7.0
+  node: circleci/node@5.1.0
 
 #################################################################################
 # Aliases
@@ -8,7 +8,7 @@ orbs:
 default_executor: &default_executor
   executor:
     name: node/default
-    tag: '16.16'
+    tag: '18.13'
 
 filter_branch: &filter_branch
   filters:
@@ -60,7 +60,7 @@ commands:
     steps:
       - checkout
       - node/install-yarn:
-          version: 1.22.15
+          version: 1.22.19
       - yarn-install
 
   attach-built-icons:
