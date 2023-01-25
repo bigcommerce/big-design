@@ -53,20 +53,20 @@ test('no error when input date value manually', async () => {
 
   render(<Datepicker onDateChange={changeFunction} />);
 
-  const dateString = 'Wed, 03 June, 2020';
+  const dateString = new Date('Wed, 03 June, 2020');
 
   const input = await screen.findByRole('textbox');
 
   await waitFor(() => {
     fireEvent.input(input, {
       target: {
-        value: dateString,
+        value: dateString.toDateString(),
       },
     });
   });
 
-  expect(changeFunction).not.toHaveBeenCalled();
-  expect(input?.getAttribute('value')).toEqual(dateString);
+  expect(changeFunction).toHaveBeenCalledWith(dateString.toISOString());
+  expect(input?.getAttribute('value')).toEqual(dateString.toDateString());
 });
 
 test('renders an error if one is provided', () => {
