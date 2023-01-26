@@ -61,8 +61,18 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
     [],
   );
 
+  const isLastChild = useMemo(
+    () =>
+      expandableRows
+        ? Object.values(expandableRows)
+            .reduce((accum, item) => [...accum, item[item.length - 1]], [])
+            .includes(row.id)
+        : false,
+    [expandableRows, row.id],
+  );
+
   return (
-    <StyledTableRow isChild={isChild} isExpanded={!isChild || isExpanded}>
+    <StyledTableRow isExpanded={!isChild || isExpanded}>
       <RowStatus rowIndex={rowIndex} />
       {columns.map((column, columnIndex) => (
         <Cell
@@ -70,6 +80,8 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
           disabled={column.disabled || isDisabled}
           formatting={hasFormatting(column) ? column.formatting : undefined}
           hash={column.hash}
+          isChild={isChild}
+          isLastChild={isLastChild}
           key={`${rowIndex}-${columnIndex}`}
           options={column.type === 'select' ? column.config.options : undefined}
           rowId={row.id}
