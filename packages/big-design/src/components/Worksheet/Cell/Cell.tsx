@@ -15,6 +15,8 @@ import {
 import { StyledCell } from './styled';
 
 interface CellProps<Item> extends TCell<Item> {
+  isLastChild: boolean;
+  isChild: boolean;
   options?: WorksheetSelectableColumn<Item>['config']['options'];
   rowId: number | string;
   formatting?: WorksheetTextColumn<Item>['formatting'];
@@ -32,6 +34,8 @@ const InternalCell = <T extends WorksheetItem>({
   rowId,
   validation,
   value,
+  isChild,
+  isLastChild,
 }: CellProps<T>) => {
   const cell: TCell<T> = useMemo(
     () => ({ columnIndex, disabled, hash, rowIndex, type, value }),
@@ -189,7 +193,9 @@ const InternalCell = <T extends WorksheetItem>({
 
   return (
     <StyledCell
+      isChild={isChild}
       isEdited={isEdited}
+      isLastChild={isLastChild}
       isSelected={isSelected}
       isValid={isValid}
       onClick={handleClick}

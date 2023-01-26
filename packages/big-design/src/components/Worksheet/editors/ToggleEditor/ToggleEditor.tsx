@@ -1,7 +1,6 @@
 import { ChevronRightIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, useEffect } from 'react';
 
-import { Flex } from '../../../Flex';
 import { useExpandable, useWorksheetStore } from '../../hooks';
 
 import { StyledExpandButton } from './styled';
@@ -25,29 +24,33 @@ const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
     setEditingCell({ cell: null });
   }, [hasExpanded, isExpandable, onToggle, setEditingCell, toggle]);
 
-  return isExpandable ? (
-    <Flex justifyContent="center">
-      {hasExpanded ? (
-        <StyledExpandButton
-          iconOnly={<ExpandMoreIcon />}
-          onClick={() => {
-            onToggle(true);
-          }}
-          title="toggle row expanded"
-          variant="subtle"
-        />
-      ) : (
-        <StyledExpandButton
-          iconOnly={<ChevronRightIcon />}
-          onClick={() => {
-            onToggle(false);
-          }}
-          title="toggle row expanded"
-          variant="subtle"
-        />
-      )}
-    </Flex>
-  ) : null;
+  if (!isExpandable) {
+    return null;
+  }
+
+  if (hasExpanded) {
+    return (
+      <StyledExpandButton
+        iconOnly={<ExpandMoreIcon color="secondary60" />}
+        onClick={() => {
+          onToggle(true);
+        }}
+        title="toggle row expanded"
+        variant="subtle"
+      />
+    );
+  }
+
+  return (
+    <StyledExpandButton
+      iconOnly={<ChevronRightIcon color="secondary60" />}
+      onClick={() => {
+        onToggle(false);
+      }}
+      title="toggle row expanded"
+      variant="subtle"
+    />
+  );
 };
 
 export const ToggleEditor = memo(InternalToggleEditor);

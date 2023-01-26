@@ -68,7 +68,7 @@ const InternalWorksheet = typedMemo(
     // Add a column for the toggle components
     const expandedColumns: Array<InternalWorksheetColumn<T>> = useMemo(() => {
       return expandableRows
-        ? [{ hash: '', header: '', type: 'toggle', width: 50 }, ...columns]
+        ? [{ hash: '', header: '', type: 'toggle', width: 32 }, ...columns]
         : columns;
     }, [columns, expandableRows]);
 
@@ -172,6 +172,7 @@ const InternalWorksheet = typedMemo(
       <UpdateItemsProvider items={rows}>
         <StyledBox>
           <Table
+            hasExpandableRows={Boolean(expandableRows)}
             hasStaticWidth={tableHasStaticWidth}
             minWidth={minWidth}
             onKeyDown={handleKeyDown}
