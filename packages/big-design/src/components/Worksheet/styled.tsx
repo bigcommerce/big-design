@@ -29,7 +29,17 @@ export const Header = styled.th<{
   height: ${({ theme }) => theme.helpers.remCalc(52)};
   overflow: hidden;
   padding: ${({ theme }) => `0 ${theme.helpers.remCalc(17)}`};
-  text-align: ${({ columnType }) => (columnType === 'number' ? 'right' : 'left')};
+  text-align: ${({ columnType }) => {
+    if (columnType === 'number') {
+      return 'right';
+    }
+
+    if (columnType === 'checkbox') {
+      return 'center';
+    }
+
+    return 'left';
+  }};
   width: ${({ columnWidth }) =>
     typeof columnWidth === 'string' ? columnWidth : `${columnWidth}px`};
 `;
