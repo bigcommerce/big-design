@@ -6,7 +6,6 @@ const { cpus } = require('os');
 const { basename, join } = require('path');
 const rimraf = require('rimraf');
 const asyncPool = require('tiny-async-pool');
-const { promisify } = require('util');
 
 const config = require('./svgr.config');
 
@@ -14,7 +13,6 @@ const SOURCE = join(__dirname, '..', 'svgs', '*', '*.svg');
 const DEST_PATH = join(__dirname, '..', 'src', 'components');
 
 const componentNames = new Set();
-const asyncRimraf = promisify(rimraf);
 
 async function convertToReactComponent(filePath, iconName) {
   const svgCode = await readFile(filePath, 'utf8');
@@ -46,7 +44,7 @@ async function generateIcons() {
 }
 
 function cleanDestDirectory() {
-  return asyncRimraf(DEST_PATH);
+  return rimraf(DEST_PATH);
 }
 
 (async () => {
