@@ -34,7 +34,7 @@ const panelProps: Prop[] = [
   {
     name: 'description',
     types: ['string', 'React.ReactNode'],
-    description: 'Appends a description.',
+    description: 'Appends a description below the header and action.',
   },
 ];
 
