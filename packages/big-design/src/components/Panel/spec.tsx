@@ -4,6 +4,8 @@ import 'jest-styled-components';
 
 import { fireEvent, render, screen } from '@test/utils';
 
+import { Text } from '../Typography';
+
 import { Panel } from './Panel';
 
 test('render panel', () => {
@@ -52,6 +54,42 @@ test('renders a header and action', () => {
 
   expect(actionButton).toBeInTheDocument();
   expect(actionButton.textContent).toBe('Test Action');
+});
+
+describe('description', () => {
+  test('renders string description', async () => {
+    render(
+      <Panel action={{ text: 'Test Action' }} description="Test Description" header="Test Header">
+        Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
+        officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
+        deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris
+        Lorem irure sit esse nulla mollit aliquip consectetur velit
+      </Panel>,
+    );
+
+    const description = await screen.findByText('Test Description');
+
+    expect(description).toBeInTheDocument();
+  });
+
+  test('renders ReactNode description', async () => {
+    render(
+      <Panel
+        action={{ text: 'Test Action' }}
+        description={<Text>Test Description</Text>}
+        header="Test Header"
+      >
+        Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
+        officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
+        deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris
+        Lorem irure sit esse nulla mollit aliquip consectetur velit
+      </Panel>,
+    );
+
+    const description = await screen.findByText('Test Description');
+
+    expect(description).toBeInTheDocument();
+  });
 });
 
 test('action options get forwarded to button', () => {

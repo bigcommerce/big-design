@@ -31,6 +31,11 @@ const panelProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'description',
+    types: ['string', 'React.ReactNode'],
+    description: 'Appends a description.',
+  },
 ];
 
 export const PanelPropTable: React.FC<PropTableWrapper> = (props) => (
