@@ -33,6 +33,7 @@ const PanelPage = () => {
                 // Do some action
               },
             }}
+            description="This is the panel's optional description."
             header="Panel header"
           >
             <Text>

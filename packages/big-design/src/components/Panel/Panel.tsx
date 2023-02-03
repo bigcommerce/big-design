@@ -1,9 +1,11 @@
-import React, { forwardRef, HTMLAttributes, memo, Ref } from 'react';
+import React, { forwardRef, HTMLAttributes, isValidElement, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { excludePaddingProps } from '../../mixins/paddings/paddings';
+import { warning } from '../../utils';
 import { Button, ButtonProps } from '../Button';
 import { Flex } from '../Flex';
+import { Text } from '../Typography';
 
 import { StyledH2, StyledPanel } from './styled';
 
@@ -17,6 +19,7 @@ export interface PanelAction extends Omit<ButtonProps, 'children'> {
 
 export interface PanelProps extends HTMLAttributes<HTMLElement>, MarginProps {
   children?: React.ReactNode;
+  description?: React.ReactNode;
   header?: string;
   headerId?: string;
   action?: PanelAction;
@@ -24,7 +27,7 @@ export interface PanelProps extends HTMLAttributes<HTMLElement>, MarginProps {
 
 export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {
   const filteredProps = excludePaddingProps(props);
-  const { action, children, header, headerId, ...rest } = filteredProps;
+  const { action, children, description, header, headerId, ...rest } = filteredProps;
 
   const renderHeader = () => {
     if (!header && !action) {
@@ -37,10 +40,30 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
 
     return (
       <Flex flexDirection="row">
-        {Boolean(header) && <StyledH2 id={headerId}>{header}</StyledH2>}
+        {Boolean(header) && (
+          <StyledH2 id={headerId} marginBottom={description ? 'xxSmall' : 'medium'}>
+            {header}
+          </StyledH2>
+        )}
         {action && <Button {...action}>{action.text}</Button>}
       </Flex>
     );
+  };
+
+  const renderDescription = () => {
+    if (!description) {
+      return null;
+    }
+
+    if (typeof description === 'string') {
+      return <Text color="secondary60">{description}</Text>;
+    }
+
+    if (isValidElement(description)) {
+      return description;
+    }
+
+    warning('description must be either a string or a ReactNode.');
   };
 
   return (
@@ -53,6 +76,7 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
       shadow="raised"
     >
       {renderHeader()}
+      {renderDescription()}
       {children}
     </StyledPanel>
   );
