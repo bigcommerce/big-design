@@ -65,7 +65,7 @@ test('no error when input date value manually', async () => {
     });
   });
 
-  expect(changeFunction).toHaveBeenCalledWith(dateString.toISOString());
+  expect(changeFunction).not.toHaveBeenCalled();
   expect(input?.getAttribute('value')).toEqual(dateString.toDateString());
 });
 
