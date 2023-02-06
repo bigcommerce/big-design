@@ -5,3 +5,4 @@ export * from './useNavigation';
 export * from './useWorksheetStore';
 export * from './useTableFocus';
 export * from './useUpdateItems';
+export * from './useAutoFilling';

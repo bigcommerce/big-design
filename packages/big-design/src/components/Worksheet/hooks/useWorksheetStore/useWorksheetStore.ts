@@ -21,6 +21,9 @@ export interface BaseState<Item> {
   editedCells: Array<Cell<Item>>;
   editingCell: Cell<Item> | null;
   isMetaKey: boolean;
+  isAutoFillActive: boolean;
+  isSelectingActive: boolean;
+  isBlockedFillOut: boolean;
   isControlKey: boolean;
   editWithValue: string;
   expandableRows: ExpandableRows;
@@ -53,6 +56,9 @@ export interface BaseState<Item> {
   setSelectedCells: (cells: Array<Cell<Item>>) => void;
   setSelectedRows: (rows: number[]) => void;
   setTableRef: (ref: HTMLTableElement | null) => void;
+  setAutoFillActive: (isActive: boolean) => void;
+  setSelectingActive: (isActive: boolean) => void;
+  setBlockFillOut: (isBlocked: boolean) => void;
 }
 
 export const createWorksheetStore = <Item extends WorksheetItem>() =>
@@ -61,6 +67,9 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
     editedCells: [],
     editingCell: null,
     isMetaKey: false,
+    isAutoFillActive: false,
+    isSelectingActive: false,
+    isBlockedFillOut: false,
     isControlKey: false,
     editWithValue: '',
     expandableRows: {},
@@ -97,6 +106,9 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
     setSelectedCells: (cells) => set((state) => ({ ...state, selectedCells: cells })),
     setSelectedRows: (rowIndexes) => set((state) => ({ ...state, selectedRows: rowIndexes })),
     setTableRef: (ref) => set((state) => ({ ...state, tableRef: ref })),
+    setAutoFillActive: (isActive) => set((state) => ({ ...state, isAutoFillActive: isActive })),
+    setSelectingActive: (isActive) => set((state) => ({ ...state, isSelectingActive: isActive })),
+    setBlockFillOut: (isBlock) => set((state) => ({ ...state, isBlockedFillOut: isBlock })),
   }));
 
 export const useWorksheetStore = () => {
