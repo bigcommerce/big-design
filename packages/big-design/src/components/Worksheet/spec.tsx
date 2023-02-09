@@ -360,6 +360,48 @@ describe('edition', () => {
       numberField: 50,
     });
   });
+
+  test('fill out full column', async () => {
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const foundElement = await screen.findAllByText('Shoes Name Three');
+
+    expect(foundElement).toHaveLength(1);
+
+    if (foundElement) {
+      fireEvent.click(foundElement[0]);
+    }
+
+    const button = await screen.findByLabelText('Autofill handler');
+
+    expect(button).toBeInTheDocument();
+
+    fireEvent.doubleClick(button);
+
+    const foundElements = await screen.findAllByText('Shoes Name Three');
+
+    expect(foundElements).toHaveLength(9);
+  });
+
+  test('fill out all bottom cells', async () => {
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const foundElement = await screen.findByText('Shoes Name One');
+
+    if (foundElement) {
+      fireEvent.click(foundElement);
+    }
+
+    const button = await screen.findByLabelText('Autofill handler');
+
+    expect(button).toBeInTheDocument();
+
+    fireEvent.doubleClick(button);
+
+    const foundElements = await screen.findAllByText('Shoes Name One');
+
+    expect(foundElements).toHaveLength(7);
+  });
 });
 
 describe('validation', () => {

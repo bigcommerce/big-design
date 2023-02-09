@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo } from 'react';
 import { typedMemo } from '../../../utils';
 import { Small } from '../../Typography';
 import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor, ToggleEditor } from '../editors';
-import { useEditableCell, useWorksheetStore } from '../hooks';
+import { useAutoFilling, useEditableCell, useWorksheetStore } from '../hooks';
 import {
   InternalWorksheetColumn,
   Cell as TCell,
@@ -12,9 +12,10 @@ import {
   WorksheetTextColumn,
 } from '../types';
 
-import { StyledCell } from './styled';
+import { AutoFillHandler, StyledCell } from './styled';
 
 interface CellProps<Item> extends TCell<Item> {
+  nextRowValue: Item[keyof Item] | '';
   isLastChild: boolean;
   isChild: boolean;
   options?: WorksheetSelectableColumn<Item>['config']['options'];
@@ -34,6 +35,7 @@ const InternalCell = <T extends WorksheetItem>({
   rowId,
   validation,
   value,
+  nextRowValue,
   isChild,
   isLastChild,
 }: CellProps<T>) => {
@@ -45,6 +47,14 @@ const InternalCell = <T extends WorksheetItem>({
   const { handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing } =
     useEditableCell<T>(cell);
   const { store, useStore } = useWorksheetStore();
+  const {
+    isAutoFillActive,
+    onFillFullColumn,
+    setIsMouseDown,
+    setSelectingActive,
+    setBlockFillOut,
+    setSelectedCell: setHighlightedCell,
+  } = useAutoFilling(cell);
 
   const setSelectedRows = useStore(store, (state) => state.setSelectedRows);
   const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
@@ -60,15 +70,26 @@ const InternalCell = <T extends WorksheetItem>({
 
   const isControlKey = useStore(store, (state) => state.isControlKey);
 
-  const isSelected = useStore(
+  const { isLastSelected, isFirstSelected, isSelected } = useStore(
     store,
     useMemo(
-      () => (state) =>
-        state.selectedCells.some(
+      () => (state) => {
+        const idx = state.selectedCells.findIndex(
           (selectedCell) =>
             selectedCell.columnIndex === cell.columnIndex &&
             selectedCell.rowIndex === cell.rowIndex,
-        ),
+        );
+
+        return {
+          isLastSelected: state.selectedCells.length - 1 === idx,
+          isFirstSelected: idx === 0,
+          isSelected: state.selectedCells.some(
+            (selectedCell) =>
+              selectedCell.columnIndex === cell.columnIndex &&
+              selectedCell.rowIndex === cell.rowIndex,
+          ),
+        };
+      },
       [cell],
     ),
   );
@@ -102,6 +123,11 @@ const InternalCell = <T extends WorksheetItem>({
     [validation, value],
   );
 
+  const isNextCellValid = useMemo(
+    () => (typeof validation === 'function' ? validation(nextRowValue) : true),
+    [nextRowValue, validation],
+  );
+
   useEffect(() => {
     // Remove from invalidCells if new value is valid
     if (isValid && invalidCell) {
@@ -113,6 +139,15 @@ const InternalCell = <T extends WorksheetItem>({
       addInvalidCells([cell]);
     }
   }, [addInvalidCells, cell, isValid, invalidCell, removeInvalidCells]);
+
+  const handleAutoFilldblClick = useCallback(
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      event.stopPropagation();
+
+      onFillFullColumn();
+    },
+    [onFillFullColumn],
+  );
 
   const handleClick = useCallback(() => {
     setSelectedRows([rowIndex]);
@@ -191,18 +226,56 @@ const InternalCell = <T extends WorksheetItem>({
     renderedValue,
   ]);
 
+  const renderedAutoFillHandler = useMemo(() => {
+    return isLastSelected ? (
+      <AutoFillHandler
+        aria-label="Autofill handler"
+        isVisible={!isAutoFillActive}
+        onDoubleClick={handleAutoFilldblClick}
+        onMouseDown={(event) => {
+          event.stopPropagation();
+
+          setSelectingActive(false);
+          setBlockFillOut(false);
+          setIsMouseDown(true);
+        }}
+      />
+    ) : null;
+  }, [
+    handleAutoFilldblClick,
+    isAutoFillActive,
+    isLastSelected,
+    setBlockFillOut,
+    setIsMouseDown,
+    setSelectingActive,
+  ]);
+
   return (
     <StyledCell
       isChild={isChild}
       isEdited={isEdited}
+      isFirstSelected={isFirstSelected}
       isLastChild={isLastChild}
+      isLastSelected={isLastSelected}
+      isNextCellValid={isNextCellValid}
       isSelected={isSelected}
       isValid={isValid}
       onClick={handleClick}
       onDoubleClick={handleDoubleClick}
+      onMouseDown={() => {
+        handleClick();
+        setSelectingActive(true);
+        setBlockFillOut(true);
+      }}
+      onMouseEnter={setHighlightedCell}
+      onMouseUp={() => {
+        setIsMouseDown(false);
+        setSelectingActive(false);
+      }}
       type={type}
     >
       {renderedCell}
+      {renderedAutoFillHandler}
     </StyledCell>
   );
 };

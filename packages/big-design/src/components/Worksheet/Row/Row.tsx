@@ -26,6 +26,10 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
     store,
     useMemo(() => (state) => state.rows[rowIndex], [rowIndex]),
   );
+  const nextRow: T = useStore(
+    store,
+    useMemo(() => (state) => state.rows[rowIndex + 1] || null, [rowIndex]),
+  );
   const expandableRows = useStore(
     store,
     useMemo(() => (state) => state.expandableRows, []),
@@ -83,6 +87,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
           isChild={isChild}
           isLastChild={isLastChild}
           key={`${rowIndex}-${columnIndex}`}
+          nextRowValue={(nextRow && nextRow[column.hash]) || ''}
           options={column.type === 'select' ? column.config.options : undefined}
           rowId={row.id}
           rowIndex={rowIndex}
