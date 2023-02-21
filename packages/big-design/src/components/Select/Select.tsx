@@ -174,6 +174,12 @@ export const Select = typedMemo(
             inputValue: selectedOption ? selectedOption.content : '',
           };
 
+        case useCombobox.stateChangeTypes.InputFocus:
+          return {
+            ...actionAndChanges.changes,
+            isOpen: false, // keep the menu closed when input gets focused.
+          };
+
         default:
           return actionAndChanges.changes;
       }

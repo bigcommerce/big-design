@@ -267,6 +267,16 @@ test('select menu opens/closes when input button is clicked', async () => {
   expect(listbox).toBeEmptyDOMElement();
 });
 
+test('menu should not open on focus', async () => {
+  render(SelectMock);
+
+  await userEvent.tab();
+
+  const listbox = await screen.findByRole('listbox');
+
+  expect(listbox).toBeEmptyDOMElement();
+});
+
 test('esc should close menu', async () => {
   render(SelectMock);
 

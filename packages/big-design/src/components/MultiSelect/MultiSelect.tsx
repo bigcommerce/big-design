@@ -166,6 +166,12 @@ export const MultiSelect = typedMemo(
         case useCombobox.stateChangeTypes.InputBlur:
           return { ...actionAndChanges.changes, inputValue: '' };
 
+        case useCombobox.stateChangeTypes.InputFocus:
+          return {
+            ...actionAndChanges.changes,
+            isOpen: false, // keep the menu closed when input gets focused.
+          };
+
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick: {
           if (!actionAndChanges.changes.selectedItem) {
