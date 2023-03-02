@@ -181,7 +181,7 @@ exports[`renders all together 1`] = `
 <div>
   <label
     class="c0 c1"
-    for=":rp:"
+    for=":r1c:"
   >
     This is a label
   </label>
@@ -221,7 +221,7 @@ exports[`renders all together 1`] = `
     >
       <input
         class="c7"
-        id=":rp:"
+        id=":r1c:"
       />
     </div>
     <div

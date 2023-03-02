@@ -3,7 +3,7 @@ import { theme } from '@bigcommerce/big-design-theme';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
-import { render, screen } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
@@ -356,4 +356,22 @@ test('appends (optional) text to label if input is not required', () => {
   const label = container.querySelector('label');
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
+});
+
+describe('Input tooltip', () => {
+  test('renders with tooltip icon', () => {
+    render(<Input label="Test Label" tooltip="Info about input" />);
+
+    expect(screen.getByTitle('Hover or focus for additional context.')).toBeTruthy();
+  });
+
+  test('renders tooltip when hovering on icon', () => {
+    render(<Input label="Test Label" tooltip="Info about input" />);
+
+    fireEvent.mouseOver(screen.getByTitle('Hover or focus for additional context.'));
+
+    const result = screen.getByText('Info about input');
+
+    expect(result).toBeInTheDocument();
+  });
 });

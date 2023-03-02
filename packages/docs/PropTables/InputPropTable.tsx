@@ -57,6 +57,11 @@ const inputProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'tooltip',
+    types: 'string',
+    description: 'Tooltip for the input.',
+  },
 ];
 
 export const InputPropTable: React.FC<PropTableWrapper> = (props) => (

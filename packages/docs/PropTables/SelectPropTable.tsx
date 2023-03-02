@@ -153,6 +153,11 @@ const selectProps: Prop[] = [
     types: 'any ',
     description: <>Modifies the current selected value of the field.</>,
   },
+  {
+    name: 'tooltip',
+    types: 'string',
+    description: 'Tooltip for the select.',
+  },
 ];
 
 const selectOptionProps: Prop[] = [

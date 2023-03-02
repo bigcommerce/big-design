@@ -1,3 +1,4 @@
+import { BaselineHelpIcon } from '@bigcommerce/big-design-icons';
 import React, {
   cloneElement,
   forwardRef,
@@ -10,9 +11,11 @@ import React, {
 } from 'react';
 
 import { typedMemo, warning } from '../../utils';
+import { Box } from '../Box';
 import { Chip, ChipProps } from '../Chip';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
+import { Tooltip } from '../Tooltip';
 
 import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
 
@@ -24,6 +27,7 @@ export interface Props {
   iconRight?: React.ReactNode;
   label?: React.ReactChild;
   labelId?: string;
+  tooltip?: string;
 }
 
 interface PrivateProps {
@@ -40,10 +44,12 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   forwardedRef,
   label,
   labelId,
+  tooltip,
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
   const uniqueInputId = useId();
+  const tooltipId = useId();
   const id = props.id ? props.id : uniqueInputId;
   const { errors } = useInputErrors(id, error);
 
@@ -137,9 +143,36 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     return chips.map((chip) => <Chip {...chip} key={chip.label} marginBottom="none" />);
   }, [chips]);
 
+  const renderedTooltip = useMemo(() => {
+    if (typeof tooltip === 'string' && tooltip.length > 0) {
+      return (
+        <Tooltip
+          id={tooltipId}
+          placement="right"
+          trigger={
+            <Box as="span" marginLeft="xxSmall">
+              <BaselineHelpIcon
+                aria-describedby={tooltipId}
+                color="secondary50"
+                marginBottom="small"
+                size="medium"
+                title="Hover or focus for additional context."
+              />
+            </Box>
+          }
+        >
+          {tooltip}
+        </Tooltip>
+      );
+    }
+
+    return null;
+  }, [tooltip, tooltipId]);
+
   return (
     <div>
       {renderedLabel}
+      {renderedTooltip}
       {renderedDescription}
       <StyledInputWrapper disabled={disabled} error={errors} focus={focus}>
         {renderedIconLeft}

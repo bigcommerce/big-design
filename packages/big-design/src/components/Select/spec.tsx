@@ -987,3 +987,37 @@ describe('aria-labelledby', () => {
     expect(input).toHaveAttribute('aria-labelledby', 'countries');
   });
 });
+
+describe('Select tooltip', () => {
+  test('renders with tooltip icon', () => {
+    render(
+      <Select
+        label="Countries"
+        labelId="countries"
+        onOptionChange={onChange}
+        options={mockOptions}
+        tooltip="Info about select"
+      />,
+    );
+
+    expect(screen.getByTitle('Hover or focus for additional context.')).toBeTruthy();
+  });
+
+  test('renders tooltip when hovering on icon', () => {
+    render(
+      <Select
+        label="Countries"
+        labelId="countries"
+        onOptionChange={onChange}
+        options={mockOptions}
+        tooltip="Info about select"
+      />,
+    );
+
+    fireEvent.mouseOver(screen.getByTitle('Hover or focus for additional context.'));
+
+    const result = screen.getByText('Info about select');
+
+    expect(result).toBeInTheDocument();
+  });
+});

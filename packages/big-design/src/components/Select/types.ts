@@ -13,6 +13,7 @@ interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'child
   filterable?: boolean;
   inputRef?: RefObject<HTMLInputElement> | React.Ref<HTMLInputElement>;
   label?: React.ReactChild;
+  tooltip?: string;
   labelId?: string;
   maxHeight?: number;
   name?: string;

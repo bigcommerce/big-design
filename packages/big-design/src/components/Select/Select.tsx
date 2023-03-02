@@ -1,3 +1,4 @@
+import { BaselineHelpIcon } from '@bigcommerce/big-design-icons';
 import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
 import React, {
   cloneElement,
@@ -22,6 +23,7 @@ import { List } from '../List';
 import { SelectOption, SelectOptionGroup, SelectProps } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 import { SelectAction } from '../Select/types';
+import { Tooltip } from '../Tooltip';
 
 export const Select = typedMemo(
   <T,>({
@@ -46,10 +48,12 @@ export const Select = typedMemo(
     required,
     style,
     value,
+    tooltip,
     ...props
   }: SelectProps<T>): ReturnType<React.FC<SelectProps<T>>> => {
     const defaultRef: RefObject<HTMLInputElement> = createRef();
     const selectUniqueId = useId();
+    const tooltipId = useId();
 
     const [inputValue, setInputValue] = useState<string | undefined>('');
 
@@ -365,9 +369,36 @@ export const Select = typedMemo(
       selectedItem,
     ]);
 
+    const renderedTooltip = useMemo(() => {
+      if (typeof tooltip === 'string' && tooltip.length > 0) {
+        return (
+          <Tooltip
+            id={tooltipId}
+            placement="right"
+            trigger={
+              <Box as="span" marginLeft="xxSmall">
+                <BaselineHelpIcon
+                  aria-describedby={tooltipId}
+                  color="secondary50"
+                  marginBottom="small"
+                  size="medium"
+                  title="Hover or focus for additional context."
+                />
+              </Box>
+            }
+          >
+            {tooltip}
+          </Tooltip>
+        );
+      }
+
+      return null;
+    }, [tooltip, tooltipId]);
+
     return (
       <div>
         {renderLabel}
+        {renderedTooltip}
         {renderInput}
         <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
