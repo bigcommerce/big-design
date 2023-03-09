@@ -2,53 +2,53 @@
 
 exports[`renders worksheet 1`] = `
 <div
-  class="styled__StyledBox-sc-sj5f1m-0 ciDApE styled__StyledBox-sc-16rzzpq-2 hEsHBI"
+  class="styled__StyledBox-sc-sj5f1m-0 gtStrG styled__StyledBox-sc-16rzzpq-2 hgDltu"
 >
   <table
-    class="styled__Table-sc-16rzzpq-0 dihcXA"
+    class="styled__Table-sc-16rzzpq-0 kduNQO"
     tabindex="0"
   >
     <thead>
       <tr>
         <td
-          class="styled__Status-sc-1aacki0-0 jTecwD"
+          class="styled__Status-sc-1aacki0-0 kCcaYt"
         />
         <th
-          class="styled__Header-sc-16rzzpq-1 tWleT"
+          class="styled__Header-sc-16rzzpq-1 curiyd"
         >
           Product name
            
         </th>
         <th
-          class="styled__Header-sc-16rzzpq-1 dqwjjU"
+          class="styled__Header-sc-16rzzpq-1 fQoDby"
         >
           Visible on storefront
            
         </th>
         <th
-          class="styled__Header-sc-16rzzpq-1 tWleT"
+          class="styled__Header-sc-16rzzpq-1 curiyd"
         >
           Other field
            
         </th>
         <th
-          class="styled__Header-sc-16rzzpq-1 tWleT"
+          class="styled__Header-sc-16rzzpq-1 curiyd"
         >
           Other field
            
         </th>
         <th
-          class="styled__Header-sc-16rzzpq-1 iqHMUa"
+          class="styled__Header-sc-16rzzpq-1 kgfNtQ"
         >
           Number field
            
           <span
-            class="styled__StyledBox-sc-sj5f1m-0 ZcIoi"
+            class="styled__StyledBox-sc-sj5f1m-0 qhocg"
           >
             <svg
               aria-describedby=":r0:"
               aria-labelledby=":r1:"
-              class="base__StyledIcon-sc-a9u0e1-0 keWbN"
+              class="base__StyledIcon-sc-a9u0e1-0 hFZBlP"
               fill="currentColor"
               height="24"
               stroke="currentColor"
@@ -75,17 +75,17 @@ exports[`renders worksheet 1`] = `
     </thead>
     <tbody>
       <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 iVAweo"
+        class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
       >
         <td
-          class="styled__Status-sc-1aacki0-0 jTecwD"
+          class="styled__Status-sc-1aacki0-0 kCcaYt"
         />
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Shoes Name Three"
           >
@@ -93,35 +93,35 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 epYPTI"
+          class="styled__StyledCell-sc-1bt06ph-0 gzWvGi"
           type="checkbox"
         >
           <div
-            class="styled__CheckboxWrapper-sc-1pcspgo-0 ksKBQF"
+            class="styled__CheckboxWrapper-sc-1pcspgo-0 UhvXv"
           >
             <div
-              class="styled__CheckboxContainer-sc-s1u0st-1 BPzxd"
+              class="styled__CheckboxContainer-sc-s1u0st-1 ocFKX"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":r3:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-s1u0st-2 fOezJh"
+                class="styled__HiddenCheckbox-sc-s1u0st-2 bsLQKn"
                 id=":r2:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-s1u0st-3 bgzSTq"
+                class="styled__StyledCheckbox-sc-s1u0st-3 fRtUvw"
                 for=":r2:"
               >
                 <svg
                   aria-hidden="true"
-                  class="base__StyledIcon-sc-a9u0e1-0 fLZzZV"
+                  class="base__StyledIcon-sc-a9u0e1-0 iPmaTX"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -139,11 +139,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-s1u0st-0 ikhfic"
+                class="styled__CheckboxLabelContainer-sc-s1u0st-0 boIwAu"
               >
                 <label
                   aria-hidden="false"
-                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 hkcwGz foLSRl"
+                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 gJPlON euxPPL"
                   for=":r2:"
                   hidden=""
                   id=":r3:"
@@ -155,15 +155,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Text"
           >
@@ -171,21 +171,21 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="modal"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 ciDApE styled__StyledFlex-sc-hcvk8l-0 ioxWkl"
+            class="styled__StyledBox-sc-sj5f1m-0 gtStrG styled__StyledFlex-sc-hcvk8l-0 kGwgKT"
           >
             <div
-              class="styled__StyledBox-sc-sj5f1m-0 gwzcQP styled__StyledFlexItem-sc-smjqtt-0 hBNgMm styled__StyledFlexItem-sc-zoq9bz-1 hQFuVn"
+              class="styled__StyledBox-sc-sj5f1m-0 iloRDl styled__StyledFlexItem-sc-smjqtt-0 cfKbPg styled__StyledFlexItem-sc-zoq9bz-1 jRgUUF"
             >
               <p
-                class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+                class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
                 color="secondary70"
                 title="1"
               >
@@ -193,10 +193,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="styled__StyledButton-sc-3yq204-0 fjWihA styled__StyledButton-sc-zoq9bz-0 iTRZMI"
+              class="styled__StyledButton-sc-3yq204-0 cnTpCO styled__StyledButton-sc-zoq9bz-0 gjsaTG"
             >
               <span
-                class="styled__ContentWrapper-sc-3yq204-1 cqsmIZ"
+                class="styled__ContentWrapper-sc-3yq204-1 dVJwVP"
               >
                 Edit
               </span>
@@ -204,15 +204,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 kVDvWT"
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
           type="number"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="$50.00"
           >
@@ -220,22 +220,22 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
       </tr>
       <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 iVAweo"
+        class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
       >
         <td
-          class="styled__Status-sc-1aacki0-0 jTecwD"
+          class="styled__Status-sc-1aacki0-0 kCcaYt"
         />
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Shoes Name Two"
           >
@@ -243,35 +243,35 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 epYPTI"
+          class="styled__StyledCell-sc-1bt06ph-0 gzWvGi"
           type="checkbox"
         >
           <div
-            class="styled__CheckboxWrapper-sc-1pcspgo-0 ksKBQF"
+            class="styled__CheckboxWrapper-sc-1pcspgo-0 UhvXv"
           >
             <div
-              class="styled__CheckboxContainer-sc-s1u0st-1 BPzxd"
+              class="styled__CheckboxContainer-sc-s1u0st-1 ocFKX"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":r6:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-s1u0st-2 fOezJh"
+                class="styled__HiddenCheckbox-sc-s1u0st-2 bsLQKn"
                 id=":r5:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-s1u0st-3 bgzSTq"
+                class="styled__StyledCheckbox-sc-s1u0st-3 fRtUvw"
                 for=":r5:"
               >
                 <svg
                   aria-hidden="true"
-                  class="base__StyledIcon-sc-a9u0e1-0 fLZzZV"
+                  class="base__StyledIcon-sc-a9u0e1-0 iPmaTX"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -289,11 +289,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-s1u0st-0 ikhfic"
+                class="styled__CheckboxLabelContainer-sc-s1u0st-0 boIwAu"
               >
                 <label
                   aria-hidden="false"
-                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 hkcwGz foLSRl"
+                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 gJPlON euxPPL"
                   for=":r5:"
                   hidden=""
                   id=":r6:"
@@ -305,15 +305,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Text"
           >
@@ -321,21 +321,21 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="modal"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 ciDApE styled__StyledFlex-sc-hcvk8l-0 ioxWkl"
+            class="styled__StyledBox-sc-sj5f1m-0 gtStrG styled__StyledFlex-sc-hcvk8l-0 kGwgKT"
           >
             <div
-              class="styled__StyledBox-sc-sj5f1m-0 gwzcQP styled__StyledFlexItem-sc-smjqtt-0 hBNgMm styled__StyledFlexItem-sc-zoq9bz-1 hQFuVn"
+              class="styled__StyledBox-sc-sj5f1m-0 iloRDl styled__StyledFlexItem-sc-smjqtt-0 cfKbPg styled__StyledFlexItem-sc-zoq9bz-1 jRgUUF"
             >
               <p
-                class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+                class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
                 color="secondary70"
                 title="2"
               >
@@ -343,10 +343,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="styled__StyledButton-sc-3yq204-0 fjWihA styled__StyledButton-sc-zoq9bz-0 iTRZMI"
+              class="styled__StyledButton-sc-3yq204-0 cnTpCO styled__StyledButton-sc-zoq9bz-0 gjsaTG"
             >
               <span
-                class="styled__ContentWrapper-sc-3yq204-1 cqsmIZ"
+                class="styled__ContentWrapper-sc-3yq204-1 dVJwVP"
               >
                 Edit
               </span>
@@ -354,15 +354,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 kVDvWT"
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
           type="number"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="$50.00"
           >
@@ -370,22 +370,22 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
       </tr>
       <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 iVAweo"
+        class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
       >
         <td
-          class="styled__Status-sc-1aacki0-0 jTecwD"
+          class="styled__Status-sc-1aacki0-0 kCcaYt"
         />
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Shoes Name One"
           >
@@ -393,34 +393,34 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 epYPTI"
+          class="styled__StyledCell-sc-1bt06ph-0 gzWvGi"
           type="checkbox"
         >
           <div
-            class="styled__CheckboxWrapper-sc-1pcspgo-0 ksKBQF"
+            class="styled__CheckboxWrapper-sc-1pcspgo-0 UhvXv"
           >
             <div
-              class="styled__CheckboxContainer-sc-s1u0st-1 BPzxd"
+              class="styled__CheckboxContainer-sc-s1u0st-1 ocFKX"
             >
               <input
                 aria-checked="false"
                 aria-labelledby=":r9:"
-                class="styled__HiddenCheckbox-sc-s1u0st-2 fOezJh"
+                class="styled__HiddenCheckbox-sc-s1u0st-2 bsLQKn"
                 id=":r8:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-s1u0st-3 eeOlTF"
+                class="styled__StyledCheckbox-sc-s1u0st-3 hTwfqT"
                 for=":r8:"
               >
                 <svg
                   aria-hidden="true"
-                  class="base__StyledIcon-sc-a9u0e1-0 fLZzZV"
+                  class="base__StyledIcon-sc-a9u0e1-0 iPmaTX"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -438,11 +438,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-s1u0st-0 ikhfic"
+                class="styled__CheckboxLabelContainer-sc-s1u0st-0 boIwAu"
               >
                 <label
                   aria-hidden="false"
-                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 hkcwGz foLSRl"
+                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 gJPlON euxPPL"
                   for=":r8:"
                   hidden=""
                   id=":r9:"
@@ -454,35 +454,35 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title=""
           />
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="modal"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 ciDApE styled__StyledFlex-sc-hcvk8l-0 ioxWkl"
+            class="styled__StyledBox-sc-sj5f1m-0 gtStrG styled__StyledFlex-sc-hcvk8l-0 kGwgKT"
           >
             <div
-              class="styled__StyledBox-sc-sj5f1m-0 gwzcQP styled__StyledFlexItem-sc-smjqtt-0 hBNgMm styled__StyledFlexItem-sc-zoq9bz-1 hQFuVn"
+              class="styled__StyledBox-sc-sj5f1m-0 iloRDl styled__StyledFlexItem-sc-smjqtt-0 cfKbPg styled__StyledFlexItem-sc-zoq9bz-1 jRgUUF"
             >
               <p
-                class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+                class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
                 color="secondary70"
                 title="3"
               >
@@ -490,10 +490,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="styled__StyledButton-sc-3yq204-0 fjWihA styled__StyledButton-sc-zoq9bz-0 iTRZMI"
+              class="styled__StyledButton-sc-3yq204-0 cnTpCO styled__StyledButton-sc-zoq9bz-0 gjsaTG"
             >
               <span
-                class="styled__ContentWrapper-sc-3yq204-1 cqsmIZ"
+                class="styled__ContentWrapper-sc-3yq204-1 dVJwVP"
               >
                 Edit
               </span>
@@ -501,15 +501,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 kVDvWT"
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
           type="number"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="$50.00"
           >
@@ -517,22 +517,22 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
       </tr>
       <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 iVAweo"
+        class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
       >
         <td
-          class="styled__Status-sc-1aacki0-0 jTecwD"
+          class="styled__Status-sc-1aacki0-0 kCcaYt"
         />
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Variant 1"
           >
@@ -540,35 +540,35 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 epYPTI"
+          class="styled__StyledCell-sc-1bt06ph-0 gzWvGi"
           type="checkbox"
         >
           <div
-            class="styled__CheckboxWrapper-sc-1pcspgo-0 ksKBQF"
+            class="styled__CheckboxWrapper-sc-1pcspgo-0 UhvXv"
           >
             <div
-              class="styled__CheckboxContainer-sc-s1u0st-1 BPzxd"
+              class="styled__CheckboxContainer-sc-s1u0st-1 ocFKX"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":rc:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-s1u0st-2 fOezJh"
+                class="styled__HiddenCheckbox-sc-s1u0st-2 bsLQKn"
                 id=":rb:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-s1u0st-3 bgzSTq"
+                class="styled__StyledCheckbox-sc-s1u0st-3 fRtUvw"
                 for=":rb:"
               >
                 <svg
                   aria-hidden="true"
-                  class="base__StyledIcon-sc-a9u0e1-0 fLZzZV"
+                  class="base__StyledIcon-sc-a9u0e1-0 iPmaTX"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -586,11 +586,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-s1u0st-0 ikhfic"
+                class="styled__CheckboxLabelContainer-sc-s1u0st-0 boIwAu"
               >
                 <label
                   aria-hidden="false"
-                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 hkcwGz foLSRl"
+                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 gJPlON euxPPL"
                   for=":rb:"
                   hidden=""
                   id=":rc:"
@@ -602,15 +602,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Text"
           >
@@ -618,21 +618,21 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="modal"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 ciDApE styled__StyledFlex-sc-hcvk8l-0 ioxWkl"
+            class="styled__StyledBox-sc-sj5f1m-0 gtStrG styled__StyledFlex-sc-hcvk8l-0 kGwgKT"
           >
             <div
-              class="styled__StyledBox-sc-sj5f1m-0 gwzcQP styled__StyledFlexItem-sc-smjqtt-0 hBNgMm styled__StyledFlexItem-sc-zoq9bz-1 hQFuVn"
+              class="styled__StyledBox-sc-sj5f1m-0 iloRDl styled__StyledFlexItem-sc-smjqtt-0 cfKbPg styled__StyledFlexItem-sc-zoq9bz-1 jRgUUF"
             >
               <p
-                class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+                class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
                 color="secondary70"
                 title="4"
               >
@@ -640,10 +640,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="styled__StyledButton-sc-3yq204-0 fjWihA styled__StyledButton-sc-zoq9bz-0 iTRZMI"
+              class="styled__StyledButton-sc-3yq204-0 cnTpCO styled__StyledButton-sc-zoq9bz-0 gjsaTG"
             >
               <span
-                class="styled__ContentWrapper-sc-3yq204-1 cqsmIZ"
+                class="styled__ContentWrapper-sc-3yq204-1 dVJwVP"
               >
                 Edit
               </span>
@@ -651,15 +651,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 kVDvWT"
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
           type="number"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="$50.00"
           >
@@ -667,54 +667,54 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
       </tr>
       <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 iVAweo"
+        class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
       >
         <td
-          class="styled__Status-sc-1aacki0-0 kGNgfN"
+          class="styled__Status-sc-1aacki0-0 dIdQEn"
         />
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 kBdQwq"
+          class="styled__StyledCell-sc-1bt06ph-0 bYJROw"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title=""
           />
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 epYPTI"
+          class="styled__StyledCell-sc-1bt06ph-0 gzWvGi"
           type="checkbox"
         >
           <div
-            class="styled__CheckboxWrapper-sc-1pcspgo-0 ksKBQF"
+            class="styled__CheckboxWrapper-sc-1pcspgo-0 UhvXv"
           >
             <div
-              class="styled__CheckboxContainer-sc-s1u0st-1 BPzxd"
+              class="styled__CheckboxContainer-sc-s1u0st-1 ocFKX"
             >
               <input
                 aria-labelledby=":rf:"
-                class="styled__HiddenCheckbox-sc-s1u0st-2 fOezJh"
+                class="styled__HiddenCheckbox-sc-s1u0st-2 bsLQKn"
                 id=":re:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-s1u0st-3 eeOlTF"
+                class="styled__StyledCheckbox-sc-s1u0st-3 hTwfqT"
                 for=":re:"
               >
                 <svg
                   aria-hidden="true"
-                  class="base__StyledIcon-sc-a9u0e1-0 fLZzZV"
+                  class="base__StyledIcon-sc-a9u0e1-0 iPmaTX"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -732,11 +732,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-s1u0st-0 ikhfic"
+                class="styled__CheckboxLabelContainer-sc-s1u0st-0 boIwAu"
               >
                 <label
                   aria-hidden="false"
-                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 hkcwGz foLSRl"
+                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 gJPlON euxPPL"
                   for=":re:"
                   hidden=""
                   id=":rf:"
@@ -748,44 +748,44 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title=""
           />
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="modal"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 ciDApE styled__StyledFlex-sc-hcvk8l-0 ioxWkl"
+            class="styled__StyledBox-sc-sj5f1m-0 gtStrG styled__StyledFlex-sc-hcvk8l-0 kGwgKT"
           >
             <div
-              class="styled__StyledBox-sc-sj5f1m-0 gwzcQP styled__StyledFlexItem-sc-smjqtt-0 hBNgMm styled__StyledFlexItem-sc-zoq9bz-1 hQFuVn"
+              class="styled__StyledBox-sc-sj5f1m-0 iloRDl styled__StyledFlexItem-sc-smjqtt-0 cfKbPg styled__StyledFlexItem-sc-zoq9bz-1 jRgUUF"
             >
               <p
-                class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+                class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
                 color="secondary70"
                 title=""
               />
             </div>
             <button
-              class="styled__StyledButton-sc-3yq204-0 fjWihA styled__StyledButton-sc-zoq9bz-0 iTRZMI"
+              class="styled__StyledButton-sc-3yq204-0 cnTpCO styled__StyledButton-sc-zoq9bz-0 gjsaTG"
             >
               <span
-                class="styled__ContentWrapper-sc-3yq204-1 cqsmIZ"
+                class="styled__ContentWrapper-sc-3yq204-1 dVJwVP"
               >
                 Edit
               </span>
@@ -793,36 +793,36 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 fPfvXV"
+          class="styled__StyledCell-sc-1bt06ph-0 bUdYFr"
           type="number"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title=""
           />
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
       </tr>
       <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 iVAweo"
+        class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
       >
         <td
-          class="styled__Status-sc-1aacki0-0 jTecwD"
+          class="styled__Status-sc-1aacki0-0 kCcaYt"
         />
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Variant 2"
           >
@@ -830,35 +830,35 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 epYPTI"
+          class="styled__StyledCell-sc-1bt06ph-0 gzWvGi"
           type="checkbox"
         >
           <div
-            class="styled__CheckboxWrapper-sc-1pcspgo-0 ksKBQF"
+            class="styled__CheckboxWrapper-sc-1pcspgo-0 UhvXv"
           >
             <div
-              class="styled__CheckboxContainer-sc-s1u0st-1 BPzxd"
+              class="styled__CheckboxContainer-sc-s1u0st-1 ocFKX"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":ri:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-s1u0st-2 fOezJh"
+                class="styled__HiddenCheckbox-sc-s1u0st-2 bsLQKn"
                 id=":rh:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-s1u0st-3 bgzSTq"
+                class="styled__StyledCheckbox-sc-s1u0st-3 fRtUvw"
                 for=":rh:"
               >
                 <svg
                   aria-hidden="true"
-                  class="base__StyledIcon-sc-a9u0e1-0 fLZzZV"
+                  class="base__StyledIcon-sc-a9u0e1-0 iPmaTX"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -876,11 +876,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-s1u0st-0 ikhfic"
+                class="styled__CheckboxLabelContainer-sc-s1u0st-0 boIwAu"
               >
                 <label
                   aria-hidden="false"
-                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 hkcwGz foLSRl"
+                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 gJPlON euxPPL"
                   for=":rh:"
                   hidden=""
                   id=":ri:"
@@ -892,15 +892,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Text"
           >
@@ -908,21 +908,21 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="modal"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 ciDApE styled__StyledFlex-sc-hcvk8l-0 ioxWkl"
+            class="styled__StyledBox-sc-sj5f1m-0 gtStrG styled__StyledFlex-sc-hcvk8l-0 kGwgKT"
           >
             <div
-              class="styled__StyledBox-sc-sj5f1m-0 gwzcQP styled__StyledFlexItem-sc-smjqtt-0 hBNgMm styled__StyledFlexItem-sc-zoq9bz-1 hQFuVn"
+              class="styled__StyledBox-sc-sj5f1m-0 iloRDl styled__StyledFlexItem-sc-smjqtt-0 cfKbPg styled__StyledFlexItem-sc-zoq9bz-1 jRgUUF"
             >
               <p
-                class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+                class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
                 color="secondary70"
                 title="6"
               >
@@ -930,10 +930,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="styled__StyledButton-sc-3yq204-0 fjWihA styled__StyledButton-sc-zoq9bz-0 iTRZMI"
+              class="styled__StyledButton-sc-3yq204-0 cnTpCO styled__StyledButton-sc-zoq9bz-0 gjsaTG"
             >
               <span
-                class="styled__ContentWrapper-sc-3yq204-1 cqsmIZ"
+                class="styled__ContentWrapper-sc-3yq204-1 dVJwVP"
               >
                 Edit
               </span>
@@ -941,15 +941,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 kVDvWT"
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
           type="number"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="$50.00"
           >
@@ -957,22 +957,22 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
       </tr>
       <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 iVAweo"
+        class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
       >
         <td
-          class="styled__Status-sc-1aacki0-0 kGNgfN"
+          class="styled__Status-sc-1aacki0-0 dIdQEn"
         />
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Variant 3"
           >
@@ -980,34 +980,34 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 epYPTI"
+          class="styled__StyledCell-sc-1bt06ph-0 gzWvGi"
           type="checkbox"
         >
           <div
-            class="styled__CheckboxWrapper-sc-1pcspgo-0 ksKBQF"
+            class="styled__CheckboxWrapper-sc-1pcspgo-0 UhvXv"
           >
             <div
-              class="styled__CheckboxContainer-sc-s1u0st-1 BPzxd"
+              class="styled__CheckboxContainer-sc-s1u0st-1 ocFKX"
             >
               <input
                 aria-checked="false"
                 aria-labelledby=":rl:"
-                class="styled__HiddenCheckbox-sc-s1u0st-2 fOezJh"
+                class="styled__HiddenCheckbox-sc-s1u0st-2 bsLQKn"
                 id=":rk:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-s1u0st-3 eeOlTF"
+                class="styled__StyledCheckbox-sc-s1u0st-3 hTwfqT"
                 for=":rk:"
               >
                 <svg
                   aria-hidden="true"
-                  class="base__StyledIcon-sc-a9u0e1-0 fLZzZV"
+                  class="base__StyledIcon-sc-a9u0e1-0 iPmaTX"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1025,11 +1025,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-s1u0st-0 ikhfic"
+                class="styled__CheckboxLabelContainer-sc-s1u0st-0 boIwAu"
               >
                 <label
                   aria-hidden="false"
-                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 hkcwGz foLSRl"
+                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 gJPlON euxPPL"
                   for=":rk:"
                   hidden=""
                   id=":rl:"
@@ -1041,15 +1041,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Text"
           >
@@ -1057,21 +1057,21 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="modal"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 ciDApE styled__StyledFlex-sc-hcvk8l-0 ioxWkl"
+            class="styled__StyledBox-sc-sj5f1m-0 gtStrG styled__StyledFlex-sc-hcvk8l-0 kGwgKT"
           >
             <div
-              class="styled__StyledBox-sc-sj5f1m-0 gwzcQP styled__StyledFlexItem-sc-smjqtt-0 hBNgMm styled__StyledFlexItem-sc-zoq9bz-1 hQFuVn"
+              class="styled__StyledBox-sc-sj5f1m-0 iloRDl styled__StyledFlexItem-sc-smjqtt-0 cfKbPg styled__StyledFlexItem-sc-zoq9bz-1 jRgUUF"
             >
               <p
-                class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+                class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
                 color="secondary70"
                 title="7"
               >
@@ -1079,10 +1079,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="styled__StyledButton-sc-3yq204-0 fjWihA styled__StyledButton-sc-zoq9bz-0 iTRZMI"
+              class="styled__StyledButton-sc-3yq204-0 cnTpCO styled__StyledButton-sc-zoq9bz-0 gjsaTG"
             >
               <span
-                class="styled__ContentWrapper-sc-3yq204-1 cqsmIZ"
+                class="styled__ContentWrapper-sc-3yq204-1 dVJwVP"
               >
                 Edit
               </span>
@@ -1090,15 +1090,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 fPfvXV"
+          class="styled__StyledCell-sc-1bt06ph-0 bUdYFr"
           type="number"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="$49.00"
           >
@@ -1106,22 +1106,22 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
       </tr>
       <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 iVAweo"
+        class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
       >
         <td
-          class="styled__Status-sc-1aacki0-0 jTecwD"
+          class="styled__Status-sc-1aacki0-0 kCcaYt"
         />
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Dress Name One"
           >
@@ -1129,35 +1129,35 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 epYPTI"
+          class="styled__StyledCell-sc-1bt06ph-0 gzWvGi"
           type="checkbox"
         >
           <div
-            class="styled__CheckboxWrapper-sc-1pcspgo-0 ksKBQF"
+            class="styled__CheckboxWrapper-sc-1pcspgo-0 UhvXv"
           >
             <div
-              class="styled__CheckboxContainer-sc-s1u0st-1 BPzxd"
+              class="styled__CheckboxContainer-sc-s1u0st-1 ocFKX"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":ro:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-s1u0st-2 fOezJh"
+                class="styled__HiddenCheckbox-sc-s1u0st-2 bsLQKn"
                 id=":rn:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-s1u0st-3 bgzSTq"
+                class="styled__StyledCheckbox-sc-s1u0st-3 fRtUvw"
                 for=":rn:"
               >
                 <svg
                   aria-hidden="true"
-                  class="base__StyledIcon-sc-a9u0e1-0 fLZzZV"
+                  class="base__StyledIcon-sc-a9u0e1-0 iPmaTX"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1175,11 +1175,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-s1u0st-0 ikhfic"
+                class="styled__CheckboxLabelContainer-sc-s1u0st-0 boIwAu"
               >
                 <label
                   aria-hidden="false"
-                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 hkcwGz foLSRl"
+                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 gJPlON euxPPL"
                   for=":rn:"
                   hidden=""
                   id=":ro:"
@@ -1191,15 +1191,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Text"
           >
@@ -1207,21 +1207,21 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="modal"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 ciDApE styled__StyledFlex-sc-hcvk8l-0 ioxWkl"
+            class="styled__StyledBox-sc-sj5f1m-0 gtStrG styled__StyledFlex-sc-hcvk8l-0 kGwgKT"
           >
             <div
-              class="styled__StyledBox-sc-sj5f1m-0 gwzcQP styled__StyledFlexItem-sc-smjqtt-0 hBNgMm styled__StyledFlexItem-sc-zoq9bz-1 hQFuVn"
+              class="styled__StyledBox-sc-sj5f1m-0 iloRDl styled__StyledFlexItem-sc-smjqtt-0 cfKbPg styled__StyledFlexItem-sc-zoq9bz-1 jRgUUF"
             >
               <p
-                class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+                class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
                 color="secondary70"
                 title="8"
               >
@@ -1229,10 +1229,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="styled__StyledButton-sc-3yq204-0 fjWihA styled__StyledButton-sc-zoq9bz-0 iTRZMI"
+              class="styled__StyledButton-sc-3yq204-0 cnTpCO styled__StyledButton-sc-zoq9bz-0 gjsaTG"
             >
               <span
-                class="styled__ContentWrapper-sc-3yq204-1 cqsmIZ"
+                class="styled__ContentWrapper-sc-3yq204-1 dVJwVP"
               >
                 Edit
               </span>
@@ -1240,15 +1240,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 kVDvWT"
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
           type="number"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="$50.00"
           >
@@ -1256,22 +1256,22 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
       </tr>
       <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 iVAweo"
+        class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
       >
         <td
-          class="styled__Status-sc-1aacki0-0 jTecwD"
+          class="styled__Status-sc-1aacki0-0 kCcaYt"
         />
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Fans Name One"
           >
@@ -1279,35 +1279,35 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 epYPTI"
+          class="styled__StyledCell-sc-1bt06ph-0 gzWvGi"
           type="checkbox"
         >
           <div
-            class="styled__CheckboxWrapper-sc-1pcspgo-0 ksKBQF"
+            class="styled__CheckboxWrapper-sc-1pcspgo-0 UhvXv"
           >
             <div
-              class="styled__CheckboxContainer-sc-s1u0st-1 BPzxd"
+              class="styled__CheckboxContainer-sc-s1u0st-1 ocFKX"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":rr:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-s1u0st-2 fOezJh"
+                class="styled__HiddenCheckbox-sc-s1u0st-2 bsLQKn"
                 id=":rq:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-s1u0st-3 bgzSTq"
+                class="styled__StyledCheckbox-sc-s1u0st-3 fRtUvw"
                 for=":rq:"
               >
                 <svg
                   aria-hidden="true"
-                  class="base__StyledIcon-sc-a9u0e1-0 fLZzZV"
+                  class="base__StyledIcon-sc-a9u0e1-0 iPmaTX"
                   fill="currentColor"
                   height="24"
                   stroke="currentColor"
@@ -1325,11 +1325,11 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-s1u0st-0 ikhfic"
+                class="styled__CheckboxLabelContainer-sc-s1u0st-0 boIwAu"
               >
                 <label
                   aria-hidden="false"
-                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 hkcwGz foLSRl"
+                  class="styled__StyledText-sc-tqnj75-5 styled__StyledLabel-sc-3soea9-0 gJPlON euxPPL"
                   for=":rq:"
                   hidden=""
                   id=":rr:"
@@ -1341,15 +1341,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="text"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="Text"
           >
@@ -1357,21 +1357,21 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 llSHxk"
+          class="styled__StyledCell-sc-1bt06ph-0 lhrniy"
           type="modal"
         >
           <div
-            class="styled__StyledBox-sc-sj5f1m-0 ciDApE styled__StyledFlex-sc-hcvk8l-0 ioxWkl"
+            class="styled__StyledBox-sc-sj5f1m-0 gtStrG styled__StyledFlex-sc-hcvk8l-0 kGwgKT"
           >
             <div
-              class="styled__StyledBox-sc-sj5f1m-0 gwzcQP styled__StyledFlexItem-sc-smjqtt-0 hBNgMm styled__StyledFlexItem-sc-zoq9bz-1 hQFuVn"
+              class="styled__StyledBox-sc-sj5f1m-0 iloRDl styled__StyledFlexItem-sc-smjqtt-0 cfKbPg styled__StyledFlexItem-sc-zoq9bz-1 jRgUUF"
             >
               <p
-                class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+                class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
                 color="secondary70"
                 title="9"
               >
@@ -1379,10 +1379,10 @@ exports[`renders worksheet 1`] = `
               </p>
             </div>
             <button
-              class="styled__StyledButton-sc-3yq204-0 fjWihA styled__StyledButton-sc-zoq9bz-0 iTRZMI"
+              class="styled__StyledButton-sc-3yq204-0 cnTpCO styled__StyledButton-sc-zoq9bz-0 gjsaTG"
             >
               <span
-                class="styled__ContentWrapper-sc-3yq204-1 cqsmIZ"
+                class="styled__ContentWrapper-sc-3yq204-1 dVJwVP"
               >
                 Edit
               </span>
@@ -1390,15 +1390,15 @@ exports[`renders worksheet 1`] = `
           </div>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
         <td
-          class="styled__StyledCell-sc-1bt06ph-0 kVDvWT"
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
           type="number"
         >
           <p
-            class="styled__StyledSmall-sc-tqnj75-6 Cshsl"
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
             color="secondary70"
             title="$50.00"
           >
@@ -1406,7 +1406,7 @@ exports[`renders worksheet 1`] = `
           </p>
           <div
             aria-label="Autofill handler"
-            class="styled__AutoFillHandler-sc-1bt06ph-1 dgnNfG"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
       </tr>
