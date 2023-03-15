@@ -335,6 +335,40 @@ test('multi select items should be unfiltered when opened', async () => {
   expect(options).toHaveLength(6);
 });
 
+test('multiselect items should be filterable', async () => {
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+  const button = await screen.findByLabelText('toggle menu');
+
+  await userEvent.click(button);
+
+  await userEvent.type(input, 'c');
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(2);
+});
+
+test('multiselect should select the filtered item', async () => {
+  render(MultiSelectMock);
+
+  const input = screen.getByTestId('multi-select');
+  const button = await screen.findByLabelText('toggle menu');
+
+  await userEvent.click(button);
+
+  await userEvent.type(input, 'c');
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(2);
+
+  await userEvent.keyboard('{enter}');
+
+  expect(await screen.findAllByText('Canada')).toHaveLength(1);
+});
+
 test('up/down arrows should change select item selection', async () => {
   render(MultiSelectMock);
 
