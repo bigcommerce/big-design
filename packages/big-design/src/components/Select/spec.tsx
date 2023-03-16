@@ -356,13 +356,32 @@ test('select items should be filterable', async () => {
   const input = screen.getByTestId('select');
   const button = await screen.findByLabelText('toggle menu');
 
-  fireEvent.click(button);
+  await fireEvent.click(button);
 
-  fireEvent.change(input, { target: { value: 'm' } });
+  await fireEvent.change(input, { target: { value: 'c' } });
 
   const options = await screen.findAllByRole('option');
 
   expect(options).toHaveLength(2);
+});
+
+test('select should select the filtered item', async () => {
+  render(SelectMock);
+
+  const input = screen.getByTestId('select');
+  const button = await screen.findByLabelText('toggle menu');
+
+  await fireEvent.click(button);
+
+  await fireEvent.change(input, { target: { value: 'c' } });
+
+  const options = await screen.findAllByRole('option');
+
+  expect(options).toHaveLength(2);
+
+  await fireEvent.keyDown(input, { key: 'Enter' });
+
+  expect(input.getAttribute('value')).toBe('Canada');
 });
 
 test('autoselects first matching option when filtering', async () => {
