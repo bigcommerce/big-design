@@ -21,6 +21,7 @@ export interface BaseState<Item> {
   editedCells: Array<Cell<Item>>;
   editingCell: Cell<Item> | null;
   isMetaKey: boolean;
+  isShiftPressed: boolean;
   isAutoFillActive: boolean;
   isSelectingActive: boolean;
   isBlockedFillOut: boolean;
@@ -50,6 +51,7 @@ export interface BaseState<Item> {
     isControlKey,
     editWithValue,
   }: SetEditingCellArgs<Item>) => void;
+  setShiftPressed: (ShiftPressed: boolean) => void;
   setDisabledRows: (disabledRows: DisabledRows) => void;
   setHiddenRows: (hiddenRow: Array<string | number>) => void;
   setOpenModal: (value: keyof Item | null) => void;
@@ -68,6 +70,7 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
     editedCells: [],
     editingCell: null,
     isMetaKey: false,
+    isShiftPressed: false,
     isAutoFillActive: false,
     isSelectingActive: false,
     isBlockedFillOut: false,
@@ -101,6 +104,7 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
         return { ...state, editingCell: cell, isMetaKey, isControlKey, editWithValue };
       });
     },
+    setShiftPressed: (isShiftPressed: boolean) => set((state) => ({ ...state, isShiftPressed })),
     setDisabledRows: (disabledRows) => set((state) => ({ ...state, disabledRows })),
     setHiddenRows: (hiddenRows) => set((state) => ({ ...state, hiddenRows })),
     setOpenModal: (value) => set((state) => ({ ...state, openedModal: value })),
