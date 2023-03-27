@@ -49,6 +49,7 @@ const InternalWorksheet = typedMemo(
     const setExpandableRows = useStore(store, (state) => state.setExpandableRows);
     const setDisabledRows = useStore(store, (state) => state.setDisabledRows);
     const setTableRef = useStore(store, (state) => state.setTableRef);
+    const resetInvalidCells = useStore(store, (state) => state.resetInvalidCells);
 
     const rows = useStore(
       store,
@@ -79,8 +80,10 @@ const InternalWorksheet = typedMemo(
     // Create a new reference since state mutates rows to prevent unecessary rerendering
     useEffect(() => {
       shouldBeTriggeredOnChange.current = false;
+
+      resetInvalidCells();
       setRows([...items]);
-    }, [items, setRows]);
+    }, [items, resetInvalidCells, setRows]);
     useEffect(() => setColumns(expandedColumns), [expandedColumns, setColumns]);
     useEffect(
       () => setExpandableRows(expandableRows || {}, defaultExpandedRows || []),

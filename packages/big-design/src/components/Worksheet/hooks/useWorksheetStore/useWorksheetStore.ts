@@ -38,6 +38,7 @@ export interface BaseState<Item> {
   addEditedCells: (cells: Array<Cell<Item>>) => void;
   addInvalidCells: (cells: Array<Cell<Item>>) => void;
   removeInvalidCells: (cells: Array<Cell<Item>>) => void;
+  resetInvalidCells: () => void;
   setColumns: (columns: Array<InternalWorksheetColumn<Item>>) => void;
   setExpandableRows: (
     expandableRows: ExpandableRows,
@@ -87,6 +88,7 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
       set((state) => ({ ...state, invalidCells: mergeCells(state.invalidCells, cells) })),
     removeInvalidCells: (cells) =>
       set((state) => ({ ...state, invalidCells: deleteCells(state.invalidCells, cells) })),
+    resetInvalidCells: () => set((state) => ({ ...state, invalidCells: [] })),
     setColumns: (columns) => set((state) => ({ ...state, columns })),
     setExpandableRows: (expandableRows, defaultExpandedRows) =>
       set((state) => ({
