@@ -64,7 +64,7 @@ const InternalWorksheet = typedMemo(
       useMemo(() => (state) => state.invalidCells, []),
     );
 
-    const { handleKeyDown } = useKeyEvents();
+    const { handleKeyDown, handleKeyUp } = useKeyEvents();
 
     // Add a column for the toggle components
     const expandedColumns: Array<InternalWorksheetColumn<T>> = useMemo(() => {
@@ -179,6 +179,7 @@ const InternalWorksheet = typedMemo(
             hasStaticWidth={tableHasStaticWidth}
             minWidth={minWidth}
             onKeyDown={handleKeyDown}
+            onKeyUp={handleKeyUp}
             ref={tableRef}
             tabIndex={0}
           >

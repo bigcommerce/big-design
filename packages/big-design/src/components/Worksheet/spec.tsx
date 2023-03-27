@@ -256,6 +256,56 @@ describe('selection', () => {
       `background-color: ${theme.colors.primary}`,
     );
   });
+
+  test('selects cells on selecting range', async () => {
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const firstRowElement = await screen.findByText('Shoes Name Three');
+    const firstCell = firstRowElement.parentElement;
+    const lastRowElement = await screen.findByText('Shoes Name One');
+    const lastCell = lastRowElement.parentElement;
+
+    if (firstCell) {
+      await userEvent.click(firstCell);
+    }
+
+    await userEvent.keyboard('{Shift>}');
+
+    if (lastCell) {
+      await userEvent.click(lastCell);
+    }
+
+    expect(firstCell).toHaveStyle(`border-color: ${theme.colors.primary}`);
+    expect(firstCell?.parentElement?.firstChild).toHaveStyle(
+      `background-color: ${theme.colors.primary}`,
+    );
+
+    expect(lastCell).toHaveStyle(`border-bottom-color: ${theme.colors.primary}`);
+    expect(lastCell).toHaveStyle(`border-top-color: ${theme.colors.secondary30}`);
+  });
+
+  test('selects cells with arrow keys', async () => {
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const firstRowElement = await screen.findByText('Shoes Name Three');
+    const firstCell = firstRowElement.parentElement;
+    const lastRowElement = await screen.findByText('Shoes Name One');
+    const lastCell = lastRowElement.parentElement;
+
+    if (firstCell) {
+      await userEvent.click(firstCell);
+    }
+
+    await userEvent.keyboard('{Shift>}{ArrowDown>2}{/Shift}');
+
+    expect(firstCell).toHaveStyle(`border-color: ${theme.colors.primary}`);
+    expect(firstCell?.parentElement?.firstChild).toHaveStyle(
+      `background-color: ${theme.colors.primary}`,
+    );
+
+    expect(lastCell).toHaveStyle(`border-bottom-color: ${theme.colors.primary}`);
+    expect(lastCell).toHaveStyle(`border-top-color: ${theme.colors.secondary30}`);
+  });
 });
 
 describe('edition', () => {
@@ -375,6 +425,10 @@ describe('edition', () => {
     const button = await screen.findByLabelText('Autofill handler');
 
     expect(button).toBeInTheDocument();
+
+    fireEvent.mouseDown(button);
+
+    expect(await screen.findAllByText('Shoes Name Three')).toHaveLength(1);
 
     fireEvent.doubleClick(button);
 
@@ -579,6 +633,22 @@ describe('keyboard navigation', () => {
     fireEvent.keyDown(worksheet, { key: 'Enter' });
 
     expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
+  });
+
+  test('tab finish editing the cell', () => {
+    const { getByDisplayValue, getByText, getByRole } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const worksheet = getByRole('table');
+    const cell = getByText('Shoes Name Three');
+
+    fireEvent.click(cell);
+    fireEvent.keyDown(worksheet, { key: 'a' });
+
+    expect(getByDisplayValue('a')).toBeDefined();
+
+    fireEvent.keyDown(cell, { key: 'Tab' });
   });
 
   test('typing starts editing the cell', () => {

@@ -17,14 +17,43 @@ export const useKeyEvents = () => {
     store,
     useMemo(() => (state) => state.selectedCells[0], []),
   );
+
+  const lastSelectedCell = useStore(
+    store,
+    useMemo(() => (state) => state.selectedCells[state.selectedCells.length - 1], []),
+  );
+
+  const selectedCells = useStore(
+    store,
+    useMemo(() => (state) => state.selectedCells, []),
+  );
+
+  const rows = useStore(
+    store,
+    useMemo(() => (state) => state.rows, []),
+  );
+
   const isEditing = useStore(
     store,
 
     useMemo(() => (state) => state.editingCell !== null, []),
   );
+
+  const isShiftPressed = useStore(
+    store,
+    useMemo(() => (state) => state.isShiftPressed, []),
+  );
+
+  const setShiftPressed = useStore(
+    store,
+    useMemo(() => (state) => state.setShiftPressed, []),
+  );
+
   const setEditingCell = useStore(store, (state) => state.setEditingCell);
 
   const { navigate } = useNavigation(selectedCell);
+
+  const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
 
   const editSelectedCell = useCallback(
     ({ isMetaKey = false, isControlKey = false, editWithValue = '' }: EditingCellsArgs = {}) => {
@@ -33,6 +62,17 @@ export const useKeyEvents = () => {
       }
     },
     [selectedCell, setEditingCell],
+  );
+
+  const handleKeyUp = useCallback(
+    (event: React.KeyboardEvent) => {
+      const key = event.key;
+
+      if (key === 'Shift') {
+        setShiftPressed(false);
+      }
+    },
+    [setShiftPressed],
   );
 
   const handleKeyDown = useCallback(
@@ -70,11 +110,35 @@ export const useKeyEvents = () => {
             break;
 
           case 'ArrowUp':
+            if (isShiftPressed && selectedCells.length > 1) {
+              setSelectedCells(selectedCells.slice(0, -1));
+
+              break;
+            }
+
             navigate({ rowIndex: -1, columnIndex: 0 });
             break;
 
           case 'ArrowDown':
-            navigate({ rowIndex: 1, columnIndex: 0 });
+            if (isShiftPressed) {
+              const nextRowIdx = lastSelectedCell.rowIndex + 1;
+              const nextRow = rows[nextRowIdx];
+
+              if (nextRowIdx <= rows.length - 1) {
+                setSelectedCells([
+                  ...selectedCells,
+                  {
+                    ...lastSelectedCell,
+                    rowIndex: lastSelectedCell.rowIndex + 1,
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                    value: nextRow[lastSelectedCell.hash],
+                  },
+                ]);
+              }
+            } else {
+              navigate({ rowIndex: 1, columnIndex: 0 });
+            }
+
             break;
 
           case 'ArrowRight':
@@ -103,6 +167,13 @@ export const useKeyEvents = () => {
 
             break;
 
+          case 'Shift':
+            if (selectedCell) {
+              setShiftPressed(true);
+            }
+
+            break;
+
           default:
             if (
               key !== 'Escape' &&
@@ -119,8 +190,19 @@ export const useKeyEvents = () => {
         event.preventDefault();
       }
     },
-    [editSelectedCell, isEditing, navigate, selectedCell],
+    [
+      isEditing,
+      navigate,
+      selectedCell,
+      isShiftPressed,
+      selectedCells,
+      editSelectedCell,
+      setSelectedCells,
+      lastSelectedCell,
+      rows,
+      setShiftPressed,
+    ],
   );
 
-  return useMemo(() => ({ handleKeyDown }), [handleKeyDown]);
+  return useMemo(() => ({ handleKeyDown, handleKeyUp }), [handleKeyDown, handleKeyUp]);
 };

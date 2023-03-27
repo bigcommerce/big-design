@@ -66,11 +66,16 @@ const InternalCell = <T extends WorksheetItem>({
     useMemo(() => (state) => state.editWithValue, []),
   );
 
+  const isShiftPressed = useStore(
+    store,
+    useMemo(() => (state) => state.isShiftPressed, []),
+  );
+
   const isMetaKey = useStore(store, (state) => state.isMetaKey);
 
   const isControlKey = useStore(store, (state) => state.isControlKey);
 
-  const { isLastSelected, isFirstSelected, isSelected } = useStore(
+  const { selectedCells, isLastSelected, isFirstSelected, isSelected } = useStore(
     store,
     useMemo(
       () => (state) => {
@@ -81,6 +86,7 @@ const InternalCell = <T extends WorksheetItem>({
         );
 
         return {
+          selectedCells: state.selectedCells,
           isLastSelected: state.selectedCells.length - 1 === idx,
           isFirstSelected: idx === 0,
           isSelected: state.selectedCells.some(
@@ -150,9 +156,25 @@ const InternalCell = <T extends WorksheetItem>({
   );
 
   const handleClick = useCallback(() => {
-    setSelectedRows([rowIndex]);
-    setSelectedCells([cell]);
-  }, [cell, rowIndex, setSelectedCells, setSelectedRows]);
+    if (isShiftPressed) {
+      const lastSelected = selectedCells[selectedCells.length - 1];
+      const fromIdx = lastSelected.rowIndex;
+      const toIdx = cell.rowIndex;
+
+      const rangeIdxs = Array.from({ length: toIdx - fromIdx }, (_, index) => fromIdx + index + 1);
+
+      const newCells = rangeIdxs.map((rowIndex) => ({
+        ...cell,
+        columnIndex: lastSelected.columnIndex,
+        rowIndex,
+      }));
+
+      setSelectedCells([...selectedCells, ...newCells]);
+    } else {
+      setSelectedRows([rowIndex]);
+      setSelectedCells([cell]);
+    }
+  }, [cell, isShiftPressed, rowIndex, selectedCells, setSelectedCells, setSelectedRows]);
 
   const renderedValue = useMemo(() => {
     if (typeof formatting === 'function' && value !== '' && !Number.isNaN(value)) {
