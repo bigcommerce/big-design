@@ -15,6 +15,7 @@ interface Product {
   otherField: string;
   otherField2: number;
   numberField: number;
+  numberField2: number;
 }
 
 const TreeComponent = (
@@ -86,6 +87,12 @@ const columns: Array<WorksheetColumn<Product>> = [
     validation: (value: number) => value >= 50,
     formatting: (value: number) => `$${value}.00`,
     width: 90,
+  },
+  {
+    hash: 'numberField2',
+    header: 'Number field 2',
+    type: 'number',
+    render: (value) => <button>-{value}-</button>,
   },
 ];
 
@@ -558,6 +565,35 @@ describe('formatting', () => {
     );
 
     expect(getAllByText('$50.00')).toHaveLength(7);
+  });
+});
+
+describe('render', () => {
+  test('provides custom template values', () => {
+    const items = [
+      {
+        id: 1,
+        productName: 'Name 1',
+        visibleOnStorefront: true,
+        otherField: 'Other field',
+        otherField2: 1,
+        numberField: 50,
+        numberField2: 333,
+      },
+      {
+        id: 2,
+        productName: 'Name 2',
+        visibleOnStorefront: true,
+        otherField: 'Other field',
+        otherField2: 2,
+        numberField: 50,
+        numberField2: 333,
+      },
+    ];
+
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    expect(screen.getAllByRole('button', { name: /-333-/i })).toHaveLength(2);
   });
 });
 

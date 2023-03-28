@@ -65,6 +65,15 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
     [],
   );
 
+  const hasRender = useCallback(
+    (
+      column: InternalWorksheetColumn<T>,
+    ): column is WorksheetTextColumn<T> | WorksheetNumberColumn<T> => {
+      return column.type === 'text' || column.type === 'number';
+    },
+    [],
+  );
+
   const isLastChild = useMemo(
     () =>
       expandableRows
@@ -89,6 +98,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
           key={`${rowIndex}-${columnIndex}`}
           nextRowValue={(nextRow && nextRow[column.hash]) || ''}
           options={column.type === 'select' ? column.config.options : undefined}
+          render={hasRender(column) ? column.render : undefined}
           rowId={row.id}
           rowIndex={rowIndex}
           type={column.type ?? 'text'}

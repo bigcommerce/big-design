@@ -21,6 +21,7 @@ interface CellProps<Item> extends TCell<Item> {
   options?: WorksheetSelectableColumn<Item>['config']['options'];
   rowId: number | string;
   formatting?: WorksheetTextColumn<Item>['formatting'];
+  render?: WorksheetTextColumn<Item>['render'];
   validation?: InternalWorksheetColumn<Item>['validation'];
 }
 
@@ -34,6 +35,7 @@ const InternalCell = <T extends WorksheetItem>({
   type,
   rowId,
   validation,
+  render,
   value,
   nextRowValue,
   isChild,
@@ -69,6 +71,11 @@ const InternalCell = <T extends WorksheetItem>({
   const isShiftPressed = useStore(
     store,
     useMemo(() => (state) => state.isShiftPressed, []),
+  );
+
+  const row: T = useStore(
+    store,
+    useMemo(() => (state) => state.rows[rowIndex], [rowIndex]),
   );
 
   const isMetaKey = useStore(store, (state) => state.isMetaKey);
@@ -176,13 +183,28 @@ const InternalCell = <T extends WorksheetItem>({
     }
   }, [cell, isShiftPressed, rowIndex, selectedCells, setSelectedCells, setSelectedRows]);
 
-  const renderedValue = useMemo(() => {
+  const formattedValue = useMemo(() => {
     if (typeof formatting === 'function' && value !== '' && !Number.isNaN(value)) {
       return formatting(value);
     }
 
     return `${value}`;
   }, [formatting, value]);
+
+  const renderedValue = useMemo(() => {
+    if (typeof render === 'function' && value !== '' && !Number.isNaN(value)) {
+      return render(value, {
+        row,
+        disabled,
+      });
+    }
+
+    return (
+      <Small color={disabled ? 'secondary50' : 'secondary70'} ellipsis title={formattedValue}>
+        {formattedValue}
+      </Small>
+    );
+  }, [disabled, formattedValue, render, row, value]);
 
   const renderedCell = useMemo(() => {
     switch (type) {
@@ -225,18 +247,16 @@ const InternalCell = <T extends WorksheetItem>({
             onKeyDown={handleKeyDown}
           />
         ) : (
-          <Small color={disabled ? 'secondary50' : 'secondary70'} ellipsis title={renderedValue}>
-            {renderedValue}
-          </Small>
+          renderedValue
         );
     }
   }, [
     type,
     cell,
+    isEditing,
     handleBlur,
     handleChange,
     options,
-    isEditing,
     formatting,
     rowId,
     disabled,

@@ -71,6 +71,12 @@ exports[`renders worksheet 1`] = `
             </svg>
           </span>
         </th>
+        <th
+          class="styled__Header-sc-16rzzpq-1 NXQqy"
+        >
+          Number field 2
+           
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -218,6 +224,20 @@ exports[`renders worksheet 1`] = `
           >
             $50.00
           </p>
+          <div
+            aria-label="Autofill handler"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
+          />
+        </td>
+        <td
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
+          type="number"
+        >
+          <p
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
+            color="secondary70"
+            title=""
+          />
           <div
             aria-label="Autofill handler"
             class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
@@ -373,6 +393,20 @@ exports[`renders worksheet 1`] = `
             class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
+        <td
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
+          type="number"
+        >
+          <p
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
+            color="secondary70"
+            title=""
+          />
+          <div
+            aria-label="Autofill handler"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
+          />
+        </td>
       </tr>
       <tr
         class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
@@ -515,6 +549,20 @@ exports[`renders worksheet 1`] = `
           >
             $50.00
           </p>
+          <div
+            aria-label="Autofill handler"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
+          />
+        </td>
+        <td
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
+          type="number"
+        >
+          <p
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
+            color="secondary70"
+            title=""
+          />
           <div
             aria-label="Autofill handler"
             class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
@@ -670,6 +718,20 @@ exports[`renders worksheet 1`] = `
             class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
+        <td
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
+          type="number"
+        >
+          <p
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
+            color="secondary70"
+            title=""
+          />
+          <div
+            aria-label="Autofill handler"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
+          />
+        </td>
       </tr>
       <tr
         class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
@@ -798,6 +860,20 @@ exports[`renders worksheet 1`] = `
         </td>
         <td
           class="styled__StyledCell-sc-1bt06ph-0 bUdYFr"
+          type="number"
+        >
+          <p
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
+            color="secondary70"
+            title=""
+          />
+          <div
+            aria-label="Autofill handler"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
+          />
+        </td>
+        <td
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
           type="number"
         >
           <p
@@ -960,6 +1036,20 @@ exports[`renders worksheet 1`] = `
             class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
+        <td
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
+          type="number"
+        >
+          <p
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
+            color="secondary70"
+            title=""
+          />
+          <div
+            aria-label="Autofill handler"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
+          />
+        </td>
       </tr>
       <tr
         class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
@@ -1104,6 +1194,20 @@ exports[`renders worksheet 1`] = `
           >
             $49.00
           </p>
+          <div
+            aria-label="Autofill handler"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
+          />
+        </td>
+        <td
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
+          type="number"
+        >
+          <p
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
+            color="secondary70"
+            title=""
+          />
           <div
             aria-label="Autofill handler"
             class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
@@ -1259,6 +1363,20 @@ exports[`renders worksheet 1`] = `
             class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
           />
         </td>
+        <td
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
+          type="number"
+        >
+          <p
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
+            color="secondary70"
+            title=""
+          />
+          <div
+            aria-label="Autofill handler"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
+          />
+        </td>
       </tr>
       <tr
         class="styled__StyledTableRow-sc-1bzgr3l-0 emkOGW"
@@ -1404,6 +1522,20 @@ exports[`renders worksheet 1`] = `
           >
             $50.00
           </p>
+          <div
+            aria-label="Autofill handler"
+            class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"
+          />
+        </td>
+        <td
+          class="styled__StyledCell-sc-1bt06ph-0 jthdlh"
+          type="number"
+        >
+          <p
+            class="styled__StyledSmall-sc-tqnj75-6 lbbxgf"
+            color="secondary70"
+            title=""
+          />
           <div
             aria-label="Autofill handler"
             class="styled__AutoFillHandler-sc-1bt06ph-1 hXNuWA"

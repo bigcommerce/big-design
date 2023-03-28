@@ -1,4 +1,12 @@
-import { H1, Panel, StatefulTree, Text, Worksheet, WorksheetColumn } from '@bigcommerce/big-design';
+import {
+  Badge,
+  H1,
+  Panel,
+  StatefulTree,
+  Text,
+  Worksheet,
+  WorksheetColumn,
+} from '@bigcommerce/big-design';
 import React from 'react';
 
 import {
@@ -289,7 +297,10 @@ const WorksheetPage = () => {
                       {
                         hash: 'productName',
                         header: 'Product name',
+                        type: 'text',
                         validation: (value) => !!value,
+                        render: (value) =>
+                          value === 'Product 3' ? <Badge label={String(value)} /> : value,
                       },
                       { hash: 'otherField', header: 'Other field' },
                     ];

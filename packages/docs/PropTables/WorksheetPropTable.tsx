@@ -127,6 +127,11 @@ const worksheetTextColumnProps: Prop[] = [
     description: 'Used to format the value of a cell.',
   },
   {
+    name: 'render',
+    types: '(value: any, options: { row: any; disabled: boolean; }) => React.ReactNode',
+    description: 'Used to provide the custom template of a cell.',
+  },
+  {
     name: 'validation',
     types: '(value: any) => boolean',
     description: 'Will set a cell as invalid if it returns false.',
@@ -172,6 +177,11 @@ const worksheetNumberColumnProps: Prop[] = [
     name: 'formatting',
     types: '(value: any) => string',
     description: 'Used to format the value of a cell.',
+  },
+  {
+    name: 'render',
+    types: '(value: any, options: { row: any; disabled: boolean; }) => React.ReactNode',
+    description: 'Used to provide the custom template of a cell.',
   },
   {
     name: 'validation',

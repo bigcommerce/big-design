@@ -48,14 +48,21 @@ interface WorksheetBaseColumn<Item> {
   validation?(value: Item[keyof Item] | ''): boolean;
 }
 
+interface RenderingOptions {
+  row: WorksheetItem;
+  disabled: boolean;
+}
+
 export interface WorksheetTextColumn<Item> extends WorksheetBaseColumn<Item> {
   type?: 'text';
   formatting?(value: Item[keyof Item] | ''): string;
+  render?(value: Item[keyof Item] | '', options: RenderingOptions): React.ReactNode;
 }
 
 export interface WorksheetNumberColumn<Item> extends WorksheetBaseColumn<Item> {
   type: 'number';
   formatting?(value: Item[keyof Item] | ''): string;
+  render?(value: Item[keyof Item] | '', options: RenderingOptions): React.ReactNode;
 }
 
 export interface WorksheetCheckboxColumn<Item> extends WorksheetBaseColumn<Item> {
