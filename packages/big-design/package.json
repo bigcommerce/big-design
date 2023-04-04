@@ -60,7 +60,7 @@
     "@babel/preset-typescript": "^7.15.0",
     "@bigcommerce/configs": "^0.17.0",
     "@bigcommerce/pack": "^0.2.0",
-    "@testing-library/dom": "^8.11.1",
+    "@testing-library/dom": "^9.2.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^14.0.0",
     "@testing-library/react-hooks": "^8.0.1",
