@@ -128,3 +128,20 @@ test('dropdown item on click callback receives synthetic event', async () => {
 
   expect(mockOnClick).toHaveBeenCalledWith(expect.objectContaining({ target: button }));
 });
+
+test('dropdown trigger is type button', async () => {
+  render(
+    <ButtonGroup
+      actions={[
+        { text: 'button 1' },
+        { text: 'button 2' },
+        { text: 'button 3' },
+        { text: 'button 4' },
+      ]}
+    />,
+  );
+
+  const trigger = await screen.findByRole('button', { name: 'more' });
+
+  expect(trigger).toHaveAttribute('type', 'button');
+});
