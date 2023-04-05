@@ -118,6 +118,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(({ actions, ...wrapp
             <StyledButton
               borderRadius={actionsState.every(({ isVisible }) => !isVisible)}
               iconOnly={<MoreHorizIcon title="more" />}
+              type="button"
               variant="secondary"
             />
           }
