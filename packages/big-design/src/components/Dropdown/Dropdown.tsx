@@ -82,6 +82,9 @@ export const Dropdown = memo(
 
           return changes;
 
+        case useSelect.stateChangeTypes.ToggleButtonBlur:
+          return { ...changes, selectedItem: null };
+
         default:
           return changes;
       }

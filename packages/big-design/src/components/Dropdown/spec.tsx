@@ -658,3 +658,17 @@ test('items should supports description', async () => {
 
   expect(description).toBeInTheDocument();
 });
+
+test("dropdown toggle doesn't trigger onItemClick", async () => {
+  render(DropdownMock);
+
+  const toggle = screen.getByRole('button');
+
+  await userEvent.click(toggle);
+
+  expect(onItemClick).not.toHaveBeenCalled();
+
+  await userEvent.click(document.body);
+
+  expect(onItemClick).not.toHaveBeenCalled();
+});
