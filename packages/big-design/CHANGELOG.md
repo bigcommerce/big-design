@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.36.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.35.0...@bigcommerce/big-design@0.36.0) (2023-04-05)
+
+
+### Bug Fixes
+
+* **component:** fix alignment of the worksheet header ([#1111](https://github.com/bigcommerce/big-design/issues/1111)) ([ea8ec13](https://github.com/bigcommerce/big-design/commit/ea8ec13bcc31b98da5a9a4f888027f631d9a0808))
+* **component:** fix Chip and MessagingButton width ([#1103](https://github.com/bigcommerce/big-design/issues/1103)) ([9b3c7bf](https://github.com/bigcommerce/big-design/commit/9b3c7bf48bbd7627f40b36dcdab77cdecad29a39))
+* **component:** fix extra triggering onError when new rows are passed ([#1167](https://github.com/bigcommerce/big-design/issues/1167)) ([6f6d993](https://github.com/bigcommerce/big-design/commit/6f6d993c63b2144f3464441092365796c167aa60))
+* **component:** prevent focus from opening menu in selects ([#1142](https://github.com/bigcommerce/big-design/issues/1142)) ([4dacc72](https://github.com/bigcommerce/big-design/commit/4dacc725837564ca87b858aa286b719e72d88cf1))
+* **component:** prevent selectedItem from being set on Dropdown blur ([afbc00a](https://github.com/bigcommerce/big-design/commit/afbc00aa7ad7a7d8a49497c358f24bc7fd75386a))
+
+
+### Features
+
+* **component:** add cell selection with a keyboard ([#1173](https://github.com/bigcommerce/big-design/issues/1173)) ([8369c1f](https://github.com/bigcommerce/big-design/commit/8369c1f3c0711e6da348129b6fcdd1c5d44758f3))
+* **component:** add description to Panel ([#1119](https://github.com/bigcommerce/big-design/issues/1119)) ([2038194](https://github.com/bigcommerce/big-design/commit/203819439f138f22507eb4a3048bc7de1f747ff6))
+* **component:** add header tooltip for worksheet component ([#1095](https://github.com/bigcommerce/big-design/issues/1095)) ([9c26b3a](https://github.com/bigcommerce/big-design/commit/9c26b3aa82374acdb0f96b22e6c400f50f177337))
+* **component:** add sub-rows indicators for worksheet ([#1110](https://github.com/bigcommerce/big-design/issues/1110)) ([5fb71c1](https://github.com/bigcommerce/big-design/commit/5fb71c108b77b74847dda5368145a2ca303aad83))
+* **component:** copy content within the column (worksheet) ([#1122](https://github.com/bigcommerce/big-design/issues/1122)) ([df9059f](https://github.com/bigcommerce/big-design/commit/df9059ff243b9d6b1829821a468cdf97b78038e0))
+
+
+
+
+
 # [0.35.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.34.3...@bigcommerce/big-design@0.35.0) (2023-01-09)
 
 

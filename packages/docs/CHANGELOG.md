@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.36.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.35.0...@bigcommerce/docs@0.36.0) (2023-04-05)
+
+
+### Features
+
+* **component:** add description to Panel ([#1119](https://github.com/bigcommerce/big-design/issues/1119)) ([2038194](https://github.com/bigcommerce/big-design/commit/203819439f138f22507eb4a3048bc7de1f747ff6))
+* **component:** add header tooltip for worksheet component ([#1095](https://github.com/bigcommerce/big-design/issues/1095)) ([9c26b3a](https://github.com/bigcommerce/big-design/commit/9c26b3aa82374acdb0f96b22e6c400f50f177337))
+
+
+
+
+
 # [0.35.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.34.3...@bigcommerce/docs@0.35.0) (2023-01-09)
 
 
