@@ -2,6 +2,7 @@ const defaultJestConfig = require('@bigcommerce/configs/jest');
 
 module.exports = {
   ...defaultJestConfig,
+  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
   coverageThreshold: {
     global: {
       statements: 100,

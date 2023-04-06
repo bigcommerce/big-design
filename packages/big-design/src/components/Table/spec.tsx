@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event';
 import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
 
@@ -201,7 +202,7 @@ test('renders a pagination component', async () => {
   const onItemsPerPageChange = jest.fn();
   const onPageChange = jest.fn();
 
-  const { container, findByRole, getByTitle } = render(
+  const { container, findByTitle } = render(
     <Table
       columns={[
         { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
@@ -226,22 +227,22 @@ test('renders a pagination component', async () => {
     />,
   );
 
-  fireEvent.click(getByTitle('Next page'));
+  const nextPage = await findByTitle('Next page');
 
-  await findByRole('table');
+  await userEvent.click(nextPage);
 
   expect(onPageChange).toHaveBeenCalledWith(2);
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('renders a pagination component with custom button labels', () => {
+test('renders a pagination component with custom button labels', async () => {
   const getRangeLabel = (first: number, last: number, totalItems: number) => {
     return `[Custom label] ${first}-${last} of ${totalItems}`;
   };
   const onItemsPerPageChange = jest.fn();
   const onPageChange = jest.fn();
 
-  const { getByRole } = render(
+  const { findByRole } = render(
     <Table
       columns={[
         { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
@@ -270,10 +271,15 @@ test('renders a pagination component with custom button labels', () => {
     />,
   );
 
-  getByRole('navigation', { name: '[Custom] Pagination' });
-  getByRole('button', { name: '[Custom label] 1-3 of 5' });
-  getByRole('button', { name: '[Custom] Previous page' });
-  getByRole('button', { name: '[Custom] Next page' });
+  const navigation = await findByRole('navigation', { name: '[Custom] Pagination' });
+  const paginationDropdown = await findByRole('button', { name: '[Custom label] 1-3 of 5' });
+  const previousButtonPage = await findByRole('button', { name: '[Custom] Previous page' });
+  const nextButtonPage = await findByRole('button', { name: '[Custom] Next page' });
+
+  expect(navigation).toBeVisible();
+  expect(paginationDropdown).toBeVisible();
+  expect(previousButtonPage).toBeVisible();
+  expect(nextButtonPage).toBeVisible();
 });
 
 describe('selectable', () => {

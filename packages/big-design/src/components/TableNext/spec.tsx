@@ -226,7 +226,7 @@ describe('pagination', () => {
     const onItemsPerPageChange = jest.fn();
     const onPageChange = jest.fn();
 
-    const { container, findByRole, getByTitle } = render(
+    const { container, findByTitle } = render(
       <TableNext
         columns={[
           { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
@@ -252,22 +252,22 @@ describe('pagination', () => {
       />,
     );
 
-    fireEvent.click(getByTitle('Next page'));
+    const nextPage = await findByTitle('Next page');
 
-    await findByRole('table');
+    await userEvent.click(nextPage);
 
     expect(onPageChange).toHaveBeenCalledWith(2);
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('renders a pagination component with custom button labels', () => {
+  test('renders a pagination component with custom button labels', async () => {
     const getRangeLabel = (first: number, last: number, totalItems: number) => {
       return `[Custom label] ${first}-${last} of ${totalItems}`;
     };
     const onItemsPerPageChange = jest.fn();
     const onPageChange = jest.fn();
 
-    const { getByRole } = render(
+    const { findByRole } = render(
       <TableNext
         columns={[
           { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
@@ -297,10 +297,10 @@ describe('pagination', () => {
       />,
     );
 
-    const navigation = getByRole('navigation', { name: '[Custom] Pagination' });
-    const paginationDropdown = getByRole('button', { name: '[Custom label] 1-3 of 5' });
-    const previousButtonPage = getByRole('button', { name: '[Custom] Previous page' });
-    const nextButtonPage = getByRole('button', { name: '[Custom] Next page' });
+    const navigation = await findByRole('navigation', { name: '[Custom] Pagination' });
+    const paginationDropdown = await findByRole('button', { name: '[Custom label] 1-3 of 5' });
+    const previousButtonPage = await findByRole('button', { name: '[Custom] Previous page' });
+    const nextButtonPage = await findByRole('button', { name: '[Custom] Next page' });
 
     expect(navigation).toBeVisible();
     expect(paginationDropdown).toBeVisible();
@@ -634,7 +634,7 @@ describe('pagination', () => {
     });
   });
 
-  test("selected expandable rows doesn't count towards total selected items", () => {
+  test("selected expandable rows doesn't count towards total selected items", async () => {
     const items = [
       { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
       { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
@@ -679,7 +679,7 @@ describe('pagination', () => {
       />,
     );
 
-    const selectedItems = screen.getByText('3/5');
+    const selectedItems = await screen.findByText('3/5');
 
     expect(selectedItems).toBeInTheDocument();
   });

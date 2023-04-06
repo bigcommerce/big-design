@@ -354,11 +354,10 @@ test('select items should be filterable', async () => {
   render(SelectMock);
 
   const input = screen.getByTestId('select');
-  const button = await screen.findByLabelText('toggle menu');
 
-  await fireEvent.click(button);
+  await userEvent.tripleClick(input);
 
-  await fireEvent.change(input, { target: { value: 'c' } });
+  await userEvent.keyboard('c');
 
   const options = await screen.findAllByRole('option');
 
@@ -369,17 +368,17 @@ test('select should select the filtered item', async () => {
   render(SelectMock);
 
   const input = screen.getByTestId('select');
-  const button = await screen.findByLabelText('toggle menu');
 
-  await fireEvent.click(button);
+  await userEvent.tripleClick(input);
+  await userEvent.keyboard('c');
 
-  await fireEvent.change(input, { target: { value: 'c' } });
+  expect(input).toHaveValue('c');
 
   const options = await screen.findAllByRole('option');
 
   expect(options).toHaveLength(2);
 
-  await fireEvent.keyDown(input, { key: 'Enter' });
+  await userEvent.keyboard('{Enter}');
 
   expect(input.getAttribute('value')).toBe('Canada');
 });
@@ -893,9 +892,7 @@ test('grouped select should render group labels, render uppercased', async () =>
 
   const button = await screen.findByLabelText('toggle menu');
 
-  await act(async () => {
-    fireEvent.click(button);
-  });
+  await userEvent.click(button);
 
   const label1 = screen.getByText('Label 1');
   const label2 = screen.getByText('Label 2');

@@ -1,17 +1,18 @@
 import { warning } from './warning';
 
-const consoleError = jest.spyOn(console, 'warn').mockImplementation(jest.fn);
-
 jest.mock('./warning', () => ({
   ...jest.requireActual<any>('./warning'),
 }));
 
 test('warning should throw a console.error', () => {
+  jest.spyOn(console, 'warn').mockImplementation();
   warning('test error');
 
-  expect(consoleError).toHaveBeenCalledTimes(1);
+  // eslint-disable-next-line no-console
+  expect(console.warn).toHaveBeenCalledTimes(1);
 
   warning('test error');
 
-  expect(consoleError).toHaveBeenCalledTimes(2);
+  // eslint-disable-next-line no-console
+  expect(console.warn).toHaveBeenCalledTimes(2);
 });
