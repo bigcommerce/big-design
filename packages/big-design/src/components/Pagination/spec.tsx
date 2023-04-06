@@ -82,13 +82,14 @@ test('render pagination component with no items', async () => {
   expect(pagination).toMatchSnapshot();
 });
 
-test('render pagination component while overriding button labels', () => {
+test('render pagination component while overriding button labels', async () => {
   const getRangeLabel = (first: number, last: number, totalItems: number) => {
     return `[Custom label] ${first}-${last} of ${totalItems}`;
   };
   const changePage = jest.fn();
   const changeRange = jest.fn();
-  const { getByRole } = render(
+
+  render(
     <Pagination
       currentPage={1}
       getRangeLabel={getRangeLabel}
@@ -103,10 +104,10 @@ test('render pagination component while overriding button labels', () => {
     />,
   );
 
-  const pagination = getByRole('navigation', { name: '[Custom] Pagination' });
-  const dropdown = getByRole('button', { name: '[Custom label] 1-3 of 10' });
-  const prevPage = getByRole('button', { name: '[Custom] Previous page' });
-  const nextPage = getByRole('button', { name: '[Custom] Next page' });
+  const pagination = await screen.findByRole('navigation', { name: '[Custom] Pagination' });
+  const dropdown = await screen.findByRole('button', { name: '[Custom label] 1-3 of 10' });
+  const prevPage = await screen.findByRole('button', { name: '[Custom] Previous page' });
+  const nextPage = await screen.findByRole('button', { name: '[Custom] Next page' });
 
   expect(pagination).toBeInTheDocument();
   expect(dropdown).toBeInTheDocument();
