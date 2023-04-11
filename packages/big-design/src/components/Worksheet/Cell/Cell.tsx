@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect, useId, useMemo } from 'react';
 
 import { typedMemo } from '../../../utils';
+import { Tooltip } from '../../Tooltip';
 import { Small } from '../../Typography';
 import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor, ToggleEditor } from '../editors';
 import { useAutoFilling, useEditableCell, useWorksheetStore } from '../hooks';
@@ -12,7 +13,7 @@ import {
   WorksheetTextColumn,
 } from '../types';
 
-import { AutoFillHandler, StyledCell } from './styled';
+import { AutoFillHandler, CellNote, StyledCell } from './styled';
 
 interface CellProps<Item> extends TCell<Item> {
   nextRowValue: Item[keyof Item] | '';
@@ -22,6 +23,7 @@ interface CellProps<Item> extends TCell<Item> {
   rowId: number | string;
   formatting?: WorksheetTextColumn<Item>['formatting'];
   validation?: InternalWorksheetColumn<Item>['validation'];
+  notation?: InternalWorksheetColumn<Item>['notation'];
 }
 
 const InternalCell = <T extends WorksheetItem>({
@@ -34,6 +36,7 @@ const InternalCell = <T extends WorksheetItem>({
   type,
   rowId,
   validation,
+  notation,
   value,
   nextRowValue,
   isChild,
@@ -55,11 +58,17 @@ const InternalCell = <T extends WorksheetItem>({
     setBlockFillOut,
     setSelectedCell: setHighlightedCell,
   } = useAutoFilling(cell);
+  const tooltipId = useId();
 
   const setSelectedRows = useStore(store, (state) => state.setSelectedRows);
   const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
   const addInvalidCells = useStore(store, (state) => state.addInvalidCells);
   const removeInvalidCells = useStore(store, (state) => state.removeInvalidCells);
+
+  const row: T = useStore(
+    store,
+    useMemo(() => (state) => state.rows[rowIndex], [rowIndex]),
+  );
 
   const editWithValue = useStore(
     store,
@@ -248,6 +257,28 @@ const InternalCell = <T extends WorksheetItem>({
     renderedValue,
   ]);
 
+  const renderedNote = useMemo(() => {
+    if (!notation) {
+      return null;
+    }
+
+    const note = notation(value, row);
+
+    if (!note) {
+      return null;
+    }
+
+    return (
+      <Tooltip
+        id={tooltipId}
+        placement="right"
+        trigger={<CellNote color={note.color} role="note" />}
+      >
+        {note.description}
+      </Tooltip>
+    );
+  }, [notation, row, tooltipId, value]);
+
   const renderedAutoFillHandler = useMemo(() => {
     return isLastSelected ? (
       <AutoFillHandler
@@ -298,6 +329,7 @@ const InternalCell = <T extends WorksheetItem>({
     >
       {renderedCell}
       {renderedAutoFillHandler}
+      {renderedNote}
     </StyledCell>
   );
 };

@@ -88,6 +88,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
           isLastChild={isLastChild}
           key={`${rowIndex}-${columnIndex}`}
           nextRowValue={(nextRow && nextRow[column.hash]) || ''}
+          notation={column.notation}
           options={column.type === 'select' ? column.config.options : undefined}
           rowId={row.id}
           rowIndex={rowIndex}

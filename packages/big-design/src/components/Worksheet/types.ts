@@ -1,3 +1,4 @@
+import { Colors } from '@bigcommerce/big-design-theme';
 import React from 'react';
 
 import { SelectOption } from '../Select';
@@ -24,6 +25,11 @@ export interface WorksheetError<Item extends WorksheetItem> {
   errors: Array<keyof Item>;
 }
 
+export interface NotationConfig {
+  color: keyof Colors;
+  description: string;
+}
+
 export type WorksheetColumn<Item> =
   | WorksheetTextColumn<Item>
   | WorksheetNumberColumn<Item>
@@ -46,6 +52,7 @@ interface WorksheetBaseColumn<Item> {
   width?: string | number;
   tooltip?: string;
   validation?(value: Item[keyof Item] | ''): boolean;
+  notation?(value: Item[keyof Item] | '', row: WorksheetItem): NotationConfig | undefined;
 }
 
 export interface WorksheetTextColumn<Item> extends WorksheetBaseColumn<Item> {
