@@ -1,4 +1,4 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { Colors, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { Cell, WorksheetItem } from '../types';
@@ -147,5 +147,19 @@ export const AutoFillHandler = styled.div<{ isVisible: boolean }>`
   display: none;
 `;
 
+export const CellNote = styled.div<{ color: keyof Colors }>`
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+
+  border-bottom: 8px solid ${({ theme, color }) => theme.colors[color]};
+  position: absolute;
+  top -1px;
+  right: -5px;
+  transform: rotate(45deg)
+`;
+
 StyledCell.defaultProps = { theme: defaultTheme };
 AutoFillHandler.defaultProps = { theme: defaultTheme };
+CellNote.defaultProps = { theme: defaultTheme };

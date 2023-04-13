@@ -136,6 +136,27 @@ const WorksheetPage = () => {
                         hash: 'productName',
                         header: 'Product name',
                         validation: (value) => !!value,
+                        notation: (value) => {
+                          switch (value) {
+                            case 'Product 1':
+                              return {
+                                color: 'danger',
+                                description: 'Change value to 2',
+                              };
+
+                            case '2':
+                              return {
+                                color: 'warning40',
+                                description: 'To make it green change it to 3',
+                              };
+
+                            case '3':
+                              return {
+                                color: 'success',
+                                description: 'Value is equal 3',
+                              };
+                          }
+                        },
                         width: 200,
                         tooltip: 'Tooltip text',
                       },

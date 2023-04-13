@@ -69,7 +69,13 @@ const TreeComponent = (
 };
 
 const columns: Array<WorksheetColumn<Product>> = [
-  { hash: 'productName', header: 'Product name', validation: (value: string) => !!value },
+  {
+    hash: 'productName',
+    header: 'Product name',
+    validation: (value: string) => !!value,
+    notation: (value) =>
+      value === 'Shoes Name One Edit' ? { color: 'danger20', description: 'Text' } : undefined,
+  },
   { hash: 'visibleOnStorefront', header: 'Visible on storefront', type: 'checkbox', width: 80 },
   { hash: 'otherField', header: 'Other field', width: 'auto' },
   {
@@ -558,6 +564,25 @@ describe('formatting', () => {
     );
 
     expect(getAllByText('$50.00')).toHaveLength(7);
+  });
+});
+
+describe('notation', () => {
+  test('indicates the cell', () => {
+    const { getByDisplayValue, getByText, getByRole } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const cell = getByText('Shoes Name One');
+
+    fireEvent.doubleClick(cell);
+
+    const input = getByDisplayValue('Shoes Name One');
+
+    fireEvent.change(input, { target: { value: 'Shoes Name One Edit' } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+
+    expect(getByRole('note')).toBeInTheDocument();
   });
 });
 

@@ -132,6 +132,12 @@ const worksheetTextColumnProps: Prop[] = [
     description: 'Will set a cell as invalid if it returns false.',
   },
   {
+    name: 'notation',
+    types: '(value: any, row: any; }) => { color: keyof Colors; description: string; } | undefined',
+    description:
+      'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
+  },
+  {
     name: 'disable',
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
@@ -179,6 +185,12 @@ const worksheetNumberColumnProps: Prop[] = [
     description: 'Function to test the validity of the cell.',
   },
   {
+    name: 'notation',
+    types: '(value: any, row: any; }) => { color: keyof Colors; description: string; } | undefined',
+    description:
+      'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
+  },
+  {
     name: 'disable',
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
@@ -221,6 +233,12 @@ const worksheetCheckboxColumnProps: Prop[] = [
     description: 'Function to test the validity of the cell.',
   },
   {
+    name: 'notation',
+    types: '(value: any, row: any; }) => { color: keyof Colors; description: string; } | undefined',
+    description:
+      'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
+  },
+  {
     name: 'disable',
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
@@ -261,6 +279,12 @@ const worksheetSelectableColumnProps: Prop[] = [
     name: 'validation',
     types: '(value: any) => boolean',
     description: 'Function to test the validity of the cell.',
+  },
+  {
+    name: 'notation',
+    types: '(value: any, row: any; }) => { color: keyof Colors; description: string; } | undefined',
+    description:
+      'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
   },
   {
     name: 'config',
@@ -335,6 +359,12 @@ const worksheetModalColumnProps: Prop[] = [
     name: 'validation',
     types: '(value: any) => boolean',
     description: 'Function to test the validity of the cell.',
+  },
+  {
+    name: 'notation',
+    types: '(value: any, row: any; }) => { color: keyof Colors; description: string; } | undefined',
+    description:
+      'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
   },
   {
     name: 'config',
