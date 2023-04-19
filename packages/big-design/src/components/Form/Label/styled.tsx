@@ -19,12 +19,12 @@ export const StyledLabel = styled<
   display: inline-block;
   margin-bottom: ${({ theme }: StyledLabelArgument) => theme.spacing.xxSmall};
 
-  ${({ theme, renderOptional }: StyledLabelArgument) =>
+  ${({ theme, renderOptional, optionalLabel }: StyledLabelArgument) =>
     renderOptional &&
     css`
       &::after {
         color: ${theme.colors.secondary60};
-        content: ' (optional)';
+        content: ' (${optionalLabel ?? 'optional'})';
         font-weight: ${theme.typography.fontWeight.regular};
       }
     `}

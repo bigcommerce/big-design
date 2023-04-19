@@ -115,3 +115,18 @@ test('dates after max date passed are disabled', async () => {
 
   expect(disabledDate?.classList.contains('react-datepicker__day--disabled')).toBe(true);
 });
+
+test('renders localized labels', () => {
+  const { container } = render(
+    <Datepicker
+      data-testid="datepicker"
+      label="Test label"
+      localization={{ optional: 'opcional' }}
+      onDateChange={jest.fn()}
+    />,
+  );
+
+  const label = container.querySelector('label');
+
+  expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
+});

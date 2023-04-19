@@ -52,6 +52,11 @@ const datepickerProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'localization',
+    types: '{ optional: string }',
+    description: 'Overrides the label with localized text.',
+  },
 ];
 
 export const DatepickerPropTable: React.FC<PropTableWrapper> = (props) => (

@@ -36,6 +36,7 @@ export const MultiSelect = typedMemo(
     inputRef,
     label,
     labelId,
+    localization = { optional: 'optional' },
     maxHeight,
     onClose,
     onOpen,
@@ -330,7 +331,11 @@ export const MultiSelect = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel {...getLabelProps()} renderOptional={!required}>
+          <FormControlLabel
+            {...getLabelProps()}
+            optionalLabel={localization.optional}
+            renderOptional={!required}
+          >
             {label}
           </FormControlLabel>
         );
@@ -344,7 +349,7 @@ export const MultiSelect = typedMemo(
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [getLabelProps, label, required]);
+    }, [getLabelProps, label, localization.optional, required]);
 
     const renderToggle = useMemo(() => {
       return (

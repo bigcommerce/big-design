@@ -254,3 +254,18 @@ test('appends (optional) text to label if input is not required', async () => {
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
 });
+
+test('renders localized labels', async () => {
+  const { findByText } = render(
+    <Timepicker
+      data-testid="timepicker"
+      label="Test Label"
+      localization={{ optional: 'opcional' }}
+      onTimeChange={jest.fn()}
+    />,
+  );
+
+  const label = await findByText('Test Label');
+
+  expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
+});

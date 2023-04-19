@@ -48,6 +48,11 @@ const textareaProps: Prop[] = [
     defaultValue: 'true',
     description: 'Determines if the textarea is resizable vertically.',
   },
+  {
+    name: 'localization',
+    types: '{ optional: string }',
+    description: 'Overrides the label with localized text.',
+  },
 ];
 
 export const TextareaPropTable: React.FC<PropTableWrapper> = (props) => (
