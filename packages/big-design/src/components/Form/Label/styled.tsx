@@ -24,7 +24,7 @@ export const StyledLabel = styled<
     css`
       &::after {
         color: ${theme.colors.secondary60};
-        content: ' (${optionalLabel ?? 'optional'})';
+        content: ' (${optionalLabel?.toLowerCase() ?? 'optional'})';
         font-weight: ${theme.typography.fontWeight.regular};
       }
     `}

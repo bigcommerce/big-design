@@ -33,6 +33,7 @@ const counterMock = ({
   ref,
   label = 'Label',
   labelId = '',
+  localization,
   id = '',
   error = '',
   description = '',
@@ -49,6 +50,7 @@ const counterMock = ({
     id={id}
     label={label}
     labelId={labelId}
+    localization={localization}
     max={max}
     min={min}
     onCountChange={onCountChange}
@@ -437,4 +439,27 @@ test('appends (optional) text to label if input is not required', () => {
   const label = container.querySelector('label');
 
   expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
+});
+
+test('renders localized labels', async () => {
+  const { container } = render(
+    counterMock({
+      ...requiredAttributes,
+      localization: {
+        decreaseCount: 'Decrementar cuenta',
+        increaseCount: 'Incrementar cuenta',
+        optional: 'opcional',
+      },
+    }),
+  );
+
+  const label = container.querySelector('label');
+
+  expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
+
+  const decreaseButton = await screen.findByRole('button', { name: 'Decrementar cuenta' });
+  const increaseButton = await screen.findByRole('button', { name: 'Incrementar cuenta' });
+
+  expect(decreaseButton).toBeInTheDocument();
+  expect(increaseButton).toBeInTheDocument();
 });

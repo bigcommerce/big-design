@@ -85,6 +85,11 @@ const counterProps: Prop[] = [
       'Function to be called that changes counter value. Receives the new count from the component.',
     required: true,
   },
+  {
+    name: 'localization',
+    types: '{ decreaseCount: string, increaseCount: string, optional: string }',
+    description: 'Overrides the label with localized text.',
+  },
 ];
 
 export const CounterPropTable: React.FC<PropTableWrapper> = (props) => (

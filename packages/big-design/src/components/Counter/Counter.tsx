@@ -18,11 +18,18 @@ import { useInputErrors } from '../Form/useInputErrors';
 
 import { StyledCounterButton, StyledCounterInput, StyledCounterWrapper } from './styled';
 
+interface Localization {
+  decreaseCount: string;
+  increaseCount: string;
+  optional: string;
+}
+
 export interface CounterProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactNode;
   labelId?: string;
   description?: React.ReactNode;
   error?: React.ReactNode | React.ReactNode[];
+  localization?: Localization;
   value: number;
   step?: number;
   onCountChange(count: number): void;
@@ -40,6 +47,11 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     forwardedRef,
     label,
     labelId,
+    localization = {
+      decreaseCount: 'Decrease count',
+      increaseCount: 'Increase count',
+      optional: 'optional',
+    },
     description,
     error,
     disabled,
@@ -75,7 +87,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     };
 
     const handleIncrease = () => {
-      if (value + step > max) {
+      if (value + step > Number(max)) {
         return;
       }
 
@@ -90,7 +102,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     };
 
     const handleDecrease = () => {
-      if (value - step < min) {
+      if (value - step < Number(min)) {
         return;
       }
 
@@ -115,7 +127,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
         onCountChange(Math.round(newValue));
       }
 
-      if (newValue >= min && newValue <= max) {
+      if (newValue >= Number(min) && newValue <= Number(max)) {
         onCountChange(newValue);
       }
     };
@@ -146,7 +158,12 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel htmlFor={id} id={labelId} renderOptional={!props.required}>
+          <FormControlLabel
+            htmlFor={id}
+            id={labelId}
+            optionalLabel={localization.optional}
+            renderOptional={!props.required}
+          >
             {label}
           </FormControlLabel>
         );
@@ -163,7 +180,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [id, label, labelId, props.required]);
+    }, [id, label, labelId, localization.optional, props.required]);
 
     const renderedDescription = useMemo(() => {
       if (!description) {
@@ -187,8 +204,8 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
         {renderedDescription}
         <StyledCounterWrapper disabled={disabled} error={errors} focus={focus}>
           <StyledCounterButton
-            disabled={disabled || value <= min}
-            iconOnly={<RemoveCircleOutlineIcon title="Decrease count" />}
+            disabled={disabled || value <= Number(min)}
+            iconOnly={<RemoveCircleOutlineIcon title={localization.decreaseCount} />}
             onClick={handleDecrease}
             type="button"
           />
@@ -205,8 +222,8 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
             value={value}
           />
           <StyledCounterButton
-            disabled={disabled || value >= max}
-            iconOnly={<AddCircleOutlineIcon title="Increase count" />}
+            disabled={disabled || value >= Number(max)}
+            iconOnly={<AddCircleOutlineIcon title={localization.increaseCount} />}
             onClick={handleIncrease}
             type="button"
           />
