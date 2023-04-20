@@ -14,6 +14,11 @@ const buttonGroupProps: Prop[] = [
     ),
     required: true,
   },
+  {
+    name: 'localization',
+    types: '{ more: string }',
+    description: 'Overrides the label with localized text.',
+  },
 ];
 
 export const ButtonGroupPropTable: React.FC<PropTableWrapper> = (props) => (

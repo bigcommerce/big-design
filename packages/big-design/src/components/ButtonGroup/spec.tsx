@@ -145,3 +145,21 @@ test('dropdown trigger is type button', async () => {
 
   expect(trigger).toHaveAttribute('type', 'button');
 });
+
+test('renders localized labels', async () => {
+  render(
+    <ButtonGroup
+      actions={[
+        { text: 'button 1' },
+        { text: 'button 2' },
+        { text: 'button 3' },
+        { text: 'button 4' },
+      ]}
+      localization={{ more: 'mas' }}
+    />,
+  );
+
+  const trigger = await screen.findByRole('button', { name: 'mas' });
+
+  expect(trigger).toBeVisible();
+});
