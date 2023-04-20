@@ -939,7 +939,7 @@ exports[`renders close button 1`] = `
           <title
             id=":ra:"
           >
-            Close.
+            Close
           </title>
           <path
             d="M0 0h24v24H0V0z"

@@ -16,65 +16,75 @@ import {
   StyledMessageItem,
 } from './styled';
 
-export type MessageProps = SharedMessagingProps & MarginProps;
+interface Localization {
+  close: string;
+}
 
-export const Message: React.FC<MessageProps> = memo(({ className, style, header, ...props }) => {
-  const filteredProps = excludePaddingProps(props);
-  const icon = useMemo(() => props.type && getMessagingIcon(props.type), [props.type]);
+interface LocalizationProp {
+  localization?: Localization;
+}
 
-  const renderedMessages = useMemo(
-    () =>
-      props.messages.map(({ text, link }, index) => (
-        <Box key={index}>
-          <StyledMessageItem>{text}</StyledMessageItem>{' '}
-          {link && <StyledLink {...link}>{link.text}</StyledLink>}
-        </Box>
-      )),
-    [props.messages],
-  );
+export type MessageProps = SharedMessagingProps & MarginProps & LocalizationProp;
 
-  const renderedHeader = useMemo(() => header && <StyledHeader>{header}</StyledHeader>, [header]);
+export const Message: React.FC<MessageProps> = memo(
+  ({ className, localization = { close: 'Close' }, style, header, ...props }) => {
+    const filteredProps = excludePaddingProps(props);
+    const icon = useMemo(() => props.type && getMessagingIcon(props.type), [props.type]);
 
-  const renderedActions = useMemo(
-    () =>
-      props.actions && (
-        <StyledActionsWrapper flexDirection="row" flexWrap="wrap" marginTop="xSmall">
-          {props.actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
-            <Button
-              {...excludeMarginProps(actionProps)}
-              key={index}
-              marginBottom="xSmall"
-              marginHorizontal="xxSmall"
-              mobileWidth="auto"
-              variant={getActionVariant(variant)}
-            >
-              {text}
-            </Button>
-          ))}
-        </StyledActionsWrapper>
-      ),
-    [props.actions],
-  );
+    const renderedMessages = useMemo(
+      () =>
+        props.messages.map(({ text, link }, index) => (
+          <Box key={index}>
+            <StyledMessageItem>{text}</StyledMessageItem>{' '}
+            {link && <StyledLink {...link}>{link.text}</StyledLink>}
+          </Box>
+        )),
+      [props.messages],
+    );
 
-  return (
-    <StyledMessage {...filteredProps} backgroundColor="white" role="alert">
-      <GridItem gridArea="icon">{icon}</GridItem>
-      <GridItem gridArea="messages">
-        {renderedHeader}
-        {renderedMessages}
-        {renderedActions}
-      </GridItem>
-      {props.onClose && (
-        <GridItem>
-          <MessagingButton
-            iconOnly={<CloseIcon size="large" title="Close." />}
-            onClick={props.onClose}
-          />
+    const renderedHeader = useMemo(() => header && <StyledHeader>{header}</StyledHeader>, [header]);
+
+    const renderedActions = useMemo(
+      () =>
+        props.actions && (
+          <StyledActionsWrapper flexDirection="row" flexWrap="wrap" marginTop="xSmall">
+            {props.actions.map(({ text, variant = 'secondary', ...actionProps }, index) => (
+              <Button
+                {...excludeMarginProps(actionProps)}
+                key={index}
+                marginBottom="xSmall"
+                marginHorizontal="xxSmall"
+                mobileWidth="auto"
+                variant={getActionVariant(variant)}
+              >
+                {text}
+              </Button>
+            ))}
+          </StyledActionsWrapper>
+        ),
+      [props.actions],
+    );
+
+    return (
+      <StyledMessage {...filteredProps} backgroundColor="white" role="alert">
+        <GridItem gridArea="icon">{icon}</GridItem>
+        <GridItem gridArea="messages">
+          {renderedHeader}
+          {renderedMessages}
+          {renderedActions}
         </GridItem>
-      )}
-    </StyledMessage>
-  );
-});
+        {props.onClose && (
+          <GridItem>
+            <MessagingButton
+              iconOnly={<CloseIcon size="large" title={localization.close} />}
+              onClick={props.onClose}
+            />
+          </GridItem>
+        )}
+      </StyledMessage>
+    );
+  },
+);
 
 Message.defaultProps = {
   messages: [],
