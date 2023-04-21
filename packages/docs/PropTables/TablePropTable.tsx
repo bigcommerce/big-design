@@ -104,6 +104,11 @@ const tableProps: Prop[] = [
     types: 'React.ReactElement',
     description: 'Component to render when there are no items.',
   },
+  {
+    name: 'localization',
+    types: '{ ascendingOrder: string, descendingOrder: string }',
+    description: 'Overrides the label with localized text.',
+  },
 ];
 
 const tableColumnsProps: Prop[] = [

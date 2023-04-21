@@ -11,7 +11,7 @@ import { Flex, FlexItem } from '../Flex';
 
 import { StyledButton } from './styled';
 
-interface Localization {
+export interface PaginationLocalization {
   of: string;
   previousPage: string;
   nextPage: string;
@@ -25,7 +25,7 @@ export interface PaginationProps extends MarginProps {
   onPageChange(page: number): void;
   onItemsPerPageChange(range: number): void;
   label?: string;
-  localization?: Localization;
+  localization?: PaginationLocalization;
   getRangeLabel?(start: number, end: number, totalItems: number): string;
 }
 
@@ -33,7 +33,7 @@ const defaultGetRangeLabel = (
   start: number,
   end: number,
   totalItems: number,
-  localization: Localization,
+  localization: PaginationLocalization,
 ): string => {
   if (start === end) {
     return `${start} ${localization.of} ${totalItems}`;

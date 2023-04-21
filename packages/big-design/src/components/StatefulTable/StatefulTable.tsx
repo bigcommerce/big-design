@@ -3,8 +3,10 @@ import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
+import { PaginationLocalization } from '../Pagination/Pagination';
 import { PillTabItem, PillTabs, PillTabsProps } from '../PillTabs';
 import { Search } from '../Search';
+import { SearchLocalization } from '../Search/types';
 import {
   Table,
   TableColumn,
@@ -15,6 +17,11 @@ import {
 } from '../Table';
 
 import { createReducer, createReducerInit } from './reducer';
+
+type Localization =
+  | PaginationLocalization
+  | SearchLocalization
+  | (PaginationLocalization & SearchLocalization);
 
 export interface StatefulTablePillTabFilter<T> {
   pillTabs: PillTabItem[];
@@ -31,9 +38,17 @@ export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable
 export interface StatefulTableProps<T>
   extends Omit<
     TableProps<T>,
-    'columns' | 'pagination' | 'filters' | 'search' | 'selectable' | 'sortable' | 'onRowDrop'
+    | 'columns'
+    | 'pagination'
+    | 'filters'
+    | 'search'
+    | 'selectable'
+    | 'sortable'
+    | 'onRowDrop'
+    | 'localization'
   > {
   columns: Array<StatefulTableColumn<T>>;
+  localization?: Localization;
   pagination?: boolean;
   filters?: StatefulTablePillTabFilter<T>;
   selectable?: boolean;
@@ -62,6 +77,7 @@ const InternalStatefulTable = <T extends TableItem>({
   itemName,
   items = [],
   keyField,
+  localization: localizationObj,
   onSelectionChange,
   onRowDrop,
   search,
@@ -71,6 +87,14 @@ const InternalStatefulTable = <T extends TableItem>({
   stickyHeader = false,
   ...rest
 }: StatefulTableProps<T>): React.ReactElement<StatefulTableProps<T>> => {
+  const localization = {
+    of: 'of',
+    nextPage: 'Next page',
+    previousPage: 'Previous page',
+    search: 'Search',
+    ...localizationObj,
+  };
+
   const reducer = useMemo(() => createReducer<T>(), []);
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
   const sortable = useMemo(
@@ -121,8 +145,28 @@ const InternalStatefulTable = <T extends TableItem>({
   );
 
   const paginationOptions = useMemo(
-    () => (pagination ? { ...state.pagination, onItemsPerPageChange, onPageChange } : undefined),
-    [pagination, state.pagination, onItemsPerPageChange, onPageChange],
+    () =>
+      pagination
+        ? {
+            ...state.pagination,
+            onItemsPerPageChange,
+            onPageChange,
+            localization: {
+              of: localization.of,
+              previousPage: localization.previousPage,
+              nextPage: localization.nextPage,
+            },
+          }
+        : undefined,
+    [
+      pagination,
+      state.pagination,
+      onItemsPerPageChange,
+      onPageChange,
+      localization?.of,
+      localization?.previousPage,
+      localization?.nextPage,
+    ],
   );
 
   const selectableOptions = useMemo(
@@ -199,7 +243,7 @@ const InternalStatefulTable = <T extends TableItem>({
 
     return (
       <Box marginBottom="medium">
-        <Search {...searchProps} />
+        <Search localization={{ search: localization.search }} {...searchProps} />
       </Box>
     );
   };

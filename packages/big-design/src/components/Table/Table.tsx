@@ -27,6 +27,7 @@ const InternalTable = <T extends TableItem>(
     itemName,
     items,
     keyField = 'id',
+    localization,
     onRowDrop,
     pagination,
     selectable,
@@ -149,7 +150,9 @@ const InternalTable = <T extends TableItem>(
           return (
             <HeaderCell
               actionsRef={actionsRef}
+              ascendingOrderLabel={localization?.ascendingOrder}
               column={{ ...column, width: widthColumn }}
+              descendingOrderLabel={localization?.descendingOrder}
               display={display}
               hide={hideHeader}
               id={`header-cell-${index}`}

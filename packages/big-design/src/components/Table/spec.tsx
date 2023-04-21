@@ -265,8 +265,11 @@ test('renders a pagination component with custom button labels', async () => {
         onPageChange,
         getRangeLabel,
         label: '[Custom] Pagination',
-        previousLabel: '[Custom] Previous page',
-        nextLabel: '[Custom] Next page',
+        localization: {
+          of: 'of',
+          previousPage: '[Custom] Previous page',
+          nextPage: '[Custom] Next page',
+        },
       }}
     />,
   );
@@ -614,4 +617,70 @@ describe('draggable', () => {
 
     expect(onRowDrop).toHaveBeenCalledWith(0, 1);
   });
+});
+
+test('renders localized ascending label', async () => {
+  const onSort = jest.fn();
+  const items = [
+    { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+    { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+    { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+    { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+    { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+  ];
+  const columns = [
+    { header: 'Sku', hash: 'sku', render: ({ sku }: any) => sku, isSortable: true },
+    { header: 'Name', hash: 'name', render: ({ name }: any) => name },
+    { header: 'Stock', hash: 'stock', render: ({ stock }: any) => stock },
+  ];
+
+  render(
+    <Table
+      columns={columns}
+      items={items}
+      localization={{ ascendingOrder: 'Orden ascendiente', descendingOrder: 'Orden descendiente' }}
+      sortable={{
+        columnHash: 'sku',
+        direction: 'ASC',
+        onSort,
+      }}
+    />,
+  );
+
+  const ascSortIcon = screen.getByTitle('Orden ascendiente');
+
+  expect(ascSortIcon).toBeInTheDocument();
+});
+
+test('renders localized descending label', async () => {
+  const onSort = jest.fn();
+  const items = [
+    { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+    { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+    { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+    { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+    { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+  ];
+  const columns = [
+    { header: 'Sku', hash: 'sku', render: ({ sku }: any) => sku, isSortable: true },
+    { header: 'Name', hash: 'name', render: ({ name }: any) => name },
+    { header: 'Stock', hash: 'stock', render: ({ stock }: any) => stock },
+  ];
+
+  render(
+    <Table
+      columns={columns}
+      items={items}
+      localization={{ ascendingOrder: 'Orden ascendiente', descendingOrder: 'Orden descendiente' }}
+      sortable={{
+        columnHash: 'sku',
+        direction: 'DESC',
+        onSort,
+      }}
+    />,
+  );
+
+  const descSortIcon = await screen.queryByTitle('Orden descendiente');
+
+  expect(descSortIcon).toBeInTheDocument();
 });

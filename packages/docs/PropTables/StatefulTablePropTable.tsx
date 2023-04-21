@@ -112,6 +112,12 @@ const statefulTableProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'localization',
+    types:
+      '{ of: string, nextPage: string, previousPage: string } | { search: string } | ({ of: string, nextPage: string, previousPage: string } & { search: string })',
+    description: 'Overrides the label with localized text.',
+  },
 ];
 
 const tableColumnsProps: Prop[] = [

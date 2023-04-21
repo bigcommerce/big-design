@@ -18,8 +18,10 @@ export interface HeaderCellProps<T>
   extends TableHTMLAttributes<HTMLTableCellElement>,
     TableColumnDisplayProps {
   actionsRef: RefObject<HTMLDivElement>;
+  ascendingOrderLabel?: string;
   children?: React.ReactNode;
   column: TableColumn<T>;
+  descendingOrderLabel?: string;
   id: string;
   hide?: boolean;
   isSorted?: boolean;
@@ -40,8 +42,10 @@ export interface DragIconCellProps {
 
 const InternalHeaderCell = <T extends TableItem>({
   actionsRef,
+  ascendingOrderLabel = 'Ascending order',
   children,
   column,
+  descendingOrderLabel = 'Desceding order',
   display,
   hide = false,
   id,
@@ -60,9 +64,9 @@ const InternalHeaderCell = <T extends TableItem>({
     }
 
     return sortDirection === 'ASC' ? (
-      <ArrowUpwardIcon data-testid="asc-icon" size="medium" title="Ascending order" />
+      <ArrowUpwardIcon data-testid="asc-icon" size="medium" title={ascendingOrderLabel} />
     ) : (
-      <ArrowDownwardIcon data-testid="desc-icon" size="medium" title="Descending order" />
+      <ArrowDownwardIcon data-testid="desc-icon" size="medium" title={descendingOrderLabel} />
     );
   };
 
