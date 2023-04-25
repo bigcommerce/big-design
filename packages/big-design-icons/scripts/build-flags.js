@@ -3,7 +3,7 @@ const { outputFile, readFile } = require('fs-extra');
 const glob = require('glob-promise');
 const { cpus } = require('os');
 const { basename, join } = require('path');
-const rimraf = require('rimraf');
+const { rimraf } = require('rimraf');
 const asyncPool = require('tiny-async-pool');
 
 const config = require('./svgr-flags.config');
