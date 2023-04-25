@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 
 import { useDidUpdate } from '../../hooks';

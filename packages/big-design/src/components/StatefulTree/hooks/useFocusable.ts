@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 import { TreeFocusable, TreeNodeId, TreeNodeProps, TreeSelectableType } from '../../Tree';

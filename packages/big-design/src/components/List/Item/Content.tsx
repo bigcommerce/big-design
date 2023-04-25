@@ -1,3 +1,5 @@
+'use client';
+
 import { IconProps } from '@bigcommerce/big-design-icons';
 import React, { cloneElement, isValidElement, memo, useCallback, useMemo } from 'react';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { Placement } from '@popperjs/core';
 import React, { cloneElement, HTMLAttributes, memo, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';

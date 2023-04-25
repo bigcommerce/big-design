@@ -1,3 +1,5 @@
+'use client';
+
 import { OpenInNewIcon } from '@bigcommerce/big-design-icons';
 import React, { AnchorHTMLAttributes, forwardRef, memo, Ref } from 'react';
 

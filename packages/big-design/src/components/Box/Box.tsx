@@ -1,3 +1,5 @@
+'use client';
+
 import { Border, BorderRadius, Colors, Shadow, ZIndex } from '@bigcommerce/big-design-theme';
 import React, { forwardRef, HTMLAttributes, memo } from 'react';
 

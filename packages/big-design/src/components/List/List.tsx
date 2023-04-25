@@ -1,3 +1,5 @@
+'use client';
+
 import { State } from '@popperjs/core';
 import { UseSelectPropGetters } from 'downshift';
 import React, {

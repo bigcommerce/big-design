@@ -1,3 +1,5 @@
+'use client';
+
 import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
 import React, {
   cloneElement,

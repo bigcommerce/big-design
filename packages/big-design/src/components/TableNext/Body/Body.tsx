@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, memo, TableHTMLAttributes } from 'react';
 
 import { StyledTableBody } from './styled';

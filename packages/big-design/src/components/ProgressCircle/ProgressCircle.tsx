@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckCircleIcon, ErrorIcon } from '@bigcommerce/big-design-icons';
 import React, { useMemo } from 'react';
 

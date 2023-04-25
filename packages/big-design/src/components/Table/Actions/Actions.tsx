@@ -1,3 +1,5 @@
+'use client';
+
 import React, { RefObject } from 'react';
 
 import { typedMemo } from '../../../utils';

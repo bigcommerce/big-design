@@ -1,3 +1,5 @@
+'use client';
+
 import React, { memo, useCallback, useEffect, useId, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 

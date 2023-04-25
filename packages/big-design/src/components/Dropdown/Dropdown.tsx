@@ -1,3 +1,5 @@
+'use client';
+
 import { useSelect, UseSelectProps, UseSelectState } from 'downshift';
 import React, {
   cloneElement,

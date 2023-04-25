@@ -1,3 +1,5 @@
+'use client';
+
 import { ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React, { useId, useState } from 'react';
 

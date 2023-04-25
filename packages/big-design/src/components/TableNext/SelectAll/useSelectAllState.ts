@@ -1,3 +1,5 @@
+'use client';
+
 import { areAllInPageSelected, areSomeInPageSelected, getSelectAllState } from './helpers';
 import { SelectAllProps } from './SelectAll';
 

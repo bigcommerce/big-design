@@ -1,3 +1,5 @@
+'use client';
+
 import React, { HTMLAttributes, memo } from 'react';
 
 import { warning } from '../../utils';
