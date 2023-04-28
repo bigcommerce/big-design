@@ -107,7 +107,7 @@ const tableProps: Prop[] = [
   {
     name: 'localization',
     types: '{ ascendingOrder: string, descendingOrder: string }',
-    description: 'Overrides the label with localized text.',
+    description: 'Overrides the labels with localized text.',
   },
 ];
 

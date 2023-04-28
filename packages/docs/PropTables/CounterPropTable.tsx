@@ -88,7 +88,7 @@ const counterProps: Prop[] = [
   {
     name: 'localization',
     types: '{ decreaseCount: string, increaseCount: string, optional: string }',
-    description: 'Overrides the label with localized text.',
+    description: 'Overrides the labels with localized text.',
   },
 ];
 
