@@ -9,12 +9,17 @@ export interface ExpandableRows {
 
 export type DisabledRows = Array<string | number>;
 
+export interface WorksheetLocalization {
+  toggleRowExpanded: string;
+}
+
 export interface WorksheetProps<Item extends WorksheetItem> {
   columns: Array<WorksheetColumn<Item>>;
   items: Item[];
   expandableRows?: ExpandableRows;
   defaultExpandedRows?: Array<string | number>;
   disabledRows?: DisabledRows;
+  localization?: WorksheetLocalization;
   minWidth?: number;
   onChange(items: Item[]): void;
   onErrors?(items: Array<WorksheetError<Item>>): void;

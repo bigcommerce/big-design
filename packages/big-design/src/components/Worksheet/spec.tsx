@@ -1465,3 +1465,17 @@ describe('Header tooltip', () => {
     expect(result).toBeInTheDocument();
   });
 });
+
+test('renders localized labels', () => {
+  render(
+    <Worksheet
+      columns={disabledColumns}
+      expandableRows={{ 2: [3], 5: [6, 7] }}
+      items={items}
+      localization={{ toggleRowExpanded: 'cambiar expansion de fila' }}
+      onChange={handleChange}
+    />,
+  );
+
+  expect(screen.queryAllByTitle('cambiar expansion de fila')).toHaveLength(2);
+});

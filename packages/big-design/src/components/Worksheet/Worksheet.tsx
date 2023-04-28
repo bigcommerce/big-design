@@ -23,6 +23,7 @@ import { Header, StyledBox, Table } from './styled';
 import {
   InternalWorksheetColumn,
   WorksheetItem,
+  WorksheetLocalization,
   WorksheetModalColumn,
   WorksheetProps,
 } from './types';
@@ -195,12 +196,20 @@ const InternalWorksheet = typedMemo(
 
 export const WorksheetContext = createContext<StoreApi<BaseState<any>> | null>(null);
 
-export const Worksheet = typedMemo(<T extends WorksheetItem>(props: WorksheetProps<T>) => {
-  const store = useMemo(() => createWorksheetStore<T>(), []);
+export const WorksheetLocalizationContext = createContext<WorksheetLocalization | undefined>(
+  undefined,
+);
 
-  return (
-    <WorksheetContext.Provider value={store}>
-      <InternalWorksheet {...props} />
-    </WorksheetContext.Provider>
-  );
-});
+export const Worksheet = typedMemo(
+  <T extends WorksheetItem>({ localization, ...props }: WorksheetProps<T>) => {
+    const store = useMemo(() => createWorksheetStore<T>(), []);
+
+    return (
+      <WorksheetContext.Provider value={store}>
+        <WorksheetLocalizationContext.Provider value={localization}>
+          <InternalWorksheet {...props} />
+        </WorksheetLocalizationContext.Provider>
+      </WorksheetContext.Provider>
+    );
+  },
+);
