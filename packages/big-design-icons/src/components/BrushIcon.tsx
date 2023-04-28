@@ -1,6 +1,9 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
+
+'use client';
+
 import React, { forwardRef, memo, useId } from 'react';
 
 import { createStyledIcon, IconProps, PrivateIconProps } from '../base';

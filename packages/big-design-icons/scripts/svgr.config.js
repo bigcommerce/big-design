@@ -16,6 +16,9 @@ module.exports = {
     // **********************************
     // Auto-generated file, do NOT modify
     // **********************************
+    'use client';
+    BREAK
+
     import React, { forwardRef, memo, useId } from 'react';
     BREAK
 
