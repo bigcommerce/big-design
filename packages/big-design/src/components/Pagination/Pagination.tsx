@@ -33,13 +33,13 @@ const defaultGetRangeLabel = (
   start: number,
   end: number,
   totalItems: number,
-  localization: PaginationLocalization,
+  of = 'of',
 ): string => {
   if (start === end) {
-    return `${start} ${localization.of} ${totalItems}`;
+    return `${start} ${of} ${totalItems}`;
   }
 
-  return `${start} - ${end} ${localization.of} ${totalItems}`;
+  return `${start} - ${end} ${of} ${totalItems}`;
 };
 
 export const Pagination: React.FC<PaginationProps> = memo(
@@ -51,7 +51,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
     onPageChange,
     onItemsPerPageChange,
     label = 'pagination',
-    localization = { of: 'of', previousPage: 'Previous page', nextPage: 'Next page' },
+    localization,
     getRangeLabel = defaultGetRangeLabel,
   }) => {
     const [maxPages, setMaxPages] = useState(Math.max(1, Math.ceil(totalItems / itemsPerPage)));
@@ -131,7 +131,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
                 type="button"
                 variant="subtle"
               >
-                {getRangeLabel(itemRange.start, itemRange.end, totalItems, localization)}
+                {getRangeLabel(itemRange.start, itemRange.end, totalItems, localization?.of)}
               </StyledButton>
             }
           />
@@ -139,7 +139,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
         <FlexItem>
           <StyledButton
             disabled={currentPage <= 1}
-            iconOnly={<ChevronLeftIcon title={localization.previousPage} />}
+            iconOnly={<ChevronLeftIcon title={localization?.previousPage || 'Previous page'} />}
             onClick={handlePageDecrease}
             type="button"
             variant="subtle"
@@ -147,7 +147,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
 
           <StyledButton
             disabled={currentPage >= maxPages}
-            iconOnly={<ChevronRightIcon title={localization.nextPage} />}
+            iconOnly={<ChevronRightIcon title={localization?.nextPage || 'Next page'} />}
             onClick={handlePageIncrease}
             type="button"
             variant="subtle"

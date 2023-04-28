@@ -87,6 +87,7 @@ const InternalStatefulTable = <T extends TableItem>({
   stickyHeader = false,
   ...rest
 }: StatefulTableProps<T>): React.ReactElement<StatefulTableProps<T>> => {
+  // Merge localization and set defaults to make sure prop exists no matter what type
   const localization = {
     of: 'of',
     nextPage: 'Next page',

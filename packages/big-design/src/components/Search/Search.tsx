@@ -9,7 +9,7 @@ import { Input } from '../Input';
 import { SearchProps } from './types';
 
 export const Search: React.FC<SearchProps> = ({
-  localization = { search: 'Search' },
+  localization,
   value,
   onChange,
   onSubmit,
@@ -33,17 +33,17 @@ export const Search: React.FC<SearchProps> = ({
         <FlexItem flexGrow={1} marginRight="small">
           <Input
             {...props}
-            aria-label={ariaLabel ?? localization.search}
+            aria-label={ariaLabel ?? (localization?.search || 'Search')}
             autoComplete={autoComplete}
             iconLeft={<SearchIcon color="secondary50" />}
             onChange={onChange}
-            placeholder={placeholder ?? localization.search}
+            placeholder={placeholder ?? (localization?.search || 'Search')}
             type="search"
             value={value}
           />
         </FlexItem>
         <Button mobileWidth="auto" type="submit" variant="secondary">
-          {localization.search}
+          {localization?.search || 'Search'}
         </Button>
       </Flex>
     </Form>

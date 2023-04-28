@@ -45,7 +45,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   forwardedRef,
   label,
   labelId,
-  localization = { optional: 'optional' },
+  localization,
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
@@ -79,7 +79,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
         <FormControlLabel
           htmlFor={id}
           id={labelId}
-          optionalLabel={localization.optional}
+          optionalLabel={localization?.optional}
           renderOptional={!props.required}
         >
           {label}
@@ -98,7 +98,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     }
 
     warning('label must be either a string or a FormControlLabel component.');
-  }, [id, label, labelId, localization.optional, props.required]);
+  }, [id, label, labelId, localization?.optional, props.required]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {

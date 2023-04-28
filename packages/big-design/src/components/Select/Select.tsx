@@ -35,7 +35,7 @@ export const Select = typedMemo(
     inputRef,
     label,
     labelId,
-    localization = { optional: 'optional' },
+    localization,
     maxHeight,
     onClose,
     onOpen,
