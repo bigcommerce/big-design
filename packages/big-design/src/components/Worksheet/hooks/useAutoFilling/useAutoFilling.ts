@@ -9,6 +9,7 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
   const { updateItems } = useUpdateItems();
 
   const selectedCells = useStore(store, (state) => state.selectedCells);
+  const disabledRows = useStore(store, (state) => state.disabledRows);
 
   const rows = useStore(
     store,
@@ -50,7 +51,7 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
   const onFillFullColumn = useCallback(() => {
     const cells: Array<Cell<T>> = rows.reduce(
       (accum, row, idx) =>
-        idx > cell.rowIndex
+        idx > cell.rowIndex && !disabledRows.includes(idx + 1)
           ? [
               ...accum,
               {
@@ -68,7 +69,7 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
       cells,
       cells.map(() => cell.value),
     );
-  }, [cell, rows, updateItems]);
+  }, [cell, disabledRows, rows, updateItems]);
 
   const handleSelectedCells = useCallback(() => {
     const copySelectedCells = [...selectedCells];
@@ -103,13 +104,18 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
 
   useEffect(() => {
     if (!isBlockedFillOut && !isAutoFillActive && selectedCells.length > 1) {
+      const availableCells = selectedCells.filter(
+        ({ rowIndex }) => !disabledRows.includes(rowIndex + 1),
+      );
+
       updateItems(
-        selectedCells,
+        availableCells,
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        selectedCells.map(({ hash }) => rows[selectedCells[0].rowIndex][hash]),
+        availableCells.map(({ hash }) => rows[selectedCells[0].rowIndex][hash]),
       );
     }
   }, [
+    disabledRows,
     isAutoFillActive,
     isBlockedFillOut,
     isSelectingActive,
