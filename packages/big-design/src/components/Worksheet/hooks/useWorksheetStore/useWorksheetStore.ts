@@ -8,7 +8,7 @@ import {
   InternalWorksheetColumn,
   WorksheetItem,
 } from '../../types';
-import { deleteCells, getHiddenRows, mergeCells } from '../../utils';
+import { deleteCells, getCellsMap, getHiddenRows, mergeCells } from '../../utils';
 import { WorksheetContext } from '../../Worksheet';
 import { EditingCellsArgs } from '../useKeyEvents';
 
@@ -19,6 +19,7 @@ export interface SetEditingCellArgs<T> extends EditingCellsArgs {
 export interface BaseState<Item> {
   columns: Array<InternalWorksheetColumn<Item>>;
   editedCells: Array<Cell<Item>>;
+  editedCellsMap: Record<string, Cell<Item>>;
   editingCell: Cell<Item> | null;
   isMetaKey: boolean;
   isShiftPressed: boolean;
@@ -31,9 +32,11 @@ export interface BaseState<Item> {
   disabledRows: DisabledRows;
   hiddenRows: Array<string | number>;
   invalidCells: Array<Cell<Item>>;
+  invalidCellsMap: Record<string, Cell<Item>>;
   openedModal: keyof Item | null;
   rows: Item[];
   selectedCells: Array<Cell<Item>>;
+  selectedCellsMap: Record<string, Cell<Item>>;
   selectedRows: number[];
   tableRef: HTMLTableElement | null;
   addEditedCells: (cells: Array<Cell<Item>>) => void;
@@ -68,6 +71,7 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
   createStore<BaseState<Item>>((set) => ({
     columns: [],
     editedCells: [],
+    editedCellsMap: {},
     editingCell: null,
     isMetaKey: false,
     isShiftPressed: false,
@@ -80,18 +84,32 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
     disabledRows: [],
     hiddenRows: [],
     invalidCells: [],
+    invalidCellsMap: {},
     openedModal: null,
     rows: [],
     selectedCells: [],
+    selectedCellsMap: {},
     selectedRows: [],
     tableRef: null,
     addEditedCells: (cells) =>
-      set((state) => ({ ...state, editedCells: mergeCells(state.editedCells, cells) })),
+      set((state) => {
+        const editedCells = mergeCells(state.editedCells, cells);
+
+        return { ...state, editedCells, editedCellsMap: getCellsMap(editedCells) };
+      }),
     addInvalidCells: (cells) =>
-      set((state) => ({ ...state, invalidCells: mergeCells(state.invalidCells, cells) })),
+      set((state) => {
+        const invalidCells = mergeCells(state.invalidCells, cells);
+
+        return { ...state, invalidCells, invalidCellsMap: getCellsMap(invalidCells) };
+      }),
     removeInvalidCells: (cells) =>
-      set((state) => ({ ...state, invalidCells: deleteCells(state.invalidCells, cells) })),
-    resetInvalidCells: () => set((state) => ({ ...state, invalidCells: [] })),
+      set((state) => {
+        const invalidCells = deleteCells(state.invalidCells, cells);
+
+        return { ...state, invalidCells, invalidCellsMap: getCellsMap(invalidCells) };
+      }),
+    resetInvalidCells: () => set((state) => ({ ...state, invalidCells: [], invalidCellsMap: {} })),
     setColumns: (columns) => set((state) => ({ ...state, columns })),
     setExpandableRows: (expandableRows, defaultExpandedRows) =>
       set((state) => ({
@@ -109,7 +127,8 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
     setHiddenRows: (hiddenRows) => set((state) => ({ ...state, hiddenRows })),
     setOpenModal: (value) => set((state) => ({ ...state, openedModal: value })),
     setRows: (rows) => set((state) => ({ ...state, rows })),
-    setSelectedCells: (cells) => set((state) => ({ ...state, selectedCells: cells })),
+    setSelectedCells: (cells) =>
+      set((state) => ({ ...state, selectedCells: cells, selectedCellsMap: getCellsMap(cells) })),
     setSelectedRows: (rowIndexes) => set((state) => ({ ...state, selectedRows: rowIndexes })),
     setTableRef: (ref) => set((state) => ({ ...state, tableRef: ref })),
     setAutoFillActive: (isActive) => set((state) => ({ ...state, isAutoFillActive: isActive })),

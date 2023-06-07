@@ -74,9 +74,7 @@ exports[`renders worksheet 1`] = `
       </tr>
     </thead>
     <tbody>
-      <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 LrOOj"
-      >
+      <tr>
         <td
           class="styled__Status-sc-1aacki0-0 jJFKzo"
         />
@@ -224,9 +222,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
       </tr>
-      <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 LrOOj"
-      >
+      <tr>
         <td
           class="styled__Status-sc-1aacki0-0 jJFKzo"
         />
@@ -374,9 +370,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
       </tr>
-      <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 LrOOj"
-      >
+      <tr>
         <td
           class="styled__Status-sc-1aacki0-0 jJFKzo"
         />
@@ -521,9 +515,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
       </tr>
-      <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 LrOOj"
-      >
+      <tr>
         <td
           class="styled__Status-sc-1aacki0-0 jJFKzo"
         />
@@ -671,9 +663,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
       </tr>
-      <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 LrOOj"
-      >
+      <tr>
         <td
           class="styled__Status-sc-1aacki0-0 eWXKBa"
         />
@@ -811,9 +801,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
       </tr>
-      <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 LrOOj"
-      >
+      <tr>
         <td
           class="styled__Status-sc-1aacki0-0 jJFKzo"
         />
@@ -961,9 +949,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
       </tr>
-      <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 LrOOj"
-      >
+      <tr>
         <td
           class="styled__Status-sc-1aacki0-0 eWXKBa"
         />
@@ -1110,9 +1096,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
       </tr>
-      <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 LrOOj"
-      >
+      <tr>
         <td
           class="styled__Status-sc-1aacki0-0 jJFKzo"
         />
@@ -1260,9 +1244,7 @@ exports[`renders worksheet 1`] = `
           />
         </td>
       </tr>
-      <tr
-        class="styled__StyledTableRow-sc-1bzgr3l-0 LrOOj"
-      >
+      <tr>
         <td
           class="styled__Status-sc-1aacki0-0 jJFKzo"
         />

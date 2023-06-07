@@ -12,8 +12,6 @@ import {
   WorksheetTextColumn,
 } from '../types';
 
-import { StyledTableRow } from './styled';
-
 interface RowProps<Item> {
   columns: Array<InternalWorksheetColumn<Item>>;
   rowIndex: number;
@@ -75,8 +73,12 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
     [expandableRows, row.id],
   );
 
+  if (isChild && !isExpanded) {
+    return null;
+  }
+
   return (
-    <StyledTableRow isExpanded={!isChild || isExpanded}>
+    <tr>
       <RowStatus rowIndex={rowIndex} />
       {columns.map((column, columnIndex) => (
         <Cell
@@ -97,7 +99,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
           value={row[column.hash] ?? ''}
         />
       ))}
-    </StyledTableRow>
+    </tr>
   );
 };
 

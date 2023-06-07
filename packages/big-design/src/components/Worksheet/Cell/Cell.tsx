@@ -12,6 +12,7 @@ import {
   WorksheetSelectableColumn,
   WorksheetTextColumn,
 } from '../types';
+import { getCellIdx } from '../utils';
 
 import { AutoFillHandler, CellNote, StyledCell } from './styled';
 
@@ -46,6 +47,7 @@ const InternalCell = <T extends WorksheetItem>({
     () => ({ columnIndex, disabled, hash, rowIndex, type, value }),
     [columnIndex, disabled, hash, rowIndex, type, value],
   );
+  const cellIdx = useMemo(() => getCellIdx(cell), [cell]);
 
   const { handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing } =
     useEditableCell<T>(cell);
@@ -88,49 +90,27 @@ const InternalCell = <T extends WorksheetItem>({
     store,
     useMemo(
       () => (state) => {
-        const idx = state.selectedCells.findIndex(
-          (selectedCell) =>
-            selectedCell.columnIndex === cell.columnIndex &&
-            selectedCell.rowIndex === cell.rowIndex,
-        );
+        const idx = Object.keys(state.selectedCellsMap).indexOf(cellIdx);
 
         return {
           selectedCells: state.selectedCells,
           isLastSelected: state.selectedCells.length - 1 === idx,
           isFirstSelected: idx === 0,
-          isSelected: state.selectedCells.some(
-            (selectedCell) =>
-              selectedCell.columnIndex === cell.columnIndex &&
-              selectedCell.rowIndex === cell.rowIndex,
-          ),
+          isSelected: idx !== -1,
         };
       },
-      [cell],
+      [cellIdx],
     ),
   );
 
   const isEdited = useStore(
     store,
-    useMemo(
-      () => (state) =>
-        state.editedCells.some(
-          (editedCell) =>
-            editedCell.columnIndex === cell.columnIndex && editedCell.rowIndex === cell.rowIndex,
-        ),
-      [cell],
-    ),
+    useMemo(() => (state) => !!state.editedCellsMap[cellIdx], [cellIdx]),
   );
 
   const invalidCell = useStore(
     store,
-    useMemo(
-      () => (state) =>
-        state.invalidCells.find(
-          (invalidCell) =>
-            invalidCell.columnIndex === cell.columnIndex && invalidCell.rowIndex === cell.rowIndex,
-        ),
-      [cell.columnIndex, cell.rowIndex],
-    ),
+    useMemo(() => (state) => state.invalidCellsMap[cellIdx], [cellIdx]),
   );
 
   const isValid = useMemo(
