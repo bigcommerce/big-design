@@ -78,3 +78,15 @@ export const getHiddenRows = (
       defaultExpandedRows.map(String).includes(key) ? accum : [...accum, ...value],
     [],
   );
+
+export const getCellIdx = <T extends WorksheetItem>({ columnIndex, rowIndex }: Cell<T>) =>
+  `${rowIndex}_${columnIndex}`;
+
+export const getCellsMap = <T extends WorksheetItem>(cells: Array<Cell<T>>) =>
+  cells.reduce(
+    (acc, cell) => ({
+      ...acc,
+      [getCellIdx(cell)]: cell,
+    }),
+    {},
+  );
