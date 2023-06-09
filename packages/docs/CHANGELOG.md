@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.36.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.36.0...@bigcommerce/docs@0.36.1) (2023-06-09)
+
+
+### Features
+
+* **component:** add notation for worksheet cells ([#1193](https://github.com/bigcommerce/big-design/issues/1193)) ([f689f00](https://github.com/bigcommerce/big-design/commit/f689f0042fc27cc4d73df345c6530ebc2c498524))
+
+
+
+
+
 # [0.36.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.35.0...@bigcommerce/docs@0.36.0) (2023-04-05)
 
 
