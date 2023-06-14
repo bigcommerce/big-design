@@ -196,12 +196,19 @@ const InternalWorksheet = typedMemo(
 
 export const WorksheetContext = createContext<StoreApi<BaseState<any>> | null>(null);
 
-export const WorksheetLocalizationContext = createContext<WorksheetLocalization | undefined>(
-  undefined,
-);
+export const WorksheetLocalizationContext = createContext<WorksheetLocalization>({
+  toggleRowExpanded: 'toggle row expanded',
+});
+
+const defaultLocalization = {
+  toggleRowExpanded: 'toggle row expanded',
+};
 
 export const Worksheet = typedMemo(
-  <T extends WorksheetItem>({ localization, ...props }: WorksheetProps<T>) => {
+  <T extends WorksheetItem>({
+    localization = defaultLocalization,
+    ...props
+  }: WorksheetProps<T>) => {
     const store = useMemo(() => createWorksheetStore<T>(), []);
 
     return (

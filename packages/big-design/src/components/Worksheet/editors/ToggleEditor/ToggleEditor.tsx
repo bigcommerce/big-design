@@ -37,7 +37,7 @@ const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
         onClick={() => {
           onToggle(true);
         }}
-        title={localization?.toggleRowExpanded || 'toggle row expanded'}
+        title={localization.toggleRowExpanded}
         variant="subtle"
       />
     );
@@ -49,7 +49,7 @@ const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
       onClick={() => {
         onToggle(false);
       }}
-      title={localization?.toggleRowExpanded || 'toggle row expanded'}
+      title={localization.toggleRowExpanded}
       variant="subtle"
     />
   );

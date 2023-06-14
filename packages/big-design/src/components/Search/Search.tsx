@@ -6,10 +6,14 @@ import { Flex, FlexItem } from '../Flex';
 import { Form } from '../Form';
 import { Input } from '../Input';
 
-import { SearchProps } from './types';
+import { SearchLocalization, SearchProps } from './types';
+
+const defaultLocalization: SearchLocalization = {
+  search: 'Search',
+};
 
 export const Search: React.FC<SearchProps> = ({
-  localization,
+  localization = defaultLocalization,
   value,
   onChange,
   onSubmit,
@@ -33,17 +37,17 @@ export const Search: React.FC<SearchProps> = ({
         <FlexItem flexGrow={1} marginRight="small">
           <Input
             {...props}
-            aria-label={ariaLabel ?? (localization?.search || 'Search')}
+            aria-label={ariaLabel ?? localization.search}
             autoComplete={autoComplete}
             iconLeft={<SearchIcon color="secondary50" />}
             onChange={onChange}
-            placeholder={placeholder ?? (localization?.search || 'Search')}
+            placeholder={placeholder ?? localization.search}
             type="search"
             value={value}
           />
         </FlexItem>
         <Button mobileWidth="auto" type="submit" variant="secondary">
-          {localization?.search || 'Search'}
+          {localization.search}
         </Button>
       </Flex>
     </Form>

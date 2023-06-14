@@ -264,7 +264,7 @@ export const Select = typedMemo(
         return (
           <FormControlLabel
             {...getLabelProps()}
-            optionalLabel={localization?.optional}
+            localization={localization}
             renderOptional={!required}
           >
             {label}
@@ -280,7 +280,7 @@ export const Select = typedMemo(
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [getLabelProps, label, localization?.optional, required]);
+    }, [getLabelProps, label, localization, required]);
 
     const renderToggle = useMemo(() => {
       return (

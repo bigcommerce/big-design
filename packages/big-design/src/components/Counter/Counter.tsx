@@ -24,6 +24,12 @@ interface Localization {
   optional: string;
 }
 
+const defaultLocalization: Localization = {
+  decreaseCount: 'Decrease count',
+  increaseCount: 'Increase count',
+  optional: 'optional',
+};
+
 export interface CounterProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactNode;
   labelId?: string;
@@ -47,7 +53,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     forwardedRef,
     label,
     labelId,
-    localization,
+    localization = defaultLocalization,
     description,
     error,
     disabled,
@@ -157,7 +163,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
           <FormControlLabel
             htmlFor={id}
             id={labelId}
-            optionalLabel={localization?.optional}
+            localization={{ optional: localization.optional }}
             renderOptional={!props.required}
           >
             {label}
@@ -176,7 +182,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [id, label, labelId, localization?.optional, props.required]);
+    }, [id, label, labelId, localization.optional, props.required]);
 
     const renderedDescription = useMemo(() => {
       if (!description) {
@@ -201,9 +207,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
         <StyledCounterWrapper disabled={disabled} error={errors} focus={focus}>
           <StyledCounterButton
             disabled={disabled || value <= Number(min)}
-            iconOnly={
-              <RemoveCircleOutlineIcon title={localization?.decreaseCount || 'Decrease count'} />
-            }
+            iconOnly={<RemoveCircleOutlineIcon title={localization.decreaseCount} />}
             onClick={handleDecrease}
             type="button"
           />
@@ -221,9 +225,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
           />
           <StyledCounterButton
             disabled={disabled || value >= Number(max)}
-            iconOnly={
-              <AddCircleOutlineIcon title={localization?.increaseCount || 'Increase count'} />
-            }
+            iconOnly={<AddCircleOutlineIcon title={localization.increaseCount} />}
             onClick={handleIncrease}
             type="button"
           />

@@ -17,13 +17,17 @@ import {
 } from './styled';
 
 interface Localization {
-  localization?: { close: string };
+  close: string;
 }
 
-export type MessageProps = SharedMessagingProps & MarginProps;
+const defaultLocalization: Localization = {
+  close: 'Close',
+};
 
-export const Message: React.FC<MessageProps & Localization> = memo(
-  ({ className, localization = { close: 'Close' }, style, header, ...props }) => {
+export type MessageProps = SharedMessagingProps & MarginProps & { localization?: Localization };
+
+export const Message: React.FC<MessageProps> = memo(
+  ({ className, localization = defaultLocalization, style, header, ...props }) => {
     const filteredProps = excludePaddingProps(props);
     const icon = useMemo(() => props.type && getMessagingIcon(props.type), [props.type]);
 

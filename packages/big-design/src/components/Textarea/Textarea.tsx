@@ -58,7 +58,7 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
         <FormControlLabel
           htmlFor={id}
           id={labelId}
-          optionalLabel={localization?.optional}
+          localization={localization}
           renderOptional={!props.required}
         >
           {label}
@@ -77,7 +77,7 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
     }
 
     warning('label must be either a string or a FormControlLabel component.');
-  }, [id, label, labelId, localization?.optional, props.required]);
+  }, [id, label, labelId, localization, props.required]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {

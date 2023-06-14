@@ -28,11 +28,11 @@ test('appends (optional) text when renderOptional', () => {
 
 test('appends custom (optional) text when passed', () => {
   const { container } = render(
-    <FormControlLabel optionalLabel="Custom optional" renderOptional>
+    <FormControlLabel localization={{ optional: 'Custom optional' }} renderOptional>
       This is a label
     </FormControlLabel>,
   );
   const label = container.querySelector('label');
 
-  expect(label).toHaveStyleRule('content', "' (custom optional)'", { modifier: '::after' });
+  expect(label).toHaveStyleRule('content', "' (Custom optional)'", { modifier: '::after' });
 });

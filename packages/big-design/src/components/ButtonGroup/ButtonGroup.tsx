@@ -27,6 +27,10 @@ interface Localization {
   more: string;
 }
 
+const defaultLocalization: Localization = {
+  more: 'more',
+};
+
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement>, MarginProps {
   actions: ButtonGroupAction[];
   localization?: Localization;
@@ -46,7 +50,7 @@ const excludeIconProps = ({
 }: ButtonProps & Pick<ButtonGroupAction, 'text'>): ButtonGroupAction => actionProps;
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
-  ({ actions, localization, ...wrapperProps }) => {
+  ({ actions, localization = defaultLocalization, ...wrapperProps }) => {
     const parentRef = createRef<HTMLDivElement>();
     const dropdownRef = createRef<HTMLDivElement>();
     const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -123,7 +127,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
             toggle={
               <StyledButton
                 borderRadius={actionsState.every(({ isVisible }) => !isVisible)}
-                iconOnly={<MoreHorizIcon title={localization?.more || 'more'} />}
+                iconOnly={<MoreHorizIcon title={localization.more} />}
                 type="button"
                 variant="secondary"
               />
@@ -131,7 +135,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
           />
         </StyledFlexItem>
       ),
-      [actionsState, dropdownRef, isMenuVisible, localization?.more],
+      [actionsState, dropdownRef, isMenuVisible, localization.more],
     );
 
     const renderedActions = useMemo(

@@ -17,13 +17,18 @@ import {
 } from './styled';
 
 interface Localization {
-  localization?: { close: string };
+  close: string;
 }
 
-export type InlineMessageProps = SharedMessagingProps & MarginProps;
+const defaultLocalization: Localization = {
+  close: 'Close',
+};
 
-export const InlineMessage: React.FC<InlineMessageProps & Localization> = memo(
-  ({ className, style, header, localization, ...props }) => {
+export type InlineMessageProps = SharedMessagingProps &
+  MarginProps & { localization?: Localization };
+
+export const InlineMessage: React.FC<InlineMessageProps> = memo(
+  ({ className, style, header, localization = defaultLocalization, ...props }) => {
     const filteredProps = excludePaddingProps(props);
     const icon = useMemo(() => props.type && getMessagingIcon(props.type, true), [props.type]);
 
@@ -72,7 +77,7 @@ export const InlineMessage: React.FC<InlineMessageProps & Localization> = memo(
         {props.onClose && (
           <GridItem>
             <MessagingButton
-              iconOnly={<CloseIcon size="medium" title={localization?.close || 'Close'} />}
+              iconOnly={<CloseIcon size="medium" title={localization.close} />}
               onClick={props.onClose}
             />
           </GridItem>
