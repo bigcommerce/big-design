@@ -6,7 +6,7 @@ interface Localization {
   optional: string;
 }
 
-const defaultLocalization = {
+const defaultLocalization: Localization = {
   optional: 'optional',
 };
 
