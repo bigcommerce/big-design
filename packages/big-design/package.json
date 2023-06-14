@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design",
-  "version": "0.36.1",
+  "version": "0.36.2",
   "sideEffects": false,
   "main": "src/index.ts",
   "author": "BigCommerce Inc",
@@ -33,8 +33,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
-    "@bigcommerce/big-design-icons": "^0.23.1",
-    "@bigcommerce/big-design-theme": "^0.19.1",
+    "@bigcommerce/big-design-icons": "^0.23.2",
+    "@bigcommerce/big-design-theme": "^0.19.2",
     "@popperjs/core": "^2.11.6",
     "@types/react-datepicker": "^4.4.2",
     "date-fns": "2.30.0",

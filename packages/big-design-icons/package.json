@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design-icons",
-  "version": "0.23.1",
+  "version": "0.23.2",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
-    "@bigcommerce/big-design-theme": "^0.19.1"
+    "@bigcommerce/big-design-theme": "^0.19.2"
   },
   "peerDependencies": {
     "react": "^18.0.0",

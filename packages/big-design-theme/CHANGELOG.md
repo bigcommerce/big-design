@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.19.1...@bigcommerce/big-design-theme@0.19.2) (2023-06-14)
+
+
+### Bug Fixes
+
+* declaration tsconfig for theme publishing ([4789b8b](https://github.com/bigcommerce/big-design/commit/4789b8b35d3fbfbd42d0312de66cd1b48bef0f39))
+
+
+
+
+
 ## [0.19.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.19.0...@bigcommerce/big-design-theme@0.19.1) (2023-06-09)
 
 **Note:** Version bump only for package @bigcommerce/big-design-theme
