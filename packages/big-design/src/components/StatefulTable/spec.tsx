@@ -556,9 +556,11 @@ describe('test search in the StatefulTable', () => {
 test('renders localized labels', async () => {
   render(
     getSimpleTable({
+      getRangeLabel: (start: number, end: number, totalItems: number): string => {
+        return `${start} - ${end} de ${totalItems}`;
+      },
       pagination: true,
       localization: {
-        of: 'de',
         nextPage: 'Pagina siguiente',
         previousPage: 'Pagina previa',
         search: 'Buscar',

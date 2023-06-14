@@ -113,9 +113,15 @@ const statefulTableProps: Prop[] = [
     ),
   },
   {
+    name: 'getRangeLabel',
+    types: '(start: number, end: number, totalItems: number) => string',
+    required: false,
+    description: 'A callback to format the label of the per-page range dropdown.',
+  },
+  {
     name: 'localization',
     types:
-      '{ of: string, nextPage: string, previousPage: string } | { search: string } | ({ of: string, nextPage: string, previousPage: string } & { search: string })',
+      '{ nextPage: string, previousPage: string } | { search: string } | ({ nextPage: string, previousPage: string } & { search: string })',
     description: 'Overrides the labels with localized text.',
   },
 ];

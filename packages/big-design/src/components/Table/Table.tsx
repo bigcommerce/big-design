@@ -150,14 +150,13 @@ const InternalTable = <T extends TableItem>(
           return (
             <HeaderCell
               actionsRef={actionsRef}
-              ascendingOrderLabel={localization?.ascendingOrder}
               column={{ ...column, width: widthColumn }}
-              descendingOrderLabel={localization?.descendingOrder}
               display={display}
               hide={hideHeader}
               id={`header-cell-${index}`}
               isSorted={isSorted}
               key={index}
+              localization={localization}
               onSortClick={onSortClick}
               sortDirection={sortDirection}
               stickyHeader={stickyHeader}

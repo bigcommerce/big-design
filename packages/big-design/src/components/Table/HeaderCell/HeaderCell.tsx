@@ -14,17 +14,26 @@ import { TableColumn, TableItem } from '../types';
 
 import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderIcon } from './styled';
 
+interface Localization {
+  ascendingOrder: string;
+  descendingOrder: string;
+}
+
+const defaultLocalization: Localization = {
+  ascendingOrder: 'Ascending order',
+  descendingOrder: 'Descending order',
+};
+
 export interface HeaderCellProps<T>
   extends TableHTMLAttributes<HTMLTableCellElement>,
     TableColumnDisplayProps {
   actionsRef: RefObject<HTMLDivElement>;
-  ascendingOrderLabel?: string;
   children?: React.ReactNode;
   column: TableColumn<T>;
-  descendingOrderLabel?: string;
   id: string;
   hide?: boolean;
   isSorted?: boolean;
+  localization?: Localization;
   sortDirection?: 'ASC' | 'DESC';
   stickyHeader?: boolean;
   onSortClick?(column: TableColumn<T>): void;
@@ -42,14 +51,13 @@ export interface DragIconCellProps {
 
 const InternalHeaderCell = <T extends TableItem>({
   actionsRef,
-  ascendingOrderLabel = 'Ascending order',
   children,
   column,
-  descendingOrderLabel = 'Desceding order',
   display,
   hide = false,
   id,
   isSorted,
+  localization = defaultLocalization,
   onSortClick,
   sortDirection,
   stickyHeader,
@@ -64,9 +72,13 @@ const InternalHeaderCell = <T extends TableItem>({
     }
 
     return sortDirection === 'ASC' ? (
-      <ArrowUpwardIcon data-testid="asc-icon" size="medium" title={ascendingOrderLabel} />
+      <ArrowUpwardIcon data-testid="asc-icon" size="medium" title={localization.ascendingOrder} />
     ) : (
-      <ArrowDownwardIcon data-testid="desc-icon" size="medium" title={descendingOrderLabel} />
+      <ArrowDownwardIcon
+        data-testid="desc-icon"
+        size="medium"
+        title={localization.descendingOrder}
+      />
     );
   };
 

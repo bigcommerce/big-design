@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
+import { PaginationProps } from '../Pagination';
 import { PaginationLocalization } from '../Pagination/Pagination';
 import { PillTabItem, PillTabs, PillTabsProps } from '../PillTabs';
 import { Search } from '../Search';
@@ -22,6 +23,12 @@ type Localization =
   | PaginationLocalization
   | SearchLocalization
   | (PaginationLocalization & SearchLocalization);
+
+const defaultLocalization: Localization = {
+  nextPage: 'Next page',
+  previousPage: 'Previous page',
+  search: 'Search',
+};
 
 export interface StatefulTablePillTabFilter<T> {
   pillTabs: PillTabItem[];
@@ -54,6 +61,7 @@ export interface StatefulTableProps<T>
   selectable?: boolean;
   defaultSelected?: T[];
   search?: boolean;
+  getRangeLabel?: PaginationProps['getRangeLabel'];
   onRowDrop?(items: T[]): void;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }
@@ -77,7 +85,8 @@ const InternalStatefulTable = <T extends TableItem>({
   itemName,
   items = [],
   keyField,
-  localization: localizationObj,
+  localization: localizationProp,
+  getRangeLabel,
   onSelectionChange,
   onRowDrop,
   search,
@@ -87,14 +96,7 @@ const InternalStatefulTable = <T extends TableItem>({
   stickyHeader = false,
   ...rest
 }: StatefulTableProps<T>): React.ReactElement<StatefulTableProps<T>> => {
-  // Merge localization and set defaults to make sure prop exists no matter what type
-  const localization = {
-    of: 'of',
-    nextPage: 'Next page',
-    previousPage: 'Previous page',
-    search: 'Search',
-    ...localizationObj,
-  };
+  const localization = { ...defaultLocalization, ...localizationProp };
 
   const reducer = useMemo(() => createReducer<T>(), []);
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
@@ -153,20 +155,20 @@ const InternalStatefulTable = <T extends TableItem>({
             onItemsPerPageChange,
             onPageChange,
             localization: {
-              of: localization.of,
               previousPage: localization.previousPage,
               nextPage: localization.nextPage,
             },
+            getRangeLabel,
           }
         : undefined,
     [
       pagination,
       state.pagination,
+      getRangeLabel,
       onItemsPerPageChange,
       onPageChange,
-      localization?.of,
-      localization?.previousPage,
-      localization?.nextPage,
+      localization.previousPage,
+      localization.nextPage,
     ],
   );
 

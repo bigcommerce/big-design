@@ -96,7 +96,7 @@ test('render pagination component while overriding button labels', async () => {
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
       label="[Custom] Pagination"
-      localization={{ of: 'de', previousPage: 'Pagina previa', nextPage: 'Pagina siguiente' }}
+      localization={{ previousPage: 'Pagina previa', nextPage: 'Pagina siguiente' }}
       onItemsPerPageChange={changeRange}
       onPageChange={changePage}
       totalItems={10}
@@ -206,10 +206,13 @@ test('renders localized labels', async () => {
   render(
     <Pagination
       currentPage={1}
+      getRangeLabel={(start: number, end: number, totalItems: number): string => {
+        return `${start} - ${end} de ${totalItems}`;
+      }}
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
       label="Paginacion"
-      localization={{ of: 'de', previousPage: 'Pagina previa', nextPage: 'Pagina siguiente' }}
+      localization={{ previousPage: 'Pagina previa', nextPage: 'Pagina siguiente' }}
       onItemsPerPageChange={changeRange}
       onPageChange={changePage}
       totalItems={10}
