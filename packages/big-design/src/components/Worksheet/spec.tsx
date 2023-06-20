@@ -9,7 +9,7 @@ import { WorksheetColumn } from './types';
 import { Worksheet } from './Worksheet';
 
 interface Product {
-  id: number;
+  id: number | string;
   productName: string;
   visibleOnStorefront: boolean;
   otherField: string;
@@ -417,7 +417,7 @@ describe('edition', () => {
     });
   });
 
-  test('fill out full column', async () => {
+  test('fills out full column', async () => {
     render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     const foundElement = await screen.findAllByText('Shoes Name Three');
@@ -443,7 +443,7 @@ describe('edition', () => {
     expect(foundElements).toHaveLength(9);
   });
 
-  test('fill out all bottom cells', async () => {
+  test('fills out all bottom cells', async () => {
     render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
 
     const foundElement = await screen.findByText('Shoes Name One');
@@ -461,6 +461,59 @@ describe('edition', () => {
     const foundElements = await screen.findAllByText('Shoes Name One');
 
     expect(foundElements).toHaveLength(7);
+  });
+
+  test('fills out only available cells', async () => {
+    const items: Array<Partial<Product>> = [
+      {
+        id: 'test1',
+        productName: 'Product 1',
+        otherField: 'Text',
+      },
+      {
+        id: 'test2',
+        productName: 'Product 2',
+        otherField: 'Text',
+      },
+      {
+        id: 'test3',
+        productName: 'Product 3',
+        otherField: 'Text',
+      },
+      {
+        id: 'test4',
+        productName: 'Product 4',
+        otherField: 'Text',
+      },
+      {
+        id: 'test5',
+        productName: 'Product 5',
+        otherField: 'Text',
+      },
+    ];
+
+    render(
+      <Worksheet
+        columns={columns}
+        disabledRows={['test2', 'test4']}
+        items={items}
+        onChange={handleChange}
+      />,
+    );
+
+    const foundElement = await screen.findByText('Product 1');
+
+    if (foundElement) {
+      fireEvent.click(foundElement);
+    }
+
+    const button = await screen.findByLabelText('Autofill handler');
+
+    fireEvent.doubleClick(button);
+
+    const foundElements = await screen.findAllByText('Product 1');
+
+    expect(foundElements).toHaveLength(3);
   });
 });
 
