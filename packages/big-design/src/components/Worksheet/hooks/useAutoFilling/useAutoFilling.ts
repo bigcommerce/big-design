@@ -116,6 +116,8 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         availableCells.map(({ hash }) => rows[selectedCells[0].rowIndex][hash]),
       );
+
+      setBlockFillOut(true);
     }
   }, [
     disabledRows,
@@ -126,6 +128,7 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
     selectedCells,
     setSelectingActive,
     updateItems,
+    setBlockFillOut,
   ]);
 
   return {
