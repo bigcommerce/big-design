@@ -51,7 +51,8 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
   const onFillFullColumn = useCallback(() => {
     const cells: Array<Cell<T>> = rows.reduce(
       (accum, row, idx) =>
-        idx > cell.rowIndex && !disabledRows.includes(idx + 1)
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        idx > cell.rowIndex && !disabledRows.includes(row.id)
           ? [
               ...accum,
               {
@@ -104,8 +105,10 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
 
   useEffect(() => {
     if (!isBlockedFillOut && !isAutoFillActive && selectedCells.length > 1) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      const selectedRowsIds = selectedCells.map(({ rowIndex }) => rows[rowIndex].id);
       const availableCells = selectedCells.filter(
-        ({ rowIndex }) => !disabledRows.includes(rowIndex + 1),
+        ({ rowIndex }) => !disabledRows.includes(selectedRowsIds[rowIndex]),
       );
 
       updateItems(
