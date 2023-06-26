@@ -73,6 +73,17 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
     [expandableRows, row.id],
   );
 
+  const getIsCellDisabled = useCallback(
+    ({ enabled, disabled }: InternalWorksheetColumn<T>) => {
+      if (typeof enabled === 'boolean' && enabled) {
+        return false;
+      }
+
+      return disabled || isDisabled;
+    },
+    [isDisabled],
+  );
+
   if (isChild && !isExpanded) {
     return null;
   }
@@ -83,7 +94,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
       {columns.map((column, columnIndex) => (
         <Cell
           columnIndex={columnIndex}
-          disabled={column.disabled || isDisabled}
+          disabled={getIsCellDisabled(column)}
           formatting={hasFormatting(column) ? column.formatting : undefined}
           hash={column.hash}
           isChild={isChild}
