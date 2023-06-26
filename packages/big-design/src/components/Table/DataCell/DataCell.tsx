@@ -1,3 +1,5 @@
+'use client';
+
 import React, { memo, TableHTMLAttributes } from 'react';
 
 import { TableColumnDisplayProps } from '../mixins';

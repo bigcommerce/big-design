@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Dispatch, RefObject, SetStateAction } from 'react';
 
 import { typedMemo } from '../../../utils';

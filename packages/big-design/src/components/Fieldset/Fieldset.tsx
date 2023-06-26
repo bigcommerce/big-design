@@ -1,3 +1,5 @@
+'use client';
+
 import React, { FieldsetHTMLAttributes, isValidElement, memo, useMemo } from 'react';
 
 import { warning } from '../../utils';

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, memo, Ref, useEffect, useState } from 'react';
 import { default as ReactDatePicker, registerLocale } from 'react-datepicker';
 

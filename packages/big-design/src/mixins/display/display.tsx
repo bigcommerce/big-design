@@ -1,3 +1,5 @@
+'use client';
+
 import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 

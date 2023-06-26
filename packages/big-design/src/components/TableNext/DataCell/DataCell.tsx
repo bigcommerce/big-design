@@ -1,3 +1,5 @@
+'use client';
+
 import React, { memo, TdHTMLAttributes } from 'react';
 
 import { PaddingProps } from '../../../mixins';

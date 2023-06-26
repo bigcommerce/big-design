@@ -1,3 +1,5 @@
+'use client';
+
 import { BaselineHelpIcon } from '@bigcommerce/big-design-icons';
 import React, {
   createContext,

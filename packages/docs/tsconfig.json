@@ -10,14 +10,16 @@
     "jsx": "preserve",
     "noUnusedLocals": false,
     "noImplicitAny": false,
-    "incremental": true
+    "incremental": true,
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     "styled.d.ts",
     "global.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

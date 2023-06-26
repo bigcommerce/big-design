@@ -1,3 +1,5 @@
+'use client';
+
 import React, { ButtonHTMLAttributes, forwardRef, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';

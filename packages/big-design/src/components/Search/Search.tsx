@@ -1,3 +1,5 @@
+'use client';
+
 import { SearchIcon } from '@bigcommerce/big-design-icons';
 import React, { FormEvent } from 'react';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
 import React, {
   createRef,

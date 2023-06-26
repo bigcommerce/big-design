@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, memo, Ref, useMemo } from 'react';
 
 import { createLocalizationProvider, getTimeIntervals } from '../../utils';

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { isValidElement, useContext, useEffect, useMemo } from 'react';
 
 import { warning } from '../../utils';

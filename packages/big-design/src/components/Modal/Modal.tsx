@@ -1,3 +1,5 @@
+'use client';
+
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import { createFocusTrap, FocusTrap } from 'focus-trap';
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react';

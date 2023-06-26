@@ -13,6 +13,10 @@ const URL_PREFIX = '/big-design';
 const examplesVersion = pkg.devDependencies['@bigcommerce/examples'].replace('^', '');
 
 module.exports = withTM({
+  experimental: {
+    appDir: true,
+  },
+  output: 'export',
   basePath: isProduction ? URL_PREFIX : '',
   env: {
     CODE_SANDBOX_URL: `https://codesandbox.io/s/github/bigcommerce/big-design/tree/%40bigcommerce/examples%40${examplesVersion}/packages/examples`,
@@ -35,14 +39,14 @@ module.exports = withTM({
       },
     };
   },
-  exportPathMap: (defaultPathMap) => {
-    if (isDev) {
-      return defaultPathMap;
-    }
+  // exportPathMap: (defaultPathMap) => {
+  //   if (isDev) {
+  //     return defaultPathMap;
+  //   }
 
-    // Ensures the dev page doesn't get built to production
-    const { '/dev': dev, ...rest } = defaultPathMap;
+  //   // Ensures the dev page doesn't get built to production
+  //   const { '/dev': dev, ...rest } = defaultPathMap;
 
-    return rest;
-  },
+  //   return rest;
+  // },
 });

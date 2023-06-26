@@ -1,3 +1,5 @@
+'use client';
+
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import React, { memo } from 'react';
 

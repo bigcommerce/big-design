@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckIcon, MoreHorizIcon } from '@bigcommerce/big-design-icons';
 import React, { createRef, useCallback, useEffect, useMemo, useState } from 'react';
 

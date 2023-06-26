@@ -1,3 +1,5 @@
+'use client';
+
 import { Spacing } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 

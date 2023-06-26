@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckIcon, RemoveIcon } from '@bigcommerce/big-design-icons';
 import React, {
   cloneElement,

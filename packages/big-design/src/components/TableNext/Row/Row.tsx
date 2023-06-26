@@ -1,3 +1,5 @@
+'use client';
+
 import { ChevronRightIcon, DragIndicatorIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React, { forwardRef, ReactNode, TableHTMLAttributes } from 'react';
 

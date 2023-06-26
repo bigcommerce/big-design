@@ -1,3 +1,5 @@
+'use client';
+
 import { Modifier, Obj, Placement } from '@popperjs/core';
 import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset';
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react';

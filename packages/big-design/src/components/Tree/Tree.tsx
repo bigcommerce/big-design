@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useMemo, useRef } from 'react';
 
 import { StyledUl } from './styled';

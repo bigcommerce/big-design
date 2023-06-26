@@ -1,3 +1,5 @@
+'use client';
+
 import { ErrorIcon } from '@bigcommerce/big-design-icons';
 import React, {
   Children,

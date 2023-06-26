@@ -1,3 +1,5 @@
+'use client';
+
 import { AddCircleOutlineIcon, RemoveCircleOutlineIcon } from '@bigcommerce/big-design-icons';
 import React, {
   cloneElement,

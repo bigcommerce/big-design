@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckIcon, ChevronRightIcon, FolderIcon } from '@bigcommerce/big-design-icons';
 import React, { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 

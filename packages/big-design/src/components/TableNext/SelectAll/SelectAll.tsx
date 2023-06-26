@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Dispatch, SetStateAction } from 'react';
 
 import { Checkbox } from '../../Checkbox';
