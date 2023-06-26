@@ -73,33 +73,28 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
   }, [cell, disabledRows, rows, updateItems]);
 
   const handleSelectedCells = useCallback(() => {
-    const copySelectedCells = [...selectedCells];
+    const newSelectedCells: Array<Cell<any>> = [];
 
     if (isAutoFillActive || isSelectingActive) {
-      const isUnic = !copySelectedCells.some((editedCell) => editedCell.rowIndex === cell.rowIndex);
-      const firstSelectedCell = copySelectedCells[0];
+      const firstSelectedCell = selectedCells[0];
 
-      if (firstSelectedCell && firstSelectedCell.rowIndex <= cell.rowIndex && isUnic) {
+      if (firstSelectedCell && firstSelectedCell.rowIndex <= cell.rowIndex) {
         const { columnIndex, hash, type } = firstSelectedCell;
 
-        copySelectedCells.push({
-          ...cell,
-          columnIndex,
-          hash,
-          type,
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          value: rows[cell.rowIndex][firstSelectedCell.hash],
-        });
+        for (let i = firstSelectedCell.rowIndex; i <= cell.rowIndex; i++) {
+          newSelectedCells.push({
+            ...cell,
+            columnIndex,
+            rowIndex: i,
+            hash,
+            type,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            value: rows[i][firstSelectedCell.hash],
+          });
+        }
       }
 
-      if (
-        copySelectedCells.length > 1 &&
-        cell.rowIndex === copySelectedCells[copySelectedCells.length - 2].rowIndex
-      ) {
-        copySelectedCells.pop();
-      }
-
-      setSelectedCells(copySelectedCells);
+      setSelectedCells(newSelectedCells);
     }
   }, [cell, isAutoFillActive, isSelectingActive, rows, selectedCells, setSelectedCells]);
 
