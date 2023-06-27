@@ -14,6 +14,10 @@ export const StyledDatepicker = styled.div`
     width: 100%;
   }
 
+  & .react-datepicker__aria-live {
+    display: none;
+  }
+
   & .react-datepicker__month-container {
     margin: ${({ theme }) => theme.spacing.medium};
   }
