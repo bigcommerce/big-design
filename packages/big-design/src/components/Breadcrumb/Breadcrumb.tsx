@@ -1,34 +1,67 @@
-import { OpenInNewIcon } from '@bigcommerce/big-design-icons';
-import React, { AnchorHTMLAttributes, forwardRef, memo, Ref } from 'react';
+import { ChevronRightIcon } from '@bigcommerce/big-design-icons';
+import React, { Children, forwardRef, HTMLAttributes, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
+import { Flex, FlexItem } from '../Flex';
+// import { Link } from '../Link';
 
 import { StyledBreadcrumb } from './styled';
 
-export interface BreadcrumbProps extends AnchorHTMLAttributes<HTMLAnchorElement>, MarginProps {
+export interface BreadcrumbProps extends HTMLAttributes<HTMLDivElement>, MarginProps {
   children?: React.ReactNode;
-  ellipsis?: boolean;
-  external?: boolean;
+  forwardSlash?: boolean;
+  iconBefore?: React.ReactNode;
 }
 
 interface PrivateProps {
   forwardedRef: Ref<HTMLAnchorElement>;
-  isExternal?: boolean;
+  isForwardSlash?: boolean;
+  isIconBefore?: boolean;
 }
 
-const StyleableLink: React.FC<BreadcrumbProps & PrivateProps> = memo((props) => (
+const StyleableBreadcrumb: React.FC<BreadcrumbProps & PrivateProps> = memo((props) => (
   <StyledBreadcrumb {...props} />
 ));
 
+const IconBefore = (icon: React.ReactNode) => (
+  <FlexItem alignSelf="center">
+    <span>{icon}</span>
+  </FlexItem>
+);
+const ForwardSlash = () => <FlexItem>/</FlexItem>;
+const ChevronRight = () => (
+  <FlexItem>
+    <ChevronRightIcon size="large" />
+  </FlexItem>
+);
+
 export const Breadcrumb = forwardRef<HTMLAnchorElement, BreadcrumbProps>(
-  ({ children, external, ...props }, ref) => {
-    const isExternal = external && props.target === '_blank';
+  ({ children, forwardSlash, iconBefore, ...props }, ref) => {
+    const isForwardSlash = forwardSlash;
+    const isIconBefore = Boolean(iconBefore);
+    const childCount = Children.toArray(children).length;
 
     return (
-      <StyleableLink {...props} forwardedRef={ref} isExternal={isExternal}>
-        {isExternal ? <span>{children}</span> : children}
-        {isExternal && <OpenInNewIcon size="medium" />}
-      </StyleableLink>
+      <StyleableBreadcrumb
+        {...props}
+        forwardedRef={ref}
+        isForwardSlash={isForwardSlash}
+        isIconBefore={isIconBefore}
+      >
+        <Flex alignItems="center" flexGap=".5rem">
+          {isIconBefore && IconBefore(iconBefore)}
+          {Children.map(children, (child, index) => {
+            const isLast = index === childCount - 1;
+
+            return (
+              <>
+                <FlexItem>{child}</FlexItem>
+                {!isLast && (isForwardSlash ? <ForwardSlash /> : <ChevronRight />)}
+              </>
+            );
+          })}
+        </Flex>
+      </StyleableBreadcrumb>
     );
   },
 );

@@ -2,6 +2,7 @@ export * from './AccordionPanel';
 export * from './Alert';
 export * from './Badge';
 export * from './Box';
+export * from './Breadcrumb';
 export * from './Button';
 export * from './ButtonGroup';
 export * from './Counter';

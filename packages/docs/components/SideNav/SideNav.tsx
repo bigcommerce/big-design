@@ -54,6 +54,7 @@ export const SideNav: React.FC = () => {
         </SideNavGroup>
 
         <SideNavGroup title="Actions &amp; Inputs">
+          <SideNavLink href="/breadcrumb">Breadcrumb</SideNavLink>
           <SideNavLink href="/button">Button</SideNavLink>
           <SideNavLink href="/button-group">ButtonGroup</SideNavLink>
           <SideNavLink href="/checkbox">Checkbox</SideNavLink>

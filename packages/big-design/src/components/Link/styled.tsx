@@ -7,7 +7,7 @@ import { withTransition } from '../../mixins/transitions';
 
 import { LinkProps } from './Link';
 
-export const StyledLink = styled.a<LinkProps & { isExternal?: boolean }>`
+export const styledLinkCSS = css<LinkProps & { isExternal?: boolean }>`
   ${withMargins()};
   ${withTransition(['color'], '70ms')}
   ${(props) => props.ellipsis && ellipsis()};
@@ -37,6 +37,10 @@ export const StyledLink = styled.a<LinkProps & { isExternal?: boolean }>`
         margin-left: ${theme.spacing.xxSmall};
       }
     `}
+`;
+
+export const StyledLink = styled.a`
+  ${styledLinkCSS}
 `;
 
 StyledLink.defaultProps = { theme: defaultTheme };
