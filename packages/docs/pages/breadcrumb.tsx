@@ -1,8 +1,8 @@
-import { Breadcrumb, H1, Link, Panel, Text } from '@bigcommerce/big-design';
+import { Breadcrumb, BreadcrumbItem, H1, Link, Panel, Text } from '@bigcommerce/big-design';
 import { OpenInNewIcon } from '@bigcommerce/big-design-icons';
 import React, { Fragment } from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
+import { CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { LinkPropTable, MarginPropTable } from '../PropTables';
 
 const LinkPage = () => {
@@ -30,15 +30,12 @@ const LinkPage = () => {
               title: 'Basic',
               render: () => (
                 <Fragment key="basic">
-                  <Text>
-                    A simple wrapper for anchor elements. Use instead of {'<a>'}. Supports all
-                    native anchor element attributes.
-                  </Text>
+                  <Text>TBD.</Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
-                    <Breadcrumb iconBefore={<OpenInNewIcon size="large" />}>
-                      <span>Account Settings</span>
-                      <Link href="#">Payment Methods</Link>
+                    <Breadcrumb>
+                      <BreadcrumbItem>Account Settings</BreadcrumbItem>
+                      <BreadcrumbItem>Payment Methods</BreadcrumbItem>
                     </Breadcrumb>
                     {/* jsx-to-string:end */}
                   </CodePreview>
@@ -46,16 +43,56 @@ const LinkPage = () => {
               ),
             },
             {
-              id: 'external-link',
-              title: 'External link',
+              id: 'with-forward-slash',
+              title: 'With Forward Slash',
               render: () => (
-                <Fragment key="external-link">
-                  <Text>You can also include an external icon.</Text>
+                <Fragment key="with-forward-slash">
+                  <Text>TBD. With a forwardslash between each item.</Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
-                    <Breadcrumb>
-                      <Link href="#">Link example</Link>
-                      <span>hello, world</span>
+                    <Breadcrumb forwardSlash>
+                      <BreadcrumbItem>Account Settings</BreadcrumbItem>
+                      <BreadcrumbItem>Payment Methods</BreadcrumbItem>
+                    </Breadcrumb>
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'icon-before',
+              title: 'Icon Before',
+              render: () => (
+                <Fragment key="icon-before">
+                  <Text>TBD. You can also include an icon before the Bredcrumb List.</Text>
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <Breadcrumb iconBefore={<OpenInNewIcon size="large" />}>
+                      <BreadcrumbItem>Account Settings</BreadcrumbItem>
+                      <BreadcrumbItem>Payment Methods</BreadcrumbItem>
+                    </Breadcrumb>
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'with-links',
+              title: 'With Links',
+              render: () => (
+                <Fragment key="with-links">
+                  <Text>TBD. You can also include links as BreadcrumbItems.</Text>
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <Breadcrumb
+                      iconBefore={
+                        <Link href="#">
+                          <OpenInNewIcon size="large" />
+                        </Link>
+                      }
+                    >
+                      <BreadcrumbItem href="#">Account Settings</BreadcrumbItem>
+                      <BreadcrumbItem href="#">Payment Methods</BreadcrumbItem>
                     </Breadcrumb>
                     {/* jsx-to-string:end */}
                   </CodePreview>
@@ -75,14 +112,16 @@ const LinkPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          discouraged={[<>Avoid using links for actions – use a button instead.</>]}
+          discouraged={[
+            <>
+              Avoid using any component that is not an `BreadcrumbItem` inside of the `Breadcrumb`
+              component.
+            </>,
+          ]}
           recommended={[
             <>
-              Use the <Code primary>external</Code> prop when a link navigates away from the control
-              panel.
+              Use `BreadcrumbItem` as either an anchor tag or a span with only strings as children.
             </>,
-            <>Usually within a sentence to provide additional guidance or information.</>,
-            <>Use descriptive text to set clear expectations of the link destination.</>,
           ]}
         />
       </Panel>

@@ -9,11 +9,14 @@ export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement>, Marg
   children?: React.ReactNode;
   ellipsis?: boolean;
   external?: boolean;
+  breadcrumbItem?: boolean;
 }
 
 interface PrivateProps {
   forwardedRef: Ref<HTMLAnchorElement>;
   isExternal?: boolean;
+  isbreadcrumbItem?: boolean;
+  hasLink?: boolean;
 }
 
 const StyleableLink: React.FC<LinkProps & PrivateProps> = memo((props) => (
@@ -21,11 +24,19 @@ const StyleableLink: React.FC<LinkProps & PrivateProps> = memo((props) => (
 ));
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ children, external, ...props }, ref) => {
+  ({ breadcrumbItem = false, children, external, ...props }, ref) => {
     const isExternal = external && props.target === '_blank';
+    const isbreadcrumbItem = breadcrumbItem;
+    const hasLink = Boolean(props.href);
 
     return (
-      <StyleableLink {...props} forwardedRef={ref} isExternal={isExternal}>
+      <StyleableLink
+        {...props}
+        forwardedRef={ref}
+        hasLink={hasLink}
+        isExternal={isExternal}
+        isbreadcrumbItem={isbreadcrumbItem}
+      >
         {isExternal ? <span>{children}</span> : children}
         {isExternal && <OpenInNewIcon size="medium" />}
       </StyleableLink>

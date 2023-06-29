@@ -1,10 +1,10 @@
 import { ChevronRightIcon } from '@bigcommerce/big-design-icons';
-import React, { Children, forwardRef, HTMLAttributes, memo, Ref } from 'react';
+import React, { Children, forwardRef, HTMLAttributes, isValidElement, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { Flex, FlexItem } from '../Flex';
-// import { Link } from '../Link';
 
+import { BreadcrumbItem } from './Item';
 import { StyledBreadcrumb } from './styled';
 
 export interface BreadcrumbProps extends HTMLAttributes<HTMLDivElement>, MarginProps {
@@ -53,12 +53,16 @@ export const Breadcrumb = forwardRef<HTMLAnchorElement, BreadcrumbProps>(
           {Children.map(children, (child, index) => {
             const isLast = index === childCount - 1;
 
-            return (
-              <>
-                <FlexItem>{child}</FlexItem>
-                {!isLast && (isForwardSlash ? <ForwardSlash /> : <ChevronRight />)}
-              </>
-            );
+            if (isValidElement(child) && child.type === BreadcrumbItem) {
+              return (
+                <>
+                  <FlexItem>{child}</FlexItem>
+                  {!isLast && (isForwardSlash ? <ForwardSlash /> : <ChevronRight />)}
+                </>
+              );
+            }
+
+            throw new Error(`Breadcrumb children should be of type \`BreadcrumbItem\`.`);
           })}
         </Flex>
       </StyleableBreadcrumb>
