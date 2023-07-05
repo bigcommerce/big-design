@@ -32,6 +32,7 @@ export * from './InsertDriveFileIcon';
 export * from './InvertColorsIcon';
 export * from './KeyboardDoubleArrowLeftIcon';
 export * from './LanguageIcon';
+export * from './LogoutIcon';
 export * from './MenuIcon';
 export * from './MoreHorizIcon';
 export * from './NotificationsIcon';
