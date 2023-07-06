@@ -19,11 +19,6 @@ interface Localization {
   descendingOrder: string;
 }
 
-const defaultLocalization: Localization = {
-  ascendingOrder: 'Ascending order',
-  descendingOrder: 'Descending order',
-};
-
 export interface HeaderCellProps<T>
   extends TableHTMLAttributes<HTMLTableCellElement>,
     TableColumnDisplayProps {
@@ -33,7 +28,7 @@ export interface HeaderCellProps<T>
   id: string;
   hide?: boolean;
   isSorted?: boolean;
-  localization?: Localization;
+  localization: Localization;
   sortDirection?: 'ASC' | 'DESC';
   stickyHeader?: boolean;
   onSortClick?(column: TableColumn<T>): void;
@@ -57,7 +52,7 @@ const InternalHeaderCell = <T extends TableItem>({
   hide = false,
   id,
   isSorted,
-  localization = defaultLocalization,
+  localization,
   onSortClick,
   sortDirection,
   stickyHeader,

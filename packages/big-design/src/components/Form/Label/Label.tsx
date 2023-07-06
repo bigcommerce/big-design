@@ -2,17 +2,17 @@ import React, { LabelHTMLAttributes } from 'react';
 
 import { StyledLabel } from './styled';
 
-interface Localization {
+export interface LabelLocalization {
   optional: string;
 }
 
-const defaultLocalization: Localization = {
+const defaultLocalization: LabelLocalization = {
   optional: 'optional',
 };
 
 export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   renderOptional?: boolean;
-  localization?: Localization;
+  localization?: LabelLocalization;
 }
 
 export const FormControlLabel: React.FC<LabelProps> = ({

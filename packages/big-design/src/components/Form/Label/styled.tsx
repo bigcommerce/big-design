@@ -4,10 +4,11 @@ import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 import { StyleableH4 } from '../../Typography/private';
 import { HeadingProps } from '../../Typography/types';
 
-import { LabelProps } from './Label';
+import { LabelLocalization, LabelProps } from './Label';
 
-interface StyledLabelArgument extends LabelProps {
+interface StyledLabelArgument extends Omit<LabelProps, 'localization'> {
   theme: DefaultTheme;
+  localization: LabelLocalization;
 }
 
 export const StyledLabel = styled<
@@ -24,7 +25,7 @@ export const StyledLabel = styled<
     css`
       &::after {
         color: ${theme.colors.secondary60};
-        content: ' (${localization?.optional})';
+        content: ' (${localization.optional})';
         font-weight: ${theme.typography.fontWeight.regular};
       }
     `}

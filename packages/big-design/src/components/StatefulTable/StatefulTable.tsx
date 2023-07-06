@@ -85,7 +85,7 @@ const InternalStatefulTable = <T extends TableItem>({
   itemName,
   items = [],
   keyField,
-  localization: localizationProp,
+  localization: localizationProp = defaultLocalization,
   getRangeLabel,
   onSelectionChange,
   onRowDrop,

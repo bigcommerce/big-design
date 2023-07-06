@@ -266,7 +266,6 @@ test('renders a pagination component with custom button labels', async () => {
         getRangeLabel,
         label: '[Custom] Pagination',
         localization: {
-          of: 'of',
           previousPage: '[Custom] Previous page',
           nextPage: '[Custom] Next page',
         },

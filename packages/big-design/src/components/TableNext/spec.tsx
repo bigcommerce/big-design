@@ -291,7 +291,6 @@ describe('pagination', () => {
           onPageChange,
           label: '[Custom] Pagination',
           localization: {
-            of: 'of',
             previousPage: '[Custom] Previous page',
             nextPage: '[Custom] Next page',
           },

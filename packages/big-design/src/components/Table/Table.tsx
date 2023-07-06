@@ -14,6 +14,16 @@ import { Row } from './Row';
 import { StyledTable, StyledTableFigure } from './styled';
 import { TableColumn, TableItem, TableProps } from './types';
 
+interface Localization {
+  ascendingOrder: string;
+  descendingOrder: string;
+}
+
+const defaultLocalization: Localization = {
+  ascendingOrder: 'Ascending order',
+  descendingOrder: 'Descending order',
+};
+
 const InternalTable = <T extends TableItem>(
   props: TableProps<T>,
 ): React.ReactElement<TableProps<T>> => {
@@ -27,7 +37,7 @@ const InternalTable = <T extends TableItem>(
     itemName,
     items,
     keyField = 'id',
-    localization,
+    localization = defaultLocalization,
     onRowDrop,
     pagination,
     selectable,

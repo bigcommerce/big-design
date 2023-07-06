@@ -16,15 +16,16 @@ import {
   StyledMessageItem,
 } from './styled';
 
-interface Localization {
+export interface MessageLocalization {
   close: string;
 }
 
-const defaultLocalization: Localization = {
+const defaultLocalization: MessageLocalization = {
   close: 'Close',
 };
 
-export type MessageProps = SharedMessagingProps & MarginProps & { localization?: Localization };
+export type MessageProps = SharedMessagingProps &
+  MarginProps & { localization?: MessageLocalization };
 
 export const Message: React.FC<MessageProps> = memo(
   ({ className, localization = defaultLocalization, style, header, ...props }) => {
