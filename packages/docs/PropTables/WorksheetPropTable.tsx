@@ -138,9 +138,14 @@ const worksheetTextColumnProps: Prop[] = [
       'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
   },
   {
-    name: 'disable',
+    name: 'disabled',
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
+  },
+  {
+    name: 'enabled',
+    types: 'boolean',
+    description: 'Enables cell manipulation for the entire column even when a row is disabled.',
   },
   {
     name: 'width',
@@ -191,9 +196,14 @@ const worksheetNumberColumnProps: Prop[] = [
       'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
   },
   {
-    name: 'disable',
+    name: 'disabled',
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
+  },
+  {
+    name: 'enabled',
+    types: 'boolean',
+    description: 'Enables cell manipulation for the entire column even when a row is disabled.',
   },
   {
     name: 'width',
@@ -239,9 +249,14 @@ const worksheetCheckboxColumnProps: Prop[] = [
       'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
   },
   {
-    name: 'disable',
+    name: 'disabled',
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
+  },
+  {
+    name: 'enabled',
+    types: 'boolean',
+    description: 'Enables cell manipulation for the entire column even when a row is disabled.',
   },
   {
     name: 'width',
@@ -314,9 +329,14 @@ const worksheetSelectableColumnProps: Prop[] = [
     ),
   },
   {
-    name: 'disable',
+    name: 'disabled',
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
+  },
+  {
+    name: 'enabled',
+    types: 'boolean',
+    description: 'Enables cell manipulation for the entire column even when a row is disabled.',
   },
   {
     name: 'width',
@@ -388,9 +408,14 @@ const worksheetModalColumnProps: Prop[] = [
     ),
   },
   {
-    name: 'disable',
+    name: 'disabled',
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
+  },
+  {
+    name: 'enabled',
+    types: 'boolean',
+    description: 'Enables cell manipulation for the entire column even when a row is disabled.',
   },
   {
     name: 'width',

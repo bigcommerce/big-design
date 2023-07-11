@@ -92,6 +92,7 @@ const columns: Array<WorksheetColumn<Product>> = [
     validation: (value: number) => value >= 50,
     formatting: (value: number) => `$${value}.00`,
     width: 90,
+    enabled: true,
   },
 ];
 
@@ -1275,6 +1276,34 @@ describe('disable rows', () => {
     fireEvent.doubleClick(screen.getByText('Shoes Name One'));
 
     expect(screen.queryByDisplayValue('Shoes Name One')).toBeNull();
+  });
+
+  test('enables column within disabled row', () => {
+    const [, ...restCols] = columns;
+
+    render(
+      <Worksheet
+        columns={[
+          {
+            hash: 'productName',
+            header: 'Product name',
+            enabled: true,
+          },
+          ...restCols,
+        ]}
+        disabledRows={[1, 3]}
+        items={items}
+        onChange={handleChange}
+      />,
+    );
+
+    fireEvent.doubleClick(screen.getByText('Shoes Name Three'));
+
+    const input = screen.getByDisplayValue('Shoes Name Three');
+
+    fireEvent.change(input, { target: { value: 'test test test' } });
+
+    expect(screen.getByDisplayValue('test test test')).toBeInTheDocument();
   });
 });
 

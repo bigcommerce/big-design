@@ -47,6 +47,7 @@ export type InternalWorksheetColumn<Item> =
 
 interface WorksheetBaseColumn<Item> {
   disabled?: boolean;
+  enabled?: boolean;
   hash: keyof Item;
   header: string;
   width?: string | number;
