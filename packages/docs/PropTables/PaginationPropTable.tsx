@@ -54,7 +54,7 @@ const paginationProps: Prop[] = [
   },
   {
     name: 'localization',
-    types: '{of: string, previousPage: string, nextPage: string}',
+    types: '{ of: string, previousPage: string, nextPage: string }',
     required: false,
     description: 'Overrides the labels with localized text.',
   },
