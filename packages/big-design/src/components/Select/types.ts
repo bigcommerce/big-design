@@ -2,6 +2,7 @@ import { Placement } from '@popperjs/core';
 import React, { LiHTMLAttributes, RefObject } from 'react';
 
 import { InputProps } from '../Input';
+import { InputLocalization } from '../Input/Input';
 
 interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children' | 'value'> {
   action?: SelectAction;
@@ -14,6 +15,7 @@ interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'child
   inputRef?: RefObject<HTMLInputElement> | React.Ref<HTMLInputElement>;
   label?: React.ReactChild;
   labelId?: string;
+  localization?: InputLocalization;
   maxHeight?: number;
   name?: string;
   placement?: Placement;

@@ -1,7 +1,8 @@
 import { ChevronRightIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
-import React, { memo, useEffect } from 'react';
+import React, { memo, useContext, useEffect } from 'react';
 
 import { useExpandable, useWorksheetStore } from '../../hooks';
+import { WorksheetLocalizationContext } from '../../Worksheet';
 
 import { StyledExpandButton } from './styled';
 
@@ -13,6 +14,7 @@ interface ToggleEditorProps {
 const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
   const { onToggle, isExpandable, hasExpanded } = useExpandable(rowId);
   const { store, useStore } = useWorksheetStore();
+  const localization = useContext(WorksheetLocalizationContext);
 
   const setEditingCell = useStore(store, (state) => state.setEditingCell);
 
@@ -35,7 +37,7 @@ const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
         onClick={() => {
           onToggle(true);
         }}
-        title="toggle row expanded"
+        title={localization.toggleRowExpanded}
         variant="subtle"
       />
     );
@@ -47,7 +49,7 @@ const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
       onClick={() => {
         onToggle(false);
       }}
-      title="toggle row expanded"
+      title={localization.toggleRowExpanded}
       variant="subtle"
     />
   );

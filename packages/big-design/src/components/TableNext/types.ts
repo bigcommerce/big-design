@@ -56,6 +56,11 @@ export interface TableColumn<T> extends TableColumnDisplayProps {
 
 export type TablePaginationProps = Omit<PaginationProps, keyof MarginProps>;
 
+interface Localization {
+  ascendingOrder: string;
+  descendingOrder: string;
+}
+
 export interface TableProps<T> extends TableHTMLAttributes<HTMLTableElement> {
   actions?: React.ReactNode;
   columns: Array<TableColumn<T>>;
@@ -65,6 +70,7 @@ export interface TableProps<T> extends TableHTMLAttributes<HTMLTableElement> {
   itemName?: string;
   items: T[];
   keyField?: string;
+  localization?: Localization;
   onRowDrop?(from: number, to: number): void;
   pagination?: TablePaginationProps;
   selectable?: TableSelectable;

@@ -149,3 +149,17 @@ test('renders actions', () => {
 
   expect(onClick).toHaveBeenCalledTimes(2);
 });
+
+test('renders localized labels', async () => {
+  render(
+    <Message
+      localization={{ close: 'Cerrar' }}
+      messages={[{ text: 'Success' }]}
+      onClose={() => null}
+    />,
+  );
+
+  const button = await screen.findByRole('button', { name: 'Cerrar' });
+
+  expect(button).toBeInTheDocument();
+});

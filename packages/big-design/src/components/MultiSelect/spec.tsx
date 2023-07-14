@@ -1063,6 +1063,28 @@ test('select action should supports description', async () => {
   expect(await screen.findByText('Action Description')).toBeInTheDocument();
 });
 
+test('renders localized labels', async () => {
+  render(
+    <MultiSelect
+      label="Countries"
+      localization={{ optional: 'opcional' }}
+      onOptionsChange={onChange}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'mx', content: 'Mexico' },
+        { value: 'ca', content: 'Canada' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+    />,
+  );
+
+  const label = await screen.findByText('Countries');
+
+  expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
+});
+
 describe('aria-labelledby', () => {
   it('should not be set if using aria-label', async () => {
     render(<MultiSelect aria-label="Countries" onOptionsChange={onChange} options={mockOptions} />);

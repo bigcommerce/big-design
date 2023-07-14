@@ -34,8 +34,26 @@ export const FormFieldsetPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable propList={formFieldsetProps} title="Fieldset" {...props} />
 );
 
+const formLabelProps: Prop[] = [
+  {
+    name: 'renderOptional',
+    types: 'boolean',
+    description: 'Shows optional label.',
+  },
+  {
+    name: 'localization',
+    types: '{ optional: string }',
+    description: 'Overrides the label with localized text.',
+  },
+];
+
 export const FormLabelPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable nativeElement={['label', 'all']} propList={[]} title="FormControlLabel" {...props} />
+  <PropTable
+    nativeElement={['label', 'all']}
+    propList={formLabelProps}
+    title="FormControlLabel"
+    {...props}
+  />
 );
 
 export const FormDescriptionPropTable: React.FC<PropTableWrapper> = (props) => (

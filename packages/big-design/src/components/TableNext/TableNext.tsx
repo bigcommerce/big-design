@@ -19,6 +19,16 @@ import { RowContainer } from './RowContainer';
 import { StyledTable, StyledTableFigure } from './styled';
 import { TableColumn, TableItem, TableProps } from './types';
 
+interface Localization {
+  ascendingOrder: string;
+  descendingOrder: string;
+}
+
+const defaultLocalization: Localization = {
+  ascendingOrder: 'Ascending order',
+  descendingOrder: 'Descending order',
+};
+
 const InternalTableNext = <T extends TableItem>(
   props: TableProps<T>,
 ): React.ReactElement<TableProps<T>> => {
@@ -33,6 +43,7 @@ const InternalTableNext = <T extends TableItem>(
     itemName,
     items,
     keyField = 'id',
+    localization = defaultLocalization,
     pagination,
     selectable,
     sortable,
@@ -162,6 +173,7 @@ const InternalTableNext = <T extends TableItem>(
               id={`header-cell-${index}`}
               isSorted={isSorted}
               key={index}
+              localization={localization}
               onSortClick={onSortClick}
               sortDirection={sortDirection}
               stickyHeader={stickyHeader}

@@ -11,6 +11,16 @@ import { Flex, FlexItem } from '../Flex';
 
 import { StyledButton } from './styled';
 
+export interface PaginationLocalization {
+  previousPage: string;
+  nextPage: string;
+}
+
+const defaultLocalization: PaginationLocalization = {
+  previousPage: 'Previous page',
+  nextPage: 'Next page',
+};
+
 export interface PaginationProps extends MarginProps {
   currentPage: number;
   itemsPerPage: number;
@@ -19,8 +29,7 @@ export interface PaginationProps extends MarginProps {
   onPageChange(page: number): void;
   onItemsPerPageChange(range: number): void;
   label?: string;
-  previousLabel?: string;
-  nextLabel?: string;
+  localization?: PaginationLocalization;
   getRangeLabel?(start: number, end: number, totalItems: number): string;
 }
 
@@ -41,8 +50,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
     onPageChange,
     onItemsPerPageChange,
     label = 'pagination',
-    previousLabel = 'Previous page',
-    nextLabel = 'Next page',
+    localization = defaultLocalization,
     getRangeLabel = defaultGetRangeLabel,
   }) => {
     const [maxPages, setMaxPages] = useState(Math.max(1, Math.ceil(totalItems / itemsPerPage)));
@@ -130,7 +138,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
         <FlexItem>
           <StyledButton
             disabled={currentPage <= 1}
-            iconOnly={<ChevronLeftIcon title={previousLabel} />}
+            iconOnly={<ChevronLeftIcon title={localization.previousPage} />}
             onClick={handlePageDecrease}
             type="button"
             variant="subtle"
@@ -138,7 +146,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
 
           <StyledButton
             disabled={currentPage >= maxPages}
-            iconOnly={<ChevronRightIcon title={nextLabel} />}
+            iconOnly={<ChevronRightIcon title={localization.nextPage} />}
             onClick={handlePageIncrease}
             type="button"
             variant="subtle"

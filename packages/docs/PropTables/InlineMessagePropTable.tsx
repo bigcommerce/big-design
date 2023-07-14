@@ -17,6 +17,11 @@ const inlineMessageProps: Prop[] = [
     ),
   },
   ...sharedMessagingProps,
+  {
+    name: 'localization',
+    types: '{ close: string }',
+    description: 'Overrides the label with localized text.',
+  },
 ];
 
 export const InlineMessagePropTable: React.FC<PropTableWrapper> = (props) => (

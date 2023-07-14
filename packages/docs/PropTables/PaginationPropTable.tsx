@@ -47,24 +47,16 @@ const paginationProps: Prop[] = [
     description: 'Overrides the aria label of the pagination wrapper navigation element.',
   },
   {
-    name: 'previousLabel',
-    types: 'string',
-    required: false,
-    defaultValue: 'Previous page',
-    description: 'Overrides the title and aria label of the previous page navigation arrow.',
-  },
-  {
-    name: 'nextLabel',
-    types: 'string',
-    required: false,
-    defaultValue: 'Next page',
-    description: 'Overrides the title and aria label of the next page navigation arrow.',
-  },
-  {
     name: 'getRangeLabel',
     types: '(start: number, end: number, totalItems: number) => string',
     required: false,
     description: 'A callback to format the label of the per-page range dropdown.',
+  },
+  {
+    name: 'localization',
+    types: '{ of: string, previousPage: string, nextPage: string }',
+    required: false,
+    description: 'Overrides the labels with localized text.',
   },
 ];
 

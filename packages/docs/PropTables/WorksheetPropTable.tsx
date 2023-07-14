@@ -99,6 +99,11 @@ const worksheetProps: Prop[] = [
     types: 'number',
     description: 'Sets a min-width.',
   },
+  {
+    name: 'localization',
+    types: '{ toggleRowExpanded: string }',
+    description: 'Overrides the label with localized text.',
+  },
 ];
 
 const worksheetTextColumnProps: Prop[] = [

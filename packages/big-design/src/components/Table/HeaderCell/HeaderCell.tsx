@@ -14,6 +14,11 @@ import { TableColumn, TableItem } from '../types';
 
 import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderIcon } from './styled';
 
+interface Localization {
+  ascendingOrder: string;
+  descendingOrder: string;
+}
+
 export interface HeaderCellProps<T>
   extends TableHTMLAttributes<HTMLTableCellElement>,
     TableColumnDisplayProps {
@@ -23,6 +28,7 @@ export interface HeaderCellProps<T>
   id: string;
   hide?: boolean;
   isSorted?: boolean;
+  localization: Localization;
   sortDirection?: 'ASC' | 'DESC';
   stickyHeader?: boolean;
   onSortClick?(column: TableColumn<T>): void;
@@ -46,6 +52,7 @@ const InternalHeaderCell = <T extends TableItem>({
   hide = false,
   id,
   isSorted,
+  localization,
   onSortClick,
   sortDirection,
   stickyHeader,
@@ -60,9 +67,13 @@ const InternalHeaderCell = <T extends TableItem>({
     }
 
     return sortDirection === 'ASC' ? (
-      <ArrowUpwardIcon data-testid="asc-icon" size="medium" title="Ascending order" />
+      <ArrowUpwardIcon data-testid="asc-icon" size="medium" title={localization.ascendingOrder} />
     ) : (
-      <ArrowDownwardIcon data-testid="desc-icon" size="medium" title="Descending order" />
+      <ArrowDownwardIcon
+        data-testid="desc-icon"
+        size="medium"
+        title={localization.descendingOrder}
+      />
     );
   };
 

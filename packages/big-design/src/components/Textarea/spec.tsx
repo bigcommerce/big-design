@@ -276,6 +276,16 @@ test('renders all together', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('renders localized labels', () => {
+  const { container } = render(
+    <Textarea label="Test label" localization={{ optional: 'opcional' }} />,
+  );
+
+  const label = container.querySelector('label');
+
+  expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
+});
+
 describe('error shows when an array of strings', () => {
   test('empty array', () => {
     const { container } = render(

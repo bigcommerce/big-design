@@ -96,18 +96,17 @@ test('render pagination component while overriding button labels', async () => {
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
       label="[Custom] Pagination"
-      nextLabel="[Custom] Next page"
+      localization={{ previousPage: 'Pagina previa', nextPage: 'Pagina siguiente' }}
       onItemsPerPageChange={changeRange}
       onPageChange={changePage}
-      previousLabel="[Custom] Previous page"
       totalItems={10}
     />,
   );
 
   const pagination = await screen.findByRole('navigation', { name: '[Custom] Pagination' });
   const dropdown = await screen.findByRole('button', { name: '[Custom label] 1-3 of 10' });
-  const prevPage = await screen.findByRole('button', { name: '[Custom] Previous page' });
-  const nextPage = await screen.findByRole('button', { name: '[Custom] Next page' });
+  const prevPage = await screen.findByRole('button', { name: 'Pagina previa' });
+  const nextPage = await screen.findByRole('button', { name: 'Pagina siguiente' });
 
   expect(pagination).toBeInTheDocument();
   expect(dropdown).toBeInTheDocument();
@@ -198,4 +197,35 @@ test('trigger page increase', async () => {
 
   expect(changePage).toHaveBeenCalled();
   expect(title).toBeInTheDocument();
+});
+
+test('renders localized labels', async () => {
+  const changePage = jest.fn();
+  const changeRange = jest.fn();
+
+  render(
+    <Pagination
+      currentPage={1}
+      getRangeLabel={(start: number, end: number, totalItems: number): string => {
+        return `${start} - ${end} de ${totalItems}`;
+      }}
+      itemsPerPage={3}
+      itemsPerPageOptions={[2, 3, 5]}
+      label="Paginacion"
+      localization={{ previousPage: 'Pagina previa', nextPage: 'Pagina siguiente' }}
+      onItemsPerPageChange={changeRange}
+      onPageChange={changePage}
+      totalItems={10}
+    />,
+  );
+
+  const pagination = await screen.findByRole('navigation', { name: 'Paginacion' });
+  const dropdown = await screen.findByRole('button', { name: '1 - 3 de 10' });
+  const prevPage = await screen.findByRole('button', { name: 'Pagina previa' });
+  const nextPage = await screen.findByRole('button', { name: 'Pagina siguiente' });
+
+  expect(pagination).toBeInTheDocument();
+  expect(dropdown).toBeInTheDocument();
+  expect(prevPage).toBeInTheDocument();
+  expect(nextPage).toBeInTheDocument();
 });

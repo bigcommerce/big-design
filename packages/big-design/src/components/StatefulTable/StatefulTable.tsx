@@ -3,8 +3,11 @@ import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
+import { PaginationProps } from '../Pagination';
+import { PaginationLocalization } from '../Pagination/Pagination';
 import { PillTabItem, PillTabs, PillTabsProps } from '../PillTabs';
 import { Search } from '../Search';
+import { SearchLocalization } from '../Search/types';
 import {
   Table,
   TableColumn,
@@ -15,6 +18,17 @@ import {
 } from '../Table';
 
 import { createReducer, createReducerInit } from './reducer';
+
+type Localization =
+  | PaginationLocalization
+  | SearchLocalization
+  | (PaginationLocalization & SearchLocalization);
+
+const defaultLocalization: Localization = {
+  nextPage: 'Next page',
+  previousPage: 'Previous page',
+  search: 'Search',
+};
 
 export interface StatefulTablePillTabFilter<T> {
   pillTabs: PillTabItem[];
@@ -31,14 +45,23 @@ export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable
 export interface StatefulTableProps<T>
   extends Omit<
     TableProps<T>,
-    'columns' | 'pagination' | 'filters' | 'search' | 'selectable' | 'sortable' | 'onRowDrop'
+    | 'columns'
+    | 'pagination'
+    | 'filters'
+    | 'search'
+    | 'selectable'
+    | 'sortable'
+    | 'onRowDrop'
+    | 'localization'
   > {
   columns: Array<StatefulTableColumn<T>>;
+  localization?: Localization;
   pagination?: boolean;
   filters?: StatefulTablePillTabFilter<T>;
   selectable?: boolean;
   defaultSelected?: T[];
   search?: boolean;
+  getRangeLabel?: PaginationProps['getRangeLabel'];
   onRowDrop?(items: T[]): void;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }
@@ -62,6 +85,8 @@ const InternalStatefulTable = <T extends TableItem>({
   itemName,
   items = [],
   keyField,
+  localization: localizationProp = defaultLocalization,
+  getRangeLabel,
   onSelectionChange,
   onRowDrop,
   search,
@@ -71,6 +96,8 @@ const InternalStatefulTable = <T extends TableItem>({
   stickyHeader = false,
   ...rest
 }: StatefulTableProps<T>): React.ReactElement<StatefulTableProps<T>> => {
+  const localization = { ...defaultLocalization, ...localizationProp };
+
   const reducer = useMemo(() => createReducer<T>(), []);
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
   const sortable = useMemo(
@@ -121,8 +148,28 @@ const InternalStatefulTable = <T extends TableItem>({
   );
 
   const paginationOptions = useMemo(
-    () => (pagination ? { ...state.pagination, onItemsPerPageChange, onPageChange } : undefined),
-    [pagination, state.pagination, onItemsPerPageChange, onPageChange],
+    () =>
+      pagination
+        ? {
+            ...state.pagination,
+            onItemsPerPageChange,
+            onPageChange,
+            localization: {
+              previousPage: localization.previousPage,
+              nextPage: localization.nextPage,
+            },
+            getRangeLabel,
+          }
+        : undefined,
+    [
+      pagination,
+      state.pagination,
+      getRangeLabel,
+      onItemsPerPageChange,
+      onPageChange,
+      localization.previousPage,
+      localization.nextPage,
+    ],
   );
 
   const selectableOptions = useMemo(
@@ -199,7 +246,7 @@ const InternalStatefulTable = <T extends TableItem>({
 
     return (
       <Box marginBottom="medium">
-        <Search {...searchProps} />
+        <Search localization={{ search: localization.search }} {...searchProps} />
       </Box>
     );
   };

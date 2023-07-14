@@ -3,6 +3,7 @@ import { default as ReactDatePicker, registerLocale } from 'react-datepicker';
 
 import { createLocalizationProvider } from '../../utils';
 import { Input } from '../Input';
+import { InputLocalization } from '../Input/Input';
 
 import Header from './Header';
 import { StyledDatepicker } from './styled';
@@ -12,6 +13,7 @@ interface Props {
   error?: React.ReactNode;
   label?: string;
   locale?: string;
+  localization?: InputLocalization;
   onDateChange(date: string): void;
 }
 
@@ -28,6 +30,7 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
   forwardedRef,
   label,
   locale = 'en-US',
+  localization,
   min,
   max,
   onDateChange,
@@ -37,9 +40,9 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
   ...props
 }) => {
   const [selected, setSelected] = useState<Date>();
-  const localization = createLocalizationProvider(locale);
+  const localizationProvider = createLocalizationProvider(locale);
 
-  registerLocale(locale, localization);
+  registerLocale(locale, localizationProvider);
 
   const updateDate = (value: Date) => onDateChange(value ? value.toISOString() : value);
 
@@ -56,7 +59,7 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
       <ReactDatePicker
         calendarClassName="bc-datepicker"
         className="calendar-input"
-        customInput={<Input error={error} label={label} {...props} />}
+        customInput={<Input error={error} label={label} localization={localization} {...props} />}
         dateFormat={dateFormat || 'EE, dd MMM, yyyy'}
         disabled={disabled}
         locale={locale}
@@ -76,7 +79,7 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
             date={date}
             decreaseMonth={decreaseMonth}
             increaseMonth={increaseMonth}
-            months={localization.monthsLong}
+            months={localizationProvider.monthsLong}
             nextMonthButtonDisabled={nextMonthButtonDisabled}
             prevMonthButtonDisabled={prevMonthButtonDisabled}
           />

@@ -552,3 +552,30 @@ describe('test search in the StatefulTable', () => {
     expect(rows).toHaveLength(105);
   });
 });
+
+test('renders localized labels', async () => {
+  render(
+    getSimpleTable({
+      getRangeLabel: (start: number, end: number, totalItems: number): string => {
+        return `${start} - ${end} de ${totalItems}`;
+      },
+      pagination: true,
+      localization: {
+        nextPage: 'Pagina siguiente',
+        previousPage: 'Pagina previa',
+        search: 'Buscar',
+      },
+      search: true,
+    }),
+  );
+
+  const input = screen.getByLabelText('Buscar');
+  const dropdown = await screen.findByRole('button', { name: '1 - 25 de 104' });
+  const prevPage = await screen.findByRole('button', { name: 'Pagina previa' });
+  const nextPage = await screen.findByRole('button', { name: 'Pagina siguiente' });
+
+  expect(input).toBeInTheDocument();
+  expect(dropdown).toBeInTheDocument();
+  expect(prevPage).toBeInTheDocument();
+  expect(nextPage).toBeInTheDocument();
+});

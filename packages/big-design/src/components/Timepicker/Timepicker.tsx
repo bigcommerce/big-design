@@ -1,12 +1,14 @@
 import React, { forwardRef, memo, Ref, useMemo } from 'react';
 
 import { createLocalizationProvider, getTimeIntervals } from '../../utils';
+import { InputLocalization } from '../Input/Input';
 import { Select } from '../Select';
 
 interface Props {
   error?: React.ReactNode;
   label?: React.ReactChild;
   locale?: string;
+  localization?: InputLocalization;
   onTimeChange(date: string): void;
 }
 
@@ -21,12 +23,13 @@ const RawTimePicker: React.FC<TimepickerProps & PrivateProps> = ({
   forwardedRef,
   label,
   locale = 'en-US',
+  localization,
   onTimeChange,
   value,
   ...props
 }) => {
-  const localization = createLocalizationProvider(locale);
-  const options = useMemo(() => getTimeIntervals(localization), [localization]);
+  const localizationProvider = createLocalizationProvider(locale);
+  const options = useMemo(() => getTimeIntervals(localizationProvider), [localizationProvider]);
 
   return (
     <Select
@@ -34,6 +37,7 @@ const RawTimePicker: React.FC<TimepickerProps & PrivateProps> = ({
       error={error}
       inputRef={forwardedRef}
       label={label}
+      localization={localization}
       onOptionChange={onTimeChange}
       options={options}
       placeholder="hh : mm"

@@ -41,3 +41,20 @@ test('Search input has autocomplete=off', async () => {
 
   expect(input.getAttribute('autocomplete')).toBe('off');
 });
+
+test('renders localized labels', async () => {
+  render(
+    <Search
+      localization={{ search: 'Buscar' }}
+      onChange={jest.fn()}
+      onSubmit={jest.fn()}
+      value=""
+    />,
+  );
+
+  const input = screen.getByLabelText('Buscar');
+  const button = screen.getByRole('button', { name: /buscar/i });
+
+  expect(input).toBeInTheDocument();
+  expect(button).toBeInTheDocument();
+});
