@@ -56,6 +56,25 @@ test('renders a header and action', () => {
   expect(actionButton.textContent).toBe('Test Action');
 });
 
+test('renders a badge and header', () => {
+  const { getByRole, getByText } = render(
+    <Panel badge={{ label: 'danger', variant: 'danger' }} header="Test Header">
+      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
+      officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
+      deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris
+      Lorem irure sit esse nulla mollit aliquip consectetur velit
+    </Panel>,
+  );
+
+  const header = getByRole('heading');
+
+  expect(header).toBeInTheDocument();
+
+  const badge = getByText('danger');
+
+  expect(badge).toBeInTheDocument();
+});
+
 describe('description', () => {
   test('renders string description', async () => {
     render(

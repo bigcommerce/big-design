@@ -33,6 +33,10 @@ const PanelPage = () => {
                 // Do some action
               },
             }}
+            badge={{
+              label: 'primary',
+              variant: 'primary',
+            }}
             description="This is the panel's optional description."
             header="Panel header"
           >

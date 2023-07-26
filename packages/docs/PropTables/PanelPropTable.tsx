@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, Prop, PropTable, PropTableWrapper } from '../components';
+import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const panelProps: Prop[] = [
   {
@@ -28,6 +28,19 @@ const panelProps: Prop[] = [
     description: (
       <>
         Defines the <Code primary>Panel</Code> action button.
+      </>
+    ),
+  },
+  {
+    name: 'badge',
+    types: [
+      <NextLink href="/badge" key="badge-type">
+        BadgeProps
+      </NextLink>,
+    ],
+    description: (
+      <>
+        See <NextLink href="/badge">Badge</NextLink> for usage.
       </>
     ),
   },

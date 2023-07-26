@@ -3,6 +3,7 @@ import React, { forwardRef, HTMLAttributes, isValidElement, memo, Ref } from 're
 import { MarginProps } from '../../mixins';
 import { excludePaddingProps } from '../../mixins/paddings/paddings';
 import { warning } from '../../utils';
+import { Badge, BadgeProps } from '../Badge/Badge';
 import { Button, ButtonProps } from '../Button';
 import { Flex } from '../Flex';
 import { Text } from '../Typography';
@@ -23,11 +24,12 @@ export interface PanelProps extends HTMLAttributes<HTMLElement>, MarginProps {
   header?: string;
   headerId?: string;
   action?: PanelAction;
+  badge?: BadgeProps;
 }
 
 export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {
   const filteredProps = excludePaddingProps(props);
-  const { action, children, description, header, headerId, ...rest } = filteredProps;
+  const { action, children, description, header, headerId, badge, ...rest } = filteredProps;
 
   const renderHeader = () => {
     if (!header && !action) {
@@ -43,6 +45,7 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
         {Boolean(header) && (
           <StyledH2 id={headerId} marginBottom={description ? 'xxSmall' : 'medium'}>
             {header}
+            {badge && <Badge marginLeft="xSmall" {...badge} />}
           </StyledH2>
         )}
         {action && <Button {...action}>{action.text}</Button>}
