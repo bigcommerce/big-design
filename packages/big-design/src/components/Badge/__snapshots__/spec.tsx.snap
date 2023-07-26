@@ -10,6 +10,7 @@ exports[`render danger Badge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   text-transform: uppercase;
+  vertical-align: middle;
   padding: 0 0.5rem;
   background-color: #DB3643;
 }
@@ -31,6 +32,7 @@ exports[`render default Badge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   text-transform: uppercase;
+  vertical-align: middle;
   padding: 0 0.5rem;
   background-color: #5E637A;
 }
@@ -52,6 +54,7 @@ exports[`render primary Badge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   text-transform: uppercase;
+  vertical-align: middle;
   padding: 0 0.5rem;
   background-color: #3C64F4;
 }
@@ -73,6 +76,7 @@ exports[`render secondary Badge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   text-transform: uppercase;
+  vertical-align: middle;
   padding: 0 0.5rem;
   background-color: #5E637A;
 }
@@ -94,6 +98,7 @@ exports[`render success Badge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   text-transform: uppercase;
+  vertical-align: middle;
   padding: 0 0.5rem;
   background-color: #208831;
 }
@@ -115,6 +120,7 @@ exports[`render warning Badge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   text-transform: uppercase;
+  vertical-align: middle;
   padding: 0 0.5rem;
   color: #313440;
   background-color: #FFBF00;
