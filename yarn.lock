@@ -5554,9 +5554,9 @@ find-up@^4.0.0, find-up@^4.1.0:
     path-exists "^4.0.0"
 
 flag-icons@^6.6.6:
-  version "6.6.6"
-  resolved "https://registry.yarnpkg.com/flag-icons/-/flag-icons-6.6.6.tgz#9ddff81e1126778ca6a5a1e0e2cfac2e865f2cb7"
-  integrity sha512-4lHDKxldnQ7q617pf9Dx9nAetT+9zcMpUexbRrc9kjLw9KJgZ83zA5Dky3Vv7ZDzUjAiZ46x/cy5P0HnEnqA2A==
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/flag-icons/-/flag-icons-6.9.1.tgz#2b5b41f2345771dd9eff77cc1496870d2607937a"
+  integrity sha512-G0hxIiG9RR28C/pNhRnTj5avq+mDPW++lcMay/EuXh5PY8HIygPahoEw91pBIOkDUMhE9gCFhqTog+YFJiYI0A==
 
 flat-cache@^3.0.4:
   version "3.0.4"
