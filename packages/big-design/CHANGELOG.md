@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.37.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.36.2...@bigcommerce/big-design@0.37.0) (2023-07-26)
+
+
+### Bug Fixes
+
+* **component:** fix datepicker extra label ([#1246](https://github.com/bigcommerce/big-design/issues/1246)) ([d84eb64](https://github.com/bigcommerce/big-design/commit/d84eb64df4f167a22a30cdddfb3f092246442a6d))
+* **component:** fix selection issue when many items ([#1240](https://github.com/bigcommerce/big-design/issues/1240)) ([da7a1dc](https://github.com/bigcommerce/big-design/commit/da7a1dc05092cdb56d7ab7fa654517a6ed1dc25a))
+* **component:** fix the filling of the disabled worksheet rows ([#1238](https://github.com/bigcommerce/big-design/issues/1238)) ([2a87ba8](https://github.com/bigcommerce/big-design/commit/2a87ba8e0338791b8b0075a15f139fbc397cc150))
+
+
+### Features
+
+* **component:** add enabled column prop to the worksheet ([#1241](https://github.com/bigcommerce/big-design/issues/1241)) ([aaad5cb](https://github.com/bigcommerce/big-design/commit/aaad5cba66eac300e69db6e328cbf80a629ac361))
+* **component:** added Badge props to Panel component ([#1270](https://github.com/bigcommerce/big-design/issues/1270)) ([3a712b0](https://github.com/bigcommerce/big-design/commit/3a712b03feee9f95121740fab449520ead34d590))
+* **component:** fix the looping of the worksheet ([#1239](https://github.com/bigcommerce/big-design/issues/1239)) ([2135025](https://github.com/bigcommerce/big-design/commit/21350251adf92c7dabb7df1c98d81c73956b85e6))
+* **component:** localize components ([#1200](https://github.com/bigcommerce/big-design/issues/1200)) ([151484b](https://github.com/bigcommerce/big-design/commit/151484be73fa52ef1fe7aa5713cbf3c09ded29f0))
+
+
+### BREAKING CHANGES
+
+* **component:** pagination label `props` were removed in favor of `localization` object
+
+
+
+
+
 ## [0.36.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.36.1...@bigcommerce/big-design@0.36.2) (2023-06-14)
 
 **Note:** Version bump only for package @bigcommerce/big-design

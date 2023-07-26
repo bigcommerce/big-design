@@ -1,15 +1,15 @@
 {
   "name": "@bigcommerce/examples",
   "private": true,
-  "version": "0.23.2",
+  "version": "0.24.0",
   "scripts": {
     "build": "vite build",
     "start": "vite",
     "typeCheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@bigcommerce/big-design": "^0.36.2",
-    "@bigcommerce/big-design-icons": "^0.23.2",
+    "@bigcommerce/big-design": "^0.37.0",
+    "@bigcommerce/big-design-icons": "^0.24.0",
     "@bigcommerce/big-design-theme": "^0.19.2",
     "formik": "^2.0.6",
     "react": "^18.2.0",

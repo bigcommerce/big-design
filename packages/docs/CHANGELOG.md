@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.37.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.36.2...@bigcommerce/docs@0.37.0) (2023-07-26)
+
+
+### Features
+
+* **component:** add enabled column prop to the worksheet ([#1241](https://github.com/bigcommerce/big-design/issues/1241)) ([aaad5cb](https://github.com/bigcommerce/big-design/commit/aaad5cba66eac300e69db6e328cbf80a629ac361))
+* **component:** added Badge props to Panel component ([#1270](https://github.com/bigcommerce/big-design/issues/1270)) ([3a712b0](https://github.com/bigcommerce/big-design/commit/3a712b03feee9f95121740fab449520ead34d590))
+* **component:** localize components ([#1200](https://github.com/bigcommerce/big-design/issues/1200)) ([151484b](https://github.com/bigcommerce/big-design/commit/151484be73fa52ef1fe7aa5713cbf3c09ded29f0))
+
+
+### BREAKING CHANGES
+
+* **component:** pagination label `props` were removed in favor of `localization` object
+
+
+
+
+
 ## [0.36.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.36.1...@bigcommerce/docs@0.36.2) (2023-06-14)
 
 **Note:** Version bump only for package @bigcommerce/docs
