@@ -392,7 +392,6 @@ exports[`renders a pagination component 1`] = `
               class="c12"
               id=":r13:-menu"
               role="menu"
-              tabindex="-1"
             />
           </div>
         </div>

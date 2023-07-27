@@ -342,7 +342,6 @@ exports[`render pagination component 1`] = `
           class="c9"
           id=":r0:-menu"
           role="menu"
-          tabindex="-1"
         />
       </div>
     </div>
@@ -761,7 +760,6 @@ exports[`render pagination component with invalid page info 1`] = `
           class="c9"
           id=":r4:-menu"
           role="menu"
-          tabindex="-1"
         />
       </div>
     </div>
@@ -1180,7 +1178,6 @@ exports[`render pagination component with invalid range info 1`] = `
           class="c9"
           id=":r8:-menu"
           role="menu"
-          tabindex="-1"
         />
       </div>
     </div>
@@ -1600,7 +1597,6 @@ exports[`render pagination component with no items 1`] = `
           class="c9"
           id=":rc:-menu"
           role="menu"
-          tabindex="-1"
         />
       </div>
     </div>
