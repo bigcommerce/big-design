@@ -360,7 +360,6 @@ exports[`dropdown is not visible if items fit 1`] = `
           class="c10"
           id=":r2:-menu"
           role="menu"
-          tabindex="-1"
         />
       </div>
     </div>
@@ -728,7 +727,6 @@ exports[`it renders the given tabs 1`] = `
           class="c10"
           id=":r0:-menu"
           role="menu"
-          tabindex="-1"
         />
       </div>
     </div>
@@ -1128,7 +1126,6 @@ exports[`only the pills that fit are visible 1`] = `
           class="c10"
           id=":r8:-menu"
           role="menu"
-          tabindex="-1"
         />
       </div>
     </div>
@@ -1527,7 +1524,6 @@ exports[`only the pills that fit are visible 2 1`] = `
           class="c10"
           id=":ra:-menu"
           role="menu"
-          tabindex="-1"
         />
       </div>
     </div>
@@ -1925,7 +1921,6 @@ exports[`renders all the filters if they fit 1`] = `
           class="c10"
           id=":r6:-menu"
           role="menu"
-          tabindex="-1"
         />
       </div>
     </div>
@@ -2310,7 +2305,6 @@ exports[`renders dropdown if items do not fit 1`] = `
           class="c10"
           id=":r4:-menu"
           role="menu"
-          tabindex="-1"
         />
       </div>
     </div>
