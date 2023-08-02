@@ -69,6 +69,7 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/search">Search</SideNavLink>
           <SideNavLink href="/select">Select</SideNavLink>
           <SideNavLink href="/switch">Switch</SideNavLink>
+          <SideNavLink href="/toggle">Toggle</SideNavLink>
           <SideNavLink href="/textarea">Textarea</SideNavLink>
           <SideNavLink href="/timepicker">Timepicker</SideNavLink>
         </SideNavGroup>
