@@ -23,6 +23,7 @@ export * from './ErrorIcon';
 export * from './ExpandLessIcon';
 export * from './ExpandMoreIcon';
 export * from './FileCopyIcon';
+export * from './FileDownloadIcon';
 export * from './FilterListIcon';
 export * from './FolderIcon';
 export * from './GetAppIcon';
