@@ -13,3 +13,5 @@ updates:
         update-types: ['version-update:semver-major']
       - dependency-name: 'inquirer-autocomplete-prompt'
         update-types: ['version-update:semver-major']
+      - dependency-name: 'camelcase'
+        update-types: ['version-update:semver-major']
