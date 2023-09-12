@@ -17,7 +17,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, Ma
   iconRight?: React.ReactNode;
   isLoading?: boolean;
   mobileWidth?: 'auto' | '100%';
-  variant?: 'primary' | 'secondary' | 'subtle';
+  variant?: 'primary' | 'secondary' | 'subtle' | 'utility';
 }
 
 const LoadingSpinner = () => (

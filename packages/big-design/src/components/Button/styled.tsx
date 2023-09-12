@@ -240,6 +240,58 @@ const ButtonSubtleDestructive = css<ButtonProps>`
   }
 `;
 
+const ButtonUtility = css<ButtonProps>`
+  background-color: transparent;
+  border-color: transparent;
+  color: ${({ theme }) => theme.colors.secondary60};
+
+  &:active {
+    background-color: ${({ theme }) => theme.colors.primary20};
+    color: ${({ theme }) => theme.colors.primary60};
+  }
+
+  &:focus:not(:active) {
+    box-shadow: ${({ theme }) => `0 0 0 ${theme.spacing.xxSmall} ${theme.colors.secondary10}`};
+    color: ${({ theme }) => theme.colors.primary50};
+  }
+
+  &:hover:not(:active) {
+    background-color: ${({ theme }) => theme.colors.primary10};
+    color: ${({ theme }) => theme.colors.primary50};
+  }
+
+  &[disabled] {
+    border-color: transparent;
+    color: ${({ theme }) => theme.colors.secondary50};
+  }
+`;
+
+const ButtonUtilityDestructive = css<ButtonProps>`
+  background-color: transparent;
+  border-color: transparent;
+  color: ${({ theme }) => theme.colors.secondary60};
+
+  &:active {
+    background-color: ${({ theme }) => theme.colors.danger20};
+    color: ${({ theme }) => theme.colors.danger60};
+  }
+
+  &:focus:not(:active) {
+    box-shadow: ${({ theme }) => `0 0 0 ${theme.spacing.xxSmall} ${theme.colors.danger20}`};
+    color: ${({ theme }) => theme.colors.danger40};
+  }
+
+  &:hover:not(:active) {
+    background-color: ${({ theme }) => theme.colors.danger10};
+    color: ${({ theme }) => theme.colors.danger50};
+  }
+
+  &[disabled] {
+    border-color: transparent;
+    color: ${({ theme }) => theme.colors.secondary50};
+  }
+`;
+
 function getButtonStyles(props: ButtonProps) {
   const { actionType, variant } = props;
 
@@ -252,6 +304,9 @@ function getButtonStyles(props: ButtonProps) {
 
     case 'subtle':
       return actionType === 'destructive' ? ButtonSubtleDestructive : ButtonSubtle;
+
+    case 'utility':
+      return actionType === 'destructive' ? ButtonUtilityDestructive : ButtonUtility;
   }
 }
 
