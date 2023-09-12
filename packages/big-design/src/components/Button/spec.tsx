@@ -110,6 +110,42 @@ test('render subtle destructive disabled button', () => {
   expect(screen.getByRole('button')).toMatchSnapshot();
 });
 
+test('render utility button', () => {
+  render(<Button variant="utility">Button</Button>);
+
+  expect(screen.getByRole('button')).toMatchSnapshot();
+});
+
+test('render utility disabled button', () => {
+  render(
+    <Button disabled variant="utility">
+      Button
+    </Button>,
+  );
+
+  expect(screen.getByRole('button')).toMatchSnapshot();
+});
+
+test('render utility destructive button', () => {
+  render(
+    <Button actionType="destructive" variant="utility">
+      Button
+    </Button>,
+  );
+
+  expect(screen.getByRole('button')).toMatchSnapshot();
+});
+
+test('render utility destructive disabled button', () => {
+  render(
+    <Button actionType="destructive" disabled variant="utility">
+      Button
+    </Button>,
+  );
+
+  expect(screen.getByRole('button')).toMatchSnapshot();
+});
+
 test('render icon only button', () => {
   render(<Button iconOnly={<AddIcon />}>Button</Button>);
 
