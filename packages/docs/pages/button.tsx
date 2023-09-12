@@ -33,6 +33,10 @@ const ButtonPage = () => {
             Use <Code>destructive</Code> buttons in confirmations for important actions that cannot
             be undone (like deleting something).
           </List.Item>
+          <List.Item>
+            Use <Code>utility</Code> buttons to handle tasks that are not specifically a call to
+            action, like opening menus, closing modals, expanding or collapsing items, etc.
+          </List.Item>
         </List>
       </Panel>
 
@@ -65,9 +69,9 @@ const ButtonPage = () => {
               render: () => (
                 <Fragment key="variants">
                   <Text>
-                    There are three types of variants to choose from: <Code>primary</Code>,{' '}
-                    <Code>secondary</Code>, and <Code>subtle</Code>. You can determine what type of
-                    variant by using the <Code primary>variant</Code> prop.
+                    There are four types of variants to choose from: <Code>primary</Code>,{' '}
+                    <Code>secondary</Code>, <Code>subtle</Code>, and <Code>utility</Code>. You can
+                    determine what type of variant by using the <Code primary>variant</Code> prop.
                   </Text>
 
                   <CodePreview>
@@ -76,6 +80,7 @@ const ButtonPage = () => {
                       <Button variant="primary">Primary</Button>
                       <Button variant="secondary">Secondary</Button>
                       <Button variant="subtle">Subtle</Button>
+                      <Button variant="utility">Utility</Button>
                     </>
                     {/* jsx-to-string:end */}
                   </CodePreview>
