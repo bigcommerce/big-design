@@ -53,7 +53,7 @@ const buttonProps: Prop[] = [
   },
   {
     name: 'variant',
-    types: ['primary', 'secondary', 'subtle'],
+    types: ['primary', 'secondary', 'subtle', 'utility'],
     defaultValue: 'primary',
     description: 'Determines which style of button to display.',
   },
