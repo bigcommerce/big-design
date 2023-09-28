@@ -17,6 +17,7 @@ export * from './CloudUploadIcon';
 export * from './CodeIcon';
 export * from './ContentCopyIcon';
 export * from './DeleteIcon';
+export * from './DraftIcon';
 export * from './DragIndicatorIcon';
 export * from './EditIcon';
 export * from './ErrorIcon';
