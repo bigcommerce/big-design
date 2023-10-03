@@ -1,0 +1,104 @@
+import Swatch from "@components/big-design/Swatch";
+
+# Color
+
+## Overview
+
+The BigDesign color system has five palette types named semantically for their use across the application. The color system is derived from the BigCommerce brand and provides a consistent user experience for our merchants and partners.
+
+BigDesign uses color tokens to manage colors within each palette and are named for their role or hierarchy in the palette. Color tokens improve communication between design and development and establish an organized use of color in the BigCommerce application.
+
+## Visual Accessibility Standards
+
+The BigDesign color palette is consistent with the WCAG 2.0 (Web Content Accessibility Guidelines), specifically in regards to foreground and background color when it comes to the legibility of text. You can learn more about [WCAG standards here.](https://www.w3.org/WAI/standards-guidelines/wcag/ "https://www.w3.org/WAI/standards-guidelines/wcag/"). 
+
+In terms of contrast and legibility: WCAG provides an equation that outputs a number between 0 and 21, with 21 being the highest amount of contrast—black text and a white background—and 0 being no contrast—white on white.
+
+**AAA**  
+AAA means that your text has a contrast ratio of at least 7.0.  
+This is an example of AAA contrast.
+
+**AA**  
+AA means that your text has a contrast ratio of at least 4.5 or higher.  
+<span style={{'color':'#006644'}}> This is an example of AA contrast.</span>
+
+**AA+**  
+AA+ means that your text has a contrast ratio of at least 3.0.  
+<span style={{'color':'#206b74'}}>This is an example of AA+ contrast.</span>
+
+**Fail**  
+Fail means that your text has a contrast ratio of 2.9 or lower. (This does not apply to logos, text in logos, and other decorative elements.)  
+<span style={{'color':'#dfd8fd'}}>This is an example of Fail contrast.</span>
+
+## Tokens
+
+### Accent
+
+Accent colors are used for interactions or to denote an interaction has taken place. Common accent uses include buttons, icons, navigation, links and selections. Use accent colors sparingly to avoid confusion.
+
+<Swatch color="#F0F3FF" name="primary10" />
+<Swatch color="#DBE3FE" name="primary20" />
+<Swatch color="#9EB3FC" name="primary30" />
+<Swatch color="#3C64F4" name="primary40 / primary" />
+<Swatch color="#2852EB" name="primary50" />
+<Swatch color="#0B38D9" name="primary60" />
+<Swatch color="#0024A6" name="primary70" />
+
+### Type
+
+Type colors are used for text, iconography, and foreground elements in BigDesign interfaces.
+
+<Swatch color="#313440" name="secondary70" />
+<Swatch color="#5E637A" name="secondary60" />
+<Swatch color="#8C93AD" name="secondary50" />
+<Swatch color="#FFFFFF" name="white" border={true} />
+
+### Fills and strokes
+
+Fills and strokes are used as the building blocks of BigDesign interfaces. They are used in combination to create layering of backgrounds, panels, overlays and hierarchical UI elements.
+
+<Swatch color="#FFFFFF" name="white" border={true} />
+<Swatch color="#F6F7FC" name="secondary10" />
+<Swatch color="#ECEEF5" name="secondary20" />
+<Swatch color="#D9DCE9" name="secondary30" />
+<Swatch color="#B4BAD1" name="secondary40 / secondary" />
+
+### Status
+
+Status colors are reserved to indicate a system status such as errors, success or warnings. These colors should be used sparingly and only for informative purposes.
+
+#### Success
+
+<Swatch color="#EEFCF0" name="success10" />
+<Swatch color="#D3F5D9" name="success20" />
+<Swatch color="#88D895" name="success30" />
+<Swatch color="#2AAB3F" name="success40 / success" />
+<Swatch color="#208831" name="success50" />
+<Swatch color="#146622" name="success60" />
+<Swatch color="#004D0D" name="success70" />
+
+#### Danger
+
+<Swatch color="#FFF0F1" name="danger10" />
+<Swatch color="#FEDBDE" name="danger20" />
+<Swatch color="#FC9EA6" name="danger30" />
+<Swatch color="#DB3643" name="danger40 / danger" />
+<Swatch color="#CC1F1F" name="danger50" />
+<Swatch color="#AD0000" name="danger60" />
+<Swatch color="#80000B" name="danger70" />
+
+#### Warning
+
+<Swatch color="#FFF9E6" name="warning10" />
+<Swatch color="#FFF0BF" name="warning20" />
+<Swatch color="#FFE180" name="warning30" />
+<Swatch color="#FFBF00" name="warning40 / warning" />
+<Swatch color="#FFAE00" name="warning50" />
+<Swatch color="#E58F17" name="warning60" />
+<Swatch color="#CC720A" name="warning70" />
+
+### Additional colors
+
+Additional colors exist in the BigDesign color palette for edge cases and BigCommerce branding.
+
+<Swatch color="#273A8A" name="brand (Used by BigCommerce branded assets.)" />

@@ -1,0 +1,36 @@
+import GridTable from "@components/big-design/GridTable";
+import GridSample from "@components/big-design/GridSample"
+import FigmaSample from "@components/big-design/FigmaSample";
+
+# Grid and Spacing
+
+The grid is the foundation of our design system. All components, measurements, and typography are based on multiples of **8px**. This allows us to keep an underlying harmony and consistency across our diverse product experiences.
+
+However, our system is driven by usability. There are instances where additional flexibility is required. In these cases we allow for a **4px** grid to ensure user experience is not hindered by arbitrary rules. 
+
+## Soft Grid
+
+When designing layouts we employ a "soft grid" system. This means that individual elements are positioned relative to each other rather than aligning to an underlying grid. Programming languages like React do not use an underlying grid structure. So, rather than requiring the extra step of designing to a grid that will ultimately be discarded, we rely on the final code as our source of truth in terms of user experience. 
+
+## Spacing
+Our spacing increments follow the same **8px** grid system.
+
+Design elements and components are built using the following spacing increments. 
+
+<GridTable>
+    <GridSample size="4" />
+    <GridSample size="8" />
+    <GridSample size="16" />
+    <GridSample size="20" />
+    <GridSample size="24" />
+    <GridSample size="32" />
+    <GridSample size="40" />
+</GridTable>
+
+## Examples
+
+<FigmaSample url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fw4qNTLNUf0fGDTYdUTzvye%2FUntitled%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DOAQxOrXenHHiS4JG-1" aspect="landscape" />
+
+## Resources
+
+- [Grid Component.](/big-design/components/grid "/big-design/components/grid") 

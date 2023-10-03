@@ -1,0 +1,64 @@
+import Swatch from "@components/big-design/Swatch";
+
+# Borders and Outline
+
+## Borders
+
+Borders are an essential part of BigDesign as they serve multiple purposes. They not only provide a clear visual distinction between different UI elements but also improve the usability and accessibility of the interface. In this context, borders play a critical role in enhancing the user experience and ensuring that users can interact with web elements effectively.
+
+Borders help to provide a clear visual separation between different UI elements, such as buttons, input fields, and notifications. This separation is crucial as it helps users distinguish between interactive and non-interactive elements on the page. Borders also provide feedback to users when they interact with elements, such as buttons, by changing their color or appearance when clicked or hovered over. This feedback helps users understand the actions they can take on the interface and reinforces the affordance of UI elements.
+
+Borders help to improve the accessibility of the interface by providing visual cues to users with disabilities. For example, users with low vision or color blindness can benefit from the contrast between the border and the background color of the element. This contrast can make it easier for them to perceive and interact with the element, improving the overall usability of the interface. Borders can also help users with cognitive disabilities by providing a clear visual hierarchy of UI elements on the page, making it easier for them to navigate and understand the content.
+
+### Border Radius
+
+Border-radius is a visual property that rounds the corners of an element. It is commonly used in BigDesign to give interfaces a softer and more inviting look. The choice of our border-radius of 4px is a popular and widely adopted convention in design systems for several reasons.
+
+A border-radius of 4px strikes a balance between being too sharp and too rounded. A radius of less than 4px can make corners appear too sharp, giving the interface a harsh and angular feel. On the other hand, a radius greater than 4px can make the corners appear too rounded, which can make the interface look overly soft and cartoonish.
+
+4px is also versatile and can be used in a variety of contexts. It works well for buttons, input fields, cards, and other common UI elements. This consistency across different components helps to create a cohesive and unified visual language in a design system.
+
+### When to use
+
+- Use a border when you have to define an individual hierarchy within an element and there is not enough contrast between the area background and the container (cards, inline alerts or messages within panels, bound buttons with background color similar to the container)
+- Use a border on input elements (text, number, select, date, text area, etc.)
+
+### How to use
+
+- All bordered elements within BigDesign use a border width of 1px.
+- Use borders on all sides of an element if this has got a margin of at least 8px of the parent boundaries.
+- Elements that span e full width or height of their container will not use border in the overlapping boundary, they won’t have a border radius either e.g. Table rows, which span the full width of their container.
+
+### Default border and separator color
+
+Our main border and separator color:
+
+<Swatch color="#D9DCE9" name="secondary30" />
+
+
+In the case of buttons you will use the color for the button status and current state (hover, active, focus).
+
+## Outlines
+
+Input outlines help users understand which element is currently in focus or active on a page. When a user interacts with an input element, such as a text field or a checkbox, the browser typically highlights the element with a visual outline. This outline provides a clear visual cue that the element is active and ready to receive input.
+
+Input outlines are particularly important for users with disabilities or who rely on keyboard navigation to interact with the interface. Without an outline, it can be challenging for these users to determine which element is currently in focus or active, leading to a frustrating and confusing experience.
+
+In summary outlines are reserved for focusable elements within a composition.
+
+### When to use
+
+- Focused input elements.
+- Focused clickable areas.
+- Focused buttons.
+
+### How to use
+- Outlines within BigDesign use a width of 4px.
+- The outline must be place outside of the element.
+
+### Outline color
+The outline color in BigDesign:
+
+<Swatch color="#DBE3FE" name="primary20" />
+
+`#DBE3FE`
