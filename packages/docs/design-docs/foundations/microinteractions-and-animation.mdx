@@ -1,0 +1,58 @@
+
+# Micro-interactions and animation
+
+UI micro-interactions are the small details that can make a big difference in the user experience. These interactions are subtle animations that occur in response to user actions, such as hovering over a button or clicking on a link. One way to create these micro-interactions is through CSS transitions, and one of the most commonly used transition types is ease-out.
+
+BigDesign is set on animating UI micro-interactions with ease-out transitions, ensuring these transitions are hardware accelerated for optimal performance.
+
+## What is ease-out transition?
+
+Ease-out is a type of CSS transition that slows down an animation as it comes to a stop, creating a smooth and natural transition. When using ease-out, the animation starts quickly and then gradually slows down until it comes to a complete stop. This type of transition is often used for micro-interactions because it provides a sense of ease and fluidity to the animation.
+
+## Best practices for ease-out transitions
+
+When creating UI micro-interactions, there are some best practices to keep in mind. These practices will ensure that the animations are smooth, visually appealing, and enhance the user experience.
+
+### Keep it simple
+
+One of the most important things to remember when creating transitions is to keep it simple. Avoid using too many elements or complex animations that can be overwhelming for the user. Instead, focus on small, subtle animations that add to the user experience without distracting from the main content.
+
+### Be consistent
+
+Consistency is key when it comes to UI design. Make sure that all transitions within your application are consistent in terms of duration, easing, and timing. This will provide a cohesive and professional look to your UI and help users understand how to interact with your app.
+
+### Use appropriate easing
+
+The easing function used in transitions is what makes the animation smooth and natural. It is important to choose an appropriate easing function that matches the behavior of the animation. For example, an animation that fades in and out should use a linear easing function, while an animation that bounces should use a bounce easing function.
+
+### Optimize for performance
+
+Transitions can be resource-intensive and can slow down your website or application if not optimized for performance. To ensure that your transitions are smooth and fast, you should use hardware acceleration. This means that the animation is rendered by the GPU instead of the CPU, which results in a smoother animation and faster load times.
+
+## Hardware accelerated CSS transitions
+
+Hardware acceleration is a technique that uses the graphics processing unit (GPU) of a device to render graphics and animations. By using the GPU, animations can be rendered faster and with less strain on the CPU, resulting in smoother and more responsive animations.
+
+To ensure hardware acceleration, there are a few best practices to follow:
+
+### Use transform and opacity properties
+
+The transform and opacity properties are optimized for hardware acceleration and should be used for transitions whenever possible. These properties use the GPU to render the animation, resulting in a smoother and faster transition.
+
+### Use will-change property
+
+The will-change property is used to inform the browser that an element will be modified in the future, allowing the browser to optimize the rendering of the element. By using the will-change property, you can ensure that your transitions are hardware accelerated and rendered as smoothly as possible.
+
+### Minimize layout changes
+
+Layout changes, such as changing the width or height of an element, can be expensive and can slow down your transitions. To ensure that your transitions are as fast as possible, you should minimize layout changes and use transforms whenever possible.
+
+## Resources
+
+-   [CSS transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions")
+    
+-   [CSS easing functions](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function "https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function")
+    
+-   [Coding tips for application performance - CSS animations and transitions](https://developer.mozilla.org/en-US/docs/Web/Performance/Fundamentals#specific_coding_tips_for_application_performance "https://developer.mozilla.org/en-US/docs/Web/Performance/Fundamentals#specific_coding_tips_for_application_performance")
+    
+-   [CSS will-change property](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change "https://developer.mozilla.org/en-US/docs/Web/CSS/will-change")
