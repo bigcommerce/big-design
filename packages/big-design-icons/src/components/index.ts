@@ -56,3 +56,5 @@ export * from './UndoIcon';
 export * from './VisibilityOffIcon';
 export * from './VisibilityIcon';
 export * from './WarningIcon';
+export * from './WindowExpandIcon';
+export * from './WindowMinimizeIcon';
