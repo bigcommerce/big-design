@@ -1,0 +1,67 @@
+import FigmaSample from "@components/big-design/FigmaSample";
+
+# Shadows
+Shadows are an element of our user interface that provide definition to page elements and visual cues as to their priority within our product experience.
+
+## Types of Shadows
+
+We currently employ 2 types of shadows in our product experiences.
+
+### Raised Shadows
+
+Raised shadows are the default elevation of shadows. They are used to delineate primary content containers. A raised shadow offsets the primary content container from the page background and creates a visual frame that helps focus the user's attention.
+
+### Floating Shadows
+
+Floating shadows are higher in elevation than Raised shadows. They are reserved for user interface elements that occur outside of the primary use case for a given experience. Examples of these types of "violator" experiences can be Tooltips, Modals, Alerts, and Messages.
+
+## Variant Properties
+
+<div class="flex flex-wrap">
+<div class="basis-full md:basis-1/2">
+
+### Raised
+
+| Parameter | Value  |
+|-----------|--------|
+| X         | 0px    |
+| Y         | 1px    |
+| Blur      | 6px    |
+| Color     | grey70 |
+| Opacity   | 20%    |
+
+</div>
+<div class="basis-full md:basis-1/2">
+
+### Floating
+
+| Parameter | Value  |
+|-----------|--------|
+| X         | 0px    |
+| Y         | 2px    |
+| Blur      | 12px    |
+| Color     | grey70 |
+| Opacity   | 20%    |
+</div>
+
+## Examples
+
+<FigmaSample url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FXcEPL2CKQ0VgYgdDfUEmeY%2FShadows%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DsBwJ1tYAzRcNHxkL-1" aspect="landscape">
+
+[View Example](https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FXcEPL2CKQ0VgYgdDfUEmeY%2FShadows%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DsBwJ1tYAzRcNHxkL-1)
+
+</FigmaSample>
+
+## Notes
+
+In order to prevent clutter and visual overload, shadows can only be applied to elements that are places atop of the page background such as cards and floating elements like modals. If such shadowed elements should contain cards within their contents then such will not have shadows. 
+
+<FigmaSample url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FHsnGVCZfHfqfKNZ2VZIMzg%2FShadows---Do's-and-dont's%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DMwI5X79o5aaWZ8wk-1" aspect="landscape">
+
+[View Example](https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FHsnGVCZfHfqfKNZ2VZIMzg%2FShadows---Do's-and-dont's%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DMwI5X79o5aaWZ8wk-1)
+
+</FigmaSample>
+
+## Resources
+
+-   [Box Component](https://developer.bigcommerce.com/big-design/box "https://developer.bigcommerce.com/big-design/box")
