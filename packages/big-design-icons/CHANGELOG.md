@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.24.0...@bigcommerce/big-design-icons@0.25.0) (2023-10-09)
+
+
+### Bug Fixes
+
+* **icons:** downgrade 'camelcase' to 6.3.0 ([#1284](https://github.com/bigcommerce/big-design/issues/1284)) ([1004097](https://github.com/bigcommerce/big-design/commit/100409789ab0beb9095eea3580aed7b5b3fc8776))
+
+
+### Features
+
+* **icons:** add Draft icon ([#1302](https://github.com/bigcommerce/big-design/issues/1302)) ([3ae2423](https://github.com/bigcommerce/big-design/commit/3ae2423ccaf2b53f282790218dcb80d622954241))
+* **icons:** add FileDownloadIcon ([#1286](https://github.com/bigcommerce/big-design/issues/1286)) ([7d73767](https://github.com/bigcommerce/big-design/commit/7d737670533c45ab09a66556b1d4b2316331ff03))
+* **icons:** add window expand and minimize icons ([997400b](https://github.com/bigcommerce/big-design/commit/997400b4ba5dc8d4c484cb690ee335a112de6c32))
+
+
+
+
+
 # [0.24.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.23.2...@bigcommerce/big-design-icons@0.24.0) (2023-07-26)
 
 **Note:** Version bump only for package @bigcommerce/big-design-icons

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.38.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.37.0...@bigcommerce/docs@0.38.0) (2023-10-09)
+
+
+### Features
+
+* **component:** add Toggle component ([#1274](https://github.com/bigcommerce/big-design/issues/1274)) ([8200e44](https://github.com/bigcommerce/big-design/commit/8200e44baa0813a1163d9981c292d95d62672691))
+
+
+
+
+
 # [0.37.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.36.2...@bigcommerce/docs@0.37.0) (2023-07-26)
 
 

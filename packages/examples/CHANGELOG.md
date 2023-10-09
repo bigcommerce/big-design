@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/deini/big-design/compare/@bigcommerce/examples@0.24.0...@bigcommerce/examples@0.25.0) (2023-10-09)
+
+**Note:** Version bump only for package @bigcommerce/examples
+
+
+
+
+
 # [0.24.0](https://github.com/jorgemoya/big-design/compare/@bigcommerce/examples@0.23.2...@bigcommerce/examples@0.24.0) (2023-07-26)
 
 **Note:** Version bump only for package @bigcommerce/examples

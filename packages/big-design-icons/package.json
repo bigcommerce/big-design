@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design-icons",
-  "version": "0.24.0",
+  "version": "0.25.0",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
-    "@bigcommerce/big-design-theme": "^0.19.2"
+    "@bigcommerce/big-design-theme": "^0.20.0"
   },
   "peerDependencies": {
     "react": "^18.0.0",
@@ -48,7 +48,7 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.12.1",
     "@babel/preset-typescript": "^7.15.0",
-    "@bigcommerce/configs": "^0.18.0",
+    "@bigcommerce/configs": "^0.19.0",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",
