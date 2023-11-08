@@ -16,6 +16,26 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
     useMemo(() => (state) => state.rows, []),
   );
 
+  const isColumnFullyEnabled = useStore(
+    store,
+    useMemo(
+      () =>
+        ({ columns }) =>
+          columns.find(({ hash }) => hash === selectedCells[0]?.hash)?.enabled ?? false,
+      [selectedCells],
+    ),
+  );
+
+  const isColumnFullyDisabled = useStore(
+    store,
+    useMemo(
+      () =>
+        ({ columns }) =>
+          columns.find(({ hash }) => hash === selectedCells[0]?.hash)?.disabled ?? false,
+      [selectedCells],
+    ),
+  );
+
   const isBlockedFillOut = useStore(
     store,
     useMemo(() => (state) => state.isBlockedFillOut, []),
@@ -47,6 +67,21 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
   );
 
   const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
+
+  const getAvailableCells = useCallback(
+    (selectedRowsIds: any[]) => {
+      if (isColumnFullyEnabled) {
+        return selectedCells;
+      }
+
+      if (isColumnFullyDisabled) {
+        return [];
+      }
+
+      return selectedCells.filter((_, idx) => !disabledRows.includes(selectedRowsIds[idx]));
+    },
+    [disabledRows, isColumnFullyDisabled, isColumnFullyEnabled, selectedCells],
+  );
 
   const onFillFullColumn = useCallback(() => {
     const cells: Array<Cell<T>> = rows.reduce(
@@ -102,14 +137,13 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
     if (!isBlockedFillOut && !isAutoFillActive && selectedCells.length > 1) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       const selectedRowsIds = selectedCells.map(({ rowIndex }) => rows[rowIndex].id);
-      const availableCells = selectedCells.filter(
-        ({ rowIndex }) => !disabledRows.includes(selectedRowsIds[rowIndex]),
-      );
+      const availableCells = getAvailableCells(selectedRowsIds);
+      const sourceRow = rows[selectedCells[0].rowIndex];
 
       updateItems(
         availableCells,
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        availableCells.map(({ hash }) => rows[selectedCells[0].rowIndex][hash]),
+        availableCells.map(({ hash }) => sourceRow[hash]),
       );
 
       setBlockFillOut(true);
@@ -124,6 +158,8 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
     setSelectingActive,
     updateItems,
     setBlockFillOut,
+    isColumnFullyEnabled,
+    getAvailableCells,
   ]);
 
   return {
