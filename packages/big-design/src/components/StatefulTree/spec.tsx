@@ -67,6 +67,10 @@ test('onExpandedChange gets called when an item expansion happens', () => {
   fireEvent.click(getByText('Test Node 0'));
 
   expect(onExpandedChange).toHaveBeenCalledWith(['0']);
+
+  fireEvent.click(getByText('Test Node 0'));
+
+  expect(onExpandedChange).toHaveBeenCalledWith([]);
 });
 
 test('onNodeClick gets called when an item click happens', () => {
