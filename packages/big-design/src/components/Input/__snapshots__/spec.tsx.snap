@@ -86,6 +86,7 @@ exports[`renders all together 1`] = `
 
 .c7[disabled] {
   background-color: #ECEEF5;
+  color: #5E637A;
 }
 
 .c4 {
