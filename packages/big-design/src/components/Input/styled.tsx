@@ -112,6 +112,7 @@ export const StyledInput = styled.input<InputProps>`
 
   &[disabled] {
     background-color: ${({ theme }) => theme.colors.secondary20};
+    color: ${({ theme }) => theme.colors.secondary60};
   }
 `;
 

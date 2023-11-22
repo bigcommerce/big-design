@@ -115,6 +115,7 @@ exports[`simple form render 1`] = `
 
 .c8[disabled] {
   background-color: #ECEEF5;
+  color: #5E637A;
 }
 
 .c7 {
