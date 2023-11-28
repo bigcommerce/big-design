@@ -1,3 +1,6 @@
+import { DosAndDonts, Dos, Donts, IconDo, IconDont } from "@components/big-design/DosAndDonts";
+import { ComparisonTable } from "@components/big-design/ComparisonTable";
+
 # Localization
 
 At BigCommerce, we use American English as the default language for UX writing. That doesn’t mean, however, we should run roughshod over the design without considering our global audience.
@@ -16,13 +19,25 @@ What would happen if the copy were longer after localization? Take German, for e
 
 Instead link only the most relevant, actionable portion of the sentence. When linking a larger sentence the arrangement of the words may change after localization, causing problems with the UI.
 
-Do
+<DosAndDonts>
+<Dos hideHeader={true}>
+<div class="hidden">
+**Do**
+</div>
+<div>
+For more stories, visit the [BigCommerce Blog](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/").
+</div>
+</Dos>
+<Donts hideHeader={true}>
+<div class="hidden">
+**Don't**
+</div>
+<div>
+[For more stories, visit the BigCommerce Blog.](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/")
+</div>
+</Donts>
+</DosAndDonts>
 
- - For more stories, visit the [BigCommerce Blog](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/").
-
-Don't
-
- - [For more stories, visit the BigCommerce Blog.](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/")
 
 **Watch out for special characters**
 
@@ -32,26 +47,16 @@ Symbols like “#” and “&” don’t carry the same meaning in every languag
 
 Here are some British English words and phrases, common to ecommerce, and American English equivalents you should use instead.
 
-Do
-
- - Buy online, pick up in-store
- - Canceled
- - Center
- - Color
- - Fulfill
- - Gray
- - Organize
- - Meter
- - Ship, mail
-
-Don't
-
- - Click and collect
- - Cancelled
- - Centre
- - Colour
- - Fulfil
- - Grey
- - Organise
- - Metre
- - Post
+<ComparisonTable>
+| American |  British |
+|---|---|
+| Buy online, pick up in-store | Click and collect |
+| Canceled | Cancelled |
+| Center | Centre |
+| Color | Colour |
+| Fulfill | Fulfil |
+| Gray | Grey |
+| Organize | Organise |
+| Meter | Metre |
+| Ship, mail | Post |
+</ComparisonTable>

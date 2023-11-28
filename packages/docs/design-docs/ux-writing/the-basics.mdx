@@ -1,3 +1,6 @@
+import { DosAndDonts, Dos, Donts, IconDo, IconDont } from "@components/big-design/DosAndDonts";
+import { ComparisonTable } from "@components/big-design/ComparisonTable";
+
 # The basics
 
 ## Intro
@@ -40,15 +43,37 @@ Showing empathy towards the user is one of the fundamental precepts of product d
 
 We want to tell users what they _can_ do, as opposed to what they _can’t_ do. Why? Because using BigCommerce should be a positive experience. When words like “can’t” and “don’t” appear in your writing, they should serve as red flags that you’re using negative language.
 
-Do
-
- - To turn on this setting, connect your PayPal account first.
-
-Don't
-
- - You can’t turn on this setting until you connect your PayPal account.
+<DosAndDonts>
+<Dos hideHeader={true}>
+<div class="hidden">
+**Do**
+</div>
+<div>
+To turn on this setting, connect your PayPal account first.
+</div>
+</Dos>
+<Donts hideHeader={true}>
+<div class="hidden">
+**Don't**
+</div>
+<div>
+You can’t turn on this setting until you connect your PayPal account.
+</div>
+</Donts>
+</DosAndDonts>
 
 You should also watch out for deceptive design (sometimes called dark UX). Deceptive design refers to any friction or tricks present in the UI, put there to try and get users to do something they probably don’t want to do.. If you’ve ever had a hard time canceling or unsubscribing from an online account — that’s deceptive design. If you’ve ever been made to feel bad about your decisions — that’s deceptive design. Don’t do it.
+
+
+
+<DosAndDonts>
+<Dos>
+![](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.the_basics-be_positive-do.png "title")
+</Dos>
+<Donts>
+![](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.the_basics-be_positive-dont.png "title")
+</Donts>
+</DosAndDonts>
 
 ## Don’t get meta
 
@@ -102,43 +127,26 @@ Promotes negative beliefs about aging and older adults.
 
 Check the chart below for non-inclusive words and phrases commonly encountered in UX writing and suggested replacements.
 
-**Inclusive** 
-
- - Artificial, synthetic, fabricated, manufactured
- - Businessperson
- - Staffed, managed, staffing, workforce
- - Baffling, confusing, unbelievable, silly
- - Denylist, blocklist
- - Allowlist
- - Slows
- - Placeholder
- - You all
- - They, them, their
- - Primary, secondary
- - Confidence check
- - Gap, weak point
- - Legacy, exempt
- - Meeting, gathering
- - Easy, simple
-
-**Non-inclusive** 
-
- - Man-made
- - Businessman
- - Manned, manpower
- - Crazy, insane
- - Blacklist
- - Whitelist
- - Cripples
- - Dummy
- - Guys
- - He, him, she, her
- - Master, slave
- - Sanity check
- - Blind spot
- - Grandfathered in
- - Pow wow
- - Cakewalk
+<ComparisonTable>
+| Inclusive |  Non-inclusive |
+|---|---|
+| Artificial, synthetic, fabricated, manufactured   | Man-made |
+| Businessperson                                    | Businessman |
+| Staffed, managed, staffing, workforce             | Manned, manpower |
+| Baffling, confusing, unbelievable, silly          | Crazy, insane |
+| Denylist, blocklist                               | Blacklist |
+| Allowlist                                         | Whitelist |
+| Slows                                             | Cripples |
+| Placeholder                                       | Dummy |
+| You all                                           | Guys |
+| They, them, their                                 | He, him, she, her |
+| Primary, secondary                                | Master, slave |
+| Confidence check                                  | Sanity check |
+| Gap, weak point                                   | Blind spot |
+| Legacy, exempt                                    | Grandfathered in |
+| Meeting, gathering                                | Pow wow |
+| Easy, simple                                      | Cakewalk |
+</ComparisonTable>
 
 ### Rules for inclusive writing
 
@@ -157,3 +165,4 @@ Only mention gender, sexual orientation, religion, race, age or physical abiliti
 **When all else fails, write around the pronouns**
 
 In many cases you can reword your sentences and avoid using pronouns in the first place.
+

@@ -1,4 +1,5 @@
-import FigmaSample from "@components/big-design/FigmaSample";
+import { DosAndDonts, Dos, Donts, IconDo, IconDont } from "@components/big-design/DosAndDonts";
+import { ComparisonTable } from "@components/big-design/ComparisonTable";
 
 # Grammar and mechanics
 
@@ -20,13 +21,24 @@ Use sentence case.
 
 Contractions are handy for adjusting your tone. Using them makes your writing sound more casual. Not using them makes your writing sound more formal. That said, if you wouldn’t use the contraction in everyday speech, avoid using it in your writing. And while BigCommerce is a Texas company, let’s avoid “y’all,” y’all.
 
-Do
-
+<DosAndDonts>
+<Dos hideHeader={true}>
+<div class="hidden">
+**Do**
+</div>
+<div>
 Aren’t, can’t, couldn’t, could’ve, didn’t, don’t, doesn’t, hasn’t, haven’t, isn’t, let’s, shouldn’t, should’ve, that’s, there’s, they’re, we’ll, weren’t, we’ve, wasn’t, won’t, wouldn’t, you’ll, you’re
-
-Don't
-
+</div>
+</Dos>
+<Donts hideHeader={true}>
+<div class="hidden">
+**Don't**
+</div>
+<div>
 Ain’t, e’er, mightn’t, mustn’t, o’clock, shan’t, ‘twas, y’all
+</div>
+</Donts>
+</DosAndDonts>
 
 ## Numbers
 
@@ -50,23 +62,21 @@ From [Nielsen Norman Group](https://www.nngroup.com/articles/web-writing-show-nu
 
 NN/g still recommends writing out numbers that don’t represent specific data. In the example below, it’s better to write out “thousands” than “1000s.”
 
+<Dos hideHeader={true}>
 Thousands of online stores are created using BigCommerce every year.
+</Dos>
 
 ## Passive vs. active voice
 
 Try to use the active voice. It’s simpler and more direct than the passive voice. Not sure what the difference is between active and passive? Here are some examples:
 
-**Active**
-
- - Choose a payment method
- - We recommend…
- - Turn on the setting
-
-**Passive**
-
- - Choose the preferred payment method
- - It is recommended…
- - The setting should be turned on
+<ComparisonTable>
+| Active | Passive |
+| --- | --- |
+| Choose a payment method | Choose the preferred payment method |
+| We recommend… | It is recommended… |
+| Turn on the setting | The setting should be turned on |
+</ComparisonTable>
 
 As you can see, with the passive voice it’s not clear who the subject is and who’s doing the acting. It’s indirect, confusing and wordy. Granted, writing in the active voice can sometimes feel too direct, even a little bossy. Users, however, appreciate it when you give them the info they need without a lot of fluff.
 
@@ -78,29 +88,41 @@ Of course, there are exceptions to the rule. Here’s when it might be okay to u
     
  -   If the object or the action are more important than the subject doing the action
 
-**Active**
-
- - BigCommerce creates and emails your invoices monthly to philip@nomail.com.
-    
-**Passive**
-
- - Invoices are created monthly and emailed to philip@nomail.com.
-
+<DosAndDonts>
+<Dos hideHeader={true}>
+BigCommerce will create and email your invoices monthly to
+</Dos>
+<Donts hideHeader={true}>
+BigCommerce creates and emails your invoices monthly to philip@nomail.com.
+</Donts>
+</DosAndDonts>
 
 
 ## Pluralities
 
 A plurality occurs when the copy changes depending on the number of items you’re writing about. Whenever possible, write unique copy for the singular and plural forms, displaying the appropriate version as needed. If the possibility of a plural exists, but technological limitations prevent you from using variable copy, then default to the plural form.
 
-Do
 
+<DosAndDonts>
+<Dos>
+<div class="hidden">
+**Do**
+</div>
+<div>
  - You have a new message.
  - You have 10 new messages.
-
-Don't
-
+</div>
+</Dos>
+<Donts>
+<div class="hidden">
+**Don't**
+</div>
+<div>
  - You have a new message or messages.
  - You have a new message(s)
+</div>
+</Donts>
+</DosAndDonts>
 
 ## Present vs. past tense
 
@@ -110,19 +132,30 @@ For confirmation, success and error messages it’s okay to use the past partici
 
 Past participles usually end with “-ed,” “-d,” “-t,” “-en” or “-n.”
 
-Do
-
+<DosAndDonts>
+<Dos>
+<div class="hidden">
+**Do**
+</div>
+<div>
  - Settings saved
  - App installed
  - Payment failed
  - Message sent
-
-Don't
-
+</div>
+</Dos>
+<Donts>
+<div class="hidden">
+**Don't**
+</div>
+<div>
  - Settings have been saved
  - App was installed
  - Payment has failed
  - Message was sent
+</div>
+</Donts>
+</DosAndDonts>
 
 ## Punctuation and formatting
 
@@ -130,15 +163,11 @@ Don't
 
 For uncommon abbreviations/acronyms, write out the full phrase, followed by the abbreviation/acronym in parentheses in corresponding help text or a tooltip.
 
-Do
-
- - A stock keeping unit (SKU) is a unique code that helps you keep track of an item or service in your inventory.
+<Dos hideHeader={true}>A stock keeping unit (SKU) is a unique code that helps you keep track of an item or service in your inventory.</Dos>
 
 There’s no need to spell out commonly understood abbreviations and acronyms.
 
-Do
-
- - Enter your PIN.
+<Dos hideHeader={true}>Enter your PIN.</Dos>
 
 ### Ampersands (&)
 
@@ -148,35 +177,53 @@ The ampersand (&) isn’t used in all languages and doesn’t localize well. Try
 
 Don’t use the serial comma, aka the Oxford comma, aka the comma before “and” in a list of 3 or more items.
 
-Do
-
- - Planes, trains and automobiles.
-
-Don't
-
- - Planes, trains, and automobiles.
+<DosAndDonts>
+<Dos hideHeader={true}>
+<div class="hidden">
+**Do**
+</div>
+<div>
+Planes, trains and automobiles.
+</div>
+</Dos>
+<Donts hideHeader={true}>
+<div class="hidden">
+**Don't**
+</div>
+<div>
+Planes, trains, and automobiles.
+</div>
+</Donts>
+</DosAndDonts>
 
 It’s okay to use a serial comma if leaving the comma out causes ambiguity in the sentence’s meaning.
 
-Do
-
- - This writing guide is dedicated to my parents, Olivia Rodrigo, and Harry Styles.
-
-Don't
-
- - This writing guide is dedicated to my parents, Olivia Rodrigo and Harry Styles.
+<DosAndDonts>
+<Dos hideHeader={true}>
+<div class="hidden">
+**Do**
+</div>
+<div>
+This writing guide is dedicated to my parents, Olivia Rodrigo, and Harry Styles.
+</div>
+</Dos>
+<Donts hideHeader={true}>
+<div class="hidden">
+**Don't**
+</div>
+<div>
+This writing guide is dedicated to my parents, Olivia Rodrigo and Harry Styles.
+</div>
+</Donts>
+</DosAndDonts>
 
 Use a comma before “but” if the “but” connects two independent clauses. In the example below, you can see each part of the sentence is an independent clause because each clause could stand on its own as two separate sentences.
 
-Do
-
- - I would like to buy tickets to the Olivia Rodrigo concert, but the show is sold-out.
+<Dos hideHeader={true}>I would like to buy tickets to the Olivia Rodrigo concert, but the show is sold-out.</Dos>
 
 Generally, you should not use a comma before “because” if it's a subordinating conjunction. Its job is to join subordinate clauses to independent clauses.
 
-Do
-
- - I had to return my new shoes because they were too small.
+<Dos hideHeader={true}>I had to return my new shoes because they were too small.</Dos>
 
 ### Currencies
 
@@ -184,9 +231,7 @@ When referring to currencies, always use the 3-letter [ISO 4217 currency abbrevi
 
 When the currency abbreviation follows a monetary amount, put the abbreviation in parentheses.
 
-Do
-
- - $100 (USD)
+<Dos hideHeader={true}>$100 (USD)</Dos>
 
 ### Date, time and phone numbers
 
@@ -197,11 +242,15 @@ Use the 3-letter month abbreviations: Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Se
 
 Use day-of-the-week abbreviations: Mon, Tue, Wed, Thu, Fri, Sat and Sun. Do not use a period after the day when abbreviating.
 
-Do
+<Dos>
+<div class="hidden">
+**Do**
+</div>
 
  - Jan 5, 2022
  - 1/02/22
  - Mon, Jan 5, 2022
+</Dos>
 
 **Time**
 
@@ -209,29 +258,44 @@ Don’t use periods in “AM” and “PM”
 
 Be sure to check the region’s time zone and if it’s daylight savings time or not. For example, CDT is Central Daylight Time and CST is Central Standard Time.
 
-Do
-
- - List item
+<DosAndDonts>
+<Dos>
+<div class="hidden">
+**Do**
+</div>
+<div>
  - 2:00 AM CST
  - 3:30 PM CDT
-
-Don't
-
+</div>
+</Dos>
+<Donts>
+<div class="hidden">
+**Don't**
+</div>
+<div>
  - 2:00am CST
  - 3:30 P.M. CDT
+</div>
+</Donts>
+</DosAndDonts>
 
 **Phone numbers**
 
 Use hyphens to break up phone numbers. Don’t use parentheses or periods.
 
-Do
-
+<DosAndDonts>
+<Dos>
+<div>
  - 1-888-555-5555
-
-Don't
-
+</div>
+</Dos>
+<Donts>
+<div>
  - 1 (888) 555-5555
  - 1.888.555.5555
+</div>
+</Donts>
+</DosAndDonts>
 
 ### Exclamation point
 
@@ -241,13 +305,24 @@ Save the exclamation point for something that’s actually exciting. Settings sa
 
 There’s no need to write out file extensions in full. Always use the abbreviation, lowercase, no period.
 
-Do
-
- - Uploads must be jpeg, png or gif.
-
-Don't
-
- - Uploads must be JPEG, .png or Gif.
+<DosAndDonts>
+<Dos hideHeader={true}>
+<div class="hidden">
+**Do**
+</div>
+<div>
+Uploads must be jpeg, png or gif.
+</div>
+</Dos>
+<Donts hideHeader={true}>
+<div class="hidden">
+**Don't**
+</div>
+<div>
+Uploads must be JPEG, .png or Gif.
+</div>
+</Donts>
+</DosAndDonts>
 
 ### Hyphens and dashes
 
@@ -261,20 +336,26 @@ En dashes are used to indicate a range between two numbers. Don’t put spaces a
 
 If the number range is preceded by the words “from,” or “between,” then use the word “to” instead of an en dash.
 
-Do
-
+<Dos>
+<div class="hidden">
+**Do**
+</div>
  - There are 500–1000 employees at BigCommerce.
  - There are somewhere between 500 to 1000 employees at BigCommerce.
  - Philip will be in the office May 3 – May 5.
+</Dos>
 
 **This is an em dash (—)**
 
 Em dashes are used to indicate an abrupt pause or change in the middle of a sentence. Em dashes can also be used to call out or add emphasis to an important part of a sentence. Em dashes should always have a space before and after.
 
-Do
-
+<Dos>
+<div class="hidden">
+**Do**
+</div>
  - Wait, that’s not a hyphen — it’s an em dash.
  - I went shopping — on a site powered by BigCommerce — and bought a new pair of jeans.
+</Dos>
 
 ### Percentages
 
@@ -286,9 +367,9 @@ Do not use periods, or any ending punctuation of any kind, on titles, labels, he
 
 Let’s look at an example:
 
-<FigmaSample url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F5KZNYdgysHmASmDvBZPP3m%2FGrammar-and-mechanics---Periods%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DUIeaPrF4qY34KuiX-1" aspect="landscape">
-(View Example)[https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F5KZNYdgysHmASmDvBZPP3m%2FGrammar-and-mechanics---Periods%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DUIeaPrF4qY34KuiX-1]
-</FigmaSample> 
+<div className="flex items-center justify-center">
+![](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.grammar_and_mechanics-periods.png)
+</div>
 
 In the card above, the text above the divider qualifies as a header — it’s giving a name to the tile that it appears on — and doesn’t need a period.
 
@@ -308,28 +389,37 @@ Use quotation marks when referring, in the UI, to another item within the UI. Th
 
 Let’s look at an example:
 
-<FigmaSample url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F5KZNYdgysHmASmDvBZPP3m%2FGrammar-and-mechanics---Periods%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DUIeaPrF4qY34KuiX-1" aspect="landscape">
-(View Example)[https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F5KZNYdgysHmASmDvBZPP3m%2FGrammar-and-mechanics---Periods%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DUIeaPrF4qY34KuiX-1]
-</FigmaSample> 
+<div className="flex items-center justify-center">
+![](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.grammar_and_mechanics-periods.png)
+</div>
 
-Do
-
+<Dos>
+<div class="hidden">
+**Do**
+</div>
  - Under “List your products on Google,” click “Get started.”
+</Dos>
 
 ### Slashes
 
 You can use forward slashes “/” to indicate the word “or” between two words. When doing so, don’t use spaces before or after the slash. Don’t use backlashes “\”.
 
-Do
-
+<Dos>
+<div class="hidden">
+**Do**
+</div>
  - if/when
  - and/or
+</Dos>
 
 On the other hand, when using a forward slash to signify “or” between two multi-word phrases, use spaces before and after the slash — it helps with readability.
 
-Do
-
+<Dos>
+<div class="hidden">
+**Do**
+</div>
  - Download the app from the Apple App Store / Google Play Store.
+</Dos>
 
 ### Units of measurement
 
@@ -337,12 +427,19 @@ Add a space between numbers and units of measurement. Use all lowercase and alwa
 
 Don’t add a period. Don’t pluralize measurements (“lbs” is in common use and okay to use).
 
-Do
-
+<Dos>
+<div class="hidden">
+**Do**
+</div>
  - 75 lbs, 14 in, 7 cm
+</Dos>
 
 When abbreviating units of data, always capitalize MB (megabyte) and GB (gigabyte). Don’t use Mb and Gb as these represent different units of measurement typically used when measuring Internet speeds.
 
-Do
-
+<Dos>
+<div class="hidden">
+**Do**
+</div>
  - 10 MB, 10 GB
+</Dos>
+
