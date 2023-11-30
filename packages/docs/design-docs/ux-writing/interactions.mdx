@@ -1,81 +1,27 @@
+import Icon from "@components/icons/Icon";
 import { DosAndDonts, Dos, Donts, IconDo, IconDont } from "@components/big-design/DosAndDonts";
 
 # Interactions
 
 An interaction is where the user’s intention becomes an action. It could be something as simple as a button or as complex as an entire checkout process. Whatever the case may be, the writing should be focused on what’s best for the user.
 
-## Buttons
+## Titles, headings and subheadings
 
-Users should know exactly what will happen when they click. Button language should be unambiguous, direct and action-oriented and 3 words at most.
+When writing titles, heading and subheadings:
 
- -   Follow the &#123;verb&#125; + &#123;noun&#125; formula
+-   Never use periods or other ending punctuation
     
- -   Use sentence case and never include ending punctuation
+-   Try to be brief
     
-<Dos>
-<div class="hidden">
-**Do**
-</div>
- - Learn more
- - Start trial
- - Save settings
- - Customize dashboard
- - View more
- - Add new
- - Create channel
-</Dos>
+-   Titles should be titles, not sentences
 
-## Checkout
+## Navigation
 
-When writing about the checkout process, follow established patterns. Ecommerce has been around long enough that users have strong expectations about what the process should look like.
+### Menus
 
-<Dos>
-<div class="hidden">
-**Do**
-</div>
- - Add to cart
- - Check out
- - Check out securely
- - Go to checkout
- - View cart
- - Edit cart
- - Confirm payment
- - Place order
-</Dos>
+Do not use ending punctuation on menu titles or items within a menu.
 
-
-
-## Deprecation
-
-When deprecating an older feature it’s important to set the right tone. Calling the new version of the feature “advanced” makes it sounds harder to use. Calling the feature “new,” while true, also implies the feature is unproven. Instead, if a user has a choice between an older, deprecated version and a new version, just call the new version by its name — without any fancy adjectives.
-
-<DosAndDonts>
-<Dos>
-<div class="hidden">
-**Do**
-</div>
-<div>
-![The right way to deprecate a product or feature](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.interactions-deprecation_do.png)
-</div>
-</Dos>
-<Donts>
-<div class="hidden">
-**Don't**
-</div>
-<div>
-![The wrong way to deprecate a product or feature](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.interactions-deprecation_dont.png)
-</div>
-</Donts>
-</DosAndDonts>
-
-## Help text and tooltips
-
-Help text and tooltips provide additional guidance to users when completing an action.
-
--   Link to relevant Knowledge Base articles whenever one exists
-    
-
-## Links in a sentence
+### Links in a sentence
 
 Avoid linking entire sentences. Instead, link only the most relevant portion of the sentence. Use ending punctuation, as normal, but do not include ending punctuation in the link.
 
@@ -85,7 +31,7 @@ Avoid linking entire sentences. Instead, link only the most relevant portion of 
 **Do**
 </div>
 <div>
-For more stories like this one, check out the [BigCommerce Blog](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/").
+View all integrations in the [app manager](javascript:;).
 </div>
 </Dos>
 <Donts hideHeader={true}>
@@ -93,15 +39,14 @@ For more stories like this one, check out the [BigCommerce Blog](https://www.big
 **Don't**
 </div>
 <div>
-[For more stories like this one, check out the BigCommerce Blog](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/")
+[View all integrations in the app manager](javascript:;)
 </div>
 </Donts>
 </DosAndDonts>
 
-## Links outside of a sentence
+### Links outside of a sentence
 
 Links outside of a sentence should follow the &#123;verb&#125; + &#123;noun&#125; format. Do not use periods or exclamation points. Question marks are fine within the context of a forgotten password link. Otherwise, avoid using them.
-
 
 <DosAndDonts>
 <Dos hideHeader={true}>
@@ -126,41 +71,58 @@ Links outside of a sentence should follow the &#123;verb&#125; + &#123;noun&#125
 </Donts>
 </DosAndDonts>
 
-## Menus
+### External links
 
-Do not use ending punctuation on menu titles or items within a menu.
+Links that go to other websites must follow best practices such as opening in a new tab or window and including the external llink icon (<Icon name="external" className="inline w-4 h-auto" includesWrapper={false} />) at the end.
 
-## Status messages
-
-There are two basic ways of delivering a status message: in-line and banner.
-
-### In-line
-<div className="flex items-center justify-center">
-![In-line error message](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.interactions-status-messages-inline-messages.png)
+<Dos hideHeader={true}>
+<div class="hidden">
+**Do**
 </div>
-
-### Banner
-<div className="flex items-center justify-center">
-![Banner error message](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.interactions-status-messages_concise.png)
+<div>
+For more stories like this one, check out the [BigCommerce Blog <Icon name="external" className="inline w-4 h-auto" includesWrapper={false} />](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/").
 </div>
+</Dos>
 
-## Placeholder text
+## Actionable items
+
+### Buttons
+
+Users should know exactly what will happen when they click. Button language should be unambiguous, direct and action-oriented and 3 words at most.
+
+ -   Follow the &#123;verb&#125; + &#123;noun&#125; formula
+    
+ -   Use sentence case and never include ending punctuation
+    
+<Dos>
+<div class="hidden">
+**Do**
+</div>
+ - Learn more
+ - Start trial
+ - Save settings
+ - Customize dashboard
+ - View more
+ - Add new
+ - Create channel
+</Dos>
+
+## Information patterns
+
+### Help text and tooltips
+
+Help text and tooltips provide additional guidance to users when completing an action.
+
+-   Link to relevant Knowledge Base articles whenever one exists
+
+
+### Placeholder text
 
 Placeholder text inside a form field should be short and have no periods. If it needs a period it’s too long. Keep in mind, placeholder text disappears when the user starts writing and if it’s too long to remember the user will need to delete what they’ve written to see the placeholder again.
 
 If you’ve got a lot to say, present the info outside the field as help text.
 
-## Titles, headings and subheadings
-
-When writing titles, heading and subheadings:
-
--   Never use periods or other ending punctuation
-    
--   Try to be brief
-    
--   Titles should be titles, not sentences
-
-## Empty states
+### Empty states
 
 Copy for empty states should tell the user why the field is empty and tell them how to start adding items.
 
@@ -171,4 +133,47 @@ Copy for empty states should tell the user why the field is empty and tell them 
 <div className="flex items-center justify-center">
 ![No products found empty state](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.interactions-empty_states_1.png)
 </div>
+</Dos>
+
+### Deprecation
+
+When deprecating an older feature it’s important to set the right tone. Calling the new version of the feature “advanced” makes it sounds harder to use. Calling the feature “new,” while true, also implies the feature is unproven. Instead, if a user has a choice between an older, deprecated version and a new version, just call the new version by its name — without any fancy adjectives.
+
+<DosAndDonts>
+<Dos>
+<div class="hidden">
+**Do**
+</div>
+<div>
+![The right way to deprecate a product or feature](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.interactions-deprecation_do.png)
+</div>
+</Dos>
+<Donts>
+<div class="hidden">
+**Don't**
+</div>
+<div>
+![The wrong way to deprecate a product or feature](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.interactions-deprecation_dont.png)
+</div>
+</Donts>
+</DosAndDonts>
+
+## Common flows
+
+### Checkout
+
+When writing about the checkout process, follow established patterns. Ecommerce has been around long enough that users have strong expectations about what the process should look like.
+
+<Dos>
+<div class="hidden">
+**Do**
+</div>
+ - Add to cart
+ - Check out
+ - Check out securely
+ - Go to checkout
+ - View cart
+ - Edit cart
+ - Confirm payment
+ - Place order
 </Dos>

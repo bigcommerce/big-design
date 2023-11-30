@@ -1,5 +1,6 @@
 import { DosAndDonts, Dos, Donts, IconDo, IconDont } from "@components/big-design/DosAndDonts";
 import { ComparisonTable } from "@components/big-design/ComparisonTable";
+import Icon from "@components/icons/Icon";
 
 # Localization
 
@@ -25,7 +26,7 @@ Instead link only the most relevant, actionable portion of the sentence. When li
 **Do**
 </div>
 <div>
-For more stories, visit the [BigCommerce Blog](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/").
+For more stories like this one, check out the [BigCommerce Blog <Icon name="external" className="inline w-4 h-auto" includesWrapper={false} />](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/").
 </div>
 </Dos>
 <Donts hideHeader={true}>
@@ -33,7 +34,7 @@ For more stories, visit the [BigCommerce Blog](https://www.bigcommerce.com/blog/
 **Don't**
 </div>
 <div>
-[For more stories, visit the BigCommerce Blog.](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/")
+[For more stories, visit the BigCommerce Blog <Icon name="external" className="inline w-4 h-auto" includesWrapper={false} />.](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/")
 </div>
 </Donts>
 </DosAndDonts>
@@ -60,3 +61,4 @@ Here are some British English words and phrases, common to ecommerce, and Americ
 | Meter | Metre |
 | Ship, mail | Post |
 </ComparisonTable>
+
