@@ -1,6 +1,6 @@
-import { DosAndDonts, Dos, Donts, IconDo, IconDont } from "@components/big-design/DosAndDonts";
-import { ComparisonTable } from "@components/big-design/ComparisonTable";
-import Icon from "@components/icons/Icon";
+import { ComparisonTable } from '@components/big-design/ComparisonTable';
+import { Donts, Dos, DosAndDonts } from '@components/big-design/DosAndDonts';
+import Icon from '@components/icons/Icon';
 
 # Localization
 
@@ -21,24 +21,31 @@ What would happen if the copy were longer after localization? Take German, for e
 Instead link only the most relevant, actionable portion of the sentence. When linking a larger sentence the arrangement of the words may change after localization, causing problems with the UI.
 
 <DosAndDonts>
-<Dos hideHeader={true}>
-<div class="hidden">
-**Do**
-</div>
-<div>
-For more stories like this one, check out the [BigCommerce Blog <Icon name="external" className="inline w-4 h-auto" includesWrapper={false} />](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/").
-</div>
-</Dos>
-<Donts hideHeader={true}>
-<div class="hidden">
-**Don't**
-</div>
-<div>
-[For more stories, visit the BigCommerce Blog <Icon name="external" className="inline w-4 h-auto" includesWrapper={false} />.](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/")
-</div>
-</Donts>
+  <Dos hideHeader={true}>
+    <div className="hidden">**Do**</div>
+    <div>
+      {/* // eslint-disable-next-line no-unused-expressions forces the space before the icon */}
+      For more stories like this one, check out the [BigCommerce Blog <Icon
+        name="external"
+        className="inline w-4 h-auto"
+        includesWrapper={false}
+      />
+      ](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/").
+    </div>
+  </Dos>
+  <Donts hideHeader={true}>
+    <div className="hidden">**Don't**</div>
+    <div>
+      {/* // eslint-disable-next-line no-unused-expressions forces the space before the icon */}
+      [For more stories, visit the BigCommerce Blog <Icon
+        name="external"
+        className="inline w-4 h-auto"
+        includesWrapper={false}
+      />
+      .](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/")
+    </div>
+  </Donts>
 </DosAndDonts>
-
 
 **Watch out for special characters**
 
@@ -49,16 +56,7 @@ Symbols like “#” and “&” don’t carry the same meaning in every languag
 Here are some British English words and phrases, common to ecommerce, and American English equivalents you should use instead.
 
 <ComparisonTable>
-| American |  British |
-|---|---|
-| Buy online, pick up in-store | Click and collect |
-| Canceled | Cancelled |
-| Center | Centre |
-| Color | Colour |
-| Fulfill | Fulfil |
-| Gray | Grey |
-| Organize | Organise |
-| Meter | Metre |
-| Ship, mail | Post |
+  | American | British | |---|---| | Buy online, pick up in-store | Click and collect | | Canceled |
+  Cancelled | | Center | Centre | | Color | Colour | | Fulfill | Fulfil | | Gray | Grey | | Organize
+  | Organise | | Meter | Metre | | Ship, mail | Post |
 </ComparisonTable>
-

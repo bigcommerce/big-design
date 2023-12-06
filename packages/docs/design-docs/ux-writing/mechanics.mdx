@@ -1,6 +1,5 @@
-import Icon from "@components/icons/Icon";
-import { DosAndDonts, Dos, Donts, IconDo, IconDont } from "@components/big-design/DosAndDonts";
-import { ComparisonTable } from "@components/big-design/ComparisonTable";
+import { Donts, Dos, DosAndDonts } from '@components/big-design/DosAndDonts';
+import Icon from '@components/icons/Icon';
 
 # Mechanics
 
@@ -9,14 +8,10 @@ import { ComparisonTable } from "@components/big-design/ComparisonTable";
 Use sentence case.
 
 - Sentence case applies everywhere. This includes buttons, menus, headings, subheadings and titles.
-  
-- Capitalize [proper nouns <Icon name="external" className="inline w-4 h-auto" includesWrapper={false} />](https://www.grammarly.com/blog/proper-nouns/ "https://www.grammarly.com/blog/proper-nouns/")
-    
--   Capitalize the first word of every sentence
-    
--   Lowercase everything else
-    
--   When referring to items within the UI, capitalize exactly as the item appears in the UI. For example: "Click 'My profile' to change your password."
+- Capitalize [proper nouns <Icon name="external" className="inline w-4 h-auto" includesWrapper={false} />](https://www.grammarly.com/blog/proper-nouns/ 'https://www.grammarly.com/blog/proper-nouns/')
+- Capitalize the first word of every sentence
+- Lowercase everything else
+- When referring to items within the UI, capitalize exactly as the item appears in the UI. For example: "Click 'My profile' to change your password."
 
 ## Punctuation and formatting
 
@@ -25,23 +20,18 @@ Use sentence case.
 For uncommon abbreviations/acronyms, write out the full phrase, followed by the abbreviation/acronym in parentheses in corresponding help text or a tooltip.
 
 <Dos hideHeader={true}>
-<div class="hidden">
-**Do**
-</div>
-<div>
-A stock keeping unit (SKU) is a unique code that helps you keep track of an item or service in your inventory.
-</div>
+  <div className="hidden">**Do**</div>
+  <div>
+    A stock keeping unit (SKU) is a unique code that helps you keep track of an item or service in
+    your inventory.
+  </div>
 </Dos>
 
 There’s no need to spell out commonly understood abbreviations and acronyms.
 
 <Dos hideHeader={true}>
-<div class="hidden">
-**Do**
-</div>
-<div>
-Enter your PIN.
-</div>
+  <div className="hidden">**Do**</div>
+  <div>Enter your PIN.</div>
 </Dos>
 
 ### Ampersands (&)
@@ -53,73 +43,51 @@ The ampersand (&) isn’t used in all languages and doesn’t localize well. Try
 Don’t use the serial comma, aka the Oxford comma, aka the comma before “and” in a list of 3 or more items.
 
 <DosAndDonts>
-<Dos hideHeader={true}>
-<div class="hidden">
-**Do**
-</div>
-<div>
-Planes, trains and automobiles.
-</div>
-</Dos>
-<Donts hideHeader={true}>
-<div class="hidden">
-**Don't**
-</div>
-<div>
-Planes, trains, and automobiles.
-</div>
-</Donts>
+  <Dos hideHeader={true}>
+    <div className="hidden">**Do**</div>
+    <div>Planes, trains and automobiles.</div>
+  </Dos>
+  <Donts hideHeader={true}>
+    <div className="hidden">**Don't**</div>
+    <div>Planes, trains, and automobiles.</div>
+  </Donts>
 </DosAndDonts>
 
 It’s okay to use a serial comma if leaving the comma out causes ambiguity in the sentence’s meaning.
 
 <DosAndDonts>
-<Dos hideHeader={true}>
-<div class="hidden">
-**Do**
-</div>
-<div>
-This writing guide is dedicated to my parents, Olivia Rodrigo, and Harry Styles.
-</div>
-</Dos>
-<Donts hideHeader={true}>
-<div class="hidden">
-**Don't**
-</div>
-<div>
-This writing guide is dedicated to my parents, Olivia Rodrigo and Harry Styles.
-</div>
-</Donts>
+  <Dos hideHeader={true}>
+    <div className="hidden">**Do**</div>
+    <div>This writing guide is dedicated to my parents, Olivia Rodrigo, and Harry Styles.</div>
+  </Dos>
+  <Donts hideHeader={true}>
+    <div className="hidden">**Don't**</div>
+    <div>This writing guide is dedicated to my parents, Olivia Rodrigo and Harry Styles.</div>
+  </Donts>
 </DosAndDonts>
 
 Use a comma before “but” if the “but” connects two independent clauses. In the example below, you can see each part of the sentence is an independent clause because each clause could stand on its own as two separate sentences.
 
-<Dos hideHeader={true}>I would like to buy tickets to the Olivia Rodrigo concert, but the show is sold-out.</Dos>
+<Dos hideHeader={true}>
+  I would like to buy tickets to the Olivia Rodrigo concert, but the show is sold-out.
+</Dos>
 
 Generally, you should not use a comma before “because” if it's a subordinating conjunction. Its job is to join subordinate clauses to independent clauses.
 
 <Dos hideHeader={true}>
-<div class="hidden">
-**Do**
-</div>
-<div>
-I had to return my new shoes because they were too small.
-</div>
+  <div className="hidden">**Do**</div>
+  <div>I had to return my new shoes because they were too small.</div>
 </Dos>
 
 ### Currencies
 
-When referring to currencies, always use the 3-letter [ISO 4217 currency abbreviation <Icon name="external" className="inline w-4 h-auto" includesWrapper={false} />](https://en.wikipedia.org/wiki/ISO_4217 "https://en.wikipedia.org/wiki/ISO_4217"). Don’t write out the full currency name. In many cases, the full name is less recognizable than the abbreviation.
+When referring to currencies, always use the 3-letter [ISO 4217 currency abbreviation <Icon name="external" className="inline w-4 h-auto" includesWrapper={false} />](https://en.wikipedia.org/wiki/ISO_4217 'https://en.wikipedia.org/wiki/ISO_4217'). Don’t write out the full currency name. In many cases, the full name is less recognizable than the abbreviation.
 
 When the currency abbreviation follows a monetary amount, put the abbreviation in parentheses.
 
 <Dos hideHeader={true}>
-<div class="hidden">
-**Do**
-</div>
-<div>
-$100 (USD)
-</div>
+  <div className="hidden">**Do**</div>
+  <div>$100 (USD)</div>
 </Dos>
 
 ### Date, time and phone numbers
@@ -132,12 +100,7 @@ Use the 3-letter month abbreviations: Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Se
 Use day-of-the-week abbreviations: Mon, Tue, Wed, Thu, Fri, Sat and Sun. Do not use a period after the day when abbreviating.
 
 <Dos>
-<div class="hidden">
-**Do**
-</div>
- - Jan 5, 2022
- - 1/02/22
- - Mon, Jan 5, 2022
+  <div className="hidden">**Do**</div>- Jan 5, 2022 - 1/02/22 - Mon, Jan 5, 2022
 </Dos>
 
 **Time**
@@ -147,24 +110,14 @@ Don’t use periods in “AM” and “PM”
 Be sure to check the region’s time zone and if it’s daylight savings time or not. For example, CDT is Central Daylight Time and CST is Central Standard Time.
 
 <DosAndDonts>
-<Dos>
-<div class="hidden">
-**Do**
-</div>
-<div>
- - 2:00 AM CST
- - 3:30 PM CDT
-</div>
-</Dos>
-<Donts>
-<div class="hidden">
-**Don't**
-</div>
-<div>
- - 2:00am CST
- - 3:30 P.M. CDT
-</div>
-</Donts>
+  <Dos>
+    <div className="hidden">**Do**</div>
+    <div>- 2:00 AM CST - 3:30 PM CDT</div>
+  </Dos>
+  <Donts>
+    <div className="hidden">**Don't**</div>
+    <div>- 2:00am CST - 3:30 P.M. CDT</div>
+  </Donts>
 </DosAndDonts>
 
 **Phone numbers**
@@ -172,23 +125,14 @@ Be sure to check the region’s time zone and if it’s daylight savings time or
 Use hyphens to break up phone numbers. Don’t use parentheses or periods.
 
 <DosAndDonts>
-<Dos>
-<div class="hidden">
-**Do**
-</div>
-<div>
- - 1-888-555-5555
-</div>
-</Dos>
-<Donts>
-<div class="hidden">
-**Don't**
-</div>
-<div>
- - 1 (888) 555-5555
- - 1.888.555.5555
-</div>
-</Donts>
+  <Dos>
+    <div className="hidden">**Do**</div>
+    <div>- 1-888-555-5555</div>
+  </Dos>
+  <Donts>
+    <div className="hidden">**Don't**</div>
+    <div>- 1 (888) 555-5555 - 1.888.555.5555</div>
+  </Donts>
 </DosAndDonts>
 
 ### Exclamation point
@@ -200,22 +144,14 @@ Save the exclamation point for something that’s actually exciting. Settings sa
 There’s no need to write out file extensions in full. Always use the abbreviation, lowercase, no period.
 
 <DosAndDonts>
-<Dos hideHeader={true}>
-<div class="hidden">
-**Do**
-</div>
-<div>
-Uploads must be jpeg, png or gif.
-</div>
-</Dos>
-<Donts hideHeader={true}>
-<div class="hidden">
-**Don't**
-</div>
-<div>
-Uploads must be JPEG, .png or Gif.
-</div>
-</Donts>
+  <Dos hideHeader={true}>
+    <div className="hidden">**Do**</div>
+    <div>Uploads must be jpeg, png or gif.</div>
+  </Dos>
+  <Donts hideHeader={true}>
+    <div className="hidden">**Don't**</div>
+    <div>Uploads must be JPEG, .png or Gif.</div>
+  </Donts>
 </DosAndDonts>
 
 ### Hyphens and dashes
@@ -231,12 +167,9 @@ En dashes are used to indicate a range between two numbers. Don’t put spaces a
 If the number range is preceded by the words “from,” or “between,” then use the word “to” instead of an en dash.
 
 <Dos>
-<div class="hidden">
-**Do**
-</div>
- - There are 500–1000 employees at BigCommerce.
- - There are somewhere between 500 to 1000 employees at BigCommerce.
- - Philip will be in the office May 3 – May 5.
+  <div className="hidden">**Do**</div>- There are 500–1000 employees at BigCommerce. - There are
+  somewhere between 500 to 1000 employees at BigCommerce. - Philip will be in the office May 3 – May
+  5.
 </Dos>
 
 **This is an em dash (—)**
@@ -244,11 +177,8 @@ If the number range is preceded by the words “from,” or “between,” then 
 Em dashes are used to indicate an abrupt pause or change in the middle of a sentence. Em dashes can also be used to call out or add emphasis to an important part of a sentence. Em dashes should always have a space before and after.
 
 <Dos>
-<div class="hidden">
-**Do**
-</div>
- - Wait, that’s not a hyphen — it’s an em dash.
- - I went shopping — on a site powered by BigCommerce — and bought a new pair of jeans.
+  <div className="hidden">**Do**</div>- Wait, that’s not a hyphen — it’s an em dash. - I went
+  shopping — on a site powered by BigCommerce — and bought a new pair of jeans.
 </Dos>
 
 ### Percentages
@@ -262,7 +192,7 @@ Do not use periods, or any ending punctuation of any kind, on titles, labels, he
 Let’s look at an example:
 
 <div className="flex items-center justify-center">
-![](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.grammar_and_mechanics-periods.png)
+  ![](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.grammar_and_mechanics-periods.png)
 </div>
 
 In the card above, the text above the divider qualifies as a header — it’s giving a name to the tile that it appears on — and doesn’t need a period.
@@ -275,23 +205,18 @@ As for the button, interactive items should never have ending punctuation of any
 
 Use quotation marks when referring, in the UI, to another item within the UI. This could be a page or area within a page. It could also be an item the user can interact with, for example, buttons, menus and links (anything clickable). This typically happens when writing help text or tooltips.
 
--   The quoted item should be written exactly as it appears in the UI
-    
--   Ending punctuation always goes inside of the quotes
-    
--   Don’t use bolding
+- The quoted item should be written exactly as it appears in the UI
+- Ending punctuation always goes inside of the quotes
+- Don’t use bolding
 
 Let’s look at an example:
 
 <div className="flex items-center justify-center">
-![](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.grammar_and_mechanics-periods.png)
+  ![](https://storage.googleapis.com/bigcommerce-production-dev-center/images/big-design/big-design.ux-writing-guide.grammar_and_mechanics-periods.png)
 </div>
 
 <Dos>
-<div class="hidden">
-**Do**
-</div>
- - Under “List your products on Google,” click “Get started.”
+  <div className="hidden">**Do**</div>- Under “List your products on Google,” click “Get started.”
 </Dos>
 
 ### Slashes
@@ -299,20 +224,14 @@ Let’s look at an example:
 You can use forward slashes “/” to indicate the word “or” between two words. When doing so, don’t use spaces before or after the slash. Don’t use backlashes “\”.
 
 <Dos>
-<div class="hidden">
-**Do**
-</div>
- - if/when
- - and/or
+  <div className="hidden">**Do**</div>- if/when - and/or
 </Dos>
 
 On the other hand, when using a forward slash to signify “or” between two multi-word phrases, use spaces before and after the slash — it helps with readability.
 
 <Dos>
-<div class="hidden">
-**Do**
-</div>
- - Download the app from the Apple App Store / Google Play Store.
+  <div className="hidden">**Do**</div>- Download the app from the Apple App Store / Google Play
+  Store.
 </Dos>
 
 ### Units of measurement
@@ -322,17 +241,11 @@ Add a space between numbers and units of measurement. Use all lowercase and alwa
 Don’t add a period. Don’t pluralize measurements (“lbs” is in common use and okay to use).
 
 <Dos>
-<div class="hidden">
-**Do**
-</div>
- - 75 lbs, 14 in, 7 cm
+  <div className="hidden">**Do**</div>- 75 lbs, 14 in, 7 cm
 </Dos>
 
 When abbreviating units of data, always capitalize MB (megabyte) and GB (gigabyte). Don’t use Mb and Gb as these represent different units of measurement typically used when measuring Internet speeds.
 
 <Dos>
-<div class="hidden">
-**Do**
-</div>
- - 10 MB, 10 GB
+  <div className="hidden">**Do**</div>- 10 MB, 10 GB
 </Dos>
