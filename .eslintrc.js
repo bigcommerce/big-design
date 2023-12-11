@@ -23,6 +23,19 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['packages/docs/design-docs/**/*.mdx'],
+      extends: ['plugin:mdx/recommended', 'plugin:react/recommended'],
+      settings: {
+        react: {
+          version: 'detect',
+        },
+      },
+      rules: {
+        // These ignored files are resolved when they are consumed by the BigCommerce developer-center repo.
+        'import/no-unresolved': ['error', { ignore: ['^@components/.+'] }],
+      },
+    },
+    {
       files: ['**/*.ts', '**/*.tsx', '**/*.js'],
       rules: {
         '@typescript-eslint/naming-convention': 'off',

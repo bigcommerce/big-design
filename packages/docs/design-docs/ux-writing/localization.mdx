@@ -1,0 +1,62 @@
+import { ComparisonTable } from '@components/big-design/ComparisonTable';
+import { Donts, Dos, DosAndDonts } from '@components/big-design/DosAndDonts';
+import Icon from '@components/icons/Icon';
+
+# Localization
+
+At BigCommerce, we use American English as the default language for UX writing. That doesn’t mean, that we shouldn't consider our global audience when designing.
+
+Regardless of the user, the country, or the region, take care to avoid words and phrases that may cause confusion or break the UI during localization.
+
+**Watch out for idiomatic expressions, metaphors, cliches and slang**
+
+Global audiences won’t understand what you're talking about. And in many cases the history and true meaning behind these words and phrases are offensive to certain groups.
+
+**Test copy for length**
+
+What would happen if the copy were longer after localization? Take German, for example, which features long, compound words, would the design break? As a good rule of thumb, try to limit copy to 2/3rds of available space, allowing 1/3rd for copy to grow longer during localization.
+
+**Avoid linking full sentences**
+
+Instead link only the most relevant, actionable portion of the sentence. When linking a larger sentence the arrangement of the words may change after localization, causing problems with the UI.
+
+<DosAndDonts>
+  <Dos hideHeader={true}>
+    <div className="hidden">**Do**</div>
+    <div>
+      {/* // eslint-disable-next-line no-unused-expressions forces the space before the icon */}
+      For more stories like this one, check out the [BigCommerce Blog <Icon
+        name="external"
+        className="inline w-4 h-auto"
+        includesWrapper={false}
+      />
+      ](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/").
+    </div>
+  </Dos>
+  <Donts hideHeader={true}>
+    <div className="hidden">**Don't**</div>
+    <div>
+      {/* // eslint-disable-next-line no-unused-expressions forces the space before the icon */}
+      [For more stories, visit the BigCommerce Blog <Icon
+        name="external"
+        className="inline w-4 h-auto"
+        includesWrapper={false}
+      />
+      .](https://www.bigcommerce.com/blog/ "https://www.bigcommerce.com/blog/")
+    </div>
+  </Donts>
+</DosAndDonts>
+
+**Watch out for special characters**
+
+Symbols like “#” and “&” don’t carry the same meaning in every language as they do in English — if they have any meaning at all.
+
+**American vs. British English**
+
+Here are some British English words and phrases, common to ecommerce, and American English equivalents you should use instead.
+
+<ComparisonTable>
+  | American | British | |---|---| | Buy online, pick up in-store | Click and collect | | Canceled |
+  Cancelled | | Center | Centre | | Color | Colour | | Fulfill | Fulfil | | Gray | Grey | | Organize
+  | Organise | | Meter | Metre | | Ship, mail | Post |
+</ComparisonTable>

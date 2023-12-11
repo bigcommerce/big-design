@@ -11,13 +11,13 @@
     "ci:typeCheck": "lerna run typeCheck --stream",
     "ci:test": "lerna run test --stream -- --maxWorkers=2 --coverage",
     "diff": "lerna diff",
-    "lint": "eslint . --ext .ts,.tsx,.js",
+    "lint": "eslint . --ext .ts,.tsx,.js,.mdx",
     "start": "yarn workspace @bigcommerce/docs run start",
     "test": "lerna run test --stream",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
+    "*.{js,ts,tsx,mdx}": [
       "eslint --fix"
     ]
   },
@@ -28,6 +28,7 @@
     "@commitlint/config-conventional": "^17.4.2",
     "@types/babel__standalone": "^7.1.4",
     "eslint": "^8.33.0",
+    "eslint-plugin-mdx": "^2.2.0",
     "husky": "^8.0.3",
     "lerna": "^6.4.1",
     "lint-staged": "^14.0.1",
