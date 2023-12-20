@@ -10,17 +10,17 @@ import { SideNavLogo } from './SideNavLogo';
 import { SideNavMenu } from './SideNavMenu';
 import { StyledFlex } from './styled';
 
-const CodeSandboxUrl = process.env.CODE_SANDBOX_URL as string;
+const CodeSandboxUrl = process.env.CODE_SANDBOX_URL ?? '';
 
 export const SideNav: React.FC = () => {
   return (
     <StyledFlex
-      flexDirection={{ mobile: 'row', tablet: 'column' }}
       alignContent={{ mobile: 'center', tablet: 'stretch' }}
+      flexDirection={{ mobile: 'row', tablet: 'column' }}
       justifyContent={{ mobile: 'space-between', tablet: 'flex-start' }}
       padding="medium"
-      paddingLeft="xLarge"
       paddingBottom={{ mobile: 'medium', tablet: 'xxxLarge' }}
+      paddingLeft="xLarge"
     >
       <FlexItem>
         <SideNavLogo />
@@ -30,7 +30,7 @@ export const SideNav: React.FC = () => {
         <SideNavGroup title="Introduction">
           <SideNavLink href="/">Getting Started</SideNavLink>
 
-          <Link url={CodeSandboxUrl} title="CodeSandbox Example" />
+          <Link title="CodeSandbox Example" url={CodeSandboxUrl} />
         </SideNavGroup>
 
         <SideNavGroup title="Foundations">
@@ -41,6 +41,7 @@ export const SideNav: React.FC = () => {
         </SideNavGroup>
 
         <SideNavGroup title="Layout">
+          <SideNavLink href="/accordion-panel">Accordion Panel</SideNavLink>
           <SideNavLink href="/collapse">Collapse</SideNavLink>
           <SideNavLink href="/modal">Modal</SideNavLink>
           <SideNavLink href="/pagination">Pagination</SideNavLink>
@@ -68,6 +69,7 @@ export const SideNav: React.FC = () => {
           <SideNavLink href="/search">Search</SideNavLink>
           <SideNavLink href="/select">Select</SideNavLink>
           <SideNavLink href="/switch">Switch</SideNavLink>
+          <SideNavLink href="/toggle">Toggle</SideNavLink>
           <SideNavLink href="/textarea">Textarea</SideNavLink>
           <SideNavLink href="/timepicker">Timepicker</SideNavLink>
         </SideNavGroup>
@@ -96,9 +98,9 @@ export const SideNav: React.FC = () => {
 
         <SideNavGroup title="Helpful Links">
           <Link
-            url="https://github.com/bigcommerce/big-design"
             icon={<GithubLogoIcon title="Github Logo" />}
             title="Github"
+            url="https://github.com/bigcommerce/big-design"
           />
         </SideNavGroup>
       </SideNavMenu>
@@ -106,7 +108,11 @@ export const SideNav: React.FC = () => {
   );
 };
 
-const Link: React.FC<{ url: string; icon?: React.ReactNode; title: string }> = ({ url, icon, title }) => {
+const Link: React.FC<{ url: string; icon?: React.ReactNode; title: string }> = ({
+  url,
+  icon,
+  title,
+}) => {
   const getChildrenWithIcon = () => (
     <Flex alignItems="center">
       {icon} <FlexItem marginLeft="xSmall">{title}</FlexItem>

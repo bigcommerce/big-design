@@ -1,9 +1,8 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
-import focusTrap, { FocusTrap } from 'focus-trap';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { createFocusTrap, FocusTrap } from 'focus-trap';
+import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Button, ButtonProps } from '../Button';
 import { MessagingButton } from '../Button/private';
@@ -21,6 +20,7 @@ import {
 export interface ModalProps {
   actions?: ModalAction[];
   backdrop?: boolean;
+  children?: React.ReactNode;
   closeOnClickOutside?: boolean;
   closeOnEscKey?: boolean;
   header?: string;
@@ -51,7 +51,9 @@ export const Modal: React.FC<ModalProps> = typedMemo((props) => {
     };
   }, [modalContainer]);
 
-  return props.isOpen && modalContainer ? createPortal(<InternalModal {...props} />, modalContainer) : null;
+  return props.isOpen && modalContainer
+    ? createPortal(<InternalModal {...props} />, modalContainer)
+    : null;
 });
 
 const InternalModal: React.FC<ModalProps> = ({
@@ -66,7 +68,7 @@ const InternalModal: React.FC<ModalProps> = ({
 }) => {
   const initialBodyOverflowYRef = useRef('');
   const internalTrap = useRef<FocusTrap | null>(null);
-  const headerUniqueId = useUniqueId('modal_header');
+  const headerUniqueId = useId();
   const [modalRef, setModalRef] = useState<HTMLDivElement | null>(null);
 
   const onClickAway = (event: React.MouseEvent) => {
@@ -94,7 +96,7 @@ const InternalModal: React.FC<ModalProps> = ({
   // Setup focus-trap
   useEffect(() => {
     if (modalRef && internalTrap.current === null) {
-      internalTrap.current = focusTrap(modalRef as HTMLElement, { fallbackFocus: modalRef });
+      internalTrap.current = createFocusTrap(modalRef, { fallbackFocus: modalRef });
       internalTrap.current.activate();
     }
 
@@ -107,7 +109,7 @@ const InternalModal: React.FC<ModalProps> = ({
     () =>
       variant === 'modal' && (
         <StyledModalClose>
-          <MessagingButton onClick={onClose} iconOnly={<CloseIcon title="Close" />} />
+          <MessagingButton iconOnly={<CloseIcon title="Close" />} onClick={onClose} />
         </StyledModalClose>
       ),
     [onClose, variant],
@@ -154,10 +156,10 @@ const InternalModal: React.FC<ModalProps> = ({
       onClick={onClickAway}
       onKeyDown={onKeyDown}
       ref={setModalRef}
-      variant={variant}
       tabIndex={-1}
+      variant={variant}
     >
-      <StyledModalContent variant={variant} aria-labelledby={headerUniqueId} flexDirection="column">
+      <StyledModalContent aria-labelledby={headerUniqueId} flexDirection="column" variant={variant}>
         {renderedClose}
         {renderedHeader}
         <StyledModalBody>{children}</StyledModalBody>

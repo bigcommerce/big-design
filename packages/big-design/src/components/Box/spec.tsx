@@ -1,4 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
+import { screen } from '@testing-library/react';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
@@ -7,91 +8,93 @@ import { render } from '@test/utils';
 import { Box } from './index';
 
 test('has margin props', () => {
-  const { container, rerender } = render(<Box />);
+  const { rerender } = render(<Box>test</Box>);
 
-  expect(container.firstChild).not.toHaveStyle('margin: 1rem');
+  expect(screen.getByText('test')).not.toHaveStyle('margin: 1rem');
 
-  rerender(<Box margin="medium" />);
+  rerender(<Box margin="medium">test</Box>);
 
-  expect(container.firstChild).toHaveStyle('margin: 1rem');
+  expect(screen.getByText('test')).toHaveStyle('margin: 1rem');
 });
 
 test('has padding props', () => {
-  const { container, rerender } = render(<Box />);
+  const { rerender } = render(<Box>test</Box>);
 
-  expect(container.firstChild).not.toHaveStyle('padding: 1rem');
+  expect(screen.getByText('test')).not.toHaveStyle('padding: 1rem');
 
-  rerender(<Box padding="medium" />);
+  rerender(<Box padding="medium">test</Box>);
 
-  expect(container.firstChild).toHaveStyle('padding: 1rem');
+  expect(screen.getByText('test')).toHaveStyle('padding: 1rem');
 });
 
 test('has backgroundColor props', () => {
-  const { container, rerender } = render(<Box />);
+  const { rerender } = render(<Box>test</Box>);
 
-  expect(container.firstChild).not.toHaveStyle('background-color: #fff');
+  expect(screen.getByText('test')).not.toHaveStyle('background-color: #fff');
 
-  rerender(<Box backgroundColor="white" />);
+  rerender(<Box backgroundColor="white">test</Box>);
 
-  expect(container.firstChild).toHaveStyle('background-color: #fff');
+  expect(screen.getByText('test')).toHaveStyle('background-color: #fff');
 });
 
 test('has borderRadius props', () => {
-  const { container, rerender } = render(<Box />);
+  const { rerender } = render(<Box>test</Box>);
 
-  expect(container.firstChild).not.toHaveStyle('border-radius: 50%');
+  expect(screen.getByText('test')).not.toHaveStyle('border-radius: 50%');
 
-  rerender(<Box borderRadius="circle" />);
+  rerender(<Box borderRadius="circle">test</Box>);
 
-  expect(container.firstChild).toHaveStyle('border-radius: 50%');
+  expect(screen.getByText('test')).toHaveStyle('border-radius: 50%');
 });
 
 test('has border props', () => {
-  const { container } = render(<Box border="box" />);
+  render(<Box border="box">test</Box>);
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByText('test')).toMatchSnapshot();
 });
 
 test('has individual border props', () => {
-  const { container } = render(<Box borderBottom="box" borderRight="box" />);
+  render(
+    <Box borderBottom="box" borderLeft="box" borderRight="box">
+      test
+    </Box>,
+  );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByText('test')).toMatchSnapshot();
 });
 
 test('has shadow props', () => {
-  const { container } = render(<Box shadow="floating" />);
+  render(<Box shadow="floating">test</Box>);
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByText('test')).toMatchSnapshot();
 });
 
 test('has clearfix prop', () => {
-  const { container } = render(<Box clearfix />);
+  render(<Box clearfix>test</Box>);
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByText('test')).toMatchSnapshot();
 });
 
 test('has zIndex props', () => {
-  const { container, rerender } = render(<Box zIndex="sticky" />);
+  const { rerender } = render(<Box zIndex="sticky">test</Box>);
 
-  expect(container.firstChild).toHaveStyle(`z-index: ${theme.zIndex.sticky}`);
+  expect(screen.getByText('test')).toHaveStyle(`z-index: ${theme.zIndex.sticky}`);
 
-  rerender(<Box zIndex="popover" />);
+  rerender(<Box zIndex="popover">test</Box>);
 
-  expect(container.firstChild).toHaveStyle(`z-index: ${theme.zIndex.popover}`);
+  expect(screen.getByText('test')).toHaveStyle(`z-index: ${theme.zIndex.popover}`);
 });
 
 test('renders as a different tag', () => {
-  const { getByTestId } = render(<Box data-testid="box" as="section" />);
-  const tag = getByTestId('box').tagName;
+  render(<Box as="section">test</Box>);
 
-  expect(tag).toBe('SECTION');
+  expect(screen.getByText('test').tagName).toBe('SECTION');
 });
 
 test('box forwards ref', () => {
   const ref = createRef<HTMLDivElement>();
 
-  const { container } = render(<Box ref={ref}>Hello</Box>);
-  const div = container.querySelector('div');
+  render(<Box ref={ref}>test</Box>);
 
-  expect(div).toBe(ref.current);
+  expect(screen.getByText('test')).toBe(ref.current);
 });

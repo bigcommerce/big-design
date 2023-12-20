@@ -77,7 +77,6 @@ exports[`render open modal 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -89,7 +88,6 @@ exports[`render open modal 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: #3C64F4;
   border-color: #3C64F4;
   font-weight: 600;
@@ -135,7 +133,6 @@ exports[`render open modal 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c6 {
@@ -143,6 +140,7 @@ exports[`render open modal 1`] = `
   border: none;
   color: #313440;
   height: auto;
+  min-width: auto;
   padding: 0;
 }
 
@@ -218,6 +216,8 @@ exports[`render open modal 1`] = `
 @media (min-width:720px) {
   .c5 {
     width: auto;
+    padding: 0;
+    min-width: 2.25rem;
   }
 }
 
@@ -261,7 +261,7 @@ exports[`render open modal 1`] = `
       tabindex="-1"
     >
       <div
-        aria-labelledby="bd-modal_header-1"
+        aria-labelledby=":r0:"
         class="c1 c2 c3"
       >
         <div
@@ -274,7 +274,7 @@ exports[`render open modal 1`] = `
               class="c7"
             >
               <svg
-                aria-labelledby="bd-icon-2"
+                aria-labelledby=":r1:"
                 class="c8"
                 fill="currentColor"
                 height="24"
@@ -284,7 +284,7 @@ exports[`render open modal 1`] = `
                 width="24"
               >
                 <title
-                  id="bd-icon-2"
+                  id=":r1:"
                 >
                   Close
                 </title>
@@ -311,35 +311,7 @@ exports[`render open modal 1`] = `
 `;
 
 exports[`render open modal without backdrop 1`] = `
-<body
-  style="overflow-y: hidden;"
->
-  @media (min-width:720px) {
-
-}
-
-@media (min-width:720px) {
-
-}
-
-@media (min-width:720px) {
-
-}
-
-@media (min-width:1025px) {
-
-}
-
-@media (min-width:720px) {
-
-}
-
-@media (min-width:720px) {
-
-}
-
-<div />
-  .c8 {
+.c8 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -406,7 +378,6 @@ exports[`render open modal without backdrop 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -418,7 +389,6 @@ exports[`render open modal without backdrop 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: #3C64F4;
   border-color: #3C64F4;
   font-weight: 600;
@@ -464,7 +434,6 @@ exports[`render open modal without backdrop 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c6 {
@@ -472,6 +441,7 @@ exports[`render open modal without backdrop 1`] = `
   border: none;
   color: #313440;
   height: auto;
+  min-width: auto;
   padding: 0;
 }
 
@@ -546,6 +516,8 @@ exports[`render open modal without backdrop 1`] = `
 @media (min-width:720px) {
   .c5 {
     width: auto;
+    padding: 0;
+    min-width: 2.25rem;
   }
 }
 
@@ -577,7 +549,11 @@ exports[`render open modal without backdrop 1`] = `
   }
 }
 
-<div>
+<body
+  style="overflow-y: hidden;"
+>
+  <div />
+  <div>
     <div
       aria-modal="true"
       class="c0"
@@ -585,7 +561,7 @@ exports[`render open modal without backdrop 1`] = `
       tabindex="-1"
     >
       <div
-        aria-labelledby="bd-modal_header-1"
+        aria-labelledby=":r2:"
         class="c1 c2 c3"
       >
         <div
@@ -598,7 +574,7 @@ exports[`render open modal without backdrop 1`] = `
               class="c7"
             >
               <svg
-                aria-labelledby="bd-icon-2"
+                aria-labelledby=":r3:"
                 class="c8"
                 fill="currentColor"
                 height="24"
@@ -608,7 +584,7 @@ exports[`render open modal without backdrop 1`] = `
                 width="24"
               >
                 <title
-                  id="bd-icon-2"
+                  id=":r3:"
                 >
                   Close
                 </title>
@@ -668,7 +644,6 @@ exports[`renders destructive action button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -725,7 +700,6 @@ exports[`renders destructive action button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:0px) {
@@ -822,7 +796,6 @@ exports[`renders secondary action button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -879,7 +852,6 @@ exports[`renders secondary action button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 @media (min-width:0px) {

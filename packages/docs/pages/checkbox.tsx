@@ -1,8 +1,12 @@
 import { Checkbox, Form, FormGroup, H1, Panel, Text } from '@bigcommerce/big-design';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
-import { CheckboxDescriptionLinkPropTable, CheckboxDescriptionPropTable, CheckboxPropTable } from '../PropTables';
+import {
+  CheckboxDescriptionLinkPropTable,
+  CheckboxDescriptionPropTable,
+  CheckboxPropTable,
+} from '../PropTables';
 
 const CheckboxPage = () => {
   return (
@@ -29,10 +33,10 @@ const CheckboxPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>
-                    <Code primary>Checkboxes</Code> are a stylized <Code>input[type="checkbox"]</Code> with controllable
-                    checked/unchecked states.
+                    <Code primary>Checkboxes</Code> are a stylized{' '}
+                    <Code>input[type="checkbox"]</Code> with controllable checked/unchecked states.
                   </Text>
 
                   <CodePreview>
@@ -45,50 +49,51 @@ const CheckboxPage = () => {
                         <Form>
                           <FormGroup>
                             <Checkbox
-                              label={checked ? 'Checked' : 'Unchecked'}
                               checked={checked}
+                              label={checked ? 'Checked' : 'Unchecked'}
                               onChange={handleChange}
                             />
-                            <Checkbox label="Disabled" disabled={true} />
+                            <Checkbox disabled={true} label="Disabled" />
                           </FormGroup>
                         </Form>
                       );
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'indeterminate',
               title: 'Indeterminate',
               render: () => (
-                <>
+                <Fragment key="implementation">
                   <Text>
-                    <Code primary>Checkboxes</Code> support <Code primary>isIndeterminate</Code> passed as a prop to
-                    show a combined state of partially selected <Code primary>Checkboxes</Code>.
+                    <Code primary>Checkboxes</Code> support <Code primary>isIndeterminate</Code>{' '}
+                    passed as a prop to show a combined state of partially selected{' '}
+                    <Code primary>Checkboxes</Code>.
                   </Text>
 
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <Form>
                       <FormGroup>
-                        <Checkbox label="Indeterminate" isIndeterminate />
+                        <Checkbox isIndeterminate label="Indeterminate" />
                       </FormGroup>
                     </Form>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'description',
               title: 'Description',
               render: () => (
-                <>
+                <Fragment key="description">
                   <Text>
-                    <Code primary>Checkboxes</Code> support <Code primary>description</Code> passed as a prop, which
-                    contains a text and an optional link.
+                    <Code primary>Checkboxes</Code> support <Code primary>description</Code> passed
+                    as a prop, which contains a text and an optional link.
                   </Text>
 
                   <CodePreview>
@@ -103,9 +108,7 @@ const CheckboxPage = () => {
                         <Form>
                           <FormGroup>
                             <Checkbox
-                              onChange={handleChangeA}
                               checked={checkedA}
-                              label="Checkbox with description and link"
                               description={{
                                 text: 'I am a CheckboxDescription.',
                                 link: {
@@ -113,12 +116,14 @@ const CheckboxPage = () => {
                                   href: 'http://www.bigcommerce.com',
                                 },
                               }}
+                              label="Checkbox with description and link"
+                              onChange={handleChangeA}
                             />
                             <Checkbox
-                              onChange={handleChangeB}
                               checked={checkedB}
-                              label="Checkbox with description"
                               description="I am a string description."
+                              label="Checkbox with description"
+                              onChange={handleChangeB}
                             />
                           </FormGroup>
                         </Form>
@@ -126,7 +131,52 @@ const CheckboxPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'badge',
+              title: 'Badge',
+              render: () => (
+                <Fragment key="badge">
+                  <Text>
+                    <Code primary>Checkboxes</Code> support <Code primary>Badge</Code> that display{' '}
+                    status information.
+                  </Text>
+
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    {function Example() {
+                      const [checked, setChecked] = useState(false);
+                      const handleChange = () => setChecked(!checked);
+
+                      return (
+                        <Form>
+                          <FormGroup>
+                            <Checkbox
+                              badge={{
+                                label: 'warning',
+                                variant: 'warning',
+                              }}
+                              checked={checked}
+                              label={checked ? 'Checked' : 'Unchecked'}
+                              onChange={handleChange}
+                            />
+                            <Checkbox
+                              badge={{
+                                label: 'danger',
+                                variant: 'danger',
+                              }}
+                              disabled={true}
+                              label="Disabled"
+                            />
+                          </FormGroup>
+                        </Form>
+                      );
+                    }}
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
               ),
             },
           ]}
@@ -140,18 +190,18 @@ const CheckboxPage = () => {
             {
               id: 'checkbox',
               title: 'Checkbox',
-              render: () => <CheckboxPropTable renderPanel={false} />,
+              render: () => <CheckboxPropTable />,
             },
             {
               id: 'checkbox-description',
               title: 'CheckboxDescription',
-              render: () => <CheckboxDescriptionPropTable id="checkbox-description-prop-table" renderPanel={false} />,
+              render: () => <CheckboxDescriptionPropTable id="checkbox-description-prop-table" />,
             },
             {
               id: 'checkbox-description-link',
               title: 'CheckboxDescriptionLink',
               render: () => (
-                <CheckboxDescriptionLinkPropTable id="checkbox-description-link-prop-table" renderPanel={false} />
+                <CheckboxDescriptionLinkPropTable id="checkbox-description-link-prop-table" />
               ),
             },
           ]}
@@ -160,17 +210,18 @@ const CheckboxPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
+          discouraged={[
+            <>
+              Apply changes made with the <Code primary>Checkbox</Code> right away without
+              additional save action.
+            </>,
+          ]}
           recommended={[
             <>
               Use <Code primary>Checkboxes</Code> to turn on and off settings within a form.
             </>,
             <>
               Group related <Code primary>Checkboxes</Code> under input label (h4).
-            </>,
-          ]}
-          discouraged={[
-            <>
-              Apply changes made with the <Code primary>Checkbox</Code> right away without additional save action.
             </>,
           ]}
         />

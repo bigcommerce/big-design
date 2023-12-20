@@ -1,5 +1,6 @@
 import { AddIcon } from '@bigcommerce/big-design-icons';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import { ButtonGroup } from './ButtonGroup';
@@ -9,7 +10,7 @@ const originalPrototype = Object.getOwnPropertyDescriptors(window.HTMLElement.pr
 beforeAll(() => {
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
-      get() {
+      get(this: HTMLElement) {
         if (this.dataset.testid === 'buttongroup-dropdown') {
           return 50;
         }
@@ -31,7 +32,9 @@ beforeAll(() => {
 afterAll(() => Object.defineProperties(window.HTMLElement.prototype, originalPrototype));
 
 test('renders given actions', async () => {
-  render(<ButtonGroup actions={[{ text: 'button 1' }, { text: 'button 2' }, { text: 'button 3' }]} />);
+  render(
+    <ButtonGroup actions={[{ text: 'button 1' }, { text: 'button 2' }, { text: 'button 3' }]} />,
+  );
 
   // Prevents an act warning on component mount
   await act(() => Promise.resolve());
@@ -43,12 +46,19 @@ test('renders given actions', async () => {
 
 test('renders dropdown if items do not fit', async () => {
   render(
-    <ButtonGroup actions={[{ text: 'button 1' }, { text: 'button 2' }, { text: 'button 3' }, { text: 'button 4' }]} />,
+    <ButtonGroup
+      actions={[
+        { text: 'button 1' },
+        { text: 'button 2' },
+        { text: 'button 3' },
+        { text: 'button 4' },
+      ]}
+    />,
   );
 
   expect(screen.getByText('button 4')).not.toBeVisible();
 
-  fireEvent.click(screen.getByTitle('more'));
+  await userEvent.click(screen.getByRole('button', { name: 'more' }));
 
   expect(await screen.findByRole('option', { name: /button 4/i })).toBeVisible();
 });
@@ -56,13 +66,17 @@ test('renders dropdown if items do not fit', async () => {
 test('renders dropdown if some of items have destructive type', async () => {
   render(
     <ButtonGroup
-      actions={[{ actionType: 'destructive', text: 'button 1' }, { text: 'button 2' }, { text: 'button 3' }]}
+      actions={[
+        { actionType: 'destructive', text: 'button 1' },
+        { text: 'button 2' },
+        { text: 'button 3' },
+      ]}
     />,
   );
 
   expect(screen.getByText('button 1')).not.toBeVisible();
 
-  fireEvent.click(screen.getByTitle('more'));
+  await userEvent.click(screen.getByRole('button', { name: 'more' }));
 
   expect(await screen.findByRole('option', { name: /button 1/i })).toBeVisible();
 });
@@ -79,9 +93,9 @@ test('renders icon only with dropdown item', async () => {
     />,
   );
 
-  expect(screen.queryByTitle('button 3 icon')).toBeNull();
+  expect(screen.queryByTitle('button 3 icon')).not.toBeInTheDocument();
 
-  fireEvent.click(screen.getByTitle('more'));
+  await userEvent.click(screen.getByRole('button', { name: 'more' }));
 
   expect(await screen.findByTitle('button 4 icon')).toBeInTheDocument();
 });
@@ -109,10 +123,43 @@ test('dropdown item on click callback receives synthetic event', async () => {
     hidden: true,
   });
 
-  await act(async () => {
-    fireEvent.click(screen.getByTitle('more'));
-    fireEvent.click(await screen.findByRole('option', { name: /button 4/i }));
-  });
+  await userEvent.click(screen.getByRole('button', { name: 'more' }));
+  await userEvent.click(await screen.findByRole('option', { name: /button 4/i }));
 
   expect(mockOnClick).toHaveBeenCalledWith(expect.objectContaining({ target: button }));
+});
+
+test('dropdown trigger is type button', async () => {
+  render(
+    <ButtonGroup
+      actions={[
+        { text: 'button 1' },
+        { text: 'button 2' },
+        { text: 'button 3' },
+        { text: 'button 4' },
+      ]}
+    />,
+  );
+
+  const trigger = await screen.findByRole('button', { name: 'more' });
+
+  expect(trigger).toHaveAttribute('type', 'button');
+});
+
+test('renders localized labels', async () => {
+  render(
+    <ButtonGroup
+      actions={[
+        { text: 'button 1' },
+        { text: 'button 2' },
+        { text: 'button 3' },
+        { text: 'button 4' },
+      ]}
+      localization={{ more: 'mas' }}
+    />,
+  );
+
+  const trigger = await screen.findByRole('button', { name: 'mas' });
+
+  expect(trigger).toBeVisible();
 });

@@ -1,9 +1,17 @@
-import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo } from 'react';
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  LabelHTMLAttributes,
+  Ref,
+  useId,
+  useMemo,
+} from 'react';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
+import { InputLocalization } from '../Input/Input';
 
 import { StyledTextarea, StyledTextareaWrapper } from './styled';
 
@@ -12,6 +20,7 @@ export interface Props {
   error?: React.ReactNode | React.ReactNode[];
   label?: React.ReactChild;
   labelId?: string;
+  localization?: InputLocalization;
   rows?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
   resize?: boolean;
 }
@@ -28,11 +37,12 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
   forwardedRef,
   label,
   labelId,
+  localization,
   rows = 3,
   resize = true,
   ...props
 }) => {
-  const uniqueTextareaId = useUniqueId('textarea');
+  const uniqueTextareaId = useId();
   const id = props.id ? props.id : uniqueTextareaId;
   const { errors } = useInputErrors(id, error);
   const MAX_ROWS = 7;
@@ -45,21 +55,29 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <FormControlLabel id={labelId} htmlFor={id} renderOptional={!props.required}>
+        <FormControlLabel
+          htmlFor={id}
+          id={labelId}
+          localization={localization}
+          renderOptional={!props.required}
+        >
           {label}
         </FormControlLabel>
       );
     }
 
-    if (isValidElement(label) && label.type === FormControlLabel) {
-      return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+    if (
+      isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+      label.type === FormControlLabel
+    ) {
+      return cloneElement(label, {
         id: labelId,
         htmlFor: id,
       });
     }
 
     warning('label must be either a string or a FormControlLabel component.');
-  }, [id, label, labelId, props.required]);
+  }, [id, label, labelId, localization, props.required]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {
@@ -82,7 +100,14 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
       {renderedLabel}
       {renderedDescription}
       <StyledTextareaWrapper>
-        <StyledTextarea {...props} error={errors} id={id} rows={numOfRows} resize={resize} ref={forwardedRef} />
+        <StyledTextarea
+          {...props}
+          error={errors}
+          id={id}
+          ref={forwardedRef}
+          resize={resize}
+          rows={numOfRows}
+        />
       </StyledTextareaWrapper>
     </div>
   );

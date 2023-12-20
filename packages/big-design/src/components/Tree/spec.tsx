@@ -1,12 +1,13 @@
 import { theme } from '@bigcommerce/big-design-theme';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 
-import { act, fireEvent, render, RenderResult } from '@test/utils';
+import { fireEvent, render, RenderResult, screen } from '@test/utils';
 
 import { Tree } from './Tree';
 import { TreeExpandable, TreeFocusable, TreeNodeProps, TreeOnKeyDown, TreeProps } from './types';
 
-const nodes: TreeNodeProps<number>[] = [
+const nodes: Array<TreeNodeProps<number>> = [
   {
     id: '0',
     value: 0,
@@ -33,12 +34,17 @@ const nodes: TreeNodeProps<number>[] = [
     label: 'Test Node 3',
     children: [{ id: '7', value: 7, label: 'Test Node 7' }],
   },
-  { id: '4', value: 4, label: 'Test Node 4', children: [{ id: '8', value: 8, label: 'Test Node 8' }] },
+  {
+    id: '4',
+    value: 4,
+    label: 'Test Node 4',
+    children: [{ id: '8', value: 8, label: 'Test Node 8' }],
+  },
 ];
 
 let expandable: TreeExpandable;
 let focusable: TreeFocusable;
-let onKeyDown: TreeOnKeyDown<any>;
+let onKeyDown: TreeOnKeyDown<unknown>;
 
 beforeEach(() => {
   expandable = { expandedNodes: [], onToggle: jest.fn() };
@@ -47,10 +53,20 @@ beforeEach(() => {
 });
 
 const renderDefaultTree = (
-  additionalProps?: Partial<TreeProps<any>>,
-): RenderResult & { expandable: TreeExpandable; focusable: TreeFocusable; onKeyDown: TreeOnKeyDown<any> } => {
+  additionalProps?: Partial<TreeProps<unknown>>,
+): RenderResult & {
+  expandable: TreeExpandable;
+  focusable: TreeFocusable;
+  onKeyDown: TreeOnKeyDown<unknown>;
+} => {
   const rendered = render(
-    <Tree nodes={nodes} expandable={expandable} focusable={focusable} onKeyDown={onKeyDown} {...additionalProps} />,
+    <Tree
+      expandable={expandable}
+      focusable={focusable}
+      nodes={nodes}
+      onKeyDown={onKeyDown}
+      {...additionalProps}
+    />,
   );
 
   return {
@@ -61,89 +77,104 @@ const renderDefaultTree = (
   };
 };
 
-test('renders simple tree', () => {
-  const { container } = renderDefaultTree();
+test('renders simple tree', async () => {
+  renderDefaultTree();
 
-  expect(container.firstChild).toMatchSnapshot();
+  const tree = await screen.findByRole('tree');
+
+  expect(tree).toMatchSnapshot();
 });
 
-test('does not forward styles', () => {
+test('does not forward styles', async () => {
   // eslint-disable-next-line
   // @ts-ignore
-  const { container } = renderDefaultTree({ className: 'test', style: { background: 'red' } });
+  renderDefaultTree({ className: 'test', style: { background: 'red' } });
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
-  expect(container.firstChild).not.toHaveStyle('background: red');
+  const tree = await screen.findByRole('tree');
+
+  expect(tree).not.toHaveClass('test');
+  expect(tree.getElementsByClassName('test')).toHaveLength(0);
+  expect(tree).not.toHaveStyle('background: red');
 });
 
-test('expands node on click', () => {
-  const { getByText, expandable } = renderDefaultTree();
-  const firstTreeNode = getByText('Test Node 0');
+test('expands node on click', async () => {
+  const { expandable } = renderDefaultTree();
+  const firstTreeNode = await screen.findByText('Test Node 0');
 
-  act(() => {
-    fireEvent.click(firstTreeNode);
-  });
+  await userEvent.click(firstTreeNode);
 
   expect(expandable.onToggle).toHaveBeenCalledWith('0', false);
 });
 
-test('calles onKeyDown event', () => {
-  const { getByText, onKeyDown } = renderDefaultTree();
-  const firstTreeNode = getByText('Test Node 0').parentElement?.parentElement;
+test('calles onKeyDown event', async () => {
+  const { onKeyDown } = renderDefaultTree();
+  const firstTreeNode = await screen.findByRole('treeitem', { name: 'Test Node 0' });
 
-  if (firstTreeNode) {
-    act(() => {
-      fireEvent.keyDown(firstTreeNode);
-    });
+  await userEvent.type(firstTreeNode, '{Enter}');
 
-    expect(onKeyDown).toHaveBeenCalledTimes(1);
-  }
+  expect(onKeyDown).toHaveBeenCalledWith(
+    expect.anything(),
+    expect.objectContaining({
+      id: '0',
+    }),
+  );
 });
 
-test('renders with no icons', () => {
-  const { container } = renderDefaultTree({ nodes: [{ id: '0', label: 'Test Node 0' }], iconless: true });
+test('renders with no icons', async () => {
+  renderDefaultTree({
+    nodes: [{ id: '0', label: 'Test Node 0' }],
+    iconless: true,
+  });
 
-  expect(container.querySelector('svg')).not.toBeInTheDocument();
+  const tree = await screen.findByRole('tree');
+
+  expect(tree.querySelector('svg')).not.toBeInTheDocument();
 });
 
-test('renders node with custom icon', () => {
-  const { getByTestId } = renderDefaultTree({
+test('renders node with custom icon', async () => {
+  renderDefaultTree({
     nodes: [{ id: '0', icon: <span data-testid="test-id" />, label: 'Test Node 0' }],
   });
 
-  expect(getByTestId('test-id')).toBeInTheDocument();
+  const icon = await screen.findByTestId('test-id');
+
+  expect(icon).toBeInTheDocument();
 });
 
 test('iconless renders without custom icons', () => {
-  const { queryByTestId } = renderDefaultTree({
+  renderDefaultTree({
     nodes: [{ id: '0', icon: <span data-testid="test-id" />, label: 'Test Node 0' }],
     iconless: true,
   });
 
-  expect(queryByTestId('test-id')).not.toBeInTheDocument();
+  const icon = screen.queryByTestId('test-id');
+
+  expect(icon).not.toBeInTheDocument();
 });
 
-test('renders radio select', () => {
-  const { container } = renderDefaultTree({
+test('renders radio select', async () => {
+  renderDefaultTree({
     nodes: [{ id: '0', value: 0, label: 'Test Node 0' }],
     selectable: { type: 'radio' },
   });
 
-  const radio = container.querySelector('label');
+  const tree = await screen.findByRole('tree');
+  const radio = tree.querySelector('label');
 
-  expect(radio).toBeInTheDocument();
+  expect(tree).toHaveAttribute('aria-multiselectable', 'false');
   expect(radio).toHaveStyle(`border-radius: ${theme.borderRadius.circle}`);
 });
 
-test('renders multiselect buttons', () => {
-  const { container } = renderDefaultTree({
+test('renders multiselect buttons', async () => {
+  renderDefaultTree({
     nodes: [{ id: '0', value: 0, label: 'Test Node 0' }],
     selectable: { type: 'multi' },
   });
 
-  const multi = container.querySelector('label');
+  const tree = await screen.findByRole('tree');
+  const multi = tree.querySelector('label');
 
-  expect(multi).toBeInTheDocument();
+  expect(tree).toHaveAttribute('aria-multiselectable', 'true');
   expect(multi).toHaveStyle(`border-radius: ${theme.borderRadius.normal}`);
 });
 
@@ -164,22 +195,30 @@ test('trigger onSelect', () => {
 });
 
 test('renders expanded nodes', () => {
-  const { getByText } = renderDefaultTree({ expandable: { expandedNodes: ['0', '5'], onExpand: jest.fn() } });
+  renderDefaultTree({
+    expandable: { expandedNodes: ['0', '5'], onExpand: jest.fn() },
+  });
 
-  expect(getByText('Test Node 5')).toBeVisible();
-  expect(getByText('Test Node 6')).not.toBeVisible();
-  expect(getByText('Test Node 9')).toBeVisible();
+  const node5 = screen.getByText('Test Node 5');
+  const node6 = screen.getByText('Test Node 6');
+  const node9 = screen.getByText('Test Node 9');
+
+  expect(node5).toBeVisible();
+  expect(node6).not.toBeVisible();
+  expect(node9).toBeVisible();
 });
 
-test("disabled nodes don't trigger onSelect", () => {
+test("disabled nodes don't trigger onSelect", async () => {
   const onSelect = jest.fn();
-  const { container } = renderDefaultTree({
+
+  renderDefaultTree({
     nodes: [{ id: '0', value: 0, label: 'Test Node 0' }],
     selectable: { type: 'multi', onSelect },
     disabledNodes: ['0'],
   });
 
-  const multi = container.querySelector('label');
+  const tree = await screen.findByRole('tree');
+  const multi = tree.querySelector('label');
 
   if (multi) {
     fireEvent.click(multi);
@@ -188,49 +227,77 @@ test("disabled nodes don't trigger onSelect", () => {
   }
 });
 
-test('triggers onNodeClick', () => {
+test('triggers onNodeClick', async () => {
   const onNodeClick = jest.fn();
-  const { getByText } = renderDefaultTree({ nodes: [{ id: '0', label: 'Test Node 0' }], onNodeClick });
 
-  fireEvent.click(getByText('Test Node 0'));
+  renderDefaultTree({
+    nodes: [{ id: '0', label: 'Test Node 0' }],
+    onNodeClick,
+  });
+
+  const node = await screen.findByText('Test Node 0');
+
+  await userEvent.click(node);
 
   expect(onNodeClick).toHaveBeenCalledTimes(1);
 });
 
-test('clicking node triggers onFocus', () => {
+test('clicking node triggers onFocus', async () => {
   const onFocus = jest.fn();
-  const { getByText } = renderDefaultTree({
+
+  renderDefaultTree({
     nodes: [{ id: '0', label: 'Test Node 0' }],
     focusable: { focusedNode: '', onFocus },
   });
 
-  fireEvent.click(getByText('Test Node 0'));
+  const node = await screen.findByText('Test Node 0');
+
+  await userEvent.click(node);
 
   expect(onFocus).toHaveBeenCalledTimes(1);
 });
 
-test('collapsing node triggers onCollapse', () => {
+test('collapsing node triggers onCollapse', async () => {
   const onCollapse = jest.fn();
-  const { getByText } = renderDefaultTree({
+
+  renderDefaultTree({
     nodes: [{ id: '0', label: 'Test Node 0', children: [{ id: '1', label: 'Test Node 1' }] }],
     expandable: { expandedNodes: ['0'], onCollapse },
   });
 
-  fireEvent.click(getByText('Test Node 0'));
+  const node = await screen.findByText('Test Node 0');
+
+  await userEvent.click(node);
 
   expect(onCollapse).toHaveBeenCalledWith('0');
 });
 
 test('expanding node triggers onExpand', async () => {
   const onExpand = jest.fn();
-  const { getByText } = renderDefaultTree({
+
+  renderDefaultTree({
     nodes: [{ id: '0', label: 'Test Node 0', children: [{ id: '1', label: 'Test Node 1' }] }],
     expandable: { expandedNodes: [], onExpand },
   });
 
-  await act(async () => {
-    await fireEvent.click(getByText('Test Node 0'));
-  });
+  const node = await screen.findByText('Test Node 0');
+
+  await userEvent.click(node);
 
   expect(onExpand).toHaveBeenCalledWith('0');
+});
+
+test('should focus when tabbed on', async () => {
+  renderDefaultTree({
+    nodes: [{ id: '0', label: 'Test Node 0' }],
+    focusable: { focusedNode: '0', onFocus: jest.fn() },
+  });
+
+  const node = await screen.findByRole('treeitem');
+
+  expect(node).not.toHaveFocus();
+
+  await userEvent.tab();
+
+  expect(node).toHaveFocus();
 });

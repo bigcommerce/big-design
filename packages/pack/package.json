@@ -1,8 +1,8 @@
 {
   "name": "@bigcommerce/pack",
-  "version": "0.1.1-alpha.0",
+  "version": "0.2.0",
   "private": true,
-  "license": "(MIT AND CC BY 3.0)",
+  "license": "(MIT AND CC-BY-3.0)",
   "bin": {
     "big-design-prepack": "./prepack.js",
     "big-design-postpack": "./postpack.js"

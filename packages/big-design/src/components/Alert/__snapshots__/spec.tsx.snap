@@ -13,7 +13,7 @@ exports[`render default (success) Alert 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -120,7 +120,7 @@ exports[`render error Alert 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -223,7 +223,7 @@ exports[`render info Alert 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -330,7 +330,7 @@ exports[`render warning Alert 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -471,7 +471,6 @@ exports[`renders close button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -483,7 +482,6 @@ exports[`renders close button 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: #3C64F4;
   border-color: #3C64F4;
   font-weight: 600;
@@ -529,7 +527,6 @@ exports[`renders close button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c9 {
@@ -537,6 +534,7 @@ exports[`renders close button 1`] = `
   border: none;
   color: #313440;
   height: auto;
+  min-width: auto;
   padding: 0;
 }
 
@@ -557,7 +555,7 @@ exports[`renders close button 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -616,6 +614,8 @@ exports[`renders close button 1`] = `
 @media (min-width:720px) {
   .c8 {
     width: auto;
+    padding: 0;
+    min-width: 2.25rem;
   }
 }
 
@@ -707,7 +707,7 @@ exports[`renders header 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -839,7 +839,7 @@ exports[`renders with external link 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -1014,7 +1014,7 @@ exports[`renders with link 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 

@@ -6,9 +6,22 @@ import { Flex, FlexItem } from '../Flex';
 import { Form } from '../Form';
 import { Input } from '../Input';
 
-import { SearchProps } from './types';
+import { SearchLocalization, SearchProps } from './types';
 
-export const Search: React.FC<SearchProps> = ({ value, onChange, onSubmit }) => {
+const defaultLocalization: SearchLocalization = {
+  search: 'Search',
+};
+
+export const Search: React.FC<SearchProps> = ({
+  localization = defaultLocalization,
+  value,
+  onChange,
+  onSubmit,
+  placeholder,
+  'aria-label': ariaLabel,
+  autoComplete = 'off',
+  ...props
+}) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
@@ -19,20 +32,22 @@ export const Search: React.FC<SearchProps> = ({ value, onChange, onSubmit }) => 
   };
 
   return (
-    <Form onSubmit={handleSubmit} fullWidth={true}>
+    <Form fullWidth={true} onSubmit={handleSubmit}>
       <Flex alignItems="center" backgroundColor="white" flexDirection="row" paddingBottom="xxSmall">
         <FlexItem flexGrow={1} marginRight="small">
           <Input
-            aria-label="Search"
-            placeholder="Search"
+            {...props}
+            aria-label={ariaLabel ?? localization.search}
+            autoComplete={autoComplete}
+            iconLeft={<SearchIcon color="secondary50" />}
+            onChange={onChange}
+            placeholder={placeholder ?? localization.search}
             type="search"
             value={value}
-            onChange={onChange}
-            iconLeft={<SearchIcon color="secondary50" />}
           />
         </FlexItem>
         <Button mobileWidth="auto" type="submit" variant="secondary">
-          Search
+          {localization.search}
         </Button>
       </Flex>
     </Form>

@@ -35,7 +35,11 @@ const dropdownProps: Prop[] = [
       'top-start',
     ],
     defaultValue: 'bottom-start',
-    description: 'Sets the placement of the Dropdown relative to the anchor.',
+    description: (
+      <>
+        Sets the placement of the <Code primary>Dropdown</Code> relative to the anchor.
+      </>
+    ),
   },
   {
     name: 'positionFixed',
@@ -43,7 +47,8 @@ const dropdownProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to position the list.
+        If set, uses <Code>position: fixed</Code> instead of <Code>position: absolute</Code> to
+        position the list.
       </>
     ),
   },
@@ -62,7 +67,11 @@ const dropdownProps: Prop[] = [
     name: 'toggle',
     types: 'ReactElement',
     required: true,
-    description: 'Element used as anchor. Toggles the dropdown.',
+    description: (
+      <>
+        Element used as anchor. Toggles the <Code primary>Dropdown</Code>.
+      </>
+    ),
   },
 ];
 
@@ -77,14 +86,18 @@ const dropdownItemProps: Prop[] = [
     name: 'content',
     types: 'string',
     required: true,
-    description: 'Sets the text content of the DropdownItem.',
+    description: (
+      <>
+        Sets the text content of the <Code>DropdownItem</Code>.
+      </>
+    ),
   },
   {
     name: 'description',
     types: 'string',
     description: (
       <>
-        Sets the content description of the <Code>DropdownItem</Code>
+        Sets the content description of the <Code>DropdownItem</Code>.
       </>
     ),
   },
@@ -103,7 +116,8 @@ const dropdownItemProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the
+        text.
       </>
     ),
   },
@@ -121,7 +135,6 @@ const dropdownItemProps: Prop[] = [
   {
     name: 'type',
     types: "'text'",
-    defaultValue: "'text'",
     description: 'Type of the item.',
   },
 ];
@@ -137,14 +150,18 @@ const dropdownLinkProps: Prop[] = [
     name: 'content',
     types: 'string',
     required: true,
-    description: 'Sets the text content of the DropdownLinkItem.',
+    description: (
+      <>
+        Sets the text content of the <Code>DropdownLinkItem</Code>.
+      </>
+    ),
   },
   {
     name: 'description',
     types: 'string',
     description: (
       <>
-        Sets the content description of the <Code>DropdownLinkItem</Code>
+        Sets the content description of the <Code>DropdownLinkItem</Code>.
       </>
     ),
   },
@@ -158,7 +175,8 @@ const dropdownLinkProps: Prop[] = [
     types: <NextLink href="/icons">Icon</NextLink>,
     description: (
       <>
-        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the text.
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the
+        text.
       </>
     ),
   },
@@ -207,24 +225,25 @@ const dropdownItemGroupProps: Prop[] = [
     required: true,
     description: (
       <>
-        Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See example for usage.
+        Accepts an array of <Code>DropdownItems</Code> and <Code>DropdownLinkItems</Code>. See{' '}
+        <NextLink href={{ query: 'implementation=item-groups' }}>example</NextLink> for usage.
       </>
     ),
   },
 ];
 
 export const DropdownPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Dropdown" propList={dropdownProps} {...props} />
+  <PropTable propList={dropdownProps} title="Dropdown" {...props} />
 );
 
 export const DropdownItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Dropdown[DropdownItem]" propList={dropdownItemProps} {...props} />
+  <PropTable propList={dropdownItemProps} title="Dropdown[DropdownItem]" {...props} />
 );
 
 export const DropdownLinkItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Dropdown[DropdownLinkItem]" propList={dropdownLinkProps} {...props} />
+  <PropTable propList={dropdownLinkProps} title="Dropdown[DropdownLinkItem]" {...props} />
 );
 
 export const DropdownItemGroupPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Dropdown[DropdownItemGroup]" propList={dropdownItemGroupProps} {...props} />
+  <PropTable propList={dropdownItemGroupProps} title="Dropdown[DropdownItemGroup]" {...props} />
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { StatefulTable, StatefulTablePillTabFilter, StatefulTableProps } from './StatefulTable';
 
@@ -29,7 +29,12 @@ const generateItems = (): TestItem[] =>
 const getSimpleTable = (props: Partial<StatefulTableProps<TestItem>> = {}) => (
   <StatefulTable
     columns={[
-      { header: 'Name', hash: 'name', render: ({ name }) => <span data-testid="name">{name}</span>, sortKey: 'name' },
+      {
+        header: 'Name',
+        hash: 'name',
+        render: ({ name }) => <span data-testid="name">{name}</span>,
+        sortKey: 'name',
+      },
       {
         header: 'Stock',
         hash: 'stock',
@@ -48,7 +53,7 @@ test('renders a non-paginated table by default', async () => {
 
   const rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(105);
+  expect(rows).toHaveLength(105);
 });
 
 test('pagination can be enabled', async () => {
@@ -56,7 +61,7 @@ test('pagination can be enabled', async () => {
 
   const rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(26);
+  expect(rows).toHaveLength(26);
 });
 
 test('dragAndDrop can be enabled', async () => {
@@ -66,20 +71,22 @@ test('dragAndDrop can be enabled', async () => {
   const onRowDrop = jest.fn();
   const { container, getAllByTestId } = render(getSimpleTable({ onRowDrop }));
 
-  let dragEls = container.querySelectorAll('[data-rbd-draggable-id]') as NodeListOf<HTMLElement>;
+  let dragEls = container.querySelectorAll<HTMLButtonElement>('[data-rbd-draggable-id]');
 
   let names = getAllByTestId('name');
+
   // Item at index 0 has product name Product A - 1
   expect(names[0].textContent).toBe(name);
 
   dragEls[0].focus();
+
   expect(dragEls[0]).toHaveFocus();
 
   fireEvent.keyDown(dragEls[0], spaceKey);
   fireEvent.keyDown(dragEls[0], downKey);
   fireEvent.keyDown(dragEls[0], spaceKey);
 
-  dragEls = container.querySelectorAll('[data-rbd-draggable-id]') as NodeListOf<HTMLElement>;
+  dragEls = container.querySelectorAll('[data-rbd-draggable-id]');
 
   names = getAllByTestId('name');
 
@@ -94,7 +101,9 @@ test('changing pagination page changes the displayed items', async () => {
   await findByTestId('simple-table');
 
   const pageOneItemName = getAllByTestId('name')[0].textContent;
+
   fireEvent.click(getByTitle('Next page'));
+
   const pageTwoItemName = getAllByTestId('name')[0].textContent;
 
   expect(pageOneItemName).not.toBe(pageTwoItemName);
@@ -103,46 +112,54 @@ test('changing pagination page changes the displayed items', async () => {
 test('renders rows without checkboxes by default', () => {
   const { queryAllByRole } = render(getSimpleTable());
 
-  expect(queryAllByRole('checkbox').length).toBe(0);
+  expect(queryAllByRole('checkbox')).toHaveLength(0);
 });
 
 test('renders rows without checkboxes when opting in to selectable', () => {
   const { queryAllByRole } = render(getSimpleTable({ selectable: true, pagination: false }));
 
   // 104 tbody rows + Select all checkbox
-  expect(queryAllByRole('checkbox').length).toBe(105);
+  expect(queryAllByRole('checkbox')).toHaveLength(105);
 });
 
-test('items are unselected by default', () => {
-  const { container } = render(getSimpleTable({ selectable: true }));
-  const checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
+test('items are unselected by default', async () => {
+  render(getSimpleTable({ selectable: true }));
 
-  expect(checkbox.checked).toBe(false);
+  const checkboxes = await screen.findAllByRole<HTMLInputElement>('checkbox');
+
+  expect(checkboxes[0].checked).toBe(false);
 });
 
-test('items can be selected by default', () => {
+test('items can be selected by default', async () => {
   const testItem = { name: 'Test Item', stock: 1 };
   const items: TestItem[] = [testItem];
-  const { container } = render(getSimpleTable({ selectable: true, items, defaultSelected: [testItem] }));
-  const checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
 
-  expect(checkbox.checked).toBe(true);
+  render(getSimpleTable({ selectable: true, items, defaultSelected: [testItem] }));
+
+  const checkboxes = await screen.findAllByRole<HTMLInputElement>('checkbox');
+
+  expect(checkboxes[0].checked).toBe(true);
 });
 
-test('onSelectionChange gets called when an item selection happens', () => {
+test('onSelectionChange gets called when an item selection happens', async () => {
   const testItemOne = { name: 'Test Item', stock: 1 };
   const testItemTwo = { name: 'Test Item Two', stock: 2 };
   const testItemThree = { name: 'Test Item Three', stock: 3 };
   const items: TestItem[] = [testItemOne, testItemTwo, testItemThree];
   const onSelectionChange = jest.fn();
 
-  const { container } = render(
-    getSimpleTable({ selectable: true, items, defaultSelected: [testItemThree], onSelectionChange }),
+  render(
+    getSimpleTable({
+      selectable: true,
+      items,
+      defaultSelected: [testItemThree],
+      onSelectionChange,
+    }),
   );
 
-  const checkbox = container.querySelector('tbody > tr input') as HTMLInputElement;
+  const checkboxes = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
-  fireEvent.click(checkbox);
+  fireEvent.click(checkboxes[1]);
 
   expect(onSelectionChange).toHaveBeenCalledWith([testItemThree, testItemOne]);
 });
@@ -155,12 +172,14 @@ test('multi-page select', async () => {
   );
 
   const table = await findByTestId('simple-table');
-  let checkbox = table.querySelector('tbody > tr input') as HTMLInputElement;
+  let checkboxes: NodeListOf<HTMLInputElement> = table.querySelectorAll('tbody > tr input');
+  let checkbox = checkboxes[0];
 
   fireEvent.click(checkbox);
   fireEvent.click(getByTitle('Next page'));
 
-  checkbox = table.querySelector('tbody > tr input') as HTMLInputElement;
+  checkboxes = table.querySelectorAll('tbody > tr input');
+  checkbox = checkboxes[0];
   fireEvent.click(checkbox);
 
   expect(onSelectionChange).toHaveBeenCalledWith([
@@ -271,7 +290,12 @@ test('sorts using a custom sorting function', () => {
   const { getAllByTestId, getByText } = render(
     getSimpleTable({
       columns: [
-        { header: 'Name', hash: 'name', render: ({ name }) => <span data-testid="name">{name}</span>, sortKey: 'name' },
+        {
+          header: 'Name',
+          hash: 'name',
+          render: ({ name }) => <span data-testid="name">{name}</span>,
+          sortKey: 'name',
+        },
         {
           header: 'Stock',
           hash: 'stock',
@@ -308,7 +332,9 @@ test('sorts using a custom sorting function', () => {
 });
 
 test('renders custom actions', () => {
-  const { getByTestId } = render(getSimpleTable({ actions: <div data-testid="customAction">Test Action</div> }));
+  const { getByTestId } = render(
+    getSimpleTable({ actions: <div data-testid="customAction">Test Action</div> }),
+  );
 
   const customAction = getByTestId('customAction');
 
@@ -352,7 +378,7 @@ test('it executes the filter function on click', async () => {
 
   const rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(2);
+  expect(rows).toHaveLength(2);
 });
 
 test('can paginate on filtered rows', async () => {
@@ -382,13 +408,13 @@ test('can undo filter actions', async () => {
 
   const filteredRows = await findAllByRole('row');
 
-  expect(filteredRows.length).toBe(2);
+  expect(filteredRows).toHaveLength(2);
 
   fireEvent.click(customFilter);
 
   const rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(105);
+  expect(rows).toHaveLength(105);
 });
 
 test('can stack filter actions (OR logic)', async () => {
@@ -398,7 +424,9 @@ test('can stack filter actions (OR logic)', async () => {
       { title: 'Stock 2', id: 'stock_2' },
     ],
     filter: (itemId, items) =>
-      itemId === 'stock_1' ? items.filter((item) => item.stock === 1) : items.filter((item) => item.stock === 2),
+      itemId === 'stock_1'
+        ? items.filter((item) => item.stock === 1)
+        : items.filter((item) => item.stock === 2),
   };
   const { findAllByRole, findByText } = render(getSimpleTable({ filters }));
   const customFilter1 = await findByText('Stock 1');
@@ -409,7 +437,7 @@ test('can stack filter actions (OR logic)', async () => {
 
   const rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(3);
+  expect(rows).toHaveLength(3);
 });
 
 test('can undo stacked filter actions', async () => {
@@ -419,7 +447,9 @@ test('can undo stacked filter actions', async () => {
       { title: 'Stock 2', id: 'stock_2' },
     ],
     filter: (itemId, items) =>
-      itemId === 'stock_1' ? items.filter((item) => item.stock === 1) : items.filter((item) => item.stock === 2),
+      itemId === 'stock_1'
+        ? items.filter((item) => item.stock === 1)
+        : items.filter((item) => item.stock === 2),
   };
   const { findAllByRole, findByText } = render(getSimpleTable({ filters }));
   const customFilter1 = await findByText('Stock 1');
@@ -430,19 +460,19 @@ test('can undo stacked filter actions', async () => {
 
   let rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(3);
+  expect(rows).toHaveLength(3);
 
   fireEvent.click(customFilter1);
 
   rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(2);
+  expect(rows).toHaveLength(2);
 
   fireEvent.click(customFilter2);
 
   rows = await findAllByRole('row');
 
-  expect(rows.length).toBe(105);
+  expect(rows).toHaveLength(105);
 });
 
 describe('test search in the StatefulTable', () => {
@@ -455,7 +485,9 @@ describe('test search in the StatefulTable', () => {
   });
 
   test('it executes the filter function on click Search', async () => {
-    const { findAllByRole, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true }));
+    const { findAllByRole, getByPlaceholderText, getByText } = render(
+      getSimpleTable({ search: true }),
+    );
     const input = getByPlaceholderText('Search');
 
     fireEvent.change(input, { target: { value: 'Product A - 1' } });
@@ -463,7 +495,7 @@ describe('test search in the StatefulTable', () => {
 
     const rows = await findAllByRole('row');
 
-    expect(rows.length).toBe(2);
+    expect(rows).toHaveLength(2);
   });
 
   test('it executes the filter search and filter pills function on click Search', async () => {
@@ -471,7 +503,9 @@ describe('test search in the StatefulTable', () => {
       pillTabs: [{ title: 'Stock 1', id: 'in_stock' }],
       filter: (_itemId, items) => items.filter((item) => item.stock === 1),
     };
-    const { findAllByRole, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true, filters }));
+    const { findAllByRole, getByPlaceholderText, getByText } = render(
+      getSimpleTable({ search: true, filters }),
+    );
     const input = getByPlaceholderText('Search');
 
     fireEvent.change(input, { target: { value: 'Product A' } });
@@ -480,11 +514,13 @@ describe('test search in the StatefulTable', () => {
 
     const rows = await findAllByRole('row');
 
-    expect(rows.length).toBe(2);
+    expect(rows).toHaveLength(2);
   });
 
   test('can paginate on filtered rows', async () => {
-    const { getByPlaceholderText, getByText, findByText } = render(getSimpleTable({ search: true, pagination: true }));
+    const { getByPlaceholderText, getByText, findByText } = render(
+      getSimpleTable({ search: true, pagination: true }),
+    );
     const input = getByPlaceholderText('Search');
 
     fireEvent.change(input, { target: { value: '1' } });
@@ -496,7 +532,9 @@ describe('test search in the StatefulTable', () => {
   });
 
   test('can undo filter actions', async () => {
-    const { findAllByRole, getByPlaceholderText, getByText } = render(getSimpleTable({ search: true }));
+    const { findAllByRole, getByPlaceholderText, getByText } = render(
+      getSimpleTable({ search: true }),
+    );
     const input = getByPlaceholderText('Search');
 
     fireEvent.change(input, { target: { value: 'Product A - 1' } });
@@ -504,13 +542,40 @@ describe('test search in the StatefulTable', () => {
 
     let rows = await findAllByRole('row');
 
-    expect(rows.length).toBe(2);
+    expect(rows).toHaveLength(2);
 
     fireEvent.change(input, { target: { value: '' } });
     fireEvent.click(getByText('Search'));
 
     rows = await findAllByRole('row');
 
-    expect(rows.length).toBe(105);
+    expect(rows).toHaveLength(105);
   });
+});
+
+test('renders localized labels', async () => {
+  render(
+    getSimpleTable({
+      getRangeLabel: (start: number, end: number, totalItems: number): string => {
+        return `${start} - ${end} de ${totalItems}`;
+      },
+      pagination: true,
+      localization: {
+        nextPage: 'Pagina siguiente',
+        previousPage: 'Pagina previa',
+        search: 'Buscar',
+      },
+      search: true,
+    }),
+  );
+
+  const input = screen.getByLabelText('Buscar');
+  const dropdown = await screen.findByRole('button', { name: '1 - 25 de 104' });
+  const prevPage = await screen.findByRole('button', { name: 'Pagina previa' });
+  const nextPage = await screen.findByRole('button', { name: 'Pagina siguiente' });
+
+  expect(input).toBeInTheDocument();
+  expect(dropdown).toBeInTheDocument();
+  expect(prevPage).toBeInTheDocument();
+  expect(nextPage).toBeInTheDocument();
 });

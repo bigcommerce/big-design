@@ -1,27 +1,26 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import React, { forwardRef, memo } from 'react';
+import React, { forwardRef, memo, useId } from 'react';
 
 import { createStyledIcon, IconProps, PrivateIconProps } from '../base';
-import { useUniqueId } from '../utils';
 
 const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ...props }) => {
-  const uniqueTitleId = useUniqueId('icon');
+  const uniqueTitleId = useId();
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
     <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      fill="currentColor"
       height={24}
+      ref={svgRef}
+      stroke="currentColor"
+      strokeWidth="0"
       viewBox="0 0 24 24"
       width={24}
-      stroke="currentColor"
-      fill="currentColor"
-      strokeWidth="0"
-      aria-hidden={ariaHidden}
-      ref={svgRef}
-      aria-labelledby={titleId}
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
@@ -39,6 +38,6 @@ const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, re
   <Icon {...iconProps} svgRef={ref} />
 ));
 
-export const KeyboardDoubleArrowLeftIcon = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
+export const KeyboardDoubleArrowLeftIcon = memo(createStyledIcon(IconWithForwardedRef));
 
 KeyboardDoubleArrowLeftIcon.displayName = 'KeyboardDoubleArrowLeftIcon';

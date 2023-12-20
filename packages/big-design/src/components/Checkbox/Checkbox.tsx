@@ -1,18 +1,32 @@
 import { CheckIcon, RemoveIcon } from '@bigcommerce/big-design-icons';
-import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo } from 'react';
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  LabelHTMLAttributes,
+  Ref,
+  useId,
+  useMemo,
+} from 'react';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
+import { Badge, BadgeProps } from '../Badge';
 import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
 import { CheckboxLabel } from './Label';
-import { CheckboxContainer, CheckboxLabelContainer, HiddenCheckbox, StyledCheckbox } from './styled';
+import {
+  CheckboxContainer,
+  CheckboxLabelContainer,
+  HiddenCheckbox,
+  StyledCheckbox,
+} from './styled';
 
 interface Props {
   hiddenLabel?: boolean;
   isIndeterminate?: boolean;
   label: React.ReactChild;
   description?: CheckboxDescription | string;
+  badge?: BadgeProps;
 }
 
 interface CheckboxDescription {
@@ -36,11 +50,12 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   label,
   forwardedRef,
   style,
+  badge,
   ...props
 }) => {
-  const uniqueCheckboxId = useUniqueId('checkbox');
+  const uniqueCheckboxId = useId();
+  const labelId = useId();
   const id = props.id ? props.id : uniqueCheckboxId;
-  const labelId = useUniqueId('checkbox_label');
 
   const renderedLabel = useMemo(() => {
     if (!label) {
@@ -49,14 +64,24 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <CheckboxLabel disabled={disabled} hidden={hiddenLabel} htmlFor={id} aria-hidden={disabled} id={labelId}>
+        <CheckboxLabel
+          aria-hidden={disabled}
+          disabled={disabled}
+          hidden={hiddenLabel}
+          htmlFor={id}
+          id={labelId}
+        >
           {label}
+          {badge ? <Badge marginLeft="xSmall" {...badge} /> : null}
         </CheckboxLabel>
       );
     }
 
-    if (isValidElement(label) && label.type === CheckboxLabel) {
-      return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+    if (
+      isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+      label.type === CheckboxLabel
+    ) {
+      return cloneElement(label, {
         hidden: hiddenLabel,
         htmlFor: id,
         id: labelId,
@@ -64,7 +89,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
     }
 
     warning('label must be either a string or a CheckboxLabel component.');
-  }, [disabled, hiddenLabel, id, label, labelId]);
+  }, [badge, disabled, hiddenLabel, id, label, labelId]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {
@@ -80,10 +105,10 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   return (
     <CheckboxContainer className={className} style={style}>
       <HiddenCheckbox
-        type="checkbox"
         checked={checked}
-        id={id}
         disabled={disabled}
+        id={id}
+        type="checkbox"
         {...props}
         aria-checked={checked}
         aria-labelledby={labelId}
@@ -99,18 +124,19 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
               // RefObject.current is readonly in DefinitelyTyped
               // but in practice you can still write to it.
               // See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/31065
-              (forwardedRef as React.MutableRefObject<HTMLInputElement | null>).current = checkbox;
+              // @ts-expect-error TODO look into useImperativeHandle
+              forwardedRef.current = checkbox;
             }
           }
         }}
       />
 
       <StyledCheckbox
-        disabled={disabled}
-        isIndeterminate={isIndeterminate}
-        checked={checked}
-        htmlFor={id}
         aria-hidden={true}
+        checked={checked}
+        disabled={disabled}
+        htmlFor={id}
+        isIndeterminate={isIndeterminate}
       >
         {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
       </StyledCheckbox>

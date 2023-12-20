@@ -3,7 +3,11 @@ import { Reducer } from 'react';
 import { PillTabItem, PillTabsProps } from '../PillTabs';
 import { TableSortDirection } from '../Table';
 
-import { StatefulTableColumn, StatefulTablePillTabFilter, StatefulTableSortFn } from './StatefulTable';
+import {
+  StatefulTableColumn,
+  StatefulTablePillTabFilter,
+  StatefulTableSortFn,
+} from './StatefulTable';
 
 interface State<T> {
   activePills: string[];
@@ -207,7 +211,11 @@ export const createReducer =
           return state;
         }
 
-        const activePills = getActivePills(state.pillTabsProps.items, state.activePills, action.pillId);
+        const activePills = getActivePills(
+          state.pillTabsProps.items,
+          state.activePills,
+          action.pillId,
+        );
         let currentItems = togglePill(state.items, activePills, action.filter);
 
         if (state.submittedSearchValue) {
@@ -259,7 +267,10 @@ export const createReducer =
   };
 
 function augmentColumns<T>(columns: Array<StatefulTableColumn<T>>) {
-  return columns.map((column) => ({ ...column, isSortable: Boolean(column.sortKey || column.sortFn) }));
+  return columns.map((column) => ({
+    ...column,
+    isSortable: Boolean(column.sortKey || column.sortFn),
+  }));
 }
 
 function getItems<T>(
@@ -280,7 +291,12 @@ function getItems<T>(
 
 function sort<T>(items: T[], direction: TableSortDirection, sortKey: keyof T): T[];
 function sort<T>(items: T[], direction: TableSortDirection, sortFn: StatefulTableSortFn<T>): T[];
-function sort<T>(items: T[], direction: TableSortDirection, sortKeyOrFn: keyof T | StatefulTableSortFn<T>) {
+
+function sort<T>(
+  items: T[],
+  direction: TableSortDirection,
+  sortKeyOrFn: keyof T | StatefulTableSortFn<T>,
+) {
   return [...items].sort((firstItem, secondItem) => {
     if (typeof sortKeyOrFn === 'function') {
       return sortKeyOrFn(firstItem, secondItem, direction);
@@ -318,7 +334,11 @@ function getActivePills(pillTabs: PillTabItem[], activePills: string[], pillId: 
     : activePills.filter((activeFilter) => activeFilter !== toggledPill.id);
 }
 
-function togglePill<T>(items: T[], activePills: string[], filter: StatefulTablePillTabFilter<T>['filter']): T[] {
+function togglePill<T>(
+  items: T[],
+  activePills: string[],
+  filter: StatefulTablePillTabFilter<T>['filter'],
+): T[] {
   return activePills.length > 0
     ? activePills
         .map((pillId) => {
@@ -331,12 +351,18 @@ function togglePill<T>(items: T[], activePills: string[], filter: StatefulTableP
         }, [])
     : items;
 }
+
 const checkInclude = (searchValue: string, str: string) =>
   str.toLowerCase().trim().includes(searchValue.toLowerCase().trim());
 
-function onSearchSubmit<T>(items: T[], searchValue: string, columns: Array<StatefulTableColumn<T>>): T[] {
+function onSearchSubmit<T>(
+  items: T[],
+  searchValue: string,
+  columns: Array<StatefulTableColumn<T>>,
+): T[] {
   return items.filter((item) =>
     columns.some((column) => {
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       const element = item[column.hash as keyof T];
 
       switch (typeof element) {
@@ -346,7 +372,6 @@ function onSearchSubmit<T>(items: T[], searchValue: string, columns: Array<State
           return checkInclude(searchValue, element.toString());
 
         default:
-          return;
       }
     }),
   );

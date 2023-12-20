@@ -3,7 +3,7 @@ import React from 'react';
 import { Prop, PropTable, PropTableWrapper } from '../components';
 
 export const FormErrorPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="FormControlError" propList={[]} nativeElement={['p', 'all']} {...props} />
+  <PropTable nativeElement={['p', 'all']} propList={[]} title="FormControlError" {...props} />
 );
 
 const formProps: Prop[] = [
@@ -19,25 +19,45 @@ const formFieldsetProps: Prop[] = [
   {
     name: 'description',
     types: ['string', 'FieldsetDescription'],
-    description: 'Pass in a description to display in the fieldset. Will render nothing if not the correct type.',
+    description:
+      'Pass in a description to display in the fieldset. Will render nothing if not the correct type.',
   },
   {
     name: 'legend',
     types: ['string', 'FieldsetLegend'],
-    description: 'Pass in a legend to display in the fieldset. Will render nothing if not the correct type.',
+    description:
+      'Pass in a legend to display in the fieldset. Will render nothing if not the correct type.',
   },
 ];
 
 export const FormFieldsetPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Fieldset" propList={formFieldsetProps} {...props} />
+  <PropTable propList={formFieldsetProps} title="Fieldset" {...props} />
 );
 
+const formLabelProps: Prop[] = [
+  {
+    name: 'renderOptional',
+    types: 'boolean',
+    description: 'Shows optional label.',
+  },
+  {
+    name: 'localization',
+    types: '{ optional: string }',
+    description: 'Overrides the label with localized text.',
+  },
+];
+
 export const FormLabelPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="FormControlLabel" propList={[]} nativeElement={['label', 'all']} {...props} />
+  <PropTable
+    nativeElement={['label', 'all']}
+    propList={formLabelProps}
+    title="FormControlLabel"
+    {...props}
+  />
 );
 
 export const FormDescriptionPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="FormControlDescription" propList={[]} nativeElement={['p', 'all']} {...props} />
+  <PropTable nativeElement={['p', 'all']} propList={[]} title="FormControlDescription" {...props} />
 );
 
 const formGroupProps: Prop[] = [
@@ -49,9 +69,9 @@ const formGroupProps: Prop[] = [
 ];
 
 export const FormPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Form" propList={formProps} nativeElement={['form', 'all']} {...props} />
+  <PropTable nativeElement={['form', 'all']} propList={formProps} title="Form" {...props} />
 );
 
 export const FormGroupPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="FormGroup" propList={formGroupProps} {...props} />
+  <PropTable propList={formGroupProps} title="FormGroup" {...props} />
 );

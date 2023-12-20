@@ -1,37 +1,45 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import React, { forwardRef, memo } from 'react';
+import React, { forwardRef, memo, useId } from 'react';
 
 import { PrivateIconProps } from '../../base';
-import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'EH flag', theme, ...props }) => {
-  const uniqueTitleId = useUniqueId('icon');
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'EH flag',
+  theme,
+  ...props
+}) => {
+  const uniqueTitleId = useId();
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
         <clipPath id="EHFlagIcon__a">
-          <path fillOpacity={0.7} d="M-158.7 0H524v512h-682.7z" />
+          <path d="M-158.7 0H524v512h-682.7z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g fillRule="evenodd" clipPath="url(#EHFlagIcon__a)" transform="translate(148.8) scale(.94)">
-        <path d="M-180 0H844v256H-180z" />
-        <path fill="#107b00" d="M-180 256H844v256H-180z" />
-        <path fill="#fff" d="M-180 169.3H844v176.1H-180z" />
+      <g clipPath="url(#EHFlagIcon__a)" fillRule="evenodd" transform="translate(148.8) scale(.94)">
+        <path d="M-158.3 0h680.9v255.3h-680.9z" />
+        <path d="M-158.3 255.3h680.9v255.3h-680.9z" fill="#007a3d" />
+        <path d="M-158.3 148.9h680.9v212.8h-680.9z" fill="#fff" />
+        <path d="M-158.3 0l340.4 255.3-340.4 255.3z" fill="#c4111b" />
+        <circle cx={352.3} cy={255.3} fill="#c4111b" r={68.1} />
+        <circle cx={377.9} cy={255.3} fill="#fff" r={68.1} />
         <path
-          fill="#f0f"
-          d="M310 195.6c-45.2-19.5-84.1 20.6-84 58 0 39.2 38 81 86 62.5-34-10-48-35.3-48-60.7-.3-25.2 15.8-54.6 46-59.9z"
-        />
-        <path fill="#ff1800" d="M363.1 294.2l-25.8-18.9-26 19 10-30.5-26-18.8h32l9.9-30.5 9.8 30.4h32.1l-25.9 18.8" />
-        <path
-          fill="red"
-          d="M314.3 315.6a65.2 65.2 0 01-89.2-59.4 65 65 0 0189.5-60.9 60.6 60.6 0 00-51.2 59.2 61.3 61.3 0 0051 61.1zM-180 0l348.6 256.6L-180 512V0z"
+          d="M334 296.5l29.1-20.7 28.8 21-10.8-34 29-20.9-35.7-.2-11-34-11.2 33.9-35.7-.2 28.7 21.2-11.1 34z"
+          fill="#c4111b"
         />
       </g>
     </svg>
@@ -42,6 +50,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const EHFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const EHFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 EHFlagIcon.displayName = 'EHFlagIcon';

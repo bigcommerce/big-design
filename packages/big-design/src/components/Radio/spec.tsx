@@ -1,20 +1,24 @@
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
 
 import { Radio, RadioLabel } from './index';
 
 test('render Radio (checked)', () => {
-  const { container } = render(<Radio label="Checked" name="test-group" checked={true} onChange={() => null} />);
+  const { container } = render(
+    <Radio checked={true} label="Checked" name="test-group" onChange={() => null} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
 test('render Radio (unchecked)', () => {
-  const { container } = render(<Radio label="Unchecked" name="test-group" checked={false} onChange={() => null} />);
+  const { container } = render(
+    <Radio checked={false} label="Unchecked" name="test-group" onChange={() => null} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
 });
@@ -22,7 +26,7 @@ test('render Radio (unchecked)', () => {
 test('render Radio (unchecked + description object)', () => {
   const { container } = render(
     <Radio
-      label="Unchecked"
+      checked={false}
       description={{
         text: 'description',
         link: {
@@ -31,8 +35,8 @@ test('render Radio (unchecked + description object)', () => {
           href: 'bar',
         },
       }}
+      label="Unchecked"
       name="test-group"
-      checked={false}
       onChange={() => null}
     />,
   );
@@ -42,7 +46,13 @@ test('render Radio (unchecked + description object)', () => {
 
 test('render Radio (unchecked + description text)', () => {
   const { container } = render(
-    <Radio label="Unchecked" description="description" name="test-group" checked={false} onChange={() => null} />,
+    <Radio
+      checked={false}
+      description="description"
+      label="Unchecked"
+      name="test-group"
+      onChange={() => null}
+    />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -50,7 +60,7 @@ test('render Radio (unchecked + description text)', () => {
 
 test('render Radio (checked + disabled)', () => {
   const { container } = render(
-    <Radio label="Checked" name="test-group" checked={true} onChange={() => null} disabled />,
+    <Radio checked={true} disabled label="Checked" name="test-group" onChange={() => null} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
@@ -58,30 +68,34 @@ test('render Radio (checked + disabled)', () => {
 
 test('render Radio (unchecked + disabled)', () => {
   const { container } = render(
-    <Radio label="Unchecked" name="test-group" checked={false} onChange={() => null} disabled />,
+    <Radio checked={false} disabled label="Unchecked" name="test-group" onChange={() => null} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
 });
 
-test('has correct value when checked', () => {
-  const { getByTestId } = render(<Radio label="Checked" checked={true} onChange={() => null} data-testid="radio" />);
-  const radio = getByTestId('radio') as HTMLInputElement;
+test('has correct value when checked', async () => {
+  render(<Radio checked={true} data-testid="radio" label="Checked" onChange={() => null} />);
+
+  const radio = await screen.findByTestId<HTMLInputElement>('radio');
 
   expect(radio.checked).toBe(true);
 });
 
-test('has correct value when unchecked', () => {
-  const { getByTestId } = render(<Radio label="Unchecked" checked={false} onChange={() => null} data-testid="radio" />);
-  const radio = getByTestId('radio') as HTMLInputElement;
+test('has correct value when unchecked', async () => {
+  render(<Radio checked={false} data-testid="radio" label="Unchecked" onChange={() => null} />);
+
+  const radio = await screen.findByTestId<HTMLInputElement>('radio');
 
   expect(radio.checked).toBe(false);
 });
 
-test('triggers onChange when clicking the radio button', () => {
+test('triggers onChange when clicking the radio button', async () => {
   const onChange = jest.fn();
-  const { getByTestId } = render(<Radio label="Checked" checked={false} onChange={onChange} data-testid="radio" />);
-  const radio = getByTestId('radio') as HTMLInputElement;
+
+  render(<Radio checked={false} data-testid="radio" label="Checked" onChange={onChange} />);
+
+  const radio = await screen.findByTestId<HTMLInputElement>('radio');
 
   fireEvent.click(radio);
 
@@ -90,7 +104,7 @@ test('triggers onChange when clicking the radio button', () => {
 
 test('triggers onChange when clicking styled and text label', () => {
   const onChange = jest.fn();
-  const { container } = render(<Radio label="Checked" checked={false} onChange={onChange} />);
+  const { container } = render(<Radio checked={false} label="Checked" onChange={onChange} />);
 
   const labels = container.querySelectorAll('label');
 
@@ -114,21 +128,21 @@ test('does not accept invalid label component', () => {
 
   const { queryByTestId } = render(<Radio label={label} />);
 
-  expect(warning).toBeCalledTimes(1);
+  expect(warning).toHaveBeenCalledTimes(1);
   expect(queryByTestId(testId)).not.toBeInTheDocument();
 });
 
 test('forwards ref', () => {
   const ref = createRef<HTMLInputElement>();
 
-  const { container } = render(<Radio ref={ref} label="Checked" />);
+  const { container } = render(<Radio label="Checked" ref={ref} />);
   const input = container.querySelector('input');
 
   expect(input).toBe(ref.current);
 });
 
 test('does not forward styles', () => {
-  const { container } = render(<Radio label="Checked" className="test" />);
+  const { container } = render(<Radio className="test" label="Checked" />);
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
 });

@@ -1,4 +1,8 @@
-import { ArrowDropDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@bigcommerce/big-design-icons';
+import {
+  ArrowDropDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from '@bigcommerce/big-design-icons';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import { MarginProps } from '../../mixins';
@@ -7,6 +11,16 @@ import { Flex, FlexItem } from '../Flex';
 
 import { StyledButton } from './styled';
 
+export interface PaginationLocalization {
+  previousPage: string;
+  nextPage: string;
+}
+
+const defaultLocalization: PaginationLocalization = {
+  previousPage: 'Previous page',
+  nextPage: 'Next page',
+};
+
 export interface PaginationProps extends MarginProps {
   currentPage: number;
   itemsPerPage: number;
@@ -14,10 +28,31 @@ export interface PaginationProps extends MarginProps {
   totalItems: number;
   onPageChange(page: number): void;
   onItemsPerPageChange(range: number): void;
+  label?: string;
+  localization?: PaginationLocalization;
+  getRangeLabel?(start: number, end: number, totalItems: number): string;
 }
 
+const defaultGetRangeLabel = (start: number, end: number, totalItems: number): string => {
+  if (start === end) {
+    return `${start} of ${totalItems}`;
+  }
+
+  return `${start} - ${end} of ${totalItems}`;
+};
+
 export const Pagination: React.FC<PaginationProps> = memo(
-  ({ itemsPerPage, currentPage, totalItems, itemsPerPageOptions = [], onPageChange, onItemsPerPageChange }) => {
+  ({
+    itemsPerPage,
+    currentPage,
+    totalItems,
+    itemsPerPageOptions = [],
+    onPageChange,
+    onItemsPerPageChange,
+    label = 'pagination',
+    localization = defaultLocalization,
+    getRangeLabel = defaultGetRangeLabel,
+  }) => {
     const [maxPages, setMaxPages] = useState(Math.max(1, Math.ceil(totalItems / itemsPerPage)));
     const [itemRange, setItemRange] = useState({ start: 0, end: 0 });
 
@@ -58,7 +93,14 @@ export const Pagination: React.FC<PaginationProps> = memo(
       calculateRange();
 
       setMaxPages(Math.max(1, Math.ceil(totalItems / itemsPerPage)));
-    }, [calculateRange, currentPage, handlePageOutOfBounds, handlePerPageOutOfBounds, itemsPerPage, totalItems]);
+    }, [
+      calculateRange,
+      currentPage,
+      handlePageOutOfBounds,
+      handlePerPageOutOfBounds,
+      itemsPerPage,
+      totalItems,
+    ]);
 
     const handlePageIncrease = () => {
       onPageChange(currentPage + 1);
@@ -72,14 +114,8 @@ export const Pagination: React.FC<PaginationProps> = memo(
       return onItemsPerPageChange(Number(item.hash));
     };
 
-    const showRanges = () => {
-      return itemRange.start === itemRange.end
-        ? `${itemRange.start} of ${totalItems}`
-        : `${itemRange.start} - ${itemRange.end} of ${totalItems}`;
-    };
-
     return (
-      <Flex role="navigation" aria-label="pagination" flexDirection="row">
+      <Flex aria-label={label} flexDirection="row" role="navigation">
         <FlexItem>
           <Dropdown
             items={itemsPerPageOptions.map((range) => ({
@@ -89,25 +125,31 @@ export const Pagination: React.FC<PaginationProps> = memo(
             }))}
             positionFixed={true}
             toggle={
-              <StyledButton variant="subtle" iconRight={<ArrowDropDownIcon size="xxLarge" />}>
-                {showRanges()}
+              <StyledButton
+                iconRight={<ArrowDropDownIcon size="xxLarge" />}
+                type="button"
+                variant="subtle"
+              >
+                {getRangeLabel(itemRange.start, itemRange.end, totalItems)}
               </StyledButton>
             }
           />
         </FlexItem>
         <FlexItem>
           <StyledButton
-            iconOnly={<ChevronLeftIcon title="Previous page" />}
-            variant="subtle"
             disabled={currentPage <= 1}
+            iconOnly={<ChevronLeftIcon title={localization.previousPage} />}
             onClick={handlePageDecrease}
+            type="button"
+            variant="subtle"
           />
 
           <StyledButton
-            iconOnly={<ChevronRightIcon title="Next page" />}
-            variant="subtle"
             disabled={currentPage >= maxPages}
+            iconOnly={<ChevronRightIcon title={localization.nextPage} />}
             onClick={handlePageIncrease}
+            type="button"
+            variant="subtle"
           />
         </FlexItem>
       </Flex>

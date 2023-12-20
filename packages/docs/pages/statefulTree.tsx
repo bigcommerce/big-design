@@ -1,6 +1,6 @@
 import { H1, Message, Panel, StatefulTree, Text } from '@bigcommerce/big-design';
 import { AssignmentIcon, LanguageIcon, StoreIcon } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { StatefulTreePropTable, TreeNodePropTable } from '../PropTables';
@@ -12,8 +12,8 @@ const StatefulTreePage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          The <Code primary>StatefulTree</Code> component is used to display a tree of items. Useful for defining a tree
-          of categories or subcollections.
+          The <Code primary>StatefulTree</Code> component is used to display a tree of items. Useful
+          for defining a tree of categories or subcollections.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -31,7 +31,7 @@ const StatefulTreePage = () => {
               id: 'multiple-selections',
               title: 'Multiple selections',
               render: () => (
-                <CodePreview>
+                <CodePreview key="multiple-selections">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const nodes = [
@@ -61,7 +61,12 @@ const StatefulTreePage = () => {
                         label: 'Category',
                         children: [{ id: '7', value: 7, label: 'Category' }],
                       },
-                      { id: '4', value: 4, label: 'Category', children: [{ id: '8', value: 8, label: 'Category' }] },
+                      {
+                        id: '4',
+                        value: 4,
+                        label: 'Category',
+                        children: [{ id: '8', value: 8, label: 'Category' }],
+                      },
                     ];
 
                     return (
@@ -82,7 +87,7 @@ const StatefulTreePage = () => {
               id: 'single-select',
               title: 'Single selection',
               render: () => (
-                <CodePreview>
+                <CodePreview key="single-select">
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const nodes = [
@@ -98,10 +103,10 @@ const StatefulTreePage = () => {
 
                     return (
                       <StatefulTree
-                        selectable="radio"
-                        nodes={nodes}
                         defaultExpanded={['0']}
                         disabledNodes={['0', '2']}
+                        nodes={nodes}
+                        selectable="radio"
                       />
                     );
                   }}
@@ -113,14 +118,16 @@ const StatefulTreePage = () => {
               id: 'custom-icons',
               title: 'Custom icons',
               render: () => (
-                <>
+                <Fragment key="custom-icons">
                   <Text>You can replace the folder icon with a custom icon of your choice.</Text>
                   <Message
-                    type="warning"
-                    messages={[
-                      { text: 'If you use the iconless prop, ALL icons will be hidden (including custom ones).' },
-                    ]}
                     marginBottom="medium"
+                    messages={[
+                      {
+                        text: 'If you use the iconless prop, ALL icons will be hidden (including custom ones).',
+                      },
+                    ]}
+                    type="warning"
                   />
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -132,15 +139,23 @@ const StatefulTreePage = () => {
                           label: 'Storefront - US',
                           children: [{ id: '3', label: 'Subcategory' }],
                         },
-                        { id: '1', icon: <LanguageIcon color="primary" />, label: 'Storefront - CA' },
-                        { id: '2', icon: <AssignmentIcon color="primary" />, label: 'Storefront - EU' },
+                        {
+                          id: '1',
+                          icon: <LanguageIcon color="primary" />,
+                          label: 'Storefront - CA',
+                        },
+                        {
+                          id: '2',
+                          icon: <AssignmentIcon color="primary" />,
+                          label: 'Storefront - EU',
+                        },
                       ];
 
                       return <StatefulTree defaultExpanded={['0']} nodes={nodes} />;
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}
@@ -154,12 +169,12 @@ const StatefulTreePage = () => {
             {
               id: 'stateful-tree',
               title: 'StatefulTree',
-              render: () => <StatefulTreePropTable renderPanel={false} />,
+              render: () => <StatefulTreePropTable />,
             },
             {
               id: 'tree-node',
               title: 'TreeNode',
-              render: () => <TreeNodePropTable id="tree-node-prop-table" renderPanel={false} />,
+              render: () => <TreeNodePropTable id="tree-node-prop-table" />,
             },
           ]}
         />
@@ -167,15 +182,15 @@ const StatefulTreePage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
+          discouraged={[
+            'Make sure radio buttons and checkboxes are used correctly within BigDesign Guidelines. Checkboxes are additive, radio buttons are either/or.',
+            'Don’t use to display a list of items.',
+          ]}
           recommended={[
             'Display collapsable side navigation if sub-categories exist.',
             'Use an icon next to categories, regardless of heirarchy.',
             'Use checkboxes when multiple items can be selected vs. radio buttons for either/or.',
             'Selected sub-categories should always be shown numerically next to the parent catergories, both in collapsed or expanded states.',
-          ]}
-          discouraged={[
-            'Make sure radio buttons and checkboxes are used correctly within BigDesign Guidelines. Checkboxes are additive, radio buttons are either/or.',
-            'Don’t use to display a list of items.',
           ]}
         />
       </Panel>

@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect, useId, useMemo } from 'react';
 
 import { typedMemo } from '../../../utils';
+import { Tooltip } from '../../Tooltip';
 import { Small } from '../../Typography';
 import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor, ToggleEditor } from '../editors';
-import { useEditableCell, useStore } from '../hooks';
+import { useAutoFilling, useEditableCell, useWorksheetStore } from '../hooks';
 import {
   InternalWorksheetColumn,
   Cell as TCell,
@@ -11,14 +12,19 @@ import {
   WorksheetSelectableColumn,
   WorksheetTextColumn,
 } from '../types';
+import { getCellIdx } from '../utils';
 
-import { StyledCell } from './styled';
+import { AutoFillHandler, CellNote, StyledCell } from './styled';
 
 interface CellProps<Item> extends TCell<Item> {
+  nextRowValue: Item[keyof Item] | '';
+  isLastChild: boolean;
+  isChild: boolean;
   options?: WorksheetSelectableColumn<Item>['config']['options'];
   rowId: number | string;
   formatting?: WorksheetTextColumn<Item>['formatting'];
   validation?: InternalWorksheetColumn<Item>['validation'];
+  notation?: InternalWorksheetColumn<Item>['notation'];
 }
 
 const InternalCell = <T extends WorksheetItem>({
@@ -31,50 +37,91 @@ const InternalCell = <T extends WorksheetItem>({
   type,
   rowId,
   validation,
+  notation,
   value,
+  nextRowValue,
+  isChild,
+  isLastChild,
 }: CellProps<T>) => {
   const cell: TCell<T> = useMemo(
     () => ({ columnIndex, disabled, hash, rowIndex, type, value }),
     [columnIndex, disabled, hash, rowIndex, type, value],
   );
+  const cellIdx = useMemo(() => getCellIdx(cell), [cell]);
 
-  const { handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing } = useEditableCell<T>(cell);
-  const setSelectedRows = useStore((state) => state.setSelectedRows);
-  const setSelectedCells = useStore((state) => state.setSelectedCells);
-  const addInvalidCells = useStore((state) => state.addInvalidCells);
-  const removeInvalidCells = useStore((state) => state.removeInvalidCells);
+  const { handleBlur, handleChange, handleDoubleClick, handleKeyDown, isEditing } =
+    useEditableCell<T>(cell);
+  const { store, useStore } = useWorksheetStore();
+  const {
+    isAutoFillActive,
+    onFillFullColumn,
+    setIsMouseDown,
+    setSelectingActive,
+    setBlockFillOut,
+    setSelectedCell: setHighlightedCell,
+  } = useAutoFilling(cell);
+  const tooltipId = useId();
 
-  const isSelected = useStore(
+  const setSelectedRows = useStore(store, (state) => state.setSelectedRows);
+  const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
+  const addInvalidCells = useStore(store, (state) => state.addInvalidCells);
+  const removeInvalidCells = useStore(store, (state) => state.removeInvalidCells);
+
+  const row: T = useStore(
+    store,
+    useMemo(() => (state) => state.rows[rowIndex], [rowIndex]),
+  );
+
+  const editWithValue = useStore(
+    store,
+    useMemo(() => (state) => state.editWithValue, []),
+  );
+
+  const isShiftPressed = useStore(
+    store,
+    useMemo(() => (state) => state.isShiftPressed, []),
+  );
+
+  const isMetaKey = useStore(store, (state) => state.isMetaKey);
+
+  const isControlKey = useStore(store, (state) => state.isControlKey);
+
+  const { selectedCells, isLastSelected, isFirstSelected, isSelected } = useStore(
+    store,
     useMemo(
-      () => (state) =>
-        state.selectedCells.some(
-          (selectedCell) => selectedCell.columnIndex === cell.columnIndex && selectedCell.rowIndex === cell.rowIndex,
-        ),
-      [cell],
+      () => (state) => {
+        const idx = Object.keys(state.selectedCellsMap).indexOf(cellIdx);
+
+        return {
+          selectedCells: state.selectedCells,
+          isLastSelected: state.selectedCells.length - 1 === idx,
+          isFirstSelected: idx === 0,
+          isSelected: idx !== -1,
+        };
+      },
+      [cellIdx],
     ),
   );
 
   const isEdited = useStore(
-    useMemo(
-      () => (state) =>
-        state.editedCells.some(
-          (editedCell) => editedCell.columnIndex === cell.columnIndex && editedCell.rowIndex === cell.rowIndex,
-        ),
-      [cell],
-    ),
+    store,
+    useMemo(() => (state) => !!state.editedCellsMap[cellIdx], [cellIdx]),
   );
 
   const invalidCell = useStore(
-    useMemo(
-      () => (state) =>
-        state.invalidCells.find(
-          (invalidCell) => invalidCell.columnIndex === cell.columnIndex && invalidCell.rowIndex === cell.rowIndex,
-        ),
-      [cell.columnIndex, cell.rowIndex],
-    ),
+    store,
+    useMemo(() => (state) => state.invalidCellsMap[cellIdx], [cellIdx]),
   );
 
-  const isValid = useMemo(() => (typeof validation === 'function' ? validation(value) : true), [validation, value]);
+  const isValid = useMemo(
+    () => (typeof validation === 'function' ? validation(value) : true),
+    [validation, value],
+  );
+
+  const isNextCellValid = useMemo(
+    () => (typeof validation === 'function' ? validation(nextRowValue) : true),
+    [nextRowValue, validation],
+  );
 
   useEffect(() => {
     // Remove from invalidCells if new value is valid
@@ -88,25 +135,42 @@ const InternalCell = <T extends WorksheetItem>({
     }
   }, [addInvalidCells, cell, isValid, invalidCell, removeInvalidCells]);
 
+  const handleAutoFilldblClick = useCallback(
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      event.stopPropagation();
+
+      onFillFullColumn();
+    },
+    [onFillFullColumn],
+  );
+
   const handleClick = useCallback(() => {
-    setSelectedRows([rowIndex]);
-    setSelectedCells([cell]);
-  }, [cell, rowIndex, setSelectedCells, setSelectedRows]);
+    if (isShiftPressed) {
+      const lastSelected = selectedCells[selectedCells.length - 1];
+      const fromIdx = lastSelected.rowIndex;
+      const toIdx = cell.rowIndex;
+
+      const rangeIdxs = Array.from({ length: toIdx - fromIdx }, (_, index) => fromIdx + index + 1);
+
+      const newCells = rangeIdxs.map((rowIndex) => ({
+        ...cell,
+        columnIndex: lastSelected.columnIndex,
+        rowIndex,
+      }));
+
+      setSelectedCells([...selectedCells, ...newCells]);
+    } else {
+      setSelectedRows([rowIndex]);
+      setSelectedCells([cell]);
+    }
+  }, [cell, isShiftPressed, rowIndex, selectedCells, setSelectedCells, setSelectedRows]);
 
   const renderedValue = useMemo(() => {
-    if (value !== 'undefined' && value !== '' && !Number.isNaN(value)) {
-      if (typeof formatting === 'function') {
-        return formatting(value);
-      }
-
-      return `${value}`;
+    if (typeof formatting === 'function' && value !== '' && !Number.isNaN(value)) {
+      return formatting(value);
     }
 
-    if (Number.isNaN(value)) {
-      return `${value}`;
-    }
-
-    return '';
+    return `${value}`;
   }, [formatting, value]);
 
   const renderedCell = useMemo(() => {
@@ -121,15 +185,34 @@ const InternalCell = <T extends WorksheetItem>({
             options={options}
           />
         );
+
       case 'checkbox':
-        return <CheckboxEditor cell={cell} toggle={isEditing} onBlur={handleBlur} onChange={handleChange} />;
+        return (
+          <CheckboxEditor
+            cell={cell}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            toggle={isEditing}
+          />
+        );
+
       case 'modal':
         return <ModalEditor cell={cell} formatting={formatting} isEditing={isEditing} />;
+
       case 'toggle':
         return <ToggleEditor rowId={rowId} toggle={isEditing} />;
+
       default:
         return isEditing && !disabled ? (
-          <TextEditor cell={cell} isEdited={isEdited} onBlur={handleBlur} onKeyDown={handleKeyDown} />
+          <TextEditor
+            cell={cell}
+            initialValue={editWithValue}
+            isControlKey={isControlKey}
+            isEdited={isEdited}
+            isMetaKey={isMetaKey}
+            onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
+          />
         ) : (
           <Small color={disabled ? 'secondary50' : 'secondary70'} ellipsis title={renderedValue}>
             {renderedValue}
@@ -137,30 +220,96 @@ const InternalCell = <T extends WorksheetItem>({
         );
     }
   }, [
+    type,
     cell,
-    disabled,
-    formatting,
     handleBlur,
     handleChange,
-    handleKeyDown,
-    isEdited,
-    isEditing,
     options,
+    isEditing,
+    formatting,
     rowId,
+    disabled,
+    editWithValue,
+    isControlKey,
+    isEdited,
+    isMetaKey,
+    handleKeyDown,
     renderedValue,
-    type,
+  ]);
+
+  const renderedNote = useMemo(() => {
+    if (!notation) {
+      return null;
+    }
+
+    const note = notation(value, row);
+
+    if (!note) {
+      return null;
+    }
+
+    return (
+      <Tooltip
+        id={tooltipId}
+        placement="right"
+        trigger={<CellNote color={note.color} role="note" />}
+      >
+        {note.description}
+      </Tooltip>
+    );
+  }, [notation, row, tooltipId, value]);
+
+  const renderedAutoFillHandler = useMemo(() => {
+    return isLastSelected ? (
+      <AutoFillHandler
+        aria-label="Autofill handler"
+        isVisible={!isAutoFillActive}
+        onDoubleClick={handleAutoFilldblClick}
+        onMouseDown={(event) => {
+          event.stopPropagation();
+
+          setSelectingActive(false);
+          setBlockFillOut(false);
+          setIsMouseDown(true);
+        }}
+      />
+    ) : null;
+  }, [
+    handleAutoFilldblClick,
+    isAutoFillActive,
+    isLastSelected,
+    setBlockFillOut,
+    setIsMouseDown,
+    setSelectingActive,
   ]);
 
   return (
     <StyledCell
+      isChild={isChild}
       isEdited={isEdited}
+      isFirstSelected={isFirstSelected}
+      isLastChild={isLastChild}
+      isLastSelected={isLastSelected}
+      isNextCellValid={isNextCellValid}
       isSelected={isSelected}
       isValid={isValid}
       onClick={handleClick}
       onDoubleClick={handleDoubleClick}
+      onMouseDown={() => {
+        handleClick();
+        setSelectingActive(true);
+        setBlockFillOut(true);
+      }}
+      onMouseEnter={setHighlightedCell}
+      onMouseUp={() => {
+        setIsMouseDown(false);
+        setSelectingActive(false);
+      }}
       type={type}
     >
       {renderedCell}
+      {renderedAutoFillHandler}
+      {renderedNote}
     </StyledCell>
   );
 };

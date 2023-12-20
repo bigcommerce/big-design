@@ -3,17 +3,25 @@ const { outputFile, readFile } = require('fs-extra');
 const glob = require('glob-promise');
 const { cpus } = require('os');
 const { basename, join } = require('path');
-const rimraf = require('rimraf');
+const { rimraf } = require('rimraf');
 const asyncPool = require('tiny-async-pool');
-const { promisify } = require('util');
 
 const config = require('./svgr-flags.config');
 
-const SOURCE = join(__dirname, '..', '..', '..', 'node_modules', '@jorgemoya/flag-icon-css', 'flags', '4x3', '*.svg');
+const SOURCE = join(
+  __dirname,
+  '..',
+  '..',
+  '..',
+  'node_modules',
+  'flag-icons',
+  'flags',
+  '4x3',
+  '*.svg',
+);
 const DEST_PATH = join(__dirname, '..', 'src', 'flags', 'components');
 
 const componentNames = new Set();
-const asyncRimraf = promisify(rimraf);
 
 async function convertToReactComponent(filePath, iconName) {
   const svgCode = await readFile(filePath, 'utf8');
@@ -42,9 +50,7 @@ async function convertToReactComponent(filePath, iconName) {
   return outputFile(destPath, code);
 }
 
-async function generateFlags() {
-  const iconFiles = await glob(SOURCE);
-
+function convertWithConcurrencyPool(iconFiles) {
   return asyncPool(cpus().length, iconFiles, (iconFilePath) => {
     const filename = basename(iconFilePath, '.svg');
     const name = `${filename.replace('-', '').toUpperCase()}FlagIcon`;
@@ -58,8 +64,15 @@ async function generateFlags() {
   });
 }
 
+async function generateFlags() {
+  const iconFiles = await glob(SOURCE);
+
+  // eslint-disable-next-line curly
+  for await (const _result of convertWithConcurrencyPool(iconFiles));
+}
+
 function cleanDestDirectory() {
-  return asyncRimraf(DEST_PATH);
+  return rimraf(DEST_PATH);
 }
 
 (async () => {

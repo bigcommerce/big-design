@@ -26,7 +26,8 @@ export type MessageLinkItem = Pick<LinkProps, 'external' | 'href' | 'target'> & 
   text: string;
 };
 
-export interface MessageAction extends Omit<ButtonProps, 'children' | 'mobileWidth' | 'variant' | keyof MarginProps> {
+export interface MessageAction
+  extends Omit<ButtonProps, 'children' | 'mobileWidth' | 'variant' | keyof MarginProps> {
   text: string;
   variant?: Exclude<ButtonProps['variant'], 'primary'>;
 }
@@ -36,13 +37,16 @@ export const getMessagingIcon = (type: MessagingType, condensed?: boolean) => {
 
   switch (type) {
     case 'success':
-      return <CheckCircleIcon size={size} color="success" />;
+      return <CheckCircleIcon color="success" size={size} />;
+
     case 'error':
-      return <ErrorIcon size={size} color="danger" />;
+      return <ErrorIcon color="danger" size={size} />;
+
     case 'warning':
-      return <WarningIcon size={size} color="warning50" />;
+      return <WarningIcon color="warning50" size={size} />;
+
     case 'info':
-      return <InfoIcon size={size} color="primary60" />;
+      return <InfoIcon color="primary60" size={size} />;
   }
 };
 
@@ -68,4 +72,5 @@ export const getBorderStyle = (type: MessagingType, theme: ThemeInterface) => cs
   `};
 `;
 
-export const getActionVariant = (variant: ButtonProps['variant']) => (variant === 'primary' ? 'secondary' : variant);
+export const getActionVariant = (variant: ButtonProps['variant']) =>
+  variant === 'primary' ? 'secondary' : variant;

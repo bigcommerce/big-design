@@ -12,11 +12,17 @@ function getLinkAs(as = '') {
   return prefix + as;
 }
 
-export const NextLink: React.FC<{ href: LinkProps['href']; as?: string }> = (props) => {
+interface Props {
+  children?: React.ReactNode;
+  href: LinkProps['href'];
+  as?: string;
+}
+
+export const NextLink: React.FC<Props> = (props) => {
   const { as, children, href } = props;
 
   return (
-    <NLink href={href} as={getLinkAs(as)} passHref={true}>
+    <NLink as={getLinkAs(as)} href={href} passHref={true}>
       {typeof children === 'string' ? <Link>{children}</Link> : children}
     </NLink>
   );

@@ -1,24 +1,34 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import React, { forwardRef, memo } from 'react';
+import React, { forwardRef, memo, useId } from 'react';
 
 import { PrivateIconProps } from '../../base';
-import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'MV flag', theme, ...props }) => {
-  const uniqueTitleId = useUniqueId('icon');
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'MV flag',
+  theme,
+  ...props
+}) => {
+  const uniqueTitleId = useId();
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path fill="#d21034" d="M0 0h640v480H0z" />
-      <path fill="#007e3a" d="M120 120h400v240H120z" />
-      <circle cx={350} cy={240} r={80} fill="#fff" />
-      <circle cx={380} cy={240} r={80} fill="#007e3a" />
+      <path d="M0 0h640v480H0z" fill="#d21034" />
+      <path d="M120 120h400v240H120z" fill="#007e3a" />
+      <circle cx={350} cy={240} fill="#fff" r={80} />
+      <circle cx={380} cy={240} fill="#007e3a" r={80} />
     </svg>
   );
 };
@@ -27,6 +37,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const MVFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const MVFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 MVFlagIcon.displayName = 'MVFlagIcon';

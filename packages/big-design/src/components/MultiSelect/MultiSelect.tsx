@@ -3,16 +3,17 @@ import React, {
   cloneElement,
   createRef,
   isValidElement,
+  LabelHTMLAttributes,
   RefObject,
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
 } from 'react';
 import { usePopper } from 'react-popper';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
@@ -24,7 +25,7 @@ import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Sel
 import { MultiSelectProps } from './types';
 
 export const MultiSelect = typedMemo(
-  <T extends unknown>({
+  <T,>({
     action,
     autoComplete = 'off',
     autoWidth = false,
@@ -35,6 +36,7 @@ export const MultiSelect = typedMemo(
     inputRef,
     label,
     labelId,
+    localization,
     maxHeight,
     onClose,
     onOpen,
@@ -49,9 +51,20 @@ export const MultiSelect = typedMemo(
     ...props
   }: MultiSelectProps<T>): ReturnType<React.FC<MultiSelectProps<T>>> => {
     const defaultRef: RefObject<HTMLInputElement> = createRef();
-    const multiSelectUniqueId = useUniqueId('multi-select');
+    const multiSelectUniqueId = useId();
 
     const [inputValue, setInputValue] = useState('');
+
+    // aria-labelledby takes presedence over aria-label so we need to strip it out if there is no label
+    // Downshift v7 automatically adds aria-labelledby to props even if there is no label defined
+    // This is a workaround to remove the aria-labelledby if there is no label defined
+    const ariaLabelledBy = useMemo(() => {
+      if (props['aria-label'] && !label) {
+        return { 'aria-labelledby': undefined };
+      }
+
+      return {};
+    }, [label, props]);
 
     const flattenOptions = useCallback((options: MultiSelectProps<T>['options']) => {
       const isGroups = (
@@ -90,12 +103,24 @@ export const MultiSelect = typedMemo(
       setInputValue('');
     }, [selectedOptions]);
 
+    const getFirstMatchingOptionIndex = (
+      filteredOptions: Array<SelectOption<T> | SelectAction>,
+    ) => {
+      return filteredOptions.findIndex((option) => !option.disabled);
+    };
+
     const handleSetInputValue = ({
       inputValue,
       isOpen,
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && isOpen === true) {
-        setFilteredOptions(filterOptions(inputValue));
+        const newFilteredOptions = filterOptions(inputValue);
+        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
+
+        setFilteredOptions(newFilteredOptions);
+
+        // Auto highlight first matching option
+        setHighlightedIndex(firstMatchingOptionIndex);
       }
 
       setInputValue(inputValue || '');
@@ -103,11 +128,15 @@ export const MultiSelect = typedMemo(
 
     const filterOptions = (inputVal = '') => {
       return flattenedOptions.filter(
-        (option) => option === action || option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
+        (option) =>
+          option === action ||
+          option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
     };
 
-    const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+    const handleOnIsOpenChange = ({
+      isOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && !isOpen) {
         // Reset the items if filtered
         setFilteredOptions(flattenedOptions);
@@ -122,7 +151,9 @@ export const MultiSelect = typedMemo(
       }
     };
 
-    const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+    const handleOnSelectedItemChange = (
+      changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>,
+    ) => {
       if (action && changes.selectedItem === action) {
         action.onActionClick(inputValue);
       }
@@ -135,13 +166,21 @@ export const MultiSelect = typedMemo(
       switch (actionAndChanges.type) {
         case useCombobox.stateChangeTypes.InputBlur:
           return { ...actionAndChanges.changes, inputValue: '' };
+
+        case useCombobox.stateChangeTypes.InputFocus:
+          return {
+            ...actionAndChanges.changes,
+            isOpen: false, // keep the menu closed when input gets focused.
+          };
+
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick: {
           if (!actionAndChanges.changes.selectedItem) {
             return actionAndChanges.changes;
           }
 
-          const isSelectAction = (item: SelectAction | SelectOption<T>): item is SelectAction => item === action;
+          const isSelectAction = (item: SelectAction | SelectOption<T>): item is SelectAction =>
+            item === action;
 
           // Prevent action from changing the input value
           if (isSelectAction(actionAndChanges.changes.selectedItem)) {
@@ -168,6 +207,7 @@ export const MultiSelect = typedMemo(
             isOpen: true,
           };
         }
+
         default:
           return actionAndChanges.changes;
       }
@@ -210,7 +250,6 @@ export const MultiSelect = typedMemo(
     );
 
     const {
-      getComboboxProps,
       getInputProps,
       getItemProps,
       getLabelProps,
@@ -219,8 +258,10 @@ export const MultiSelect = typedMemo(
       highlightedIndex,
       isOpen,
       openMenu,
+      setHighlightedIndex,
     } = useCombobox({
       id: multiSelectUniqueId,
+      initialHighlightedIndex: 0,
       inputId: id,
       inputValue,
       itemToString: (option) => (option ? option.content : ''),
@@ -290,18 +331,25 @@ export const MultiSelect = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel {...getLabelProps()} renderOptional={!required}>
+          <FormControlLabel
+            {...getLabelProps()}
+            localization={localization}
+            renderOptional={!required}
+          >
             {label}
           </FormControlLabel>
         );
       }
 
-      if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, getLabelProps());
+      if (
+        isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+        label.type === FormControlLabel
+      ) {
+        return cloneElement(label, getLabelProps());
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [getLabelProps, label, required]);
+    }, [getLabelProps, label, localization, required]);
 
     const renderToggle = useMemo(() => {
       return (
@@ -324,14 +372,13 @@ export const MultiSelect = typedMemo(
           <Input
             {...getInputProps({
               ...props,
+              ...ariaLabelledBy,
               autoComplete,
               disabled,
               onClick: () => {
                 !isOpen && openMenu();
               },
               onFocus: (event) => {
-                !isOpen && openMenu();
-
                 if (typeof props.onFocus === 'function') {
                   props.onFocus(event);
                 }
@@ -342,20 +389,27 @@ export const MultiSelect = typedMemo(
                     if (!inputValue) {
                       removeItem(selectedOptions[selectedOptions.length - 1]);
                     }
+
                     break;
+
                   case 'Enter':
                     event.preventDefault();
+
                     if (isOpen === false) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
+                      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-member-access
                       (event.nativeEvent as any).preventDownshiftDefault = true;
                     }
+
                     break;
+
                   case 'Escape':
                     // Reset select
                     if (isOpen === false) {
                       onOptionsChange([], []);
                     }
+
                     break;
                 }
               },
@@ -374,6 +428,7 @@ export const MultiSelect = typedMemo(
       );
     }, [
       autoComplete,
+      ariaLabelledBy,
       disabled,
       filterable,
       getInputProps,
@@ -393,7 +448,7 @@ export const MultiSelect = typedMemo(
     return (
       <div>
         {renderLabel}
-        <div {...getComboboxProps()}>{renderInput}</div>
+        {renderInput}
         <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
             action={action}
@@ -401,7 +456,7 @@ export const MultiSelect = typedMemo(
             autoWidth={autoWidth}
             filteredItems={filteredOptions}
             getItemProps={getItemProps}
-            getMenuProps={getMenuProps}
+            getMenuProps={() => getMenuProps({ ...ariaLabelledBy })}
             highlightedIndex={highlightedIndex}
             isOpen={isOpen}
             items={options}

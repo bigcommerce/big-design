@@ -3,6 +3,153 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.24.0...@bigcommerce/big-design-icons@0.25.0) (2023-10-09)
+
+
+### Bug Fixes
+
+* **icons:** downgrade 'camelcase' to 6.3.0 ([#1284](https://github.com/bigcommerce/big-design/issues/1284)) ([1004097](https://github.com/bigcommerce/big-design/commit/100409789ab0beb9095eea3580aed7b5b3fc8776))
+
+
+### Features
+
+* **icons:** add Draft icon ([#1302](https://github.com/bigcommerce/big-design/issues/1302)) ([3ae2423](https://github.com/bigcommerce/big-design/commit/3ae2423ccaf2b53f282790218dcb80d622954241))
+* **icons:** add FileDownloadIcon ([#1286](https://github.com/bigcommerce/big-design/issues/1286)) ([7d73767](https://github.com/bigcommerce/big-design/commit/7d737670533c45ab09a66556b1d4b2316331ff03))
+* **icons:** add window expand and minimize icons ([997400b](https://github.com/bigcommerce/big-design/commit/997400b4ba5dc8d4c484cb690ee335a112de6c32))
+
+
+
+
+
+# [0.24.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.23.2...@bigcommerce/big-design-icons@0.24.0) (2023-07-26)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
+## [0.23.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.23.1...@bigcommerce/big-design-icons@0.23.2) (2023-06-14)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
+## [0.23.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.23.0...@bigcommerce/big-design-icons@0.23.1) (2023-06-09)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
+# [0.23.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.22.0...@bigcommerce/big-design-icons@0.23.0) (2023-04-05)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
+# [0.22.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.21.0...@bigcommerce/big-design-icons@0.22.0) (2023-01-09)
+
+
+### Features
+
+* convert to react@18 only ([#1044](https://github.com/bigcommerce/big-design/issues/1044)) ([06c4697](https://github.com/bigcommerce/big-design/commit/06c469721bc06d1f872bed6bf5a46e6b568644e5))
+
+
+### BREAKING CHANGES
+
+* Requires `react@18` or higher.
+
+
+
+
+
+# [0.21.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.20.1...@bigcommerce/big-design-icons@0.21.0) (2022-09-27)
+
+
+### Features
+
+* **deps:** react@18 support ([51c688b](https://github.com/bigcommerce/big-design/commit/51c688b282277964eb01c1ed67c5c27cc0bc4c3e))
+
+
+
+
+
+## [0.20.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.20.0...@bigcommerce/big-design-icons@0.20.1) (2022-09-27)
+
+
+### Features
+
+* **deps:** unfork from flag-icons dependency ([ac723e3](https://github.com/bigcommerce/big-design/commit/ac723e384ec3c482d78107558cd31e7793a515f1))
+
+
+
+
+
+# [0.20.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.19.2-alpha.0...@bigcommerce/big-design-icons@0.20.0) (2022-08-17)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
+## [0.19.2-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.19.1...@bigcommerce/big-design-icons@0.19.2-alpha.0) (2022-08-10)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
+## [0.19.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.19.0...@bigcommerce/big-design-icons@0.19.1) (2022-07-12)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
+# [0.19.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.18.1...@bigcommerce/big-design-icons@0.19.0) (2022-07-06)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
+## [0.18.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.18.0...@bigcommerce/big-design-icons@0.18.1) (2022-06-10)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
+# [0.18.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.2-alpha.1...@bigcommerce/big-design-icons@0.18.0) (2022-05-11)
+
+
+### Bug Fixes
+
+* tiny-async-pool api changes ([b4c04ba](https://github.com/bigcommerce/big-design/commit/b4c04bac3556b084ac1d39d2f0fde57efd7d8f43))
+
+
+
+
+
+## [0.17.2-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.2-alpha.0...@bigcommerce/big-design-icons@0.17.2-alpha.1) (2022-03-22)
+
+**Note:** Version bump only for package @bigcommerce/big-design-icons
+
+
+
+
+
 ## [0.17.2-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.17.1...@bigcommerce/big-design-icons@0.17.2-alpha.0) (2021-10-28)
 
 

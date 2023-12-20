@@ -1,50 +1,100 @@
-import React, { createRef, useEffect, useMemo } from 'react';
+import { BaselineHelpIcon } from '@bigcommerce/big-design-icons';
+import React, {
+  createContext,
+  createRef,
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+} from 'react';
+import { StoreApi } from 'zustand';
 
 import { typedMemo } from '../../utils';
+import { Box } from '../Box';
+import { Tooltip } from '../Tooltip';
 
 import { UpdateItemsProvider } from './context';
-import { createStore, Provider, useKeyEvents, useStore } from './hooks';
+import { BaseState, createWorksheetStore, useKeyEvents, useWorksheetStore } from './hooks';
 import { WorksheetModal } from './Modal/Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
-import { Header, Table } from './styled';
-import { InternalWorksheetColumn, WorksheetItem, WorksheetModalColumn, WorksheetProps } from './types';
+import { Header, StyledBox, Table } from './styled';
+import {
+  InternalWorksheetColumn,
+  WorksheetItem,
+  WorksheetLocalization,
+  WorksheetModalColumn,
+  WorksheetProps,
+} from './types';
 import { editedRows, invalidRows } from './utils';
 
 const InternalWorksheet = typedMemo(
   <T extends WorksheetItem>({
     columns,
     expandableRows,
+    defaultExpandedRows,
+    disabledRows,
     items,
+    minWidth,
     onChange,
     onErrors,
   }: WorksheetProps<T>): React.ReactElement<WorksheetProps<T>> => {
     const tableRef = createRef<HTMLTableElement>();
+    const shouldBeTriggeredOnChange = useRef(false);
+    const { store, useStore } = useWorksheetStore();
+    const tooltipId = useId();
 
-    const setRows = useStore((state) => state.setRows);
-    const setColumns = useStore((state) => state.setColumns);
-    const setExpandableRows = useStore((state) => state.setExpandableRows);
-    const setTableRef = useStore((state) => state.setTableRef);
+    const setRows = useStore(store, (state) => state.setRows);
+    const setColumns = useStore(store, (state) => state.setColumns);
+    const setExpandableRows = useStore(store, (state) => state.setExpandableRows);
+    const setDisabledRows = useStore(store, (state) => state.setDisabledRows);
+    const setTableRef = useStore(store, (state) => state.setTableRef);
+    const resetInvalidCells = useStore(store, (state) => state.resetInvalidCells);
 
-    const rows = useStore(useMemo(() => (state) => state.rows, []));
-    const editedCells = useStore(useMemo(() => (state) => state.editedCells, []));
-    const invalidCells = useStore(useMemo(() => (state) => state.invalidCells, []));
+    const rows = useStore(
+      store,
+      useMemo(() => (state) => state.rows, []),
+    );
+    const editedCells = useStore(
+      store,
+      useMemo(() => (state) => state.editedCells, []),
+    );
+    const invalidCells = useStore(
+      store,
+      useMemo(() => (state) => state.invalidCells, []),
+    );
 
-    const { handleKeyDown } = useKeyEvents();
+    const { handleKeyDown, handleKeyUp } = useKeyEvents();
 
     // Add a column for the toggle components
-    const expandedColumns: InternalWorksheetColumn<T>[] = useMemo(() => {
-      return expandableRows ? [{ hash: '', header: '', type: 'toggle' }, ...columns] : columns;
+    const expandedColumns: Array<InternalWorksheetColumn<T>> = useMemo(() => {
+      return expandableRows
+        ? [{ hash: '', header: '', type: 'toggle', width: 32 }, ...columns]
+        : columns;
     }, [columns, expandableRows]);
 
+    useEffect(() => {
+      shouldBeTriggeredOnChange.current = editedCells.length > 0;
+    }, [editedCells]);
+
     // Create a new reference since state mutates rows to prevent unecessary rerendering
-    useEffect(() => setRows([...items]), [items, setRows]);
+    useEffect(() => {
+      shouldBeTriggeredOnChange.current = false;
+
+      resetInvalidCells();
+      setRows([...items]);
+    }, [items, resetInvalidCells, setRows]);
     useEffect(() => setColumns(expandedColumns), [expandedColumns, setColumns]);
-    useEffect(() => setExpandableRows(expandableRows || {}), [expandableRows, setExpandableRows]);
+    useEffect(
+      () => setExpandableRows(expandableRows || {}, defaultExpandedRows || []),
+      [expandableRows, defaultExpandedRows, setExpandableRows],
+    );
+    useEffect(() => setDisabledRows(disabledRows || []), [disabledRows, setDisabledRows]);
     useEffect(() => setTableRef(tableRef.current), [setTableRef, tableRef]);
 
     useEffect(() => {
-      if (editedCells.length) {
+      if (editedCells.length && shouldBeTriggeredOnChange.current) {
         onChange(editedRows(editedCells, rows));
       }
     }, [editedCells, onChange, rows]);
@@ -55,19 +105,51 @@ const InternalWorksheet = typedMemo(
       }
     }, [invalidCells, onErrors, rows]);
 
+    const getRenderedTooltip = useCallback(
+      (tooltip?: string) => {
+        if (typeof tooltip === 'string' && tooltip.length > 0) {
+          return (
+            <Tooltip
+              id={tooltipId}
+              placement="right"
+              trigger={
+                <Box as="span" marginLeft="xxSmall">
+                  <BaselineHelpIcon
+                    aria-describedby={tooltipId}
+                    size="medium"
+                    title="Hover or focus for additional context."
+                  />
+                </Box>
+              }
+            >
+              {tooltip}
+            </Tooltip>
+          );
+        }
+
+        return null;
+      },
+      [tooltipId],
+    );
+
     const renderedHeaders = useMemo(
       () => (
         <thead>
           <tr>
             <Status />
             {expandedColumns.map((column, index) => (
-              <Header key={index} columnType={column.type}>
-                {column.header}
+              <Header columnType={column.type} columnWidth={column.width || 'auto'} key={index}>
+                {column.header} {getRenderedTooltip(column.tooltip)}
               </Header>
             ))}
           </tr>
         </thead>
       ),
+      [expandedColumns, getRenderedTooltip],
+    );
+
+    const tableHasStaticWidth = useMemo(
+      () => expandedColumns.every((column) => column.width && typeof column.width === 'number'),
       [expandedColumns],
     );
 
@@ -92,18 +174,49 @@ const InternalWorksheet = typedMemo(
 
     return (
       <UpdateItemsProvider items={rows}>
-        <Table onKeyDown={handleKeyDown} ref={tableRef} tabIndex={0}>
-          {renderedHeaders}
-          {renderedRows}
-        </Table>
+        <StyledBox>
+          <Table
+            hasExpandableRows={Boolean(expandableRows)}
+            hasStaticWidth={tableHasStaticWidth}
+            minWidth={minWidth}
+            onKeyDown={handleKeyDown}
+            onKeyUp={handleKeyUp}
+            ref={tableRef}
+            tabIndex={0}
+          >
+            {renderedHeaders}
+            {renderedRows}
+          </Table>
+        </StyledBox>
         {renderedModals}
       </UpdateItemsProvider>
     );
   },
 );
 
-export const Worksheet = typedMemo(<T extends WorksheetItem>(props: WorksheetProps<T>) => (
-  <Provider createStore={createStore}>
-    <InternalWorksheet {...props} />
-  </Provider>
-));
+export const WorksheetContext = createContext<StoreApi<BaseState<any>> | null>(null);
+
+export const WorksheetLocalizationContext = createContext<WorksheetLocalization>({
+  toggleRowExpanded: 'toggle row expanded',
+});
+
+const defaultLocalization = {
+  toggleRowExpanded: 'toggle row expanded',
+};
+
+export const Worksheet = typedMemo(
+  <T extends WorksheetItem>({
+    localization = defaultLocalization,
+    ...props
+  }: WorksheetProps<T>) => {
+    const store = useMemo(() => createWorksheetStore<T>(), []);
+
+    return (
+      <WorksheetContext.Provider value={store}>
+        <WorksheetLocalizationContext.Provider value={localization}>
+          <InternalWorksheet {...props} />
+        </WorksheetLocalizationContext.Provider>
+      </WorksheetContext.Provider>
+    );
+  },
+);

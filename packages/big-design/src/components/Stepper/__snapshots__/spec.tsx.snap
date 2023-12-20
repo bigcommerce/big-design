@@ -97,12 +97,12 @@ exports[`renders Stepper 1`] = `
 }
 
 .c3 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
 .c14 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 

@@ -1,18 +1,24 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { FocusEvent, useCallback, useMemo } from 'react';
 
 import { Cell, WorksheetItem } from '../../types';
-import { useStore } from '../useStore';
 import { useTableFocus } from '../useTableFocus';
 import { useUpdateItems } from '../useUpdateItems';
+import { useWorksheetStore } from '../useWorksheetStore';
 
-export type EditableCellOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, newValue: unknown) => void;
+export type EditableCellOnKeyDown = (
+  event: React.KeyboardEvent<HTMLInputElement>,
+  newValue: unknown,
+) => void;
 
 export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
-  const setEditingCell = useStore((state) => state.setEditingCell);
+  const { store, useStore } = useWorksheetStore();
+
+  const setEditingCell = useStore(store, (state) => state.setEditingCell);
   const { updateItems } = useUpdateItems();
   const { focusTable } = useTableFocus();
 
   const isEditing = useStore(
+    store,
     useMemo(
       () =>
         ({ editingCell }) =>
@@ -24,19 +30,29 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
   );
 
   const restoreFocus = useCallback(() => {
-    setEditingCell(null);
+    setEditingCell({ cell: null });
     focusTable();
   }, [focusTable, setEditingCell]);
 
   const handleDoubleClick = useCallback(() => {
     if (!cell.disabled) {
-      setEditingCell(cell);
+      setEditingCell({ cell });
     }
   }, [cell, setEditingCell]);
 
-  const handleBlur = useCallback(() => {
-    restoreFocus();
-  }, [restoreFocus]);
+  const handleBlur = useCallback(
+    (event?: FocusEvent<HTMLInputElement>, cell?: Cell<T>) => {
+      const isNumberCell = cell?.type === 'number';
+      const isTextCell = cell?.type === 'text';
+
+      if (isNumberCell || isTextCell) {
+        updateItems([cell], [isNumberCell ? Number(event?.target.value) : event?.target.value]);
+      }
+
+      restoreFocus();
+    },
+    [restoreFocus, updateItems],
+  );
 
   const handleChange = useCallback(
     (newValue: unknown) => {
@@ -52,6 +68,7 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
 
       switch (key) {
         case 'Enter':
+        case 'Tab':
           event.preventDefault();
 
           // Only call updateItems if cells have new values
@@ -62,6 +79,7 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
           restoreFocus();
 
           break;
+
         case 'Escape':
           event.preventDefault();
 

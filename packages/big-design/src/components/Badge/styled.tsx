@@ -16,6 +16,7 @@ export const StyledBadge = styled.span<Omit<BadgeProps, 'label'>>`
   line-height: ${({ theme }) => theme.lineHeight.small};
   text-align: center;
   text-transform: uppercase;
+  vertical-align: middle;
   padding: 0 ${({ theme }) => theme.spacing.xSmall};
 
   ${({ theme, variant }) =>

@@ -22,32 +22,44 @@ import {
 
 const flexItemProps: FlexItemProps = { flexShrink: 0, marginLeft: 'xxSmall' };
 
-const InternalTreeNode = <T extends unknown>({
+const InternalTreeNode = <T,>({
   children,
   icon,
   label,
   value,
   id,
 }: TreeNodeProps<T>): React.ReactElement<TreeNodeProps<T>> => {
-  const { disabledNodes, expandable, focusable, iconless, onKeyDown, onNodeClick, selectable } =
-    useContext(TreeContext);
+  const {
+    disabledNodes,
+    expandable,
+    focusable,
+    iconless,
+    onKeyDown,
+    onNodeClick,
+    selectable,
+    treeRef,
+  } = useContext(TreeContext);
   const nodeRef = useRef<HTMLLIElement | null>(null);
   const selectableRef = useRef<HTMLLabelElement | null>(null);
   const isExpanded = expandable.expandedNodes.includes(id);
   const isSelected = selectable?.selectedNodes?.includes(id);
   const isDisabled = disabledNodes?.includes(id);
   const isSelectable = value !== undefined && selectable?.type !== undefined && !isDisabled;
-  const selectedChildrenCount = useSelectedChildrenCount({ selectedNodes: selectable?.selectedNodes, children });
+  const selectedChildrenCount = useSelectedChildrenCount({
+    selectedNodes: selectable?.selectedNodes,
+    children,
+  });
 
   useEffect(() => {
     if (
       focusable.focusedNode === id &&
       nodeRef.current !== document.activeElement &&
-      document.activeElement !== document.body
+      document.activeElement !== document.body &&
+      treeRef.current?.contains(document.activeElement)
     ) {
       nodeRef.current?.focus();
     }
-  }, [focusable, id]);
+  }, [focusable, id, treeRef]);
 
   // Could be multiple elements in which are clicked.
   // Typing to generic Element type since all other elements extend from it.
@@ -55,7 +67,10 @@ const InternalTreeNode = <T extends unknown>({
     async (e?: React.MouseEvent<Element>) => {
       // Prevents the collapse/expand when clicking on a radio or checkbox
       // Checks to see if every element inside the selectableRef gets clicked.
-      if ((e?.target instanceof Node && selectableRef.current?.contains(e?.target)) || children === undefined) {
+      if (
+        (e?.target instanceof Node && selectableRef.current?.contains(e.target)) ||
+        children === undefined
+      ) {
         return;
       }
 
@@ -67,10 +82,8 @@ const InternalTreeNode = <T extends unknown>({
         if (typeof expandable.onCollapse === 'function') {
           expandable.onCollapse(id);
         }
-      } else {
-        if (typeof expandable.onExpand === 'function') {
-          expandable.onExpand(id);
-        }
+      } else if (typeof expandable.onExpand === 'function') {
+        expandable.onExpand(id);
       }
     },
     [children, id, expandable, isExpanded],
@@ -81,7 +94,7 @@ const InternalTreeNode = <T extends unknown>({
       return;
     }
 
-    if (typeof selectable?.onSelect === 'function') {
+    if (typeof selectable.onSelect === 'function') {
       selectable.onSelect(id, value);
     }
   }, [id, isSelectable, selectable, value]);
@@ -134,7 +147,7 @@ const InternalTreeNode = <T extends unknown>({
     () =>
       children && (
         <StyledUl role="group" show={isExpanded}>
-          {children?.map((child, index) => (
+          {children.map((child, index) => (
             <TreeNode {...child} key={index} />
           ))}
         </StyledUl>
@@ -161,7 +174,7 @@ const InternalTreeNode = <T extends unknown>({
       return null;
     }
 
-    if (selectable?.type === 'radio') {
+    if (selectable.type === 'radio') {
       return (
         <StyledSelectableWrapper {...flexItemProps}>
           <StyledRadio
@@ -175,7 +188,7 @@ const InternalTreeNode = <T extends unknown>({
       );
     }
 
-    if (selectable?.type === 'multi') {
+    if (selectable.type === 'multi') {
       return (
         <StyledSelectableWrapper {...flexItemProps}>
           <StyledCheckbox
@@ -203,11 +216,21 @@ const InternalTreeNode = <T extends unknown>({
         tabIndex={focusable.focusedNode === id ? 0 : -1}
         {...additionalProps}
       >
-        <StyledFlex alignItems="center" flexDirection="row" onClick={handleNodeToggle} selected={isSelected}>
+        <StyledFlex
+          alignItems="center"
+          flexDirection="row"
+          onClick={handleNodeToggle}
+          selected={isSelected}
+        >
           {renderedArrow}
           {renderedSelectable}
           {renderedIcon}
-          <StyledText as="span" ellipsis marginLeft="xxSmall" color={isDisabled ? 'secondary50' : 'secondary70'}>
+          <StyledText
+            as="span"
+            color={isDisabled ? 'secondary50' : 'secondary70'}
+            ellipsis
+            marginLeft="xxSmall"
+          >
             {label}
             {selectedChildrenCount ? (
               <StyledText as="span" color="primary">

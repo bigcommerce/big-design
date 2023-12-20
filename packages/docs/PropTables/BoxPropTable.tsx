@@ -1,4 +1,4 @@
-import { Small, Text } from '@bigcommerce/big-design';
+import { Small } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
@@ -14,7 +14,8 @@ const boxProps: Prop[] = [
     types: <NextLink href="/colors">Color</NextLink>,
     description: (
       <>
-        Sets the background color given a color name from our <NextLink href="/colors">palette</NextLink>.
+        Sets the background color given a color name from our{' '}
+        <NextLink href="/colors">palette</NextLink>.
       </>
     ),
   },
@@ -63,13 +64,16 @@ const boxProps: Prop[] = [
     types: ['sticky', 'fixed', 'modalBackdrop', 'modal', 'tooltip', 'popover'],
     description: (
       <>
-        <Text>Determines type of z-index to be applied.</Text>
-        <Small>Types are in order (sticky is low, popover is high).</Small>
+        Determines type of z-index to be applied.
+        {/* I hate using a br but the as prop doesn't support div for now */}
+        {/* TODO: Support div for as prop */}
+        <br />
+        <Small as="span">Types are in order (sticky is low, popover is high).</Small>
       </>
     ),
   },
 ];
 
 export const BoxPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Box" propList={boxProps} {...props} />
+  <PropTable propList={boxProps} title="Box" {...props} />
 );

@@ -1,11 +1,11 @@
 {
   "name": "@bigcommerce/big-design-icons",
-  "version": "0.17.2-alpha.0",
+  "version": "0.25.0",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "typings": "dist/index.d.ts",
-  "license": "(MIT AND CC BY 3.0)",
+  "license": "(MIT AND CC-BY-3.0)",
   "author": "BigCommerce Inc",
   "repository": {
     "type": "git",
@@ -19,8 +19,9 @@
     "build:dt": "tsc --emitDeclarationOnly",
     "build:icons": "node scripts/build.js",
     "build:flags": "node scripts/build-flags.js",
+    "clean": "rimraf dist && rimraf .tsbuildinfo",
     "download": "node scripts/downloader.js",
-    "prepublishOnly": "rimraf dist && yarn run typeCheck && yarn run build",
+    "prepublishOnly": "yarn run clean && yarn run typeCheck && yarn run build",
     "typeCheck": "tsc --noEmit"
   },
   "files": [
@@ -33,13 +34,12 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
-    "@bigcommerce/big-design-theme": "^0.13.2-alpha.0",
-    "react-uid": "^2.3.1"
+    "@bigcommerce/big-design-theme": "^0.20.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0",
-    "styled-components": "^5.3.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.4",
@@ -48,30 +48,31 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.12.1",
     "@babel/preset-typescript": "^7.15.0",
-    "@bigcommerce/configs": "^0.15.2-alpha.0",
-    "@jorgemoya/flag-icon-css": "3.5.0",
-    "@svgr/core": "^5.0.1",
-    "@svgr/plugin-jsx": "^5.0.1",
-    "@svgr/plugin-prettier": "^5.0.1",
-    "@svgr/plugin-svgo": "^5.0.1",
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.1",
-    "@types/styled-components": "^5.1.11",
-    "babel-plugin-styled-components": "^1.13.2",
-    "camelcase": "^6.2.0",
-    "fs-extra": "^8.1.0",
-    "glob": "^7.1.4",
-    "glob-promise": "^3.4.0",
-    "inquirer": "^7.0.4",
-    "inquirer-autocomplete-prompt": "^1.3.0",
-    "node-fetch": "^2.6.0",
+    "@bigcommerce/configs": "^0.19.0",
+    "@svgr/core": "^5.5.0",
+    "@svgr/plugin-jsx": "^5.5.0",
+    "@svgr/plugin-prettier": "^5.5.0",
+    "@svgr/plugin-svgo": "^5.5.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.6",
+    "@types/styled-components": "^5.1.26",
+    "babel-plugin-styled-components": "^2.0.7",
+    "camelcase": "^6.3.0",
+    "flag-icons": "^6.6.6",
+    "fs-extra": "^11.1.0",
+    "glob": "^8.0.1",
+    "glob-promise": "^6.0.2",
+    "inquirer": "^8.2.4",
+    "inquirer-autocomplete-prompt": "^2.0.0",
+    "node-fetch": "^2.6.7",
     "prettier": "^2.4.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "rimraf": "^3.0.2",
-    "styled-components": "^5.3.0",
-    "tiny-async-pool": "^1.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-is": "^18.2.0",
+    "rimraf": "^5.0.0",
+    "styled-components": "^5.3.5",
+    "tiny-async-pool": "^2.0.1",
     "typescript": "^4.4.3",
-    "typescript-styled-plugin": "^0.18.1"
+    "typescript-styled-plugin": "^0.18.2"
   }
 }

@@ -20,7 +20,8 @@ const checkboxProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Renders <Code primary>Checkbox</Code> with a visually hidden label, retains accessibility for screen readers.
+        Renders <Code primary>Checkbox</Code> with a visually hidden label, retains accessibility
+        for screen readers.
       </>
     ),
   },
@@ -29,8 +30,9 @@ const checkboxProps: Prop[] = [
     types: 'boolean',
     description: (
       <>
-        Styles and sets the checkbox into a indeterminate state. Note that the <Code primary>checked</Code> prop will
-        take precedence over <Code primary>isIndeterminate</Code>.
+        Styles and sets the checkbox into a indeterminate state. Note that the{' '}
+        <Code primary>checked</Code> prop will take precedence over{' '}
+        <Code primary>isIndeterminate</Code>.
       </>
     ),
   },
@@ -39,8 +41,8 @@ const checkboxProps: Prop[] = [
     types: [
       'string',
       <NextLink
-        key="checkbox-description"
         href={{ hash: 'checkbox-description-prop-table', query: { props: 'checkbox-description' } }}
+        key="checkbox-description"
       >
         CheckboxDescription
       </NextLink>,
@@ -48,10 +50,28 @@ const checkboxProps: Prop[] = [
     description: (
       <>
         See{' '}
-        <NextLink href={{ hash: 'checkbox-description-prop-table', query: { props: 'checkbox-description' } }}>
+        <NextLink
+          href={{
+            hash: 'checkbox-description-prop-table',
+            query: { props: 'checkbox-description' },
+          }}
+        >
           CheckboxDescription
         </NextLink>{' '}
         for usage.
+      </>
+    ),
+  },
+  {
+    name: 'badge',
+    types: [
+      <NextLink href="/badge" key="badge-type">
+        BadgeProps
+      </NextLink>,
+    ],
+    description: (
+      <>
+        See <NextLink href="/badge">Badge</NextLink> for usage.
       </>
     ),
   },
@@ -71,7 +91,12 @@ const checkboxDescriptionProps: Prop[] = [
   {
     name: 'link',
     types: (
-      <NextLink href={{ hash: 'checkbox-description-link-prop-table', query: { props: 'checkbox-description-link' } }}>
+      <NextLink
+        href={{
+          hash: 'checkbox-description-link-prop-table',
+          query: { props: 'checkbox-description-link' },
+        }}
+      >
         CheckboxDescriptionLink
       </NextLink>
     ),
@@ -79,7 +104,10 @@ const checkboxDescriptionProps: Prop[] = [
       <>
         See{' '}
         <NextLink
-          href={{ hash: 'checkbox-description-link-prop-table', query: { props: 'checkbox-description-link' } }}
+          href={{
+            hash: 'checkbox-description-link-prop-table',
+            query: { props: 'checkbox-description-link' },
+          }}
         >
           CheckboxDescriptionLink
         </NextLink>{' '}
@@ -90,13 +118,18 @@ const checkboxDescriptionProps: Prop[] = [
 ];
 
 export const CheckboxPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Checkbox" propList={checkboxProps} nativeElement={['input', 'all']} {...props} />
+  <PropTable
+    nativeElement={['input', 'all']}
+    propList={checkboxProps}
+    title="Checkbox"
+    {...props}
+  />
 );
 
 export const CheckboxDescriptionPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
-    title="Checkbox[CheckboxDescription]"
     propList={checkboxDescriptionProps}
+    title="Checkbox[CheckboxDescription]"
     {...props}
     id="checkbox-description-prop-table"
   />
@@ -104,8 +137,8 @@ export const CheckboxDescriptionPropTable: React.FC<PropTableWrapper> = (props) 
 
 export const CheckboxDescriptionLinkPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
-    title="Checkbox[CheckboxDescriptionLink]"
     propList={messagingLinkItemProps}
+    title="Checkbox[CheckboxDescriptionLink]"
     {...props}
     id="checkbox-description-link-prop-table"
   />

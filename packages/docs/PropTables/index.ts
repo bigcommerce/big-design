@@ -1,3 +1,4 @@
+export * from './AccordionPanelPropTable';
 export * from './BadgePropTable';
 export * from './BoxPropTable';
 export * from './ButtonPropTable';
@@ -40,4 +41,5 @@ export * from './TextareaPropTable';
 export * from './TimepickerPropTable';
 export * from './TooltipPropTable';
 export * from './TypographyPropTable';
+export * from './TogglePropsTable';
 export * from './WorksheetPropTable';

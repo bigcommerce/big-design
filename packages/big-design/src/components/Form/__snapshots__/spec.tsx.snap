@@ -115,6 +115,7 @@ exports[`simple form render 1`] = `
 
 .c8[disabled] {
   background-color: #ECEEF5;
+  color: #5E637A;
 }
 
 .c7 {
@@ -188,7 +189,7 @@ exports[`simple form render 1`] = `
       <div>
         <label
           class="c1 c5"
-          for="bd-input-1"
+          for=":r0:"
         >
           First Name
         </label>
@@ -205,7 +206,7 @@ exports[`simple form render 1`] = `
           >
             <input
               class="c8"
-              id="bd-input-1"
+              id=":r0:"
               placeholder="Placeholder text"
             />
           </div>
@@ -218,7 +219,7 @@ exports[`simple form render 1`] = `
       <div>
         <label
           class="c1 c5"
-          for="bd-input-2"
+          for=":r1:"
         >
           Middle Name
         </label>
@@ -235,7 +236,7 @@ exports[`simple form render 1`] = `
           >
             <input
               class="c8"
-              id="bd-input-2"
+              id=":r1:"
               placeholder="Placeholder text"
             />
           </div>

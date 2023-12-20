@@ -1,23 +1,32 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import React, { forwardRef, memo } from 'react';
+import React, { forwardRef, memo, useId } from 'react';
 
 import { PrivateIconProps } from '../../base';
-import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'SE flag', theme, ...props }) => {
-  const uniqueTitleId = useUniqueId('icon');
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'SE flag',
+  theme,
+  ...props
+}) => {
+  const uniqueTitleId = useId();
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path fill="#066aa7" d="M0 0h640v480H0z" />
-      <path fill="#fecc00" d="M0 192h640v96H0z" />
-      <path fill="#fecc00" d="M176 0h96v480h-96z" />
+      <path d="M0 0h640v480H0z" fill="#005293" />
+      <path d="M176 0v192H0v96h176v192h96V288h368v-96H272V0h-96z" fill="#fecb00" />
     </svg>
   );
 };
@@ -26,6 +35,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const SEFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const SEFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 SEFlagIcon.displayName = 'SEFlagIcon';

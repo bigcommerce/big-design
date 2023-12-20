@@ -1,5 +1,10 @@
-import { Colors, theme as defaultTheme, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
-import React, { SVGProps } from 'react';
+import {
+  Colors,
+  theme as defaultTheme,
+  Spacing,
+  ThemeInterface,
+} from '@bigcommerce/big-design-theme';
+import React, { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes, SVGProps } from 'react';
 import styled from 'styled-components';
 
 export interface IconProps extends SVGProps<SVGSVGElement> {
@@ -15,7 +20,9 @@ export interface PrivateIconProps {
   titleId?: string;
 }
 
-export function createStyledIcon(Icon: React.FC<IconProps>) {
+export function createStyledIcon(
+  Icon: ForwardRefExoticComponent<PropsWithoutRef<IconProps> & RefAttributes<SVGSVGElement>>,
+) {
   const StyledIcon = styled(Icon)`
     vertical-align: middle;
 

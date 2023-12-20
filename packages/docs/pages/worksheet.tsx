@@ -1,7 +1,14 @@
 import { H1, Panel, StatefulTree, Text, Worksheet, WorksheetColumn } from '@bigcommerce/big-design';
 import React from 'react';
 
-import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List, NextLink } from '../components';
+import {
+  Code,
+  CodePreview,
+  ContentRoutingTabs,
+  GuidelinesTable,
+  List,
+  NextLink,
+} from '../components';
 import {
   WorksheetCheckboxColumnPropTable,
   WorksheetErrorPropTable,
@@ -64,7 +71,12 @@ const nodes = [
     label: 'Category 3',
     children: [{ id: '7', value: 7, label: 'Category 7' }],
   },
-  { id: '4', value: 4, label: 'Category 4', children: [{ id: '8', value: 8, label: 'Category 8' }] },
+  {
+    id: '4',
+    value: 4,
+    label: 'Category 4',
+    children: [{ id: '8', value: 8, label: 'Category 8' }],
+  },
 ];
 
 const CategoryTree = (value, onChange) => {
@@ -87,21 +99,23 @@ const WorksheetPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Worksheet</Code> displays information about a collection of objects and allow the merchant to
-          manage and edit object data.
+          <Code primary>Worksheet</Code> displays information about a collection of objects and
+          allow the merchant to manage and edit object data.
         </Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            To display and edit information across a large data set (e.x. products, customers, inventory, price lists).
+            To display and edit information across a large data set (e.x. products, customers,
+            inventory, price lists).
           </List.Item>
           <List.Item>
-            To quickly scan and compare information in order to identify patterns, transform data, or augment with
-            additional details.
+            To quickly scan and compare information in order to identify patterns, transform data,
+            or augment with additional details.
           </List.Item>
           <List.Item>
-            Unlike <Code primary>Tables</Code>, a <Code primary>Worksheet</Code> component is actionable and interactive
-            and should be used in situations where editing is the primary purpose.
+            Unlike <Code primary>Tables</Code>, a <Code primary>Worksheet</Code> component is
+            actionable and interactive and should be used in situations where editing is the primary
+            purpose.
           </List.Item>
         </List>
       </Panel>
@@ -114,12 +128,39 @@ const WorksheetPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <CodePreview scope={{ CATEGORIES, CategoryTree, nodes }}>
+                <CodePreview key="basic" scope={{ CATEGORIES, CategoryTree, nodes }}>
                   {/* jsx-to-string:start */}
                   {function Example() {
-                    const columns: WorksheetColumn<Product>[] = [
-                      { hash: 'productName', header: 'Product name', validation: (value) => !!value },
-                      { hash: 'isVisible', header: 'Visible', type: 'checkbox' },
+                    const columns: Array<WorksheetColumn<Product>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                        notation: (value) => {
+                          switch (value) {
+                            case 'Product 1':
+                              return {
+                                color: 'danger',
+                                description: 'Change value to 2',
+                              };
+
+                            case '2':
+                              return {
+                                color: 'warning40',
+                                description: 'To make it green change it to 3',
+                              };
+
+                            case '3':
+                              return {
+                                color: 'success',
+                                description: 'Value is equal 3',
+                              };
+                          }
+                        },
+                        width: 200,
+                        tooltip: 'Tooltip text',
+                      },
+                      { hash: 'isVisible', header: 'Visible', type: 'checkbox', width: 80 },
                       { hash: 'otherField', header: 'Other field' },
                       {
                         hash: 'otherField2',
@@ -133,6 +174,7 @@ const WorksheetPage = () => {
                           ],
                         },
                         validation: (value) => !!value,
+                        width: 200,
                       },
                       {
                         hash: 'otherField3',
@@ -149,11 +191,13 @@ const WorksheetPage = () => {
                         header: 'Number field',
                         type: 'number',
                         formatting: (value: number) => `$${value}.00`,
-                        validation: (value: number) => typeof value === 'number' && !Number.isNaN(value),
+                        validation: (value: number) =>
+                          typeof value === 'number' && !Number.isNaN(value),
+                        width: 100,
                       },
                     ];
 
-                    const items: Product[] = [
+                    const items: Array<Partial<Product>> = [
                       {
                         id: 1,
                         productName: 'Product 1',
@@ -175,11 +219,6 @@ const WorksheetPage = () => {
                       {
                         id: 3,
                         productName: 'Product 3',
-                        isVisible: false,
-                        otherField: 'Text',
-                        otherField2: 'option-2',
-                        otherField3: 8,
-                        numberField: 50,
                       },
                       {
                         id: 4,
@@ -250,6 +289,7 @@ const WorksheetPage = () => {
                       <Worksheet
                         columns={columns}
                         items={items}
+                        minWidth={900}
                         onChange={(items) => items}
                         onErrors={(items) => items}
                       />
@@ -263,15 +303,19 @@ const WorksheetPage = () => {
               id: 'text-columns',
               title: 'Text columns',
               render: () => (
-                <CodePreview>
+                <CodePreview key="text-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
-                    const columns: WorksheetColumn<Partial<Product>>[] = [
-                      { hash: 'productName', header: 'Product name', validation: (value) => !!value },
+                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                      },
                       { hash: 'otherField', header: 'Other field' },
                     ];
 
-                    const items: Partial<Product>[] = [
+                    const items: Array<Partial<Product>> = [
                       {
                         id: 1,
                         productName: 'Product 1',
@@ -306,26 +350,30 @@ const WorksheetPage = () => {
               id: 'number-columns',
               title: 'Number columns',
               render: () => (
-                <CodePreview scope={{ CATEGORIES, CategoryTree, nodes }}>
+                <CodePreview key="number-columns" scope={{ CATEGORIES, CategoryTree, nodes }}>
                   {/* jsx-to-string:start */}
                   {function Example() {
-                    const columns: WorksheetColumn<{ id: number; cost: number; stock: number }>[] = [
+                    const columns: Array<
+                      WorksheetColumn<{ id: number; cost: number; stock: number }>
+                    > = [
                       {
                         hash: 'cost',
                         header: 'Cost',
                         type: 'number',
                         formatting: (value: number) => `$${value}.00`,
-                        validation: (value: number) => typeof value === 'number' && !Number.isNaN(value),
+                        validation: (value: number) =>
+                          typeof value === 'number' && !Number.isNaN(value),
                       },
                       {
                         hash: 'stock',
                         header: 'Stock',
                         type: 'number',
-                        validation: (value: number) => typeof value === 'number' && !Number.isNaN(value),
+                        validation: (value: number) =>
+                          typeof value === 'number' && !Number.isNaN(value),
                       },
                     ];
 
-                    const items: { id: number; cost: number; stock: number }[] = [
+                    const items: Array<{ id: number; cost: number; stock: number }> = [
                       {
                         id: 1,
                         cost: 100,
@@ -360,15 +408,19 @@ const WorksheetPage = () => {
               id: 'checkbox-columns',
               title: 'Checkbox columns',
               render: () => (
-                <CodePreview>
+                <CodePreview key="checkbox-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
-                    const columns: WorksheetColumn<Partial<Product>>[] = [
-                      { hash: 'productName', header: 'Product name', validation: (value) => !!value },
+                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                      },
                       { hash: 'isVisible', header: 'Visible', type: 'checkbox' },
                     ];
 
-                    const items: Partial<Product>[] = [
+                    const items: Array<Partial<Product>> = [
                       {
                         id: 1,
                         productName: 'Product 1',
@@ -403,11 +455,15 @@ const WorksheetPage = () => {
               id: 'selectable-columns',
               title: 'Selectable columns',
               render: () => (
-                <CodePreview>
+                <CodePreview key="selectable-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
-                    const columns: WorksheetColumn<Partial<Product>>[] = [
-                      { hash: 'productName', header: 'Product name', validation: (value) => !!value },
+                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                      },
                       {
                         hash: 'otherField2',
                         header: 'Other field',
@@ -423,7 +479,7 @@ const WorksheetPage = () => {
                       },
                     ];
 
-                    const items: Partial<Product>[] = [
+                    const items: Array<Partial<Product>> = [
                       {
                         id: 1,
                         productName: 'Product 1',
@@ -458,11 +514,15 @@ const WorksheetPage = () => {
               id: 'modal-columns',
               title: 'Modal columns',
               render: () => (
-                <CodePreview scope={{ CATEGORIES, CategoryTree, nodes }}>
+                <CodePreview key="modal-columns" scope={{ CATEGORIES, CategoryTree, nodes }}>
                   {/* jsx-to-string:start */}
                   {function Example() {
-                    const columns: WorksheetColumn<Partial<Product>>[] = [
-                      { hash: 'productName', header: 'Product name', validation: (value) => !!value },
+                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                      },
                       {
                         hash: 'otherField3',
                         header: 'Category',
@@ -475,7 +535,7 @@ const WorksheetPage = () => {
                       },
                     ];
 
-                    const items: Partial<Product>[] = [
+                    const items: Array<Partial<Product>> = [
                       {
                         id: 1,
                         productName: 'Product 1',
@@ -510,15 +570,19 @@ const WorksheetPage = () => {
               id: 'disabled-columns',
               title: 'Disabled columns',
               render: () => (
-                <CodePreview>
+                <CodePreview key="disabled-columns">
                   {/* jsx-to-string:start */}
                   {function Example() {
-                    const columns: WorksheetColumn<Partial<Product>>[] = [
-                      { hash: 'productName', header: 'Product name', validation: (value) => !!value },
+                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                      },
                       { hash: 'otherField', header: 'Other field', disabled: true },
                     ];
 
-                    const items: Partial<Product>[] = [
+                    const items: Array<Partial<Product>> = [
                       {
                         id: 1,
                         productName: 'Product 1',
@@ -553,11 +617,15 @@ const WorksheetPage = () => {
               id: 'expandable-rows',
               title: 'Expandable rows',
               render: () => (
-                <CodePreview>
+                <CodePreview key="expandable-rows">
                   {/* jsx-to-string:start */}
                   {function Example() {
-                    const columns: WorksheetColumn<Partial<Product>>[] = [
-                      { hash: 'productName', header: 'Product name', validation: (value) => !!value },
+                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                      },
                       { hash: 'otherField', header: 'Other field' },
                     ];
 
@@ -566,7 +634,7 @@ const WorksheetPage = () => {
                       4: [5, 6],
                     };
 
-                    const items: Partial<Product>[] = [
+                    const items: Array<Partial<Product>> = [
                       {
                         id: 1,
                         productName: 'Product 1',
@@ -607,7 +675,68 @@ const WorksheetPage = () => {
                     return (
                       <Worksheet
                         columns={columns}
+                        defaultExpandedRows={[4]}
                         expandableRows={expandableRows}
+                        items={items}
+                        onChange={(items) => items}
+                        onErrors={(items) => items}
+                      />
+                    );
+                  }}
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+            {
+              id: 'disabled-rows',
+              title: 'Disabled rows',
+              render: () => (
+                <CodePreview key="disabled-rows">
+                  {/* jsx-to-string:start */}
+                  {function Example() {
+                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                      },
+                      { hash: 'otherField', header: 'Other field' },
+                    ];
+
+                    const disabledRows = [2, 4];
+
+                    const items: Array<Partial<Product>> = [
+                      {
+                        id: 1,
+                        productName: 'Product 1',
+                        otherField: 'Text',
+                      },
+                      {
+                        id: 2,
+                        productName: 'Product 2',
+                        otherField: 'Text',
+                      },
+                      {
+                        id: 3,
+                        productName: 'Product 3',
+                        otherField: 'Text',
+                      },
+                      {
+                        id: 4,
+                        productName: 'Product 4',
+                        otherField: 'Text',
+                      },
+                      {
+                        id: 5,
+                        productName: 'Product 5',
+                        otherField: 'Text',
+                      },
+                    ];
+
+                    return (
+                      <Worksheet
+                        columns={columns}
+                        disabledRows={disabledRows}
                         items={items}
                         onChange={(items) => items}
                         onErrors={(items) => items}
@@ -629,59 +758,59 @@ const WorksheetPage = () => {
             {
               id: 'worksheet',
               title: 'Worksheet',
-              render: () => <WorksheetPropTable renderPanel={false} />,
+              render: () => <WorksheetPropTable />,
             },
             {
               id: 'text-column',
               title: 'TextColumn',
-              render: () => <WorksheetTextColumnPropTable id="worksheet-text-column-prop-table" renderPanel={false} />,
+              render: () => <WorksheetTextColumnPropTable id="worksheet-text-column-prop-table" />,
             },
             {
               id: 'number-column',
               title: 'NumberColumn',
               render: () => (
-                <WorksheetNumberColumnPropTable id="worksheet-number-column-prop-table" renderPanel={false} />
+                <WorksheetNumberColumnPropTable id="worksheet-number-column-prop-table" />
               ),
             },
             {
               id: 'checkbox-column',
               title: 'CheckboxColumn',
               render: () => (
-                <WorksheetCheckboxColumnPropTable id="worksheet-checkbox-column-prop-table" renderPanel={false} />
+                <WorksheetCheckboxColumnPropTable id="worksheet-checkbox-column-prop-table" />
               ),
             },
             {
               id: 'selectable-column',
               title: 'SelectableColumn',
               render: () => (
-                <WorksheetSelectableColumnPropTable id="worksheet-selectable-column-prop-table" renderPanel={false} />
+                <WorksheetSelectableColumnPropTable id="worksheet-selectable-column-prop-table" />
               ),
             },
             {
               id: 'modal-column',
               title: 'ModalColumn',
               render: () => (
-                <WorksheetModalColumnPropTable id="worksheet-modal-column-prop-table" renderPanel={false} />
+                <WorksheetModalColumnPropTable id="worksheet-modal-column-prop-table" />
               ),
             },
             {
               id: 'selectable-config',
               title: 'SelectableConfig',
               render: () => (
-                <WorksheetSelectableConfigPropTable id="worksheet-selectable-config-prop-table" renderPanel={false} />
+                <WorksheetSelectableConfigPropTable id="worksheet-selectable-config-prop-table" />
               ),
             },
             {
               id: 'modal-config',
               title: 'ModalConfig',
               render: () => (
-                <WorksheetModalConfigPropTable id="worksheet-modal-config-prop-table" renderPanel={false} />
+                <WorksheetModalConfigPropTable id="worksheet-modal-config-prop-table" />
               ),
             },
             {
               id: 'error',
               title: 'Error',
-              render: () => <WorksheetErrorPropTable id="worksheet-error-prop-table" renderPanel={false} />,
+              render: () => <WorksheetErrorPropTable id="worksheet-error-prop-table" />,
             },
           ]}
         />
@@ -689,9 +818,17 @@ const WorksheetPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
+          discouraged={[
+            <>
+              Never use the <Code primary>Worksheet</Code> component to display a simple list of
+              related content. Instead use a <NextLink href="/table">Table</NextLink>.
+            </>,
+            'Editing or actions should always be initiated directly on a cell.  Do not use the actions icon/menu.',
+          ]}
           recommended={[
             <>
-              Always display a <Code primary>Worksheet</Code> component with collapsed side navigation.
+              Always display a <Code primary>Worksheet</Code> component with collapsed side
+              navigation.
             </>,
             'Column header names should use sentence case, be concise and describe the type of content displayed in that column.',
             'Each row contains information related to a single entity.',
@@ -704,16 +841,9 @@ const WorksheetPage = () => {
               Use the <Code primary>Worksheet</Code> for bulk editing actions.
             </>,
             <>
-              A <Code primary>Worksheet</Code> should always be on it’s own page. Never combine a worksheet with other
-              tables or panels of content.
+              A <Code primary>Worksheet</Code> should always be on it’s own page. Never combine a
+              worksheet with other tables or panels of content.
             </>,
-          ]}
-          discouraged={[
-            <>
-              Never use the <Code primary>Worksheet</Code> component to display a simple list of related content.
-              Instead use a <NextLink href="/table">Table</NextLink>.
-            </>,
-            'Editing or actions should always be initiated directly on a cell.  Do not use the actions icon/menu.',
           ]}
         />
       </Panel>

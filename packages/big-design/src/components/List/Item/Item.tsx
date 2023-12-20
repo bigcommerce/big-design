@@ -30,7 +30,7 @@ interface PrivateProps {
 }
 
 const StyleableListItem = typedMemo(
-  <T extends unknown>({
+  <T,>({
     actionType = 'normal' as const,
     autoWidth = false,
     forwardedRef,
@@ -74,8 +74,8 @@ const StyleableListItem = typedMemo(
       >
         <Checkbox
           checked={isChecked}
-          disabled={item.disabled}
           description={item.description}
+          disabled={item.disabled}
           label={item.content}
           onChange={() => null}
           onClick={(event) => {
@@ -100,7 +100,7 @@ const StyleableListItem = typedMemo(
         isHighlighted={isHighlighted}
         isSelected={isSelected}
       >
-        {<Content item={item} isHighlighted={isHighlighted} />}
+        <Content isHighlighted={isHighlighted} item={item} />
         {isSelected && <CheckIcon color="primary" size="large" />}
       </StyledListItem>
     ),

@@ -1,11 +1,13 @@
 import { useCallback, useMemo } from 'react';
 
-import { useStore } from './../';
+import { useWorksheetStore } from '../useWorksheetStore';
 
 export const useExpandable = (rowId: string | number) => {
-  const expandableRows = useStore((state) => state.expandableRows);
-  const hiddenRows = useStore((state) => state.hiddenRows);
-  const setHiddenRows = useStore((state) => state.setHiddenRows);
+  const { store, useStore } = useWorksheetStore();
+
+  const expandableRows = useStore(store, (state) => state.expandableRows);
+  const hiddenRows = useStore(store, (state) => state.hiddenRows);
+  const setHiddenRows = useStore(store, (state) => state.setHiddenRows);
 
   const onExpand = useCallback(() => {
     const childIds = expandableRows[rowId];
@@ -32,7 +34,8 @@ export const useExpandable = (rowId: string | number) => {
 
   const isExpandable = expandableRows !== null && expandableRows[rowId] !== undefined;
 
-  const hasExpanded = isExpandable && !hiddenRows.some((row) => expandableRows[rowId].includes(row));
+  const hasExpanded =
+    isExpandable && !hiddenRows.some((row) => expandableRows[rowId].includes(row));
 
   return useMemo(
     () => ({

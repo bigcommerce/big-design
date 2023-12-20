@@ -5,8 +5,10 @@ import { Box } from '../Box';
 import { StyleableH2 } from '../Typography/private';
 
 export const StyledPanel = styled(Box)`
+  border-radius: ${({ theme }) => theme.borderRadius.none};
+
   ${({ theme }) => theme.breakpoints.tablet} {
-    ${({ theme }) => theme.shadow.floating}
+    border-radius: ${({ theme }) => theme.borderRadius.normal};
   }
 `;
 
@@ -19,8 +21,5 @@ export const StyledH2 = styled(StyleableH2)`
   }
 `;
 
-StyledPanel.defaultProps = {
-  theme: defaultTheme,
-  marginBottom: 'medium',
-};
+StyledPanel.defaultProps = { theme: defaultTheme };
 StyledH2.defaultProps = { theme: defaultTheme };

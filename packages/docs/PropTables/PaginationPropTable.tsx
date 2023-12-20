@@ -39,8 +39,27 @@ const paginationProps: Prop[] = [
     required: true,
     description: 'Function that will be called when a new per-page range is selected.',
   },
+  {
+    name: 'label',
+    types: 'string',
+    required: false,
+    defaultValue: 'pagination',
+    description: 'Overrides the aria label of the pagination wrapper navigation element.',
+  },
+  {
+    name: 'getRangeLabel',
+    types: '(start: number, end: number, totalItems: number) => string',
+    required: false,
+    description: 'A callback to format the label of the per-page range dropdown.',
+  },
+  {
+    name: 'localization',
+    types: '{ of: string, previousPage: string, nextPage: string }',
+    required: false,
+    description: 'Overrides the labels with localized text.',
+  },
 ];
 
 export const PaginationPropTable: React.FC<PropTableWrapper> = (props) => {
-  return <PropTable title="Pagination" propList={paginationProps} {...props} />;
+  return <PropTable propList={paginationProps} title="Pagination" {...props} />;
 };

@@ -62,7 +62,6 @@ exports[`render Tabs 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -120,7 +119,6 @@ exports[`render Tabs 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c2 {
@@ -155,6 +153,8 @@ exports[`render Tabs 1`] = `
   role="tablist"
 >
   <button
+    aria-controls="content1"
+    aria-selected="false"
     class="c3 c4"
     id="tab1"
     role="tab"
@@ -167,6 +167,8 @@ exports[`render Tabs 1`] = `
     </span>
   </button>
   <button
+    aria-controls="content2"
+    aria-selected="false"
     class="c3 c4"
     id="tab2"
     role="tab"
@@ -243,7 +245,6 @@ exports[`render Tabs with disabled item 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -301,7 +302,6 @@ exports[`render Tabs with disabled item 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c2 {
@@ -336,6 +336,8 @@ exports[`render Tabs with disabled item 1`] = `
   role="tablist"
 >
   <button
+    aria-controls="content1"
+    aria-selected="false"
     class="c3 c4"
     id="tab1"
     role="tab"
@@ -348,6 +350,8 @@ exports[`render Tabs with disabled item 1`] = `
     </span>
   </button>
   <button
+    aria-controls="content2"
+    aria-selected="false"
     class="c3 c4"
     id="tab2"
     role="tab"
@@ -360,6 +364,8 @@ exports[`render Tabs with disabled item 1`] = `
     </span>
   </button>
   <button
+    aria-controls="tab3-content"
+    aria-selected="false"
     class="c3 c4"
     disabled=""
     id="tab3"

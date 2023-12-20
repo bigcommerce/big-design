@@ -1,24 +1,49 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import React, { forwardRef, memo } from 'react';
+import React, { forwardRef, memo, useId } from 'react';
 
 import { PrivateIconProps } from '../../base';
-import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'LT flag', theme, ...props }) => {
-  const uniqueTitleId = useUniqueId('icon');
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'LT flag',
+  theme,
+  ...props
+}) => {
+  const uniqueTitleId = useId();
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
       <g fillRule="evenodd" strokeWidth="1pt" transform="scale(.64143 .96773)">
-        <rect width={1063} height={708.7} fill="#006a44" rx={0} ry={0} transform="scale(.93865 .69686)" />
-        <rect width={1063} height={236.2} y={475.6} fill="#c1272d" rx={0} ry={0} transform="scale(.93865 .69686)" />
-        <path fill="#fdb913" d="M0 0h997.8v164.6H0z" />
+        <rect
+          fill="#006a44"
+          height={708.7}
+          rx={0}
+          ry={0}
+          transform="scale(.93865 .69686)"
+          width={1063}
+        />
+        <rect
+          fill="#c1272d"
+          height={236.2}
+          rx={0}
+          ry={0}
+          transform="scale(.93865 .69686)"
+          width={1063}
+          y={475.6}
+        />
+        <path d="M0 0h997.8v164.6H0z" fill="#fdb913" />
       </g>
     </svg>
   );
@@ -28,6 +53,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const LTFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const LTFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 LTFlagIcon.displayName = 'LTFlagIcon';

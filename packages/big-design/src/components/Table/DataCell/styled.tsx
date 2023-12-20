@@ -5,6 +5,7 @@ import { withTableColumnDisplay } from '../mixins';
 
 import { DataCellProps } from './DataCell';
 
+// TODO: Use PaddingProps
 export const StyledTableDataCell = styled.td<DataCellProps>`
   ${withTableColumnDisplay()}
 
@@ -43,7 +44,7 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
   ${({ width }) =>
     width !== undefined &&
     css`
-      width: ${typeof width === 'string' ? width : width + 'px'};
+      width: ${typeof width === 'string' ? width : `${width}px`};
     `};
 `;
 

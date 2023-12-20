@@ -1,4 +1,11 @@
-import { NodeMap, TreeExpandable, TreeFocusable, TreeNodeId, TreeOnKeyDown, TreeSelectable } from '../types';
+import {
+  NodeMap,
+  TreeExpandable,
+  TreeFocusable,
+  TreeNodeId,
+  TreeOnKeyDown,
+  TreeSelectable,
+} from '../types';
 
 interface UseTreeKeyEventsProps<T> {
   onFocus: TreeFocusable['onFocus'];
@@ -56,6 +63,7 @@ export const useTreeKeyEvents = <T>({
         if (isSelectable && onSelect) {
           onSelect(id, value);
         }
+
         break;
 
       case 'Enter':
@@ -90,12 +98,11 @@ export const useTreeKeyEvents = <T>({
         if (hasChildren) {
           if (isExpanded) {
             onFocus(getNextVisibleNode(visibleNodes, id));
-          } else {
-            if (onToggle) {
-              onToggle(id, isExpanded);
-            }
+          } else if (onToggle) {
+            onToggle(id, isExpanded);
           }
         }
+
         break;
 
       case 'ArrowLeft':

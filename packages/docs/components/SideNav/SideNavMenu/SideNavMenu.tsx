@@ -5,19 +5,29 @@ import React, { useState } from 'react';
 
 import { StyledMenu, StyledNavigation } from './styled';
 
-export const SideNavMenu: React.FC = (props) => {
+export const SideNavMenu: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const handleClick = () => setIsExpanded(!isExpanded);
+
   Router.events.on('routeChangeComplete', () => setIsExpanded(false));
 
   return (
     <FlexItem style={{ display: 'flex', alignItems: 'center' }}>
       <Flex>
         <StyledMenu>
-          <Button variant="subtle" onClick={handleClick} iconOnly={<MenuIcon color="secondary70" />} />
+          <Button
+            iconOnly={<MenuIcon color="secondary70" />}
+            onClick={handleClick}
+            variant="subtle"
+          />
         </StyledMenu>
-        <StyledNavigation isExpanded={isExpanded} borderBottom="box" borderTop="box" shadow="floating">
-          {props.children}
+        <StyledNavigation
+          borderBottom="box"
+          borderTop="box"
+          isExpanded={isExpanded}
+          shadow="floating"
+        >
+          {children}
         </StyledNavigation>
       </Flex>
     </FlexItem>

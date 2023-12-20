@@ -1,3 +1,4 @@
+export * from './AccordionPanel';
 export * from './Alert';
 export * from './Badge';
 export * from './Box';
@@ -38,5 +39,6 @@ export * from './Tabs';
 export * from './Textarea';
 export * from './Timepicker';
 export * from './Tooltip';
+export * from './Toggle';
 export * from './Typography';
 export * from './Worksheet';

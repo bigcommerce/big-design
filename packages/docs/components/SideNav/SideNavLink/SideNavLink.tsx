@@ -4,6 +4,12 @@ import styled from 'styled-components';
 
 import { List, NextLink } from '../../';
 
+interface Props {
+  children?: React.ReactNode;
+  href: string;
+  as?: string;
+}
+
 export const StyledLink = styled(Link)`
   display: block;
   line-height: ${({ theme }) => theme.lineHeight.large};
@@ -14,10 +20,10 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const SideNavLink: React.FC<{ href: string; as?: string }> = (props) => (
+export const SideNavLink: React.FC<Props> = ({ as, children, href }) => (
   <List.Item>
-    <NextLink href={props.href} as={props.as}>
-      <StyledLink href="">{props.children}</StyledLink>
+    <NextLink as={as} href={href}>
+      <StyledLink href="">{children}</StyledLink>
     </NextLink>
   </List.Item>
 );

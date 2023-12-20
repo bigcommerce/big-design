@@ -22,7 +22,9 @@ const defaultScope = {
   styled,
 };
 
-function getInitialCode(children: React.ReactNode, language: Language): string {
+type CodePreviewChildren = React.ReactNode | (() => JSX.Element);
+
+function getInitialCode(children: CodePreviewChildren, language: Language): string {
   if (typeof children !== 'string') {
     throw new Error('<CodePreview> children must be of type string');
   }
@@ -31,11 +33,13 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
     return children;
   }
 
-  const code = transform(children, {
+  const transformResult = transform(children, {
     compact: false,
     retainLines: true,
     presets: [['typescript', { allExtensions: true, isTSX: true, jsxPragma: 'preserve' }]],
-  }).code;
+  });
+
+  const code = transformResult.code ?? children;
 
   return format(code, {
     parser: 'babel',
@@ -48,15 +52,18 @@ function getInitialCode(children: React.ReactNode, language: Language): string {
 
 function transformCode(input: string): string {
   try {
-    return transform(input, {
+    const transformResult = transform(input, {
       presets: [['typescript', { allExtensions: true, isTSX: true }], 'react'],
-    }).code;
+    });
+
+    return transformResult.code ?? input;
   } catch (e) {
     return input;
   }
 }
 
 export interface CodePreviewProps {
+  children?: CodePreviewChildren;
   scope?: { [key: string]: unknown };
 }
 
@@ -78,18 +85,37 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
 
   return (
     <BigDesign.Box border="box">
-      <LiveProvider code={code} scope={scope} theme={editorTheme} language={language} transformCode={transformCode}>
-        <BigDesign.Box padding="medium" backgroundColor="white" borderBottom="box">
+      <LiveProvider
+        code={code}
+        language={language}
+        scope={scope}
+        theme={{
+          ...editorTheme,
+          plain: {
+            ...editorTheme.plain,
+            // Adds back previous version stylings
+            fontFamily: 'monospace',
+            whiteSpace: 'pre-wrap',
+          },
+        }}
+        transformCode={transformCode}
+      >
+        <BigDesign.Box backgroundColor="white" borderBottom="box" padding="medium">
           <LivePreview />
         </BigDesign.Box>
-        <SnippetControls copyToClipboard={() => clipboardCopy(code)} resetCode={() => setCode(initialCode)} />
-        <LiveEditor onChange={setCode} />
+        <SnippetControls
+          copyToClipboard={() => clipboardCopy(code)}
+          resetCode={() => setCode(initialCode)}
+        />
+        <BigDesign.Box>
+          <LiveEditor
+            onChange={setCode}
+            // Adds background and text color
+            style={editorTheme.plain}
+          />
+        </BigDesign.Box>
         <StyledLiveError />
       </LiveProvider>
     </BigDesign.Box>
   );
-};
-
-CodePreview.defaultProps = {
-  scope: defaultScope,
 };

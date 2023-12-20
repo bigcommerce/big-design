@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, Prop, PropTable, PropTableWrapper } from '../components';
+import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
 
 const panelProps: Prop[] = [
   {
@@ -17,8 +17,8 @@ const panelProps: Prop[] = [
     types: 'string',
     description: (
       <>
-        Gives the header a HTML <Code>id</Code> attribute. Useful if you need to use hash navigation to a{' '}
-        <Code primary>Panel</Code> header.
+        Gives the header a HTML <Code>id</Code> attribute. Useful if you need to use hash navigation
+        to a <Code primary>Panel</Code> header.
       </>
     ),
   },
@@ -31,8 +31,26 @@ const panelProps: Prop[] = [
       </>
     ),
   },
+  {
+    name: 'badge',
+    types: [
+      <NextLink href="/badge" key="badge-type">
+        BadgeProps
+      </NextLink>,
+    ],
+    description: (
+      <>
+        See <NextLink href="/badge">Badge</NextLink> for usage.
+      </>
+    ),
+  },
+  {
+    name: 'description',
+    types: ['string', 'React.ReactNode'],
+    description: 'Appends a description below the header and action.',
+  },
 ];
 
 export const PanelPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Panel" propList={panelProps} {...props} />
+  <PropTable propList={panelProps} title="Panel" {...props} />
 );

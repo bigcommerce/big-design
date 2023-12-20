@@ -20,8 +20,8 @@ const AlertPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          Alerts are non-disruptive messages that appear at the top right of the window and provide quick, at-a-glance
-          feedback on the outcome of an action.
+          Alerts are non-disruptive messages that appear at the top right of the window and provide
+          quick, at-a-glance feedback on the outcome of an action.
         </Text>
         <Text bold>When to use:</Text>
         <List>
@@ -33,7 +33,7 @@ const AlertPage = () => {
         <CodePreview scope={{ alertsManager }}>
           {/* jsx-to-string:start */}
           {function Example() {
-            const alert = {
+            const alert: AlertProps = {
               header: 'Optional Headline',
               messages: [
                 {
@@ -46,7 +46,7 @@ const AlertPage = () => {
               ],
               type: 'success',
               onClose: () => null,
-            } as AlertProps;
+            };
 
             return <Button onClick={() => alertsManager.add(alert)}>Trigger Alert</Button>;
           }}
@@ -64,28 +64,28 @@ const AlertPage = () => {
               render: () => (
                 <>
                   <Message
-                    type="error"
+                    marginBottom="large"
                     marginTop="medium"
                     messages={[
                       {
                         text: 'Note: You should not use the Alert component directly. Instead, inject the AlertsManager component into your app and use the instance created by the createAlertsManager utility function to control which Alerts are displayed.',
                       },
                     ]}
-                    marginBottom="large"
+                    type="error"
                   />
-                  <AlertPropTable renderPanel={false} />
+                  <AlertPropTable />
                 </>
               ),
             },
             {
               id: 'message-item',
               title: 'MessageItem',
-              render: () => <MessagingItemPropTable renderPanel={false} />,
+              render: () => <MessagingItemPropTable />,
             },
             {
               id: 'message-link-item',
               title: 'MessageLinkItem',
-              render: () => <MessagingLinkItemPropTable renderPanel={false} />,
+              render: () => <MessagingLinkItemPropTable />,
             },
           ]}
         />
@@ -93,14 +93,15 @@ const AlertPage = () => {
 
       <Panel header="AlertsManager">
         <Text>
-          BigDesign comes with an <Code primary>AlertsManager</Code> component that will manage and display which alerts
-          to display and in which order by type. The order of priority from highest to lowest is <Code>error</Code>,{' '}
-          <Code>warning</Code>, <Code>success</Code>, <Code>info</Code>.
+          BigDesign comes with an <Code primary>AlertsManager</Code> component that will manage and
+          display which alerts to display and in which order by type. The order of priority from
+          highest to lowest is <Code>error</Code>, <Code>warning</Code>, <Code>success</Code>,{' '}
+          <Code>info</Code>.
         </Text>
 
         <Text>
-          To use this component, put it in your root component (e.g. place it after <Code>GlobalStyles</Code>{' '}
-          component):
+          To use this component, put it in your root component (e.g. place it after{' '}
+          <Code>GlobalStyles</Code> component):
         </Text>
 
         <CodeSnippet>
@@ -121,9 +122,9 @@ const AlertPage = () => {
         </CodeSnippet>
         <H3>Add alert</H3>
         <Text>
-          This works in conjunction with an instance created by <Code>createAlertsManager</Code> function below. You
-          need to export <Code>alertsManager</Code> instance and then you can import it in child components in order to
-          trigger alert:
+          This works in conjunction with an instance created by <Code>createAlertsManager</Code>{' '}
+          function below. You need to export <Code>alertsManager</Code> instance and then you can
+          import it in child components in order to trigger alert:
         </Text>
 
         <CodeSnippet>
@@ -140,7 +141,8 @@ const AlertPage = () => {
         <H3>API</H3>
 
         <Text>
-          The <Code>createAlertsManager</Code> function returns an instance for managing which alert to display.
+          The <Code>createAlertsManager</Code> function returns an instance for managing which alert
+          to display.
         </Text>
 
         <CodeSnippet showControls={false}>

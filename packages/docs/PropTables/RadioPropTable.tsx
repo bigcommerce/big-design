@@ -11,7 +11,7 @@ const radioProps: Prop[] = [
     required: true,
     description: (
       <>
-        Label to display next to a <Code>Radio</Code> component.
+        Label to display next to a <Code primary>Radio</Code> component.
       </>
     ),
   },
@@ -20,7 +20,13 @@ const radioProps: Prop[] = [
     types: ['string', 'RadioDescription'],
     description: (
       <>
-        See <NextLink href="#radio-description-prop-table">below</NextLink> for usage.
+        See{' '}
+        <NextLink
+          href={{ hash: 'radio-description-prop-table', query: { props: 'radio-description' } }}
+        >
+          RadioDescription
+        </NextLink>{' '}
+        for usage.
       </>
     ),
   },
@@ -33,7 +39,7 @@ const radioDescriptionProps: Prop[] = [
     required: true,
     description: (
       <>
-        Description to display below <Code>Label</Code>
+        Description to display below <Code primary>label</Code>.
       </>
     ),
   },
@@ -42,20 +48,29 @@ const radioDescriptionProps: Prop[] = [
     types: ['RadioDescriptionLink'],
     description: (
       <>
-        See <NextLink href="#radio-description-link-prop-table">below</NextLink> for usage.
+        See{' '}
+        <NextLink
+          href={{
+            hash: 'radio-description-link-prop-table',
+            query: { props: 'radio-description-link' },
+          }}
+        >
+          RadioDescriptionLink
+        </NextLink>{' '}
+        for usage.
       </>
     ),
   },
 ];
 
 export const RadioPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Radio" propList={radioProps} nativeElement={['input', 'all']} {...props} />
+  <PropTable nativeElement={['input', 'all']} propList={radioProps} title="Radio" {...props} />
 );
 
 export const RadioDescriptionPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
-    title="Radio[RadioDescription]"
     propList={radioDescriptionProps}
+    title="Radio[RadioDescription]"
     {...props}
     id="radio-description-prop-table"
   />
@@ -63,8 +78,8 @@ export const RadioDescriptionPropTable: React.FC<PropTableWrapper> = (props) => 
 
 export const RadioDescriptionLinkPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
-    title="Radio[RadioDescriptionLink]"
     propList={messagingLinkItemProps}
+    title="Radio[RadioDescriptionLink]"
     {...props}
     id="radio-description-link-prop-table"
   />

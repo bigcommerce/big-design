@@ -21,8 +21,13 @@ const searchProps: Prop[] = [
     description: 'Native onSubmit attribute for a HTML form element.',
     required: true,
   },
+  {
+    name: 'localization',
+    types: '{ search: string }',
+    description: 'Overrides the label with localized text.',
+  },
 ];
 
 export const SearchPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Search" propList={searchProps} {...props} />
+  <PropTable nativeElement={['input', 'most']} propList={searchProps} title="Search" {...props} />
 );

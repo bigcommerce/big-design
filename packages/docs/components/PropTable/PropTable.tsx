@@ -1,11 +1,11 @@
-import { Flex, H3, Link, Panel, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
-import React, { FC, ReactNode } from 'react';
+import { Flex, H3, Link, Small, Table, TableFigure, Text } from '@bigcommerce/big-design';
+import React, { FC, isValidElement, ReactNode } from 'react';
 
 import { Code } from '../Code';
 import { Collapsible } from '../Collapsible';
 
 interface TypesDataProps {
-  types: any;
+  types: Prop['types'];
 }
 
 export interface Prop {
@@ -17,29 +17,25 @@ export interface Prop {
 }
 
 export interface PropTableProps {
+  children?: React.ReactNode;
   collapsible?: boolean;
   id?: string;
   inheritedProps?: ReactNode;
   nativeElement?: [string, 'most' | 'all'];
   propList: Prop[];
   title: string;
-  /**
-   * @deprecated Used to migrate to new documentation stucture
-   */
-  renderPanel?: boolean;
 }
 
 export type PropTableWrapper = Partial<PropTableProps>;
 
 export const PropTable: FC<PropTableProps> = (props) => {
-  const { collapsible, id, propList: items, title, inheritedProps, nativeElement, renderPanel = true } = props;
+  const { collapsible, id, propList: items, title, inheritedProps, nativeElement } = props;
 
   const renderTable = () => {
     if (items.length > 0) {
       return (
         <TableFigure marginBottom={collapsible || inheritedProps ? 'xLarge' : 'none'}>
           <Table
-            id={id}
             columns={[
               {
                 header: 'Prop name',
@@ -68,6 +64,7 @@ export const PropTable: FC<PropTableProps> = (props) => {
                 render: ({ description }) => <Text>{description}</Text>,
               },
             ]}
+            id={id}
             items={items}
           />
 
@@ -112,11 +109,15 @@ export const PropTable: FC<PropTableProps> = (props) => {
     return <Collapsible title={`${title} Props`}>{renderTable()}</Collapsible>;
   }
 
-  if (renderPanel) {
-    return <Panel header={title}>{renderContent()}</Panel>;
+  return renderContent();
+};
+
+const TypeCode = ({ type }: { type: ReactNode }) => {
+  if (isValidElement(type) && type.type === Link) {
+    return <Code highlight={false}>{type}</Code>;
   }
 
-  return renderContent();
+  return <Code>{type}</Code>;
 };
 
 const TypesData: React.FC<TypesDataProps> = (props): any => {
@@ -125,13 +126,13 @@ const TypesData: React.FC<TypesDataProps> = (props): any => {
   if (Array.isArray(types)) {
     return types.map((type, index) => {
       return (
-        <React.Fragment key={type.key ?? index}>
-          {type.type === Link ? <Code highlight={false}>{type}</Code> : <Code>{type}</Code>}
+        <React.Fragment key={isValidElement(type) && type.key ? type.key : index}>
+          <TypeCode type={type} />
           {index < types.length - 1 ? ' | ' : null}
         </React.Fragment>
       );
     });
   }
 
-  return types.type === Link ? <Code highlight={false}>{types}</Code> : <Code>{types}</Code>;
+  return <TypeCode type={types} />;
 };

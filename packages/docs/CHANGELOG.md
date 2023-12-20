@@ -3,6 +3,288 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.38.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.37.0...@bigcommerce/docs@0.38.0) (2023-10-09)
+
+
+### Features
+
+* **component:** add Toggle component ([#1274](https://github.com/bigcommerce/big-design/issues/1274)) ([8200e44](https://github.com/bigcommerce/big-design/commit/8200e44baa0813a1163d9981c292d95d62672691))
+
+
+
+
+
+# [0.37.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.36.2...@bigcommerce/docs@0.37.0) (2023-07-26)
+
+
+### Features
+
+* **component:** add enabled column prop to the worksheet ([#1241](https://github.com/bigcommerce/big-design/issues/1241)) ([aaad5cb](https://github.com/bigcommerce/big-design/commit/aaad5cba66eac300e69db6e328cbf80a629ac361))
+* **component:** added Badge props to Panel component ([#1270](https://github.com/bigcommerce/big-design/issues/1270)) ([3a712b0](https://github.com/bigcommerce/big-design/commit/3a712b03feee9f95121740fab449520ead34d590))
+* **component:** localize components ([#1200](https://github.com/bigcommerce/big-design/issues/1200)) ([151484b](https://github.com/bigcommerce/big-design/commit/151484be73fa52ef1fe7aa5713cbf3c09ded29f0))
+
+
+### BREAKING CHANGES
+
+* **component:** pagination label `props` were removed in favor of `localization` object
+
+
+
+
+
+## [0.36.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.36.1...@bigcommerce/docs@0.36.2) (2023-06-14)
+
+**Note:** Version bump only for package @bigcommerce/docs
+
+
+
+
+
+## [0.36.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.36.0...@bigcommerce/docs@0.36.1) (2023-06-09)
+
+
+### Features
+
+* **component:** add notation for worksheet cells ([#1193](https://github.com/bigcommerce/big-design/issues/1193)) ([f689f00](https://github.com/bigcommerce/big-design/commit/f689f0042fc27cc4d73df345c6530ebc2c498524))
+
+
+
+
+
+# [0.36.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.35.0...@bigcommerce/docs@0.36.0) (2023-04-05)
+
+
+### Features
+
+* **component:** add description to Panel ([#1119](https://github.com/bigcommerce/big-design/issues/1119)) ([2038194](https://github.com/bigcommerce/big-design/commit/203819439f138f22507eb4a3048bc7de1f747ff6))
+* **component:** add header tooltip for worksheet component ([#1095](https://github.com/bigcommerce/big-design/issues/1095)) ([9c26b3a](https://github.com/bigcommerce/big-design/commit/9c26b3aa82374acdb0f96b22e6c400f50f177337))
+
+
+
+
+
+# [0.35.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.34.3...@bigcommerce/docs@0.35.0) (2023-01-09)
+
+
+### Features
+
+* **component:** add Badge props to Checkbox component ([#1080](https://github.com/bigcommerce/big-design/issues/1080)) ([e53f820](https://github.com/bigcommerce/big-design/commit/e53f820272513d128da2c489281bc31c9b15f590))
+* convert to react@18 only ([#1044](https://github.com/bigcommerce/big-design/issues/1044)) ([06c4697](https://github.com/bigcommerce/big-design/commit/06c469721bc06d1f872bed6bf5a46e6b568644e5))
+
+
+### BREAKING CHANGES
+
+* Requires `react@18` or higher.
+
+
+
+
+
+## [0.34.3](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.34.2...@bigcommerce/docs@0.34.3) (2022-11-03)
+
+**Note:** Version bump only for package @bigcommerce/docs
+
+
+
+
+
+## [0.34.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.34.1...@bigcommerce/docs@0.34.2) (2022-10-27)
+
+
+### Features
+
+* **component:** provide props for customising pagination button labels ([#1008](https://github.com/bigcommerce/big-design/issues/1008)) ([ccba275](https://github.com/bigcommerce/big-design/commit/ccba275c8ea0035560cf70b668dd1373a10ec30e))
+
+
+
+
+
+## [0.34.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.34.0...@bigcommerce/docs@0.34.1) (2022-10-06)
+
+
+### Bug Fixes
+
+* **component:** prevent column resizing when editing text field ([#991](https://github.com/bigcommerce/big-design/issues/991)) ([66c0b68](https://github.com/bigcommerce/big-design/commit/66c0b686560d2bbe159b2238e3c02b918b494df8))
+
+
+
+
+
+# [0.34.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.33.1...@bigcommerce/docs@0.34.0) (2022-09-27)
+
+
+### Features
+
+* **deps:** react@18 support ([51c688b](https://github.com/bigcommerce/big-design/commit/51c688b282277964eb01c1ed67c5c27cc0bc4c3e))
+
+
+
+
+
+## [0.33.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.33.0...@bigcommerce/docs@0.33.1) (2022-09-27)
+
+
+### Bug Fixes
+
+* **component:** render empty string when prop is undefined ([#961](https://github.com/bigcommerce/big-design/issues/961)) ([c286723](https://github.com/bigcommerce/big-design/commit/c286723f9a6c641243ed9571508ba5bb352918b8))
+
+
+### Features
+
+* **component:** allow custom column widths and overflow worksheet ([#975](https://github.com/bigcommerce/big-design/issues/975)) ([272dc39](https://github.com/bigcommerce/big-design/commit/272dc3973cc7d8ce4d20f82d80ab89e519c3704a))
+* **component:** inv-1713 Implement default expanded worksheet rows ([#974](https://github.com/bigcommerce/big-design/issues/974)) ([6d7c32b](https://github.com/bigcommerce/big-design/commit/6d7c32ba05b798e75543895e29402b9329e403ac))
+* **deps:** unfork from flag-icons dependency ([ac723e3](https://github.com/bigcommerce/big-design/commit/ac723e384ec3c482d78107558cd31e7793a515f1))
+
+
+### BREAKING CHANGES
+
+* **component:** Text in columns will wrap (instead of ellipsis) and Worksheet will have a scrollable overflow if larger than viewport.
+
+
+
+
+
+# [0.33.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.32.2-alpha.0...@bigcommerce/docs@0.33.0) (2022-08-17)
+
+
+### Features
+
+* **component:** add AccordionPanel component ([#933](https://github.com/bigcommerce/big-design/issues/933)) ([e22ffa2](https://github.com/bigcommerce/big-design/commit/e22ffa2cc8b4321a656dd19c3f3d0785a24eab8d))
+
+
+
+
+
+## [0.32.2-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.32.1...@bigcommerce/docs@0.32.2-alpha.0) (2022-08-10)
+
+**Note:** Version bump only for package @bigcommerce/docs
+
+
+
+
+
+## [0.32.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.32.0...@bigcommerce/docs@0.32.1) (2022-07-12)
+
+**Note:** Version bump only for package @bigcommerce/docs
+
+
+
+
+
+# [0.32.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.31.1...@bigcommerce/docs@0.32.0) (2022-07-06)
+
+
+### Bug Fixes
+
+* **configs:** fix process env variable ([#890](https://github.com/bigcommerce/big-design/issues/890)) ([d2b7f0e](https://github.com/bigcommerce/big-design/commit/d2b7f0e67f028335bb90e4ef2503feee1d0876b8))
+* **docs:** fix the name of the worksheet props ([#888](https://github.com/bigcommerce/big-design/issues/888)) ([8303cdd](https://github.com/bigcommerce/big-design/commit/8303cddf9462f68c9525f2ccf211fa9e1a94140b))
+
+
+### Features
+
+* **component:** add rows disabling for worksheet ([#887](https://github.com/bigcommerce/big-design/issues/887)) ([fdd9303](https://github.com/bigcommerce/big-design/commit/fdd9303717cde570efff0ef2eeb74cc28b61ba85))
+* **component:** remove tooltip wrapper ([b924899](https://github.com/bigcommerce/big-design/commit/b92489911d2ccb075389eb2be3586d32ab124a4c))
+
+
+### BREAKING CHANGES
+
+* **component:** - Removes the `inline` prop on the tooltip
+- Strings are not allowed in the `trigger` prop
+
+
+
+
+
+## [0.31.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.31.0...@bigcommerce/docs@0.31.1) (2022-06-10)
+
+
+### Features
+
+* **component:** add css gap props in Flex and Grid components ([#849](https://github.com/bigcommerce/big-design/issues/849)) ([d7ae396](https://github.com/bigcommerce/big-design/commit/d7ae3960d292e2481c3bdcedda0a4ba14f261950))
+
+
+
+
+
+# [0.31.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.3-alpha.2...@bigcommerce/docs@0.31.0) (2022-05-11)
+
+
+### Bug Fixes
+
+* **docs:** fix typo in DropdownPropTable ([#819](https://github.com/bigcommerce/big-design/issues/819)) ([b6f9aa6](https://github.com/bigcommerce/big-design/commit/b6f9aa6dcc62c09d8d1e0705be36f2435d12b3cb))
+* **docs:** minor page fixes ([bf264b6](https://github.com/bigcommerce/big-design/commit/bf264b691e1991e1897a1ccdd45b292f8f4b7e7e))
+* **docs:** remove code ([#812](https://github.com/bigcommerce/big-design/issues/812)) ([ed4de14](https://github.com/bigcommerce/big-design/commit/ed4de1458a90d6d0cfe1ff16a5db32e73efa018d))
+
+
+### Features
+
+* **component:** auto-highlight first matching option in Select and MultiSelect ([#818](https://github.com/bigcommerce/big-design/issues/818)) ([76eeeb7](https://github.com/bigcommerce/big-design/commit/76eeeb730af0318d24e7dd863e352d6ab6d0125f))
+* **docs:** add new layout to Spacing page ([#821](https://github.com/bigcommerce/big-design/issues/821)) ([ea92094](https://github.com/bigcommerce/big-design/commit/ea920940a3ba0e68a6e4c9cf7b765705bf83bc21))
+* **docs:** update colors page to use new layout ([#805](https://github.com/bigcommerce/big-design/issues/805)) ([fd94357](https://github.com/bigcommerce/big-design/commit/fd943576c76474fde3874870ed07d80932072df4))
+
+
+
+
+
+## [0.30.3-alpha.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.3-alpha.1...@bigcommerce/docs@0.30.3-alpha.2) (2022-03-22)
+
+
+### Bug Fixes
+
+* **component:** add missing aria roles to tabs ([#762](https://github.com/bigcommerce/big-design/issues/762)) ([7bcc3a0](https://github.com/bigcommerce/big-design/commit/7bcc3a07255e627b458f3c31dafc90a6278eb98f))
+* **component:** change flex-reversed to flex-reverse ([#721](https://github.com/bigcommerce/big-design/issues/721)) ([b65692b](https://github.com/bigcommerce/big-design/commit/b65692b72bc765286c9f29ed9a7e4a88eb1a48c0))
+
+
+### Features
+
+* **component:** a11y + i18n for Search ([6eb85e0](https://github.com/bigcommerce/big-design/commit/6eb85e0b11e9993df546a20e6e3c853c5243cc2d))
+* **docs:** add do and dont section ([#720](https://github.com/bigcommerce/big-design/issues/720)) ([20524a8](https://github.com/bigcommerce/big-design/commit/20524a8a5d5999c5eb9851da836af750fb6dc064))
+* **docs:** add do and dont section in tabs page ([#724](https://github.com/bigcommerce/big-design/issues/724)) ([d732b9f](https://github.com/bigcommerce/big-design/commit/d732b9fc5efb83ce0b7e8f730411dcb01902b831))
+* **docs:** fix code editor bug part 1 ([#746](https://github.com/bigcommerce/big-design/issues/746)) ([6d9b1f9](https://github.com/bigcommerce/big-design/commit/6d9b1f9ebfda644328a4067daecf5bab66a050d8))
+* **docs:** fix code editor bug part 2 ([#747](https://github.com/bigcommerce/big-design/issues/747)) ([b1b6470](https://github.com/bigcommerce/big-design/commit/b1b6470121aa27a446894fdd431ea1bf7d1a0a92))
+* **docs:** fix code editor bug part 3 ([#748](https://github.com/bigcommerce/big-design/issues/748)) ([38ac255](https://github.com/bigcommerce/big-design/commit/38ac255fd7f755371e09eb33b43c25e01f9a1bca))
+* **docs:** fix code editor bug part 4 ([#749](https://github.com/bigcommerce/big-design/issues/749)) ([13b583c](https://github.com/bigcommerce/big-design/commit/13b583cf6095f263ebec3c11623f1868938a283a))
+* **docs:** update button page to use new layout ([#711](https://github.com/bigcommerce/big-design/issues/711)) ([59676c2](https://github.com/bigcommerce/big-design/commit/59676c2e268251c8670e7377d3bc412216405aaa))
+* **docs:** update display page to use new layout ([#687](https://github.com/bigcommerce/big-design/issues/687)) ([21f929f](https://github.com/bigcommerce/big-design/commit/21f929f3badc45851003036291b3bc0ce32b2d2c))
+* **docs:** update dropdown page to use new layout ([#739](https://github.com/bigcommerce/big-design/issues/739)) ([cab8ede](https://github.com/bigcommerce/big-design/commit/cab8ede3e3e3976a2c73f43743c5f42083288ece))
+* **docs:** update flex page to use new layout ([#666](https://github.com/bigcommerce/big-design/issues/666)) ([4e6a6f6](https://github.com/bigcommerce/big-design/commit/4e6a6f601cfe5b44a82f3183cc97f538698225a3))
+* **docs:** update form page to use new layout ([61db0a9](https://github.com/bigcommerce/big-design/commit/61db0a9b39931d71a37aba74d54daec793f79577))
+* **docs:** update grid page to use new layout ([#683](https://github.com/bigcommerce/big-design/issues/683)) ([fcca1ed](https://github.com/bigcommerce/big-design/commit/fcca1ed61aff856e8f1a4e49f9961d43efc4582d))
+* **docs:** update icon page to use new layout ([#756](https://github.com/bigcommerce/big-design/issues/756)) ([5af0ada](https://github.com/bigcommerce/big-design/commit/5af0ada41e0807accb8e71179e6989dc22f72fa1))
+* **docs:** update input page to use new layout ([#740](https://github.com/bigcommerce/big-design/issues/740)) ([2bec9c4](https://github.com/bigcommerce/big-design/commit/2bec9c4b790d6ea638ba12423a798e3719083670))
+* **docs:** Update Link documentation page to use new layout ([#712](https://github.com/bigcommerce/big-design/issues/712)) ([4ae6247](https://github.com/bigcommerce/big-design/commit/4ae6247fed3da4e2b1ccd2655552eb053bae0549))
+* **docs:** update margin and padding pages to use new layout ([#755](https://github.com/bigcommerce/big-design/issues/755)) ([d32c2df](https://github.com/bigcommerce/big-design/commit/d32c2df8d97435b4cc88aaed47310631efd4be39))
+* **docs:** Update modal page to use new layout ([#713](https://github.com/bigcommerce/big-design/issues/713)) ([f489736](https://github.com/bigcommerce/big-design/commit/f4897368f391d1f847d47ec616d713627b3b8022))
+* **docs:** Update multi select page to use new layout ([#719](https://github.com/bigcommerce/big-design/issues/719)) ([74f34d0](https://github.com/bigcommerce/big-design/commit/74f34d0bad47b672e9723240889c25eadb05fa7a))
+* **docs:** update overview and do and don't sections in button group page ([#726](https://github.com/bigcommerce/big-design/issues/726)) ([1aae508](https://github.com/bigcommerce/big-design/commit/1aae5082a1119ea238087b38e628f5ed7ef2364c))
+* **docs:** update Pill tabs to use new layout ([#722](https://github.com/bigcommerce/big-design/issues/722)) ([b01a5cf](https://github.com/bigcommerce/big-design/commit/b01a5cfe11a9b779a8fe9e0ee08e090e1c95e2b3))
+* **docs:** update pogress circle page to use new layout ([#728](https://github.com/bigcommerce/big-design/issues/728)) ([d9a0235](https://github.com/bigcommerce/big-design/commit/d9a0235314fd8aeb2b21490a5fef2c6be25d20a5))
+* **docs:** update popover page to use new layout ([#688](https://github.com/bigcommerce/big-design/issues/688)) ([0e4425d](https://github.com/bigcommerce/big-design/commit/0e4425dd0495191bc0d1e84a7662f74a39c18516))
+* **docs:** update progress bar page to use new layout ([#727](https://github.com/bigcommerce/big-design/issues/727)) ([d4909c4](https://github.com/bigcommerce/big-design/commit/d4909c44fe8cc98eb4cfbb5a2397ed4f7306adfa))
+* **docs:** update radio page to use new layout ([#735](https://github.com/bigcommerce/big-design/issues/735)) ([60117f6](https://github.com/bigcommerce/big-design/commit/60117f647b130179101af4a9326317a036c0b30a))
+* **docs:** update search page to use new layout ([#736](https://github.com/bigcommerce/big-design/issues/736)) ([e1a3698](https://github.com/bigcommerce/big-design/commit/e1a369830785b80523fa5efe235cbd8333f86aea))
+* **docs:** update select page to use new layout ([#738](https://github.com/bigcommerce/big-design/issues/738)) ([1d61bc2](https://github.com/bigcommerce/big-design/commit/1d61bc204f08bede298b3dca04f7645bc1ab9754))
+
+
+
+
+
+## [0.30.3-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.3-alpha.0...@bigcommerce/docs@0.30.3-alpha.1) (2022-01-14)
+
+
+### Bug Fixes
+
+* **docs:** correct indentation on grid example. ([#656](https://github.com/bigcommerce/big-design/issues/656)) ([9d3d210](https://github.com/bigcommerce/big-design/commit/9d3d2102319487f69360cf2fee062fdfe4029471))
+
+
+### Features
+
+* **docs:** update breakpoints page to use new layout ([e67905c](https://github.com/bigcommerce/big-design/commit/e67905ced6aa96bc8083300ed43ce6cbc299d986))
+
+
+
+
+
 ## [0.30.3-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.30.2...@bigcommerce/docs@0.30.3-alpha.0) (2021-10-28)
 
 

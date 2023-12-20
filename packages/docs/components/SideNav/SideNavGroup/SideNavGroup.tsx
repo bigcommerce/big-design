@@ -1,19 +1,21 @@
 import { Box, H4 } from '@bigcommerce/big-design';
 import React from 'react';
-import styled from 'styled-components';
 
 import { List } from '../../List';
 
-const StyledList = styled(List)`
-  margin: ${({ theme }) => theme.spacing.none};
-  padding: ${({ theme }) => theme.spacing.none};
-`;
+interface Props {
+  children?: React.ReactNode;
+  title: string;
+}
 
-export const SideNavGroup: React.FC<{ title: string }> = (props) => {
+export const SideNavGroup: React.FC<Props> = ({ children, title }) => {
   return (
-    <Box marginTop={{ mobile: 'xxSmall', tablet: 'xLarge' }} marginHorizontal={{ mobile: 'medium', tablet: 'none' }}>
-      <H4>{props.title}</H4>
-      <StyledList bulleted={false}>{props.children}</StyledList>
+    <Box
+      marginHorizontal={{ mobile: 'medium', tablet: 'none' }}
+      marginTop={{ mobile: 'xxSmall', tablet: 'xLarge' }}
+    >
+      <H4>{title}</H4>
+      <List reset>{children}</List>
     </Box>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { typedMemo } from '../../../../utils';
 import { EditableCellOnKeyDown } from '../../hooks';
@@ -8,30 +8,65 @@ import { StyledInput } from './styled';
 
 export interface TextEditorProps<Item> {
   cell: Cell<Item>;
+  initialValue?: string;
   isEdited: boolean;
-  onBlur(): void;
+  onBlur(event?: React.FocusEvent<HTMLInputElement>, cell?: Cell<Item>): void;
   onKeyDown: EditableCellOnKeyDown;
+  isMetaKey: boolean;
+  isControlKey: boolean;
 }
 
-const InternalTextEditor = <T extends WorksheetItem>({ cell, isEdited, onBlur, onKeyDown }: TextEditorProps<T>) => {
-  const [value, setValue] = useState(`${cell.value}`);
+const InternalTextEditor = <T extends WorksheetItem>({
+  cell,
+  isEdited,
+  initialValue,
+  onBlur,
+  onKeyDown,
+  isMetaKey,
+  isControlKey,
+}: TextEditorProps<T>) => {
+  const [value, setValue] = useState(initialValue || `${cell.value}`);
+  const isBlurBlocked = useRef(false);
+  const [isMetaKeyValue, setIsMetaKeyValue] = useState(isMetaKey);
+  const [isControlValue, setIsControlKeyValue] = useState(isControlKey);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    // Avoiding the calling of `onBlur` when user press `Escape`
+    // since we handle `onBlur` as saving of the cell data and it conflicts;
+    if (event.key === 'Escape') {
+      isBlurBlocked.current = true;
+    } else if (isMetaKeyValue && event.key === 'v' && event.metaKey) {
+      setValue('');
+      isBlurBlocked.current = false;
+      setIsMetaKeyValue(false);
+    } else if (isControlValue && event.key === 'v' && event.ctrlKey) {
+      setValue('');
+      isBlurBlocked.current = false;
+      setIsControlKeyValue(false);
+    } else {
+      isBlurBlocked.current = false;
+    }
+
     // We always receive the value as a string type, cast to Number if column type is number
     onKeyDown(event, formatValue(value));
   };
 
-  const formatValue = (value: string) => (cell.type === 'number' && value !== '' ? Number(value) : value);
+  const formatValue = (value: string) =>
+    cell.type === 'number' && value !== '' ? Number(value) : value;
 
   return (
     <StyledInput
       autoFocus
       isEdited={isEdited}
-      onBlur={onBlur}
+      onBlur={(event?: React.FocusEvent<HTMLInputElement>) => {
+        if (!isBlurBlocked.current) {
+          onBlur(event, cell);
+        }
+      }}
       onChange={handleChange}
       onKeyDown={handleKeyDown}
       value={value}

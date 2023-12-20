@@ -1,6 +1,14 @@
-import { renderHook } from '@testing-library/react-hooks';
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+import { renderHook } from '@testing-library/react';
 
-import { NodeMap, TreeExpandable, TreeFocusable, TreeNodeId, TreeNodeProps, TreeSelectable } from '../types';
+import {
+  NodeMap,
+  TreeExpandable,
+  TreeFocusable,
+  TreeNodeId,
+  TreeNodeProps,
+  TreeSelectable,
+} from '../types';
 
 import { useNodeMap } from './useNodeMap';
 import { useSelectedChildrenCount } from './useSelectedChildrenCount';
@@ -8,10 +16,10 @@ import { useTreeKeyEvents } from './useTreeKeyEvents';
 
 describe('useNodeMap', () => {
   test('should return nodeMap - empty nodes', () => {
-    const nodes: TreeNodeProps<unknown>[] = [];
+    const nodes: Array<TreeNodeProps<unknown>> = [];
     const { result } = renderHook(() => useNodeMap({ nodes }));
 
-    expect(result.current.size).toEqual(0);
+    expect(result.current.size).toBe(0);
   });
 
   test('should return nodeMap - nested nodes', () => {
@@ -29,7 +37,7 @@ describe('useNodeMap', () => {
     ];
     const { result } = renderHook(() => useNodeMap({ nodes }));
 
-    expect(result.current.size).toEqual(2);
+    expect(result.current.size).toBe(2);
 
     expect(result.current.get('1')).toEqual({
       children: ['2'],
@@ -47,17 +55,22 @@ describe('useNodeMap', () => {
 
 describe('useSelectedChildrenCount', () => {
   test('should return 0 count if no children', () => {
-    const { result } = renderHook(() => useSelectedChildrenCount({ selectedNodes: [], children: [] }));
+    const { result } = renderHook(() =>
+      useSelectedChildrenCount({ selectedNodes: [], children: [] }),
+    );
 
-    expect(result.current).toEqual(0);
+    expect(result.current).toBe(0);
   });
 
   test('should return 1 count', () => {
     const { result } = renderHook(() =>
-      useSelectedChildrenCount({ selectedNodes: ['1'], children: [{ id: '1', label: 'Test Node 1' }] }),
+      useSelectedChildrenCount({
+        selectedNodes: ['1'],
+        children: [{ id: '1', label: 'Test Node 1' }],
+      }),
     );
 
-    expect(result.current).toEqual(1);
+    expect(result.current).toBe(1);
   });
 });
 
@@ -81,7 +94,9 @@ describe('useTreeKeyEvents', () => {
   });
 
   test('space key', () => {
-    const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+    const { result } = renderHook(() =>
+      useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+    );
 
     result.current(
       {
@@ -101,7 +116,9 @@ describe('useTreeKeyEvents', () => {
 
   describe('enter key', () => {
     test('collapsible node', () => {
-      const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+      const { result } = renderHook(() =>
+        useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+      );
 
       result.current(
         {
@@ -120,7 +137,9 @@ describe('useTreeKeyEvents', () => {
     });
 
     test('end node', () => {
-      const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+      const { result } = renderHook(() =>
+        useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+      );
 
       result.current(
         {
@@ -141,7 +160,10 @@ describe('useTreeKeyEvents', () => {
 
   test('arrow down', () => {
     visibleNodes = ['0', '1'];
-    const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+
+    const { result } = renderHook(() =>
+      useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+    );
 
     result.current(
       {
@@ -161,7 +183,10 @@ describe('useTreeKeyEvents', () => {
 
   test('arrow down on last node does nothing', () => {
     visibleNodes = ['0', '1'];
-    const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+
+    const { result } = renderHook(() =>
+      useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+    );
 
     result.current(
       {
@@ -181,7 +206,10 @@ describe('useTreeKeyEvents', () => {
 
   test('arrow up', () => {
     visibleNodes = ['0', '1'];
-    const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+
+    const { result } = renderHook(() =>
+      useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+    );
 
     result.current(
       {
@@ -201,7 +229,10 @@ describe('useTreeKeyEvents', () => {
 
   test('arrow up on first node does nothing', () => {
     visibleNodes = ['0', '1'];
-    const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+
+    const { result } = renderHook(() =>
+      useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+    );
 
     result.current(
       {
@@ -222,7 +253,10 @@ describe('useTreeKeyEvents', () => {
   describe('arrow right (has children)', () => {
     test('if expanded, focuses on next visible node', () => {
       visibleNodes = ['0', '1'];
-      const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+
+      const { result } = renderHook(() =>
+        useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+      );
 
       result.current(
         {
@@ -241,7 +275,9 @@ describe('useTreeKeyEvents', () => {
     });
 
     test('if collapsed, expands node', () => {
-      const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+      const { result } = renderHook(() =>
+        useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+      );
 
       result.current(
         {
@@ -264,7 +300,9 @@ describe('useTreeKeyEvents', () => {
     test('if expanded, collapses node', () => {
       visibleNodes = ['0', '1'];
 
-      const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+      const { result } = renderHook(() =>
+        useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+      );
 
       result.current(
         {
@@ -290,7 +328,9 @@ describe('useTreeKeyEvents', () => {
         parent: '0',
       });
 
-      const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+      const { result } = renderHook(() =>
+        useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+      );
 
       result.current(
         {
@@ -311,7 +351,10 @@ describe('useTreeKeyEvents', () => {
 
   test('home', () => {
     visibleNodes = ['0', '1'];
-    const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+
+    const { result } = renderHook(() =>
+      useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+    );
 
     result.current(
       {
@@ -331,7 +374,10 @@ describe('useTreeKeyEvents', () => {
 
   test('end', () => {
     visibleNodes = ['0', '1'];
-    const { result } = renderHook(() => useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }));
+
+    const { result } = renderHook(() =>
+      useTreeKeyEvents({ onFocus, onSelect, onToggle, nodeMap, visibleNodes }),
+    );
 
     result.current(
       {

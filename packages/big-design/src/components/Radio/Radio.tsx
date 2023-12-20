@@ -1,6 +1,13 @@
-import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo } from 'react';
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  LabelHTMLAttributes,
+  Ref,
+  useId,
+  useMemo,
+} from 'react';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
@@ -33,9 +40,9 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
   style,
   ...props
 }) => {
-  const uniqueRadioId = useUniqueId('radio');
+  const uniqueRadioId = useId();
+  const labelId = useId();
   const id = props.id ? props.id : uniqueRadioId;
-  const labelId = useUniqueId('radio_label');
 
   const renderedLabel = useMemo(() => {
     if (!label) {
@@ -44,14 +51,14 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <RadioLabel htmlFor={id} id={labelId} disabled={disabled} aria-hidden={disabled}>
+        <RadioLabel aria-hidden={disabled} disabled={disabled} htmlFor={id} id={labelId}>
           {label}
         </RadioLabel>
       );
     }
 
-    if (isValidElement(label) && label.type === RadioLabel) {
-      return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+    if (isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) && label.type === RadioLabel) {
+      return cloneElement(label, {
         htmlFor: id,
         id: labelId,
       });
@@ -74,15 +81,15 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
   return (
     <RadioContainer className={className} style={style}>
       <HiddenRadio
-        type="radio"
         checked={checked}
-        id={id}
         disabled={disabled}
+        id={id}
+        type="radio"
         {...props}
         aria-labelledby={labelId}
         ref={forwardedRef}
       />
-      <StyledRadio checked={checked} disabled={disabled} htmlFor={id} aria-hidden={true} />
+      <StyledRadio aria-hidden={true} checked={checked} disabled={disabled} htmlFor={id} />
       <RadioLabelContainer>
         {renderedLabel}
         {renderedDescription}

@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/deini/big-design/compare/@bigcommerce/configs@0.18.0...@bigcommerce/configs@0.19.0) (2023-10-09)
+
+**Note:** Version bump only for package @bigcommerce/configs
+
+
+
+
+
+# [0.18.0](https://github.com/deini/big-design/compare/@bigcommerce/configs@0.17.0...@bigcommerce/configs@0.18.0) (2023-04-05)
+
+**Note:** Version bump only for package @bigcommerce/configs
+
+
+
+
+
+# [0.17.0](https://github.com/chanceaclark/big-design/compare/@bigcommerce/configs@0.16.0...@bigcommerce/configs@0.17.0) (2023-01-09)
+
+
+### Features
+
+* **deps:** update downshift and apply a11y patterns ([597e8d1](https://github.com/chanceaclark/big-design/commit/597e8d173c140e7561f84af7037c9808cc53083b))
+
+
+
+
+
+# [0.16.0](https://github.com/chanceaclark/big-design/compare/@bigcommerce/configs@0.15.2-alpha.1...@bigcommerce/configs@0.16.0) (2022-05-11)
+
+**Note:** Version bump only for package @bigcommerce/configs
+
+
+
+
+
+## [0.15.2-alpha.1](https://github.com/rtalvarez/big-design/compare/@bigcommerce/configs@0.15.2-alpha.0...@bigcommerce/configs@0.15.2-alpha.1) (2022-03-22)
+
+**Note:** Version bump only for package @bigcommerce/configs
+
+
+
+
+
 ## [0.15.2-alpha.0](https://github.com/rtalvarez/big-design/compare/@bigcommerce/configs@0.15.1...@bigcommerce/configs@0.15.2-alpha.0) (2021-10-28)
 
 **Note:** Version bump only for package @bigcommerce/configs

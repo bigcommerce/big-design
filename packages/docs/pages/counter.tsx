@@ -1,5 +1,5 @@
 import { Counter, Form, FormGroup, H1, Panel, Text } from '@bigcommerce/big-design';
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import { CounterPropTable } from '../PropTables';
@@ -11,17 +11,18 @@ const CounterPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Counter</Code> is a field that lets you increase or decrease its value incrementally, as well as
-          directly input a value.
+          <Code primary>Counter</Code> is a field that lets you increase or decrease its value
+          incrementally, as well as directly input a value.
         </Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            Use <Code primary>Counters</Code> to input values that have a small range of likely values (e.g. 1-10).
+            Use <Code primary>Counters</Code> to input values that have a small range of likely
+            values (e.g. 1-10).
           </List.Item>
           <List.Item>
-            Use <Code primary>Counters</Code> for values that are usually a number with some exceptions - e.g. number of
-            copies.
+            Use <Code primary>Counters</Code> for values that are usually a number with some
+            exceptions - e.g. number of copies.
           </List.Item>
         </List>
       </Panel>
@@ -34,10 +35,10 @@ const CounterPage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <>
+                <Fragment key="basic">
                   <Text>
-                    <Code primary>Counters</Code> are stylized numerical form controls with the ability to control
-                    validation.
+                    <Code primary>Counters</Code> are stylized numerical form controls with the
+                    ability to control validation.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -51,12 +52,12 @@ const CounterPage = () => {
                         <Form>
                           <FormGroup>
                             <Counter
-                              label="Label"
                               description="Description for the counter."
-                              value={counterValue}
-                              min={0}
+                              label="Label"
                               max={10}
+                              min={0}
                               onCountChange={handleChange}
+                              value={counterValue}
                             />
                           </FormGroup>
                         </Form>
@@ -64,18 +65,19 @@ const CounterPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'error-states',
               title: 'Error states',
               render: () => (
-                <>
+                <Fragment key="error-states">
                   <Text>
-                    <Code primary>Counters</Code> allow you to pass in an <Code primary>error</Code> message that will
-                    control the styles of a <Code primary>Counter</Code>. The logic on the counter can be controlled
-                    with the <Code primary>onCountChange</Code> prop.
+                    <Code primary>Counters</Code> allow you to pass in an <Code primary>error</Code>{' '}
+                    message that will control the styles of a <Code primary>Counter</Code>. The
+                    logic on the counter can be controlled with the{' '}
+                    <Code primary>onCountChange</Code> prop.
                   </Text>
 
                   <CodePreview>
@@ -97,11 +99,11 @@ const CounterPage = () => {
                         <Form>
                           <FormGroup>
                             <Counter
-                              label="Products"
-                              required
                               description="Select at least one item."
                               error={errors}
+                              label="Products"
                               onCountChange={handleChange}
+                              required
                               value={counterValue}
                             />
                           </FormGroup>
@@ -110,7 +112,7 @@ const CounterPage = () => {
                     }}
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
           ]}
@@ -118,28 +120,29 @@ const CounterPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <CounterPropTable renderPanel={false} />
+        <CounterPropTable />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          recommended={[
-            <>
-              <Code primary>Counters</Code> should have a default value that represents the most likley choice the user
-              will take.
-            </>,
-            <>
-              <Code primary>Counters</Code> should always have a clear label as to what the number represents.
-            </>,
-            <>
-              Include relevant signs (e.g. %, $) in the <Code primary>Counter</Code> to give context for the value’s
-              type.
-            </>,
-          ]}
           discouraged={[
             <>
-              Avoid <Code primary>Counters</Code> if the value will likley change by large/unpredictable increments
-              (e.g. price).
+              Avoid <Code primary>Counters</Code> if the value will likley change by
+              large/unpredictable increments (e.g. price).
+            </>,
+          ]}
+          recommended={[
+            <>
+              <Code primary>Counters</Code> should have a default value that represents the most
+              likley choice the user will take.
+            </>,
+            <>
+              <Code primary>Counters</Code> should always have a clear label as to what the number
+              represents.
+            </>,
+            <>
+              Include relevant signs (e.g. %, $) in the <Code primary>Counter</Code> to give context
+              for the value’s type.
             </>,
           ]}
         />

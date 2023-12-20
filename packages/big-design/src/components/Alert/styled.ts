@@ -4,8 +4,8 @@ import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 import { getBorderStyle } from '../../utils';
 import { Grid } from '../Grid';
 import { Link } from '../Link';
-import { TextProps } from '../Typography';
 import { StyleableH4, StyleableSmall } from '../Typography/private';
+import { TextProps } from '../Typography/types';
 
 import { AlertProps } from './Alert';
 
@@ -26,7 +26,8 @@ export const StyledAlert = styled(Grid)<AlertProps>`
     onClose
       ? css`
           grid-template-areas: 'icon messages close';
-          grid-template-columns: ${({ theme }) => `${theme.spacing.xLarge} 1fr ${theme.spacing.large}`};
+          grid-template-columns: ${({ theme }) =>
+            `${theme.spacing.xLarge} 1fr ${theme.spacing.large}`};
         `
       : css`
           grid-template-areas: 'icon messages';
@@ -41,10 +42,12 @@ export const StyledHeader = styled(StyleableH4)`
   margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
 `;
 
-export const StyledMessageItem = styled(StyleableSmall).attrs({ as: 'span' })`
+export const StyledMessageItem = styled<StyledComponent<'span', DefaultTheme, Partial<TextProps>>>(
+  StyleableSmall,
+).attrs({ as: 'span' })`
   color: ${({ theme }) => theme.colors.secondary70};
   vertical-align: middle;
-` as StyledComponent<'span', DefaultTheme, TextProps>;
+`;
 
 export const StyledLink = styled(Link)`
   font-size: ${({ theme }) => theme.typography.fontSize.small};

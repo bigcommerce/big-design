@@ -21,53 +21,54 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
     resetForm();
   };
 
-  const { errors, handleChange, handleSubmit, resetForm, setFieldValue, touched, values } = useFormik<Product>({
-    initialValues,
-    onSubmit,
-    validationSchema: ProductSchema,
-  });
+  const { errors, handleChange, handleSubmit, resetForm, setFieldValue, touched, values } =
+    useFormik<Product>({
+      initialValues,
+      onSubmit,
+      validationSchema: ProductSchema,
+    });
 
   return (
     <>
       <H1>Product Form</H1>
       <Panel>
-        <Form onSubmit={handleSubmit} noValidate>
+        <Form noValidate onSubmit={handleSubmit}>
           <FormGroup>
             <Input
-              label="Name"
               description="Quis veniam ullamco duis ipsum consequat aliqua irure."
+              error={touched.name && errors.name}
+              label="Name"
               name="name"
               onChange={handleChange}
-              value={values.name}
-              error={touched.name && errors.name}
               required
+              value={values.name}
             />
           </FormGroup>
           <FormGroup>
             <Input
-              label="Stock"
               description="Officia reprehenderit cillum Lorem eiusmod proident labore quis."
-              name="stock"
-              type="number"
-              onChange={handleChange}
-              value={values.stock}
               error={touched.stock && errors.stock}
+              label="Stock"
+              name="stock"
+              onChange={handleChange}
               required
+              type="number"
+              value={values.stock}
             />
           </FormGroup>
 
           <FormGroup>
             <Select
+              error={touched.category && errors.category}
               label="Category"
               name="category"
               onOptionChange={(item) => setFieldValue('category', item)}
-              value={values.category}
               options={[
                 { content: 'Food', value: 'Food' },
                 { content: 'Drink', value: 'Drink' },
               ]}
-              error={touched.category && errors.category}
               required
+              value={values.category}
             />
           </FormGroup>
 

@@ -1,8 +1,9 @@
 import React, { forwardRef, memo, Ref, useEffect, useState } from 'react';
-import ReactDatePicker, { registerLocale } from 'react-datepicker';
+import { default as ReactDatePicker, registerLocale } from 'react-datepicker';
 
 import { createLocalizationProvider } from '../../utils';
 import { Input } from '../Input';
+import { InputLocalization } from '../Input/Input';
 
 import Header from './Header';
 import { StyledDatepicker } from './styled';
@@ -12,6 +13,7 @@ interface Props {
   error?: React.ReactNode;
   label?: string;
   locale?: string;
+  localization?: InputLocalization;
   onDateChange(date: string): void;
 }
 
@@ -28,6 +30,7 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
   forwardedRef,
   label,
   locale = 'en-US',
+  localization,
   min,
   max,
   onDateChange,
@@ -37,10 +40,11 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
   ...props
 }) => {
   const [selected, setSelected] = useState<Date>();
-  const localization = createLocalizationProvider(locale);
+  const localizationProvider = createLocalizationProvider(locale);
 
-  registerLocale(locale, localization);
-  const updateDate = (value: Date) => onDateChange(value.toISOString());
+  registerLocale(locale, localizationProvider);
+
+  const updateDate = (value: Date) => onDateChange(value ? value.toISOString() : value);
 
   useEffect(() => {
     if (typeof value === 'string') {
@@ -53,6 +57,17 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
   return (
     <StyledDatepicker>
       <ReactDatePicker
+        calendarClassName="bc-datepicker"
+        className="calendar-input"
+        customInput={<Input error={error} label={label} localization={localization} {...props} />}
+        dateFormat={dateFormat || 'EE, dd MMM, yyyy'}
+        disabled={disabled}
+        locale={locale}
+        maxDate={max ? new Date(max) : undefined}
+        minDate={min ? new Date(min) : undefined}
+        onChange={updateDate}
+        placeholderText={placeholder}
+        ref={forwardedRef}
         renderCustomHeader={({
           date,
           decreaseMonth,
@@ -61,32 +76,23 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
           nextMonthButtonDisabled,
         }) => (
           <Header
-            months={localization.monthsLong}
             date={date}
             decreaseMonth={decreaseMonth}
             increaseMonth={increaseMonth}
-            prevMonthButtonDisabled={prevMonthButtonDisabled}
+            months={localizationProvider.monthsLong}
             nextMonthButtonDisabled={nextMonthButtonDisabled}
+            prevMonthButtonDisabled={prevMonthButtonDisabled}
           />
         )}
-        customInput={<Input label={label} error={error} {...props} />}
-        className="calendar-input"
-        calendarClassName="bc-datepicker"
-        dateFormat={dateFormat || 'EE, dd MMM, yyyy'}
-        disabled={disabled}
-        locale={locale}
-        maxDate={max ? new Date(max) : undefined}
-        minDate={min ? new Date(min) : undefined}
-        selected={selected}
-        placeholderText={placeholder}
         required={required}
-        onChange={updateDate}
-        ref={forwardedRef}
+        selected={selected}
       />
     </StyledDatepicker>
   );
 };
 
 export const Datepicker = memo(
-  forwardRef<ReactDatePicker, DatepickerProps>((props, ref) => <RawDatepicker {...props} forwardedRef={ref} />),
+  forwardRef<ReactDatePicker, DatepickerProps>((props, ref) => (
+    <RawDatepicker {...props} forwardedRef={ref} />
+  )),
 );

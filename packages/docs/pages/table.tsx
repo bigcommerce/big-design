@@ -1,5 +1,5 @@
 import { H1, Panel, Small, Table, TableFigure, TableItem, Text } from '@bigcommerce/big-design';
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import {
@@ -32,16 +32,23 @@ const columns = [
   { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
 ];
 
-const sort = (items, columnHash, direction) => {
+const sort = (items: Item[], columnHash: string, direction: string) => {
   return items
     .concat()
     .sort((a, b) =>
-      direction === 'ASC' ? (a[columnHash] >= b[columnHash] ? 1 : -1) : a[columnHash] <= b[columnHash] ? 1 : -1,
+      direction === 'ASC'
+        ? a[columnHash] >= b[columnHash]
+          ? 1
+          : -1
+        : a[columnHash] <= b[columnHash]
+        ? 1
+        : -1,
     );
 };
 
-const dragEnd = (items, from, to) => {
+const dragEnd = (items: Item[], from: number, to: number) => {
   const item = items.splice(from, 1);
+
   items.splice(to, 0, ...item);
 
   return items;
@@ -54,13 +61,14 @@ const TablePage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Tables</Code> are used to display data related to a single subject, across one or more rows and
-          columns.
+          <Code primary>Tables</Code> are used to display data related to a single subject, across
+          one or more rows and columns.
         </Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
-            When you have multiple objects of the same type you would like to display information about.
+            When you have multiple objects of the same type you would like to display information
+            about.
           </List.Item>
           <List.Item>When you need to rapidly add multiple items to a parent object.</List.Item>
         </List>
@@ -74,11 +82,16 @@ const TablePage = () => {
               id: 'basic',
               title: 'Basic',
               render: () => (
-                <CodePreview>
+                <CodePreview key="basic">
                   {/* jsx-to-string:start */}
                   <Table
                     columns={[
-                      { header: 'Sku', hash: 'sku', tooltip: 'Header tooltip', render: ({ sku }) => sku },
+                      {
+                        header: 'Sku',
+                        hash: 'sku',
+                        tooltip: 'Header tooltip',
+                        render: ({ sku }) => sku,
+                      },
                       { header: 'Name', hash: 'name', render: ({ name }) => name },
                       { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
                     ]}
@@ -99,17 +112,17 @@ const TablePage = () => {
               id: 'selectable',
               title: 'Selectable',
               render: () => (
-                <CodePreview scope={{ data, columns }}>
+                <CodePreview key="selectable" scope={{ data, columns }}>
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const [selectedItems, setSelectedItems] = useState<Item[]>([]);
 
                     return (
                       <Table
-                        keyField="sku"
                         columns={columns}
-                        items={data}
                         itemName="Products"
+                        items={data}
+                        keyField="sku"
                         selectable={{
                           selectedItems,
                           onSelectionChange: setSelectedItems,
@@ -125,7 +138,7 @@ const TablePage = () => {
               id: 'pagination',
               title: 'Pagination',
               render: () => (
-                <CodePreview scope={{ data, columns }}>
+                <CodePreview key="pagination" scope={{ data, columns }}>
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const [currentPage, setCurrentPage] = useState(1);
@@ -148,10 +161,10 @@ const TablePage = () => {
 
                     return (
                       <Table
-                        keyField="sku"
                         columns={columns}
-                        items={currentItems}
                         itemName="Products"
+                        items={currentItems}
+                        keyField="sku"
                         pagination={{
                           currentPage,
                           totalItems: data.length,
@@ -172,7 +185,7 @@ const TablePage = () => {
               id: 'sortable',
               title: 'Sortable',
               render: () => (
-                <CodePreview scope={{ data, columns, sort }}>
+                <CodePreview key="sortable" scope={{ data, columns, sort }}>
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const [items, setItems] = useState(data);
@@ -187,14 +200,29 @@ const TablePage = () => {
 
                     return (
                       <Table
-                        keyField="sku"
                         columns={[
-                          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku, isSortable: true },
-                          { header: 'Name', hash: 'name', render: ({ name }) => name, isSortable: true },
-                          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock, isSortable: true },
+                          {
+                            header: 'Sku',
+                            hash: 'sku',
+                            render: ({ sku }) => sku,
+                            isSortable: true,
+                          },
+                          {
+                            header: 'Name',
+                            hash: 'name',
+                            render: ({ name }) => name,
+                            isSortable: true,
+                          },
+                          {
+                            header: 'Stock',
+                            hash: 'stock',
+                            render: ({ stock }) => stock,
+                            isSortable: true,
+                          },
                         ]}
-                        items={items}
                         itemName="Products"
+                        items={items}
+                        keyField="sku"
                         sortable={{
                           columnHash,
                           direction,
@@ -211,12 +239,13 @@ const TablePage = () => {
               id: 'table-figure',
               title: 'TableFigure',
               render: () => (
-                <>
+                <Fragment key="table-figure">
                   <Text>
-                    <Code primary>TableFigure</Code> components are used to wrap tables and any relevant information to
-                    be grouped with them. <Code primary>TableFigures</Code> also provide a scrollable overflow on mobile
-                    for tables with large amounts of data. Try removing the <Code primary>TableFigure</Code> component
-                    below in mobile view to see the differences.
+                    <Code primary>TableFigure</Code> components are used to wrap tables and any
+                    relevant information to be grouped with them. <Code primary>TableFigures</Code>{' '}
+                    also provide a scrollable overflow on mobile for tables with large amounts of
+                    data. Try removing the <Code primary>TableFigure</Code> component below in
+                    mobile view to see the differences.
                   </Text>
 
                   <CodePreview>
@@ -226,7 +255,11 @@ const TablePage = () => {
                         columns={[
                           { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
                           { header: 'Name', hash: 'name', render: ({ name }) => name },
-                          { header: 'Description', hash: 'description', render: ({ description }) => description },
+                          {
+                            header: 'Description',
+                            hash: 'description',
+                            render: ({ description }) => description,
+                          },
                         ]}
                         items={[
                           {
@@ -248,14 +281,14 @@ const TablePage = () => {
                     </TableFigure>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'custom',
               title: 'Custom',
               render: () => (
-                <CodePreview>
+                <CodePreview key="custom">
                   {/* jsx-to-string:start */}
                   <Table
                     columns={[
@@ -270,7 +303,11 @@ const TablePage = () => {
                         header: 'Stock',
                         hash: 'stock',
                         render: ({ stock }) =>
-                          stock > 5 ? <Text color="success">{stock}</Text> : <Text color="danger">{stock}</Text>,
+                          stock > 5 ? (
+                            <Text color="success">{stock}</Text>
+                          ) : (
+                            <Text color="danger">{stock}</Text>
+                          ),
                       },
                     ]}
                     items={[
@@ -289,7 +326,7 @@ const TablePage = () => {
               id: 'drag-and-drop',
               title: 'Drag & Drop',
               render: () => (
-                <CodePreview scope={{ data, dragEnd }}>
+                <CodePreview key="drap-and-drop" scope={{ data, dragEnd }}>
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const [items, setItems] = useState(data);
@@ -324,27 +361,27 @@ const TablePage = () => {
             {
               id: 'table',
               title: 'Table',
-              render: () => <TablePropTable renderPanel={false} />,
+              render: () => <TablePropTable />,
             },
             {
               id: 'columns',
               title: 'Columns',
-              render: () => <TableColumnsPropTable id="table-columns-prop-table" renderPanel={false} />,
+              render: () => <TableColumnsPropTable id="table-columns-prop-table" />,
             },
             {
               id: 'selectable',
               title: 'Selectable',
-              render: () => <TableSelectablePropTable id="table-selectable-prop-table" renderPanel={false} />,
+              render: () => <TableSelectablePropTable id="table-selectable-prop-table" />,
             },
             {
               id: 'sortable',
               title: 'Sortable',
-              render: () => <TableSortablePropTable id="table-sortable-prop-table" renderPanel={false} />,
+              render: () => <TableSortablePropTable id="table-sortable-prop-table" />,
             },
             {
               id: 'table-figure',
               title: 'TableFigure',
-              render: () => <TableFigurePropTable renderPanel={false} />,
+              render: () => <TableFigurePropTable />,
             },
           ]}
         />
@@ -352,21 +389,22 @@ const TablePage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          recommended={[
-            'Keep column headers to one or two words.',
-            'Add pagination controls if the user is likely to have 5+ rows of data to view.',
-          ]}
           discouraged={[
             <>
-              Don’t use this when you need to have complex interactions (e.g. filter) with the data in the{' '}
-              <Code primary>Table</Code>.
+              Don’t use this when you need to have complex interactions (e.g. filter) with the data
+              in the <Code primary>Table</Code>.
             </>,
             <>
               Don’t put unrelated objects in the same <Code primary>Table</Code>.
             </>,
             <>
-              If using <Code primary>Table</Code>s in cramped places like modals, avoid placing too many columns.
+              If using <Code primary>Table</Code>s in cramped places like modals, avoid placing too
+              many columns.
             </>,
+          ]}
+          recommended={[
+            'Keep column headers to one or two words.',
+            'Add pagination controls if the user is likely to have 5+ rows of data to view.',
           ]}
         />
       </Panel>

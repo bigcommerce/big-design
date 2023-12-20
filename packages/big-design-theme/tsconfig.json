@@ -8,6 +8,6 @@
     "module": "esnext",
     "target": "esnext"
   },
-  "includes": ["src"],
+  "include": ["src", "setupTests.ts"],
   "exclude": ["dist"],
 }

@@ -13,7 +13,7 @@ test('render link', () => {
 
 test('renders with external icon', () => {
   const { container } = render(
-    <Link href="#" external target="_blank">
+    <Link external href="#" target="_blank">
       Link
     </Link>,
   );
@@ -23,7 +23,7 @@ test('renders with external icon', () => {
 
 test('forwards styles', () => {
   const { container } = render(
-    <Link href="#" className="test" style={{ background: 'red' }}>
+    <Link className="test" href="#" style={{ background: 'red' }}>
       Link
     </Link>,
   );

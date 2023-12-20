@@ -1,12 +1,25 @@
-import React, { cloneElement, forwardRef, isValidElement, Ref, useMemo, useState } from 'react';
+import React, {
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  LabelHTMLAttributes,
+  Ref,
+  useId,
+  useMemo,
+  useState,
+} from 'react';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { Chip, ChipProps } from '../Chip';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
 
 import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
+
+export interface InputLocalization {
+  optional: string;
+}
+
 export interface Props {
   chips?: ChipProps[];
   description?: React.ReactChild;
@@ -15,6 +28,7 @@ export interface Props {
   iconRight?: React.ReactNode;
   label?: React.ReactChild;
   labelId?: string;
+  localization?: InputLocalization;
 }
 
 interface PrivateProps {
@@ -31,10 +45,11 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   forwardedRef,
   label,
   labelId,
+  localization,
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
-  const uniqueInputId = useUniqueId('input');
+  const uniqueInputId = useId();
   const id = props.id ? props.id : uniqueInputId;
   const { errors } = useInputErrors(id, error);
 
@@ -61,21 +76,29 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <FormControlLabel id={labelId} htmlFor={id} renderOptional={!props.required}>
+        <FormControlLabel
+          htmlFor={id}
+          id={labelId}
+          localization={localization}
+          renderOptional={!props.required}
+        >
           {label}
         </FormControlLabel>
       );
     }
 
-    if (isValidElement(label) && label.type === FormControlLabel) {
-      return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+    if (
+      isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+      label.type === FormControlLabel
+    ) {
+      return cloneElement(label, {
         id: labelId,
         htmlFor: id,
       });
     }
 
     warning('label must be either a string or a FormControlLabel component.');
-  }, [id, label, labelId, props.required]);
+  }, [id, label, labelId, localization, props.required]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {
@@ -135,8 +158,8 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
           {renderedChips}
           <StyledInput
             {...props}
-            disabled={disabled}
             chips={chips}
+            disabled={disabled}
             error={errors}
             id={id}
             onBlur={handleBlur}

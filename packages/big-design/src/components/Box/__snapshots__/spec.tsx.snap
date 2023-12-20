@@ -8,7 +8,9 @@ exports[`has border props 1`] = `
 
 <div
   class="c0"
-/>
+>
+  test
+</div>
 `;
 
 exports[`has clearfix prop 1`] = `
@@ -24,7 +26,9 @@ exports[`has clearfix prop 1`] = `
 
 <div
   class="c0"
-/>
+>
+  test
+</div>
 `;
 
 exports[`has individual border props 1`] = `
@@ -32,11 +36,14 @@ exports[`has individual border props 1`] = `
   box-sizing: border-box;
   border-right: 1px solid #D9DCE9;
   border-bottom: 1px solid #D9DCE9;
+  border-left: 1px solid #D9DCE9;
 }
 
 <div
   class="c0"
-/>
+>
+  test
+</div>
 `;
 
 exports[`has shadow props 1`] = `
@@ -48,5 +55,7 @@ exports[`has shadow props 1`] = `
 
 <div
   class="c0"
-/>
+>
+  test
+</div>
 `;

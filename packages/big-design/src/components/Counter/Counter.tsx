@@ -4,24 +4,38 @@ import React, {
   forwardRef,
   InputHTMLAttributes,
   isValidElement,
+  LabelHTMLAttributes,
   Ref,
   useEffect,
+  useId,
   useMemo,
   useState,
 } from 'react';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
 
 import { StyledCounterButton, StyledCounterInput, StyledCounterWrapper } from './styled';
 
+interface Localization {
+  decreaseCount: string;
+  increaseCount: string;
+  optional: string;
+}
+
+const defaultLocalization: Localization = {
+  decreaseCount: 'Decrease count',
+  increaseCount: 'Increase count',
+  optional: 'optional',
+};
+
 export interface CounterProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: React.ReactChild;
+  label?: React.ReactNode;
   labelId?: string;
-  description?: React.ReactChild;
+  description?: React.ReactNode;
   error?: React.ReactNode | React.ReactNode[];
+  localization?: Localization;
   value: number;
   step?: number;
   onCountChange(count: number): void;
@@ -39,6 +53,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     forwardedRef,
     label,
     labelId,
+    localization = defaultLocalization,
     description,
     error,
     disabled,
@@ -47,7 +62,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
     ...props
   }) => {
     const [focus, setFocus] = useState(false);
-    const uniqueCounterId = useUniqueId('counter');
+    const uniqueCounterId = useId();
     const id = props.id ? props.id : uniqueCounterId;
     const { errors } = useInputErrors(id, error);
 
@@ -73,12 +88,11 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       return onBlur && onBlur(event);
     };
 
-    const handleIncrease = (event: React.KeyboardEvent | React.MouseEvent) => {
-      event.preventDefault();
-
-      if (value + step > max) {
+    const handleIncrease = () => {
+      if (value + step > Number(max)) {
         return;
       }
+
       // Checks that the provided value is a multiple of the step
       if (value % step === 0) {
         onCountChange(value + step);
@@ -89,12 +103,11 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       }
     };
 
-    const handleDecrease = (event: React.KeyboardEvent | React.MouseEvent) => {
-      event.preventDefault();
-
-      if (value - step < min) {
+    const handleDecrease = () => {
+      if (value - step < Number(min)) {
         return;
       }
+
       // Checks that the provided value is a multiple of the step
       if (value % step === 0) {
         onCountChange(value - step);
@@ -107,33 +120,34 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = Number(event.currentTarget.value);
+
       if (isNaN(newValue)) {
         return;
       }
+
       if (!Number.isInteger(newValue)) {
         onCountChange(Math.round(newValue));
       }
-      if (newValue >= min && newValue <= max) {
+
+      if (newValue >= Number(min) && newValue <= Number(max)) {
         onCountChange(newValue);
       }
-
-      return;
     };
 
     const handleKeyPress = (event: React.KeyboardEvent) => {
       switch (event.key) {
         case 'ArrowUp':
-          handleIncrease(event);
+          handleIncrease();
           break;
+
         case 'ArrowDown':
-          handleDecrease(event);
+          handleDecrease();
           break;
-        case 'Enter':
-          event.preventDefault();
-          break;
+
         case 'Escape':
           onCountChange(0);
           break;
+
         default:
           break;
       }
@@ -146,21 +160,29 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel id={labelId} htmlFor={id} renderOptional={!props.required}>
+          <FormControlLabel
+            htmlFor={id}
+            id={labelId}
+            localization={{ optional: localization.optional }}
+            renderOptional={!props.required}
+          >
             {label}
           </FormControlLabel>
         );
       }
 
-      if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, {
+      if (
+        isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+        label.type === FormControlLabel
+      ) {
+        return cloneElement(label, {
           id: labelId,
           htmlFor: id,
         });
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [id, label, labelId, props.required]);
+    }, [id, label, labelId, localization.optional, props.required]);
 
     const renderedDescription = useMemo(() => {
       if (!description) {
@@ -184,26 +206,28 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
         {renderedDescription}
         <StyledCounterWrapper disabled={disabled} error={errors} focus={focus}>
           <StyledCounterButton
+            disabled={disabled || value <= Number(min)}
+            iconOnly={<RemoveCircleOutlineIcon title={localization.decreaseCount} />}
             onClick={handleDecrease}
-            disabled={disabled || value <= min}
-            iconOnly={<RemoveCircleOutlineIcon title="Decrease count" />}
+            type="button"
           />
           <StyledCounterInput
             {...props}
-            ref={forwardedRef}
-            onKeyDown={handleKeyPress}
-            value={value}
             disabled={disabled}
             error={errors}
             id={id}
             onBlur={handleBlur}
             onChange={handleChange}
             onFocus={handleFocus}
+            onKeyDown={handleKeyPress}
+            ref={forwardedRef}
+            value={value}
           />
           <StyledCounterButton
+            disabled={disabled || value >= Number(max)}
+            iconOnly={<AddCircleOutlineIcon title={localization.increaseCount} />}
             onClick={handleIncrease}
-            disabled={disabled || value >= max}
-            iconOnly={<AddCircleOutlineIcon title="Increase count" />}
+            type="button"
           />
         </StyledCounterWrapper>
       </div>

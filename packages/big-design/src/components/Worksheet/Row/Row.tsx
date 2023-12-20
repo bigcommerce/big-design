@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Cell } from '../Cell';
-import { useStore } from '../hooks';
+import { useWorksheetStore } from '../hooks';
 import { RowStatus } from '../RowStatus';
 import {
   InternalWorksheetColumn,
@@ -12,18 +12,35 @@ import {
   WorksheetTextColumn,
 } from '../types';
 
-import { StyledTableRow } from './styled';
-
 interface RowProps<Item> {
-  columns: InternalWorksheetColumn<Item>[];
+  columns: Array<InternalWorksheetColumn<Item>>;
   rowIndex: number;
 }
 
 const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>) => {
-  const row = useStore(useMemo(() => (state) => state.rows[rowIndex], [rowIndex]));
-  const expandableRows = useStore(useMemo(() => (state) => state.expandableRows, []));
+  const { store, useStore } = useWorksheetStore();
 
-  const isExpanded = useStore(useMemo(() => (state) => !state.hiddenRows.includes(row.id), [row.id]));
+  const row: T = useStore(
+    store,
+    useMemo(() => (state) => state.rows[rowIndex], [rowIndex]),
+  );
+  const nextRow: T = useStore(
+    store,
+    useMemo(() => (state) => state.rows[rowIndex + 1] || null, [rowIndex]),
+  );
+  const expandableRows = useStore(
+    store,
+    useMemo(() => (state) => state.expandableRows, []),
+  );
+
+  const isExpanded = useStore(
+    store,
+    useMemo(() => (state) => !state.hiddenRows.includes(row.id), [row.id]),
+  );
+  const isDisabled = useStore(
+    store,
+    useMemo(() => (state) => state.disabledRows.includes(row.id), [row.id]),
+  );
 
   const parentId = useMemo(() => {
     if (!expandableRows) {
@@ -46,25 +63,54 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
     [],
   );
 
+  const isLastChild = useMemo(
+    () =>
+      expandableRows
+        ? Object.values(expandableRows)
+            .reduce((accum, item) => [...accum, item[item.length - 1]], [])
+            .includes(row.id)
+        : false,
+    [expandableRows, row.id],
+  );
+
+  const getIsCellDisabled = useCallback(
+    ({ enabled, disabled }: InternalWorksheetColumn<T>) => {
+      if (typeof enabled === 'boolean' && enabled) {
+        return false;
+      }
+
+      return disabled || isDisabled;
+    },
+    [isDisabled],
+  );
+
+  if (isChild && !isExpanded) {
+    return null;
+  }
+
   return (
-    <StyledTableRow isChild={isChild} isExpanded={!isChild || isExpanded}>
+    <tr>
       <RowStatus rowIndex={rowIndex} />
       {columns.map((column, columnIndex) => (
         <Cell
           columnIndex={columnIndex}
-          disabled={column.disabled}
+          disabled={getIsCellDisabled(column)}
           formatting={hasFormatting(column) ? column.formatting : undefined}
           hash={column.hash}
+          isChild={isChild}
+          isLastChild={isLastChild}
           key={`${rowIndex}-${columnIndex}`}
+          nextRowValue={(nextRow && nextRow[column.hash]) || ''}
+          notation={column.notation}
           options={column.type === 'select' ? column.config.options : undefined}
           rowId={row.id}
           rowIndex={rowIndex}
           type={column.type ?? 'text'}
           validation={column.validation}
-          value={row[column.hash]}
+          value={row[column.hash] ?? ''}
         />
       ))}
-    </StyledTableRow>
+    </tr>
   );
 };
 

@@ -3,6 +3,127 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.19.2...@bigcommerce/big-design-theme@0.20.0) (2023-10-09)
+
+**Note:** Version bump only for package @bigcommerce/big-design-theme
+
+
+
+
+
+## [0.19.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.19.1...@bigcommerce/big-design-theme@0.19.2) (2023-06-14)
+
+
+### Bug Fixes
+
+* declaration tsconfig for theme publishing ([4789b8b](https://github.com/bigcommerce/big-design/commit/4789b8b35d3fbfbd42d0312de66cd1b48bef0f39))
+
+
+
+
+
+## [0.19.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.19.0...@bigcommerce/big-design-theme@0.19.1) (2023-06-09)
+
+**Note:** Version bump only for package @bigcommerce/big-design-theme
+
+
+
+
+
+# [0.19.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.18.0...@bigcommerce/big-design-theme@0.19.0) (2023-04-05)
+
+**Note:** Version bump only for package @bigcommerce/big-design-theme
+
+
+
+
+
+# [0.18.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.17.0...@bigcommerce/big-design-theme@0.18.0) (2023-01-09)
+
+
+### Features
+
+* convert to react@18 only ([#1044](https://github.com/bigcommerce/big-design/issues/1044)) ([06c4697](https://github.com/bigcommerce/big-design/commit/06c469721bc06d1f872bed6bf5a46e6b568644e5))
+
+
+### BREAKING CHANGES
+
+* Requires `react@18` or higher.
+
+
+
+
+
+# [0.17.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.16.1...@bigcommerce/big-design-theme@0.17.0) (2022-09-27)
+
+
+### Features
+
+* **deps:** react@18 support ([51c688b](https://github.com/bigcommerce/big-design/commit/51c688b282277964eb01c1ed67c5c27cc0bc4c3e))
+
+
+
+
+
+## [0.16.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.16.0...@bigcommerce/big-design-theme@0.16.1) (2022-09-27)
+
+**Note:** Version bump only for package @bigcommerce/big-design-theme
+
+
+
+
+
+# [0.16.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.15.1-alpha.0...@bigcommerce/big-design-theme@0.16.0) (2022-08-17)
+
+**Note:** Version bump only for package @bigcommerce/big-design-theme
+
+
+
+
+
+## [0.15.1-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.15.0...@bigcommerce/big-design-theme@0.15.1-alpha.0) (2022-08-10)
+
+**Note:** Version bump only for package @bigcommerce/big-design-theme
+
+
+
+
+
+# [0.15.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.14.1...@bigcommerce/big-design-theme@0.15.0) (2022-07-06)
+
+**Note:** Version bump only for package @bigcommerce/big-design-theme
+
+
+
+
+
+## [0.14.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.14.0...@bigcommerce/big-design-theme@0.14.1) (2022-06-10)
+
+
+### Features
+
+* **theme:** re-export hideVisually from polished ([e102e6d](https://github.com/bigcommerce/big-design/commit/e102e6dfc6d28b311556946d3e90d2323885713f))
+
+
+
+
+
+# [0.14.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.13.2-alpha.1...@bigcommerce/big-design-theme@0.14.0) (2022-05-11)
+
+**Note:** Version bump only for package @bigcommerce/big-design-theme
+
+
+
+
+
+## [0.13.2-alpha.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.13.2-alpha.0...@bigcommerce/big-design-theme@0.13.2-alpha.1) (2022-03-22)
+
+**Note:** Version bump only for package @bigcommerce/big-design-theme
+
+
+
+
+
 ## [0.13.2-alpha.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-theme@0.13.1...@bigcommerce/big-design-theme@0.13.2-alpha.0) (2021-10-28)
 
 **Note:** Version bump only for package @bigcommerce/big-design-theme

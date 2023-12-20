@@ -30,13 +30,20 @@ export interface TableColumn<T> extends TableColumnDisplayProps {
   tooltip?: string;
   hideHeader?: boolean;
   isSortable?: boolean;
-  render: React.ComponentType<T> | ((props: T & { children?: ReactNode }, context?: any) => string | number);
+  render:
+    | React.ComponentType<T & { children?: ReactNode }>
+    | ((props: T & { children?: ReactNode }, context?: any) => string | number);
   verticalAlign?: 'top' | 'middle';
   width?: number | string;
   withPadding?: boolean;
 }
 
 export type TablePaginationProps = Omit<PaginationProps, keyof MarginProps>;
+
+interface Localization {
+  ascendingOrder: string;
+  descendingOrder: string;
+}
 
 export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElement> {
   actions?: React.ReactNode;
@@ -46,6 +53,7 @@ export interface TableProps<T> extends React.TableHTMLAttributes<HTMLTableElemen
   itemName?: string;
   items: T[];
   keyField?: string;
+  localization?: Localization;
   onRowDrop?(from: number, to: number): void;
   pagination?: TablePaginationProps;
   selectable?: TableSelectable<T>;

@@ -1,20 +1,27 @@
 import { Button, H1, Panel, Popover, Text } from '@bigcommerce/big-design';
 import React, { useState } from 'react';
 
-import { CodePreview, PageNavigation } from '../components';
+import { Code, CodePreview, GuidelinesTable, List } from '../components';
 import { BoxPropTable, PaddingPropTable, PopoverPropTable } from '../PropTables';
 
 const PopoverPage = () => {
-  const items = [
-    {
-      id: 'examples',
-      title: 'Examples',
-      render: () => (
-        <Panel>
-          <Text>
-            Popover is a component that floats around its anchor element. It's commonly used for building other
-            components such as dropdowns, tooltips, combobox, etc.
-          </Text>
+  return (
+    <>
+      <H1>Popover</H1>
+
+      <Panel header="Overview" headerId="overview">
+        <Text>
+          <Code primary>Popover</Code> is a component that floats around its anchor element. It's
+          commonly used for building other components such as dropdowns, tooltips, combobox, etc.
+        </Text>
+        <Text bold>When to use:</Text>
+        <List>
+          <List.Item>Wanting to show additional content or information.</List.Item>
+        </List>
+      </Panel>
+
+      <Panel header="Implementation" headerId="implementation">
+        <>
           <CodePreview>
             {/* jsx-to-string:start */}
             {function Example() {
@@ -23,7 +30,7 @@ const PopoverPage = () => {
 
               return (
                 <>
-                  <Button ref={setButtonRef} onClick={() => setIsOpen(true)}>
+                  <Button onClick={() => setIsOpen(true)} ref={setButtonRef}>
                     Open Popover
                   </Button>
                   <Popover
@@ -39,13 +46,10 @@ const PopoverPage = () => {
             }}
             {/* jsx-to-string:end */}
           </CodePreview>
-        </Panel>
-      ),
-    },
-    {
-      id: 'props',
-      title: 'Props',
-      render: () => (
+        </>
+      </Panel>
+
+      <Panel header="Props" headerId="props">
         <PopoverPropTable
           inheritedProps={
             <>
@@ -54,15 +58,17 @@ const PopoverPage = () => {
             </>
           }
         />
-      ),
-    },
-  ];
+      </Panel>
 
-  return (
-    <>
-      <H1>Popover</H1>
-
-      <PageNavigation items={items} />
+      <Panel header="Do's and Don'ts" headerId="guidelines">
+        <GuidelinesTable
+          discouraged={['Always display the popover.']}
+          recommended={[
+            'Tie popup to click or hover events on elements.',
+            'Use concise textual phrases.',
+          ]}
+        />
+      </Panel>
     </>
   );
 };

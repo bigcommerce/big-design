@@ -10,6 +10,6 @@
     "target": "esnext",
     "tsBuildInfoFile": "./.tsbuildinfo",
   },
-  "includes": ["src"],
+  "include": ["src"],
   "exclude": ["dist", "node_modules", "scripts", "svgs"],
 }

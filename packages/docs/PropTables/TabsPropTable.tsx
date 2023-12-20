@@ -10,10 +10,18 @@ const tabsProps: Prop[] = [
   },
   {
     name: 'items',
-    types: <NextLink href={{ hash: 'tab-item-prop-table', query: { props: 'tab-item' } }}>TabItem[]</NextLink>,
+    types: (
+      <NextLink href={{ hash: 'tab-item-prop-table', query: { props: 'tab-item' } }}>
+        TabItem[]
+      </NextLink>
+    ),
     description: (
       <>
-        See <NextLink href={{ hash: 'tab-item-prop-table', query: { props: 'tab-item' } }}>TabItem</NextLink> for usage.
+        See{' '}
+        <NextLink href={{ hash: 'tab-item-prop-table', query: { props: 'tab-item' } }}>
+          TabItem
+        </NextLink>{' '}
+        for usage.
       </>
     ),
   },
@@ -25,10 +33,16 @@ const tabsProps: Prop[] = [
 ];
 
 export const TabsPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Tabs" propList={tabsProps} {...props} />
+  <PropTable propList={tabsProps} title="Tabs" {...props} />
 );
 
 const tabItemProps: Prop[] = [
+  {
+    name: 'ariaControls',
+    types: 'string',
+    description: 'An ID corresponding to the HTML element where your content will be.',
+    required: false,
+  },
   {
     name: 'id',
     types: 'string',
@@ -49,5 +63,5 @@ const tabItemProps: Prop[] = [
 ];
 
 export const TabItemPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Tabs[TabItem]" propList={tabItemProps} {...props} />
+  <PropTable propList={tabItemProps} title="Tabs[TabItem]" {...props} />
 );

@@ -8,6 +8,7 @@ import { SnippetControls } from '../SnippetControls';
 import { CodeEditorContext } from '../StoryWrapper/StoryWrapper';
 
 interface EditorProps {
+  children?: React.ReactNode;
   language?: Language;
   showControls?: boolean;
 }
@@ -46,14 +47,31 @@ export const CodeSnippet: React.FC<EditorProps> = (props) => {
 
   return (
     <Box border="box" marginBottom="xxLarge">
-      {showControls && <SnippetControls copyToClipboard={() => clipboardCopy(code)} helperText="Code example" />}
+      {showControls && (
+        <SnippetControls copyToClipboard={() => clipboardCopy(code)} helperText="Code example" />
+      )}
 
-      <Editor code={code} theme={editorTheme} language={language} disabled />
+      <Editor
+        code={code}
+        disabled
+        language={language}
+        // Adds background and text color
+        style={editorTheme.plain}
+        theme={{
+          ...editorTheme,
+          plain: {
+            ...editorTheme.plain,
+            // Adds back previous version stylings
+            fontFamily: 'monospace',
+            whiteSpace: 'pre-wrap',
+          },
+        }}
+      />
     </Box>
   );
 };
 
 CodeSnippet.defaultProps = {
-  language: 'jsx',
+  language: 'tsx',
   showControls: true,
 };

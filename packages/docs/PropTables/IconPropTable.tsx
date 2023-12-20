@@ -20,19 +20,20 @@ const iconProps: Prop[] = [
   {
     name: 'size',
     types: [
-      <NextLink href="/spacing" key="1">
+      <NextLink href="/spacing" key="spacing-link">
         Spacing
       </NextLink>,
       'number',
     ],
     description: (
       <>
-        Determines the size of the icon. Accepts a <NextLink href="/spacing">Spacing</NextLink> value or a number of px.
+        Determines the size of the icon. Accepts a <NextLink href="/spacing">Spacing</NextLink>{' '}
+        value or a number of px.
       </>
     ),
   },
 ];
 
 export const IconPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Icon" propList={iconProps} {...props} />
+  <PropTable propList={iconProps} title="Icon" {...props} />
 );

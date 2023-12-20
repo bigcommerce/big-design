@@ -4,9 +4,8 @@ const { outputFile, readFile } = require('fs-extra');
 const glob = require('glob-promise');
 const { cpus } = require('os');
 const { basename, join } = require('path');
-const rimraf = require('rimraf');
+const { rimraf } = require('rimraf');
 const asyncPool = require('tiny-async-pool');
-const { promisify } = require('util');
 
 const config = require('./svgr.config');
 
@@ -14,7 +13,6 @@ const SOURCE = join(__dirname, '..', 'svgs', '*', '*.svg');
 const DEST_PATH = join(__dirname, '..', 'src', 'components');
 
 const componentNames = new Set();
-const asyncRimraf = promisify(rimraf);
 
 async function convertToReactComponent(filePath, iconName) {
   const svgCode = await readFile(filePath, 'utf8');
@@ -24,9 +22,7 @@ async function convertToReactComponent(filePath, iconName) {
   return outputFile(destPath, code);
 }
 
-async function generateIcons() {
-  const iconFiles = await glob(SOURCE);
-
+function convertWithConcurrencyPool(iconFiles) {
   return asyncPool(cpus().length, iconFiles, (iconFilePath) => {
     const filename = basename(iconFilePath, '.svg');
     const name = `${camelcase(filename, { pascalCase: true })}Icon`;
@@ -40,8 +36,15 @@ async function generateIcons() {
   });
 }
 
+async function generateIcons() {
+  const iconFiles = await glob(SOURCE);
+
+  // eslint-disable-next-line curly
+  for await (const _result of convertWithConcurrencyPool(iconFiles));
+}
+
 function cleanDestDirectory() {
-  return asyncRimraf(DEST_PATH);
+  return rimraf(DEST_PATH);
 }
 
 (async () => {

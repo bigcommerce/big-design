@@ -1,14 +1,16 @@
+import userEvent from '@testing-library/user-event';
 import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
 
 import { fireEvent, render, screen } from '@test/utils';
 
 import { Table, TableFigure } from './Table';
+import { TableColumn, TableItem } from './types';
 
 interface SimpleTableOptions {
   className?: string;
-  columns?: any[];
-  items?: any[];
+  columns?: Array<TableColumn<TableItem>>;
+  items?: TableItem[];
   dataTestId?: string;
   emptyComponent?: React.ReactElement;
   headerless?: boolean;
@@ -30,19 +32,18 @@ const getSimpleTable = ({
 }: SimpleTableOptions = {}) => (
   <Table
     className={className}
-    data-testid={dataTestId}
-    id={id}
-    headerless={headerless}
-    itemName={itemName}
-    emptyComponent={emptyComponent}
-    style={style}
     columns={
       columns || [
-        { header: 'Sku', render: ({ sku }) => sku },
-        { header: 'Name', render: ({ name }) => name },
-        { header: 'Stock', render: ({ stock }) => stock },
+        { hash: 'sku', header: 'Sku', render: ({ sku }) => sku },
+        { hash: 'name', header: 'Name', render: ({ name }) => name },
+        { hash: 'stock', header: 'Stock', render: ({ stock }) => stock },
       ]
     }
+    data-testid={dataTestId}
+    emptyComponent={emptyComponent}
+    headerless={headerless}
+    id={id}
+    itemName={itemName}
     items={
       items || [
         { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
@@ -52,6 +53,7 @@ const getSimpleTable = ({
         { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
       ]
     }
+    style={style}
   />
 );
 
@@ -90,7 +92,7 @@ test('forwards id and testid when provided', () => {
 test('does not forward styles', () => {
   const { container } = render(getSimpleTable({ className: 'test', style: { background: 'red' } }));
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
@@ -98,21 +100,25 @@ test('renders column with custom component', () => {
   const { getAllByTestId } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', render: ({ name }: any) => <h3 data-testid="name">{name}</h3> },
+        { hash: 'sku', header: 'Sku', render: ({ sku }: any) => sku },
+        {
+          hash: 'name',
+          header: 'Name',
+          render: ({ name }: any) => <h3 data-testid="name">{name}</h3>,
+        },
       ],
     }),
   );
 
-  expect(getAllByTestId('name').length).toBe(5);
+  expect(getAllByTestId('name')).toHaveLength(5);
 });
 
 test('renders column with tooltip icon', () => {
   const { getByTitle } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+        { hash: 'sku', header: 'Sku', render: ({ sku }: any) => sku },
+        { hash: 'name', header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
       ],
     }),
   );
@@ -124,8 +130,8 @@ test('renders tooltip when hovering on icon', async () => {
   const { getByTitle } = render(
     getSimpleTable({
       columns: [
-        { header: 'Sku', render: ({ sku }: any) => sku },
-        { header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
+        { hash: 'sku', header: 'Sku', render: ({ sku }: any) => sku },
+        { hash: 'name', header: 'Name', tooltip: 'Some text', render: ({ name }: any) => name },
       ],
     }),
   );
@@ -142,12 +148,14 @@ test('tweaks column styles with props', () => {
     getSimpleTable({
       columns: [
         {
+          hash: '1',
           header: 'Sku',
           render: ({ sku }: any) => sku,
           align: 'right',
           verticalAlign: 'middle',
         },
         {
+          hash: '2',
           header: 'Name',
           render: ({ name }: any) => name,
           width: 100,
@@ -194,7 +202,7 @@ test('renders a pagination component', async () => {
   const onItemsPerPageChange = jest.fn();
   const onPageChange = jest.fn();
 
-  const { container, findByRole, getByTitle } = render(
+  const { container, findByTitle } = render(
     <Table
       columns={[
         { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
@@ -219,17 +227,66 @@ test('renders a pagination component', async () => {
     />,
   );
 
-  fireEvent.click(getByTitle('Next page'));
+  const nextPage = await findByTitle('Next page');
 
-  await findByRole('table');
+  await userEvent.click(nextPage);
 
   expect(onPageChange).toHaveBeenCalledWith(2);
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('renders a pagination component with custom button labels', async () => {
+  const getRangeLabel = (first: number, last: number, totalItems: number) => {
+    return `[Custom label] ${first}-${last} of ${totalItems}`;
+  };
+  const onItemsPerPageChange = jest.fn();
+  const onPageChange = jest.fn();
+
+  const { findByRole } = render(
+    <Table
+      columns={[
+        { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+        { header: 'Name', hash: 'name', render: ({ name }) => name },
+        { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+      ]}
+      items={[
+        { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+        { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+        { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+        { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+        { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+      ]}
+      pagination={{
+        currentPage: 1,
+        itemsPerPage: 3,
+        totalItems: 5,
+        itemsPerPageOptions: [3, 5, 10],
+        onItemsPerPageChange,
+        onPageChange,
+        getRangeLabel,
+        label: '[Custom] Pagination',
+        localization: {
+          previousPage: '[Custom] Previous page',
+          nextPage: '[Custom] Next page',
+        },
+      }}
+    />,
+  );
+
+  const navigation = await findByRole('navigation', { name: '[Custom] Pagination' });
+  const paginationDropdown = await findByRole('button', { name: '[Custom label] 1-3 of 5' });
+  const previousButtonPage = await findByRole('button', { name: '[Custom] Previous page' });
+  const nextButtonPage = await findByRole('button', { name: '[Custom] Next page' });
+
+  expect(navigation).toBeVisible();
+  expect(paginationDropdown).toBeVisible();
+  expect(previousButtonPage).toBeVisible();
+  expect(nextButtonPage).toBeVisible();
+});
+
 describe('selectable', () => {
-  let columns: any;
-  let items: any;
+  let columns: Array<TableColumn<TableItem>>;
+  let items: TableItem[];
   let onSelectionChange: jest.Mock;
   const itemName = 'Product';
 
@@ -263,12 +320,12 @@ describe('selectable', () => {
     );
 
     // One per item + Actions (select all) checkbox
-    expect(getAllByRole('checkbox').length).toBe(items.length + 1);
+    expect(getAllByRole('checkbox')).toHaveLength(items.length + 1);
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  test('click on select all should call selectedItems with all items', () => {
-    const { getAllByRole } = render(
+  test('click on select all should call selectedItems with all items', async () => {
+    render(
       <Table
         columns={columns}
         itemName={itemName}
@@ -280,22 +337,24 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
+    const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Select All
     expect(selectAllCheckbox.checked).toBe(false);
+
     fireEvent.click(selectAllCheckbox);
+
     expect(onSelectionChange).toHaveBeenCalledWith(items);
   });
 
-  test('click on select all should call selectedItems with all items respecting multi-page', () => {
+  test('click on select all should call selectedItems with all items respecting multi-page', async () => {
     const previouslySelectedItem = {
       sku: 'Test',
       name: 'Test Previously Select Item (multi-page)',
       stock: 25,
     };
 
-    const { getAllByRole } = render(
+    render(
       <Table
         columns={columns}
         itemName={itemName}
@@ -307,17 +366,18 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
+    const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Select All
     expect(selectAllCheckbox.checked).toBe(false);
+
     fireEvent.click(selectAllCheckbox);
 
     expect(onSelectionChange).toHaveBeenCalledWith([previouslySelectedItem, ...items]);
   });
 
-  test('select all when already all selected should deselect all items', () => {
-    const { getAllByRole } = render(
+  test('select all when already all selected should deselect all items', async () => {
+    render(
       <Table
         columns={columns}
         itemName={itemName}
@@ -329,22 +389,24 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
+    const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Deselect all
     expect(selectAllCheckbox.checked).toBe(true);
+
     fireEvent.click(selectAllCheckbox);
+
     expect(onSelectionChange).toHaveBeenCalledWith([]);
   });
 
-  test('select all when already all selected should deselect all items and respect multi-page', () => {
+  test('select all when already all selected should deselect all items and respect multi-page', async () => {
     const previouslySelectedItem = {
       sku: 'Test',
       name: 'Test Previously Select Item (multi-page)',
       stock: 25,
     };
 
-    const { getAllByRole } = render(
+    render(
       <Table
         columns={columns}
         itemName={itemName}
@@ -356,18 +418,20 @@ describe('selectable', () => {
       />,
     );
 
-    const [selectAllCheckbox] = getAllByRole('checkbox') as HTMLInputElement[];
+    const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
     // Deselect all
     expect(selectAllCheckbox.checked).toBe(true);
+
     fireEvent.click(selectAllCheckbox);
+
     expect(onSelectionChange).toHaveBeenCalledWith([previouslySelectedItem]);
   });
 });
 
 describe('sortable', () => {
-  let columns: any;
-  let items: any;
+  let columns: Array<TableColumn<TableItem>>;
+  let items: TableItem[];
   let onSort: jest.Mock;
 
   beforeEach(() => {
@@ -415,11 +479,11 @@ describe('sortable', () => {
       />,
     );
 
-    const skuHeader = container.querySelector('th') as HTMLTableCellElement;
+    const skuHeaders: NodeListOf<HTMLTableCellElement> = container.querySelectorAll('th');
 
-    fireEvent.click(skuHeader);
+    fireEvent.click(skuHeaders[0]);
 
-    expect(onSort).toBeCalledWith('sku', 'DESC', columns[0]);
+    expect(onSort).toHaveBeenCalledWith('sku', 'DESC', columns[0]);
   });
 
   test('does not call onSort when pressing a non-sortable header', () => {
@@ -439,7 +503,7 @@ describe('sortable', () => {
 
     fireEvent.click(nameHeader[1]);
 
-    expect(onSort).not.toBeCalled();
+    expect(onSort).not.toHaveBeenCalled();
   });
 
   test('calls onSort when pressing the direction icon', () => {
@@ -459,12 +523,16 @@ describe('sortable', () => {
 
     fireEvent.click(sortIcon);
 
-    expect(onSort).toBeCalledWith('sku', 'DESC', columns[0]);
+    expect(onSort).toHaveBeenCalledWith('sku', 'DESC', columns[0]);
   });
 
   test('renders custom actions', () => {
     const { getByTestId } = render(
-      <Table columns={columns} items={items} actions={<div data-testid="customAction">Test Action</div>} />,
+      <Table
+        actions={<div data-testid="customAction">Test Action</div>}
+        columns={columns}
+        items={items}
+      />,
     );
 
     const customAction = getByTestId('customAction');
@@ -502,8 +570,8 @@ describe('sortable', () => {
 });
 
 describe('draggable', () => {
-  let columns: any;
-  let items: any;
+  let columns: Array<TableColumn<TableItem>>;
+  let items: TableItem[];
   let onRowDrop: jest.Mock;
 
   beforeEach(() => {
@@ -526,15 +594,20 @@ describe('draggable', () => {
     const { container } = render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
     const dragIcons = container.querySelectorAll('svg');
 
-    expect(dragIcons?.length).toBe(items.length);
+    expect(dragIcons).toHaveLength(items.length);
   });
 
-  test('onRowDrop called with expected args when a row is dropped', () => {
+  test('onRowDrop called with expected args when a row is dropped', async () => {
     const spaceKey = { keyCode: 32 };
     const downKey = { keyCode: 40 };
-    const { container } = render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
-    const dragEl = container.querySelector('[data-rbd-draggable-id]') as HTMLElement;
+
+    render(<Table columns={columns} items={items} onRowDrop={onRowDrop} />);
+
+    const dragEls = await screen.findAllByRole<HTMLButtonElement>('button');
+    const dragEl = dragEls[0];
+
     dragEl.focus();
+
     expect(dragEl).toHaveFocus();
 
     fireEvent.keyDown(dragEl, spaceKey);
@@ -543,4 +616,70 @@ describe('draggable', () => {
 
     expect(onRowDrop).toHaveBeenCalledWith(0, 1);
   });
+});
+
+test('renders localized ascending label', async () => {
+  const onSort = jest.fn();
+  const items = [
+    { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+    { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+    { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+    { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+    { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+  ];
+  const columns = [
+    { header: 'Sku', hash: 'sku', render: ({ sku }: any) => sku, isSortable: true },
+    { header: 'Name', hash: 'name', render: ({ name }: any) => name },
+    { header: 'Stock', hash: 'stock', render: ({ stock }: any) => stock },
+  ];
+
+  render(
+    <Table
+      columns={columns}
+      items={items}
+      localization={{ ascendingOrder: 'Orden ascendiente', descendingOrder: 'Orden descendiente' }}
+      sortable={{
+        columnHash: 'sku',
+        direction: 'ASC',
+        onSort,
+      }}
+    />,
+  );
+
+  const ascSortIcon = screen.getByTitle('Orden ascendiente');
+
+  expect(ascSortIcon).toBeInTheDocument();
+});
+
+test('renders localized descending label', async () => {
+  const onSort = jest.fn();
+  const items = [
+    { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+    { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+    { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+    { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+    { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+  ];
+  const columns = [
+    { header: 'Sku', hash: 'sku', render: ({ sku }: any) => sku, isSortable: true },
+    { header: 'Name', hash: 'name', render: ({ name }: any) => name },
+    { header: 'Stock', hash: 'stock', render: ({ stock }: any) => stock },
+  ];
+
+  render(
+    <Table
+      columns={columns}
+      items={items}
+      localization={{ ascendingOrder: 'Orden ascendiente', descendingOrder: 'Orden descendiente' }}
+      sortable={{
+        columnHash: 'sku',
+        direction: 'DESC',
+        onSort,
+      }}
+    />,
+  );
+
+  const descSortIcon = await screen.queryByTitle('Orden descendiente');
+
+  expect(descSortIcon).toBeInTheDocument();
 });

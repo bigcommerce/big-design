@@ -3,16 +3,17 @@ import React, {
   cloneElement,
   createRef,
   isValidElement,
+  LabelHTMLAttributes,
   RefObject,
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
 } from 'react';
 import { usePopper } from 'react-popper';
 
-import { useUniqueId } from '../../hooks';
 import { typedMemo, warning } from '../../utils';
 import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
@@ -23,7 +24,7 @@ import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Sel
 import { SelectAction } from '../Select/types';
 
 export const Select = typedMemo(
-  <T extends unknown>({
+  <T,>({
     action,
     autoComplete = 'off',
     autoWidth = false,
@@ -34,6 +35,7 @@ export const Select = typedMemo(
     inputRef,
     label,
     labelId,
+    localization,
     maxHeight,
     onClose,
     onOpen,
@@ -48,9 +50,20 @@ export const Select = typedMemo(
     ...props
   }: SelectProps<T>): ReturnType<React.FC<SelectProps<T>>> => {
     const defaultRef: RefObject<HTMLInputElement> = createRef();
-    const selectUniqueId = useUniqueId('select');
+    const selectUniqueId = useId();
 
     const [inputValue, setInputValue] = useState<string | undefined>('');
+
+    // aria-labelledby takes presedence over aria-label so we need to strip it out if there is no label
+    // Downshift v7 automatically adds aria-labelledby to props even if there is no label defined
+    // This is a workaround to remove the aria-labelledby if there is no label defined
+    const ariaLabelledBy = useMemo(() => {
+      if (props['aria-label'] && !label) {
+        return { 'aria-labelledby': undefined };
+      }
+
+      return {};
+    }, [label, props]);
 
     const flattenOptions = useCallback((options: SelectProps<T>['options']) => {
       const isGroups = (
@@ -71,7 +84,9 @@ export const Select = typedMemo(
 
     // Find the selected option
     const selectedOption = useMemo(() => {
-      return flattenedOptions.find((option): option is SelectOption<T> => 'value' in option && option.value === value);
+      return flattenedOptions.find(
+        (option): option is SelectOption<T> => 'value' in option && option.value === value,
+      );
     }, [flattenedOptions, value]);
 
     // Initialize with flattened options
@@ -80,10 +95,22 @@ export const Select = typedMemo(
     // Need to set select options if options prop changes
     useEffect(() => setFilteredOptions(flattenedOptions), [flattenedOptions]);
 
-    const handleOnSelectedItemChange = (changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+    const getFirstMatchingOptionIndex = (
+      filteredOptions: Array<SelectOption<T> | SelectAction>,
+    ) => {
+      return filteredOptions.findIndex((option) => !option.disabled);
+    };
+
+    const handleOnSelectedItemChange = (
+      changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>,
+    ) => {
       if (action && changes.selectedItem && changes.selectedItem.content === action.content) {
         action.onActionClick(inputValue || null);
-      } else if (changes.selectedItem && 'value' in changes.selectedItem && typeof onOptionChange === 'function') {
+      } else if (
+        changes.selectedItem &&
+        'value' in changes.selectedItem &&
+        typeof onOptionChange === 'function'
+      ) {
         onOptionChange(changes.selectedItem.value, changes.selectedItem);
       }
     };
@@ -94,7 +121,19 @@ export const Select = typedMemo(
     }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       // Filter only when List is open
       if (filterable && isOpen === true) {
-        setFilteredOptions(filterOptions(inputValue));
+        const newFilteredOptions = filterOptions(inputValue);
+        const firstMatchingOptionIndex = getFirstMatchingOptionIndex(newFilteredOptions);
+
+        setFilteredOptions(newFilteredOptions);
+
+        // Auto highlight first matching option
+        if (inputValue !== '') {
+          setHighlightedIndex(firstMatchingOptionIndex);
+        } else if (selectedItem) {
+          const selectedItemIndex = flattenedOptions.indexOf(selectedItem);
+
+          setHighlightedIndex(selectedItemIndex);
+        }
       }
 
       setInputValue(inputValue || '');
@@ -108,7 +147,9 @@ export const Select = typedMemo(
       );
     };
 
-    const handleOnIsOpenChange = ({ isOpen }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
+    const handleOnIsOpenChange = ({
+      isOpen,
+    }: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>) => {
       if (filterable && !isOpen) {
         // Reset the options when the List is closed
         setFilteredOptions(flattenedOptions);
@@ -129,7 +170,17 @@ export const Select = typedMemo(
     ) => {
       switch (actionAndChanges.type) {
         case useCombobox.stateChangeTypes.InputBlur:
-          return { ...actionAndChanges.changes, inputValue: selectedOption ? selectedOption.content : '' };
+          return {
+            ...actionAndChanges.changes,
+            inputValue: selectedOption ? selectedOption.content : '',
+          };
+
+        case useCombobox.stateChangeTypes.InputFocus:
+          return {
+            ...actionAndChanges.changes,
+            isOpen: false, // keep the menu closed when input gets focused.
+          };
+
         default:
           return actionAndChanges.changes;
       }
@@ -137,7 +188,6 @@ export const Select = typedMemo(
 
     const {
       closeMenu,
-      getComboboxProps,
       getInputProps,
       getItemProps,
       getLabelProps,
@@ -147,6 +197,7 @@ export const Select = typedMemo(
       isOpen,
       openMenu,
       selectedItem,
+      setHighlightedIndex,
     } = useCombobox({
       id: selectUniqueId,
       inputId: id,
@@ -211,18 +262,25 @@ export const Select = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel {...getLabelProps()} renderOptional={!required}>
+          <FormControlLabel
+            {...getLabelProps()}
+            localization={localization}
+            renderOptional={!required}
+          >
             {label}
           </FormControlLabel>
         );
       }
 
-      if (isValidElement(label) && label.type === FormControlLabel) {
-        return cloneElement(label as React.ReactElement<React.LabelHTMLAttributes<HTMLLabelElement>>, getLabelProps());
+      if (
+        isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+        label.type === FormControlLabel
+      ) {
+        return cloneElement(label, getLabelProps());
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [getLabelProps, label, required]);
+    }, [getLabelProps, label, localization, required]);
 
     const renderToggle = useMemo(() => {
       return (
@@ -245,14 +303,13 @@ export const Select = typedMemo(
           <Input
             {...getInputProps({
               ...props,
+              ...ariaLabelledBy,
               autoComplete,
               disabled,
               onClick: () => {
                 !isOpen && openMenu();
               },
               onFocus: (event) => {
-                !isOpen && openMenu();
-
                 if (typeof props.onFocus === 'function') {
                   props.onFocus(event);
                 }
@@ -261,12 +318,16 @@ export const Select = typedMemo(
                 switch (event.key) {
                   case 'Enter':
                     event.preventDefault();
+
                     if (isOpen === false) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
+                      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions,  @typescript-eslint/no-unsafe-member-access
                       (event.nativeEvent as any).preventDownshiftDefault = true;
                     }
+
                     break;
+
                   case 'Escape':
                     if (isOpen === false) {
                       // Reset the value to empty
@@ -274,7 +335,9 @@ export const Select = typedMemo(
                     } else {
                       closeMenu();
                     }
+
                     // https://github.com/downshift-js/downshift/issues/734
+                    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-member-access
                     (event.nativeEvent as any).preventDownshiftDefault = true;
                     break;
                 }
@@ -282,41 +345,44 @@ export const Select = typedMemo(
               placeholder,
               ref: getInputRef(),
               readOnly: !filterable,
-              required: required,
+              required,
             })}
             iconLeft={selectedItem?.icon}
             iconRight={renderToggle}
+            localization={localization}
           />
         </StyledInputContainer>
       );
     }, [
-      autoComplete,
-      closeMenu,
-      disabled,
-      filterable,
       getInputProps,
-      getInputRef,
-      isOpen,
-      onOptionChange,
-      openMenu,
-      placeholder,
       props,
-      renderToggle,
+      ariaLabelledBy,
+      autoComplete,
+      disabled,
+      placeholder,
+      getInputRef,
+      filterable,
       required,
-      selectedItem,
+      selectedItem?.icon,
+      renderToggle,
+      localization,
+      isOpen,
+      openMenu,
+      onOptionChange,
+      closeMenu,
     ]);
 
     return (
       <div>
         {renderLabel}
-        <div {...getComboboxProps()}>{renderInput}</div>
+        {renderInput}
         <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
             action={action}
             autoWidth={autoWidth}
             filteredItems={filteredOptions}
             getItemProps={getItemProps}
-            getMenuProps={getMenuProps}
+            getMenuProps={() => getMenuProps({ ...ariaLabelledBy })}
             highlightedIndex={highlightedIndex}
             isOpen={isOpen}
             items={options}

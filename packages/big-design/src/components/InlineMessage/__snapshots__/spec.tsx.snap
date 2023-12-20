@@ -18,7 +18,7 @@ exports[`render default (success) InlineMessage 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -123,7 +123,7 @@ exports[`render error InlineMessage 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -224,7 +224,7 @@ exports[`render info InlineMessage 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -329,7 +329,7 @@ exports[`render warning InlineMessage 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -491,7 +491,6 @@ exports[`renders actions 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -554,11 +553,10 @@ exports[`renders actions 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -742,7 +740,6 @@ exports[`renders close button 1`] = `
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
-  pointer-events: auto;
   position: relative;
   text-align: center;
   -webkit-text-decoration: none;
@@ -754,7 +751,6 @@ exports[`renders close button 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  padding: 0 0.5rem;
   background-color: #3C64F4;
   border-color: #3C64F4;
   font-weight: 600;
@@ -800,7 +796,6 @@ exports[`renders close button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-  visibility: visible;
 }
 
 .c10 {
@@ -808,6 +803,7 @@ exports[`renders close button 1`] = `
   border: none;
   color: #313440;
   height: auto;
+  min-width: auto;
   padding: 0;
 }
 
@@ -828,7 +824,7 @@ exports[`renders close button 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -880,6 +876,8 @@ exports[`renders close button 1`] = `
 @media (min-width:720px) {
   .c9 {
     width: auto;
+    padding: 0;
+    min-width: 2.25rem;
   }
 }
 
@@ -935,7 +933,7 @@ exports[`renders close button 1`] = `
         class="c11"
       >
         <svg
-          aria-labelledby="bd-icon-2"
+          aria-labelledby=":ra:"
           class="c12"
           fill="currentColor"
           height="24"
@@ -945,9 +943,9 @@ exports[`renders close button 1`] = `
           width="24"
         >
           <title
-            id="bd-icon-2"
+            id=":ra:"
           >
-            Close.
+            Close
           </title>
           <path
             d="M0 0h24v24H0V0z"
@@ -981,7 +979,7 @@ exports[`renders header 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -1112,7 +1110,7 @@ exports[`renders with external link 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 
@@ -1285,7 +1283,7 @@ exports[`renders with link 1`] = `
 }
 
 .c1 {
-  grid-gap: 1rem;
+  gap: 1rem;
   display: grid;
 }
 

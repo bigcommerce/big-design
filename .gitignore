@@ -11,3 +11,4 @@ packages/docs/pages/dev.tsx
 .DS_Store
 .parcel-cache
 .tsbuildinfo
+.env*.local

@@ -4,9 +4,8 @@ import { MethodList } from '../components';
 
 export const AlertsManagerAddMethodList: React.FC = () => (
   <MethodList
-    name="add"
     intro="Adds an alert to the manager with an optional callback on dismiss."
-    usage="alertsManager.add({ messages: [{ text: 'error' }] }, () => null)"
+    name="add"
     parameterList={[
       {
         param: 'alert',
@@ -15,14 +14,14 @@ export const AlertsManagerAddMethodList: React.FC = () => (
       },
     ]}
     returnDescription="The value of the alert key. If no key is provided, then an auto-generated one will be provided."
+    usage="alertsManager.add({ messages: [{ text: 'error' }] }, () => null)"
   />
 );
 
 export const AlertsManagerRemoveMethodList: React.FC = () => (
   <MethodList
-    name="remove"
     intro="Removes an alert by key and displays the next alert, if available."
-    usage="alertsManager.remove(key)"
+    name="remove"
     parameterList={[
       {
         param: 'key',
@@ -31,31 +30,33 @@ export const AlertsManagerRemoveMethodList: React.FC = () => (
       },
     ]}
     returnDescription="Contains the alert removed."
+    usage="alertsManager.remove(key)"
   />
 );
 
 export const AlertsManagerClearMethodList: React.FC = () => (
   <MethodList
-    name="clear"
     intro="Removes all alerts."
-    usage="alertsManager.clear()"
+    name="clear"
     parameterList={[]}
     returnDescription="Contains the alerts removed."
+    usage="alertsManager.clear()"
   />
 );
 
 export const AlertsManagerSubscribeMethodList: React.FC = () => (
   <MethodList
-    name="subscribe"
     intro="Subscribe the the alerts manager."
-    usage="alertsManager.subscribe((alert) => {})"
+    name="subscribe"
     parameterList={[
       {
         param: 'callback',
-        description: 'Callback function to run when the alerts list changes. Will pass the alert to display, or null.',
+        description:
+          'Callback function to run when the alerts list changes. Will pass the alert to display, or null.',
         required: true,
       },
     ]}
     returnDescription="An unsubscribe method for the subscibed method."
+    usage="alertsManager.subscribe((alert) => {})"
   />
 );

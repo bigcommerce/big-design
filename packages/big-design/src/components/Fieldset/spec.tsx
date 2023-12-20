@@ -19,7 +19,7 @@ test('renders a fieldset tag', () => {
 test('renders legend', () => {
   const legendText = 'legend text';
   const { container } = render(<Fieldset legend={legendText} />);
-  const legend = container.querySelector('legend') as HTMLLegendElement;
+  const legend = container.querySelector('legend');
 
   expect(legend).toBeInTheDocument();
 });
@@ -35,7 +35,7 @@ test('accepts a Legend Component', () => {
   const CustomLegend = (
     <FieldsetLegend>
       This is a custom legend
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </FieldsetLegend>
@@ -50,7 +50,7 @@ test('does not accept non-Legend Components', () => {
   const NotALegend = (
     <div>
       This is not a custom legend
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </div>
@@ -73,7 +73,7 @@ test('accepts a Description Component', () => {
   const CustomDescription = (
     <FieldsetDescription>
       This is a custom Description
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </FieldsetDescription>
@@ -88,7 +88,7 @@ test('does not accept non-Description Components', () => {
   const NotADescription = (
     <div>
       This is a not custom description
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </div>

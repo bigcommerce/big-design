@@ -29,7 +29,6 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   line-height: ${({ theme }) => theme.lineHeight.xLarge};
   outline: none;
   padding: ${({ theme }) => `0 ${theme.spacing.medium}`};
-  pointer-events: ${({ isLoading }) => (isLoading ? 'none' : 'auto')};
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -59,13 +58,14 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
 
   ${({ theme }) => theme.breakpoints.tablet} {
     width: auto;
-  }
 
-  ${({ iconOnly: icon, theme }) =>
-    icon &&
-    css`
-      padding: 0 ${theme.spacing.xSmall};
-    `};
+    ${({ iconOnly: icon, theme }) =>
+      icon &&
+      css`
+        padding: 0;
+        min-width: ${addValues(theme.spacing.xxLarge, theme.spacing.xxSmall)};
+      `};
+  }
 
   ${({ iconLeft, theme }) =>
     iconLeft &&
@@ -82,13 +82,20 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   ${(props) => getButtonStyles(props)}
 `;
 
-export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoading?: boolean }>({})`
+export const ContentWrapper = styled.span.attrs<Record<string, unknown>, { isLoading?: boolean }>(
+  {},
+)`
   align-content: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: ${({ theme }) => theme.spacing.xSmall};
-  visibility: ${({ isLoading }) => (isLoading ? 'hidden' : 'visible')};
+
+  ${({ isLoading }) =>
+    isLoading &&
+    css`
+      visibility: hidden;
+    `};
 `;
 
 export const LoadingSpinnerWrapper = styled(Flex)`
@@ -233,16 +240,73 @@ const ButtonSubtleDestructive = css<ButtonProps>`
   }
 `;
 
+const ButtonUtility = css<ButtonProps>`
+  background-color: transparent;
+  border-color: transparent;
+  color: ${({ theme }) => theme.colors.secondary60};
+
+  &:active {
+    background-color: ${({ theme }) => theme.colors.primary20};
+    color: ${({ theme }) => theme.colors.primary60};
+  }
+
+  &:focus:not(:active) {
+    box-shadow: ${({ theme }) => `0 0 0 ${theme.spacing.xxSmall} ${theme.colors.secondary10}`};
+    color: ${({ theme }) => theme.colors.primary50};
+  }
+
+  &:hover:not(:active) {
+    background-color: ${({ theme }) => theme.colors.primary10};
+    color: ${({ theme }) => theme.colors.primary50};
+  }
+
+  &[disabled] {
+    border-color: transparent;
+    color: ${({ theme }) => theme.colors.secondary50};
+  }
+`;
+
+const ButtonUtilityDestructive = css<ButtonProps>`
+  background-color: transparent;
+  border-color: transparent;
+  color: ${({ theme }) => theme.colors.secondary60};
+
+  &:active {
+    background-color: ${({ theme }) => theme.colors.danger20};
+    color: ${({ theme }) => theme.colors.danger60};
+  }
+
+  &:focus:not(:active) {
+    box-shadow: ${({ theme }) => `0 0 0 ${theme.spacing.xxSmall} ${theme.colors.danger20}`};
+    color: ${({ theme }) => theme.colors.danger40};
+  }
+
+  &:hover:not(:active) {
+    background-color: ${({ theme }) => theme.colors.danger10};
+    color: ${({ theme }) => theme.colors.danger50};
+  }
+
+  &[disabled] {
+    border-color: transparent;
+    color: ${({ theme }) => theme.colors.secondary50};
+  }
+`;
+
 function getButtonStyles(props: ButtonProps) {
   const { actionType, variant } = props;
 
   switch (variant) {
     case 'primary':
       return actionType === 'destructive' ? ButtonPrimaryDestructive : ButtonPrimary;
+
     case 'secondary':
       return actionType === 'destructive' ? ButtonSecondaryDestructive : ButtonSecondary;
+
     case 'subtle':
       return actionType === 'destructive' ? ButtonSubtleDestructive : ButtonSubtle;
+
+    case 'utility':
+      return actionType === 'destructive' ? ButtonUtilityDestructive : ButtonUtility;
   }
 }
 

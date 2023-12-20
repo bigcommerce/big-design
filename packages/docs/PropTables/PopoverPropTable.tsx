@@ -19,7 +19,8 @@ const popoverProps: Prop[] = [
     name: 'label',
     required: true,
     types: 'string',
-    description: 'Label used for accessibility purposes, this label will be set as an aria-label on the popover.',
+    description:
+      'Label used for accessibility purposes, this label will be set as an aria-label on the popover.',
   },
   {
     name: 'closeOnClickOutside',
@@ -89,5 +90,5 @@ const popoverProps: Prop[] = [
 ];
 
 export const PopoverPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Popover" propList={popoverProps} {...props} />
+  <PropTable propList={popoverProps} title="Popover" {...props} />
 );

@@ -46,7 +46,7 @@ test('render secondary button', () => {
 
 test('render secondary disabled button', () => {
   render(
-    <Button variant="secondary" disabled>
+    <Button disabled variant="secondary">
       Button
     </Button>,
   );
@@ -56,7 +56,7 @@ test('render secondary disabled button', () => {
 
 test('render secondary destructive button', () => {
   render(
-    <Button variant="secondary" actionType="destructive">
+    <Button actionType="destructive" variant="secondary">
       Button
     </Button>,
   );
@@ -66,7 +66,7 @@ test('render secondary destructive button', () => {
 
 test('render secondary destructive disabled button', () => {
   render(
-    <Button variant="secondary" actionType="destructive" disabled>
+    <Button actionType="destructive" disabled variant="secondary">
       Button
     </Button>,
   );
@@ -82,7 +82,7 @@ test('render subtle button', () => {
 
 test('render subtle disabled button', () => {
   render(
-    <Button variant="subtle" disabled>
+    <Button disabled variant="subtle">
       Button
     </Button>,
   );
@@ -92,7 +92,7 @@ test('render subtle disabled button', () => {
 
 test('render subtle destructive button', () => {
   render(
-    <Button variant="subtle" actionType="destructive">
+    <Button actionType="destructive" variant="subtle">
       Button
     </Button>,
   );
@@ -102,7 +102,7 @@ test('render subtle destructive button', () => {
 
 test('render subtle destructive disabled button', () => {
   render(
-    <Button variant="subtle" actionType="destructive" disabled>
+    <Button actionType="destructive" disabled variant="subtle">
       Button
     </Button>,
   );
@@ -110,8 +110,38 @@ test('render subtle destructive disabled button', () => {
   expect(screen.getByRole('button')).toMatchSnapshot();
 });
 
-test('render loading button', () => {
-  render(<Button isLoading={true}>Button</Button>);
+test('render utility button', () => {
+  render(<Button variant="utility">Button</Button>);
+
+  expect(screen.getByRole('button')).toMatchSnapshot();
+});
+
+test('render utility disabled button', () => {
+  render(
+    <Button disabled variant="utility">
+      Button
+    </Button>,
+  );
+
+  expect(screen.getByRole('button')).toMatchSnapshot();
+});
+
+test('render utility destructive button', () => {
+  render(
+    <Button actionType="destructive" variant="utility">
+      Button
+    </Button>,
+  );
+
+  expect(screen.getByRole('button')).toMatchSnapshot();
+});
+
+test('render utility destructive disabled button', () => {
+  render(
+    <Button actionType="destructive" disabled variant="utility">
+      Button
+    </Button>,
+  );
 
   expect(screen.getByRole('button')).toMatchSnapshot();
 });
@@ -152,12 +182,12 @@ test('forwards ref', () => {
   expect(screen.getByRole('button')).toBe(ref.current);
 });
 
-test('triggers onClick', () => {
+test('triggers onClick', async () => {
   const onClick = jest.fn();
 
   render(<Button onClick={onClick} />);
 
-  userEvent.click(screen.getByRole<HTMLButtonElement>('button'));
+  await userEvent.click(screen.getByRole<HTMLButtonElement>('button'));
 
   expect(onClick).toHaveBeenCalled();
 });
@@ -186,4 +216,50 @@ test('render only icon only with left and right icons button', () => {
   );
 
   expect(screen.getAllByTestId('icon-only')).toHaveLength(1);
+});
+
+describe('isLoading', () => {
+  test('render loading button', () => {
+    render(<Button isLoading={true}>Button</Button>);
+
+    expect(screen.getByRole('button')).toMatchSnapshot();
+  });
+
+  test('prevents on click', async () => {
+    const mockClickHandler = jest.fn();
+
+    render(
+      <Button isLoading={true} onClick={mockClickHandler}>
+        Button
+      </Button>,
+    );
+
+    await userEvent.click(screen.getByRole('button'), { pointerEventsCheck: 0 });
+
+    expect(mockClickHandler).not.toHaveBeenCalled();
+  });
+
+  test('disables the button', () => {
+    render(<Button isLoading={true}>Button</Button>);
+
+    expect(screen.getByRole('button')).toBeDisabled();
+  });
+
+  test('hides content', () => {
+    const plusIcon = <AddIcon aria-hidden="false" role="icon" />;
+    const { rerender } = render(
+      <Button iconLeft={plusIcon} isLoading={false}>
+        Foo
+      </Button>,
+    );
+    const visibleContent = screen.getByRole('icon');
+
+    expect(visibleContent).toBeInTheDocument();
+
+    rerender(<Button isLoading={true}>Foo</Button>);
+
+    const hiddenContent = screen.queryByRole('icon');
+
+    expect(hiddenContent).not.toBeInTheDocument();
+  });
 });

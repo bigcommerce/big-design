@@ -18,7 +18,8 @@ const textareaProps: Prop[] = [
     types: ['string', 'FormControlLabel'],
     description: (
       <>
-        Label element for textareas. Component with auto generate <Code>id</Code>'s for the accessibility API.
+        Label element for textareas. Component with auto generate <Code>id</Code>'s for the
+        accessibility API.
       </>
     ),
   },
@@ -47,8 +48,18 @@ const textareaProps: Prop[] = [
     defaultValue: 'true',
     description: 'Determines if the textarea is resizable vertically.',
   },
+  {
+    name: 'localization',
+    types: '{ optional: string }',
+    description: 'Overrides the label with localized text.',
+  },
 ];
 
 export const TextareaPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Textarea" propList={textareaProps} nativeElement={['textarea', 'all']} {...props} />
+  <PropTable
+    nativeElement={['textarea', 'all']}
+    propList={textareaProps}
+    title="Textarea"
+    {...props}
+  />
 );

@@ -1,19 +1,26 @@
-import { Modifier, Placement } from '@popperjs/core';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { Modifier, Obj, Placement } from '@popperjs/core';
+import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset';
+import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 
-import { useUniqueId } from '../../hooks';
 import { excludeMarginProps } from '../../mixins';
 import { Box, BoxProps } from '../Box';
 
 // Margin can't be used with popper elements
 type BoxPropsWithoutMargins = Omit<
   BoxProps,
-  'margin' | 'marginBottom' | 'marginHorizontal' | 'marginLeft' | 'marginRight' | 'marginTop' | 'marginVertical'
+  | 'margin'
+  | 'marginBottom'
+  | 'marginHorizontal'
+  | 'marginLeft'
+  | 'marginRight'
+  | 'marginTop'
+  | 'marginVertical'
 >;
 
 export interface PopoverProps extends BoxPropsWithoutMargins {
   anchorElement: Element | null;
+  children?: React.ReactNode;
   closeOnClickOutside?: boolean;
   closeOnEscKey?: boolean;
   isOpen: boolean;
@@ -25,8 +32,14 @@ export interface PopoverProps extends BoxPropsWithoutMargins {
   placement?: Placement;
 }
 
-export const Popover: React.FC<PopoverProps> = ({ anchorElement, children, isOpen, role = 'dialog', ...props }) => {
-  const uniquePopoverId = useUniqueId('popover');
+export const Popover: React.FC<PopoverProps> = ({
+  anchorElement,
+  children,
+  isOpen,
+  role = 'dialog',
+  ...props
+}) => {
+  const uniquePopoverId = useId();
   const rest = excludeMarginProps(props);
 
   useEffect(() => {
@@ -68,7 +81,7 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
   const previousFocus = useRef(typeof document !== 'undefined' ? document.activeElement : null);
 
-  const popperModifiers = useMemo(
+  const popperModifiers = useMemo<[Partial<OffsetModifier>, Modifier<unknown, Obj>]>(
     () => [
       {
         name: 'offset',
@@ -91,7 +104,7 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
             state.elements.popper.style.width = `${element.offsetWidth}px`;
           }
         },
-      } as Modifier<unknown, unknown>,
+      },
     ],
     [skidding, distance, matchAnchorElementWidth],
   );
@@ -102,10 +115,10 @@ const InternalPopover: React.FC<InternalPopoverProps> = ({
   });
 
   useEffect(() => {
-    const prevFocus = previousFocus.current as HTMLElement;
+    const prevFocus = previousFocus.current;
 
     return () => {
-      if (prevFocus && typeof prevFocus.focus === 'function') {
+      if (prevFocus instanceof HTMLElement) {
         prevFocus.focus();
       }
     };

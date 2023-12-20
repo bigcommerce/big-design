@@ -2,7 +2,7 @@ import React, { createRef, useCallback, useEffect } from 'react';
 
 import { typedMemo } from '../../../../utils';
 import { Select } from '../../../Select';
-import { useStore } from '../../hooks';
+import { useWorksheetStore } from '../../hooks';
 import { Cell, WorksheetItem, WorksheetSelectableColumn } from '../../types';
 
 import { SelectWrapper } from './styled';
@@ -23,7 +23,9 @@ const InternalSelectEditor = <T extends WorksheetItem>({
   options = [],
 }: SelectEditorProps<T>) => {
   const inputRef = createRef<HTMLInputElement>();
-  const setEditingCell = useStore((state) => state.setEditingCell);
+  const { store, useStore } = useWorksheetStore();
+
+  const setEditingCell = useStore(store, (state) => state.setEditingCell);
 
   useEffect(() => {
     if (isEditing && inputRef.current) {
@@ -39,12 +41,12 @@ const InternalSelectEditor = <T extends WorksheetItem>({
   );
 
   const handleOpen = useCallback(() => {
-    setEditingCell(cell);
+    setEditingCell({ cell });
   }, [cell, setEditingCell]);
 
   const handleClose = useCallback(() => {
     onBlur();
-    setEditingCell(null);
+    setEditingCell({ cell: null });
   }, [onBlur, setEditingCell]);
 
   return (

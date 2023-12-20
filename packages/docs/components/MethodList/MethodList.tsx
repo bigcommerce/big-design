@@ -20,7 +20,13 @@ export interface MethodListProps {
   returnDescription: React.ReactNode;
 }
 
-export const MethodList: React.FC<MethodListProps> = ({ name, intro, usage, parameterList, returnDescription }) => {
+export const MethodList: React.FC<MethodListProps> = ({
+  name,
+  intro,
+  usage,
+  parameterList,
+  returnDescription,
+}) => {
   return (
     <>
       <H3>
@@ -37,7 +43,7 @@ export const MethodList: React.FC<MethodListProps> = ({ name, intro, usage, para
         <>
           <MethodBadge label="Parameters" />
 
-          <List bulleted={false}>
+          <List style={{ listStyleType: 'none' }}>
             {parameterList.map(({ param, description, required }, index) => (
               <List.Item key={index}>
                 <Text>

@@ -61,7 +61,7 @@ class AlertsManager {
   remove = (key: string) => {
     let removed: AlertProps | undefined;
 
-    this.alerts = this.alerts.reduce((acc, alert) => {
+    this.alerts = this.alerts.reduce<PrivateAlert[]>((acc, alert) => {
       if (alert.key === key) {
         removed = alert;
 
@@ -69,7 +69,7 @@ class AlertsManager {
       }
 
       return [...acc, alert];
-    }, [] as PrivateAlert[]);
+    }, []);
 
     this.afterEvent();
 
@@ -119,6 +119,7 @@ class AlertsManager {
   }
 
   private sortAlerts = (a: PrivateAlert, b: PrivateAlert) => {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     return this.typeMap[a.type as keyof TypeMap] - this.typeMap[b.type as keyof TypeMap];
   };
 

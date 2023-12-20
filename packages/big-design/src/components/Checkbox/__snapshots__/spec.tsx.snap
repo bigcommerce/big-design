@@ -102,16 +102,16 @@ exports[`render Checkbox checked 1`] = `
 >
   <input
     aria-checked="true"
-    aria-labelledby="bd-checkbox_label-2"
+    aria-labelledby=":r1:"
     checked=""
     class="c1 c2"
-    id="bd-checkbox-1"
+    id=":r0:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
-    for="bd-checkbox-1"
+    for=":r0:"
   >
     <svg
       aria-hidden="true"
@@ -137,8 +137,8 @@ exports[`render Checkbox checked 1`] = `
   >
     <label
       class="c7 c8"
-      for="bd-checkbox-1"
-      id="bd-checkbox_label-2"
+      for=":r0:"
+      id=":r1:"
     >
       Checked
     </label>
@@ -248,18 +248,18 @@ exports[`render Checkbox disabled checked 1`] = `
 >
   <input
     aria-checked="true"
-    aria-labelledby="bd-checkbox_label-2"
+    aria-labelledby=":rj:"
     checked=""
     class="c1 c2"
     disabled=""
-    id="bd-checkbox-1"
+    id=":ri:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
     disabled=""
-    for="bd-checkbox-1"
+    for=":ri:"
   >
     <svg
       aria-hidden="true"
@@ -287,8 +287,8 @@ exports[`render Checkbox disabled checked 1`] = `
       aria-hidden="true"
       class="c7 c8"
       disabled=""
-      for="bd-checkbox-1"
-      id="bd-checkbox_label-2"
+      for=":ri:"
+      id=":rj:"
     >
       Checked
     </label>
@@ -397,17 +397,17 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="bd-checkbox_label-2"
+    aria-labelledby=":rp:"
     class="c1 c2"
     disabled=""
-    id="bd-checkbox-1"
+    id=":ro:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
     disabled=""
-    for="bd-checkbox-1"
+    for=":ro:"
   >
     <svg
       aria-hidden="true"
@@ -435,8 +435,8 @@ exports[`render Checkbox disabled indeterminate 1`] = `
       aria-hidden="true"
       class="c7 c8"
       disabled=""
-      for="bd-checkbox-1"
-      id="bd-checkbox_label-2"
+      for=":ro:"
+      id=":rp:"
     >
       Unchecked
     </label>
@@ -546,17 +546,17 @@ exports[`render Checkbox disabled unchecked 1`] = `
 >
   <input
     aria-checked="false"
-    aria-labelledby="bd-checkbox_label-2"
+    aria-labelledby=":rm:"
     class="c1 c2"
     disabled=""
-    id="bd-checkbox-1"
+    id=":rl:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
     disabled=""
-    for="bd-checkbox-1"
+    for=":rl:"
   >
     <svg
       aria-hidden="true"
@@ -584,8 +584,8 @@ exports[`render Checkbox disabled unchecked 1`] = `
       aria-hidden="true"
       class="c7 c8"
       disabled=""
-      for="bd-checkbox-1"
-      id="bd-checkbox_label-2"
+      for=":rl:"
+      id=":rm:"
     >
       Checked
     </label>
@@ -694,15 +694,15 @@ exports[`render Checkbox indeterminate 1`] = `
   class="c0"
 >
   <input
-    aria-labelledby="bd-checkbox_label-2"
+    aria-labelledby=":rg:"
     class="c1 c2"
-    id="bd-checkbox-1"
+    id=":rf:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
-    for="bd-checkbox-1"
+    for=":rf:"
   >
     <svg
       aria-hidden="true"
@@ -728,8 +728,8 @@ exports[`render Checkbox indeterminate 1`] = `
   >
     <label
       class="c7 c8"
-      for="bd-checkbox-1"
-      id="bd-checkbox_label-2"
+      for=":rf:"
+      id=":rg:"
     >
       Unchecked
     </label>
@@ -839,15 +839,15 @@ exports[`render Checkbox unchecked 1`] = `
 >
   <input
     aria-checked="false"
-    aria-labelledby="bd-checkbox_label-2"
+    aria-labelledby=":r4:"
     class="c1 c2"
-    id="bd-checkbox-1"
+    id=":r3:"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
-    for="bd-checkbox-1"
+    for=":r3:"
   >
     <svg
       aria-hidden="true"
@@ -873,8 +873,8 @@ exports[`render Checkbox unchecked 1`] = `
   >
     <label
       class="c7 c8"
-      for="bd-checkbox-1"
-      id="bd-checkbox_label-2"
+      for=":r3:"
+      id=":r4:"
     >
       Unchecked
     </label>
@@ -1023,16 +1023,16 @@ exports[`render Checkbox with description object 1`] = `
 >
   <input
     aria-checked="false"
-    aria-labelledby="bd-checkbox_label-2"
+    aria-labelledby=":r7:"
     class="c1 c2"
-    id="bd-checkbox-1"
+    id=":r6:"
     name="test-group"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
-    for="bd-checkbox-1"
+    for=":r6:"
   >
     <svg
       aria-hidden="true"
@@ -1058,8 +1058,8 @@ exports[`render Checkbox with description object 1`] = `
   >
     <label
       class="c7 c8"
-      for="bd-checkbox-1"
-      id="bd-checkbox_label-2"
+      for=":r6:"
+      id=":r7:"
     >
       Unchecked
     </label>
@@ -1196,16 +1196,16 @@ exports[`render Checkbox with description string 1`] = `
 >
   <input
     aria-checked="false"
-    aria-labelledby="bd-checkbox_label-2"
+    aria-labelledby=":rd:"
     class="c1 c2"
-    id="bd-checkbox-1"
+    id=":rc:"
     name="test-group"
     type="checkbox"
   />
   <label
     aria-hidden="true"
     class="c3 c4"
-    for="bd-checkbox-1"
+    for=":rc:"
   >
     <svg
       aria-hidden="true"
@@ -1231,8 +1231,8 @@ exports[`render Checkbox with description string 1`] = `
   >
     <label
       class="c7 c8"
-      for="bd-checkbox-1"
-      id="bd-checkbox_label-2"
+      for=":rc:"
+      id=":rd:"
     >
       Unchecked
     </label>

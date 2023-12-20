@@ -13,14 +13,18 @@ const SharedListStyles = css<ListProps>`
     column-count: ${({ columnCount }) => columnCount};
     column-gap: ${({ columnGap }) => columnGap};
   }
+
+  ${({ reset, theme }) =>
+    reset &&
+    css`
+      ${theme.helpers.listReset};
+    `}
 `;
 
 export const StyledOrderedList = styled.ol<ListProps>`
   ${SharedListStyles};
-  list-style-type: ${({ bulleted }) => `${bulleted ? 'decimal' : 'none'}`};
 `;
 
 export const StyledUnorderedList = styled.ul<ListProps>`
   ${SharedListStyles}
-  list-style-type: ${({ bulleted }) => `${bulleted ? 'disc' : 'none'}`}
 `;

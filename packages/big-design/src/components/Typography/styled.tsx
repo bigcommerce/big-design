@@ -136,7 +136,8 @@ export const StyledHR = styled.hr<HRProps>`
 
   border: 0;
   border-bottom: 1px solid
-    ${({ color, theme }) => (color && color in theme.colors ? theme.colors[color] : theme.colors.secondary30)};
+    ${({ color, theme }) =>
+      color && color in theme.colors ? theme.colors[color] : theme.colors.secondary30};
 `;
 
 StyledH0.defaultProps = { theme: defaultTheme };

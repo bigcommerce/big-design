@@ -2,12 +2,12 @@ import 'jest-styled-components';
 import { theme } from '@bigcommerce/big-design-theme';
 import React, { createRef } from 'react';
 
-import { render } from '@test/utils';
+import { render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
 
-import { Textarea, TextareaProps } from './index';
+import { Textarea } from './index';
 
 const basicBorderStyle = `1px solid ${theme.colors.secondary30}`;
 const errorBorderStyle = `1px solid ${theme.colors.danger40}`;
@@ -33,43 +33,46 @@ test('renders an textarea with matched label', () => {
   expect(queryByLabelText('Test Label')).toBeInTheDocument();
 });
 
-test('create unique ids if not provided', () => {
-  const { queryByTestId } = render(
+test('create unique ids if not provided', async () => {
+  render(
     <>
       <FormGroup>
-        <Textarea label="Test Label" data-testid="item1" />
+        <Textarea data-testid="item1" label="Test Label" />
       </FormGroup>
       <FormGroup>
-        <Textarea label="Test Label" data-testid="item2" />
+        <Textarea data-testid="item2" label="Test Label" />
       </FormGroup>
     </>,
   );
 
-  const item1 = queryByTestId('item1') as HTMLTextAreaElement;
-  const item2 = queryByTestId('item2') as HTMLTextAreaElement;
+  const item1 = await screen.findByTestId('item1');
+  const item2 = await screen.findByTestId('item2');
 
   expect(item1).toBeDefined();
   expect(item2).toBeDefined();
   expect(item1.id).not.toBe(item2.id);
 });
 
-test('respects provided id', () => {
-  const { container } = render(<Textarea id="test" label="Test Label" />);
-  const textarea = container.querySelector('#test') as HTMLTextAreaElement;
+test('respects provided id', async () => {
+  render(<Textarea id="test" label="Test Label" />);
+
+  const textarea = await screen.findByLabelText<HTMLTextAreaElement>('Test Label');
 
   expect(textarea.id).toBe('test');
 });
 
-test('matches label htmlFor with id provided', () => {
-  const { container } = render(<Textarea id="test" label="Test Label" />);
-  const label = container.querySelector('label') as HTMLLabelElement;
+test('matches label htmlFor with id provided', async () => {
+  render(<Textarea id="test" label="Test Label" />);
+
+  const label = await screen.findByText<HTMLLabelElement>('Test Label');
 
   expect(label.htmlFor).toBe('test');
 });
 
-test('respects provided labelId', () => {
-  const { container } = render(<Textarea labelId="test" label="Test Label" />);
-  const label = container.querySelector('#test') as HTMLLabelElement;
+test('respects provided labelId', async () => {
+  render(<Textarea label="Test Label" labelId="test" />);
+
+  const label = await screen.findByText<HTMLLabelElement>('Test Label');
 
   expect(label.id).toBe('test');
 });
@@ -98,7 +101,7 @@ test('accepts a Label Component', () => {
   const CustomLabel = (
     <FormControlLabel>
       This is a custom Label
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </FormControlLabel>
@@ -113,7 +116,7 @@ test('does not accept non-Label Components', () => {
   const NotALabel = (
     <div>
       This is a not custom Label Component
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </div>
@@ -128,7 +131,7 @@ test('accepts a Description Component', () => {
   const CustomDescription = (
     <FormControlDescription>
       This is a custom Description
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </FormControlDescription>
@@ -143,7 +146,7 @@ test('does not accept non-Description Components', () => {
   const NotADescription = (
     <div>
       This is a not custom description
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </div>
@@ -158,7 +161,7 @@ test('accepts an Error Component', () => {
   const CustomError = (
     <FormControlError>
       This is a custom Error Component
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </FormControlError>
@@ -179,7 +182,7 @@ test('does not accept non-Error Components', () => {
   const NotAnError = (
     <div>
       This is a not a custom error component
-      <a href="#" data-testid="test">
+      <a data-testid="test" href="#">
         has a url
       </a>
     </div>
@@ -233,22 +236,25 @@ describe('error does not show when invalid type', () => {
   });
 });
 
-test('accepts valid row property', () => {
+test('accepts valid row property', async () => {
   const rows = 3;
-  const { baseElement } = render(<Textarea rows={rows} data-testid="test-rows" />);
 
-  const textarea = baseElement.querySelector('textarea') as HTMLTextAreaElement;
+  render(<Textarea data-testid="test-rows" rows={rows} />);
 
-  expect(textarea.getAttribute('rows')).toEqual(`${rows}`);
+  const textarea = await screen.findByTestId('test-rows');
+
+  expect(textarea.getAttribute('rows')).toBe(`${rows}`);
 });
 
-test('does not accept invalid row property', () => {
+test('does not accept invalid row property', async () => {
   const rows = 9;
-  const { baseElement } = render(<Textarea rows={rows as TextareaProps['rows']} data-testid="test-rows" />);
 
-  const textarea = baseElement.querySelector('textarea') as HTMLTextAreaElement;
+  // @ts-expect-error negative test
+  render(<Textarea data-testid="test-rows" rows={rows} />);
 
-  expect(textarea.getAttribute('rows')).not.toEqual(`${rows}`);
+  const textarea = await screen.findByTestId('test-rows');
+
+  expect(textarea.getAttribute('rows')).not.toBe(`${rows}`);
 });
 
 test('renders and accepts resize property', () => {
@@ -264,10 +270,20 @@ test('renders and accepts resize property', () => {
 
 test('renders all together', () => {
   const { container } = render(
-    <Textarea label="This is a label" description="This is a description" rows={3} resize={true} />,
+    <Textarea description="This is a description" label="This is a label" resize={true} rows={3} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
+});
+
+test('renders localized labels', () => {
+  const { container } = render(
+    <Textarea label="Test label" localization={{ optional: 'opcional' }} />,
+  );
+
+  const label = container.querySelector('label');
+
+  expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
 });
 
 describe('error shows when an array of strings', () => {
@@ -305,6 +321,7 @@ describe('error shows when an array of strings', () => {
     const textarea = container.querySelector('textarea');
 
     expect(textarea).toHaveStyleRule('border', errorBorderStyle);
+
     errors.forEach((error) => expect(getByText(error)).toBeInTheDocument());
   });
 });

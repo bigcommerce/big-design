@@ -1,8 +1,14 @@
 import { Box, H0, H1, H2, H3, H4, HR, Panel, Small, Text } from '@bigcommerce/big-design';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, List, NextLink } from '../components';
-import { HeadingPropTable, HRPropTable, MarginPropTable, TextPropTable, TypographyPropTable } from '../PropTables';
+import {
+  HeadingPropTable,
+  HRPropTable,
+  MarginPropTable,
+  TextPropTable,
+  TypographyPropTable,
+} from '../PropTables';
 
 const TypographyPage = () => {
   return (
@@ -10,18 +16,28 @@ const TypographyPage = () => {
       <H1>Typography</H1>
 
       <Panel header="Overview" headerId="overview">
-        <Text>BigCommerce uses Source Sans Pro for all text, with different weights for headings and subtext.</Text>
+        <Text>
+          BigCommerce uses Source Sans Pro for all text, with different weights for headings and
+          subtext.
+        </Text>
         <Text bold>When to use:</Text>
         <List>
-          <List.Item>Use hero headers only for content-focused pages, e.g. a feature discovery page.</List.Item>
+          <List.Item>
+            Use hero headers only for content-focused pages, e.g. a feature discovery page.
+          </List.Item>
           <List.Item>Use page headers at the top of page as a title.</List.Item>
           <List.Item>Use panel headers to give titles to individual panels.</List.Item>
           <List.Item>Use section headers to break up content within a panel.</List.Item>
-          <List.Item>Use labels to identify functionality, like inputs or discrete data displays.</List.Item>
           <List.Item>
-            Use body regular to convey information in complete sentences or paragraphs to the user within panels.
+            Use labels to identify functionality, like inputs or discrete data displays.
           </List.Item>
-          <List.Item>Use body small for supplementary information (e.g. the description for an input).</List.Item>
+          <List.Item>
+            Use body regular to convey information in complete sentences or paragraphs to the user
+            within panels.
+          </List.Item>
+          <List.Item>
+            Use body small for supplementary information (e.g. the description for an input).
+          </List.Item>
         </List>
       </Panel>
 
@@ -33,7 +49,7 @@ const TypographyPage = () => {
               id: 'heading',
               title: 'Heading',
               render: () => (
-                <CodePreview>
+                <CodePreview key="heading">
                   {/* jsx-to-string:start */}
                   <>
                     <H0>Hero header - h0</H0>
@@ -50,7 +66,7 @@ const TypographyPage = () => {
               id: 'text',
               title: 'Text',
               render: () => (
-                <CodePreview>
+                <CodePreview key="text">
                   {/* jsx-to-string:start */}
                   <>
                     <Text>Text - p</Text>
@@ -64,7 +80,7 @@ const TypographyPage = () => {
               id: 'hr',
               title: 'HR',
               render: () => (
-                <CodePreview>
+                <CodePreview key="hr">
                   {/* jsx-to-string:start */}
                   <HR marginVertical="large" />
                   {/* jsx-to-string:end */}
@@ -75,10 +91,10 @@ const TypographyPage = () => {
               id: 'color',
               title: 'Color',
               render: () => (
-                <>
+                <Fragment key="color">
                   <Text>
-                    Choose any color from our <NextLink href="/colors">color pallete</NextLink> to style your text
-                    color.
+                    Choose any color from our <NextLink href="/colors">color pallete</NextLink> to
+                    style your text color.
                   </Text>
 
                   <CodePreview>
@@ -90,14 +106,14 @@ const TypographyPage = () => {
                     </>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'text-modifiers',
               title: 'Text modifiers',
               render: () => (
-                <CodePreview>
+                <CodePreview key="text-modifiers">
                   {/* jsx-to-string:start */}
                   <>
                     <Text bold>This text is bold.</Text>
@@ -119,7 +135,7 @@ const TypographyPage = () => {
               id: 'overflow',
               title: 'Overflow',
               render: () => (
-                <>
+                <Fragment key="overflow">
                   <Text>
                     Setting the <Code>ellipsis</Code> prop, will allow text to overflow nicely.
                   </Text>
@@ -131,14 +147,14 @@ const TypographyPage = () => {
                     </Box>
                     {/* jsx-to-string:end */}
                   </CodePreview>
-                </>
+                </Fragment>
               ),
             },
             {
               id: 'different-tag',
               title: 'As a different tag',
               render: () => (
-                <CodePreview>
+                <CodePreview key="different-tag">
                   {/* jsx-to-string:start */}
                   <Text as="span">This is a span.</Text>
                   {/* jsx-to-string:end */}
@@ -164,7 +180,6 @@ const TypographyPage = () => {
                       <MarginPropTable collapsible />
                     </>
                   }
-                  renderPanel={false}
                 />
               ),
             },
@@ -179,14 +194,13 @@ const TypographyPage = () => {
                       <MarginPropTable collapsible />
                     </>
                   }
-                  renderPanel={false}
                 />
               ),
             },
             {
               id: 'hr',
               title: 'HR',
-              render: () => <HRPropTable inheritedProps={<MarginPropTable collapsible />} renderPanel={false} />,
+              render: () => <HRPropTable inheritedProps={<MarginPropTable collapsible />} />,
             },
           ]}
         />

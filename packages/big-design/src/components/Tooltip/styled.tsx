@@ -1,16 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { css } from 'styled-components';
-
-export const StyledTooltipTrigger = styled.div<{ inline?: boolean }>`
-  display: inline-block;
-
-  ${({ inline }) =>
-    !inline &&
-    css`
-      display: block;
-      flex-grow: 1;
-    `}
-`;
+import styled from 'styled-components';
 
 export const StyledTooltip = styled.div`
   ${({ theme }) => theme.shadow.floating};
@@ -22,4 +11,3 @@ export const StyledTooltip = styled.div`
 `;
 
 StyledTooltip.defaultProps = { theme: defaultTheme };
-StyledTooltipTrigger.defaultProps = { theme: defaultTheme };

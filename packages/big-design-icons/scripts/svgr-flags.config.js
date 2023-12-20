@@ -15,16 +15,15 @@ module.exports = {
     // **********************************
     // Auto-generated file, do NOT modify
     // **********************************
-    import React, { forwardRef, memo } from 'react';
+    import React, { forwardRef, memo, useId } from 'react';
     BREAK
 
     import { PrivateIconProps } from '../../base';
-    import { useUniqueId } from '../../utils';
     import { createStyledFlagIcon, FlagIconProps } from '../base';
     BREAK
 
     const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = '${flagName} flag', theme, ...props }) => {
-      const uniqueTitleId = useUniqueId('icon');
+      const uniqueTitleId = useId();
       const titleId = title ? props.titleId || uniqueTitleId : undefined;
       const ariaHidden = titleId ? undefined : true;
 
@@ -38,7 +37,7 @@ module.exports = {
     const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => <FlagIcon {...iconProps} svgRef={ref} />);
 
     BREAK
-    export const COMPONENT_NAME = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+    export const COMPONENT_NAME = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
     BREAK
     COMPONENT_NAME.displayName = '${componentName.name}';

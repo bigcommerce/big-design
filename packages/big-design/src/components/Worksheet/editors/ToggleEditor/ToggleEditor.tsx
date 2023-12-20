@@ -1,8 +1,8 @@
 import { ChevronRightIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
-import React, { memo, useEffect } from 'react';
+import React, { memo, useContext, useEffect } from 'react';
 
-import { Flex } from '../../../Flex';
-import { useExpandable, useStore } from '../../hooks';
+import { useExpandable, useWorksheetStore } from '../../hooks';
+import { WorksheetLocalizationContext } from '../../Worksheet';
 
 import { StyledExpandButton } from './styled';
 
@@ -13,39 +13,46 @@ interface ToggleEditorProps {
 
 const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
   const { onToggle, isExpandable, hasExpanded } = useExpandable(rowId);
-  const setEditingCell = useStore((state) => state.setEditingCell);
+  const { store, useStore } = useWorksheetStore();
+  const localization = useContext(WorksheetLocalizationContext);
+
+  const setEditingCell = useStore(store, (state) => state.setEditingCell);
 
   useEffect(() => {
     if (toggle && isExpandable) {
       onToggle(hasExpanded);
     }
 
-    setEditingCell(null);
+    setEditingCell({ cell: null });
   }, [hasExpanded, isExpandable, onToggle, setEditingCell, toggle]);
 
-  return isExpandable ? (
-    <Flex justifyContent="center">
-      {hasExpanded ? (
-        <StyledExpandButton
-          iconOnly={<ExpandMoreIcon />}
-          onClick={() => {
-            onToggle(true);
-          }}
-          title="toggle row expanded"
-          variant="subtle"
-        />
-      ) : (
-        <StyledExpandButton
-          iconOnly={<ChevronRightIcon />}
-          onClick={() => {
-            onToggle(false);
-          }}
-          title="toggle row expanded"
-          variant="subtle"
-        />
-      )}
-    </Flex>
-  ) : null;
+  if (!isExpandable) {
+    return null;
+  }
+
+  if (hasExpanded) {
+    return (
+      <StyledExpandButton
+        iconOnly={<ExpandMoreIcon color="secondary60" />}
+        onClick={() => {
+          onToggle(true);
+        }}
+        title={localization.toggleRowExpanded}
+        variant="subtle"
+      />
+    );
+  }
+
+  return (
+    <StyledExpandButton
+      iconOnly={<ChevronRightIcon color="secondary60" />}
+      onClick={() => {
+        onToggle(false);
+      }}
+      title={localization.toggleRowExpanded}
+      variant="subtle"
+    />
+  );
 };
 
 export const ToggleEditor = memo(InternalToggleEditor);

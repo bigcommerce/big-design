@@ -11,42 +11,27 @@
     "ci:typeCheck": "lerna run typeCheck --stream",
     "ci:test": "lerna run test --stream -- --maxWorkers=2 --coverage",
     "diff": "lerna diff",
-    "lint": "eslint . --ext .ts,.tsx,.js",
+    "lint": "eslint . --ext .ts,.tsx,.js,.mdx",
     "start": "yarn workspace @bigcommerce/docs run start",
-    "test": "lerna run test --stream"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
+    "test": "lerna run test --stream",
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix",
-      "git add"
+    "*.{js,ts,tsx,mdx}": [
+      "eslint --fix"
     ]
   },
+  "prettier": "@bigcommerce/eslint-config/prettier",
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
-    "@typescript-eslint/eslint-plugin": "^4.31.1",
-    "@typescript-eslint/parser": "^4.31.1",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.25.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^4.2.5",
-    "lerna": "^4.0.0",
-    "lint-staged": "^9.2.0",
-    "prettier": "^2.4.0",
+    "@bigcommerce/eslint-config": "^2.4.0",
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
+    "@types/babel__standalone": "^7.1.4",
+    "eslint": "^8.33.0",
+    "eslint-plugin-mdx": "^2.2.0",
+    "husky": "^8.0.3",
+    "lerna": "^6.4.1",
+    "lint-staged": "^14.0.1",
     "typescript": "^4.4.3"
-  },
-  "resolutions": {
-    "is-svg": "^4.3.1",
-    "node-notifier": "^8.0.1"
   }
 }

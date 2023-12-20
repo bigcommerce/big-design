@@ -7,7 +7,7 @@ import { StyledLogo } from './styled';
 export const SideNavLogo: React.FC = () => (
   <Link href="/">
     <StyledLogo>
-      <img src={`${process.env.URL_PREFIX}/logo-with-text.svg`} alt="BigDesign Logo" />
+      <img alt="BigDesign Logo" src={`${process.env.URL_PREFIX}/logo-with-text.svg`} />
       <Small>v{process.env.BD_VERSION}</Small>
     </StyledLogo>
   </Link>

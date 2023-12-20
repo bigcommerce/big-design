@@ -33,22 +33,32 @@ test('has display grid', () => {
   expect(container.firstChild).toHaveStyle('display: grid');
 });
 
+test('has gap properties', () => {
+  const { container, rerender } = render(<Grid gridGap="3rem" />);
+
+  expect(container.firstChild).toHaveStyle('gap: 3rem');
+
+  rerender(<Grid gridColumnGap="1rem" gridRowGap="2rem" />);
+
+  expect(container.firstChild).toHaveStyle({ 'row-gap': '2rem', 'column-gap': '1rem' });
+});
+
 test('Grid forwards styles', () => {
   const { container } = render(<Grid className="test" style={{ background: 'red' }} />);
 
-  expect(container.getElementsByClassName('test').length).toBe(1);
+  expect(container.getElementsByClassName('test')).toHaveLength(1);
   expect(container.firstChild).toHaveStyle('background: red');
 });
 
 test('Grid item forwards styles', () => {
   const { container } = render(<GridItem className="test" style={{ background: 'red' }} />);
 
-  expect(container.getElementsByClassName('test').length).toBe(1);
+  expect(container.getElementsByClassName('test')).toHaveLength(1);
   expect(container.firstChild).toHaveStyle('background: red');
 });
 
 test('rendering as another element retains inherited props and styles', () => {
-  const { getByTestId } = render(<Grid as="section" margin="medium" data-testid="grid" />);
+  const { getByTestId } = render(<Grid as="section" data-testid="grid" margin="medium" />);
 
   const grid = getByTestId('grid');
 
@@ -58,7 +68,7 @@ test('rendering as another element retains inherited props and styles', () => {
 
 test('grid forwards ref', () => {
   const ref = createRef<HTMLDivElement>();
-  const { getByTestId } = render(<Grid ref={ref} data-testid="grid" />);
+  const { getByTestId } = render(<Grid data-testid="grid" ref={ref} />);
   const grid = getByTestId('grid');
 
   expect(grid).toBe(ref.current);

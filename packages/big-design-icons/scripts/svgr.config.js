@@ -16,15 +16,14 @@ module.exports = {
     // **********************************
     // Auto-generated file, do NOT modify
     // **********************************
-    import React, { forwardRef, memo } from 'react';
+    import React, { forwardRef, memo, useId } from 'react';
     BREAK
 
     import { createStyledIcon, IconProps, PrivateIconProps } from '../base';
-    import { useUniqueId } from '../utils';
     BREAK
 
     const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ...props }) => {
-      const uniqueTitleId = useUniqueId('icon');
+      const uniqueTitleId = useId();
       const titleId = title ? props.titleId || uniqueTitleId : undefined;
       const ariaHidden = titleId ? undefined : true;
 
@@ -38,7 +37,7 @@ module.exports = {
     const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => <Icon {...iconProps} svgRef={ref} />);
 
     BREAK
-    export const COMPONENT_NAME = memo(createStyledIcon(IconWithForwardedRef as React.FC<IconProps>));
+    export const COMPONENT_NAME = memo(createStyledIcon(IconWithForwardedRef));
 
     BREAK
     COMPONENT_NAME.displayName = '${componentName.name}';

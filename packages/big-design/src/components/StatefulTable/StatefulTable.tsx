@@ -3,11 +3,32 @@ import React, { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
+import { PaginationProps } from '../Pagination';
+import { PaginationLocalization } from '../Pagination/Pagination';
 import { PillTabItem, PillTabs, PillTabsProps } from '../PillTabs';
 import { Search } from '../Search';
-import { Table, TableColumn, TableItem, TableProps, TableSelectable, TableSortDirection } from '../Table';
+import { SearchLocalization } from '../Search/types';
+import {
+  Table,
+  TableColumn,
+  TableItem,
+  TableProps,
+  TableSelectable,
+  TableSortDirection,
+} from '../Table';
 
 import { createReducer, createReducerInit } from './reducer';
+
+type Localization =
+  | PaginationLocalization
+  | SearchLocalization
+  | (PaginationLocalization & SearchLocalization);
+
+const defaultLocalization: Localization = {
+  nextPage: 'Next page',
+  previousPage: 'Previous page',
+  search: 'Search',
+};
 
 export interface StatefulTablePillTabFilter<T> {
   pillTabs: PillTabItem[];
@@ -24,19 +45,28 @@ export interface StatefulTableColumn<T> extends Omit<TableColumn<T>, 'isSortable
 export interface StatefulTableProps<T>
   extends Omit<
     TableProps<T>,
-    'columns' | 'pagination' | 'filters' | 'search' | 'selectable' | 'sortable' | 'onRowDrop'
+    | 'columns'
+    | 'pagination'
+    | 'filters'
+    | 'search'
+    | 'selectable'
+    | 'sortable'
+    | 'onRowDrop'
+    | 'localization'
   > {
   columns: Array<StatefulTableColumn<T>>;
+  localization?: Localization;
   pagination?: boolean;
   filters?: StatefulTablePillTabFilter<T>;
   selectable?: boolean;
   defaultSelected?: T[];
   search?: boolean;
+  getRangeLabel?: PaginationProps['getRangeLabel'];
   onRowDrop?(items: T[]): void;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
 }
 
-const swapArrayElements = <T extends unknown>(array: T[], sourceIndex: number, destinationIndex: number) => {
+const swapArrayElements = <T,>(array: T[], sourceIndex: number, destinationIndex: number) => {
   const smallerIndex = Math.min(sourceIndex, destinationIndex);
   const largerIndex = Math.max(sourceIndex, destinationIndex);
 
@@ -55,6 +85,8 @@ const InternalStatefulTable = <T extends TableItem>({
   itemName,
   items = [],
   keyField,
+  localization: localizationProp = defaultLocalization,
+  getRangeLabel,
   onSelectionChange,
   onRowDrop,
   search,
@@ -64,9 +96,14 @@ const InternalStatefulTable = <T extends TableItem>({
   stickyHeader = false,
   ...rest
 }: StatefulTableProps<T>): React.ReactElement<StatefulTableProps<T>> => {
+  const localization = { ...defaultLocalization, ...localizationProp };
+
   const reducer = useMemo(() => createReducer<T>(), []);
   const reducerInit = useMemo(() => createReducerInit<T>(), []);
-  const sortable = useMemo(() => columns.some((column) => column.sortKey || column.sortFn), [columns]);
+  const sortable = useMemo(
+    () => columns.some((column) => column.sortKey || column.sortFn),
+    [columns],
+  );
 
   const [state, dispatch] = useReducer(
     reducer,
@@ -74,7 +111,10 @@ const InternalStatefulTable = <T extends TableItem>({
     reducerInit,
   );
 
-  const columnsChangedCallback = useCallback(() => dispatch({ type: 'COLUMNS_CHANGED', columns }), [columns]);
+  const columnsChangedCallback = useCallback(
+    () => dispatch({ type: 'COLUMNS_CHANGED', columns }),
+    [columns],
+  );
   const itemsChangedCallback = useCallback(
     () => dispatch({ type: 'ITEMS_CHANGED', items, isPaginationEnabled: pagination }),
     [items, pagination],
@@ -100,17 +140,43 @@ const InternalStatefulTable = <T extends TableItem>({
     [onSelectionChange],
   );
 
-  const onSort = useCallback((_columnHash: string, direction: TableSortDirection, column: StatefulTableColumn<T>) => {
-    dispatch({ type: 'SORT', column, direction });
-  }, []);
+  const onSort = useCallback(
+    (_columnHash: string, direction: TableSortDirection, column: StatefulTableColumn<T>) => {
+      dispatch({ type: 'SORT', column, direction });
+    },
+    [],
+  );
 
   const paginationOptions = useMemo(
-    () => (pagination ? { ...state.pagination, onItemsPerPageChange, onPageChange } : undefined),
-    [pagination, state.pagination, onItemsPerPageChange, onPageChange],
+    () =>
+      pagination
+        ? {
+            ...state.pagination,
+            onItemsPerPageChange,
+            onPageChange,
+            localization: {
+              previousPage: localization.previousPage,
+              nextPage: localization.nextPage,
+            },
+            getRangeLabel,
+          }
+        : undefined,
+    [
+      pagination,
+      state.pagination,
+      getRangeLabel,
+      onItemsPerPageChange,
+      onPageChange,
+      localization.previousPage,
+      localization.nextPage,
+    ],
   );
 
   const selectableOptions = useMemo(
-    () => (selectable ? { selectedItems: state.selectedItems, onSelectionChange: onItemSelect } : undefined),
+    () =>
+      selectable
+        ? { selectedItems: state.selectedItems, onSelectionChange: onItemSelect }
+        : undefined,
     [selectable, state.selectedItems, onItemSelect],
   );
 
@@ -124,6 +190,7 @@ const InternalStatefulTable = <T extends TableItem>({
       const updatedItems = swapArrayElements(state.currentItems, from, to);
 
       dispatch({ type: 'ITEMS_CHANGED', items: updatedItems, isPaginationEnabled: pagination });
+
       if (typeof onRowDrop === 'function') {
         onRowDrop(updatedItems);
       }
@@ -179,7 +246,7 @@ const InternalStatefulTable = <T extends TableItem>({
 
     return (
       <Box marginBottom="medium">
-        <Search {...searchProps} />
+        <Search localization={{ search: localization.search }} {...searchProps} />
       </Box>
     );
   };
@@ -194,11 +261,11 @@ const InternalStatefulTable = <T extends TableItem>({
         itemName={itemName}
         items={state.currentItems}
         keyField={keyField}
+        onRowDrop={onRowDrop ? onDragEnd : undefined}
         pagination={paginationOptions}
         selectable={selectableOptions}
         sortable={sortableOptions}
         stickyHeader={stickyHeader}
-        onRowDrop={onRowDrop ? onDragEnd : undefined}
       />
     </>
   );

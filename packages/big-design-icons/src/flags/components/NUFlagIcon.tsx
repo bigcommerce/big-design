@@ -1,53 +1,47 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import React, { forwardRef, memo } from 'react';
+import React, { forwardRef, memo, useId } from 'react';
 
 import { PrivateIconProps } from '../../base';
-import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'NU flag', theme, ...props }) => {
-  const uniqueTitleId = useUniqueId('icon');
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'NU flag',
+  theme,
+  ...props
+}) => {
+  const uniqueTitleId = useId();
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
-    <svg viewBox="0 0 640 480" aria-hidden={ariaHidden} ref={svgRef} aria-labelledby={titleId} {...props}>
+    <svg
+      aria-hidden={ariaHidden}
+      aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      {...props}
+    >
       {title ? <title id={titleId}>{title}</title> : null}
-      <defs>
-        <clipPath id="NUFlagIcon__a">
-          <path fillOpacity={0.7} d="M0 0h496v372H0z" />
-        </clipPath>
-      </defs>
-      <g clipPath="url(#NUFlagIcon__a)" transform="scale(1.2902)">
-        <path fill="#fff" fillRule="evenodd" d="M0 0h499.6v248.1H0z" />
-        <path fill="#c00" d="M0 0v18.6L119.2 80l44.9 1.3L0 0z" />
-        <path fill="#006" d="M51 0l144.6 75.5V0H51z" />
-        <path fill="#c00" d="M214.9 0v96.4H0v55h215v96.4h66v-96.4h215v-55H281V0h-66z" />
-        <path fill="#006" d="M300.2 0v71.1L441.6.6 300.2 0z" />
-        <path fill="#c00" d="M304.7 78.9l39.8-.3L498.9.6l-41 .6L304.8 79z" />
-        <path fill="#006" d="M0 167.5v52.8L99.2 168 0 167.6z" />
-        <path
-          fill="#c00"
-          d="M381.9 169.7l-41.4-.3 155.8 77.5-1-17.7-113.5-59.5zM38.7 248.3l146.1-76.8-38.3.3L0 248.1"
-        />
-        <path
-          fill="#006"
-          d="M497.9 21.8l-118 58.5 116.4.5v87.1h-99.1l98.2 53.3 1.4 27-52.4-.6-143.6-70.5v71.2H196V177L61.3 248l-60.9.2V496H992V.4L499 0M.6 28L0 79.4l104.4 1.3L.5 28z"
-        />
-        <g fill="#ffd900" fillRule="evenodd" strokeWidth="1pt">
-          <path d="M496 0h496.1v496h-496z" />
-          <path d="M0 248h523.5v248H0z" />
-        </g>
-        <g fillRule="evenodd">
-          <path fill="#000067" d="M290.9 125.3a42.8 42.8 0 11-85.5 0 42.8 42.8 0 0185.5 0z" />
-          <path
-            fill="#fff40d"
-            d="M240.2 114.3l8.2-24.6 8.2 24.6h26.7l-21.6 15.2L270 154l-21.6-15.3-21.6 15.2 8.3-24.5-21.6-15.2zm148.5 4l4.1-11.5 4 11.6h13.3l-10.7 7 4.1 11.5-10.7-7-10.7 7 4.1-11.5-10.7-7zM244.1 204l4-11.5 4.1 11.5h13.2l-10.7 7 4.1 11.6-10.7-7.1-10.7 7 4.1-11.4-10.7-7.1zm0-167l4-11.6 4.1 11.5h13.2L254.7 44l4.1 11.5-10.7-7-10.7 7 4.1-11.5-10.7-7zM98.9 118.2l4.1-11.5 4 11.5h13.3l-10.7 7.1 4.1 11.5-10.7-7-10.7 7 4.1-11.5-10.7-7z"
-          />
-        </g>
-      </g>
+      <path d="M0 0h640v480H0z" fill="#fedd00" />
+      <path d="M0 0h320v240H0z" fill="#012169" />
+      <path
+        d="M37.5 0l122 90.5L281 0h39v31l-120 89.5 120 89V240h-40l-120-89.5L40.5 240H0v-30l119.5-89L0 32V0z"
+        fill="#fff"
+      />
+      <path
+        d="M212 140.5L320 220v20l-135.5-99.5zm-92 10l3 17.5-96 72H0zM320 0v1.5l-124.5 94 1-22L295 0zM0 0l119.5 88h-30L0 21z"
+        fill="#c8102e"
+      />
+      <path d="M120.5 0v240h80V0zM0 80v80h320V80z" fill="#fff" />
+      <path d="M0 96.5v48h320v-48zM136.5 0v240h48V0z" fill="#c8102e" />
+      <circle cx={160} cy={120} fill="#012169" r={40.8} />
+      <path
+        d="M160 79.2l24 73.8-62.8-45.6h77.6L136 153M66.7 98.3l14 43.4L43.9 115h45.7l-37 26.8m200.7-43.5l14.1 43.4-36.9-26.8h45.7l-37 26.8M160 178.3l14.1 43.4-37-26.8h45.7l-37 26.8M160 18.3l14.1 43.4-37-26.8h45.7l-37 26.8"
+        fill="#fedd00"
+      />
     </svg>
   );
 };
@@ -56,6 +50,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const NUFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const NUFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 NUFlagIcon.displayName = 'NUFlagIcon';

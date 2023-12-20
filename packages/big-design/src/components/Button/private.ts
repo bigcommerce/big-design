@@ -10,6 +10,7 @@ export const MessagingButton = styled(_StyleableButton)<ButtonProps>`
   border: ${({ theme }) => theme.border.none};
   color: ${({ theme }) => theme.colors.secondary70};
   height: auto;
+  min-width: auto;
   padding: ${({ theme }) => theme.spacing.none};
 
   &:active {

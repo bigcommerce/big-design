@@ -1,17 +1,26 @@
-import { Breakpoints, breakpointsOrder, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
+import {
+  Breakpoints,
+  breakpointsOrder,
+  Spacing,
+  ThemeInterface,
+} from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
 import { Responsive } from '../../types';
 
-type SingleSpacingProp = keyof Spacing;
-type ResponsiveSpacingProp = Responsive<keyof Spacing>;
-type SpacingProp = SingleSpacingProp | ResponsiveSpacingProp;
+type SingleSpacingProp<T> = keyof Spacing | T;
+type ResponsiveSpacingProp<T> = Responsive<keyof Spacing | T>;
+type SpacingProp<T> = SingleSpacingProp<T> | ResponsiveSpacingProp<T>;
 
 interface SpacingObject {
   [key: string]: string | 0;
 }
 
-export function getSpacingStyles(spacing: SpacingProp, theme: ThemeInterface, ...spacingKeys: string[]) {
+export function getSpacingStyles<T extends string>(
+  spacing: SpacingProp<T>,
+  theme: ThemeInterface,
+  ...spacingKeys: string[]
+) {
   if (typeof spacing === 'object') {
     return getResponsiveSpacings(spacing, theme, spacingKeys);
   }
@@ -23,24 +32,50 @@ export function getSpacingStyles(spacing: SpacingProp, theme: ThemeInterface, ..
   return css``;
 }
 
-function getSimpleSpacings(spacing: SingleSpacingProp, theme: ThemeInterface, spacingKeys: string[]) {
+function isSpacingKey(key: string, theme: ThemeInterface): key is keyof Spacing {
+  return key in theme.spacing;
+}
+
+function getSimpleSpacings<T extends string>(
+  spacing: SingleSpacingProp<T>,
+  theme: ThemeInterface,
+  spacingKeys: string[],
+) {
   return spacingKeys.reduce<SpacingObject>((acc, spacingKey) => {
-    acc[spacingKey] = theme.spacing[spacing];
+    if (isSpacingKey(spacing, theme)) {
+      acc[spacingKey] = theme.spacing[spacing];
+    } else {
+      acc[spacingKey] = spacing;
+    }
 
     return acc;
   }, {});
 }
 
-function getResponsiveSpacings(responsiveSpacing: ResponsiveSpacingProp, theme: ThemeInterface, spacingKeys: string[]) {
+function getResponsiveSpacings<T extends string>(
+  responsiveSpacing: ResponsiveSpacingProp<T>,
+  theme: ThemeInterface,
+  spacingKeys: string[],
+) {
   const breakpointKeys = Object.keys(responsiveSpacing).sort(
-    (a, b) => breakpointsOrder.indexOf(a as keyof Breakpoints) - breakpointsOrder.indexOf(b as keyof Breakpoints),
+    (a, b) =>
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+      breakpointsOrder.indexOf(a as keyof Breakpoints) -
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+      breakpointsOrder.indexOf(b as keyof Breakpoints),
   );
 
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   return (breakpointKeys as Array<keyof Breakpoints>).map(
     (breakpointKey) =>
       css`
         ${theme.breakpoints[breakpointKey]} {
-          ${getSimpleSpacings(responsiveSpacing[breakpointKey] as keyof Spacing, theme, spacingKeys)}
+          ${getSimpleSpacings(
+            // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+            responsiveSpacing[breakpointKey] as keyof Spacing,
+            theme,
+            spacingKeys,
+          )}
         }
       `,
   );

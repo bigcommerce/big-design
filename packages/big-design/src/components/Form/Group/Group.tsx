@@ -1,20 +1,30 @@
 import { ErrorIcon } from '@bigcommerce/big-design-icons';
-import React, { Children, createContext, Fragment, HTMLAttributes, isValidElement, useMemo, useState } from 'react';
+import React, {
+  Children,
+  createContext,
+  Fragment,
+  HTMLAttributes,
+  isValidElement,
+  useMemo,
+  useState,
+} from 'react';
 
 import { warning } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
 import { Radio } from '../../Radio';
 import { FormControlError } from '../Error';
+import { useFormContext } from '../useFormContext';
 
 import { StyledError, StyledGroup, StyledInlineGroup } from './styled';
 
 export interface GroupProps extends HTMLAttributes<HTMLDivElement> {
+  children?: React.ReactNode;
   errors?: React.ReactNode | React.ReactNode[];
 }
 
-type Errors = {
+interface Errors {
   [inputKey: string]: React.ReactNode | React.ReactNode[];
-};
+}
 
 interface Context {
   errors?: Errors;
@@ -24,6 +34,7 @@ interface Context {
 export const FormGroupContext = createContext<Context>({});
 
 export const FormGroup: React.FC<GroupProps> = (props) => {
+  const { fullWidth } = useFormContext();
   const [inputErrors, setInputErrors] = useState<Errors>({});
 
   const { children, errors: groupErrors } = props;
@@ -52,7 +63,7 @@ export const FormGroup: React.FC<GroupProps> = (props) => {
   return (
     <FormGroupContext.Provider value={contextValue}>
       {inline ? (
-        <StyledInlineGroup childrenCount={childrenCount}>
+        <StyledInlineGroup childrenCount={childrenCount} fullWidth={fullWidth}>
           {children}
           {renderErrors()}
         </StyledInlineGroup>
@@ -66,7 +77,11 @@ export const FormGroup: React.FC<GroupProps> = (props) => {
   );
 };
 
-const generateErrors = (errors: GroupProps['errors'], fromGroup = false, key?: number): React.ReactNode => {
+const generateErrors = (
+  errors: GroupProps['errors'],
+  fromGroup = false,
+  key?: number,
+): React.ReactNode => {
   if (typeof errors === 'string') {
     return (
       <Fragment key={key}>
@@ -98,6 +113,8 @@ const generateErrors = (errors: GroupProps['errors'], fromGroup = false, key?: n
   }
 
   if (fromGroup) {
-    warning('errors must be either a string, FormControlError, or an array of strings or FormControlError components.');
+    warning(
+      'errors must be either a string, FormControlError, or an array of strings or FormControlError components.',
+    );
   }
 };

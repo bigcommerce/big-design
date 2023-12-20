@@ -1,5 +1,10 @@
 import { Button, FlexItem, Small } from '@bigcommerce/big-design';
-import { AssignmentIcon, CheckIcon, InvertColorsIcon, RestoreIcon } from '@bigcommerce/big-design-icons';
+import {
+  AssignmentIcon,
+  CheckIcon,
+  InvertColorsIcon,
+  RestoreIcon,
+} from '@bigcommerce/big-design-icons';
 import React, { useContext, useState } from 'react';
 
 import { JavascriptIcon } from '../Icons/JavascriptIcon';
@@ -16,9 +21,9 @@ interface SnippetControls {
 
 function getCopyToClipboardIcon(isCopying: boolean) {
   return isCopying ? (
-    <CheckIcon title="Copying" color="success" />
+    <CheckIcon color="success" title="Copying" />
   ) : (
-    <AssignmentIcon title="Copy" color="secondary60" />
+    <AssignmentIcon color="secondary60" title="Copy" />
   );
 }
 
@@ -38,10 +43,10 @@ export const SnippetControls: React.FC<SnippetControls> = (props) => {
 
   return (
     <StyledFlex
-      borderBottom="box"
-      backgroundColor="secondary20"
-      justifyContent="flex-end"
       alignItems="center"
+      backgroundColor="secondary20"
+      borderBottom="box"
+      justifyContent="flex-end"
       style={{ zIndex: 999 }}
     >
       <FlexItem flexGrow={1}>
@@ -49,31 +54,35 @@ export const SnippetControls: React.FC<SnippetControls> = (props) => {
       </FlexItem>
 
       <FlexItem borderLeft="box">
-        <Button iconOnly={<TypescriptIcon />} variant="subtle" onClick={() => setLanguage('tsx')} />
+        <Button iconOnly={<TypescriptIcon />} onClick={() => setLanguage('tsx')} variant="subtle" />
       </FlexItem>
 
       <FlexItem borderLeft="box">
-        <Button iconOnly={<JavascriptIcon />} variant="subtle" onClick={() => setLanguage('jsx')} />
+        <Button iconOnly={<JavascriptIcon />} onClick={() => setLanguage('jsx')} variant="subtle" />
       </FlexItem>
 
       <FlexItem borderLeft="box">
         <Button
-          iconOnly={getCopyToClipboardIcon(isCopying)}
-          variant="subtle"
-          onClick={() => onCopy(setIsCopying, copyToClipboard)}
           disabled={isCopying}
+          iconOnly={getCopyToClipboardIcon(isCopying)}
+          onClick={() => onCopy(setIsCopying, copyToClipboard)}
+          variant="subtle"
         />
       </FlexItem>
       {resetCode && (
         <FlexItem borderLeft="box">
-          <Button iconOnly={<RestoreIcon title="Reset" color="secondary60" />} variant="subtle" onClick={resetCode} />
+          <Button
+            iconOnly={<RestoreIcon color="secondary60" title="Reset" />}
+            onClick={resetCode}
+            variant="subtle"
+          />
         </FlexItem>
       )}
       <FlexItem borderLeft="box">
         <Button
-          iconOnly={<InvertColorsIcon title="Toggle Theme" color="secondary60" />}
-          variant="subtle"
+          iconOnly={<InvertColorsIcon color="secondary60" title="Toggle Theme" />}
           onClick={toggleEditorTheme}
+          variant="subtle"
         />
       </FlexItem>
     </StyledFlex>

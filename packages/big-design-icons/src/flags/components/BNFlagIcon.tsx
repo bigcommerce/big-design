@@ -1,29 +1,33 @@
 // **********************************
 // Auto-generated file, do NOT modify
 // **********************************
-import React, { forwardRef, memo } from 'react';
+import React, { forwardRef, memo, useId } from 'react';
 
 import { PrivateIconProps } from '../../base';
-import { useUniqueId } from '../../utils';
 import { createStyledFlagIcon, FlagIconProps } from '../base';
 
-const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 'BN flag', theme, ...props }) => {
-  const uniqueTitleId = useUniqueId('icon');
+const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
+  svgRef,
+  title = 'BN flag',
+  theme,
+  ...props
+}) => {
+  const uniqueTitleId = useId();
   const titleId = title ? props.titleId || uniqueTitleId : undefined;
   const ariaHidden = titleId ? undefined : true;
 
   return (
     <svg
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 640 480"
       aria-hidden={ariaHidden}
-      ref={svgRef}
       aria-labelledby={titleId}
+      ref={svgRef}
+      viewBox="0 0 640 480"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path fill="#f7e017" d="M0 0h640v480H0z" />
-      <path fill="#fff" d="M0 33.3v213.4l640 100V233.3z" />
+      <path d="M0 0h640v480H0z" fill="#f7e017" />
+      <path d="M0 33.3v213.4l640 100V233.3z" fill="#fff" />
       <path d="M0 146.7v100l640 200v-100z" />
       <g fill="#cf1126" transform="translate(-160) scale(.66667)">
         <path d="M695.7 569.7a117.2 117.2 0 01-49.4-17.2c-2.4-1.6-4.6-3-5-3-.4 0-.6 1.9-.6 4.1 0 6.4-2.6 9.6-9 11.3-6.2 1.6-15.6-1.6-23.2-8a68.3 68.3 0 00-24.7-13.5 39.9 39.9 0 00-28 3.6 8.7 8.7 0 01-2.8 1.3c-1.1 0-1-6.9.2-9 1.5-3 5.1-5.8 9.4-7.3 2.2-.8 4-1.8 4-2.3 0-.4-.8-2-1.7-3.6-2.9-5.1-1.7-10 3.4-13.9 5.2-4 14-4.6 21.7-1.7a32 32 0 004 1.4c1 0 .4-1.5-2.4-5.6-3.2-4.7-3.9-7-3.5-12.7a14.7 14.7 0 0113.5-13.5c5.8-.4 9.4 1.6 18 9.7a144 144 0 0086 41.6c8.3 1 24.8.5 34.5-1a156 156 0 0081.8-40.8c6.4-6 9.4-7.6 14.7-7.6 4.5 0 7.7 1.4 11 5 3 3.3 4 6.4 3.6 11.5-.2 3.2-.7 4.7-2.6 7.9-2.8 4.5-2.3 5 3.2 2.8 7.6-3 16.9-1.6 21.9 3.2 4.4 4.2 4.8 8.4 1.4 14-1.3 2.1-2.3 4-2.3 4.4 0 .6 1 .8 5.5 1.6 6 1 9.5 5.4 9.5 12.2 0 2-.3 3.7-.6 3.7s-2.6-.9-5-1.9c-7-2.9-11-3.6-19.2-3.5-6.2 0-8.3.3-12.6 1.7a57.5 57.5 0 00-19.5 11.5c-6.4 5.7-10.4 7.5-16.6 7.4-5.8 0-9.7-1.7-11.8-5-1.1-1.8-1.3-2.8-1-6.8.2-2.6.1-4.7 0-4.7-.3 0-2.5 1.4-5 3.1A80.5 80.5 0 01778 560a181.6 181.6 0 01-82.3 9.7z" />
@@ -37,7 +41,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = 
           <path d="M499.7 306.6c-2 .6-1.6 3.2-1 4.7a54 54 0 011 13.2c3.9 3 6.2 7.4 8.4 11.6 1.4 2.8 2.6 5.8 3.1 8.9 3.1 1 5.8 3 8.2 5-1-2.8-3-5-4.5-7.7s-3-5.6-3.7-8.7c-3-3.1-4.6-7.6-4-12 .2-4.7-1.3-9.6-4.5-13.2-.8-.8-1.8-1.7-3-1.8z" />
           <path d="M509.2 308c-1.2.2-1.8 1.2-2.4 2.1-.3.9.8 1.8 1 2.8a21.8 21.8 0 011.4 10.4c-.1 2.5.8 5 2 7a3.9 3.9 0 013.5-2.8c.5 0 1.4.2 1-.7-.4-4.8-1.1-9.6-2.8-14a9.6 9.6 0 00-2.8-4.5c-.2-.2-.6-.4-1-.3z" />
         </g>
-        <use width="100%" height="100%" transform="matrix(-1 0 0 1 1440 0)" xlinkHref="#BNFlagIcon__a" />
+        <use
+          height="100%"
+          transform="matrix(-1 0 0 1 1440 0)"
+          width="100%"
+          xlinkHref="#BNFlagIcon__a"
+        />
         <path d="M715.7 476a35.6 35.6 0 01-29.9-24c.3-2.2 3 1.2 4.3 1.5a19 19 0 008 2.6c3.5 1.5 5.7 5 9.1 6.9 1.6 1.2 7.2 3.6 6.1-.3-1.3-2-2.2-4.6-1-7 1.8-4.1 4.7-7.7 7.7-11.2 2.1-.7 3.6 3.6 5.1 5 2.1 3.3 4.7 7.3 3.4 11.3-1.2 1.5-2 6 1.3 4.6 4-1.8 7.3-4.8 10.6-7.6 3-2 6.7-2.1 9.7-4 1.5-.3 4.4-3.1 5-1.6a44.9 44.9 0 01-7.4 12.3 32.1 32.1 0 01-18.8 10.9c-4.4.8-8.8 1-13.2.6z" />
         <path d="M731.5 460.2c.3-2.7-.3-5.4-1.7-8-2.1-4.2-5-8-8-11.9-2.8-1.6-4.3 3.7-6.1 5.2-2.9 4.3-6.5 8.7-6.7 14-1.6 2.5-4.6-2-5.9-3.5a19 19 0 01-4-12 50.8 50.8 0 013.6-20.6c2-5.6 5.1-11 4.8-17 .2-4.7-.7-9.7-4.4-12.8-3.6-2.8 2.3-3.4 4.1-2 3.2.3 4.9 5.5 7.8 4.2 1.1-2.7 1.4-6 3.8-8.1 2.3-3.2 4.7 1.3 5.5 3.5 1.7 1.8 0 6.5 2.6 6.6 3.2-2.3 5.5-6 9.6-6.9 1.7-1 4.5 0 2.3 1.8-3 2.9-5.6 6.4-6.2 10.7-.9 5.3.4 10.7 2.7 15.4 4.5 9.4 8 20 5.7 30.5-1 4.6-4.2 8.6-8 11.3-.5.3-1.3.3-1.5-.4z" />
         <path d="M726.7 389.6a21.2 21.2 0 00-5.6-7c-2.4 0-3.9 3-5.5 4.6-1.1 2.1-2.5 5.6-5.3 2.9-4.5-2.6-5.2-8.3-5.2-13-.3-7.6 2.8-14.7 5.5-21.6 1.7-4.3 1.3-9.2.2-13.6-1.3-5-5.4-8.6-8.5-12.6.2-1.5 4.2-.7 5.7-.4 3.4.9 5.4 3.8 7.9 6 1.8-.6 1-4.2 1.9-5.9 0-2.4 3.2-5.5 4.5-2.1 2 2.2 0 6.5 2.5 7.8 2.4-.9 3.6-3.5 5.8-4.7a8 8 0 017.8-.5c.9 2.2-2.6 4-3.6 6a20.4 20.4 0 00-3.8 18c1.4 5 3.8 9.5 4.7 14.5a40.1 40.1 0 01-.5 17.2c-.9 3.4-3.8 5.6-6.8 7-.8-.7-1.2-1.7-1.7-2.6z" />
@@ -64,6 +73,6 @@ const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconP
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
-export const BNFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef as React.FC<FlagIconProps>));
+export const BNFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
 BNFlagIcon.displayName = 'BNFlagIcon';

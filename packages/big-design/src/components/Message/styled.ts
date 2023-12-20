@@ -20,7 +20,8 @@ export const StyledMessage = styled(Grid)<MessageProps>`
     onClose
       ? css`
           grid-template-areas: 'icon messages close';
-          grid-template-columns: ${({ theme }) => `${theme.spacing.xLarge} 1fr ${theme.spacing.large}`};
+          grid-template-columns: ${({ theme }) =>
+            `${theme.spacing.xLarge} 1fr ${theme.spacing.large}`};
         `
       : css`
           grid-template-areas: 'icon messages';
@@ -35,10 +36,12 @@ export const StyledHeader = styled(StyleableH4)`
   margin-bottom: ${({ theme }) => theme.spacing.none};
 `;
 
-export const StyledMessageItem = styled(StyleableSmall).attrs({ as: 'span' })`
+export const StyledMessageItem = styled<StyledComponent<'span', DefaultTheme, Partial<TextProps>>>(
+  StyleableSmall,
+).attrs({ as: 'span' })`
   color: ${({ theme }) => theme.colors.secondary70};
   vertical-align: middle;
-` as StyledComponent<'span', DefaultTheme, TextProps>;
+`;
 
 export const StyledLink = styled(Link)`
   font-size: ${({ theme }) => theme.typography.fontSize.small};

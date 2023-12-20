@@ -29,12 +29,12 @@ test('renders with close button if onRemove is present', () => {
   expect(screen.getByText(/test/i).parentElement).toMatchSnapshot();
 });
 
-test('onDelete is called when close button is clicked', () => {
+test('onDelete is called when close button is clicked', async () => {
   const onDelete = jest.fn();
 
   render(<Chip label="Test" onDelete={onDelete} />);
 
-  userEvent.click(screen.getByRole('button'));
+  await userEvent.click(screen.getByRole('button'));
 
   expect(onDelete).toHaveBeenCalled();
 });

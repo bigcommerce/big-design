@@ -2,7 +2,7 @@ import { theme } from '@bigcommerce/big-design-theme';
 import React from 'react';
 
 import 'jest-styled-components';
-import { fireEvent, render } from '@test/utils';
+import { fireEvent, render, screen } from '@test/utils';
 
 import { Message, MessageProps } from './Message';
 
@@ -11,7 +11,7 @@ test('renders with margins', () => {
 
   expect(container.firstChild).not.toHaveStyle('margin: 1rem');
 
-  rerender(<Message messages={[{ text: 'Success' }]} margin="medium" />);
+  rerender(<Message margin="medium" messages={[{ text: 'Success' }]} />);
 
   expect(container.firstChild).toHaveStyle('margin: 1rem');
 });
@@ -20,77 +20,94 @@ test('render default (success) Message', () => {
   const { container } = render(<Message messages={[{ text: 'Success' }]} />);
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success}`);
+  expect(container.firstChild).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success}`,
+  );
 });
 
 test('render error Message', () => {
   const { container } = render(<Message messages={[{ text: 'Error' }]} type="error" />);
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger}`);
+  expect(container.firstChild).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger}`,
+  );
 });
 
 test('render warning Message', () => {
   const { container } = render(<Message messages={[{ text: 'Warning' }]} type="warning" />);
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50}`);
+  expect(container.firstChild).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50}`,
+  );
 });
 
 test('render info Message', () => {
   const { container } = render(<Message messages={[{ text: 'Info' }]} type="info" />);
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60}`);
+  expect(container.firstChild).toHaveStyle(
+    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60}`,
+  );
 });
 
-test('renders with link', () => {
-  const { queryByRole, container } = render(
+test('renders with link', async () => {
+  const { container } = render(
     <Message messages={[{ text: 'Success', link: { text: 'Link', href: '#' } }]} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
 
-  const link = queryByRole('link') as HTMLAnchorElement;
+  const link = await screen.findByRole<HTMLAnchorElement>('link');
 
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
 });
 
-test('renders with external link', () => {
-  const { queryByRole, container } = render(
-    <Message messages={[{ text: 'Success', link: { text: 'Link', href: '#', external: true, target: '_blank' } }]} />,
+test('renders with external link', async () => {
+  const { container } = render(
+    <Message
+      messages={[
+        { text: 'Success', link: { text: 'Link', href: '#', external: true, target: '_blank' } },
+      ]}
+    />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
 
-  const link = queryByRole('link') as HTMLAnchorElement;
+  const link = await screen.findByRole<HTMLAnchorElement>('link');
 
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
   expect(link.target).toBe('_blank');
-  expect(link.querySelector('svg')).not.toBeUndefined();
+  expect(link.querySelector('svg')).toBeDefined();
 });
 
 test('renders header', () => {
-  const { queryByText, container } = render(<Message header="Header" messages={[{ text: 'Success' }]} />);
+  const { queryByText, container } = render(
+    <Message header="Header" messages={[{ text: 'Success' }]} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(queryByText('Header')).not.toBeUndefined();
+  expect(queryByText('Header')).toBeDefined();
 });
 
 test('renders close button', () => {
-  const { queryByRole, container } = render(<Message onClose={() => null} messages={[{ text: 'Success' }]} />);
+  const { queryByRole, container } = render(
+    <Message messages={[{ text: 'Success' }]} onClose={() => null} />,
+  );
 
   expect(container.firstChild).toMatchSnapshot();
-  expect(queryByRole('button')).not.toBeUndefined();
+  expect(queryByRole('button')).toBeDefined();
 });
 
-test('trigger onClose', () => {
+test('trigger onClose', async () => {
   const fn = jest.fn();
-  const { queryByRole } = render(<Message onClose={fn} messages={[{ text: 'Success' }]} />);
 
-  const button = queryByRole('button') as HTMLButtonElement;
+  render(<Message messages={[{ text: 'Success' }]} onClose={fn} />);
+
+  const button = await screen.findByRole<HTMLButtonElement>('button');
 
   fireEvent.click(button);
 
@@ -99,22 +116,22 @@ test('trigger onClose', () => {
 
 test('does not forward styles', () => {
   const { container } = render(
-    <Message messages={[{ text: 'Success' }]} className="test" style={{ background: 'red' }} />,
+    <Message className="test" messages={[{ text: 'Success' }]} style={{ background: 'red' }} />,
   );
 
-  expect(container.getElementsByClassName('test').length).toBe(0);
+  expect(container.getElementsByClassName('test')).toHaveLength(0);
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
 test('renders actions', () => {
   const onClick = jest.fn();
-  const actions = [
-    { text: 'First Action', onClick: onClick },
-    { text: 'Second Action', variant: 'primary', onClick: onClick },
+  const actions: MessageProps['actions'] = [
+    { text: 'First Action', onClick },
+    { text: 'Second Action', variant: 'secondary', onClick },
   ];
 
   const { container, getByRole } = render(
-    <Message actions={actions as MessageProps['actions']} messages={[{ text: 'Success' }]} />,
+    <Message actions={actions} messages={[{ text: 'Success' }]} />,
   );
   const firstAction = getByRole('button', { name: 'First Action' });
   const secondAction = getByRole('button', { name: 'Second Action' });
@@ -131,4 +148,18 @@ test('renders actions', () => {
   fireEvent.click(secondAction);
 
   expect(onClick).toHaveBeenCalledTimes(2);
+});
+
+test('renders localized labels', async () => {
+  render(
+    <Message
+      localization={{ close: 'Cerrar' }}
+      messages={[{ text: 'Success' }]}
+      onClose={() => null}
+    />,
+  );
+
+  const button = await screen.findByRole('button', { name: 'Cerrar' });
+
+  expect(button).toBeInTheDocument();
 });

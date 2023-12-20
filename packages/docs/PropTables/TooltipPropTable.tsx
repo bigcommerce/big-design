@@ -5,9 +5,9 @@ import { Prop, PropTable, PropTableWrapper } from '../components';
 const tooltipProps: Prop[] = [
   {
     name: 'trigger',
-    types: 'ReactNode',
+    types: 'ReactElement',
     required: true,
-    description: 'React Node that triggers the tooltip on hover.',
+    description: 'React Element that triggers the tooltip on hover.',
   },
   {
     name: 'placement',
@@ -34,5 +34,5 @@ const tooltipProps: Prop[] = [
 ];
 
 export const TooltipPropTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable title="Tooltip" propList={tooltipProps} {...props} />
+  <PropTable propList={tooltipProps} title="Tooltip" {...props} />
 );

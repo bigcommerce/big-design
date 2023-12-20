@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'tuesday'
+    ignore:
+      # Next major version is exported as an ESM module
+      - dependency-name: 'node-fetch'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'inquirer'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'inquirer-autocomplete-prompt'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'camelcase'
+        update-types: ['version-update:semver-major']

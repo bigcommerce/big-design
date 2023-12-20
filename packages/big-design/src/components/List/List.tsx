@@ -1,6 +1,15 @@
 import { State } from '@popperjs/core';
 import { UseSelectPropGetters } from 'downshift';
-import React, { forwardRef, Fragment, HTMLAttributes, memo, Ref, useCallback, useMemo, useRef } from 'react';
+import React, {
+  forwardRef,
+  Fragment,
+  HTMLAttributes,
+  memo,
+  Ref,
+  useCallback,
+  useMemo,
+  useRef,
+} from 'react';
 
 import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
 import { typedMemo } from '../../utils';
@@ -36,7 +45,7 @@ interface PrivateProps {
 }
 
 const StyleableList = typedMemo(
-  <T extends unknown>({
+  <T,>({
     action,
     addItem,
     autoWidth,
@@ -102,12 +111,15 @@ const StyleableList = typedMemo(
             if (
               filteredItems &&
               isOption(item) &&
-              !filteredItems.find((filteredItem) => isOption(filteredItem) && filteredItem.value === item.value)
+              !filteredItems.find(
+                (filteredItem) => isOption(filteredItem) && filteredItem.value === item.value,
+              )
             ) {
               return null;
             }
 
             const key = itemKey.current;
+
             itemKey.current += 1;
 
             const isChecked =
@@ -121,14 +133,14 @@ const StyleableList = typedMemo(
 
             return (
               <ListItem
+                actionType={hasActionType(item) ? item.actionType : 'normal'}
                 addItem={addItem}
                 autoWidth={autoWidth}
-                actionType={hasActionType(item) ? item.actionType : 'normal'}
                 getItemProps={getItemProps}
                 index={key}
                 isAction={isDropdown}
                 isChecked={isChecked || false}
-                isHighlighted={highlightedIndex === key}
+                isHighlighted={!item.disabled && highlightedIndex === key}
                 isSelected={!isDropdown && isOption(item) && selectedItem?.value === item.value}
                 item={item}
                 key={`${key}-${item.content}`}
@@ -156,7 +168,7 @@ const StyleableList = typedMemo(
         return (
           <>
             {group.separated && <ListGroupSeparator />}
-            {group.label && <ListGroupHeader>{group.label}</ListGroupHeader>}
+            {Boolean(group.label) && <ListGroupHeader>{group.label}</ListGroupHeader>}
             {isItemGroup(group) && renderItems(group.items)}
             {isOptionGroup(group) && renderItems(group.options)}
           </>
@@ -218,7 +230,9 @@ const StyleableList = typedMemo(
 
 export const List = memo(
   // Using unknown because memo looses the generic type
-  forwardRef<HTMLUListElement, ListProps<unknown>>((props, ref) => <StyleableList {...props} forwardedRef={ref} />),
+  forwardRef<HTMLUListElement, ListProps<unknown>>((props, ref) => (
+    <StyleableList {...props} forwardedRef={ref} />
+  )),
 );
 
 type Items =
@@ -232,16 +246,23 @@ type Items =
 // Merging types into union
 // Issue: https://github.com/microsoft/TypeScript/issues/33591
 
-const isGroups = (items: Array<Items>): items is Array<DropdownItemGroup> | Array<SelectOptionGroup<unknown>> =>
+const isGroups = (
+  items: Items[],
+): items is DropdownItemGroup[] | Array<SelectOptionGroup<unknown>> =>
   items.every((item) => isItemGroup(item) || isOptionGroup(item));
 
-const isItems = (items: Array<Items>): items is Array<DropdownItem | DropdownLinkItem> | Array<SelectOption<unknown>> =>
+const isItems = (
+  items: Items[],
+): items is Array<DropdownItem | DropdownLinkItem> | Array<SelectOption<unknown>> =>
   items.every((item) => isItem(item) || isOption(item));
 
 const isOption = (item: Items): item is SelectOption<unknown> => 'value' in item;
 
-const isItem = (item: Items): item is DropdownItem | DropdownLinkItem => 'content' in item && !('items' in item);
+const isItem = (item: Items): item is DropdownItem | DropdownLinkItem =>
+  'content' in item && !('items' in item);
 
-const isItemGroup = (item: Items): item is DropdownItemGroup => 'items' in item && !('content' in item);
+const isItemGroup = (item: Items): item is DropdownItemGroup =>
+  'items' in item && !('content' in item);
 
-const isOptionGroup = (item: Items): item is SelectOptionGroup<unknown> => 'options' in item && !('value' in item);
+const isOptionGroup = (item: Items): item is SelectOptionGroup<unknown> =>
+  'options' in item && !('value' in item);
