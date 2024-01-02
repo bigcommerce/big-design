@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.38.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.38.0...@bigcommerce/big-design@0.38.1) (2024-01-02)
+
+
+### Bug Fixes
+
+* **component:** fix autofilling for disabled cells ([#1308](https://github.com/bigcommerce/big-design/issues/1308)) ([8013195](https://github.com/bigcommerce/big-design/commit/80131956644d48df1fa5ec0d64fcd9be5d51e6b9))
+* **component:** fix bad setState call in MultiSelect ([#1102](https://github.com/bigcommerce/big-design/issues/1102)) ([#1320](https://github.com/bigcommerce/big-design/issues/1320)) ([99f95df](https://github.com/bigcommerce/big-design/commit/99f95df8c2971a1cb8e326e43167e49d0429073a))
+* **component:** update disabled input text color ([#1312](https://github.com/bigcommerce/big-design/issues/1312)) ([4dd2b74](https://github.com/bigcommerce/big-design/commit/4dd2b747e4467477f9ea35f472b72ee01accfb1a))
+
+
+
+
+
 # [0.38.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.37.0...@bigcommerce/big-design@0.38.0) (2023-10-09)
 
 

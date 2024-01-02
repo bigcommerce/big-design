@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.38.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.38.0...@bigcommerce/docs@0.38.1) (2024-01-02)
+
+
+### Bug Fixes
+
+* **docs:** fix formatting issues in dev docs ([#1319](https://github.com/bigcommerce/big-design/issues/1319)) ([6a7df1b](https://github.com/bigcommerce/big-design/commit/6a7df1b458791815098f989d88ec496c9f338fba))
+
+
+
+
+
 # [0.38.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.37.0...@bigcommerce/docs@0.38.0) (2023-10-09)
 
 
