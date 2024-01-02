@@ -8,7 +8,7 @@ You can find documentation and examples on our [docs page](https://developer.big
 
 ## Note
 
-[BigDesign](https://github.com/bigcommerce/big-design/blob/master/packages/big-design) components use this theme by default.
+[BigDesign](https://github.com/bigcommerce/big-design/blob/main/packages/big-design) components use this theme by default.
 This package is only meant to be used directly when more advanced features are needed such as:
 
 - When you app uses an html font size different than `16px`.

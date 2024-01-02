@@ -55,28 +55,28 @@ import { Button, GlobalStyles } from '@bigcommerce/big-design';
 
 This is a monorepo that uses [Lerna](https://lerna.js.org/) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
 
-Workspaces are inside the [packages](https://github.com/bigcommerce/big-design/blob/master/packages) directory.
+Workspaces are inside the [packages](https://github.com/bigcommerce/big-design/blob/main/packages) directory.
 
-- [big-design](https://github.com/bigcommerce/big-design/blob/master/packages/big-design): React component library.
-- [big-design-theme](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-theme): Default Theme.
-- [big-design-icons](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-icons): Icons library.
-- [docs](https://github.com/bigcommerce/big-design/blob/master/packages/docs): Documentation live here.
-- [configs](https://github.com/bigcommerce/big-design/blob/master/packages/configs): (internal) Shared configs between packages.
+- [big-design](https://github.com/bigcommerce/big-design/blob/main/packages/big-design): React component library.
+- [big-design-theme](https://github.com/bigcommerce/big-design/blob/main/packages/big-design-theme): Default Theme.
+- [big-design-icons](https://github.com/bigcommerce/big-design/blob/main/packages/big-design-icons): Icons library.
+- [docs](https://github.com/bigcommerce/big-design/blob/main/packages/docs): Documentation live here.
+- [configs](https://github.com/bigcommerce/big-design/blob/main/packages/configs): (internal) Shared configs between packages.
 
 ### Changelogs
 
 As this is a monorepo, each package has it's own Changelog. Links for each can be found below
 
-- [big-design](https://github.com/bigcommerce/big-design/blob/master/packages/big-design/CHANGELOG.md)
-- [big-design-theme](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-theme/CHANGELOG.md)
-- [big-design-icons](https://github.com/bigcommerce/big-design/blob/master/packages/big-design-icons/CHANGELOG.md)
-- [configs](https://github.com/bigcommerce/big-design/tree/master/packages/configs)
-- [docs](https://github.com/bigcommerce/big-design/blob/master/packages/docs/CHANGELOG.md)
+- [big-design](https://github.com/bigcommerce/big-design/blob/main/packages/big-design/CHANGELOG.md)
+- [big-design-theme](https://github.com/bigcommerce/big-design/blob/main/packages/big-design-theme/CHANGELOG.md)
+- [big-design-icons](https://github.com/bigcommerce/big-design/blob/main/packages/big-design-icons/CHANGELOG.md)
+- [configs](https://github.com/bigcommerce/big-design/tree/main/packages/configs)
+- [docs](https://github.com/bigcommerce/big-design/blob/main/packages/docs/CHANGELOG.md)
 
 ### Contributing
 
-To contribute, please read our [Contributing](https://github.com/bigcommerce/big-design/blob/master/CONTRIBUTING.md) guidelines
-and [Code of Conduct](https://github.com/bigcommerce/big-design/blob/master/CODE_OF_CONDUCT.md) first.
+To contribute, please read our [Contributing](https://github.com/bigcommerce/big-design/blob/main/CONTRIBUTING.md) guidelines
+and [Code of Conduct](https://github.com/bigcommerce/big-design/blob/main/CODE_OF_CONDUCT.md) first.
 
 ### Development
 
@@ -122,7 +122,7 @@ GH_TOKEN=<token> yarn lerna publish <patch/minor/major> --conventional-graduate 
 
 #### `from-package`
 
-`from-package` allows you to release what's on `upstream/master` if the publish script failed. By default the `lerna publish` command will push commits and tags before running through the build. This is a just-in-case command.
+`from-package` allows you to release what's on `upstream/main` if the publish script failed. By default the `lerna publish` command will push commits and tags before running through the build. This is a just-in-case command.
 
 ```
 GH_TOKEN=<token> yarn lerna publish from-package --git-remote upstream
