@@ -1,6 +1,6 @@
 # Contributing to BigDesign
 
-Before contributing please read the [Code of Conduct](https://github.com/bigcommerce/big-design/blob/master/CODE_OF_CONDUCT.md) as we expect all participants to adhere to it.
+Before contributing please read the [Code of Conduct](https://github.com/bigcommerce/big-design/blob/main/CODE_OF_CONDUCT.md) as we expect all participants to adhere to it.
 
 ## Issues / Bugs
 
@@ -24,14 +24,14 @@ If your change just fixes a bug, you can submit a pull request but ensure there 
 
 A good first place to start is our list of [good first issues](https://github.com/bigcommerce/big-design/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
 
-Once you are ready to start working on an issue, follow steps in **[Opening a Pull Request](#opening-a-pull-request)** and **[Development Workflow](https://github.com/bigcommerce/big-design/blob/master/README.md#development)**.
+Once you are ready to start working on an issue, follow steps in **[Opening a Pull Request](#opening-a-pull-request)** and **[Development Workflow](https://github.com/bigcommerce/big-design/blob/main/README.md#development)**.
 
 ## Opening a Pull Request
 
 The core team will be monitoring for new pull requests. We will review your pull request and either merge it, request changes to it, or close it with an explanation, within a timely manner.
 
 **Before submitting a pull request,** please make sure the following is done:
-1. Fork the repository and ensure you branch from `master`.
+1. Fork the repository and ensure you branch from `main`.
 2. Install dependencies using `yarn install`.
 3. Tests should be added/updating to reflect changes.
 4. Ensure the test suite passes (`yarn test`).
@@ -41,4 +41,4 @@ The core team will be monitoring for new pull requests. We will review your pull
 
 ## License
 
-By contributing to BigDesign, you agree that your contributions will be licensed under our [license](https://github.com/bigcommerce/big-design/blob/master/LICENSE.md).
+By contributing to BigDesign, you agree that your contributions will be licensed under our [license](https://github.com/bigcommerce/big-design/blob/main/LICENSE.md).
