@@ -1,4 +1,9 @@
-import { useCombobox, UseComboboxState, UseComboboxStateChangeOptions } from 'downshift';
+import {
+  useCombobox,
+  UseComboboxState,
+  UseComboboxStateChange,
+  UseComboboxStateChangeOptions,
+} from 'downshift';
 import React, {
   cloneElement,
   createRef,
@@ -152,10 +157,31 @@ export const MultiSelect = typedMemo(
     };
 
     const handleOnSelectedItemChange = (
-      changes: Partial<UseComboboxState<SelectOption<T> | SelectAction | null>>,
+      changes: Partial<UseComboboxStateChange<SelectOption<T> | SelectAction | null>>,
     ) => {
       if (action && changes.selectedItem === action) {
         action.onActionClick(inputValue);
+
+        return;
+      }
+
+      // Item clicks are handled by event handles, but we need to manually
+      // process changes triggered by keyboard input using highlighted index
+      if (
+        changes.type === useCombobox.stateChangeTypes.InputKeyDownEnter &&
+        changes.selectedItem &&
+        'value' in changes.selectedItem
+      ) {
+        const isChecked = Boolean(
+          selectedOptions.find(
+            (i) =>
+              changes.selectedItem &&
+              'value' in changes.selectedItem &&
+              i.value === changes.selectedItem.value,
+          ),
+        );
+
+        isChecked ? removeItem(changes.selectedItem) : addSelectedItem(changes.selectedItem);
       }
     };
 
@@ -186,19 +212,6 @@ export const MultiSelect = typedMemo(
           if (isSelectAction(actionAndChanges.changes.selectedItem)) {
             return { ...actionAndChanges.changes, inputValue: state.inputValue };
           }
-
-          const isChecked = Boolean(
-            selectedOptions.find(
-              (i) =>
-                actionAndChanges.changes.selectedItem &&
-                'value' in actionAndChanges.changes.selectedItem &&
-                i.value === actionAndChanges.changes.selectedItem.value,
-            ),
-          );
-
-          isChecked
-            ? removeItem(actionAndChanges.changes.selectedItem)
-            : addSelectedItem(actionAndChanges.changes.selectedItem);
 
           return {
             ...actionAndChanges.changes,
