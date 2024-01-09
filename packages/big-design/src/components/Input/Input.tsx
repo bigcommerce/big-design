@@ -145,7 +145,9 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
       return null;
     }
 
-    return chips.map((chip) => <Chip {...chip} key={chip.label} marginBottom="none" />);
+    return chips.map((chip, idx) => (
+      <Chip {...chip} key={`${chip.label}-${idx}`} marginBottom="none" />
+    ));
   }, [chips]);
 
   return (
