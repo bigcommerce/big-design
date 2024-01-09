@@ -78,10 +78,7 @@ const StyleableListItem = typedMemo(
           disabled={item.disabled}
           label={item.content}
           onChange={() => null}
-          onClick={(event) => {
-            event.preventDefault();
-            event.stopPropagation();
-          }}
+          onClick={(event) => event.preventDefault()}
           tabIndex={-1}
         />
       </StyledListItem>
