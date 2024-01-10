@@ -45,7 +45,7 @@
     "@types/styled-components": "^5.1.26",
     "babel-plugin-styled-components": "^2.0.7",
     "jsx-to-string-loader": "^1.2.0",
-    "next": "^12.0.8",
+    "next": "^14.0.4",
     "push-dir": "^0.4.1",
     "typescript": "^5.3.3",
     "typescript-styled-plugin": "^0.18.2"
