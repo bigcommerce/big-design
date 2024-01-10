@@ -9,6 +9,7 @@ export * from './CounterPropTable';
 export * from './DatepickerPropsTable';
 export * from './DisplayPropTable';
 export * from './DropdownPropTable';
+export * from './FileUploaderPropTable';
 export * from './FlagIconPropTable';
 export * from './FlexPropTable';
 export * from './FormPropTable';
