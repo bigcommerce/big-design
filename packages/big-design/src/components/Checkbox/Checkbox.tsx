@@ -51,6 +51,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   forwardedRef,
   style,
   badge,
+  onClick,
   ...props
 }) => {
   const uniqueCheckboxId = useId();
@@ -103,7 +104,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   }, [description]);
 
   return (
-    <CheckboxContainer className={className} style={style}>
+    <CheckboxContainer className={className} onClick={onClick} style={style}>
       <HiddenCheckbox
         checked={checked}
         disabled={disabled}
