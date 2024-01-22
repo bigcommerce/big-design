@@ -56,7 +56,10 @@ export const CodeSnippet: React.FC<EditorProps> = (props) => {
         disabled
         language={language}
         // Adds background and text color
-        style={editorTheme.plain}
+        style={{
+          ...editorTheme.plain,
+          overflow: 'auto',
+        }}
         theme={{
           ...editorTheme,
           plain: {

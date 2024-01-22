@@ -38,9 +38,7 @@ test('calls onTimeChange function when a value is selected', async () => {
     await fireEvent.click(options[3]);
   });
 
-  // Node v19.2.0+ will fix the character spacing issue
-  // See https://github.com/nodejs/node/issues/46123
-  expect(changeFunction).toHaveBeenCalledWith('3:00', { content: '3:00 AM', value: '3:00' });
+  expect(changeFunction).toHaveBeenCalledWith('3:00', { content: '3:00 AM', value: '3:00' });
 });
 
 test('renders label as a string', async () => {
