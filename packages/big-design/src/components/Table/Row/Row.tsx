@@ -72,8 +72,6 @@ const InternalRow = <T extends TableItem>({
               width={isDragging ? cellWidth : width}
               withPadding={withPadding}
             >
-              {/*
-          // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
               <CellContent {...item} />
             </DataCell>
           );

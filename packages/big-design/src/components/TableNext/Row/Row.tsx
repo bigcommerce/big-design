@@ -178,8 +178,6 @@ const InternalRow = <T extends TableItem>({
                     width={0}
                   />
                 )}
-                {/*
-          // @ts-expect-error https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20544 */}
                 <CellContent {...item} />
               </Flex>
             </DataCell>
