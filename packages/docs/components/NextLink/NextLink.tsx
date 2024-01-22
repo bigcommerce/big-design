@@ -22,7 +22,7 @@ export const NextLink: React.FC<Props> = (props) => {
   const { as, children, href } = props;
 
   return (
-    <NLink as={getLinkAs(as)} href={href} passHref={true}>
+    <NLink as={getLinkAs(as)} href={href} legacyBehavior={true} passHref={true}>
       {typeof children === 'string' ? <Link>{children}</Link> : children}
     </NLink>
   );

@@ -11,7 +11,7 @@
     "directory": "packages/docs"
   },
   "scripts": {
-    "build": "next build && next export",
+    "build": "next build",
     "deploy": "yarn run build && touch out/.nojekyll && push-dir --dir=out --branch=gh-pages --verbose",
     "start": "next",
     "typeCheck": "tsc --noEmit"
@@ -38,7 +38,7 @@
     "@bigcommerce/configs": "^0.19.0",
     "@bigcommerce/examples": "^0.25.1",
     "@types/gtag.js": "^0.0.12",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.17.19",
     "@types/prettier": "^2.0.1",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.6",

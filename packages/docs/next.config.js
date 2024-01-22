@@ -14,6 +14,7 @@ const examplesVersion = pkg.devDependencies['@bigcommerce/examples'].replace('^'
 
 module.exports = withTM({
   basePath: isProduction ? URL_PREFIX : '',
+  output: 'export',
   env: {
     CODE_SANDBOX_URL: `https://codesandbox.io/s/github/bigcommerce/big-design/tree/%40bigcommerce/examples%40${examplesVersion}/packages/examples`,
     URL_PREFIX: isProduction ? URL_PREFIX : '',
