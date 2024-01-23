@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.38.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.38.1...@bigcommerce/big-design@0.38.2) (2024-01-23)
+
+
+### Bug Fixes
+
+* **component:** fix extra body scroll because of multiselect ([#1322](https://github.com/bigcommerce/big-design/issues/1322)) ([e2603ee](https://github.com/bigcommerce/big-design/commit/e2603ee27eb223c6be3dcddf108672e46d75df2e))
+* **component:** fix redundant closing of multiselect when click on options ([#1324](https://github.com/bigcommerce/big-design/issues/1324)) ([b6fa41d](https://github.com/bigcommerce/big-design/commit/b6fa41d4e5915cb559657d8be8aede105e1c69eb))
+* **component:** fix unselecting via chip for multiselect ([#1323](https://github.com/bigcommerce/big-design/issues/1323)) ([13496fc](https://github.com/bigcommerce/big-design/commit/13496fceba63521441cbe7c3547283b24dc781ec))
+
+
+
+
+
 ## [0.38.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.38.0...@bigcommerce/big-design@0.38.1) (2024-01-02)
 
 
