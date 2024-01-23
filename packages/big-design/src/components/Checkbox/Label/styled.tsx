@@ -1,4 +1,3 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import { css, IStyledComponent, styled } from 'styled-components';
 
@@ -25,5 +24,3 @@ export const StyledLabel = styled<IStyledComponent<'web', Partial<TextProps>> & 
 
   ${({ hidden }) => hidden && hideVisually()}
 `;
-
-StyledLabel.defaultProps = { theme: defaultTheme };

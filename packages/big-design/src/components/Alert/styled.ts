@@ -55,6 +55,4 @@ export const StyledLink = styled(Link)`
 `;
 
 StyledAlert.defaultProps = { theme: defaultTheme };
-StyledHeader.defaultProps = { theme: defaultTheme };
-StyledMessageItem.defaultProps = { theme: defaultTheme };
 StyledLink.defaultProps = { theme: defaultTheme };

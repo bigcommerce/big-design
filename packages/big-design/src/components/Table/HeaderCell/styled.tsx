@@ -89,4 +89,3 @@ export const StyledFlex = styled(Flex)<StyledFlexProps>`
 
 StyledFlex.defaultProps = { theme: defaultTheme };
 StyledTableHeaderCell.defaultProps = { theme: defaultTheme };
-StyledTableHeaderIcon.defaultProps = { theme: defaultTheme };

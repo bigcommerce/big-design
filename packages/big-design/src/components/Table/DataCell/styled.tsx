@@ -71,4 +71,3 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
 `;
 
 StyledTableDataCell.defaultProps = { theme: defaultTheme };
-StyledTableDataCheckbox.defaultProps = { theme: defaultTheme };

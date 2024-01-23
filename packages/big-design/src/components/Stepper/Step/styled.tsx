@@ -57,4 +57,3 @@ StyledStep.defaultProps = { theme: defaultTheme };
 StyledSrOnlyText.defaultProps = { theme: defaultTheme };
 StyledLight.defaultProps = { theme: defaultTheme };
 StyledDash.defaultProps = { theme: defaultTheme };
-StyledText.defaultProps = { theme: defaultTheme };

@@ -1,4 +1,3 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { css, styled } from 'styled-components';
 
 import { StyleableH4 } from '../../Typography/private';
@@ -20,5 +19,3 @@ export const StyledLabel = styled(StyleableH4).attrs({ as: 'label' })<LabelProps
       }
     `}
 `;
-
-StyledLabel.defaultProps = { theme: defaultTheme };

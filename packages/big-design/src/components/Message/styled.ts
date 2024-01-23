@@ -55,7 +55,5 @@ export const StyledActionsWrapper = styled(Flex)`
 `;
 
 StyledMessage.defaultProps = { theme: defaultTheme };
-StyledHeader.defaultProps = { theme: defaultTheme };
-StyledMessageItem.defaultProps = { theme: defaultTheme };
 StyledLink.defaultProps = { theme: defaultTheme };
 StyledActionsWrapper.defaultProps = { theme: defaultTheme };

@@ -22,4 +22,3 @@ export const StyledH2 = styled(StyleableH2)`
 `;
 
 StyledPanel.defaultProps = { theme: defaultTheme };
-StyledH2.defaultProps = { theme: defaultTheme };
