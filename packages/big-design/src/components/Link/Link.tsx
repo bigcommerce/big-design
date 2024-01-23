@@ -2,6 +2,7 @@ import { OpenInNewIcon } from '@bigcommerce/big-design-icons';
 import React, { AnchorHTMLAttributes, forwardRef, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
+import { withTransients } from '../../utils/withTransients';
 
 import { StyledLink } from './styled';
 
@@ -13,24 +14,22 @@ export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement>, Marg
 
 interface PrivateProps {
   forwardedRef: Ref<HTMLAnchorElement>;
-  isExternal?: boolean;
+  external?: boolean;
 }
 
-const StyleableLink: React.FC<LinkProps & PrivateProps> = memo((props) => (
-  <StyledLink {...props} />
+const StyleableLink: React.FC<LinkProps & PrivateProps> = memo(({ forwardedRef, ...props }) => (
+  <StyledLink ref={forwardedRef} {...withTransients(props)} />
 ));
 
-export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ children, external, ...props }, ref) => {
-    const isExternal = external && props.target === '_blank';
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(({ children, ...props }, ref) => {
+  const isExternal = props.external && props.target === '_blank';
 
-    return (
-      <StyleableLink {...props} forwardedRef={ref} isExternal={isExternal}>
-        {isExternal ? <span>{children}</span> : children}
-        {isExternal && <OpenInNewIcon size="medium" />}
-      </StyleableLink>
-    );
-  },
-);
+  return (
+    <StyleableLink {...props} forwardedRef={ref}>
+      {isExternal ? <span>{children}</span> : children}
+      {isExternal && <OpenInNewIcon size="medium" />}
+    </StyleableLink>
+  );
+});
 
 Link.displayName = 'Link';

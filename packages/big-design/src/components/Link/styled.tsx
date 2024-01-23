@@ -2,15 +2,17 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { ellipsis } from 'polished';
 import { css, styled } from 'styled-components';
 
-import { withMargins } from '../../mixins';
+import { WithTransients } from 'src/utils/withTransients';
+
+import { MarginProps, withMargins } from '../../mixins';
 import { withTransition } from '../../mixins/transitions';
 
 import { LinkProps } from './Link';
 
-export const StyledLink = styled.a<LinkProps & { isExternal?: boolean }>`
+export const StyledLink = styled.a<WithTransients<LinkProps & MarginProps>>`
   ${withMargins()};
   ${withTransition(['color'], '70ms')}
-  ${(props) => props.ellipsis && ellipsis()};
+  ${(props) => props.$ellipsis && ellipsis()};
 
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
@@ -26,8 +28,8 @@ export const StyledLink = styled.a<LinkProps & { isExternal?: boolean }>`
     color: ${({ theme }) => theme.colors.primary70};
   }
 
-  ${({ isExternal, theme }) =>
-    isExternal &&
+  ${({ $external, theme }) =>
+    $external &&
     css`
       display: inline-flex;
       align-items: center;

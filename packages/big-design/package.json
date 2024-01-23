@@ -35,6 +35,7 @@
     "@babel/runtime": "^7.15.4",
     "@bigcommerce/big-design-icons": "^0.25.1",
     "@bigcommerce/big-design-theme": "^0.20.1",
+    "@emotion/is-prop-valid": "^1.2.1",
     "@popperjs/core": "^2.11.6",
     "@types/react-datepicker": "^4.4.2",
     "date-fns": "2.30.0",

@@ -1,6 +1,8 @@
 import { Spacing } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
+import { WithTransients } from 'src/utils/withTransients';
+
 import { ResponsiveProp } from '../../types';
 import { getSpacingStyles } from '../spacings';
 
@@ -16,18 +18,18 @@ export type MarginProps = Partial<{
   marginHorizontal: MarginProp;
 }>;
 
-export const withMargins = () => css<MarginProps>`
-  ${({ margin, theme }) => margin && getSpacingStyles(margin, theme, 'margin')};
-  ${({ marginTop, theme }) => marginTop && getSpacingStyles(marginTop, theme, 'margin-top')};
-  ${({ marginRight, theme }) =>
-    marginRight && getSpacingStyles(marginRight, theme, 'margin-right')};
-  ${({ marginBottom, theme }) =>
-    marginBottom && getSpacingStyles(marginBottom, theme, 'margin-bottom')};
-  ${({ marginLeft, theme }) => marginLeft && getSpacingStyles(marginLeft, theme, 'margin-left')};
-  ${({ marginVertical, theme }) =>
-    marginVertical && getSpacingStyles(marginVertical, theme, 'margin-top', 'margin-bottom')};
-  ${({ marginHorizontal, theme }) =>
-    marginHorizontal && getSpacingStyles(marginHorizontal, theme, 'margin-left', 'margin-right')};
+export const withMargins = () => css<WithTransients<MarginProps>>`
+  ${({ $margin, theme }) => $margin && getSpacingStyles($margin, theme, 'margin')};
+  ${({ $marginTop, theme }) => $marginTop && getSpacingStyles($marginTop, theme, 'margin-top')};
+  ${({ $marginRight, theme }) =>
+    $marginRight && getSpacingStyles($marginRight, theme, 'margin-right')};
+  ${({ $marginBottom, theme }) =>
+    $marginBottom && getSpacingStyles($marginBottom, theme, 'margin-bottom')};
+  ${({ $marginLeft, theme }) => $marginLeft && getSpacingStyles($marginLeft, theme, 'margin-left')};
+  ${({ $marginVertical, theme }) =>
+    $marginVertical && getSpacingStyles($marginVertical, theme, 'margin-top', 'margin-bottom')};
+  ${({ $marginHorizontal, theme }) =>
+    $marginHorizontal && getSpacingStyles($marginHorizontal, theme, 'margin-left', 'margin-right')};
 `;
 
 export function excludeMarginProps<T extends Record<string, any>>(
