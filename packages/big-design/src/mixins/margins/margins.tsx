@@ -1,7 +1,7 @@
 import { Spacing } from '@bigcommerce/big-design-theme';
 import { css } from 'styled-components';
 
-import { WithTransients } from 'src/utils/withTransients';
+import { WithTransients } from 'src/utils';
 
 import { ResponsiveProp } from '../../types';
 import { getSpacingStyles } from '../spacings';

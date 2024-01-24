@@ -1,11 +1,13 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { css, styled } from 'styled-components';
 
-import { withMargins } from '../../mixins';
+import { WithTransients } from 'src/utils';
+
+import { MarginProps, withMargins } from '../../mixins';
 
 import { BadgeProps } from './Badge';
 
-export const StyledBadge = styled.span<Omit<BadgeProps, 'label'>>`
+export const StyledBadge = styled.span<WithTransients<Omit<BadgeProps, 'label'> & MarginProps>>`
   ${withMargins()};
 
   color: ${({ theme }) => theme.colors.white};
@@ -19,33 +21,33 @@ export const StyledBadge = styled.span<Omit<BadgeProps, 'label'>>`
   vertical-align: middle;
   padding: 0 ${({ theme }) => theme.spacing.xSmall};
 
-  ${({ theme, variant }) =>
-    variant === 'secondary' &&
+  ${({ theme, $variant }) =>
+    $variant === 'secondary' &&
     css`
       background-color: ${theme.colors.secondary60};
     `}
 
-  ${({ theme, variant }) =>
-    variant === 'success' &&
+  ${({ theme, $variant }) =>
+    $variant === 'success' &&
     css`
       background-color: ${theme.colors.success50};
     `}
 
-  ${({ theme, variant }) =>
-    variant === 'warning' &&
+  ${({ theme, $variant }) =>
+    $variant === 'warning' &&
     css`
       color: ${theme.colors.secondary70};
       background-color: ${theme.colors.warning40};
     `}
 
-  ${({ theme, variant }) =>
-    variant === 'danger' &&
+  ${({ theme, $variant }) =>
+    $variant === 'danger' &&
     css`
       background-color: ${theme.colors.danger40};
     `}
 
-  ${({ theme, variant }) =>
-    variant === 'primary' &&
+  ${({ theme, $variant }) =>
+    $variant === 'primary' &&
     css`
       background-color: ${theme.colors.primary40};
     `}
@@ -53,5 +55,5 @@ export const StyledBadge = styled.span<Omit<BadgeProps, 'label'>>`
 
 StyledBadge.defaultProps = {
   theme: defaultTheme,
-  variant: 'secondary',
+  $variant: 'secondary',
 };
