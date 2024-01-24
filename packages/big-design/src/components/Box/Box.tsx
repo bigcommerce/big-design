@@ -2,6 +2,7 @@ import { Border, BorderRadius, Colors, Shadow, ZIndex } from '@bigcommerce/big-d
 import React, { forwardRef, HTMLAttributes, memo } from 'react';
 
 import { DisplayProps, MarginProps, PaddingProps } from '../../mixins';
+import { withTransients } from '../../utils/withTransients';
 
 import { StyledBox } from './styled';
 
@@ -28,7 +29,7 @@ interface PrivateProps {
 }
 
 const RawBox: React.FC<BoxProps & PrivateProps> = (props) => (
-  <StyledBox ref={props.forwardedRef} {...props} />
+  <StyledBox ref={props.forwardedRef} {...withTransients(props)} />
 );
 
 export const Box = memo(

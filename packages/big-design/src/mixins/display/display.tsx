@@ -1,10 +1,12 @@
 import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { css, RuleSet } from 'styled-components';
 
+import { WithTransients } from 'src/utils/withTransients';
+
 import { DisplayOverload, DisplayProps } from './types';
 
-export const withDisplay = () => css<DisplayProps>`
-  ${({ display, theme }) => display && getDisplayStyles(display, theme, 'display')};
+export const withDisplay = () => css<WithTransients<DisplayProps>>`
+  ${({ $display, theme }) => $display && getDisplayStyles($display, theme, 'display')};
 `;
 
 const getDisplayStyles: DisplayOverload = (
