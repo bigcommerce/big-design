@@ -1,5 +1,7 @@
 import React, { memo } from 'react';
 
+import { withTransients } from '../../utils';
+
 import {
   StyledH0,
   StyledH1,
@@ -26,34 +28,34 @@ export const StyleableHR = StyledHR;
 
 // Public
 export const Text: React.FC<TextProps> = memo(({ className, style, ...props }) => (
-  <StyleableText {...props} />
+  <StyleableText {...withTransients(props)} />
 ));
 export const Small: React.FC<TextProps> = memo(({ className, style, ...props }) => (
-  <StyleableSmall {...props} />
+  <StyleableSmall {...withTransients(props)} />
 ));
 
 export const HR: React.FC<HRProps> = memo(({ className, style, ...props }) => (
-  <StyleableHR {...props} />
+  <StyleableHR {...withTransients(props)} />
 ));
 
 export const H0: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
-  <StyleableH0 as={getHeadingTag('h1', as)} {...props} />
+  <StyleableH0 as={getHeadingTag('h1', as)} {...withTransients(props)} />
 ));
 
 export const H1: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
-  <StyleableH1 as={getHeadingTag('h1', as)} {...props} />
+  <StyleableH1 as={getHeadingTag('h1', as)} {...withTransients(props)} />
 ));
 
 export const H2: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
-  <StyleableH2 as={getHeadingTag('h2', as)} {...props} />
+  <StyleableH2 as={getHeadingTag('h2', as)} {...withTransients(props)} />
 ));
 
 export const H3: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
-  <StyleableH3 as={getHeadingTag('h3', as)} {...props} />
+  <StyleableH3 as={getHeadingTag('h3', as)} {...withTransients(props)} />
 ));
 
 export const H4: React.FC<HeadingProps> = memo(({ className, style, as, ...props }) => (
-  <StyleableH4 as={getHeadingTag('h4', as)} {...props} />
+  <StyleableH4 as={getHeadingTag('h4', as)} {...withTransients(props)} />
 ));
 
 const getHeadingTag = (defaultTag: HeadingTag, tag?: HeadingTag): HeadingTag => {
