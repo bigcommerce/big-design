@@ -3,11 +3,12 @@ import { css, styled } from 'styled-components';
 
 import { MarginProps, withMargins } from '../../mixins';
 import { withTransition } from '../../mixins/transitions';
+import { WithTransients } from '../../utils';
 import { Flex } from '../Flex';
 
 import { ButtonProps } from './index';
 
-export const StyledButton = styled.button<ButtonProps & MarginProps>`
+export const StyledButton = styled.button<WithTransients<ButtonProps & MarginProps>>`
   ${withTransition(['background-color', 'border-color', 'box-shadow', 'color'])}
 
   && {
@@ -35,7 +36,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  width: ${({ mobileWidth }) => (mobileWidth === 'auto' ? 'auto' : '100%')};
+  width: ${({ $mobileWidth }) => ($mobileWidth === 'auto' ? 'auto' : '100%')};
 
   &:focus {
     outline: none;
@@ -47,8 +48,8 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   }
 
   & + .bd-button {
-    margin-top: ${({ mobileWidth, theme }) => mobileWidth === '100%' && theme.spacing.xSmall};
-    margin-left: ${({ mobileWidth, theme }) => mobileWidth === 'auto' && theme.spacing.xSmall};
+    margin-top: ${({ $mobileWidth, theme }) => $mobileWidth === '100%' && theme.spacing.xSmall};
+    margin-left: ${({ $mobileWidth, theme }) => $mobileWidth === 'auto' && theme.spacing.xSmall};
 
     ${({ theme }) => theme.breakpoints.tablet} {
       margin-top: ${({ theme }) => theme.spacing.none};
@@ -59,7 +60,7 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   ${({ theme }) => theme.breakpoints.tablet} {
     width: auto;
 
-    ${({ iconOnly: icon, theme }) =>
+    ${({ $iconOnly: icon, theme }) =>
       icon &&
       css`
         padding: 0;
@@ -67,14 +68,14 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
       `};
   }
 
-  ${({ iconLeft, theme }) =>
-    iconLeft &&
+  ${({ $iconLeft, theme }) =>
+    $iconLeft &&
     css`
       padding-left: ${theme.spacing.xSmall};
     `};
 
-  ${({ iconRight, theme }) =>
-    iconRight &&
+  ${({ $iconRight, theme }) =>
+    $iconRight &&
     css`
       padding-right: ${theme.spacing.xSmall};
     `};
@@ -82,15 +83,15 @@ export const StyledButton = styled.button<ButtonProps & MarginProps>`
   ${(props) => getButtonStyles(props)}
 `;
 
-export const ContentWrapper = styled.span<{ isLoading?: boolean }>`
+export const ContentWrapper = styled.span<WithTransients<{ isLoading?: boolean }>>`
   align-content: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: ${({ theme }) => theme.spacing.xSmall};
 
-  ${({ isLoading }) =>
-    isLoading &&
+  ${({ $isLoading }) =>
+    $isLoading &&
     css`
       visibility: hidden;
     `};
@@ -104,7 +105,7 @@ export const LoadingSpinnerWrapper = styled(Flex)`
  * These can be generated dynamically but I'm leaning towards being extra
  * explicit and being able to handle corner cases and changes from design easily
  */
-const ButtonPrimary = css<ButtonProps>`
+const ButtonPrimary = css<WithTransients<ButtonProps>>`
   background-color: ${({ theme }) => theme.colors.primary};
   border-color: ${({ theme }) => theme.colors.primary};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
@@ -126,7 +127,7 @@ const ButtonPrimary = css<ButtonProps>`
   }
 `;
 
-const ButtonPrimaryDestructive = css<ButtonProps>`
+const ButtonPrimaryDestructive = css<WithTransients<ButtonProps>>`
   background-color: ${({ theme }) => theme.colors.danger};
   border-color: ${({ theme }) => theme.colors.danger};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
@@ -148,7 +149,7 @@ const ButtonPrimaryDestructive = css<ButtonProps>`
   }
 `;
 
-const ButtonSecondary = css<ButtonProps>`
+const ButtonSecondary = css<WithTransients<ButtonProps>>`
   background-color: transparent;
   border-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.primary};
@@ -170,7 +171,7 @@ const ButtonSecondary = css<ButtonProps>`
   }
 `;
 
-const ButtonSecondaryDestructive = css<ButtonProps>`
+const ButtonSecondaryDestructive = css<WithTransients<ButtonProps>>`
   background-color: transparent;
   border-color: ${({ theme }) => theme.colors.danger};
   color: ${({ theme }) => theme.colors.danger};
@@ -192,7 +193,7 @@ const ButtonSecondaryDestructive = css<ButtonProps>`
   }
 `;
 
-const ButtonSubtle = css<ButtonProps>`
+const ButtonSubtle = css<WithTransients<ButtonProps>>`
   background-color: transparent;
   border-color: transparent;
   color: ${({ theme }) => theme.colors.primary};
@@ -215,7 +216,7 @@ const ButtonSubtle = css<ButtonProps>`
   }
 `;
 
-const ButtonSubtleDestructive = css<ButtonProps>`
+const ButtonSubtleDestructive = css<WithTransients<ButtonProps>>`
   background-color: transparent;
   border-color: transparent;
   color: ${({ theme }) => theme.colors.danger};
@@ -238,7 +239,7 @@ const ButtonSubtleDestructive = css<ButtonProps>`
   }
 `;
 
-const ButtonUtility = css<ButtonProps>`
+const ButtonUtility = css<WithTransients<ButtonProps>>`
   background-color: transparent;
   border-color: transparent;
   color: ${({ theme }) => theme.colors.secondary60};
@@ -264,7 +265,7 @@ const ButtonUtility = css<ButtonProps>`
   }
 `;
 
-const ButtonUtilityDestructive = css<ButtonProps>`
+const ButtonUtilityDestructive = css<WithTransients<ButtonProps>>`
   background-color: transparent;
   border-color: transparent;
   color: ${({ theme }) => theme.colors.secondary60};
@@ -290,21 +291,21 @@ const ButtonUtilityDestructive = css<ButtonProps>`
   }
 `;
 
-function getButtonStyles(props: ButtonProps) {
-  const { actionType, variant } = props;
+function getButtonStyles(props: WithTransients<ButtonProps>) {
+  const { $actionType, $variant } = props;
 
-  switch (variant) {
+  switch ($variant) {
     case 'primary':
-      return actionType === 'destructive' ? ButtonPrimaryDestructive : ButtonPrimary;
+      return $actionType === 'destructive' ? ButtonPrimaryDestructive : ButtonPrimary;
 
     case 'secondary':
-      return actionType === 'destructive' ? ButtonSecondaryDestructive : ButtonSecondary;
+      return $actionType === 'destructive' ? ButtonSecondaryDestructive : ButtonSecondary;
 
     case 'subtle':
-      return actionType === 'destructive' ? ButtonSubtleDestructive : ButtonSubtle;
+      return $actionType === 'destructive' ? ButtonSubtleDestructive : ButtonSubtle;
 
     case 'utility':
-      return actionType === 'destructive' ? ButtonUtilityDestructive : ButtonUtility;
+      return $actionType === 'destructive' ? ButtonUtilityDestructive : ButtonUtility;
   }
 }
 

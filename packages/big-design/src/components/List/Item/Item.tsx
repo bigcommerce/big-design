@@ -11,16 +11,16 @@ import { Content } from './Content';
 import { StyledListItem } from './styled';
 
 export interface ListItemProps<T> extends LiHTMLAttributes<HTMLLIElement> {
-  actionType?: 'normal' | 'destructive';
-  autoWidth?: boolean;
-  disabled?: boolean;
-  index: number;
-  isAction?: boolean;
-  isChecked?: boolean;
-  isHighlighted: boolean;
-  isSelected?: boolean;
-  item: DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction;
-  getItemProps: UseSelectPropGetters<any>['getItemProps'];
+  readonly actionType?: 'normal' | 'destructive';
+  readonly autoWidth?: boolean;
+  readonly disabled?: boolean;
+  readonly index: number;
+  readonly isAction?: boolean;
+  readonly isChecked?: boolean;
+  readonly isHighlighted: boolean;
+  readonly isSelected?: boolean;
+  readonly item: DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction;
+  readonly getItemProps: UseSelectPropGetters<any>['getItemProps'];
   addItem?(item: SelectOption<T>): void;
   removeItem?(item: SelectOption<T>): void;
 }
@@ -67,10 +67,10 @@ const StyleableListItem = typedMemo(
           },
           ref: forwardedRef,
         })}
-        actionType={actionType}
-        autoWidth={autoWidth}
-        isAction={isAction}
-        isHighlighted={isHighlighted}
+        $actionType={actionType}
+        $autoWidth={autoWidth}
+        $isAction={isAction}
+        $isHighlighted={isHighlighted}
       >
         <Checkbox
           checked={isChecked}
@@ -91,11 +91,11 @@ const StyleableListItem = typedMemo(
           item,
           ref: forwardedRef,
         })}
-        actionType={actionType}
-        autoWidth={autoWidth}
-        isAction={isAction}
-        isHighlighted={isHighlighted}
-        isSelected={isSelected}
+        $actionType={actionType}
+        $autoWidth={autoWidth}
+        $isAction={isAction}
+        $isHighlighted={isHighlighted}
+        $isSelected={isSelected}
       >
         <Content isHighlighted={isHighlighted} item={item} />
         {isSelected && <CheckIcon color="primary" size="large" />}

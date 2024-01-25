@@ -16,7 +16,7 @@ exports[`isLoading render loading button 1`] = `
   stroke-dasharray: 43.982297150257104 43.982297150257104;
   stroke: #3C64F4;
   transform-origin: 50% 50%;
-  animation: fxwtRW 1s ease-out infinite;
+  animation: dcgSPO 1s ease-out infinite;
   stroke-dashoffset: 43.982297150257104;
   transform: rotate(-90deg);
   transition: stroke-dashoffset 0.35s;
@@ -73,7 +73,7 @@ exports[`isLoading render loading button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -106,26 +106,26 @@ exports[`isLoading render loading button 1`] = `
   position: absolute;
 }
 
-@media (min-width:0px) {
+@media (min-width: 0px) {
   .c2 {
     flex-direction: column;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c2 {
     flex-direction: row;
   }
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -204,7 +204,7 @@ exports[`render default button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -232,14 +232,14 @@ exports[`render default button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -296,7 +296,7 @@ exports[`render destructive button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -324,14 +324,14 @@ exports[`render destructive button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -388,7 +388,7 @@ exports[`render destructive disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -416,14 +416,14 @@ exports[`render destructive disabled button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -481,7 +481,7 @@ exports[`render disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -509,14 +509,14 @@ exports[`render disabled button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -582,7 +582,7 @@ exports[`render icon left and right button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -610,14 +610,14 @@ exports[`render icon left and right button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -717,7 +717,7 @@ exports[`render icon left button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -745,14 +745,14 @@ exports[`render icon left button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -833,7 +833,7 @@ exports[`render icon only button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -861,14 +861,14 @@ exports[`render icon only button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
     padding: 0;
@@ -951,7 +951,7 @@ exports[`render icon right button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -979,14 +979,14 @@ exports[`render icon right button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -1061,7 +1061,7 @@ exports[`render secondary button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1089,14 +1089,14 @@ exports[`render secondary button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -1153,7 +1153,7 @@ exports[`render secondary destructive button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1181,14 +1181,14 @@ exports[`render secondary destructive button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -1245,7 +1245,7 @@ exports[`render secondary destructive disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1273,14 +1273,14 @@ exports[`render secondary destructive disabled button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -1338,7 +1338,7 @@ exports[`render secondary disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1366,14 +1366,14 @@ exports[`render secondary disabled button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -1431,7 +1431,7 @@ exports[`render subtle button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1460,14 +1460,14 @@ exports[`render subtle button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -1524,7 +1524,7 @@ exports[`render subtle destructive button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1553,14 +1553,14 @@ exports[`render subtle destructive button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -1617,7 +1617,7 @@ exports[`render subtle destructive disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1646,14 +1646,14 @@ exports[`render subtle destructive disabled button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -1711,7 +1711,7 @@ exports[`render subtle disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1740,14 +1740,14 @@ exports[`render subtle disabled button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -1805,7 +1805,7 @@ exports[`render utility button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1837,14 +1837,14 @@ exports[`render utility button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -1901,7 +1901,7 @@ exports[`render utility destructive button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1933,14 +1933,14 @@ exports[`render utility destructive button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -1997,7 +1997,7 @@ exports[`render utility destructive disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -2029,14 +2029,14 @@ exports[`render utility destructive disabled button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
@@ -2094,7 +2094,7 @@ exports[`render utility disabled button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -2126,14 +2126,14 @@ exports[`render utility disabled button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }

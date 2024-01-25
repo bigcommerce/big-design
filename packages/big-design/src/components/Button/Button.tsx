@@ -1,6 +1,7 @@
 import React, { ButtonHTMLAttributes, forwardRef, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
+import { withTransients } from '../../utils';
 import { ProgressCircle } from '../ProgressCircle';
 
 import { ContentWrapper, LoadingSpinnerWrapper, StyledButton } from './styled';
@@ -10,14 +11,14 @@ interface PrivateProps {
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, MarginProps {
-  actionType?: 'normal' | 'destructive';
-  children?: React.ReactNode;
-  iconLeft?: React.ReactNode;
-  iconOnly?: React.ReactNode;
-  iconRight?: React.ReactNode;
-  isLoading?: boolean;
-  mobileWidth?: 'auto' | '100%';
-  variant?: 'primary' | 'secondary' | 'subtle' | 'utility';
+  readonly actionType?: 'normal' | 'destructive';
+  readonly children?: React.ReactNode;
+  readonly iconLeft?: React.ReactNode;
+  readonly iconOnly?: React.ReactNode;
+  readonly iconRight?: React.ReactNode;
+  readonly isLoading?: boolean;
+  readonly mobileWidth?: 'auto' | '100%';
+  readonly variant?: 'primary' | 'secondary' | 'subtle' | 'utility';
 }
 
 const LoadingSpinner = () => (
@@ -31,12 +32,12 @@ const RawButton: React.FC<ButtonProps & PrivateProps> = memo(
     return (
       <StyledButton
         className="bd-button"
-        {...props}
+        {...withTransients(props)}
         disabled={isLoading || disabled}
         ref={forwardedRef}
       >
         {isLoading ? <LoadingSpinner /> : null}
-        <ContentWrapper isLoading={isLoading}>
+        <ContentWrapper $isLoading={isLoading}>
           {!props.iconOnly && props.iconLeft}
           {props.iconOnly}
           {!props.iconOnly && props.children}

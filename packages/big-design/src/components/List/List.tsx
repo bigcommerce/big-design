@@ -23,20 +23,20 @@ import { ListItem } from './Item';
 import { StyledList } from './styled';
 
 export interface ListProps<T> extends HTMLAttributes<HTMLUListElement> {
-  action?: SelectAction;
-  autoWidth: boolean;
-  filteredItems?: Array<SelectOption<T> | SelectAction>;
-  highlightedIndex: number;
-  isOpen: boolean;
-  items: DropdownProps['items'] | SelectProps<T>['options'];
-  isDropdown?: boolean;
-  maxHeight?: number;
-  selectedItem?: SelectOption<T> | null;
-  selectedItems?: Array<SelectOption<T>> | null;
+  readonly action?: SelectAction;
+  readonly autoWidth: boolean;
+  readonly filteredItems?: Array<SelectOption<T> | SelectAction>;
+  readonly highlightedIndex: number;
+  readonly isOpen: boolean;
+  readonly items: DropdownProps['items'] | SelectProps<T>['options'];
+  readonly isDropdown?: boolean;
+  readonly maxHeight?: number;
+  readonly selectedItem?: SelectOption<T> | null;
+  readonly selectedItems?: Array<SelectOption<T>> | null;
   addItem?(item: SelectOption<T>): void;
-  getItemProps: UseSelectPropGetters<any>['getItemProps'];
-  getMenuProps: UseSelectPropGetters<any>['getMenuProps'];
-  update: (() => Promise<Partial<State>>) | null;
+  readonly getItemProps: UseSelectPropGetters<any>['getItemProps'];
+  readonly getMenuProps: UseSelectPropGetters<any>['getMenuProps'];
+  readonly update: (() => Promise<Partial<State>>) | null;
   removeItem?(item: SelectOption<T>): void;
 }
 
@@ -220,7 +220,7 @@ const StyleableList = typedMemo(
           },
           ref: forwardedRef,
         })}
-        maxHeight={maxHeight}
+        $maxHeight={maxHeight}
       >
         {isOpen && renderChildren}
       </StyledList>

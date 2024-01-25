@@ -2,21 +2,22 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { css, styled } from 'styled-components';
 
 import { withTransition } from '../../../mixins/transitions';
+import { WithTransients } from '../../../utils';
 
 import { ListItemProps } from '.';
 
-export const StyledListItem = styled.li<ListItemProps<unknown>>`
+export const StyledListItem = styled.li<WithTransients<ListItemProps<unknown>>>`
   ${withTransition(['background-color', 'color'])}
 
   align-items: center;
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
-  font-weight: ${({ theme, isSelected }) =>
-    isSelected ? theme.typography.fontWeight.semiBold : theme.typography.fontWeight.regular};
+  font-weight: ${({ theme, $isSelected }) =>
+    $isSelected ? theme.typography.fontWeight.semiBold : theme.typography.fontWeight.regular};
   justify-content: space-between;
   min-height: ${({ theme }) => theme.helpers.remCalc(36)};
-  min-width: ${({ autoWidth, theme }) => (autoWidth ? 'auto' : theme.helpers.remCalc(256))};
+  min-width: ${({ $autoWidth, theme }) => ($autoWidth ? 'auto' : theme.helpers.remCalc(256))};
   outline: none;
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.medium}`};
 
@@ -33,10 +34,10 @@ export const StyledListItem = styled.li<ListItemProps<unknown>>`
     }
   }
 
-  ${({ actionType, isAction, isHighlighted, theme }) =>
-    isHighlighted &&
-    (isAction
-      ? actionType === 'normal'
+  ${({ $actionType, $isAction, $isHighlighted, theme }) =>
+    $isHighlighted &&
+    ($isAction
+      ? $actionType === 'normal'
         ? css`
             background-color: ${theme.colors.primary10};
             color: ${theme.colors.primary};
