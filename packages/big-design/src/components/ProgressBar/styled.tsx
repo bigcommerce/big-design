@@ -2,6 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { css, styled } from 'styled-components';
 
 import { withTransition } from '../../mixins/transitions';
+import { WithTransients } from '../../utils';
 
 import { ProgressBarProps } from './ProgressBar';
 
@@ -12,16 +13,16 @@ export const StyledProgressBar = styled.div`
   width: 100%;
 `;
 
-export const StyledProgressBarFiller = styled.div<ProgressBarProps>`
+export const StyledProgressBarFiller = styled.div<WithTransients<ProgressBarProps>>`
   background-color: ${({ theme }) => theme.colors.primary};
   height: 100%;
   overflow: hidden;
 
-  ${({ percent, theme }) =>
-    typeof percent === 'number'
+  ${({ $percent, theme }) =>
+    typeof $percent === 'number'
       ? css`
           ${withTransition(['width', 'background-color', 'height'])}
-          width: ${percent}%;
+          width: ${$percent}%;
         `
       : css`
           animation: ${theme.keyframes.loading} 2s ease-in-out infinite;
