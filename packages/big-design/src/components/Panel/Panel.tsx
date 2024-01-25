@@ -19,12 +19,12 @@ export interface PanelAction extends Omit<ButtonProps, 'children'> {
 }
 
 export interface PanelProps extends HTMLAttributes<HTMLElement>, MarginProps {
-  children?: React.ReactNode;
-  description?: React.ReactNode;
-  header?: string;
-  headerId?: string;
-  action?: PanelAction;
-  badge?: BadgeProps;
+  readonly children?: React.ReactNode;
+  readonly description?: React.ReactNode;
+  readonly header?: string;
+  readonly headerId?: string;
+  readonly action?: PanelAction;
+  readonly badge?: BadgeProps;
 }
 
 export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {
@@ -43,7 +43,7 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
     return (
       <Flex flexDirection="row">
         {Boolean(header) && (
-          <StyledH2 id={headerId} marginBottom={description ? 'xxSmall' : 'medium'}>
+          <StyledH2 $marginBottom={description ? 'xxSmall' : 'medium'} id={headerId}>
             {header}
             {badge && <Badge marginLeft="xSmall" {...badge} />}
           </StyledH2>
