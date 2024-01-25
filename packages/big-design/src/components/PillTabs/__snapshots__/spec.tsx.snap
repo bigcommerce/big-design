@@ -17,88 +17,43 @@ exports[`dropdown is not visible if items fit 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
   align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
   flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
   flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
   order: 0;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
   flex-shrink: 1;
 }
 
 .c3 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -121,7 +76,7 @@ exports[`dropdown is not visible if items fit 1`] = `
   pointer-events: none;
 }
 
-.c3 + .bd-button {
+.c3+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -143,45 +98,26 @@ exports[`dropdown is not visible if items fit 1`] = `
 }
 
 .c7 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -200,7 +136,7 @@ exports[`dropdown is not visible if items fit 1`] = `
   pointer-events: none;
 }
 
-.c7 + .bd-button {
+.c7+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -222,12 +158,7 @@ exports[`dropdown is not visible if items fit 1`] = `
 }
 
 .c4 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -257,27 +188,27 @@ exports[`dropdown is not visible if items fit 1`] = `
   z-index: -1070;
 }
 
-@media (min-width:720px) {
-  .c3 + .bd-button {
+@media (min-width: 720px) {
+  .c3+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c3 {
     width: auto;
   }
 }
 
-@media (min-width:720px) {
-  .c7 + .bd-button {
+@media (min-width: 720px) {
+  .c7+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c7 {
     width: auto;
     padding: 0;
@@ -384,88 +315,43 @@ exports[`it renders the given tabs 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
   align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
   flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
   flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
   order: 0;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
   flex-shrink: 1;
 }
 
 .c3 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -488,7 +374,7 @@ exports[`it renders the given tabs 1`] = `
   pointer-events: none;
 }
 
-.c3 + .bd-button {
+.c3+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -510,45 +396,26 @@ exports[`it renders the given tabs 1`] = `
 }
 
 .c7 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -567,7 +434,7 @@ exports[`it renders the given tabs 1`] = `
   pointer-events: none;
 }
 
-.c7 + .bd-button {
+.c7+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -589,12 +456,7 @@ exports[`it renders the given tabs 1`] = `
 }
 
 .c4 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -624,27 +486,27 @@ exports[`it renders the given tabs 1`] = `
   z-index: -1070;
 }
 
-@media (min-width:720px) {
-  .c3 + .bd-button {
+@media (min-width: 720px) {
+  .c3+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c3 {
     width: auto;
   }
 }
 
-@media (min-width:720px) {
-  .c7 + .bd-button {
+@media (min-width: 720px) {
+  .c7+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c7 {
     width: auto;
     padding: 0;
@@ -751,88 +613,43 @@ exports[`only the pills that fit are visible 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
   align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
   flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
   flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
   order: 0;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
   flex-shrink: 1;
 }
 
 .c3 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -855,7 +672,7 @@ exports[`only the pills that fit are visible 1`] = `
   pointer-events: none;
 }
 
-.c3 + .bd-button {
+.c3+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -877,45 +694,26 @@ exports[`only the pills that fit are visible 1`] = `
 }
 
 .c7 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -934,7 +732,7 @@ exports[`only the pills that fit are visible 1`] = `
   pointer-events: none;
 }
 
-.c7 + .bd-button {
+.c7+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -956,12 +754,7 @@ exports[`only the pills that fit are visible 1`] = `
 }
 
 .c4 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -991,27 +784,27 @@ exports[`only the pills that fit are visible 1`] = `
   z-index: -1070;
 }
 
-@media (min-width:720px) {
-  .c3 + .bd-button {
+@media (min-width: 720px) {
+  .c3+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c3 {
     width: auto;
   }
 }
 
-@media (min-width:720px) {
-  .c7 + .bd-button {
+@media (min-width: 720px) {
+  .c7+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c7 {
     width: auto;
     padding: 0;
@@ -1150,88 +943,43 @@ exports[`only the pills that fit are visible 2 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
   align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
   flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
   flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
   order: 0;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
   flex-shrink: 1;
 }
 
 .c3 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1254,7 +1002,7 @@ exports[`only the pills that fit are visible 2 1`] = `
   pointer-events: none;
 }
 
-.c3 + .bd-button {
+.c3+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1276,45 +1024,26 @@ exports[`only the pills that fit are visible 2 1`] = `
 }
 
 .c7 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1333,7 +1062,7 @@ exports[`only the pills that fit are visible 2 1`] = `
   pointer-events: none;
 }
 
-.c7 + .bd-button {
+.c7+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1355,12 +1084,7 @@ exports[`only the pills that fit are visible 2 1`] = `
 }
 
 .c4 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -1390,27 +1114,27 @@ exports[`only the pills that fit are visible 2 1`] = `
   z-index: -1070;
 }
 
-@media (min-width:720px) {
-  .c3 + .bd-button {
+@media (min-width: 720px) {
+  .c3+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c3 {
     width: auto;
   }
 }
 
-@media (min-width:720px) {
-  .c7 + .bd-button {
+@media (min-width: 720px) {
+  .c7+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c7 {
     width: auto;
     padding: 0;
@@ -1548,88 +1272,43 @@ exports[`renders all the filters if they fit 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
   align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
   flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
   flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
   order: 0;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
   flex-shrink: 1;
 }
 
 .c3 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1652,7 +1331,7 @@ exports[`renders all the filters if they fit 1`] = `
   pointer-events: none;
 }
 
-.c3 + .bd-button {
+.c3+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1674,45 +1353,26 @@ exports[`renders all the filters if they fit 1`] = `
 }
 
 .c7 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1731,7 +1391,7 @@ exports[`renders all the filters if they fit 1`] = `
   pointer-events: none;
 }
 
-.c7 + .bd-button {
+.c7+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -1753,12 +1413,7 @@ exports[`renders all the filters if they fit 1`] = `
 }
 
 .c4 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -1788,27 +1443,27 @@ exports[`renders all the filters if they fit 1`] = `
   z-index: -1070;
 }
 
-@media (min-width:720px) {
-  .c3 + .bd-button {
+@media (min-width: 720px) {
+  .c3+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c3 {
     width: auto;
   }
 }
 
-@media (min-width:720px) {
-  .c7 + .bd-button {
+@media (min-width: 720px) {
+  .c7+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c7 {
     width: auto;
     padding: 0;
@@ -1945,88 +1600,43 @@ exports[`renders dropdown if items do not fit 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
   align-self: auto;
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
   flex-basis: auto;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-  -ms-flex-positive: 0;
   flex-grow: 0;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
   order: 0;
-  -webkit-flex-shrink: 1;
-  -ms-flex-negative: 1;
   flex-shrink: 1;
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -2049,7 +1659,7 @@ exports[`renders dropdown if items do not fit 1`] = `
   pointer-events: none;
 }
 
-.c4 + .bd-button {
+.c4+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -2071,45 +1681,26 @@ exports[`renders dropdown if items do not fit 1`] = `
 }
 
 .c7 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -2128,7 +1719,7 @@ exports[`renders dropdown if items do not fit 1`] = `
   pointer-events: none;
 }
 
-.c7 + .bd-button {
+.c7+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -2150,12 +1741,7 @@ exports[`renders dropdown if items do not fit 1`] = `
 }
 
 .c5 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -2185,27 +1771,27 @@ exports[`renders dropdown if items do not fit 1`] = `
   z-index: -1070;
 }
 
-@media (min-width:720px) {
-  .c4 + .bd-button {
+@media (min-width: 720px) {
+  .c4+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c4 {
     width: auto;
   }
 }
 
-@media (min-width:720px) {
-  .c7 + .bd-button {
+@media (min-width: 720px) {
+  .c7+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c7 {
     width: auto;
     padding: 0;
