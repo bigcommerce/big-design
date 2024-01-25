@@ -68,7 +68,7 @@ exports[`render open modal 1`] = `
   pointer-events: none;
 }
 
-.c5 + .bd-button {
+.c5+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -155,14 +155,14 @@ exports[`render open modal 1`] = `
   overflow-y: auto;
 }
 
-@media (min-width:720px) {
-  .c5 + .bd-button {
+@media (min-width: 720px) {
+  .c5+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c5 {
     width: auto;
     padding: 0;
@@ -170,7 +170,7 @@ exports[`render open modal 1`] = `
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c3 {
     border-radius: 0.25rem;
     box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
@@ -180,19 +180,19 @@ exports[`render open modal 1`] = `
   }
 }
 
-@media (min-width:1025px) {
+@media (min-width: 1025px) {
   .c3 {
     max-height: 80vh;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c4 {
     display: none;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c9 {
     padding: 0 1.5rem;
   }
@@ -318,7 +318,7 @@ exports[`render open modal without backdrop 1`] = `
   pointer-events: none;
 }
 
-.c5 + .bd-button {
+.c5+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -404,14 +404,14 @@ exports[`render open modal without backdrop 1`] = `
   overflow-y: auto;
 }
 
-@media (min-width:720px) {
-  .c5 + .bd-button {
+@media (min-width: 720px) {
+  .c5+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c5 {
     width: auto;
     padding: 0;
@@ -419,7 +419,7 @@ exports[`render open modal without backdrop 1`] = `
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c3 {
     border-radius: 0.25rem;
     box-shadow: 0px 2px 12px rgba(49,52,64,0.2);
@@ -429,19 +429,19 @@ exports[`render open modal without backdrop 1`] = `
   }
 }
 
-@media (min-width:1025px) {
+@media (min-width: 1025px) {
   .c3 {
     max-height: 80vh;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c4 {
     display: none;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c9 {
     padding: 0 1.5rem;
   }
@@ -548,7 +548,7 @@ exports[`renders destructive action button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -576,52 +576,52 @@ exports[`renders destructive action button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:0px) {
+@media (min-width: 0px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:1025px) {
+@media (min-width: 1025px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
@@ -676,7 +676,7 @@ exports[`renders secondary action button 1`] = `
   pointer-events: none;
 }
 
-.c0 + .bd-button {
+.c0+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -704,52 +704,52 @@ exports[`renders secondary action button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width:0px) {
+@media (min-width: 0px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:720px) {
-  .c0 + .bd-button {
+@media (min-width: 720px) {
+  .c0+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     width: auto;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:1025px) {
+@media (min-width: 1025px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 

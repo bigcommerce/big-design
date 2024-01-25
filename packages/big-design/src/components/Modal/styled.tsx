@@ -2,6 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { rgba } from 'polished';
 import { css, styled } from 'styled-components';
 
+import { WithTransients } from '../../utils';
 import { Flex } from '../Flex';
 
 import { ModalProps } from './Modal';
@@ -10,7 +11,7 @@ export const StyledModal = styled.div.attrs({
   'aria-modal': true,
   role: 'dialog',
   tabIndex: -1,
-})<Partial<ModalProps>>`
+})<WithTransients<Partial<ModalProps>>>`
   align-items: center;
   display: flex;
   height: 100%;
@@ -22,10 +23,10 @@ export const StyledModal = styled.div.attrs({
   z-index: ${({ theme }) => theme.zIndex.modalBackdrop};
 
   ${(props) =>
-    props.backdrop &&
-    props.variant &&
+    props.$backdrop &&
+    props.$variant &&
     css`
-      background: ${rgba(props.theme.colors.secondary70, props.variant === 'dialog' ? 0.5 : 0.7)};
+      background: ${rgba(props.theme.colors.secondary70, props.$variant === 'dialog' ? 0.5 : 0.7)};
     `}
 `;
 

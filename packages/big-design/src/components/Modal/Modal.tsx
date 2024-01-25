@@ -18,14 +18,14 @@ import {
 } from './styled';
 
 export interface ModalProps {
-  actions?: ModalAction[];
-  backdrop?: boolean;
-  children?: React.ReactNode;
-  closeOnClickOutside?: boolean;
-  closeOnEscKey?: boolean;
-  header?: string;
-  isOpen?: boolean;
-  variant?: 'modal' | 'dialog';
+  readonly actions?: ModalAction[];
+  readonly backdrop?: boolean;
+  readonly children?: React.ReactNode;
+  readonly closeOnClickOutside?: boolean;
+  readonly closeOnEscKey?: boolean;
+  readonly header?: string;
+  readonly isOpen?: boolean;
+  readonly variant?: 'modal' | 'dialog';
   onClose?(): void;
 }
 
@@ -152,12 +152,12 @@ const InternalModal: React.FC<ModalProps> = ({
 
   return (
     <StyledModal
-      backdrop={backdrop}
+      $backdrop={backdrop}
+      $variant={variant}
       onClick={onClickAway}
       onKeyDown={onKeyDown}
       ref={setModalRef}
       tabIndex={-1}
-      variant={variant}
     >
       <StyledModalContent aria-labelledby={headerUniqueId} flexDirection="column" variant={variant}>
         {renderedClose}
