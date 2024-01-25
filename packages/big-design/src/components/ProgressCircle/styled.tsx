@@ -86,4 +86,5 @@ function fillLength(percent: number, size: ProgressCircleProps['size'] = 'medium
 
 StyledProgressCircle.defaultProps = { theme: defaultTheme };
 StyledCircle.defaultProps = { theme: defaultTheme };
+StyledCircleFiller.defaultProps = { theme: defaultTheme };
 StyledText.defaultProps = { theme: defaultTheme };

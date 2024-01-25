@@ -80,6 +80,7 @@ exports[`render determinant progress circle 1`] = `
       class="c1 c2"
       cx="1.5em"
       cy="1.5em"
+      percent="50"
       r="1.375em"
     />
     <text
@@ -145,7 +146,7 @@ exports[`render indeterminant progress bar 1`] = `
   stroke-dasharray: 138.23007675795088 138.23007675795088;
   stroke: #3C64F4;
   transform-origin: 50% 50%;
-  animation: dfVSSu 1s ease-out infinite;
+  animation: fDkqgS 1s ease-out infinite;
   stroke-dashoffset: 138.23007675795088;
   transform: rotate(-90deg);
   transition: stroke-dashoffset 0.35s;
@@ -188,7 +189,7 @@ exports[`render large progress circle 1`] = `
   stroke-dasharray: 226.1946710584651 226.1946710584651;
   stroke: #3C64F4;
   transform-origin: 50% 50%;
-  animation: krEchf 1s ease-out infinite;
+  animation: ddiDZL 1s ease-out infinite;
   stroke-dashoffset: 226.1946710584651;
   transform: rotate(-90deg);
   transition: stroke-dashoffset 0.35s;
@@ -231,7 +232,7 @@ exports[`render medium progress circle 1`] = `
   stroke-dasharray: 138.23007675795088 138.23007675795088;
   stroke: #3C64F4;
   transform-origin: 50% 50%;
-  animation: dfVSSu 1s ease-out infinite;
+  animation: fDkqgS 1s ease-out infinite;
   stroke-dashoffset: 138.23007675795088;
   transform: rotate(-90deg);
   transition: stroke-dashoffset 0.35s;
@@ -274,7 +275,7 @@ exports[`render small progress circle 1`] = `
   stroke-dasharray: 87.96459430051421 87.96459430051421;
   stroke: #3C64F4;
   transform-origin: 50% 50%;
-  animation: kpuuIv 1s ease-out infinite;
+  animation: cLjUWD 1s ease-out infinite;
   stroke-dashoffset: 87.96459430051421;
   transform: rotate(-90deg);
   transition: stroke-dashoffset 0.35s;
@@ -317,7 +318,7 @@ exports[`render xSmall progress circle 1`] = `
   stroke-dasharray: 65.97344572538566 65.97344572538566;
   stroke: #3C64F4;
   transform-origin: 50% 50%;
-  animation: hiqbsE 1s ease-out infinite;
+  animation: jUmmOw 1s ease-out infinite;
   stroke-dashoffset: 65.97344572538566;
   transform: rotate(-90deg);
   transition: stroke-dashoffset 0.35s;
@@ -360,7 +361,7 @@ exports[`render xSmall progress circle 2`] = `
   stroke-dasharray: 43.982297150257104 43.982297150257104;
   stroke: #3C64F4;
   transform-origin: 50% 50%;
-  animation: fxwtRW 1s ease-out infinite;
+  animation: dcgSPO 1s ease-out infinite;
   stroke-dashoffset: 43.982297150257104;
   transform: rotate(-90deg);
   transition: stroke-dashoffset 0.35s;
