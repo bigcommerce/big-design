@@ -84,7 +84,7 @@ exports[`simple form render 1`] = `
 }
 
 .c8:-webkit-autofill {
-  background-color: #F0F3FF !important;
+  background-color: #F0F3FF!important;
   -webkit-box-shadow: 0 0 0px 1000px #F0F3FF inset;
 }
 
@@ -124,11 +124,7 @@ exports[`simple form render 1`] = `
   font-weight: 400;
 }
 
-@media (min-width:720px) {
-
-}
-
-@media (min-width:720px) {
+@media (min-width: 720px) {
 
 }
 

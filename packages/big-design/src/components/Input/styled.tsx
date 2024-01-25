@@ -3,12 +3,11 @@ import { css, styled } from 'styled-components';
 
 import { PaddingProps, withPaddings } from '../../mixins';
 import { withTransition } from '../../mixins/transitions';
+import { WithTransients } from '../../utils';
 
 import { InputProps } from './Input';
 
-export interface StyledInputWrapperProps extends InputProps {
-  focus: boolean;
-}
+export type StyledInputWrapperProps = WithTransients<InputProps & { focus: boolean }>;
 
 export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
   ${withTransition(['border', 'box-shadow'])}
@@ -23,13 +22,13 @@ export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
   position: relative;
   width: 100%;
 
-  ${({ error, theme }) => css`
-    border: ${error ? theme.border.boxError : theme.border.box};
+  ${({ $error, theme }) => css`
+    border: ${$error ? theme.border.boxError : theme.border.box};
   `};
 
   &:hover:not([disabled]) {
-    ${({ error, theme }) =>
-      error
+    ${({ $error, theme }) =>
+      $error
         ? css`
             border: ${theme.border.boxError};
           `
@@ -38,11 +37,11 @@ export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
           `}
   }
 
-  ${({ error, focus, theme }) =>
-    focus &&
+  ${({ $error, $focus, theme }) =>
+    $focus &&
     css`
       outline: none;
-      box-shadow: 0 0 0 4px ${error ? theme.colors.danger20 : theme.colors.primary20};
+      box-shadow: 0 0 0 4px ${$error ? theme.colors.danger20 : theme.colors.primary20};
     `};
 
   &[disabled] {
@@ -50,7 +49,7 @@ export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
   }
 `;
 
-export const StyledInput = styled.input<InputProps>`
+export const StyledInput = styled.input<WithTransients<InputProps>>`
   background-color: inherit;
   border: 0;
   box-sizing: border-box;
@@ -77,35 +76,35 @@ export const StyledInput = styled.input<InputProps>`
     -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.colors.primary10} inset;
   }
 
-  ${({ iconRight, theme }) =>
-    iconRight &&
+  ${({ $iconRight, theme }) =>
+    $iconRight &&
     css`
       padding-right: ${addValues(theme.spacing.xxSmall, theme.spacing.xxLarge)};
     `};
 
-  ${({ iconLeft, theme }) =>
-    iconLeft &&
+  ${({ $iconLeft, theme }) =>
+    $iconLeft &&
     css`
       padding-left: ${addValues(theme.spacing.xxSmall, theme.spacing.xxLarge)};
     `};
 
-  ${({ chips, theme }) =>
-    chips &&
+  ${({ $chips, theme }) =>
+    $chips &&
     css`
       min-height: ${theme.spacing.xLarge};
       padding-left: ${theme.spacing.xxSmall};
       padding-right: ${theme.spacing.none};
     `};
 
-  ${({ chips, theme }) =>
-    chips &&
-    chips.length &&
+  ${({ $chips, theme }) =>
+    $chips &&
+    $chips.length &&
     css`
       margin-top: ${theme.spacing.xxSmall};
     `};
 
-  ${({ chips }) =>
-    !chips &&
+  ${({ $chips }) =>
+    !$chips &&
     css`
       min-height: ${remCalc(34)};
     `};
@@ -116,7 +115,7 @@ export const StyledInput = styled.input<InputProps>`
   }
 `;
 
-export const StyledIconWrapper = styled.div<PaddingProps>`
+export const StyledIconWrapper = styled.div<WithTransients<PaddingProps>>`
   align-items: center;
   color: ${({ theme }) => theme.colors.secondary60};
   display: flex;
@@ -126,14 +125,14 @@ export const StyledIconWrapper = styled.div<PaddingProps>`
 
   ${withPaddings()}
 
-  ${({ paddingLeft }) =>
-    paddingLeft === 'xSmall' &&
+  ${({ $paddingLeft }) =>
+    $paddingLeft === 'xSmall' &&
     css`
       left: 0;
     `}
 
-  ${({ paddingRight }) =>
-    paddingRight === 'xSmall' &&
+  ${({ $paddingRight }) =>
+    $paddingRight === 'xSmall' &&
     css`
       right: 0;
     `}

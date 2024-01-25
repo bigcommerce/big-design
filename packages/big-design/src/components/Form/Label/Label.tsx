@@ -1,5 +1,7 @@
 import React, { LabelHTMLAttributes } from 'react';
 
+import { withTransients } from '../../../utils';
+
 import { StyledLabel } from './styled';
 
 export interface LabelLocalization {
@@ -11,8 +13,8 @@ const defaultLocalization: LabelLocalization = {
 };
 
 export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
-  renderOptional?: boolean;
-  localization?: LabelLocalization;
+  readonly renderOptional?: boolean;
+  readonly localization?: LabelLocalization;
 }
 
 export const FormControlLabel: React.FC<LabelProps> = ({
@@ -20,4 +22,4 @@ export const FormControlLabel: React.FC<LabelProps> = ({
   localization = defaultLocalization,
   style,
   ...props
-}) => <StyledLabel localization={localization} {...props} />;
+}) => <StyledLabel $localization={localization} {...withTransients(props)} />;

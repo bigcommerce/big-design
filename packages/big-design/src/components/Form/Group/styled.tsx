@@ -1,6 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { css, styled } from 'styled-components';
 
+import { WithTransients } from '../../../utils';
 import { Flex } from '../../Flex';
 
 interface StyledProps {
@@ -26,24 +27,24 @@ export const StyledGroup = styled.div`
   ${SharedGroupStyles};
 `;
 
-export const StyledInlineGroup = styled.div<StyledProps>`
+export const StyledInlineGroup = styled.div<WithTransients<StyledProps>>`
   ${SharedGroupStyles};
 
   ${({ theme }) => theme.breakpoints.tablet} {
-    ${({ childrenCount, fullWidth, theme }) =>
-      childrenCount === 2 &&
+    ${({ $childrenCount, $fullWidth, theme }) =>
+      $childrenCount === 2 &&
       css`
-        grid-template-columns: repeat(2, ${fullWidth ? '1fr' : theme.helpers.remCalc(200)});
+        grid-template-columns: repeat(2, ${$fullWidth ? '1fr' : theme.helpers.remCalc(200)});
 
         ${StyledError} {
           grid-column: 1 / 3;
         }
       `}
 
-    ${({ childrenCount, fullWidth, theme }) =>
-      childrenCount === 3 &&
+    ${({ $childrenCount, $fullWidth, theme }) =>
+      $childrenCount === 3 &&
       css`
-        grid-template-columns: repeat(3, ${fullWidth ? '1fr' : theme.helpers.remCalc(128)});
+        grid-template-columns: repeat(3, ${$fullWidth ? '1fr' : theme.helpers.remCalc(128)});
 
         ${StyledError} {
           grid-column: 1 / 4;

@@ -18,8 +18,8 @@ import { useFormContext } from '../useFormContext';
 import { StyledError, StyledGroup, StyledInlineGroup } from './styled';
 
 export interface GroupProps extends HTMLAttributes<HTMLDivElement> {
-  children?: React.ReactNode;
-  errors?: React.ReactNode | React.ReactNode[];
+  readonly children?: React.ReactNode;
+  readonly errors?: React.ReactNode | React.ReactNode[];
 }
 
 interface Errors {
@@ -63,7 +63,7 @@ export const FormGroup: React.FC<GroupProps> = (props) => {
   return (
     <FormGroupContext.Provider value={contextValue}>
       {inline ? (
-        <StyledInlineGroup childrenCount={childrenCount} fullWidth={fullWidth}>
+        <StyledInlineGroup $childrenCount={childrenCount} $fullWidth={fullWidth}>
           {children}
           {renderErrors()}
         </StyledInlineGroup>

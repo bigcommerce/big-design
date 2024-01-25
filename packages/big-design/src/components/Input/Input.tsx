@@ -9,7 +9,7 @@ import React, {
   useState,
 } from 'react';
 
-import { typedMemo, warning } from '../../utils';
+import { typedMemo, warning, withTransients } from '../../utils';
 import { Chip, ChipProps } from '../Chip';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
@@ -21,18 +21,18 @@ export interface InputLocalization {
 }
 
 export interface Props {
-  chips?: ChipProps[];
-  description?: React.ReactChild;
-  error?: React.ReactNode | React.ReactNode[];
-  iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
-  label?: React.ReactChild;
-  labelId?: string;
-  localization?: InputLocalization;
+  readonly chips?: ChipProps[];
+  readonly description?: React.ReactChild;
+  readonly error?: React.ReactNode | React.ReactNode[];
+  readonly iconLeft?: React.ReactNode;
+  readonly iconRight?: React.ReactNode;
+  readonly label?: React.ReactChild;
+  readonly labelId?: string;
+  readonly localization?: InputLocalization;
 }
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLInputElement>;
+  readonly forwardedRef: Ref<HTMLInputElement>;
 }
 
 export type InputProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
@@ -122,7 +122,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     }
 
     return (
-      <StyledIconWrapper paddingLeft="xSmall" paddingRight="xxSmall">
+      <StyledIconWrapper $paddingLeft="xSmall" $paddingRight="xxSmall">
         {props.iconLeft}
       </StyledIconWrapper>
     );
@@ -134,7 +134,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     }
 
     return (
-      <StyledIconWrapper paddingLeft="xxSmall" paddingRight="xSmall">
+      <StyledIconWrapper $paddingLeft="xxSmall" $paddingRight="xSmall">
         {props.iconRight}
       </StyledIconWrapper>
     );
@@ -154,15 +154,13 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     <div>
       {renderedLabel}
       {renderedDescription}
-      <StyledInputWrapper disabled={disabled} error={errors} focus={focus}>
+      <StyledInputWrapper $error={errors} $focus={focus} disabled={disabled}>
         {renderedIconLeft}
         <StyledInputContent chips={chips}>
           {renderedChips}
           <StyledInput
-            {...props}
-            chips={chips}
+            {...withTransients(props)}
             disabled={disabled}
-            error={errors}
             id={id}
             onBlur={handleBlur}
             onFocus={handleFocus}

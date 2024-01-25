@@ -1,20 +1,21 @@
 import { css, styled } from 'styled-components';
 
+import { WithTransients } from '../../../utils';
 import { StyleableH4 } from '../../Typography/private';
 
 import { LabelProps } from './Label';
 
-export const StyledLabel = styled(StyleableH4).attrs({ as: 'label' })<LabelProps>`
+export const StyledLabel = styled(StyleableH4).attrs({ as: 'label' })<WithTransients<LabelProps>>`
   cursor: pointer;
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
 
-  ${({ theme, renderOptional, localization }) =>
-    renderOptional &&
+  ${({ theme, $renderOptional, $localization }) =>
+    $renderOptional &&
     css`
       &::after {
         color: ${theme.colors.secondary60};
-        content: ' (${localization?.optional})';
+        content: ' (${$localization?.optional})';
         font-weight: ${theme.typography.fontWeight.regular};
       }
     `}

@@ -12,7 +12,7 @@ import React, {
   useState,
 } from 'react';
 
-import { typedMemo, warning } from '../../utils';
+import { typedMemo, warning, withTransients } from '../../utils';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
 
@@ -31,13 +31,13 @@ const defaultLocalization: Localization = {
 };
 
 export interface CounterProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: React.ReactNode;
-  labelId?: string;
-  description?: React.ReactNode;
-  error?: React.ReactNode | React.ReactNode[];
-  localization?: Localization;
-  value: number;
-  step?: number;
+  readonly label?: React.ReactNode;
+  readonly labelId?: string;
+  readonly description?: React.ReactNode;
+  readonly error?: React.ReactNode | React.ReactNode[];
+  readonly localization?: Localization;
+  readonly value: number;
+  readonly step?: number;
   onCountChange(count: number): void;
 }
 
@@ -204,7 +204,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       <div>
         {renderedLabel}
         {renderedDescription}
-        <StyledCounterWrapper disabled={disabled} error={errors} focus={focus}>
+        <StyledCounterWrapper $error={errors} $focus={focus} disabled={disabled}>
           <StyledCounterButton
             disabled={disabled || value <= Number(min)}
             iconOnly={<RemoveCircleOutlineIcon title={localization.decreaseCount} />}
@@ -212,9 +212,8 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
             type="button"
           />
           <StyledCounterInput
-            {...props}
+            {...withTransients(props)}
             disabled={disabled}
-            error={errors}
             id={id}
             onBlur={handleBlur}
             onChange={handleChange}

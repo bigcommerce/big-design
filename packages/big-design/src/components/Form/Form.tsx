@@ -1,24 +1,24 @@
 import React, { forwardRef, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
-import { typedMemo } from '../../utils';
+import { typedMemo, withTransients } from '../../utils';
 
 import { StyledForm } from './styled';
 import { FormContext } from './useFormContext';
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLFormElement>;
+  readonly forwardedRef: Ref<HTMLFormElement>;
 }
 
 export type FormProps = React.FormHTMLAttributes<HTMLFormElement> &
   MarginProps & {
-    fullWidth?: boolean;
+    readonly fullWidth?: boolean;
   };
 
 const StyleableForm: React.FC<PrivateProps & FormProps> = ({ forwardedRef, ...props }) => {
   return (
     <FormContext.Provider value={{ fullWidth: props.fullWidth }}>
-      <StyledForm {...props} ref={forwardedRef} />
+      <StyledForm {...withTransients(props)} ref={forwardedRef} />
     </FormContext.Provider>
   );
 };
