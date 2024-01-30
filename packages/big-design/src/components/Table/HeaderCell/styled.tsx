@@ -2,7 +2,8 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import { css, styled } from 'styled-components';
 
-import { Flex } from '../../Flex';
+import { WithTransients } from '../../../utils';
+import { Flex, FlexProps } from '../../Flex';
 import { TableColumnDisplayProps, withTableColumnDisplay } from '../mixins';
 
 interface StyledTableHeaderCellProps extends TableColumnDisplayProps {
@@ -17,7 +18,7 @@ interface StyledFlexProps {
   hide: boolean;
 }
 
-export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
+export const StyledTableHeaderCell = styled.th<WithTransients<StyledTableHeaderCellProps>>`
   ${withTableColumnDisplay()}
   background-color: ${({ theme }) => theme.colors.white};
   border-bottom: ${({ theme }) => theme.border.box};
@@ -36,8 +37,8 @@ export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
     padding-right: ${({ theme }) => theme.spacing.xLarge};
   }
 
-  ${({ isSortable }) =>
-    isSortable &&
+  ${({ $isSortable }) =>
+    $isSortable &&
     css`
       cursor: pointer;
     `};
@@ -48,13 +49,13 @@ export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
       width: ${typeof width === 'string' ? width : `${width}px`};
     `};
 
-  ${({ theme, stickyHeader, stickyHeight }) =>
-    stickyHeader &&
-    stickyHeight >= 0 &&
+  ${({ theme, $stickyHeader, $stickyHeight }) =>
+    $stickyHeader &&
+    $stickyHeight >= 0 &&
     css`
       ${theme.breakpoints.tablet} {
         position: sticky;
-        top: ${theme.helpers.remCalc(stickyHeight)};
+        top: ${theme.helpers.remCalc($stickyHeight)};
         z-index: ${theme.zIndex.sticky};
       }
     `}
@@ -65,9 +66,9 @@ export const StyledTableHeaderIcon = styled(StyledTableHeaderCell)`
   white-space: nowrap;
 `;
 
-export const StyledFlex = styled(Flex)<StyledFlexProps>`
-  ${({ align }) => {
-    switch (align) {
+export const StyledFlex = styled(Flex)<FlexProps & WithTransients<StyledFlexProps>>`
+  ${({ $align }) => {
+    switch ($align) {
       case 'center':
         return css`
           justify-content: center;
@@ -84,8 +85,9 @@ export const StyledFlex = styled(Flex)<StyledFlexProps>`
         `;
     }
   }};
-  ${({ hide }) => hide && hideVisually()};
+  ${({ $hide }) => $hide && hideVisually()};
 `;
 
 StyledFlex.defaultProps = { theme: defaultTheme };
 StyledTableHeaderCell.defaultProps = { theme: defaultTheme };
+StyledTableHeaderIcon.defaultProps = { theme: defaultTheme };

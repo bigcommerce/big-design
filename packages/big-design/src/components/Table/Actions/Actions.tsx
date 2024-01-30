@@ -10,15 +10,15 @@ import { TableItem, TablePaginationProps, TableSelectable } from '../types';
 import { StyledFlex } from './styled';
 
 export interface ActionsProps<T> {
-  customActions?: React.ReactNode;
-  forwardedRef: RefObject<HTMLDivElement>;
-  itemName?: string;
-  items: T[];
-  pagination?: TablePaginationProps;
-  onSelectionChange?: TableSelectable<T>['onSelectionChange'];
-  selectedItems: Set<T>;
-  stickyHeader?: boolean;
-  tableId: string;
+  readonly customActions?: React.ReactNode;
+  readonly forwardedRef: RefObject<HTMLDivElement>;
+  readonly itemName?: string;
+  readonly items: T[];
+  readonly pagination?: TablePaginationProps;
+  readonly onSelectionChange?: TableSelectable<T>['onSelectionChange'];
+  readonly selectedItems: Set<T>;
+  readonly stickyHeader?: boolean;
+  readonly tableId: string;
 }
 
 const InternalActions = <T extends TableItem>({
@@ -56,12 +56,12 @@ const InternalActions = <T extends TableItem>({
 
   return (
     <StyledFlex
-      alignItems="center"
+      $alignItems="center"
+      $flexDirection="row"
+      $justifyContent="stretch"
+      $stickyHeader={stickyHeader}
       aria-controls={tableId}
-      flexDirection="row"
-      justifyContent="stretch"
       ref={forwardedRef}
-      stickyHeader={stickyHeader}
       {...props}
     >
       <SelectAll

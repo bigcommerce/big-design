@@ -9,13 +9,13 @@ export interface DataCellProps
   extends TdHTMLAttributes<HTMLTableCellElement>,
     TableColumnDisplayProps,
     PaddingProps {
-  align?: 'left' | 'center' | 'right';
-  children?: React.ReactNode;
-  isExpandable?: boolean;
-  isCheckbox?: boolean;
-  verticalAlign?: 'top' | 'middle';
-  width?: number | string;
-  withBorder?: boolean;
+  readonly align?: 'left' | 'center' | 'right';
+  readonly children?: React.ReactNode;
+  readonly isExpandable?: boolean;
+  readonly isCheckbox?: boolean;
+  readonly verticalAlign?: 'top' | 'middle';
+  readonly width?: number | string;
+  readonly withBorder?: boolean;
 }
 
 export const DataCell: React.FC<DataCellProps> = memo(
@@ -35,25 +35,25 @@ export const DataCell: React.FC<DataCellProps> = memo(
   }: DataCellProps) => {
     return isCheckbox ? (
       <StyledTableDataCheckbox
+        $display={display}
+        $isExpandable={isExpandable}
+        $withBorder={withBorder}
         align={align}
-        display={display}
-        isExpandable={isExpandable}
         width={width}
-        withBorder={withBorder}
       >
         {children}
       </StyledTableDataCheckbox>
     ) : (
       <StyledTableDataCell
+        $display={display}
+        $padding={padding}
+        $paddingHorizontal={paddingHorizontal}
+        $paddingVertical={paddingVertical}
+        $verticalAlign={verticalAlign}
+        $withBorder={withBorder}
         align={align}
         colSpan={colSpan}
-        display={display}
-        padding={padding}
-        paddingHorizontal={paddingHorizontal}
-        paddingVertical={paddingVertical}
-        verticalAlign={verticalAlign}
         width={width}
-        withBorder={withBorder}
       >
         {children}
       </StyledTableDataCell>

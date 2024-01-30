@@ -1,7 +1,7 @@
 import { ChevronRightIcon, DragIndicatorIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React, { forwardRef, ReactNode, TableHTMLAttributes } from 'react';
 
-import { typedMemo } from '../../../utils';
+import { typedMemo, withTransients } from '../../../utils';
 import { MessagingButton } from '../../Button/private';
 import { Checkbox } from '../../Checkbox';
 import { Flex } from '../../Flex';
@@ -142,7 +142,12 @@ const InternalRow = <T extends TableItem>({
   };
 
   return (
-    <StyledTableRow isDragging={isDragging} isSelected={isSelected} ref={forwardedRef} {...rest}>
+    <StyledTableRow
+      $isDragging={isDragging}
+      $isSelected={isSelected}
+      ref={forwardedRef}
+      {...withTransients(rest)}
+    >
       {renderDragIconCell()}
       {isParentRow && renderSelectDataCell()}
       {renderExpandedIconCell()}

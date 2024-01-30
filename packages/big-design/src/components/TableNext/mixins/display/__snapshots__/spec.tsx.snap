@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`responsive display 1`] = `
-@media (min-width:0px) {
+@media (min-width: 0px) {
   .c0 {
     display: none;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     display: table-cell;
   }
@@ -15,6 +15,5 @@ exports[`responsive display 1`] = `
 
 <div
   class="c0"
-  display="[object Object]"
 />
 `;

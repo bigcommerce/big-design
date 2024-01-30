@@ -7,13 +7,13 @@ import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 export interface DataCellProps
   extends TableHTMLAttributes<HTMLTableCellElement>,
     TableColumnDisplayProps {
-  align?: 'left' | 'center' | 'right';
-  children?: React.ReactNode;
-  isCheckbox?: boolean;
-  verticalAlign?: 'top' | 'middle';
-  width?: number | string;
-  withBorder?: boolean;
-  withPadding?: boolean;
+  readonly align?: 'left' | 'center' | 'right';
+  readonly children?: React.ReactNode;
+  readonly isCheckbox?: boolean;
+  readonly verticalAlign?: 'top' | 'middle';
+  readonly width?: number | string;
+  readonly withBorder?: boolean;
+  readonly withPadding?: boolean;
 }
 
 export const DataCell: React.FC<DataCellProps> = memo(
@@ -29,21 +29,21 @@ export const DataCell: React.FC<DataCellProps> = memo(
   }: DataCellProps) => {
     return isCheckbox ? (
       <StyledTableDataCheckbox
+        $display={display}
+        $withBorder={withBorder}
         align={align}
-        display={display}
         width={width}
-        withBorder={withBorder}
       >
         {children}
       </StyledTableDataCheckbox>
     ) : (
       <StyledTableDataCell
+        $display={display}
+        $verticalAlign={verticalAlign}
+        $withBorder={withBorder}
+        $withPadding={withPadding}
         align={align}
-        display={display}
-        verticalAlign={verticalAlign}
         width={width}
-        withBorder={withBorder}
-        withPadding={withPadding}
       >
         {children}
       </StyledTableDataCell>

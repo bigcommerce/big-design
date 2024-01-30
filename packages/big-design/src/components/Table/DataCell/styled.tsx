@@ -1,30 +1,31 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { css, styled } from 'styled-components';
 
+import { WithTransients } from '../../../utils';
 import { withTableColumnDisplay } from '../mixins';
 
 import { DataCellProps } from './DataCell';
 
 // TODO: Use PaddingProps
-export const StyledTableDataCell = styled.td<DataCellProps>`
+export const StyledTableDataCell = styled.td<WithTransients<DataCellProps>>`
   ${withTableColumnDisplay()}
 
   background-color: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
-  padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing.small : 0)};
+  padding: ${({ theme, $withPadding }) => ($withPadding ? theme.spacing.small : 0)};
 
   &:first-of-type {
-    padding-left: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    padding-left: ${({ theme, $withPadding }) => ($withPadding ? theme.spacing.xLarge : 0)};
   }
 
   &:last-of-type {
-    padding-right: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    padding-right: ${({ theme, $withPadding }) => ($withPadding ? theme.spacing.xLarge : 0)};
   }
 
-  ${({ theme, withBorder }) =>
-    withBorder &&
+  ${({ theme, $withBorder }) =>
+    $withBorder &&
     css`
       border-bottom: ${theme.border.box};
     `}
@@ -35,10 +36,10 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
       text-align: ${align};
     `};
 
-  ${({ verticalAlign }) =>
-    verticalAlign &&
+  ${({ $verticalAlign }) =>
+    $verticalAlign &&
     css`
-      vertical-align: ${verticalAlign};
+      vertical-align: ${$verticalAlign};
     `};
 
   ${({ width }) =>
@@ -63,7 +64,7 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
   }
 
   ${(props) =>
-    props.isCheckbox &&
+    props.$isCheckbox &&
     css`
       width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
       white-space: nowrap;
@@ -71,3 +72,4 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
 `;
 
 StyledTableDataCell.defaultProps = { theme: defaultTheme };
+StyledTableDataCheckbox.defaultProps = { theme: defaultTheme };

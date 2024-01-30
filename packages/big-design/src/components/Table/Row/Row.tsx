@@ -9,18 +9,18 @@ import { TableColumn, TableItem } from '../types';
 import { StyledTableRow } from './styled';
 
 export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
-  columns: Array<TableColumn<T>>;
-  headerCellWidths: Array<number | string>;
-  item: T;
-  isDragging?: boolean;
-  isSelected?: boolean;
-  isSelectable?: boolean;
-  showDragIcon?: boolean;
+  readonly columns: Array<TableColumn<T>>;
+  readonly headerCellWidths: Array<number | string>;
+  readonly item: T;
+  readonly isDragging?: boolean;
+  readonly isSelected?: boolean;
+  readonly isSelectable?: boolean;
+  readonly showDragIcon?: boolean;
   onItemSelect?(item: T): void;
 }
 
 interface PrivateProps {
-  forwardedRef?: React.Ref<HTMLTableRowElement>;
+  readonly forwardedRef?: React.Ref<HTMLTableRowElement>;
 }
 
 const InternalRow = <T extends TableItem>({
@@ -44,7 +44,7 @@ const InternalRow = <T extends TableItem>({
   const label = isSelected ? `Selected` : `Unselected`;
 
   return (
-    <StyledTableRow isDragging={isDragging} isSelected={isSelected} ref={forwardedRef} {...rest}>
+    <StyledTableRow $isDragging={isDragging} $isSelected={isSelected} ref={forwardedRef} {...rest}>
       {showDragIcon && (
         <DataCell width={headerCellWidths[0]}>
           <DragIndicatorIcon />

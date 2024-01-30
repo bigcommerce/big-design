@@ -104,7 +104,7 @@ exports[`renders a pagination component 1`] = `
   pointer-events: none;
 }
 
-.c7 + .bd-button {
+.c7+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -164,7 +164,7 @@ exports[`renders a pagination component 1`] = `
   pointer-events: none;
 }
 
-.c13 + .bd-button {
+.c13+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -211,27 +211,27 @@ exports[`renders a pagination component 1`] = `
   padding: 0.75rem 1.5rem;
 }
 
-@media (min-width:720px) {
-  .c7 + .bd-button {
+@media (min-width: 720px) {
+  .c7+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c7 {
     width: auto;
   }
 }
 
-@media (min-width:720px) {
-  .c13 + .bd-button {
+@media (min-width: 720px) {
+  .c13+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c13 {
     width: auto;
     padding: 0;
@@ -602,7 +602,7 @@ exports[`renders a table figure 1`] = `
   white-space: nowrap;
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c0 {
     white-space: normal;
   }
@@ -614,7 +614,7 @@ exports[`renders a table figure 1`] = `
 `;
 
 exports[`selectable renders selectable actions and checkboxes 1`] = `
-.c10 {
+.c9 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -629,7 +629,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   box-sizing: border-box;
 }
 
-.c15 {
+.c14 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
@@ -651,7 +651,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   flex-shrink: 0;
 }
 
-.c12 {
+.c11 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -659,11 +659,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   line-height: 1.5rem;
 }
 
-.c12:last-child {
+.c11:last-child {
   margin-bottom: 0;
 }
 
-.c14 {
+.c13 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -672,11 +672,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin-left: 0.75rem;
 }
 
-.c14:last-child {
+.c13:last-child {
   margin-bottom: 0;
 }
 
-.c16 {
+.c15 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -685,11 +685,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin: 0;
 }
 
-.c16:last-child {
+.c15:last-child {
   margin-bottom: 0;
 }
 
-.c13 {
+.c12 {
   cursor: pointer;
   border: 0;
   clip: rect(0 0 0 0);
@@ -702,7 +702,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   width: 1px;
 }
 
-.c11 {
+.c10 {
   margin-left: 0.5rem;
 }
 
@@ -723,7 +723,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   width: 1px;
 }
 
-.c9 {
+.c8 {
   transition: all 150ms ease-out;
   transition-property: border-color,background,box-shadow,color,opacity;
   align-items: center;
@@ -743,15 +743,15 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   width: 1.25rem;
 }
 
-.c9:hover {
+.c8:hover {
   border-color: #B4BAD1;
 }
 
-.c6:focus + .c8 {
+.c6:focus+.c8 {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9 svg {
+.c8 svg {
   opacity: 0;
 }
 
@@ -786,12 +786,12 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         />
         <label
           aria-hidden="true"
-          class="c8 c9"
+          class="c8"
           for=":r1j:"
         >
           <svg
             aria-hidden="true"
-            class="c10"
+            class="c9"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -809,10 +809,10 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
           </svg>
         </label>
         <div
-          class="c11"
+          class="c10"
         >
           <label
-            class="c12 c13"
+            class="c11 c12"
             for=":r1j:"
             hidden=""
             id=":r1k:"
@@ -822,17 +822,17 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         </div>
       </div>
       <p
-        class="c14"
+        class="c13"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c15 c2"
+    class="c14 c2"
   >
     <p
-      class="c16"
+      class="c15"
     >
       Product
     </p>

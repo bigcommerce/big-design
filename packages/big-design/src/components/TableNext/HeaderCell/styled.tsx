@@ -2,6 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import { css, styled } from 'styled-components';
 
+import { WithTransients } from '../../../utils';
 import { Flex } from '../../Flex';
 import { TableColumnDisplayProps, withTableColumnDisplay } from '../mixins';
 
@@ -17,7 +18,7 @@ interface StyledFlexProps {
   hide: boolean;
 }
 
-export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
+export const StyledTableHeaderCell = styled.th<WithTransients<StyledTableHeaderCellProps>>`
   ${withTableColumnDisplay()}
   background-color: ${({ theme }) => theme.colors.white};
   border-bottom: ${({ theme }) => theme.border.box};
@@ -36,8 +37,8 @@ export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
     padding-right: ${({ theme }) => theme.spacing.xLarge};
   }
 
-  ${({ isSortable }) =>
-    isSortable &&
+  ${({ $isSortable }) =>
+    $isSortable &&
     css`
       cursor: pointer;
     `};
@@ -48,13 +49,13 @@ export const StyledTableHeaderCell = styled.th<StyledTableHeaderCellProps>`
       width: ${typeof width === 'string' ? width : `${width}px`};
     `};
 
-  ${({ theme, stickyHeader, stickyHeight }) =>
-    stickyHeader &&
-    stickyHeight >= 0 &&
+  ${({ theme, $stickyHeader, $stickyHeight }) =>
+    $stickyHeader &&
+    $stickyHeight >= 0 &&
     css`
       ${theme.breakpoints.tablet} {
         position: sticky;
-        top: ${theme.helpers.remCalc(stickyHeight)};
+        top: ${theme.helpers.remCalc($stickyHeight)};
         z-index: ${theme.zIndex.sticky};
       }
     `}

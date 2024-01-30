@@ -1,17 +1,19 @@
 import React, { forwardRef, memo, TableHTMLAttributes } from 'react';
 
+import { withTransients } from '../../../utils';
+
 import { StyledTableBody } from './styled';
 
 export interface BodyProps extends TableHTMLAttributes<HTMLTableSectionElement> {
-  withFirstRowBorder?: boolean;
+  readonly withFirstRowBorder?: boolean;
 }
 
 interface PrivateProps {
-  forwardedRef?: React.Ref<HTMLTableSectionElement>;
+  readonly forwardedRef?: React.Ref<HTMLTableSectionElement>;
 }
 
 const RawBody: React.FC<BodyProps & PrivateProps> = (props) => (
-  <StyledTableBody ref={props.forwardedRef} {...props} />
+  <StyledTableBody ref={props.forwardedRef} {...withTransients(props)} />
 );
 
 export const Body = memo(

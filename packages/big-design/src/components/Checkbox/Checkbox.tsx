@@ -22,11 +22,11 @@ import {
 } from './styled';
 
 interface Props {
-  hiddenLabel?: boolean;
-  isIndeterminate?: boolean;
-  label: React.ReactChild;
-  description?: CheckboxDescription | string;
-  badge?: BadgeProps;
+  readonly hiddenLabel?: boolean;
+  readonly isIndeterminate?: boolean;
+  readonly label: React.ReactChild;
+  readonly description?: CheckboxDescription | string;
+  readonly badge?: BadgeProps;
 }
 
 interface CheckboxDescription {
@@ -35,7 +35,7 @@ interface CheckboxDescription {
 }
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLInputElement>;
+  readonly forwardedRef: Ref<HTMLInputElement>;
 }
 
 export type CheckboxProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
@@ -133,11 +133,11 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       />
 
       <StyledCheckbox
+        $isIndeterminate={isIndeterminate}
         aria-hidden={true}
         checked={checked}
         disabled={disabled}
         htmlFor={id}
-        isIndeterminate={isIndeterminate}
       >
         {!checked && isIndeterminate ? <RemoveIcon /> : <CheckIcon />}
       </StyledCheckbox>

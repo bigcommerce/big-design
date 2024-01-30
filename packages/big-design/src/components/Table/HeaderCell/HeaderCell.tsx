@@ -22,15 +22,15 @@ interface Localization {
 export interface HeaderCellProps<T>
   extends TableHTMLAttributes<HTMLTableCellElement>,
     TableColumnDisplayProps {
-  actionsRef: RefObject<HTMLDivElement>;
-  children?: React.ReactNode;
-  column: TableColumn<T>;
-  id: string;
-  hide?: boolean;
-  isSorted?: boolean;
-  localization: Localization;
-  sortDirection?: 'ASC' | 'DESC';
-  stickyHeader?: boolean;
+  readonly actionsRef: RefObject<HTMLDivElement>;
+  readonly children?: React.ReactNode;
+  readonly column: TableColumn<T>;
+  readonly id: string;
+  readonly hide?: boolean;
+  readonly isSorted?: boolean;
+  readonly localization: Localization;
+  readonly sortDirection?: 'ASC' | 'DESC';
+  readonly stickyHeader?: boolean;
   onSortClick?(column: TableColumn<T>): void;
 }
 
@@ -111,15 +111,15 @@ const InternalHeaderCell = <T extends TableItem>({
 
   return (
     <StyledTableHeaderCell
-      display={display}
+      $display={display}
+      $isSortable={isSortable}
+      $stickyHeader={stickyHeader}
+      $stickyHeight={actionsSize.height}
       id={id}
-      isSortable={isSortable}
       onClick={handleClick}
-      stickyHeader={stickyHeader}
-      stickyHeight={actionsSize.height}
       width={width}
     >
-      <StyledFlex align={align} alignItems="center" flexDirection="row" hide={hide}>
+      <StyledFlex $align={align} $hide={hide} alignItems="center" flexDirection="row">
         {children}
         {!hide && renderSortIcon()}
         {renderTooltip()}
@@ -133,7 +133,9 @@ export const HeaderCheckboxCell: React.FC<HeaderCheckboxCellProps> = memo(
   ({ stickyHeader, actionsRef }) => {
     const actionsSize = useComponentSize(actionsRef);
 
-    return <StyledTableHeaderIcon stickyHeader={stickyHeader} stickyHeight={actionsSize.height} />;
+    return (
+      <StyledTableHeaderIcon $stickyHeader={stickyHeader} $stickyHeight={actionsSize.height} />
+    );
   },
 );
 
@@ -141,7 +143,7 @@ export const DragIconHeaderCell: React.FC<DragIconCellProps> = memo(
   ({ actionsRef, headerCellIconRef }) => {
     const actionsSize = useComponentSize(actionsRef);
 
-    return <StyledTableHeaderIcon ref={headerCellIconRef} stickyHeight={actionsSize.height} />;
+    return <StyledTableHeaderIcon $stickyHeight={actionsSize.height} ref={headerCellIconRef} />;
   },
 );
 

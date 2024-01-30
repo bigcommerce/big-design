@@ -2,11 +2,12 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { css, styled } from 'styled-components';
 
 import { withPaddings } from '../../../mixins';
+import { WithTransients } from '../../../utils';
 import { withTableColumnDisplay } from '../mixins';
 
 import { DataCellProps } from './DataCell';
 
-export const StyledTableDataCell = styled.td<DataCellProps>`
+export const StyledTableDataCell = styled.td<WithTransients<DataCellProps>>`
   ${withTableColumnDisplay()}
   ${withPaddings()}
   
@@ -16,17 +17,17 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
 
   &:first-of-type {
-    padding-left: ${({ theme, paddingHorizontal, padding }) =>
-      padding || paddingHorizontal ? theme.spacing.xLarge : 0};
+    padding-left: ${({ theme, $paddingHorizontal, $padding }) =>
+      $padding || $paddingHorizontal ? theme.spacing.xLarge : 0};
   }
 
   &:last-of-type {
-    padding-right: ${({ theme, paddingHorizontal, padding }) =>
-      padding || paddingHorizontal ? theme.spacing.xLarge : 0};
+    padding-right: ${({ theme, $paddingHorizontal, $padding }) =>
+      $padding || $paddingHorizontal ? theme.spacing.xLarge : 0};
   }
 
-  ${({ theme, withBorder }) =>
-    withBorder &&
+  ${({ theme, $withBorder }) =>
+    $withBorder &&
     css`
       border-bottom: ${theme.border.box};
     `}
@@ -37,10 +38,10 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
       text-align: ${align};
     `};
 
-  ${({ verticalAlign }) =>
-    verticalAlign &&
+  ${({ $verticalAlign }) =>
+    $verticalAlign &&
     css`
-      vertical-align: ${verticalAlign};
+      vertical-align: ${$verticalAlign};
     `};
 
   ${({ width }) =>
@@ -60,14 +61,14 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
     padding-left: ${({ theme }) => theme.spacing.xLarge};
   }
 
-  ${({ isExpandable }) =>
-    isExpandable &&
+  ${({ $isExpandable }) =>
+    $isExpandable &&
     css`
       padding-right: 0;
     `}
 
   ${(props) =>
-    props.isCheckbox &&
+    props.$isCheckbox &&
     css`
       width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
       white-space: nowrap;

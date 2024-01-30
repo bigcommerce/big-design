@@ -5,24 +5,26 @@ import { styled } from 'styled-components';
 
 import { render } from '@test/utils';
 
+import { WithTransients } from '../../../../utils';
+
 import { withTableColumnDisplay } from './display';
 import { TableColumnDisplayProps } from './types';
 
-const TestComponent = styled.div<TableColumnDisplayProps>`
+const TestComponent = styled.div<WithTransients<TableColumnDisplayProps>>`
   ${withTableColumnDisplay()};
 `;
 
 TestComponent.defaultProps = { theme: defaultTheme };
 
 test('display', () => {
-  const { container } = render(<TestComponent display="table-cell" />);
+  const { container } = render(<TestComponent $display="table-cell" />);
 
   expect(container.firstChild).toHaveStyle('display: table-cell');
 });
 
 test('responsive display', () => {
   const { container } = render(
-    <TestComponent display={{ mobile: 'none', tablet: 'table-cell' }} />,
+    <TestComponent $display={{ mobile: 'none', tablet: 'table-cell' }} />,
   );
 
   expect(container.firstChild).toMatchSnapshot();
