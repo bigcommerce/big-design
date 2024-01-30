@@ -27,10 +27,7 @@ exports[`isLoading render loading button 1`] = `
 }
 
 .c2 {
-  align-content: stretch;
   align-items: center;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -104,18 +101,6 @@ exports[`isLoading render loading button 1`] = `
 
 .c3 {
   position: absolute;
-}
-
-@media (min-width: 0px) {
-  .c2 {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 720px) {
-  .c2 {
-    flex-direction: row;
-  }
 }
 
 @media (min-width: 720px) {
