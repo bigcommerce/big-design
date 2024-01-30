@@ -473,7 +473,7 @@ exports[`renders close button 1`] = `
   pointer-events: none;
 }
 
-.c8 + .bd-button {
+.c8+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -575,14 +575,14 @@ exports[`renders close button 1`] = `
   vertical-align: middle;
 }
 
-@media (min-width:720px) {
-  .c8 + .bd-button {
+@media (min-width: 720px) {
+  .c8+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c8 {
     width: auto;
     padding: 0;
