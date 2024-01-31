@@ -431,11 +431,8 @@ exports[`renders actions 1`] = `
 }
 
 .c10 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
   display: flex;
 }
 
