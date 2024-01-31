@@ -90,10 +90,10 @@ export const Toggle = typedMemo(
         <Box aria-labelledby={labelId} display="flex" id={id} marginBottom="medium" role="group">
           {items.map(({ value: itemId, label, icon }, idx) => (
             <StyledButton
+              $isActive={itemId === activeValue}
+              $isIconType={!!icon}
               aria-checked={itemId === activeValue}
               disabled={disabled}
-              isActive={itemId === activeValue}
-              isIconType={!!icon}
               key={idx}
               onClick={handleClick(itemId)}
               role="switch"

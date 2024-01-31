@@ -1,15 +1,20 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { styled } from 'styled-components';
 
-export const StyledButton = styled.button<{ isActive: boolean; isIconType: boolean }>`
+import { WithTransients } from '../../utils';
+
+export const StyledButton = styled.button<
+  WithTransients<{ isActive: boolean; isIconType: boolean }>
+>`
   align-items: center;
   appearance: none;
-  background-color: ${({ isActive, theme }) =>
-    isActive ? theme.colors.primary20 : theme.colors.white};
+  background-color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colors.primary20 : theme.colors.white};
   border: 1px solid
-    ${({ theme, isActive }) => (isActive ? theme.colors.primary30 : theme.colors.secondary30)};
+    ${({ theme, $isActive }) => ($isActive ? theme.colors.primary30 : theme.colors.secondary30)};
   border-radius: 0;
-  color: ${({ isActive, theme }) => (isActive ? theme.colors.primary60 : theme.colors.secondary60)};
+  color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colors.primary60 : theme.colors.secondary60};
   cursor: pointer;
   flex: none;
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
@@ -37,8 +42,8 @@ export const StyledButton = styled.button<{ isActive: boolean; isIconType: boole
     z-index: 999;
   }
 
-  ${({ isActive, theme }) =>
-    isActive
+  ${({ $isActive, theme }) =>
+    $isActive
       ? `
     z-index: 1;
     `
@@ -68,8 +73,8 @@ export const StyledButton = styled.button<{ isActive: boolean; isIconType: boole
     `}
   }
 
-  ${({ isIconType }) =>
-    isIconType &&
+  ${({ $isIconType }) =>
+    $isIconType &&
     `
     display: flex;
     width: 36px;
