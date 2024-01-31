@@ -25,7 +25,7 @@ exports[`render Switch checked 1`] = `
   width: 1px;
 }
 
-.c2:focus + label::before {
+.c2:focus+label::before {
   box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
 }
 
@@ -64,13 +64,13 @@ exports[`render Switch checked 1`] = `
   width: 1.5rem;
 }
 
-@media (min-width:0px) {
+@media (min-width: 0px) {
   .c1 {
     flex-direction: column;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c1 {
     flex-direction: row;
   }
@@ -118,7 +118,7 @@ exports[`render Switch disabled checked 1`] = `
   width: 1px;
 }
 
-.c2:focus + label::before {
+.c2:focus+label::before {
   box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
 }
 
@@ -167,13 +167,13 @@ exports[`render Switch disabled checked 1`] = `
   cursor: not-allowed;
 }
 
-@media (min-width:0px) {
+@media (min-width: 0px) {
   .c1 {
     flex-direction: column;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c1 {
     flex-direction: row;
   }
@@ -223,7 +223,7 @@ exports[`render Switch disabled unchecked 1`] = `
   width: 1px;
 }
 
-.c2:focus + label::before {
+.c2:focus+label::before {
   box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
 }
 
@@ -273,13 +273,13 @@ exports[`render Switch disabled unchecked 1`] = `
   transform: translateX(-100%);
 }
 
-@media (min-width:0px) {
+@media (min-width: 0px) {
   .c1 {
     flex-direction: column;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c1 {
     flex-direction: row;
   }
@@ -328,7 +328,7 @@ exports[`render Switch unchecked 1`] = `
   width: 1px;
 }
 
-.c2:focus + label::before {
+.c2:focus+label::before {
   box-shadow: 0px 0px 0px 4px rgba(60,100,244,0.2);
 }
 
@@ -368,13 +368,13 @@ exports[`render Switch unchecked 1`] = `
   transform: translateX(-100%);
 }
 
-@media (min-width:0px) {
+@media (min-width: 0px) {
   .c1 {
     flex-direction: column;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c1 {
     flex-direction: row;
   }
