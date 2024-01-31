@@ -21,11 +21,7 @@ exports[`render open modal 1`] = `
 }
 
 .c2 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -271,11 +267,7 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 .c2 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -576,14 +568,6 @@ exports[`renders destructive action button 1`] = `
   grid-gap: 0.5rem;
 }
 
-@media (min-width: 0px) {
-
-}
-
-@media (min-width: 720px) {
-
-}
-
 @media (min-width: 720px) {
 
 }
@@ -702,14 +686,6 @@ exports[`renders secondary action button 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
-}
-
-@media (min-width: 0px) {
-
-}
-
-@media (min-width: 720px) {
-
 }
 
 @media (min-width: 720px) {
