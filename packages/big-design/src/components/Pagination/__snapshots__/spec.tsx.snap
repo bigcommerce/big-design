@@ -23,11 +23,7 @@ exports[`render pagination component 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -372,11 +368,7 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -721,11 +713,7 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -1071,11 +1059,7 @@ exports[`render pagination component with no items 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
