@@ -146,7 +146,7 @@ const InternalTreeNode = <T,>({
   const renderedChildren = useMemo(
     () =>
       children && (
-        <StyledUl role="group" show={isExpanded}>
+        <StyledUl $show={isExpanded} role="group">
           {children.map((child, index) => (
             <TreeNode {...child} key={index} />
           ))}
@@ -226,10 +226,10 @@ const InternalTreeNode = <T,>({
           {renderedSelectable}
           {renderedIcon}
           <StyledText
+            $ellipsis
+            $marginLeft="xxSmall"
             as="span"
             color={isDisabled ? 'secondary50' : 'secondary70'}
-            ellipsis
-            marginLeft="xxSmall"
           >
             {label}
             {selectedChildrenCount ? (

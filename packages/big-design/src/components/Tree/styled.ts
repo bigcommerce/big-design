@@ -1,7 +1,9 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { css, styled } from 'styled-components';
 
-export const StyledUl = styled.ul<{ show?: boolean }>`
+import { WithTransients } from '../../utils';
+
+export const StyledUl = styled.ul<WithTransients<{ show?: boolean }>>`
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -12,8 +14,8 @@ export const StyledUl = styled.ul<{ show?: boolean }>`
       theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.xxSmall)};
   }
 
-  ${({ show }) =>
-    show === false &&
+  ${({ $show }) =>
+    $show === false &&
     css`
       display: none;
     `}
