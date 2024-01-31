@@ -17,11 +17,8 @@ exports[`dropdown is not visible if items fit 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -315,11 +312,8 @@ exports[`it renders the given tabs 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -613,11 +607,8 @@ exports[`only the pills that fit are visible 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -943,11 +934,8 @@ exports[`only the pills that fit are visible 2 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -1272,11 +1260,8 @@ exports[`renders all the filters if they fit 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
@@ -1600,11 +1585,8 @@ exports[`renders dropdown if items do not fit 1`] = `
 }
 
 .c1 {
-  align-content: stretch;
-  align-items: stretch;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   display: flex;
 }
 
