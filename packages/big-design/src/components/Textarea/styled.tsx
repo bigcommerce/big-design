@@ -2,6 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { css, styled } from 'styled-components';
 
 import { withTransition } from '../../mixins/transitions';
+import { WithTransients } from '../../utils';
 
 import { TextareaProps } from './Textarea';
 
@@ -11,7 +12,7 @@ export const StyledTextareaWrapper = styled.span<TextareaProps>`
   position: relative;
 `;
 
-export const StyledTextarea = styled.textarea<TextareaProps>`
+export const StyledTextarea = styled.textarea<WithTransients<TextareaProps>>`
   ${withTransition(['border', 'box-shadow'])}
 
   background-color: ${({ theme }) => theme.colors.white};
@@ -23,8 +24,8 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
   padding: ${({ theme }) => `${theme.spacing.xxSmall} ${theme.spacing.small}`};
   width: 100%;
 
-  ${({ resize }) =>
-    resize
+  ${({ $resize }) =>
+    $resize
       ? css`
           resize: vertical;
         `
@@ -32,14 +33,14 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
           resize: none;
         `};
 
-  ${({ error, theme }) =>
+  ${({ $error, theme }) =>
     css`
-      border: ${error ? theme.border.boxError : theme.border.box};
+      border: ${$error ? theme.border.boxError : theme.border.box};
     `};
 
   &:hover:not([disabled]) {
-    ${({ error, theme }) =>
-      error
+    ${({ $error, theme }) =>
+      $error
         ? css`
             border: ${theme.border.boxError};
           `
@@ -51,7 +52,7 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
   &:focus {
     outline: none;
     box-shadow: 0 0 0 4px
-      ${(props) => (props.error ? props.theme.colors.danger20 : props.theme.colors.primary20)};
+      ${(props) => (props.$error ? props.theme.colors.danger20 : props.theme.colors.primary20)};
   }
 
   &[disabled] {

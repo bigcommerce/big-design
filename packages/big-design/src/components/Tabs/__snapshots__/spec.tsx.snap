@@ -53,7 +53,7 @@ exports[`render Tabs 1`] = `
   pointer-events: none;
 }
 
-.c3 + .bd-button {
+.c3+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -96,14 +96,14 @@ exports[`render Tabs 1`] = `
   width: auto;
 }
 
-@media (min-width:720px) {
-  .c3 + .bd-button {
+@media (min-width: 720px) {
+  .c3+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c3 {
     width: auto;
   }
@@ -197,7 +197,7 @@ exports[`render Tabs with disabled item 1`] = `
   pointer-events: none;
 }
 
-.c3 + .bd-button {
+.c3+.bd-button {
   margin-top: 0.5rem;
 }
 
@@ -240,14 +240,14 @@ exports[`render Tabs with disabled item 1`] = `
   width: auto;
 }
 
-@media (min-width:720px) {
-  .c3 + .bd-button {
+@media (min-width: 720px) {
+  .c3+.bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
-@media (min-width:720px) {
+@media (min-width: 720px) {
   .c3 {
     width: auto;
   }

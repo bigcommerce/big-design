@@ -8,7 +8,7 @@ import React, {
   useMemo,
 } from 'react';
 
-import { typedMemo, warning } from '../../utils';
+import { typedMemo, warning, withTransients } from '../../utils';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
 import { InputLocalization } from '../Input/Input';
@@ -16,17 +16,17 @@ import { InputLocalization } from '../Input/Input';
 import { StyledTextarea, StyledTextareaWrapper } from './styled';
 
 export interface Props {
-  description?: React.ReactChild;
-  error?: React.ReactNode | React.ReactNode[];
-  label?: React.ReactChild;
-  labelId?: string;
-  localization?: InputLocalization;
-  rows?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
-  resize?: boolean;
+  readonly description?: React.ReactChild;
+  readonly error?: React.ReactNode | React.ReactNode[];
+  readonly label?: React.ReactChild;
+  readonly labelId?: string;
+  readonly localization?: InputLocalization;
+  readonly rows?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
+  readonly resize?: boolean;
 }
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLTextAreaElement>;
+  readonly forwardedRef: Ref<HTMLTextAreaElement>;
 }
 
 export type TextareaProps = Props & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
@@ -101,11 +101,11 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
       {renderedDescription}
       <StyledTextareaWrapper>
         <StyledTextarea
-          {...props}
-          error={errors}
+          {...withTransients(props)}
+          $error={errors}
+          $resize={resize}
           id={id}
           ref={forwardedRef}
-          resize={resize}
           rows={numOfRows}
         />
       </StyledTextareaWrapper>
