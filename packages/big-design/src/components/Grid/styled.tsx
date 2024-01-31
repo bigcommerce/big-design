@@ -2,13 +2,16 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { styled } from 'styled-components';
 
 import { withDisplay } from '../../mixins';
-import { Box } from '../Box';
+import { WithTransients } from '../../utils';
+import { StyledBox } from '../Box/styled';
 
 import { GridProps } from './Grid';
 import { withGridedContainer } from './withGrid';
 
 // TODO: Remove the `forwardedAs` manual prop definition when @types get updated
-export const StyledGrid = styled(Box)<GridProps & { forwardedAs?: GridProps['as'] }>`
+export const StyledGrid = styled(StyledBox)<
+  WithTransients<GridProps & { forwardedAs?: GridProps['as'] }>
+>`
   ${withGridedContainer()}
 
   display: grid;
@@ -16,4 +19,4 @@ export const StyledGrid = styled(Box)<GridProps & { forwardedAs?: GridProps['as'
   ${withDisplay()}
 `;
 
-StyledGrid.defaultProps = { theme: defaultTheme, gridGap: defaultTheme.spacing.medium };
+StyledGrid.defaultProps = { theme: defaultTheme, $gridGap: defaultTheme.spacing.medium };
