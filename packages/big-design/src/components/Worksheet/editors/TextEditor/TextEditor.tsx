@@ -7,13 +7,13 @@ import { Cell, WorksheetItem } from '../../types';
 import { StyledInput } from './styled';
 
 export interface TextEditorProps<Item> {
-  cell: Cell<Item>;
-  initialValue?: string;
-  isEdited: boolean;
+  readonly cell: Cell<Item>;
+  readonly initialValue?: string;
+  readonly isEdited: boolean;
   onBlur(event?: React.FocusEvent<HTMLInputElement>, cell?: Cell<Item>): void;
-  onKeyDown: EditableCellOnKeyDown;
-  isMetaKey: boolean;
-  isControlKey: boolean;
+  readonly onKeyDown: EditableCellOnKeyDown;
+  readonly isMetaKey: boolean;
+  readonly isControlKey: boolean;
 }
 
 const InternalTextEditor = <T extends WorksheetItem>({
@@ -60,8 +60,8 @@ const InternalTextEditor = <T extends WorksheetItem>({
 
   return (
     <StyledInput
+      $isEdited={isEdited}
       autoFocus
-      isEdited={isEdited}
       onBlur={(event?: React.FocusEvent<HTMLInputElement>) => {
         if (!isBlurBlocked.current) {
           onBlur(event, cell);

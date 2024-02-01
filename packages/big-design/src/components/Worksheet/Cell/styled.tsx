@@ -1,6 +1,7 @@
 import { Colors, theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { css, styled } from 'styled-components';
 
+import { WithTransients } from '../../../utils';
 import { Cell, WorksheetItem } from '../types';
 
 interface StyledCellProps<Item> {
@@ -15,7 +16,7 @@ interface StyledCellProps<Item> {
   type: Cell<Item>['type'];
 }
 
-export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
+export const StyledCell = styled.td<WithTransients<StyledCellProps<WorksheetItem>>>`
   position: relative;
   background-color: ${({ theme }) => theme.colors.inherit};
   border: ${({ theme }) => `${theme.helpers.remCalc(0.5)} solid ${theme.colors.secondary30}`};
@@ -46,37 +47,37 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
         `${theme.colors.white} ${theme.colors.white} ${theme.colors.white} ${theme.colors.secondary30}`};
     `}
 
-  ${({ type, isChild }) =>
+  ${({ type, $isChild }) =>
     type === 'toggle' &&
-    !isChild &&
+    !$isChild &&
     css`
       border-color: ${({ theme }) =>
         `${theme.colors.secondary30} ${theme.colors.white} ${theme.colors.secondary30} ${theme.colors.secondary30}`};
     `}
 
 
-    ${({ type, isLastChild }) =>
+    ${({ type, $isLastChild }) =>
     type === 'toggle' &&
-    isLastChild &&
+    $isLastChild &&
     css`
       border-bottom-color: ${({ theme }) => `${theme.colors.secondary30}`};
     `}
 
-  ${({ type, isSelected, isFirstSelected, isLastSelected, isNextCellValid }) =>
-    isSelected &&
+  ${({ type, $isSelected, $isFirstSelected, $isLastSelected, $isNextCellValid }) =>
+    $isSelected &&
     type !== 'toggle' &&
     css`
       border: ${({ theme }) => `${theme.helpers.remCalc(0.5)} double ${theme.colors.primary}`};
 
       border-top-color: ${({ theme }) =>
-        `${isFirstSelected ? theme.colors.primary : theme.colors.secondary30}`};
+        `${$isFirstSelected ? theme.colors.primary : theme.colors.secondary30}`};
       border-bottom-color: ${({ theme }) => {
-        if (!isNextCellValid && !isLastSelected) {
+        if (!$isNextCellValid && !$isLastSelected) {
           return theme.colors.danger;
         }
 
         return `${
-          isFirstSelected || isLastSelected ? theme.colors.primary : theme.colors.secondary30
+          $isFirstSelected || $isLastSelected ? theme.colors.primary : theme.colors.secondary30
         }`;
       }};
       ${AutoFillHandler} {
@@ -84,14 +85,14 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
       }
     `}
 
-  ${({ isValid }) =>
-    !isValid &&
+  ${({ $isValid }) =>
+    !$isValid &&
     css`
       border: ${({ theme }) => `${theme.helpers.remCalc(0.5)} double ${theme.colors.danger}`};
     `}
 
-  ${({ isEdited }) =>
-    isEdited &&
+  ${({ $isEdited }) =>
+    $isEdited &&
     css`
       background-color: ${({ theme }) => theme.colors.warning10};
     `}
@@ -103,15 +104,15 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
     margin: 0;
   }
 
-  ${({ type, isChild, isLastChild }) =>
+  ${({ type, $isChild, $isLastChild }) =>
     type === 'toggle' &&
-    isChild &&
+    $isChild &&
     css`
       &::before {
         content: '';
         display: block;
         top: 0;
-        height: ${isLastChild ? '50%' : '100%'};
+        height: ${$isLastChild ? '50%' : '100%'};
         left: 50%;
         width: ${({ theme }) => `${theme.helpers.remCalc(1)}`};
         position: absolute;
@@ -130,16 +131,16 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
     `}
 `;
 
-export const AutoFillHandler = styled.div<{ isVisible: boolean }>`
+export const AutoFillHandler = styled.div<WithTransients<{ isVisible: boolean }>>`
   position: absolute;
-  border: ${({ theme, isVisible }) =>
+  border: ${({ theme, $isVisible }) =>
     `${theme.helpers.remCalc(1)} solid ${
-      isVisible ? theme.colors.white : theme.colors.transparent
+      $isVisible ? theme.colors.white : theme.colors.transparent
     }`};
   height: ${({ theme }) => `${theme.helpers.remCalc(6)}`};
   width: ${({ theme }) => `${theme.helpers.remCalc(6)}`};
-  background-color: ${({ theme, isVisible }) =>
-    isVisible ? theme.colors.primary : theme.colors.transparent};
+  background-color: ${({ theme, $isVisible }) =>
+    $isVisible ? theme.colors.primary : theme.colors.transparent};
   right: -${({ theme }) => `${theme.helpers.remCalc(4)}`};
   bottom: -${({ theme }) => `${theme.helpers.remCalc(4)}`};
   z-index: 100;

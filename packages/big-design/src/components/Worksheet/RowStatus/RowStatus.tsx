@@ -24,5 +24,5 @@ export const RowStatus: React.FC<RowStatusProps> = memo(({ rowIndex }) => {
     ),
   );
 
-  return <Status isInvalid={isInvalid} isSelected={isSelected} />;
+  return <Status $isInvalid={isInvalid} $isSelected={isSelected} />;
 });

@@ -138,7 +138,7 @@ const InternalWorksheet = typedMemo(
           <tr>
             <Status />
             {expandedColumns.map((column, index) => (
-              <Header columnType={column.type} columnWidth={column.width || 'auto'} key={index}>
+              <Header $columnType={column.type} $columnWidth={column.width || 'auto'} key={index}>
                 {column.header} {getRenderedTooltip(column.tooltip)}
               </Header>
             ))}
@@ -176,9 +176,9 @@ const InternalWorksheet = typedMemo(
       <UpdateItemsProvider items={rows}>
         <StyledBox>
           <Table
-            hasExpandableRows={Boolean(expandableRows)}
-            hasStaticWidth={tableHasStaticWidth}
-            minWidth={minWidth}
+            $hasExpandableRows={Boolean(expandableRows)}
+            $hasStaticWidth={tableHasStaticWidth}
+            $minWidth={minWidth}
             onKeyDown={handleKeyDown}
             onKeyUp={handleKeyUp}
             ref={tableRef}
