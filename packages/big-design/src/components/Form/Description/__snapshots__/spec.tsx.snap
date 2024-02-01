@@ -38,15 +38,12 @@ exports[`renders description with link 1`] = `
 }
 
 .c1 {
-  -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
-  -webkit-transition-property: color;
   transition-property: color;
   color: #3C64F4;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 400;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 

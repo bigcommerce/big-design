@@ -2,21 +2,13 @@
 
 exports[`renders all together 1`] = `
 .c3 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   position: relative;
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border,box-shadow;
   transition-property: border,box-shadow;
   background-color: #FFFFFF;
   border-radius: 0.25rem;
@@ -41,24 +33,6 @@ exports[`renders all together 1`] = `
 
 .c4[disabled] {
   background-color: #ECEEF5;
-}
-
-.c4::-webkit-input-placeholder {
-  color: #B4BAD1;
-  line-height: 1.5rem;
-  font-size: 1rem;
-}
-
-.c4::-moz-placeholder {
-  color: #B4BAD1;
-  line-height: 1.5rem;
-  font-size: 1rem;
-}
-
-.c4:-ms-input-placeholder {
-  color: #B4BAD1;
-  line-height: 1.5rem;
-  font-size: 1rem;
 }
 
 .c4::placeholder {

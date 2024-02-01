@@ -15,16 +15,10 @@ exports[`isLoading render loading button 1`] = `
 .c6 {
   stroke-dasharray: 43.982297150257104 43.982297150257104;
   stroke: #3C64F4;
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-  -webkit-animation: fxwtRW 1s ease-out infinite;
   animation: fxwtRW 1s ease-out infinite;
   stroke-dashoffset: 43.982297150257104;
-  -webkit-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  -webkit-transition: stroke-dashoffset 0.35s;
   transition: stroke-dashoffset 0.35s;
 }
 
@@ -33,66 +27,34 @@ exports[`isLoading render loading button 1`] = `
 }
 
 .c2 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -132,12 +94,7 @@ exports[`isLoading render loading button 1`] = `
 }
 
 .c7 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -151,16 +108,12 @@ exports[`isLoading render loading button 1`] = `
 
 @media (min-width:0px) {
   .c2 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
   }
 }
 
 @media (min-width:720px) {
   .c2 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
   }
 }
@@ -213,45 +166,26 @@ exports[`isLoading render loading button 1`] = `
 
 exports[`render default button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -291,12 +225,7 @@ exports[`render default button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -329,45 +258,26 @@ exports[`render default button 1`] = `
 
 exports[`render destructive button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -407,12 +317,7 @@ exports[`render destructive button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -445,45 +350,26 @@ exports[`render destructive button 1`] = `
 
 exports[`render destructive disabled button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -523,12 +409,7 @@ exports[`render destructive disabled button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -562,45 +443,26 @@ exports[`render destructive disabled button 1`] = `
 
 exports[`render disabled button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -640,12 +502,7 @@ exports[`render disabled button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -685,45 +542,26 @@ exports[`render icon left and right button 1`] = `
 }
 
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -765,12 +603,7 @@ exports[`render icon left and right button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -845,45 +678,26 @@ exports[`render icon left button 1`] = `
 }
 
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -924,12 +738,7 @@ exports[`render icon left button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -986,45 +795,26 @@ exports[`render icon only button 1`] = `
 }
 
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1064,12 +854,7 @@ exports[`render icon only button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -1127,45 +912,26 @@ exports[`render icon right button 1`] = `
 }
 
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1206,12 +972,7 @@ exports[`render icon right button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -1262,45 +1023,26 @@ exports[`render icon right button 1`] = `
 
 exports[`render secondary button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1340,12 +1082,7 @@ exports[`render secondary button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -1378,45 +1115,26 @@ exports[`render secondary button 1`] = `
 
 exports[`render secondary destructive button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1456,12 +1174,7 @@ exports[`render secondary destructive button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -1494,45 +1207,26 @@ exports[`render secondary destructive button 1`] = `
 
 exports[`render secondary destructive disabled button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1572,12 +1266,7 @@ exports[`render secondary destructive disabled button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -1611,45 +1300,26 @@ exports[`render secondary destructive disabled button 1`] = `
 
 exports[`render secondary disabled button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1689,12 +1359,7 @@ exports[`render secondary disabled button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -1728,45 +1393,26 @@ exports[`render secondary disabled button 1`] = `
 
 exports[`render subtle button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1807,12 +1453,7 @@ exports[`render subtle button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -1845,45 +1486,26 @@ exports[`render subtle button 1`] = `
 
 exports[`render subtle destructive button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -1924,12 +1546,7 @@ exports[`render subtle destructive button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -1962,45 +1579,26 @@ exports[`render subtle destructive button 1`] = `
 
 exports[`render subtle destructive disabled button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -2041,12 +1639,7 @@ exports[`render subtle destructive disabled button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -2080,45 +1673,26 @@ exports[`render subtle destructive disabled button 1`] = `
 
 exports[`render subtle disabled button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -2159,12 +1733,7 @@ exports[`render subtle disabled button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -2198,45 +1767,26 @@ exports[`render subtle disabled button 1`] = `
 
 exports[`render utility button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -2280,12 +1830,7 @@ exports[`render utility button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -2318,45 +1863,26 @@ exports[`render utility button 1`] = `
 
 exports[`render utility destructive button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -2400,12 +1926,7 @@ exports[`render utility destructive button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -2438,45 +1959,26 @@ exports[`render utility destructive button 1`] = `
 
 exports[`render utility destructive disabled button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -2520,12 +2022,7 @@ exports[`render utility destructive disabled button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -2559,45 +2056,26 @@ exports[`render utility destructive disabled button 1`] = `
 
 exports[`render utility disabled button 1`] = `
 .c0 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -2641,12 +2119,7 @@ exports[`render utility disabled button 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;

@@ -6,29 +6,15 @@ exports[`render Switch checked 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -44,9 +30,7 @@ exports[`render Switch checked 1`] = `
 }
 
 .c3 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background,border-color;
   transition-property: background,border-color;
   background: #9EB3FC;
   border-color: #9EB3FC;
@@ -66,10 +50,7 @@ exports[`render Switch checked 1`] = `
 }
 
 .c3::before {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background,-webkit-transform;
-  -webkit-transition-property: background,transform;
   transition-property: background,transform;
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
@@ -85,16 +66,12 @@ exports[`render Switch checked 1`] = `
 
 @media (min-width:0px) {
   .c1 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
   }
 }
 
 @media (min-width:720px) {
   .c1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
   }
 }
@@ -122,29 +99,15 @@ exports[`render Switch disabled checked 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -160,9 +123,7 @@ exports[`render Switch disabled checked 1`] = `
 }
 
 .c3 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background,border-color;
   transition-property: background,border-color;
   background: #9EB3FC;
   border-color: #9EB3FC;
@@ -190,10 +151,7 @@ exports[`render Switch disabled checked 1`] = `
 }
 
 .c3::before {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background,-webkit-transform;
-  -webkit-transition-property: background,transform;
   transition-property: background,transform;
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
@@ -211,16 +169,12 @@ exports[`render Switch disabled checked 1`] = `
 
 @media (min-width:0px) {
   .c1 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
   }
 }
 
 @media (min-width:720px) {
   .c1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
   }
 }
@@ -250,29 +204,15 @@ exports[`render Switch disabled unchecked 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -288,9 +228,7 @@ exports[`render Switch disabled unchecked 1`] = `
 }
 
 .c3 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background,border-color;
   transition-property: background,border-color;
   background: #D9DCE9;
   border-color: #D9DCE9;
@@ -318,10 +256,7 @@ exports[`render Switch disabled unchecked 1`] = `
 }
 
 .c3::before {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background,-webkit-transform;
-  -webkit-transition-property: background,transform;
   transition-property: background,transform;
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
@@ -335,23 +270,17 @@ exports[`render Switch disabled unchecked 1`] = `
   width: 1.5rem;
   background: #F6F7FC;
   cursor: not-allowed;
-  -webkit-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
   transform: translateX(-100%);
 }
 
 @media (min-width:0px) {
   .c1 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
   }
 }
 
 @media (min-width:720px) {
   .c1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
   }
 }
@@ -380,29 +309,15 @@ exports[`render Switch unchecked 1`] = `
 }
 
 .c1 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -418,9 +333,7 @@ exports[`render Switch unchecked 1`] = `
 }
 
 .c3 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background,border-color;
   transition-property: background,border-color;
   background: #D9DCE9;
   border-color: #D9DCE9;
@@ -440,10 +353,7 @@ exports[`render Switch unchecked 1`] = `
 }
 
 .c3::before {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background,-webkit-transform;
-  -webkit-transition-property: background,transform;
   transition-property: background,transform;
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
@@ -455,23 +365,17 @@ exports[`render Switch unchecked 1`] = `
   position: absolute;
   top: -0.3125rem;
   width: 1.5rem;
-  -webkit-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
   transform: translateX(-100%);
 }
 
 @media (min-width:0px) {
   .c1 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
   }
 }
 
 @media (min-width:720px) {
   .c1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
   }
 }

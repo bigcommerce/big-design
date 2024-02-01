@@ -23,19 +23,12 @@ exports[`render Radio (checked + disabled) 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -47,9 +40,7 @@ exports[`render Radio (checked + disabled) 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,box-shadow;
   transition-property: border-color,box-shadow;
   background-color: #F6F7FC;
   border: 1px solid #D9DCE9;
@@ -58,14 +49,9 @@ exports[`render Radio (checked + disabled) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   height: 1.25rem;
   position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
   cursor: not-allowed;
@@ -77,9 +63,7 @@ exports[`render Radio (checked + disabled) 1`] = `
 }
 
 .c4:after {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: opacity;
   transition-property: opacity;
   background-color: #B4BAD1;
   border-radius: 50%;
@@ -89,8 +73,6 @@ exports[`render Radio (checked + disabled) 1`] = `
   opacity: 0;
   position: absolute;
   top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   width: 0.75rem;
 }
@@ -155,19 +137,12 @@ exports[`render Radio (checked) 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -179,9 +154,7 @@ exports[`render Radio (checked) 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,box-shadow;
   transition-property: border-color,box-shadow;
   background-color: #FFFFFF;
   border: 1px solid #D9DCE9;
@@ -190,14 +163,9 @@ exports[`render Radio (checked) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   height: 1.25rem;
   position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }
@@ -211,9 +179,7 @@ exports[`render Radio (checked) 1`] = `
 }
 
 .c4:after {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: opacity;
   transition-property: opacity;
   background-color: #3C64F4;
   border-radius: 50%;
@@ -223,8 +189,6 @@ exports[`render Radio (checked) 1`] = `
   opacity: 0;
   position: absolute;
   top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   width: 0.75rem;
 }
@@ -291,15 +255,12 @@ exports[`render Radio (unchecked + description object) 1`] = `
 }
 
 .c9 {
-  -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
-  -webkit-transition-property: color;
   transition-property: color;
   color: #3C64F4;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 400;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -324,19 +285,12 @@ exports[`render Radio (unchecked + description object) 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -348,9 +302,7 @@ exports[`render Radio (unchecked + description object) 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,box-shadow;
   transition-property: border-color,box-shadow;
   background-color: #FFFFFF;
   border: 1px solid #D9DCE9;
@@ -359,14 +311,9 @@ exports[`render Radio (unchecked + description object) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   height: 1.25rem;
   position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }
@@ -380,9 +327,7 @@ exports[`render Radio (unchecked + description object) 1`] = `
 }
 
 .c4:after {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: opacity;
   transition-property: opacity;
   background-color: #3C64F4;
   border-radius: 50%;
@@ -392,8 +337,6 @@ exports[`render Radio (unchecked + description object) 1`] = `
   opacity: 0;
   position: absolute;
   top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   width: 0.75rem;
 }
@@ -476,19 +419,12 @@ exports[`render Radio (unchecked + description text) 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -500,9 +436,7 @@ exports[`render Radio (unchecked + description text) 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,box-shadow;
   transition-property: border-color,box-shadow;
   background-color: #FFFFFF;
   border: 1px solid #D9DCE9;
@@ -511,14 +445,9 @@ exports[`render Radio (unchecked + description text) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   height: 1.25rem;
   position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }
@@ -532,9 +461,7 @@ exports[`render Radio (unchecked + description text) 1`] = `
 }
 
 .c4:after {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: opacity;
   transition-property: opacity;
   background-color: #3C64F4;
   border-radius: 50%;
@@ -544,8 +471,6 @@ exports[`render Radio (unchecked + description text) 1`] = `
   opacity: 0;
   position: absolute;
   top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   width: 0.75rem;
 }
@@ -607,19 +532,12 @@ exports[`render Radio (unchecked + disabled) 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -631,9 +549,7 @@ exports[`render Radio (unchecked + disabled) 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,box-shadow;
   transition-property: border-color,box-shadow;
   background-color: #F6F7FC;
   border: 1px solid #D9DCE9;
@@ -642,14 +558,9 @@ exports[`render Radio (unchecked + disabled) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   height: 1.25rem;
   position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
   cursor: not-allowed;
@@ -661,9 +572,7 @@ exports[`render Radio (unchecked + disabled) 1`] = `
 }
 
 .c4:after {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: opacity;
   transition-property: opacity;
   background-color: #B4BAD1;
   border-radius: 50%;
@@ -673,8 +582,6 @@ exports[`render Radio (unchecked + disabled) 1`] = `
   opacity: 0;
   position: absolute;
   top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   width: 0.75rem;
 }
@@ -734,19 +641,12 @@ exports[`render Radio (unchecked) 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -758,9 +658,7 @@ exports[`render Radio (unchecked) 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,box-shadow;
   transition-property: border-color,box-shadow;
   background-color: #FFFFFF;
   border: 1px solid #D9DCE9;
@@ -769,14 +667,9 @@ exports[`render Radio (unchecked) 1`] = `
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   height: 1.25rem;
   position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }
@@ -790,9 +683,7 @@ exports[`render Radio (unchecked) 1`] = `
 }
 
 .c4:after {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: opacity;
   transition-property: opacity;
   background-color: #3C64F4;
   border-radius: 50%;
@@ -802,8 +693,6 @@ exports[`render Radio (unchecked) 1`] = `
   opacity: 0;
   position: absolute;
   top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   width: 0.75rem;
 }

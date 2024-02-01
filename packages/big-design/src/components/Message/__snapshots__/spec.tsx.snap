@@ -431,69 +431,35 @@ exports[`renders actions 1`] = `
 }
 
 .c10 {
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
   align-items: stretch;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
   justify-content: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c12 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -539,12 +505,7 @@ exports[`renders actions 1`] = `
 }
 
 .c13 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -703,45 +664,26 @@ exports[`renders close button 1`] = `
 }
 
 .c9 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: background-color,border-color,box-shadow,color;
   transition-property: background-color,border-color,box-shadow,color;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: 1px solid #D9DCE9;
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex: none;
-  -ms-flex: none;
   flex: none;
   font-size: 1rem;
   font-weight: 400;
   height: 2.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   line-height: 2rem;
   outline: none;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -781,12 +723,7 @@ exports[`renders close button 1`] = `
 }
 
 .c11 {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
   align-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   display: inline-grid;
   grid-auto-flow: column;
@@ -1115,23 +1052,14 @@ exports[`renders with external link 1`] = `
 }
 
 .c9 {
-  -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
-  -webkit-transition-property: color;
   transition-property: color;
   color: #3C64F4;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 400;
-  -webkit-text-decoration: none;
   text-decoration: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -1144,8 +1072,6 @@ exports[`renders with external link 1`] = `
 }
 
 .c9 svg {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
   margin-left: 0.25rem;
 }
@@ -1287,15 +1213,12 @@ exports[`renders with link 1`] = `
 }
 
 .c9 {
-  -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
-  -webkit-transition-property: color;
   transition-property: color;
   color: #3C64F4;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 400;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 

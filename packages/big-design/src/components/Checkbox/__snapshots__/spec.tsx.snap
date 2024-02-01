@@ -28,19 +28,12 @@ exports[`render Checkbox checked 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -52,13 +45,8 @@ exports[`render Checkbox checked 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
   transition-property: border-color,background,box-shadow,color,opacity;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background: #3C64F4;
   box-sizing: border-box;
@@ -67,20 +55,11 @@ exports[`render Checkbox checked 1`] = `
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 0.125rem;
   margin-top: 0.125rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }
@@ -175,19 +154,12 @@ exports[`render Checkbox disabled checked 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -199,13 +171,8 @@ exports[`render Checkbox disabled checked 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
   transition-property: border-color,background,box-shadow,color,opacity;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background: #3C64F4;
   box-sizing: border-box;
@@ -214,20 +181,11 @@ exports[`render Checkbox disabled checked 1`] = `
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 0.125rem;
   margin-top: 0.125rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
   background: #D9DCE9;
@@ -325,19 +283,12 @@ exports[`render Checkbox disabled indeterminate 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -349,13 +300,8 @@ exports[`render Checkbox disabled indeterminate 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
   transition-property: border-color,background,box-shadow,color,opacity;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background: #3C64F4;
   box-sizing: border-box;
@@ -364,20 +310,11 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 0.125rem;
   margin-top: 0.125rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
   background: #D9DCE9;
@@ -473,19 +410,12 @@ exports[`render Checkbox disabled unchecked 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -497,13 +427,8 @@ exports[`render Checkbox disabled unchecked 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
   transition-property: border-color,background,box-shadow,color,opacity;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
   box-sizing: border-box;
@@ -512,20 +437,11 @@ exports[`render Checkbox disabled unchecked 1`] = `
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 0.125rem;
   margin-top: 0.125rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
   background: #F6F7FC;
@@ -621,19 +537,12 @@ exports[`render Checkbox indeterminate 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -645,13 +554,8 @@ exports[`render Checkbox indeterminate 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
   transition-property: border-color,background,box-shadow,color,opacity;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background: #3C64F4;
   box-sizing: border-box;
@@ -660,20 +564,11 @@ exports[`render Checkbox indeterminate 1`] = `
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 0.125rem;
   margin-top: 0.125rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }
@@ -765,19 +660,12 @@ exports[`render Checkbox unchecked 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -789,13 +677,8 @@ exports[`render Checkbox unchecked 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
   transition-property: border-color,background,box-shadow,color,opacity;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
   box-sizing: border-box;
@@ -804,20 +687,11 @@ exports[`render Checkbox unchecked 1`] = `
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 0.125rem;
   margin-top: 0.125rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }
@@ -920,15 +794,12 @@ exports[`render Checkbox with description object 1`] = `
 }
 
 .c10 {
-  -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
-  -webkit-transition-property: color;
   transition-property: color;
   color: #3C64F4;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 400;
-  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -949,19 +820,12 @@ exports[`render Checkbox with description object 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -973,13 +837,8 @@ exports[`render Checkbox with description object 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
   transition-property: border-color,background,box-shadow,color,opacity;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
   box-sizing: border-box;
@@ -988,20 +847,11 @@ exports[`render Checkbox with description object 1`] = `
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 0.125rem;
   margin-top: 0.125rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }
@@ -1122,19 +972,12 @@ exports[`render Checkbox with description string 1`] = `
 }
 
 .c0 {
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
   align-items: flex-start;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 .c2 {
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -1146,13 +989,8 @@ exports[`render Checkbox with description string 1`] = `
 }
 
 .c4 {
-  -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
-  -webkit-transition-property: border-color,background,box-shadow,color,opacity;
   transition-property: border-color,background,box-shadow,color,opacity;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   background: #FFFFFF;
   box-sizing: border-box;
@@ -1161,20 +999,11 @@ exports[`render Checkbox with description string 1`] = `
   border-radius: 0.25rem;
   color: #FFFFFF;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   height: 1.25rem;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 0.125rem;
   margin-top: 0.125rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 1.25rem;
 }

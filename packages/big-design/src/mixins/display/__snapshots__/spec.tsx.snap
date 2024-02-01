@@ -9,9 +9,6 @@ exports[`responsive display 1`] = `
 
 @media (min-width:720px) {
   .c0 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
   }
 }
