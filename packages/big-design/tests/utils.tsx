@@ -1,13 +1,8 @@
 import { render, RenderOptions } from '@testing-library/react';
-import React, { FC, PropsWithChildren } from 'react';
-import { StyleSheetManager } from 'styled-components';
-
-const WithoutVendorPrefixes: FC<PropsWithChildren> = ({ children }) => (
-  <StyleSheetManager disableVendorPrefixes={true}>{children}</StyleSheetManager>
-);
+import React from 'react';
 
 const customRender = (ui: React.ReactElement<unknown>, options: RenderOptions = {}) =>
-  render(ui, { wrapper: WithoutVendorPrefixes, ...options });
+  render(ui, options);
 
 // re-export everything
 // eslint-disable-next-line import/export
