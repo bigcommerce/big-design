@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 export const StyledInput = styled.input<{ isEdited: boolean }>`
   background-color: ${({ theme }) => theme.colors.inherit};

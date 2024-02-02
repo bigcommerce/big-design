@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import 'jest-styled-components';
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { render } from '@test/utils';
 

@@ -1,6 +1,6 @@
 import { Box, Button, Flex, H1, Panel, Text } from '@bigcommerce/big-design';
 import React, { Fragment, useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import { styled, ThemeContext } from 'styled-components';
 
 import { Code, CodePreview, ContentRoutingTabs, List, NextLink } from '../components';
 
@@ -12,7 +12,7 @@ const BlueBox = styled(Box)(({ theme }) => ({
 }));
 
 const SpacingPage = () => {
-  const { spacing } = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
 
   return (
     <>
@@ -89,14 +89,18 @@ const SpacingPage = () => {
 
       <Panel header="Spacing values" headerId="spacing-values">
         <Flex justifyContent="space-around">
-          {Object.keys(spacing)
-            .reverse()
-            .map((key) => (
-              <Flex alignItems="center" flexDirection="column" key={key} paddingBottom="small">
-                <Code>{key}</Code>
-                <BlueBox marginTop="medium" style={{ width: spacing[key], height: spacing[key] }} />
-              </Flex>
-            ))}
+          {theme &&
+            Object.keys(theme.spacing)
+              .reverse()
+              .map((key) => (
+                <Flex alignItems="center" flexDirection="column" key={key} paddingBottom="small">
+                  <Code>{key}</Code>
+                  <BlueBox
+                    marginTop="medium"
+                    style={{ width: theme.spacing[key], height: theme.spacing[key] }}
+                  />
+                </Flex>
+              ))}
         </Flex>
       </Panel>
     </>

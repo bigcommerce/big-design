@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import { css, DefaultTheme, styled, StyledComponent } from 'styled-components';
 
 import { StyleableH4 } from '../../Typography/private';
 import { HeadingProps } from '../../Typography/types';

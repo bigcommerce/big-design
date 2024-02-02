@@ -1,6 +1,6 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { rgba } from 'polished';
-import styled, { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 import { Flex } from '../Flex';
 

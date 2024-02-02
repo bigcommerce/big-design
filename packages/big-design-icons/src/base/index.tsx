@@ -5,7 +5,7 @@ import {
   ThemeInterface,
 } from '@bigcommerce/big-design-theme';
 import React, { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes, SVGProps } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export interface IconProps extends SVGProps<SVGSVGElement> {
   className?: string;

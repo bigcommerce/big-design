@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import { css, DefaultTheme, styled, StyledComponent } from 'styled-components';
 
 import { getBorderStyle } from '../../utils';
 import { Flex } from '../Flex';

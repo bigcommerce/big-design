@@ -1,5 +1,5 @@
 import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
-import styled, { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 import { withTransition } from '../../../mixins/transitions';
 import { Box } from '../../Box';

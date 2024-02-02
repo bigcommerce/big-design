@@ -1,6 +1,6 @@
 import { Box, Flex, H1, Panel, Text } from '@bigcommerce/big-design';
 import React, { Fragment } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable } from '../components';
 import { BoxPropTable, DisplayPropTable, MarginPropTable, PaddingPropTable } from '../PropTables';

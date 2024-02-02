@@ -1,5 +1,5 @@
 import { FlexItem } from '@bigcommerce/big-design';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const StyledMenu = styled(FlexItem)`
   ${({ theme }) => theme.breakpoints.tablet} {

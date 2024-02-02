@@ -1,4 +1,4 @@
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import { css, DefaultTheme, styled, StyledComponent } from 'styled-components';
 
 import { TextProps } from '../../Typography';
 import { StyleableText } from '../../Typography/private';

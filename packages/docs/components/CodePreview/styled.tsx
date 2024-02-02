@@ -1,5 +1,5 @@
 import { LiveError } from 'react-live';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const StyledLiveError = styled(LiveError)`
   background-color: ${({ theme }) => theme.colors.secondary70};

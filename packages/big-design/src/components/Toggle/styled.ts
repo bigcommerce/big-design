@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const StyledButton = styled.button<{ isActive: boolean; isIconType: boolean }>`
   align-items: center;

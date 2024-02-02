@@ -1,6 +1,6 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { Box } from '../../Box';
 import { Flex } from '../../Flex';

@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const StyledGroupHeader = styled.li<React.HTMLProps<HTMLLIElement>>`
   align-items: center;

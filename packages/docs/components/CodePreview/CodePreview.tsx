@@ -6,7 +6,7 @@ import parser from 'prettier/parser-babel';
 import { format } from 'prettier/standalone';
 import React, { useContext, useEffect, useState } from 'react';
 import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { SnippetControls } from '../SnippetControls';
 import { CodeEditorContext, Language } from '../StoryWrapper/StoryWrapper';

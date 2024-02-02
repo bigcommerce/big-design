@@ -7,7 +7,7 @@ import { Code, CodeSnippet, List } from '../components';
 const CodeSandboxUrl = process.env.CODE_SANDBOX_URL ?? '';
 
 const GettingStartedPage = () => {
-  const { spacing } = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
 
   return (
     <Flex flexDirection="column">
@@ -25,7 +25,7 @@ const GettingStartedPage = () => {
         </FlexItem>
 
         <FlexItem alignSelf="center">
-          <List columnCount={2} columnGap={spacing.xxxLarge}>
+          <List columnCount={2} columnGap={theme?.spacing.xxxLarge}>
             <List.Item>
               <Link href="https://github.com/bigcommerce/big-design" target="_blank">
                 GitHub Repo

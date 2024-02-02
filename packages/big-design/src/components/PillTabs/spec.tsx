@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import 'jest-styled-components';
 import React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { PillTabs, PillTabsProps } from './PillTabs';
 

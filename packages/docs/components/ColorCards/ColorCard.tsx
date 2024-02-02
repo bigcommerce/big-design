@@ -1,6 +1,6 @@
 import { Flex, Link, Small, Text } from '@bigcommerce/big-design';
 import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import { styled, ThemeContext } from 'styled-components';
 
 import { ColorDetails } from './availableColors';
 
@@ -15,10 +15,10 @@ interface ColorCardProps {
 }
 
 const ColorCard: React.FC<ColorCardProps> = ({ colorCard }) => {
-  const { colors } = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   const { description } = colorCard;
-  const colorValue = colors[colorCard.name];
-  const hasHexColor = colorValue.startsWith('#');
+  const colorValue = theme?.colors[colorCard.name];
+  const hasHexColor = colorValue?.startsWith('#');
   const hasSecondaryTextColor = colorCard.secondaryTextColor !== undefined;
 
   const renderContrast = () => {

@@ -1,5 +1,5 @@
 import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { StyleableButton } from '../Button/private';
 import { StyledInput, StyledInputWrapper, StyledInputWrapperProps } from '../Input/private';

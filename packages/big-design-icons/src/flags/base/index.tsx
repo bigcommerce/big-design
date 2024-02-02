@@ -1,6 +1,6 @@
 import { theme as defaultTheme, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes, SVGProps } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export interface FlagIconProps extends SVGProps<SVGSVGElement> {
   size?: keyof Spacing | number;
