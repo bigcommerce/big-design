@@ -1,5 +1,5 @@
 import { em, hideVisually, math, rem, transparentize } from 'polished';
-import { css, FlattenSimpleInterpolation } from 'styled-components';
+import { css, RuleSet } from 'styled-components';
 
 import { themeOptions } from '../options';
 
@@ -8,7 +8,7 @@ export interface Helpers {
   createRGBA(color: string, alpha: number): string;
   remCalc(value: string | number): string;
   emCalc(value: string | number): string;
-  listReset: FlattenSimpleInterpolation;
+  listReset: RuleSet;
   hideVisually: typeof hideVisually;
 }
 

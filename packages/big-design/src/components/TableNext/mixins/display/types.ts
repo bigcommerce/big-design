@@ -1,5 +1,5 @@
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
-import { FlattenSimpleInterpolation } from 'styled-components';
+import { RuleSet } from 'styled-components';
 
 import { ResponsiveProp } from '../../../../types';
 
@@ -13,4 +13,4 @@ export type TableColumnDisplayOverload = (
   displayProp: TableColumnDisplayProp,
   theme: ThemeInterface,
   cssKey: 'display',
-) => FlattenSimpleInterpolation;
+) => RuleSet;

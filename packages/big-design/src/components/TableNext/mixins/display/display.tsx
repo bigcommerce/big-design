@@ -1,5 +1,5 @@
 import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
-import { css, FlattenSimpleInterpolation } from 'styled-components';
+import { css, RuleSet } from 'styled-components';
 
 import { TableColumnDisplayOverload, TableColumnDisplayProps } from './types';
 
@@ -11,7 +11,7 @@ const getDisplayStyles: TableColumnDisplayOverload = (
   displayProp: any,
   theme: ThemeInterface,
   cssKey: any,
-): FlattenSimpleInterpolation => {
+): RuleSet => {
   if (typeof displayProp === 'object') {
     return getResponsiveDisplay(displayProp, theme, cssKey);
   }
@@ -23,10 +23,7 @@ const getDisplayStyles: TableColumnDisplayOverload = (
   return [];
 };
 
-const getSimpleDisplay = (
-  displayProp: string | number,
-  cssKey: string,
-): FlattenSimpleInterpolation => css`
+const getSimpleDisplay = (displayProp: string | number, cssKey: string): RuleSet => css`
   ${cssKey}: ${displayProp}
 `;
 
@@ -34,7 +31,7 @@ const getResponsiveDisplay: TableColumnDisplayOverload = (
   displayProp: any,
   theme: ThemeInterface,
   cssKey: string,
-): FlattenSimpleInterpolation[] => {
+): RuleSet[] => {
   const breakpointKeys = Object.keys(displayProp).sort(
     (firstBreakpoint, secondBreakpoint) =>
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

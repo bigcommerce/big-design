@@ -1,5 +1,5 @@
 import { ThemeInterface } from '@bigcommerce/big-design-theme';
-import { FlattenSimpleInterpolation } from 'styled-components';
+import { RuleSet } from 'styled-components';
 
 import { ResponsiveProp } from '../../types';
 
@@ -98,41 +98,17 @@ export type FlexedItemProps = Partial<{
 }>;
 
 export interface FlexedOverload {
-  (
-    flexedProp: AlignContent,
-    theme: ThemeInterface,
-    cssKey: 'align-content',
-  ): FlattenSimpleInterpolation;
-  (
-    flexedProp: AlignItems,
-    theme: ThemeInterface,
-    cssKey: 'align-items',
-  ): FlattenSimpleInterpolation;
-  (
-    flexedProp: FlexColumnGap,
-    theme: ThemeInterface,
-    cssKey: 'column-gap',
-  ): FlattenSimpleInterpolation;
-  (
-    flexedProp: FlexDirection,
-    theme: ThemeInterface,
-    cssKey: 'flex-direction',
-  ): FlattenSimpleInterpolation;
-  (flexedProp: FlexGap, theme: ThemeInterface, cssKey: 'gap'): FlattenSimpleInterpolation;
-  (flexedProp: FlexRowGap, theme: ThemeInterface, cssKey: 'row-gap'): FlattenSimpleInterpolation;
-  (flexedProp: FlexWrap, theme: ThemeInterface, cssKey: 'flex-wrap'): FlattenSimpleInterpolation;
-  (
-    flexedProp: JustifyContent,
-    theme: ThemeInterface,
-    cssKey: 'justify-content',
-  ): FlattenSimpleInterpolation;
-  (flexedProp: AlignSelf, theme: ThemeInterface, cssKey: 'align-self'): FlattenSimpleInterpolation;
-  (flexedProp: FlexBasis, theme: ThemeInterface, cssKey: 'flex-basis'): FlattenSimpleInterpolation;
-  (flexedProp: FlexGrow, theme: ThemeInterface, cssKey: 'flex-grow'): FlattenSimpleInterpolation;
-  (flexedProp: FlexOrder, theme: ThemeInterface, cssKey: 'order'): FlattenSimpleInterpolation;
-  (
-    flexedProp: FlexShrink,
-    theme: ThemeInterface,
-    cssKey: 'flex-shrink',
-  ): FlattenSimpleInterpolation;
+  (flexedProp: AlignContent, theme: ThemeInterface, cssKey: 'align-content'): RuleSet;
+  (flexedProp: AlignItems, theme: ThemeInterface, cssKey: 'align-items'): RuleSet;
+  (flexedProp: FlexColumnGap, theme: ThemeInterface, cssKey: 'column-gap'): RuleSet;
+  (flexedProp: FlexDirection, theme: ThemeInterface, cssKey: 'flex-direction'): RuleSet;
+  (flexedProp: FlexGap, theme: ThemeInterface, cssKey: 'gap'): RuleSet;
+  (flexedProp: FlexRowGap, theme: ThemeInterface, cssKey: 'row-gap'): RuleSet;
+  (flexedProp: FlexWrap, theme: ThemeInterface, cssKey: 'flex-wrap'): RuleSet;
+  (flexedProp: JustifyContent, theme: ThemeInterface, cssKey: 'justify-content'): RuleSet;
+  (flexedProp: AlignSelf, theme: ThemeInterface, cssKey: 'align-self'): RuleSet;
+  (flexedProp: FlexBasis, theme: ThemeInterface, cssKey: 'flex-basis'): RuleSet;
+  (flexedProp: FlexGrow, theme: ThemeInterface, cssKey: 'flex-grow'): RuleSet;
+  (flexedProp: FlexOrder, theme: ThemeInterface, cssKey: 'order'): RuleSet;
+  (flexedProp: FlexShrink, theme: ThemeInterface, cssKey: 'flex-shrink'): RuleSet;
 }

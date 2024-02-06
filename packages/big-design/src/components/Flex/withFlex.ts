@@ -1,5 +1,5 @@
 import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
-import { css, FlattenSimpleInterpolation } from 'styled-components';
+import { css, RuleSet } from 'styled-components';
 
 import { FlexedItemProps, FlexedOverload, FlexedProps } from './types';
 
@@ -33,7 +33,7 @@ const getFlexedStyles: FlexedOverload = (
   flexedProp: any,
   theme: ThemeInterface,
   cssKey: any,
-): FlattenSimpleInterpolation => {
+): RuleSet => {
   if (typeof flexedProp === 'object') {
     return getResponsiveFlex(flexedProp, theme, cssKey);
   }
@@ -45,18 +45,11 @@ const getFlexedStyles: FlexedOverload = (
   return [];
 };
 
-const getSimpleFlex = (
-  flexedProp: string | number,
-  cssKey: string,
-): FlattenSimpleInterpolation => css`
+const getSimpleFlex = (flexedProp: string | number, cssKey: string): RuleSet => css`
   ${cssKey}: ${flexedProp}
 `;
 
-const getResponsiveFlex = (
-  flexedProp: any,
-  theme: ThemeInterface,
-  cssKey: string,
-): FlattenSimpleInterpolation[] => {
+const getResponsiveFlex = (flexedProp: any, theme: ThemeInterface, cssKey: string): RuleSet[] => {
   const breakpointKeys = Object.keys(flexedProp).sort(
     (firstBreakpoint, secondBreakpoint) =>
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
