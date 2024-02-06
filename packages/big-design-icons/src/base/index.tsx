@@ -5,7 +5,7 @@ import {
   ThemeInterface,
 } from '@bigcommerce/big-design-theme';
 import React, { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes, SVGProps } from 'react';
-import { styled } from 'styled-components';
+import { IStyledComponent, styled } from 'styled-components';
 
 export interface IconProps extends SVGProps<SVGSVGElement> {
   className?: string;
@@ -20,9 +20,14 @@ export interface PrivateIconProps {
   titleId?: string;
 }
 
+type StyledIcon = IStyledComponent<
+  'web',
+  Omit<IconProps, 'ref'> & React.RefAttributes<SVGSVGElement>
+>;
+
 export function createStyledIcon(
   Icon: ForwardRefExoticComponent<PropsWithoutRef<IconProps> & RefAttributes<SVGSVGElement>>,
-) {
+): StyledIcon {
   const StyledIcon = styled(Icon)`
     vertical-align: middle;
 

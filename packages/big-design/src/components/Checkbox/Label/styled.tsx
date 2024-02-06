@@ -1,6 +1,6 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
-import { css, DefaultTheme, styled, StyledComponent } from 'styled-components';
+import { css, IStyledComponent, styled } from 'styled-components';
 
 import { StyleableText } from '../../Typography/private';
 import { TextProps } from '../../Typography/types';
@@ -10,9 +10,9 @@ export interface StyledLabelProps extends React.LabelHTMLAttributes<HTMLLabelEle
   disabled?: boolean;
 }
 
-export const StyledLabel = styled<
-  StyledComponent<'label' | 'p', DefaultTheme, Partial<TextProps>> & StyledLabelProps
->(StyleableText).attrs({
+export const StyledLabel = styled<IStyledComponent<'web', Partial<TextProps>> & StyledLabelProps>(
+  StyleableText,
+).attrs({
   as: 'label',
 })<StyledLabelProps>`
   cursor: pointer;

@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import { css, DefaultTheme, styled, StyledComponent } from 'styled-components';
+import { css, IStyledComponent, styled } from 'styled-components';
 
 import { getBorderStyle } from '../../utils';
 import { Grid } from '../Grid';
@@ -42,7 +42,7 @@ export const StyledHeader = styled(StyleableH4)`
   margin-bottom: ${({ theme }) => theme.spacing.xxSmall};
 `;
 
-export const StyledMessageItem = styled<StyledComponent<'span', DefaultTheme, Partial<TextProps>>>(
+export const StyledMessageItem = styled<IStyledComponent<'web', Partial<TextProps>>>(
   StyleableSmall,
 ).attrs({ as: 'span' })`
   color: ${({ theme }) => theme.colors.secondary70};

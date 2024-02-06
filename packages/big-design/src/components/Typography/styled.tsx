@@ -92,7 +92,11 @@ export const StyledH3 = styled.h3<HeadingProps>`
   ${withMargins()};
 `;
 
-export const StyledH4 = styled.h4<HeadingProps>`
+export interface StyledH4Props extends Omit<HeadingProps, 'as'> {
+  as: HeadingProps['as'] | 'label' | 'legend';
+}
+
+export const StyledH4 = styled.h4<StyledH4Props>`
   ${(props) => commonTextStyles(props)};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};

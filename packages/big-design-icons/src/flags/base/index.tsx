@@ -1,6 +1,6 @@
 import { theme as defaultTheme, Spacing, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes, SVGProps } from 'react';
-import { styled } from 'styled-components';
+import { IStyledComponent, styled } from 'styled-components';
 
 export interface FlagIconProps extends SVGProps<SVGSVGElement> {
   size?: keyof Spacing | number;
@@ -8,11 +8,16 @@ export interface FlagIconProps extends SVGProps<SVGSVGElement> {
   title?: string;
 }
 
+type StyledFlagIcon = IStyledComponent<
+  'web',
+  Omit<FlagIconProps, 'ref'> & RefAttributes<SVGSVGElement>
+>;
+
 export function createStyledFlagIcon(
   FlagIcon: ForwardRefExoticComponent<
     PropsWithoutRef<FlagIconProps> & RefAttributes<SVGSVGElement>
   >,
-) {
+): StyledFlagIcon {
   const StyledFlagIcon = styled(FlagIcon)`
     ${({ size, theme }) =>
       size && {
