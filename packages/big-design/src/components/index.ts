@@ -42,3 +42,4 @@ export * from './Tooltip';
 export * from './Toggle';
 export * from './Typography';
 export * from './Worksheet';
+export * from './FileUploader';

@@ -47,3 +47,14 @@ test('should increment for selectable row', () => {
 
   expect(totalColSpans).toBe(4);
 });
+
+test('calls increment for selectable row', () => {
+  const totalColSpans = calculateColSpan({
+    columns,
+    isExpandable: false,
+    isDraggable: false,
+    isSelectable: true,
+  });
+
+  expect(totalColSpans).toBe(4);
+});
