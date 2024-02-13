@@ -23,8 +23,9 @@ export interface FileUploaderLocalization extends DropZoneLocalization {
 }
 
 interface DropzoneConfig {
-  label?: string;
   description?: string;
+  icon?: React.ReactNode;
+  label?: string;
 }
 
 export interface FileValidationError {
@@ -50,10 +51,10 @@ interface Props {
   dropzoneConfig?: DropzoneConfig;
   error?: React.ReactNode | React.ReactNode[];
   files: File[];
-  previewHidden?: boolean;
   label?: React.ReactNode;
   labelId?: string;
   localization?: FileUploaderLocalization;
+  previewHidden?: boolean;
   validators?: ValidatorConfig[];
   onFilesChange(files: File[]): void;
   onFilesError?(errors: FileValidationError[]): void;
@@ -68,11 +69,11 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   dropzoneConfig = {},
   error,
   files,
-  previewHidden = false,
   label,
   labelId,
   localization = defaultLocalization,
   multiple,
+  previewHidden = false,
   validators = [],
   onFilesChange,
   onFilesError,
@@ -211,6 +212,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
           accept={accept}
           description={dropzoneConfig.description}
           disabled={disabled}
+          icon={dropzoneConfig.icon}
           id={id}
           label={dropzoneConfig.label}
           localization={localization}
@@ -222,6 +224,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       accept,
       disabled,
       dropzoneConfig.description,
+      dropzoneConfig.icon,
       dropzoneConfig.label,
       files.length,
       handleFilesChange,

@@ -33,7 +33,7 @@ const fileUploaderProps: Prop[] = [
   },
   {
     name: 'dropzoneConfig',
-    types: '{ label?: string; description?: string }',
+    types: '{ label?: string; description?: string; icon?: ReactNode }',
     description: 'Adds a label and a description to the drop-zone box.',
   },
   {

@@ -42,6 +42,22 @@ export const DropzoneStyled = styled(Flex)<{
         background-color: ${({ theme }) => theme.colors.primary10};
       }
     `};
+
+  svg {
+    width: ${remCalc(40)};
+    height: ${remCalc(40)};
+    fill: ${({ theme, disabled, isValid, isDragOver }) => {
+      if (disabled) {
+        return theme.colors.secondary50;
+      }
+
+      if (!isValid && isDragOver) {
+        return theme.colors.danger30;
+      }
+
+      return theme.colors.primary30;
+    }};
+  }
 `;
 
 export const FileStyled = styled(Flex)<{ isValid: boolean }>`
