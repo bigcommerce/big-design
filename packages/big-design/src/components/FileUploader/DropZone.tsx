@@ -26,8 +26,9 @@ export interface DropZoneLocalization {
 }
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
   description?: string;
+  icon?: React.ReactNode;
+  label?: string;
   localization?: DropZoneLocalization;
   onFilesChange(files: FileList | null): void;
 }
@@ -36,6 +37,7 @@ export const DropZone = ({
   accept,
   description,
   disabled,
+  icon = <DraftIcon />,
   id,
   label,
   localization = defaultLocalization,
@@ -43,7 +45,7 @@ export const DropZone = ({
   onFilesChange,
 }: Props) => {
   const [isDragOver, setIsDragOver] = useState(false);
-  const [isFilesValid, setIsFilesValid] = useState(false);
+  const [isFilesValid, setIsFilesValid] = useState(true);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -114,11 +116,7 @@ export const DropZone = ({
   );
 
   const renderDropzoneIcon = useMemo(() => {
-    const icon = isFilesValid ? (
-      <FileDownloadIcon color="primary30" size={40} />
-    ) : (
-      <RemoveCircleOutlineIcon color="danger30" size={40} />
-    );
+    const icon = isFilesValid ? <FileDownloadIcon /> : <RemoveCircleOutlineIcon />;
 
     return (
       <Box as="span" marginHorizontal="auto">
@@ -185,7 +183,7 @@ export const DropZone = ({
       ) : (
         <>
           <Flex alignItems="center">
-            <DraftIcon color={disabled ? 'secondary50' : 'primary30'} size={40} />
+            {icon}
             <div>
               {renderedLabel}
               {renderedDescription}
