@@ -27,6 +27,7 @@ export interface DropZoneLocalization {
 
 interface Props extends ComponentPropsWithoutRef<'input'> {
   description?: string;
+  viewType: 'row' | 'block';
   icon?: React.ReactNode;
   label?: string;
   localization?: DropZoneLocalization;
@@ -42,12 +43,15 @@ export const DropZone = ({
   label,
   localization = defaultLocalization,
   multiple,
+  viewType = 'row',
   onFilesChange,
+  ...props
 }: Props) => {
   const [isDragOver, setIsDragOver] = useState(false);
   const [isFilesValid, setIsFilesValid] = useState(true);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const isRowView = viewType === 'row';
 
   const handleDragEnter = useCallback(
     /* istanbul ignore next */
@@ -152,12 +156,14 @@ export const DropZone = ({
   /* istanbul ignore next */
   return (
     <DropzoneStyled
+      {...props}
       alignItems="center"
       aria-label="dropzone"
       disabled={disabled}
+      flexDirection={isRowView ? 'row' : 'column'}
       isDragOver={isDragOver}
       isValid={isFilesValid}
-      justifyContent="space-between"
+      justifyContent={isRowView ? 'space-between' : 'center'}
       onClick={handleUploadClick}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
@@ -182,16 +188,17 @@ export const DropZone = ({
         renderDropzoneIcon
       ) : (
         <>
-          <Flex alignItems="center">
+          <Flex alignItems="center" flexDirection={isRowView ? 'row' : 'column'}>
             {icon}
-            <div>
+            <Flex alignItems={isRowView ? 'flex-start' : 'center'} flexDirection="column">
               {renderedLabel}
               {renderedDescription}
-            </div>
+            </Flex>
           </Flex>
           <ButtonStyled
             color="secondary"
             disabled={disabled}
+            marginTop={isRowView ? 'none' : 'medium'}
             onClick={(e) => e.preventDefault()}
             variant="subtle"
           >
