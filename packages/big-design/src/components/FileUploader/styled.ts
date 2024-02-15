@@ -6,13 +6,19 @@ import { StyledButton } from '../Button/styled';
 import { Flex } from '../Flex';
 import { StyledText } from '../Typography/styled';
 
+import { DropZone } from './DropZone';
+
+const defaultDropZoneHeight = 68;
+const getDropZoneHeight = (height = defaultDropZoneHeight) =>
+  Math.max(height, defaultDropZoneHeight);
+
 export const DropzoneStyled = styled(Flex)<{
   disabled?: boolean;
   isDragOver: boolean;
   isValid: boolean;
 }>`
   width: 100%;
-  height: ${remCalc(68)};
+  height: ${remCalc(defaultDropZoneHeight)};
   border: 1px dashed
     ${({ theme, isDragOver, isValid, disabled }) => {
       if (disabled) {
@@ -72,7 +78,7 @@ export const ImageStyled = styled.img`
   width: ${remCalc(40)};
 `;
 
-export const StyledFileUploaderWrapper = styled.span`
+export const StyledFileUploaderWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -94,6 +100,10 @@ export const StyledList = styled.ul`
   & > li {
     margin-bottom: ${({ theme }) => theme.spacing.small};
   }
+`;
+
+export const DropZoneWrapper = styled(DropZone)<{ emptyHeight?: number }>`
+  height: ${({ emptyHeight }) => remCalc(getDropZoneHeight(emptyHeight))};
 `;
 
 StyledList.defaultProps = { theme: defaultTheme };
