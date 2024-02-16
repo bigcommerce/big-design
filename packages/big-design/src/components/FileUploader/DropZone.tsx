@@ -27,7 +27,7 @@ export interface DropZoneLocalization {
 
 export interface Props extends InputHTMLAttributes<HTMLInputElement> {
   description?: string;
-  viewType: 'row' | 'block';
+  viewType?: 'row' | 'block';
   icon?: React.ReactNode;
   label?: string;
   localization?: DropZoneLocalization;
