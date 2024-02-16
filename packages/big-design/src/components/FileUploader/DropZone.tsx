@@ -25,9 +25,9 @@ export interface DropZoneLocalization {
   upload: string;
 }
 
-interface Props extends ComponentPropsWithoutRef<'input'> {
+export interface Props extends ComponentPropsWithoutRef<'input'> {
   description?: string;
-  viewType: 'row' | 'block';
+  viewType?: 'row' | 'block';
   icon?: React.ReactNode;
   label?: string;
   localization?: DropZoneLocalization;

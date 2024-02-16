@@ -6,7 +6,7 @@ import { StyledButton } from '../Button/styled';
 import { Flex } from '../Flex';
 import { StyledText } from '../Typography/styled';
 
-import { DropZone } from './DropZone';
+import { DropZone, Props } from './DropZone';
 
 const defaultDropZoneHeight = 68;
 const getDropZoneHeight = (height = defaultDropZoneHeight) =>
@@ -102,7 +102,7 @@ export const StyledList = styled.ul`
   }
 `;
 
-export const DropZoneWrapper = styled(DropZone)<{ emptyHeight?: number }>`
+export const DropZoneWrapper = styled(DropZone)<Props & { emptyHeight?: number }>`
   height: ${({ emptyHeight }) => remCalc(getDropZoneHeight(emptyHeight))};
 `;
 

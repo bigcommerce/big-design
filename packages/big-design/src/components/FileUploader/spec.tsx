@@ -6,11 +6,11 @@ import React from 'react';
 import { render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
-import { FormControlLabel } from '../Form';
+import { FormControlLabel, FormGroup } from '../Form';
 
 import { DropZone } from './DropZone';
 import { File as FileComponent } from './File';
-import { FileUploader } from './FileUploader';
+import { FileUploader, ValidatorConfig } from './FileUploader';
 
 import 'jest-styled-components';
 
@@ -242,23 +242,158 @@ describe('FileUploader', () => {
 
     expect(onFilesChange).toHaveBeenCalledWith([files[1]]);
   });
+
+  it('validates files', () => {
+    const files = [
+      createMockFile(1, 'file1', 'image/png'),
+      createMockFile(1, 'file2', 'image/png'),
+      createMockFile(1, 'file11', 'image/png'),
+      createMockFile(1, 'file22', 'image/png'),
+    ];
+    const validators: ValidatorConfig[] = [
+      {
+        type: 'name_limit',
+        validator: (file) => file.name.length <= 5,
+      },
+    ];
+    const onFilesChange = jest.fn();
+
+    render(
+      <FileUploader
+        files={files}
+        label="Upload your images"
+        multiple
+        onFilesChange={onFilesChange}
+        validators={validators}
+      />,
+    );
+
+    expect(screen.getByText('file1').parentElement).toHaveStyle(
+      `border-color: ${theme.colors.secondary30}`,
+    );
+    expect(screen.getByText('file2').parentElement).toHaveStyle(
+      `border-color: ${theme.colors.secondary30}`,
+    );
+    expect(screen.getByText('file11').parentElement).toHaveStyle(
+      `border-color: ${theme.colors.danger40}`,
+    );
+    expect(screen.getByText('file22').parentElement).toHaveStyle(
+      `border-color: ${theme.colors.danger40}`,
+    );
+  });
+
+  it('triggers onFilesError', () => {
+    const files = [
+      createMockFile(1, 'file1', 'image/png'),
+      createMockFile(1, 'file2', 'image/png'),
+      createMockFile(2000, 'file11', 'image/png'),
+      createMockFile(1, 'file22', 'image/png'),
+    ];
+    const validators: ValidatorConfig[] = [
+      {
+        type: 'name_limit',
+        validator: (file) => file.name.length <= 5,
+        message: 'File name is too long',
+      },
+      {
+        type: 'size_limit',
+        validator: (file) => file.size < 1000,
+        message: 'File size is too big',
+      },
+    ];
+    const onFilesChange = jest.fn();
+    const onFilesError = jest.fn();
+
+    render(
+      <FileUploader
+        files={files}
+        label="Upload your images"
+        multiple
+        onFilesChange={onFilesChange}
+        onFilesError={onFilesError}
+        validators={validators}
+      />,
+    );
+
+    expect(onFilesError).toHaveBeenCalledWith([
+      {
+        file: files[2],
+        fileIdx: 2,
+        message: 'File name is too long, File size is too big',
+        type: ['name_limit', 'size_limit'],
+      },
+      {
+        file: files[3],
+        fileIdx: 3,
+        message: 'File name is too long',
+        type: 'name_limit',
+      },
+    ]);
+  });
+
+  it('renders with single error', async () => {
+    jest.spyOn(console, 'error').mockImplementation();
+
+    render(
+      <FormGroup>
+        <FileUploader
+          error="File name is too long"
+          files={[]}
+          label="Upload your images"
+          onFilesChange={jest.fn()}
+        />
+      </FormGroup>,
+    );
+
+    expect(screen.getByText('File name is too long')).toBeVisible();
+  });
+
+  it('renders with multiple errors', async () => {
+    const errors = Array.from({ length: 15 }, () => 'File name is too long');
+
+    jest.spyOn(console, 'error').mockImplementation();
+
+    render(
+      <FileUploader
+        error={errors}
+        files={[]}
+        label="Upload your images"
+        multiple
+        onFilesChange={jest.fn()}
+      />,
+    );
+
+    expect(screen.getByRole('alert')).toBeVisible();
+
+    expect(screen.getAllByText('File name is too long')).toHaveLength(10);
+
+    await userEvent.click(screen.getByRole('button', { name: /show more/i }));
+
+    expect(screen.getAllByText('File name is too long')).toHaveLength(15);
+  });
 });
 
 describe('File component', () => {
   it('renders image preview', () => {
-    render(<FileComponent isValid name="File name" onRemove={jest.fn()} previewSrc="img/src" />);
+    render(
+      <FileComponent idx={0} isValid name="File name" onRemove={jest.fn()} previewSrc="img/src" />,
+    );
 
     expect(screen.getByRole('img')).toBeVisible();
   });
 
   it('renders draft icon', () => {
-    render(<FileComponent isValid name="File name" onRemove={jest.fn()} previewSrc={null} />);
+    render(
+      <FileComponent idx={0} isValid name="File name" onRemove={jest.fn()} previewSrc={null} />,
+    );
 
     expect(screen.getByRole('img')).toBeVisible();
   });
 
   it('renders file name', () => {
-    render(<FileComponent isValid name="File name" onRemove={jest.fn()} previewSrc={null} />);
+    render(
+      <FileComponent idx={0} isValid name="File name" onRemove={jest.fn()} previewSrc={null} />,
+    );
 
     expect(screen.getByText('File name')).toBeVisible();
   });
@@ -266,7 +401,9 @@ describe('File component', () => {
   it('removes file', async () => {
     const onRemoveMock = jest.fn();
 
-    render(<FileComponent isValid name="File name" onRemove={onRemoveMock} previewSrc={null} />);
+    render(
+      <FileComponent idx={0} isValid name="File name" onRemove={onRemoveMock} previewSrc={null} />,
+    );
 
     await userEvent.click(screen.getByRole('button', { name: /remove file name/i }));
 
@@ -275,7 +412,13 @@ describe('File component', () => {
 
   it('renders with invalid state', () => {
     const { container } = render(
-      <FileComponent isValid={false} name="File name" onRemove={jest.fn()} previewSrc={null} />,
+      <FileComponent
+        idx={0}
+        isValid={false}
+        name="File name"
+        onRemove={jest.fn()}
+        previewSrc={null}
+      />,
     );
 
     expect(container.firstChild).toHaveStyle(`border-color: ${theme.colors.danger40}`);

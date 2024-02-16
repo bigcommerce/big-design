@@ -12,6 +12,7 @@ import React, {
 } from 'react';
 
 import { warning } from '../../utils';
+import { DropdownItem } from '../Dropdown/types';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
 import { InlineMessage } from '../InlineMessage';
@@ -20,6 +21,10 @@ import { DropZoneLocalization } from './DropZone';
 import { File } from './File';
 import { DropZoneWrapper, StyledFileUploaderWrapper, StyledList } from './styled';
 import { getImagesPreview, validateFiles } from './utils';
+
+export interface FileAction extends Omit<DropdownItem, 'onItemClick'> {
+  onItemClick: (name: File, idx: number) => void;
+}
 
 export interface FileUploaderLocalization extends DropZoneLocalization {
   optional: string;
@@ -57,6 +62,7 @@ export const defaultLocalization: FileUploaderLocalization = {
 };
 
 interface Props {
+  actions?: FileAction[];
   description?: React.ReactNode;
   dropzoneConfig?: DropzoneConfig;
   error?: string | string[];
@@ -74,6 +80,7 @@ export type FileUploaderProps = Props & ComponentPropsWithoutRef<'input'>;
 
 export const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
+  actions,
   description,
   disabled,
   dropzoneConfig = {},
@@ -260,6 +267,14 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     multiple,
   ]);
 
+  const getActions = useCallback(
+    (file: File, idx: number) =>
+      actions?.map(({ onItemClick, ...action }) => ({
+        ...action,
+        onItemClick: () => onItemClick(file, idx),
+      })),
+    [actions],
+  );
   const renderedFiles = useMemo(() => {
     if (previewHidden) {
       return null;
@@ -272,6 +287,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
 
       return (
         <File
+          actions={getActions(files[0], 0)}
+          idx={0}
           isValid={!isFileInvalid}
           name={file.name}
           onRemove={(name) => handleFileRemove(name, 0)}
@@ -287,6 +304,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       return (
         <li key={idx}>
           <File
+            actions={getActions(file, idx)}
+            idx={idx}
             isValid={!isFileInvalid}
             name={file.name}
             onRemove={(name) => handleFileRemove(name, idx)}
@@ -297,7 +316,15 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     });
 
     return <StyledList>{filesList}</StyledList>;
-  }, [files, handleFileRemove, imagePreview, previewHidden, multiple, validationErrors]);
+  }, [
+    previewHidden,
+    multiple,
+    files,
+    validationErrors,
+    imagePreview,
+    getActions,
+    handleFileRemove,
+  ]);
 
   const renderedDropzone = useMemo(() => {
     if (!multiple && files.length > 0) {
