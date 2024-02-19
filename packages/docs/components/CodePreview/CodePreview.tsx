@@ -94,6 +94,7 @@ export const CodePreview: React.FC<CodePreviewProps> = (props) => {
           plain: {
             ...editorTheme.plain,
             // Adds back previous version stylings
+            // @ts-expect-error These are valid, but it's not in the types.
             fontFamily: 'monospace',
             whiteSpace: 'pre-wrap',
           },

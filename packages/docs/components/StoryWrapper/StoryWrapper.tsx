@@ -1,6 +1,4 @@
-import { PrismTheme } from 'prism-react-renderer';
-import { default as lightTheme } from 'prism-react-renderer/themes/github';
-import { default as darkTheme } from 'prism-react-renderer/themes/oceanicNext';
+import { PrismTheme, themes } from 'prism-react-renderer';
 import React, { createContext, useState } from 'react';
 
 export type Language = 'jsx' | 'tsx';
@@ -14,7 +12,7 @@ interface Context {
 
 export const CodeEditorContext = createContext<Context>({
   language: 'tsx',
-  theme: darkTheme,
+  theme: themes.oceanicNext,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setLanguage: () => {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -22,10 +20,10 @@ export const CodeEditorContext = createContext<Context>({
 });
 
 export const StoryWrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
-  const [editorTheme, setEditorTheme] = useState(darkTheme);
+  const [editorTheme, setEditorTheme] = useState(themes.oceanicNext);
   const [language, setLanguage] = useState<Language>('tsx');
   const toggleEditorTheme = () =>
-    setEditorTheme(editorTheme === darkTheme ? lightTheme : darkTheme);
+    setEditorTheme(editorTheme === themes.oceanicNext ? themes.github : themes.oceanicNext);
 
   return (
     <CodeEditorContext.Provider

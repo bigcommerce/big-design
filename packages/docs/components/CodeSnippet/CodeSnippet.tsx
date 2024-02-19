@@ -41,7 +41,7 @@ function getCode(children: React.ReactNode) {
 }
 
 export const CodeSnippet: React.FC<EditorProps> = (props) => {
-  const { children, language, showControls } = props;
+  const { children, language = 'tsx', showControls = true } = props;
   const { theme: editorTheme } = useContext(CodeEditorContext);
   const code = getCode(children);
 
@@ -65,6 +65,7 @@ export const CodeSnippet: React.FC<EditorProps> = (props) => {
           plain: {
             ...editorTheme.plain,
             // Adds back previous version stylings
+            // @ts-expect-error These are valid, but it's not in the types.
             fontFamily: 'monospace',
             whiteSpace: 'pre-wrap',
           },
