@@ -7,4 +7,10 @@ module.exports = {
   coverageDirectory: '<rootDir>/coverage',
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
+  transform: {
+    '^.+\\.(t|j)sx?$': [
+      '@swc/jest',
+      { jsc: { experimental: { plugins: [['@swc/plugin-styled-components', { pure: true }]] } } },
+    ],
+  },
 };
