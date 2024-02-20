@@ -32,7 +32,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       </defs>
       <g clipPath="url(#LYFlagIcon__a)" transform="matrix(.96 0 0 .96 -160 19.2)">
         <path d="M0-20h1000v500H0z" fill="#239e46" />
-        <path d="M0-20h1000v375H0z" />
+        <path d="M0-20h1000v375H0z" fill="#000001" />
         <path d="M0-20h1000v125H0z" fill="#e70013" />
         <path
           d="M544.2 185.8a54.3 54.3 0 100 88.4 62.5 62.5 0 110-88.4M530.4 230l84.1-27.3-52 71.5v-88.4l52 71.5z"

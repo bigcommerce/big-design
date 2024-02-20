@@ -37,8 +37,8 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         transform="translate(79.5 -32)"
       >
         <path d="M-119.5 32h720v480h-720z" fill="#ff0" />
-        <path d="M-119.5 32v480l480-480h-480z" fill="#00ca00" />
-        <path d="M120.5 512h480V32l-480 480z" fill="red" />
+        <path d="M-119.5 32v480l480-480z" fill="#00ca00" />
+        <path d="M120.5 512h480V32z" fill="red" />
       </g>
     </svg>
   );

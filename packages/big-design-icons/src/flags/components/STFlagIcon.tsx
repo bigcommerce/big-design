@@ -31,7 +31,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       <path d="M0 0v480l240-240" fill="#d21034" />
       <g id="STFlagIcon__c" transform="translate(351.6 240) scale(.34286)">
         <g id="STFlagIcon__b">
-          <path d="M0-200V0h100" id="STFlagIcon__a" transform="rotate(18 0 -200)" />
+          <path d="M0-200V0h100" fill="#000001" id="STFlagIcon__a" transform="rotate(18 0 -200)" />
           <use height="100%" transform="scale(-1 1)" width="100%" xlinkHref="#STFlagIcon__a" />
         </g>
         <use height="100%" transform="rotate(72)" width="100%" xlinkHref="#STFlagIcon__b" />

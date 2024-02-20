@@ -33,7 +33,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       <g clipPath="url(#LAFlagIcon__a)" fillRule="evenodd">
         <path d="M-40 0h720v480H-40z" fill="#ce1126" />
         <path d="M-40 119.3h720v241.4H-40z" fill="#002868" />
-        <path d="M423.4 240a103.4 103.4 0 11-206.8 0 103.4 103.4 0 11206.8 0z" fill="#fff" />
+        <path d="M423.4 240a103.4 103.4 0 11-206.8 0 103.4 103.4 0 11206.8 0" fill="#fff" />
       </g>
     </svg>
   );

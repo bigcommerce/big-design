@@ -37,9 +37,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         transform="matrix(4 0 0 4 -40 0)"
       >
         <path d="M0 0h180v120H0z" fill="#09f" />
-        <path d="M0 0h180L0 120V0z" fill="#090" />
-        <path d="M0 120h40l140-95V0h-40L0 95v25z" />
-        <path d="M0 91.5L137.2 0h13.5L0 100.5v-9zM29.3 120L180 19.5v9L42.8 120H29.3z" fill="#ff0" />
+        <path d="M0 0h180L0 120z" fill="#090" />
+        <path d="M0 120h40l140-95V0h-40L0 95z" fill="#000001" />
+        <path d="M0 91.5L137.2 0h13.5L0 100.5zM29.3 120L180 19.5v9L42.8 120z" fill="#ff0" />
       </g>
     </svg>
   );

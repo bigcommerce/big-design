@@ -34,7 +34,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         />
       </defs>
       <path d="M0 0h640v480H0z" fill="#fff" />
-      <path d="M0 0h640v144H0z" />
+      <path d="M0 0h640v144H0z" fill="#000001" />
       <path d="M0 336h640v144H0z" fill="#060" />
       <g id="KEFlagIcon__b" transform="matrix(3 0 0 3 320 240)">
         <use height="100%" stroke="#000" width="100%" xlinkHref="#KEFlagIcon__a" />
@@ -47,7 +47,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         xlinkHref="#KEFlagIcon__b"
       />
       <path
-        d="M640.5 168H377c-9-24-39-72-57-72s-48 48-57 72H-.2v144H263c9 24 39 72 57 72s48-48 57-72h263.5V168z"
+        d="M640.5 168H377c-9-24-39-72-57-72s-48 48-57 72H-.2v144H263c9 24 39 72 57 72s48-48 57-72h263.5z"
         fill="#b00"
       />
       <path

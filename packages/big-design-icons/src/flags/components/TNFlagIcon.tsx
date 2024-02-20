@@ -25,23 +25,11 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <defs>
-        <clipPath id="TNFlagIcon__a">
-          <path d="M-85.3 0h682.6v512H-85.3z" fillOpacity={0.7} />
-        </clipPath>
-      </defs>
-      <g clipPath="url(#TNFlagIcon__a)" fillRule="evenodd" transform="translate(80) scale(.9375)">
-        <path d="M-128 0h768v512h-768z" fill="#e70013" />
-        <path d="M385.8 255.8a129.1 129.1 0 11-258.2 0 129.1 129.1 0 01258.2 0z" fill="#fff" />
-        <path
-          d="M256.7 341.4a85.7 85.7 0 010-171.3c11.8 0 25.3 2.8 34.4 9.5-62.6 2.3-78.5 55.5-78.5 76.9s10.1 69.1 78.5 76.2c-7.8 5-22.6 8.7-34.4 8.7z"
-          fill="#e70013"
-        />
-        <path
-          d="M332.1 291.8l-38.9-14.2-25.7 32.4 1.5-41.3-38.8-14.5 39.8-11.4 1.7-41.3 23.2 34.3 39.8-11-25.5 32.5z"
-          fill="#e70013"
-        />
-      </g>
+      <path d="M0 0h640v480H0z" fill="#e70013" />
+      <path
+        d="M320 119.2a1 1 0 00-1 240.3 1 1 0 001-240.3M392 293a90 90 0 110-107 72 72 0 100 107m-4.7-21.7l-37.4-12.1-23.1 31.8v-39.3l-37.4-12.2 37.4-12.2V188l23.1 31.8 37.4-12.1-23.1 31.8z"
+        fill="#fff"
+      />
     </svg>
   );
 };

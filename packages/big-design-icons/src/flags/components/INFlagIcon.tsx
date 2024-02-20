@@ -38,7 +38,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             <g id="INFlagIcon__b">
               <g fill="#008" id="INFlagIcon__a">
                 <circle r={0.9} transform="rotate(7.5 -8.8 133.5)" />
-                <path d="M0 17.5L.6 7 0 2l-.6 5L0 17.5z" />
+                <path d="M0 17.5L.6 7 0 2l-.6 5z" />
               </g>
               <use height="100%" transform="rotate(15)" width="100%" xlinkHref="#INFlagIcon__a" />
             </g>

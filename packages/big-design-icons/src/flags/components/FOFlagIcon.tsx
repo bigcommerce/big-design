@@ -38,13 +38,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       >
         <path d="M-78 32h663.9v480H-78z" fill="#fff" />
         <path
-          d="M-76 218.7h185.9V32H216v186.7h371.8v106.6H216V512H109.9V325.3h-186V218.7z"
+          d="M-76 218.7h185.9V32H216v186.7h371.8v106.6H216V512H109.9V325.3h-186z"
           fill="#003897"
         />
-        <path
-          d="M-76 245.3h212.4V32h53.1v213.3H588v53.4H189.5V512h-53V298.7H-76v-53.4z"
-          fill="#d72828"
-        />
+        <path d="M-76 245.3h212.4V32h53.1v213.3H588v53.4H189.5V512h-53V298.7H-76z" fill="#d72828" />
       </g>
     </svg>
   );
