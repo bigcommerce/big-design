@@ -32,10 +32,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       </defs>
       <g clipPath="url(#JOFlagIcon__a)" transform="translate(110.5) scale(.9375)">
         <g fillRule="evenodd" strokeWidth="1pt">
-          <path d="M-117.8 0h1024v170.7h-1024z" />
+          <path d="M-117.8 0h1024v170.7h-1024z" fill="#000001" />
           <path d="M-117.8 170.7h1024v170.6h-1024z" fill="#fff" />
           <path d="M-117.8 341.3h1024V512h-1024z" fill="#090" />
-          <path d="M-117.8 512l512-256-512-256v512z" fill="red" />
+          <path d="M-117.8 512l512-256-512-256z" fill="red" />
           <path
             d="M24.5 289l5.7-24.9H4.7l23-11-15.9-19.9 23 11 5.6-24.8 5.7 24.9L69 233.2l-16 19.9 23 11H50.6l5.7 24.9-15.9-20z"
             fill="#fff"

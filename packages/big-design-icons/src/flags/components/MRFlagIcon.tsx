@@ -28,8 +28,8 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       <path d="M0 0h640v480H0z" fill="#cd2a3e" />
       <path d="M0 72h640v336H0z" fill="#006233" />
       <path
-        className="MRFlagIcon__st1"
-        d="M470 154.6a150 150 0 01-300 0 154.9 154.9 0 00-5 39.2 155 155 0 10310 0 154.4 154.4 0 00-5-39.2z"
+        className="MRFlagIcon__mr-st1"
+        d="M470 154.6a150 150 0 01-300 0 154.9 154.9 0 00-5 39.2 155 155 0 10310 0 154.4 154.4 0 00-5-39.2"
         fill="#ffc400"
       />
       <path

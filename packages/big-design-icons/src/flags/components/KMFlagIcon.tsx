@@ -35,7 +35,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         <path d="M0 128h768.8v128H0z" fill="#fff" />
         <path d="M0 256h768.8v128H0z" fill="#be0027" />
         <path d="M0 384h768.8v128H0z" fill="#3b5aa3" />
-        <path d="M0 0v512l381.9-255.3L0 0z" fill="#239e46" />
+        <path d="M0 0v512l381.9-255.3z" fill="#239e46" />
         <path
           d="M157.2 141.4c-85-4.3-123.9 63.5-123.8 115.9-.2 62 58.6 113 112.8 110C117 353.5 81.2 314.6 81 257c-.3-52.1 29.5-97.5 76.3-115.6z"
           fill="#fff"

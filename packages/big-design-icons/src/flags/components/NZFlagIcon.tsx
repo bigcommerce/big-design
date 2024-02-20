@@ -29,8 +29,8 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       <defs>
         <g id="NZFlagIcon__b">
           <g id="NZFlagIcon__a">
-            <path d="M0 0v.5L1 0z" transform="translate(0 -.3)" />
-            <path d="M0 0v-.5L1 0z" transform="rotate(-36 .5 -.2)" />
+            <path d="M0-.3v.5l1-.5z" />
+            <path d="M.2.3L0-.1l1-.2z" />
           </g>
           <use transform="scale(-1 1)" xlinkHref="#NZFlagIcon__a" />
           <use transform="rotate(72 0 0)" xlinkHref="#NZFlagIcon__a" />

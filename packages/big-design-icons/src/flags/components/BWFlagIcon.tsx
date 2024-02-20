@@ -28,7 +28,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       <g fillRule="evenodd">
         <path d="M0 0h640v480H0z" fill="#00cbff" />
         <path d="M0 160h640v160H0z" fill="#fff" />
-        <path d="M0 186h640v108H0z" />
+        <path d="M0 186h640v108H0z" fill="#000001" />
       </g>
     </svg>
   );

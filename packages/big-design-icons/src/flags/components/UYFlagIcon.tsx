@@ -42,11 +42,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           <g id="UYFlagIcon__b">
             <g id="UYFlagIcon__a">
               <path
-                d="M1.5 9L6 12c-8 13 1 15-6 21 3-7-3-5-3-17"
+                d="M-2 8.9l3 4.5c-12.4 9-4.9 14.2-13.6 17 5.4-5.2-.9-5.7 3.7-16.8"
                 strokeLinecap="square"
-                transform="rotate(22.5)"
               />
-              <path d="M0 11c-2 13 4.5 17 0 22" fill="none" transform="rotate(22.5)" />
+              <path d="M-4.2 10.2c-6.8 11.2-2.4 17.4-8.4 20.3" fill="none" />
               <path d="M0 0h6L0 33-6 0h6v33" />
             </g>
             <use height="100%" transform="rotate(45)" width="100%" xlinkHref="#UYFlagIcon__a" />

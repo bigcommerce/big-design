@@ -46,11 +46,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           stroke="#000"
           strokeWidth={2.6}
         />
-        <path
-          d="M245.3 413.1c0-.4 20-4 20-4l-2.5 7.4-19.7 6 2.2-9.3z"
-          fill="#ffec00"
-          fillRule="evenodd"
-        />
+        <path d="M245.3 413.1c0-.4 20-4 20-4l-2.5 7.4-19.7 6z" fill="#ffec00" fillRule="evenodd" />
         <path
           d="M193.6 338.5a37.9 37.9 0 0121.6-20.4"
           fill="none"
@@ -97,7 +93,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           strokeWidth={2.6}
         />
         <path
-          d="M431.7 133.6a375 375 0 01-13.3-15.4l7.6-1.5 14.8 14.3-9.1 2.6z"
+          d="M431.7 133.6a375 375 0 01-13.3-15.4l7.6-1.5 14.8 14.3z"
           fill="#ffec00"
           fillRule="evenodd"
         />
@@ -142,7 +138,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           strokeWidth={2.6}
         />
         <path
-          d="M88.7 119.8c.3.3-5.6 19.6-5.6 19.6l-5.4-5.5 3.8-20.3 7.2 6.2z"
+          d="M88.7 119.8c.3.3-5.6 19.6-5.6 19.6l-5.4-5.5 3.8-20.3z"
           fill="#ffec00"
           fillRule="evenodd"
         />

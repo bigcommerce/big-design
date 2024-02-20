@@ -30,7 +30,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       <path d="M220 0h420v240H220z" fill="#fcd116" />
       <path d="M220 240h420v240H220z" fill="#009e49" />
       <g id="GWFlagIcon__b" transform="matrix(80 0 0 80 110 240)">
-        <path d="M0-1v1h.5" id="GWFlagIcon__a" transform="rotate(18 0 -1)" />
+        <path d="M0-1v1h.5" fill="#000001" id="GWFlagIcon__a" transform="rotate(18 0 -1)" />
         <use height="100%" transform="scale(-1 1)" width="100%" xlinkHref="#GWFlagIcon__a" />
       </g>
       <use height="100%" transform="rotate(72 110 240)" width="100%" xlinkHref="#GWFlagIcon__b" />

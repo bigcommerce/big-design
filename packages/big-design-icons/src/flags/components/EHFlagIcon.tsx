@@ -31,7 +31,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         </clipPath>
       </defs>
       <g clipPath="url(#EHFlagIcon__a)" fillRule="evenodd" transform="translate(148.8) scale(.94)">
-        <path d="M-158.3 0h680.9v255.3h-680.9z" />
+        <path d="M-158.3 0h680.9v255.3h-680.9z" fill="#000001" />
         <path d="M-158.3 255.3h680.9v255.3h-680.9z" fill="#007a3d" />
         <path d="M-158.3 148.9h680.9v212.8h-680.9z" fill="#fff" />
         <path d="M-158.3 0l340.4 255.3-340.4 255.3z" fill="#c4111b" />

@@ -32,7 +32,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       </defs>
       <g clipPath="url(#NAFlagIcon__a)" fillRule="evenodd">
         <path d="M0 0h640v480H0z" fill="#fff" />
-        <path d="M-26.4.2l.8 345.6L512.5 0-26.4.2z" fill="#3662a2" />
+        <path d="M-26.4.2l.8 345.6L512.5 0z" fill="#3662a2" />
         <path d="M666.4 479.6L665 120.3 122.3 479.8l544-.2z" fill="#38a100" />
         <path
           d="M-26 371.8l.4 108.2 117.5-.1L665.4 95.4l-.7-94.1-116-1L-26 371.7z"
@@ -43,10 +43,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fill="#ffe700"
         />
         <path
-          d="M232.4 112.4c0 25.6-20.9 46.3-46.6 46.3s-46.6-20.7-46.6-46.3 20.8-46.2 46.6-46.2 46.6 20.7 46.6 46.2z"
+          d="M232.4 112.4c0 25.6-20.9 46.3-46.6 46.3s-46.6-20.7-46.6-46.3 20.8-46.2 46.6-46.2 46.6 20.7 46.6 46.2"
           fill="#3662a2"
         />
-        <path d="M222.3 112.4a36.5 36.5 0 11-73 0 36.5 36.5 0 0173 0z" fill="#ffe700" />
+        <path d="M222.3 112.4a36.5 36.5 0 11-73 0 36.5 36.5 0 0173 0" fill="#ffe700" />
       </g>
     </svg>
   );

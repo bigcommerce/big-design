@@ -39,7 +39,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         <path d="M-95.8-.4H587v512H-95.8z" fill="#fff" />
         <g transform="rotate(-56.3 361.6 -101.3) scale(10.66667)">
           <g id="KRFlagIcon__c">
-            <path d="M-6-26H6v2H-6zm0 3H6v2H-6zm0 3H6v2H-6z" id="KRFlagIcon__b" />
+            <path d="M-6-26H6v2H-6zm0 3H6v2H-6zm0 3H6v2H-6z" fill="#000001" id="KRFlagIcon__b" />
             <use height="100%" width="100%" xlinkHref="#KRFlagIcon__b" y={44} />
           </g>
           <path d="M0 17v10" stroke="#fff" />

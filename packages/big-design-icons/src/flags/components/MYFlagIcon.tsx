@@ -25,14 +25,33 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path d="M0 0h640v480H0z" fill="#c00" />
-      <path d="M.5 39.9h639v38.4H.5zm0 78.7h639V157H.5zm0 78.8h639v38.4H.5z" fill="#fff" />
-      <path d="M0 .5h320v280H0z" fill="#006" />
-      <path
-        d="M207.5 73.8l6 40.7 23-34-12.4 39.2 35.5-20.8-28.1 30 41-3.2-38.3 14.8 38.3 14.8-41-3.2 28.1 30-35.5-20.8 12.3 39.3-23-34.1-6 40.7-5.9-40.7-23 34 12.4-39.2-35.5 20.8 28-30-41 3.2 38.4-14.8-38.3-14.8 41 3.2-28.1-30 35.5 20.8-12.4-39.3 23 34.1zm-33.3 1.7a71.1 71.1 0 100 130 80 80 0 110-130z"
-        fill="#fc0"
-      />
-      <path d="M.5 276.2h639v38.4H.5zm0 78.2h639v38.4H.5zM0 441.6h639V480H0z" fill="#fff" />
+      <g clipPath="url(#MYFlagIcon__my-a)">
+        <path d="M0 0h640v480H0z" fill="#C00" />
+        <path d="M0 0h640v34.3H0z" fill="#C00" />
+        <path d="M0 34.3h640v34.3H0z" fill="#fff" />
+        <path d="M0 68.6h640v34.3H0z" fill="#C00" />
+        <path d="M0 102.9h640V137H0z" fill="#fff" />
+        <path d="M0 137.1h640v34.3H0z" fill="#C00" />
+        <path d="M0 171.4h640v34.3H0z" fill="#fff" />
+        <path d="M0 205.7h640V240H0z" fill="#C00" />
+        <path d="M0 240h640v34.3H0z" fill="#fff" />
+        <path d="M0 274.3h640v34.3H0z" fill="#C00" />
+        <path d="M0 308.6h640v34.3H0z" fill="#fff" />
+        <path d="M0 342.9h640V377H0z" fill="#C00" />
+        <path d="M0 377.1h640v34.3H0z" fill="#fff" />
+        <path d="M0 411.4h640v34.3H0z" fill="#C00" />
+        <path d="M0 445.7h640V480H0z" fill="#fff" />
+        <path d="M0 .5h320v274.3H0z" fill="#006" />
+        <path
+          d="M207.5 73.8l6 40.7 23-34-12.4 39.2 35.5-20.8-28.1 30 41-3.2-38.3 14.8 38.3 14.8-41-3.2 28.1 30-35.5-20.8 12.3 39.3-23-34.1-6 40.7-5.9-40.7-23 34 12.4-39.2-35.5 20.8 28-30-41 3.2 38.4-14.8-38.3-14.8 41 3.2-28.1-30 35.5 20.8-12.4-39.3 23 34.1zm-33.3 1.7a71.1 71.1 0 00-100 65 71.1 71.1 0 00100 65 80 80 0 01-83.2 6.2 80 80 0 01-43.4-71.2 80 80 0 01126.6-65"
+          fill="#FC0"
+        />
+      </g>
+      <defs>
+        <clipPath id="MYFlagIcon__my-a">
+          <path d="M0 0h640v480H0z" fill="#fff" />
+        </clipPath>
+      </defs>
     </svg>
   );
 };
