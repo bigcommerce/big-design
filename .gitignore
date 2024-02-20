@@ -12,3 +12,4 @@ packages/docs/pages/dev.tsx
 .parcel-cache
 .tsbuildinfo
 .env*.local
+.swc

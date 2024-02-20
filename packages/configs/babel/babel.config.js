@@ -20,8 +20,8 @@ module.exports = function (api) {
       [
         '@babel/preset-env',
         {
-          modules: ['cjs', 'test'].includes(BABEL_ENV) ? 'commonjs' : false,
-          targets: BABEL_ENV === 'test' ? { node: 'current' } : { browsers },
+          modules: ['cjs'].includes(BABEL_ENV) ? 'commonjs' : false,
+          targets: { browsers },
         },
       ],
       '@babel/preset-typescript',
