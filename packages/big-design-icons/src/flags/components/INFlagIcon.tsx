@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -38,7 +37,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
             <g id="INFlagIcon__b">
               <g fill="#008" id="INFlagIcon__a">
                 <circle r={0.9} transform="rotate(7.5 -8.8 133.5)" />
-                <path d="M0 17.5L.6 7 0 2l-.6 5z" />
+                <path d="M0 17.5.6 7 0 2l-.6 5z" />
               </g>
               <use height="100%" transform="rotate(15)" width="100%" xlinkHref="#INFlagIcon__a" />
             </g>
@@ -52,11 +51,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const INFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 INFlagIcon.displayName = 'INFlagIcon';

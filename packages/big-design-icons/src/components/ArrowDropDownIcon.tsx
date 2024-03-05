@@ -24,16 +24,14 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M8.71 11.71l2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="m8.71 11.71 2.59 2.59c.39.39 1.02.39 1.41 0l2.59-2.59c.63-.63.18-1.71-.71-1.71H9.41c-.89 0-1.33 1.08-.7 1.71" />
     </svg>
   );
 };
-
 const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => (
   <Icon {...iconProps} svgRef={ref} />
 ));
 
 export const ArrowDropDownIcon = memo(createStyledIcon(IconWithForwardedRef));
-
 ArrowDropDownIcon.displayName = 'ArrowDropDownIcon';

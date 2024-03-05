@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -36,13 +35,13 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         stroke="#000"
         strokeMiterlimit={20}
         strokeWidth={0.6}
-        transform="translate(133.3 133.3) scale(2.93333)"
+        transform="translate(133.3 133.3)scale(2.93333)"
       >
         <g id="UYFlagIcon__c">
           <g id="UYFlagIcon__b">
             <g id="UYFlagIcon__a">
               <path
-                d="M-2 8.9l3 4.5c-12.4 9-4.9 14.2-13.6 17 5.4-5.2-.9-5.7 3.7-16.8"
+                d="m-2 8.9 3 4.5c-12.4 9-4.9 14.2-13.6 17 5.4-5.2-.9-5.7 3.7-16.8"
                 strokeLinecap="square"
               />
               <path d="M-4.2 10.2c-6.8 11.2-2.4 17.4-8.4 20.3" fill="none" />
@@ -55,7 +54,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         <use height="100%" transform="scale(-1)" width="100%" xlinkHref="#UYFlagIcon__c" />
         <circle r={11} />
       </g>
-      <g transform="translate(133.3 133.3) scale(.29333)">
+      <g transform="translate(133.3 133.3)scale(.29333)">
         <g id="UYFlagIcon__d">
           <path d="M81-44c-7 8-11-6-36-6S16-35 12-38s21-21 29-22 31 7 40 16m-29 9c7 6 1 19-6 19S26-28 32-36" />
           <path d="M19-26c1-12 11-14 27-14s23 12 29 15c-7 0-13-10-29-10s-16 0-27 10m3 2c4-6 9 6 20 6s17-3 24-8-10 12-21 12-26-6-23-10" />
@@ -67,11 +66,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const UYFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 UYFlagIcon.displayName = 'UYFlagIcon';

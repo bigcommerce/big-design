@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -33,7 +32,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       <g
         clipPath="url(#KPFlagIcon__a)"
         fillRule="evenodd"
-        transform="translate(-4.8 -.1) scale(.93768)"
+        transform="translate(-4.8 -.1)scale(.93768)"
       >
         <path d="M776 511.5H-76V.5h852z" fill="#fff" stroke="#000" />
         <path d="M776 419H-76v92.5h852z" fill="#3e5698" />
@@ -44,18 +43,16 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fill="#fff"
         />
         <path
-          d="M175.8 270.6l-57-40.7 71-.2 22.7-66.4 21.1 66.1 71-.4-57.9 41.2 21.3 66.1-57-40.7-58 41.3z"
+          d="m175.8 270.6-57-40.7 71-.2 22.7-66.4 21.1 66.1 71-.4-57.9 41.2 21.3 66.1-57-40.7-58 41.3z"
           fill="#c40000"
         />
       </g>
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const KPFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 KPFlagIcon.displayName = 'KPFlagIcon';

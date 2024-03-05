@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -30,14 +29,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           <path d="M-117.8 0h682.6v512h-682.6z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g clipPath="url(#JOFlagIcon__a)" transform="translate(110.5) scale(.9375)">
+      <g clipPath="url(#JOFlagIcon__a)" transform="translate(110.5)scale(.9375)">
         <g fillRule="evenodd" strokeWidth="1pt">
           <path d="M-117.8 0h1024v170.7h-1024z" fill="#000001" />
           <path d="M-117.8 170.7h1024v170.6h-1024z" fill="#fff" />
           <path d="M-117.8 341.3h1024V512h-1024z" fill="#090" />
-          <path d="M-117.8 512l512-256-512-256z" fill="red" />
+          <path d="m-117.8 512 512-256-512-256z" fill="red" />
           <path
-            d="M24.5 289l5.7-24.9H4.7l23-11-15.9-19.9 23 11 5.6-24.8 5.7 24.9L69 233.2l-16 19.9 23 11H50.6l5.7 24.9-15.9-20z"
+            d="m24.5 289 5.7-24.9H4.7l23-11-15.9-19.9 23 11 5.6-24.8 5.7 24.9L69 233.2l-16 19.9 23 11H50.6l5.7 24.9-15.9-20z"
             fill="#fff"
           />
         </g>
@@ -45,11 +44,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const JOFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 JOFlagIcon.displayName = 'JOFlagIcon';

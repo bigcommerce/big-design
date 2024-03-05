@@ -24,16 +24,14 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M15 10a1 1 0 01-1-1V5a1 1 0 112 0v3h3a1 1 0 110 2h-4zM9 20a1 1 0 01-1-1v-3H5a1 1 0 110-2h4a1 1 0 011 1v4a1 1 0 01-1 1z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M15 10a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v3h3a1 1 0 1 1 0 2zM9 20a1 1 0 0 1-1-1v-3H5a1 1 0 1 1 0-2h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1" />
     </svg>
   );
 };
-
 const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => (
   <Icon {...iconProps} svgRef={ref} />
 ));
 
 export const WindowMinimizeIcon = memo(createStyledIcon(IconWithForwardedRef));
-
 WindowMinimizeIcon.displayName = 'WindowMinimizeIcon';

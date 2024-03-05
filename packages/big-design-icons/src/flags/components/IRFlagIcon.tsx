@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -30,7 +29,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           <path d="M-85.3 0h682.7v512H-85.3z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g clipPath="url(#IRFlagIcon__a)" fillRule="evenodd" transform="translate(80) scale(.9375)">
+      <g clipPath="url(#IRFlagIcon__a)" fillRule="evenodd" transform="translate(80)scale(.9375)">
         <path d="M-192 0h896v512h-896z" fill="#fff" />
         <path d="M-192 343.8h896V512h-896z" fill="#da0000" />
         <g fill="#fff" strokeWidth="1pt">
@@ -242,20 +241,18 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         />
         <g fill="#da0000">
           <path d="M279.8 197.5c8.4 10.4 34.5 67.6-15.7 105.2-23.7 17.8-9 18.6-8.3 21.6 38-20.1 50.3-47.5 50-72-.2-24.4-13.2-46-26-54.8" />
-          <path d="M284.8 194.8a73.3 73.3 0 0115.7 112.4c27.2-6 62-86.4-15.7-112.4m-57.6 0a73.3 73.3 0 00-15.6 112.4c-27.3-6-62-86.4 15.6-112.4" />
+          <path d="M284.8 194.8a73.3 73.3 0 0 1 15.7 112.4c27.2-6 62-86.4-15.7-112.4m-57.6 0a73.3 73.3 0 0 0-15.6 112.4c-27.3-6-62-86.4 15.6-112.4" />
           <path d="M232.2 197.5c-8.4 10.4-34.5 67.6 15.7 105.2 23.6 17.8 9 18.6 8.3 21.6-38-20.1-50.3-47.5-50-72 .2-24.4 13.2-46 26-54.8" />
           <path d="M304.2 319.1c-14.9.2-33.6-2-47.5-9.3 2.3 4.5 4.2 7.3 6.5 11.7 13.2 1.3 31.5 2.8 41-2.4m-95 0c14.9.2 33.6-2 47.5-9.3-2.3 4.5-4.2 7.3-6.5 11.7-13.2 1.3-31.5 2.8-41-2.4m27.3-138.7c3 8 10.9 9.2 19.3 4.5 6.2 3.6 15.7 3.9 19-4.1 2.5 19.8-18.3 15-19 11.2-7.8 7.5-22.2 3.2-19.3-11.6" />
-          <path d="M256.4 331.6l7.8-9 1.1-120.1-9.3-8.2-9.3 7.8 1.9 121z" />
+          <path d="m256.4 331.6 7.8-9 1.1-120.1-9.3-8.2-9.3 7.8 1.9 121z" />
         </g>
       </g>
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const IRFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 IRFlagIcon.displayName = 'IRFlagIcon';

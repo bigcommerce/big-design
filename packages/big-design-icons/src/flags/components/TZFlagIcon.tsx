@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -39,16 +38,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         <path d="M0 0h180v120H0z" fill="#09f" />
         <path d="M0 0h180L0 120z" fill="#090" />
         <path d="M0 120h40l140-95V0h-40L0 95z" fill="#000001" />
-        <path d="M0 91.5L137.2 0h13.5L0 100.5zM29.3 120L180 19.5v9L42.8 120z" fill="#ff0" />
+        <path d="M0 91.5 137.2 0h13.5L0 100.5zM29.3 120 180 19.5v9L42.8 120z" fill="#ff0" />
       </g>
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const TZFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 TZFlagIcon.displayName = 'TZFlagIcon';

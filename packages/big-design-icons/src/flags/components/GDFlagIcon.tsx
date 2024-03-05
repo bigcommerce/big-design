@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -44,7 +43,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       <circle cx={319.9} cy={240.1} fill="#ce1126" r={57.6} />
       <use
         height="100%"
-        transform="matrix(52.8 0 0 52.8 320 240)"
+        transform="translate(320 240)scale(52.8)"
         width="100%"
         xlinkHref="#GDFlagIcon__c"
       />
@@ -58,7 +57,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       <use
         height="100%"
         id="GDFlagIcon__d"
-        transform="matrix(31.2 0 0 31.2 320 33.6)"
+        transform="translate(320 33.6)scale(31.2)"
         width="100%"
         xlinkHref="#GDFlagIcon__c"
       />
@@ -69,9 +68,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         x={100}
         xlinkHref="#GDFlagIcon__d"
       />
-      <path d="M102.3 240.7a80.4 80.4 0 0033.5 33.2 111 111 0 00-11.3-45z" fill="#ce1126" />
+      <path d="M102.3 240.7a80.4 80.4 0 0 0 33.5 33.2 111 111 0 0 0-11.3-45z" fill="#ce1126" />
       <path
-        d="M90.1 194.7c10.4 21.7-27.1 73.7 35.5 85.9a63.2 63.2 0 01-10.9-41.9 70 70 0 0132.5 30.8c16.4-59.5-42-55.8-57.1-74.8"
+        d="M90.1 194.7c10.4 21.7-27.1 73.7 35.5 85.9a63.2 63.2 0 0 1-10.9-41.9 70 70 0 0 1 32.5 30.8c16.4-59.5-42-55.8-57.1-74.8"
         fill="#fcd116"
       />
       <use
@@ -83,7 +82,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       />
       <use
         height="100%"
-        transform="matrix(31.2 0 0 31.2 320 448.2)"
+        transform="translate(320 448.2)scale(31.2)"
         width="100%"
         xlinkHref="#GDFlagIcon__c"
       />
@@ -97,11 +96,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const GDFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 GDFlagIcon.displayName = 'GDFlagIcon';

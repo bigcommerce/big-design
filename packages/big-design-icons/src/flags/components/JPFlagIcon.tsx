@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -42,17 +41,15 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           cy={344.1}
           fill="#bc002d"
           r={194.9}
-          transform="translate(-168.4 8.6) scale(.76554)"
+          transform="translate(-168.4 8.6)scale(.76554)"
         />
       </g>
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const JPFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 JPFlagIcon.displayName = 'JPFlagIcon';

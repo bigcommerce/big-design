@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -30,7 +29,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           <path d="M-86.3 0h682.6v512H-86.3z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g clipPath="url(#KIFlagIcon__a)" transform="translate(81) scale(.9375)">
+      <g clipPath="url(#KIFlagIcon__a)" transform="translate(81)scale(.9375)">
         <path d="M-164.3 0h835.8v306.5h-835.8z" fill="#e73e2d" fillRule="evenodd" />
         <path
           d="M204.3 282.1c-19.4-15.2-55.6-10-61.6-51.3 27.7 21.5 22.7-1.2 64 19.3z"
@@ -89,70 +88,70 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           strokeWidth={1.7}
         />
         <path
-          d="M379.5 259.6l-112.1 2.5 4.7 30.2z"
+          d="m379.5 259.6-112.1 2.5 4.7 30.2z"
           fill="#fec74a"
           fillRule="evenodd"
           stroke="#d8aa3f"
           strokeWidth={1.7}
         />
         <path
-          d="M363 218.4l-103.8 39.9 17.3 33.3z"
+          d="m363 218.4-103.8 39.9 17.3 33.3z"
           fill="#fec74a"
           fillRule="evenodd"
           stroke="#d8aa3f"
           strokeWidth={1.7}
         />
         <path
-          d="M280.6 280.7l53.7-97.6-82.4 76.7z"
+          d="m280.6 280.7 53.7-97.6-82.4 76.7z"
           fill="#fec74a"
           fillRule="evenodd"
           stroke="#d8aa3f"
           strokeWidth={1.7}
         />
         <path
-          d="M279.5 272.6l17.2-109.4-53.8 97.2z"
+          d="m279.5 272.6 17.2-109.4-53.8 97.2z"
           fill="#fec74a"
           fillRule="evenodd"
           stroke="#d8aa3f"
           strokeWidth={1.7}
         />
         <path
-          d="M273 263.7l-18-110.2-20 110.7z"
+          d="m273 263.7-18-110.2-20 110.7z"
           fill="#fec74a"
           fillRule="evenodd"
           stroke="#d8aa3f"
           strokeWidth={1.7}
         />
         <path
-          d="M263.7 254.3l-52.3-92 20 111.8z"
+          d="m263.7 254.3-52.3-92 20 111.8z"
           fill="#fec74a"
           fillRule="evenodd"
           stroke="#d8aa3f"
           strokeWidth={1.7}
         />
         <path
-          d="M255.6 253.6l-81.1-68.5 57.6 98z"
+          d="m255.6 253.6-81.1-68.5 57.6 98z"
           fill="#fec74a"
           fillRule="evenodd"
           stroke="#d8aa3f"
           strokeWidth={1.7}
         />
         <path
-          d="M146 218.9l87 71.9 13.4-37.6z"
+          d="m146 218.9 87 71.9 13.4-37.6z"
           fill="#fec74a"
           fillRule="evenodd"
           stroke="#d8aa3f"
           strokeWidth={1.7}
         />
         <path
-          d="M232.1 260.9l-102.3-1.5 101.9 34z"
+          d="m232.1 260.9-102.3-1.5 101.9 34z"
           fill="#fec74a"
           fillRule="evenodd"
           stroke="#d8aa3f"
           strokeWidth={1.7}
         />
         <path
-          d="M315.1 279.2a61.4 61.4 0 11-122.7 0 61.4 61.4 0 01122.7 0z"
+          d="M315.1 279.2a61.4 61.4 0 1 1-122.7 0 61.4 61.4 0 0 1 122.7 0z"
           fill="#fec74a"
           fillRule="evenodd"
           stroke="#d8aa3f"
@@ -170,14 +169,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           fillRule="evenodd"
         />
         <path
-          d="M136.8 76c61-4.2 50-9.4 74.5-13.4 31 4.3 34.5 23 51.8 34.5 0 0-6.5 22-27.7 18.9-2.9-8.8 10.2-11.6-27.5-34.6-22-1.3-61.3 3.9-71-5.4zm189.3 33.9l-44 1.8v10.9c29.7 1 35-3 44-12.7z"
+          d="M136.8 76c61-4.2 50-9.4 74.5-13.4 31 4.3 34.5 23 51.8 34.5 0 0-6.5 22-27.7 18.9-2.9-8.8 10.2-11.6-27.5-34.6-22-1.3-61.3 3.9-71-5.4zm189.3 33.9-44 1.8v10.9c29.7 1 35-3 44-12.7z"
           fill="#ffc84b"
           fillRule="evenodd"
           stroke="#d8aa3f"
           strokeWidth={1.8}
         />
         <path
-          d="M174.8 108c7.7-3.9 11.5-2.3 18.2-2.5 4.5 8.3 8.8 9 18.8 10a49.5 49.5 0 0039.9 21.8c29.9-.8 39.4-21.7 59.5-24h21.2c-3.5-6-6.3-9.5-14-9.9-15.8-.8-36.2-.4-54 3.6l-25.1 6.3c-7.4-3.6-25.3-22.4-36.8-22-6.7 1.8-6.7 4.1-10 6.7-6.5 2.8-13 1.4-17.7 10z"
+          d="M174.8 108c7.7-3.9 11.5-2.3 18.2-2.5 4.5 8.3 8.8 9 18.8 10a49.5 49.5 0 0 0 39.9 21.8c29.9-.8 39.4-21.7 59.5-24h21.2c-3.5-6-6.3-9.5-14-9.9-15.8-.8-36.2-.4-54 3.6l-25.1 6.3c-7.4-3.6-25.3-22.4-36.8-22-6.7 1.8-6.7 4.1-10 6.7-6.5 2.8-13 1.4-17.7 10z"
           fill="#ffc84b"
           fillRule="evenodd"
           stroke="#d8aa3f"
@@ -185,7 +184,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           strokeWidth={1.7}
         />
         <path
-          d="M205.1 99a3.2 3.2 0 11-6.3 0 3.2 3.2 0 016.3 0z"
+          d="M205.1 99a3.2 3.2 0 1 1-6.3 0 3.2 3.2 0 0 1 6.3 0z"
           fill="#ffc84b"
           fillRule="evenodd"
           stroke="#d8aa3f"
@@ -199,7 +198,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           strokeWidth={1.8}
         />
         <path
-          d="M317.9 72.5L351 74m-36.7 4l24.1 2"
+          d="M317.9 72.5 351 74m-36.7 4 24.1 2"
           fill="none"
           stroke="#d9a43e"
           strokeLinecap="round"
@@ -209,11 +208,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const KIFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 KIFlagIcon.displayName = 'KIFlagIcon';
