@@ -6,6 +6,7 @@ const { basename, join } = require('path');
 const { rimraf } = require('rimraf');
 const asyncPool = require('tiny-async-pool');
 
+const removeInkscapeAttrs = require('./removeInkscapeAttrs.plugin');
 const config = require('./svgr-flags.config');
 
 const SOURCE = join(
@@ -49,6 +50,7 @@ async function convertToReactComponent(filePath, iconName) {
             },
           },
           'removeXMLNS',
+          removeInkscapeAttrs,
         ],
       },
     },
