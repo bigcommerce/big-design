@@ -1,4 +1,4 @@
-const { default: svgr } = require('@svgr/core');
+const { transform } = require('@svgr/core');
 const { outputFile, readFile } = require('fs-extra');
 const glob = require('glob-promise');
 const { cpus } = require('os');
@@ -27,7 +27,7 @@ async function convertToReactComponent(filePath, iconName) {
   const svgCode = await readFile(filePath, 'utf8');
   const destPath = join(DEST_PATH, `${iconName}.tsx`);
 
-  const code = await svgr(
+  const code = await transform(
     svgCode,
     {
       ...config,
@@ -35,12 +35,20 @@ async function convertToReactComponent(filePath, iconName) {
       svgoConfig: {
         plugins: [
           {
-            prefixIds: {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                removeViewBox: false,
+              },
+            },
+          },
+          {
+            name: 'prefixIds',
+            params: {
               prefix: iconName,
             },
-            removeViewBox: false,
-            removeXMLNS: true,
           },
+          'removeXMLNS',
         ],
       },
     },

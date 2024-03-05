@@ -1,63 +1,57 @@
 const prettierConfig = require('../../../prettier.config');
 
+/** @type {import('@svgr/core').Config} */
 module.exports = {
   titleProp: true,
-  ref: true,
-  ext: 'tsx',
+  ref: false,
+  typescript: true,
+  prettier: true,
   svgProps: {
     stroke: 'currentColor',
     fill: 'currentColor',
     strokeWidth: '0',
     'aria-hidden': '{ariaHidden}',
+    ref: '{svgRef}',
   },
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
-  template({ template }, _, { componentName, jsx }) {
-    const code = `
-    // **********************************
-    // Auto-generated file, do NOT modify
-    // **********************************
-    import React, { forwardRef, memo, useId } from 'react';
-    BREAK
+  template: (variables, { tpl }) => {
+    return tpl`
+      // **********************************
+      // Auto-generated file, do NOT modify
+      // **********************************
+      import React, { forwardRef, memo, useId } from 'react';
 
-    import { createStyledIcon, IconProps, PrivateIconProps } from '../base';
-    BREAK
+      import { createStyledIcon, IconProps, PrivateIconProps } from '../base';
 
-    const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ...props }) => {
-      const uniqueTitleId = useId();
-      const titleId = title ? props.titleId || uniqueTitleId : undefined;
-      const ariaHidden = titleId ? undefined : true;
+      const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ...props }) => {
+        const uniqueTitleId = useId();
+        const titleId = title ? props.titleId || uniqueTitleId : undefined;
+        const ariaHidden = titleId ? undefined : true;
 
-      BREAK
-      return (
-        JSX
-      );
-    };
+        return (
+          ${variables.jsx}
+        );
+      };
 
-    BREAK
-    const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => <Icon {...iconProps} svgRef={ref} />);
+      const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => <Icon {...iconProps} svgRef={ref} />);
 
-    BREAK
-    export const COMPONENT_NAME = memo(createStyledIcon(IconWithForwardedRef));
+      export const ${variables.componentName} = memo(createStyledIcon(IconWithForwardedRef));
 
-    BREAK
-    COMPONENT_NAME.displayName = '${componentName.name}';
-    `;
-
-    const typeScriptTpl = template.smart(code, {
-      plugins: ['jsx', 'typescript'],
-      preserveComments: true,
-      placeholderPattern: false,
-      placeholderWhitelist: new Set(['BREAK', 'COMPONENT_NAME', 'JSX']),
-    });
-
-    return typeScriptTpl({
-      COMPONENT_NAME: componentName,
-      BREAK: '\n',
-      JSX: jsx,
-    });
+      ${variables.componentName}.displayName = '${variables.componentName}';
+  `;
   },
   svgoConfig: {
-    plugins: [{ removeViewBox: false, removeXMLNS: true }],
+    plugins: [
+      {
+        name: 'preset-default',
+        params: {
+          overrides: {
+            removeViewBox: false,
+          },
+        },
+      },
+      'removeXMLNS',
+    ],
   },
   prettierConfig: {
     ...prettierConfig,
