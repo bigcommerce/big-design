@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -37,7 +36,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         fill="#ee1c25"
       />
       <path
-        d="M241.4 209c10.7.2 31.6.6 50.1-5.6 0 0-.4 6.7-.4 14.4s.5 14.4.5 14.4c-17-5.7-38.1-5.8-50.2-5.7v41.2h-16.8v-41.2c-12-.1-33.1 0-50.1 5.7 0 0 .5-6.7.5-14.4 0-7.8-.5-14.4-.5-14.4 18.5 6.2 39.4 5.8 50 5.6v-25.9c-9.7 0-23.7.4-39.6 5.7 0 0 .5-6.6.5-14.4 0-7.7-.5-14.4-.5-14.4 15.9 5.3 29.9 5.8 39.6 5.7-.5-16.4-5.3-37-5.3-37s9.9.7 13.8.7c4 0 13.8-.7 13.8-.7s-4.8 20.6-5.3 37c9.7.1 23.7-.4 39.6-5.7 0 0-.5 6.7-.5 14.4 0 7.8.5 14.4.5 14.4a119 119 0 00-39.7-5.7v26z"
+        d="M241.4 209c10.7.2 31.6.6 50.1-5.6 0 0-.4 6.7-.4 14.4s.5 14.4.5 14.4c-17-5.7-38.1-5.8-50.2-5.7v41.2h-16.8v-41.2c-12-.1-33.1 0-50.1 5.7 0 0 .5-6.7.5-14.4 0-7.8-.5-14.4-.5-14.4 18.5 6.2 39.4 5.8 50 5.6v-25.9c-9.7 0-23.7.4-39.6 5.7 0 0 .5-6.6.5-14.4 0-7.7-.5-14.4-.5-14.4 15.9 5.3 29.9 5.8 39.6 5.7-.5-16.4-5.3-37-5.3-37s9.9.7 13.8.7c4 0 13.8-.7 13.8-.7s-4.8 20.6-5.3 37c9.7.1 23.7-.4 39.6-5.7 0 0-.5 6.7-.5 14.4 0 7.8.5 14.4.5 14.4a119 119 0 0 0-39.7-5.7v26z"
         fill="#fff"
       />
       <path
@@ -47,11 +46,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const SKFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 SKFlagIcon.displayName = 'SKFlagIcon';

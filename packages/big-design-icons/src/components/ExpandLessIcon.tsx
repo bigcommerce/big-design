@@ -24,16 +24,14 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M11.29 8.71L6.7 13.3a.996.996 0 101.41 1.41L12 10.83l3.88 3.88a.996.996 0 101.41-1.41L12.7 8.71a.996.996 0 00-1.41 0z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M11.29 8.71 6.7 13.3a.996.996 0 1 0 1.41 1.41L12 10.83l3.88 3.88a.996.996 0 1 0 1.41-1.41L12.7 8.71a.996.996 0 0 0-1.41 0" />
     </svg>
   );
 };
-
 const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => (
   <Icon {...iconProps} svgRef={ref} />
 ));
 
 export const ExpandLessIcon = memo(createStyledIcon(IconWithForwardedRef));
-
 ExpandLessIcon.displayName = 'ExpandLessIcon';

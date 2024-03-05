@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -27,14 +26,14 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <defs>
-        <path d="M0-21l12.3 38L-20-6.5h40L-12.3 17z" fill="#fff" id="TFFlagIcon__a" />
+        <path d="m0-21 12.3 38L-20-6.5h40L-12.3 17z" fill="#fff" id="TFFlagIcon__a" />
       </defs>
       <path d="M0 0h640v480H0z" fill="#002395" />
       <path d="M0 0h292.8v196.8H0z" fill="#fff" />
       <path d="M0 0h96v192H0z" fill="#002395" />
       <path d="M192 0h96v192h-96z" fill="#ed2939" />
       <path
-        d="M426 219.6l15.4 24.6h44V330l-33-51.6-44.4 70.8h21.6l22.8-40.8 46.8 84 46.8-84 22.8 40.8h21.6L546 278.4 513 330v-47.4h19.8l14.7-23.4H513v-15h44l15.4-24.6zm51.6 105h-48v16.8h48zm91.2 0h-48v16.8h48z"
+        d="m426 219.6 15.4 24.6h44V330l-33-51.6-44.4 70.8h21.6l22.8-40.8 46.8 84 46.8-84 22.8 40.8h21.6L546 278.4 513 330v-47.4h19.8l14.7-23.4H513v-15h44l15.4-24.6zm51.6 105h-48v16.8h48zm91.2 0h-48v16.8h48z"
         fill="#fff"
       />
       <use
@@ -80,11 +79,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const TFFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 TFFlagIcon.displayName = 'TFFlagIcon';

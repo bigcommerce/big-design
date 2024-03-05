@@ -1,4 +1,4 @@
-const { default: svgr } = require('@svgr/core');
+const { transform } = require('@svgr/core');
 const camelcase = require('camelcase');
 const { outputFile, readFile } = require('fs-extra');
 const glob = require('glob-promise');
@@ -17,7 +17,7 @@ const componentNames = new Set();
 async function convertToReactComponent(filePath, iconName) {
   const svgCode = await readFile(filePath, 'utf8');
   const destPath = join(DEST_PATH, `${iconName}.tsx`);
-  const code = await svgr(svgCode, config, { componentName: iconName });
+  const code = await transform(svgCode, config, { componentName: iconName });
 
   return outputFile(destPath, code);
 }

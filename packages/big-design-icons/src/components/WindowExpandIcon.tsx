@@ -24,16 +24,14 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M6 19a1 1 0 01-1-1v-4a1 1 0 112 0v3h3a1 1 0 110 2H6zm12-8a1 1 0 01-1-1V7h-3a1 1 0 110-2h4a1 1 0 011 1v4a1 1 0 01-1 1z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M6 19a1 1 0 0 1-1-1v-4a1 1 0 1 1 2 0v3h3a1 1 0 1 1 0 2zm12-8a1 1 0 0 1-1-1V7h-3a1 1 0 1 1 0-2h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1" />
     </svg>
   );
 };
-
 const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => (
   <Icon {...iconProps} svgRef={ref} />
 ));
 
 export const WindowExpandIcon = memo(createStyledIcon(IconWithForwardedRef));
-
 WindowExpandIcon.displayName = 'WindowExpandIcon';

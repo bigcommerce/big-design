@@ -2,59 +2,41 @@ const prettierConfig = require('../../../prettier.config');
 
 module.exports = {
   titleProp: true,
-  ref: true,
-  ext: 'tsx',
+  ref: false,
+  typescript: true,
+  prettier: true,
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
   svgProps: {
     'aria-hidden': '{ariaHidden}',
+    ref: '{svgRef}',
   },
-  template({ template }, _, { componentName, jsx }) {
-    const flagName = componentName.name.replace('FlagIcon', '');
+  template: (variables, { tpl }) => {
+    const flagTitle = `${variables.componentName.replace('FlagIcon', '')} flag`;
 
-    const code = `
-    // **********************************
-    // Auto-generated file, do NOT modify
-    // **********************************
-    import React, { forwardRef, memo, useId } from 'react';
-    BREAK
+    return tpl`
+      // **********************************
+      // Auto-generated file, do NOT modify
+      // **********************************
+      import React, { forwardRef, memo, useId } from 'react';
 
-    import { PrivateIconProps } from '../../base';
-    import { createStyledFlagIcon, FlagIconProps } from '../base';
-    BREAK
+      import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
-    const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = '${flagName} flag', theme, ...props }) => {
-      const uniqueTitleId = useId();
-      const titleId = title ? props.titleId || uniqueTitleId : undefined;
-      const ariaHidden = titleId ? undefined : true;
+      const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({ svgRef, title = '${flagTitle}', theme, ...props }) => {
+        const uniqueTitleId = useId();
+        const titleId = title ? props.titleId || uniqueTitleId : undefined;
+        const ariaHidden = titleId ? undefined : true;
 
-      BREAK
-      return (
-        JSX
-      );
-    };
+        return (
+          ${variables.jsx}
+        );
+      };
 
-    BREAK
-    const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => <FlagIcon {...iconProps} svgRef={ref} />);
+      const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => <FlagIcon {...iconProps} svgRef={ref} />);
 
-    BREAK
-    export const COMPONENT_NAME = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
+      export const ${variables.componentName} = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
 
-    BREAK
-    COMPONENT_NAME.displayName = '${componentName.name}';
-    `;
-
-    const typeScriptTpl = template.smart(code, {
-      plugins: ['jsx', 'typescript'],
-      preserveComments: true,
-      placeholderPattern: false,
-      placeholderWhitelist: new Set(['BREAK', 'COMPONENT_NAME', 'JSX']),
-    });
-
-    return typeScriptTpl({
-      COMPONENT_NAME: componentName,
-      BREAK: '\n',
-      JSX: jsx,
-    });
+      ${variables.componentName}.displayName = '${variables.componentName}';
+  `;
   },
   prettierConfig: {
     ...prettierConfig,

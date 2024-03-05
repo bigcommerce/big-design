@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -30,20 +29,20 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
         <g id="NZFlagIcon__b">
           <g id="NZFlagIcon__a">
             <path d="M0-.3v.5l1-.5z" />
-            <path d="M.2.3L0-.1l1-.2z" />
+            <path d="M.2.3 0-.1l1-.2z" />
           </g>
           <use transform="scale(-1 1)" xlinkHref="#NZFlagIcon__a" />
           <use transform="rotate(72 0 0)" xlinkHref="#NZFlagIcon__a" />
           <use transform="rotate(-72 0 0)" xlinkHref="#NZFlagIcon__a" />
-          <use transform="scale(-1 1) rotate(72)" xlinkHref="#NZFlagIcon__a" />
+          <use transform="scale(-1 1)rotate(72)" xlinkHref="#NZFlagIcon__a" />
         </g>
       </defs>
       <path d="M0 0h640v480H0z" fill="#00247d" fillRule="evenodd" />
-      <g transform="translate(-111 36.1) scale(.66825)">
+      <g transform="translate(-111 36.1)scale(.66825)">
         <use
           fill="#fff"
           height="100%"
-          transform="matrix(45.4 0 0 45.4 900 120)"
+          transform="translate(900 120)scale(45.4)"
           width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
@@ -55,43 +54,43 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           xlinkHref="#NZFlagIcon__b"
         />
       </g>
-      <g transform="rotate(82 525.2 114.6) scale(.66825)">
+      <g transform="rotate(82 525.2 114.6)scale(.66825)">
         <use
           fill="#fff"
           height="100%"
-          transform="rotate(-82 519 -457.7) scale(40.4)"
+          transform="rotate(-82 519 -457.7)scale(40.4)"
           width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
         <use
           fill="#cc142b"
           height="100%"
-          transform="rotate(-82 519 -457.7) scale(25)"
+          transform="rotate(-82 519 -457.7)scale(25)"
           width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
       </g>
-      <g transform="rotate(82 525.2 114.6) scale(.66825)">
+      <g transform="rotate(82 525.2 114.6)scale(.66825)">
         <use
           fill="#fff"
           height="100%"
-          transform="rotate(-82 668.6 -327.7) scale(45.4)"
+          transform="rotate(-82 668.6 -327.7)scale(45.4)"
           width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
         <use
           fill="#cc142b"
           height="100%"
-          transform="rotate(-82 668.6 -327.7) scale(30)"
+          transform="rotate(-82 668.6 -327.7)scale(30)"
           width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
       </g>
-      <g transform="translate(-111 36.1) scale(.66825)">
+      <g transform="translate(-111 36.1)scale(.66825)">
         <use
           fill="#fff"
           height="100%"
-          transform="matrix(50.4 0 0 50.4 900 480)"
+          transform="translate(900 480)scale(50.4)"
           width="100%"
           xlinkHref="#NZFlagIcon__b"
         />
@@ -105,11 +104,11 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       </g>
       <path d="M0 0h320v240H0z" fill="#012169" />
       <path
-        d="M37.5 0l122 90.5L281 0h39v31l-120 89.5 120 89V240h-40l-120-89.5L40.5 240H0v-30l119.5-89L0 32V0z"
+        d="m37.5 0 122 90.5L281 0h39v31l-120 89.5 120 89V240h-40l-120-89.5L40.5 240H0v-30l119.5-89L0 32V0z"
         fill="#fff"
       />
       <path
-        d="M212 140.5L320 220v20l-135.5-99.5zm-92 10l3 17.5-96 72H0zM320 0v1.5l-124.5 94 1-22L295 0zM0 0l119.5 88h-30L0 21z"
+        d="M212 140.5 320 220v20l-135.5-99.5zm-92 10 3 17.5-96 72H0zM320 0v1.5l-124.5 94 1-22L295 0zM0 0l119.5 88h-30L0 21z"
         fill="#c8102e"
       />
       <path d="M120.5 0v240h80V0zM0 80v80h320V80z" fill="#fff" />
@@ -117,11 +116,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const NZFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 NZFlagIcon.displayName = 'NZFlagIcon';

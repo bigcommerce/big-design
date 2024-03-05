@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -27,7 +26,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       {title ? <title id={titleId}>{title}</title> : null}
       <path d="M0 0h640v480H0z" fill="#D52B1E" />
       <path
-        d="M0 0h53.1l133.4 100.1 133.5 100L586.9 0H640v39.9l-133.4 100L373.2 240 640 440.2V480h-53.1L453.5 380A69411.7 69411.7 0 00320 279.9L53.1 480H0v-39.8l133.4-100.1L266.8 240 0 39.9v-20z"
+        d="M0 0h53.1l133.4 100.1 133.5 100L586.9 0H640v39.9l-133.4 100L373.2 240 640 440.2V480h-53.1L453.5 380A69412 69412 0 0 0 320 279.9L53.1 480H0v-39.8l133.4-100.1L266.8 240 0 39.9v-20z"
         fill="#009B48"
       />
       <path
@@ -37,11 +36,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const ESPVFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 ESPVFlagIcon.displayName = 'ESPVFlagIcon';

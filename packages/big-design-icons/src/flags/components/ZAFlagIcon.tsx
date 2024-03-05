@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -30,10 +29,10 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
           <path d="M-71.9 0h682.7v512H-71.9z" fillOpacity={0.7} />
         </clipPath>
       </defs>
-      <g clipPath="url(#ZAFlagIcon__a)" transform="translate(67.4) scale(.93748)">
+      <g clipPath="url(#ZAFlagIcon__a)" transform="translate(67.4)scale(.93748)">
         <g fillRule="evenodd" strokeWidth="1pt">
           <path d="M-71.9 407.8V104.4L154 256.1z" fill="#000001" />
-          <path d="M82.2 512.1l253.6-170.6H696V512H82.2z" fill="#000c8a" />
+          <path d="m82.2 512.1 253.6-170.6H696V512H82.2z" fill="#000c8a" />
           <path d="M66 0h630v170.8H335.7S69.3-1.7 66 0" fill="#e1392d" />
           <path d="M-71.9 64v40.4L154 256-72 407.8v40.3l284.5-192z" fill="#ffb915" />
           <path
@@ -49,11 +48,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const ZAFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 ZAFlagIcon.displayName = 'ZAFlagIcon';

@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -32,12 +31,12 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       <path d="M0 163.2h640v153.6H0z" fill="#fff" />
       <circle cx={134.4} cy={76.8} fill="#fff" r={57.6} />
       <circle cx={153.6} cy={76.8} fill="#0099b5" r={57.6} />
-      <g fill="#fff" transform="matrix(1.92 0 0 1.92 261.1 122.9)">
+      <g fill="#fff" transform="translate(261.1 122.9)scale(1.92)">
         <g id="UZFlagIcon__e">
           <g id="UZFlagIcon__d">
             <g id="UZFlagIcon__c">
               <g id="UZFlagIcon__b">
-                <path d="M0-6L-1.9-.3 1 .7" id="UZFlagIcon__a" />
+                <path d="M0-6-1.9-.3 1 .7" id="UZFlagIcon__a" />
                 <use
                   height="100%"
                   transform="scale(-1 1)"
@@ -62,11 +61,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const UZFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 UZFlagIcon.displayName = 'UZFlagIcon';

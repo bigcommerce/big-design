@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -27,7 +26,7 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       {title ? <title id={titleId}>{title}</title> : null}
       <path d="M640 0H0v480h640z" fill="#c1272d" />
       <path
-        d="M320 179.4L284.4 289l93.2-67.6H262.4l93.2 67.6z"
+        d="M320 179.4 284.4 289l93.2-67.6H262.4l93.2 67.6z"
         fill="none"
         stroke="#006233"
         strokeWidth={11.7}
@@ -35,11 +34,9 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const MAFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 MAFlagIcon.displayName = 'MAFlagIcon';

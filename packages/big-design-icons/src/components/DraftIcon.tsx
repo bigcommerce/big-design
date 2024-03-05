@@ -24,15 +24,13 @@ const Icon: React.FC<IconProps & PrivateIconProps> = ({ svgRef, title, theme, ..
       {...props}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <path d="M220-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220zm331-554v-186H220v680h520v-494H551zM220-820v186-186 680-680z" />
+      <path d="M220-80q-24 0-42-18t-18-42v-680q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18zm331-554v-186H220v680h520v-494zM220-820v186zv680z" />
     </svg>
   );
 };
-
 const IconWithForwardedRef = forwardRef<SVGSVGElement, IconProps>((iconProps, ref) => (
   <Icon {...iconProps} svgRef={ref} />
 ));
 
 export const DraftIcon = memo(createStyledIcon(IconWithForwardedRef));
-
 DraftIcon.displayName = 'DraftIcon';

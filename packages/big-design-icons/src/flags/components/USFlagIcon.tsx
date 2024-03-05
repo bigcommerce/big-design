@@ -3,8 +3,7 @@
 // **********************************
 import React, { forwardRef, memo, useId } from 'react';
 
-import { PrivateIconProps } from '../../base';
-import { createStyledFlagIcon, FlagIconProps } from '../base';
+import { createStyledFlagIcon, FlagIconProps, PrivateIconProps } from '../base';
 
 const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
   svgRef,
@@ -33,21 +32,19 @@ const FlagIcon: React.FC<FlagIconProps & PrivateIconProps> = ({
       />
       <path d="M0 0h364.8v258.5H0" fill="#192f5d" />
       <marker id="USFlagIcon__a" markerHeight={30} markerWidth={30}>
-        <path d="M14 0l9 27L0 10h28L5 27z" fill="#fff" />
+        <path d="m14 0 9 27L0 10h28L5 27z" fill="#fff" />
       </marker>
       <path
-        d="M0 0l16 11h61 61 61 61 60L47 37h61 61 60 61L16 63h61 61 61 61 60L47 89h61 61 60 61L16 115h61 61 61 61 60L47 141h61 61 60 61L16 166h61 61 61 61 60L47 192h61 61 60 61L16 218h61 61 61 61 60z"
+        d="m0 0 16 11h61 61 61 61 60L47 37h61 61 60 61L16 63h61 61 61 61 60L47 89h61 61 60 61L16 115h61 61 61 61 60L47 141h61 61 60 61L16 166h61 61 61 61 60L47 192h61 61 60 61L16 218h61 61 61 61 60z"
         fill="none"
         markerMid="url(#USFlagIcon__a)"
       />
     </svg>
   );
 };
-
 const FlagIconWithForwardedRef = forwardRef<SVGSVGElement, FlagIconProps>((iconProps, ref) => (
   <FlagIcon {...iconProps} svgRef={ref} />
 ));
 
 export const USFlagIcon = memo(createStyledFlagIcon(FlagIconWithForwardedRef));
-
 USFlagIcon.displayName = 'USFlagIcon';
