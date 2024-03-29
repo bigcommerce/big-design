@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, memo } from 'react';
+import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { warning } from '../../utils';
 
@@ -11,7 +11,7 @@ export interface TabItem {
   disabled?: boolean;
 }
 
-export interface TabsProps extends HTMLAttributes<HTMLDivElement> {
+export interface TabsProps extends ComponentPropsWithoutRef<'div'> {
   activeTab?: TabItem['id'];
   children?: React.ReactNode;
   items?: TabItem[];

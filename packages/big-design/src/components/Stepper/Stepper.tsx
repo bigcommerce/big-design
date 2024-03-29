@@ -1,10 +1,10 @@
-import React, { HTMLAttributes, memo } from 'react';
+import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { Flex } from '../Flex';
 
 import { Step } from './Step';
 
-export interface StepperProps extends HTMLAttributes<HTMLDivElement> {
+export interface StepperProps extends ComponentPropsWithoutRef<'div'> {
   steps: string[];
   currentStep: number;
 }

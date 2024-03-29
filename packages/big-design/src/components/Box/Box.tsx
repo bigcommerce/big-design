@@ -1,12 +1,12 @@
 import { Border, BorderRadius, Colors, Shadow, ZIndex } from '@bigcommerce/big-design-theme';
-import React, { forwardRef, HTMLAttributes, memo } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, memo } from 'react';
 
 import { DisplayProps, MarginProps, PaddingProps } from '../../mixins';
 
 import { StyledBox } from './styled';
 
 export interface BoxProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends ComponentPropsWithoutRef<'div'>,
     DisplayProps,
     MarginProps,
     PaddingProps {

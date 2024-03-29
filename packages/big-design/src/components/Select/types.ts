@@ -1,10 +1,10 @@
 import { Placement } from '@popperjs/core';
-import React, { LiHTMLAttributes, RefObject } from 'react';
+import React, { ComponentPropsWithoutRef, RefObject } from 'react';
 
 import { InputProps } from '../Input';
 import { InputLocalization } from '../Input/Input';
 
-interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children' | 'value'> {
+interface BaseSelect extends Omit<ComponentPropsWithoutRef<'input'>, 'children' | 'value'> {
   action?: SelectAction;
   autoComplete?: string;
   autoWidth?: boolean;
@@ -31,7 +31,7 @@ export interface SelectProps<T> extends BaseSelect {
   onOptionChange(value?: T, option?: SelectOption<T>): void;
 }
 
-interface BaseItem extends Omit<LiHTMLAttributes<HTMLLIElement>, 'value'> {
+interface BaseItem extends Omit<ComponentPropsWithoutRef<'li'>, 'value'> {
   content: string;
   description?: string;
   disabled?: boolean;

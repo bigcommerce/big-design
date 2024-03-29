@@ -1,6 +1,6 @@
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import { UseSelectPropGetters } from 'downshift';
-import React, { forwardRef, LiHTMLAttributes, memo, Ref } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
@@ -10,7 +10,7 @@ import { SelectAction, SelectOption } from '../../Select';
 import { Content } from './Content';
 import { StyledListItem } from './styled';
 
-export interface ListItemProps<T> extends LiHTMLAttributes<HTMLLIElement> {
+export interface ListItemProps<T> extends ComponentPropsWithoutRef<'li'> {
   actionType?: 'normal' | 'destructive';
   autoWidth?: boolean;
   disabled?: boolean;

@@ -1,9 +1,9 @@
 import { State } from '@popperjs/core';
 import { UseSelectPropGetters } from 'downshift';
 import React, {
+  ComponentPropsWithoutRef,
   forwardRef,
   Fragment,
-  HTMLAttributes,
   memo,
   Ref,
   useCallback,
@@ -22,7 +22,7 @@ import { ListGroupSeparator } from './GroupSeparator';
 import { ListItem } from './Item';
 import { StyledList } from './styled';
 
-export interface ListProps<T> extends HTMLAttributes<HTMLUListElement> {
+export interface ListProps<T> extends ComponentPropsWithoutRef<'ul'> {
   action?: SelectAction;
   autoWidth: boolean;
   filteredItems?: Array<SelectOption<T> | SelectAction>;

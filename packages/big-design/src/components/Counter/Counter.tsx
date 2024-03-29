@@ -1,10 +1,9 @@
 import { AddCircleOutlineIcon, RemoveCircleOutlineIcon } from '@bigcommerce/big-design-icons';
 import React, {
   cloneElement,
+  ComponentPropsWithoutRef,
   forwardRef,
-  InputHTMLAttributes,
   isValidElement,
-  LabelHTMLAttributes,
   Ref,
   useEffect,
   useId,
@@ -30,7 +29,7 @@ const defaultLocalization: Localization = {
   optional: 'optional',
 };
 
-export interface CounterProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface CounterProps extends ComponentPropsWithoutRef<'input'> {
   label?: React.ReactNode;
   labelId?: string;
   description?: React.ReactNode;
@@ -172,7 +171,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       }
 
       if (
-        isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+        isValidElement<ComponentPropsWithoutRef<'label'>>(label) &&
         label.type === FormControlLabel
       ) {
         return cloneElement(label, {

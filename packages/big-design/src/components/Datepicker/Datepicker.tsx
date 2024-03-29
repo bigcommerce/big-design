@@ -1,4 +1,4 @@
-import React, { forwardRef, memo, Ref, useEffect, useState } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref, useEffect, useState } from 'react';
 import { default as ReactDatePicker, registerLocale } from 'react-datepicker';
 
 import { createLocalizationProvider } from '../../utils';
@@ -21,7 +21,7 @@ export interface PrivateProps {
   forwardedRef: Ref<ReactDatePicker>;
 }
 
-export type DatepickerProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
+export type DatepickerProps = Props & ComponentPropsWithoutRef<'input'>;
 
 const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
   dateFormat = 'EE, dd MMM, yyyy',

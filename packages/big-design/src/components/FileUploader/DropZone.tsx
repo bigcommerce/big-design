@@ -5,8 +5,8 @@ import {
 } from '@bigcommerce/big-design-icons';
 import React, {
   ChangeEvent,
+  ComponentPropsWithoutRef,
   DragEvent,
-  InputHTMLAttributes,
   useCallback,
   useMemo,
   useRef,
@@ -25,7 +25,7 @@ export interface DropZoneLocalization {
   upload: string;
 }
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+interface Props extends ComponentPropsWithoutRef<'input'> {
   description?: string;
   icon?: React.ReactNode;
   label?: string;

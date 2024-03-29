@@ -1,4 +1,4 @@
-import React, { memo, TdHTMLAttributes } from 'react';
+import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { PaddingProps } from '../../../mixins';
 import { TableColumnDisplayProps } from '../mixins';
@@ -6,7 +6,7 @@ import { TableColumnDisplayProps } from '../mixins';
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 
 export interface DataCellProps
-  extends TdHTMLAttributes<HTMLTableCellElement>,
+  extends ComponentPropsWithoutRef<'td'>,
     TableColumnDisplayProps,
     PaddingProps {
   align?: 'left' | 'center' | 'right';

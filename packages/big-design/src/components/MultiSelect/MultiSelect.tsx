@@ -6,9 +6,9 @@ import {
 } from 'downshift';
 import React, {
   cloneElement,
+  ComponentPropsWithoutRef,
   createRef,
   isValidElement,
-  LabelHTMLAttributes,
   RefObject,
   useCallback,
   useEffect,
@@ -355,7 +355,7 @@ export const MultiSelect = typedMemo(
       }
 
       if (
-        isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+        isValidElement<ComponentPropsWithoutRef<'label'>>(label) &&
         label.type === FormControlLabel
       ) {
         return cloneElement(label, getLabelProps());

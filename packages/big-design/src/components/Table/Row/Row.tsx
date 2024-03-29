@@ -1,5 +1,5 @@
 import { DragIndicatorIcon } from '@bigcommerce/big-design-icons';
-import React, { forwardRef, TableHTMLAttributes } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { Checkbox } from '../../Checkbox';
@@ -8,7 +8,7 @@ import { TableColumn, TableItem } from '../types';
 
 import { StyledTableRow } from './styled';
 
-export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
+export interface RowProps<T> extends ComponentPropsWithoutRef<'tr'> {
   columns: Array<TableColumn<T>>;
   headerCellWidths: Array<number | string>;
   item: T;

@@ -1,8 +1,8 @@
 import React, {
   cloneElement,
+  ComponentPropsWithoutRef,
   forwardRef,
   isValidElement,
-  LabelHTMLAttributes,
   Ref,
   useId,
   useMemo,
@@ -35,7 +35,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLInputElement>;
 }
 
-export type InputProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
+export type InputProps = Props & ComponentPropsWithoutRef<'input'>;
 
 const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   chips,
@@ -88,7 +88,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     }
 
     if (
-      isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+      isValidElement<ComponentPropsWithoutRef<'label'>>(label) &&
       label.type === FormControlLabel
     ) {
       return cloneElement(label, {

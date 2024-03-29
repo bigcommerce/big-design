@@ -1,10 +1,10 @@
-import React, { memo } from 'react';
+import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { HR } from '../../Typography';
 
 import { StyledListItem } from './styled';
 
-export const ListGroupSeparator: React.FC<React.LiHTMLAttributes<HTMLLIElement>> = memo(() => (
+export const ListGroupSeparator: React.FC<ComponentPropsWithoutRef<'li'>> = memo(() => (
   <StyledListItem aria-hidden={true} onMouseDown={preventFocus} tabIndex={-1}>
     <HR marginVertical="xSmall" />
   </StyledListItem>

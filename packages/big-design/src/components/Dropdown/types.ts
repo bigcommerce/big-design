@@ -1,7 +1,7 @@
 import { Placement } from '@popperjs/core';
-import { LiHTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
-export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'children'> {
+export interface DropdownProps extends Omit<ComponentPropsWithoutRef<'ul'>, 'children'> {
   autoWidth?: boolean;
   disabled?: boolean;
   items: Array<DropdownItem | DropdownLinkItem> | DropdownItemGroup[];
@@ -11,7 +11,7 @@ export interface DropdownProps extends Omit<React.HTMLAttributes<HTMLUListElemen
   toggle: React.ReactElement<unknown>;
 }
 
-interface BaseItem extends Omit<LiHTMLAttributes<HTMLLIElement>, 'value'> {
+interface BaseItem extends Omit<ComponentPropsWithoutRef<'li'>, 'value'> {
   actionType?: 'normal' | 'destructive';
   content: string;
   description?: string;

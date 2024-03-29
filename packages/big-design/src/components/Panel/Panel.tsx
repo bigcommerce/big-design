@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes, isValidElement, memo, Ref } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, isValidElement, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { excludePaddingProps } from '../../mixins/paddings/paddings';
@@ -18,7 +18,7 @@ export interface PanelAction extends Omit<ButtonProps, 'children'> {
   text?: string;
 }
 
-export interface PanelProps extends HTMLAttributes<HTMLElement>, MarginProps {
+export interface PanelProps extends ComponentPropsWithoutRef<'div'>, MarginProps {
   children?: React.ReactNode;
   description?: React.ReactNode;
   header?: string;

@@ -1,4 +1,4 @@
-import React, { ReactNode, TableHTMLAttributes } from 'react';
+import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { PaginationProps } from '../Pagination';
@@ -61,7 +61,7 @@ interface Localization {
   descendingOrder: string;
 }
 
-export interface TableProps<T> extends TableHTMLAttributes<HTMLTableElement> {
+export interface TableProps<T> extends ComponentPropsWithoutRef<'table'> {
   actions?: React.ReactNode;
   columns: Array<TableColumn<T>>;
   emptyComponent?: React.ReactElement;

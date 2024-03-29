@@ -3,7 +3,7 @@ import {
   ArrowUpwardIcon,
   BaselineHelpIcon,
 } from '@bigcommerce/big-design-icons';
-import React, { memo, RefObject, TableHTMLAttributes, useId } from 'react';
+import React, { ComponentPropsWithoutRef, memo, RefObject, useId } from 'react';
 
 import { useComponentSize } from '../../../hooks';
 import { typedMemo } from '../../../utils';
@@ -20,7 +20,7 @@ interface Localization {
 }
 
 export interface HeaderCellProps<T>
-  extends TableHTMLAttributes<HTMLTableCellElement>,
+  extends ComponentPropsWithoutRef<'th'>,
     TableColumnDisplayProps {
   actionsRef: RefObject<HTMLDivElement>;
   children?: React.ReactNode;

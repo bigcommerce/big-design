@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import { FormProps } from '../Form';
 import { InputProps } from '../Input';
@@ -7,7 +7,7 @@ export interface SearchLocalization {
   search: string;
 }
 
-export interface SearchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onSubmit'> {
+export interface SearchProps extends Omit<ComponentPropsWithoutRef<'input'>, 'onSubmit'> {
   localization?: SearchLocalization;
   value: InputProps['value'];
   onChange: InputProps['onChange'];

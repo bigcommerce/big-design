@@ -1,5 +1,12 @@
 import { Placement } from '@popperjs/core';
-import React, { cloneElement, HTMLAttributes, memo, useEffect, useMemo, useState } from 'react';
+import React, {
+  cloneElement,
+  ComponentPropsWithoutRef,
+  memo,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { createPortal } from 'react-dom';
 import { Manager, Popper, PopperProps, Reference } from 'react-popper';
 
@@ -7,7 +14,7 @@ import { Small } from '../Typography';
 
 import { StyledTooltip } from './styled';
 
-export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
+export interface TooltipProps extends ComponentPropsWithoutRef<'div'> {
   children?: React.ReactNode;
   placement: Placement;
   trigger: React.ReactElement;

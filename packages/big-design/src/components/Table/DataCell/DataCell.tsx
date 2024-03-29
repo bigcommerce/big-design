@@ -1,12 +1,10 @@
-import React, { memo, TableHTMLAttributes } from 'react';
+import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { TableColumnDisplayProps } from '../mixins';
 
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 
-export interface DataCellProps
-  extends TableHTMLAttributes<HTMLTableCellElement>,
-    TableColumnDisplayProps {
+export interface DataCellProps extends ComponentPropsWithoutRef<'td'>, TableColumnDisplayProps {
   align?: 'left' | 'center' | 'right';
   children?: React.ReactNode;
   isCheckbox?: boolean;

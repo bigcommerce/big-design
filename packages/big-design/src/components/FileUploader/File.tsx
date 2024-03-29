@@ -1,11 +1,11 @@
 import { DeleteIcon, DraftIcon } from '@bigcommerce/big-design-icons';
-import React, { HTMLAttributes, useMemo } from 'react';
+import React, { ComponentPropsWithoutRef, useMemo } from 'react';
 
 import { Button } from '../Button';
 
 import { FileStyled, ImageStyled, TextEllipsed } from './styled';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+interface Props extends ComponentPropsWithoutRef<'div'> {
   name: string;
   isValid: boolean;
   previewSrc: string | null;
