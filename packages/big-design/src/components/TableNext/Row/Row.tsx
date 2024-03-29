@@ -1,5 +1,5 @@
 import { ChevronRightIcon, DragIndicatorIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
-import React, { forwardRef, ReactNode, TableHTMLAttributes } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react';
 
 import { typedMemo } from '../../../utils';
 import { MessagingButton } from '../../Button/private';
@@ -22,7 +22,7 @@ const ALIGN_MAP: Record<string, FlexedProps['justifyContent']> = {
   center: 'center',
 };
 
-export interface RowProps<T> extends TableHTMLAttributes<HTMLTableRowElement> {
+export interface RowProps<T> extends ComponentPropsWithoutRef<'tr'> {
   columns: Array<TableColumn<T>>;
   headerCellWidths: Array<number | string>;
   isDraggable: boolean;

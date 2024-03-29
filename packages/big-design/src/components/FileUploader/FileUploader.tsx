@@ -1,7 +1,7 @@
 import React, {
   cloneElement,
+  ComponentPropsWithoutRef,
   isValidElement,
-  LabelHTMLAttributes,
   useCallback,
   useEffect,
   useId,
@@ -60,7 +60,7 @@ interface Props {
   onFilesError?(errors: FileValidationError[]): void;
 }
 
-export type FileUploaderProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
+export type FileUploaderProps = Props & ComponentPropsWithoutRef<'input'>;
 
 export const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
@@ -138,7 +138,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     }
 
     if (
-      isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+      isValidElement<ComponentPropsWithoutRef<'label'>>(label) &&
       label.type === FormControlLabel
     ) {
       return cloneElement(label, {

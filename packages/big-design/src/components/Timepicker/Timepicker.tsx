@@ -1,4 +1,4 @@
-import React, { forwardRef, memo, Ref, useMemo } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref, useMemo } from 'react';
 
 import { createLocalizationProvider, getTimeIntervals } from '../../utils';
 import { InputLocalization } from '../Input/Input';
@@ -16,7 +16,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLInputElement>;
 }
 
-export type TimepickerProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
+export type TimepickerProps = Props & ComponentPropsWithoutRef<'input'>;
 
 const RawTimePicker: React.FC<TimepickerProps & PrivateProps> = ({
   error,

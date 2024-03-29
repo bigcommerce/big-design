@@ -1,12 +1,12 @@
 import { Placement } from '@popperjs/core';
-import React, { RefObject } from 'react';
+import React, { ComponentPropsWithoutRef, RefObject } from 'react';
 
 import { InputProps } from '../Input';
 import { InputLocalization } from '../Input/Input';
 import { SelectAction, SelectOption } from '../Select';
 import { SelectOptionGroup } from '../Select/types';
 
-interface BaseSelect extends Omit<React.HTMLAttributes<HTMLInputElement>, 'children'> {
+interface BaseSelect extends Omit<ComponentPropsWithoutRef<'input'>, 'children' | 'value'> {
   action?: SelectAction;
   autoComplete?: string;
   autoWidth?: boolean;

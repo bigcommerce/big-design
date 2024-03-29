@@ -1,8 +1,8 @@
 import React, {
   cloneElement,
+  ComponentPropsWithoutRef,
   forwardRef,
   isValidElement,
-  LabelHTMLAttributes,
   Ref,
   useId,
   useMemo,
@@ -29,7 +29,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLTextAreaElement>;
 }
 
-export type TextareaProps = Props & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+export type TextareaProps = Props & ComponentPropsWithoutRef<'textarea'>;
 
 const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
   description,
@@ -67,7 +67,7 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
     }
 
     if (
-      isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+      isValidElement<ComponentPropsWithoutRef<'label'>>(label) &&
       label.type === FormControlLabel
     ) {
       return cloneElement(label, {

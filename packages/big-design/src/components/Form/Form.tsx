@@ -1,4 +1,4 @@
-import React, { forwardRef, Ref } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { typedMemo } from '../../utils';
@@ -10,7 +10,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLFormElement>;
 }
 
-export type FormProps = React.FormHTMLAttributes<HTMLFormElement> &
+export type FormProps = ComponentPropsWithoutRef<'form'> &
   MarginProps & {
     fullWidth?: boolean;
   };

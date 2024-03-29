@@ -1,4 +1,4 @@
-import React, { LabelHTMLAttributes } from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 
 import { StyledLabel } from './styled';
 
@@ -10,7 +10,7 @@ const defaultLocalization: LabelLocalization = {
   optional: 'optional',
 };
 
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+export interface LabelProps extends ComponentPropsWithoutRef<'label'> {
   renderOptional?: boolean;
   localization?: LabelLocalization;
 }

@@ -1,10 +1,10 @@
-import React, { HTMLAttributes, memo } from 'react';
+import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { MarginProps } from '../../mixins';
 
 import { StyledBadge } from './styled';
 
-export interface BadgeProps extends HTMLAttributes<HTMLSpanElement>, MarginProps {
+export interface BadgeProps extends ComponentPropsWithoutRef<'span'>, MarginProps {
   label: string;
   variant?: 'danger' | 'secondary' | 'success' | 'warning' | 'primary';
 }

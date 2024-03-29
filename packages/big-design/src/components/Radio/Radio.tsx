@@ -1,8 +1,8 @@
 import React, {
   cloneElement,
+  ComponentPropsWithoutRef,
   forwardRef,
   isValidElement,
-  LabelHTMLAttributes,
   Ref,
   useId,
   useMemo,
@@ -28,7 +28,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLInputElement>;
 }
 
-export type RadioProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
+export type RadioProps = Props & ComponentPropsWithoutRef<'input'>;
 
 const RawRadio: React.FC<RadioProps & PrivateProps> = ({
   checked,
@@ -57,7 +57,7 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
       );
     }
 
-    if (isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) && label.type === RadioLabel) {
+    if (isValidElement<ComponentPropsWithoutRef<'label'>>(label) && label.type === RadioLabel) {
       return cloneElement(label, {
         htmlFor: id,
         id: labelId,

@@ -1,8 +1,8 @@
-import React, { forwardRef, memo, TableHTMLAttributes } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, memo } from 'react';
 
 import { StyledTableBody } from './styled';
 
-export interface BodyProps extends TableHTMLAttributes<HTMLTableSectionElement> {
+export interface BodyProps extends ComponentPropsWithoutRef<'tbody'> {
   withFirstRowBorder?: boolean;
 }
 

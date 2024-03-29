@@ -1,7 +1,7 @@
 import React, {
   cloneElement,
+  ComponentPropsWithoutRef,
   isValidElement,
-  LabelHTMLAttributes,
   MouseEvent,
   useId,
   useMemo,
@@ -72,7 +72,7 @@ export const Toggle = typedMemo(
       }
 
       if (
-        isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
+        isValidElement<ComponentPropsWithoutRef<'label'>>(label) &&
         label.type === FormControlLabel
       ) {
         return cloneElement(label, {

@@ -1,4 +1,4 @@
-import React, { FieldsetHTMLAttributes, isValidElement, memo, useMemo } from 'react';
+import React, { ComponentPropsWithoutRef, isValidElement, memo, useMemo } from 'react';
 
 import { warning } from '../../utils';
 
@@ -6,7 +6,7 @@ import { FieldsetDescription } from './Description';
 import { FieldsetLegend } from './Legend';
 import { StyledFieldset } from './styled';
 
-export interface FieldsetProps extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
+export interface FieldsetProps extends ComponentPropsWithoutRef<'fieldset'> {
   children?: React.ReactNode;
   legend?: React.ReactChild;
   description?: React.ReactChild;

@@ -1,7 +1,7 @@
 import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
 import React, {
+  ComponentPropsWithoutRef,
   createRef,
-  HTMLAttributes,
   memo,
   useCallback,
   useEffect,
@@ -31,7 +31,7 @@ const defaultLocalization: Localization = {
   more: 'more',
 };
 
-export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement>, MarginProps {
+export interface ButtonGroupProps extends ComponentPropsWithoutRef<'div'>, MarginProps {
   actions: ButtonGroupAction[];
   localization?: Localization;
 }

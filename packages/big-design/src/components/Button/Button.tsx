@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, forwardRef, memo, Ref } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 import { ProgressCircle } from '../ProgressCircle';
@@ -9,7 +9,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLButtonElement>;
 }
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, MarginProps {
+export interface ButtonProps extends ComponentPropsWithoutRef<'button'>, MarginProps {
   actionType?: 'normal' | 'destructive';
   children?: React.ReactNode;
   iconLeft?: React.ReactNode;

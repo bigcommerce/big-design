@@ -1,8 +1,8 @@
-import React, { memo } from 'react';
+import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { StyledTableHead } from './styled';
 
-export type HeadProps = React.TableHTMLAttributes<HTMLTableSectionElement> & {
+export type HeadProps = ComponentPropsWithoutRef<'thead'> & {
   hidden?: boolean;
 };
 

@@ -1,9 +1,9 @@
 import { CheckIcon, RemoveIcon } from '@bigcommerce/big-design-icons';
 import React, {
   cloneElement,
+  ComponentPropsWithoutRef,
   forwardRef,
   isValidElement,
-  LabelHTMLAttributes,
   Ref,
   useId,
   useMemo,
@@ -38,7 +38,7 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLInputElement>;
 }
 
-export type CheckboxProps = Props & React.InputHTMLAttributes<HTMLInputElement>;
+export type CheckboxProps = Props & ComponentPropsWithoutRef<'input'>;
 
 const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
   checked,
@@ -78,10 +78,7 @@ const RawCheckbox: React.FC<CheckboxProps & PrivateProps> = ({
       );
     }
 
-    if (
-      isValidElement<LabelHTMLAttributes<HTMLLabelElement>>(label) &&
-      label.type === CheckboxLabel
-    ) {
+    if (isValidElement<ComponentPropsWithoutRef<'label'>>(label) && label.type === CheckboxLabel) {
       return cloneElement(label, {
         hidden: hiddenLabel,
         htmlFor: id,

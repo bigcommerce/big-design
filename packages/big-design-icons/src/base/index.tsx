@@ -4,10 +4,15 @@ import {
   Spacing,
   ThemeInterface,
 } from '@bigcommerce/big-design-theme';
-import React, { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes, SVGProps } from 'react';
+import React, {
+  ComponentPropsWithoutRef,
+  ForwardRefExoticComponent,
+  PropsWithoutRef,
+  RefAttributes,
+} from 'react';
 import styled from 'styled-components';
 
-export interface IconProps extends SVGProps<SVGSVGElement> {
+export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
   className?: string;
   color?: keyof Colors;
   size?: keyof Spacing | number;

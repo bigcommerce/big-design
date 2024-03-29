@@ -1,9 +1,10 @@
+import { ComponentPropsWithoutRef } from 'react';
 import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 
 import { TextProps } from '../../Typography';
 import { StyleableText } from '../../Typography/private';
 
-export interface StyledLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+export interface StyledLabelProps extends ComponentPropsWithoutRef<'label'> {
   disabled?: boolean;
 }
 

@@ -1,11 +1,11 @@
 import { OpenInNewIcon } from '@bigcommerce/big-design-icons';
-import React, { AnchorHTMLAttributes, forwardRef, memo, Ref } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref } from 'react';
 
 import { MarginProps } from '../../mixins';
 
 import { StyledLink } from './styled';
 
-export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement>, MarginProps {
+export interface LinkProps extends ComponentPropsWithoutRef<'a'>, MarginProps {
   children?: React.ReactNode;
   ellipsis?: boolean;
   external?: boolean;

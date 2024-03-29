@@ -1,5 +1,5 @@
 import { Colors, ThemeInterface } from '@bigcommerce/big-design-theme';
-import React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import { MarginProps } from '../../mixins';
 
@@ -43,20 +43,20 @@ export type TextTag =
   | 'strong'
   | 'title';
 
-export type TextProps = React.HTMLAttributes<HTMLParagraphElement> &
+export type TextProps = ComponentPropsWithoutRef<'p'> &
   MarginProps &
   TypographyProps &
   TextModifiers & {
     as?: TextTag;
   };
 
-export type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> &
+export type HeadingProps = ComponentPropsWithoutRef<'h1'> &
   MarginProps &
   TypographyProps & {
     as?: HeadingTag;
   };
 
-export type HRProps = React.HTMLAttributes<HTMLHRElement> &
+export type HRProps = ComponentPropsWithoutRef<'hr'> &
   MarginProps & {
     color?: keyof Colors;
     themne?: ThemeInterface;

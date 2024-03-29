@@ -1,10 +1,10 @@
-import React, { forwardRef, memo, Ref, useId } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref, useId } from 'react';
 
 import { Flex } from '../Flex';
 
 import { HiddenCheckbox, StyledSwitchLabel } from './styled';
 
-export type SwitchProps = React.InputHTMLAttributes<HTMLInputElement>;
+export type SwitchProps = ComponentPropsWithoutRef<'input'>;
 
 interface PrivateProps {
   forwardedRef: Ref<HTMLInputElement>;

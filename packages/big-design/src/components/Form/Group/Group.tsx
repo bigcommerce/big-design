@@ -1,9 +1,9 @@
 import { ErrorIcon } from '@bigcommerce/big-design-icons';
 import React, {
   Children,
+  ComponentPropsWithoutRef,
   createContext,
   Fragment,
-  HTMLAttributes,
   isValidElement,
   useMemo,
   useState,
@@ -17,7 +17,7 @@ import { useFormContext } from '../useFormContext';
 
 import { StyledError, StyledGroup, StyledInlineGroup } from './styled';
 
-export interface GroupProps extends HTMLAttributes<HTMLDivElement> {
+export interface GroupProps extends ComponentPropsWithoutRef<'div'> {
   children?: React.ReactNode;
   errors?: React.ReactNode | React.ReactNode[];
 }
