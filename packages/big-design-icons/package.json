@@ -64,7 +64,6 @@
     "glob-promise": "^6.0.2",
     "inquirer": "^8.2.4",
     "inquirer-autocomplete-prompt": "^2.0.0",
-    "node-fetch": "^2.6.7",
     "prettier": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
