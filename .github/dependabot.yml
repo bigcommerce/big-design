@@ -7,6 +7,10 @@ updates:
       day: 'tuesday'
     ignore:
       # Next major version is exported as an ESM module
+      - dependency-name: '@commitlint/cli'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@commitlint/config-conventional'
+        update-types: ['version-update:semver-major']
       - dependency-name: 'inquirer'
         update-types: ['version-update:semver-major']
       - dependency-name: 'inquirer-autocomplete-prompt'
