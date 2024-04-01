@@ -1,7 +1,6 @@
 const { outputFile, pathExists } = require('fs-extra');
 const inquirer = require('inquirer');
 const inquirerAutocomplete = require('inquirer-autocomplete-prompt');
-const fetch = require('node-fetch');
 const { join } = require('path');
 
 inquirer.registerPrompt('autocomplete', inquirerAutocomplete);
