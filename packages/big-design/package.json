@@ -20,10 +20,10 @@
     "build:dt": "tsc -p tsconfig.declarations.json --emitDeclarationOnly",
     "test": "jest",
     "test:watch": "yarn run test --watch",
-    "prepublishOnly": "rimraf dist && yarn run typeCheck && yarn run test --maxWorkers=2 && yarn run build",
+    "prepublishOnly": "rimraf dist && yarn run typecheck && yarn run test --maxWorkers=2 && yarn run build",
     "prepack": "big-design-prepack",
     "postpack": "big-design-postpack",
-    "typeCheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "publishConfig": {
     "access": "public",

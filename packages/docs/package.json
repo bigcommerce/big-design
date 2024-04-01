@@ -14,7 +14,7 @@
     "build": "next build",
     "deploy": "yarn run build && touch out/.nojekyll && push-dir --dir=out --branch=gh-pages --verbose",
     "start": "next",
-    "typeCheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {

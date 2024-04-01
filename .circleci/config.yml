@@ -147,13 +147,13 @@ jobs:
           paths:
             - packages/docs/.next
 
-  typeCheck:
+  typecheck:
     <<: *default_executor
 
     steps:
       - pre-setup
       - attach-built-icons
-      - run: yarn run ci:typeCheck
+      - run: yarn run typecheck
 
   lint:
     <<: *default_executor
@@ -199,7 +199,7 @@ workflows:
           requires:
             - build-icons
 
-      - typeCheck:
+      - typecheck:
           <<: *filter_branch
           requires:
             - build-icons
