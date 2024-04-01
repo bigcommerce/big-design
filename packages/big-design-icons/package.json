@@ -21,8 +21,8 @@
     "build:flags": "node scripts/build-flags.js",
     "clean": "rimraf dist && rimraf .tsbuildinfo",
     "download": "node scripts/downloader.js",
-    "prepublishOnly": "yarn run clean && yarn run typeCheck && yarn run build",
-    "typeCheck": "tsc --noEmit"
+    "prepublishOnly": "yarn run clean && yarn run typecheck && yarn run build",
+    "typecheck": "tsc --noEmit"
   },
   "files": [
     "dist",

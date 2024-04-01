@@ -5,7 +5,7 @@
   "scripts": {
     "build": "vite build",
     "start": "vite",
-    "typeCheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@bigcommerce/big-design": "^0.38.2",

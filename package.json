@@ -8,12 +8,12 @@
   "scripts": {
     "build": "lerna run build --stream",
     "build:icons": "yarn workspace @bigcommerce/big-design-icons run build",
-    "ci:typeCheck": "lerna run typeCheck --stream",
     "ci:test": "lerna run test --stream -- --maxWorkers=2 --coverage",
     "diff": "lerna diff",
     "lint": "eslint . --ext .ts,.tsx,.js,.mdx",
     "start": "yarn workspace @bigcommerce/docs run start",
     "test": "lerna run test --stream",
+    "typecheck": "lerna run typecheck --stream",
     "prepare": "husky install"
   },
   "lint-staged": {
