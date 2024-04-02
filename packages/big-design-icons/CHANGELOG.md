@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.25.1...@bigcommerce/big-design-icons@0.26.0) (2024-04-02)
+
+
+### chore
+
+* **deps-dev:** bump flag-icons from 6.11.0 to 7.1.0 ([#1345](https://github.com/bigcommerce/big-design/issues/1345)) ([54572b6](https://github.com/bigcommerce/big-design/commit/54572b64e54cb5bb33d28c41a5cfe74844040d40))
+
+
+### BREAKING CHANGES
+
+* **deps-dev:** This upgrade removes a few flag icons. See the commit diff to check which
+ones were removed and ensure you are not using them in your application code.
+
+
+
+
+
 ## [0.25.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.25.0...@bigcommerce/big-design-icons@0.25.1) (2024-01-23)
 
 **Note:** Version bump only for package @bigcommerce/big-design-icons

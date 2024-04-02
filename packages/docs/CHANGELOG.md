@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.39.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.38.2...@bigcommerce/docs@0.39.0) (2024-04-02)
+
+
+### Bug Fixes
+
+* **docs:** minor UX Writing Guide copy to match Dev Center IA conventions ([#1334](https://github.com/bigcommerce/big-design/issues/1334)) ([06cee60](https://github.com/bigcommerce/big-design/commit/06cee60a29e06966fd7c23785e30b0c4aa32f694))
+
+
+### Features
+
+* **component:** add icon props for FileUploader dropzone ([#1343](https://github.com/bigcommerce/big-design/issues/1343)) ([96b8a86](https://github.com/bigcommerce/big-design/commit/96b8a8649982b47c9761d7272d09337a2c8d8ce7))
+* **component:** implement file uploader ([#1326](https://github.com/bigcommerce/big-design/issues/1326)) ([f1e09a6](https://github.com/bigcommerce/big-design/commit/f1e09a6d79672077b66c554107d7e6ad89151dff))
+
+
+
+
+
 ## [0.38.2](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.38.1...@bigcommerce/docs@0.38.2) (2024-01-23)
 
 **Note:** Version bump only for package @bigcommerce/docs
