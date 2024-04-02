@@ -2595,9 +2595,9 @@
     jsonc-parser "^3.2.0"
 
 "@swc/plugin-styled-components@^1.5.118":
-  version "1.5.118"
-  resolved "https://registry.yarnpkg.com/@swc/plugin-styled-components/-/plugin-styled-components-1.5.118.tgz#9b13bd779fdb7f53221a489bb4121a0ce4023de3"
-  integrity sha512-fAmb7SmZcbak3Nt4eaDZHCFB6ExxqEcgb7MwEw8/gaS3BoPzML/fx9SKU5no6b14XQKjVnYlU73tF3B6dS9Axw==
+  version "1.5.122"
+  resolved "https://registry.yarnpkg.com/@swc/plugin-styled-components/-/plugin-styled-components-1.5.122.tgz#f58113205bb40a29f2cc5b7d4f520334991b8408"
+  integrity sha512-FdYfM6/07lbFbti/Ve1PVZFpulWZEDDzTsC3WoU+s2BAG8VP6mZh+6Re1sSZD13RzUU7CbMFsQqEpcVkP75ZQw==
   dependencies:
     "@swc/counter" "^0.1.3"
 
