@@ -1,18 +1,22 @@
-import { DeleteIcon, DraftIcon } from '@bigcommerce/big-design-icons';
+import { DeleteIcon, DraftIcon, MoreHorizIcon } from '@bigcommerce/big-design-icons';
 import React, { ComponentPropsWithoutRef, useMemo } from 'react';
 
 import { Button } from '../Button';
+import { Dropdown } from '../Dropdown';
+import { DropdownItem } from '../Dropdown/types';
 
 import { FileStyled, ImageStyled, TextEllipsed } from './styled';
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
-  name: string;
+  actions?: DropdownItem[];
   isValid: boolean;
-  previewSrc: string | null;
+  name: string;
+  idx: number;
   onRemove(name: string): void;
+  previewSrc: string | null;
 }
 
-export const File = ({ name, isValid, previewSrc, onRemove, ...props }: Props) => {
+export const File = ({ actions, name, idx, isValid, previewSrc, onRemove, ...props }: Props) => {
   const renderedFilePreview = useMemo(() => {
     if (previewSrc) {
       return <ImageStyled alt="preview" src={previewSrc} />;
@@ -29,6 +33,28 @@ export const File = ({ name, isValid, previewSrc, onRemove, ...props }: Props) =
     );
   }, [previewSrc]);
 
+  const renderedActions = useMemo(() => {
+    if (!actions) {
+      return (
+        <Button
+          aria-label={`remove ${name}`}
+          iconOnly={<DeleteIcon />}
+          onClick={() => onRemove(name)}
+          type="button"
+          variant="utility"
+        />
+      );
+    }
+
+    return (
+      <Dropdown
+        items={actions}
+        placement="bottom-end"
+        toggle={<Button iconOnly={<MoreHorizIcon />} type="button" variant="utility" />}
+      />
+    );
+  }, [actions, name, onRemove]);
+
   return (
     <FileStyled
       {...props}
@@ -41,13 +67,7 @@ export const File = ({ name, isValid, previewSrc, onRemove, ...props }: Props) =
       <TextEllipsed marginBottom="none" marginLeft="xSmall" marginRight="auto">
         {name}
       </TextEllipsed>
-      <Button
-        aria-label={`remove ${name}`}
-        iconOnly={<DeleteIcon />}
-        onClick={() => onRemove(name)}
-        type="button"
-        variant="utility"
-      />
+      {renderedActions}
     </FileStyled>
   );
 };

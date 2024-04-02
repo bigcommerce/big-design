@@ -1,3 +1,4 @@
+import { ExpandLessIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React, {
   cloneElement,
   ComponentPropsWithoutRef,
@@ -6,24 +7,35 @@ import React, {
   useEffect,
   useId,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 
 import { warning } from '../../utils';
+import { DropdownItem } from '../Dropdown/types';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
+import { InlineMessage } from '../InlineMessage';
 
-import { DropZone, DropZoneLocalization } from './DropZone';
+import { DropZoneLocalization } from './DropZone';
 import { File } from './File';
-import { StyledFileUploaderWrapper, StyledList } from './styled';
+import { DropZoneWrapper, StyledFileUploaderWrapper, StyledList } from './styled';
 import { getImagesPreview, validateFiles } from './utils';
+
+export interface FileAction extends Omit<DropdownItem, 'onItemClick'> {
+  onItemClick: (name: File, idx: number) => void;
+}
 
 export interface FileUploaderLocalization extends DropZoneLocalization {
   optional: string;
+  showLess: string;
+  showMore: string;
+  canNotUploadTheseFiles: string;
 }
 
 interface DropzoneConfig {
   description?: string;
+  emptyHeight?: number;
   icon?: React.ReactNode;
   label?: string;
 }
@@ -32,7 +44,7 @@ export interface FileValidationError {
   file: File;
   fileIdx: number;
   message?: string;
-  type: string;
+  type: string | string[];
 }
 
 export interface ValidatorConfig {
@@ -44,12 +56,16 @@ export interface ValidatorConfig {
 export const defaultLocalization: FileUploaderLocalization = {
   optional: 'optional',
   upload: 'Upload',
+  showLess: 'Show less',
+  showMore: 'Show more',
+  canNotUploadTheseFiles: `Can't upload these files`,
 };
 
 interface Props {
+  actions?: FileAction[];
   description?: React.ReactNode;
   dropzoneConfig?: DropzoneConfig;
-  error?: React.ReactNode | React.ReactNode[];
+  error?: string | string[];
   files: File[];
   label?: React.ReactNode;
   labelId?: string;
@@ -64,6 +80,7 @@ export type FileUploaderProps = Props & ComponentPropsWithoutRef<'input'>;
 
 export const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
+  actions,
   description,
   disabled,
   dropzoneConfig = {},
@@ -80,13 +97,45 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   ...props
 }) => {
   const [imagePreview, setImagePreview] = useState<Record<string, string | null>>({});
+  const [isAllErrorsVisible, setIsAllErrorsVisible] = useState(false);
+  const prevErrors = useRef<FileValidationError[]>([]);
 
   const uniqueInputId = useId();
   const id = props.id ?? uniqueInputId;
 
-  useInputErrors(id, error);
+  const validationErrors = useMemo(() => {
+    const flatFilesErrors = validateFiles(files, validators);
 
-  const validationErrors = useMemo(() => validateFiles(files, validators), [files, validators]);
+    return flatFilesErrors.reduce<FileValidationError[]>(
+      (acc, { file, fileIdx, message, type }) => {
+        const existingError = acc.find((error) => error.fileIdx === fileIdx);
+
+        if (!existingError) {
+          return [
+            ...acc,
+            {
+              file,
+              fileIdx,
+              message,
+              type,
+            },
+          ];
+        }
+
+        existingError.type = Array.isArray(existingError.type)
+          ? [...existingError.type, type]
+          : [existingError.type, type];
+        existingError.message = existingError.message
+          ? `${existingError.message}, ${message}`
+          : message;
+
+        return acc;
+      },
+      [],
+    );
+  }, [files, validators]);
+
+  useInputErrors(id, multiple ? undefined : error);
 
   useEffect(() => {
     getImagesPreview(files).then((previews) => {
@@ -95,10 +144,15 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   }, [files]);
 
   useEffect(() => {
-    if (onFilesError && validationErrors.length > 0) {
+    if (
+      onFilesError &&
+      (validationErrors.length > 0 ||
+        (prevErrors.current.length > 0 && validationErrors.length === 0))
+    ) {
       onFilesError(validationErrors);
+      prevErrors.current = validationErrors;
     }
-  }, [files, onFilesError, validationErrors, validators]);
+  }, [onFilesError, validationErrors]);
 
   const handleFilesChange = useCallback(
     (newFiles: FileList | null) => {
@@ -166,6 +220,61 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     warning('description must be either a string or a FormControlDescription component.');
   }, [description]);
 
+  const handleToggleErrors = useCallback((event: React.MouseEvent) => {
+    event.preventDefault();
+
+    setIsAllErrorsVisible((prev) => !prev);
+  }, []);
+
+  const renderedErrors = useMemo(() => {
+    if (!multiple || !error || error.length === 0) {
+      return null;
+    }
+
+    const isErrorsArray = Array.isArray(error);
+
+    const messages = isErrorsArray ? error.map((text) => ({ text })) : [{ text: error }];
+    const firstMessages = messages.slice(0, 10);
+    const restMessages = messages.slice(10);
+
+    return (
+      <InlineMessage
+        actions={
+          restMessages.length > 0
+            ? [
+                {
+                  iconRight: isAllErrorsVisible ? <ExpandLessIcon /> : <ExpandMoreIcon />,
+                  text: isAllErrorsVisible ? localization.showLess : localization.showMore,
+                  variant: 'subtle',
+                  onClick: handleToggleErrors,
+                },
+              ]
+            : undefined
+        }
+        header={localization.canNotUploadTheseFiles}
+        marginVertical="large"
+        messages={[...firstMessages, ...(isAllErrorsVisible ? restMessages : [])]}
+        type="error"
+      />
+    );
+  }, [
+    error,
+    handleToggleErrors,
+    isAllErrorsVisible,
+    localization.canNotUploadTheseFiles,
+    localization.showLess,
+    localization.showMore,
+    multiple,
+  ]);
+
+  const getActions = useCallback(
+    (file: File, idx: number) =>
+      actions?.map(({ onItemClick, ...action }) => ({
+        ...action,
+        onItemClick: () => onItemClick(file, idx),
+      })),
+    [actions],
+  );
   const renderedFiles = useMemo(() => {
     if (previewHidden) {
       return null;
@@ -178,6 +287,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
 
       return (
         <File
+          actions={getActions(files[0], 0)}
+          idx={0}
           isValid={!isFileInvalid}
           name={file.name}
           onRemove={(name) => handleFileRemove(name, 0)}
@@ -193,6 +304,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       return (
         <li key={idx}>
           <File
+            actions={getActions(file, idx)}
+            idx={idx}
             isValid={!isFileInvalid}
             name={file.name}
             onRemove={(name) => handleFileRemove(name, idx)}
@@ -203,36 +316,53 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     });
 
     return <StyledList>{filesList}</StyledList>;
-  }, [files, handleFileRemove, imagePreview, previewHidden, multiple, validationErrors]);
+  }, [
+    previewHidden,
+    multiple,
+    files,
+    validationErrors,
+    imagePreview,
+    getActions,
+    handleFileRemove,
+  ]);
 
-  const renderedDropzone = useMemo(
-    () =>
-      multiple || !files.length ? (
-        <DropZone
-          accept={accept}
-          description={dropzoneConfig.description}
-          disabled={disabled}
-          icon={dropzoneConfig.icon}
-          id={id}
-          label={dropzoneConfig.label}
-          localization={localization}
-          multiple={multiple}
-          onFilesChange={handleFilesChange}
-        />
-      ) : null,
-    [
-      accept,
-      disabled,
-      dropzoneConfig.description,
-      dropzoneConfig.icon,
-      dropzoneConfig.label,
-      files.length,
-      handleFilesChange,
-      id,
-      localization,
-      multiple,
-    ],
-  );
+  const renderedDropzone = useMemo(() => {
+    if (!multiple && files.length > 0) {
+      return null;
+    }
+
+    const minBlockHeight = 180;
+    const viewType =
+      !files.length && (dropzoneConfig.emptyHeight ?? 0) >= minBlockHeight ? 'block' : 'row';
+
+    return (
+      <DropZoneWrapper
+        accept={accept}
+        description={dropzoneConfig.description}
+        disabled={disabled}
+        emptyHeight={files.length ? undefined : dropzoneConfig.emptyHeight}
+        icon={dropzoneConfig.icon}
+        id={id}
+        label={dropzoneConfig.label}
+        localization={localization}
+        multiple={multiple}
+        onFilesChange={handleFilesChange}
+        viewType={viewType}
+      />
+    );
+  }, [
+    accept,
+    disabled,
+    dropzoneConfig.description,
+    dropzoneConfig.emptyHeight,
+    dropzoneConfig.icon,
+    dropzoneConfig.label,
+    files.length,
+    handleFilesChange,
+    id,
+    localization,
+    multiple,
+  ]);
 
   return (
     <div>
@@ -242,6 +372,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         {renderedFiles}
         {renderedDropzone}
       </StyledFileUploaderWrapper>
+      {renderedErrors}
     </div>
   );
 };

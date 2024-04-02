@@ -38,6 +38,16 @@ exports[`simple form render 1`] = `
   margin: 0;
 }
 
+.c4 {
+  display: grid;
+  grid-gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
 .c6 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
@@ -135,16 +145,6 @@ exports[`simple form render 1`] = `
   -ms-flex: 1;
   flex: 1;
   height: 100%;
-}
-
-.c4 {
-  display: grid;
-  grid-gap: 0.5rem 1rem;
-  margin-bottom: 1rem;
-}
-
-.c4:last-child {
-  margin-bottom: 0;
 }
 
 .c5 {
