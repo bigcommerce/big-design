@@ -1,10 +1,8 @@
 <div align="center">
   <a href="https://design.bigcommerce.com/components">
-    <img alt="BigDesign" src="https://bigcommerce.github.io/big-design/logo-with-text.svg" width="546">
+    <img alt="BigDesign" src="https://bigcommerce.github.io/big-design/banner.svg">
   </a>
 </div>
-
----
 
 [![npm version](https://img.shields.io/npm/v/@bigcommerce/big-design.svg?style=flat)](https://www.npmjs.com/package/@bigcommerce/big-design) [![CircleCI](https://circleci.com/gh/bigcommerce/big-design.svg?style=shield)](https://circleci.com/gh/bigcommerce/big-design)
 
