@@ -14,13 +14,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "yarn run build:cjs && yarn run build:es && yarn run build:dt",
+    "build": "pnpm run build:cjs && pnpm run build:es && pnpm run build:dt",
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/cjs",
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc -p tsconfig.declarations.json --emitDeclarationOnly",
     "test": "jest",
-    "test:watch": "yarn run test --watch",
-    "prepublishOnly": "rimraf dist && yarn run typecheck && yarn run test --maxWorkers=2 && yarn run build",
+    "test:watch": "pnpm run test --watch",
+    "prepublishOnly": "rimraf dist && pnpm run typecheck && pnpm run test --maxWorkers=2 && pnpm run build",
     "prepack": "big-design-prepack",
     "postpack": "big-design-postpack",
     "typecheck": "tsc --noEmit"
@@ -33,8 +33,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
-    "@bigcommerce/big-design-icons": "^0.26.0",
-    "@bigcommerce/big-design-theme": "^0.21.0",
+    "@bigcommerce/big-design-icons": "workspace:^",
+    "@bigcommerce/big-design-theme": "workspace:^",
     "@popperjs/core": "^2.11.6",
     "@types/react-datepicker": "^4.4.2",
     "date-fns": "2.30.0",

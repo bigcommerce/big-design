@@ -7,9 +7,9 @@ import React, {
   useMemo,
 } from 'react';
 
-import { Box, FormControlLabel } from '@bigcommerce/big-design';
-
 import { typedMemo, warning } from '../../utils';
+import { Box } from '../Box';
+import { FormControlLabel } from '../Form';
 import { InputLocalization } from '../Input/Input';
 
 import { StyledButton } from './styled';

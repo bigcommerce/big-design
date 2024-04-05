@@ -11,15 +11,15 @@
     "directory": "packages/big-design-theme"
   },
   "scripts": {
-    "build": "yarn run build:cjs && yarn run build:es && yarn run build:dt",
+    "build": "pnpm run build:cjs && pnpm run build:es && pnpm run build:dt",
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/cjs",
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc -p tsconfig.declarations.json --emitDeclarationOnly",
-    "prepublishOnly": "rimraf dist && yarn run typecheck && yarn run test && yarn run build",
+    "prepublishOnly": "rimraf dist && pnpm run typecheck && pnpm run test && pnpm run build",
     "prepack": "big-design-prepack",
     "postpack": "big-design-postpack",
     "test": "jest",
-    "test:watch": "yarn run test --watch",
+    "test:watch": "pnpm run test --watch",
     "typecheck": "tsc --noEmit"
   },
   "files": [

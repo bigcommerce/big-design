@@ -14,10 +14,10 @@ Add BigDesign Icons and styled-components@5 to your project using `npm`:
 npm install @bigcommerce/big-design-icons styled-components@5
 ```
 
-or with `yarn`:
+or with `pnpm`:
 
 ```
-yarn add @bigcommerce/big-design-icons styled-components@5
+pnpm add @bigcommerce/big-design-icons styled-components@5
 ```
 
 Import any icon component and use it anywhere in your app.
@@ -37,11 +37,11 @@ import { StoreIcon } from '@bigcommerce/big-design-icons';
 To add new icons, use the built-in script to download the svg from [Material Icons - Rounded](https://fonts.google.com/icons?selected=Material+Icons&icon.style=Rounded):
 
 ```
-yarn run download
+pnpm run download
 ```
 
 After you've searched and downloaded your icon(s), run the build script to convert your svgs into React components:
 
 ```
-yarn run build:icons
+pnpm run build:icons
 ```

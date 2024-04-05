@@ -14,10 +14,10 @@ Add BigDesign and styled-components@5 to your project using `npm`:
 npm install @bigcommerce/big-design styled-components@5
 ```
 
-or with `yarn`:
+or with `pnpm`:
 
 ```
-yarn add @bigcommerce/big-design styled-components@5
+pnpm add @bigcommerce/big-design styled-components@5
 ```
 
 Add the font as a `<link>` in your `index.html`/`<head>` element.
