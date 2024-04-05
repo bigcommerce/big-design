@@ -190,7 +190,7 @@ const IconsPage = () => {
               render: () => (
                 <IconPropTable>
                   <CodeSnippet language="bash" showControls={false}>
-                    npm install @bigcommerce/big-design-icons // or yarn add
+                    npm install @bigcommerce/big-design-icons // or pnpm add
                     @bigcommerce/big-design-icons
                   </CodeSnippet>
                 </IconPropTable>
@@ -205,7 +205,7 @@ const IconsPage = () => {
                     marginBottom="medium"
                     messages={[
                       {
-                        text: 'Flags are a submodule of the Icons package "@bigcommerce/big-design-icons", you will need to add the package first using "yarn add @bigcommerce/big-design-icons".',
+                        text: 'Flags are a submodule of the Icons package "@bigcommerce/big-design-icons", you will need to add the package first using "pnpm add @bigcommerce/big-design-icons".',
                       },
                     ]}
                     type="warning"

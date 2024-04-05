@@ -32,11 +32,11 @@ The core team will be monitoring for new pull requests. We will review your pull
 
 **Before submitting a pull request,** please make sure the following is done:
 1. Fork the repository and ensure you branch from `main`.
-2. Install dependencies using `yarn install`.
+2. Install dependencies using `pnpm install`.
 3. Tests should be added/updating to reflect changes.
-4. Ensure the test suite passes (`yarn test`).
-5. Check that the repository builds (`yarn build`).
-6. Make sure that your code is linted thoroughly (`yarn lint`. Tip: `yarn lint-staged` will lint staged files.
+4. Ensure the test suite passes (`pnpm test`).
+5. Check that the repository builds (`pnpm build`).
+6. Make sure that your code is linted thoroughly (`pnpm lint`. Tip: `pnpm lint-staged` will lint staged files.
 7. Fill out the pull request template as needed.
 
 ## License

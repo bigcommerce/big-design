@@ -1,8 +1,7 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "packages": ["packages/*"],
   "version": "independent",
-  "npmClient": "yarn",
+  "npmClient": "pnpm",
   "command": {
     "version": {
       "allowBranch": "main",

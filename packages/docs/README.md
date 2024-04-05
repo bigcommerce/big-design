@@ -7,9 +7,9 @@ Next.js powered documenation site for BigDesign components.
 To start the documentaion site run the following in the root directory:
 
 ```bash
-yarn install
-yarn run build
-yarn run start
+pnpm install
+pnpm run build
+pnpm run start
 ```
 
 The navigate to `localhost:3000` in your browser.

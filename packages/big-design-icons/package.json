@@ -13,7 +13,7 @@
     "directory": "packages/big-design-icons"
   },
   "scripts": {
-    "build": "yarn run build:cjs && yarn run build:es && yarn run build:dt",
+    "build": "pnpm run build:cjs && pnpm run build:es && pnpm run build:dt",
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/cjs",
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc --emitDeclarationOnly",
@@ -21,7 +21,7 @@
     "build:flags": "node scripts/build-flags.js",
     "clean": "rimraf dist && rimraf .tsbuildinfo",
     "download": "node scripts/downloader.js",
-    "prepublishOnly": "yarn run clean && yarn run typecheck && yarn run build",
+    "prepublishOnly": "pnpm run clean && pnpm run typecheck && pnpm run build",
     "typecheck": "tsc --noEmit"
   },
   "files": [
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
-    "@bigcommerce/big-design-theme": "^0.21.0"
+    "@bigcommerce/big-design-theme": "workspace:^"
   },
   "peerDependencies": {
     "react": "^18.0.0",

@@ -23,10 +23,10 @@ Add the BigDesign theme and styled-components@5 to your project using `npm`:
 npm install @bigcommerce/big-design-theme styled-components@5
 ```
 
-or with `yarn`:
+or with `pnpm`:
 
 ```
-yarn add @bigcommerce/big-design-theme styled-components@5
+pnpm add @bigcommerce/big-design-theme styled-components@5
 ```
 
 ```tsx

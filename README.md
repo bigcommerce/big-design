@@ -18,10 +18,10 @@ Add BigDesign and styled-components@5 to your project using `npm`:
 npm install @bigcommerce/big-design styled-components@5
 ```
 
-or with `yarn`:
+or with `pnpm`:
 
 ```
-yarn add @bigcommerce/big-design styled-components@5
+pnpm add @bigcommerce/big-design styled-components@5
 ```
 
 Add the font as a `<link>` in your `index.html`/`<head>` element.
@@ -51,7 +51,7 @@ import { Button, GlobalStyles } from '@bigcommerce/big-design';
 
 ### Monorepo
 
-This is a monorepo that uses [Lerna](https://lerna.js.org/) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
+This is a monorepo that uses [Lerna](https://lerna.js.org/) and [pnpm Workspaces](https://pnpmpkg.com/lang/en/docs/workspaces/).
 
 Workspaces are inside the [packages](https://github.com/bigcommerce/big-design/blob/main/packages) directory.
 
@@ -81,21 +81,21 @@ and [Code of Conduct](https://github.com/bigcommerce/big-design/blob/main/CODE_O
 Running the following commands will run `big-design` and `docs` in watch mode.
 
 ```
-yarn
-yarn run build:icons
-yarn run start
+pnpm
+pnpm run build:icons
+pnpm run start
 ```
 
 Run tests with:
 
 ```
-yarn run test
+pnpm run test
 ```
 
 Run linter with:
 
 ```
-yarn run lint
+pnpm run lint
 ```
 
 ### Releasing
@@ -103,19 +103,19 @@ yarn run lint
 This is for releasing new versions of all the packages.
 
 ```
-GH_TOKEN=<token> yarn lerna publish <patch/minor/major> --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
+GH_TOKEN=<token> pnpm lerna publish <patch/minor/major> --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
 ```
 
 #### Prereleases
 
 ```
-GH_TOKEN=<token> yarn lerna publish prerelease --pre-dist-tag next --conventional-prerelease --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
+GH_TOKEN=<token> pnpm lerna publish prerelease --pre-dist-tag next --conventional-prerelease --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
 ```
 
 To promote a prerelease add the `--conventional-graduate` flag to release command.
 
 ```
-GH_TOKEN=<token> yarn lerna publish <patch/minor/major> --conventional-graduate --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
+GH_TOKEN=<token> pnpm lerna publish <patch/minor/major> --conventional-graduate --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
 ```
 
 #### `from-package`
@@ -123,15 +123,15 @@ GH_TOKEN=<token> yarn lerna publish <patch/minor/major> --conventional-graduate 
 `from-package` allows you to release what's on `upstream/main` if the publish script failed. By default the `lerna publish` command will push commits and tags before running through the build. This is a just-in-case command.
 
 ```
-GH_TOKEN=<token> yarn lerna publish from-package --git-remote upstream
+GH_TOKEN=<token> pnpm lerna publish from-package --git-remote upstream
 ```
 
 ### BigDesign Documentation Release
 
 ```
-yarn run build
+pnpm run build
 cd packages/docs
-yarn run deploy --remote upstream
+pnpm run deploy --remote upstream
 ```
 
 ### License
