@@ -199,6 +199,30 @@ test('trigger page increase', async () => {
   expect(title).toBeInTheDocument();
 });
 
+test('current itemsPerPage highlighted', async () => {
+  const changePage = jest.fn();
+  const changeRange = jest.fn();
+
+  render(
+    <Pagination
+      currentPage={2}
+      itemsPerPage={3}
+      itemsPerPageOptions={[2, 3, 5]}
+      onItemsPerPageChange={changeRange}
+      onPageChange={changePage}
+      totalItems={10}
+    />,
+  );
+
+  const button = await screen.findByRole('button', { name: '4 - 6 of 10' });
+
+  await userEvent.click(button);
+
+  const options = screen.getAllByRole('option');
+
+  expect(button).toHaveAttribute('aria-activedescendant', options[1].id);
+});
+
 test('renders localized labels', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();

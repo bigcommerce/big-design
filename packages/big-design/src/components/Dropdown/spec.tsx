@@ -370,6 +370,29 @@ test('dropdown items should be highlighted when moused over', async () => {
   expect(toggle).toHaveAttribute('aria-activedescendant', options[0].id);
 });
 
+test('first dropdown item should be highlighted if invalid selectedItem', async () => {
+  render(
+    <Dropdown
+      items={[
+        { content: 'Option 1', onItemClick },
+        { content: 'Option 2', onItemClick },
+        { content: 'Option 3', onItemClick, actionType: 'destructive' },
+        { content: 'Option 4', onItemClick, icon: <CheckCircleIcon /> },
+      ]}
+      selectedItem={{ content: 'Option 5', onItemClick }}
+      toggle={<Button>Button</Button>}
+    />,
+  );
+
+  const toggle = screen.getByRole('button');
+
+  await userEvent.click(toggle);
+
+  const options = await screen.findAllByRole('option');
+
+  expect(toggle).toHaveAttribute('aria-activedescendant', options[0].id);
+});
+
 test('dropdown menu renders 4 link when passed options of type link', async () => {
   render(
     <Dropdown

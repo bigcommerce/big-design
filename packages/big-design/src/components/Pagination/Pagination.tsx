@@ -124,6 +124,11 @@ export const Pagination: React.FC<PaginationProps> = memo(
               onItemClick: handleRangeChange,
             }))}
             positionFixed={true}
+            selectedItem={{
+              content: `${itemsPerPage}`,
+              hash: `${itemsPerPage}`,
+              onItemClick: handleRangeChange,
+            }}
             toggle={
               <StyledButton
                 iconRight={<ArrowDropDownIcon size="xxLarge" />}
