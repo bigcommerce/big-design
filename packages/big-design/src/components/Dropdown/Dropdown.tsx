@@ -26,6 +26,7 @@ export const Dropdown = memo(
     items,
     placement = 'bottom-start' as const,
     positionFixed = false,
+    selectedItem,
     toggle,
     style,
     ...props
@@ -45,6 +46,17 @@ export const Dropdown = memo(
 
     // We only need the items to pass down to Downshift, not groups
     const flattenedItems = useMemo(() => flattenItems(items), [flattenItems, items]);
+    const defaultHighlightedIndex = flattenedItems.findIndex((item) => {
+      if (!selectedItem) {
+        return false;
+      }
+
+      if ('hash' in item && 'hash' in selectedItem) {
+        return item.hash === selectedItem.hash;
+      }
+
+      return false;
+    });
 
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
@@ -92,7 +104,7 @@ export const Dropdown = memo(
 
     const { getItemProps, getMenuProps, getToggleButtonProps, highlightedIndex, isOpen } =
       useSelect({
-        defaultHighlightedIndex: 0,
+        defaultHighlightedIndex: defaultHighlightedIndex > -1 ? defaultHighlightedIndex : 0,
         id: dropdownUniqueId,
         itemToString: (item) => (item ? item.content : ''),
         items: flattenedItems,

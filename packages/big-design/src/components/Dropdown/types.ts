@@ -5,6 +5,7 @@ export interface DropdownProps extends Omit<ComponentPropsWithoutRef<'ul'>, 'chi
   autoWidth?: boolean;
   disabled?: boolean;
   items: Array<DropdownItem | DropdownLinkItem> | DropdownItemGroup[];
+  selectedItem?: DropdownItem;
   maxHeight?: number;
   placement?: Placement;
   positionFixed?: boolean;
