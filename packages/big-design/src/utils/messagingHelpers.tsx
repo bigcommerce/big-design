@@ -5,7 +5,7 @@ import { css } from 'styled-components';
 
 import { ButtonProps } from '../components/Button';
 import { LinkProps } from '../components/Link';
-import { MarginProps } from '../mixins/margins';
+import { MarginProps } from '../helpers/margins';
 
 export interface SharedMessagingProps extends ComponentPropsWithoutRef<'div'> {
   actions?: MessageAction[];

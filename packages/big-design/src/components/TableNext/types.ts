@@ -1,9 +1,9 @@
 import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-import { MarginProps } from '../../mixins';
+import { MarginProps } from '../../helpers';
 import { PaginationProps } from '../Pagination';
 
-import { TableColumnDisplayProps } from './mixins';
+import { TableColumnDisplayProps } from './helpers';
 
 export interface TableSelectable {
   selectedItems: Record<string, true>;

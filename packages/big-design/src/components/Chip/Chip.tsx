@@ -1,7 +1,7 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import React, { memo } from 'react';
 
-import { MarginProps } from '../../mixins';
+import { MarginProps } from '../../helpers';
 import { Text } from '../Typography';
 
 import { StyledChip, StyledCloseButton } from './styled';

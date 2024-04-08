@@ -1,7 +1,7 @@
 import { OpenInNewIcon } from '@bigcommerce/big-design-icons';
 import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref } from 'react';
 
-import { MarginProps } from '../../mixins';
+import { MarginProps } from '../../helpers';
 
 import { StyledLink } from './styled';
 

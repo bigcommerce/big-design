@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef, memo } from 'react';
 
-import { MarginProps } from '../../mixins';
+import { MarginProps } from '../../helpers';
 
 import { StyledBadge } from './styled';
 

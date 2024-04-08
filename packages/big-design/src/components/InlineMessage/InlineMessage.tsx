@@ -1,7 +1,7 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, useMemo } from 'react';
 
-import { excludeMarginProps, excludePaddingProps, MarginProps } from '../../mixins';
+import { excludeMarginProps, excludePaddingProps, MarginProps } from '../../helpers';
 import { getActionVariant, getMessagingIcon, SharedMessagingProps } from '../../utils';
 import { Box } from '../Box';
 import { Button } from '../Button';

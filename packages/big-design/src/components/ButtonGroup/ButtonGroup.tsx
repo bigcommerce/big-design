@@ -9,8 +9,8 @@ import React, {
   useState,
 } from 'react';
 
+import { MarginProps } from '../../helpers';
 import { useWindowResizeListener } from '../../hooks';
-import { MarginProps } from '../../mixins';
 import { ButtonProps } from '../Button';
 import { Dropdown } from '../Dropdown';
 import { Flex } from '../Flex';

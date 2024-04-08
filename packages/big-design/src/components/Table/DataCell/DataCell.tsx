@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef, memo } from 'react';
 
-import { TableColumnDisplayProps } from '../mixins';
+import { TableColumnDisplayProps } from '../helpers';
 
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 

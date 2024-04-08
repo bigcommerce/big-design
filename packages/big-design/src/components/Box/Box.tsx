@@ -1,7 +1,7 @@
 import { Border, BorderRadius, Colors, Shadow, ZIndex } from '@bigcommerce/big-design-theme';
 import React, { ComponentPropsWithoutRef, forwardRef, memo } from 'react';
 
-import { DisplayProps, MarginProps, PaddingProps } from '../../mixins';
+import { DisplayProps, MarginProps, PaddingProps } from '../../helpers';
 
 import { StyledBox } from './styled';
 

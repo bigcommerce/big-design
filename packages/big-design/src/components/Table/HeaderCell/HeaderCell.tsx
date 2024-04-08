@@ -9,7 +9,7 @@ import { useComponentSize } from '../../../hooks';
 import { typedMemo } from '../../../utils';
 import { Box } from '../../Box';
 import { Tooltip } from '../../Tooltip';
-import { TableColumnDisplayProps } from '../mixins';
+import { TableColumnDisplayProps } from '../helpers';
 import { TableColumn, TableItem } from '../types';
 
 import { StyledFlex, StyledTableHeaderCell, StyledTableHeaderIcon } from './styled';

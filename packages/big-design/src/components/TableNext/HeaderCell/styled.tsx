@@ -3,7 +3,7 @@ import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { Flex } from '../../Flex';
-import { TableColumnDisplayProps, withTableColumnDisplay } from '../mixins';
+import { TableColumnDisplayProps, withTableColumnDisplay } from '../helpers';
 
 interface StyledTableHeaderCellProps extends TableColumnDisplayProps {
   isSortable?: boolean;

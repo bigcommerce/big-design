@@ -3,7 +3,7 @@ import { OffsetModifier } from '@popperjs/core/lib/modifiers/offset';
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 
-import { excludeMarginProps } from '../../mixins';
+import { excludeMarginProps } from '../../helpers';
 import { Box, BoxProps } from '../Box';
 
 // Margin can't be used with popper elements

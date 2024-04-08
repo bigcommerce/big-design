@@ -2,7 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { hideVisually } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { withTransition } from '../../mixins/transitions';
+import { withTransition } from '../../helpers/transitions';
 
 interface StyledRadioProps {
   checked?: boolean;

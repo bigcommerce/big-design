@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef, forwardRef, Ref } from 'react';
 
-import { MarginProps } from '../../mixins';
+import { MarginProps } from '../../helpers';
 import { typedMemo } from '../../utils';
 
 import { StyledForm } from './styled';
