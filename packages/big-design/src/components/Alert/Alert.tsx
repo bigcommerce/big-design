@@ -1,5 +1,5 @@
 import { CloseIcon } from '@bigcommerce/big-design-icons';
-import React, { memo, useMemo } from 'react';
+import React, { memo, useId, useMemo } from 'react';
 
 import { excludePaddingProps } from '../../mixins';
 import { getMessagingIcon, SharedMessagingProps } from '../../utils';
@@ -14,6 +14,7 @@ export interface AlertProps extends Omit<SharedMessagingProps, 'actions'> {
 }
 
 export const Alert: React.FC<AlertProps> = memo(({ className, style, header, ...props }) => {
+  const headerId = useId();
   const filteredProps = excludePaddingProps(props);
   const icon = useMemo(() => props.type && getMessagingIcon(props.type), [props.type]);
 
@@ -28,10 +29,13 @@ export const Alert: React.FC<AlertProps> = memo(({ className, style, header, ...
     [props.messages],
   );
 
-  const renderedHeader = useMemo(() => header && <StyledHeader>{header}</StyledHeader>, [header]);
+  const renderedHeader = useMemo(
+    () => header && <StyledHeader id={headerId}>{header}</StyledHeader>,
+    [header, headerId],
+  );
 
   return (
-    <StyledAlert {...filteredProps} role="alert">
+    <StyledAlert {...filteredProps} aria-labelledby={header && headerId} role="alert">
       <GridItem gridArea="icon">{icon}</GridItem>
       <GridItem gridArea="messages">
         {renderedHeader}
