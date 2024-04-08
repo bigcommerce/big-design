@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { withDisplay } from '../../mixins';
+import { withDisplay } from '../../helpers';
 import { Box } from '../Box';
 
 import { FlexProps } from './Flex';

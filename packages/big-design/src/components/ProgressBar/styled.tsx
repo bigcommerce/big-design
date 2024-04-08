@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { withTransition } from '../../mixins/transitions';
+import { withTransition } from '../../helpers/transitions';
 
 import { ProgressBarProps } from './ProgressBar';
 

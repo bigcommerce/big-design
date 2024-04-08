@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { MarginProps, withMargins } from '../../mixins';
+import { MarginProps, withMargins } from '../../helpers';
 
 export const StyledTableFigure = styled.figure<MarginProps>`
   margin: 0;

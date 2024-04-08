@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef, memo } from 'react';
 
-import { PaddingProps } from '../../../mixins';
-import { TableColumnDisplayProps } from '../mixins';
+import { PaddingProps } from '../../../helpers';
+import { TableColumnDisplayProps } from '../helpers';
 
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 

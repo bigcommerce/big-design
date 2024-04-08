@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useId, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 
-import { MarginProps } from '../../mixins';
+import { MarginProps } from '../../helpers';
 import { typedMemo } from '../../utils';
 
 import { Actions } from './Actions';

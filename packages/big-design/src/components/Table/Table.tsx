@@ -1,8 +1,8 @@
 import React, { memo, useCallback, useEffect, useId, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 
+import { MarginProps } from '../../helpers';
 import { useEventCallback } from '../../hooks';
-import { MarginProps } from '../../mixins';
 import { typedMemo } from '../../utils';
 
 import { Actions } from './Actions';

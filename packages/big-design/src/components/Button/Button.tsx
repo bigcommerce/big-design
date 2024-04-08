@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref } from 'react';
 
-import { MarginProps } from '../../mixins';
+import { MarginProps } from '../../helpers';
 import { ProgressCircle } from '../ProgressCircle';
 
 import { ContentWrapper, LoadingSpinnerWrapper, StyledButton } from './styled';

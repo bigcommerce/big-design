@@ -2,7 +2,7 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { clearFix } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { withDisplay, withMargins, withPaddings } from '../../mixins';
+import { withDisplay, withMargins, withPaddings } from '../../helpers';
 
 import { BoxProps } from './Box';
 

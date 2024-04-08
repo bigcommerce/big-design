@@ -1,7 +1,7 @@
 import { Colors, ThemeInterface } from '@bigcommerce/big-design-theme';
 import { ComponentPropsWithoutRef } from 'react';
 
-import { MarginProps } from '../../mixins';
+import { MarginProps } from '../../helpers';
 
 export interface TypographyProps {
   color?: keyof Colors;

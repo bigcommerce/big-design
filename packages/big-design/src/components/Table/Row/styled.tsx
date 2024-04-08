@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { withTransition } from '../../../mixins/transitions';
+import { withTransition } from '../../../helpers/transitions';
 
 interface StyledTableRowProps {
   isDragging: boolean;

@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef, forwardRef, isValidElement, memo, Ref } from 'react';
 
-import { MarginProps } from '../../mixins';
-import { excludePaddingProps } from '../../mixins/paddings/paddings';
+import { MarginProps } from '../../helpers';
+import { excludePaddingProps } from '../../helpers/paddings/paddings';
 import { warning } from '../../utils';
 import { Badge, BadgeProps } from '../Badge/Badge';
 import { Button, ButtonProps } from '../Button';

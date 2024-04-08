@@ -1,4 +1,4 @@
-import { TablePaginationProps } from './types';
+import { TablePaginationProps } from '../../types';
 
 export function getPagedIndex(index: number, pagination?: TablePaginationProps) {
   const { currentPage, itemsPerPage } = pagination ?? { currentPage: 1, itemsPerPage: 0 };

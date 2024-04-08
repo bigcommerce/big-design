@@ -1,7 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
-import { withMargins } from '../../mixins';
+import { withMargins } from '../../helpers';
 import { StyledFileUploaderWrapper } from '../FileUploader/styled';
 import { StyledInputWrapper } from '../Input/styled';
 import { StyledTextareaWrapper } from '../Textarea/styled';
