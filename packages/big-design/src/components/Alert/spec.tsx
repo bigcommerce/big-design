@@ -88,6 +88,12 @@ test('renders header', () => {
   expect(heading).toBeDefined();
 });
 
+test('uses the header as an accessibility label for the alert', () => {
+  render(<Alert header="Some reason for the alert" messages={[{ text: 'Success' }]} />);
+
+  expect(screen.getByRole('alert', { name: 'Some reason for the alert' })).toBeInTheDocument();
+});
+
 test('renders close button', () => {
   render(<Alert messages={[{ text: 'Success' }]} onClose={() => null} />);
 
