@@ -60,8 +60,8 @@ importers:
         specifier: 2.30.0
         version: 2.30.0
       downshift:
-        specifier: 7.6.0
-        version: 7.6.0(react@18.2.0)
+        specifier: 9.0.4
+        version: 9.0.4(react@18.2.0)
       focus-trap:
         specifier: ^7.0.0
         version: 7.5.2
@@ -5388,8 +5388,8 @@ packages:
       dot-prop: 5.3.0
     dev: true
 
-  /compute-scroll-into-view@2.0.4:
-    resolution: {integrity: sha512-y/ZA3BGnxoM/QHHQ2Uy49CLtnWPbt4tTPpEEZiEmmiWBFKjej7nEyH8Ryz54jH0MLXflUYA3Er2zUxPSJu5R+g==}
+  /compute-scroll-into-view@3.1.0:
+    resolution: {integrity: sha512-rj8l8pD4bJ1nx+dAkMhV1xB5RuZEyVysfxJqB1pRchh1KVvwOv9b7CGB8ZfjTImVv2oF+sYMUkMZq6Na5Ftmbg==}
     dev: false
 
   /concat-map@0.0.1:
@@ -5935,16 +5935,16 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /downshift@7.6.0(react@18.2.0):
-    resolution: {integrity: sha512-VSoTVynTAsabou/hbZ6HJHUVhtBiVOjQoBsCPcQq5eAROIGP+9XKMp9asAKQ3cEcUP4oe0fFdD2pziUjhFY33Q==}
+  /downshift@9.0.4(react@18.2.0):
+    resolution: {integrity: sha512-6XV/p6+4177d8e8dJ6PoLNSDG1bv52FL18yilKD06oZCb6dFG6f6dXcn3h0B1ggcrOkN3hIvL11Qt15Y5McbXw==}
     peerDependencies:
       react: '>=16.12.0'
     dependencies:
-      '@babel/runtime': 7.24.1
-      compute-scroll-into-view: 2.0.4
+      '@babel/runtime': 7.24.4
+      compute-scroll-into-view: 3.1.0
       prop-types: 15.8.1
       react: 18.2.0
-      react-is: 17.0.2
+      react-is: 18.2.0
       tslib: 2.6.2
     dev: false
 
@@ -10592,6 +10592,7 @@ packages:
 
   /react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
+    dev: true
 
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
