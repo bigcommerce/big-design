@@ -6,7 +6,7 @@
     "build": "lerna run build --stream",
     "build:icons": "pnpm -F @bigcommerce/big-design-icons run build",
     "ci:test": "lerna run test --stream -- --maxWorkers=2 --coverage",
-    "lint": "eslint . --ext .ts,.tsx,.js,.mdx",
+    "lint": "eslint . --ext .ts,.tsx,.js,.mdx --max-warnings 0",
     "start": "pnpm -F @bigcommerce/docs run start",
     "test": "lerna run test --stream",
     "typecheck": "lerna run typecheck --stream",

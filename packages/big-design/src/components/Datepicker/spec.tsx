@@ -1,6 +1,6 @@
 import 'jest-styled-components';
 
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '@testing-library/user-event';
 import React, { createRef } from 'react';
 import type { ReactDatePicker } from 'react-datepicker';
 

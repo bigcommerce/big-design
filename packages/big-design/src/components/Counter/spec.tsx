@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '@testing-library/user-event';
 import React, { createRef, Ref } from 'react';
 import 'jest-styled-components';
 

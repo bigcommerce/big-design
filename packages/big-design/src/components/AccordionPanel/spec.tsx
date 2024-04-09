@@ -1,5 +1,5 @@
 import { ErrorIcon } from '@bigcommerce/big-design-icons';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '@testing-library/user-event';
 import React, { useState } from 'react';
 
 import { render, screen } from '@test/utils';
