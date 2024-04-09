@@ -254,11 +254,11 @@ importers:
         specifier: ^11.1.0
         version: 11.2.0
       glob:
-        specifier: ^8.0.1
-        version: 8.1.0
+        specifier: ^10.3.12
+        version: 10.3.12
       glob-promise:
         specifier: ^6.0.2
-        version: 6.0.5(glob@8.1.0)
+        version: 6.0.5(glob@10.3.12)
       inquirer:
         specifier: ^8.2.4
         version: 8.2.5
@@ -6884,14 +6884,14 @@ packages:
     dependencies:
       is-glob: 4.0.3
 
-  /glob-promise@6.0.5(glob@8.1.0):
+  /glob-promise@6.0.5(glob@10.3.12):
     resolution: {integrity: sha512-uUzvxo60yo/vMLXZHCNAlfdM5U5A07jCnUO8xTK44Z0Vc58poGDXhDx8ju1DmPdprOORh+4Lpog64hl+AJ5piA==}
     engines: {node: '>=16'}
     peerDependencies:
       glob: ^8.0.3
     dependencies:
       '@types/glob': 8.0.0
-      glob: 8.1.0
+      glob: 10.3.12
     dev: true
 
   /glob@10.3.12:

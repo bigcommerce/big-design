@@ -60,7 +60,7 @@
     "camelcase": "^6.3.0",
     "flag-icons": "^7.1.0",
     "fs-extra": "^11.1.0",
-    "glob": "^8.0.1",
+    "glob": "^10.3.12",
     "glob-promise": "^6.0.2",
     "inquirer": "^8.2.4",
     "inquirer-autocomplete-prompt": "^2.0.0",
