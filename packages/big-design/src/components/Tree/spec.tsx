@@ -1,5 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
 import { fireEvent, render, RenderResult, screen } from '@test/utils';

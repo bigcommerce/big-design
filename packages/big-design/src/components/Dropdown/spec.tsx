@@ -1,6 +1,6 @@
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
 

@@ -1,6 +1,6 @@
 import { theme } from '@bigcommerce/big-design-theme';
 import { waitFor } from '@testing-library/dom';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
 import { render, screen } from '@test/utils';
