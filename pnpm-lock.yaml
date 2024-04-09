@@ -19,7 +19,7 @@ importers:
         version: 18.6.3
       '@types/babel__standalone':
         specifier: ^7.1.4
-        version: 7.1.4
+        version: 7.1.7
       eslint:
         specifier: ^8.33.0
         version: 8.57.0
@@ -3839,12 +3839,10 @@ packages:
       '@babel/types': 7.24.0
     dev: true
 
-  /@types/babel__standalone@7.1.4:
-    resolution: {integrity: sha512-HijIDmcNl3Wmo0guqjYkQvMzyRCM6zMCkYcdG8f+2X7mPBNa9ikSeaQlWs2Yg18KN1klOJzyupX5BPOf+7ahaw==}
+  /@types/babel__standalone@7.1.7:
+    resolution: {integrity: sha512-4RUJX9nWrP/emaZDzxo/+RYW8zzLJTXWJyp2k78HufG459HCz754hhmSymt3VFOU6/Wy+IZqfPvToHfLuGOr7w==}
     dependencies:
-      '@babel/core': 7.24.3
-    transitivePeerDependencies:
-      - supports-color
+      '@types/babel__core': 7.20.5
     dev: true
 
   /@types/babel__template@7.4.1:
