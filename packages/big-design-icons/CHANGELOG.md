@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.26.0...@bigcommerce/big-design-icons@0.26.1) (2024-04-09)
+
+
+### Bug Fixes
+
+* typescript build output with wrong imports ([a812497](https://github.com/bigcommerce/big-design/commit/a81249798e20c10754c938b2b3d3dcc95d81aa0c))
+
+
+
+
+
 # [0.26.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.25.1...@bigcommerce/big-design-icons@0.26.0) (2024-04-02)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.39.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.39.0...@bigcommerce/big-design@0.39.1) (2024-04-09)
+
+
+### Bug Fixes
+
+* typescript build output with wrong imports ([a812497](https://github.com/bigcommerce/big-design/commit/a81249798e20c10754c938b2b3d3dcc95d81aa0c))
+
+
+### Features
+
+* **component:** allow Alerts to be labelled by their header ([#1388](https://github.com/bigcommerce/big-design/issues/1388)) ([54ba7d5](https://github.com/bigcommerce/big-design/commit/54ba7d58762e56dbb3259ad4397e99c1493551e8))
+
+
+
+
+
 # [0.39.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.38.2...@bigcommerce/big-design@0.39.0) (2024-04-02)
 
 

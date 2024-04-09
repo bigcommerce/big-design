@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design",
-  "version": "0.39.0",
+  "version": "0.39.1",
   "sideEffects": false,
   "main": "src/index.ts",
   "author": "BigCommerce Inc",
@@ -58,7 +58,7 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.12.1",
     "@babel/preset-typescript": "^7.15.0",
-    "@bigcommerce/configs": "^0.20.0",
+    "@bigcommerce/configs": "^0.20.1",
     "@bigcommerce/pack": "^0.2.0",
     "@swc/core": "^1.4.2",
     "@swc/jest": "^0.2.36",

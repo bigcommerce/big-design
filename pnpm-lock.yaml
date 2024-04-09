@@ -100,7 +100,7 @@ importers:
         specifier: ^7.15.0
         version: 7.24.1(@babel/core@7.24.3)
       '@bigcommerce/configs':
-        specifier: ^0.20.0
+        specifier: ^0.20.1
         version: link:../configs
       '@bigcommerce/pack':
         specifier: ^0.2.0
@@ -218,7 +218,7 @@ importers:
         specifier: ^7.15.0
         version: 7.24.1(@babel/core@7.24.3)
       '@bigcommerce/configs':
-        specifier: ^0.20.0
+        specifier: ^0.20.1
         version: link:../configs
       '@svgr/core':
         specifier: ^8.1.0
@@ -321,7 +321,7 @@ importers:
         specifier: ^7.15.0
         version: 7.24.1(@babel/core@7.24.3)
       '@bigcommerce/configs':
-        specifier: ^0.20.0
+        specifier: ^0.20.1
         version: link:../configs
       '@bigcommerce/pack':
         specifier: ^0.2.0
@@ -445,10 +445,10 @@ importers:
         version: 5.3.10(@babel/core@7.24.3)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
     devDependencies:
       '@bigcommerce/configs':
-        specifier: ^0.20.0
+        specifier: ^0.20.1
         version: link:../configs
       '@bigcommerce/examples':
-        specifier: ^0.26.0
+        specifier: ^0.26.1
         version: link:../examples
       '@types/gtag.js':
         specifier: ^0.0.19

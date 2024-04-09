@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/docs",
-  "version": "0.39.0",
+  "version": "0.39.1",
   "private": true,
   "sideEffects": false,
   "license": "(MIT AND CC-BY-3.0)",
@@ -36,8 +36,8 @@
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
-    "@bigcommerce/configs": "^0.20.0",
-    "@bigcommerce/examples": "^0.26.0",
+    "@bigcommerce/configs": "^0.20.1",
+    "@bigcommerce/examples": "^0.26.1",
     "@types/gtag.js": "^0.0.19",
     "@types/node": "^20.12.2",
     "@types/prettier": "^2.0.1",

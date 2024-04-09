@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/configs@0.20.0...@bigcommerce/configs@0.20.1) (2024-04-09)
+
+
+### Bug Fixes
+
+* typescript build output with wrong imports ([a812497](https://github.com/bigcommerce/big-design/commit/a81249798e20c10754c938b2b3d3dcc95d81aa0c))
+
+
+
+
+
 # [0.20.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/configs@0.19.1...@bigcommerce/configs@0.20.0) (2024-04-02)
 
 **Note:** Version bump only for package @bigcommerce/configs
