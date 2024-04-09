@@ -61,7 +61,6 @@
     "flag-icons": "^7.1.0",
     "fs-extra": "^11.1.0",
     "glob": "^10.3.12",
-    "glob-promise": "^6.0.2",
     "inquirer": "^8.2.4",
     "inquirer-autocomplete-prompt": "^2.0.0",
     "prettier": "^2.4.0",
