@@ -49,7 +49,7 @@
     "jsx-to-string-loader": "^1.2.0",
     "next": "^14.0.4",
     "push-dir": "^0.4.1",
-    "typescript": "^5.3.3",
+    "typescript": "^5.4.4",
     "typescript-styled-plugin": "^0.18.2"
   }
 }
