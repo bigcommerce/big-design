@@ -1,7 +1,7 @@
 const { transform } = require('@svgr/core');
 const camelcase = require('camelcase');
 const { outputFile, readFile } = require('fs-extra');
-const glob = require('glob-promise');
+const { glob } = require('glob');
 const { cpus } = require('os');
 const { basename, join } = require('path');
 const { rimraf } = require('rimraf');
@@ -51,7 +51,9 @@ function cleanDestDirectory() {
   await cleanDestDirectory();
   await generateIcons();
 
-  const indexFile = Array.from(componentNames).map((name) => `export * from './${name}';`);
+  const indexFile = Array.from(componentNames)
+    .sort()
+    .map((name) => `export * from './${name}';`);
 
   await outputFile(join(DEST_PATH, 'index.ts'), indexFile.join('\n'));
 
