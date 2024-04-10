@@ -93,7 +93,7 @@ export const Select = typedMemo(
       );
     }, [flattenedOptions, value]);
 
-    const [inputValue, setInputValue] = useState<string | undefined>(selectedOption?.content);
+    const [inputValue, setInputValue] = useState<string | undefined>(selectedOption?.content || '');
 
     // Initialize with flattened options
     const [filteredOptions, setFilteredOptions] = useState(flattenedOptions);
