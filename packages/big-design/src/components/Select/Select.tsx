@@ -165,7 +165,7 @@ export const Select = typedMemo(
     };
 
     const handleStateReducer = (
-      _state: UseComboboxState<SelectOption<T> | SelectAction | null>,
+      state: UseComboboxState<SelectOption<T> | SelectAction | null>,
       actionAndChanges: UseComboboxStateChangeOptions<SelectOption<T> | SelectAction | null>,
     ) => {
       switch (actionAndChanges.type) {
@@ -175,10 +175,11 @@ export const Select = typedMemo(
             inputValue: selectedOption ? selectedOption.content : '',
           };
 
-        case useCombobox.stateChangeTypes.InputFocus:
+        // ARIA 1.2 requires the listbox to open on input click
+        case useCombobox.stateChangeTypes.InputClick:
           return {
             ...actionAndChanges.changes,
-            isOpen: false, // keep the menu closed when input gets focused.
+            isOpen: true,
           };
 
         default:
@@ -204,6 +205,7 @@ export const Select = typedMemo(
       inputValue,
       itemToString: (item) => (item ? item.content : ''),
       items: filteredOptions,
+      isItemDisabled: (item) => item?.disabled ?? false,
       labelId,
       onInputValueChange: handleOnInputValueChange,
       onIsOpenChange: handleOnIsOpenChange,
@@ -378,11 +380,12 @@ export const Select = typedMemo(
         {renderInput}
         <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
+            {...ariaLabelledBy}
             action={action}
             autoWidth={autoWidth}
             filteredItems={filteredOptions}
             getItemProps={getItemProps}
-            getMenuProps={() => getMenuProps({ ...ariaLabelledBy })}
+            getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
             isOpen={isOpen}
             items={options}

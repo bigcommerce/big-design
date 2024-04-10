@@ -1,5 +1,5 @@
 import { State } from '@popperjs/core';
-import { UseSelectPropGetters } from 'downshift';
+import { UseComboboxPropGetters, UseSelectPropGetters } from 'downshift';
 import React, {
   ComponentPropsWithoutRef,
   forwardRef,
@@ -34,8 +34,12 @@ export interface ListProps<T> extends ComponentPropsWithoutRef<'ul'> {
   selectedItem?: SelectOption<T> | null;
   selectedItems?: Array<SelectOption<T>> | null;
   addItem?(item: SelectOption<T>): void;
-  getItemProps: UseSelectPropGetters<any>['getItemProps'];
-  getMenuProps: UseSelectPropGetters<any>['getMenuProps'];
+  getItemProps:
+    | UseSelectPropGetters<any>['getItemProps']
+    | UseComboboxPropGetters<any>['getItemProps'];
+  getMenuProps:
+    | UseSelectPropGetters<any>['getMenuProps']
+    | UseComboboxPropGetters<any>['getMenuProps'];
   update: (() => Promise<Partial<State>>) | null;
   removeItem?(item: SelectOption<T>): void;
 }

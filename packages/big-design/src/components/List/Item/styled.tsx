@@ -5,7 +5,9 @@ import { withTransition } from '../../../helpers/transitions';
 
 import { ListItemProps } from '.';
 
-export const StyledListItem = styled.li<ListItemProps<unknown>>`
+export const StyledListItem = styled.li<
+  Omit<ListItemProps<unknown>, 'getItemProps' | 'item' | 'index'>
+>`
   ${withTransition(['background-color', 'color'])}
 
   align-items: center;

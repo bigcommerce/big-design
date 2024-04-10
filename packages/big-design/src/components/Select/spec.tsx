@@ -236,13 +236,13 @@ test('input button has aria-label', async () => {
 test('select menu opens when clicked on input', async () => {
   render(SelectMock);
 
-  const input = screen.getByTestId('select');
+  const input = screen.getByRole('input');
 
   const listbox = await screen.findByRole('listbox');
 
   expect(listbox).toBeEmptyDOMElement();
 
-  fireEvent.click(input);
+  userEvent.click(input);
 
   await screen.findByRole('listbox');
 

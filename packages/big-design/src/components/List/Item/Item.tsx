@@ -1,5 +1,5 @@
 import { CheckIcon } from '@bigcommerce/big-design-icons';
-import { UseSelectPropGetters } from 'downshift';
+import { UseComboboxPropGetters, UseSelectPropGetters } from 'downshift';
 import React, { ComponentPropsWithoutRef, forwardRef, memo, Ref } from 'react';
 
 import { typedMemo } from '../../../utils';
@@ -20,7 +20,9 @@ export interface ListItemProps<T> extends ComponentPropsWithoutRef<'li'> {
   isHighlighted: boolean;
   isSelected?: boolean;
   item: DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction;
-  getItemProps: UseSelectPropGetters<any>['getItemProps'];
+  getItemProps:
+    | UseSelectPropGetters<any>['getItemProps']
+    | UseComboboxPropGetters<any>['getItemProps'];
   addItem?(item: SelectOption<T>): void;
   removeItem?(item: SelectOption<T>): void;
 }
@@ -49,7 +51,6 @@ const StyleableListItem = typedMemo(
       <StyledListItem
         {...getItemProps({
           ...props,
-          disabled: item.disabled,
           index,
           item,
           onClick: () => {
@@ -86,7 +87,6 @@ const StyleableListItem = typedMemo(
       <StyledListItem
         {...getItemProps({
           ...props,
-          disabled: item.disabled,
           index,
           item,
           ref: forwardedRef,

@@ -193,10 +193,11 @@ export const MultiSelect = typedMemo(
         case useCombobox.stateChangeTypes.InputBlur:
           return { ...actionAndChanges.changes, inputValue: '' };
 
-        case useCombobox.stateChangeTypes.InputFocus:
+        // ARIA 1.2 requires the listbox to open on input click
+        case useCombobox.stateChangeTypes.InputClick:
           return {
             ...actionAndChanges.changes,
-            isOpen: false, // keep the menu closed when input gets focused.
+            isOpen: true,
           };
 
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
@@ -464,12 +465,13 @@ export const MultiSelect = typedMemo(
         {renderInput}
         <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
+            {...ariaLabelledBy}
             action={action}
             addItem={addSelectedItem}
             autoWidth={autoWidth}
             filteredItems={filteredOptions}
             getItemProps={getItemProps}
-            getMenuProps={() => getMenuProps({ ...ariaLabelledBy })}
+            getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
             isOpen={isOpen}
             items={options}
