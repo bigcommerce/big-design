@@ -408,7 +408,7 @@ exports[`renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r15:"
+              aria-labelledby=":r16:"
               class="c14"
               fill="currentColor"
               height="24"
@@ -418,7 +418,7 @@ exports[`renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r15:"
+                id=":r16:"
               >
                 Previous page
               </title>
@@ -440,7 +440,7 @@ exports[`renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r16:"
+              aria-labelledby=":r17:"
               class="c14"
               fill="currentColor"
               height="24"
@@ -450,7 +450,7 @@ exports[`renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r16:"
+                id=":r17:"
               >
                 Next page
               </title>
@@ -935,7 +935,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 <div
-  aria-controls=":r1i:"
+  aria-controls=":r1k:"
   class="c0"
 >
   <div
@@ -949,15 +949,15 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r1k:"
+          aria-labelledby=":r1m:"
           class="c6 c7"
-          id=":r1j:"
+          id=":r1l:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r1j:"
+          for=":r1l:"
         >
           <svg
             aria-hidden="true"
@@ -983,9 +983,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         >
           <label
             class="c12 c13"
-            for=":r1j:"
+            for=":r1l:"
             hidden=""
-            id=":r1k:"
+            id=":r1m:"
           >
             Select All
           </label>

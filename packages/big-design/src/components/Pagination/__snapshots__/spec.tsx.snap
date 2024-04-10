@@ -358,7 +358,7 @@ exports[`render pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r2:"
+          aria-labelledby=":r3:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -368,7 +368,7 @@ exports[`render pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r2:"
+            id=":r3:"
           >
             Previous page
           </title>
@@ -390,7 +390,7 @@ exports[`render pagination component 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r3:"
+          aria-labelledby=":r4:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -400,7 +400,7 @@ exports[`render pagination component 1`] = `
           width="24"
         >
           <title
-            id=":r3:"
+            id=":r4:"
           >
             Next page
           </title>
@@ -718,11 +718,11 @@ exports[`render pagination component with invalid page info 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r4:-menu"
+        aria-controls=":r5:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
-        id=":r4:-toggle-button"
+        id=":r5:-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -756,9 +756,9 @@ exports[`render pagination component with invalid page info 1`] = `
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
-          aria-labelledby=":r4:-label"
+          aria-labelledby=":r5:-label"
           class="c9"
-          id=":r4:-menu"
+          id=":r5:-menu"
           role="menu"
         />
       </div>
@@ -776,7 +776,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r6:"
+          aria-labelledby=":r8:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -786,7 +786,7 @@ exports[`render pagination component with invalid page info 1`] = `
           width="24"
         >
           <title
-            id=":r6:"
+            id=":r8:"
           >
             Previous page
           </title>
@@ -808,7 +808,7 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":r7:"
+          aria-labelledby=":r9:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -818,7 +818,7 @@ exports[`render pagination component with invalid page info 1`] = `
           width="24"
         >
           <title
-            id=":r7:"
+            id=":r9:"
           >
             Next page
           </title>
@@ -1136,11 +1136,11 @@ exports[`render pagination component with invalid range info 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":r8:-menu"
+        aria-controls=":ra:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
-        id=":r8:-toggle-button"
+        id=":ra:-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -1174,9 +1174,9 @@ exports[`render pagination component with invalid range info 1`] = `
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
-          aria-labelledby=":r8:-label"
+          aria-labelledby=":ra:-label"
           class="c9"
-          id=":r8:-menu"
+          id=":ra:-menu"
           role="menu"
         />
       </div>
@@ -1194,7 +1194,7 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":ra:"
+          aria-labelledby=":rd:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -1204,7 +1204,7 @@ exports[`render pagination component with invalid range info 1`] = `
           width="24"
         >
           <title
-            id=":ra:"
+            id=":rd:"
           >
             Previous page
           </title>
@@ -1227,7 +1227,7 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":rb:"
+          aria-labelledby=":re:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -1237,7 +1237,7 @@ exports[`render pagination component with invalid range info 1`] = `
           width="24"
         >
           <title
-            id=":rb:"
+            id=":re:"
           >
             Next page
           </title>
@@ -1555,11 +1555,11 @@ exports[`render pagination component with no items 1`] = `
     >
       <button
         aria-activedescendant=""
-        aria-controls=":rc:-menu"
+        aria-controls=":rf:-menu"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c4 c5"
-        id=":rc:-toggle-button"
+        id=":rf:-toggle-button"
         role="button"
         tabindex="0"
         type="button"
@@ -1593,9 +1593,9 @@ exports[`render pagination component with no items 1`] = `
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
-          aria-labelledby=":rc:-label"
+          aria-labelledby=":rf:-label"
           class="c9"
-          id=":rc:-menu"
+          id=":rf:-menu"
           role="menu"
         />
       </div>
@@ -1613,7 +1613,7 @@ exports[`render pagination component with no items 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":re:"
+          aria-labelledby=":ri:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -1623,7 +1623,7 @@ exports[`render pagination component with no items 1`] = `
           width="24"
         >
           <title
-            id=":re:"
+            id=":ri:"
           >
             Previous page
           </title>
@@ -1646,7 +1646,7 @@ exports[`render pagination component with no items 1`] = `
         class="c6"
       >
         <svg
-          aria-labelledby=":rf:"
+          aria-labelledby=":rj:"
           class="c11"
           fill="currentColor"
           height="24"
@@ -1656,7 +1656,7 @@ exports[`render pagination component with no items 1`] = `
           width="24"
         >
           <title
-            id=":rf:"
+            id=":rj:"
           >
             Next page
           </title>
