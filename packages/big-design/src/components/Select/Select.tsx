@@ -181,6 +181,12 @@ export const Select = typedMemo(
             inputValue: selectedOption ? selectedOption.content : '',
           };
 
+        case useCombobox.stateChangeTypes.FunctionCloseMenu:
+          return {
+            ...actionAndChanges.changes,
+            inputValue: selectedOption ? selectedOption.content : '',
+          };
+
         // ARIA 1.2 requires the listbox to open on input click
         case useCombobox.stateChangeTypes.InputClick:
           return {
