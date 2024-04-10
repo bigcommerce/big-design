@@ -197,6 +197,7 @@ export const MultiSelect = typedMemo(
         case useCombobox.stateChangeTypes.InputClick:
           return {
             ...actionAndChanges.changes,
+            highlightedIndex: getFirstMatchingOptionIndex(filteredOptions),
             isOpen: true,
           };
 

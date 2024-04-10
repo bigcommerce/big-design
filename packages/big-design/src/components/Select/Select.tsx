@@ -52,8 +52,6 @@ export const Select = typedMemo(
     const defaultRef: RefObject<HTMLInputElement> = createRef();
     const selectUniqueId = useId();
 
-    const [inputValue, setInputValue] = useState<string | undefined>('');
-
     // aria-labelledby takes presedence over aria-label so we need to strip it out if there is no label
     // Downshift v7 automatically adds aria-labelledby to props even if there is no label defined
     // This is a workaround to remove the aria-labelledby if there is no label defined
@@ -88,6 +86,14 @@ export const Select = typedMemo(
         (option): option is SelectOption<T> => 'value' in option && option.value === value,
       );
     }, [flattenedOptions, value]);
+
+    const selectedOptionIndex = useMemo(() => {
+      return flattenedOptions.findIndex(
+        (option): option is SelectOption<T> => 'value' in option && option.value === value,
+      );
+    }, [flattenedOptions, value]);
+
+    const [inputValue, setInputValue] = useState<string | undefined>(selectedOption?.content);
 
     // Initialize with flattened options
     const [filteredOptions, setFilteredOptions] = useState(flattenedOptions);
@@ -165,7 +171,7 @@ export const Select = typedMemo(
     };
 
     const handleStateReducer = (
-      state: UseComboboxState<SelectOption<T> | SelectAction | null>,
+      _state: UseComboboxState<SelectOption<T> | SelectAction | null>,
       actionAndChanges: UseComboboxStateChangeOptions<SelectOption<T> | SelectAction | null>,
     ) => {
       switch (actionAndChanges.type) {
@@ -179,6 +185,7 @@ export const Select = typedMemo(
         case useCombobox.stateChangeTypes.InputClick:
           return {
             ...actionAndChanges.changes,
+            highlightedIndex: selectedOptionIndex || getFirstMatchingOptionIndex(filteredOptions),
             isOpen: true,
           };
 

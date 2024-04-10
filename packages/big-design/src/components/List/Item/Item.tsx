@@ -93,6 +93,7 @@ const StyleableListItem = typedMemo(
         })}
         actionType={actionType}
         autoWidth={autoWidth}
+        disabled={item.disabled}
         isAction={isAction}
         isHighlighted={isHighlighted}
         isSelected={isSelected}
