@@ -2,7 +2,7 @@ import 'jest-styled-components';
 
 import { userEvent } from '@testing-library/user-event';
 import React, { createRef } from 'react';
-import type { ReactDatePicker } from 'react-datepicker';
+import { default as ReactDatePicker } from 'react-datepicker';
 
 import { fireEvent, render, screen, waitFor } from '@test/utils';
 
@@ -65,7 +65,7 @@ test('no error when input date value manually', async () => {
     });
   });
 
-  expect(changeFunction).not.toHaveBeenCalled();
+  expect(changeFunction).toHaveBeenCalled();
   expect(input?.getAttribute('value')).toEqual(dateString.toDateString());
 });
 
