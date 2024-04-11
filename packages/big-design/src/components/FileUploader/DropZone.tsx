@@ -17,20 +17,16 @@ import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Small, Text } from '../Typography';
 
-import { defaultLocalization } from './FileUploader';
 import { ButtonStyled, DropzoneStyled } from './styled';
+import { Localization } from './types';
 import { validateFileFormat } from './utils';
-
-export interface DropZoneLocalization {
-  upload: string;
-}
 
 export interface Props extends ComponentPropsWithoutRef<'input'> {
   description?: string;
   viewType?: 'row' | 'block';
   icon?: React.ReactNode;
   label?: string;
-  localization?: DropZoneLocalization;
+  localization: Localization;
   onFilesChange(files: FileList | null): void;
 }
 
@@ -41,7 +37,7 @@ export const DropZone = ({
   icon = <DraftIcon />,
   id,
   label,
-  localization = defaultLocalization,
+  localization,
   multiple,
   viewType = 'row',
   onFilesChange,

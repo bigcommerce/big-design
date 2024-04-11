@@ -1,21 +1,13 @@
-import {
-  NodeMap as _NodeMap,
-  TreeExpandable as _TreeExandable,
-  TreeFocusable as _TreeFocusable,
-  TreeNodeId as _TreeNodeId,
-  TreeNodeProps as _TreeNodeProps,
-  TreeProps as _TreeProps,
-  TreeSelectable as _TreeSelectable,
-  TreeSelectableType as _TreeSelectableType,
+export { Tree } from './Tree';
+export {
+  type NodeMap,
+  type TreeExpandable,
+  type TreeFocusable,
+  type TreeNodeId,
+  type TreeNodeProps,
+  type TreeProps,
+  type TreeSelectable,
+  type TreeSelectableType,
 } from './types';
 
 export * from './hooks';
-export { Tree } from './Tree';
-export type NodeMap = _NodeMap;
-export type TreeExpandable = _TreeExandable;
-export type TreeFocusable = _TreeFocusable;
-export type TreeNodeId = _TreeNodeId;
-export type TreeProps<T> = _TreeProps<T>;
-export type TreeNodeProps<T> = _TreeNodeProps<T>;
-export type TreeSelectable<T> = _TreeSelectable<T>;
-export type TreeSelectableType = _TreeSelectableType;

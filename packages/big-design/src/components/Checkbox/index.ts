@@ -1,5 +1,2 @@
-import { CheckboxProps as _CheckboxProps } from './Checkbox';
-
-export { Checkbox } from './Checkbox';
-export * from './Label';
-export type CheckboxProps = _CheckboxProps;
+export { Checkbox, type CheckboxProps } from './Checkbox';
+export { CheckboxLabel } from './Label';

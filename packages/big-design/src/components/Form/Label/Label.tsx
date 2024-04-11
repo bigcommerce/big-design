@@ -10,12 +10,12 @@ const defaultLocalization: LabelLocalization = {
   optional: 'optional',
 };
 
-export interface LabelProps extends ComponentPropsWithoutRef<'label'> {
+export interface FormControlLabelProps extends ComponentPropsWithoutRef<'label'> {
   renderOptional?: boolean;
   localization?: LabelLocalization;
 }
 
-export const FormControlLabel: React.FC<LabelProps> = ({
+export const FormControlLabel: React.FC<FormControlLabelProps> = ({
   className,
   localization = defaultLocalization,
   style,

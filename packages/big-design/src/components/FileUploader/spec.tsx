@@ -8,9 +8,11 @@ import { render, screen } from '@test/utils';
 import { warning } from '../../utils';
 import { FormControlLabel, FormGroup } from '../Form';
 
+import { defaultLocalization } from './constants';
 import { DropZone } from './DropZone';
 import { File as FileComponent } from './File';
-import { FileUploader, ValidatorConfig } from './FileUploader';
+import { FileUploader } from './FileUploader';
+import { type ValidatorConfig } from './types';
 
 import 'jest-styled-components';
 
@@ -431,6 +433,7 @@ describe('DropZone', () => {
       <DropZone
         description="File types: JPG, GIF, PNG. Recommended size: 250x100px."
         label="Upload your images"
+        localization={defaultLocalization}
         onFilesChange={jest.fn()}
       />,
     );
@@ -443,6 +446,7 @@ describe('DropZone', () => {
       <DropZone
         description="File types: JPG, GIF, PNG. Recommended size: 250x100px."
         label="Upload your images"
+        localization={defaultLocalization}
         onFilesChange={jest.fn()}
       />,
     );
@@ -455,6 +459,7 @@ describe('DropZone', () => {
       <DropZone
         description="File types: JPG, GIF, PNG. Recommended size: 250x100px."
         label="Upload your images"
+        localization={defaultLocalization}
         onFilesChange={jest.fn()}
       />,
     );
@@ -472,6 +477,7 @@ describe('DropZone', () => {
       <DropZone
         description="File types: JPG, GIF, PNG. Recommended size: 250x100px."
         label="Upload your images"
+        localization={defaultLocalization}
         onFilesChange={onFilesChangeMock}
       />,
     );
@@ -488,7 +494,7 @@ describe('DropZone', () => {
       <DropZone
         description="File types: JPG, GIF, PNG. Recommended size: 250x100px."
         label="Upload your images"
-        localization={{ upload: 'some button text' }}
+        localization={{ ...defaultLocalization, upload: 'some button text' }}
         onFilesChange={jest.fn()}
       />,
     );

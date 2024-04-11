@@ -1,4 +1,1 @@
-import { PaginationProps as _PaginationProps } from './Pagination';
-
-export { Pagination } from './Pagination';
-export type PaginationProps = _PaginationProps;
+export { Pagination, type PaginationProps } from './Pagination';

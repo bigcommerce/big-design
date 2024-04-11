@@ -1,1 +1,1 @@
-export { FormControlLabel } from './Label';
+export { FormControlLabel, type FormControlLabelProps } from './Label';

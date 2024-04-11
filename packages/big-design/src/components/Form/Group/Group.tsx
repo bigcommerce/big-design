@@ -17,7 +17,7 @@ import { useFormContext } from '../useFormContext';
 
 import { StyledError, StyledGroup, StyledInlineGroup } from './styled';
 
-export interface GroupProps extends ComponentPropsWithoutRef<'div'> {
+export interface FormGroupProps extends ComponentPropsWithoutRef<'div'> {
   children?: React.ReactNode;
   errors?: React.ReactNode | React.ReactNode[];
 }
@@ -33,7 +33,7 @@ interface Context {
 
 export const FormGroupContext = createContext<Context>({});
 
-export const FormGroup: React.FC<GroupProps> = (props) => {
+export const FormGroup: React.FC<FormGroupProps> = (props) => {
   const { fullWidth } = useFormContext();
   const [inputErrors, setInputErrors] = useState<Errors>({});
 
@@ -78,7 +78,7 @@ export const FormGroup: React.FC<GroupProps> = (props) => {
 };
 
 const generateErrors = (
-  errors: GroupProps['errors'],
+  errors: FormGroupProps['errors'],
   fromGroup = false,
   key?: number,
 ): React.ReactNode => {

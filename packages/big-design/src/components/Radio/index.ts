@@ -1,5 +1,2 @@
-import { RadioProps as _RadioProps } from './Radio';
-
-export { Radio } from './Radio';
-export * from './Label';
-export type RadioProps = _RadioProps;
+export { Radio, type RadioProps } from './Radio';
+export { RadioLabel } from './Label';
