@@ -1,4 +1,4 @@
-import { ValidatorConfig } from '../FileUploader';
+import { ValidatorConfig } from '../types';
 
 export const validateFileFormat = (file: File | DataTransferItem, fileFormats = '') => {
   const allowedFormats = fileFormats.split(',').map((format) => format.trim());

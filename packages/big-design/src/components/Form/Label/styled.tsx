@@ -4,18 +4,18 @@ import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
 import { StyleableH4 } from '../../Typography/private';
 import { HeadingProps } from '../../Typography/types';
 
-import { LabelLocalization, LabelProps } from './Label';
+import { type FormControlLabelProps, type LabelLocalization } from './Label';
 
-interface StyledLabelArgument extends Omit<LabelProps, 'localization'> {
+interface StyledLabelArgument extends Omit<FormControlLabelProps, 'localization'> {
   theme: DefaultTheme;
   localization: LabelLocalization;
 }
 
 export const StyledLabel = styled<
-  StyledComponent<'label' | 'h4', DefaultTheme, Partial<HeadingProps>> & LabelProps
+  StyledComponent<'label' | 'h4', DefaultTheme, Partial<HeadingProps>> & FormControlLabelProps
 >(StyleableH4).attrs({
   as: 'label',
-})<LabelProps>`
+})<FormControlLabelProps>`
   cursor: pointer;
   display: inline-block;
   margin-bottom: ${({ theme }: StyledLabelArgument) => theme.spacing.xxSmall};

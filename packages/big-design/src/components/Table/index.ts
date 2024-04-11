@@ -1,2 +1,10 @@
 export { Table, TableFigure } from './Table';
-export * from './types';
+export type {
+  TableColumn,
+  TableItem,
+  TablePaginationProps,
+  TableProps,
+  TableSelectable,
+  TableSortDirection,
+  TableSortable,
+} from './types';

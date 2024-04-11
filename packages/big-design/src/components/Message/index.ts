@@ -1,4 +1,1 @@
-import { MessageProps as _MessageProps } from './Message';
-
-export { Message } from './Message';
-export type MessageProps = _MessageProps;
+export { Message, type MessageProps } from './Message';

@@ -1,1 +1,1 @@
-export * from './Label';
+export { RadioLabel } from './Label';

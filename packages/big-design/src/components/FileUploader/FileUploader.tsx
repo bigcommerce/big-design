@@ -12,25 +12,19 @@ import React, {
 } from 'react';
 
 import { warning } from '../../utils';
-import { DropdownItem } from '../Dropdown/types';
+import { DropdownItem } from '../Dropdown';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
 import { InlineMessage } from '../InlineMessage';
 
-import { DropZoneLocalization } from './DropZone';
+import { defaultLocalization } from './constants';
 import { File } from './File';
 import { DropZoneWrapper, StyledFileUploaderWrapper, StyledList } from './styled';
+import type { Localization, ValidatorConfig } from './types';
 import { getImagesPreview, validateFiles } from './utils';
 
 export interface FileAction extends Omit<DropdownItem, 'onItemClick'> {
   onItemClick: (name: File, idx: number) => void;
-}
-
-export interface FileUploaderLocalization extends DropZoneLocalization {
-  optional: string;
-  showLess: string;
-  showMore: string;
-  canNotUploadTheseFiles: string;
 }
 
 interface DropzoneConfig {
@@ -40,26 +34,12 @@ interface DropzoneConfig {
   label?: string;
 }
 
-export interface FileValidationError {
+interface FileValidationError {
   file: File;
   fileIdx: number;
   message?: string;
   type: string | string[];
 }
-
-export interface ValidatorConfig {
-  message?: string;
-  type: string;
-  validator: (file: File) => boolean;
-}
-
-export const defaultLocalization: FileUploaderLocalization = {
-  optional: 'optional',
-  upload: 'Upload',
-  showLess: 'Show less',
-  showMore: 'Show more',
-  canNotUploadTheseFiles: `Can't upload these files`,
-};
 
 interface Props {
   actions?: FileAction[];
@@ -69,7 +49,7 @@ interface Props {
   files: File[];
   label?: React.ReactNode;
   labelId?: string;
-  localization?: FileUploaderLocalization;
+  localization?: Localization;
   previewHidden?: boolean;
   validators?: ValidatorConfig[];
   onFilesChange(files: File[]): void;
