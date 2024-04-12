@@ -1,22 +1,37 @@
-import { Flex } from '@bigcommerce/big-design';
+import { GridItem } from '@bigcommerce/big-design';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
 import styled from 'styled-components';
 
-export const StyledFlex = styled(Flex)`
-  ${({ theme }) => theme.shadow.raised}
-
-  background-color: ${({ theme }) => theme.colors.secondary10};
-  border-radius: 0;
-  position: fixed;
+export const StyledGridItem = styled(GridItem)`
+  position: sticky;
   top: 0;
+  height: 100vh;
   width: 100%;
-  z-index: ${({ theme }) => theme.zIndex.sticky};
+`;
 
-  ${({ theme }) => theme.breakpoints.tablet} {
-    bottom: 0;
-    box-shadow: none;
-    display: block;
-    height: 100vh;
-    overflow: auto;
-    position: sticky;
-  }
+export const StyledScrollAreaRoot = styled(ScrollArea.Root)`
+  overflow: hidden;
+  height: 100%;
+`;
+
+export const StyledScrollAreaViewport = styled(ScrollArea.Viewport)`
+  height: 100%;
+  width: 100%;
+`;
+
+export const StyledScrollAreaScrollbar = styled(ScrollArea.Scrollbar)`
+  display: flex;
+  user-select: none;
+  touch-action: none;
+  padding: ${({ theme }) => theme.helpers.remCalc(1)};
+  border-radius: ${({ theme }) => theme.borderRadius.normal};
+  transition: background-color 160ms ease-out;
+  width: ${({ theme }) => theme.helpers.remCalc(8)};
+  flex-direction: column;
+  background-color: ${({ theme }) => theme.helpers.createRGBA(theme.colors.secondary70, 0.1)};
+`;
+
+export const StyledScrollAreaThumb = styled(ScrollArea.Thumb)`
+  background-color: ${({ theme }) => theme.helpers.createRGBA(theme.colors.secondary70, 0.2)};
+  border-radius: ${({ theme }) => theme.borderRadius.normal};
 `;

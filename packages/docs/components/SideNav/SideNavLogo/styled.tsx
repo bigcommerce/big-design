@@ -9,6 +9,12 @@ export const StyledLogo = styled.div`
   }
 
   p {
+    display: none;
     text-align: right;
+    margin-right: ${({ theme }) => theme.spacing.medium};
+
+    ${({ theme }) => theme.breakpoints.tablet} {
+      display: block;
+    }
   }
 `;
