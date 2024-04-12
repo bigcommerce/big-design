@@ -44,7 +44,7 @@ const GettingStartedPage = () => {
                 href="https://support.bigcommerce.com/s/group/0F91B000000bnqoSAA/bigdesign-beta"
                 target="_blank"
               >
-                Beta Community Group
+                Community Group
               </Link>
             </List.Item>
             <List.Item>

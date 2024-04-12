@@ -1,4 +1,3 @@
-export * from './BetaRibbon';
 export * from './Code';
 export * from './CodePreview';
 export * from './CodeSnippet';

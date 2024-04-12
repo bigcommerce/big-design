@@ -12,7 +12,7 @@ import Script from 'next/script';
 import React, { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { BetaRibbon, SideNav, StoryWrapper } from '../components';
+import { SideNav, StoryWrapper } from '../components';
 import { GTM_ID, isProd, pageView } from '../utils/analytics/gtm';
 
 export const alertsManager = createAlertsManager();
@@ -118,7 +118,6 @@ const App = ({ Component, pageProps }) => {
                   </StoryWrapper>
                 </GridItem>
               </Grid>
-              <BetaRibbon />
             </>
           )}
         </>
