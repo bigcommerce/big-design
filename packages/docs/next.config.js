@@ -20,6 +20,9 @@ module.exports = withTM({
     URL_PREFIX: isProduction ? URL_PREFIX : '',
     BD_VERSION: bdPkg.version,
   },
+  images: {
+    unoptimized: true,
+  },
   webpack: (config) => {
     return {
       ...config,

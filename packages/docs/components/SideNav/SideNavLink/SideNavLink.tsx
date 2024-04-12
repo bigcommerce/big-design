@@ -1,16 +1,17 @@
 import { Link } from '@bigcommerce/big-design';
+import NextLink from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
-import { List, NextLink } from '../../';
+import { List } from '../../';
 
 interface Props {
   children?: React.ReactNode;
   href: string;
-  as?: string;
+  target?: string;
 }
 
-export const StyledLink = styled(Link)`
+const StyledLink = styled(Link)`
   display: block;
   line-height: ${({ theme }) => theme.lineHeight.large};
 
@@ -20,9 +21,9 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const SideNavLink: React.FC<Props> = ({ as, children, href }) => (
+export const SideNavLink: React.FC<Props> = ({ children, href, target }) => (
   <List.Item>
-    <NextLink as={as} href={href}>
+    <NextLink href={href} legacyBehavior passHref target={target}>
       <StyledLink href="">{children}</StyledLink>
     </NextLink>
   </List.Item>

@@ -21,13 +21,13 @@ const theme = createTheme();
 
 const gridTemplate = {
   mobile: `
-    "nav" 80px
+    "nav" ${theme.helpers.remCalc(80)}
     "main" min-content
     / 100%;
   `,
   tablet: `
-    ". nav main ." 1fr
-    / 1fr 210px minmax(0, 1050px) 1fr;
+    "nav main" 1fr
+    / minmax(${theme.helpers.remCalc(210)}, ${theme.helpers.remCalc(300)}) 1fr;
   `,
 };
 
@@ -63,10 +63,9 @@ const App = ({ Component, pageProps }) => {
       </Head>
       <style global jsx>
         {`
-          html,
-          body,
-          #__next {
-            height: 100%;
+          body {
+            min-height: 100vh;
+            background-color: ${theme.colors.secondary10};
           }
         `}
       </style>
@@ -96,29 +95,31 @@ const App = ({ Component, pageProps }) => {
           {router.query.noNav ? (
             <Component {...pageProps} />
           ) : (
-            <>
-              <Grid
-                backgroundColor="secondary10"
-                gridGap="0"
-                gridTemplate={gridTemplate}
-                style={{ minHeight: '100%' }}
+            <Grid
+              gridGap="0"
+              gridTemplate={gridTemplate}
+              marginHorizontal="auto"
+              paddingHorizontal={{ tablet: 'medium' }}
+              style={{
+                minHeight: '100vh',
+                maxWidth: '1400px',
+                position: 'relative',
+              }}
+            >
+              <SideNav />
+              <GridItem
+                as="main"
+                gridArea="main"
+                marginHorizontal={{ mobile: 'small', tablet: 'xxLarge' }}
+                marginVertical="medium"
+                paddingTop={{ tablet: 'large' }}
+                style={{ maxWidth: '100%' }}
               >
-                <GridItem gridArea="nav" paddingTop="medium">
-                  <SideNav />
-                </GridItem>
-                <GridItem
-                  gridArea="main"
-                  marginHorizontal={{ mobile: 'small', tablet: 'xxLarge' }}
-                  marginVertical="medium"
-                  paddingTop="large"
-                  style={{ maxWidth: '100%' }}
-                >
-                  <StoryWrapper>
-                    <Component {...pageProps} />
-                  </StoryWrapper>
-                </GridItem>
-              </Grid>
-            </>
+                <StoryWrapper>
+                  <Component {...pageProps} />
+                </StoryWrapper>
+              </GridItem>
+            </Grid>
           )}
         </>
       </ThemeProvider>
