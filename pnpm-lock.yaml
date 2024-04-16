@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@bigcommerce/eslint-config':
         specifier: ^2.4.0
-        version: 2.8.0(eslint@8.57.0)(typescript@5.4.4)
+        version: 2.8.1(eslint@8.57.0)(typescript@5.4.4)
       '@commitlint/cli':
         specifier: ^18.6.1
         version: 18.6.1(@types/node@20.12.2)(typescript@5.4.4)
@@ -1864,7 +1864,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.1
-    dev: true
 
   /@babel/standalone@7.21.9:
     resolution: {integrity: sha512-I9UNGZyBQgJOXdzZNeqO5NfTZhZoCCjnkR31GlEH6CDfnIWSC2D3OYSZTSGsQ2JhEwx7tbNR+1HuYHcoZd1IaQ==}
@@ -1908,8 +1907,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@bigcommerce/eslint-config@2.8.0(eslint@8.57.0)(typescript@5.4.4):
-    resolution: {integrity: sha512-5iGPsFZiszzhqusD5vw9HIgEVDQb9alcRPCeZ77jsLCBDcBBqVb55/lI7dqK54m7egsH7/TFB2D2Qt0qh6fkLQ==}
+  /@bigcommerce/eslint-config@2.8.1(eslint@8.57.0)(typescript@5.4.4):
+    resolution: {integrity: sha512-9KUbUSBFcioe1kgQGaP/EkrRDIGmq+YC6wIkLNn+f/jxQyuBnFZgJoo7W0X2q96UMP/n93+7Xdp6MVUFmEZSOw==}
     peerDependencies:
       eslint: ^8.0.0
       typescript: ^4.0.0 || ^5.0.0
@@ -10487,7 +10486,7 @@ packages:
     peerDependencies:
       react: '>=16.13.1'
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       react: 18.2.0
     dev: true
 
@@ -10558,7 +10557,7 @@ packages:
       react-native:
         optional: true
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
       '@types/react-redux': 7.1.16
       hoist-non-react-statics: 3.3.2
       loose-envify: 1.4.0
@@ -10717,7 +10716,7 @@ packages:
   /redux@4.1.0:
     resolution: {integrity: sha512-uI2dQN43zqLWCt6B/BMGRMY6db7TTY4qeHHfGeKb3EOhmOKjU3KdWvNLJyqaHRksv/ErdNH7cFZWg9jXtewy4g==}
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
     dev: false
 
   /regenerate-unicode-properties@10.1.0:
@@ -10741,7 +10740,7 @@ packages:
   /regenerator-transform@0.15.1:
     resolution: {integrity: sha512-knzmNAcuyxV+gQCufkYcvOqX/qIIfHLv0u5x79kRxuGojfYVky1f15TzZEu2Avte8QGepvUNTnLskf8E6X6Vyg==}
     dependencies:
-      '@babel/runtime': 7.24.1
+      '@babel/runtime': 7.24.4
     dev: true
 
   /regexp.prototype.flags@1.4.3:
