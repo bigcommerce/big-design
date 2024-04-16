@@ -408,7 +408,7 @@ exports[`pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r15:"
+              aria-labelledby=":r16:"
               class="c14"
               fill="currentColor"
               height="24"
@@ -418,7 +418,7 @@ exports[`pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r15:"
+                id=":r16:"
               >
                 Previous page
               </title>
@@ -440,7 +440,7 @@ exports[`pagination renders a pagination component 1`] = `
             class="c9"
           >
             <svg
-              aria-labelledby=":r16:"
+              aria-labelledby=":r17:"
               class="c14"
               fill="currentColor"
               height="24"
@@ -450,7 +450,7 @@ exports[`pagination renders a pagination component 1`] = `
               width="24"
             >
               <title
-                id=":r16:"
+                id=":r17:"
               >
                 Next page
               </title>
@@ -995,7 +995,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 <div
-  aria-controls=":r6t:"
+  aria-controls=":r76:"
   class="c0"
 >
   <div
@@ -1009,15 +1009,15 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r6v:"
+          aria-labelledby=":r78:"
           class="c6 c7"
-          id=":r6u:"
+          id=":r77:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r6u:"
+          for=":r77:"
         >
           <svg
             aria-hidden="true"
@@ -1043,9 +1043,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         >
           <label
             class="c12 c13"
-            for=":r6u:"
+            for=":r77:"
             hidden=""
-            id=":r6v:"
+            id=":r78:"
           >
             Select All
           </label>
@@ -1289,7 +1289,7 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
 }
 
 <div
-  aria-controls=":r7j:"
+  aria-controls=":r7s:"
   class="c0"
 >
   <div
@@ -1303,15 +1303,15 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r7l:"
+          aria-labelledby=":r7u:"
           class="c6 c7"
-          id=":r7k:"
+          id=":r7t:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r7k:"
+          for=":r7t:"
         >
           <svg
             aria-hidden="true"
@@ -1337,9 +1337,9 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
         >
           <label
             class="c12 c13"
-            for=":r7k:"
+            for=":r7t:"
             hidden=""
-            id=":r7l:"
+            id=":r7u:"
           >
             Select All
           </label>
@@ -1583,7 +1583,7 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
 }
 
 <div
-  aria-controls=":rba:"
+  aria-controls=":rbj:"
   class="c0"
 >
   <div
@@ -1597,15 +1597,15 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
       >
         <input
           aria-checked="false"
-          aria-labelledby=":rbc:"
+          aria-labelledby=":rbl:"
           class="c6 c7"
-          id=":rbb:"
+          id=":rbk:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":rbb:"
+          for=":rbk:"
         >
           <svg
             aria-hidden="true"
@@ -1631,9 +1631,9 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
         >
           <label
             class="c12 c13"
-            for=":rbb:"
+            for=":rbk:"
             hidden=""
-            id=":rbc:"
+            id=":rbl:"
           >
             Select All
           </label>

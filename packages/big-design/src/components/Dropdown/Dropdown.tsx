@@ -161,12 +161,13 @@ export const Dropdown = memo(
             {...props}
             autoWidth={autoWidth}
             getItemProps={getItemProps}
-            getMenuProps={() => getMenuProps({ role: 'menu' })}
+            getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
             isDropdown={true}
             isOpen={isOpen}
             items={items}
             maxHeight={maxHeight}
+            role="menu"
             update={update}
           />
         </Box>

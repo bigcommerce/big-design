@@ -52,8 +52,6 @@ export const Select = typedMemo(
     const defaultRef: RefObject<HTMLInputElement> = createRef();
     const selectUniqueId = useId();
 
-    const [inputValue, setInputValue] = useState<string | undefined>('');
-
     // aria-labelledby takes presedence over aria-label so we need to strip it out if there is no label
     // Downshift v7 automatically adds aria-labelledby to props even if there is no label defined
     // This is a workaround to remove the aria-labelledby if there is no label defined
@@ -88,6 +86,14 @@ export const Select = typedMemo(
         (option): option is SelectOption<T> => 'value' in option && option.value === value,
       );
     }, [flattenedOptions, value]);
+
+    const selectedOptionIndex = useMemo(() => {
+      return flattenedOptions.findIndex(
+        (option): option is SelectOption<T> => 'value' in option && option.value === value,
+      );
+    }, [flattenedOptions, value]);
+
+    const [inputValue, setInputValue] = useState<string | undefined>(selectedOption?.content || '');
 
     // Initialize with flattened options
     const [filteredOptions, setFilteredOptions] = useState(flattenedOptions);
@@ -175,10 +181,18 @@ export const Select = typedMemo(
             inputValue: selectedOption ? selectedOption.content : '',
           };
 
-        case useCombobox.stateChangeTypes.InputFocus:
+        case useCombobox.stateChangeTypes.FunctionCloseMenu:
           return {
             ...actionAndChanges.changes,
-            isOpen: false, // keep the menu closed when input gets focused.
+            inputValue: selectedOption ? selectedOption.content : '',
+          };
+
+        // ARIA 1.2 requires the listbox to open on input click
+        case useCombobox.stateChangeTypes.InputClick:
+          return {
+            ...actionAndChanges.changes,
+            highlightedIndex: selectedOptionIndex || getFirstMatchingOptionIndex(filteredOptions),
+            isOpen: true,
           };
 
         default:
@@ -204,6 +218,7 @@ export const Select = typedMemo(
       inputValue,
       itemToString: (item) => (item ? item.content : ''),
       items: filteredOptions,
+      isItemDisabled: (item) => item?.disabled ?? false,
       labelId,
       onInputValueChange: handleOnInputValueChange,
       onIsOpenChange: handleOnIsOpenChange,
@@ -378,11 +393,12 @@ export const Select = typedMemo(
         {renderInput}
         <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
           <List
+            {...ariaLabelledBy}
             action={action}
             autoWidth={autoWidth}
             filteredItems={filteredOptions}
             getItemProps={getItemProps}
-            getMenuProps={() => getMenuProps({ ...ariaLabelledBy })}
+            getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
             isOpen={isOpen}
             items={options}
