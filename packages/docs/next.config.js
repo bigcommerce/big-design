@@ -23,6 +23,9 @@ module.exports = withTM({
   images: {
     unoptimized: true,
   },
+  compiler: {
+    styledComponents: true,
+  },
   webpack: (config) => {
     return {
       ...config,

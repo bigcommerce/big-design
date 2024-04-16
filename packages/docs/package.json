@@ -47,7 +47,6 @@
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18.2.23",
     "@types/styled-components": "^5.1.34",
-    "babel-plugin-styled-components": "^2.0.7",
     "jsx-to-string-loader": "^1.2.0",
     "next": "^14.2.1",
     "push-dir": "^0.4.1",
