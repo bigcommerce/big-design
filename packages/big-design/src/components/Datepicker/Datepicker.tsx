@@ -67,6 +67,15 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
         minDate={min ? new Date(min) : undefined}
         onChange={updateDate}
         placeholderText={placeholder}
+        popperModifiers={[
+          {
+            name: 'removeOffset',
+            fn: ({ y }) => ({
+              y: y - 10,
+            }),
+          },
+        ]}
+        popperPlacement="bottom-start"
         ref={forwardedRef}
         renderCustomHeader={({
           date,
@@ -86,6 +95,7 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
         )}
         required={required}
         selected={selected}
+        showPopperArrow={false}
       />
     </StyledDatepicker>
   );
