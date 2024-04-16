@@ -105,6 +105,9 @@ importers:
       '@bigcommerce/pack':
         specifier: ^0.2.0
         version: link:../pack
+      '@styled/typescript-styled-plugin':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@swc/core':
         specifier: ^1.4.2
         version: 1.4.2
@@ -186,9 +189,6 @@ importers:
       typescript:
         specifier: ^5.4.4
         version: 5.4.4
-      typescript-styled-plugin:
-        specifier: ^0.18.2
-        version: 0.18.3
 
   packages/big-design-icons:
     dependencies:
@@ -220,6 +220,9 @@ importers:
       '@bigcommerce/configs':
         specifier: ^0.20.1
         version: link:../configs
+      '@styled/typescript-styled-plugin':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@svgr/core':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.4.4)
@@ -286,9 +289,6 @@ importers:
       typescript:
         specifier: ^5.4.4
         version: 5.4.4
-      typescript-styled-plugin:
-        specifier: ^0.18.2
-        version: 0.18.3
 
   packages/big-design-theme:
     dependencies:
@@ -323,6 +323,9 @@ importers:
       '@bigcommerce/pack':
         specifier: ^0.2.0
         version: link:../pack
+      '@styled/typescript-styled-plugin':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@swc/core':
         specifier: ^1.4.2
         version: 1.4.2
@@ -371,9 +374,6 @@ importers:
       typescript:
         specifier: ^5.4.4
         version: 5.4.4
-      typescript-styled-plugin:
-        specifier: ^0.18.2
-        version: 0.18.3
 
   packages/configs:
     dependencies:
@@ -450,6 +450,9 @@ importers:
       '@bigcommerce/examples':
         specifier: ^0.26.1
         version: link:../examples
+      '@styled/typescript-styled-plugin':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@types/gtag.js':
         specifier: ^0.0.19
         version: 0.0.19
@@ -486,9 +489,6 @@ importers:
       typescript:
         specifier: ^5.4.4
         version: 5.4.4
-      typescript-styled-plugin:
-        specifier: ^0.18.2
-        version: 0.18.3
 
   packages/examples:
     dependencies:
@@ -2199,20 +2199,20 @@ packages:
       chalk: 4.1.2
     dev: true
 
-  /@emmetio/abbreviation@2.2.2:
-    resolution: {integrity: sha512-TtE/dBnkTCct8+LntkqVrwqQao6EnPAs1YN3cUgxOxTaBlesBCY37ROUAVZrRlG64GNnVShdl/b70RfAI3w5lw==}
+  /@emmetio/abbreviation@2.3.3:
+    resolution: {integrity: sha512-mgv58UrU3rh4YgbE/TzgLQwJ3pFsHHhCLqY20aJq+9comytTXUDNGG/SMtSeMJdkpxgXSXunBGLD8Boka3JyVA==}
     dependencies:
-      '@emmetio/scanner': 1.0.0
+      '@emmetio/scanner': 1.0.4
     dev: true
 
-  /@emmetio/css-abbreviation@2.1.4:
-    resolution: {integrity: sha512-qk9L60Y+uRtM5CPbB0y+QNl/1XKE09mSO+AhhSauIfr2YOx/ta3NJw2d8RtCFxgzHeRqFRr8jgyzThbu+MZ4Uw==}
+  /@emmetio/css-abbreviation@2.1.8:
+    resolution: {integrity: sha512-s9yjhJ6saOO/uk1V74eifykk2CBYi01STTK3WlXWGOepyKa23ymJ053+DNQjpFcy1ingpaO7AxCcwLvHFY9tuw==}
     dependencies:
-      '@emmetio/scanner': 1.0.0
+      '@emmetio/scanner': 1.0.4
     dev: true
 
-  /@emmetio/scanner@1.0.0:
-    resolution: {integrity: sha512-8HqW8EVqjnCmWXVpqAOZf+EGESdkR27odcMMMGefgKXtar00SoYNSryGv//TELI4T3QFsECo78p+0lmalk/CFA==}
+  /@emmetio/scanner@1.0.4:
+    resolution: {integrity: sha512-IqRuJtQff7YHHBk4G8YZ45uB9BaAGcwQeVzgj/zj8/UdOhtQpEIupUhSk8dys6spFIWVZVeK20CzGEnqR5SbqA==}
     dev: true
 
   /@emotion/is-prop-valid@1.1.2:
@@ -3668,6 +3668,16 @@ packages:
       '@sinonjs/commons': 2.0.0
     dev: true
 
+  /@styled/typescript-styled-plugin@1.0.1:
+    resolution: {integrity: sha512-4n9uYJiui4hqGIEMvs/u7sfjbs1/84shYt2Fxcm0JQbvUGfuFhtsqVG5y1hSvw5kTwdpIe4rbXMMOwVHcuAh1g==}
+    dependencies:
+      '@vscode/emmet-helper': 2.9.3
+      typescript-template-language-service-decorator: 2.3.2
+      vscode-css-languageservice: 6.2.13
+      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-types: 3.17.5
+    dev: true
+
   /@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.24.3):
     resolution: {integrity: sha512-b9MIk7yhdS1pMCZM8VeNfUlSKVRhsHZNMl5O9SfaX0l0t5wjdgu4IDzGB8bpnGBBOjGST3rRFVsaaEtI4W6f7g==}
     engines: {node: '>=14'}
@@ -4624,6 +4634,20 @@ packages:
       vite: 4.5.2(@types/node@20.12.2)
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@vscode/emmet-helper@2.9.3:
+    resolution: {integrity: sha512-rB39LHWWPQYYlYfpv9qCoZOVioPCftKXXqrsyqN1mTWZM6dTnONT63Db+03vgrBbHzJN45IrgS/AGxw9iiqfEw==}
+    dependencies:
+      emmet: 2.4.7
+      jsonc-parser: 2.3.1
+      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-types: 3.17.5
+      vscode-uri: 2.1.2
+    dev: true
+
+  /@vscode/l10n@0.0.18:
+    resolution: {integrity: sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ==}
     dev: true
 
   /@yarnpkg/lockfile@1.1.0:
@@ -6135,11 +6159,11 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /emmet@2.3.5:
-    resolution: {integrity: sha512-LcWfTamJnXIdMfLvJEC5Ld3hY5/KHXgv1L1bp6I7eEvB0ZhacHZ1kX0BYovJ8FroEsreLcq7n7kZhRMsf6jkXQ==}
+  /emmet@2.4.7:
+    resolution: {integrity: sha512-O5O5QNqtdlnQM2bmKHtJgyChcrFMgQuulI+WdiOw2NArzprUqqxUW6bgYtKvzKgrsYpuLWalOkdhNP+1jluhCA==}
     dependencies:
-      '@emmetio/abbreviation': 2.2.2
-      '@emmetio/css-abbreviation': 2.1.4
+      '@emmetio/abbreviation': 2.3.3
+      '@emmetio/css-abbreviation': 2.1.8
     dev: true
 
   /emoji-regex@10.3.0:
@@ -12081,17 +12105,6 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: true
 
-  /typescript-styled-plugin@0.18.3:
-    resolution: {integrity: sha512-18ZtfeDRwHgu+Zftla/4cNJKyXyyQayHwjL+dSHZzUq6+akZaGCOejUEFPCN9VX5wMwpZ1eLRN8hJbgttI4tjw==}
-    deprecated: Deprecated in favor of https://github.com/styled-components/typescript-styled-plugin
-    dependencies:
-      typescript-template-language-service-decorator: 2.3.2
-      vscode-css-languageservice: 5.1.9
-      vscode-emmet-helper: 2.6.4
-      vscode-languageserver-textdocument: 1.0.3
-      vscode-languageserver-types: 3.16.0
-    dev: true
-
   /typescript-template-language-service-decorator@2.3.2:
     resolution: {integrity: sha512-hN0zNkr5luPCeXTlXKxsfBPlkAzx86ZRM1vPdL7DbEqqWoeXSxplACy98NpKpLmXsdq7iePUzAXloCAoPKBV6A==}
     dev: true
@@ -12443,45 +12456,29 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vscode-css-languageservice@5.1.9:
-    resolution: {integrity: sha512-/tFOWeZBL3Oc9Zc+2MAi3rEwiXJTSZsvjB+M7nSjWLbGPUIjukUA7YzLgsBoUfR35sPJYnXWUkL56PdfIYM8GA==}
+  /vscode-css-languageservice@6.2.13:
+    resolution: {integrity: sha512-2rKWXfH++Kxd9Z4QuEgd1IF7WmblWWU7DScuyf1YumoGLkY9DW6wF/OTlhOyO2rN63sWHX2dehIpKBbho4ZwvA==}
     dependencies:
-      vscode-languageserver-textdocument: 1.0.3
-      vscode-languageserver-types: 3.16.0
-      vscode-nls: 5.0.0
-      vscode-uri: 3.0.3
+      '@vscode/l10n': 0.0.18
+      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-types: 3.17.5
+      vscode-uri: 3.0.8
     dev: true
 
-  /vscode-emmet-helper@2.6.4:
-    resolution: {integrity: sha512-fP0nunW1RUWEKGf4gqiYLOVNFFGXSRHjCl0pikxtwCFlty8WwimM+RBJ5o0aIiwerrYD30HqeaVyvDW027Sseg==}
-    deprecated: This package has been renamed to @vscode/emmet-helper, please update to the new name
-    dependencies:
-      emmet: 2.3.5
-      jsonc-parser: 2.3.1
-      vscode-languageserver-textdocument: 1.0.3
-      vscode-languageserver-types: 3.16.0
-      vscode-nls: 5.0.0
-      vscode-uri: 2.1.2
+  /vscode-languageserver-textdocument@1.0.11:
+    resolution: {integrity: sha512-X+8T3GoiwTVlJbicx/sIAF+yuJAqz8VvwJyoMVhwEMoEKE/fkDmrqUgDMyBECcM2A2frVZIUj5HI/ErRXCfOeA==}
     dev: true
 
-  /vscode-languageserver-textdocument@1.0.3:
-    resolution: {integrity: sha512-ynEGytvgTb6HVSUwPJIAZgiHQmPCx8bZ8w5um5Lz+q5DjP0Zj8wTFhQpyg8xaMvefDytw2+HH5yzqS+FhsR28A==}
-    dev: true
-
-  /vscode-languageserver-types@3.16.0:
-    resolution: {integrity: sha512-k8luDIWJWyenLc5ToFQQMaSrqCHiLwyKPHKPQZ5zz21vM+vIVUSvsRpcbiECH4WR88K2XZqc4ScRcZ7nk/jbeA==}
-    dev: true
-
-  /vscode-nls@5.0.0:
-    resolution: {integrity: sha512-u0Lw+IYlgbEJFF6/qAqG2d1jQmJl0eyAGJHoAJqr2HT4M2BNuQYSEiSE75f52pXHSJm8AlTjnLLbBFPrdz2hpA==}
+  /vscode-languageserver-types@3.17.5:
+    resolution: {integrity: sha512-Ld1VelNuX9pdF39h2Hgaeb5hEZM2Z3jUrrMgWQAu82jMtZp7p3vJT3BzToKtZI7NgQssZje5o0zryOrhQvzQAg==}
     dev: true
 
   /vscode-uri@2.1.2:
     resolution: {integrity: sha512-8TEXQxlldWAuIODdukIb+TR5s+9Ds40eSJrw+1iDDA9IFORPjMELarNQE3myz5XIkWWpdprmJjm1/SxMlWOC8A==}
     dev: true
 
-  /vscode-uri@3.0.3:
-    resolution: {integrity: sha512-EcswR2S8bpR7fD0YPeS7r2xXExrScVMxg4MedACaWHEtx9ftCF/qHG1xGkolzTPcEmjTavCQgbVzHUIdTMzFGA==}
+  /vscode-uri@3.0.8:
+    resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
     dev: true
 
   /w3c-xmlserializer@4.0.0:

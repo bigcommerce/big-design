@@ -39,6 +39,7 @@
   "devDependencies": {
     "@bigcommerce/configs": "^0.20.1",
     "@bigcommerce/examples": "^0.26.1",
+    "@styled/typescript-styled-plugin": "^1.0.1",
     "@types/gtag.js": "^0.0.19",
     "@types/node": "^20.12.2",
     "@types/prettier": "^2.0.1",
@@ -50,7 +51,6 @@
     "jsx-to-string-loader": "^1.2.0",
     "next": "^14.0.4",
     "push-dir": "^0.4.1",
-    "typescript": "^5.4.4",
-    "typescript-styled-plugin": "^0.18.2"
+    "typescript": "^5.4.4"
   }
 }
