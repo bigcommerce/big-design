@@ -57,8 +57,8 @@ importers:
         specifier: ^6.2.0
         version: 6.2.0(react-dom@18.2.0)(react@18.2.0)
       date-fns:
-        specifier: 2.30.0
-        version: 2.30.0
+        specifier: 3.6.0
+        version: 3.6.0
       downshift:
         specifier: 9.0.4
         version: 9.0.4(react@18.2.0)
@@ -5853,13 +5853,6 @@ packages:
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
     dev: true
-
-  /date-fns@2.30.0:
-    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
-    engines: {node: '>=0.11'}
-    dependencies:
-      '@babel/runtime': 7.24.1
-    dev: false
 
   /date-fns@3.6.0:
     resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}

@@ -1,17 +1,5 @@
 import type { Locale } from 'date-fns';
-import { default as defaultLocale } from 'date-fns/locale/en-US';
-
-interface LocalizationProviderInterface {
-  code?: string;
-  localize?: {
-    month(n: number): string;
-    day(n: number): string;
-  };
-  monthsLong?: string[];
-  formatLong?: Record<string, unknown>;
-  match?: Record<string, unknown>;
-  formatTime(date: Date): string;
-}
+import { enUS } from 'date-fns/locale/en-US';
 
 function getTimeIntervals24hr() {
   const times = ['00:00'];
@@ -54,23 +42,19 @@ export const createLocalizationProvider = (locale: string): LocaleProvider => {
   });
 
   return {
+    ...enUS,
     code: locale,
     localize: {
+      ...enUS.localize,
       month: (n: number) => monthsLong[n],
       day: (n: number) => daysShort[n],
-      ordinalNumber: (n: number) => defaultLocale.localize?.ordinalNumber(n) ?? n,
-      era: (n: number) => defaultLocale.localize?.era(n) ?? n,
-      quarter: (n: number) => defaultLocale.localize?.quarter(n) ?? n,
-      dayPeriod: (n: number) => defaultLocale.localize?.dayPeriod(n) ?? n,
     },
     monthsLong,
-    formatLong: defaultLocale.formatLong,
-    match: defaultLocale.match,
     formatTime: timeFormatter.format,
   };
 };
 
-export function getTimeIntervals(localization: LocalizationProviderInterface) {
+export function getTimeIntervals(localization: LocaleProvider) {
   const localizedTimeIntervals = defaultTimeIntervals.map((time) => {
     const baseDate = new Date();
     const [hour, minute] = time.value.split(':');
