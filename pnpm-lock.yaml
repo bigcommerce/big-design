@@ -474,9 +474,6 @@ importers:
       '@types/styled-components':
         specifier: ^5.1.34
         version: 5.1.34
-      babel-plugin-styled-components:
-        specifier: ^2.0.7
-        version: 2.1.4(@babel/core@7.24.4)(styled-components@5.3.11)
       jsx-to-string-loader:
         specifier: ^1.2.0
         version: 1.2.0
