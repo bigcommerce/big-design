@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.26.1...@bigcommerce/big-design-icons@1.0.0) (2024-04-17)
+
+
+### Features
+
+* export types without reassignment ([9bf2244](https://github.com/bigcommerce/big-design/commit/9bf224417433e54680794f97d30a01fb77b24d69))
+
+
+
+
+
 ## [0.26.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design-icons@0.26.0...@bigcommerce/big-design-icons@0.26.1) (2024-04-09)
 
 

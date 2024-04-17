@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.39.1...@bigcommerce/docs@1.0.0) (2024-04-17)
+
+
+### Features
+
+* remove beta references ([#1400](https://github.com/bigcommerce/big-design/issues/1400)) ([897a396](https://github.com/bigcommerce/big-design/commit/897a396171f207d0cd6b5a07a2c303629125c1fc))
+
+
+
+
+
 ## [0.39.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@0.39.0...@bigcommerce/docs@0.39.1) (2024-04-09)
 
 
