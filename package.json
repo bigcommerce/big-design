@@ -10,7 +10,7 @@
     "start": "pnpm -F @bigcommerce/docs run start",
     "test": "lerna run test --stream",
     "typecheck": "lerna run typecheck --stream",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{js,ts,tsx,mdx}": [
