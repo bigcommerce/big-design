@@ -185,7 +185,7 @@ importers:
         version: 5.0.5
       styled-components:
         specifier: ^5.3.11
-        version: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
+        version: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.3.1)(react@18.2.0)
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -370,7 +370,7 @@ importers:
         version: 5.0.5
       styled-components:
         specifier: ^5.3.11
-        version: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
+        version: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.3.1)(react@18.2.0)
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -442,7 +442,7 @@ importers:
         version: 4.1.6(react-dom@18.2.0)(react@18.2.0)
       styled-components:
         specifier: ^5.3.11
-        version: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
+        version: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.3.1)(react@18.2.0)
     devDependencies:
       '@bigcommerce/configs':
         specifier: workspace:^
@@ -509,7 +509,7 @@ importers:
         version: 18.2.0(react@18.2.0)
       styled-components:
         specifier: ^5.3.11
-        version: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
+        version: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.3.1)(react@18.2.0)
       yup:
         specifier: ^1.0.2
         version: 1.4.0
@@ -5148,7 +5148,7 @@ packages:
       '@babel/plugin-syntax-jsx': 7.24.1(@babel/core@7.24.4)
       lodash: 4.17.21
       picomatch: 2.3.1
-      styled-components: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
+      styled-components: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.3.1)(react@18.2.0)
     transitivePeerDependencies:
       - '@babel/core'
 
@@ -8641,7 +8641,7 @@ packages:
       styled-components: '>= 5'
     dependencies:
       '@adobe/css-tools': 4.3.3
-      styled-components: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
+      styled-components: 5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.3.1)(react@18.2.0)
     dev: true
 
   /jest-util@29.7.0:
@@ -11090,6 +11090,9 @@ packages:
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
 
+  /react-is@18.3.1:
+    resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
+
   /react-live@4.1.6(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-2oq3MADi3rupqZcdoHMrV9p+Eg/92BDds278ZuoOz8d68qw6ct0xZxX89MRxeChrnFHy1XPr8BVknDJNJNdvVw==}
     engines: {node: '>= 0.12.0', npm: '>= 2.0.0'}
@@ -12052,6 +12055,31 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-is: 18.2.0
+      shallowequal: 1.1.0
+      supports-color: 5.5.0
+    transitivePeerDependencies:
+      - '@babel/core'
+    dev: true
+
+  /styled-components@5.3.11(@babel/core@7.24.4)(react-dom@18.2.0)(react-is@18.3.1)(react@18.2.0):
+    resolution: {integrity: sha512-uuzIIfnVkagcVHv9nE0VPlHPSCmXIUGKfJ42LNjxCCTDTL5sgnJ8Z7GZBq0EnLYGln77tPpEpExt2+qa+cZqSw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>= 16.8.0'
+      react-dom: '>= 16.8.0'
+      react-is: '>= 16.8.0'
+    dependencies:
+      '@babel/helper-module-imports': 7.22.15
+      '@babel/traverse': 7.24.1(supports-color@5.5.0)
+      '@emotion/is-prop-valid': 1.1.2
+      '@emotion/stylis': 0.8.5
+      '@emotion/unitless': 0.7.5
+      babel-plugin-styled-components: 2.1.4(@babel/core@7.24.4)(styled-components@5.3.11)
+      css-to-react-native: 3.0.0
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-is: 18.3.1
       shallowequal: 1.1.0
       supports-color: 5.5.0
     transitivePeerDependencies:
