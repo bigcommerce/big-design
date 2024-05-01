@@ -92,6 +92,14 @@ Run tests with:
 pnpm run test
 ```
 
+Update snapshots with:
+
+```
+pnpm build
+cd packages/big-design
+pnpm run test --update-snapshot
+```
+
 Run linter with:
 
 ```
