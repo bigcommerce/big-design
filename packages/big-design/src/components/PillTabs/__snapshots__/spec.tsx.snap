@@ -1,17 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`dropdown is not visible if items fit 1`] = `
-.c8 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   box-sizing: border-box;
   z-index: 1060;
 }
@@ -234,7 +228,7 @@ exports[`dropdown is not visible if items fit 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -328,7 +322,7 @@ exports[`dropdown is not visible if items fit 1`] = `
         >
           <svg
             aria-labelledby=":r5:"
-            class="c8"
+            class="brjSIf"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -352,12 +346,12 @@ exports[`dropdown is not visible if items fit 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px;"
       >
         <ul
           aria-labelledby=":r3:-label"
-          class="c10"
+          class="c9"
           id=":r3:-menu"
           role="menu"
         />
@@ -368,17 +362,11 @@ exports[`dropdown is not visible if items fit 1`] = `
 `;
 
 exports[`it renders the given tabs 1`] = `
-.c8 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   box-sizing: border-box;
   z-index: 1060;
 }
@@ -601,7 +589,7 @@ exports[`it renders the given tabs 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -695,7 +683,7 @@ exports[`it renders the given tabs 1`] = `
         >
           <svg
             aria-labelledby=":r2:"
-            class="c8"
+            class="brjSIf"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -719,12 +707,12 @@ exports[`it renders the given tabs 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px;"
       >
         <ul
           aria-labelledby=":r0:-label"
-          class="c10"
+          class="c9"
           id=":r0:-menu"
           role="menu"
         />
@@ -735,17 +723,11 @@ exports[`it renders the given tabs 1`] = `
 `;
 
 exports[`only the pills that fit are visible 1`] = `
-.c8 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   box-sizing: border-box;
   z-index: 1060;
 }
@@ -968,7 +950,7 @@ exports[`only the pills that fit are visible 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1094,7 +1076,7 @@ exports[`only the pills that fit are visible 1`] = `
         >
           <svg
             aria-labelledby=":re:"
-            class="c8"
+            class="brjSIf"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -1118,12 +1100,12 @@ exports[`only the pills that fit are visible 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
           aria-labelledby=":rc:-label"
-          class="c10"
+          class="c9"
           id=":rc:-menu"
           role="menu"
         />
@@ -1134,17 +1116,11 @@ exports[`only the pills that fit are visible 1`] = `
 `;
 
 exports[`only the pills that fit are visible 2 1`] = `
-.c8 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   box-sizing: border-box;
   z-index: 1060;
 }
@@ -1367,7 +1343,7 @@ exports[`only the pills that fit are visible 2 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1492,7 +1468,7 @@ exports[`only the pills that fit are visible 2 1`] = `
         >
           <svg
             aria-labelledby=":rh:"
-            class="c8"
+            class="brjSIf"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -1516,12 +1492,12 @@ exports[`only the pills that fit are visible 2 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
           aria-labelledby=":rf:-label"
-          class="c10"
+          class="c9"
           id=":rf:-menu"
           role="menu"
         />
@@ -1532,17 +1508,11 @@ exports[`only the pills that fit are visible 2 1`] = `
 `;
 
 exports[`renders all the filters if they fit 1`] = `
-.c8 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   box-sizing: border-box;
   z-index: 1060;
 }
@@ -1765,7 +1735,7 @@ exports[`renders all the filters if they fit 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1889,7 +1859,7 @@ exports[`renders all the filters if they fit 1`] = `
         >
           <svg
             aria-labelledby=":rb:"
-            class="c8"
+            class="brjSIf"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -1913,12 +1883,12 @@ exports[`renders all the filters if they fit 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px;"
       >
         <ul
           aria-labelledby=":r9:-label"
-          class="c10"
+          class="c9"
           id=":r9:-menu"
           role="menu"
         />
@@ -1929,17 +1899,11 @@ exports[`renders all the filters if they fit 1`] = `
 `;
 
 exports[`renders dropdown if items do not fit 1`] = `
-.c8 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
 
-.c9 {
+.c8 {
   box-sizing: border-box;
   z-index: 1060;
 }
@@ -2162,7 +2126,7 @@ exports[`renders dropdown if items do not fit 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c10 {
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -2273,7 +2237,7 @@ exports[`renders dropdown if items do not fit 1`] = `
         >
           <svg
             aria-labelledby=":r8:"
-            class="c8"
+            class="brjSIf"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -2297,12 +2261,12 @@ exports[`renders dropdown if items do not fit 1`] = `
         </span>
       </button>
       <div
-        class="c9"
+        class="c8"
         style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <ul
           aria-labelledby=":r6:-label"
-          class="c10"
+          class="c9"
           id=":r6:-menu"
           role="menu"
         />

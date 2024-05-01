@@ -10,12 +10,6 @@ exports[`render closed modal 1`] = `
 `;
 
 exports[`render open modal 1`] = `
-.c8 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c1 {
   box-sizing: border-box;
 }
@@ -197,7 +191,7 @@ exports[`render open modal 1`] = `
   right: 0.25rem;
 }
 
-.c9 {
+.c8 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -244,7 +238,7 @@ exports[`render open modal 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c8 {
     padding: 0 1.5rem;
   }
 }
@@ -275,7 +269,7 @@ exports[`render open modal 1`] = `
             >
               <svg
                 aria-labelledby=":r1:"
-                class="c8"
+                class="brjSIf"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -300,7 +294,7 @@ exports[`render open modal 1`] = `
           </button>
         </div>
         <div
-          class="c9"
+          class="c8"
         >
           This is a modal
         </div>
@@ -311,12 +305,6 @@ exports[`render open modal 1`] = `
 `;
 
 exports[`render open modal without backdrop 1`] = `
-.c8 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c1 {
   box-sizing: border-box;
 }
@@ -497,7 +485,7 @@ exports[`render open modal without backdrop 1`] = `
   right: 0.25rem;
 }
 
-.c9 {
+.c8 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -544,7 +532,7 @@ exports[`render open modal without backdrop 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c8 {
     padding: 0 1.5rem;
   }
 }
@@ -575,7 +563,7 @@ exports[`render open modal without backdrop 1`] = `
             >
               <svg
                 aria-labelledby=":r3:"
-                class="c8"
+                class="brjSIf"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -600,7 +588,7 @@ exports[`render open modal without backdrop 1`] = `
           </button>
         </div>
         <div
-          class="c9"
+          class="c8"
         >
           This is a modal
         </div>

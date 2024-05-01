@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders with close button if onRemove is present 1`] = `
-.c6 {
-  vertical-align: middle;
-  height: 1rem;
-  width: 1rem;
-}
-
 .c2 {
   color: #313440;
   margin: 0 0 1rem;
@@ -178,7 +172,7 @@ exports[`renders with close button if onRemove is present 1`] = `
     >
       <svg
         aria-labelledby=":r0:"
-        class="c6"
+        class="dezehb"
         fill="currentColor"
         height="24"
         stroke="currentColor"

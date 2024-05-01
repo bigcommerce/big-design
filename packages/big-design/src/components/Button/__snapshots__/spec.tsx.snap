@@ -678,12 +678,6 @@ exports[`render disabled button 1`] = `
 `;
 
 exports[`render icon left and right button 1`] = `
-.c2 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
@@ -798,7 +792,7 @@ exports[`render icon left and right button 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="c2"
+      class="brjSIf"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -817,7 +811,7 @@ exports[`render icon left and right button 1`] = `
     Button
     <svg
       aria-hidden="true"
-      class="c2"
+      class="brjSIf"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -838,12 +832,6 @@ exports[`render icon left and right button 1`] = `
 `;
 
 exports[`render icon left button 1`] = `
-.c2 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
@@ -957,7 +945,7 @@ exports[`render icon left button 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="c2"
+      class="brjSIf"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -979,12 +967,6 @@ exports[`render icon left button 1`] = `
 `;
 
 exports[`render icon only button 1`] = `
-.c2 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
@@ -1099,7 +1081,7 @@ exports[`render icon only button 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="c2"
+      class="brjSIf"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -1120,12 +1102,6 @@ exports[`render icon only button 1`] = `
 `;
 
 exports[`render icon right button 1`] = `
-.c2 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
@@ -1240,7 +1216,7 @@ exports[`render icon right button 1`] = `
     Button
     <svg
       aria-hidden="true"
-      class="c2"
+      class="brjSIf"
       fill="currentColor"
       height="24"
       stroke="currentColor"
