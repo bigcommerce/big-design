@@ -1,13 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render default (success) Alert 1`] = `
-.c4 {
-  vertical-align: middle;
-  color: #2AAB3F;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
@@ -21,11 +14,11 @@ exports[`render default (success) Alert 1`] = `
   grid-area: icon;
 }
 
-.c5 {
+.c4 {
   grid-area: messages;
 }
 
-.c6 {
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -35,7 +28,7 @@ exports[`render default (success) Alert 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c6:last-child {
+.c5:last-child {
   margin-bottom: 0;
 }
 
@@ -57,7 +50,7 @@ exports[`render default (success) Alert 1`] = `
   border-left: 0.25rem solid #2AAB3F;
 }
 
-.c7 {
+.c6 {
   color: #313440;
   vertical-align: middle;
 }
@@ -72,7 +65,7 @@ exports[`render default (success) Alert 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="c4"
+      class="eQftbt"
       color="success"
       fill="currentColor"
       height="24"
@@ -91,13 +84,13 @@ exports[`render default (success) Alert 1`] = `
     </svg>
   </div>
   <div
-    class="c0 c5"
+    class="c0 c4"
   >
     <div
       class="c0"
     >
       <span
-        class="c6 c7"
+        class="c5 c6"
       >
         Success
       </span>
@@ -108,13 +101,6 @@ exports[`render default (success) Alert 1`] = `
 `;
 
 exports[`render error Alert 1`] = `
-.c4 {
-  vertical-align: middle;
-  color: #DB3643;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
@@ -128,11 +114,11 @@ exports[`render error Alert 1`] = `
   grid-area: icon;
 }
 
-.c5 {
+.c4 {
   grid-area: messages;
 }
 
-.c6 {
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -142,7 +128,7 @@ exports[`render error Alert 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c6:last-child {
+.c5:last-child {
   margin-bottom: 0;
 }
 
@@ -164,7 +150,7 @@ exports[`render error Alert 1`] = `
   border-left: 0.25rem solid #DB3643;
 }
 
-.c7 {
+.c6 {
   color: #313440;
   vertical-align: middle;
 }
@@ -179,7 +165,7 @@ exports[`render error Alert 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="c4"
+      class="fxNXfI"
       color="danger"
       fill="currentColor"
       height="24"
@@ -194,13 +180,13 @@ exports[`render error Alert 1`] = `
     </svg>
   </div>
   <div
-    class="c0 c5"
+    class="c0 c4"
   >
     <div
       class="c0"
     >
       <span
-        class="c6 c7"
+        class="c5 c6"
       >
         Error
       </span>
@@ -211,13 +197,6 @@ exports[`render error Alert 1`] = `
 `;
 
 exports[`render info Alert 1`] = `
-.c4 {
-  vertical-align: middle;
-  color: #0B38D9;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
@@ -231,11 +210,11 @@ exports[`render info Alert 1`] = `
   grid-area: icon;
 }
 
-.c5 {
+.c4 {
   grid-area: messages;
 }
 
-.c6 {
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -245,7 +224,7 @@ exports[`render info Alert 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c6:last-child {
+.c5:last-child {
   margin-bottom: 0;
 }
 
@@ -267,7 +246,7 @@ exports[`render info Alert 1`] = `
   border-left: 0.25rem solid #0B38D9;
 }
 
-.c7 {
+.c6 {
   color: #313440;
   vertical-align: middle;
 }
@@ -282,7 +261,7 @@ exports[`render info Alert 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="c4"
+      class="bTIztk"
       color="primary60"
       fill="currentColor"
       height="24"
@@ -301,13 +280,13 @@ exports[`render info Alert 1`] = `
     </svg>
   </div>
   <div
-    class="c0 c5"
+    class="c0 c4"
   >
     <div
       class="c0"
     >
       <span
-        class="c6 c7"
+        class="c5 c6"
       >
         Info
       </span>
@@ -318,13 +297,6 @@ exports[`render info Alert 1`] = `
 `;
 
 exports[`render warning Alert 1`] = `
-.c4 {
-  vertical-align: middle;
-  color: #FFAE00;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
@@ -338,11 +310,11 @@ exports[`render warning Alert 1`] = `
   grid-area: icon;
 }
 
-.c5 {
+.c4 {
   grid-area: messages;
 }
 
-.c6 {
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -352,7 +324,7 @@ exports[`render warning Alert 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c6:last-child {
+.c5:last-child {
   margin-bottom: 0;
 }
 
@@ -374,7 +346,7 @@ exports[`render warning Alert 1`] = `
   border-left: 0.25rem solid #FFAE00;
 }
 
-.c7 {
+.c6 {
   color: #313440;
   vertical-align: middle;
 }
@@ -389,7 +361,7 @@ exports[`render warning Alert 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="c4"
+      class="LZgDY"
       color="warning50"
       fill="currentColor"
       height="24"
@@ -404,13 +376,13 @@ exports[`render warning Alert 1`] = `
     </svg>
   </div>
   <div
-    class="c0 c5"
+    class="c0 c4"
   >
     <div
       class="c0"
     >
       <span
-        class="c6 c7"
+        class="c5 c6"
       >
         Warning
       </span>
@@ -421,24 +393,11 @@ exports[`render warning Alert 1`] = `
 `;
 
 exports[`renders close button 1`] = `
-.c4 {
-  vertical-align: middle;
-  color: #2AAB3F;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.c11 {
-  vertical-align: middle;
-  height: 1.25rem;
-  width: 1.25rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
 
-.c8 {
+.c7 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -487,36 +446,36 @@ exports[`renders close button 1`] = `
   font-weight: 600;
 }
 
-.c8:focus {
+.c7:focus {
   outline: none;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c8 + .bd-button {
+.c7 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c8:active {
+.c7:active {
   background-color: #0B38D9;
 }
 
-.c8:focus {
+.c7:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c8:hover:not(:active) {
+.c7:hover:not(:active) {
   background-color: #2852EB;
 }
 
-.c8[disabled] {
+.c7[disabled] {
   background-color: #D9DCE9;
 }
 
-.c10 {
+.c9 {
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
@@ -529,7 +488,7 @@ exports[`renders close button 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c9 {
+.c8 {
   background-color: transparent;
   border: none;
   color: #313440;
@@ -538,19 +497,19 @@ exports[`renders close button 1`] = `
   padding: 0;
 }
 
-.c9:active {
+.c8:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c8:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c8:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c8[disabled] {
   color: #D9DCE9;
 }
 
@@ -563,11 +522,11 @@ exports[`renders close button 1`] = `
   grid-area: icon;
 }
 
-.c5 {
+.c4 {
   grid-area: messages;
 }
 
-.c6 {
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -577,7 +536,7 @@ exports[`renders close button 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c6:last-child {
+.c5:last-child {
   margin-bottom: 0;
 }
 
@@ -599,20 +558,20 @@ exports[`renders close button 1`] = `
   border-left: 0.25rem solid #2AAB3F;
 }
 
-.c7 {
+.c6 {
   color: #313440;
   vertical-align: middle;
 }
 
 @media (min-width:720px) {
-  .c8 + .bd-button {
+  .c7 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c8 {
+  .c7 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -629,7 +588,7 @@ exports[`renders close button 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="c4"
+      class="eQftbt"
       color="success"
       fill="currentColor"
       height="24"
@@ -648,13 +607,13 @@ exports[`renders close button 1`] = `
     </svg>
   </div>
   <div
-    class="c0 c5"
+    class="c0 c4"
   >
     <div
       class="c0"
     >
       <span
-        class="c6 c7"
+        class="c5 c6"
       >
         Success
       </span>
@@ -665,14 +624,14 @@ exports[`renders close button 1`] = `
     class="c0 "
   >
     <button
-      class="c8 c9"
+      class="c7 c8"
     >
       <span
-        class="c10"
+        class="c9"
       >
         <svg
           aria-hidden="true"
-          class="c11"
+          class="jqaCLj"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -695,13 +654,6 @@ exports[`renders close button 1`] = `
 `;
 
 exports[`renders header 1`] = `
-.c4 {
-  vertical-align: middle;
-  color: #2AAB3F;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
@@ -715,11 +667,11 @@ exports[`renders header 1`] = `
   grid-area: icon;
 }
 
-.c5 {
+.c4 {
   grid-area: messages;
 }
 
-.c6 {
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -728,7 +680,7 @@ exports[`renders header 1`] = `
   margin: 0 0 0.5rem;
 }
 
-.c8 {
+.c7 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -738,7 +690,7 @@ exports[`renders header 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c8:last-child {
+.c7:last-child {
   margin-bottom: 0;
 }
 
@@ -760,12 +712,12 @@ exports[`renders header 1`] = `
   border-left: 0.25rem solid #2AAB3F;
 }
 
-.c7 {
+.c6 {
   line-height: 1rem;
   margin-bottom: 0.25rem;
 }
 
-.c9 {
+.c8 {
   color: #313440;
   vertical-align: middle;
 }
@@ -781,7 +733,7 @@ exports[`renders header 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="c4"
+      class="eQftbt"
       color="success"
       fill="currentColor"
       height="24"
@@ -800,10 +752,10 @@ exports[`renders header 1`] = `
     </svg>
   </div>
   <div
-    class="c0 c5"
+    class="c0 c4"
   >
     <h4
-      class="c6 c7"
+      class="c5 c6"
       id=":rd:"
     >
       Header
@@ -812,7 +764,7 @@ exports[`renders header 1`] = `
       class="c0"
     >
       <span
-        class="c8 c9"
+        class="c7 c8"
       >
         Success
       </span>
@@ -823,19 +775,6 @@ exports[`renders header 1`] = `
 `;
 
 exports[`renders with external link 1`] = `
-.c4 {
-  vertical-align: middle;
-  color: #2AAB3F;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.c10 {
-  vertical-align: middle;
-  height: 1rem;
-  width: 1rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
@@ -849,11 +788,11 @@ exports[`renders with external link 1`] = `
   grid-area: icon;
 }
 
-.c5 {
+.c4 {
   grid-area: messages;
 }
 
-.c8 {
+.c7 {
   -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
   -webkit-transition-property: color;
@@ -874,22 +813,22 @@ exports[`renders with external link 1`] = `
   align-items: center;
 }
 
-.c8:active {
+.c7:active {
   color: #0024A6;
 }
 
-.c8:hover:not(:active) {
+.c7:hover:not(:active) {
   color: #0024A6;
 }
 
-.c8 svg {
+.c7 svg {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   margin-left: 0.25rem;
 }
 
-.c6 {
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -899,7 +838,7 @@ exports[`renders with external link 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c6:last-child {
+.c5:last-child {
   margin-bottom: 0;
 }
 
@@ -921,12 +860,12 @@ exports[`renders with external link 1`] = `
   border-left: 0.25rem solid #2AAB3F;
 }
 
-.c7 {
+.c6 {
   color: #313440;
   vertical-align: middle;
 }
 
-.c9 {
+.c8 {
   font-size: 0.875rem;
   vertical-align: middle;
 }
@@ -941,7 +880,7 @@ exports[`renders with external link 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="c4"
+      class="eQftbt"
       color="success"
       fill="currentColor"
       height="24"
@@ -960,19 +899,19 @@ exports[`renders with external link 1`] = `
     </svg>
   </div>
   <div
-    class="c0 c5"
+    class="c0 c4"
   >
     <div
       class="c0"
     >
       <span
-        class="c6 c7"
+        class="c5 c6"
       >
         Success
       </span>
        
       <a
-        class="c8 c9"
+        class="c7 c8"
         href="#"
         target="_blank"
       >
@@ -981,7 +920,7 @@ exports[`renders with external link 1`] = `
         </span>
         <svg
           aria-hidden="true"
-          class="c10"
+          class="dezehb"
           fill="currentColor"
           height="24"
           stroke="currentColor"
@@ -1004,13 +943,6 @@ exports[`renders with external link 1`] = `
 `;
 
 exports[`renders with link 1`] = `
-.c4 {
-  vertical-align: middle;
-  color: #2AAB3F;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
   box-sizing: border-box;
 }
@@ -1024,11 +956,11 @@ exports[`renders with link 1`] = `
   grid-area: icon;
 }
 
-.c5 {
+.c4 {
   grid-area: messages;
 }
 
-.c8 {
+.c7 {
   -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
   -webkit-transition-property: color;
@@ -1041,15 +973,15 @@ exports[`renders with link 1`] = `
   text-decoration: none;
 }
 
-.c8:active {
+.c7:active {
   color: #0024A6;
 }
 
-.c8:hover:not(:active) {
+.c7:hover:not(:active) {
   color: #0024A6;
 }
 
-.c6 {
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -1059,7 +991,7 @@ exports[`renders with link 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c6:last-child {
+.c5:last-child {
   margin-bottom: 0;
 }
 
@@ -1081,12 +1013,12 @@ exports[`renders with link 1`] = `
   border-left: 0.25rem solid #2AAB3F;
 }
 
-.c7 {
+.c6 {
   color: #313440;
   vertical-align: middle;
 }
 
-.c9 {
+.c8 {
   font-size: 0.875rem;
   vertical-align: middle;
 }
@@ -1101,7 +1033,7 @@ exports[`renders with link 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="c4"
+      class="eQftbt"
       color="success"
       fill="currentColor"
       height="24"
@@ -1120,19 +1052,19 @@ exports[`renders with link 1`] = `
     </svg>
   </div>
   <div
-    class="c0 c5"
+    class="c0 c4"
   >
     <div
       class="c0"
     >
       <span
-        class="c6 c7"
+        class="c5 c6"
       >
         Success
       </span>
        
       <a
-        class="c8 c9"
+        class="c7 c8"
         href="#"
       >
         Link

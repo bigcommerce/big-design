@@ -16,27 +16,27 @@ exports[`renders Stepper 1`] = `
   background-color: #3C64F4;
 }
 
-.c9 {
+.c8 {
   box-sizing: border-box;
   background-color: #3C64F4;
 }
 
-.c13 {
+.c12 {
   margin-bottom: 1.5rem;
   box-sizing: border-box;
 }
 
-.c16 {
+.c15 {
   box-sizing: border-box;
   background-color: #D9DCE9;
 }
 
-.c17 {
+.c16 {
   box-sizing: border-box;
   background-color: #8C93AD;
 }
 
-.c18 {
+.c17 {
   box-sizing: border-box;
   background-color: #D9DCE9;
 }
@@ -89,24 +89,17 @@ exports[`renders Stepper 1`] = `
   display: flex;
 }
 
-.c8 {
-  vertical-align: middle;
-  color: #FFFFFF;
-  height: 1.25rem;
-  width: 1.25rem;
-}
-
 .c3 {
   gap: 1rem;
   display: grid;
 }
 
-.c14 {
+.c13 {
   gap: 1rem;
   display: grid;
 }
 
-.c11 {
+.c10 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -114,11 +107,11 @@ exports[`renders Stepper 1`] = `
   line-height: 1.5rem;
 }
 
-.c11:last-child {
+.c10:last-child {
   margin-bottom: 0;
 }
 
-.c19 {
+.c18 {
   color: #8C93AD;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -126,7 +119,7 @@ exports[`renders Stepper 1`] = `
   line-height: 1.5rem;
 }
 
-.c19:last-child {
+.c18:last-child {
   margin-bottom: 0;
 }
 
@@ -149,7 +142,7 @@ exports[`renders Stepper 1`] = `
   user-select: none;
 }
 
-.c10 {
+.c9 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -158,7 +151,7 @@ exports[`renders Stepper 1`] = `
   width: 100%;
 }
 
-.c12 {
+.c11 {
   grid-area: text;
 }
 
@@ -209,83 +202,83 @@ exports[`renders Stepper 1`] = `
 }
 
 @media (min-width:0px) {
-  .c9 {
+  .c8 {
     display: none;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c8 {
     display: block;
   }
 }
 
 @media (min-width:0px) {
-  .c13 {
+  .c12 {
     display: grid;
   }
 }
 
 @media (min-width:720px) {
-  .c13 {
+  .c12 {
     display: grid;
   }
 }
 
 @media (min-width:720px) {
-  .c13 {
+  .c12 {
     margin-right: 0.5rem;
   }
 }
 
 @media (min-width:0px) {
-  .c16 {
+  .c15 {
     display: none;
   }
 }
 
 @media (min-width:720px) {
-  .c16 {
+  .c15 {
     display: block;
   }
 }
 
 @media (min-width:0px) {
-  .c17 {
+  .c16 {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
   }
 }
 
 @media (min-width:720px) {
-  .c17 {
+  .c16 {
     padding-top: 0;
     padding-bottom: 0;
   }
 }
 
 @media (min-width:0px) {
-  .c17 {
+  .c16 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c17 {
+  .c16 {
     padding-left: 0;
     padding-right: 0;
   }
 }
 
 @media (min-width:0px) {
-  .c18 {
+  .c17 {
     display: none;
   }
 }
 
 @media (min-width:720px) {
-  .c18 {
+  .c17 {
     display: none;
   }
 }
@@ -303,13 +296,13 @@ exports[`renders Stepper 1`] = `
 }
 
 @media (min-width:0px) {
-  .c14 {
+  .c13 {
     display: grid;
   }
 }
 
 @media (min-width:720px) {
-  .c14 {
+  .c13 {
     display: grid;
   }
 }
@@ -324,7 +317,7 @@ exports[`renders Stepper 1`] = `
 }
 
 @media (min-width:720px) {
-  .c15 {
+  .c14 {
     border: 0;
     -webkit-clip: rect(0 0 0 0);
     clip: rect(0 0 0 0);
@@ -363,7 +356,7 @@ exports[`renders Stepper 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="c8"
+        class="kBlamc"
         color="white"
         fill="currentColor"
         height="24"
@@ -382,18 +375,18 @@ exports[`renders Stepper 1`] = `
       </svg>
     </div>
     <div
-      class="c9 c10"
+      class="c8 c9"
       display="[object Object]"
     />
     <p
-      class="c11 c12"
+      class="c10 c11"
       color="secondary70"
     >
       Login
     </p>
   </div>
   <div
-    class="c13 c14 c4"
+    class="c12 c13 c4"
     display="[object Object]"
   >
     <div
@@ -401,13 +394,13 @@ exports[`renders Stepper 1`] = `
     >
       <span>
         <span
-          class="c15"
+          class="c14"
         >
           Step
         </span>
          2 
         <span
-          class="c15"
+          class="c14"
         >
           of 
           3
@@ -415,11 +408,11 @@ exports[`renders Stepper 1`] = `
       </span>
     </div>
     <div
-      class="c16 c10"
+      class="c15 c9"
       display="[object Object]"
     />
     <p
-      class="c11 c12"
+      class="c10 c11"
       color="secondary70"
     >
       Settings
@@ -430,17 +423,17 @@ exports[`renders Stepper 1`] = `
     display="[object Object]"
   >
     <div
-      class="c17 c6 c7"
+      class="c16 c6 c7"
     >
       <span>
         <span
-          class="c15"
+          class="c14"
         >
           Step
         </span>
          3 
         <span
-          class="c15"
+          class="c14"
         >
           of 
           3
@@ -448,11 +441,11 @@ exports[`renders Stepper 1`] = `
       </span>
     </div>
     <div
-      class="c18 c10"
+      class="c17 c9"
       display="[object Object]"
     />
     <p
-      class="c19 c12"
+      class="c18 c11"
       color="secondary50"
     >
       Import
