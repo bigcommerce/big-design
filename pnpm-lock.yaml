@@ -1965,7 +1965,7 @@ packages:
       eslint-plugin-jsx-a11y: 6.5.1(eslint@8.57.0)
       eslint-plugin-prettier: 4.0.0(eslint-config-prettier@8.5.0)(eslint@8.57.0)(prettier@2.8.8)
       eslint-plugin-react: 7.30.1(eslint@8.57.0)
-      eslint-plugin-react-hooks: 4.6.0(eslint@8.57.0)
+      eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
       eslint-plugin-switch-case: 1.1.2
       prettier: 2.8.8
       typescript: 5.4.5
@@ -6741,6 +6741,16 @@ packages:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
     dependencies:
       eslint: 8.57.0
+    dev: false
+
+  /eslint-plugin-react-hooks@4.6.2(eslint@8.57.0):
+    resolution: {integrity: sha512-QzliNJq4GinDBcD8gPB5v0wh6g8q3SUi6EFF0x8N/BL9PoVs0atuGc47ozMRyOWAKdwaZ5OnbOEa3WR+dSGKuQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
+    dependencies:
+      eslint: 8.57.0
+    dev: true
 
   /eslint-plugin-react@7.30.1(eslint@8.57.0):
     resolution: {integrity: sha512-NbEvI9jtqO46yJA3wcRF9Mo0lF9T/jhdHqhCHXiXtD+Zcb98812wvokjWpU7Q4QH5edo6dmqrukxVvWWXHlsUg==}
