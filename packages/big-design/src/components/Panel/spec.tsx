@@ -21,6 +21,12 @@ test('render panel', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
+test('render panel with only a heading and no content', () => {
+  const { container } = render(<Panel header="Test Header" />);
+
+  expect(container.firstChild).toMatchSnapshot();
+});
+
 test('does not forward styles', () => {
   const { container } = render(
     <Panel className="test" style={{ background: 'red' }}>

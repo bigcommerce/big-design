@@ -40,10 +40,12 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
       return null;
     }
 
+    const headerBottomMargin = description ? 'xxSmall' : props.children ? 'medium' : 'none';
+
     return (
       <Flex flexDirection="row">
         {Boolean(header) && (
-          <StyledH2 id={headerId} marginBottom={description ? 'xxSmall' : 'medium'}>
+          <StyledH2 id={headerId} marginBottom={headerBottomMargin}>
             {header}
             {badge && <Badge marginLeft="xSmall" {...badge} />}
           </StyledH2>
