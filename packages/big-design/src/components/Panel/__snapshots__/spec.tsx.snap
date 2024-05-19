@@ -9,6 +9,11 @@ exports[`render panel 1`] = `
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
 }
 
+.c2 {
+  margin-top: 1rem;
+  box-sizing: border-box;
+}
+
 .c1 {
   border-radius: 0;
 }
@@ -34,6 +39,105 @@ exports[`render panel 1`] = `
 <div
   class="c0 c1"
 >
-  Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris Lorem irure sit esse nulla mollit aliquip consectetur velit
+  <div
+    class="c2"
+  >
+    Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris Lorem irure sit esse nulla mollit aliquip consectetur velit
+  </div>
+</div>
+`;
+
+exports[`render panel with only a heading and no content 1`] = `
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2rem;
+  margin-bottom: 0;
+}
+
+.c0 {
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+}
+
+.c2 {
+  box-sizing: border-box;
+}
+
+.c3 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  border-radius: 0;
+}
+
+.c5 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c5 ~ .bd-button {
+  width: auto;
+  margin-top: 0;
+}
+
+@media (min-width:0px) {
+  .c0 {
+    padding: 1rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c1 {
+    border-radius: 0.25rem;
+  }
+}
+
+<div
+  class="c0 c1"
+>
+  <div
+    class="c2 c3"
+  >
+    <h2
+      class="c4 c5"
+    >
+      Test Header
+    </h2>
+  </div>
 </div>
 `;

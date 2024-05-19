@@ -4,6 +4,7 @@ import { MarginProps } from '../../helpers';
 import { excludePaddingProps } from '../../helpers/paddings/paddings';
 import { warning } from '../../utils';
 import { Badge, BadgeProps } from '../Badge/Badge';
+import { Box } from '../Box';
 import { Button, ButtonProps } from '../Button';
 import { Flex } from '../Flex';
 import { Text } from '../Typography';
@@ -43,7 +44,7 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
     return (
       <Flex flexDirection="row">
         {Boolean(header) && (
-          <StyledH2 id={headerId} marginBottom={description ? 'xxSmall' : 'medium'}>
+          <StyledH2 id={headerId} marginBottom="none">
             {header}
             {badge && <Badge marginLeft="xSmall" {...badge} />}
           </StyledH2>
@@ -59,7 +60,11 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
     }
 
     if (typeof description === 'string') {
-      return <Text color="secondary60">{description}</Text>;
+      return (
+        <Text color="secondary60" marginBottom="none" marginTop={header ? 'xxSmall' : 'none'}>
+          {description}
+        </Text>
+      );
     }
 
     if (isValidElement(description)) {
@@ -80,7 +85,7 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
     >
       {renderHeader()}
       {renderDescription()}
-      {children}
+      {children !== undefined && <Box marginTop="medium">{children}</Box>}
     </StyledPanel>
   );
 });
