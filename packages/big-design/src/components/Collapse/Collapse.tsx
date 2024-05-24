@@ -42,6 +42,7 @@ export const Collapse: React.FC<CollapseProps> = ({
         isOpen={isOpen}
         marginVertical="small"
         onClick={handleTitleClick}
+        type="button"
         variant="subtle"
       >
         {title}
