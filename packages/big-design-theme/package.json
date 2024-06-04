@@ -52,7 +52,7 @@
     "@styled/typescript-styled-plugin": "^1.0.1",
     "@swc/core": "^1.4.14",
     "@swc/jest": "^0.2.36",
-    "@swc/plugin-styled-components": "^1.5.118",
+    "@swc/plugin-styled-components": "^2.0.6",
     "@types/jest": "^29.4.0",
     "@types/styled-components": "^5.1.34",
     "babel-jest": "^29.0.2",
