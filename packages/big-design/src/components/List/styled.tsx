@@ -3,6 +3,16 @@ import styled from 'styled-components';
 
 import { ListProps } from './List';
 
+export const StyledListOverflowWrapper = styled.div`
+  ${({ theme }) => theme.shadow.raised}
+
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+`;
+
+StyledListOverflowWrapper.defaultProps = { theme: defaultTheme };
+
 export const StyledList = styled.ul<Partial<ListProps<unknown>>>`
   ${({ theme }) => theme.shadow.raised};
 

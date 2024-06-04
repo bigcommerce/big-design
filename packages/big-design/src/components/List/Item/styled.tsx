@@ -69,10 +69,6 @@ export const StyledListItem = styled.li<
   label {
     cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   }
-
-  input[type='checkbox'] {
-    position: initial;
-  }
 `;
 
 export const StyledLink = styled.a`
