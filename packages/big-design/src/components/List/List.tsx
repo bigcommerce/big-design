@@ -20,7 +20,7 @@ import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from '../S
 import { ListGroupHeader } from './GroupHeader';
 import { ListGroupSeparator } from './GroupSeparator';
 import { ListItem } from './Item';
-import { StyledList } from './styled';
+import { StyledList, StyledListOverflowWrapper } from './styled';
 
 export interface ListProps<T> extends ComponentPropsWithoutRef<'ul'> {
   action?: SelectAction;
@@ -208,26 +208,28 @@ const StyleableList = typedMemo(
     }, [action, items, renderAction, renderGroup, renderItems]);
 
     return (
-      <StyledList
-        {...getMenuProps({
-          ...props,
-          onKeyDown: (event) => {
-            if (event.key === 'Enter') {
-              const element = event.currentTarget.children[highlightedIndex];
-              const link = element.querySelector('a');
+      <StyledListOverflowWrapper>
+        <StyledList
+          {...getMenuProps({
+            ...props,
+            onKeyDown: (event) => {
+              if (event.key === 'Enter') {
+                const element = event.currentTarget.children[highlightedIndex];
+                const link = element.querySelector('a');
 
-              // We want to click the link if it is selected
-              if (link && !link.getAttribute('disabled')) {
-                link.click();
+                // We want to click the link if it is selected
+                if (link && !link.getAttribute('disabled')) {
+                  link.click();
+                }
               }
-            }
-          },
-          ref: forwardedRef,
-        })}
-        maxHeight={maxHeight}
-      >
-        {isOpen && renderChildren}
-      </StyledList>
+            },
+            ref: forwardedRef,
+          })}
+          maxHeight={maxHeight}
+        >
+          {isOpen && renderChildren}
+        </StyledList>
+      </StyledListOverflowWrapper>
     );
   },
 );
