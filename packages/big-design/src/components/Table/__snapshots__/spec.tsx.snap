@@ -152,7 +152,7 @@ exports[`renders a pagination component 1`] = `
   color: #D9DCE9;
 }
 
-.c12 {
+.c13 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -201,32 +201,32 @@ exports[`renders a pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c12:focus {
+.c13:focus {
   outline: none;
 }
 
-.c12[disabled] {
+.c13[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c12 + .bd-button {
+.c13 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c12:active {
+.c13:active {
   background-color: #DBE3FE;
 }
 
-.c12:focus {
+.c13:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c12:hover:not(:active) {
+.c13:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c12[disabled] {
+.c13[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -245,6 +245,14 @@ exports[`renders a pagination component 1`] = `
 }
 
 .c11 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c12 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -304,14 +312,14 @@ exports[`renders a pagination component 1`] = `
 }
 
 @media (min-width:720px) {
-  .c12 + .bd-button {
+  .c13 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c12 {
+  .c13 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -375,12 +383,16 @@ exports[`renders a pagination component 1`] = `
             class="c10"
             style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
           >
-            <ul
-              aria-labelledby=":r13:-label"
+            <div
               class="c11"
-              id=":r13:-menu"
-              role="menu"
-            />
+            >
+              <ul
+                aria-labelledby=":r13:-label"
+                class="c12"
+                id=":r13:-menu"
+                role="menu"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -388,7 +400,7 @@ exports[`renders a pagination component 1`] = `
         class="c1 c5"
       >
         <button
-          class="c12 c8"
+          class="c13 c8"
           disabled=""
           type="button"
         >
@@ -421,7 +433,7 @@ exports[`renders a pagination component 1`] = `
           </span>
         </button>
         <button
-          class="c12 c8"
+          class="c13 c8"
           type="button"
         >
           <span

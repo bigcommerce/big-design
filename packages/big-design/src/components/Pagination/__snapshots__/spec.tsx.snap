@@ -133,7 +133,7 @@ exports[`render pagination component 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -182,32 +182,32 @@ exports[`render pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -226,6 +226,14 @@ exports[`render pagination component 1`] = `
 }
 
 .c8 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -261,14 +269,14 @@ exports[`render pagination component 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -325,12 +333,16 @@ exports[`render pagination component 1`] = `
         class="c7"
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
-        <ul
-          aria-labelledby=":r0:-label"
+        <div
           class="c8"
-          id=":r0:-menu"
-          role="menu"
-        />
+        >
+          <ul
+            aria-labelledby=":r0:-label"
+            class="c9"
+            id=":r0:-menu"
+            role="menu"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -338,7 +350,7 @@ exports[`render pagination component 1`] = `
     class="c0 c2"
   >
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       type="button"
     >
@@ -371,7 +383,7 @@ exports[`render pagination component 1`] = `
       </span>
     </button>
     <button
-      class="c9 c5"
+      class="c10 c5"
       type="button"
     >
       <span
@@ -539,7 +551,7 @@ exports[`render pagination component with invalid page info 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -588,32 +600,32 @@ exports[`render pagination component with invalid page info 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -632,6 +644,14 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 .c8 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -667,14 +687,14 @@ exports[`render pagination component with invalid page info 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -731,12 +751,16 @@ exports[`render pagination component with invalid page info 1`] = `
         class="c7"
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
-        <ul
-          aria-labelledby=":r5:-label"
+        <div
           class="c8"
-          id=":r5:-menu"
-          role="menu"
-        />
+        >
+          <ul
+            aria-labelledby=":r5:-label"
+            class="c9"
+            id=":r5:-menu"
+            role="menu"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -744,7 +768,7 @@ exports[`render pagination component with invalid page info 1`] = `
     class="c0 c2"
   >
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       type="button"
     >
@@ -777,7 +801,7 @@ exports[`render pagination component with invalid page info 1`] = `
       </span>
     </button>
     <button
-      class="c9 c5"
+      class="c10 c5"
       type="button"
     >
       <span
@@ -945,7 +969,7 @@ exports[`render pagination component with invalid range info 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -994,32 +1018,32 @@ exports[`render pagination component with invalid range info 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -1038,6 +1062,14 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 .c8 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1073,14 +1105,14 @@ exports[`render pagination component with invalid range info 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -1137,12 +1169,16 @@ exports[`render pagination component with invalid range info 1`] = `
         class="c7"
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
-        <ul
-          aria-labelledby=":ra:-label"
+        <div
           class="c8"
-          id=":ra:-menu"
-          role="menu"
-        />
+        >
+          <ul
+            aria-labelledby=":ra:-label"
+            class="c9"
+            id=":ra:-menu"
+            role="menu"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1150,7 +1186,7 @@ exports[`render pagination component with invalid range info 1`] = `
     class="c0 c2"
   >
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       type="button"
     >
@@ -1183,7 +1219,7 @@ exports[`render pagination component with invalid range info 1`] = `
       </span>
     </button>
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       type="button"
     >
@@ -1352,7 +1388,7 @@ exports[`render pagination component with no items 1`] = `
   color: #D9DCE9;
 }
 
-.c9 {
+.c10 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -1401,32 +1437,32 @@ exports[`render pagination component with no items 1`] = `
   color: #3C64F4;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c9 + .bd-button {
+.c10 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c9:active {
+.c10:active {
   background-color: #DBE3FE;
 }
 
-.c9:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c9[disabled] {
+.c10[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -1445,6 +1481,14 @@ exports[`render pagination component with no items 1`] = `
 }
 
 .c8 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c9 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -1480,14 +1524,14 @@ exports[`render pagination component with no items 1`] = `
 }
 
 @media (min-width:720px) {
-  .c9 + .bd-button {
+  .c10 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c9 {
+  .c10 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -1544,12 +1588,16 @@ exports[`render pagination component with no items 1`] = `
         class="c7"
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
-        <ul
-          aria-labelledby=":rf:-label"
+        <div
           class="c8"
-          id=":rf:-menu"
-          role="menu"
-        />
+        >
+          <ul
+            aria-labelledby=":rf:-label"
+            class="c9"
+            id=":rf:-menu"
+            role="menu"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -1557,7 +1605,7 @@ exports[`render pagination component with no items 1`] = `
     class="c0 c2"
   >
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       type="button"
     >
@@ -1590,7 +1638,7 @@ exports[`render pagination component with no items 1`] = `
       </span>
     </button>
     <button
-      class="c9 c5"
+      class="c10 c5"
       disabled=""
       type="button"
     >
