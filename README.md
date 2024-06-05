@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://design.bigcommerce.com/components">
+  <a href="https://developer.bigcommerce.com/big-design">
     <img alt="BigDesign" src="https://bigcommerce.github.io/big-design/banner.svg">
   </a>
 </div>
