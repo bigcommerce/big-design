@@ -1295,7 +1295,7 @@ import { FlexItem } from '@bigcommerce/big-design';
 * **component:** restrict actions and header from modals ([#209](https://github.com/bigcommerce/big-design/issues/209)) ([bc85d25](https://github.com/bigcommerce/big-design/commit/bc85d25))
 * **component:** restrict Select ([#218](https://github.com/bigcommerce/big-design/issues/218)) ([66378ed](https://github.com/bigcommerce/big-design/commit/66378ed))
 * **component:** update Tabs component to be more restrictive ([683d768](https://github.com/bigcommerce/big-design/commit/683d768))
-* **docs:** add figma UI kit and sample app to resources section ([#206](https://github.com/bigcommerce/big-design/issues/206)) ([bb07411](https://github.com/bigcommerce/big-design/commit/bb07411))
+* **docs:** add Figma UI kit and sample app to resources section ([#206](https://github.com/bigcommerce/big-design/issues/206)) ([bb07411](https://github.com/bigcommerce/big-design/commit/bb07411))
 * **docs:** add helpful links section ([217b040](https://github.com/bigcommerce/big-design/commit/217b040))
 * **docs:** add Table docs + refactor PropsTable ([dce179a](https://github.com/bigcommerce/big-design/commit/dce179a))
 * **docs:** add title and collapsible props to PropTable ([81fe57a](https://github.com/bigcommerce/big-design/commit/81fe57a))

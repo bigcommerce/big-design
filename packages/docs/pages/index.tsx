@@ -56,7 +56,7 @@ const GettingStartedPage = () => {
               </Link>
             </List.Item>
             <List.Item>
-              <Link href="https://github.com/bigcommerce/channels-app" target="_blank">
+              <Link href="https://github.com/bigcommerce/sample-app-nodejs" target="_blank">
                 Sample App
               </Link>
             </List.Item>
