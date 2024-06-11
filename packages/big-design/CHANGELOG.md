@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@1.0.0...@bigcommerce/big-design@1.1.0) (2024-06-11)
+
+
+### Bug Fixes
+
+* **component:** fix extra body scroll due to multi-select without visual regression ([a1f0967](https://github.com/bigcommerce/big-design/commit/a1f0967f20e05f57d2a3ddc279858617b66d1d3a)), closes [#1441](https://github.com/bigcommerce/big-design/issues/1441)
+* **component:** remove excess margin from contentless Panel ([#1429](https://github.com/bigcommerce/big-design/issues/1429)) ([d04905e](https://github.com/bigcommerce/big-design/commit/d04905ea30c362abbb379b314de43c6ce9c6fae1))
+
+
+### Features
+
+* **component:** type added to the Collapse button ([#1436](https://github.com/bigcommerce/big-design/issues/1436)) ([8074bb0](https://github.com/bigcommerce/big-design/commit/8074bb0ae59e913fa31dd526a79a94a449e6873d))
+
+
+
+
+
 # [1.0.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@0.39.1...@bigcommerce/big-design@1.0.0) (2024-04-17)
 
 
