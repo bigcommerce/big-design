@@ -101,7 +101,7 @@ const DisplayPage = () => {
           discouraged={[
             <>
               Don't use <Code>display="none"</Code> directly on a component, instead don't render
-              the it.
+              it.
             </>,
           ]}
           recommended={['Use the display prop for responsiveness.']}
