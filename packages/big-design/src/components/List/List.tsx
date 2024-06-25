@@ -15,6 +15,7 @@ import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
 import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from '../Dropdown';
+import { MultiSelectLocalization } from '../MultiSelect/types';
 import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from '../Select';
 
 import { ListGroupHeader } from './GroupHeader';
@@ -43,6 +44,7 @@ export interface ListProps<T> extends ComponentPropsWithoutRef<'ul'> {
     | UseSelectPropGetters<any>['getMenuProps']
     | UseComboboxPropGetters<any>['getMenuProps'];
   update: (() => Promise<Partial<State>>) | null;
+  localization?: { selectAll: MultiSelectLocalization['selectAll'] };
   removeItem?(item: SelectOption<T>): void;
 }
 
@@ -69,6 +71,7 @@ const StyleableList = typedMemo(
     selectedItems,
     selectAll,
     update,
+    localization = { selectAll: 'Select All' },
     removeItem,
     ...props
   }: ListProps<T> & PrivateProps): ReturnType<React.FC<ListProps<T> & PrivateProps>> => {
@@ -89,15 +92,19 @@ const StyleableList = typedMemo(
 
     const handleSelectAll = useCallback(
       (listItems: Array<SelectOption<T>>) => {
-        const enabledItems = listItems.filter((item) => !item.disabled);
+        if (updateItems) {
+          const enabledItems = listItems.filter((item) => !item.disabled);
 
-        updateItems && updateItems(enabledItems);
+          updateItems(enabledItems);
+        }
       },
       [updateItems],
     );
 
     const handleUnselectAll = useCallback(() => {
-      updateItems && updateItems([]);
+      if (updateItems) {
+        updateItems([]);
+      }
     }, [updateItems]);
 
     const renderSelectAll = useCallback(
@@ -123,7 +130,7 @@ const StyleableList = typedMemo(
               isChecked={isAllSelected}
               isHighlighted={highlightedIndex === key}
               isIndeterminate={isSomeSelected && !isAllSelected}
-              item={{ content: 'Select All', value: 'select-all' }}
+              item={{ content: localization?.selectAll, value: 'select-all' }}
               key="select-all"
               removeItem={handleUnselectAll}
             />
@@ -138,6 +145,7 @@ const StyleableList = typedMemo(
         selectedItems,
         handleSelectAll,
         handleUnselectAll,
+        localization?.selectAll,
       ],
     );
 

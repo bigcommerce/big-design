@@ -135,6 +135,16 @@ const selectProps: Prop[] = [
     ),
   },
   {
+    name: 'selectAll',
+    types: 'boolean',
+    required: false,
+    description: (
+      <>
+        If set, a <Code>Select All</Code> option will be added to the top of the list.
+      </>
+    ),
+  },
+  {
     name: 'required',
     types: 'boolean',
     description: 'Sets the field as required.',
