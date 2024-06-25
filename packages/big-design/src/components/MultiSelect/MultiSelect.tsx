@@ -27,7 +27,12 @@ import { List } from '../List';
 import { SelectAction, SelectOption, SelectOptionGroup } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 
-import { MultiSelectProps } from './types';
+import { MultiSelectLocalization, MultiSelectProps } from './types';
+
+export const defaultLocalization: MultiSelectLocalization = {
+  optional: 'optional',
+  selectAll: 'Select All',
+};
 
 export const MultiSelect = typedMemo(
   <T,>({
@@ -42,7 +47,7 @@ export const MultiSelect = typedMemo(
     inputRef,
     label,
     labelId,
-    localization,
+    localization = defaultLocalization,
     maxHeight,
     onClose,
     onOpen,
@@ -284,7 +289,7 @@ export const MultiSelect = typedMemo(
       items: [
         ...(selectAll
           ? // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-            ([{ content: 'Select All', value: 'select-all' }] as Array<SelectOption<T>>)
+            ([{ content: localization?.selectAll, value: 'select-all' }] as Array<SelectOption<T>>)
           : []),
         ...filteredOptions,
       ],
@@ -489,6 +494,7 @@ export const MultiSelect = typedMemo(
             highlightedIndex={highlightedIndex}
             isOpen={isOpen}
             items={options}
+            localization={{ selectAll: localization.selectAll }}
             maxHeight={maxHeight}
             removeItem={removeItem}
             selectAll={selectAll}

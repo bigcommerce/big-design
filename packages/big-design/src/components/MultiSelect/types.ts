@@ -27,9 +27,15 @@ interface BaseSelect extends Omit<ComponentPropsWithoutRef<'input'>, 'children' 
   onOpen?(): void;
 }
 
+export interface MultiSelectLocalization {
+  optional: string;
+  selectAll: string;
+}
+
 export interface MultiSelectProps<T> extends BaseSelect {
   options: Array<SelectOption<T>> | Array<SelectOptionGroup<T>>;
   value?: T[];
   selectAll?: boolean;
+  localization?: MultiSelectLocalization;
   onOptionsChange(value: T[], option: Array<SelectOption<T>>): void;
 }
