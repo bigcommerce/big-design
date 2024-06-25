@@ -30,5 +30,6 @@ interface BaseSelect extends Omit<ComponentPropsWithoutRef<'input'>, 'children' 
 export interface MultiSelectProps<T> extends BaseSelect {
   options: Array<SelectOption<T>> | Array<SelectOptionGroup<T>>;
   value?: T[];
+  selectAll?: boolean;
   onOptionsChange(value: T[], option: Array<SelectOption<T>>): void;
 }

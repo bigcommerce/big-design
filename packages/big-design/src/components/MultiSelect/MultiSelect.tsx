@@ -37,6 +37,7 @@ export const MultiSelect = typedMemo(
     className,
     disabled,
     filterable = true,
+    selectAll = false,
     id,
     inputRef,
     label,
@@ -280,7 +281,13 @@ export const MultiSelect = typedMemo(
       inputId: id,
       inputValue,
       itemToString: (option) => (option ? option.content : ''),
-      items: filteredOptions,
+      items: [
+        ...(selectAll
+          ? // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+            ([{ content: 'Select All', value: 'select-all' }] as Array<SelectOption<T>>)
+          : []),
+        ...filteredOptions,
+      ],
       labelId,
       onInputValueChange: handleSetInputValue,
       onIsOpenChange: handleOnIsOpenChange,
@@ -460,6 +467,12 @@ export const MultiSelect = typedMemo(
       selectedOptions,
     ]);
 
+    const handleUpdateItems = (items: Array<SelectOption<T>>) =>
+      onOptionsChange(
+        items.map((option) => option.value),
+        items,
+      );
+
     return (
       <div>
         {renderLabel}
@@ -478,8 +491,10 @@ export const MultiSelect = typedMemo(
             items={options}
             maxHeight={maxHeight}
             removeItem={removeItem}
+            selectAll={selectAll}
             selectedItems={selectedOptions}
             update={update}
+            updateItems={selectAll ? handleUpdateItems : undefined}
           />
         </Box>
       </div>

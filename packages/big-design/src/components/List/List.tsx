@@ -33,7 +33,9 @@ export interface ListProps<T> extends ComponentPropsWithoutRef<'ul'> {
   maxHeight?: number;
   selectedItem?: SelectOption<T> | null;
   selectedItems?: Array<SelectOption<T>> | null;
+  selectAll?: boolean;
   addItem?(item: SelectOption<T>): void;
+  updateItems?(items: Array<SelectOption<T>>): void;
   getItemProps:
     | UseSelectPropGetters<any>['getItemProps']
     | UseComboboxPropGetters<any>['getItemProps'];
@@ -52,6 +54,7 @@ const StyleableList = typedMemo(
   <T,>({
     action,
     addItem,
+    updateItems,
     autoWidth,
     filteredItems,
     forwardedRef,
@@ -64,6 +67,7 @@ const StyleableList = typedMemo(
     maxHeight = 250,
     selectedItem,
     selectedItems,
+    selectAll,
     update,
     removeItem,
     ...props
@@ -82,6 +86,60 @@ const StyleableList = typedMemo(
 
       scheduleUpdate();
     }, [isOpen, height, width, selectedItems?.length]);
+
+    const handleSelectAll = useCallback(
+      (listItems: Array<SelectOption<T>>) => {
+        const enabledItems = listItems.filter((item) => !item.disabled);
+
+        updateItems && updateItems(enabledItems);
+      },
+      [updateItems],
+    );
+
+    const handleUnselectAll = useCallback(() => {
+      updateItems && updateItems([]);
+    }, [updateItems]);
+
+    const renderSelectAll = useCallback(
+      (listItems: Array<SelectOption<T>>) => {
+        const selectedItemsLength = selectedItems?.length ?? 0;
+        const availableItemsLength = listItems.filter((item) => !item.disabled).length;
+        const isAllSelected = availableItemsLength === selectedItemsLength;
+        const isSomeSelected =
+          selectedItemsLength > 0 && selectedItemsLength < availableItemsLength;
+
+        const key = itemKey.current;
+
+        itemKey.current += 1;
+
+        return (
+          <Box>
+            <ListItem
+              addItem={() => handleSelectAll(listItems)}
+              autoWidth={autoWidth}
+              getItemProps={getItemProps}
+              index={key}
+              isAction={true}
+              isChecked={isAllSelected}
+              isHighlighted={highlightedIndex === key}
+              isIndeterminate={isSomeSelected && !isAllSelected}
+              item={{ content: 'Select All', value: 'select-all' }}
+              key="select-all"
+              removeItem={handleUnselectAll}
+            />
+            <Box borderTop="box" marginHorizontal="medium" marginTop="xSmall" paddingTop="xSmall" />
+          </Box>
+        );
+      },
+      [
+        getItemProps,
+        highlightedIndex,
+        autoWidth,
+        selectedItems,
+        handleSelectAll,
+        handleUnselectAll,
+      ],
+    );
 
     const renderAction = useCallback(
       (action: SelectAction) => {
@@ -189,8 +247,13 @@ const StyleableList = typedMemo(
         items.map((group, index) => <Fragment key={index}>{renderGroup(group)}</Fragment>);
 
       if (Array.isArray(items) && isGroups(items)) {
+        const flattenOptions = isGroupsWithOptions(items)
+          ? items.reduce<Array<SelectOption<T>>>((acc, { options }) => [...acc, ...options], [])
+          : null;
+
         return (
           <>
+            {selectAll && flattenOptions && renderSelectAll(flattenOptions)}
             {groupFragment(items)}
             {action && renderAction(action)}
           </>
@@ -200,12 +263,13 @@ const StyleableList = typedMemo(
       if (Array.isArray(items) && isItems(items)) {
         return (
           <>
+            {selectAll && isOptions(items) && renderSelectAll(items)}
             {renderItems(items)}
             {action && renderAction(action)}
           </>
         );
       }
-    }, [action, items, renderAction, renderGroup, renderItems]);
+    }, [action, items, renderAction, renderGroup, renderItems, renderSelectAll, selectAll]);
 
     return (
       <StyledListOverflowWrapper>
@@ -257,10 +321,15 @@ const isGroups = (
 ): items is DropdownItemGroup[] | Array<SelectOptionGroup<unknown>> =>
   items.every((item) => isItemGroup(item) || isOptionGroup(item));
 
+const isGroupsWithOptions = (items: Items[]): items is Array<SelectOptionGroup<unknown>> =>
+  items.every((item) => isOptionGroup(item));
+
 const isItems = (
   items: Items[],
 ): items is Array<DropdownItem | DropdownLinkItem> | Array<SelectOption<unknown>> =>
   items.every((item) => isItem(item) || isOption(item));
+const isOptions = (items: Items[]): items is Array<SelectOption<unknown>> =>
+  items.every((item) => isOption(item));
 
 const isOption = (item: Items): item is SelectOption<unknown> => 'value' in item;
 
