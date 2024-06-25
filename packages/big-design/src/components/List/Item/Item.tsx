@@ -18,6 +18,7 @@ export interface ListItemProps<T> extends ComponentPropsWithoutRef<'li'> {
   isAction?: boolean;
   isChecked?: boolean;
   isHighlighted: boolean;
+  isIndeterminate?: boolean;
   isSelected?: boolean;
   item: DropdownItem | DropdownLinkItem | SelectOption<T> | SelectAction;
   getItemProps:
@@ -41,6 +42,7 @@ const StyleableListItem = typedMemo(
     isChecked = false,
     isHighlighted,
     isSelected = false,
+    isIndeterminate = false,
     item,
     getItemProps,
     addItem,
@@ -77,6 +79,7 @@ const StyleableListItem = typedMemo(
           checked={isChecked}
           description={item.description}
           disabled={item.disabled}
+          isIndeterminate={isIndeterminate}
           label={item.content}
           onChange={() => null}
           onClick={(event) => event.preventDefault()}
