@@ -27,7 +27,12 @@ import { List } from '../List';
 import { SelectAction, SelectOption, SelectOptionGroup } from '../Select';
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Select/styled';
 
-import { MultiSelectProps } from './types';
+import { MultiSelectLocalization, MultiSelectProps } from './types';
+
+export const defaultLocalization: MultiSelectLocalization = {
+  optional: 'optional',
+  selectAll: 'Select All',
+};
 
 export const MultiSelect = typedMemo(
   <T,>({
@@ -37,11 +42,12 @@ export const MultiSelect = typedMemo(
     className,
     disabled,
     filterable = true,
+    selectAll = false,
     id,
     inputRef,
     label,
     labelId,
-    localization,
+    localization = defaultLocalization,
     maxHeight,
     onClose,
     onOpen,
@@ -280,7 +286,13 @@ export const MultiSelect = typedMemo(
       inputId: id,
       inputValue,
       itemToString: (option) => (option ? option.content : ''),
-      items: filteredOptions,
+      items: [
+        ...(selectAll
+          ? // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+            ([{ content: localization?.selectAll, value: 'select-all' }] as Array<SelectOption<T>>)
+          : []),
+        ...filteredOptions,
+      ],
       labelId,
       onInputValueChange: handleSetInputValue,
       onIsOpenChange: handleOnIsOpenChange,
@@ -460,6 +472,12 @@ export const MultiSelect = typedMemo(
       selectedOptions,
     ]);
 
+    const handleUpdateItems = (items: Array<SelectOption<T>>) =>
+      onOptionsChange(
+        items.map((option) => option.value),
+        items,
+      );
+
     return (
       <div>
         {renderLabel}
@@ -476,10 +494,13 @@ export const MultiSelect = typedMemo(
             highlightedIndex={highlightedIndex}
             isOpen={isOpen}
             items={options}
+            localization={{ selectAll: localization.selectAll }}
             maxHeight={maxHeight}
             removeItem={removeItem}
+            selectAll={selectAll}
             selectedItems={selectedOptions}
             update={update}
+            updateItems={selectAll ? handleUpdateItems : undefined}
           />
         </Box>
       </div>
