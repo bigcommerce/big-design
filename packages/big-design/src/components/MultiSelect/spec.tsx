@@ -1067,7 +1067,7 @@ test('renders localized labels', async () => {
   render(
     <MultiSelect
       label="Countries"
-      localization={{ optional: 'opcional' }}
+      localization={{ optional: 'opcional', selectAll: 'Select all' }}
       onOptionsChange={onChange}
       options={[
         { value: 'us', content: 'United States' },
@@ -1083,6 +1083,105 @@ test('renders localized labels', async () => {
   const label = await screen.findByText('Countries');
 
   expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
+});
+
+test('selects all triggers onOptionsChange with available options', async () => {
+  const onOptionsChangeMock = jest.fn();
+
+  render(
+    <MultiSelect
+      data-testid="multi-select"
+      label="Countries"
+      onOptionsChange={onOptionsChangeMock}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'en', content: 'England' },
+        { value: 'fr', content: 'France', disabled: true },
+      ]}
+      placeholder="Choose country"
+      selectAll
+    />,
+  );
+
+  const input = await screen.findByTestId('multi-select');
+
+  await userEvent.click(input);
+
+  const selectAll = await screen.findByRole('option', { name: 'Select All' });
+
+  await userEvent.click(selectAll);
+
+  expect(onOptionsChangeMock).toHaveBeenCalledWith(
+    ['us', 'en'],
+    [
+      { content: 'United States', value: 'us' },
+      { content: 'England', value: 'en' },
+    ],
+  );
+});
+
+test('unselects all triggers onOptionsChange with empty list', async () => {
+  const onOptionsChangeMock = jest.fn();
+
+  render(
+    <MultiSelect
+      data-testid="multi-select"
+      label="Countries"
+      onOptionsChange={onOptionsChangeMock}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'en', content: 'England' },
+      ]}
+      placeholder="Choose country"
+      selectAll
+      value={['us', 'en']}
+    />,
+  );
+
+  const input = await screen.findByTestId('multi-select');
+
+  await userEvent.click(input);
+
+  const selectAll = await screen.findByRole('option', { name: 'Select All' });
+
+  await userEvent.click(selectAll);
+
+  expect(onOptionsChangeMock).toHaveBeenCalledWith([], []);
+});
+
+test('select all triggers onOptionsChange with all options', async () => {
+  const onOptionsChangeMock = jest.fn();
+
+  render(
+    <MultiSelect
+      data-testid="multi-select"
+      label="Countries"
+      onOptionsChange={onOptionsChangeMock}
+      options={[
+        { value: 'us', content: 'United States' },
+        { value: 'en', content: 'England' },
+      ]}
+      placeholder="Choose country"
+      selectAll
+      value={['us']}
+    />,
+  );
+
+  const input = await screen.findByTestId('multi-select');
+
+  await userEvent.click(input);
+
+  const selectAll = await screen.findByRole('option', { name: 'Select All' });
+
+  await userEvent.click(selectAll);
+
+  expect(onOptionsChangeMock).toHaveBeenCalledWith(
+    ['us', 'en'],
+    [
+      { content: 'United States', value: 'us' },
+      { content: 'England', value: 'en' },
+    ],
+  );
 });
 
 describe('aria-labelledby', () => {
