@@ -58,7 +58,12 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
     (
       column: InternalWorksheetColumn<T>,
     ): column is WorksheetTextColumn<T> | WorksheetNumberColumn<T> | WorksheetModalColumn<T> => {
-      return column.type === 'text' || column.type === 'number' || column.type === 'modal';
+      return (
+        column.type === undefined ||
+        column.type === 'text' ||
+        column.type === 'number' ||
+        column.type === 'modal'
+      );
     },
     [],
   );
