@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@1.1.0...@bigcommerce/big-design@1.2.0) (2024-07-11)
+
+
+### Bug Fixes
+
+* **component:** avoid displaying NaN in number cell ([#1459](https://github.com/bigcommerce/big-design/issues/1459)) ([47240d4](https://github.com/bigcommerce/big-design/commit/47240d40a5fd99add909563923af1047fe034f18))
+* **component:** fix formatting of the worksheet cell ([#1458](https://github.com/bigcommerce/big-design/issues/1458)) ([fbf2a28](https://github.com/bigcommerce/big-design/commit/fbf2a288006296b04efcda911390dccf90c1ab4f))
+
+
+### Features
+
+* **component:**  implement `select all` for multi-select component ([#1456](https://github.com/bigcommerce/big-design/issues/1456)) ([23fb3e1](https://github.com/bigcommerce/big-design/commit/23fb3e1fd910eb37ec181bdc2ad9ec97c10be92d))
+
+
+
+
+
 # [1.1.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@1.0.0...@bigcommerce/big-design@1.1.0) (2024-06-11)
 
 

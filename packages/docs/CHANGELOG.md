@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@1.0.1...@bigcommerce/docs@1.1.0) (2024-07-11)
+
+
+### Bug Fixes
+
+* **docs:** typo on display docs page ([#1448](https://github.com/bigcommerce/big-design/issues/1448)) ([027cac5](https://github.com/bigcommerce/big-design/commit/027cac53e855e2ed6e938814a57a408ef1f96037))
+
+
+### Features
+
+* **component:**  implement `select all` for multi-select component ([#1456](https://github.com/bigcommerce/big-design/issues/1456)) ([23fb3e1](https://github.com/bigcommerce/big-design/commit/23fb3e1fd910eb37ec181bdc2ad9ec97c10be92d))
+
+
+
+
+
 ## [1.0.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@1.0.0...@bigcommerce/docs@1.0.1) (2024-06-11)
 
 **Note:** Version bump only for package @bigcommerce/docs
