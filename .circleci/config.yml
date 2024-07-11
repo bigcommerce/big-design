@@ -30,7 +30,7 @@ commands:
           name: Install pnpm package manager
           command: |
             corepack enable --install-directory ~/bin
-            corepack prepare pnpm@latest-8 --activate
+            corepack prepare pnpm@8.15.8 --activate
             pnpm config set store-dir .pnpm-store
       - run:
           name: Install Dependencies
