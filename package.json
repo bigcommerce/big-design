@@ -2,6 +2,7 @@
   "name": "big-design",
   "private": true,
   "license": "SEE LICENSE IN LICENSE.md",
+  "packageManager": "pnpm@8.15.8",
   "scripts": {
     "build": "lerna run build --stream",
     "build:icons": "pnpm -F @bigcommerce/big-design-icons run build",
