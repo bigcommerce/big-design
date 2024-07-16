@@ -54,8 +54,8 @@ importers:
         specifier: ^2.11.6
         version: 2.11.8
       '@types/react-datepicker':
-        specifier: ^6.2.0
-        version: 6.2.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^7.0.0
+        version: 7.0.0(react-dom@18.2.0)(react@18.2.0)
       date-fns:
         specifier: 3.6.0
         version: 3.6.0
@@ -72,8 +72,8 @@ importers:
         specifier: ^13.1.1
         version: 13.1.1(react-dom@18.2.0)(react@18.2.0)
       react-datepicker:
-        specifier: ^6.6.0
-        version: 6.6.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^7.3.0
+        version: 7.3.0(react-dom@18.2.0)(react@18.2.0)
       react-popper:
         specifier: ^2.3.0
         version: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0)(react@18.2.0)
@@ -4786,12 +4786,11 @@ packages:
       '@types/react': 18.2.73
     dev: true
 
-  /@types/react-datepicker@6.2.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-+JtO4Fm97WLkJTH8j8/v3Ldh7JCNRwjMYjRaKh4KHH0M3jJoXtwiD3JBCsdlg3tsFIw9eQSqyAPeVDN2H2oM9Q==}
+  /@types/react-datepicker@7.0.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-4tWwOUq589tozyQPBVEqGNng5DaZkomx5IVNuur868yYdgjH6RaL373/HKiVt1IDoNNXYiTGspm1F7kjrarM8Q==}
+    deprecated: This is a stub types definition. react-datepicker provides its own type definitions, so you do not need this installed.
     dependencies:
-      '@floating-ui/react': 0.26.11(react-dom@18.2.0)(react@18.2.0)
-      '@types/react': 18.2.73
-      date-fns: 3.6.0
+      react-datepicker: 7.3.0(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - react
       - react-dom
@@ -11410,8 +11409,8 @@ packages:
       - react-native
     dev: false
 
-  /react-datepicker@6.6.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ERC0/Q4pPC9bNIcGUpdCbHc+oCxhkU3WI3UOGHkyJ3A9fqALCYpEmLc5S5xvAd7DuCDdbsyW97oRPM6pWWwjww==}
+  /react-datepicker@7.3.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-EqRKLAtLZUTztiq6a+tjSjQX9ES0Xd229JPckAtyZZ4GoY3rtvNWAzkYZnQUf6zTWT50Ki0+t+W9VRQIkSJLfg==}
     peerDependencies:
       react: ^16.9.0 || ^17 || ^18
       react-dom: ^16.9.0 || ^17 || ^18
