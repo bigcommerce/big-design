@@ -14,7 +14,7 @@ const getParentId = (nodeMap: NodeMap, id: TreeNodeId) => {
   const iterator = nodeMap.entries();
 
   for (const [, value] of iterator) {
-    if (value.children && value.children.includes(id)) {
+    if (value.children?.includes(id)) {
       return value.id;
     }
   }

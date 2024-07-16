@@ -43,6 +43,7 @@ type AlignSelf = ResponsiveProp<
 >;
 
 type FlexBasis = ResponsiveProp<
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   'auto' | 'fill' | 'min-content' | 'max-content' | 'fit-content' | 'content' | string
 >;
 

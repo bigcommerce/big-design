@@ -58,7 +58,9 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
 
     setFocus(true);
 
-    return onFocus && onFocus(event);
+    if (onFocus) {
+      onFocus(event);
+    }
   };
 
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -66,7 +68,9 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
 
     setFocus(false);
 
-    return onBlur && onBlur(event);
+    if (onBlur) {
+      onBlur(event);
+    }
   };
 
   const renderedLabel = useMemo(() => {

@@ -643,12 +643,8 @@ test('rendered line separators have correct accessibility properties', async () 
   const list = await screen.findByRole('menu');
   const hrListItems = list.querySelectorAll('hr');
 
-  expect(
-    hrListItems[0].parentElement && hrListItems[0].parentElement.getAttribute('aria-hidden'),
-  ).toBe('true');
-  expect(
-    hrListItems[0].parentElement && hrListItems[0].parentElement.getAttribute('tabindex'),
-  ).toBe('-1');
+  expect(hrListItems[0]?.parentElement?.getAttribute('aria-hidden')).toBe('true');
+  expect(hrListItems[0]?.parentElement?.getAttribute('tabindex')).toBe('-1');
 });
 
 test('rendered line separators cannot be focused on', async () => {
