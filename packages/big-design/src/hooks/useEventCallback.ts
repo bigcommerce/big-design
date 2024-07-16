@@ -13,6 +13,6 @@ export function useEventCallback<T extends unknown[]>(fn: Callback<T>) {
   return useCallback((...args: T) => {
     const fun = ref.current;
 
-    return fun(...args);
+    fun(...args);
   }, []);
 }

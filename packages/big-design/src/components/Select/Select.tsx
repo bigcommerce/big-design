@@ -148,7 +148,7 @@ export const Select = typedMemo(
     const filterOptions = (inputVal = '') => {
       return flattenedOptions.filter(
         (option) =>
-          option.content === (action && action.content) ||
+          option.content === action?.content ||
           option.content.toLowerCase().startsWith(inputVal.trim().toLowerCase()),
       );
     };
@@ -334,7 +334,7 @@ export const Select = typedMemo(
                   case 'Enter':
                     event.preventDefault();
 
-                    if (isOpen === false) {
+                    if (!isOpen) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
                       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions,  @typescript-eslint/no-unsafe-member-access
@@ -344,7 +344,7 @@ export const Select = typedMemo(
                     break;
 
                   case 'Escape':
-                    if (isOpen === false) {
+                    if (!isOpen) {
                       // Reset the value to empty
                       onOptionChange();
                     } else {

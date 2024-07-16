@@ -422,7 +422,7 @@ export const MultiSelect = typedMemo(
                   case 'Enter':
                     event.preventDefault();
 
-                    if (isOpen === false) {
+                    if (!isOpen) {
                       openMenu();
                       // https://github.com/downshift-js/downshift/issues/734
                       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-member-access
@@ -433,7 +433,7 @@ export const MultiSelect = typedMemo(
 
                   case 'Escape':
                     // Reset select
-                    if (isOpen === false) {
+                    if (!isOpen) {
                       onOptionsChange([], []);
                     }
 

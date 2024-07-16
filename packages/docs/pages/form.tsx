@@ -244,7 +244,7 @@ const FormPage = () => {
                       const handleSubmit: FormProps['onSubmit'] = (event) => {
                         const form = event.currentTarget;
 
-                        if (form.checkValidity() === false) {
+                        if (!form.checkValidity()) {
                           event.preventDefault();
                           event.stopPropagation();
                         }

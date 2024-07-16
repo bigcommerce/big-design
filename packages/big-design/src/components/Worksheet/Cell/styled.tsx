@@ -59,7 +59,7 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
     type === 'toggle' &&
     isLastChild &&
     css`
-      border-bottom-color: ${({ theme }) => `${theme.colors.secondary30}`};
+      border-bottom-color: ${({ theme }) => theme.colors.secondary30};
     `}
 
   ${({ type, isSelected, isFirstSelected, isLastSelected, isNextCellValid }) =>
@@ -69,15 +69,13 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
       border: ${({ theme }) => `${theme.helpers.remCalc(0.5)} double ${theme.colors.primary}`};
 
       border-top-color: ${({ theme }) =>
-        `${isFirstSelected ? theme.colors.primary : theme.colors.secondary30}`};
+        isFirstSelected ? theme.colors.primary : theme.colors.secondary30};
       border-bottom-color: ${({ theme }) => {
         if (!isNextCellValid && !isLastSelected) {
           return theme.colors.danger;
         }
 
-        return `${
-          isFirstSelected || isLastSelected ? theme.colors.primary : theme.colors.secondary30
-        }`;
+        return isFirstSelected || isLastSelected ? theme.colors.primary : theme.colors.secondary30;
       }};
       ${AutoFillHandler} {
         display: block;
@@ -113,9 +111,9 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
         top: 0;
         height: ${isLastChild ? '50%' : '100%'};
         left: 50%;
-        width: ${({ theme }) => `${theme.helpers.remCalc(1)}`};
+        width: ${({ theme }) => theme.helpers.remCalc(1)};
         position: absolute;
-        background-color: ${({ theme }) => `${theme.colors.secondary30}`};
+        background-color: ${({ theme }) => theme.colors.secondary30};
       }
       &::after {
         content: '';
@@ -123,9 +121,9 @@ export const StyledCell = styled.td<StyledCellProps<WorksheetItem>>`
         top: 50%;
         left: 50%;
         width: 50%;
-        height: ${({ theme }) => `${theme.helpers.remCalc(1)}`};
+        height: ${({ theme }) => theme.helpers.remCalc(1)};
         position: absolute;
-        background-color: ${({ theme }) => `${theme.colors.secondary30}`};
+        background-color: ${({ theme }) => theme.colors.secondary30};
       }
     `}
 `;
@@ -136,12 +134,12 @@ export const AutoFillHandler = styled.div<{ isVisible: boolean }>`
     `${theme.helpers.remCalc(1)} solid ${
       isVisible ? theme.colors.white : theme.colors.transparent
     }`};
-  height: ${({ theme }) => `${theme.helpers.remCalc(6)}`};
-  width: ${({ theme }) => `${theme.helpers.remCalc(6)}`};
+  height: ${({ theme }) => theme.helpers.remCalc(6)};
+  width: ${({ theme }) => theme.helpers.remCalc(6)};
   background-color: ${({ theme, isVisible }) =>
     isVisible ? theme.colors.primary : theme.colors.transparent};
-  right: -${({ theme }) => `${theme.helpers.remCalc(4)}`};
-  bottom: -${({ theme }) => `${theme.helpers.remCalc(4)}`};
+  right: -${({ theme }) => theme.helpers.remCalc(4)};
+  bottom: -${({ theme }) => theme.helpers.remCalc(4)};
   z-index: 100;
   cursor: crosshair;
   display: none;

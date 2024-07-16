@@ -32,7 +32,7 @@ export const useExpandable = (rowId: string | number) => {
     [onCollapse, onExpand],
   );
 
-  const isExpandable = expandableRows !== null && expandableRows[rowId] !== undefined;
+  const isExpandable = expandableRows?.[rowId] !== undefined;
 
   const hasExpanded =
     isExpandable && !hiddenRows.some((row) => expandableRows[rowId].includes(row));

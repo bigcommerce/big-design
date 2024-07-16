@@ -119,8 +119,7 @@ class AlertsManager {
   }
 
   private sortAlerts = (a: PrivateAlert, b: PrivateAlert) => {
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    return this.typeMap[a.type as keyof TypeMap] - this.typeMap[b.type as keyof TypeMap];
+    return this.typeMap[a.type!] - this.typeMap[b.type!];
   };
 
   private containsKey(key: string) {

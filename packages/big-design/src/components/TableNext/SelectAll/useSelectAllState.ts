@@ -16,7 +16,7 @@ export const useSelectAllState = <T>(props: SelectAllProps<T>) => {
 
     const newSelectedItems = getSelectAllState(props);
 
-    return onChange(newSelectedItems);
+    onChange(newSelectedItems);
   };
 
   return {

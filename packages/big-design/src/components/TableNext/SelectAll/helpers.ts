@@ -167,13 +167,13 @@ function selectAllOnCurrentPage<T>(params: SelectAllRowsArg<T>) {
       const newSelectedChildrenRows = childrenRows.map<[string, true]>((child, childRowIndex) => {
         const childRowId = getRowId(child, pagedIndex, childRowIndex);
 
-        return [`${childRowId}`, true];
+        return [childRowId, true];
       });
 
-      return [[`${parentRowId}`, true], ...newSelectedChildrenRows];
+      return [[parentRowId, true], ...newSelectedChildrenRows];
     }
 
-    return [[`${parentRowId}`, true]];
+    return [[parentRowId, true]];
   });
 
   return { ...selectedItems, ...Object.fromEntries(newSelectedItems.flat()) };

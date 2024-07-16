@@ -10,7 +10,7 @@ export const ListGroupSeparator: React.FC<ComponentPropsWithoutRef<'li'>> = memo
   </StyledListItem>
 ));
 
-function preventFocus(event: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+function preventFocus(event: React.MouseEvent<HTMLLIElement>) {
   event.preventDefault();
 }
 

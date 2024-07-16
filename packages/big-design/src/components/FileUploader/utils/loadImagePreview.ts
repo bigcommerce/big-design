@@ -27,4 +27,4 @@ export const getImagesPreview = async (files: File[]) =>
     const imageUrl = await loadImagePreview(file);
 
     return { ...prevResult, [idx]: imageUrl };
-  }, Promise.resolve<{ [key: number]: string | null }>({}));
+  }, Promise.resolve<Record<number, string | null>>({}));

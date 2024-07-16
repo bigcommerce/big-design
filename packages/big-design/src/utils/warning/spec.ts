@@ -1,7 +1,7 @@
 import { warning } from './warning';
 
 jest.mock('./warning', () => ({
-  ...jest.requireActual<any>('./warning'),
+  ...jest.requireActual('./warning'),
 }));
 
 test('warning should throw a console.error', () => {

@@ -885,7 +885,7 @@ describe('selectable', () => {
       const selectedItems = items.reduce((acc: Record<string, true>, parentRow) => {
         const parentRowSku = parentRow.sku;
 
-        acc[`${parentRowSku}`] = true;
+        acc[parentRowSku] = true;
 
         return acc;
       }, {});
@@ -1243,7 +1243,7 @@ describe('selectable', () => {
         children.forEach((childRow: Item) => {
           const childRowSku = childRow.sku;
 
-          selectedItems[`${childRowSku}`] = true;
+          selectedItems[childRowSku] = true;
         });
       }
 
@@ -1282,7 +1282,7 @@ describe('selectable', () => {
       const selectedItems = items.reduce((acc: Record<string, true>, parentRow) => {
         const parentRowSku = parentRow.sku;
 
-        acc[`${parentRowSku}`] = true;
+        acc[parentRowSku] = true;
 
         const { children } = parentRow;
 
@@ -1290,7 +1290,7 @@ describe('selectable', () => {
           children.forEach((childRow) => {
             const childRowSku = childRow.sku;
 
-            acc[`${childRowSku}`] = true;
+            acc[childRowSku] = true;
           });
         }
 
@@ -1658,10 +1658,7 @@ describe('expandable', () => {
 
     await userEvent.click(expandIcon);
 
-    expect(onExpandedChange).toHaveBeenCalledWith(
-      { [smithJornal13Sku]: true },
-      `${smithJornal13Sku}`,
-    );
+    expect(onExpandedChange).toHaveBeenCalledWith({ [smithJornal13Sku]: true }, smithJornal13Sku);
     expect(onExpandedChange).not.toHaveBeenCalledWith({ [dustpandAndBrushSku]: true });
     expect(onExpandedChange).not.toHaveBeenCalledWith({ [utilityCaddySku]: true });
   });
