@@ -2,6 +2,7 @@ import { BaselineHelpIcon } from '@bigcommerce/big-design-icons';
 import React, {
   createContext,
   createRef,
+  PropsWithChildren,
   useCallback,
   useEffect,
   useId,
@@ -16,11 +17,13 @@ import { Tooltip } from '../Tooltip';
 
 import { UpdateItemsProvider } from './context';
 import { BaseState, createWorksheetStore, useKeyEvents, useWorksheetStore } from './hooks';
-import { WorksheetModal } from './Modal/Modal';
+import { useCopyPasteHandler } from './hooks/useCopyPaste';
+import { WorksheetModal } from './Modal';
 import { Row } from './Row';
 import { Status } from './RowStatus/styled';
 import { Header, StyledBox, Table } from './styled';
 import {
+  InternalTableInterface,
   InternalWorksheetColumn,
   WorksheetItem,
   WorksheetLocalization,
@@ -28,6 +31,32 @@ import {
   WorksheetProps,
 } from './types';
 import { editedRows, invalidRows } from './utils';
+
+const InternalTable = ({
+  hasExpandableRows,
+  hasStaticWidth,
+  minWidth,
+  onKeyDown,
+  onKeyUp,
+  tableRef,
+  children,
+}: PropsWithChildren<InternalTableInterface>) => {
+  useCopyPasteHandler();
+
+  return (
+    <Table
+      hasExpandableRows={hasExpandableRows}
+      hasStaticWidth={hasStaticWidth}
+      minWidth={minWidth}
+      onKeyDown={onKeyDown}
+      onKeyUp={onKeyUp}
+      ref={tableRef}
+      tabIndex={0}
+    >
+      {children}
+    </Table>
+  );
+};
 
 const InternalWorksheet = typedMemo(
   <T extends WorksheetItem>({
@@ -175,18 +204,17 @@ const InternalWorksheet = typedMemo(
     return (
       <UpdateItemsProvider items={rows}>
         <StyledBox>
-          <Table
+          <InternalTable
             hasExpandableRows={Boolean(expandableRows)}
             hasStaticWidth={tableHasStaticWidth}
             minWidth={minWidth}
             onKeyDown={handleKeyDown}
             onKeyUp={handleKeyUp}
-            ref={tableRef}
-            tabIndex={0}
+            tableRef={tableRef}
           >
             {renderedHeaders}
             {renderedRows}
-          </Table>
+          </InternalTable>
         </StyledBox>
         {renderedModals}
       </UpdateItemsProvider>

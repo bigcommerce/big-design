@@ -1,5 +1,5 @@
 import { Colors } from '@bigcommerce/big-design-theme';
-import React from 'react';
+import React, { KeyboardEventHandler, ReactEventHandler, RefObject } from 'react';
 
 import { SelectOption } from '../Select';
 
@@ -109,4 +109,13 @@ export interface Cell<Item> {
 
 export interface WorksheetItem {
   [key: string]: any;
+}
+
+export interface InternalTableInterface {
+  hasExpandableRows: boolean;
+  hasStaticWidth: boolean;
+  minWidth?: number;
+  onKeyDown?: KeyboardEventHandler | undefined;
+  onKeyUp?: ReactEventHandler | undefined;
+  tableRef: RefObject<HTMLTableElement>;
 }

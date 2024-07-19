@@ -36,6 +36,7 @@ export interface BaseState<Item> {
   openedModal: keyof Item | null;
   rows: Item[];
   selectedCells: Array<Cell<Item>>;
+  copiedCells: Array<Cell<Item>>;
   selectedCellsMap: Record<string, Cell<Item>>;
   selectedRows: number[];
   tableRef: HTMLTableElement | null;
@@ -60,6 +61,7 @@ export interface BaseState<Item> {
   setOpenModal: (value: keyof Item | null) => void;
   setRows: (rows: Item[]) => void;
   setSelectedCells: (cells: Array<Cell<Item>>) => void;
+  setCopiedCells: (cells: Array<Cell<Item>>) => void;
   setSelectedRows: (rows: number[]) => void;
   setTableRef: (ref: HTMLTableElement | null) => void;
   setAutoFillActive: (isActive: boolean) => void;
@@ -88,6 +90,7 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
     openedModal: null,
     rows: [],
     selectedCells: [],
+    copiedCells: [],
     selectedCellsMap: {},
     selectedRows: [],
     tableRef: null,
@@ -129,6 +132,7 @@ export const createWorksheetStore = <Item extends WorksheetItem>() =>
     setRows: (rows) => set((state) => ({ ...state, rows })),
     setSelectedCells: (cells) =>
       set((state) => ({ ...state, selectedCells: cells, selectedCellsMap: getCellsMap(cells) })),
+    setCopiedCells: (cells) => set((state) => ({ ...state, copiedCells: cells })),
     setSelectedRows: (rowIndexes) => set((state) => ({ ...state, selectedRows: rowIndexes })),
     setTableRef: (ref) => set((state) => ({ ...state, tableRef: ref })),
     setAutoFillActive: (isActive) => set((state) => ({ ...state, isAutoFillActive: isActive })),
