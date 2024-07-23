@@ -15,7 +15,7 @@ const getSize = <T extends HTMLElement>(element: RefObject<T>['current']): Compo
 export const useComponentSize = <T extends HTMLElement>(ref: RefObject<T>): ComponentSize => {
   const [size, setSize] = useRafState(getSize(ref.current));
 
-  const handleResize = useCallback<() => void | MutationCallback>(() => {
+  const handleResize = useCallback(() => {
     if (ref.current) {
       setSize(getSize(ref.current));
     }

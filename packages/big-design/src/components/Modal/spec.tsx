@@ -58,7 +58,7 @@ test('triggers onClose when pressing esc', async () => {
     </Modal>,
   );
 
-  const element = await screen.findByText<HTMLElement>(text);
+  const element = await screen.findByText(text);
 
   fireEvent.keyDown(element, { key: 'Escape' });
 
@@ -75,7 +75,7 @@ test('does not trigger onClose when pressing esc and closeOnEscKey is false', as
     </Modal>,
   );
 
-  const element = await screen.findByText<HTMLElement>(text);
+  const element = await screen.findByText(text);
 
   fireEvent.keyDown(element, { key: 'Escape' });
 
@@ -92,7 +92,7 @@ test('trigger onClose when clicking outside the modal', async () => {
     </Modal>,
   );
 
-  const element = await screen.findByRole<HTMLElement>('dialog');
+  const element = await screen.findByRole('dialog');
 
   fireEvent.click(element);
 
@@ -109,7 +109,7 @@ test('do not trigger onClose when clicking outside the modal and closeOnClickOut
     </Modal>,
   );
 
-  const element = await screen.findByRole<HTMLElement>('dialog');
+  const element = await screen.findByRole('dialog');
 
   fireEvent.click(element);
 
@@ -125,7 +125,7 @@ test('do not trigger onClose when clicking inside the modal', async () => {
     </Modal>,
   );
 
-  const element = await screen.findByTestId<HTMLElement>('inside-modal');
+  const element = await screen.findByTestId('inside-modal');
 
   fireEvent.click(element);
 

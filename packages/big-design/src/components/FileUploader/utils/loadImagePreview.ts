@@ -14,6 +14,7 @@ export const loadImagePreview = (file: File): Promise<string | null> => {
     };
 
     reader.onerror = (error) => {
+      // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
       reject(error);
     };
 
@@ -27,4 +28,4 @@ export const getImagesPreview = async (files: File[]) =>
     const imageUrl = await loadImagePreview(file);
 
     return { ...prevResult, [idx]: imageUrl };
-  }, Promise.resolve<{ [key: number]: string | null }>({}));
+  }, Promise.resolve<Record<number, string | null>>({}));

@@ -124,6 +124,7 @@ function deselectAllOnCurrentPage<T>(params: SelectAllRowsArg<T>) {
       return newSet;
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete newSelectedItems[parentRowId];
 
     const childrenRows = isChildrenRowsSelectable ? getChildrenRows(item, getChildren) : [];
@@ -131,6 +132,7 @@ function deselectAllOnCurrentPage<T>(params: SelectAllRowsArg<T>) {
     childrenRows.forEach((childRow, childRowIndex) => {
       const childRowId = getRowId(childRow, pagedIndex, childRowIndex);
 
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete newSelectedItems[childRowId];
     });
   });
@@ -167,13 +169,13 @@ function selectAllOnCurrentPage<T>(params: SelectAllRowsArg<T>) {
       const newSelectedChildrenRows = childrenRows.map<[string, true]>((child, childRowIndex) => {
         const childRowId = getRowId(child, pagedIndex, childRowIndex);
 
-        return [`${childRowId}`, true];
+        return [childRowId, true];
       });
 
-      return [[`${parentRowId}`, true], ...newSelectedChildrenRows];
+      return [[parentRowId, true], ...newSelectedChildrenRows];
     }
 
-    return [[`${parentRowId}`, true]];
+    return [[parentRowId, true]];
   });
 
   return { ...selectedItems, ...Object.fromEntries(newSelectedItems.flat()) };

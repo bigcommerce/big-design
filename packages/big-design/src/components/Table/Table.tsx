@@ -153,7 +153,7 @@ const InternalTable = <T extends TableItem>(
         {columns.map((column, index) => {
           const { display, hash, header, isSortable, hideHeader, width } = column;
           const isSorted = isSortable && sortable && hash === sortable.columnHash;
-          const sortDirection = sortable && sortable.direction;
+          const sortDirection = sortable?.direction;
           const headerCellWidth = headerCellWidths[index + 1];
           const widthColumn = headerCellWidth ?? width;
 
@@ -253,7 +253,7 @@ const InternalTable = <T extends TableItem>(
           forwardedRef={actionsRef}
           itemName={itemName}
           items={items}
-          onSelectionChange={selectable && selectable.onSelectionChange}
+          onSelectionChange={selectable?.onSelectionChange}
           pagination={pagination}
           selectedItems={selectedItems}
           stickyHeader={stickyHeader}

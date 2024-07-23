@@ -8,7 +8,7 @@ export const ListGroupHeader: React.FC<ComponentPropsWithoutRef<'li'>> = memo(
   ),
 );
 
-function preventFocus(event: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+function preventFocus(event: React.MouseEvent<HTMLLIElement>) {
   event.preventDefault();
 }
 

@@ -55,7 +55,7 @@ export const Toggle = typedMemo(
     const handleClick = (itemId: T) => (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
 
-      return onChange(itemId);
+      onChange(itemId);
     };
 
     const renderedLabel = useMemo(() => {

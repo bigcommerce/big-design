@@ -139,7 +139,9 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       const filesList: File[] = Array.from(newFiles || []);
 
       if (!multiple) {
-        return onFilesChange([filesList[0]]);
+        onFilesChange([filesList[0]]);
+
+        return;
       }
 
       onFilesChange([...files, ...filesList]);

@@ -160,7 +160,7 @@ const InternalTableNext = <T extends TableItem>(
         {columns.map((column, index) => {
           const { display, hash, header, isSortable, hideHeader, width } = column;
           const isSorted = isSortable && sortable && hash === sortable.columnHash;
-          const sortDirection = sortable && sortable.direction;
+          const sortDirection = sortable?.direction;
           const headerCellWidth = headerCellWidths[index + 1];
           const widthColumn = headerCellWidth ?? width;
 
@@ -283,7 +283,7 @@ const InternalTableNext = <T extends TableItem>(
           isChildrenRowsSelectable={isChildrenRowsSelectable}
           itemName={itemName}
           items={items}
-          onSelectionChange={selectable && selectable.onSelectionChange}
+          onSelectionChange={selectable?.onSelectionChange}
           pagination={pagination}
           selectedItems={selectedItems}
           selectedParentRowsCrossPages={selectedParentRowsCrossPages}

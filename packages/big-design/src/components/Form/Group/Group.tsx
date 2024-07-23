@@ -22,9 +22,7 @@ export interface FormGroupProps extends ComponentPropsWithoutRef<'div'> {
   errors?: React.ReactNode | React.ReactNode[];
 }
 
-interface Errors {
-  [inputKey: string]: React.ReactNode | React.ReactNode[];
-}
+type Errors = Record<string, React.ReactNode | React.ReactNode[]>;
 
 interface Context {
   errors?: Errors;

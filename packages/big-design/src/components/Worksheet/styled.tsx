@@ -46,7 +46,7 @@ export const Header = styled.th<{
 }>`
   border: ${({ theme }) => `${theme.helpers.remCalc(0.5)} solid ${theme.colors.secondary30}`};
   border-right-color: ${({ theme, columnType }) =>
-    columnType === 'toggle' ? `${theme.colors.white}` : `${theme.colors.secondary30}`};
+    columnType === 'toggle' ? theme.colors.white : theme.colors.secondary30};
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary60};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};

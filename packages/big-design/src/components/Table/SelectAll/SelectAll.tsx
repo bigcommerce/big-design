@@ -28,7 +28,9 @@ export const SelectAll = <T extends TableItem>({
     }
 
     if (selectedItems.size === 0) {
-      return onChange([...items]);
+      onChange([...items]);
+
+      return;
     }
 
     if (allInPageSelected) {
@@ -36,10 +38,12 @@ export const SelectAll = <T extends TableItem>({
 
       items.forEach((item) => newSelectedItems.delete(item));
 
-      return onChange([...newSelectedItems]);
+      onChange([...newSelectedItems]);
+
+      return;
     }
 
-    return onChange([...new Set([...selectedItems, ...items])]);
+    onChange([...new Set([...selectedItems, ...items])]);
   };
 
   if (typeof onChange !== 'function') {

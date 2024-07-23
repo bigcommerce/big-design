@@ -8,7 +8,7 @@ export const StyledExpandButton = styled(StyleableButton)`
   top: 0;
   height: 100%;
   width: 100%;
-  min-width: ${({ theme }) => `${theme.helpers.remCalc(32)}`};
+  min-width: ${({ theme }) => theme.helpers.remCalc(32)};
   border-radius: 0;
 
   &:focus {
@@ -17,7 +17,7 @@ export const StyledExpandButton = styled(StyleableButton)`
 
   &:hover {
     svg {
-      color: ${({ theme }) => `${theme.colors.primary}`};
+      color: ${({ theme }) => theme.colors.primary};
     }
   }
 `;

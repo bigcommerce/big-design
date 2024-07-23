@@ -136,7 +136,7 @@ const InternalCell = <T extends WorksheetItem>({
   }, [addInvalidCells, cell, isValid, invalidCell, removeInvalidCells]);
 
   const handleAutoFilldblClick = useCallback(
-    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    (event: React.MouseEvent<HTMLDivElement>) => {
       event.stopPropagation();
 
       onFillFullColumn();
