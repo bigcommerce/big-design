@@ -4,27 +4,40 @@ import { Cell, InternalWorksheetColumn } from '../../types';
 import { useUpdateItems } from '../useUpdateItems';
 import { useWorksheetStore } from '../useWorksheetStore';
 
+const canPasteBetweenTypes = (
+  source: string,
+  target: string,
+  allowedTypes: Array<[string, string]>,
+): boolean =>
+  allowedTypes.some(
+    ([sourceAllowed, targetAllowed]) => source === sourceAllowed && target === targetAllowed,
+  );
+
 const isPasteAllowed = (
   sourceCell: Cell<any>,
   targetCell: Cell<any>,
   column: InternalWorksheetColumn<any>,
-) => {
-  const sourceType = sourceCell.type;
-  const targetType = targetCell.type;
+): boolean => {
+  const { type: sourceType, columnIndex: sourceColumnIndex } = sourceCell;
+  const { type: targetType, columnIndex: targetColumnIndex } = targetCell;
+  const isSameColumn = sourceColumnIndex === targetColumnIndex;
 
   if (column.disabled) {
     return false;
   }
 
-  return (
-    (sourceType === targetType &&
-      (sourceType === 'text' ||
-        sourceType === 'number' ||
-        sourceType === 'checkbox' ||
-        sourceCell.columnIndex === targetCell.columnIndex)) ||
-    (sourceType === 'text' && targetType === 'number') ||
-    (sourceType === 'number' && targetType === 'text')
-  );
+  const crossPasteTypes: Array<[string, string]> = [
+    ['text', 'number'],
+    ['number', 'text'],
+  ];
+
+  if (canPasteBetweenTypes(sourceType, targetType, crossPasteTypes)) {
+    return true;
+  }
+
+  const allowedTypes = ['text', 'number', 'checkbox'];
+
+  return sourceType === targetType && (allowedTypes.includes(sourceType) || isSameColumn);
 };
 
 export const useCopyPasteHandler = () => {
@@ -58,6 +71,8 @@ export const useCopyPasteHandler = () => {
 
   const setCopiedCells = useStore(store, (state) => state.setCopiedCells);
 
+  const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
+
   const cellsToUpdate = useMemo(() => {
     if (selectedCells.length === 0) {
       return [];
@@ -69,15 +84,19 @@ export const useCopyPasteHandler = () => {
       (_, index) => pasteFromIdx + index,
     );
 
-    return cellIdxsToUpdate.map((idxToUpdate) => ({
-      rowIndex: idxToUpdate,
-      columnIndex: selectedCells[0].columnIndex,
-      disabled: selectedCells[0].disabled,
-      hash: selectedCells[0].hash,
-      type: selectedCells[0].type,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      value: rows[idxToUpdate][selectedCells[0].hash],
-    }));
+    return cellIdxsToUpdate.map((idxToUpdate) => {
+      const cellHash = selectedCells[0].hash;
+      const rowValues: Record<string | number | symbol, any> = rows[idxToUpdate];
+
+      return {
+        rowIndex: idxToUpdate,
+        columnIndex: selectedCells[0].columnIndex,
+        disabled: selectedCells[0].disabled,
+        hash: selectedCells[0].hash,
+        type: selectedCells[0].type,
+        value: rowValues[cellHash],
+      };
+    });
   }, [rows, selectedCells, copiedCells]);
 
   const handleCopy = useCallback(
@@ -97,6 +116,8 @@ export const useCopyPasteHandler = () => {
           selectedCells[0] &&
           isPasteAllowed(copiedCells[0], selectedCells[0], columns[selectedCells[0].columnIndex])
         ) {
+          setSelectedCells([{ ...selectedCells[0], value: copiedCells[0].value }]);
+
           updateItems(
             cellsToUpdate.filter((cell) => !disabledRows.includes(cell.rowIndex + 1)),
             copiedCells
@@ -106,7 +127,15 @@ export const useCopyPasteHandler = () => {
         }
       }
     },
-    [updateItems, selectedCells, copiedCells, cellsToUpdate, disabledRows, columns],
+    [
+      updateItems,
+      setSelectedCells,
+      selectedCells,
+      copiedCells,
+      cellsToUpdate,
+      disabledRows,
+      columns,
+    ],
   );
 
   useEffect(() => {
