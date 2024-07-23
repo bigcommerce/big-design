@@ -20,7 +20,7 @@
   "dependencies": {
     "@babel/core": "^7.24.4",
     "@babel/preset-react": "^7.24.7",
-    "@babel/preset-typescript": "^7.15.0",
+    "@babel/preset-typescript": "^7.24.7",
     "@babel/standalone": "^7.24.4",
     "@bigcommerce/big-design": "workspace:^",
     "@bigcommerce/big-design-icons": "workspace:^",
