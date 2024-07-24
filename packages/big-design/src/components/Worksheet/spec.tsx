@@ -313,6 +313,47 @@ describe('selection', () => {
     expect(lastCell).toHaveStyle(`border-bottom-color: ${theme.colors.primary}`);
     expect(lastCell).toHaveStyle(`border-top-color: ${theme.colors.secondary30}`);
   });
+
+  test('copy/paste values through the columns', async () => {
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const firstRowElement = await screen.findByText('Shoes Name Three');
+    const firstCell = firstRowElement.parentElement;
+
+    if (firstCell) {
+      await userEvent.click(firstCell);
+    }
+
+    await userEvent.keyboard('{Shift>}{ArrowDown>2}{/Shift}');
+
+    await userEvent.keyboard('{Meta>}{c}{/Meta}');
+
+    await userEvent.keyboard('{ArrowDown>2}');
+
+    await userEvent.keyboard('{Meta>}{v}{/Meta}');
+
+    expect(handleChange).toHaveBeenCalledWith([
+      {
+        id: 3,
+        numberField: 50,
+        otherField2: 3,
+        productName: 'Shoes Name Three',
+        visibleOnStorefront: false,
+      },
+      {
+        id: 4,
+        numberField: 50,
+        otherField: 'Text',
+        otherField2: 4,
+        productName: 'Shoes Name Two',
+        visibleOnStorefront: true,
+      },
+      {
+        id: 5,
+        productName: 'Shoes Name One',
+      },
+    ]);
+  });
 });
 
 describe('edition', () => {
@@ -758,8 +799,8 @@ describe('keyboard navigation', () => {
     expect(queryByDisplayValue('capslock')).not.toBeInTheDocument();
   });
 
-  test('cell is not editted when using Meta key', async () => {
-    const { getByText, getByDisplayValue, queryByDisplayValue } = render(
+  test('cell is not start to edit when using Meta key', async () => {
+    const { getByText, queryByDisplayValue } = render(
       <Worksheet columns={columns} items={items} onChange={handleChange} />,
     );
 
@@ -768,8 +809,8 @@ describe('keyboard navigation', () => {
     await userEvent.click(cell);
     await userEvent.keyboard('{meta}');
 
-    expect(getByDisplayValue('Shoes Name Three')).toBeDefined();
-    expect(queryByDisplayValue('Meta')).not.toBeInTheDocument();
+    expect(queryByDisplayValue('Shoes Name Three')).toBeNull();
+    expect(cell).toBeDefined();
   });
 
   test('cell is not editted when using Control key', async () => {

@@ -79,6 +79,10 @@ export const useKeyEvents = () => {
     (event: React.KeyboardEvent) => {
       const key = event.key;
 
+      if (event.metaKey || (event.key === 'c' && (event.ctrlKey || event.metaKey))) {
+        return;
+      }
+
       if (isEditing) {
         switch (key) {
           case 'Enter':
