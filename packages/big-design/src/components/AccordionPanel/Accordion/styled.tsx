@@ -51,7 +51,7 @@ export const StyledAccordionButton = styled(StyleableButton)<StyledAccordionButt
 
 export const StyledAccordionContent = styled(Box)<StyledAccordionContentProps>`
   padding: ${({ theme }) => theme.spacing.xLarge}};
-  padding-left: ${({ iconLeft, theme }) => (iconLeft ? remCalc(60) : `${theme.spacing.xLarge}`)};
+  padding-left: ${({ iconLeft, theme }) => (iconLeft ? remCalc(60) : theme.spacing.xLarge)};
 `;
 
 StyledAccordionButton.defaultProps = { theme: defaultTheme };

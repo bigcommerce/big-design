@@ -76,7 +76,9 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 
       setFocus(true);
 
-      return onFocus && onFocus(event);
+      if (onFocus) {
+        onFocus(event);
+      }
     };
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -84,7 +86,9 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 
       setFocus(false);
 
-      return onBlur && onBlur(event);
+      if (onBlur) {
+        onBlur(event);
+      }
     };
 
     const handleIncrease = () => {

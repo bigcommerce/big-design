@@ -13,7 +13,7 @@ test('throws if is not wrapped in UpdateItemsProvider', () => {
   let error;
 
   renderHook(() => useUpdateItems(), {
-    wrapper: class Wrapper extends Component<PropsWithChildren<unknown>> {
+    wrapper: class Wrapper extends Component<PropsWithChildren> {
       override componentDidCatch(err: unknown) {
         error = err;
       }

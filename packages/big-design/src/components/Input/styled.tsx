@@ -98,8 +98,7 @@ export const StyledInput = styled.input<InputProps>`
     `};
 
   ${({ chips, theme }) =>
-    chips &&
-    chips.length &&
+    chips?.length &&
     css`
       margin-top: ${theme.spacing.xxSmall};
     `};
@@ -155,8 +154,7 @@ export const StyledInputContent = styled.div<InputProps>`
     `};
 
   ${({ chips, theme }) =>
-    chips &&
-    chips.length &&
+    chips?.length &&
     css`
       margin-bottom: ${theme.spacing.xxSmall};
     `};

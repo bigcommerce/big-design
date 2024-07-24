@@ -103,9 +103,11 @@ function unselectParentAndChildren({
 
   const newSelectedItems = { ...selectedItems };
 
+  // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
   delete newSelectedItems[parentRowId];
 
   childrenRowsIds?.forEach((childRowId) => {
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete newSelectedItems[childRowId];
   });
 
@@ -235,7 +237,7 @@ function selectChild({
     return newSet;
   });
 
-  newSelectedItems[`${parentRowId}`] = true;
+  newSelectedItems[parentRowId] = true;
   newSelectedItems[`${childRowId}`] = true;
 
   return newSelectedItems;
@@ -261,7 +263,7 @@ function unselectChild({
           return newSet;
         });
 
-        return key !== `${parentRowId}`;
+        return key !== parentRowId;
       }
 
       return true;

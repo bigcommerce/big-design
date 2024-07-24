@@ -64,7 +64,7 @@ const InternalTreeNode = <T,>({
   // Could be multiple elements in which are clicked.
   // Typing to generic Element type since all other elements extend from it.
   const handleNodeToggle = useCallback(
-    async (e?: React.MouseEvent<Element>) => {
+    async (e?: React.MouseEvent) => {
       // Prevents the collapse/expand when clicking on a radio or checkbox
       // Checks to see if every element inside the selectableRef gets clicked.
       if (

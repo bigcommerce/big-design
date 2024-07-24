@@ -86,7 +86,9 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
 
       if (isValidPosition(newPosition)) {
         if (isHidden(newPosition.rowIndex)) {
-          return navigate(getNextOffset(offset));
+          navigate(getNextOffset(offset));
+
+          return;
         }
 
         const hash = columns[newPosition.columnIndex].hash;

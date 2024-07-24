@@ -18,7 +18,7 @@ export const useExpandable = <T>(expandable?: TableExpandable<T>) => {
 
     if (isExpandedRow) {
       const newExpandedRows = Object.entries(expandedRows).filter(([key]) => {
-        return key !== `${parentRowId}`;
+        return key !== parentRowId;
       });
 
       onExpandedChange(Object.fromEntries(newExpandedRows), parentRowId);

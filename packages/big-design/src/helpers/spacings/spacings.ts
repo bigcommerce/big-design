@@ -12,9 +12,7 @@ type SingleSpacingProp<T> = keyof Spacing | T;
 type ResponsiveSpacingProp<T> = Responsive<keyof Spacing | T>;
 type SpacingProp<T> = SingleSpacingProp<T> | ResponsiveSpacingProp<T>;
 
-interface SpacingObject {
-  [key: string]: string | 0;
-}
+type SpacingObject = Record<string, string | 0>;
 
 export function getSpacingStyles<T extends string>(
   spacing: SpacingProp<T>,

@@ -58,7 +58,7 @@ export const useKeyEvents = () => {
   const editSelectedCell = useCallback(
     ({ isMetaKey = false, isControlKey = false, editWithValue = '' }: EditingCellsArgs = {}) => {
       if (selectedCell) {
-        return setEditingCell({ cell: selectedCell, isMetaKey, isControlKey, editWithValue });
+        setEditingCell({ cell: selectedCell, isMetaKey, isControlKey, editWithValue });
       }
     },
     [selectedCell, setEditingCell],

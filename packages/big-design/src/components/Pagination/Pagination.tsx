@@ -111,7 +111,7 @@ export const Pagination: React.FC<PaginationProps> = memo(
     };
 
     const handleRangeChange = (item: DropdownItem) => {
-      return onItemsPerPageChange(Number(item.hash));
+      onItemsPerPageChange(Number(item.hash));
     };
 
     return (

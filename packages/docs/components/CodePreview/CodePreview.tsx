@@ -64,7 +64,7 @@ function transformCode(input: string): string {
 
 export interface CodePreviewProps {
   children?: CodePreviewChildren;
-  scope?: { [key: string]: unknown };
+  scope?: Record<string, unknown>;
 }
 
 export const CodePreview: React.FC<CodePreviewProps> = (props) => {

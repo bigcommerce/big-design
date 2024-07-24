@@ -3,9 +3,7 @@ import React, { KeyboardEventHandler, ReactEventHandler, RefObject } from 'react
 
 import { SelectOption } from '../Select';
 
-export interface ExpandableRows {
-  [key: string]: Array<string | number>;
-}
+export type ExpandableRows = Record<string, Array<string | number>>;
 
 export type DisabledRows = Array<string | number>;
 
@@ -107,10 +105,6 @@ export interface Cell<Item> {
   value: Item[keyof Item] | '';
 }
 
-export interface WorksheetItem {
-  [key: string]: any;
-}
-
 export interface InternalTableInterface {
   hasExpandableRows: boolean;
   hasStaticWidth: boolean;
@@ -119,3 +113,5 @@ export interface InternalTableInterface {
   onKeyUp?: ReactEventHandler | undefined;
   tableRef: RefObject<HTMLTableElement>;
 }
+
+export type WorksheetItem = Record<string, any>;
