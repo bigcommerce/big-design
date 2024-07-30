@@ -3224,7 +3224,7 @@ packages:
       read-cmd-shim: 4.0.0
       resolve-from: 5.0.0
       rimraf: 4.4.1
-      semver: 7.6.0
+      semver: 7.6.3
       set-blocking: 2.0.0
       signal-exit: 3.0.7
       slash: 3.0.0
@@ -3412,7 +3412,7 @@ packages:
       promise-all-reject-late: 1.0.1
       promise-call-limit: 3.0.1
       read-package-json-fast: 3.0.2
-      semver: 7.6.0
+      semver: 7.6.3
       ssri: 10.0.6
       treeverse: 3.0.0
       walk-up-path: 3.0.1
@@ -3511,7 +3511,7 @@ packages:
       json-parse-even-better-errors: 3.0.2
       normalize-package-data: 6.0.2
       proc-log: 4.2.0
-      semver: 7.6.0
+      semver: 7.6.3
     transitivePeerDependencies:
       - bluebird
     dev: true
@@ -3580,7 +3580,7 @@ packages:
       enquirer: 2.3.6
       ignore: 5.3.1
       nx: 18.2.1
-      semver: 7.6.0
+      semver: 7.6.3
       tmp: 0.2.1
       tslib: 2.6.2
       yargs-parser: 21.1.1
@@ -8461,7 +8461,7 @@ packages:
       npm-package-arg: 11.0.2
       promzard: 1.0.0
       read: 3.0.1
-      semver: 7.6.0
+      semver: 7.6.3
       validate-npm-package-license: 3.0.4
       validate-npm-package-name: 5.0.1
     transitivePeerDependencies:
@@ -9802,7 +9802,7 @@ packages:
       npm-package-arg: 11.0.2
       npm-registry-fetch: 17.1.0
       proc-log: 4.2.0
-      semver: 7.6.0
+      semver: 7.6.3
       sigstore: 2.2.2
       ssri: 10.0.6
     transitivePeerDependencies:
@@ -10042,7 +10042,7 @@ packages:
     resolution: {integrity: sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==}
     engines: {node: '>=10'}
     dependencies:
-      semver: 7.6.0
+      semver: 7.6.3
     dev: true
 
   /make-fetch-happen@13.0.0:
@@ -10924,7 +10924,7 @@ packages:
     dependencies:
       hosted-git-info: 7.0.2
       proc-log: 4.2.0
-      semver: 7.6.0
+      semver: 7.6.3
       validate-npm-package-name: 5.0.1
     dev: true
 
@@ -11023,7 +11023,7 @@ packages:
       npm-run-path: 4.0.1
       open: 8.4.0
       ora: 5.3.0
-      semver: 7.6.0
+      semver: 7.6.3
       string-width: 4.2.3
       strong-log-transformer: 2.1.0
       tar-stream: 2.2.0
