@@ -40,7 +40,7 @@
     "@bigcommerce/configs": "workspace:^",
     "@bigcommerce/examples": "^1.0.2",
     "@styled/typescript-styled-plugin": "^1.0.1",
-    "@types/gtag.js": "^0.0.19",
+    "@types/gtag.js": "^0.0.20",
     "@types/node": "^20.12.7",
     "@types/prettier": "^2.0.1",
     "@types/react": "^18.2.73",
