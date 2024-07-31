@@ -37,6 +37,8 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
   required,
   placeholder,
   value,
+  onBlur,
+  onFocus,
   ...props
 }) => {
   const [selected, setSelected] = useState<Date>();
@@ -65,7 +67,9 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
         locale={locale}
         maxDate={max ? new Date(max) : undefined}
         minDate={min ? new Date(min) : undefined}
+        onBlur={onBlur}
         onChange={updateDate}
+        onFocus={onFocus}
         placeholderText={placeholder}
         popperModifiers={[
           {

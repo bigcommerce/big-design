@@ -130,3 +130,28 @@ test('renders localized labels', () => {
 
   expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
 });
+
+test('calls an optional onFocus callback upon focus', async () => {
+  const onFocus = jest.fn();
+
+  render(<Datepicker onDateChange={jest.fn()} onFocus={onFocus} />);
+
+  const input = await screen.findByRole('textbox');
+
+  await userEvent.click(input);
+
+  expect(onFocus).toHaveBeenCalled();
+});
+
+test('calls an optional onBlur callback upon blur', async () => {
+  const onBlur = jest.fn();
+
+  render(<Datepicker onBlur={onBlur} onDateChange={jest.fn()} />);
+
+  const input = await screen.findByRole('textbox');
+
+  await userEvent.click(input);
+  await userEvent.tab();
+
+  expect(onBlur).toHaveBeenCalled();
+});
