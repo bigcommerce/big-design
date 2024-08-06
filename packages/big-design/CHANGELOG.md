@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@1.2.0...@bigcommerce/big-design@1.3.0) (2024-08-06)
+
+
+### Bug Fixes
+
+* **component:** fix onBlur and onFocus support for Datepicker ([#1478](https://github.com/bigcommerce/big-design/issues/1478)) ([75b6212](https://github.com/bigcommerce/big-design/commit/75b6212b5fec2329e378201978b794435f391140))
+
+
+### Features
+
+* **component:** implement copy-paste for worksheet ([#1467](https://github.com/bigcommerce/big-design/issues/1467)) ([c7d7498](https://github.com/bigcommerce/big-design/commit/c7d7498fc753e1935eb56f8ad9b245f63ceaa3e8))
+
+
+
+
+
 # [1.2.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/big-design@1.1.0...@bigcommerce/big-design@1.2.0) (2024-07-11)
 
 

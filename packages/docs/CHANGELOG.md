@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@1.1.0...@bigcommerce/docs@1.1.1) (2024-08-06)
+
+**Note:** Version bump only for package @bigcommerce/docs
+
+
+
+
+
 # [1.1.0](https://github.com/bigcommerce/big-design/compare/@bigcommerce/docs@1.0.1...@bigcommerce/docs@1.1.0) (2024-07-11)
 
 

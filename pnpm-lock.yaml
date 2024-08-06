@@ -445,7 +445,7 @@ importers:
         specifier: workspace:^
         version: link:../configs
       '@bigcommerce/examples':
-        specifier: ^1.0.2
+        specifier: ^1.0.3
         version: link:../examples
       '@styled/typescript-styled-plugin':
         specifier: ^1.0.1
