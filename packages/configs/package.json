@@ -4,7 +4,7 @@
   "private": true,
   "license": "(MIT AND CC-BY-3.0)",
   "dependencies": {
-    "@typescript-eslint/parser": "^7.7.0",
+    "@typescript-eslint/parser": "^8.0.1",
     "eslint": "^8.33.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "typescript": "^5.4.5"
