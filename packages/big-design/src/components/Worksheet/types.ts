@@ -77,7 +77,7 @@ export interface WorksheetSelectableColumn<Item> extends WorksheetBaseColumn<Ite
   config: {
     options: Array<SelectOption<unknown>>;
   };
-  type: 'select';
+  type: 'select' | 'multiSelect';
 }
 
 export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {

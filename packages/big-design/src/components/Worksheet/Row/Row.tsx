@@ -107,7 +107,11 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
           key={`${rowIndex}-${columnIndex}`}
           nextRowValue={(nextRow && nextRow[column.hash]) || ''}
           notation={column.notation}
-          options={column.type === 'select' ? column.config.options : undefined}
+          options={
+            column.type === 'select' || column.type === 'multiSelect'
+              ? column.config.options
+              : undefined
+          }
           rowId={row.id}
           rowIndex={rowIndex}
           type={column.type ?? 'text'}
