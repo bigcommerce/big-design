@@ -15,6 +15,7 @@ interface Product {
   otherField: string;
   otherField2: number;
   numberField: number;
+  multiField: number[];
 }
 
 const TreeComponent = (
@@ -112,6 +113,28 @@ const selectableColumns: Array<WorksheetColumn<Partial<Product>>> = [
         { value: 'value1', content: 'Value 1' },
         { value: 'value2', content: 'Value 2' },
         { value: 'value3', content: 'Value 3' },
+      ],
+    },
+    validation: (value: string) => !!value,
+  },
+];
+
+const multiSelectColumns: Array<WorksheetColumn<Partial<Product>>> = [
+  {
+    hash: 'productName',
+    header: 'Product name',
+    validation: (value: string) => !!value,
+    disabled: true,
+  },
+  {
+    hash: 'multiField',
+    header: 'Multi field',
+    type: 'multiSelect',
+    config: {
+      options: [
+        { value: 1, content: 'Multi 1' },
+        { value: 2, content: 'Multi 2' },
+        { value: 3, content: 'Multi 3' },
       ],
     },
     validation: (value: string) => !!value,
@@ -228,6 +251,19 @@ const selectableItems: Array<Partial<Product>> = [
     id: 2,
     productName: 'Shoes Name Two',
     otherField: 'value2',
+  },
+];
+
+const multiSelectItems: Array<Partial<Product>> = [
+  {
+    id: 1,
+    productName: 'Shoes Name One',
+    multiField: [1],
+  },
+  {
+    id: 2,
+    productName: 'Shoes Name Two',
+    multiField: [2],
   },
 ];
 
@@ -1064,6 +1100,85 @@ describe('SelectEditor', () => {
     const cell = await screen.findAllByDisplayValue('Value 1');
 
     expect(cell[0]).toHaveAttribute('disabled');
+  });
+});
+
+describe('MultiSelectEditor', () => {
+  test('renders MultiSelectEditor', async () => {
+    const { findAllByRole } = render(
+      <Worksheet columns={multiSelectColumns} items={multiSelectItems} onChange={handleChange} />,
+    );
+
+    const cells = await findAllByRole('combobox');
+
+    expect(cells).toHaveLength(2);
+  });
+
+  test('MultiSelectEditor is editable', async () => {
+    const { findAllByRole, findByLabelText } = render(
+      <Worksheet columns={multiSelectColumns} items={multiSelectItems} onChange={handleChange} />,
+    );
+
+    const cells = await findAllByRole('combobox');
+
+    await userEvent.click(cells[0]);
+
+    const options = await findAllByRole('option');
+
+    await userEvent.click(options[2]);
+
+    const deleteButtons = await findByLabelText('Remove Multi 2');
+
+    await userEvent.click(deleteButtons);
+
+    expect(handleChange).toHaveBeenCalledTimes(2);
+    expect(handleChange).toHaveBeenLastCalledWith([
+      {
+        id: 1,
+        productName: 'Shoes Name One',
+        multiField: [1, 3],
+      },
+      {
+        id: 2,
+        productName: 'Shoes Name Two',
+        multiField: [],
+      },
+    ]);
+  });
+
+  test('renders in disabled state', async () => {
+    const { findAllByRole } = render(
+      <Worksheet
+        columns={[
+          {
+            hash: 'productName',
+            header: 'Product name',
+            validation: (value: string) => !!value,
+            disabled: true,
+          },
+          {
+            hash: 'multiField',
+            header: 'Multi field',
+            type: 'multiSelect',
+            config: {
+              options: [
+                { value: 1, content: 'Multi 1' },
+                { value: 2, content: 'Multi 2' },
+                { value: 3, content: 'Multi 3' },
+              ],
+            },
+            validation: (value: string) => !!value,
+            disabled: true,
+          },
+        ]}
+        items={selectableItems}
+        onChange={handleChange}
+      />,
+    );
+
+    const cells = await findAllByRole('combobox');
+
+    expect(cells[0]).toHaveAttribute('disabled');
   });
 });
 

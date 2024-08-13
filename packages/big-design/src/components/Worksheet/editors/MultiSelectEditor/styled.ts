@@ -17,7 +17,14 @@ export const MultiSelectWrapper = styled.div`
   }
 
   input {
-    display: none;
+    font-size: ${({ theme }) => theme.typography.fontSize.small};
+    font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
+
+    &[disabled] {
+      background-color: ${({ theme }) => theme.colors.inherit};
+      color: ${({ theme }) => theme.colors.secondary50};
+      cursor: default;
+    }
   }
 
   [role='option'] {
