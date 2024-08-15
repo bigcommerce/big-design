@@ -1,0 +1,19 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalPassThroughEnv": ["NEXT_PUBLIC_GTM_ID"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "", ".next/**", "!.next/cache/**", "out/**"]
+    },
+    "ci:test": {
+      "outputs": ["coverage/**"]
+    },
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
+    "typecheck": {},
+    "test": {}
+  }
+}

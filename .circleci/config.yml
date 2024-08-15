@@ -68,7 +68,7 @@ jobs:
           keys:
             - big-design-icons-<<parameters.cache-version>>-{{ .Branch }}
             - big-design-icons-<<parameters.cache-version>>
-      - run: pnpm -F @bigcommerce/big-design-icons run build
+      - run: pnpm build --filter @bigcommerce/big-design-icons
       - save_cache:
           name: 'Saving build cache'
           key: big-design-icons-<<parameters.cache-version>>-{{ .Branch }}
@@ -85,7 +85,7 @@ jobs:
 
     steps:
       - pre-setup
-      - run: pnpm -F @bigcommerce/big-design-theme run build
+      - run: pnpm build --filter @bigcommerce/big-design-theme
 
   build-big-design:
     <<: *default_executor
@@ -93,7 +93,7 @@ jobs:
     steps:
       - pre-setup
       - attach-built-icons
-      - run: pnpm -F @bigcommerce/big-design run build
+      - run: pnpm build --filter @bigcommerce/big-design
 
   build-examples:
     <<: *default_executor
@@ -101,7 +101,7 @@ jobs:
     steps:
       - pre-setup
       - attach-built-icons
-      - run: pnpm -F @bigcommerce/examples run build
+      - run: pnpm build --filter @bigcommerce/examples
 
   build-docs:
     <<: *default_executor
@@ -120,7 +120,7 @@ jobs:
             - nextjs-<<parameters.cache-version>>-{{ checksum "package.json" }}-{{ checksum "pnpm-lock.yaml" }}
             - nextjs-<<parameters.cache-version>>-{{ checksum "package.json" }}
             - nextjs-<<parameters.cache-version>>
-      - run: pnpm -F @bigcommerce/docs run build
+      - run: pnpm build --filter @bigcommerce/docs
       - save_cache:
           key: nextjs-<<parameters.cache-version>>-{{ checksum "package.json" }}-{{ checksum "pnpm-lock.yaml" }}
           paths:
@@ -132,7 +132,7 @@ jobs:
     steps:
       - pre-setup
       - attach-built-icons
-      - run: pnpm run typecheck
+      - run: pnpm typecheck
 
   lint:
     <<: *default_executor
@@ -140,7 +140,7 @@ jobs:
     steps:
       - pre-setup
       - attach-built-icons
-      - run: pnpm run lint
+      - run: pnpm lint
 
   test:
     <<: *default_executor
@@ -148,7 +148,7 @@ jobs:
     steps:
       - pre-setup
       - attach-built-icons
-      - run: pnpm run ci:test
+      - run: pnpm ci:test
 
 #################################################################################
 # Workflows
