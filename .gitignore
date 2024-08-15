@@ -13,3 +13,4 @@ packages/docs/pages/dev.tsx
 .tsbuildinfo
 .env*.local
 .swc
+.turbo
