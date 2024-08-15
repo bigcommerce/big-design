@@ -4,13 +4,13 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "packageManager": "pnpm@8.15.8",
   "scripts": {
-    "build": "lerna run build --stream",
-    "build:icons": "pnpm -F @bigcommerce/big-design-icons run build",
-    "ci:test": "lerna run test --stream -- --maxWorkers=2 --coverage",
+    "build": "turbo build",
+    "build:icons": "turbo build --filter @bigcommerce/big-design-icons",
+    "ci:test": "turbo test -- --maxWorkers=2 --coverage",
     "lint": "eslint . --ext .ts,.tsx,.js,.mdx --max-warnings 0",
-    "start": "pnpm -F @bigcommerce/docs run start",
-    "test": "lerna run test --stream",
-    "typecheck": "lerna run typecheck --stream",
+    "start": "turbo start --filter @bigcommerce/docs",
+    "test": "turbo test",
+    "typecheck": "turbo typecheck",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -29,6 +29,7 @@
     "husky": "^9.0.11",
     "lerna": "^8.1.2",
     "lint-staged": "^15.2.2",
+    "turbo": "^2.0.14",
     "typescript": "^5.4.5"
   }
 }
