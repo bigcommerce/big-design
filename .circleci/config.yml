@@ -51,87 +51,18 @@ commands:
 # Jobs
 #################################################################################
 jobs:
-  build-icons:
-    <<: *default_executor
-
-    parameters:
-      cache-version:
-        type: string
-        default: v1
-        description: Change the .tsbuildinfo cache version if you need to clear the cache for any reason.
-
-    steps:
-      - pre-setup
-      - attach-built-icons
-      - restore_cache:
-          name: 'Restoring build cache'
-          keys:
-            - big-design-icons-<<parameters.cache-version>>-{{ .Branch }}
-            - big-design-icons-<<parameters.cache-version>>
-      - run: pnpm -F @bigcommerce/big-design-icons run build
-      - save_cache:
-          name: 'Saving build cache'
-          key: big-design-icons-<<parameters.cache-version>>-{{ .Branch }}
-          paths:
-            - packages/big-design-icons/.tsbuildinfo
-            - packages/big-design-icons/dist
-      - persist_to_workspace:
-          root: .
-          paths:
-            - packages/big-design-icons/dist
-
-  build-theme:
+  build:
     <<: *default_executor
 
     steps:
       - pre-setup
-      - run: pnpm -F @bigcommerce/big-design-theme run build
-
-  build-big-design:
-    <<: *default_executor
-
-    steps:
-      - pre-setup
-      - attach-built-icons
-      - run: pnpm -F @bigcommerce/big-design run build
-
-  build-examples:
-    <<: *default_executor
-
-    steps:
-      - pre-setup
-      - attach-built-icons
-      - run: pnpm -F @bigcommerce/examples run build
-
-  build-docs:
-    <<: *default_executor
-
-    parameters:
-      cache-version:
-        type: string
-        default: v1
-        description: Change the next.js cache version if you need to clear the cache for any reason.
-
-    steps:
-      - pre-setup
-      - attach-built-icons
-      - restore_cache:
-          keys:
-            - nextjs-<<parameters.cache-version>>-{{ checksum "package.json" }}-{{ checksum "pnpm-lock.yaml" }}
-            - nextjs-<<parameters.cache-version>>-{{ checksum "package.json" }}
-            - nextjs-<<parameters.cache-version>>
-      - run: pnpm -F @bigcommerce/docs run build
-      - save_cache:
-          key: nextjs-<<parameters.cache-version>>-{{ checksum "package.json" }}-{{ checksum "pnpm-lock.yaml" }}
-          paths:
-            - packages/docs/.next
+      - run: pnpm run build
 
   typecheck:
     <<: *default_executor
 
     steps:
       - pre-setup
-      - attach-built-icons
       - run: pnpm run typecheck
 
   lint:
@@ -139,7 +70,6 @@ jobs:
 
     steps:
       - pre-setup
-      - attach-built-icons
       - run: pnpm run lint
 
   test:
@@ -147,7 +77,6 @@ jobs:
 
     steps:
       - pre-setup
-      - attach-built-icons
       - run: pnpm run ci:test
 
 #################################################################################
@@ -157,38 +86,14 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build-icons:
+      - build:
           <<: *filter_branch
-
-      - build-theme:
-          <<: *filter_branch
-
-      - build-big-design:
-          <<: *filter_branch
-          requires:
-            - build-icons
-
-      - build-examples:
-          <<: *filter_branch
-          requires:
-            - build-icons
-
-      - build-docs:
-          <<: *filter_branch
-          requires:
-            - build-icons
 
       - typecheck:
           <<: *filter_branch
-          requires:
-            - build-icons
 
       - lint:
           <<: *filter_branch
-          requires:
-            - build-icons
 
       - test:
           <<: *filter_branch
-          requires:
-            - build-icons
