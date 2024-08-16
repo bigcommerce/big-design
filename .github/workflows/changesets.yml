@@ -28,16 +28,16 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Packages
+        run: pnpm run build
+
+      - name: Test Packages
         run: pnpm run ci:test
 
-      - name: Build Packages
+      - name: Lint Packages
         run: pnpm run lint
 
-      - name: Build Packages
+      - name: Typecheck Packages
         run: pnpm run typecheck
-
-      - name: Build Packages
-        run: pnpm run build
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
