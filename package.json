@@ -13,11 +13,6 @@
     "typecheck": "turbo typecheck",
     "prepare": "husky"
   },
-  "lint-staged": {
-    "*.{js,ts,tsx,mdx}": [
-      "eslint --fix"
-    ]
-  },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "devDependencies": {
     "@bigcommerce/eslint-config": "^2.9.0",
@@ -30,7 +25,6 @@
     "eslint-plugin-mdx": "^3.1.5",
     "husky": "^9.0.11",
     "lerna": "^8.1.2",
-    "lint-staged": "^15.2.2",
     "turbo": "^2.0.14",
     "typescript": "^5.4.5"
   }
