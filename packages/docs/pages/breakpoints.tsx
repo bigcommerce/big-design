@@ -21,8 +21,9 @@ const BreakpointsPage = () => (
         <Code primary>breakpointValues</Code> that can be used to create responsive layouts and
         components. Our breakpoints include <Code primary>mobile</Code>, <Code primary>tablet</Code>{' '}
         and <Code primary>desktop</Code>. For each breakpoint, the breakpoint values are{' '}
-        <Code>{breakpointValues.mobile}</Code>, <Code>{breakpointValues.tablet}</Code>, and{' '}
-        <Code>{breakpointValues.desktop}</Code> respectively.
+        <Code>{breakpointValues.mobile}</Code>, <Code>{breakpointValues.tablet}</Code>,{' '}
+        <Code>{breakpointValues.desktop}</Code> and <Code>{breakpointValues.wide}</Code>{' '}
+        respectively.
       </Text>
     </Panel>
 
@@ -44,7 +45,14 @@ const BreakpointsPage = () => (
 
                 <CodePreview scope={{ Box }}>
                   {/* jsx-to-string:start */}
-                  <Box padding={{ mobile: 'none', tablet: 'small', desktop: 'xLarge' }}>
+                  <Box
+                    padding={{
+                      mobile: 'none',
+                      tablet: 'small',
+                      desktop: 'xLarge',
+                      wide: 'xxLarge',
+                    }}
+                  >
                     This box has responsive props!
                   </Box>
                   {/* jsx-to-string:end */}
@@ -82,11 +90,15 @@ const BreakpointsPage = () => (
                       width: 100%;
 
                       ${({ theme }) => theme.breakpoints.tablet} {
-                        width: 60%;
+                        width: 75%;
                       }
 
                       ${({ theme }) => theme.breakpoints.desktop} {
-                        width: 30%;
+                        width: 50%;
+                      }
+
+                      ${({ theme }) => theme.breakpoints.wide} {
+                        width: 25%;
                       }
                     `;
 
