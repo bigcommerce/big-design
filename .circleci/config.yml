@@ -126,6 +126,42 @@ jobs:
           paths:
             - packages/docs/.next
 
+  commitlint:
+    <<: *default_executor
+
+    steps:
+      - pre-setup
+      - run:
+          name: "Set Pull Request Variables"
+          command: |
+            DEFAULT_BRANCH=$(git remote show origin | grep 'HEAD branch' | cut -d' ' -f5)
+            
+            if [ "$CIRCLE_PULL_REQUEST" ]; then
+              git fetch origin refs/pull/${CIRCLE_PULL_REQUEST##*/}/merge
+            
+              BASE_SHA1=`git rev-parse FETCH_HEAD^1`
+            elif [ "$DEFAULT_BRANCH" ]; then
+              echo "Not a pull request, so getting merge base from default branch $DEFAULT_BRANCH instead."
+              BASE_SHA1=$DEFAULT_BRANCH
+            fi
+            
+            if [ -z "$BASE_SHA1" ]; then
+              echo 'Not a pull request and could not identify default branch, skipping.'
+              exit 0
+            fi
+            
+            MERGE_BASE_SHA1=`git merge-base $BASE_SHA1 $CIRCLE_SHA1`
+            echo "export BASE_SHA1=${BASE_SHA1}" >> $BASH_ENV
+            echo "export MERGE_BASE_SHA1=${MERGE_BASE_SHA1}" >> $BASH_ENV
+      - run:
+          name: Validate Commits
+          command: |
+            if [ -z "$MERGE_BASE_SHA1" ]; then
+              exit 0;
+            fi
+
+            pnpm commitlint --from ${MERGE_BASE_SHA1} --to ${CIRCLE_SHA1} --verbose
+
   typecheck:
     <<: *default_executor
 
@@ -157,6 +193,9 @@ workflows:
   version: 2
   build_and_test:
     jobs:
+      - commitlint:
+          <<: *filter_branch
+
       - build-icons:
           <<: *filter_branch
 
