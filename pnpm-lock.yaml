@@ -459,9 +459,6 @@ importers:
       next:
         specifier: ^14.2.1
         version: 14.2.1(@babel/core@7.25.2)(react-dom@18.2.0)(react@18.2.0)
-      push-dir:
-        specifier: ^0.4.1
-        version: 0.4.1
       typescript:
         specifier: ^5.4.5
         version: 5.5.4
@@ -11083,14 +11080,6 @@ packages:
 
   /pure-rand@6.0.0:
     resolution: {integrity: sha512-rLSBxJjP+4DQOgcJAx6RZHT2he2pkhQdSnofG5VWyVl6GRq/K02ISOuOLcsMOrtKDIJb8JN2zm3FFzWNbezdPw==}
-    dev: true
-
-  /push-dir@0.4.1:
-    resolution: {integrity: sha512-Nrrsly0c3kCfu725Jnif/s5adHpBwKCGWBttHVxTndF4iyGBSFtNi/pduFxHF5ks0kWtHcbA3XXP5MEra6iiCA==}
-    engines: {node: '>=0.12'}
-    hasBin: true
-    dependencies:
-      minimist: 1.2.7
     dev: true
 
   /querystringify@2.2.0:

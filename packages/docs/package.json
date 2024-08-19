@@ -12,7 +12,6 @@
   },
   "scripts": {
     "build": "next build",
-    "deploy": "pnpm run build && touch out/.nojekyll && push-dir --dir=out --branch=gh-pages --verbose",
     "lint": "eslint . --max-warnings 0",
     "start": "next",
     "typecheck": "tsc --noEmit"
@@ -49,7 +48,6 @@
     "eslint-plugin-mdx": "^3.1.5",
     "jsx-to-string-loader": "^1.2.0",
     "next": "^14.2.1",
-    "push-dir": "^0.4.1",
     "typescript": "^5.4.5"
   }
 }
