@@ -1,19 +1,13 @@
-const withTM = require('next-transpile-modules')([
-  '@bigcommerce/big-design',
-  '@bigcommerce/big-design-theme',
-]);
-
 const bdPkg = require('../big-design/package.json');
 const examplesPkg = require('../examples/package.json');
-
-const pkg = require('./package.json');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isDev = !isProduction;
 const URL_PREFIX = '/big-design';
 const EXAMPLES_VERSION = examplesPkg.version;
 
-module.exports = withTM({
+/** @type {import('next').NextConfig} */
+module.exports = {
   basePath: isProduction ? URL_PREFIX : '',
   output: 'export',
   env: {
@@ -21,6 +15,11 @@ module.exports = withTM({
     URL_PREFIX: isProduction ? URL_PREFIX : '',
     BD_VERSION: bdPkg.version,
   },
+  transpilePackages: [
+    '@bigcommerce/big-design',
+    '@bigcommerce/big-design-theme',
+    '@bigcommerce/big-design-icons',
+  ],
   images: {
     unoptimized: true,
   },
@@ -53,4 +52,4 @@ module.exports = withTM({
 
     return rest;
   },
-});
+};
