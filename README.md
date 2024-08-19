@@ -51,7 +51,7 @@ import { Button, GlobalStyles } from '@bigcommerce/big-design';
 
 ### Monorepo
 
-This is a monorepo that uses [Lerna](https://lerna.js.org/) and [pnpm Workspaces](https://pnpmpkg.com/lang/en/docs/workspaces/).
+This monorepo uses [Turborepo](https://turbo.build/repo/docs) and [pnpm Workspaces](https://pnpmpkg.com/lang/en/docs/workspaces/).
 
 Workspaces are inside the [packages](https://github.com/bigcommerce/big-design/blob/main/packages) directory.
 
@@ -114,39 +114,7 @@ cp .vscode/settings.example.json .vscode/settings.json
 
 ### Releasing
 
-This is for releasing new versions of all the packages.
-
-```
-GH_TOKEN=<token> pnpm lerna publish <patch/minor/major> --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
-```
-
-#### Prereleases
-
-```
-GH_TOKEN=<token> pnpm lerna publish prerelease --pre-dist-tag next --conventional-prerelease --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
-```
-
-To promote a prerelease add the `--conventional-graduate` flag to release command.
-
-```
-GH_TOKEN=<token> pnpm lerna publish <patch/minor/major> --conventional-graduate --sign-git-commit --sign-git-tag --create-release github --git-remote upstream
-```
-
-#### `from-package`
-
-`from-package` allows you to release what's on `upstream/main` if the publish script failed. By default the `lerna publish` command will push commits and tags before running through the build. This is a just-in-case command.
-
-```
-GH_TOKEN=<token> pnpm lerna publish from-package --git-remote upstream
-```
-
-### BigDesign Documentation Release
-
-```
-pnpm run build
-cd packages/docs
-pnpm run deploy --remote upstream
-```
+Project maintainers should release through the Changesets Pull Request. To do this, go to the Pull Request tab, approve, and merge it. The release will then be automatically published to npm, and the documentation will be deployed.
 
 ### License
 Big Design is licensed under MIT and CC BY 3.0. See [LICENSE.md](./LICENSE.md) for more details.

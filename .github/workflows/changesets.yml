@@ -11,6 +11,9 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -29,6 +32,8 @@ jobs:
 
       - name: Build Packages
         run: pnpm run build
+        env:
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
 
       - name: Test Packages
         run: pnpm run ci:test
@@ -48,3 +53,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Setup Pages
+        if: steps.changesets.outputs.published == 'true'
+        uses: actions/configure-pages@v4
+  
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        if: steps.changesets.outputs.published == 'true'
+        with:
+          path: packages/docs/out/
+
+      - name: Deploy to GitHub Pages
+        if: steps.changesets.outputs.published == 'true'
+        uses: actions/deploy-pages@v4
