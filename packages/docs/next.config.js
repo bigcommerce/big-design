@@ -4,19 +4,20 @@ const withTM = require('next-transpile-modules')([
 ]);
 
 const bdPkg = require('../big-design/package.json');
+const examplesPkg = require('../examples/package.json');
 
 const pkg = require('./package.json');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isDev = !isProduction;
 const URL_PREFIX = '/big-design';
-const examplesVersion = pkg.devDependencies['@bigcommerce/examples'].replace('^', '');
+const EXAMPLES_VERSION = examplesPkg.version;
 
 module.exports = withTM({
   basePath: isProduction ? URL_PREFIX : '',
   output: 'export',
   env: {
-    CODE_SANDBOX_URL: `https://codesandbox.io/s/github/bigcommerce/big-design/tree/%40bigcommerce/examples%40${examplesVersion}/packages/examples`,
+    CODE_SANDBOX_URL: `https://codesandbox.io/s/github/bigcommerce/big-design/tree/%40bigcommerce/examples%40${EXAMPLES_VERSION}/packages/examples`,
     URL_PREFIX: isProduction ? URL_PREFIX : '',
     BD_VERSION: bdPkg.version,
   },
