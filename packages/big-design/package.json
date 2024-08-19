@@ -21,7 +21,6 @@
     "lint": "eslint . --max-warnings 0",
     "test": "jest",
     "test:watch": "pnpm run test --watch",
-    "prepublishOnly": "rimraf dist && pnpm run typecheck && pnpm run test --maxWorkers=2 && pnpm run build",
     "prepack": "big-design-prepack",
     "postpack": "big-design-postpack",
     "typecheck": "tsc --noEmit"
@@ -86,7 +85,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-test-renderer": "^18.2.0",
-    "rimraf": "^6.0.1",
     "styled-components": "^5.3.11",
     "typescript": "^5.4.5"
   }

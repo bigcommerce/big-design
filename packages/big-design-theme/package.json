@@ -16,7 +16,6 @@
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc -p tsconfig.declarations.json --emitDeclarationOnly",
     "lint": "eslint . --max-warnings 0",
-    "prepublishOnly": "rimraf dist && pnpm run typecheck && pnpm run test && pnpm run build",
     "prepack": "big-design-prepack",
     "postpack": "big-design-postpack",
     "test": "jest",
@@ -65,7 +64,6 @@
     "jest-styled-components": "^7.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rimraf": "^6.0.1",
     "styled-components": "^5.3.11",
     "typescript": "^5.4.5"
   }
