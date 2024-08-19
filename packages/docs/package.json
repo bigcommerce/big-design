@@ -38,7 +38,6 @@
   },
   "devDependencies": {
     "@bigcommerce/configs": "workspace:^",
-    "@bigcommerce/examples": "^1.0.3",
     "@styled/typescript-styled-plugin": "^1.0.1",
     "@types/gtag.js": "^0.0.20",
     "@types/node": "^20.12.7",
