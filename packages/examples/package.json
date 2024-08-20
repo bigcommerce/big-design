@@ -4,9 +4,11 @@
   "version": "1.0.3",
   "scripts": {
     "build": "vite build",
+    "lint": "eslint . --max-warnings 0",
     "start": "vite",
     "typecheck": "tsc --noEmit"
   },
+  "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
     "@bigcommerce/big-design": "workspace:^",
     "@bigcommerce/big-design-icons": "workspace:^",
@@ -18,6 +20,7 @@
     "yup": "^1.0.2"
   },
   "devDependencies": {
+    "@bigcommerce/configs": "workspace:^",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.73",
     "@types/react-dom": "^18.2.23",

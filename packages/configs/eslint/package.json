@@ -1,0 +1,5 @@
+{
+  "name": "@bigcommerce/configs/eslint",
+  "main": "tsconfig.json",
+  "private": true
+}

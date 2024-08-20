@@ -7,21 +7,17 @@
     "build": "turbo build",
     "build:icons": "turbo build --filter @bigcommerce/big-design-icons",
     "ci:test": "turbo test -- --maxWorkers=2 --coverage",
-    "lint": "eslint . --ext .ts,.tsx,.js,.mdx --max-warnings 0",
+    "lint": "turbo run lint",
     "start": "turbo start --filter @bigcommerce/docs",
     "test": "turbo test",
     "typecheck": "turbo typecheck"
   },
-  "prettier": "@bigcommerce/eslint-config/prettier",
   "devDependencies": {
-    "@bigcommerce/eslint-config": "^2.9.0",
     "@changesets/changelog-git": "^0.2.0",
     "@changesets/cli": "^2.27.7",
     "@commitlint/cli": "^18.6.1",
     "@commitlint/config-conventional": "^18.6.3",
     "@types/babel__standalone": "^7.1.4",
-    "eslint": "^8.33.0",
-    "eslint-plugin-mdx": "^3.1.5",
     "lerna": "^8.1.2",
     "turbo": "^2.0.14",
     "typescript": "^5.4.5"

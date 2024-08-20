@@ -18,6 +18,7 @@
     "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/cjs",
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --extensions \".ts,.tsx\" ./src --out-dir ./dist/es",
     "build:dt": "tsc -p tsconfig.declarations.json --emitDeclarationOnly",
+    "lint": "eslint . --max-warnings 0",
     "test": "jest",
     "test:watch": "pnpm run test --watch",
     "prepublishOnly": "rimraf dist && pnpm run typecheck && pnpm run test --maxWorkers=2 && pnpm run build",
@@ -31,6 +32,7 @@
     "module": "dist/es/index.js",
     "typings": "dist/index.d.ts"
   },
+  "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
     "@babel/runtime": "^7.24.4",
     "@bigcommerce/big-design-icons": "workspace:^",
