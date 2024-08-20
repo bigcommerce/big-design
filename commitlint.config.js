@@ -17,6 +17,7 @@ module.exports = {
         'examples',
         'icons',
         'pack',
+        'patterns',
         'release',
         'theme',
       ],
