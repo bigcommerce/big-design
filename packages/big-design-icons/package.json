@@ -21,6 +21,7 @@
     "build:flags": "node scripts/build-flags.js",
     "clean": "rimraf dist && rimraf .tsbuildinfo",
     "download": "node scripts/downloader.js",
+    "lint": "eslint . --max-warnings 0",
     "prepublishOnly": "pnpm run clean && pnpm run typecheck && pnpm run build",
     "typecheck": "tsc --noEmit"
   },
@@ -32,6 +33,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
     "@babel/runtime": "^7.24.4",
     "@bigcommerce/big-design-theme": "workspace:^"

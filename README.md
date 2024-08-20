@@ -106,6 +106,12 @@ Run linter with:
 pnpm run lint
 ```
 
+Optional: If you use VS Code, use the following command to configure VSCode with the project-specific settings:
+
+```shell copy
+cp .vscode/settings.example.json .vscode/settings.json
+```
+
 ### Releasing
 
 This is for releasing new versions of all the packages.
