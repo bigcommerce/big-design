@@ -1,0 +1,56 @@
+name: Basic
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize]
+  merge_group:
+    types: [checks_requested]
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release-and-deploy:
+    name: Release and Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Packages
+        run: pnpm run build
+        env:
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        run: echo "published=false" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Pages
+        if: steps.changesets.outputs.published == 'true'
+        uses: actions/configure-pages@v4
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        if: steps.changesets.outputs.published == 'true'
+        with:
+          path: packages/docs/out/
+      - name: Deploy to GitHub Pages
+        if: steps.changesets.outputs.published == 'true'
+        uses: actions/deploy-pages@v4
