@@ -1,11 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a pagination component 1`] = `
+.c10 {
+  vertical-align: middle;
+  height: 2rem;
+  width: 2rem;
+}
+
+.c15 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c1 {
   box-sizing: border-box;
 }
 
-.c10 {
+.c11 {
   box-sizing: border-box;
   z-index: 1060;
 }
@@ -152,7 +164,7 @@ exports[`renders a pagination component 1`] = `
   color: #D9DCE9;
 }
 
-.c13 {
+.c14 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -201,32 +213,32 @@ exports[`renders a pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c13:focus {
+.c14:focus {
   outline: none;
 }
 
-.c13[disabled] {
+.c14[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c13 + .bd-button {
+.c14 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c13:active {
+.c14:active {
   background-color: #DBE3FE;
 }
 
-.c13:focus {
+.c14:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c13:hover:not(:active) {
+.c14:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c13[disabled] {
+.c14[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -244,7 +256,7 @@ exports[`renders a pagination component 1`] = `
   grid-gap: 0.5rem;
 }
 
-.c11 {
+.c12 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   height: 100%;
@@ -252,7 +264,7 @@ exports[`renders a pagination component 1`] = `
   overflow: hidden;
 }
 
-.c12 {
+.c13 {
   border-radius: 0.25rem;
   box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
   background-color: #FFFFFF;
@@ -312,14 +324,14 @@ exports[`renders a pagination component 1`] = `
 }
 
 @media (min-width:720px) {
-  .c13 + .bd-button {
+  .c14 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c13 {
+  .c14 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -361,7 +373,7 @@ exports[`renders a pagination component 1`] = `
               1 - 3 of 5
               <svg
                 aria-hidden="true"
-                class="hNTNsv"
+                class="c10"
                 fill="currentColor"
                 height="24"
                 stroke="currentColor"
@@ -380,15 +392,15 @@ exports[`renders a pagination component 1`] = `
             </span>
           </button>
           <div
-            class="c10"
+            class="c11"
             style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
           >
             <div
-              class="c11"
+              class="c12"
             >
               <ul
                 aria-labelledby=":r13:-label"
-                class="c12"
+                class="c13"
                 id=":r13:-menu"
                 role="menu"
               />
@@ -400,7 +412,7 @@ exports[`renders a pagination component 1`] = `
         class="c1 c5"
       >
         <button
-          class="c13 c8"
+          class="c14 c8"
           disabled=""
           type="button"
         >
@@ -409,7 +421,7 @@ exports[`renders a pagination component 1`] = `
           >
             <svg
               aria-labelledby=":r16:"
-              class="brjSIf"
+              class="c15"
               fill="currentColor"
               height="24"
               stroke="currentColor"
@@ -433,7 +445,7 @@ exports[`renders a pagination component 1`] = `
           </span>
         </button>
         <button
-          class="c13 c8"
+          class="c14 c8"
           type="button"
         >
           <span
@@ -441,7 +453,7 @@ exports[`renders a pagination component 1`] = `
           >
             <svg
               aria-labelledby=":r17:"
-              class="brjSIf"
+              class="c15"
               fill="currentColor"
               height="24"
               stroke="currentColor"
@@ -725,6 +737,12 @@ exports[`renders a table figure 1`] = `
 `;
 
 exports[`selectable renders selectable actions and checkboxes 1`] = `
+.c10 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c1 {
   margin-right: 0.25rem;
   box-sizing: border-box;
@@ -734,7 +752,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   box-sizing: border-box;
 }
 
-.c14 {
+.c15 {
   margin-right: 1rem;
   box-sizing: border-box;
 }
@@ -782,7 +800,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   flex-shrink: 0;
 }
 
-.c11 {
+.c12 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -790,11 +808,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   line-height: 1.5rem;
 }
 
-.c11:last-child {
+.c12:last-child {
   margin-bottom: 0;
 }
 
-.c13 {
+.c14 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -803,11 +821,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin-left: 0.75rem;
 }
 
-.c13:last-child {
+.c14:last-child {
   margin-bottom: 0;
 }
 
-.c15 {
+.c16 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -816,11 +834,11 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   margin: 0;
 }
 
-.c15:last-child {
+.c16:last-child {
   margin-bottom: 0;
 }
 
-.c12 {
+.c13 {
   cursor: pointer;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -834,7 +852,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   width: 1px;
 }
 
-.c10 {
+.c11 {
   margin-left: 0.5rem;
 }
 
@@ -955,7 +973,7 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="brjSIf"
+            class="c10"
             fill="currentColor"
             height="24"
             stroke="currentColor"
@@ -973,10 +991,10 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
           </svg>
         </label>
         <div
-          class="c10"
+          class="c11"
         >
           <label
-            class="c11 c12"
+            class="c12 c13"
             for=":r1l:"
             hidden=""
             id=":r1m:"
@@ -986,17 +1004,17 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         </div>
       </div>
       <p
-        class="c13"
+        class="c14"
       >
         5
       </p>
     </div>
   </div>
   <div
-    class="c14 c2"
+    class="c15 c2"
   >
     <p
-      class="c15"
+      class="c16"
     >
       Product
     </p>

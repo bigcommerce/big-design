@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render Checkbox checked 1`] = `
-.c6 {
+.c5 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c7 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -9,15 +15,15 @@ exports[`render Checkbox checked 1`] = `
   line-height: 1.5rem;
 }
 
-.c6:last-child {
+.c7:last-child {
   margin-bottom: 0;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
 }
 
-.c5 {
+.c6 {
   margin-left: 0.5rem;
 }
 
@@ -109,7 +115,7 @@ exports[`render Checkbox checked 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="brjSIf"
+      class="c5"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -127,10 +133,10 @@ exports[`render Checkbox checked 1`] = `
     </svg>
   </label>
   <div
-    class="c5"
+    class="c6"
   >
     <label
-      class="c6 c7"
+      class="c7 c8"
       for=":r0:"
       id=":r1:"
     >
@@ -141,7 +147,13 @@ exports[`render Checkbox checked 1`] = `
 `;
 
 exports[`render Checkbox disabled checked 1`] = `
-.c6 {
+.c5 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c7 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -149,16 +161,16 @@ exports[`render Checkbox disabled checked 1`] = `
   line-height: 1.5rem;
 }
 
-.c6:last-child {
+.c7:last-child {
   margin-bottom: 0;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
   cursor: not-allowed;
 }
 
-.c5 {
+.c6 {
   margin-left: 0.5rem;
 }
 
@@ -251,7 +263,7 @@ exports[`render Checkbox disabled checked 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="brjSIf"
+      class="c5"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -269,11 +281,11 @@ exports[`render Checkbox disabled checked 1`] = `
     </svg>
   </label>
   <div
-    class="c5"
+    class="c6"
   >
     <label
       aria-hidden="true"
-      class="c6 c7"
+      class="c7 c8"
       disabled=""
       for=":ri:"
       id=":rj:"
@@ -285,7 +297,13 @@ exports[`render Checkbox disabled checked 1`] = `
 `;
 
 exports[`render Checkbox disabled indeterminate 1`] = `
-.c6 {
+.c5 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c7 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -293,16 +311,16 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   line-height: 1.5rem;
 }
 
-.c6:last-child {
+.c7:last-child {
   margin-bottom: 0;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
   cursor: not-allowed;
 }
 
-.c5 {
+.c6 {
   margin-left: 0.5rem;
 }
 
@@ -393,7 +411,7 @@ exports[`render Checkbox disabled indeterminate 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="brjSIf"
+      class="c5"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -411,11 +429,11 @@ exports[`render Checkbox disabled indeterminate 1`] = `
     </svg>
   </label>
   <div
-    class="c5"
+    class="c6"
   >
     <label
       aria-hidden="true"
-      class="c6 c7"
+      class="c7 c8"
       disabled=""
       for=":ro:"
       id=":rp:"
@@ -427,7 +445,13 @@ exports[`render Checkbox disabled indeterminate 1`] = `
 `;
 
 exports[`render Checkbox disabled unchecked 1`] = `
-.c6 {
+.c5 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c7 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -435,16 +459,16 @@ exports[`render Checkbox disabled unchecked 1`] = `
   line-height: 1.5rem;
 }
 
-.c6:last-child {
+.c7:last-child {
   margin-bottom: 0;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
   cursor: not-allowed;
 }
 
-.c5 {
+.c6 {
   margin-left: 0.5rem;
 }
 
@@ -536,7 +560,7 @@ exports[`render Checkbox disabled unchecked 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="brjSIf"
+      class="c5"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -554,11 +578,11 @@ exports[`render Checkbox disabled unchecked 1`] = `
     </svg>
   </label>
   <div
-    class="c5"
+    class="c6"
   >
     <label
       aria-hidden="true"
-      class="c6 c7"
+      class="c7 c8"
       disabled=""
       for=":rl:"
       id=":rm:"
@@ -570,7 +594,13 @@ exports[`render Checkbox disabled unchecked 1`] = `
 `;
 
 exports[`render Checkbox indeterminate 1`] = `
-.c6 {
+.c5 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c7 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -578,15 +608,15 @@ exports[`render Checkbox indeterminate 1`] = `
   line-height: 1.5rem;
 }
 
-.c6:last-child {
+.c7:last-child {
   margin-bottom: 0;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
 }
 
-.c5 {
+.c6 {
   margin-left: 0.5rem;
 }
 
@@ -676,7 +706,7 @@ exports[`render Checkbox indeterminate 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="brjSIf"
+      class="c5"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -694,10 +724,10 @@ exports[`render Checkbox indeterminate 1`] = `
     </svg>
   </label>
   <div
-    class="c5"
+    class="c6"
   >
     <label
-      class="c6 c7"
+      class="c7 c8"
       for=":rf:"
       id=":rg:"
     >
@@ -708,7 +738,13 @@ exports[`render Checkbox indeterminate 1`] = `
 `;
 
 exports[`render Checkbox unchecked 1`] = `
-.c6 {
+.c5 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c7 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -716,15 +752,15 @@ exports[`render Checkbox unchecked 1`] = `
   line-height: 1.5rem;
 }
 
-.c6:last-child {
+.c7:last-child {
   margin-bottom: 0;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
 }
 
-.c5 {
+.c6 {
   margin-left: 0.5rem;
 }
 
@@ -815,7 +851,7 @@ exports[`render Checkbox unchecked 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="brjSIf"
+      class="c5"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -833,10 +869,10 @@ exports[`render Checkbox unchecked 1`] = `
     </svg>
   </label>
   <div
-    class="c5"
+    class="c6"
   >
     <label
-      class="c6 c7"
+      class="c7 c8"
       for=":r3:"
       id=":r4:"
     >
@@ -847,7 +883,13 @@ exports[`render Checkbox unchecked 1`] = `
 `;
 
 exports[`render Checkbox with description object 1`] = `
-.c6 {
+.c5 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c7 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -855,11 +897,11 @@ exports[`render Checkbox with description object 1`] = `
   line-height: 1.5rem;
 }
 
-.c6:last-child {
+.c7:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -869,15 +911,15 @@ exports[`render Checkbox with description object 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c8:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
 }
 
-.c9 {
+.c10 {
   -webkit-transition: all 70ms ease-out;
   transition: all 70ms ease-out;
   -webkit-transition-property: color;
@@ -890,19 +932,19 @@ exports[`render Checkbox with description object 1`] = `
   text-decoration: none;
 }
 
-.c9:active {
+.c10:active {
   color: #0024A6;
 }
 
-.c9:hover:not(:active) {
+.c10:hover:not(:active) {
   color: #0024A6;
 }
 
-.c10 {
+.c11 {
   font-size: 0.875rem;
 }
 
-.c5 {
+.c6 {
   margin-left: 0.5rem;
 }
 
@@ -994,7 +1036,7 @@ exports[`render Checkbox with description object 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="brjSIf"
+      class="c5"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -1012,22 +1054,22 @@ exports[`render Checkbox with description object 1`] = `
     </svg>
   </label>
   <div
-    class="c5"
+    class="c6"
   >
     <label
-      class="c6 c7"
+      class="c7 c8"
       for=":r6:"
       id=":r7:"
     >
       Unchecked
     </label>
     <p
-      class="c8"
+      class="c9"
     >
       description
        
       <a
-        class="c9 c10"
+        class="c10 c11"
         href="bar"
         target="foo"
       >
@@ -1039,7 +1081,13 @@ exports[`render Checkbox with description object 1`] = `
 `;
 
 exports[`render Checkbox with description string 1`] = `
-.c6 {
+.c5 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.c7 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1rem;
@@ -1047,11 +1095,11 @@ exports[`render Checkbox with description string 1`] = `
   line-height: 1.5rem;
 }
 
-.c6:last-child {
+.c7:last-child {
   margin-bottom: 0;
 }
 
-.c8 {
+.c9 {
   color: #313440;
   margin: 0 0 1rem;
   color: #5E637A;
@@ -1061,15 +1109,15 @@ exports[`render Checkbox with description string 1`] = `
   margin: 0 0 0.75rem;
 }
 
-.c8:last-child {
+.c9:last-child {
   margin-bottom: 0;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
 }
 
-.c5 {
+.c6 {
   margin-left: 0.5rem;
 }
 
@@ -1161,7 +1209,7 @@ exports[`render Checkbox with description string 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="brjSIf"
+      class="c5"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -1179,17 +1227,17 @@ exports[`render Checkbox with description string 1`] = `
     </svg>
   </label>
   <div
-    class="c5"
+    class="c6"
   >
     <label
-      class="c6 c7"
+      class="c7 c8"
       for=":rc:"
       id=":rd:"
     >
       Unchecked
     </label>
     <p
-      class="c8"
+      class="c9"
     >
       description text
     </p>

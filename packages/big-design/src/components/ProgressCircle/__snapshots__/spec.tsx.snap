@@ -1,13 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render completed determinant progress circle 1`] = `
+.c0 {
+  vertical-align: middle;
+  color: #2AAB3F;
+  height: 3rem;
+  width: 3rem;
+}
+
 <div>
   <svg
     aria-hidden="true"
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="100"
-    class="epKZXt"
+    class="c0"
     color="success"
     fill="currentColor"
     height="24"
@@ -95,6 +102,13 @@ exports[`render determinant progress circle 1`] = `
 `;
 
 exports[`render error determinant progress circle 1`] = `
+.c0 {
+  vertical-align: middle;
+  color: #DB3643;
+  height: 3rem;
+  width: 3rem;
+}
+
 <div>
   <svg
     aria-hidden="true"
@@ -102,7 +116,7 @@ exports[`render error determinant progress circle 1`] = `
     aria-valuemin="0"
     aria-valuenow="0"
     aria-valuetext="Error"
-    class="iuILBQ"
+    class="c0"
     color="danger"
     fill="currentColor"
     height="24"
