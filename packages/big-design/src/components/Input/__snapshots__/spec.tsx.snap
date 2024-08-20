@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders all together 1`] = `
+.c5 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c0 {
   color: #313440;
   margin: 0 0 1rem;
@@ -55,7 +61,7 @@ exports[`renders all together 1`] = `
   background-color: #ECEEF5;
 }
 
-.c6 {
+.c7 {
   background-color: inherit;
   border: 0;
   box-sizing: border-box;
@@ -72,36 +78,36 @@ exports[`renders all together 1`] = `
   min-height: 2.125rem;
 }
 
-.c6:focus {
+.c7:focus {
   outline: none;
 }
 
-.c6::-webkit-input-placeholder {
+.c7::-webkit-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c6::-moz-placeholder {
+.c7::-moz-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c6:-ms-input-placeholder {
+.c7:-ms-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c6::placeholder {
+.c7::placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c6:-webkit-autofill {
+.c7:-webkit-autofill {
   background-color: #F0F3FF !important;
   -webkit-box-shadow: 0 0 0px 1000px #F0F3FF inset;
 }
 
-.c6[disabled] {
+.c7[disabled] {
   background-color: #ECEEF5;
   color: #5E637A;
 }
@@ -124,7 +130,7 @@ exports[`renders all together 1`] = `
   left: 0;
 }
 
-.c7 {
+.c8 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -142,7 +148,7 @@ exports[`renders all together 1`] = `
   right: 0;
 }
 
-.c5 {
+.c6 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -193,7 +199,7 @@ exports[`renders all together 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="brjSIf"
+        class="c5"
         data-testid="icon-left"
         fill="currentColor"
         height="24"
@@ -212,19 +218,19 @@ exports[`renders all together 1`] = `
       </svg>
     </div>
     <div
-      class="c5"
+      class="c6"
     >
       <input
-        class="c6"
+        class="c7"
         id=":rp:"
       />
     </div>
     <div
-      class="c7"
+      class="c8"
     >
       <svg
         aria-hidden="true"
-        class="brjSIf"
+        class="c5"
         data-testid="icon-right"
         fill="currentColor"
         height="24"
