@@ -126,6 +126,13 @@ jobs:
           paths:
             - packages/docs/.next
 
+  build-patterns:
+    <<: *default_executor
+
+    steps:
+      - pre-setup
+      - run: pnpm build --filter @bigcommerce/big-design-patterns
+
   commitlint:
     <<: *default_executor
 
@@ -203,6 +210,11 @@ workflows:
           <<: *filter_branch
 
       - build-big-design:
+          <<: *filter_branch
+          requires:
+            - build-icons
+
+      - build-patterns:
           <<: *filter_branch
           requires:
             - build-icons
