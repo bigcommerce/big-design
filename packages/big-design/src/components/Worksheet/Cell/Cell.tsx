@@ -4,6 +4,7 @@ import { typedMemo } from '../../../utils';
 import { Tooltip } from '../../Tooltip';
 import { Small } from '../../Typography';
 import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor, ToggleEditor } from '../editors';
+import { MultiSelectEditor } from '../editors/MultiSelectEditor';
 import { useAutoFilling, useEditableCell, useWorksheetStore } from '../hooks';
 import {
   InternalWorksheetColumn,
@@ -178,6 +179,17 @@ const InternalCell = <T extends WorksheetItem>({
       case 'select':
         return (
           <SelectEditor
+            cell={cell}
+            isEditing={isEditing}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            options={options}
+          />
+        );
+
+      case 'multiSelect':
+        return (
+          <MultiSelectEditor
             cell={cell}
             isEditing={isEditing}
             onBlur={handleBlur}

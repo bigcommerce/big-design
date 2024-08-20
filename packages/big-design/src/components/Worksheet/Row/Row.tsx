@@ -9,6 +9,7 @@ import {
   WorksheetItem,
   WorksheetModalColumn,
   WorksheetNumberColumn,
+  WorksheetSelectableColumn,
   WorksheetTextColumn,
 } from '../types';
 
@@ -53,6 +54,13 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
   }, [expandableRows, row.id]);
 
   const isChild = useMemo(() => parentId !== undefined, [parentId]);
+
+  const hasOptions = useCallback(
+    (column: InternalWorksheetColumn<T>): column is WorksheetSelectableColumn<T> => {
+      return column.type === 'select' || column.type === 'multiSelect';
+    },
+    [],
+  );
 
   const hasFormatting = useCallback(
     (
@@ -107,7 +115,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
           key={`${rowIndex}-${columnIndex}`}
           nextRowValue={(nextRow && nextRow[column.hash]) || ''}
           notation={column.notation}
-          options={column.type === 'select' ? column.config.options : undefined}
+          options={hasOptions(column) ? column.config.options : undefined}
           rowId={row.id}
           rowIndex={rowIndex}
           type={column.type ?? 'text'}
