@@ -1,8 +1,7 @@
+import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React, { createRef, Ref } from 'react';
 import 'jest-styled-components';
-
-import { render, screen } from '@test/utils';
 
 import { Button } from '../Button';
 import {

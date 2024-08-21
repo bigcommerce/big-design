@@ -1,10 +1,9 @@
 import { CheckCircleIcon } from '@bigcommerce/big-design-icons';
 import { remCalc } from '@bigcommerce/big-design-theme';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
-
-import { act, fireEvent, render, screen } from '@test/utils';
 
 import { Button } from '../Button';
 

@@ -1,8 +1,7 @@
 import { theme } from '@bigcommerce/big-design-theme';
+import { fireEvent, render, RenderResult, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
-
-import { fireEvent, render, RenderResult, screen } from '@test/utils';
 
 import { Tree } from './Tree';
 import { TreeExpandable, TreeFocusable, TreeNodeProps, TreeOnKeyDown, TreeProps } from './types';

@@ -1,9 +1,8 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import 'jest-styled-components';
+import { render } from '@testing-library/react';
 import React from 'react';
 import styled from 'styled-components';
-
-import { render } from '@test/utils';
 
 import { excludePaddingProps, PaddingProps, withPaddings } from './paddings';
 

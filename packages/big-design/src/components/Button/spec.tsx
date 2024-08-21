@@ -1,10 +1,8 @@
 import { AddIcon } from '@bigcommerce/big-design-icons';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
-
-import { render } from '@test/utils';
 
 import { StyleableButton } from './private';
 

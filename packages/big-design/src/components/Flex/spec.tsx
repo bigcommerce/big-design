@@ -1,7 +1,6 @@
+import { render } from '@testing-library/react';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
-
-import { render } from '@test/utils';
 
 import { Flex, FlexItem } from './index';
 

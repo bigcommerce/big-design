@@ -1,9 +1,7 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
-
-import { render } from '@test/utils';
 
 import { Box } from './index';
 

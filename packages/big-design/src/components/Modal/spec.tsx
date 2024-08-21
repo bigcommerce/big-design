@@ -1,7 +1,7 @@
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 
 import 'jest-styled-components';
-import { fireEvent, render, screen, waitFor } from '@test/utils';
 
 import { Button } from '../Button';
 import { Text } from '../Typography';

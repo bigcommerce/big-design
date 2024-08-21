@@ -1,7 +1,6 @@
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
-
-import { fireEvent, render, screen, waitFor } from '@test/utils';
 
 import { Fieldset } from '../Fieldset';
 import { Input } from '../Input';

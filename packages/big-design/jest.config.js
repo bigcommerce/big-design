@@ -2,10 +2,6 @@ const defaultJestConfig = require('@bigcommerce/configs/jest');
 
 module.exports = {
   ...defaultJestConfig,
-  moduleNameMapper: {
-    ...defaultJestConfig.moduleNameMapper,
-    '@test/utils': '<rootDir>/tests/utils',
-  },
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
   coverageThreshold: {
     global: {

@@ -1,9 +1,7 @@
-import '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-
-import { fireEvent, render, screen } from '@test/utils';
 
 import { AlertProps } from '../../components/Alert';
 

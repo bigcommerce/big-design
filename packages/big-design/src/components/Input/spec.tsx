@@ -1,9 +1,8 @@
 import { AddIcon } from '@bigcommerce/big-design-icons';
 import { theme } from '@bigcommerce/big-design-theme';
+import { render, screen } from '@testing-library/react';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
-
-import { render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlDescription, FormControlError, FormControlLabel, FormGroup } from '../Form';
