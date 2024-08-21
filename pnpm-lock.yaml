@@ -54,8 +54,8 @@ importers:
         specifier: 3.6.0
         version: 3.6.0
       downshift:
-        specifier: 9.0.7
-        version: 9.0.7(react@18.2.0)
+        specifier: 9.0.8
+        version: 9.0.8(react@18.2.0)
       focus-trap:
         specifier: ^7.5.4
         version: 7.5.4
@@ -6499,8 +6499,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /downshift@9.0.7(react@18.2.0):
-    resolution: {integrity: sha512-B6JY4sJGEl9xBEJEvC/C+QYYYtPWN5RL+TlROJQfue9+ZFgrD/p1ZgGw73I0WSTNH9/h5q3LIKQA4FLd/N10vg==}
+  /downshift@9.0.8(react@18.2.0):
+    resolution: {integrity: sha512-59BWD7+hSUQIM1DeNPLirNNnZIO9qMdIK5GQ/Uo8q34gT4B78RBlb9dhzgnh0HfQTJj4T/JKYD8KoLAlMWnTsA==}
     peerDependencies:
       react: '>=16.12.0'
     dependencies:
