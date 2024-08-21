@@ -475,8 +475,8 @@ importers:
         specifier: workspace:^
         version: link:../big-design-theme
       formik:
-        specifier: ^2.0.6
-        version: 2.4.5(react@18.2.0)
+        specifier: ^2.4.6
+        version: 2.4.6(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -7510,8 +7510,8 @@ packages:
       mime-types: 2.1.35
     dev: true
 
-  /formik@2.4.5(react@18.2.0):
-    resolution: {integrity: sha512-Gxlht0TD3vVdzMDHwkiNZqJ7Mvg77xQNfmBRrNtvzcHZs72TJppSTDKHpImCMJZwcWPBJ8jSQQ95GJzXFf1nAQ==}
+  /formik@2.4.6(react@18.2.0):
+    resolution: {integrity: sha512-A+2EI7U7aG296q2TLGvNapDNTZp1khVt5Vk0Q/fyfSROss0V/V6+txt2aJnwEos44IxTCW/LYAi/zgWzlevj+g==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
