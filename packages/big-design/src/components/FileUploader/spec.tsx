@@ -1,9 +1,8 @@
 import { theme } from '@bigcommerce/big-design-theme';
 import { waitFor } from '@testing-library/dom';
+import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
-
-import { render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlLabel, FormGroup } from '../Form';

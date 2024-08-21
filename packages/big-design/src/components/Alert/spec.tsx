@@ -1,10 +1,8 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
-
-import { render } from '@test/utils';
 
 import { Alert } from './Alert';
 

@@ -1,8 +1,7 @@
 import { theme } from '@bigcommerce/big-design-theme';
+import { render } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
-
-import { render } from '@test/utils';
 
 import { Badge } from './index';
 

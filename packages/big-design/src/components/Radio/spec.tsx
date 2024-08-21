@@ -1,7 +1,6 @@
+import { fireEvent, render, screen } from '@testing-library/react';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
-
-import { fireEvent, render, screen } from '@test/utils';
 
 import { warning } from '../../utils';
 

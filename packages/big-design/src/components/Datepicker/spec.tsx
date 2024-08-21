@@ -1,10 +1,9 @@
 import 'jest-styled-components';
 
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React, { createRef } from 'react';
 import { default as ReactDatePicker } from 'react-datepicker';
-
-import { fireEvent, render, screen, waitFor } from '@test/utils';
 
 import { FormGroup } from '..';
 

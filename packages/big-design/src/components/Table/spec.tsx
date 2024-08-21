@@ -1,8 +1,7 @@
+import { fireEvent, render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React, { CSSProperties } from 'react';
 import 'jest-styled-components';
-
-import { fireEvent, render, screen } from '@test/utils';
 
 import { Table, TableFigure } from './Table';
 import { TableColumn, TableItem } from './types';

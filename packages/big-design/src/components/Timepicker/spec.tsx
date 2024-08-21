@@ -1,8 +1,6 @@
 import 'jest-styled-components';
-import { fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import React, { createRef } from 'react';
-
-import { act } from '@test/utils';
 
 import { warning } from '../../utils';
 import { FormControlError, FormControlLabel, FormGroup } from '../Form';

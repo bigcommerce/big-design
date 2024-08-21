@@ -1,8 +1,7 @@
 import { theme } from '@bigcommerce/big-design-theme';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
-
-import { fireEvent, render, screen } from '@test/utils';
 
 import { Text } from '../Typography';
 
