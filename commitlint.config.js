@@ -10,6 +10,7 @@ module.exports = {
         'component',
         'configs',
         'deps',
+        'deps-dev',
         'docs',
         'examples',
         'icons',
