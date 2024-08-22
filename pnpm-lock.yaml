@@ -510,6 +510,9 @@ importers:
       '@bigcommerce/big-design-icons':
         specifier: workspace:^
         version: link:../big-design-icons
+      '@bigcommerce/big-design-patterns':
+        specifier: workspace:^
+        version: link:../big-design-patterns
       '@bigcommerce/big-design-theme':
         specifier: workspace:^
         version: link:../big-design-theme

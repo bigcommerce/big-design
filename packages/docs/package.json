@@ -24,6 +24,7 @@
     "@babel/standalone": "^7.24.4",
     "@bigcommerce/big-design": "workspace:^",
     "@bigcommerce/big-design-icons": "workspace:^",
+    "@bigcommerce/big-design-patterns": "workspace:^",
     "@bigcommerce/big-design-theme": "workspace:^",
     "@radix-ui/react-scroll-area": "^1.0.5",
     "clipboard-copy": "^4.0.1",
