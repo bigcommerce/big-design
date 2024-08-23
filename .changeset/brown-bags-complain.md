@@ -6,3 +6,4 @@ Releases `@bigcommerce/big-design-pattern`, a collections of useful patterns for
 
 Included components in this release:
 - `Header`
+- `Page`
