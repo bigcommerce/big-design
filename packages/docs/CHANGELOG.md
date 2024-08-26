@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.2.1
+
+### Patch Changes
+
+- Updated dependencies [cc19989]
+  - @bigcommerce/big-design-patterns@1.0.0
+
 ## 1.2.0
 
 ### Minor Changes

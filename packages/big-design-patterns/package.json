@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/big-design-patterns",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "sideEffects": false,
   "main": "src/index.ts",
   "author": "BigCommerce Inc",
