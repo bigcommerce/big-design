@@ -1,15 +1,15 @@
-import React from 'react';
-import { StyledActionBar, StyledActionBarContents } from './styled';
 import {
   Button,
   ButtonProps,
   Dropdown,
   DropdownProps,
   excludeMarginProps,
-  Flex,
 } from '@bigcommerce/big-design';
+import React from 'react';
 
 import { warning } from '../../utils';
+
+import { StyledActionBar, StyledActionBarContents } from './styled';
 
 interface ActionButtonProps extends Omit<ButtonProps, 'children' | 'mobileWidth'> {
   text: string;
@@ -28,7 +28,6 @@ export interface ActionBarProps {
 }
 
 function validateActions(actions: Array<ActionButtonProps | ActionDropdownProps>) {
-
   if (actions.length > 3) {
     warning('Action bar should not have more than 3 actions.');
   }
@@ -82,17 +81,20 @@ const Actions = ({ actions }: ActionProps) => {
 };
 
 export const ActionBar = ({ actions }: ActionBarProps) => {
-  if (!actions.length) return null;
+  if (!actions.length) {
+    return null;
+  }
 
   return (
-    <StyledActionBar role="group">
-      <StyledActionBarContents>
-        <Flex
-          flexDirection={{ mobile: 'row-reverse' }}
-          flexGap={{ mobile: '.75rem', tablet: '0.625rem' }}
-        >
-          <Actions actions={actions} />
-        </Flex>
+    <StyledActionBar backgroundColor="white" borderTop="box" role="group" zIndex="fixed">
+      <StyledActionBarContents
+        flexDirection="row-reverse"
+        flexGap={{ mobile: '.5rem', tablet: '.75rem' }}
+        justifyContent="end"
+        paddingHorizontal={{ mobile: 'xLarge', tablet: 'xxLarge' }}
+        paddingVertical="small"
+      >
+        <Actions actions={actions} />
       </StyledActionBarContents>
     </StyledActionBar>
   );

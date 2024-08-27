@@ -2,10 +2,10 @@ import { render, screen, within } from '@testing-library/react';
 import React from 'react';
 
 import { warning } from '../../utils';
+import { ActionBar } from '../ActionBar';
 import { Header } from '../Header';
 
 import { Page } from './Page';
-import { ActionBar } from '../ActionBar';
 
 test('renders children', () => {
   render(<Page>Page content</Page>);
@@ -102,7 +102,6 @@ test('renders without background by default', () => {
 test('renders with action bar', () => {
   render(
     <Page
-      header={<Header title="Page Title" />}
       actionBar={
         <ActionBar
           actions={[
@@ -113,6 +112,7 @@ test('renders with action bar', () => {
           ]}
         />
       }
+      header={<Header title="Page Title" />}
     >
       Page content
     </Page>,
@@ -120,8 +120,11 @@ test('renders with action bar', () => {
 
   expect(screen.getByRole('heading', { name: 'Page Title' })).toBeInTheDocument();
 });
+
 test('warns when action bar is not an ActionBar component', () => {
   render(<Page actionBar={<div>Not a Header</div>}>Page content</Page>);
 
-  expect(warning).toHaveBeenCalledWith('An `ActionBar` component is required for the `actionBar` prop.');
+  expect(warning).toHaveBeenCalledWith(
+    'An `ActionBar` component is required for the `actionBar` prop.',
+  );
 });

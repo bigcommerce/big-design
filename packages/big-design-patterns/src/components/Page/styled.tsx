@@ -2,6 +2,8 @@ import { Flex } from '@bigcommerce/big-design';
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, CSSProperties } from 'styled-components';
 
+import { StyledActionBar } from '../ActionBar/styled';
+
 export interface Background {
   src: string;
   backgroundSize?: CSSProperties['backgroundSize'];
@@ -34,14 +36,10 @@ export const StyledPageBackground = styled.div.attrs({ theme: defaultTheme })<{
     }
   }}
 
-  ${({ actionBar }) => {
-    if (actionBar) {
-      return css`
-        padding-block-end: ${({ theme }) => theme.helpers.remCalc(48)}};
-      `;
-    }
-  }}
-    
+  &:has(${StyledActionBar}) {
+    padding-block-end: ${({ theme }) => theme.helpers.remCalc(48)}};
+  }
+
 `;
 
 export const StyledPage = styled(Flex).attrs({ theme: defaultTheme })`

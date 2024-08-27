@@ -7,8 +7,8 @@ import {
 import React, { isValidElement, PropsWithChildren, ReactNode } from 'react';
 
 import { warning } from '../../utils';
-import { Header } from '../Header';
 import { ActionBar } from '../ActionBar';
+import { Header } from '../Header';
 
 import { Background, StyledPage, StyledPageBackground } from './styled';
 
@@ -37,7 +37,7 @@ const PageActionBar = ({ actionBar }: Required<Pick<PageProps, 'actionBar'>>) =>
   }
 
   return actionBar;
-}
+};
 
 const PageMessage = ({ message }: Required<Pick<PageProps, 'message'>>) => {
   const messageProps = excludeMarginProps(excludePaddingProps(message));
@@ -49,9 +49,9 @@ const PageMessage = ({ message }: Required<Pick<PageProps, 'message'>>) => {
   return null;
 };
 
-export const Page = ({ actionBar, children, header, message, background }: PageProps) => {
+export const Page = ({ actionBar, background, children, header, message }: PageProps) => {
   return (
-    <StyledPageBackground background={background} actionBar={actionBar}>
+    <StyledPageBackground actionBar={actionBar} background={background}>
       <StyledPage
         flexDirection="column"
         flexGap="1.5rem"
