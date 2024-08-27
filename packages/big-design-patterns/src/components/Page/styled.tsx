@@ -11,6 +11,7 @@ export interface Background {
 
 export const StyledPageBackground = styled.div.attrs({ theme: defaultTheme })<{
   background?: Background;
+  actionBar?: React.ReactNode;
 }>`
   background-color: ${({ theme }) => theme.colors.secondary10};
   min-height: 100dvh;
@@ -32,6 +33,15 @@ export const StyledPageBackground = styled.div.attrs({ theme: defaultTheme })<{
       `;
     }
   }}
+
+  ${({ actionBar }) => {
+    if (actionBar) {
+      return css`
+        padding-block-end: ${({ theme }) => theme.helpers.remCalc(48)}};
+      `;
+    }
+  }}
+    
 `;
 
 export const StyledPage = styled(Flex).attrs({ theme: defaultTheme })`
