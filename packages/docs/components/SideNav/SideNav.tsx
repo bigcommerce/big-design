@@ -102,6 +102,10 @@ export const SideNav: React.FC = () => {
                 <SideNavLink href="/tooltip">Tooltip</SideNavLink>
               </SideNavGroup>
 
+              <SideNavGroup title="Patterns">
+                <SideNavLink href="/header">Header</SideNavLink>
+              </SideNavGroup>
+
               <SideNavGroup title="Utilities">
                 <SideNavLink href="/box">Box</SideNavLink>
                 <SideNavLink href="/breakpoints">Breakpoints</SideNavLink>
