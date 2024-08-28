@@ -9,10 +9,6 @@ interface ActionButtonProps extends Omit<ButtonProps, 'children' | 'mobileWidth'
   text: string;
 }
 
-interface ActionProps {
-  actions: ActionButtonProps[];
-}
-
 export interface ActionBarProps {
   actions: ActionButtonProps[];
 }
@@ -31,7 +27,7 @@ function validateActions(actions: ActionButtonProps[]) {
   }
 }
 
-const Actions = ({ actions }: ActionProps) => {
+const Actions = ({ actions }: Pick<ActionBarProps, 'actions'>) => {
   validateActions(actions);
 
   return (
