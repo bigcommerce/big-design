@@ -1,10 +1,4 @@
-import {
-  Button,
-  ButtonProps,
-  Dropdown,
-  DropdownProps,
-  excludeMarginProps,
-} from '@bigcommerce/big-design';
+import { Button, ButtonProps, excludeMarginProps } from '@bigcommerce/big-design';
 import React from 'react';
 
 import { warning } from '../../utils';
@@ -15,28 +9,20 @@ interface ActionButtonProps extends Omit<ButtonProps, 'children' | 'mobileWidth'
   text: string;
 }
 
-interface ActionDropdownProps extends Omit<DropdownProps, 'toggle'> {
-  toggle: ActionButtonProps;
-}
-
 interface ActionProps {
-  actions: Array<ActionButtonProps | ActionDropdownProps>;
+  actions: ActionButtonProps[];
 }
 
 export interface ActionBarProps {
-  actions: Array<ActionButtonProps | ActionDropdownProps>;
+  actions: ActionButtonProps[];
 }
 
-function validateActions(actions: Array<ActionButtonProps | ActionDropdownProps>) {
+function validateActions(actions: ActionButtonProps[]) {
   if (actions.length > 3) {
     warning('Action bar should not have more than 3 actions.');
   }
 
   const primaryButtonActions = actions.filter((action) => {
-    if ('toggle' in action) {
-      return action.toggle.variant === 'primary';
-    }
-
     return action.variant === 'primary';
   });
 
@@ -51,23 +37,6 @@ const Actions = ({ actions }: ActionProps) => {
   return (
     <>
       {actions.slice(0, 3).map((action, i) => {
-        if ('toggle' in action) {
-          const { toggle, ...dropdownProps } = action;
-          const { text, ...buttonProps } = toggle;
-
-          return (
-            <Dropdown
-              key={i}
-              {...dropdownProps}
-              toggle={
-                <Button {...excludeMarginProps(buttonProps)} mobileWidth="auto">
-                  {text}
-                </Button>
-              }
-            />
-          );
-        }
-
         const { text, ...buttonProps } = action;
 
         return (
