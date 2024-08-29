@@ -11,6 +11,7 @@ import {
   GuidelinesTable,
   List,
 } from '../components';
+import { ButtonPropTable, DropdownPropTable } from '../PropTables';
 import {
   ActionButtonPropsTable,
   ActionDropdownPropsTable,
@@ -85,24 +86,34 @@ const HeaderPage = () => {
           id="props"
           routes={[
             {
-              id: 'header-props',
+              id: 'header',
               title: 'Header',
               render: () => <HeaderPropTable />,
             },
             {
-              id: 'action-button-props',
+              id: 'action-button',
               title: 'ActionButton',
-              render: () => <ActionButtonPropsTable />,
+              render: () => (
+                <ActionButtonPropsTable
+                  id="action-button-prop-table"
+                  inheritedProps={<ButtonPropTable collapsible />}
+                />
+              ),
             },
             {
-              id: 'action-dropdown-props',
+              id: 'action-dropdown',
               title: 'ActionDropdown',
-              render: () => <ActionDropdownPropsTable />,
+              render: () => (
+                <ActionDropdownPropsTable
+                  id="action-dropdown-prop-table"
+                  inheritedProps={<DropdownPropTable collapsible />}
+                />
+              ),
             },
             {
-              id: 'backlink-dropdown-props',
+              id: 'back-link',
               title: 'BackLink',
-              render: () => <BackLinkPropsTable />,
+              render: () => <BackLinkPropsTable id="backlink-prop-table" />,
             },
           ]}
         />
@@ -111,14 +122,14 @@ const HeaderPage = () => {
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
           discouraged={[
-            <>Don’t overload the header with too many actions or content.</>,
-            <>Don’t use more than one primary action button.</>,
-            <>Avoid unrelated or non-contextual content in the header.</>,
+            'Don’t overload the header with too many actions or content.',
+            'Don’t use more than one primary action button.',
+            'Avoid unrelated or non-contextual content in the header.',
           ]}
           recommended={[
-            <>Use the header to provide a clear overview of the page’s purpose.</>,
-            <>Limit the number of actions to three.</>,
-            <>Utilize the back link option for easy navigation.</>,
+            'Use the header to provide a clear overview of the page’s purpose.',
+            'Limit the number of actions to three.',
+            'Utilize the back link option for easy navigation.',
           ]}
         />
       </Panel>
