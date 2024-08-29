@@ -2,6 +2,8 @@ import { Flex } from '@bigcommerce/big-design';
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css, CSSProperties } from 'styled-components';
 
+import { StyledActionBar } from '../ActionBar/styled';
+
 export interface Background {
   src: string;
   backgroundSize?: CSSProperties['backgroundSize'];
@@ -11,6 +13,7 @@ export interface Background {
 
 export const StyledPageBackground = styled.div.attrs({ theme: defaultTheme })<{
   background?: Background;
+  actionBar?: React.ReactNode;
 }>`
   background-color: ${({ theme }) => theme.colors.secondary10};
   min-height: 100dvh;
@@ -32,6 +35,11 @@ export const StyledPageBackground = styled.div.attrs({ theme: defaultTheme })<{
       `;
     }
   }}
+
+  &:has(${StyledActionBar}) {
+    padding-block-end: ${({ theme }) => theme.helpers.remCalc(48)}};
+  }
+
 `;
 
 export const StyledPage = styled(Flex).attrs({ theme: defaultTheme })`

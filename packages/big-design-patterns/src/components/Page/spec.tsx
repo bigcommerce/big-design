@@ -2,6 +2,7 @@ import { render, screen, within } from '@testing-library/react';
 import React from 'react';
 
 import { warning } from '../../utils';
+import { ActionBar } from '../ActionBar';
 import { Header } from '../Header';
 
 import { Page } from './Page';
@@ -96,4 +97,34 @@ test('renders without background by default', () => {
     background-color: #F6F7FC;
     min-height: 100dvh;
   `);
+});
+
+test('renders with action bar', () => {
+  render(
+    <Page
+      actionBar={
+        <ActionBar
+          actions={[
+            {
+              text: 'Main action',
+              variant: 'primary',
+            },
+          ]}
+        />
+      }
+      header={<Header title="Page Title" />}
+    >
+      Page content
+    </Page>,
+  );
+
+  expect(screen.getByRole('heading', { name: 'Page Title' })).toBeInTheDocument();
+});
+
+test('warns when action bar is not an ActionBar component', () => {
+  render(<Page actionBar={<div>Not a Header</div>}>Page content</Page>);
+
+  expect(warning).toHaveBeenCalledWith(
+    'An `ActionBar` component is required for the `actionBar` prop.',
+  );
 });
