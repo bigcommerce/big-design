@@ -82,3 +82,16 @@ const actionDropdownProps: Prop[] = [
 export const ActionDropdownPropsTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable propList={actionDropdownProps} title="Header[ActionDropdown]" {...props} />
 );
+
+const backLinkProps: Prop[] = [
+  {
+    name: 'text',
+    types: 'string',
+    description: 'The text content of the back link.',
+    required: true,
+  },
+];
+
+export const BackLinkPropsTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable propList={backLinkProps} title="Header[BackLink]" nativeElement="a" {...props} />
+);

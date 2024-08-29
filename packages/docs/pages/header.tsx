@@ -15,6 +15,7 @@ import {
   ActionButtonPropsTable,
   ActionDropdownPropsTable,
   HeaderPropTable,
+  BackLinkPropsTable,
 } from '../PropTables/HeaderPropTable';
 
 const HeaderPage = () => {
@@ -103,6 +104,11 @@ const HeaderPage = () => {
               id: 'action-dropdown-props',
               title: 'ActionDropdown',
               render: () => <ActionDropdownPropsTable />,
+            },
+            {
+              id: 'backlink-dropdown-props',
+              title: 'BackLink',
+              render: () => <BackLinkPropsTable />,
             },
           ]}
         />
