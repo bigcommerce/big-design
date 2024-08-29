@@ -93,5 +93,5 @@ const backLinkProps: Prop[] = [
 ];
 
 export const BackLinkPropsTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable propList={backLinkProps} title="Header[BackLink]" nativeElement="a" {...props} />
+  <PropTable propList={backLinkProps} title="Header[BackLink]" nativeElement={['a', 'all']} {...props} />
 );
