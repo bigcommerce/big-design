@@ -14,8 +14,8 @@ import {
 import {
   ActionButtonPropsTable,
   ActionDropdownPropsTable,
-  HeaderPropTable,
   BackLinkPropsTable,
+  HeaderPropTable,
 } from '../PropTables/HeaderPropTable';
 
 const HeaderPage = () => {
@@ -45,39 +45,37 @@ const HeaderPage = () => {
         </Fragment>
         <CodePreview>
           {/* jsx-to-string:start */}
-          {
-            <Header
-              actions={[
-                {
-                  text: 'Main',
-                  variant: 'primary',
-                  iconLeft: <AddIcon />,
+          <Header
+            actions={[
+              {
+                text: 'Main',
+                variant: 'primary',
+                iconLeft: <AddIcon />,
+              },
+              {
+                items: [
+                  { content: 'Option 1', onItemClick: (item) => item },
+                  { content: 'Option 2', onItemClick: (item) => item },
+                ],
+                toggle: {
+                  text: 'Secondary',
+                  variant: 'secondary',
+                  iconRight: <ArrowDropDownIcon />,
                 },
-                {
-                  items: [
-                    { content: 'Option 1', onItemClick: (item) => item },
-                    { content: 'Option 2', onItemClick: (item) => item },
-                  ],
-                  toggle: {
-                    text: 'Secondary',
-                    variant: 'secondary',
-                    iconRight: <ArrowDropDownIcon />,
-                  },
-                },
-                {
-                  text: 'Tertiary',
-                  variant: 'subtle',
-                },
-              ]}
-              backLink={{
-                text: 'Back to Dashboard',
-                href: '/dashboard',
-              }}
-              badge={{ label: 'New', variant: 'success' }}
-              description="This is a description of the page content."
-              title="Page Title"
-            />
-          }
+              },
+              {
+                text: 'Tertiary',
+                variant: 'subtle',
+              },
+            ]}
+            backLink={{
+              text: 'Back to Dashboard',
+              href: '/dashboard',
+            }}
+            badge={{ label: 'New', variant: 'success' }}
+            description="This is a description of the page content."
+            title="Page Title"
+          />
           {/* jsx-to-string:end */}
         </CodePreview>
       </Panel>
