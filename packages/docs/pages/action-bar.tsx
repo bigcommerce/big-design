@@ -2,16 +2,8 @@ import { H1, Panel, Text } from '@bigcommerce/big-design';
 import { ActionBar } from '@bigcommerce/big-design-patterns';
 import React, { Fragment } from 'react';
 
-import {
-  Code,
-  CodePreview,
-  CodeSnippet,
-  ContentRoutingTabs,
-  GuidelinesTable,
-} from '../components';
-
+import { Code, CodePreview, CodeSnippet, ContentRoutingTabs, GuidelinesTable } from '../components';
 import { ButtonPropTable } from '../PropTables';
-
 import { ActionBarPropsTable, ActionButtonPropsTable } from '../PropTables/ActionBarPropTable';
 
 const ActionBarPage = () => {
@@ -26,7 +18,9 @@ const ActionBarPage = () => {
           ensures visual consistency across the platform.
         </Text>
 
-        <Text>Use to provide quick and consistent access to key actions at the bottom of a page.</Text>
+        <Text>
+          Use to provide quick and consistent access to key actions at the bottom of a page.
+        </Text>
       </Panel>
 
       <Panel header="Implementation" headerId="implementation">
@@ -79,9 +73,7 @@ const ActionBarPage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          discouraged={[
-            'Don\'t use for non-critical actions.',
-          ]}
+          discouraged={["Don't use for non-critical actions."]}
           recommended={[
             'Use to provide quick and consistent access to key actions.',
             'Limit the number of actions to three, prioritizing the most important ones.',
