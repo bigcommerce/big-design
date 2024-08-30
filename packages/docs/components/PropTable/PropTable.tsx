@@ -41,10 +41,10 @@ export const PropTable: FC<PropTableProps> = (props) => {
                 header: 'Prop name',
                 hash: 'propName',
                 render: ({ name, required }) => (
-                  <>
+                  <span style={{ whiteSpace: 'nowrap' }}>
                     <Code primary>{name}</Code>
                     {required ? <b> *</b> : null}
-                  </>
+                  </span>
                 ),
               },
               {

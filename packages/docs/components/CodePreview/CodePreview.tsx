@@ -1,6 +1,7 @@
 import { transform } from '@babel/standalone';
 import * as BigDesign from '@bigcommerce/big-design';
 import * as BigDesignIcons from '@bigcommerce/big-design-icons';
+import * as BigDesignPatterns from '@bigcommerce/big-design-patterns';
 import clipboardCopy from 'clipboard-copy';
 import parser from 'prettier/parser-babel';
 import { format } from 'prettier/standalone';
@@ -16,6 +17,7 @@ import { StyledLiveError } from './styled';
 const defaultScope = {
   ...BigDesign,
   ...BigDesignIcons,
+  ...BigDesignPatterns,
   React,
   useEffect,
   useState,

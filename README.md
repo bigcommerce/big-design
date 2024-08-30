@@ -58,6 +58,7 @@ Workspaces are inside the [packages](https://github.com/bigcommerce/big-design/b
 - [big-design](https://github.com/bigcommerce/big-design/blob/main/packages/big-design): React component library.
 - [big-design-theme](https://github.com/bigcommerce/big-design/blob/main/packages/big-design-theme): Default Theme.
 - [big-design-icons](https://github.com/bigcommerce/big-design/blob/main/packages/big-design-icons): Icons library.
+- [big-design-patterns](https://github.com/bigcommerce/big-design/tree/main/packages/big-design-patterns): Pattern library.
 - [docs](https://github.com/bigcommerce/big-design/blob/main/packages/docs): Documentation live here.
 - [configs](https://github.com/bigcommerce/big-design/blob/main/packages/configs): (internal) Shared configs between packages.
 
@@ -68,6 +69,7 @@ As this is a monorepo, each package has it's own Changelog. Links for each can b
 - [big-design](https://github.com/bigcommerce/big-design/blob/main/packages/big-design/CHANGELOG.md)
 - [big-design-theme](https://github.com/bigcommerce/big-design/blob/main/packages/big-design-theme/CHANGELOG.md)
 - [big-design-icons](https://github.com/bigcommerce/big-design/blob/main/packages/big-design-icons/CHANGELOG.md)
+- [big-design-patterns](https://github.com/bigcommerce/big-design/blob/main/packages/big-design-patterns/CHANGELOG.md)
 - [configs](https://github.com/bigcommerce/big-design/tree/main/packages/configs)
 - [docs](https://github.com/bigcommerce/big-design/blob/main/packages/docs/CHANGELOG.md)
 
