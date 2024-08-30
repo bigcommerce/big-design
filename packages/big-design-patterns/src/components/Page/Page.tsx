@@ -51,7 +51,13 @@ const PageMessage = ({ message }: Required<Pick<PageProps, 'message'>>) => {
 
 export const Page = ({ actionBar, background, children, header, message }: PageProps) => {
   return (
-    <StyledPageBackground actionBar={actionBar} background={background}>
+    <StyledPageBackground
+      actionBar={actionBar}
+      background={background}
+      backgroundColor="secondary10"
+      gridGap="0"
+      gridTemplate="1fr auto / auto"
+    >
       <StyledPage
         flexDirection="column"
         flexGap="1.5rem"
@@ -60,8 +66,8 @@ export const Page = ({ actionBar, background, children, header, message }: PageP
         <PageHeader header={header} />
         {message ? <PageMessage message={message} /> : null}
         <main>{children}</main>
-        {actionBar ? <PageActionBar actionBar={actionBar} /> : null}
       </StyledPage>
+      {actionBar ? <PageActionBar actionBar={actionBar} /> : null}
     </StyledPageBackground>
   );
 };
