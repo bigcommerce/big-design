@@ -12,12 +12,7 @@ import {
   Text,
 } from '@bigcommerce/big-design';
 import { ArrowBackIcon } from '@bigcommerce/big-design-icons';
-import React, {
-  ComponentPropsWithoutRef,
-  isValidElement,
-  PropsWithChildren,
-  ReactNode,
-} from 'react';
+import React, { ComponentPropsWithoutRef, isValidElement, ReactNode } from 'react';
 
 import { warning } from '../../utils';
 
@@ -119,7 +114,7 @@ const Description = ({ description }: DescriptionProps) => {
   return null;
 };
 
-export interface HeaderProps extends PropsWithChildren {
+export interface HeaderProps {
   actions?: Array<ActionButtonProps | ActionDropdownProps>;
   backLink?: BackLinkProps;
   badge?: BadgeProps;
