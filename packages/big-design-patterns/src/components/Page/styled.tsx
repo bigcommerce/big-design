@@ -11,7 +11,6 @@ export interface Background {
 
 export const StyledPageBackground = styled(Grid).attrs({ theme: defaultTheme })<{
   background?: Background;
-  actionBar?: React.ReactNode;
 }>`
   position: relative;
   min-height: 100dvh;
