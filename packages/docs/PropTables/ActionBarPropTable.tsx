@@ -7,13 +7,12 @@ const actionBarProps: Prop[] = [
     name: 'actions',
     types: (
       <>
-        {'Array<'}
         <NextLink
           href={{ hash: 'action-button-prop-table', query: { props: 'action-button-props' } }}
         >
           ActionButton
         </NextLink>
-        {'>'}
+        []
       </>
     ),
     description: 'An array of actions to display in the action bar. Supports up to three actions.',
