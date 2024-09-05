@@ -21,9 +21,10 @@ const HeaderPage = () => {
       <Panel header="Overview" headerId="overview">
         <Text>
           The <Code primary>Page</Code> component serves as a high-level layout component that
-          organizes the content of a page, including optional elements such as a header, message,
-          and action bar. It ensures consistent spacing, background management, and placement of key
-          UI elements.
+          organizes the content of a page, including optional elements such as a{' '}
+          <Code primary>Header</Code>, <Code primary>Message</Code>, and{' '}
+          <Code primary>ActionBar</Code>. It ensures consistent spacing, background management, and
+          placement of key UI elements.
         </Text>
 
         <Text bold>When to use:</Text>
@@ -63,6 +64,52 @@ const HeaderPage = () => {
                       header={
                         <Header description="Page description (optional)" title="Basic page" />
                       }
+                    >
+                      <Panel header="Main contents">
+                        <Text>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                          est laborum.
+                        </Text>
+                      </Panel>
+                    </Page>
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'message',
+              title: 'Status messasges',
+              render: () => (
+                <Fragment key="basic">
+                  <Text>
+                    The <Code primary>Message</Code> prop allows you to deliver status information
+                    relevant to the context shown on the page and relates to the information
+                    displayed below it.
+                  </Text>
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <Page
+                      header={<Header title="Status messages" />}
+                      message={{
+                        header: 'Status message title',
+                        type: 'success',
+                        messages: [
+                          {
+                            text: 'This is a success message.',
+                            link: {
+                              href: 'https://www.bigcommerce.com',
+                              target: '_blank',
+                              text: 'Learn more',
+                            },
+                          },
+                        ],
+                      }}
                     >
                       <Panel header="Main contents">
                         <Text>
