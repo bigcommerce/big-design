@@ -1,3 +1,4 @@
+import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
 import { Box } from '../../Box';
@@ -5,7 +6,8 @@ import { withGridedItems } from '../withGrid';
 
 import { GridItemProps } from './Item';
 
-// TODO: Remove the `forwardedAs` manual prop definition when @types get updated
-export const StyledGridItem = styled(Box)<GridItemProps & { forwardedAs?: GridItemProps['as'] }>`
+export const StyledGridItem = styled(Box)<GridItemProps>`
   ${withGridedItems()}
 `;
+
+StyledGridItem.defaultProps = { theme: defaultTheme };

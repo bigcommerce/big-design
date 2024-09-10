@@ -9,16 +9,16 @@ interface StyledRadioProps {
   disabled?: boolean;
 }
 
-export const RadioLabelContainer = styled.div`
+export const StyledRadioLabelContainer = styled.div`
   margin-left: ${({ theme }) => theme.spacing.xSmall};
 `;
 
-export const RadioContainer = styled.div`
+export const StyledRadioContainer = styled.div`
   align-items: flex-start;
   display: flex;
 `;
 
-export const HiddenRadio = styled.input`
+export const StyledHiddenRadio = styled.input`
   ${hideVisually()}
 `;
 
@@ -52,7 +52,7 @@ export const StyledRadio = styled.label<StyledRadioProps>`
       !disabled && (checked ? theme.colors.primary50 : theme.colors.secondary40)};
   }
 
-  ${HiddenRadio}:focus + & {
+  ${StyledHiddenRadio}:focus + & {
     box-shadow: ${({ theme }) => `0 0 0 ${theme.spacing.xxSmall} ${theme.colors.primary20}`};
   }
 
@@ -82,4 +82,6 @@ export const StyledRadio = styled.label<StyledRadioProps>`
 `;
 
 StyledRadio.defaultProps = { theme: defaultTheme };
-RadioLabelContainer.defaultProps = { theme: defaultTheme };
+StyledRadioLabelContainer.defaultProps = { theme: defaultTheme };
+StyledRadioContainer.defaultProps = { theme: defaultTheme };
+StyledHiddenRadio.defaultProps = { theme: defaultTheme };

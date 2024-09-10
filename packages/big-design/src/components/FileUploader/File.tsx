@@ -5,7 +5,7 @@ import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
 import { DropdownItem } from '../Dropdown/types';
 
-import { FileStyled, ImageStyled, TextEllipsed } from './styled';
+import { StyledFile, StyledImage, StyledText } from './styled';
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
   actions?: DropdownItem[];
@@ -19,7 +19,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
 export const File = ({ actions, name, idx, isValid, previewSrc, onRemove, ...props }: Props) => {
   const renderedFilePreview = useMemo(() => {
     if (previewSrc) {
-      return <ImageStyled alt="preview" src={previewSrc} />;
+      return <StyledImage alt="preview" src={previewSrc} />;
     }
 
     return (
@@ -56,7 +56,7 @@ export const File = ({ actions, name, idx, isValid, previewSrc, onRemove, ...pro
   }, [actions, name, onRemove]);
 
   return (
-    <FileStyled
+    <StyledFile
       {...props}
       alignItems="center"
       isValid={isValid}
@@ -64,10 +64,10 @@ export const File = ({ actions, name, idx, isValid, previewSrc, onRemove, ...pro
       paddingHorizontal="small"
     >
       {renderedFilePreview}
-      <TextEllipsed marginBottom="none" marginLeft="xSmall" marginRight="auto">
+      <StyledText marginBottom="none" marginLeft="xSmall" marginRight="auto">
         {name}
-      </TextEllipsed>
+      </StyledText>
       {renderedActions}
-    </FileStyled>
+    </StyledFile>
   );
 };

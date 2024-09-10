@@ -2,9 +2,9 @@ import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
 import { ellipsis } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { StyledButton } from '../Button/styled';
+import { StyledButton as StyleableButton } from '../Button/styled';
 import { Flex } from '../Flex';
-import { StyledText } from '../Typography/styled';
+import { StyledText as StyleableText } from '../Typography/styled';
 
 import { DropZone, Props } from './DropZone';
 
@@ -12,7 +12,7 @@ const defaultDropZoneHeight = 68;
 const getDropZoneHeight = (height = defaultDropZoneHeight) =>
   Math.max(height, defaultDropZoneHeight);
 
-export const DropzoneStyled = styled(Flex)<{
+export const StyledDropzone = styled(Flex)<{
   disabled?: boolean;
   isDragOver: boolean;
   isValid: boolean;
@@ -66,14 +66,14 @@ export const DropzoneStyled = styled(Flex)<{
   }
 `;
 
-export const FileStyled = styled(Flex)<{ isValid: boolean }>`
+export const StyledFile = styled(Flex)<{ isValid: boolean }>`
   height: ${remCalc(68)};
   border: ${({ theme, isValid }) => (isValid ? theme.border.box : theme.border.boxError)};
   border-radius: ${({ theme }) => theme.borderRadius.normal};
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-export const ImageStyled = styled.img`
+export const StyledImage = styled.img`
   height: ${remCalc(40)};
   width: ${remCalc(40)};
 `;
@@ -83,11 +83,11 @@ export const StyledFileUploaderWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const TextEllipsed = styled(StyledText)`
+export const StyledText = styled(StyleableText)`
   ${ellipsis()};
 `;
 
-export const ButtonStyled = styled(StyledButton)`
+export const StyledButton = styled(StyleableButton)`
   color: ${({ theme, disabled }) =>
     disabled ? theme.colors.secondary60 : theme.colors.primary} !important;
 `;
@@ -102,10 +102,15 @@ export const StyledList = styled.ul`
   }
 `;
 
-export const DropZoneWrapper = styled(DropZone)<Props & { emptyHeight?: number }>`
+export const StyledDropZoneWrapper = styled(DropZone)<Props & { emptyHeight?: number }>`
   height: ${({ emptyHeight }) => remCalc(getDropZoneHeight(emptyHeight))};
 `;
 
 StyledList.defaultProps = { theme: defaultTheme };
-DropzoneStyled.defaultProps = { theme: defaultTheme };
-FileStyled.defaultProps = { theme: defaultTheme };
+StyledFileUploaderWrapper.defaultProps = { theme: defaultTheme };
+StyledDropzone.defaultProps = { theme: defaultTheme };
+StyledButton.defaultProps = { theme: defaultTheme };
+StyledDropZoneWrapper.defaultProps = { theme: defaultTheme };
+StyledFile.defaultProps = { theme: defaultTheme };
+StyledText.defaultProps = { theme: defaultTheme };
+StyledImage.defaultProps = { theme: defaultTheme };

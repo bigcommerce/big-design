@@ -82,3 +82,7 @@ export const StyledText = styled(StyleableText)`
 StyledArrowWrapper.defaultProps = { theme: defaultTheme };
 StyledFlex.defaultProps = { theme: defaultTheme };
 StyledGap.defaultProps = { theme: defaultTheme };
+StyledLi.defaultProps = { theme: defaultTheme };
+StyledSelectableWrapper.defaultProps = { theme: defaultTheme };
+StyledFlexItem.defaultProps = { theme: defaultTheme };
+StyledText.defaultProps = { theme: defaultTheme };

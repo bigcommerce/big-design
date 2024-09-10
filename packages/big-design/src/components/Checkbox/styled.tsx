@@ -76,3 +76,5 @@ export const StyledCheckbox = styled.label<StyledCheckboxProps>`
 
 StyledCheckbox.defaultProps = { theme: defaultTheme };
 CheckboxLabelContainer.defaultProps = { theme: defaultTheme };
+CheckboxContainer.defaultProps = { theme: defaultTheme };
+HiddenCheckbox.defaultProps = { theme: defaultTheme };

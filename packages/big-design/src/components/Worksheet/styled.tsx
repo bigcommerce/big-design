@@ -73,3 +73,4 @@ export const StyledBox = styled(Box)`
 `;
 
 Header.defaultProps = { theme: defaultTheme };
+StyledBox.defaultProps = { theme: defaultTheme };
