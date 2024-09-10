@@ -54,12 +54,7 @@ const backgroundProps: Prop[] = [
   },
   {
     name: 'backgroundSize',
-    types: (
-      <>
-        auto | length | cover | <br />
-        contain | initial | inherit
-      </>
-    ),
+    types: ['auto', 'length', 'cover', 'contain', 'initial', 'inherit'],
     defaultValue: 'contain',
     description: (
       <>
@@ -70,14 +65,21 @@ const backgroundProps: Prop[] = [
   },
   {
     name: 'backgroundPosition',
-    types: (
-      <>
-        left top | left center | left bottom | <br />
-        right top | right center | right bottom | <br />
-        center top | center center | center bottom | <br />
-        x% y% | x-pos y-pos | initial | inherit
-      </>
-    ),
+    types: [
+      'left top',
+      'left center',
+      'left bottom',
+      'right top',
+      'right center',
+      'right bottom',
+      'center top',
+      'center center',
+      'center bottom',
+      'x% y%',
+      'x-pos y-pos',
+      'initial',
+      'inherit',
+    ],
     defaultValue: 'top right',
     description: (
       <>
@@ -89,12 +91,7 @@ const backgroundProps: Prop[] = [
   {
     name: 'backgroundRepeat',
     defaultValue: 'no-repeat',
-    types: (
-      <>
-        repeat | repeat-x | repeat-y | <br />
-        no-repeat | initial | inherit
-      </>
-    ),
+    types: ['repeat', 'repeat-x', 'repeat-y', 'no-repeat', 'initial', 'inherit'],
     description: (
       <>
         Specifies if/how the background image repeats. Same as the{' '}
