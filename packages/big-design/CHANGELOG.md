@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.4.1
+
+### Patch Changes
+
+- 8e09cdf: Adds default props to styled-components
+
 ## 1.4.0
 
 ### Minor Changes

@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.0.5
+
+### Patch Changes
+
+- Updated dependencies [8e09cdf]
+  - @bigcommerce/big-design@1.4.1
+
 ## 1.0.4
 
 ### Patch Changes
