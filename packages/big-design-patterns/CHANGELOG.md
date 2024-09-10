@@ -1,5 +1,18 @@
 # @bigcommerce/big-design-patterns
 
+## 1.1.0
+
+### Minor Changes
+
+- fd0ab6e: Added ActionBar component to complement the overall Page pattern
+
+### Patch Changes
+
+- a3e0fda: Updates the `Page` and `ActionBar` components to work outside of iframes. In the context of our Control Panel, we may have pages that are directly rendered. This allows a "fixed" position item to float only within the page context.
+- 14ddc22: Removes unused PropsWithChildren type.
+- Updated dependencies [8e09cdf]
+  - @bigcommerce/big-design@1.4.1
+
 ## 1.0.0
 
 ### Major Changes

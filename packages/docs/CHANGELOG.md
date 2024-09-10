@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.2.2
+
+### Patch Changes
+
+- dbd50a6: Added Header component documentation
+- 8d80893: Added Action Bar pattern component documentation
+- 7b4f5a5: Added Page pattern component documentation
+- Updated dependencies [fd0ab6e]
+- Updated dependencies [8e09cdf]
+- Updated dependencies [a3e0fda]
+- Updated dependencies [14ddc22]
+  - @bigcommerce/big-design-patterns@1.1.0
+  - @bigcommerce/big-design@1.4.1
+
 ## 1.2.1
 
 ### Patch Changes
