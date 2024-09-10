@@ -17,7 +17,7 @@ import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Small, Text } from '../Typography';
 
-import { ButtonStyled, DropzoneStyled } from './styled';
+import { StyledButton, StyledDropzone } from './styled';
 import { Localization } from './types';
 import { validateFileFormat } from './utils';
 
@@ -151,7 +151,7 @@ export const DropZone = ({
 
   /* istanbul ignore next */
   return (
-    <DropzoneStyled
+    <StyledDropzone
       {...props}
       alignItems="center"
       aria-label="dropzone"
@@ -191,7 +191,7 @@ export const DropZone = ({
               {renderedDescription}
             </Flex>
           </Flex>
-          <ButtonStyled
+          <StyledButton
             color="secondary"
             disabled={disabled}
             marginTop={isRowView ? 'none' : 'medium'}
@@ -199,9 +199,9 @@ export const DropZone = ({
             variant="subtle"
           >
             {localization.upload}
-          </ButtonStyled>
+          </StyledButton>
         </>
       )}
-    </DropzoneStyled>
+    </StyledDropzone>
   );
 };

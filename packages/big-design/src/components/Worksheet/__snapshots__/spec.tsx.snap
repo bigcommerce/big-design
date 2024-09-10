@@ -2,10 +2,10 @@
 
 exports[`renders worksheet 1`] = `
 <div
-  class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledBox-sc-d2466db4-2 dNtpdW"
+  class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledBox-sc-711f67c7-2 fmfpbK"
 >
   <table
-    class="styled__Table-sc-d2466db4-0 cUQlAe"
+    class="styled__Table-sc-711f67c7-0 gEDboG"
     tabindex="0"
   >
     <thead>
@@ -14,31 +14,31 @@ exports[`renders worksheet 1`] = `
           class="styled__Status-sc-2431d177-0 lenCpg"
         />
         <th
-          class="styled__Header-sc-d2466db4-1 euimQx"
+          class="styled__Header-sc-711f67c7-1 FUSjx"
         >
           Product name
            
         </th>
         <th
-          class="styled__Header-sc-d2466db4-1 ffKzm"
+          class="styled__Header-sc-711f67c7-1 gVWKKe"
         >
           Visible on storefront
            
         </th>
         <th
-          class="styled__Header-sc-d2466db4-1 euimQx"
+          class="styled__Header-sc-711f67c7-1 FUSjx"
         >
           Other field
            
         </th>
         <th
-          class="styled__Header-sc-d2466db4-1 euimQx"
+          class="styled__Header-sc-711f67c7-1 FUSjx"
         >
           Other field
            
         </th>
         <th
-          class="styled__Header-sc-d2466db4-1 bSNCtU"
+          class="styled__Header-sc-711f67c7-1 dOcXBY"
         >
           Number field
            
@@ -102,19 +102,19 @@ exports[`renders worksheet 1`] = `
             class="styled__CheckboxWrapper-sc-d2cd6b9d-0 csJrJK"
           >
             <div
-              class="styled__CheckboxContainer-sc-566c5da0-1 dcMSmV"
+              class="styled__CheckboxContainer-sc-efcd57e0-1 bKZHnM"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":r5:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-566c5da0-2 cxCvuZ"
+                class="styled__HiddenCheckbox-sc-efcd57e0-2 VVPRk"
                 id=":r4:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-566c5da0-3 dLUWKY"
+                class="styled__StyledCheckbox-sc-efcd57e0-3 ipYoRM"
                 for=":r4:"
               >
                 <svg
@@ -137,7 +137,7 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-566c5da0-0 ectoJw"
+                class="styled__CheckboxLabelContainer-sc-efcd57e0-0 bRrtAF"
               >
                 <label
                   aria-hidden="false"
@@ -250,19 +250,19 @@ exports[`renders worksheet 1`] = `
             class="styled__CheckboxWrapper-sc-d2cd6b9d-0 csJrJK"
           >
             <div
-              class="styled__CheckboxContainer-sc-566c5da0-1 dcMSmV"
+              class="styled__CheckboxContainer-sc-efcd57e0-1 bKZHnM"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":rd:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-566c5da0-2 cxCvuZ"
+                class="styled__HiddenCheckbox-sc-efcd57e0-2 VVPRk"
                 id=":rc:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-566c5da0-3 dLUWKY"
+                class="styled__StyledCheckbox-sc-efcd57e0-3 ipYoRM"
                 for=":rc:"
               >
                 <svg
@@ -285,7 +285,7 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-566c5da0-0 ectoJw"
+                class="styled__CheckboxLabelContainer-sc-efcd57e0-0 bRrtAF"
               >
                 <label
                   aria-hidden="false"
@@ -398,18 +398,18 @@ exports[`renders worksheet 1`] = `
             class="styled__CheckboxWrapper-sc-d2cd6b9d-0 csJrJK"
           >
             <div
-              class="styled__CheckboxContainer-sc-566c5da0-1 dcMSmV"
+              class="styled__CheckboxContainer-sc-efcd57e0-1 bKZHnM"
             >
               <input
                 aria-checked="false"
                 aria-labelledby=":rl:"
-                class="styled__HiddenCheckbox-sc-566c5da0-2 cxCvuZ"
+                class="styled__HiddenCheckbox-sc-efcd57e0-2 VVPRk"
                 id=":rk:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-566c5da0-3 diAvvX"
+                class="styled__StyledCheckbox-sc-efcd57e0-3 eccGNz"
                 for=":rk:"
               >
                 <svg
@@ -432,7 +432,7 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-566c5da0-0 ectoJw"
+                class="styled__CheckboxLabelContainer-sc-efcd57e0-0 bRrtAF"
               >
                 <label
                   aria-hidden="false"
@@ -543,19 +543,19 @@ exports[`renders worksheet 1`] = `
             class="styled__CheckboxWrapper-sc-d2cd6b9d-0 csJrJK"
           >
             <div
-              class="styled__CheckboxContainer-sc-566c5da0-1 dcMSmV"
+              class="styled__CheckboxContainer-sc-efcd57e0-1 bKZHnM"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":rt:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-566c5da0-2 cxCvuZ"
+                class="styled__HiddenCheckbox-sc-efcd57e0-2 VVPRk"
                 id=":rs:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-566c5da0-3 dLUWKY"
+                class="styled__StyledCheckbox-sc-efcd57e0-3 ipYoRM"
                 for=":rs:"
               >
                 <svg
@@ -578,7 +578,7 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-566c5da0-0 ectoJw"
+                class="styled__CheckboxLabelContainer-sc-efcd57e0-0 bRrtAF"
               >
                 <label
                   aria-hidden="false"
@@ -689,17 +689,17 @@ exports[`renders worksheet 1`] = `
             class="styled__CheckboxWrapper-sc-d2cd6b9d-0 csJrJK"
           >
             <div
-              class="styled__CheckboxContainer-sc-566c5da0-1 dcMSmV"
+              class="styled__CheckboxContainer-sc-efcd57e0-1 bKZHnM"
             >
               <input
                 aria-labelledby=":r15:"
-                class="styled__HiddenCheckbox-sc-566c5da0-2 cxCvuZ"
+                class="styled__HiddenCheckbox-sc-efcd57e0-2 VVPRk"
                 id=":r14:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-566c5da0-3 diAvvX"
+                class="styled__StyledCheckbox-sc-efcd57e0-3 eccGNz"
                 for=":r14:"
               >
                 <svg
@@ -722,7 +722,7 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-566c5da0-0 ectoJw"
+                class="styled__CheckboxLabelContainer-sc-efcd57e0-0 bRrtAF"
               >
                 <label
                   aria-hidden="false"
@@ -829,19 +829,19 @@ exports[`renders worksheet 1`] = `
             class="styled__CheckboxWrapper-sc-d2cd6b9d-0 csJrJK"
           >
             <div
-              class="styled__CheckboxContainer-sc-566c5da0-1 dcMSmV"
+              class="styled__CheckboxContainer-sc-efcd57e0-1 bKZHnM"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":r1d:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-566c5da0-2 cxCvuZ"
+                class="styled__HiddenCheckbox-sc-efcd57e0-2 VVPRk"
                 id=":r1c:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-566c5da0-3 dLUWKY"
+                class="styled__StyledCheckbox-sc-efcd57e0-3 ipYoRM"
                 for=":r1c:"
               >
                 <svg
@@ -864,7 +864,7 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-566c5da0-0 ectoJw"
+                class="styled__CheckboxLabelContainer-sc-efcd57e0-0 bRrtAF"
               >
                 <label
                   aria-hidden="false"
@@ -977,18 +977,18 @@ exports[`renders worksheet 1`] = `
             class="styled__CheckboxWrapper-sc-d2cd6b9d-0 csJrJK"
           >
             <div
-              class="styled__CheckboxContainer-sc-566c5da0-1 dcMSmV"
+              class="styled__CheckboxContainer-sc-efcd57e0-1 bKZHnM"
             >
               <input
                 aria-checked="false"
                 aria-labelledby=":r1l:"
-                class="styled__HiddenCheckbox-sc-566c5da0-2 cxCvuZ"
+                class="styled__HiddenCheckbox-sc-efcd57e0-2 VVPRk"
                 id=":r1k:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-566c5da0-3 diAvvX"
+                class="styled__StyledCheckbox-sc-efcd57e0-3 eccGNz"
                 for=":r1k:"
               >
                 <svg
@@ -1011,7 +1011,7 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-566c5da0-0 ectoJw"
+                class="styled__CheckboxLabelContainer-sc-efcd57e0-0 bRrtAF"
               >
                 <label
                   aria-hidden="false"
@@ -1124,19 +1124,19 @@ exports[`renders worksheet 1`] = `
             class="styled__CheckboxWrapper-sc-d2cd6b9d-0 csJrJK"
           >
             <div
-              class="styled__CheckboxContainer-sc-566c5da0-1 dcMSmV"
+              class="styled__CheckboxContainer-sc-efcd57e0-1 bKZHnM"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":r1t:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-566c5da0-2 cxCvuZ"
+                class="styled__HiddenCheckbox-sc-efcd57e0-2 VVPRk"
                 id=":r1s:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-566c5da0-3 dLUWKY"
+                class="styled__StyledCheckbox-sc-efcd57e0-3 ipYoRM"
                 for=":r1s:"
               >
                 <svg
@@ -1159,7 +1159,7 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-566c5da0-0 ectoJw"
+                class="styled__CheckboxLabelContainer-sc-efcd57e0-0 bRrtAF"
               >
                 <label
                   aria-hidden="false"
@@ -1272,19 +1272,19 @@ exports[`renders worksheet 1`] = `
             class="styled__CheckboxWrapper-sc-d2cd6b9d-0 csJrJK"
           >
             <div
-              class="styled__CheckboxContainer-sc-566c5da0-1 dcMSmV"
+              class="styled__CheckboxContainer-sc-efcd57e0-1 bKZHnM"
             >
               <input
                 aria-checked="true"
                 aria-labelledby=":r25:"
                 checked=""
-                class="styled__HiddenCheckbox-sc-566c5da0-2 cxCvuZ"
+                class="styled__HiddenCheckbox-sc-efcd57e0-2 VVPRk"
                 id=":r24:"
                 type="checkbox"
               />
               <label
                 aria-hidden="true"
-                class="styled__StyledCheckbox-sc-566c5da0-3 dLUWKY"
+                class="styled__StyledCheckbox-sc-efcd57e0-3 ipYoRM"
                 for=":r24:"
               >
                 <svg
@@ -1307,7 +1307,7 @@ exports[`renders worksheet 1`] = `
                 </svg>
               </label>
               <div
-                class="styled__CheckboxLabelContainer-sc-566c5da0-0 ectoJw"
+                class="styled__CheckboxLabelContainer-sc-efcd57e0-0 bRrtAF"
               >
                 <label
                   aria-hidden="false"

@@ -19,7 +19,7 @@ import { InlineMessage } from '../InlineMessage';
 
 import { defaultLocalization } from './constants';
 import { File } from './File';
-import { DropZoneWrapper, StyledFileUploaderWrapper, StyledList } from './styled';
+import { StyledDropZoneWrapper, StyledFileUploaderWrapper, StyledList } from './styled';
 import type { Localization, ValidatorConfig } from './types';
 import { getImagesPreview, validateFiles } from './utils';
 
@@ -318,7 +318,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       !files.length && (dropzoneConfig.emptyHeight ?? 0) >= minBlockHeight ? 'block' : 'row';
 
     return (
-      <DropZoneWrapper
+      <StyledDropZoneWrapper
         accept={accept}
         description={dropzoneConfig.description}
         disabled={disabled}

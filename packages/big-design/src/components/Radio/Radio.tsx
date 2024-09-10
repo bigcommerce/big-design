@@ -12,7 +12,12 @@ import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlDescriptionLinkProps } from '../Form';
 
 import { RadioLabel } from './Label';
-import { HiddenRadio, RadioContainer, RadioLabelContainer, StyledRadio } from './styled';
+import {
+  StyledHiddenRadio,
+  StyledRadio,
+  StyledRadioContainer,
+  StyledRadioLabelContainer,
+} from './styled';
 
 interface Props {
   label: React.ReactChild;
@@ -79,8 +84,8 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
   }, [description]);
 
   return (
-    <RadioContainer className={className} style={style}>
-      <HiddenRadio
+    <StyledRadioContainer className={className} style={style}>
+      <StyledHiddenRadio
         checked={checked}
         disabled={disabled}
         id={id}
@@ -90,11 +95,11 @@ const RawRadio: React.FC<RadioProps & PrivateProps> = ({
         ref={forwardedRef}
       />
       <StyledRadio aria-hidden={true} checked={checked} disabled={disabled} htmlFor={id} />
-      <RadioLabelContainer>
+      <StyledRadioLabelContainer>
         {renderedLabel}
         {renderedDescription}
-      </RadioLabelContainer>
-    </RadioContainer>
+      </StyledRadioLabelContainer>
+    </StyledRadioContainer>
   );
 };
 
