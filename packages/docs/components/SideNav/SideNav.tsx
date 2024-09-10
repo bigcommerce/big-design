@@ -105,6 +105,7 @@ export const SideNav: React.FC = () => {
               <SideNavGroup title="Patterns">
                 <SideNavLink href="/action-bar">Action Bar</SideNavLink>
                 <SideNavLink href="/header">Header</SideNavLink>
+                <SideNavLink href="/page">Page</SideNavLink>
               </SideNavGroup>
 
               <SideNavGroup title="Utilities">
