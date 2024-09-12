@@ -132,7 +132,7 @@ export const Header = ({
   title,
 }: HeaderProps) => {
   return (
-    <Flex as="header" flexDirection={{ mobile: 'column', tablet: 'row' }} flexWrap="wrap">
+    <Flex as="header" flexDirection={{ mobile: 'column', tablet: 'row' }} flexWrap={{ mobile: 'nowrap', tablet: 'wrap' }}>
       {backLink && (
         <FlexItem flexBasis="100%">
           <BackLink {...backLink} />
