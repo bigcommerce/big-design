@@ -36,6 +36,7 @@ export const StyledPageBackground = styled(Grid).attrs({ theme: defaultTheme })<
 
 export const StyledPage = styled(Flex).attrs({ theme: defaultTheme })`
   margin: 0 auto;
+  width: 100%;
 
   ${({ theme }) => theme.breakpoints.desktop} {
     max-width: ${({ theme }) => theme.helpers.remCalc(1120)};
