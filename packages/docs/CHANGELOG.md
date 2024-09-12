@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.2.3
+
+### Patch Changes
+
+- Updated dependencies [eef4d38]
+- Updated dependencies [66bc0c8]
+  - @bigcommerce/big-design-patterns@1.1.1
+
 ## 1.2.2
 
 ### Patch Changes

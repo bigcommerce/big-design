@@ -1,5 +1,12 @@
 # @bigcommerce/big-design-patterns
 
+## 1.1.1
+
+### Patch Changes
+
+- eef4d38: Fix header wrapping on smaller screens
+- 66bc0c8: Fixed page width definition to expand to the available area
+
 ## 1.1.0
 
 ### Minor Changes
