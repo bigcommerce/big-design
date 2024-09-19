@@ -575,8 +575,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       next:
-        specifier: ^14.2.1
-        version: 14.2.1(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: ^14.2.12
+        version: 14.2.12(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       typescript:
         specifier: ^5.4.5
         version: 5.5.4
@@ -1796,59 +1796,59 @@ packages:
   '@manypkg/get-packages@1.1.3':
     resolution: {integrity: sha512-fo+QhuU3qE/2TQMQmbVMqaQ6EWbMhi4ABWP+O4AM1NqPBuy0OrApV5LO6BrrgnhtAHS2NH6RrVk9OL181tTi8A==}
 
-  '@next/env@14.2.1':
-    resolution: {integrity: sha512-qsHJle3GU3CmVx7pUoXcghX4sRN+vINkbLdH611T8ZlsP//grzqVW87BSUgOZeSAD4q7ZdZicdwNe/20U2janA==}
+  '@next/env@14.2.12':
+    resolution: {integrity: sha512-3fP29GIetdwVIfIRyLKM7KrvJaqepv+6pVodEbx0P5CaMLYBtx+7eEg8JYO5L9sveJO87z9eCReceZLi0hxO1Q==}
 
-  '@next/swc-darwin-arm64@14.2.1':
-    resolution: {integrity: sha512-kGjnjcIJehEcd3rT/3NAATJQndAEELk0J9GmGMXHSC75TMnvpOhONcjNHbjtcWE5HUQnIHy5JVkatrnYm1QhVw==}
+  '@next/swc-darwin-arm64@14.2.12':
+    resolution: {integrity: sha512-crHJ9UoinXeFbHYNok6VZqjKnd8rTd7K3Z2zpyzF1ch7vVNKmhjv/V7EHxep3ILoN8JB9AdRn/EtVVyG9AkCXw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@next/swc-darwin-x64@14.2.1':
-    resolution: {integrity: sha512-dAdWndgdQi7BK2WSXrx4lae7mYcOYjbHJUhvOUnJjMNYrmYhxbbvJ2xElZpxNxdfA6zkqagIB9He2tQk+l16ew==}
+  '@next/swc-darwin-x64@14.2.12':
+    resolution: {integrity: sha512-JbEaGbWq18BuNBO+lCtKfxl563Uw9oy2TodnN2ioX00u7V1uzrsSUcg3Ep9ce+P0Z9es+JmsvL2/rLphz+Frcw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@next/swc-linux-arm64-gnu@14.2.1':
-    resolution: {integrity: sha512-2ZctfnyFOGvTkoD6L+DtQtO3BfFz4CapoHnyLTXkOxbZkVRgg3TQBUjTD/xKrO1QWeydeo8AWfZRg8539qNKrg==}
+  '@next/swc-linux-arm64-gnu@14.2.12':
+    resolution: {integrity: sha512-qBy7OiXOqZrdp88QEl2H4fWalMGnSCrr1agT/AVDndlyw2YJQA89f3ttR/AkEIP9EkBXXeGl6cC72/EZT5r6rw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-arm64-musl@14.2.1':
-    resolution: {integrity: sha512-jazZXctiaanemy4r+TPIpFP36t1mMwWCKMsmrTRVChRqE6putyAxZA4PDujx0SnfvZHosjdkx9xIq9BzBB5tWg==}
+  '@next/swc-linux-arm64-musl@14.2.12':
+    resolution: {integrity: sha512-EfD9L7o9biaQxjwP1uWXnk3vYZi64NVcKUN83hpVkKocB7ogJfyH2r7o1pPnMtir6gHZiGCeHKagJ0yrNSLNHw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-x64-gnu@14.2.1':
-    resolution: {integrity: sha512-VjCHWCjsAzQAAo8lkBOLEIkBZFdfW+Z18qcQ056kL4KpUYc8o59JhLDCBlhg+hINQRgzQ2UPGma2AURGOH0+Qg==}
+  '@next/swc-linux-x64-gnu@14.2.12':
+    resolution: {integrity: sha512-iQ+n2pxklJew9IpE47hE/VgjmljlHqtcD5UhZVeHICTPbLyrgPehaKf2wLRNjYH75udroBNCgrSSVSVpAbNoYw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-linux-x64-musl@14.2.1':
-    resolution: {integrity: sha512-7HZKYKvAp4nAHiHIbY04finRqjeYvkITOGOurP1aLMexIFG/1+oCnqhGogBdc4lao/lkMW1c+AkwWSzSlLasqw==}
+  '@next/swc-linux-x64-musl@14.2.12':
+    resolution: {integrity: sha512-rFkUkNwcQ0ODn7cxvcVdpHlcOpYxMeyMfkJuzaT74xjAa5v4fxP4xDk5OoYmPi8QNLDs3UgZPMSBmpBuv9zKWA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-win32-arm64-msvc@14.2.1':
-    resolution: {integrity: sha512-YGHklaJ/Cj/F0Xd8jxgj2p8po4JTCi6H7Z3Yics3xJhm9CPIqtl8erlpK1CLv+HInDqEWfXilqatF8YsLxxA2Q==}
+  '@next/swc-win32-arm64-msvc@14.2.12':
+    resolution: {integrity: sha512-PQFYUvwtHs/u0K85SG4sAdDXYIPXpETf9mcEjWc0R4JmjgMKSDwIU/qfZdavtP6MPNiMjuKGXHCtyhR/M5zo8g==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@next/swc-win32-ia32-msvc@14.2.1':
-    resolution: {integrity: sha512-o+ISKOlvU/L43ZhtAAfCjwIfcwuZstiHVXq/BDsZwGqQE0h/81td95MPHliWCnFoikzWcYqh+hz54ZB2FIT8RA==}
+  '@next/swc-win32-ia32-msvc@14.2.12':
+    resolution: {integrity: sha512-FAj2hMlcbeCV546eU2tEv41dcJb4NeqFlSXU/xL/0ehXywHnNpaYajOUvn3P8wru5WyQe6cTZ8fvckj/2XN4Vw==}
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
 
-  '@next/swc-win32-x64-msvc@14.2.1':
-    resolution: {integrity: sha512-GmRoTiLcvCLifujlisknv4zu9/C4i9r0ktsA8E51EMqJL4bD4CpO7lDYr7SrUxCR0tS4RVcrqKmCak24T0ohaw==}
+  '@next/swc-win32-x64-msvc@14.2.12':
+    resolution: {integrity: sha512-yu8QvV53sBzoIVRHsxCHqeuS8jYq6Lrmdh0briivuh+Brsp6xjg80MAozUsBTAV9KNmY08KlX0KYTWz1lbPzEg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -2868,9 +2868,6 @@ packages:
 
   camelize@1.0.0:
     resolution: {integrity: sha512-W2lPwkBkMZwFlPCXhIlYgxu+7gC/NUlCtdK652DAJ1JdgV0sTrvuPFshNPrFa1TY2JOkLhgdeEBplB4ezEa+xg==}
-
-  caniuse-lite@1.0.30001642:
-    resolution: {integrity: sha512-3XQ0DoRgLijXJErLSl+bLnJ+Et4KqV1PY6JJBGAFlsNsz31zeAIncyeZfLCabHK/jtSh+671RM9YMldxjUPZtA==}
 
   caniuse-lite@1.0.30001651:
     resolution: {integrity: sha512-9Cf+Xv1jJNe1xPZLGuUXLNkE1BoDkqRqYyFJ9TDYSqhduqA4hu4oR9HluGoWYQC/aj8WHjsGVV+bwkh0+tegRg==}
@@ -4687,8 +4684,8 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  next@14.2.1:
-    resolution: {integrity: sha512-SF3TJnKdH43PMkCcErLPv+x/DY1YCklslk3ZmwaVoyUfDgHKexuKlf9sEfBQ69w+ue8jQ3msLb+hSj1T19hGag==}
+  next@14.2.12:
+    resolution: {integrity: sha512-cDOtUSIeoOvt1skKNihdExWMTybx3exnvbFbb9ecZDIxlvIbREQzt9A5Km3Zn3PfU+IFjyYGsHS+lN9VInAGKA==}
     engines: {node: '>=18.17.0'}
     hasBin: true
     peerDependencies:
@@ -7568,33 +7565,33 @@ snapshots:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
-  '@next/env@14.2.1': {}
+  '@next/env@14.2.12': {}
 
-  '@next/swc-darwin-arm64@14.2.1':
+  '@next/swc-darwin-arm64@14.2.12':
     optional: true
 
-  '@next/swc-darwin-x64@14.2.1':
+  '@next/swc-darwin-x64@14.2.12':
     optional: true
 
-  '@next/swc-linux-arm64-gnu@14.2.1':
+  '@next/swc-linux-arm64-gnu@14.2.12':
     optional: true
 
-  '@next/swc-linux-arm64-musl@14.2.1':
+  '@next/swc-linux-arm64-musl@14.2.12':
     optional: true
 
-  '@next/swc-linux-x64-gnu@14.2.1':
+  '@next/swc-linux-x64-gnu@14.2.12':
     optional: true
 
-  '@next/swc-linux-x64-musl@14.2.1':
+  '@next/swc-linux-x64-musl@14.2.12':
     optional: true
 
-  '@next/swc-win32-arm64-msvc@14.2.1':
+  '@next/swc-win32-arm64-msvc@14.2.12':
     optional: true
 
-  '@next/swc-win32-ia32-msvc@14.2.1':
+  '@next/swc-win32-ia32-msvc@14.2.12':
     optional: true
 
-  '@next/swc-win32-x64-msvc@14.2.1':
+  '@next/swc-win32-x64-msvc@14.2.12':
     optional: true
 
   '@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.3':
@@ -8706,8 +8703,6 @@ snapshots:
   camelcase@6.3.0: {}
 
   camelize@1.0.0: {}
-
-  caniuse-lite@1.0.30001642: {}
 
   caniuse-lite@1.0.30001651: {}
 
@@ -11063,27 +11058,27 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next@14.2.1(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  next@14.2.12(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@next/env': 14.2.1
+      '@next/env': 14.2.12
       '@swc/helpers': 0.5.5
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001642
+      caniuse-lite: 1.0.30001651
       graceful-fs: 4.2.11
       postcss: 8.4.31
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       styled-jsx: 5.1.1(@babel/core@7.25.2)(react@18.2.0)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 14.2.1
-      '@next/swc-darwin-x64': 14.2.1
-      '@next/swc-linux-arm64-gnu': 14.2.1
-      '@next/swc-linux-arm64-musl': 14.2.1
-      '@next/swc-linux-x64-gnu': 14.2.1
-      '@next/swc-linux-x64-musl': 14.2.1
-      '@next/swc-win32-arm64-msvc': 14.2.1
-      '@next/swc-win32-ia32-msvc': 14.2.1
-      '@next/swc-win32-x64-msvc': 14.2.1
+      '@next/swc-darwin-arm64': 14.2.12
+      '@next/swc-darwin-x64': 14.2.12
+      '@next/swc-linux-arm64-gnu': 14.2.12
+      '@next/swc-linux-arm64-musl': 14.2.12
+      '@next/swc-linux-x64-gnu': 14.2.12
+      '@next/swc-linux-x64-musl': 14.2.12
+      '@next/swc-win32-arm64-msvc': 14.2.12
+      '@next/swc-win32-ia32-msvc': 14.2.12
+      '@next/swc-win32-x64-msvc': 14.2.12
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
