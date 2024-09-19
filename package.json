@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@changesets/changelog-git": "^0.2.0",
-    "@changesets/cli": "^2.27.7",
+    "@changesets/cli": "^2.27.8",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@types/babel__standalone": "^7.1.4",
