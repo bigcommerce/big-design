@@ -11,7 +11,7 @@ module.exports = {
   basePath: isProduction ? URL_PREFIX : '',
   output: 'export',
   env: {
-    CODE_SANDBOX_URL: `https://codesandbox.io/s/github/bigcommerce/big-design/tree/%40bigcommerce/examples%40${EXAMPLES_VERSION}/packages/examples`,
+    CODE_SANDBOX_URL: `https://codesandbox.io/p/devbox/github/bigcommerce/big-design/tree/%40bigcommerce/examples%40${EXAMPLES_VERSION}/packages/examples`,
     URL_PREFIX: isProduction ? URL_PREFIX : '',
     BD_VERSION: bdPkg.version,
   },

@@ -11,22 +11,28 @@ const initialValues: Product = {
   category: 'Food',
 };
 
+const ProductSchema = Yup.object().shape({
+  name: Yup.string().min(2).max(50).required(),
+  stock: Yup.number().required().min(0).max(100),
+  category: Yup.string().required(),
+});
+
 interface Props {
   onNewProduct(product: Product): void;
 }
 
 export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
-  const onSubmit = (product: Product) => {
-    onNewProduct(product);
-    resetForm();
-  };
-
   const { errors, handleChange, handleSubmit, resetForm, setFieldValue, touched, values } =
     useFormik<Product>({
       initialValues,
       onSubmit,
       validationSchema: ProductSchema,
     });
+
+  function onSubmit(product: Product) {
+    onNewProduct(product);
+    resetForm();
+  }
 
   return (
     <>
@@ -80,9 +86,3 @@ export const ProductForm: React.FC<Props> = ({ onNewProduct }) => {
     </>
   );
 };
-
-const ProductSchema = Yup.object().shape({
-  name: Yup.string().min(2).max(50).required(),
-  stock: Yup.number().required().min(0).max(100),
-  category: Yup.string().required(),
-});

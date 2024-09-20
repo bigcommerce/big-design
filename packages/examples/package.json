@@ -10,23 +10,23 @@
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
-    "@bigcommerce/big-design": "workspace:^",
-    "@bigcommerce/big-design-icons": "workspace:^",
-    "@bigcommerce/big-design-theme": "workspace:^",
-    "formik": "^2.4.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "styled-components": "^5.3.11",
-    "yup": "^1.0.2"
+    "@bigcommerce/big-design": "*",
+    "@bigcommerce/big-design-icons": "*",
+    "@bigcommerce/big-design-theme": "*",
+    "formik": "2.4.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "styled-components": "5.3.11",
+    "yup": "1.4.0"
   },
   "devDependencies": {
-    "@bigcommerce/configs": "workspace:^",
-    "@types/node": "^20.12.7",
-    "@types/react": "^18.2.73",
-    "@types/react-dom": "^18.2.23",
-    "@types/styled-components": "^5.1.34",
-    "@vitejs/plugin-react": "^4.0.0",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.10"
+    "@bigcommerce/eslint-config": "2.9.1",
+    "@types/node": "20.12.7",
+    "@types/react": "18.2.73",
+    "@types/react-dom": "18.2.23",
+    "@types/styled-components": "5.1.34",
+    "@vitejs/plugin-react": "4.3.1",
+    "typescript": "5.4.5",
+    "vite": "5.4.7"
   }
 }
