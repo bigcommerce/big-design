@@ -5,7 +5,7 @@
   "license": "(MIT AND CC-BY-3.0)",
   "dependencies": {
     "@bigcommerce/eslint-config": "^2.9.0",
-    "eslint": "^8.33.0",
+    "eslint": "^9.11.1",
     "typescript": "^5.4.5"
   }
 }
