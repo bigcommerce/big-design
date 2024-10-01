@@ -29,7 +29,7 @@
     "@radix-ui/react-scroll-area": "^1.0.5",
     "clipboard-copy": "^4.0.1",
     "prettier": "^2.4.0",
-    "prism-react-renderer": "^2.3.1",
+    "prism-react-renderer": "^2.4.0",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
