@@ -6,6 +6,7 @@ export * from './ArrowDropDownIcon';
 export * from './ArrowForwardIcon';
 export * from './ArrowUpwardIcon';
 export * from './AssignmentIcon';
+export * from './AutoAwesomeIcon';
 export * from './BaselineHelpIcon';
 export * from './BrushIcon';
 export * from './CheckCircleIcon';
