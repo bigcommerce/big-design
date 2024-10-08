@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.4.2
+
+### Patch Changes
+
+- Updated dependencies [01a5b20]
+  - @bigcommerce/big-design-icons@1.1.0
+
 ## 1.4.1
 
 ### Patch Changes

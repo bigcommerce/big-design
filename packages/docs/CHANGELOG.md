@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.2.4
+
+### Patch Changes
+
+- d9afaaf: Fix codesandbox link and update deps for examples.
+- Updated dependencies [01a5b20]
+  - @bigcommerce/big-design-icons@1.1.0
+  - @bigcommerce/big-design@1.4.2
+  - @bigcommerce/big-design-patterns@2.0.0
+
 ## 1.2.3
 
 ### Patch Changes

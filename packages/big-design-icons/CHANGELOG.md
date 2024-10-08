@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.0
+
+### Minor Changes
+
+- 01a5b20: Added AutoAwesome icon from Material Icons library
+
 ## 1.0.3
 
 ### Patch Changes
