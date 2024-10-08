@@ -73,8 +73,8 @@ importers:
         version: 4.5.2(@types/react@18.2.73)(react@18.2.0)
     devDependencies:
       '@babel/cli':
-        specifier: ^7.24.1
-        version: 7.24.1(@babel/core@7.25.2)
+        specifier: ^7.25.7
+        version: 7.25.7(@babel/core@7.25.2)
       '@babel/core':
         specifier: ^7.24.4
         version: 7.25.2
@@ -185,8 +185,8 @@ importers:
         version: link:../big-design-theme
     devDependencies:
       '@babel/cli':
-        specifier: ^7.24.1
-        version: 7.24.1(@babel/core@7.25.2)
+        specifier: ^7.25.7
+        version: 7.25.7(@babel/core@7.25.2)
       '@babel/core':
         specifier: ^7.24.4
         version: 7.25.2
@@ -282,8 +282,8 @@ importers:
         version: 7.25.6
     devDependencies:
       '@babel/cli':
-        specifier: ^7.24.1
-        version: 7.24.1(@babel/core@7.25.2)
+        specifier: ^7.25.7
+        version: 7.25.7(@babel/core@7.25.2)
       '@babel/core':
         specifier: ^7.24.4
         version: 7.25.2
@@ -403,8 +403,8 @@ importers:
         version: 4.3.1
     devDependencies:
       '@babel/cli':
-        specifier: ^7.24.1
-        version: 7.24.1(@babel/core@7.25.2)
+        specifier: ^7.25.7
+        version: 7.25.7(@babel/core@7.25.2)
       '@babel/core':
         specifier: ^7.24.4
         version: 7.25.2
@@ -648,8 +648,8 @@ packages:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
     engines: {node: '>=6.0.0'}
 
-  '@babel/cli@7.24.1':
-    resolution: {integrity: sha512-HbmrtxyFUr34LwAlV9jS+sSIjUp4FpdtIMGwgufY3AsxrIfsh/HxlMTywsONAZsU0RMYbZtbZFpUCrSGs7o0EA==}
+  '@babel/cli@7.25.7':
+    resolution: {integrity: sha512-vQw4QjrqjLSuL0Tt3gfVXbxEHOfsCcHN8tKyTclpSMYLq3Bp0BTzWYZfMKBs3PQ+to8q3BnumBIAsMdOqDJ6nw==}
     engines: {node: '>=6.9.0'}
     hasBin: true
     peerDependencies:
@@ -3120,6 +3120,10 @@ packages:
 
   commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
+    engines: {node: '>= 6'}
+
+  commander@6.2.1:
+    resolution: {integrity: sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==}
     engines: {node: '>= 6'}
 
   commander@7.2.0:
@@ -6164,11 +6168,11 @@ snapshots:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@babel/cli@7.24.1(@babel/core@7.25.2)':
+  '@babel/cli@7.25.7(@babel/core@7.25.2)':
     dependencies:
       '@babel/core': 7.25.2
       '@jridgewell/trace-mapping': 0.3.25
-      commander: 4.1.1
+      commander: 6.2.1
       convert-source-map: 2.0.0
       fs-readdir-recursive: 1.1.0
       glob: 7.2.3
@@ -9204,6 +9208,8 @@ snapshots:
       delayed-stream: 1.0.0
 
   commander@4.1.1: {}
+
+  commander@6.2.1: {}
 
   commander@7.2.0: {}
 
