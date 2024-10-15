@@ -106,8 +106,8 @@ importers:
         specifier: ^0.2.36
         version: 0.2.36(@swc/core@1.7.35(@swc/helpers@0.5.5))
       '@swc/plugin-styled-components':
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^3.0.3
+        version: 3.0.3
       '@testing-library/dom':
         specifier: ^10.4.0
         version: 10.4.0
@@ -324,8 +324,8 @@ importers:
         specifier: ^0.2.36
         version: 0.2.36(@swc/core@1.7.35(@swc/helpers@0.5.5))
       '@swc/plugin-styled-components':
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^3.0.3
+        version: 3.0.3
       '@testing-library/dom':
         specifier: ^10.3.1
         version: 10.4.0
@@ -436,8 +436,8 @@ importers:
         specifier: ^0.2.36
         version: 0.2.36(@swc/core@1.7.35(@swc/helpers@0.5.5))
       '@swc/plugin-styled-components':
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^3.0.3
+        version: 3.0.3
       '@types/jest':
         specifier: ^29.4.0
         version: 29.5.12
@@ -2389,8 +2389,8 @@ packages:
     peerDependencies:
       '@swc/core': '*'
 
-  '@swc/plugin-styled-components@3.0.2':
-    resolution: {integrity: sha512-ga3065ACLCHBfE3h6bsXABK3usFyqGr0BB/EWReGWu3igUinI6IqK50g76xEqcaEgF6ywM0cmrZ7ARqPPVOe+w==}
+  '@swc/plugin-styled-components@3.0.3':
+    resolution: {integrity: sha512-IeEaH6aFaYav0L/AyLeblhrO+e8FCS/HwIMJfxo0z2edq9JNzRiCkTI5z1q5vObSRT+T51fkiBZiyqby3D8VSQ==}
 
   '@swc/types@0.1.13':
     resolution: {integrity: sha512-JL7eeCk6zWCbiYQg2xQSdLXQJl8Qoc9rXmG2cEKvHe3CKwMHwHGpfOb8frzNLmbycOo6I51qxnLnn9ESf4I20Q==}
@@ -8405,7 +8405,7 @@ snapshots:
       '@swc/counter': 0.1.3
       jsonc-parser: 3.2.1
 
-  '@swc/plugin-styled-components@3.0.2':
+  '@swc/plugin-styled-components@3.0.3':
     dependencies:
       '@swc/counter': 0.1.3
 
