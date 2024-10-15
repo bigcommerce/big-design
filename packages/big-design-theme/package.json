@@ -51,7 +51,7 @@
     "@bigcommerce/configs": "workspace:^",
     "@bigcommerce/pack": "workspace:^",
     "@styled/typescript-styled-plugin": "^1.0.1",
-    "@swc/core": "^1.7.28",
+    "@swc/core": "^1.7.35",
     "@swc/jest": "^0.2.36",
     "@swc/plugin-styled-components": "^3.0.2",
     "@types/jest": "^29.4.0",
