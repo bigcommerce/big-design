@@ -38,7 +38,8 @@ export type WorksheetColumn<Item> =
   | WorksheetNumberColumn<Item>
   | WorksheetCheckboxColumn<Item>
   | WorksheetSelectableColumn<Item>
-  | WorksheetModalColumn<Item>;
+  | WorksheetModalColumn<Item>
+  | WorksheetImageColumn<Item>;
 
 export type InternalWorksheetColumn<Item> =
   | WorksheetTextColumn<Item>
@@ -46,6 +47,7 @@ export type InternalWorksheetColumn<Item> =
   | WorksheetCheckboxColumn<Item>
   | WorksheetSelectableColumn<Item>
   | WorksheetModalColumn<Item>
+  | WorksheetImageColumn<Item>
   | WorksheetToggleColumn<Item>;
 
 interface WorksheetBaseColumn<Item> {
@@ -89,6 +91,11 @@ export interface WorksheetModalColumn<Item> extends WorksheetBaseColumn<Item> {
   };
   formatting?(value: Item[keyof Item] | ''): string;
   type: 'modal';
+}
+
+export interface WorksheetImageColumn<Item> extends WorksheetBaseColumn<Item> {
+  imageSetHandler(arg: any): void;
+  type: 'image';
 }
 
 export interface WorksheetToggleColumn<Item> extends WorksheetBaseColumn<Item> {

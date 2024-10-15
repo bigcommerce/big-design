@@ -1,5 +1,15 @@
-import { H1, Panel, StatefulTree, Text, Worksheet, WorksheetColumn } from '@bigcommerce/big-design';
-import React from 'react';
+import {
+  Form,
+  H1,
+  Input,
+  Modal,
+  Panel,
+  StatefulTree,
+  Text,
+  Worksheet,
+  WorksheetColumn,
+} from '@bigcommerce/big-design';
+import React, { useState } from 'react';
 
 import {
   Code,
@@ -11,7 +21,7 @@ import {
 } from '../components';
 import {
   WorksheetCheckboxColumnPropTable,
-  WorksheetErrorPropTable,
+  WorksheetErrorPropTable, WorksheetImageColumnPropTable,
   WorksheetModalColumnPropTable,
   WorksheetModalConfigPropTable,
   WorksheetNumberColumnPropTable,
@@ -29,6 +39,7 @@ interface Product {
   otherField2: string;
   otherField3: number;
   numberField: number;
+  image: { src: string; title: string };
 }
 
 const CATEGORIES = {
@@ -567,6 +578,122 @@ const WorksheetPage = () => {
               ),
             },
             {
+              id: 'image-columns',
+              title: 'Image columns',
+              render: () => (
+                <CodePreview key="image-columns" scope={{ CATEGORIES, CategoryTree, nodes }}>
+                  {/* jsx-to-string:start */}
+                  {function Example() {
+                    const [isModalOpen, setModalOpen] = useState(false);
+                    const [itemIndex, setItemIndex] = useState(0);
+                    const [worksheetItems, setWorksheetItems] = useState<Array<Partial<Product>>>([
+                      {
+                        id: 1,
+                        productName: 'Product 1',
+                      },
+                      {
+                        id: 2,
+                        productName: 'Product 2',
+                        image: {
+                          src: 'https://cdn-icons-png.flaticon.com/512/9584/9584876.png',
+                          title: 'azazazazaz',
+                        },
+                      },
+                      {
+                        id: 3,
+                        productName: 'Product 3',
+                      },
+                    ]);
+
+                    const columns: Array<WorksheetColumn<Partial<Product>>> = [
+                      {
+                        hash: 'productName',
+                        header: 'Product name',
+                        validation: (value) => !!value,
+                      },
+                      {
+                        hash: 'image',
+                        header: 'Product Image',
+                        type: 'image',
+                        imageSetHandler: (cell) => {
+                          console.log('cell', cell);
+                          setItemIndex(cell.rowIndex);
+                          setModalOpen(true);
+                        },
+                      },
+                    ];
+
+                    const renderImageModal = () => {
+                      const [src, setSrc] = useState('');
+                      const [title, setTitle] = useState('');
+                      const handleSrcChange = (event) => setSrc(event.target.value);
+                      const handleTitleChange = (event) => setTitle(event.target.value);
+
+                      return (
+                          <Modal
+                              actions={[
+                                {
+                                  text: 'Cancel',
+                                  variant: 'subtle',
+                                  onClick: () => setModalOpen(false),
+                                },
+                                {
+                                  text: 'Apply',
+                                  onClick: () => {
+                                    console.log('itemIndex', itemIndex);
+                                    const newarr = worksheetItems.map((el, index) => {
+                                     if ( index === itemIndex) {
+                                       el.image = { src, title };
+                                     }
+
+                                      return el;
+                                    });
+
+                                    setWorksheetItems(newarr);
+                                    setModalOpen(false);
+                                  },
+                                }
+                              ]}
+                              header="Set image"
+                              isOpen={isModalOpen}
+                          >
+                            <Form>
+                              <Input
+                                  label="Source"
+                                  onChange={handleSrcChange}
+                                  placeholder="Image source"
+                                  type="text"
+                                  value={src}
+                              />
+                              <Input
+                                  label="Title"
+                                  onChange={handleTitleChange}
+                                  placeholder="Image title"
+                                  type="text"
+                                  value={title}
+                              />
+                            </Form>
+                          </Modal>
+                      );
+                    }
+
+                    return (
+                      <>
+                        <Worksheet
+                            columns={columns}
+                            items={worksheetItems}
+                            onChange={(items) => items}
+                            onErrors={(items) => items}
+                        />
+                        {renderImageModal()}
+                      </>
+                    );
+                  }}
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+            {
               id: 'disabled-columns',
               title: 'Disabled columns',
               render: () => (
@@ -791,6 +918,13 @@ const WorksheetPage = () => {
               title: 'ModalColumn',
               render: () => (
                 <WorksheetModalColumnPropTable id="worksheet-modal-column-prop-table" />
+              ),
+            },
+            {
+              id: 'image-column',
+              title: 'ImageColumn',
+              render: () => (
+                  <WorksheetImageColumnPropTable id="worksheet-image-column-prop-table" />
               ),
             },
             {

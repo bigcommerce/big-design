@@ -3,12 +3,20 @@ import React, { useCallback, useEffect, useId, useMemo } from 'react';
 import { typedMemo } from '../../../utils';
 import { Tooltip } from '../../Tooltip';
 import { Small } from '../../Typography';
-import { CheckboxEditor, ModalEditor, SelectEditor, TextEditor, ToggleEditor } from '../editors';
+import {
+  CheckboxEditor,
+  ImageEditor,
+  ModalEditor,
+  SelectEditor,
+  TextEditor,
+  ToggleEditor,
+} from '../editors';
 import { MultiSelectEditor } from '../editors/MultiSelectEditor';
 import { useAutoFilling, useEditableCell, useWorksheetStore } from '../hooks';
 import {
   InternalWorksheetColumn,
   Cell as TCell,
+  WorksheetImageColumn,
   WorksheetItem,
   WorksheetSelectableColumn,
   WorksheetTextColumn,
@@ -26,6 +34,7 @@ interface CellProps<Item> extends TCell<Item> {
   formatting?: WorksheetTextColumn<Item>['formatting'];
   validation?: InternalWorksheetColumn<Item>['validation'];
   notation?: InternalWorksheetColumn<Item>['notation'];
+  imageSetHandler?: WorksheetImageColumn<Item>['imageSetHandler'];
 }
 
 const InternalCell = <T extends WorksheetItem>({
@@ -43,6 +52,7 @@ const InternalCell = <T extends WorksheetItem>({
   nextRowValue,
   isChild,
   isLastChild,
+  imageSetHandler,
 }: CellProps<T>) => {
   const cell: TCell<T> = useMemo(
     () => ({ columnIndex, disabled, hash, rowIndex, type, value }),
@@ -211,6 +221,16 @@ const InternalCell = <T extends WorksheetItem>({
       case 'modal':
         return <ModalEditor cell={cell} formatting={formatting} isEditing={isEditing} />;
 
+      case 'image':
+        return (
+          <ImageEditor
+            cell={cell}
+            imageSetHandler={imageSetHandler}
+            isEditing={isEditing}
+            onChange={handleChange}
+          />
+        );
+
       case 'toggle':
         return <ToggleEditor rowId={rowId} toggle={isEditing} />;
 
@@ -247,6 +267,7 @@ const InternalCell = <T extends WorksheetItem>({
     isMetaKey,
     handleKeyDown,
     renderedValue,
+    imageSetHandler,
   ]);
 
   const renderedNote = useMemo(() => {

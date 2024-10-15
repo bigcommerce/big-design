@@ -110,6 +110,7 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
           disabled={getIsCellDisabled(column)}
           formatting={hasFormatting(column) ? column.formatting : undefined}
           hash={column.hash}
+          imageSetHandler={column.type === 'image' ? column.imageSetHandler : undefined}
           isChild={isChild}
           isLastChild={isLastChild}
           key={`${rowIndex}-${columnIndex}`}

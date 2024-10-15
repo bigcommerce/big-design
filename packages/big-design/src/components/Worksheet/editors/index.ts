@@ -3,3 +3,4 @@ export * from './ModalEditor';
 export * from './SelectEditor';
 export * from './TextEditor';
 export * from './ToggleEditor';
+export * from './ImageEditor';

@@ -39,6 +39,12 @@ const worksheetProps: Prop[] = [
       >
         ModalColumn
       </NextLink>,
+      <NextLink
+        href={{ hash: 'worksheet-image-column-prop-table', query: { props: 'modal-column' } }}
+        key="image"
+      >
+        ImageColumn
+      </NextLink>,
     ],
     description: (
       <>
@@ -434,6 +440,59 @@ const worksheetModalColumnProps: Prop[] = [
   },
 ];
 
+const worksheetImageColumnProps: Prop[] = [
+  {
+    name: 'hash',
+    types: 'string',
+    required: true,
+    description:
+      'Unique identifier for the column value of each row. Used internally to identify and manage state values.',
+  },
+  {
+    name: 'header',
+    types: 'string',
+    required: true,
+    description: 'Header for the column.',
+  },
+  {
+    name: 'type',
+    types: 'image',
+    required: true,
+    description: 'Sets the cell type of the column.',
+  },
+  {
+    name: 'notation',
+    types: '(value: any, row: any; }) => { color: keyof Colors; description: string; } | undefined',
+    description:
+      'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
+  },
+  {
+    name: 'imageSetHanlder',
+    types: '(rowIndex: any) => number',
+    description: 'Used to set image value on cell.',
+  },
+  {
+    name: 'disabled',
+    types: 'boolean',
+    description: 'Disables cell manipulation for the entire column.',
+  },
+  {
+    name: 'enabled',
+    types: 'boolean',
+    description: 'Enables cell manipulation for the entire column even when a row is disabled.',
+  },
+  {
+    name: 'width',
+    types: ['string', 'number'],
+    description: 'Sets column width.',
+  },
+  {
+    name: 'tooltip',
+    types: 'string',
+    description: 'Tooltip for the worksheet column header.',
+  },
+];
+
 const worksheetSelectableConfigProps: Prop[] = [
   {
     name: 'options',
@@ -513,6 +572,10 @@ export const WorksheetSelectableColumnPropTable: React.FC<PropTableWrapper> = (p
 
 export const WorksheetModalColumnPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable propList={worksheetModalColumnProps} title="Worksheet[ModalColumn]" {...props} />
+);
+
+export const WorksheetImageColumnPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable propList={worksheetImageColumnProps} title="Worksheet[ImageColumn]" {...props} />
 );
 
 export const WorksheetSelectableConfigPropTable: React.FC<PropTableWrapper> = (props) => (
