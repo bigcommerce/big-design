@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render link 1`] = `
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  gap: 0.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #ECEEF5;
+  color: #5E637A;
+  fill: #5E637A;
+  padding-inline: 0.5rem;
+  padding-block: calc(0.5rem / 4);
+  border-radius: 0.25rem;
+  line-height: 1.25rem;
+  font-size: 0.875rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #0B38D9;
+  fill: #3C64F4;
+  background-color: #DBE3FE;
+}
+
+.c0:focus {
+  outline: 4px solid #DBE3FE;
+}
+
+.c0:active,
+.c0.active {
+  color: #0B38D9;
+  fill: #0B38D9;
+  background-color: #F0F3FF;
+}
+
+.c0:focused:active {
+  color: #0B38D9;
+  fill: #0B38D9;
+  background-color: #F0F3FF;
+  outline: 4px solid #9EB3FC;
+}
+
+<a
+  class="c0"
+  href="#"
+  label="Feature Tag"
+>
+  Feature Tag
+</a>
+`;
+
+exports[`renders with external icon 1`] = `
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  gap: 0.25rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #ECEEF5;
+  color: #5E637A;
+  fill: #5E637A;
+  padding-inline: 0.5rem;
+  padding-block: calc(0.5rem / 4);
+  border-radius: 0.25rem;
+  line-height: 1.25rem;
+  font-size: 0.875rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #0B38D9;
+  fill: #3C64F4;
+  background-color: #DBE3FE;
+}
+
+.c0:focus {
+  outline: 4px solid #DBE3FE;
+}
+
+.c0:active,
+.c0.active {
+  color: #0B38D9;
+  fill: #0B38D9;
+  background-color: #F0F3FF;
+}
+
+.c0:focused:active {
+  color: #0B38D9;
+  fill: #0B38D9;
+  background-color: #F0F3FF;
+  outline: 4px solid #9EB3FC;
+}
+
+<a
+  class="c0"
+  href="#"
+  label="Feature Tag"
+  target="_blank"
+>
+  Feature Tag
+</a>
+`;
