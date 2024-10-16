@@ -18,10 +18,11 @@ import { Flex } from '../Flex';
 import { Small, Text } from '../Typography';
 
 import { StyledButton, StyledDropzone } from './styled';
-import { Localization } from './types';
+import { Action, Localization } from './types';
 import { validateFileFormat } from './utils';
 
 export interface Props extends ComponentPropsWithoutRef<'input'> {
+  action?: Action;
   description?: string;
   viewType?: 'row' | 'block';
   icon?: React.ReactNode;
@@ -32,6 +33,7 @@ export interface Props extends ComponentPropsWithoutRef<'input'> {
 
 export const DropZone = ({
   accept,
+  action,
   description,
   disabled,
   icon = <DraftIcon />,
@@ -149,6 +151,34 @@ export const DropZone = ({
     );
   }, [description]);
 
+  const renderedAction = useMemo(() => {
+    if (!action) {
+      return null;
+    }
+
+    const { label, onClick, style, ...actionProps } = action;
+
+    return (
+      <StyledButton
+        {...actionProps}
+        color="secondary"
+        marginTop={isRowView ? 'none' : 'medium'}
+        onClick={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (onClick) {
+            onClick(event);
+          }
+        }}
+        type="button"
+        variant="subtle"
+      >
+        {label}
+      </StyledButton>
+    );
+  }, [action, isRowView]);
+
   /* istanbul ignore next */
   return (
     <StyledDropzone
@@ -191,15 +221,19 @@ export const DropZone = ({
               {renderedDescription}
             </Flex>
           </Flex>
-          <StyledButton
-            color="secondary"
-            disabled={disabled}
-            marginTop={isRowView ? 'none' : 'medium'}
-            onClick={(e) => e.preventDefault()}
-            variant="subtle"
-          >
-            {localization.upload}
-          </StyledButton>
+          <Flex>
+            {renderedAction}
+            <StyledButton
+              color="secondary"
+              disabled={disabled}
+              marginTop={isRowView ? 'none' : 'medium'}
+              onClick={(e) => e.preventDefault()}
+              type="button"
+              variant="subtle"
+            >
+              {localization.upload}
+            </StyledButton>
+          </Flex>
         </>
       )}
     </StyledDropzone>

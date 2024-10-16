@@ -130,7 +130,7 @@ const dropdownItemProps: Prop[] = [
   {
     name: 'tooltip',
     types: 'string',
-    description: <>Adds tooltip for disabled item.</>,
+    description: 'Adds tooltip for disabled item.',
   },
   {
     name: 'type',

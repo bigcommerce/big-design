@@ -1,3 +1,5 @@
+import { ButtonProps } from '../Button';
+
 export interface Localization {
   upload: string;
   optional: string;
@@ -10,4 +12,8 @@ export interface ValidatorConfig {
   message?: string;
   type: string;
   validator: (file: File) => boolean;
+}
+
+export interface Action extends Omit<ButtonProps, 'variant'> {
+  label: string;
 }
