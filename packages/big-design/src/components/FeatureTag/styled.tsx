@@ -14,13 +14,21 @@ export const StyledFeatureTag = styled.a`
   gap: ${({ theme }) => theme.spacing.xxSmall};
   justify-content: center;
   line-height: ${({ theme }) => theme.helpers.remCalc(20)};
+  max-width: fit-content;
   outline: none;
   padding-block: calc(${({ theme }) => theme.spacing.xSmall} / 4);
   padding-inline: ${({ theme }) => theme.spacing.xSmall};
   text-decoration: none;
   user-select: none;
 
-  &:hover {
+  &.active {
+    background-color: ${({ theme }) => theme.colors.primary10};
+    color: ${({ theme }) => theme.colors.primary50};
+    fill: ${({ theme }) => theme.colors.primary};
+  }
+
+  &:hover,
+  &.active:hover {
     background-color: ${({ theme }) => theme.colors.primary20};
     color: ${({ theme }) => theme.colors.primary60};
     fill: ${({ theme }) => theme.colors.primary40};
@@ -31,10 +39,10 @@ export const StyledFeatureTag = styled.a`
   }
 
   &:active,
-  &.active {
-    background-color: ${({ theme }) => theme.colors.primary10};
+  &.active:active {
+    background-color: ${({ theme }) => theme.colors.primary30};
     color: ${({ theme }) => theme.colors.primary60};
-    fill: ${({ theme }) => theme.colors.primary60};
+    fill: ${({ theme }) => theme.colors.primary70};
   }
 
   &:focused:active {
@@ -50,6 +58,7 @@ StyledFeatureTag.defaultProps = { theme: defaultTheme };
 export const StyledFeatureTagIcon = styled.div`
   align-items: center;
   display: flex;
+  flex: 0 0 auto;
   height: ${({ theme }) => theme.helpers.remCalc(18)};
   justify-content: center;
   overflow: hidden;

@@ -1,25 +1,21 @@
 import { IconProps } from '@bigcommerce/big-design-icons';
-import React, { ComponentPropsWithoutRef, forwardRef, ReactElement } from 'react';
+import React, { FunctionComponent, HTMLAttributes, ReactElement } from 'react';
 
 import { StyledFeatureTag, StyledFeatureTagIcon, StyledFeatureTagLabel } from './styled';
 
-export interface FeatureTagProps extends ComponentPropsWithoutRef<'a'> {
+export interface FeatureTagProps extends HTMLAttributes<HTMLAnchorElement> {
   icon?: ReactElement<IconProps>;
   isActive?: boolean;
   label: string;
 }
 
-export const FeatureTag = forwardRef<HTMLAnchorElement, FeatureTagProps>(
-  ({ icon, isActive, ...props }) => {
-    const label = props.label;
-
-    return (
-      <StyledFeatureTag {...props} className={isActive ? 'active' : ''}>
-        {icon ? <StyledFeatureTagIcon>{icon}</StyledFeatureTagIcon> : null}
-        <StyledFeatureTagLabel>{label}</StyledFeatureTagLabel>
-      </StyledFeatureTag>
-    );
-  },
-);
+export const FeatureTag: FunctionComponent<FeatureTagProps> = ({ label, icon, isActive }) => {
+  return label ? (
+    <StyledFeatureTag className={isActive ? 'active' : ''} title={label}>
+      {icon ? <StyledFeatureTagIcon>{icon}</StyledFeatureTagIcon> : null}
+      <StyledFeatureTagLabel>{label}</StyledFeatureTagLabel>
+    </StyledFeatureTag>
+  ) : null;
+};
 
 FeatureTag.displayName = 'FeatureTag';
