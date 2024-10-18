@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import {
   FileUploaderErrorPropTable,
+  FileUploaderFileActionPropTable,
   FileUploaderPropTable,
   FileUploaderValidatorPropTable,
 } from '../PropTables';
@@ -43,6 +44,10 @@ const FileUploaderPage = () => {
                   <FileUploader
                     dropzoneConfig={{
                       label: 'Drag and drop image here',
+                      action: {
+                        label: 'Upload by URL',
+                        onClick: () => null,
+                      },
                     }}
                     files={files}
                     label="Upload files"
@@ -84,6 +89,13 @@ const FileUploaderPage = () => {
               id: 'file-uploader-error',
               title: 'Error',
               render: () => <FileUploaderErrorPropTable id="file-uploader-error-prop-table" />,
+            },
+            {
+              id: 'file-uploader-file-actions',
+              title: 'FileAction',
+              render: () => (
+                <FileUploaderFileActionPropTable id="file-uploader-file-actions-prop-table" />
+              ),
             },
           ]}
         />

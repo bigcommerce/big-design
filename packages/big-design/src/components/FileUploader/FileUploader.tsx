@@ -20,7 +20,7 @@ import { InlineMessage } from '../InlineMessage';
 import { defaultLocalization } from './constants';
 import { File } from './File';
 import { StyledDropZoneWrapper, StyledFileUploaderWrapper, StyledList } from './styled';
-import type { Localization, ValidatorConfig } from './types';
+import { Action, Localization, ValidatorConfig } from './types';
 import { getImagesPreview, validateFiles } from './utils';
 
 export interface FileAction extends Omit<DropdownItem, 'onItemClick'> {
@@ -28,6 +28,7 @@ export interface FileAction extends Omit<DropdownItem, 'onItemClick'> {
 }
 
 interface DropzoneConfig {
+  action?: Action;
   description?: string;
   emptyHeight?: number;
   icon?: React.ReactNode;
@@ -60,7 +61,7 @@ export type FileUploaderProps = Props & ComponentPropsWithoutRef<'input'>;
 
 export const FileUploader: React.FC<FileUploaderProps> = ({
   accept,
-  actions,
+  actions: fileActions,
   description,
   disabled,
   dropzoneConfig = {},
@@ -251,11 +252,11 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
 
   const getActions = useCallback(
     (file: File, idx: number) =>
-      actions?.map(({ onItemClick, ...action }) => ({
+      fileActions?.map(({ onItemClick, ...action }) => ({
         ...action,
         onItemClick: () => onItemClick(file, idx),
       })),
-    [actions],
+    [fileActions],
   );
   const renderedFiles = useMemo(() => {
     if (previewHidden) {
@@ -320,6 +321,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     return (
       <StyledDropZoneWrapper
         accept={accept}
+        action={dropzoneConfig.action}
         description={dropzoneConfig.description}
         disabled={disabled}
         emptyHeight={files.length ? undefined : dropzoneConfig.emptyHeight}
@@ -334,6 +336,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     );
   }, [
     accept,
+    dropzoneConfig.action,
     disabled,
     dropzoneConfig.description,
     dropzoneConfig.emptyHeight,

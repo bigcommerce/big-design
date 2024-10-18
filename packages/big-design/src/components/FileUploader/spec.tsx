@@ -372,6 +372,29 @@ describe('FileUploader', () => {
 
     expect(screen.getAllByText('File name is too long')).toHaveLength(15);
   });
+
+  it('renders additional action', async () => {
+    const mockOnClick = jest.fn();
+
+    render(
+      <FileUploader
+        dropzoneConfig={{
+          action: {
+            label: 'Upload by URL',
+            onClick: mockOnClick,
+          },
+        }}
+        files={[]}
+        label="Upload your images"
+        multiple
+        onFilesChange={jest.fn()}
+      />,
+    );
+
+    await userEvent.click(screen.getByRole('button', { name: /upload by url/i }));
+
+    expect(mockOnClick).toHaveBeenCalled();
+  });
 });
 
 describe('File component', () => {
