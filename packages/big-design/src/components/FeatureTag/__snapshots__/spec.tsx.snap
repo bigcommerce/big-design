@@ -89,6 +89,12 @@ exports[`render feature tag 1`] = `
 `;
 
 exports[`renders as active 1`] = `
+.c2 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -188,7 +194,7 @@ exports[`renders as active 1`] = `
   transform-origin: center;
 }
 
-.c2 {
+.c3 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -203,7 +209,7 @@ exports[`renders as active 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="brjSIf"
+      class="c2"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -221,7 +227,7 @@ exports[`renders as active 1`] = `
     </svg>
   </div>
   <span
-    class="c2"
+    class="c3"
   >
     Feature Tag
   </span>
@@ -229,6 +235,12 @@ exports[`renders as active 1`] = `
 `;
 
 exports[`renders with icon 1`] = `
+.c2 {
+  vertical-align: middle;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -328,7 +340,7 @@ exports[`renders with icon 1`] = `
   transform-origin: center;
 }
 
-.c2 {
+.c3 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -343,7 +355,7 @@ exports[`renders with icon 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="brjSIf"
+      class="c2"
       fill="currentColor"
       height="24"
       stroke="currentColor"
@@ -361,7 +373,7 @@ exports[`renders with icon 1`] = `
     </svg>
   </div>
   <span
-    class="c2"
+    class="c3"
   >
     Feature Tag
   </span>
