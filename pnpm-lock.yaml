@@ -154,8 +154,8 @@ importers:
         specifier: ^29.4.1
         version: 29.7.0
       jest-fail-on-console:
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^3.3.1
+        version: 3.3.1
       jest-styled-components:
         specifier: ^7.1.1
         version: 7.2.0(styled-components@5.3.11(@babel/core@7.25.8)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))
@@ -369,8 +369,8 @@ importers:
         specifier: ^29.4.1
         version: 29.7.0
       jest-fail-on-console:
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^3.3.1
+        version: 3.3.1
       jest-styled-components:
         specifier: ^7.1.1
         version: 7.2.0(styled-components@5.3.11(@babel/core@7.25.8)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))
@@ -452,13 +452,13 @@ importers:
         version: 2.1.4(@babel/core@7.25.8)(styled-components@5.3.11(@babel/core@7.25.8)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))(supports-color@5.5.0)
       jest:
         specifier: ^29.7.0
-        version: 29.7.0(@types/node@20.12.7)
+        version: 29.7.0(@types/node@20.14.11)
       jest-environment-jsdom:
         specifier: ^29.4.1
         version: 29.7.0
       jest-fail-on-console:
-        specifier: ^3.3.0
-        version: 3.3.0
+        specifier: ^3.3.1
+        version: 3.3.1
       jest-styled-components:
         specifier: ^7.1.1
         version: 7.2.0(styled-components@5.3.11(@babel/core@7.25.8)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))
@@ -4383,8 +4383,8 @@ packages:
     resolution: {integrity: sha512-DOSwCRqXirTOyheM+4d5YZOrWcdu0LNZ87ewUoywbcb2XR4wKgqiG8vNeYwhjFMbEkfju7wx2GYH0P2gevGvFw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
-  jest-fail-on-console@3.3.0:
-    resolution: {integrity: sha512-J9rnFQvQwkcGJw01zCEKe2Uag+E926lFgIyaQGep2LqhQH7OCRHyD+tm/jnNoKlSRnOBO60DmzMjeQAVI3f5cw==}
+  jest-fail-on-console@3.3.1:
+    resolution: {integrity: sha512-dmq/dmh5OBgJlD1MJdpznzwFQP8S7msf3ghTGWQLGhagWwHKzGtqXza76nuJUKOK7BdwqcTK6CCE49Xxv4ckUQ==}
 
   jest-get-type@29.6.3:
     resolution: {integrity: sha512-zrteXnqYxfQh7l5FHyL38jL39di8H8rHoecLH3JNxH3BwOrBsNeabdap5e0I23lD4HHI8W5VFBZqG4Eaq5LNcw==}
@@ -9407,6 +9407,7 @@ snapshots:
       - babel-plugin-macros
       - supports-color
       - ts-node
+    optional: true
 
   create-jest@29.7.0(@types/node@20.14.11):
     dependencies:
@@ -10810,6 +10811,7 @@ snapshots:
       - babel-plugin-macros
       - supports-color
       - ts-node
+    optional: true
 
   jest-cli@29.7.0(@types/node@20.14.11):
     dependencies:
@@ -10933,7 +10935,7 @@ snapshots:
       jest-mock: 29.7.0
       jest-util: 29.7.0
 
-  jest-fail-on-console@3.3.0: {}
+  jest-fail-on-console@3.3.1: {}
 
   jest-get-type@29.6.3: {}
 
@@ -11138,6 +11140,7 @@ snapshots:
       - babel-plugin-macros
       - supports-color
       - ts-node
+    optional: true
 
   jest@29.7.0(@types/node@20.14.11):
     dependencies:
