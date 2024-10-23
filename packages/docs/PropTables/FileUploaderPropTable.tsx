@@ -4,6 +4,27 @@ import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components
 
 const fileUploaderProps: Prop[] = [
   {
+    name: 'actions',
+    types: (
+      <>
+        <NextLink
+          href={{
+            hash: 'file-uploader-file-actions-prop-table',
+            query: { props: 'file-uploader-file-actions' },
+          }}
+        >
+          FileAction
+        </NextLink>
+        []
+      </>
+    ),
+    description: (
+      <>
+        Value for the <Code primary>FileUploader</Code>. Only accepts <Code>File[]</Code>.
+      </>
+    ),
+  },
+  {
     name: 'accept',
     types: 'string',
     description: (
@@ -33,8 +54,20 @@ const fileUploaderProps: Prop[] = [
   },
   {
     name: 'dropzoneConfig',
-    types: '{ label?: string; description?: string; icon?: ReactNode }',
-    description: 'Adds a label and a description to the drop-zone box.',
+    types: (
+      <>
+        <NextLink
+          href={{
+            hash: 'file-uploader-dropzone-config-prop-table',
+            query: { props: 'file-uploader-dropzone-config' },
+          }}
+        >
+          DropzoneConfig
+        </NextLink>
+        []
+      </>
+    ),
+    description: <>Adds a label and a description to the drop-zone box.</>,
   },
   {
     name: 'error',
@@ -157,6 +190,70 @@ const fileUploaderValidatorProps: Prop[] = [
   },
 ];
 
+const fileActionsProps: Prop[] = [
+  {
+    name: 'actionType',
+    types: ['normal', 'destructive'],
+    defaultValue: 'normal',
+    description: "Indicates whether your item's action is of normal or destructive nature.",
+  },
+  {
+    name: 'content',
+    types: 'string',
+    required: true,
+    description: (
+      <>
+        Sets the text content of the <Code>DropdownItem</Code>.
+      </>
+    ),
+  },
+  {
+    name: 'description',
+    types: 'string',
+    description: (
+      <>
+        Sets the content description of the <Code>DropdownItem</Code>.
+      </>
+    ),
+  },
+  {
+    name: 'disabled',
+    types: 'boolean',
+    description: 'Sets the item to disabled.',
+  },
+  {
+    name: 'hash',
+    types: 'string',
+    description: 'Stored hash of the item.',
+  },
+  {
+    name: 'icon',
+    types: <NextLink href="/icons">Icon</NextLink>,
+    description: (
+      <>
+        Pass in an <NextLink href="/icons">Icon</NextLink> component to display to the left of the
+        text.
+      </>
+    ),
+  },
+  {
+    name: 'onItemClick',
+    types: '(name: File, idx: number) => void',
+    required: true,
+    description: 'Triggers when clicking on action item.',
+  },
+  {
+    name: 'tooltip',
+    types: 'string',
+    description: <>Adds tooltip for disabled item.</>,
+  },
+  {
+    name: 'type',
+    types: "'text'",
+    description: 'Type of the item.',
+  },
+];
+
 const fileUploaderErrorProps: Prop[] = [
   {
     name: 'file',
@@ -180,6 +277,39 @@ const fileUploaderErrorProps: Prop[] = [
   },
 ];
 
+const dropzoneConfigProps: Prop[] = [
+  {
+    name: 'action',
+    types: 'object',
+    description: (
+      <>
+        Accepts an object with <NextLink href="/button">Button</NextLink> props and additional{' '}
+        <Code>label</Code> prop and exclude <Code>variant</Code> prop.
+      </>
+    ),
+  },
+  {
+    name: 'description',
+    types: 'string',
+    description: 'Short description for the dropzone.',
+  },
+  {
+    name: 'emptyHeight',
+    types: 'number',
+    description: 'Set height for the dropzone when there are no files.',
+  },
+  {
+    name: 'icon',
+    types: 'React.ReactNode',
+    description: 'Adds icon to the dropzone.',
+  },
+  {
+    name: 'label',
+    types: 'string',
+    description: 'Adds a label to the field.',
+  },
+];
+
 export const FileUploaderPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable
     nativeElement={['input', 'most']}
@@ -195,4 +325,12 @@ export const FileUploaderValidatorPropTable: React.FC<PropTableWrapper> = (props
 
 export const FileUploaderErrorPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable propList={fileUploaderErrorProps} title="Error" {...props} />
+);
+
+export const FileUploaderFileActionPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable propList={fileActionsProps} title="FileAction" {...props} />
+);
+
+export const FileUploaderFileDropzoneConfigPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable propList={dropzoneConfigProps} title="DropzoneConfig" {...props} />
 );
