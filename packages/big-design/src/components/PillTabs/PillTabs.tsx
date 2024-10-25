@@ -96,7 +96,9 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       >
         <Dropdown
           items={dropdownItems}
-          toggle={<Button iconOnly={<MoreHorizIcon title="add" />} variant="subtle" />}
+          toggle={
+            <Button iconOnly={<MoreHorizIcon title="add" />} type="button" variant="subtle" />
+          }
         />
       </StyledFlexItem>
     );
@@ -149,6 +151,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
               isActive={activePills.includes(item.id)}
               marginRight="xSmall"
               onClick={() => onPillClick(item.id)}
+              type="button"
               variant="subtle"
             >
               {item.title}
