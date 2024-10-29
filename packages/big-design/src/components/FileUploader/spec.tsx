@@ -11,7 +11,7 @@ import { defaultLocalization } from './constants';
 import { DropZone } from './DropZone';
 import { File as FileComponent } from './File';
 import { FileUploader } from './FileUploader';
-import { type ValidatorConfig } from './types';
+import { Action, ValidatorConfig } from './types';
 
 import 'jest-styled-components';
 
@@ -371,6 +371,83 @@ describe('FileUploader', () => {
     await userEvent.click(screen.getByRole('button', { name: /show more/i }));
 
     expect(screen.getAllByText('File name is too long')).toHaveLength(15);
+  });
+
+  it('renders additional action', async () => {
+    const mockOnClick = jest.fn();
+
+    render(
+      <FileUploader
+        dropzoneConfig={{
+          action: {
+            label: 'Upload by URL',
+            onClick: mockOnClick,
+          },
+        }}
+        files={[]}
+        label="Upload your images"
+        multiple
+        onFilesChange={jest.fn()}
+      />,
+    );
+
+    await userEvent.click(screen.getByRole('button', { name: /upload by url/i }));
+
+    expect(mockOnClick).toHaveBeenCalled();
+  });
+
+  it('does not forward styles', () => {
+    jest.spyOn(console, 'error').mockImplementation();
+
+    render(
+      <FileUploader
+        dropzoneConfig={{
+          action: {
+            label: 'Upload by URL',
+            onClick: jest.fn(),
+            style: { backgroundColor: 'red' },
+          },
+        }}
+        files={[]}
+        label="Upload your images"
+        multiple
+        onFilesChange={jest.fn()}
+      />,
+    );
+
+    expect(screen.getByRole('button', { name: /upload by url/i })).not.toHaveStyle(
+      'background: red',
+    );
+  });
+
+  it('does not forward variant', async () => {
+    jest.spyOn(console, 'error').mockImplementation();
+
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    const action = {
+      label: 'Upload by URL',
+      variant: 'primary',
+      onClick: jest.fn(),
+    } as Action;
+
+    render(
+      <FileUploader
+        dropzoneConfig={{
+          action,
+        }}
+        files={[]}
+        label="Upload your images"
+        multiple
+        onFilesChange={jest.fn()}
+      />,
+    );
+
+    expect(screen.getByRole('button', { name: /upload by url/i })).not.toHaveStyle(
+      'background-color: rgb(60, 100, 244)',
+    );
+    expect(screen.getByRole('button', { name: /upload by url/i })).toHaveStyle(
+      'background-color: transparent',
+    );
   });
 });
 

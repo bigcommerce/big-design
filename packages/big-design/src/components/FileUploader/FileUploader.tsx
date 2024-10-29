@@ -20,7 +20,7 @@ import { InlineMessage } from '../InlineMessage';
 import { defaultLocalization } from './constants';
 import { File } from './File';
 import { StyledDropZoneWrapper, StyledFileUploaderWrapper, StyledList } from './styled';
-import type { Localization, ValidatorConfig } from './types';
+import { Action, Localization, ValidatorConfig } from './types';
 import { getImagesPreview, validateFiles } from './utils';
 
 export interface FileAction extends Omit<DropdownItem, 'onItemClick'> {
@@ -28,6 +28,7 @@ export interface FileAction extends Omit<DropdownItem, 'onItemClick'> {
 }
 
 interface DropzoneConfig {
+  action?: Action;
   description?: string;
   emptyHeight?: number;
   icon?: React.ReactNode;
@@ -257,6 +258,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       })),
     [actions],
   );
+
   const renderedFiles = useMemo(() => {
     if (previewHidden) {
       return null;
@@ -320,6 +322,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     return (
       <StyledDropZoneWrapper
         accept={accept}
+        action={dropzoneConfig.action}
         description={dropzoneConfig.description}
         disabled={disabled}
         emptyHeight={files.length ? undefined : dropzoneConfig.emptyHeight}
@@ -334,6 +337,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     );
   }, [
     accept,
+    dropzoneConfig.action,
     disabled,
     dropzoneConfig.description,
     dropzoneConfig.emptyHeight,
