@@ -71,6 +71,6 @@
     "rimraf": "^6.0.1",
     "styled-components": "^5.3.11",
     "tiny-async-pool": "^2.0.1",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   }
 }
