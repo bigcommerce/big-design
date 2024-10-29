@@ -40,6 +40,7 @@ export * from './MenuIcon';
 export * from './MoreHorizIcon';
 export * from './NotificationsIcon';
 export * from './OpenInNewIcon';
+export * from './PinIcon';
 export * from './PublicIcon';
 export * from './ReceiptIcon';
 export * from './RedoIcon';
