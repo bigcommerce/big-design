@@ -33,7 +33,7 @@
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
-    "@babel/runtime": "^7.25.6",
+    "@babel/runtime": "^7.26.0",
     "@bigcommerce/big-design-theme": "workspace:^"
   },
   "peerDependencies": {
