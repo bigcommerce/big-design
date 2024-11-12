@@ -33,12 +33,12 @@
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
-    "@babel/runtime": "^7.26.0"
+    "@babel/runtime": "^7.26.0",
+    "@bigcommerce/big-design": "workspace:^",
+    "@bigcommerce/big-design-icons": "workspace:^",
+    "@bigcommerce/big-design-theme": "workspace:^"
   },
   "peerDependencies": {
-    "@bigcommerce/big-design": "^1.0.0",
-    "@bigcommerce/big-design-icons": "^1.0.0",
-    "@bigcommerce/big-design-theme": "^1.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "styled-components": "^5.3.5"
@@ -50,9 +50,6 @@
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.7",
     "@babel/preset-typescript": "^7.26.0",
-    "@bigcommerce/big-design": "workspace:^",
-    "@bigcommerce/big-design-icons": "workspace:^",
-    "@bigcommerce/big-design-theme": "workspace:^",
     "@bigcommerce/configs": "workspace:^",
     "@bigcommerce/pack": "workspace:^",
     "@styled/typescript-styled-plugin": "^1.0.1",
