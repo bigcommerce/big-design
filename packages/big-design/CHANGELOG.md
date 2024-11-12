@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.0
+
+### Minor Changes
+
+- e860150: Add action props to FileUploader
+
 ## 1.4.2
 
 ### Patch Changes
