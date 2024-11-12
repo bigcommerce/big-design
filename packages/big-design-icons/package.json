@@ -47,7 +47,7 @@
     "@babel/plugin-transform-runtime": "^7.25.7",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.7",
-    "@babel/preset-typescript": "^7.25.7",
+    "@babel/preset-typescript": "^7.26.0",
     "@bigcommerce/configs": "workspace:^",
     "@styled/typescript-styled-plugin": "^1.0.1",
     "@svgr/core": "^8.1.0",
