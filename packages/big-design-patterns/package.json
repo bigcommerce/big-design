@@ -36,9 +36,9 @@
     "@babel/runtime": "^7.26.0"
   },
   "peerDependencies": {
-    "@bigcommerce/big-design": "workspace:^",
-    "@bigcommerce/big-design-icons": "workspace:^",
-    "@bigcommerce/big-design-theme": "workspace:^",
+    "@bigcommerce/big-design": "^1.0.0",
+    "@bigcommerce/big-design-icons": "^1.0.0",
+    "@bigcommerce/big-design-theme": "^1.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "styled-components": "^5.3.5"
