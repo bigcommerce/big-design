@@ -1,1 +1,1 @@
-export { Pagination, type PaginationProps } from './OffsetPagination';
+export { Pagination, type PaginationProps } from './Pagination';

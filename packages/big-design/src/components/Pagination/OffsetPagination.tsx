@@ -21,7 +21,7 @@ const defaultLocalization: PaginationLocalization = {
   nextPage: 'Next page',
 };
 
-export interface PaginationProps extends MarginProps {
+export interface OffsetPaginationProps extends MarginProps {
   currentPage: number;
   itemsPerPage: number;
   itemsPerPageOptions: number[];
@@ -41,7 +41,7 @@ const defaultGetRangeLabel = (start: number, end: number, totalItems: number): s
   return `${start} - ${end} of ${totalItems}`;
 };
 
-export const Pagination: React.FC<PaginationProps> = memo(
+export const OffsetPagination: React.FC<OffsetPaginationProps> = memo(
   ({
     itemsPerPage,
     currentPage,
@@ -162,4 +162,4 @@ export const Pagination: React.FC<PaginationProps> = memo(
   },
 );
 
-Pagination.displayName = 'Pagination';
+OffsetPagination.displayName = 'Pagination';
