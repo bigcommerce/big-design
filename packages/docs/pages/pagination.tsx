@@ -1,10 +1,12 @@
-import { H1, Pagination, Panel, Text } from '@bigcommerce/big-design';
+import { Box, H1, Pagination, Panel, PillTabs, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
 import { Code, CodePreview, GuidelinesTable, List } from '../components';
 import { MarginPropTable, PaginationPropTable } from '../PropTables';
 
 const PaginationPage = () => {
+  const [mode, setMode] = useState<'offset' | 'stateless'>('offset');
+
   return (
     <>
       <H1>Pagination</H1>
@@ -27,52 +29,147 @@ const PaginationPage = () => {
       </Panel>
 
       <Panel header="Implementation" headerId="implementation">
-        <CodePreview>
-          {/* jsx-to-string:start */}
-          {function ExampleList() {
-            const [items] = useState(['Item1', 'Item2', 'Item3', 'Item 4', 'Item 5']);
-            const [ranges] = useState([2, 3, 4]);
-            const [range, setRange] = useState(ranges[0]);
-            const [page, setPage] = useState(1);
-            const [currentItems, setCurrentItems] = useState(['']);
+        <PillTabs
+          activePills={[mode]}
+          items={[
+            { id: 'offset', title: 'Offset' },
+            { id: 'stateless', title: 'Stateless' },
+          ]}
+          onPillClick={(value) => setMode(value === 'offset' ? 'offset' : 'stateless')}
+        />
+        <Box marginTop="xSmall">
+          {mode === 'offset' ? (
+            <CodePreview>
+              {/* jsx-to-string:start */}
+              {function ExampleList() {
+                const [items] = useState(['Item1', 'Item2', 'Item3', 'Item 4', 'Item 5']);
+                const [ranges] = useState([2, 3, 4]);
+                const [range, setRange] = useState(ranges[0]);
+                const [page, setPage] = useState(1);
+                const [currentItems, setCurrentItems] = useState(['']);
 
-            const onItemsPerPageChange = (newRange) => {
-              setPage(1);
-              setRange(newRange);
-            };
+                const onItemsPerPageChange = (newRange) => {
+                  setPage(1);
+                  setRange(newRange);
+                };
 
-            useEffect(() => {
-              const maxItems = page * range;
-              const lastItem = Math.min(maxItems, items.length);
-              const firstItem = Math.max(0, maxItems - range);
+                useEffect(() => {
+                  const maxItems = page * range;
+                  const lastItem = Math.min(maxItems, items.length);
+                  const firstItem = Math.max(0, maxItems - range);
 
-              setCurrentItems(items.slice(firstItem, lastItem));
-            }, [page, items, range]);
+                  setCurrentItems(items.slice(firstItem, lastItem));
+                }, [page, items, range]);
 
-            return (
-              <>
-                <Pagination
-                  currentPage={page}
-                  itemsPerPage={range}
-                  itemsPerPageOptions={ranges}
-                  onItemsPerPageChange={onItemsPerPageChange}
-                  onPageChange={(newPage) => setPage(newPage)}
-                  totalItems={items.length}
-                />
-                <ul>
-                  {currentItems.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </>
-            );
-          }}
-          {/* jsx-to-string:end */}
-        </CodePreview>
+                return (
+                  <>
+                    <Pagination
+                      currentPage={page}
+                      itemsPerPage={range}
+                      itemsPerPageOptions={ranges}
+                      onItemsPerPageChange={onItemsPerPageChange}
+                      onPageChange={(newPage) => setPage(newPage)}
+                      totalItems={items.length}
+                    />
+                    <ul>
+                      {currentItems.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </>
+                );
+              }}
+              {/* jsx-to-string:end */}
+            </CodePreview>
+          ) : (
+            <CodePreview>
+              {/* jsx-to-string:start */}
+              {function ExampleList() {
+                const allItems = [
+                  { name: 'Item1', cursor: 'abc123' },
+                  { name: 'Item2', cursor: 'abc124' },
+                  { name: 'Item3', cursor: 'abc125' },
+                  { name: 'Item4', cursor: 'abc126' },
+                  { name: 'Item5', cursor: 'abc127' },
+                ];
+
+                const ranges = [2, 3, 4];
+                const [itemOptions, setItemOptions] = useState<{
+                  range: (typeof ranges)[number];
+                  cursor?: string;
+                  target?: 'before' | 'after';
+                }>({ range: ranges[0] });
+
+                const [results, setResults] = useState<{
+                  data: string[];
+                  startCursor?: string;
+                  endCursor?: string;
+                  hasNext: boolean;
+                  hasPrevious: boolean;
+                }>({ data: [], hasNext: false, hasPrevious: false });
+
+                useEffect(() => {
+                  const targetIndex = allItems.findIndex(
+                    (item) => item.cursor === itemOptions?.cursor,
+                  );
+
+                  const itemResults =
+                    itemOptions?.target === 'before'
+                      ? allItems.slice(targetIndex - itemOptions.range, targetIndex)
+                      : allItems.slice(targetIndex + 1, itemOptions.range + targetIndex + 1);
+
+                  console.log({ targetIndex, cursorTarget: itemOptions, itemResults });
+
+                  setResults({
+                    data: itemResults.map((item) => item.name),
+                    startCursor: [...itemResults].shift()?.cursor,
+                    endCursor: [...itemResults].pop()?.cursor,
+                    hasNext: [...allItems].pop()?.cursor !== [...itemResults].pop()?.cursor,
+                    hasPrevious: [...allItems].shift()?.cursor !== [...itemResults].shift()?.cursor,
+                  });
+                }, [itemOptions]);
+
+                const goToNext = () =>
+                  setItemOptions(({ range }) => ({
+                    range,
+                    cursor: results.endCursor,
+                    target: 'after',
+                  }));
+
+                const goToPrevious = () =>
+                  setItemOptions(({ range }) => ({
+                    range,
+                    cursor: results.startCursor,
+                    target: 'before',
+                  }));
+
+                return (
+                  <>
+                    <Pagination
+                      itemsPerPage={itemOptions.range}
+                      itemsPerPageOptions={ranges}
+                      onItemsPerPageChange={(range) => setItemOptions({ range })}
+                      disableNext={!results.hasNext}
+                      onNext={goToNext}
+                      disablePrevious={!results.hasPrevious}
+                      onPrevious={goToPrevious}
+                    />
+                    <ul>
+                      {results.data.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </>
+                );
+              }}
+              {/* jsx-to-string:end */}
+            </CodePreview>
+          )}
+        </Box>
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <PaginationPropTable inheritedProps={<MarginPropTable collapsible />} />
+        <PaginationPropTable mode={mode} inheritedProps={<MarginPropTable collapsible />} />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
