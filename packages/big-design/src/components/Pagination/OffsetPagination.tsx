@@ -1,15 +1,8 @@
-import {
-  ArrowDropDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from '@bigcommerce/big-design-icons';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import { MarginProps } from '../../helpers';
-import { Dropdown, DropdownItem } from '../Dropdown';
-import { Flex, FlexItem } from '../Flex';
 
-import { StyledButton } from './styled';
+import { StatelessPagination } from './StatelessPagination';
 
 export interface PaginationLocalization {
   previousPage: string;
@@ -110,54 +103,19 @@ export const OffsetPagination: React.FC<OffsetPaginationProps> = memo(
       onPageChange(currentPage - 1);
     };
 
-    const handleRangeChange = (item: DropdownItem) => {
-      onItemsPerPageChange(Number(item.hash));
-    };
-
     return (
-      <Flex aria-label={label} flexDirection="row" role="navigation">
-        <FlexItem>
-          <Dropdown
-            items={itemsPerPageOptions.map((range) => ({
-              content: `${range}`,
-              hash: `${range}`,
-              onItemClick: handleRangeChange,
-            }))}
-            positionFixed={true}
-            selectedItem={{
-              content: `${itemsPerPage}`,
-              hash: `${itemsPerPage}`,
-              onItemClick: handleRangeChange,
-            }}
-            toggle={
-              <StyledButton
-                iconRight={<ArrowDropDownIcon size="xxLarge" />}
-                type="button"
-                variant="subtle"
-              >
-                {getRangeLabel(itemRange.start, itemRange.end, totalItems)}
-              </StyledButton>
-            }
-          />
-        </FlexItem>
-        <FlexItem>
-          <StyledButton
-            disabled={currentPage <= 1}
-            iconOnly={<ChevronLeftIcon title={localization.previousPage} />}
-            onClick={handlePageDecrease}
-            type="button"
-            variant="subtle"
-          />
-
-          <StyledButton
-            disabled={currentPage >= maxPages}
-            iconOnly={<ChevronRightIcon title={localization.nextPage} />}
-            onClick={handlePageIncrease}
-            type="button"
-            variant="subtle"
-          />
-        </FlexItem>
-      </Flex>
+      <StatelessPagination
+        itemsPerPage={itemsPerPage}
+        itemsPerPageOptions={itemsPerPageOptions}
+        onItemsPerPageChange={onItemsPerPageChange}
+        label={label}
+        localization={localization}
+        rangeLabel={getRangeLabel(itemRange.start, itemRange.end, totalItems)}
+        disableNext={currentPage >= maxPages}
+        onNext={handlePageIncrease}
+        disablePrevious={currentPage <= 1}
+        onPrevious={handlePageDecrease}
+      />
     );
   },
 );

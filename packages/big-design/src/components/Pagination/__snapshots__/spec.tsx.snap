@@ -1634,7 +1634,7 @@ exports[`render pagination component with no items 1`] = `
       </button>
       <div
         class="c8"
-        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 4px);"
+        style="position: fixed; left: 0px; top: 0px;"
       >
         <div
           class="c9"
