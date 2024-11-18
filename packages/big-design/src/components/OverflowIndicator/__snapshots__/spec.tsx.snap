@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with custom delimiter 1`] = `
+<div>
+  <div
+    class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlex-sc-3a1154b6-0 cyanUx"
+  >
+    <div
+      class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlexItem-sc-2b88929e-0 ceScTS"
+    >
+      item1 | item2
+    </div>
+    <div
+      class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlexItem-sc-2b88929e-0 ceScTS"
+    >
+      <div
+        class="styled__StyledBox-sc-12d4dbf-0 kIehhH styled__StyledGrid-sc-7da2c49d-0 jTDWAw"
+      >
+        <div
+          class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlex-sc-3a1154b6-0 llmjKj"
+        >
+          <p
+            class="styled__StyledSmall-sc-218b28a9-6 ngjVv"
+            color="white"
+          >
+            +
+            1
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders with no items 1`] = `<div />`;
+
+exports[`renders with overflowing items 1`] = `
+<div>
+  <div
+    class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlex-sc-3a1154b6-0 cyanUx"
+  >
+    <div
+      class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlexItem-sc-2b88929e-0 ceScTS"
+    >
+      item1
+    </div>
+    <div
+      class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlexItem-sc-2b88929e-0 ceScTS"
+    >
+      <div
+        class="styled__StyledBox-sc-12d4dbf-0 kIehhH styled__StyledGrid-sc-7da2c49d-0 jTDWAw"
+      >
+        <div
+          class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlex-sc-3a1154b6-0 llmjKj"
+        >
+          <p
+            class="styled__StyledSmall-sc-218b28a9-6 ngjVv"
+            color="white"
+          >
+            +
+            3
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders with single long item 1`] = `
+<div>
+  <div
+    class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlex-sc-3a1154b6-0 cyanUx"
+  >
+    <div
+      class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlexItem-sc-2b88929e-0 ceScTS"
+    >
+      averylongi...
+    </div>
+    <div
+      class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlexItem-sc-2b88929e-0 ceScTS"
+    >
+      <div
+        class="styled__StyledBox-sc-12d4dbf-0 kIehhH styled__StyledGrid-sc-7da2c49d-0 jTDWAw"
+      >
+        <div
+          class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledFlex-sc-3a1154b6-0 llmjKj"
+        >
+          <p
+            class="styled__StyledSmall-sc-218b28a9-6 ngjVv"
+            color="white"
+          >
+            +
+            1
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders without overflowing 1`] = `
+<div>
+  item1, item2
+</div>
+`;
