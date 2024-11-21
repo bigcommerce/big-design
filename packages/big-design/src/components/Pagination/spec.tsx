@@ -4,13 +4,13 @@ import React from 'react';
 
 import 'jest-styled-components';
 
-import { Pagination } from './index';
+import { OffsetPagination } from './index';
 
-test('render pagination component', async () => {
+test('render offset pagination component', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { findByRole } = render(
-    <Pagination
+    <OffsetPagination
       currentPage={1}
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
@@ -25,11 +25,11 @@ test('render pagination component', async () => {
   expect(pagination).toMatchSnapshot();
 });
 
-test('render pagination component with invalid page info', async () => {
+test('render offset pagination component with invalid page info', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { findByRole } = render(
-    <Pagination
+    <OffsetPagination
       currentPage={-2}
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
@@ -45,11 +45,11 @@ test('render pagination component with invalid page info', async () => {
   expect(pagination).toMatchSnapshot();
 });
 
-test('render pagination component with invalid range info', async () => {
+test('render offset pagination component with invalid range info', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { findByRole } = render(
-    <Pagination
+    <OffsetPagination
       currentPage={1}
       itemsPerPage={-5}
       itemsPerPageOptions={[2, 3, 5]}
@@ -64,11 +64,11 @@ test('render pagination component with invalid range info', async () => {
   expect(pagination).toMatchSnapshot();
 });
 
-test('render pagination component with no items', async () => {
+test('render offset pagination component with no items', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { findByRole } = render(
-    <Pagination
+    <OffsetPagination
       currentPage={1}
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
@@ -82,7 +82,7 @@ test('render pagination component with no items', async () => {
   expect(pagination).toMatchSnapshot();
 });
 
-test('render pagination component while overriding button labels', async () => {
+test('render offset pagination component while overriding button labels', async () => {
   const getRangeLabel = (first: number, last: number, totalItems: number) => {
     return `[Custom label] ${first}-${last} of ${totalItems}`;
   };
@@ -90,7 +90,7 @@ test('render pagination component while overriding button labels', async () => {
   const changeRange = jest.fn();
 
   render(
-    <Pagination
+    <OffsetPagination
       currentPage={1}
       getRangeLabel={getRangeLabel}
       itemsPerPage={3}
@@ -118,7 +118,7 @@ test('trigger range change', async () => {
   const changePage = jest.fn();
   const changeRange = jest.fn();
   const { findByText } = render(
-    <Pagination
+    <OffsetPagination
       currentPage={1}
       itemsPerPage={2}
       itemsPerPageOptions={[2, 3, 5]}
@@ -142,7 +142,7 @@ test('trigger page decrease', async () => {
   const changeRange = jest.fn();
 
   render(
-    <Pagination
+    <OffsetPagination
       currentPage={2}
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
@@ -173,7 +173,7 @@ test('trigger page increase', async () => {
   const changeRange = jest.fn();
 
   render(
-    <Pagination
+    <OffsetPagination
       currentPage={1}
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
@@ -204,7 +204,7 @@ test('current itemsPerPage highlighted', async () => {
   const changeRange = jest.fn();
 
   render(
-    <Pagination
+    <OffsetPagination
       currentPage={2}
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
@@ -228,7 +228,7 @@ test('renders localized labels', async () => {
   const changeRange = jest.fn();
 
   render(
-    <Pagination
+    <OffsetPagination
       currentPage={1}
       getRangeLabel={(start: number, end: number, totalItems: number): string => {
         return `${start} - ${end} de ${totalItems}`;

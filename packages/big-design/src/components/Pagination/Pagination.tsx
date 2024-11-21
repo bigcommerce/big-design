@@ -11,17 +11,17 @@ import { Flex, FlexItem } from '../Flex';
 
 import { StyledButton } from './styled';
 
-export interface PaginationLocalization {
+export interface OffsetPaginationLocalization {
   previousPage: string;
   nextPage: string;
 }
 
-const defaultLocalization: PaginationLocalization = {
+const defaultLocalization: OffsetPaginationLocalization = {
   previousPage: 'Previous page',
   nextPage: 'Next page',
 };
 
-export interface PaginationProps extends MarginProps {
+export interface OffsetPaginationProps extends MarginProps {
   currentPage: number;
   itemsPerPage: number;
   itemsPerPageOptions: number[];
@@ -29,7 +29,7 @@ export interface PaginationProps extends MarginProps {
   onPageChange(page: number): void;
   onItemsPerPageChange(range: number): void;
   label?: string;
-  localization?: PaginationLocalization;
+  localization?: OffsetPaginationLocalization;
   getRangeLabel?(start: number, end: number, totalItems: number): string;
 }
 
@@ -41,7 +41,7 @@ const defaultGetRangeLabel = (start: number, end: number, totalItems: number): s
   return `${start} - ${end} of ${totalItems}`;
 };
 
-export const Pagination: React.FC<PaginationProps> = memo(
+export const OffsetPagination: React.FC<OffsetPaginationProps> = memo(
   ({
     itemsPerPage,
     currentPage,
@@ -162,4 +162,4 @@ export const Pagination: React.FC<PaginationProps> = memo(
   },
 );
 
-Pagination.displayName = 'Pagination';
+OffsetPagination.displayName = 'OffsetPagination';

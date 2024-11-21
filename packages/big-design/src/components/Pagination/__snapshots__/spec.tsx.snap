@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render pagination component 1`] = `
+exports[`render offset pagination component 1`] = `
 .c7 {
   vertical-align: middle;
   height: 2rem;
@@ -430,7 +430,7 @@ exports[`render pagination component 1`] = `
 </div>
 `;
 
-exports[`render pagination component with invalid page info 1`] = `
+exports[`render offset pagination component with invalid page info 1`] = `
 .c7 {
   vertical-align: middle;
   height: 2rem;
@@ -860,7 +860,7 @@ exports[`render pagination component with invalid page info 1`] = `
 </div>
 `;
 
-exports[`render pagination component with invalid range info 1`] = `
+exports[`render offset pagination component with invalid range info 1`] = `
 .c7 {
   vertical-align: middle;
   height: 2rem;
@@ -1291,7 +1291,7 @@ exports[`render pagination component with invalid range info 1`] = `
 </div>
 `;
 
-exports[`render pagination component with no items 1`] = `
+exports[`render offset pagination component with no items 1`] = `
 .c7 {
   vertical-align: middle;
   height: 2rem;

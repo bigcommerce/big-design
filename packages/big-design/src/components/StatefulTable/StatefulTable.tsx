@@ -4,7 +4,7 @@ import { useDidUpdate } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
 import { PaginationProps } from '../Pagination';
-import { PaginationLocalization } from '../Pagination/Pagination';
+import { OffsetPaginationLocalization } from '../Pagination/Pagination';
 import { PillTabItem, PillTabs, PillTabsProps } from '../PillTabs';
 import { Search } from '../Search';
 import { SearchLocalization } from '../Search/types';
@@ -20,9 +20,9 @@ import {
 import { createReducer, createReducerInit } from './reducer';
 
 type Localization =
-  | PaginationLocalization
+  | OffsetPaginationLocalization
   | SearchLocalization
-  | (PaginationLocalization & SearchLocalization);
+  | (OffsetPaginationLocalization & SearchLocalization);
 
 const defaultLocalization: Localization = {
   nextPage: 'Next page',
