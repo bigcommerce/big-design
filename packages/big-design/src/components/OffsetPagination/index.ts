@@ -1,6 +1,6 @@
-import { OffsetPagination, type OffsetPaginationProps } from './Pagination';
+import { OffsetPagination, type OffsetPaginationProps } from './OffsetPagination';
 
-export { OffsetPagination, type OffsetPaginationProps } from './Pagination';
+export { OffsetPagination, type OffsetPaginationProps } from './OffsetPagination';
 
 /**
  * @deprecated This component has been renamed to `OffsetPagination`. Please import and use `OffsetPagination` instead.

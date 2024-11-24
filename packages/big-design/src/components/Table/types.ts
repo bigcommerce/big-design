@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { MarginProps } from '../../helpers';
-import { PaginationProps } from '../Pagination';
+import { OffsetPaginationProps } from '../OffsetPagination';
 
 import { TableColumnDisplayProps } from './helpers';
 
@@ -38,7 +38,7 @@ export interface TableColumn<T> extends TableColumnDisplayProps {
   withPadding?: boolean;
 }
 
-export type TablePaginationProps = Omit<PaginationProps, keyof MarginProps>;
+export type TablePaginationProps = Omit<OffsetPaginationProps, keyof MarginProps>;
 
 interface Localization {
   ascendingOrder: string;

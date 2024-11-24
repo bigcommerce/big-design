@@ -7,11 +7,11 @@ import { MarginPropTable, OffsetPaginationPropTable } from '../PropTables';
 const OffsetPaginationPage = () => {
   return (
     <>
-      <H1>Offset Pagination</H1>
+      <H1>OffsetPagination</H1>
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Offset Pagination</Code> is used to divide a long list or table into several
+          <Code primary>OffsetPagination</Code> is used to divide a long list or table into several
           pages, indicating other pages exist and allowing the user to access them. This makes the
           content easier to read and ensures faster loading time. The user can easily navigate
           through the pages in order, or jump to any page in the list. The user can also select the
@@ -82,13 +82,13 @@ const OffsetPaginationPage = () => {
         <GuidelinesTable
           discouraged={[
             <>
-              Don’t place <Code primary>Offset Pagination</Code> below a table.
+              Don’t place <Code primary>OffsetPagination</Code> below a table.
             </>,
             'Don’t show dropdown arrow when there are less than 10 items.',
           ]}
           recommended={[
             <>
-              Place <Code primary>Offset Pagination</Code> directly above the header of the table
+              Place <Code primary>OffsetPagination</Code> directly above the header of the table
               that it controls, right aligned.
             </>,
             'Disable dropdown options greater than the option that will show the total number of results (e.g., if there are 42 results, the highest option should be 50).',

@@ -23,7 +23,7 @@ export * from './MessagePropTable';
 export * from './ModalPropTable';
 export * from './MultiSelectPropTable';
 export * from './PaddingPropTable';
-export * from './PaginationPropTable';
+export * from './OffsetPaginationPropTable';
 export * from './PanelPropTable';
 export * from './PillTabsPropTable';
 export * from './PopoverPropTable';

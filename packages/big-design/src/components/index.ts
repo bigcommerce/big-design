@@ -21,7 +21,7 @@ export * from './Link';
 export * from './Message';
 export * from './Modal';
 export * from './MultiSelect';
-export * from './Pagination';
+export * from './OffsetPagination';
 export * from './Panel';
 export * from './PillTabs';
 export * from './Popover';

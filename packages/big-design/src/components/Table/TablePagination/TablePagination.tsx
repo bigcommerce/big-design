@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { OffsetPagination } from '../../Pagination';
+import { OffsetPagination } from '../../OffsetPagination';
 import { TablePaginationProps } from '../types';
 
 import { StyledPaginationContainer } from './styled';
