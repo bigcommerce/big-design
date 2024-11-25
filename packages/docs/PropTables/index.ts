@@ -34,6 +34,7 @@ export * from './SearchPropTable';
 export * from './SelectPropTable';
 export * from './StatefulTablePropTable';
 export * from './StatefulTreePropTable';
+export * from './StatelessPaginationPropTable';
 export * from './StepperPropTable';
 export * from './SwitchPropTable';
 export * from './TablePropTable';
