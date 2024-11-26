@@ -5,7 +5,7 @@ import { FlexItem } from '../../Flex';
 import { Text } from '../../Typography';
 import { SelectAll } from '../SelectAll';
 import { TablePagination } from '../TablePagination';
-import { TableItem, TablePaginationProps, TableSelectable } from '../types';
+import { DiscriminatedTablePaginationProps, TableItem, TableSelectable } from '../types';
 
 import { StyledFlex } from './styled';
 
@@ -14,7 +14,7 @@ export interface ActionsProps<T> {
   forwardedRef: RefObject<HTMLDivElement>;
   itemName?: string;
   items: T[];
-  pagination?: TablePaginationProps;
+  pagination?: DiscriminatedTablePaginationProps;
   onSelectionChange?: TableSelectable<T>['onSelectionChange'];
   selectedItems: Set<T>;
   stickyHeader?: boolean;
@@ -34,14 +34,15 @@ const InternalActions = <T extends TableItem>({
   ...props
 }: ActionsProps<T>) => {
   const isSelectable = typeof onSelectionChange === 'function';
-  const totalItems = pagination ? pagination.totalItems : items.length;
+  const statelessPagination = pagination?.type === 'stateless';
+  const totalItems = pagination && !statelessPagination ? pagination.totalItems : items.length;
 
   const renderItemName = () => {
     if (typeof itemName !== 'string') {
       return null;
     }
 
-    const text = isSelectable ? itemName : `${totalItems} ${itemName}`;
+    const text = isSelectable || statelessPagination ? itemName : `${totalItems} ${itemName}`;
 
     return (
       <FlexItem flexShrink={0} marginRight="medium">
@@ -58,6 +59,7 @@ const InternalActions = <T extends TableItem>({
     <StyledFlex
       alignItems="center"
       aria-controls={tableId}
+      data-testid="table-controls"
       flexDirection="row"
       justifyContent="stretch"
       ref={forwardedRef}
@@ -68,7 +70,7 @@ const InternalActions = <T extends TableItem>({
         items={items}
         onChange={onSelectionChange}
         selectedItems={selectedItems}
-        totalItems={totalItems}
+        totalItems={!statelessPagination ? totalItems : undefined}
       />
       {renderItemName()}
       {renderActions()}

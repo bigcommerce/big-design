@@ -7,7 +7,7 @@ import { TableItem, TablePaginationProps, TableSelectable } from '../types';
 
 export interface SelectAllProps<T> {
   items: T[];
-  totalItems: number;
+  totalItems?: number;
   onChange?: TableSelectable<T>['onSelectionChange'];
   pagination?: TablePaginationProps;
   selectedItems: Set<T>;
@@ -54,6 +54,9 @@ export const SelectAll = <T extends TableItem>({
 
   const label = allInPageSelected ? 'Deselect All' : 'Select All';
 
+  const nonSelectionSummary = totalItems || '';
+  const selectionSummary = totalItems ? `${totalSelectedItems}/${totalItems}` : totalSelectedItems;
+
   return (
     <FlexItem flexShrink={0} marginRight="xxSmall">
       <Flex flexDirection="row">
@@ -65,7 +68,7 @@ export const SelectAll = <T extends TableItem>({
           onChange={handleSelectAll}
         />
         <Text marginLeft="small">
-          {totalSelectedItems === 0 ? `${totalItems}` : `${totalSelectedItems}/${totalItems}`}
+          {totalSelectedItems === 0 ? nonSelectionSummary : selectionSummary}
         </Text>
       </Flex>
     </FlexItem>

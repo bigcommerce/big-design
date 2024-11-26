@@ -135,10 +135,10 @@ const TablePage = () => {
               ),
             },
             {
-              id: 'pagination',
-              title: 'Pagination',
+              id: 'offset-pagination',
+              title: 'OffsetPagination',
               render: () => (
-                <CodePreview key="pagination" scope={{ data, columns }}>
+                <CodePreview key="offset-pagination" scope={{ data, columns }}>
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const [currentPage, setCurrentPage] = useState(1);
@@ -172,6 +172,62 @@ const TablePage = () => {
                           itemsPerPageOptions,
                           onItemsPerPageChange,
                           itemsPerPage,
+                        }}
+                        stickyHeader
+                      />
+                    );
+                  }}
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+            {
+              id: 'stateless-pagination',
+              title: 'StatelessPagination',
+              render: () => (
+                <CodePreview key="stateless-pagination" scope={{ data, columns }}>
+                  {/* jsx-to-string:start */}
+                  {function Example() {
+                    const [currentPage, setCurrentPage] = useState(1);
+                    const [itemsPerPageOptions] = useState([5, 10, 20, 30]);
+                    const [itemsPerPage, setItemsPerPage] = useState(5);
+                    const [currentItems, setCurrentItems] = useState<Item[]>([]);
+
+                    const onItemsPerPageChange = (newRange) => {
+                      setCurrentPage(1);
+                      setItemsPerPage(newRange);
+                    };
+
+                    useEffect(() => {
+                      const maxItems = currentPage * itemsPerPage;
+                      const lastItem = Math.min(maxItems, data.length);
+                      const firstItem = Math.max(0, maxItems - itemsPerPage);
+
+                      setCurrentItems(data.slice(firstItem, lastItem));
+                    }, [currentPage, itemsPerPage]);
+
+                    const notFirstPage = currentPage !== 1;
+                    const onPrevious = notFirstPage
+                      ? () => setCurrentPage((currentPage) => currentPage - 1)
+                      : undefined;
+
+                    const notLastPage = currentPage < data.length / itemsPerPage;
+                    const onNext = notLastPage
+                      ? () => setCurrentPage((currentPage) => currentPage + 1)
+                      : undefined;
+
+                    return (
+                      <Table
+                        columns={columns}
+                        itemName="Products"
+                        items={currentItems}
+                        keyField="sku"
+                        pagination={{
+                          itemsPerPage,
+                          itemsPerPageOptions,
+                          onItemsPerPageChange,
+                          onNext,
+                          onPrevious,
                         }}
                         stickyHeader
                       />

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`pagination renders a pagination component 1`] = `
+exports[`offset pagination renders a pagination component 1`] = `
 .c10 {
   vertical-align: middle;
   height: 2rem;
@@ -341,6 +341,7 @@ exports[`pagination renders a pagination component 1`] = `
 <div
   aria-controls=":r12:"
   class="c0"
+  data-testid="table-controls"
 >
   <div
     class="c1 c2 c3"
@@ -1007,8 +1008,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 <div
-  aria-controls=":r76:"
+  aria-controls=":r8j:"
   class="c0"
+  data-testid="table-controls"
 >
   <div
     class="c1 c2"
@@ -1021,15 +1023,15 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r78:"
+          aria-labelledby=":r8l:"
           class="c6 c7"
-          id=":r77:"
+          id=":r8k:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r77:"
+          for=":r8k:"
         >
           <svg
             aria-hidden="true"
@@ -1055,9 +1057,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         >
           <label
             class="c12 c13"
-            for=":r77:"
+            for=":r8k:"
             hidden=""
-            id=":r78:"
+            id=":r8l:"
           >
             Select All
           </label>
@@ -1301,8 +1303,9 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
 }
 
 <div
-  aria-controls=":r7s:"
+  aria-controls=":r99:"
   class="c0"
+  data-testid="table-controls"
 >
   <div
     class="c1 c2"
@@ -1315,15 +1318,15 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r7u:"
+          aria-labelledby=":r9b:"
           class="c6 c7"
-          id=":r7t:"
+          id=":r9a:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r7t:"
+          for=":r9a:"
         >
           <svg
             aria-hidden="true"
@@ -1349,9 +1352,9 @@ exports[`selectable selectable by default (isChildrenRowsSelectable prop is not 
         >
           <label
             class="c12 c13"
-            for=":r7t:"
+            for=":r9a:"
             hidden=""
-            id=":r7u:"
+            id=":r9b:"
           >
             Select All
           </label>
@@ -1595,8 +1598,9 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
 }
 
 <div
-  aria-controls=":rbj:"
+  aria-controls=":rd0:"
   class="c0"
+  data-testid="table-controls"
 >
   <div
     class="c1 c2"
@@ -1609,15 +1613,15 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
       >
         <input
           aria-checked="false"
-          aria-labelledby=":rbl:"
+          aria-labelledby=":rd2:"
           class="c6 c7"
-          id=":rbk:"
+          id=":rd1:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":rbk:"
+          for=":rd1:"
         >
           <svg
             aria-hidden="true"
@@ -1643,9 +1647,9 @@ exports[`selectable selectable by not default (isChildrenRowsSelectable prop is 
         >
           <label
             class="c12 c13"
-            for=":rbk:"
+            for=":rd1:"
             hidden=""
-            id=":rbl:"
+            id=":rd2:"
           >
             Select All
           </label>
