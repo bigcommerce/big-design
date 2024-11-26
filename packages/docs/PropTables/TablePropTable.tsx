@@ -45,8 +45,8 @@ const tableProps: Prop[] = [
   },
   {
     name: 'pagination',
-    types: <NextLink href="/pagination">Pagination</NextLink>,
-    description: 'See pagination component for details.',
+    types: <NextLink href="/offset-pagination">OffsetPagination</NextLink>,
+    description: 'See offset pagination component for details.',
   },
   {
     name: 'selectable',

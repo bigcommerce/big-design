@@ -1,27 +1,30 @@
-import { H1, Pagination, Panel, Text } from '@bigcommerce/big-design';
+import { H1, OffsetPagination, Panel, Text } from '@bigcommerce/big-design';
 import React, { useEffect, useState } from 'react';
 
 import { Code, CodePreview, GuidelinesTable, List } from '../components';
-import { MarginPropTable, PaginationPropTable } from '../PropTables';
+import { MarginPropTable, OffsetPaginationPropTable } from '../PropTables';
 
-const PaginationPage = () => {
+const OffsetPaginationPage = () => {
   return (
     <>
-      <H1>Pagination</H1>
+      <H1>OffsetPagination</H1>
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>Pagination</Code> is used to divide a long list or table into several pages,
-          indicating other pages exist and allowing the user to access them. This makes the content
-          easier to read and ensures faster loading time. The user can easily navigate through the
-          pages in order, or jump to any page in the list. The user can also select the number of
-          results they want to see on each page, giving them more control over the way they view the
-          data.
+          <Code primary>OffsetPagination</Code> is used to divide a long list or table into several
+          pages, indicating other pages exist and allowing the user to access them. This makes the
+          content easier to read and ensures faster loading time. The user can easily navigate
+          through the pages in order, or jump to any page in the list. The user can also select the
+          number of results they want to see on each page, giving them more control over the way
+          they view the data.
         </Text>
         <Text bold>When to use:</Text>
         <List>
           <List.Item>
             On tables that contain more than 25 number of rows of data/content.{' '}
+          </List.Item>
+          <List.Item>
+            When the data/content uses an offset, rather than cursor-based, form of pagination.
           </List.Item>
         </List>
       </Panel>
@@ -51,7 +54,7 @@ const PaginationPage = () => {
 
             return (
               <>
-                <Pagination
+                <OffsetPagination
                   currentPage={page}
                   itemsPerPage={range}
                   itemsPerPageOptions={ranges}
@@ -72,21 +75,21 @@ const PaginationPage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <PaginationPropTable inheritedProps={<MarginPropTable collapsible />} />
+        <OffsetPaginationPropTable inheritedProps={<MarginPropTable collapsible />} />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
           discouraged={[
             <>
-              Don’t place <Code primary>Pagination</Code> below a table.
+              Don’t place <Code primary>OffsetPagination</Code> below a table.
             </>,
             'Don’t show dropdown arrow when there are less than 10 items.',
           ]}
           recommended={[
             <>
-              Place <Code primary>Pagination</Code> directly above the header of the table that it
-              controls, right aligned.
+              Place <Code primary>OffsetPagination</Code> directly above the header of the table
+              that it controls, right aligned.
             </>,
             'Disable dropdown options greater than the option that will show the total number of results (e.g., if there are 42 results, the highest option should be 50).',
             'Dropdown increments should be multiples of 10 and in increments that make sense for the context.',
@@ -97,4 +100,4 @@ const PaginationPage = () => {
   );
 };
 
-export default PaginationPage;
+export default OffsetPaginationPage;

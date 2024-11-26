@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Prop, PropTable, PropTableWrapper } from '../components';
 
-const paginationProps: Prop[] = [
+const offsetPaginationProps: Prop[] = [
   {
     name: 'itemsPerPage',
     types: 'number',
@@ -60,6 +60,6 @@ const paginationProps: Prop[] = [
   },
 ];
 
-export const PaginationPropTable: React.FC<PropTableWrapper> = (props) => {
-  return <PropTable propList={paginationProps} title="Pagination" {...props} />;
+export const OffsetPaginationPropTable: React.FC<PropTableWrapper> = (props) => {
+  return <PropTable propList={offsetPaginationProps} title="Pagination" {...props} />;
 };

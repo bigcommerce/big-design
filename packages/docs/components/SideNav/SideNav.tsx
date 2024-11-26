@@ -60,7 +60,7 @@ export const SideNav: React.FC = () => {
                 <SideNavLink href="/accordion-panel">Accordion Panel</SideNavLink>
                 <SideNavLink href="/collapse">Collapse</SideNavLink>
                 <SideNavLink href="/modal">Modal</SideNavLink>
-                <SideNavLink href="/pagination">Pagination</SideNavLink>
+                <SideNavLink href="/offset-pagination">OffsetPagination</SideNavLink>
                 <SideNavLink href="/panel">Panel</SideNavLink>
                 <SideNavLink href="/statefulTable">StatefulTable</SideNavLink>
                 <SideNavLink href="/statefulTree">StatefulTree</SideNavLink>
