@@ -45,7 +45,7 @@ export const StatelessPagination: React.FC<StatelessPaginationProps> = memo(
     onItemsPerPageChange,
     label = 'pagination',
     localization = defaultLocalization,
-    rangeLabel,
+    rangeLabel = `Show ${itemsPerPage} items`,
   }) => {
     const handleRangeChange = (item: DropdownItem) => {
       onItemsPerPageChange(Number(item.hash));
@@ -72,7 +72,7 @@ export const StatelessPagination: React.FC<StatelessPaginationProps> = memo(
                 type="button"
                 variant="subtle"
               >
-                {rangeLabel || `Show ${itemsPerPage} items`}
+                {rangeLabel}
               </StyledButton>
             }
           />
