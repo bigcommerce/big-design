@@ -49,7 +49,7 @@ test('render Stateless pagination component while overriding button labels', asy
 
 test('trigger range change', async () => {
   const changeRange = jest.fn();
-  const { findByText } = render(
+  const { findByRole } = render(
     <StatelessPagination
       itemsPerPage={2}
       itemsPerPageOptions={[2, 3, 5]}
@@ -59,13 +59,10 @@ test('trigger range change', async () => {
     />,
   );
 
-  const option = await findByText('Show 2 items');
+  await userEvent.click(await findByRole('button', { name: 'Show 2 items' }));
+  await userEvent.click(await screen.findByRole('option', { name: '3' }));
 
-  await userEvent.click(option);
-  await userEvent.keyboard('{ArrowDown}{Enter}');
-
-  expect(changeRange).toHaveBeenCalled();
-  expect(option).toBeInTheDocument();
+  expect(changeRange).toHaveBeenCalledWith(3);
 });
 
 test('triggers onPrevious callback', async () => {
