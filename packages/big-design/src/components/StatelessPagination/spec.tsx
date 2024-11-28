@@ -22,33 +22,9 @@ test('render Stateless pagination component', async () => {
   expect(pagination).toMatchSnapshot();
 });
 
-test('render Stateless pagination component while overriding button labels', async () => {
-  render(
-    <StatelessPagination
-      itemsPerPage={3}
-      itemsPerPageOptions={[2, 3, 5]}
-      label="[Custom] Pagination"
-      localization={{ previousPage: 'Pagina previa', nextPage: 'Pagina siguiente' }}
-      onItemsPerPageChange={jest.fn()}
-      onNext={jest.fn()}
-      onPrevious={jest.fn()}
-      rangeLabel="[Custom range label]"
-    />,
-  );
-
-  const pagination = await screen.findByRole('navigation', { name: '[Custom] Pagination' });
-  const dropdown = await screen.findByRole('button', { name: '[Custom range label]' });
-  const prevPage = await screen.findByRole('button', { name: 'Pagina previa' });
-  const nextPage = await screen.findByRole('button', { name: 'Pagina siguiente' });
-
-  expect(pagination).toBeInTheDocument();
-  expect(dropdown).toBeInTheDocument();
-  expect(prevPage).toBeInTheDocument();
-  expect(nextPage).toBeInTheDocument();
-});
-
 test('trigger range change', async () => {
   const changeRange = jest.fn();
+
   render(
     <StatelessPagination
       itemsPerPage={2}
@@ -156,16 +132,21 @@ test('current itemsPerPage highlighted', async () => {
 });
 
 test('renders localized labels', async () => {
+  const customLocalization = {
+    previousPage: 'Pagina previa',
+    nextPage: 'Pagina siguiente',
+    label: 'Paginacion',
+    rangeLabel: 'Mostrar 3 artículos',
+  };
+
   render(
     <StatelessPagination
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
-      label="Paginacion"
-      localization={{ previousPage: 'Pagina previa', nextPage: 'Pagina siguiente' }}
+      localization={customLocalization}
       onItemsPerPageChange={jest.fn()}
       onNext={jest.fn()}
       onPrevious={jest.fn()}
-      rangeLabel="Mostrar 3 artículos"
     />,
   );
 

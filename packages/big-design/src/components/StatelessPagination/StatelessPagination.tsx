@@ -3,7 +3,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from '@bigcommerce/big-design-icons';
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 
 import { MarginProps } from '../../helpers';
 import { Dropdown, DropdownItem } from '../Dropdown';
@@ -12,14 +12,20 @@ import { Flex, FlexItem } from '../Flex';
 import { StyledButton } from './styled';
 
 export interface StatelessPaginationLocalization {
-  previousPage: string;
-  nextPage: string;
+  previousPage?: string;
+  nextPage?: string;
+  rangeLabel?: string;
+  label?: string;
 }
 
-const defaultLocalization: StatelessPaginationLocalization = {
+const getDefaultLocalization = (
+  itemsPerPage: number,
+): Required<StatelessPaginationLocalization> => ({
   previousPage: 'Previous page',
   nextPage: 'Next page',
-};
+  label: 'pagination',
+  rangeLabel: `Show ${itemsPerPage} items`,
+});
 
 export interface StatelessPaginationProps extends MarginProps {
   itemsPerPage: number;
@@ -29,8 +35,6 @@ export interface StatelessPaginationProps extends MarginProps {
   onNext(): void;
   disablePrevious?: boolean;
   onPrevious(): void;
-  label?: string;
-  rangeLabel?: string;
   localization?: StatelessPaginationLocalization;
 }
 
@@ -43,16 +47,19 @@ export const StatelessPagination: React.FC<StatelessPaginationProps> = memo(
     disablePrevious = false,
     onPrevious,
     onItemsPerPageChange,
-    label = 'pagination',
-    localization = defaultLocalization,
-    rangeLabel = `Show ${itemsPerPage} items`,
+    localization: customLocalization,
   }) => {
+    const localization: Required<StatelessPaginationLocalization> = useMemo(
+      () => ({ ...getDefaultLocalization(itemsPerPage), ...customLocalization }),
+      [customLocalization, itemsPerPage],
+    );
+
     const handleRangeChange = (item: DropdownItem) => {
       onItemsPerPageChange(Number(item.hash));
     };
 
     return (
-      <Flex aria-label={label} flexDirection="row" role="navigation">
+      <Flex aria-label={localization.label} flexDirection="row" role="navigation">
         <FlexItem>
           <Dropdown
             items={itemsPerPageOptions.map((range) => ({
@@ -72,7 +79,7 @@ export const StatelessPagination: React.FC<StatelessPaginationProps> = memo(
                 type="button"
                 variant="subtle"
               >
-                {rangeLabel}
+                {localization.rangeLabel}
               </StyledButton>
             }
           />

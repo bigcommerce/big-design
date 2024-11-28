@@ -48,21 +48,8 @@ const statelessPaginationProps: Prop[] = [
     description: 'Function that will be called when the "previous" navigation arrow is clicked.',
   },
   {
-    name: 'label',
-    types: 'string',
-    required: false,
-    defaultValue: 'pagination',
-    description: 'Overrides the aria label of the pagination wrapper navigation element.',
-  },
-  {
-    name: 'rangeLabel',
-    types: 'string',
-    required: false,
-    description: 'Sets the label of the per-page range dropdown.',
-  },
-  {
     name: 'localization',
-    types: '{ of: string, previousPage: string, nextPage: string }',
+    types: '{ previousPage: string, nextPage: string, label: string, rangeLabel: string }',
     required: false,
     description: 'Overrides the labels with localized text.',
   },
