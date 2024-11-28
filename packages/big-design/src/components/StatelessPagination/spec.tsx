@@ -7,7 +7,7 @@ import 'jest-styled-components';
 import { StatelessPagination } from './index';
 
 test('render Stateless pagination component', async () => {
-  const { findByRole } = render(
+  render(
     <StatelessPagination
       itemsPerPage={3}
       itemsPerPageOptions={[2, 3, 5]}
@@ -17,7 +17,7 @@ test('render Stateless pagination component', async () => {
     />,
   );
 
-  const pagination = await findByRole('navigation');
+  const pagination = await screen.findByRole('navigation');
 
   expect(pagination).toMatchSnapshot();
 });
@@ -49,7 +49,7 @@ test('render Stateless pagination component while overriding button labels', asy
 
 test('trigger range change', async () => {
   const changeRange = jest.fn();
-  const { findByRole } = render(
+  render(
     <StatelessPagination
       itemsPerPage={2}
       itemsPerPageOptions={[2, 3, 5]}
@@ -59,7 +59,7 @@ test('trigger range change', async () => {
     />,
   );
 
-  await userEvent.click(await findByRole('button', { name: 'Show 2 items' }));
+  await userEvent.click(await screen.findByRole('button', { name: 'Show 2 items' }));
   await userEvent.click(await screen.findByRole('option', { name: '3' }));
 
   expect(changeRange).toHaveBeenCalledWith(3);
@@ -103,7 +103,7 @@ test('trigger onNext callback', async () => {
 
 describe('when "disableNext" is set to "true"', () => {
   test('render Stateless pagination component with next disabled', async () => {
-    const { findByRole } = render(
+    render(
       <StatelessPagination
         disableNext={true}
         itemsPerPage={-5}
@@ -114,13 +114,13 @@ describe('when "disableNext" is set to "true"', () => {
       />,
     );
 
-    expect(await findByRole('button', { name: 'Next page' })).toBeDisabled();
+    expect(await screen.findByRole('button', { name: 'Next page' })).toBeDisabled();
   });
 });
 
 describe('when "disablePrevious" is set to "true"', () => {
   test('render Stateless pagination component with previous disabled', async () => {
-    const { findByRole } = render(
+    render(
       <StatelessPagination
         disablePrevious={true}
         itemsPerPage={-5}
@@ -131,7 +131,7 @@ describe('when "disablePrevious" is set to "true"', () => {
       />,
     );
 
-    expect(await findByRole('button', { name: 'Previous page' })).toBeDisabled();
+    expect(await screen.findByRole('button', { name: 'Previous page' })).toBeDisabled();
   });
 });
 
