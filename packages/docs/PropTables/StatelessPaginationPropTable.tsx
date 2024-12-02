@@ -22,30 +22,20 @@ const statelessPaginationProps: Prop[] = [
     description: 'Function that will be called when a new per-page range is selected.',
   },
   {
-    name: 'disableNext',
-    types: 'boolean',
-    required: false,
-    defaultValue: 'false',
-    description: 'Set the the "next" navigation arrow to disabled.',
-  },
-  {
     name: 'onNext',
     types: '() => void',
-    required: true,
-    description: 'Function that will be called when the "next" navigation arrow is clicked.',
-  },
-  {
-    name: 'disablePrevious',
-    types: 'boolean',
+    defaultValue: 'undefined',
     required: false,
-    defaultValue: 'false',
-    description: 'Set the the "previous" navigation arrow to disabled.',
+    description:
+      'Function that will be called when the "next" navigation arrow is clicked. Disables the arrow if not provided.',
   },
   {
     name: 'onPrevious',
     types: '() => void',
-    required: true,
-    description: 'Function that will be called when the "previous" navigation arrow is clicked.',
+    defaultValue: 'undefined',
+    required: false,
+    description:
+      'Function that will be called when the "previous" navigation arrow is clicked. Disables the arrow if not provided.',
   },
   {
     name: 'localization',

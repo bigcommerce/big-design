@@ -31,10 +31,8 @@ export interface StatelessPaginationProps extends MarginProps {
   itemsPerPage: number;
   itemsPerPageOptions: number[];
   onItemsPerPageChange(range: number): void;
-  disableNext?: boolean;
-  onNext(): void;
-  disablePrevious?: boolean;
-  onPrevious(): void;
+  onNext?(): void;
+  onPrevious?(): void;
   localization?: StatelessPaginationLocalization;
 }
 
@@ -42,9 +40,7 @@ export const StatelessPagination: React.FC<StatelessPaginationProps> = memo(
   ({
     itemsPerPage,
     itemsPerPageOptions,
-    disableNext = false,
     onNext,
-    disablePrevious = false,
     onPrevious,
     onItemsPerPageChange,
     localization: customLocalization,
@@ -86,17 +82,17 @@ export const StatelessPagination: React.FC<StatelessPaginationProps> = memo(
         </FlexItem>
         <FlexItem>
           <StyledButton
-            disabled={disablePrevious}
+            disabled={!onPrevious}
             iconOnly={<ChevronLeftIcon title={localization.previousPage} />}
-            onClick={() => onPrevious()}
+            onClick={() => onPrevious?.()}
             type="button"
             variant="subtle"
           />
 
           <StyledButton
-            disabled={disableNext}
+            disabled={!onNext}
             iconOnly={<ChevronRightIcon title={localization.nextPage} />}
-            onClick={() => onNext()}
+            onClick={() => onNext?.()}
             type="button"
             variant="subtle"
           />

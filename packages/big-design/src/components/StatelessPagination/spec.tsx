@@ -77,15 +77,16 @@ test('trigger onNext callback', async () => {
   expect(onNext).toHaveBeenCalled();
 });
 
-describe('when "disableNext" is set to "true"', () => {
+describe('when "onNext" is not provided', () => {
   test('render Stateless pagination component with next disabled', async () => {
+    const onNext = undefined;
+
     render(
       <StatelessPagination
-        disableNext={true}
         itemsPerPage={-5}
         itemsPerPageOptions={[2, 3, 5]}
         onItemsPerPageChange={jest.fn()}
-        onNext={jest.fn()}
+        onNext={onNext}
         onPrevious={jest.fn()}
       />,
     );
@@ -94,16 +95,17 @@ describe('when "disableNext" is set to "true"', () => {
   });
 });
 
-describe('when "disablePrevious" is set to "true"', () => {
+describe('when "onPrevious" is not provided', () => {
   test('render Stateless pagination component with previous disabled', async () => {
+    const onPrevious = undefined;
+
     render(
       <StatelessPagination
-        disablePrevious={true}
         itemsPerPage={-5}
         itemsPerPageOptions={[2, 3, 5]}
         onItemsPerPageChange={jest.fn()}
         onNext={jest.fn()}
-        onPrevious={jest.fn()}
+        onPrevious={onPrevious}
       />,
     );
 

@@ -50,16 +50,17 @@ const StatelessPaginationPage = () => {
               setCurrentItems(items.slice(firstItem, lastItem));
             }, [page, items, range]);
 
+            const notFirstPage = page !== 1;
+            const notLastPage = page < items.length / range;
+
             return (
               <>
                 <StatelessPagination
-                  disableNext={page >= items.length / range}
-                  disablePrevious={page === 1}
                   itemsPerPage={range}
                   itemsPerPageOptions={ranges}
                   onItemsPerPageChange={onItemsPerPageChange}
-                  onNext={() => setPage((currentPage) => currentPage + 1)}
-                  onPrevious={() => setPage((currentPage) => currentPage - 1)}
+                  onNext={notLastPage ? () => setPage((current) => current + 1) : undefined}
+                  onPrevious={notFirstPage ? () => setPage((current) => current - 1) : undefined}
                 />
                 <ul>
                   {currentItems.map((item) => (
