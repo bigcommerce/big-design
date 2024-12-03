@@ -3,9 +3,7 @@ import styled from 'styled-components';
 
 import { StyleableButton } from '../Button/private';
 
-export const StyledButton = styled(StyleableButton)`
+export const StyledButton = styled(StyleableButton).attrs({ theme: defaultTheme })`
   color: ${({ theme }) => theme.colors.secondary70};
   width: auto;
 `;
-
-StyledButton.defaultProps = { theme: defaultTheme };
