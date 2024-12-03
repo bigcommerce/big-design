@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.3.0
+
+### Minor Changes
+
+- 1d0d843: Pagination component marked as deprecated and re-exported as a new OffsetPagination component. Consumers of the original Pagination component should replace it with an import of OffsetPagination. All props, aesthetics, and functionality remain the same.
+- 1d0d843: New StatelessPagination component added. This component can be used for cursor-based pagination or for when consumers require more control over page changes. Its aesthetics and functionality are very similar to OffsetPagination (previous named Pagination), however its props are different. Please refer to the documentation for more information.
+
+### Patch Changes
+
+- Updated dependencies [1d0d843]
+- Updated dependencies [1d0d843]
+  - @bigcommerce/big-design@1.6.0
+  - @bigcommerce/big-design-patterns@2.0.2
+
 ## 1.2.5
 
 ### Patch Changes
