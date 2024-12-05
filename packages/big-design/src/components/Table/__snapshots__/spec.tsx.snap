@@ -340,8 +340,9 @@ exports[`offset pagination renders a pagination component 1`] = `
 
 <div
   aria-controls=":r12:"
+  aria-label="Table Controls"
   class="c0"
-  data-testid="table-controls"
+  role="toolbar"
 >
   <div
     class="c1 c2 c3"
@@ -949,8 +950,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 
 <div
   aria-controls=":r35:"
+  aria-label="Table Controls"
   class="c0"
-  data-testid="table-controls"
+  role="toolbar"
 >
   <div
     class="c1 c2"

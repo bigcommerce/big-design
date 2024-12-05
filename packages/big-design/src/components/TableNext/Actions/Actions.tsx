@@ -75,10 +75,11 @@ const InternalActions = <T extends TableItem>({
     <StyledFlex
       alignItems="center"
       aria-controls={tableId}
-      data-testid="table-controls"
+      aria-label="Table Controls"
       flexDirection="row"
       justifyContent="stretch"
       ref={forwardedRef}
+      role="toolbar"
       stickyHeader={stickyHeader}
       {...props}
     >

@@ -803,7 +803,7 @@ describe('stateless pagination', () => {
       await userEvent.click(within(rowOfCanvasLaundryCart).getByRole('checkbox'));
       await userEvent.click(within(rowOfLaundryDetergent).getByRole('checkbox'));
 
-      const tableControls = screen.getByTestId('table-controls');
+      const tableControls = screen.getByRole('toolbar', { name: 'Table Controls' });
 
       expect(within(tableControls).queryByText('2/6')).not.toBeInTheDocument();
       expect(within(tableControls).getByText('2')).toBeInTheDocument();
