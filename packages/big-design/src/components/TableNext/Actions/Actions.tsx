@@ -50,15 +50,15 @@ const InternalActions = <T extends TableItem>({
   ...props
 }: ActionsProps<T>) => {
   const isSelectable = typeof onSelectionChange === 'function';
-  const statelessPagination = pagination?.type === 'stateless';
-  const totalItems = pagination && !statelessPagination ? pagination.totalItems : items.length;
+  const paginationWithoutTotal = pagination && pagination.totalItems === undefined;
+  const totalItems = pagination?.totalItems ?? items.length;
 
   const renderItemName = () => {
     if (typeof itemName !== 'string') {
       return null;
     }
 
-    const text = isSelectable || statelessPagination ? itemName : `${totalItems} ${itemName}`;
+    const text = isSelectable || paginationWithoutTotal ? itemName : `${totalItems} ${itemName}`;
 
     return (
       <FlexItem flexShrink={0} marginRight="medium">
@@ -94,7 +94,7 @@ const InternalActions = <T extends TableItem>({
           selectedItems={selectedItems}
           selectedParentRowsCrossPages={selectedParentRowsCrossPages}
           setSelectedParentRowsCrossPages={setSelectedParentRowsCrossPages}
-          totalItems={!statelessPagination ? totalItems : undefined}
+          totalItems={!paginationWithoutTotal ? totalItems : undefined}
         />
       )}
       {renderItemName()}

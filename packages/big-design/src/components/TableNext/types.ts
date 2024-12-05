@@ -57,13 +57,15 @@ export interface TableColumn<T> extends TableColumnDisplayProps {
 
 type WithoutMarginProps<T> = Omit<T, keyof MarginProps>;
 
+type StatelessPaginationPropsWithItemTotal = StatelessPaginationProps & { totalItems?: number };
+
 export type DiscriminatedTablePaginationProps =
   | (WithoutMarginProps<OffsetPaginationProps> & { type: 'offset' })
-  | (WithoutMarginProps<StatelessPaginationProps> & { type: 'stateless' });
+  | (WithoutMarginProps<StatelessPaginationPropsWithItemTotal> & { type: 'stateless' });
 
 export type TablePaginationProps =
   | WithoutMarginProps<OffsetPaginationProps>
-  | WithoutMarginProps<StatelessPaginationProps>;
+  | WithoutMarginProps<StatelessPaginationPropsWithItemTotal>;
 
 interface Localization {
   ascendingOrder: string;
