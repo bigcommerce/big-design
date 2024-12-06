@@ -54,7 +54,7 @@ export const SelectAll = <T extends TableItem>({
 
   const label = allInPageSelected ? 'Deselect All' : 'Select All';
 
-  const nonSelectionSummary = totalItems || '';
+  const nonSelectionSummary = totalItems ?? '';
   const selectionSummary = totalItems ? `${totalSelectedItems}/${totalItems}` : totalSelectedItems;
 
   return (

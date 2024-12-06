@@ -32,7 +32,7 @@ export const SelectAll = <T extends TableItem>(props: SelectAllProps<T>) => {
 
   const { totalItems } = props;
 
-  const nonSelectionSummary = totalItems || '';
+  const nonSelectionSummary = totalItems ?? '';
   const selectionSummary = totalItems ? `${totalSelectedItems}/${totalItems}` : totalSelectedItems;
 
   return (
