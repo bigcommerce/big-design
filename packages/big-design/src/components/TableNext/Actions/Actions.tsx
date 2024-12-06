@@ -6,9 +6,9 @@ import { Text } from '../../Typography';
 import { SelectAll } from '../SelectAll';
 import { TablePagination } from '../TablePagination';
 import {
+  DiscriminatedTablePaginationProps,
   TableExpandable,
   TableItem,
-  TablePaginationProps,
   TableProps,
   TableSelectable,
 } from '../types';
@@ -20,7 +20,7 @@ export interface ActionsProps<T> {
   forwardedRef: RefObject<HTMLDivElement>;
   itemName?: string;
   items: T[];
-  pagination?: TablePaginationProps;
+  pagination?: DiscriminatedTablePaginationProps;
   selectedItems: TableSelectable['selectedItems'];
   stickyHeader?: boolean;
   tableId: string;
@@ -50,14 +50,15 @@ const InternalActions = <T extends TableItem>({
   ...props
 }: ActionsProps<T>) => {
   const isSelectable = typeof onSelectionChange === 'function';
-  const totalItems = pagination ? pagination.totalItems : items.length;
+  const paginationWithoutTotal = pagination && pagination.totalItems === undefined;
+  const totalItems = pagination?.totalItems ?? items.length;
 
   const renderItemName = () => {
     if (typeof itemName !== 'string') {
       return null;
     }
 
-    const text = isSelectable ? itemName : `${totalItems} ${itemName}`;
+    const text = isSelectable || paginationWithoutTotal ? itemName : `${totalItems} ${itemName}`;
 
     return (
       <FlexItem flexShrink={0} marginRight="medium">
@@ -74,9 +75,11 @@ const InternalActions = <T extends TableItem>({
     <StyledFlex
       alignItems="center"
       aria-controls={tableId}
+      aria-label="Table Controls"
       flexDirection="row"
       justifyContent="stretch"
       ref={forwardedRef}
+      role="toolbar"
       stickyHeader={stickyHeader}
       {...props}
     >
@@ -91,7 +94,7 @@ const InternalActions = <T extends TableItem>({
           selectedItems={selectedItems}
           selectedParentRowsCrossPages={selectedParentRowsCrossPages}
           setSelectedParentRowsCrossPages={setSelectedParentRowsCrossPages}
-          totalItems={totalItems}
+          totalItems={!paginationWithoutTotal ? totalItems : undefined}
         />
       )}
       {renderItemName()}
