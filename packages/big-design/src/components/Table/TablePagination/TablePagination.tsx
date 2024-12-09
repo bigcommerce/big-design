@@ -1,36 +1,19 @@
 import React, { memo } from 'react';
 
 import { OffsetPagination } from '../../OffsetPagination';
-import { TablePaginationProps } from '../types';
+import { StatelessPagination } from '../../StatelessPagination';
+import { DiscriminatedTablePaginationProps } from '../types';
 
 import { StyledPaginationContainer } from './styled';
 
-export const TablePagination: React.FC<TablePaginationProps> = memo(
-  ({
-    currentPage,
-    itemsPerPage,
-    itemsPerPageOptions,
-    onItemsPerPageChange,
-    onPageChange,
-    totalItems,
-    label,
-    localization,
-    getRangeLabel,
-  }) => {
-    return (
-      <StyledPaginationContainer flexShrink={0}>
-        <OffsetPagination
-          currentPage={currentPage}
-          getRangeLabel={getRangeLabel}
-          itemsPerPage={itemsPerPage}
-          itemsPerPageOptions={itemsPerPageOptions}
-          label={label}
-          localization={localization}
-          onItemsPerPageChange={onItemsPerPageChange}
-          onPageChange={onPageChange}
-          totalItems={totalItems}
-        />
-      </StyledPaginationContainer>
-    );
-  },
-);
+export const TablePagination: React.FC<DiscriminatedTablePaginationProps> = memo((props) => {
+  return (
+    <StyledPaginationContainer flexShrink={0}>
+      {props.type === 'offset' ? (
+        <OffsetPagination {...props} />
+      ) : (
+        <StatelessPagination {...props} />
+      )}
+    </StyledPaginationContainer>
+  );
+});

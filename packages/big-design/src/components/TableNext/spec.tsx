@@ -220,7 +220,7 @@ test('renders the total number of items + item name', () => {
   expect(itemNameNode).toBeInTheDocument();
 });
 
-describe('pagination', () => {
+describe('offset pagination', () => {
   test('renders a pagination component', async () => {
     const onItemsPerPageChange = jest.fn();
     const onPageChange = jest.fn();
@@ -683,6 +683,131 @@ describe('pagination', () => {
     const selectedItems = await screen.findByText('3/5');
 
     expect(selectedItems).toBeInTheDocument();
+  });
+});
+
+describe('stateless pagination', () => {
+  test('renders a pagination component', async () => {
+    const onItemsPerPageChange = jest.fn();
+    const onNext = jest.fn();
+
+    render(
+      <TableNext
+        columns={[
+          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+          { header: 'Name', hash: 'name', render: ({ name }) => name },
+          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+        ]}
+        items={[
+          { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+          { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+          { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+          { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+          { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+        ]}
+        pagination={{
+          currentPage: 1,
+          itemsPerPage: 3,
+          itemsPerPageOptions: [3, 5, 10],
+          onItemsPerPageChange,
+          onNext,
+          onPrevious: jest.fn(),
+        }}
+      />,
+    );
+
+    await userEvent.click(await screen.findByTitle('Next page'));
+
+    expect(onNext).toHaveBeenCalled();
+  });
+
+  test('renders a pagination component with custom button labels', async () => {
+    render(
+      <TableNext
+        columns={[
+          { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+          { header: 'Name', hash: 'name', render: ({ name }) => name },
+          { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+        ]}
+        items={[
+          { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+          { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+          { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+          { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+          { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+        ]}
+        pagination={{
+          currentPage: 1,
+          itemsPerPage: 3,
+          itemsPerPageOptions: [3, 5, 10],
+          onItemsPerPageChange: jest.fn(),
+          onNext: jest.fn(),
+          onPrevious: jest.fn(),
+          localization: {
+            label: '[Custom] Pagination',
+            previousPage: '[Custom] Previous page',
+            nextPage: '[Custom] Next page',
+            rangeLabel: '[Custom] Change items per page',
+          },
+        }}
+      />,
+    );
+
+    const navigation = await screen.findByRole('navigation', { name: '[Custom] Pagination' });
+    const paginationDropdown = await screen.findByRole('button', {
+      name: '[Custom] Change items per page',
+    });
+    const previousButtonPage = await screen.findByRole('button', {
+      name: '[Custom] Previous page',
+    });
+    const nextButtonPage = await screen.findByRole('button', { name: '[Custom] Next page' });
+
+    expect(navigation).toBeVisible();
+    expect(paginationDropdown).toBeVisible();
+    expect(previousButtonPage).toBeVisible();
+    expect(nextButtonPage).toBeVisible();
+  });
+
+  describe('selectable', () => {
+    test('renders a summary of the selected items, without reference to the total number of items', async () => {
+      render(
+        <TableNext
+          columns={[
+            { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
+            { header: 'Name', hash: 'name', render: ({ name }) => name },
+            { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+          ]}
+          itemName="Product"
+          items={[
+            { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+            { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+            { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+            { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+            { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+          ]}
+          pagination={{
+            currentPage: 1,
+            itemsPerPage: 3,
+            itemsPerPageOptions: [3, 5, 10],
+            onItemsPerPageChange: jest.fn(),
+            onNext: jest.fn(),
+            onPrevious: jest.fn(),
+          }}
+          selectable={{ selectedItems: {}, onSelectionChange: jest.fn() }}
+        />,
+      );
+
+      const rowOfCanvasLaundryCart = screen.getByRole('row', { name: /Canvas Laundry Cart/ });
+      const rowOfLaundryDetergent = screen.getByRole('row', { name: /Laundry Detergent/ });
+
+      await userEvent.click(within(rowOfCanvasLaundryCart).getByRole('checkbox'));
+      await userEvent.click(within(rowOfLaundryDetergent).getByRole('checkbox'));
+
+      const tableControls = screen.getByRole('toolbar', { name: 'Table Controls' });
+
+      expect(within(tableControls).queryByText('2/6')).not.toBeInTheDocument();
+      expect(within(tableControls).getByText('2')).toBeInTheDocument();
+    });
   });
 });
 

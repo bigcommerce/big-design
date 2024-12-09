@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useId, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 
 import { MarginProps } from '../../helpers';
@@ -7,6 +7,7 @@ import { typedMemo } from '../../utils';
 
 import { Actions } from './Actions';
 import { Body } from './Body';
+import { discriminatePagination } from './discriminatePagination';
 import { Head } from './Head';
 import { HeaderCell } from './HeaderCell';
 import { DragIconHeaderCell, HeaderCheckboxCell } from './HeaderCell/HeaderCell';
@@ -39,7 +40,7 @@ const InternalTable = <T extends TableItem>(
     keyField = 'id',
     localization = defaultLocalization,
     onRowDrop,
-    pagination,
+    pagination: undiscriminatedPagination,
     selectable,
     sortable,
     stickyHeader,
@@ -47,6 +48,10 @@ const InternalTable = <T extends TableItem>(
     ...rest
   } = props;
 
+  const pagination = useMemo(
+    () => undiscriminatedPagination && discriminatePagination(undiscriminatedPagination),
+    [undiscriminatedPagination],
+  );
   const actionsRef = useRef<HTMLDivElement>(null);
   const uniqueTableId = useId();
   const tableIdRef = useRef(id || uniqueTableId);

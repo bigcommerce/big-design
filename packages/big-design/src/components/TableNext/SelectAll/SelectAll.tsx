@@ -18,7 +18,7 @@ export interface SelectAllProps<T> {
   items: T[];
   onChange?: TableSelectable['onSelectionChange'];
   selectedItems: TableSelectable['selectedItems'];
-  totalItems: number;
+  totalItems?: number;
   pagination?: TablePaginationProps;
   getRowId: NonNullable<TableProps<T>['getRowId']>;
   setSelectedParentRowsCrossPages: Dispatch<SetStateAction<Set<string>>>;
@@ -32,6 +32,9 @@ export const SelectAll = <T extends TableItem>(props: SelectAllProps<T>) => {
 
   const { totalItems } = props;
 
+  const nonSelectionSummary = totalItems ?? '';
+  const selectionSummary = totalItems ? `${totalSelectedItems}/${totalItems}` : totalSelectedItems;
+
   return (
     <FlexItem flexShrink={0} marginRight="xxSmall">
       <Flex flexDirection="row">
@@ -43,7 +46,7 @@ export const SelectAll = <T extends TableItem>(props: SelectAllProps<T>) => {
           onChange={handleSelectAll}
         />
         <Text marginLeft="small">
-          {totalSelectedItems === 0 ? `${totalItems}` : `${totalSelectedItems}/${totalItems}`}
+          {totalSelectedItems === 0 ? nonSelectionSummary : selectionSummary}
         </Text>
       </Flex>
     </FlexItem>

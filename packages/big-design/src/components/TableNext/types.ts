@@ -2,6 +2,7 @@ import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { MarginProps } from '../../helpers';
 import { OffsetPaginationProps } from '../OffsetPagination';
+import { StatelessPaginationProps } from '../StatelessPagination';
 
 import { TableColumnDisplayProps } from './helpers';
 
@@ -54,7 +55,17 @@ export interface TableColumn<T> extends TableColumnDisplayProps {
   withPadding?: boolean;
 }
 
-export type TablePaginationProps = Omit<OffsetPaginationProps, keyof MarginProps>;
+type WithoutMarginProps<T> = Omit<T, keyof MarginProps>;
+
+type StatelessPaginationPropsWithItemTotal = StatelessPaginationProps & { totalItems?: number };
+
+export type DiscriminatedTablePaginationProps =
+  | (WithoutMarginProps<OffsetPaginationProps> & { type: 'offset' })
+  | (WithoutMarginProps<StatelessPaginationPropsWithItemTotal> & { type: 'stateless' });
+
+export type TablePaginationProps =
+  | WithoutMarginProps<OffsetPaginationProps>
+  | WithoutMarginProps<StatelessPaginationPropsWithItemTotal>;
 
 interface Localization {
   ascendingOrder: string;

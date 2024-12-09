@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a pagination component 1`] = `
+exports[`offset pagination renders a pagination component 1`] = `
 .c10 {
   vertical-align: middle;
   height: 2rem;
@@ -340,7 +340,9 @@ exports[`renders a pagination component 1`] = `
 
 <div
   aria-controls=":r12:"
+  aria-label="Table Controls"
   class="c0"
+  role="toolbar"
 >
   <div
     class="c1 c2 c3"
@@ -947,8 +949,10 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
 }
 
 <div
-  aria-controls=":r1k:"
+  aria-controls=":r35:"
+  aria-label="Table Controls"
   class="c0"
+  role="toolbar"
 >
   <div
     class="c1 c2"
@@ -961,15 +965,15 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
       >
         <input
           aria-checked="false"
-          aria-labelledby=":r1m:"
+          aria-labelledby=":r37:"
           class="c6 c7"
-          id=":r1l:"
+          id=":r36:"
           type="checkbox"
         />
         <label
           aria-hidden="true"
           class="c8 c9"
-          for=":r1l:"
+          for=":r36:"
         >
           <svg
             aria-hidden="true"
@@ -995,9 +999,9 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
         >
           <label
             class="c12 c13"
-            for=":r1l:"
+            for=":r36:"
             hidden=""
-            id=":r1m:"
+            id=":r37:"
           >
             Select All
           </label>
