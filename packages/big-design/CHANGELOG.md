@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.6.0
+
+### Minor Changes
+
+- 1d0d843: Pagination component marked as deprecated and re-exported as a new OffsetPagination component. Consumers of the original Pagination component should replace it with an import of OffsetPagination. All props, aesthetics, and functionality remain the same.
+- 1d0d843: New StatelessPagination component added. This component can be used for cursor-based pagination or for when consumers require more control over page changes. Its aesthetics and functionality are very similar to OffsetPagination (previous named Pagination), however its props are different. Please refer to the documentation for more information.
+- 14f3183: Consumers of the Table component can now choose to use the 'Stateless' form of Pagination. This enables the use of Table with cursor-based forms of pagination.
+
 ## 1.5.0
 
 ### Minor Changes
