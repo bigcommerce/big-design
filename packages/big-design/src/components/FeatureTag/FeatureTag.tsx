@@ -1,32 +1,21 @@
-import { IconProps } from '@bigcommerce/big-design-icons';
-import React, { AnchorHTMLAttributes, FunctionComponent, ReactElement } from 'react';
+import React, { ComponentPropsWithoutRef, memo, ReactNode } from 'react';
 
-import { StyledFeatureTag, StyledFeatureTagIcon, StyledFeatureTagLabel } from './styled';
+import { MarginProps } from '../../helpers';
 
-export interface FeatureTagProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  icon?: ReactElement<IconProps>;
-  isActive?: boolean;
+import { StyledFeatureTag, StyledFeatureTagLabel } from './styled';
+
+export interface FeatureTagProps extends ComponentPropsWithoutRef<'span'>, MarginProps {
+  icon?: ReactNode;
   label: string;
 }
 
-export const FeatureTag: FunctionComponent<FeatureTagProps> = ({
-  label,
-  icon,
-  isActive,
-  href,
-  target,
-}) => {
+export const FeatureTag: React.FC<FeatureTagProps> = memo(({ label, icon, ...props }) => {
   return label ? (
-    <StyledFeatureTag
-      className={isActive ? 'active' : ''}
-      href={href}
-      target={target}
-      title={label}
-    >
-      {icon ? <StyledFeatureTagIcon>{icon}</StyledFeatureTagIcon> : null}
+    <StyledFeatureTag {...props}>
+      {icon}
       <StyledFeatureTagLabel>{label}</StyledFeatureTagLabel>
     </StyledFeatureTag>
   ) : null;
-};
+});
 
 FeatureTag.displayName = 'FeatureTag';
