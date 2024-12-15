@@ -12,7 +12,7 @@ import {
   Text,
 } from '@bigcommerce/big-design';
 import { ArrowBackIcon } from '@bigcommerce/big-design-icons';
-import React, { ComponentPropsWithoutRef, isValidElement, ReactNode } from 'react';
+import React, { ComponentPropsWithoutRef, isValidElement, memo, ReactNode } from 'react';
 
 import { warning } from '../../utils';
 
@@ -123,47 +123,42 @@ export interface HeaderProps {
   title: string;
 }
 
-export const Header = ({
-  actions,
-  backLink,
-  badge,
-  description,
-  icon = null,
-  title,
-}: HeaderProps) => {
-  return (
-    <Flex as="header" flexDirection="row" flexWrap="wrap">
-      {backLink && (
-        <FlexItem flexBasis="100%">
-          <BackLink {...backLink} />
-        </FlexItem>
-      )}
-      <Flex
-        as={(props) => <FlexItem {...props} flexGrow={1} />}
-        flexDirection={{ mobile: 'column', tablet: 'row' }}
-      >
-        <FlexItem
-          flexGrow={1}
-          marginBottom={{ mobile: 'xxLarge', tablet: 'none' }}
-          marginRight={{ mobile: 'none', tablet: 'xxLarge' }}
+export const Header = memo(
+  ({ actions, backLink, badge, description, icon = null, title }: HeaderProps) => {
+    return (
+      <Flex as="header" flexDirection="row" flexWrap="wrap">
+        {backLink && (
+          <FlexItem flexBasis="100%">
+            <BackLink {...backLink} />
+          </FlexItem>
+        )}
+        <Flex
+          as={(props) => <FlexItem {...props} flexGrow={1} />}
+          flexDirection={{ mobile: 'column', tablet: 'row' }}
         >
-          <Flex alignItems="center" flexDirection="row" flexGap="1rem" marginBottom="xxSmall">
-            {icon}
-            <H1 marginBottom="none">{title}</H1>
-            {badge ? <Badge {...excludeMarginProps(badge)} /> : null}
-          </Flex>
-          <Description description={description} />
-        </FlexItem>
-        {actions ? (
-          <Flex
-            flexDirection={{ mobile: 'column-reverse', tablet: 'row-reverse' }}
-            flexGap={{ mobile: '.75rem', tablet: '0.625rem' }}
-            marginBottom="xLarge"
+          <FlexItem
+            flexGrow={1}
+            marginBottom={{ mobile: 'xxLarge', tablet: 'none' }}
+            marginRight={{ mobile: 'none', tablet: 'xxLarge' }}
           >
-            <Actions actions={actions} />
-          </Flex>
-        ) : null}
+            <Flex alignItems="center" flexDirection="row" flexGap="1rem" marginBottom="xxSmall">
+              {icon}
+              <H1 marginBottom="none">{title}</H1>
+              {badge ? <Badge {...excludeMarginProps(badge)} /> : null}
+            </Flex>
+            <Description description={description} />
+          </FlexItem>
+          {actions ? (
+            <Flex
+              flexDirection={{ mobile: 'column-reverse', tablet: 'row-reverse' }}
+              flexGap={{ mobile: '.75rem', tablet: '0.625rem' }}
+              marginBottom="xLarge"
+            >
+              <Actions actions={actions} />
+            </Flex>
+          ) : null}
+        </Flex>
       </Flex>
-    </Flex>
-  );
-};
+    );
+  },
+);
