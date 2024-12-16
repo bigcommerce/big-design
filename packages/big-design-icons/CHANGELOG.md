@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.0
+
+### Minor Changes
+
+- 0f8cf34: Added Pin icon
+
 ## 1.1.0
 
 ### Minor Changes

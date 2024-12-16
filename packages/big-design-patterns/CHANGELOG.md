@@ -1,5 +1,14 @@
 # @bigcommerce/big-design-patterns
 
+## 2.0.3
+
+### Patch Changes
+
+- cb84b19: Prevent the Header component from unnecessary re-renders and avoiding redundant updates
+- Updated dependencies [0f8cf34]
+  - @bigcommerce/big-design-icons@1.2.0
+  - @bigcommerce/big-design@1.6.1
+
 ## 2.0.2
 
 ### Patch Changes
