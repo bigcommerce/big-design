@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.6.2
+
+### Patch Changes
+
+- Updated dependencies [69e7772]
+  - @bigcommerce/big-design-icons@1.2.1
+
 ## 1.6.1
 
 ### Patch Changes
