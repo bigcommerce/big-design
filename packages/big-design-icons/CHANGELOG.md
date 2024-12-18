@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.1
+
+### Patch Changes
+
+- 69e7772: Remove Pin icon hardcoded fill colour
+
 ## 1.2.0
 
 ### Minor Changes
