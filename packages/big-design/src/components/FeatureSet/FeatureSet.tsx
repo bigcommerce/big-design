@@ -1,9 +1,9 @@
 import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { MarginProps } from '../../helpers';
+import { FeatureTag, FeatureTagProps } from '../FeatureTag';
 
 import { StyledFeatureSet } from './styled';
-import { FeatureTagProps, FeatureTag } from '../FeatureTag';
 
 export interface FeatureSetProps extends ComponentPropsWithoutRef<'ul'>, MarginProps {
   features: FeatureTagProps[];

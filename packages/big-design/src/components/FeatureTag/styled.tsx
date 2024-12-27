@@ -1,6 +1,7 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import { ellipsis } from 'polished';
 import styled from 'styled-components';
+
 import { withMargins } from '../../helpers';
 
 export const StyledFeatureTag = styled.span`
