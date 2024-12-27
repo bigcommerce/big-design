@@ -7,26 +7,6 @@ exports[`render feature set 1`] = `
   width: 1.5rem;
 }
 
-.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.c0 > li {
-  display: block;
-  margin-right: 0.75rem;
-  margin-bottom: 0.75rem;
-  overflow: hidden;
-}
-
 .c1 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -78,6 +58,26 @@ exports[`render feature set 1`] = `
   white-space: nowrap;
   word-wrap: normal;
   width: 100%;
+}
+
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 > li {
+  display: block;
+  margin-right: 0.75rem;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
 }
 
 <ul
