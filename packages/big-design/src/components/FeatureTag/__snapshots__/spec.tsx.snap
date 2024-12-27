@@ -6,6 +6,7 @@ exports[`render feature tag 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  box-sizing: border-box;
   background-color: #ECEEF5;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
@@ -23,16 +24,16 @@ exports[`render feature tag 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   line-height: 1.25rem;
-  max-width: -webkit-fit-content;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-  outline: none;
+  max-width: 100%;
   padding-block: 0.125rem;
   padding-inline: 0.5rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c0 > svg {
@@ -50,9 +51,10 @@ exports[`render feature tag 1`] = `
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
+  width: 100%;
 }
 
-<a
+<span
   class="c0"
 >
   <span
@@ -60,7 +62,7 @@ exports[`render feature tag 1`] = `
   >
     Feature Tag
   </span>
-</a>
+</span>
 `;
 
 exports[`renders with icon 1`] = `
@@ -75,6 +77,7 @@ exports[`renders with icon 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  box-sizing: border-box;
   background-color: #ECEEF5;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
@@ -92,16 +95,16 @@ exports[`renders with icon 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   line-height: 1.25rem;
-  max-width: -webkit-fit-content;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-  outline: none;
+  max-width: 100%;
   padding-block: 0.125rem;
   padding-inline: 0.5rem;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c0 > svg {
@@ -119,9 +122,10 @@ exports[`renders with icon 1`] = `
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
+  width: 100%;
 }
 
-<a
+<span
   class="c0"
 >
   <svg
@@ -147,5 +151,5 @@ exports[`renders with icon 1`] = `
   >
     Feature Tag
   </span>
-</a>
+</span>
 `;

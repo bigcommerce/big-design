@@ -45,3 +45,4 @@ export * from './Typography';
 export * from './Worksheet';
 export * from './FileUploader';
 export * from './FeatureTag';
+export * from './FeatureSet';
