@@ -9,7 +9,7 @@ export interface FeatureTagProps extends ComponentPropsWithoutRef<'span'>, Margi
   label: string;
 }
 
-export const FeatureTag: React.FC<FeatureTagProps> = memo(({ label, icon, ...props }) => {
+export const FeatureTag: React.FC<FeatureTagProps> = memo(({ icon, label, ...props }) => {
   return label ? (
     <StyledFeatureTag {...props}>
       {icon}
