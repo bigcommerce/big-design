@@ -10,6 +10,7 @@ import React, {
   useRef,
 } from 'react';
 import { StoreApi } from 'zustand';
+import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
@@ -74,24 +75,42 @@ const InternalWorksheet = typedMemo(
     const { store, useStore } = useWorksheetStore();
     const tooltipId = useId();
 
-    const setRows = useStore(store, (state) => state.setRows);
-    const setColumns = useStore(store, (state) => state.setColumns);
-    const setExpandableRows = useStore(store, (state) => state.setExpandableRows);
-    const setDisabledRows = useStore(store, (state) => state.setDisabledRows);
-    const setTableRef = useStore(store, (state) => state.setTableRef);
-    const resetInvalidCells = useStore(store, (state) => state.resetInvalidCells);
+    const setRows = useStore(
+      store,
+      useShallow((state) => state.setRows),
+    );
+    const setColumns = useStore(
+      store,
+      useShallow((state) => state.setColumns),
+    );
+    const setExpandableRows = useStore(
+      store,
+      useShallow((state) => state.setExpandableRows),
+    );
+    const setDisabledRows = useStore(
+      store,
+      useShallow((state) => state.setDisabledRows),
+    );
+    const setTableRef = useStore(
+      store,
+      useShallow((state) => state.setTableRef),
+    );
+    const resetInvalidCells = useStore(
+      store,
+      useShallow((state) => state.resetInvalidCells),
+    );
 
     const rows = useStore(
       store,
-      useMemo(() => (state) => state.rows, []),
+      useShallow((state) => state.rows),
     );
     const editedCells = useStore(
       store,
-      useMemo(() => (state) => state.editedCells, []),
+      useShallow((state) => state.editedCells),
     );
     const invalidCells = useStore(
       store,
-      useMemo(() => (state) => state.invalidCells, []),
+      useShallow((state) => state.invalidCells),
     );
 
     const { handleKeyDown, handleKeyUp } = useKeyEvents();
@@ -107,7 +126,7 @@ const InternalWorksheet = typedMemo(
       shouldBeTriggeredOnChange.current = editedCells.length > 0;
     }, [editedCells]);
 
-    // Create a new reference since state mutates rows to prevent unecessary rerendering
+    // Create a new reference since state mutates rows to prevent unnecessary rerendering
     useEffect(() => {
       shouldBeTriggeredOnChange.current = false;
 

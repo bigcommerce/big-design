@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useId, useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../../utils';
 import { Tooltip } from '../../Tooltip';
@@ -63,55 +64,70 @@ const InternalCell = <T extends WorksheetItem>({
   } = useAutoFilling(cell);
   const tooltipId = useId();
 
-  const setSelectedRows = useStore(store, (state) => state.setSelectedRows);
-  const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
-  const addInvalidCells = useStore(store, (state) => state.addInvalidCells);
-  const removeInvalidCells = useStore(store, (state) => state.removeInvalidCells);
+  const setSelectedRows = useStore(
+    store,
+    useShallow((state) => state.setSelectedRows),
+  );
+  const setSelectedCells = useStore(
+    store,
+    useShallow((state) => state.setSelectedCells),
+  );
+  const addInvalidCells = useStore(
+    store,
+    useShallow((state) => state.addInvalidCells),
+  );
+  const removeInvalidCells = useStore(
+    store,
+    useShallow((state) => state.removeInvalidCells),
+  );
 
   const row: T = useStore(
     store,
-    useMemo(() => (state) => state.rows[rowIndex], [rowIndex]),
+    useShallow((state) => state.rows[rowIndex]),
   );
 
   const editWithValue = useStore(
     store,
-    useMemo(() => (state) => state.editWithValue, []),
+    useShallow((state) => state.editWithValue),
   );
 
   const isShiftPressed = useStore(
     store,
-    useMemo(() => (state) => state.isShiftPressed, []),
+    useShallow((state) => state.isShiftPressed),
   );
 
-  const isMetaKey = useStore(store, (state) => state.isMetaKey);
+  const isMetaKey = useStore(
+    store,
+    useShallow((state) => state.isMetaKey),
+  );
 
-  const isControlKey = useStore(store, (state) => state.isControlKey);
+  const isControlKey = useStore(
+    store,
+    useShallow((state) => state.isControlKey),
+  );
 
   const { selectedCells, isLastSelected, isFirstSelected, isSelected } = useStore(
     store,
-    useMemo(
-      () => (state) => {
-        const idx = Object.keys(state.selectedCellsMap).indexOf(cellIdx);
+    useShallow((state) => {
+      const idx = Object.keys(state.selectedCellsMap).indexOf(cellIdx);
 
-        return {
-          selectedCells: state.selectedCells,
-          isLastSelected: state.selectedCells.length - 1 === idx,
-          isFirstSelected: idx === 0,
-          isSelected: idx !== -1,
-        };
-      },
-      [cellIdx],
-    ),
+      return {
+        selectedCells: state.selectedCells,
+        isLastSelected: state.selectedCells.length - 1 === idx,
+        isFirstSelected: idx === 0,
+        isSelected: idx !== -1,
+      };
+    }),
   );
 
   const isEdited = useStore(
     store,
-    useMemo(() => (state) => !!state.editedCellsMap[cellIdx], [cellIdx]),
+    useShallow((state) => !!state.editedCellsMap[cellIdx]),
   );
 
   const invalidCell = useStore(
     store,
-    useMemo(() => (state) => state.invalidCellsMap[cellIdx], [cellIdx]),
+    useShallow((state) => state.invalidCellsMap[cellIdx]),
   );
 
   const isValid = useMemo(

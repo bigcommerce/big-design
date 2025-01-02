@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { useNavigation } from '../useNavigation';
 import { useWorksheetStore } from '../useWorksheetStore';
@@ -15,45 +16,50 @@ export const useKeyEvents = () => {
   // Get the first cell of the selected values
   const selectedCell = useStore(
     store,
-    useMemo(() => (state) => state.selectedCells[0], []),
+    useShallow((state) => state.selectedCells[0]),
   );
 
   const lastSelectedCell = useStore(
     store,
-    useMemo(() => (state) => state.selectedCells[state.selectedCells.length - 1], []),
+    useShallow((state) => state.selectedCells[state.selectedCells.length - 1]),
   );
 
   const selectedCells = useStore(
     store,
-    useMemo(() => (state) => state.selectedCells, []),
+    useShallow((state) => state.selectedCells),
   );
 
   const rows = useStore(
     store,
-    useMemo(() => (state) => state.rows, []),
+    useShallow((state) => state.rows),
   );
 
   const isEditing = useStore(
     store,
-
-    useMemo(() => (state) => state.editingCell !== null, []),
+    useShallow((state) => state.editingCell !== null),
   );
 
   const isShiftPressed = useStore(
     store,
-    useMemo(() => (state) => state.isShiftPressed, []),
+    useShallow((state) => state.isShiftPressed),
   );
 
   const setShiftPressed = useStore(
     store,
-    useMemo(() => (state) => state.setShiftPressed, []),
+    useShallow((state) => state.setShiftPressed),
   );
 
-  const setEditingCell = useStore(store, (state) => state.setEditingCell);
+  const setEditingCell = useStore(
+    store,
+    useShallow((state) => state.setEditingCell),
+  );
 
   const { navigate } = useNavigation(selectedCell);
 
-  const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
+  const setSelectedCells = useStore(
+    store,
+    useShallow((state) => state.setSelectedCells),
+  );
 
   const editSelectedCell = useCallback(
     ({ isMetaKey = false, isControlKey = false, editWithValue = '' }: EditingCellsArgs = {}) => {

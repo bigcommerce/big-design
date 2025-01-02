@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../../utils';
 import { Cell } from '../Cell';
@@ -23,24 +24,24 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
 
   const row: T = useStore(
     store,
-    useMemo(() => (state) => state.rows[rowIndex], [rowIndex]),
+    useShallow((state) => state.rows[rowIndex]),
   );
   const nextRow: T = useStore(
     store,
-    useMemo(() => (state) => state.rows[rowIndex + 1] || null, [rowIndex]),
+    useShallow((state) => state.rows[rowIndex + 1] || null),
   );
   const expandableRows = useStore(
     store,
-    useMemo(() => (state) => state.expandableRows, []),
+    useShallow((state) => state.expandableRows),
   );
 
   const isExpanded = useStore(
     store,
-    useMemo(() => (state) => !state.hiddenRows.includes(row.id), [row.id]),
+    useShallow((state) => !state.hiddenRows.includes(row.id)),
   );
   const isDisabled = useStore(
     store,
-    useMemo(() => (state) => state.disabledRows.includes(row.id), [row.id]),
+    useShallow((state) => state.disabledRows.includes(row.id)),
   );
 
   const parentId = useMemo(() => {

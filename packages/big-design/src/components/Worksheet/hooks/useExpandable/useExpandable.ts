@@ -1,13 +1,23 @@
 import { useCallback, useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { useWorksheetStore } from '../useWorksheetStore';
 
 export const useExpandable = (rowId: string | number) => {
   const { store, useStore } = useWorksheetStore();
 
-  const expandableRows = useStore(store, (state) => state.expandableRows);
-  const hiddenRows = useStore(store, (state) => state.hiddenRows);
-  const setHiddenRows = useStore(store, (state) => state.setHiddenRows);
+  const expandableRows = useStore(
+    store,
+    useShallow((state) => state.expandableRows),
+  );
+  const hiddenRows = useStore(
+    store,
+    useShallow((state) => state.hiddenRows),
+  );
+  const setHiddenRows = useStore(
+    store,
+    useShallow((state) => state.setHiddenRows),
+  );
 
   const onExpand = useCallback(() => {
     const childIds = expandableRows[rowId];

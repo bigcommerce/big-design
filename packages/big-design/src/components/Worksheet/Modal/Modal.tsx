@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../../utils';
 import { Modal } from '../../Modal';
@@ -16,15 +17,21 @@ const InternalWorksheetModal = <T extends WorksheetItem>({ column }: WorksheetMo
 
   const isModalOpen: boolean = useStore(
     store,
-    useMemo(() => (state) => state.openedModal === hash, [hash]),
+    useShallow((state) => state.openedModal === hash),
   );
   const selectedCell = useStore(
     store,
-    useMemo(() => (state) => state.selectedCells[0], []),
+    useShallow((state) => state.selectedCells[0]),
   );
 
-  const setOpenModal = useStore(store, (state) => state.setOpenModal);
-  const setEditingCell = useStore(store, (state) => state.setEditingCell);
+  const setOpenModal = useStore(
+    store,
+    useShallow((state) => state.setOpenModal),
+  );
+  const setEditingCell = useStore(
+    store,
+    useShallow((state) => state.setEditingCell),
+  );
 
   const { focusTable } = useTableFocus();
   const { updateItems } = useUpdateItems();

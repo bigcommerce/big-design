@@ -1,4 +1,5 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { useWorksheetStore } from '../hooks';
 
@@ -13,14 +14,13 @@ export const RowStatus: React.FC<RowStatusProps> = memo(({ rowIndex }) => {
 
   const isSelected: boolean = useStore(
     store,
-    useMemo(() => (state) => state.selectedRows.includes(rowIndex), [rowIndex]),
+    useShallow((state) => state.selectedRows.includes(rowIndex)),
   );
 
   const isInvalid = useStore(
     store,
-    useMemo(
-      () => (state) => state.invalidCells.some((invalidCell) => invalidCell.rowIndex === rowIndex),
-      [rowIndex],
+    useShallow((state) =>
+      state.invalidCells.some((invalidCell) => invalidCell.rowIndex === rowIndex),
     ),
   );
 

@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { Cell, InternalWorksheetColumn, WorksheetItem } from '../../types';
 import { useWorksheetStore } from '../useWorksheetStore';
@@ -15,19 +16,25 @@ export const useNavigation = <T extends WorksheetItem>(selectedCell: Cell<T>) =>
 
   const rows: T[] = useStore(
     store,
-    useMemo(() => (state) => state.rows, []),
+    useShallow((state) => state.rows),
   );
   const columns: Array<InternalWorksheetColumn<T>> = useStore(
     store,
-    useMemo(() => (state) => state.columns, []),
+    useShallow((state) => state.columns),
   );
   const hiddenRows = useStore(
     store,
-    useMemo(() => (state) => state.hiddenRows, []),
+    useShallow((state) => state.hiddenRows),
   );
 
-  const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
-  const setSelectedRows = useStore(store, (state) => state.setSelectedRows);
+  const setSelectedCells = useStore(
+    store,
+    useShallow((state) => state.setSelectedCells),
+  );
+  const setSelectedRows = useStore(
+    store,
+    useShallow((state) => state.setSelectedRows),
+  );
 
   const isValidPosition = useCallback(
     (position: Coordinate) => {
