@@ -1,4 +1,5 @@
 import React, { createRef, useCallback, useEffect, useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../../../utils';
 import { Flex } from '../../../Flex';
@@ -21,8 +22,14 @@ const InternalModalEditor = <T extends WorksheetItem>({
 }: ModalEditorProps<T>) => {
   const { store, useStore } = useWorksheetStore();
 
-  const setOpenModal = useStore(store, (state) => state.setOpenModal);
-  const setEditingCell = useStore(store, (state) => state.setEditingCell);
+  const setOpenModal = useStore(
+    store,
+    useShallow((state) => state.setOpenModal),
+  );
+  const setEditingCell = useStore(
+    store,
+    useShallow((state) => state.setEditingCell),
+  );
   const { hash, value } = cell;
 
   const buttonRef = createRef<HTMLButtonElement>();

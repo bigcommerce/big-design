@@ -1,5 +1,6 @@
 import { ChevronRightIcon, ExpandMoreIcon } from '@bigcommerce/big-design-icons';
 import React, { memo, useContext, useEffect } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { useExpandable, useWorksheetStore } from '../../hooks';
 import { WorksheetLocalizationContext } from '../../Worksheet';
@@ -16,7 +17,10 @@ const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {
   const { store, useStore } = useWorksheetStore();
   const localization = useContext(WorksheetLocalizationContext);
 
-  const setEditingCell = useStore(store, (state) => state.setEditingCell);
+  const setEditingCell = useStore(
+    store,
+    useShallow((state) => state.setEditingCell),
+  );
 
   useEffect(() => {
     if (toggle && isExpandable) {
