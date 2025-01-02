@@ -1,4 +1,5 @@
 import React, { createRef, useCallback, useEffect } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../../../utils';
 import { Select } from '../../../Select';
@@ -25,7 +26,10 @@ const InternalSelectEditor = <T extends WorksheetItem>({
   const inputRef = createRef<HTMLInputElement>();
   const { store, useStore } = useWorksheetStore();
 
-  const setEditingCell = useStore(store, (state) => state.setEditingCell);
+  const setEditingCell = useStore(
+    store,
+    useShallow((state) => state.setEditingCell),
+  );
 
   useEffect(() => {
     if (isEditing && inputRef.current) {

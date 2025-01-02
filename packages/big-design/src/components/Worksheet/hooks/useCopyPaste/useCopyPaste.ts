@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { Cell, InternalWorksheetColumn } from '../../types';
 import { useUpdateItems } from '../useUpdateItems';
@@ -46,32 +47,38 @@ export const useCopyPasteHandler = () => {
 
   const selectedCells = useStore(
     store,
-    useMemo(() => (state) => state.selectedCells, []),
+    useShallow((state) => state.selectedCells),
   );
 
   const copiedCells = useStore(
     store,
-    useMemo(() => (state) => state.copiedCells, []),
+    useShallow((state) => state.copiedCells),
   );
 
   const rows = useStore(
     store,
-    useMemo(() => (state) => state.rows, []),
+    useShallow((state) => state.rows),
   );
 
   const columns = useStore(
     store,
-    useMemo(() => (state) => state.columns, []),
+    useShallow((state) => state.columns),
   );
 
   const disabledRows = useStore(
     store,
-    useMemo(() => (state) => state.disabledRows, []),
+    useShallow((state) => state.disabledRows),
   );
 
-  const setCopiedCells = useStore(store, (state) => state.setCopiedCells);
+  const setCopiedCells = useStore(
+    store,
+    useShallow((state) => state.setCopiedCells),
+  );
 
-  const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
+  const setSelectedCells = useStore(
+    store,
+    useShallow((state) => state.setSelectedCells),
+  );
 
   const cellsToUpdate = useMemo(() => {
     if (selectedCells.length === 0) {

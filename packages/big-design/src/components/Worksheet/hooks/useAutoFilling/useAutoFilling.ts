@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { Cell, WorksheetItem } from '../../types';
 import { useUpdateItems } from '../useUpdateItems';
@@ -8,8 +9,14 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
   const { store, useStore } = useWorksheetStore();
   const { updateItems } = useUpdateItems();
 
-  const selectedCells = useStore(store, (state) => state.selectedCells);
-  const disabledRows = useStore(store, (state) => state.disabledRows);
+  const selectedCells = useStore(
+    store,
+    useShallow((state) => state.selectedCells),
+  );
+  const disabledRows = useStore(
+    store,
+    useShallow((state) => state.disabledRows),
+  );
 
   const rows = useStore(
     store,
@@ -18,55 +25,54 @@ export const useAutoFilling = <T extends WorksheetItem>(cell: Cell<T>) => {
 
   const isColumnFullyEnabled = useStore(
     store,
-    useMemo(
-      () =>
-        ({ columns }) =>
-          columns.find(({ hash }) => hash === selectedCells[0]?.hash)?.enabled ?? false,
-      [selectedCells],
+    useShallow(
+      ({ columns }) =>
+        columns.find(({ hash }) => hash === selectedCells[0]?.hash)?.enabled ?? false,
     ),
   );
 
   const isColumnFullyDisabled = useStore(
     store,
-    useMemo(
-      () =>
-        ({ columns }) =>
-          columns.find(({ hash }) => hash === selectedCells[0]?.hash)?.disabled ?? false,
-      [selectedCells],
+    useShallow(
+      ({ columns }) =>
+        columns.find(({ hash }) => hash === selectedCells[0]?.hash)?.disabled ?? false,
     ),
   );
 
   const isBlockedFillOut = useStore(
     store,
-    useMemo(() => (state) => state.isBlockedFillOut, []),
+    useShallow((state) => state.isBlockedFillOut),
   );
 
   const isSelectingActive = useStore(
     store,
-    useMemo(() => (state) => state.isSelectingActive, []),
+    useShallow((state) => state.isSelectingActive),
   );
 
   const isAutoFillActive = useStore(
     store,
-    useMemo(() => (state) => state.isAutoFillActive, []),
+    useShallow((state) => state.isAutoFillActive),
   );
 
   const setSelectingActive = useStore(
     store,
-    useMemo(() => (state) => state.setSelectingActive, []),
+    useShallow((state) => state.setSelectingActive),
   );
 
   const setAutoFillActive = useStore(
     store,
-    useMemo(() => (state) => state.setAutoFillActive, []),
+    useShallow((state) => state.setAutoFillActive),
   );
 
   const setBlockFillOut = useStore(
     store,
-    useMemo(() => (state) => state.setBlockFillOut, []),
+    useShallow((state) => state.setBlockFillOut),
   );
 
-  const setSelectedCells = useStore(store, (state) => state.setSelectedCells);
+  const setSelectedCells = useStore(
+    store,
+    useShallow((state) => state.setSelectedCells),
+  );
 
   const getAvailableCells = useCallback(
     (selectedRowsIds: any[]) => {

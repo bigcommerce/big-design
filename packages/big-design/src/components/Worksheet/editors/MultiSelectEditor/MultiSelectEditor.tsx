@@ -1,4 +1,5 @@
 import React, { createRef, useCallback, useEffect } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../../../utils';
 import { MultiSelect } from '../../../MultiSelect';
@@ -25,7 +26,10 @@ const InternalMultiSelectEditor = <T extends WorksheetItem>({
   const inputRef = createRef<HTMLInputElement>();
   const { store, useStore } = useWorksheetStore();
 
-  const setEditingCell = useStore(store, (state) => state.setEditingCell);
+  const setEditingCell = useStore(
+    store,
+    useShallow((state) => state.setEditingCell),
+  );
 
   const value = Array.isArray(cell.value) ? cell.value : [cell.value];
 
