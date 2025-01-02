@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { useWorksheetStore } from '../useWorksheetStore';
 
@@ -7,7 +8,7 @@ export const useTableFocus = () => {
 
   const tableRef = useStore(
     store,
-    useMemo(() => (state) => state.tableRef, []),
+    useShallow((state) => state.tableRef),
   );
 
   const focusTable = useCallback(() => {

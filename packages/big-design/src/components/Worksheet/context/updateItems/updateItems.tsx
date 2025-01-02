@@ -1,4 +1,5 @@
 import React, { createContext, ReactNode, useCallback, useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { typedMemo } from '../../../../utils';
 import { useWorksheetStore } from '../../hooks';
@@ -19,8 +20,14 @@ export const UpdateItemsProvider = typedMemo(
   <T extends WorksheetItem>({ children, items }: UpdateItemsProviderProps<T>) => {
     const { store, useStore } = useWorksheetStore();
 
-    const setRows = useStore(store, (state) => state.setRows);
-    const addEditedCells = useStore(store, (state) => state.addEditedCells);
+    const setRows = useStore(
+      store,
+      useShallow((state) => state.setRows),
+    );
+    const addEditedCells = useStore(
+      store,
+      useShallow((state) => state.addEditedCells),
+    );
 
     const updateItems: UpdateItemsContextType<T>['updateItems'] = useCallback(
       (cells, newValues) => {

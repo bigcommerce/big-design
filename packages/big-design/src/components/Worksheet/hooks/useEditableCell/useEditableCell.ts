@@ -1,4 +1,5 @@
 import React, { FocusEvent, useCallback, useMemo } from 'react';
+import { useShallow } from 'zustand/shallow';
 
 import { Cell, WorksheetItem } from '../../types';
 import { useTableFocus } from '../useTableFocus';
@@ -13,19 +14,20 @@ export type EditableCellOnKeyDown = (
 export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
   const { store, useStore } = useWorksheetStore();
 
-  const setEditingCell = useStore(store, (state) => state.setEditingCell);
+  const setEditingCell = useStore(
+    store,
+    useShallow((state) => state.setEditingCell),
+  );
   const { updateItems } = useUpdateItems();
   const { focusTable } = useTableFocus();
 
   const isEditing = useStore(
     store,
-    useMemo(
-      () =>
-        ({ editingCell }) =>
-          editingCell !== null &&
-          editingCell.columnIndex === cell.columnIndex &&
-          editingCell.rowIndex === cell.rowIndex,
-      [cell],
+    useShallow(
+      ({ editingCell }) =>
+        editingCell !== null &&
+        editingCell.columnIndex === cell.columnIndex &&
+        editingCell.rowIndex === cell.rowIndex,
     ),
   );
 
