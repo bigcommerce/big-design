@@ -40,7 +40,6 @@ export const Collapse: React.FC<CollapseProps> = ({
         iconRight={<ExpandMoreIcon title={title} />}
         id={triggerId}
         isOpen={isOpen}
-        marginVertical="small"
         onClick={handleTitleClick}
         type="button"
         variant="subtle"
