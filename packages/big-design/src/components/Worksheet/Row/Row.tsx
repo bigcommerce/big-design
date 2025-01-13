@@ -107,6 +107,11 @@ const InternalRow = <T extends WorksheetItem>({ columns, rowIndex }: RowProps<T>
       <RowStatus rowIndex={rowIndex} />
       {columns.map((column, columnIndex) => (
         <Cell
+          action={
+            column.type === undefined || column.type === 'number' || column.type === 'text'
+              ? column?.action
+              : undefined
+          }
           columnIndex={columnIndex}
           disabled={getIsCellDisabled(column)}
           formatting={hasFormatting(column) ? column.formatting : undefined}

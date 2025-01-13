@@ -27,6 +27,7 @@ interface CellProps<Item> extends TCell<Item> {
   formatting?: WorksheetTextColumn<Item>['formatting'];
   validation?: InternalWorksheetColumn<Item>['validation'];
   notation?: InternalWorksheetColumn<Item>['notation'];
+  action?: WorksheetTextColumn<Item>['action'];
 }
 
 const InternalCell = <T extends WorksheetItem>({
@@ -44,6 +45,7 @@ const InternalCell = <T extends WorksheetItem>({
   nextRowValue,
   isChild,
   isLastChild,
+  action,
 }: CellProps<T>) => {
   const cell: TCell<T> = useMemo(
     () => ({ columnIndex, disabled, hash, rowIndex, type, value }),
@@ -233,6 +235,7 @@ const InternalCell = <T extends WorksheetItem>({
       default:
         return isEditing && !disabled ? (
           <TextEditor
+            action={action}
             cell={cell}
             initialValue={editWithValue}
             isControlKey={isControlKey}
@@ -250,13 +253,14 @@ const InternalCell = <T extends WorksheetItem>({
   }, [
     type,
     cell,
+    isEditing,
     handleBlur,
     handleChange,
     options,
-    isEditing,
     formatting,
     rowId,
     disabled,
+    action,
     editWithValue,
     isControlKey,
     isEdited,
