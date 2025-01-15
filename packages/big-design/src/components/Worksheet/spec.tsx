@@ -1024,6 +1024,67 @@ describe('TextEditor', () => {
     ]);
   });
 
+  test('column type number-infinity returns number or infinity sign', async () => {
+    const { getByText } = render(
+      <Worksheet
+        columns={[
+          {
+            hash: 'numberField',
+            header: 'Number field',
+            tooltip: 'Info about number field',
+            type: 'number',
+          },
+        ]}
+        items={items}
+        onChange={handleChange}
+      />,
+    );
+
+    const cell = getByText('49');
+
+    fireEvent.doubleClick(cell);
+
+    const input = await screen.findByDisplayValue<HTMLInputElement>('49');
+
+    fireEvent.change(input, { target: { value: 888 } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+
+    expect(handleChange).toHaveBeenCalledWith([
+      {
+        id: 7,
+        productName: 'Variant 3',
+        visibleOnStorefront: false,
+        otherField: 'Text',
+        otherField2: 7,
+        numberField: 888,
+      },
+    ]);
+
+    const updatedCell = getByText('888');
+
+    fireEvent.doubleClick(updatedCell);
+
+    const infinityButton = screen.getByRole('button', { name: 'Set value to infinity' });
+
+    expect(infinityButton).toBeVisible();
+    expect(infinityButton).toHaveAttribute('id', 'infinity-button');
+
+    await userEvent.click(infinityButton);
+
+    expect(handleChange).toHaveBeenCalledWith([
+      {
+        id: 7,
+        productName: 'Variant 3',
+        visibleOnStorefront: false,
+        otherField: 'Text',
+        otherField2: 7,
+        numberField: '∞',
+      },
+    ]);
+
+    expect(infinityButton).not.toBeVisible();
+  });
+
   test('renders in disabled state', () => {
     render(<Worksheet columns={disabledColumns} items={items} onChange={handleChange} />);
 

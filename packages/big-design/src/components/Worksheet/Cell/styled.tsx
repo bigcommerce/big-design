@@ -153,9 +153,9 @@ export const CellNote = styled.div<{ color: keyof Colors }>`
 
   border-bottom: 8px solid ${({ theme, color }) => theme.colors[color]};
   position: absolute;
-  top -1px;
+  top: -1px;
   right: -5px;
-  transform: rotate(45deg)
+  transform: rotate(45deg);
 `;
 
 StyledCell.defaultProps = { theme: defaultTheme };

@@ -46,16 +46,10 @@ export const useEditableCell = <T extends WorksheetItem>(cell: Cell<T>) => {
     (event?: FocusEvent<HTMLInputElement>, cell?: Cell<T>) => {
       const isNumberCell = cell?.type === 'number';
       const isTextCell = cell?.type === 'text';
+      const value = event?.target.value;
 
       if (isNumberCell || isTextCell) {
-        updateItems(
-          [cell],
-          [
-            isNumberCell && !Number.isNaN(Number(event?.target.value))
-              ? Number(event?.target.value)
-              : event?.target.value,
-          ],
-        );
+        updateItems([cell], [isNumberCell && !Number.isNaN(Number(value)) ? Number(value) : value]);
       }
 
       restoreFocus();
