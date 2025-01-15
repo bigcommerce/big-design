@@ -11,6 +11,7 @@ import { StyledFlexItem, StyledPillTab } from './styled';
 export interface PillTabItem {
   id: string;
   title: string;
+  separator?: boolean;
 }
 
 export interface PillTabsProps {
@@ -93,6 +94,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
         isVisible={isMenuVisible}
         ref={dropdownRef}
         role="listitem"
+        separator={false}
       >
         <Dropdown
           items={dropdownItems}
@@ -145,6 +147,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
             key={index}
             ref={pill.ref}
             role="listitem"
+            separator={!!pill.item.separator}
           >
             <StyledPillTab
               disabled={!pill.isVisible}
