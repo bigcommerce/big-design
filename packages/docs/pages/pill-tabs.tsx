@@ -53,7 +53,7 @@ const PillTabsPage = () => {
             );
             const items = [
               { title: 'Shipping', id: 'shipping' },
-              { title: 'Orders', id: 'orders' },
+              { title: 'Orders', id: 'orders', separator: true },
             ];
             const onPillClick = (pillId: string) => {
               const isPillActive = !activePills.includes(pillId);

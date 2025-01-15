@@ -10,6 +10,7 @@ interface StyledPillTabProps {
 
 interface StyledFlexItemProps {
   isVisible: boolean;
+  separator: boolean;
 }
 
 export const StyledPillTab = styled(StyleableButton)<StyledPillTabProps>`
@@ -27,6 +28,14 @@ export const StyledFlexItem = styled(FlexItem)<StyledFlexItemProps>`
       position: absolute;
       visibility: hidden;
       z-index: ${({ theme }) => -theme.zIndex.tooltip};
+    `}
+
+  ${(props) =>
+    props.separator &&
+    props.isVisible &&
+    css`
+      border-left: 1px solid ${({ theme }) => theme.colors.secondary30};
+      padding-left: ${({ theme }) => theme.spacing.xSmall};
     `}
 `;
 
