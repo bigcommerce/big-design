@@ -1,10 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render feature set 1`] = `
+.c0 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 .c2 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
+  color: currentColor;
+  margin: 0 0 1rem;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  color: currentColor;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0 0 0.75rem;
+  margin: 0;
+}
+
+.c2:last-child {
+  margin-bottom: 0;
 }
 
 .c1 {
@@ -12,7 +41,6 @@ exports[`render feature set 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
   background-color: #ECEEF5;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
@@ -23,23 +51,13 @@ exports[`render feature set 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  font-size: 0.875rem;
   gap: 0.25rem;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  line-height: 1.25rem;
-  max-width: 100%;
   padding-block: 0.125rem;
   padding-inline: 0.5rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .c1 > svg {
@@ -50,95 +68,31 @@ exports[`render feature set 1`] = `
   width: 1rem;
 }
 
-.c3 {
-  display: inline-block;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  word-wrap: normal;
-  width: 100%;
-}
-
-.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.c0 > li {
-  display: block;
-  margin-right: 0.75rem;
-  margin-bottom: 0.75rem;
-  overflow: hidden;
-}
-
 <ul
   class="c0"
 >
-  <li>
+  <li
+    aria-labelledby=":r0:"
+    class="c1"
+  >
     <span
-      class="c1"
+      class="c2"
+      color="currentColor"
+      id=":r0:"
     >
-      <svg
-        aria-hidden="true"
-        class="c2"
-        fill="currentColor"
-        height="24"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="24"
-      >
-        <path
-          d="M0 0h24v24H0z"
-          fill="none"
-        />
-        <path
-          d="m19.46 8 .79-1.75L22 5.46a.5.5 0 0 0 0-.91l-1.75-.79L19.46 2a.5.5 0 0 0-.91 0l-.79 1.75-1.76.79a.5.5 0 0 0 0 .91l1.75.79.79 1.76c.18.39.74.39.92 0M11.5 9.5 9.91 6c-.35-.78-1.47-.78-1.82 0L6.5 9.5 3 11.09c-.78.36-.78 1.47 0 1.82l3.5 1.59L8.09 18c.36.78 1.47.78 1.82 0l1.59-3.5 3.5-1.59c.78-.36.78-1.47 0-1.82zm7.04 6.5-.79 1.75-1.75.79a.5.5 0 0 0 0 .91l1.75.79.79 1.76a.5.5 0 0 0 .91 0l.79-1.75 1.76-.79a.5.5 0 0 0 0-.91l-1.75-.79-.79-1.76a.508.508 0 0 0-.92 0"
-        />
-      </svg>
-      <span
-        class="c3"
-      >
-        Feature 1
-      </span>
+      Feature 1
     </span>
   </li>
-  <li>
+  <li
+    aria-labelledby=":r1:"
+    class="c1"
+  >
     <span
-      class="c1"
+      class="c2"
+      color="currentColor"
+      id=":r1:"
     >
-      <svg
-        aria-hidden="true"
-        class="c2"
-        fill="currentColor"
-        height="24"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="24"
-      >
-        <path
-          d="M0 0h24v24H0z"
-          fill="none"
-        />
-        <path
-          d="m19.46 8 .79-1.75L22 5.46a.5.5 0 0 0 0-.91l-1.75-.79L19.46 2a.5.5 0 0 0-.91 0l-.79 1.75-1.76.79a.5.5 0 0 0 0 .91l1.75.79.79 1.76c.18.39.74.39.92 0M11.5 9.5 9.91 6c-.35-.78-1.47-.78-1.82 0L6.5 9.5 3 11.09c-.78.36-.78 1.47 0 1.82l3.5 1.59L8.09 18c.36.78 1.47.78 1.82 0l1.59-3.5 3.5-1.59c.78-.36.78-1.47 0-1.82zm7.04 6.5-.79 1.75-1.75.79a.5.5 0 0 0 0 .91l1.75.79.79 1.76a.5.5 0 0 0 .91 0l.79-1.75 1.76-.79a.5.5 0 0 0 0-.91l-1.75-.79-.79-1.76a.508.508 0 0 0-.92 0"
-        />
-      </svg>
-      <span
-        class="c3"
-      >
-        Feature 2
-      </span>
+      Feature 2
     </span>
   </li>
 </ul>

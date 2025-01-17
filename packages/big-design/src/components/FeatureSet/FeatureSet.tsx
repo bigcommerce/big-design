@@ -1,24 +1,24 @@
 import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { MarginProps } from '../../helpers';
-import { FeatureTag, FeatureTagProps } from '../FeatureTag';
 
-import { StyledFeatureSet } from './styled';
+import { StyledUl } from './styled';
+import { Tag, TagProps } from './Tag';
 
 export interface FeatureSetProps extends ComponentPropsWithoutRef<'ul'>, MarginProps {
-  features: FeatureTagProps[];
+  tags: TagProps[];
 }
 
-export const FeatureSet: React.FC<FeatureSetProps> = memo(({ features, ...props }) => {
-  return features && features.length > 0 ? (
-    <StyledFeatureSet {...props}>
-      {features.map((feature, index) => (
-        <li key={index}>
-          <FeatureTag {...feature} />
-        </li>
-      ))}
-    </StyledFeatureSet>
-  ) : null;
-});
+export const FeatureSet: React.FC<FeatureSetProps> = memo(
+  ({ tags, className, style, ...props }) => {
+    return tags && tags.length > 0 ? (
+      <StyledUl {...props}>
+        {tags.map((tag, index) => (
+          <Tag {...tag} key={index} />
+        ))}
+      </StyledUl>
+    ) : null;
+  },
+);
 
 FeatureSet.displayName = 'FeatureSet';

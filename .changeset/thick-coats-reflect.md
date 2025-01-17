@@ -3,4 +3,4 @@
 '@bigcommerce/docs': minor
 ---
 
-Added FeatureSet and FeatureTag components
+Added FeatureSet component
