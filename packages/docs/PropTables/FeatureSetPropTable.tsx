@@ -4,17 +4,17 @@ import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components
 
 const featureSetProps: Prop[] = [
   {
-    name: 'features',
+    name: 'tags',
     types: (
-      <NextLink href={{ hash: 'feature-set-prop-table', query: { props: 'feature-set' } }}>
-        FeatureTagProps[]
+      <NextLink href={{ hash: 'feature-tag-prop-table', query: { props: 'feature-tag' } }}>
+        TagProps[]
       </NextLink>
     ),
     description: (
       <>
         See{' '}
         <NextLink href={{ hash: 'feature-tag-prop-table', query: { props: 'feature-tag' } }}>
-          FeatureTag
+          TagProps
         </NextLink>{' '}
         for usage.
       </>

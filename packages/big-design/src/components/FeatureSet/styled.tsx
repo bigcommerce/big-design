@@ -3,23 +3,12 @@ import styled from 'styled-components';
 
 import { withMargins } from '../../helpers';
 
-export const StyledFeatureSet = styled.ul`
+export const StyledUl = styled.ul.attrs({ theme: defaultTheme })`
+  ${({ theme }) => theme.helpers.listReset}
+
+  ${withMargins()};
+
   display: inline-flex;
   flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  && {
-    ${withMargins()};
-  }
-
-  & > li {
-    display: block;
-    margin-right: ${({ theme }) => theme.spacing.small};
-    margin-bottom: ${({ theme }) => theme.spacing.small};
-    overflow: hidden;
-  }
+  gap: ${({ theme }) => theme.spacing.small};
 `;
-
-StyledFeatureSet.defaultProps = { theme: defaultTheme };

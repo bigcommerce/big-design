@@ -25,13 +25,13 @@ const FeatureSetPage = () => {
         <CodePreview>
           {/* jsx-to-string:start */}
           {function Example() {
-            const features = [
+            const tags = [
               { label: 'Feature 1', icon: <AutoAwesomeIcon /> },
               { label: 'Feature 2', icon: <AutoAwesomeIcon /> },
-              { label: 'Feature 3', icon: <AutoAwesomeIcon /> },
+              { label: 'Feature 3' },
             ];
 
-            return <FeatureSet features={features} />;
+            return <FeatureSet tags={tags} />;
           }}
           {/* jsx-to-string:end */}
         </CodePreview>
