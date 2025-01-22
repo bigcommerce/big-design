@@ -1,3 +1,4 @@
+import { AllInclusiveIcon } from '@bigcommerce/big-design-icons';
 import { theme } from '@bigcommerce/big-design-theme';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
@@ -714,6 +715,117 @@ describe('notation', () => {
     fireEvent.keyDown(input, { key: 'Enter' });
 
     expect(getByRole('note')).toBeInTheDocument();
+  });
+});
+
+describe('Column action', () => {
+  test('sets value by the action', async () => {
+    render(
+      <Worksheet
+        columns={[
+          {
+            hash: 'numberField',
+            header: 'Number field',
+            type: 'number',
+            width: 90,
+            enabled: true,
+            action: {
+              icon: <AllInclusiveIcon />,
+              transform: () => `Unlimited`,
+            },
+          },
+        ]}
+        items={items}
+        onChange={handleChange}
+      />,
+    );
+
+    const cell = screen.getByText('49');
+
+    fireEvent.doubleClick(cell);
+
+    const actionButton = screen.getByRole('button', { name: /cell action button/i });
+
+    expect(actionButton).toBeVisible();
+
+    await userEvent.click(actionButton);
+
+    expect(screen.getByText('Unlimited')).toBeInTheDocument();
+  });
+
+  test('calls onChange by click on the action button', async () => {
+    render(
+      <Worksheet
+        columns={[
+          {
+            hash: 'numberField',
+            header: 'Number field',
+            type: 'number',
+            width: 90,
+            enabled: true,
+            action: {
+              icon: <AllInclusiveIcon />,
+              transform: () => `Unlimited`,
+            },
+          },
+        ]}
+        items={items}
+        onChange={handleChange}
+      />,
+    );
+
+    const cell = screen.getByText('49');
+
+    fireEvent.doubleClick(cell);
+
+    const actionButton = screen.getByRole('button', { name: /cell action button/i });
+
+    await userEvent.click(actionButton);
+
+    expect(handleChange).toHaveBeenCalledWith([
+      {
+        id: 7,
+        productName: 'Variant 3',
+        visibleOnStorefront: false,
+        otherField: 'Text',
+        otherField2: 7,
+        numberField: 'Unlimited',
+      },
+    ]);
+  });
+
+  test('hides action button when value equals to transformed value', async () => {
+    render(
+      <Worksheet
+        columns={[
+          {
+            hash: 'numberField',
+            header: 'Number field',
+            type: 'number',
+            width: 90,
+            enabled: true,
+            action: {
+              icon: <AllInclusiveIcon />,
+              transform: () => `TestValue`,
+            },
+          },
+        ]}
+        items={items}
+        onChange={handleChange}
+      />,
+    );
+
+    const cell = screen.getByText('49');
+
+    fireEvent.doubleClick(cell);
+
+    const actionButton = screen.getByRole('button', { name: /cell action button/i });
+
+    await userEvent.click(actionButton);
+
+    fireEvent.doubleClick(screen.getByText('TestValue'));
+
+    expect(actionButton).not.toBeInTheDocument();
   });
 });
 
