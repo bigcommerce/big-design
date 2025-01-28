@@ -238,8 +238,8 @@ importers:
         specifier: ^6.3.0
         version: 6.3.0
       flag-icons:
-        specifier: ^7.2.3
-        version: 7.2.3
+        specifier: ^7.3.2
+        version: 7.3.2
       fs-extra:
         specifier: ^11.1.0
         version: 11.2.0
@@ -3793,8 +3793,8 @@ packages:
     resolution: {integrity: sha512-YyZM99iHrqLKjmt4LJDj58KI+fYyufRLBSYcqycxf//KpBk9FoewoGX0450m9nB44qrZnovzC2oeP5hUibxc/g==}
     engines: {node: '>=18'}
 
-  flag-icons@7.2.3:
-    resolution: {integrity: sha512-X2gUdteNuqdNqob2KKTJTS+ZCvyWeLCtDz9Ty8uJP17Y4o82Y+U/Vd4JNrdwTAjagYsRznOn9DZ+E/Q52qbmqg==}
+  flag-icons@7.3.2:
+    resolution: {integrity: sha512-QkaZ6Zvai8LIjx+UNAHUJ5Dhz9OLZpBDwCRWxF6YErxIcR16jTkIFm3bFu54EkvKQy4+wicW+Gm7/0631wVQyQ==}
 
   flat-cache@3.0.4:
     resolution: {integrity: sha512-dm9s5Pw7Jc0GvMYbshN6zchCA9RgQlzzEZX3vylR9IqFfS8XciblUXOKfW6SiuJ0e13eDYZoZV5wdrev7P3Nwg==}
@@ -10101,7 +10101,7 @@ snapshots:
       path-exists: 5.0.0
       unicorn-magic: 0.1.0
 
-  flag-icons@7.2.3: {}
+  flag-icons@7.3.2: {}
 
   flat-cache@3.0.4:
     dependencies:
