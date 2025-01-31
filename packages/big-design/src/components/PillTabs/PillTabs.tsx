@@ -3,7 +3,7 @@ import React, { createRef, useCallback, useEffect, useMemo, useState } from 'rea
 
 import { useWindowResizeListener } from '../../hooks';
 import { Button } from '../Button';
-import { Dropdown } from '../Dropdown';
+import { Dropdown, DropdownItemGroup } from '../Dropdown';
 import { Flex } from '../Flex';
 
 import { StyledFlexItem, StyledPillTab } from './styled';
@@ -41,21 +41,26 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     }
 
     let remainingWidth = parentWidth;
+    let spaceAvailable = true;
 
     const newState = pillsState.map((stateObj) => {
-      const pillWidth = stateObj.ref.current?.offsetWidth;
+      if (spaceAvailable) {
+        const pillWidth = stateObj.ref.current?.offsetWidth;
 
-      if (!pillWidth) {
-        return stateObj;
-      }
+        if (!pillWidth) {
+          return stateObj;
+        }
 
-      if (remainingWidth - pillWidth > dropdownWidth) {
-        remainingWidth -= pillWidth;
+        if (remainingWidth - pillWidth > dropdownWidth) {
+          remainingWidth -= pillWidth;
 
-        return {
-          ...stateObj,
-          isVisible: true,
-        };
+          return {
+            ...stateObj,
+            isVisible: true,
+          };
+        }
+
+        spaceAvailable = false;
       }
 
       return {
@@ -74,19 +79,26 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
   }, [items, parentRef, dropdownRef, pillsState]);
 
   const renderedDropdown = useMemo(() => {
-    const dropdownItems = pillsState
-      .filter((stateObj) => !stateObj.isVisible)
-      .map((stateObj) => {
-        const item = items.find(({ title }) => title === stateObj.item.title);
-        const isActive = item ? activePills.includes(item.id) : false;
+    const groupedItems: DropdownItemGroup[] = [{ items: [], separated: false }];
+    const dropdownItems = pillsState.filter((stateObj) => !stateObj.isVisible);
 
-        return {
-          content: stateObj.item.title,
-          onItemClick: () => onPillClick(stateObj.item.id),
-          hash: stateObj.item.title.toLowerCase(),
-          icon: isActive ? <CheckIcon /> : undefined,
-        };
+    dropdownItems.forEach((stateObj) => {
+      const theItem = stateObj.item;
+
+      if (theItem.separator === true && groupedItems[groupedItems.length - 1].items.length > 0) {
+        groupedItems.push({ items: [], separated: true });
+      }
+
+      const item = items.find(({ title }) => title === theItem.title);
+      const isActive = item ? activePills.includes(item.id) : false;
+
+      groupedItems[groupedItems.length - 1].items.push({
+        content: theItem.title,
+        onItemClick: () => onPillClick(theItem.id),
+        hash: theItem.title.toLowerCase(),
+        icon: isActive ? <CheckIcon /> : undefined,
       });
+    });
 
     return (
       <StyledFlexItem
@@ -97,9 +109,14 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
         separator={false}
       >
         <Dropdown
-          items={dropdownItems}
+          items={groupedItems}
           toggle={
-            <Button iconOnly={<MoreHorizIcon title="add" />} type="button" variant="subtle" />
+            <Button
+              iconOnly={<MoreHorizIcon title="add" />}
+              mobileWidth="auto"
+              type="button"
+              variant="subtle"
+            />
           }
         />
       </StyledFlexItem>
@@ -167,7 +184,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
 
   useEffect(() => {
     hideOverflowedPills();
-  }, [items, parentRef, pillsState, hideOverflowedPills]);
+  }, [items]);
 
   useWindowResizeListener(() => {
     hideOverflowedPills();
