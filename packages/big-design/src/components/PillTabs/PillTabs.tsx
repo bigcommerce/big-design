@@ -184,7 +184,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
 
   useEffect(() => {
     hideOverflowedPills();
-  }, [items]);
+  });
 
   useWindowResizeListener(() => {
     hideOverflowedPills();
