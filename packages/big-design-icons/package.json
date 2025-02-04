@@ -61,7 +61,7 @@
     "camelcase": "^6.3.0",
     "flag-icons": "^7.3.2",
     "fs-extra": "^11.1.0",
-    "glob": "^11.0.0",
+    "glob": "^11.0.1",
     "inquirer": "^8.2.6",
     "inquirer-autocomplete-prompt": "^2.0.1",
     "prettier": "^2.4.0",
