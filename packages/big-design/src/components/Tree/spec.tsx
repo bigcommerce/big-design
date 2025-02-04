@@ -199,11 +199,11 @@ test('renders expanded nodes', () => {
   });
 
   const node5 = screen.getByText('Test Node 5');
-  const node6 = screen.getByText('Test Node 6');
+  const node6 = screen.queryByText('Test Node 6');
   const node9 = screen.getByText('Test Node 9');
 
   expect(node5).toBeVisible();
-  expect(node6).not.toBeVisible();
+  expect(node6).toBeNull();
   expect(node9).toBeVisible();
 });
 

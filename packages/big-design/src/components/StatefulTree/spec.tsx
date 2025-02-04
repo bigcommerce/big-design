@@ -40,23 +40,27 @@ const nodes: Array<TreeNodeProps<number>> = [
   },
 ];
 
+const parentNodes = ['0', '1', '3', '4', '5'];
+
 const getSimpleTree = (props: Partial<StatefulTreeProps<number>> = {}) => (
   <StatefulTree nodes={nodes} {...props} />
 );
 
 test('renders non-selectable Tree by default', () => {
-  const { container, getAllByRole } = render(getSimpleTree());
+  const { container, getAllByRole } = render(getSimpleTree({ defaultExpanded: parentNodes }));
 
   expect(container.querySelectorAll('label')).toHaveLength(0);
-  expect(getAllByRole('treeitem', { hidden: true })).toHaveLength(10);
+  expect(getAllByRole('treeitem')).toHaveLength(10);
 });
 
 test('defaultExpanded items are expanded by default', () => {
-  const { getAllByRole, getByText } = render(getSimpleTree({ defaultExpanded: ['0'] }));
+  const { getAllByRole, getByText, queryByText } = render(
+    getSimpleTree({ defaultExpanded: ['0'] }),
+  );
 
   expect(getAllByRole('treeitem')).toHaveLength(6);
   expect(getByText('Test Node 5')).toBeVisible();
-  expect(getByText('Test Node 6')).not.toBeVisible();
+  expect(queryByText('Test Node 6')).toBeNull();
 });
 
 test('onExpandedChange gets called when an item expansion happens', () => {
@@ -83,7 +87,9 @@ test('onNodeClick gets called when an item click happens', () => {
 
 describe('selectable = multi', () => {
   test('renders nodes with checkboxes', () => {
-    const { container } = render(getSimpleTree({ selectable: 'multi' }));
+    const { container } = render(
+      getSimpleTree({ selectable: 'multi', defaultExpanded: parentNodes }),
+    );
 
     const checkboxes = container.querySelectorAll('label');
 
@@ -92,7 +98,9 @@ describe('selectable = multi', () => {
   });
 
   test('no items are selected by default', () => {
-    const { container } = render(getSimpleTree({ selectable: 'multi' }));
+    const { container } = render(
+      getSimpleTree({ selectable: 'multi', defaultExpanded: parentNodes }),
+    );
 
     const checkboxes = container.querySelectorAll('label');
 
@@ -105,7 +113,11 @@ describe('selectable = multi', () => {
 
   test('defaultSelected items are selected by default', () => {
     const { container } = render(
-      getSimpleTree({ selectable: 'multi', defaultSelected: ['0', '6'] }),
+      getSimpleTree({
+        selectable: 'multi',
+        defaultSelected: ['0', '6'],
+        defaultExpanded: parentNodes,
+      }),
     );
 
     const selectedNodes = container.querySelectorAll('[aria-selected="true"]');
@@ -131,7 +143,9 @@ describe('selectable = multi', () => {
 
 describe('selectable = radio', () => {
   test('renders nodes with radios', () => {
-    const { container } = render(getSimpleTree({ selectable: 'radio' }));
+    const { container } = render(
+      getSimpleTree({ selectable: 'radio', defaultExpanded: parentNodes }),
+    );
 
     const checkboxes = container.querySelectorAll('label');
 
@@ -140,7 +154,9 @@ describe('selectable = radio', () => {
   });
 
   test('first selectable item is selected by default', () => {
-    const { container } = render(getSimpleTree({ selectable: 'radio' }));
+    const { container } = render(
+      getSimpleTree({ selectable: 'radio', defaultExpanded: parentNodes }),
+    );
 
     const selectedNode = container.querySelector('[aria-selected="true"]');
     const deselectedNodes = container.querySelectorAll('[aria-selected="false"]');
@@ -150,7 +166,9 @@ describe('selectable = radio', () => {
   });
 
   test('defaultSelected item is selected by default', () => {
-    const { container } = render(getSimpleTree({ selectable: 'radio', defaultSelected: ['2'] }));
+    const { container } = render(
+      getSimpleTree({ selectable: 'radio', defaultSelected: ['2'], defaultExpanded: parentNodes }),
+    );
 
     const selectedNode = container.querySelector('[aria-selected="true"]');
     const deselectedNodes = container.querySelectorAll('[aria-selected="false"]');
@@ -162,7 +180,11 @@ describe('selectable = radio', () => {
 
   test('first defaultSelected item is selected by default from list', () => {
     const { container } = render(
-      getSimpleTree({ selectable: 'radio', defaultSelected: ['2', '6'] }),
+      getSimpleTree({
+        selectable: 'radio',
+        defaultSelected: ['2', '6'],
+        defaultExpanded: parentNodes,
+      }),
     );
 
     const selectedNode = container.querySelector('[aria-selected="true"]');
