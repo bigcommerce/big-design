@@ -33,6 +33,11 @@ export interface NotationConfig {
   description: string;
 }
 
+interface CellActionConfig {
+  transform: (value: number | string) => string;
+  icon: React.ReactNode;
+}
+
 export type WorksheetColumn<Item> =
   | WorksheetTextColumn<Item>
   | WorksheetNumberColumn<Item>
@@ -62,11 +67,13 @@ interface WorksheetBaseColumn<Item> {
 export interface WorksheetTextColumn<Item> extends WorksheetBaseColumn<Item> {
   type?: 'text';
   formatting?(value: Item[keyof Item] | ''): string;
+  action?: CellActionConfig;
 }
 
 export interface WorksheetNumberColumn<Item> extends WorksheetBaseColumn<Item> {
   type: 'number';
   formatting?(value: Item[keyof Item] | ''): string;
+  action?: CellActionConfig;
 }
 
 export interface WorksheetCheckboxColumn<Item> extends WorksheetBaseColumn<Item> {

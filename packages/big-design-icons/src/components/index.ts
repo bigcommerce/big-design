@@ -1,5 +1,6 @@
 export * from './AddCircleOutlineIcon';
 export * from './AddIcon';
+export * from './AllInclusiveIcon';
 export * from './ArrowBackIcon';
 export * from './ArrowDownwardIcon';
 export * from './ArrowDropDownIcon';
