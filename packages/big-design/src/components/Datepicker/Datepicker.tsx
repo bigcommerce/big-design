@@ -3,7 +3,6 @@ import { default as ReactDatePicker, registerLocale } from 'react-datepicker';
 
 import { createLocalizationProvider } from '../../utils';
 import { Input } from '../Input';
-import { InputLocalization } from '../Input/Input';
 
 import Header from './Header';
 import { StyledDatepicker } from './styled';
@@ -13,7 +12,6 @@ interface Props {
   error?: React.ReactNode;
   label?: string;
   locale?: string;
-  localization?: InputLocalization;
   onDateChange(date: string): void;
 }
 
@@ -30,7 +28,6 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
   forwardedRef,
   label,
   locale = 'en-US',
-  localization,
   min,
   max,
   onDateChange,
@@ -61,7 +58,7 @@ const RawDatepicker: React.FC<DatepickerProps & PrivateProps> = ({
       <ReactDatePicker
         calendarClassName="bc-datepicker"
         className="calendar-input"
-        customInput={<Input error={error} label={label} localization={localization} {...props} />}
+        customInput={<Input error={error} label={label} {...props} />}
         dateFormat={dateFormat || 'EE, dd MMM, yyyy'}
         disabled={disabled}
         locale={locale}
