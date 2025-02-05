@@ -20,13 +20,11 @@ import { StyledCounterButton, StyledCounterInput, StyledCounterWrapper } from '.
 interface Localization {
   decreaseCount: string;
   increaseCount: string;
-  optional: string;
 }
 
 const defaultLocalization: Localization = {
   decreaseCount: 'Decrease count',
   increaseCount: 'Increase count',
-  optional: 'optional',
 };
 
 export interface CounterProps extends ComponentPropsWithoutRef<'input'> {
@@ -163,12 +161,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel
-            htmlFor={id}
-            id={labelId}
-            localization={{ optional: localization.optional }}
-            renderOptional={!props.required}
-          >
+          <FormControlLabel htmlFor={id} id={labelId} renderRequired={props.required}>
             {label}
           </FormControlLabel>
         );
@@ -185,7 +178,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [id, label, labelId, localization.optional, props.required]);
+    }, [id, label, labelId, props.required]);
 
     const renderedDescription = useMemo(() => {
       if (!description) {

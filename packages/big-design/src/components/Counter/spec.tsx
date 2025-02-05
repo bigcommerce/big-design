@@ -41,6 +41,7 @@ const counterMock = ({
   min = 0,
   max = 10,
   dataTestId = '',
+  required = false,
 }: MockCounterProps) => (
   <Counter
     data-testid={dataTestId}
@@ -54,6 +55,7 @@ const counterMock = ({
     min={min}
     onCountChange={onCountChange}
     ref={ref}
+    required={required}
     value={value}
   />
 );
@@ -433,28 +435,23 @@ describe('error does not show when invalid type', () => {
   });
 });
 
-test('appends (optional) text to label if input is not required', () => {
-  const { container } = render(counterMock({ label: 'Test Label', ...requiredAttributes }));
+test('appends * text to label if input is required', () => {
+  const { container } = render(counterMock({ required: true, ...requiredAttributes }));
   const label = container.querySelector('label');
 
-  expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
+  expect(label?.lastChild).toHaveTextContent('*');
 });
 
 test('renders localized labels', async () => {
-  const { container } = render(
+  render(
     counterMock({
       ...requiredAttributes,
       localization: {
         decreaseCount: 'Decrementar cuenta',
         increaseCount: 'Incrementar cuenta',
-        optional: 'opcional',
       },
     }),
   );
-
-  const label = container.querySelector('label');
-
-  expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
 
   const decreaseButton = await screen.findByRole('button', { name: 'Decrementar cuenta' });
   const increaseButton = await screen.findByRole('button', { name: 'Incrementar cuenta' });
