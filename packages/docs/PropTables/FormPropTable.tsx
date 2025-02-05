@@ -36,9 +36,9 @@ export const FormFieldsetPropTable: React.FC<PropTableWrapper> = (props) => (
 
 const formLabelProps: Prop[] = [
   {
-    name: 'renderOptional',
+    name: 'renderRequired',
     types: 'boolean',
-    description: 'Shows optional label.',
+    description: 'Shows required asterisk.',
   },
   {
     name: 'localization',

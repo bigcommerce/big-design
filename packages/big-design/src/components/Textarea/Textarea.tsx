@@ -11,7 +11,6 @@ import React, {
 import { typedMemo, warning } from '../../utils';
 import { FormControlDescription, FormControlLabel } from '../Form';
 import { useInputErrors } from '../Form/useInputErrors';
-import { InputLocalization } from '../Input/Input';
 
 import { StyledTextarea, StyledTextareaWrapper } from './styled';
 
@@ -20,7 +19,6 @@ export interface Props {
   error?: React.ReactNode | React.ReactNode[];
   label?: React.ReactChild;
   labelId?: string;
-  localization?: InputLocalization;
   rows?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
   resize?: boolean;
 }
@@ -37,7 +35,6 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
   forwardedRef,
   label,
   labelId,
-  localization,
   rows = 3,
   resize = true,
   ...props
@@ -55,12 +52,7 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <FormControlLabel
-          htmlFor={id}
-          id={labelId}
-          localization={localization}
-          renderOptional={!props.required}
-        >
+        <FormControlLabel htmlFor={id} id={labelId} renderRequired={props.required}>
           {label}
         </FormControlLabel>
       );
@@ -77,7 +69,7 @@ const StyleableTextarea: React.FC<TextareaProps & PrivateProps> = ({
     }
 
     warning('label must be either a string or a FormControlLabel component.');
-  }, [id, label, labelId, localization, props.required]);
+  }, [id, label, labelId, props.required]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {

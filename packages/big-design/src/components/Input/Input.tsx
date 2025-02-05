@@ -16,10 +16,6 @@ import { useInputErrors } from '../Form/useInputErrors';
 
 import { StyledIconWrapper, StyledInput, StyledInputContent, StyledInputWrapper } from './styled';
 
-export interface InputLocalization {
-  optional: string;
-}
-
 export interface Props {
   chips?: ChipProps[];
   description?: React.ReactChild;
@@ -28,7 +24,6 @@ export interface Props {
   iconRight?: React.ReactNode;
   label?: React.ReactChild;
   labelId?: string;
-  localization?: InputLocalization;
 }
 
 interface PrivateProps {
@@ -45,7 +40,6 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
   forwardedRef,
   label,
   labelId,
-  localization,
   ...props
 }) => {
   const [focus, setFocus] = useState(false);
@@ -80,12 +74,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <FormControlLabel
-          htmlFor={id}
-          id={labelId}
-          localization={localization}
-          renderOptional={!props.required}
-        >
+        <FormControlLabel htmlFor={id} id={labelId} renderRequired={props.required}>
           {label}
         </FormControlLabel>
       );
@@ -102,7 +91,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
     }
 
     warning('label must be either a string or a FormControlLabel component.');
-  }, [id, label, labelId, localization, props.required]);
+  }, [id, label, labelId, props.required]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {

@@ -168,7 +168,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <FormControlLabel htmlFor={id} localization={localization} renderOptional={!props.required}>
+        <FormControlLabel htmlFor={id} renderRequired={props.required}>
           {label}
         </FormControlLabel>
       );
@@ -185,7 +185,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     }
 
     warning('label must be either a string or a FormControlLabel component.');
-  }, [id, label, labelId, localization, props.required]);
+  }, [id, label, labelId, props.required]);
 
   const renderedDescription = useMemo(() => {
     if (!description) {

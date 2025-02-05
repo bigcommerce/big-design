@@ -1,23 +1,25 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 
+import { Text } from '../../Typography/';
+
 import { StyledLabel } from './styled';
 
-export interface LabelLocalization {
-  optional: string;
-}
-
-const defaultLocalization: LabelLocalization = {
-  optional: 'optional',
-};
-
 export interface FormControlLabelProps extends ComponentPropsWithoutRef<'label'> {
-  renderOptional?: boolean;
-  localization?: LabelLocalization;
+  renderRequired?: boolean;
 }
 
 export const FormControlLabel: React.FC<FormControlLabelProps> = ({
   className,
-  localization = defaultLocalization,
   style,
+  renderRequired,
   ...props
-}) => <StyledLabel localization={localization} {...props} />;
+}) => (
+  <StyledLabel {...props}>
+    {props.children}
+    {renderRequired && (
+      <Text aria-hidden="true" as="span" color="danger" marginLeft="xxSmall">
+        *
+      </Text>
+    )}
+  </StyledLabel>
+);

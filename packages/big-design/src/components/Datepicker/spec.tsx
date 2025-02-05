@@ -78,11 +78,11 @@ test('renders an error if one is provided', () => {
   expect(getByText('Required')).toBeInTheDocument();
 });
 
-test('appends (optional) text to label if select is not required', () => {
-  const { container } = render(<Datepicker label="label" onDateChange={jest.fn()} />);
+test('appends * text to label if select is required', () => {
+  const { container } = render(<Datepicker label="label" onDateChange={jest.fn()} required />);
   const label = container.querySelector('label');
 
-  expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
+  expect(label?.lastChild).toHaveTextContent('*');
 });
 
 test('dates before minimum date passed are disabled', async () => {
@@ -113,21 +113,6 @@ test('dates after max date passed are disabled', async () => {
   const disabledDate = container.querySelector('.react-datepicker__day--011');
 
   expect(disabledDate?.classList.contains('react-datepicker__day--disabled')).toBe(true);
-});
-
-test('renders localized labels', () => {
-  const { container } = render(
-    <Datepicker
-      data-testid="datepicker"
-      label="Test label"
-      localization={{ optional: 'opcional' }}
-      onDateChange={jest.fn()}
-    />,
-  );
-
-  const label = container.querySelector('label');
-
-  expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
 });
 
 test('calls an optional onFocus callback upon focus', async () => {

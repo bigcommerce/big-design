@@ -35,7 +35,6 @@ export const Select = typedMemo(
     inputRef,
     label,
     labelId,
-    localization,
     maxHeight,
     onClose,
     onOpen,
@@ -277,11 +276,7 @@ export const Select = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel
-            {...getLabelProps()}
-            localization={localization}
-            renderOptional={!required}
-          >
+          <FormControlLabel {...getLabelProps()} renderRequired={required}>
             {label}
           </FormControlLabel>
         );
@@ -295,7 +290,7 @@ export const Select = typedMemo(
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [getLabelProps, label, localization, required]);
+    }, [getLabelProps, label, required]);
 
     const renderToggle = useMemo(() => {
       return (
@@ -364,7 +359,6 @@ export const Select = typedMemo(
             })}
             iconLeft={selectedItem?.icon}
             iconRight={renderToggle}
-            localization={localization}
           />
         </StyledInputContainer>
       );
@@ -380,7 +374,6 @@ export const Select = typedMemo(
       required,
       selectedItem?.icon,
       renderToggle,
-      localization,
       isOpen,
       openMenu,
       onOptionChange,
