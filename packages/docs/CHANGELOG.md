@@ -1,5 +1,18 @@
 # Change Log
 
+## 1.4.0
+
+### Minor Changes
+
+- 5e0589f: Added FeatureSet component
+
+### Patch Changes
+
+- Updated dependencies [65f1431]
+- Updated dependencies [5e0589f]
+  - @bigcommerce/big-design@1.7.0
+  - @bigcommerce/big-design-patterns@2.0.5
+
 ## 1.3.2
 
 ### Patch Changes
