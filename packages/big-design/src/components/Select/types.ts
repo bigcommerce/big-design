@@ -23,6 +23,7 @@ interface BaseSelect extends Omit<ComponentPropsWithoutRef<'input'>, 'children' 
   required?: boolean;
   onClose?(): void;
   onOpen?(): void;
+  onScrollToBottom?(): void;
 }
 
 export interface SelectProps<T> extends BaseSelect {

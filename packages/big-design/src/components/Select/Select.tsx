@@ -40,6 +40,7 @@ export const Select = typedMemo(
     onClose,
     onOpen,
     onOptionChange,
+    onScrollToBottom,
     options,
     placeholder,
     placement = 'bottom-start' as const,
@@ -405,6 +406,7 @@ export const Select = typedMemo(
             maxHeight={maxHeight}
             selectedItem={selectedItem && 'value' in selectedItem ? selectedItem : null}
             update={update}
+            onScrollToBottom={onScrollToBottom}
           />
         </Box>
       </div>

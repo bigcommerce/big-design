@@ -9,6 +9,7 @@ import React, {
   useCallback,
   useMemo,
   useRef,
+  useEffect,
 } from 'react';
 
 import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
@@ -46,6 +47,7 @@ export interface ListProps<T> extends ComponentPropsWithoutRef<'ul'> {
   update: (() => Promise<Partial<State>>) | null;
   localization?: { selectAll: MultiSelectLocalization['selectAll'] };
   removeItem?(item: SelectOption<T>): void;
+  onScrollToBottom?(): void;
 }
 
 interface PrivateProps {
@@ -73,6 +75,7 @@ const StyleableList = typedMemo(
     update,
     localization = { selectAll: 'Select All' },
     removeItem,
+    onScrollToBottom,
     ...props
   }: ListProps<T> & PrivateProps): ReturnType<React.FC<ListProps<T> & PrivateProps>> => {
     const itemKey = useRef(0);
@@ -247,6 +250,9 @@ const StyleableList = typedMemo(
       [renderItems],
     );
 
+
+    const iORef = useRef<HTMLDivElement>(null);
+
     const renderChildren = useMemo(() => {
       // Reset the key every time we rerender children
       itemKey.current = 0;
@@ -274,13 +280,46 @@ const StyleableList = typedMemo(
             {selectAll && isOptions(items) && renderSelectAll(items)}
             {renderItems(items)}
             {action && renderAction(action)}
+            <div ref={iORef} aria-hidden={true}></div>
           </>
         );
       }
     }, [action, items, renderAction, renderGroup, renderItems, renderSelectAll, selectAll]);
 
+    // Initialize intersection observer state for element
+    const owRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (onScrollToBottom) {
+                onScrollToBottom();
+              }
+            }
+          });
+        },
+        {
+          root: owRef.current,
+          rootMargin: '15px',
+          threshold: 0,
+        },
+      );
+
+      if (iORef.current) {
+        observer.observe(iORef.current);
+      }
+
+      return () => {
+        if (iORef.current) {
+          observer.unobserve(iORef.current);
+        }
+      };
+    }, [renderChildren]);
+
     return (
-      <StyledListOverflowWrapper>
+      <StyledListOverflowWrapper ref={owRef}>
         <StyledList
           {...getMenuProps({
             ...props,
