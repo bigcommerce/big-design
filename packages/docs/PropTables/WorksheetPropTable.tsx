@@ -143,6 +143,12 @@ const worksheetTextColumnProps: Prop[] = [
       'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
   },
   {
+    name: 'action',
+    types: '{ icon: React.ReactElement; transform: (value: string | number) => string }',
+    description:
+      'Used to provide a way to show change the value of a cell and save it. The icon will be displayed in the cell.',
+  },
+  {
     name: 'disabled',
     types: 'boolean',
     description: 'Disables cell manipulation for the entire column.',
@@ -199,6 +205,12 @@ const worksheetNumberColumnProps: Prop[] = [
     types: '(value: any, row: any; }) => { color: keyof Colors; description: string; } | undefined',
     description:
       'Used to provide a way to show additional notes/comments/instructions on a particular cell.',
+  },
+  {
+    name: 'action',
+    types: '{ icon: React.ReactElement; transform: (value: string | number) => string }',
+    description:
+      'Used to provide a way to show change the value of a cell and save it. The icon will be displayed in the cell.',
   },
   {
     name: 'disabled',

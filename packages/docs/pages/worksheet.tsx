@@ -1,4 +1,5 @@
 import { H1, Panel, StatefulTree, Text, Worksheet, WorksheetColumn } from '@bigcommerce/big-design';
+import { AllInclusiveIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
 
 import {
@@ -354,7 +355,12 @@ const WorksheetPage = () => {
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const columns: Array<
-                      WorksheetColumn<{ id: number; cost: number; stock: number }>
+                      WorksheetColumn<{
+                        id: number;
+                        cost: number;
+                        stock: number;
+                        backorderLimit: number | 'Unlimited';
+                      }>
                     > = [
                       {
                         hash: 'cost',
@@ -371,23 +377,42 @@ const WorksheetPage = () => {
                         validation: (value: number) =>
                           typeof value === 'number' && !Number.isNaN(value),
                       },
+                      {
+                        hash: 'backorderLimit',
+                        header: 'Stock',
+                        type: 'number',
+                        validation: (value: number | string) =>
+                          typeof value === 'number' || value === 'Unlimited',
+                        action: {
+                          transform: () => 'Unlimited',
+                          icon: <AllInclusiveIcon />,
+                        },
+                      },
                     ];
 
-                    const items: Array<{ id: number; cost: number; stock: number }> = [
+                    const items: Array<{
+                      id: number;
+                      cost: number;
+                      stock: number;
+                      backorderLimit: number | 'Unlimited';
+                    }> = [
                       {
                         id: 1,
                         cost: 100,
                         stock: 3,
+                        backorderLimit: 'Unlimited',
                       },
                       {
                         id: 2,
                         cost: 200,
                         stock: 10,
+                        backorderLimit: 'Unlimited',
                       },
                       {
                         id: 3,
                         cost: 300,
                         stock: 5,
+                        backorderLimit: 100,
                       },
                     ];
 

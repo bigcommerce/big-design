@@ -1,5 +1,7 @@
-import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
+import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
+
+import { StyleableButton } from '../../../Button/Button';
 
 export const StyledInput = styled.input<{ isEdited: boolean }>`
   background-color: ${({ theme }) => theme.colors.inherit};
@@ -20,6 +22,16 @@ export const StyledInput = styled.input<{ isEdited: boolean }>`
     css`
       background-color: ${({ theme }) => theme.colors.warning10};
     `}
+`;
+
+export const ActionButton = styled(StyleableButton)`
+  height: ${remCalc(18)};
+  padding: 0;
+
+  svg {
+    height: ${remCalc(16)};
+    width: ${remCalc(16)};
+  }
 `;
 
 StyledInput.defaultProps = { theme: defaultTheme };
