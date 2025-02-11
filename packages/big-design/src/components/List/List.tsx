@@ -7,9 +7,9 @@ import React, {
   memo,
   Ref,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
-  useEffect,
 } from 'react';
 
 import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
@@ -250,7 +250,6 @@ const StyleableList = typedMemo(
       [renderItems],
     );
 
-
     const iORef = useRef<HTMLDivElement>(null);
 
     const renderChildren = useMemo(() => {
@@ -280,7 +279,7 @@ const StyleableList = typedMemo(
             {selectAll && isOptions(items) && renderSelectAll(items)}
             {renderItems(items)}
             {action && renderAction(action)}
-            <div ref={iORef} aria-hidden={true}></div>
+            <div aria-hidden={true} ref={iORef} />
           </>
         );
       }
@@ -290,6 +289,7 @@ const StyleableList = typedMemo(
     const owRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+      const iO = iORef.current;
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -307,16 +307,16 @@ const StyleableList = typedMemo(
         },
       );
 
-      if (iORef.current) {
-        observer.observe(iORef.current);
+      if (iO) {
+        observer.observe(iO);
       }
 
       return () => {
-        if (iORef.current) {
-          observer.unobserve(iORef.current);
+        if (iO) {
+          observer.unobserve(iO);
         }
       };
-    }, [renderChildren]);
+    }, [renderChildren, onScrollToBottom]);
 
     return (
       <StyledListOverflowWrapper ref={owRef}>

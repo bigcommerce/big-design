@@ -404,9 +404,9 @@ export const Select = typedMemo(
             isOpen={isOpen}
             items={options}
             maxHeight={maxHeight}
+            onScrollToBottom={onScrollToBottom}
             selectedItem={selectedItem && 'value' in selectedItem ? selectedItem : null}
             update={update}
-            onScrollToBottom={onScrollToBottom}
           />
         </Box>
       </div>
