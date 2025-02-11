@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.2
+
+### Patch Changes
+
+- 98fbd46: feat(component): Add an action prop for columns whose type is number or text
+
 ## 1.2.1
 
 ### Patch Changes

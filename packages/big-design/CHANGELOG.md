@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.7.1
+
+### Patch Changes
+
+- 98fbd46: feat(component): Add an action prop for columns whose type is number or text
+- Updated dependencies [98fbd46]
+  - @bigcommerce/big-design-icons@1.2.2
+
 ## 1.7.0
 
 ### Minor Changes
