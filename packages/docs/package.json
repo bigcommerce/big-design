@@ -48,7 +48,7 @@
     "@types/styled-components": "^5.1.34",
     "eslint-plugin-mdx": "^3.1.5",
     "jsx-to-string-loader": "^1.2.0",
-    "next": "^14.2.15",
+    "next": "^15.1.7",
     "typescript": "^5.6.3"
   }
 }
