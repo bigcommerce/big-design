@@ -119,7 +119,7 @@ const fileUploaderProps: Prop[] = [
   },
   {
     name: 'localization',
-    types: '{ upload: string; optional: string }',
+    types: '{ upload: string }',
     description: 'Overrides labels with localized text.',
   },
   {

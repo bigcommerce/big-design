@@ -36,11 +36,6 @@ const timepickerProps: Prop[] = [
     types: 'string',
     description: 'The time that should be used as the input value.',
   },
-  {
-    name: 'localization',
-    types: '{ optional: string }',
-    description: 'Overrides the label with localized text.',
-  },
 ];
 
 export const TimepickerPropTable: React.FC<PropTableWrapper> = (props) => (

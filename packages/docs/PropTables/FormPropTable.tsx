@@ -40,11 +40,6 @@ const formLabelProps: Prop[] = [
     types: 'boolean',
     description: 'Shows required asterisk.',
   },
-  {
-    name: 'localization',
-    types: '{ optional: string }',
-    description: 'Overrides the label with localized text.',
-  },
 ];
 
 export const FormLabelPropTable: React.FC<PropTableWrapper> = (props) => (
