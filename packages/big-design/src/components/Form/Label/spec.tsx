@@ -19,9 +19,9 @@ test('does not forward styles', () => {
   expect(container.firstChild).not.toHaveStyle('background: red');
 });
 
-test('appends * text when renderRequired', () => {
-  const { container } = render(<FormControlLabel renderRequired>This is a label</FormControlLabel>);
+test('appends * text when required', () => {
+  const { container } = render(<FormControlLabel required>This is a label</FormControlLabel>);
   const label = container.querySelector('label');
 
-  expect(label?.lastChild).toHaveTextContent('*');
+  expect(label).toHaveTextContent('This is a label *');
 });

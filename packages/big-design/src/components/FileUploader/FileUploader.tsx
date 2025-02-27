@@ -168,7 +168,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <FormControlLabel htmlFor={id} renderRequired={props.required}>
+        <FormControlLabel htmlFor={id} required={props.required}>
           {label}
         </FormControlLabel>
       );

@@ -436,10 +436,9 @@ describe('error does not show when invalid type', () => {
 });
 
 test('appends * text to label if input is required', () => {
-  const { container } = render(counterMock({ required: true, ...requiredAttributes }));
-  const label = container.querySelector('label');
+  render(counterMock({ required: true, ...requiredAttributes }));
 
-  expect(label?.lastChild).toHaveTextContent('*');
+  expect(screen.getByLabelText('Label *')).toBeInTheDocument();
 });
 
 test('renders localized labels', async () => {

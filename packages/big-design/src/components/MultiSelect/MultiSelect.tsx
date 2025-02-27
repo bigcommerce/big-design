@@ -357,7 +357,7 @@ export const MultiSelect = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel {...getLabelProps()} renderRequired={required}>
+          <FormControlLabel {...getLabelProps()} required={required}>
             {label}
           </FormControlLabel>
         );

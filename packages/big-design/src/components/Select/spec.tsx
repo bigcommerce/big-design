@@ -700,7 +700,7 @@ test('select should have a disabled attr if set as disabled', async () => {
 test('select should not have a disabled attr if not set as disabled', async () => {
   render(SelectMock);
 
-  const inputs = await screen.findAllByLabelText('Countries*');
+  const inputs = await screen.findAllByLabelText('Countries *');
 
   expect(inputs[0].getAttribute('disabled')).toBeNull();
 });
@@ -805,7 +805,7 @@ test('should accept a maxHeight prop', async () => {
 test('should default max-height to 250', async () => {
   render(SelectMock);
 
-  const inputs = await screen.findAllByLabelText('Countries*');
+  const inputs = await screen.findAllByLabelText('Countries *');
 
   fireEvent.click(inputs[0]);
 
