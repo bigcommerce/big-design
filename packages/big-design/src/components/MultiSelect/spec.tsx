@@ -568,7 +568,7 @@ test('select should have a required attr if set as required', async () => {
     />,
   );
 
-  const inputs = await screen.findAllByLabelText('Countries*');
+  const inputs = await screen.findAllByLabelText('Countries *');
 
   expect(inputs[0].getAttribute('required')).toBe('');
 });
@@ -627,7 +627,7 @@ test('select should have a disabled attr if set as disabled', async () => {
 test('select should not have a disabled attr if not set as disabled', async () => {
   render(MultiSelectMock);
 
-  const inputs = await screen.findAllByLabelText('Countries*');
+  const inputs = await screen.findAllByLabelText('Countries *');
 
   expect(inputs[0].getAttribute('disabled')).toBeNull();
 });
@@ -732,7 +732,7 @@ test('should accept a maxHeight prop', async () => {
 test('should default max-height to 250', async () => {
   render(MultiSelectMock);
 
-  const inputs = await screen.findAllByLabelText('Countries*');
+  const inputs = await screen.findAllByLabelText('Countries *');
 
   await userEvent.click(inputs[0]);
 
@@ -819,7 +819,7 @@ test('multiselect should have two selected options', async () => {
 test('multiselect should be able to select multiple options', async () => {
   render(MultiSelectMock);
 
-  const input = screen.getAllByLabelText('Countries*')[0];
+  const input = screen.getAllByLabelText('Countries *')[0];
 
   await userEvent.click(input);
   await userEvent.keyboard('{arrowdown}{arrowdown}{arrowdown}{enter}');
@@ -833,7 +833,7 @@ test('multiselect should be able to select multiple options', async () => {
 test('multiselect should be able to deselect options', async () => {
   render(MultiSelectMock);
 
-  const inputs = await screen.findAllByLabelText('Countries*');
+  const inputs = await screen.findAllByLabelText('Countries *');
 
   await userEvent.click(inputs[0]);
   await userEvent.keyboard('{arrowdown}{enter}');
@@ -930,7 +930,7 @@ test('options should allow icons', async () => {
 test('grouped multiselect should render group labels, render uppercased', async () => {
   render(GroupedMultiSelectMock);
 
-  const inputs = await screen.findAllByLabelText('Countries*');
+  const inputs = await screen.findAllByLabelText('Countries *');
 
   await userEvent.click(inputs[0]);
 

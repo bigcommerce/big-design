@@ -351,8 +351,7 @@ describe('error does not show when invalid type', () => {
 });
 
 test('appends * text to label if input is required', () => {
-  const { container } = render(<Input label="Test Label" required />);
-  const label = container.querySelector('label');
+  render(<Input label="label" required />);
 
-  expect(label?.lastChild).toHaveTextContent('*');
+  expect(screen.getByLabelText('label *')).toBeInTheDocument();
 });

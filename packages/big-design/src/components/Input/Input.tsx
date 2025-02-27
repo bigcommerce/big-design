@@ -74,7 +74,7 @@ const StyleableInput: React.FC<InputProps & PrivateProps> = ({
 
     if (typeof label === 'string') {
       return (
-        <FormControlLabel htmlFor={id} id={labelId} renderRequired={props.required}>
+        <FormControlLabel htmlFor={id} id={labelId} required={props.required}>
           {label}
         </FormControlLabel>
       );

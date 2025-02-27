@@ -161,7 +161,7 @@ export const StylableCounter: React.FC<CounterProps & PrivateProps> = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel htmlFor={id} id={labelId} renderRequired={props.required}>
+          <FormControlLabel htmlFor={id} id={labelId} required={props.required}>
             {label}
           </FormControlLabel>
         );
