@@ -79,10 +79,9 @@ test('renders an error if one is provided', () => {
 });
 
 test('appends * text to label if select is required', () => {
-  const { container } = render(<Datepicker label="label" onDateChange={jest.fn()} required />);
-  const label = container.querySelector('label');
+  render(<Datepicker label="label" onDateChange={jest.fn()} required />);
 
-  expect(label?.lastChild).toHaveTextContent('*');
+  expect(screen.getByLabelText('label *')).toBeInTheDocument();
 });
 
 test('dates before minimum date passed are disabled', async () => {
