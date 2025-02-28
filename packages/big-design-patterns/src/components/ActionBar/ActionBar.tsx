@@ -10,7 +10,7 @@ interface ActionButtonProps extends Omit<ButtonProps, 'children' | 'mobileWidth'
 }
 
 export interface ActionBarProps {
-  actions: ActionButtonProps[];
+  readonly actions: ActionButtonProps[];
 }
 
 function validateActions(actions: ActionButtonProps[]) {

@@ -13,10 +13,10 @@ import { Header } from '../Header';
 import { Background, StyledPage, StyledPageBackground } from './styled';
 
 export interface PageProps extends PropsWithChildren {
-  header?: ReactNode;
-  message?: MessageProps;
-  background?: Background;
-  actionBar?: ReactNode;
+  readonly header?: ReactNode;
+  readonly message?: MessageProps;
+  readonly background?: Background;
+  readonly actionBar?: ReactNode;
 }
 
 const PageHeader = ({ header }: Pick<PageProps, 'header'>) => {

@@ -5,7 +5,7 @@ import { ColorDetails } from './availableColors';
 import ColorCard from './ColorCard';
 
 interface ColorCardsProps {
-  colorCards: ColorDetails[];
+  readonly colorCards: ColorDetails[];
 }
 
 export const ColorCards: React.FC<ColorCardsProps> = ({ colorCards }) => (

@@ -41,8 +41,8 @@ const sort = (items: Item[], columnHash: string, direction: string) => {
           ? 1
           : -1
         : a[columnHash] <= b[columnHash]
-        ? 1
-        : -1,
+          ? 1
+          : -1,
     );
 };
 

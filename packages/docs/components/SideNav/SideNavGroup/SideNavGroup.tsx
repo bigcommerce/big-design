@@ -4,8 +4,8 @@ import React from 'react';
 import { List } from '../../List';
 
 interface Props {
-  children?: React.ReactNode;
-  title: string;
+  readonly children?: React.ReactNode;
+  readonly title: string;
 }
 
 export const SideNavGroup: React.FC<Props> = ({ children, title }) => {

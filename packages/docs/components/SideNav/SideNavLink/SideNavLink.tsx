@@ -6,9 +6,9 @@ import styled from 'styled-components';
 import { List } from '../../';
 
 interface Props {
-  children?: React.ReactNode;
-  href: string;
-  target?: string;
+  readonly children?: React.ReactNode;
+  readonly href: string;
+  readonly target?: string;
 }
 
 const StyledLink = styled(Link)`

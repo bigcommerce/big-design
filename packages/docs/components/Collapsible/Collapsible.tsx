@@ -5,8 +5,8 @@ import React, { KeyboardEventHandler, useState } from 'react';
 import { StyledFlex } from './styled';
 
 interface CollapsibleProps {
-  children?: React.ReactNode;
-  title: string;
+  readonly children?: React.ReactNode;
+  readonly title: string;
 }
 
 export const Collapsible: React.FC<CollapsibleProps> = ({ children, title }) => {
@@ -25,7 +25,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({ children, title }) => 
         alignItems="center"
         marginBottom="xSmall"
         onClick={toggleIsCollapsed}
-        onKeyPress={handleKeyPressed}
+        onKeyUp={handleKeyPressed}
         tabIndex={0}
       >
         {isCollapsed ? <ChevronRightIcon title="Expand" /> : <ExpandMoreIcon title="Collapse" />}

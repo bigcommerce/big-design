@@ -4,7 +4,7 @@ import React, { ComponentPropsWithoutRef } from 'react';
 import { StyledMethodBadge } from './styled';
 
 export interface MethodBadgeProps extends ComponentPropsWithoutRef<'div'>, MarginProps {
-  label: string;
+  readonly label: string;
 }
 
 export const MethodBadge: React.FC<MethodBadgeProps> = ({ className, style, label, ...props }) => (

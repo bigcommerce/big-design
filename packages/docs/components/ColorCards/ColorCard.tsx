@@ -11,7 +11,7 @@ const StyledColor = styled(Flex)`
 `;
 
 interface ColorCardProps {
-  colorCard: ColorDetails;
+  readonly colorCard: ColorDetails;
 }
 
 const ColorCard: React.FC<ColorCardProps> = ({ colorCard }) => {

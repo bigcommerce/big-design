@@ -3,9 +3,9 @@ import { LinkProps, default as NLink } from 'next/link';
 import React from 'react';
 
 interface Props {
-  children?: React.ReactNode;
-  href: LinkProps['href'];
-  as?: string;
+  readonly children?: React.ReactNode;
+  readonly href: LinkProps['href'];
+  readonly as?: string;
 }
 
 export const NextLink: React.FC<Props> = (props) => {
