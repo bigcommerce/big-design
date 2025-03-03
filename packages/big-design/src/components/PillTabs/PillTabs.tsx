@@ -3,7 +3,7 @@ import React, { createRef, useCallback, useEffect, useMemo, useState } from 'rea
 
 import { useWindowResizeListener } from '../../hooks';
 import { Button } from '../Button';
-import { Dropdown, DropdownItem } from '../Dropdown';
+import { Dropdown, DropdownItem, DropdownProps, isGroups as isDropDownGroups } from '../Dropdown';
 import { Flex } from '../Flex';
 
 import { StyledFlexItem, StyledPillTab } from './styled';
@@ -28,12 +28,14 @@ export interface PillTabsProps {
   items: ItemsOrGroups;
   activePills: string[];
   onPillClick: (itemId: string) => void;
+  dropDownItems?: DropdownProps['items'];
 }
 
 export const PillTabs: React.FC<PillTabsProps> = ({
   activePills,
   items: itemsOrGroups,
   onPillClick,
+  dropDownItems: dropDownItemsOrGroups = [],
 }) => {
   const groups = useMemo(
     () => (isGroups(itemsOrGroups) ? itemsOrGroups : [{ items: itemsOrGroups, label: undefined }]),
@@ -41,9 +43,15 @@ export const PillTabs: React.FC<PillTabsProps> = ({
   );
   const atLeastOneItem = groups.flatMap(({ items }) => items).length >= 1;
 
+  const dropDownGroups = isDropDownGroups(dropDownItemsOrGroups)
+    ? dropDownItemsOrGroups
+    : [{ items: dropDownItemsOrGroups }];
+
+  const hasDropDownItems = dropDownGroups.length >= 1;
+
   const parentRef = createRef<HTMLDivElement>();
   const dropdownRef = createRef<HTMLDivElement>();
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [isMenuVisible, setIsMenuVisible] = useState(hasDropDownItems);
   const [pillsState, setPillsState] = useState(
     groups.map(({ items, ...rest }) => ({
       ...rest,
@@ -110,13 +118,15 @@ export const PillTabs: React.FC<PillTabsProps> = ({
       .filter((stateObj) => stateObj.isVisible);
 
     if (visiblePills.length !== newVisiblePills.length) {
-      setIsMenuVisible(newVisiblePills.length !== groups.flatMap(({ items }) => items).length);
+      setIsMenuVisible(
+        hasDropDownItems || newVisiblePills.length !== groups.flatMap(({ items }) => items).length,
+      );
       setPillsState(newState);
     }
   }, [groups, parentRef, dropdownRef, pillsState]);
 
   const renderedDropdown = useMemo(() => {
-    const dropdownItems = pillsState
+    const pillTabDropdownItems = pillsState
       .map(({ items, ...rest }) => ({
         ...rest,
         items: items.filter(({ isVisible }) => !isVisible),
@@ -150,7 +160,13 @@ export const PillTabs: React.FC<PillTabsProps> = ({
         role="listitem"
       >
         <Dropdown
-          items={dropdownItems}
+          items={[
+            ...pillTabDropdownItems,
+            ...dropDownGroups.map((group, index) => ({
+              ...group,
+              separated: (index === 0 && pillTabDropdownItems.length > 0) || group.separated,
+            })),
+          ]}
           toggle={
             <Button iconOnly={<MoreHorizIcon title="add" />} type="button" variant="subtle" />
           }

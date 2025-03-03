@@ -125,17 +125,10 @@ const PillTabsPage = () => {
                   {/* jsx-to-string:start */}
                   {function Example() {
                     const allId = 'all';
-                    const manageCustomViewsId = 'manage-custom-views';
 
                     const [activePills, setActivePills] = useState([allId]);
 
-                    const onPillClick = (pillId: string) => {
-                      if (pillId === manageCustomViewsId) {
-                        alert('Imagine this is a modal to manage custom views');
-                      } else {
-                        setActivePills([pillId]);
-                      }
-                    };
+                    const setActivePill = (pillId: string) => setActivePills([pillId]);
 
                     const groups = [
                       { items: [{ title: 'All', id: allId }] },
@@ -156,22 +149,22 @@ const PillTabsPage = () => {
                           { title: 'Custom view 3', id: 'custom-view-3' },
                         ],
                       },
+                    ];
+
+                    const dropDownItems = [
                       {
-                        items: [
-                          {
-                            title: 'Manage custom views',
-                            id: manageCustomViewsId,
-                            icon: <SettingsIcon />,
-                          },
-                        ],
+                        content: 'Manage custom views',
+                        onItemClick: () => alert('Imagine this is a modal to manage custom views'),
+                        icon: <SettingsIcon />,
                       },
                     ];
 
                     return (
                       <PillTabs
                         activePills={activePills}
-                        onPillClick={onPillClick}
+                        onPillClick={setActivePill}
                         items={groups}
+                        dropDownItems={dropDownItems}
                       />
                     );
                   }}
