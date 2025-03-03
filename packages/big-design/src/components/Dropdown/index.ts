@@ -1,4 +1,4 @@
-export { Dropdown } from './Dropdown';
+export { Dropdown, isGroups } from './Dropdown';
 
 export {
   type DropdownItem,
