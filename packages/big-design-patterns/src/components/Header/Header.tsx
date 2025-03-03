@@ -16,7 +16,7 @@ import React, { ComponentPropsWithoutRef, isValidElement, memo, ReactNode } from
 
 import { warning } from '../../utils';
 
-import { StyledBackLink } from './styled';
+import { StyledActionsWrapper, StyledBackLink } from './styled';
 
 interface BackLinkProps extends ComponentPropsWithoutRef<'a'> {
   text: string;
@@ -149,13 +149,13 @@ export const Header = memo(
             <Description description={description} />
           </FlexItem>
           {actions ? (
-            <Flex
+            <StyledActionsWrapper
               flexDirection={{ mobile: 'column-reverse', tablet: 'row-reverse' }}
               flexGap={{ mobile: '.75rem', tablet: '0.625rem' }}
               marginBottom="xLarge"
             >
               <Actions actions={actions} />
-            </Flex>
+            </StyledActionsWrapper>
           ) : null}
         </Flex>
       </Flex>
