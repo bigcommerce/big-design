@@ -1,3 +1,4 @@
+import { Flex } from '@bigcommerce/big-design';
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled from 'styled-components';
 
@@ -18,5 +19,12 @@ export const StyledBackLink = styled.a.attrs({ theme: defaultTheme })`
 
   &:focus {
     outline: 4px solid ${({ theme }) => theme.colors.primary20};
+  }
+`;
+
+export const StyledActionsWrapper = styled(Flex).attrs({ theme: defaultTheme })`
+  & > .bd-button + .bd-button {
+    margin-block-start ${({ theme }) => theme.spacing.none};
+    margin-inline-start: ${({ theme }) => theme.spacing.none};
   }
 `;
