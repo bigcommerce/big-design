@@ -241,27 +241,12 @@ describe('error does not show when invalid type', () => {
   });
 });
 
-test('appends (optional) text to label if input is not required', async () => {
+test('appends * text to label if input is required', async () => {
   const { findByText } = render(
-    <Timepicker data-testid="timepicker" label="Test Label" onTimeChange={jest.fn()} />,
+    <Timepicker data-testid="timepicker" label="Test Label" onTimeChange={jest.fn()} required />,
   );
 
   const label = await findByText('Test Label');
 
-  expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
-});
-
-test('renders localized labels', async () => {
-  const { findByText } = render(
-    <Timepicker
-      data-testid="timepicker"
-      label="Test Label"
-      localization={{ optional: 'opcional' }}
-      onTimeChange={jest.fn()}
-    />,
-  );
-
-  const label = await findByText('Test Label');
-
-  expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
+  expect(label?.lastChild).toHaveTextContent('*');
 });
