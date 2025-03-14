@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.3.0
+
+### Minor Changes
+
+- 0c11db0: add lightbulb icon
+
 ## 1.2.2
 
 ### Patch Changes
