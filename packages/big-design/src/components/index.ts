@@ -36,6 +36,7 @@ export * from './Select';
 export * from './StatefulTable';
 export * from './StatefulTree';
 export * from './StatelessPagination';
+export * from './StatusMessage';
 export * from './Stepper';
 export * from './Switch';
 export * from './Table';
