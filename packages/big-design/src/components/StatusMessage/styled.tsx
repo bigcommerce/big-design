@@ -24,12 +24,13 @@ StyledStatusMessage.defaultProps = {
   size: 'panel',
 };
 
-export const StatusMessageIllustration = styled.div<Omit<StatusMessageProps, 'message'>>`
+export const StatusMessageIllustration = styled.figure<Omit<StatusMessageProps, 'message'>>`
   width: 120px;
   height: 120px;
   border-radius: 50%;
   position: relative;
   overflow: hidden;
+  margin: 0;
 
   ${({ theme, size }) =>
     size === 'page' &&
@@ -39,43 +40,43 @@ export const StatusMessageIllustration = styled.div<Omit<StatusMessageProps, 'me
       margin-block-start: ${theme.helpers.remCalc(60)};
     `}
 
-  ${({ variant }) =>
+  ${({ theme, variant }) =>
     (variant === '404' || variant === 'info' || variant === 'search') &&
     css`
       background-image: radial-gradient(
         circle at center top,
-        rgb(114, 215, 219) 0%,
-        rgb(217, 249, 250) 100%
+        ${theme.colors.primaryGradient.start} 0%,
+        ${theme.colors.primaryGradient.end} 100%
       );
     `}
 
-  ${({ variant }) =>
+  ${({ theme, variant }) =>
     (variant === 'unauthorized' || variant === 'warning') &&
     css`
       background-image: radial-gradient(
         circle at center top,
-        rgb(239, 199, 121) 0%,
-        rgb(254, 251, 242) 100%
+        ${theme.colors.warningGradient.start} 0%,
+        ${theme.colors.warningGradient.end} 100%
       );
     `}
 
-  ${({ variant }) =>
+  ${({ theme, variant }) =>
     (variant === 'error' || variant === 'server-error') &&
     css`
       background-image: radial-gradient(
         circle at center top,
-        rgb(235, 178, 202) 0%,
-        rgb(238, 232, 250) 100%
+        ${theme.colors.dangerGradient.start} 0%,
+        ${theme.colors.dangerGradient.end} 100%
       );
     `}
 
-  ${({ variant }) =>
+  ${({ theme, variant }) =>
     variant === 'success' &&
     css`
       background-image: radial-gradient(
         circle at center top,
-        rgb(120, 228, 163) 0%,
-        rgb(243, 253, 236) 100%
+        ${theme.colors.successGradient.start} 0%,
+        ${theme.colors.successGradient.end} 100%
       );
     `}
 `;
