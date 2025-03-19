@@ -45,8 +45,8 @@ export const StatusMessageIllustration = styled.figure<Omit<StatusMessageProps, 
     css`
       background-image: radial-gradient(
         circle at center top,
-        ${theme.colors.primaryGradient.start} 0%,
-        ${theme.colors.primaryGradient.end} 100%
+        ${theme.colors.primaryGradientStart} 0%,
+        ${theme.colors.primaryGradientEnd} 100%
       );
     `}
 
@@ -55,8 +55,8 @@ export const StatusMessageIllustration = styled.figure<Omit<StatusMessageProps, 
     css`
       background-image: radial-gradient(
         circle at center top,
-        ${theme.colors.warningGradient.start} 0%,
-        ${theme.colors.warningGradient.end} 100%
+        ${theme.colors.warningGradientStart} 0%,
+        ${theme.colors.warningGradientEnd} 100%
       );
     `}
 
@@ -65,8 +65,8 @@ export const StatusMessageIllustration = styled.figure<Omit<StatusMessageProps, 
     css`
       background-image: radial-gradient(
         circle at center top,
-        ${theme.colors.dangerGradient.start} 0%,
-        ${theme.colors.dangerGradient.end} 100%
+        ${theme.colors.dangerGradientStart} 0%,
+        ${theme.colors.dangerGradientEnd} 100%
       );
     `}
 
@@ -75,8 +75,8 @@ export const StatusMessageIllustration = styled.figure<Omit<StatusMessageProps, 
     css`
       background-image: radial-gradient(
         circle at center top,
-        ${theme.colors.successGradient.start} 0%,
-        ${theme.colors.successGradient.end} 100%
+        ${theme.colors.successGradientStart} 0%,
+        ${theme.colors.successGradientEnd} 100%
       );
     `}
 `;
