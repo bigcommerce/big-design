@@ -3,9 +3,10 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
-import { StatusMessage } from './index';
 import { StatusMessageIcons } from './StatusMessageIcons';
 import { StatusMessagePatterns } from './StatusMessagePatterns';
+
+import { StatusMessage } from './index';
 
 test('renders basic status message', () => {
   render(<StatusMessage message="Basic status message" />);
@@ -59,7 +60,6 @@ test('renders with the default variant', () => {
   });
 });
 
-
 test('renders with the 404 variant', () => {
   render(<StatusMessage message="Basic status message" variant="404" />);
 
@@ -70,7 +70,6 @@ test('renders with the 404 variant', () => {
     backgroundImage: `radial-gradient(circle at center top, ${theme.colors.primaryGradientStart} 0%, ${theme.colors.primaryGradientEnd} 100%)`,
   });
 });
-
 
 test('renders with the info variant', () => {
   render(<StatusMessage message="Basic status message" variant="info" />);
@@ -155,6 +154,7 @@ test('renders with background pattern', () => {
   const figure = screen.getByRole('figure', { hidden: true });
 
   const pattern = figure.querySelector('svg');
+
   expect(pattern).toBeInTheDocument();
 });
 
@@ -165,6 +165,7 @@ test('renders with background icon', () => {
 
   const patternAndIcon = figure.querySelectorAll('svg');
   const icon = patternAndIcon[1];
+
   expect(patternAndIcon).toHaveLength(2);
   expect(icon).toBeInTheDocument();
 });
@@ -202,6 +203,7 @@ test('renders with the panel size', () => {
     marginBlockStart: theme.helpers.remCalc(60),
   });
 });
+
 test('renders with the page size', () => {
   const { container } = render(<StatusMessage message="Basic status message" size="page" />);
 
@@ -217,5 +219,4 @@ test('renders with the page size', () => {
     transformOrigin: 'bottom',
     marginBlockStart: theme.helpers.remCalc(60),
   });
-}
-);
+});
