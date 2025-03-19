@@ -19,7 +19,7 @@ export const StatusMessagePatterns: React.FC<StatusMessagePatternProps> = ({
 }) => {
   return (
     <StyledStatusMessagePatterns variant={variant}>
-      <svg role='img' fill="none" height="120" width="240" xmlns="http://www.w3.org/2000/svg">
+      <svg fill="none" height="120" role="img" width="240" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#a)">
           <path d="M0 85.868 60-4l60 89.868" opacity=".5" stroke="url(#b)" />
           <path d="M120 33.132 60 123 0 33.132" opacity=".5" stroke="url(#c)" />
