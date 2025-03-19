@@ -11,11 +11,19 @@ export const StyledStatusMessage = styled.div<Omit<StatusMessageProps, 'message'
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: ${({ theme, size }) => (size === 'page' ? theme.spacing.xxxLarge : theme.spacing.medium)};
-  padding-block: ${({ theme, size }) =>
-    size === 'panel' ? theme.spacing.large : theme.spacing.xxxLarge};
-  transtion-function: '${({ theme, size }) =>
-    size === 'panel' ? theme.spacing.large : theme.spacing.xxxLarge}';
+  ${({ theme, size }) =>
+    size === 'panel' &&
+    css`
+      gap: ${theme.spacing.medium};
+      padding-block: ${theme.spacing.large};
+    `}
+  ${({ theme, size }) =>
+    size === 'page' &&
+    css`
+      gap: ${theme.spacing.xLarge};
+      padding-block: ${theme.spacing.xxxLarge};
+    `}
+
 `;
 
 StyledStatusMessage.defaultProps = {

@@ -31,7 +31,7 @@ export interface StatusMessageProps {
 export const StatusMessage: React.FC<StatusMessageProps> = memo(
   ({ actions, heading, message, size = 'panel', variant = 'info' }) => {
     return (
-      <StyledStatusMessage>
+      <StyledStatusMessage size={size} variant={variant}>
         <StatusMessageIllustration aria-hidden="true" size={size} variant={variant}>
           <StatusMessagePatterns variant={variant} />
           <StatusMessageIcons variant={variant} />
