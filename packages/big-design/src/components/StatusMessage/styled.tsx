@@ -23,7 +23,6 @@ export const StyledStatusMessage = styled.div<Omit<StatusMessageProps, 'message'
       gap: ${theme.spacing.xLarge};
       padding-block: ${theme.spacing.xxxLarge};
     `}
-
 `;
 
 StyledStatusMessage.defaultProps = {
