@@ -47,7 +47,7 @@ export interface Colors {
   warning50: string;
   warning60: string;
   warning70: string;
-  
+
   warningGradientStart: string;
   warningGradientEnd: string;
 
