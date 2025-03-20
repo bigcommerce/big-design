@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.7.2
+
+### Patch Changes
+
+- Updated dependencies [0c11db0]
+  - @bigcommerce/big-design-icons@1.3.0
+
 ## 1.7.1
 
 ### Patch Changes
