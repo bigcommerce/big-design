@@ -2,7 +2,6 @@ import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
 import { StatusMessageProps } from './StatusMessage';
-import { StatusMessageIconProps } from './StatusMessageIcons';
 
 export const StyledStatusMessage = styled.div<Omit<StatusMessageProps, 'message'>>`
   width: 100%;
@@ -47,44 +46,28 @@ export const StatusMessageIllustration = styled.figure<Omit<StatusMessageProps, 
       margin-block-start: ${theme.helpers.remCalc(60)};
     `}
 
-  ${({ theme, variant }) =>
+  ${({ variant }) =>
     (variant === '404' || variant === 'info' || variant === 'search') &&
     css`
-      background-image: radial-gradient(
-        circle at center top,
-        ${theme.colors.primaryGradientStart} 0%,
-        ${theme.colors.primaryGradientEnd} 100%
-      );
+      background-image: radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%);
     `}
 
-  ${({ theme, variant }) =>
+  ${({ variant }) =>
     (variant === 'unauthorized' || variant === 'warning') &&
     css`
-      background-image: radial-gradient(
-        circle at center top,
-        ${theme.colors.warningGradientStart} 0%,
-        ${theme.colors.warningGradientEnd} 100%
-      );
+      background-image: radial-gradient(circle at center top, #efc879 0%, #fefbf2 100%);
     `}
 
-  ${({ theme, variant }) =>
+  ${({ variant }) =>
     (variant === 'error' || variant === 'server-error') &&
     css`
-      background-image: radial-gradient(
-        circle at center top,
-        ${theme.colors.dangerGradientStart} 0%,
-        ${theme.colors.dangerGradientEnd} 100%
-      );
+      background-image: radial-gradient(circle at center top, #ebb2ca 0%, #eee8fa 100%);
     `}
 
-  ${({ theme, variant }) =>
+  ${({ variant }) =>
     variant === 'success' &&
     css`
-      background-image: radial-gradient(
-        circle at center top,
-        ${theme.colors.successGradientStart} 0%,
-        ${theme.colors.successGradientEnd} 100%
-      );
+      background-image: radial-gradient(circle at center top, #78e4a3 0%, #f3fdec 100%);
     `}
 `;
 
@@ -94,7 +77,7 @@ StatusMessageIllustration.defaultProps = {
   size: 'panel',
 };
 
-export const StyledStatusMessageIcons = styled.div<StatusMessageIconProps>`
+export const StyledStatusMessageIcons = styled.div`
   position: relative;
   width: 120px;
   height: 120px;
@@ -103,99 +86,20 @@ export const StyledStatusMessageIcons = styled.div<StatusMessageIconProps>`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  svg {
-    position: absolute;
-  }
-
-  ${({ variant }) =>
-    variant === '404' &&
-    css`
-      svg {
-        left: 0px;
-      }
-    `}
-
-  ${({ variant }) =>
-    variant === 'error' &&
-    css`
-      svg {
-        left: -480px;
-      }
-    `}
-
-  ${({ variant }) =>
-    variant === 'info' &&
-    css`
-      svg {
-        left: -240px;
-      }
-    `}
-
-    ${({ variant }) =>
-    variant === 'search' &&
-    css`
-      svg {
-        left: -120px;
-      }
-    `}
-
-    ${({ variant }) =>
-    variant === 'server-error' &&
-    css`
-      svg {
-        left: -360px;
-      }
-    `}
-
-    ${({ variant }) =>
-    variant === 'success' &&
-    css`
-      svg {
-        left: -840px;
-      }
-    `}
-
-    ${({ variant }) =>
-    variant === 'unauthorized' &&
-    css`
-      svg {
-        left: -600px;
-      }
-    `}
-
-    ${({ variant }) =>
-    variant === 'warning' &&
-    css`
-      svg {
-        left: -720px;
-      }
-    `}
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 StyledStatusMessageIcons.defaultProps = {
   theme: defaultTheme,
-  variant: 'info',
 };
 
-export const StyledStatusMessagePatterns = styled.div<StatusMessageIconProps>`
+export const StyledStatusMessagePatterns = styled.div`
   position: absolute;
   width: 120px;
   height: 120px;
   overflow: hidden;
-  svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  ${({ variant }) =>
-    (variant === 'error' || variant === 'server-error') &&
-    css`
-      svg {
-        left: -120px;
-      }
-    `}
 `;
 StyledStatusMessagePatterns.defaultProps = {
   theme: defaultTheme,
-  variant: 'info',
 };
