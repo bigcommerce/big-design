@@ -1,9 +1,9 @@
-import { Lozenge, Grid, H1, Panel, Text } from '@bigcommerce/big-design';
+import { Grid, H1, Lozenge, Panel, Text, Tooltip } from '@bigcommerce/big-design';
 import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
 import { GuidelinesTable } from '../components/GuidelinesTable';
-import { BadgePropTable, MarginPropTable } from '../PropTables';
+import { LozengePropTable, MarginPropTable } from '../PropTables';
 
 const LozengePage = () => {
   return (
@@ -59,13 +59,25 @@ const LozengePage = () => {
                       <Lozenge label="Deprecated" variant="deprecated" />
                       <Lozenge label="Legacy" variant="legacy" />
                       <Lozenge label="New" variant="new" />
-
-                      <Lozenge label="Alpha" variant="alpha" tooltipIcon={true} />
-                      <Lozenge label="Beta" variant="beta" tooltipIcon={true} />
-                      <Lozenge label="Deprecated" variant="deprecated" tooltipIcon={true} />
-                      <Lozenge label="Legacy" variant="legacy" tooltipIcon={true} />
-                      <Lozenge label="New" variant="new" tooltipIcon={true} />
                     </Grid>
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'tooltipIcon',
+              title: 'Tooltip icon',
+              render: () => (
+                <Fragment key="tooltipIcon">
+                  <Text>
+                    Use the <Code>tooltipIcon</Code> prop when using the <Code>Lozenge</Code> as a
+                    tooltip trigger.
+                  </Text>
+
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <Lozenge label="Beta" tooltipIcon variant="beta" />
                     {/* jsx-to-string:end */}
                   </CodePreview>
                 </Fragment>
@@ -76,14 +88,15 @@ const LozengePage = () => {
       </Panel>
 
       <Panel header="Props" headerId="props">
-        <BadgePropTable inheritedProps={<MarginPropTable collapsible />} />
+        <LozengePropTable inheritedProps={<MarginPropTable collapsible />} />
       </Panel>
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
           discouraged={[
             <>
-              Don’t apply multiple <Code primary>Badges</Code> to the same object.
+              Don’t use the <Code primary>tooltipIcon</Code> property if not using the{' '}
+              <Code primary>Lozenge</Code> to trigger a tooltip.
             </>,
           ]}
           recommended={[

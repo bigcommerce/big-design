@@ -1,4 +1,4 @@
-import { H1, Text } from '@bigcommerce/big-design';
+import { H1, Lozenge, Text } from '@bigcommerce/big-design';
 import { AddIcon } from '@bigcommerce/big-design-icons';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
@@ -118,6 +118,14 @@ test('renders with icon', () => {
   render(<Header icon={<AddIcon data-testid="header-icon" />} title="Page heading" />);
 
   expect(screen.getByTestId('header-icon')).toBeInTheDocument();
+});
+
+test('renders with lozenge', () => {
+  render(
+    <Header lozenge={<Lozenge data-testid="header-lozenge" label="New" />} title="Page heading" />,
+  );
+
+  expect(screen.getByTestId('header-lozenge')).toBeInTheDocument();
 });
 
 test('renders with description', () => {
