@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.4.2
+
+### Patch Changes
+
+- 3ff3c7b: Overrides the consecutive button margins within the page header component. The flex wrapper should handle the gap between the buttons.
+- Updated dependencies [0c11db0]
+- Updated dependencies [3ff3c7b]
+  - @bigcommerce/big-design-icons@1.3.0
+  - @bigcommerce/big-design-patterns@2.0.7
+  - @bigcommerce/big-design@1.7.2
+
 ## 1.4.1
 
 ### Patch Changes
