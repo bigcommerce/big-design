@@ -154,11 +154,6 @@ const selectProps: Prop[] = [
     types: '[any]',
     description: <>Modifies the current selected value of the field.</>,
   },
-  {
-    name: 'localization',
-    types: '{ optional: string }',
-    description: 'Overrides the label with localized text.',
-  },
 ];
 
 export const MultiSelectPropTable: React.FC<PropTableWrapper> = (props) => (
