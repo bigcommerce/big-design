@@ -24,9 +24,6 @@ export interface Colors {
   primary60: string;
   primary70: string;
 
-  primaryGradientStart: string;
-  primaryGradientEnd: string;
-
   danger: string;
   danger10: string;
   danger20: string;
@@ -35,9 +32,6 @@ export interface Colors {
   danger50: string;
   danger60: string;
   danger70: string;
-
-  dangerGradientStart: string;
-  dangerGradientEnd: string;
 
   warning: string;
   warning10: string;
@@ -48,9 +42,6 @@ export interface Colors {
   warning60: string;
   warning70: string;
 
-  warningGradientStart: string;
-  warningGradientEnd: string;
-
   success: string;
   success10: string;
   success20: string;
@@ -59,9 +50,6 @@ export interface Colors {
   success50: string;
   success60: string;
   success70: string;
-
-  successGradientStart: string;
-  successGradientEnd: string;
 }
 
 export const colors: Colors = {
@@ -90,9 +78,6 @@ export const colors: Colors = {
   primary60: '#0B38D9',
   primary70: '#0024A6',
 
-  primaryGradientStart: 'rgb(114, 215, 219)',
-  primaryGradientEnd: 'rgb(217, 249, 250)',
-
   danger: '#DB3643',
   danger10: '#FFF0F1',
   danger20: '#FEDBDE',
@@ -101,9 +86,6 @@ export const colors: Colors = {
   danger50: '#CC1F1F',
   danger60: '#AD0000',
   danger70: '#80000B',
-
-  dangerGradientStart: 'rgb(235, 178, 202)',
-  dangerGradientEnd: 'rgb(238, 232, 250)',
 
   warning: '#FFBF00',
   warning10: '#FFF9E6',
@@ -114,9 +96,6 @@ export const colors: Colors = {
   warning60: '#E58F17',
   warning70: '#CC720A',
 
-  warningGradientStart: 'rgb(239, 199, 121)',
-  warningGradientEnd: 'rgb(254, 251, 242)',
-
   success: '#2AAB3F',
   success10: '#EEFCF0',
   success20: '#D3F5D9',
@@ -125,7 +104,4 @@ export const colors: Colors = {
   success50: '#208831',
   success60: '#146622',
   success70: '#004D0D',
-
-  successGradientStart: 'rgb(120, 228, 163)',
-  successGradientEnd: 'rgb(243, 253, 236)',
 };
