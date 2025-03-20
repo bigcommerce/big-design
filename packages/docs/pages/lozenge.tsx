@@ -1,4 +1,4 @@
-import { Grid, H1, Lozenge, Panel, Text, Tooltip } from '@bigcommerce/big-design';
+import { Grid, H1, Lozenge, Panel, Text } from '@bigcommerce/big-design';
 import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
