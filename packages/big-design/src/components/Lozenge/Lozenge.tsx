@@ -1,5 +1,5 @@
-import React, { ComponentPropsWithoutRef, memo } from 'react';
 import { InfoIcon } from '@bigcommerce/big-design-icons';
+import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { MarginProps } from '../../helpers';
 
@@ -11,19 +11,18 @@ export interface LozengeProps extends ComponentPropsWithoutRef<'span'>, MarginPr
   variant?: 'alpha' | 'beta' | 'deprecated' | 'legacy' | 'new';
 }
 
-export const Lozenge: React.FC<LozengeProps> = memo(
-  ({ className, style, label, ...props }) =>
-    typeof label === 'string' ? (
-      <StyledLozenge {...props}>
-        {label}
-        {props.tooltipIcon ? (
-          <>
-            {' '}
-            <InfoIcon size="large" aria-hidden="true" />
-          </>
-        ) : null}
-      </StyledLozenge>
-    ) : null,
+export const Lozenge: React.FC<LozengeProps> = memo(({ className, style, label, ...props }) =>
+  typeof label === 'string' ? (
+    <StyledLozenge {...props}>
+      {label}
+      {props.tooltipIcon ? (
+        <>
+          {' '}
+          <InfoIcon aria-hidden="true" size="large" />
+        </>
+      ) : null}
+    </StyledLozenge>
+  ) : null,
 );
 
 Lozenge.displayName = 'Lozenge';

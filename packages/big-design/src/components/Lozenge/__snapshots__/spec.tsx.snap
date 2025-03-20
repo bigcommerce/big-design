@@ -24,8 +24,7 @@ exports[`render Lozenge with tooltipIcon 1`] = `
   user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem 0.25rem;
-  -webkit-animation-name: a-true;
-  animation-name: a-true;
+  white-space: nowrap;
   background-color: #D3F5D9;
   color: #004D0D;
 }
@@ -74,8 +73,7 @@ exports[`render alpha Lozenge 1`] = `
   user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
-  -webkit-animation-name: a-false;
-  animation-name: a-false;
+  white-space: nowrap;
   background-color: #FFF0BF;
   color: #313440;
 }
@@ -105,8 +103,7 @@ exports[`render beta Lozenge 1`] = `
   user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
-  -webkit-animation-name: a-false;
-  animation-name: a-false;
+  white-space: nowrap;
   background-color: #DBE3FE;
   color: #2852EB;
 }
@@ -136,8 +133,7 @@ exports[`render default Lozenge 1`] = `
   user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
-  -webkit-animation-name: a-false;
-  animation-name: a-false;
+  white-space: nowrap;
   background-color: #D3F5D9;
   color: #004D0D;
 }
@@ -167,8 +163,7 @@ exports[`render deprecated Lozenge 1`] = `
   user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
-  -webkit-animation-name: a-false;
-  animation-name: a-false;
+  white-space: nowrap;
   color: #80000B;
   background-color: #FEDBDE;
 }
@@ -198,8 +193,7 @@ exports[`render legacy Lozenge 1`] = `
   user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
-  -webkit-animation-name: a-false;
-  animation-name: a-false;
+  white-space: nowrap;
   background-color: #D9DCE9;
   color: #313440;
 }
@@ -229,8 +223,7 @@ exports[`render new Lozenge 1`] = `
   user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
-  -webkit-animation-name: a-false;
-  animation-name: a-false;
+  white-space: nowrap;
   background-color: #D3F5D9;
   color: #004D0D;
 }

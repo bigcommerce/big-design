@@ -18,6 +18,7 @@ export * from './IconPropTable';
 export * from './InlineMessagePropTable';
 export * from './InputPropTable';
 export * from './LinkPropTable';
+export * from './LozengePropTable';
 export * from './MarginPropTable';
 export * from './MessagePropTable';
 export * from './ModalPropTable';

@@ -17,8 +17,9 @@ export const StyledLozenge = styled.span<Omit<LozengeProps, 'label'>>`
   padding-block: ${({ theme }) => theme.spacing.xxSmall};
   user-select: none;
   vertical-align: middle;
-  padding-inline: ${({ theme, tooltipIcon }) => tooltipIcon ? `${theme.spacing.small} ${theme.spacing.xxSmall}` : theme.spacing.small};
-  animation-name: ${({ tooltipIcon }) => `a-${tooltipIcon}`};;
+  padding-inline: ${({ theme, tooltipIcon }) =>
+    tooltipIcon ? `${theme.spacing.small} ${theme.spacing.xxSmall}` : theme.spacing.small};
+  white-space: nowrap;
 
   ${({ theme, variant }) =>
     variant === 'alpha' &&
