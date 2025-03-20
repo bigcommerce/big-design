@@ -15,15 +15,29 @@ const pillTabsPropTable: Prop[] = [
         <NextLink href={{ hash: 'pill-tabs-items-prop-table', query: { props: 'pill-tab-item' } }}>
           PillTabItem
         </NextLink>{' '}
+        or{' '}
+        <NextLink
+          href={{ hash: 'pill-tabs-groups-prop-table', query: { props: 'pill-tab-group' } }}
+        >
+          PillTabGroup
+        </NextLink>{' '}
         for usage.
       </>
     ),
     name: 'items',
     required: true,
     types: (
-      <NextLink href={{ hash: 'pill-tabs-items-prop-table', query: { props: 'pill-tab-item' } }}>
-        PillTabItem[]
-      </NextLink>
+      <>
+        <NextLink href={{ hash: 'pill-tabs-items-prop-table', query: { props: 'pill-tab-item' } }}>
+          PillTabItem[]
+        </NextLink>{' '}
+        |{' '}
+        <NextLink
+          href={{ hash: 'pill-tabs-groups-prop-table', query: { props: 'pill-tab-group' } }}
+        >
+          PillTabGroup[]
+        </NextLink>
+      </>
     ),
   },
   {
@@ -31,6 +45,15 @@ const pillTabsPropTable: Prop[] = [
     types: '(itemId: string) => void',
     description: 'Function that will get called when a pill tab is clicked.',
     required: true,
+  },
+  {
+    name: 'dropdownItems',
+    types: 'Array<DropdownItem | DropdownLinkItem> | Array<DropdownItemGroup>',
+    description: (
+      <>
+        See the <NextLink href="/dropdown">Dropdown</NextLink> component for usage.
+      </>
+    ),
   },
 ];
 
@@ -55,4 +78,34 @@ const tabItemProps: Prop[] = [
 
 export const PillTabItemPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable propList={tabItemProps} title="PillTabs[PillTabItem]" {...props} />
+);
+
+const tabGroupProps: Prop[] = [
+  {
+    name: 'label',
+    types: 'string',
+    description: 'The accessibility label for the group of tabs.',
+  },
+  {
+    description: (
+      <>
+        See{' '}
+        <NextLink href={{ hash: 'pill-tabs-items-prop-table', query: { props: 'pill-tab-item' } }}>
+          PillTabItem
+        </NextLink>{' '}
+        for usage.
+      </>
+    ),
+    name: 'items',
+    required: true,
+    types: (
+      <NextLink href={{ hash: 'pill-tabs-items-prop-table', query: { props: 'pill-tab-item' } }}>
+        PillTabItem[]
+      </NextLink>
+    ),
+  },
+];
+
+export const PillTabGroupPropTable: React.FC<PropTableWrapper> = (props) => (
+  <PropTable propList={tabGroupProps} title="PillTabs[PillTabGroup]" {...props} />
 );

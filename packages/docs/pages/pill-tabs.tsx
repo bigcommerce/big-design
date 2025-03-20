@@ -2,7 +2,9 @@ import { Flex, FlexItem, H1, Link, Panel, PillTabs, Text } from '@bigcommerce/bi
 import React, { useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
-import { PillTabItemPropTable, PillTabsPropTable } from '../PropTables';
+import { PillTabGroupPropTable, PillTabItemPropTable, PillTabsPropTable } from '../PropTables';
+import { title } from 'process';
+import { SettingsIcon } from '@bigcommerce/big-design-icons';
 
 const PillTabsPage = () => {
   return (
@@ -25,83 +27,153 @@ const PillTabsPage = () => {
       </Panel>
 
       <Panel header="Implementation" headerId="implementation">
-        <CodePreview>
-          {/* jsx-to-string:start */}
-          {function Example() {
-            const [activePills, setActivePills] = useState<string[]>([]);
-            const Card: React.FC<{ name: string; description: string }> = ({
-              name,
-              description,
-            }) => (
-              <Flex
-                border="box"
-                borderRadius="normal"
-                flexDirection="column"
-                margin="xxSmall"
-                padding="medium"
-              >
-                <FlexItem marginBottom="xxSmall">
-                  <Text bold>{name}</Text>
-                </FlexItem>
-                <FlexItem flexGrow={1}>
-                  <Text>{description}</Text>
-                </FlexItem>
-                <FlexItem>
-                  <Link href="#">Install</Link>
-                </FlexItem>
-              </Flex>
-            );
-            const items = [
-              { title: 'Shipping', id: 'shipping' },
-              { title: 'Orders', id: 'orders' },
-            ];
-            const onPillClick = (pillId: string) => {
-              const isPillActive = !activePills.includes(pillId);
-              const updatedPills = isPillActive
-                ? [...activePills, pillId]
-                : activePills.filter((activePillId) => activePillId !== pillId);
+        <ContentRoutingTabs
+          id="implementation"
+          routes={[
+            {
+              id: 'basic',
+              title: 'Basic',
+              render: () => (
+                <CodePreview>
+                  {/* jsx-to-string:start */}
+                  {function Example() {
+                    const [activePills, setActivePills] = useState<string[]>([]);
+                    const Card: React.FC<{ name: string; description: string }> = ({
+                      name,
+                      description,
+                    }) => (
+                      <Flex
+                        border="box"
+                        borderRadius="normal"
+                        flexDirection="column"
+                        margin="xxSmall"
+                        padding="medium"
+                      >
+                        <FlexItem marginBottom="xxSmall">
+                          <Text bold>{name}</Text>
+                        </FlexItem>
+                        <FlexItem flexGrow={1}>
+                          <Text>{description}</Text>
+                        </FlexItem>
+                        <FlexItem>
+                          <Link href="#">Install</Link>
+                        </FlexItem>
+                      </Flex>
+                    );
+                    const items = [
+                      { title: 'Shipping', id: 'shipping' },
+                      { title: 'Orders', id: 'orders' },
+                    ];
+                    const onPillClick = (pillId: string) => {
+                      const isPillActive = !activePills.includes(pillId);
+                      const updatedPills = isPillActive
+                        ? [...activePills, pillId]
+                        : activePills.filter((activePillId) => activePillId !== pillId);
 
-              setActivePills(updatedPills);
-            };
-            const cards = [
-              {
-                name: 'Shipping App Pro',
-                description: 'All your shipping needs in a one stop shop.',
-                type: 'shipping',
-              },
-              {
-                name: 'Order Tracker Deluxe',
-                description: 'Track your orders across all your devices.',
-                type: 'orders',
-              },
-              {
-                name: 'Expedited Shipper',
-                description: 'The best rush rates in the country.',
-                type: 'shipping',
-              },
-              {
-                name: 'Inventory Wizard',
-                description: 'Inventory tracking app to cover all your needs.',
-                type: 'other',
-              },
-            ];
-            const isFiltered = Boolean(activePills.length);
-            const filteredCards = cards.filter((card) => activePills.includes(card.type));
-            const appCards = isFiltered ? filteredCards : cards;
+                      setActivePills(updatedPills);
+                    };
+                    const cards = [
+                      {
+                        name: 'Shipping App Pro',
+                        description: 'All your shipping needs in a one stop shop.',
+                        type: 'shipping',
+                      },
+                      {
+                        name: 'Order Tracker Deluxe',
+                        description: 'Track your orders across all your devices.',
+                        type: 'orders',
+                      },
+                      {
+                        name: 'Expedited Shipper',
+                        description: 'The best rush rates in the country.',
+                        type: 'shipping',
+                      },
+                      {
+                        name: 'Inventory Wizard',
+                        description: 'Inventory tracking app to cover all your needs.',
+                        type: 'other',
+                      },
+                    ];
+                    const isFiltered = Boolean(activePills.length);
+                    const filteredCards = cards.filter((card) => activePills.includes(card.type));
+                    const appCards = isFiltered ? filteredCards : cards;
 
-            return (
-              <>
-                <PillTabs activePills={activePills} items={items} onPillClick={onPillClick} />
-                <Flex>
-                  {appCards.map(({ name, description }) => (
-                    <Card description={description} key={name} name={name} />
-                  ))}
-                </Flex>
-              </>
-            );
-          }}
-          {/* jsx-to-string:end */}
-        </CodePreview>
+                    return (
+                      <>
+                        <PillTabs
+                          activePills={activePills}
+                          items={items}
+                          onPillClick={onPillClick}
+                        />
+                        <Flex>
+                          {appCards.map(({ name, description }) => (
+                            <Card description={description} key={name} name={name} />
+                          ))}
+                        </Flex>
+                      </>
+                    );
+                  }}
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+            {
+              id: 'views',
+              title: 'Views',
+              render: () => (
+                <CodePreview>
+                  {/* jsx-to-string:start */}
+                  {function Example() {
+                    const allId = 'all';
+
+                    const [activePills, setActivePills] = useState([allId]);
+
+                    const setActivePill = (pillId: string) => setActivePills([pillId]);
+
+                    const groups = [
+                      { items: [{ title: 'All', id: allId }] },
+                      {
+                        label: 'Standard Views',
+                        items: [
+                          { title: 'Featured', id: 'featured' },
+                          { title: 'Free shipping', id: 'free-shipping' },
+                          { title: 'Out of stock', id: 'out-of-stock' },
+                          { title: 'Inventory low', id: 'inventory-low' },
+                        ],
+                      },
+                      {
+                        label: 'Custom Views',
+                        items: [
+                          { title: 'Custom view 1', id: 'custom-view-1' },
+                          { title: 'Custom view 2', id: 'custom-view-2' },
+                          { title: 'Custom view 3', id: 'custom-view-3' },
+                        ],
+                      },
+                    ];
+
+                    const dropdownItems = [
+                      {
+                        content: 'Manage custom views',
+                        onItemClick: () => alert('Imagine this is a modal to manage custom views'),
+                        icon: <SettingsIcon />,
+                      },
+                    ];
+
+                    return (
+                      <PillTabs
+                        activePills={activePills}
+                        onPillClick={setActivePill}
+                        items={groups}
+                        dropdownItems={dropdownItems}
+                      />
+                    );
+                  }}
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+          ]}
+        />
       </Panel>
 
       <Panel header="Props" headerId="props">
@@ -117,6 +189,11 @@ const PillTabsPage = () => {
               id: 'pill-tab-item',
               title: 'PillTabItem',
               render: () => <PillTabItemPropTable id="pill-tabs-items-prop-table" />,
+            },
+            {
+              id: 'pill-tab-group',
+              title: 'PillTabGroup',
+              render: () => <PillTabGroupPropTable id="pill-tabs-groups-prop-table" />,
             },
           ]}
         />
