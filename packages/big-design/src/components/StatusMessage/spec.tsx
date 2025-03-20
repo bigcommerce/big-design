@@ -56,7 +56,7 @@ test('renders with the default variant', () => {
   const figure = screen.getByRole('figure', { hidden: true });
 
   expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, ${theme.colors.primaryGradientStart} 0%, ${theme.colors.primaryGradientEnd} 100%)`,
+    backgroundImage: `radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%)`,
   });
 });
 
@@ -67,7 +67,7 @@ test('renders with the 404 variant', () => {
 
   expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, ${theme.colors.primaryGradientStart} 0%, ${theme.colors.primaryGradientEnd} 100%)`,
+    backgroundImage: `radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%)`,
   });
 });
 
@@ -78,7 +78,7 @@ test('renders with the info variant', () => {
 
   expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, ${theme.colors.primaryGradientStart} 0%, ${theme.colors.primaryGradientEnd} 100%)`,
+    backgroundImage: `radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%)`,
   });
 });
 
@@ -89,7 +89,7 @@ test('renders with the search variant', () => {
 
   expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, ${theme.colors.primaryGradientStart} 0%, ${theme.colors.primaryGradientEnd} 100%)`,
+    backgroundImage: `radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%)`,
   });
 });
 
@@ -100,7 +100,7 @@ test('renders with the error variant', () => {
 
   expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, ${theme.colors.dangerGradientStart} 0%, ${theme.colors.dangerGradientEnd} 100%)`,
+    backgroundImage: `radial-gradient(circle at center top, #ebb2ca 0%, #eee8fa 100%)`,
   });
 });
 
@@ -111,7 +111,7 @@ test('renders with the server-error variant', () => {
 
   expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, ${theme.colors.dangerGradientStart} 0%, ${theme.colors.dangerGradientEnd} 100%)`,
+    backgroundImage: `radial-gradient(circle at center top, #ebb2ca 0%, #eee8fa 100%)`,
   });
 });
 
@@ -122,7 +122,7 @@ test('renders with the success variant', () => {
 
   expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, ${theme.colors.successGradientStart} 0%, ${theme.colors.successGradientEnd} 100%)`,
+    backgroundImage: `radial-gradient(circle at center top, #78e4a3 0%, #f3fdec 100%)`,
   });
 });
 
@@ -133,7 +133,7 @@ test('renders with the unauthorized variant', () => {
 
   expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, ${theme.colors.warningGradientStart} 0%, ${theme.colors.warningGradientEnd} 100%)`,
+    backgroundImage: `radial-gradient(circle at center top, #efc879 0%, #fefbf2 100%)`,
   });
 });
 
@@ -144,7 +144,7 @@ test('renders with the warning variant', () => {
 
   expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, ${theme.colors.warningGradientStart} 0%, ${theme.colors.warningGradientEnd} 100%)`,
+    backgroundImage: `radial-gradient(circle at center top, #efc879 0%, #fefbf2 100%)`,
   });
 });
 
