@@ -1,4 +1,4 @@
-import { H1, Lozenge, Panel, Text } from '@bigcommerce/big-design';
+import { H1, Panel, Text } from '@bigcommerce/big-design';
 import { AddIcon, ArrowDropDownIcon } from '@bigcommerce/big-design-icons';
 import { Header } from '@bigcommerce/big-design-patterns';
 import React, { Fragment } from 'react';
@@ -75,7 +75,7 @@ const HeaderPage = () => {
             }}
             badge={{ label: 'Active', variant: 'success' }}
             description="This is a description of the page content."
-            lozenge={<Lozenge label="Beta" variant="beta" />}
+            lozenge={{ variant: 'beta', label: 'Beta' }}
             title="Page Title"
           />
           {/* jsx-to-string:end */}

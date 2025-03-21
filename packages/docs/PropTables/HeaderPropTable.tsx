@@ -71,7 +71,11 @@ const headerProps: Prop[] = [
   },
   {
     name: 'lozenge',
-    types: 'ReactNode',
+    types: (
+      <NextLink href="/lozenge#props" key="lozenge-type">
+        LozengeProps
+      </NextLink>
+    ),
     description: (
       <>
         Prop reserved for a <NextLink href="/lozenge">Lozenge</NextLink> to display the lifecycle
