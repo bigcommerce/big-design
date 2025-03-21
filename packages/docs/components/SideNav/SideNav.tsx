@@ -102,6 +102,7 @@ export const SideNav: React.FC = () => {
                 <SideNavLink href="/message">Message</SideNavLink>
                 <SideNavLink href="/progress-bar">ProgressBar</SideNavLink>
                 <SideNavLink href="/progress-circle">ProgressCircle</SideNavLink>
+                <SideNavLink href="/status-message">Status Message</SideNavLink>
                 <SideNavLink href="/stepper">Stepper</SideNavLink>
                 <SideNavLink href="/tooltip">Tooltip</SideNavLink>
               </SideNavGroup>
