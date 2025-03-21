@@ -62,7 +62,26 @@ const headerProps: Prop[] = [
   {
     name: 'icon',
     types: 'ReactNode',
-    description: 'An icon to display to the left of the title.',
+    description: (
+      <>
+        Prop reserved for an <NextLink href="/icons">Icon</NextLink> to display to the left of the
+        title.
+      </>
+    ),
+  },
+  {
+    name: 'lozenge',
+    types: (
+      <NextLink href="/lozenge#props" key="lozenge-type">
+        LozengeProps
+      </NextLink>
+    ),
+    description: (
+      <>
+        Prop reserved for a <NextLink href="/lozenge">Lozenge</NextLink> to display the lifecycle
+        version of the feature.
+      </>
+    ),
   },
 ];
 

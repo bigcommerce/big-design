@@ -120,6 +120,12 @@ test('renders with icon', () => {
   expect(screen.getByTestId('header-icon')).toBeInTheDocument();
 });
 
+test('renders with lozenge', () => {
+  render(<Header lozenge={{ label: 'Early access' }} title="Page heading" />);
+
+  expect(screen.getByText('Early access')).toBeInTheDocument();
+});
+
 test('renders with description', () => {
   render(<Header description="Page description" title="Page heading" />);
 
