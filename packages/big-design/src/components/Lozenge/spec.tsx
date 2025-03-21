@@ -1,5 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
@@ -27,6 +27,7 @@ test('render alpha Lozenge', () => {
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.warning20}`);
+  expect(container.firstChild).toHaveStyle(`color: ${theme.colors.secondary70}`);
 });
 
 test('render beta Lozenge', () => {
@@ -34,6 +35,7 @@ test('render beta Lozenge', () => {
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.primary20}`);
+  expect(container.firstChild).toHaveStyle(`color: ${theme.colors.primary50}`);
 });
 
 test('render deprecated Lozenge', () => {
@@ -41,6 +43,7 @@ test('render deprecated Lozenge', () => {
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.danger20}`);
+  expect(container.firstChild).toHaveStyle(`color: ${theme.colors.danger70}`);
 });
 
 test('render legacy Lozenge', () => {
@@ -48,6 +51,7 @@ test('render legacy Lozenge', () => {
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.secondary30}`);
+  expect(container.firstChild).toHaveStyle(`color: ${theme.colors.secondary70}`);
 });
 
 test('render new Lozenge', () => {
@@ -55,21 +59,29 @@ test('render new Lozenge', () => {
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(`background-color: ${theme.colors.success20}`);
-});
-
-test("doesn't render if label prop is invalid", () => {
-  // @ts-expect-error ignoring since label={Component} is not a valid prop
-  const { container } = render(<Lozenge label={<p>Label</p>} />);
-
-  expect(container.firstChild).toBeNull();
+  expect(container.firstChild).toHaveStyle(`color: ${theme.colors.success70}`);
 });
 
 // add a test to check if the tooltipIcon prop is working
-test('render Lozenge with tooltipIcon', () => {
-  const { container } = render(<Lozenge label="Lozenge" tooltipIcon={true} />);
+test('render Lozenge with tooltip', async () => {
+  const { container } = render(<Lozenge label="Lozenge" tooltipContent="Tooltip content" />);
 
   expect(container.firstChild).toMatchSnapshot();
   expect(container.firstChild).toHaveStyle(
     `padding-inline: ${theme.spacing.small} ${theme.spacing.xxSmall}`,
   );
+
+  const trigger = screen.getByText('Lozenge');
+
+  fireEvent.mouseOver(trigger);
+
+  let testing: HTMLElement | null = await screen.findByText('Tooltip content');
+
+  expect(testing).toBeVisible();
+
+  fireEvent.mouseLeave(trigger);
+
+  testing = screen.queryByText('Tooltip content');
+
+  expect(testing).toBeNull();
 });

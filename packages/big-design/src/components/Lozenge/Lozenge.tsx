@@ -1,28 +1,32 @@
 import { InfoIcon } from '@bigcommerce/big-design-icons';
-import React, { ComponentPropsWithoutRef, memo } from 'react';
+import React from 'react';
 
 import { MarginProps } from '../../helpers';
+import { Tooltip } from '../Tooltip';
 
 import { StyledLozenge } from './styled';
 
-export interface LozengeProps extends ComponentPropsWithoutRef<'span'>, MarginProps {
+export interface LozengeProps extends MarginProps {
   label: string;
-  tooltipIcon?: boolean;
+  tooltipContent?: string;
   variant?: 'alpha' | 'beta' | 'deprecated' | 'legacy' | 'new';
 }
 
-export const Lozenge: React.FC<LozengeProps> = memo(({ className, style, label, ...props }) =>
-  typeof label === 'string' ? (
+export const Lozenge: React.FC<LozengeProps> = (props) => {
+  const LozengeElement = (
     <StyledLozenge {...props}>
-      {label}
-      {props.tooltipIcon ? (
-        <>
-          {' '}
-          <InfoIcon aria-hidden="true" size="large" />
-        </>
-      ) : null}
+      {props.label}
+      {props.tooltipContent ? <InfoIcon aria-hidden="true" size="large" /> : null}
     </StyledLozenge>
-  ) : null,
-);
+  );
+
+  return props.tooltipContent ? (
+    <Tooltip placement="auto" trigger={LozengeElement}>
+      {props.tooltipContent}
+    </Tooltip>
+  ) : (
+    LozengeElement
+  );
+};
 
 Lozenge.displayName = 'Lozenge';

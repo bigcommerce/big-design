@@ -10,9 +10,9 @@ const lozengeProps: Prop[] = [
     required: true,
   },
   {
-    name: 'tooltipIcon',
-    types: ['boolean'],
-    description: 'Determines if tooltip icon is shown.',
+    name: 'tooltipContent',
+    types: 'string',
+    description: 'Defines the message of an optional tooltip.',
   },
   {
     name: 'variant',

@@ -1,13 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render Lozenge with tooltipIcon 1`] = `
-.c1 {
+exports[`render Lozenge with tooltip 1`] = `
+.c2 {
   vertical-align: middle;
   height: 1.25rem;
   width: 1.25rem;
 }
 
 .c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
   border-radius: 1rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -18,10 +22,6 @@ exports[`render Lozenge with tooltipIcon 1`] = `
   line-height: 1.25rem;
   text-align: center;
   padding-block: 0.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem 0.25rem;
   white-space: nowrap;
@@ -29,14 +29,14 @@ exports[`render Lozenge with tooltipIcon 1`] = `
   color: #004D0D;
 }
 
-<span
-  class="c0"
+<div
+  class="c0 c1"
+  label="Lozenge"
 >
   Lozenge
-   
   <svg
     aria-hidden="true"
-    class="c1"
+    class="c2"
     fill="currentColor"
     height="24"
     stroke="currentColor"
@@ -52,11 +52,15 @@ exports[`render Lozenge with tooltipIcon 1`] = `
       d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 15c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1m1-8h-2V7h2z"
     />
   </svg>
-</span>
+</div>
 `;
 
 exports[`render alpha Lozenge 1`] = `
 .c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
   border-radius: 1rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -67,10 +71,6 @@ exports[`render alpha Lozenge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   padding-block: 0.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
   white-space: nowrap;
@@ -78,15 +78,20 @@ exports[`render alpha Lozenge 1`] = `
   color: #313440;
 }
 
-<span
-  class="c0"
+<div
+  class="c0 c1"
+  label="Alpha"
 >
   Alpha
-</span>
+</div>
 `;
 
 exports[`render beta Lozenge 1`] = `
 .c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
   border-radius: 1rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -97,10 +102,6 @@ exports[`render beta Lozenge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   padding-block: 0.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
   white-space: nowrap;
@@ -108,15 +109,20 @@ exports[`render beta Lozenge 1`] = `
   color: #2852EB;
 }
 
-<span
-  class="c0"
+<div
+  class="c0 c1"
+  label="Beta"
 >
   Beta
-</span>
+</div>
 `;
 
 exports[`render default Lozenge 1`] = `
 .c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
   border-radius: 1rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -127,10 +133,6 @@ exports[`render default Lozenge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   padding-block: 0.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
   white-space: nowrap;
@@ -138,15 +140,20 @@ exports[`render default Lozenge 1`] = `
   color: #004D0D;
 }
 
-<span
-  class="c0"
+<div
+  class="c0 c1"
+  label="Lozenge"
 >
   Lozenge
-</span>
+</div>
 `;
 
 exports[`render deprecated Lozenge 1`] = `
 .c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
   border-radius: 1rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -157,26 +164,27 @@ exports[`render deprecated Lozenge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   padding-block: 0.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
   white-space: nowrap;
-  color: #80000B;
   background-color: #FEDBDE;
+  color: #80000B;
 }
 
-<span
-  class="c0"
+<div
+  class="c0 c1"
+  label="Deprecated"
 >
   Deprecated
-</span>
+</div>
 `;
 
 exports[`render legacy Lozenge 1`] = `
 .c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
   border-radius: 1rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -187,10 +195,6 @@ exports[`render legacy Lozenge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   padding-block: 0.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
   white-space: nowrap;
@@ -198,15 +202,20 @@ exports[`render legacy Lozenge 1`] = `
   color: #313440;
 }
 
-<span
-  class="c0"
+<div
+  class="c0 c1"
+  label="Legacy"
 >
   Legacy
-</span>
+</div>
 `;
 
 exports[`render new Lozenge 1`] = `
 .c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
   border-radius: 1rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -217,10 +226,6 @@ exports[`render new Lozenge 1`] = `
   line-height: 1.25rem;
   text-align: center;
   padding-block: 0.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   vertical-align: middle;
   padding-inline: 0.75rem;
   white-space: nowrap;
@@ -228,9 +233,10 @@ exports[`render new Lozenge 1`] = `
   color: #004D0D;
 }
 
-<span
-  class="c0"
+<div
+  class="c0 c1"
+  label="New"
 >
   New
-</span>
+</div>
 `;
