@@ -9,6 +9,8 @@ import {
   Flex,
   FlexItem,
   H1,
+  Lozenge,
+  LozengeProps,
   Text,
 } from '@bigcommerce/big-design';
 import { ArrowBackIcon } from '@bigcommerce/big-design-icons';
@@ -120,7 +122,7 @@ export interface HeaderProps {
   badge?: BadgeProps;
   description?: Description;
   icon?: ReactNode;
-  lozenge?: ReactNode;
+  lozenge?: LozengeProps;
   title: string;
 }
 
@@ -145,7 +147,7 @@ export const Header = memo(
             <Flex alignItems="center" flexDirection="row" flexGap="1rem" marginBottom="xxSmall">
               {icon}
               <H1 marginBottom="none">{title}</H1>
-              {lozenge}
+              {lozenge ? <Lozenge {...lozenge} /> : null}
               {badge ? <Badge {...excludeMarginProps(badge)} /> : null}
             </Flex>
             <Description description={description} />

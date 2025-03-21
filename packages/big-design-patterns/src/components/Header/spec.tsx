@@ -121,11 +121,9 @@ test('renders with icon', () => {
 });
 
 test('renders with lozenge', () => {
-  render(
-    <Header lozenge={<Lozenge data-testid="header-lozenge" label="New" />} title="Page heading" />,
-  );
+  render(<Header lozenge={{ label: 'Early access' }} title="Page heading" />);
 
-  expect(screen.getByTestId('header-lozenge')).toBeInTheDocument();
+  expect(screen.getByText('Early access')).toBeInTheDocument();
 });
 
 test('renders with description', () => {
