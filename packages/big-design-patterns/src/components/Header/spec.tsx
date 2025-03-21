@@ -1,4 +1,4 @@
-import { H1, Lozenge, Text } from '@bigcommerce/big-design';
+import { H1, Text } from '@bigcommerce/big-design';
 import { AddIcon } from '@bigcommerce/big-design-icons';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
