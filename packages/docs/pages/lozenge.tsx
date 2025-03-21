@@ -66,18 +66,22 @@ const LozengePage = () => {
               ),
             },
             {
-              id: 'tooltipIcon',
-              title: 'Tooltip icon',
+              id: 'tooltipContent',
+              title: 'With Tooltip',
               render: () => (
                 <Fragment key="tooltipIcon">
                   <Text>
-                    Use the <Code>tooltipIcon</Code> prop when using the <Code>Lozenge</Code> as a
-                    tooltip trigger.
+                    Use the <Code>tooltipContent</Code> prop when using the <Code>Lozenge</Code> to
+                    provide the lozenge with a tooltip holding extra information on the status.
                   </Text>
 
                   <CodePreview>
                     {/* jsx-to-string:start */}
-                    <Lozenge label="Beta" tooltipIcon variant="beta" />
+                    <Lozenge
+                      label="Beta"
+                      tooltipContent="This feature is in open beta until August 12"
+                      variant="beta"
+                    />
                     {/* jsx-to-string:end */}
                   </CodePreview>
                 </Fragment>
@@ -93,14 +97,12 @@ const LozengePage = () => {
 
       <Panel header="Do's and Don'ts" headerId="guidelines">
         <GuidelinesTable
-          discouraged={[
-            <>
-              Don’t use the <Code primary>tooltipIcon</Code> property if not using the{' '}
-              <Code primary>Lozenge</Code> to trigger a tooltip.
-            </>,
-          ]}
+          discouraged={[`Don't use the Lozenge to convey statuses other than feature lifecycle.`]}
           recommended={[
-            'Use the corresponding variant for the right lifecycle (e.g. new when something is new or in early access).',
+            <>
+              Use the corresponding variant for the right lifecycle (e.g. <Code>new</Code> when
+              something is "New" or in "Early access").
+            </>,
           ]}
         />
       </Panel>

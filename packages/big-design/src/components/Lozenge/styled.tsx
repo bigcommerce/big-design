@@ -1,13 +1,11 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import styled, { css } from 'styled-components';
 
-import { withMargins } from '../../helpers';
+import { Box } from '../Box';
 
 import { LozengeProps } from './Lozenge';
 
-export const StyledLozenge = styled.span<Omit<LozengeProps, 'label'>>`
-  ${withMargins()};
-
+export const StyledLozenge = styled(Box)<Omit<LozengeProps, 'label'>>`
   border-radius: ${({ theme }) => theme.spacing.medium};
   display: inline-flex;
   font-size: ${({ theme }) => theme.typography.fontSize.small};
@@ -15,50 +13,41 @@ export const StyledLozenge = styled.span<Omit<LozengeProps, 'label'>>`
   line-height: ${({ theme }) => theme.lineHeight.small};
   text-align: center;
   padding-block: ${({ theme }) => theme.spacing.xxSmall};
-  user-select: none;
   vertical-align: middle;
-  padding-inline: ${({ theme, tooltipIcon }) =>
-    tooltipIcon ? `${theme.spacing.small} ${theme.spacing.xxSmall}` : theme.spacing.small};
+  padding-inline: ${({ theme, tooltipContent }) =>
+    tooltipContent ? `${theme.spacing.small} ${theme.spacing.xxSmall}` : theme.spacing.small};
   white-space: nowrap;
 
-  ${({ theme, variant }) =>
-    variant === 'alpha' &&
-    css`
-      background-color: ${theme.colors.warning20};
-      color: ${theme.colors.secondary70};
-    `}
+  ${({ variant = 'new' }) => {
+    const variantStyles = {
+      alpha: css`
+        background-color: ${({ theme }) => theme.colors.warning20};
+        color: ${({ theme }) => theme.colors.secondary70};
+      `,
+      beta: css`
+        background-color: ${({ theme }) => theme.colors.primary20};
+        color: ${({ theme }) => theme.colors.primary50};
+      `,
+      deprecated: css`
+        background-color: ${({ theme }) => theme.colors.danger20};
+        color: ${({ theme }) => theme.colors.danger70};
+      `,
+      legacy: css`
+        background-color: ${({ theme }) => theme.colors.secondary30};
+        color: ${({ theme }) => theme.colors.secondary70};
+      `,
+      new: css`
+        background-color: ${({ theme }) => theme.colors.success20};
+        color: ${({ theme }) => theme.colors.success70};
+      `,
+    };
 
-  ${({ theme, variant }) =>
-    variant === 'beta' &&
-    css`
-      background-color: ${theme.colors.primary20};
-      color: ${theme.colors.primary50};
-    `}
-
-  ${({ theme, variant }) =>
-    variant === 'deprecated' &&
-    css`
-      color: ${theme.colors.danger70};
-      background-color: ${theme.colors.danger20};
-    `}
-
-  ${({ theme, variant }) =>
-    variant === 'legacy' &&
-    css`
-      background-color: ${theme.colors.secondary30};
-      color: ${theme.colors.secondary70};
-    `}
-
-  ${({ theme, variant }) =>
-    variant === 'new' &&
-    css`
-      background-color: ${theme.colors.success20};
-      color: ${theme.colors.success70};
-    `}
+    return variantStyles[variant];
+  }};
 `;
 
 StyledLozenge.defaultProps = {
   theme: defaultTheme,
   variant: 'new',
-  tooltipIcon: false,
+  tooltipContent: undefined,
 };
