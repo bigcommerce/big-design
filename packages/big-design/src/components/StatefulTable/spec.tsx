@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
 
@@ -472,6 +473,31 @@ test('can undo stacked filter actions', async () => {
   rows = await findAllByRole('row');
 
   expect(rows).toHaveLength(105);
+});
+
+test('maintains filtered state when pagination is enabled', async () => {
+  const filters: StatefulTablePillTabFilter<TestItem> = {
+    pillTabs: [{ title: 'Low stock', id: 'in_stock' }],
+    filter: (_itemId, items) => items.filter((item) => item.stock < 5),
+  };
+  const { findByText, findAllByRole } = render(getSimpleTable({ filters, pagination: true }));
+
+  let rows = await findAllByRole('row');
+  expect(rows).toHaveLength(26);
+
+  // Click on filter pill
+  const filterPill = await findByText('Low stock');
+  fireEvent.click(filterPill);
+
+  rows = await findAllByRole('row');
+  expect(rows).toHaveLength(5);
+
+  const itemsPerPageButton = await findByText('1 - 4 of 4');
+  fireEvent.click(itemsPerPageButton);
+  await userEvent.keyboard('{ArrowDown}{Enter}');
+
+  rows = await findAllByRole('row');
+  expect(rows).toHaveLength(5);
 });
 
 describe('test search in the StatefulTable', () => {
