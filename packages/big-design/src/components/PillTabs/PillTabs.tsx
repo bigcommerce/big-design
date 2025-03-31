@@ -22,7 +22,6 @@ export interface PillTabsProps {
 export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
   const parentRef = createRef<HTMLDivElement>();
   const dropdownRef = createRef<HTMLDivElement>();
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [pillsState, setPillsState] = useState(
     items.map((item) => ({
       isVisible: true,
@@ -30,6 +29,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       ref: createRef<HTMLDivElement>(),
     })),
   );
+  const isMenuVisible = pillsState.some(({ isVisible }) => !isVisible);
 
   const hideOverflowedPills = useCallback(() => {
     const parentWidth = parentRef.current?.offsetWidth;
@@ -67,7 +67,6 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     const newVisiblePills = newState.filter((stateObj) => stateObj.isVisible);
 
     if (visiblePills.length !== newVisiblePills.length) {
-      setIsMenuVisible(newVisiblePills.length !== items.length);
       setPillsState(newState);
     }
   }, [items, parentRef, dropdownRef, pillsState]);
