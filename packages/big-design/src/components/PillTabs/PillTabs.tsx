@@ -22,6 +22,19 @@ export interface PillTabsProps {
 export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
   const parentRef = createRef<HTMLDivElement>();
   const dropdownRef = createRef<HTMLDivElement>();
+
+  const [availableWidth, setAvailableWidth] = useState<number>(Infinity);
+  const updateAvailableWidth = useCallback(() => {
+    const parentWidth = parentRef.current?.offsetWidth;
+    const dropdownWidth = dropdownRef.current?.offsetWidth;
+
+    if (!parentWidth || !dropdownWidth) {
+      return;
+    }
+
+    setAvailableWidth(parentWidth - dropdownWidth);
+  }, [parentRef, dropdownRef]);
+
   const [pillsState, setPillsState] = useState(
     items.map((item) => ({
       isVisible: true,
@@ -32,15 +45,6 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
   const isMenuVisible = pillsState.some(({ isVisible }) => !isVisible);
 
   const hideOverflowedPills = useCallback(() => {
-    const parentWidth = parentRef.current?.offsetWidth;
-    const dropdownWidth = dropdownRef.current?.offsetWidth;
-
-    if (!parentWidth || !dropdownWidth) {
-      return;
-    }
-
-    const remainingWidth = parentWidth - dropdownWidth;
-
     const [newState] = pillsState.reduce<[typeof pillsState, number]>(
       ([processedItems, widthBudget], currentItem) => {
         const currentItemWidth = currentItem.ref.current?.offsetWidth || 0;
@@ -51,7 +55,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
           updatedWidthBudget,
         ];
       },
-      [[], remainingWidth],
+      [[], availableWidth],
     );
 
     const visiblePills = pillsState.filter((stateObj) => stateObj.isVisible);
@@ -60,7 +64,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     if (visiblePills.length !== newVisiblePills.length) {
       setPillsState(newState);
     }
-  }, [items, parentRef, dropdownRef, pillsState]);
+  }, [items, availableWidth, pillsState]);
 
   const dropdownItems = pillsState
     .filter((stateObj) => !stateObj.isVisible)
@@ -102,10 +106,12 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
   }, [items, pillsState]);
 
   useEffect(() => {
+    updateAvailableWidth();
     hideOverflowedPills();
-  }, [items, parentRef, pillsState, hideOverflowedPills]);
+  }, [items, parentRef, pillsState, hideOverflowedPills, updateAvailableWidth]);
 
   useWindowResizeListener(() => {
+    updateAvailableWidth();
     hideOverflowedPills();
   });
 
