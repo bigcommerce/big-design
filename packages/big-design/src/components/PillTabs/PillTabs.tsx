@@ -39,7 +39,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       return;
     }
 
-    let remainingWidth = parentWidth;
+    let remainingWidth = parentWidth - dropdownWidth;
 
     const newState = pillsState.map((stateObj) => {
       const pillWidth = stateObj.ref.current?.offsetWidth;
@@ -48,7 +48,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
         return stateObj;
       }
 
-      if (remainingWidth - pillWidth > dropdownWidth) {
+      if (remainingWidth - pillWidth >= 0) {
         remainingWidth -= pillWidth;
 
         return {
