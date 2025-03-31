@@ -147,8 +147,8 @@ export const Header = memo(
             <Flex alignItems="center" flexDirection="row" flexGap="1rem" marginBottom="xxSmall">
               {icon}
               <H1 marginBottom="none">{title}</H1>
-              {lozenge ? <Lozenge {...lozenge} /> : null}
-              {badge ? <Badge {...excludeMarginProps(badge)} /> : null}
+              {lozenge && <Lozenge {...lozenge} />}
+              {badge && <Badge {...excludeMarginProps(badge)} />}
             </Flex>
             <Description description={description} />
           </FlexItem>

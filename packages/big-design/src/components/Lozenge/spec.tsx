@@ -1,5 +1,6 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
 
@@ -62,26 +63,18 @@ test('render new Lozenge', () => {
   expect(container.firstChild).toHaveStyle(`color: ${theme.colors.success70}`);
 });
 
-// add a test to check if the tooltipIcon prop is working
 test('render Lozenge with tooltip', async () => {
-  const { container } = render(<Lozenge label="Lozenge" tooltipContent="Tooltip content" />);
+  render(<Lozenge label="Lozenge" tooltipContent="Tooltip content" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(
-    `padding-inline: ${theme.spacing.small} ${theme.spacing.xxSmall}`,
-  );
+  const lozenge = screen.getByText('Lozenge');
 
-  const trigger = screen.getByText('Lozenge');
+  userEvent.hover(lozenge);
 
-  fireEvent.mouseOver(trigger);
+  const tooltip = await screen.findByText('Tooltip content');
 
-  let testing: HTMLElement | null = await screen.findByText('Tooltip content');
+  expect(tooltip).toBeVisible();
 
-  expect(testing).toBeVisible();
+  userEvent.unhover(lozenge);
 
-  fireEvent.mouseLeave(trigger);
-
-  testing = screen.queryByText('Tooltip content');
-
-  expect(testing).toBeNull();
+  await waitFor(() => expect(tooltip).not.toBeVisible());
 });

@@ -12,17 +12,17 @@ export interface LozengeProps extends MarginProps {
   variant?: 'alpha' | 'beta' | 'deprecated' | 'legacy' | 'new';
 }
 
-export const Lozenge: React.FC<LozengeProps> = (props) => {
+export const Lozenge: React.FC<LozengeProps> = ({ label, tooltipContent, ...props }) => {
   const LozengeElement = (
     <StyledLozenge {...props}>
-      {props.label}
-      {props.tooltipContent ? <InfoIcon aria-hidden="true" size="large" /> : null}
+      {label}
+      {tooltipContent ? <InfoIcon aria-hidden="true" size="large" /> : null}
     </StyledLozenge>
   );
 
-  return props.tooltipContent ? (
+  return tooltipContent ? (
     <Tooltip placement="auto" trigger={LozengeElement}>
-      {props.tooltipContent}
+      {tooltipContent}
     </Tooltip>
   ) : (
     LozengeElement
