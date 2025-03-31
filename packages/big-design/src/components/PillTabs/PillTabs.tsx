@@ -71,21 +71,21 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     }
   }, [items, parentRef, dropdownRef, pillsState]);
 
+  const dropdownItems = pillsState
+    .filter((stateObj) => !stateObj.isVisible)
+    .map((stateObj) => {
+      const item = items.find(({ title }) => title === stateObj.item.title);
+      const isActive = item ? activePills.includes(item.id) : false;
+
+      return {
+        content: stateObj.item.title,
+        onItemClick: () => onPillClick(stateObj.item.id),
+        hash: stateObj.item.title.toLowerCase(),
+        icon: isActive ? <CheckIcon /> : undefined,
+      };
+    });
+
   const renderedDropdown = useMemo(() => {
-    const dropdownItems = pillsState
-      .filter((stateObj) => !stateObj.isVisible)
-      .map((stateObj) => {
-        const item = items.find(({ title }) => title === stateObj.item.title);
-        const isActive = item ? activePills.includes(item.id) : false;
-
-        return {
-          content: stateObj.item.title,
-          onItemClick: () => onPillClick(stateObj.item.id),
-          hash: stateObj.item.title.toLowerCase(),
-          icon: isActive ? <CheckIcon /> : undefined,
-        };
-      });
-
     return (
       <StyledFlexItem
         data-testid="pilltabs-dropdown-toggle"
