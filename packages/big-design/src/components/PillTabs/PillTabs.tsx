@@ -128,9 +128,27 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     }
   }, [items, pillsState]);
 
-  const renderedPills = useMemo(
-    () =>
-      items.map((item, index) => {
+  useEffect(() => {
+    hideOverflowedPills();
+  }, [items, parentRef, pillsState, hideOverflowedPills]);
+
+  useWindowResizeListener(() => {
+    hideOverflowedPills();
+  });
+
+  if (items.length === 0) {
+    return null;
+  }
+
+  return (
+    <Flex
+      data-testid="pilltabs-wrapper"
+      flexDirection="row"
+      flexWrap="nowrap"
+      ref={parentRef}
+      role="list"
+    >
+      {items.map((item, index) => {
         const pill = pillsState[index];
 
         if (!pill) {
@@ -157,31 +175,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
             </StyledPillTab>
           </StyledFlexItem>
         );
-      }),
-    [items, pillsState, activePills, onPillClick],
-  );
-
-  useEffect(() => {
-    hideOverflowedPills();
-  }, [items, parentRef, pillsState, hideOverflowedPills]);
-
-  useWindowResizeListener(() => {
-    hideOverflowedPills();
-  });
-
-  if (items.length === 0) {
-    return null;
-  }
-
-  return (
-    <Flex
-      data-testid="pilltabs-wrapper"
-      flexDirection="row"
-      flexWrap="nowrap"
-      ref={parentRef}
-      role="list"
-    >
-      {renderedPills}
+      })}
       {renderedDropdown}
     </Flex>
   );
