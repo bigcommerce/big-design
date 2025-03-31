@@ -85,24 +85,6 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       };
     });
 
-  const renderedDropdown = useMemo(() => {
-    return (
-      <StyledFlexItem
-        data-testid="pilltabs-dropdown-toggle"
-        isVisible={isMenuVisible}
-        ref={dropdownRef}
-        role="listitem"
-      >
-        <Dropdown
-          items={dropdownItems}
-          toggle={
-            <Button iconOnly={<MoreHorizIcon title="add" />} type="button" variant="subtle" />
-          }
-        />
-      </StyledFlexItem>
-    );
-  }, [items, pillsState, isMenuVisible, dropdownRef, activePills, onPillClick]);
-
   useEffect(() => {
     const itemIds = items.map((item) => item.id);
     const stateIds = pillsState.map((stateItem) => stateItem.item.id);
@@ -176,7 +158,19 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
           </StyledFlexItem>
         );
       })}
-      {renderedDropdown}
+      <StyledFlexItem
+        data-testid="pilltabs-dropdown-toggle"
+        isVisible={isMenuVisible}
+        ref={dropdownRef}
+        role="listitem"
+      >
+        <Dropdown
+          items={dropdownItems}
+          toggle={
+            <Button iconOnly={<MoreHorizIcon title="add" />} type="button" variant="subtle" />
+          }
+        />
+      </StyledFlexItem>
     </Flex>
   );
 };
