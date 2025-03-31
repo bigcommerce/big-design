@@ -35,17 +35,13 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     setAvailableWidth(parentWidth - dropdownWidth);
   }, [parentRef, dropdownRef]);
 
-  const [pillsState, setPillsState] = useState(
-    items.map((item) => ({
-      isVisible: true,
-      item,
-      ref: createRef<HTMLDivElement>(),
-    })),
+  const itemsWithRefs = useMemo(
+    () => items.map((item) => ({ isVisible: true, item, ref: createRef<HTMLDivElement>() })),
+    [items],
   );
-  const isMenuVisible = pillsState.some(({ isVisible }) => !isVisible);
 
-  const hideOverflowedPills = useCallback(() => {
-    const [newState] = pillsState.reduce<[typeof pillsState, number]>(
+  const pillsState = useMemo(() => {
+    const [newState] = itemsWithRefs.reduce<[typeof itemsWithRefs, number]>(
       ([processedItems, widthBudget], currentItem) => {
         const currentItemWidth = currentItem.ref.current?.offsetWidth || 0;
         const updatedWidthBudget = widthBudget - currentItemWidth;
@@ -58,13 +54,10 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       [[], availableWidth],
     );
 
-    const visiblePills = pillsState.filter((stateObj) => stateObj.isVisible);
-    const newVisiblePills = newState.filter((stateObj) => stateObj.isVisible);
+    return newState;
+  }, [itemsWithRefs, availableWidth]);
 
-    if (visiblePills.length !== newVisiblePills.length) {
-      setPillsState(newState);
-    }
-  }, [items, availableWidth, pillsState]);
+  const isMenuVisible = pillsState.some(({ isVisible }) => !isVisible);
 
   const dropdownItems = pillsState
     .filter((stateObj) => !stateObj.isVisible)
@@ -80,40 +73,9 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       };
     });
 
-  useEffect(() => {
-    const itemIds = items.map((item) => item.id);
-    const stateIds = pillsState.map((stateItem) => stateItem.item.id);
+  useEffect(updateAvailableWidth, [updateAvailableWidth]);
 
-    // The item ids and their order must match exactly with the internal state, if not, the state needs to be synced up
-    if (itemIds.join() !== stateIds.join()) {
-      const newState = items.map((item) => {
-        const oldItem = pillsState.find((stateItem) => stateItem.item === item);
-
-        if (oldItem) {
-          return oldItem;
-        }
-
-        return {
-          // hideOverflownPills will correct this field if it needs correction
-          isVisible: true,
-          item,
-          ref: createRef<HTMLDivElement>(),
-        };
-      });
-
-      setPillsState(newState);
-    }
-  }, [items, pillsState]);
-
-  useEffect(() => {
-    updateAvailableWidth();
-    hideOverflowedPills();
-  }, [items, parentRef, pillsState, hideOverflowedPills, updateAvailableWidth]);
-
-  useWindowResizeListener(() => {
-    updateAvailableWidth();
-    hideOverflowedPills();
-  });
+  useWindowResizeListener(updateAvailableWidth);
 
   if (items.length === 0) {
     return null;
