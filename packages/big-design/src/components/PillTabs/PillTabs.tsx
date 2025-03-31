@@ -169,7 +169,11 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     hideOverflowedPills();
   });
 
-  return items.length > 0 ? (
+  if (items.length === 0) {
+    return null;
+  }
+
+  return (
     <Flex
       data-testid="pilltabs-wrapper"
       flexDirection="row"
@@ -180,7 +184,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       {renderedPills}
       {renderedDropdown}
     </Flex>
-  ) : null;
+  );
 };
 
 PillTabs.displayName = 'Pill Tabs';
