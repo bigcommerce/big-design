@@ -39,29 +39,20 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       return;
     }
 
-    let remainingWidth = parentWidth - dropdownWidth;
+    const remainingWidth = parentWidth - dropdownWidth;
 
-    const newState = pillsState.map((stateObj) => {
-      const pillWidth = stateObj.ref.current?.offsetWidth;
+    const [newState] = pillsState.reduce<[typeof pillsState, number]>(
+      ([processedItems, widthBudget], currentItem) => {
+        const currentItemWidth = currentItem.ref.current?.offsetWidth || 0;
+        const updatedWidthBudget = widthBudget - currentItemWidth;
 
-      if (!pillWidth) {
-        return stateObj;
-      }
-
-      if (remainingWidth - pillWidth >= 0) {
-        remainingWidth -= pillWidth;
-
-        return {
-          ...stateObj,
-          isVisible: true,
-        };
-      }
-
-      return {
-        ...stateObj,
-        isVisible: false,
-      };
-    });
+        return [
+          [...processedItems, { ...currentItem, isVisible: updatedWidthBudget >= 0 }],
+          updatedWidthBudget,
+        ];
+      },
+      [[], remainingWidth],
+    );
 
     const visiblePills = pillsState.filter((stateObj) => stateObj.isVisible);
     const newVisiblePills = newState.filter((stateObj) => stateObj.isVisible);
