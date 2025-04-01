@@ -19,12 +19,12 @@ export interface PillTabsProps {
   onPillClick: (itemId: string) => void;
 }
 
-export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
+const useAvailableWidth = () => {
   const parentRef = createRef<HTMLDivElement>();
   const dropdownRef = createRef<HTMLDivElement>();
 
-  const [availableWidth, setAvailableWidth] = useState<number>(Infinity);
-  const updateAvailableWidth = useCallback(() => {
+  const [value, setValue] = useState<number>(Infinity);
+  const update = useCallback(() => {
     const parentWidth = parentRef.current?.offsetWidth;
     const dropdownWidth = dropdownRef.current?.offsetWidth;
 
@@ -32,8 +32,21 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       return;
     }
 
-    setAvailableWidth(parentWidth - dropdownWidth);
+    setValue(parentWidth - dropdownWidth);
   }, [parentRef, dropdownRef]);
+
+  useEffect(update, [update]);
+
+  useWindowResizeListener(update);
+
+  return useMemo(
+    () => ({ refs: { parent: parentRef, dropdown: dropdownRef }, value }),
+    [value, parentRef, dropdownRef],
+  );
+};
+
+export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
+  const availableWidth = useAvailableWidth();
 
   const itemsWithRefs = useMemo(
     () => items.map((item) => ({ ...item, isVisible: true, ref: createRef<HTMLDivElement>() })),
@@ -51,7 +64,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
           updatedWidthBudget,
         ];
       },
-      [[], availableWidth],
+      [[], availableWidth.value],
     );
 
     return newState;
@@ -68,10 +81,6 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       icon: activePills.includes(id) ? <CheckIcon /> : undefined,
     }));
 
-  useEffect(updateAvailableWidth, [updateAvailableWidth]);
-
-  useWindowResizeListener(updateAvailableWidth);
-
   if (pills.length === 0) {
     return null;
   }
@@ -81,7 +90,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       data-testid="pilltabs-wrapper"
       flexDirection="row"
       flexWrap="nowrap"
-      ref={parentRef}
+      ref={availableWidth.refs.parent}
       role="list"
     >
       {pills.map(({ id, isVisible, ref, title }, index) => (
@@ -107,7 +116,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       <StyledFlexItem
         data-testid="pilltabs-dropdown-toggle"
         isVisible={isMenuVisible}
-        ref={dropdownRef}
+        ref={availableWidth.refs.dropdown}
         role="listitem"
       >
         <Dropdown
