@@ -43,8 +43,6 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     { pills: [], widthBudget: availableWidth.value },
   );
 
-  const isMenuVisible = pills.some(({ isVisible }) => !isVisible);
-
   const dropdownItems = pills
     .filter(({ isVisible }) => !isVisible)
     .map(({ title, id }) => ({
@@ -88,7 +86,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       ))}
       <StyledFlexItem
         data-testid="pilltabs-dropdown-toggle"
-        isVisible={isMenuVisible}
+        isVisible={pills.some(({ isVisible }) => !isVisible)}
         ref={availableWidth.refs.dropdown}
         role="listitem"
       >
