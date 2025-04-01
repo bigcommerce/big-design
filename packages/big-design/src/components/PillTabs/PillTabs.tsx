@@ -40,7 +40,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     [items],
   );
 
-  const pillsState = useMemo(() => {
+  const pills = useMemo(() => {
     const [newState] = itemsWithRefs.reduce<[typeof itemsWithRefs, number]>(
       ([processedItems, widthBudget], currentItem) => {
         const currentItemWidth = currentItem.ref.current?.offsetWidth || 0;
@@ -57,9 +57,9 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     return newState;
   }, [itemsWithRefs, availableWidth]);
 
-  const isMenuVisible = pillsState.some(({ isVisible }) => !isVisible);
+  const isMenuVisible = pills.some(({ isVisible }) => !isVisible);
 
-  const dropdownItems = pillsState
+  const dropdownItems = pills
     .filter((stateObj) => !stateObj.isVisible)
     .map((stateObj) => {
       const item = items.find(({ title }) => title === stateObj.item.title);
@@ -90,7 +90,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       role="list"
     >
       {items.map((item, index) => {
-        const pill = pillsState[index];
+        const pill = pills[index];
 
         if (!pill) {
           return;
