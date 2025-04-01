@@ -60,13 +60,13 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
   const isMenuVisible = pills.some(({ isVisible }) => !isVisible);
 
   const dropdownItems = pills
-    .filter((pill) => !pill.isVisible)
-    .map((pill) => {
+    .filter(({ isVisible }) => !isVisible)
+    .map(({ title, id }) => {
       return {
-        content: pill.title,
-        onItemClick: () => onPillClick(pill.id),
-        hash: pill.title.toLowerCase(),
-        icon: activePills.includes(pill.id) ? <CheckIcon /> : undefined,
+        content: title,
+        onItemClick: () => onPillClick(id),
+        hash: title.toLowerCase(),
+        icon: activePills.includes(id) ? <CheckIcon /> : undefined,
       };
     });
 
@@ -86,24 +86,24 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       ref={parentRef}
       role="list"
     >
-      {pills.map((pill, index) => {
+      {pills.map(({ id, isVisible, ref, title }, index) => {
         return (
           <StyledFlexItem
             data-testid={`pilltabs-pill-${index}`}
-            isVisible={pill.isVisible}
+            isVisible={isVisible}
             key={index}
-            ref={pill.ref}
+            ref={ref}
             role="listitem"
           >
             <StyledPillTab
-              disabled={!pill.isVisible}
-              isActive={activePills.includes(pill.id)}
+              disabled={!isVisible}
+              isActive={activePills.includes(id)}
               marginRight="xSmall"
-              onClick={() => onPillClick(pill.id)}
+              onClick={() => onPillClick(id)}
               type="button"
               variant="subtle"
             >
-              {pill.title}
+              {title}
             </StyledPillTab>
           </StyledFlexItem>
         );
