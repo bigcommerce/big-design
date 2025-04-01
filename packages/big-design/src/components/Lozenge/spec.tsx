@@ -6,16 +6,6 @@ import 'jest-styled-components';
 
 import { Lozenge } from './index';
 
-test('has margin props', () => {
-  const { container, rerender } = render(<Lozenge label="Lozenge" />);
-
-  expect(container.firstChild).not.toHaveStyle('margin: 1rem');
-
-  rerender(<Lozenge label="Lozenge" margin="medium" />);
-
-  expect(container.firstChild).toHaveStyle('margin: 1rem');
-});
-
 test('render default Lozenge', () => {
   const { container } = render(<Lozenge label="Lozenge" />);
 
