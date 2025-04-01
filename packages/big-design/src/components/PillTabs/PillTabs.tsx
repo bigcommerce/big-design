@@ -36,7 +36,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
   }, [parentRef, dropdownRef]);
 
   const itemsWithRefs = useMemo(
-    () => items.map((item) => ({ isVisible: true, item, ref: createRef<HTMLDivElement>() })),
+    () => items.map((item) => ({ ...item, isVisible: true, ref: createRef<HTMLDivElement>() })),
     [items],
   );
 
@@ -62,13 +62,13 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
   const dropdownItems = pills
     .filter((stateObj) => !stateObj.isVisible)
     .map((stateObj) => {
-      const item = items.find(({ title }) => title === stateObj.item.title);
+      const item = items.find(({ title }) => title === stateObj.title);
       const isActive = item ? activePills.includes(item.id) : false;
 
       return {
-        content: stateObj.item.title,
-        onItemClick: () => onPillClick(stateObj.item.id),
-        hash: stateObj.item.title.toLowerCase(),
+        content: stateObj.title,
+        onItemClick: () => onPillClick(stateObj.id),
+        hash: stateObj.title.toLowerCase(),
         icon: isActive ? <CheckIcon /> : undefined,
       };
     });
