@@ -1,29 +1,28 @@
-import { createRef, useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useWindowResizeListener } from '../../hooks';
 
-export const useAvailableWidth = () => {
-  const parentRef = createRef<HTMLDivElement>();
-  const dropdownRef = createRef<HTMLDivElement>();
+interface Refs {
+  parent: React.RefObject<HTMLElement>;
+  dropdown: React.RefObject<HTMLElement>;
+}
 
+export const useAvailableWidth = ({ parent, dropdown }: Refs) => {
   const [value, setValue] = useState<number>(Infinity);
   const update = useCallback(() => {
-    const parentWidth = parentRef.current?.offsetWidth;
-    const dropdownWidth = dropdownRef.current?.offsetWidth;
+    const parentWidth = parent.current?.offsetWidth;
+    const dropdownWidth = dropdown.current?.offsetWidth;
 
     if (!parentWidth || !dropdownWidth) {
       return;
     }
 
     setValue(parentWidth - dropdownWidth);
-  }, [parentRef, dropdownRef]);
+  }, [parent, dropdown]);
 
   useEffect(update, [update]);
 
   useWindowResizeListener(update);
 
-  return useMemo(
-    () => ({ refs: { parent: parentRef, dropdown: dropdownRef }, value }),
-    [value, parentRef, dropdownRef],
-  );
+  return value;
 };
