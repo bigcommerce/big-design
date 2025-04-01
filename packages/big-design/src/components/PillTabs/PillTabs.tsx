@@ -1,12 +1,12 @@
 import { CheckIcon, MoreHorizIcon } from '@bigcommerce/big-design-icons';
-import React, { createRef, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { createRef, useMemo } from 'react';
 
-import { useWindowResizeListener } from '../../hooks';
 import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
 import { Flex } from '../Flex';
 
 import { StyledFlexItem, StyledPillTab } from './styled';
+import { useAvailableWidth } from './useAvailableWidth';
 
 export interface PillTabItem {
   id: string;
@@ -18,32 +18,6 @@ export interface PillTabsProps {
   activePills: string[];
   onPillClick: (itemId: string) => void;
 }
-
-const useAvailableWidth = () => {
-  const parentRef = createRef<HTMLDivElement>();
-  const dropdownRef = createRef<HTMLDivElement>();
-
-  const [value, setValue] = useState<number>(Infinity);
-  const update = useCallback(() => {
-    const parentWidth = parentRef.current?.offsetWidth;
-    const dropdownWidth = dropdownRef.current?.offsetWidth;
-
-    if (!parentWidth || !dropdownWidth) {
-      return;
-    }
-
-    setValue(parentWidth - dropdownWidth);
-  }, [parentRef, dropdownRef]);
-
-  useEffect(update, [update]);
-
-  useWindowResizeListener(update);
-
-  return useMemo(
-    () => ({ refs: { parent: parentRef, dropdown: dropdownRef }, value }),
-    [value, parentRef, dropdownRef],
-  );
-};
 
 export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
   const availableWidth = useAvailableWidth();
