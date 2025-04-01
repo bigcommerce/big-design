@@ -1986,7 +1986,7 @@ exports[`renders all the filters if they fit 1`] = `
       </button>
       <div
         class="c9"
-        style="position: absolute; left: 0px; top: 0px;"
+        style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 4px);"
       >
         <div
           class="c10"
