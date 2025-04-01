@@ -60,16 +60,13 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
   const isMenuVisible = pills.some(({ isVisible }) => !isVisible);
 
   const dropdownItems = pills
-    .filter((stateObj) => !stateObj.isVisible)
-    .map((stateObj) => {
-      const item = items.find(({ title }) => title === stateObj.title);
-      const isActive = item ? activePills.includes(item.id) : false;
-
+    .filter((pill) => !pill.isVisible)
+    .map((pill) => {
       return {
-        content: stateObj.title,
-        onItemClick: () => onPillClick(stateObj.id),
-        hash: stateObj.title.toLowerCase(),
-        icon: isActive ? <CheckIcon /> : undefined,
+        content: pill.title,
+        onItemClick: () => onPillClick(pill.id),
+        hash: pill.title.toLowerCase(),
+        icon: activePills.includes(pill.id) ? <CheckIcon /> : undefined,
       };
     });
 
@@ -77,7 +74,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
 
   useWindowResizeListener(updateAvailableWidth);
 
-  if (items.length === 0) {
+  if (pills.length === 0) {
     return null;
   }
 
@@ -89,13 +86,7 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       ref={parentRef}
       role="list"
     >
-      {items.map((item, index) => {
-        const pill = pills[index];
-
-        if (!pill) {
-          return;
-        }
-
+      {pills.map((pill, index) => {
         return (
           <StyledFlexItem
             data-testid={`pilltabs-pill-${index}`}
@@ -106,13 +97,13 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
           >
             <StyledPillTab
               disabled={!pill.isVisible}
-              isActive={activePills.includes(item.id)}
+              isActive={activePills.includes(pill.id)}
               marginRight="xSmall"
-              onClick={() => onPillClick(item.id)}
+              onClick={() => onPillClick(pill.id)}
               type="button"
               variant="subtle"
             >
-              {item.title}
+              {pill.title}
             </StyledPillTab>
           </StyledFlexItem>
         );
