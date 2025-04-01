@@ -61,14 +61,12 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
 
   const dropdownItems = pills
     .filter(({ isVisible }) => !isVisible)
-    .map(({ title, id }) => {
-      return {
-        content: title,
-        onItemClick: () => onPillClick(id),
-        hash: title.toLowerCase(),
-        icon: activePills.includes(id) ? <CheckIcon /> : undefined,
-      };
-    });
+    .map(({ title, id }) => ({
+      content: title,
+      onItemClick: () => onPillClick(id),
+      hash: title.toLowerCase(),
+      icon: activePills.includes(id) ? <CheckIcon /> : undefined,
+    }));
 
   useEffect(updateAvailableWidth, [updateAvailableWidth]);
 
@@ -86,28 +84,26 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       ref={parentRef}
       role="list"
     >
-      {pills.map(({ id, isVisible, ref, title }, index) => {
-        return (
-          <StyledFlexItem
-            data-testid={`pilltabs-pill-${index}`}
-            isVisible={isVisible}
-            key={index}
-            ref={ref}
-            role="listitem"
+      {pills.map(({ id, isVisible, ref, title }, index) => (
+        <StyledFlexItem
+          data-testid={`pilltabs-pill-${index}`}
+          isVisible={isVisible}
+          key={index}
+          ref={ref}
+          role="listitem"
+        >
+          <StyledPillTab
+            disabled={!isVisible}
+            isActive={activePills.includes(id)}
+            marginRight="xSmall"
+            onClick={() => onPillClick(id)}
+            type="button"
+            variant="subtle"
           >
-            <StyledPillTab
-              disabled={!isVisible}
-              isActive={activePills.includes(id)}
-              marginRight="xSmall"
-              onClick={() => onPillClick(id)}
-              type="button"
-              variant="subtle"
-            >
-              {title}
-            </StyledPillTab>
-          </StyledFlexItem>
-        );
-      })}
+            {title}
+          </StyledPillTab>
+        </StyledFlexItem>
+      ))}
       <StyledFlexItem
         data-testid="pilltabs-dropdown-toggle"
         isVisible={isMenuVisible}
