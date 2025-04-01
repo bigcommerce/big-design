@@ -13,6 +13,11 @@ export interface PillTabItem {
   title: string;
 }
 
+interface Pill extends PillTabItem {
+  isVisible: boolean;
+  ref: React.RefObject<HTMLDivElement>;
+}
+
 export interface PillTabsProps {
   items: PillTabItem[];
   activePills: string[];
@@ -27,22 +32,16 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     [items],
   );
 
-  const pills = useMemo(() => {
-    const [newState] = itemsWithRefs.reduce<[typeof itemsWithRefs, number]>(
-      ([processedItems, widthBudget], currentItem) => {
-        const currentItemWidth = currentItem.ref.current?.offsetWidth || 0;
-        const updatedWidthBudget = widthBudget - currentItemWidth;
+  const { pills } = itemsWithRefs.reduce<{ pills: Pill[]; widthBudget: number }>(
+    (acc, pill) => {
+      const pillWidth = pill.ref.current?.offsetWidth || 0;
+      const widthBudget = acc.widthBudget - pillWidth;
+      const updatedPill = { ...pill, isVisible: widthBudget >= 0 };
 
-        return [
-          [...processedItems, { ...currentItem, isVisible: updatedWidthBudget >= 0 }],
-          updatedWidthBudget,
-        ];
-      },
-      [[], availableWidth.value],
-    );
-
-    return newState;
-  }, [itemsWithRefs, availableWidth]);
+      return { pills: [...acc.pills, updatedPill], widthBudget };
+    },
+    { pills: [], widthBudget: availableWidth.value },
+  );
 
   const isMenuVisible = pills.some(({ isVisible }) => !isVisible);
 
