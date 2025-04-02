@@ -73,8 +73,9 @@ const HeaderPage = () => {
               text: 'Back to Dashboard',
               href: '/dashboard',
             }}
-            badge={{ label: 'New', variant: 'success' }}
+            badge={{ label: 'Active', variant: 'success' }}
             description="This is a description of the page content."
+            lozenge={{ variant: 'beta', label: 'Beta' }}
             title="Page Title"
           />
           {/* jsx-to-string:end */}
@@ -125,11 +126,15 @@ const HeaderPage = () => {
             'Don’t overload the header with too many actions or content.',
             'Don’t use more than one primary action button.',
             'Avoid unrelated or non-contextual content in the header.',
+            'Don’t use badges to showcase feature lifecycle.',
+            'Don’t use lozenges to showcase system status.',
           ]}
           recommended={[
             'Use the header to provide a clear overview of the page’s purpose.',
             'Limit the number of actions to three.',
             'Utilize the back link option for easy navigation.',
+            'Use badges to indicate system status.',
+            'Use lozenges to indicate feature lifecycle.',
           ]}
         />
       </Panel>

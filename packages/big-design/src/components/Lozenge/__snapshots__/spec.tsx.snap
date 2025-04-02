@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render alpha Lozenge 1`] = `
+.c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  border-radius: 1rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 0.875rem;
+  gap: 0.25rem;
+  line-height: 1.25rem;
+  text-align: center;
+  padding-block: 0.25rem;
+  vertical-align: middle;
+  padding-inline: 0.75rem;
+  white-space: nowrap;
+  background-color: #FFF0BF;
+  color: #313440;
+}
+
+<div
+  class="c0 c1"
+>
+  Alpha
+</div>
+`;
+
+exports[`render beta Lozenge 1`] = `
+.c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  border-radius: 1rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 0.875rem;
+  gap: 0.25rem;
+  line-height: 1.25rem;
+  text-align: center;
+  padding-block: 0.25rem;
+  vertical-align: middle;
+  padding-inline: 0.75rem;
+  white-space: nowrap;
+  background-color: #DBE3FE;
+  color: #2852EB;
+}
+
+<div
+  class="c0 c1"
+>
+  Beta
+</div>
+`;
+
+exports[`render default Lozenge 1`] = `
+.c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  border-radius: 1rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 0.875rem;
+  gap: 0.25rem;
+  line-height: 1.25rem;
+  text-align: center;
+  padding-block: 0.25rem;
+  vertical-align: middle;
+  padding-inline: 0.75rem;
+  white-space: nowrap;
+  background-color: #D3F5D9;
+  color: #004D0D;
+}
+
+<div
+  class="c0 c1"
+>
+  Lozenge
+</div>
+`;
+
+exports[`render deprecated Lozenge 1`] = `
+.c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  border-radius: 1rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 0.875rem;
+  gap: 0.25rem;
+  line-height: 1.25rem;
+  text-align: center;
+  padding-block: 0.25rem;
+  vertical-align: middle;
+  padding-inline: 0.75rem;
+  white-space: nowrap;
+  background-color: #FEDBDE;
+  color: #80000B;
+}
+
+<div
+  class="c0 c1"
+>
+  Deprecated
+</div>
+`;
+
+exports[`render legacy Lozenge 1`] = `
+.c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  border-radius: 1rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 0.875rem;
+  gap: 0.25rem;
+  line-height: 1.25rem;
+  text-align: center;
+  padding-block: 0.25rem;
+  vertical-align: middle;
+  padding-inline: 0.75rem;
+  white-space: nowrap;
+  background-color: #D9DCE9;
+  color: #313440;
+}
+
+<div
+  class="c0 c1"
+>
+  Legacy
+</div>
+`;
+
+exports[`render new Lozenge 1`] = `
+.c0 {
+  box-sizing: border-box;
+}
+
+.c1 {
+  border-radius: 1rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 0.875rem;
+  gap: 0.25rem;
+  line-height: 1.25rem;
+  text-align: center;
+  padding-block: 0.25rem;
+  vertical-align: middle;
+  padding-inline: 0.75rem;
+  white-space: nowrap;
+  background-color: #D3F5D9;
+  color: #004D0D;
+}
+
+<div
+  class="c0 c1"
+>
+  New
+</div>
+`;
