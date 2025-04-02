@@ -483,20 +483,25 @@ test('maintains filtered state when pagination is enabled', async () => {
   const { findByText, findAllByRole } = render(getSimpleTable({ filters, pagination: true }));
 
   let rows = await findAllByRole('row');
+
   expect(rows).toHaveLength(26);
 
   // Click on filter pill
   const filterPill = await findByText('Low stock');
+
   fireEvent.click(filterPill);
 
   rows = await findAllByRole('row');
+
   expect(rows).toHaveLength(5);
 
   const itemsPerPageButton = await findByText('1 - 4 of 4');
+
   fireEvent.click(itemsPerPageButton);
   await userEvent.keyboard('{ArrowDown}{Enter}');
 
   rows = await findAllByRole('row');
+
   expect(rows).toHaveLength(5);
 });
 
