@@ -20,6 +20,7 @@ export * from './Grid';
 export * from './InlineMessage';
 export * from './Input';
 export * from './Link';
+export * from './Lozenge';
 export * from './Message';
 export * from './Modal';
 export * from './MultiSelect';

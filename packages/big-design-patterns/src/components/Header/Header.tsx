@@ -9,6 +9,8 @@ import {
   Flex,
   FlexItem,
   H1,
+  Lozenge,
+  LozengeProps,
   Text,
 } from '@bigcommerce/big-design';
 import { ArrowBackIcon } from '@bigcommerce/big-design-icons';
@@ -120,11 +122,12 @@ export interface HeaderProps {
   badge?: BadgeProps;
   description?: Description;
   icon?: ReactNode;
+  lozenge?: LozengeProps;
   title: string;
 }
 
 export const Header = memo(
-  ({ actions, backLink, badge, description, icon = null, title }: HeaderProps) => {
+  ({ actions, backLink, badge, description, icon = null, lozenge, title }: HeaderProps) => {
     return (
       <Flex as="header" flexDirection="row" flexWrap="wrap">
         {backLink && (
@@ -144,7 +147,8 @@ export const Header = memo(
             <Flex alignItems="center" flexDirection="row" flexGap="1rem" marginBottom="xxSmall">
               {icon}
               <H1 marginBottom="none">{title}</H1>
-              {badge ? <Badge {...excludeMarginProps(badge)} /> : null}
+              {lozenge && <Lozenge {...lozenge} />}
+              {badge && <Badge {...excludeMarginProps(badge)} />}
             </Flex>
             <Description description={description} />
           </FlexItem>
