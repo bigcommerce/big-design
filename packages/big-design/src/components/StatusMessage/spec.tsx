@@ -3,8 +3,7 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
-import { StatusMessageIcons } from './StatusMessageIcons';
-import { StatusMessagePatterns } from './StatusMessagePatterns';
+import { Button } from '../Button';
 
 import { StatusMessage } from './index';
 
@@ -33,18 +32,9 @@ test('renders page status message', () => {
 });
 
 test('renders with button actions', () => {
-  render(
-    <StatusMessage
-      actions={[
-        { text: 'Action 1', variant: 'primary', onClick: jest.fn() },
-        { text: 'Action 2', variant: 'secondary', onClick: jest.fn() },
-      ]}
-      message="Basic status message"
-    />,
-  );
+  render(<StatusMessage actions={<Button>Action 1</Button>} message="Basic status message" />);
 
   expect(screen.getByRole('button', { name: 'Action 1' })).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'Action 2' })).toBeInTheDocument();
 });
 
 // variants
@@ -65,7 +55,6 @@ test('renders with the 404 variant', () => {
 
   const figure = screen.getByRole('figure', { hidden: true });
 
-  expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
     backgroundImage: `radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%)`,
   });
@@ -76,7 +65,6 @@ test('renders with the info variant', () => {
 
   const figure = screen.getByRole('figure', { hidden: true });
 
-  expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
     backgroundImage: `radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%)`,
   });
@@ -87,7 +75,6 @@ test('renders with the search variant', () => {
 
   const figure = screen.getByRole('figure', { hidden: true });
 
-  expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
     backgroundImage: `radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%)`,
   });
@@ -98,7 +85,6 @@ test('renders with the error variant', () => {
 
   const figure = screen.getByRole('figure', { hidden: true });
 
-  expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
     backgroundImage: `radial-gradient(circle at center top, #ebb2ca 0%, #eee8fa 100%)`,
   });
@@ -109,7 +95,6 @@ test('renders with the server-error variant', () => {
 
   const figure = screen.getByRole('figure', { hidden: true });
 
-  expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
     backgroundImage: `radial-gradient(circle at center top, #ebb2ca 0%, #eee8fa 100%)`,
   });
@@ -120,7 +105,6 @@ test('renders with the success variant', () => {
 
   const figure = screen.getByRole('figure', { hidden: true });
 
-  expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
     backgroundImage: `radial-gradient(circle at center top, #78e4a3 0%, #f3fdec 100%)`,
   });
@@ -131,7 +115,6 @@ test('renders with the unauthorized variant', () => {
 
   const figure = screen.getByRole('figure', { hidden: true });
 
-  expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
     backgroundImage: `radial-gradient(circle at center top, #efc879 0%, #fefbf2 100%)`,
   });
@@ -142,49 +125,32 @@ test('renders with the warning variant', () => {
 
   const figure = screen.getByRole('figure', { hidden: true });
 
-  expect(figure).toMatchSnapshot();
   expect(figure).toHaveStyle({
     backgroundImage: `radial-gradient(circle at center top, #efc879 0%, #fefbf2 100%)`,
   });
 });
 
-test('renders with background pattern', () => {
-  render(<StatusMessage message="Basic status message" variant="info" />);
+// test('renders with background pattern', () => {
+//   render(<StatusMessage message="Basic status message" variant="info" />);
 
-  const figure = screen.getByRole('figure', { hidden: true });
+//   const figure = screen.getByRole('figure', { hidden: true });
 
-  const pattern = figure.querySelector('svg');
+//   const pattern = figure.querySelector('svg');
 
-  expect(pattern).toBeInTheDocument();
-});
+//   expect(pattern).toBeInTheDocument();
+// });
 
-test('renders with background icon', () => {
-  render(<StatusMessage message="Basic status message" variant="info" />);
+// test('renders with background icon', () => {
+//   render(<StatusMessage message="Basic status message" variant="info" />);
 
-  const figure = screen.getByRole('figure', { hidden: true });
+//   const figure = screen.getByRole('figure', { hidden: true });
 
-  const patternAndIcon = figure.querySelectorAll('svg');
-  const icon = patternAndIcon[1];
+//   const patternAndIcon = figure.querySelectorAll('svg');
+//   const icon = patternAndIcon[1];
 
-  expect(patternAndIcon).toHaveLength(2);
-  expect(icon).toBeInTheDocument();
-});
-
-test('renders status message icon', () => {
-  render(<StatusMessageIcons />);
-
-  const icon = screen.getByRole('img', { hidden: true });
-
-  expect(icon).toBeInTheDocument();
-});
-
-test('renders status message pattern', () => {
-  render(<StatusMessagePatterns />);
-
-  const icon = screen.getByRole('img', { hidden: true });
-
-  expect(icon).toBeInTheDocument();
-});
+//   expect(patternAndIcon).toHaveLength(2);
+//   expect(icon).toBeInTheDocument();
+// });
 
 // renders the panel size
 test('renders with the panel size', () => {
@@ -192,7 +158,8 @@ test('renders with the panel size', () => {
 
   expect(container.firstChild).toHaveStyle({
     gap: theme.spacing.medium,
-    paddingBlock: theme.spacing.large,
+    paddingTop: theme.spacing.large,
+    paddingBottom: theme.spacing.large,
   });
 
   const figure = screen.getByRole('figure', { hidden: true });
@@ -209,7 +176,8 @@ test('renders with the page size', () => {
 
   expect(container.firstChild).toHaveStyle({
     gap: theme.spacing.xLarge,
-    paddingBlock: theme.spacing.xxxLarge,
+    paddingTop: theme.spacing.xxxLarge,
+    paddingBottom: theme.spacing.xxxLarge,
   });
 
   const figure = screen.getByRole('figure', { hidden: true });

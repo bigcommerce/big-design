@@ -1,74 +1,62 @@
-import React, { memo } from 'react';
+import { theme } from '@bigcommerce/big-design-theme';
+import React from 'react';
 
-import { Button, ButtonProps } from '../Button';
-import { Flex, FlexItem } from '../Flex';
+import { Flex } from '../Flex';
 import { H1, H4, Text } from '../Typography';
 
-import { StatusMessageIcons } from './StatusMessageIcons';
-import { StatusMessagePatterns } from './StatusMessagePatterns';
-import { StatusMessageIllustration, StyledStatusMessage } from './styled';
+import { StyledStatusIllustration, StyledStatusMessage } from './styled';
 
-export interface StatusMessageButtonProps extends Omit<ButtonProps, 'children'> {
-  text: string;
-}
+export type StatusMessageVariantType =
+  | '404'
+  | 'info'
+  | 'error'
+  | 'search'
+  | 'server-error'
+  | 'success'
+  | 'unauthorized'
+  | 'warning';
 
 export interface StatusMessageProps {
-  actions?: StatusMessageButtonProps[];
+  actions?: React.ReactNode;
   heading?: string;
   message: string;
   size?: 'page' | 'panel';
-  variant?:
-    | '404'
-    | 'info'
-    | 'error'
-    | 'search'
-    | 'server-error'
-    | 'success'
-    | 'unauthorized'
-    | 'warning';
+  variant?: StatusMessageVariantType;
 }
 
-export const StatusMessage: React.FC<StatusMessageProps> = memo(
-  ({ actions, heading, message, size = 'panel', variant = 'info' }) => {
-    return (
-      <StyledStatusMessage size={size} variant={variant}>
-        <StatusMessageIllustration aria-hidden="true" size={size} variant={variant}>
-          <StatusMessagePatterns variant={variant} />
-          <StatusMessageIcons variant={variant} />
-        </StatusMessageIllustration>
-        <Flex flexDirection="column">
-          {heading ? (
-            size === 'page' ? (
-              <H1 margin="none" marginBottom="small">
-                {heading}
-              </H1>
-            ) : (
-              <H4 margin="none" marginBottom="xSmall">
-                {heading}
-              </H4>
-            )
-          ) : null}
-          <Text margin="none">{message}</Text>
-        </Flex>
+export const StatusMessage: React.FC<StatusMessageProps> = ({
+  actions,
+  heading,
+  message,
+  size = 'panel',
+  variant = 'info',
+}) => {
+  const Header = size === 'page' ? H1 : H4;
+  const hasHeading = heading !== undefined && heading.trim().length > 0;
 
-        {actions ? (
-          <Flex
-            flexDirection={{ mobile: 'column', tablet: 'row' }}
-            flexGap="1rem"
-            paddingTop="small"
-          >
-            {actions.map((action, index) => (
-              <FlexItem key={index}>
-                <Button {...action} mobileWidth="auto">
-                  {action.text}
-                </Button>
-              </FlexItem>
-            ))}
-          </Flex>
-        ) : null}
+  const flexGapSize = size === 'page' ? theme.spacing.xLarge : theme.spacing.medium;
+  const paddingVertical = size === 'page' ? 'xxxLarge' : 'large';
+
+  return (
+    <Flex
+      alignItems="center"
+      flexDirection="column"
+      flexGap={flexGapSize}
+      justifyContent="center"
+      paddingVertical={paddingVertical}
+    >
+      <StyledStatusIllustration aria-hidden="true" size={size} variant={variant} />
+      <StyledStatusMessage>
+        {hasHeading && (
+          <Header margin="none" marginBottom="small">
+            {heading}
+          </Header>
+        )}
+        <Text margin="none">{message}</Text>
       </StyledStatusMessage>
-    );
-  },
-);
+      {actions}
+    </Flex>
+  );
+};
 
 StatusMessage.displayName = 'StatusMessage';
