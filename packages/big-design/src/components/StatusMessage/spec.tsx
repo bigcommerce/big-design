@@ -130,28 +130,6 @@ test('renders with the warning variant', () => {
   });
 });
 
-// test('renders with background pattern', () => {
-//   render(<StatusMessage message="Basic status message" variant="info" />);
-
-//   const figure = screen.getByRole('figure', { hidden: true });
-
-//   const pattern = figure.querySelector('svg');
-
-//   expect(pattern).toBeInTheDocument();
-// });
-
-// test('renders with background icon', () => {
-//   render(<StatusMessage message="Basic status message" variant="info" />);
-
-//   const figure = screen.getByRole('figure', { hidden: true });
-
-//   const patternAndIcon = figure.querySelectorAll('svg');
-//   const icon = patternAndIcon[1];
-
-//   expect(patternAndIcon).toHaveLength(2);
-//   expect(icon).toBeInTheDocument();
-// });
-
 // renders the panel size
 test('renders with the panel size', () => {
   const { container } = render(<StatusMessage message="Basic status message" size="panel" />);
