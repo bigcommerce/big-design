@@ -2,7 +2,6 @@ import { Placement } from '@popperjs/core';
 import React, { ComponentPropsWithoutRef, RefObject } from 'react';
 
 import { InputProps } from '../Input';
-import { InputLocalization } from '../Input/Input';
 
 interface BaseSelect extends Omit<ComponentPropsWithoutRef<'input'>, 'children' | 'value'> {
   action?: SelectAction;
@@ -15,7 +14,6 @@ interface BaseSelect extends Omit<ComponentPropsWithoutRef<'input'>, 'children' 
   inputRef?: RefObject<HTMLInputElement> | React.Ref<HTMLInputElement>;
   label?: React.ReactChild;
   labelId?: string;
-  localization?: InputLocalization;
   maxHeight?: number;
   name?: string;
   placement?: Placement;

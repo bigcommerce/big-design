@@ -1,14 +1,13 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import styled, { DefaultTheme, StyledComponent } from 'styled-components';
 
 import { StyleableH4 } from '../../Typography/private';
 import { HeadingProps } from '../../Typography/types';
 
-import { type FormControlLabelProps, type LabelLocalization } from './Label';
+import { type FormControlLabelProps } from './Label';
 
 interface StyledLabelArgument extends Omit<FormControlLabelProps, 'localization'> {
   theme: DefaultTheme;
-  localization: LabelLocalization;
 }
 
 export const StyledLabel = styled<
@@ -19,16 +18,6 @@ export const StyledLabel = styled<
   cursor: pointer;
   display: inline-block;
   margin-bottom: ${({ theme }: StyledLabelArgument) => theme.spacing.xxSmall};
-
-  ${({ theme, renderOptional, localization }: StyledLabelArgument) =>
-    renderOptional &&
-    css`
-      &::after {
-        color: ${theme.colors.secondary60};
-        content: ' (${localization.optional})';
-        font-weight: ${theme.typography.fontWeight.regular};
-      }
-    `}
 `;
 
 StyledLabel.defaultProps = { theme: defaultTheme };

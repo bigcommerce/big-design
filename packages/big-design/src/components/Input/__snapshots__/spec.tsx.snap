@@ -173,12 +173,6 @@ exports[`renders all together 1`] = `
   margin-bottom: 0.25rem;
 }
 
-.c1::after {
-  color: #5E637A;
-  content: ' (optional)';
-  font-weight: 400;
-}
-
 <div>
   <label
     class="c0 c1"
