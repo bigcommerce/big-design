@@ -1,4 +1,1 @@
-export {
-  StatusMessage,
-  type StatusMessageProps,
-} from './StatusMessage';
+export { StatusMessage, type StatusMessageProps } from './StatusMessage';
