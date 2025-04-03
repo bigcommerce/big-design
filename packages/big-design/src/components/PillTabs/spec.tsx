@@ -524,3 +524,9 @@ test('sends the right id to the handler after swapping', async () => {
 
   expect(onClick).toHaveBeenCalledWith(item4.id);
 });
+
+test('it does not render when provided an empty list of items', () => {
+  const { container } = render(<PillTabs activePills={[]} items={[]} onPillClick={jest.fn()} />);
+
+  expect(container.firstChild).toBeNull();
+});
