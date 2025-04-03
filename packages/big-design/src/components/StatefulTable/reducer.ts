@@ -144,7 +144,9 @@ export const createReducer =
       case 'ITEMS_PER_PAGE_CHANGE': {
         const currentPage = 1;
         const itemsPerPage = action.itemsPerPage;
-        const currentItems = getItems(state.items, true, {
+        const hasActivePills = state.activePills.length > 0 || !!state.searchValue;
+        const items = hasActivePills ? state.filteredItems : state.items;
+        const currentItems = getItems(items, true, {
           currentPage,
           itemsPerPage,
         });
