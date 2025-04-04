@@ -28,7 +28,7 @@ const StatusMessageProps: Prop[] = [
   {
     name: 'actions',
     types: 'React.ReactNode',
-    description: 'Component to render custom actions. This can be a button or any other interactive element. It is optional.',
+    description: 'Component to render custom actions. This can be a buttons, links, etc.',
   },
 ];
 

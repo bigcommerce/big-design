@@ -3,9 +3,7 @@ import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
 import { GuidelinesTable } from '../components/GuidelinesTable';
-import {
-  StatusMessagePropTable,
-} from '../PropTables/StatusMessagePropTable';
+import { StatusMessagePropTable } from '../PropTables/StatusMessagePropTable';
 
 const BadgePage = () => {
   return (
@@ -140,7 +138,7 @@ const BadgePage = () => {
                       />
                       <StatusMessage
                         actions={
-                          <Flex flexGap={'0.5rem'}>
+                          <Flex flexGap="0.5rem">
                             <Button variant="subtle">Go to main page</Button>
                             <Button variant="secondary">Retry</Button>
                           </Flex>
