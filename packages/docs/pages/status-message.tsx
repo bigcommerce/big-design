@@ -1,11 +1,9 @@
-import { Flex, H1, Panel, StatusMessage, Text } from '@bigcommerce/big-design';
+import { Button, Flex, H1, Panel, StatusMessage, Text } from '@bigcommerce/big-design';
 import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, List } from '../components';
 import { GuidelinesTable } from '../components/GuidelinesTable';
-import { ButtonPropTable } from '../PropTables';
 import {
-  StatusMessageButtonTable,
   StatusMessagePropTable,
 } from '../PropTables/StatusMessagePropTable';
 
@@ -42,7 +40,7 @@ const BadgePage = () => {
                 <CodePreview key="basic">
                   {/* jsx-to-string:start */}
                   <StatusMessage
-                    actions={[{ text: 'Clear search', variant: 'secondary' }]}
+                    actions={<Button variant="secondary">Clear search</Button>}
                     heading='No results for search "yellow hat"'
                     message="Try adjusting your search or filter to find what you are looking for."
                     variant="search"
@@ -67,49 +65,49 @@ const BadgePage = () => {
                     {/* jsx-to-string:start */}
                     <Flex flexDirection="column" flexGap="1rem">
                       <StatusMessage
-                        actions={[{ text: 'Go back to main page', variant: 'subtle' }]}
+                        actions={<Button variant="subtle">Go back to main page</Button>}
                         heading="Page not found"
                         message="The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
                         variant="404"
                       />
                       <StatusMessage
-                        actions={[{ text: 'Add product', variant: 'secondary' }]}
+                        actions={<Button variant="secondary">Add product</Button>}
                         heading="You have no products yet"
                         message="Start adding products to your store to see them here."
                         variant="info"
                       />
                       <StatusMessage
-                        actions={[{ text: 'Clear search', variant: 'secondary' }]}
+                        actions={<Button variant="secondary">Clear search</Button>}
                         heading='No results for search "yellow hat"'
                         message="Try adjusting your search or filter to find what you are looking for."
                         variant="search"
                       />
                       <StatusMessage
-                        actions={[{ text: 'Retry', variant: 'secondary' }]}
+                        actions={<Button variant="secondary">Retry</Button>}
                         heading="There was an error connecting to the server"
                         message="Please check your internet connection and try again."
                         variant="error"
                       />
                       <StatusMessage
-                        actions={[{ text: 'Retry', variant: 'secondary' }]}
+                        actions={<Button variant="secondary">Retry</Button>}
                         heading="Internal server error"
                         message="The server encountered an internal error and was unable to complete your request. Please try again later."
                         variant="server-error"
                       />
                       <StatusMessage
-                        actions={[{ text: 'View details', variant: 'subtle' }]}
+                        actions={<Button variant="subtle">View details</Button>}
                         heading="Operation successful"
                         message="Your operation was completed successfully."
                         variant="success"
                       />
                       <StatusMessage
-                        actions={[{ text: 'Request access', variant: 'secondary' }]}
+                        actions={<Button variant="secondary">Request access</Button>}
                         heading="Unauthorized access"
                         message="You do not have the necessary permissions to access this resource."
                         variant="unauthorized"
                       />
                       <StatusMessage
-                        actions={[{ text: 'Try again', variant: 'subtle' }]}
+                        actions={<Button variant="subtle">Try again</Button>}
                         heading="Quota limit exceeded"
                         message="You have exceeded your quota limit for this resource. Please try again later."
                         variant="warning"
@@ -135,16 +133,18 @@ const BadgePage = () => {
                     {/* jsx-to-string:start */}
                     <Flex flexDirection="column" flexGap="1rem">
                       <StatusMessage
-                        actions={[{ text: 'Clear search', variant: 'secondary' }]}
+                        actions={<Button variant="secondary">Clear search</Button>}
                         heading='No results for search "yellow hat"'
                         message="Try adjusting your search or filter to find what you are looking for."
                         variant="search"
                       />
                       <StatusMessage
-                        actions={[
-                          { text: 'Go to main page', variant: 'subtle' },
-                          { text: 'Retry', variant: 'subtle' },
-                        ]}
+                        actions={
+                          <Flex flexGap={'0.5rem'}>
+                            <Button variant="subtle">Go to main page</Button>
+                            <Button variant="secondary">Retry</Button>
+                          </Flex>
+                        }
                         heading="Internal server error"
                         message="The server encountered an internal error and was unable to complete your request. Please try again later."
                         size="page"
@@ -168,16 +168,6 @@ const BadgePage = () => {
               id: 'status-message',
               title: 'StatusMessage',
               render: () => <StatusMessagePropTable />,
-            },
-            {
-              id: 'status-message-button',
-              title: 'StatusMessageButton',
-              render: () => (
-                <StatusMessageButtonTable
-                  id="status-message-button-prop-table"
-                  inheritedProps={<ButtonPropTable collapsible />}
-                />
-              ),
             },
           ]}
         />

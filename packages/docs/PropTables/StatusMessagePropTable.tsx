@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NextLink, Prop, PropTable, PropTableWrapper } from '../components';
+import { Prop, PropTable, PropTableWrapper } from '../components';
 
 const StatusMessageProps: Prop[] = [
   {
@@ -27,37 +27,11 @@ const StatusMessageProps: Prop[] = [
   },
   {
     name: 'actions',
-    types: (
-      <>
-        {'Array<'}
-        <NextLink
-          href={{
-            hash: 'status-message-button-prop-table',
-            query: { props: 'status-message-button' },
-          }}
-        >
-          StatusMessageButtonProps
-        </NextLink>
-        {'>'}
-      </>
-    ),
-    description: 'An array of actions to display at the bottom of the status message.',
+    types: 'React.ReactNode',
+    description: 'Component to render custom actions. This can be a button or any other interactive element. It is optional.',
   },
 ];
 
 export const StatusMessagePropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable propList={StatusMessageProps} title="Page" {...props} />
-);
-
-const statusMessageButtonProps: Prop[] = [
-  {
-    name: 'text',
-    types: 'string',
-    description: 'The text content of the button.',
-    required: true,
-  },
-];
-
-export const StatusMessageButtonTable: React.FC<PropTableWrapper> = (props) => (
-  <PropTable propList={statusMessageButtonProps} title="Header[StatusMessageButton]" {...props} />
 );
