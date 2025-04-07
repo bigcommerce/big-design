@@ -7,6 +7,17 @@ import { Button } from '../Button';
 
 import { StatusMessage } from './index';
 
+const variants = [
+  'info',
+  'error',
+  'success',
+  'warning',
+  'unauthorized',
+  'search',
+  'server-error',
+  '404',
+] as const;
+
 test('renders basic status message', () => {
   render(<StatusMessage message="Basic status message" />);
 
@@ -37,97 +48,10 @@ test('renders with button actions', () => {
   expect(screen.getByRole('button', { name: 'Action 1' })).toBeInTheDocument();
 });
 
-// variants
+test.each(variants)('renders with the %p variant', (variant) => {
+  const { container } = render(<StatusMessage message="Basic status message" variant={variant} />);
 
-// renders default variant
-test('renders with the default variant', () => {
-  render(<StatusMessage message="Basic status message" />);
-
-  const figure = screen.getByRole('figure', { hidden: true });
-
-  expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%)`,
-  });
-});
-
-test('renders with the 404 variant', () => {
-  render(<StatusMessage message="Basic status message" variant="404" />);
-
-  const figure = screen.getByRole('figure', { hidden: true });
-
-  expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%)`,
-  });
-});
-
-test('renders with the info variant', () => {
-  render(<StatusMessage message="Basic status message" variant="info" />);
-
-  const figure = screen.getByRole('figure', { hidden: true });
-
-  expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%)`,
-  });
-});
-
-test('renders with the search variant', () => {
-  render(<StatusMessage message="Basic status message" variant="search" />);
-
-  const figure = screen.getByRole('figure', { hidden: true });
-
-  expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, #72d8db 0%, #d9f9fa 100%)`,
-  });
-});
-
-test('renders with the error variant', () => {
-  render(<StatusMessage message="Basic status message" variant="error" />);
-
-  const figure = screen.getByRole('figure', { hidden: true });
-
-  expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, #ebb2ca 0%, #eee8fa 100%)`,
-  });
-});
-
-test('renders with the server-error variant', () => {
-  render(<StatusMessage message="Basic status message" variant="server-error" />);
-
-  const figure = screen.getByRole('figure', { hidden: true });
-
-  expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, #ebb2ca 0%, #eee8fa 100%)`,
-  });
-});
-
-test('renders with the success variant', () => {
-  render(<StatusMessage message="Basic status message" variant="success" />);
-
-  const figure = screen.getByRole('figure', { hidden: true });
-
-  expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, #78e4a3 0%, #f3fdec 100%)`,
-  });
-});
-
-test('renders with the unauthorized variant', () => {
-  render(<StatusMessage message="Basic status message" variant="unauthorized" />);
-
-  const figure = screen.getByRole('figure', { hidden: true });
-
-  expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, #efc879 0%, #fefbf2 100%)`,
-  });
-});
-
-test('renders with the warning variant', () => {
-  render(<StatusMessage message="Basic status message" variant="warning" />);
-
-  const figure = screen.getByRole('figure', { hidden: true });
-
-  expect(figure).toHaveStyle({
-    backgroundImage: `radial-gradient(circle at center top, #efc879 0%, #fefbf2 100%)`,
-  });
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 // renders the panel size
