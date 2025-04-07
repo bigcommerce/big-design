@@ -1,5 +1,6 @@
 export * from './AccordionPanel';
 export * from './Alert';
+export * from './AnchorNav';
 export * from './Badge';
 export * from './Box';
 export * from './Button';
