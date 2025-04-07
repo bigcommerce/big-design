@@ -1,0 +1,753 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with the "404" variant 1`] = `
+.c0 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1rem;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.c2 {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22none%22%20height%3D%22120%22%20role%3D%22img%22%20width%3D%22120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M45%2079V41h20.261L75%2050.738V79H45ZM64.127%2051.76V43.27H47.269v33.462h25.462V51.76h-8.604Z%22%20fill%3D%22%23fff%22%20%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22122%22%20height%3D%22129%22%20fill%3D%22none%22%3E%3Cpath%20stroke%3D%22url(%23a)%22%20d%3D%22M1%2090.868%2061%201l60%2089.868%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23b)%22%20d%3D%22M121%2038.132%2061%20128%201%2038.132%22%20opacity%3D%22.5%22%20%2F%3E%3Cdefs%3E%3CradialGradient%20id%3D%22a%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(0%20292.218%20-240.194%200%2061%20-19.095)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22b%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(0%20-292.218%20240.194%200%2061%20148.095)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3C%2Fsvg%3E"),radial-gradient(circle at center top,#72d8db 0%,#d9f9fa 100%);
+  content: '';
+}
+
+<div
+  class="c0 c1"
+>
+  <figure
+    aria-hidden="true"
+    class="c2"
+  />
+  <div
+    class="c3"
+  >
+    <p
+      class="c4"
+    >
+      Basic status message
+    </p>
+  </div>
+</div>
+`;
+
+exports[`renders with the "error" variant 1`] = `
+.c0 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1rem;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.c2 {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22none%22%20height%3D%22120%22%20role%3D%22img%22%20width%3D%22120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M61.023%2050.5h-2.269V62h2.269V50.5Zm-1.022%2014.7c-.384%200-.707.126-.97.378-.261.252-.392.57-.392.953%200%20.398.13.73.392.994.262.265.584.398.968.398.397%200%20.723-.133.979-.398s.383-.596.383-.995c0-.382-.13-.7-.392-.952a1.342%201.342%200%200%200-.968-.378ZM59.984%2041c2.631%200%205.096.499%207.394%201.496a19.347%2019.347%200%200%201%206.038%204.085%2019.333%2019.333%200%200%201%204.088%206.04C78.5%2054.92%2079%2057.386%2079%2060.02c0%202.623-.499%205.087-1.496%207.394-.997%202.307-2.36%204.316-4.086%206.026-1.726%201.71-3.739%203.064-6.039%204.063C65.08%2078.5%2062.613%2079%2059.98%2079c-2.623%200-5.087-.499-7.394-1.496-2.307-.997-4.316-2.35-6.026-4.06-1.71-1.71-3.064-3.72-4.063-6.032C41.5%2065.101%2041%2062.635%2041%2060.016c0-2.631.499-5.096%201.496-7.394s2.35-4.308%204.06-6.029c1.71-1.72%203.72-3.083%206.032-4.087C54.899%2041.502%2057.364%2041%2059.983%2041Zm-.009%202.27c-4.64%200-8.584%201.629-11.833%204.887-3.248%203.26-4.873%207.215-4.873%2011.868%200%204.64%201.622%208.584%204.864%2011.833C51.375%2075.106%2055.331%2076.73%2060%2076.73c4.636%200%208.584-1.622%2011.843-4.864C75.1%2068.625%2076.73%2064.669%2076.73%2060c0-4.636-1.63-8.584-4.888-11.843-3.26-3.258-7.215-4.887-11.868-4.887Z%22%20fill%3D%22%23fff%22%20%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20fill%3D%22none%22%3E%3Cg%20clip-path%3D%22url(%23a)%22%3E%3Cpath%20stroke%3D%22url(%23b)%22%20d%3D%22M30.727%200%2060%2029.273%2089.272%200%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23c)%22%20d%3D%22M120%2030.727%2090.727%2060%20120%2089.273%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23d)%22%20d%3D%22M0%2030.727%2029.273%2060%200%2089.273%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23e)%22%20d%3D%22M89.272%20120%2060%2090.727%2030.727%20120%22%20opacity%3D%22.5%22%20%2F%3E%3C%2Fg%3E%3Cdefs%3E%3CradialGradient%20id%3D%22b%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22rotate(-87.474%2061.379%20-.174)%20scale(104.574%2074.3313)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22c%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22rotate(2.409%20-1361.019%201419.477)%20scale(118.789%2084.4351)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22d%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(-117.91637%20-11.90682%208.46332%20-83.81448%2058.463%2058.464)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22e%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22rotate(69.856%20-14.194%2071.776)%20scale(164.114%20116.652)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CclipPath%20id%3D%22a%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M0%200h120v120H0z%22%20%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E"),radial-gradient(circle at center top,#ebb2ca 0%,#eee8fa 100%);
+  content: '';
+}
+
+<div
+  class="c0 c1"
+>
+  <figure
+    aria-hidden="true"
+    class="c2"
+  />
+  <div
+    class="c3"
+  >
+    <p
+      class="c4"
+    >
+      Basic status message
+    </p>
+  </div>
+</div>
+`;
+
+exports[`renders with the "info" variant 1`] = `
+.c0 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1rem;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.c2 {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22none%22%20height%3D%22120%22%20role%3D%22img%22%20width%3D%22120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M58.977%2069.5h2.269V58h-2.269v11.5Zm1.022-14.7c.384%200%20.707-.126.97-.378.261-.252.392-.57.392-.953%200-.398-.13-.73-.392-.995a1.307%201.307%200%200%200-.968-.397c-.397%200-.723.133-.979.398-.256.264-.383.596-.383.994%200%20.383.13.7.392.953.262.252.584.378.968.378Zm.017%2024.2c-2.631%200-5.096-.499-7.394-1.496a19.347%2019.347%200%200%201-6.038-4.086%2019.333%2019.333%200%200%201-4.088-6.039C41.5%2065.08%2041%2062.613%2041%2059.98c0-2.623.499-5.087%201.496-7.394.997-2.307%202.36-4.316%204.085-6.026%201.727-1.71%203.74-3.064%206.04-4.063C54.92%2041.5%2057.386%2041%2060.02%2041c2.623%200%205.087.499%207.394%201.496%202.307.997%204.316%202.35%206.026%204.06%201.71%201.71%203.064%203.72%204.063%206.032C78.5%2054.899%2079%2057.364%2079%2059.983c0%202.632-.499%205.097-1.496%207.395-.997%202.298-2.35%204.308-4.06%206.028-1.71%201.721-3.72%203.084-6.032%204.088C65.101%2078.498%2062.635%2079%2060.016%2079Zm.009-2.27c4.64%200%208.584-1.629%2011.833-4.888%203.248-3.258%204.873-7.214%204.873-11.867%200-4.64-1.622-8.584-4.864-11.833C68.625%2044.895%2064.669%2043.27%2060%2043.27c-4.636%200-8.584%201.622-11.843%204.864C44.9%2051.375%2043.27%2055.331%2043.27%2060c0%204.636%201.629%208.584%204.887%2011.843%203.26%203.258%207.215%204.888%2011.868%204.888Z%22%20fill%3D%22%23fff%22%20%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22122%22%20height%3D%22129%22%20fill%3D%22none%22%3E%3Cpath%20stroke%3D%22url(%23a)%22%20d%3D%22M1%2090.868%2061%201l60%2089.868%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23b)%22%20d%3D%22M121%2038.132%2061%20128%201%2038.132%22%20opacity%3D%22.5%22%20%2F%3E%3Cdefs%3E%3CradialGradient%20id%3D%22a%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(0%20292.218%20-240.194%200%2061%20-19.095)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22b%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(0%20-292.218%20240.194%200%2061%20148.095)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3C%2Fsvg%3E"),radial-gradient(circle at center top,#72d8db 0%,#d9f9fa 100%);
+  content: '';
+}
+
+<div
+  class="c0 c1"
+>
+  <figure
+    aria-hidden="true"
+    class="c2"
+  />
+  <div
+    class="c3"
+  >
+    <p
+      class="c4"
+    >
+      Basic status message
+    </p>
+  </div>
+</div>
+`;
+
+exports[`renders with the "search" variant 1`] = `
+.c0 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1rem;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.c2 {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22none%22%20height%3D%22120%22%20role%3D%22img%22%20width%3D%22120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M75.53%2077.192%2062.555%2064.215c-.995.88-2.155%201.56-3.48%202.036a12.076%2012.076%200%200%201-4.116.714c-3.396%200-6.27-1.175-8.622-3.526-2.352-2.35-3.528-5.2-3.528-8.55%200-3.349%201.175-6.2%203.525-8.553%202.35-2.352%205.205-3.528%208.561-3.528%203.357%200%206.212%201.175%208.563%203.526%202.352%202.351%203.527%205.202%203.527%208.553%200%201.4-.24%202.765-.719%204.092a11.743%2011.743%200%200%201-2.08%203.605l13.007%2012.927-1.661%201.681ZM54.928%2064.696c2.732%200%205.046-.952%206.943-2.856%201.897-1.904%202.845-4.222%202.845-6.954%200-2.732-.948-5.05-2.845-6.953-1.897-1.904-4.211-2.856-6.943-2.856-2.749%200-5.078.952-6.987%202.856-1.909%201.903-2.863%204.221-2.863%206.953s.954%205.05%202.863%206.954c1.91%201.904%204.238%202.856%206.987%202.856Z%22%20fill%3D%22%23fff%22%20%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22122%22%20height%3D%22129%22%20fill%3D%22none%22%3E%3Cpath%20stroke%3D%22url(%23a)%22%20d%3D%22M1%2090.868%2061%201l60%2089.868%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23b)%22%20d%3D%22M121%2038.132%2061%20128%201%2038.132%22%20opacity%3D%22.5%22%20%2F%3E%3Cdefs%3E%3CradialGradient%20id%3D%22a%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(0%20292.218%20-240.194%200%2061%20-19.095)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22b%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(0%20-292.218%20240.194%200%2061%20148.095)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3C%2Fsvg%3E"),radial-gradient(circle at center top,#72d8db 0%,#d9f9fa 100%);
+  content: '';
+}
+
+<div
+  class="c0 c1"
+>
+  <figure
+    aria-hidden="true"
+    class="c2"
+  />
+  <div
+    class="c3"
+  >
+    <p
+      class="c4"
+    >
+      Basic status message
+    </p>
+  </div>
+</div>
+`;
+
+exports[`renders with the "server-error" variant 1`] = `
+.c0 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1rem;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.c2 {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22none%22%20height%3D%22120%22%20role%3D%22img%22%20width%3D%22120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M50.518%2048.212c-.594%200-1.098.208-1.51.624-.413.416-.62.92-.62%201.515%200%20.594.209%201.098.625%201.51.415.413.92.62%201.515.62.594%200%201.098-.208%201.51-.624.413-.416.62-.921.62-1.515%200-.595-.208-1.098-.624-1.511a2.071%202.071%200%200%200-1.516-.62Zm0%2019.276c-.594%200-1.098.208-1.51.624-.413.416-.62.922-.62%201.516s.209%201.098.625%201.51c.415.413.92.62%201.515.62.594%200%201.098-.208%201.51-.624.413-.416.62-.921.62-1.516%200-.594-.208-1.097-.624-1.51a2.07%202.07%200%200%200-1.516-.62ZM43%2058.092V42.631h34v15.461H43ZM45.27%2044.9v10.923h29.46V44.9H45.27ZM43%2077.37V61.876h34v15.492H43Zm2.27-13.224V75.1h29.46V64.146H45.27Z%22%20fill%3D%22%23fff%22%20%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20fill%3D%22none%22%3E%3Cg%20clip-path%3D%22url(%23a)%22%3E%3Cpath%20stroke%3D%22url(%23b)%22%20d%3D%22M30.727%200%2060%2029.273%2089.272%200%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23c)%22%20d%3D%22M120%2030.727%2090.727%2060%20120%2089.273%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23d)%22%20d%3D%22M0%2030.727%2029.273%2060%200%2089.273%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23e)%22%20d%3D%22M89.272%20120%2060%2090.727%2030.727%20120%22%20opacity%3D%22.5%22%20%2F%3E%3C%2Fg%3E%3Cdefs%3E%3CradialGradient%20id%3D%22b%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22rotate(-87.474%2061.379%20-.174)%20scale(104.574%2074.3313)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22c%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22rotate(2.409%20-1361.019%201419.477)%20scale(118.789%2084.4351)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22d%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(-117.91637%20-11.90682%208.46332%20-83.81448%2058.463%2058.464)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22e%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22rotate(69.856%20-14.194%2071.776)%20scale(164.114%20116.652)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CclipPath%20id%3D%22a%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M0%200h120v120H0z%22%20%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E"),radial-gradient(circle at center top,#ebb2ca 0%,#eee8fa 100%);
+  content: '';
+}
+
+<div
+  class="c0 c1"
+>
+  <figure
+    aria-hidden="true"
+    class="c2"
+  />
+  <div
+    class="c3"
+  >
+    <p
+      class="c4"
+    >
+      Basic status message
+    </p>
+  </div>
+</div>
+`;
+
+exports[`renders with the "success" variant 1`] = `
+.c0 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1rem;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.c2 {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22none%22%20height%3D%22120%22%20role%3D%22img%22%20width%3D%22120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M50.338%2071.125%2039.792%2060.598l1.631-1.63%208.915%208.895.693-.692%201.63%201.63-2.323%202.324Zm9.25%200L49.062%2060.598l1.63-1.63%208.896%208.895%2018.989-18.969%201.63%201.612-20.619%2020.619Zm-.692-8.558-1.63-1.63%2012.06-12.062%201.632%201.63-12.062%2012.062Z%22%20fill%3D%22%23fff%22%20%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22122%22%20height%3D%22129%22%20fill%3D%22none%22%3E%3Cpath%20stroke%3D%22url(%23a)%22%20d%3D%22M1%2090.868%2061%201l60%2089.868%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23b)%22%20d%3D%22M121%2038.132%2061%20128%201%2038.132%22%20opacity%3D%22.5%22%20%2F%3E%3Cdefs%3E%3CradialGradient%20id%3D%22a%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(0%20292.218%20-240.194%200%2061%20-19.095)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22b%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(0%20-292.218%20240.194%200%2061%20148.095)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3C%2Fsvg%3E"),radial-gradient(circle at center top,#78e4a3 0%,#f3fdec 100%);
+  content: '';
+}
+
+<div
+  class="c0 c1"
+>
+  <figure
+    aria-hidden="true"
+    class="c2"
+  />
+  <div
+    class="c3"
+  >
+    <p
+      class="c4"
+    >
+      Basic status message
+    </p>
+  </div>
+</div>
+`;
+
+exports[`renders with the "unauthorized" variant 1`] = `
+.c0 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1rem;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.c2 {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22none%22%20height%3D%22120%22%20role%3D%22img%22%20width%3D%22120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M57.815%2065.511h4.37l-1.193-6.903a3.443%203.443%200%200%200%201.533-1.172c.394-.532.59-1.128.59-1.79%200-.864-.303-1.6-.91-2.206A3.003%203.003%200%200%200%2060%2052.53c-.864%200-1.6.304-2.206.91a3.004%203.004%200%200%200-.91%202.206c0%20.662.197%201.258.591%201.79.394.532.904.923%201.533%201.172l-1.193%206.903ZM60%2078.942c-4.346-1.192-7.933-3.779-10.76-7.76-2.827-3.98-4.24-8.389-4.24-13.224V46.672l15-5.615%2015%205.615v11.285c0%204.835-1.414%209.244-4.24%2013.225-2.827%203.98-6.414%206.567-10.76%207.76Zm0-2.37c3.73-1.215%206.785-3.552%209.163-7.01%202.379-3.46%203.568-7.328%203.568-11.604v-9.704L60%2043.469l-12.73%204.785v9.704c0%204.276%201.188%208.144%203.566%2011.603%202.379%203.46%205.433%205.796%209.164%207.012Z%22%20fill%3D%22%23fff%22%20%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20fill%3D%22none%22%3E%3Cg%20clip-path%3D%22url(%23a)%22%3E%3Cpath%20stroke%3D%22url(%23b)%22%20d%3D%22M30.727%200%2060%2029.273%2089.272%200%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23c)%22%20d%3D%22M120%2030.727%2090.727%2060%20120%2089.273%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23d)%22%20d%3D%22M0%2030.727%2029.273%2060%200%2089.273%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23e)%22%20d%3D%22M89.272%20120%2060%2090.727%2030.727%20120%22%20opacity%3D%22.5%22%20%2F%3E%3C%2Fg%3E%3Cdefs%3E%3CradialGradient%20id%3D%22b%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22rotate(-87.474%2061.379%20-.174)%20scale(104.574%2074.3313)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22c%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22rotate(2.409%20-1361.019%201419.477)%20scale(118.789%2084.4351)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22d%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(-117.91637%20-11.90682%208.46332%20-83.81448%2058.463%2058.464)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22e%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22rotate(69.856%20-14.194%2071.776)%20scale(164.114%20116.652)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CclipPath%20id%3D%22a%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M0%200h120v120H0z%22%20%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E"),radial-gradient(circle at center top,#efc879 0%,#fefbf2 100%);
+  content: '';
+}
+
+<div
+  class="c0 c1"
+>
+  <figure
+    aria-hidden="true"
+    class="c2"
+  />
+  <div
+    class="c3"
+  >
+    <p
+      class="c4"
+    >
+      Basic status message
+    </p>
+  </div>
+</div>
+`;
+
+exports[`renders with the "warning" variant 1`] = `
+.c0 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.c1 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1rem;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  color: #313440;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.c4:last-child {
+  margin-bottom: 0;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.c2 {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22none%22%20height%3D%22120%22%20role%3D%22img%22%20width%3D%22120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M58.865%2062.077h2.27V51.019h-2.27v11.058ZM60%2067.038c.342%200%20.636-.123.882-.368.245-.246.368-.54.368-.882%200-.342-.123-.636-.368-.881a1.203%201.203%200%200%200-.882-.369c-.342%200-.636.123-.882.369-.245.245-.368.539-.368.881%200%20.343.123.636.368.882.246.245.54.368.882.368Zm0%2013.058L39.904%2060%2060%2039.904%2080.096%2060%2060%2080.096Zm0-3.223L76.873%2060%2060%2043.127%2043.127%2060%2060%2076.873Z%22%20fill%3D%22%23fff%22%20%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22122%22%20height%3D%22129%22%20fill%3D%22none%22%3E%3Cpath%20stroke%3D%22url(%23a)%22%20d%3D%22M1%2090.868%2061%201l60%2089.868%22%20opacity%3D%22.5%22%20%2F%3E%3Cpath%20stroke%3D%22url(%23b)%22%20d%3D%22M121%2038.132%2061%20128%201%2038.132%22%20opacity%3D%22.5%22%20%2F%3E%3Cdefs%3E%3CradialGradient%20id%3D%22a%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(0%20292.218%20-240.194%200%2061%20-19.095)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3CradialGradient%20id%3D%22b%22%20cx%3D%220%22%20cy%3D%220%22%20r%3D%221%22%20gradientTransform%3D%22matrix(0%20-292.218%20240.194%200%2061%20148.095)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%23fff%22%20%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22%20%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3C%2Fsvg%3E"),radial-gradient(circle at center top,#efc879 0%,#fefbf2 100%);
+  content: '';
+}
+
+<div
+  class="c0 c1"
+>
+  <figure
+    aria-hidden="true"
+    class="c2"
+  />
+  <div
+    class="c3"
+  >
+    <p
+      class="c4"
+    >
+      Basic status message
+    </p>
+  </div>
+</div>
+`;
