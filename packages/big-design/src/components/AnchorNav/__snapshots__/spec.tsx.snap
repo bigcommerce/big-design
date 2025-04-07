@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders default AnchorNav 1`] = `
+.c0 {
+  display: block;
+  position: relative;
+}
+
+.c0 .anchor-nav__list {
+  position: -webkit-sticky;
+  position: sticky;
+  -webkit-inset-block-start: 0;
+  -ms-intb-rlock-start: 0;
+  inset-block-start: 0;
+  width: 266px;
+  float: inline-start;
+  display: none;
+}
+
+.c0 .anchor-nav__list > ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c0 .anchor-nav__list > ul > li {
+  display: block;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.c0 .anchor-nav__list > ul > li > a {
+  color: #3C64F4;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  border-inline-start: 3px solid transparent;
+}
+
+.c0 .anchor-nav__list > ul > li > a:hover {
+  background-color: #F0F3FF;
+}
+
+.c0 .anchor-nav__list > ul > li > a.active {
+  color: #313440;
+  border-inline-start: 3px solid #3C64F4;
+}
+
+.c0 .anchor-nav__list > ul > li > a.active:hover {
+  background-color: transparent;
+}
+
+.c0 .anchor-nav__elements {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width:720px) {
+  .c0 .anchor-nav__list {
+    display: block;
+    margin-inline-end: 1.5rem;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="anchor-nav__list"
+  >
+    <ul>
+      <li>
+        <a
+          class=""
+          href="#section1"
+        >
+          Section 1
+        </a>
+      </li>
+      <li>
+        <a
+          class=""
+          href="#section2"
+        >
+          Section 2
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div
+    class="anchor-nav__elements"
+  >
+    <div
+      id="section1"
+      style="scroll-margin-top: 80px;"
+    >
+      <div>
+        Content 1
+      </div>
+    </div>
+    <div
+      id="section2"
+      style="scroll-margin-top: 80px;"
+    >
+      <div>
+        Content 2
+      </div>
+    </div>
+  </div>
+</div>
+`;
