@@ -557,29 +557,26 @@ describe('test search in the StatefulTable', () => {
       pillTabs: [{ title: 'Low stock', id: 'low_stock' }],
       filter: (_itemId, items) => items.filter((item) => item.stock !== 0 && item.stock < 10),
     };
-    const { findByText, findAllByRole, getByPlaceholderText, getByText } = render(
-      getSimpleTable({ filters, pagination: true, search: true }),
-    );
+
+    render(getSimpleTable({ filters, pagination: true, search: true }));
 
     // Click on filter pill
-    fireEvent.click(getByText('Low stock'));
+    await userEvent.click(screen.getByText('Low stock'));
 
     // Add search term
-    const input = getByPlaceholderText('Search');
+    await userEvent.type(screen.getByPlaceholderText('Search'), 'Product B');
+    await userEvent.click(screen.getByText('Search'));
 
-    fireEvent.change(input, { target: { value: 'Product B' } });
-    fireEvent.click(getByText('Search'));
-
-    let rows = await findAllByRole('row');
+    let rows = await screen.findAllByRole('row');
 
     expect(rows).toHaveLength(2);
 
-    const itemsPerPageButton = await findByText('1 of 1');
+    const itemsPerPageButton = await screen.findByText('1 of 1');
 
-    fireEvent.click(itemsPerPageButton);
+    await userEvent.click(itemsPerPageButton);
     await userEvent.keyboard('{ArrowDown}{Enter}');
 
-    rows = await findAllByRole('row');
+    rows = await screen.findAllByRole('row');
 
     expect(rows).toHaveLength(2);
   });
@@ -590,46 +587,42 @@ describe('test search in the StatefulTable', () => {
       filter: (_itemId, items) => items.filter((item) => item.stock < 5),
     };
 
-    const { findByText, findAllByRole, getByText } = render(
-      getSimpleTable({ filters, pagination: true }),
-    );
+    render(getSimpleTable({ filters, pagination: true }));
 
     // Click on filter pill
-    fireEvent.click(getByText('Low stock'));
+    await userEvent.click(screen.getByText('Low stock'));
 
-    let rows = await findAllByRole('row');
+    let rows = await screen.findAllByRole('row');
 
     expect(rows).toHaveLength(5);
 
-    const itemsPerPageButton = await findByText('1 - 4 of 4');
+    const itemsPerPageButton = await screen.findByText('1 - 4 of 4');
 
-    fireEvent.click(itemsPerPageButton);
+    await userEvent.click(itemsPerPageButton);
     await userEvent.keyboard('{ArrowDown}{Enter}');
 
-    rows = await findAllByRole('row');
+    rows = await screen.findAllByRole('row');
 
     expect(rows).toHaveLength(5);
   });
 
   test('maintains filtered state when only search is active & items per page is changed', async () => {
-    const { findAllByRole, getByPlaceholderText, getByText, findByText } = render(
-      getSimpleTable({ search: true, pagination: true }),
-    );
-    const input = getByPlaceholderText('Search');
+    render(getSimpleTable({ search: true, pagination: true }));
 
-    fireEvent.change(input, { target: { value: 'Product B' } });
-    fireEvent.click(getByText('Search'));
+    await userEvent.type(screen.getByPlaceholderText('Search'), 'Product B');
 
-    let rows = await findAllByRole('row');
+    await userEvent.click(screen.getByText('Search'));
+
+    let rows = await screen.findAllByRole('row');
 
     expect(rows).toHaveLength(5);
 
-    const itemsPerPageButton = await findByText('1 - 4 of 4');
+    const itemsPerPageButton = await screen.findByText('1 - 4 of 4');
 
-    fireEvent.click(itemsPerPageButton);
+    await userEvent.click(itemsPerPageButton);
     await userEvent.keyboard('{ArrowDown}{Enter}');
 
-    rows = await findAllByRole('row');
+    rows = await screen.findAllByRole('row');
 
     expect(rows).toHaveLength(5);
   });
