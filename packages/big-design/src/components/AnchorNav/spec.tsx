@@ -1,63 +1,130 @@
-import { render } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import 'jest-styled-components';
+import { act } from 'react-dom/test-utils';
+import { useInView } from 'react-intersection-observer';
 
+import 'jest-styled-components';
 import { AnchorNav, AnchorNavElement } from './AnchorNav';
 
-const intersectionObserverMock = () => ({
-  observe: () => null,
-  unobserve: () => null,
-  disconnect: () => null,
-});
+jest.mock('react-intersection-observer', () => ({
+  useInView: jest.fn(() => ({
+    ref: jest.fn(),
+    inView: false,
+  })),
+}));
 
-window.IntersectionObserver = jest.fn().mockImplementation(intersectionObserverMock);
-window.HTMLElement.prototype.scrollIntoView = jest.fn();
+// dummy elements for testing.
+const elements: AnchorNavElement[] = [
+  { id: 'section1', label: 'Section 1', element: <div>Content 1</div> },
+  { id: 'section2', label: 'Section 2', element: <div>Content 2</div> },
+];
 
-beforeEach(() => {
-  // Reset the hash before each test to avoid side effects
-  window.location.hash = '';
-});
+describe('AnchorNav Component', () => {
+  // In each test, ensure that every element has a scrollIntoView implementation.
+  beforeEach(() => {
+    Element.prototype.scrollIntoView = jest.fn();
+  });
 
-test('renders default AnchorNav', () => {
-  const elements: AnchorNavElement[] = [
-    { id: 'section1', label: 'Section 1', element: <div>Content 1</div> },
-    { id: 'section2', label: 'Section 2', element: <div>Content 2</div> },
-  ];
+  afterEach(() => {
+    cleanup();
+    history.replaceState(null, '', '#');
+    jest.clearAllMocks();
+    jest.useRealTimers();
+  });
 
-  const { container } = render(<AnchorNav elements={elements} />);
+  it('renders navigation links and sections', () => {
+    render(<AnchorNav elements={elements} />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.querySelector('.anchor-nav__list')).toBeInTheDocument();
-});
+    expect(screen.getByText('Section 1')).toBeInTheDocument();
+    expect(screen.getByText('Section 2')).toBeInTheDocument();
+    expect(screen.getByText('Content 1')).toBeInTheDocument();
+    expect(screen.getByText('Content 2')).toBeInTheDocument();
+  });
 
-test('renders AnchorNav with active section', () => {
-  const elements: AnchorNavElement[] = [
-    { id: 'section1', label: 'Section 1', element: <div>Content 1</div> },
-    { id: 'section2', label: 'Section 2', element: <div>Content 2</div> },
-  ];
+  it('clicking on a navigation link scrolls to the correct section, updates the URL hash, and marks it as active', () => {
+    render(<AnchorNav elements={elements} />);
 
-  // Simulate an active section by setting the hash
-  window.location.hash = '#section2';
+    const navLink1 = screen.getByText('Section 1');
 
-  const { container } = render(<AnchorNav elements={elements} />);
+    // Get the element for "section1" and assign a fresh mock.
+    const section1El = document.getElementById('section1');
 
-  expect(container.querySelector('.anchor-nav__list')).toHaveTextContent('Section 2');
-});
+    expect(section1El).toBeDefined();
 
-test('should handle section refs correctly', () => {
-  const elements: AnchorNavElement[] = [
-    { id: 'section1', label: 'Section 1', element: <div>Content 1</div> },
-    { id: 'section2', label: 'Section 2', element: <div>Content 2</div> },
-  ];
+    if (section1El) {
+      section1El.scrollIntoView = jest.fn();
+    }
 
-  const { container } = render(<AnchorNav elements={elements} />);
+    const replaceStateSpy = jest.spyOn(history, 'replaceState');
 
-  expect(container.querySelector('.anchor-nav__list')).toBeInTheDocument();
+    fireEvent.click(navLink1);
 
-  // Check if the section refs are being set correctly
-  const section1 = document.getElementById('section1');
-  const section2 = document.getElementById('section2');
+    expect(section1El?.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
+    expect(replaceStateSpy).toHaveBeenCalledWith(null, '', '#section1');
+    expect(navLink1).toHaveClass('active');
+    expect(navLink1.getAttribute('aria-current')).toBe('true');
+  });
 
-  expect(section1).toBeInTheDocument();
-  expect(section2).toBeInTheDocument();
+  it('activates a section based on the observer inView value', () => {
+    // Override the default mock behavior: first section false, second section true.
+    const inViewValues = [false, true];
+    const mockUseInView = jest.fn().mockImplementation(() => ({
+      ref: jest.fn(),
+      inView: inViewValues.shift() ?? false,
+    }));
+
+    jest.mocked(useInView).mockImplementation(mockUseInView);
+
+    render(<AnchorNav elements={elements} />);
+
+    const navLink2 = screen.getByText('Section 2');
+
+    expect(navLink2).toHaveClass('active');
+    expect(navLink2.getAttribute('aria-current')).toBe('true');
+  });
+
+  it('scrolls to the section corresponding to the initial URL hash on load', () => {
+    // Set the URL hash before rendering the component.
+    history.replaceState(null, '', '#section2');
+
+    render(<AnchorNav elements={elements} />);
+
+    // Get the element for section2.
+    const section2El = document.getElementById('section2');
+
+    expect(section2El).toBeDefined();
+
+    expect(section2El?.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
+  });
+
+  it('resets the observer suspend after the timeout when scrolling', () => {
+    jest.useFakeTimers();
+
+    render(<AnchorNav elements={elements} />);
+
+    const navLink1 = screen.getByText('Section 1');
+    const section1El = document.getElementById('section1');
+
+    expect(section1El).toBeDefined();
+
+    if (section1El) {
+      section1El.scrollIntoView = jest.fn();
+    }
+
+    fireEvent.click(navLink1);
+
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    fireEvent.click(navLink1);
+
+    expect(section1El?.scrollIntoView).toHaveBeenCalledTimes(2);
+  });
+
+  it('matches the snapshot', () => {
+    const { container } = render(<AnchorNav elements={elements} />);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
