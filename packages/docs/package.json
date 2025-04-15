@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/docs",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "private": true,
   "sideEffects": false,
   "license": "(MIT AND CC-BY-3.0)",
