@@ -32,7 +32,7 @@ export const StatusMessage: React.FC<StatusMessageProps> = ({
   variant = 'info',
 }) => {
   const Header = size === 'page' ? H1 : H4;
-  const hasHeading = heading !== undefined && heading.trim().length > 0;
+  const hasHeading = heading !== undefined && heading.length > 0;
 
   const flexGapSize = size === 'page' ? theme.spacing.xLarge : theme.spacing.medium;
   const paddingVertical = size === 'page' ? 'xxxLarge' : 'large';
