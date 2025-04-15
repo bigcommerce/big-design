@@ -1,6 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
-import { StyledAnchorNav } from './styled';
+import { Box } from '../Box';
+import { Flex, FlexItem } from '../Flex';
+
+import { StyledAnchorNavList } from './styled';
 
 export interface AnchorNavElement {
   id: string;
@@ -12,56 +16,105 @@ export interface AnchorNavProps {
   elements: AnchorNavElement[];
 }
 
+const useAnchorObserver = (
+  id: string,
+  setActiveId: React.Dispatch<React.SetStateAction<string | null>>,
+  suspendObserverRef: React.MutableRefObject<boolean>,
+): React.RefCallback<HTMLElement> => {
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    rootMargin: '0px 0px -90% 0px',
+  });
+
+  useEffect(() => {
+    if (inView && !suspendObserverRef.current) {
+      setActiveId(id);
+    }
+  }, [inView, id, setActiveId, suspendObserverRef]);
+
+  return ref;
+};
+
+interface AnchorSectionProps {
+  id: string;
+  children: React.ReactNode;
+  setActiveId: React.Dispatch<React.SetStateAction<string | null>>;
+  suspendObserverRef: React.MutableRefObject<boolean>;
+  registerSection: (id: string, el: HTMLElement | null) => void;
+}
+
+const AnchorSection: React.FC<AnchorSectionProps> = ({
+  id,
+  children,
+  setActiveId,
+  suspendObserverRef,
+  registerSection,
+}) => {
+  // We now know that observerRef is a function callback.
+  const observerRef = useAnchorObserver(id, setActiveId, suspendObserverRef);
+
+  // Combine the observer ref with the registration of the section.
+  const combinedRef = useCallback(
+    (el: HTMLElement | null) => {
+      registerSection(id, el);
+      observerRef(el); // Always call the ref function directly.
+    },
+    [id, registerSection, observerRef],
+  );
+
+  return (
+    <FlexItem id={id} ref={combinedRef} style={{ scrollMarginTop: '80px' }}>
+      {children}
+    </FlexItem>
+  );
+};
+
 export const AnchorNav: React.FC<AnchorNavProps> = ({ elements }) => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
-  const observerRef = useRef<IntersectionObserver | null>(null);
   const suspendObserverRef = useRef(false);
   const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Initialize IntersectionObserver
-  useEffect(() => {
-    if (observerRef.current) {
-      observerRef.current.disconnect();
+  const updateUrlHash = useCallback((id: string) => {
+    const newHash = `#${id}`;
+
+    if (window.location.hash !== newHash) {
+      history.replaceState(null, '', newHash); // Avoids adding to browser history
     }
+  }, []);
 
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        if (suspendObserverRef.current) {
-          return;
-        }
+  const scrollToSection = useCallback(
+    (id: string) => {
+      const el = sectionRefs.current[id];
 
-        const visible = entries.find((entry) => entry.isIntersecting);
-
-        if (visible?.target?.id) {
-          const id = visible.target.id;
-
-          setActiveId(id);
-          updateUrlHash(id);
-        }
-      },
-      { rootMargin: '0px 0px -95% 0px', threshold: 0.1 },
-    );
-
-    Object.entries(sectionRefs.current).forEach(([, el]) => {
       if (el) {
-        observerRef.current?.observe(el);
+        el.scrollIntoView({ behavior: 'smooth' });
+        setActiveId(id);
+        updateUrlHash(id);
+        suspendObserverRef.current = true;
+
+        if (resumeTimeoutRef.current) {
+          clearTimeout(resumeTimeoutRef.current);
+        }
+
+        resumeTimeoutRef.current = setTimeout(() => {
+          suspendObserverRef.current = false;
+        }, 1000);
       }
-    });
+    },
+    [updateUrlHash],
+  );
 
-    return () => observerRef.current?.disconnect();
-  }, [elements]);
-
-  // Scroll to section from hash on load
+  // Scroll to section based on the URL hash when the component loads.
   useEffect(() => {
     const hash = window.location.hash?.slice(1);
 
     if (hash && sectionRefs.current[hash]) {
       scrollToSection(hash);
     }
-  });
+  }, [scrollToSection]);
 
-  // Cleanup timeout on unmount
+  // Cleanup timeout on unmount.
   useEffect(() => {
     return () => {
       if (resumeTimeoutRef.current) {
@@ -70,41 +123,14 @@ export const AnchorNav: React.FC<AnchorNavProps> = ({ elements }) => {
     };
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const el = sectionRefs.current[id];
-
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      setActiveId(id);
-      updateUrlHash(id);
-
-      suspendObserverRef.current = true;
-
-      if (resumeTimeoutRef.current) {
-        clearTimeout(resumeTimeoutRef.current);
-      }
-
-      resumeTimeoutRef.current = setTimeout(() => {
-        suspendObserverRef.current = false;
-      }, 1000);
-    }
-  };
-
-  const updateUrlHash = (id: string) => {
-    const newHash = `#${id}`;
-
-    if (window.location.hash !== newHash) {
-      history.replaceState(null, '', newHash); // Avoids adding to browser history
-    }
-  };
-
   return (
-    <StyledAnchorNav>
-      <div className="anchor-nav__list">
+    <Box>
+      <StyledAnchorNavList>
         <ul>
           {elements.map(({ id, label }) => (
             <li key={id}>
               <a
+                aria-current={id === activeId ? 'true' : undefined}
                 className={id === activeId ? 'active' : ''}
                 href={`#${id}`}
                 onClick={(e) => {
@@ -117,23 +143,24 @@ export const AnchorNav: React.FC<AnchorNavProps> = ({ elements }) => {
             </li>
           ))}
         </ul>
-      </div>
+      </StyledAnchorNavList>
 
-      <div className="anchor-nav__elements">
+      <Flex flexDirection="column" flexGap="xLarge">
         {elements.map(({ id, element }) => (
-          <div
+          <AnchorSection
             id={id}
             key={id}
-            ref={(el) => {
+            registerSection={(id, el) => {
               sectionRefs.current[id] = el;
             }}
-            style={{ scrollMarginTop: '80px' }}
+            setActiveId={setActiveId}
+            suspendObserverRef={suspendObserverRef}
           >
             {element}
-          </div>
+          </AnchorSection>
         ))}
-      </div>
-    </StyledAnchorNav>
+      </Flex>
+    </Box>
   );
 };
 
