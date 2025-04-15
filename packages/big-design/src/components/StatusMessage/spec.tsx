@@ -62,7 +62,7 @@ test.each(variants)('renders with the %p variant', (variant) => {
   const figure = screen.getByRole('figure', { hidden: true });
 
   expect(container.firstChild).toMatchSnapshot();
-  
+
   expect(figure).toHaveStyleRule('background-image', expect.stringContaining('data:image/svg+xml'));
 });
 
