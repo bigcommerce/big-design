@@ -1,16 +1,21 @@
 import { CheckIcon, MoreHorizIcon } from '@bigcommerce/big-design-icons';
-import React, { createRef, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { createRef, useMemo } from 'react';
 
-import { useWindowResizeListener } from '../../hooks';
 import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
 import { Flex } from '../Flex';
 
 import { StyledFlexItem, StyledPillTab } from './styled';
+import { useAvailableWidth } from './useAvailableWidth';
 
 export interface PillTabItem {
   id: string;
   title: string;
+}
+
+interface Pill extends PillTabItem {
+  isVisible: boolean;
+  ref: React.RefObject<HTMLDivElement>;
 }
 
 export interface PillTabsProps {
@@ -20,78 +25,70 @@ export interface PillTabsProps {
 }
 
 export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
-  const parentRef = createRef<HTMLDivElement>();
-  const dropdownRef = createRef<HTMLDivElement>();
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [pillsState, setPillsState] = useState(
-    items.map((item) => ({
-      isVisible: true,
-      item,
-      ref: createRef<HTMLDivElement>(),
-    })),
+  const refs = { parent: createRef<HTMLDivElement>(), dropdown: createRef<HTMLDivElement>() };
+  const availableWidth = useAvailableWidth(refs);
+
+  const itemsWithRefs = useMemo(
+    () => items.map((item) => ({ ...item, isVisible: true, ref: createRef<HTMLDivElement>() })),
+    [items],
   );
 
-  const hideOverflowedPills = useCallback(() => {
-    const parentWidth = parentRef.current?.offsetWidth;
-    const dropdownWidth = dropdownRef.current?.offsetWidth;
+  const { pills } = itemsWithRefs.reduce<{ pills: Pill[]; widthBudget: number }>(
+    (acc, pill) => {
+      const pillWidth = pill.ref.current?.offsetWidth || 0;
+      const widthBudget = acc.widthBudget - pillWidth;
+      const updatedPill = { ...pill, isVisible: widthBudget >= 0 };
 
-    if (!parentWidth || !dropdownWidth) {
-      return;
-    }
+      return { pills: [...acc.pills, updatedPill], widthBudget };
+    },
+    { pills: [], widthBudget: availableWidth },
+  );
 
-    let remainingWidth = parentWidth;
+  const dropdownItems = pills
+    .filter(({ isVisible }) => !isVisible)
+    .map(({ title, id }) => ({
+      content: title,
+      onItemClick: () => onPillClick(id),
+      hash: title.toLowerCase(),
+      icon: activePills.includes(id) ? <CheckIcon /> : undefined,
+    }));
 
-    const newState = pillsState.map((stateObj) => {
-      const pillWidth = stateObj.ref.current?.offsetWidth;
+  if (pills.length === 0) {
+    return null;
+  }
 
-      if (!pillWidth) {
-        return stateObj;
-      }
-
-      if (remainingWidth - pillWidth > dropdownWidth) {
-        remainingWidth -= pillWidth;
-
-        return {
-          ...stateObj,
-          isVisible: true,
-        };
-      }
-
-      return {
-        ...stateObj,
-        isVisible: false,
-      };
-    });
-
-    const visiblePills = pillsState.filter((stateObj) => stateObj.isVisible);
-    const newVisiblePills = newState.filter((stateObj) => stateObj.isVisible);
-
-    if (visiblePills.length !== newVisiblePills.length) {
-      setIsMenuVisible(newVisiblePills.length !== items.length);
-      setPillsState(newState);
-    }
-  }, [items, parentRef, dropdownRef, pillsState]);
-
-  const renderedDropdown = useMemo(() => {
-    const dropdownItems = pillsState
-      .filter((stateObj) => !stateObj.isVisible)
-      .map((stateObj) => {
-        const item = items.find(({ title }) => title === stateObj.item.title);
-        const isActive = item ? activePills.includes(item.id) : false;
-
-        return {
-          content: stateObj.item.title,
-          onItemClick: () => onPillClick(stateObj.item.id),
-          hash: stateObj.item.title.toLowerCase(),
-          icon: isActive ? <CheckIcon /> : undefined,
-        };
-      });
-
-    return (
+  return (
+    <Flex
+      data-testid="pilltabs-wrapper"
+      flexDirection="row"
+      flexWrap="nowrap"
+      ref={refs.parent}
+      role="list"
+    >
+      {pills.map(({ id, isVisible, ref, title }, index) => (
+        <StyledFlexItem
+          data-testid={`pilltabs-pill-${index}`}
+          isVisible={isVisible}
+          key={index}
+          ref={ref}
+          role="listitem"
+        >
+          <StyledPillTab
+            disabled={!isVisible}
+            isActive={activePills.includes(id)}
+            marginRight="xSmall"
+            onClick={() => onPillClick(id)}
+            type="button"
+            variant="subtle"
+          >
+            {title}
+          </StyledPillTab>
+        </StyledFlexItem>
+      ))}
       <StyledFlexItem
         data-testid="pilltabs-dropdown-toggle"
-        isVisible={isMenuVisible}
-        ref={dropdownRef}
+        isVisible={pills.some(({ isVisible }) => !isVisible)}
+        ref={refs.dropdown}
         role="listitem"
       >
         <Dropdown
@@ -101,87 +98,8 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
           }
         />
       </StyledFlexItem>
-    );
-  }, [items, pillsState, isMenuVisible, dropdownRef, activePills, onPillClick]);
-
-  useEffect(() => {
-    const itemIds = items.map((item) => item.id);
-    const stateIds = pillsState.map((stateItem) => stateItem.item.id);
-
-    // The item ids and their order must match exactly with the internal state, if not, the state needs to be synced up
-    if (itemIds.join() !== stateIds.join()) {
-      const newState = items.map((item) => {
-        const oldItem = pillsState.find((stateItem) => stateItem.item === item);
-
-        if (oldItem) {
-          return oldItem;
-        }
-
-        return {
-          // hideOverflownPills will correct this field if it needs correction
-          isVisible: true,
-          item,
-          ref: createRef<HTMLDivElement>(),
-        };
-      });
-
-      setPillsState(newState);
-    }
-  }, [items, pillsState]);
-
-  const renderedPills = useMemo(
-    () =>
-      items.map((item, index) => {
-        const pill = pillsState[index];
-
-        if (!pill) {
-          return;
-        }
-
-        return (
-          <StyledFlexItem
-            data-testid={`pilltabs-pill-${index}`}
-            isVisible={pill.isVisible}
-            key={index}
-            ref={pill.ref}
-            role="listitem"
-          >
-            <StyledPillTab
-              disabled={!pill.isVisible}
-              isActive={activePills.includes(item.id)}
-              marginRight="xSmall"
-              onClick={() => onPillClick(item.id)}
-              type="button"
-              variant="subtle"
-            >
-              {item.title}
-            </StyledPillTab>
-          </StyledFlexItem>
-        );
-      }),
-    [items, pillsState, activePills, onPillClick],
-  );
-
-  useEffect(() => {
-    hideOverflowedPills();
-  }, [items, parentRef, pillsState, hideOverflowedPills]);
-
-  useWindowResizeListener(() => {
-    hideOverflowedPills();
-  });
-
-  return items.length > 0 ? (
-    <Flex
-      data-testid="pilltabs-wrapper"
-      flexDirection="row"
-      flexWrap="nowrap"
-      ref={parentRef}
-      role="list"
-    >
-      {renderedPills}
-      {renderedDropdown}
     </Flex>
-  ) : null;
+  );
 };
 
 PillTabs.displayName = 'Pill Tabs';
