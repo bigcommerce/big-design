@@ -58,6 +58,7 @@ export const SideNav: React.FC = () => {
 
               <SideNavGroup title="Layout">
                 <SideNavLink href="/accordion-panel">Accordion Panel</SideNavLink>
+                <SideNavLink href="/anchor-nav">Anchor Nav</SideNavLink>
                 <SideNavLink href="/collapse">Collapse</SideNavLink>
                 <SideNavLink href="/modal">Modal</SideNavLink>
                 <SideNavLink href="/offset-pagination">OffsetPagination</SideNavLink>
