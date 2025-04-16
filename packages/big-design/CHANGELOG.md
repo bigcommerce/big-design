@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.8.1
+
+### Patch Changes
+
+- 75fe92a: PillTabs implementation refactor
+- a7bdf12: Fix a bug in the StatefulTable component where filtered rows were not preserved when changing the number of rows.
+
 ## 1.8.0
 
 ### Minor Changes
