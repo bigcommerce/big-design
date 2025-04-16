@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
 
@@ -549,6 +550,81 @@ describe('test search in the StatefulTable', () => {
     rows = await findAllByRole('row');
 
     expect(rows).toHaveLength(105);
+  });
+
+  test('maintains filtered state when both filters and search are active & items per page is changed', async () => {
+    const filters: StatefulTablePillTabFilter<TestItem> = {
+      pillTabs: [{ title: 'Low stock', id: 'low_stock' }],
+      filter: (_itemId, items) => items.filter((item) => item.stock !== 0 && item.stock < 10),
+    };
+
+    render(getSimpleTable({ filters, pagination: true, search: true }));
+
+    // Click on filter pill
+    await userEvent.click(screen.getByText('Low stock'));
+
+    // Add search term
+    await userEvent.type(screen.getByPlaceholderText('Search'), 'Product B');
+    await userEvent.click(screen.getByText('Search'));
+
+    let rows = await screen.findAllByRole('row');
+
+    expect(rows).toHaveLength(2);
+
+    const itemsPerPageButton = await screen.findByText('1 of 1');
+
+    await userEvent.click(itemsPerPageButton);
+    await userEvent.keyboard('{ArrowDown}{Enter}');
+
+    rows = await screen.findAllByRole('row');
+
+    expect(rows).toHaveLength(2);
+  });
+
+  test('maintains filtered state when only filters are active & items per page is changed', async () => {
+    const filters: StatefulTablePillTabFilter<TestItem> = {
+      pillTabs: [{ title: 'Low stock', id: 'low_stock' }],
+      filter: (_itemId, items) => items.filter((item) => item.stock < 5),
+    };
+
+    render(getSimpleTable({ filters, pagination: true }));
+
+    // Click on filter pill
+    await userEvent.click(screen.getByText('Low stock'));
+
+    let rows = await screen.findAllByRole('row');
+
+    expect(rows).toHaveLength(5);
+
+    const itemsPerPageButton = await screen.findByText('1 - 4 of 4');
+
+    await userEvent.click(itemsPerPageButton);
+    await userEvent.keyboard('{ArrowDown}{Enter}');
+
+    rows = await screen.findAllByRole('row');
+
+    expect(rows).toHaveLength(5);
+  });
+
+  test('maintains filtered state when only search is active & items per page is changed', async () => {
+    render(getSimpleTable({ search: true, pagination: true }));
+
+    await userEvent.type(screen.getByPlaceholderText('Search'), 'Product B');
+
+    await userEvent.click(screen.getByText('Search'));
+
+    let rows = await screen.findAllByRole('row');
+
+    expect(rows).toHaveLength(5);
+
+    const itemsPerPageButton = await screen.findByText('1 - 4 of 4');
+
+    await userEvent.click(itemsPerPageButton);
+    await userEvent.keyboard('{ArrowDown}{Enter}');
+
+    rows = await screen.findAllByRole('row');
+
+    expect(rows).toHaveLength(5);
   });
 });
 
