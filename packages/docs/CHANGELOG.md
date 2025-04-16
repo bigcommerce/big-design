@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.5.0
+
+### Minor Changes
+
+- 775df8a: Created lozenge component to indicate feature lifecycle status
+
+### Patch Changes
+
+- 3ff3c7b: Overrides the consecutive button margins within the page header component. The flex wrapper should handle the gap between the buttons.
+- Updated dependencies [775df8a]
+- Updated dependencies [0c11db0]
+- Updated dependencies [3ff3c7b]
+  - @bigcommerce/big-design-patterns@2.1.0
+  - @bigcommerce/big-design@1.8.0
+  - @bigcommerce/big-design-icons@1.3.0
+
 ## 1.4.1
 
 ### Patch Changes

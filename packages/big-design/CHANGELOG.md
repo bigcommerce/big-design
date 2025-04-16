@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.8.0
+
+### Minor Changes
+
+- 775df8a: Created lozenge component to indicate feature lifecycle status
+
+### Patch Changes
+
+- Updated dependencies [0c11db0]
+  - @bigcommerce/big-design-icons@1.3.0
+
 ## 1.7.1
 
 ### Patch Changes
