@@ -30,7 +30,6 @@ import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from '../Sel
 import { MultiSelectLocalization, MultiSelectProps } from './types';
 
 export const defaultLocalization: MultiSelectLocalization = {
-  optional: 'optional',
   selectAll: 'Select All',
 };
 
@@ -358,11 +357,7 @@ export const MultiSelect = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel
-            {...getLabelProps()}
-            localization={localization}
-            renderOptional={!required}
-          >
+          <FormControlLabel {...getLabelProps()} required={required}>
             {label}
           </FormControlLabel>
         );
@@ -376,7 +371,7 @@ export const MultiSelect = typedMemo(
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [getLabelProps, label, localization, required]);
+    }, [getLabelProps, label, required]);
 
     const renderToggle = useMemo(() => {
       return (

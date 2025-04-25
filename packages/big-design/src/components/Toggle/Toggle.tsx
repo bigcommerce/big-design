@@ -10,7 +10,6 @@ import React, {
 import { typedMemo, warning } from '../../utils';
 import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
-import { InputLocalization } from '../Input/Input';
 
 import { StyledButton } from './styled';
 
@@ -34,7 +33,6 @@ export interface ToggleProps<T> {
   label?: React.ReactChild;
   labelId?: string;
   disabled?: boolean;
-  localization?: InputLocalization;
   onChange(id: T): void;
 }
 
@@ -45,7 +43,6 @@ export const Toggle = typedMemo(
     items,
     label,
     labelId,
-    localization,
     onChange,
     ...props
   }: ToggleProps<T>) => {
@@ -65,7 +62,7 @@ export const Toggle = typedMemo(
 
       if (typeof label === 'string') {
         return (
-          <FormControlLabel htmlFor={id} id={labelId} localization={localization}>
+          <FormControlLabel htmlFor={id} id={labelId}>
             {label}
           </FormControlLabel>
         );
@@ -82,7 +79,7 @@ export const Toggle = typedMemo(
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [id, label, labelId, localization]);
+    }, [id, label, labelId]);
 
     return (
       <div>

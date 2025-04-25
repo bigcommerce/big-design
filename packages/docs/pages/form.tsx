@@ -157,7 +157,7 @@ const FormPage = () => {
                       </FormGroup>
                       <FormGroup>
                         <div>
-                          <FormControlLabel renderOptional={true}>Example Switch</FormControlLabel>
+                          <FormControlLabel>Example Switch</FormControlLabel>
                           <Switch checked={true} onChange={() => null} />
                         </div>
                       </FormGroup>

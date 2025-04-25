@@ -350,18 +350,8 @@ describe('error does not show when invalid type', () => {
   });
 });
 
-test('appends (optional) text to label if input is not required', () => {
-  const { container } = render(<Input label="Test Label" />);
-  const label = container.querySelector('label');
+test('appends * text to label if input is required', () => {
+  render(<Input label="label" required />);
 
-  expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
-});
-
-test('renders localized labels', () => {
-  const { container } = render(
-    <Input label="Test Label" localization={{ optional: 'opcional' }} />,
-  );
-  const label = container.querySelector('label');
-
-  expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
+  expect(screen.getByLabelText('label *')).toBeInTheDocument();
 });

@@ -3,7 +3,6 @@ import { ButtonProps } from '../Button';
 
 export interface Localization {
   upload: string;
-  optional: string;
   showLess: string;
   showMore: string;
   canNotUploadTheseFiles: string;

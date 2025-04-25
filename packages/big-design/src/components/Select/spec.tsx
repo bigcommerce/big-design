@@ -700,12 +700,12 @@ test('select should have a disabled attr if set as disabled', async () => {
 test('select should not have a disabled attr if not set as disabled', async () => {
   render(SelectMock);
 
-  const inputs = await screen.findAllByLabelText('Countries');
+  const inputs = await screen.findAllByLabelText('Countries *');
 
   expect(inputs[0].getAttribute('disabled')).toBeNull();
 });
 
-test('appends (optional) text to label if select is not required', async () => {
+test('appends * text to label if select is required', async () => {
   render(
     <Select
       label="Countries"
@@ -718,12 +718,13 @@ test('appends (optional) text to label if select is not required', async () => {
         { value: 'fr', content: 'France', disabled: true },
       ]}
       placeholder="Choose country"
+      required
     />,
   );
 
   const label = await screen.findByText('Countries');
 
-  expect(label).toHaveStyleRule('content', "' (optional)'", { modifier: '::after' });
+  expect(label?.lastChild).toHaveTextContent('*');
 });
 
 test('does not forward styles', async () => {
@@ -804,7 +805,7 @@ test('should accept a maxHeight prop', async () => {
 test('should default max-height to 250', async () => {
   render(SelectMock);
 
-  const inputs = await screen.findAllByLabelText('Countries');
+  const inputs = await screen.findAllByLabelText('Countries *');
 
   fireEvent.click(inputs[0]);
 
@@ -978,28 +979,6 @@ test('select action should supports description', async () => {
   fireEvent.click(input);
 
   expect(await screen.findByText('Action Description')).toBeInTheDocument();
-});
-
-test('renders localized labels', async () => {
-  render(
-    <Select
-      label="Countries"
-      localization={{ optional: 'opcional' }}
-      onOptionChange={onChange}
-      options={[
-        { value: 'us', content: 'United States' },
-        { value: 'mx', content: 'Mexico' },
-        { value: 'ca', content: 'Canada' },
-        { value: 'en', content: 'England' },
-        { value: 'fr', content: 'France', disabled: true },
-      ]}
-      placeholder="Choose country"
-    />,
-  );
-
-  const label = await screen.findByText('Countries');
-
-  expect(label).toHaveStyleRule('content', "' (opcional)'", { modifier: '::after' });
 });
 
 describe('aria-labelledby', () => {
