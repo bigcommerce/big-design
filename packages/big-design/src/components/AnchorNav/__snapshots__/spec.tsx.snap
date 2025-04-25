@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnchorNav Component matches the snapshot 1`] = `
+.c0 {
+  box-sizing: border-box;
+}
+
+.c2 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: xLarge;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 {
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+.c1 {
+  position: -webkit-sticky;
+  position: sticky;
+  -webkit-inset-block-start: 0;
+  -ms-intb-rlock-start: 0;
+  inset-block-start: 0;
+  width: 16.625rem;
+  float: inline-start;
+  display: none;
+}
+
+.c1 > ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c1 > ul > li {
+  display: block;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.c1 > ul > li > a {
+  color: #3C64F4;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  border-inline-start: 0.25rem solid transparent;
+}
+
+.c1 > ul > li > a:hover {
+  background-color: #F0F3FF;
+}
+
+.c1 > ul > li > a.active {
+  color: #313440;
+  border-inline-start: 0.25rem solid #3C64F4;
+}
+
+.c1 > ul > li > a.active:hover {
+  background-color: transparent;
+}
+
+@media (min-width:720px) {
+  .c1 {
+    display: block;
+    margin-inline-end: 1.5rem;
+  }
+}
+
+<div
+  class="c0"
+>
+  <nav
+    class="c1"
+  >
+    <ul>
+      <li>
+        <a
+          class=""
+          href="#section1"
+        >
+          Section 1
+        </a>
+      </li>
+      <li>
+        <a
+          class=""
+          href="#section2"
+        >
+          Section 2
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    class="c0 c2"
+  >
+    <div
+      class="c0 c3"
+      id="section1"
+      style="scroll-margin-top: 80px;"
+    >
+      <div>
+        Content 1
+      </div>
+    </div>
+    <div
+      class="c0 c3"
+      id="section2"
+      style="scroll-margin-top: 80px;"
+    >
+      <div>
+        Content 2
+      </div>
+    </div>
+  </div>
+</div>
+`;
