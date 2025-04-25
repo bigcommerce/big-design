@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.6.0
+
+### Minor Changes
+
+- 9d73348: Added StatusMessage component to unify visuals and format on empty and error states as well as full error pages
+- 0d23a03: Inverts the input required/optional pattern for required inputs to have a red asterisk as indicator and removes the optional label from non required inputs.
+- b78ce1b: Added AnchorNav component
+
+### Patch Changes
+
+- Updated dependencies [9d73348]
+- Updated dependencies [0d23a03]
+- Updated dependencies [75fe92a]
+- Updated dependencies [b78ce1b]
+- Updated dependencies [a7bdf12]
+  - @bigcommerce/big-design@2.0.0
+  - @bigcommerce/big-design-patterns@3.0.0
+
 ## 1.5.0
 
 ### Minor Changes

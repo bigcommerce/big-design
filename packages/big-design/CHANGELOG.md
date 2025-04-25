@@ -1,5 +1,21 @@
 # Change Log
 
+## 2.0.0
+
+### Major Changes
+
+- 0d23a03: Inverts the input required/optional pattern for required inputs to have a red asterisk as indicator and removes the optional label from non required inputs.
+
+### Minor Changes
+
+- 9d73348: Added StatusMessage component to unify visuals and format on empty and error states as well as full error pages
+- b78ce1b: Added AnchorNav component
+
+### Patch Changes
+
+- 75fe92a: PillTabs implementation refactor
+- a7bdf12: Fix a bug in the StatefulTable component where filtered rows were not preserved when changing the number of rows.
+
 ## 1.8.0
 
 ### Minor Changes
