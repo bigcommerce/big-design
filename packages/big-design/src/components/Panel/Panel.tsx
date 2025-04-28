@@ -1,12 +1,14 @@
 import React, { ComponentPropsWithoutRef, forwardRef, isValidElement, memo, Ref } from 'react';
 
-import { MarginProps } from '../../helpers';
+import { excludeMarginProps, MarginProps } from '../../helpers';
 import { excludePaddingProps } from '../../helpers/paddings/paddings';
 import { warning } from '../../utils';
 import { Badge, BadgeProps } from '../Badge/Badge';
 import { Box } from '../Box';
 import { Button, ButtonProps } from '../Button';
+import { Dropdown, DropdownProps } from '../Dropdown';
 import { Flex } from '../Flex';
+import { Lozenge, LozengeProps } from '../Lozenge';
 import { Text } from '../Typography';
 
 import { StyledH2, StyledPanel } from './styled';
@@ -15,9 +17,15 @@ interface PrivateProps {
   forwardedRef: Ref<HTMLDivElement>;
 }
 
-export interface PanelAction extends Omit<ButtonProps, 'children'> {
+export interface PanelActionProps extends Omit<ButtonProps, 'children' | 'mobileWidth'> {
   text?: string;
 }
+
+export interface PanelDropdownProps extends Omit<DropdownProps, 'toggle'> {
+  toggle: PanelActionProps;
+}
+
+export type PanelAction = PanelActionProps | PanelDropdownProps;
 
 export interface PanelProps extends ComponentPropsWithoutRef<'div'>, MarginProps {
   children?: React.ReactNode;
@@ -26,11 +34,39 @@ export interface PanelProps extends ComponentPropsWithoutRef<'div'>, MarginProps
   headerId?: string;
   action?: PanelAction;
   badge?: BadgeProps;
+  lozenge?: LozengeProps;
 }
+
+const Action = (action: PanelAction) => {
+  if ('toggle' in action) {
+    const { toggle, ...dropdownProps } = action;
+    const { text, ...buttonProps } = toggle;
+
+    return (
+      <Dropdown
+        {...dropdownProps}
+        toggle={
+          <Button {...excludeMarginProps(buttonProps)} mobileWidth="auto">
+            {text}
+          </Button>
+        }
+      />
+    );
+  }
+
+  const { text, ...buttonProps } = action;
+
+  return (
+    <Button {...excludeMarginProps(buttonProps)} mobileWidth="auto">
+      {text}
+    </Button>
+  );
+};
 
 export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {
   const filteredProps = excludePaddingProps(props);
-  const { action, children, description, header, headerId, badge, ...rest } = filteredProps;
+  const { action, children, description, header, headerId, badge, lozenge, ...rest } =
+    filteredProps;
 
   const renderHeader = () => {
     if (!header && !action) {
@@ -42,14 +78,17 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
     }
 
     return (
-      <Flex flexDirection="row">
+      <Flex alignItems="center" flexDirection="row" flexGap="0.5rem" justifyContent="space-between">
         {Boolean(header) && (
-          <StyledH2 id={headerId} marginBottom="none">
-            {header}
-            {badge && <Badge marginLeft="xSmall" {...badge} />}
-          </StyledH2>
+          <Flex alignItems="center" flexDirection="row" flexGap="0.5rem">
+            <StyledH2 id={headerId} marginBottom="none">
+              {header}
+            </StyledH2>
+            {lozenge && <Lozenge {...lozenge} />}
+            {badge && <Badge {...badge} />}
+          </Flex>
         )}
-        {action && <Button {...action}>{action.text}</Button>}
+        {action && <Action {...action} />}
       </Flex>
     );
   };

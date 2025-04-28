@@ -2,7 +2,7 @@
 
 exports[`it renders accordion panel header 1`] = `
 <h2
-  class="styled__StyledH2-sc-218b28a9-2 styled__StyledH2-sc-93a30afd-1 hCxYWp jbcAKv"
+  class="styled__StyledH2-sc-218b28a9-2 styled__StyledH2-sc-eda6cb79-1 hCxYWp cMjtfK"
 >
   Accordion Panel Header
 </h2>
