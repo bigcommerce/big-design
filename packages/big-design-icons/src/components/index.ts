@@ -10,6 +10,7 @@ export * from './AssignmentIcon';
 export * from './AutoAwesomeIcon';
 export * from './BaselineHelpIcon';
 export * from './BrushIcon';
+export * from './CategoryIcon';
 export * from './CheckCircleIcon';
 export * from './CheckIcon';
 export * from './ChevronLeftIcon';
