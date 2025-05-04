@@ -2,12 +2,13 @@ import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
 import React, { createRef, useMemo } from 'react';
 
 import { Button } from '../Button';
-import { Dropdown } from '../Dropdown';
+import { Dropdown, DropdownProps } from '../Dropdown';
 import { Flex } from '../Flex';
 
 import { StyledFlexItem, StyledPillTab } from './styled';
-import { useAvailableWidth } from './useAvailableWidth';
 import { toDropdownItem } from './toDropDownItem';
+import { toDropdownItemGroups } from './toDropdownItemGroups';
+import { useAvailableWidth } from './useAvailableWidth';
 
 export interface PillTabItem {
   id: string;
@@ -26,9 +27,15 @@ export interface PillTabsProps {
   items: PillTabItem[];
   activePills: string[];
   onPillClick: (itemId: string) => void;
+  dropdownItems?: DropdownProps['items'];
 }
 
-export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
+export const PillTabs: React.FC<PillTabsProps> = ({
+  activePills,
+  items,
+  onPillClick,
+  dropdownItems: customDropdownItems = [],
+}) => {
   const refs = { parent: createRef<HTMLDivElement>(), dropdown: createRef<HTMLDivElement>() };
   const availableWidth = useAvailableWidth(refs);
 
@@ -54,7 +61,10 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
     { pills: [], widthBudget: availableWidth },
   );
 
-  const dropdownItems = pills.filter(({ isVisible }) => !isVisible).map(toDropdownItem);
+  const dropdownItemGroups = toDropdownItemGroups({
+    overflow: pills.filter(({ isVisible }) => !isVisible).map(toDropdownItem),
+    custom: customDropdownItems,
+  });
 
   if (pills.length === 0) {
     return null;
@@ -90,12 +100,12 @@ export const PillTabs: React.FC<PillTabsProps> = ({ activePills, items, onPillCl
       ))}
       <StyledFlexItem
         data-testid="pilltabs-dropdown-toggle"
-        isVisible={pills.some(({ isVisible }) => !isVisible)}
+        isVisible={dropdownItemGroups.length > 0}
         ref={refs.dropdown}
         role="listitem"
       >
         <Dropdown
-          items={dropdownItems}
+          items={dropdownItemGroups}
           toggle={
             <Button iconOnly={<MoreHorizIcon title="add" />} type="button" variant="subtle" />
           }

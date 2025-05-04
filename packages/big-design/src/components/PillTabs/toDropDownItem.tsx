@@ -1,5 +1,6 @@
 import { CheckIcon } from '@bigcommerce/big-design-icons';
 import React from 'react';
+
 import { DropdownItem } from '../Dropdown';
 
 interface Pill {
