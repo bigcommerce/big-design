@@ -32,6 +32,15 @@ const pillTabsPropTable: Prop[] = [
     description: 'Function that will get called when a pill tab is clicked.',
     required: true,
   },
+  {
+    name: 'dropdownItems',
+    types: 'Array<DropdownItem | DropdownLinkItem> | Array<DropdownItemGroup>',
+    description: (
+      <>
+        See the <NextLink href="/dropdown">Dropdown</NextLink> component for usage.
+      </>
+    ),
+  },
 ];
 
 export const PillTabsPropTable: React.FC<PropTableWrapper> = (props) => (
