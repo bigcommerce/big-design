@@ -1,4 +1,5 @@
 import { Flex, FlexItem, H1, Link, Panel, PillTabs, Text } from '@bigcommerce/big-design';
+import { DeleteIcon } from '@bigcommerce/big-design-icons';
 import React, { useState } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
@@ -109,6 +110,60 @@ const PillTabsPage = () => {
                           ))}
                         </Flex>
                       </>
+                    );
+                  }}
+                  {/* jsx-to-string:end */}
+                </CodePreview>
+              ),
+            },
+            {
+              id: 'with-dropdown-items',
+              title: 'Dropdown Items',
+              render: () => (
+                <CodePreview>
+                  {/* jsx-to-string:start */}
+                  {function Example() {
+                    const [activePills, setActivePills] = useState<string[]>([]);
+
+                    const items = [
+                      { title: 'Shipping', id: 'shipping' },
+                      { title: 'Orders', id: 'orders' },
+                    ];
+
+                    const onPillClick = (pillId: string) => {
+                      const isPillActive = !activePills.includes(pillId);
+                      const updatedPills = isPillActive
+                        ? [...activePills, pillId]
+                        : activePills.filter((activePillId) => activePillId !== pillId);
+
+                      setActivePills(updatedPills);
+                    };
+
+                    const dropdownItems = [
+                      {
+                        type: 'link' as const,
+                        content: 'Find out more',
+                        url: '#',
+                      },
+                      {
+                        content: 'Create new item',
+                        onItemClick: () => undefined,
+                      },
+                      {
+                        content: 'Delete all items',
+                        onItemClick: () => undefined,
+                        icon: <DeleteIcon />,
+                        actionType: 'destructive' as const,
+                      },
+                    ];
+
+                    return (
+                      <PillTabs
+                        activePills={activePills}
+                        dropdownItems={dropdownItems}
+                        items={items}
+                        onPillClick={onPillClick}
+                      />
                     );
                   }}
                   {/* jsx-to-string:end */}
