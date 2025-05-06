@@ -1,2 +1,1 @@
-export { Panel, type PanelProps } from './Panel';
 export { PanelContents, type PanelContentProps } from './Contents';
