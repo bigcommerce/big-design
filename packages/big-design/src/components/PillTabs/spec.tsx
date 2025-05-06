@@ -13,10 +13,10 @@ const Wrapper = styled.div`
 
 Wrapper.defaultProps = { theme: defaultTheme };
 
-const TestComponent: React.FC<PillTabsProps> = ({ activePills, items, onPillClick }) => {
+const TestComponent: React.FC<PillTabsProps> = (props) => {
   return (
     <Wrapper data-testid="wrapper">
-      <PillTabs activePills={activePills} items={items} onPillClick={onPillClick} />
+      <PillTabs {...props} />
     </Wrapper>
   );
 };
@@ -529,4 +529,92 @@ test('it does not render when provided an empty list of items', () => {
   const { container } = render(<PillTabs activePills={[]} items={[]} onPillClick={jest.fn()} />);
 
   expect(container.firstChild).toBeNull();
+});
+
+describe('when using dropdown items', () => {
+  test('renders the dropdown items within the dropdown, regardless of space', async () => {
+    const dropdownItems = [
+      { content: 'Some dropdown action', onItemClick: jest.fn() },
+      { content: 'Another dropdown action', onItemClick: jest.fn() },
+    ];
+
+    render(
+      <TestComponent
+        activePills={[]}
+        dropdownItems={dropdownItems}
+        items={[{ title: 'Cheddar', id: 'cheddar' }]}
+        onPillClick={jest.fn()}
+      />,
+    );
+
+    await userEvent.click(await screen.findByRole('button', { name: 'add' }));
+
+    expect(await screen.findByRole('option', { name: 'Some dropdown action' })).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: 'Another dropdown action' })).toBeInTheDocument();
+  });
+
+  describe('when there is not enough space for all pilltabs', () => {
+    beforeEach(() => {
+      Object.defineProperties(window.HTMLElement.prototype, {
+        offsetWidth: {
+          get(this: HTMLElement) {
+            switch (this.dataset.testid) {
+              case 'pilltabs-wrapper':
+                return 260;
+
+              // only enough space for 2 pills
+              case 'pilltabs-dropdown-toggle':
+                return 50;
+
+              case 'pilltabs-pill-0':
+                return 100;
+
+              case 'pilltabs-pill-1':
+                return 100;
+
+              case 'pilltabs-pill-2':
+                return 100;
+
+              default:
+                return parseFloat(this.style.width) || 0;
+            }
+          },
+        },
+      });
+    });
+
+    test('renders the dropdown items within the dropdown, after the overflowing pilltabs', async () => {
+      const items = [
+        { title: 'Cheddar', id: 'cheddar' },
+        { title: 'Gouda', id: 'gouda' },
+        { title: 'Brie', id: 'brie' },
+      ];
+
+      const dropdownItems = [
+        { content: 'Some dropdown action', onItemClick: jest.fn() },
+        { content: 'Another dropdown action', onItemClick: jest.fn() },
+      ];
+
+      render(
+        <TestComponent
+          activePills={[]}
+          dropdownItems={dropdownItems}
+          items={items}
+          onPillClick={jest.fn()}
+        />,
+      );
+
+      await userEvent.click(await screen.findByRole('button', { name: 'add' }));
+
+      const allOptions = await screen.findAllByRole('option');
+
+      const brie = screen.getByRole('option', { name: 'Brie' });
+      const someAction = screen.getByRole('option', { name: 'Some dropdown action' });
+      const anotherAction = screen.getByRole('option', { name: 'Another dropdown action' });
+
+      expect(allOptions[0]).toBe(brie);
+      expect(allOptions[1]).toBe(someAction);
+      expect(allOptions[2]).toBe(anotherAction);
+    });
+  });
 });
