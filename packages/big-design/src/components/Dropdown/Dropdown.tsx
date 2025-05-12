@@ -16,7 +16,7 @@ import { List } from '../List';
 import { StyledBox } from './styled';
 import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from './types';
 
-export const isGroups = (
+export const isDropdownItemGroupArray = (
   items: Array<DropdownItemGroup | DropdownItem | DropdownLinkItem>,
 ): items is DropdownItemGroup[] =>
   items.every((items) => 'items' in items && !('content' in items));
@@ -39,7 +39,7 @@ export const Dropdown = memo(
     const dropdownUniqueId = useId();
 
     const flattenItems = useCallback((items: DropdownProps['items']) => {
-      return isGroups(items)
+      return isDropdownItemGroupArray(items)
         ? items.map((group) => group.items).reduce((acum, curr) => acum.concat(curr), [])
         : items;
     }, []);

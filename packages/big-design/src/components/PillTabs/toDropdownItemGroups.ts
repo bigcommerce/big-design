@@ -1,9 +1,10 @@
 import { DropdownItemGroup, DropdownProps } from '../Dropdown';
-import { isGroups } from '../Dropdown/Dropdown';
+import { isDropdownItemGroupArray } from '../Dropdown/Dropdown';
 
 type Items = DropdownProps['items'];
 
-const toGroups = (items: Items): DropdownItemGroup[] => (isGroups(items) ? items : [{ items }]);
+const toGroups = (items: Items): DropdownItemGroup[] =>
+  isDropdownItemGroupArray(items) ? items : [{ items }];
 
 type ToDropDownItemGroups = (items: { overflow: Items; custom: Items }) => DropdownItemGroup[];
 
