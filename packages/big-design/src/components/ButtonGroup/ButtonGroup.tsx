@@ -1,12 +1,12 @@
 import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
 import React, {
-  ComponentPropsWithoutRef,
-  createRef,
-  memo,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
+    ComponentPropsWithoutRef,
+    memo,
+    useCallback,
+    useLayoutEffect,
+    useMemo,
+    useRef,
+    useState,
 } from 'react';
 
 import { MarginProps } from '../../helpers';
@@ -36,148 +36,113 @@ export interface ButtonGroupProps extends ComponentPropsWithoutRef<'div'>, Margi
   localization?: Localization;
 }
 
-interface ActionsState {
-  isVisible: boolean;
-  action: ButtonGroupAction;
-  ref: React.RefObject<HTMLDivElement>;
-}
-
-const excludeIconProps = ({
-  iconOnly,
-  iconRight,
-  iconLeft,
-  ...actionProps
-}: ButtonProps & Pick<ButtonGroupAction, 'text'>): ButtonGroupAction => actionProps;
-
 export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
-  ({ actions, localization = defaultLocalization, ...wrapperProps }) => {
-    const parentRef = createRef<HTMLDivElement>();
-    const dropdownRef = createRef<HTMLDivElement>();
-    const [isMenuVisible, setIsMenuVisible] = useState(false);
-    const [actionsState, setActionsState] = useState<ActionsState[]>([]);
+    ({ actions, localization = defaultLocalization, ...wrapperProps }) => {
+        const parentRef = useRef<HTMLDivElement>(null);
+        const dropdownRef = useRef<HTMLButtonElement>(null);
+        const actionRefs = useRef<React.RefObject<HTMLDivElement>[]>(
+            actions.map(() => React.createRef<HTMLDivElement>())
+        );
+        const [visible, setVisible] = useState<boolean[]>(() =>
+            actions.map(() => true)
+        );
 
-    useEffect(() => {
-      setActionsState(
-        actions.map((action) => ({
-          isVisible: true,
-          action: excludeIconProps(action),
-          ref: createRef<HTMLDivElement>(),
-        })),
-      );
-    }, [actions]);
+        const hideOverflowedActions = useCallback(() => {
+            const parentWidth = parentRef.current?.offsetWidth ?? 0;
+            const dropdownWidth = dropdownRef.current?.offsetWidth ?? 0;
+            let remaining = parentWidth;
 
-    const hideOverflowedActions = useCallback(() => {
-      const parentWidth = parentRef.current?.offsetWidth ?? 0;
-      const dropdownWidth = dropdownRef.current?.offsetWidth ?? 0;
+            const nextVisible = actionRefs.current.map((ref, i) => {
+                const w = ref.current?.offsetWidth ?? 0;
+                if (actions[i].actionType === 'destructive') {
+                    return false;
+                }
+                if (remaining - w > dropdownWidth) {
+                    remaining -= w;
+                    return true;
+                }
+                return false;
+            });
 
-      let remainingWidth = parentWidth;
+            setVisible(prev => {
+                if (nextVisible.some((v, i) => v !== prev[i])) {
+                    return nextVisible;
+                }
+                return prev;
+            });
+        }, [actions]);
 
-      const nextState = actionsState.map((stateObj) => {
-        const actionWidth = stateObj.ref.current?.offsetWidth;
+        useLayoutEffect(() => {
+            hideOverflowedActions();
+        }, [actions, hideOverflowedActions]);
 
-        if (!actionWidth) {
-          return stateObj;
+        useWindowResizeListener(() => {
+            hideOverflowedActions();
+        });
+
+        const isMenuVisible = visible.some(v => !v);
+
+        const renderedActions = useMemo(
+            () =>
+                actions.map((action, i) => (
+                    <StyledFlexItem
+                        data-testid="buttongroup-item"
+                        isVisible={visible[i]}
+                        key={i}
+                        ref={actionRefs.current[i]}
+                        role="listitem"
+                    >
+                        <StyledButton {...action} variant="secondary">
+                            {action.text}
+                        </StyledButton>
+                    </StyledFlexItem>
+                )),
+            [actions, visible]
+        );
+
+        const renderedDropdown = useMemo(
+            () => (
+                <StyledFlexItem
+                    data-testid="buttongroup-dropdown"
+                    isVisible={isMenuVisible}
+                    role="listitem"
+                >
+                    <Dropdown
+                        placement="bottom-end"
+                        toggle={
+                            <StyledButton
+                                ref={dropdownRef}
+                                data-testid="buttongroup-dropdown"
+                                borderRadius={visible.every(v => !v)}
+                                iconOnly={<MoreHorizIcon title={localization.more} />}
+                                type="button"
+                                variant="secondary"
+                            />
+                        }
+                        items={actions
+                            .map((action, i) => ({ action, ref: actionRefs.current[i] }))
+                            .filter((_, i) => !visible[i])
+                            .map(({ action, ref }) => ({
+                                actionType: action.actionType,
+                                content: action.text,
+                                disabled: action.disabled,
+                                icon: action.icon,
+                                onItemClick: () => {
+                                    if (ref.current) {
+                                        ref.current.getElementsByTagName('button')[0].click();
+                                    }
+                                },
+                                hash: action.text.toLowerCase(),
+                            }))}
+                    />
+                </StyledFlexItem>
+            ),
+            [actions, isMenuVisible, localization.more, visible]
+        );
+
+        if (actions.length === 0) {
+            return null;
         }
-
-        if (stateObj.action.actionType === 'destructive') {
-          return { ...stateObj, isVisible: false };
-        }
-
-        if (remainingWidth - actionWidth > dropdownWidth) {
-          remainingWidth -= actionWidth;
-
-          return { ...stateObj, isVisible: true };
-        }
-
-        return { ...stateObj, isVisible: false };
-      });
-
-      const visibleActions = actionsState.filter(({ isVisible }) => isVisible);
-      const nextVisibleActions = nextState.filter(({ isVisible }) => isVisible);
-
-      if (visibleActions.length !== nextVisibleActions.length) {
-        setActionsState(nextState);
-      }
-    }, [actionsState, dropdownRef, parentRef]);
-
-    const renderedDropdown = useMemo(
-      () => (
-        <StyledFlexItem
-          data-testid="buttongroup-dropdown"
-          isVisible={isMenuVisible}
-          ref={dropdownRef}
-          role="listitem"
-        >
-          <Dropdown
-            items={actionsState
-              .filter(({ isVisible }) => !isVisible)
-              .map(({ action, ref }) => ({
-                actionType: action.actionType,
-                content: action.text,
-                disabled: action.disabled,
-                onItemClick: () => {
-                  if (ref.current) {
-                    ref.current.getElementsByTagName('button')[0].click();
-                  }
-                },
-                hash: action.text.toLowerCase(),
-                icon: action.icon,
-              }))}
-            placement="bottom-end"
-            toggle={
-              <StyledButton
-                borderRadius={actionsState.every(({ isVisible }) => !isVisible)}
-                iconOnly={<MoreHorizIcon title={localization.more} />}
-                type="button"
-                variant="secondary"
-              />
-            }
-          />
-        </StyledFlexItem>
-      ),
-      [actionsState, dropdownRef, isMenuVisible, localization.more],
-    );
-
-    const renderedActions = useMemo(
-      () =>
-        [...actionsState]
-          .reverse()
-          .sort(({ isVisible }) => (isVisible ? -1 : 1))
-          .map(({ action, isVisible, ref }, key) => {
-            const { text, icon, ...buttonProps } = action;
-
-            return (
-              <StyledFlexItem
-                data-testid="buttongroup-item"
-                isVisible={isVisible}
-                key={key}
-                ref={ref}
-                role="listitem"
-              >
-                <StyledButton {...buttonProps} variant="secondary">
-                  {text}
-                </StyledButton>
-              </StyledFlexItem>
-            );
-          }),
-      [actionsState],
-    );
-
-    useEffect(() => {
-      const nextIsMenuVisible = actionsState.some(({ isVisible }) => !isVisible);
-
-      if (nextIsMenuVisible !== isMenuVisible) {
-        setIsMenuVisible(nextIsMenuVisible);
-      }
-    }, [actionsState, isMenuVisible]);
-
-    useEffect(() => {
-      hideOverflowedActions();
-    }, [actions, parentRef, hideOverflowedActions]);
-
-    useWindowResizeListener(() => {
-      hideOverflowedActions();
-    });
 
     return actions.length > 0 ? (
       <Flex
