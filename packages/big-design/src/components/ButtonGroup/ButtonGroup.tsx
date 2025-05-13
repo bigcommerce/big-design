@@ -4,7 +4,7 @@ import React, {
   createRef,
   memo,
   useCallback,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useState,
 } from 'react';
@@ -54,17 +54,13 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
     const parentRef = createRef<HTMLDivElement>();
     const dropdownRef = createRef<HTMLDivElement>();
     const [isMenuVisible, setIsMenuVisible] = useState(false);
-    const [actionsState, setActionsState] = useState<ActionsState[]>([]);
-
-    useEffect(() => {
-      setActionsState(
-        actions.map((action) => ({
-          isVisible: true,
-          action: excludeIconProps(action),
-          ref: createRef<HTMLDivElement>(),
-        })),
-      );
-    }, [actions]);
+    const [actionsState, setActionsState] = useState<ActionsState[]>(() => {
+      return actions.map((action) => ({
+        isVisible: true,
+        action: excludeIconProps(action),
+        ref: createRef<HTMLDivElement>(),
+      }));
+    });
 
     const hideOverflowedActions = useCallback(() => {
       const parentWidth = parentRef.current?.offsetWidth ?? 0;
@@ -163,7 +159,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
       [actionsState],
     );
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       const nextIsMenuVisible = actionsState.some(({ isVisible }) => !isVisible);
 
       if (nextIsMenuVisible !== isMenuVisible) {
@@ -171,7 +167,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
       }
     }, [actionsState, isMenuVisible]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       hideOverflowedActions();
     }, [actions, parentRef, hideOverflowedActions]);
 
