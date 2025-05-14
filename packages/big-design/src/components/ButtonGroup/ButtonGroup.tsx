@@ -1,12 +1,13 @@
 import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
 import React, {
-    ComponentPropsWithoutRef,
-    memo,
-    useCallback,
-    useLayoutEffect,
-    useMemo,
-    useRef,
-    useState,
+  ComponentPropsWithoutRef,
+  createRef,
+  memo,
+  useCallback,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
 } from 'react';
 
 import { MarginProps } from '../../helpers';
@@ -37,112 +38,115 @@ export interface ButtonGroupProps extends ComponentPropsWithoutRef<'div'>, Margi
 }
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
-    ({ actions, localization = defaultLocalization, ...wrapperProps }) => {
-        const parentRef = useRef<HTMLDivElement>(null);
-        const dropdownRef = useRef<HTMLButtonElement>(null);
-        const actionRefs = useRef<React.RefObject<HTMLDivElement>[]>(
-            actions.map(() => React.createRef<HTMLDivElement>())
-        );
-        const [visible, setVisible] = useState<boolean[]>(() =>
-            actions.map(() => true)
-        );
+  ({ actions, localization = defaultLocalization, ...wrapperProps }) => {
+    const parentRef = useRef<HTMLDivElement>(null);
+    const dropdownRef = useRef<HTMLButtonElement>(null);
+    const actionRefs = useRef<Array<React.RefObject<HTMLDivElement>>>(
+      actions.map(() => createRef<HTMLDivElement>()),
+    );
+    const [visible, setVisible] = useState<boolean[]>(() => actions.map(() => true));
 
-        const hideOverflowedActions = useCallback(() => {
-            const parentWidth = parentRef.current?.offsetWidth ?? 0;
-            const dropdownWidth = dropdownRef.current?.offsetWidth ?? 0;
-            let remaining = parentWidth;
+    const hideOverflowedActions = useCallback(() => {
+      const parentWidth = parentRef.current?.offsetWidth ?? 0;
+      const dropdownWidth = dropdownRef.current?.offsetWidth ?? 0;
+      let remaining = parentWidth;
 
-            const nextVisible = actionRefs.current.map((ref, i) => {
-                const w = ref.current?.offsetWidth ?? 0;
-                if (actions[i].actionType === 'destructive') {
-                    return false;
-                }
-                if (remaining - w > dropdownWidth) {
-                    remaining -= w;
-                    return true;
-                }
-                return false;
-            });
+      const nextVisible = actionRefs.current.map((ref, i) => {
+        const w = ref.current?.offsetWidth ?? 0;
 
-            setVisible(prev => {
-                if (nextVisible.some((v, i) => v !== prev[i])) {
-                    return nextVisible;
-                }
-                return prev;
-            });
-        }, [actions]);
-
-        useLayoutEffect(() => {
-            hideOverflowedActions();
-        }, [actions, hideOverflowedActions]);
-
-        useWindowResizeListener(() => {
-            hideOverflowedActions();
-        });
-
-        const isMenuVisible = visible.some(v => !v);
-
-        const renderedActions = useMemo(
-            () =>
-                actions.map((action, i) => (
-                    <StyledFlexItem
-                        data-testid="buttongroup-item"
-                        isVisible={visible[i]}
-                        key={i}
-                        ref={actionRefs.current[i]}
-                        role="listitem"
-                    >
-                        <StyledButton {...action} variant="secondary">
-                            {action.text}
-                        </StyledButton>
-                    </StyledFlexItem>
-                )),
-            [actions, visible]
-        );
-
-        const renderedDropdown = useMemo(
-            () => (
-                <StyledFlexItem
-                    data-testid="buttongroup-dropdown"
-                    isVisible={isMenuVisible}
-                    role="listitem"
-                >
-                    <Dropdown
-                        placement="bottom-end"
-                        toggle={
-                            <StyledButton
-                                ref={dropdownRef}
-                                data-testid="buttongroup-dropdown"
-                                borderRadius={visible.every(v => !v)}
-                                iconOnly={<MoreHorizIcon title={localization.more} />}
-                                type="button"
-                                variant="secondary"
-                            />
-                        }
-                        items={actions
-                            .map((action, i) => ({ action, ref: actionRefs.current[i] }))
-                            .filter((_, i) => !visible[i])
-                            .map(({ action, ref }) => ({
-                                actionType: action.actionType,
-                                content: action.text,
-                                disabled: action.disabled,
-                                icon: action.icon,
-                                onItemClick: () => {
-                                    if (ref.current) {
-                                        ref.current.getElementsByTagName('button')[0].click();
-                                    }
-                                },
-                                hash: action.text.toLowerCase(),
-                            }))}
-                    />
-                </StyledFlexItem>
-            ),
-            [actions, isMenuVisible, localization.more, visible]
-        );
-
-        if (actions.length === 0) {
-            return null;
+        if (actions[i].actionType === 'destructive') {
+          return false;
         }
+
+        if (remaining - w > dropdownWidth) {
+          remaining -= w;
+
+          return true;
+        }
+
+        return false;
+      });
+
+      setVisible((prev) => {
+        if (nextVisible.some((v, i) => v !== prev[i])) {
+          return nextVisible;
+        }
+
+        return prev;
+      });
+    }, [actions]);
+
+    useLayoutEffect(() => {
+      hideOverflowedActions();
+    }, [actions, hideOverflowedActions]);
+
+    useWindowResizeListener(() => {
+      hideOverflowedActions();
+    });
+
+    const isMenuVisible = visible.some((v) => !v);
+
+    const renderedActions = useMemo(
+      () =>
+        actions.map((action, i) => (
+          <StyledFlexItem
+            data-testid="buttongroup-item"
+            isVisible={visible[i]}
+            key={i}
+            ref={actionRefs.current[i]}
+            role="listitem"
+          >
+            <StyledButton {...action} variant="secondary">
+              {action.text}
+            </StyledButton>
+          </StyledFlexItem>
+        )),
+      [actions, visible],
+    );
+
+    const renderedDropdown = useMemo(
+      () => (
+        <StyledFlexItem
+          data-testid="buttongroup-dropdown"
+          isVisible={isMenuVisible}
+          role="listitem"
+        >
+          <Dropdown
+            items={actions
+              .map((action, i) => ({ action, ref: actionRefs.current[i] }))
+              .filter((_, i) => !visible[i])
+              .map(({ action, ref }) => ({
+                actionType: action.actionType,
+                content: action.text,
+                disabled: action.disabled,
+                icon: action.icon,
+                onItemClick: () => {
+                  if (ref.current) {
+                    ref.current.getElementsByTagName('button')[0].click();
+                  }
+                },
+                hash: action.text.toLowerCase(),
+              }))}
+            placement="bottom-end"
+            toggle={
+              <StyledButton
+                borderRadius={visible.every((v) => !v)}
+                data-testid="buttongroup-dropdown"
+                iconOnly={<MoreHorizIcon title={localization.more} />}
+                ref={dropdownRef}
+                type="button"
+                variant="secondary"
+              />
+            }
+          />
+        </StyledFlexItem>
+      ),
+      [actions, isMenuVisible, localization.more, visible],
+    );
+
+    if (actions.length === 0) {
+      return null;
+    }
 
     return actions.length > 0 ? (
       <Flex
