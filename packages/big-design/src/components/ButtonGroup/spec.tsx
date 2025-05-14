@@ -165,28 +165,28 @@ test('renders localized labels', async () => {
 });
 
 test('hides extra buttons on render', async () => {
-    render(
-        <ButtonGroup
-            actions={[
-                { text: 'A' },
-                { text: 'B' },
-                { text: 'C' },
-                { text: 'D' },
-                { text: 'E' },
-                { text: 'F' },
-            ]}
-        />
-    );
+  render(
+    <ButtonGroup
+      actions={[
+        { text: 'A' },
+        { text: 'B' },
+        { text: 'C' },
+        { text: 'D' },
+        { text: 'E' },
+        { text: 'F' },
+      ]}
+    />,
+  );
 
-    await act(() => Promise.resolve());
+  await act(() => Promise.resolve());
 
-    expect(screen.getByRole('button', { name: /A/ })).toBeVisible();
-    expect(screen.getByRole('button', { name: /B/ })).toBeVisible();
-    expect(screen.getByRole('button', { name: /C/ })).toBeVisible();
+  expect(screen.getByRole('button', { name: /A/ })).toBeVisible();
+  expect(screen.getByRole('button', { name: /B/ })).toBeVisible();
+  expect(screen.getByRole('button', { name: /C/ })).toBeVisible();
 
-    expect(screen.queryByRole('button', { name: /D/ })).toBeNull();
-    expect(screen.queryByRole('button', { name: /E/ })).toBeNull();
-    expect(screen.queryByRole('button', { name: /F/ })).toBeNull();
+  expect(screen.queryByRole('button', { name: /D/ })).toBeNull();
+  expect(screen.queryByRole('button', { name: /E/ })).toBeNull();
+  expect(screen.queryByRole('button', { name: /F/ })).toBeNull();
 
-    expect(screen.getByRole('button', { name: /more/ })).toBeVisible();
+  expect(screen.getByRole('button', { name: /more/ })).toBeVisible();
 });
