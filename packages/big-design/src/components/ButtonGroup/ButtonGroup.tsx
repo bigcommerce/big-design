@@ -37,14 +37,26 @@ export interface ButtonGroupProps extends ComponentPropsWithoutRef<'div'>, Margi
   localization?: Localization;
 }
 
+const excludeIconProps = ({
+  iconOnly,
+  iconRight,
+  iconLeft,
+  ...actionProps
+}: ButtonProps & Pick<ButtonGroupAction, 'text'>): ButtonGroupAction => actionProps;
+
 export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
   ({ actions, localization = defaultLocalization, ...wrapperProps }) => {
+    const sanitizedActions = useMemo(
+      () => actions.map((action) => excludeIconProps(action)),
+      [actions],
+    );
+
     const parentRef = useRef<HTMLDivElement>(null);
     const dropdownRef = useRef<HTMLButtonElement>(null);
     const actionRefs = useRef<Array<React.RefObject<HTMLDivElement>>>(
-      actions.map(() => createRef<HTMLDivElement>()),
+      sanitizedActions.map(() => createRef<HTMLDivElement>()),
     );
-    const [visible, setVisible] = useState<boolean[]>(() => actions.map(() => true));
+    const [visible, setVisible] = useState<boolean[]>(() => sanitizedActions.map(() => true));
 
     const hideOverflowedActions = useCallback(() => {
       const parentWidth = parentRef.current?.offsetWidth ?? 0;
@@ -52,14 +64,14 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
       let remaining = parentWidth;
 
       const nextVisible = actionRefs.current.map((ref, i) => {
-        const w = ref.current?.offsetWidth ?? 0;
+        const widthRef = ref.current?.offsetWidth ?? 0;
 
-        if (actions[i].actionType === 'destructive') {
+        if (sanitizedActions[i].actionType === 'destructive') {
           return false;
         }
 
-        if (remaining - w > dropdownWidth) {
-          remaining -= w;
+        if (remaining - widthRef > dropdownWidth) {
+          remaining -= widthRef;
 
           return true;
         }
@@ -74,11 +86,11 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
 
         return prev;
       });
-    }, [actions]);
+    }, [sanitizedActions]);
 
     useLayoutEffect(() => {
       hideOverflowedActions();
-    }, [actions, hideOverflowedActions]);
+    }, [sanitizedActions, hideOverflowedActions]);
 
     useWindowResizeListener(() => {
       hideOverflowedActions();
@@ -88,7 +100,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
 
     const renderedActions = useMemo(
       () =>
-        actions.map((action, i) => (
+        sanitizedActions.map((action, i) => (
           <StyledFlexItem
             data-testid="buttongroup-item"
             isVisible={visible[i]}
@@ -101,7 +113,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
             </StyledButton>
           </StyledFlexItem>
         )),
-      [actions, visible],
+      [sanitizedActions, visible],
     );
 
     const renderedDropdown = useMemo(
@@ -112,7 +124,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
           role="listitem"
         >
           <Dropdown
-            items={actions
+            items={sanitizedActions
               .map((action, i) => ({ action, ref: actionRefs.current[i] }))
               .filter((_, i) => !visible[i])
               .map(({ action, ref }) => ({
@@ -141,10 +153,10 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = memo(
           />
         </StyledFlexItem>
       ),
-      [actions, isMenuVisible, localization.more, visible],
+      [sanitizedActions, isMenuVisible, visible, localization.more],
     );
 
-    if (actions.length === 0) {
+    if (sanitizedActions.length === 0) {
       return null;
     }
 
