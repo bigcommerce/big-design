@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.7.0
+
+### Minor Changes
+
+- a109a17: Optional dropdown items added to PillTabs component
+
+### Patch Changes
+
+- Updated dependencies [a109a17]
+  - @bigcommerce/big-design@2.1.0
+  - @bigcommerce/big-design-patterns@4.0.0
+
 ## 1.6.1
 
 ### Patch Changes

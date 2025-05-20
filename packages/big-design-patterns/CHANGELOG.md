@@ -1,5 +1,12 @@
 # @bigcommerce/big-design-patterns
 
+## 4.0.0
+
+### Patch Changes
+
+- Updated dependencies [a109a17]
+  - @bigcommerce/big-design@2.1.0
+
 ## 3.0.1
 
 ### Patch Changes
