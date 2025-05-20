@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.0
+
+### Minor Changes
+
+- a109a17: Optional dropdown items added to PillTabs component
+
 ## 2.0.1
 
 ### Patch Changes
