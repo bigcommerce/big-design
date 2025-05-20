@@ -80,8 +80,8 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       zustand:
-        specifier: ^5.0.3
-        version: 5.0.3(@types/react@18.2.73)(react@18.2.0)(use-sync-external-store@1.4.0(react@18.2.0))
+        specifier: ^5.0.4
+        version: 5.0.4(@types/react@18.2.73)(react@18.2.0)(use-sync-external-store@1.4.0(react@18.2.0))
     devDependencies:
       '@babel/cli':
         specifier: ^7.27.2
@@ -6376,8 +6376,8 @@ packages:
   yup@1.4.0:
     resolution: {integrity: sha512-wPbgkJRCqIf+OHyiTBQoJiP5PFuAXaWiJK6AmYkzQAh5/c2K9hzSApBZG5wV9KoKSePF7sAxmNSvh/13YHkFDg==}
 
-  zustand@4.5.6:
-    resolution: {integrity: sha512-ibr/n1hBzLLj5Y+yUcU7dYw8p6WnIVzdJbnX+1YpaScvZVF2ziugqHs+LAmHw4lWO9c/zRj+K1ncgWDQuthEdQ==}
+  zustand@4.5.7:
+    resolution: {integrity: sha512-CHOUy7mu3lbD6o6LJLfllpjkzhHXSBlX8B9+qPddUsIfeF5S/UZ5q0kmCsnRqT1UHFQZchNFDDzMbQsuesHWlw==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       '@types/react': '>=16.8'
@@ -6391,8 +6391,8 @@ packages:
       react:
         optional: true
 
-  zustand@5.0.3:
-    resolution: {integrity: sha512-14fwWQtU3pH4dE0dOpdMiWjddcH+QzKIgk1cl8epwSE7yag43k/AD/m4L6+K7DytAOr9gGBe3/EXj9g7cdostg==}
+  zustand@5.0.4:
+    resolution: {integrity: sha512-39VFTN5InDtMd28ZhjLyuTnlytDr9HfwO512Ai4I8ZABCoyAj4F1+sr7sD1jP/+p7k77Iko0Pb5NhgBFDCX0kQ==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
       '@types/react': '>=18.0.0'
@@ -7501,7 +7501,7 @@ snapshots:
       react-dom: 18.2.0(react@18.2.0)
       react-popper: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       styled-components: 5.3.11(@babel/core@7.26.9)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0)
-      zustand: 4.5.6(@types/react@18.2.73)(react@18.2.0)
+      zustand: 4.5.7(@types/react@18.2.73)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -13595,14 +13595,14 @@ snapshots:
       toposort: 2.0.2
       type-fest: 2.19.0
 
-  zustand@4.5.6(@types/react@18.2.73)(react@18.2.0):
+  zustand@4.5.7(@types/react@18.2.73)(react@18.2.0):
     dependencies:
       use-sync-external-store: 1.4.0(react@18.2.0)
     optionalDependencies:
       '@types/react': 18.2.73
       react: 18.2.0
 
-  zustand@5.0.3(@types/react@18.2.73)(react@18.2.0)(use-sync-external-store@1.4.0(react@18.2.0)):
+  zustand@5.0.4(@types/react@18.2.73)(react@18.2.0)(use-sync-external-store@1.4.0(react@18.2.0)):
     optionalDependencies:
       '@types/react': 18.2.73
       react: 18.2.0
