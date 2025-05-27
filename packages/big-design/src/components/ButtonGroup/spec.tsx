@@ -163,3 +163,27 @@ test('renders localized labels', async () => {
 
   expect(trigger).toBeVisible();
 });
+
+test('hide overflowed buttons and show a "more" dropdown', async () => {
+  render(
+    <ButtonGroup
+      actions={[
+        { text: 'A' },
+        { text: 'B' },
+        { text: 'C' },
+        { text: 'D' },
+        { text: 'E' },
+        { text: 'F' },
+      ]}
+    />,
+  );
+
+  expect(await screen.findByRole('button', { name: /A/ })).toBeVisible();
+  expect(screen.getByRole('button', { name: /B/ })).toBeVisible();
+  expect(screen.getByRole('button', { name: /C/ })).toBeVisible();
+  expect(screen.getByRole('button', { name: /more/ })).toBeVisible();
+
+  expect(screen.queryByRole('button', { name: /D/ })).not.toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: /E/ })).not.toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: /F/ })).not.toBeInTheDocument();
+});
