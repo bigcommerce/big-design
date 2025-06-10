@@ -21,7 +21,7 @@
     "@babel/core": "^7.26.0",
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.27.1",
-    "@babel/standalone": "^7.26.2",
+    "@babel/standalone": "^7.27.6",
     "@bigcommerce/big-design": "workspace:^",
     "@bigcommerce/big-design-icons": "workspace:^",
     "@bigcommerce/big-design-patterns": "workspace:^",
