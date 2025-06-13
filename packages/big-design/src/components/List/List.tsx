@@ -16,10 +16,10 @@ import { useIsomorphicLayoutEffect, useWindowSize } from '../../hooks';
 import { typedMemo } from '../../utils';
 import { Box } from '../Box';
 import { DropdownItem, DropdownItemGroup, DropdownLinkItem, DropdownProps } from '../Dropdown';
-import { MultiSelectLocalization } from '../MultiSelect/types';
-import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from '../Select';
-import { ProgressCircle } from '../ProgressCircle';
 import { Flex } from '../Flex';
+import { MultiSelectLocalization } from '../MultiSelect/types';
+import { ProgressCircle } from '../ProgressCircle';
+import { SelectAction, SelectOption, SelectOptionGroup, SelectProps } from '../Select';
 
 import { ListGroupHeader } from './GroupHeader';
 import { ListGroupSeparator } from './GroupSeparator';

@@ -19,6 +19,7 @@ import { Box } from '../Box';
 import { FormControlLabel } from '../Form';
 import { Input } from '../Input';
 import { List } from '../List';
+
 import { DropdownButton, StyledDropdownIcon, StyledInputContainer } from './styled';
 import { ComboBoxAction, ComboBoxOption, ComboBoxOptionGroup, ComboBoxProps } from './types';
 
@@ -282,13 +283,7 @@ export const ComboBox = typedMemo(
       }
 
       if (typeof label === 'string') {
-        return (
-          <FormControlLabel
-            {...getLabelProps()}
-          >
-            {label}
-          </FormControlLabel>
-        );
+        return <FormControlLabel {...getLabelProps()}>{label}</FormControlLabel>;
       }
 
       if (
@@ -299,7 +294,7 @@ export const ComboBox = typedMemo(
       }
 
       warning('label must be either a string or a FormControlLabel component.');
-    }, [getLabelProps, label, required]);
+    }, [getLabelProps, label]);
 
     const renderToggle = useMemo(() => {
       return (
