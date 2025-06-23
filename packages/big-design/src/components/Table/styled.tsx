@@ -26,3 +26,12 @@ export const StyledTable = styled.table`
 
 StyledTableFigure.defaultProps = { theme: defaultTheme };
 StyledTable.defaultProps = { theme: defaultTheme };
+
+export const StyledTableCaption = styled.caption`
+  color: ${({ theme }) => theme.colors.secondary70};
+  padding-block: ${({ theme }) => theme.spacing.small};
+  padding-inline: ${({ theme }) => theme.spacing.xLarge};
+  border-block-start: ${({ theme }) => theme.border.box};
+`;
+
+StyledTableCaption.defaultProps = { theme: defaultTheme };

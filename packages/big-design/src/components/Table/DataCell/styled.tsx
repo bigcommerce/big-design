@@ -9,25 +9,28 @@ import { DataCellProps } from './DataCell';
 export const StyledTableDataCell = styled.td<DataCellProps>`
   ${withTableColumnDisplay()}
 
-  background-color: ${({ theme }) => theme.colors.white};
+  /* mobile first */
+  display: block;
+  &:before {
+    content: attr(data-header);
+    display: block;
+    font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+    margin-bottom: ${({ theme }) => theme.spacing.xSmall};
+  }
+
+  
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
   padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing.small : 0)};
 
   &:first-of-type {
-    padding-left: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    padding-inline-start: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
   }
 
   &:last-of-type {
-    padding-right: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    padding-inline-end: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
   }
-
-  ${({ theme, withBorder }) =>
-    withBorder &&
-    css`
-      border-bottom: ${theme.border.box};
-    `}
 
   ${({ align }) =>
     align &&
@@ -46,20 +49,38 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
     css`
       width: ${typeof width === 'string' ? width : `${width}px`};
     `};
+
+  @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
+    display: table-cell;
+
+    ${({ theme, withBorder }) =>
+      withBorder &&
+      css`
+        border-bottom: ${theme.border.box};
+      `}
+
+    &:before {
+      display: none;
+    }
+  }
 `;
 
 export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
   ${withTableColumnDisplay()}
 
-  background-color: ${({ theme }) => theme.colors.white};
-  padding: ${({ theme }) => `0 ${theme.spacing.small}`};
-
-  &:first-of-type {
-    padding-left: ${({ theme }) => theme.spacing.xLarge};
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: min-content;
+  display: block;
+  
+  &:before {
+    display: none;
   }
 
-  &:last-of-type {
-    padding-right: ${({ theme }) => theme.spacing.xLarge};
+  &:first-of-type {
+    padding-inline-start: ${({ theme }) => theme.spacing.small};
+    padding-block-start: ${({ theme }) => theme.spacing.small};
   }
 
   ${(props) =>
@@ -68,7 +89,56 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
       width: ${({ theme }) => theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
       white-space: nowrap;
     `};
+
+  & ~ td {
+    padding-inline-start: ${({ theme }) => theme.spacing.xxxLarge};
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
+    position: static;
+    display: table-cell;
+
+    &:first-of-type {
+      padding-inline-start: ${({ theme }) => theme.spacing.xLarge};
+      padding-block-start: 0;
+    }
+
+    &:last-of-type {
+      padding-inline-end: ${({ theme }) => theme.spacing.xLarge};
+    }
+
+    & ~ td {
+      padding-inline-start: ${({ theme }) => theme.spacing.small};
+    }
+  }
+`;
+
+export const StyledTableActionCell = styled(StyledTableDataCell)`
+  &:last-of-type {
+    padding: ${({ theme }) => theme.spacing.none};
+    position: absolute;
+    inset-block-start: ${({ theme }) => theme.spacing.small};
+    inset-inline-end: ${({ theme }) => theme.spacing.small};
+    width: min-content;
+    display: block;
+    margin: ${({ theme }) => theme.spacing.none};
+
+    background-color: ${({ theme }) => theme.colors.white};
+    border-radius: ${({ theme }) => theme.borderRadius.normal};
+
+    &:before {
+      display: none;
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
+      position: static;
+      display: table-cell;
+      padding-inline-end: ${({ theme }) => theme.spacing.xLarge};
+      text-align: end;
+    }
+  }
 `;
 
 StyledTableDataCell.defaultProps = { theme: defaultTheme };
 StyledTableDataCheckbox.defaultProps = { theme: defaultTheme };
+StyledTableActionCell.defaultProps = { theme: defaultTheme };
