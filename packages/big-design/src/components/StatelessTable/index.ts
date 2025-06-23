@@ -1,0 +1,18 @@
+export {
+  StatelessTable,
+  type StatelessTableProps,
+  Caption,
+  type CaptionProps,
+  THead,
+  type THeadProps,
+  TH,
+  type THProps,
+  TBody,
+  type TBodyProps,
+  TR,
+  type TRProps,
+  TD,
+  type TDProps,
+  TFoot,
+  type TFootProps,
+} from './StatelessTable';

@@ -244,6 +244,8 @@ const ButtonUtility = css<ButtonProps>`
   background-color: transparent;
   border-color: transparent;
   color: ${({ theme }) => theme.colors.secondary60};
+  padding-inline: ${({ theme }) => theme.spacing.xxSmall};
+  min-width: ${({ theme }) => addValues(theme.spacing.xLarge, theme.spacing.small)};
 
   &:active {
     background-color: ${({ theme }) => theme.colors.primary20};

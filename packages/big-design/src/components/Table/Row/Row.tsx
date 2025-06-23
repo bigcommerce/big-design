@@ -58,7 +58,7 @@ const InternalRow = <T extends TableItem>({
 
       {columns.map(
         (
-          { render: CellContent, align, display, verticalAlign, width, withPadding = true },
+          { render: CellContent, align, display, verticalAlign, width, withPadding = true, isAction },
           columnIndex,
         ) => {
           const cellWidth = headerCellWidths[columnIndex + 1];
@@ -71,6 +71,8 @@ const InternalRow = <T extends TableItem>({
               verticalAlign={verticalAlign}
               width={isDragging ? cellWidth : width}
               withPadding={withPadding}
+              header={columns[columnIndex].header}
+              isAction={isAction}
             >
               <CellContent {...item} />
             </DataCell>
