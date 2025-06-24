@@ -1,21 +1,22 @@
 import React from 'react';
 
-import { StyledTable, StyledTableCaption } from '../Table/styled';
 import { StyledTableBody } from '../Table/Body/styled';
-import { StyledTableHeaderCell } from '../Table/HeaderCell/styled';
-import { StyledTableRow } from '../Table/Row/styled';
+import { DataCellProps } from '../Table/DataCell';
 import {
+  StyledTableActionCell,
   StyledTableDataCell,
   StyledTableDataCheckbox,
-  StyledTableActionCell,
 } from '../Table/DataCell/styled';
-import { DataCellProps } from '../Table/DataCell';
 import { StyledTableHead } from '../Table/Head/styled';
+import { StyledTableHeaderCell } from '../Table/HeaderCell/styled';
+import { StyledTableRow } from '../Table/Row/styled';
+import { StyledTable, StyledTableCaption } from '../Table/styled';
 
 // TABLE
 export interface StatelessTableProps {
   children?: React.ReactNode;
 }
+
 export const StatelessTable: React.FC<StatelessTableProps> = ({ children }) => {
   return <StyledTable>{children}</StyledTable>;
 };
@@ -43,6 +44,7 @@ export const THead: React.FC<THeadProps> = ({ children }) => {
 export interface THProps extends DataCellProps {
   children?: React.ReactNode;
 }
+
 export const TH: React.FC<THProps> = ({ children, ...props }) => {
   return (
     <StyledTableHeaderCell stickyHeight={0} {...props}>
@@ -63,11 +65,12 @@ export const TBody: React.FC<TBodyProps> = ({ children }) => {
 // TABLE ROW
 export interface TRProps {
   children?: React.ReactNode;
+  status?: 'danger' | 'success' | 'warning' | 'info';
 }
 
-export const TR: React.FC<TRProps> = ({ children }) => {
+export const TR: React.FC<TRProps> = ({ children, status }) => {
   return (
-    <StyledTableRow isDragging={false} isSelected={false}>
+    <StyledTableRow isDragging={false} isSelected={false} status={status}>
       {children}
     </StyledTableRow>
   );

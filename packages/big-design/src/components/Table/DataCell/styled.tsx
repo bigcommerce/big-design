@@ -11,14 +11,18 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
 
   /* mobile first */
   display: block;
-  &:before {
-    content: attr(data-header);
-    display: block;
-    font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-    margin-bottom: ${({ theme }) => theme.spacing.xSmall};
-  }
 
-  
+  ${({ mobileHeader }) =>
+    mobileHeader &&
+    css`
+      &:before {
+        content: '${mobileHeader}';
+        display: block;
+        font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+        margin-bottom: ${({ theme }) => theme.spacing.xSmall};
+      }
+    `};
+
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
@@ -58,10 +62,6 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
       css`
         border-bottom: ${theme.border.box};
       `}
-
-    &:before {
-      display: none;
-    }
   }
 `;
 
@@ -73,10 +73,6 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
   inset-inline-start: 0;
   width: min-content;
   display: block;
-  
-  &:before {
-    display: none;
-  }
 
   &:first-of-type {
     padding-inline-start: ${({ theme }) => theme.spacing.small};
@@ -123,13 +119,6 @@ export const StyledTableActionCell = styled(StyledTableDataCell)`
     display: block;
     margin: ${({ theme }) => theme.spacing.none};
 
-    background-color: ${({ theme }) => theme.colors.white};
-    border-radius: ${({ theme }) => theme.borderRadius.normal};
-
-    &:before {
-      display: none;
-    }
-
     @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
       position: static;
       display: table-cell;
@@ -139,6 +128,13 @@ export const StyledTableActionCell = styled(StyledTableDataCell)`
   }
 `;
 
+export const StyledActionsWrapper = styled.div`
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.borderRadius.normal};
+  width: min-content;
+`;
+
 StyledTableDataCell.defaultProps = { theme: defaultTheme };
 StyledTableDataCheckbox.defaultProps = { theme: defaultTheme };
 StyledTableActionCell.defaultProps = { theme: defaultTheme };
+StyledActionsWrapper.defaultProps = { theme: defaultTheme };

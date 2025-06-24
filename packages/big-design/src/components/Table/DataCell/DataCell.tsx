@@ -2,7 +2,12 @@ import React, { ComponentPropsWithoutRef, memo } from 'react';
 
 import { TableColumnDisplayProps } from '../helpers';
 
-import { StyledTableDataCell, StyledTableDataCheckbox, StyledTableActionCell } from './styled';
+import {
+  StyledActionsWrapper,
+  StyledTableActionCell,
+  StyledTableDataCell,
+  StyledTableDataCheckbox,
+} from './styled';
 
 export interface DataCellProps extends ComponentPropsWithoutRef<'td'>, TableColumnDisplayProps {
   align?: 'left' | 'center' | 'right';
@@ -14,7 +19,7 @@ export interface DataCellProps extends ComponentPropsWithoutRef<'td'>, TableColu
   withPadding?: boolean;
   colSpan?: number;
   rowSpan?: number;
-  header?: string;
+  mobileHeader?: string;
   isAction?: boolean;
 }
 
@@ -30,46 +35,45 @@ export const DataCell: React.FC<DataCellProps> = memo(
     withPadding = true,
     colSpan,
     rowSpan,
-    header,
+    mobileHeader,
     isAction = false,
   }: DataCellProps) => {
-    console.log(isAction, 'isAction');
     return isCheckbox ? (
       <StyledTableDataCheckbox
         align={align}
-        display={display}
-        width={width}
-        withBorder={withBorder}
         colSpan={colSpan}
+        display={display}
         rowSpan={rowSpan}
         verticalAlign={verticalAlign}
+        width={width}
+        withBorder={withBorder}
       >
         {children}
       </StyledTableDataCheckbox>
     ) : isAction ? (
       <StyledTableActionCell
         align={align}
+        colSpan={colSpan}
         display={display}
+        rowSpan={rowSpan}
         verticalAlign={verticalAlign}
         width={width}
         withBorder={withBorder}
         withPadding={withPadding}
-        colSpan={colSpan}
-        rowSpan={rowSpan}
       >
-        {children}
+        <StyledActionsWrapper>{children}</StyledActionsWrapper>
       </StyledTableActionCell>
     ) : (
       <StyledTableDataCell
         align={align}
+        colSpan={colSpan}
         display={display}
+        mobileHeader={mobileHeader}
+        rowSpan={rowSpan}
         verticalAlign={verticalAlign}
         width={width}
         withBorder={withBorder}
         withPadding={withPadding}
-        colSpan={colSpan}
-        rowSpan={rowSpan}
-        data-header={header}
       >
         {children}
       </StyledTableDataCell>
