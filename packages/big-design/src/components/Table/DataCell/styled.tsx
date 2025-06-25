@@ -21,6 +21,13 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
         font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
         margin-bottom: ${({ theme }) => theme.spacing.xSmall};
       }
+
+      @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
+        &:before {
+          content: '';
+          display: none;
+        }
+      }
     `};
 
   box-sizing: border-box;
@@ -54,6 +61,23 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
       width: ${typeof width === 'string' ? width : `${width}px`};
     `};
 
+  ${({ isDraggable }) =>
+    isDraggable &&
+    css`
+      position: absolute;
+      inset-block-start: ${({ theme }) =>
+        theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
+      width: 24px;
+
+      &:first-of-type {
+        padding: ${({ theme }) => theme.spacing.small};
+      }
+
+      @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
+        position: static;
+      }
+    `};
+
   @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
     display: table-cell;
 
@@ -73,10 +97,13 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
   inset-inline-start: 0;
   width: min-content;
   display: block;
+  padding-block-start: ${({ theme }) => theme.spacing.small};
 
   &:first-of-type {
     padding-inline-start: ${({ theme }) => theme.spacing.small};
-    padding-block-start: ${({ theme }) => theme.spacing.small};
+  }
+  &:nth-of-type(2) {
+    padding-inline-start: ${({ theme }) => theme.spacing.small};
   }
 
   ${(props) =>
@@ -93,10 +120,13 @@ export const StyledTableDataCheckbox = styled(StyledTableDataCell)`
   @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
     position: static;
     display: table-cell;
+    padding-block-start: 0;
 
     &:first-of-type {
       padding-inline-start: ${({ theme }) => theme.spacing.xLarge};
-      padding-block-start: 0;
+    }
+    &:nth-of-type(2) {
+      padding-inline-start: ${({ theme }) => theme.spacing.xxSmall};
     }
 
     &:last-of-type {

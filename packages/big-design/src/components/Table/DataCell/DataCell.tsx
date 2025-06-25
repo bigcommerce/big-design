@@ -21,6 +21,7 @@ export interface DataCellProps extends ComponentPropsWithoutRef<'td'>, TableColu
   rowSpan?: number;
   mobileHeader?: string;
   isAction?: boolean;
+  isDraggable?: boolean;
 }
 
 export const DataCell: React.FC<DataCellProps> = memo(
@@ -37,6 +38,7 @@ export const DataCell: React.FC<DataCellProps> = memo(
     rowSpan,
     mobileHeader,
     isAction = false,
+    isDraggable = false,
   }: DataCellProps) => {
     return isCheckbox ? (
       <StyledTableDataCheckbox
@@ -68,6 +70,7 @@ export const DataCell: React.FC<DataCellProps> = memo(
         align={align}
         colSpan={colSpan}
         display={display}
+        isDraggable={isDraggable}
         mobileHeader={mobileHeader}
         rowSpan={rowSpan}
         verticalAlign={verticalAlign}
