@@ -56,7 +56,7 @@ const InternalRow = <T extends TableItem>({
       {...rest}
     >
       {showDragIcon && (
-        <DataCell width={headerCellWidths[0]}>
+        <DataCell isDraggable={true} width={headerCellWidths[0]}>
           <DragIndicatorIcon />
         </DataCell>
       )}
