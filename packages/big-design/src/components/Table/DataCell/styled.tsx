@@ -36,7 +36,7 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
   padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing.small : 0)};
 
   &:first-of-type {
-    padding-inline-start: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    padding-inline-start: ${({ theme }) => theme.spacing.small};
   }
 
   &:last-of-type {
@@ -86,6 +86,10 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
       css`
         border-bottom: ${theme.border.box};
       `}
+
+    &:first-of-type {
+      padding-inline-start: ${({ theme, withPadding }) => (withPadding ? theme.spacing.xLarge : 0)};
+    }
   }
 `;
 
