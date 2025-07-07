@@ -105,7 +105,7 @@ export const useKeyEvents = () => {
             if (selectedCell && !selectedCell.disabled) {
               editSelectedCell({});
 
-              if (selectedCell.type === 'checkbox') {
+              if (selectedCell?.type === 'checkbox') {
                 navigate({ rowIndex: 1, columnIndex: 0 });
               }
             }
@@ -120,7 +120,7 @@ export const useKeyEvents = () => {
             break;
 
           case 'ArrowUp':
-            if (isShiftPressed && selectedCells.length > 1) {
+            if (isShiftPressed && selectedCells?.length > 1) {
               setSelectedCells(selectedCells.slice(0, -1));
 
               break;
@@ -188,7 +188,7 @@ export const useKeyEvents = () => {
             if (
               key !== 'Escape' &&
               key.length === 1 &&
-              (selectedCell.type === 'text' || selectedCell.type === 'number')
+              (selectedCell?.type === 'text' || selectedCell?.type === 'number')
             ) {
               event.preventDefault();
               editSelectedCell({ editWithValue: key });
