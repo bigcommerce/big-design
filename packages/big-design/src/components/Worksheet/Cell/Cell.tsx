@@ -283,7 +283,7 @@ const InternalCell = <T extends WorksheetItem>({
     return (
       <Tooltip
         id={tooltipId}
-        placement="right"
+        placement="auto"
         trigger={<CellNote color={note.color} role="note" />}
       >
         {note.description}
