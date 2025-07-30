@@ -1,5 +1,21 @@
 # Change Log
 
+## 2.1.0
+
+### Minor Changes
+
+- 758f850: Fix unhandled worksheet error: "can not read type of undefined"
+- a109a17: Optional dropdown items added to PillTabs component
+
+### Patch Changes
+
+- 26a1dd0: Fix button group initial render flicker
+
+  Before: buttons would briefly appear in overflow and then disappear,
+  causing a flicker on mount.
+
+  After: overflowed buttons are hidden synchronously via `useLayoutEffect`, eliminating the flicker.
+
 ## 2.0.1
 
 ### Patch Changes
