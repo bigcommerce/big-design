@@ -1,4 +1,12 @@
-import React, { ComponentPropsWithoutRef, forwardRef, isValidElement, memo, Ref } from 'react';
+import { BaselineHelpIcon } from '@bigcommerce/big-design-icons';
+import React, {
+  ComponentPropsWithoutRef,
+  forwardRef,
+  isValidElement,
+  memo,
+  Ref,
+  useId,
+} from 'react';
 
 import { MarginProps } from '../../helpers';
 import { excludePaddingProps } from '../../helpers/paddings/paddings';
@@ -7,6 +15,7 @@ import { Badge, BadgeProps } from '../Badge/Badge';
 import { Box } from '../Box';
 import { Button, ButtonProps } from '../Button';
 import { Flex } from '../Flex';
+import { Tooltip } from '../Tooltip';
 import { Text } from '../Typography';
 
 import { StyledH2, StyledPanel } from './styled';
@@ -26,11 +35,14 @@ export interface PanelProps extends ComponentPropsWithoutRef<'div'>, MarginProps
   headerId?: string;
   action?: PanelAction;
   badge?: BadgeProps;
+  tooltip?: string;
 }
 
 export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRef, ...props }) => {
   const filteredProps = excludePaddingProps(props);
-  const { action, children, description, header, headerId, badge, ...rest } = filteredProps;
+  const { action, children, description, header, headerId, badge, tooltip, ...rest } =
+    filteredProps;
+  const tooltipId = useId();
 
   const renderHeader = () => {
     if (!header && !action) {
@@ -47,11 +59,38 @@ export const RawPanel: React.FC<PanelProps & PrivateProps> = memo(({ forwardedRe
           <StyledH2 id={headerId} marginBottom="none">
             {header}
             {badge && <Badge marginLeft="xSmall" {...badge} />}
+            {renderTooltip()}
           </StyledH2>
         )}
         {action && <Button {...action}>{action.text}</Button>}
       </Flex>
     );
+  };
+
+  const renderTooltip = () => {
+    if (typeof tooltip === 'string' && tooltip.length > 0) {
+      return (
+        <Tooltip
+          id={tooltipId}
+          placement="right"
+          trigger={
+            <Box as="span" marginLeft="xSmall" marginVertical="large">
+              <BaselineHelpIcon
+                aria-describedby={tooltipId}
+                data-testid="tooltipIcon"
+                size="large"
+                style={{ verticalAlign: 'revert-layer' }}
+                title="Hover or focus for additional context."
+              />
+            </Box>
+          }
+        >
+          {tooltip}
+        </Tooltip>
+      );
+    }
+
+    return null;
   };
 
   const renderDescription = () => {

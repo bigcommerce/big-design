@@ -80,6 +80,25 @@ test('renders a badge and header', () => {
   expect(badge).toBeInTheDocument();
 });
 
+test('renders a header and tooltip', () => {
+  const { getByRole, getByTestId } = render(
+    <Panel header="Test Header" tooltip="Test tooltip content">
+      Dolore proident eiusmod sint est enim laboris anim minim quis ut adipisicing consectetur
+      officia ex. Ipsum eiusmod fugiat amet pariatur culpa tempor aliquip tempor nisi. Irure esse
+      deserunt nostrud ipsum id adipisicing enim velit labore. Nulla exercitation laborum laboris
+      Lorem irure sit esse nulla mollit aliquip consectetur velit
+    </Panel>,
+  );
+
+  const header = getByRole('heading');
+
+  expect(header).toBeInTheDocument();
+
+  const tooltip = getByTestId('tooltipIcon');
+
+  expect(tooltip).toBeInTheDocument();
+});
+
 describe('description', () => {
   test('renders string description', async () => {
     render(
