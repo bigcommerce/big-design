@@ -12,24 +12,6 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
   /* mobile first */
   display: block;
 
-  ${({ mobileHeader }) =>
-    mobileHeader &&
-    css`
-      &:before {
-        content: '${mobileHeader}';
-        display: block;
-        font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-        margin-bottom: ${({ theme }) => theme.spacing.xSmall};
-      }
-
-      @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
-        &:before {
-          content: '';
-          display: none;
-        }
-      }
-    `};
-
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.secondary70};
   font-size: ${({ theme }) => theme.typography.fontSize.medium};
@@ -168,7 +150,18 @@ export const StyledActionsWrapper = styled.div`
   width: min-content;
 `;
 
+export const StyledMobileHeader = styled.div`
+  display: none;
+
+  @media (max-width: ${({ theme }) => theme.breakpointValues.tablet}) {
+    display: block;
+    font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+    margin-bottom: ${({ theme }) => theme.spacing.xSmall};
+  }
+`;
+
 StyledTableDataCell.defaultProps = { theme: defaultTheme };
 StyledTableDataCheckbox.defaultProps = { theme: defaultTheme };
 StyledTableActionCell.defaultProps = { theme: defaultTheme };
 StyledActionsWrapper.defaultProps = { theme: defaultTheme };
+StyledMobileHeader.defaultProps = { theme: defaultTheme };

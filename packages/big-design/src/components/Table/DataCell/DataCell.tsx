@@ -7,6 +7,7 @@ import {
   StyledTableActionCell,
   StyledTableDataCell,
   StyledTableDataCheckbox,
+  StyledMobileHeader,
 } from './styled';
 
 export interface DataCellProps extends ComponentPropsWithoutRef<'td'>, TableColumnDisplayProps {
@@ -71,13 +72,13 @@ export const DataCell: React.FC<DataCellProps> = memo(
         colSpan={colSpan}
         display={display}
         isDraggable={isDraggable}
-        mobileHeader={mobileHeader}
         rowSpan={rowSpan}
         verticalAlign={verticalAlign}
         width={width}
         withBorder={withBorder}
         withPadding={withPadding}
       >
+        {mobileHeader && <StyledMobileHeader>{mobileHeader}</StyledMobileHeader>}
         {children}
       </StyledTableDataCell>
     );
