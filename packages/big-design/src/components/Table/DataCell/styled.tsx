@@ -54,9 +54,16 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
       &:first-of-type {
         padding: ${({ theme }) => theme.spacing.small};
       }
+      & ~ td {
+        padding-inline-start: ${({ theme }) => theme.spacing.xxxLarge};
+      }
 
       @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
         position: static;
+
+        & ~ td {
+          padding-inline-start: ${({ theme }) => theme.spacing.none};
+        }
       }
     `};
 
