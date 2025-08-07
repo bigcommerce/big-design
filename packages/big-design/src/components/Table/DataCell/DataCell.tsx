@@ -4,10 +4,10 @@ import { TableColumnDisplayProps } from '../helpers';
 
 import {
   StyledActionsWrapper,
+  StyledMobileHeader,
   StyledTableActionCell,
   StyledTableDataCell,
   StyledTableDataCheckbox,
-  StyledMobileHeader,
 } from './styled';
 
 export interface DataCellProps extends ComponentPropsWithoutRef<'td'>, TableColumnDisplayProps {
@@ -78,7 +78,9 @@ export const DataCell: React.FC<DataCellProps> = memo(
         withBorder={withBorder}
         withPadding={withPadding}
       >
-        {mobileHeader && <StyledMobileHeader>{mobileHeader}</StyledMobileHeader>}
+        {mobileHeader ? (
+          <StyledMobileHeader aria-hidden="true">{mobileHeader}</StyledMobileHeader>
+        ) : null}
         {children}
       </StyledTableDataCell>
     );

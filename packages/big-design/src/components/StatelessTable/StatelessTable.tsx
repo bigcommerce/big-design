@@ -3,6 +3,7 @@ import React from 'react';
 import { StyledTableBody } from '../Table/Body/styled';
 import { DataCellProps } from '../Table/DataCell';
 import {
+  StyledMobileHeader,
   StyledTableActionCell,
   StyledTableDataCell,
   StyledTableDataCheckbox,
@@ -97,6 +98,9 @@ export const TD: React.FC<TDProps> = ({
     </StyledTableActionCell>
   ) : (
     <StyledTableDataCell withBorder={true} withPadding={true} {...props}>
+      {props.mobileHeader ? (
+        <StyledMobileHeader aria-hidden="true">{props.mobileHeader}</StyledMobileHeader>
+      ) : null}
       {children}
     </StyledTableDataCell>
   );
