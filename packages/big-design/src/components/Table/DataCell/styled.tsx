@@ -46,13 +46,16 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
   ${({ isDraggable }) =>
     isDraggable &&
     css`
+      display: flex;
+      align-items: center;
       position: absolute;
-      inset-block-start: ${({ theme }) =>
-        theme.helpers.addValues(theme.spacing.xLarge, theme.spacing.small)};
-      width: 24px;
+      inset-block-start: 0;
+      inset-block-end: 0;
+      width: 42px;
+      justify-content: center;
 
       &:first-of-type {
-        padding: ${({ theme }) => theme.spacing.small};
+        padding: ${({ theme }) => theme.spacing.none};
       }
       & ~ td {
         padding-inline-start: ${({ theme }) => theme.spacing.xxxLarge};
@@ -60,9 +63,14 @@ export const StyledTableDataCell = styled.td<DataCellProps>`
 
       @media (min-width: ${({ theme }) => theme.breakpointValues.tablet}) {
         position: static;
+        display: table-cell;
+
+        &:first-of-type {
+          padding: ${({ theme }) => theme.spacing.small};
+        }
 
         & ~ td {
-          padding-inline-start: ${({ theme }) => theme.spacing.none};
+          padding-inline-start: ${({ theme }) => theme.spacing.small};
         }
       }
     `};
