@@ -307,7 +307,7 @@ exports[`offset pagination renders a pagination component 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 0.75rem;
 }
 
 @media (min-width:720px) {
@@ -335,6 +335,12 @@ exports[`offset pagination renders a pagination component 1`] = `
     width: auto;
     padding: 0;
     min-width: 2.25rem;
+  }
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding: 0.75rem 1.5rem;
   }
 }
 
@@ -1108,7 +1114,13 @@ exports[`selectable renders selectable actions and checkboxes 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 0.75rem;
+}
+
+@media (min-width:720px) {
+  .c0 {
+    padding: 0.75rem 1.5rem;
+  }
 }
 
 @media (min-width:720px) {

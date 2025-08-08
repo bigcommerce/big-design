@@ -318,7 +318,7 @@ describe('StatelessTable', () => {
     );
 
     const headers = container.querySelectorAll('th');
-    
+
     // Check that flex containers have the right justify-content styles
     const leftHeader = headers[0].querySelector('div'); // StyledFlex
     const centerHeader = headers[1].querySelector('div');

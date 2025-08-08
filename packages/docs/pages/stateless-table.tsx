@@ -1,27 +1,29 @@
-import { H1, Panel, Small, Text } from '@bigcommerce/big-design';
+import {
+  Button,
+  Caption,
+  Checkbox,
+  H1,
+  Panel,
+  StatelessTable,
+  TBody,
+  TD,
+  Text,
+  TFoot,
+  TH,
+  THead,
+  TR,
+} from '@bigcommerce/big-design';
+import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
 import React, { Fragment } from 'react';
 
 import { Code, CodePreview, ContentRoutingTabs, GuidelinesTable, List } from '../components';
 import {
-  StatelessTablePropTable,
-  TRPropTable,
-  THPropTable,
-  TDPropTable,
   BasicTableComponentPropTable,
+  StatelessTablePropTable,
+  TDPropTable,
+  THPropTable,
+  TRPropTable,
 } from '../PropTables';
-import {
-  StatelessTable,
-  Button,
-  Caption,
-  Checkbox,
-  THead,
-  TH,
-  TBody,
-  TR,
-  TD,
-  TFoot,
-} from '@bigcommerce/big-design';
-import { MoreHorizIcon } from '@bigcommerce/big-design-icons';
 
 const StatelessTablePage = () => {
   return (
@@ -30,21 +32,15 @@ const StatelessTablePage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          <Code primary>StatelessTable</Code> provides low-level building blocks for creating
-          custom table components. Unlike the high-level <Code primary>Table</Code> component,
+          <Code primary>StatelessTable</Code> provides low-level building blocks for creating custom
+          table components. Unlike the high-level <Code primary>Table</Code> component,
           StatelessTable gives you direct control over the table structure and behavior.
         </Text>
         <Text bold>When to use:</Text>
         <List>
-          <List.Item>
-            When you need complete control over table structure and behavior.
-          </List.Item>
-          <List.Item>
-            When building custom table components with specific requirements.
-          </List.Item>
-          <List.Item>
-            When the high-level Table component doesn't meet your needs.
-          </List.Item>
+          <List.Item>When you need complete control over table structure and behavior.</List.Item>
+          <List.Item>When building custom table components with specific requirements.</List.Item>
+          <List.Item>When the high-level Table component doesn't meet your needs.</List.Item>
           <List.Item>
             When you need to implement custom sorting, filtering, or pagination logic.
           </List.Item>
@@ -140,13 +136,21 @@ const StatelessTablePage = () => {
                     <TBody>
                       <TR>
                         <TD mobileHeader="Product">Smith Journal 13</TD>
-                        <TD mobileHeader="Quantity" align="right">2</TD>
-                        <TD mobileHeader="Price" align="right">$29.99</TD>
+                        <TD align="right" mobileHeader="Quantity">
+                          2
+                        </TD>
+                        <TD align="right" mobileHeader="Price">
+                          $29.99
+                        </TD>
                       </TR>
                       <TR>
                         <TD mobileHeader="Product">Dustpan & Brush</TD>
-                        <TD mobileHeader="Quantity" align="right">1</TD>
-                        <TD mobileHeader="Price" align="right">$14.99</TD>
+                        <TD align="right" mobileHeader="Quantity">
+                          1
+                        </TD>
+                        <TD align="right" mobileHeader="Price">
+                          $14.99
+                        </TD>
                       </TR>
                     </TBody>
                     <TFoot>
@@ -154,10 +158,10 @@ const StatelessTablePage = () => {
                         <TD mobileHeader="Product">
                           <Text bold>Total</Text>
                         </TD>
-                        <TD mobileHeader="Quantity" align="right">
+                        <TD align="right" mobileHeader="Quantity">
                           <Text bold>3</Text>
                         </TD>
-                        <TD mobileHeader="Price" align="right">
+                        <TD align="right" mobileHeader="Price">
                           <Text bold>$74.97</Text>
                         </TD>
                       </TR>
@@ -267,7 +271,7 @@ const StatelessTablePage = () => {
                       <THead>
                         <TR>
                           <TH>
-                            <Checkbox label={''}></Checkbox>
+                            <Checkbox label="" />
                           </TH>
                           <TH>Product</TH>
                           <TH>Stock</TH>
@@ -276,14 +280,14 @@ const StatelessTablePage = () => {
                       <TBody>
                         <TR>
                           <TD isCheckbox>
-                            <Checkbox label={''}></Checkbox>
+                            <Checkbox label="" />
                           </TD>
                           <TD mobileHeader="Product">Smith Journal 13</TD>
                           <TD mobileHeader="Stock">25</TD>
                         </TR>
                         <TR>
                           <TD isCheckbox>
-                            <Checkbox label={''}></Checkbox>
+                            <Checkbox label="" />
                           </TD>
                           <TD mobileHeader="Product">Dustpan & Brush</TD>
                           <TD mobileHeader="Stock">34</TD>
@@ -301,8 +305,8 @@ const StatelessTablePage = () => {
               render: () => (
                 <Fragment key="action-cells">
                   <Text>
-                    Use <Code primary>isAction</Code> prop on <Code primary>TD</Code> components
-                    for action buttons and controls.
+                    Use <Code primary>isAction</Code> prop on <Code primary>TD</Code> components for
+                    action buttons and controls.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
@@ -320,10 +324,10 @@ const StatelessTablePage = () => {
                           <TD mobileHeader="Stock">25</TD>
                           <TD isAction>
                             <Button
+                              iconOnly={<MoreHorizIcon />}
                               mobileWidth="auto"
                               variant="utility"
-                              iconOnly={<MoreHorizIcon />}
-                            ></Button>
+                            />
                           </TD>
                         </TR>
                         <TR>
@@ -331,10 +335,10 @@ const StatelessTablePage = () => {
                           <TD mobileHeader="Stock">34</TD>
                           <TD isAction>
                             <Button
+                              iconOnly={<MoreHorizIcon />}
                               mobileWidth="auto"
                               variant="utility"
-                              iconOnly={<MoreHorizIcon />}
-                            ></Button>
+                            />
                           </TD>
                         </TR>
                       </TBody>
@@ -365,14 +369,26 @@ const StatelessTablePage = () => {
                       </THead>
                       <TBody>
                         <TR>
-                          <TD mobileHeader="Product" align="left">Smith Journal 13</TD>
-                          <TD mobileHeader="Category" align="center">Books</TD>
-                          <TD mobileHeader="Price" align="right">$29.99</TD>
+                          <TD align="left" mobileHeader="Product">
+                            Smith Journal 13
+                          </TD>
+                          <TD align="center" mobileHeader="Category">
+                            Books
+                          </TD>
+                          <TD align="right" mobileHeader="Price">
+                            $29.99
+                          </TD>
                         </TR>
                         <TR>
-                          <TD mobileHeader="Product" align="left">Dustpan & Brush</TD>
-                          <TD mobileHeader="Category" align="center">Tools</TD>
-                          <TD mobileHeader="Price" align="right">$14.99</TD>
+                          <TD align="left" mobileHeader="Product">
+                            Dustpan & Brush
+                          </TD>
+                          <TD align="center" mobileHeader="Category">
+                            Tools
+                          </TD>
+                          <TD align="right" mobileHeader="Price">
+                            $14.99
+                          </TD>
                         </TR>
                       </TBody>
                     </StatelessTable>
@@ -402,14 +418,27 @@ const StatelessTablePage = () => {
                       </THead>
                       <TBody>
                         <TR>
-                          <TD mobileHeader="SKU" width="100px">SM13</TD>
-                          <TD mobileHeader="Product Name" width="60%">[Sample] Smith Journal 13 - A very long product name that demonstrates text wrapping</TD>
-                          <TD mobileHeader="Stock" width="80px">25</TD>
+                          <TD mobileHeader="SKU" width="100px">
+                            SM13
+                          </TD>
+                          <TD mobileHeader="Product Name" width="60%">
+                            [Sample] Smith Journal 13 - A very long product name that demonstrates
+                            text wrapping
+                          </TD>
+                          <TD mobileHeader="Stock" width="80px">
+                            25
+                          </TD>
                         </TR>
                         <TR>
-                          <TD mobileHeader="SKU" width="100px">DPB</TD>
-                          <TD mobileHeader="Product Name" width="60%">[Sample] Dustpan & Brush</TD>
-                          <TD mobileHeader="Stock" width="80px">34</TD>
+                          <TD mobileHeader="SKU" width="100px">
+                            DPB
+                          </TD>
+                          <TD mobileHeader="Product Name" width="60%">
+                            [Sample] Dustpan & Brush
+                          </TD>
+                          <TD mobileHeader="Stock" width="80px">
+                            34
+                          </TD>
                         </TR>
                       </TBody>
                     </StatelessTable>

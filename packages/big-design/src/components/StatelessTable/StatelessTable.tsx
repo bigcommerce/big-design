@@ -9,7 +9,7 @@ import {
   StyledTableDataCheckbox,
 } from '../Table/DataCell/styled';
 import { StyledTableHead } from '../Table/Head/styled';
-import { StyledTableHeaderCell, StyledFlex } from '../Table/HeaderCell/styled';
+import { StyledFlex, StyledTableHeaderCell } from '../Table/HeaderCell/styled';
 import { StyledTableRow } from '../Table/Row/styled';
 import { StyledTable, StyledTableCaption } from '../Table/styled';
 

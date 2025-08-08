@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Code, NextLink, Prop, PropTable, PropTableWrapper } from '../components';
+import { Prop, PropTable, PropTableWrapper } from '../components';
 
 // StatelessTable Props
 const statelessTableProps: Prop[] = [
@@ -165,6 +165,7 @@ export const TDPropTable: React.FC<PropTableWrapper> = (props) => (
   <PropTable propList={tdProps} title="TD (Table Data)" {...props} />
 );
 
-export const BasicTableComponentPropTable: React.FC<PropTableWrapper & { title: string }> = ({ title, ...props }) => (
-  <PropTable propList={basicComponentProps} title={title} {...props} />
-);
+export const BasicTableComponentPropTable: React.FC<PropTableWrapper & { title: string }> = ({
+  title,
+  ...props
+}) => <PropTable propList={basicComponentProps} title={title} {...props} />;
