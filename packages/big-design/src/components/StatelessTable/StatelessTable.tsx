@@ -9,7 +9,7 @@ import {
   StyledTableDataCheckbox,
 } from '../Table/DataCell/styled';
 import { StyledTableHead } from '../Table/Head/styled';
-import { StyledTableHeaderCell } from '../Table/HeaderCell/styled';
+import { StyledTableHeaderCell, StyledFlex } from '../Table/HeaderCell/styled';
 import { StyledTableRow } from '../Table/Row/styled';
 import { StyledTable, StyledTableCaption } from '../Table/styled';
 
@@ -46,10 +46,12 @@ export interface THProps extends DataCellProps {
   children?: React.ReactNode;
 }
 
-export const TH: React.FC<THProps> = ({ children, ...props }) => {
+export const TH: React.FC<THProps> = ({ children, align = 'left', ...props }) => {
   return (
     <StyledTableHeaderCell stickyHeight={0} {...props}>
-      {children}
+      <StyledFlex align={align} alignItems="center" flexDirection="row" hide={false}>
+        {children}
+      </StyledFlex>
     </StyledTableHeaderCell>
   );
 };

@@ -303,4 +303,29 @@ describe('StatelessTable', () => {
     expect(cell).toBeInTheDocument();
     expect(cell).toHaveClass('custom-class');
   });
+
+  test('TH component responds to align prop', () => {
+    const { container } = render(
+      <StatelessTable>
+        <THead>
+          <TR>
+            <TH align="left">Left Aligned</TH>
+            <TH align="center">Center Aligned</TH>
+            <TH align="right">Right Aligned</TH>
+          </TR>
+        </THead>
+      </StatelessTable>,
+    );
+
+    const headers = container.querySelectorAll('th');
+    
+    // Check that flex containers have the right justify-content styles
+    const leftHeader = headers[0].querySelector('div'); // StyledFlex
+    const centerHeader = headers[1].querySelector('div');
+    const rightHeader = headers[2].querySelector('div');
+
+    expect(leftHeader).toHaveStyleRule('justify-content', 'flex-start');
+    expect(centerHeader).toHaveStyleRule('justify-content', 'center');
+    expect(rightHeader).toHaveStyleRule('justify-content', 'flex-end');
+  });
 });
