@@ -2244,6 +2244,8 @@ exports[`render utility button 1`] = `
   background-color: transparent;
   border-color: transparent;
   color: #5E637A;
+  padding-inline: 0.25rem;
+  min-width: 2.25rem;
 }
 
 .c0:focus {
@@ -2605,6 +2607,8 @@ exports[`render utility disabled button 1`] = `
   background-color: transparent;
   border-color: transparent;
   color: #5E637A;
+  padding-inline: 0.25rem;
+  min-width: 2.25rem;
 }
 
 .c0:focus {
