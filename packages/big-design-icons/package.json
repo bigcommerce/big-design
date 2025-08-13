@@ -62,7 +62,7 @@
     "flag-icons": "^7.3.2",
     "fs-extra": "^11.3.0",
     "glob": "^11.0.1",
-    "inquirer": "^8.2.6",
+    "inquirer": "^8.2.7",
     "inquirer-autocomplete-prompt": "^2.0.1",
     "prettier": "^2.4.0",
     "react": "^18.2.0",
