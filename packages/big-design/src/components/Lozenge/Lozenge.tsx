@@ -1,20 +1,22 @@
 import {
+  ArrowDropDownIcon,
+  BugReportIcon,
+  DoNotDisturbOnTotalSilenceIcon,
+  EventBusyIcon,
   InfoIcon,
-  // BugReportIcon,
-  // DoNotDisturbOnTotalSilenceIcon,
-  // EventBusyIcon,
-  // RocketLaunchIcon,
-  // ScienceIcon,
+  RocketIcon,
+  RocketLaunchIcon,
+  ScienceIcon,
 } from '@bigcommerce/big-design-icons';
-import React from 'react';
+import React, { Ref }  from 'react';
 
 import { Tooltip } from '../Tooltip';
 
-import { StyledLozenge } from './styled';
+import { StyledLozenge, StyledLozengeButton } from './styled';
 
 interface SharedLozengeProps {
   label: string;
-  variant?: 'alpha' | 'beta' | 'deprecated' | 'legacy' | 'new';
+  variant?: 'alpha' | 'beta' | 'deprecated' | 'early-access' | 'legacy' | 'new';
 }
 export interface LozengeWithTooltipProps extends SharedLozengeProps {
   tooltipContent?: string;
@@ -40,30 +42,30 @@ function isTooltipProps(props: LozengeProps): props is LozengeWithTooltipProps {
   );
 }
 
-// const iconMapping = {
-//   alpha: <BugReportIcon aria-hidden="true" size="large" />,
-//   beta: <ScienceIcon aria-hidden="true" size="large" />,
-//   deprecated: <DoNotDisturbOnTotalSilenceIcon aria-hidden="true" size="large" />,
-//   legacy: <EventBusyIcon aria-hidden="true" size="large" />,
-//   new: <RocketLaunchIcon aria-hidden="true" size="large" />,
-// };
+const iconMapping = {
+  alpha: <BugReportIcon aria-hidden="true" size="large" />,
+  beta: <ScienceIcon aria-hidden="true" size="large" />,
+  deprecated: <DoNotDisturbOnTotalSilenceIcon aria-hidden="true" size="large" />,
+  'early-access': <RocketIcon aria-hidden="true" size="large" />,
+  legacy: <EventBusyIcon aria-hidden="true" size="large" />,
+  new: <RocketLaunchIcon aria-hidden="true" size="large" />,
+};
 
 export const Lozenge = React.forwardRef<HTMLDivElement, LozengeProps>((props, ref) => {
-  const { label, variant } = props;
+  const { label, variant = 'new' } = props;
 
   if (isPopoverProps(props)) {
     return (
-      <StyledLozenge
-        ref={ref}
+      <StyledLozengeButton
+        ref={ref as Ref<HTMLButtonElement>}
         variant={variant}
-        role="button"
-        tabIndex={0}
         onClick={props.onClick}
         aria-expanded={props.isOpen}
       >
-        {/* {variant && iconMapping[variant]} */}
+        {iconMapping[variant]}
         {label}
-      </StyledLozenge>
+        <ArrowDropDownIcon aria-hidden="true" size="large" />
+      </StyledLozengeButton>
     );
   }
 
@@ -73,6 +75,7 @@ export const Lozenge = React.forwardRef<HTMLDivElement, LozengeProps>((props, re
         placement="auto"
         trigger={
           <StyledLozenge ref={ref} variant={variant} hasTooltip>
+            {iconMapping[variant]}
             {label}
             <InfoIcon aria-hidden="true" size="large" />
           </StyledLozenge>
@@ -85,6 +88,7 @@ export const Lozenge = React.forwardRef<HTMLDivElement, LozengeProps>((props, re
 
   return (
     <StyledLozenge ref={ref} variant={variant}>
+      {iconMapping[variant]}
       {label}
     </StyledLozenge>
   );
