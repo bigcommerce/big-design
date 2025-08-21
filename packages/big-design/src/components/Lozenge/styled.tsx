@@ -141,5 +141,5 @@ StyledLozenge.defaultProps = {
 };
 
 StyledLozengeButton.defaultProps = {
-  theme: defaultTheme
+  theme: defaultTheme,
 };
