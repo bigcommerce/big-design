@@ -12,10 +12,25 @@ export interface BaseSpacing {
   xxxLarge: string;
 }
 
+const BaseSpacingValues: BaseSpacing = {
+  none: 0,
+  xxSmall: remCalc(4),
+  xSmall: remCalc(8),
+  small: remCalc(12),
+  medium: remCalc(16),
+  large: remCalc(20),
+  xLarge: remCalc(24),
+  xxLarge: remCalc(32),
+  xxxLarge: remCalc(48),
+};
+
 type SpacingKeys = Exclude<keyof BaseSpacing, 'none'>;
 
+// Slightly stronger typing for the values: they’re strings prefixed with '-'
+type NegativeString = `-${string}`;
+
 type NegativeSpacing = {
-  [K in `${SpacingKeys}N`]: string;
+  [K in `${SpacingKeys}N`]: NegativeString;
 };
 
 export type Spacing = BaseSpacing & NegativeSpacing;
@@ -25,32 +40,13 @@ export type Spacing = BaseSpacing & NegativeSpacing;
 function buildNegativeSpacing(spacing: Pick<BaseSpacing, SpacingKeys>): NegativeSpacing;
 
 function buildNegativeSpacing(spacing: Record<string, string>): Record<string, string> {
-  return {
-    xxSmallN: `-${spacing.xxSmall}`,
-    xSmallN: `-${spacing.xSmall}`,
-    smallN: `-${spacing.small}`,
-    mediumN: `-${spacing.medium}`,
-    largeN: `-${spacing.large}`,
-    xLargeN: `-${spacing.xLarge}`,
-    xxLargeN: `-${spacing.xxLarge}`,
-    xxxLargeN: `-${spacing.xxxLarge}`,
-  };
+  return Object.fromEntries(Object.entries(spacing).map(([k, v]) => [`${k}N`, `-${v}`]));
 }
 
 export const createSpacing = (): Spacing => {
-  const spacing: BaseSpacing = {
-    none: 0,
-    xxSmall: remCalc(4),
-    xSmall: remCalc(8),
-    small: remCalc(12),
-    medium: remCalc(16),
-    large: remCalc(20),
-    xLarge: remCalc(24),
-    xxLarge: remCalc(32),
-    xxxLarge: remCalc(48),
-  };
+  const spacing: BaseSpacing = BaseSpacingValues;
 
-  // Destructure to drop `none`, pass the rest to the overloaded builder.
+  // Drop `none`; everything left gets a negative twin automatically.
   const { none: _none, ...positives } = spacing;
   const negativeSpacing = buildNegativeSpacing(positives);
 
