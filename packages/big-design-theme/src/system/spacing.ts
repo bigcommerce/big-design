@@ -1,6 +1,6 @@
 import { remCalc } from '../helpers';
 
-interface BaseSpacing {
+export interface BaseSpacing {
   none: 0;
   xxSmall: string;
   xSmall: string;
