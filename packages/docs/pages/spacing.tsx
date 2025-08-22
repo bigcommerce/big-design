@@ -38,8 +38,7 @@ const SpacingPage = () => {
         <Text>
           BigDesign’s theme provides a pre-defined spacing scale, primarily used with{' '}
           <Code primary>padding</Code> and <Code primary>margin</Code> props. In addition to the
-          positive tokens (e.g. <Code>small</Code>, <Code>medium</Code>), the theme exposes
-          matching{' '}
+          positive tokens (e.g. <Code>small</Code>, <Code>medium</Code>), the theme exposes matching{' '}
           <Text as="span" bold>
             negative
           </Text>{' '}
