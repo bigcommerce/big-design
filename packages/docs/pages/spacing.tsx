@@ -1,4 +1,4 @@
-import { Box, Button, Flex, H1, Panel, Text, Table } from '@bigcommerce/big-design';
+import { Box, Button, Flex, H1, Panel, Table, Text } from '@bigcommerce/big-design';
 import React, { Fragment, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
@@ -124,19 +124,19 @@ const SpacingPage = () => {
           <Code>mediumN</Code>).
         </Text>
 
-        <Flex justifyContent="space-around" flexWrap="wrap">
+        <Flex flexWrap="wrap" justifyContent="space-around">
           {POSITIVE_KEYS.map((key) => (
             <Flex
               alignItems="center"
               flexDirection="column"
               key={key}
-              paddingBottom="small"
               margin="xSmall"
+              paddingBottom="small"
             >
               <Code>{key}</Code>
               {/* Using the theme value directly keeps this demo accurate. */}
               <BlueBox marginTop="medium" style={{ width: spacing[key], height: spacing[key] }} />
-              <Text marginTop="xxSmall" color="secondary70">
+              <Text color="secondary70" marginTop="xxSmall">
                 {String(spacing[key])}
               </Text>
             </Flex>
