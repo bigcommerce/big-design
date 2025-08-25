@@ -10,6 +10,14 @@ export interface Spacing {
   xLarge: string;
   xxLarge: string;
   xxxLarge: string;
+  xxSmallN: string;
+  xSmallN: string;
+  smallN: string;
+  mediumN: string;
+  largeN: string;
+  xLargeN: string;
+  xxLargeN: string;
+  xxxLargeN: string;
 }
 
 export const createSpacing = (): Spacing => ({
@@ -22,4 +30,12 @@ export const createSpacing = (): Spacing => ({
   xLarge: remCalc(24),
   xxLarge: remCalc(32),
   xxxLarge: remCalc(48),
+  xxSmallN: `-${remCalc(4)}`,
+  xSmallN: `-${remCalc(8)}`,
+  smallN: `-${remCalc(12)}`,
+  mediumN: `-${remCalc(16)}`,
+  largeN: `-${remCalc(20)}`,
+  xLargeN: `-${remCalc(24)}`,
+  xxLargeN: `-${remCalc(32)}`,
+  xxxLargeN: `-${remCalc(48)}`,
 });
