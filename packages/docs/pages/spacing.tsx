@@ -9,15 +9,16 @@ import { Code, CodePreview, ContentRoutingTabs, List, NextLink } from '../compon
 
 // Keep this local list in docs to control order & avoid negatives/none in the visual demo.
 // (If you later export SPACING_KEYS from the theme, swap to that single source of truth.)
-const POSITIVE_KEYS = [
-  'xxSmall',
-  'xSmall',
-  'small',
-  'medium',
-  'large',
-  'xLarge',
-  'xxLarge',
+const BASE_KEYS = [
   'xxxLarge',
+  'xxLarge',
+  'xLarge',
+  'large',
+  'medium',
+  'small',
+  'xSmall',
+  'xxSmall',
+  'none',
 ];
 
 const BlueBox = styled(Box)(({ theme }) => ({
@@ -36,14 +37,9 @@ const SpacingPage = () => {
 
       <Panel header="Overview" headerId="overview">
         <Text>
-          BigDesign’s theme provides a pre-defined spacing scale, primarily used with{' '}
-          <Code primary>padding</Code> and <Code primary>margin</Code> props. In addition to the
-          positive tokens (e.g. <Code>small</Code>, <Code>medium</Code>), the theme exposes matching{' '}
-          <Text as="span" bold>
-            negative
-          </Text>{' '}
-          tokens by suffixing <Code>N</Code> (e.g. <Code>smallN</Code> equals <Code>-small</Code>).
-          The token <Code>none</Code> is equivalent to <Code>0</Code>.
+          BigDesign core theme provides a pre-defined set of spacing values that are primarily used
+          with any of the <Code primary>padding</Code> and <Code primary>margin</Code> props. There
+          are a few ways we can consume these values.
         </Text>
 
         <Text bold>When to use:</Text>
@@ -70,15 +66,15 @@ const SpacingPage = () => {
               render: () => (
                 <Fragment key="property">
                   <Text>
-                    Components that accept <Code primary>padding</Code> and{' '}
-                    <Code primary>margin</Code> props take spacing tokens. Use positive tokens for
-                    regular layout, and the <Code>N</Code> variants for negative spacing.
+                    Certain components will include <Code primary>padding</Code> and{' '}
+                    <Code primary>margin</Code> props. You can use the spacing keys to apply spacing
+                    values to those props.
                   </Text>
                   <CodePreview>
                     {/* jsx-to-string:start */}
                     <>
-                      <Button marginRight="medium">Positive</Button>
-                      <Button marginLeft="xSmallN">Negative left</Button>
+                      <Button marginRight="medium">Button</Button>
+                      <Button>Button</Button>
                     </>
                     {/* jsx-to-string:end */}
                   </CodePreview>
@@ -98,12 +94,54 @@ const SpacingPage = () => {
                         backgroundColor: theme.colors.primary,
                         height: theme.spacing.large,
                         width: theme.spacing.large,
-                        // Example: pull content left by a small gutter
-                        marginLeft: theme.spacing.xSmallN,
                       }));
 
                       return <StyledBox />;
                     }}
+                    {/* jsx-to-string:end */}
+                  </CodePreview>
+                </Fragment>
+              ),
+            },
+            {
+              id: 'negative',
+              title: 'Negative spacing',
+              render: () => (
+                <Fragment key="negative">
+                  <Text>
+                    Every positive token has a negative counterpart formed by appending{' '}
+                    <Code>N</Code>. These are especially useful for collapsing gutters or creating
+                    controlled overlap, as demonstrated in the table within a panel component in the
+                    following example.
+                  </Text>
+                  <CodePreview>
+                    {/* jsx-to-string:start */}
+                    <Panel
+                      description="The contents of the panel can have negative margins to collapse gutters."
+                      header="Negative Margins"
+                    >
+                      <Box marginHorizontal={{ mobile: 'mediumN', tablet: 'xLargeN' }}>
+                        <Table
+                          columns={[
+                            {
+                              header: 'Sku',
+                              hash: 'sku',
+                              tooltip: 'Header tooltip',
+                              render: ({ sku }) => sku,
+                            },
+                            { header: 'Name', hash: 'name', render: ({ name }) => name },
+                            { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
+                          ]}
+                          items={[
+                            { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
+                            { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
+                            { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
+                            { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
+                            { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
+                          ]}
+                        />
+                      </Box>
+                    </Panel>
                     {/* jsx-to-string:end */}
                   </CodePreview>
                 </Fragment>
@@ -119,12 +157,12 @@ const SpacingPage = () => {
           <Text as="span" bold>
             positive
           </Text>{' '}
-          spacing tokens. Negative tokens are the same values with a leading <Code>-</Code> (e.g.{' '}
-          <Code>mediumN</Code>).
+          spacing tokens. To use the same tokens for negative spacing, just append an <Code>N</Code>{' '}
+          (e.g. <Code>mediumN</Code>).
         </Text>
 
         <Flex flexWrap="wrap" justifyContent="space-around">
-          {POSITIVE_KEYS.map((key) => (
+          {BASE_KEYS.map((key) => (
             <Flex
               alignItems="center"
               flexDirection="column"
@@ -135,51 +173,9 @@ const SpacingPage = () => {
               <Code>{key}</Code>
               {/* Using the theme value directly keeps this demo accurate. */}
               <BlueBox marginTop="medium" style={{ width: spacing[key], height: spacing[key] }} />
-              <Text color="secondary70" marginTop="xxSmall">
-                {String(spacing[key])}
-              </Text>
             </Flex>
           ))}
         </Flex>
-      </Panel>
-
-      <Panel header="Negative spacing" headerId="negative-spacing">
-        <Text>
-          Every positive token has a negative counterpart formed by appending <Code>N</Code>. These
-          are especially useful for collapsing gutters or creating controlled overlap, as
-          demonstrated in the table within a panel component in the following example.
-        </Text>
-
-        <CodePreview>
-          {/* jsx-to-string:start */}
-          <Panel
-            description="The contents of the panel can have negative margins to collapse gutters."
-            header="Negative Margins"
-          >
-            <Box marginHorizontal={{ mobile: 'mediumN', tablet: 'xLargeN' }}>
-              <Table
-                columns={[
-                  {
-                    header: 'Sku',
-                    hash: 'sku',
-                    tooltip: 'Header tooltip',
-                    render: ({ sku }) => sku,
-                  },
-                  { header: 'Name', hash: 'name', render: ({ name }) => name },
-                  { header: 'Stock', hash: 'stock', render: ({ stock }) => stock },
-                ]}
-                items={[
-                  { sku: 'SM13', name: '[Sample] Smith Journal 13', stock: 25 },
-                  { sku: 'DPB', name: '[Sample] Dustpan & Brush', stock: 34 },
-                  { sku: 'OFSUC', name: '[Sample] Utility Caddy', stock: 45 },
-                  { sku: 'CLC', name: '[Sample] Canvas Laundry Cart', stock: 2 },
-                  { sku: 'CGLD', name: '[Sample] Laundry Detergent', stock: 29 },
-                ]}
-              />
-            </Box>
-          </Panel>
-          {/* jsx-to-string:end */}
-        </CodePreview>
       </Panel>
     </>
   );
