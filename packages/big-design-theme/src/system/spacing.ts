@@ -1,6 +1,6 @@
 import { remCalc } from '../helpers';
 
-export interface BaseSpacing {
+export interface Spacing {
   none: 0;
   xxSmall: string;
   xSmall: string;
@@ -10,9 +10,17 @@ export interface BaseSpacing {
   xLarge: string;
   xxLarge: string;
   xxxLarge: string;
+  xxSmallN: string;
+  xSmallN: string;
+  smallN: string;
+  mediumN: string;
+  largeN: string;
+  xLargeN: string;
+  xxLargeN: string;
+  xxxLargeN: string;
 }
 
-const BaseSpacingValues: BaseSpacing = {
+export const createSpacing = (): Spacing => ({
   none: 0,
   xxSmall: remCalc(4),
   xSmall: remCalc(8),
@@ -22,36 +30,12 @@ const BaseSpacingValues: BaseSpacing = {
   xLarge: remCalc(24),
   xxLarge: remCalc(32),
   xxxLarge: remCalc(48),
-};
-
-type SpacingKeys = Exclude<keyof BaseSpacing, 'none'>;
-
-// Slightly stronger typing for the values: they’re strings prefixed with '-'
-type NegativeString = `-${string}`;
-
-type NegativeSpacing = {
-  [K in `${SpacingKeys}N`]: NegativeString;
-};
-
-export type Spacing = BaseSpacing & NegativeSpacing;
-
-// Overloaded helper: strongly typed for real spacing,
-// and a loose overload for any string map (keeps implementation simple).
-function buildNegativeSpacing(spacing: Pick<BaseSpacing, SpacingKeys>): NegativeSpacing;
-
-function buildNegativeSpacing(spacing: Record<string, string>): Record<string, string> {
-  return Object.fromEntries(Object.entries(spacing).map(([k, v]) => [`${k}N`, `-${v}`]));
-}
-
-export const createSpacing = (): Spacing => {
-  const spacing: BaseSpacing = BaseSpacingValues;
-
-  // Drop `none`; everything left gets a negative twin automatically.
-  const { none: _none, ...positives } = spacing;
-  const negativeSpacing = buildNegativeSpacing(positives);
-
-  return {
-    ...spacing,
-    ...negativeSpacing,
-  };
-};
+  xxSmallN: `-${remCalc(4)}`,
+  xSmallN: `-${remCalc(8)}`,
+  smallN: `-${remCalc(12)}`,
+  mediumN: `-${remCalc(16)}`,
+  largeN: `-${remCalc(20)}`,
+  xLargeN: `-${remCalc(24)}`,
+  xxLargeN: `-${remCalc(32)}`,
+  xxxLargeN: `-${remCalc(48)}`,
+});
