@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.0
+
+### Minor Changes
+
+- e323932: added negative values to spacing definitions
+
 ## 1.1.0
 
 ### Minor Changes

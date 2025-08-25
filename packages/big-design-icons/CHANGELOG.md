@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.5.0
+
+### Minor Changes
+
+- a1306f6: added icons for lozenges
+
+### Patch Changes
+
+- Updated dependencies [e323932]
+  - @bigcommerce/big-design-theme@1.2.0
+
 ## 1.4.0
 
 ### Minor Changes
