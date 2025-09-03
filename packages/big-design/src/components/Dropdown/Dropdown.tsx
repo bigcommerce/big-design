@@ -129,9 +129,17 @@ export const Dropdown = memo(
       modifiers: [
         {
           name: 'eventListeners',
-          options: { scroll: isOpen, resize: isOpen },
+          options: {
+            scroll: isOpen,
+            resize: isOpen,
+          },
         },
-        { name: 'offset', options: { offset: [0, 4] } },
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 4],
+          },
+        },
       ],
       placement,
       strategy: positionFixed ? 'fixed' : 'absolute',
