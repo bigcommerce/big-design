@@ -122,6 +122,10 @@ export const Dropdown = memo(
         toggleButtonId: toggle.props.id,
       });
 
+    if (!isOpen) {
+      getMenuProps({}, { suppressRefError: true });
+    }
+
     const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
     const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
 
