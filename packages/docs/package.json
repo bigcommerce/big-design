@@ -13,8 +13,7 @@
   "scripts": {
     "build": "next build",
     "lint": "eslint . --max-warnings 0",
-    "start": "next",
-    "typecheck": "tsc --noEmit"
+    "start": "next"
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {
