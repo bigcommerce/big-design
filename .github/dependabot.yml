@@ -13,3 +13,6 @@ updates:
         update-types: ['version-update:semver-major']
       - dependency-name: 'camelcase'
         update-types: ['version-update:semver-major']
+      # Disabling the ability to update this library since we are patching it due to a bug with peer dependencies.
+      - dependency-name: '@changesets/assemble-release-plan'
+        update-types: ['version-update:semver-major', 'version-update:semver-minor', 'version-update:semver-patch']
