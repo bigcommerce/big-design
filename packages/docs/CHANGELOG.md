@@ -1,5 +1,18 @@
 # Change Log
 
+## 1.8.0
+
+### Minor Changes
+
+- e323932: added negative values to spacing definitions
+
+### Patch Changes
+
+- Updated dependencies [a1306f6]
+- Updated dependencies [e323932]
+  - @bigcommerce/big-design-icons@1.5.0
+  - @bigcommerce/big-design-theme@1.2.0
+
 ## 1.7.0
 
 ### Minor Changes
