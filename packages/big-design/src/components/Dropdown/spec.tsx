@@ -122,12 +122,10 @@ test('dropdown toggle has aria-expanded when dropdown menu is open', async () =>
   expect(toggle).toHaveAttribute('aria-expanded', 'true');
 });
 
-test('renders the dropdown menu closed', async () => {
+test('renders the dropdown menu closed', () => {
   render(DropdownMock);
 
-  const list = await screen.findByRole('menu');
-
-  expect(list).toBeEmptyDOMElement();
+  expect(screen.queryByRole('menu')).not.toBeInTheDocument();
 });
 
 test('opens/closes dropdown menu when toggle is clicked', async () => {
@@ -135,7 +133,7 @@ test('opens/closes dropdown menu when toggle is clicked', async () => {
 
   const toggle = screen.getByRole('button');
 
-  fireEvent.click(toggle);
+  await userEvent.click(toggle);
 
   const list = await screen.findByRole('menu');
 
@@ -143,7 +141,7 @@ test('opens/closes dropdown menu when toggle is clicked', async () => {
 
   await userEvent.click(toggle);
 
-  expect(list).toBeEmptyDOMElement();
+  expect(screen.queryByRole('menu')).not.toBeInTheDocument();
 });
 
 test('dropdown menu has aria-activedescendant', async () => {
@@ -276,15 +274,11 @@ test('esc should close menu', async () => {
 
   await userEvent.click(toggle);
 
-  const list = await screen.findByRole('menu');
-
-  expect(list).not.toBeEmptyDOMElement();
+  await screen.findByRole('menu');
 
   await userEvent.keyboard('{Escape}');
 
-  await screen.findByRole('menu');
-
-  expect(list).toBeEmptyDOMElement();
+  expect(screen.queryByRole('menu')).not.toBeInTheDocument();
 });
 
 test('home should select first dropdown item', async () => {
