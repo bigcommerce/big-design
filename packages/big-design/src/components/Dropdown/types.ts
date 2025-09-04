@@ -1,5 +1,5 @@
 import { Placement } from '@popperjs/core';
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, ReactElement } from 'react';
 
 export interface DropdownProps extends Omit<ComponentPropsWithoutRef<'ul'>, 'children'> {
   autoWidth?: boolean;
@@ -9,7 +9,7 @@ export interface DropdownProps extends Omit<ComponentPropsWithoutRef<'ul'>, 'chi
   maxHeight?: number;
   placement?: Placement;
   positionFixed?: boolean;
-  toggle: React.ReactElement<unknown>;
+  toggle: ReactElement<{ id?: string }>;
 }
 
 interface BaseItem extends Omit<ComponentPropsWithoutRef<'li'>, 'value'> {
@@ -17,7 +17,7 @@ interface BaseItem extends Omit<ComponentPropsWithoutRef<'li'>, 'value'> {
   content: string;
   description?: string;
   disabled?: boolean;
-  icon?: React.ReactElement;
+  icon?: ReactElement;
   tooltip?: string;
 }
 

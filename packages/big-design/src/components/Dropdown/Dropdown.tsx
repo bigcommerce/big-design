@@ -4,10 +4,12 @@ import React, {
   isValidElement,
   memo,
   useCallback,
+  useEffect,
   useId,
   useMemo,
-  useRef,
+  useState,
 } from 'react';
+import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
 
 import { Box } from '../Box';
@@ -44,8 +46,8 @@ export const Dropdown = memo(
         : items;
     }, []);
 
-    // We only need the items to pass down to Downshift, not groups
     const flattenedItems = useMemo(() => flattenItems(items), [flattenItems, items]);
+
     const defaultHighlightedIndex = flattenedItems.findIndex((item) => {
       if (!selectedItem) {
         return false;
@@ -60,13 +62,11 @@ export const Dropdown = memo(
 
     const handleOnSelectedItemChange = useCallback(
       ({ selectedItem }: Partial<UseSelectState<DropdownItem | DropdownLinkItem | null>>) => {
-        // Links don't trigger an onItemClick
         if (
           selectedItem &&
           selectedItem.type !== 'link' &&
           typeof selectedItem.onItemClick === 'function'
         ) {
-          // Call onItemClick with selected item
           selectedItem.onItemClick(selectedItem);
         }
       },
@@ -112,15 +112,17 @@ export const Dropdown = memo(
         onSelectedItemChange: handleOnSelectedItemChange,
         selectedItem: null, // We never set a selected item
         stateReducer,
-        // @ts-expect-error toggle is of unknown type
         toggleButtonId: toggle.props.id,
       });
 
-    // Popper
-    const referenceRef = useRef(null);
-    const popperRef = useRef(null);
+    if (!isOpen) {
+      getMenuProps({}, { suppressRefError: true });
+    }
 
-    const { attributes, styles, update } = usePopper(referenceRef.current, popperRef.current, {
+    const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
+    const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
+
+    const { attributes, styles, update } = usePopper(referenceElement, popperElement, {
       modifiers: [
         {
           name: 'eventListeners',
@@ -140,6 +142,12 @@ export const Dropdown = memo(
       strategy: positionFixed ? 'fixed' : 'absolute',
     });
 
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => setMounted(true), []);
+
+    const container = mounted && typeof document !== 'undefined' ? document.body : null;
+
     const clonedToggle =
       isValidElement(toggle) &&
       cloneElement(toggle, {
@@ -148,29 +156,33 @@ export const Dropdown = memo(
           // Downshift sets this to a label id that doesn't exist
           'aria-labelledby': undefined,
           disabled,
-          ref: referenceRef,
+          ref: setReferenceElement,
           role: 'button',
         }),
       });
 
+    const popperContent = (
+      <Box ref={setPopperElement} style={styles.popper} {...attributes.popper} zIndex="popover">
+        <List
+          {...props}
+          autoWidth={autoWidth}
+          getItemProps={getItemProps}
+          getMenuProps={getMenuProps}
+          highlightedIndex={highlightedIndex}
+          isDropdown={true}
+          isOpen={isOpen}
+          items={items}
+          maxHeight={maxHeight}
+          role="menu"
+          update={update}
+        />
+      </Box>
+    );
+
     return (
-      <StyledBox>
+      <StyledBox className={className} style={style}>
         {clonedToggle}
-        <Box ref={popperRef} style={styles.popper} {...attributes.poppper} zIndex="popover">
-          <List
-            {...props}
-            autoWidth={autoWidth}
-            getItemProps={getItemProps}
-            getMenuProps={getMenuProps}
-            highlightedIndex={highlightedIndex}
-            isDropdown={true}
-            isOpen={isOpen}
-            items={items}
-            maxHeight={maxHeight}
-            role="menu"
-            update={update}
-          />
-        </Box>
+        {isOpen && container ? createPortal(popperContent, container) : null}
       </StyledBox>
     );
   },
