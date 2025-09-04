@@ -23,11 +23,6 @@ export const isDropdownItemGroupArray = (
 ): items is DropdownItemGroup[] =>
   items.every((items) => 'items' in items && !('content' in items));
 
-interface PortalProps {
-  portalContainer?: Element | null;
-  renderInPortal?: boolean;
-}
-
 export const Dropdown = memo(
   ({
     autoWidth = false,
@@ -41,10 +36,8 @@ export const Dropdown = memo(
     selectedItem,
     toggle,
     style,
-    portalContainer,
-    renderInPortal = true,
     ...props
-  }: DropdownProps & PortalProps) => {
+  }: DropdownProps) => {
     const dropdownUniqueId = useId();
 
     const flattenItems = useCallback((items: DropdownProps['items']) => {
@@ -153,9 +146,7 @@ export const Dropdown = memo(
 
     useEffect(() => setMounted(true), []);
 
-    const dropdownContainer = mounted
-      ? portalContainer ?? (typeof document !== 'undefined' ? document.body : null)
-      : null;
+    const container = mounted && typeof document !== 'undefined' ? document.body : null;
 
     const clonedToggle =
       isValidElement(toggle) &&
@@ -191,11 +182,7 @@ export const Dropdown = memo(
     return (
       <StyledBox className={className} style={style}>
         {clonedToggle}
-        {isOpen
-          ? renderInPortal && dropdownContainer
-            ? createPortal(popperContent, dropdownContainer)
-            : popperContent
-          : null}
+        {isOpen && container ? createPortal(popperContent, container) : null}
       </StyledBox>
     );
   },
