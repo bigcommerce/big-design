@@ -143,10 +143,58 @@ export const Dropdown = memo(
     });
 
     const [mounted, setMounted] = useState(false);
+    const [portalContainer, setPortalContainer] = useState<Element | null>(null);
+    const [zIndexValue, setZIndexValue] = useState<number | 'popover' | 'modal'>('popover');
 
     useEffect(() => setMounted(true), []);
 
-    const container = mounted && typeof document !== 'undefined' ? document.body : null;
+    useEffect(() => {
+      if (!mounted || !isOpen) {
+        return;
+      }
+
+      const body = typeof document !== 'undefined' ? document.body : null;
+
+      if (!body) {
+        return;
+      }
+
+      const recompute = () => {
+        if (!body) {
+          return;
+        }
+
+        let container: Element | null = body;
+        let z: number | 'popover' | 'modal' = 'popover';
+
+        const openModal =
+          document.querySelector('[role="dialog"][aria-modal="true"]') ||
+          document.querySelector('[role="dialog"]') ||
+          document.querySelector('[aria-modal="true"]') ||
+          document.querySelector('[data-bd-modal-root]');
+
+        if (openModal) {
+          const modalZ = parseInt(getComputedStyle(openModal).zIndex || '0', 10) || 0;
+
+          z = Math.max(0, modalZ - 1);
+        } else {
+          z = 'popover';
+        }
+
+        container = body;
+
+        setPortalContainer(container);
+        setZIndexValue(z);
+      };
+
+      recompute();
+
+      const mutationObserver = new MutationObserver(recompute);
+
+      mutationObserver.observe(body, { childList: true, subtree: true });
+
+      return () => mutationObserver.disconnect();
+    }, [mounted, isOpen, referenceElement]);
 
     const clonedToggle =
       isValidElement(toggle) &&
@@ -160,9 +208,15 @@ export const Dropdown = memo(
           role: 'button',
         }),
       });
+    const popperZIndexProp = typeof zIndexValue === 'string' ? zIndexValue : undefined;
 
     const popperContent = (
-      <Box ref={setPopperElement} style={styles.popper} {...attributes.popper} zIndex="popover">
+      <Box
+        ref={setPopperElement}
+        style={styles.popper}
+        {...attributes.popper}
+        zIndex={popperZIndexProp}
+      >
         <List
           {...props}
           autoWidth={autoWidth}
@@ -182,7 +236,7 @@ export const Dropdown = memo(
     return (
       <StyledBox className={className} style={style}>
         {clonedToggle}
-        {isOpen && container ? createPortal(popperContent, container) : null}
+        {isOpen && mounted && portalContainer ? createPortal(popperContent, portalContainer) : null}
       </StyledBox>
     );
   },
