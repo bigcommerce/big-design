@@ -153,18 +153,13 @@ export const Dropdown = memo(
         return;
       }
 
-      const body = typeof document !== 'undefined' ? document.body : null;
-
-      if (!body) {
-        return;
-      }
+      const body = document.body;
 
       const recompute = () => {
         if (!body) {
           return;
         }
 
-        let container: Element | null = body;
         let z: number | 'popover' | 'modal' = 'popover';
 
         const openModal =
@@ -181,9 +176,7 @@ export const Dropdown = memo(
           z = 'popover';
         }
 
-        container = body;
-
-        setPortalContainer(container);
+        setPortalContainer(body);
         setZIndexValue(z);
       };
 
