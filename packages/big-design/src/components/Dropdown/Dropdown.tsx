@@ -4,7 +4,6 @@ import React, {
   isValidElement,
   memo,
   useCallback,
-  useEffect,
   useId,
   useMemo,
   useState,
@@ -22,15 +21,6 @@ export const isDropdownItemGroupArray = (
   items: Array<DropdownItemGroup | DropdownItem | DropdownLinkItem>,
 ): items is DropdownItemGroup[] =>
   items.every((items) => 'items' in items && !('content' in items));
-
-function findPortalContainer(from: HTMLElement | null): Element {
-  const nearestModal =
-    from?.closest(
-      '[data-bd-modal-root], [role="dialog"][aria-modal="true"], [role="dialog"], [aria-modal="true"]',
-    ) ?? null;
-
-  return nearestModal ?? document.body;
-}
 
 export const Dropdown = memo(
   ({
@@ -124,6 +114,7 @@ export const Dropdown = memo(
         toggleButtonId: toggle.props.id,
       });
 
+    // downshift throws a ref error if getMenuProps is called with no args and the menu is closed
     if (!isOpen) {
       getMenuProps({}, { suppressRefError: true });
     }
@@ -151,19 +142,6 @@ export const Dropdown = memo(
       strategy: positionFixed ? 'fixed' : 'absolute',
     });
 
-    const [mounted, setMounted] = useState(false);
-    const [portalContainer, setPortalContainer] = useState<Element | null>(null);
-
-    useEffect(() => setMounted(true), []);
-
-    useEffect(() => {
-      if (!isOpen) {
-        return;
-      }
-
-      setPortalContainer(findPortalContainer(referenceElement));
-    }, [isOpen, referenceElement]);
-
     const clonedToggle =
       isValidElement(toggle) &&
       cloneElement(toggle, {
@@ -178,7 +156,7 @@ export const Dropdown = memo(
       });
 
     const popperContent = (
-      <Box ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+      <Box ref={setPopperElement} style={styles.popper} {...attributes.popper} zIndex="popover">
         <List
           {...props}
           autoWidth={autoWidth}
@@ -196,9 +174,9 @@ export const Dropdown = memo(
     );
 
     return (
-      <StyledBox className={className} style={style}>
+      <StyledBox>
         {clonedToggle}
-        {isOpen && mounted && portalContainer ? createPortal(popperContent, portalContainer) : null}
+        {isOpen ? createPortal(popperContent, document.body) : null}
       </StyledBox>
     );
   },
