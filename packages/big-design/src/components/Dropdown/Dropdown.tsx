@@ -23,6 +23,15 @@ export const isDropdownItemGroupArray = (
 ): items is DropdownItemGroup[] =>
   items.every((items) => 'items' in items && !('content' in items));
 
+function findPortalContainer(from: HTMLElement | null): Element {
+  const nearestModal =
+    from?.closest(
+      '[data-bd-modal-root], [role="dialog"][aria-modal="true"], [role="dialog"], [aria-modal="true"]',
+    ) ?? null;
+
+  return nearestModal ?? document.body;
+}
+
 export const Dropdown = memo(
   ({
     autoWidth = false,
@@ -144,50 +153,16 @@ export const Dropdown = memo(
 
     const [mounted, setMounted] = useState(false);
     const [portalContainer, setPortalContainer] = useState<Element | null>(null);
-    const [zIndexValue, setZIndexValue] = useState<number | 'popover' | 'modal'>('popover');
 
     useEffect(() => setMounted(true), []);
 
     useEffect(() => {
-      if (!mounted || !isOpen) {
+      if (!isOpen) {
         return;
       }
 
-      const body = document.body;
-
-      const recompute = () => {
-        if (!body) {
-          return;
-        }
-
-        let z: number | 'popover' | 'modal' = 'popover';
-
-        const openModal =
-          document.querySelector('[role="dialog"][aria-modal="true"]') ||
-          document.querySelector('[role="dialog"]') ||
-          document.querySelector('[aria-modal="true"]') ||
-          document.querySelector('[data-bd-modal-root]');
-
-        if (openModal) {
-          const modalZ = parseInt(getComputedStyle(openModal).zIndex || '0', 10) || 0;
-
-          z = Math.max(0, modalZ - 1);
-        } else {
-          z = 'popover';
-        }
-
-        setPortalContainer(body);
-        setZIndexValue(z);
-      };
-
-      recompute();
-
-      const mutationObserver = new MutationObserver(recompute);
-
-      mutationObserver.observe(body, { childList: true, subtree: true });
-
-      return () => mutationObserver.disconnect();
-    }, [mounted, isOpen, referenceElement]);
+      setPortalContainer(findPortalContainer(referenceElement));
+    }, [isOpen, referenceElement]);
 
     const clonedToggle =
       isValidElement(toggle) &&
@@ -201,15 +176,9 @@ export const Dropdown = memo(
           role: 'button',
         }),
       });
-    const popperZIndexProp = typeof zIndexValue === 'string' ? zIndexValue : undefined;
 
     const popperContent = (
-      <Box
-        ref={setPopperElement}
-        style={styles.popper}
-        {...attributes.popper}
-        zIndex={popperZIndexProp}
-      >
+      <Box ref={setPopperElement} style={styles.popper} {...attributes.popper}>
         <List
           {...props}
           autoWidth={autoWidth}
