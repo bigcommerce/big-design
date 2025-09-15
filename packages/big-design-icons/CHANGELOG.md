@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.6.0
+
+### Minor Changes
+
+- 3dd3178: added refresh icon to set
+
 ## 1.5.0
 
 ### Minor Changes
