@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PanelContents renders StyledPanelContents with correct props 1`] = `
+<div
+  class="styled__StyledBox-sc-12d4dbf-0 imudcb styled__StyledPanelContents-sc-dd60c8b6-1 fnisvI"
+  height="auto"
+>
+  Test string
+</div>
+`;
