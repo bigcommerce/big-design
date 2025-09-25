@@ -47,7 +47,7 @@ pnpm run start              # Start docs with live reload
 
 # Testing
 pnpm run test              # Run all tests
-cd packages/big-design && pnpm run test  # Package-specific tests
+pnpm -F @bigcommerce/big-design run test # Package-specific tests
 pnpm run test --update-snapshot          # Update snapshots
 
 # Code Quality
@@ -60,42 +60,40 @@ pnpm run typecheck         # Type check all packages
 #### 1. TypeScript Patterns
 - Use strict typing with proper interfaces
 - Extend base HTML element props when appropriate
-- Use theme-aware styling with `useTheme()` hook
 
 #### 2. Styled Components
 - All styling in `styled.tsx` files
 - Use theme tokens from `@bigcommerce/big-design-theme`
 - Implement responsive design patterns
-- Support margin/padding system props
+- Support logical margin/padding system props (not directional)
+- Do not forward `className` and `style` props unless explicitly instructed by a human
 
 #### 3. Testing Requirements
 - Jest tests with React Testing Library in `spec.tsx`
 - Test component rendering, interactions, and accessibility
-- Snapshot tests for styled components (may need updates after style changes)
+- Snapshot tests for styled components (may need updates after style changes) but only 1-2 per spec file
 - Use `jest-styled-components` for style assertions
 
 #### 4. Documentation
-- Include JSDoc comments for all public props
 - Add usage examples in component documentation
-- Update docs site examples when adding new features
+- Update docs site examples when adding or changing features
 
 ## Testing Workflow
 
 ### Running Tests
 1. **Full test suite**: `pnpm run test`
-2. **Package-specific**: `cd packages/big-design && pnpm run test`
+2. **Package-specific**: `pnpm -F @bigcommerce/big-design run test`
 3. **Watch mode**: `pnpm run test:watch`
 4. **Coverage**: `pnpm run ci:test`
 
 ### Snapshot Management
 When styled components change:
-1. Run full build: `pnpm run build`
-2. Navigate to package: `cd packages/big-design`
-3. Update snapshots: `pnpm run test --update-snapshot`
-4. Review snapshot changes carefully before committing
+1. Navigate to package: `cd packages/big-design`
+2. Update snapshots: `pnpm run test --update-snapshot`
+3. Review snapshot changes carefully before committing
 
 ### Test Organization
-- Group related tests using `describe` blocks
+- Group related tests using `describe` blocks but only for related functionality
 - Test both positive and negative scenarios
 - Include accessibility tests with appropriate ARIA attributes
 - Mock external dependencies appropriately
@@ -115,8 +113,9 @@ pnpm run typecheck         # TypeScript compilation
 3. Run `pnpm run lint` and fix any issues
 4. Run `pnpm run typecheck` and resolve type errors
 5. Run `pnpm run test` and ensure all tests pass
-6. Update snapshots if needed
-7. Commit changes
+6. Generate a changeset using `pnpm changeset` while following the prompts to the best of your ability
+7. Update snapshots if needed
+8. Commit changes
 
 ## Build System (Turborepo)
 
@@ -127,9 +126,7 @@ pnpm run typecheck         # TypeScript compilation
 - Icons must be built before other packages
 
 ### Build Dependencies
-```
-big-design-icons → big-design-theme → big-design → docs
-```
+Resolve dependency ordering via Turbo
 
 ### Common Issues
 - **Icons not found**: Run `pnpm run build:icons`
@@ -145,10 +142,9 @@ big-design-icons → big-design-theme → big-design → docs
 - Component examples are interactive and editable
 
 ### Adding Component Documentation
-1. Create MDX file in `packages/docs/pages/components/`
-2. Include live code examples using the docs component system
-3. Document all props with descriptions and examples
-4. Include accessibility guidelines and best practices
+1. Include live code examples using the docs component system
+2. Document all props with descriptions and examples following existing patterns
+3. Include accessibility guidelines and best practices
 
 ## AI Agent Best Practices
 
@@ -179,9 +175,7 @@ big-design-icons → big-design-theme → big-design → docs
 
 ### Theme System
 - All styling uses `@bigcommerce/big-design-theme`
-- Access theme via `useTheme()` hook from styled-components
 - Use theme tokens for colors, spacing, typography
-- Support both light and dark modes
 
 ### Icon System
 - Icons are SVG components in `@bigcommerce/big-design-icons`
@@ -192,11 +186,11 @@ big-design-icons → big-design-theme → big-design → docs
 - All interactive components must be keyboard accessible
 - Include proper ARIA attributes and roles
 - Test with screen readers when possible
-- Follow WCAG 2.1 guidelines
+- Follow WCAG 2.2 AA guidelines
 
 ### Browser Support
 - Modern browsers (Chrome, Firefox, Safari, Edge)
-- React 18+ and styled-components 5.x
+- React 18 and styled-components 5.x
 - TypeScript strict mode enabled
 
 ## Emergency Procedures
@@ -217,4 +211,3 @@ big-design-icons → big-design-theme → big-design → docs
 1. All packages must build successfully
 2. Tests must pass completely
 3. Documentation must build without errors
-4. Icons must be available for all dependent packages
