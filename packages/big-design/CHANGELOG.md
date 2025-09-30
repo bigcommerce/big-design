@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.1
+
+### Patch Changes
+
+- 8b48238: add portal to dropdown component
+
 ## 2.1.0
 
 ### Minor Changes
