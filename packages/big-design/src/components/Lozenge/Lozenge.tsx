@@ -52,7 +52,7 @@ const iconMap = {
   'early-access': RocketIcon,
   legacy: EventBusyIcon,
   new: RocketLaunchIcon,
-}
+};
 
 // Ref helper: narrows to a ref object whose `current` is T | null
 function isRefObject<T>(r: React.ForwardedRef<T>): r is React.MutableRefObject<T | null> {
@@ -60,12 +60,15 @@ function isRefObject<T>(r: React.ForwardedRef<T>): r is React.MutableRefObject<T
 }
 
 // Ref callback that propagates the element (or null) to the forwarded ref
-function setForwardedRef<T extends HTMLButtonElement | HTMLDivElement>(ref: React.ForwardedRef<T>, node: T | null) {
+function setForwardedRef<T extends HTMLButtonElement | HTMLDivElement>(
+  ref: React.ForwardedRef<T>,
+  node: T | null,
+) {
   if (typeof ref === 'function') {
     ref(node);
   } else if (isRefObject<HTMLButtonElement | HTMLDivElement>(ref)) {
-    ref.current = node
-  };
+    ref.current = node;
+  }
 }
 
 export const Lozenge = forwardRef<HTMLDivElement | HTMLButtonElement, LozengeProps>(
@@ -77,11 +80,11 @@ export const Lozenge = forwardRef<HTMLDivElement | HTMLButtonElement, LozengePro
     if (isPopoverProps(props)) {
       return (
         <StyledLozengeButton
-          type="button"
-          aria-haspopup={true}
           aria-expanded={props.isOpen}
+          aria-haspopup={true}
           onClick={props.onClick}
           ref={(node) => setForwardedRef(ref, node)}
+          type="button"
           variant={variant}
         >
           <VariantIcon aria-hidden="true" size="large" />
