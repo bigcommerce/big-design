@@ -45,50 +45,46 @@ function isTooltipProps(props: LozengeProps): props is LozengeWithTooltipProps {
   );
 }
 
-const iconMapping = {
-  alpha: <BugReportIcon aria-hidden="true" size="large" />,
-  beta: <ScienceIcon aria-hidden="true" size="large" />,
-  deprecated: <DoNotDisturbOnTotalSilenceIcon aria-hidden="true" size="large" />,
-  'early-access': <RocketIcon aria-hidden="true" size="large" />,
-  legacy: <EventBusyIcon aria-hidden="true" size="large" />,
-  new: <RocketLaunchIcon aria-hidden="true" size="large" />,
-};
+const iconMap = {
+  alpha: BugReportIcon,
+  beta: ScienceIcon,
+  deprecated: DoNotDisturbOnTotalSilenceIcon,
+  'early-access': RocketIcon,
+  legacy: EventBusyIcon,
+  new: RocketLaunchIcon,
+}
 
 // Ref helper: narrows to a ref object whose `current` is T | null
 function isRefObject<T>(r: React.ForwardedRef<T>): r is React.MutableRefObject<T | null> {
   return r !== null && typeof r === 'object' && 'current' in r;
 }
 
+// Ref callback that propagates the element (or null) to the forwarded ref
+function setForwardedRef<T extends HTMLButtonElement | HTMLDivElement>(ref: React.ForwardedRef<T>, node: T | null) {
+  if (typeof ref === 'function') {
+    ref(node);
+  } else if (isRefObject<HTMLButtonElement | HTMLDivElement>(ref)) {
+    ref.current = node
+  };
+}
+
 export const Lozenge = forwardRef<HTMLDivElement | HTMLButtonElement, LozengeProps>(
   (props, ref) => {
     const { label, variant = 'new' } = props;
 
-    // Ref callbacks that propagate the element (or null) to the forwarded ref
-    const setButtonRef: React.RefCallback<HTMLButtonElement> = (node) => {
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (isRefObject<HTMLDivElement | HTMLButtonElement>(ref)) {
-        ref.current = node;
-      }
-    };
-
-    const setDivRef: React.RefCallback<HTMLDivElement> = (node) => {
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (isRefObject<HTMLDivElement | HTMLButtonElement>(ref)) {
-        ref.current = node;
-      }
-    };
+    const VariantIcon = iconMap[variant];
 
     if (isPopoverProps(props)) {
       return (
         <StyledLozengeButton
+          type="button"
+          aria-haspopup={true}
           aria-expanded={props.isOpen}
           onClick={props.onClick}
-          ref={setButtonRef}
+          ref={(node) => setForwardedRef(ref, node)}
           variant={variant}
         >
-          {iconMapping[variant]}
+          <VariantIcon aria-hidden="true" size="large" />
           {label}
           <ArrowDropDownIcon aria-hidden="true" size="large" />
         </StyledLozengeButton>
@@ -100,8 +96,8 @@ export const Lozenge = forwardRef<HTMLDivElement | HTMLButtonElement, LozengePro
         <Tooltip
           placement="auto"
           trigger={
-            <StyledLozenge hasTooltip ref={setDivRef} variant={variant}>
-              {iconMapping[variant]}
+            <StyledLozenge hasTooltip ref={(node) => setForwardedRef(ref, node)} variant={variant}>
+              <VariantIcon aria-hidden="true" size="large" />
               {label}
               <InfoIcon aria-hidden="true" size="large" />
             </StyledLozenge>
@@ -113,8 +109,8 @@ export const Lozenge = forwardRef<HTMLDivElement | HTMLButtonElement, LozengePro
     }
 
     return (
-      <StyledLozenge ref={setDivRef} variant={variant}>
-        {iconMapping[variant]}
+      <StyledLozenge ref={(node) => setForwardedRef(ref, node)} variant={variant}>
+        <VariantIcon aria-hidden="true" size="large" />
         {label}
       </StyledLozenge>
     );
