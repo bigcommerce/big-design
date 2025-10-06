@@ -57,7 +57,9 @@ exports[`Lozenge (button) applies expanded styles when isOpen is true 1`] = `
 
 <button
   aria-expanded="true"
+  aria-haspopup="true"
   class="c0"
+  type="button"
 >
   <svg
     aria-hidden="true"
@@ -162,7 +164,9 @@ exports[`render Lozenge as button (popover variant) 1`] = `
 
 <button
   aria-expanded="false"
+  aria-haspopup="true"
   class="c0"
+  type="button"
 >
   <svg
     aria-hidden="true"
