@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.2.0
+
+### Minor Changes
+
+- 7973bb5: - Added icons to Lozenges. Each Lozenge variant now will be rendered with variant-specific icon.
+  - Added option to add popover to Lozenge.
+
 ## 2.1.1
 
 ### Patch Changes
