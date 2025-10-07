@@ -50,6 +50,7 @@ export * from './PinIcon';
 export * from './PublicIcon';
 export * from './ReceiptIcon';
 export * from './RedoIcon';
+export * from './RefreshIcon';
 export * from './RemoveCircleOutlineIcon';
 export * from './RemoveIcon';
 export * from './RestoreIcon';

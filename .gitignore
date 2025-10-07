@@ -4,6 +4,7 @@ dist
 coverage
 .vscode
 packages/docs/.next
+packages/docs/next-env.d.ts
 packages/docs/out
 packages/docs/pages/Dev
 packages/docs/pages/dev.tsx

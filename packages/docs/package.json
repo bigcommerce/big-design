@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/docs",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "private": true,
   "sideEffects": false,
   "license": "(MIT AND CC-BY-3.0)",
@@ -13,8 +13,7 @@
   "scripts": {
     "build": "next build",
     "lint": "eslint . --max-warnings 0",
-    "start": "next",
-    "typecheck": "tsc --noEmit"
+    "start": "next"
   },
   "prettier": "@bigcommerce/eslint-config/prettier",
   "dependencies": {

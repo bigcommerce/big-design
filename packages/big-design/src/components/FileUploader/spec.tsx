@@ -446,7 +446,7 @@ describe('FileUploader', () => {
       'background-color: rgb(60, 100, 244)',
     );
     expect(screen.getByRole('button', { name: /upload by url/i })).toHaveStyle(
-      'background-color: transparent',
+      'background-color: rgba(0, 0, 0, 0)',
     );
   });
 });
