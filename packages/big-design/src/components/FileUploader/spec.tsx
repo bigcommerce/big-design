@@ -10,7 +10,7 @@ import { FormControlLabel, FormGroup } from '../Form';
 import { defaultLocalization } from './constants';
 import { DropZone } from './DropZone';
 import { File as FileComponent } from './File';
-import { FileUploader } from './FileUploader';
+import { FileAction, FileUploader } from './FileUploader';
 import { Action, ValidatorConfig } from './types';
 
 import 'jest-styled-components';
@@ -448,6 +448,124 @@ describe('FileUploader', () => {
     expect(screen.getByRole('button', { name: /upload by url/i })).toHaveStyle(
       'background-color: rgba(0, 0, 0, 0)',
     );
+  });
+
+  it('renders without label when label is not provided', async () => {
+    const { container } = render(<FileUploader files={[]} onFilesChange={jest.fn()} />);
+
+    await waitFor(() => {
+      const label = container.querySelector('label');
+
+      expect(label).not.toBeInTheDocument();
+    });
+  });
+
+  it('renders with valid FormControlDescription component', async () => {
+    const { FormControlDescription } = await import('../Form');
+
+    render(
+      <FileUploader
+        description={<FormControlDescription>Custom description</FormControlDescription>}
+        files={[]}
+        label="Upload your images"
+        onFilesChange={jest.fn()}
+      />,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText('Custom description')).toBeVisible();
+    });
+  });
+
+  it('calls action onItemClick with file and index', async () => {
+    const mockOnItemClick = jest.fn();
+    const file = createMockFile(1000, 'test.jpg', 'image/jpeg');
+    const actions: FileAction[] = [
+      {
+        content: 'Custom action',
+        onItemClick: mockOnItemClick,
+      },
+    ];
+
+    render(
+      <FileUploader
+        actions={actions}
+        files={[file]}
+        label="Upload your images"
+        onFilesChange={jest.fn()}
+      />,
+    );
+
+    // Find the dropdown toggle button (MoreHoriz icon) and click it to open the dropdown
+    const dropdownButtons = screen.getAllByRole('button', { name: '' });
+    const dropdownToggle = dropdownButtons.find((button) =>
+      button.querySelector('[aria-hidden="true"]'),
+    );
+
+    await waitFor(() => expect(dropdownToggle).toBeInTheDocument());
+    await userEvent.click(dropdownToggle!);
+
+    // Find and click the action item in the dropdown
+    const actionItem = await screen.findByText('Custom action');
+
+    await userEvent.click(actionItem);
+
+    expect(mockOnItemClick).toHaveBeenCalledWith(file, 0);
+  });
+
+  it('handles multiple validation errors on the same file', async () => {
+    const onFilesError = jest.fn();
+    const validators: ValidatorConfig[] = [
+      {
+        type: 'name_limit',
+        validator: (file: File) => file.name.length <= 5,
+        message: 'File name is too long',
+      },
+      {
+        type: 'size_limit',
+        validator: (file: File) => file.size <= 500,
+        message: 'File size is too big',
+      },
+    ];
+
+    const file = createMockFile(1000, 'verylongfilename.jpg', 'image/jpeg');
+
+    render(
+      <FileUploader
+        files={[file]}
+        label="Upload your images"
+        multiple
+        onFilesChange={jest.fn()}
+        onFilesError={onFilesError}
+        validators={validators}
+      />,
+    );
+
+    await waitFor(() => {
+      expect(onFilesError).toHaveBeenCalledWith([
+        {
+          file,
+          fileIdx: 0,
+          message: 'File name is too long, File size is too big',
+          type: ['name_limit', 'size_limit'],
+        },
+      ]);
+    });
+  });
+
+  it('removes file in single mode', async () => {
+    const onFilesChange = jest.fn();
+    const file = createMockFile(1000, 'test.jpg', 'image/jpeg');
+
+    render(
+      <FileUploader files={[file]} label="Upload your images" onFilesChange={onFilesChange} />,
+    );
+
+    const removeButton = await screen.findByRole('button', { name: /remove test.jpg/i });
+
+    await userEvent.click(removeButton);
+
+    expect(onFilesChange).toHaveBeenCalledWith([]);
   });
 });
 
