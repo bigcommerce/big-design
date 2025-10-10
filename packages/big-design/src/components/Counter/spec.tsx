@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React, { createRef, Ref } from 'react';
 import 'jest-styled-components';
@@ -457,4 +457,145 @@ test('renders localized labels', async () => {
 
   expect(decreaseButton).toBeInTheDocument();
   expect(increaseButton).toBeInTheDocument();
+});
+
+test('calls onFocus callback when provided', async () => {
+  const onFocus = jest.fn();
+
+  render(<Counter {...requiredAttributes} onFocus={onFocus} />);
+
+  const counter = await screen.findByRole('textbox');
+
+  await userEvent.click(counter);
+
+  expect(onFocus).toHaveBeenCalled();
+});
+
+test('calls onBlur callback when provided', async () => {
+  const onBlur = jest.fn();
+
+  render(<Counter {...requiredAttributes} onBlur={onBlur} />);
+
+  const counter = await screen.findByRole('textbox');
+
+  await userEvent.click(counter);
+  await userEvent.tab();
+
+  expect(onBlur).toHaveBeenCalled();
+});
+
+test('increases to next multiple of step when value is not a multiple', async () => {
+  const onCountChange = jest.fn();
+
+  // Use value 5, step 2: 5 is not a multiple of 2
+  // Should increase to: 5 + (2 - 5%2) = 5 + (2 - 1) = 5 + 1 = 6
+  render(counterMock({ value: 5, step: 2, max: 20, onCountChange }));
+
+  const increaseButton = await screen.findByRole('button', { name: 'Increase count' });
+
+  onCountChange.mockClear();
+
+  await userEvent.click(increaseButton);
+
+  // 5 is not a multiple of 2, so should increase to 6 (5 + (2 - 5%2)) - line 103
+  expect(onCountChange).toHaveBeenCalledWith(6);
+});
+
+test('decreases to previous multiple of step when value is not a multiple', async () => {
+  const onCountChange = jest.fn();
+
+  // Use value 5, step 2: 5 is not a multiple of 2
+  // Should decrease to: 5 - 5%2 = 5 - 1 = 4
+  render(counterMock({ value: 5, step: 2, max: 20, onCountChange }));
+
+  const decreaseButton = await screen.findByRole('button', { name: 'Decrease count' });
+
+  onCountChange.mockClear();
+
+  await userEvent.click(decreaseButton);
+
+  // 5 is not a multiple of 2, so should decrease to 4 (5 - 5%2) - line 118
+  expect(onCountChange).toHaveBeenCalledWith(4);
+});
+
+test('handles manual input change with valid number within range', async () => {
+  const onCountChange = jest.fn();
+
+  render(counterMock({ value: 5, max: 20, min: 0, onCountChange }));
+
+  const counter = await screen.findByRole('textbox');
+
+  onCountChange.mockClear();
+
+  // Use fireEvent.change to directly set the value
+  fireEvent.change(counter, { target: { value: '8' } });
+
+  // Should call onCountChange with 8 (tests line 133-134)
+  expect(onCountChange).toHaveBeenCalledWith(8);
+});
+
+test('handles manual input change with non-integer value gets rounded', async () => {
+  const onCountChange = jest.fn();
+
+  render(counterMock({ value: 5, max: 20, min: 0, onCountChange }));
+
+  const counter = await screen.findByRole('textbox');
+
+  onCountChange.mockClear();
+
+  // Use fireEvent.change to set a non-integer value
+  fireEvent.change(counter, { target: { value: '3.5' } });
+
+  // Should have been called with rounded value 4 (tests line 129-130)
+  expect(onCountChange).toHaveBeenCalledWith(4);
+});
+
+test('ignores manual input with non-numeric value', async () => {
+  render(counterMock({ ...requiredAttributes, value: 5 }));
+
+  const counter = await screen.findByRole('textbox');
+
+  handleChange.mockClear();
+
+  await userEvent.type(counter, 'abc');
+
+  // Should not call onCountChange for non-numeric input
+  expect(handleChange).not.toHaveBeenCalled();
+});
+
+test('does not change value when manual input exceeds max', async () => {
+  const onCountChange = jest.fn();
+
+  render(counterMock({ value: 5, max: 10, onCountChange }));
+
+  const counter = await screen.findByRole('textbox');
+
+  await userEvent.clear(counter);
+  await userEvent.type(counter, '15');
+
+  // Should call with valid intermediate values (1, 5) but not 15 since 15 > 10
+  // Check that it wasn't called with 15
+  expect(onCountChange).not.toHaveBeenCalledWith(15);
+});
+
+test('does not change value when manual input below min', async () => {
+  const onCountChange = jest.fn();
+
+  render(counterMock({ value: 5, min: 2, onCountChange }));
+
+  const counter = await screen.findByRole('textbox');
+
+  await userEvent.clear(counter);
+  await userEvent.type(counter, '1');
+
+  // Should not call onCountChange with 1 since 1 < 2 (min)
+  expect(onCountChange).not.toHaveBeenCalledWith(1);
+});
+
+test('renders without label when label is not provided', () => {
+  const { container } = render(<Counter onCountChange={handleChange} value={5} />);
+
+  const label = container.querySelector('label');
+
+  expect(label).not.toBeInTheDocument();
 });

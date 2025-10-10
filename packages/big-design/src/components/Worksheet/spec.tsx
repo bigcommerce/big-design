@@ -1747,3 +1747,123 @@ test('renders localized labels', () => {
 
   expect(screen.queryAllByTitle('cambiar expansion de fila')).toHaveLength(2);
 });
+
+describe('useKeyEvents coverage improvements', () => {
+  test('Shift+Tab navigates left when editing', async () => {
+    const { getAllByText, getAllByLabelText, getByRole, getByDisplayValue } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const worksheet = getByRole('table');
+    const cells = getAllByText('Text');
+    const cell = cells[0];
+
+    fireEvent.click(cell);
+    fireEvent.keyDown(worksheet, { key: 'a' });
+
+    // Now in editing mode with input showing 'a'
+    const input = getByDisplayValue('a');
+
+    // Press Shift+Tab to finish editing and navigate left to the checkbox column
+    fireEvent.keyDown(input, { key: 'Tab', shiftKey: true });
+
+    // Should navigate to previous column (visibleOnStorefront checkbox) after finishing edit
+    const checkboxes = getAllByLabelText('Checked');
+    const prevCell = checkboxes[0].parentElement?.parentElement?.parentElement;
+
+    expect(prevCell).toHaveStyle(`border-color: ${theme.colors.primary}`);
+  });
+
+  test('Shift+ArrowUp reduces selection when multiple cells selected', async () => {
+    render(<Worksheet columns={columns} items={items} onChange={handleChange} />);
+
+    const firstRowElement = await screen.findByText('Shoes Name Three');
+    const firstCell = firstRowElement.parentElement;
+
+    if (firstCell) {
+      await userEvent.click(firstCell);
+    }
+
+    // Select multiple cells with Shift+ArrowDown
+    await userEvent.keyboard('{Shift>}{ArrowDown>2}{/Shift}');
+
+    // Now reduce selection with Shift+ArrowUp
+    await userEvent.keyboard('{Shift>}{ArrowUp}{/Shift}');
+
+    // Selection should be reduced by one cell
+    const secondRowElement = await screen.findByText('Shoes Name Two');
+    const secondCell = secondRowElement.parentElement;
+
+    expect(firstCell).toHaveStyle(`border-color: ${theme.colors.primary}`);
+    expect(secondCell).toHaveStyle(`border-bottom-color: ${theme.colors.primary}`);
+  });
+
+  test('Meta key triggers editSelectedCell when cell is selected', async () => {
+    const { getByText, getByRole } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const cellText = getByText('Shoes Name Three');
+    const cell = cellText.parentElement;
+    const worksheet = getByRole('table');
+
+    if (cell) {
+      await userEvent.click(cell);
+    }
+
+    // Press Meta key - should call editSelectedCell with isMetaKey flag
+    // This doesn't visually start editing but handles the key for copy/paste operations
+    fireEvent.keyDown(worksheet, { key: 'Meta' });
+
+    // Cell should remain selected (not in editing mode)
+    expect(cell).toHaveStyle(`border-color: ${theme.colors.primary}`);
+  });
+
+  test('Control key triggers editSelectedCell when cell is selected', async () => {
+    const { getByText, getByRole } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const cellText = getByText('Shoes Name Three');
+    const cell = cellText.parentElement;
+    const worksheet = getByRole('table');
+
+    if (cell) {
+      await userEvent.click(cell);
+    }
+
+    // Press Control key - should call editSelectedCell with isControlKey flag
+    fireEvent.keyDown(worksheet, { key: 'Control' });
+
+    // Cell should remain selected
+    expect(cell).toHaveStyle(`border-color: ${theme.colors.primary}`);
+  });
+
+  test('Meta key does nothing when no cell is selected', async () => {
+    const { getByRole, queryByDisplayValue } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const worksheet = getByRole('table');
+
+    // Press Meta key without selecting a cell first
+    fireEvent.keyDown(worksheet, { key: 'Meta' });
+
+    // No cell should be editing
+    expect(queryByDisplayValue('Shoes Name Three')).toBeNull();
+  });
+
+  test('Control key does nothing when no cell is selected', async () => {
+    const { getByRole, queryByDisplayValue } = render(
+      <Worksheet columns={columns} items={items} onChange={handleChange} />,
+    );
+
+    const worksheet = getByRole('table');
+
+    // Press Control key without selecting a cell first
+    fireEvent.keyDown(worksheet, { key: 'Control' });
+
+    // No cell should be editing
+    expect(queryByDisplayValue('Shoes Name Three')).toBeNull();
+  });
+});

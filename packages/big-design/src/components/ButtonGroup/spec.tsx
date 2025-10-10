@@ -187,3 +187,81 @@ test('hide overflowed buttons and show a "more" dropdown', async () => {
   expect(screen.queryByRole('button', { name: /E/ })).not.toBeInTheDocument();
   expect(screen.queryByRole('button', { name: /F/ })).not.toBeInTheDocument();
 });
+
+test('handles window resize event', async () => {
+  render(
+    <ButtonGroup
+      actions={[
+        { text: 'button 1' },
+        { text: 'button 2' },
+        { text: 'button 3' },
+        { text: 'button 4' },
+      ]}
+    />,
+  );
+
+  // Prevents an act warning on component mount
+  await act(() => Promise.resolve());
+
+  // Trigger window resize event
+  await act(async () => {
+    window.dispatchEvent(new Event('resize'));
+    await Promise.resolve();
+  });
+
+  expect(screen.getByRole('button', { name: /button 1/i })).toBeVisible();
+});
+
+test('handles action with no offsetWidth', async () => {
+  const originalDescriptor = Object.getOwnPropertyDescriptor(
+    window.HTMLElement.prototype,
+    'offsetWidth',
+  );
+
+  // Mock offsetWidth to return 0 for some items
+  Object.defineProperty(window.HTMLElement.prototype, 'offsetWidth', {
+    configurable: true,
+    get(this: HTMLElement) {
+      if (this.dataset.testid === 'buttongroup-dropdown') {
+        return 50;
+      }
+
+      if (this.dataset.testid === 'buttongroup-wrapper') {
+        return 400;
+      }
+
+      // Return undefined for first button item to test the !actionWidth branch
+      if (this.dataset.testid === 'buttongroup-item') {
+        const text = this.textContent;
+
+        if (text === 'button 1') {
+          return 0;
+        }
+
+        return 100;
+      }
+
+      return 0;
+    },
+  });
+
+  render(<ButtonGroup actions={[{ text: 'button 1' }, { text: 'button 2' }]} />);
+
+  // Prevents an act warning on component mount
+  await act(() => Promise.resolve());
+
+  // Verify buttons are rendered despite offsetWidth being 0
+  expect(screen.getByRole('button', { name: /button 1/i })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /button 2/i })).toBeInTheDocument();
+
+  // Restore original descriptor
+  if (originalDescriptor) {
+    Object.defineProperty(window.HTMLElement.prototype, 'offsetWidth', originalDescriptor);
+  }
+});
+
+test('renders null when actions array is empty', () => {
+  const { container } = render(<ButtonGroup actions={[]} />);
+
+  expect(container.querySelector('[data-testid="buttongroup-wrapper"]')).not.toBeInTheDocument();
+});
