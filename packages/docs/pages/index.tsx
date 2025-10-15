@@ -98,7 +98,7 @@ const GettingStartedPage = () => {
           <head>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600&display=swap" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;600&display=swap" rel="stylesheet" />
           </head>
           `}
         </CodeSnippet>
