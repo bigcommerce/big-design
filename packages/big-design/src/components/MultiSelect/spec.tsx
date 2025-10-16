@@ -1187,3 +1187,125 @@ describe('aria-labelledby', () => {
     expect(input).toHaveAttribute('aria-labelledby', 'countries');
   });
 });
+
+describe('keyboard interactions', () => {
+  test('backspace removes last selected chip when input is empty', async () => {
+    const onOptionsChangeMock = jest.fn();
+
+    render(
+      <MultiSelect
+        data-testid="multi-select"
+        onOptionsChange={onOptionsChangeMock}
+        options={mockOptions}
+        value={['us', 'mx']}
+      />,
+    );
+
+    const input = await screen.findByTestId('multi-select');
+
+    await userEvent.click(input);
+    await userEvent.keyboard('{backspace}');
+
+    expect(onOptionsChangeMock).toHaveBeenCalledWith(['us'], [mockOptions[0]]);
+  });
+
+  test('enter opens menu when closed', async () => {
+    render(
+      <MultiSelect data-testid="multi-select" onOptionsChange={onChange} options={mockOptions} />,
+    );
+
+    const listbox = await screen.findByRole('listbox');
+
+    // Initially closed
+    expect(listbox).toBeEmptyDOMElement();
+
+    // Tab to focus input then press enter to open
+    await userEvent.tab();
+    await userEvent.keyboard('{enter}');
+
+    expect(listbox).not.toBeEmptyDOMElement();
+  });
+
+  test('escape resets all selections when menu is closed', async () => {
+    const onOptionsChangeMock = jest.fn();
+
+    render(
+      <MultiSelect
+        data-testid="multi-select"
+        onOptionsChange={onOptionsChangeMock}
+        options={mockOptions}
+        value={['us', 'mx']}
+      />,
+    );
+
+    const input = await screen.findByTestId('multi-select');
+
+    await userEvent.click(input);
+
+    const listbox = await screen.findByRole('listbox');
+
+    expect(listbox).not.toBeEmptyDOMElement();
+
+    await userEvent.keyboard('{escape}');
+
+    expect(listbox).toBeEmptyDOMElement();
+
+    await userEvent.keyboard('{escape}');
+
+    expect(onOptionsChangeMock).toHaveBeenCalledWith([], []);
+  });
+});
+
+test('calls onFocus callback when provided', async () => {
+  const onFocusMock = jest.fn();
+
+  render(
+    <MultiSelect
+      data-testid="multi-select"
+      onFocus={onFocusMock}
+      onOptionsChange={onChange}
+      options={mockOptions}
+    />,
+  );
+
+  const input = await screen.findByTestId('multi-select');
+
+  await userEvent.click(input);
+
+  expect(onFocusMock).toHaveBeenCalled();
+});
+
+test('input value clears on blur', async () => {
+  render(
+    <MultiSelect data-testid="multi-select" onOptionsChange={onChange} options={mockOptions} />,
+  );
+
+  const input = await screen.findByTestId('multi-select');
+
+  await userEvent.click(input);
+  await userEvent.type(input, 'test');
+
+  expect(input).toHaveValue('test');
+
+  await userEvent.tab();
+
+  expect(input).toHaveValue('');
+});
+
+test('does not render invalid label type', () => {
+  const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
+
+  render(
+    <MultiSelect
+      data-testid="multi-select"
+      label={<div>Invalid Label</div>}
+      onOptionsChange={onChange}
+      options={mockOptions}
+    />,
+  );
+
+  // Invalid label should not be rendered
+  expect(screen.queryByText('Invalid Label')).not.toBeInTheDocument();
+
+  consoleWarnSpy.mockRestore();
+});
