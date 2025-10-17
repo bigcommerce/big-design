@@ -48,7 +48,7 @@ exports[`render panel 1`] = `
 `;
 
 exports[`render panel with only a heading and no content 1`] = `
-.c4 {
+.c5 {
   color: #313440;
   margin: 0 0 1rem;
   font-size: 1.5rem;
@@ -73,13 +73,39 @@ exports[`render panel with only a heading and no content 1`] = `
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
-  -webkit-align-items: stretch;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  gap: 0.5rem;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  gap: 0.5rem;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
@@ -97,14 +123,17 @@ exports[`render panel with only a heading and no content 1`] = `
   border-radius: 0;
 }
 
-.c5 {
+.c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
 }
 
-.c5 ~ .bd-button {
+.c6 ~ .bd-button {
   width: auto;
   margin-top: 0;
 }
@@ -133,11 +162,15 @@ exports[`render panel with only a heading and no content 1`] = `
   <div
     class="c2 c3"
   >
-    <h2
-      class="c4 c5"
+    <div
+      class="c2 c4"
     >
-      Test Header
-    </h2>
+      <h2
+        class="c5 c6"
+      >
+        Test Header
+      </h2>
+    </div>
   </div>
 </div>
 `;
