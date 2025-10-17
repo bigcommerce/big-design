@@ -25,7 +25,7 @@ export interface Typography {
 }
 
 export const createTypography = (): Typography => ({
-  fontFamily: '"Source Sans Pro", "Helvetica Neue", Arial, sans-serif',
+  fontFamily: '"Source Sans 3", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif',
   fontSize: {
     small: remCalc(14),
     medium: remCalc(16),

@@ -30,8 +30,20 @@ Add the font as a `<link>` in your `index.html`/`<head>` element.
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;600&display=swap" rel="stylesheet" />
 </head>
+```
+
+If using Next.js, utilize the `next/fonts/google` import:
+
+```tsx
+import { Source_Sans_3 } from 'next/font/google';
+
+const sourceSans3 = Source_Sans_3({
+  display: 'swap',
+  weight: ["200", "300", "400", "600"],
+  subsets: ['latin'],
+});
 ```
 
 Import the `GlobalStyles` component and use it once in your app. This will set a few styles globally
