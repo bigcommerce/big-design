@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.2
+
+### Patch Changes
+
+- ab609d6: Fix infinite re-render loop in Dropdown component when using portal. Ensures List component is always mounted (hidden when closed) to satisfy downshift requirements.
+
 ## 2.2.1
 
 ### Patch Changes
