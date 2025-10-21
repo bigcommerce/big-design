@@ -114,11 +114,6 @@ export const Dropdown = memo(
         toggleButtonId: toggle.props.id,
       });
 
-    // downshift throws a ref error if getMenuProps is called with no args and the menu is closed
-    if (!isOpen) {
-      getMenuProps({}, { suppressRefError: true });
-    }
-
     const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(null);
     const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
 
@@ -155,28 +150,51 @@ export const Dropdown = memo(
         }),
       });
 
-    const popperContent = (
-      <Box ref={setPopperElement} style={styles.popper} {...attributes.popper} zIndex="popover">
-        <List
-          {...props}
-          autoWidth={autoWidth}
-          getItemProps={getItemProps}
-          getMenuProps={getMenuProps}
-          highlightedIndex={highlightedIndex}
-          isDropdown={true}
-          isOpen={isOpen}
-          items={items}
-          maxHeight={maxHeight}
-          role="menu"
-          update={update}
-        />
-      </Box>
-    );
-
     return (
       <StyledBox>
         {clonedToggle}
-        {isOpen ? createPortal(popperContent, document.body) : null}
+        {isOpen ? (
+          createPortal(
+            <Box
+              ref={setPopperElement}
+              style={styles.popper}
+              {...attributes.popper}
+              zIndex="popover"
+            >
+              <List
+                {...props}
+                autoWidth={autoWidth}
+                getItemProps={getItemProps}
+                getMenuProps={getMenuProps}
+                highlightedIndex={highlightedIndex}
+                isDropdown={true}
+                isOpen={isOpen}
+                items={items}
+                maxHeight={maxHeight}
+                role="menu"
+                update={update}
+              />
+            </Box>,
+            document.body,
+          )
+        ) : (
+          // We need to render the menu hidden to ensure it has a reference for popper
+          <Box style={styles.popper} {...attributes.popper} display="none" zIndex="popover">
+            <List
+              {...props}
+              autoWidth={autoWidth}
+              getItemProps={getItemProps}
+              getMenuProps={getMenuProps}
+              highlightedIndex={highlightedIndex}
+              isDropdown={true}
+              isOpen={isOpen}
+              items={items}
+              maxHeight={maxHeight}
+              role="menu"
+              update={update}
+            />
+          </Box>
+        )}
       </StyledBox>
     );
   },
