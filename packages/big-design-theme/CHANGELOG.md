@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.3.0
+
+### Minor Changes
+
+- 042d470: Change the documentation and code to use Source Sans 3 instead of Source Sans Pro. Source Sans Pro is licensed by Adobe now which means we need to the utilize the open license with Source Sans 3.
+
 ## 1.2.0
 
 ### Minor Changes
