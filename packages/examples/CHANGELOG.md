@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.1.0
+
+### Minor Changes
+
+- 042d470: Change the documentation and code to use Source Sans 3 instead of Source Sans Pro. Source Sans Pro is licensed by Adobe now which means we need to the utilize the open license with Source Sans 3.
+
+### Patch Changes
+
+- Updated dependencies [042d470]
+  - @bigcommerce/big-design-theme@1.3.0
+  - @bigcommerce/big-design@2.3.0
+
 ## 1.0.6
 
 ### Patch Changes
