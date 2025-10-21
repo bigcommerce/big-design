@@ -34,6 +34,27 @@ describe('alertsManager functionality', () => {
     expect(alertKey).toEqual(testKey);
   });
 
+  test('replaces existing alert with same key', () => {
+    const alerts: AlertProps[] = [];
+    const subscriber = jest.fn((a) => alerts.push(a));
+
+    alertsManager.subscribe(subscriber);
+
+    const firstAlert = { ...alert, key: testKey, messages: [{ text: 'First' }] };
+    const secondAlert = { ...alert, key: testKey, messages: [{ text: 'Second' }] };
+
+    alertsManager.add(firstAlert);
+
+    expect(alerts).toHaveLength(1);
+    expect(alerts[0].messages).toEqual([{ text: 'First' }]);
+
+    alertsManager.add(secondAlert);
+
+    expect(alerts).toHaveLength(3);
+    expect(alerts[1]).toBeNull();
+    expect(alerts[2].messages).toEqual([{ text: 'Second' }]);
+  });
+
   test('adds an alert - without key', () => {
     const alerts: AlertProps[] = [];
     const subscriber = jest.fn((a) => alerts.push(a));
@@ -146,6 +167,34 @@ describe('alertsManager functionality', () => {
 
     expect(mockSubscriber).toHaveBeenCalledTimes(4);
     expect(mockSubscriber).toHaveBeenNthCalledWith(4, null);
+  });
+
+  test('does not set timeout for alert without autoDismiss', () => {
+    jest.useFakeTimers();
+
+    const mockSubscriber = jest.fn();
+    const testAlert = { ...alert, key: 'test-key' };
+
+    alertsManager.subscribe(mockSubscriber);
+    alertsManager.add(testAlert);
+
+    expect(mockSubscriber).toHaveBeenCalledTimes(1);
+
+    jest.runAllTimers();
+
+    expect(mockSubscriber).toHaveBeenCalledTimes(1);
+  });
+
+  test('calls custom onClose when alert is closed', () => {
+    const onCloseMock = jest.fn();
+    const testAlert = { ...alert, key: testKey, onClose: onCloseMock };
+
+    const alertKey = alertsManager.add(testAlert);
+    const addedAlert = alertsManager.remove(alertKey);
+
+    addedAlert?.onClose?.();
+
+    expect(onCloseMock).toHaveBeenCalledTimes(1);
   });
 
   test('removes all alerts', () => {
