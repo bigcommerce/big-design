@@ -7,7 +7,7 @@ exports[`offset pagination renders a pagination component 1`] = `
   width: 2rem;
 }
 
-.c12 {
+.c15 {
   vertical-align: middle;
   height: 1.5rem;
   width: 1.5rem;
@@ -15,6 +15,12 @@ exports[`offset pagination renders a pagination component 1`] = `
 
 .c1 {
   box-sizing: border-box;
+}
+
+.c11 {
+  display: none;
+  box-sizing: border-box;
+  z-index: 1060;
 }
 
 .c4 {
@@ -159,7 +165,7 @@ exports[`offset pagination renders a pagination component 1`] = `
   color: #D9DCE9;
 }
 
-.c11 {
+.c14 {
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
   -webkit-transition-property: background-color,border-color,box-shadow,color;
@@ -208,32 +214,32 @@ exports[`offset pagination renders a pagination component 1`] = `
   color: #3C64F4;
 }
 
-.c11:focus {
+.c14:focus {
   outline: none;
 }
 
-.c11[disabled] {
+.c14[disabled] {
   border-color: #D9DCE9;
   pointer-events: none;
 }
 
-.c11 + .bd-button {
+.c14 + .bd-button {
   margin-top: 0.5rem;
 }
 
-.c11:active {
+.c14:active {
   background-color: #DBE3FE;
 }
 
-.c11:focus {
+.c14:focus {
   box-shadow: 0 0 0 0.25rem #DBE3FE;
 }
 
-.c11:hover:not(:active) {
+.c14:hover:not(:active) {
   background-color: #F0F3FF;
 }
 
-.c11[disabled] {
+.c14[disabled] {
   border-color: transparent;
   color: #D9DCE9;
 }
@@ -249,6 +255,27 @@ exports[`offset pagination renders a pagination component 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
+}
+
+.c12 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c13 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background-color: #FFFFFF;
+  color: #313440;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  z-index: 1060;
 }
 
 .c6 {
@@ -298,14 +325,14 @@ exports[`offset pagination renders a pagination component 1`] = `
 }
 
 @media (min-width:720px) {
-  .c11 + .bd-button {
+  .c14 + .bd-button {
     margin-top: 0;
     margin-left: 0.5rem;
   }
 }
 
 @media (min-width:720px) {
-  .c11 {
+  .c14 {
     width: auto;
     padding: 0;
     min-width: 2.25rem;
@@ -367,13 +394,29 @@ exports[`offset pagination renders a pagination component 1`] = `
               </svg>
             </span>
           </button>
+          <div
+            class="c11"
+            display="none"
+            style="position: fixed; left: 0px; top: 0px;"
+          >
+            <div
+              class="c12"
+            >
+              <ul
+                aria-labelledby=":r13:-label"
+                class="c13"
+                id=":r13:-menu"
+                role="menu"
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div
         class="c1 c5"
       >
         <button
-          class="c11 c8"
+          class="c14 c8"
           disabled=""
           type="button"
         >
@@ -382,7 +425,7 @@ exports[`offset pagination renders a pagination component 1`] = `
           >
             <svg
               aria-labelledby=":r16:"
-              class="c12"
+              class="c15"
               fill="currentColor"
               height="24"
               stroke="currentColor"
@@ -406,7 +449,7 @@ exports[`offset pagination renders a pagination component 1`] = `
           </span>
         </button>
         <button
-          class="c11 c8"
+          class="c14 c8"
           type="button"
         >
           <span
@@ -414,7 +457,7 @@ exports[`offset pagination renders a pagination component 1`] = `
           >
             <svg
               aria-labelledby=":r17:"
-              class="c12"
+              class="c15"
               fill="currentColor"
               height="24"
               stroke="currentColor"

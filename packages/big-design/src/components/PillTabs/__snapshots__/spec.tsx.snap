@@ -11,6 +11,12 @@ exports[`dropdown is not visible if items fit 1`] = `
   box-sizing: border-box;
 }
 
+.c9 {
+  display: none;
+  box-sizing: border-box;
+  z-index: 1060;
+}
+
 .c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
@@ -227,6 +233,27 @@ exports[`dropdown is not visible if items fit 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
+}
+
+.c10 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c11 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background-color: #FFFFFF;
+  color: #313440;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  z-index: 1060;
 }
 
 .c6 {
@@ -335,6 +362,22 @@ exports[`dropdown is not visible if items fit 1`] = `
           </svg>
         </span>
       </button>
+      <div
+        class="c9"
+        display="none"
+        style="position: absolute; left: 0px; top: 0px;"
+      >
+        <div
+          class="c10"
+        >
+          <ul
+            aria-labelledby=":r3:-label"
+            class="c11"
+            id=":r3:-menu"
+            role="menu"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -349,6 +392,12 @@ exports[`it renders the given tabs 1`] = `
 
 .c0 {
   box-sizing: border-box;
+}
+
+.c9 {
+  display: none;
+  box-sizing: border-box;
+  z-index: 1060;
 }
 
 .c1 {
@@ -567,6 +616,27 @@ exports[`it renders the given tabs 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
+}
+
+.c10 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c11 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background-color: #FFFFFF;
+  color: #313440;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  z-index: 1060;
 }
 
 .c6 {
@@ -675,6 +745,22 @@ exports[`it renders the given tabs 1`] = `
           </svg>
         </span>
       </button>
+      <div
+        class="c9"
+        display="none"
+        style="position: absolute; left: 0px; top: 0px;"
+      >
+        <div
+          class="c10"
+        >
+          <ul
+            aria-labelledby=":r0:-label"
+            class="c11"
+            id=":r0:-menu"
+            role="menu"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -689,6 +775,12 @@ exports[`only the pills that fit are visible 1`] = `
 
 .c0 {
   box-sizing: border-box;
+}
+
+.c9 {
+  display: none;
+  box-sizing: border-box;
+  z-index: 1060;
 }
 
 .c1 {
@@ -907,6 +999,27 @@ exports[`only the pills that fit are visible 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
+}
+
+.c10 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c11 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background-color: #FFFFFF;
+  color: #313440;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  z-index: 1060;
 }
 
 .c6 {
@@ -1049,6 +1162,22 @@ exports[`only the pills that fit are visible 1`] = `
           </svg>
         </span>
       </button>
+      <div
+        class="c9"
+        display="none"
+        style="position: absolute; left: 0px; top: 0px;"
+      >
+        <div
+          class="c10"
+        >
+          <ul
+            aria-labelledby=":rc:-label"
+            class="c11"
+            id=":rc:-menu"
+            role="menu"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1063,6 +1192,12 @@ exports[`only the pills that fit are visible 2 1`] = `
 
 .c0 {
   box-sizing: border-box;
+}
+
+.c9 {
+  display: none;
+  box-sizing: border-box;
+  z-index: 1060;
 }
 
 .c1 {
@@ -1281,6 +1416,27 @@ exports[`only the pills that fit are visible 2 1`] = `
   display: inline-grid;
   grid-auto-flow: column;
   grid-gap: 0.5rem;
+}
+
+.c10 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c11 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background-color: #FFFFFF;
+  color: #313440;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  z-index: 1060;
 }
 
 .c6 {
@@ -1422,6 +1578,22 @@ exports[`only the pills that fit are visible 2 1`] = `
           </svg>
         </span>
       </button>
+      <div
+        class="c9"
+        display="none"
+        style="position: absolute; left: 0px; top: 0px;"
+      >
+        <div
+          class="c10"
+        >
+          <ul
+            aria-labelledby=":rf:-label"
+            class="c11"
+            id=":rf:-menu"
+            role="menu"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1436,6 +1608,12 @@ exports[`renders all the filters if they fit 1`] = `
 
 .c0 {
   box-sizing: border-box;
+}
+
+.c9 {
+  display: none;
+  box-sizing: border-box;
+  z-index: 1060;
 }
 
 .c1 {
@@ -1656,6 +1834,27 @@ exports[`renders all the filters if they fit 1`] = `
   grid-gap: 0.5rem;
 }
 
+.c10 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c11 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background-color: #FFFFFF;
+  color: #313440;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  z-index: 1060;
+}
+
 .c6 {
   position: relative;
 }
@@ -1794,6 +1993,22 @@ exports[`renders all the filters if they fit 1`] = `
           </svg>
         </span>
       </button>
+      <div
+        class="c9"
+        display="none"
+        style="position: absolute; left: 0px; top: 0px;"
+      >
+        <div
+          class="c10"
+        >
+          <ul
+            aria-labelledby=":r9:-label"
+            class="c11"
+            id=":r9:-menu"
+            role="menu"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1808,6 +2023,12 @@ exports[`renders dropdown if items do not fit 1`] = `
 
 .c0 {
   box-sizing: border-box;
+}
+
+.c9 {
+  display: none;
+  box-sizing: border-box;
+  z-index: 1060;
 }
 
 .c1 {
@@ -2028,6 +2249,27 @@ exports[`renders dropdown if items do not fit 1`] = `
   grid-gap: 0.5rem;
 }
 
+.c10 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.c11 {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 6px rgba(49,52,64,0.2);
+  background-color: #FFFFFF;
+  color: #313440;
+  margin: 0;
+  max-height: 15.625rem;
+  outline: none;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  z-index: 1060;
+}
+
 .c6 {
   position: relative;
 }
@@ -2152,6 +2394,22 @@ exports[`renders dropdown if items do not fit 1`] = `
           </svg>
         </span>
       </button>
+      <div
+        class="c9"
+        display="none"
+        style="position: absolute; left: 0px; top: 0px;"
+      >
+        <div
+          class="c10"
+        >
+          <ul
+            aria-labelledby=":r6:-label"
+            class="c11"
+            id=":r6:-menu"
+            role="menu"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
