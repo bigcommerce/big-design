@@ -8,8 +8,8 @@ import { WorksheetLocalizationContext } from '../../Worksheet';
 import { StyledExpandButton } from './styled';
 
 interface ToggleEditorProps {
-  toggle: boolean;
-  rowId: string | number;
+  readonly toggle: boolean;
+  readonly rowId: string | number;
 }
 
 const InternalToggleEditor = ({ rowId, toggle }: ToggleEditorProps) => {

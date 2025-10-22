@@ -6,9 +6,9 @@ import { MarginProps } from '../../helpers';
 import { StyledLink } from './styled';
 
 export interface LinkProps extends ComponentPropsWithoutRef<'a'>, MarginProps {
-  children?: React.ReactNode;
-  ellipsis?: boolean;
-  external?: boolean;
+  readonly children?: React.ReactNode;
+  readonly ellipsis?: boolean;
+  readonly external?: boolean;
 }
 
 interface PrivateProps {

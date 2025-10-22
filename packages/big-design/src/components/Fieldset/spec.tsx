@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
@@ -10,24 +10,25 @@ import { FieldsetLegend } from './Legend';
 import { Fieldset } from './index';
 
 test('renders a fieldset tag', () => {
-  const { container } = render(<Fieldset />);
+  render(<Fieldset />);
 
-  expect(container.querySelector('fieldset')).toBeInTheDocument();
+  expect(screen.getByRole('group')).toBeInTheDocument();
 });
 
 test('renders legend', () => {
   const legendText = 'legend text';
-  const { container } = render(<Fieldset legend={legendText} />);
-  const legend = container.querySelector('legend');
 
-  expect(legend).toBeInTheDocument();
+  render(<Fieldset legend={legendText} />);
+
+  expect(screen.getByText(legendText)).toBeInTheDocument();
 });
 
 test('renders description', () => {
   const descriptionText = 'description text';
-  const { queryByText } = render(<Fieldset description={descriptionText} />);
 
-  expect(queryByText(descriptionText)).toBeInTheDocument();
+  render(<Fieldset description={descriptionText} />);
+
+  expect(screen.getByText(descriptionText)).toBeInTheDocument();
 });
 
 test('accepts a Legend Component', () => {
@@ -40,9 +41,9 @@ test('accepts a Legend Component', () => {
     </FieldsetLegend>
   );
 
-  const { queryByTestId } = render(<Fieldset legend={CustomLegend} />);
+  render(<Fieldset legend={CustomLegend} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(screen.getByTestId('test')).toBeInTheDocument();
 });
 
 test('does not accept non-Legend Components', () => {
@@ -61,9 +62,9 @@ test('does not accept non-Legend Components', () => {
 });
 
 test('renders in legend is null or undefined', () => {
-  const { container } = render(<Fieldset />);
+  render(<Fieldset />);
 
-  const fieldset = container.querySelector('fieldset');
+  const fieldset = screen.getByRole('group');
 
   expect(fieldset).toBeInTheDocument();
 });
@@ -78,9 +79,9 @@ test('accepts a Description Component', () => {
     </FieldsetDescription>
   );
 
-  const { queryByTestId } = render(<Fieldset description={CustomDescription} />);
+  render(<Fieldset description={CustomDescription} />);
 
-  expect(queryByTestId('test')).toBeInTheDocument();
+  expect(screen.getByTestId('test')).toBeInTheDocument();
 });
 
 test('does not accept non-Description Components', () => {

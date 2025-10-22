@@ -6,7 +6,7 @@ import { FlexedItemProps } from '../types';
 import { StyledFlexItem } from './styled';
 
 interface PrivateProps {
-  forwardedRef: React.Ref<HTMLDivElement>;
+  readonly forwardedRef: React.Ref<HTMLDivElement>;
 }
 
 export type FlexItemProps = BoxProps & FlexedItemProps;

@@ -13,7 +13,7 @@ import { StyledTableRow } from './styled';
 import { useRowState } from './useRowState';
 
 interface PrivateProps {
-  forwardedRef?: React.Ref<HTMLTableRowElement>;
+  readonly forwardedRef?: React.Ref<HTMLTableRowElement>;
 }
 
 const ALIGN_MAP: Record<string, FlexedProps['justifyContent']> = {
@@ -23,24 +23,24 @@ const ALIGN_MAP: Record<string, FlexedProps['justifyContent']> = {
 };
 
 export interface RowProps<T> extends ComponentPropsWithoutRef<'tr'> {
-  columns: Array<TableColumn<T>>;
-  headerCellWidths: Array<number | string>;
-  isDraggable: boolean;
-  isDragging?: boolean;
-  isExpanded?: boolean;
-  isExpandable?: boolean;
-  isParentRow?: boolean;
-  isSelected?: boolean;
-  isSelectable?: boolean;
-  item: T;
-  selectedItems: TableSelectable['selectedItems'];
-  showDragIcon?: boolean;
-  isChildrenRowsSelectable?: TableSelectable['isChildrenRowsSelectable'];
-  onExpandedRow?: () => void;
-  onItemSelect: () => void;
-  parentRowId: string;
-  childRowId?: string;
-  childrenRowsIds: string[];
+  readonly columns: Array<TableColumn<T>>;
+  readonly headerCellWidths: Array<number | string>;
+  readonly isDraggable: boolean;
+  readonly isDragging?: boolean;
+  readonly isExpanded?: boolean;
+  readonly isExpandable?: boolean;
+  readonly isParentRow?: boolean;
+  readonly isSelected?: boolean;
+  readonly isSelectable?: boolean;
+  readonly item: T;
+  readonly selectedItems: TableSelectable['selectedItems'];
+  readonly showDragIcon?: boolean;
+  readonly isChildrenRowsSelectable?: TableSelectable['isChildrenRowsSelectable'];
+  readonly onExpandedRow?: () => void;
+  readonly onItemSelect: () => void;
+  readonly parentRowId: string;
+  readonly childRowId?: string;
+  readonly childrenRowsIds: string[];
 }
 
 const InternalRow = <T extends TableItem>({

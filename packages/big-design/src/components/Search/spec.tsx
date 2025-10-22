@@ -39,7 +39,7 @@ test('Search input has autocomplete=off', async () => {
 
   const input = await screen.findByPlaceholderText('Search');
 
-  expect(input.getAttribute('autocomplete')).toBe('off');
+  expect(input).toHaveAttribute('autocomplete', 'off');
 });
 
 test('renders localized labels', async () => {

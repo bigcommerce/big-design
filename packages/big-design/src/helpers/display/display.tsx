@@ -45,12 +45,11 @@ const getResponsiveDisplay: DisplayOverload = (
 
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   return (breakpointKeys as Array<keyof Breakpoints>).map(
-    (breakpointKey) =>
-      css`
-        ${theme.breakpoints[breakpointKey]} {
-          ${/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */ ''}
-          ${getSimpleDisplay(displayProp[breakpointKey], cssKey)}
-        }
-      `,
+    (breakpointKey) => css`
+      ${theme.breakpoints[breakpointKey]} {
+        ${/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */ ''}
+        ${getSimpleDisplay(displayProp[breakpointKey], cssKey)}
+      }
+    `,
   );
 };

@@ -33,10 +33,10 @@ it('renders heading when provided', () => {
 });
 
 it('does not render heading if empty', () => {
-  const { container } = render(<StatusMessage {...baseProps} heading="" />);
+  render(<StatusMessage {...baseProps} heading="" />);
 
-  expect(container.querySelector('h1')).not.toBeInTheDocument();
-  expect(container.querySelector('h4')).not.toBeInTheDocument();
+  expect(screen.queryByRole('heading', { level: 1 })).not.toBeInTheDocument();
+  expect(screen.queryByRole('heading', { level: 4 })).not.toBeInTheDocument();
 });
 
 test('renders status message illustration', () => {
@@ -46,11 +46,11 @@ test('renders status message illustration', () => {
 });
 
 test('renders with custom actions', () => {
-  const { getByTestId } = render(
+  render(
     <StatusMessage actions={<div data-testid="customAction">Test Action</div>} {...baseProps} />,
   );
 
-  const customAction = getByTestId('customAction');
+  const customAction = screen.getByTestId('customAction');
 
   expect(customAction).toBeInTheDocument();
   expect(customAction).toBeVisible();
@@ -59,9 +59,11 @@ test('renders with custom actions', () => {
 test.each(variants)('renders with the %p variant', (variant) => {
   const { container } = render(<StatusMessage message="Basic status message" variant={variant} />);
 
+  // eslint-disable-next-line testing-library/no-node-access
+  const statusMessage = container.firstChild;
   const figure = screen.getByRole('figure', { hidden: true });
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(statusMessage).toMatchSnapshot();
 
   expect(figure).toHaveStyleRule('background-image', expect.stringContaining('data:image/svg+xml'));
 });
@@ -78,7 +80,10 @@ describe('when at "page" size', () => {
   test('renders with the page size', () => {
     const { container } = render(<StatusMessage message="Basic status message" size="page" />);
 
-    expect(container.firstChild).toHaveStyle({
+    // eslint-disable-next-line testing-library/no-node-access
+    const statusMessage = container.firstChild;
+
+    expect(statusMessage).toHaveStyle({
       gap: theme.spacing.xLarge,
       paddingTop: theme.spacing.xxxLarge,
       paddingBottom: theme.spacing.xxxLarge,
@@ -106,7 +111,10 @@ describe('when at "panel" size', () => {
   test('renders with the panel size', () => {
     const { container } = render(<StatusMessage message="Basic status message" size="panel" />);
 
-    expect(container.firstChild).toHaveStyle({
+    // eslint-disable-next-line testing-library/no-node-access
+    const statusMessage = container.firstChild;
+
+    expect(statusMessage).toHaveStyle({
       gap: theme.spacing.medium,
       paddingTop: theme.spacing.large,
       paddingBottom: theme.spacing.large,

@@ -6,57 +6,65 @@ import 'jest-styled-components';
 import { InlineMessage, InlineMessageProps } from './InlineMessage';
 
 test('renders with margins', () => {
-  const { container, rerender } = render(<InlineMessage messages={[{ text: 'Success' }]} />);
+  const { rerender } = render(<InlineMessage messages={[{ text: 'Success' }]} />);
 
-  expect(container.firstChild).not.toHaveStyle('margin: 1rem');
+  const message = screen.getByRole('alert');
+
+  expect(message).not.toHaveStyle('margin: 1rem');
 
   rerender(<InlineMessage margin="medium" messages={[{ text: 'Success' }]} />);
 
-  expect(container.firstChild).toHaveStyle('margin: 1rem');
+  expect(message).toHaveStyle('margin: 1rem');
 });
 
 test('render default (success) InlineMessage', () => {
-  const { container } = render(<InlineMessage messages={[{ text: 'Success' }]} />);
+  render(<InlineMessage messages={[{ text: 'Success' }]} />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(
+  const message = screen.getByRole('alert');
+
+  expect(message).toMatchSnapshot();
+  expect(message).toHaveStyle(
     `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.success}`,
   );
 });
 
 test('render error InlineMessage', () => {
-  const { container } = render(<InlineMessage messages={[{ text: 'Error' }]} type="error" />);
+  render(<InlineMessage messages={[{ text: 'Error' }]} type="error" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(
-    `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger}`,
-  );
+  const message = screen.getByRole('alert');
+
+  expect(message).toMatchSnapshot();
+  expect(message).toHaveStyle(`border-left: ${theme.spacing.xxSmall} solid ${theme.colors.danger}`);
 });
 
 test('render warning InlineMessage', () => {
-  const { container } = render(<InlineMessage messages={[{ text: 'Warning' }]} type="warning" />);
+  render(<InlineMessage messages={[{ text: 'Warning' }]} type="warning" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(
+  const message = screen.getByRole('alert');
+
+  expect(message).toMatchSnapshot();
+  expect(message).toHaveStyle(
     `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.warning50}`,
   );
 });
 
 test('render info InlineMessage', () => {
-  const { container } = render(<InlineMessage messages={[{ text: 'Info' }]} type="info" />);
+  render(<InlineMessage messages={[{ text: 'Info' }]} type="info" />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(container.firstChild).toHaveStyle(
+  const message = screen.getByRole('alert');
+
+  expect(message).toMatchSnapshot();
+  expect(message).toHaveStyle(
     `border-left: ${theme.spacing.xxSmall} solid ${theme.colors.primary60}`,
   );
 });
 
 test('renders with link', async () => {
-  const { container } = render(
-    <InlineMessage messages={[{ text: 'Success', link: { text: 'Link', href: '#' } }]} />,
-  );
+  render(<InlineMessage messages={[{ text: 'Success', link: { text: 'Link', href: '#' } }]} />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  const message = screen.getByText('Success');
+
+  expect(message).toMatchSnapshot();
 
   const link = await screen.findByRole<HTMLAnchorElement>('link');
 
@@ -65,7 +73,7 @@ test('renders with link', async () => {
 });
 
 test('renders with external link', async () => {
-  const { container } = render(
+  render(
     <InlineMessage
       messages={[
         { text: 'Success', link: { text: 'Link', href: '#', external: true, target: '_blank' } },
@@ -73,32 +81,35 @@ test('renders with external link', async () => {
     />,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  const message = screen.getByText('Success');
+
+  expect(message).toMatchSnapshot();
 
   const link = await screen.findByRole<HTMLAnchorElement>('link');
 
   expect(link).toBeInTheDocument();
   expect(link.href).toBe('http://localhost/#');
   expect(link.target).toBe('_blank');
-  expect(link.querySelector('svg')).toBeDefined();
+  // eslint-disable-next-line testing-library/no-node-access
+  expect(link.querySelector('svg')).toBeInTheDocument();
 });
 
 test('renders header', () => {
-  const { queryByText, container } = render(
-    <InlineMessage header="Header" messages={[{ text: 'Success' }]} />,
-  );
+  render(<InlineMessage header="Header" messages={[{ text: 'Success' }]} />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(queryByText('Header')).toBeDefined();
+  const message = screen.getByText('Success');
+
+  expect(message).toMatchSnapshot();
+  expect(screen.getByText('Header')).toBeInTheDocument();
 });
 
 test('renders close button', () => {
-  const { queryByRole, container } = render(
-    <InlineMessage messages={[{ text: 'Success' }]} onClose={() => null} />,
-  );
+  render(<InlineMessage messages={[{ text: 'Success' }]} onClose={() => null} />);
 
-  expect(container.firstChild).toMatchSnapshot();
-  expect(queryByRole('button')).toBeDefined();
+  const message = screen.getByText('Success');
+
+  expect(message).toMatchSnapshot();
+  expect(screen.getByRole('button')).toBeInTheDocument();
 });
 
 test('trigger onClose', async () => {
@@ -114,7 +125,7 @@ test('trigger onClose', async () => {
 });
 
 test('does not forward styles', () => {
-  const { container } = render(
+  render(
     <InlineMessage
       className="test"
       messages={[{ text: 'Success' }]}
@@ -122,8 +133,10 @@ test('does not forward styles', () => {
     />,
   );
 
-  expect(container.getElementsByClassName('test')).toHaveLength(0);
-  expect(container.firstChild).not.toHaveStyle('background: red');
+  const message = screen.getByText('Success');
+
+  expect(screen.queryByText('test')).not.toBeInTheDocument();
+  expect(message).not.toHaveStyle('background: red');
 });
 
 test('renders actions', () => {
@@ -133,13 +146,13 @@ test('renders actions', () => {
     { text: 'Second Action', variant: 'secondary', onClick },
   ];
 
-  const { container, getByRole } = render(
-    <InlineMessage actions={actions} messages={[{ text: 'Success' }]} />,
-  );
-  const firstAction = getByRole('button', { name: 'First Action' });
-  const secondAction = getByRole('button', { name: 'Second Action' });
+  render(<InlineMessage actions={actions} messages={[{ text: 'Success' }]} />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  const message = screen.getByText('Success');
+  const firstAction = screen.getByRole('button', { name: 'First Action' });
+  const secondAction = screen.getByRole('button', { name: 'Second Action' });
+
+  expect(message).toMatchSnapshot();
 
   expect(firstAction).toHaveStyleRule('background-color', 'transparent');
   expect(secondAction).toHaveStyleRule('background-color', 'transparent');

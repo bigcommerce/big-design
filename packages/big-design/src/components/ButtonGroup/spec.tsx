@@ -250,7 +250,7 @@ test('handles action with no offsetWidth', async () => {
   // Prevents an act warning on component mount
   await act(() => Promise.resolve());
 
-  // Verify buttons are rendered despite offsetWidth being 0
+  // Verify buttons are view despite offsetWidth being 0
   expect(screen.getByRole('button', { name: /button 1/i })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: /button 2/i })).toBeInTheDocument();
 
@@ -261,7 +261,7 @@ test('handles action with no offsetWidth', async () => {
 });
 
 test('renders null when actions array is empty', () => {
-  const { container } = render(<ButtonGroup actions={[]} />);
+  render(<ButtonGroup actions={[]} />);
 
-  expect(container.querySelector('[data-testid="buttongroup-wrapper"]')).not.toBeInTheDocument();
+  expect(screen.queryByTestId('buttongroup-wrapper')).not.toBeInTheDocument();
 });

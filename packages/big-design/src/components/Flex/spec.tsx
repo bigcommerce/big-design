@@ -1,70 +1,83 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React, { createRef } from 'react';
 import 'jest-styled-components';
 
 import { Flex, FlexItem } from './index';
 
 test('render flex', () => {
-  const { container } = render(<Flex>Flex</Flex>);
+  render(<Flex data-testid="flex">Flex</Flex>);
 
-  expect(container.firstChild).toMatchSnapshot();
+  const flex = screen.getByTestId('flex');
+
+  expect(flex).toMatchSnapshot();
 });
 
 test('has display flex', () => {
-  const { container } = render(<Flex>Flex</Flex>);
+  render(<Flex data-testid="flex">Flex</Flex>);
 
-  expect(container.firstChild).toHaveStyle('display: flex');
+  const flex = screen.getByTestId('flex');
+
+  expect(flex).toHaveStyle('display: flex');
 });
 
 test('has gap properties', () => {
-  const { container, rerender } = render(<Flex flexGap="3rem">Flex</Flex>);
+  const { rerender } = render(
+    <Flex data-testid="flex" flexGap="3rem">
+      Flex
+    </Flex>,
+  );
+  const flex = screen.getByTestId('flex');
 
-  expect(container.firstChild).toHaveStyle('gap: 3rem');
+  expect(flex).toHaveStyle('gap: 3rem');
 
   rerender(
-    <Flex flexColumnGap="1rem" flexRowGap="2rem">
+    <Flex data-testid="flex" flexColumnGap="1rem" flexRowGap="2rem">
       Flex
     </Flex>,
   );
 
-  expect(container.firstChild).toHaveStyle({ 'row-gap': '2rem', 'column-gap': '1rem' });
+  expect(flex).toHaveStyle({ 'row-gap': '2rem', 'column-gap': '1rem' });
 });
 
 test('forwards styles', () => {
-  const { container } = render(
-    <Flex className="test" style={{ background: 'red' }}>
+  render(
+    <Flex className="test" data-testid="flex" style={{ background: 'red' }}>
       Flex
     </Flex>,
   );
 
-  expect(container.getElementsByClassName('test')).toHaveLength(1);
-  expect(container.firstChild).toHaveStyle('background: red');
+  const flex = screen.getByTestId('flex');
+
+  expect(flex).toHaveClass('test');
+  expect(flex).toHaveStyle('background: red');
 });
 
 test('Flex Item forwards styles', () => {
-  const { container } = render(
-    <FlexItem className="test" style={{ background: 'red' }}>
+  render(
+    <FlexItem className="test" data-testid="flex-item" style={{ background: 'red' }}>
       Flex
     </FlexItem>,
   );
 
-  expect(container.getElementsByClassName('test')).toHaveLength(1);
-  expect(container.firstChild).toHaveStyle('background: red');
+  const flexItem = screen.getByTestId('flex-item');
+
+  expect(flexItem).toHaveClass('test');
+  expect(flexItem).toHaveStyle('background: red');
 });
 
 test('rendering as another element retains inherited props and styles', () => {
-  const { getByTestId } = render(<Flex as="section" data-testid="flex" margin="medium" />);
+  render(<Flex as="section" data-testid="flex" margin="medium" />);
 
-  const flex = getByTestId('flex');
+  const flex = screen.getByTestId('flex');
 
   expect(flex.tagName).toBe('SECTION');
   expect(flex).toHaveStyle(`margin: 1rem`);
 });
 
 test('Flex Item should handle falsy values (0)', () => {
-  const { getByTestId } = render(<FlexItem data-testid="flex" flexShrink={0} />);
+  render(<FlexItem data-testid="flex" flexShrink={0} />);
 
-  const flex = getByTestId('flex');
+  const flex = screen.getByTestId('flex');
 
   expect(flex).toHaveStyle('flex-shrink: 0');
 });
@@ -72,8 +85,13 @@ test('Flex Item should handle falsy values (0)', () => {
 test('Flex forwards ref', () => {
   const ref = createRef<HTMLDivElement>();
 
-  const { container } = render(<Flex ref={ref}>Hello</Flex>);
-  const div = container.querySelector('div');
+  render(
+    <Flex data-testid="flex" ref={ref}>
+      Hello
+    </Flex>,
+  );
+
+  const div = screen.getByTestId('flex');
 
   expect(div).toBe(ref.current);
 });
@@ -81,8 +99,13 @@ test('Flex forwards ref', () => {
 test('FlexItem forwards ref', () => {
   const ref = createRef<HTMLDivElement>();
 
-  const { container } = render(<FlexItem ref={ref}>Hello</FlexItem>);
-  const div = container.querySelector('div');
+  render(
+    <FlexItem data-testid="flex-item" ref={ref}>
+      Hello
+    </FlexItem>,
+  );
+
+  const div = screen.getByTestId('flex-item');
 
   expect(div).toBe(ref.current);
 });

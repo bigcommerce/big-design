@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import 'jest-styled-components';
@@ -6,22 +6,29 @@ import 'jest-styled-components';
 import { FormControlLabel } from './index';
 
 test('renders a label', () => {
-  const { container } = render(<FormControlLabel>This is a label</FormControlLabel>);
-  const label = container.querySelector('label');
+  render(<FormControlLabel htmlFor="test-id">This is a label</FormControlLabel>);
 
-  expect(label).toBeInTheDocument();
+  expect(screen.getByText('This is a label')).toBeInTheDocument();
 });
 
 test('does not forward styles', () => {
-  const { container } = render(<FormControlLabel className="test" style={{ background: 'red' }} />);
+  render(
+    <FormControlLabel className="test" htmlFor="test-id" style={{ background: 'red' }}>
+      Label
+    </FormControlLabel>,
+  );
 
-  expect(container.getElementsByClassName('test')).toHaveLength(0);
-  expect(container.firstChild).not.toHaveStyle('background: red');
+  expect(screen.queryByText('test')).not.toBeInTheDocument();
+  expect(screen.getByText('Label')).not.toHaveStyle('background: red');
 });
 
 test('appends * text when required', () => {
-  const { container } = render(<FormControlLabel required>This is a label</FormControlLabel>);
-  const label = container.querySelector('label');
+  render(
+    <FormControlLabel htmlFor="test-id" required>
+      This is a label
+    </FormControlLabel>,
+  );
 
-  expect(label).toHaveTextContent('This is a label *');
+  expect(screen.getByText('This is a label')).toBeInTheDocument();
+  expect(screen.getByText('*')).toBeInTheDocument();
 });

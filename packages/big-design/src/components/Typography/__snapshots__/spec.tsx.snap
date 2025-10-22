@@ -92,6 +92,7 @@ exports[`render HR 1`] = `
 
 <hr
   class="c0"
+  data-testid="hr"
 />
 `;
 

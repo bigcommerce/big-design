@@ -1,17 +1,17 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
 import { FormControlDescription as Description } from './Description';
 
 test('renders description', () => {
-  const { container } = render(<Description>Foo</Description>);
+  render(<Description>Foo</Description>);
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByText('Foo')).toMatchSnapshot();
 });
 
 test('renders description with link', () => {
-  const { container } = render(
+  render(
     <Description
       link={{
         text: 'more',
@@ -23,5 +23,5 @@ test('renders description with link', () => {
     </Description>,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByText('Foo')).toMatchSnapshot();
 });

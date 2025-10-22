@@ -7,15 +7,13 @@ import 'jest-styled-components';
 import { FeatureSet } from './index';
 
 test('render feature set', () => {
-  const { container } = render(
-    <FeatureSet tags={[{ label: 'Feature 1' }, { label: 'Feature 2' }]} />,
-  );
+  render(<FeatureSet tags={[{ label: 'Feature 1' }, { label: 'Feature 2' }]} />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByRole('list')).toMatchSnapshot();
 });
 
 test("doesn't forward styles", () => {
-  const { container } = render(
+  render(
     <FeatureSet
       className="test"
       style={{ background: 'red' }}
@@ -23,7 +21,7 @@ test("doesn't forward styles", () => {
     />,
   );
 
-  expect(container.getElementsByClassName('test')[0]).toBeUndefined();
+  expect(screen.queryByText('test')).not.toBeInTheDocument();
   expect(screen.getByRole('list')).not.toHaveStyle('background: red');
 });
 
@@ -46,9 +44,10 @@ test('renders tag with icon', () => {
     />,
   );
 
-  expect(
-    screen.getByRole('listitem', { name: 'Feature 1' }).getElementsByTagName('svg')[0],
-  ).toBeInTheDocument();
+  const listItem = screen.getByRole('listitem', { name: 'Feature 1' });
+
+  // eslint-disable-next-line testing-library/no-node-access
+  expect(listItem.querySelector('svg')).toBeInTheDocument();
 });
 
 test("doesn't render tag with invalid label", () => {

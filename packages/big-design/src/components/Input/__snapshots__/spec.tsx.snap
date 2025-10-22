@@ -1,67 +1,7 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`renders all together 1`] = `
-.c5 {
-  vertical-align: middle;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
 .c0 {
-  color: #313440;
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  margin: 0 0 0.5rem;
-}
-
-.c2 {
-  color: #313440;
-  margin: 0 0 1rem;
-  color: #5E637A;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  margin: 0 0 0.75rem;
-}
-
-.c2:last-child {
-  margin-bottom: 0;
-}
-
-.c3 {
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
-  -webkit-transition-property: border,box-shadow;
-  transition-property: border,box-shadow;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  min-height: 2.25rem;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  border: 1px solid #D9DCE9;
-}
-
-.c3:hover:not([disabled]) {
-  border: 1px solid #B4BAD1;
-}
-
-.c3[disabled] {
-  background-color: #ECEEF5;
-}
-
-.c7 {
   background-color: inherit;
   border: 0;
   box-sizing: border-box;
@@ -78,170 +18,42 @@ exports[`renders all together 1`] = `
   min-height: 2.125rem;
 }
 
-.c7:focus {
+.c0:focus {
   outline: none;
 }
 
-.c7::-webkit-input-placeholder {
+.c0::-webkit-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7::-moz-placeholder {
+.c0::-moz-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7:-ms-input-placeholder {
+.c0:-ms-input-placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7::placeholder {
+.c0::placeholder {
   color: #B4BAD1;
   font-size: 1rem;
 }
 
-.c7:-webkit-autofill {
+.c0:-webkit-autofill {
   background-color: #F0F3FF !important;
   -webkit-box-shadow: 0 0 0px 1000px #F0F3FF inset;
 }
 
-.c7[disabled] {
+.c0[disabled] {
   background-color: #ECEEF5;
   color: #5E637A;
 }
 
-.c4 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #5E637A;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  padding-right: 0.25rem;
-  padding-left: 0.5rem;
-  left: 0;
-}
-
-.c8 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #5E637A;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  padding-right: 0.5rem;
-  padding-left: 0.25rem;
-  right: 0;
-}
-
-.c6 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  height: 100%;
-}
-
-.c1 {
-  cursor: pointer;
-  display: inline-block;
-  margin-bottom: 0.25rem;
-}
-
-<div>
-  <label
-    class="c0 c1"
-    for=":rp:"
-  >
-    This is a label
-  </label>
-  <p
-    class="c2"
-  >
-    This is a description
-  </p>
-  <span
-    class="c3"
-  >
-    <div
-      class="c4"
-    >
-      <svg
-        aria-hidden="true"
-        class="c5"
-        data-testid="icon-left"
-        fill="currentColor"
-        height="24"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="24"
-      >
-        <path
-          d="M0 0h24v24H0z"
-          fill="none"
-        />
-        <path
-          d="M18 13h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H6c-.55 0-1-.45-1-1s.45-1 1-1h5V6c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1"
-        />
-      </svg>
-    </div>
-    <div
-      class="c6"
-    >
-      <input
-        class="c7"
-        id=":rp:"
-      />
-    </div>
-    <div
-      class="c8"
-    >
-      <svg
-        aria-hidden="true"
-        class="c5"
-        data-testid="icon-right"
-        fill="currentColor"
-        height="24"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        width="24"
-      >
-        <path
-          d="M0 0h24v24H0z"
-          fill="none"
-        />
-        <path
-          d="M18 13h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H6c-.55 0-1-.45-1-1s.45-1 1-1h5V6c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1"
-        />
-      </svg>
-    </div>
-  </span>
-</div>
+<input
+  class="c0"
+  id=":rp:"
+/>
 `;

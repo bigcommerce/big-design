@@ -5,13 +5,13 @@ import { TableColumnDisplayProps } from '../helpers';
 import { StyledTableDataCell, StyledTableDataCheckbox } from './styled';
 
 export interface DataCellProps extends ComponentPropsWithoutRef<'td'>, TableColumnDisplayProps {
-  align?: 'left' | 'center' | 'right';
-  children?: React.ReactNode;
-  isCheckbox?: boolean;
-  verticalAlign?: 'top' | 'middle';
-  width?: number | string;
-  withBorder?: boolean;
-  withPadding?: boolean;
+  readonly align?: 'left' | 'center' | 'right';
+  readonly children?: React.ReactNode;
+  readonly isCheckbox?: boolean;
+  readonly verticalAlign?: 'top' | 'middle';
+  readonly width?: number | string;
+  readonly withBorder?: boolean;
+  readonly withPadding?: boolean;
 }
 
 export const DataCell: React.FC<DataCellProps> = memo(

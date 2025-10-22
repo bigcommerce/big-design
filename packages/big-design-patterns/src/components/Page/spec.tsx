@@ -47,14 +47,11 @@ test('renders with background', () => {
     backgroundRepeat: 'no-repeat',
   };
 
-  const { container } = render(<Page background={backgroundProps}>Page content</Page>);
-  const firstChild = container.firstElementChild;
+  render(<Page background={backgroundProps}>Page content</Page>);
 
-  if (!firstChild) {
-    throw new Error();
-  }
+  const pageBackground = screen.getByTestId('page-background');
 
-  expect(firstChild).toHaveStyle(`
+  expect(pageBackground).toHaveStyle(`
       background-image: url(test-image.jpg);
       background-size: cover;
       background-position: left;
@@ -67,14 +64,11 @@ test('renders with default background styles', () => {
     src: 'test-image.jpg',
   };
 
-  const { container } = render(<Page background={backgroundProps}>Page content</Page>);
-  const firstChild = container.firstElementChild;
+  render(<Page background={backgroundProps}>Page content</Page>);
 
-  if (!firstChild) {
-    throw new Error();
-  }
+  const pageBackground = screen.getByTestId('page-background');
 
-  expect(firstChild).toHaveStyle(`
+  expect(pageBackground).toHaveStyle(`
       background-image: url(test-image.jpg);
       background-size: contain;
       background-position: top right;
@@ -85,15 +79,10 @@ test('renders with default background styles', () => {
 test('renders without background by default', () => {
   render(<Page>Page content</Page>);
 
-  const { container } = render(<Page>Page content</Page>);
-  const firstChild = container.firstElementChild;
+  const pageBackground = screen.getByTestId('page-background');
 
-  if (!firstChild) {
-    throw new Error();
-  }
-
-  expect(firstChild).not.toHaveStyle('background-size: contain');
-  expect(firstChild).toHaveStyle(`
+  expect(pageBackground).not.toHaveStyle('background-size: contain');
+  expect(pageBackground).toHaveStyle(`
     background-color: #F6F7FC;
     min-height: 100dvh;
   `);

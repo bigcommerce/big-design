@@ -28,13 +28,13 @@ const defaultLocalization: Localization = {
 };
 
 export interface CounterProps extends ComponentPropsWithoutRef<'input'> {
-  label?: React.ReactNode;
-  labelId?: string;
-  description?: React.ReactNode;
-  error?: React.ReactNode | React.ReactNode[];
-  localization?: Localization;
-  value: number;
-  step?: number;
+  readonly label?: React.ReactNode;
+  readonly labelId?: string;
+  readonly description?: React.ReactNode;
+  readonly error?: React.ReactNode | React.ReactNode[];
+  readonly localization?: Localization;
+  readonly value: number;
+  readonly step?: number;
   onCountChange(count: number): void;
 }
 

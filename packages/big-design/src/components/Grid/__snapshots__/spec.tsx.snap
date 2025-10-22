@@ -29,6 +29,7 @@ exports[`render Grid 1`] = `
 
 <div
   class="c0 c1"
+  data-testid="grid"
 >
   <div
     class="c0 c2"

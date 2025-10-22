@@ -9,9 +9,9 @@ import { Cell, WorksheetItem, WorksheetSelectableColumn } from '../../types';
 import { MultiSelectWrapper } from './styled';
 
 export interface MultiSelectEditorProps<Item> {
-  cell: Cell<Item>;
-  isEditing: boolean;
-  options?: WorksheetSelectableColumn<Item>['config']['options'];
+  readonly cell: Cell<Item>;
+  readonly isEditing: boolean;
+  readonly options?: WorksheetSelectableColumn<Item>['config']['options'];
   onBlur(): void;
   onChange(value: unknown): void;
 }

@@ -81,21 +81,22 @@ const mockChildrenRowsUtilityCaddy = [
 ];
 
 test('renders a simple table', () => {
-  const { container } = render(getSimpleTable());
+  render(getSimpleTable());
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByRole('table')).toMatchSnapshot();
 });
 
 test('renders a table figure', () => {
-  const { container } = render(<TableFigureNext />);
+  render(<TableFigureNext />);
 
-  expect(container.firstChild).toMatchSnapshot();
+  // eslint-disable-next-line testing-library/no-node-access
+  expect(document.querySelector('figure')).toMatchSnapshot();
 });
 
 test('generates a table id automatically', () => {
-  const { getByRole } = render(getSimpleTable());
+  render(getSimpleTable());
 
-  const table = getByRole('table');
+  const table = screen.getByRole('table');
 
   expect(table.id).toBeTruthy();
 });
@@ -104,23 +105,26 @@ test('forwards id and testid when provided', () => {
   const id = 'testId';
   const dataTestId = 'dataTestId';
 
-  const { getByRole } = render(getSimpleTable({ id, dataTestId }));
+  render(getSimpleTable({ id, dataTestId }));
 
-  const table = getByRole('table');
+  const table = screen.getByRole('table');
 
   expect(table.id).toBe(id);
   expect(table.dataset.testid).toBe(dataTestId);
 });
 
 test('does not forward styles', () => {
-  const { container } = render(getSimpleTable({ className: 'test', style: { background: 'red' } }));
+  render(getSimpleTable({ className: 'test', style: { background: 'red' } }));
 
-  expect(container.getElementsByClassName('test')).toHaveLength(0);
-  expect(container.firstChild).not.toHaveStyle('background: red');
+  const table = screen.getByRole('table');
+
+  // eslint-disable-next-line testing-library/no-node-access
+  expect(document.getElementsByClassName('test')).toHaveLength(0);
+  expect(table).not.toHaveStyle('background: red');
 });
 
 test('renders column with custom component', () => {
-  const { getAllByTestId } = render(
+  render(
     getSimpleTable({
       columns: [
         { hash: 'sku', header: 'Sku', render: ({ sku }: any) => sku },
@@ -133,11 +137,11 @@ test('renders column with custom component', () => {
     }),
   );
 
-  expect(getAllByTestId('name')).toHaveLength(5);
+  expect(screen.getAllByTestId('name')).toHaveLength(5);
 });
 
 test('renders column with tooltip icon', () => {
-  const { getByTitle } = render(
+  render(
     getSimpleTable({
       columns: [
         { hash: 'sku', header: 'Sku', render: ({ sku }: any) => sku },
@@ -146,11 +150,11 @@ test('renders column with tooltip icon', () => {
     }),
   );
 
-  expect(getByTitle('Hover or focus for additional context.')).toBeTruthy();
+  expect(screen.getByTitle('Hover or focus for additional context.')).toBeInTheDocument();
 });
 
 test('renders tooltip when hovering on icon', async () => {
-  const { getByTitle } = render(
+  render(
     getSimpleTable({
       columns: [
         { hash: 'sku', header: 'Sku', render: ({ sku }: any) => sku },
@@ -159,7 +163,7 @@ test('renders tooltip when hovering on icon', async () => {
     }),
   );
 
-  fireEvent.mouseOver(getByTitle('Hover or focus for additional context.'));
+  fireEvent.mouseOver(screen.getByTitle('Hover or focus for additional context.'));
 
   const result = await screen.findByText('Some text');
 
@@ -167,7 +171,7 @@ test('renders tooltip when hovering on icon', async () => {
 });
 
 test('tweaks column styles with props', () => {
-  const { container } = render(
+  render(
     getSimpleTable({
       columns: [
         {
@@ -188,7 +192,7 @@ test('tweaks column styles with props', () => {
     }),
   );
 
-  const headers = container.querySelectorAll('th');
+  const headers = screen.getAllByRole('columnheader');
   const skuHeader = headers[0];
   const nameHeader = headers[1];
 
@@ -198,7 +202,7 @@ test('tweaks column styles with props', () => {
   expect(nameHeader).toHaveStyleRule('width', '100px');
   expect(skuHeader).not.toHaveStyleRule('padding', '0');
 
-  const columns = container.querySelectorAll('tbody td');
+  const columns = screen.getAllByRole('cell');
   const skuTd = columns[0];
   const nameTd = columns[1];
 
@@ -213,9 +217,9 @@ test('tweaks column styles with props', () => {
 });
 
 test('renders the total number of items + item name', () => {
-  const { getByText } = render(getSimpleTable({ itemName: 'Test Items' }));
+  render(getSimpleTable({ itemName: 'Test Items' }));
 
-  const itemNameNode = getByText(`5 Test Items`);
+  const itemNameNode = screen.getByText(`5 Test Items`);
 
   expect(itemNameNode).toBeInTheDocument();
 });
@@ -225,7 +229,7 @@ describe('offset pagination', () => {
     const onItemsPerPageChange = jest.fn();
     const onPageChange = jest.fn();
 
-    const { container, findByTitle } = render(
+    render(
       <TableNext
         columns={[
           { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
@@ -251,12 +255,12 @@ describe('offset pagination', () => {
       />,
     );
 
-    const nextPage = await findByTitle('Next page');
+    const nextPage = await screen.findByTitle('Next page');
 
     await userEvent.click(nextPage);
 
     expect(onPageChange).toHaveBeenCalledWith(2);
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByRole('table')).toMatchSnapshot();
   });
 
   test('renders a pagination component with custom button labels', async () => {
@@ -266,7 +270,7 @@ describe('offset pagination', () => {
     const onItemsPerPageChange = jest.fn();
     const onPageChange = jest.fn();
 
-    const { findByRole } = render(
+    render(
       <TableNext
         columns={[
           { header: 'Sku', hash: 'sku', render: ({ sku }) => sku },
@@ -298,10 +302,14 @@ describe('offset pagination', () => {
       />,
     );
 
-    const navigation = await findByRole('navigation', { name: '[Custom] Pagination' });
-    const paginationDropdown = await findByRole('button', { name: '[Custom label] 1-3 of 5' });
-    const previousButtonPage = await findByRole('button', { name: '[Custom] Previous page' });
-    const nextButtonPage = await findByRole('button', { name: '[Custom] Next page' });
+    const navigation = await screen.findByRole('navigation', { name: '[Custom] Pagination' });
+    const paginationDropdown = await screen.findByRole('button', {
+      name: '[Custom label] 1-3 of 5',
+    });
+    const previousButtonPage = await screen.findByRole('button', {
+      name: '[Custom] Previous page',
+    });
+    const nextButtonPage = await screen.findByRole('button', { name: '[Custom] Next page' });
 
     expect(navigation).toBeVisible();
     expect(paginationDropdown).toBeVisible();
@@ -852,7 +860,7 @@ describe('selectable', () => {
   });
 
   test('renders selectable actions and checkboxes', () => {
-    const { container, getAllByRole } = render(
+    render(
       <TableNext
         columns={columns}
         itemName={itemName}
@@ -865,13 +873,13 @@ describe('selectable', () => {
     );
 
     // One per item + Actions (select all) checkbox
-    expect(getAllByRole('checkbox')).toHaveLength(items.length + 1);
-    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getAllByRole('checkbox')).toHaveLength(items.length + 1);
+    expect(screen.getByRole('table')).toMatchSnapshot();
   });
 
   describe('selectable by default (isChildrenRowsSelectable prop is not used or is set to false)', () => {
     test('when isChildrenRowsSelectable prop is not used or is set to false, as default renders checkboxes just for parent rows', () => {
-      const { container, getAllByRole } = render(
+      render(
         <TableNext
           columns={columns}
           expandable={{
@@ -889,8 +897,8 @@ describe('selectable', () => {
       );
 
       // One per parent row + Actions (select all) checkbox
-      expect(getAllByRole('checkbox')).toHaveLength(items.length + 1);
-      expect(container.firstChild).toMatchSnapshot();
+      expect(screen.getAllByRole('checkbox')).toHaveLength(items.length + 1);
+      expect(screen.getByRole('table')).toMatchSnapshot();
     });
 
     test('by default, click on select all should call selectedItems with only all parerent rows', async () => {
@@ -917,7 +925,7 @@ describe('selectable', () => {
       );
 
       // Select All
-      expect(selectAllCheckbox.checked).toBe(false);
+      expect(selectAllCheckbox).not.toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -950,7 +958,7 @@ describe('selectable', () => {
       const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
       // Deselect all
-      expect(selectAllCheckbox.checked).toBe(true);
+      expect(selectAllCheckbox).toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -982,7 +990,7 @@ describe('selectable', () => {
       const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
 
       // Select all
-      expect(checkbox.checked).toBe(false);
+      expect(checkbox).not.toBeChecked();
 
       await userEvent.click(checkbox);
 
@@ -1015,7 +1023,7 @@ describe('selectable', () => {
       }, {});
 
       // Select All
-      expect(selectAllCheckbox.checked).toBe(false);
+      expect(selectAllCheckbox).not.toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -1025,7 +1033,7 @@ describe('selectable', () => {
 
   describe('selectable by not default (isChildrenRowsSelectable prop is used and it is set to true', () => {
     test('renders checkboxes for parent rows and children rows)', () => {
-      const { container, getAllByRole } = render(
+      render(
         <TableNext
           columns={columns}
           expandable={{
@@ -1044,10 +1052,10 @@ describe('selectable', () => {
       );
 
       // One per parent row and child row + Actions (select all) checkbox
-      expect(getAllByRole('checkbox')).toHaveLength(
+      expect(screen.getAllByRole('checkbox')).toHaveLength(
         items.length + mockChildrenRowsSmithJournal13.length * 3 + 1,
       );
-      expect(container.firstChild).toMatchSnapshot();
+      expect(screen.getByRole('table')).toMatchSnapshot();
     });
 
     test('click on select all should call selectedItems with all parentRows and chilrenRows.', async () => {
@@ -1085,7 +1093,7 @@ describe('selectable', () => {
       }, {});
 
       // Select All
-      expect(selectAllCheckbox.checked).toBe(false);
+      expect(selectAllCheckbox).not.toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -1128,7 +1136,7 @@ describe('selectable', () => {
       const [selectAllCheckbox] = await screen.findAllByRole<HTMLInputElement>('checkbox');
 
       // Deselect all
-      expect(selectAllCheckbox.checked).toBe(true);
+      expect(selectAllCheckbox).toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -1158,7 +1166,7 @@ describe('selectable', () => {
       const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
 
       // Select all
-      expect(checkbox.checked).toBe(false);
+      expect(checkbox).not.toBeChecked();
 
       await userEvent.click(checkbox);
 
@@ -1199,7 +1207,7 @@ describe('selectable', () => {
       const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
 
       // Deselect all
-      expect(checkbox.checked).toBe(true);
+      expect(checkbox).toBeChecked();
 
       await userEvent.click(checkbox);
 
@@ -1232,7 +1240,7 @@ describe('selectable', () => {
         smallSmithJournalChildrenRow,
       ).findByRole<HTMLInputElement>('checkbox');
 
-      expect(childRowCheckbox.checked).toBe(false);
+      expect(childRowCheckbox).not.toBeChecked();
 
       await userEvent.click(childRowCheckbox);
 
@@ -1268,7 +1276,7 @@ describe('selectable', () => {
         smallSmithJournalChildrenRow,
       ).findByRole<HTMLInputElement>('checkbox');
 
-      expect(childRowCheckbox.checked).toBe(true);
+      expect(childRowCheckbox).toBeChecked();
 
       await userEvent.click(childRowCheckbox);
 
@@ -1311,7 +1319,7 @@ describe('selectable', () => {
         smallSmithJournalChildrenRow,
       ).findByRole<HTMLInputElement>('checkbox');
 
-      expect(childRowCheckbox.checked).toBe(false);
+      expect(childRowCheckbox).not.toBeChecked();
 
       await userEvent.click(childRowCheckbox);
 
@@ -1355,7 +1363,7 @@ describe('selectable', () => {
       const checkbox = await within(parentRow).findByRole<HTMLInputElement>('checkbox');
 
       // Select all
-      expect(checkbox.checked).toBe(false);
+      expect(checkbox).not.toBeChecked();
 
       await userEvent.click(checkbox);
 
@@ -1422,7 +1430,7 @@ describe('selectable', () => {
       }, {});
 
       // Select All
-      expect(selectAllCheckbox.checked).toBe(false);
+      expect(selectAllCheckbox).not.toBeChecked();
 
       fireEvent.click(selectAllCheckbox);
 
@@ -1453,7 +1461,7 @@ describe('sortable', () => {
   });
 
   test('renders ASC header icon', () => {
-    const { getByTestId } = render(
+    render(
       <TableNext
         columns={columns}
         items={items}
@@ -1465,11 +1473,11 @@ describe('sortable', () => {
       />,
     );
 
-    expect(getByTestId('asc-icon')).toBeInTheDocument();
+    expect(screen.getByTestId('asc-icon')).toBeInTheDocument();
   });
 
   test('calls onSort when pressing a sortable header', () => {
-    const { container } = render(
+    render(
       <TableNext
         columns={columns}
         items={items}
@@ -1481,7 +1489,7 @@ describe('sortable', () => {
       />,
     );
 
-    const skuHeaders: NodeListOf<HTMLTableCellElement> = container.querySelectorAll('th');
+    const skuHeaders = screen.getAllByRole('columnheader');
 
     fireEvent.click(skuHeaders[0]);
 
@@ -1489,7 +1497,7 @@ describe('sortable', () => {
   });
 
   test('does not call onSort when pressing a non-sortable header', () => {
-    const { container } = render(
+    render(
       <TableNext
         columns={columns}
         items={items}
@@ -1501,7 +1509,7 @@ describe('sortable', () => {
       />,
     );
 
-    const nameHeader = container.querySelectorAll('th');
+    const nameHeader = screen.getAllByRole('columnheader');
 
     fireEvent.click(nameHeader[1]);
 
@@ -1509,7 +1517,7 @@ describe('sortable', () => {
   });
 
   test('calls onSort when pressing the direction icon', () => {
-    const { getByTestId } = render(
+    render(
       <TableNext
         columns={columns}
         items={items}
@@ -1521,7 +1529,7 @@ describe('sortable', () => {
       />,
     );
 
-    const sortIcon = getByTestId('asc-icon');
+    const sortIcon = screen.getByTestId('asc-icon');
 
     fireEvent.click(sortIcon);
 
@@ -1529,7 +1537,7 @@ describe('sortable', () => {
   });
 
   test('renders custom actions', () => {
-    const { getByTestId } = render(
+    render(
       <TableNext
         actions={<div data-testid="customAction">Test Action</div>}
         columns={columns}
@@ -1537,21 +1545,21 @@ describe('sortable', () => {
       />,
     );
 
-    const customAction = getByTestId('customAction');
+    const customAction = screen.getByTestId('customAction');
 
     expect(customAction).toBeInTheDocument();
     expect(customAction).toBeVisible();
   });
 
   test('renders headers by default and hides then via prop', () => {
-    const { container, rerender } = render(getSimpleTable());
+    const { rerender } = render(getSimpleTable());
 
-    expect(container.querySelector('th')).toBeVisible();
+    expect(screen.getAllByRole('columnheader')[0]).toBeVisible();
 
     rerender(getSimpleTable({ headerless: true }));
 
-    expect(container.querySelector('th')).toBeInTheDocument();
-    expect(container.querySelector('th')).not.toBeVisible();
+    expect(screen.getAllByRole('columnheader', { hidden: true })[0]).toBeInTheDocument();
+    expect(screen.getAllByRole('columnheader', { hidden: true })[0]).not.toBeVisible();
   });
 
   test('renders the emptyComponent when there are no items', () => {
@@ -1609,16 +1617,15 @@ describe('draggable', () => {
   });
 
   test('renders drag and drop icon only', () => {
-    const { container } = render(
-      <TableNext columns={columns} items={items} onRowDrop={onRowDrop} />,
-    );
-    const dragIcons = container.querySelectorAll('svg');
+    render(<TableNext columns={columns} items={items} onRowDrop={onRowDrop} />);
+
+    const dragIcons = screen.getAllByRole('button');
 
     expect(dragIcons).toHaveLength(items.length);
   });
 
   test('render drag and drop icons and expanded icons only for parent rows when expanded mode is on', () => {
-    const { container } = render(
+    render(
       <TableNext
         columns={columns}
         expandable={{
@@ -1631,14 +1638,14 @@ describe('draggable', () => {
       />,
     );
 
-    const dragIcons = container.querySelectorAll('svg');
+    const allButtons = screen.getAllByRole('button');
     // Only parent rows;
     const totalDragIcons = items.length;
     // Only parents with chidren rows);
     const totalExpandedIcons = items.length - 2;
 
     // Total of drag icons (only parents) + expanded icons (only parents with chidren rows);
-    expect(dragIcons).toHaveLength(totalDragIcons + totalExpandedIcons);
+    expect(allButtons).toHaveLength(totalDragIcons + totalExpandedIcons);
   });
 
   test('onRowDrop called with expected args when a row is dropped', async () => {
@@ -1897,7 +1904,7 @@ test('renders localized descending label', async () => {
     />,
   );
 
-  const descSortIcon = await screen.queryByTitle('Orden descendiente');
+  const descSortIcon = screen.queryByTitle('Orden descendiente');
 
   expect(descSortIcon).toBeInTheDocument();
 });

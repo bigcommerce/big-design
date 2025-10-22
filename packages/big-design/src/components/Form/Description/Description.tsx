@@ -6,8 +6,8 @@ import { Small, TextProps } from '../../Typography';
 import { StyledLink } from './styled';
 
 export interface FormControlDescriptionProps {
-  children?: React.ReactNode;
-  link?: FormControlDescriptionLinkProps;
+  readonly children?: React.ReactNode;
+  readonly link?: FormControlDescriptionLinkProps;
 }
 
 export type FormControlDescriptionLinkProps = Pick<LinkProps, 'external' | 'href' | 'target'> & {

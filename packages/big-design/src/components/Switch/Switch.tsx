@@ -7,7 +7,7 @@ import { HiddenCheckbox, StyledSwitchLabel } from './styled';
 export type SwitchProps = ComponentPropsWithoutRef<'input'>;
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLInputElement>;
+  readonly forwardedRef: Ref<HTMLInputElement>;
 }
 
 export const RawSwitch: React.FC<SwitchProps & PrivateProps> = ({

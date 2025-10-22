@@ -5,7 +5,7 @@ import { Text } from '../../Typography/';
 import { StyledLabel } from './styled';
 
 export interface FormControlLabelProps extends ComponentPropsWithoutRef<'label'> {
-  required?: boolean;
+  readonly required?: boolean;
 }
 
 export const FormControlLabel: React.FC<FormControlLabelProps> = ({

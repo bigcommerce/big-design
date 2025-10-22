@@ -4,13 +4,13 @@ import { ListItem } from './Item';
 import { StyledOrderedList, StyledUnorderedList } from './styled';
 
 export interface ListProps {
-  as?: 'ul' | 'ol';
-  children: ReactNode;
-  columnCount?: number;
-  columnGap?: number | string;
-  reset?: boolean;
-  style?: CSSProperties;
-  className?: string;
+  readonly as?: 'ul' | 'ol';
+  readonly children: ReactNode;
+  readonly columnCount?: number;
+  readonly columnGap?: number | string;
+  readonly reset?: boolean;
+  readonly style?: CSSProperties;
+  readonly className?: string;
 }
 
 export const List = ({

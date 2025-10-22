@@ -22,15 +22,15 @@ interface Localization {
 export interface HeaderCellProps<T>
   extends ComponentPropsWithoutRef<'th'>,
     TableColumnDisplayProps {
-  actionsRef: RefObject<HTMLDivElement>;
-  children?: React.ReactNode;
-  column: TableColumn<T>;
-  id: string;
-  hide?: boolean;
-  isSorted?: boolean;
-  localization: Localization;
-  sortDirection?: 'ASC' | 'DESC';
-  stickyHeader?: boolean;
+  readonly actionsRef: RefObject<HTMLDivElement>;
+  readonly children?: React.ReactNode;
+  readonly column: TableColumn<T>;
+  readonly id: string;
+  readonly hide?: boolean;
+  readonly isSorted?: boolean;
+  readonly localization: Localization;
+  readonly sortDirection?: 'ASC' | 'DESC';
+  readonly stickyHeader?: boolean;
   onSortClick?(column: TableColumn<T>): void;
 }
 

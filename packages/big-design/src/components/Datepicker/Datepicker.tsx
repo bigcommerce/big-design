@@ -8,15 +8,15 @@ import Header from './Header';
 import { StyledDatepicker } from './styled';
 
 interface Props {
-  dateFormat?: string;
-  error?: React.ReactNode;
-  label?: string;
-  locale?: string;
+  readonly dateFormat?: string;
+  readonly error?: React.ReactNode;
+  readonly label?: string;
+  readonly locale?: string;
   onDateChange(date: string): void;
 }
 
 export interface PrivateProps {
-  forwardedRef: Ref<ReactDatePicker>;
+  readonly forwardedRef: Ref<ReactDatePicker>;
 }
 
 export type DatepickerProps = Props & ComponentPropsWithoutRef<'input'>;

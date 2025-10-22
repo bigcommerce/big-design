@@ -13,7 +13,7 @@ export interface AnchorNavElement {
 }
 
 export interface AnchorNavProps {
-  elements: AnchorNavElement[];
+  readonly elements: AnchorNavElement[];
 }
 
 const useAnchorObserver = (
@@ -36,11 +36,11 @@ const useAnchorObserver = (
 };
 
 interface AnchorSectionProps {
-  id: string;
-  children: React.ReactNode;
-  setActiveId: React.Dispatch<React.SetStateAction<string | null>>;
-  suspendObserverRef: React.MutableRefObject<boolean>;
-  registerSection: (id: string, el: HTMLElement | null) => void;
+  readonly id: string;
+  readonly children: React.ReactNode;
+  readonly setActiveId: React.Dispatch<React.SetStateAction<string | null>>;
+  readonly suspendObserverRef: React.MutableRefObject<boolean>;
+  readonly registerSection: (id: string, el: HTMLElement | null) => void;
 }
 
 const AnchorSection: React.FC<AnchorSectionProps> = ({

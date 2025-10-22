@@ -19,15 +19,15 @@ import { getCellIdx } from '../utils';
 import { AutoFillHandler, CellNote, StyledCell } from './styled';
 
 interface CellProps<Item> extends TCell<Item> {
-  nextRowValue: Item[keyof Item] | '';
-  isLastChild: boolean;
-  isChild: boolean;
-  options?: WorksheetSelectableColumn<Item>['config']['options'];
-  rowId: number | string;
-  formatting?: WorksheetTextColumn<Item>['formatting'];
-  validation?: InternalWorksheetColumn<Item>['validation'];
-  notation?: InternalWorksheetColumn<Item>['notation'];
-  action?: WorksheetTextColumn<Item>['action'];
+  readonly nextRowValue: Item[keyof Item] | '';
+  readonly isLastChild: boolean;
+  readonly isChild: boolean;
+  readonly options?: WorksheetSelectableColumn<Item>['config']['options'];
+  readonly rowId: number | string;
+  readonly formatting?: WorksheetTextColumn<Item>['formatting'];
+  readonly validation?: InternalWorksheetColumn<Item>['validation'];
+  readonly notation?: InternalWorksheetColumn<Item>['notation'];
+  readonly action?: WorksheetTextColumn<Item>['action'];
 }
 
 const InternalCell = <T extends WorksheetItem>({

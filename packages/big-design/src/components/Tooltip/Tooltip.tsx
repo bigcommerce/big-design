@@ -87,7 +87,13 @@ export const Tooltip: React.FC<TooltipProps> = memo(
               <Popper modifiers={tooltipModifiers} placement={props.placement || 'top'}>
                 {({ placement, ref, style }) =>
                   isVisible && (
-                    <StyledTooltip data-placement={placement} id={id} ref={ref} style={style}>
+                    <StyledTooltip
+                      data-placement={placement}
+                      id={id}
+                      ref={ref}
+                      role="tooltip"
+                      style={style}
+                    >
                       {renderContent()}
                     </StyledTooltip>
                   )

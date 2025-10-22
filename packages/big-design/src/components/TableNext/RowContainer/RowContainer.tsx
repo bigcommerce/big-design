@@ -22,19 +22,19 @@ interface InternalRowContainerProps<T>
     | 'columns'
     | 'isDragging'
   > {
-  expandedRows: TableExpandable<T>['expandedRows'];
-  getChildren?: TableExpandable<T>['getChildren'];
-  getItemKey: (item: T, index: number) => string | number;
-  headerless?: boolean;
-  getLoadMoreAction?: TableExpandable<T>['getLoadMoreAction'];
-  parentRowIndex: number;
-  getRowId: NonNullable<TableProps<T>['getRowId']>;
-  onItemSelect?: OnItemSelectFn;
-  onExpandedRow?(parentRowId?: string | undefined): void;
+  readonly expandedRows: TableExpandable<T>['expandedRows'];
+  readonly getChildren?: TableExpandable<T>['getChildren'];
+  readonly getItemKey: (item: T, index: number) => string | number;
+  readonly headerless?: boolean;
+  readonly getLoadMoreAction?: TableExpandable<T>['getLoadMoreAction'];
+  readonly parentRowIndex: number;
+  readonly getRowId: NonNullable<TableProps<T>['getRowId']>;
+  readonly onItemSelect?: OnItemSelectFn;
+  onExpandedRow?(parentRowId?: string): void;
 }
 
 interface PrivateProps {
-  forwardedRef?: React.Ref<HTMLTableRowElement>;
+  readonly forwardedRef?: React.Ref<HTMLTableRowElement>;
 }
 
 const InternalRowContainer = <T extends TableItem>({

@@ -48,7 +48,3 @@ export const createTheme = (customOptions: Partial<ThemeOptions> = {}): ThemeInt
 };
 
 export const theme: ThemeInterface = createTheme();
-
-declare module 'styled-components' {
-  export interface DefaultTheme extends ThemeInterface {} // eslint-disable-line
-}

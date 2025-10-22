@@ -1,6 +1,5 @@
 import { theme } from '@bigcommerce/big-design-theme';
-import { waitFor } from '@testing-library/dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 
@@ -54,20 +53,18 @@ describe('FileUploader', () => {
     const testId = 'test';
     const label = <div data-testid={testId}>Label</div>;
 
-    const { queryByTestId } = render(
-      <FileUploader files={[]} label={label} onFilesChange={jest.fn()} />,
-    );
+    render(<FileUploader files={[]} label={label} onFilesChange={jest.fn()} />);
 
     await waitFor(() => expect(warning).toHaveBeenCalledTimes(1));
 
-    expect(queryByTestId(testId)).not.toBeInTheDocument();
+    expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
   });
 
   it('renders with description', async () => {
     const testId = 'test';
     const description = <div data-testid={testId}>Description</div>;
 
-    const { queryByTestId } = render(
+    render(
       <FileUploader
         description={description}
         files={[]}
@@ -78,7 +75,7 @@ describe('FileUploader', () => {
 
     await waitFor(() => expect(warning).toHaveBeenCalledTimes(1));
 
-    expect(queryByTestId(testId)).not.toBeInTheDocument();
+    expect(screen.queryByTestId(testId)).not.toBeInTheDocument();
   });
 
   it('renders with custom description', async () => {
@@ -146,7 +143,9 @@ describe('FileUploader', () => {
 
     render(<FileUploader files={files} label="Upload your images" onFilesChange={jest.fn()} />);
 
-    await waitFor(() => expect(screen.queryByRole('button', { name: /dropzone/i })).toBeNull());
+    await waitFor(() =>
+      expect(screen.queryByRole('button', { name: /dropzone/i })).not.toBeInTheDocument(),
+    );
   });
 
   it('renders with files list', async () => {
@@ -169,10 +168,10 @@ describe('FileUploader', () => {
 
     render(<FileUploader files={files} label="Upload your images" onFilesChange={jest.fn()} />);
 
-    await waitFor(() => expect(screen.queryByRole('list')).toBeNull());
+    await waitFor(() => expect(screen.queryByRole('list')).not.toBeInTheDocument());
 
     expect(screen.getByText(/file1/i)).toBeVisible();
-    expect(screen.queryByRole('button', { name: /dropzone/i })).toBeNull();
+    expect(screen.queryByRole('button', { name: /dropzone/i })).not.toBeInTheDocument();
   });
 
   it('renders only DropZone without preview', () => {
@@ -269,15 +268,19 @@ describe('FileUploader', () => {
       />,
     );
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(screen.getByText('file1').parentElement).toHaveStyle(
       `border-color: ${theme.colors.secondary30}`,
     );
+    // eslint-disable-next-line testing-library/no-node-access
     expect(screen.getByText('file2').parentElement).toHaveStyle(
       `border-color: ${theme.colors.secondary30}`,
     );
+    // eslint-disable-next-line testing-library/no-node-access
     expect(screen.getByText('file11').parentElement).toHaveStyle(
       `border-color: ${theme.colors.danger40}`,
     );
+    // eslint-disable-next-line testing-library/no-node-access
     expect(screen.getByText('file22').parentElement).toHaveStyle(
       `border-color: ${theme.colors.danger40}`,
     );
@@ -451,10 +454,10 @@ describe('FileUploader', () => {
   });
 
   it('renders without label when label is not provided', async () => {
-    const { container } = render(<FileUploader files={[]} onFilesChange={jest.fn()} />);
+    render(<FileUploader files={[]} onFilesChange={jest.fn()} />);
 
     await waitFor(() => {
-      const label = container.querySelector('label');
+      const label = screen.queryByRole('group');
 
       expect(label).not.toBeInTheDocument();
     });
@@ -498,9 +501,9 @@ describe('FileUploader', () => {
 
     // Find the dropdown toggle button (MoreHoriz icon) and click it to open the dropdown
     const dropdownButtons = screen.getAllByRole('button', { name: '' });
-    const dropdownToggle = dropdownButtons.find((button) =>
-      button.querySelector('[aria-hidden="true"]'),
-    );
+
+    // eslint-disable-next-line testing-library/no-node-access
+    const dropdownToggle = dropdownButtons.find((button) => button.querySelector('svg'));
 
     await waitFor(() => expect(dropdownToggle).toBeInTheDocument());
     await userEvent.click(dropdownToggle!);
@@ -607,7 +610,7 @@ describe('File component', () => {
   });
 
   it('renders with invalid state', () => {
-    const { container } = render(
+    render(
       <FileComponent
         idx={0}
         isValid={false}
@@ -617,7 +620,10 @@ describe('File component', () => {
       />,
     );
 
-    expect(container.firstChild).toHaveStyle(`border-color: ${theme.colors.danger40}`);
+    // eslint-disable-next-line testing-library/no-node-access
+    const fileElement = screen.getByText('File name').closest('div');
+
+    expect(fileElement).toHaveStyle(`border-color: ${theme.colors.danger40}`);
   });
 });
 

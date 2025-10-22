@@ -16,20 +16,20 @@ import {
 import { StyledFlex } from './styled';
 
 export interface ActionsProps<T> {
-  customActions?: React.ReactNode;
-  forwardedRef: RefObject<HTMLDivElement>;
-  itemName?: string;
-  items: T[];
-  pagination?: DiscriminatedTablePaginationProps;
-  selectedItems: TableSelectable['selectedItems'];
-  stickyHeader?: boolean;
-  tableId: string;
-  getChildren?: TableExpandable<T>['getChildren'];
-  onSelectionChange?: TableSelectable['onSelectionChange'];
-  getRowId: NonNullable<TableProps<T>['getRowId']>;
-  setSelectedParentRowsCrossPages: Dispatch<SetStateAction<Set<string>>>;
-  selectedParentRowsCrossPages: Set<string>;
-  isChildrenRowsSelectable?: boolean;
+  readonly customActions?: React.ReactNode;
+  readonly forwardedRef: RefObject<HTMLDivElement>;
+  readonly itemName?: string;
+  readonly items: T[];
+  readonly pagination?: DiscriminatedTablePaginationProps;
+  readonly selectedItems: TableSelectable['selectedItems'];
+  readonly stickyHeader?: boolean;
+  readonly tableId: string;
+  readonly getChildren?: TableExpandable<T>['getChildren'];
+  readonly onSelectionChange?: TableSelectable['onSelectionChange'];
+  readonly getRowId: NonNullable<TableProps<T>['getRowId']>;
+  readonly setSelectedParentRowsCrossPages: Dispatch<SetStateAction<Set<string>>>;
+  readonly selectedParentRowsCrossPages: Set<string>;
+  readonly isChildrenRowsSelectable?: boolean;
 }
 
 const InternalActions = <T extends TableItem>({

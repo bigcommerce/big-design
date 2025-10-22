@@ -47,40 +47,40 @@ const getSimpleTree = (props: Partial<StatefulTreeProps<number>> = {}) => (
 );
 
 test('renders non-selectable Tree by default', () => {
-  const { container, getAllByRole } = render(getSimpleTree({ defaultExpanded: parentNodes }));
+  render(getSimpleTree({ defaultExpanded: parentNodes }));
 
-  expect(container.querySelectorAll('label')).toHaveLength(0);
-  expect(getAllByRole('treeitem')).toHaveLength(10);
+  expect(screen.queryAllByRole('checkbox')).toHaveLength(0);
+  expect(screen.getAllByRole('treeitem')).toHaveLength(10);
 });
 
 test('defaultExpanded items are expanded by default', () => {
-  const { getAllByRole, getByText, queryByText } = render(
-    getSimpleTree({ defaultExpanded: ['0'] }),
-  );
+  render(getSimpleTree({ defaultExpanded: ['0'] }));
 
-  expect(getAllByRole('treeitem')).toHaveLength(6);
-  expect(getByText('Test Node 5')).toBeVisible();
-  expect(queryByText('Test Node 6')).toBeNull();
+  expect(screen.getAllByRole('treeitem')).toHaveLength(6);
+  expect(screen.getByText('Test Node 5')).toBeVisible();
+  expect(screen.queryByText('Test Node 6')).not.toBeInTheDocument();
 });
 
 test('onExpandedChange gets called when an item expansion happens', () => {
   const onExpandedChange = jest.fn();
-  const { getByText } = render(getSimpleTree({ onExpandedChange }));
 
-  fireEvent.click(getByText('Test Node 0'));
+  render(getSimpleTree({ onExpandedChange }));
+
+  fireEvent.click(screen.getByText('Test Node 0'));
 
   expect(onExpandedChange).toHaveBeenCalledWith(['0']);
 
-  fireEvent.click(getByText('Test Node 0'));
+  fireEvent.click(screen.getByText('Test Node 0'));
 
   expect(onExpandedChange).toHaveBeenCalledWith([]);
 });
 
 test('onNodeClick gets called when an item click happens', () => {
   const onNodeClick = jest.fn();
-  const { getByText } = render(getSimpleTree({ onNodeClick }));
 
-  fireEvent.click(getByText('Test Node 0'));
+  render(getSimpleTree({ onNodeClick }));
+
+  fireEvent.click(screen.getByText('Test Node 0'));
 
   expect(onNodeClick).toHaveBeenCalledTimes(1);
 });
@@ -91,7 +91,8 @@ describe('selectable = multi', () => {
       getSimpleTree({ selectable: 'multi', defaultExpanded: parentNodes }),
     );
 
-    const checkboxes = container.querySelectorAll('label');
+    // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+    const checkboxes = container.querySelectorAll('label[aria-hidden="true"]');
 
     expect(checkboxes).toHaveLength(10);
     expect(checkboxes[0]).toHaveStyle(`border-radius: ${theme.borderRadius.normal}`);
@@ -102,17 +103,18 @@ describe('selectable = multi', () => {
       getSimpleTree({ selectable: 'multi', defaultExpanded: parentNodes }),
     );
 
-    const checkboxes = container.querySelectorAll('label');
+    // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+    const checkboxes = container.querySelectorAll('label[aria-hidden="true"]');
 
     expect(checkboxes).toHaveLength(10);
 
     checkboxes.forEach((checkbox) => {
-      expect(checkbox.querySelector('svg')).not.toBeInTheDocument();
+      expect(checkbox).not.toBeChecked();
     });
   });
 
   test('defaultSelected items are selected by default', () => {
-    const { container } = render(
+    render(
       getSimpleTree({
         selectable: 'multi',
         defaultSelected: ['0', '6'],
@@ -120,8 +122,8 @@ describe('selectable = multi', () => {
       }),
     );
 
-    const selectedNodes = container.querySelectorAll('[aria-selected="true"]');
-    const deselectedNodes = container.querySelectorAll('[aria-selected="false"]');
+    const selectedNodes = screen.getAllByRole('treeitem', { selected: true });
+    const deselectedNodes = screen.getAllByRole('treeitem', { selected: false });
 
     expect(selectedNodes).toHaveLength(2);
     expect(deselectedNodes).toHaveLength(8);
@@ -129,15 +131,15 @@ describe('selectable = multi', () => {
 
   test('onSelectionChange gets called when an item selection happens', () => {
     const onSelectionChange = jest.fn();
+
     const { container } = render(getSimpleTree({ selectable: 'multi', onSelectionChange }));
 
-    const firstNodeLabel = container.querySelectorAll('[role="treeitem"] label')[0];
+    // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+    const checkboxes = container.querySelectorAll('label[aria-hidden="true"]');
 
-    if (firstNodeLabel) {
-      fireEvent.click(firstNodeLabel);
+    fireEvent.click(checkboxes[0]);
 
-      expect(onSelectionChange).toHaveBeenCalledWith([0]);
-    }
+    expect(onSelectionChange).toHaveBeenCalledWith([0]);
   });
 });
 
@@ -147,31 +149,30 @@ describe('selectable = radio', () => {
       getSimpleTree({ selectable: 'radio', defaultExpanded: parentNodes }),
     );
 
-    const checkboxes = container.querySelectorAll('label');
+    // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+    const radios = container.querySelectorAll('label[aria-hidden="true"]');
 
-    expect(checkboxes).toHaveLength(10);
-    expect(checkboxes[0]).toHaveStyle(`border-radius: ${theme.borderRadius.circle}`);
+    expect(radios).toHaveLength(10);
+    expect(radios[0]).toHaveStyle(`border-radius: ${theme.borderRadius.circle}`);
   });
 
   test('first selectable item is selected by default', () => {
-    const { container } = render(
-      getSimpleTree({ selectable: 'radio', defaultExpanded: parentNodes }),
-    );
+    render(getSimpleTree({ selectable: 'radio', defaultExpanded: parentNodes }));
 
-    const selectedNode = container.querySelector('[aria-selected="true"]');
-    const deselectedNodes = container.querySelectorAll('[aria-selected="false"]');
+    const selectedNode = screen.getByRole('treeitem', { selected: true });
+    const deselectedNodes = screen.getAllByRole('treeitem', { selected: false });
 
     expect(selectedNode).toBeInTheDocument();
     expect(deselectedNodes).toHaveLength(9);
   });
 
   test('defaultSelected item is selected by default', () => {
-    const { container } = render(
+    render(
       getSimpleTree({ selectable: 'radio', defaultSelected: ['2'], defaultExpanded: parentNodes }),
     );
 
-    const selectedNode = container.querySelector('[aria-selected="true"]');
-    const deselectedNodes = container.querySelectorAll('[aria-selected="false"]');
+    const selectedNode = screen.getByRole('treeitem', { selected: true });
+    const deselectedNodes = screen.getAllByRole('treeitem', { selected: false });
 
     expect(selectedNode).toBeInTheDocument();
     expect(selectedNode?.textContent).toBe('Test Node 2');
@@ -179,7 +180,7 @@ describe('selectable = radio', () => {
   });
 
   test('first defaultSelected item is selected by default from list', () => {
-    const { container } = render(
+    render(
       getSimpleTree({
         selectable: 'radio',
         defaultSelected: ['2', '6'],
@@ -187,8 +188,8 @@ describe('selectable = radio', () => {
       }),
     );
 
-    const selectedNode = container.querySelector('[aria-selected="true"]');
-    const deselectedNodes = container.querySelectorAll('[aria-selected="false"]');
+    const selectedNode = screen.getByRole('treeitem', { selected: true });
+    const deselectedNodes = screen.getAllByRole('treeitem', { selected: false });
 
     expect(selectedNode).toBeInTheDocument();
     expect(selectedNode?.textContent).toBe('Test Node 2');
@@ -197,15 +198,15 @@ describe('selectable = radio', () => {
 
   test('onSelectionChange gets called when an item selection happens', () => {
     const onSelectionChange = jest.fn();
+
     const { container } = render(getSimpleTree({ selectable: 'radio', onSelectionChange }));
 
-    const firstNodeLabel = container.querySelectorAll('[role="treeitem"] label')[0];
+    // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+    const radios = container.querySelectorAll('label[aria-hidden="true"]');
 
-    if (firstNodeLabel) {
-      fireEvent.click(firstNodeLabel);
+    fireEvent.click(radios[0]);
 
-      expect(onSelectionChange).toHaveBeenCalledWith([0]);
-    }
+    expect(onSelectionChange).toHaveBeenCalledWith([0]);
   });
 });
 

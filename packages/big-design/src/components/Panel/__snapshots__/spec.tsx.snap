@@ -38,6 +38,7 @@ exports[`render panel 1`] = `
 
 <div
   class="c0 c1"
+  data-testid="panel"
 >
   <div
     class="c2"
@@ -129,6 +130,7 @@ exports[`render panel with only a heading and no content 1`] = `
 
 <div
   class="c0 c1"
+  data-testid="panel"
 >
   <div
     class="c2 c3"

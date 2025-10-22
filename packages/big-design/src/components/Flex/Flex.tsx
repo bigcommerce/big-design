@@ -8,7 +8,7 @@ import { FlexedProps } from './types';
 export type FlexProps = BoxProps & FlexedProps;
 
 interface PrivateProps {
-  forwardedRef: React.Ref<HTMLDivElement>;
+  readonly forwardedRef: React.Ref<HTMLDivElement>;
 }
 
 const RawFlex: React.FC<FlexProps & PrivateProps> = ({ as, forwardedRef, ...rest }) => (

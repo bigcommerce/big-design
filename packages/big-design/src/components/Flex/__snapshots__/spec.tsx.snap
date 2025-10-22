@@ -44,6 +44,7 @@ exports[`render flex 1`] = `
 
 <div
   class="c0 c1"
+  data-testid="flex"
 >
   Flex
 </div>

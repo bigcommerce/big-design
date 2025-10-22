@@ -19,8 +19,8 @@ import {
 } from '../PropTables';
 
 interface Props {
-  children?: React.ReactNode;
-  vertical?: boolean;
+  readonly children?: React.ReactNode;
+  readonly vertical?: boolean;
 }
 
 const ExampleBox: React.FC<Props> = ({ children, vertical }) => (

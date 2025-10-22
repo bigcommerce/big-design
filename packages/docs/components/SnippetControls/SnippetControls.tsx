@@ -14,7 +14,7 @@ import { CodeEditorContext } from '../StoryWrapper/StoryWrapper';
 import { StyledFlex } from './styled';
 
 interface SnippetControls {
-  helperText?: string;
+  readonly helperText?: string;
   copyToClipboard(): void;
   resetCode?(): void;
 }

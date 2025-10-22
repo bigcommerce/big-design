@@ -13,11 +13,11 @@ interface Parmeter {
 }
 
 export interface MethodListProps {
-  name: string;
-  intro: string;
-  usage: string;
-  parameterList: Parmeter[];
-  returnDescription: React.ReactNode;
+  readonly name: string;
+  readonly intro: string;
+  readonly usage: string;
+  readonly parameterList: Parmeter[];
+  readonly returnDescription: React.ReactNode;
 }
 
 export const MethodList: React.FC<MethodListProps> = ({

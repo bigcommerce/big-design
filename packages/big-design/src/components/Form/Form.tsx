@@ -7,12 +7,12 @@ import { StyledForm } from './styled';
 import { FormContext } from './useFormContext';
 
 interface PrivateProps {
-  forwardedRef: Ref<HTMLFormElement>;
+  readonly forwardedRef: Ref<HTMLFormElement>;
 }
 
 export type FormProps = ComponentPropsWithoutRef<'form'> &
   MarginProps & {
-    fullWidth?: boolean;
+    readonly fullWidth?: boolean;
   };
 
 const StyleableForm: React.FC<PrivateProps & FormProps> = ({ forwardedRef, ...props }) => {

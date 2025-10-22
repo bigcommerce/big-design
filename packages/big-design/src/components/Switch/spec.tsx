@@ -7,27 +7,35 @@ import { Switch } from './index';
 
 describe('render Switch', () => {
   test('checked', () => {
-    const { container } = render(<Switch checked={true} onChange={() => null} />);
+    render(<Switch checked={true} data-testid="switch" onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    const switchElement = screen.getByTestId('switch');
+
+    expect(switchElement).toMatchSnapshot();
   });
 
   test('unchecked', () => {
-    const { container } = render(<Switch checked={false} onChange={() => null} />);
+    render(<Switch checked={false} data-testid="switch" onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    const switchElement = screen.getByTestId('switch');
+
+    expect(switchElement).toMatchSnapshot();
   });
 
   test('disabled checked', () => {
-    const { container } = render(<Switch checked={true} disabled onChange={() => null} />);
+    render(<Switch checked={true} data-testid="switch" disabled onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    const switchElement = screen.getByTestId('switch');
+
+    expect(switchElement).toMatchSnapshot();
   });
 
   test('disabled unchecked', () => {
-    const { container } = render(<Switch checked={false} disabled onChange={() => null} />);
+    render(<Switch checked={false} data-testid="switch" disabled onChange={() => null} />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    const switchElement = screen.getByTestId('switch');
+
+    expect(switchElement).toMatchSnapshot();
   });
 
   test('has correct value for checked', async () => {
@@ -35,7 +43,7 @@ describe('render Switch', () => {
 
     const input = await screen.findByTestId<HTMLInputElement>('switch');
 
-    expect(input.checked).toBe(true);
+    expect(input).toBeChecked();
   });
 
   test('has correct value for unchecked', async () => {
@@ -43,7 +51,7 @@ describe('render Switch', () => {
 
     const input = await screen.findByTestId<HTMLInputElement>('switch');
 
-    expect(input.checked).toBe(false);
+    expect(input).not.toBeChecked();
   });
 
   test('triggers onChange when clicking the checkbox', async () => {
@@ -61,8 +69,9 @@ describe('render Switch', () => {
   test('forwards ref', () => {
     const ref = createRef<HTMLInputElement>();
 
-    const { container } = render(<Switch data-testid="switch" ref={ref} />);
-    const input = container.querySelector('input');
+    render(<Switch data-testid="switch" ref={ref} />);
+
+    const input = screen.getByTestId('switch');
 
     expect(input).toBe(ref.current);
   });

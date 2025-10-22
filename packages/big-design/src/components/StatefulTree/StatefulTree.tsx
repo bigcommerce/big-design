@@ -7,12 +7,12 @@ import { useExpandable, useFocusable, useSelectable, useVisibleNodes } from './h
 
 export interface StatefulTreeProps<T>
   extends Omit<TreeProps<T>, 'expandable' | 'focusable' | 'selectable' | 'onKeyDown'> {
-  defaultExpanded?: TreeNodeId[];
-  defaultSelected?: TreeNodeId[];
-  iconless?: boolean;
-  selectable?: TreeSelectable<T>['type'];
-  onExpandedChange?: (expandedNodes: TreeNodeId[]) => void;
-  onSelectionChange?: (selectedValues: T[]) => void;
+  readonly defaultExpanded?: TreeNodeId[];
+  readonly defaultSelected?: TreeNodeId[];
+  readonly iconless?: boolean;
+  readonly selectable?: TreeSelectable<T>['type'];
+  readonly onExpandedChange?: (expandedNodes: TreeNodeId[]) => void;
+  readonly onSelectionChange?: (selectedValues: T[]) => void;
 }
 
 const InternalStatefulTree = <T,>({

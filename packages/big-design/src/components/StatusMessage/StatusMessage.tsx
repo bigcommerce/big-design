@@ -17,11 +17,11 @@ export type StatusMessageVariantType =
   | 'warning';
 
 export interface StatusMessageProps {
-  actions?: React.ReactNode;
-  heading?: string;
-  message: string;
-  size?: 'page' | 'panel';
-  variant?: StatusMessageVariantType;
+  readonly actions?: React.ReactNode;
+  readonly heading?: string;
+  readonly message: string;
+  readonly size?: 'page' | 'panel';
+  readonly variant?: StatusMessageVariantType;
 }
 
 export const StatusMessage: React.FC<StatusMessageProps> = ({

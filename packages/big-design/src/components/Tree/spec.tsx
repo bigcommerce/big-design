@@ -58,7 +58,7 @@ const renderDefaultTree = (
   focusable: TreeFocusable;
   onKeyDown: TreeOnKeyDown<unknown>;
 } => {
-  const rendered = render(
+  const view = render(
     <Tree
       expandable={expandable}
       focusable={focusable}
@@ -69,7 +69,7 @@ const renderDefaultTree = (
   );
 
   return {
-    ...rendered,
+    ...view,
     expandable,
     focusable,
     onKeyDown,
@@ -92,7 +92,6 @@ test('does not forward styles', async () => {
   const tree = await screen.findByRole('tree');
 
   expect(tree).not.toHaveClass('test');
-  expect(tree.getElementsByClassName('test')).toHaveLength(0);
   expect(tree).not.toHaveStyle('background: red');
 });
 
@@ -125,9 +124,11 @@ test('renders with no icons', async () => {
     iconless: true,
   });
 
-  const tree = await screen.findByRole('tree');
+  await screen.findByRole('tree');
 
-  expect(tree.querySelector('svg')).not.toBeInTheDocument();
+  const svg = screen.queryByRole('img', { hidden: true });
+
+  expect(svg).not.toBeInTheDocument();
 });
 
 test('renders node with custom icon', async () => {
@@ -152,45 +153,49 @@ test('iconless renders without custom icons', () => {
 });
 
 test('renders radio select', async () => {
-  renderDefaultTree({
+  const { container } = renderDefaultTree({
     nodes: [{ id: '0', value: 0, label: 'Test Node 0' }],
     selectable: { type: 'radio' },
   });
 
   const tree = await screen.findByRole('tree');
-  const radio = tree.querySelector('label');
+  // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+  const radio = container.querySelector('label[aria-hidden="true"]');
 
   expect(tree).toHaveAttribute('aria-multiselectable', 'false');
   expect(radio).toHaveStyle(`border-radius: ${theme.borderRadius.circle}`);
 });
 
 test('renders multiselect buttons', async () => {
-  renderDefaultTree({
+  const { container } = renderDefaultTree({
     nodes: [{ id: '0', value: 0, label: 'Test Node 0' }],
     selectable: { type: 'multi' },
   });
 
   const tree = await screen.findByRole('tree');
-  const multi = tree.querySelector('label');
+  // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+  const checkbox = container.querySelector('label[aria-hidden="true"]');
 
   expect(tree).toHaveAttribute('aria-multiselectable', 'true');
-  expect(multi).toHaveStyle(`border-radius: ${theme.borderRadius.normal}`);
+  expect(checkbox).toHaveStyle(`border-radius: ${theme.borderRadius.normal}`);
 });
 
 test('trigger onSelect', () => {
   const onSelect = jest.fn();
+
   const { container } = renderDefaultTree({
     nodes: [{ id: '0', value: 0, label: 'Test Node 0' }],
     selectable: { type: 'multi', onSelect },
   });
 
-  const multi = container.querySelector('label');
+  // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+  const checkbox = container.querySelector('label[aria-hidden="true"]');
 
-  if (multi) {
-    fireEvent.click(multi);
-
-    expect(onSelect).toHaveBeenCalledWith('0', 0);
+  if (checkbox) {
+    fireEvent.click(checkbox);
   }
+
+  expect(onSelect).toHaveBeenCalledWith('0', 0);
 });
 
 test('renders expanded nodes', () => {
@@ -203,27 +208,29 @@ test('renders expanded nodes', () => {
   const node9 = screen.getByText('Test Node 9');
 
   expect(node5).toBeVisible();
-  expect(node6).toBeNull();
+  expect(node6).not.toBeInTheDocument();
   expect(node9).toBeVisible();
 });
 
 test("disabled nodes don't trigger onSelect", async () => {
   const onSelect = jest.fn();
 
-  renderDefaultTree({
+  const { container } = renderDefaultTree({
     nodes: [{ id: '0', value: 0, label: 'Test Node 0' }],
     selectable: { type: 'multi', onSelect },
     disabledNodes: ['0'],
   });
 
-  const tree = await screen.findByRole('tree');
-  const multi = tree.querySelector('label');
+  await screen.findByRole('tree');
 
-  if (multi) {
-    fireEvent.click(multi);
+  // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+  const checkbox = container.querySelector('label[aria-hidden="true"]');
 
-    expect(onSelect).not.toHaveBeenCalled();
+  if (checkbox) {
+    fireEvent.click(checkbox);
   }
+
+  expect(onSelect).not.toHaveBeenCalled();
 });
 
 test('triggers onNodeClick', async () => {

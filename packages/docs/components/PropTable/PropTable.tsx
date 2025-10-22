@@ -5,7 +5,7 @@ import { Code } from '../Code';
 import { Collapsible } from '../Collapsible';
 
 interface TypesDataProps {
-  types: Prop['types'];
+  readonly types: Prop['types'];
 }
 
 export interface Prop {
@@ -17,13 +17,13 @@ export interface Prop {
 }
 
 export interface PropTableProps {
-  children?: React.ReactNode;
-  collapsible?: boolean;
-  id?: string;
-  inheritedProps?: ReactNode;
-  nativeElement?: [string, 'most' | 'all'];
-  propList: Prop[];
-  title: string;
+  readonly children?: React.ReactNode;
+  readonly collapsible?: boolean;
+  readonly id?: string;
+  readonly inheritedProps?: ReactNode;
+  readonly nativeElement?: [string, 'most' | 'all'];
+  readonly propList: Prop[];
+  readonly title: string;
 }
 
 export type PropTableWrapper = Partial<PropTableProps>;
@@ -112,7 +112,7 @@ export const PropTable: FC<PropTableProps> = (props) => {
   return renderContent();
 };
 
-const TypeCode = ({ type }: { type: ReactNode }) => {
+const TypeCode = ({ type }: { readonly type: ReactNode }) => {
   if (isValidElement(type) && type.type === Link) {
     return <Code highlight={false}>{type}</Code>;
   }

@@ -1,6 +1,6 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
 import 'jest-styled-components';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -13,153 +13,180 @@ const TestComponent = styled.div<MarginProps>`
 TestComponent.defaultProps = { theme: defaultTheme };
 
 test('margin', () => {
-  const { container } = render(<TestComponent margin="medium" />);
+  render(<TestComponent data-testid="test-component" margin="medium" />);
 
-  expect(container.firstChild).toHaveStyle('margin: 1rem');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin: 1rem');
 });
 
 test('marginTop', () => {
-  const { container } = render(<TestComponent marginTop="medium" />);
+  render(<TestComponent data-testid="test-component" marginTop="medium" />);
 
-  expect(container.firstChild).toHaveStyle('margin-top: 1rem');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin-top: 1rem');
 
-  expect(container.firstChild).not.toHaveStyle('margin: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-right: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-left: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-bottom: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-right: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-left: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-bottom: 1rem');
 });
 
 test('marginRight', () => {
-  const { container } = render(<TestComponent marginRight="medium" />);
+  render(<TestComponent data-testid="test-component" marginRight="medium" />);
 
-  expect(container.firstChild).toHaveStyle('margin-right: 1rem');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin-right: 1rem');
 
-  expect(container.firstChild).not.toHaveStyle('margin: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-top: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-left: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-bottom: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-top: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-left: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-bottom: 1rem');
 });
 
 test('marginBottom', () => {
-  const { container } = render(<TestComponent marginBottom="medium" />);
+  render(<TestComponent data-testid="test-component" marginBottom="medium" />);
 
-  expect(container.firstChild).toHaveStyle('margin-bottom: 1rem');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin-bottom: 1rem');
 
-  expect(container.firstChild).not.toHaveStyle('margin: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-top: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-right: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-left: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-top: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-right: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-left: 1rem');
 });
 
 test('marginLeft', () => {
-  const { container } = render(<TestComponent marginLeft="medium" />);
+  render(<TestComponent data-testid="test-component" marginLeft="medium" />);
 
-  expect(container.firstChild).toHaveStyle('margin-left: 1rem');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin-left: 1rem');
 
-  expect(container.firstChild).not.toHaveStyle('margin: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-top: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-right: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-bottom: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-top: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-right: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-bottom: 1rem');
 });
 
 test('marginVertical', () => {
-  const { container } = render(<TestComponent marginVertical="medium" />);
+  render(<TestComponent data-testid="test-component" marginVertical="medium" />);
 
-  expect(container.firstChild).toHaveStyle('margin-top: 1rem');
-  expect(container.firstChild).toHaveStyle('margin-bottom: 1rem');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin-top: 1rem');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin-bottom: 1rem');
 
-  expect(container.firstChild).not.toHaveStyle('margin: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-right: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-left: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-right: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-left: 1rem');
 });
 
 test('marginHorizontal', () => {
-  const { container } = render(<TestComponent marginHorizontal="medium" />);
+  render(<TestComponent data-testid="test-component" marginHorizontal="medium" />);
 
-  expect(container.firstChild).toHaveStyle('margin-left: 1rem');
-  expect(container.firstChild).toHaveStyle('margin-right: 1rem');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin-left: 1rem');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin-right: 1rem');
 
-  expect(container.firstChild).not.toHaveStyle('margin: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-top: 1rem');
-  expect(container.firstChild).not.toHaveStyle('margin-bottom: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-top: 1rem');
+  expect(screen.getByTestId('test-component')).not.toHaveStyle('margin-bottom: 1rem');
 });
 
 test('simple margins combination', () => {
-  const { container } = render(
-    <TestComponent marginBottom="none" marginRight="small" marginTop="medium" />,
+  render(
+    <TestComponent
+      data-testid="test-component"
+      marginBottom="none"
+      marginRight="small"
+      marginTop="medium"
+    />,
   );
 
-  expect(container.firstChild).toHaveStyle('margin-top: 1rem');
-  expect(container.firstChild).toHaveStyle('margin-bottom: 0px');
-  expect(container.firstChild).toHaveStyle('margin-right: 0.75rem');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin-top: 1rem');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin-bottom: 0px');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin-right: 0.75rem');
 });
 
 test('responsive margin', () => {
-  const { container } = render(
-    <TestComponent margin={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+  render(
+    <TestComponent
+      data-testid="test-component"
+      margin={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
+    />,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByTestId('test-component')).toMatchSnapshot();
 });
 
 test('responsive marginTop', () => {
-  const { container } = render(
-    <TestComponent marginTop={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+  render(
+    <TestComponent
+      data-testid="test-component"
+      marginTop={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
+    />,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByTestId('test-component')).toMatchSnapshot();
 });
 
 test('responsive marginRight', () => {
-  const { container } = render(
-    <TestComponent marginRight={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+  render(
+    <TestComponent
+      data-testid="test-component"
+      marginRight={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
+    />,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByTestId('test-component')).toMatchSnapshot();
 });
 
 test('responsive marginBottom', () => {
-  const { container } = render(
-    <TestComponent marginBottom={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+  render(
+    <TestComponent
+      data-testid="test-component"
+      marginBottom={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
+    />,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByTestId('test-component')).toMatchSnapshot();
 });
 
 test('responsive marginLeft', () => {
-  const { container } = render(
-    <TestComponent marginLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+  render(
+    <TestComponent
+      data-testid="test-component"
+      marginLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
+    />,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByTestId('test-component')).toMatchSnapshot();
 });
 
 test('responsive marginVertical', () => {
-  const { container } = render(
-    <TestComponent marginVertical={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+  render(
+    <TestComponent
+      data-testid="test-component"
+      marginVertical={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
+    />,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByTestId('test-component')).toMatchSnapshot();
 });
 
 test('responsive marginHorizontal', () => {
-  const { container } = render(
-    <TestComponent marginHorizontal={{ mobile: 'none', tablet: 'small', desktop: 'medium' }} />,
+  render(
+    <TestComponent
+      data-testid="test-component"
+      marginHorizontal={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
+    />,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByTestId('test-component')).toMatchSnapshot();
 });
 
 test('responsive and non responsive combination', () => {
-  const { container } = render(
+  render(
     <TestComponent
+      data-testid="test-component"
       marginBottom="medium"
       marginLeft={{ mobile: 'none', tablet: 'small', desktop: 'medium' }}
       marginTop="none"
     />,
   );
 
-  expect(container.firstChild).toMatchSnapshot();
+  expect(screen.getByTestId('test-component')).toMatchSnapshot();
 });
 
 test('excludeMarginProps removes all margin props from an object', () => {
@@ -178,7 +205,7 @@ test('excludeMarginProps removes all margin props from an object', () => {
 });
 
 test('non-spacing value auto', () => {
-  const { container } = render(<TestComponent margin="auto" />);
+  render(<TestComponent data-testid="test-component" margin="auto" />);
 
-  expect(container.firstChild).toHaveStyle('margin: auto');
+  expect(screen.getByTestId('test-component')).toHaveStyle('margin: auto');
 });

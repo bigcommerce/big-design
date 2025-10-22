@@ -3,7 +3,7 @@ import React from 'react';
 import { StyledProgressBar, StyledProgressBarFiller } from './styled';
 
 export interface ProgressBarProps {
-  percent?: number;
+  readonly percent?: number;
 }
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({ percent }) => {
